@@ -1,20 +1,20 @@
 ---
 title: テンプレートを作成する - Visual Studio Code
-description: Visual Studio Code と Azure Resource Manager ツールの拡張機能を使用して Resource Manager テンプレートを操作する方法について説明します。
+description: Visual Studio Code と Azure Resource Manager ツールの拡張機能を使用して Azure Resource Manager テンプレート (ARM テンプレート) を操作する方法について説明します。
 author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d8fd44a1e4c1ddfd78b2afa3280bb05c8fde91e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034985"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350145"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
+# <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して ARM テンプレートを作成する
 
-Visual Studio Code 用の Azure Resource Manager ツールでは、言語サポート、リソース スニペット、およびリソース オートコンプリートが提供されます。 これらのツールは、Azure Resource Manager テンプレートを作成および検証するのに役立ちます。 このクイックスタートでは、拡張機能を使用して Azure Resource Manager テンプレートを一から作成します。 操作では、ARM テンプレート スニペット、検証、入力候補、パラメーター ファイルのサポートなどの拡張機能を使用します。
+Visual Studio Code 用の Azure Resource Manager ツールでは、言語サポート、リソース スニペット、およびリソース オートコンプリートが提供されます。 これらのツールは、Azure Resource Manager テンプレート (ARM テンプレート) を作成および検証するのに役立ちます。 このクイックスタートでは、拡張機能を使用して ARM テンプレートを一から作成します。 操作では、ARM テンプレート スニペット、検証、入力候補、パラメーター ファイルのサポートなどの拡張機能を使用します。
 
 このクイックスタートを完了するには、[Azure Resource Manager ツールの拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)がインストールされている [Visual Studio Code](https://code.visualstudio.com/) が必要です。 また、[Azure CLI](/cli/azure/?view=azure-cli-latest) か [Azure PowerShell モジュール](/powershell/azure/new-azureps-module-az?view=azps-3.7.0)のどちらかがインストールされて認証されている必要があります。
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![完全にスキャフォールディングされた ARM テンプレートを示す画像](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-Visual Studio Code 言語モードが *JSON* から *Azure Resource Manager テンプレート*に変更されていることに注目してください。 この拡張機能には、ARM テンプレート固有の検証、入力候補、その他の言語サービスを提供する ARM テンプレート固有の言語サーバーが含まれています。
+Visual Studio Code 言語モードが *JSON* から *Azure Resource Manager テンプレート* に変更されていることに注目してください。 この拡張機能には、ARM テンプレート固有の検証、入力候補、その他の言語サービスを提供する ARM テンプレート固有の言語サーバーが含まれています。
 
 ![Visual Studio Code 言語モードの Azure Resource Manager を示す画像](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
@@ -54,7 +54,7 @@ Visual Studio Code 言語モードが *JSON* から *Azure Resource Manager テ�
 
 ## <a name="completion-and-validation"></a>入力候補と検証
 
-拡張機能の最も強力な機能の 1 つが、Azure スキーマとの統合です。 Azure スキーマは、検証とリソース対応の入力候補機能を備えた拡張機能を提供します。 ストレージ アカウントを変更して、検証と入力候補が動作することを確認してみましょう。 
+拡張機能の最も強力な機能の 1 つが、Azure スキーマとの統合です。 Azure スキーマは、検証とリソース対応の入力候補機能を備えた拡張機能を提供します。 ストレージ アカウントを変更して、検証と入力候補が動作することを確認してみましょう。
 
 最初に、ストレージ アカウントの種類を、`megaStorage` などの無効な値に更新します。 このアクションでは、`megaStorage` が有効な値ではないことを示す警告が生成されます。
 
@@ -80,7 +80,7 @@ Azure ストレージ アカウント名の長さは 3 文字以上、24 文字�
 
 ![ARM テンプレート パラメーターに追加される minLength と maxLength を示す画像](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-次に、ストレージ リソースで、パラメーターを使用するように name プロパティを更新します。 これを行うには、現在の名前を削除します。 二重引用符と左角かっこ `[` を入力します。これにより、ARM テンプレート関数の一覧が生成されます。 一覧から "*parameters*" を選択します。 
+次に、ストレージ リソースで、パラメーターを使用するように name プロパティを更新します。 これを行うには、現在の名前を削除します。 二重引用符と左角かっこ `[` を入力します。これにより、ARM テンプレート関数の一覧が生成されます。 一覧から "*parameters*" を選択します。
 
 ![ARM テンプレート リソースで parameters を使用するときのオートコンプリートを示す画像](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 

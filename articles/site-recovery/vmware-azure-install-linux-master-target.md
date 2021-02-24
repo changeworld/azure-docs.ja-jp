@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130140"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019244"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -48,16 +48,7 @@ ms.locfileid: "86130140"
 - **OS ディスク サイズ**: 100 GB 以上 (OS をインストールする場合)
 - **リテンション ドライブの追加ディスク サイズ**: 1 TB (テラバイト)
 - **CPU コア数**: 4 コア以上
-
-次の Ubuntu カーネルがサポートされています。
-
-
-|カーネル シリーズ  |サポートされる最新バージョン  |
-|---------|---------|
-|4.4.      |4.4.0-81-generic         |
-|4.8      |4.8.0-56-generic         |
-|4.10     |4.10.0-24-generic        |
-
+- **カーネル**: 4.16.*
 
 ## <a name="deploy-the-master-target-server"></a>マスター ターゲット サーバーをデプロイする
 
@@ -120,7 +111,7 @@ Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、シス
 
 1.  既定のオプションを選択し、 **[Continue]\(続行\)** を選択し、**Enter** キーを押します。
      
-     ![アップグレードの管理方法を選択する](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![[続行] を選択してから Enter キーを選択する場所を示すスクリーンショット。](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
 1.  システムでのアップグレード管理用の選択で **[No automatic updates]\(自動更新なし\)** オプションを選び、**Enter** キーを押します。
 

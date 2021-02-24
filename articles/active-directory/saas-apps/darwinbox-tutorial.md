@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 70c77caebfd8f9bfd36c7384255cf7b66416a379
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550114"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012035"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Darwinbox の統合
 
@@ -25,7 +25,7 @@ ms.locfileid: "88550114"
 * Darwinbox にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Darwinbox に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -127,35 +127,35 @@ Darwinbox に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-darwinbox-sso"></a>Darwinbox SSO の構成
 
-**Darwinbox** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Darwinbox サポート チーム](https://darwinbox.com/contact-us.php)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Darwinbox** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Darwinbox サポート チーム](https://darwinbox.com/contact-us.php)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-darwinbox-test-user"></a>Darwinbox のテスト ユーザーの作成
 
-このセクションでは、Darwinbox で B.Simon というユーザーを作成します。  [Darwinbox サポート チーム](https://darwinbox.com/contact-us.php)と連携し、Darwinbox プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Darwinbox で B.Simon というユーザーを作成します。 [Darwinbox サポート チーム](https://darwinbox.com/contact-us.php)と連携し、Darwinbox プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Darwinbox] タイルをクリックすると、SSO を設定した Darwinbox に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Darwinbox] タイルをクリックすると、SSO を設定した Darwinbox に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="test-sso-for-darwinbox-mobile"></a>Darwinbox (モバイル) の SSO のテスト
 
 1. Darwinbox モバイル アプリケーションを開きます。 **[Enter Organization URL]\(組織の URL の入力\)** をクリックし、テキストボックスに組織の URL を入力して、矢印ボタンをクリックします。
 
-    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![[Enter Organization U R L]\(組織の U R L の入力\) が選択されている "Darwinbox" モバイル アプリを示すスクリーンショット。サンプルの組織と "矢印" ボタンが強調表示されています。](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. 複数のドメインがある場合は、対象のドメインをクリックします。
 
-    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![サンプル ドメインが選択されている [Choose your domain]\(ドメインの選択\) 画面を示すスクリーンショット。](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. Darwinbox アプリケーションに Azure AD のメール アドレスを入力し、 **[Next]\(次へ\)** をクリックします。
 
-    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![[Next]\(次へ\) ボタンが強調表示されている [Sign in]\(サインイン\) 画面を示すスクリーンショット。](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. Darwinbox アプリケーションに Azure AD のパスワードを入力し、 **[Sign in]\(サインイン\)** をクリックします。
 
-    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![[Next]\(次へ\) ボタンが強調表示されている [Enter password]\(パスワードの入力\) 画面を示すスクリーンショット。](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. サインインに成功すると、アプリケーションのホーム ページが表示されます。
 
@@ -163,11 +163,10 @@ Darwinbox に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Darwinbox を試す](https://aad.portal.azure.com/)
-

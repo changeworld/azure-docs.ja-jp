@@ -13,18 +13,18 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a0a17e3f352c9e39f118baec7e045521289f5ed0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 675f6b9ac3ebb05539432b5febc279275f9de7f6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502411"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785771"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>セキュリティで保護された Service Fabric Linux クラスターを Azure に作成する
 
 このコマンドは、自己署名証明書を作成してキー コンテナーに追加し、証明書をローカルでダウンロードします。  新しい証明書はクラスターのデプロイ時にセキュリティで保護するために使用します。  また、新しい証明書を作成する代わりに既存のものを使用することもできます。  いずれにしても、証明書のサブジェクト名は Service Fabric クラスターへのアクセスに使用されるドメインと一致している必要があります。 この整合性は、HTTPS 管理エンドポイントと Service Fabric Explorer 用の TLS を提供するために必要です。 CA から `.cloudapp.azure.com` ドメインの TLS/SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
-必要に応じて、[Azure CLI](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールしてください。
+必要に応じて、[Azure CLI](/en-us/cli/azure/install-azure-cli) をインストールしてください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -45,7 +45,7 @@ az group delete --name $ResourceGroupName
 
 | command | Notes |
 |---|---|
-| [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) | 新しい Service Fabric クラスターを作成します。  |
+| [az sf cluster create](/cli/azure/sf/cluster) | 新しい Service Fabric クラスターを作成します。  |
 
 ## <a name="next-steps"></a>次のステップ
 

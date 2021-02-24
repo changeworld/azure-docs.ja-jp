@@ -1,22 +1,17 @@
 ---
 title: Azure Blob Storage から Azure SQL Database にコピーする
 description: このチュートリアルでは、Azure Blob Storage から Azure SQL Database にデータをコピーするための詳細な手順を説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b2ec4a65f1001d6d1c93a23964d59972419f651e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85513269"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380884"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 
@@ -40,11 +35,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* *Azure Storage アカウント*。 BLOB ストレージを*ソース* データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、[汎用ストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
-* *Azure SQL データベース*。 データベースを*シンク* データ ストアとして使用します。 Azure SQL Database のデータベースがない場合は、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
+* *Azure Storage アカウント*。 BLOB ストレージを *ソース* データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、[汎用ストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
+* *Azure SQL Database*。 データベースを *シンク* データ ストアとして使用します。 Azure SQL Database のデータベースがない場合は、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 * *Visual Studio*. この記事のチュートリアルでは、Visual Studio 2019 を使用します。
 * *[Azure SDK for .NET](/dotnet/azure/dotnet-tools)* .
-* *Azure Active Directory アプリケーション*。 Azure Active Directory アプリケーションをお持ちでない場合は、「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」セクションを、[ポータルを使用して Azure AD アプリケーションを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページから参照してください。 以降の手順で使用するために、次の値をコピーします。**アプリケーション (クライアント) ID**、**認証キー**、および**ディレクトリ (テナント) ID** です。 同じ記事の手順に従って、アプリケーションを **[共同作成者]** ロールに割り当てます。
+* *Azure Active Directory アプリケーション*。 Azure Active Directory アプリケーションをお持ちでない場合は、「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」セクションを、[ポータルを使用して Azure AD アプリケーションを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページから参照してください。 以降の手順で使用するために、次の値をコピーします。**アプリケーション (クライアント) ID**、**認証キー**、および **ディレクトリ (テナント) ID** です。 同じ記事の手順に従って、アプリケーションを **[共同作成者]** ロールに割り当てます。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>BLOB と SQL テーブルを作成する
 
@@ -67,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次に、シンク SQL テーブルを作成します。
 
-1. 次の SQL スクリプトを使用して、*dbo.emp* テーブルを Azure SQL データベースに作成します。
+1. 次の SQL スクリプトを使用して、*dbo.emp* テーブルを Azure SQL Database に作成します。
 
     ```sql
     CREATE TABLE dbo.emp

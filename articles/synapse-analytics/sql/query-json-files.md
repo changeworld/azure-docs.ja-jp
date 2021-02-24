@@ -1,30 +1,30 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して JSON ファイルに対してクエリを実行する
-description: このセクションでは、Azure Synapse Analytics の SQL オンデマンドを使用して JSON ファイルを読み取る方法について説明します。
+title: サーバーレス SQL プールを使用して JSON ファイルに対してクエリを実行する
+description: このセクションでは、Azure Synapse Analytics の サーバーレス SQL プールを使用して JSON ファイルを読み取る方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8dc07a3aa954a74ba594eb99da1ea3ee59610c9b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489726"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678323"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して JSON ファイルに対してクエリを実行する
+# <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して JSON ファイルのクエリを実行する
 
-この記事では、Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用してクエリを作成する方法について説明します。 このクエリの目的は、[OPENROWSET](develop-openrowset.md) を使用して JSON ファイルを読み取ることです。 
+この記事では、Azure Synapse Analytics のサーバーレス SQL プールを使用してクエリを作成する方法について説明します。 このクエリの目的は、[OPENROWSET](develop-openrowset.md) を使用して JSON ファイルを読み取ることです。 
 - 複数の JSON ドキュメントが JSON 配列として格納されている標準の JSON ファイル。
 - JSON ドキュメントが改行文字で区切られている行区切りの JSON ファイル。 これらの種類のファイルの一般的な拡張機能には、`jsonl`、`ldjson`、および `ndjson` があります。
 
 ## <a name="read-json-documents"></a>JSON ドキュメントの読み取り
 
-JSON ファイルの内容を確認する最も簡単な方法は、`OPENROWSET` 関数にファイルの URL を指定し、csv `FORMAT` を指定し、`fieldterminator` と `fieldquote` に `0x0b` 値を設定することです。 行区切りの JSON ファイルを読み取る必要がある場合は、これで十分です。 従来の JSON ファイルがある場合は、`rowterminator` に `0x0b` 値を設定する必要があります。 `OPENROWSET` 関数は JSON を解析し、次の形式ですべてのドキュメントを返します。
+JSON ファイルの内容を確認する最も簡単な方法は、`OPENROWSET` 関数にそのファイルの URL を指定し、csv `FORMAT` を指定し、`fieldterminator` と `fieldquote` に `0x0b` 値を設定することです。 行区切りの JSON ファイルを読み取る必要がある場合は、これで十分です。 従来の JSON ファイルがある場合は、`rowterminator` に `0x0b` 値を設定する必要があります。 `OPENROWSET` 関数は JSON を解析し、次の形式ですべてのドキュメントを返します。
 
 | ドキュメント |
 | --- |
@@ -58,7 +58,7 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-このクエリでは、各 JSON ドキュメントが結果セットの個別の行として返されます。 このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム ID で保護されている場合は、[SQL ログインのためのサーバー レベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。 
+前のサンプル クエリの JSON ドキュメントには、オブジェクトの配列が含まれています。 このクエリでは、各オブジェクトが個別の行として結果セットに返されます。 このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム ID で保護されている場合は、[SQL ログインのためのサーバー レベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。 
 
 ### <a name="data-source-usage"></a>データ ソースの使用状況
 
@@ -126,7 +126,7 @@ from openrowset(
 
 ### <a name="query-json-files-using-json_value"></a>JSON_VALUE を使用して JSON ファイルに対してクエリを実行する
 
-以下のクエリは、[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、JSON ドキュメントからスカラー値 (タイトル、発行元) を取得する方法を示しています。
+以下のクエリは、[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、JSON ドキュメントからスカラー値 (タイトル、発行元) を取得する方法を示しています。
 
 ```sql
 select
@@ -146,7 +146,7 @@ order by JSON_VALUE(doc, '$.geo_id') desc
 
 ### <a name="query-json-files-using-openjson"></a>OPENJSON を使用して JSON ファイルに対してクエリを実行する
 
-次のクエリでは [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用します。 これは、セルビアで報告された COVID の統計情報を取得します。
+次のクエリでは [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用します。 これは、セルビアで報告された COVID の統計情報を取得します。
 
 ```sql
 select

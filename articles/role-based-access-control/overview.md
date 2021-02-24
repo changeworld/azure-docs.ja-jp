@@ -2,25 +2,20 @@
 title: Azure ロールベースのアクセス制御 (Azure RBAC) とは
 description: Azure ロールベースのアクセス制御 (Azure RBAC) の概要を説明します。 ロールの割り当てを使用して、Azure リソースへのアクセスを制御します。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8f8aadeb-45c9-4d0e-af87-f1f79373e039
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 09/30/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.custom: azuread-video-2020
-ms.openlocfilehash: cb77bfb6173e94ea3cdaadf4456947de75676565
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.custom: contperf-fy21q1, azuread-video-2020
+ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761129"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033920"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC) とは
 
@@ -43,53 +38,39 @@ Azure RBAC でできることの例を次に示します。
 
 ## <a name="how-azure-rbac-works"></a>Azure RBAC のしくみ
 
-Azure RBAC を使用してリソースへのアクセスを制御するには、ロールの割り当てを作成します。 これは理解する必要のある重要な概念です。これではアクセス許可を適用できます。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
+Azure RBAC を使用してリソースへのアクセスを制御するには、ロールの割り当てを作成します。 これは理解する必要のある重要な概念です。 これによってアクセス許可の設定が強制されているのです。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
 
 ### <a name="security-principal"></a>セキュリティ プリンシパル
 
-"*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求するユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。
+"*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求するユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。 これらのセキュリティ プリンシパルのいずれかに、ロールを割り当てることができます。
 
-![ロール割り当てのセキュリティ プリンシパル](./media/overview/rbac-security-principal.png)
-
-- ユーザー - Azure Active Directory 内にプロファイルを持つ個人です。 他のテナント内のユーザーにロールを割り当てることもできます。 他の組織のユーザーについては、「[Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md)」をご覧ください。
-- グループ - Azure Active Directory 内に作成されたユーザーのセットです。 グループにロールを割り当てると、そのグループ内のすべてのユーザーがそのロールを持つようになります。 
-- サービス プリンシパル - 特定の Azure リソースにアクセスするためにアプリケーションまたはサービスによって使用されるセキュリティ ID です。 アプリケーションに対する "*ユーザー ID*" (ユーザー名とパスワード、または証明書) と考えることができます。
-- マネージド ID - Azure によって自動的に管理される Azure Active Directory 内の ID。 通常、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure サービスに対する認証を受けるための資格情報を管理するクラウド アプリケーションを開発するときに使用します。
+![ロール割り当てのセキュリティ プリンシパル](./media/shared/rbac-security-principal.png)
 
 ### <a name="role-definition"></a>ロール定義
 
-*ロール定義*はアクセス許可のコレクションです。 通常は単に "*ロール*" と呼ばれます。 ロール定義には、実行できる操作 (読み取り、書き込み、削除など) が登録されています。 ロールは、所有者のように高レベルにすることも、仮想マシン リーダーのように限定することもできます。
+*ロール定義* はアクセス許可のコレクションです。 通常は単に "*ロール*" と呼ばれます。 ロール定義には、実行できる操作 (読み取り、書き込み、削除など) が登録されています。 ロールは、所有者のように高レベルにすることも、仮想マシン リーダーのように限定することもできます。
 
-![ロール割り当てのためのロールの定義](./media/overview/rbac-role-definition.png)
+![ロール割り当てのためのロールの定義](./media/shared/rbac-role-definition.png)
 
-Azure には複数の[組み込みロール](built-in-roles.md)があり、使用することができます。 4 つの基本的な組み込みロールを次に示します。 最初の 3 つは、すべてのリソースの種類に適用されます。
-
-- [所有者](built-in-roles.md#owner) - 他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。
-- [共同作成者](built-in-roles.md#contributor) - すべての種類の Azure リソースを作成および管理できます。他のユーザーにアクセス権を付与することはできません。
-- [閲覧者](built-in-roles.md#reader) - 既存の Azure リソースを表示できます。
-- [ユーザー アクセス管理者](built-in-roles.md#user-access-administrator) - Azure リソースへのユーザー アクセスを管理できます。
-
-残りの組み込みロールは、特定の Azure リソースの管理を許可します。 たとえば、[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の [Azure カスタム ロール](custom-roles.md)を作成することができます。
+Azure には複数の[組み込みロール](built-in-roles.md)があり、使用することができます。 たとえば、[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の [Azure カスタム ロール](custom-roles.md)を作成することができます。
 
 このビデオでは、組み込みロールとカスタム ロールの概要を簡単に説明します。
 
 >[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
-Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作が用意されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。 詳細については、[Azure ロールの定義の概要](role-definitions.md)に関するページを参照してください。
+Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作が用意されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。
+
+詳細については、[Azure ロールの定義の概要](role-definitions.md)に関するページを参照してください。
 
 ### <a name="scope"></a>Scope
 
 "*スコープ*" は、アクセスが適用されるリソースのセットです。 ロールを割り当てるときに、スコープを定義することによって、許可される操作をさらに制限できます。 これは、1 つのリソース グループについてのみ、あるユーザーを [Web サイトの共同作業者](built-in-roles.md#website-contributor)として指定する場合に便利です。
 
-Azure では、複数のレベル ([管理グループ](../governance/management-groups/overview.md)、サブスクリプション、リソース グループ、リソース) でスコープを指定できます。 スコープは親子関係で構造化されています。
+Azure では、4 つのレベル ([管理グループ](../governance/management-groups/overview.md)、サブスクリプション、[リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)、リソース) でスコープを指定できます。 スコープは親子関係で構造化されています。 これらのスコープレベルのいずれかで、ロールを割り当てることができます。
 
-![ロール割り当てのスコープ](./media/overview/rbac-scope.png)
+![ロール割り当てのスコープ](./media/shared/rbac-scope.png)
 
-親スコープでアクセス権を付与すると、それらのアクセス許可が子スコープに継承されます。 次に例を示します。
-
-- 管理グループ スコープでユーザーに[所有者](built-in-roles.md#owner)ロールを割り当てた場合、そのユーザーは、その管理グループに存在する全サブスクリプションの内容をすべて管理することができます。
-- [閲覧者](built-in-roles.md#reader)ロールをサブスクリプション スコープでグループに割り当てた場合、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとリソースを見ることができます。
-- [共同作成者](built-in-roles.md#contributor)ロールをリソース グループ スコープでアプリケーションに割り当てた場合、そのアプリケーションは、そのリソース グループ内のすべての種類のリソースを管理できますが、サブスクリプション内の他のリソース グループは管理できません。
+スコープの詳細については、[スコープについての理解](scope-overview.md)に関する記事を参照してください。
 
 ### <a name="role-assignments"></a>ロールの割り当て
 
@@ -99,7 +80,9 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 
 ![アクセスを制御するためのロールの割り当て](./media/overview/rbac-overview.png)
 
-ロールの割り当ては、Azure portal、Azure CLI、Azure PowerShell、Azure SDK、または REST API を使用して作成できます。 各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 各管理グループには、最大 **500** 個のロールの割り当てを保持できます。 ロールの割り当てを作成および削除するには、`Microsoft.Authorization/roleAssignments/*` アクセス許可が必要です。 このアクセス許可は、[所有者](built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロールを通じて許可されます。
+ロールの割り当ては、Azure portal、Azure CLI、Azure PowerShell、Azure SDK、または REST API を使用して作成できます。
+
+詳細については、「[ロールの割り当てを追加する手順](role-assignments-steps.md)」を参照してください。
 
 ## <a name="multiple-role-assignments"></a>複数のロールの割り当て
 
@@ -109,7 +92,9 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 
 ## <a name="deny-assignments"></a>拒否割り当て
 
-これまでの Azure RBAC は拒否のない許可のみのモデルでしたが、限定的にですが Azure RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、サービス プリンシパル、またはマネージド ID に一連の拒否アクションがアタッチされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。 詳細については、[Azure 拒否割り当ての概要](deny-assignments.md)に関するページを参照してください。
+これまでの Azure RBAC は拒否のない許可のみのモデルでしたが、限定的にですが Azure RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、サービス プリンシパル、またはマネージド ID に一連の拒否アクションがアタッチされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。
+
+詳細については、[Azure 拒否割り当ての概要](deny-assignments.md)に関するページを参照してください。
 
 ## <a name="how-azure-rbac-determines-if-a-user-has-access-to-a-resource"></a>ユーザーがリソースへのアクセス権を持っているどうかを Azure RBAC が特定する方法
 

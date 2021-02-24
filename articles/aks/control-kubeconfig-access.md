@@ -4,18 +4,18 @@ description: クラスターの管理者とクラスターのユーザーを対�
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 77b9988557106ef460d3b222ef85eb29e08f31c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009292"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693993"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure ロールベースのアクセス制御を使用して、Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルへのアクセス権を定義する
 
 `kubectl` ツールを使用すると、Kubernetes クラスターを操作できます。 Azure CLI には、`kubectl` を使って AKS クラスターに接続するためのアクセス資格情報と構成情報を簡単に取得できる手段が用意されています。 その Kubernetes の構成 (*kubeconfig*) 情報を取得できるユーザーを制限したり、付与されるアクセス許可を制限したりするには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用できます。
 
-この記事では、AKS クラスターの構成情報を取得できる人物を限定する RBAC ロールを割り当てる方法を説明します。
+この記事では、AKS クラスターの構成情報を取得できるユーザーを制限する Azure ロールを割り当てる方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -38,7 +38,7 @@ ms.locfileid: "88009292"
   * *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター ユーザーの資格情報を一覧表示][api-cluster-user]するものです。
   * *clusterUser* ロール用の *kubeconfig* をダウンロードできます。
 
-これらの RBAC ロールは、Azure Active Directory (AD) のユーザーまたはグループに適用できます。
+これらの Azure ロールは、Azure Active Directory (AD) のユーザーまたはグループに適用できます。
 
 > [!NOTE]
 > Azure AD を使用するクラスターでは、*clusterUser* ロールのユーザーには空の *kubeconfig* ファイルがあり、これによってログインを求められます。 ログインすると、ユーザーは、Azure AD のユーザーまたはグループの設定に基づいてアクセスできます。 *clusterAdmin* ロールのユーザーは管理者アクセス権を持ちます。
@@ -70,8 +70,24 @@ az role assignment create \
     --role "Azure Kubernetes Service Cluster Admin Role"
 ```
 
+> [!IMPORTANT]
+> アカウントの *user.name* が *userPrincipalName* とは異なる場合があります (たとえば、Azure AD guest ユーザーの場合)。
+>
+> ```output
+> $ az account show --query user.name -o tsv
+> user@contoso.com
+> $ az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv
+> user_contoso.com#EXT#@contoso.onmicrosoft.com
+> ```
+>
+> この場合は、*ACCOUNT_UPN* の値を Azure AD ユーザーの *userPrincipalName* に設定します。 たとえば、アカウント *user.name* が *user\@contoso.com* の場合、次のようになります。
+> 
+> ```azurecli-interactive
+> ACCOUNT_UPN=$(az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv)
+> ```
+
 > [!TIP]
-> Azure AD グループにアクセス許可を割り当てる場合は、*ユーザー*ではなく、*グループ*のオブジェクト ID を使用して、上の例で示した `--assignee` パラメーターを更新してください。 グループのオブジェクト ID を取得するには、[az ad group show][az-ad-group-show] コマンドを使用します。 次の例は、*appdev* という名前の Azure AD グループのオブジェクト ID を取得します。`az ad group show --group appdev --query objectId -o tsv`
+> Azure AD グループにアクセス許可を割り当てる場合は、*ユーザー* ではなく、*グループ* のオブジェクト ID を使用して、上の例で示した `--assignee` パラメーターを更新してください。 グループのオブジェクト ID を取得するには、[az ad group show][az-ad-group-show] コマンドを使用します。 次の例は、*appdev* という名前の Azure AD グループのオブジェクト ID を取得します。`az ad group show --group appdev --query objectId -o tsv`
 
 この割り当ては、必要に応じて "*クラスター ユーザー ロール*" に変更することもできます。
 
@@ -92,7 +108,7 @@ az role assignment create \
 
 ## <a name="get-and-verify-the-configuration-information"></a>構成情報を取得および確認する
 
-RBAC ロールが割り当てられていれば、[az aks get-credentials][az-aks-get-credentials] コマンドを使って AKS クラスターの *kubeconfig* の定義を取得できます。 次の例は *--admin* 資格情報を取得するもので、ユーザーに "*クラスター管理者ロール*" が付与されていれば正常に動作します。
+Azure ロールが割り当てられていれば、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して AKS クラスターの *kubeconfig* の定義を取得できます。 次の例は *--admin* 資格情報を取得するもので、ユーザーに "*クラスター管理者ロール*" が付与されていれば正常に動作します。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin

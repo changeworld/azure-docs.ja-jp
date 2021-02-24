@@ -1,5 +1,7 @@
 - name: Azure IoT Edge のドキュメント
   href: index.yml
+- name: Azure IoT Edge のバージョン
+  href: version-history.md
 - name: 概要
   items:
     - name: Azure IoT Edge について
@@ -13,13 +15,13 @@
       href: quickstart.md
 - name: チュートリアル
   items:
-    - name: 1. 開発環境をセットアップする
+    - name: 開発環境をセットアップする
       items:
-        - name: Linux デバイス向けの開発
+        - name: Linux コンテナーを使用した開発
           href: tutorial-develop-for-linux.md
-        - name: Windows デバイス向けの開発
+        - name: Windows コンテナーを使用した開発
           href: tutorial-develop-for-windows.md
-    - name: 2. カスタム コード モジュールの開発
+    - name: カスタム コード モジュールの開発
       items:
         - name: C
           items:
@@ -39,7 +41,7 @@
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
-    - name: 3. Azure サービスをモジュールとしてデプロイする
+    - name: Azure サービスをモジュールとしてデプロイする
       items:
         - name: Azure Functions を使用したデータのフィルター処理
           href: tutorial-deploy-function.md
@@ -51,7 +53,11 @@
           href: tutorial-deploy-custom-vision.md
         - name: SQL を使用したローカルへのデータの格納
           href: tutorial-store-data-sql-server.md
-    - name: 4. エッジにおける機械学習のエンドツーエンドの例
+    - name: ゲートウェイとしての IoT Edge の使用
+      items:
+        - name: IoT Edge デバイスの階層を作成する
+          href: tutorial-nested-iot-edge.md
+    - name: エッジにおける機械学習のエンドツーエンドの例
       items:
         - name: はじめに
           href: tutorial-machine-learning-edge-01-intro.md
@@ -71,6 +77,8 @@
   items:
     - name: IoT Edge ランタイム
       href: iot-edge-runtime.md
+    - name: IoT Edge for Linux on Windows
+      href: iot-edge-for-linux-on-windows.md
     - name: IoT Edge のモジュール
       items:
         - name: Azure IoT Edge モジュールについて
@@ -101,6 +109,8 @@
           href: iot-edge-security-manager.md
         - name: IoT Edge 証明書
           href: iot-edge-certs.md
+        - name: コンフィデンシャル コンピューティング
+          href: deploy-confidential-applications.md
     - name: プラットフォームのサポート
       href: support.md
     - name: 運用環境デプロイのチェックリスト
@@ -109,28 +119,28 @@
       href: iot-edge-glossary.md
 - name: 操作方法ガイド
   items:
-    - name: IoT Edge デバイスを登録する
-      href: how-to-register-device.md
-    - name: IoT Edge のインストールと管理
+    - name: IoT Edge デバイスを作成する
       items:
-        - name: Linux
-          href: how-to-install-iot-edge-linux.md
-        - name: Windows
-          href: how-to-install-iot-edge-windows.md
-        - name: Windows 上の Linux コンテナー
-          href: how-to-install-iot-edge-windows-with-linux.md
-        - name: Windows Server VM
-          href: how-to-install-iot-edge-windows-server-vm.md
-        - name: Ubuntu VM
-          href: how-to-install-iot-edge-ubuntuvm.md
-        - name: Kubernetes
-          href: how-to-install-iot-edge-kubernetes.md
+        - name: IoT Hub にデバイスを登録する
+          href: how-to-register-device.md
+        - name: IoT Edge のインストールとプロビジョニング
+          items:
+            - name: IoT Edge for Linux をインストールする
+              href: how-to-install-iot-edge.md
+            - name: IoT Edge for Linux on Windows を実行する
+              href: how-to-install-iot-edge-on-windows.md
+        - name: ランタイムの更新
+          href: how-to-update-iot-edge.md
         - name: デバイス証明書の管理
           href: how-to-manage-device-certificates.md
-        - name: テスト証明書を作成する
-          href: how-to-create-test-certificates.md
-        - name: ランタイム バージョンの更新
-          href: how-to-update-iot-edge.md
+    - name: 代替デバイスのシナリオ
+      items:
+        - name: Windows コンテナーを使用して IoT Edge を実行する
+          href: how-to-install-iot-edge-windows-on-windows.md
+        - name: Kubernetes で IoT Edge を実行する
+          href: how-to-install-iot-edge-kubernetes.md
+        - name: ARM テンプレートを使用して IoT Edge VM をデプロイする
+          href: how-to-install-iot-edge-ubuntuvm.md
     - name: DPS による自動プロビジョニング
       items:
         - name: TPM の構成証明
@@ -181,18 +191,32 @@
           href: how-to-monitor-module-twins.md
         - name: EdgeAgent ダイレクト メソッド
           href: how-to-edgeagent-direct-method.md
+        - name: IoT Edge のログを取得する
+          href: how-to-retrieve-iot-edge-logs.md
+        - name: 組み込みのメトリックにアクセスする
+          href: how-to-access-built-in-metrics.md
     - name: ゲートウェイとしての IoT Edge デバイスの使用
       items:
-        - name: 透過的なゲートウェイの構成
-          href: how-to-create-transparent-gateway.md
-        - name: ダウンストリーム デバイスの認証
-          href: how-to-authenticate-downstream-device.md
-        - name: ダウンストリームのデバイスを接続する
-          href: how-to-connect-downstream-device.md
-        - name: Modbus プロトコル ゲートウェイ
-          href: deploy-modbus-gateway.md
+        - name: IoT デバイスのゲートウェイ
+          items:
+            - name: 透過的なゲートウェイの構成
+              href: how-to-create-transparent-gateway.md
+            - name: ダウンストリーム デバイスの認証
+              href: how-to-authenticate-downstream-device.md
+            - name: ダウンストリームのデバイスを接続する
+              href: how-to-connect-downstream-device.md
+            - name: Modbus プロトコル ゲートウェイ
+              href: deploy-modbus-gateway.md
+        - name: IoT Edge デバイスのゲートウェイ
+          items:
+            - name: IoT Edge デバイスのゲートウェイを構成する
+              href: how-to-connect-downstream-iot-edge-device.md
+            - name: API プロキシ モジュールを構成する
+              href: how-to-configure-api-proxy-module.md
     - name: プロキシ サポートの構成
       href: how-to-configure-proxy-support.md
+    - name: IoT Edge を使用した発行とサブスクライブ
+      href: how-to-publish-subscribe.md
     - name: IoT Edge 上の Azure Blob Storage
       items:
         - name: エッジでの BLOB ストレージについて
@@ -223,36 +247,40 @@
           href: troubleshoot-common-errors.md
 - name: リファレンス
   items:
+    - name: テスト証明書を作成する
+      href: how-to-create-test-certificates.md
+    - name: Windows デバイス管理スクリプト
+      href: reference-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ./index.yml
         - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT デバイス SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure IoT サンプル
       items:
         - name: C# (.NET)

@@ -18,162 +18,210 @@
           href: common-questions-server-migration.md
 - name: チュートリアル
   items:
-    - name: VMware VM の評価と移行
+    - name: 発見
       items:
-        - name: VMware VM の評価と移行の準備をする
-          href: tutorial-prepare-vmware.md
-        - name: 移行のために VMware VM を評価する
-          href: tutorial-assess-vmware.md
+        - name: VMware VM を検出する
+          href: tutorial-discover-vmware.md
+        - name: Hyper-V VM を検出する
+          href: tutorial-discover-hyper-v.md
+        - name: 物理サーバーを検出する
+          href: tutorial-discover-physical.md
+        - name: AWS インスタンスを検出する
+          href: tutorial-discover-aws.md
+        - name: GCP インスタンスを検出する
+          href: tutorial-discover-gcp.md
+    - name: アクセス
+      items:
+        - name: VMware VM の評価
+          items:
+            - name: Azure VM への移行のために VMware VM を評価する
+              href: tutorial-assess-vmware-azure-vm.md
+            - name: AVS への移行のために VMware VM を評価する
+              href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: Azure への移行のために Hyper-V VM を評価する
+          href: tutorial-assess-hyper-v.md
+        - name: Azure への移行のために物理サーバーを評価する
+          href: tutorial-assess-physical.md
+        - name: Azure への移行のために AWS インスタンスを評価する
+          href: tutorial-assess-aws.md
+        - name: Azure への移行のために GCP インスタンスを評価する
+          href: tutorial-assess-gcp.md
+        - name: Azure への移行のためにインポートされたサーバーを評価する
+          href: tutorial-discover-import.md
+    - name: 移行
+      items:
         - name: VMware VM を移行する
           items:
-            - name: VMware VM の移行オプションについて
+            - name: VMware VM の移行オプション
               href: server-migrate-overview.md
-            - name: エージェントレス移行で VMware VM を移行する
+            - name: エージェントレス移行で移行する (ポータル)
               href: tutorial-migrate-vmware.md
-            - name: エージェントベース移行で VMware VM を移行する
+            - name: エージェントベースの移行で移行する
               href: tutorial-migrate-vmware-agent.md
-    - name: Hyper-V VM の評価と移行
-      items:
-        - name: Hyper-V の評価と移行の準備をする
-          href: tutorial-prepare-hyper-v.md
-        - name: 移行のために Hyper-V VM を評価する
-          href: tutorial-assess-hyper-v.md
+            - name: エージェントレス移行で移行する (PowerShell)
+              href: tutorial-migrate-vmware-powershell.md
         - name: Hyper-V VM を移行する
           href: tutorial-migrate-hyper-v.md
-    - name: 物理サーバーの評価と移行
-      items:
-        - name: 物理サーバーの評価と移行の準備をする
-          href: tutorial-prepare-physical.md
-        - name: 物理サーバーを評価する
-          href: tutorial-assess-physical.md
         - name: 物理サーバーを移行する
           href: tutorial-migrate-physical-virtual-machines.md
-    - name: AWS の VM を評価して移行する
-      items:
-        - name: アマゾン ウェブ サービス (AWS) の VM を見つけて評価し、Azure に移行する
+        - name: AWS インスタンスを移行する
           href: tutorial-migrate-aws-virtual-machines.md
-    - name: 移行の対象となるインポートされたサーバーを評価する
-      items:
-        - name: 移行の対象となるインポートされたサーバーを評価する
-          href: tutorial-assess-import.md
+        - name: GCP インスタンスを移行する
+          href: tutorial-migrate-gcp-virtual-machines.md
 - name: 概念
   items:
-    - name: Azure Migrate を使用した移行計画の作成
-      href: concepts-migration-planning.md
-    - name: サポート マトリックス
+    - name: 全般
       items:
-        - name: 一般的なサポート
+        - name: Azure Migrate のサポート
           href: migrate-support-matrix.md
-        - name: VMware の評価のサポート
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+    - name: 発見
+      items:
+        - name: VMware 検出のサポート
           href: migrate-support-matrix-vmware.md
-        - name: VMware の移行のサポート
-          href: migrate-support-matrix-vmware-migration.md
-        - name: Hyper-V の評価のサポート
+        - name: Hyper-v 検出のサポート
           href: migrate-support-matrix-hyper-v.md
-        - name: Hyper-V の移行のサポート
-          href: migrate-support-matrix-hyper-v-migration.md
-        - name: 物理サーバーの評価のサポート
+        - name: 物理サーバー検出のサポート
           href: migrate-support-matrix-physical.md
-        - name: 物理サーバーの移行のサポート
-          href: migrate-support-matrix-physical-migration.md
         - name: Azure Migrate アプライアンスの要件
           href: migrate-appliance.md
+        - name: Azure Migrate アプライアンスのアーキテクチャ
+          href: migrate-appliance-architecture.md
+        - name: 依存関係の分析の概要
+          href: concepts-dependency-visualization.md
+    - name: アクセス
+      items:
+        - name: 評価の概要 (Azure VM への移行)
+          href: concepts-assessment-calculation.md
+        - name: 評価の概要 (AVS への移行)
+          href: concepts-azure-vmware-solution-assessment-calculation.md
+        - name: 評価のベスト プラクティス
+          href: best-practices-assessment.md
+    - name: Migrate
+      items:
+        - name: 移行計画を作成する
+          href: concepts-migration-planning.md
+        - name: VMware の移行のサポート
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Hyper-V の移行のサポート
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: 物理サーバーの移行のサポート
+          href: migrate-support-matrix-physical-migration.md
         - name: レプリケーション アプライアンスの要件
           href: migrate-replication-appliance.md
-    - name: Azure Migrate アプライアンスのアーキテクチャ
-      href: migrate-appliance-architecture.md
-    - name: Hyper-V 移行アーキテクチャ
-      href: hyper-v-migration-architecture.md
-    - name: エージェントベースの VMware 移行のアーキテクチャ
-      href: agent-based-migration-architecture.md
-    - name: 評価の概要 (Azure VM への移行)
-      href: concepts-assessment-calculation.md
-    - name: 評価の概要 (AVS への移行)
-      href: concepts-azure-vmware-solution-assessment-calculation.md
-    - name: 評価のベスト プラクティス
-      href: best-practices-assessment.md
-    - name: 依存関係の分析の概要
-      href: concepts-dependency-visualization.md
+        - name: Hyper-V 移行アーキテクチャ
+          href: hyper-v-migration-architecture.md
+        - name: エージェントベースの VMware 移行のアーキテクチャ
+          href: agent-based-migration-architecture.md
 - name: 操作方法ガイド
   items:
     - name: Azure Migrate プロジェクトの作成と管理
       href: create-manage-projects.md
-    - name: ツールの初回追加
-      href: how-to-add-tool-first-time.md
     - name: ISV ツール/Movere を使用するための準備
       href: prepare-isv-movere.md
-    - name: 評価ツールの追加
-      href: how-to-assess.md
-    - name: Azure Migrate アプライアンスのデプロイ
+    - name: 発見
       items:
-        - name: テンプレートを使用したアプライアンスのデプロイ (VMware)
-          href: how-to-set-up-appliance-vmware.md
-        - name: テンプレートを使用したアプライアンスのデプロイ (Hyper-V)
-          href: how-to-set-up-appliance-hyper-v.md
-        - name: スクリプトを使用したアプライアンスのデプロイ (VMware/Hyper-V)
-          href: deploy-appliance-script.md
-        - name: 物理サーバー向けアプライアンスのデプロイ
-          href: how-to-set-up-appliance-physical.md
-        - name: Azure Government でのアプライアンスのデプロイ
-          href: deploy-appliance-script-government.md
-    - name: VMware VM の検出スコープの制限
-      href: set-discovery-scope.md
-    - name: アプリケーション/ロール/機能の検出
-      href: how-to-discover-applications.md
-    - name: アセスメントためのマシンのグループ化
-      href: how-to-create-a-group.md
-    - name: マシンの依存関係の分析 (エージェントベース)
-      href: how-to-create-group-machine-dependencies.md
-    - name: マシンの依存関係の分析 (エージェントレス)
-      href: how-to-create-group-machine-dependencies-agentless.md
-    - name: Azure VM の評価を作成する
-      href: how-to-create-assessment.md
-    - name: AVS の評価を作成する
-      href: how-to-create-azure-vmware-solution-assessment.md
-    - name: SQL Server データベースにアクセスする
-      href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
-    - name: 評価のカスタマイズ
-      href: how-to-modify-assessment.md
-    - name: 移行ツールの追加
-      href: how-to-migrate.md
-    - name: SSE と CMK を使用して暗号化された Azure VM への VMware VN の移行
-      href: how-to-migrate-vmware-vms-with-cmk-disks.md
-    - name: Windows 2003 サーバーの移行を準備する
-      href: prepare-windows-server-2003-migration.md
-    - name: マシンの移行の準備
-      href: prepare-for-migration.md
-    - name: Azure Migrate プロジェクトの削除
-      href: how-to-delete-project.md
-    - name: 以前のバージョンの使用
-      href: migrate-v1.md
-    - name: 評価の移行のスケール
+        - name: Azure Migrate アプライアンスをデプロイする
+          items:
+            - name: テンプレートを使用したアプライアンスのデプロイ (VMware)
+              href: how-to-set-up-appliance-vmware.md
+            - name: テンプレートを使用したアプライアンスのデプロイ (Hyper-V)
+              href: how-to-set-up-appliance-hyper-v.md
+            - name: スクリプトを使用したアプライアンスのデプロイ (VMware/Hyper-V)
+              href: deploy-appliance-script.md
+            - name: 物理サーバー向けアプライアンスのデプロイ
+              href: how-to-set-up-appliance-physical.md
+            - name: Azure Government でのアプライアンスのデプロイ
+              href: deploy-appliance-script-government.md
+        - name: VMware VM の検出スコープの制限
+          href: set-discovery-scope.md
+        - name: アプリケーション/ロール/機能の検出
+          href: how-to-discover-applications.md
+        - name: マシンの依存関係の分析 (エージェントベース)
+          href: how-to-create-group-machine-dependencies.md
+        - name: マシンの依存関係の分析 (エージェントレス)
+          href: how-to-create-group-machine-dependencies-agentless.md
+    - name: アクセス
       items:
-        - name: 大量の VMware VM を評価する
-          href: scale-vmware-assessment.md
-        - name: 大量の Hyper-V VM を評価する
-          href: scale-hyper-v-assessment.md
-        - name: 多数の物理サーバーを評価する
-          href: scale-physical-assessment.md
-        - name: 多数の VM の移行の自動化
-          href: how-to-migrate-at-scale.md
-        - name: 移行の例 (Contoso シリーズ)
-          href: contoso-migration-overview.md
+        - name: 評価ツールの追加
+          href: how-to-assess.md
+        - name: アセスメントためのマシンのグループ化
+          href: how-to-create-a-group.md
+        - name: Azure VM の評価を作成する
+          href: how-to-create-assessment.md
+        - name: AVS の評価を作成する
+          href: how-to-create-azure-vmware-solution-assessment.md
+        - name: SQL Server データベースにアクセスする
+          href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
+        - name: 評価のカスタマイズ
+          href: how-to-modify-assessment.md
+        - name: スケールの評価
+          items:
+            - name: 大量の VMware VM を評価する
+              href: scale-vmware-assessment.md
+            - name: 大量の Hyper-V VM を評価する
+              href: scale-hyper-v-assessment.md
+            - name: 多数の物理サーバーを評価する
+              href: scale-physical-assessment.md
+    - name: Migrate
+      items:
+        - name: 移行ツールの追加
+          href: how-to-migrate.md
+        - name: マシンの移行の準備
+          href: prepare-for-migration.md
+        - name: Windows 2003 サーバーの移行を準備する
+          href: prepare-windows-server-2003-migration.md
+        - name: VMware VM を移行する
+          items:
+            - name: VMware VM を暗号化された Azure VM に移行する
+              href: how-to-migrate-vmware-vms-with-cmk-disks.md
+        - name: 移行をスケーリングする
+          items:
+            - name: 多数の VM の移行の自動化
+              href: how-to-migrate-at-scale.md
+            - name: VMware の移行を自動化する方法
+              href: how-to-automate-migration.md
+    - name: 管理する
+      items:
+        - name: Azure Migrate プロジェクトの削除
+          href: how-to-delete-project.md
+        - name: 旧バージョンの Azure Migrate を使用する
+          href: migrate-v1.md
+        - name: Azure Lighthouse を使用して移行プロジェクトを管理する
+          href: ../lighthouse/how-to/migration-at-scale.md?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json
 - name: トラブルシューティング
   items:
-    - name: Azure Migrate のトラブルシューティング
-      href: troubleshoot-general.md
-    - name: Azure Migrate プロジェクトのトラブルシューティング
-      href: troubleshoot-project.md
-    - name: Azure Migrate アプライアンスと検出のトラブルシューティング
-      href: troubleshoot-appliance-discovery.md
-    - name: 評価と依存関係の視覚化のトラブルシューティング
-      href: troubleshoot-assessment.md
-    - name: エージェントレスの VMware 移行におけるレプリケーションの問題のトラブルシューティング
-      href: troubleshoot-changed-block-tracking-replication.md
+    - name: 全般
+      items:
+        - name: Azure Migrate のトラブルシューティング
+          href: troubleshoot-general.md
+        - name: Azure Migrate プロジェクトのトラブルシューティング
+          href: troubleshoot-project.md
+    - name: 発見
+      items:
+        - name: Azure Migrate アプライアンスと検出のトラブルシューティング
+          href: troubleshoot-appliance-discovery.md
+    - name: アクセス
+      items:
+        - name: 評価と依存関係の視覚化のトラブルシューティング
+          href: troubleshoot-assessment.md
+    - name: Migrate
+      items:
+        - name: エージェントレスの VMware 移行におけるレプリケーションの問題のトラブルシューティング
+          href: troubleshoot-changed-block-tracking-replication.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.migrate/
 - name: リソース
   items:
     - name: クラウド導入フレームワークにおける移行
       href: /azure/cloud-adoption-framework/migrate/
+    - name: Contoso 移行の例
+      href: /azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-overview
     - name: REST API
       href: /rest/api/migrate/
     - name: Resource Manager テンプレート

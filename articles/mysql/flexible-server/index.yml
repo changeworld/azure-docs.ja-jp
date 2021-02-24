@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: フレキシブル サーバーのドキュメント
+summary: Azure Database for MySQL - フレキシブル サーバーは、フル マネージドのサービスとしての MySQL データベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for MySQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MySQL の使用方法を確認してください。
+metadata:
+  description: Azure Database for MySQL - フレキシブル サーバーは、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/21/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: 09086af6cee517f9e30657802934d0f7fb1b14a9
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "90928906"
+landingContent:
+- title: フレキシブル サーバー (プレビュー) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: フレキシブル サーバーとは
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: フレキシブル サーバーを作成する
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: フレキシブル サーバーを使用して PHP アプリを作成する
+      url: tutorial-php-database-app.md
+  - linkListType: whats-new
+    links:
+    - text: ブログを確認する
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: 管理する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 計算とストレージのオプション
+      url: concepts-compute-storage.md
+    - text: MySQL のバージョン
+      url: concepts-supported-versions.md
+    - text: ネットワーキング
+      url: concepts-networking.md
+    - text: Monitor
+      url: concepts-monitoring.md
+    - text: 監査ログ
+      url: concepts-audit-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: サーバーを管理する
+      url: how-to-manage-server-portal.md
+    - text: サーバーを停止または起動する
+      url: how-to-stop-start-server-portal.md
+    - text: ログの構成とアクセス
+      url: how-to-configure-slow-query-logs-portal.md
+    - text: メンテナンスのスケジュール
+      url: how-to-maintenance-portal.md
+- title: ビジネス継続性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ビジネス継続性の概要
+      url: concepts-business-continuity.md
+    - text: 高可用性
+      url: concepts-high-availability.md
+    - text: バックアップと復元
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: サーバーの復元
+      url: how-to-restore-server-portal.md
+- title: 接続する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: PHP を使用して接続する
+      url: connect-php.md
+    - text: MySQL Workbench を使用して接続する
+      url: connect-workbench.md
+    - text: Python を使用して接続する
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: 仮想ネットワークで Web アプリを接続する
+      url: tutorial-webapp-server-vnet.md
+- title: 移行
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: オンラインで移行する
+      url: ../howto-migrate-online.md
+- title: 関連項目
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI の開発者用リファレンス
+      url: /cli/azure/mysql
+    - text: REST API の開発者用リファレンス
+      url: /rest/api/mysql/
+    - text: Azure Resource Manager のテンプレート
+      url: /azure/templates/microsoft.dbformysql/allversions

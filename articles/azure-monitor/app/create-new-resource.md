@@ -3,16 +3,16 @@ title: 新しい Azure Application Insights リソースの作成 | Microsoft Do
 description: 新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323130"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062915"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
-Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 新しいリソースを作成した後、そのインストルメンテーション キーを取得し、それを使用し Application Insights SDK を構成できます。 インストルメンテーション キーにより、リソースとテレメトリがリンクされます。
+Azure Application Insights には、Microsoft Azure *リソース* のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 新しいリソースを作成した後、そのインストルメンテーション キーを取得し、それを使用し Application Insights SDK を構成できます。 インストルメンテーション キーにより、リソースとテレメトリがリンクされます。
 
 ## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure にサインインする
 
@@ -36,7 +36,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 必須フィールドに適切な値を入力し、 **[確認と作成]** を選択します。
 
-![必須フィールドに値を入力し、[確認と作成] を選択します。](./media/create-new-resource/review-create.png)
+> [!div class="mx-imgBorder"]
+> ![必須フィールドに値を入力し、[確認と作成] を選択します。](./media/create-new-resource/review-create.png)
 
 アプリが作成されると、新しいウィンドウが開きます。 そのウィンドウには、監視対象アプリケーションに関するパフォーマンスと使用状況データが表示されます。 
 
@@ -44,7 +45,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 インストルメンテーション キーにより、利用統計情報と関連付けるリソースが識別されます。 インストルメンテーション キーをコピーして、アプリケーションのコードに追加する必要があります。
 
-![インストルメンテーション キーをクリックしてコピーする](./media/create-new-resource/instrumentation-key.png)
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 ## <a name="install-the-sdk-in-your-app"></a>アプリケーションでの SDK のインストール
 
@@ -93,7 +95,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-このコマンドレットの詳細な PowerShell ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure PowerShell のドキュメント](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)を参照してください。
+このコマンドレットの詳細な PowerShell ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure PowerShell のドキュメント](/powershell/module/az.applicationinsights/new-azapplicationinsights)を参照してください。
 
 ### <a name="azure-cli-preview"></a>Azure CLI (プレビュー)
 
@@ -150,7 +152,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-このコマンドの詳細な Azure CLI ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
+このコマンドの詳細な Azure CLI ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [診断検索](./diagnostic-search.md)

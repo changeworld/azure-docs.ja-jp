@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: d4715bd8b7a13a5ab53d254ac853ac324440b403
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4714d9e089094e8990ac71d94107a20e0b7be776
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502615"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876311"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>プレビュー:Azure CLI を使用して Linux イメージを作成し Shared Image Gallery に配布する
 
-この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](../windows/shared-image-galleries.md) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
+この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](../shared-image-galleries.md) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
 
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json) です。 
@@ -38,16 +38,16 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 機能の登録の状態を確認します。
 
 ```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
+az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview -o json | grep state
 ```
 
 登録を確認します。
 
 ```azurecli-interactive
-az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-az provider show -n Microsoft.KeyVault | grep registrationState
-az provider show -n Microsoft.Compute | grep registrationState
-az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.VirtualMachineImages -o json | grep registrationState
+az provider show -n Microsoft.KeyVault -o json | grep registrationState
+az provider show -n Microsoft.Compute -o json | grep registrationState
+az provider show -n Microsoft.Storage -o json | grep registrationState
 ```
 
 登録されていない場合、次のコマンドを実行します。
@@ -80,7 +80,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-サブスクリプション ID の変数を作成します。 `az account show | grep id` を使用してこれを取得できます。
+サブスクリプション ID の変数を作成します。 `az account show -o json | grep id` を使用してこれを取得できます。
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -101,7 +101,7 @@ identityName=aibBuiUserId$(date +'%s')
 az identity create -g $sigResourceGroup -n $identityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName -o json | grep "clientId" | cut -c16- | tr -d '",')
 
 # get the user identity URI, needed for the template
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
@@ -217,7 +217,7 @@ VM に SSH 接続します。
 ssh aibuser@<publicIpAddress>
 ```
 
-SSH 接続が確立されるとすぐに、イメージが*当日のメッセージ*でカスタマイズされたことがわかります。
+SSH 接続が確立されるとすぐに、イメージが *当日のメッセージ* でカスタマイズされたことがわかります。
 
 ```console
 *******************************************************
@@ -298,4 +298,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure 共有イメージ ギャラリー](shared-image-galleries.md)に関するページを参照してください。
+詳細については、[Azure 共有イメージ ギャラリー](../shared-image-galleries.md)に関するページを参照してください。

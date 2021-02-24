@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight で Apache Ambari を使用してクラスターの可用性を監視する方法
 description: Apache Ambari を使用してクラスターの正常性と可用性を監視する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 34f752d4c3d50d5f680e317b2724b1e631537f32
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086417"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933190"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用してクラスターの可用性を監視する方法
 
@@ -39,7 +36,7 @@ Ambari ダッシュボードが開かれ、その中にあるウィジェット�
 
 ![HDInsight Apache Ambari の [ホスト] のビュー](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
-次に、ノードの**名前**を選択して、その特定のノードに関するより詳細なホスト メトリックを表示します。 このビューには、個々のコンポーネントごとの状態/可用性が表示されます。
+次に、ノードの **名前** を選択して、その特定のノードに関するより詳細なホスト メトリックを表示します。 このビューには、個々のコンポーネントごとの状態/可用性が表示されます。
 
 ![Apache Ambari の [ホスト] にある単一ノードのビュー](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
 
@@ -62,9 +59,8 @@ Ambari では、次に示すように、可用性に関連する多数の定義�
 | 利用可能な JournalNode の割合    | クラスター内でダウンしている JournalNode の数が、設定された重大しきい値を超えている場合は、このアラートがトリガーされます。 これにより、JournalNode プロセス チェックの結果が集計されます。 |
 | 利用可能な DataNode の割合       | クラスター内でダウンしている DataNode の数が、設定された重大しきい値を超えている場合は、このアラートがトリガーされます。 これにより、DataNode プロセス チェックの結果が集計されます。|
 
-クラスターの可用性を監視できる Ambari アラートの完全な一覧は、[こちら](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui)で確認できます。
 
-アラートの詳細を表示したり、条件を変更したりするには、アラートの**名前**を選択します。 例として **DataNode ヘルスの概要**を取り上げます。 アラートの説明と、'警告' または '重大' のアラートをトリガーする固有の条件、および条件のチェック間隔を確認できます。 構成を編集するには、[構成] ボックスの右上隅にある **[編集]** ボタンを選択します。
+アラートの詳細を表示したり、条件を変更したりするには、アラートの **名前** を選択します。 例として **DataNode ヘルスの概要** を取り上げます。 アラートの説明と、'警告' または '重大' のアラートをトリガーする固有の条件、および条件のチェック間隔を確認できます。 構成を編集するには、[構成] ボックスの右上隅にある **[編集]** ボタンを選択します。
 
 ![Apache Ambari アラートの構成](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
@@ -87,7 +83,7 @@ Ambari では、次に示すように、可用性に関連する多数の定義�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)
+- [HDInsight における Apache Hadoop クラスターの可用性と信頼性](./hdinsight-business-continuity.md)
 - [クラスターの可用性 - Azure Monitor ログ](./cluster-availability-monitor-logs.md)
 - [Azure Monitor ログを使用する](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [Apache Ambari のメール通知](apache-ambari-email.md)

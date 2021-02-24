@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003702"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536880"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Azure Cache for Redis の geo レプリケーションの設定方法
 
@@ -73,9 +73,9 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
     プライマリ キャッシュとセカンダリ キャッシュの両方の **[概要]** ブレードで、リンクの状態を表示することもできます。
 
-    ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    ![プライマリ キャッシュとセカンダリ キャッシュのリンク状態を表示する方法を強調表示するスクリーンショット。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    レプリケーション プロセスが完了すると、 **[リンクの状態]** が「**成功**」に変わります。
+    レプリケーション プロセスが完了すると、 **[リンクの状態]** が「 **成功** 」に変わります。
 
     ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -111,6 +111,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 - [リンクされたキャッシュを削除しようとすると、操作が失敗するのはどうしてですか](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [セカンダリ リンク キャッシュにはどのリージョンを使う必要がありますか](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [セカンダリ リンク キャッシュへのフェールオーバーはどのように動作しますか](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Geo レプリケーションを使用してファイアウォールを構成することはできますか](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Standard または Basic レベル キャッシュで geo レプリケーションを使用することはできますか
 
@@ -144,9 +145,9 @@ geo レプリケーションは、Premium レベルのキャッシュにのみ�
 
 - 同じ VNET 内のキャッシュ間の geo レプリケーションがサポートされています。
 - 異なる VNET 内のキャッシュ間の geo レプリケーションもサポートされています。
-  - VNET が同じリージョンに存在する場合は、[VNET ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)または [VPN Gateway VNET 間接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)を使用してそれらを接続できます。
-  - VNET が異なるリージョンに存在する場合は、Basic 内部ロード バランサーの制約のため、VNET ピアリングを使用した geo レプリケーションはサポートされません。 VNET ピアリングの制約の詳細については、[Virtual Network - ピアリングの要件と制約](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)に関するページを参照してください。 推奨されるソリューションは、VPN Gateway VNET 間接続の使用です。
-
+  - VNET が同じリージョンに存在する場合は、[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN Gateway VNET 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用してそれらを接続できます。
+  - VNET がさまざまなリージョンに存在する場合は、VNET ピアリングを使用した geo レプリケーションがサポートされますが、Basic 内部ロード バランサーの制約のため、VNET 1 (リージョン 1) のクライアント VM で DNS 名を使用して VNET 2 (リージョン 2) のキャッシュにアクセスすることはできなくなります。 VNET ピアリングの制約の詳細については、[Virtual Network - ピアリングの要件と制約](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)に関するページを参照してください。 推奨されるソリューションは、VPN Gateway VNET 間接続の使用です。
+  
 [この Azure テンプレート](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)を使用すると、2 つの geo レプリケートされたキャッシュを VPN Gateway VNET 間接続で接続された VNET にすばやくデプロイできます。
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Redis の geo レプリケーションのレプリケーション スケジュールは何ですか
@@ -165,7 +166,7 @@ geo レプリケーション モードのキャッシュの場合、永続化は
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>PowerShell または Azure CLI を使って geo レプリケーションを管理することはできますか
 
-はい。geo レプリケーションは、Azure Portal、PowerShell、または Azure CLI を使用して管理できます。 詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)または [Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest)を参照してください。
+はい。geo レプリケーションは、Azure Portal、PowerShell、または Azure CLI を使用して管理できます。 詳細については、[PowerShell のドキュメント](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)または [Azure CLI のドキュメント](/cli/azure/redis/server-link?view=azure-cli-latest)を参照してください。
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Azure リージョン間でデータをレプリケートするコストはどれくらいですか
 
@@ -185,7 +186,12 @@ geo レプリケートされたキャッシュでは、Azure リージョン間�
 
 顧客始動のフェールオーバーを開始するには、まずキャッシュをリンク解除します。 次に、(以前にリンクされた) セカンダリ キャッシュの接続エンドポイントを使用するように Redis クライアントを変更します。 2 つのキャッシュがリンク解除されると、セカンダリ キャッシュが再び通常の読み取り/書き込みキャッシュになり、Redis クライアントから直接要求を受け付けます。
 
-## <a name="next-steps"></a>次のステップ
-Azure Cache for Redis の機能について詳しく確認します。
+### <a name="can-i-configure-a-firewall-with-geo-replication"></a>geo レプリケーションを使用してファイアウォールを構成することはできますか
+
+はい。geo レプリケーションを使用して、[ファイアウォール](./cache-configure.md#firewall)を構成することができます。 geo レプリケーションをファイアウォールと共に機能させるには、セカンダリ キャッシュの IP アドレスが、プライマリ キャッシュのファイアウォール規則に追加されていることを確認します。
+
+## <a name="next-steps"></a>次の手順
+
+Azure Cache for Redis の機能について
 
 * [Azure Cache for Redis サービス レベル](cache-overview.md#service-tiers)

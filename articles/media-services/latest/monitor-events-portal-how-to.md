@@ -1,5 +1,5 @@
 ---
-title: ポータルを使用した Event Grid による Azure Media Services イベントの監視
+title: Event Grid ポータルによる Media Services イベントの監視
 description: この記事では、Azure Media Services イベントを監視するために Event Grid をサブスクライブする方法を説明します。
 services: media-services
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 65459dbdf8eaa92525fa20eda158f4beacf58780
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9f1a74ee1668594d2e28bed0ad36793bf47653fe
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294375"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955260"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Azure portal を使用した Event Grid による Media Services イベントの作成と監視
 

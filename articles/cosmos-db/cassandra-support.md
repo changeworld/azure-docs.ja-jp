@@ -1,29 +1,30 @@
 ---
 title: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能
 description: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能について説明します
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: e7384237f91bf3af8ccad1a97b27fb62a1845a88
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 09/14/2020
+ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118986"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576483"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の Cassandra API とは、Cassandra Query Language (CQL) v4 [ワイヤ プロトコル](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)準拠のオープン ソースの Cassandra クライアント [ドライバー](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)経由で通信できます。 
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の Cassandra API とは、CQL バイナリ プロトコル v4 [ワイヤ プロトコル](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)準拠のオープン ソースの Cassandra クライアント [ドライバー](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)経由で通信できます。 
 
-Azure Cosmos DB の Cassandra API を使用することで、Apache Cassandra API のメリットと、Azure Cosmos DB が提供するエンタープライズ機能を享受できます。 エンタープライズ機能には、[グローバル配信](distribute-data-globally.md)、[自動スケールアウトのパーティション分割](partition-data.md)、可用性と待機時間の保証、保存時の暗号化などがあります。
+Azure Cosmos DB の Cassandra API を使用することで、Apache Cassandra API のメリットと、Azure Cosmos DB が提供するエンタープライズ機能を享受できます。 エンタープライズ機能には、[グローバル配信](distribute-data-globally.md)、[自動スケールアウトのパーティション分割](cassandra-partitioning.md)、可用性と待機時間の保証、保存時の暗号化などがあります。
 
 ## <a name="cassandra-protocol"></a>Cassandra プロトコル 
 
-Azure Cosmos DB の Cassandra API は、CQL バージョン **v4** と互換性があります。 サポートされている CQL コマンド、ツール、制限事項、および例外を、以下に示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の Cassandra API に接続できるはずです。
+Azure Cosmos DB の Cassandra API は、Cassandra Query Language (CQL) v3.11 API と互換性があります (バージョン2.x との下位互換性あり)。 サポートされている CQL コマンド、ツール、制限事項、および例外を、以下に示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の Cassandra API に接続できるはずです。
 
 ## <a name="cassandra-driver"></a>Cassandra ドライバー
 
@@ -37,61 +38,192 @@ Azure Cosmos DB の Cassandra API では、次のバージョンの Cassandra �
 * [PHP 1.3](https://github.com/datastax/php-driver)  
 * [Gocql](https://github.com/gocql/gocql)  
  
+
 ## <a name="cql-data-types"></a>CQL データ型 
 
 Azure Cosmos DB の Cassandra API では、次の CQL データ型がサポートされています。
 
-* ascii  
-* bigint  
-* blob (blob)  
-* boolean  
-* counter  
-* date  
-* decimal  
-* double  
-* float  
-* frozen  
-* inet  
-* INT  
-* list  
-* set  
-* smallint  
-* text  
-* time  
-* timestamp  
-* timeuuid  
-* tinyint  
-* tuple  
-* uuid  
-* varchar  
-* varint  
-* tuples  
-* udt  
-* map  
+|Type  |サポートされています |
+|---------|---------|
+| ascii  | はい |
+| bigint  | はい |
+| blob (blob)  | はい |
+| boolean  | はい |
+| counter  | はい |
+| date  | はい |
+| decimal  | はい |
+| double  | はい |
+| float  | はい |
+| frozen  | はい |
+| inet  | はい |
+| INT  | はい |
+| list  | はい |
+| set  | はい |
+| smallint  | はい |
+| text  | はい |
+| time  | はい |
+| timestamp  | はい |
+| timeuuid  | はい |
+| tinyint  | はい |
+| tuple  | はい |
+| uuid  | はい |
+| varchar  | はい |
+| varint  | はい |
+| tuples | はい | 
+| udt  | はい |
+| map | はい |
+
+データ型の宣言には Static がサポートされます。
 
 ## <a name="cql-functions"></a>CQL 関数
 
 Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートされています。
 
-* トークン  
-* 集計関数
-  * min、max、avg、count
-* Blob 変換関数 
-  * typeAsBlob(value)  
-  * blobAsType(value)
-* UUID および timeuuid 関数 
-  * dateOf()  
-  * now()  
-  * minTimeuuid()  
-  * unixTimestampOf()  
-  * toDate(timeuuid)  
-  * toTimestamp(timeuuid)  
-  * toUnixTimestamp(timeuuid)  
-  * toDate(timestamp)  
-  * toUnixTimestamp(timestamp)  
-  * toTimestamp(date)  
-  * toUnixTimestamp(date) 
+|コマンド  |サポートされています |
+|---------|---------|
+| Token * | はい |
+| ttl *** | はい |
+| writetime *** | はい |
+| cast ** | はい |
+
+> [!NOTE] 
+> \* Cassandra API は、プロジェクション/セレクターとしてトークンをサポートし、where 句の左辺でのみ token(pk) を許可します。 たとえば、`WHERE token(pk) > 1024` はサポートされていますが、`WHERE token(pk) > token(100)` はサポートされて **いません**。  
+> \*\*`cast()` 関数は、Cassandra API では入れ子にすることはできません。 たとえば、`SELECT cast(count as double) FROM myTable` はサポートされていますが、`SELECT avg(cast(count as double)) FROM myTable` はサポートされて **いません**。    
+> \*\*\* `USING` オプションで指定されたカスタム タイムスタンプおよび TTL は、(セルごとではなく) 行レベルで適用されます。
+
+
+
+集計関数:
+
+|コマンド  |サポートされています |
+|---------|---------|
+| avg | はい |
+| count | はい |
+| min | はい |
+| max | はい |
+| Sum | はい |
+
+> [!NOTE]
+> 集計関数は通常の列では機能しますが、クラスタリング列での集計はサポートされて **いません**。
+
+
+BLOB 変換関数:
+ 
+|コマンド  |サポートされています |
+|---------|---------|
+| typeAsBlob(value)   | はい |
+| blobAsType(value) | はい |
+
+
+UUID および timeuuid 関数:
+ 
+|コマンド  |サポートされています |
+|---------|---------|
+| dateOf()  | はい |
+| now()  | はい |
+| minTimeuuid()  | はい |
+| unixTimestampOf()  | はい |
+| toDate(timeuuid)  | はい |
+| toTimestamp(timeuuid)  | はい |
+| toUnixTimestamp(timeuuid)  | はい |
+| toDate(timestamp)  | はい |
+| toUnixTimestamp(timestamp)  | はい |
+| toTimestamp(date)  | はい |
+| toUnixTimestamp(date) | はい |
+
+
   
+## <a name="cql-commands"></a>CQL コマンド
+
+Azure Cosmos DB は、Cassandra API アカウントで以下のデータベース コマンドをサポートしています。
+
+|コマンド  |サポートされています |
+|---------|---------|
+| ALLOW FILTERING | はい |
+| ALTER KEYSPACE | 該当なし (PaaS サービス、内部で管理されているレプリケーション)|
+| ALTER MATERIALIZED VIEW | いいえ |
+| ALTER_ROLE | いいえ |
+| ALTER TABLE | はい |
+| ALTER TYPE | いいえ |
+| ALTER_USER | いいえ |
+| BATCH | はい (ログ記録されないバッチのみ)|
+| COMPACT STORAGE | 該当なし (PaaS サービス) |
+| CREATE AGGREGATE | いいえ | 
+| CREATE CUSTOM INDEX (SASI) | いいえ |
+| CREATE INDEX | はい ([インデックス名の指定](cassandra-secondary-index.md)なし。クラスタリング キーまたは完全な FROZEN コレクションのインデックスはサポートされません) |
+| CREATE FUNCTION | いいえ |
+| CREATE KEYSPACE (レプリケーション設定が無視されます) | はい |
+| CREATE MATERIALIZED VIEW | いいえ |
+| CREATE TABLE | はい |
+| CREATE TRIGGER | いいえ |
+| CREATE TYPE | はい |
+| CREATE ROLE | いいえ |
+| CREATE USER (ネイティブの Apache Cassandra では非推奨) | いいえ |
+| DELETE | はい |
+| DISTINCT | いいえ |
+| DROP AGGREGATE | いいえ |
+| DROP FUNCTION | いいえ |
+| DROP INDEX | はい |
+| DROP KEYSPACE | はい |
+| DROP MATERIALIZED VIEW | いいえ |
+| DROP ROLE | いいえ |
+| DROP TABLE | はい |
+| DROP_TRIGGER | いいえ | 
+| DROP TYPE | はい |
+| DROP USER (ネイティブの Apache Cassandra では非推奨) | いいえ |
+| GRANT | いいえ |
+| INSERT | はい |
+| LIST PERMISSIONS | いいえ |
+| LIST ROLES | いいえ |
+| LIST USERS (ネイティブの Apache Cassandra では非推奨) | いいえ |
+| REVOKE | いいえ |
+| SELECT | はい |
+| UPDATE | はい |
+| TRUNCATE | いいえ |
+| USE | はい |
+
+## <a name="lightweight-transactions-lwt"></a>軽量トランザクション (LWT)
+
+| コンポーネント  |サポートされています |
+|---------|---------|
+| DELETE IF EXISTS | はい |
+| DELETE <条件> | いいえ |
+| INSERT IF NOT EXISTS | はい |
+| UPDATE IF EXISTS | はい |
+| UPDATE IF NOT EXISTS | はい |
+| UPDATE <条件> | いいえ |
+
+## <a name="cql-shell-commands"></a>CQL シェル コマンド
+
+Azure Cosmos DB は、Cassandra API アカウントで以下のデータベース コマンドをサポートしています。
+
+|コマンド  |サポートされています |
+|---------|---------|
+| 取り込み | はい |
+| CLEAR | はい |
+| CONSISTENCY * | 該当なし |
+| COPY | いいえ |
+| DESCRIBE | はい |
+| cqlshExpand | いいえ |
+| EXIT | はい |
+| Login | 該当なし (CQL 関数 `USER` はサポートされていないため、`LOGIN` は冗長) |
+| PAGING | はい |
+| SERIAL CONSISTENCY * | 該当なし |
+| SHOW | はい |
+| 接続元 | はい |
+| TRACING | 該当なし (Cassandra API は Azure Cosmos DB によってサポートされている - トラブルシューティングに[診断ログ](cosmosdb-monitor-resource-logs.md)を使用) |
+
+> [!NOTE] 
+> \* Azure Cosmos DB では、整合性の機能が異なります。詳細については、[こちら](cassandra-consistency.md)をご覧ください。  
+
+
+## <a name="json-support"></a>JSON のサポート
+|コマンド  |サポートされています |
+|---------|---------|
+| SELECT JSON | はい |
+| INSERT JSON | はい |
+| fromJson() | いいえ |
+| toJson() | いいえ |
 
 
 ## <a name="cassandra-api-limits"></a>Cassandra API の制限
@@ -106,15 +238,18 @@ Azure Cosmos DB の Cassandra API は、管理されたサービス プラット
 
 ## <a name="hosted-cql-shell-preview"></a>ホステッドされる CQL シェル (プレビュー)
 
-ホストされるネイティブ Cassandra シェル (CQLSH v5.0.1) を [Azure portal](data-explorer.md) の Data Explorer または [Azure Cosmos エクスプローラー](https://cosmos.azure.com/) で直接開くことができます。 CQL シェルを有効にする前に、アカウントで[ノートブック機能を有効にする](enable-notebooks.md) 必要があります (まだ有効になっていない場合、`Open Cassandra Shell` をクリックしたときにメッセージが表示されます)。 サポートされている Azure リージョンについては、「[Azure Cosmos DB アカウントのノートブックを有効にする](enable-notebooks.md)」で強調表示されている注意点を確認します。
+ホストされるネイティブ Cassandra シェル (CQLSH v5.0.1) を [Azure portal](data-explorer.md) のデータ エクスプローラーまたは [Azure Cosmos DB Explorer](https://cosmos.azure.com/) で直接開くことができます。 CQL シェルを有効にする前に、アカウントで[ノートブック機能を有効にする](enable-notebooks.md) 必要があります (まだ有効になっていない場合、`Open Cassandra Shell` をクリックしたときにメッセージが表示されます)。 サポートされている Azure リージョンについては、「[Azure Cosmos DB アカウントのノートブックを有効にする](enable-notebooks.md)」で強調表示されている注意点を確認します。
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH":::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH を開く":::
 
 また、ローカル コンピューターにインストールされている CQLSH を使用して、Azure Cosmos DB の Cassandra API に接続することもできます。 これは、Apache Cassandra 3.1.1 に付属しており、環境変数を設定することですぐに機能します。 以下のセクションでは、Windows または Linux で CQLSH を使用して、Azure Cosmos DB 上で Cassandra API をインストール、構成、および接続する手順を説明します。
 
+> [!NOTE]
+> Azure Cosmos DB の Cassandra API への接続は、CQLSH の DataStax Enterprise (DSE) バージョンでは動作しません。 Cassandra API に接続する場合は、オープン ソースの Apache Cassandra バージョンの CQLSH のみを使用してください。 
+
 **Windows:**
 
-Windows を使用している場合は、[Linux 用の Windows ファイルシステム](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)を有効にすることをお勧めします。 その後、以下の linux コマンドを実行できます。
+Windows を使用している場合は、[Linux 用の Windows ファイルシステム](/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)を有効にすることをお勧めします。 その後、以下の linux コマンドを実行できます。
 
 **Unix/Linux/Mac:**
 
@@ -143,22 +278,6 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 
 ```
 
-## <a name="cql-commands"></a>CQL コマンド
-
-Azure Cosmos DB は、Cassandra API アカウントで以下のデータベース コマンドをサポートしています。
-
-* CREATE KEYSPACE (このコマンドのレプリケーション設定は無視されます)
-* CREATE TABLE 
-* CREATE INDEX (インデックス名の指定なし、完全に固定されたインデックスはまだサポートされていません)
-* ALLOW FILTERING
-* ALTER TABLE 
-* USE 
-* INSERT 
-* SELECT 
-* UPDATE 
-* BATCH - unlogged コマンドのみサポートされています 
-* DELETE
-
 CQL v4 互換の SDK から実行された場合のすべての CRUD 操作で、エラーと消費された要求の単位数に関する追加情報が返されます。 DELETE および UPDATE コマンドは、プロビジョニングされたスループットを最も効率的に使用できるように、リソース ガバナンスを考慮して処理する必要があります。
 
 * gc_grace_seconds を指定する場合は値を 0 にする必要があることに注意してください。
@@ -177,11 +296,11 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>一貫性のマッピング 
 
-Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](consistency-levels-across-apis.md#cassandra-mapping)に詳しく説明されています。
+Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](./cassandra-consistency.md#mapping-consistency-levels)に詳しく説明されています。
 
 ## <a name="permission-and-role-management"></a>アクセス許可とロールの管理
 
-Azure Cosmos DB は、プロビジョニングのためのロールベースのアクセス制御 (RBAC)、キーのローテーション、メトリックの表示、[Azure portal](https://portal.azure.com) から取得できる読み書きおよび読み取り専用のパスワードおよびキーをサポートしています。 Azure Cosmos DB では、CRUD アクティビティのためのロールはサポートされていません。
+Azure Cosmos DB では、プロビジョニングのための Azure ロールベースのアクセス制御 (Azure RBAC)、キーのローテーション、メトリックの表示、[Azure portal](https://portal.azure.com) から取得できる読み書きおよび読み取り専用のパスワードとキーがサポートされています。 Azure Cosmos DB では、CRUD アクティビティのためのロールはサポートされていません。
 
 ## <a name="keyspace-and-table-options"></a>キースペースとテーブルのオプション
 
@@ -198,7 +317,8 @@ CREATE TABLE sampleks.t1(user_id int PRIMARY KEY, lastname text) WITH cosmosdb_p
 ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ```
-
+## <a name="secondary-index"></a>セカンダリ インデックス
+Cassandra API は、frozen コレクション型、decimal 型、variant 型を除くすべてのデータ型について、セカンダリ インデックスをサポートします。 
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>Cassandra 再試行接続ポリシーの使用
 

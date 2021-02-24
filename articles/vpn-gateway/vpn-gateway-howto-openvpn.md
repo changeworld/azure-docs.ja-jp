@@ -1,40 +1,50 @@
 ---
-title: Azure VPN Gateway で OpenVPN を構成する方法:PowerShell
+title: Azure VPN Gateway で OpenVPN を構成する方法
 description: PowerShell を使用して、ポイント対サイト環境用に Azure VPN Gateway で OpenVPN プロトコルを有効にする方法について学習します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: c13d14ad2d06cbc43d80c05258bdbd3303da4838
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 34f24b8fbdb28e1b1f73e9db428c510d3f4661ce
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036829"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804847"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する
 
-この記事では、Azure VPN Gateway で **OpenVPN® プロトコル**を構成する方法について説明します。 この記事では、稼働中のポイント対サイト環境が既にあることを前提としています。 ない場合は、手順 1 の指示に従ってポイント対サイト VPN を作成します。
+この記事では、Azure VPN Gateway で **OpenVPN® プロトコル** を構成する方法について説明します。 ポータルまたは PowerShell の手順のいずれかを使用できます。
 
+## <a name="prerequisites"></a>前提条件
 
+* この記事では、稼働中のポイント対サイト環境が既にあることを前提としています。 ない場合は、次のいずれかの方法を使用して作成します。
 
-## <a name="1-create-a-point-to-site-vpn"></a><a name="vnet"></a>1.ポイント対サイト VPN を作成する
+  * [ポータル - ポイント対サイトを作成する](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 
-機能しているポイント対サイト環境がまだない場合は、指示に従って作成します。 ネイティブの Azure 証明機関を使用してポイント対サイト VPN ゲートウェイを作成および構成する方法については、[ポイント対サイト VPN の作成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。 
+  * [PowerShell - ポイント対サイトを作成する](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-> [!IMPORTANT]
-> Basic SKU は OpenVPN ではサポートされていません。
+* VPN ゲートウェイで Basic SKU が使用されていないことを確認します。 Basic SKU は OpenVPN ではサポートされていません。
 
-## <a name="2-enable-openvpn-on-the-gateway"></a><a name="enable"></a>2.ゲートウェイで OpenVPN を有効にする
+## <a name="portal"></a>ポータル
 
-ゲートウェイで OpenVPN を有効にします。 ゲートウェイがポイント対サイト (IKEv2 または SSTP) 用に既に構成されていることを確認してから、次のコマンドを実行してください。
+1. ポータルで、**仮想ネットワーク ゲートウェイの [ポイント対サイトの構成]** に移動します。
+1. **[トンネルの種類]** については、ドロップダウンから  **[OpenVPN (SSL)]** または  **[IKEv2 と OpenVPN (SSL)]** を選択します。
 
-```azurepowershell-interactive
-$gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
-Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
-```
+   :::image type="content" source="./media/vpn-gateway-howto-openvpn/portal.png" alt-text="ドロップダウンから [OpenVPN (SSL)] を選択":::
+1. 変更を保存し、**次のステップ** に進みます。
+
+ゲートウェイで OpenVPN を有効にします。
+
+1. 次の例を使用して、ゲートウェイで OpenVPN を有効にします。
+
+   ```azurepowershell-interactive
+   $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
+   Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
+   ```
+1. **次のステップ** に進みます。
 
 ## <a name="next-steps"></a>次のステップ
 

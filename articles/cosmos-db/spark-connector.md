@@ -3,17 +3,19 @@ title: Apache Spark を Azure Cosmos DB に接続する
 description: Apache Spark を Azure Cosmos DB に接続できるようにする Azure Cosmos DB Spark コネクタについて説明します。
 author: tknandu
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: ce017d1ac92e3aabe7ad0e36b2e8b87dc04b34f6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 06498a27b95a72148497efd2d1e600d802414359
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445941"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359559"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されているデータで [Spark](https://spark.apache.org/) ジョブを実行できます。 Cosmos は、バッチおよびストリーム処理に使用可能であり、低待機時間でのアクセスのためのサービス レイヤーとして使用できます。
 
@@ -29,12 +31,14 @@ Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されて
 > このコネクタは、Azure Cosmos DB のコア (SQL) API をサポートします。
 > Cosmos DB for MongoDB API の場合は、[MongoDB Spark コネクタ](https://docs.mongodb.com/spark-connector/master/)を使用してください。
 > Cosmos DB Cassandra API の場合は、[Cassandra Spark コネクタ](https://github.com/datastax/spark-cassandra-connector)を使用してください。
->
+
+> [!IMPORTANT]
+> Azure Cosmos DB Spark コネクタは、[サーバーレス](serverless.md) アカウントでは現在サポートされていません。 このことは、サーバーレス オファーが一般公開されるときに解決されます。
 
 ## <a name="quickstart"></a>クイック スタート
 
-* [Java SDK の開始](sql-api-async-java-get-started.md)の手順に従って Cosmos DB アカウントをセットアップし、データを入力してください。
-* [Azure Databricks の開始](/azure/azure-databricks/quickstart-create-databricks-workspace-portal)の手順に従って Azure Databricks ワークスペースとクラスターをセットアップします。
+* [Java SDK の開始](./create-sql-api-java.md)の手順に従って Cosmos DB アカウントをセットアップし、データを入力してください。
+* [Azure Databricks の開始](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)の手順に従って Azure Databricks ワークスペースとクラスターをセットアップします。
 * これで、新しい Notebook を作成し、Cosmos DB コネクタ ライブラリをインポートすることができるようになりました。 ワークスペースのセットアップ方法についての詳細は、[Cosmos DB コネクタの操作](#bk_working_with_connector)に関する記事をご覧ください。
 * 次のセクションには、コネクタを使用した読み取りと書き込みの方法のスニペットがあります。
 
@@ -233,7 +237,7 @@ df
 Azure Databricks ガイドのガイダンスで [Azure Cosmos DB Spark コネクタの使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)に関する記事に従って、Databricks ワークスペースでライブラリを作成します
 
 > [!NOTE]
-> **Azure Cosmos DB Spark コネクタの使用**に関するページは、現在最新ではありません。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、[azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。
+> **Azure Cosmos DB Spark コネクタの使用** に関するページは、現在最新ではありません。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、[azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。
 > 
 
 ### <a name="using-spark-cli"></a>spark-cli の使用
@@ -245,9 +249,9 @@ spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2
 
 ```
 
-### <a name="using-jupyter-notebooks"></a>Jupyter ノートブックの使用
+### <a name="using-jupyter-notebooks"></a>Jupyter Notebooks の使用
 
-HDInsight 内で Jupyter ノートブックを使用している場合は、spark-magic `%%configure` セルを使用してコネクタの Maven 座標を指定できます。
+HDInsight 内で Jupyter Notebooks を使用している場合は、spark-magic `%%configure` セルを使用してコネクタの Maven 座標を指定できます。
 
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
@@ -273,7 +277,7 @@ mvn clean package
 
 [Cosmos DB Spark GitHub リポジトリ](https://github.com/Azure/azure-cosmosdb-spark)では、以下のサンプル ノートブックとスクリプトをお試しいただけます。
 
-* **Spark と Cosmos DB を利用したオンタイム フライト パフォーマンス (シアトル)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html):Spark SQL、GraphFrames を表示する HDInsight Jupyter ノートブック サービスを使用して Spark を Cosmos DB に接続し、ML パイプラインを使用してフライト遅延を予測します。
+* **Spark と Cosmos DB を利用したオンタイム フライト パフォーマンス (シアトル)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html):Spark SQL、GraphFrames を表示する HDInsight Jupyter Notebook サービスを使用して Spark を Cosmos DB に接続し、ML パイプラインを使用してフライト遅延を予測します。
 * **Apache Spark と Azure Cosmos DB 変更フィードの Twitter ソース**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
 * **Apache Spark を使用して Cosmos DB グラフを検索する**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * `azure-cosmosdb-spark` を使用した **[Azure Cosmos DB への Azure Databricks の接続](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** 。  ここでリンクされているものも、[オンタイム フライト パフォーマンス ノートブック](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)の Azure Databricks バージョンです。

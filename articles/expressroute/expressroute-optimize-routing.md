@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: aef21ecbda26e47dc6ef8a915cbd4403c13430e4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395232"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204879"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute ルーティングの最適化
 ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数存在します。 その結果、期待したルーティングが行われない、つまりトラフィックが貴社のネットワークから Microsoft に到達するまでの経路と、Microsoft から貴社のネットワークに到達するまでの経路が、想定よりも長くなってしまう可能性があります。 ネットワーク パスが長くなるほど、遅延は大きくなります。 遅延は、アプリケーションのパフォーマンスとユーザー エクスペリエンスに直接影響します。 この記事では、該当する問題について例示すると共に、標準のルーティング技術を使ってルーティングを最適化する方法を説明します。
@@ -27,7 +27,7 @@ Microsoft ピアリングまたはパブリック ピアリングを使用する
 
 次のシナリオ例について考えてみます。
 
-![ExpressRoute ケース 1 の問題 - 顧客から Microsoft への準最適なルーティング](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+![ExpressRoute ケース 1 の問題を示す図 - 顧客から Microsoft への準最適なルーティング](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
 上の例では、ExpressRoute パスを優先するには、次のように Local Preference を構成します。 
 
@@ -64,7 +64,7 @@ Microsoft ピアリングまたはパブリック ピアリングを使用する
 >
 
 ## <a name="suboptimal-routing-from-microsoft-to-customer"></a>Microsoft から顧客への準最適なルーティング
-もう 1 つ例を紹介します。Microsoft から貴社ネットワークへの接続経路が長くなってしまうケースです。 このケースでは、オンプレミスの Exchange サーバーと Exchange Online を[ハイブリッド環境](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx)で使用しています。 オフィスはいずれも WAN に接続されています。 マイクロソフトには、両オフィスのオンプレミス サーバーのプレフィックスを 2 つの ExpressRoute 回線を介してアドバタイズします。 Exchange Online はメールボックスを移行する場合などに、オンプレミス サーバーへの接続を開始します。 ここで問題が発生します。ロサンゼルス オフィスへの接続が、わざわざ米国東部の ExpressRoute 回線にルーティングされてから、大陸を横断して米国西部のオフィスに戻ってくるという事態が発生しています。 問題の原因は 1 つ目の例と同様です。 手掛かりがなければ、Microsoft のネットワークが、米国東部に近い利用者のプレフィックスと、米国西部に近い利用者のプレフィックスを判別できないのです。 ロサンゼルスのオフィスへの経路が正しく選択されないという事態が起こります。
+もう 1 つ例を紹介します。Microsoft から貴社ネットワークへの接続経路が長くなってしまうケースです。 このケースでは、オンプレミスの Exchange サーバーと Exchange Online を[ハイブリッド環境](/exchange/exchange-hybrid)で使用しています。 オフィスはいずれも WAN に接続されています。 マイクロソフトには、両オフィスのオンプレミス サーバーのプレフィックスを 2 つの ExpressRoute 回線を介してアドバタイズします。 Exchange Online はメールボックスを移行する場合などに、オンプレミス サーバーへの接続を開始します。 ここで問題が発生します。ロサンゼルス オフィスへの接続が、わざわざ米国東部の ExpressRoute 回線にルーティングされてから、大陸を横断して米国西部のオフィスに戻ってくるという事態が発生しています。 問題の原因は 1 つ目の例と同様です。 手掛かりがなければ、Microsoft のネットワークが、米国東部に近い利用者のプレフィックスと、米国西部に近い利用者のプレフィックスを判別できないのです。 ロサンゼルスのオフィスへの経路が正しく選択されないという事態が起こります。
 
 ![ExpressRoute ケース 2 - Microsoft から顧客への準最適なルーティング](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 

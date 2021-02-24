@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400179"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184579"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -96,7 +96,7 @@ Traffic Manager が提供しているメトリックの 1 つに、プロファ�
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Traffic Manager の地理的ルーティングがサポートされる地域を教えてください。
 
-Traffic Manager によって使用される国/地域階層は、[こちら](traffic-manager-geographic-regions.md)でご覧いただけます。 このページは常に最新の状態に保たれ、変更があれば反映されます。また、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使用して、同じ情報をプログラムで取得することもできます。 
+Traffic Manager によって使用される国/地域階層は、[こちら](traffic-manager-geographic-regions.md)でご覧いただけます。 このページは常に最新の状態に保たれ、変更があれば反映されます。また、[Azure Traffic Manager REST API](/rest/api/trafficmanager/) を使用して、同じ情報をプログラムで取得することもできます。 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>ユーザーがどこからクエリを実行しているのかを Traffic Manager はどのようにして判別しているのですか。
 
@@ -116,11 +116,11 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>地理的ルーティングを行うための構成がなされていないプロファイルのエンドポイントにリージョンを割り当てることはできますか。
 
-はい。プロファイルのルーティング方法が地理的ルーティングではない場合でも、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使用して、そのプロファイルのエンドポイントに地理的リージョンを割り当てることができます。 プロファイルのルーティング タイプが地理的ルーティングではない場合、この構成は無視されます。 そのようなプロファイルを後から地理的ルーティング タイプに変更した場合、Traffic Manager はそれらのマッピングを使用できます。
+はい。プロファイルのルーティング方法が地理的ルーティングではない場合でも、[Azure Traffic Manager REST API](/rest/api/trafficmanager/) を使用して、そのプロファイルのエンドポイントに地理的リージョンを割り当てることができます。 プロファイルのルーティング タイプが地理的ルーティングではない場合、この構成は無視されます。 そのようなプロファイルを後から地理的ルーティング タイプに変更した場合、Traffic Manager はそれらのマッピングを使用できます。
 
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>既存のプロファイルのルーティング方法を地理的ルーティングに変更しようとしたときにエラーが発生するのはなぜですか。
 
-地理的ルーティングが適用されているプロファイルのすべてのエンドポイントには、少なくとも 1 つのリージョンが対応付けられている必要があります。 既にあるプロファイルを地理的ルーティング タイプに変換するにはまず、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使って、そのすべてのエンドポイントにリージョンを関連付ける必要があります。そのうえでルーティング タイプを地理的ルーティングに変更してください。 ポータルを使用する場合は、まずエンドポイントを削除し、プロファイルのルーティング方法を地理的ルーティングに変更してから、エンドポイントを地理的リージョン マッピングと共に追加します。
+地理的ルーティングが適用されているプロファイルのすべてのエンドポイントには、少なくとも 1 つのリージョンが対応付けられている必要があります。 既にあるプロファイルを地理的ルーティング タイプに変換するにはまず、[Azure Traffic Manager REST API](/rest/api/trafficmanager/) を使って、そのすべてのエンドポイントにリージョンを関連付ける必要があります。そのうえでルーティング タイプを地理的ルーティングに変更してください。 ポータルを使用する場合は、まずエンドポイントを削除し、プロファイルのルーティング方法を地理的ルーティングに変更してから、エンドポイントを地理的リージョン マッピングと共に追加します。
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>地理的ルーティングを有効にしたプロファイルには、エンドポイントではなく、入れ子にしたプロファイルを作成することが強く推奨されているのはなぜですか。
 
@@ -306,7 +306,7 @@ Traffic View の価格は、出力の作成に使用されたデータ ポイン
 
 Azure Web Apps では、複数のサブスクリプションからのエンドポイントを使用できません。 Azure Web Apps の要件により、Web Apps で使用するカスタム ドメイン名を使用できるのは 1 つのサブスクリプション内に限定されます。 複数のサブスクリプション内で同一のドメイン名を持つ Web Apps を使用することはできません。
 
-他の種類のエンドポイントの場合は、複数のサブスクリプションのエンドポイントで Traffic Manager を使用できます。 Resource Manager では、任意のサブスクリプションのエンドポイントを Traffic Manager に追加できますが、Traffic Manager プロファイルを構成するユーザーにそのエンドポイント対する読み取りアクセス権が必要となります。 これらのアクセス許可は、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) を使用して付与できます。 他のサブスクリプションのエンドポイントは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) または [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) を使用して追加できます。
+他の種類のエンドポイントの場合は、複数のサブスクリプションのエンドポイントで Traffic Manager を使用できます。 Resource Manager では、任意のサブスクリプションのエンドポイントを Traffic Manager に追加できますが、Traffic Manager プロファイルを構成するユーザーにそのエンドポイント対する読み取りアクセス権が必要となります。 これらのアクセス許可は、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) を使用して付与できます。 他のサブスクリプションのエンドポイントは、[Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) または [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) を使用して追加できます。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>クラウド サービス 'Staging' スロットで Traffic Manager を使用できますか。
 
@@ -345,9 +345,9 @@ Azure Resource Manager では、すべてのリソース グループに対し�
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>各エンドポイントの現在の正常性を確認するには、どうすればよいですか。
 
-各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.trafficmanager)、および [クロスプラットフォームの Azure CLI](../cli-install-nodejs.md) を使用して取得することもできます。
+各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](/rest/api/trafficmanager/)、[PowerShell コマンドレット](/powershell/module/az.trafficmanager)、および [クロスプラットフォームの Azure CLI](/cli/azure/install-classic-cli) を使用して取得することもできます。
 
-Azure Monitor を使用すると、エンドポイントの正常性を追跡して、視覚的に表現することもできます。 Azure Monitor の使用方法について詳しくは、[Azure Monitoring のドキュメント](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)をご覧ください。
+Azure Monitor を使用すると、エンドポイントの正常性を追跡して、視覚的に表現することもできます。 Azure Monitor の使用方法について詳しくは、[Azure Monitoring のドキュメント](../azure-monitor/platform/data-platform.md)をご覧ください。
 
 ### <a name="can-i-monitor-https-endpoints"></a>HTTPS エンドポイントを監視できますか。
 
@@ -361,7 +361,7 @@ Traffic Manager は、次のように証明書の検証を提供できません�
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>エンドポイントを追加する際には、IP アドレスと DNS 名のどちらを使用しますか。
 
-Traffic Manager では、追加するエンドポイントの参照方法として、DNS 名、IPv4 アドレス、IPv6 アドレスという 3 つの方法がサポートされています。 エンドポイントが IPv4 アドレスまたは IPv6 アドレスとして追加された場合、クエリ応答のレコード タイプはそれぞれ A と AAAA になります。 エンドポイントが DNS 名として追加された場合、クエリ応答のレコード タイプは CNAME になります。 IPv4 アドレスまたは IPv6 アドレスとして追加できるエンドポイントは、種類が**外部**のエンドポイントだけです。
+Traffic Manager では、追加するエンドポイントの参照方法として、DNS 名、IPv4 アドレス、IPv6 アドレスという 3 つの方法がサポートされています。 エンドポイントが IPv4 アドレスまたは IPv6 アドレスとして追加された場合、クエリ応答のレコード タイプはそれぞれ A と AAAA になります。 エンドポイントが DNS 名として追加された場合、クエリ応答のレコード タイプは CNAME になります。 IPv4 アドレスまたは IPv6 アドレスとして追加できるエンドポイントは、種類が **外部** のエンドポイントだけです。
 この 3 種類のエンドポイント アドレス指定方法では、すべてのルーティング方法と監視設定がサポートされています。
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>エンドポイントを追加するときに、どの種類の IP アドレスを使用できますか。
@@ -458,7 +458,7 @@ Traffic Manager では、エンドポイントに対して開始される HTTP(S
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>いずれかのエンドポイントがダウンした場合に通知を受ける方法を教えてください。
 
-Traffic Manager が提供しているメトリックの 1 つにプロファイルのエンドポイントの正常性状態があります。 プロファイル内のすべてのエンドポイントの集計として (たとえば、お使いのエンドポイントの 75% が正常) またはエンドポイントごとに正常性を確認できます。 Traffic Manager のメトリックは Azure Monitor で公開されていて、[アラート機能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)を使用して、お使いのエンドポイントの正常性状態に変化があった場合に通知を受けることができます。 詳細については、「[Traffic Manager のメトリックとアラート](traffic-manager-metrics-alerts.md)」を参照してください。  
+Traffic Manager が提供しているメトリックの 1 つにプロファイルのエンドポイントの正常性状態があります。 プロファイル内のすべてのエンドポイントの集計として (たとえば、お使いのエンドポイントの 75% が正常) またはエンドポイントごとに正常性を確認できます。 Traffic Manager のメトリックは Azure Monitor で公開されていて、[アラート機能](../azure-monitor/platform/alerts-metric.md)を使用して、お使いのエンドポイントの正常性状態に変化があった場合に通知を受けることができます。 詳細については、「[Traffic Manager のメトリックとアラート](traffic-manager-metrics-alerts.md)」を参照してください。  
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager の入れ子になったプロファイル
 

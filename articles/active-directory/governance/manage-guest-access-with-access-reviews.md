@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 76aeb63feb006e6962efeb3687363f18acb59904
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783197"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746696"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -41,7 +41,12 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>ゲストのアクセス レビューの作成と実行
 
-まず、全体管理者またはユーザー管理者として [[Identity Governance] ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動し、組織がアクセス レビューを使用できる状態であることを確認します。
+まず、次のロールのいずれかが割り当てられている必要があります。
+- グローバル管理者
+- ユーザー管理者
+- (プレビュー) レビュー対象グループの M365 または AAD セキュリティ グループ所有者
+
+次に、[[Identity Governance] ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動し、組織がアクセス レビューを使用できる状態であることを確認します。
 
 ゲスト ユーザーのレビューに関して、Azure AD はいくつかのシナリオに対応しています。
 

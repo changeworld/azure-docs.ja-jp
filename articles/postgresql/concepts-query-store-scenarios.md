@@ -1,17 +1,17 @@
 ---
 title: クエリ ストアのシナリオ - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server でのクエリ ストアに関するいくつかのシナリオについて説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad646e39e9b6a87611dc2f40330a77fe70c92c27
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74768352"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710551"
 ---
 # <a name="usage-scenarios-for-query-store"></a>クエリ ストアの使用シナリオ
 

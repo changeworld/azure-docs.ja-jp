@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 07/30/2020
-  ms.openlocfilehash: 6a21841d24fcafefe25473e428e1926849f5e9cf
-  ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+  ms.date: 11/06/2020
+  ms.openlocfilehash: 72129eb10de042252c33784d7d98081f0f22a8b9
+  ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/30/2020
-  ms.locfileid: "87446731"
+  ms.lasthandoff: 12/11/2020
+  ms.locfileid: "97346624"
 landingContent:
 - title: ARM テンプレートについて
   linkLists:
@@ -49,20 +49,24 @@ landingContent:
       url: quickstart-create-templates-use-the-portal.md
     - text: テンプレートの作成 - VS Code
       url: quickstart-create-templates-use-visual-studio-code.md
+    - text: テンプレート スペックの作成とデプロイ
+      url: quickstart-create-template-specs.md
   - linkListType: tutorial
     links:
     - text: 初心者向けチュートリアル
       url: template-tutorial-create-first-template.md
-    - text: デプロイ
-      url: deployment-tutorial-local-template.md
   - linkListType: learn
     links:
-    - text: 一貫したインフラストラクチャ
-      url: /learn/modules/create-azure-resource-manager-template-vs-code/
-    - text: 複数の環境
-      url: /learn/modules/modify-azure-resource-manager-template-reuse/
+    - text: Resource Manager テンプレートを使用してデプロイする
+      url: /learn/paths/deploy-manage-resource-manager-templates/
 - title: テンプレートの開発
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 高度なテンプレート
+      url: template-tutorial-use-template-reference.md
+    - text: テンプレート スペック
+      url: template-specs-create-linked.md
   - linkListType: how-to-guide
     links:
     - text: 関数を使用する
@@ -83,6 +87,10 @@ landingContent:
       url: https://azure.microsoft.com/resources/templates/
 - title: テンプレートのデプロイ
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: デプロイ
+      url: deployment-tutorial-local-template.md
   - linkListType: how-to-guide
     links:
     - text: PowerShell
@@ -95,20 +103,26 @@ landingContent:
       url: deploy-rest.md
     - text: '[Azure にデプロイ] ボタン'
       url: deploy-to-azure-button.md
+    - text: Cloud Shell
+      url: deploy-cloud-shell.md
     - text: what-if のデプロイ
       url: template-deploy-what-if.md
 - title: スコープ付きのデプロイ
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Resource group
+      url: deploy-to-resource-group.md
     - text: サブスクリプション
       url: deploy-to-subscription.md
     - text: 管理グループ
       url: deploy-to-management-group.md
     - text: Tenant
       url: deploy-to-tenant.md
-    - text: スコープをまたいだデプロイ
-      url: cross-scope-deployment.md
+    - text: 拡張リソースの範囲設定
+      url: scope-extension-resources.md
+    - text: 複数のスコープにまたがるテンプレート関数
+      url: scope-functions.md
 - title: リファレンス コンテンツの確認
   linkLists:
   - linkListType: reference

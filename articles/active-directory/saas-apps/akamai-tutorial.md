@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: fbec82e25424fd5220aa992cf2dd0e8449e6a0a4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523135"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937384"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合
 
@@ -26,9 +26,9 @@ ms.locfileid: "88523135"
 * ユーザーが自分の Azure AD アカウントを使用して Akamai に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
-Azure Active Directory と Akamai Enterprise Application Access の統合により、クラウドまたはオンプレミスでホストされているレガシ アプリケーションにシームレスにアクセスできます。 この統合ソリューションでは、レガシ アプリケーションにアクセスするために [Azure AD 条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)、[Azure AD Identity Governance](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview) など、Azure Active Directory の最新機能をすべて活用できます。その際、アプリの変更やエージェントのインストールは不要です。
+Azure Active Directory と Akamai Enterprise Application Access の統合により、クラウドまたはオンプレミスでホストされているレガシ アプリケーションにシームレスにアクセスできます。 この統合ソリューションでは、レガシ アプリケーションにアクセスするために [Azure AD 条件付きアクセス](../conditional-access/overview.md)、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)、[Azure AD Identity Governance](../governance/identity-governance-overview.md) など、Azure Active Directory の最新機能をすべて活用できます。その際、アプリの変更やエージェントのインストールは不要です。
 
 次の図は、Akamai EAA が安全なハイブリッド アクセスの広範なシナリオに適しているようすを示しています。
 
@@ -53,7 +53,7 @@ Microsoft と Akamai EAA のパートナーシップにより、ビジネス要�
 
 #### <a name="integration-scenario-1"></a>統合シナリオ 1
 
-Akamai EAA が Azure AD 上で単一のアプリケーションとして構成されます。 管理者はそのアプリケーション上で CA ポリシーを構成することができ、条件が満たされると、ユーザーは Akamai EAA ポータルにアクセスできます。
+Akamai EAA が Azure AD 上で単一のアプリケーションとして構成されます。 管理者はそのアプリケーション上で条件付きアクセス ポリシーを構成することができ、条件が満たされると、ユーザーは Akamai EAA ポータルにアクセスできます。
 
 **長所:** :
 
@@ -63,13 +63,13 @@ Akamai EAA が Azure AD 上で単一のアプリケーションとして構成�
 
 * ユーザーは最終的に 2 つのアプリケーション ポータルを持つことになる
 
-* すべてのアプリケーションを対象とする、共通する 1 つの CA ポリシー。
+* すべてのアプリケーションを対象とする、共通する 1 つの条件付きアクセス ポリシー。
 
 ![統合シナリオ 1](./media/header-akamai-tutorial/scenario1.png)
 
 #### <a name="integration-scenario-2"></a>統合シナリオ 2
 
-Akamai EAA アプリケーションが Azure AD ポータル上で個別に設定されます。 管理者はアプリケーションに対して個々の CA ポリシーを構成でき、条件が満たされると、ユーザーは特定のアプリケーションに直接リダイレクトされます。
+Akamai EAA アプリケーションが Azure AD ポータル上で個別に設定されます。 管理者はアプリケーションに対して個々の条件付きアクセス ポリシーを構成でき、条件が満たされると、ユーザーは特定のアプリケーションに直接リダイレクトされます。
 
 **長所:** :
 
@@ -99,9 +99,9 @@ Akamai EAA アプリケーションが Azure AD ポータル上で個別に設�
 
 #### <a name="important"></a>重要
 
-以下に示す設定はすべて、**統合シナリオ 1** と**シナリオ 2** で同じです。 **統合シナリオ 2** では、Akamai EAA で個々の IDP を設定する必要があり、URL プロパティはアプリケーション URL を指すように変更する必要があります。
+以下に示す設定はすべて、**統合シナリオ 1** と **シナリオ 2** で同じです。 **統合シナリオ 2** では、Akamai EAA で個々の IDP を設定する必要があり、URL プロパティはアプリケーション URL を指すように変更する必要があります。
 
-![重要](./media/header-akamai-tutorial/important.png)
+![Akamai Enterprise Application Access の [AZURESSO-SP] の [General]\(全般\) タブのスクリーンショット。 [Authentication configuration]\(認証構成\) の [URL] フィールドが強調表示されている。](./media/header-akamai-tutorial/important.png)
 
 ## <a name="adding-akamai-from-the-gallery"></a>ギャラリーからの Akamai の追加
 
@@ -196,15 +196,15 @@ Akamai に対する Azure AD SSO を構成してテストするには、次の�
 **AKAMAI EAA IDP の構成**
 
 1. **Akamai Enterprise Application Access** コンソールにサインインします。
-1. **Akamai EAA コンソール**で、 **[Identity]\(ID\)**  >  **[Identity Providers]\(ID プロバイダー\)** の順に選択し、 **[Add Identity Provider]\(ID プロバイダーの追加\)** をクリックします。
+1. **Akamai EAA コンソール** で、 **[Identity]\(ID\)**  >  **[Identity Providers]\(ID プロバイダー\)** の順に選択し、 **[Add Identity Provider]\(ID プロバイダーの追加\)** をクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure01.png)
+    ![Akamai EAA コンソールの [Identity Providers]\(ID プロバイダー\) ウィンドウのスクリーンショット。 [Identity]\(ID\) メニューの [Identity Providers]\(ID プロバイダー\) を選択し、[Add Identity Provider]\(ID プロバイダーの追加\) を選択する。](./media/header-akamai-tutorial/configure01.png)
 
 1. **[Create New Identity Provider]\(新しい ID プロバイダーの作成\)** で、次の手順を実行します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure02.png)
+    ![Akamai EAA コンソールの [Create New Identity Providers]\(新しい ID プロバイダーの作成\) ダイアログのスクリーンショット。](./media/header-akamai-tutorial/configure02.png)
 
-    a. **一意の名前**を指定します。
+    a. **一意の名前** を指定します。
 
     b. **[Third Party SAML]\(サード パーティの SAML\)** を選択し、 **[Create Identity Provider and Configure]\(ID プロバイダーを作成して構成する\)** をクリックします。
 
@@ -218,7 +218,7 @@ Akamai に対する Azure AD SSO を構成してテストするには、次の�
 1. **[Akamai Cloud Zone]\(Akamai クラウド ゾーン\)** - 適切なクラウド ゾーンを選択します。
 1. **[Certificate Validation]\(証明書の検証\)** - Akamai ドキュメントをチェックします (省略可)。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure03.png)
+    ![Akamai EAA コンソールの [General]\(全般\) タブのスクリーンショット。[Identity Intercept]\(ID インターセプト\)、[Akamai Cloud Zone]\(Akamai クラウド ゾーン\)、[Certificate Validation]\(証明書の検証\) の各設定が表示されている。](./media/header-akamai-tutorial/configure03.png)
 
 ### <a name="authentication-configuration"></a>認証の構成
 
@@ -227,37 +227,37 @@ Akamai に対する Azure AD SSO を構成してテストするには、次の�
 3. [Sign SAML Request]\(SAML 要求に署名する\): 既定ではオフです。
 4. IDP メタデータ ファイルには、Azure AD コンソールでアプリケーションを追加します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure04.png)
+    ![Akamai EAA コンソールの [Authentication configuration]\(認証構成\) のスクリーンショット。[URL]、[Logout URL]\(ログアウト URL\)、[Sign SAML Request]\(SAML 要求に署名する\)、[IDP Metadata File]\(IDP メタデータ ファイル\) の各設定が表示されている。](./media/header-akamai-tutorial/configure04.png)
 
 ### <a name="session-settings"></a>セッションの設定
 
 設定は既定値のままにします。
 
-![Akamai の構成](./media/header-akamai-tutorial/sessionsettings.png)
+![Akamai EAA コンソールの [Session settings]\(セッション設定\) ダイアログのスクリーンショット。](./media/header-akamai-tutorial/sessionsettings.png)
 
 ### <a name="directories"></a>ディレクトリ
 
 ディレクトリの構成はスキップします。
 
-![Akamai の構成](./media/header-akamai-tutorial/directories.png)
+![Akamai EAA コンソールの [Directories]\(ディレクトリ\) タブのスクリーンショット。](./media/header-akamai-tutorial/directories.png)
 
 ### <a name="customization-ui"></a>カスタマイズ UI
 
 IDP に対するカスタマイズを追加できます。
 
-![Akamai の構成](./media/header-akamai-tutorial/customizationui.png)
+![Akamai EAA コンソールの [Customization]\(カスタマイズ\) タブのスクリーンショット。[Customize UI]\(UI のカスタマイズ\)、[Language settings]\(言語設定\)、[Themes]\(テーマ\) の各設定が表示されている。](./media/header-akamai-tutorial/customizationui.png)
 
 ### <a name="advanced-settings"></a>詳細設定
 
 詳細設定をスキップするか、Akamai のドキュメントで詳細を確認してください。
 
-![Akamai の構成](./media/header-akamai-tutorial/advancesettings.png)
+![Akamai EAA コンソールの [Advanced Settings]\(詳細設定\) タブのスクリーンショット。[EAA Client]\(EAA クライアント\)、[Advanced]\(詳細\)、[OIDC to SAML bridging]\(OIDC から SAML へのブリッジ\) の各設定が表示されている。](./media/header-akamai-tutorial/advancesettings.png)
 
 ### <a name="deployment"></a>デプロイ
 
 1. [Deploy Identity Provider]\(ID プロバイダーのデプロイ\) をクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/deployment.png)
+    ![Akamai EAA コンソールの [Deployment]\(デプロイ\) タブのスクリーンショット。[Deploy Identity provider]\(ID プロバイダーのデプロイ\) ボタンが表示されている。](./media/header-akamai-tutorial/deployment.png)
 
 2. デプロイが成功したことを確認します。
 
@@ -267,115 +267,115 @@ Akamai ヘッダー ベースの認証
 
 1. アプリケーションの追加ウィザードから **[Custom HTTP]\(カスタム HTTP\)** を選択します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure05.png)
+    ![Akamai EAA コンソールのアプリケーションの追加ウィザードのスクリーンショット。[Access Apps]\(アプリへのアクセス\) セクションに [Custom HTTP]\(カスタム HTTP\) が表示されている。](./media/header-akamai-tutorial/configure05.png)
 
 2. **[Application Name]\(アプリケーション名\)** と **[Description]\(説明\)** を入力します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure06.png)
+    ![[Custom HTTP App]\(カスタム HTTP アプリ\) ダイアログのスクリーンショット。[Application Name]\(アプリケーション名\) と [Description]\(説明\) の各設定が表示されている。](./media/header-akamai-tutorial/configure06.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure07.png)
+    ![Akamai EAA コンソールの [General]\(全般\) タブのスクリーンショット。MYHEADERAPP の全般設定が表示されている。](./media/header-akamai-tutorial/configure07.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure08.png)
+    ![Akamai EAA コンソールのスクリーンショット。[Certificate]\(証明書\) と [Location]\(場所\) の各設定が表示されている。](./media/header-akamai-tutorial/configure08.png)
 
 #### <a name="authentication"></a>認証
 
 1. **[Authentication]\(認証\)** タブを選択します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure09.png)
+    ![Akamai EAA コンソールのスクリーンショット。[Authentication]\(認証\) タブが選択されている。](./media/header-akamai-tutorial/configure09.png)
 
-2. **ID プロバイダー**を割り当てます。
+2. **ID プロバイダー** を割り当てます。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure10.png)
+    ![Akamai EAA コンソールの MYHEADERAPP の [Authentication]\(認証\) タブのスクリーンショット。[Identity provider]\(ID プロバイダー\) が [Azure AD SSO]\(Azure AD SSO\) に設定されている。](./media/header-akamai-tutorial/configure10.png)
 
 #### <a name="services"></a>サービス
 
 [Save and Go to Authentication]\(保存して認証に移動\) をクリックします。
 
-![Akamai の構成](./media/header-akamai-tutorial/configure11.png)
+![Akamai EAA コンソールの MYHEADERAPP の [Services]\(サービス\) タブのスクリーンショット。右下隅に [Save and go to Advanced Settings]\(保存して詳細設定に移動\) ボタンが表示されている。](./media/header-akamai-tutorial/configure11.png)
 
 #### <a name="advanced-settings"></a>詳細設定
 
-1. **[Customer HTTP Headers]\(カスタマー HTTP ヘッダー\)** で、**カスタマー ヘッダー**と **SAML 属性**を指定します。
+1. **[Customer HTTP Headers]\(カスタマー HTTP ヘッダー\)** で、**カスタマー ヘッダー** と **SAML 属性** を指定します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure12.png)
+    ![Akamai EAA コンソールの [Advanced Settings]\(詳細設定\) タブのスクリーンショット。[Authentication]\(認証\) の [SSO Logged URL]\(SSO ログ URL\) フィールドが強調表示されている。](./media/header-akamai-tutorial/configure12.png)
 
 1. **[Save and go to Deployment]\(保存してデプロイに移動\)** ボタンをクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure13.png)
+    ![Akamai EAA コンソールの [Advanced Settings]\(詳細設定\) タブのスクリーンショット。右下隅に [Save and go to Deployment]\(保存してデプロイに移動\) ボタンが表示されている。](./media/header-akamai-tutorial/configure13.png)
 
 #### <a name="deploy-the-application"></a>アプリケーションのデプロイ
 
 1. **[Deploy Application]\(アプリケーションのデプロイ\)** ボタンをクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure14.png)
+    ![Akamai EAA コンソールの [Deployment]\(デプロイ\) タブのスクリーンショット。[Deploy Application]\(アプリケーションのデプロイ\) ボタンが表示されている。](./media/header-akamai-tutorial/configure14.png)
 
 1. アプリケーションが正しくデプロイされたことを確認します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure15.png)
+    ![Akamai EAA コンソールの [Deployment]\(デプロイ\) タブのスクリーンショット。[Application status]\(アプリケーションの状態\) に、"Application Successfully Deployed (アプリケーションが正常にデプロイされました)" というメッセージが表示されている。](./media/header-akamai-tutorial/configure15.png)
 
 1. エンドユーザー エクスペリエンス。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/enduser01.png)
+    ![myapps.microsoft.com の開始画面のスクリーンショット。背景画像と [サインイン] ダイアログが表示されている。](./media/header-akamai-tutorial/enduser01.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/enduser02.png)
+    ![[アプリ] ウィンドウの一部を表示するスクリーンショット。[アドイン]、[HRWEB]、[Akamai - CorpApps]、[経費]、[グループ]、[アクセス レビュー] のアイコンが表示されている。 ](./media/header-akamai-tutorial/enduser02.png)
 
 1. 条件付きアクセス。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess01.png)
+    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" というメッセージのスクリーンショット。 We've sent a notification to your mobile device. Please respond to continue.](./media/header-akamai-tutorial/conditionalaccess01.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess02.png)
+    ![MyHeaderApp のアイコンを表示する [アプリケーション] 画面のスクリーンショット。](./media/header-akamai-tutorial/conditionalaccess02.png)
 
 #### <a name="remote-desktop"></a>リモート デスクトップ
 
 1. ADD Applications ウィザードから **[RDP]** を選択します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure16.png)
+    ![Akamai EAA コンソールのアプリケーションの追加ウィザードのスクリーンショット。[Access Apps]\(アプリへのアクセス\) セクションの一連のアプリの中に [RDP] が表示されている。](./media/header-akamai-tutorial/configure16.png)
 
 1. **[Application Name]\(アプリケーション名\)** と **[Description]\(説明\)** を入力します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure17.png)
+    ![[RDP App]\(RDP アプリ\) ダイアログのスクリーンショット。[Application Name]\(アプリケーション名\) と [Description]\(説明\) の各設定が表示されている。](./media/header-akamai-tutorial/configure17.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure18.png)
+    ![Akamai EAA コンソールの [General]\(全般\) タブのスクリーンショット。SECRETRDPAPP の [Application identity]\(アプリケーション ID\) 設定が表示されている。](./media/header-akamai-tutorial/configure18.png)
 
 1. このサービスを提供するコネクタを指定します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure19.png)
+    ![Akamai EAA コンソールのスクリーンショット。[Certificate]\(証明書\) と [Location]\(場所\) の各設定が表示されている。 関連するコネクタが USWST-CON1 に設定されている。](./media/header-akamai-tutorial/configure19.png)
 
 #### <a name="authentication"></a>認証
 
 **[Save and go to Services]\(保存してサービスに移動\)** をクリックします。
 
-![Akamai の構成](./media/header-akamai-tutorial/configure20.png)
+![Akamai EAA コンソールの SECRETRDPAPP の [Authentication]\(認証\) タブのスクリーンショット。右下隅に [Save and go to Services]\(保存してサービスに移動\) ボタンが表示されている。](./media/header-akamai-tutorial/configure20.png)
 
 #### <a name="services"></a>サービス
 
 **[Save and go to Advanced Settings]\(保存して詳細設定に移動\)** をクリックします。
 
-![Akamai の構成](./media/header-akamai-tutorial/configure21.png)
+![Akamai EAA コンソールの SECRETRDPAPP の [Services]\(サービス\) タブのスクリーンショット。右下隅に [Save and go to Advanced Settings]\(保存して詳細設定に移動\) ボタンが表示されている。](./media/header-akamai-tutorial/configure21.png)
 
 #### <a name="advanced-settings"></a>詳細設定
 
 1. **[Save and go to Deployment]\(保存してデプロイに移動\)** をクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure22.png)
+    ![Akamai EAA コンソールの SECRETRDPAPP の [Advanced Settings]\(詳細設定\) タブのスクリーンショット。[Remote desktop configuration]\(リモート デスクトップ構成\) の設定が表示されている。](./media/header-akamai-tutorial/configure22.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure23.png)
+    ![Akamai EAA コンソールの SECRETRDPAPP の [Advanced Settings]\(詳細設定\) タブのスクリーンショット。[Authentication]\(認証\) と [Health check configuration]\(正常性チェック構成\) の各設定が表示されている。](./media/header-akamai-tutorial/configure23.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure24.png)
+    ![Akamai EAA コンソールの SECRETRDPAPP の [Custom HTTP headers]\(カスタム HTTP ヘッダー\) 設定のスクリーンショット。右下隅に [Save and go to Deployment]\(保存してデプロイに移動\) ボタンが表示されている。](./media/header-akamai-tutorial/configure24.png)
 
 1. エンドユーザー エクスペリエンス
 
-    ![Akamai の構成](./media/header-akamai-tutorial/enduser03.png)
+    ![[myapps.microsoft.com] ウィンドウのスクリーンショット。背景画像と [サインイン] ダイアログが表示されている。](./media/header-akamai-tutorial/enduser03.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/enduser02.png)
+    ![myapps.microsoft.com の [アプリ] ウィンドウのスクリーンショット。[アドイン]、[HRWEB]、[Akamai - CorpApps]、[経費]、[グループ]、[アクセス レビュー] のアイコンが表示されている。](./media/header-akamai-tutorial/enduser02.png)
 
 1. 条件付きアクセス
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess04.png)
+    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" という条件付きアクセス メッセージのスクリーンショット。 We've sent a notification to your mobile device. Please respond to continue.](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess05.png)
+    ![MyHeaderApp と SecretRDPApp のアイコンを表示する [アプリケーション] 画面のスクリーンショット。](./media/header-akamai-tutorial/conditionalaccess05.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess06.png)
+    ![Windows Server 2012 RS 画面のスクリーンショット。汎用的なユーザー アイコンが表示されている。 administrator、user0、user1 がサインイン済みであることを示すそれらのアイコン。](./media/header-akamai-tutorial/conditionalaccess06.png)
 
 1. または、RDP アプリケーションの URL を直接入力することもできます。
 
@@ -383,15 +383,15 @@ Akamai ヘッダー ベースの認証
 
 1. [Add Applications]\(アプリケーションの追加\) に移動し、 **[SSH]** を選択します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure25.png)
+    ![Akamai EAA コンソールのアプリケーションの追加ウィザードのスクリーンショット。[Access Apps]\(アプリへのアクセス\) セクションの一連のアプリの中に [SSH] が表示されている。](./media/header-akamai-tutorial/configure25.png)
 
 1. **[Application Name]\(アプリケーション名\)** と **[Description]\(説明\)** を入力します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure26.png)
+    ![[SSH App]\(SSH アプリ\) ダイアログのスクリーンショット。[Application Name]\(アプリケーション名\) と [Description]\(説明\) の各設定が表示されている。](./media/header-akamai-tutorial/configure26.png)
 
 1. アプリケーション ID を構成します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure27.png)
+    ![Akamai EAA コンソールの [General]\(全般\) タブのスクリーンショット。SSH-SECURE の [Application identity]\(アプリケーション ID\) 設定が表示されている。](./media/header-akamai-tutorial/configure27.png)
 
     a. 名前と説明を指定します。
 
@@ -407,43 +407,43 @@ Akamai ヘッダー ベースの認証
 
 **[Save and go to Services]\(保存してサービスに移動\)** をクリックします。
 
-![Akamai の構成](./media/header-akamai-tutorial/configure28.png)
+![Akamai EAA コンソールの SSH-SECURE の [Authentication]\(認証\) タブのスクリーンショット。右下隅に [Save and go to Services]\(保存してサービスに移動\) ボタンが表示されている。](./media/header-akamai-tutorial/configure28.png)
 
 #### <a name="services"></a>サービス
 
 **[Save and go to Advanced Settings]\(保存して詳細設定に移動\)** をクリックします。
 
-![Akamai の構成](./media/header-akamai-tutorial/configure29.png)
+![Akamai EAA コンソールの SSH-SECURE の [Services]\(サービス\) タブのスクリーンショット。右下隅に [Save and go to Advanced Settings]\(保存して詳細設定に移動\) ボタンが表示されている。](./media/header-akamai-tutorial/configure29.png)
 
 #### <a name="advanced-settings"></a>詳細設定
 
 [Save and go to Deployment]\(保存してデプロイに移動\) をクリックします。
 
-![Akamai の構成](./media/header-akamai-tutorial/configure30.png)
+![Akamai EAA コンソールの SSH-SECURE の [Advanced Settings]\(詳細設定\) タブのスクリーンショット。[Authentication]\(認証\) と [Health check configuration]\(正常性チェック構成\) の各設定が表示されている。](./media/header-akamai-tutorial/configure30.png)
 
-![Akamai の構成](./media/header-akamai-tutorial/configure31.png)
+![Akamai EAA コンソールの SSH-SECURE の [Custom HTTP headers]\(カスタム HTTP ヘッダー\) のスクリーンショット。右下隅に [Save and go to Deployment]\(保存してデプロイに移動\) ボタンが表示されている。](./media/header-akamai-tutorial/configure31.png)
 
 #### <a name="deployment"></a>デプロイ
 
 1. **[Deploy application]\(アプリケーションのデプロイ\)** をクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure32.png)
+    ![Akamai EAA コンソールの SSH-SECURE の [Deployment]\(デプロイ\) タブのスクリーンショット。[Deploy Application]\(アプリケーションのデプロイ\) ボタンが表示されている。](./media/header-akamai-tutorial/configure32.png)
 
 1. エンドユーザー エクスペリエンス
 
-    ![Akamai の構成](./media/header-akamai-tutorial/enduser03.png)
+    ![[myapps.microsoft.com] ウィンドウの [サインイン] ダイアログのスクリーンショット。](./media/header-akamai-tutorial/enduser03.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/enduser04.png)
+    ![myapps.microsoft.com の [アプリ] ウィンドウのスクリーンショット。[アドイン]、[HRWEB]、[Akamai - CorpApps]、[経費]、[グループ]、[アクセス レビュー] のアイコンが表示されている。](./media/header-akamai-tutorial/enduser04.png)
 
 1. 条件付きアクセス
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess04.png)
+    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" というメッセージのスクリーンショット。 We've sent a notification to your mobile device. Please respond to continue.](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess07.png)
+    ![MyHeaderApp、SSH Secure、SecretRDPApp のアイコンを表示する [アプリケーション] 画面のスクリーンショット。](./media/header-akamai-tutorial/conditionalaccess07.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess08.png)
+    ![ssh-secure-go.akamai-access.com のコマンド ウィンドウのスクリーンショット。[Password]\(パスワード\) プロンプトが表示されている。](./media/header-akamai-tutorial/conditionalaccess08.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess09.png)
+    ![ssh-secure-go.akamai-access.com のコマンド ウィンドウのスクリーンショット。アプリケーションに関する情報のほか、コマンドのプロンプトが表示されている。](./media/header-akamai-tutorial/conditionalaccess09.png)
 
 ### <a name="kerberos-authentication"></a>Kerberos 認証
 
@@ -451,54 +451,54 @@ Akamai ヘッダー ベースの認証
 
 #### <a name="general-tab"></a>全般タブ
 
-![Akamai の構成](./media/header-akamai-tutorial/generaltab.png)
+![Akamai EAA コンソールの MYKERBOROSAPP の [General]\(全般\) タブのスクリーンショット。](./media/header-akamai-tutorial/generaltab.png)
 
 #### <a name="authentication-tab"></a>[認証] タブ
 
 ID プロバイダーを割り当てます。
 
-![Akamai の構成](./media/header-akamai-tutorial/authenticationtab.png)
+![Akamai EAA コンソールの MYKERBOROSAPP の [Authentication]\(認証\) タブのスクリーンショット。[Identity provider]\(ID プロバイダー\) が [Azure AD SSO]\(Azure AD SSO\) に設定されている。](./media/header-akamai-tutorial/authenticationtab.png)
 
 #### <a name="services-tab"></a>[Services]\(サービス\) タブ
 
-![Akamai の構成](./media/header-akamai-tutorial/servicestab.png)
+![Akamai EAA コンソールの MYKERBOROSAPP の [Services]\(サービス\) タブのスクリーンショット。](./media/header-akamai-tutorial/servicestab.png)
 
 #### <a name="advanced-settings"></a>詳細設定
 
-![Akamai の構成](./media/header-akamai-tutorial/advancesettings02.png)
+![Akamai EAA コンソールの MYKERBOROSAPP の [Advanced Settings]\(詳細設定\) タブのスクリーンショット。[Related Applications]\(関連アプリケーション\) と [Authentication]\(認証\) の各設定が表示されている。](./media/header-akamai-tutorial/advancesettings02.png)
 
 > [!NOTE]
 > このデモでは、Web サーバーの SPN は SPN@Domain 形式 (例: `HTTP/frp-app1.superdemo.live@SUPERDEMO.LIVE`) にする必要があります。 残りの設定は既定値のままにします。
 
 #### <a name="deployment-tab"></a>[Deployment]\(デプロイ\) タブ
 
-![Akamai の構成](./media/header-akamai-tutorial/deploymenttab.png)
+![Akamai EAA コンソールの MYKERBOROSAPP の [Deployment]\(デプロイ\) タブのスクリーンショット。[Deploy Application]\(アプリケーションのデプロイ\) ボタンが表示されている。](./media/header-akamai-tutorial/deploymenttab.png)
 
 #### <a name="adding-directory"></a>ディレクトリの追加
 
 1. ドロップダウン リストから **[AD]** を選択します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure33.png)
+    ![Akamai EAA コンソールの [Directories]\(ディレクトリ\) ウィンドウのスクリーンショット。[Create New Directory]\(新しいディレクトリの作成\) ダイアログが表示され、[Directory Type]\(ディレクトリ タイプ\) のボックスの一覧では [AD] が選択されている。](./media/header-akamai-tutorial/configure33.png)
 
 1. 必要なデータを入力します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/configure34.png)
+    ![Akamai EAA コンソールの [SUPERDEMOLIVE] ウィンドウのスクリーンショット。[DirectoryName]\(ディレクトリ名\)、[Directory Service]\(ディレクトリ サービス\)、[Connector]\(コネクタ\)、[Attribute mapping]\(属性マッピング\) の各設定が表示されている。](./media/header-akamai-tutorial/configure34.png)
 
 1. ディレクトリの作成を確認します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/directorydomain.png)
+    ![Akamai EAA コンソールの [Directories]\(ディレクトリ\) ウィンドウのスクリーンショット。ディレクトリ superdemo.live が追加されていることがわかる。](./media/header-akamai-tutorial/directorydomain.png)
 
 1. アクセスを必要とするグループまたは OU を追加します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/addgroup.png)
+    ![ディレクトリ superdemo.live の設定のスクリーンショット。 グループまたは OU を追加するときに選択するアイコンが強調表示されている。](./media/header-akamai-tutorial/addgroup.png)
 
 1. 以下では、グループが EAAGroup と呼ばれ、1 名のメンバーが含まれています。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/eaagroup.png)
+    ![Akamai EAA コンソールの [GROUPS ON SUPERDEMOLIVE DIRECTORY]\(SUPERDEMOLIVE ディレクトリ上のグループ\) ウィンドウのスクリーンショット。 1 ユーザーを含んだ EAAGroup が [Groups]\(グループ\) に表示されている。](./media/header-akamai-tutorial/eaagroup.png)
 
 1. 使用する ID プロバイダーにディレクトリを追加するには、 **[Identity]\(ID\)**  >  **[Identity Providers]\(ID プロバイダー\)** の順にクリックし、 **[Directories]\(ディレクトリ\)** タブをクリックして、 **[Assign directory]\(ディレクトリの割り当て\)** をクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Akamai EAA コンソールの Azure AD SSO の [Directories]\(ディレクトリ\) タブのスクリーンショット。[Currently assigned directories]\(現在割り当てられているディレクトリ\) の一覧に superdemo.live が表示されている。](./media/header-akamai-tutorial/assigndirectory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>EAA チュートリアル用の KCD 委任の構成
 
@@ -506,14 +506,14 @@ ID プロバイダーを割り当てます。
 
 1. この例では **EAADelegation** というアカウントを使用します。 これを行うには、 **[Active Directory ユーザーとコンピューター]** スナップインを使用します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Akamai EAA コンソールの Azure AD SSO の [Directories]\(ディレクトリ\) タブのスクリーンショット。 [Currently assigned directories]\(現在割り当てられているディレクトリ\) の一覧に、ディレクトリ superdemo.live が表示されている。](./media/header-akamai-tutorial/assigndirectory.png)
 
     > [!NOTE]
-    > このユーザー名は **ID インターセプト名**に基づく特定の形式にする必要があります。 図 1 から、**corpapps.login.go.akamai-access.com** であることがわかります。
+    > このユーザー名は **ID インターセプト名** に基づく特定の形式にする必要があります。 図 1 から、**corpapps.login.go.akamai-access.com** であることがわかります。
 
 1. ユーザーログオン名は `HTTP/corpapps.login.go.akamai-access.com` になります。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/eaadelegation.png)
+    ![[EAADelegation Properties]\(EAADelegation のプロパティ\) を示すスクリーンショット。[名] が "EAADelegation" に、[ユーザー ログオン名] が "HTTP/corpapps.login.go.akamai-access.com" に設定されている。](./media/header-akamai-tutorial/eaadelegation.png)
 
 #### <a name="step-2-configure-the-spn-for-this-account"></a>手順 2:このアカウントの SPN の構成
 
@@ -521,13 +521,13 @@ ID プロバイダーを割り当てます。
 
 2. setspn -s **Http/corpapps.login.go.akamai-access.com eaadelegation**
 
-    ![Akamai の構成](./media/header-akamai-tutorial/spn.png)
+    ![管理者コマンド プロンプトのスクリーンショット。コマンド setspn -s Http/corpapps.login.go.akamai-access.com eaadelegation の結果が表示されている。](./media/header-akamai-tutorial/spn.png)
 
 #### <a name="step-3-configure-delegation"></a>手順 3:委任の構成
 
 1. EAADelegation アカウントについては、[委任] タブをクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/spn.png)
+    ![管理者コマンド プロンプトのスクリーンショット。SPN を構成するためのコマンドが表示されている。](./media/header-akamai-tutorial/spn.png)
 
     * [任意の認証プロトコルを使う] を選択します。
     * [追加] をクリックし、Kerberos Web サイトのアプリケーション プール アカウントを追加します。 正しく構成されていれば、自動的に正しい SPN に解決されます。
@@ -551,35 +551,35 @@ ID プロバイダーを割り当てます。
 
 1. Ktpass /out EAADemo.keytab  /princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live /mapuser eaadelegation@superdemo.live /pass RANDOMPASS /crypto All ptype KRB5_NT_PRINCIPAL
 
-    ![Akamai の構成](./media/header-akamai-tutorial/administrator.png)
+    ![管理者コマンド プロンプトのスクリーンショット。AKAMAI EAA の Keytab ファイルを作成するためのコマンドの結果が表示されている。](./media/header-akamai-tutorial/administrator.png)
 
 #### <a name="step-5-import-keytab-in-the-akamai-eaa-console"></a>手順 5:Akamai EAA コンソールでの keytab のインポート
 
 1. **[System]\(システム\)**  >  **[Keytabs]\(keytab\)** の順にクリックします。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/keytabs.png)
+    ![Akamai EAA コンソールのスクリーンショット。[System]\(システム\) メニューから [Keytabs]\(keytab\) を選択したところ。](./media/header-akamai-tutorial/keytabs.png)
 
 1. [Keytab Type]\(keytab の種類\) で **[Kerberos Delegation]\(Kerberos 委任\)** を選択します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/keytabdelegation.png)
+    ![Akamai EAA コンソールの [EAAKEYTAB] 画面のスクリーンショット。keytab の設定が表示されている。 [Keytab Type]\(keytab の種類\) が [Kerberos Delegation]\(Kerberos 委任\) に選択されている。](./media/header-akamai-tutorial/keytabdelegation.png)
 
 1. keytab がデプロイ済みおよび確認済みとして表示されていることを確認します。
 
-    ![Akamai の構成](./media/header-akamai-tutorial/keytabs02.png)
+    ![Akamai EAA コンソールの [KEYTABS] 画面のスクリーンショット。[Keytab deployed and verified]\(keytab がデプロイ済みおよび確認済み\) として EAA keytab が表示されている。](./media/header-akamai-tutorial/keytabs02.png)
 
 1. ユーザー エクスペリエンス
 
-    ![Akamai の構成](./media/header-akamai-tutorial/enduser03.png)
+    ![myapps.microsoft.com の [サインイン] ダイアログのスクリーンショット。 ](./media/header-akamai-tutorial/enduser03.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/enduser04.png)
+    ![myapps.microsoft.com の [アプリ] ウィンドウのスクリーンショット。アプリのアイコンが表示されている。](./media/header-akamai-tutorial/enduser04.png)
 
 1. 条件付きアクセス
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess04.png)
+    !["サインイン要求を承認" メッセージのスクリーンショット。 メッセージ。](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess10.png)
+    ![MyHeaderApp、SSH Secure、SecretRDPApp、myKerberosApp のアイコンを表示する [アプリケーション] 画面のスクリーンショット。](./media/header-akamai-tutorial/conditionalaccess10.png)
 
-    ![Akamai の構成](./media/header-akamai-tutorial/conditionalaccess11.png)
+    ![myKerberosApp のスプラッシュ スクリーンのスクリーンショット。 背景画像に "Welcome superdemo\user1 (ようこそ、superdemo\user1 さん)" というメッセージが表示されている。](./media/header-akamai-tutorial/conditionalaccess11.png)
 
 ### <a name="create-akamai-test-user"></a>Akamai のテスト ユーザーの作成
 
@@ -589,14 +589,14 @@ ID プロバイダーを割り当てます。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Akamai] タイルをクリックすると、SSO を設定した Akamai に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Akamai] タイルをクリックすると、SSO を設定した Akamai に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Akamai を試す](https://aad.portal.azure.com/)

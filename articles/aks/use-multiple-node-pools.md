@@ -4,16 +4,16 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: db153123622a59bbdde71afca4ea30e03a6fbf98
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563179"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694242"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
-Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プール*にグループ化できます。 これらのノード プールには、お使いのアプリケーションを実行する基になる VM が含まれています。 最初のノード数とそのサイズ (SKU) は、"[システム ノード プール][use-system-pool]" が作成される AKS クラスターの作成時に定義します。 コンピューティングまたは記憶域の要件が異なるアプリケーションをサポートするには、追加の "*ユーザー ノード プール*" を作成します。 システム ノード プールは、CoreDNS や tunnelfront などの重要なシステム ポッドをホストするという主要な目的を果たします。 ユーザー ノード プールは、アプリケーション ポッドをホストするという主要な目的を果たします。 ただし、AKS クラスター内のプールを 1 つだけにする場合は、システム ノード プールでアプリケーション ポッドをスケジュールすることができます。 ユーザー ノード プールは、お使いのアプリケーションに固有のポッドを配置する場所です。 たとえば、これらの追加のユーザー ノード プールを使用すると、コンピューティング集約型のアプリケーションに GPU を提供したり、高パフォーマンスな SSD ストレージにアクセスを提供したりできます。
+Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プール* にグループ化できます。 これらのノード プールには、お使いのアプリケーションを実行する基になる VM が含まれています。 最初のノード数とそのサイズ (SKU) は、"[システム ノード プール][use-system-pool]" が作成される AKS クラスターの作成時に定義します。 コンピューティングまたは記憶域の要件が異なるアプリケーションをサポートするには、追加の "*ユーザー ノード プール*" を作成します。 システム ノード プールは、CoreDNS や tunnelfront などの重要なシステム ポッドをホストするという主要な目的を果たします。 ユーザー ノード プールは、アプリケーション ポッドをホストするという主要な目的を果たします。 ただし、AKS クラスター内のプールを 1 つだけにする場合は、システム ノード プールでアプリケーション ポッドをスケジュールすることができます。 ユーザー ノード プールは、お使いのアプリケーションに固有のポッドを配置する場所です。 たとえば、これらの追加のユーザー ノード プールを使用すると、コンピューティング集約型のアプリケーションに GPU を提供したり、高パフォーマンスな SSD ストレージにアクセスを提供したりできます。
 
 > [!NOTE]
 > この機能を使用すると、複数のノード プールを作成および管理する方法をより細かく制御できます。 そのため、作成/更新/削除には個別のコマンドが必要です。 以前は、`az aks create` または `az aks update` を介したクラスター操作は、managedCluster API を使用するものであり、コントロール プレーンと単一ノード プールを変更する唯一の方法でした。 この機能は、agentPool API を介した、エージェント プールに対する個別の操作セットを公開するものであり、個々のノード プールに対して操作を実行するには `az aks nodepool` コマンド セットを使用する必要があります。
@@ -45,7 +45,7 @@ Azure CLI バージョン 2.2.0 以降がインストールされて構成され
 まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。
 
 > [!NOTE]
-> 複数のノード プールを使用する場合、*Basic* ロード バランサー SKU は**サポートされません**。 既定では、AKS クラスターが、Azure CLI および Azure portal から *Standard* ロード バランサー SKU で作成されます。
+> 複数のノード プールを使用する場合、*Basic* ロード バランサー SKU は **サポートされません**。 既定では、AKS クラスターが、Azure CLI および Azure portal から *Standard* ロード バランサー SKU で作成されます。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -148,7 +148,7 @@ az aks nodepool add \
 ## <a name="upgrade-a-node-pool"></a>ノード プールのアップグレード
 
 > [!NOTE]
-> クラスターまたはノード プールでは、アップグレードやスケーリングの操作を同時に実行することはできず、実行を試みた場合には、エラーが返されます。 代わりに、ターゲット リソースに対する次の要求を行う前に、各操作の種類をその同じリソースで完了する必要があります。 詳細については、[トラブルシューティング ガイド](https://aka.ms/aks-pending-upgrade)を参照してください。
+> クラスターまたはノード プールでは、アップグレードやスケーリングの操作を同時に実行することはできず、実行を試みた場合には、エラーが返されます。 代わりに、ターゲット リソースに対する次の要求を行う前に、各操作の種類をその同じリソースで完了する必要があります。 詳細については、[トラブルシューティング ガイド](./troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade)を参照してください。
 
 このセクションのコマンドからは、1 つの特定のノード プールをアップグレードする方法が説明されます。 コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするとき、両者の関係については、[下のセクション](#upgrade-a-cluster-control-plane-with-multiple-node-pools)で説明します。
 
@@ -351,7 +351,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>ノード プールの VM サイズの指定
 
-前のノード プールの作成例では、クラスターに作成したノードに、既定の VM サイズを使用しました。 より一般的なシナリオでは、さまざまなサイズおよび性能の VM のノード プールが作成されます。 たとえば、大きな CPU またはメモリのノードが含まれるノード プール、または GPU をサポートするノード プールが作成されます。 次の手順では、[taints と tolerations を使用](#schedule-pods-using-taints-and-tolerations)して、Kubernetes スケジューラにこれらのノードで実行されるポッドに対するアクセスを制限する方法を通知します。
+前のノード プールの作成例では、クラスターに作成したノードに、既定の VM サイズを使用しました。 より一般的なシナリオでは、さまざまなサイズおよび性能の VM のノード プールが作成されます。 たとえば、大きな CPU またはメモリのノードが含まれるノード プール、または GPU をサポートするノード プールが作成されます。 次の手順では、[taints と tolerations を使用](#setting-nodepool-taints)して、Kubernetes スケジューラにこれらのノードで実行されるポッドに対するアクセスを制限する方法を通知します。
 
 次の例では、*Standard_NC6* の VM サイズを使用する GPU ベースのノード プールを作成します。 これらの VM は NVIDIA Tesla K80 カードを搭載しています。 使用可能な VM サイズの詳細については、「[Azure での Linux VM のサイズ][vm-sizes]」を参照してください。
 
@@ -404,89 +404,6 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 *gpunodepool* が正常に作成されるには、数分かかります。
 
-## <a name="schedule-pods-using-taints-and-tolerations"></a>taints と tolerations を使用したポッドのスケジュール
-
-現在、最初に作成した既定のノード プールと、GPU ベースのノード プールの 2 つのノード プールがお使いのクラスターにあります。 [kubectl get nodes][kubectl-get] コマンドを使用すると、お使いのクラスターのノードを参照できます。 次の出力例では、ノードが示されています。
-
-```console
-kubectl get nodes
-```
-
-```output
-NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
-```
-
-Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
-
-* **テイント**は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
-* **容認**は、ポッドに適用されて、ポッドがノードのテイントを "*許容する*" ことを許可します。
-
-Kubernetes での高度なスケジューラ機能の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][taints-tolerations]」を参照してください。
-
-この例では、--node-taints コマンドを使用してお使いの GPU ベースのノードに taint を適用しています。 前の `kubectl get nodes` コマンドからお使いの GPU ベースのノードの名前を指定します。 taint が *キーと値*のペアとして適用され、その後、スケジュール オプションとして適用されます。 次の例では *sku=gpu* の組み合わせを使用してポッドを定義しています。されない場合、*NoSchedule* 機能を持つことになります。
-
-```console
-az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
-```
-
-次の YAML マニフェストの基本例では、Kubernetes スケジューラが GPU ベースのノードで NGINX ポッドを実行できるように toleration を使用しています。 MNIST データセットに対して Tensorflow ジョブを実行する、より適切な、しかし時間がかかる例については、「[Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する][gpu-cluster]」を参照してください。
-
-`gpu-toleration.yaml` という名前のファイルを作成し、次の例の YAML にコピーします。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: mypod
-spec:
-  containers:
-  - image: nginx:1.15.9
-    name: mypod
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        cpu: 1
-        memory: 2G
-  tolerations:
-  - key: "sku"
-    operator: "Equal"
-    value: "gpu"
-    effect: "NoSchedule"
-```
-
-`kubectl apply -f gpu-toleration.yaml` コマンドを使用してポッドをスケジュールします。
-
-```console
-kubectl apply -f gpu-toleration.yaml
-```
-
-ポッドのスケジュールおよび NGINX イメージのプルには、数秒かかります。 [kubectl describe pod][kubectl-describe] コマンドを使用して、ポッドの状態を参照します。 次の縮約された出力例では、*sku = gpu:NoSchedule* toleration を適用しています。 次のように、イベント セクションでは、スケジューラがポッドを *aks-gpunodepool-28993262-vmss000000* GPU ベース ノードに割り当てています。
-
-```console
-kubectl describe pod mypod
-```
-
-```output
-[...]
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-                 sku=gpu:NoSchedule
-Events:
-  Type    Reason     Age    From                                          Message
-  ----    ------     ----   ----                                          -------
-  Normal  Scheduled  4m48s  default-scheduler                             Successfully assigned default/mypod to aks-gpunodepool-28993262-vmss000000
-  Normal  Pulling    4m47s  kubelet, aks-gpunodepool-28993262-vmss000000  pulling image "nginx:1.15.9"
-  Normal  Pulled     4m43s  kubelet, aks-gpunodepool-28993262-vmss000000  Successfully pulled image "nginx:1.15.9"
-  Normal  Created    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Created container
-  Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
-```
-
-この toleration が適用されたポッドのみが、*gpunodepool* のノードにスケジュールできます。 その他のポッドは、*nodepool1* ノード プールにスケジュールされます。 ノード プールを追加作成した場合、追加の taints と tolerations を使用して、それらのノード リソースにどのようなポッドをスケジュールするか制限できます。
-
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>テイント、ラベル、またはタグをノード プールに指定する
 
 ### <a name="setting-nodepool-taints"></a>ノード プールのテイントの設定
@@ -532,7 +449,68 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-テイントの情報は、ノードのスケジューリング規則を処理するために Kubernetes に表示されます。
+テイントの情報は、ノードのスケジューリング規則を処理するために Kubernetes に表示されます。 Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
+
+* **テイント** は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
+* **容認** は、ポッドに適用されて、ポッドがノードのテイントを "*許容する*" ことを許可します。
+
+Kubernetes での高度なスケジューラ機能の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][taints-tolerations]」を参照してください。
+
+前の手順では、ノード プールの作成時に *sku=gpu:NoSchedule* テイントを適用しました。 次の YAML マニフェストの基本例では、Kubernetes スケジューラがそのノードプール内のノードで NGINX ポッドを実行できるように toleration を使用しています。
+
+`nginx-toleration.yaml` という名前のファイルを作成し、次の例の YAML にコピーします。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 1
+        memory: 2G
+  tolerations:
+  - key: "sku"
+    operator: "Equal"
+    value: "gpu"
+    effect: "NoSchedule"
+```
+
+`kubectl apply -f nginx-toleration.yaml` コマンドを使用してポッドをスケジュールします。
+
+```console
+kubectl apply -f nginx-toleration.yaml
+```
+
+ポッドのスケジュールおよび NGINX イメージのプルには、数秒かかります。 [kubectl describe pod][kubectl-describe] コマンドを使用して、ポッドの状態を参照します。 次の縮約された出力例では、*sku = gpu:NoSchedule* toleration を適用しています。 イベント セクションで、スケジューラによってポッドが *aks-taintnp-28993262-vmss000000* ノードに割り当てられています。
+
+```console
+kubectl describe pod mypod
+```
+
+```output
+[...]
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+                 sku=gpu:NoSchedule
+Events:
+  Type    Reason     Age    From                Message
+  ----    ------     ----   ----                -------
+  Normal  Scheduled  4m48s  default-scheduler   Successfully assigned default/mypod to aks-taintnp-28993262-vmss000000
+  Normal  Pulling    4m47s  kubelet             pulling image "mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine"
+  Normal  Pulled     4m43s  kubelet             Successfully pulled image "mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine"
+  Normal  Created    4m40s  kubelet             Created container
+  Normal  Started    4m40s  kubelet             Started container
+```
+
+*taintnp* のノードでスケジュールできるのは、この toleration が適用されているポッドのみです。 その他のポッドは、*nodepool1* ノード プールにスケジュールされます。 ノード プールを追加作成した場合、追加の taints と tolerations を使用して、それらのノード リソースにどのようなポッドをスケジュールするか制限できます。
 
 ### <a name="setting-nodepool-labels"></a>ノード プールのラベルの設定
 
@@ -707,10 +685,10 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 }
 ```
 
-次の例で示すように、[az group deployment create][az-group-deployment-create] コマンドを使用してこのテンプレートをデプロイします。 既存の AKS クラスターの名前と場所を求められます。
+次の例に示すように、[az deployment group create][az-deployment-group-create] コマンドを使用してこのテンプレートをデプロイします。 既存の AKS クラスターの名前と場所を求められます。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```
@@ -851,7 +829,7 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

@@ -1,6 +1,6 @@
 ---
 title: Azure ストレージ テーブル設計のガイドライン | Microsoft Docs
-description: 読み書きの操作を効率的にサポートするように Azure ストレージ テーブル サービスを設計するためのガイドラインについて説明します。
+description: 読み書きの操作を効率的にサポートするように Azure Storage Table service を設計するためのガイドラインについて説明します。
 services: storage
 ms.service: storage
 author: tamram
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: f84707e454a8b1f5d5947478fe65108a142a9757
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236320"
 ---
 # <a name="guidelines-for-table-design"></a>テーブル設計のガイドライン
 
-Azure ストレージ テーブル サービスで使用するテーブルの設計は、リレーショナル データベースの設計に関する考慮事項とは大きく異なります。 この記事では、読み取りと書き込みが効率的になるように Table service ソリューションを設計するためのガイドラインについて説明します。
+Azure Storage Table service で使用するテーブルの設計は、リレーショナル データベースの設計に関する考慮事項とは大きく異なります。 この記事では、読み取りと書き込みが効率的になるように Table service ソリューションを設計するためのガイドラインについて説明します。
 
 ## <a name="design-your-table-service-solution-to-be-read-efficient"></a>Table service ソリューションの読み込みが効率的になるように設計する
 

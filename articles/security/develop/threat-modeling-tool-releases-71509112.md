@@ -8,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: 780ddc614feef492dafa54862abbea9552496274
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7b0afdd90f2a1413c7f8364fc4518c4d1116454a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539817"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913587"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA リリース 7.1.50911.2 - 9/12/2018
 
@@ -65,13 +65,13 @@ Windows が読みやすいように既定で拡大するよう設定されてい
 
 プレビュー リリースの [OneDrive から開く] 機能は削除されました。 OneDrive に保存された "最近開いたモデル" を使用している場合、次のエラーが表示されます。
 
-![削除された OneDrive の機能](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
+![エラーを示しているスクリーンショット:ファイルを開くことができません。オブジェクト参照がオブジェクト インスタンスに設定されていません。](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
 
 #### <a name="workaround"></a>回避策
 
 OneDrive のユーザーには、Microsoft の [OneDrive for Windows](https://onedrive.live.com/about/en-us/download/) クライアントを使用し、標準の [Open a model]\(モデルを開く\) ダイアログで OneDrive に格納されているファイルにアクセスすることをお勧めします。
 
-![削除された OneDrive の機能](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
+![[モデルを開く] ダイアログ ボックスで [OneDrive] が選択されていることを示しているスクリーンショット。](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
 
 ### <a name="my-organization-uses-the-2016-version-of-the-tool-can-i-use-the-azure-stencil-set"></a>組織で 2016 バージョンのツールを使用していますが、Azure のステンシル セットを使用できますか?
 

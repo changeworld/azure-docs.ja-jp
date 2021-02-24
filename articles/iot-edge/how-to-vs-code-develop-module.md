@@ -3,18 +3,18 @@ title: Azure IoT Edge のモジュールを開発およびデバッグする | M
 description: Visual Studio Code を使用して、Azure IoT Edge のモジュールを C#、Python、Node.js、Java、C で開発、ビルド、デバッグする
 services: iot-edge
 keywords: ''
-author: shizn
-ms.author: xshi
+author: kgremban
+ms.author: kgremban
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 848f617aaf74960aeecd856016321ac7607eca00
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995915"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -27,7 +27,7 @@ Visual Studio Code のデバッグ機能をよく知らない場合は、[デバ
 この記事では、複数のアーキテクチャ用に複数の言語でモジュールを開発およびデバッグする手順について説明します。 現時点では、Visual Studio Code は、C#、C、Python、Node.js、および Java で記述されたモジュールをサポートしています。 サポートされているデバイス アーキテクチャは X64 と ARM32 です。 サポートされているオペレーティング システム、言語、およびアーキテクチャの詳細については、「[Language and architecture support (言語とアーキテクチャのサポート)](module-development.md#language-and-architecture-support)」を参照してください。
 
 >[!NOTE]
->Linux ARM64 デバイスの開発とデバッグのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
+>Linux ARM64 デバイスの開発とデバッグのサポートは、[パブリック プレ表示](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレ表示)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,13 +51,13 @@ Windows、macOS、または Linux を実行しているコンピューターま�
 
 - Node.js:[Node.js](https://nodejs.org)。 また、[Yeoman](https://www.npmjs.com/package/yo) と [Azure IoT Edge Node.js Module Generator](https://www.npmjs.com/package/generator-azure-iot-edge-module) もインストールする必要があります。
 
-- Java:[Java SE Development Kit 10](https://aka.ms/azure-jdks) と [Maven](https://maven.apache.org/)。 JDK インストールを指すように [`JAVA_HOME` 環境変数を設定する](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)必要があります。
+- Java:[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) と [Maven](https://maven.apache.org/)。 JDK インストールを指すように [`JAVA_HOME` 環境変数を設定する](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)必要があります。
 
 モジュール イメージを作成してデプロイするには、モジュール イメージを作成する Docker とモジュール イメージを保持するコンテナー レジストリが必要です。
 
 - お使いの開発用マシン上の [Docker Community Edition](https://docs.docker.com/install/)。
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](../container-registry/index.yml) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。
@@ -79,7 +79,7 @@ C でモジュールを開発している場合を除き、IoT Edge ソリュー
 
 次の手順では、Visual Studio Code と Azure IoT Tools を使用して好きな開発言語 (C# で記述されている Azure Functions を含む) で IoT Edge モジュールを作成する方法を説明します。 まずはソリューションを作成し、次にそのソリューション内に最初のモジュールを生成します。 各ソリューションには複数のモジュールを含めることができます。
 
-1. **[ビュー]**  >  **[コマンド パレット]** を選択します。
+1. **[表示]**  >  **[コマンド パレット]** を選択します。
 
 1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。
 
@@ -154,13 +154,13 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
    ![シミュレーター モジュールの状態](media/how-to-develop-csharp-module/simulator-status.png)
 
-   **edgeHubDev** コンテナーはローカルの IoT Edge シミュレーターの中心です。 これは、IoT Edge セキュリティ デーモンを使用せずに開発用マシンで実行可能であり、ネイティブ モジュール アプリまたはモジュール コンテナー用の環境設定を提供します。 **入力**コンテナーは、モジュール上の対象となる入力チャネルへのメッセージのブリッジに役立つ REST API シリーズを公開します。
+   **edgeHubDev** コンテナーはローカルの IoT Edge シミュレーターの中心です。 これは、IoT Edge セキュリティ デーモンを使用せずに開発用マシンで実行可能であり、ネイティブ モジュール アプリまたはモジュール コンテナー用の環境設定を提供します。 **入力** コンテナーは、モジュール上の対象となる入力チャネルへのメッセージのブリッジに役立つ REST API シリーズを公開します。
 
 ### <a name="debug-module-in-launch-mode"></a>起動モードでモジュールをデバッグする
 
 1. お使いの開発言語の要件に従ってデバッグ用の環境を準備し、モジュール内にブレークポイントを設定して、使用するデバッグ構成を選択します。
    - **C#**
-     - Visual Studio Code 統合ターミナルで、ディレクトリを ***&lt;対象のモジュール名&gt;*** フォルダーに変更し、次のコマンドを実行して .NET Core アプリケーションをビルドします。
+     - Visual Studio Code 統合ターミナルで、ディレクトリを **_&lt;対象のモジュール名&gt;_* _ フォルダーに変更し、次のコマンドを実行して .NET Core アプリケーションをビルドします。
 
        ```cmd
        dotnet build
@@ -168,13 +168,13 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `Program.cs` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (.NET Core)]\(<モジュール名> のローカル デバッグ (.NET Core)\)** を選択します。
+     - _*[表示] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] 表示に移動します。ドロップダウンからデバッグ構成として **[_ &lt;モジュール名&gt;_ ローカル デバッグ (.NET Core)] を選択します。
 
         > [!NOTE]
         > .NET Core `TargetFramework` が `launch.json` 内のプログラム パスと一致しない場合は、Visual Studio Code がこのプログラムを正常に起動できるように .csproj ファイル内の `TargetFramework` に合わせて `launch.json` 内のプログラム パスを手動で更新する必要があります。
 
    - **Node.js**
-     - Visual Studio Code 統合ターミナルで、ディレクトリを ***&lt;対象のモジュール名&gt;*** フォルダーに変更し、次のコマンドを実行して Node パッケージをインストールします。
+     - Visual Studio Code 統合ターミナルで、ディレクトリを **_&lt;対象のモジュール名&gt;_* _ フォルダーに変更し、次のコマンドを実行して Node パッケージをインストールします。
 
        ```cmd
        npm install
@@ -182,11 +182,11 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `app.js` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Node.js)]\(<モジュール名> のローカル デバッグ (Node.js)\)** を選択します。
+     - _*[表示] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] 表示に移動します。ドロップダウンからデバッグ構成として **[_ &lt;モジュール名&gt;_ のローカル デバッグ (Node.js)] を選択します。
    - **Java**
      - `App.java` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Java)]\(<モジュール名> のローカル デバッグ (Java)\)** を選択します。
+     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ _&lt;your module name&gt;_ Local Debug (Java)]\(<モジュール名> のローカル デバッグ (Java)\)** を選択します。
 
 1. **[デバッグの開始]** をクリックするか **F5** キーを押して、デバッグ セッションを開始します。
 
@@ -234,7 +234,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
    ![watch 変数](media/how-to-vs-code-develop-module/view-log.png)
 
-1. Visual Studio Code の [デバッグ] ビューに移動し、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、***&lt;対象のモジュール名&gt;* Remote Debug** のようになります。
+1. Visual Studio Code の [デバッグ] ビューに移動し、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、**_&lt;対象のモジュール名&gt;_ Remote Debug** のようになります。
 
 1. **[デバッグの開始]** を選択するか、**F5** キーを押します。 アタッチするプロセスを選択します。
 
@@ -322,13 +322,13 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
   - デバッグ対象のマシン上のモジュールが実行されており、デバッガーがアタッチする準備が整えられていること、およびポート 9229 が外部からアクセス可能であることを確認します。 これを確認するには、デバッガー マシン上で `http://<target-machine-IP>:9229/json` を開きます。 この URL に、デバッグ対象の Node.js モジュールに関する情報が表示されます。
   
-  - 開発用マシン上で Visual Studio Code を開き、`launch.json` を編集して、***&lt;モジュール名&gt;* Remote Debug (Node.js)** プロファイル (モジュールが Windows コンテナーとして実行されている場合は、***&lt;モジュール名&gt;* Remote Debug (Windows コンテナー内の Node.js)** プロファイル) のアドレス値が、デバッグ対象のマシンの IP になるようにします。
+  - 開発用マシン上で Visual Studio Code を開き、`launch.json` を編集して、**_&lt;モジュール名&gt;_ Remote Debug (Node.js)** プロファイル (モジュールが Windows コンテナーとして実行されている場合は、**_&lt;モジュール名&gt;_ Remote Debug (Windows コンテナー内の Node.js)** プロファイル) のアドレス値が、デバッグ対象のマシンの IP になるようにします。
 
 - **Java**
 
   - `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N` を実行し、デバッグ対象マシンへの SSH トンネルを構築します。
   
-  - 開発用マシン上で Visual Studio Code を開き、`launch.json` 内の ***&lt;モジュール名&gt;* Remote Debug (Java)** プロファイルを編集し、ターゲット マシンにアタッチできるようにします。 Visual Studio Code を使用して `launch.json` を編集したり、Java をデバッグしたりする方法の詳細については、[デバッガーの構成](https://code.visualstudio.com/docs/java/java-debugging#_configuration)の該当するセクションをご覧ください。
+  - 開発用マシン上で Visual Studio Code を開き、`launch.json` 内の **_&lt;モジュール名&gt;_ Remote Debug (Java)** プロファイルを編集し、ターゲット マシンにアタッチできるようにします。 Visual Studio Code を使用して `launch.json` を編集したり、Java をデバッグしたりする方法の詳細については、[デバッガーの構成](https://code.visualstudio.com/docs/java/java-debugging#_configuration)の該当するセクションをご覧ください。
 
 - **Python**
 
@@ -336,11 +336,11 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
   - 前に `main.py` 内に挿入したコード `ptvsd.enable_attach(('0.0.0.0', 5678))` 内で、**0.0.0.0** をデバッグ対象マシンの IP アドレスに変更します。 IoT Edge モジュールをもう一度ビルドし、プッシュしてデプロイします。
 
-  - 開発用マシン上で Visual Studio Code を開き、`launch.json` を編集して、***&lt;モジュール名&gt;* Remote Debug (Python)** プロファイルの `host` 値に、`localhost` ではなく、ターゲット マシンの IP アドレスが使用されるようにします。
+  - 開発用マシン上で Visual Studio Code を開き、`launch.json` を編集して、**_&lt;モジュール名&gt;_ Remote Debug (Python)** プロファイルの `host` 値に、`localhost` ではなく、ターゲット マシンの IP アドレスが使用されるようにします。
 
 ### <a name="debug-your-module"></a>モジュールをデバッグする
 
-1. Visual Studio Code の [デバッグ] ビューで、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、***&lt;対象のモジュール名&gt;* Remote Debug** のようになります。
+1. Visual Studio Code の [デバッグ] ビューで、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、**_&lt;対象のモジュール名&gt;_ Remote Debug** のようになります。
 
 1. お使いの開発言語のモジュール ファイルを開いて、ブレークポイントを追加します。
 

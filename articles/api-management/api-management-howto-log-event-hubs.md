@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903393"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072409"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure API Management で Azure Event Hubs にイベントを記録する方法
 Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むことができる高度にスケーラブルなデータ受信サービスであり、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。 Event Hubs はイベント パイプラインの「玄関」として機能し、Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーまたはバッチ処理/ストレージ アダプターを使用して変換および格納できます。 Event Hubs はイベント ストリームの生成とイベントの使用を分離し、イベント コンシューマーが独自のスケジュールでイベントにアクセスできるようにします。
@@ -32,7 +32,7 @@ Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むこ�
 ## <a name="create-an-api-management-logger"></a>API Management ロガーの作成
 イベント ハブが完成したら、そこにイベントを記録できるようにするための構成を API Management サービスの [ロガー](/rest/api/apimanagement/2019-12-01/logger) に対して行います。
 
-API Management のロガーは、 [API Management REST API](https://aka.ms/apimapi)を使用して構成します。 要求の詳細な例については、[ロガーの作成方法](/rest/api/apimanagement/2019-12-01/logger/createorupdate)を参照してください。
+API Management のロガーは、 [API Management REST API](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)を使用して構成します。 要求の詳細な例については、[ロガーの作成方法](/rest/api/apimanagement/2019-12-01/logger/createorupdate)を参照してください。
 
 ## <a name="configure-log-to-eventhub-policies"></a>log-to-eventhub ポリシーを構成する
 

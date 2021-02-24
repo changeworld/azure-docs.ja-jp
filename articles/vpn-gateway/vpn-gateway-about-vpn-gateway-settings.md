@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f801b94a16ae6fcee6896dd70510469c5e20098
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036914"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010814"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -27,8 +27,6 @@ VPN Gateway の接続は複数のリソースの構成に依存し、それぞ�
 * ゾーン冗長ゲートウェイについては、[ゾーン冗長ゲートウェイについて](about-zone-redundant-vnet-gateways.md)の記事をご覧ください。
 
 * 仮想 WAN については、「[Virtual WAN について](../virtual-wan/virtual-wan-about.md)」をご覧ください。
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>ゲートウェイの種類
 
@@ -55,11 +53,11 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>ゲートウェイの SKU を構成する
 
-#### <a name="azure-portal"></a>Azure portal
+**Azure portal**
 
 Azure Portal を使用して Resource Manager の仮想ネットワーク ゲートウェイを作成する場合、ドロップダウンを使用してワーク ゲートウェイ SKU を選択できます。 表示されるオプションは、選択したゲートウェイの種類と VPN の種類に対応します。
 
-#### <a name="powershell"></a>PowerShell
+**PowerShell**
 
 次の PowerShell の例では、`-GatewaySku` が VpnGw1 として指定されています。 PowerShell を使用してゲートウェイを作成する場合は、まず、IP 構成を作成してから、変数を使用して参照する必要があります。 この例では、構成変数は $gwipconfig となります。
 
@@ -69,7 +67,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -81,9 +79,15 @@ VPN ゲートウェイがあり、別のゲートウェイ SKU を使用する�
 
 1. Basic SKU を除き、同じ世代 (Generation1 または Generation2) 内で VPN ゲートウェイ SKU を別の VPN ゲートウェイ SKU にサイズ変更することができます。 たとえば、Generation1 の VpnGw1 は Generation1 の VpnGw2 にサイズ変更できますが、Generation2 の VpnGw2 にはサイズ変更できません。
 2. 古いゲートウェイ SKU では、Basic、Standard、HighPerformance SKU の間でサイズ変更できます。
-3. Basic/Standard/HighPerformance SKU から VpnGw SKU にサイズ変更することは**できません**。 代わりに新しい SKU に[変更](#change)する必要があります。
+3. Basic/Standard/HighPerformance SKU から VpnGw SKU にサイズ変更することは **できません**。 代わりに新しい SKU に[変更](#change)する必要があります。
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>ゲートウェイのサイズを変更する
+
+**Azure Portal**
+
+[!INCLUDE [Resize a SKU - portal](../../includes/vpn-gateway-resize-gw-portal-include.md)]
+
+**PowerShell**
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 
@@ -100,7 +104,7 @@ Resource Manager デプロイ モデルの各構成では、仮想ネットワ�
 * ExpressRoute
 * VPNClient
 
-次の PowerShell の例では、接続の種類 *IPsec*を必要とする S2S 接続を作成しています。
+次の PowerShell の例では、接続の種類 *IPsec* を必要とする S2S 接続を作成しています。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
@@ -118,7 +122,7 @@ VPN Gateway 構成に対して仮想ネットワーク ゲートウェイを作�
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-次の PowerShell の例では、 `-VpnType` を *RouteBased*に指定しています。 ゲートウェイを作成するときは、-VpnType が構成に対して適切であることを確認する必要があります。
+次の PowerShell の例では、 `-VpnType` を *RouteBased* に指定しています。 ゲートウェイを作成するときは、-VpnType が構成に対して適切であることを確認する必要があります。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
@@ -152,9 +156,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>ローカル ネットワーク ゲートウェイ
 
- ローカル ネットワーク ゲートウェイは、仮想ネットワーク ゲートウェイとは異なります。 VPN ゲートウェイの構成を作成する場合、通常、ローカル ネットワーク ゲートウェイはオンプレミスの場所を表します。 クラシック デプロイ モデルでは、ローカル ネットワーク ゲートウェイはローカル サイトとして参照されます。
+ローカル ネットワーク ゲートウェイは、仮想ネットワーク ゲートウェイとは異なります。 VPN ゲートウェイの構成を作成する場合、通常、ローカル ネットワーク ゲートウェイはオンプレミス ネットワークとそれに対応する VPN デバイスを表します。 クラシック デプロイ モデルでは、ローカル ネットワーク ゲートウェイはローカル サイトとして参照されます。
 
-ローカル ネットワーク ゲートウェイに名前とオンプレミス VPN デバイスのパブリック IP アドレスを指定し、オンプレミスの場所に存在するアドレスのプレフィックスを指定します。 Azure は、ネットワーク トラフィックの宛先アドレスのプレフィックスを参照して、ローカル ネットワーク ゲートウェイに指定された構成を確認し、それに応じてパケットをルーティングします。 また、VPN ゲートウェイ接続を使用している VNet 間の構成に対して、ローカル ネットワーク ゲートウェイを指定します。
+ローカル ネットワーク ゲートウェイに名前とオンプレミス VPN デバイスのパブリック IP アドレスまたは完全修飾ドメイン名 (FQDN) を指定し、オンプレミスの場所に存在するアドレスのプレフィックスを指定します。 Azure は、ネットワーク トラフィックの宛先アドレスのプレフィックスを参照して、ローカル ネットワーク ゲートウェイに指定された構成を確認し、それに応じてパケットをルーティングします。 VPN デバイスで Border Gateway Protocol (BGP) を使用する場合、VPN デバイスの BGP ピア IP アドレスとオンプレミス ネットワークの自律システム番号 (ASN) を指定します。 また、VPN ゲートウェイ接続を使用している VNet 間の構成に対して、ローカル ネットワーク ゲートウェイを指定します。
 
 次の PowerShell の例では、新しいローカル ネットワーク ゲートウェイを作成します。
 
@@ -172,7 +176,7 @@ VPN Gateway 構成に対して REST API、PowerShell コマンドレット、ま
 | **クラシック** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
-| [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
+| [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | サポートされていません | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>次のステップ

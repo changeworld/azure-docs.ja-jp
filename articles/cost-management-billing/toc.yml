@@ -9,6 +9,7 @@
   items:
     - name: コストの分析を開始する
       href: costs/quick-acm-cost-analysis.md
+      displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
     - name: 予算の作成 - Resource Manager テンプレート
       href: costs/quick-create-budget-template.md
       displayName: 'ARM template, resource manager template'
@@ -26,6 +27,7 @@
       href: costs/tutorial-acm-create-budgets.md
     - name: データのエクスポート
       href: costs/tutorial-export-acm-data.md
+      displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
     - name: レコメンデーションに基づいて対応する
       href: costs/tutorial-acm-opt-recommendations.md
 - name: 概念
@@ -40,12 +42,16 @@
           href: costs/understand-work-scopes.md
         - name: グループとフィルターのオプション
           href: costs/group-filter.md
+        - name: コストの管理を計画する
+          href: understand/plan-manage-costs.md
+        - name: 予想外のコストを防ぐ
+          href: understand/analyze-unexpected-charges.md
         - name: 自動化を使用したコストの管理
           href: costs/manage-automation.md
         - name: パートナー向け Cost Management
           href: costs/get-started-partners.md
-        - name: Cost Management と Cloudyn のいずれかを選択する
-          href: costs/choose-between-azure-cost-management-cloudyn.md
+        - name: EA レポートから Azure Resource Manager API への移行
+          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Reservations
       items:
         - name: Azure の予約とは
@@ -57,7 +63,7 @@
             - name: Azure 予約割引の適用方法
               href: reservations/reservation-discount-application.md?toc=/azure/cost-management-billing/toc.json
             - name: App Service
-              href: reservations/reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+              href: reservations/reservation-discount-app-service.md?toc=/azure/cost-management-billing/toc.json
             - name: Azure Cache for Redis
               href: reservations/understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
             - name: Cosmos DB
@@ -92,7 +98,7 @@
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
         - name: 個々のサブスクリプションの利用状況データ
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: 企業顧客の利用状況データ
+        - name: Enterprise Agreement と Microsoft 顧客契約の利用状況データ
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: 課金
       items:
@@ -108,12 +114,22 @@
           href: manage/mca-understand-pricesheet.md
         - name: Microsoft Partner Agreement の請求書の用語
           href: understand/mpa-invoice-terms.md
-        - name: 更新された個々の課金アカウントに対する変更
+        - name: 更新された従量課金制の課金アカウントに対する変更
           href: understand/mosp-new-customer-experience.md
         - name: Microsoft 顧客契約の請求先アカウント
           href: understand/mca-overview.md
         - name: Microsoft パートナー契約の課金アカウント
           href: understand/mpa-overview.md
+        - name: サブスクリプションの転送について
+          href: understand/subscription-transfer.md
+        - name: パートナー間でのサブスクリプションの譲渡 (プレビュー)
+          href: manage/azure-plan-subscription-transfer-partners.md
+        - name: Azure EA ポータルの概要
+          href: manage/ea-portal-get-started.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: Cost Management と Billing を構成する
@@ -122,7 +138,7 @@
           items:
             - name: アカウント管理者のタスク
               href: manage/account-admin-tasks.md
-            - name: プロファイルを編集する
+            - name: 請求先の連絡先情報の編集
               href: manage/change-azure-account-profile.md
             - name: 過去の延滞残高を決済する
               href: manage/resolve-past-due-balance.md
@@ -172,12 +188,12 @@
               href: manage/pay-by-invoice.md
             - name: 追加のサブスクリプションを作成する
               href: manage/create-subscription.md
-            - name: プログラムによってサブスクリプションを作成する
-              href: manage/programmatically-create-subscription.md
             - name: EA サブスクリプションを作成するためのアクセスを許可する
               href: manage/grant-access-to-create-subscription.md
             - name: サブスクリプション情報のエクスポート
               href: manage/export-subscriptions.md
+            - name: Azure の課金の支払い方法を削除する
+              href: manage/delete-azure-payment-method.md
             - name: クレジット カードの変更
               href: manage/change-credit-card.md
             - name: 管理者の変更
@@ -188,10 +204,22 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: サブスクリプションを取り消す
               href: manage/cancel-azure-subscription.md
+        - name: プログラムによってサブスクリプションを作成する
+          items:
+            - name: プログラムによってサブスクリプションを作成する
+              href: manage/programmatically-create-subscription.md
+            - name: プログラムによる EA サブスクリプションの作成
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: プログラムによる MCA サブスクリプションの作成
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: プログラムによる MPA サブスクリプションの作成
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: サブスクリプションを作成する - ARM テンプレート
+              href: manage/create-subscription-template.md
+            - name: プログラムによるサブスクリプションの作成 - プレビュー API
+              href: manage/programmatically-create-subscription-preview.md
         - name: Enterprise Agreement サブスクリプションの管理
           items:
-            - name: Azure EA ポータルの概要
-              href: manage/ea-portal-get-started.md
             - name: Azure における EA のロール
               href: manage/understand-ea-roles.md
             - name: Azure EA Portal の管理
@@ -242,8 +270,6 @@
               href: manage/upgrade-azure-subscription.md
     - name: 主要なコスト管理タスクの実行
       items:
-        - name: 予想外のコストを防ぐ
-          href: manage/getting-started.md
         - name: 料金の計算
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 一般的なタスクにコスト分析を使用する
@@ -277,7 +303,7 @@
             - name: Azure の予約の購入
               href: reservations/prepare-buy-reservation.md?toc=/azure/cost-management-billing/toc.json
             - name: App Service
-              href: reservations/prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+              href: reservations/prepay-app-service.md?toc=/azure/cost-management-billing/toc.json
             - name: Azure Cache for Redis の予約
               href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
             - name: Cosmos DB
@@ -303,11 +329,11 @@
             - name: SAP HANA L インスタンス
               href: reservations/prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
             - name: SQL Database
-              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+              href: ../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2ftoc.json
             - name: Azure Synapse Analytics
               href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
             - name: 仮想マシン
-              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
+              href: ../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2ftoc.json
         - name: 購入後の表示、管理、最適化
           items:
             - name: 予約と使用率の表示
@@ -330,6 +356,12 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: トラブルシューティング
       items:
+        - name: 使用状況ファイルに関する EA の請求の問題
+          href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
+        - name: 使用状況ファイルに関する MCA の請求の問題
+          href: manage/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables.md
+        - name: 使用状況ファイルに関する CSP の請求の問題
+          href: manage/troubleshoot-csp-billing-issues-usage-file-pivot-tables.md
         - name: サブスクリプションが見つからない
           href: manage/no-subscriptions-found.md
         - name: 支払いに関する問題
@@ -349,42 +381,40 @@
 - name: リファレンス
   items:
     - name: Azure Cost Management REST API
-      href: 'https://docs.microsoft.com/rest/api/cost-management'
+      href: /rest/api/cost-management
     - name: Azure Consumption REST API
-      href: 'https://docs.microsoft.com/rest/api/consumption'
-    - name: Resource Manager テンプレート
+      href: /rest/api/consumption
+    - name: Consumption REST API ARM 予算テンプレート
       href: /azure/templates/microsoft.consumption/budgets
     - name: Cost Management REST API のサンプル
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+    - name: コスト管理用の Azure PowerShell のコマンドレット
+      href: /powershell/module/Az.CostManagement
     - name: 課金自動化のシナリオ
       href: manage/cost-management-automation-scenarios.md
-    - name: Azure Billing API の概要
-      href: manage/usage-rate-card-overview.md
+    - name: Azure Retail Prices REST API
+      href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure Billing REST API
-      href: 'https://docs.microsoft.com/rest/api/billing'
+      href: /rest/api/billing
     - name: Azure Consumption API の概要
       href: manage/consumption-api-overview.md
     - name: Azure Consumption REST API
-      href: 'https://docs.microsoft.com/rest/api/consumption'
-    - name: RateCard REST API
-      href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
-    - name: Usage REST API
-      href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
-    - name: Enterprise Reporting の概要
+      href: /rest/api/consumption
+    - name: Enterprise Reporting REST API の概要
       href: manage/enterprise-api.md
     - name: Enterprise Reporting REST API
-      href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
+      href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Reservations
       items:
         - name: 予約 REST API
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: 予約 - Azure PowerShell
+        - name: 予約用の Azure PowerShell コマンドレット
           href: /powershell/module/azurerm.reservations
-        - name: 予約 - CLI
+        - name: 予約用の Azure CLI
           href: /cli/azure/reservations/reservation
-        - name: Cost Management - Consumption Usage Details REST API
+        - name: Usage Details REST API
           href: /rest/api/consumption/usagedetails
-        - name: Cost Management - Consumption Reservations Details REST API
+        - name: Reservations Details REST API
           href: /rest/api/consumption/reservationsdetails
 - name: リソース
   items:
@@ -424,10 +454,6 @@
           href: cloudyn/overview.md
     - name: クイックスタート
       items:
-        - name: コスト データの表示
-          href: cloudyn/quick-register-azure-sub.md
-        - name: コスト データの表示 - EA
-          href: cloudyn/quick-register-ea.md
         - name: コスト データの表示 - CSP
           href: cloudyn/quick-register-csp.md
     - name: チュートリアル
@@ -452,8 +478,6 @@
           href: cloudyn/activate-subs-accounts.md
         - name: VM の拡張メトリックの追加
           href: cloudyn/azure-vm-extended-metrics.md
-        - name: Google アカウントの接続
-          href: cloudyn/connect-google-account.md
         - name: AWS アカウントの接続
           href: cloudyn/connect-aws-account.md
         - name: ストレージ アカウントの構成
@@ -477,4 +501,4 @@
         - name: Cloudyn に関する FAQ
           href: cloudyn/cost-mgt-faq.md
         - name: Cloudyn のサポートに問い合わせる
-          href: 'https://docs.microsoft.com/azure/cost-management-billing/costs/open-support-request'
+          href: ./costs/open-support-request.md

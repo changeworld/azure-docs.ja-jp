@@ -13,6 +13,10 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: advisor-alerts-arm.md
+- name: 概念
+  items:
+    - name: セキュリティ ベースライン
+      href: security-baseline.md
 - name: チュートリアル
   items:
     - name: Advisor の使用を開始する
@@ -41,6 +45,8 @@
       href: advisor-quick-fix.md
     - name: Azure Resource Graph の Advisor データ
       href: advisor-azure-resource-graph.md
+    - name: Advisor スコアの使用
+      href: azure-advisor-score.md
 - name: リファレンス
   items:
     - name: Security Center

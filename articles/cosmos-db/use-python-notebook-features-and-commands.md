@@ -3,17 +3,19 @@ title: Azure Cosmos DB の Python ノートブックで組み込みのノート�
 description: Azure Cosmos DB の組み込み Python ノートブックを使用し、組み込みのコマンドと機能で一般的な操作を実行する方法について説明します。
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761197"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165826"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB の Python ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると、Azure portal のデータを分析して視覚化することができます。 この記事では、Python ノートブックで組み込みのノートブック コマンドと機能を使用して一般的な操作を行う方法について説明します。
 
@@ -122,6 +124,8 @@ Total RUs consumed : 25022.58
 ```
 出力統計を使用すると、項目のアップロードに使用される有効な RU/秒を計算できます。 たとえば、25000 の RU が 38 秒で使用された場合、有効な RU/秒は 25000ru/38 秒 = 658 RU/秒になります。
 
+ファイル (CSV や JSON ファイルなど) をローカル ノートブックのワークスペースに保存できます。 ノートブックにセルを追加してファイルを保存することをお勧めします。 これらのファイルは、ノートブック環境の統合ターミナルで表示できます。 "ls" コマンドを使用すると、保存したファイルを表示できます。 ただし、これらのファイルはワークスペースをリセットすると削除されます。 そのため、ローカル ワークスペースではなく、GitHub やストレージ アカウントなどの永続的なストレージを使用することをお勧めします。
+
 ## <a name="run-another-notebook-in-current-notebook"></a>現在のノートブックで別のノートブックを実行する 
 ``%%run`` マジック コマンドを使用すると、現在のノートブックから、ワークスペース内の別のノートブックを実行できます。 次の構文を使用します。
 
@@ -167,7 +171,7 @@ container = database.create_container_if_not_exists(id='WebsiteData', partition_
 ## <a name="create-a-custom-instance-of-cosmos_client"></a>``cosmos_client`` のカスタム インスタンスを作成する
 自由度を上げるために、次の目的で ``cosmos_client`` のカスタム インスタンスを作成できます。
 
-- [接続ポリシー](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)をカスタマイズする
+- [接続ポリシー](/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?preserve-view=true&view=azure-python-preview)をカスタマイズする
 - 現在のアカウントとは異なる Azure Cosmos アカウントに対して操作を実行する
 
 [環境変数](#access-the-account-endpoint-and-primary-key-env-variables)を介して現在のアカウントの接続文字列と主キーにアクセスできます。 

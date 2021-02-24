@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494668"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046823"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
@@ -29,13 +30,15 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-サポートされる Windows オペレーティング システムの詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)に関する記事を参照してください。
+サポートされる Windows オペレーティング システムの詳細については、「[ エージェントの概要](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)」の記事を参照してください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
 次の表は、Windows Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 
 
 | Log Analytics Windows Agent バンドルのバージョン | Log Analytics Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18053| 1.0.18053.0 | 2020 年 10 月   | <ul><li>新しいエージェント トラブルシューティング ツール</li><li>エージェントが Azure サービスに対する証明書の変更を処理する方法を更新</li></ul> |
+| 10.20.18040 | 1.0.18040.2 | 2020 年 8 月   | <ul><li>Azure Arc の問題を解決</li></ul> |
 | 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>Azure Monitor Private Link スコープを使用した Private Link 経由の接続を有効化</li><li>ワークスペースへのインジェストの急増を回避するインジェスト調整の追加</li><li>追加の Azure Government クラウドおよびリージョンのサポートを追加</li><li>HealthService.exe がクラッシュするバグの解消</li></ul> |
 | 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>SHA-2 コード署名サポートを追加</li><li>VM 拡張機能のインストールと管理を改善</li><li>Azure Arc for Servers 統合のバグを解決</li><li>カスタマー サポート用の組み込みのトラブルシューティング ツールを追加</li><li>追加の Azure Government リージョンのサポートを追加</li> |
 | 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li></ul> |

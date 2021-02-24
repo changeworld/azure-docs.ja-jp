@@ -1,17 +1,15 @@
 ---
 title: Java で最初の信頼性の高いサービスを作成する
-description: ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。
-author: suhuruli
+description: Java でステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.custom: devx-track-java
-ms.author: suhuruli
-ms.openlocfilehash: 30797e68081e346ee0f31f77da15f820776337a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-javai
+ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324507"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91535238"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java で Reliable Services の使用を開始する
 > [!div class="op_single_selector"]

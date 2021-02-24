@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b99e744fb949f707467286c3d79de0f4e76a49c6
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5ed932488551918bb0bfeb7dc9ffcb2f59b6d152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835512"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878903"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
@@ -46,9 +47,9 @@ SAP HANA on Azure (L インスタンス) を複数の異なる Azure リージ�
 
 ## <a name="additional-virtual-network-information"></a>仮想ネットワークの追加情報
 
-仮想ネットワークを ExpressRoute に接続するには、Azure ExpressRoute ゲートウェイを作成する必要があります。 詳細については、[ExpressRoute 用の ExpressRoute ゲートウェイについて](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページを参照してください。 
+仮想ネットワークを ExpressRoute に接続するには、Azure ExpressRoute ゲートウェイを作成する必要があります。 詳細については、[ExpressRoute 用の ExpressRoute ゲートウェイについて](../../../expressroute/expressroute-about-virtual-network-gateways.md)のページを参照してください。 
 
-Azure ExpressRoute ゲートウェイは、Azure 外部のインフラストラクチャまたは Azure L インスタンス スタンプへの ExpressRoute で使用されます。 ExpressRoute の接続元が、それぞれ異なる Microsoft エンタープライズ エッジ ルーターであれば、Azure ExpressRoute ゲートウェイを最大 4 つの異なる ExpressRoute 回線に接続できます。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 
+Azure ExpressRoute ゲートウェイは、Azure 外部のインフラストラクチャまたは Azure L インスタンス スタンプへの ExpressRoute で使用されます。 ExpressRoute の接続元が、それぞれ異なる Microsoft エンタープライズ エッジ ルーターであれば、Azure ExpressRoute ゲートウェイを最大 4 つの異なる ExpressRoute 回線に接続できます。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md)」をご覧ください。 
 
 > [!NOTE] 
 > ExpressRoute 接続を使用して ExpressRoute ゲートウェイで実現できる最大スループットは 10 Gbps です。 仮想ネットワーク内の VM とオンプレミスのシステム間で (単一のコピー ストリームとして) ファイルをコピーすると、さまざまなゲートウェイ SKU の最大限のスループットを実現できません。 ExpressRoute ゲートウェイのすべての帯域幅を活用するには、複数のストリームを使用します。 または、1 つのファイルのパラレル ストリームで複数のファイルをコピーする必要があります。
@@ -59,7 +60,7 @@ HANA L インスタンスのネットワーク アーキテクチャは、次の
 
 - オンプレミス ネットワークと Azure への ExpressRoute 接続。 この部分はお客様の領域であり、ExpressRoute 経由で Azure に接続されます。 この Expressroute 回線に関する支払いは、全額がお客様の負担となります。 帯域幅は、オンプレミスの資産と接続先の Azure リージョンの間のネットワーク トラフィックを処理するのに十分な大きさにする必要があります。 次の図の右下の部分を参照してください。
 - 仮想ネットワークを使用した前述の Azure ネットワーク サービス。繰り返しになりますが、仮想ネットワークには ExpressRoute ゲートウェイを追加する必要があります。 この部分は、アプリケーションの要件、セキュリティ、コンプライアンス要件に適した設計を見つける必要がある領域です。 仮想ネットワークの数と選択する Azure ゲートウェイ SKU の観点で、HANA L インスタンスを使用するかどうかがもう 1 つの検討事項となります。 図の右上の部分を参照してください。
-- ExpressRoute テクノロジを使用した Azure への HANA L インスタンスの接続。 この部分は Microsoft によってデプロイされ、処理されます。 お客様が行う必要があるのは、HANA L インスタンスへの資産のデプロイ後に、ExpressRoute 回線を仮想ネットワークに接続する IP アドレス範囲を指定するだけです。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 Azure データ センター ネットワーク ファブリックと HANA L インスタンス ユニットの間の接続について、お客様に追加料金が発生することはありません。
+- ExpressRoute テクノロジを使用した Azure への HANA L インスタンスの接続。 この部分は Microsoft によってデプロイされ、処理されます。 お客様が行う必要があるのは、HANA L インスタンスへの資産のデプロイ後に、ExpressRoute 回線を仮想ネットワークに接続する IP アドレス範囲を指定するだけです。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md)」をご覧ください。 Azure データ センター ネットワーク ファブリックと HANA L インスタンス ユニットの間の接続について、お客様に追加料金が発生することはありません。
 - HANA L インスタンス スタンプ内のネットワーキング。ほとんどの場合、お客様の側でこれを意識することはありません。
 
 ![SAP HANA on Azure (L インスタンス) およびオンプレミスに接続された仮想ネットワーク](./media/hana-overview-architecture/image1-architecture.png)
@@ -75,7 +76,7 @@ Azure での SAP デプロイとの違いは次のとおりです。
 
 HANA L インスタンス スタンプのリビジョン 3 では、VM と HANA L インスタンス ユニット間で発生するネットワーク待機時間は、VM 間のネットワーク ラウンド トリップの標準的な待機時間よりも長くなる可能性があります。 Azure リージョンによっては、測定値が、次のノートで平均以下に分類されているラウンドトリップの待ち時間 (0.7 ms) を超える可能性があります: 「[SAP Note #1100926 - FAQ: Network performance (SAP ノート #1100926 - FAQ: ネットワーク パフォーマンス)](https://launchpad.support.sap.com/#/notes/1100926/E)」。 Azure VM と HANA L インスタンス ユニットの間のネットワーク ラウンド トリップ待機時間を測定するツールと Azure リージョンによっては、測定される待機時間が最大約 2 ミリ秒になる可能性があります。 しかし、お客様は SAP HANA ベースの実稼働 SAP アプリケーションを SAP HANA L インスタンスに問題なくデプロイしています。 Azure HANA L インスタンスでビジネス プロセスを十分にテストしてください。 ExpressRoute Fast Path と呼ばれる新しい機能では、Azure の HANA L インスタンスとアプリケーション レイヤー VM の間のネットワーク待ち時間を大幅に削減できます (下記参照)。 
 
-HANA L インスタンス スタンプのリビジョン 4 では、HANA L インスタンス スタンプに近接してデプロイされる Azure VM 間のネットワーク待ち時間は、Azure ExpressRoute Fast Path が構成されている場合、「[SAP Note #1100926 - FAQ:Network performance](https://launchpad.support.sap.com/#/notes/1100926/E)」に記載されている平均または平均を上回る分類に該当します (下記参照)。 リビジョン 4 の HANA L インスタンス ユニットに近接して Azure VM をデプロイするには、[Azure 近接通信配置グループ](../../linux/co-location.md)を利用する必要があります。 近接通信配置グループを使用して、リビジョン 4 でホストされている HANA Large Instance ユニットと同じ Azure データセンターに SAP アプリケーション レイヤーを配置する方法については、[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)に関する記事で説明しています。
+HANA L インスタンス スタンプのリビジョン 4 では、HANA L インスタンス スタンプに近接してデプロイされる Azure VM 間のネットワーク待ち時間は、Azure ExpressRoute Fast Path が構成されている場合、「[SAP Note #1100926 - FAQ:Network performance](https://launchpad.support.sap.com/#/notes/1100926/E)」に記載されている平均または平均を上回る分類に該当します (下記参照)。 リビジョン 4 の HANA L インスタンス ユニットに近接して Azure VM をデプロイするには、[Azure 近接通信配置グループ](../../co-location.md)を利用する必要があります。 近接通信配置グループを使用して、リビジョン 4 でホストされている HANA Large Instance ユニットと同じ Azure データセンターに SAP アプリケーション レイヤーを配置する方法については、[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)に関する記事で説明しています。
 
 VM と HANA L インスタンスの間に決定論的なネットワーク待ち時間を実現するには、ExpressRoute ゲートウェイ SKU の選択が不可欠となります。 オンプレミスと VM 間のトラフィック パターンとは異なり、VM と HANA L インスタンス間のトラフィック パターンでは、送信される要求やデータ量は小さくても、大きなバーストが発生する可能性があります。 このようなバーストを適切に処理するために、UltraPerformance ゲートウェイ SKU を使用することを強くお勧めします。 Type II クラスの HANA L インスタンス SKU の場合、ExpressRoute ゲートウェイとして UltraPerformance ゲートウェイ SKU を使用することが必須となります。
 
@@ -97,7 +98,7 @@ ExpressRoute Fast Path を構成する方法の詳細については、「[HANA 
 
 ## <a name="single-sap-system"></a>単一の SAP システム
 
-上記のオンプレミスのインフラストラクチャは ExpressRoute 経由で Azure に接続されます。 ExpressRoute 回線は、Microsoft エンタープライズ エッジ ルーター (MSEE) に接続します。 詳細については、[ExpressRoute の技術概要](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 ルートが確立されると、そのルートは Azure バックボーンに接続されます。
+上記のオンプレミスのインフラストラクチャは ExpressRoute 経由で Azure に接続されます。 ExpressRoute 回線は、Microsoft エンタープライズ エッジ ルーター (MSEE) に接続します。 詳細については、[ExpressRoute の技術概要](../../../expressroute/expressroute-introduction.md)に関する記事をご覧ください。 ルートが確立されると、そのルートは Azure バックボーンに接続されます。
 
 > [!NOTE] 
 > Azure で SAP ランドスケープを実行するには、SAP ランドスケープの Azure リージョンに最も近いエンタープライズ エッジ ルーターに接続します。 Azure IaaS 内の VM と HANA L インスタンス スタンプの間のネットワーク待ち時間を最小限に抑えるために、HANA L インスタンス スタンプは専用のエンタープライズ エッジ ルーター デバイスを介して接続されます。
@@ -135,7 +136,7 @@ HANA L インスタンスと Azure の間で大量のデータを転送するた
 
 * ディザスター リカバリーのために 2 つの異なる Azure リージョンにデプロイされている HANA L インスタンス ユニットがある場合、以前は同じ一時的なルーティングの制限が適用されました。 つまり、一方のリージョン (例: 米国西部) の HANA L インスタンス ユニットの IP アドレスが、もう一方のリージョン (例: 米国東部) でデプロイされている HANA L インスタンス ユニットにルーティングされることはありませんでした。 この制限は、リージョン間の Azure ネットワーク ピアリング、または HANA L インスタンス ユニットを仮想ネットワークに接続する ExpressRoute 回線の交差接続の使用とは無関係でした。 図については、「複数のリージョンでの HANA L インスタンス ユニットの使用」の図を参照してください。 デプロイ済みのアーキテクチャにはこのような制限があったため、HANA システム レプリケーションをディザスター リカバリー機能としてすぐに使用することはできませんでした。 最近の変更については、「複数のリージョンでの HANA L インスタンス ユニットの使用」セクションを参照してください。 
 
-* SAP HANA on Azure (L インスタンス) ユニットには、お客様が HANA L インスタンスのデプロイを要求したときに提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 この IP アドレスには、Azure 仮想ネットワークを HANA L インスタンスに接続する回線と Azure サブスクリプションを使用してアクセスできます。 サーバー IP プールのアドレス範囲から割り当てられる IP アドレスは、ハードウェア ユニットに直接割り当てられます。 このソリューションの最初のデプロイでこの割り当てが行われるため、NAT を使用した割り当ては*行われません*。 
+* SAP HANA on Azure (L インスタンス) ユニットには、お客様が HANA L インスタンスのデプロイを要求したときに提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md)」をご覧ください。 この IP アドレスには、Azure 仮想ネットワークを HANA L インスタンスに接続する回線と Azure サブスクリプションを使用してアクセスできます。 サーバー IP プールのアドレス範囲から割り当てられる IP アドレスは、ハードウェア ユニットに直接割り当てられます。 このソリューションの最初のデプロイでこの割り当てが行われるため、NAT を使用した割り当ては *行われません*。 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>HANA L インスタンスへの直接ルーティング
 
@@ -148,7 +149,7 @@ HANA L インスタンスと Azure の間で大量のデータを転送するた
 それらのシナリオで推移的なルーティングを有効にするには 3 つの方法があります。
 
 - データをルーティングするリバース プロキシ。 たとえば、仮想ファイアウォールおよびトラフィック ルーティング ソリューションとして HANA L インスタンスやオンプレミスに接続する Azure 仮想ネットワークにデプロイされる F5 BIG-IP や NGINX (および Traffic Manager) などです。
-- Linux VM で [IPTables ルール](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)を使用して、オンプレミスの場所と HANA L インスタンス ユニット間、または別のリージョンにある HANA L インスタンス ユニット間のルーティングを有効にします。 IPTables が実行される VM は、HANA L インスタンスおよびオンプレミスに接続している Azure 仮想ネットワークにデプロイする必要があります。 VM は、VM のネットワーク スループットが予想ネットワーク トラフィックに対して十分であるように、サイズを設定する必要があります。 VM のネットワーク帯域幅の詳細については、「[Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」という記事を参照してください。
+- Linux VM で IPTables ルールを使用して、オンプレミスの場所と HANA L インスタンス ユニット間、または別のリージョンにある HANA L インスタンス ユニット間のルーティングを有効にします。 IPTables が実行される VM は、HANA L インスタンスおよびオンプレミスに接続している Azure 仮想ネットワークにデプロイする必要があります。 VM は、VM のネットワーク スループットが予想ネットワーク トラフィックに対して十分であるように、サイズを設定する必要があります。 VM のネットワーク帯域幅の詳細については、「[Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」という記事を参照してください。
 - [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) は、オンプレミスと HANA L インスタンス ユニットの間の直接のトラフィックを可能にするもう 1 つのソリューションです。 
 
 これらのソリューションのすべてのトラフィックは Azure 仮想ネットワークを通じてルーティングされるため、使用されるソフト アプライアンスまたは Azure ネットワーク セキュリティ グループによってトラフィックがさらに制限される可能性があります。つまり、オンプレミスの特定の IP アドレスまたは IP アドレス範囲が、HANA L インスタンスへのアクセスをブロックされたり、明示的に許可されたりする可能性があります。 
@@ -179,7 +180,7 @@ ExpressRoute Global Reach を有効にする方法の詳細については、「
 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>HANA L インスタンスのインターネット接続
-HANA L インスタンスは、インターネットに直接接続することは*できません*。 たとえば、この制限によって、OS イメージを OS ベンダーに直接登録することができない可能性があります。 ローカルの SUSE Linux Enterprise Server Subscription Management Tool サーバーや Red Hat Enterprise Linux Subscription Manager を使用することが必要になる場合があります。
+HANA L インスタンスは、インターネットに直接接続することは *できません*。 たとえば、この制限によって、OS イメージを OS ベンダーに直接登録することができない可能性があります。 ローカルの SUSE Linux Enterprise Server Subscription Management Tool サーバーや Red Hat Enterprise Linux Subscription Manager を使用することが必要になる場合があります。
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM と HANA L インスタンス間でのデータの暗号化
 HANA L インスタンスと VM 間で転送されるデータは暗号化されません。 ただし、HANA DBMS 側と JDBC/ODBC ベースのアプリケーションとの間でのデータ交換のみを目的としている場合は、トラフィックの暗号化を有効にすることができます。 詳細については、[SAP から提供されているこちらのドキュメント](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)をご覧ください。

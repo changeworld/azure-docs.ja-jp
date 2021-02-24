@@ -3,17 +3,19 @@ title: ネットワーク プロキシ対応のデバイスを構成する - Azu
 description: Azure IoT Edge ランタイムおよびインターネット対応の任意の IoT Edge モジュールを構成して、プロキシ サーバー経由で通信する方法。
 author: kgremban
 ms.author: kgremban
-ms.date: 3/10/2020
-ms.topic: conceptual
+ms.date: 09/03/2020
+ms.topic: how-to
 ms.service: iot-edge
 services: iot-edge
-ms.custom: amqp
-ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- contperf-fy21q1
+ms.openlocfilehash: fb7cb0638ca86ea736749e6fb35e2295128162aa
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687192"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032985"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -21,29 +23,29 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 
 この記事では、プロキシ サーバーの内側で IoT Edge デバイスを構成して管理する以下の 4 つの手順について説明します。
 
-1. **デバイスに IoT Edge ランタイムをインストールします。**
+1. [**デバイスに IoT Edge ランタイムをインストールする**](#install-the-runtime-through-a-proxy)
 
-   IoT Edge のインストール スクリプトによってインターネットからパッケージとファイルが取得されるので、デバイスではこれらの要求を行うためにプロキシ サーバーを介して通信する必要があります。 詳細な手順については、この記事の「[プロキシ経由でランタイムをインストールする](#install-the-runtime-through-a-proxy)」セクションを参照してください。 Windows デバイスの場合、インストール スクリプトには[オフライン インストール](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) オプションもあります。
+   IoT Edge のインストール スクリプトによってインターネットからパッケージとファイルが取得されるので、デバイスではこれらの要求を行うためにプロキシ サーバーを介して通信する必要があります。 Windows デバイスの場合、インストール スクリプトにはオフライン インストール オプションもあります。
 
-   この手順は、最初に設定するときに IoT Edge デバイスで実行される 1 回限りのプロセスです。 IoT Edge ランタイムを更新するときにも同じ接続が必要です。
+   この手順は、最初に設定するときに IoT Edge デバイスを構成するための 1 回限りのプロセスです。 IoT Edge ランタイムを更新するときにも同じ接続が必要です。
 
-2. **デバイス上に Docker デーモンと IoT Edge デーモンを構成します。**
+2. [**デバイス上に Docker デーモンと IoT Edge デーモンを構成する**](#configure-the-daemons)
 
-   IoT Edge にはデバイス上の 2 つのデーモンが使用されますが、いずれもプロキシ サーバーを経由して Web 要求を行う必要があります。 IoT Edge デーモンは、IoT Hub との通信を担当します。 Moby デーモンはコンテナー管理を担当しているため、コンテナー レジストリと通信します。 詳細な手順については、この記事の「[デーモンの構成](#configure-the-daemons)」セクションを参照してください。
+   IoT Edge にはデバイス上の 2 つのデーモンが使用されますが、いずれもプロキシ サーバーを経由して Web 要求を行う必要があります。 IoT Edge デーモンは、IoT Hub との通信を担当します。 Moby デーモンはコンテナー管理を担当しているため、コンテナー レジストリと通信します。
 
-   この手順は、最初に設定するときに IoT Edge デバイスで実行される 1 回限りのプロセスです。
+   この手順は、最初に設定するときに IoT Edge デバイスを構成するための 1 回限りのプロセスです。
 
-3. **デバイス上の config.yaml ファイルで IoT Edge エージェントのプロパティを構成します。**
+3. [**デバイス上の config.yaml ファイルで IoT Edge エージェントのプロパティを構成する**](#configure-the-iot-edge-agent)
 
-   IoT Edge デーモンによって最初に edgeAgent モジュールが開始されますが、edgeAgent モジュールは IoT Hub から配置マニフェストを取得し、他のすべてのモジュールを開始する処理を担当します。 IoT Edge エージェントが IoT Hub に初めて接続するには、デバイス上で手動で edgeAgent モジュールの環境変数を構成します。 最初の接続後は、edgeAgent モジュールをリモートで構成できます。 詳細な手順については、この記事の「[IoT Edge エージェントを構成する](#configure-the-iot-edge-agent)」セクションを参照してください。
+   IoT Edge デーモンでは、最初に edgeAgent モジュールの起動が行われます。 次に、edgeAgent モジュールによって IoT Hub から配置マニフェストが取得され、他のすべてのモジュールの起動が行われます。 IoT Edge エージェントが IoT Hub に初めて接続するには、デバイス上で手動で edgeAgent モジュールの環境変数を構成します。 最初の接続後は、edgeAgent モジュールをリモートで構成できます。
 
-   この手順は、最初に設定するときに IoT Edge デバイスで実行される 1 回限りのプロセスです。
+   この手順は、最初に設定するときに IoT Edge デバイスを構成するための 1 回限りのプロセスです。
 
-4. **今後のすべてのモジュールのデプロイのために、プロキシ経由で通信するすべてのモジュールの環境変数を設定します。**
+4. [**今後のすべてのモジュールのデプロイのために、プロキシ経由で通信するすべてのモジュールの環境変数を設定する**](#configure-deployment-manifests)
 
-   IoT Edge デバイスが設定され、プロキシ サーバー経由で IoT Hub に接続されたら、今後すべてのモジュールのデプロイで接続を維持する必要があります。 詳細な手順については、この記事の「[配置マニフェストを構成する](#configure-deployment-manifests)」セクションを参照してください。
+   IoT Edge デバイスが設定され、プロキシ サーバー経由で IoT Hub に接続されたら、今後すべてのモジュールのデプロイで接続を維持する必要があります。
 
-   この手順は、リモートで実行される継続的なプロセスです。そのため、新しいモジュールまたはデプロイの更新ごとに、プロキシ サーバー経由で通信するデバイスの機能が維持されます。
+   この手順は、リモートで実行される継続的なプロセスです。これにより、すべての新しいモジュールで、またはデプロイの更新ごとに、プロキシ サーバー経由で通信するデバイスの機能が維持されます。
 
 ## <a name="know-your-proxy-url"></a>プロキシの URL を確認する
 
@@ -63,7 +65,7 @@ IoT Edge デバイスが Windows または Linux のどちらで動作してい�
 
 ### <a name="linux-devices"></a>Linux デバイス
 
-Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」の手順に従います。
+Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり「[Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge.md)」の手順に従います。
 
 ### <a name="windows-devices"></a>Windows デバイス
 
@@ -91,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-プロキシのパラメーターについて詳しくは、「[Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)」を参照してください。 オフライン インストールなど、Windows インストール オプションの詳細については、[Windows への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-windows.md)に関するページを参照してください。
+プロキシのパラメーターについて詳しくは、「[Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest)」を参照してください。 Windows インストール パラメーターの詳細については、「[Windows 上の IoT Edge 用の PowerShell スクリプト](reference-windows-scripts.md)」を参照してください。
 
 ## <a name="configure-the-daemons"></a>デーモンを構成する
 
@@ -106,7 +108,7 @@ Moby は Docker 上に構築されるため、環境変数を使用して Moby �
 お使いの IoT Edge デバイス オペレーティング システムに該当する記事を選択します。
 
 * [Linux で Docker デーモンを構成する](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) Linux デバイス上の Moby デーモンは Docker の名前を保持します。
-* [Windows で Docker デーモンを構成する](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows デバイス上の Moby デーモンは iotedge-moby と呼ばれます。 名前が異なるのは、Docker Desktop と Moby の両方が 1 台の Windows デバイスで並列実行される可能性があるためです。
+* [Windows で Docker デーモンを構成する](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows デバイス上の Moby デーモンは iotedge-moby と呼ばれます。 名前が異なるのは、Docker Desktop と Moby の両方が 1 台の Windows デバイスで並列実行される可能性があるためです。
 
 ### <a name="iot-edge-daemon"></a>IoT Edge デーモン
 
@@ -205,13 +207,13 @@ IoT Edge エージェントは、すべての IoT Edge デバイス上で最初�
 
 edgeAgent と edgeHub の 2 つのランタイム モジュールは、IoT Hub との接続を維持できるよう、必ずプロキシ サーバー経由で通信するように構成してください。 edgeAgent モジュールからプロキシ情報を削除した場合、前のセクションで説明したように、接続を再確立する唯一の方法は、デバイス上の config.yaml ファイルを編集することです。
 
-edgeAgent モジュールと edgeHub モジュールに加えて、他のモジュールにはプロキシ構成が必要になる場合があります。 これらのモジュールは、BLOB ストレージなどの IoT Hub だけでなく Azure リソースにアクセスする必要があり、デプロイ マニフェスト ファイルでそのモジュールに対して HTTPS_PROXY 変数が指定されている必要があります。
+edgeAgent モジュールと edgeHub モジュールに加えて、他のモジュールにはプロキシ構成が必要になる場合があります。 BLOB ストレージなど、IoT Hub に加えて Azure リソースにアクセスする必要があるモジュールには、デプロイ マニフェスト ファイルで HTTPS_PROXY 変数が指定されている必要があります。
 
 次の手順は、IoT Edge デバイスの有効期間を通して適用できます。
 
 ### <a name="azure-portal"></a>Azure portal
 
-**モジュールの設定**ウィザードを使用して IoT Edge デバイスの配置を作成する場合、どのモジュールにも、プロキシ サーバー接続の構成に使用できる **[環境変数]** セクションがあります。
+**モジュールの設定** ウィザードを使用して IoT Edge デバイスの配置を作成する場合は、どのモジュールにも **[環境変数]** セクションがあり、ここでプロキシ サーバー接続を構成できます。
 
 IoT Edge エージェントおよび IoT Edge ハブ モジュールを構成するには、ウィザードの最初の手順で **[Runtime Settings]\(ランタイムの設定\)** を選択します。
 
@@ -221,7 +223,7 @@ IoT Edge エージェントおよび IoT Edge ハブ モジュールの両方の
 
 ![https_proxy environment 変数を設定する](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
-配置マニフェストに追加する他のモジュールはすべて、同じパターンに従います。 モジュール名およびイメージを設定するページには、環境変数のセクションがあります。
+配置マニフェストに追加する他のモジュールはすべて、同じパターンに従います。
 
 ### <a name="json-deployment-manifest-files"></a>JSON 配置マニフェスト ファイル
 
@@ -268,6 +270,12 @@ Visual Studio Code のテンプレートを使用するか、または手動で 
     }
 }
 ```
+
+## <a name="working-with-traffic-inspecting-proxies"></a>トラフィック検査プロキシの使用
+
+使用しようとしているプロキシが TLS で保護された接続でトラフィック検査を実行している場合は、X.509 証明書を使用した認証は機能しないことに注意する必要があります。 IoT Edge は、指定された証明書とキーを使用して、エンド ツー エンドで暗号化された TLS チャネルを確立します。 トラフィック検査のためにそのチャネルが切断された場合、プロキシは適切な資格情報でチャネルを再確立することができず、IoT Hub と IoT Hub デバイス プロビジョニング サービスから `Unauthorized` エラーが返されます。
+
+トラフィック検査を実行するプロキシを使用するには、共有アクセス署名認証を使用するか、IoT Hub と IoT Hub デバイス プロビジョニング サービスを許可リストに追加して、検査を回避する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

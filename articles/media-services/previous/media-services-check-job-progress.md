@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 591f69855204c4489eb3e9c6edb3900044dda2db
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c5a1c45290d07099c1f7d202854284ef638ad638
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258403"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695977"
 ---
 # <a name="monitor-job-progress-using-net"></a>.NET を使用したジョブの進行状況の監視
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 進行状況は StateChanged イベント ハンドラーを定義する (このトピックで説明) か、Azure キュー ストレージを使用して Media Services ジョブ通知を監視する ( [この](media-services-dotnet-check-job-progress-with-queues.md) トピックで説明) ことにより確認できます。
 

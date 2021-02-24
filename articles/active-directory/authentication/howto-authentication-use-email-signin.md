@@ -5,19 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/24/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 10/01/2020
+ms.author: justinha
+author: justinha
 manager: daveba
-ms.reviewer: scottsta
-ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.reviewer: calui
+ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419531"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255969"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメールを使用して Azure Active Directory にサインインする (プレビュー)
+
+> [!NOTE]
+> 代替ログイン ID としてメールを使用した Azure AD へのサインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 多くの組織では、ユーザーがオンプレミス ディレクトリ環境と同じ資格情報を使用して Azure Active Directory (Azure AD) にサインインできるようにしたいと考えています。 ハイブリッド認証と呼ばれるこの方法では、ユーザーは 1 組の資格情報を記憶しておくだけでよくなります。
 
@@ -29,8 +32,13 @@ ms.locfileid: "87419531"
 
 ハイブリッド認証への移行を支援するために、ユーザーが代替ログイン ID として確認済みドメイン内のメールでサインインできるように Azure AD を構成できます。 たとえば、*Contoso* が *Fabrikam* にブランド変更した場合、従来の `balas@contoso.com` UPN でのサインインを続行するのではなく、代替ログイン ID としてメールを使用できるようになりました。 アプリケーションまたはサービスにアクセスするために、ユーザーは、割り当てられたメール (`balas@fabrikam.com` など) を使用して Azure AD にサインインします。
 
+この記事では、代替ログイン ID として電子メールを有効にして使用する方法について説明します。 この機能は、Azure AD Free エディション以上で使用できます。
+
 > [!NOTE]
-> 代替ログイン ID としてメールを使用した Azure AD へのサインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> この機能は、クラウドで認証された Azure AD ユーザーのみを対象としています。
+
+> [!NOTE]
+> 現在、クラウド認証を使用したテナントの Azure AD 参加済みの Windows 10 デバイスでは、この機能はサポートされていません。 この機能は、Hybrid Azure AD 参加済みデバイスには適用できません。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD サインイン方法の概要
 
@@ -45,6 +53,8 @@ Azure AD にサインインするには、ユーザーが自分のアカウン�
 別の方法は、Azure AD とオンプレミスの UPN を同じ値に同期し、ユーザーが確認済みのメールを使用して Azure AD にサインインできるように Azure AD を構成するというものです。 この機能を実現するには、オンプレミス ディレクトリ内のユーザーの *ProxyAddresses* 属性で 1 つ以上のメール アドレスを定義します。 そうすると、*ProxyAddresses* が Azure AD Connect を使用して自動的に Azure AD と同期されます。
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
+
+電子メールを代替ログイン ID として Azure AD にサインインすることは、Azure AD Free エディション以上で使用できます。
 
 現在のプレビュー状態では、ユーザーが代替ログイン ID として UPN 以外の電子メールを使用してサインインすると、次の制限が適用されます。
 
@@ -82,7 +92,7 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
 
 *ProxyAddresses* 属性を適用したユーザーが Azure AD Connect を使用して Azure AD に同期された後、ユーザーがテナントの代替ログイン ID としてメールを使用してサインインできるようにする機能を有効にする必要があります。 この機能は、UPN 値に対してだけでなく、メール アドレスの *ProxyAddresses* 値に対してサインイン名を確認するように、Azure AD ログイン サーバーに指示します。
 
-現在、プレビュー期間中は、PowerShell を使用して、代替ログイン ID 機能としてメールを使用したサインインのみを有効にすることができます。 次の手順を完了するには、*テナント管理者*権限が必要です。
+現在、プレビュー期間中は、PowerShell を使用して、代替ログイン ID 機能としてメールを使用したサインインのみを有効にすることができます。 次の手順を完了するには、*テナント管理者* 権限が必要です。
 
 1. 管理者として PowerShell セッションを開き、[Install-Module][Install-Module] コマンドレットを使用して *AzureADPreview* モジュールをインストールします。
 
@@ -92,7 +102,7 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
 
     メッセージが表示されたら、 **[Y]** を選択して NuGet をインストールするか、信頼されていないリポジトリからインストールします。
 
-1. [Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して *テナント管理者*として Azure AD テナントにサインインします。
+1. [Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して *テナント管理者* として Azure AD テナントにサインインします。
 
     ```powershell
     Connect-AzureAD
@@ -103,7 +113,7 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
 1. 次のように [Get-AzureADPolicy][Get-AzureADPolicy] コマンドレットを使用して、*HomeRealmDiscoveryPolicy* ポリシーがテナントに 既に存在しているかどうかを確認します。
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 1. 現在構成されているポリシーがない場合、コマンドは何も返しません。 ポリシーが返された場合は、この手順をスキップし、次の手順に進んで、既存のポリシーを更新します。
@@ -111,10 +121,22 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
     *HomeRealmDiscoveryPolicy* ポリシーをテナントに追加するには、次の例に示すように、[New-AzureADPolicy][New-AzureADPolicy] コマンドレットを使用し、*AlternateIdLogin* 属性を *"Enabled": true* に設定します。
 
     ```powershell
-    New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    New-AzureADPolicy @AzureADPolicyParameters
     ```
 
     ポリシーが正常に作成されると、次の出力例に示すように、コマンドによってポリシー ID が返されます。
@@ -146,17 +168,31 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
     次の例では、 *AlternateIdLogin* 属性を追加し、既に設定されている可能性のある  *AllowCloudPasswordValidation* 属性を保持します。
 
     ```powershell
-    Set-AzureADPolicy -id b581c39c-8fe3-4bb5-b53d-ea3de05abb4b `
-        -Definition @('{"HomeRealmDiscoveryPolicy" :{"AllowCloudPasswordValidation":true,"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AllowCloudPasswordValidation" = $true
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      ID                    = "b581c39c-8fe3-4bb5-b53d-ea3de05abb4b"
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    
+    Set-AzureADPolicy @AzureADPolicyParameters
     ```
 
     更新されたポリシーによって変更が表示され、*AlternateIdLogin* 属性が有効になっていることを確認します。
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 ポリシーが適用されている場合は、伝達されて、ユーザーが代替ログイン ID を使用してサインインできるようになるまでに、最大 1 時間かかることがあります。
@@ -164,6 +200,77 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
 ## <a name="test-user-sign-in-with-email"></a>メールでユーザー サインインをテストする
 
 ユーザーがメールでサインインできるかどうかをテストするには、[https://myprofile.microsoft.com][my-profile] を参照し、UPN (`balas@contoso.com` など) ではなくそのメール アドレス (`balas@fabrikam.com` など) に基づいてユーザー アカウントでサインインできます。 サインイン エクスペリエンスは、UPN ベースのサインイン イベントの場合と同じ外観になります。
+
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>メール アドレスを使用したユーザー サインインをテストするために段階的なロールアウトを有効にする  
+
+[段階的なロールアウト][staged-rollout]を使用すると、テナント管理者は特定のグループに対して各機能を有効にすることができます。 テナント管理者が、段階的なロールアウトを使用して、メール アドレスでのユーザー サインインをテストすることをお勧めします。 管理者がこの機能をテナント全体にデプロイする準備ができたら、ホーム領域検出ポリシーを使用する必要があります。  
+
+
+次の手順を完了するには、*テナント管理者* 権限が必要です。
+
+1. 管理者として PowerShell セッションを開き、[Install-Module][Install-Module] コマンドレットを使用して、*AzureADPreview* モジュールをインストールします。
+
+    ```powershell
+    Install-Module AzureADPreview
+    ```
+
+    メッセージが表示されたら、 **[Y]** を選択して NuGet をインストールするか、信頼されていないリポジトリからインストールします。
+
+2. [Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して *テナント管理者* として Azure AD テナントにサインインします。
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+    このコマンドは、アカウント、環境、およびテナント ID に関する情報を返します。
+
+3. 次のコマンドレットを使用して、既存の段階的なロールアウト ポリシーをすべて一覧表示します。
+   
+   ```powershell
+   Get-AzureADMSFeatureRolloutPolicy
+   ``` 
+
+4. この機能について既存の段階的なロールアウト ポリシーが存在しない場合は、段階的ロールアウト ポリシーを新たに作成し、ポリシー ID を書き留めておきます。
+
+   ```powershell
+   $AzureADMSFeatureRolloutPolicy = @{
+      Feature    = "EmailAsAlternateId"
+      DisplayName = "EmailAsAlternateId Rollout Policy"
+      IsEnabled   = $true
+   }
+   New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
+   ```
+
+5. 段階的なロールアウト ポリシーに追加されるグループの directoryObject ID を検索します。 次の手順で使用するため、*Id* パラメーターに返される値をメモに記録します。
+   
+   ```powershell
+   Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
+   ```
+
+6. 次の例に示すように、グループを段階的なロールアウト ポリシーに追加します。 *-Id* パラメーターの値を、手順 4 でポリシー ID に対して返された値に置き換え、 *-RefObjectId* パラメーターの値を、手順 5 でメモに記録した *Id* に置き換えます。 グループ内のユーザーがプロキシ アドレスを使用してサインインできるようになるまで、最大 1 時間かかることがあります。
+
+   ```powershell
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   ```
+   
+グループに新しく追加されたメンバーについては、プロキシ アドレスを使用してサインインできるようになるまで、最大 24 時間かかることがあります。
+
+### <a name="removing-groups"></a>グループの削除
+
+段階的なロールアウト ポリシーからグループを削除するには、次のコマンドを実行します。
+
+```powershell
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+```
+
+### <a name="removing-policies"></a>ポリシーの削除
+
+段階的なロールアウト ポリシーを削除するには、まずポリシーを無効にして、システムから削除します。
+
+```powershell
+Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 
+Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
+```
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
@@ -174,7 +281,7 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
 1. Azure AD *HomeRealmDiscoveryPolicy* ポリシーの *AlternateIdLogin* 属性が *"Enabled": true* に設定されていることを確認します。
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -198,4 +305,5 @@ Azure AD アプリ プロキシや Azure AD Domain Services などのハイブ�
 [Get-AzureADPolicy]: /powershell/module/azuread/get-azureadpolicy
 [New-AzureADPolicy]: /powershell/module/azuread/new-azureadpolicy
 [Set-AzureADPolicy]: /powershell/module/azuread/set-azureadpolicy
+[staged-rollout]: /powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged-rollout
 [my-profile]: https://myprofile.microsoft.com

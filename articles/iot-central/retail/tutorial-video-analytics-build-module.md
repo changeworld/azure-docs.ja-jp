@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - IoT Edge ライブ ビデオ分析モジュールを変更する
+title: チュートリアル - Azure IoT Edge ライブ ビデオ分析モジュールを変更する
 description: このチュートリアルでは、Video analytics - object and motion detection (ビデオ分析 - 物体とモーションの検出) アプリケーション テンプレートで使用されるライブ ビデオ分析ゲートウェイ モジュールに変更を加えてビルドする方法について説明します。
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037996"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832047"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>チュートリアル:ライブ ビデオ分析ゲートウェイ モジュールの変更とビルド
 
@@ -28,8 +28,8 @@ ms.locfileid: "88037996"
 * [Node.js](https://nodejs.org/en/download/) v10 以降
 * [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 拡張機能がインストールされた [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Docker](https://www.docker.com/products/docker-desktop) エンジン
-* モジュールのバージョンをホストするための [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)。
-* [Azure Media Services](https://docs.microsoft.com/azure/media-services/) アカウント。 先行するチュートリアルが済んでいる場合は、以前に作成したものを再利用してかまいません。
+* モジュールのバージョンをホストするための [Azure Container Registry](../../container-registry/index.yml)。
+* [Azure Media Services](../../media-services/index.yml) アカウント。 先行するチュートリアルが済んでいる場合は、以前に作成したものを再利用してかまいません。
 
 ## <a name="clone-the-repository"></a>リポジトリの複製
 
@@ -50,7 +50,7 @@ VS Code で、ローカルの *live-video-analytics* リポジトリ フォル�
 1. `LvaEdgeGatewayModule` モジュール セクションを編集して、イメージの名前と AMS アカウントの名前を `env:amsAccountName:value` に追加します。
 1. `lvaYolov3` モジュール セクションを編集して、イメージの名前を追加します。
 1. `lvaEdge` モジュール セクションを編集して、イメージの名前を追加します。
-1. 構成の方法について詳しくは、[Azure IoT Central でのビデオ分析アプリケーションの作成](tutorial-video-analytics-create-app.md)に関するページを参照してください。
+1. 構成の方法について詳しくは、[Azure IoT Central でのビデオ分析アプリケーションの作成](tutorial-video-analytics-create-app-yolo-v3.md)に関するページを参照してください。
 
 ## <a name="build-the-code"></a>コードのビルド
 
@@ -73,6 +73,13 @@ VS Code で、ローカルの *live-video-analytics* リポジトリ フォル�
 1. VS Code ターミナルを使用して **npm version patch** コマンドを実行します。 このビルド スクリプトは、コンテナー レジストリにイメージをデプロイします。 ビルドが成功したかどうかは、VS Code のターミナル ウィンドウの出力に表示されます。
 
 1. ビルドが完了するたびに、**LvaEdgeGatewayModule** イメージのバージョンが増分されます。 配置マニフェスト ファイルには、このバージョンを使用する必要があります。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+アプリケーションを使い終えたら、次の手順で、作成したリソースをすべて削除することができます。
+
+1. IoT Central アプリケーションの **[管理]** セクションの **[お客様のアプリケーション]** ページに移動します。 次に、 **[削除]** を選択します。
+1. Azure portal で、**lva-rg** リソース グループを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

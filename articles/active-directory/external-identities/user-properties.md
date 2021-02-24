@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907357"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859633"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -71,6 +71,8 @@ ms.locfileid: "87907357"
   > [!NOTE]
   > UserType は、ユーザーのサインイン方法、ユーザーのディレクトリ ロールなどとは関係ありません。 このプロパティは、単にユーザーとホスト組織との関係を示しており、組織はこのプロパティに基づくポリシーを強制できます。
 
+価格に関する詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory)」を参照してください。
+
 ### <a name="source"></a>source
 このプロパティは、ユーザーのサインイン方法を示します。
 
@@ -104,11 +106,11 @@ PowerShell を使用して、UserType をメンバーからゲストに、また
 ![ユーザー設定の [外部ユーザー] オプションを示すスクリーンショット](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
-はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?** 」を参照してください。
+はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、[Microsoft 365 グループでのゲスト アクセスの管理](/office365/admin/create-groups/manage-guest-access-in-groups)に関するページの「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?** 」を参照してください。
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>ゲスト ユーザーのメール アドレスを更新できますか。
 
-ゲスト ユーザーが招待を承諾し、その後メール アドレスを変更した場合、新しいメールはディレクトリ内のゲスト ユーザー オブジェクトに自動的に同期されません。 メールのプロパティは、[Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) を介して作成されます。 メールのプロパティは、Exchange 管理センターまたは [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps) を介して更新できます。そしてこの変更が、Azure AD のゲスト ユーザー オブジェクトに反映されます。
+ゲスト ユーザーが招待を承諾し、その後メール アドレスを変更した場合、新しいメールはディレクトリ内のゲスト ユーザー オブジェクトに自動的に同期されません。 メールのプロパティは、[Microsoft Graph API](/graph/api/resources/user) を介して作成されます。 メールのプロパティは、Microsoft Graph API、Exchange 管理センター、または [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser) 経由で更新できます。 この変更は、Azure AD ゲスト ユーザー オブジェクトに反映されます。
 
 ## <a name="next-steps"></a>次のステップ
 

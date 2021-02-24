@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 56170ffbbfe14248bcfd1f94549a3565873f8646
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514017"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005896"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple 帯域幅テンプレートを管理する
 
@@ -64,11 +64,11 @@ ms.locfileid: "85514017"
     1. 帯域幅テンプレートの一意の名前を指定します。
     2. 帯域幅のスケジュールを定義します。 スケジュールを作成するには
    
-        1. ドロップダウン リストから、スケジュールを構成する**曜日**を選択します。 複数の曜日を選択することができます。        
+        1. ドロップダウン リストから、スケジュールを構成する **曜日** を選択します。 複数の曜日を選択することができます。        
         
-        2. **開始時刻**を _hh:mm_ の形式で入力します。 これはスケジュールが開始する時刻です。
+        2. **開始時刻** を _hh:mm_ の形式で入力します。 これはスケジュールが開始する時刻です。
 
-        3. **終了時刻**を _hh:mm_ の形式で入力します。 これはスケジュールが停止する時刻です。
+        3. **終了時刻** を _hh:mm_ の形式で入力します。 これはスケジュールが停止する時刻です。
       
            > [!NOTE]
            > スケジュールの重複は許可されません。 開始時刻と終了時刻によってスケジュールの重複が発生すると、そのことを示すエラー メッセージが表示されます。

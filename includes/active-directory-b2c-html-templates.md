@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
 ms.openlocfilehash: d43b879057001d62ea72bd2e011ad52957d47470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189025"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95990906"
 ---
 ## <a name="sample-templates"></a>サンプル テンプレート
 ここでは、UI カスタマイズのサンプル テンプレートを示します。

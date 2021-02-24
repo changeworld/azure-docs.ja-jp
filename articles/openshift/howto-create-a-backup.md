@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 046cd30c0f93a468287c73573a3d18f4ba66221b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 264778d2d6d1ee0119ad8622043b7cd3a1088ec1
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690223"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280141"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift 4 クラスター アプリケーションのバックアップを作成する
 
@@ -23,7 +23,10 @@ ms.locfileid: "88690223"
 > * 前提条件を設定し、必要なツールをインストールする
 > * Azure Red Hat OpenShift 4 アプリケーションのバックアップを作成する
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+> [!NOTE] 
+> Velero によって、Azure Red Hat OpenShift etcd のキーと値のストア データがバックアップされることはありません。 etcd をバックアップする必要がある場合は、「[Backing up etcd](https://docs.openshift.com/container-platform/4.5/backup_and_restore/backing-up-etcd.html)」(etcd のバックアップ) を参照してください。
+
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -60,7 +63,7 @@ az storage container create -n $BLOB_CONTAINER --public-access off --account-nam
 Velero では、バックアップと復元を行うためのアクセス許可が必要です。 サービス プリンシパルを作成する場合、前の手順で定義したリソース グループにアクセスするためのアクセス許可を Velero に付与します。 この手順では、クラスターのリソース グループを取得します。
 
 ```bash
-export AZURE_RESOURCE_GROUP=aro-$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r '.clusterProfile.domain')
+export AZURE_RESOURCE_GROUP=$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r .clusterProfile.resourceGroupId | cut -d '/' -f 5,5)
 ```
 
 
@@ -120,14 +123,34 @@ oc get backups -n velero <name of backup> -o yaml
 
 バックアップが正常に実行されると、`phase:Completed` が出力され、オブジェクトがストレージ アカウントのコンテナー内に配置されます。
 
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Velero を使用してスナップショットを含むバックアップを作成する
+
+Velero を使用してアプリケーションの永続ボリュームを含むアプリケーション バックアップを作成するには、アプリケーションが存在する名前空間を含める他に、バックアップの作成時に `snapshot-volumes=true` フラグを含める必要があります
+
+```bash
+velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
+```
+
+バックアップの状態を確認するには、次を実行します。
+
+```bash
+oc get backups -n velero <name of backup> -o yaml
+```
+
+バックアップが正常に実行されると、`phase:Completed` が出力され、オブジェクトがストレージ アカウントのコンテナー内に配置されます。
+
+Velero を使用してバックアップと復元を作成する方法の詳細については、[ネイティブな方法による OpenShift リソースのバックアップ](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)に関するページを参照してください
+
 ## <a name="next-steps"></a>次の手順
 
 この記事では、Azure Red Hat OpenShift 4 クラスター アプリケーションをバックアップしました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
 > * Velero を使用して OpenShift v4 クラスター アプリケーションのバックアップを作成する
+> * Velero を使用してスナップショットを含む OpenShift v4 クラスター アプリケーションのバックアップを作成する
 
 
 次の記事に進み、Azure Red Hat OpenShift 4 クラスター アプリケーションの復元を作成する方法を確認してください。
 
 * [Azure Red Hat OpenShift 4 クラスター アプリケーションの復元を作成する](howto-create-a-restore.md)
+* [スナップショットを含む Azure Red Hat OpenShift 4 クラスター アプリケーションの復元を作成する](howto-create-a-restore.md)

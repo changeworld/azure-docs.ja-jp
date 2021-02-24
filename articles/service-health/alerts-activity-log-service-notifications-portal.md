@@ -1,14 +1,14 @@
 ---
 title: Azure portal を使用して Azure サービスの通知でアクティビティ ログ アラートを受け取る
-description: Azure サービスが発生したときに、SMS、電子メール、または Webhook で通知を受け取ります。
+description: Azure portal を使用してサービスの正常性通知を行うためのアクティビティ ログ アラートを Azure portal を使用して設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499277"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91289788"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Azure portal を使用してサービスの通知でアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要

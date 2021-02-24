@@ -2,28 +2,24 @@
 title: Azure Event Hubs 保存データの暗号化用に独自のキーを構成する
 description: この記事では、Azure Event Hubs の保存データを暗号化するために独自のキーを構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 02/01/2021
+ms.openlocfilehash: 53622344e36e514543d547dec95caaf1b0b76a13
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537260"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430681"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Event Hubs 保存データの暗号化用にカスタマー マネージド キーを構成する
-Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Event Hubs では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
-
-## <a name="overview"></a>概要
-Azure Event Hubs で、Microsoft のマネージド キーまたはカスタマー マネージド キー (Bring Your Own Key – BYOK) を使用した保存データ暗号化のオプションがサポートされるようになりました。 この機能を使用すると、Azure Event Hubs の保存データ暗号化に使用されるカスタマー マネージド キーへのアクセスの作成、ローテーション、無効化、取り消しができます。
-
-BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ プロセスです。
+Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Event Hubs サービスには、データを格納するために Azure Storage が使用されます。 Azure Storage に格納されているすべてのデータは、Microsoft マネージド キーを使用して暗号化されます。 独自のキー (Bring Your Own Key (BYOK) またはカスタマーマネージド キーとも呼ばれます) を使用する場合、データは引き続き Microsoft マネージド キーを使用して暗号化されますが、さらに Microsoft マネージド キーはカスタマー マネージド キーを使用して暗号化されます。 この機能を使用して、Microsoft マネージド キーの暗号化に使用されるカスタマー マネージド キーへの作成、ローテーション、無効化、およびアクセスの取り消しを実行できます。 BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ プロセスです。
 
 > [!NOTE]
-> BYOK 機能は [Event Hubs Dedicated のシングルテナント](event-hubs-dedicated-overview.md) クラスターでサポートされています。 Standard Event Hubs 名前空間用に有効にすることはできません。
+> - BYOK 機能は [Event Hubs Dedicated のシングルテナント](event-hubs-dedicated-overview.md) クラスターでサポートされています。 Standard Event Hubs 名前空間用に有効にすることはできません。
+> - 暗号化は、新規または空の名前空間に対してのみ有効にすることができます。 名前空間にイベント ハブが含まれている場合、暗号化操作は失敗します。
 
 キーの管理およびキーの使用状況の監査には、Azure Key Vault を使用できます。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/general/overview.md)
 
-この記事では、Azure portal を使って、カスタマー マネージド キーでキー コンテナーを構成する方法について説明します。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/secrets/quick-create-portal.md)」をご覧ください。
+この記事では、Azure portal を使って、カスタマー マネージド キーでキー コンテナーを構成する方法について説明します。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault を作成する](../key-vault/general/quick-create-portal.md)」を参照します。
 
 > [!IMPORTANT]
 > Azure Event Hubs でカスタマー マネージド キーを使うには、キー コンテナーに 2 つの必須プロパティが構成されている必要があります。 これらは次のとおりです。 **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** です。 Azure portal で新しいキー コンテナーを作成すると、これらのプロパティは既定で有効になります。 ただし、既存のキー コンテナーでこれらのプロパティを有効にする必要がある場合は、PowerShell または Azure CLI を使う必要があります。
@@ -34,20 +30,20 @@ Azure portal でカスタマー マネージド キーを有効にするには�
 1. Event Hubs Dedicated クラスターに移動します。
 1. BYOK を有効にする名前空間を選択します。
 1. Event Hubs 名前空間の **[設定]** ページで、 **[暗号化]** を選択します。 
-1. 次の図に示すように、**カスタマー マネージド キーによる保存中の暗号化**を選択します。 
+1. 次の図に示すように、**カスタマー マネージド キーによる保存中の暗号化** を選択します。 
 
     ![カスタマー マネージド キーの有効化](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>キーを使用したキー コンテナーの設定
-カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Event Hubs 名前空間に関連付ける必要があります。 Event Hubs では Azure Key Vault のみがサポートされています。 前のセクションで**カスタマー マネージド キーによる暗号化**のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/soft-delete-powershell.md) または [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) を使用して構成できます。
+カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Event Hubs 名前空間に関連付ける必要があります。 Event Hubs では Azure Key Vault のみがサポートされています。 前のセクションで **カスタマー マネージド キーによる暗号化** のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/key-vault-recovery.md) または [CLI](../key-vault/general/key-vault-recovery.md) を使用して構成できます。
 
 1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/general/overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/general/about-keys-secrets-certificates.md)」を参照してください。
-1. コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
+1. コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) コマンドを使用します。
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. 既存のコンテナー (論理的な削除が既に有効になっている) に消去保護を追加するには、[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) コマンドを使用します。
+1. 既存のコンテナー (論理的な削除が既に有効になっている) に消去保護を追加するには、[az keyvault update](/cli/azure/keyvault#az-keyvault-update) コマンドを使用します。
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -62,7 +58,7 @@ Azure portal でカスタマー マネージド キーを有効にするには�
     1. 次に、ドロップダウン リストからこのキーを選択して、暗号化用の Event Hubs 名前空間に関連付けることができます。 
 
         ![Key Vault からのキーの選択](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. キーの詳細を入力し、 **[選択]** をクリックします。 これにより、カスタマー マネージド キーを使用して、名前空間の保存データを暗号化できるようになります。 
+    1. キーの詳細を入力し、 **[選択]** をクリックします。 これにより、Microsoft マネージド キーを自分のキー (カスタマー マネージド キー) で暗号化できるようになります。 
 
 
 ## <a name="rotate-your-encryption-keys"></a>暗号化キーのローテーション
@@ -74,7 +70,7 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
 暗号化キーを取り消すと、暗号化した名前空間で Event Hubs サービスが機能しなくなります。 キーへのアクセスを有効にするか、削除キーを復元すると、Event Hubs サービスによってキーが選択され、暗号化した Event Hubs 名前空間からデータにアクセスできるようになります。
 
 ## <a name="set-up-diagnostic-logs"></a>診断ログの設定 
-BYOK が有効になっている名前空間に対して診断ログを設定すると、カスタマー マネージド キーを使用して名前空間を暗号化した場合に、操作に関する必要な情報を得ることができます。 これらのログを有効にして、後からイベント ハブにストリーミングしたり、ログ分析を使用して分析したり、ストレージにストリーミングしてカスタマイズした分析を実行したりできます。 診断ログの詳細については、「[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照してください。
+BYOK が有効な名前空間の診断ログを設定すると、操作に関する必要な情報が得られます。 これらのログを有効にして、後からイベント ハブにストリーミングしたり、ログ分析を使用して分析したり、ストレージにストリーミングしてカスタマイズした分析を実行したりできます。 診断ログの詳細については、「[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照してください。
 
 ## <a name="enable-user-logs"></a>ユーザー ログの有効化
 カスタマー マネージド キーのログを有効にするには、次の手順に従います。
@@ -86,7 +82,7 @@ BYOK が有効になっている名前空間に対して診断ログを設定す
 1. **[+ 診断設定の追加]** を選択します。 
 
     ![[診断設定の追加] の選択](./media/configure-customer-managed-key/select-add-diagnostic-setting.png)
-1. **名前**を指定し、ログのストリーミング先となる場所を選択します。
+1. **名前** を指定し、ログのストリーミング先となる場所を選択します。
 1. **[CustomerManagedKeyUserLogs]** を選択し、 **[保存]** を選択します。 この操作により、名前空間で BYOK のログが有効になります。
 
     ![カスタマー マネージド キーのユーザー ログ オプションの選択](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
@@ -140,10 +136,10 @@ BYOK が有効になっている名前空間に対して診断ログを設定す
 ```
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>Resource Manager テンプレートを使用して暗号化を有効にする
-このセクションでは、**Azure Resource Manager テンプレート**を使用して次のタスクを実行する方法を示します。 
+このセクションでは、**Azure Resource Manager テンプレート** を使用して次のタスクを実行する方法を示します。 
 
-1. マネージド サービス ID がある **Event Hubs 名前空間**を作成する。
-2. **キー コンテナー**を作成し、サービス ID にキー コンテナーへのアクセス権を付与する。 
+1. マネージド サービス ID がある **Event Hubs 名前空間** を作成する。
+2. **キー コンテナー** を作成し、サービス ID にキー コンテナーへのアクセス権を付与する。 
 3. キー コンテナー情報 (キー/値) を使用して、Event Hubs 名前空間を更新する。 
 
 
@@ -255,7 +251,7 @@ BYOK が有効になっている名前空間に対して診断ログを設定す
  
 ### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Event Hubs 名前空間の ID にキー コンテナーへのアクセス権を付与する
 
-1. 次のコマンドを実行して、**消去保護**と**論理的な削除**が有効なキー コンテナーを作成します。 
+1. 次のコマンドを実行して、**消去保護** と **論理的な削除** が有効なキー コンテナーを作成します。 
 
     ```powershell
     New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
@@ -263,7 +259,7 @@ BYOK が有効になっている名前空間に対して診断ログを設定す
     
     (または)    
     
-    次のコマンドを実行して、**既存のキー コンテナー**を更新します。 コマンドを実行する前に、リソース グループとキー コンテナー名の値を指定します。 
+    次のコマンドを実行して、**既存のキー コンテナー** を更新します。 コマンドを実行する前に、リソース グループとキー コンテナー名の値を指定します。 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force

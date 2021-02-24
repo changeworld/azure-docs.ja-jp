@@ -1,8 +1,8 @@
-- name: Cloud Services のドキュメント
+- name: Cloud Services (クラシック) のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Cloud Services とは
+    - name: Cloud Services (クラシック) とは
       href: cloud-services-choose-me.md
     - name: クラウド サービスの構成ファイルとパッケージ化
       href: cloud-services-model-and-package.md
@@ -12,6 +12,12 @@
       href: cloud-services-dotnet-get-started.md
     - name: Python for Visual Studio クラウド サービスの例
       href: cloud-services-python-ptvs.md
+- name: 概念
+  items:
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法
   items:
     - name: プラン
@@ -151,6 +157,8 @@
           href: cloud-services-disaster-recovery-guidance.md
         - name: クラシック VM アーキテクチャのワークフロー
           href: cloud-services-workflow-process.md
+        - name: Cloud Services のリソース正常性のサポート
+          href: resource-health-for-cloud-services.md
         - name: Cloud Services に関する FAQ
           items:
             - name: アプリケーションとサービスの可用性に関する FAQ
@@ -192,7 +200,7 @@
     - name: ラーニング パス
       href: /learn/paths/azure-fundamentals/
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+      href: /answers/topics/azure-cloud-services.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 料金計算ツール

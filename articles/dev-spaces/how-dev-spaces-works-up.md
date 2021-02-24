@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces による Azure Kubernetes Service でのコード実行のプロセスについて説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1cace325f9415d46210636e5c04cc2d75589cc11
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208679"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014433"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Azure Dev Spaces でのコード実行のしくみ
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復処理してデバッグし、Azure Kubernetes Service (AKS) クラスターでチームと共同作業を行うための複数の方法が用意されています。 [プロジェクトを開発スペースで実行する準備が整ったら][how-it-works-prep]、Dev Spaces を使用してプロジェクトをビルドし、AKS クラスターで実行することができます。
 
@@ -199,12 +201,12 @@ ingress:
 
 Azure Dev Spaces におけるネットワークおよび要求のルーティング方法について詳しくは、「[Azure Dev Spaces でルーティングがどのように機能するか][how-it-works-routing]」を参照してください。
 
-Azure Dev Spaces を使用した迅速な反復と開発の詳細については、「[Local Process with Kubernetes のしくみ][how-it-works-local-process-kubernetes]」と「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」を参照してください。
+Kubernetes で短時間で繰り返しと開発を行う方法については、「[Bridge to Kubernetes のしくみ][how-it-works-bridge-to-kubernetes]」と「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」を参照してください。
 
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

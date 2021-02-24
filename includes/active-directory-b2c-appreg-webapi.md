@@ -5,16 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 24f49885892fb69c14ebd589587470edd78eeefe
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 86ca23b23d24174d22deafba68ce170bb7717926
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298850"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026449"
 ---
 アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
 
-アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](../articles/active-directory-b2c/app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -22,7 +22,7 @@ ms.locfileid: "84298850"
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. アプリケーションの**名前**を入力します。 たとえば、*webapi1* とします。
+1. アプリケーションの **名前** を入力します。 たとえば、*webapi1* とします。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、お使いのアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、`http://localhost:5000` でリッスンします。
 1. **[登録]** を選択します。
 1. 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。

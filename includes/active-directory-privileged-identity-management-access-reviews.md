@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
-author: rolyon
+author: barclayn
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/26/2020
+ms.date: 12/07/2020
 ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: cbcd4b459faa3bf67f591cc7afab0bf0027062e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83868055"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842310"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>1 つ以上のアクセス レビューを作成する
 
@@ -39,11 +39,11 @@ ms.locfileid: "83868055"
     > - ここで選択されるロールには、[永続的なロールと資格のあるロール](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)の両方が含まれます。
     > - 複数のロールを選択すると、複数のアクセス レビューが作成されます。 たとえば、5 つのロールを選択すると、5 つの別々のアクセス レビューが作成されます。
 
-    **Azure AD ロール**のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
+    **Azure AD ロール** のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
 
     ![選択できる Azure AD ロールを一覧表示する [レビューのメンバーシップ] ウィンドウ](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    **Azure リソース ロール**のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次の図に示します。
+    **Azure リソース ロール** のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次の図に示します。
 
     ![選択できる Azure リソース ロールを一覧表示する [レビューのメンバーシップ] ウィンドウ](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
@@ -53,6 +53,7 @@ ms.locfileid: "83868055"
 
     - **選択したユーザー** - アクセスする必要があるユーザーがわからない場合は、このオプションを使用します。 このオプションでは、リソース所有者またはグループ マネージャーにレビューを割り当て、完了してもらうことができます。
     - **メンバー (セルフ)** - ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
+    - **(プレビュー) マネージャー** – ユーザーのマネージャーにロールの割り当てをレビューしてもらうには、このオプションを使用します。 (プレビュー) マネージャーを選択すると、フォールバック レビュー担当者を指定するオプションも表示されます。 フォールバック レビュー担当者は、ディレクトリにマネージャーが指定されていない場合に、ユーザーをレビューするように求められます。
 
 ### <a name="upon-completion-settings"></a>完了時の設定
 
@@ -82,3 +83,6 @@ ms.locfileid: "83868055"
 1. アクセス レビュー開始時に Azure AD からレビュー担当者にメール通知を送信し、レビュー完了時に管理者にメール通知を送信するには、 **[メール通知]** を **[有効]** に設定します。
 
 1. レビューを完了していないレビュー担当者に、進行中のアクセス レビューに関するリマインダーを Azure AD から送信するには、 **[リマインダー]** を **[有効]** に設定します。
+1. レビュー担当者に送信されるメールの内容は、レビュー名、リソース名、期限などのレビューの詳細に基づいて自動生成されます。追加の指示や連絡先情報などの追加情報を伝達する方法が必要な場合は、割り当てられたレビュー担当者に送信される招待メールと通知メールに含まれる、**レビュー担当者のメールに関する追加のコンテンツ** でこれらの詳細を指定することができます。 下の強調表示されているセクションは、この情報が表示される場所です。
+
+    ![レビュー担当者に送信される電子メールの内容 (ハイライトを含む)](./media/active-directory-privileged-identity-management-access-reviews/email-info.png)

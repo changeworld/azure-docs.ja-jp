@@ -4,15 +4,15 @@ description: Power Automate と HTTPS エンドポイントを使用して、Mic
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120372"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247184"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS エンドポイントを使用してコマーシャル マーケットプレースのリードを管理する
 
@@ -66,6 +66,10 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
         },
         "LeadSource": {
           "id": "/properties/LeadSource",
+          "type": "string"
+        },
+        "Description": {
+          "id": "/properties/Description",
           "type": "string"
         },
         "UserDetails": {
@@ -137,7 +141,7 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 
     ![新しいレコードを作成する](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
-1. CRM システムに関連付けられている**組織名**を指定します。 **[エンティティ名]** ドロップダウン リストから **[潜在顧客]** を選択します。
+1. CRM システムに関連付けられている **組織名** を指定します。 **[エンティティ名]** ドロップダウン リストから **[潜在顧客]** を選択します。
 
     ![潜在顧客を選択する](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
 

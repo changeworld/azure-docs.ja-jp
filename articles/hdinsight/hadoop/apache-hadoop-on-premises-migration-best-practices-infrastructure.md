@@ -1,19 +1,16 @@
 ---
 title: インフラストラクチャ:オンプレミスの Apache Hadoop から Azure HDInsight
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのインフラストラクチャのベスト プラクティスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083102"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932155"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -27,7 +24,7 @@ HDInsight クラスターの容量計画で行うべき重要な選択内容は�
 Azure リージョンによって、クラスターを物理的にプロビジョニングする場所が決まります。 読み取りと書き込みの待機時間を最小限に抑えるには、クラスターをデータと同じリージョンに配置する必要があります。
 
 **ストレージの場所とサイズ**  
-既定のストレージはクラスターと同じリージョンにある必要があります。 48 ノードのクラスターの場合は、4 つから 8 つのストレージ アカウントを用意することをお勧めします。 既に十分な数のストレージが存在する場合もありますが、各ストレージ アカウントはコンピューティング ノードに追加のネットワーク帯域幅を提供します。 複数のストレージ アカウントがある場合は、各ストレージ アカウントにプレフィックスなしのランダムな名前を使用します。 ランダムな名前付けの目的は、すべてのアカウント間でストレージのボトルネック (調整) や共通モード エラーが発生する可能性を低減することです。 パフォーマンスを向上させるために、ストレージ アカウントごとにコンテナーを 1 つだけ使用します。
+既定のストレージはクラスターと同じリージョンにある必要があります。  48 ノードのクラスターの場合は、4 つから 8 つのストレージ アカウントを用意することをお勧めします。 既に十分な数のストレージが存在する場合もありますが、各ストレージ アカウントはコンピューティング ノードに追加のネットワーク帯域幅を提供します。 複数のストレージ アカウントがある場合は、各ストレージ アカウントにプレフィックスなしのランダムな名前を使用します。 ランダムな名前付けの目的は、すべてのアカウント間でストレージのボトルネック (調整) や共通モード エラーが発生する可能性を低減することです。 パフォーマンスを向上させるために、ストレージ アカウントごとにコンテナーを 1 つだけ使用します。
 
 **VM サイズと種類 (G シリーズがサポートされるようになりました)**  
 各クラスターの種類には一連のノード タイプがあり、各ノード タイプには VM のサイズと種類の固有のオプションがあります。 VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワーク待ち時間によって決まります。 シミュレートされたワークロードを使用して、ノードの種類ごとに最適な VM サイズと種類を決定することができます。
@@ -52,35 +49,35 @@ HDInsight の各バージョンは、一連の Hadoop エコシステム コン�
 |**Application**|**統合**
 |---|---|
 |エアフロー|IaaS または HDInsight のエッジ ノード
-|Alluxio|IaaS  
-|Arcadia|IaaS 
+|Alluxio|IaaS  
+|Arcadia|IaaS 
 |Atlas|なし (HDP のみ)
 |Datameer|HDInsight のエッジ ノード
 |Datastax (Cassandra)|IaaS (Azure での代替の CosmosDB)
-|DataTorrent|IaaS 
-|Drill|IaaS 
+|DataTorrent|IaaS 
+|Drill|IaaS 
 |Ignite|IaaS
-|Jethro|IaaS 
-|Mapador|IaaS 
+|Jethro|IaaS 
+|Mapador|IaaS 
 |Mongo|IaaS (Azure での代替の CosmosDB)
-|NiFi|IaaS 
+|NiFi|IaaS 
 |Presto|IaaS または HDInsight のエッジ ノード
-|Python 2|PaaS 
-|Python 3|PaaS 
-|R|PaaS 
-|SAS|IaaS 
+|Python 2|PaaS 
+|Python 3|PaaS 
+|R|PaaS 
+|SAS|IaaS 
 |Vertica|IaaS (Azure での代替の SQLDW)
-|Tableau|IaaS 
+|Tableau|IaaS 
 |Waterline|HDInsight のエッジ ノード
-|StreamSets|HDInsight のエッジ 
-|Palantir|IaaS 
-|Sailpoint|IaaS 
+|StreamSets|HDInsight のエッジ 
+|Palantir|IaaS 
+|Sailpoint|IaaS 
 
 詳細については、[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)を参照してください
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使って HDInsight をカスタマイズする
 
-HDInsight には、**スクリプト アクション**と呼ばれるクラスター構成のメソッドが提供されています。 スクリプト アクションは HDInsight クラスターのノードで実行される Bash スクリプトで、追加コンポーネントのインストールおよび構成設定を変更するために使用できます。
+HDInsight には、**スクリプト アクション** と呼ばれるクラスター構成のメソッドが提供されています。 スクリプト アクションは HDInsight クラスターのノードで実行される Bash スクリプトで、追加コンポーネントのインストールおよび構成設定を変更するために使用できます。
 
 スクリプト アクションは、HDInsight クラスターからアクセスできる URI に保存されている必要があります。 これらはクラスターの作成中または作成後に使用でき、特定のノード型でのみ実行するように制限することもできます。
 
@@ -109,7 +106,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>ブートストラップを使って HDInsight 構成をカスタマイズする
 
-`core-site.xml`、`hive-site.xml`、`oozie-env.xml` などの構成ファイルの構成の変更は、ブートス トラップを使って実行できます。 次のスクリプトは、PowerShell の [AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) コマンドレットである [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) を使用している例です。
+`core-site.xml`、`hive-site.xml`、`oozie-env.xml` などの構成ファイルの構成の変更は、ブートス トラップを使って実行できます。 次のスクリプトは、PowerShell の [AZ モジュール](/powershell/azure/new-azureps-module-az) コマンドレットである [New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster) を使用している例です。
 
 ```powershell
 # hive-site.xml configuration

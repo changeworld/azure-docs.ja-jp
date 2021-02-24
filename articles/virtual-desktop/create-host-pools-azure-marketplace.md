@@ -3,15 +3,15 @@ title: Windows Virtual Desktop のホスト プール Azure portal - Azure
 description: Azure portal を使用して Windows Virtual Desktop のホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322587"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735183"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
@@ -48,7 +48,8 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
 1. Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサインインします。
    
-   >![注] US Gov ポータルにサインインしている場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
+   >[!NOTE]
+   > US Gov ポータルにサインインする場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
 
 2. 検索バーに「**Windows Virtual Desktop**」と入力し、[サービス] にある **[Windows Virtual Desktop]** を見つけて選択します。
 
@@ -96,16 +97,16 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
 1. **[リソース グループ]** で、仮想マシンを作成するリソース グループを選択します。 これは、ホスト プールに使用したリソース グループとは別のものにできます。
 
-2. 仮想マシンを作成する**仮想マシンの場所**を選択します。 これらは、ホスト プール用に選択したリージョンと同じでも、異なっていてもかまいません。
+2. 仮想マシンを作成する **仮想マシンの場所** を選択します。 これらは、ホスト プール用に選択したリージョンと同じでも、異なっていてもかまいません。
 
-3. 次に、使用する**仮想マシン サイズ**を選択します。 既定のサイズのままにすることも、 **[サイズの変更]** を選択してサイズを変更することもできます。 **[サイズの変更]** を選択した場合は、表示されるウィンドウで、ワークロードに適した仮想マシンのサイズを選択してください。
+3. 次に、使用する **仮想マシン サイズ** を選択します。 既定のサイズのままにすることも、 **[サイズの変更]** を選択してサイズを変更することもできます。 **[サイズの変更]** を選択した場合は、表示されるウィンドウで、ワークロードに適した仮想マシンのサイズを選択してください。
 
 4. **[Number of VMs]\(VM の数\)** で、ホスト プール用に作成する VM の数を指定します。
 
     >[!NOTE]
     >セットアップ プロセスでは、ホスト プールの設定中に最大 400 個の VM を作成できます。各 VM セットアップ プロセスでは、リソース グループに 4 つのオブジェクトが作成されます。 この作成プロセスではサブスクリプションのクォータがチェックされません。そのため、入力する VM の数が、ご自分のリソース グループおよびサブスクリプションの Azure VM と API の制限の範囲内になるようにしてください。 VM はホスト プールの作成完了後にも追加できます。
 
-5. その後、**名前のプレフィックス**を指定して、セットアップ プロセスで作成される仮想マシンの名前を指定します。 サフィックスは、`-` に 0 から始まる番号が付いた形式になります。
+5. その後、**名前のプレフィックス** を指定して、セットアップ プロセスで作成される仮想マシンの名前を指定します。 サフィックスは、`-` に 0 から始まる番号が付いた形式になります。
 
 6. 次に、仮想マシンを作成するために使用する必要があるイメージを選択します。 **[ギャラリー]** または **[ストレージ BLOB]** を選択できます。
 
@@ -117,7 +118,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
       - Windows 10 Enterprise マルチセッション、バージョン 2004
       - Windows 10 Enterprise マルチセッション、バージョン 2004 + Microsoft 365 Apps
 
-     目的のイメージが表示されない場合は、 **[すべてのイメージとディスクを参照する]** を選択すると、ギャラリー内の別のイメージ、または Microsoft や他の発行元から提供されたイメージを選択できます。
+     目的のイメージが表示されない場合は、 **[すべてのイメージとディスクを参照する]** を選択すると、ギャラリー内の別のイメージ、または Microsoft や他の発行元から提供されたイメージを選択できます。 選択したイメージが、[サポートされている OS イメージ](overview.md#supported-virtual-machine-os-images)のいずれかであることを確認します。
 
      > [!div class="mx-imgBorder"]
      > ![Microsoft 提供のイメージが一覧表示されたマーケットプレースのスクリーンショット。](media/marketplace-images.png)
@@ -131,7 +132,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
 7. 自分の VM で使用したい OS ディスクの種類を選択します。Standard SSD、Premium SSD、Standard HDD。
 
-8. [Network and security]\(ネットワークとセキュリティ\) で、作成する仮想マシンの配置先となる**仮想ネットワーク**と**サブネット**を選択します。 仮想ネットワーク内の仮想マシンをドメインに参加させる必要があるため、仮想ネットワークでドメイン コントローラーに接続できることを確認します。 選択した仮想ネットワークの DNS サーバーは、ドメイン コントローラーの IP を使用するように構成する必要があります。
+8. [Network and security]\(ネットワークとセキュリティ\) で、作成する仮想マシンの配置先となる **仮想ネットワーク** と **サブネット** を選択します。 仮想ネットワーク内の仮想マシンをドメインに参加させる必要があるため、仮想ネットワークでドメイン コントローラーに接続できることを確認します。 選択した仮想ネットワークの DNS サーバーは、ドメイン コントローラーの IP を使用するように構成する必要があります。
 
 9. 次に、仮想マシンにパブリック IP が必要かどうかを選択します。 プライベート IP の方が安全であるため、 **[いいえ]** を選択することをお勧めします。
 
@@ -188,6 +189,13 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
      - ご自分の構成に基づいた Azure リソース管理テンプレートのダウンロード リンク。
 
 これですべて完了しました。
+
+## <a name="run-the-azure-resource-manager-template-to-provision-a-new-host-pool"></a>Azure Resource Manager テンプレートを実行して新しいホスト プールをプロビジョニングする
+
+自動プロセスを使用する場合は、代わりに [Azure Resource Manager テンプレートをダウンロードして](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)、新しいホストプールをプロビジョニングします。
+
+>[!NOTE]
+>自動プロセスを使用して環境を構築する場合は、最新バージョンの構成 JSON ファイルが必要になります。 JSON ファイルは[こちら](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

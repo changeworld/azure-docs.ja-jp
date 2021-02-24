@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2c7eea87101a36edb0d77026489ea351b601158b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170226"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584597"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Arkose Labs を構成するためのチュートリアル
 
@@ -106,7 +106,7 @@ ms.locfileid: "86170226"
 
 Git Bash をダウンロードし、次の手順に従います。
 
-1. 指示に従って [Web アプリを作成](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)すると、"おめでとうございます。 App Service に初めての PHP アプリをデプロイしました。" というメッセージが表示されます。
+1. 指示に従って [Web アプリを作成](../app-service/quickstart-php.md)すると、"おめでとうございます。 App Service に初めての PHP アプリをデプロイしました。" というメッセージが表示されます。
 
 2. ローカル フォルダーを開き、**index.php** ファイルの名前を **verify-token.php** に変更します。
 
@@ -120,7 +120,7 @@ Git Bash をダウンロードし、次の手順に従います。
 
    ``git commit -am "updated output"``
 
-   ``git push azure master``  
+   ``git push azure main``  
 
 ### <a name="part-3---final-setup"></a>パート 3 – 最終的な設定
 
@@ -147,7 +147,7 @@ Git Bash をダウンロードし、次の手順に従います。
 
 1. [こちら](tutorial-create-user-flows.md)の情報に基づいてユーザー フローを作成します。 **[ユーザー フローをテストする]** セクションに達したら、停止します。
 
-2. [ユーザー フロー](user-flow-javascript-overview.md)で JavaScript を有効にします。
+2. [ユーザー フロー](javascript-and-page-layout.md)で JavaScript を有効にします。
 
 3. 同じユーザー フロー ページで、カスタム ページの URL を有効にします。 **[ユーザー フロー]**  >  **[ページ レイアウト]**  >  **[カスタム ページ コンテンツの使用]**  =  **[はい]**  >  **[insert custom page URL] (カスタム ページ URL の挿入)** の順に移動します。
 このカスタム ページ URL は、BLOB ストレージ内の index.html ファイルの場所から取得されます  

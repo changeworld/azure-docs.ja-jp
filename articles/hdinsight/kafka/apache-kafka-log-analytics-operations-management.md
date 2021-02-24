@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka の Azure Monitor ログ - Azure HDInsight
 description: Azure Monitor ログを使用して、Azure HDInsight 上の Apache Kafka クラスターからログを分析します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087403"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932765"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight で Apache Kafka のログを分析する
 
@@ -104,7 +101,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Monitor の詳細については、「[Azure Monitor の概要](../../log-analytics/log-analytics-get-started.md)」および「[Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する](../hdinsight-hadoop-oms-log-analytics-use-queries.md)」をご覧ください。
+Azure Monitor の詳細については、「[Azure Monitor の概要](../../azure-monitor/overview.md)」および「[Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する](../hdinsight-hadoop-oms-log-analytics-use-queries.md)」をご覧ください。
 
 Apache Kafka の操作について詳しくは、次のドキュメントをご覧ください。
 

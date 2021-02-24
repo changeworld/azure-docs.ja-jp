@@ -4,16 +4,17 @@ description: リージョンの追加、スループットの更新、リージ�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0feaf4a984f40ddee7a30291fe0a8f671b6512a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023689"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636845"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB コントロール プレーン操作を監査する方法
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB のコントロール プレーンとは、Azure Cosmos アカウントでさまざまな一連の操作を実行できる RESTful サービスです。 これは、パブリック リソース モデル (例: データベース、アカウント) とエンドユーザーに対するさまざまな操作を公開し、リソース モデルに対してアクションを実行します。 Azure Cosmos アカウントまたはコンテナーに対する変更も、コントロール プレーンの操作に含まれます。 たとえば、Azure Cosmos アカウントの作成、リージョンの追加、スループットの更新、リージョンのフェールオーバー、VNet の追加などの操作は、コントロール プレーン操作の一部です。 この記事では、Azure Cosmos DB でコントロール プレーン操作を監査する方法について説明します。 Azure Cosmos アカウントでのコントロール プレーンの操作は、Azure CLI、PowerShell、または Azure portal を使用して実行できます。それに対し、コンテナーには Azure CLI または PowerShell を使用できます。
 
@@ -27,7 +28,7 @@ Azure Cosmos DB のコントロール プレーンとは、Azure Cosmos アカ�
 
 ## <a name="disable-key-based-metadata-write-access"></a>キー ベースのメタデータ書き込みアクセスを無効にする
 
-Azure Cosmos DB でコントロール プレーン操作を監査する前に、アカウントでのキーベースのメタデータ書き込みアクセスを無効にします。 キーベースのメタデータ書き込みアクセスが無効になっている場合、アカウント キーを使用して Azure Cosmos アカウントに接続しているクライアントは、アカウントにアクセスできません。 書き込みアクセスを無効にするには、`disableKeyBasedMetadataWriteAccess` プロパティを true に設定します。 このプロパティを設定すると、適切なロールベースのアクセス制御 (RBAC) ロールと資格情報を持つユーザーは、すべてのリソースに変更を加えることができます。 このプロパティを設定する方法の詳細については、「[SDK からの変更を防止する](role-based-access-control.md#prevent-sdk-changes)」の記事を参照してください。 
+Azure Cosmos DB でコントロール プレーン操作を監査する前に、アカウントでのキーベースのメタデータ書き込みアクセスを無効にします。 キーベースのメタデータ書き込みアクセスが無効になっている場合、アカウント キーを使用して Azure Cosmos アカウントに接続しているクライアントは、アカウントにアクセスできません。 書き込みアクセスを無効にするには、`disableKeyBasedMetadataWriteAccess` プロパティを true に設定します。 このプロパティを設定すると、適切な Azure ロールと資格情報を持つユーザーは、すべてのリソースに変更を加えることができます。 このプロパティを設定する方法の詳細については、「[SDK からの変更を防止する](role-based-access-control.md#prevent-sdk-changes)」の記事を参照してください。 
 
 `disableKeyBasedMetadataWriteAccess` が有効になった後で、SDK ベースのクライアントで作成または更新操作を実行すると、「"*Azure Cosmos DB エンドポイント経由での 'ContainerNameorDatabaseName' リソースに対する "POST" 操作は許可されません*"」エラーが返されます。 お使いのアカウントでのこのような操作へのアクセスを有効にするか、Azure Resource Manager、Azure CLI、または Azure PowerShell を使用して作成/更新操作を実行する必要があります。 切り替えて戻るには、[Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)に関する記事の説明に従って、Azure CLI を使用して disableKeyBasedMetadataWriteAccess を **false** に設定します。 `disableKeyBasedMetadataWriteAccess` の値を、true ではなく false に変更してください。
 
@@ -170,29 +171,60 @@ API 固有の操作の操作名の形式は、次のとおりです。
 次に、コントロール プレーン操作の診断ログを取得する例をいくつか示します。
 
 ```kusto
-AzureDiagnostics 
-| where Category startswith "ControlPlane"
+AzureDiagnostics 
+| where Category startswith "ControlPlane"
 | where OperationName contains "Update"
-| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
 | where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
-| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
+```
+
+activityId と、コンテナー削除操作を開始した呼び出し元を取得するクエリ。
+
+```kusto
+(AzureDiagnostics
+| where Category == "ControlPlaneRequests"
+| where OperationName == "SqlContainersDelete"
+| where TimeGenerated >= todatetime('9/3/2020, 5:30:29.300 PM')
+| summarize by activityId_g )
+| join (
+AzureActivity
+| parse HTTPRequest with * "clientRequestId\": \"" activityId_g "\"" * 
+| summarize by Caller, HTTPRequest, activityId_g)
+on activityId_g
+| project Caller, activityId_g
+```
+
+インデックスまたは ttl 更新を取得するためのクエリを実行します。 その後、このクエリの出力と前の更新を比較し、インデックスまたは ttl の変更を確認できます。
+
+```Kusto
+AzureDiagnostics
+| where Category =="ControlPlaneRequests"
+| where  OperationName == "SqlContainersUpdate"
+| project resourceDetails_s
+```
+
+**出力:**
+
+```json
+{id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
 ```
 
 ## <a name="next-steps"></a>次のステップ

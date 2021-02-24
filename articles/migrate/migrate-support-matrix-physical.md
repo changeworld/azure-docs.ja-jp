@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate での物理サーバーの評価のサポート
 description: Azure Migrate Server Assessment での物理サーバーの評価のサポートについて説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 2be77a47c4b111dd2f25a8fc9ca35690d1b2d80c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640125"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796756"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理サーバーの評価のサポート マトリックス 
 
@@ -31,11 +34,21 @@ ms.locfileid: "88640125"
 
 ## <a name="physical-server-requirements"></a>物理サーバーの要件
 
-| **サポート**                | **詳細**               
-| :-------------------       | :------------------- |
-| **物理サーバーの展開**       | 物理サーバーは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 |
-| **アクセス許可**           | **Windows:** ドメインに参加しているマシンにはドメイン アカウントを使用し、ドメインに参加していないマシンにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。 <br/><br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 <br/> または、次のコマンドを使用して必要な機能が設定されていることを確認します。 <br/> setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk (/usr/sbin/fdisk が存在しない場合) <br/> setcap "cap_dac_override、cap_dac_read_search、cap_fowner、cap_fsetid、cap_setuid、cap_setpcap、cap_net_bind_service、cap_net_admin、cap_sys_chroot、cap_sys_admin、cap_sys_resource、cap_audit_control、cap_setfcap=+eip" /sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode <br/> chmod a+r /sys/class/dmi/id/product_uuid
-| **オペレーティング システム** | Windows Server 2003 および SUSE Linux を除くすべてのオペレーティング システムは、移行について評価することができます。 |
+**物理サーバーの展開:** 物理サーバーは、スタンドアロンにすることも、クラスターにデプロイすることもできます。
+
+**オペレーティング システム:** すべての Windows および Linux オペレーティング システムを、移行のために評価することができます。
+
+**アクセス許可:**
+- Windows サーバーの場合は、ドメイン参加済みのマシンにはドメイン アカウントを、ドメインに参加していないマシンにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
+- Linux サーバーの場合は、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
+
+**コマンド** | **目的**
+--- | --- |
+setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk _(/usr/sbin/fdisk が存在しない場合)_ | ディスク構成データを収集するため
+setcap "cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_setuid,<br>cap_setpcap,cap_net_bind_service,cap_net_admin,cap_sys_chroot,cap_sys_admin,<br>cap_sys_resource,cap_audit_control,cap_setfcap=+eip" /sbin/lvm | ディスクのパフォーマンス データを収集するため
+setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode | BIOS のシリアル番号を収集するため
+chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
+
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件
@@ -54,7 +67,7 @@ Azure Government で、[このスクリプトを使用して](deploy-appliance-s
 **[デバイス]** | **接続**
 --- | ---
 **アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> ポート 443 (HTTPS) で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
-**物理サーバー** | **Windows:** WinRM ポート 5985 (HTTP) で Windows サーバーから構成とパフォーマンスのメタデータをプルするためのインバウンド接続。 <br/><br/> **Linux:** ポート 22 (TCP) で Linux サーバーから構成とパフォーマンスのメタデータをプルするための受信接続。 |
+**物理サーバー** | **Windows:** WinRM ポート 5985 (HTTP) または 5986 (HTTPS) で Windows サーバーから構成とパフォーマンスのメタデータをプルするためのインバウンド接続。 <br/><br/> **Linux:** ポート 22 (TCP) で Linux サーバーから構成とパフォーマンスのメタデータをプルするための受信接続。 |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>エージェント ベースの依存関係の分析の要件
 
@@ -74,4 +87,4 @@ Azure Government で、[このスクリプトを使用して](deploy-appliance-s
 
 ## <a name="next-steps"></a>次のステップ
 
-[物理サーバーの評価を準備します](tutorial-prepare-physical.md)。
+[物理サーバーの評価を準備します](./tutorial-discover-physical.md)。

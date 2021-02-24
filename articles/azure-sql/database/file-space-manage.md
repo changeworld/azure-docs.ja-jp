@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: jrasnick, sstein
+ms.date: 12/22/2020
+ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324540"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096493"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database でデータベースのファイル領域を管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ Azure SQL Database では、データベースの基礎となるデータ ファ
 
 Azure portal に表示されるほとんどのストレージ領域のメトリックと次の API は、使用されるデータ ページのサイズを測定するだけです。
 
-- PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric) などの Azure Resource Manager ベースのメトリック API
-- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- PowerShell [get-metrics](/powershell/module/az.monitor/get-azmetric) などの Azure Resource Manager ベースのメトリック API
+- T-SQL: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 ただし、次の API は、データベースとエラスティック プールに割り当てられている領域のサイズを測ることもできます。
 
-- T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL: [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>データ ファイルの圧縮
 
@@ -84,7 +84,7 @@ Azure portal に表示されるほとんどのストレージ領域のメトリ�
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>割り当て済みのデータベース データ領域と未使用の割り当て済み領域
@@ -98,7 +98,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>データベース データの最大サイズ
@@ -108,7 +108,7 @@ HAVING type_desc = 'ROWS'
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>エラスティック プールの記憶域スペースの種類
@@ -121,6 +121,9 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 |**割り当て済みのデータ領域**|エラスティック プール内のすべてのデータベースで割り当て済みのデータ領域の合計。||
 |**割り当て済みで未使用のデータ領域**|エラスティック プール内のすべてのデータベースで割り当て済みのデータ領域と使用済みのデータ領域の差。|この量は、データベースのデータ ファイルを縮小して再利用できる、エラスティック プールに割り当てられた領域の上限を表します。|
 |**データの最大サイズ**|エラスティック プールのすべてのデータベースに使用できるデータ領域の最大量。|エラスティック プールに割り当てられた領域は、エラスティック プールの最大サイズを超えないようにする必要があります。  最大サイズを超えた場合は、割り当て済みで未使用の領域を、データベースのデータ ファイルを縮小して再利用できます。|
+
+> [!NOTE]
+> "エラスティック プールの記憶域が上限に達しました" というエラー メッセージは、データベース オブジェクトがエラスティック プールの記憶域の上限に達するほどの領域を割り当てられていることを示していますが、データ領域の割り当てに未使用の領域が存在する場合があります。 エラスティック プールの記憶域の上限を引き上げるか、短期的な解決策として、以下の「[**未使用の割り当て済み領域を再利用する**](#reclaim-unused-allocated-space)」セクションを使用してデータ領域を解放することを検討してください。 また、データベース ファイルの縮小によってパフォーマンスが低下するおそれがあることにも注意する必要があります。下の「[**インデックスの再構築**](#rebuild-indexes)」セクションを参照してください。
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>記憶域スペースの情報についてエラスティック プールのクエリを実行する
 
@@ -136,7 +139,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>割り当て済みのエラスティック プールのデータ領域と未使用の割り当て済み領域
@@ -148,7 +151,7 @@ ORDER BY end_time DESC
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
 
-PowerShell スクリプトには SQL Server PowerShell モジュールが必要です。インストール方法については、[PowerShell モジュールのダウンロード](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)に関するページを参照してください。
+PowerShell スクリプトには SQL Server PowerShell モジュールが必要です。インストール方法については、[PowerShell モジュールのダウンロード](/sql/powershell/download-sql-server-ps-module)に関するページを参照してください。
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -187,7 +190,7 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 
 ### <a name="elastic-pool-data-max-size"></a>エラスティック プール データの最大サイズ
 
-エラスティック プール データの最大サイズを返すように、次の T-SQL クエリを変更します。  クエリ結果の単位は MB です。
+最後に記録されたエラスティック プール データ最大サイズを返すように、次の T-SQL クエリを変更します。  クエリ結果の単位は MB です。
 
 ```sql
 -- Connect to master
@@ -195,13 +198,13 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>未使用の割り当て済み領域を再利用する
 
 > [!NOTE]
-> このコマンドは、実行中のデータベース パフォーマンスに影響を及ぼす可能性があります。また、可能であれば、使用率が低い期間中に実行してください。
+> 縮小コマンドは、実行中のデータベース パフォーマンスに影響を及ぼすため、可能であれば、使用率が低い期間中に実行してください。
 
 ### <a name="dbcc-shrink"></a>DBCC の圧縮
 
@@ -209,28 +212,32 @@ ORDER BY end_time DESC
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-このコマンドは、実行中のデータベース パフォーマンスに影響を及ぼす可能性があります。また、可能であれば、使用率が低い期間中に実行してください。  
+縮小コマンドは、実行中のデータベース パフォーマンスに影響を及ぼすため、可能であれば、使用率が低い期間中に実行してください。  
 
-このコマンドの詳細については、[SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。
+また、データベース ファイルの縮小によってパフォーマンスが低下するおそれがあることにも注意する必要があります。下の「[**インデックスの再構築**](#rebuild-indexes)」セクションを参照してください。
+
+このコマンドの詳細については、[SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。
 
 ### <a name="auto-shrink"></a>自動圧縮
 
 代わりに、データベースの自動圧縮を有効にすることもできます。  自動圧縮では、ファイル管理の複雑さが軽減され、`SHRINKDATABASE` または `SHRINKFILE` よりもデータベース パフォーマンスへの影響が低くなります。  自動圧縮は、多数のデータベースがあるエラスティック プールの管理に、特に役立てることができます。  ただし、自動圧縮は、`SHRINKDATABASE` および `SHRINKFILE` よりもファイル領域の解放の効果が低くなる可能性があります。
+既定では、自動圧縮は、ほとんどのデータベースで推奨されているように無効になっています。 詳細については、「[AUTO_SHRINK に関する考慮事項](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)」を参照してください。
+
 自動圧縮を有効にするには、次のコマンドのデータベースの名前を変更します。
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-このコマンドの詳細については、[DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) オプションをご覧ください。
+このコマンドの詳細については、[DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options) オプションをご覧ください。
 
 ### <a name="rebuild-indexes"></a>インデックスの再構築
 
-データベース データ ファイルの縮小後は、インデックスが断片化され、パフォーマンスの最適化の効果が失われる可能性があります。 パフォーマンスの低下が発生した場合、データベース インデックスの再構築を検討します。 インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。
+データベース データ ファイルの縮小後は、インデックスが断片化され、パフォーマンスの最適化の効果が失われる可能性があります。 パフォーマンスの低下が発生した場合、データベース インデックスの再構築を検討します。 インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

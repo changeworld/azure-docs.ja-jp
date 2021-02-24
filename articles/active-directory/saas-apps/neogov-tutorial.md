@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9935d19ddbdf1f6eeff83fb4e4be480545baa2a0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03efcd91553ab2235782d68cc70f4acdeedce4c6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552375"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92506900"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-neogov"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NEOGOV の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552375"
 * ユーザーが自分の Azure AD アカウントを使用して NEOGOV に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* NEOGOV では、**IDP** によって開始される SSO がサポートされます
+* NEOGOV では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-neogov-from-the-gallery"></a>ギャラリーから NEOGOV を追加する
 
@@ -49,7 +49,7 @@ Azure AD への NEOGOV の統合を構成するには、ギャラリーからマ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NEOGOV**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NEOGOV** 」と入力します。
 1. 結果のパネルから **[NEOGOV]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -94,7 +94,7 @@ NEOGOV での Azure AD SSO を構成してテストするには、次の構成�
     | サンドボックス | `https://login.uat.neogov.net/authentication/saml/consumer` |
     | | |
 
-1. NEOGOV アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 NEOGOV アプリケーションでは、**nameidentifier** が **user.objectid** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. NEOGOV アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 NEOGOV アプリケーションでは、 **nameidentifier** が **user.objectid** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -140,24 +140,24 @@ NEOGOV での Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-neogov-sso"></a>NEOGOV SSO の構成
 
-**NEOGOV** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [NEOGOV サポート チーム](mailto:itops@neogov.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**NEOGOV** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [NEOGOV サポート チーム](mailto:itops@neogov.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-neogov-test-user"></a>NEOGOV テスト ユーザーの作成
 
-このセクションでは、NEOGOV で B.Simon というユーザーを作成します。  [NEOGOV サポート チーム](mailto:itops@neogov.net)と連携し、NEOGOV プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、NEOGOV で B.Simon というユーザーを作成します。 [NEOGOV サポート チーム](mailto:itops@neogov.net)と連携して、NEOGOV プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [NEOGOV] タイルをクリックすると、SSO を設定した NEOGOV に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [NEOGOV] タイルをクリックすると、SSO を設定した NEOGOV に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で NEOGOV を試す](https://aad.portal.azure.com/)

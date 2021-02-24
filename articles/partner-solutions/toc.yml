@@ -1,0 +1,15 @@
+- name: Azure パートナー ソリューションのドキュメント
+  href: overview.md
+- name: パートナー ソリューション
+  items:
+    - name: Confluent Cloud での Apache Kafka
+      items:
+        - name: 概要
+          displayName: 'Apache, Kafka, Confluent'
+          href: ./apache-kafka-confluent-cloud/overview.md
+        - name: 作成
+          href: ./apache-kafka-confluent-cloud/create.md
+        - name: 管理する
+          href: ./apache-kafka-confluent-cloud/manage.md
+        - name: トラブルシューティング
+          href: ./apache-kafka-confluent-cloud/troubleshoot.md

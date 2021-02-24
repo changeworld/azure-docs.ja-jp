@@ -4,11 +4,11 @@ description: Azure Lighthouse の機能を使用すると、複数の Azure AD �
 ms.date: 08/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3f452e6810fa6809b5ba1b83b664f8b38d82a895
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167351"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004247"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
@@ -54,7 +54,7 @@ Azure Lighthouse では、データやリソースを物理的に移動するの
 
 たとえば、上記の例では、テナント A はサービス プロバイダー テナント (管理側テナント)、テナント B とテナント C は顧客テナントと考えることができます。
 
-この例では、適切なアクセス許可を持つテナント A のユーザーは、Azure portal の **[マイ カスタマー]** ページで、[委任されたリソースを表示および管理](../how-to/view-manage-customers.md)できます。 同様に、適切なアクセス許可を持つテナント B とテナント C のユーザーは、Azure portal の **[サービス プロバイダー]** ページで、テナント A に[委任されたリソースを表示および管理](../how-to/view-manage-service-providers.md)できます。
+この例では、適切なアクセス許可を持つテナント A のユーザーは、Azure portal の **[マイ カスタマー]** ページで、[委任されたリソースを表示および管理](../how-to/view-manage-customers.md)できます。 同様に、適切なアクセス許可を持つテナント B とテナント C のユーザーは、Azure portal の **[サービス プロバイダー]** ページで、テナント A に [委任されたリソースを表示および管理](../how-to/view-manage-service-providers.md)できます。
 
 ## <a name="next-steps"></a>次のステップ
 

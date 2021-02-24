@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 614c8e5f76475c7e7af35db37334eb645ad553a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6bed26227542cbf3ffc13ecc018aef9e659d026e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018605"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791630"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>クラスター イベントに対して EventStore API のクエリを実行する
 
@@ -111,7 +111,7 @@ Body:
 
 ## <a name="query-the-eventstore-programmatically"></a>プログラムによる EventStore のクエリ
 
-[Service Fabric クライアント ライブラリ](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)を介して EventStore のクエリをプログラムで実行することもできます。
+[Service Fabric クライアント ライブラリ](/dotnet/api/overview/azure/service-fabric#client-library)を介して EventStore のクエリをプログラムで実行することもできます。
 
 Service Fabric クライアントを設定したら、次のように EventStore にアクセスしてイベントのクエリを実行できます: `sfhttpClient.EventStore.<request>`
 
@@ -192,7 +192,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 
 *"myApp" のすべてのサービスの正常性の履歴:*
 
-現時点では、サービスの正常性レポート イベントは、対応するアプリケーション エンティティの下に `DeployedServicePackageNewHealthReport` イベントとして表示されます。 サービスが "App1" に対してどのように動作しているかを確認するには、次のクエリを使用します: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+現時点では、サービスの正常性レポート イベントは、対応するアプリケーション エンティティの下に `DeployedServicePackageNewHealthReport` イベントとして表示されます。 サービスが "App1" に対してどのように動作しているかを確認するには、次のクエリを使用します: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
 *パーティションの再構成:*
 

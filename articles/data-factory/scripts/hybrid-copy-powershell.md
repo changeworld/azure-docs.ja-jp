@@ -1,21 +1,18 @@
 ---
 title: PowerShell を使用してオンプレミスから Azure にデータをコピーする
 description: この PowerShell スクリプトは、SQL Server データベースから別の Azure Blob Storage にデータをコピーします。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 34c5497a8b059260dfe60e8015e62c0f1511f021
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194626"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373387"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>PowerShell を使用して、SQL Server から Azure にデータをコピーするための Data Factory パイプラインを作成する
 
@@ -27,8 +24,8 @@ ms.locfileid: "84194626"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **SQL Server**。 このサンプルでは、SQL Server データベースを**ソース** データ ストアとして使用します。
-- **Azure Storage アカウント**。 このサンプルでは、Azure Blob Storage を**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
+- **SQL Server**。 このサンプルでは、SQL Server データベースを **ソース** データ ストアとして使用します。
+- **Azure Storage アカウント**。 このサンプルでは、Azure Blob Storage を **コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
 - **セルフホステッド統合ランタイム**。 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI ファイルをダウンロードして実行し、セルフホステッド統合ランタイムをマシンにインストールします。  
 
 ### <a name="create-sample-database-in-sql-server"></a>SQL Server にサンプル データベースを作成する
@@ -92,6 +89,6 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)を参照してください。
 
 Azure Data Factory のその他の PowerShell サンプル スクリプトについては、[Azure Data Factory の PowerShell のサンプル](../samples-powershell.md)に関する記事をご覧ください。

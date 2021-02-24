@@ -8,28 +8,28 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 149481f9cae535fa53f94a876e1f52e813b3838b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: dd07c09c4ed5be311bf5a485b9bff938c976a2f5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034585"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659235"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>クイック スタート: Azure CLI を使用した Azure ファイル共有の作成および管理
-このガイドでは、Azure CLI を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
+このガイドでは、Azure CLI を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の サーバー メッセージ ブロック (SMB) プロトコル、ネットワーク ファイル システム (NFS) プロトコル (プレビュー) をサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure CLI をローカルにインストールして使用する場合、この記事の手順を実行するには Azure CLI バージョン 2.0.4 以降を実行している必要があります。 Azure CLI のバージョンを確認するには、**az --version** を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
+- この記事では、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-既定では、Azure CLI コマンドは JavaScript Object Notation (JSON) を返します。 JSON は、REST API との間でメッセージを送受信するための標準的な方法です。 JSON 応答を操作しやすくするために、この記事のいくつかの例では、Azure CLI コマンドで *query* パラメーターを使用しています。 このパラメーターでは、JSON を解析するために [JMESPath クエリ言語](http://jmespath.org/)が使用されます。 JMESPath クエリ言語に従って Azure CLI コマンドの結果を使用する方法の詳細については、[JMESPath のチュートリアル](http://jmespath.org/tutorial.html)を参照してください。
+- 既定では、Azure CLI コマンドは JavaScript Object Notation (JSON) を返します。 JSON は、REST API との間でメッセージを送受信するための標準的な方法です。 JSON 応答を操作しやすくするために、この記事のいくつかの例では、Azure CLI コマンドで *query* パラメーターを使用しています。 このパラメーターでは、JSON を解析するために [JMESPath クエリ言語](http://jmespath.org/)が使用されます。 JMESPath クエリ言語に従って Azure CLI コマンドの結果を使用する方法の詳細については、[JMESPath のチュートリアル](http://jmespath.org/tutorial.html)を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 まだ Azure リソース グループがない場合は、[az group create](/cli/azure/group) コマンドを使用して作成できます。 
 
-次の例では、*myResourceGroup* という名前のリソース グループを*米国西部 2* に作成します。
+次の例では、*myResourceGroup* という名前のリソース グループを *米国西部 2* に作成します。
 
 ```azurecli-interactive 
 export resourceGroupName="myResourceGroup"
@@ -41,7 +41,7 @@ az group create \
     --output none
 ```
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
+## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 ストレージ アカウントは、Azure ファイル共有またはその他のストレージ リソース (BLOB やキューなど) をデプロイできるストレージの共有プールです。 1 つのストレージ アカウントに格納できるファイル共有の数に制限はありません。 1 つの共有に格納できるファイルの数に制限はなく、ストレージ アカウントの容量の上限までファイルを格納できます。
 
 次の例では、[az storage account create](/cli/azure/storage/account) コマンドを使用してストレージ アカウントを作成します。 ストレージ アカウント名は一意である必要があります。そのため、`$RANDOM` を使用し、名前に数を追加して一意にします。
@@ -83,13 +83,14 @@ az storage share create \
     --account-key $storageAccountKey \
     --name $shareName \
     --quota 1024 \
+    --enabled-protocols SMB \
     --output none
 ```
 
-共有名には、小文字の英字、数字、単一ハイフンのみを使用することができます (ただし、名前をハイフンで始めることはできません)。 ファイル共有とファイルの名前付けの詳細については、「[Naming and referencing shares, directories, files, and metadata (共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照)](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
+共有名には、小文字の英字、数字、単一ハイフンのみを使用することができます (ただし、名前をハイフンで始めることはできません)。 ファイル共有とファイルの名前付けの詳細については、「[Naming and referencing shares, directories, files, and metadata (共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照)](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
 
 ## <a name="use-your-azure-file-share"></a>Azure ファイル共有を使用する
-Azure Files では、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)と[ファイル REST プロトコル](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api)の 2 つの方法で Azure ファイル共有内のファイルとフォルダーを操作できます。 
+Azure Files では、業界標準の [Server Message Block (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)と[ファイル REST プロトコル](/rest/api/storageservices/file-service-rest-api)の 2 つの方法で Azure ファイル共有内のファイルとフォルダーを操作できます。 
 
 SMB を使用してファイル共有をマウントするには、お使いの OS に基づいて次のドキュメントを参照してください。
 - [Linux](storage-how-to-use-files-linux.md)
@@ -174,6 +175,7 @@ az storage share create \
     --account-key $storageAccountKey \
     --name $otherShareName \
     --quota 1024 \
+    --enabled-protocols SMB \
     --output none
 
 az storage directory create \
@@ -210,7 +212,7 @@ Azure ファイル共有で実行できるもう 1 つの便利なタスクと�
 
 - Linux システム用の[論理ボリューム マネージャー (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) スナップショット。
 - macOS 用の [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) スナップショット。
-- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)。
+- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](/windows/desktop/VSS/volume-shadow-copy-service-portal)。
  
 [`az storage share snapshot`](/cli/azure/storage/share) コマンドを使用して、共有スナップショットを作成できます。
 

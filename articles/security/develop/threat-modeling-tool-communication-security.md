@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d795d30e3ad420e0fed002baddf37469ddcf995
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d9a4eabf37101622ac69ae05f3bec232fb8d2fe6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004564"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517531"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム:通信のセキュリティ | 軽減策 
 | 製品/サービス | [アーティクル] |
@@ -49,7 +49,7 @@ ms.locfileid: "89004564"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](../../event-hubs/authenticate-shared-access-signature.md) |
 | **手順** | SSL/TLS を使用して Event Hub への AMQP または HTTP 接続をセキュリティで保護します |
 
 ## <a name="check-service-account-privileges-and-check-that-the-custom-services-or-aspnet-pages-respect-crms-security"></a><a id="priv-aspnet"></a>サービス アカウントの権限を確認し、カスタム サービスまたは ASP.NET ページで CRM のセキュリティが考慮されていることをチェックする
@@ -71,7 +71,7 @@ ms.locfileid: "89004564"
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | リンクされたサービスの種類 - Azure とオンプレミス |
-| **参照**              |[オンプレミスと Azure Data Factory の間でデータを移動する](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)、[データ管理ゲートウェイ](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **参照**              |[オンプレミスと Azure Data Factory の間でデータを移動する](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-gateway)、[データ管理ゲートウェイ](../../data-factory/v1/data-factory-data-management-gateway.md) |
 | **手順** | <p>データ管理ゲートウェイ (DMG) ツールは、企業ネットワークまたはファイアウォールの背後で保護されているデータ ソースに接続するときに必要です。</p><ol><li>コンピューターをロックダウンすると、DMG ツールが切り離され、正常に動作していないプログラムによって、データ ソース コンピューターが破損したりスヌーピング (のぞき見) されたりするのを防ぐことができます  ( 最新の更新プログラムをインストールする必要がある、最低限必要なポートを有効にする、制御されたアカウントのプロビジョニング、監査の有効化、ディスク暗号化の有効化など)。</li><li>データ ゲートウェイのキーは頻繁に、または DMG サービス アカウントのパスワードが更新されるたびに交換する必要があります</li><li>リンク サービス経由のデータ転送は暗号化する必要があります</li></ol> |
 
 ## <a name="ensure-that-all-traffic-to-identity-server-is-over-https-connection"></a><a id="identity-https"></a>Identity Server へのすべてのトラフィックで HTTPS 接続が使用されていることを確認する
@@ -116,7 +116,7 @@ ms.locfileid: "89004564"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
 | **参照**              | [Azure App Service に HTTPS を適用する](../../app-service/configure-ssl-bindings.md#enforce-https) |
-| **手順** | <p>Azure では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Azure App Service に対して、HTTPS が既に有効になっていますが、適用されていません。 訪問者は引き続き HTTP を使用してアプリにアクセスするため、アプリのセキュリティが侵害される可能性があります。したがって HTTPS を明示的に適用する必要があります。 ASP.NET MVC アプリケーションは、セキュリティで保護されていない HTTP 要求が HTTPS 経由で再送信されるように強制する、[RequireHttps フィルター](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)を使用する必要があります。</p><p>また、Azure App Service に組み込まれている URL 書き換えモジュールを使用して、HTTPS を適用することもできます。 URL 書き換えモジュールを使用すると、アプリケーションに渡す前に受信要求に適用するルールを開発者が定義できます。 URL 書き換えルールは、アプリケーションのルートに格納されている web.config ファイルで定義されます</p>|
+| **手順** | <p>Azure では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Azure App Service に対して、HTTPS が既に有効になっていますが、適用されていません。 訪問者は引き続き HTTP を使用してアプリにアクセスするため、アプリのセキュリティが侵害される可能性があります。したがって HTTPS を明示的に適用する必要があります。 ASP.NET MVC アプリケーションは、セキュリティで保護されていない HTTP 要求が HTTPS 経由で再送信されるように強制する、[RequireHttps フィルター](/dotnet/api/system.web.mvc.requirehttpsattribute)を使用する必要があります。</p><p>また、Azure App Service に組み込まれている URL 書き換えモジュールを使用して、HTTPS を適用することもできます。 URL 書き換えモジュールを使用すると、アプリケーションに渡す前に受信要求に適用するルールを開発者が定義できます。 URL 書き換えルールは、アプリケーションのルートに格納されている web.config ファイルで定義されます</p>|
 
 ### <a name="example"></a>例
 次の例には、すべての受信トラフィックに HTTPS の使用を強制する基本的な URL 書き換えルールが含まれています
@@ -170,7 +170,7 @@ ms.locfileid: "89004564"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | OnPrem |
 | **属性**              | SQL バージョン - MsSQL2016、SQL バージョン - MsSQL2012、SQL バージョン - MsSQL2014 |
-| **参照**              | [データベース エンジンへの暗号化接続の有効化](https://msdn.microsoft.com/library/ms191192)  |
+| **参照**              | [データベース エンジンへの暗号化接続の有効化](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)  |
 | **手順** | TLS 暗号化を有効にすると、SQL Server のインスタンスとアプリケーションの間で行われるネットワーク経由データ転送のセキュリティが向上します。 |
 
 ## <a name="ensure-that-communication-to-azure-storage-is-over-https"></a><a id="comm-storage"></a>Azure Storage への通信が HTTPS 経由であることを確認する
@@ -181,7 +181,7 @@ ms.locfileid: "89004564"
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure Storage トランスポート レベルの暗号化 - HTTPS の使用](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
+| **参照**              | [Azure Storage トランスポート レベルの暗号化 - HTTPS の使用](../../storage/blobs/security-recommendations.md#networking) |
 | **手順** | 転送中の Azure Storage データのセキュリティを確保するには、REST API を呼び出すとき、またはストレージのオブジェクトにアクセスするときに必ず HTTPS プロトコルを使用します。 また、Azure Storage オブジェクトへのアクセス権を委任するときに使用できる Shared Access Signatureには、Shared Access Signature の使用時には HTTPS プロトコルのみを使用できると指定するオプションがあるので、誰でも SAS トークンを指定したリンクを送信すると適切なプロトコルが使用されます。|
 
 ## <a name="validate-md5-hash-after-downloading-blob-if-https-cannot-be-enabled"></a><a id="md5-https"></a>HTTPS を有効にできない場合は、BLOB のダウンロード後に MD5 ハッシュを検証する
@@ -203,7 +203,7 @@ ms.locfileid: "89004564"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - ファイル |
-| **参照**              | [Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows クライアントでの Azure File Storage SMB のサポート](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
+| **参照**              | [Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows クライアントでの Azure File Storage SMB のサポート](../../storage/files/storage-dotnet-how-to-use-files.md#understanding-the-net-apis) |
 | **手順** | Azure File Storage は、REST API の使用時に HTTPS をサポートしていますが、VM にアタッチされる SMB ファイル共有として使用する方が一般的です。 SMB 2.1 は暗号化をサポートしていないので、Azure の同じリージョン内でのみ接続が許可されます。 一方、SMB 3.0 は暗号化をサポートしており、Windows Server 2012 R2、Windows 8、Windows 8.1、および Windows 10 で使用できるので、リージョンをまたがるアクセスや、デスクトップ上のアクセスも許可されます。 |
 
 ## <a name="implement-certificate-pinning"></a><a id="cert-pinning"></a>証明書のピン留めを実装する
@@ -291,7 +291,7 @@ namespace CertificatePinningExample
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **手順** | アプリケーションは、機密情報へのすべてのアクセスに対して HTTPS が確実に使用されるよう構成されている必要があります。<ul><li>**説明:** アプリケーションが機密情報を処理しており、メッセージ レベルの暗号化が使用されていない場合は、暗号化されたトランスポート チャネル経由での通信のみを許可します。</li><li>**推奨:** HTTP トランスポートが無効になっていることを確認し、代わりに HTTPS トランスポートを有効にします。 たとえば、`<httpTransport/>` を `<httpsTransport/>` タグに置き換えます。 アプリケーションへのアクセス チャネルを確実にセキュリティで保護したい場合は、ネットワーク構成 (ファイアウォール) には依存しないでください。 論理的に言えば、アプリケーションのセキュリティをネットワークに依存するべきではありません。</li></ul><p>実際的な観点から言うと、ネットワーク セキュリティ担当者は、アプリケーションの進化に伴うアプリケーションのセキュリティ要件を常に把握しているわけではありません。</p>|
 
 ## <a name="wcf-set-message-security-protection-level-to-encryptandsign"></a><a id="message-protection"></a>WCF: メッセージのセキュリティ保護レベルを EncryptAndSign に設定する
@@ -302,7 +302,7 @@ namespace CertificatePinningExample
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff650862(v=pandp.10)) |
 | **手順** | <ul><li>**説明:** 保護レベルが "none" に設定されていると、メッセージの保護が無効になります。 機密性と整合性を実現するには、適切な設定レベルを使用します。</li><li>**推奨:**<ul><li>`Mode=None` の場合 - メッセージ保護を無効にします</li><li>`Mode=Sign` の場合 - メッセージに署名します。ただし、暗号化しません。データの整合性が重要である場合に使用します</li><li>`Mode=EncryptAndSign` の場合 - メッセージに署名し、暗号化します</li></ul></li></ul><p>機密性については心配がなく、情報の整合性のみを検証する場合は、暗号化を無効にして、メッセージへの署名のみを検討してください。 送信者を検証する必要があるが、機密データが送信されない操作またはサービス コントラクトについては、これが役に立つ場合があります。 保護レベルを下げるときは、個人データがメッセージに含まれないように注意してください。</p>|
 
 ### <a name="example"></a>例
@@ -331,7 +331,7 @@ string GetData(int value);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648826(v=pandp.10)) |
 | **手順** | <ul><li>**説明:** 管理者または高い権限を持つアカウントで WCF サービスを実行しないでください。 サービスが侵害された場合、その影響が大きくなります。</li><li>**推奨:** 最小権限のアカウントを使用して WCF サービスをホストします。これにより、アプリケーションの攻撃対象領域を抑え、攻撃を受けた場合の損害の可能性を低くすることができます。 サービス アカウントに、MSMQ、イベント ログ、パフォーマンス カウンター、ファイル システムなどのインフラストラクチャ リソースに対する追加のアクセス権が必要な場合は、WCF サービスが正常に実行されるように、こうしたリソースに適切なアクセス許可を付与する必要があります。</li></ul><p>使用しているサービスが、最初の呼び出し元に代わって特定のリソースにアクセスする必要がある場合は、偽装と委任を使用して、ダウンストリームの承認チェックのために呼び出し元の ID をフローします。 開発シナリオでは、ローカル ネットワーク サービス アカウントを使用してください。これは、権限が制限された特別な組み込みアカウントです。 運用環境のシナリオでは、最小権限のカスタム ドメイン サービス アカウントを作成します。</p>|
 
 ## <a name="force-all-traffic-to-web-apis-over-https-connection"></a><a id="webapi-https"></a>Web API へのすべてのトラフィックに HTTPS 接続を強制する
@@ -383,7 +383,7 @@ public class ValuesController : ApiController
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure Redis TLS サポート](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
+| **参照**              | [Azure Redis TLS サポート](../../azure-cache-for-redis/cache-faq.md) |
 | **手順** | Redis サーバーは既定で TLS をサポートしませんが、Azure Cache for Redis では TLS がサポートされます。 Azure Cache for Redis に接続しようとしていて、クライアントが StackExchange.Redis のように TLS をサポートしている場合は、TLS を使用する必要があります。 既定では、新しい Azure Cache for Redis インスタンスの TLS 以外のポートは無効になっています。 Redis クライアントの TLS サポートに対する依存関係がない限り、このセキュリティで保護された既定値が変更されていないことを確認してください。 |
 
 Redis は、信頼された環境の信頼されたクライアントによってアクセスされるように設計されています。 つまり、Redis インスタンスを、インターネット (一般的には、信頼されていないクライアントが Redis TCP ポートまたは UNIX ソケットに直接アクセスする環境) に直接公開することはお勧めしません。 
@@ -407,5 +407,5 @@ Redis は、信頼された環境の信頼されたクライアントによっ�
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [通信プロトコルの選択](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
+| **参照**              | [通信プロトコルの選択](../../iot-hub/iot-hub-devguide.md) |
 | **手順** | SSL や TLS を使用して HTTP/AMQP または MQTT のプロトコルをセキュリティで保護します。 |

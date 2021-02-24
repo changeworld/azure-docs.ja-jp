@@ -2,15 +2,13 @@
 title: Azure Monitor Application Insights のワークスペース ベースのリソース
 description: Azure Monitor Application Insights ワークスペース ベース リソースの新しいテーブルの構造とスキーマについて説明します。
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323181"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931055"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>ワークスペースベース リソースの変更 (プレビュー)
 

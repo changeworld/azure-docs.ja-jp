@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/23/2020
   ms.author: trbye
-  ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: ff8f98b67b2d9cab5745b141364c42ff49751413
+  ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401508"
+  ms.lasthandoff: 01/26/2021
+  ms.locfileid: "98786258"
 landingContent:
 - title: ホスティングについて
   linkLists:
@@ -27,13 +27,13 @@ landingContent:
     - text: Speech コンテナーと Kubernetes および Helm
       url: speech-container-howto-on-premises.md
     - text: Azure Container Instances 上の Speech コンテナー
-      url: deploy-speech-on-container-instances.md
+      url: ../containers/azure-container-instance-recipe.md
 - title: 作成して構成する
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure Speech リソースを作成する
-      url: get-started.md#new-resource
+      url: ./overview.md#try-the-speech-service-for-free
     - text: Speech コンテナーを構成する
       url: speech-container-configuration.md
 - title: リファレンス
@@ -46,3 +46,9 @@ landingContent:
       url: sovereign-clouds.md
     - text: コンテナーの FAQ
       url: speech-container-faq.md
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

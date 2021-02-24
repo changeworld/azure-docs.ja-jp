@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266784"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165146"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -25,7 +25,7 @@ ms.locfileid: "89266784"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
 
 **A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、 **[ユーザー デバイス]** には表示されません。
-Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
+Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice) コマンドレットを使用することもできます。
 
 **[ユーザー デバイス]** には、次のデバイスだけが表示されます。
 
@@ -57,7 +57,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>Q:Windows 10 デバイスに "Your organization has deleted the device (組織がデバイスを削除しました)" または "Your organization has disabled the device (組織がデバイスを無効にしました)" というエラー メッセージが表示されるのはなぜですか?
 
-**A:** Azure AD に参加または登録した Windows 10 デバイスで、シングル サインオンを有効にする[プライマリ更新トークン (PRT)](concept-primary-refresh-token.md) がユーザーに発行されます。 PRT の有効性は、デバイス自体の有効性に基づきます。 デバイス自体からアクションを開始せずに、Azure AD でデバイスが削除または無効にされている場合に、このメッセージがユーザーに表示されます。 デバイスは、次のいずれかのシナリオで Azure AD で削除または無効にすることができます。 
+**A:** Azure AD に参加または登録した Windows 10 デバイスで、シングル サインオンを有効にする [プライマリ更新トークン (PRT)](concept-primary-refresh-token.md) がユーザーに発行されます。 PRT の有効性は、デバイス自体の有効性に基づきます。 デバイス自体からアクションを開始せずに、Azure AD でデバイスが削除または無効にされている場合に、このメッセージがユーザーに表示されます。 デバイスは、次のいずれかのシナリオで Azure AD で削除または無効にすることができます。 
 
 - ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
 - 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
@@ -144,6 +144,12 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 >どちらの場合も、これらの各デバイス上でデバイスを手動で再登録する必要があります。 デバイスが以前に登録されているかどうかを確認するには、[dsregcmd コマンドを使用してデバイスのトラブルシューティングを行います](troubleshoot-device-dsregcmd.md)。
 
 ---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>Q:Windows 10 デバイス上の同じユーザー セッションで 3 つを超える Azure AD ユーザー アカウントを追加できないのはなぜですか?
+
+**A**: Azure AD には、Windows 10 1803 リリースでの複数の Azure AD アカウントのサポートが追加されました。 ただし、Windows 10 では、トークン要求のサイズを制限し、信頼性の高いシングルサインオン (SSO) を可能にするため、1 つのデバイス上での Azure AD アカウントの数が 3 つに制限されます。 3 つのアカウントが追加されると、後続のアカウントに関するエラーがユーザーに表示されます。 エラー画面の問題に関するその他の情報には、"Add account operation is blocked because accout limit is reached" (アカウントの上限に達したため、アカウントの追加操作がブロックされます) という理由を示すメッセージが表示されます。 
+
+---
 ## <a name="azure-ad-join-faq"></a>Azure AD Join の FAQ
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>Q:デバイス上の Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?
@@ -198,7 +204,7 @@ Windows 10 2004 更新プログラムでは、UPN の変更がサポートされ
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Q:一部のユーザーに、Azure AD 参加済みデバイスで Azure Multi-Factor Authentication のプロンプトが表示されないのはなぜですか?
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Q:一部のユーザーに、Azure AD 参加済みデバイスで Azure AD Multi-Factor Authentication のプロンプトが表示されないのはなぜですか?
 
 **A:** ユーザーが Multi-Factor Authentication を使用してデバイスを Azure AD に参加または登録している可能性があります。 それにより、デバイス自体がそのユーザーにとっての信頼された 2 つ目の要素になります。 同じユーザーがデバイスにサインインしてアプリケーションにアクセスするときは常に、Azure AD はデバイスを 2 つ目の要素と見なします。 これによりそのユーザーは、Multi-Factor Authentication の追加のプロンプトが表示されることなく、アプリケーションにシームレスにアクセスできます。 
 

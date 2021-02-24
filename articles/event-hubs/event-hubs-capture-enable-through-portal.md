@@ -3,12 +3,12 @@ title: Event Hubs - Azure portal を使用してストリーミング イベン�
 description: この記事では、Azure portal を使用し、Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315741"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91613579"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
@@ -18,9 +18,12 @@ Azure [Event Hubs Capture][capture-overview] を使用すると、Event Hubs の
 
 詳細については、[Event Hubs Capture の概要][capture-overview]に関するページを参照してください。
 
+> [!IMPORTANT]
+> 宛先となるストレージ (Azure Storage または Azure Data Lake Storage) は、イベント ハブと同じサブスクリプションに存在する必要があります。
+
 ## <a name="capture-data-to-azure-storage"></a>Azure Storage へのデータのキャプチャ
 
-Capture は、イベント ハブを作成するときに、 **[イベント ハブの作成]** ポータル画面の **[オン]** ボタンをクリックすることによって有効にできます。 その後、 **[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Storage]** をクリックして、ストレージ アカウントとコンテナーを指定します。 Event Hubs Capture ではストレージによるサービス間サービス認証が使用されるため、ストレージ接続文字列を指定する必要はありません。 リソース ピッカーにより、ストレージ アカウントのリソース URI が自動的に選択されます。 Azure Resource Manager を使用している場合は、この URI を文字列として明示的に指定する必要があります。
+Capture は、イベント ハブを作成するときに、**[イベント ハブの作成]** ポータル画面の **[オン]** ボタンをクリックすることによって有効にできます。 その後、**[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Storage]** をクリックして、ストレージ アカウントとコンテナーを指定します。 Event Hubs Capture ではストレージによるサービス間サービス認証が使用されるため、ストレージ接続文字列を指定する必要はありません。 リソース ピッカーにより、ストレージ アカウントのリソース URI が自動的に選択されます。 Azure Resource Manager を使用している場合は、この URI を文字列として明示的に指定する必要があります。
 
 既定の時間ウィンドウは 5 分です。 最小値は 1、最大値は 15 です。 **サイズ** ウィンドウの範囲は 10 ～ 500 MB です。
 
@@ -34,18 +37,18 @@ Capture は、イベント ハブを作成するときに、 **[イベント ハ
 1. Azure Storage アカウントを作成するには、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)」の記事を参照してください。 **[Advanced]\(詳細\)** タブで **[階層型名前空間]** を **[Enabled]\(有効\)** に設定して、これを Azure Data Lake Storage Gen 2 アカウントにします。
 2. イベント ハブを作成するときは、次の手順に従います。 
 
-    1. **[キャプチャ]** で、 **[オン]** を選択します。 
-    2. キャプチャ プロバイダーとして **[Azure Storage]** を選択します。 **[キャプチャ プロバイダー]** に表示される **[Azure Data Lake Store]** オプションは、Azure Data Lake Storage Gen 1 用です。 Azure Data Lake Storage Gen 2 を使用するには、 **[Azure Storage]** を選択します。
+    1. **[キャプチャ]** で、**[オン]** を選択します。 
+    2. キャプチャ プロバイダーとして **[Azure Storage]** を選択します。 **[キャプチャ プロバイダー]** に表示される **[Azure Data Lake Store]** オプションは、Azure Data Lake Storage Gen 1 用です。 Azure Data Lake Storage Gen 2 を使用するには、**[Azure Storage]** を選択します。
     2. **[コンテナーの選択]** ボタンを選択します。 
 
         ![Data Lake Storage Gen 2 へのキャプチャの有効化](./media/event-hubs-capture-enable-through-portal/data-lake-storage-gen2.png)
-3. 一覧から、 **[Azure Data Lake Storage Gen 2]** アカウントを選択します。 
+3. 一覧から、**[Azure Data Lake Storage Gen 2]** アカウントを選択します。 
 
     ![Data Lake Storage Gen 2 の選択](./media/event-hubs-capture-enable-through-portal/select-data-lake-storage-gen2.png)
 4. **コンテナー** (Data Lake Storage Gen 2 のファイル システム) を選択します。
 
     ![ストレージのファイル システムの選択](./media/event-hubs-capture-enable-through-portal/select-file-system-data-lake-storage.png)
-5. **[イベント ハブの作成]** ページで、 **[作成]** を選択します。 
+5. **[イベント ハブの作成]** ページで、**[作成]** を選択します。 
 
     ![[作成] ボタンの選択](./media/event-hubs-capture-enable-through-portal/create-event-hub-data-lake-storage.png)
 
@@ -66,7 +69,7 @@ Azure Data Lake Storage Gen 1 にデータをキャプチャするには、次�
 ### <a name="create-an-event-hub"></a>イベント ハブの作成
 
 1. イベント ハブは、作成した Azure Data Lake Storage Gen 1 アカウントと同じ Azure サブスクリプションに存在する必要があります。 **[イベント ハブの作成]** ポータル ページの **[Capture]\(キャプチャ\)** の **[オン]** ボタンをクリックしてイベント ハブを作成します。 
-2. **[イベント ハブの作成]** ポータル ページで、 **[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Data Lake Store]** を選択します。
+2. **[イベント ハブの作成]** ポータル ページで、**[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Data Lake Store]** を選択します。
 3. **[Data Lake Store]** ドロップダウン リストの横にある **[ストアの選択]** で、先ほど作成した Data Lake Storage Gen 1 アカウントを指定し、作成したデータ フォルダーのパスを **[Data Lake パス]** フィールドに入力します。
 
     ![Data Lake Storage アカウントの選択][3]

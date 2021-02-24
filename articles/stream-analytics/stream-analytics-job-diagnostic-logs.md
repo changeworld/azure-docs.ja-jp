@@ -3,16 +3,16 @@ title: リソース ログを使用した Azure Stream Analytics のトラブル
 description: この記事では、Azure Stream Analytics でリソース ログを分析する方法について説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
+ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319356"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011120"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>リソース ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -47,7 +47,7 @@ Stream Analytics には 2 種類のログがあります。
 
    ![Stream Analytics アクティビティ ログ操作の概要](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. JSON の **[プロパティ]** セクションまで下へスクロールして、失敗した操作の原因となったエラーの詳細を表示します。 この例では、失敗は範囲外の緯度値からのランタイム エラーが原因でした。 Stream Analytics ジョブによって処理されるデータに矛盾があると、データ エラーが発生します。 さまざまな[入力データと出力データのエラーとそれらの発生する理由](https://docs.microsoft.com/azure/stream-analytics/data-errors)を学習できます。
+4. JSON の **[プロパティ]** セクションまで下へスクロールして、失敗した操作の原因となったエラーの詳細を表示します。 この例では、失敗は範囲外の緯度値からのランタイム エラーが原因でした。 Stream Analytics ジョブによって処理されるデータに矛盾があると、データ エラーが発生します。 さまざまな[入力データと出力データのエラーとそれらの発生する理由](./data-errors.md)を学習できます。
 
    ![JSON エラーの詳細](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -57,7 +57,7 @@ Stream Analytics には 2 種類のログがあります。
 
 ## <a name="send-diagnostics-to-azure-monitor-logs"></a>Azure Monitor ログへの診断データの送信
 
-リソース ログをオンにして Azure Monitor ログに送信することを、強くお勧めします。 既定では、**オフ**になっています。 オンにするには、次の手順を完了します。
+リソース ログをオンにして Azure Monitor ログに送信することを、強くお勧めします。 既定では、**オフ** になっています。 オンにするには、次の手順を完了します。
 
 1.  Log Analytics ワークスペースを作成します (まだ作成していない場合)。 対象の Stream Analytics ジョブと同じリージョン内に Log Analytics ワークスペースを用意することをお勧めします。
 
@@ -65,17 +65,17 @@ Stream Analytics には 2 種類のログがあります。
 
     ![リソース ログへのブレード ナビゲーション](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  **[診断設定の名前]** に**名前**を指定し、 **[ログ]** の下にある **[実行]** および **[作成]** と、 **[メトリック]** の下にある **[AllMetrics]** の各ボックスをオンにします。 次に、 **[Log Analytics への送信]** を選択し、ワークスペースを選択します。 **[保存]** をクリックします。
+2.  **[診断設定の名前]** に **名前** を指定し、 **[ログ]** の下にある **[実行]** および **[作成]** と、 **[メトリック]** の下にある **[AllMetrics]** の各ボックスをオンにします。 次に、 **[Log Analytics への送信]** を選択し、ワークスペースを選択します。 **[保存]** をクリックします。
 
     ![リソース ログの設定](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. Stream Analytics ジョブが開始すると、リソース ログが Log Analytics ワークスペースにルーティングされます。 ジョブのリソース ログを表示するには、 **[監視]** セクションの **[ログ]** を選択します。
 
-   ![[監視] の [リソース ログ]](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
+   ![スクリーンショットには、[ログ] が選択された [全般] メニューが示されています。](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
 4. Stream Analytics には、関心のあるログを簡単に検索できる定義済みのクエリが用意されています。 左側のペインで事前定義済みのクエリを選択し、 **[実行]** を選択できます。 下部のペインにクエリの結果が表示されます。 
 
-   ![[監視] の [リソース ログ]](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
+   ![スクリーンショットには、Stream Analytics ジョブのログが示されています。](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>リソース ログのカテゴリ
 
@@ -98,10 +98,10 @@ Azure Stream Analytics では、次の 2 つのカテゴリのリソース ロ�
 ------- | -------
 time | ログのタイムスタンプ (UTC)。
 resourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
-category | ログのカテゴリ (**実行**または**作成**のいずれか)。
+category | ログのカテゴリ (**実行** または **作成** のいずれか)。
 operationName | ログに記録される操作の名前。 例: **Send Events:SQL Output write failure to mysqloutput**。
-status | 操作の状態。 たとえば、**失敗**または**成功**。
-level | ログ レベル。 たとえば、**エラー**、**警告**、または**情報**。
+status | 操作の状態。 たとえば、**失敗** または **成功**。
+level | ログ レベル。 たとえば、**エラー**、**警告**、または **情報**。
 properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、この記事の次のセクションを参照してください。
 
 ### <a name="execution-log-properties-schema"></a>実行ログ プロパティのスキーマ
@@ -110,7 +110,7 @@ properties | ログ エントリ固有の詳細。JSON 文字列としてシリ�
 
 ### <a name="data-errors"></a>データ エラー
 
-ジョブがデータを処理している間に発生したエラーはすべて、ログのこのカテゴリに含まれます。 これらのログはほとんどの場合、データ読み取り、シリアル化、書き込み操作が実行されている間に作成されます。 ここには接続エラーが含まれません。 接続エラーは汎用イベントとして扱われます。 さまざまな[入力および出力データ エラー](https://docs.microsoft.com/azure/stream-analytics/data-errors)の原因についてさらに学習することができます。
+ジョブがデータを処理している間に発生したエラーはすべて、ログのこのカテゴリに含まれます。 これらのログはほとんどの場合、データ読み取り、シリアル化、書き込み操作が実行されている間に作成されます。 ここには接続エラーが含まれません。 接続エラーは汎用イベントとして扱われます。 さまざまな[入力および出力データ エラー](./data-errors.md)の原因についてさらに学習することができます。
 
 名前 | 説明
 ------- | -------
@@ -121,13 +121,13 @@ Data | エラーの原因を正確に特定するうえで役に立つデータ�
 
 データ エラーのスキーマは、**operationName** 値に応じて次のようになります。
 
-* **シリアル化イベント**はイベント読み取り操作中に発生します。 これらは、次のいずれかの理由で入力データがクエリ スキーマを満たしていない場合に発生します。
+* **シリアル化イベント** はイベント読み取り操作中に発生します。 これらは、次のいずれかの理由で入力データがクエリ スキーマを満たしていない場合に発生します。
 
    * "*イベントの (逆) シリアル化中の種類の不一致*":エラーを引き起こしたフィールドが特定されます。
 
    * "*イベントを読み取ることができない。無効なシリアル化*":エラーが発生した入力データの場所に関する情報が一覧で表示されます。 ここには、BLOB 入力の BLOB 名、オフセット、データのサンプルが含まれます。
 
-* **送信イベント**は書き込み操作中に発生します。 エラーを引き起こしたストリーミング イベントが特定されます。
+* **送信イベント** は書き込み操作中に発生します。 エラーを引き起こしたストリーミング イベントが特定されます。
 
 ### <a name="generic-events"></a>汎用イベント
 
@@ -138,9 +138,9 @@ Data | エラーの原因を正確に特定するうえで役に立つデータ�
 エラー | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
 Message| ログ メッセージ。
 Type | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、**JobValidationError** または **BlobOutputAdapterInitializationFailure**。
-関連付け ID | ジョブの実行を一意に識別する GUID。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ**関連付け ID** の値が付けられます。
+関連付け ID | ジョブの実行を一意に識別する GUID。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ **関連付け ID** の値が付けられます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Stream Analytics データ エラー](https://docs.microsoft.com/azure/stream-analytics/data-errors)
-* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics データ エラー](./data-errors.md)
+* [Stream Analytics クエリ言語リファレンス](/stream-analytics-query/stream-analytics-query-language-reference)

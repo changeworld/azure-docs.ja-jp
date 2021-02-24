@@ -9,20 +9,21 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b3cb6bf56820da84d17f0b981f461a545bbe5ab6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079945"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549261"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>チュートリアル:Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -47,7 +48,7 @@ ms.locfileid: "88079945"
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Development Kit (JDK) 7 以降](/java/azure/jdk/?view=azure-java-stable)。
+* [Java Development Kit (JDK) 7 以降](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)。
 * [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../app-service/quickstart-java.md)
 
@@ -101,7 +102,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
 
 1. **[Create new POM]** ウィンドウで、既定値を受け入れ、 **[Finish]** をクリックします。
 
-1. **Project Explorer**で、pom.xml ファイルを開きます。
+1. **Project Explorer** で、pom.xml ファイルを開きます。
 
 1. **[Dependencies]** タブの **[Dependencies]** ウィンドウで、 **[Add]** をクリックします。
 
@@ -197,7 +198,7 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
    * [Destination] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
    * **[完了]** をクリックします。
 
-1. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。 ファイルのアップロード手順については、「[Azure App Service Web Apps への Java アプリケーションの追加](../app-service/web-sites-java-add-app.md)」を参照してください。 WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により、ファイルの追加が検出され、ファイルが自動的に読み込まれます。
+1. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。 ファイルのアップロード手順については、「[Azure App Service Web Apps への Java アプリケーションの追加](../app-service/quickstart-java.md)」を参照してください。 WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により、ファイルの追加が検出され、ファイルが自動的に読み込まれます。
 
 1. 完成した製品を表示するには、`http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` に移動し、タスクの追加を開始します。
 
@@ -217,7 +218,7 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 
 1. **[Source Git Repository]** 画面で、 **[URI]** ボックスに「 https://github.com/Azure-Samples/documentdb-java-todo-app.git 」と入力し、 **[Next]** をクリックします。
 
-1. **[Branch Selection]** 画面で、 **[master]** が選択されていることを確認し、 **[Next]** をクリックします。
+1. **[Branch Selection]** 画面で、 **[main]** が選択されていることを確認し、 **[Next]** をクリックします。
 
 1. **[Local Destination]** 画面で、 **[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、 **[Next]** をクリックします。
 

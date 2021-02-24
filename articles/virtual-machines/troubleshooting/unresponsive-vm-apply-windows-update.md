@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 145d58013b259bf14c26d0840b8cd4299cfe85f0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074306"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632624"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>Windows Update の適用時に、Azure VM が C01A001D エラー でて応答しません。
 
@@ -39,6 +39,9 @@ VM のスクリーンショットを見るために [ブート診断](./boot-dia
 
 ### <a name="process-overview"></a>プロセスの概要
 
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
+
 1. [修復 VM](#create-and-access-a-repair-vm)を作成してアクセスします。
 2. [ハードディスクの空き領域を増やします](#free-up-space-on-the-hard-disk)。
 3. [インデックス付きVM を再構築する前に、シリアル コンソールとメモリ ダンプの収集を有効にします](#recommended-before-rebuilding-the-vm-enable-serial-console-and-memory-dump-collection)。
@@ -56,7 +59,7 @@ VM のスクリーンショットを見るために [ブート診断](./boot-dia
 
 ディスクが 1 TB になっていない場合には、サイズを変更する必要があります。 ディスクが 1 TB になったら、ディスクのクリーンアップとドライブの最適化を実行します。
 
-1. ディスクがいっぱいかどうかを確認します。 ディスクが 1 TB 未満の場合は、[PowerShell を使用して最大 1 TB にまで拡張します](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
+1. ディスクがいっぱいかどうかを確認します。 ディスクが 1 TB 未満の場合は、[PowerShell を使用して最大 1 TB にまで拡張します](../windows/expand-os-disk.md)。
 2. ディスクが 1 TB になったら、ディスクのクリーンアップを実行します。
     - [破損した VM からデータ ディスクをデタッチします](../windows/detach-disk.md)。
     - [データ ディスクを、機能している VM に接続します](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。

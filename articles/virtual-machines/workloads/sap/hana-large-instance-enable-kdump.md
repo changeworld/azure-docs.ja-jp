@@ -7,26 +7,33 @@ author: prtyag
 manager: hrushib
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a799242ecaae7b7152d79b7d341a9cb5cc18d7fe
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488887"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654474"
 ---
-# <a name="enable-kdump-service"></a>Kdump サービスを有効にする
+# <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>SAP HANA on Azure Large Instances (HLI) の Kdump
+
+kdump の構成と有効化は、明確な原因がないシステム クラッシュのトラブルシューティングを行うために必要な手順です。
+システムが突然クラッシュし、ハードウェアやインフラストラクチャの問題によって説明できない場合があります。
+このような場合は、オペレーティング システムまたはアプリケーションの問題である可能性があります。kdump を使用すると、SUSE でシステムがクラッシュした原因を突き止めることができます。
+
+## <a name="enable-kdump-service"></a>Kdump サービスを有効にする
 
 このドキュメントでは、Azure HANA L インスタンス (**Type I および Type II**) で Kdump サービスを有効にする方法の詳細について説明します
 
 ## <a name="supported-skus"></a>サポートされている SKU
 
-|  HANA L インスタンスの種類   |  OS ベンダー   |  OS パッケージ バージョン   |  SKU        |
+|  HANA L インスタンスの種類   |  OS ベンダー   |  OS パッケージ バージョン   |  SKU |
 |-----------------------------|--------------|-----------------------|-------------|
 |   Type I                    |  SuSE        |   SLES 12 SP3         |  S224m      |
 |   Type I                    |  SuSE        |   SLES 12 SP4         |  S224m      |
@@ -62,6 +69,10 @@ ms.locfileid: "84488887"
 ## <a name="setup-details"></a>セットアップの詳細
 
 - Kdump を有効にするスクリプトについては、[こちら](https://github.com/Azure/sap-hana/blob/master/tools/enable-kdump.sh)を参照してください。
+> [!NOTE]
+> このスクリプトは、ラボのセットアップに基づいて作成されたものです。さらにチューニングを行う場合、OS ベンダーにお問い合わせください。
+> 個別の LUN が、ダンプの保存のために新規および既存のサーバー用にプロビジョニングされ、スクリプトがその LUN からのファイル システムの構成を処理します。
+> Microsoft はダンプを分析する責任を負いません。 お客様は OS ベンダーでチケットを開き、分析を行ってもらう必要があります。
 
 - 次のコマンドを使用して、HANA L インスタンス上でこのスクリプトを実行します
 
@@ -72,7 +83,7 @@ ms.locfileid: "84488887"
     sudo bash enable-kdump.sh
     ```
 
-- Kdump が正常に有効になったというコマンド出力の場合は、システムを再起動して変更を適用してください。Kdump が有効になります。 システムを再起動して変更を適用します。
+- Kdump が正常に有効になったというコマンド出力の場合は、システムを再起動して変更を適用してください。
 
 - 特定の操作の実行に失敗したというコマンド出力の場合は、Kdump サービスは有効になっていません。 「[サポートの問題](#support-issue)」セクションを参照してください。
 
@@ -104,3 +115,6 @@ ms.locfileid: "84488887"
 * OS バージョン
 
 * カーネル バージョン
+
+## <a name="related-documents"></a>関連ドキュメント
+- [kdump の構成](https://www.suse.com/support/kb/doc/?id=3374462)の詳細

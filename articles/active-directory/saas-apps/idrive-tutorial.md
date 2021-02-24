@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 83631c6c6503f32ba81195ecfe5df0b1a6c14092
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba0dad7f3b01b8ac985af1d9cfc2257073163d3a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545293"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460383"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idrive"></a>チュートリアル:Azure Active Directory と IDrive の統合
 
@@ -27,7 +27,7 @@ IDrive と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に IDrive にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ IDrive と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* IDrive では、**SP と IDP** によって開始される SSO がサポートされます
+* IDrive では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-idrive-from-the-gallery"></a>ギャラリーからの IDrive の追加
 
@@ -61,13 +61,13 @@ Azure AD への IDrive の統合を構成するには、ギャラリーからマ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**IDrive**」と入力し、結果パネルで **[IDrive]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **IDrive** 」と入力し、結果パネルで **[IDrive]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の IDrive](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、IDrive で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、IDrive で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと IDrive 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 IDrive で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,15 +99,15 @@ IDrive で Azure AD シングル サインオンを構成するには、次の�
 
 4. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-    ![[Atlassian Cloud のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+    ![[基本的な SAML 構成] を示すスクリーンショット。](common/preintegrated.png)
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Atlassian Cloud のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://www.idrive.com/idrive/login/loginForm`」と入力します。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -123,7 +123,7 @@ IDrive で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-idrive-single-sign-on"></a>IDrive シングル サインオンの構成
 
-**IDrive** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [IDrive サポート チーム](https://www.idrive.com/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**IDrive** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [IDrive サポート チーム](https://www.idrive.com/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -141,9 +141,9 @@ IDrive で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -178,19 +178,18 @@ IDrive で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-idrive-test-user"></a>IDrive のテスト ユーザーの作成
 
-このセクションでは、IDrive で Britta Simon というユーザーを作成します。  [IDrive サポート チーム](https://www.idrive.com/support)と連携し、IDrive プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、IDrive で Britta Simon というユーザーを作成します。 [IDrive サポート チーム](https://www.idrive.com/support)と連携して、IDrive プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [IDrive] タイルをクリックすると、SSO を設定した IDrive に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [IDrive] タイルをクリックすると、SSO を設定した IDrive に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

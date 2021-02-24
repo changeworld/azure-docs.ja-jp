@@ -3,14 +3,14 @@ title: クイック スタート:Visual Studio を使用して Azure で初め�
 description: このクイックスタートでは、Visual Studio を使用して、HTTP によってトリガーされる Azure Function を作成して発行する方法について学習します。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 03/06/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c9ddd6e74e25d8de415e24038e99da9d21dab867
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213988"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "96014476"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
 
@@ -36,7 +36,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 `FunctionName` メソッド属性は、関数の名前を設定します。これは、既定では `Function1` として生成されます。 このツールでは、プロジェクトを作成するときに既定の関数名をオーバーライドすることはできないため、ここで関数クラス、ファイル、およびメタデータに対してより適切な名前を指定します。
 
-1. **エクスプローラー**で Function1.cs ファイルを右クリックし、`HttpExample.cs` という名前に変更します。
+1. **エクスプローラー** で Function1.cs ファイルを右クリックし、`HttpExample.cs` という名前に変更します。
 
 1. コードで Function1 クラスの名前を "HttpExample" に変更します。
 

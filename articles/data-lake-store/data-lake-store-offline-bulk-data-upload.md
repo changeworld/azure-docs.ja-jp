@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855682"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700841"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Azure Import/Export サービスを使用した Data Lake Storage Gen1 へのデータのオフライン コピー
 
-この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Data Lake Storage Gen1 にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
+この記事では、[Azure Import/Export サービス](../import-export/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Data Lake Storage Gen1 にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
 
 Azure Import/Export サービスを使用すると、ハード ディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage により安全に転送できます。
 
@@ -29,7 +29,7 @@ Azure Import/Export サービスを使用すると、ハード ディスク ド�
 
 ## <a name="prepare-the-data"></a>データを準備する
 
-Import/Export サービスを使用する前に、転送するデータ ファイルを **200 GB 未満のコピーに**分割します。 これは、インポート ツールでは 200 GB を超えるファイルを扱えないためです。 この記事では、それぞれ 100 GB のチャンクにファイルを分割します。 これは [Cygwin](https://cygwin.com/install.html) を使用して実行できます。 Cygwin では、Linux のコマンドがサポートされています。 この場合は、次のコマンドを使用します。
+Import/Export サービスを使用する前に、転送するデータ ファイルを **200 GB 未満のコピーに** 分割します。 これは、インポート ツールでは 200 GB を超えるファイルを扱えないためです。 この記事では、それぞれ 100 GB のチャンクにファイルを分割します。 これは [Cygwin](https://cygwin.com/install.html) を使用して実行できます。 Cygwin では、Linux のコマンドがサポートされています。 この場合は、次のコマンドを使用します。
 
 ```console
 split -b 100m 319GB.tsv
@@ -44,7 +44,7 @@ split -b 100m 319GB.tsv
 
 ## <a name="get-disks-ready-with-data"></a>ディスクにデータを準備する
 
-[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関する記事 (「**ドライブの準備**」セクションの下) にある手順に従って、ハード ドライブを準備します。 全体の手順を次に示します。
+[Azure Import/Export サービスの使用](../import-export/storage-import-export-service.md)に関する記事 (「**ドライブの準備**」セクションの下) にある手順に従って、ハード ドライブを準備します。 全体の手順を次に示します。
 
 1. Azure Import/Export サービスでの使用要件を満たしているハード ディスクを調達します。
 2. Azure ストレージ アカウントを指定します。データは、Azure データセンターへの発送後そのアカウントにコピーされます。
@@ -53,12 +53,12 @@ split -b 100m 319GB.tsv
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ```
-    さらに複雑なスニペットについては、[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関するページを参照してください。
+    さらに複雑なスニペットについては、[Azure Import/Export サービスの使用](../import-export/storage-import-export-service.md)に関するページを参照してください。
 4. 上記のコマンドを実行すると、指定した場所にジャーナル ファイルが作成されます。 このジャーナル ファイルを使用して、[Azure Portal](https://portal.azure.com) でインポート ジョブを作成します。
 
 ## <a name="create-an-import-job"></a>インポート ジョブの作成
 
-これで、[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関する記事 (「**インポート ジョブの作成**」セクションの下) にある手順を使って、インポート ジョブを作成できるようになりました。 このインポート ジョブでは、他の詳細とともに、ディスク ドライブの準備中に作成されたジャーナル ファイルを提供します。
+これで、[Azure Import/Export サービスの使用](../import-export/storage-import-export-service.md)に関する記事 (「**インポート ジョブの作成**」セクションの下) にある手順を使って、インポート ジョブを作成できるようになりました。 このインポート ジョブでは、他の詳細とともに、ディスク ドライブの準備中に作成されたジャーナル ファイルを提供します。
 
 ## <a name="physically-ship-the-disks"></a>ディスクを物理的に出荷する
 

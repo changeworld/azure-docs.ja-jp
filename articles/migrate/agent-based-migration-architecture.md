@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate Server Migration でのエージェント ベースの移行
 description: Azure Migrate でのエージェントベースの VMware VM の移行に関する概要を示します。
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: raynew
-ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425861"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861952"
 ---
 # <a name="agent-based-migration-architecture"></a>エージェントベースの移行アーキテクチャ
 
@@ -34,7 +34,7 @@ Azure Migrate: Server Migration を使用して VMware VM をレプリケート�
 
 次の図に、エージェントベースの移行に関連するコンポーネントを示します。
 
-![Architecture](./media/agent-based-replication-architecture/architecture.png)
+![図は、エージェントベースの移行のコンポーネントを示しており、それについては、表で説明しています。](./media/agent-based-replication-architecture/architecture.png)
 
 次の表で、エージェントベースの移行のために使用されるコンポーネントについて説明します。
 
@@ -99,7 +99,7 @@ VMware VM をレプリケートする場合、[VMware 用の Site Recovery Deplo
 --- | --- | --- | --- | ---
 8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz) | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシン 
 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz) | 18 GB | 600 GB | 501 GB ～ 1 TB | 100 台 ～ 150 台のマシン
-16 vCPU (2 ソケット * 8 コア \@ 2.5 GHz) | 32 G1 |  1 TB (テラバイト) | 1 TB ～ 2 TB | 151 台 ～ 200 台のマシン
+16 vCPU (2 ソケット * 8 コア \@ 2.5 GHz) | 32 GB |  1 TB (テラバイト) | 1 TB ～ 2 TB | 151 台 ～ 200 台のマシン
 
 ### <a name="sizing-scale-out-process-servers"></a>スケールアウト プロセス サーバーのサイズ設定
 
@@ -108,7 +108,7 @@ VMware VM をレプリケートする場合、[VMware 用の Site Recovery Deplo
 **プロセス サーバー** | **データ キャッシュ用の空き領域** | **チャーン レート** | **レプリケーションの制限**
 --- | --- | --- | --- 
 4 vCPU (2 ソケット * 2 コア \@ 2.5 GHz)、8 GB メモリ | 300 GB | 250 GB 以下 | 最大 85 台のマシン 
-8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ | 600 GB | 251 GB ～ 1 TB    | 86 台 ～ 150 台のマシン
+8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ | 600 GB | 251 GB ～ 1 TB | 86 台 ～ 150 台のマシン
 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz)、24 GB メモリ | 1 TB (テラバイト) | 1 ～ 2 TB | 151 台 ～ 225 台のマシン
 
 ## <a name="throttle-upload-bandwidth"></a>アップロード帯域幅を調整します。

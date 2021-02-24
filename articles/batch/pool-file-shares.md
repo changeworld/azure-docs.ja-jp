@@ -3,12 +3,12 @@ title: Azure Batch プールの Azure ファイル共有
 description: Azure Batch の Linux または Windows プールの計算ノードから Azure Files 共有をマウントする方法
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 6bbaba20512a17de563e74ba095057c5c3f71f6b
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986425"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735496"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する
 
@@ -20,7 +20,7 @@ Azure Files はクラウドで、[Server Message Block (SMB) プロトコル](..
 
 * Azure ファイル共有は[コスト効率が高く](https://azure.microsoft.com/pricing/details/storage/files/)、他のリージョンへのデータ レプリケーションを使って構成できるため、グローバルな冗長性を備えます。 
 
-* オンプレミス コンピューターから Azure ファイル共有を同時にマウントできます。 ただし、特に REST API を使用する場合は、[コンカレンシーの影響](../storage/common/storage-concurrency.md)について確実に理解しておきます。
+* オンプレミス コンピューターから Azure ファイル共有を同時にマウントできます。 ただし、特に REST API を使用する場合は、[コンカレンシーの影響](../storage/blobs/concurrency-manage.md)について確実に理解しておきます。
 
 * Azure ファイル共有の一般的な[計画に関する考慮事項](../storage/files/storage-files-planning.md)についても確認してください。
 

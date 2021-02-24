@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
-ms.openlocfilehash: d6605aa77cfa746f60fc3b23e120267a2614f7b1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 0d8a030061ef6aa848344152edaa3267ad916e2a
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82868272"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377940"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Linux 復旧 VM での chroot 環境
 
@@ -34,13 +34,13 @@ ms.locfileid: "82868272"
 
    1. 次のコマンドを使用し、ルート ユーザーとして VM にアクセスします。
 
-      `#sudo su -`
+      `sudo su -`
 
-   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、**SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
+   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、 **SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
 
       `dmesg | grep SCSI`
 
-      出力は次の例のようになります。 この例では、**sdc** ディスクが必要です。
+      出力は次の例のようになります。 この例では、 **sdc** ディスクが必要です。
 
       ```
       [    0.294784] SCSI subsystem initialized
@@ -53,17 +53,17 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境にアクセスします。
 
       ```
-      #mkdir /rescue
-      #mount /dev/sdc1 /rescue
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/sdc1 /rescue
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. chroot 環境のトラブルシューティングを行います。
@@ -71,16 +71,16 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境を終了します。
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -101,13 +101,13 @@ ms.locfileid: "82868272"
 
    1. 次のコマンドを使用し、ルート ユーザーとして VM にアクセスします。
 
-      `#sudo su -`
+      `sudo su -`
 
-   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、**SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
+   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、 **SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
 
       `dmesg | grep SCSI`
 
-      出力は次の例のようになります。 この例では、**sdc** ディスクが必要です。
+      出力は次の例のようになります。 この例では、 **sdc** ディスクが必要です。
 
       ```
       [    0.294784] SCSI subsystem initialized
@@ -120,17 +120,17 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境にアクセスします。
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc2 /rescue
-      #mount -o nouuid /dev/sdc1 /rescue/boot/
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc2 /rescue
+      mount -o nouuid /dev/sdc1 /rescue/boot/
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. chroot 環境のトラブルシューティングを行います。
@@ -138,16 +138,16 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境を終了します。
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -171,13 +171,13 @@ ms.locfileid: "82868272"
 
    1. 次のコマンドを使用し、ルート ユーザーとして VM にアクセスします。
 
-      `#sudo su -`
+      `sudo su -`
 
-   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、**SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
+   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、 **SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
 
       `dmesg | grep SCSI`
 
-      出力は次の例のようになります。 この例では、**sdc** ディスクが必要です。
+      出力は次の例のようになります。 この例では、 **sdc** ディスクが必要です。
 
       ```
       [    0.294784] SCSI subsystem initialized
@@ -190,9 +190,9 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、論理ボリューム グループをアクティブ化します。
 
       ```
-      #vgscan --mknodes
-      #vgchange -ay
-      #lvscan
+      vgscan --mknodes
+      vgchange -ay
+      lvscan
       ```
 
    1. `lsblk` コマンドを使用して、LVM 名を取得します。
@@ -221,23 +221,23 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境にアクセスします。
 
       ```
-      #mkdir /rescue
-      #mount /dev/mapper/rootvg-rootlv /rescue
-      #mount /dev/mapper/rootvg-varlv /rescue/var
-      #mount /dev/mapper/rootvg-homelv /rescue/home
-      #mount /dev/mapper/rootvg-usrlv /rescue/usr
-      #mount /dev/mapper/rootvg-tmplv /rescue/tmp
-      #mount /dev/mapper/rootvg-optlv /rescue/opt
-      #mount /dev/sdc2 /rescue/boot/
-      #mount /dev/sdc1 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/mapper/rootvg-rootlv /rescue
+      mount /dev/mapper/rootvg-varlv /rescue/var
+      mount /dev/mapper/rootvg-homelv /rescue/home
+      mount /dev/mapper/rootvg-usrlv /rescue/usr
+      mount /dev/mapper/rootvg-tmplv /rescue/tmp
+      mount /dev/mapper/rootvg-optlv /rescue/opt
+      mount /dev/sdc2 /rescue/boot/
+      mount /dev/sdc1 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. chroot 環境のトラブルシューティングを行います。
@@ -245,22 +245,22 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境を終了します。
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue/home
-      #umount /rescue/var
-      #umount /rescue/usr
-      #umount /rescue/tmp
-      #umount /rescue/opt
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue/home
+      umount /rescue/var
+      umount /rescue/usr
+      umount /rescue/tmp
+      umount /rescue/opt
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -284,13 +284,13 @@ ms.locfileid: "82868272"
 
    1. 次のコマンドを使用し、ルート ユーザーとして VM にアクセスします。
 
-      `#sudo su -`
+      `sudo su -`
 
-   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、**SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
+   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、 **SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
 
       `dmesg | grep SCSI`
 
-      出力は次の例のようになります。 この例では、**sdc** ディスクが必要です。
+      出力は次の例のようになります。 この例では、 **sdc** ディスクが必要です。
 
       ```
       [    0.294784] SCSI subsystem initialized
@@ -303,9 +303,9 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、論理ボリューム グループをアクティブ化します。
 
       ```
-      #vgscan --mknodes
-      #vgchange -ay
-      #lvscan
+      vgscan --mknodes
+      vgchange -ay
+      lvscan
       ```
 
    1. `lsblk` コマンドを使用して、LVM 名を取得します。
@@ -333,22 +333,22 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境にアクセスします。
 
       ```
-      #mkdir /rescue
-      #mount /dev/mapper/rootvg-rootlv /rescue
-      #mount /dev/mapper/rootvg-varlv /rescue/var
-      #mount /dev/mapper/rootvg-homelv /rescue/home
-      #mount /dev/mapper/rootvg-usrlv /rescue/usr
-      #mount /dev/mapper/rootvg-tmplv /rescue/tmp
-      #mount /dev/sdc1 /rescue/boot/
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/mapper/rootvg-rootlv /rescue
+      mount /dev/mapper/rootvg-varlv /rescue/var
+      mount /dev/mapper/rootvg-homelv /rescue/home
+      mount /dev/mapper/rootvg-usrlv /rescue/usr
+      mount /dev/mapper/rootvg-tmplv /rescue/tmp
+      mount /dev/sdc1 /rescue/boot/
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. chroot 環境のトラブルシューティングを行います。
@@ -356,21 +356,21 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境を終了します。
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue/home
-      #umount /rescue/var
-      #umount /rescue/usr
-      #umount /rescue/tmp
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue/home
+      umount /rescue/var
+      umount /rescue/usr
+      umount /rescue/tmp
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -391,13 +391,13 @@ ms.locfileid: "82868272"
 
    1. 次のコマンドを使用し、ルート ユーザーとして VM にアクセスします。
 
-      `#sudo su -`
+      `sudo su -`
 
-   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、**SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
+   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、 **SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
 
       `dmesg | grep SCSI`
 
-      出力は次の例のようになります。 この例では、**sdc** ディスクが必要です。
+      出力は次の例のようになります。 この例では、 **sdc** ディスクが必要です。
 
       ```
       [    0.294784] SCSI subsystem initialized
@@ -410,18 +410,18 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境にアクセスします。
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc2 /rescue
-      #mount -o nouuid /dev/sdc1 /rescue/boot/
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc2 /rescue
+      mount -o nouuid /dev/sdc1 /rescue/boot/
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      ##chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. chroot 環境のトラブルシューティングを行います。
@@ -429,17 +429,17 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境を終了します。
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -460,13 +460,13 @@ ms.locfileid: "82868272"
 
    1. 次のコマンドを使用し、ルート ユーザーとして VM にアクセスします。
 
-      `#sudo su -`
+      `sudo su -`
 
-   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、**SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
+   1. `dmesg` を使用してディスクを探します (別の方法を使用して新しいディスクを検出してもかまいません)。 次の例では、 **SCSI** ディスクでのフィルター処理に **dmesg** を使用します。
 
       `dmesg | grep SCSI`
 
-      出力は次の例のようになります。 この例では、**sdc** ディスクが必要です。
+      出力は次の例のようになります。 この例では、 **sdc** ディスクが必要です。
 
       ```
       [    0.294784] SCSI subsystem initialized
@@ -479,18 +479,18 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境にアクセスします。
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc4 /rescue
-      #mount -o nouuid /dev/sdc3 /rescue/boot/
-      #mount /dev/sdc2 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc4 /rescue
+      mount -o nouuid /dev/sdc3 /rescue/boot/
+      mount /dev/sdc2 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. chroot 環境のトラブルシューティングを行います。
@@ -498,17 +498,17 @@ ms.locfileid: "82868272"
    1. 次のコマンドを使用して、chroot 環境を終了します。
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue
       ```
 
       > [!NOTE]

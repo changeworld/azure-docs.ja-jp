@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/12/2020
 ms.author: victorh
-ms.openlocfilehash: 56e0d40bcbfb97f57b63dc82da1a6604f83dffad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c840bf9e82b8dcdb1fbf9b380ea847b3d1b08dd9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563617"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948070"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブとは
 
@@ -20,9 +20,9 @@ ms.locfileid: "85563617"
 
 *セキュリティ保護付き*仮想ハブは、Azure Firewall Manager によって構成された関連するセキュリティ ポリシーとルーティング ポリシーを持つ [Azure Virtual WAN ハブ](../virtual-wan/virtual-wan-about.md#resources)です。 セキュリティ保護付き仮想ハブを使用すると、トラフィック ガバナンスと保護のためのネイティブ セキュリティ サービスを使用して、ハブアンドスポーク アーキテクチャと推移的アーキテクチャを簡単に作成できます。 
 
-セキュリティ保護付き仮想ハブを、オンプレミス接続しない中央のマネージド VNet として使用できます。 これにより、Azure Firewall のデプロイに以前に必要だった中央の VNet が置き換えられます。 セキュリティ保護付き仮想ハブは自動ルーティングを提供するため、独自の UDR (ユーザー定義ルート) を構成しなくても、ファイアウォール経由でトラフィックをルーティングすることができます。
+セキュリティ保護付き仮想ハブを使用して、仮想ネットワーク (V2V)、仮想ネットワークおよびブランチ オフィス (B2V) の間のトラフィック、インターネットへのトラフィック (B2I/V2I) をフィルター処理できます。 セキュリティ保護付き仮想ハブには自動ルーティング機能があります。 ファイアウォールを介してトラフィックをルーティングするために、独自の UDR (ユーザー定義ルート) を構成する必要はありません。
 
-また、セキュリティ保護付き仮想ハブを、完全な仮想 WAN アーキテクチャの一部として使用することもできます。 このアーキテクチャでは、Azure への、および Azure 経由の安全で最適化および自動化されたブランチ接続を提供します。 Azure Firewall およびその他のサードパーティのサービスとしてのセキュリティ (SECaaS) プロバイダーなど、ネットワーク トラフィックを保護および管理するサービスを選択することができます。
+Azure Firewall、サードパーティのサービスとしてのセキュリティ (SECaaS) プロバイダー、またはその両方など、ネットワーク トラフィックを保護および管理するために必要なセキュリティ プロバイダーを選択することができます。 現在、セキュリティ保護付きハブは、ブランチ間 (B2B) フィルター処理と複数のハブにまたがるフィルター処理をサポートしていません。 詳細については、「[Azure Firewall Manager とは](overview.md#known-issues)」を参照してください。 
 
 ## <a name="create-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブを作成する
 

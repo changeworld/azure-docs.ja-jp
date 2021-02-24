@@ -1,28 +1,25 @@
 ---
 title: Service Management API の使用 (Python) - 機能ガイド
 description: Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。
-services: cloud-services
-documentationcenter: python
-author: tanmaygore
-manager: vashan
-editor: ''
-ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: article
-ms.date: 05/30/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851513"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741402"
 ---
 # <a name="use-service-management-from-python"></a>Python からサービス管理を使用する
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能の多くへのプログラムによるアクセスをサポートしています。 この機能を使用して、クラウド サービス、デプロイ、データ管理サービス、および仮想マシンの作成、更新、および削除を行うことができます。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
 
 ## <a name="what-is-service-management"></a><a name="WhatIs"> </a>サービス管理とは
@@ -76,17 +73,17 @@ sms = ServiceManagementService(subscription_id, certificate_path)
 前の例では、 `sms` は **ServiceManagementService** オブジェクトです。 **ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
 
 ### <a name="management-certificates-on-windows-makecert"></a>Windows での管理証明書 (MakeCert)
-`makecert.exe` を使用して、マシン上で自己署名管理証明書を作成できます。 **管理者**として **Visual Studio コマンド プロンプト**を開き、次のコマンドを使用して、*AzureCertificate* を、使用する証明書の名前に置き換えます。
+`makecert.exe` を使用して、マシン上で自己署名管理証明書を作成できます。 **管理者** として **Visual Studio コマンド プロンプト** を開き、次のコマンドを使用して、*AzureCertificate* を、使用する証明書の名前に置き換えます。
 
 ```console
 makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 ```
 
-このコマンドにより、`.cer` ファイルが作成され、**個人用**証明書ストアにインストールされます。 詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。
+このコマンドにより、`.cer` ファイルが作成され、**個人用** 証明書ストアにインストールされます。 詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。
 
 証明書を作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure portal][management-portal] の **[設定]** タブで、 **[アップロード]** を選択します。
 
-サブスクリプション ID を取得した後、証明書を作成し、`.cer` ファイルを Azure にアップロードして、Azure 管理エンドポイントに接続します。 サブスクリプション ID と**個人用**証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、接続します (再度、*AzureCertificate* を証明書の名前に置き換えます)。
+サブスクリプション ID を取得した後、証明書を作成し、`.cer` ファイルを Azure にアップロードして、Azure 管理エンドポイントに接続します。 サブスクリプション ID と **個人用** 証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、接続します (再度、*AzureCertificate* を証明書の名前に置き換えます)。
 
 ```python
 from azure import *
@@ -132,7 +129,7 @@ for location in result:
 * オーストラリア南東部
 
 ## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>クラウド サービスを作成する
-Azure でアプリケーションを作成して実行する場合、そのコードと構成は、総称して [Azure クラウド サービス][cloud service]と呼ばれます。 (以前の Azure リリースでは、*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。 サービスを作成するには、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
+Azure でアプリケーションを作成して実行する場合、そのコードと構成は、総称して [Azure クラウド サービス][cloud service]と呼ばれます。 (以前の Azure リリースでは、*ホステッド サービス* と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。 サービスを作成するには、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
 
 ```python
 from azure import *
@@ -194,7 +191,7 @@ sms.delete_deployment('myhostedservice', 'v1')
 ```
 
 ## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>ストレージ サービスを作成する
-[ストレージ サービス](../storage/common/storage-create-storage-account.md)を使用すると、Azure の [BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md)、[テーブル](../cosmos-db/table-storage-how-to-use-python.md)、[キュー](../storage/queues/storage-python-how-to-use-queue-storage.md)にアクセスできます。 ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 から 24 文字の小文字) が必要です。 また、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所も必要です。 次の例では、場所を指定してストレージ サービスを作成する方法を示しています。
+[ストレージ サービス](../storage/common/storage-account-create.md)を使用すると、Azure の [BLOB](../storage/blobs/storage-quickstart-blobs-python.md)、[テーブル](../cosmos-db/table-storage-how-to-use-python.md)、[キュー](../storage/queues/storage-python-how-to-use-queue-storage.md)にアクセスできます。 ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 から 24 文字の小文字) が必要です。 また、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所も必要です。 次の例では、場所を指定してストレージ サービスを作成する方法を示しています。
 
 ```python
 from azure import *
@@ -446,9 +443,9 @@ sms.create_virtual_machine_deployment(service_name=name,
     vm_image_name = image_name)
 ```
 
-クラシック デプロイ モデルで Linux 仮想マシンをキャプチャする方法について詳しくは、[Linux 仮想マシンのキャプチャ](../virtual-machines/linux/classic/capture-image-classic.md)に関するページをご覧ください。
+クラシック デプロイ モデルで Linux 仮想マシンをキャプチャする方法について詳しくは、[Linux 仮想マシンのキャプチャ](/previous-versions/azure/virtual-machines/linux/classic/capture-image-classic)に関するページをご覧ください。
 
-クラシック デプロイ モデルで Windows 仮想マシンをキャプチャする方法について詳しくは、[Windows 仮想マシンのキャプチャ](../virtual-machines/windows/classic/capture-image-classic.md)に関するページをご覧ください。
+クラシック デプロイ モデルで Windows 仮想マシンをキャプチャする方法について詳しくは、[Windows 仮想マシンのキャプチャ](/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic)に関するページをご覧ください。
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>次の手順
 これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](https://azure-sdk-for-python.readthedocs.org/)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。
@@ -474,7 +471,7 @@ sms.create_virtual_machine_deployment(service_name=name,
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: /previous-versions/azure/ee460799(v=azure.100)
 
 
 [cloud service]:/azure/cloud-services/

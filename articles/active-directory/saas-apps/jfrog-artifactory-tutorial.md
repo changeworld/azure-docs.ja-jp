@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 07ac0ac4d7b86b644ca5d1876b1332fee7358cac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bec931309cbd6bc8bfa96ba3e054d06336c031e1
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552604"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459543"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>チュートリアル:JFrog Artifactory と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552604"
 * ユーザーが自分の Azure AD アカウントを使用して JFrog Artifactory に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* JFrog Artifactory では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* JFrog Artifactory では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* JFrog Artifactory では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* JFrog Artifactory では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-jfrog-artifactory-from-the-gallery"></a>ギャラリーからの JFrog Artifactory の追加
 
@@ -50,7 +50,7 @@ Azure AD への JFrog Artifactory の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**JFrog Artifactory**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **JFrog Artifactory** 」と入力します。
 1. 結果のパネルから **[JFrog Artifactory]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -92,15 +92,15 @@ JFrog Artifactory に対する Azure AD SSO を構成してテストするには
 
 1. JFrog Artifactory アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![編集コントロールが強調表示された [ユーザー属性] 画面のスクリーンショット。](common/edit-attribute.png)
 
 1. これに加え、JFrog Artifactory アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
-    a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
+    a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **ペン** をクリックします。
 
-    ![image](./media/jfrog-artifactory-tutorial/config04.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/jfrog-artifactory-tutorial/config04.png)
 
-    ![image](./media/jfrog-artifactory-tutorial/config05.png)
+    ![[すべてのグループ] が選択されている [Group Claims]\(グループ要求\) セクションを示すスクリーンショット。](./media/jfrog-artifactory-tutorial/config05.png)
 
     b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 
@@ -116,7 +116,7 @@ JFrog Artifactory に対する Azure AD SSO を構成してテストするには
 
 ### <a name="configure-jfrog-artifactory-sso"></a>JFrog Artifactory SSO の構成
 
-**JFrog Artifactory** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [JFrog Artifactory サポート チーム](https://support.jfrog.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**JFrog Artifactory** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [JFrog Artifactory サポート チーム](https://support.jfrog.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -156,13 +156,12 @@ JFrog Artifactory に対する Azure AD SSO を構成してテストするには
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [JFrog Artifactory] タイルをクリックすると、SSO を設定した JFrog Artifactory に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [JFrog Artifactory] タイルをクリックすると、SSO を設定した JFrog Artifactory に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

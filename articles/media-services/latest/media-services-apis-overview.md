@@ -1,25 +1,11 @@
 ---
-title: v3 API を使用して開発する
-titleSuffix: Azure Media Services
-description: Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298965"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必須フィールドです。 詳細については、aka.ms/skyeye/meta を参照してください。
+title:v3 API を使用して開発する :Azure Media Services の説明:Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: conceptual ms.date:10/23/2020 ms.author: inhenkel ms.custom: seodec18
+
 ---
+
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API を使用して開発する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -35,13 +21,13 @@ Media Services リソースと Media Services API へのアクセスが承認さ
 * **サービス プリンシパル認証**: サービスの認証に使用されます (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス)。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリの場合、サービス プリンシパルで Media Services に接続する中間層が常にあるはずです。
 * **ユーザー認証**: Media Services リソースを操作するアプリを使用しているユーザーを認証するために使用されます。 対話型アプリでは、最初に、ユーザーにユーザー資格情報の入力を求める必要があります。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。
 
-Media Services API では、REST API 要求を行うユーザーまたはアプリは、Media Services アカウント リソースへのアクセス権を持ち、**共同作成者**または**所有者**のロールを使用することが必要です。 **閲覧者**ロールで API にアクセスすることはできますが、使用できる操作は **Get** または **List** だけです。 詳細については、「[Media Services アカウント用のロールベースのアクセス制御](rbac-overview.md)」を参照してください。
+Media Services API では、REST API 要求を行うユーザーまたはアプリは、Media Services アカウント リソースへのアクセス権を持ち、**共同作成者** または **所有者** のロールを使用することが必要です。 **閲覧者** ロールで API にアクセスすることはできますが、使用できる操作は **Get** または **List** だけです。詳細については、「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](rbac-overview.md)」を参照してください。
 
 サービス プリンシパルを作成する代わりに、Azure リソースに対するマネージド ID を使い、Azure Resource Manager で Media Services API にアクセスすることを検討してください。 Azure リソースに対するマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 ### <a name="azure-ad-service-principal"></a>Azure AD のサービス プリンシパル
 
-Azure AD アプリとサービス プリンシパルを作成する場合は、アプリを専用のテナントに置く必要があります。 アプリを作成した後、アプリの**共同作成者**または**所有者**ロールのアクセス権を、Media Services アカウントに付与します。
+Azure AD アプリとサービス プリンシパルは同じテナントに存在する必要があります。 アプリを作成した後、アプリの **共同作成者** または **所有者** ロールのアクセス権を、Media Services アカウントに付与します。
 
 Azure AD アプリを作成するためのアクセス許可を自分が持っているかどうかわからない場合は、「[必要なアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)」を参照してください。
 
@@ -109,11 +95,11 @@ Media Services には、次のような長期操作があります。
 * [StreamingEndpoint の停止](/rest/api/media/streamingendpoints/stop)
 * [StreamingEndpoint のスケーリング](/rest/api/media/streamingendpoints/scale)
 
-長い操作の送信に成功すると、"202 Accepted" を受け取ります。返された操作 ID を使用して、操作の完了をポーリングする必要があります。
+長い操作の送信に成功すると、"201 Created" を受け取ります。返された操作 ID を使用して、操作の完了をポーリングする必要があります。
 
 「[非同期 Azure 操作の追跡](../../azure-resource-manager/management/async-operations.md)」の記事では、応答で返される値を通じて非同期 Azure 操作の状態を追跡する方法について説明します。
 
-実行時間の長い操作は、特定のライブ イベントまたはそれに関連付けられているライブ出力に対して 1 つだけサポートされます。 実行時間の長い操作が開始したら、それが完了してからでないと、同じ LiveEvent または関連付けられているライブ出力に対して、実行時間の長い操作を続けて開始できません。 複数のライブ出力があるライブ イベントの場合は、あるライブ出力に対して長時間実行されている操作の完了を待ってから、別のライブ出力に対して長時間実行される操作をトリガーする必要があります。 
+実行時間の長い操作は、特定のライブ イベントまたはそれに関連付けられているライブ出力に対して 1 つだけサポートされます。 実行時間の長い操作が開始したら、それが完了してからでないと、同じ LiveEvent または関連付けられているライブ出力に対して、実行時間の長い操作を続けて開始できません。 複数のライブ出力があるライブ イベントの場合は、あるライブ出力に対して長時間実行されている操作の完了を待ってから、別のライブ出力に対して長時間実行される操作をトリガーする必要があります。
 
 ## <a name="sdks"></a>SDK
 
@@ -122,9 +108,9 @@ Media Services には、次のような長期操作があります。
 
 |SDK|リファレンス|
 |---|---|
-|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET リファレンス](https://aka.ms/ams-v3-dotnet-ref)|
-|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java リファレンス](https://aka.ms/ams-v3-java-ref)|
-|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python リファレンス](https://aka.ms/ams-v3-python-ref)|
+|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET リファレンス](/dotnet/api/overview/azure/mediaservices/management)|
+|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java リファレンス](/java/api/overview/azure/mediaservices/management)|
+|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python リファレンス](/python/api/overview/azure/mediaservices/management)|
 |[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js リファレンス](/javascript/api/overview/azure/mediaservices/management)| 
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go リファレンス](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||

@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 87ca8591be42e34a52f15913e0ec4058505cc0b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4158bc07373a2d0aa6fb6ceaf2dce62b50bb6bd7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079055"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658368"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Firewall のテスト環境を作成する
 
@@ -72,12 +72,11 @@ Remove-AzResourceGroup -Name AzfwSampleScriptEastUS -Force
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | 仮想マシンを作成します。 |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
-|[New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)| 新しい Azure Firewall データベースを作成します。|
-|[Get-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/get-azfirewall)|Azure Firewall オブジェクトを取得します。|
-|[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|新しい Azure Firewall アプリケーション ルールを作成します。|
-|[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Azure Firewall オブジェクトへの変更をコミットします。|
+|[New-AzFirewall](/powershell/module/az.network/new-azfirewall)| 新しい Azure Firewall データベースを作成します。|
+|[Get-AzFirewall](/powershell/module/az.network/get-azfirewall)|Azure Firewall オブジェクトを取得します。|
+|[New-AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule)|新しい Azure Firewall アプリケーション ルールを作成します。|
+|[Set-AzFirewall](/powershell/module/az.network/set-azfirewall)|Azure Firewall オブジェクトへの変更をコミットします。|
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
-

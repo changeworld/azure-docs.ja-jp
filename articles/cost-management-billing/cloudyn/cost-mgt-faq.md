@@ -3,19 +3,19 @@ title: Azure の Cloudyn に関してよく寄せられる質問
 description: Cloudyn ポータルを使用して間接的なエンタープライズ設定に関する一般的な問題を解決し、その他のよく寄せられる質問に回答する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b78d9d7bf725e3d82c88360c822455de1301ef6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92a62de4223d2ec6d0441840b90fdce20c656d02
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688030"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546230"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 
@@ -27,31 +27,31 @@ ms.locfileid: "88688030"
 
 Cloudyn ポータルを始めて使用する際、Enterprise Agreement またはクラウド ソリューション プロバイダー (CSP) ユーザーのお客様の場合、次のメッセージが表示されることがあります。
 
-- **Cloudyn 設定**ウィザードに "The specified API key is not a top level enrollment key (指定された API キーは、最上位レベルの登録キーではありません)" と表示される。
+- **Cloudyn 設定** ウィザードに "The specified API key is not a top level enrollment key (指定された API キーは、最上位レベルの登録キーではありません)" と表示される。
 - Enterprise Agreement ポータルに "Direct Enrollment – No\(直接登録 – いいえ\)" と表示される。
 - Cloudyn ポータルに "No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account\(過去 30 日間に使用状況データが見つかりませんでした。ディストリビューターに連絡してお使いの Azure アカウントに対してマークアップが有効になっていることを確認してください\)" と表示される。
 
-前述のメッセージは、Azure Enterprise Agreement を再販業者または CSP から購入したことを示します。 Cloudyn でデータを確認するには、再販業者または CSP がユーザーの Azure アカウントの "_マークアップ_" を有効にする必要があります。
+前述のメッセージは、Azure Enterprise Agreement を再販業者または CSP から購入したことを示します。 Cloudyn でデータを確認するには、再販業者または CSP がユーザーの Azure アカウントの " _マークアップ_ " を有効にする必要があります。
 
 問題の修正方法は次のとおりです。
 
-1. 再販業者がユーザーのアカウントの "_マークアップ_" を有効にする。 手順については、「[間接加入契約者向けオンボード ガイド](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)」をご覧ください。
+1. 再販業者がユーザーのアカウントの " _マークアップ_ " を有効にする。 手順については、「[間接加入契約者向けオンボード ガイド](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)」をご覧ください。
 
-2. ユーザーが Cloudyn で使用する Azure Enterprise Agreement キーを生成する。 手順については、「[Adding Your Azure EA (Azure EA を追加する)](quick-register-ea.md#register-with-cloudyn)」または[自分の EA 登録 ID と API キーを探す方法](https://youtu.be/u_phLs_udig)に関するビデオをご覧ください。
+2. ユーザーが Cloudyn で使用する Azure Enterprise Agreement キーを生成する。
 
 Cloudyn を有効にできるのは、Azure サービス管理者だけです。 共同管理者のアクセス許可では不十分です。
 
 Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前に、次の手順に従って Azure Billing API を有効にする必要があります。
 
 - [企業ユーザー向けの Reporting API の概要](../manage/enterprise-api.md)
-- 「**Enabling data access to the API (API へのデータ アクセスを有効にする)** 」の「[Microsoft Azure Enterprise Portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI)」
+- 「 **Enabling data access to the API (API へのデータ アクセスを有効にする)** 」の「 [Microsoft Azure Enterprise Portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI)」
 
 
-また、部門管理者、アカウント所有者、およびエンタープライズ管理者に、Billing API による "_請求を確認する_" アクセス許可を付与する必要がある場合もあります。
+また、部門管理者、アカウント所有者、およびエンタープライズ管理者に、Billing API による " _請求を確認する_ " アクセス許可を付与する必要がある場合もあります。
 
 ## <a name="why-dont-i-see-optimizer-recommendations"></a>オプティマイザの推奨事項が表示されない理由
 
-推奨事項の情報は、アクティブ化されているアカウントでのみ使用できます。 *アクティブ化されていない*アカウントの**オプティマイザ** レポート カテゴリに推奨事項の情報は表示されません。これには次のものが含まれます。
+推奨事項の情報は、アクティブ化されているアカウントでのみ使用できます。 *アクティブ化されていない* アカウントの **オプティマイザ** レポート カテゴリに推奨事項の情報は表示されません。これには次のものが含まれます。
 
 - 最適化マネージャー
 - サイズ設定の最適化
@@ -62,11 +62,11 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 アカウントをアクティブ化するには:
 
 1.    Cloudyn ポータルで、右上にある **[設定]** をクリックして **[クラウド アカウント]** を選択します。
-2.    [Microsoft Azure Accounts] \(Microsoft Azure アカウント) タブで、**アクティブ化されていない**サブスクリプションを持つアカウントを探します。
+2.    [Microsoft Azure Accounts] \(Microsoft Azure アカウント) タブで、 **アクティブ化されていない** サブスクリプションを持つアカウントを探します。
 3.    アクティブ化されていないアカウントの右にある、鉛筆に似た **[編集]** 記号をクリックします。
 4.    テナント ID とレート ID が自動的に検出されます。 **[次へ]** をクリックします。
 5.    Azure Portal にリダイレクトされます。 ポータルにサインインし、Cloudyn Collector が Azure データにアクセスすることを承認します。
-6.    次に、[Cloudyn Accounts] \(Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが**アクティブな**アカウント状態に更新されます。 そこには緑色のチェックマーク記号が表示されます。
+6.    次に、[Cloudyn Accounts] \(Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが **アクティブな** アカウント状態に更新されます。 そこには緑色のチェックマーク記号が表示されます。
 7.    1 つ以上のサブスクリプションに緑色のチェックマーク記号が表示されていない場合は、そのサブスクリプションのリーダー アプリ (CloudynCollector) を作成するためのアクセス許可がないことを示しています。 そのサブスクリプションのより高いアクセス許可を持つユーザーが手順 3 と 4 を繰り返す必要があります。  
 
 前の手順を完了すると、1 ～ 2 日以内にオプティマイザの推奨事項を表示できます。 ただし、完全な最適化データが入手可能になるまでに最大 5 日かかる場合があります。
@@ -74,11 +74,11 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>中断またはロックアウトされたユーザーを有効にするにはどうすればよいですか
 
-最初に、ユーザー アカウントが*initiallySuspended*する原因となる最も一般的なシナリオを見てみましょうです。
+最初に、ユーザー アカウントが *initiallySuspended* する原因となる最も一般的なシナリオを見てみましょうです。
 
-> Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーです。 所属の組織では、Cloudyn の使用を開始する準備が整っています。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 Admin1 は、Cloudyn サービスを登録し、Cloudyn ポータルにサインインするユーザーである "*プライマリ管理者*" になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用して、Azure アカウントの作成とエンティティ階層の設定を実行できます。 Admin1 は、Cloudyn への登録と Cloudyn ポータルへのサインインが必要であることを、テナント管理者である Admin2 に通知します。
+> Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーです。 所属の組織では、Cloudyn の使用を開始する準備が整っています。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 Admin1 は、Cloudyn サービスを登録し、Cloudyn ポータルにサインインするユーザーである " *プライマリ管理者* " になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用して、Azure アカウントの作成とエンティティ階層の設定を実行できます。 Admin1 は、Cloudyn への登録と Cloudyn ポータルへのサインインが必要であることを、テナント管理者である Admin2 に通知します。
 >
-> Admin2 は Azure portal を使用して登録します。 しかし、Cloudyn ポータルにサインインしようとすると、アカウントが**中断**されていることを示すエラーが表示されます。 プライマリ管理者の Admin1 に、アカウントの中断が通知されます。 Admin1 は、Admin2 のアカウントをアクティブにし、適したエンティティへの "*管理エンティティへのアクセス*" を付与して、ユーザーの管理アクセス権とユーザー アカウントをアクティブにするアクセスを許可する必要があります。
+> Admin2 は Azure portal を使用して登録します。 しかし、Cloudyn ポータルにサインインしようとすると、アカウントが **中断** されていることを示すエラーが表示されます。 プライマリ管理者の Admin1 に、アカウントの中断が通知されます。 Admin1 は、Admin2 のアカウントをアクティブにし、適したエンティティへの " *管理エンティティへのアクセス* " を付与して、ユーザーの管理アクセス権とユーザー アカウントをアクティブにするアクセスを許可する必要があります。
 
 
 ユーザーのアクセスの許可を要求するアラートを受け取った場合、そのユーザーのアカウントをアクティブにする必要があります。
@@ -106,7 +106,7 @@ Cloudyn で Azure のアカウントが見つかるとすぐに、コスト デ�
 
 アカウントの Azure の資格情報を追加するには、Cloudyn ポータルで、サブスクリプションではなく、アカウント名の右にある編集記号を選択します。
 
-Cloudyn にお使いの Azure の資格情報が追加されるまで、アカウントは "_非アクティブ_" として表示されます。
+Cloudyn にお使いの Azure の資格情報が追加されるまで、アカウントは " _非アクティブ_ " として表示されます。
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>既存のサブスクリプションに複数のアカウントやエンティティを追加するにはどうすればよいですか
 
@@ -128,9 +128,9 @@ Cloudyn は Enterprise Agreement サブスクリプションの通貨を自動�
 
 Cloudyn のデータ更新タイムラインは次のとおりです。
 
-- **初期**:設定後、Cloudyn でコスト データが表示されるまで最大で 24 時間かかる場合があります。 また、サイズ変更に関する推奨事項を表示するために Cloudyn が十分なデータを収集するのに、最大で 10 日かかります。
-- **日次**:Cloudyn では、各月の 10 日から末日まで、ご自分の前日からの最新データがその次の日の UTC + 3 くらいに表示されます。
-- **月次**:Cloudyn では、各月の 1 日から 10 日まで、ご自分の前月の終わりまでのデータのみが表示される場合があります。
+- **初期** :設定後、Cloudyn でコスト データが表示されるまで最大で 24 時間かかる場合があります。 また、サイズ変更に関する推奨事項を表示するために Cloudyn が十分なデータを収集するのに、最大で 10 日かかります。
+- **日次** :Cloudyn では、各月の 10 日から末日まで、ご自分の前日からの最新データがその次の日の UTC + 3 くらいに表示されます。
+- **月次** :Cloudyn では、各月の 1 日から 10 日まで、ご自分の前月の終わりまでのデータのみが表示される場合があります。
 
 Cloudyn は前日の全データが利用可能になったタイミングで、前日のデータを処理します。 通常、前日のデータは各日の UTC+3 くらいに Cloudyn で使用できるようになります。 タグなどの一部のデータの処理には、さらに 24 時間かかる場合があります。
 
@@ -152,7 +152,7 @@ Azure から Cloudyn へのデータの送信が遅延した場合、データ�
 
 ## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>オプティマイザーのメニュー項目はどのようにしたら表示されますか
 
-Azure Resource Manager アクセスを追加し、データが収集されると、**オプティマイザー** オプションが表示されます。 Azure Resource Manager アクセスをアクティブにするには、「[Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください](#how-do-i-activate-unactivated-accounts-with-azure-credentials)」を参照してください
+Azure Resource Manager アクセスを追加し、データが収集されると、 **オプティマイザー** オプションが表示されます。 Azure Resource Manager アクセスをアクティブにするには、「[Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください](#how-do-i-activate-unactivated-accounts-with-azure-credentials)」を参照してください
 
 ## <a name="is-cloudyn-agent-based"></a>Cloudyn エージェントがベースになっていますか
 

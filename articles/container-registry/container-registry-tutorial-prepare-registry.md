@@ -4,16 +4,16 @@ description: Azure Container Registry を作成し、geo レプリケーショ�
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6abf1b7a524bc7dd28f1704a362749ac84de2389
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259517"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826085"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
 
-Azure Container Registry は、デプロイの近くにネットワークを確保できる Azure にデプロイされたプライベート Docker レジストリです。 この一連の 3 つのチュートリアルの記事では、geo レプリケーションを使用して、Linux コンテナーで実行する ASP.NET Core Web アプリケーションを、2 つの [Web Apps for Containers](../app-service/containers/index.yml) インスタンスにデプロイする方法について説明します。 Azure が最も近い geo レプリケーション レポジトリからの各 Web アプリ インスタンスにイメージをデプロイする方法を確認します。
+Azure Container Registry は、デプロイの近くにネットワークを確保できる Azure にデプロイされたプライベート Docker レジストリです。 この一連の 3 つのチュートリアルの記事では、geo レプリケーションを使用して、Linux コンテナーで実行する ASP.NET Core Web アプリケーションを、2 つの [Web Apps for Containers](../app-service/index.yml) インスタンスにデプロイする方法について説明します。 Azure が最も近い geo レプリケーション レポジトリからの各 Web アプリ インスタンスにイメージをデプロイする方法を確認します。
 
 このチュートリアルの 3 部構成のシリーズのパート 1 では、次の作業を行います。
 
@@ -59,7 +59,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Azure portal でコンテナー レジストリを構成する":::
 
-このチュートリアルの残りの部分では、選択したコンテナー **レジストリ名**のプレースホルダーとして `<acrName>` を使用します。
+このチュートリアルの残りの部分では、選択したコンテナー **レジストリ名** のプレースホルダーとして `<acrName>` を使用します。
 
 > [!TIP]
 > Azure Container Registry は通常、複数のコンテナー ホスト間で使用される有効期間が長いリソースであるため、独自のリソース グループにレジストリを作成することをお勧めします。 geo レプリケーション レジストリと webhook を構成すると、これらの追加リソースが同じリソース グループに配置されます。
@@ -80,7 +80,7 @@ Azure portal で新しいコンテナー レジストリに移動し、 **[サ�
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure portal の [レプリケーションの作成] UI":::
 
-レプリケーションが完了すると、ポータルで、両方のリージョンに対して*準備完了*が示されます。 **[更新]** ボタンを使用して、レプリケーションの状態を更新します。レプリカが作成され、同期されるまで、1 分ほどかかる可能性があります。
+レプリケーションが完了すると、ポータルで、両方のリージョンに対して *準備完了* が示されます。 **[更新]** ボタンを使用して、レプリケーションの状態を更新します。レプリカが作成され、同期されるまで、1 分ほどかかる可能性があります。
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure portal の [レプリケーションの状態] UI":::
 
@@ -123,19 +123,19 @@ cd acr-helloworld
 
 ## <a name="update-dockerfile"></a>Dockerfile の更新
 
-サンプルに含まれる Dockerfile は、コンテナーの構築方法を示しています。 公式の [aspnetcore][dockerhub-aspnetcore] イメージから開始し、アプリケーション ファイルをコンテナーにコピーし、依存関係をインストールして、公式の [aspnetcore-build][dockerhub-aspnetcore-build]イメージを使用して出力をコンパイルし、最後に、最適化された aspnetcore イメージを構築します。
+サンプルに含まれる Dockerfile は、コンテナーの構築方法を示しています。 公式の ASP.NET Core ランタイム イメージから開始し、アプリケーション ファイルをコンテナーにコピーし、依存関係をインストールして、公式の .NET Core SDK イメージを使用して出力をコンパイルし、最後に、最適化された aspnetcore イメージを構築します。
 
 [Dockerfile][dockerfile] は複製されたソース内の `./AcrHelloworld/Dockerfile` にあります。
 
 ```Dockerfile
-FROM microsoft/aspnetcore:2.0 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
 ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
@@ -187,8 +187,8 @@ Docker イメージが構築されると、複数行の出力が表示されま�
 
 ```bash
 Sending build context to Docker daemon  523.8kB
-Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
-2.0: Pulling from microsoft/aspnetcore
+Step 1/18 : FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+2.2: Pulling from mcr.microsoft.com/dotnet/core/aspnet
 3e17c6eae66c: Pulling fs layer
 
 [...]
@@ -218,7 +218,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-geo レプリケーション用にレジストリを構成したため、この単一の `docker push` コマンドで、イメージが*米国西部*と*米国東部*リージョンの両方に自動的にレプリケートされます。
+geo レプリケーション用にレジストリを構成したため、この単一の `docker push` コマンドで、イメージが *米国西部* と *米国東部* リージョンの両方に自動的にレプリケートされます。
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
@@ -245,6 +245,4 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
 [aspnet-core]: https://dot.net
-[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
-[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 889a70005f1cbabaad525147b4661ea04886138a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985616"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445610"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>モデル変換 REST API を使用する
 
@@ -54,7 +54,7 @@ JSON ドキュメントにラップされている実行中の変換の ID を�
 #### <a name="request-body"></a>要求本文
 
 > [!NOTE]
-> Azure で変換を実行するために、`input.folderPath` 配下のものがすべて取得されます。 `input.folderPath` が指定されていない場合、コンテナーのコンテンツ全体が取得されます。 取得されるすべての BLOB およびフォルダーには、[有効な Windows ファイル名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)が指定されている必要があります。
+> Azure で変換を実行するために、`input.folderPath` 配下のものがすべて取得されます。 `input.folderPath` が指定されていない場合、コンテナーのコンテンツ全体が取得されます。 取得されるすべての BLOB およびフォルダーには、[有効な Windows ファイル名](/windows/win32/fileio/naming-a-file#naming-conventions)が指定されている必要があります。
 
 ```json
 {
@@ -91,7 +91,7 @@ JSON ドキュメントにラップされている実行中の変換の ID を�
 > これらの SAS URI トークンは、クエリ文字列であり、完全な URI ではありません。 
 
 > [!NOTE]
-> Azure で変換を実行するために、`input.folderPath` 配下のものがすべて取得されます。 `input.folderPath` が指定されていない場合、コンテナーのコンテンツ全体が取得されます。 取得されるすべての BLOB およびフォルダーには、[有効な Windows ファイル名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)が指定されている必要があります。
+> Azure で変換を実行するために、`input.folderPath` 配下のものがすべて取得されます。 `input.folderPath` が指定されていない場合、コンテナーのコンテンツ全体が取得されます。 取得されるすべての BLOB およびフォルダーには、[有効な Windows ファイル名](/windows/win32/fileio/naming-a-file#naming-conventions)が指定されている必要があります。
 
 ```json
 {
@@ -130,6 +130,21 @@ JSON ドキュメントにラップされている実行中の変換の ID を�
 - "Failure"
 
 状態が "Failure" の場合は、エラー情報を含む "message" サブフィールドを含む "error" フィールドが追加されます。 追加のログは、出力コンテナーにアップロードされます。
+
+## <a name="list-conversions"></a>一覧の変換
+
+アカウントに対するすべての変換の一覧を取得するには、次のインターフェイスを使用します。
+
+| エンドポイント | Method |
+|-----------|:-----------|
+| /v1/accounts/**accountID**/conversions?skiptoken=**skipToken** | GET |
+
+| パラメーター | 必須 |
+|-----------|:-----------|
+| accountID | はい |
+| skiptoken | いいえ |
+
+変換の配列とその詳細を含む json ドキュメントを返します。 このクエリから、一度に最大 50 個の変換が返されます。 取得する変換がさらにある場合、応答には、次の結果セットを取得するクエリを実行できる skipToken を含む **nextLink** プロパティが含まれます。
 
 ## <a name="next-steps"></a>次のステップ
 

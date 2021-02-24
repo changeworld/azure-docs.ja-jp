@@ -3,16 +3,19 @@ title: Azure IoT Edge および Azure IoT Central | Microsoft Docs
 description: IoT Central アプリケーションで Azure IoT Edge を使用する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/12/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom:
+- device-developer
+- iot-edge
+ms.openlocfilehash: 9a7c886ba4dd6e7ab4bd62700f5437855a16a5ad
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337077"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796569"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -26,7 +29,7 @@ IoT Edge は、次の 3 つのコンポーネントで構成されます。
 
 **Azure IoT Edge** デバイスは、IoT Edge デバイスに接続するダウンストリーム デバイスがあるゲートウェイ デバイスにすることができます。 この記事では、ダウンストリーム デバイスの接続パターンに関する詳細情報を共有します。
 
-**デバイス テンプレート**により、デバイスと IoT Edge のモジュールの機能が定義されます。 機能には、モジュールが送信するテレメトリ、モジュール プロパティ、モジュールが応答するコマンドが含まれます。
+**デバイス テンプレート** により、デバイスと IoT Edge のモジュールの機能が定義されます。 機能には、モジュールが送信するテレメトリ、モジュール プロパティ、モジュールが応答するコマンドが含まれます。
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>ゲートウェイおよびモジュールとのダウンストリーム デバイスのリレーションシップ
 
@@ -60,9 +63,9 @@ Azure IoT Central では、配置マニフェストをインポートしてデ�
 
 IoT Central は、IoT Edge デバイスを次のようにモデル化します。
 
-* すべての IoT Edge デバイス テンプレートに、デバイス機能モデルがあります。
+* すべての IoT Edge デバイス テンプレートに、デバイス モデルがあります。
 * 配置マニフェストに一覧表示されているすべてのカスタム モジュールに対して、モジュール機能モデルが生成されます。
-* 各モジュール機能モデルとデバイス機能モデルの間にリレーションシップが確立されます。
+* 各モジュール機能モデルとデバイス モデルの間にリレーションシップが確立されます。
 * モジュール機能モデルは、モジュール インターフェイスを実装します。
 * 各モジュール インターフェイスには、テレメトリ、プロパティ、およびコマンドが含まれます。
 
@@ -70,7 +73,7 @@ IoT Central は、IoT Edge デバイスを次のようにモデル化します�
 
 ## <a name="iot-edge-gateway-devices"></a>IoT Edge ゲートウェイ デバイス
 
-IoT Edge デバイスをゲートウェイ デバイスにするよう選択した場合は、ゲートウェイ デバイスに接続するデバイスのデバイス機能モデルにダウンストリーム リレーションシップを追加できます。
+IoT Edge デバイスをゲートウェイ デバイスにするよう選択した場合は、ゲートウェイ デバイスに接続するデバイスのデバイス モデルにダウンストリーム リレーションシップを追加できます。
 
 ## <a name="next-steps"></a>次のステップ
 

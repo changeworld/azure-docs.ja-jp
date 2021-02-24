@@ -4,12 +4,12 @@ description: この記事では、Azure Site Recovery に関してよく寄せ�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950495"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820198"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -71,7 +71,7 @@ Azure パック、クラウド プラットフォーム システム、および
 
 Site Recovery を使用している間は、[料金計算ツール](https://aka.ms/asr_pricing_calculator)を利用してコストを見積もることができます。
 
-コストの詳細な見積もりのためには、[VMware](https://aka.ms/siterecovery_deployment_planner) または [Hyper-V](https://aka.ms/asr-deployment-planner) に対してデプロイ プランナー ツールを実行し、[コスト見積もりレポート](https://aka.ms/asr_DP_costreport)を使用します。
+コストの詳細な見積もりのためには、[VMware](./site-recovery-deployment-planner.md) または [Hyper-V](https://aka.ms/asr-deployment-planner) に対してデプロイ プランナー ツールを実行し、[コスト見積もりレポート](./site-recovery-vmware-deployment-planner-cost-estimation.md)を使用します。
 
 
 ### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>現在、VMware VM と物理サーバーをレプリケートするために、マネージド ディスクが使用されています。 マネージド ディスクには、キャッシュ ストレージ アカウントに対する追加料金はありますか?
@@ -188,7 +188,7 @@ Microsoft のパートナーである Riverbed は、Azure Site Recovery の使�
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Azure にレプリケートする場合、どの種類のストレージ アカウントまたはマネージド ディスクが必要ですか。
 
-LRS または GRS ストレージが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。 Azure Portal に Site Recovery をデプロイする場合、VMware VM、Hyper-V VM、および物理サーバーのレプリケーションで Premium Storage がサポートされます。 マネージド ディスクでは、LRS のみをサポートしています。
+ストレージ アカウントをターゲット ストレージとして使用することは、Azure Site Recovery ではサポートされていません。 マネージド ディスクは、マシンのターゲット ストレージとして使用することをお勧めします。 マネージド ディスクでは、データ回復性のために LRS 型のみがサポートされています。
 
 ### <a name="how-often-can-i-replicate-data"></a>どのくらいの頻度でデータをレプリケートできますか。
 * **Hyper-V:** Hyper-V VM は 30 秒 (Premium Storage を除く)、5 分、または 15 分ごとにレプリケートできます。
@@ -273,6 +273,9 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 
 これらの追加コンテンツのため、アプリケーション整合性スナップショットは最も複雑となり、時間がかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
 
+>[!Note]
+>Windows マシンに 64 個を超えるボリュームがある場合、アプリケーション整合性復旧ポイントの作成に失敗します。
+
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>アプリケーション整合性復旧ポイントがアプリケーション パフォーマンスにもたらす影響について教えてください。
 
 アプリケーション整合性復旧ポイントの場合、メモリに入っているデータと処理中のデータがすべてキャプチャされます。 復旧ポイントでそのデータがキャプチャされるため、アプリケーションを停止する目的で、ボリューム シャドウ コピー サービスなどのフレームワークが Windows で必要になります。 キャプチャ プロセスが頻繁に行われる場合、ワークロードが既にビジー状態であれば、パフォーマンスに影響が出ることがあります。 データベース以外のワークロードの場合、アプリ整合性復旧ポイントの頻度を低く設定しないことをお勧めします。 データベース ワークロードの場合であっても、1 時間で十分です。
@@ -341,6 +344,14 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 * [VMware 仮想マシン用](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Hyper-V 仮想マシン用](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>[移行の完了]、[コミット]、[レプリケーションの無効化] の違いは何ですか。
+
+ソースの場所からターゲットの場所へのマシンのフェールオーバーが完了したら、3 つのオプションを選択できます。 3 つの目的はそれぞれ異なります。
+
+1.  **[移行の完了]** は、ソースの場所にはもう戻らないことを意味します。 ターゲット リージョンへの移行はこれで完了です。 [移行の完了] をクリックすると、内部的には [コミット]、[レプリケーションの無効化] の順にトリガーされます。 
+2.  **[コミット]** は、これがレプリケーション プロセスの終了ではないことを意味します。 レプリケーション項目はすべての構成と共に保持されるため、後で **[再保護]** を実行して、マシンのレプリケーションをソース リージョンに戻すことができます。 
+3.  **[レプリケーションの無効化]** を選択すると、レプリケーションが無効になり、関連するすべての構成が削除されます。 ターゲット リージョンの既存のマシンには影響しません。
 
 ## <a name="automation"></a>オートメーション
 

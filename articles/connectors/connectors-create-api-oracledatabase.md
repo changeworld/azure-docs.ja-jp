@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290609"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674808"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -23,7 +23,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 このコネクタでは、次の項目はサポートされていません。
 
-* ビュー 
+* ビュー 
 * 複合キーが含まれるテーブル
 * テーブル内の入れ子になったオブジェクトの種類
 * 非スカラー値を含むデータベース関数
@@ -39,9 +39,9 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 * オンプレミスのデータ ゲートウェイをインストールする。 手順については、「[ロジック アプリからオンプレミスのデータに接続する](../logic-apps/logic-apps-gateway-connection.md)」を参照してください。 ゲートウェイは、オンプレミスの Oracle Database、または Oracle DB がインストールされている Azure VM に接続するために必要です。 
 
     > [!NOTE]
-    > オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ (クラウドにないデータ) とロジック アプリの間に、セキュリティで保護されたデータ転送を提供します。 そのゲートウェイは、複数のサービス、および複数のデータ ソースで使用できます。 したがって、ゲートウェイをインストールするのは 1 回だけで済みます。
+    > オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ (クラウドにないデータ) とロジック アプリの間に、セキュリティで保護されたデータ転送を提供します。 そのゲートウェイは、複数のサービス、および複数のデータ ソースで使用できます。  したがって、ゲートウェイをインストールするのは 1 回だけで済みます。
 
-* オンプレミスのデータ ゲートウェイをインストールしたコンピューターで Oracle クライアントをインストールする。 必ず Oracle から 64 ビット Oracle Data Provider for .NET をインストールします。  
+* オンプレミスのデータ ゲートウェイをインストールしたコンピューターで Oracle クライアントをインストールする。  必ず Oracle から 64 ビット Oracle Data Provider for .NET をインストールします。  
 
   [64 ビット ODAC 12c Release 4 (12.1.0.2.4) for Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
@@ -83,7 +83,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
     ![2 つのダイアログ ボックスがあります。 [メールの送信] には、電子メールの "本文"、"件名"、および "宛先" アドレスを指定するためのボックスがあります。 [動的なコンテンツの追加] ダイアログ ボックスを使用すると、フローのアプリやサービスの動的コンテンツを検索できます。](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. ロジック アプリを**保存**して、 **[実行]** を選択します。 デザイナーを閉じて、実行履歴で状態を確認します。 失敗した場合は、失敗したことを示すメッセージの行を選択します。 デザイナーが開き、失敗した手順と、エラー情報が表示されます。 成功した場合は、追加した情報が電子メールで通知されます。
+8. ロジック アプリを **保存** して、 **[実行]** を選択します。 デザイナーを閉じて、実行履歴で状態を確認します。 失敗した場合は、失敗したことを示すメッセージの行を選択します。 デザイナーが開き、失敗した手順と、エラー情報が表示されます。 成功した場合は、追加した情報が電子メールで通知されます。
 
 
 ### <a name="workflow-ideas"></a>ワークフローについて
@@ -98,23 +98,23 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ## <a name="common-errors"></a>一般的なエラー
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Error**: ゲートウェイに到達できません
+#### <a name="error-cannot-reach-the-gateway"></a>**Error** : ゲートウェイに到達できません
 
-**原因**:オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
+**原因** :オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
 
-**対応策**:ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。  オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。 オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
+**対応策** :ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。    オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。  オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Error**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) を参照して、公式のプロバイダーをインストールしてください。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Error** : 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database) を参照して、公式のプロバイダーをインストールしてください。
 
-**原因**:オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
+**原因** :オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
 
-**解決方法**:Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
+**解決方法** :Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Error**: テーブル '[Tablename]' には、キー列が定義されていません
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Error** : テーブル '[Tablename]' には、キー列が定義されていません
 
-**原因**:テーブルに主キーがありません。  
+**原因** :テーブルに主キーがありません。  
 
-**解決方法**:Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
+**解決方法** :Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
  
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
@@ -129,4 +129,3 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)し、[API の一覧](apis-list.md)で Logic Apps で使用できるコネクタを確認します。
-

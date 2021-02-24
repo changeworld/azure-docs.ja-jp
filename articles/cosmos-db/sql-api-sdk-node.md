@@ -8,15 +8,16 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 76671ba2dec2590baf4f3df38325b4cfb0129e8d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-js
+ms.openlocfilehash: 7f101097945e5f345bae351ef5ca2a23a3e14be6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586105"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091160"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Node.js SDK:リリース ノートとリソース
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
@@ -32,14 +33,14 @@ ms.locfileid: "88586105"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |リソース  |Link  |
 |---------|---------|
 |SDK のダウンロード  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](/javascript/api/%40azure/cosmos/?preserve-view=true&view=azure-node-latest)
 |SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-sdk-for-js)
 |SDK への参加 | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | サンプル | [Node.js コード サンプル](sql-api-nodejs-samples.md)
@@ -353,7 +354,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * ドキュメントの有効期限 (TTL) 機能のサポートを追加しました。
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* [パーティション分割コレクション](partition-data.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
+* [パーティション分割コレクション](partitioning-overview.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
 
 ### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * 結果の不適切な連結のためにリンクを返していなかった RangePartitionResolver.resolveForRead のバグを修正しました。
@@ -414,7 +415,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
@@ -476,4 +477,3 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 ## <a name="see-also"></a>関連項目
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。
-

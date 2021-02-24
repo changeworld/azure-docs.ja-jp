@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor を使用した Media Services 診断ログの監視 | Microsoft Docs
+title: Azure Monitor を使用して診断ログを監視する
 description: この記事では、Azure Monitor を介して診断ログをルーティングおよび表示する方法を示します。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2cfa21bc5223af058d412bf3f17f53cb151fc5c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1d9252a5fdf7b1c68c1bb64bd22ede8640184a0c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297639"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953956"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services 診断ログの監視
 
@@ -39,7 +39,7 @@ ms.locfileid: "89297639"
 1. Azure Portal (https://portal.azure.com ) にログインします。
 1. Media Services アカウントに移動し、 **[監視]** の下の **[診断設定]** をクリックします。 サブスクリプションに含まれ Azure Monitor で監視データを生成するすべてのリソースの一覧が表示されます。
 
-    ![[診断設定] セクション](media/media-services-diagnostic-logs/logs01.png)
+    ![[モニター] セクションの [診断設定] が強調表示されているスクリーンショット。](media/media-services-diagnostic-logs/logs01.png)
 
 1. **[診断設定の追加]** をクリックします。
 

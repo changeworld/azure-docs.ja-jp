@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Office 365 からデータを読み込む
 description: Azure Data Factory を使用して Office 365 からデータをコピーする
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b98344dcb2321d5d91c9974dc833a735164d428
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415813"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370658"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
@@ -53,7 +48,7 @@ ms.locfileid: "81415813"
  
     ![パイプラインの作成](./media/load-office-365-data/create-pipeline-entry.png)
 
-2. パイプラインの **[全般]** タブで、パイプラインの**名前**として「CopyPipeline」と入力します。
+2. パイプラインの **[全般]** タブで、パイプラインの **名前** として「CopyPipeline」と入力します。
 
 3. [アクティビティ] ツール ボックスの [Move & Transform]\(移動と変換) で、ツール ボックスからパイプライン デザイナー画面に **[コピー]** アクティビティ をドラッグ アンド ドロップします。 アクティビティ名として "CopyFromOffice365ToBlob" を指定します。
 
@@ -67,7 +62,7 @@ ms.locfileid: "81415813"
 
     ![一般的な Office 365 データセットを構成する](./media/load-office-365-data/transition-to-edit-dataset.png)
  
-4. Office 365 データセット用の新しいタブが開きます。 プロパティ ウィンドウの下部にある **[全般] タブ**で、[名前] に「SourceOffice365Dataset」と入力します。
+4. Office 365 データセット用の新しいタブが開きます。 プロパティ ウィンドウの下部にある **[全般] タブ** で、[名前] に「SourceOffice365Dataset」と入力します。
  
 5. プロパティ ウィンドウの **[接続]** タブに移動します。 [リンクされたサービス] ボックスの横にある **[+ 新規]** をクリックします。
 
@@ -79,7 +74,7 @@ ms.locfileid: "81415813"
 
     ![Office 365 データセット テーブルを構成する](./media/load-office-365-data/edit-dataset.png)
 
-8. 次に、 **[パイプライン]**  >  **[ソース] タブ**に戻り、Office 365 のデータ抽出のために引き続き追加プロパティを構成します。  ユーザー スコープとユーザースコープ フィルターは、Office 365 から抽出するデータを制限するために定義できる省略可能な述語です。 これらの設定を構成する方法については、[Office 365 のデータセットのプロパティ](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties)に関するセクションを参照してください。
+8. 次に、 **[パイプライン]**  >  **[ソース] タブ** に戻り、Office 365 のデータ抽出のために引き続き追加プロパティを構成します。  ユーザー スコープとユーザースコープ フィルターは、Office 365 から抽出するデータを制限するために定義できる省略可能な述語です。 これらの設定を構成する方法については、[Office 365 のデータセットのプロパティ](./connector-office-365.md#dataset-properties)に関するセクションを参照してください。
 
 9. 日付フィルターの 1 つを選択し、開始時刻と終了時刻の値を指定する必要があります。
 
@@ -147,7 +142,7 @@ _データを抽出しているときの状態:_
 
 ## <a name="next-steps"></a>次のステップ
 
-次の資料に進んで、Azure SQL Data Warehouse のサポートを確認します。 
+次の資料に進んで、Azure Synapse Analytics のサポートを確認します。 
 
 > [!div class="nextstepaction"]
 >[Office 365 コネクタ](connector-office-365.md)

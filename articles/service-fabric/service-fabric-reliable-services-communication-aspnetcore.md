@@ -1,17 +1,15 @@
 ---
 title: ASP.NET Core によるサービス通信
 description: ステートレスおよびステートフルな Azure Service Fabric Reliable Services アプリケーションで ASP.NET Core を使用する方法について説明します。
-author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022192"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791596"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services での ASP.NET Core
 
@@ -192,7 +190,7 @@ HTTP.sys で動的に割り当てられたポートを使用するには、`Endp
 ## <a name="kestrel-in-reliable-services"></a>リライアブル サービスでの Kestrel
 **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet パッケージをインポートすることにより、Reliable Services で Kestrel を使用できます。 このパッケージには、`ICommunicationListener` の実装である `KestrelCommunicationListener` が含まれます。 `KestrelCommunicationListener` により、Web サーバーとして Kestrel を使って、リライアブル サービスの内部に ASP.NET Core WebHost を作成できます。
 
-Kestrel は、ASP.NET Core 用のクロスプラットフォーム Web サーバーです。 HTTP.sys とは異なり、Kestrel では一元的なエンドポイント マネージャーは使用されません。 また、HTTP.sys とは異なり、Kestrel では複数のプロセス間のポート共有はサポートされません。 Kestrel の各インスタンスは、一意のポートを使用する必要があります。 Kestrel の詳細については、[実装の詳細 ](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)に関する記事を参照してください。
+Kestrel は、ASP.NET Core 用のクロスプラットフォーム Web サーバーです。 HTTP.sys とは異なり、Kestrel では一元的なエンドポイント マネージャーは使用されません。 また、HTTP.sys とは異なり、Kestrel では複数のプロセス間のポート共有はサポートされません。 Kestrel の各インスタンスは、一意のポートを使用する必要があります。 Kestrel の詳細については、[実装の詳細 ](/aspnet/core/fundamentals/servers/kestrel)に関する記事を参照してください。
 
 ![Kestrel の図][4]
 
@@ -249,7 +247,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 この例では、`IReliableStateManager` のシングルトン インスタンスが WebHost 依存関係挿入コンテナーに提供されています。 これは厳密には必要ではありませんが、MVC コントローラーのアクション メソッドで `IReliableStateManager` と Reliable Collection を使用することができます。
 
-`Endpoint` 構成名はステートフル サービスの `KestrelCommunicationListener` に提供*されません*。 これについては、次のセクションで詳しく説明します。
+`Endpoint` 構成名はステートフル サービスの `KestrelCommunicationListener` に提供 *されません*。 これについては、次のセクションで詳しく説明します。
 
 ### <a name="configure-kestrel-to-use-https"></a>HTTPS を使用するように Kestrel を構成する
 サービスの Kestrel で HTTPS を有効にするときは、複数のリッスン オプションを設定する必要があります。 *EndpointHttps* エンドポイントを使用し、特定のポート (ポート 443 など) でリッスンするように、`ServiceInstanceListener` を更新します。 Kestrel Web サーバーを使用するよう Web ホストを構成するときは、すべてのネットワーク インターフェイスで IPv6 アドレスをリッスンするように Kestrel を構成する必要があります。 
@@ -459,9 +457,9 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
  - 内部専用の ASP.NET Core ステートレス サービス
  - 内部専用の ASP.NET Core ステートフル サービス
 
-**外部に公開されるサービス**とは、通常はロード バランサーを介してクラスターの外部から呼び出されるエンドポイントを公開するサービスです。
+**外部に公開されるサービス** とは、通常はロード バランサーを介してクラスターの外部から呼び出されるエンドポイントを公開するサービスです。
 
-**内部専用**のサービスとは、クラスター内からのみエンドポイントを呼び出すことができるサービスです。
+**内部専用** のサービスとは、クラスター内からのみエンドポイントを呼び出すことができるサービスです。
 
 > [!NOTE]
 > ステートフル サービス エンドポイントは、通常、インターネットに公開されません。 Azure Load Balancer など、Service Fabric のサービス解決に対応していないロード バランサーの背後にあるクラスターでは、ステートフル サービスを公開できません。 それは、ロード バランサーで適切なステートフル サービス レプリカを特定してトラフィックをルーティングできないためです。 

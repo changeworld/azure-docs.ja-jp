@@ -5,16 +5,17 @@ author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d78ddf983f1c8f2bfeaf733c273afc1cc98b1185
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549972"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684860"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure の診断設定を使用して Azure Cosmos DB データを監視する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure の診断設定は、リソース ログの収集に使用されます。 Azure のリソース ログは、リソースによって出力され、そのリソースの操作に関する豊富なデータを提供します。 これらのログは、要求ごとにキャプチャされ、"データ プレーン ログ" とも呼ばれます。 データ プレーン操作の例としては、delete、insert、readFeed などがあります。 これらのログの内容は、リソースの種類によって異なります。
 
@@ -32,23 +33,57 @@ Azure の診断設定は、リソース ログの収集に使用されます。 
 
 1. 診断設定を作成するときは、収集するログのカテゴリを指定します。 Azure Cosmos DB でサポートされているログのカテゴリと、それらによって収集されるサンプル ログを次に示します。
 
- * **DataPlaneRequests**:SQL、Graph、MongoDB、Cassandra、および Azure Cosmos DB の Table API アカウントなど、すべての API へのバックエンド要求をログに記録するには、このオプションを選択します。 注意すべき重要なプロパティは、`Requestcharge`、`statusCode`、`clientIPaddress`、および `partitionID` です。
+ * **DataPlaneRequests**:Azure Cosmos DB 内の SQL API アカウントへのバックエンド要求をログに記録するには、このオプションを選択します。 注意すべき重要なプロパティは、`Requestcharge`、`statusCode`、`clientIPaddress`、`partitionID`、`resourceTokenPermissionId`、および `resourceTokenPermissionMode` です。
 
-    ```json
-    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
+   ```json
+    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372", "resourceTokenPermissionId": "perm-prescriber-app","resourceTokenPermissionMode": "all", "resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
+   ```
+   
+   次のクエリを使用して、データ プレーン要求に対応するログを取得します。
+  
+   ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+   ```
 
 * **MongoRequests**:Azure Cosmos DB の MongoDB 用 API の要求にサービスを提供するために、ユーザーがフロントエンドから開始した要求をログに記録するには、このオプションを選択します。 このログの種類は、その他の API アカウントでは使用できません。 注意すべき重要なプロパティは、`Requestcharge`、`opCode` です。 診断ログで MongoRequests を有効にする場合は、DataPlaneRequests をオフにしてください。 API に対して行われたすべての要求に対して 1 つのログが表示されます。
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
+  
+  次のクエリを使用して、MongoDB 要求に対応するログを取得します。
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="MongoRequests"
+  ```
 
 * **CassandraRequests**:フロント エンドからユーザーが開始した要求をログに記録して、Cassandra 用の Azure Cosmos DB の API への要求を処理する場合に、このオプションを選択します。 このログの種類は、その他の API アカウントでは使用できません。 注意する重要なプロパティは、`operationName`、`requestCharge`、`piiCommandText` です。 診断ログで CassandraRequests を有効にする場合は、DataPlaneRequests をオフにしてください。 API に対して行われたすべての要求に対して 1 つのログが表示されます。
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
    ```
+   
+  次のクエリを使用して、Cassandra 要求に対応するログを取得します。
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="CassandraRequests"
+  ```
+
+* **GremlinRequests**:Azure Cosmos DB の Gremlin 用 API の要求にサービスを提供するために、ユーザーがフロントエンドから開始した要求をログするには、このオプションを選択します。 このログの種類は、その他の API アカウントでは使用できません。 注意すべき重要なプロパティは、`operationName` と `requestCharge` です。 診断ログで GremlinRequests を有効にする場合は、必ず DataPlaneRequests をオフにしてください。 API に対して行われたすべての要求に対して 1 つのログが表示されます。
+
+  ```json
+  { "time": "2021-01-06T19:36:58.2554534Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "GremlinRequests", "operationName": "eval", "properties": {"activityId": "b16bd876-0e5c-4448-90d1-7f3134c6b5ff", "errorCode": "200", "duration": "9.6036", "requestCharge": "9.059999999999999", "databaseName": "GraphDemoDatabase", "collectionName": "GraphDemoContainer", "authorizationTokenType": "PrimaryMasterKey", "address": "98.225.2.189", "estimatedDelayFromRateLimitingInMilliseconds": "0", "retriedDueToRateLimiting": "False", "region": "Australia East", "requestLength": "266", "responseLength": "364", "userAgent": "<empty>"}}
+  ```
+  
+  次のクエリを使用して、Gremlin 要求に対応するログを取得します。
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="GremlinRequests"
+  ```
 
 * **QueryRuntimeStatistics**:実行されたクエリ テキストをログに記録するには、このオプションを選択します。 この種類のログは、SQL API アカウントでのみ使用できます。
 
@@ -104,7 +139,7 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. コストの高いクエリについて要求の使用量を取得する方法
@@ -214,14 +249,6 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. データベース アカウントの上位 3 つのパーティション間のずれを評価するために、パーティション キーの統計を取得する方法
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
-   ```
-
 1. 操作、要求の課金、または応答の長さの P99 または P50 レプリケーションの待機時間を取得する方法
 
    ```Kusto
@@ -236,16 +263,15 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
    by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
    ```
  
-1. Controlplane ログを取得する方法
+1. ControlPlane ログを取得する方法
  
-   必ず[キーベースのメタデータ書き込みアクセスを無効にする方法](audit-control-plane-logs.md#disable-key-based-metadata-write-access)に関する記事の説明に従ってフラグをオンに切り替えてから、Azure PowerShell、CLI、または ARM を使用して操作を実行してください。
+   必ず[キーベースのメタデータ書き込みアクセスを無効にする方法](audit-control-plane-logs.md#disable-key-based-metadata-write-access)に関する記事の説明に従ってフラグをオンに切り替えてから、Azure PowerShell、Azure CLI、または Azure Resource Manager を使用して操作を実行してください。
  
    ```Kusto  
    AzureDiagnostics 
    | where Category =="ControlPlaneRequests"
    | summarize by OperationName 
    ```
-
 
 ## <a name="next-steps"></a>次のステップ
 

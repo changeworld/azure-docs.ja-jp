@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d9fc1592681429998f5082fbadcd45fa068f130e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230587"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180474"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用のログ分析ビューのインストールと使用
 
@@ -56,7 +56,7 @@ Azure Active Directory のログ分析ビューを使用して、お使いの Az
 
 3. これらのいずれかのビューを選択して、個々のレポートに進みます。 また、任意のレポート パラメーターにアラートを設定することも可能です。 たとえば、サインイン エラーが発生するたびに、アラートを設定するとします。 これを行うには、まず、 **[Sign-ins Events]\(サインイン イベント\)** ビューを選択し、 **[Sign-in errors over time]\(経時的なサインイン エラー\)** レポートを選択し、 **[Analytics]** を選択して、レポートの背景となる実際のクエリを示した詳細ページを開きます。 
 
-    ![詳細](./media/howto-install-use-log-analytics-views/details.png)
+    ![Analytics 詳細ページのスクリーンショット。レポートにクエリがあります。](./media/howto-install-use-log-analytics-views/details.png)
 
 
 4. **[アラートの設定]** を選択して、**[アラートの条件]** セクションで **[Whenever the Custom log search]\(次の場合に、カスタム ログ検索を行う: \) に &lt;ロジックが定義されていません&gt;** を選択します。 サインイン エラーが発生するたびにアラートを生成したいので、既定のアラート ロジックの **[しきい値]** に **1** を設定してから、 **[完了]** を選択します。 
@@ -74,4 +74,4 @@ Azure Active Directory のログ分析ビューを使用して、お使いの Az
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログでアクティビティ ログを分析する方法](howto-analyze-activity-logs-log-analytics.md)
-* [Azure portal での Azure Monitor ログの概要](../../azure-monitor/log-query/get-started-portal.md)
+* [Azure portal での Azure Monitor ログの概要](../../azure-monitor/log-query/log-analytics-tutorial.md)

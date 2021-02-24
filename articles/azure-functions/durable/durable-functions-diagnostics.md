@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: ae721d2a8df981ecf9ab8e8b04d0e0d287d523cd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750711"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168143"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -99,7 +99,7 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 ```
 
 > [!NOTE]
-> 既定では、データの出力頻度が高くなりすぎないよう、Azure Functions ランタイムによって Application Insights テレメトリがサンプリングされます。 そのため、短時間に多数のライフサイクル イベントが発生すると追跡情報が失われることがあります。 この動作を構成する方法については、[Azure Functions の監視に関する記事](../functions-monitoring.md#configure-sampling)で説明しています。
+> 既定では、データの出力頻度が高くなりすぎないよう、Azure Functions ランタイムによって Application Insights テレメトリがサンプリングされます。 そのため、短時間に多数のライフサイクル イベントが発生すると追跡情報が失われることがあります。 この動作を構成する方法については、[Azure Functions の監視に関する記事](../configure-monitoring.md#configure-sampling)で説明しています。
 
 ### <a name="single-instance-query"></a>シングル インスタンス クエリ
 
@@ -435,7 +435,7 @@ GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 クライアントは次の応答を取得します:
 
-```http
+```json
 {
   "runtimeStatus": "Running",
   "input": null,

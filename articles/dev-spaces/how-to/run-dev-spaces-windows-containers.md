@@ -5,14 +5,16 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: 131f69d42795b857a53fc21b760a7275a6826bb8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a9aa24ae70afe062246e1b295cdc7e0724639596
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212462"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606761"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces は、新規と既存の両方の Kubernetes 名前空間で有効にすることができます。 Azure Dev Spaces は、Linux コンテナーで実行されるサービスを実行し、インストルメント化します。 それらのサービスは、同じ名前空間で Windows コンテナーで実行されるアプリケーションを操作することもできます。 この記事では、既存の Windows コンテナーを持つ名前空間で Dev Spaces を使用してサービスを実行する方法について説明します。 現時点では、Azure Dev Spaces を使用して、Windows コンテナーのデバッグやアタッチを行うことはできません。
 
@@ -116,8 +118,8 @@ spec:
 
 ```cmd
 $ helm list --namespace dev
-NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+NAME             REVISION   UPDATED                    STATUS    CHART            APP VERSION    NAMESPACE
+windows-service    1        Wed Jul 24 15:45:59 2019   DEPLOYED  mywebapi-0.1.0   1.0            dev
 ```
 
 上の例では、デプロイの名前が *windows-service* となっています。 `helm upgrade` を使用して Windows サービスを新しい構成で更新します。
@@ -178,5 +180,5 @@ Azure Dev Spaces のしくみの詳細について確認します。
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
+[using-taints]: ../../aks/use-multiple-node-pools.md#setting-nodepool-taints
 [windows-container-cli]: ../../aks/windows-container-cli.md

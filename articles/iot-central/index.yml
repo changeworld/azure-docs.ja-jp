@@ -9,13 +9,13 @@ metadata:
   ms.topic: hub-page
   author: philmea
   ms.author: philmea
-  ms.date: 10/25/2019
-  ms.openlocfilehash: 64e20f9a06acf85def278c1017bbbd588c7a6b39
-  ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+  ms.date: 06/30/2020
+  ms.openlocfilehash: 59d95b8ce13161999c06993cbbf9194a66e38ed3
+  ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/03/2020
-  ms.locfileid: "89425978"
+  ms.lasthandoff: 11/25/2020
+  ms.locfileid: "96122501"
 highlightedContent:
   items:
   - title: IoT Central とは
@@ -24,9 +24,9 @@ highlightedContent:
   - title: アプリケーション テンプレートとは
     itemType: concept
     url: ./core/concepts-app-templates.md
-  - title: Azure IoT Central のアーキテクチャ
-    itemType: architecture
-    url: ./core/concepts-architecture.md
+  - title: IoT Central デバイスの開発の概要
+    itemType: overview
+    url: ./core/overview-iot-central-developer.md
   - title: 新しいアプリケーションを作成する
     itemType: quickstart
     url: ./core/quick-deploy-iot-central.md
@@ -38,11 +38,20 @@ highlightedContent:
     url: ./core/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
-  - title: 接続する
+  - title: デバイスを接続して開発する
     links:
-    - url: ./core/howto-set-up-template.md
+    - url: ./core/tutorial-connect-device.md
+      itemType: tutorial
+      text: デバイスの接続
+    - url: ./core/concepts-get-connected.md
+      itemType: concept
+      text: デバイスの接続性
+    - url: ./core/concepts-device-templates.md
+      itemType: concept
+      text: デバイス テンプレート
+    - url: ./core/troubleshoot-connection.md
       itemType: how-to-guide
-      text: デバイス テンプレートを設定する
+      text: デバイス接続のトラブルシューティング
     footerLink:
       url: ./core/index.yml
       text: 詳細情報
@@ -70,7 +79,7 @@ conceptualContent:
       text: テレメトリ ルールを作成する
     - url: ./core/howto-export-data.md
       itemType: how-to-guide
-      text: クラウドの宛先にデータをエクスポートする - プレビュー
+      text: データをクラウドの宛先にエクスポートする
     footerLink:
       url: ./core/index.yml
       text: 詳細情報
@@ -92,7 +101,7 @@ productDirectory:
     - text: デジタル流通センター アプリケーションを作成する
       url: ./retail/tutorial-iot-central-digital-distribution-center.md
     - text: ビデオ分析アプリケーションを作成する
-      url: ./retail/tutorial-video-analytics-create-app.md
+      url: ./retail/tutorial-video-analytics-create-app-yolo-v3.md
   - title: ヘルスケア業界向けの構築
     imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
     links:
@@ -125,10 +134,10 @@ additionalContent:
   - items:
     - title: IoT Central API
       summary: IoT Central API を調べます。
-      url: https://docs.microsoft.com/rest/api/iotcentral/
+      url: /rest/api/iotcentral/
     - title: Microsoft Learn の IoT Central
       summary: 無料のサンドボックス環境で IoT Central を調べます。
-      url: https://docs.microsoft.com/learn/browse/?products=azure-iot-central
+      url: /learn/browse/?products=azure-iot-central
     - title: 最新の更新
       summary: IoT Central の最新情報を参照してください。
       url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central

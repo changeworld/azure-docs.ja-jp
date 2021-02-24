@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1d22a992ac4ae69c8541b6efbaee58340f48caa4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193507"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517877"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -27,7 +27,7 @@ ms.locfileid: "84193507"
 
 この記事では、各処理フェーズのオプションとツールについて説明します。
 
-Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な一覧については、「[Integrate Azure Data Lake Storage with Azure services](data-lake-storage-integrate-with-azure-services.md)」 (Azure Data Lake Storage と Azure サービスを統合する) を参照してください
+Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な一覧については、「[Integrate Azure Data Lake Storage with Azure services](./data-lake-storage-supported-azure-services.md)」 (Azure Data Lake Storage と Azure サービスを統合する) を参照してください
 
 ## <a name="ingest-the-data-into-data-lake-storage-gen2"></a>Data Lake Storage Gen2 にデータを取り込む
 
@@ -54,8 +54,8 @@ Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な�
 
 |ツール | ガイダンス |
 |---|--|
-|Azure Stream Analytics|[クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Azure Data Lake Gen2 に出力する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
-|Azure HDInsight Storm | [HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
+|Azure Stream Analytics|[クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](../../stream-analytics/stream-analytics-quick-create-portal.md) <br> [Azure Data Lake Gen2 に出力する](../../stream-analytics/stream-analytics-define-outputs.md)|
+|Azure HDInsight Storm | [HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む](../../hdinsight/storm/apache-storm-write-data-lake-store.md) |
 
 ### <a name="relational-data"></a>リレーショナル データ
 
@@ -65,7 +65,7 @@ Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な�
 
 |ツール | ガイダンス |
 |---|--|
-|Azure Data Factory | [Azure Data Factory の Copy アクティビティ](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
+|Azure Data Factory | [Azure Data Factory の Copy アクティビティ](../../data-factory/copy-activity-overview.md) |
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web サーバー ログ データ (カスタム アプリケーションを使用したアップロード)
 
@@ -75,7 +75,7 @@ Web サーバー ログ データの取り込みに使用できるツールの�
 
 |ツール | ガイダンス |
 |---|--|
-|Azure Data Factory | [Azure Data Factory の Copy アクティビティ](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
+|Azure Data Factory | [Azure Data Factory の Copy アクティビティ](../../data-factory/copy-activity-overview.md)  |
 |Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
@@ -89,9 +89,9 @@ HDInsight クラスターに関連付けられたデータの取り込みに使�
 
 |ツール | ガイダンス |
 |---|--|
-|Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|AzCopy ツール | [AzCopy を使用してデータを転送する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
-|Azure Data Factory | [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
+|Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](./data-lake-storage-use-distcp.md) |
+|AzCopy ツール | [AzCopy を使用してデータを転送する](../common/storage-use-azcopy-v10.md) |
+|Azure Data Factory | [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>オンプレミスまたは IaaS Hadoop クラスターに格納されているデータ
 
@@ -118,12 +118,12 @@ Data Lake Storage Gen2 に格納されているデータに対してデータ分
 
 |ツール | ガイダンス |
 |---|--|
-|Azure HDInsight | [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[クイック スタート: Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure HDInsight | [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+|Azure Databricks | [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)<br><br>[クイック スタート: Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する](./data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>データの視覚化
 
-Data Lake Storage Gen2 に格納されたデータを視覚的に表現するには、Power BI コネクタを使用します。 「[Power BI を使用して Azure Data Lake Storage Gen2 のデータを分析する](https://docs.microsoft.com/power-query/connectors/datalakestorage)」を参照してください。
+Data Lake Storage Gen2 に格納されたデータを視覚的に表現するには、Power BI コネクタを使用します。 「[Power BI を使用して Azure Data Lake Storage Gen2 のデータを分析する](/power-query/connectors/datalakestorage)」を参照してください。
 
 ## <a name="download-the-data"></a>データをダウンロードする
 
@@ -139,7 +139,7 @@ Data Lake Storage Gen2 からのデータのダウンロードに使用できる
 
 |ツール | ガイダンス |
 |---|--|
-|Azure Data Factory | [Azure Data Factory の Copy アクティビティ](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|Azure Storage Explorer |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md)|
-|AzCopy ツール|[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)|
+|Azure Data Factory | [Azure Data Factory の Copy アクティビティ](../../data-factory/copy-activity-overview.md) |
+|Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](./data-lake-storage-use-distcp.md) |
+|Azure Storage Explorer|[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md)|
+|AzCopy ツール|[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-v10.md#transfer-data)|

@@ -6,24 +6,24 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 76f9fb4ed5c3b88b3a1f69e352f50079586ec336
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119115"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663334"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブ (プレビュー) を作成および管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事では、T-SQL を使用してエラスティック ジョブを使い始めるためのシナリオの例を多数提供します。
 
-これらの例では、"[*ジョブ データベース*](job-automation-overview.md#job-database)" で利用できる[ストアド プロシージャ](#job-stored-procedures)と[ビュー](#job-views)を使います。
+これらの例では、"[*ジョブ データベース*](job-automation-overview.md#job-database)" で利用できる [ストアド プロシージャ](#job-stored-procedures)と [ビュー](#job-views)を使います。
 
 ジョブの作成、構成、実行、管理には、Transact-SQL (T-SQL) を使います。 エラスティック ジョブ エージェントの作成は T-SQL ではサポートされていないので、最初に、ポータルまたは [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) を使って "*エラスティック ジョブ エージェント*" を作成する必要があります。
 
@@ -63,8 +63,8 @@ EXEC jobs.sp_add_target_group 'ServerGroup1'
 EXEC jobs.sp_add_target_group_member
 'ServerGroup1',
 @target_type = 'SqlServer',
-@refresh_credential_name='mymastercred', --credential required to refresh the databases in a server
-@server_name='server1.database.windows.net'
+@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net'
 
 --View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name='ServerGroup1';
@@ -87,16 +87,16 @@ GO
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in a server
-@server_name=N'London.database.windows.net'
+@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
+@server_name = N'London.database.windows.net'
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in a server
-@server_name='server2.database.windows.net'
+@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server2.database.windows.net'
 GO
 
 --Exclude a database target member from the server target group
@@ -105,7 +105,7 @@ EXEC [jobs].sp_add_target_group_member
 @membership_type = N'Exclude',
 @target_type = N'SqlDatabase',
 @server_name = N'server1.database.windows.net',
-@database_name =N'MappingDB'
+@database_name = N'MappingDB'
 GO
 
 --View the recently created target group and target group members
@@ -128,9 +128,9 @@ EXEC jobs.sp_add_target_group 'PoolGroup'
 EXEC jobs.sp_add_target_group_member
 'PoolGroup',
 @target_type = 'SqlElasticPool',
-@refresh_credential_name='mymastercred', --credential required to refresh the databases in a server
-@server_name='server1.database.windows.net',
-@elastic_pool_name='ElasticPool-1'
+@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net',
+@elastic_pool_name = 'ElasticPool-1'
 
 -- View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name = N'PoolGroup';
@@ -146,14 +146,14 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 --Connect to the job database specified when creating the job agent
 
 --Add job for create table
-EXEC jobs.sp_add_job @job_name='CreateTableTest', @description='Create Table Test'
+EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test'
 
 -- Add job step for create table
-EXEC jobs.sp_add_jobstep @job_name='CreateTableTest',
-@command=N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
+EXEC jobs.sp_add_jobstep @job_name = 'CreateTableTest',
+@command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
 CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
-@credential_name='myjobcred',
-@target_group_name='PoolGroup'
+@credential_name = 'myjobcred',
+@target_group_name = 'PoolGroup'
 ```
 
 ## <a name="data-collection-using-built-in-parameters"></a>組み込みパラメーターを使用したデータ収集
@@ -179,7 +179,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 次の例では、複数のデータベースからパフォーマンス データを収集する新しいジョブを作成します。
 
-既定では、ジョブ エージェントは返された結果を格納する出力テーブルを作成します。 そのため、出力資格情報に関連付けられているデータベース プリンシパルには、少なくとも次の権限が必要です。データベースでは `CREATE TABLE`、出力テーブルまたはそのスキーマでは `ALTER`、`SELECT`、`INSERT`、`DELETE`、および [sys.indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) カタログ ビューでは `SELECT`。
+既定では、ジョブ エージェントは返された結果を格納する出力テーブルを作成します。 そのため、出力資格情報に関連付けられているデータベース プリンシパルには、少なくとも次の権限が必要です。データベースでは `CREATE TABLE`、出力テーブルまたはそのスキーマでは `ALTER`、`SELECT`、`INSERT`、`DELETE`、および [sys.indexes](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) カタログ ビューでは `SELECT`。
 
 事前にテーブルを手動で作成する場合は、次のプロパティが必要です。
 
@@ -198,15 +198,15 @@ EXEC jobs.sp_add_job @job_name ='ResultsJob', @description='Collection Performan
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
-@job_name='ResultsJob',
-@command= N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
-@credential_name='myjobcred',
-@target_group_name='PoolGroup',
-@output_type='SqlDatabase',
-@output_credential_name='myjobcred',
-@output_server_name='server1.database.windows.net',
-@output_database_name='<resultsdb>',
-@output_table_name='<resutlstable>'
+@job_name = 'ResultsJob',
+@command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
+@credential_name = 'myjobcred',
+@target_group_name = 'PoolGroup',
+@output_type = 'SqlDatabase',
+@output_credential_name = 'myjobcred',
+@output_server_name = 'server1.database.windows.net',
+@output_database_name = '<resultsdb>',
+@output_table_name = '<resutlstable>'
 Create a job to monitor pool performance
 --Connect to the job database specified when creating the job agent
 
@@ -215,17 +215,17 @@ EXEC jobs.sp_add_target_group 'MasterGroup'
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name='MasterGroup',
-@target_type='SqlDatabase',
-@server_name='server1.database.windows.net',
-@database_name='master'
+@target_group_name = 'MasterGroup',
+@target_type = 'SqlDatabase',
+@server_name = 'server1.database.windows.net',
+@database_name = 'master'
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job
-@job_name='ResultsPoolsJob',
-@description='Demo: Collection Performance data from all pools',
-@schedule_interval_type='Minutes',
-@schedule_interval_count=15
+@job_name = 'ResultsPoolsJob',
+@description = 'Demo: Collection Performance data from all pools',
+@schedule_interval_type = 'Minutes',
+@schedule_interval_count = 15
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
@@ -246,13 +246,13 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
         avg_storage_percent, elastic_pool_storage_limit_mb FROM sys.elastic_pool_resource_stats
         WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
 '),
-@credential_name='myjobcred',
-@target_group_name='MasterGroup',
-@output_type='SqlDatabase',
-@output_credential_name='myjobcred',
-@output_server_name='server1.database.windows.net',
-@output_database_name='resultsdb',
-@output_table_name='resutlstable'
+@credential_name = 'myjobcred',
+@target_group_name = 'MasterGroup',
+@output_type = 'SqlDatabase',
+@output_credential_name = 'myjobcred',
+@output_server_name = 'server1.database.windows.net',
+@output_database_name = 'resultsdb',
+@output_table_name = 'resutlstable'
 ```
 
 ## <a name="view-job-definitions"></a>ジョブの定義を表示する
@@ -306,10 +306,10 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 --Connect to the job database specified when creating the job agent
 
 EXEC jobs.sp_update_job
-@job_name='ResultsJob',
+@job_name = 'ResultsJob',
 @enabled=1,
-@schedule_interval_type='Minutes',
-@schedule_interval_count=15
+@schedule_interval_type = 'Minutes',
+@schedule_interval_count = 15
 ```
 
 ## <a name="monitor-job-execution-status"></a>ジョブの実行状態を監視する
@@ -1023,13 +1023,13 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 メンバーを追加するターゲット グループの名前。 target_group_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@membership_type =** ] 'membership_type'  
-ターゲット グループのメンバーが含まれるか除外されるかを指定します。 target_group_name は nvarchar(128) であり、既定値は 'Include' です。 target_group_name の有効な値は、'Include' または 'Exclude' です。
+ターゲット グループのメンバーが含まれるか除外されるかを指定します。 target_group_name は nvarchar(128) であり、既定値は 'Include' です。 membership_type の有効な値は "Include" または "Exclude" です。
 
 [ **\@target_type =** ] 'target_type'  
 ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、シャード マップ内のすべてのデータベース、または個々のデータベースです。 target_type は nvarchar(128) であり、既定値はありません。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、'SqlDatabase'、または 'SqlShardMap' です。
 
 [ **\@refresh_credential_name =** ] 'refresh_credential_name'  
-サーバーの名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
+データベース スコープの資格情報の名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@server_name =** ] 'server_name'  
 指定したターゲット グループに追加する必要のあるサーバーの名前。 target_type が 'SqlServer' の場合は、server_name を指定する必要があります。 server_name は nvarchar(128) であり、既定値はありません。
@@ -1041,7 +1041,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 指定したターゲット グループに追加する必要のあるエラスティック プールの名前。 target_type が 'SqlElasticPool' の場合は、elastic_pool_name を指定する必要があります。 elastic_pool_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@shard_map_name =** ] 'shard_map_name'  
-指定したターゲット グループに追加する必要があるシャード マップ プールの名前。 target_type が 'SqlSqlShardMap' の場合は、shard_map_name を指定する必要があります。 shard_map_name は nvarchar(128) であり、既定値はありません。
+指定したターゲット グループに追加する必要があるシャード マップ プールの名前。 target_type が "SqlShardMap" の場合は、elastic_pool_name を指定する必要があります。 shard_map_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@target_id =** ] target_group_id OUTPUT  
 ターゲット グループに追加された場合にターゲット グループ メンバーに割り当てられるターゲット ID 番号。 target_id は uniqueidentifier 型の出力変数であり、既定値は NULL です。
@@ -1344,9 +1344,9 @@ GO
 
 ## <a name="resources"></a>リソース
 
-- ![トピック リンク アイコン](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "トピック リンク アイコン") [Transact-SQL 構文表記規則](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+- ![トピック リンク アイコン](/sql/database-engine/configure-windows/media/topic-link.gif "トピック リンク アイコン") [Transact-SQL 構文表記規則](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 ## <a name="next-steps"></a>次のステップ
 
 - [PowerShell を使用したエラスティック ジョブの作成と管理](elastic-jobs-powershell-create.md)
-- [承認と権限](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
+- [承認と権限](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

@@ -3,24 +3,23 @@ title: Azure Stream Analytics ウィンドウ関数の概要
 description: この記事では、Azure Stream Analytics ジョブで使用される 4 つのウィンドウ関数 (タンブリング、ホッピング、スライディング、セッション) について説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/16/2020
+ms.openlocfilehash: feea44741fbc2c81d781f0bba12b280abdb9f68a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075918"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020250"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Stream Analytics ウィンドウ関数の概要
 
 タイム ストリーミング シナリオでは、テンポラル ウィンドウに含まれているデータに対する操作の実行は一般的なパターンです。 Stream Analytics には、ウィンドウ関数に対するネイティブ サポートがあるため、開発者は複雑なストリーム処理ジョブを最小限の作業で作成できます。
 
-選択できるテンポラル ウィンドウには、[**タンブリング**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)、[**ホッピング**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics)、[**スライディング**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)、および[**セッション**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) ウィンドウの 4 種類があります。  ウィンドウ関数は、Stream Analytics ジョブ内のクエリ構文の [**GROUP BY**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 句で使用します。 [**Windows()** 関数](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)を使用して、複数のウィンドウにわたってイベントを集計することもできます。
+選択できる 5 種類のテンポラル ウィンドウには、[**タンブリング**](/stream-analytics-query/tumbling-window-azure-stream-analytics)、[**ホッピング**](/stream-analytics-query/hopping-window-azure-stream-analytics)、[**スライディング**](/stream-analytics-query/sliding-window-azure-stream-analytics)、[**セッション**](/stream-analytics-query/session-window-azure-stream-analytics)、および [**スナップショット**](/stream-analytics-query/snapshot-window-azure-stream-analytics) ウィンドウがあります。  ウィンドウ関数は、Stream Analytics ジョブ内のクエリ構文の [**GROUP BY**](/stream-analytics-query/group-by-azure-stream-analytics) 句で使用します。 [**Windows()** 関数](/stream-analytics-query/windows-azure-stream-analytics)を使用して、複数のウィンドウにわたってイベントを集計することもできます。
 
-すべての[ウィンドウ](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)操作が、ウィンドウの**終了**時に結果を出力します。 ウィンドウの出力は、使用される集計関数に基づく単一のイベントになります。 出力イベントにはウィンドウの終了のタイム スタンプが割り当てられ、すべてのウィンドウ関数が固定長で定義されています。 
+すべての [ウィンドウ](/stream-analytics-query/windowing-azure-stream-analytics)操作が、ウィンドウの **終了** 時に結果を出力します。 Stream Analytics ジョブを開始するときは、 *[ジョブの出力の開始時刻]* を指定でき、指定した時刻に最初のウィンドウを出力するために、受信ストリームで以前のイベントが自動的にフェッチされます。たとえば、 *[今すぐ]* オプションを使用して開始すると、すぐにデータの出力が開始されます。 ウィンドウの出力は、使用される集計関数に基づく単一のイベントになります。 出力イベントにはウィンドウの終了のタイム スタンプが割り当てられ、すべてのウィンドウ関数が固定長で定義されています。 
 
 ![Stream Analytics ウィンドウ関数の概念](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -30,13 +29,13 @@ ms.locfileid: "87075918"
 ![Stream Analytics タンブリング ウィンドウ](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>ホッピング ウィンドウ
-ホッピング ウィンドウ関数は、一定の期間だけ前に進みます。 重複できるタンブリング ウィンドウと考えると簡単で、イベントは複数のホッピング ウィンドウ結果セットに属することができます。 ホッピング ウィンドウをタンブリング ウィンドウと同じにするには、ホップ サイズをウィンドウ サイズと同じに指定します。 
+ホッピング ウィンドウ関数は、一定の期間だけ前に進みます。 ウィンドウ サイズよりも頻繁に重複して出力できるタンブリング ウィンドウと考えるのが簡単です。 イベントは複数のホッピング ウィンドウ結果セットに属することができます。 ホッピング ウィンドウをタンブリング ウィンドウと同じにするには、ホップ サイズをウィンドウ サイズと同じに指定します。 
 
 ![Stream Analytics ホッピング ウィンドウ](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>スライディング ウィンドウ
 
-スライディング ウィンドウには、タンブリングやホッピングの各ウィンドウとは異なり、ウィンドウの内容が実際に変更された時点のイベントのみが出力されます。 つまり、イベントがウィンドウに出入りしたときです。 ホッピング ウィンドウの場合と同様に、すべてのウィンドウには少なくとも 1 つのイベントがあります。イベントは複数のスライディング ウィンドウに属することができます。
+スライディング ウィンドウには、タンブリングやホッピングの各ウィンドウとは異なり、ウィンドウの内容が実際に変更された時点のイベントのみが出力されます。 つまり、イベントがウィンドウに出入りしたときです。 そのため、すべてのウィンドウに少なくとも 1 つのイベントがあります。 ホッピング ウィンドウと同様に、イベントは複数のスライディング ウィンドウに属することができます。
 
 ![Stream Analytics スライディング ウィンドウ](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -53,7 +52,7 @@ ms.locfileid: "87075918"
 
 ## <a name="snapshot-window"></a>スナップショット ウィンドウ
 
-スナップショット ウィンドウでは、同じタイムスタンプを持つイベントがグループ化されます。 特定のウィンドウ関数 ([SessionWindow()](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) など) を必要とする他のウィンドウの種類とは異なり、System.Timestamp() を GROUP BY 句に追加することでスナップショット ウィンドウを適用できます。
+スナップショット ウィンドウでは、同じタイムスタンプを持つイベントがグループ化されます。 特定のウィンドウ関数 ([SessionWindow()](/stream-analytics-query/session-window-azure-stream-analytics) など) を必要とする他のウィンドウの種類とは異なり、System.Timestamp() を GROUP BY 句に追加することでスナップショット ウィンドウを適用できます。
 
 ![Stream Analytics のスナップショット ウィンドウ](media/stream-analytics-window-functions/snapshot.png)
 
@@ -61,6 +60,5 @@ ms.locfileid: "87075918"
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

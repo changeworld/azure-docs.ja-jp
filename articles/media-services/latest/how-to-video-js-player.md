@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services で Video.js プレーヤーを使用する方法
+title: Azure Media Services で Video.js プレーヤーを使用する
 description: この記事では、Azure Media Services で HTML ビデオ オブジェクトと JavaScript を使用する方法について説明します
 services: media-services
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2730c6ce523e618110cd29b13ba2f37115e2cbd0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.custom: devx-track-js
+ms.openlocfilehash: a0b357705de04ed4c2be3223f9dd07f61f75d970
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267685"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954582"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>Azure Media Services で Video.js プレーヤーを使用する方法
 

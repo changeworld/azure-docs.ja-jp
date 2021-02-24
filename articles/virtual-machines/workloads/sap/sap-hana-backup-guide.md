@@ -7,17 +7,18 @@ author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 340ce84ebe662b976f32048a47fd98d793083065
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652187"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617104"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
 
@@ -102,7 +103,7 @@ SAP HANA の場合、ほとんどのお客様は、SAP HANA の再実行ログ�
 
 ### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>HANA バックアップとストレージ スナップショットの長所と短所
 
-HANA バックアップとストレージ スナップショットについては、いずれかが SAP によって推奨されているということはありません。 状況と使用できるストレージ テクノロジに応じてどちらを使用するかを判断できるよう、双方の長所と短所の一覧が SAP によって作成されています (「[Planning Your Backup and Recovery Strategy (バックアップと回復の戦略の計画)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)」を参照)。
+HANA バックアップとストレージ スナップショットについては、いずれかが SAP によって推奨されているということはありません。 状況と使用できるストレージ テクノロジに応じてどちらを使用するかを判断できるよう、双方の長所と短所の一覧が SAP によって作成されています (「[Planning Your Backup and Recovery Strategy (バックアップと回復の戦略の計画)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/ef085cd5949c40b788bba8fd3c65743e.html)」を参照)。
 
 Azure では、Azure BLOB スナップショット機能を使っても複数のディスクにまたがってファイル システムの整合性が確保されるわけでない点に注意してください ([PowerShell による BLOB スナップショットの使用](/archive/blogs/cie/using-blob-snapshots-with-powershell)に関するページを参照)。 
 

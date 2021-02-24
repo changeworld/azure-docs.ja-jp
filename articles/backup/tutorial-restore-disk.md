@@ -3,13 +3,13 @@ title: チュートリアル - Azure CLI を使用した VM の復元
 description: Azure でバックアップおよび Recovery Services を使用して、ディスクを復元し、回復した VM を作成する方法について説明します。
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 999682c9bf4a4d70d886f0e85cede99f215aa046
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890690"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694717"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI を使用した VM の復元
 
@@ -23,13 +23,11 @@ Azure Backup では、geo 冗長 Recovery コンテナーに保存される復�
 
 PowerShell を使用してディスクを復元し、回復した VM を作成する方法については、[PowerShell による Azure VM のバックアップと復元](backup-azure-vms-automation.md#restore-an-azure-vm)に関するページを参照してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.18 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.18 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルでは、Azure Backup で保護されている Linux VM が必要です。 誤って削除した VM の復旧プロセスをシミュレートするには、復旧ポイントのディスクから VM を作成します。 Azure Backup で保護されている Linux VM が必要な場合は、「[Back up a virtual machine in Azure with the CLI](quick-backup-vm-cli.md)」 (CLI による Azure での仮想マシンのバックアップ) を参照してください。
+ - このチュートリアルでは、Azure Backup で保護されている Linux VM が必要です。 誤って削除した VM の復旧プロセスをシミュレートするには、復旧ポイントのディスクから VM を作成します。 Azure Backup で保護されている Linux VM が必要な場合は、「[Back up a virtual machine in Azure with the CLI](quick-backup-vm-cli.md)」 (CLI による Azure での仮想マシンのバックアップ) を参照してください。
 
 ## <a name="backup-overview"></a>Backup の概要
 
@@ -43,13 +41,13 @@ Azure でバックアップが開始されると、VM のバックアップ拡�
 
 ディスクを復元するには、回復データのソースとして復旧ポイントを選択します。 既定のポリシーでは復旧ポイントが毎日作成され、30 日間保持されるため、一連の復旧ポイントを保持し、復旧の特定の時点を選択することができます。
 
-使用可能な復旧ポイントのリストを表示するには、[az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) を使用します。 ディスクの復旧には、復旧ポイント**名**が使用されます。 このチュートリアルでは、使用可能な最新の復旧ポイントが必要です。 `--query [0].name` パラメーターでは、次のように最新の復旧ポイント名が選択されます。
+使用可能な復旧ポイントのリストを表示するには、[az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) を使用します。 ディスクの復旧には、復旧ポイント **名** が使用されます。 このチュートリアルでは、使用可能な最新の復旧ポイントが必要です。 `--query [0].name` パラメーターでは、次のように最新の復旧ポイント名が選択されます。
 
 ```azurecli-interactive
 az backup recoverypoint list \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
-    --backup-management-type AzureIaasVM
+    --backup-management-type AzureIaasVM \
     --container-name myVM \
     --item-name myVM \
     --query [0].name \
@@ -65,7 +63,7 @@ az backup recoverypoint list \
 
 バックアップされた VM にマネージド ディスクが存在し、復旧ポイントからマネージド ディスクを復元したい場合は、最初に Azure ストレージ アカウントを指定します。 このストレージ アカウントは、後で復元されたディスクから VM をデプロイするために使用できる、VM の構成とデプロイ テンプレートを格納するために使用されます。 次に、マネージド ディスクの復元先のターゲット リソース グループも指定します。
 
-1. ストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
+1. ストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +72,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。 ***マネージド ディスクの復元先となるターゲット リソース グループも指定します***。
+2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。" ***マネージド ディスクの復元先となるターゲット リソース グループも指定します** _"。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,7 +86,7 @@ az backup recoverypoint list \
     ```
 
     > [!WARNING]
-    > **target-resource-group** を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、**target-resource-group** パラメーターを指定せず、**restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
+    > _ *target-resource-group** を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、**target-resource-group** パラメーターを指定せず、**restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -109,7 +107,7 @@ az backup recoverypoint list \
 
 追加手順では、VM を作成するために復元されたディスクが使用されます。
 
-1. ストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
+1. ストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
 
     ```azurecli-interactive
     az storage account create \
@@ -118,7 +116,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。
+2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -145,7 +143,7 @@ az backup recoverypoint list \
 
 ## Monitor the restore job
 
-To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
+To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -154,7 +152,7 @@ az backup job list \
     --output table
 ```
 
-出力は次の例のようになります。復元ジョブが*進行中*であることが示されています。
+出力は次の例のようになります。復元ジョブが *進行中* であることが示されています。
 
 ```output
 Name      Operation        Status      Item Name    Start Time UTC       Duration
@@ -181,7 +179,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-このクエリの出力ではすべての詳細が表示されますが、ここで関心があるのはストレージ アカウントの内容のみです。 Azure CLI の[クエリ機能](/cli/azure/query-azure-cli?view=azure-cli-latest)を使用して、関連する詳細を取得できます
+このクエリの出力ではすべての詳細が表示されますが、ここで関心があるのはストレージ アカウントの内容のみです。 Azure CLI の[クエリ機能](/cli/azure/query-azure-cli)を使用して、関連する詳細を取得できます
 
 ```azurecli-interactive
 az backup job show \
@@ -253,12 +251,12 @@ url=$(az storage blob url \
 次に、[こちら](../azure-resource-manager/templates/deploy-cli.md)の説明に従って、テンプレートをデプロイして VM を作成します。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group ExampleGroup \
   --template-uri $url?$token
 ```
 
-VM が回復したディスクから作成されていることを確認するには、次のように、[az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list) を使用してリソース グループの VM をリストします。
+VM が回復したディスクから作成されていることを確認するには、次のように、[az vm list](/cli/azure/vm#az-vm-list) を使用してリソース グループの VM をリストします。
 
 ```azurecli-interactive
 az vm list --resource-group myResourceGroup --output table

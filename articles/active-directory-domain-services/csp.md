@@ -2,20 +2,20 @@
 title: クラウド ソリューション プロバイダー向けの Azure AD Domain Services | Microsoft Docs
 description: Azure クラウド ソリューション プロバイダー向けの Azure Active Directory Domain Services マネージド ドメインを有効にして管理する方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 524e3682e39b6d9153beeef781deeb20e6ea8750
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.author: justinha
+ms.openlocfilehash: d8edafff9b6534e5f1ce1c4581595ee187dfd432
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749647"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619901"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure クラウド ソリューション プロバイダー向けの Azure Active Directory Domain Services のデプロイと管理
 
@@ -27,9 +27,9 @@ Azure クラウド ソリューション プロバイダー (CSP) は Microsoft 
 
 ![CSP モデルの概要](./media/csp/csp_model_overview.png)
 
-CSP パートナーのテナントには、*管理*エージェント、*ヘルプ デスク* エージェント、*販売*エージェントの 3 つの特殊なエージェント グループが含まれています。
+CSP パートナーのテナントには、*管理* エージェント、*ヘルプ デスク* エージェント、*販売* エージェントの 3 つの特殊なエージェント グループが含まれています。
 
-*管理*エージェント グループは、Contoso の Azure AD テナント内のテナント管理者ロールに割り当てられています。 その結果、CSP パートナーの管理エージェント グループに属するユーザーには、Contoso の Azure AD テナント内のテナント管理者特権が割り当てられます。
+*管理* エージェント グループは、Contoso の Azure AD テナント内のテナント管理者ロールに割り当てられています。 その結果、CSP パートナーの管理エージェント グループに属するユーザーには、Contoso の Azure AD テナント内のテナント管理者特権が割り当てられます。
 
 CSP パートナーが Contoso の Azure CSP サブスクリプションをプロビジョニングすると、管理エージェント グループがそのサブスクリプションの所有者ロールに割り当てられます。 これにより、CSP パートナーの管理エージェントは、仮想マシン、仮想ネットワーク、Azure AD Domain Services などの Azure リソースを Contoso に代わってプロビジョニングするために必要な特権を持ちます。
 
@@ -53,8 +53,8 @@ Azure CSP サブスクリプションで Azure AD DS を使用する方法は 2 
 
 このデプロイ モデルでは、Azure AD DS は、Azure CSP サブスクリプションに属する仮想ネットワーク内で有効になります。 CSP パートナーの管理エージェントには、次の特権があります。
 
-* 顧客の Azure AD テナント内の*グローバル管理者*特権。
-* Azure CSP サブスクリプションでの*サブスクリプション所有者*特権。
+* 顧客の Azure AD テナント内の *グローバル管理者* 特権。
+* Azure CSP サブスクリプションでの *サブスクリプション所有者* 特権。
 
 ![直接デプロイ モデル](./media/csp/csp_direct_deployment_model.png)
 

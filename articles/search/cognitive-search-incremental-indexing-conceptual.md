@@ -8,17 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935383"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90971626"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Cognitive Search のインクリメンタル エンリッチメントとキャッシュ
 
 > [!IMPORTANT] 
-> インクリメンタル エンリッチメントは現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2019-05-06-Preview および 2020-06-30-Preview](search-api-preview.md) がこの機能を提供します。 現時点で、ポータルまたは .NET SDK はサポートされていません。
+> インクリメンタル エンリッチメントは現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 
+> [REST API プレビュー バージョン](search-api-preview.md)にはこの機能が用意されています。 現時点で、ポータルまたは .NET SDK はサポートされていません。
 
 *インクリメンタル エンリッチメント*は[スキルセット](cognitive-search-working-with-skillsets.md)を対象とする機能です。 Azure Storage を活用して、今後のインデクサーの実行時に再利用するために、エンリッチメント パイプラインによる処理出力を保存します。 可能な限り、インデクサーはキャッシュされているすべての有効な出力を再利用します。 
 

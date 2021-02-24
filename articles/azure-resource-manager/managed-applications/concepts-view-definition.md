@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81391688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371611"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure Managed Applications のビュー定義アーティファクト
 
@@ -131,7 +131,7 @@ ms.locfileid: "81391688"
 |description|いいえ|マネージド アプリケーションの説明。|
 |commands|いいえ|概要ページの追加のツールバーのボタンの配列。「[commands](#commands)」を参照してください。|
 
-![概要](./media/view-definition/overview.png)
+![デモ アプリケーションを実行する [テスト アクション] コントロールがあるマネージド アプリケーションの [概要] を示すスクリーンショット。](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>メトリック
 
@@ -188,7 +188,7 @@ ms.locfileid: "81391688"
 |resourceTagFilter|いいえ|メトリックが表示されるリソース タグの配列 (単語 `or` で区切られます)。 リソースの種類のフィルターの上に適用されます。|
 |resourceType|はい|メトリックが表示されるリソースの種類。|
 
-![メトリック](./media/view-definition/metrics.png)
+![マネージド アプリケーションの " This is my metrics view" という名前の監視ページを示すスクリーンショット。](./media/view-definition/metrics.png)
 
 ## <a name="custom-resources"></a>カスタム リソース
 
@@ -234,7 +234,7 @@ ms.locfileid: "81391688"
 |commands|いいえ|CustomResources ビューの追加のツールバーのボタンの配列。「[commands](#commands)」を参照してください。|
 |列|いいえ|カスタム リソースの列の配列。 定義されていない場合、`name` 列が既定で表示されます。 この列には `"key"` と `"displayName"` を含める必要があります。 キーについては、ビューに表示するプロパティのキーを指定します。 入れ子になっている場合は、`"key": "name"` や `"key": "properties.property1"` のように、ドットを区切り記号として使用します。 表示名については、ビューに表示するプロパティの表示名を指定します。 `"optional"` プロパティを指定することもできます。 true に設定すると、列がビュー内で既定で非表示となります。|
 
-![CustomResources](./media/view-definition/customresources.png)
+!["Test custom resource type" という名前のリソース ページと、[Custom Context Action]\(カスタム コンテキスト アクション\) コントロールを示すスクリーンショット。](./media/view-definition/customresources.png)
 
 ## <a name="commands"></a>コマンド
 

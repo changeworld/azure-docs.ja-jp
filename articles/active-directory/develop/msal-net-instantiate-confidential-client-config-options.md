@@ -13,22 +13,22 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 140385a26dbfd754438d632ce327c3c4a3ea1b61
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d477c419bb677a6b8f24a3aae26c403e47cc96cb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166180"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583944"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET を使用して、構成オプションで機密クライアント アプリケーションをインスタンス化する
 
-この記事では、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用して[機密クライアント アプリケーション](msal-client-applications.md)を初期化する方法について説明します。  アプリケーションは、設定ファイルで定義されている構成オプションを使用してインスタンス化されます。
+この記事では、Microsoft Authentication Library for .NET (MSAL.NET) を使用して[機密クライアント アプリケーション](msal-client-applications.md)をインスタンス化する方法について説明します。  アプリケーションは、設定ファイルで定義されている構成オプションを使用してインスタンス化されます。
 
 アプリケーションを初期化する前に、まず、そのアプリケーションを[登録](quickstart-register-app.md)して、Microsoft ID プラットフォームに統合できるようにする必要があります。 登録後に、次の情報が必要な場合があります (Azure portal で検索できます)。
 
 - クライアント ID (GUID を表す文字列)
 - ID プロバイダーの URL (名前付きインスタンス) とアプリケーションのサインイン対象ユーザー。 これら 2 つのパラメーターは機関と総称されます。
-- 組織専用の基幹業務アプリケーション (および名前付きシングル テナント アプリケーション) を作成している場合はテナント ID。
+- 組織専用の基幹業務アプリケーション (および名前付きシングル テナント アプリケーション) を作成している場合は、テナント ID。
 - アプリケーション シークレット (クライアント シークレット文字列) または機密クライアント アプリの場合は (X509Certificate2 種類の) 証明書。
 - Web アプリ、および場合によってはパブリック クライアント アプリの場合 (特に、アプリでブローカーを使用する必要がある場合)、ID プロバイダーがセキュリティ トークンを使用してアプリケーションに連絡する redirectUri も設定します。
 
@@ -60,7 +60,7 @@ ASP.NET Core アプリケーションの構成は、*appsettings.json* ファイ
 
 MSAL.NET v3.x 以降では、構成ファイルから機密クライアント アプリケーションを構成できます。
 
-アプリケーションを構成してインスタンス化するクラスで、`ConfidentialClientApplicationOptions` オブジェクトを宣言する必要があります。  [Microsoft.Extensions.Configuration.Binder NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)の `IConfigurationRoot.Bind()` メソッドを使って、ソース (appconfig.json ファイルを含む) から読み取られた構成を、アプリケーション オプションのインスタンスにバインドします。
+アプリケーションを構成してインスタンス化するクラスで、`ConfidentialClientApplicationOptions` オブジェクトを宣言します。  [Microsoft.Extensions.Configuration.Binder NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)の `IConfigurationRoot.Bind()` メソッドを使って、ソース (appconfig.json ファイルを含む) から読み取られた構成を、アプリケーション オプションのインスタンスにバインドします。
 
 ```csharp
 using Microsoft.Identity.Client;

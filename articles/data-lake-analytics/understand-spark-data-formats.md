@@ -6,16 +6,16 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
-ms.openlocfilehash: bff8c89dcdcbb7c319e04e5e7518985badf5a5ff
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 399914186ce9de62ef46b682c8d4a6e51426cc26
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132315"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221113"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>U-SQL と Spark のデータ形式の違いを理解する
 
-[Azure Databricks](../azure-databricks/what-is-azure-databricks.md) または [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) を使用する場合は、[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) から [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) にデータを移行することをお勧めします。
+[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) または [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) を使用する場合は、[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) から [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) にデータを移行することをお勧めします。
 
 ファイルを移動するだけでなく、U-SQL テーブルに格納されているデータを Spark からアクセスできるようにすることも可能です。
 
@@ -26,13 +26,13 @@ ms.locfileid: "87132315"
 - [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) アカウントから [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) アカウントにデータをコピーする [Azure Data Factory](../data-factory/introduction.md) パイプラインを作成します。
 - [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) アカウントからデータを読み取り [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) アカウントに書き込む Spark ジョブを作成します。 元のファイル形式を保持する必要がない場合は、使用状況に応じて、Parquet などの別の形式で記述することをお勧めします。
 
-「[ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-upgrade.md)」の記事を確認することをお勧めします。
+「[ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)」の記事を確認することをお勧めします。
 
 ## <a name="move-data-stored-in-u-sql-tables"></a>U-SQL テーブルに格納されているデータを移動する
 
 U-SQL テーブルは Spark で認識されません。 データが U-SQL テーブルに格納されている場合は、テーブル データを抽出して Spark が認識できる形式で保存する U-SQL ジョブを実行します。 最も適切な形式は、Hive metastore のフォルダー レイアウトに従って、一連の Parquet ファイルを作成することです。
 
-U-SQL では、組み込みの Parquet アウトプッターを使用し、ファイル セットを使用した動的出力パーティション分割を使用してパーティション フォルダーを作成することで、出力を実現できます。 [これまで以上に多くのファイルの処理し、Parquet を使用](https://blogs.msdn.microsoft.com/azuredatalake/2018/06/11/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics)することで、このような Spark で使用可能なデータを作成する方法の例を示します。
+U-SQL では、組み込みの Parquet アウトプッターを使用し、ファイル セットを使用した動的出力パーティション分割を使用してパーティション フォルダーを作成することで、出力を実現できます。 [これまで以上に多くのファイルの処理し、Parquet を使用](/archive/blogs/azuredatalake/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics)することで、このような Spark で使用可能なデータを作成する方法の例を示します。
 
 この変換の後、「[Azure Data Lake Storage Gen1 ファイルに格納されているデータを移動する](#move-data-stored-in-azure-data-lake-storage-gen1-files)」の章で説明されているようにデータをコピーします。
 
@@ -47,8 +47,8 @@ U-SQL では、組み込みの Parquet アウトプッターを使用し、フ�
 ## <a name="next-steps"></a>次のステップ
 
 - [U-SQL 開発者向けの Spark コードの概念について](understand-spark-code-concepts.md)
-- [ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-upgrade.md)
-- [.NET for Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
+- [.NET for Apache Spark](/dotnet/spark/what-is-apache-spark-dotnet)
 - [Azure Data Factory での Spark アクティビティを使用したデータの変換](../data-factory/transform-data-using-spark.md)
 - [Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する](../data-factory/transform-data-using-hadoop-hive.md)
 - [Apache Spark とは - Azure HDInsight](../hdinsight/spark/apache-spark-overview.md)

@@ -8,18 +8,18 @@ metadata:
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: landing-page
-  author: MashaMSFT
-  ms.author: mathoma
-  ms.reviewer: carlrab
-  ms.date: 05/27/2020
-  ms.openlocfilehash: 65ab57b6036ec8a1dd6c47560a37c5e687601ad1
-  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+  author: stevestein
+  ms.author: sstein
+  ms.reviewer: 
+  ms.date: 10/13/2020
+  ms.openlocfilehash: 2ef30f2ed2bdbf761110a9530c9a8cf3aa7c4ce2
+  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/19/2020
-  ms.locfileid: "88587244"
+  ms.lasthandoff: 11/13/2020
+  ms.locfileid: "94593622"
 landingContent:
-- title: Azure SQL データベース
+- title: Azure SQL Database
   linkLists:
   - linkListType: quickstart
     links:
@@ -49,6 +49,8 @@ landingContent:
       url: migrate-to-database-from-sql-server.md
     - text: SQL Server の T-SQL との相違点
       url: transact-sql-tsql-differences-sql-server.md
+    - text: 予約容量
+      url: reserved-capacity-overview.md
 - title: ビジネス継続性
   linkLists:
   - linkListType: how-to-guide
@@ -104,7 +106,7 @@ landingContent:
     - text: 初心者向け Azure SQL
       url: https://aka.ms/azuresql4beginners
     - text: Azure SQL の基礎
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+      url: /learn/paths/azure-sql-fundamentals/
     - text: Azure SQL のハンズオン ラボ
       url: https://aka.ms/asqlworkshop
     - text: Azure SQL の短期集中講座
@@ -138,11 +140,11 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/
 - title: スケーラビリティ
   linkLists:
   - linkListType: how-to-guide

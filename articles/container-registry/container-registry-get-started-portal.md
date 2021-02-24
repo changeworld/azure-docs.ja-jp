@@ -4,12 +4,12 @@ description: Azure portal を使用してプライベート Azure コンテナ�
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: ff74232edf5c96f091082f8486c44fed6125b0b1
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031810"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825842"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure コンテナー レジストリを作成する
 
@@ -45,7 +45,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリ インスタンスにログインしておく必要があります。 ローカル コンピューターで [Azure CLI にサインイン][get-started-with-azure-cli]し、[az acr login][az-acr-login] コマンドを実行します。 (Azure CLI でログインする際は、レジストリ名のみを指定します。 "azurecr.io" ドメイン サフィックスは含めないでください)
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリ インスタンスにログインしておく必要があります。 ローカル コンピューターで [Azure CLI にサインイン][get-started-with-azure-cli]し、[az acr login][az-acr-login] コマンドを実行します。 Azure CLI でログインする際は、レジストリ名のみを指定します。 ログイン サーバー名は使用しないでください。ドメインのサフィックスが含まれています (`azurecr.io` など)。
 
 ```azurecli
 az acr login --name <registry-name>

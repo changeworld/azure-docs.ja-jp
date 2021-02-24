@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438834"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739605"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
 
@@ -29,22 +29,6 @@ Azure Analysis Services の場合、ゲートウェイの初回のセットア�
 - **ゲートウェイ リソースを Azure 内に作成する**: この手順では、Azure にゲートウェイ リソースを作成します。
 
 - **サーバーにゲートウェイ リソースを接続する**: ゲートウェイ リソースを用意したら、それとサーバーの接続を開始できます。 複数のサーバーとその他のリソースを接続できます。ただし、同じリージョンにあることが条件です。
-
-
-
-## <a name="how-it-works"></a>しくみ
-組織のコンピューターにインストールしたゲートウェイは、Windows サービス **オンプレミスのデータ ゲートウェイ**として実行されます。 このローカル サービスは、Azure Service Bus を通して Gateway Cloud Service に登録されます。 次に、Azure サブスクリプション用のオンプレミス データ ゲートウェイ リソースを作成します。 Azure Analysis Services サーバーは、Azure ゲートウェイ リソースに接続されます。 サーバー上のモデルが、クエリや処理を行うためにオンプレミスのデータ ソースに接続する必要がある場合、クエリとデータ フローは、ゲートウェイ リソース、Azure Service Bus、ローカルのオンプレミスのデータ ゲートウェイ サービスを経由してデータ ソースに接続します。 
-
-![しくみ](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
-
-クエリとデータ フロー:
-
-1. クエリは、オンプレミス データ ソースに対する暗号化された資格情報を使用して、クラウド サービスによって作成されます。 その後、処理のためにゲートウェイのキューに送信されます。
-2. ゲートウェイ クラウド サービスはクエリを分析して、[Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/) に要求をプッシュします。
-3. オンプレミス データ ゲートウェイは、保留中の要求がないか Azure Service Bus をポーリングします。
-4. ゲートウェイは、クエリを取得し、資格情報を復号化し、その資格情報によってデータ ソースに接続します。
-5. ゲートウェイは、実行するためにクエリをデータ ソースに送信します。
-6. 結果が、データ ソースからゲートウェイを経て、クラウド サービスとサーバーに返送されます。
 
 ## <a name="installing"></a>インストール
 
@@ -73,29 +57,19 @@ Azure Analysis Services 環境にインストールする場合、重要なの�
 | *. frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *. msftncsi.com |443 |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
+| *. msftncsi.com |80 |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
 | *.microsoftonline-p.com |443 |構成によっては認証に使用されます。 |
 | dc.services.visualstudio.com    |443 |テレメトリを収集するために AppInsights によって使用されます。 |
-
-### <a name="forcing-https-communication-with-azure-service-bus"></a>Azure Service Bus との HTTPS 通信の強制
-
-ダイレクト TCP ではなく HTTPS を使用して Azure Service Bus と通信するようにゲートウェイに強制できます。ただし、これを行うと、パフォーマンスが大幅に低下します。 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ファイルの値を `AutoDetect` から `Https` に変更することで、このファイルを変更できます。 このファイルは、通常は *C:\Program Files\On-premises data gateway* に配置されます。
-
-```
-<setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
-    <value>Https</value>
-</setting>
-```
 
 ## <a name="next-steps"></a>次のステップ 
 
 次の記事は、ゲートウェイがサポートするすべてのサービスに適用される、オンプレミス データ ゲートウェイの一般的なコンテンツに含まれています。
 
-* [オンプレミス データ ゲートウェイに関する FAQ](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [オンプレミス データ ゲートウェイのアプリの使用](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [テナント レベルの管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [プロキシ設定の構成](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [通信設定の調整](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [ログ ファイルの構成](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [[トラブルシューティング]](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [ゲートウェイのパフォーマンスの監視と最適化](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [オンプレミス データ ゲートウェイに関する FAQ](/data-integration/gateway/service-gateway-onprem-faq)   
+* [オンプレミス データ ゲートウェイのアプリの使用](/data-integration/gateway/service-gateway-app)   
+* [テナント レベルの管理](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [プロキシ設定の構成](/data-integration/gateway/service-gateway-proxy)   
+* [通信設定の調整](/data-integration/gateway/service-gateway-communication)   
+* [ログ ファイルの構成](/data-integration/gateway/service-gateway-log-files)   
+* [[トラブルシューティング]](/data-integration/gateway/service-gateway-tshoot)
+* [ゲートウェイのパフォーマンスの監視と最適化](/data-integration/gateway/service-gateway-performance)

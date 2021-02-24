@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight の Apache Hadoop で Apache Ambari Hive ビューを使用する
 description: Web ブラウザーから Hive ビューを使用して Hive クエリを送信する方法について説明します。 Hive ビューは、Linux ベースの HDInsight クラスターに付属する Ambari Web UI の要素です。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207831"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944876"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する
 
@@ -29,7 +26,7 @@ HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./
 
 1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 このクラスターは、新しいポータル ビューで開かれます。
 
-1. **クラスター ダッシュボード**で **[Ambari ビュー]** を選択します。 認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。 また、ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/views` に移動することもできます。ここで、`CLUSTERNAME` はクラスターの名前です。
+1. **クラスター ダッシュボード** で **[Ambari ビュー]** を選択します。 認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。 また、ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/views` に移動することもできます。ここで、`CLUSTERNAME` はクラスターの名前です。
 
 1. ビューの一覧で、__Hive ビュー__ を選択します。
 
@@ -125,11 +122,11 @@ __[Tables]\(テーブル\)__ タブを使用して、Hive データベース内�
 
 ユーザー定義関数 (UDF) を使用して、Hive を拡張できます。 UDF を使用すると、HiveQL では簡単にモデル化できない機能またはロジックを実装できます。
 
-Hive ビューの上部にある **[UDF]** タブを使用して、UDF のセットを宣言および保存します。 これらの UDF は**クエリ エディター**で使用できます。
+Hive ビューの上部にある **[UDF]** タブを使用して、UDF のセットを宣言および保存します。 これらの UDF は **クエリ エディター** で使用できます。
 
 ![Apache Hive の [UDF] タブの表示](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-**[Insert udfs] (UDF の挿入)** ボタンは、**クエリ エディター**の下部に表示されます。 このエントリには、Hive ビューで定義された UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
+**[Insert udfs] (UDF の挿入)** ボタンは、**クエリ エディター** の下部に表示されます。 このエントリには、Hive ビューで定義された UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
 
 たとえば、以下のプロパティで UDF を定義したとします。
 

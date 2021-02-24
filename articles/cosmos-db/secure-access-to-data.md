@@ -1,20 +1,22 @@
 ---
 title: Azure Cosmos DB のデータへのアクセスをセキュリティで保護する方法
-description: マスター キー、読み取り専用キー、ユーザー、アクセス許可など、Azure Cosmos DB のアクセス制御の概念について説明します。
+description: 主キー、読み取り専用キー、ユーザー、アクセス許可など、Azure Cosmos DB のアクセス制御の概念について説明します。
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4714ec9773b98887de483b7353eea9f4416eec19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017755"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359610"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
 
@@ -22,31 +24,18 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 
 |キーの種類|リソース|
 |---|---|
-|[マスター キー](#master-keys) |次の管理リソースで使用されます。データベース アカウント、データベース、ユーザー、およびアクセス許可|
+|[主キー](#primary-keys) |次の管理リソースで使用されます。データベース アカウント、データベース、ユーザー、およびアクセス許可|
 |[リソース トークン](#resource-tokens)|次のアプリケーション リソースで使用されます。コンテナー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF|
 
-<a id="master-keys"></a>
+<a id="primary-keys"></a>
 
-## <a name="master-keys"></a>マスター キー
+## <a name="primary-keys"></a>主キー
 
-マスター キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 マスター キー:
-
-- アカウント、データベース、ユーザー、およびアクセス許可へのアクセスを提供します。 
-- コンテナーとドキュメントへのきめ細かいアクセスを提供するために使用することはできません。
-- アカウントの作成時に作成されます。
-- いつでも再生成することができます。
-
-各アカウントは、プライマリ キーとセカンダリ キーという 2 つのマスター キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。
-
-Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
-
-プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#regenerate-account-key)」を参照してください。
-
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティのデモ":::
+主キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 各アカウントは、主キーとセカンダリ キーという 2 つの主キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。 主キーの詳細については、[データベース セキュリティ](database-security.md#primary-keys)に関する記事を参照してください。
 
 ### <a name="key-rotation"></a>キーのローテーション<a id="key-rotation"></a>
 
-マスター キーのローテーション プロセスは単純です。 
+主キーのローテーション プロセスは単純です。 
 
 1. Azure portal に移動してセカンダリ キーを取得します。
 2. アプリケーションで、プライマリ キーをセカンダリ キーに置き換えます。 全デプロイにわたるすべての Cosmos DB クライアントが直ちに再起動され、更新されたキーの使用が開始されることを確認します。
@@ -54,11 +43,11 @@ Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つ�
 4. 新しいプライマリ キーがすべてのリソースに対して動作することを検証します。 キーのローテーション プロセスには、Cosmos DB アカウントのサイズに応じて、1 分未満から数時間かかる場合があります。
 5. セカンダリ キーを新しいプライマリ キーに置き換えます。
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure portal でのマスター キーのローテーション - NoSQL データベースのセキュリティのデモ" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure portal での主キーのローテーション - NoSQL データベースのセキュリティのデモ" border="false":::
 
-### <a name="code-sample-to-use-a-master-key"></a>マスター キーを使用するコード サンプル
+### <a name="code-sample-to-use-a-primary-key"></a>主キーを使用するコード サンプル
 
-次のコード サンプルは、Cosmos DB アカウントのエンドポイントとマスター キーを使用して、DocumentClient のインスタンス化とデータベースの作成を行う方法を示しています。
+次のコード サンプルは、Cosmos DB アカウントのエンドポイントと主キーを使用して、DocumentClient のインスタンス化とデータベースの作成を行う方法を示したものです。
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -71,7 +60,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-次のコード サンプルは、Azure Cosmos DB アカウントのエンドポイントとマスター キーを使用して、`CosmosClient` オブジェクトのインスタンス化を行う方法を示しています。
+次のコード サンプルは、Azure Cosmos DB アカウントのエンドポイントと主キーを使用して、`CosmosClient` オブジェクトのインスタンス化を行う方法を示したものです。
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
@@ -84,17 +73,17 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 - アクセス許可リソースが POST、GET、または PUT 呼び出しで動作するときに作成されます。
 - ユーザー、リソース、およびアクセス許可用に特別に構築されたハッシュ リソース トークンを使用します。
 - カスタマイズ可能な有効期間による時間の拘束があります。 既定の有効期間は 1 時間です。 ただし、トークンの有効期間は、最大 5 時間まで、明示的に指定することができます。
-- マスター キーの代わりに使用できる安全な代替手段を提供します。
+- 主キーの代わりに使用できる安全な代替手段を提供します。
 - クライアントが、付与されているアクセス許可に従って、Cosmos DB アカウント内のリソースを読み取り、書き込み、および削除できるようにします。
 
-リソース トークンは、自分のマスター キーを知らせたくないクライアントに、自分の Cosmos DB アカウント内のリソースへのアクセスを許可する場合に (Cosmos DB ユーザーとアクセス許可を作成することによって) 使用できます。  
+リソース トークンは、自分の主キーを知らせたくないクライアントに、自分の Cosmos DB アカウント内のリソースへのアクセスを許可する場合に (Cosmos DB ユーザーとアクセス許可を作成することによって) 使用できます。  
 
-Cosmos DB リソース トークンにより、付与されたアクセス許可に従って、マスター キーや読み取り専用キーなしでクライアントによる Cosmos DB アカウント内のリソースの読み取り、書き込み、および削除を可能にする安全な代替手段が提供されます。
+Cosmos DB リソース トークンにより、付与されたアクセス許可に従って、主キーや読み取り専用キーなしでクライアントによる Cosmos DB アカウント内のリソースの読み取り、書き込み、および削除を可能にする安全な代替手段が提供されます。
 
 リソース トークンの要求、生成、およびクライアントへの配信に使用されることがある一般的な設計パターンを次に示します。
 
 1. 中間層サービスは、ユーザーの写真を共有するモバイル アプリケーションを提供するために設定します。
-2. 中間層サービスは、Cosmos DB アカウントのマスター キーを持ちます。
+2. 中間層サービスは、Cosmos DB アカウントの主キーを持ちます。
 3. 写真アプリは、エンド ユーザーのモバイル デバイスにインストールされます。
 4. ログイン時に、写真アプリは、中間層サービスを使用してユーザー ID を確立します。 この ID 確立のしくみは完全にアプリケーションに依存します。
 5. いったん ID が確立されると、中間層サービスはその ID に基づいてアクセス許可を要求します。
@@ -104,9 +93,9 @@ Cosmos DB リソース トークンにより、付与されたアクセス許可
 
     :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure Cosmos DB リソース トークンのワークフロー" border="false":::
 
-リソース トークンの生成と管理は、ネイティブ Cosmos DB クライアント ライブラリによって処理されます。ただし、REST を使用する場合は、要求/認証ヘッダーを構築する必要があります。 REST 用の認証ヘッダーの作成については、[Cosmos DB リソースのアクセス制御](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページや、[.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) または [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts) のソース コードを参照してください。
+リソース トークンの生成と管理は、ネイティブ Cosmos DB クライアント ライブラリによって処理されます。ただし、REST を使用する場合は、要求/認証ヘッダーを構築する必要があります。 REST 用の認証ヘッダーの作成については、[Cosmos DB リソースのアクセス制御](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページや、[.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) または [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts) のソース コードを参照してください。
 
-ブローカー リソース トークンを生成するために使用する中間層サービスの例については、[ResourceTokenBroker アプリ](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)に関するページを参照してください。
+ブローカー リソース トークンを生成するために使用する中間層サービスの例については、[ResourceTokenBroker アプリ](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)に関するページを参照してください。
 
 ## <a name="users"></a>ユーザー<a id="users"></a>
 
@@ -131,6 +120,12 @@ User user = await database.CreateUserAsync("User 1");
 
 > [!NOTE]
 > ストアド プロシージャを実行するには、ストアド プロシージャを実行するコンテナーの All 権限を持つ必要があります。
+
+[データ プレーン要求に関する診断ログ](cosmosdb-monitor-resource-logs.md)を有効にすると、アクセス許可に対応する次の 2 つのプロパティがログに記録されます。
+
+* **resourceTokenPermissionId** - このプロパティは、指定したリソース トークンのアクセス許可 ID を示します。 
+
+* **resourceTokenPermissionMode** - このプロパティは、リソース トークンの作成時に設定したアクセス許可モードを示します。 アクセス許可モードとして指定できるのは、"all" や "read" などの値です。
 
 ### <a name="code-sample-to-create-permission"></a>アクセス許可を作成するコード サンプル
 
@@ -174,7 +169,7 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 
 ## <a name="delete-or-export-user-data"></a>ユーザー データの削除またはエクスポート
 
-Azure Cosmos DB では、データベースまたはコレクションにあるすべての個人データを、検索、選択、変更、削除することができます。 Azure Cosmos DB には、個人データを検索および削除する API があります。しかし、個人データを消去する API を使用してロジックを定義するのはユーザーの責任です。 各マルチモデル API (SQL、MongoDB、Gremlin、Cassandra、Table) では、個人データを検索および削除するメソッドを含む SDK をさまざまな言語で提供しています。 [Time to Live (TTL)](time-to-live.md) 機能を有効にすると、追加のコストの発生なしに、指定した期間後に自動的にデータを削除するようにすることもできます。
+データベース サービスとして、Azure Cosmos DB では、データベースまたはコンテナーにあるすべてのデータを、検索、選択、変更、削除することができます。 ただし、必要に応じて、提供されている API を使用し、個人データを検索および消去するために必要なロジックを定義することはお客様の責任です。 各マルチモデル API (SQL、MongoDB、Gremlin、Cassandra、Table) では、カスタム述語に基づいてデータを検索および削除するメソッドを含む SDK をさまざまな言語で提供しています。 [Time to Live (TTL)](time-to-live.md) 機能を有効にすると、追加のコストの発生なしに、指定した期間後に自動的にデータを削除するようにすることもできます。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

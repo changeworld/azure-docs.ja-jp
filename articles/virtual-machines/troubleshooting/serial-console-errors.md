@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526437"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022838"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure シリアル コンソール内での一般的なエラー
 Azure シリアル コンソール内には、一連の既知のエラーがあります。 これらのエラーとその対応策の一覧を次に示します。

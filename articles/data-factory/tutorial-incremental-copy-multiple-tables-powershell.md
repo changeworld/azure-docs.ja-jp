@@ -1,28 +1,25 @@
 ---
 title: PowerShell を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
-services: data-factory
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
 ms.author: yexu
 author: dearandyxu
-manager: anandsub
 ms.reviewer: douglasl, maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: bf6d4642b672f2b2d76d567b793349bc40f8550b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250963"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384845"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。    
+このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。    
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -74,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server データベースにソース テーブルを作成する
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、SQL Server データベースに接続します。
+1. [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) を開き、SQL Server データベースに接続します。
 
 2. **サーバー エクスプローラー (SSMS)** または **[接続] ペイン (Azure Data Studio)** でデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -113,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL Database にターゲット テーブルを作成する
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、SQL Server データベースに接続します。
+1. [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) を開き、SQL Server データベースに接続します。
 
 2. **サーバー エクスプローラー (SSMS)** または **[接続] ペイン (Azure Data Studio)** でデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -167,8 +164,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -365,7 +362,7 @@ END
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : SqlServerLinkedService
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -398,7 +395,7 @@ END
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -537,15 +534,15 @@ END
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-このパイプラインは、一連のテーブル名をパラメーターとして受け取ります。 **ForEach アクティビティ**は、一連のテーブル名を反復処理しながら、次の操作を実行します。 
+このパイプラインは、一連のテーブル名をパラメーターとして受け取ります。 **ForEach アクティビティ** は、一連のテーブル名を反復処理しながら、次の操作を実行します。 
 
-1. **ルックアップ アクティビティ**を使用して古い基準値 (初期値または前回のイテレーションで使用された値) を取得します。
+1. **ルックアップ アクティビティ** を使用して古い基準値 (初期値または前回のイテレーションで使用された値) を取得します。
 
-2. **ルックアップ アクティビティ**を使用して新しい基準値 (ソース テーブルの基準値列の最大値) を取得します。
+2. **ルックアップ アクティビティ** を使用して新しい基準値 (ソース テーブルの基準値列の最大値) を取得します。
 
-3. **コピー アクティビティ**を使用して、この 2 つの基準値の間に存在するデータをソース データベースからターゲット データベースにコピーします。
+3. **コピー アクティビティ** を使用して、この 2 つの基準値の間に存在するデータをソース データベースからターゲット データベースにコピーします。
 
-4. **ストアド プロシージャ アクティビティ**を使用して古い基準値を更新します。この値が、次のイテレーションの最初のステップで使用されます。 
+4. **ストアド プロシージャ アクティビティ** を使用して古い基準値を更新します。この値が、次のイテレーションの最初のステップで使用されます。 
 
 ### <a name="create-the-pipeline"></a>パイプラインを作成する
 
@@ -773,7 +770,7 @@ END
 
    出力例を次に示します。 
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -816,19 +813,19 @@ END
 
 2. **[すべてのサービス]** を選択し、キーワード "*データ ファクトリ*" で検索して、 **[データ ファクトリ]** を選択します。 
 
-3. データ ファクトリの一覧から**目的のデータ ファクトリ**を探して選択し、[データ ファクトリ] ページを開きます。 
+3. データ ファクトリの一覧から **目的のデータ ファクトリ** を探して選択し、[データ ファクトリ] ページを開きます。 
 
 4. **[データ ファクトリ]** ページの **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Azure Data Factory を起動します。
 
 5. **[始めましょう]** ページで、左側の **[監視]** を選択します。 
-![パイプラインの実行](media/doc-common-process/get-started-page-monitor-button.png)    
+![Azure Data Factory の [始めましょう] ページを示すスクリーンショット。](media/doc-common-process/get-started-page-monitor-button.png)    
 
-6. すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、**成功**状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、 **[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。
+6. すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、**成功** 状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、 **[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。
 
-    ![パイプライン実行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    ![パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. **[アクション]** 列のリンクを選択すると、そのパイプラインに関するすべてのアクティビティの実行が表示されます。 
 
-8. 再度**パイプラインの実行**ビューに移動するには、 **[すべてのパイプラインの実行]** を選択します。 
+8. 再度 **パイプラインの実行** ビューに移動するには、 **[すべてのパイプラインの実行]** を選択します。 
 
 ## <a name="review-the-results"></a>結果の確認
 
@@ -907,7 +904,7 @@ VALUES
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. 「[パイプラインの監視](#monitor-the-pipeline)」セクションの手順に従ってパイプラインの実行を監視します。 パイプラインが**進行中**の状態にあるとき、 **[アクション]** には、パイプラインの実行をキャンセルするためのアクション リンクが別途表示されています。 
+2. 「[パイプラインの監視](#monitor-the-pipeline)」セクションの手順に従ってパイプラインの実行を監視します。 パイプラインが **進行中** の状態にあるとき、 **[アクション]** には、パイプラインの実行をキャンセルするためのアクション リンクが別途表示されています。 
 
 3. パイプラインの実行に成功するまで、 **[最新の情報に更新]** を選択して一覧を更新します。 
 
@@ -994,5 +991,3 @@ project_table   2017-10-01 00:00:00.000
 
 > [!div class="nextstepaction"]
 >[Change Tracking テクノロジを使用して Azure SQL Database から Azure BLOB ストレージにデータを増分読み込みする](tutorial-incremental-copy-change-tracking-feature-powershell.md)
-
-

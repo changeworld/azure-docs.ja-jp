@@ -1,22 +1,22 @@
 ---
 title: クイック スタート:Azure portal で Azure Static Web Apps を使用して静的 Web アプリを初めてビルドする
-description: Azure portal を使用して Azure Static Web Apps インスタンスをビルドする方法について学習します。
+description: Azure portal を使用して、静的サイトを Azure Static Web Apps にデプロイする方法について説明します。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752860"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030367"
 ---
-# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>クイック スタート:Azure portal で静的 Web アプリを初めてビルドする
+# <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>クイックスタート: Azure portal で最初の静的サイトを構築する
 
-Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、ポータルを使用して、Web アプリケーションを Azure Static Web Apps にデプロイします。
+Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、Azure portal を使用して Web アプリケーションを Azure Static Web Apps にデプロイします。
 
 Azure サブスクリプションを持っていない場合は、[無料試用版アカウントを作成できます](https://azure.microsoft.com/free)。
 
@@ -37,9 +37,9 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 1. **[Static Web Apps (プレビュー)]** を選択します
 1. **[作成]**
 
-_[基本]_ タブで、まず、新しいアプリを構成し、それを GitHub リポジトリにリンクします。
+_[基本]_ セクションで、新しいアプリを構成し、それを GitHub リポジトリにリンクすることから始めます。
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="[基本] タブ":::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="[基本] セクション":::
 
 1. お使いの "_Azure サブスクリプション_" を選択します
 1. "_リソース グループ_" を選択するか、新しく作成します
@@ -56,38 +56,39 @@ GitHub にサインインした後、リポジトリ情報を入力します。
 1. 希望する "_組織_" を選択します
 1. _[リポジトリ]_ ドロップダウンから **my-first-web-static-app** を選択します
 1. _[ブランチ]_ ドロップダウンから **[master]** を選択します
-1. ページの下部にある **[次へ: ビルド >]** ボタンをクリックして、ビルド構成を編集します。
-
-:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="[次へ: ビルド] ボタン":::
 
 > [!NOTE]
 > リポジトリが表示されない場合は、GitHub で Azure Static Web Apps を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]、[アプリケーション]、[認可された OAuth アプリ]** の順に移動して、 **[Azure Static Web Apps]** 、 **[許可]** の順に選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
 
-1. _[ビルド]_ タブで、使用するフロントエンド フレームワークに固有の構成の詳細を追加します。
+1. _[ビルドの詳細]_ セクションで、使用するフロントエンド フレームワークに固有の構成の詳細を追加します。
 
     # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-    - _[App location]\(アプリの場所\)_ ボックスの既定値をクリアします
-    - _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-    - _[App artifact location]\(アプリ成果物の場所\)_ ボックスから既定値をクリアします
+    1. _[ビルドのプリセット]_ ドロップダウンから **[カスタム]** を選択します
+    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
+    1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスを空白のままにします
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    - _[App location]\(アプリの場所\)_ ボックスの既定値をクリアします
-    - _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-    - _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**dist/angular-basic**」と入力します
+    1. _[ビルドのプリセット]_ ドロップダウンから **[Angular]** を選択します
+    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
+    1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**dist/angular-basic**」と入力します
 
     # <a name="react"></a>[React](#tab/react)
 
-    - _[App location]\(アプリの場所\)_ ボックスの既定値をクリアします
-    - _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-    - _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**build**」と入力します
+    1. _[ビルドのプリセット]_ ドロップダウンから **[React]** を選択します
+    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
+    1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**build**」と入力します
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    - _[App location]\(アプリの場所\)_ ボックスの既定値をクリアします
-    - _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-    - _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**dist**」と入力します
+    1. _[ビルドのプリセット]_ ドロップダウンから **[Vue.js]** を選択します
+    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
+    1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスの既定値をそのままにします
 
     ---
 

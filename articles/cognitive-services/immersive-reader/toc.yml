@@ -1,14 +1,9 @@
 - name: Immersive Reader のドキュメント
   href: index.yml
-- name: 概要
-  items:
-    - name: Immersive Reader とは
-      href: Overview.md
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: クライアント ライブラリの使用
-      href: ./quickstarts/client-libraries.md
+- name: Immersive Reader とは
+  href: Overview.md
+- name: クイック スタート
+  href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: イマーシブ リーダーの起動 (Android)
@@ -21,13 +16,13 @@
       href: tutorial-multiple-resources.md
 - name: 操作方法
   items:
-    - name: イマーシブ リーダーのリソースを作成する
+    - name: イマーシブ リーダー リソースを作成する
       href: how-to-create-immersive-reader.md
     - name: Cookie のポリシーを設定する
       href: how-to/set-cookie-policy.md
     - name: 数式を表示する
       href: how-to/display-math.md
-    - name: イマーシブ リーダーを起動して HTML コンテンツを表示する
+    - name: Immersive Reader を起動して HTML コンテンツを表示する
       href: how-to-launch-with-html.md
     - name: イマーシブ リーダーのボタンをカスタマイズする
       href: how-to-customize-launch-button.md
@@ -43,8 +38,12 @@
   items:
     - name: JavaScript SDK
       href: reference.md
+    - name: リリース ノート
+      href: release-notes.md
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 言語のサポート

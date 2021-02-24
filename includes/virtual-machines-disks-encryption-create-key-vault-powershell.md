@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c696bea902a25571c173d04e0eaa7304ed657151
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebeca5ec1e3a478fdf1a62e2478cad9754c6ccd2
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610443"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808501"
 ---
 1. 最新の [Azure PowerShell バージョン](/powershell/azure/install-az-ps)がインストールされており、Connect-AzAccount を使用して Azure アカウントにサインインしていることを確認します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "85610443"
     $keyDestination="Software"
     $diskEncryptionSetName="yourDiskEncryptionSetName"
 
-    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnableSoftDelete -EnablePurgeProtection
+    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnablePurgeProtection
 
     $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
     ```

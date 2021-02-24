@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962640"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90981117"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -108,9 +108,9 @@ ms.locfileid: "88962640"
 
 さまざまなブラウザーで `https://<your.custom.domain>` にアクセスし、アプリの要求を処理できることを確認します。
 
-![Azure アプリへのポータル ナビゲーション](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="contoso.com のカスタム ドメインにブラウザーでアクセスする例を示す画面のスクリーンショット (URL が強調表示されている)。&quot;:::
 
-プロトコルは、アプリケーション コードから "x-appservice-proto" ヘッダーを介して調査することができます。 ヘッダーの値は `http` または `https` になります。 
+プロトコルは、アプリケーション コードから &quot;x-appservice-proto" ヘッダーを介して調査することができます。 ヘッダーの値は `http` または `https` になります。 
 
 > [!NOTE]
 > アプリで証明書検証エラーが返された場合は、自己署名証明書を使用している可能性があります。

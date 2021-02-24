@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 8d5ce3cde8c86d66bec025c778318a192ef60b73
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245854"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560845"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 仮想マシンのソリューション
 
@@ -29,7 +29,7 @@ Azure Confidential Computing 仮想マシンは、データとコードをクラ
 
 ### <a name="current-available-sizes-and-regions"></a>現在利用できるサイズとリージョン
 
-一般提供されている Confidential Computing VM サイズ、リージョン、可用性ゾーンをすべてまとめた一覧は [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) で次のコマンドを実行することで取得できます。
+一般提供されている Confidential Computing VM サイズ、リージョン、可用性ゾーンをすべてまとめた一覧は [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) で次のコマンドを実行することで取得できます。
 
 ```azurecli-interactive
 az vm list-skus `
@@ -47,7 +47,7 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>専用ホストの要件
-DCSv2 シリーズの VM ファミリで **Standard_DC8_v2** 仮想マシン サイズをデプロイすると、ホストが完全に占有され、他のテナントやサブスクリプションとは共有されません。 この VM SKU ファミリでは、専用ホスト サービスを使用することによって通常満たされるコンプライアンスとセキュリティの規制要件を満たすために必要な分離が提供されます。 **Standard_DC8_v2** SKU を選択すると、物理ホスト サーバーによって、EPC メモリを含むすべての使用可能なハードウェア リソースが、ユーザーの仮想マシンだけに割り当てられます。 この機能はインフラストラクチャの設計によって存在し、**Standard_DC8_v2** のすべての機能がサポートされることに注意してください。 このデプロイは、他の Azure VM ファミリによって提供される [Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) サービスと同じものではありません。
+DCSv2 シリーズの VM ファミリで **Standard_DC8_v2** 仮想マシン サイズをデプロイすると、ホストが完全に占有され、他のテナントやサブスクリプションとは共有されません。 この VM SKU ファミリでは、専用ホスト サービスを使用することによって通常満たされるコンプライアンスとセキュリティの規制要件を満たすために必要な分離が提供されます。 **Standard_DC8_v2** SKU を選択すると、物理ホスト サーバーによって、EPC メモリを含むすべての使用可能なハードウェア リソースが、ユーザーの仮想マシンだけに割り当てられます。 この機能はインフラストラクチャの設計によって存在し、**Standard_DC8_v2** のすべての機能がサポートされることに注意してください。 このデプロイは、他の Azure VM ファミリによって提供される [Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) サービスと同じものではありません。
 
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
@@ -56,17 +56,17 @@ DCSv2 シリーズの VM ファミリで **Standard_DC8_v2** 仮想マシン サ
 
 - **Azure サブスクリプション** - Confidential Computing VM インスタンスをデプロイするには、従量課金制サブスクリプションまたは他の購入オプションを検討してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)をお使いの場合、適切な量の Azure コンピューティング コアに対するクォータが与えられません。
 
-- **価格とリージョン別の可用性** - DCsv2-Series VM の価格は[仮想マシンの価格ページ](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)で確認できます。 各 Azure リージョンで利用できるかどうかについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) 」を参照してください。
+- **価格とリージョン別の可用性** - DCsv2-Series VM の価格は [仮想マシンの価格ページ](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)で確認できます。 各 Azure リージョンで利用できるかどうかについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) 」を参照してください。
 
 
-- **コア クォータ** – 場合によっては、Azure サブスクリプションのコア クォータを既定値から増やす必要があります。 サブスクリプションによっては、DCsv2-Series を含む特定の VM サイズ ファミリにデプロイできるコア数が制限されることがあります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) (無料) してください。 既定の制限は、サブスクリプション カテゴリによって異なる場合があります。
+- **コア クォータ** – 場合によっては、Azure サブスクリプションのコア クォータを既定値から増やす必要があります。 サブスクリプションによっては、DCsv2-Series を含む特定の VM サイズ ファミリにデプロイできるコア数が制限されることがあります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../azure-portal/supportability/per-vm-quota-requests.md) (無料) してください。 既定の制限は、サブスクリプション カテゴリによって異なる場合があります。
 
   > [!NOTE]
   > 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。 Azure のクォータは容量保証ではなくクレジット制限です。 クォータに関係なく、使用したコアに対してのみ課金されます。
   
 - **サイズ変更** - 特殊なハードウェアが使用されるため、Confidential Computing インスタンスのサイズ変更は同じサイズ ファミリ内でのみ可能です。 たとえば、DCsv2-Series の VM は DCsv2-Series のあるサイズから別のサイズにのみ変更できます。 Confidential Computing ではないサイズを Confidential Computing サイズに変更することはできません。  
 
-- **イメージ** - Confidential Computing インスタンスで Intel Software Guard Extension (Intel SGX) をサポートするために、すべてのデプロイを Generation 2 イメージで実行する必要があります。 Azure Confidential Computing では、Ubuntu 18.04 Gen 2、Ubuntu 16.04 Gen 2、Windows Server 2019 Gen2、および Windows Server 2016 Gen 2 で実行されるワークロードがサポートされます。 サポートされているシナリオとサポートされていないシナリオの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/linux/generation-2.md)」をお読みください。 
+- **イメージ** - Confidential Computing インスタンスで Intel Software Guard Extension (Intel SGX) をサポートするために、すべてのデプロイを Generation 2 イメージで実行する必要があります。 Azure Confidential Computing では、Ubuntu 18.04 Gen 2、Ubuntu 16.04 Gen 2、Windows Server 2019 Gen2、および Windows Server 2016 Gen 2 で実行されるワークロードがサポートされます。 サポートされているシナリオとサポートされていないシナリオの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/generation-2.md)」をお読みください。 
 
 - **ストレージ** - Azure Confidential Computing 仮想マシンのデータ ディスクとエフェメラル OS ディスクは NVMe ディスク上にあります。 インスタンスでは、Premium SSD ディスクと Standard SSD ディスクのみがサポートされ、Ultra SSD と Standard HDD はサポートされません。 仮想マシン サイズ **DC8_v2** では Premium ストレージがサポートされていません。 
 
@@ -76,7 +76,7 @@ DCSv2 シリーズの VM ファミリで **Standard_DC8_v2** 仮想マシン サ
 
 Azure で仮想マシンを使用する場合、いかなるダウンタイムも回避するために高可用性とディザスター リカバリー ソリューションを実装する責任があります。 
 
-Azure Confidential Computing では現時点で、可用性ゾーンによるゾーン冗長がサポートされていません。 Confidential Computing で可用性と冗長性を最大にするには、[可用性セット](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を使用します。 ハードウェアに制約があるため、Confidential Computing インスタンスの可用性セットに指定できる更新ドメインは最大で 10 です。 
+Azure Confidential Computing では現時点で、可用性ゾーンによるゾーン冗長がサポートされていません。 Confidential Computing で可用性と冗長性を最大にするには、[可用性セット](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を使用します。 ハードウェアに制約があるため、Confidential Computing インスタンスの可用性セットに指定できる更新ドメインは最大で 10 です。 
 
 ## <a name="deployment-with-azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) テンプレートを使用したデプロイ
 

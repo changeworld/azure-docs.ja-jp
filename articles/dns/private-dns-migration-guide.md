@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699466"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964781"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>従来の Azure DNS プライベート ゾーンを新しいリソース モデルに移行する
 
@@ -107,10 +107,10 @@ DNS クエリが解決されていないとわかった場合、数分待って�
 ## <a name="update-your-automation"></a>自動化の更新
 
 テンプレート、PowerShell スクリプト、SDK を使用して開発されたカスタム コードなど、自動化を使用している場合、プライベート DNS ゾーンで新しいリソース モデルを使用するために、自動化を更新する必要があります。 新しいプライベート DNS の CLI、PS、SDK のドキュメントを以下に示します。
-* [Azure DNS プライベート ゾーンの REST API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Azure DNS プライベート ゾーンの CLI](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Azure DNS プライベート ゾーンの PowerShell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Azure DNS プライベート ゾーンの SDK](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Azure DNS プライベート ゾーンの REST API](/rest/api/dns/privatedns/privatezones)
+* [Azure DNS プライベート ゾーンの CLI](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Azure DNS プライベート ゾーンの PowerShell](/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Azure DNS プライベート ゾーンの SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
 ## <a name="need-further-help"></a>さらにサポートが必要な場合
 

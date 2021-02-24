@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 438d2fec9efc6a1ad3fcdaa2829573e7205820ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0eeff0c8c338b09fbe375587db2b955a143138c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385962"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949821"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントに Web API アプリケーションを追加する
 
  アクセス トークンを提示するクライアント アプリケーションからの要求を Web API リソースが受け付けて応答できるように、ご利用のテナントに Web API リソースを登録します。 この記事では、Azure Active Directory B2C (Azure AD B2C) に Web API を登録する方法について説明します。
 
-アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -29,12 +29,12 @@ ms.locfileid: "85385962"
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. アプリケーションの**名前**を入力します。 たとえば、*webapi1* とします。
+1. アプリケーションの **名前** を入力します。 たとえば、*webapi1* とします。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、お使いのアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 実稼働アプリケーションでは、リダイレクト URI とエンドポイントを `https://localhost:5000` のように設定します。 開発時またはテスト時には、トークンのデコードされたコンテンツを表示する Microsoft 所有の Web アプリケーションである `https://jwt.ms` にこれを設定できます (トークンのコンテンツがお使いのブラウザー外に出ることはありません)。 お使いの登録済みアプリケーションでは、いつでもリダイレクト URI を追加したり、変更したりすることができます。
 1. **[登録]** を選択します。
 1. ご自分の Web API のコードで使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
 
-JavaScript ベースのシングル ページ アプリケーション (SPA) など、暗黙的な許可フローを実装するアプリケーションがある場合は、次の手順に従ってフローを有効にすることができます。
+[JavaScript ベースのシングルページ アプリケーション (SPA)](tutorial-register-spa.md) など、暗黙的な許可フローを実装するアプリケーションがある場合は、次の手順に従ってフローを有効にすることができます。
 
 1. **[管理]** で、 **[認証]** を選択します。
 1. **[暗黙的な許可]** で、 **[アクセス トークン]** と **[ID トークン]** の両方のチェック ボックスをオンにします。

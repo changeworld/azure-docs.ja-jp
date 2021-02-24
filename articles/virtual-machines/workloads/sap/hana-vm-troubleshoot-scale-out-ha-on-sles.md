@@ -7,17 +7,18 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088310"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621554"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -44,6 +45,9 @@ SAP HANA システム レプリケーションおよび Pacemaker と組み合�
 SUSE では、[このパフォーマンス最適化セットアップの詳細な説明][sles-hana-scale-out-ha-paper]が公開されています。
 
 SAP HANA スケールアウトでサポートされている仮想マシンの種類については、[SAP HANA 認定 IaaS ディレクトリ][sap-hana-iaas-list]に関するページを参照してください。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*マスター*" と "*スレーブ*" という用語への言及があります。 ソフトウェアからこれらの用語が削除された時点で、この記事から削除します。
 
 複数のサブネットおよび vNIC と組み合わされた SAP HANA スケールアウト、および HSR のセットアップでは、技術的な問題が発生していました。 この問題が修正されている最新の SAP HANA 2.0 修正プログラムを使用する必要があります。 サポートされている SAP HANA のバージョンは次のとおりです。 
 
@@ -550,7 +554,7 @@ Last change: Wed Sep 12 07:46:54 2018 by root via cibadmin on hso-hana-vm-s2-1
 7 nodes configured
 17 resources configured
 
-              *** Resource management is DISABLED ***
+              **_ Resource management is DISABLED _*_
   The cluster will not attempt to start, stop or recover services
 
 Online: [ hso-hana-dm hso-hana-vm-s1-0 hso-hana-vm-s1-1 hso-hana-vm-s1-2 hso-hana-vm-s2-0 hso-hana-vm-s2-1 hso-hana-vm-s2-2 ]
@@ -586,7 +590,7 @@ crm configure property maintenance-mode=false
 </code></pre>
 
 
-もう 1 つの **crm** コマンドは、エディターにクラスター構成全体を取り込んで編集できるようにします。 変更を保存したら、クラスターで適切なアクションが開始されます。
+もう 1 つの ***crm*** コマンドによって、エディターにクラスター構成全体を取り込んで編集できるようにします。 変更を保存したら、クラスターで適切なアクションが開始されます。
 
 <pre><code>
 crm configure edit
@@ -680,7 +684,7 @@ watch SAPHanaSR-showAttr
 
 これは、SAP Python スクリプトからの SAP HANA ランドスケープの状態を確認するのにも役立ちます。 クラスターのセットアップでは、この状態値が求められます。 このことは、ワーカー ノードのエラーについて考えるとよくわかります。 ワーカー ノードがダウンした場合、SAP HANA では、スケールアウト システム全体の正常性のエラーはすぐに返されません。 
 
-不要なフェールオーバーを回避するために、数回の再試行が行われます。 クラスターは、状態が**Ok** (戻り値 **4**) から**error** (戻り値 **1**) に変化した場合にのみ反応します。 したがって、**SAPHanaSR showAttr** からの出力に **offline** 状態の VM が示されている場合は、正常な動作です。 ただし、プライマリとセカンダリを切り替えるアクティビティがまだ発生していません。 SAP HANA によってエラーが返されない限り、クラスター アクティビティはトリガーされません。
+不要なフェールオーバーを回避するために、数回の再試行が行われます。 クラスターは、状態が **Ok** (戻り値 **4**) から **error** (戻り値 **1**) に変化した場合にのみ反応します。 したがって、**SAPHanaSR showAttr** からの出力に **offline** 状態の VM が示されている場合は、正常な動作です。 ただし、プライマリとセカンダリを切り替えるアクティビティがまだ発生していません。 SAP HANA によってエラーが返されない限り、クラスター アクティビティはトリガーされません。
 
 次のように、SAP Python スクリプトを呼び出すことで、ユーザー **\<HANA SID\>adm** として SAP HANA ランドスケープの正常性状態を監視することができます。 場合によっては、パスを調整する必要があります。
 
@@ -704,7 +708,7 @@ overall host status: ok
 </code></pre>
 
 
-現在のクラスター アクティビティを確認するもう 1 つのコマンドがあります。 次のコマンドと、プライマリ サイトのマスター ノードが強制終了された後の出力の末尾をご覧ください。 前のセカンダリ マスター ノード (**hso-hana-vm-s2-0**) を新しいプライマリ マスターとして**昇格**させるなど、遷移アクションの一覧が表示されています。 何も問題がなく、すべてのアクティビティが終了したら、**Transition Summary** の一覧は空になります。
+現在のクラスター アクティビティを確認するもう 1 つのコマンドがあります。 次のコマンドと、プライマリ サイトのマスター ノードが強制終了された後の出力の末尾をご覧ください。 前のセカンダリ マスター ノード (**hso-hana-vm-s2-0**) を新しいプライマリ マスターとして **昇格** させるなど、遷移アクションの一覧が表示されています。 何も問題がなく、すべてのアクティビティが終了したら、**Transition Summary** の一覧は空になります。
 
 <pre><code>
  crm_simulate -Ls
@@ -753,7 +757,7 @@ Transition Summary:
 
 リソースを移行すると、クラスター構成にエントリが追加されます。 フェールオーバーの強制はその一例です。 メンテナンス モードを終了する前に、これらのエントリをクリーンアップする必要があります。 次の例を参照してください。
 
-最初に、**msl** リソースを現在のセカンダリ マスター ノードに移行することで、クラスターのフェールオーバーを強制します。 このコマンドにより、**移動制約**が作成されたという警告が示されます。
+最初に、**msl** リソースを現在のセカンダリ マスター ノードに移行することで、クラスターのフェールオーバーを強制します。 このコマンドにより、**移動制約** が作成されたという警告が示されます。
 
 <pre><code>
 crm resource migrate msl_SAPHanaCon_HSO_HDB00 force
@@ -768,7 +772,7 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 watch SAPHanaSR-showAttr
 </code></pre>
 
-出力には手動フェールオーバーが示されます。 前のセカンダリ マスター ノードが**昇格**しました (この例では **hso-hana-vm-s2-0**)。 前のプライマリ サイトが停止されました (前のプライマリ マスター ノード **hso-hana-vm-s1-0** の **lss** 値 **1**)。 
+出力には手動フェールオーバーが示されます。 前のセカンダリ マスター ノードが **昇格** しました (この例では **hso-hana-vm-s2-0**)。 前のプライマリ サイトが停止されました (前のプライマリ マスター ノード **hso-hana-vm-s1-0** の **lss** 値 **1**)。 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -967,7 +971,7 @@ https://&ltnode&gt:7630
 
 ![Hawk で hb_report 出力をアップロードする](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-その後、**履歴エクスプローラー**を使用して、**hb_report** 出力に含まれるクラスターのすべての遷移を確認できます。
+その後、**履歴エクスプローラー** を使用して、**hb_report** 出力に含まれるクラスターのすべての遷移を確認できます。
 
 ![hb_report 出力内の Hawk 遷移](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 

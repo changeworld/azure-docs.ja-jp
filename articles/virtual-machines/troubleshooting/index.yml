@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: df855334f91899ab23625f7161792d0bec416782
-  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+  ms.openlocfilehash: ad47bde23a7125bac60c9f61687e3ff4e94b7a01
+  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/25/2020
-  ms.locfileid: "88816602"
+  ms.lasthandoff: 01/27/2021
+  ms.locfileid: "98877698"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -48,7 +48,7 @@ landingContent:
     - text: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
       url: ./event-id-troubleshoot-vm-rdp-connecton.md
     - text: RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティングについて説明します。
-      url: ./troubleshoot-authentication-error-rdp-vm.md
+      url: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
     - text: VM ゲスト ネットワーク カードが無効になっている
       url: ./troubleshoot-rdp-nic-disabled.md
 - title: パスワードのリセット
@@ -126,7 +126,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 共有イメージ ギャラリーのトラブルシューティング - 複製が遅い
-      url: ../windows/troubleshooting-shared-images.md#replication-is-slow
+      url: ../troubleshooting-shared-images.md#replication-speed
 - title: VM 拡張機能の問題
   linkLists:
   - linkListType: how-to-guide

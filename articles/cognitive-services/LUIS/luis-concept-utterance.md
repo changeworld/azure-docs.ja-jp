@@ -1,18 +1,20 @@
 ---
 title: 発話の良い例 - LUIS
 description: 発話は、アプリが解釈する必要のあるユーザーからの入力です。 ユーザーが入力すると思われる語句を収集します。 同じことを意味しますが、異なる単語の長さと単語の配置で構成されている発話を含めるようにします。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685272"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019077"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
-**発話**は、アプリが解釈する必要のあるユーザーからの入力です。 そこから意図とエンティティを抽出するように LUIS をトレーニングするには、各意図に対してさまざまな異なる発話の例をキャプチャすることが重要です。 新しい発話についてのアクティブな学習、または継続的なトレーニング プロセスは、LUIS が提供する機械学習インテリジェンスに不可欠です。
+**発話** は、アプリが解釈する必要のあるユーザーからの入力です。 そこから意図とエンティティを抽出するように LUIS をトレーニングするには、各意図に対してさまざまな異なる発話の例をキャプチャすることが重要です。 新しい発話についてのアクティブな学習、または継続的なトレーニング プロセスは、LUIS が提供する機械学習インテリジェンスに不可欠です。
 
 ユーザーが入力すると思われる発話を収集します。 同じことを意味するが、さまざまな異なる方法で構成されている発話を含めます。
 
@@ -27,7 +29,7 @@ ms.locfileid: "83685272"
 
 ## <a name="how-to-choose-varied-utterances"></a>さまざまな発話を選択する方法
 
-LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterances.md)ことによって初めて開始する場合、念頭に置いておくべきいくつかの原則を次に示します。
+LUIS モデルに[発話の例を追加する](./luis-how-to-add-entities.md)ことによって初めて開始する場合、念頭に置いておくべきいくつかの原則を次に示します。
 
 ### <a name="utterances-arent-always-well-formed"></a>発話は常に正しい形式になっているわけではない
 
@@ -84,7 +86,7 @@ LUIS ポータルでバージョンを複製すると、バージョン設定は
 
 ### <a name="word-forms"></a>単語の形式
 
-**単語の形式**を正規化すると、語根以外に拡張された単語の違いは無視されます。
+**単語の形式** を正規化すると、語根以外に拡張された単語の違いは無視されます。
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 
@@ -97,7 +99,7 @@ LUIS ポータルでバージョンを複製すると、バージョン設定は
 ```
 
 ### <a name="punctuation-marks"></a>句読点
-**句読点**を正規化すると、モデルがトレーニングされる前、およびエンドポイント クエリが予測される前に、発話から句読点が削除されます。
+**句読点** を正規化すると、モデルがトレーニングされる前、およびエンドポイント クエリが予測される前に、発話から句読点が削除されます。
 
 句読点は、LUIS 内の個別のトークンです。 末尾にピリオドを含む発話と末尾にピリオドを含まない発話は 2 つの個別の発話であり、2 つの異なる予測が得られる可能性があります。
 
@@ -138,12 +140,11 @@ LUIS ポータルでバージョンを複製すると、バージョン設定は
 
 |発話|
 |--|
-|What kind of county fairs are happening in the Seattle area this summer?|
-|Is the current rating for the Seattle review fair?|
+|今年の夏、シアトル地区でどのような種類のカウンティー フェアが開催されますか?|
+|シアトル レビューの現在の評価は公正ですか?|
 
 イベント エンティティですべてのイベント データを検索する場合は、2 つ目ではなく最初の発話の単語 `fair` にラベルを付けます。
 
 
 ## <a name="next-steps"></a>次のステップ
-ユーザーの発話を理解するための LUIS アプリのトレーニングについては、「[発話の例を追加する](luis-how-to-add-example-utterances.md)」を参照してください。
-
+ユーザーの発話を理解するための LUIS アプリのトレーニングについては、「[発話の例を追加する](./luis-how-to-add-entities.md)」を参照してください。

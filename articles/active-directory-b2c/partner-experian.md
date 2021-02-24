@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683880"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928700"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Azure Active Directory B2C で Experian を構成するためのチュートリアル
 
@@ -42,7 +42,7 @@ ms.locfileid: "88683880"
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -77,14 +77,14 @@ Experian 統合には、次のコンポーネントが含まれています。
 
 ### <a name="part-1---deploy-the-api"></a>パート 1 - API をデプロイする
 
-提供された API コードを Azure サービスにデプロイします。 このコードは、次の[手順](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
+提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln)を Azure サービスにデプロイします。 このコードは、次の[手順](/visualstudio/deployment/quickstart-deploy-to-azure)に従って、Visual Studio から発行することができます。
 
 >[!NOTE]
 >必要な設定で Azure AD を構成するには、デプロイされたサービスの URL が必要です。
 
 ### <a name="part-2---deploy-the-client-certificate"></a>パート 2 - クライアント証明書をデプロイする
 
-Experian API の呼び出しは、クライアント証明書によって保護されます。 このクライアント証明書は Experian によって提供されます。 この[ドキュメント](https://docs.microsoft.com/azure/app-service/environment/certificates#private-client-certificate)に記載されている手順に従って、証明書を Azure App Service にアップロードする必要があります。 サンプル ポリシーでは、そのプロセスのうち次の主要なステップを使用します。
+Experian API の呼び出しは、クライアント証明書によって保護されます。 このクライアント証明書は Experian によって提供されます。 この[ドキュメント](../app-service/environment/certificates.md#private-client-certificate)に記載されている手順に従って、証明書を Azure App Service にアップロードする必要があります。 サンプル ポリシーでは、そのプロセスのうち次の主要なステップを使用します。
 
 - 証明書をアップロードする
 
@@ -92,7 +92,7 @@ Experian API の呼び出しは、クライアント証明書によって保護�
 
 ### <a name="part-3---configure-the-api"></a>パート 3 - API を構成する
 
-アプリケーション設定は、[Azure の App Service で構成](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)できます。 この方法では、設定をリポジトリにチェックインすることなく、安全に構成できます。 REST API に次の設定を指定する必要があります。
+アプリケーション設定は、[Azure の App Service で構成](../app-service/configure-common.md#configure-app-settings)できます。 この方法では、設定をリポジトリにチェックインすることなく、安全に構成できます。 REST API に次の設定を指定する必要があります。
 
 | アプリケーションの設定 | source | Notes |
 | :-------- | :------------| :-----------|
@@ -110,14 +110,14 @@ Experian API の呼び出しは、クライアント証明書によって保護�
 
 ### <a name="part-4---create-api-policy-keys"></a>パート 4 - API ポリシー キーを作成する
 
-この[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys)を参照して、2 つのポリシー キー (API ユーザー名用に 1 つと、HTTP 基本認証のために前に定義した API パスワード用に 1 つ) を作成します。
+この[ドキュメント](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys)を参照して、2 つのポリシー キー (API ユーザー名用に 1 つと、HTTP 基本認証のために前に定義した API パスワード用に 1 つ) を作成します。
 
 >[!NOTE]
 >キーは後でポリシーを構成するために必要になります。
 
 ### <a name="part-5---replace-the-configuration-values"></a>パート 5 - 構成値を置き換える
 
-提供されたカスタム ポリシー内にある次のプレースホルダーを見つけて、ご自分のインスタンスの対応する値に置き換えます。
+提供された[カスタム ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy)内にある次のプレースホルダーを見つけて、自分のインスタンスの対応する値に置き換えます
 
 |                      プレースホルダー                       |                                   値で置換                                 |                   例                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |
@@ -133,7 +133,7 @@ Experian API の呼び出しは、クライアント証明書によって保護�
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>パート 6 - Azure AD B2C ポリシーを構成する
 
-Azure AD B2C テナントを設定してポリシーを構成する方法については、この[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack)を参照してください。
+Azure AD B2C テナントを設定してポリシーを構成する方法については、この[ドキュメント](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)を参照してください。
 
 >[!NOTE]
 >このサンプル ポリシーは [Local Accounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)に基づいています。
@@ -145,7 +145,7 @@ Azure AD B2C テナントを設定してポリシーを構成する方法につ�
 
 1. Azure AD B2C テナントを開き、[ポリシー] の下にある **[ユーザー フロー]** を選択します。
 
-2. 以前に作成した**ユーザー フロー**を選択します。
+2. 以前に作成した **ユーザー フロー** を選択します。
 
 3. **[ユーザー フローを実行します]** を選択し、設定を選択します。
 
@@ -167,6 +167,6 @@ Azure AD B2C テナントを設定してポリシーを構成する方法につ�
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

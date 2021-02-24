@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: aec1faa4de1149f08fb6fbc1cc5bf3aa2ab6becd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75371780"
 ---
 Shared Access Signature (SAS) を使用すると、ストレージ アカウント内のコンテナーと BLOB への制限付きアクセスを許可できます。 SAS を作成するときに、クライアントがアクセスできる Azure Storage リソース、それらのリソースに対するアクセス許可、SAS の有効期間などの制約を指定します。

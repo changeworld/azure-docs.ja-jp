@@ -2,15 +2,15 @@
 title: Azure Automation 機能のデプロイに関する問題のトラブルシューティング
 description: この記事では、Azure Automation 機能をデプロイするときに発生する問題のトラブルシューティングと解決方法について説明します。
 services: automation
+ms.subservice: ''
 ms.date: 06/30/2020
-ms.topic: conceptual
-ms.service: automation
-ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: troubleshooting
+ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801031"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008164"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>機能のデプロイに関する問題のトラブルシューティング
 
@@ -82,7 +82,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](https://aka.ms/PricingTierWarning)」を参照してください。
+このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](../../azure-monitor/platform/usage-estimated-costs.md)」を参照してください。
 
 #### <a name="resolution"></a>解決方法
 
@@ -148,7 +148,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 機能のリソースを削除すると、ワークスペースのリンクを解除できます。 ご利用のワークスペースおよび Automation アカウントから、これらの機能の既存の成果物をクリーンアップすることが重要です。
 
 * Update Management の場合は、Automation アカウントから、**更新プログラムのデプロイ (スケジュール)** を削除します。
-* Start/Stop VMs during off-hours の場合、 **[設定]**  >  **[ロック]** で、Automation アカウントの機能コンポーネントに対するロックを解除します。 詳細については、「[機能を削除する](../automation-solution-vm-management.md#remove-the-feature)」を参照してください。
+* Start/Stop VMs during off-hours の場合、 **[設定]**  >  **[ロック]** で、Automation アカウントの機能コンポーネントに対するロックを解除します。 詳細については、「[機能を削除する](../automation-solution-vm-management-remove.md)」を参照してください。
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows 拡張機能用の Log Analytics のエラー
 

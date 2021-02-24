@@ -4,19 +4,19 @@ titleSuffix: Azure Kubernetes Service
 description: Standard SKU でパブリック ロード バランサーを使用して、Azure Kubernetes Service (AKS) でサービスを公開する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 06/14/2020
+ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5da7f2a11be7562313b709a8af72ccd709165cfa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056807"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000863"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する
 
-Azure Load Balancer では、開放型システム間相互接続 (OSI) モデルの L4 で、受信と送信の両方のシナリオがサポートされます。 これにより、ロード バランサーのフロントエンドに到着した受信フローが、バックエンド プールのインスタンスに分配されます。
+Azure Load Balancer は、受信と送信の両方のシナリオがサポートされる開放型システム間相互接続 (OSI) モデルの L4 上にあります。 これにより、ロード バランサーのフロントエンドに到着した受信フローが、バックエンド プールのインスタンスに分配されます。
 
 **パブリック** ロード バランサーを AKS と統合すると、次の 2 つの目的を達成することができます。
 
@@ -87,19 +87,22 @@ Standard SKU パブリック ロード バランサーを使用する場合、�
 * クラスターの各ノードに割り当てられる送信ポートの数のカスタマイズ
 * アイドル状態の接続のタイムアウト設定の構成
 
+> [!IMPORTANT]
+> 特定の時点では、1 つの送信 IP オプションのみ (マネージド IP、独自の IP を使用する、または IP プレフィックス) を使用できます。
+
 ### <a name="scale-the-number-of-managed-outbound-public-ips"></a>マネージド送信パブリック IP の数のスケーリング
 
 Azure Load Balancer は、アウトバウンドだけでなく、仮想ネットワークからのインバウンド接続も提供します。 アウトバウンド規則を使用すると、パブリック Standard Load Balancer の送信ネットワーク アドレス変換の構成を簡素化できます。
 
 すべてのロード バランサー規則と同様に、アウトバウンド規則は、負荷分散規則およびアウトバウンド NAT 規則と同じ構文に従います。
 
-***フロントエンド IP + パラメーター + バックエンド プール***
+***フロントエンド IP + パラメーター + バックエンド プール** _
 
 アウトバウンド規則では、フロントエンドに変換され、バックエンド プールによって識別されるすべての仮想マシンの送信 NAT を構成します。 また、パラメーターにより、送信 NAT アルゴリズムをさらに細かく制御できます。
 
 アウトバウンド規則は 1 つのパブリック IP アドレスでのみ使用できますが、アウトバウンド規則によって、アウトバウンド NAT をスケーリングするための構成の負担が軽減されます。 複数の IP アドレスを使用することで、大規模なシナリオを計画できます。また、アウトバウンド規則を使用して、SNAT が枯渇しやすいパターンを緩和することもできます。 フロントエンドによって提供される追加の IP アドレスごとに、Load Balancer で SNAT ポートとして使用される 64,000 個の一時的なポートが提供されます。 
 
-既定で作成されるマネージド送信パブリック IP で *Standard* SKU ロード バランサーを使用する場合、 **`load-balancer-managed-ip-count`** パラメーターを使用して、マネージド送信パブリック IP の数をスケーリングすることができます。
+既定で作成されるマネージド送信パブリック IP で _Standard* SKU ロード バランサーを使用する場合、 **`load-balancer-managed-ip-count`** パラメーターを使用して、マネージド送信パブリック IP の数をスケーリングすることができます。
 
 既存のクラスターを更新するには、次のコマンドを実行します。 このパラメーターをクラスター作成時に設定し、複数の管理対象送信パブリック IP を与えることもできます。
 
@@ -120,10 +123,11 @@ az aks update \
 
 AKS によって作成されるパブリック IP は、AKS 管理対象リソースと見なされます。 つまり、そのパブリック IP のライフサイクルは、AKS によって管理され、ユーザーがパブリック IP リソースを直接操作する必要はありません。 代わりに、クラスターの作成時に独自のカスタム パブリック IP またはパブリック IP プレフィックスを割り当てることもできます。 また、既存のクラスターのロード バランサーのプロパティでカスタム IP を更新することもできます。
 
-> [!NOTE]
-> カスタム パブリック IP アドレスは、ユーザーが作成して所有する必要があります。 管理の競合が発生するため、AKS によって作成されるマネージド パブリック IP アドレスを独自のカスタム IP として再使用することはできません。
+独自のパブリック IP またはプレフィックスを使用するための要件:
 
-この操作を行う前に、送信 IP または送信 IP プレフィックスを構成するために必要な[前提条件と制約](../virtual-network/public-ip-address-prefix.md#constraints)を満たしていることをご確認ください。
+- カスタム パブリック IP アドレスは、ユーザーが作成して所有する必要があります。 管理の競合が発生するため、AKS によって作成されるマネージド パブリック IP アドレスを独自のカスタム IP として再使用することはできません。
+- 送信 IP にアクセスするためのアクセス許可が AKS クラスター ID (サービス プリンシパルまたはマネージド ID) に付与されていることを確認する必要があります。 [必要なパブリック IP アクセス許可リストに従って](kubernetes-service-principal.md#networking)します。
+- 送信 IP または送信 IP プレフィックスを構成するために必要な[前提条件と制約](../virtual-network/public-ip-address-prefix.md#constraints)を満たしていることをご確認ください。
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>クラスターを独自の送信パブリック IP で更新する
 
@@ -221,7 +225,7 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-この例では、クラスター内の各ノードの割り当て送信ポート数が 4000 に設定され、IP 数は 7 個です。"*ノードあたり 4000 ポート * 100 ノード = 合計 400,000 ポート <  = 合計 448,000 ポート = 7 個の IP * IP あたり 64,000 ポート*" になります。 これにより、100 ノードに安全にスケーリングすることができ、既定のアップグレード操作を行うことができます。 アップグレードやその他の操作に必要な追加ノードに十分な数のポートを割り当てることが重要です。 AKS では、アップグレード用のバッファー ノード数の既定値として 1 が使用されます。このため、この例では、任意の時点で 4,000 個の空きポートが必要です。 [maxSurge 値](upgrade-cluster.md#customize-node-surge-upgrade-preview)を使用する場合、ノードあたりの送信ポート数に maxSurge 値を乗算します。
+この例では、クラスター内の各ノードの割り当て送信ポート数が 4000 に設定され、IP 数は 7 個です。"*ノードあたり 4000 ポート * 100 ノード = 合計 400,000 ポート <  = 合計 448,000 ポート = 7 個の IP * IP あたり 64,000 ポート*" になります。 これにより、100 ノードに安全にスケーリングすることができ、既定のアップグレード操作を行うことができます。 アップグレードやその他の操作に必要な追加ノードに十分な数のポートを割り当てることが重要です。 AKS では、アップグレード用のバッファー ノード数の既定値として 1 が使用されます。このため、この例では、任意の時点で 4,000 個の空きポートが必要です。 [maxSurge 値](upgrade-cluster.md#customize-node-surge-upgrade)を使用する場合、ノードあたりの送信ポート数に maxSurge 値を乗算します。
 
 ノード数を 100 以上に安全にスケーリングするために、IP をさらに追加する必要があります。
 
@@ -267,16 +271,15 @@ az aks update \
 *outboundIPs* \* 64,000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*
  
 たとえば、*nodeVMs* が 3 で、*desiredAllocatedOutboundPorts* が 50,000 の場合、必要な *outboundIPs* は 3 以上です。 必要最低限の量より多くの送信 IP 容量を組み込むことをお勧めします。 また、送信 IP 容量を計算するときは、クラスター オートスケーラーと、ノード プールのアップグレードの可能性を考慮する必要があります。 クラスター オートスケーラーについては、現在のノード数と最大ノード数を確認し、高い方の値を使用します。 アップグレードについては、アップグレードが可能なすべてのノード プールに対して追加のノード VM を考慮します。
- 
+
 - *IdleTimeoutInMinutes* を既定の 30 分とは異なる値に設定する場合は、ワークロードで送信接続が必要な時間を考慮します。 また、AKS の外部で使用される *Standard* SKU ロード バランサーの既定のタイムアウト値が 4 分であることを考慮します。 特定の AKS ワークロードをより正確に反映するように *IdleTimeoutInMinutes* の値を設定すると、使用されなくなった接続と関連付けられることによる SNAT の枯渇を減らすのに役立ちます。
 
 > [!WARNING]
-> *AllocatedOutboundPorts* と *IdleTimeoutInMinutes* の値を変更すると、ロード バランサーの動作が大幅に変更される可能性があるため、トレードオフおよびアプリケーションの接続パターンをよく理解してから変更してください。これらの値を変更する前に、後の [SNAT のトラブルシューティングに関するセクション][troubleshoot-snat]を確認し、[Load Balancer のアウトバウンド規則][azure-lb-outbound-rules-overview]および[Azure での送信接続][azure-lb-outbound-connections]を確認して、変更の影響を完全に理解してください。
-
+> *AllocatedOutboundPorts* と *IdleTimeoutInMinutes* の値を変更すると、ロード バランサーの動作が大幅に変更される可能性があるため、トレードオフおよびアプリケーションの接続パターンをよく理解してから変更してください。これらの値を変更する前に、後の [SNAT のトラブルシューティングに関するセクション][troubleshoot-snat]を確認し、[Load Balancer のアウトバウンド規則][azure-lb-outbound-rules-overview]および [Azure での送信接続][azure-lb-outbound-connections]を確認して、変更の影響を完全に理解してください。
 
 ## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>受信トラフィックを特定の IP 範囲に制限する
 
-既定では、ロード バランサーの仮想ネットワークに関連付けられているネットワーク セキュリティ グループ (NSG) には、すべての受信外部トラフィックを許可する規則があります。 この規則を更新して、受信トラフィックに特定の IP 範囲のみを許可することができます。 次のマニフェストでは *loadBalancerSourceRanges* を使用して、受信外部トラフィックの新しい IP 範囲を指定します。
+次のマニフェストでは *loadBalancerSourceRanges* を使用して、受信外部トラフィックの新しい IP 範囲を指定します。
 
 ```yaml
 apiVersion: v1
@@ -292,6 +295,9 @@ spec:
   loadBalancerSourceRanges:
   - MY_EXTERNAL_IP_RANGE
 ```
+
+> [!NOTE]
+> 受信外部トラフィックは、ロード バランサーから AKS クラスターの仮想ネットワークに流れます。 この仮想ネットワークには、ロード バランサーからのすべての受信トラフィックを許可するネットワーク セキュリティ グループ (NSG) があります。 この NSG は *LoadBalancer* という種類の [サービス タグ][service-tags]を使用して、ロード バランサーからのトラフィックを許可します。
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>インバウンド接続時にクライアントの IP を維持する
 
@@ -320,9 +326,9 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` または `false`                     | ロード バランサーが内部である必要があるかどうかを指定します。 設定しない場合、既定で public が使用されます。
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | サブネットの名前                    | 内部ロード バランサーをバインドする必要があるサブネットを指定します。 設定しない場合、既定で、クラウド構成ファイルで構成されているサブネットが使用されます。
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | パブリック IP 上の DNS ラベルの名前   | **パブリック** サービスの DNS ラベル名を指定します。 空の文字列に設定すると、パブリック IP の DNS エントリは使用されません。
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` または `false`                     | 別のサービスと共有される可能性のある Azure セキュリティ規則を使用してサービスを公開する必要があることを指定します。公開できるサービス数が増えるとサービスの特異性は低下します。 この注釈は、ネットワーク セキュリティ グループの Azure [拡張セキュリティ規則](../virtual-network/security-overview.md#augmented-security-rules)機能に依存します。 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` または `false`                     | 別のサービスと共有される可能性のある Azure セキュリティ規則を使用してサービスを公開する必要があることを指定します。公開できるサービス数が増えるとサービスの特異性は低下します。 この注釈は、ネットワーク セキュリティ グループの Azure [拡張セキュリティ規則](../virtual-network/network-security-groups-overview.md#augmented-security-rules)機能に依存します。 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | リソース グループの名前            | クラスター インフラストラクチャと同一のリソース グループ (ノード リソース グループ) 内にないロード バランサーのパブリック IP のリソース グループを指定します。
-| `service.beta.kubernetes.io/azure-allowed-service-tags`           | 許可されるサービス タグの一覧          | 許可される[サービス タグ](../virtual-network/security-overview.md#service-tags)をコンマで区切った一覧指定します。
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | 許可されるサービス タグの一覧          | 許可される[サービス タグ][service-tags]をコンマで区切った一覧指定します。
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP アイドル タイムアウト (分)          | ロード バランサーで TCP 接続のアイドル タイムアウトが発生するまでの時間を分数で指定します。 既定値は 4 で、これが最小値です。 最大値は 30 です。 整数を指定する必要があります。
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | SLB の `enableTcpReset` を無効にします。
 
@@ -424,3 +430,4 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags

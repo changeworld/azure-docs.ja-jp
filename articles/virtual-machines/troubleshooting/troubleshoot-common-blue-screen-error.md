@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: b382efc4d283d64ce0f833bde9104fa2e3bc973a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a95ddf882e5edba9daa8ff91c02d1df1f50bceb
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088547"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632978"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Azure VM の起動時に Windows でブルー スクリーン エラーが表示される
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のあるブルー スクリーン エラーについて説明します。 また、サポート チケットのためのデータを収集する手順について説明します。 
@@ -41,6 +41,9 @@ STOP エラーが発生する理由は複数存在する可能性があります
 - アプリケーションがメモリの禁止されたセクターにアクセスしている
 
 ## <a name="collect-memory-dump-file"></a>メモリ ダンプ ファイルを収集する
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップからの VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 この問題を解決するには、まずクラッシュに関するダンプ ファイルを収集し、サポートに連絡してダンプ ファイルを渡す必要があります。 ダンプ ファイルを収集するには、次の手順を実行します。
 

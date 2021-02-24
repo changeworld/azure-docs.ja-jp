@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: bb574bb3dd000682090c6c3f861e885761753e19
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588519"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285665"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>チュートリアル:Azure Databricks と Azure Key Vault を使用して Azure Blob Storage にアクセスする
 
@@ -29,11 +29,11 @@ ms.locfileid: "88588519"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルを開始する前に、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) をインストールします。
+このチュートリアルを開始する前に、[Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) をインストールします。
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Azure CLI を使用してストレージ アカウントと BLOB コンテナーを作成する
 
-BLOB を使用するには、まず汎用ストレージ アカウントを作成する必要があります。 [リソース グループ](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)がない場合は、コマンドを実行する前に作成します。 次のコマンドを実行すると、ストレージ コンテナーのメタデータが作成され、表示されます。 **ID** をメモします。
+BLOB を使用するには、まず汎用ストレージ アカウントを作成する必要があります。 [リソース グループ](/cli/azure/group?view=azure-cli-latest#az-group-create)がない場合は、コマンドを実行する前に作成します。 次のコマンドを実行すると、ストレージ コンテナーのメタデータが作成され、表示されます。 **ID** をメモします。
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob
@@ -41,7 +41,7 @@ az storage account create --name contosoblobstorage5 --resource-group contosoRes
 
 ![上記のコマンドのコンソール出力。 エンド ユーザーが確認できるように、ID が緑色で強調表示されています。](../media/databricks-command-output-1.png)
 
-BLOB をアップロードするコンテナーを作成する前に、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)ロールを自分に割り当てる必要があります。 この例では、このロールは前に作成したストレージ アカウントに割り当てられます。
+BLOB をアップロードするコンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てる必要があります。 この例では、このロールは前に作成したストレージ アカウントに割り当てられます。
 
 ```azurecli
 az role assignment create --role "Storage Blob Data Contributor" --assignee t-trtr@microsoft.com --scope "/subscriptions/885e24c8-7a36-4217-b8c9-eed31e110504/resourceGroups/contosoResourceGroup5/providers/Microsoft.Storage/storageAccounts/contosoblobstorage5
@@ -94,7 +94,7 @@ az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value 
 
 ## <a name="create-an-azure-databricks-workspace-and-add-key-vault-secret-scope"></a>Azure Databricks ワークスペースを作成し、キー コンテナー シークレット スコープを追加する
 
-このセクションは、コマンド ラインを使用して完了することはできません。 この[ガイド](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope)に従ってください。 次の操作を行うには、[Azure portal](https://ms.portal.azure.com/#home) にアクセスする必要があります。
+このセクションは、コマンド ラインを使用して完了することはできません。 この[ガイド](/azure/databricks/scenarios/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope)に従ってください。 次の操作を行うには、[Azure portal](https://ms.portal.azure.com/#home) にアクセスする必要があります。
 
 1. Azure Databricks リソースを作成する
 1. ワークスペースを起動する
@@ -102,10 +102,10 @@ az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value 
 
 ## <a name="access-your-blob-container-from-azure-databricks-workspace"></a>Azure Databricks ワークスペースから自分の BLOB コンテナーにアクセスする
 
-このセクションは、コマンド ラインを使用して完了することはできません。 この[ガイド](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks)に従ってください。 次の操作を行うには、Azure Databricks ワークスペースを使用する必要があります。
+このセクションは、コマンド ラインを使用して完了することはできません。 この[ガイド](/azure/databricks/scenarios/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks)に従ってください。 次の操作を行うには、Azure Databricks ワークスペースを使用する必要があります。
 
-1. **新しいクラスター**を作成する
-1. **新しいノートブック**を作成する
+1. **新しいクラスター** を作成する
+1. **新しいノートブック** を作成する
 1. Python スクリプトの対応するフィールドに入力する
 1. Python スクリプトを実行する
 
@@ -124,4 +124,4 @@ df.show()
 
 キー コンテナーが回復可能であることを確認します。
 > [!div class="nextstepaction"]
-> [リソースをクリーンアップする](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+> [リソースをクリーンアップする](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)

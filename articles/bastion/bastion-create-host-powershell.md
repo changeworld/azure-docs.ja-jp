@@ -1,30 +1,30 @@
 ---
-title: Azure Powershell を使用して Bastion ホストを作成する | Microsoft Docs
+title: Azure PowerShell を使用して Bastion ホストを作成する | Microsoft Docs
 description: この記事では、Azure Bastion ホストを作成する方法について学習します
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba2716613a0e950cbae5c65add410ac8a8b38955
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744257"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077727"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure PowerShell を使用して Azure Bastion ホストを作成する
 
 この記事では、PowerShell を利用し、Azure Bastion ホストを作成する方法について示します。 お使いの仮想ネットワークに Azure Bastion サービスをプロビジョニングすると、同じ仮想ネットワークのすべての VM でシームレスに RDP/SSH をご利用いただけます。 Azure Bastion デプロイは、サブスクリプションやアカウント、仮想マシン単位ではなく、仮想ネットワーク単位です。
 
-任意で、[Azure portal](bastion-create-host-portal.md) を使用して Azure Bastion ホストを作成できます。
+任意で、[Azure portal](./tutorial-create-host-portal.md) を使用して Azure Bastion ホストを作成できます。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion ホストの作成
 
@@ -53,5 +53,4 @@ Azure サブスクリプションを持っていることを確認します。 A
 ## <a name="next-steps"></a>次のステップ
 
 * 詳細については、[Bastion に関する FAQ](bastion-faq.md) に関するページを参照してください。
-
 * Azure Bastion サブネットでネットワーク セキュリティ グループを使用する方法については、[NSG の使用](bastion-nsg.md)に関するページを参照してください。

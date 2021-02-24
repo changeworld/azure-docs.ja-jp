@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b2ce3b362d02e7acb0a11e6d93b8e94ca8e4d04e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783639"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903532"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
@@ -99,13 +99,16 @@ ms.locfileid: "88783639"
 
     既存のカタログにアクセス パッケージを作成する場合は、カタログ内に既にある任意のリソースを、それを所有していなくても選択できます。
 
-    グローバル管理者、ユーザー管理者、またはカタログ所有者の場合は、まだカタログに存在しないが自分が所有するリソースを選択する追加のオプションがあります。 選択されたカタログ内に現在存在しないリソースを選択した場合、それらのリソースも、他のカタログ管理者がアクセス パッケージの構築に使用できるようにカタログに追加されます。 選択されたカタログ内に現在存在するリソースのみを選択する場合、[選択] ウィンドウの上部にある **[...のみが表示されます]** のチェック ボックスをオンにします。
+    グローバル管理者、ユーザー管理者、またはカタログ所有者の場合は、まだカタログに存在しないが自分が所有するリソースを選択する追加のオプションがあります。 選択されたカタログ内に現在存在しないリソースを選択した場合、それらのリソースも、他のカタログ管理者がアクセス パッケージの構築に使用できるようにカタログに追加されます。 カタログに追加できるすべてのリソースを表示するには、[選択] ペインの上部にある **[すべて表示]** チェック ボックスをオンにします。 選択したカタログに現在あるリソースのみを選択する場合は、チェック ボックス **[すべて表示]** をオフのままにします (既定の状態)。
 
-1. リソースを選択したら、 **[ロール]** 一覧で、リソースに対してユーザーに割り当てるロールを選択します。
+1. リソースを選択したら、**[ロール]** 一覧で、リソースに対してユーザーに割り当てるロールを選択します。
 
     ![[アクセス パッケージ] - リソース ロールの選択](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. **[次へ]** をクリックします。
+
+>[!NOTE]
+>動的なグループは、カタログおよびアクセス パッケージに追加できます。 ただし、アクセス パッケージで動的グループ リソースを管理する場合は、所有者ロールのみを選択できます。
 
 ## <a name="requests"></a>Requests
 
@@ -125,7 +128,7 @@ ms.locfileid: "88783639"
 
 1. アクセス パッケージの設定を確認します
 
-    ![[アクセス パッケージ] - [ポリシー] - [ポリシーを有効にする] 設定](./media/entitlement-management-access-package-create/review-create.png)
+    ![[アクセス パッケージ] - [ポリシーを有効にする] 設定](./media/entitlement-management-access-package-create/review-create.png)
 
 1. **[作成]** をクリックしてアクセス パッケージを作成します。
 
@@ -135,13 +138,13 @@ ms.locfileid: "88783639"
 
 Microsoft Graph を使用して、アクセス パッケージを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、次のことを行うことができます
 
-1. [カタログ内の accessPackageResources を一覧表示し](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta)、カタログにまだ存在しないすべてのリソースに対して [accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) を作成します。
-1. accessPackageCatalog 内の各 accessPackageResource の [accessPackageResourceRoles](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) を一覧表示します。 このロールの一覧は、後で accessPackageResourceRoleScope を作成するときにロールを選択するために使用されます。
-1. [accessPackage を作成します](/graph/api/accesspackage-post?view=graph-rest-beta)。
-1. [accessPackageAssignmentPolicy を作成します](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
-1. アクセス パッケージ内で必要なリソース ロールごとに [accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) を作成します。
+1. [カタログ内の accessPackageResources を一覧表示し](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta)、カタログにまだ存在しないすべてのリソースに対して [accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta) を作成します。
+1. accessPackageCatalog 内の各 accessPackageResource の [accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) を一覧表示します。 このロールの一覧は、後で accessPackageResourceRoleScope を作成するときにロールを選択するために使用されます。
+1. [accessPackage を作成します](/graph/tutorial-access-package-api?view=graph-rest-beta)。
+1. [accessPackageAssignmentPolicy を作成します](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta)。
+1. アクセス パッケージ内で必要なリソース ロールごとに [accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) を作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [リンクを共有してアクセス パッケージを要求する](entitlement-management-access-package-settings.md)
 - [アクセス パッケージのリソースのロールを変更する](entitlement-management-access-package-resources.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 340164ef86d34f273b3d5a98b62300bc6cc50df7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121393"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109421"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -130,12 +130,12 @@ Linux 仮想マシン、オペレーティング システム、ブロック デ
 
     | Distribution               | Version                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux Server        | 6.10 [`*`]、7.3、7.6、7.5 (Oracle-Database-Ee 13.8 マーケットプレース イメージ)|
-    | CentOS                     | 6.5 [`*`]、7.6                                    |
-    | RHEL                       | 7.2、7.5、8.0 [`*`]                               |
-    | Ubuntu                     | 14.04、16.04、18.04                               |
+    | Oracle Linux Server        | 6.10 [`*`]、7.3、7.5、7.6、7.7、7.8 |
+    | CentOS                     | 6.5 [`*`]、7.6、7.7、7.8                                    |
+    | RHEL                       | 7.2、7.5、8.0 [`*`]、8.1、8.2                               |
+    | Ubuntu                     | 14.04、16.04、18.04、20.04                               |
     | Debian                     | 8、9、10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | SLES                       | 12 SP4 [`*`]、12 SP5 [`*`]、15 [`*`]、15 SP1 [`*`]、15 SP2 [`*`]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -218,8 +218,8 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 **[概要]** タブには、基本的な実行の詳細と仮想マシンの情報が表示されます。 **[Findings]\(検出結果\)** タブには、PerfInsights レポートのすべてのセクションの推奨事項の概要が表示されます。
 
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![PerfInsights レポートの [概要] タブのスクリーンショット。](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![PerfInsights レポートの [Linux] タブのスクリーンショット。](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > [高] と分類された結果は、パフォーマンスの問題の原因となる可能性のある既知の問題です。 [中] と分類された結果は、最適ではないが、必ずしもパフォーマンス問題の原因とはならない構成です。 [低] と分類された結果は、単なる情報提供のためのステートメントです。

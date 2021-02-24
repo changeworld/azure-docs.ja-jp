@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスター ノードへのリモート接続
 description: スケール セット インスタンス (Service Fabric クラスター ノード) にリモートで接続する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458319"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012546"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
 Azure で実行される Service Fabric クラスターでは、定義するクラスター ノードの種類ごとに、[仮想マシンの個別のスケールを設定](service-fabric-cluster-nodetypes.md)します。  特定のスケール セット インスタンス (クラスター ノード) にリモート接続することができます。  単一インスタンス VM とは異なり、スケール セット インスタンスには独自の仮想 IP アドレスがありません。 そのため、特定のインスタンスにリモート接続するために使用できる IP アドレスとポートの検索が難しい場合があります。
@@ -21,13 +21,13 @@ Azure で実行される Service Fabric クラスターでは、定義するク�
     
     Azure portal のロード バランサー ページで、 **[設定]**  >  **[受信 NAT 規則]** の順に選択します。 
 
-    ![ロード バランサーの受信 NAT 規則](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Azure portal のロード バランサー ページのスクリーンショット。 左側のメニューの [設定] で [受信 NAT 規則] が選択されています。](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
     次のスクリーン ショットは、FrontEnd という名前のノード型の受信 NAT 規則を示しています。 
 
-    ![ロード バランサーの受信 NAT 規則](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![ロード バランサーの受信 NAT 規則のスクリーンショット。 規則ごとに名前、IP バージョン、宛先、ターゲットが一覧表示されます。](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
-    ノードごとに、 **[DESTINATION]** 列に IP アドレス、 **[TARGET]** 列にスケール セットのインスタンス、 **[SERVICE]** 列にポート番号が表示されます。 リモート接続の場合は、ポートはポート 3389 から始まる昇順で各ノードに割り当てられます。
+    ノードごとに、**[DESTINATION]** 列に IP アドレス、**[TARGET]** 列にスケール セットのインスタンス、**[SERVICE]** 列にポート番号が表示されます。 リモート接続の場合は、ポートはポート 3389 から始まる昇順で各ノードに割り当てられます。
 
     受信 NAT 規則は、クラスターの Resource Manager テンプレートの `Microsoft.Network/loadBalancers` セクションでも見つけることができます。
     

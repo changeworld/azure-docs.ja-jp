@@ -3,12 +3,12 @@ title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258422"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993722"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
@@ -24,7 +24,7 @@ ms.locfileid: "88258422"
 
 1. [Azure DevOps](https://azure.microsoft.com/services/devops/) プロジェクトにサインインします。
    
-1. Visual Studio Marketplace の[リリース注釈拡張機能](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)のページで、自分の Azure DevOps 組織を選択し、 **[インストール]** を選択して Azure DevOps 組織に拡張機能を追加します。
+1. Visual Studio Marketplace の [リリース注釈拡張機能](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)のページで、自分の Azure DevOps 組織を選択し、 **[インストール]** を選択して Azure DevOps 組織に拡張機能を追加します。
    
    ![Azure DevOps 組織を選択してから、[インストール] を選択します。](./media/annotations/1-install.png)
    
@@ -93,12 +93,12 @@ Azure Pipelines のリリース テンプレートごとに個別の API キー�
 
 ![[詳細設定] メニューのスクリーンショット。[コメントを表示する] というテキストが強調表示され、有効にするために設定の横にチェックマークが付いています。](./media/annotations/workbook-show-annotations.png)
 
-注釈マーカーを選択すると、要求元、ソース管理の分岐、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
+注釈マーカーを選択すると、要求元、ソース管理のブランチ、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
 
 ## <a name="create-custom-annotations-from-powershell"></a>PowerShell からカスタム注釈を作成する
-Azure DevOps を使わずに、GitHub の [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell スクリプトを使って、任意のプロセスから注釈を作成できます。 
+Azure DevOps を使わずに、GitHub の [CreateReleaseAnnotation](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell スクリプトを使って、任意のプロセスから注釈を作成できます。 
 
-1. [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) のローカル コピーを作成します。
+1. [CreateReleaseAnnotation.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) のローカル コピーを作成します。
    
 1. 前の手順のステップを使って、Application Insights ID を取得し、Application Insights の **[API アクセス]** タブから API キーを作成します。
    

@@ -63,6 +63,8 @@
       items:
         - name: 仮想マシン スケール セットを作成する
           href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: 仮想マシン スケール セットの作成と管理
+          href: ./scripts/cli-sample-manage-scale-set.md
         - name: カスタム VM イメージからスケール セットを作成する
           href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
         - name: スケール セットにアプリケーションをインストールする
@@ -105,44 +107,44 @@
         - name: 可用性
           href: ../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
         - name: コロケーション
-          href: co-location.md
+          href: ../virtual-machines/co-location.md
         - name: ネットワーク パフォーマンス
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: スケール セット内の障害ドメインを管理する
           href: virtual-machine-scale-sets-manage-fault-domains.md
       maintainContext: true
     - name: イメージ
-      href: shared-image-galleries.md
+      href: ../virtual-machines/shared-image-galleries.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
     - name: VM の種類とサイズ
       href: ../virtual-machines/sizes.md
       items:
         - name: 汎用
           href: ../virtual-machines/sizes-general.md
-          maintainContext: true
           items:
             - name: 負荷の急増に対応できる B シリーズ
               href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
+          maintainContext: true
         - name: コンピューティング最適化
           href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: メモリ最適化
           href: ../virtual-machines/sizes-memory.md
-          maintainContext: true
           items:
             - name: 制約付き vCPU
               href: ../virtual-machines/constrained-vcpu.md
               maintainContext: true
+          maintainContext: true
         - name: ストレージ最適化
           href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: GPU 最適化
           href: ../virtual-machines/sizes-gpu.md
-          maintainContext: true
           items:
             - name: NVIDIA GPU ドライバーの設定
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
+          maintainContext: true
         - name: ハイ パフォーマンス コンピューティング
           href: ../virtual-machines/sizes-hpc.md
           maintainContext: true
@@ -165,8 +167,6 @@
     - name: メンテナンスと更新
       href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
-    - name: オーケストレーション モード
-      href: orchestration-modes.md
     - name: Disk Storage
       items:
         - name: Managed Disks
@@ -176,7 +176,7 @@
           href: ../virtual-machines/disks-types.md
           maintainContext: true
         - name: 暗号化
-          href: ../virtual-machines/windows/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
+          href: ../virtual-machines/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
           maintainContext: true
         - name: Premium Storage のパフォーマンス
           href: ../virtual-machines/premium-storage-performance.md
@@ -184,7 +184,7 @@
         - name: エフェメラル OS ディスク
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: ディスクのスケーラビリティ ターゲット
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: ディスクのバックアップとディザスター リカバリー
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
@@ -203,8 +203,6 @@
           href: disk-encryption-overview.md
         - name: Azure セキュリティ ベースライン
           href: security-baseline.md
-        - name: 組み込みのセキュリティ制御
-          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: 監視
       href: ../azure-monitor/insights/monitor-vm-azure.md
@@ -214,6 +212,9 @@
         - name: vCPU のクォータ
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: 作成または更新操作の PUT 呼び出し
+      href: ../virtual-machines/put-calls-create-or-update.md
+      maintainContext: true
     - name: スケール セットの FAQ
       href: virtual-machine-scale-sets-faq.md
 - name: 操作方法
@@ -274,6 +275,8 @@
             - name: カスタマー マネージド キーの使用
               displayName: 'SSE, CMK, encrypt'
               href: ../virtual-machines/image-version-encryption.md
+            - name: 共有のためのアプリの登録
+              href: share-images-across-tenants.md
     - name: テンプレートの作成
       items:
         - name: スケール セット テンプレートを確認する
@@ -326,6 +329,16 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: スケール セット テンプレートを変換してマネージド ディスクを使用する
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: 専用ホストの使用
+          items:
+            - name: 概要
+              href: ../virtual-machines/dedicated-hosts.md
+            - name: CLI
+              href: ../virtual-machines/linux/dedicated-hosts-cli.md
+            - name: PowerShell
+              href: ../virtual-machines/windows/dedicated-hosts-powershell.md
+            - name: ポータル
+              href: ../virtual-machines/dedicated-hosts-portal.md
         - name: スポット インスタンスを使用する
           href: use-spot.md
     - name: 管理する
@@ -340,8 +353,16 @@
           href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: スケール セットのネットワーク
           href: virtual-machine-scale-sets-networking.md
-        - name: OS の自動アップグレード
-          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: OS イメージのアップグレード
+          items:
+            - name: OS の自動アップグレード
+              href: virtual-machine-scale-sets-automatic-upgrade.md
+            - name: メンテナンス管理
+              items:
+                - name: 概要 (プレビュー)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (プレビュー)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control-powershell.md
         - name: 自動インスタンス修復
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: インスタンス保護
@@ -350,18 +371,6 @@
           href: virtual-machine-scale-sets-scale-in-policy.md
         - name: 削除時の終了通知
           href: virtual-machine-scale-sets-terminate-notification.md
-        - name: 共有イメージ ギャラリー
-          items:
-            - name: 概要
-              href: shared-image-galleries.md
-            - name: CLI
-              href: shared-images-cli.md
-            - name: PowerShell
-              href: shared-images-powershell.md
-            - name: テナントをまたいでイメージを共有する
-              href: share-images-across-tenants.md
-            - name: 共有イメージのトラブルシューティングを行う
-              href: troubleshooting-shared-images.md
         - name: 近接通信配置グループの作成
           href: proximity-placement-groups.md
         - name: スケール セットの垂直スケール

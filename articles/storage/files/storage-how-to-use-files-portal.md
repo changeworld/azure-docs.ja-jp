@@ -7,19 +7,19 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f68d9f620b686ab20e93584bdd7c024d8a943577
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6a88124397812f7599ce54b46b23d22e626cf520
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036540"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629820"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>クイック スタート: Azure portal を使用した Azure ファイル共有の作成および管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows、Linux、macOS でマウントできます。 このガイドでは、[Azure Portal](https://portal.azure.com/) を使用して Azure ファイル共有を操作する方法の基本について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
+## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
@@ -33,10 +33,10 @@ Azure ファイル共有を作成するには:
 4. **[名前]** で、「*myshare*」と入力します。
 5. **[OK]** をクリックして、Azure ファイル共有を作成します。
 
-共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
+共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
 
 ## <a name="use-your-azure-file-share"></a>Azure ファイル共有を使用する
-Azure Files では、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)と[ファイル REST プロトコル](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api)の 2 つの方法で Azure ファイル共有内のファイルとフォルダーを操作できます。 
+Azure Files では、業界標準の [Server Message Block (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)、ネットワーク ファイル システム (NFS) プロトコル (プレビュー)、および[ファイル REST プロトコル](/rest/api/storageservices/file-service-rest-api)の 3 つの方法で Azure ファイル共有内のファイルとフォルダーを操作できます。 
 
 SMB を使用してファイル共有をマウントするには、お使いの OS に基づいて次のドキュメントを参照してください。
 - [Windows](storage-how-to-use-files-windows.md)

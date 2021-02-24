@@ -1,20 +1,20 @@
 ---
 title: クラシック仮想ネットワークから Azure AD Domain Services を移行する | Microsoft Docs
 description: 既存の Azure AD Domain Services マネージド ドメインをクラシック仮想ネットワーク モデルから Resource Manager ベースの仮想ネットワークに移行する方法について説明します。
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/10/2020
-ms.author: iainfou
-ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 09/24/2020
+ms.author: justinha
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054291"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013041"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure Active Directory Domain Services の移行
 
@@ -139,6 +139,14 @@ Azure AD DS では通常、アドレス範囲内の最初の 2 つの使用可�
 
 仮想ネットワークの要件の詳細については、[仮想ネットワーク設計の考慮事項と構成オプション][network-considerations]に関するページを参照してください。
 
+また、マネージド ドメインの仮想ネットワーク内のトラフィックを制限するためのネットワーク セキュリティ グループを作成する必要もあります。 これらのルールを配置する必要がある Azure Standard Load Balancer が、移行プロセス中に作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
+
+必要な規則の詳細については、[Azure AD DS のネットワーク セキュリティ グループと必要なポート](network-considerations.md#network-security-groups-and-required-ports)に関するセクションを参照してください。
+
+### <a name="ldaps-and-tlsssl-certificate-expiration"></a>LDAPS と TLS/SSL 証明書の有効期限
+
+マネージド ドメインが LDAPS 用に構成されている場合は、現在の TLS/SSL 証明書が 30 日以上有効であることを確認します。 今後 30 日以内に証明書の有効期限が切れた場合、移行プロセスが失敗します。 必要に応じて、証明書を更新し、マネージド ドメインに適用してから、移行プロセスを開始してください。
+
 ## <a name="migration-steps"></a>移行の手順
 
 Resource Manager のデプロイ モデルと仮想ネットワークへの移行は、次の 5 つの主な手順に分かれています。
@@ -147,8 +155,8 @@ Resource Manager のデプロイ モデルと仮想ネットワークへの移�
 |---------|--------------------|-----------------|-----------|-------------------|
 | [手順 1 - 新しい仮想ネットワークを更新して検索する](#update-and-verify-virtual-network-settings) | Azure portal | 約 15 分 | ダウンタイムは必要ありません | 該当なし |
 | [手順 2 - マネージド ドメインを移行用に準備する](#prepare-the-managed-domain-for-migration) | PowerShell | 平均 15 から 30 分 | このコマンドが完了すると、Azure AD DS のダウンタイムが開始されます。 | ロールバックと復元を使用できます。 |
-| [手順 3 - マネージド ドメインを既存の仮想ネットワークに移動する](#migrate-the-managed-domain) | PowerShell | 平均 1 から 3 時間 | このコマンドが完了すると、1 つのドメイン コントローラーを使用できます。ダウンタイムは終了します。 | 失敗した場合は、ロールバック (セルフサービス) と復元の両方を使用できます。 |
-| [手順 4 - レプリカ ドメイン コントローラーをテストして待機する](#test-and-verify-connectivity-after-the-migration)| PowerShell と Azure portal | コアの数に応じて 1 時間またはそれ以上 | 両方のドメイン コントローラーが使用可能で、正常に機能します。 | 該当なし。 最初の VM が正常に移行された後では、ロールバックまたは復元のオプションはありません。 |
+| [手順 3 - マネージド ドメインを既存の仮想ネットワークに移動する](#migrate-the-managed-domain) | PowerShell | 平均 1 から 3 時間 | このコマンドが完了すると、1 つのドメイン コントローラーを使用できるようになります。 | 失敗した場合は、ロールバック (セルフサービス) と復元の両方を使用できます。 |
+| [手順 4 - レプリカ ドメイン コントローラーをテストして待機する](#test-and-verify-connectivity-after-the-migration)| PowerShell と Azure portal | コアの数に応じて 1 時間またはそれ以上 | 両方のドメイン コントローラーが使用可能で、正常に機能します。ダウンタイムが終了します。 | 該当なし。 最初の VM が正常に移行された後では、ロールバックまたは復元のオプションはありません。 |
 | [手順 5 - オプションの構成手順](#optional-post-migration-configuration-steps) | Azure portal と VM | 該当なし | ダウンタイムは必要ありません | 該当なし |
 
 > [!IMPORTANT]
@@ -166,7 +174,9 @@ Resource Manager のデプロイ モデルと仮想ネットワークへの移�
 
     Azure AD DS に必要なポートがネットワーク設定によってブロックされていないことを確認してください。 クラシック仮想ネットワークと Resource Manager 仮想ネットワークの両方でポートを開く必要があります。 これらの設定には、ルート テーブル (ただし、ルート テーブルを使用することは推奨されません) とネットワーク セキュリティ グループが含まれます。
 
-    必要なポートを確認するには、「[ネットワーク セキュリティ グループと必要なポート][network-ports]」を参照してください。 ネットワーク通信の問題を最小限に抑えるには、移行が正常に完了した後に、ネットワーク セキュリティ グループまたはルート テーブルを Resource Manager 仮想ネットワークに適用することをお勧めします。
+    Azure AD DS には、マネージド ドメインに必要なポートをセキュリティで保護し、その他すべての受信トラフィックをブロックするネットワーク セキュリティ グループが必要です。 このネットワーク セキュリティ グループは、マネージド ドメインへのアクセスをロックダウンするための追加の保護レイヤーとして機能します。 必要なポートを確認するには、「[ネットワーク セキュリティ グループと必要なポート][network-ports]」を参照してください。
+
+    Secure LDAP を使用する場合は、*TCP* ポート *636* の受信トラフィックを許可する規則をネットワーク セキュリティ グループに追加します。 詳細については、「[インターネット経由での Secure LDAP アクセスをロック ダウンする](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)」を参照してください。
 
     このターゲット リソース グループ、ターゲット仮想ネットワーク、ターゲット仮想ネットワークのサブネットをメモしておきます。 これらのリソース名を移行プロセス中に使用します。
 
@@ -220,7 +230,7 @@ Azure PowerShell を使用して、マネージド ドメインを移行用に�
 
 *-Commit* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *aaddscontoso.com* など、前のセクションで準備したご自身のマネージド ドメインの *-ManagedDomainFqdn* を指定します。
 
-Azure AD DS の移行先である仮想ネットワークを含むターゲット リソース グループを指定します (*myResourceGroup*など)。 *myVnet* などのターゲット仮想ネットワークと、*DomainServices* などのサブネットを指定します。
+Azure AD DS の移行先である仮想ネットワークを含むターゲット リソース グループを指定します (*myResourceGroup* など)。 *myVnet* などのターゲット仮想ネットワークと、*DomainServices* などのサブネットを指定します。
 
 このコマンドを実行すると、その後にロールバックすることはできません。
 
@@ -252,16 +262,14 @@ PowerShell スクリプトを閉じても、移行プロセスは引き続き実
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>移行後に接続をテストして検証する
 
-2 番目のドメイン コントローラーが正常にデプロイされ、マネージド ドメインで使用できるようになるまで、時間がかかることがあります。
+2 番目のドメイン コントローラーが正常にデプロイされ、マネージド ドメインで使用できるようになるまで、時間がかかることがあります。 2 番目のドメイン コントローラーは、移行コマンドレットの完了後 1 時間から 2 時間で使用可能になります。 Resource Manager デプロイ モデルでは、マネージド ドメインのネットワーク リソースが Azure portal または Azure PowerShell に表示されます。 2 番目のドメイン コントローラーが使用可能かどうかをチェックするには、Azure portal でマネージド ドメインの **[プロパティ]** ページを確認します。 IP アドレスが 2 つ表示されている場合は、2 番目のドメイン コントローラーの準備ができています。
 
-Resource Manager デプロイ モデルでは、マネージド ドメインのネットワーク リソースが Azure portal または Azure PowerShell に表示されます。 これらのネットワーク リソースが何であり、何を行うのかの詳細については、「[Azure AD DS によって使用されるネットワーク リソース][network-resources]」を参照してください。
-
-少なくとも 1 つのドメイン コントローラーが使用可能なときに、VM とのネットワーク接続について次の構成手順を行います。
+2 番目のドメイン コントローラーが使用可能になったら、VM とのネットワーク接続に関する次の構成手順を実行します。
 
 * **DNS サーバー設定の更新** - Resource Manager 仮想ネットワーク上の他のリソースでマネージド ドメインを解決して使用できるようにするには、新しいドメイン コントローラーの IP アドレスを使用して DNS 設定を更新します。 これらの設定は、Azure portal によって自動的に構成されます。
 
     Resource Manager 仮想ネットワークを構成する方法の詳細については、「[Azure 仮想ネットワークの DNS 設定を更新する][update-dns]」を参照してください。
-* **ドメインに参加している VM の再起動** - Azure AD DS ドメイン コントローラーの DNS サーバー IP アドレスが変わったため、ドメインに参加している VM を再起動します。これにより、それらの VM で新しい DNS サーバーの設定が使用されるようになります。 アプリケーションまたは VM の DNS 設定が手動で構成されている場合は、Azure portal に表示されるドメイン コントローラーの新しい DNS サーバー IP アドレスに手動で更新します。
+* **ドメインに参加している VM の再起動 (省略可能)** - Azure AD DS ドメイン コントローラーの DNS サーバー IP アドレスが変わったため、ドメインに参加している任意の VM を再起動できます。これにより、新しい DNS サーバー設定が使用されるようになります。 アプリケーションまたは VM の DNS 設定が手動で構成されている場合は、Azure portal に表示されるドメイン コントローラーの新しい DNS サーバー IP アドレスに手動で更新します。 ドメインに参加している VM を再起動すると、更新されない IP アドレスによって発生する接続の問題を回避できます。
 
 次に、仮想ネットワーク接続と名前解決をテストします。 Resource Manager 仮想ネットワークに接続またはピアリングされている VM で、次のネットワーク通信テストを行います。
 
@@ -270,7 +278,7 @@ Resource Manager デプロイ モデルでは、マネージド ドメインの�
 1. `nslookup aaddscontoso.com` のように、マネージド ドメインの名前解決を確認します。
     * ご自身のマネージド ドメインの DNS 名を指定して、DNS 設定が正しいことと解決されることを確認します。
 
-2 番目のドメイン コントローラーは、移行コマンドレットの完了後 1 時間から 2 時間で使用可能になります。 2 番目のドメイン コントローラーが使用可能かどうかをチェックするには、Azure portal でマネージド ドメインの **[プロパティ]** ページを確認します。 IP アドレスが 2 つ表示されている場合は、2 番目のドメイン コントローラーの準備ができています。
+他のネットワーク リソースの詳細については、「[Azure AD DS によって使用されるネットワーク リソース][network-resources]」を参照してください。
 
 ## <a name="optional-post-migration-configuration-steps"></a>移行後のオプションの構成手順
 
@@ -295,13 +303,6 @@ Azure AD DS では、ドメイン コントローラーのイベントのトラ�
 1. VM がインターネットに公開されている場合は、*administrator*、*user*、*guest* のような一般的なアカウント名について、サインインの試行回数が多いものがないか確認します。 可能であれば、一般的でない名前のアカウントを使用するように VM を更新します。
 1. VM 上のネットワーク トレースを使用して攻撃の発生元を特定し、それらの IP アドレスをブロックしてサインインを試行できないようにします。
 1. ロックアウトの問題が最小限である場合は、細かい設定が可能なパスワード ポリシーを、必要に応じた厳しさの制限になるように更新します。
-
-### <a name="creating-a-network-security-group"></a>ネットワーク セキュリティ グループを作成する
-
-Azure AD DS には、マネージド ドメインに必要なポートをセキュリティで保護し、その他すべての受信トラフィックをブロックするネットワーク セキュリティ グループが必要です。 このネットワーク セキュリティ グループは、マネージド ドメインへのアクセスをロックダウンするための追加の保護レイヤーとして機能し、自動的には作成されません。 ネットワーク セキュリティ グループを作成し、必要なポートを開くには、次の手順を確認します。
-
-1. Azure portal で、お使いの Azure AD DS リソースを選択します。 Azure AD Domain Services に関連付けられたネットワーク セキュリティ グループがない場合、[概要] ページには、ネットワーク セキュリティ グループを作成するためのボタンが表示されます。
-1. Secure LDAP を使用する場合は、*TCP* ポート *636* の受信トラフィックを許可する規則をネットワーク セキュリティ グループに追加します。 詳細については、[Secure LDAP の構成][secure-ldap]に関するページを参照してください。
 
 ## <a name="roll-back-and-restore-from-migration"></a>移行のロールバックと復元
 
@@ -357,7 +358,7 @@ Resource Manager デプロイ モデルへの移行後に問題が発生した�
 [notifications]: notifications.md
 [password-policy]: password-policy.md
 [secure-ldap]: tutorial-configure-ldaps.md
-[migrate-iaas]: ../virtual-machines/windows/migration-classic-resource-manager-overview.md
+[migrate-iaas]: ../virtual-machines/migration-classic-resource-manager-overview.md
 [join-windows]: join-windows-vm.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
 [troubleshoot-domain-join]: troubleshoot-domain-join.md

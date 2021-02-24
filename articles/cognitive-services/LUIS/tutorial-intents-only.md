@@ -1,14 +1,16 @@
 ---
 title: チュートリアル:意図の予測 - LUIS
 description: このチュートリアルでは、発話 (テキスト) に基づいてユーザーの意図を予測するカスタム アプリを作成します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 398324099f923a5141b172d61f9fd41a69dbf069
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959861"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025295"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -67,7 +69,7 @@ ms.locfileid: "85959861"
     > [!div class="mx-imgBorder"]
     > ![ LUIS ポータルの [Intents]\(意図\) ページに発話例を追加しているスクリーンショット](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    _発話例_を指定することで、この意図に予測される種類の発話を、LUIS にトレーニングできます。 これらは、陽性の例です。 他のすべての意図の発話は、この意図にとっては陰性として扱われます。
+    _発話例_ を指定することで、この意図に予測される種類の発話を、LUIS にトレーニングできます。 これらは、陽性の例です。 他のすべての意図の発話は、この意図にとっては陰性として扱われます。
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
@@ -114,7 +116,7 @@ ms.locfileid: "85959861"
     `get a medium vegetarian pizza for delivery`
 
   
-    クエリ文字列パラメーターは `query` で、発話の**クエリ**は URI で渡されます。 この発話は、どの発話例とも同じではありません。 これは、LUIS が上位スコアの意図として `OrderPizza` 意図を学習および予測するかどうかを確認するための優れたテストとなります。
+    クエリ文字列パラメーターは `query` で、発話の **クエリ** は URI で渡されます。 この発話は、どの発話例とも同じではありません。 これは、LUIS が上位スコアの意図として `OrderPizza` 意図を学習および予測するかどうかを確認するための優れたテストとなります。
 
     ```JSON
     {
@@ -191,7 +193,7 @@ LUIS は、JSON 応答を返した後は、この要求の処理を終えてい�
 * [トレーニング方法](luis-how-to-train.md)
 * [発行方法](luis-how-to-publish-app.md)
 * [LUIS ポータルでのテスト方法](luis-interactive-test.md)
-* [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure Bot](/azure/bot-service/?view=azure-bot-service-4.0)
 
 
 ## <a name="next-steps"></a>次のステップ

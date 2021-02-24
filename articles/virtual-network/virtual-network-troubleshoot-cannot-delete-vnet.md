@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b974af343907c98ebd7a318bc60a0e553a07a233
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131659"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219353"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>トラブルシューティング:Azure で仮想ネットワークを削除できない
 
@@ -31,10 +31,11 @@ Microsoft Azure で仮想ネットワークを削除しようとすると、エ�
 
 1. [仮想ネットワークで仮想ネットワーク ゲートウェイが実行されていないか確認する](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network)
 2. [仮想ネットワークでアプリケーション ゲートウェイが実行されていないか確認する](#check-whether-an-application-gateway-is-running-in-the-virtual-network)
-3. [仮想ネットワークで Azure Active Directory ドメイン サービスが有効になっていないか確認する](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network)
-4. [仮想ネットワークが他のリソースに接続されていないか確認する](#check-whether-the-virtual-network-is-connected-to-other-resource)
-5. [仮想ネットワークに実行中の仮想マシンがないか確認する](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network)
-6. [仮想ネットワークが移行の途中で停止していないか確認する](#check-whether-the-virtual-network-is-stuck-in-migration)
+3. [仮想ネットワークに Azure コンテナー インスタンスがまだ存在するか確認する](#check-whether-azure-container-instances-still-exist-in-the-virtual-network)。
+4. [仮想ネットワークで Azure Active Directory ドメイン サービスが有効になっていないか確認する](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network)
+5. [仮想ネットワークが他のリソースに接続されていないか確認する](#check-whether-the-virtual-network-is-connected-to-other-resource)
+6. [仮想ネットワークに実行中の仮想マシンがないか確認する](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network)
+7. [仮想ネットワークが移行の途中で停止していないか確認する](#check-whether-the-virtual-network-is-stuck-in-migration)
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
@@ -48,23 +49,36 @@ Microsoft Azure で仮想ネットワークを削除しようとすると、エ�
 
 仮想ネットワークの場合、仮想ネットワークの **[概要]** ページに移動します。 **[接続デバイス]** に仮想ネットワーク ゲートウェイがあるかどうかを確認します。
 
-![接続デバイスの確認](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Azure portal の仮想ネットワークの接続デバイス一覧のスクリーンショット。 仮想ネットワーク ゲートウェイが一覧で強調表示されています。](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
-ゲートウェイを削除する前に、まずゲートウェイの**接続**オブジェクトをすべて削除する必要があります。 
+ゲートウェイを削除する前に、まずゲートウェイの **接続** オブジェクトをすべて削除する必要があります。 
 
 ### <a name="check-whether-an-application-gateway-is-running-in-the-virtual-network"></a>仮想ネットワークでアプリケーション ゲートウェイが実行されていないか確認する
 
 仮想ネットワークの **[概要]** ページに移動します。 **[接続デバイス]** にアプリケーション ゲートウェイがあるかどうかを確認します。
 
-![接続デバイスの確認](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Azure portal の仮想ネットワークの接続デバイス一覧のスクリーンショット。 アプリケーション ゲートウェイが一覧で強調表示されています。](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 アプリケーション ゲートウェイがある場合は、仮想ネットワークを削除する間に削除する必要があります。
+
+### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>仮想ネットワークに Azure コンテナー インスタンスがまだ存在するか確認する
+
+1. Azure portal で、リソース グループの **[概要]** ページに移動します。
+1. リソース グループのリソースの一覧のヘッダーで、 **[非表示の型の表示]** を選択します。 ネットワーク プロファイルの種類は、既定で Azure portal に表示されません。
+1. コンテナー グループに関連するネットワーク プロファイルを選択します。
+1. **[削除]** を選択します。
+
+   ![非表示のネットワーク プロファイルの一覧のスクリーンショット。](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
+
+1. サブネットまたは仮想ネットワークを再度削除します。
+
+これらの手順で問題が解決しない場合は、これらの [Azure CLI コマンド](../container-instances/container-instances-vnet.md#clean-up-resources) を使用してリソースをクリーンアップします。 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>仮想ネットワークで Azure Active Directory ドメイン サービスが有効になっていないか確認する
 
 Azure Active Directory ドメイン サービスが有効になっていて仮想ネットワークに接続されている場合、この仮想ネットワークを削除することはできません。 
 
-![接続デバイスの確認](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Azure portal の Azure AD Domain Services 画面のスクリーンショット。 [仮想ネットワーク/サブネットで使用可能] フィールドが強調表示されています。](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 サービスを無効にするには、「[Azure Portal を使用して Azure Active Directory Domain Services を無効にする](../active-directory-domain-services/delete-aadds.md)」をご覧ください。
 

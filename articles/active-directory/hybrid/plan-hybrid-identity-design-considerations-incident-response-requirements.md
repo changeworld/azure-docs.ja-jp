@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c68be4e46693621f77cb25dd8f34f8e0b7d75dd
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278413"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのインシデント対応要件の決定

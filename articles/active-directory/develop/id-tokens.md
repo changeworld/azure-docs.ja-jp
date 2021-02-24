@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 09/09/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795240"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755907"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
-`id_tokens` は、[OpenID Connect](v2-protocols-oidc.md) (OIDC) フローの中でクライアント アプリケーションに送信されます。 これは、アクセス トークンと一緒に、またはアクセス トークンのかわりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。
+`id_tokens` は、[OpenID Connect](v2-protocols-oidc.md) (OIDC) フローの中でクライアント アプリケーションに送信されます。 これらは、アクセス トークンと一緒に、またはその代わりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。
 
 ## <a name="using-the-id_token"></a>id_token を使用する
 
@@ -85,16 +85,18 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`unique_name` | String | トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は特定の時点で一意ですが、電子メールやその他の識別子は再利用される場合があり、この値は他のアカウントで再表示される可能性があるため、表示目的でのみ使用してください。 v1.0 `id_tokens` のみで発行されます。 |
 |`uti` | 不透明な文字列 | Azure がトークンの再検証に使用する内部要求。 無視してください。 |
 |`ver` | 文字列、1.0 または 2.0 | id_token のバージョンを示します。 |
+|`hasgroups`|Boolean|存在する場合、常に true であり、ユーザーが 1 つ以上のグループに属していることを示します。 すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で groups 要求の代わりに使用されます。 クライアントが Microsoft Graph API を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。|
+|`groups:src1`|JSON オブジェクト | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br>**JWT 値の例**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> 詳細については、「[グループ超過要求](#groups-overage-claim)」を参照してください。|
 
 > [!NOTE]
-> v1.0 と v2.0 の id_token は、上記の例に示すように、含まれる情報の量に違いがあります。 バージョンは、要求元のエンドポイントに基づきます。 既存のアプリケーションでは Azure AD エンドポイントを使用する可能性がありますが、新しいアプリケーションでは v2.0 "Microsoft ID プラットフォーム" エンドポイントを使用する必要があります。
+> v1.0 と v2.0 の id_token は、上記の例に示すように、含まれる情報の量に違いがあります。 バージョンは、要求元のエンドポイントに基づきます。 既存のアプリケーションでは Azure AD エンドポイントを使用する場合が多いですが、新しいアプリケーションでは "Microsoft ID プラットフォーム" を使用する必要があります。
 >
 > - v1.0:Azure AD エンドポイント: `https://login.microsoftonline.com/common/oauth2/authorize`
 > - v2.0:Microsoft ID プラットフォーム エンドポイント: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>要求を使用してユーザーを確実に識別する (サブジェクトとオブジェクト ID)
 
-ユーザーを識別する (たとえば、データベース内で検索したり、ユーザーが持つアクセス許可を決定したりする) 場合は、時間が経過しても一定で一意の情報を使用することが重要です。  レガシ アプリケーションでは、メール アドレス、電話番号、UPN などのフィールドが使われることがあります。  これらはすべて時間の経過と共に変わることがあり、時間の経過と共に再利用されることもあります。従業員の名前が変わったり、または従業員に以前の存在しなくなった従業員のメール アドレスに一致するアドレスが与えられたりする場合などです。 このため、アプリケーションでユーザーを識別するために、人間が判読できるデータを使用しないことが**重要**です。人間が判読可能であるとは、一般にだれかがそれを読んで、変更したくなることを意味します。  代わりに、OIDC 標準によって提供される要求、または Microsoft によって提供される拡張要求 (`sub` および `oid` 要求) を使用します。
+ユーザーを識別する (たとえば、データベース内で検索したり、ユーザーが持つアクセス許可を決定したりする) 場合は、時間が経過しても一定で一意の情報を使用することが重要です。 レガシ アプリケーションでは、メール アドレス、電話番号、UPN などのフィールドが使われることがあります。  これらはすべて時間の経過と共に変わることがあり、時間の経過と共に再利用されることもあります。従業員の名前が変わったり、または従業員に以前の存在しなくなった従業員のメール アドレスに一致するアドレスが与えられたりする場合などです。 このため、アプリケーションでユーザーを識別するために、人間が判読できるデータを使用しないことが **重要** です。人間が判読可能であるとは、一般にだれかがそれを読んで、変更したくなることを意味します。 代わりに、OIDC 標準によって提供される要求、または Microsoft によって提供される拡張要求 (`sub` および `oid` 要求) を使用します。
 
 ユーザーごとに情報を正しく格納するには、`sub` または `oid` を単独で使用し (GUID は一意であるため)、必要に応じて `tid` をルーティングまたはシャーディングに使用します。  サービス間でデータを共有する必要がある場合は、すべてのアプリで、特定のユーザーに対して同じ `oid` と `tid` 要求が取得されるため、`oid`+`tid` が最適です。  Microsoft ID プラットフォームの `sub` 要求は "ペア" になっています。これは、トークンの受信者、テナント、ユーザーの組み合わせに基づいて一意です。  したがって、特定のユーザーに対して ID トークンを要求する 2 つのアプリは、`sub` 要求は異なっていても、そのユーザーに対して同じ `oid` 要求を受け取ることになります。
 
@@ -102,6 +104,26 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 > テナント間でユーザーを関連付けようとして、`idp` 要求を使用して、ユーザーに関する情報を格納しないでください。  これは機能しません。ユーザーの `oid` および `sub` 要求は、設計によってテナント間で変わり、アプリケーションで、テナントを越えてユーザーを追跡できないようにしているためです。  
 >
 > ユーザーが 1 つのテナントに所属し、別のテナントで認証するゲスト シナリオでは、ユーザーがサービスに対して新しいユーザーであるかのように、ユーザーを処理する必要があります。  Contoso テナントのドキュメントと特権は、Fabrikam テナントでは適用できません。 これは、テナント間での予期しないデータの漏洩を防ぐために重要です。
+
+### <a name="groups-overage-claim"></a>グループ超過要求
+トークンのサイズが HTTP ヘッダー サイズの上限を超えないよう、Azure AD では、`groups` 要求に含まれるオブジェクト ID の数が制限されます。 超過制限 (SAML トークンの場合は 150、JWT トークンの場合は 200) を超えるグループのメンバーにユーザーがなっている場合、Azure AD は、グループ要求をトークンに出力しません。 代わりに、Microsoft Graph API に照会してユーザーのグループ メンバーシップを取得するようアプリケーションに指示する超過要求がトークンに追加されます。
+
+```json
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
+       }
+     }
+  ...
+}
+```
 
 ## <a name="validating-an-id_token"></a>id_token の検証
 

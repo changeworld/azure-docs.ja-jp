@@ -6,13 +6,13 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7c331fcbb013243cbd724d0c9337ce80fa1bedbd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: e085c5c2dbb608692ff7e766744743d3f640387b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752696"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633207"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid 用の Azure セキュリティ ベースライン
 
@@ -20,7 +20,7 @@ Microsoft Azure Event Grid 用の Azure セキュリティ ベースラインに
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -36,7 +36,7 @@ Azure Event Grid は、トピックおよびドメインへの発行のための
 
 - [Azure Private Link の概要](../private-link/private-link-overview.md)
 
-- [Azure ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
+- [Azure ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -74,9 +74,9 @@ Azure Event Grid は、トピックおよびドメインへの発行のための
 
 - [Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する方法](configure-private-endpoints.md)
 
-- [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Security Center の統合された脅威インテリジェンスの詳細について](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center の統合された脅威インテリジェンスの詳細について](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -153,7 +153,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 **ガイダンス**: Azure Event Grid リソースに関連付けられているネットワーク リソースを分類別に論理的に整理するために、それらのリソースにタグを使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -163,7 +163,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Event Grid に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -173,7 +173,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、[Azure セキュリティ ベンチマークの「ログ記録と監視](/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
@@ -227,7 +227,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
@@ -283,19 +283,19 @@ Azure Event Grid メトリックとアクティビティ ログ操作に関す�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**:Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス制御 (RBAC) を使います。 Event Grid では、組み込みロールとカスタム ロールがサポートされています。
+**ガイダンス**:Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid では、Azure のロールベースのアクセス制御 (Azure RBAC) が使用されます。 Event Grid では、組み込みロールとカスタム ロールがサポートされています。
 
-Azure ロールベースのアクセス制御 (RBAC) を使用すると、ロールの割り当てを通じて Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。
+Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、ロールの割り当てを通じて Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。
 
 - [Event Grid リソースへのアクセスの承認](security-authorization.md)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center の監視**: はい
 
@@ -321,7 +321,7 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
 
 - [発行クライアントを認証する (Azure Event Grid)](security-authenticate-publishing-clients.md)
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center の監視**: はい
 
@@ -355,7 +355,7 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
 
 **ガイダンス**: Azure Active Directory セキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -393,11 +393,11 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
  
 Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して、環境内で疑わしいアクティビティまたは安全ではないアクティビティが発生したときにログとアラートを生成します。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-- [Azure AD Privileged Identity Management (PIM) をデプロイする](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Azure AD Privileged Identity Management (PIM) をデプロイする](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure Security Center の監視**: はい
 
@@ -409,7 +409,7 @@ Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -421,7 +421,7 @@ Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して
  
  
  
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -441,7 +441,7 @@ Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、[Azure セキュリティ ベンチマークの「データ保護](/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
@@ -449,7 +449,7 @@ Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して
  
  
  
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -457,13 +457,13 @@ Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure リソースへのアクセス レベルを制限できます。 Azure Active Directory RBAC を使用して、Azure リソースへのアクセスを制御できます。
+**ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure リソースへのアクセス レベルを制限できます。 Azure RBAC を使用して Azure リソースへのアクセスを制御できます。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -501,7 +501,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**:Azure Event Grid は、Azure Active Directory (Azure AD) を使用して Event Grid リソースへの要求を承認することをサポートしています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。
+**ガイダンス**:Azure Event Grid は、Azure Active Directory (Azure AD) を使用して Event Grid リソースへの要求を承認することをサポートしています。 Azure AD では、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、セキュリティ プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルが可能です) にアクセス許可を付与できます。
 
 - [Event Grid リソースへのアクセスの承認](security-authorization.md)
 
@@ -521,7 +521,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「脆弱性の管理](/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3:サード パーティ ソフトウェア タイトル用の自動化された修正プログラム管理ソリューションをデプロイする
 
@@ -549,7 +549,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、[Azure セキュリティ ベンチマークの「インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
@@ -563,7 +563,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -575,11 +575,11 @@ Microsoft によって管理される基になるプラットフォームの場�
  
  
  
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -688,7 +688,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、[Azure セキュリティ ベンチマークの「セキュリティで保護された構成](/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -696,7 +696,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプレートをエクスポートする機能があり、これはデプロイ前に構成が確実に組織のセキュリティ要件を満たすように確認する必要があります。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -738,9 +738,9 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 **ガイダンス**: Event Grid または関連リソースにカスタムの Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 **Azure Security Center の監視**: 適用外
 
@@ -802,9 +802,11 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Azure リソースに対してマネージド ID を使用する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [キー コンテナーを作成する方法](/azure/key-vault/quick-create-portal)
+- [キー コンテナーを作成する方法](../key-vault/general/quick-create-portal.md)
 
-- [マネージド ID で Key Vault の認証を提供する方法](/azure/key-vault/managed-identity)
+- [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+
+- [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -832,7 +834,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、[Azure セキュリティ ベンチマークの「マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:非コンピューティング Azure リソースにアップロードするファイルを事前にスキャンする
 
@@ -846,7 +848,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、[Azure セキュリティ ベンチマークの「データの復旧](/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -897,7 +899,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -924,7 +926,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -978,7 +980,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、[Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -994,5 +996,5 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

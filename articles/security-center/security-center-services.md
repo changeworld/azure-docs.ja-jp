@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center でサポートされている使用可能な機能 | Microsoft Docs
-description: このドキュメントでは、Azure Security Center でサポートされるサービスの一覧を示します。
+title: OS、マシンの種類、クラウドに応じた Azure Security Center の機能
+description: OS、種類、クラウドのデプロイに応じて使用できる Azure Security Center の機能について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2020
+ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0e1f669b6955d5c5b70f2f29ff39ba5aef0a9a56
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607132"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544818"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -28,56 +28,56 @@ ms.locfileid: "88607132"
 
 ### <a name="windows-machines"></a>[**Windows マシン**](#tab/features-windows)
 
-|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**料金**
+|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure Arc 対応マシン**|**Azure Defender が必要**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP の統合](security-center-wdatp.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|Standard|
-|[仮想マシン行動分析 (およびセキュリティ アラート)](threat-protection.md)|✔|✔|✔|Standard|
-|[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[ネットワーク ベースのセキュリティ アラート](threat-protection.md#network-layer)|✔|✔|-|Standard|
-|[Just-In-Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
-|[ネイティブ脆弱性評価](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
-|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|Standard|
-|[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|-|-|-|Standard|
-|足りない OS パッチの評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
-|セキュリティの誤った構成の評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
-|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
-|ディスク暗号化の評価|✔|✔|-|Free|
-|サードパーティの脆弱性評価|✔|-|-|Free|
-|[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|Free|
+|[Microsoft Defender for Endpoint 統合](security-center-wdatp.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|はい|
+|[仮想マシン行動分析 (およびセキュリティ アラート)](alerts-reference.md)|✔|✔|✔|はい|
+|[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|はい|
+|[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
+|[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|はい|
+|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|はい|
+|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|はい|
+|[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|はい|
+|[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|はい|
+|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
+|[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
+|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|-|-|-|はい|
+|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
+|サードパーティの脆弱性評価|✔|-|✔|いいえ|
+|[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|いいえ|
 
 
 ### <a name="linux-machines"></a>[**Linux マシン**](#tab/features-linux)
 
-|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**料金**
+|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure Arc 対応マシン**|**Azure Defender が必要**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP の統合](security-center-wdatp.md)|-|-|-|Standard|
-|[仮想マシン行動分析 (およびセキュリティ アラート)](security-center-alerts-iaas.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|Standard|
-|[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[ネットワーク ベースのセキュリティ アラート](threat-protection.md#network-layer)|✔|✔|-|Standard|
-|[Just-In-Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
-|[ネイティブ脆弱性評価](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
-|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|Standard|
-|[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|✔|✔|✔|Standard|
-|足りない OS パッチの評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
-|セキュリティの誤った構成の評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
-|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
-|ディスク暗号化の評価|✔|✔|-|Free|
-|サードパーティの脆弱性評価|✔|-|-|Free|
-|[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|Free|
+|[Microsoft Defender for Endpoint 統合](security-center-wdatp.md)|-|-|-|-|
+|[仮想マシン行動分析 (およびセキュリティ アラート)](./azure-defender.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|はい|
+|[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|-|-|-|はい|
+|[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
+|[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|はい|
+|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|はい|
+|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|はい|
+|[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|はい|
+|[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|はい|
+|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
+|[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
+|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|✔|✔|✔|はい|
+|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|いいえ|
+|ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
+|サードパーティの脆弱性評価|✔|-|✔|いいえ|
+|[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|いいえ|
 
 --- 
 
 
 > [!TIP]
->Standard 価格レベルでのみ利用可能な機能を試すために、Free レベルのユーザーは 30 日間の試用版に登録できます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+>Azure Defender でのみ利用可能な機能を試すために、30 日間の試用版に登録できます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 
 ## <a name="supported-endpoint-protection-solutions"></a>サポートされているエンドポイント保護ソリューション <a name="endpoint-supported"></a>
@@ -93,20 +93,54 @@ ms.locfileid: "88607132"
 |------|------|-----|-----|
 | Microsoft Defender ウイルス対策| Windows Server 2016 以降| いいえ、OS に組み込まれている| はい |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 (下記の注を参照) | 拡張機能を介して | はい |
-| Trend Micro – Deep Security | Windows Server ファミリ  | × | はい |
-| Symantec v12.1.1100 以降| Windows Server ファミリ  | × | ○ |
-| McAfee v10 以降 | Windows Server ファミリ  | × | ○ |
-| McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい **\*** |
-| Sophos V9+| Linux Server ファミリ  | いいえ | はい  **\***  |
-
- **\*** カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用できます。 Azure Security Center ポータルには反映されません。
+| Trend Micro – Deep Security | Windows Server ファミリ  | いいえ | はい |
+| Symantec v12.1.1100 以降| Windows Server ファミリ  | いいえ | はい |
+| McAfee v10 以降 | Windows Server ファミリ  | いいえ | はい |
+| McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい |
+| Sophos V9+| Linux Server ファミリ  | いいえ | はい |
 
 > [!NOTE]
 > Windows Server 2008 R2 の仮想マシンで System Center Endpoint Protection (SCEP) を検出するには、PowerShell (v3.0 またはそれ以降) の後で SCEP をインストールする必要があります。
 
 
+
+## <a name="feature-support-in-government-clouds"></a>Government クラウドでの機能のサポート
+
+| サービスまたは機能 | US Gov | China Gov |
+|------|:----:|:----:|
+|[Just-In-Time VM アクセス](security-center-just-in-time.md) (1)|✔|✔|
+|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md) (1)|✔|✔|
+|[適応型アプリケーション制御](security-center-adaptive-application.md) (1)|✔|✔|
+|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md) (1)|-|-|
+|[Docker ホストのセキュリティ強化機能](harden-docker-hosts.md) (1)|✔|✔|
+|[マシンに対する統合された脆弱性評価](deploy-vulnerability-assessment-vm.md) (1)|-|-|
+|[Microsoft Defender for Endpoint](harden-docker-hosts.md) (1)|✔|-|
+|[AWS アカウントを接続する](quickstart-onboard-aws.md) (1)|-|-|
+|[GCP アカウントを接続する](quickstart-onboard-gcp.md) (1)|-|-|
+|[連続エクスポート](continuous-export.md)|✔|✔ (2)|
+|[ワークフローの自動化](workflow-automation.md)|✔ (2)|✔|
+|[推奨事項の除外規則](exempt-resource.md)|-|-|
+|[アラートの抑制ルール](alerts-suppression-rules.md)|✔|✔|
+|[セキュリティ アラートのメール通知](security-center-provide-security-contact-details.md)|✔|✔|
+|[資産インベントリ](asset-inventory.md)|✔|✔|
+|[Azure Defender for App Service](defender-for-app-service-introduction.md)|-|-|
+|[Azure Defender for Storage](defender-for-storage-introduction.md)|✔|-|
+|[Azure Defender for SQL](defender-for-sql-introduction.md)|✔|✔ (2)|
+|[Azure Defender for Key Vault](defender-for-key-vault-introduction.md)|-|-|
+|[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)|-|-|
+|[Azure Defender for DNS](defender-for-dns-introduction.md)|-|-|
+|[Azure Defender for container registries](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
+|[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔ (2)|✔|
+|[Kubernetes ワークロード保護](kubernetes-workload-protections.md)|✔|✔|
+|||
+
+(1) **Azure Defender for servers** が必要
+
+(2) 部分的
+
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Security Center によるデータの収集方法と Log Analytics エージェント](security-center-enable-data-collection.md)について確認します。
+- [Security Center による Log Analytics エージェントを使用したデータの収集](security-center-enable-data-collection.md)について確認します。
 - [Security Center でデータを管理および保護する](security-center-data-security.md)方法を確認します。
 - [Security Center がサポートされているプラットフォーム](security-center-os-coverage.md)を確認します。

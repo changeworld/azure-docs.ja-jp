@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 993793d21e6253188dfc199d8701cbe117503517
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fb4c4c5a0cf6610af17aabc562c42d2e0eb4e6a4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408434"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409095"
 ---
 # <a name="security-control-incident-response"></a>セキュリティ コントロールインシデント対応
 
@@ -42,9 +42,9 @@ Security Center によって各アラートに重大度が割り当てられる�
 
 また、サブスクリプション ( 運用、非運用など) をタグを使用して明確にマークし、Azure リソース (特に、機密データを処理するもの) を明確に識別して分類するための命名システムを作成します。  インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
-- [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Security alerts in Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
@@ -64,7 +64,7 @@ Security Center によって各アラートに重大度が割り当てられる�
 
 セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-- [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [Azure Security Center のセキュリティ連絡先を設定する方法](../../security-center/security-center-provide-security-contact-details.md)
 
 ## <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
@@ -74,9 +74,9 @@ Security Center によって各アラートに重大度が割り当てられる�
 
 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-- [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [連続エクスポートを構成する方法](../../security-center/continuous-export.md)
 
-- [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Azure Sentinel にアラートをストリーミングする方法](../../sentinel/connect-azure-security-center.md)
 
 ## <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
@@ -86,7 +86,7 @@ Security Center によって各アラートに重大度が割り当てられる�
 
 Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して "Logic Apps" で自動的に応答をトリガーし、Azure リソースを保護できます。
 
-- [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [ワークフローの自動化と Logic Apps を構成する方法](../../security-center/workflow-automation.md)
 
 
 ## <a name="next-steps"></a>次のステップ

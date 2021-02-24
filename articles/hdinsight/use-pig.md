@@ -2,19 +2,16 @@
 title: Apache Pig を使用する
 titleSuffix: Azure HDInsight
 description: HDInsight 上の Apache Hadoop で Pig を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 8fd42169ab6ccb144215e1b6ad2ece09ff55c07f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072837"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944614"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache Pig を使用する
 
@@ -95,15 +92,15 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 * [HDInsight へのデータのアップロード](hdinsight-upload-data.md)
 * [HDInsight での Apache Hive の使用](./hadoop/hdinsight-use-hive.md)
-* [HDInsight での Apache Sqoop の使用](hdinsight-use-sqoop.md)
+* [HDInsight での Apache Sqoop の使用](./hadoop/hdinsight-use-sqoop.md)
 * [HDInsight での MapReduce ジョブの使用](./hadoop/hdinsight-use-mapreduce.md)
 
 [apachepig-home]: https://pig.apache.org/
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: https://curl.haxx.se/
-[pigtask]: https://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
-[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[pigtask]: /sql/integration-services/control-flow/azure-hdinsight-pig-task?viewFallbackFrom=sql-server-2014
+[connectionmanager]: /sql/integration-services/connection-manager/azure-subscription-connection-manager?viewFallbackFrom=sql-server-2014
+[ssispack]: /sql/integration-services/azure-feature-pack-for-integration-services-ssis?viewFallbackFrom=sql-server-2014
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 
 [hdinsight-use-hive]:../hdinsight-use-hive.md

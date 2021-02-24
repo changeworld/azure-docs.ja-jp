@@ -1,19 +1,21 @@
 ---
 title: チュートリアル:Language Understanding ボット Node.js v4
-description: このチュートリアルでは、Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットは、人事アプリを使用して、ボット ソリューションをすばやく実装します。 このボットは、Bot Framework バージョン 4 と Azure Web アプリ ボットで作成します。
+description: このチュートリアルを使用し、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットは、人事アプリを使用して、ボット ソリューションをすばやく実装します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 522502a043778d6f482c1756506063dfa6515ca3
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 11/30/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: dd5f97f2b1c2ad51dda3446412cd936e45c5982e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405026"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436897"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>チュートリアル:Node.js で Language Understanding に対応した Web アプリ ボットを使用する
 
-Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このボットは、Azure [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/) リソースと [Bot Framework バージョン](https://github.com/Microsoft/botbuilder-dotnet) V4 で作成します。
+Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このボットは、Azure [Web アプリ ボット](/azure/bot-service/) リソースと [Bot Framework バージョン](https://github.com/Microsoft/botbuilder-dotnet) V4 で作成します。
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -25,7 +27,7 @@ Node.js を使用して、Language Understanding (LUIS) と統合されたチャ
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Bot emulator](https://aka.ms/abs/build/emulatordownload)
+* [Bot Framework Emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
 ## <a name="create-a-web-app-bot-resource"></a>Web アプリ ボット リソースを作成する
@@ -369,22 +371,22 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 ![ホーム ページには、ボットに関する情報が表示されます。](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>ボット エミュレーターを使用してボットをテストする
+## <a name="use-the-bot-framework-emulator-to-test-the-bot"></a>Bot Framework エミュレーターを使用してボットをテストする
 
 航空便を予約する意図があることをボットに伝えます。
 
-1. ボット エミュレーターを開始し、 **[Open Bot]\(ボットを開く\)** を選択します。
+1. Bot Framework エミュレーターを起動し、 **[Open Bot]\(ボットを開く\)** を選択します。
 1. **[Open a bot]\(ボットを開く\)** ポップアップ ダイアログで、ボットの URL (`http://localhost:3978/api/messages` など) を入力します。 `/api/messages` ルートは、ボットの Web アドレスです。
-1. **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を入力します。これらは、ダウンロードしたボット コードのルートにある **.env** ファイル内にあります。
+1. **Microsoft アプリ ID** と **Microsoft アプリ パスワード** を入力します。これらは、ダウンロードしたボット コードのルートにある **.env** ファイル内にあります。
 
-1. ボット エミュレーターで、「`Book a flight from Seattle to Berlin tomorrow`」と入力します。これにより、 **[Test in Web Chat]\(Web チャットでのテスト\)** で受け取った応答と同じ基本ボットの応答を受け取ります。
+1. Bot Framework エミュレーターで、「`Book a flight from Seattle to Berlin tomorrow`」と入力します。これにより、 **[Test in Web Chat]\(Web チャットでのテスト\)** で受け取った応答と同じ基本ボットの応答を受け取ります。
 
-    [![エミュレーターでの基本ボットの返答](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![Bot Framework Emulator を示すスクリーンショット。](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. **[はい]** を選択します。 ボットは、その操作の要約で応答します。
-1. ボット エミュレーターのログから、`<- trace LuisV3 Trace` を含む行を選択します。 これにより、発話の意図とエンティティについて LUIS からの JSON 応答が表示されます。
+1. Bot Framework エミュレーターのログから、`<- trace LuisV3 Trace` を含む行を選択します。 これにより、発話の意図とエンティティについて LUIS からの JSON 応答が表示されます。
 
-    [![エミュレーターでの基本ボットの返答](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![Bot Framework Emulator を示すスクリーンショット。右側のパネルに JSON コードが表示されています。](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
@@ -393,4 +395,4 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 会話型ボットのある他の[サンプル](https://github.com/microsoft/botframework-solutions)を確認してください。
 
 > [!div class="nextstepaction"]
-> [カスタムの主題の領域を使用して Language Understanding アプリを作成する](luis-quickstart-intents-only.md)
+> [カスタムの主題の領域を使用して Language Understanding アプリを作成する](./tutorial-intents-only.md)

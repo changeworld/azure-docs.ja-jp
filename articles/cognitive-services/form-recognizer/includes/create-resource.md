@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 49feedaa087a89b2dfc5d90c7230b7abf23ed1ba
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 897f2b728dc068b09849d4f48f899b8630a87a51
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815750"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004002"
 ---
 Azure portal に移動し、<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="新しい Form Recognizer リソースを作成します" target="_blank">新しい Form Recognizer リソースを作成します <span class="docon docon-navigate-external x-hidden-focus"></span></a>。 **[作成]** ウィンドウには以下の情報が表示されます。
 
@@ -20,7 +20,7 @@ Azure portal に移動し、<a href="https://ms.portal.azure.com/#create/Microso
 | **サブスクリプション** | アクセスが許可されている Azure サブスクリプションを選択します。 |
 | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
 | **価格レベル** | リソースのコストは、選択した価格レベルと使用量に依存します。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
-| **リソース グループ** | リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
+| **リソース グループ** | リソースを含む [Azure リソース グループ](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
 > [!NOTE]
 > 通常、Azure portal で Cognitive Service リソースを作成するときに、マルチ サービスのサブスクリプション キー (複数の Cognitive Services で使用) または 単一サービスのサブスクリプション キー (特定の Cognitive Services でのみ使用) を作成するオプションがあります。 ただしマルチサービス サブスクリプションには、現在 Form Recognizer は含まれていません。

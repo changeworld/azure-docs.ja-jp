@@ -12,10 +12,10 @@ ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: c86b06ff46f1ddc8d22d2ab7ec4bc8620a8c862f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933173"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>ほぼリアルタイムでビデオを分析する

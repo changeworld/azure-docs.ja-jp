@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 051361860a6a2d9ad70aa81e313857ec86cacfb4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827048"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894034"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal を使用した Azure リソース の管理
 
@@ -29,7 +29,7 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 ## <a name="open-resources"></a>リソースを開く
 
-Azure のリソースは、Azure のサービスとリソース グループで構成されます。 次の手順で、**mystorage0207** という名前のストレージ アカウントを開く方法を示します。 仮想マシンは、**mystorage0207rg** という名前のリソース グループ内に存在します。
+Azure のリソースは、Azure のサービスとリソース グループで構成されます。 次の手順で、 **mystorage0207** という名前のストレージ アカウントを開く方法を示します。 仮想マシンは、 **mystorage0207rg** という名前のリソース グループ内に存在します。
 
 サービスの種類によってリソースを開くには、次の手順を実行します。
 
@@ -40,11 +40,11 @@ Azure のリソースは、Azure のサービスとリソース グループで�
 
 3. 開くリソースを選択します。
 
-    ![ポータルで Azure リソースを開く](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![選択したリソースが強調表示されているスクリーンショット。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
     ストレージ アカウントは次のとおりです。
 
-    ![ポータルで Azure リソースを開く](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![ストレージ アカウントの外観を示すスクリーンショット。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
 リソース グループによってリソースを開くには、次の手順を実行します。
 
@@ -114,7 +114,7 @@ Azure Resource Manager によってリソースの削除の順序が決定され
 
 ## <a name="manage-access-to-resources"></a>リソースへのアクセスの管理
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

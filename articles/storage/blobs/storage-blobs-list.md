@@ -5,22 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9295b1d8a54d9c3c1a138a54f4b3706bd39227fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009544"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543070"
 ---
 # <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
 
 BLOB をコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 各結果セットで返す結果の数を指定し、後続のセットを取得できます。 名前がその文字または文字列から始まる BLOB を返すようにプレフィックスを指定できます。 また、フラット リスト構造 (階層) で BLOB を一覧表示できます。 階層リストでは、フォルダーに整理されたかのように BLOB が返されます。
 
-この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して BLOB を一覧表示する方法について説明します。  
+この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して BLOB を一覧表示する方法について説明します。  
 
 ## <a name="understand-blob-listing-options"></a>BLOB の一覧表示オプションについて
 
@@ -28,10 +28,10 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync)
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
@@ -51,27 +51,27 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 ### <a name="manage-how-many-results-are-returned"></a>返される結果の数を管理する
 
-既定では、一覧表示操作から一度に最大 5,000 件の結果が返されますが、各一覧表示操作で返される結果の数は指定できます。 この記事の例ではその方法を示します。
-
-一覧表示操作で 5,000 個を超える BLOB が返される場合、または使用できる BLOB の数が指定した数を超える場合、Azure Storage からは BLOB の一覧と共に "*継続トークン*" が返されます。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
-
-コードでは、継続トークンの値をチェックして、それが null かどうかを確認します。 継続トークンが null の場合、結果セットは完了しています。 継続トークンが null でない場合は、一覧表示操作をもう一度呼び出し、継続トークンを渡して次の結果セットを取得し、継続トークンが null になるまでそれを繰り返します。
+既定では、一覧表示操作から一度に最大 5,000 件の結果が返されますが、各一覧表示操作で返される結果の数は指定できます。 この記事の例は、結果をページに返す方法を示しています。
 
 ### <a name="filter-results-with-a-prefix"></a>プレフィックスを使用して結果をフィルター処理する
 
-コンテナーの一覧をフィルター処理するには、 `prefix`パラメーターの文字列を指定します。 プレフィックス文字列には、1 つ以上の文字を含めることができます。 Azure Storage は、名前がそのプレフィックスで始まる BLOB だけを返します。
+BLOB の一覧をフィルター処理するには、`prefix` パラメーターの文字列を指定します。 プレフィックス文字列には、1 つ以上の文字を含めることができます。 Azure Storage は、名前がそのプレフィックスで始まる BLOB だけを返します。
 
 ### <a name="return-metadata"></a>メタデータを返す
 
-結果と共に BLOB メタデータを返すことができます。 
+結果と共に BLOB メタデータを返すことができます。
 
-- .NET v12 SDK を使用している場合は、[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) 列挙型の **Metadata** 値を指定します。
+- .NET v12 SDK を使用している場合は、[BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) 列挙型の **Metadata** 値を指定します。
 
 - .NET v11 SDK を使用している場合は、[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
 
+### <a name="list-blob-versions-or-snapshots"></a>BLOB のバージョンまたはスナップショットをリストに表示する
+
+.NET v12 クライアント ライブラリを使用して BLOB のバージョンまたはスナップショットをリストに表示するには、 **[バージョン]** または **[スナップショット]** フィールドで [[BlobStates]](/dotnet/api/azure.storage.blobs.models.blobstates) パラメーターを指定します。 バージョンとスナップショットは、古いものから新しいものの順に列挙されます。 バージョンをリストに表示する方法の詳細については、[BLOB のバージョンをリストに表示する](versioning-enable.md#list-blob-versions)方法に関するページをご覧ください。
+
 ### <a name="flat-listing-versus-hierarchical-listing"></a>フラットな一覧表示と階層的な一覧表示
 
-Azure Storage の BLOB は、(従来のファイル システムのような) 階層的なパラダイムではなく、フラットなパラダイムで組織化されます。 ただし、フォルダー構造を模倣するために、BLOB を*仮想ディレクトリ*に組織化することができます。 仮想ディレクトリは BLOB 名の一部を形成し、区切り文字によって示されます。
+Azure Storage の BLOB は、(従来のファイル システムのような) 階層的なパラダイムではなく、フラットなパラダイムで組織化されます。 ただし、フォルダー構造を模倣するために、BLOB を *仮想ディレクトリ* に組織化することができます。 仮想ディレクトリは BLOB 名の一部を形成し、区切り文字によって示されます。
 
 BLOB を仮想ディレクトリに組織化するには、BLOB 名に区切り文字を使用します。 既定の区切り文字はスラッシュ (/) ですが、区切り文字として任意の文字を指定できます。
 
@@ -90,6 +90,10 @@ BLOB を仮想ディレクトリに組織化するには、BLOB 名に区切り�
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+一覧表示操作で 5,000 個を超える BLOB が返される場合、または使用できる BLOB の数が指定した数を超える場合、Azure Storage からは BLOB の一覧と共に "*継続トークン*" が返されます。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
+
+コードでは、継続トークンの値をチェックして、それが null かどうかを確認します。 継続トークンが null の場合、結果セットは完了しています。 継続トークンが null でない場合は、一覧表示操作をもう一度呼び出し、継続トークンを渡して次の結果セットを取得し、継続トークンが null になるまでそれを繰り返します。
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -153,7 +157,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-BLOB を階層的に一覧表示するには、[BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet) メソッドまたは [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) メソッドを呼び出します。
+BLOB を階層的に一覧表示するには、[BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy) メソッドまたは [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync) メソッドを呼び出します。
 
 次の例では、階層型の一覧表示を使用し、オプションのセグメント サイズを指定して、指定したコンテナー内の BLOB を一覧表示し、BLOB 名をコンソール ウィンドウに出力します。
 

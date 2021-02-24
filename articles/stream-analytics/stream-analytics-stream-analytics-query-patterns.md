@@ -4,17 +4,16 @@ description: この記事では、Azure Stream Analytics ジョブで役に立�
 services: stream-analytics
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: devx-track-js
+ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641043"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019994"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure Stream Analytics での一般的なクエリ パターン
 
@@ -283,7 +282,7 @@ FROM
 
 クエリの最初の手順では、10 分の時間枠で最大のタイム スタンプを検索します。これは、その時間枠で最後のイベントのタイム スタンプです。 2 番目の手順では、最初のクエリの結果と元のストリームを結合し、各期間で最後のタイム スタンプに一致するイベントを検索します。 
 
-**DATEDIFF** は、2 つの DateTime フィールド間の時差を比較して返す、日付固有の関数です。詳細については、[日付関数](https://docs.microsoft.com/stream-analytics-query/date-and-time-functions-azure-stream-analytics)に関するページを参照してください。
+**DATEDIFF** は、2 つの DateTime フィールド間の時差を比較して返す、日付固有の関数です。詳細については、[日付関数](/stream-analytics-query/date-and-time-functions-azure-stream-analytics)に関するページを参照してください。
 
 ストリームの結合の詳細については、[**JOIN**](/stream-analytics-query/join-azure-stream-analytics) に関するページを参照してください。
 
@@ -837,7 +836,7 @@ From
 
 ユーザー定義関数では、使用されるすべてのイベントに対して HexValue の *bigint* 値を計算します。
 
-詳細については、[JavaScript](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions) と [C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf) に関するページを参照してください。
+詳細については、[JavaScript](./stream-analytics-javascript-user-defined-functions.md) と [C#](./stream-analytics-edge-csharp-udf.md) に関するページを参照してください。
 
 ## <a name="advanced-pattern-matching-with-match_recognize"></a>MATCH_RECOGNIZE を使用した高度なパターン マッチング
 
@@ -932,11 +931,11 @@ JOIN
 
 ## <a name="get-help"></a>ヘルプの参照
 
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

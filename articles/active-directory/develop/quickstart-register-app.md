@@ -1,77 +1,136 @@
 ---
-title: クイック スタート:Microsoft ID プラットフォームにアプリを統合する | Azure
-description: このクイックスタートでは、アプリケーションを追加し、Microsoft ID プラットフォームに登録する方法について説明します。
+title: クイック スタート:Microsoft ID プラットフォームでアプリを登録する | Azure
+description: このクイックスタートでは、アプリケーションを Microsoft ID プラットフォームに登録する方法について説明します。
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/12/2020
-ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 430ab980f51ff06ad5e39d6402abf5f649cc6d39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115358"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593097"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
-このクイックスタートでは、Azure portal で**アプリの登録 (プレビュー)** エクスペリエンスを使用してアプリを登録します。 
+このクイックスタートでは、Azure portal でアプリを登録し、Microsoft ID プラットフォームでアプリケーションとそのユーザーに認証および承認サービスを提供できるようにします。
 
-Azure Active Directory テナントに登録することで、Microsoft ID プラットフォームにアプリが登録されます。 エンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、商用クラウド サービスまたは基幹業務アプリケーションを開発し、それらを Microsoft ID プラットフォームと統合できます。 統合によって、そのようなサービスのサインインと認証がセキュリティで保護されます。
+Microsoft ID プラットフォームは、登録済みのアプリケーションに対してのみ ID およびアクセス管理 (IAM) を実行します。 Web またはモバイル アプリのようなクライアント アプリケーション、またはクライアント アプリを支援する Web API のいずれであっても、それを登録することにより、アプリケーションと ID プロバイダー、つまり Microsoft ID プラットフォームとの間の信頼関係が確立されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [Azure AD テナント](quickstart-create-new-tenant.md)。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* [テナントの設定](quickstart-create-new-tenant.md)に関するクイックスタートを完了していること。
 
-## <a name="register-a-new-application-using-the-azure-portal"></a>Azure portal を使用して新しいアプリケーションを登録します
+## <a name="register-an-application"></a>アプリケーションを登録する
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. お使いのアカウントで複数のテナントにアクセスできる場合は、右上隅で自分のアカウントをクリックします。 ポータル セッションを目的の Azure AD テナントに設定します。
-1. **Azure Active Directory** を検索して選択します。 **[管理]** の **[アプリの登録]** を選択します。
-1. **[新規登録]** を選択します。
-1. **[アプリケーションの登録]** に、ユーザーに表示するわかりやすい名前を入力します。
-1. 次のようにアプリケーションを使用できる人を指定します。
+アプリケーションを登録すると、アプリケーションと Microsoft ID プラットフォームとの間の信頼関係が確立されます。 この信頼は一方向です。つまり、アプリは Microsoft ID プラットフォームを信頼しますが、その逆はありません。
+
+アプリ登録を作成するには、次の手順に従います。
+
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューで、 **[ディレクトリとサブスクリプション]** フィルター (:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::) を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **[名前]** を入力します。 アプリのユーザーには、この名前が表示されます。 これは後で変更できます。
+1. アプリケーションを使用できるユーザーを指定します。これは、"*サインインの対象ユーザー*" と呼ばれることもあります。
 
     | サポートされているアカウントの種類 | 説明 |
     |-------------------------|-------------|
-    | **この組織のディレクトリ内のアカウントのみ** | 基幹業務 (LOB) アプリケーションを作成している場合は、このオプションを選択します。 アプリケーションをディレクトリに登録していない場合、このオプションは選択できません。<br><br>このオプションは、Azure AD のみのシングルテナントに対応します。<br><br>このオプションは、ディレクトリの外部にアプリを登録している場合を除き、既定です。 アプリがディレクトリの外部に登録される場合、既定のオプションは Azure AD マルチテナントと個人の Microsoft アカウントです。 |
-    | **任意の組織のディレクトリ内のアカウント** | 企業および教育機関のすべてのユーザーを対象とする場合は、このオプションを選択します。<br><br>このオプションは、Azure AD のみのマルチテナントに対応します。<br><br>アプリを Azure AD のみのシングルテナントとして登録した場合は、 **[認証]** ページを使用して、Azure AD マルチテナントに更新したり、シングルテナントに戻したりすることができます。 |
-    | **任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント** | 最も広範な顧客のセットを対象とする場合は、このオプションを選択します。<br><br>このオプションは、Azure AD マルチテナントと個人用の Microsoft アカウントに対応します。<br><br>アプリを Azure AD マルチテナントと個人用の Microsoft アカウントとして登録した場合は、この設定を UI で変更することはできません。 代わりに、アプリケーション マニフェスト エディターを使用して、サポートされているアカウントの種類を変更する必要があります。 |
+    | **この組織のディレクトリ内のアカウントのみ** | "*ご利用の*" テナント内のユーザー (またはゲスト) によってのみ使用されるアプリケーションをビルドしている場合、このオプションを選択します。<br><br>このアプリは、多くの場合、"*基幹業務*" (LOB) アプリケーションと呼ばれ、Microsoft ID プラットフォームの "*シングルテナント*" アプリケーションです。 |
+    | **任意の組織のディレクトリ内のアカウント** | "*任意*" の Azure Active Directory (Azure AD) テナント内のユーザーがアプリケーションを使用できるようにする場合は、このオプションを選択します。 このオプションは、たとえば、複数の組織に提供する目的でサービスとしてのソフトウェア (SaaS) アプリケーションをビルドしている場合に適しています。<br><br>Microsoft ID プラットフォームでは、この種類のアプリは、"*マルチテナント*" アプリケーションと呼ばれます。 |
+    | **任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント** | 最も広範な顧客のセットを対象とする場合は、このオプションを選択します。<br><br>個人用 "*Microsoft アカウント*" を持つユーザーもサポートできる "*マルチテナント*" アプリケーションを登録するには、このオプションを選択します。 |
+    | **個人用 Microsoft アカウント** | 個人用 Microsoft アカウントを持つユーザー専用のアプリケーションを構築している場合は、このオプションを選択します。 個人用 Microsoft アカウントには、Skype、Xbox、Live、Hotmail のアカウントが含まれます。 |
 
-1. **[リダイレクト URI (省略可能)]** で、ビルド中のアプリの種類を選択します。**Web** か**パブリック クライアント (モバイル & デスクトップ)** です。 次にアプリケーションのリダイレクト URI または応答 URL を入力します。
+1. **[リダイレクト URI (省略可能)]** には何も入力しないでください。 リダイレクト URI は、次のセクションで構成します。
+1. **[登録]** を選択して、初期のアプリ登録を完了します。
 
-    * Web アプリケーションの場合は、アプリのベース URL を指定します。 ローカル マシンで実行されている Web アプリの URL であれば、たとえば `https://localhost:31544` のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
-    * パブリック クライアント アプリケーションの場合は、トークン応答を返すために Azure AD によって使用される URI を指定します。 アプリケーション固有の値 (たとえば、`myapp://auth`) を入力します。
+    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="[アプリケーションの登録] ペインを示す、Web ブラウザー内の Azure portal のスクリーンショット。":::
 
-    Web アプリケーションやネイティブ アプリケーションの例については、「[Microsoft ID プラットフォーム](./index.yml)」のクイックスタートを参照してください。
+登録が完了すると、Azure portal に、アプリの登録の **[概要]** ペインが表示されます。 **[アプリケーション (クライアント) ID]** の値を確認します。 この値は、"*クライアント ID*" とも呼ばれ、Microsoft ID プラットフォーム内のアプリケーションを一意に識別します。
 
-1. 終了したら、 **[登録]** を選択します。
+アプリケーションのコード (より一般的には、アプリケーションで使用される認証ライブラリ) でも、このクライアント ID を使用します。 この ID は、ID プラットフォームから受信するセキュリティ トークンの検証過程で使用されます。
 
-    ![Azure portal で新しいアプリケーションを登録する画面の画像](./media/quickstart-add-azure-ad-app-preview/new-app-registration.png)
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="アプリの登録の [概要] ペインを示す、Web ブラウザー内の Azure portal のスクリーンショット。":::
 
-Azure AD によって一意のアプリケーションまたはクライアントがアプリに割り当てられます。 ポータルでアプリケーションの **[概要]** ページが開きます。 アプリケーションに機能を追加するには、ブランド、証明書とシークレット、API のアクセス許可など、その他の構成オプションを選択できます。
+## <a name="add-a-redirect-uri"></a>リダイレクト URI を追加する
 
-![新たに登録されたアプリの概要ページの例](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)
+"*リダイレクト URI*" は、認証後に Microsoft ID プラットフォームによってユーザーのクライアントがリダイレクトされ、セキュリティ トークンが送信される場所です。
+
+たとえば、運用 Web アプリケーションでは、多くの場合、リダイレクト URI は、アプリが実行されているパブリック エンドポイント (例: `https://contoso.com/auth-response`) です。 開発時には、アプリをローカルで実行するエンドポイント (例: `https://127.0.0.1/auth-response` または `http://localhost/auth-response`) も追加するのが一般的です。
+
+登録済みのアプリケーションのリダイレクト URI を追加および変更するには、その[プラットフォーム設定](#configure-platform-settings)を構成します。
+
+### <a name="configure-platform-settings"></a>プラットフォーム設定を構成する
+
+リダイレクト URI など、アプリケーションの種類ごとの設定は、Azure portal の **[プラットフォーム構成]** で構成します。 **Web** や **シングルページ アプリケーション** などの一部のプラットフォームでは、リダイレクト URI を手動で指定する必要があります。 モバイルやデスクトップなどの他のプラットフォームでは、他の設定を構成するときに自動的に生成されるリダイレクト URI から選択できます。
+
+ターゲットのプラットフォームまたはデバイスに基づいてアプリケーション設定を構成するには、次の手順を行います。
+
+1. Azure portal の **[アプリの登録]** で、対象のアプリケーションを選択します。
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。
+1. **[プラットフォームの構成]** で、アプリケーションの種類 (プラットフォーム) のタイルを選択して、その設定を構成します。
+
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Azure portal の [プラットフォームの構成] ペインのスクリーンショット。" border="false":::
+
+    | プラットフォーム | 構成設定 |
+    | -------- | ---------------------- |
+    | **Web** | アプリの **リダイレクト URI** を入力します。 この URI は、認証後に Microsoft ID プラットフォームによってユーザーのクライアントがリダイレクトされ、セキュリティ トークンが送信される場所です。<br/><br/>サーバーで実行される標準の Web アプリケーションについては、このプラットフォームを選択します。 |
+    | **シングルページ アプリケーション** | アプリの **リダイレクト URI** を入力します。 この URI は、認証後に Microsoft ID プラットフォームによってユーザーのクライアントがリダイレクトされ、セキュリティ トークンが送信される場所です。<br/><br/>JavaScript や、Angular、Vue.js、React.js、Blazor WebAssembly などのフレームワークを使用してクライアント側 Web アプリを構築している場合は、このプラットフォームを選択します。 |
+    | **iOS / macOS** | アプリの **バンドル ID** を入力します。 これは、 **[ビルド設定]** または *Info.plist* 内の Xcode で検索します。<br/><br/>**バンドル ID** を指定すると、リダイレクト URI が自動的に生成されます。 |
+    | **Android** | アプリの **パッケージ名** を入力します。 これは、*AndroidManifest.xml* ファイル内で検索します。 また、**署名ハッシュ** も生成して入力します。<br/><br/>これらの設定を指定すると、リダイレクト URI が自動的に生成されます。 |
+    | **モバイル アプリケーションとデスクトップ アプリケーション** | **推奨されるリダイレクト URI** のいずれかを選択します。 または、**カスタム リダイレクト URI** を指定します。<br/><br/>デスクトップ アプリケーションの場合は、次をお勧めします<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>最新の Microsoft Authentication Library (MSAL) を使用していない、またはブローカーを使用していないモバイル アプリケーションには、このプラットフォームを選択します。 また、デスクトップ アプリケーションにも、このプラットフォームを選択します。 |
+1. **[構成する]** を選択して、プラットフォームの構成を完了します。
+
+### <a name="redirect-uri-restrictions"></a>リダイレクト URI の制限
+
+アプリ登録に追加するリダイレクト URI の形式には、いくつかの制限があります。 これらの制限の詳細については、「[リダイレクト URI (応答 URL) に関する制約と制限](reply-url.md)」を参照してください。
+
+## <a name="add-credentials"></a>資格情報を追加する
+
+資格情報は、Web API にアクセスする [Confidential クライアント アプリケーション](msal-client-applications.md)によって使用されます。 Confidential クライアントの例としては、[Web アプリ](scenario-web-app-call-api-overview.md)、その他の [Web API](scenario-protected-web-api-overview.md)、または[サービス型およびデーモン型アプリケーション](scenario-daemon-overview.md)などがあります。 資格情報により、アプリケーションはそれ自体として認証され、実行時にユーザーによる操作は必要ありません。 
+
+証明書とクライアント シークレット (文字列) の両方を資格情報として Confidential クライアント アプリの登録に追加できます。
+
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="[アプリの登録] の [証明書およびシークレット] ペインを示す Azure portal のスクリーンショット。":::
+
+### <a name="add-a-certificate"></a>証明書を追加する
+
+資格情報の種類としては、証明書 ("*公開キー*" と呼ばれることもあります) が推奨されます。 クライアント シークレットよりも確実性が高くなります。 アプリケーションにおける認証方法として証明書を使用する方法について詳しくは、「[Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報](active-directory-certificate-credentials.md)」を参照してください。
+
+1. Azure portal の **[アプリの登録]** で、対象のアプリケーションを選択します。
+1. **[証明書およびシークレット]**  >  **[証明書のアップロード]** の順に選択します。
+1. アップロードするファイルを選択します。 ファイルの種類は *.cer*、 *.pem*、 *.crt* のいずれかである必要があります。
+1. **[追加]** を選択します。
+
+### <a name="add-a-client-secret"></a>クライアント シークレットの追加
+
+クライアント シークレットは、"*アプリケーション パスワード*" とも呼ばれます。 これは、アプリが自身の身元を示すために証明書の代わりに使用できる文字列値です。 2 種類の資格情報のうち、より使いやすいのはクライアント シークレットです。 多くの場合は開発時に使用されますが、証明書より安全性が低いと見なされています。 運用環境で実行するアプリケーションでは、証明書を使用してください。 
+
+アプリケーションのセキュリティに関する推奨事項について詳しくは、「[Microsoft ID プラットフォームのベスト プラクティスと推奨事項](identity-platform-integration-checklist.md#security)」を参照してください。
+
+1. Azure portal の **[アプリの登録]** で、対象のアプリケーションを選択します。
+1. **[証明書およびシークレット]**  >   **[新しいクライアント シークレット]** の順に選択します。
+1. クライアント シークレットの説明を追加します。
+1. 期間を選択します。
+1. **[追加]** を選択します。
+1. クライアント アプリケーションのコードで使用できるように、"*シークレットの値を記録します*"。 このページからの移動後は、このシークレットの値は "*二度と表示されません*"。
+
 
 ## <a name="next-steps"></a>次のステップ
 
-* Web API にアクセスするには、以下のクイックスタートを参照してください。[Web API にアクセスするようにクライアント アプリケーションを構成する](quickstart-configure-app-access-web-apis.md)
+クライアント アプリケーションでは、通常、Web API 内のリソースにアクセスする必要があります。 Microsoft ID プラットフォームを使用することで、クライアント アプリケーションを保護できます。 また、プラットフォームを使用して、Web API に対する、スコープ指定されたアクセス許可ベースのアクセスを承認することもできます。
 
-* アクセス許可の詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](v2-permissions-and-consent.md)」を参照してください。
+このシリーズの次のクイックスタートに進んで、Web API 用に別のアプリ登録を作成し、そのスコープを公開します。
 
-* Web API を公開するには、「[クイックスタート:Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)」を参照してください。
-
-* サポートされているアカウントを管理するには、「[クイックスタート:アプリケーションでサポートされているアカウントを変更する](quickstart-modify-supported-accounts.md)」を参照してください。
-
-* アプリをビルドし、機能を追加するには、「[Microsoft ID プラットフォーム](./index.yml)」のクイックスタートを参照してください。
-
-* 登録されたアプリケーションを表す 2 つの Azure AD オブジェクトと、両者間の関係については、[Application objects and service principal objects](app-objects-and-service-principals.md)\(アプリケーション オブジェクトとサービス プリンシパル オブジェクト\) を参照してください。
-
-* アプリを開発するときに使用するブランド化ガイドラインの詳細については、「[アプリケーションのブランド化ガイドライン](howto-add-branding-in-azure-ad-apps.md)」を参照してください。
+> [!div class="nextstepaction"]
+> [Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)

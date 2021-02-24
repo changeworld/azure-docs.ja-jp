@@ -1,18 +1,15 @@
 ---
 title: チュートリアル - Apache Kafka と Enterprise セキュリティ - Azure HDInsight
 description: チュートリアル - Enterprise セキュリティ パッケージを使用して Azure HDInsight に Kafka 用の Apache Ranger ポリシーを構成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 552998de23bebd98f56ba28eb6ad581689e52e41
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85105939"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933688"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -219,7 +216,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 このアプリケーションを引き続き使用しない場合は、次の手順で作成した Kafka クラスターを削除します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。 
 1. **[削除]** をクリックします。 **[はい]** をクリックします。

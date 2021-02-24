@@ -4,10 +4,12 @@
   items:
     - name: AKS について
       href: intro-kubernetes.md
+    - name: ソリューションのアーキテクチャ
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
 - name: クイックスタート
   expanded: true
   items:
-    - name: AKS クラスターの作成
+    - name: AKS クラスターのデプロイ
       expanded: true
       items:
         - name: Azure CLI の使用
@@ -46,8 +48,10 @@
       href: concepts-clusters-workloads.md
     - name: アクセスと ID
       href: concepts-identity.md
-    - name: セキュリティ
+    - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: アプリケーションとクラスターのセキュリティ
           href: concepts-security.md
         - name: Azure Policy によるセキュリティ制御
@@ -132,22 +136,30 @@
       items:
         - name: AKS クラスターのスケーリング
           href: scale-cluster.md
+        - name: AKS クラスターの停止 (プレビュー)
+          href: start-stop-cluster.md
         - name: AKS クラスターのアップグレード
           href: upgrade-cluster.md
         - name: アップタイム SLA を使用する
           href: uptime-sla.md
-        - name: 近接配置グループの使用 (プレビュー)
+        - name: 近接通信配置グループを使用する
           href: reduce-latency-ppg.md
         - name: ノード イメージのアップグレード
           href: node-image-upgrade.md
+        - name: ノード イメージを GitHub Actions で自動的にアップグレード
+          href: node-upgrade-github-actions.md
         - name: ノードの OS の更新プログラムの処理
           href: node-updates-kured.md
         - name: AKS クラスターの構成
           href: cluster-configuration.md
+        - name: カスタム ノード構成 (プレビュー)
+          href: custom-node-configuration.md
         - name: ACR と AKS クラスターの統合
           href: cluster-container-registry-integration.md
         - name: 仮想ノードの作成
           items:
+            - name: 仮想ノードの使用
+              href: virtual-nodes.md
             - name: Azure CLI の使用
               href: virtual-nodes-cli.md
             - name: Azure ポータルの使用
@@ -160,14 +172,14 @@
           items:
             - name: 複数のノード プールを使用する
               href: use-multiple-node-pools.md
-            - name: スポット ノード プールの使用 (プレビュー)
+            - name: スポット ノード プールを使用する
               href: spot-node-pool.md
             - name: システム ノード プールの使用
               href: use-system-pools.md
         - name: Terraform を使用した AKS のデプロイ
-          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Kubernetes リソース ビューアーの使用 (プレビュー)
+        - name: Azure portal の Kubernetes リソース ビュー
           href: kubernetes-portal.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
@@ -244,11 +256,13 @@
           href: kubernetes-service-principal.md
         - name: マネージド ID の使用
           href: use-managed-identity.md
+        - name: AAD ポッド ID の使用 (プレビュー)
+          href: use-azure-ad-pod-identity.md
         - name: クラスター構成ファイルへのアクセスの制限
           href: control-kubeconfig-access.md
         - name: ネットワーク ポリシーによるポッドのトラフィックのセキュリティ保護
           href: use-network-policies.md
-        - name: Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
+        - name: Azure Policy を使用したポッドのセキュリティ保護
           href: use-pod-security-on-azure-policy.md
         - name: ポッド セキュリティ ポリシーの使用 (プレビュー)
           href: use-pod-security-policies.md
@@ -282,8 +296,8 @@
         - name: コンテナーに対する Azure Monitor
           href: ../azure-monitor/insights/container-insights-overview.md
           maintainContext: true
-        - name: マスター コンポーネント ログの表示
-          href: view-master-logs.md
+        - name: コントロール プレーン コンポーネントのログを表示する
+          href: view-control-plane-logs.md
         - name: kubelet ログの表示
           href: kubelet-logs.md
         - name: コンテナー データをリアルタイムで表示する
@@ -307,8 +321,10 @@
           href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: アプリケーションの開発と実行
       items:
-        - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
-          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
+        - name: Visual Studio Code で Bridge to Kubernetes を使用する
+          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+        - name: Visual Studio で Bridge to Kubernetes を使用する
+          href: /visualstudio/containers/bridge-to-kubernetes
         - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用
@@ -317,9 +333,13 @@
           href: spark-job.md
         - name: GPU の使用
           href: gpu-cluster.md
-        - name: Azure Database for PostgreSQL の使用
-          href: ../postgresql/concepts-aks.md
+        - name: PostgreSQL を使用したアプリのビルド
+          href: ../postgresql/flexible-server/tutorial-django-aks-database.md
+        - name: MySQL を使用したアプリのビルド
+          href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
+        - name: Open Liberty または WebSphere Liberty を使用したアプリのビルド
+          href: howto-deploy-java-liberty-app.md
         - name: Azure API Management の使用
           href: ../api-management/api-management-kubernetes.md
           maintainContext: true
@@ -350,10 +370,10 @@
     - name: DevOps
       items:
         - name: Ansible を使用した AKS クラスターの作成
-          href: /azure/ansible/ansible-create-configure-aks
+          href: /azure/developer/ansible/aks-configure-clusters
           maintainContext: true
         - name: Jenkins の継続的なデプロイ
-          href: jenkins-continuous-deployment.md
+          href: /azure/developer/jenkins/deploy-from-github-to-aks
         - name: Azure DevOps プロジェクト
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true

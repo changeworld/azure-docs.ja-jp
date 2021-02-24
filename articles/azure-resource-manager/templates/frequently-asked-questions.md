@@ -1,39 +1,39 @@
 ---
 title: ARM テンプレートに関してよく寄せられる質問
-description: Azure Resource Manager テンプレートに関してよく寄せられる質問 (FAQ)。
+description: Azure Resource Manager テンプレート (ARM テンプレート) に関してよく寄せられる質問 (FAQ)。
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327261"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561904"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM テンプレートに関してよく寄せられる質問
 
-この記事では、Azure Resource Manager (ARM) テンプレートについてよく寄せられる質問に回答します。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) についてよく寄せられる質問に回答します。
 
 ## <a name="getting-started"></a>作業の開始
 
 * **ARM テンプレートとは何ですか。なぜ使用する必要があるのでしょうか。**
 
   ARM テンプレートは、Azure にデプロイする対象を定義する JSON ファイルです。 テンプレートは、Azure のコードとしてのインフラストラクチャ ソリューションを実装するのに役立ちます。 組織は、必要なインフラストラクチャを別々の環境に繰り返し、確実にデプロイできます。
-  
+
   ARM テンプレートが Azure インフラストラクチャの管理をどのようにサポートするかの詳細については、「[ARM テンプレートとは](overview.md)」を参照してください。
 
 * **テンプレートの使用を開始するにはどうすればよいですか。**
 
-  ARM テンプレートの作成を簡単にするには、適切なツールが必要です。 [Visual Studio Code](https://code.visualstudio.com/) と [Azure Resource Manager ツール拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)をインストールすることをお勧めします。 これらのツールの概要紹介については、「[クイックスタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+  ARM テンプレートの作成を簡単にするには、適切なツールが必要です。 [Visual Studio Code](https://code.visualstudio.com/) と [Azure Resource Manager ツール拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)をインストールすることをお勧めします。 これらのツールの概要紹介については、「[クイックスタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
   ARM テンプレートの作成について学習する準備ができたら、[ARM テンプレートの初心者向けチュートリアル シリーズ](template-tutorial-create-first-template.md)を開始してください。 これらのチュートリアルでは、ARM テンプレートの構築プロセスを段階的に説明します。 テンプレートのさまざまなセクションと、それらがどのように連携するかについて学習します。 このコンテンツは、[Microsoft Learn モジュール](/learn/modules/authoring-arm-templates/)にも用意されています。
 
 * **ARM テンプレートまたは Terraform のどちらを使用して Azure にデプロイする必要がありますか。**
 
   お好みのオプションをお使いください。 どちらのサービスも、Azure へのデプロイを自動化するのに役立ちます。
-  
+
   他のコードとしてのインフラストラクチャ サービスと比較して、ARM テンプレートを使用することには利点があると考えられます。 これらの利点の詳細については、「[ARM テンプレートを選択する理由](overview.md#why-choose-arm-templates)」を参照してください。
 
 ## <a name="build-2020"></a>Build 2020
@@ -59,7 +59,7 @@ ms.locfileid: "87327261"
 * **ポータルを使用して環境をセットアップしました。既存のリソース グループからテンプレートを取得する方法はありますか。**
 
   はい。リソース グループから[テンプレートをエクスポート](export-template-portal.md)できます。 エクスポートされたテンプレートは、テンプレートについて理解するための出発点として適していますが、運用環境で使用する前に変更することをお勧めします。
-  
+
   テンプレートをエクスポートするときに、テンプレートに含めるリソースを選択できます。
 
 * **ARM テンプレートにリソース グループを作成し、そこにリソースをデプロイすることはできますか。**
@@ -68,7 +68,7 @@ ms.locfileid: "87327261"
 
 * **ARM テンプレートにサブスクリプションを作成できますか。**
 
-  まだできませんが、今後可能になる予定です。
+  はい。詳細については、[最新の API を使用して Azure サブスクリプションをプログラムで作成する](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)方法に関するページをご覧ください。
 
 * **デプロイ前にテンプレートをテストするにはどうすればよいですか。**
 
@@ -88,7 +88,7 @@ ms.locfileid: "87327261"
 
 * **新しいテンプレート言語を開発中であると聞きました。その詳細情報はどこで確認できますか。**
 
-  新しいテンプレート言語について学習するには、[サインアップして通知を受け取る](https://aka.ms/armLangUpdates)ようにしてください。
+  新しい言語をプレビューするには、[Project Bicep リポジトリ](https://github.com/Azure/bicep)を参照してください。 新しい言語について最新情報を入手するには、[サインアップして通知を受け取る](https://aka.ms/armLangUpdates)ようにしてください。
 
 * **YAML でのテンプレートの作成をサポートする予定はありますか。**
 
@@ -104,9 +104,9 @@ ms.locfileid: "87327261"
 
 ## <a name="template-specs"></a>Template Specs
 
-* **Template Specs のプレビュー リリースに参加するにはどうすればよいですか。**
+* **Template Specs のプレビュー リリースの使用を開始するにはどうすればよいですか。**
 
-  テンプレート スペックを使用するには、[待機リストに参加](https://aka.ms/templateSpecsWaitlist)してください。
+  最新バージョンの PowerShell または Azure CLI をインストールします。 Azure PowerShell の場合は、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)を使用します。 Azure CLI の場合は、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 * **テンプレート スペックと Azure Blueprints はどのように関連していますか。**
 
@@ -128,7 +128,7 @@ ms.locfileid: "87327261"
 
 * **カスタム スクリプト拡張機能と Desired State Configuration (DSC) は引き続き使用できますか。**
 
-  それらのオプションは変わりなく、引き続き使用できます。 デプロイ スクリプトは、VM ゲストに関連付けられていないアクションを実行するように設計されています。 VM 内のホスト オペレーティング システム上でスクリプトを実行する必要がある場合は、カスタム スクリプト拡張機能や DSC を選択することをお勧めします。 ただし、デプロイ スクリプトには、タイムアウト期間の設定などの利点があります。
+  それらのオプションは変わりなく、引き続き使用できます。 デプロイ スクリプトは、VM ゲストに関連しないアクションを実行するように設計されています。 VM 内のホスト オペレーティング システム上でスクリプトを実行する必要がある場合は、カスタム スクリプト拡張機能や DSC を選択することをお勧めします。 ただし、デプロイ スクリプトには、タイムアウト期間の設定などの利点があります。
 
 * **デプロイ スクリプトは Azure Government でサポートされていますか。**
 
@@ -154,7 +154,7 @@ ms.locfileid: "87327261"
 
 * **what-if を使用すると、テンプレートに含まれていないプロパティの変更が表示されます。この "ノイズ" は想定されたものですか。**
 
-  what-if はプレビュー段階にあります。 Microsoft ではノイズの削減に取り組んでいます。 こちらの GitHub リポジトリで問題を送信することで、品質向上にご協力ください。 https://aka.ms/WhatIfIssues
+  Microsoft ではノイズの削減に取り組んでいます。 こちらの GitHub リポジトリで問題を送信することで、品質向上にご協力ください。 https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>テンプレート ビジュアライザー
 
@@ -182,11 +182,11 @@ ms.locfileid: "87327261"
 
 * **ARM テンプレートを Azure Pipelines に統合できますか。**
 
-  はい。 テンプレートとパイプラインの使用方法の詳細については、「[チュートリアル: Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](deployment-tutorial-pipeline.md)」と「[Azure Pipelines を使用した ARM テンプレートの統合](add-template-to-azure-pipelines.md)」を参照してください。
+  はい。 テンプレートとパイプラインの使用方法の詳細については、「[チュートリアル: Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション](deployment-tutorial-pipeline.md)」と「[Azure Pipelines を使用した ARM テンプレートの統合](add-template-to-azure-pipelines.md)」を参照してください。
 
 * **GitHub のアクションを使用してテンプレートをデプロイできますか。**
 
-  はい。「[GitHub Actions を使用した Azure Resource Manager テンプレートのデプロイ](deploy-github-actions.md)」を参照してください。
+  はい。「[GitHub Actions を使用した ARM テンプレートのデプロイ](deploy-github-actions.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

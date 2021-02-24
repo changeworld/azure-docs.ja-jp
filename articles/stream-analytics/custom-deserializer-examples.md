@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics で .NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 description: この記事では、シリアル化の形式と、Azure Stream Analytics のクラウド ジョブとエッジ ジョブに対するカスタム .NET 逆シリアライザーが定義されているインターフェイスについて説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4616f6c567b0bba13fe04aed56fd5e4ddc293f90
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008388"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018158"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 
@@ -201,7 +200,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>REST API のシリアル化形式
 
-Stream Analytics のすべての入力には、**シリアル化形式**があります。 入力オプションについて詳しくは、[入力 REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) のドキュメントをご覧ください。
+Stream Analytics のすべての入力には、**シリアル化形式** があります。 入力オプションについて詳しくは、[入力 REST API](/rest/api/streamanalytics/2016-03-01/inputs) のドキュメントをご覧ください。
 
 次の JavaScript コードは、REST API を使用する場合の .NET 逆シリアライザーのシリアル化形式の例です。
 
@@ -239,7 +238,7 @@ Stream Analytics のすべての入力には、**シリアル化形式**があ�
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>この機能がすべての Azure リージョンで使用できるようになるのはいつですか?
 
-この機能は、[6 つのリージョン](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)で使用できます。 別のリージョンでこの機能を使用することに関心がある場合は、[要求を提出する](https://aka.ms/ccodereqregion)ことができます。 すべての Azure リージョンでのサポートは、ロードマップ上にあります。
+この機能は、[6 つのリージョン](#region-support)で使用できます。 別のリージョンでこの機能を使用することに関心がある場合は、[要求を提出する](https://aka.ms/ccodereqregion)ことができます。 すべての Azure リージョンでのサポートは、ロードマップ上にあります。
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>GetMetadataPropertyValue 関数と同様の入力から MetadataPropertyValue にアクセスすることはできますか?
 
@@ -249,9 +248,9 @@ Stream Analytics のすべての入力には、**シリアル化形式**があ�
 
 逆シリアライザーを実装した後は、コミュニティと共有することにより、他のユーザーに役立てることができます。 コードを [Azure Stream Analytics GitHub リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)に送信してください。
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Stream Analytics でカスタム デシリアライザーの使用について、他にどのような制限がありますか?
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>Stream Analytics でカスタム デシリアライザーを使用する場合、他にどのような制限がありますか?
 
-入力が MapField 型を含むスキーマの Protobuf 形式の場合、カスタム デシリアライザーを実装することはできません。 Microsoft では、今後この型に対するサポートを提供できるように取り組んでいます。
+入力が `MapField` 型を含むスキーマの Protobuf 形式の場合、カスタム デシリアライザーを実装することはできません。 また、カスタム デシリアライザーでは、サンプル データやプレビュー データはサポートされません。 
 
 ## <a name="next-steps"></a>次の手順
 

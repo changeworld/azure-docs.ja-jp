@@ -3,12 +3,12 @@ title: MARS エージェントを使用して Windows Server にファイルを�
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを使用して、Azure に格納されているデータを Windows サーバーまたは Windows コンピューターに復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e61ad7083a7b6979222566112820bad133022844
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892509"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813255"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>MARS エージェントを使用して Windows Server にファイルを復元する
 
@@ -89,7 +89,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 * *サンプルのコンテナー* – ソース コンピューターとターゲット コンピューターが登録されている Recovery Services コンテナー。
 
 > [!NOTE]
-> バックアップを、以前のバージョンのオペレーティング システムを実行しているターゲット コンピューターに復元することはできません。 たとえば、Windows 7 コンピューターから取得されたバックアップは Windows 7 (以降の) コンピューターで復元できます。 Windows 8 コンピューターから取得されたバックアップは、Windows 7 コンピューターに復元できません。
+> バックアップを、以前のバージョンのオペレーティング システムを実行しているターゲット コンピューターに復元することはできません。 たとえば、Windows 7 コンピューターから取得されたバックアップは Windows 7 (以降の) コンピューターで復元できます。 Windows 10 コンピューターから取得されたバックアップは、Windows 7 コンピューターに復元できません。
 >
 >
 
@@ -107,7 +107,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 
 5. サンプルのコンテナーに対応するコンテナー資格情報ファイルを指定し、 **[次へ]** を選択します。
 
-    コンテナー資格情報ファイルが無効である (または期限が切れている) 場合は、Azure Portal でサンプルのコンテナーから新しいコンテナー資格情報ファイルをダウンロードします。 有効なコンテナー資格情報を指定すると、対応するバックアップ コンテナーの名前が表示されます。
+    コンテナー資格情報ファイルが無効である (または期限が切れている) 場合は、Azure portal で[サンプルのコンテナーから新しいコンテナー資格情報ファイルをダウンロードします](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 有効なコンテナー資格情報を指定すると、対応するバックアップ コンテナーの名前が表示されます。
 
 6. **[バックアップ サーバーの選択]** ページで、表示されているコンピューターの一覧からソース コンピューターを選択し、パスフレーズを指定します。 **[次へ]** を選択します。
 

@@ -1,28 +1,24 @@
 ---
 title: 構成と管理に関する問題についてよくあるご質問
-titleSuffix: Azure Cloud Services
 description: この記事では、Microsoft Azure Cloud Services の構成と管理についてよくあるご質問を紹介します。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: genli
-ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092747"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742592"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services (クラシック) の構成と管理の問題: よく寄せられる質問 (FAQ)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 この記事では、[Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services) の構成と管理の問題についてよくあるご質問を紹介します。 サイズについては、 [Cloud Services VM サイズのページ](cloud-services-sizes-specs.md) を参照してください。
 
@@ -62,7 +58,7 @@ ms.locfileid: "87092747"
 
 **全般**
 
-- [自分の Web サイトに "nosniff" を追加する方法を教えてください。](#how-do-i-add-nosniff-to-my-website)
+- [Web サイトに `nosniff` を追加する方法を教えてください。](#how-do-i-add-nosniff-to-my-website)
 - [IIS の Web ロールをカスタマイズする方法を教えてください。](#how-do-i-customize-iis-for-a-web-role)
 - [クラウド サービスのクォータ制限とは何ですか。](#what-is-the-quota-limit-for-my-cloud-service)
 - [クラウド サービス VM 上のドライブで表示される空きディスク領域が非常に小さいのはなぜですか。](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -77,7 +73,7 @@ ms.locfileid: "87092747"
 
 ### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>私のクラウド サービスの TLS または SSL 証明書の証明書チェーンが不完全なのはなぜですか。
     
-Microsoft では、リーフ証明書だけではなく、完全な証明書チェーン (リーフ証明書、中間証明書、およびルート証明書) をインストールすることをお客様にお勧めしています。 お客様がリーフ証明書だけをインストールした場合、CTL を探索して証明書チェーンを構築することについては Windows の処理に頼ることになります。 Windows が証明書を検証しようとしたときに、Azure または Windows Update で断続的なネットワークの問題や DNS の問題が発生すると、証明書が無効と見なされる可能性があります。 完全な証明書チェーンをインストールすると、この問題を回避できます。 これを行う方法については、ブログ記事「[How to install a chained SSL certificate](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) (チェーンされた SSL 証明書をインストールする方法)」をご覧ください。
+Microsoft では、リーフ証明書だけではなく、完全な証明書チェーン (リーフ証明書、中間証明書、およびルート証明書) をインストールすることをお客様にお勧めしています。 お客様がリーフ証明書だけをインストールした場合、CTL を探索して証明書チェーンを構築することについては Windows の処理に頼ることになります。 Windows が証明書を検証しようとしたときに、Azure または Windows Update で断続的なネットワークの問題や DNS の問題が発生すると、証明書が無効と見なされる可能性があります。 完全な証明書チェーンをインストールすると、この問題を回避できます。 これを行う方法については、ブログ記事「[How to install a chained SSL certificate](/archive/blogs/azuredevsupport/how-to-install-a-chained-ssl-certificate) (チェーンされた SSL 証明書をインストールする方法)」をご覧ください。
 
 ### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>"Windows Azure Tools Encryption Certificate for Extensions" の目的は何ですか。
 
@@ -111,11 +107,11 @@ Get-AzurePublishSettingsFile
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>"Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。
 
-この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、[こちらのアドバイザリ](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)をご覧ください。
+この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、[こちらのアドバイザリ](/security-updates/securityadvisories/2018/4092731)をご覧ください。
 
 詳細については、次の記事を参照してください。
-- [クラウド サービスのスタートアップ タスクを構成して実行する方法](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [クラウド サービス共通のスタートアップ タスク](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+- [クラウド サービスのスタートアップ タスクを構成して実行する方法](./cloud-services-startup-tasks.md)
+- [クラウド サービス共通のスタートアップ タスク](./cloud-services-startup-tasks-common.md)
 
 ## <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -128,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0) を使用して、各場所の値を設定できます。
+csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true) を使用して、各場所の値を設定できます。
 
 インスタンス レベルでメトリックを監視する機能。 追加の監視機能は、「[クラウド サービスの監視方法](cloud-services-how-to-monitor.md)」に従って利用できます。
 
@@ -139,16 +135,16 @@ csdef および cscfg のアップロード先に blob またはローカルを�
 * ローカル リソースのクォータ制限を大きくする。
 
 詳細については、以下のドキュメントをご覧ください。
-* [Azure Storage への診断データの保存と表示](/azure/storage/common/storage-introduction)
-* [IIS Logs stop writing in Cloud Service](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/) (IIS ログがクラウド サービスで書き込みを停止する)
+* [Azure Storage への診断データの保存と表示](../storage/common/storage-introduction.md)
+* [IIS Logs stop writing in Cloud Service](/archive/blogs/cie/iis-logs-stops-writing-in-cloud-service) (IIS ログがクラウド サービスで書き込みを停止する)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Cloud Services の WAD ログ記録を有効にする方法を教えてください。
 Windows Azure Diagnostics (WAD) ログ記録は、次のオプションを使用して有効にできます。
-1. [Visual Studio から有効にする](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [.NET コードを使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
-3. [PowerShell を使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+1. [Visual Studio から有効にする](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [.NET コードを使用して有効にする](./cloud-services-dotnet-diagnostics.md)
+3. [PowerShell を使用して有効にする](./cloud-services-diagnostics-powershell.md)
 
-クラウド サービスの現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。
+Cloud Services の現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。
 
 
 ## <a name="network-configuration"></a>ネットワーク構成
@@ -217,7 +213,7 @@ Windows 10 と Windows Server 2016 は、クライアントとサーバー側の
 ## <a name="permissions"></a>アクセス許可
 
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Cloud Services のロールベースのアクセスを実装するにはどうすればよいですか。
-Cloud Services は、Azure Resource Manager ベースのサービスではないため、ロールベースのアクセス制御 (RBAC) モデルをサポートしていません。
+Cloud Services は、Azure Resource Manager ベースのサービスではないため、Azure ロールベースのアクセス制御 (Azure RBAC) モデルをサポートしていません。
 
 「[Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
 
@@ -248,13 +244,13 @@ Application Insights でカスタム メトリックを利用してクラウド 
 
 クラウド サービスの Application Insights に Azure Diagnostics を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)」をご覧ください
 
-Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)」をご覧ください
+Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md)」をご覧ください
 
 Cloud Services 用に Azure Diagnostics ログを有効にする方法について詳しくは、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)」をご覧ください
 
 ## <a name="generic"></a>ジェネリック
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>自分の Web サイトに "nosniff" を追加する方法を教えてください。
+### <a name="how-do-i-add-nosniff-to-my-website"></a>Web サイトに `nosniff` を追加する方法を教えてください。
 クライアントが MIME の種類をスニッフィングできないように、*web.config* ファイルに設定を追加します。
 
 ```xml
@@ -284,11 +280,11 @@ Cloud Services 用に Azure Diagnostics ログを有効にする方法につい�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>クラウド サービス VM 上のドライブで表示される空きディスク領域が非常に小さいのはなぜですか。
 これは想定される動作であり、アプリケーションに問題が発生することはないはずです。 Azure PaaS VM の %approot% ドライブでジャーナルがオンになっているため、実質的に、ファイルが通常占有する領域の 2 倍の容量が消費されます。 ただし、この件で問題が起きないようにするには、いくつかの事柄に注意する必要があります。
 
-%approot% ドライブのサイズは、\<size of .cspkg + max journal size + a margin of free space> または 1.5 GB のいずれか大きい方として計算されます。 VM のサイズは、この計算に影響を与えません。 (VM のサイズは、一時的な C: ドライブのサイズにのみ影響を与えます。) 
+%approot% ドライブのサイズは、<.cspkg のサイズ + ジャーナルの最大サイズ + 空き領域のマージン> の計算値と、1.5 GB のうち、どちらか大きいほうになります。 VM のサイズは、この計算に影響を与えません。 (VM のサイズは、一時的な C: ドライブのサイズにのみ影響を与えます。) 
 
 %approot% ドライブへの書き込みはサポートされていません。 Azure VM に対して書き込む場合は、一時的な LocalStorage リソース (または、BLOB ストレージ、Azure Files など、その他のオプション) に対して書き込む必要があります。 したがって、%approot% フォルダー上の空き領域の量は重要ではありません。 アプリケーションが %approot% ドライブに対して書き込んでいるかどうか不明の場合は、サービスを数日間実行し、"実行前" と "実行後" のサイズを比較することができます。 
 
-Azure は、%approot% ドライブに対して何も書き込みません。 .cspkg ファイルから VHD が作成され、Azure VM にマウントされた後、このドライブに書き込むことがある唯一の機能はアプリケーションです。 
+Azure は、%approot% ドライブに対して何も書き込みません。 `.cspkg` から VHD が作成され、Azure VM にマウントされた後、このドライブに書き込むことがある唯一の機能はアプリケーションです。 
 
 ジャーナルの設定は構成不可であるため、オフにすることはできません。
 
@@ -297,7 +293,7 @@ Azure は、%approot% ドライブに対して何も書き込みません。 .cs
 スタートアップ タスクで PowerShell スクリプトを使用してマルウェア対策拡張機能を有効にすることができます。 次の記事の手順に従って実装してください。 
  
 - [PowerShell のスタートアップ タスクを作成する](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 マルウェア対策デプロイ シナリオの詳細とポータルから有効にする方法については、「[マルウェア対策のデプロイ シナリオ](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)」を参照してください。
 
@@ -313,7 +309,7 @@ SNI バインドは、以下のようにクラウド サービス ロール イ�
 New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
 ```
 
-[こちら](https://technet.microsoft.com/library/ee790567.aspx)の説明のように、$sslFlags には次の値のいずれかを使用できます。
+[こちら](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee790567(v=technet.10))の説明のように、$sslFlags には次の値のいずれかを使用できます。
 
 |値|意味|
 ------|------
@@ -324,7 +320,7 @@ New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddr
  
 **方法 2: コードを使用する**
 
-SNI バインドは、こちらの[ブログ投稿](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)のように、ロール スタートアップでコードを使用して構成することもできます。
+SNI バインドは、こちらの[ブログ投稿](/archive/blogs/jianwu/expose-ssl-service-to-multi-domains-from-the-same-cloud-service)のように、ロール スタートアップでコードを使用して構成することもできます。
 
 ```csharp
 //<code snip> 
@@ -356,7 +352,6 @@ Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Whe
 
 サービスの IP アドレスを失うことがなく請求額を減らすには次のような方法があります。
 
-1. デプロイを削除する前に、[IP アドレスを予約](../virtual-network/virtual-networks-reserved-public-ip.md)します。  この IP アドレスに対してのみ課金されます。 IP アドレスの課金について詳しくは、「[IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
+1. デプロイを削除する前に、[IP アドレスを予約](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)します。  この IP アドレスに対してのみ課金されます。 IP アドレスの課金について詳しくは、「[IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
 2. デプロイを削除します。 後で使えるように、xxx.cloudapp.net は削除しないでください。
 3. サブスクリプションで予約したものと同じ予約 IP を使ってクラウド サービスを再デプロイする場合、「[Reserved IP addresses for Cloud Services and Virtual Machines](https://azure.microsoft.com/blog/reserved-ip-addresses/)」(クラウド サービスおよび仮想マシンに対する予約済み IP アドレス) をご覧ください。
-

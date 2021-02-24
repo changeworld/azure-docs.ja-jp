@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 4e28ac5180a58dbcb2c24f40dab3b73cbeb31a4a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fd2923c68aa77a4d17936eaa3a738c963458e8cb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546616"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>チュートリアル: Azure Active Directory と Tangoe Command Premium Mobile の統合
 
@@ -27,7 +27,7 @@ Tangoe Command Premium Mobile と Azure AD の統合には、次の利点があ�
 * ユーザーが各自の Azure AD アカウントで Tangoe Command Premium Mobile に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure AD と Tangoe Command Premium Mobile の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Tangoe Command Premium Mobile では、**SP** Initiated SSO がサポートされます
+* Tangoe Command Premium Mobile では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-tangoe-command-premium-mobile-from-the-gallery"></a>ギャラリーからの Tangoe Command Premium Mobile の追加
 
@@ -61,13 +61,13 @@ Azure AD への Tangoe Command Premium Mobile の統合を構成するには、�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Tangoe Command Premium Mobile**」と入力して、結果パネルで **Tangoe Command Premium Mobile** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Tangoe Command Premium Mobile** 」と入力して、結果パネルで **Tangoe Command Premium Mobile** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Tangoe Command Premium Mobile](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Tangoe Command Premium Mobile 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -108,7 +108,7 @@ Tangoe Command Premium Mobile で Azure AD シングル サインオンを構成
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 [Tangoe Command Premium Mobile クライアント サポート チーム](https://www.tangoe.com/contact-us/)に問い合わせてこれらの値を入手します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Tangoe Command Premium Mobile で Azure AD シングル サインオンを構成
 
 ### <a name="configure-tangoe-command-premium-mobile-single-sign-on"></a>Tangoe Command Premium Mobile のシングル サインオンの構成
 
-**Tangoe Command Premium Mobile** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Tangoe Command Premium Mobile サポート チーム](https://www.tangoe.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Tangoe Command Premium Mobile** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Tangoe Command Premium Mobile サポート チーム](https://www.tangoe.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -142,7 +142,7 @@ Tangoe Command Premium Mobile で Azure AD シングル サインオンを構成
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -178,18 +178,18 @@ Tangoe Command Premium Mobile で Azure AD シングル サインオンを構成
 
 ### <a name="create-tangoe-command-premium-mobile-test-user"></a>Tangoe Command Premium Mobile のテスト ユーザーの作成
 
-このセクションでは、Tangoe Command Premium Mobile で Britta Simon というユーザーを作成します。  [Tangoe Command Premium Mobile support team](https://www.tangoe.com/contact-us/) と連携し、Tangoe Command Premium Mobile プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Tangoe Command Premium Mobile で Britta Simon というユーザーを作成します。 [Tangoe Command Premium Mobile サポート チーム](https://www.tangoe.com/contact-us/)と連携して、Tangoe Command Premium Mobile プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Tangoe Command Premium Mobile] タイルをクリックすると、SSO を設定した Tangoe Command Premium Mobile に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Tangoe Command Premium Mobile] タイルをクリックすると、SSO を設定した Tangoe Command Premium Mobile に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

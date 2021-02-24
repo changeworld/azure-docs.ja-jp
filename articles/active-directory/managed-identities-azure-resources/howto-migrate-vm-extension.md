@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2018
+ms.date: 02/03/2020
 ms.author: barclayn
-ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ROBOTS: NOINDEX
+ms.openlocfilehash: dca5f9ed2911ae3042fb9871f849212ec18b1b58
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260188"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539385"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>仮想マシンのマネージド ID 拡張機能の使用を止めて Azure Instance Metadata Service の使用を開始する方法
 
@@ -37,8 +38,8 @@ ms.locfileid: "89260188"
 
 マネージド ID を持つように仮想マシンまたは仮想マシン スケール セットを構成する場合、必要に応じて、[Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) コマンドレットで `-Type` パラメーターを使用して、Azure リソースのマネージド ID VM 拡張機能をプロビジョニングするように選択することもできます。 仮想マシンのタイプに応じて `ManagedIdentityExtensionForWindows` または `ManagedIdentityExtensionForLinux` を渡し、`-Name` パラメーターを使用して名前を付けることができます。 `-Settings` パラメーターは、トークン取得用に OAuth トークン エンドポイントによって使用されるポートを指定します。
 
-```powershell
-   $settings = @{ "port" = 50342 }
+```azurepowershell-interactive
+$settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
@@ -68,10 +69,10 @@ ms.locfileid: "89260188"
     
 仮想マシン スケール セットを使用している場合、[Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) コマンドレットを使用して、Azure リソースのマネージド ID 仮想マシン スケール セット拡張機能をプロビジョニングすることもできます。 仮想マシン スケール セットのタイプに応じて `ManagedIdentityExtensionForWindows` または `ManagedIdentityExtensionForLinux` を渡し、`-Name` パラメーターを使用して名前を付けることができます。 `-Settings` パラメーターは、トークン取得用に OAuth トークン エンドポイントによって使用されるポートを指定します。
 
-   ```powershell
+   ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
-   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
+   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 Azure Resource Manager デプロイ テンプレートを使用して、仮想マシン スケール セット拡張機能をプロビジョニングするには、以下の JSON をテンプレートの `extensionpProfile` セクションに追加します (Linux バージョンの場合、名前と型の要素に `ManagedIdentityExtensionForLinux` を使用します)。
 
@@ -96,7 +97,7 @@ Azure Resource Manager デプロイ テンプレートを使用して、仮想�
 仮想マシン拡張機能のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 この場合、仮想マシンを再起動してからやり直してください。 
 
 ### <a name="remove-the-extension"></a>拡張機能を削除する 
-この拡張機能を削除するには、Azure CLI または Powershell 用の `Remove-AzVMExtension` を使用して、仮想マシン スケール セット用の [az vm extension delete](/cli/azure/vm/) または [az vmss extension delete](/cli/azure/vmss) で、`-n ManagedIdentityExtensionForWindows` または `-n ManagedIdentityExtensionForLinux` スイッチを使用します (VM の種類に応じます)。
+この拡張機能を削除するには、Azure CLI または PowerShell 用の `Remove-AzVMExtension` を使用して、仮想マシン スケール セット用の [az vm extension delete](/cli/azure/vm/) または [az vmss extension delete](/cli/azure/vmss) で、`-n ManagedIdentityExtensionForWindows` または `-n ManagedIdentityExtensionForLinux` スイッチを使用します (VM の種類に応じます)。
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -106,7 +107,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
 ```
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
 ```
 
@@ -162,7 +163,7 @@ Content-Type: application/json
 
 Windows と特定のバージョンの Linux で拡張機能が停止した場合は、次のコマンドレットを使用して手動で再起動できます。
 
-```powershell
+```azurepowershell-interactive
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 

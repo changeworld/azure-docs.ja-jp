@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (C) | Microsoft Docs
+title: クイックスタート - Azure IoT Hub への利用統計情報の送信に関するクイックスタート (C) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル C アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT ハブから利用統計情報を読み取ります。
 author: wesmc7777
 manager: philmea
@@ -11,14 +11,15 @@ ms.custom:
 - mvc
 - mqtt
 - 'Role: Cloud Development'
+- devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: ecc3c4e97ea533f19e570db21eceb6f759969a8f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 89b872557275db8651f3b55502d340ff55b7e626
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317945"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624288"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (C)
 
@@ -30,9 +31,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 この記事は Windows 用に書かれていますが、Linux 上でも、このクイックスタートを完了できます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,12 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * ポート 8883 がファイアウォールで開放されていることを確認してください。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
-
-* 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -69,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    `CMake` のインストールを開始する **前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
 2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
 
@@ -96,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     cmake ..
     ```
 
-    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
+    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
 
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
@@ -120,7 +114,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、[IoT 拡張機能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
@@ -137,7 +131,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyCDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyCDevice --output table
     ```
 
     次のようなデバイス接続文字列をメモしておきます。
@@ -189,7 +183,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
-このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスから送信されるデバイス メッセージを監視します。
+このセクションでは、[IoT 拡張機能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスから送信されるデバイス メッセージを監視します。
 
 1. Azure Cloud Shell を使用して、次のコマンドを実行して接続し、お使いの IoT ハブからのメッセージを読み取ります。
 

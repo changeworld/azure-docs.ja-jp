@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192825"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92146296"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 のセキュリティ
 
@@ -31,7 +31,7 @@ ms.locfileid: "88192825"
 Azure サブスクリプションはそれぞれ、Azure Active Directory のインスタンスに関連付けることができます。 ユーザーとサービスの ID のうち、Azure Active Directory サービスで定義されているものに限り、Data Lake Storage Gen1 アカウントにアクセスできます。アカウントへのアクセスには、Azure portal、コマンドライン ツールのほか、組織が Data Lake Storage Gen1 SDK を使って作成したクライアント アプリケーションを使用できます。 一元化されたアクセス制御メカニズムとして Azure Active Directory を使用する主な利点は次のとおりです。
 
 * ID ライフサイクル管理の簡素化。 ユーザーまたはサービスの ID (サービス プリンシパル ID) を迅速に作成することができ、ディレクトリでアカウントを削除または無効にするだけで ID を取り消すことができます。
-* 多要素認証。 [多要素認証](../active-directory/authentication/multi-factor-authentication.md) により、ユーザーのサインインとトランザクションにセキュリティ レイヤーを追加できます。
+* 多要素認証。 [多要素認証](../active-directory/authentication/concept-mfa-howitworks.md) により、ユーザーのサインインとトランザクションにセキュリティ レイヤーを追加できます。
 * OAuth、OpenID などの標準的なオープン プロトコルを使ったクライアント認証。
 * エンタープライズ ディレクトリ サービスおよびクラウド ID プロバイダーとのフェデレーション。
 
@@ -42,7 +42,7 @@ Azure Active Directory の認証によってユーザーが Data Lake Storage Ge
 * アカウント管理のための [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)
 * ストア内のデータにアクセスするための POSIX ACL
 
-### <a name="rbac-for-account-management"></a>RBAC を使用したアカウント管理
+### <a name="azure-rbac-for-account-management"></a>アカウント管理のための Azure RBAC
 
 Data Lake Storage Gen1 には既定で基本のロールが 4 つ定義されています。 これらのロールでは、Azure portal、PowerShell コマンドレット、REST API を使用して Data Lake Storage Gen1 アカウントに実行できる操作が異なります。 所有者ロールと共同作成者ロールは、アカウントに対してさまざまな管理機能を実行できます。 アカウント管理データを表示するだけのユーザーには閲覧者ロールを割り当てることができます。
 

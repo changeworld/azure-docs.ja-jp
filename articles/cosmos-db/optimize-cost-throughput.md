@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012451"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296541"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB では、プロビジョニング済みスループット モデルにより、あらゆる規模で予測可能なパフォーマンスを提供します。 スループットを事前に予約またはプロビジョニングすると、パフォーマンスでの "迷惑な隣人効果" を排除できます。 必要なスループットの量を正確に指定すると、Azure Cosmos DB で SLA によって裏付けられた構成済みのスループットが保証されます。
 
@@ -26,7 +27,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 * データベースでスループットをプロビジョニングした場合は、そのデータベース内のすべてのコンテナー (コレクション/テーブル/グラフなど) が負荷に基づいてスループットを共有できます。 データベース レベルで予約されたスループットは、特定のコンテナーのセットでのワークロードに応じて不均一に共有されます。
 
-* コンテナーでスループットをプロビジョニングした場合は、そのコンテナーに対して SLA で裏付けられたスループットが保証されます。 コンテナーのすべての論理パーティションに負荷を均等に分散させるには、論理パーティション キーの選択が非常に重要です。 詳しくは、[パーティション分割](partitioning-overview.md)および[水平スケーリング](partition-data.md)に関する記事をご覧ください。
+* コンテナーでスループットをプロビジョニングした場合は、そのコンテナーに対して SLA で裏付けられたスループットが保証されます。 コンテナーのすべての論理パーティションに負荷を均等に分散させるには、論理パーティション キーの選択が非常に重要です。 詳しくは、[パーティション分割](partitioning-overview.md)および[水平スケーリング](partitioning-overview.md)に関する記事をご覧ください。
 
 プロビジョニング済みスループットの戦略の決定に関するガイドラインを次に示します。
 
@@ -54,7 +55,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 次の表に示すように、API の選択に応じて、異なる細かさでスループットをプロビジョニングできます。
 
-|API|**共有**スループットの場合の構成対象 |**専用**スループットの場合の構成対象 |
+|API|**共有** スループットの場合の構成対象 |**専用** スループットの場合の構成対象 |
 |----|----|----|
 |SQL API|データベース|コンテナー|
 |Azure Cosmos DB の MongoDB 用 API|データベース|コレクション|
@@ -80,7 +81,7 @@ HTTP Status 429,
 
 累積的に動作する複数のクライアントがあり、要求レートを常に超えている場合は、現在 9 に設定されている既定の再試行回数では十分ではない可能性があります。 このような場合、クライアントではアプリケーションに対して状態コード 429 の `RequestRateTooLargeException` がスローされます。 既定の再試行回数は、ConnectionPolicy インスタンスで `RetryOptions` を設定することで変更できます。 既定では、要求レートを超えて要求が続行されている場合に、30 秒の累積待機時間を過ぎると、状態コード 429 を含む `RequestRateTooLargeException` が返されます。 これは、現在の再試行回数が最大再試行回数 (既定値の 9 またはユーザー定義の値) より少ない場合でも発生します。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) が 3 に設定されます。そのため、ここでは、コンテナーに予約されているスループットを超過し、要求操作がレート制限される場合、その要求操作は 3 回まで再試行し、成功しなければアプリケーションに例外をスローします。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) が 60 に設定されています。そのため、ここでは、最初の要求後、累積再試行時間 (秒) が 60 秒を超過すると、例外がスローされます。
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) が 3 に設定されます。そのため、ここでは、コンテナーに予約されているスループットを超過し、要求操作がレート制限される場合、その要求操作は 3 回まで再試行し、成功しなければアプリケーションに例外をスローします。 [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) が 60 に設定されています。そのため、ここでは、最初の要求後、累積再試行時間 (秒) が 60 秒を超過すると、例外がスローされます。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -112,7 +113,7 @@ Azure Cosmos DB でのコストを最適化するには、適切なパーティ�
 
 ## <a name="optimize-by-changing-indexing-policy"></a>インデックス作成ポリシーを変更することで最適化する 
 
-Azure Cosmos DB では既定で、すべてのレコードのすべてのプロパティに自動的にインデックスが付けられます。 これは、開発を容易にし、さまざまな種類のアドホック クエリで優れたパフォーマンスを確保するために行われます。 何千ものプロパティを含む大きいレコードがある場合、すべてのプロパティにインデックスを付けるためにスループットのコストを払うのは無益なことがあります。そのようなプロパティの 10 個とか 20 個に対してしかクエリを行わない場合は特にそうです。 特定のワークロードについての理解が深まったら、インデックス ポリシーを調整することをお勧めします。 Azure Cosmos DB でのインデックス作成ポリシーについて詳しくは、[こちら](indexing-policies.md)をご覧ください。 
+Azure Cosmos DB では既定で、すべてのレコードのすべてのプロパティに自動的にインデックスが付けられます。 これは、開発を容易にし、さまざまな種類のアドホック クエリで優れたパフォーマンスを確保するために行われます。 何千ものプロパティを含む大きいレコードがある場合、すべてのプロパティにインデックスを付けるためにスループットのコストを払うのは無益なことがあります。そのようなプロパティの 10 個とか 20 個に対してしかクエリを行わない場合は特にそうです。 特定のワークロードについての理解が深まったら、インデックス ポリシーを調整することをお勧めします。 Azure Cosmos DB でのインデックス作成ポリシーについて詳しくは、[こちら](index-policy.md)をご覧ください。 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>プロビジョニング済みスループットと消費済みスループットを監視する 
 
@@ -136,7 +137,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 新しいワークロードのプロビジョニング済みスループットを決定するには、次の手順を使用できます。 
 
-1. 最初に容量計画ツールを使用して大まかに評価し、Azure portal で Azure Cosmos Explorer を使用して見積もりを調整します。 
+1. 最初に容量計画ツールを使用して大まかに評価し、Azure portal で Azure Cosmos DB Explorer を使用して見積もりを調整します。 
 
 2. 予想より高いスループットでコンテナーを作成し、必要に応じてスケールダウンすることをお勧めします。 
 
@@ -156,7 +157,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 1. コンテナーやデータベースに大幅にオーバー プロビジョニングされたスループットがある場合は、プロビジョニングされた RU と消費された RU を確認して、ワークロードを微調整する必要があります。  
 
-2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](optimize-cost-queries.md)に関する記事をご覧ください。 
+2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](./optimize-cost-reads-writes.md)に関する記事をご覧ください。 
 
 3. 操作とその RU コストを取得するもう 1 つの方法は、Azure Monitor ログを有効にすることで、操作/継続時間と要求の料金の明細が提供されます。 Azure Cosmos DB では、すべての操作に対して要求の料金が提供されるので、すべての操作の料金を応答から保存して、分析に使用できます。 
 
@@ -182,6 +183,5 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 * [Azure Cosmos DB の課金内容の確認](understand-your-bill.md)の詳細について学習します
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
-* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
+* [クエリ コストの最適化](./optimize-cost-reads-writes.md)の詳細について学習します
 * [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細について学習します
-

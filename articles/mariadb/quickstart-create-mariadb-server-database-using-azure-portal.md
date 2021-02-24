@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:サーバーを作成する - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal を使用して、5 分程度ですばやくサンプルの Azure Database for MariaDB サーバーを作成する方法について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: e5801f46745b3fda28af19c11e323b9497ebe98a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d7ec7a2c70ae860a54b3771927a79449953e8569
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185249"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662111"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure Database for MariaDB サーバーの作成
 
@@ -189,7 +189,7 @@ MySQL Workbench を使用してサーバーに接続するには、次の手順�
 
 2. 新しい接続を作成するには、 **[MySQL Connections]\(MySQL 接続\)** という見出しの横に表示されるプラス アイコン ( **+** ) を選択します。
 
-3. **[Setup New Connection]\(新しい接続の設定\)** ダイアログ ボックスの **[Parameters]\(パラメーター\)** タブに、実際のサーバーの接続情報を入力します。 以下に示した値は、あくまで例です。 **ホスト名**、**ユーザー名**、**パスワード**は、実際の値に置き換えてください。
+3. **[Setup New Connection]\(新しい接続の設定\)** ダイアログ ボックスの **[Parameters]\(パラメーター\)** タブに、実際のサーバーの接続情報を入力します。 以下に示した値は、あくまで例です。 **ホスト名**、**ユーザー名**、**パスワード** は、実際の値に置き換えてください。
 
    ![新しい接続の設定](./media/quickstart-create-mariadb-server-database-using-azure-portal/setup-new-connection.png)
 

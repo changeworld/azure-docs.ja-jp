@@ -1,28 +1,24 @@
 ---
-title: Azure Portal で API の応答の模擬テストを実行する | Microsoft Docs
-description: このチュートリアルでは、API Management (APIM) を使用して、モック応答を返すように API でポリシーを設定する方法について説明します。 この方法を使用すると、実際の応答を送信するためにバックエンドを使用できない場合に、開発者が、API Management インスタンスの実装とテストを進めることができます。
-services: api-management
-documentationcenter: ''
+title: チュートリアル - API Management で API の応答の模擬テストを実行する - Azure portal  | Microsoft Docs
+description: このチュートリアルでは、実際の応答を送信するバックエンドが利用できない場合にモック応答が返されるよう、API Management を使用して API のポリシーを設定します。
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067940"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930715"
 ---
-# <a name="mock-api-responses"></a>API の応答の模擬テストを実行する
+# <a name="tutorial-mock-api-responses"></a>チュートリアル:API の応答の模擬テストを実行する
 
-バックエンド API は APIM API にインポートするか、手動で作成して管理できます。 このチュートリアルの手順では、APIM を使用して手動で空の API を作成し、管理する方法を示します。 このチュートリアルで説明するのは、モック応答を返すように API でポリシーを設定する方法です。 この方法を使用すると、実際の応答を送信するためにバックエンドを使用できない場合でも、開発者が、APIM インスタンスの実装とテストを勧めることができます。 応答を模擬表示する機能は、さまざまなシナリオで役に立ちます。
+バックエンド API は API Management (APIM) API にインポートするか、手動で作成して管理できます。 このチュートリアルの手順では、APIM を使用して手動で空の API を作成し、管理する方法のほか、モック応答が返されるよう、API に対するポリシーを設定する方法について説明します。 この方法を使用すると、実際の応答を送信するためにバックエンドを使用できない場合でも、開発者が、APIM インスタンスの実装とテストを勧めることができます。 
+
+応答を模擬表示する機能は、さまざまなシナリオで役に立ちます。
 
 + まず API ファサードを設計し、後でバックエンド実装を行う場合。 または、バックエンドを並列で開発している場合。
 + バックエンドが一時的に動作していないか、拡大縮小できない場合。
@@ -35,89 +31,90 @@ ms.locfileid: "70067940"
 > * 応答のモック作成を有効にする
 > * モック API をテストする
 
-![モック操作の応答](./media/mock-api-responses/mock-api-responses01.png)
+
+:::image type="content" source="media/mock-api-responses/mock-api-responses01.png" alt-text="モック API 応答":::
 
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
 + [Azure API Management のポリシーの概念](api-management-howto-policies.md)を理解します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
 
 ## <a name="create-a-test-api"></a>テスト API を作成する 
 
-このセクションの手順では、バックエンドがない空の API を作成する方法について説明します。 また、API に操作を追加する方法についても説明します。 このセクションの手順を完了した後、操作を呼び出すと、エラーが発生します。 「応答のモック作成を有効にする」セクションの手順の完了後は、エラーは発生しません。
+このセクションの手順では、バックエンドがない空の API を作成する方法について説明します。 
 
-![空の API を作成](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
-1. **API Management** サービスから **[API]** を選択します。
-2. 左側のメニューで、 **[+ API の追加]** を選びます。
-3. 一覧から **[空の API]** を選びます。
-4. **[表示名]** に「*テスト API*」と入力します。
-5. **[製品]** に「*無制限*」と入力します。
-6. **作成** を選択します。
+1. Azure portal にサインインして、API Management インスタンスに移動します。
+1. **[API]**  >  **[+ API を追加]**  >  **[空の API]** を選択します。
+1. **[空の API の作成]** ウィンドウで **[Full]\(完全\)** を選択します。
+1. **[表示名]** に「*テスト API*」と入力します。
+1. **[製品]** に **[Unlimited]\(無制限\)** を選択します。
+1. **[ゲートウェイ]** で **[Managed]\(マネージド\)** が選択されていることを確認します。
+1. **［作成］** を選択します
+
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="モック API 応答":::
 
 ## <a name="add-an-operation-to-the-test-api"></a>操作をテスト API に追加する
 
-![API に操作を追加](./media/mock-api-responses/03-MockAPIResponses-02-AddOperation.png)
+API は、少なくとも 1 つの操作を公開します。 このセクションでは、作成した空の API に操作を追加します。 このセクションの手順を完了した後、操作を呼び出すと、エラーが発生します。 後で「[応答のモック作成を有効にする](#enable-response-mocking)」セクションの手順を完了した後は、エラーは発生しません。
 
 1. 前の手順で作成した API を選びます。
-2. **[+ 操作の追加]** を選択します。
+1. **[+ Add Operation] \(+ 操作の追加\)** を選択します。
+1. **[フロントエンド]** ウィンドウに次の値を入力します。
 
-    | 設定             | 値                             | 説明                                                                                                                                                                                   |
+     | 設定             | 値                             | 説明                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **[表示名]**    | "*テスト呼び出し*"                       | **開発者ポータル**に表示される名前。                                                                                                                                       |
-    | **URL** (HTTP 動詞) | GET                               | 定義済み HTTP 動詞のいずれかを選択できます。                                                                                                                                         |
+    | **[表示名]**    | "*テスト呼び出し*"                       | [開発者ポータル](api-management-howto-developer-portal.md)に表示される名前。                                                                                                                                       |
+    | **URL** (HTTP 動詞) | GET                               | あらかじめ定義されている HTTP 動詞のいずれかを選択します。                                                                                                                                         |
     | **[URL]**             | */test*                           | API の URL パス。                                                                                                                                                                       |
-    | **説明**     |                                   | **開発者ポータル**でこの API を使用する開発者にドキュメントを提供するために使用される操作の説明を指定します。                                                    |
-    | **[クエリ]** タブ       |                                   | クエリ パラメーターを追加できます。 名前と説明を提供するだけでなく、このパラメーターに割り当て可能な値を指定することもできます。 値の 1 つを既定値としてマークすることができます (オプション)。 |
-    | **[要求]** タブ     |                                   | 要求のコンテンツの種類、例、およびスキーマを定義できます。                                                                                                                                  |
-    | **[応答]** タブ    | この表に続く手順を参照してください。 | 応答の状態コード、コンテンツの種類、例、およびスキーマを定義します。                                                                                                                           |
+    | **説明**     |                                   |  操作の説明 (省略可)。開発者ポータルでこの API を使用する開発者にドキュメントを提供する目的で使用されます。                                                    |
+    
+1. URL、表示名、および説明の各フィールドの下にある **[応答]** タブを選択します。 応答の状態コード、コンテンツの種類、例、およびスキーマを定義するための設定をこのタブに入力します。
+1. **[+ 応答の追加]** を選択し、一覧から **[200 OK]** を選択します。
+1. 右側の **[表現]** 見出しで、**[+ 表現の追加]** を選択します。
+1. 検索ボックスに「*application/json*」と入力し、コンテンツの種類として **application/json** を選択します。
+1. **[サンプル]** テキスト ボックスに「`{ "sampleField" : "test" }`」と入力します。
+1. **[保存]** を選択します。
 
-3. URL、表示名、および説明の各フィールドの下にある **[応答]** タブを選択します。
-4. **[+ 応答の追加]** をクリックします。
-5. 一覧から **[200 OK]** を選択します。
-6. 右側の **[表現]** 見出しで、 **[+ 表現の追加]** を選択します。
-7. 検索ボックスに「*application/json*」と入力し、コンテンツの種類として **application/json** を選択します。
-8. **[サンプル]** テキスト ボックスに「`{ "sampleField" : "test" }`」と入力します。
-9. **作成** を選択します。
+:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="モック API 応答" border="false":::
+
+この例では必須ではありませんが、他のタブで、API 操作に対する追加の設定を構成できます。その例を次に示します。
+
+
+|タブ      |説明  |
+|---------|---------|
+|**クエリ**     |  クエリ パラメーターを追加します。 名前と説明を提供するだけでなく、クエリ パラメーターに割り当てる値を指定することもできます。 値の 1 つを既定値としてマークすることができます (オプション)。        |
+|**Request**     |  要求のコンテンツの種類、例、およびスキーマを定義します。       |
 
 ## <a name="enable-response-mocking"></a>応答のモック作成を有効にする
 
-![応答のモック作成を有効にする](./media/mock-api-responses/03-MockAPIResponses-03-EnableMocking.png)
+1. 「[テスト API を作成する](#create-a-test-api)」で作成した API を選択します。
+1. 追加したテスト操作を選択します。
+1. 右側のウィンドウで **[デザイン]** タブが選択されていることを確認します。
+1. **[受信処理]** ウィンドウで、 **[+ ポリシーの追加]** を選択します。
 
-1. 「テスト API を作成する」の手順で作成した API を選択します。
-2. 追加したテスト操作を選択します。
-3. 右側のウィンドウで **[デザイン]** タブをクリックします。
-4. **[受信処理]** ウィンドウで、 **[+ ポリシーの追加]** をクリックします。
-5. ギャラリーから **[Mock responses]\(モック応答\)** タイルを選択します。
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="モック API 応答" border="false":::
 
-    ![モック応答ポリシー タイル](./media/mock-api-responses/mock-responses-policy-tile.png)
+1. ギャラリーから **[Mock responses]\(モック応答\)** を選択します。
 
-6. **[API Management response]\(API Management 応答\)** ボックスに「**200 OK, application/json**」と入力します。 この選択は、API が、前のセクションで定義した応答のサンプルを返すことを示します。
+    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="モック API 応答" border="false":::
 
-    ![応答のモック作成を有効にする](./media/mock-api-responses/mock-api-responses-set-mocking.png)
+1. **[API Management response]\(API Management 応答\)** ボックスに「**200 OK, application/json**」と入力します。 この選択は、API が、前のセクションで定義した応答のサンプルを返すことを示します。
 
-7. **[保存]** をクリックします。
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="モック API 応答" というテキストを含む黄色のバーは、API Management から返された応答が[モック作成ポリシー](api-management-advanced-policies.md#mock-response)によってモック作成されるものの、バックエンドによって生成されるわけではないことを示しています。
 
 ## <a name="test-the-mocked-api"></a>モック API をテストする
 
-![モック API をテスト](./media/mock-api-responses/03-MockAPIResponses-04-TestMocking.png)
+1. 「[テスト API を作成する](#create-a-test-api)」で作成した API を選択します。
+1. **[テスト]** タブを選びます。
+1. **[テスト呼び出し]** API が選択されていることを確認します。 **[送信]** を選択して、テスト呼び出しを実行します。
 
-1. 「テスト API を作成する」の手順で作成した API を選択します。
-2. **[テスト]** タブを開きます。
-3. **[テスト呼び出し]** API が選択されていることを確認します。
+   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="モック API 応答":::
 
-    > [!TIP]
-    > "**モック作成が有効になっています**" というテキストを含む黄色のバーは、API Management から返される応答によってモック作成ポリシーが送信されるが、実際のバックエンド応答ではないことを示します。
+1. **[HTTP 応答]** に、チュートリアルの最初のセクションでサンプルとして指定した JSON が表示されます。
 
-4. **[送信]** を選択して、テスト呼び出しを実行します。
-5. **[HTTP 応答]** に、チュートリアルの最初のセクションでサンプルとして指定した JSON が表示されます。
-
-    ![応答のモック作成を有効にする](./media/mock-api-responses/mock-api-responses-test-response.png)
-
-## <a name="video"></a>ビデオ
-
-> [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="モック API 応答":::
 
 ## <a name="next-steps"></a>次のステップ
 

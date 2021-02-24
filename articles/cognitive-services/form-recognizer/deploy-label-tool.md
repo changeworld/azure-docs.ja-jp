@@ -2,19 +2,19 @@
 title: Form Recognizer のサンプル ラベル付けツールのデプロイ方法
 titleSuffix: Azure Cognitive Services
 description: 監視された学習に役立てるため、Form Recognizer のサンプル ラベル付けツールをデプロイするさまざまな方法について説明します。
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 04/14/2020
-ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.date: 02/11/2021
+ms.author: lajanuar
+ms.openlocfilehash: 9535c1aa044fdce529d83c2e46a1b585e8e5f056
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717899"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370040"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -32,7 +32,7 @@ Form Recognizer のサンプル ラベル付けツールは、教師あり学習
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Azure Container Instances (ACI) を使用してデプロイする
 
-始める前に、Azure コンテナー インスタンス (ACI) にサンプル ラベル付けツールをデプロイするには 2 つの方法があることに注意することが重要です。 どちらのオプションも、ACI でサンプル ラベル付けツールを実行するために使用されます。 
+始める前に、Azure コンテナー インスタンス (ACI) にサンプル ラベル付けツールをデプロイするには 2 つの方法があることに注意することが重要です。 どちらのオプションも、ACI でサンプル ラベル付けツールを実行するために使用されます。
 
 * [Azure Portal の使用](#azure-portal)
 * [Azure CLI の使用](#azure-cli)
@@ -42,16 +42,16 @@ Form Recognizer のサンプル ラベル付けツールは、教師あり学習
 Azure portal を使用して新しいリソースを作成するには、次の手順のようにします。 
 
 1. [Azure portal](https://portal.azure.com/signin/index/) にサインインします。
-2. **[リソースの作成]** を選択します。 
-3. 次に、 **[Web アプリ]** を選択します。 
+2. **[リソースの作成]** を選択します。
+3. 次に、 **[Web アプリ]** を選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![[Web アプリ] を選択する](./media/quickstarts/formre-create-web-app.png)
-   
-4. 最初に、 **[基本]** タブが選択されていることを確認します。 次に、いくつかの情報を指定する必要があります。 
+   > ![[Web アプリ] を選択する](./media/quickstarts/create-web-app.png)
+
+4. 最初に、 **[基本]** タブが選択されていることを確認します。 次に、いくつかの情報を指定する必要があります。
 
    > [!div class="mx-imgBorder"]
-   > ![[基本] を選択する](./media/quickstarts/formre-select-basics.png)
+   > ![[基本] を選択する](./media/quickstarts/select-basics.png)
    * [サブスクリプション] - 既存の Azure サブスクリプションを選択します
    * [リソース グループ] - 既存のリソース グループを再利用するか、このプロジェクト用に新しいリソース グループを作成することができます。 新しいリソース グループを作成することをお勧めします。
    * [名前] - Web アプリの名前を指定します。 
@@ -61,48 +61,53 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    * [Linux プラン] - App Service の価格レベルとプランを選択します。 
 
    > [!div class="mx-imgBorder"]
-   > ![Web アプリ を構成する](./media/quickstarts/formre-select-docker-linux.png)
+   > ![Web アプリ を構成する](./media/quickstarts/select-docker.png)
 
-5. 次に、 **[Docker]** タブを選択します。 
+5. 次に、 **[Docker]** タブを選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![[Docker] を選択する](./media/quickstarts/formre-select-docker.png)
+   > ![[Docker] を選択する](./media/quickstarts/select-docker.png)
 
 6. ここでは、Docker コンテナーを構成します。 特に注意がない限り、すべてのフィールドが必須です。
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)  
-   * [オプション] - **[単一コンテナー]** を選択します
-   * [イメージ ソース] - **[プライベート レジストリ]** を選択します 
-   * [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
-   * [ユーザー名] (省略可能) - ユーザー名を作成します。 
-   * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
-   * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
-   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
-   * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
+    # <a name="v20"></a>[v2.0](#tab/v2-0)
+
+* [オプション] - **[単一コンテナー]** を選択します
+* [イメージ ソース] - **[プライベート レジストリ]** を選択します 
+* [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
+* [ユーザー名] (省略可能) - ユーザー名を作成します。 
+* [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
+* [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
+* 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
+* [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
 
     # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1) 
-   * [オプション] - **[単一コンテナー]** を選択します
-   * [イメージ ソース] - **[プライベート レジストリ]** を選択します 
-   * [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
-   * [ユーザー名] (省略可能) - ユーザー名を作成します。 
-   * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
-   * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview` に設定します
-   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
-   * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
-    
+
+* [オプション] - **[単一コンテナー]** を選択します
+* [イメージ ソース] - **[プライベート レジストリ]** を選択します 
+* [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
+* [ユーザー名] (省略可能) - ユーザー名を作成します。 
+* [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
+* [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview` に設定します
+* 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
+* [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
+
     ---
 
    > [!div class="mx-imgBorder"]
-   > ![Docker を構成する](./media/quickstarts/formre-configure-docker.png)
+   > ![Docker を構成する](./media/quickstarts/configure-docker.png)
 
 7. これで終了です。 次に、 **[確認と作成]** を選択し、 **[作成]** を選択して Web アプリをデプロイします。 完了すると、リソースの **[概要]** で指定した URL で Web アプリにアクセスできるようになります。
 
 > [!NOTE]
-> Web アプリを作成するときに、承認と認証を構成することもできます。 これは、開始するために必要なことではありません。 
+> Web アプリを作成するときに、承認と認証を構成することもできます。 これは、開始するために必要なことではありません。
+
+> [!IMPORTANT]
+> Web アプリが `https` アドレスで表示されるようにするために、TLS を有効にしなければならない場合があります。 [TLS エンドポイントを有効にする](../../container-instances/container-instances-container-group-ssl.md)ための手順に従って、Web アプリの TLS/SSL を有効にするサイドカー コンテナーを設定してください。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
+Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
 
 このコマンドについて知っておくべきことがいくつかあります。
 
@@ -111,10 +116,10 @@ Azure portal を使用する代わりに、Azure CLI を使用してリソース
 * リソースを作成する場所を指定する必要があります。 `<region name>` は、Web アプリの目的のリージョンに置き換えます。 
 * このコマンドでは、EULA が自動的に受け入れられます。
 
-Azure CLI から次のコマンドを実行して、サンプル ラベル付けツール用の Web アプリ リソースを作成します。 
+Azure CLI から次のコマンドを実行して、サンプル ラベル付けツール用の Web アプリ リソースを作成します。
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -128,15 +133,17 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
-``` 
-# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)    
+`
+
+# [v2.1 preview](#tab/v2-1) 
+   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -149,7 +156,7 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>承認のために Azure AD に接続する
 
-Web アプリを Azure Active Directory に接続することをお勧めします。 これにより、有効な資格情報を持つユーザーのみがサインインして Web アプリを使用できるようになります。 [App Service アプリの構成](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)に関する記事の手順に従って、Azure Active Directory に接続します。
+Web アプリを Azure Active Directory に接続することをお勧めします。 これにより、有効な資格情報を持つユーザーのみがサインインして Web アプリを使用できるようになります。 [App Service アプリの構成](../../app-service/configure-authentication-provider-aad.md)に関する記事の手順に従って、Azure Active Directory に接続します。
 
 ## <a name="open-source-on-github"></a>GitHub でのオープンソース
 

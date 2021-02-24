@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75c0058f2d4878016281656935cbd82f79b859fd
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077686"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120004"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics でのリソース使用状況とクエリ アクティビティの監視
 
@@ -24,7 +24,7 @@ Azure portal 内にある Azure Synapse Analytics のリッチな監視エクス
 
 ## <a name="resource-utilization"></a>リソース使用率
 
-Azure portal では、Synapse SQL に対して以下のメトリックを使用できます。 これらのメトリックは、[Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics) を通じて表示できます。
+Azure portal では、Synapse SQL に対して以下のメトリックを使用できます。 これらのメトリックは、[Azure Monitor](../../azure-monitor/platform/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics) を通じて表示できます。
 
 | メトリックの名前             | 説明                                                  | 集計の種類 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -45,7 +45,7 @@ Azure portal では、Synapse SQL に対して以下のメトリックを使用�
 
 メトリックを表示してアラートを設定するときに考慮が必要な事項は次のとおりです。
 
-- 使用される DWU は、SQL プール全体の**使用に関する高レベル表現**のみを表しており、使用率を包括的に示すものではありません。 スケールアップまたはスケールダウンするかどうかを判断するには、コンカレンシー、メモリ、tempdb、アダプティブ キャッシュ容量など、DWU の影響を受ける可能性があるすべての要素を考慮してください。 [さまざまな DWU 設定でワークロードを実行して](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)、ビジネス目標を達成するために最適な動作を判断することをお勧めします。
+- 使用される DWU は、SQL プール全体の **使用に関する高レベル表現** のみを表しており、使用率を包括的に示すものではありません。 スケールアップまたはスケールダウンするかどうかを判断するには、コンカレンシー、メモリ、tempdb、アダプティブ キャッシュ容量など、DWU の影響を受ける可能性があるすべての要素を考慮してください。 [さまざまな DWU 設定でワークロードを実行して](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)、ビジネス目標を達成するために最適な動作を判断することをお勧めします。
 - サーバー自体ではなく、特定のデータ ウェアハウスについての接続の失敗と成功がレポートされます。
 - データ ウェアハウスがアイドル状態であっても、メモリの割合には使用率が反映されます。アクティブなワークロードのメモリ消費は反映されません。 追加のキャッシュ容量のスケーリングによってワークロードのパフォーマンスが要件を満たすように向上するかどうかに関する総合的な意思決定を行うために、このメトリックとその他 (tempdb、gen2 キャッシュ) を使用して追跡します。
 
@@ -53,11 +53,11 @@ Azure portal では、Synapse SQL に対して以下のメトリックを使用�
 
 T-SQL を使用して Synapse SQL を監視するときのプログラム エクスペリエンスでは、動的管理ビュー (DMV) のセットがサービスによって提供されます。 これらのビューは、アクティブのトラブルシューティングを行うときと、ワークロードでパフォーマンスのボトルネックを特定するときに役に立ちます。
 
-Synapse SQL に適用される DMV の一覧を表示するには、この[ドキュメント](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)を参照してください。 
+Synapse SQL に適用される DMV の一覧を表示するには、この[ドキュメント](../sql/reference-tsql-system-views.md#dedicated-sql-pool-dynamic-management-views-dmvs)を参照してください。 
 
 ## <a name="metrics-and-diagnostics-logging"></a>メトリックと診断のロギング 
 
-メトリックとログはどちらも、Azure Monitor (具体的には [Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コンポーネント) にエクスポートでき、[ログ クエリ](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用してプログラムでアクセスできます。 Synapse SQL のログの待機時間は約 10 から 15 分です。 待ち時間に影響を与える要因については、次のドキュメントをご覧ください。
+メトリックとログはどちらも、Azure Monitor (具体的には [Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コンポーネント) にエクスポートでき、[ログ クエリ](../../azure-monitor/log-query/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)を使用してプログラムでアクセスできます。 Synapse SQL のログの待機時間は約 10 から 15 分です。 待ち時間に影響を与える要因については、次のドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

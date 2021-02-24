@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926299"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370697"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護
-Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
+Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、Azure ロールベースのアクセス制御 (Azure RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
 
-1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。 Azure portal で、これらのセキュリティ グループを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を実装します。 詳細については、[Azure RBAC](../role-based-access-control/role-assignments-portal.md) に関するページを参照してください。
-2. AAD セキュリティ グループを Data Lake Storage Gen1 アカウントに割り当てます。 これにより、ポータルから Data Lake Storage Gen1 アカウントへのアクセス、およびポータルまたは API による管理操作が制御されます。
-3. AAD セキュリティ グループをアクセス制御リスト (ACL) として Data Lake Storage Gen1 ファイル システムに割り当てます。
+1. まず、Azure Active Directory (Azure AD) でセキュリティ グループを作成します。 Azure portal で、これらのセキュリティ グループを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を実装します。 詳細については、[Azure RBAC](../role-based-access-control/role-assignments-portal.md) に関するページを参照してください。
+2. Azure AD セキュリティ グループを Data Lake Storage Gen1 アカウントに割り当てます。 これにより、ポータルから Data Lake Storage Gen1 アカウントへのアクセス、およびポータルまたは API による管理操作が制御されます。
+3. Azure AD セキュリティ グループをアクセス制御リスト (ACL) として Data Lake Storage Gen1 ファイル システムに割り当てます。
 4. さらに、Data Lake Storage Gen1 内のデータにアクセスできるクライアントの IP アドレスの範囲を設定することもできます。
 
 この記事では、Azure ポータルを使用して上記タスクを実行する方法について説明します。 Data Lake Storage Gen1 でアカウントおよびデータのレベルでどのようにセキュリティが実装されるかの詳細については、「[Security in Azure Data Lake Storage Gen1 (Azure Data Lake Storage Gen1 のセキュリティ)](data-lake-store-security-overview.md)」を参照してください。 Data Lake Storage Gen1 で ACL がどのように実装されているかの詳細については、[Azure Data Lake Store Gen1 のアクセス制御の概要](data-lake-store-access-control.md)に関するページをご覧ください。
@@ -32,14 +32,14 @@ Azure Data Lake Storage Gen1 のデータをセキュリティで保護するに
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
+* **Azure サブスクリプション** 。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* **Data Lake Storage Gen1 アカウント** 。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Azure Active Directory でセキュリティ グループを作成する
-AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「 [Azure Active Directory のセキュリティ グループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+Azure AD セキュリティ グループを作成する手順およびグループにユーザーを追加する手順については、「[Azure Active Directory のセキュリティ グループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 > [!NOTE] 
-> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、サービス プリンシパルをグループに追加するには、[Azure AD の PowerShell モジュール](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)を使用します。
+> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、サービス プリンシパルをグループに追加するには、[Azure AD の PowerShell モジュール](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)を使用します。
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs
@@ -59,7 +59,7 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
    
     ![セキュリティ グループを Azure Data Lake Storage Gen1 アカウントに割り当てる](./media/data-lake-store-secure-data/adl.select.user.icon1.png "セキュリティ グループを Azure Data Lake Storage Gen1 アカウントに割り当てる")
 
-3. **[アクセス制御 (IAM)]** ブレードで、 **[追加]** をクリックして **[アクセス許可の追加]** ブレードを開きます。 **[アクセス許可の追加]** ブレードで、ユーザー/グループの**ロール**を選択します。 Azure Active Directory で以前に作成したセキュリティ グループを検索して選択します。 多数のユーザーおよびグループの中から検索する場合は、 **[選択]** ボックスを使用してグループ名をフィルター処理します。 
+3. **[アクセス制御 (IAM)]** ブレードで、 **[追加]** をクリックして **[アクセス許可の追加]** ブレードを開きます。 **[アクセス許可の追加]** ブレードで、ユーザー/グループの **ロール** を選択します。 Azure Active Directory で以前に作成したセキュリティ グループを検索して選択します。 多数のユーザーおよびグループの中から検索する場合は、 **[選択]** ボックスを使用してグループ名をフィルター処理します。 
    
     ![ユーザーのロールを追加する](./media/data-lake-store-secure-data/adl.add.user.1.png "ユーザーのロールを追加する")
    
@@ -68,7 +68,7 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
     データ操作の場合、ユーザーが実行できる操作はファイル システムの個々のアクセス許可によって定義されます。 そのため、閲覧者ロールを持つユーザーはアカウントに関連付けられた管理設定しか表示できません。しかし、場合によっては、そのユーザーに割り当てられているファイル システムのアクセス許可に基づいて、データの読み取りおよび書き込みができます。 Data Lake Storage Gen1 ファイル システムのアクセス許可については、[セキュリティ グループを ACL として Azure Data Lake Storage Gen1 ファイル システムに割り当てる](#filepermissions)方法に関するセクションをご覧ください。
 
     > [!IMPORTANT]
-    > ファイル システムへのアクセスが自動的に有効になるのは**所有者**ロールだけです。 **共同作成者**、**閲覧者**、および他のすべてのロールでは、ACL でフォルダーとファイルへの任意のアクセス レベルを有効にする必要があります。  **所有者**ロールでは、ACL によってオーバーライドできない、ファイルとフォルダーのスーパー ユーザーのアクセス許可が付与されます。 RBAC ポリシーをデータ アクセスにマップする方法の詳細については、「[RBAC を使用したアカウント管理](data-lake-store-security-overview.md#rbac-for-account-management)」をご覧ください。
+    > ファイル システムへのアクセスが自動的に有効になるのは **所有者** ロールだけです。 **共同作成者** 、 **閲覧者** 、および他のすべてのロールでは、ACL でフォルダーとファイルへの任意のアクセス レベルを有効にする必要があります。  **所有者** ロールでは、ACL によってオーバーライドできない、ファイルとフォルダーのスーパー ユーザーのアクセス許可が付与されます。 Azure RBAC ポリシーをデータ アクセスにマップする方法の詳細については、「[Azure RBAC を使用したアカウント管理](data-lake-store-security-overview.md#azure-rbac-for-account-management)」をご覧ください。
 
 4. **[アクセス許可の追加]** ブレードに表示されていないグループ/ユーザーを追加する場合は、 **[選択]** ボックスにそのグループ/ユーザーの電子メール アドレスを入力し、一覧からグループ/ユーザーを選択することで招待できます。
    
@@ -104,12 +104,12 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
     ![グループを追加する](./media/data-lake-store-secure-data/adl.acl.3.png "グループを追加する")
 5. **[アクセス許可の選択]** をクリックし、アクセス許可、アクセス許可を再帰的に適用するかどうか、アクセス許可をアクセス ACL、既定の ACL、その両方のどれとして割り当てるかを選択します。 **[OK]** をクリックします。
    
-    ![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.acl.4.png "グループにアクセス許可を割り当てる")
+    ![[アクセス許可の選択] オプションが強調表示されている [アクセス許可の割り当て] ブレードと、[OK] オプションが強調表示されている [アクセス許可の選択] ブレードのスクリーンショット。](./media/data-lake-store-secure-data/adl.acl.4.png "グループにアクセス許可を割り当てる")
    
     Data Lake Storage Gen1 でのアクセス許可と既定/アクセス ACL の詳細については、[Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)に関するページを参照してください。
 6. **[アクセス許可の選択]** ブレードで **[OK]** をクリックすると、新しく追加されたグループと、関連付けられたアクセス許可が **[アクセス]** ブレードに表示されます。
    
-    ![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.acl.5.png "グループにアクセス許可を割り当てる")
+    ![[Data Engineering] オプションが強調表示されている [アクセス] ブレードのスクリーンショット。](./media/data-lake-store-secure-data/adl.acl.5.png "グループにアクセス許可を割り当てる")
    
    > [!IMPORTANT]
    > 現在のリリースでは、 **[割り当て済みのアクセス許可]** で設定できるエントリは最大 28 個です。 28 を超えるユーザーを追加する場合は、セキュリティ グループを作成し、セキュリティ グループにユーザーを追加して、それらのセキュリティ グループに Data Lake Storage Gen1 アカウントに対するアクセス権を付与します。
@@ -145,7 +145,7 @@ Data Lake Storage Gen1 ファイル システムからセキュリティ グル�
     ![Data Lake Storage Gen1 ファイル システムに ACL を設定する](./media/data-lake-store-secure-data/adl.acl.1.png "Data Lake Storage Gen1 ファイル システムに ACL を設定する")
 3. **[アクセス]** ブレードで、削除するセキュリティ グループをクリックします。 **[アクセスの詳細]** ブレードで **[削除]** をクリックします。
    
-    ![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.remove.acl.png "グループにアクセス許可を割り当てる")
+    ![[Data Engineering] オプションが強調表示されている [アクセス] ブレードと、[削除] オプションが強調表示されている [アクセスの詳細] ブレードのスクリーンショット。](./media/data-lake-store-secure-data/adl.remove.acl.png "グループにアクセス許可を割り当てる")
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)

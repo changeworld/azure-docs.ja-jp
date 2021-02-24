@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68934882"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517191"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上にデプロイする
-この記事では、クラウド向けのアプリケーションをデプロイするときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) のリリースと対応のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションのデプロイに使用できるアクティビティと Azure サービスの定義を手助けすることです。
+この記事では、クラウド向けのアプリケーションをデプロイするときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) のリリースと対応のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションのデプロイに使用できるアクティビティと Azure サービスの定義を手助けすることです。
 
 この記事では、次の SDL フェーズについて説明します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "68934882"
 
 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでのこれらの攻撃の阻止は困難な可能性があります。 アプリケーション トポロジの多くの層で厳格な保守、パッチ適用、監視が必要になる場合があります。 WAF を一元化することで、セキュリティの管理が簡単になります。 また、WAF のソリューションは、個々の Web アプリケーションをセキュリティで保護する場合と比較して、1 か所に既知の脆弱性の修正プログラムを適用することでセキュリティの脅威に対応できます。
 
-[Azure Application Gateway WAF](../../application-gateway/waf-overview.md) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護します。 WAF は、[OWASP コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいています。
+[Azure Application Gateway WAF](../../web-application-firewall/ag/ag-overview.md) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護します。 WAF は、[OWASP コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいています。
 
 ### <a name="create-an-incident-response-plan"></a>インシデント対応計画を作成する
 
@@ -75,9 +75,9 @@ Web アプリケーションが、一般的な既知の脆弱性を悪用した�
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../../security-center/security-center-intro.md) を使用すると、Web アプリケーションなどの Azure リソースのセキュリティを高度に視覚化 (および制御) しながら、脅威を回避し、検出し、それらに対応することができます。 Azure Security Center は、見つけにくい脅威の検出に役立ちます。 これは、さまざまなセキュリティ ソリューションと連携します。
+[Azure Security Center](../../security-center/security-center-introduction.md) を使用すると、Web アプリケーションなどの Azure リソースのセキュリティを高度に視覚化 (および制御) しながら、脅威を回避し、検出し、それらに対応することができます。 Azure Security Center は、見つけにくい脅威の検出に役立ちます。 これは、さまざまなセキュリティ ソリューションと連携します。
 
-Security Center の Free レベルでは、Azure リソースに対してのみ限定的なセキュリティを提供します。 [Security Center Standard レベル](../../security-center/security-center-onboarding.md)では、オンプレミスのリソースや他のクラウドにこれらの機能を拡張します。
+Security Center の Free レベルでは、Azure リソースに対してのみ限定的なセキュリティを提供します。 [Security Center Standard レベル](../../security-center/security-center-get-started.md)では、オンプレミスのリソースや他のクラウドにこれらの機能を拡張します。
 Security Center Standard は以下のことに役立ちます。
 
   - セキュリティの脆弱性を検出して修正する。

@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 915b4fb289b6af6f4aac84d8bfa4d491a7f77efe
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686498"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050472"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure サブスクリプションのサインインに関する問題のトラブルシューティング
 
 このガイドでは、Azure portal または Azure アカウント センターにサインインできない問題の解決について説明します。
 
 > [!NOTE]
-> 新しい Azure アカウントへのサインアップで問題が発生した場合は、[Azure サブスクリプションのサインインの問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)に関するページを参照してください。
+> 新しい Azure アカウントへのサインアップで問題が発生した場合は、[Azure サブスクリプションのサインインの問題のトラブルシューティング](./troubleshoot-azure-sign-up.md)に関するページを参照してください。
 
 ## <a name="page-hangs-in-the-loading-status"></a>ページの読み込み中にハングする
 
@@ -32,7 +32,7 @@ ms.locfileid: "88686498"
 - 別のインターネット ブラウザーを使用します。
 - お使いのブラウザーで、プライベート ブラウズ モードを使用します。
 
-   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
+   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) に移動してサインインします。 
    - **Chrome の場合:** **Incognito** モードを選択します。
    - **Safari の場合:** **[ファイル]** を選択し、 **[新規プライベート ウィンドウ]** を選択します。
 
@@ -53,7 +53,7 @@ ms.locfileid: "88686498"
    - **Chrome の場合:** **[設定]** を選択し、 **[プライバシーとセキュリティ]** の **[閲覧データのクリア]** を選択します。
 - お使いのブラウザーの設定を既定にリセットします。
 - お使いのブラウザーのプライベート ブラウズ モードを使用します。 
-   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
+   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) に移動してサインインします。 
    - **Chrome の場合:** **Incognito** モードを選択します。
    - **Safari の場合:** **[ファイル]** を選択し、 **[新規プライベート ウィンドウ]** を選択します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "88686498"
 この問題を解決するには、次の手順に従います。
 
 - 右上隅にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
-- 正しい Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、ご自分のアカウントを[所有者として追加](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator)します。
+- 正しい Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、ご自分のアカウントを[所有者として追加](./add-change-subscription-administrator.md)します。
 
 **シナリオ 2:** [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)へのサインインでエラーが発生した
 
@@ -80,11 +80,11 @@ ms.locfileid: "88686498"
 
 Azure の請求とサブスクリプションに関するその他のトラブルシューティング記事
 
-- [拒否されたカード](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [サブスクリプションのサインアップの問題](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [サブスクリプションが見つからない](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Enterprise コスト ビューが無効になっている](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Azure の課金に関するドキュメント](https://docs.microsoft.com/azure/cost-management-billing/)
+- [拒否されたカード](./troubleshoot-declined-card.md)
+- [サブスクリプションのサインアップの問題](./troubleshoot-azure-sign-up.md)
+- [サブスクリプションが見つからない](./no-subscriptions-found.md)
+- [Enterprise コスト ビューが無効になっている](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Azure の課金に関するドキュメント](../index.yml)
 
 ## <a name="contact-us-for-help"></a>お問い合わせ
 

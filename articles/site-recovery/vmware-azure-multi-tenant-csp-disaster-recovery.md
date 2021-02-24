@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fb2a8a7bb14758ab21eb2183a119f456b53c8562
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924582"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654951"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>クラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での VMware ディザスター リカバリーを設定する
 
-[CSP プログラム](https://partner.microsoft.com/cloud-solution-provider)は、Office 365、Enterprise Mobility Suite、Microsoft Azure など、Microsoft クラウド サービス向けの優れた連携による事例を促進します。 CSP により、パートナーは顧客とのエンド ツー エンドの関係を築き、顧客にとって最も重要な担当者になることができます。 パートナーは顧客の Azure サブスクリプションをデプロイし、サブスクリプションをカスタマイズされた独自の付加価値サービスと組み合わせることができます。
+[CSP プログラム](https://partner.microsoft.com/cloud-solution-provider)は、Microsoft 365、Enterprise Mobility Suite、Microsoft Azure など、Microsoft クラウド サービス向けの優れた連携による事例を促進します。 CSP により、パートナーは顧客とのエンド ツー エンドの関係を築き、顧客にとって最も重要な担当者になることができます。 パートナーは顧客の Azure サブスクリプションをデプロイし、サブスクリプションをカスタマイズされた独自の付加価値サービスと組み合わせることができます。
 
 [Azure Site Recovery](site-recovery-overview.md) を使用すると、パートナーは CSP を介して顧客のディザスター リカバリーを直接管理できます。 また、CSP を使用して Site Recovery 環境をセットアップし、顧客がセルフサービス方式で独自のディザスター リカバリーのニーズを管理できるようにすることも可能です。 どちらのシナリオでも、パートナーは Site Recovery と顧客の間の連絡役となります。 パートナーは顧客関係にサービスを提供し、Site Recovery の利用料金を顧客に請求します。
 
@@ -65,22 +65,22 @@ VMware のレプリケーションをセットアップするには、次のこ�
 ## <a name="assign-tenant-access-to-the-subscription"></a>サブスクリプションにテナント アクセスを割り当てる
 
 1. ディザスター リカバリー インフラストラクチャがセットアップされていることを確認します。 ディザスター リカバリーがマネージドかセルフサービスかに関係なく、パートナーは CSP ポータルからテナント サブスクリプションにアクセスします。 パートナーは自社のコンテナーをセットアップし、インフラストラクチャをテナント サブスクリプションに登録します。
-2. テナントに、[作成したアカウント](#create-a-tenant-account)を提供します。
-3. パートナーは CSP ポータルを通じ、テナント サブスクリプションに新しいユーザーを追加することもできます。手順は次のとおりです。
+1. テナントに、[作成したアカウント](#create-a-tenant-account)を提供します。
+1. パートナーは CSP ポータルを通じ、テナント サブスクリプションに新しいユーザーを追加することもできます。手順は次のとおりです。
 
-    a) テナントの CSP サブスクリプション ページに移動し、 **[Users and licenses]\(ユーザーとライセンス\)** を選択します。
+    1. テナントの CSP サブスクリプション ページに移動し、**[Users and licenses]\(ユーザーとライセンス\)** を選択します。
 
-      ![テナントの CSP サブスクリプション ページ](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+       ![テナントの CSP サブスクリプション ページ](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) 関連する詳細を入力してアクセス許可を選択するか、CSV ファイルでユーザーのリストをアップロードして、新しいユーザーを作成します。
-    
-    c) 新しいユーザーを作成したら、Azure Portal に戻ります。 **[サブスクリプション]** ページで、関連するサブスクリプションを選択します。
+    1. 関連する詳細を入力してアクセス許可を選択するか、CSV ファイルでユーザーのリストをアップロードして、新しいユーザーを作成します。
 
-    d) **[アクセス制御 (IAM)]** を選択した後、 **[ロール割り当て]** をクリックします。
+    1. 新しいユーザーを作成したら、Azure portal に戻ります。 **[サブスクリプション]** ページで、関連するサブスクリプションを選択します。
 
-    e) **[ロールの割り当ての追加]** をクリックして、関連するアクセス レベルを持つユーザーを追加します。 CSP ポータルで作成したユーザーが、[ロール割り当て] タブに表示されます。
+    1. **[アクセス制御 (IAM)]** を選択した後、 **[ロール割り当て]** をクリックします。
 
-      ![ユーザーの追加](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+    1. **[ロールの割り当ての追加]** をクリックして、関連するアクセス レベルを持つユーザーを追加します。 CSP ポータルで作成したユーザーが、[ロール割り当て] タブに表示されます。
+
+        ![ユーザーの追加](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
 - ほとんどの管理操作には、"*共同作成者*" ロールで十分です。 このアクセス レベルのユーザーは、サブスクリプションに対して、アクセス レベルの変更 ("*所有者*" レベルのアクセス権が必要) を除くすべての操作を実行できます。
 - Site Recovery には、必要に応じてアクセス レベルをさらに制限するために使用できる、3 つの[定義済みユーザー ロール](site-recovery-role-based-linked-access-control.md)が用意されています。

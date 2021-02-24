@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: aee6e6d8ca505bfdcfd4a51e4693779f44b2b0c0
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 39cead8306ece6638f85813efc318dd41a6faf8c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226491"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214895"
 ---
-このクイックスタートでは、Speech Devices SDK for Linux を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription-service.md)デバイスとして使用する方法について説明します。 現在、[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。
+このクイックスタートでは、Speech Devices SDK for Linux を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription.md)デバイスとして使用する方法について説明します。 現在、[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。
 
 アプリケーションは、Speech SDK パッケージと、64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8) 上の Eclipse Java IDE (v4) によって構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
-このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../get-started.md) アカウントが必要になります。 
+このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) アカウントが必要になります。 
 
 [サンプル アプリケーション](https://aka.ms/sdsdk-download-JRE)のソース コードは Speech Devices SDK に付属しています。 [GitHub で入手する](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)こともできます。
 
@@ -28,7 +28,7 @@ ms.locfileid: "88226491"
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) のみ。
-* Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](../get-started.md)。
+* Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](../overview.md#try-the-speech-service-for-free)。
 * Java 用の [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
    > [!NOTE]
    > このクイックスタートでは、アプリが /home/wcaltest/JRE-Sample-Release に抽出されることを前提としています
@@ -62,7 +62,7 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
 
 会話の文字起こしは、現時点では、"centralus" および "eastasia" リージョンで "en-US" と "zh-CN" 言語のみに対応しています。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
 
-意図の使用を計画している場合は、[Language Understanding サービス (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要になります。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。 [サンプル LUIS モデル](https://aka.ms/sdsdk-luis)は、このアプリで使用できます。
+意図の使用を計画している場合は、[Language Understanding サービス (LUIS)](../../luis/luis-how-to-azure-subscription.md) サブスクリプションが必要になります。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](../how-to-recognize-intents-from-speech-csharp.md)」 を参照してください。 [サンプル LUIS モデル](https://aka.ms/sdsdk-luis)は、このアプリで使用できます。
 
 ## <a name="create-and-configure-the-project"></a>プロジェクトの作成と構成
 
@@ -70,17 +70,17 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
 
 1. **Eclipse IDE Launcher** の **[Workspace]\(ワークスペース\)** フィールドに、新しいワークスペース ディレクトリの名前を入力します。 次に **[Launch]** を選択します。
 
-   ![[Eclipse Launcher] のスクリーンショット](../media/speech-devices-sdk/eclipse-launcher-linux.png)
+   ![Eclipse Launcher を示すスクリーンショット。](../media/speech-devices-sdk/eclipse-launcher-linux.png)
 
 1. しばらくすると、Eclipse IDE のメイン ウィンドウが表示されます。 ウェルカム画面が表示される場合は画面を閉じます。
 
 1. Eclipse メニュー バーから、 **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Java Project]\(Java プロジェクト\)** を選択して新しいプロジェクトを作成します。 使用できない場合は、 **[Project]\(プロジェクト\)** 、 **[Java Project]\(Java プロジェクト\)** の順に選択します。
 
-1. **新規 Java プロジェクト** ウィザードが開始されます。 サンプル プロジェクトの場所を**参照**します。 **[完了]** を選択します。
+1. **新規 Java プロジェクト** ウィザードが開始されます。 サンプル プロジェクトの場所を **参照** します。 **[完了]** を選択します。
 
    ![[新規 Java プロジェクト] ウィザードのスクリーンショット](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. **パッケージ エクスプローラー**で、自分のプロジェクトを右クリックします。 コンテキスト メニューから、 **[Configure]**  >  **[Convert to Maven Project]** を選択します。 **[完了]** を選択します。
+1. **パッケージ エクスプローラー** で、自分のプロジェクトを右クリックします。 コンテキスト メニューから、 **[Configure]**  >  **[Convert to Maven Project]** を選択します。 **[完了]** を選択します。
 
    ![パッケージ エクスプローラーのスクリーンショット](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -100,12 +100,12 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.13.0</version>
+             <version>1.15.0</version>
         </dependency>
     </dependencies>
    ```
 
-1. **パッケージ エクスプローラー**で、自分のプロジェクトを右クリックします。 **[Properties]\(プロパティ\)** を選択してから、 **[Run/Debug Settings]\(実行/デバッグ設定\)**  >  **[New…]\(新規…\)** >  **[Java Application]\(Java アプリケーション\)** の順に選択します。 
+1. **パッケージ エクスプローラー** で、自分のプロジェクトを右クリックします。 **[Properties]\(プロパティ\)** を選択してから、 **[Run/Debug Settings]\(実行/デバッグ設定\)**  >  **[New…]\(新規…\)** >  **[Java Application]\(Java アプリケーション\)** の順に選択します。 
 
 1. **[Edit Configuration]\(構成の編集\)** ウィンドウが表示されます。 **[Name]\(名前\)** フィールドに「**Main**」と入力し、 **[Search]\(検索\)** を使用して **Main クラス** を探して **[com.microsoft.cognitiveservices.speech.samples.FunctionsList]** を選択します。
 
@@ -143,7 +143,7 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
 1. 既定のキーワード (keyword) は "Computer" です。 用意されている別のキーワード ("Machine"、"Assistant" など) を試すこともできます。 これらの代替キーワード用のリソース ファイルは、Speech Devices SDK の keyword フォルダーにあります。 たとえば、`/home/wcaltest/JRE-Sample-Release/keyword/Computer` には、キーワード "Computer" で使用されるファイルが含まれています。
 
    > [!TIP]
-   > [カスタム キーワードを作成する](../speech-devices-sdk-create-kws.md)こともできます。
+   > [カスタム キーワードを作成する](../custom-keyword-basics.md)こともできます。
 
     新しいキーワードを使用するには、`FunctionsList.java` 内の次の行を更新し、そのキーワードをアプリにコピーします。 たとえば、キーワード パッケージ `machine.zip` からキーワード "Machine" を使用するには:
 
@@ -161,22 +161,22 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
 
 1. Speech Devices SDK のサンプル アプリケーションが起動し、次のオプションが表示されます。
 
-   ![Speech Devices SDK のサンプル アプリケーションとオプション](../media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Speech Devices SDK のサンプル アプリケーションとオプションを示すスクリーンショット。](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. 新しい**会話の文字起こし**のデモをお試しください。 **[Session]\(セッション\)**  >  **[Start]\(開始\)** で文字起こしを開始します。 既定では、すべてのユーザーがゲストになります。 ただし、参加者の声紋がある場合は、プロジェクト フォルダー **target/classes** 内の `participants.properties` に入れることができます。 声紋を生成するには、[会話の文字起こし (SDK)](../how-to-use-conversation-transcription-service.md) に関するページを参照してください。
+1. 新しい **会話の文字起こし** のデモをお試しください。 **[Session]\(セッション\)**  >  **[Start]\(開始\)** で文字起こしを開始します。 既定では、すべてのユーザーがゲストになります。 ただし、参加者の声紋がある場合は、プロジェクト フォルダー **target/classes** 内の `participants.properties` に入れることができます。 声紋を生成するには、[会話の文字起こし (SDK)](../how-to-use-conversation-transcription.md) に関するページを参照してください。
 
-   ![会話の文字起こしアプリケーションのデモ](../media/speech-devices-sdk/cts-sample-app-linux.png)
+   ![デモの会話の文字起こしアプリケーションを示すスクリーンショット。](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>スタンドアロン アプリケーションの作成と実行
 
-1. **パッケージ エクスプローラー**で、自分のプロジェクトを右クリックします。 **[Export]\(エクスポート\)** を選択します。 
+1. **パッケージ エクスプローラー** で、自分のプロジェクトを右クリックします。 **[Export]\(エクスポート\)** を選択します。 
 1. **[Export]\(エクスポート\)** ウィンドウが表示されます。 **[Java]** を展開して、 **[Runnable JAR file]\(実行可能な JAR ファイル\)** を選択し、 **[Next]\(次へ\)** を選択します。
 
-   ![[Export]\(エクスポート\) ウィンドウのスクリーンショット](../media/speech-devices-sdk/eclipse-export-linux.png) 
+   ![[Export]\(エクスポート\) ウィンドウを示すスクリーンショット。](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
 1. **[Runnable JAR File Export]\(実行可能な JAR ファイルのエクスポート\)** ウィンドウが表示されます。 アプリケーションの **[Export destination]\(エクスポート先\)** を選択してから、 **[Finish]\(完了\)** を選択します。
  
-   ![[Runnable JAR File Export]\(実行可能な JAR ファイルのエクスポート\) のスクリーンショット](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
+   ![[Runnable JAR File Export]\(実行可能な JAR ファイルのエクスポート\) ウィンドウを示すスクリーンショット。](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
 1. `kws.table` と `participants.properties` のファイルはアプリケーションで必要なため、上記で選択したエクスポート先フォルダー内に配置してください。
 

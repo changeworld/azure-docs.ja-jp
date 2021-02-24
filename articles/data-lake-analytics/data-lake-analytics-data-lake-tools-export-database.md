@@ -1,18 +1,16 @@
 ---
 title: U-SQL データベースをエクスポートする - Azure Data Lake Tools for Visual Studio
 description: Azure Data Lake Tools for Visual Studio を使用して、U-SQL データベースをエクスポートし、ローカル アカウントに自動的にインポートする方法を説明します。
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: 05e55d1608323b8e746a1c82ccb915a2db58ce97
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0a768990a33f0d60a3222bd3ad323edcc53c9ec0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132094"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219090"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL データベースのエクスポート
 

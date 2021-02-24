@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962164"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150333"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
 
-実行している App Service プランのサービス レベルが **Standard**、**Premium**、または **Isolated** である場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、または API アプリを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) にデプロイするときに、既定の運用スロットではなく別個のデプロイ スロットを使用できます。 デプロイ スロットは、固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 
+実行している App Service プランのサービス レベルが **Standard**、**Premium**、または **Isolated** である場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、または API アプリを [Azure App Service](./overview.md) にデプロイするときに、既定の運用スロットではなく別個のデプロイ スロットを使用できます。 デプロイ スロットは、固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 
 
 非運用スロットにアプリケーションをデプロイすることには、次のメリットがあります。
 
@@ -62,7 +62,7 @@ ms.locfileid: "88962164"
 
 6. スロットのリソース ページで、アプリの URL を選択します。 デプロイ スロットは独自のホスト名を持ち、ライブ アプリでもあります。 デプロイ スロットへのパブリック アクセスを制限するには、[Azure App Service の IP 制限](app-service-ip-restrictions.md)に関するページをご覧ください。
 
-別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](./deploy-local-git.md)ことができます。 スロットには、異なるリポジトリ分岐、または異なるリポジトリからデプロイできます。
+別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](./deploy-local-git.md)ことができます。 スロットには、異なるリポジトリブランチ、または異なるリポジトリからデプロイできます。
 
 <a name="AboutConfiguration"></a>
 
@@ -424,7 +424,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
     </conditions>
     ```
 
-- スロットをスワップした後、アプリが予期せず再起動する可能性があります。 これは、スワップ後にホスト名のバインド構成の同期が切れ、単体では再起動を行うことができないためです。 ただし、基盤となる特定のストレージ イベント (記憶域ボリュームのフェールオーバーなど) によってこれらの不一致が検出され、すべてのワーカー プロセスが強制的に再起動される可能性があります。 このような再起動を最小限に抑えるには、*すべてのスロット*で[`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`アプリ設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)を設定します。 ただし、このアプリケーション設定は Windows Communication Foundation (WCF) アプリでは動作*しません*。
+- スロットをスワップした後、アプリが予期せず再起動する可能性があります。 これは、スワップ後にホスト名のバインド構成の同期が切れ、単体では再起動を行うことができないためです。 ただし、基盤となる特定のストレージ イベント (記憶域ボリュームのフェールオーバーなど) によってこれらの不一致が検出され、すべてのワーカー プロセスが強制的に再起動される可能性があります。 このような再起動を最小限に抑えるには、*すべてのスロット* で [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`アプリ設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)を設定します。 ただし、このアプリケーション設定は Windows Communication Foundation (WCF) アプリでは動作 *しません*。
 
 ## <a name="next-steps"></a>次のステップ
 [非運用スロットへのアクセスをブロックする](app-service-ip-restrictions.md)

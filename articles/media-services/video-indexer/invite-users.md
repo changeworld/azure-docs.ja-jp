@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4023f8584e7b901a19906235d98982abbbfbaaf8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79499750"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364144"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>クイック スタート:Video Indexer にユーザーを招待する
 
@@ -27,10 +27,9 @@ ms.locfileid: "79499750"
 ## <a name="invite-new-users"></a>新しいユーザーを招待する
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトにサインインします。 管理者アカウントを使用して接続していることを確認します。
-1. 上部のメニューの **[他の人を招待]** ボタンをクリックします。
+1. 管理者には、右上隅に **[Share account]\(アカウントの共有\)** ボタンが表示されます。 このボタンをクリックして、ユーザーを招待することができます。 
 
-   ![新しいユーザーを招待する](./media/invite-users/invite-users.png)
-
+   ![新しいユーザーを招待する](./media/invite-users/share-account.png)
 1. Video Indexer アカウントに追加するユーザーの電子メールアドレスを追加します。
 
     ![このアカウントにユーザーを招待する](./media/invite-users/invite-to-account.png)

@@ -1,28 +1,24 @@
 ---
 title: PowerShell を使用してテーブルを増分コピーする
-description: このチュートリアルでは、Azure SQL データベースから Azure BLOB ストレージにデータを増分コピーする Azure Data Factory パイプラインを作成します。
-services: data-factory
+description: このチュートリアルでは、Azure SQL Database から Azure Blob Storage にデータを増分コピーする Azure Data Factory パイプラインを作成します。
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 3bd2744c651544fc7dfe41b350168a7f387c0928
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a3346f3f126b880a5a2983f9dd35aa84f6389a31
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254448"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367726"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure SQL Database 内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
+このチュートリアルでは、Azure Data Factory を使用して、Azure SQL Database 内のテーブルから Azure Blob Storage に差分データを読み込むパイプラインを作成します。
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -68,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure PowerShell**。 「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-Az-ps)」に記載されている手順に従います。
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL データベースにデータ ソース テーブルを作成する
-1. SQL Server Management Studio を開きます。 **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
+1. SQL Server Management Studio を開きます。 **サーバー エクスプローラー** で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 2. SQL データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをデータ ソース ストアとして作成します。
 
@@ -141,8 +137,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
 
 END
@@ -222,7 +218,7 @@ END
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -253,7 +249,7 @@ END
 
     出力例を次に示します。
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -327,7 +323,7 @@ END
     ```
 
     > [!IMPORTANT]
-    > このスニペットは、BLOB ストレージに adftutorial という名前の BLOB コンテナーがあることを前提としています。 このコンテナーが存在しない場合は作成するか、既存のコンテナーの名前を設定してください。 出力フォルダー `incrementalcopy` は、コンテナーに存在しない場合は自動的に作成されます。 このチュートリアルでは、`@CONCAT('Incremental-', pipeline().RunId, '.txt')` という式を使ってファイル名が動的に生成されます。
+    > このスニペットは、BLOB ストレージに `adftutorial` という名前の BLOB コンテナーがあることを前提としています。 このコンテナーが存在しない場合は作成するか、既存のコンテナーの名前を設定してください。 出力フォルダー `incrementalcopy` は、コンテナーに存在しない場合は自動的に作成されます。 このチュートリアルでは、`@CONCAT('Incremental-', pipeline().RunId, '.txt')` という式を使ってファイル名が動的に生成されます。
 
 2. **Set-AzDataFactoryV2Dataset** コマンドレットを実行して、データセット SinkDataset を作成します。
 
@@ -505,7 +501,7 @@ END
 
    出力例を次に示します。
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -528,7 +524,7 @@ END
 
     出力例を次に示します。
 
-    ```json
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity
@@ -608,7 +604,7 @@ END
 
     TableName | WatermarkValue
     --------- | --------------
-    data_source_table | 2017-09-05  8:06:00.000
+    data_source_table | 2017-09-05 8:06:00.000
 
 ### <a name="insert-data-into-the-data-source-store-to-verify-delta-data-loading"></a>データ ソース ストアにデータを挿入して差分データの読み込みを検証する
 
@@ -648,7 +644,7 @@ END
 
     出力例を次に示します。
 
-    ```json
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity

@@ -2,13 +2,13 @@
 title: 診断ログの設定 - Azure Event Hub | Microsoft Docs
 description: Azure のイベント ハブのアクティビティ ログおよび診断ログを設定する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/27/2020
+ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927733"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131986"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
@@ -28,7 +28,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 2. 左側のウィンドウで **[監視]** の下にある **[診断設定]** を選択してから、 **[+ 診断設定の追加]** を選択します。 
 
     ![[診断設定] ページ - 診断設定の追加](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
-4. **[Category details] (カテゴリの詳細)** セクションで、有効にする**診断ログの種類**を選択します。 これらのカテゴリの詳細については、この記事の後半で説明します。 
+4. **[Category details] (カテゴリの詳細)** セクションで、有効にする **診断ログの種類** を選択します。 これらのカテゴリの詳細については、この記事の後半で説明します。 
 5. **[Destination details] (送信先の詳細)** セクションで、アーカイブ ターゲット (送信先) を設定します (例: ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース)。
 
     ![診断設定の追加ページ](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
@@ -45,7 +45,7 @@ Event Hubs では、次のカテゴリの診断ログをキャプチャします
 | カテゴリ | 説明 | 
 | -------- | ----------- | 
 | アーカイブ ログ | [Event Hubs Capture](event-hubs-capture-overview.md) 操作、特にログ関連のキャプチャ エラーに関する情報をキャプチャします。 |
-| 操作ログ | Azure Event Hubs 名前空間上で実行されるすべての管理操作がキャプチャされます。 Azure Event Hubs 上では大量のデータ操作が実行されるため、データ操作はキャプチャされません。 |
+| 操作ログ | Azure Event Hubs 名前空間上で実行されるすべての管理操作がキャプチャされます。 Azure Event Hubs で実行される大量のデータ操作のため、データ操作はキャプチャされません。 |
 | 自動スケール ログ | Event Hubs 名前空間で実行される自動拡張操作をキャプチャします。 |
 | Kafka コーディネーター ログ | Event Hubs に関連する Kafka コーディネーター操作をキャプチャします。 |
 | Kafka ユーザー エラー ログ | Event Hubs で呼び出される Kafka API に関する情報をキャプチャします。 |
@@ -100,12 +100,12 @@ Event Hubs では、次のカテゴリの診断ログをキャプチャします
 名前 | 説明
 ------- | -------
 `ActivityId` | 内部 ID。追跡目的で使用されます |
-`EventName` | 操作名 |
+`EventName` | 操作の名前。 この要素の値の一覧については、「[イベント名](#event-names)」を参照してください。 |
 `resourceId` | Azure Resource Manager リソース ID |
 `SubscriptionId` | サブスクリプション ID |
 `EventTimeString` | 操作時間 |
-`EventProperties` | 操作プロパティ |
-`Status` | 操作の状態 |
+`EventProperties` |操作のプロパティ。 次の例に示すように、この要素によってイベントに関するより詳細な情報が提供されます。 |
+`Status` | 操作の状態。 この値は、 **[成功]** または **[失敗]** のどちらかです。  |
 `Caller` | 操作の呼び出し元 (Azure Portal または管理クライアント) |
 `Category` | OperationalLogs |
 
@@ -125,6 +125,13 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+### <a name="event-names"></a>イベント名
+イベント名は、次の列挙型の中の操作の種類 + リソースの種類として設定されます。 たとえば、「`Create Queue`」、「`Retrieve Event Hu`」、「`Delete Rule`」のように指定します。 
+
+| 操作の種類 | リソースの種類 | 
+| -------------- | ------------- | 
+| <ul><li>作成</li><li>更新</li><li>削除</li><li>取得</li><li>Unknown</li></ul> | <ul><li>名前空間</li><li>キュー</li><li>トピック</li><li>サブスクリプション</li><li>EventHub</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>ルール</li>ConsumerGroup</li> |
 
 ## <a name="autoscale-logs-schema"></a>自動スケール ログのスキーマ
 自動スケール ログの JSON には、次の表に示す要素が含まれます。
@@ -188,7 +195,6 @@ Kafka ユーザー エラー ログの JSON には、次の表に示す要素が
 | `Message` | 情報メッセージ。エラーに関する詳細情報を提供します |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs 仮想ネットワーク接続イベントのスキーマ
-
 Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、次の表に示す要素が含まれます。
 
 | 名前 | 説明 |
@@ -196,10 +202,12 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 | `SubscriptionId` | Azure サブスクリプション ID |
 | `NamespaceName` | 名前空間名 |
 | `IPAddress` | Event Hubs サービスに接続しているクライアントの IP アドレス |
-| `Action` | 接続要求を評価するときに Event Hubs サービスによって実行されたアクション。 サポートされているアクションは、**接続の受け入れ**と**接続の拒否**です。 |
+| `Action` | 接続要求を評価するときに Event Hubs サービスによって実行されたアクション。 サポートされているアクションは、**接続の受け入れ** と **接続の拒否** です。 |
 | `Reason` | アクションが実行された理由を提供します |
 | `Count` | 指定されたアクションの発生回数 |
 | `ResourceId` | Azure Resource Manager リソース ID。 |
+
+仮想ネットワーク ログが生成されるのは、名前空間で **選択されたネットワーク** から、または **特定の IP アドレス** (IP フィルター規則) からのアクセスが許可されている場合のみです。 これらの機能を使用して名前空間へのアクセスを制限することを望まず、Event Hubs 名前空間に接続しているクライアントの IP アドレスを追跡するために引き続き仮想ネットワーク ログを取得したい場合は、次の回避策を使用できます。 IP フィルター処理を有効にし、アドレス指定可能な IPv4 の範囲の合計 (1.0.0.0/1 - 255.0.0.0/1) を追加します。 Event Hubs では IPv6 範囲はサポートされていません。 
 
 ### <a name="example"></a>例
 

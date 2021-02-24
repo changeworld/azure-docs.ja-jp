@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bb9235f4d1190bf7f71ddc007f09c9666c353234
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265145"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216803"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化
 
@@ -56,12 +56,12 @@ Azure Linux VM では、RSS は既定で常に有効になっています。 201
 
 ### <a name="ubuntu-for-new-deployments"></a>新規デプロイ用の Ubuntu
 
-Ubuntu Azure カーネルは、Azure 上で最適なネットワーク パフォーマンスを提供し、2017 年 9 月 21 日以降、既定のカーネルになっています。 このカーネルを入手するには、まず以下のように、サポートされている最新バージョンの 16.04-LTS をインストールします。
+Ubuntu Azure カーネルは、Azure でのネットワーク パフォーマンスに対して非常に効果的に最適化されています。 最新の最適化を得るには、まず以下のように、サポートされている最新バージョンの 18.04-LTS をインストールします。
 
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
-"Sku": "16.04-LTS",
+"Sku": "18.04-LTS",
 "Version": "latest"
 ```
 
@@ -89,7 +89,7 @@ apt-get -y dist-upgrade
 
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>既存の VM 用の Ubuntu Azure カーネル アップグレード
 
-Azure Linux カーネルにアップグレードすることで、スループットのパフォーマンスが大幅に向上する可能性があります。 このカーネルがあるかどうかを確認するには、カーネルのバージョンを調べてください。
+Azure Linux カーネルにアップグレードすることで、スループットのパフォーマンスが大幅に向上する可能性があります。 このカーネルがあるかどうかを確認するには、カーネルのバージョンを調べてください。 例と同じかそれより新しいものにしてください。
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -117,7 +117,7 @@ reboot
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.4",
+"Sku": "7.7",
 "Version": "latest"
 ```
 
@@ -152,6 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 Linux Integration Services Version 4.2 for Hyper-V の詳細については、[ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=55106)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+* [近接配置グループ](../virtual-machines/co-location.md)を使用して VM を互いに近い場所にデプロイし、待ち時間を短縮する
 * 自分のシナリオで [Azure VM をテストする帯域幅/スループット](virtual-network-bandwidth-testing.md)の最適化された結果を確認します。
 * [仮想マシンに帯域幅が割り当てられる方法](virtual-machine-network-throughput.md)に関するページを参照してください
 * 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照してください。

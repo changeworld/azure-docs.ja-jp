@@ -8,32 +8,32 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf6cfdc00d38b72f292f2b3ed41a633fb9cf989d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24dafd63de1a37140c6a56547c4701729df1c8fb
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502734"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566556"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Azure CLI で TLS 終端を使用してアプリケーション ゲートウェイを作成する
 
-Azure CLI で [TLS 終端](ssl-overview.md)の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 バックエンド サーバーの場合は、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用できます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
+Azure CLI で [TLS 終端](ssl-overview.md)の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 バックエンド サーバーの場合は、[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)を使用できます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * 自己署名証明書の作成
-> * ネットワークの設定
-> * 証明書でのアプリケーション ゲートウェイの作成
-> * 既定のバックエンド プールでの仮想マシン スケール セットの作成
+* 自己署名証明書の作成
+* ネットワークの設定
+* 証明書でのアプリケーション ゲートウェイの作成
+* 既定のバックエンド プールでの仮想マシン スケール セットの作成
 
 好みに応じて、[Azure PowerShell](tutorial-ssl-powershell.md) を使ってこの手順を実行することもできます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+ - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 

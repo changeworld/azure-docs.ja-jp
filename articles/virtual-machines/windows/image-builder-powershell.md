@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7e902798284240b55a3b08ea55ab6ee55add2431
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499434"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575840"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>プレビュー:PowerShell から Azure Image Builder を使用して Windows VM を作成する
 
@@ -231,13 +231,25 @@ $disSharedImg = New-AzImageBuilderDistributorObject @disObjParams
 Azure Image Builder のカスタマイズ オブジェクトを作成します。
 
 ```azurepowershell-interactive
-$ImgCustomParams = @{
+$ImgCustomParams01 = @{
   PowerShellCustomizer = $true
   CustomizerName = 'settingUpMgmtAgtPath'
   RunElevated = $false
-  Inline = @("mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
+  Inline = @("mkdir c:\\buildActions", "mkdir c:\\buildArtifacts", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
 }
-$Customizer = New-AzImageBuilderCustomizerObject @ImgCustomParams
+$Customizer01 = New-AzImageBuilderCustomizerObject @ImgCustomParams01
+```
+
+2 番目の Azure Image Builder のカスタマイズ オブジェクトを作成します。
+
+```azurepowershell-interactive
+$ImgCustomParams02 = @{
+  FileCustomizer = $true
+  CustomizerName = 'downloadBuildArtifacts'
+  Destination = 'c:\\buildArtifacts\\index.html'
+  SourceUri = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
+}
+$Customizer02 = New-AzImageBuilderCustomizerObject @ImgCustomParams02
 ```
 
 Azure Image Builder テンプレートを作成します。
@@ -248,7 +260,7 @@ $ImgTemplateParams = @{
   ResourceGroupName = $imageResourceGroup
   Source = $srcPlatform
   Distribute = $disSharedImg
-  Customize = $Customizer
+  Customize = $Customizer01, $Customizer02
   Location = $location
   UserAssignedIdentityId = $identityNameResourceId
 }
@@ -271,7 +283,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName $imageTemplateName -ResourceGroupN
 
 イメージ構成テンプレートの送信中にサービスによって障害が報告された場合、次を実行します。
 
-- 「[Azure VM Image Builder (AIB) 障害のトラブルシューティング](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting)」を参照します。
+- 「[Azure VM Image Builder (AIB) 障害のトラブルシューティング](../linux/image-builder-troubleshoot.md)」を参照します。
 - 再試行する前に、次の例に従ってテンプレートを削除します。
 
 ```azurepowershell-interactive
@@ -288,7 +300,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 イメージ ビルド プロセスが完了するまで待ちます。 このステップには最大 1 時間かかることがあります。
 
-エラーが発生した場合は、「[Azure VM Image Builder (AIB) 障害のトラブルシューティング](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)」を参照してください。
+エラーが発生した場合は、「[Azure VM Image Builder (AIB) 障害のトラブルシューティング](../linux/image-builder-troubleshoot.md)」を参照してください。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -306,7 +318,7 @@ $ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName
 New-AzVM -ResourceGroupName $imageResourceGroup -Image $ArtifactId -Name myWinVM01 -Credential $Cred
 ```
 
-## <a name="verify-the-customization"></a>カスタマイズの確認
+## <a name="verify-the-customizations"></a>カスタマイズを確認する
 
 VM を作成したときに設定したユーザー名とパスワードを使用して、VM へのリモート デスクトップ接続を作成します。 VM 内で PowerShell を開き、次の例のように `Get-Content` を実行します。
 
@@ -319,6 +331,23 @@ Get-Content -Path C:\buildActions\buildActionsOutput.txt
 ```Output
 Azure-Image-Builder-Was-Here
 ```
+
+同じ PowerShell セッションから、次の例に示すように、ファイル `c:\buildArtifacts\index.html` が存在するか調べて、2 番目のカスタマイズが正常に完了したことを確認します。
+
+```azurepowershell-interactive
+Get-ChildItem c:\buildArtifacts\
+```
+
+結果は、イメージのカスタマイズ プロセス中にダウンロードされたファイルを示すディレクトリの一覧になります。
+
+```Output
+    Directory: C:\buildArtifacts
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          29/01/2021    10:04            276 index.html
+```
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -342,4 +371,4 @@ Remove-AzResourceGroup -Name $imageResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](../linux/image-builder-json.md)に関するページを参照してください。

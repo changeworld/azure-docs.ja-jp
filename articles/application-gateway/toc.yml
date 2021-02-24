@@ -52,8 +52,20 @@
           href: how-application-gateway-works.md
         - name: Application Gateway のコンポーネント
           href: application-gateway-components.md
-        - name: 構成の概要
-          href: configuration-overview.md
+        - name: 構成
+          items:
+            - name: 概要
+              href: configuration-overview.md
+            - name: インフラストラクチャ
+              href: configuration-infrastructure.md
+            - name: フロントエンド IP アドレス
+              href: configuration-front-end-ip.md
+            - name: リスナー
+              href: configuration-listeners.md
+            - name: 要求ルーティング規則
+              href: configuration-request-routing-rules.md
+            - name: HTTP 設定
+              href: configuration-http-settings.md
     - name: 高トラフィックのサポート
       href: high-traffic-support.md
     - name: 自動スケーリング v2 SKU
@@ -68,6 +80,10 @@
           href: redirect-overview.md
         - name: HTTP ヘッダーと URL を書き換える
           href: rewrite-http-headers-url.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: SSL
       items:
         - name: SSL ターミネーションとエンド ツー エンド SSL
@@ -93,7 +109,7 @@
     - name: 価格について
       href: understanding-pricing.md
     - name: よく寄せられる質問
-      href: application-gateway-faq.md
+      href: application-gateway-faq.yml
 - name: 操作方法ガイド
   items:
     - name: 単一のサイトをホストする
@@ -271,7 +287,7 @@
       href: ../azure-resource-manager/management/overview.md
     - name: Resource Manager テンプレート
       displayName: ARM
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
+      href: /azure/templates/microsoft.network/applicationgateways
 - name: リソース
   items:
     - name: テンプレートの作成

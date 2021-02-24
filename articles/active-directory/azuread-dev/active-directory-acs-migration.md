@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117789"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197423"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -49,7 +49,7 @@ Access Control に含まれるコンポーネントを次に示します。
 - 管理サービス。ポータルの機能を自動化するために使用できます。
 - トークン変換ルール エンジン。Access Control が発行するトークンの出力形式を操作する、複雑なロジックを定義できます。
 
-これらのコンポーネントを使用するには、1 つ以上の Access Control 名前空間を作成する必要があります。 *名前空間*とは、アプリケーションやサービスと通信するために使用される、Access Control 専用のインスタンスのことです。 名前空間は、Access Control を使用するその他のすべてのお客様から分離されます。 他のお客様は、それぞれ独自の名前空間を使用します。 Access Control 名前空間には、次のような専用の URL が使用されます。
+これらのコンポーネントを使用するには、1 つ以上の Access Control 名前空間を作成する必要があります。 *名前空間* とは、アプリケーションやサービスと通信するために使用される、Access Control 専用のインスタンスのことです。 名前空間は、Access Control を使用するその他のすべてのお客様から分離されます。 他のお客様は、それぞれ独自の名前空間を使用します。 Access Control 名前空間には、次のような専用の URL が使用されます。
 
 ```HTTP
 https://<mynamespace>.accesscontrol.windows.net
@@ -57,7 +57,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 STS および管理操作とのすべての通信は、この URL で行われます。 目的ごとに、異なるパスを使用します。 アプリケーションやサービスが Access Control を使用しているかどうかを確認するには、 https://&lt;名前空間&gt;.accesscontrol.windows.net へのトラフィックを監視します。 この URL へのトラフィックは Access Control によって処理されるため、停止する必要があります。 
 
-これに対する例外は、`https://accounts.accesscontrol.windows.net` へのすべてのトラフィックです。 この URL へのトラフィックは既に他のサービスによって対処されており、Access Control の廃止の影響を**受けません**。 
+これに対する例外は、`https://accounts.accesscontrol.windows.net` へのすべてのトラフィックです。 この URL へのトラフィックは既に他のサービスによって対処されており、Access Control の廃止の影響を **受けません**。 
 
 Access Control の詳細については、「[Access Control Service 2.0](/previous-versions/azure/azure-services/hh147631(v=azure.100))」(アーカイブ) を参照してください。
 
@@ -112,7 +112,7 @@ Access Control の詳細については、「[Access Control Service 2.0](/previ
 
 Access Control コンポーネントの廃止スケジュールを次に示します。
 
-- **2017 年 11 月**: Azure クラシック ポータルでの Azure AD 管理エクスペリエンスの[提供は終了します](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)。 この時点で、Access Control の名前空間の管理は、新しい専用の URL `https://manage.windowsazure.com?restoreClassic=true` で利用できるようになります。 この URl を使用すれば、既存の名前空間を表示したり、名前空間を有効または無効にしたり、名前空間を削除することができます。
+- **2017 年 11 月**: Azure クラシック ポータルでの Azure AD 管理エクスペリエンスの [提供は終了します](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)。 この時点で、Access Control の名前空間の管理は、新しい専用の URL `https://manage.windowsazure.com?restoreClassic=true` で利用できるようになります。 この URl を使用すれば、既存の名前空間を表示したり、名前空間を有効または無効にしたり、名前空間を削除することができます。
 - **2018 年 4 月 2 日**: Azure クラシック ポータルは完全に廃止され、Access Control の名前空間管理はすべての URL で使用できなくなります。 これ以降、Access Control 名前空間を有効または無効にしたり、削除したり、列挙することはできなくなります。 ただし、Access Control 管理ポータルはその機能を完全に維持され、`https://\<namespace\>.accesscontrol.windows.net` に配置されます。 その他の Access Control コンポーネントもすべて、引き続き正常に動作します。
 - **2018 年 11 月 7 日**: すべての Access Control コンポーネントが完全にシャットダウンされます。 これには、Access Control 管理ポータル、管理サービス、STS、およびトークン変換ルール エンジンが含まれます。 これ以降、(\<namespace\>.accesscontrol.windows.net にある) Access Control へ送信されるすべての要求は失敗するようになります。 この時点までに、すべての既存アプリケーションとサービスを他のテクノロジへと移行しておく必要があります。
 
@@ -173,7 +173,7 @@ SharePoint 2013、2016、SharePoint Online のユーザーは、クラウド、�
 
 #### <a name="migrate-to-azure-active-directory"></a>Azure Active Directory への移行
 
-候補となる経路として、アプリケーションとサービスの Azure AD との直接統合があります。 Azure AD は、Microsoft の職場または学校アカウントに対応した、クラウド ベースの ID プロバイダーです。 Azure AD は、Office 365、Azure などに対応した ID プロバイダーです。 これは、Access Control と同様のフェデレーション認証機能を提供しますが、一部の Access Control の機能をサポートしていません。 
+候補となる経路として、アプリケーションとサービスの Azure AD との直接統合があります。 Azure AD は、Microsoft の職場または学校アカウントに対応した、クラウド ベースの ID プロバイダーです。 Azure AD は、Microsoft 365、Azure などに対応した ID プロバイダーです。 これは、Access Control と同様のフェデレーション認証機能を提供しますが、一部の Access Control の機能をサポートしていません。 
 
 主な例は、Facebook、Google、Yahoo などのソーシャル ID プロバイダーとのフェデレーションです。 ユーザーがこの種類の資格情報でサインインする場合、Azure AD はソリューションとして適しません。 
 
@@ -214,7 +214,7 @@ Azure AD テナントは、AD FS を通じて、1 つ以上のオンプレミス
 
 Azure AD がアプリケーションとサービスの最善の移行経路であると判断した場合は、アプリを Azure AD と統合する 2 つの方法を認識する必要があります。
 
-WS-Federation または WIF を使用して Azure AD と統合する場合は、「[ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)」で説明されているアプローチに従うことをお勧めします。 この記事は、Azure AD を SAML ベースのシングル サインオン用に構成する方法を説明したものですが、WS-Federation の構成にも使用できます。 このアプローチを使用するには、Azure AD Premium ライセンスが必要です。 このアプローチには 2 つの利点があります。
+WS-Federation または WIF を使用して Azure AD と統合する場合は、「[ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法](../manage-apps/configure-saml-single-sign-on.md)」で説明されているアプローチに従うことをお勧めします。 この記事は、Azure AD を SAML ベースのシングル サインオン用に構成する方法を説明したものですが、WS-Federation の構成にも使用できます。 このアプローチを使用するには、Azure AD Premium ライセンスが必要です。 このアプローチには 2 つの利点があります。
 
 - Azure AD トークン カスタマイズの柔軟性をフルに活用できます。 Azure AD によって発行された要求を、Access Control によって発行された要求と一致するようにカスタマイズすることができます。 これは、ユーザー ID や名前識別子要求に特に便利です。 テクノロジが変更された後もユーザー ID の一貫性が維持されるようにするには、Azure AD によって発行されたユーザー ID を、Access Control によって発行されたユーザー ID と一致させる必要があります。
 - アプリケーション固有のトークン署名証明書を構成し、その有効期間を制御できます。
@@ -226,7 +226,7 @@ WS-Federation または WIF を使用して Azure AD と統合する場合は、
 
 このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](../develop/active-directory-signing-key-rollover.md)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。 詳細については、「[Important information about signing key rollover in Azure AD](/previous-versions/azure/dn641920(v=azure.100))」 (Azure AD の署名キーのロールオーバーに関する重要な情報) を参照してください。
 
-OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](https://aka.ms/aaddev)にさまざまなドキュメントとガイダンスが記載されています。
+OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](../develop/index.yml)にさまざまなドキュメントとガイダンスが記載されています。
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Azure Active Directory B2C への移行
 
@@ -287,7 +287,7 @@ Azure AD B2C がアプリケーションとサービスの最善の移行経路�
 
 ![この図は Ping Identity のロゴを示します](./media/active-directory-acs-migration/rsz-ping.png)
 
-[Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。
+[Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、ACS の提供終了に関する Ping のガイダンスを参照してください。
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 
@@ -304,7 +304,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 Access Control によって発行されたトークンでセキュリティ保護された Web サービスに対して、Access Control は次の機能を提供しています。
 
-- 1 つ以上の*サービス ID* を Access Control 名前空間に登録する機能。 サービス ID は、トークンを要求するために使用できます。
+- 1 つ以上の *サービス ID* を Access Control 名前空間に登録する機能。 サービス ID は、トークンを要求するために使用できます。
 - 次の種類の資格情報を使用してトークンを要求するための OAuth WRAP および OAuth 2.0 Draft 13 プロトコルのサポート。
     - サービス ID に対して作成されるシンプルなパスワード
     - 対称キーまたは X509 証明書を使用した署名付き SWT
@@ -316,7 +316,7 @@ Access Control のサービス ID は、通常はサーバー対サーバー認�
 
 #### <a name="migrate-to-azure-active-directory"></a>Azure Active Directory への移行
 
-この種類の認証フローに対する推奨事項は、[Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/) に移行することです。 Azure AD は、Microsoft の職場または学校アカウントに対応した、クラウド ベースの ID プロバイダーです。 Azure AD は、Office 365、Azure などに対応した ID プロバイダーです。 
+この種類の認証フローに対する推奨事項は、[Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/) に移行することです。 Azure AD は、Microsoft の職場または学校アカウントに対応した、クラウド ベースの ID プロバイダーです。 Azure AD は、Microsoft 365、Azure などに対応した ID プロバイダーです。 
 
 OAuth クライアント資格情報の付与の Azure AD 実装を使用して、Azure AD をサーバー対サーバー認証に使用することもできます。 次の表は、サーバー対サーバー認証での Access Control の機能を、Azure AD で使用可能な機能と比較したものです。
 
@@ -332,7 +332,7 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 
 サーバー対サーバーのシナリオの実装のガイダンスについては、次のリソースをご覧ください。
 
-- [Azure AD 開発者ガイド](https://aka.ms/aaddev) の「サービス間」セクション
+- [Azure AD 開発者ガイド](../develop/index.yml) の「サービス間」セクション
 - [シンプルなパスワード クライアント資格情報を使用したデーモン コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [証明書クライアント資格情報を使用したデーモン コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
@@ -351,7 +351,7 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。
 
 ![この図は、ACS に似た 2 つのソリューションを提供する Ping ID のロゴ](./media/active-directory-acs-migration/rsz-ping.png)
-[Ping ID](https://www.pingidentity.com)を示します。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。
+[Ping ID](https://www.pingidentity.com)を示します。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスであり、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、ACS の提供終了に関する Ping のガイダンスを参照してください。
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 

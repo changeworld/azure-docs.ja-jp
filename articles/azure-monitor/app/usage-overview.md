@@ -3,12 +3,12 @@ title: Azure Application Insights による利用状況分析 | Microsoft docs
 description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800213"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233850"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -20,7 +20,7 @@ ms.locfileid: "87800213"
 
 Application Insights をアプリのサーバー コードと Web ページの両方にインストールすることにより、最適な操作環境が得られます。 アプリのクライアントおよびサーバー コンポーネントから Azure Portal に分析用のテレメトリが送信されます。
 
-1. **サーバー コード:** [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md)、または[その他](./platforms.md)のアプリ向けの適切なモジュールをインストールします。
+1. **サーバー コード:** [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md)、または [その他](./platforms.md)のアプリ向けの適切なモジュールをインストールします。
 
     * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](./create-new-resource.md)のみを行ってください。* "
 
@@ -54,7 +54,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 [ユーザー] および [セッション] レポートでは、ページごとまたはカスタム イベントごとにデータをフィルター処理し、場所、環境、ページなどのプロパティでデータをセグメント化できます。 独自のフィルターを追加することもできます。
 
-![ユーザー](./media/usage-overview/users.png)  
+![スクリーン キャプチャからは、架空の会社の [ユーザー概要] ページを確認できます。](./media/usage-overview/users.png)  
 
 右側の洞察では、データのセットで興味深いパターンが示されています。  
 
@@ -65,13 +65,13 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 ## <a name="retention---how-many-users-come-back"></a>リテンション期間 - サービスの利用を再開したユーザーの数
 
-リテンション期間では、一定のタイム バケットでビジネス アクションを実行したユーザーのコーホートに基づいて、ユーザーがアプリの利用を再開した頻度を把握できます。 
+リテンション期間では、一定のタイム バケットでビジネス アクションを実行したユーザーのコーホートに基づいて、ユーザーがアプリの利用を再開した頻度を把握できます。 
 
 - どのような特定の機能により、どのような特定のユーザーが使用を再開したかを把握します 
 - 実際のユーザー データに基づいて仮説を立てます 
 - 製品でリテンション期間が問題になるかどうかを確認します。 
 
-![保持](./media/usage-overview/retention.png) 
+![スクリーン キャプチャからは、[リテンション期間の概要] ページを確認できます。ユーザーがアプリの使用を再開する頻度に関する情報が表示されています。](./media/usage-overview/retention.png) 
 
 上部のリテンション期間コントロールでは、特定のイベントと時間範囲を定義して、リテンション期間を計算できます。 中央のグラフは、指定した時間範囲別のリテンション期間全体のパーセンテージを視覚的に表しています。 下部のグラフは、特定の期間における個々のリテンション期間を表しています。 この詳細レベルでは、ユーザーが何を実行し、どのような理由でユーザーが使用を再開するかをさらに詳しく把握できます。  
 
@@ -79,7 +79,9 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 ## <a name="custom-business-events"></a>カスタム ビジネス イベント
 
-アプリでユーザーが何を行っているかを明確に把握するには、カスタム イベントをログに記録するコード行を挿入すると便利です。 これらのイベントにより、特定のボタンのクリックなどの詳細なユーザー アクションから、購入、ゲームに勝つなどのより重要なビジネス イベントまで追跡できます。 
+アプリでユーザーが何を行っているかを明確に把握するには、カスタム イベントをログに記録するコード行を挿入すると便利です。 これらのイベントにより、特定のボタンのクリックなどの詳細なユーザー アクションから、購入、ゲームに勝つなどのより重要なビジネス イベントまで追跡できます。
+
+[Click Analytics Auto-collection Plugin](javascript-click-analytics-plugin.md) を使用してカスタム イベントを回収することもできます。
 
 ページ ビューでは、役立つイベントを表すことができる場合もありますが、通常そうではないことがほとんどです。 ユーザーは、製品を購入しなくても製品ページを開くことができます。 
 
@@ -110,7 +112,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 ### <a name="slice-and-dice-events"></a>イベントの詳細な分析
 
 [ユーザー]、[セッション]、および [イベント] ツールでは、ユーザー、イベント名、プロパティごとにカスタム イベントを詳細に分析することができます。
-![ユーザー](./media/usage-overview/users.png)  
+![スクリーン キャプチャからは、架空の会社の [ユーザー概要] ページを確認できます。](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>アプリでのテレメトリの設計
 

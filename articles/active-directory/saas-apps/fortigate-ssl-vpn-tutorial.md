@@ -1,183 +1,193 @@
 ---
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiGate SSL VPN の統合 | Microsoft Docs
-description: Azure Active Directory と FortiGate SSL VPN の間でシングル サインオンを構成する方法について説明します。
+description: FortiGate SSL VPN と Azure Active Directory (Azure AD) を統合するために必要な手順について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 18a3d9d5-d81c-478c-be7e-ef38b574cb88
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 12/26/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecb53d661b1171f9c1b18d37d0bb35952645ba7e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9852752799fd010ebb069637f55008d9c4f68bf8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299713"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732131"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiGate SSL VPN の統合
 
 このチュートリアルでは、FortiGate SSL VPN と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と FortiGate SSL VPN を統合すると、次のことができます。
 
-* FortiGate SSL VPN にアクセスできるユーザーを Azure AD で制御する。
+* Azure AD を使用して、FortiGate SSL VPN にアクセスできるユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して FortiGate SSL VPN に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* FortiGate SSL VPN でのシングル サインオン (SSO) が有効なサブスクリプション。
+* シングル サインオン (SSO) が有効な FortiGate SSL VPN サブスクリプション。
 
-## <a name="scenario-description"></a>シナリオの説明
+## <a name="tutorial-description"></a>チュートリアルの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* FortiGate SSL VPN では、**SP** initiated SSO がサポートされます。
-* FortiGate SSL VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+FortiGate SSL VPN では、SP Initiated SSO がサポートされます。
 
-## <a name="adding-fortigate-ssl-vpn-from-the-gallery"></a>ギャラリーからの FortiGate SSL VPN の追加
+
+## <a name="add-fortigate-ssl-vpn-from-the-gallery"></a>ギャラリーからの FortiGate SSL VPN の追加
 
 Azure AD への FortiGate SSL VPN の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に FortiGate SSL VPN を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
-1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. アプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**FortiGate SSL VPN**」と入力します。
-1. 結果のパネルから **[FortiGate SSL VPN]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. 結果のパネルで **[FortiGate SSL VPN]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-fortigate-ssl-vpn"></a>FortiGate SSL VPN に対する Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、FortiGate SSL VPN に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと FortiGate SSL VPN の関連ユーザーとの間にリンク関係を確立する必要があります。
+B.Simon というテスト ユーザーを使用して、FortiGate SSL VPN に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと FortiGate SSL VPN の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-FortiGate SSL VPN に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+FortiGate SSL VPN で Azure AD SSO を構成してテストするには、これらの大まかな手順に従います。
 
-1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[FortiGate SSL VPN の SSO の構成](#configure-fortigate-ssl-vpn-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **FortiGate SSL VPN のテスト ユーザーの作成** - FortiGate SSL VPN で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
-1. **[SSO のテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD SSO を構成](#configure-azure-ad-sso)** して、この機能をユーザーに対して有効にします。
+    1. Azure AD のシングル サインオンをテストするための **[Azure AD テスト ユーザーを作成](#create-an-azure-ad-test-user)** します。
+    1. **[テスト ユーザーにアクセス権を付与](#grant-access-to-the-test-user)** して、そのユーザーに対して Azure AD シングル サインオンを有効にします。
+1. アプリケーション側で **[FortiGate SSL VPN SSO を構成](#configure-fortigate-ssl-vpn-sso)** します。
+    1. Azure AD のユーザーに対応するユーザーとして、**FortiGate SSL VPN テスト ユーザーを作成** します。
+1. **[SSO をテスト](#test-sso)** して、構成が正しく機能することを確認します。
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **FortiGate SSL VPN** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **FortiGate SSL VPN** アプリケーション統合ページで、 **[管理]** セクションの **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の鉛筆ボタンを選択して設定を編集します。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集するための鉛筆ボタンを示すスクリーンショット。](common/edit-urls.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、次の値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<FQDN>/remote/login`
+    a. **[サイン オン URL]** ボックスに、`https://<FQDN>/remote/login` というパターンの URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://<FQDN>/remote/saml/metadata` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、`https://<FQDN>/remote/saml/metadata` というパターンで URL を入力します。
 
-    c. **[応答 URL]** ボックスに、`https://><FQDN/remote/saml/login` のパターンを使用して URL を入力します
+    c. **[応答 URL]** ボックスに、`https://<FQDN>/remote/saml/login` というパターンで URL を入力します。
 
-    d. **[ログアウト URL]** テキスト ボックスに、`https://<FQDN>/remote/saml/logout` のパターンを使用して URL を入力します。
+    d. **[ログアウト URL]** ボックスに、`https://<FQDN>/remote/saml/logout` というパターンで URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値は、実際のサインオン URL、識別子、応答 URL、およびログアウト URL で更新してください。 これらの値を取得するには、[FortiGate SSL VPN クライアント サポート チーム](mailto:tac_amer@fortinet.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらの値は、ただのパターンです。 実際の **サインオン URL**、**識別子**、**応答 URL**、および **ログアウト URL** を使用する必要があります。 ガイダンスについては、[Fortinet サポート](https://support.fortinet.com)にお問い合わせください。 Fortinet のドキュメントや Azure portal の **[基本的な SAML 構成]** セクションに示されているパターン例を参照することもできます。
 
-1. FortiGate SSL VPN アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. FortiGate SSL VPN アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/default-attributes.png)
+    ![既定の属性を示しているスクリーンショット。](common/default-attributes.png)
 
-1. その他に、FortiGate SSL VPN アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらを次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
-    
-    | 名前 |  ソース属性|
-    | ------------ | --------- |
-    | username | user.userprincipalname |
-    | group | user.groups |
+1. 次の表に、FortiGate SSL VPN に追加で必要な要求を 2 つ示します。 これらの要求の名前は、このチュートリアルの **FortiGate コマンドライン構成の実行** に関するセクションで使用されている名前と一致する必要があります。 
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+   | 名前 |  ソース属性|
+   | ------------ | --------- |
+   | username | user.userprincipalname |
+   | group | user.groups |
+   
+   これらの追加の要求を作成するには、次の操作を実行します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+   a. **[ユーザー属性と要求]** の横にある **[編集]** を選択します。
 
-1. **[FortiGate SSL VPN のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+   b. **[新しい要求の追加]** を選択します。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+   c. **[名前]** で、**ユーザー名** を入力します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+   d. **[ソース属性]** で、**user.userprincipalname** を選択します。
 
-このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+   e. **[保存]** を選択します。
 
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+   f. **[グループ要求を追加する]** を選択します。
+
+   g. **[すべてのグループ]** を選択します。
+
+   h. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにします。
+
+   i. **[名前]** で、**グループ** を入力します。
+   
+   j. **[保存]** を選択します。   
+
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** リンクを選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+
+    ![証明書のダウンロード リンクを示すスクリーンショット。](common/certificatebase64.png)
+
+1. **[FortiGate SSL VPN のセットアップ]** セクションで、要件に基づいて適切な 1 つまたは複数の URL をコピーします。
+
+    ![構成 URL を示すスクリーンショット。](common/copy-configuration-urls.png)
+
+#### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
+このセクションでは、Azure portal で B. Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左ペインで、 **[Azure Active Directory]** を選択します。 **[ユーザー]** を選択し、 **[すべてのユーザー]** を選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
+1. **[ユーザー]** プロパティで、次の手順を実行します。
+   1. **[名前]** ボックスに「**B.Simon**」と入力します。  
+   1. **[ユーザー名]** ボックスに「\<username>@\<companydomain>.\<extension>」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** をオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **［作成］** を選択します
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+#### <a name="grant-access-to-the-test-user"></a>テスト ユーザーへのアクセス権の付与
 
-このセクションでは、FortiGate SSL VPN へのアクセスを許可することで、B.Simon が Azure シングル サインオンを使用できるようにします。
+このセクションでは、FortiGate SSL VPN へのアクセスを B.Simon に許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[FortiGate SSL VPN]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
+1. アプリの概要ページの **[管理]** セクションで、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、**ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 画面の下部にある **[選択]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+#### <a name="create-a-security-group-for-the-test-user"></a>テスト ユーザー用のセキュリティ グループを作成する
 
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+このセクションでは、テスト ユーザー用に Azure Active Directory にセキュリティ グループを作成します。 FortiGate では、このセキュリティ グループを使用して、VPN 経由のネットワーク アクセスをユーザーに許可します。
 
-### <a name="create-a-security-group-for-the-test-user"></a>テスト ユーザー用のセキュリティ グループを作成する
-
-このセクションでは、テスト ユーザー用に Azure Active Directory にセキュリティ グループを作成します。 このセキュリティ グループは、FortiGate で VPN 経由のユーザー ネットワーク アクセスを許可するために使用されます。
-
-1. Azure portal の左側のペインで **[Azure Active Directory]** を選択し、 **[グループ]** を選択します。
+1. Azure portal の左ペインで、 **[Azure Active Directory]** を選択します。 次に、 **[グループ]** を選択します。
 1. 画面の上部にある **[新しいグループ]** を選択します。
-1. **[新しいグループ]** のプロパティで、以下の手順を実行します。
-   1. **[グループの種類]** フィールドには **[セキュリティ]** を選択します。
-   1. **[名前]** フィールドに「`FortiGateAccess`」と入力します。
-   1. **[グループの説明]** フィールドに「`Group for granting FortiGate VPN access`」と入力します。
+1. **[新しいグループ]** のプロパティで、これらの手順を完了します。
+   1. **[グループの種類]** リストで **[セキュリティ]** を選択します。
+   1. **[グループ名]** ボックスに、「**FortiGateAccess**」と入力します。
+   1. **[グループの説明]** ボックスに、**FortiGate VPN アクセスを許可するグループ** を入力します。
    1. **[Azure AD roles can be assigned to the group (Preview)]\(Azure AD ロールをグループに割り当てることができる (プレビュー)\)** 設定には **[いいえ]** を選択します。
-   1. **[メンバーシップの種類]** フィールドには **[割り当て済み]** を選択します。
+   1. **[メンバーシップの種類]** ボックスで、 **[割り当て済み]** を選択します。
    1. **[メンバー]** には **[メンバーが選択されていません]** を選択します。
-   1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+   1. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
    1. **［作成］** を選択します
-1. Azure Active Directory の **[グループ]** ブレードに戻ったら、**FortiGate Access** グループを見つけ、後で使用できるように **[オブジェクト ID]** をメモします。
+1. Azure Active Directory の **[グループ]** セクションに戻った後、**FortiGate Access** グループを見つけ、**オブジェクト ID** を書き留めておきます。この情報は後で必要になります。
 
-## <a name="configure-fortigate-ssl-vpn-sso"></a>FortiGate SSL VPN の SSO の構成
+### <a name="configure-fortigate-ssl-vpn-sso"></a>FortiGate SSL VPN の SSO の構成
 
-### <a name="upload-the-base64-saml-certificate-to-the-fortigate-appliance"></a>Base64 SAML 証明書を FortiGate アプライアンスにアップロードする
+#### <a name="upload-the-base64-saml-certificate-to-the-fortigate-appliance"></a>Base64 SAML 証明書を FortiGate アプライアンスにアップロードする
 
-テナントで FortiGate アプリの SAML 構成を完了した後に、Base64 でエンコードされた SAML 証明書をダウンロードしました。 これを FortiGate アプライアンスにアップロードする必要があります。
+自分のテナントで FortiGate アプリの SAML 構成を完了した後に、Base64 でエンコードされた SAML 証明書をダウンロードしました。 この証明書を FortiGate アプライアンスにアップロードする必要があります。
 
 1. FortiGate アプライアンスの管理ポータルにサインインします。
-1. 左側のメニューで、 **[System]\(システム\)** をクリックします
-1. **[System]\(システム\)** で **[Certificates]\(証明書\)** をクリックします
-1. **[Import]\(インポート\)**  ->  **[Remote Certificate]\(リモート証明書\)** をクリックします。
-1. Azure テナントの FortiGate アプリのデプロイからダウンロードした証明書を参照して選択し、 **[OK]** をクリックします
+1. 左側のペインで、 **[System]\(システム\)** を選択します。
+1. **[System]\(システム\)** で **[Certificates]\(証明書\)** を選択します。
+1. **[Import]\(インポート\)**  >  **[Remote Certificate]\(リモート証明書\)** の順に選択します。
+1. Azure テナントの FortiGate アプリのデプロイからダウンロードした証明書に移動して選択し、 **[OK]** を選択します。
 
-証明書がアップロードされたら、 **[System]\(システム\)**  >  **[Certificates]\(証明書\)**  >  **[Remote Certificate]\(リモート証明書\)** の名前をメモします。 既定では、REMOTE_Cert_**N** (**N** は整数値です) という名前です。
+証明書がアップロードされたら、 **[System]\(システム\)**  >  **[Certificates]\(証明書\)**  >  **[Remote Certificate]\(リモート証明書\)** の名前をメモします。 既定では、REMOTE_Cert_ *N* (*N* は整数値です) という名前です。
 
-### <a name="perform-fortigate-command-line-configuration"></a>FortiGate のコマンドライン構成を実行する
+#### <a name="complete-fortigate-command-line-configuration"></a>FortiGate のコマンドライン構成を実行する
 
-次の手順では、Azure ログアウト URL を構成する必要があります。 この URL には疑問符 (?) が含まれています。 この文字を送信するには、特別な手順が必要です。 この手順は、FortiGate CLI コンソールからは実行できません。 代わりに、PuTTY などのツールを使用して FortiGate アプライアンスへの SSH セッションを確立します。 FortiGate アプライアンスが Azure 仮想マシンの場合、Azure 仮想マシンのシリアル コンソールから次の手順を実行できます。
+以下の手順では、Azure ログアウト URL を構成する必要があります。 この URL には疑問符 (?) が含まれています。 この記号を正常に送信するには、特定の手順を実行する必要があります。 それらの手順は、FortiGate CLI コンソールからは実行できません。 代わりに、PuTTY などのツールを使用して、FortiGate アプライアンスへの SSH セッションを確立します。 ご利用の FortiGate アプライアンスが Azure 仮想マシンである場合、Azure 仮想マシンのシリアル コンソールから以下の手順を完了できます。
 
-これらの手順を実行するには、以前にメモした値が必要です。
+これらの手順を完了するには、以前にメモした値が必要になります。
 
 - エンティティ ID
 - [応答 URL]
@@ -185,10 +195,10 @@ FortiGate SSL VPN に対する Azure AD SSO を構成してテストするには
 - Azure ログイン URL
 - Azure AD 識別子
 - Azure ログアウト URL
-- Base64 SAML 証明書名 (REMOTE_Cert_N)
+- Base64 SAML 証明書名 (REMOTE_Cert_ *N*)
 
 1. FortiGate アプライアンスへの SSH セッションを確立し、FortiGate 管理者アカウントでサインインします。
-1. 次のコマンドを実行します。
+1. これらのコマンドを実行します。
 
    ```console
     config user saml
@@ -207,20 +217,20 @@ FortiGate SSL VPN に対する Azure AD SSO を構成してテストするには
    ```
 
    > [!NOTE]
-   > **Azure ログアウト URL** には `?` 文字が含まれています。 FortiGate シリアル コンソールへの URL を正しく指定するには、特殊なキー シーケンスを入力する必要があります。 通常、URL は `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` です。
+   > Azure ログアウト URL には `?` 文字が含まれています。 FortiGate シリアル コンソールへのこの URL を正しく指定するには、特殊なキー シーケンスを入力する必要があります。 通常、URL は `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` です。
    >
    > シリアル コンソールで Azure ログアウト URL を入力するには、「`set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation`」と入力します。
    > 
-   > 次に、Ctrl + V キーを押し、残りの URL を貼り付けて次のように行を完成させます。`set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
+   > 次に、Ctrl + V キーを押し、残りの URL を貼り付けて、`set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` のように行を完成させます。
 
-### <a name="configure-fortigate-for-group-matching"></a>グループ照合のために FortiGate を構成する
+#### <a name="configure-fortigate-for-group-matching"></a>グループ照合のために FortiGate を構成する
 
-このセクションでは、テスト ユーザーが属するセキュリティ グループのオブジェクト ID を認識するように FortiGate を構成します。 その結果、FortiGate ではこのグループ メンバーシップに基づいてアクセスを判断できるようになります。
+このセクションでは、テスト ユーザーを含むセキュリティ グループのオブジェクト ID を認識するように、FortiGate を構成します。 この構成により、FortiGate ではグループ メンバーシップに基づいてアクセスを判断できるようになります。
 
-これらの手順を実行するには、以前に作成した **FortiGateAccess** セキュリティ グループのオブジェクト ID が必要です
+これらの手順を完了するには、このチュートリアルの前の方で作成した FortiGateAccess セキュリティ グループのオブジェクト ID が必要となります。
 
 1. FortiGate アプライアンスへの SSH セッションを確立し、FortiGate 管理者アカウントでサインインします。
-1. 次のコマンドを実行します。
+1. これらのコマンドを実行します。
 
    ```
     config user group
@@ -236,28 +246,23 @@ FortiGate SSL VPN に対する Azure AD SSO を構成してテストするには
     end
    ```
 
-### <a name="create-fortigate-vpn-portals-and-firewall-policy"></a>FortiGate VPN ポータルとファイアウォール ポリシーを作成する
+#### <a name="create-a-fortigate-vpn-portals-and-firewall-policy"></a>FortiGate VPN ポータルとファイアウォール ポリシーの作成
 
-このセクションでは、以前に作成したセキュリティ グループ **FortiGateAccess** へのアクセス権を付与する FortiGate VPN ポータルとファイアウォール ポリシーを構成します。
+このセクションでは、FortiGate VPN ポータルと、このチュートリアルの前の方で作成した FortiGateAccess セキュリティ グループへのアクセス権を付与するファイアウォール ポリシーを構成します。
 
- [FortiGate サポート チーム](mailto:tac_amer@fortinet.com)と連携して、VPN ポータルとファイアウォール ポリシーを FortiGate VPN プラットフォームに追加します。 シングル サインオンを使用する前に、これらの手順を完了する必要があります。
+[FortiGate サポート チーム](mailto:tac_amer@fortinet.com)と連携して、VPN ポータルとファイアウォール ポリシーを FortiGate VPN プラットフォームに追加してください。 シングル サインオンを使用する前に、この手順を完了する必要があります。
 
-## <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [FortiGate SSL VPN] タイルをクリックすると、SSO を設定した FortiGate SSL VPN に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる FortiGate VPN のサインオン URL にリダイレクトされます。 
 
-Microsoft と FortiGate では、最適なエンド ユーザー エクスペリエンスを実現するために、Fortinet VPN クライアントである FortiClient を使用することをお勧めしています。
+* FortiGate VPN のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-## <a name="additional-resources"></a>その他のリソース
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [FortiGate VPN] タイルをクリックすると、FortiGate VPN のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で FortiGate SSL VPN を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+FortiGate VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

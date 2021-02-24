@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668102"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397350"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーとは
 Application Gateway イングレス コントローラー (AGIC) は Kubernetes アプリケーションであり、これにより、[Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) のお客様が、Azure のネイティブ [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 ロード バランサーを活用してクラウド ソフトウェアをインターネットに公開できるようにします。 AGIC では、ホストされている Kubernetes クラスターを監視し、Application Gateway を継続的に更新して、選択されたサービスがインターネットに公開されるようにします。
 
-イングレス コントローラーは、お客様の AKS の独自のポッドで実行されます。 AGIC では、Kubernetes リソースのサブセットに変更がないかを監視します。 AKS クラスターの状態は Application Gateway の特定の構成に変換され、[Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) に適用されます。
+イングレス コントローラーは、お客様の AKS の独自のポッドで実行されます。 AGIC では、Kubernetes リソースのサブセットに変更がないかを監視します。 AKS クラスターの状態は Application Gateway の特定の構成に変換され、[Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md) に適用されます。
 
 ## <a name="benefits-of-application-gateway-ingress-controller"></a>Azure Application Gateway イングレス コントローラーの利点
 AGIC を使用すると、AKS クラスターの前に別のロード バランサー/パブリック IP を用意する必要がなくなり、要求が AKS クラスターに到達する前に、データパス内の複数のホップを回避できます。 Application Gateway は、プライベート IP を直接使用してポッドと通信し、NodePort および KubeProxy サービスを必要としません。 これにより、デプロイのパフォーマンスも向上します。
@@ -77,4 +77,3 @@ AGIC アドオンは顧客の AKS クラスターにポッドとしてデプロ�
 - [**AKS アドオンのブラウンフィールド デプロイ**](tutorial-ingress-controller-add-on-existing.md):既存のアプリケーション ゲートウェイがある AKS クラスターに AGIC アドオンをインストールします。
 - [**Helm のグリーンフィールド デプロイ**](ingress-controller-install-new.md):白紙状態のインフラストラクチャに、Helm を通した AGIC、新しい AKS クラスター、および新しい Application Gateway をインストールします。
 - [**Helm のブラウンフィールド デプロイ**](ingress-controller-install-existing.md):既存の AKS クラスターとアプリケーション ゲートウェイに、Helm を通して AGIC をデプロイします。
-

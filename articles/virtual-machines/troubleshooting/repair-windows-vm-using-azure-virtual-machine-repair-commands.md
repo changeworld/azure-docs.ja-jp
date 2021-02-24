@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 7addc87f3096a75a55d0ea3b5804fd0006d5cb8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7763c1d856a09acf2523a7073c3d300be6b70b37
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526488"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200704"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Windows VM を修復する
 
@@ -43,7 +43,7 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
 1. Azure Cloud Shell を起動する
 2. az extension add/update を実行する。
 3. az vm repair create を実行する。
-4. az vm repair run を実行する。
+4. az vm repair run を実行するか、リスク軽減ステップを実行します。
 5. az vm repair restore を実行する。
 
 その他のドキュメントと手順については、「[az vm repair](/cli/azure/ext/vm-repair/vm/repair)」をご覧ください。
@@ -54,13 +54,13 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
 
    Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
 
-   Cloud Shell を開くには、コード ブロックの右上隅にある **[試してみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。
+   Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。
 
    **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell にコード貼り付けてから、 **[入力]** を選択して実行します。
 
    CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
    
-   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set) を使用できます。
+   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index#az-login&preserve-view=true) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account#az-account-set&preserve-view=true) を使用できます。
 
 2. `az vm repair` コマンドを初めて使用する場合は、VM 修復 CLI 拡張機能を追加します。
 
@@ -77,14 +77,16 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
 3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、新しいリソース グループに修復 VM が作成されて、OS ディスクのコピーに接続されます。  修復 VM のサイズとリージョンは、指定された機能していない VM と同じになります。 すべての手順で使用されるリソース グループと VM の名前は、機能していない VM 用になります。 VM が Azure Disk Encryption を使用している場合、コマンドは、修復 VM に接続されているときにアクセスできるように、暗号化されたディスクのロックを解除しようとします。
 
    ```azurecli-interactive
-   az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
+   az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password 'password!234' --verbose
    ```
 
-4. `az vm repair run` を実行します。 このコマンドでは、修復 VM を介して接続されているディスクで指定した修復スクリプトが実行されます。 使用しているトラブルシューティング ガイドで run-id を指定した場合は、ここでそれを使用します。それ以外の場合は、`az vm repair list-scripts` を使用して使用可能な修復スクリプトを確認できます。 ここで使用されるリソース グループと VM の名前は、手順 3 で使用された機能していない VM 用です。
+4. `az vm repair run` を実行します。 このコマンドでは、修復 VM を介して接続されているディスクで指定した修復スクリプトが実行されます。 使用しているトラブルシューティング ガイドで run-id を指定した場合は、ここでそれを使用します。それ以外の場合は、`az vm repair list-scripts` を使用して使用可能な修復スクリプトを確認できます。 ここで使用されるリソース グループと VM の名前は、手順 3 で使用された機能していない VM 用です。 修復スクリプトに関する追加情報については、[修復スクリプト ライブラリ](https://github.com/Azure/repair-script-library)を参照してください。
 
    ```azurecli-interactive
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
    ```
+   
+   必要に応じて、修復 VM を使用して必要な手動のリスク軽減ステップを実行してから、手順 5 に進みます。
 
 5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。 ここで使用されるリソース グループと VM の名前は、手順 3 で使用された機能していない VM 用です。
 

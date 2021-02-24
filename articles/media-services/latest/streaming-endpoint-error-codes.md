@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services のパッケージ化と配信元エラー | Microsoft Docs
+title: Azure Media Services のパッケージ化と配信元エラー
 description: このトピックでは、Azure Media Services ストリーミング エンドポイント (配信元) サービスから通知されることがあるエラーについて説明します。
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 05/07/2019
 ms.author: inhenkel
-ms.openlocfilehash: 8442c52052a2016da002d392c6fe0834b3813229
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 994e5ae0647f350e0a64f35318bd5803f4ed79b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295327"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894985"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー
 

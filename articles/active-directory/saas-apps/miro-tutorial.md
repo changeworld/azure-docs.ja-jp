@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fd25397d2d3030b244b9003d9c8ca9bf5286d6d4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5f445526a29b88c347daa7c68861f027e36e39f0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528235"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518910"
 ---
 # <a name="tutorial-integrate-miro-with-azure-active-directory"></a>チュートリアル:Miro と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88528235"
 * ユーザーが自分の Azure AD アカウントを使用して Miro に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Miro では、**SP Initiated SSO と IDP Initiated SSO** のほか、**Just In Time** ユーザー プロビジョニングがサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Miro では、 **SP Initiated SSO と IDP Initiated SSO** のほか、 **Just In Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="adding-miro-from-the-gallery"></a>ギャラリーからの Miro の追加
 
@@ -47,7 +47,7 @@ Azure AD への Miro の統合を構成するには、ギャラリーからマ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Miro**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Miro** 」と入力します。
 1. 結果のパネルから **[Miro]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -91,7 +91,7 @@ Miro に対する Azure AD SSO を構成してテストするには、次の構�
 
 ### <a name="configure-miro"></a>Miro を構成する
 
-**Miro** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を Miro サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Miro** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を Miro サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -129,12 +129,12 @@ Miro に対する Azure AD SSO を構成してテストするには、次の構�
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Miro] タイルを選択すると、SSO を設定した Miro に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Miro] タイルを選択すると、SSO を設定した Miro に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

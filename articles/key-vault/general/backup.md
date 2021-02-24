@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c55c87cd8ab1b2cd1dbaf2c877eb341744d822ef
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585935"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287459"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault のバックアップ
 
@@ -25,11 +25,14 @@ ms.locfileid: "88585935"
 
 Azure Key Vault は、可用性を維持し、データの損失を防ぐうえで役立つ機能を自動的に提供します。 業務上の正当かつ重要な理由がある場合にのみ、シークレットをバックアップするようにしてください。 キー コンテナーにシークレットをバックアップすると、シークレットの有効期限が切れたりシークレットのローテーションを行ったりした際に、ログ、アクセス許可、およびバックアップの一式を複数維持しなければならないなど、運用上の負担が発生します。
 
-Key Vault を使用すると、障害状況下で可用性を維持し、ユーザーの介入なしに自動的に要求をペア リージョンにフェールオーバーできます。 詳細については、「[Azure Key Vault の可用性と冗長性](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)」を参照してください。
+Key Vault を使用すると、障害状況下で可用性を維持し、ユーザーの介入なしに自動的に要求をペア リージョンにフェールオーバーできます。 詳細については、「[Azure Key Vault の可用性と冗長性](./disaster-recovery-guidance.md)」を参照してください。
 
-不注意や悪意によってシークレットが削除されないようにする場合は、キー コンテナーに論理的な削除と消去保護の機能を構成します。 詳細については、「[Azure Key Vault の論理的な削除の概要](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)」を参照してください。
+不注意や悪意によってシークレットが削除されないようにする場合は、キー コンテナーに論理的な削除と消去保護の機能を構成します。 詳細については、「[Azure Key Vault の論理的な削除の概要](./soft-delete-overview.md)」を参照してください。
 
 ## <a name="limitations"></a>制限事項
+
+> [!IMPORTANT]
+> Key Vault で、500 を超える過去のバージョンのキー、シークレット、または証明書オブジェクトをバックアップする機能はサポートされていません。 キー、シークレット、または証明書オブジェクトをバックアップしようとすると、エラーが発生するおそれがあります。 キー、シークレット、または証明書の以前のバージョンを削除することはできません。
 
 Key Vault では現在、キー コンテナー全体を 1 回の操作でバックアップすることはできません。 このドキュメントに記載されているコマンドを使用してキー コンテナーの自動バックアップを実行しようとするとエラーが発生する可能性があります。これは、Microsoft でも Azure Key Vault チームでもサポートしていません。 
 
@@ -120,4 +123,4 @@ az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --su
 
 ## <a name="next-steps"></a>次のステップ
 
-Key Vault の[ログ記録と監視](https://docs.microsoft.com/azure/key-vault/general/logging)を有効にします。
+Key Vault の[ログ記録と監視](./logging.md)を有効にします。

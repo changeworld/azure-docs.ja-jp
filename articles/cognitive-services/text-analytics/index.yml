@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/29/2019
   ms.author: aahi
-  ms.openlocfilehash: 8a0cb825321aa28ac6b217362ae2d499eb4e077e
-  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+  ms.openlocfilehash: 48d045fb89a4b04826ecb9fd0c7d0b2ac676d64a
+  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88167625"
+  ms.lasthandoff: 01/28/2021
+  ms.locfileid: "98944970"
 landingContent:
 - title: Text Analytics API について
   linkLists:
@@ -41,21 +41,21 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp#sentiment-analysis
     - text: Python の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-python#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-python#sentiment-analysis
     - text: Node.js の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript#sentiment-analysis
     - text: Go の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-go#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-go#sentiment-analysis
     - text: Ruby の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-ruby#sentiment-analysis
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-ruby#sentiment-analysis
   - linkListType: tutorial
     links:
     - text: Power BI を統合して顧客のセンチメントを分析する
       url: tutorials/tutorial-power-bi-key-phrases.md
     - text: Flask によるテキストの翻訳、センチメントの分析、音声の合成
-      url: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json
   - linkListType: how-to-guide
     links:
     - text: センチメント分析
@@ -65,15 +65,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp#language-detection
     - text: Python の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-python#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-python#language-detection
     - text: Node.js の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript#language-detection
     - text: Go の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-go#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-go#language-detection
     - text: Ruby の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-ruby#language-detection
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-ruby#language-detection
   - linkListType: how-to-guide
     links:
     - text: 言語検出
@@ -83,15 +83,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp#key-phrase-extraction
     - text: Python の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-python#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-python#key-phrase-extraction
     - text: Node.js の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript#key-phrase-extraction
     - text: Go の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-go#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-go#key-phrase-extraction
     - text: Ruby の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-ruby#key-phrase-extraction
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-ruby#key-phrase-extraction
   - linkListType: how-to-guide
     links:
     - text: キーワード抽出
@@ -101,15 +101,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: C# の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp#named-entity-recognition-ner
     - text: Python の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-python#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-python#named-entity-recognition-ner
     - text: Node.js の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-nodejs#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-nodejs#named-entity-recognition-ner
     - text: Go の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-go#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-go#named-entity-recognition-ner
     - text: Ruby の使用
-      url: quickstarts/text-analytics-sdk.md?pivots=programming-language-ruby#named-entity-recognition-ner
+      url: quickstarts/client-libraries-rest-api.md?pivots=programming-language-ruby#named-entity-recognition-ner
   - linkListType: how-to-guide
     links:
     - text: エンティティの認識
@@ -121,19 +121,19 @@ landingContent:
     - text: REST API
       url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7
     - text: .NET クライアント ライブラリ
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/ai.textanalytics-readme?view=azure-dotnet
+      url: /dotnet/api/overview/azure/ai.textanalytics-readme?view=azure-dotnet
     - text: Python クライアント ライブラリ
-      url: https://docs.microsoft.com/python/api/overview/azure/ai-textanalytics-readme?view=azure-python
+      url: /python/api/overview/azure/ai-textanalytics-readme?view=azure-python
     - text: JavaScript クライアント ライブラリ
-      url: https://docs.microsoft.com/javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest
+      url: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest
     - text: Java クライアント ライブラリ
-      url: https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable
+      url: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable
     - text: Go クライアント ライブラリ
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices
+      url: /powershell/module/az.cognitiveservices
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      url: /cli/azure/cognitiveservices?view=azure-cli-latest
 - title: Docker コンテナーを使用する
   linkLists:
   - linkListType: how-to-guide
@@ -142,7 +142,15 @@ landingContent:
       url: how-tos/text-analytics-how-to-install-containers.md
     - text: Text Analytics コンテナーを構成する
       url: text-analytics-resource-container-config.md
+    - text: Text Analytics for health コンテナーを使用する
+      url: How-tos/text-analytics-for-health.md
     - text: コンテナー インスタンスを Azure にデプロイする
-      url: how-tos/text-analytics-how-to-use-container-instances.md
+      url: ../containers/azure-container-instance-recipe.md
     - text: コンテナーを Azure Kubernetes Service (AKS) にデプロイする
       url: how-tos/text-analytics-how-to-use-kubernetes-service.md
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context

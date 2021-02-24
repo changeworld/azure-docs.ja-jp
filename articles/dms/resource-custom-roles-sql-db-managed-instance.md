@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 6d720eee668edf2de968f0ce6955a5a586a92419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dad02735228bb639981bf3f053a74f29d1944e5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087681"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961483"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>SQL Server から Azure SQL Managed Instance へオンライン移行するためのカスタム ロール
 
@@ -32,7 +32,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 > [!NOTE]
 > SQL Managed Instance の新しいコードが Azure にデプロイされると、最後のカスタム ロールの要件は最終的に削除される可能性があります。
 
-**アプリ ID のカスタム ロール**。 このロールは、Azure Database Migration Service の*リソース* レベルまたは*リソース グループ* レベルでの移行に必要です (アプリ ID の詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」の記事を参照してください)。
+**アプリ ID のカスタム ロール**。 このロールは、Azure Database Migration Service の *リソース* レベルまたは *リソース グループ* レベルでの移行に必要です (アプリ ID の詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」の記事を参照してください)。
 
 ```json
 {
@@ -83,7 +83,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 
 上記の json は 3 つのテキスト ファイルに保存する必要があり、AzureRM、AZ PowerShell コマンドレット、または Azure CLI を使用し、**New-AzureRmRoleDefinition (AzureRM)** または **New-AzRoleDefinition (AZ)** を使用してロールを作成できます。
 
-詳細については、「[Azure カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。
+詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 これらのカスタム ロールを作成した後は、ロールの割り当てをユーザーに追加し、アプリ ID を適切なリソースまたはリソース グループに追加する必要があります。
 
@@ -94,7 +94,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 
 Azure Active Directory のカスタム ロールの数が問題にならない場合は、合計 3 つのロールを作成することをお勧めします。 "DMS ロール - アプリ ID - サブ" ロールは引き続き必要ですが、上記の "DMS ロール - アプリ ID" ロールはリソースの種類ごとに 2 つの異なるロールに分割されます。
 
-**SQL マネージド インスタンス用の アプリ ID のカスタム ロール**
+**SQL Managed Instance 用の アプリ ID のカスタム ロール**
 
 ```json
 {

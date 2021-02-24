@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics でのジョブ監視について
 description: この記事では、Azure portal で Azure Stream Analytics ジョブを監視する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0932104c55e705c76a8d2b086edf828caf60520
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5141c7fcfe1128574145930548f41731529c2ad8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044092"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012463"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics ジョブ監視とクエリの監視方法の概要
 
@@ -39,17 +38,17 @@ Azure portal は、クエリとジョブ パフォーマンスの監視とトラ
 | 入力イベントのバイト数      | Stream Analytics ジョブが受信したデータの量 (バイト単位)。 イベントが入力ソースに送信されることを検証するために使用できます。 |
 | 入力イベント           | 入力イベントから逆シリアル化されたレコードの数。 この数には、逆シリアル化エラーが発生する受信イベントは含みません。 内部回復や自己結合などのシナリオでは、Stream Analytics によって同じイベントを複数回取り込むことができます。 そのため、ジョブにシンプルな "パススルー" クエリが含まれている場合は、入力イベントと出力イベントのメトリックが一致すると想定しないことをお勧めします。 |
 | 受信した入力ソース       | ジョブが受信したメッセージ数。 Event Hub の場合、メッセージは 1 つの EventData です。 BLOB の場合、メッセージは 1 つの BLOB です。 なお、入力ソースは逆シリアル化前にカウントされます。 逆シリアル化エラーが発生した場合、入力ソースは入力イベントよりも大きくなる場合があります。 それ以外の場合、各メッセージには複数のイベントが含まれる場合があるので、入力イベント以下になります。 |
-| 遅延入力イベント      | 構成済みの到着遅延許容期間より後に到着したイベント。 詳細については [Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)を確認してください。 |
+| 遅延入力イベント      | 構成済みの到着遅延許容期間より後に到着したイベント。 詳細については [Azure Stream Analytics のイベントの順序に関する考慮事項](./stream-analytics-time-handling.md)を確認してください。 |
 | 異常イベント    | イベント順序ポリシーに基づいて、削除された、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数。 誤順序の許容期間の設定の構成により、影響を受けることがあります。 |
 | 出力イベント          | Stream Analytics のジョブから出力ターゲットに送信されたデータのイベントの量。 |
 | 実行時エラー         | クエリ処理に関連するエラーの総数 (イベントの取り込み時または結果の出力時に見つかったエラーを除く) |
-| SU % 使用率       | ジョブの [スケール] タブからジョブに割り当てられたストリーミング ユニットの使用率。 このインジケーターが 80% 以上に達した場合、イベントの処理が遅れたり、進行が遅延または停止する可能性があります。 |
+| SU % 使用率       | リソース使用率が常に 80% を超え、透かしの遅延が増加し、バックログされたイベントの数が増加している場合は、ストリーミング ユニットを増やすことを検討してください。 使用率が高い場合は、最大数に近い割り当てリソースがジョブによって使用されていることを示します。 |
 | 透かしの遅延       | ジョブ内のすべての出力のすべてのパーティションにわたる透かしの最大遅延。 |
 
-これらのメトリックを使用して、[Stream Analytics ジョブのパフォーマンスを監視](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)することができます。 
+これらのメトリックを使用して、[Stream Analytics ジョブのパフォーマンスを監視](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)することができます。 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Azure ポータルでの監視のカスタマイズ
-グラフのタイプ、表示されるメトリック、および時間範囲を [グラフの編集] 設定で調整できます。 詳細については、「[監視のカスタマイズ方法](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)」をご覧ください。
+グラフのタイプ、表示されるメトリック、および時間範囲を [グラフの編集] 設定で調整できます。 詳細については、「[監視のカスタマイズ方法](../azure-monitor/platform/data-platform.md)」をご覧ください。
 
   ![Stream Analytics クエリ モニター タイム グラフ](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
@@ -59,11 +58,11 @@ Azure portal は、クエリとジョブ パフォーマンスの監視とトラ
 この時刻は、ジョブの最新の出力のアプリケーション時間 (つまり、イベント データからのタイムスタンプを使用した時間) です。
 
 ## <a name="get-help"></a>ヘルプの参照
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

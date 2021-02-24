@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825686"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002699"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure シリアル コンソールにアクセスできず、ディスク レイアウトが LVM (論理ボリューム マネージャー) を使用している場合の Linux VM のトラブルシューティング
 
@@ -29,10 +29,10 @@ ms.locfileid: "87825686"
 
 影響を受けている VM のスナップショットを作成します。 
 
-このスナップショットは、**復旧** VM にアタッチされます。 **スナップショット**の作成方法については、[こちら](../linux/snapshot-copy-managed-disk.md#use-azure-portal)の手順に従ってください。
+このスナップショットは、**復旧** VM にアタッチされます。 **スナップショット** の作成方法については、[こちら](../linux/snapshot-copy-managed-disk.md#use-azure-portal)の手順に従ってください。
 
 ## <a name="create-a-rescue-vm"></a>復旧 VM を作成する
-通常、オペレーティング システムのバージョンが同一であるか類似している復旧 VM を使用することをお勧めします。 **リージョン**と**リソース グループ**は、影響を受けている VM と同じものを使用します
+通常、オペレーティング システムのバージョンが同一であるか類似している復旧 VM を使用することをお勧めします。 **リージョン** と **リソース グループ** は、影響を受けている VM と同じものを使用します
 
 ## <a name="connect-to-the-rescue-vm"></a>復旧 VM に接続する
 SSH を使用して、**復旧** VM に接続します。 以下を使用して権限を昇格し、スーパー ユーザーになります
@@ -40,7 +40,7 @@ SSH を使用して、**復旧** VM に接続します。 以下を使用して�
 `sudo su -`
 
 ## <a name="attach-the-disk"></a>ディスクをアタッチする
-前に作成したスナップショットから作成された**復旧** VM にディスクをアタッチします。
+前に作成したスナップショットから作成された **復旧** VM にディスクをアタッチします。
 
 Azure portal -> **復旧** VM の選択 -> **[ディスク]** 
 
@@ -49,7 +49,7 @@ Azure portal -> **復旧** VM の選択 -> **[ディスク]**
 フィールドに入力します。 新しいディスクに名前を割り当て、スナップショット、影響を受けている VM、復旧 VM と同じリソース グループを選択します。
 
 **[ソースの種類]** は **[スナップショット]** です。
-**[ソースのスナップショット]** は、先ほど作成した**スナップショット**の名前です。
+**[ソースのスナップショット]** は、先ほど作成した **スナップショット** の名前です。
 
 ![ディスク 2 を作成する](./media/chroot-logical-volume-manager/create-disk-from-snap-2.png)
 
@@ -65,13 +65,13 @@ Azure portal -> **復旧** VM の選択 -> **[ディスク]**
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-**\*** はブート パーティションであることを示しています。両方のパーティションをマウントする必要があります。
+* *\** _ はブート パーティションであることを示しています。両方のパーティションをマウントする必要があります。
 
-**lsblk** コマンドを実行して、影響を受けている VM の LVM を確認します
+_ *lsblk** コマンドを実行して、影響を受けている VM の LVM を確認します
 
 `lsblk`
 
-![lsblk を実行する](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
+![lsblk コマンドからの出力を示すスクリーンショット。](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
 影響を受けている VM の LVM が表示されているか確認します。
@@ -88,7 +88,7 @@ lsblk
 
 / (ルート) パーティションを含む論理ボリュームをマウントするパスを見つけます。 このパスには /etc/default/grub などの構成ファイルがあります
 
-この例では、前の **lsblk** コマンドの出力を利用しているため、**rootvg-rootlv** はマウントすべき正しい**ルート** LV になっており、次のコマンドで使用できます。
+この例では、前の **lsblk** コマンドの出力を利用しているため、**rootvg-rootlv** はマウントすべき正しい **ルート** LV になっており、次のコマンドで使用できます。
 
 次のコマンドの出力には、**ルート** LV のマウント先のパスが表示されます
 
@@ -100,7 +100,7 @@ lsblk
 
 `mount /dev/rootvg/rootlv /rescue`
 
-**ブート フラグ**が設定されているパーティションを /rescue/boot にマウントします
+**ブート フラグ** が設定されているパーティションを /rescue/boot にマウントします
 
 `
 mount /dev/sdc1 /rescue/boot
@@ -138,12 +138,12 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 `
 
 > [!TIP]
-> **chroot** 環境でコマンドを実行する場合、それらのコマンドが、ローカルの**復旧** VM に対してではなく、アタッチされている OS ディスクに対して実行されることに注意してください。 
+> **chroot** 環境でコマンドを実行する場合、それらのコマンドが、ローカルの **復旧** VM に対してではなく、アタッチされている OS ディスクに対して実行されることに注意してください。 
 
 コマンドは、ソフトウェアのインストール、削除、更新に使用できます。 エラーを修正するために、VM のトラブルシューティングを行います。
 
 
-lsblk コマンドを実行します。/rescue は / で、/rescue/boot は /boot になっています ![Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
+lsblk コマンドを実行します。/rescue は / で、/rescue/boot は /boot になっています ![lsblk コマンドとその出力ツリーが表示されたコンソール ウィンドウを示すスクリーンショット。](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>修正を実行する
 
@@ -169,7 +169,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 *チュートリアル*
 
 **grep** コマンドを実行すると、**grub.cfg** が認識しているカーネルが一覧表示されます。
-![カーネル](./media/chroot-logical-volume-manager/kernels.png)
+![カーネルに対する grep 検索の結果を表示するコンソール ウィンドウを示すスクリーンショット。](./media/chroot-logical-volume-manager/kernels.png)
 
 **grub2-editenv list** を実行すると、次回の起動時に読み込まれるカーネルが表示されます ![既定のカーネル](./media/chroot-logical-volume-manager/kernel-default.png)
 
@@ -190,7 +190,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 **chroot** 環境を終了し、必要な **LV** をマウントします
 
-![詳細設定](./media/chroot-logical-volume-manager/advanced.png)
+![lvs コマンド、その後に LV のマウントが表示されているコンソール ウィンドウを示すスクリーンショット。](./media/chroot-logical-volume-manager/advanced.png)
 
 以下を実行して、**chroot** 環境にもう一度アクセスします
 
@@ -198,13 +198,13 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 すべての LV がマウントされたパーティションとして表示されるはずです
 
-![詳細設定](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![マウントされたパーティションとして表示される LV を示すスクリーンショット。](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
-インストールされている**カーネル**をクエリします
+インストールされている **カーネル** をクエリします
 
-![詳細設定](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![インストールされているカーネルに対してクエリを実行する方法を示すスクリーンショット。](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-必要に応じて**カーネル**を削除またはアップグレードします
+必要に応じて **カーネル** を削除またはアップグレードします
 ![詳細](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 

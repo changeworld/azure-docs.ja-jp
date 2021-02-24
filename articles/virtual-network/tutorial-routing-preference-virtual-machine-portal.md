@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: af3d9e9fcf0dad6a5e51a3db87b63567d701970e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beb670106690645a80aa12b930e3a005efb4282a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687992"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221648"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Azure portal を使用して VM 用にルーティング優先設定を構成する
 
@@ -28,12 +28,6 @@ ms.locfileid: "84687992"
 > [!IMPORTANT]
 > 現在、ルーティング優先設定はパブリック プレビューの段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-## <a name="register-the-feature-for-your-subscription"></a>サブスクリプションに機能を登録する
-現在、ルーティング優先設定の機能はプレビューの段階です。 次のように Azure PowerShell を使用して、サブスクリプションに機能を登録する必要があります。
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNamespace Microsoft.Network
-```
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -69,10 +63,11 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 9. 仮想マシンをデプロイしたら、ポータルの上部にある検索ボックスに「*myPublicIpAddress*」と入力します。 検索結果に **myPublicIpAddress** が表示されたら、それを選びます。
 10. 次の図に示すように、割り当てられているパブリック IP アドレスと、そのアドレスが **myVM** 仮想マシンに割り当てられていることが表示されます。
 
-    ![パブリック IP アドレスの表示](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
+    ![スクリーンショットは、ネットワーク インターフェイス mynic の NIC パブリック IP を示しています。](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
 
 11. **[ネットワーク]** を選択し、NIC **mynic** をクリックし、パブリック IP アドレスを選択して、ルーティング優先設定が **[インターネット]** であることを確認します。
-    ![パブリック IP アドレスを表示する](./media/tutorial-routing-preference-virtual-machine-portal/pip-routing-internet-new.png)
+
+    ![スクリーンショットは、パブリック IP アドレスの IP アドレスとルーティング設定を示しています。](./media/tutorial-routing-preference-virtual-machine-portal/pip-routing-internet-new.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -84,5 +79,5 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 ## <a name="next-steps"></a>次のステップ
 - [ルーティング優先設定が指定されたパブリック IP アドレス](routing-preference-overview.md)について詳しく学習する。
-- Azure での[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)について詳しく学習する。
+- Azure での[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

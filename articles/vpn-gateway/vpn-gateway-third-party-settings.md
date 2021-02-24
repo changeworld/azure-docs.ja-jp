@@ -6,14 +6,14 @@ author: chadmath
 manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 02/10/2021
 ms.author: delhan
-ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0448cb5442746e5e8fced13be13dbebfc0fe32fd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75862715"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389316"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Azure VPN Gateway 向けにコミュニティで推奨されるサード パーティの VPN デバイスまたはファイアウォール デバイスの設定
 
@@ -41,7 +41,6 @@ ms.locfileid: "75862715"
 
 ## <a name="next-step"></a>次のステップ
 
-[Azure ゲートウェイの設定](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+[Azure ゲートウェイの設定](./vpn-gateway-about-vpn-devices.md)
 
-[互換性が確認されているデバイス](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
-
+[互換性が確認されているデバイス](./vpn-gateway-about-vpn-devices.md)

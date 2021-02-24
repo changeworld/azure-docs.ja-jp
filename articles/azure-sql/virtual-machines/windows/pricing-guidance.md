@@ -8,19 +8,20 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: management
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141960"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360103"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の料金ガイダンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +29,7 @@ ms.locfileid: "88141960"
 この記事では、[Azure Virtual Machines における SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md) の料金ガイダンスを示します。 コストに影響するいくつかのオプションがあるため、コストとビジネス要件が釣り合うように適切なイメージを選択することが重要です。
 
 > [!TIP]
-> SQL Server のエディションと仮想マシン (VM) のサイズの特定の組み合わせのコスト見積もりのみを確認したい場合は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の料金ページを参照してください。 **OS / ソフトウェア**の一覧から、お使いのプラットフォームと SQL Server エディションを選択します。
+> SQL Server のエディションと仮想マシン (VM) のサイズの特定の組み合わせのコスト見積もりのみを確認したい場合は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の料金ページを参照してください。 **OS / ソフトウェア** の一覧から、お使いのプラットフォームと SQL Server エディションを選択します。
 >
 > ![VM 料金ページの UI](./media/pricing-guidance/virtual-machines-pricing-ui.png)
 >
@@ -65,7 +66,7 @@ ms.locfileid: "88141960"
 
 ## <a name="pay-per-usage"></a>使用した分を支払う
 
-**使用した分の SQL Server ライセンス料金を支払う**方法 (**従量課金制**とも呼ばれている) は、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれることを意味します。 SQL Server の各種エディション (Web、Standard、Enterprise) の料金は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の Azure Virtual Machines の料金ページで確認できます。
+**使用した分の SQL Server ライセンス料金を支払う** 方法 (**従量課金制** とも呼ばれている) は、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれることを意味します。 SQL Server の各種エディション (Web、Standard、Enterprise) の料金は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の Azure Virtual Machines の料金ページで確認できます。
 
 コストはすべてのバージョンの SQL Server (2012 SP3 から 2019 まで) で同じです。 1 秒あたりのライセンス コストは、VM vCPU の数によって異なります。
 
@@ -136,7 +137,7 @@ BYOL を SQL Server VM で利用するには、SQL Server Standard または Ent
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> VM の適切なサイズ設定
 
-SQL Server のライセンス コストは vCPU の数に直接関連します。 CPU、メモリ、記憶域、および I/O 帯域幅の予想されるニーズに合った VM サイズを選択してください。 マシンのサイズ オプションの一覧については、[Windows VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)と [Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをそれぞれご覧ください。
+SQL Server のライセンス コストは vCPU の数に直接関連します。 CPU、メモリ、記憶域、および I/O 帯域幅の予想されるニーズに合った VM サイズを選択してください。 マシンのサイズ オプションの一覧については、[Windows VM のサイズ](../../../virtual-machines/sizes.md)と [Linux VM のサイズ](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをそれぞれご覧ください。
 
 特定の種類の SQL Server ワークロードで適切に動作する新しいマシン サイズがあります。 こうしたマシン サイズでは、メモリ、記憶域、および I/O 帯域幅が高いレベルで維持されますが、仮想化されたコア数は少なくなります。 たとえば、次の例を考えてみましょう。
 
@@ -167,7 +168,7 @@ SQL Server のライセンス コストは vCPU の数に直接関連します�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure の一般的な料金ガイダンスについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](../../../cost-management-billing/manage/getting-started.md)」をご覧ください。 最新の Azure Virtual Machines の料金 (SQL Server を含む) については、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) および [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) の Azure Virtual Machines の料金ページを参照してください。
+Azure の一般的な料金ガイダンスについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](../../../cost-management-billing/cost-management-billing-overview.md)」をご覧ください。 最新の Azure Virtual Machines の料金 (SQL Server を含む) については、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) および [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) の Azure Virtual Machines の料金ページを参照してください。
 
 Azure Virtual Machines における SQL Server の概要については、次の記事を参照してください。
 

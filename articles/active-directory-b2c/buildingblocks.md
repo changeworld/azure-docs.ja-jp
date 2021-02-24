@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201227"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
@@ -61,7 +61,7 @@ ms.locfileid: "85201227"
 
 **BuildingBlocks** 要素は次の要素で構成されます｡これらの要素は､定義されている順序通りに指定する必要があります｡
 
-- [ClaimsSchema](claimsschema.md) - ポリシーの一部として参照可能な要求の種類を定義します。要求スキーマは、要求の種類を宣言する場所です。 要求の種類は、多くのプログラム言語の変数に似ています。 要求の種類を利用して､アプリケーションのユーザーからのデータの収集やソーシャル ID プロバイダーからの要求の受信､カスタム REST API との間のデータの送受信､カスタム ポリシーで使用する内部データの格納を行うことができます｡
+- [ClaimsSchema](claimsschema.md) - ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求の種類を宣言する場所です。 要求の種類は、多くのプログラム言語の変数に似ています。 要求の種類を利用して､アプリケーションのユーザーからのデータの収集やソーシャル ID プロバイダーからの要求の受信､カスタム REST API との間のデータの送受信､カスタム ポリシーで使用する内部データの格納を行うことができます｡
 
 - [Predicates と PredicateValidationsInput](predicates.md) -適切な形式のデータのみが要求に入力されていることを確認する検証プロセスを実行することができます。
 
@@ -78,4 +78,4 @@ ms.locfileid: "85201227"
 
 - [Localization](localization.md) - 複数の言語をサポートすることができます。 ポリシーでのローカライズ サポートにより、ポリシーでサポートする言語の一覧を設定し､既定の言語を選択できます。 また、言語固有の文字列とコレクションもサポートされます。
 
-- [DisplayControls](display-controls.md) - ページに表示するコントロールを定義します。 表示コントロールには特別な機能があり、バックエンドの検証技術プロファイルと対話します。 表示コントロールは現在**プレビュー**です。
+- [DisplayControls](display-controls.md) - ページに表示するコントロールを定義します。 表示コントロールには特別な機能があり、バックエンドの検証技術プロファイルと対話します。 表示コントロールは現在 **プレビュー** です。

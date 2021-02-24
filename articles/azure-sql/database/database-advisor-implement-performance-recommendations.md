@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254941"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500854"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL Database のデータベース アドバイザーのパフォーマンスに関する推奨事項
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,17 +53,17 @@ Azure SQL Database で使用できるパフォーマンスに関する推奨事�
 
 ## <a name="create-index-recommendations"></a>インデックスの作成に関する推奨事項
 
-Azure SQL Database は、実行されるクエリを継続的に監視し、パフォーマンスを改善する可能性があるインデックスを特定します。 特定のインデックスが欠落していることが確実になると、新しい**インデックスの作成**推奨事項が作成されます。
+Azure SQL Database は、実行されるクエリを継続的に監視し、パフォーマンスを改善する可能性があるインデックスを特定します。 特定のインデックスが欠落していることが確実になると、新しい **インデックスの作成** 推奨事項が作成されます。
 
 Azure SQL Database は、一定の期間後にインデックスがもたらすパフォーマンス増加を見積もることで確信度を高めます。 見積もられたパフォーマンス増加に基づき、推奨事項は高、中、低で分類されます。
 
-推奨事項を利用して作成されたインデックスには常に auto_created というフラグが設定されます。 [sys.indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) ビューを見ることで、どのインデックスが自動作成されたかを確認できます。 自動作成されたインデックスによる ALTER/RENAME コマンドのブロックは発生しません。
+推奨事項を利用して作成されたインデックスには常に auto_created というフラグが設定されます。 [sys.indexes](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) ビューを見ることで、どのインデックスが自動作成されたかを確認できます。 自動作成されたインデックスによる ALTER/RENAME コマンドのブロックは発生しません。
 
 auto-created インデックスが設定されている列を削除しようとすると、コマンドは成功します。 auto-created インデックスもこのコマンドによって削除されます。 通常のインデックスは、インデックスが付けられた列の ALTER/RENAME コマンドをブロックします。
 
 インデックスの作成に関する推奨事項が適用されると、Azure SQL Database はクエリのパフォーマンスをベースライン パフォーマンスと比較します。 新しいインデックスによってパフォーマンスが向上した場合、推奨事項が成功したというフラグが設定され、影響レポートが生成されます。 インデックスによってパフォーマンスが向上しなかった場合、インデックスは自動的に元に戻されます。 Azure SQL Database は、このプロセスを使用して、推奨事項が確実にデータベース パフォーマンスを向上するようにします。
 
-**インデックスの作成**に関する推奨事項にはバックオフ ポリシーがあります。データベースまたはプールのリソース使用率が高すぎる場合、推奨事項は適用されません。 バックオフ ポリシーでは、CPU、データ IO、ログ IO、および使用可能な記憶領域が考慮されます。
+**インデックスの作成** に関する推奨事項にはバックオフ ポリシーがあります。データベースまたはプールのリソース使用率が高すぎる場合、推奨事項は適用されません。 バックオフ ポリシーでは、CPU、データ IO、ログ IO、および使用可能な記憶領域が考慮されます。
 
 CPU、データ IO、ログ IO が直前の 30 分間で 80% を超えている場合、インデックス作成の推奨事項は延期されます。 インデックスの作成により使用可能な記憶領域が 10% を下回る場合は、推奨事項がエラー状態に変わります。 数日後に自動チューニングを行ってインデックスが有効であると示される場合には、プロセスが再び開始します。
 
@@ -80,7 +80,7 @@ CPU、データ IO、ログ IO が直前の 30 分間で 80% を超えている�
 
 ## <a name="parameterize-queries-recommendations-preview"></a>クエリのパラメーター化に関する推奨事項 (プレビュー)
 
-継続的に再コンパイルされてはいるもののクエリ実行プランが同じままのクエリが 1 つ以上あると、*クエリのパラメーター化*に関する推奨事項が表示されます。 この条件によって、強制パラメーター化を適用する機会が生成されます。 強制パラメーター化では、クエリ プランをキャッシュして将来再利用できるようになり、パフォーマンスが向上し、リソース使用率が削減されます。
+継続的に再コンパイルされてはいるもののクエリ実行プランが同じままのクエリが 1 つ以上あると、*クエリのパラメーター化* に関する推奨事項が表示されます。 この条件によって、強制パラメーター化を適用する機会が生成されます。 強制パラメーター化では、クエリ プランをキャッシュして将来再利用できるようになり、パフォーマンスが向上し、リソース使用率が削減されます。
 
 すべてのクエリは、実行プランの生成のために、最初にコンパイルされる必要があります。 生成された各プランがプラン キャッシュに追加されます。 同じクエリのその後の実行では、キャッシュからプランを再利用できるため、追加のコンパイルの必要がなくなります。
 
@@ -114,7 +114,7 @@ Azure SQL Database によって、データベースで発生したスキーマ�
 
 ## <a name="custom-applications"></a>カスタム アプリケーション
 
-開発者は、Azure SQL Database のパフォーマンスに関する推奨事項に基づいて、カスタム アプリケーションの開発を検討する場合があります。 データベースのポータルに一覧表示されているすべての推奨事項には、[Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API を介してアクセスできます。
+開発者は、Azure SQL Database のパフォーマンスに関する推奨事項に基づいて、カスタム アプリケーションの開発を検討する場合があります。 データベースのポータルに一覧表示されているすべての推奨事項には、[Get-AzSqlDatabaseRecommendedAction](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API を介してアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 

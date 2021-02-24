@@ -1,6 +1,6 @@
 ---
 title: SLES で Azure NetApp Files を使用したスタンバイでの SAP HANA スケールアウト | Microsoft Docs
-description: SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の SAP NetWeaver の高可用性ガイド
+description: SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする方法について説明します。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: adc57b213a177e227fe446a4dd24e53dea1cd2fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6da860cf9f116d859657be8b81682088b47474eb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068637"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259153"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -83,7 +84,7 @@ ms.locfileid: "87068637"
 * [SUSE SAP HA ベスト プラクティス ガイド][suse-ha-guide]: NetWeaver の高可用性および SAP HANA システム レプリケーションをオンプレミスに設定するために必要なすべての情報が含まれています (一般的なベースラインとして使用します。より詳細な情報が提供されます)
 * [SUSE High Availability Extension 12 SP3 リリース ノート][suse-ha-12sp3-relnotes]
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
-
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 
 ## <a name="overview"></a>概要
 
@@ -361,11 +362,13 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     # Add the following entries in the configuration file
     ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
-    net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
     sunrpc.tcp_slot_table_entries = 128
     vm.swappiness=10
     </code></pre>
+
+> [!TIP]
+> SAP ホスト エージェントからポート範囲を管理できるように、sysctl 構成ファイルで明示的に net.ipv4.ip_local_port_range と net.ipv4.ip_local_reserved_ports を設定しないようにしてください。 詳細については、SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) を参照してください。  
 
 4. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で推奨されているように、sunrpc 設定を調整します。  
 
@@ -435,7 +438,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-5. **[A]** SAP HANA グループとユーザーを手動で作成します。 グループ sapsys とユーザー **hn1**adm の ID は、オンボード時に指定したものと同じ ID に設定する必要があります。 (この例では、ID は **1001** に設定されています)。ID が正しく設定されていない場合、ボリュームにアクセスすることはできません。 グループ sapsys とユーザー アカウント **hn1**adm と sapadm の ID は、すべての仮想マシンで同じである必要があります。  
+5. **[A]** SAP HANA グループとユーザーを手動で作成します。 グループ sapsys とユーザー **hn1** adm の ID は、オンボード時に指定したものと同じ ID に設定する必要があります。 (この例では、ID は **1001** に設定されています)。ID が正しく設定されていない場合、ボリュームにアクセスすることはできません。 グループ sapsys とユーザー アカウント **hn1** adm と sapadm の ID は、すべての仮想マシンで同じである必要があります。  
 
     <pre><code>
     # Create user group 
@@ -533,7 +536,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     sudo zypper install libgcc_s1 libstdc++6 libatomic1 
     </code></pre>
 
-4. **[2]、[3]** SAP HANA の `data` と `log` のディレクトリの所有権を **hn1**adm に変更します。   
+4. **[2]、[3]** SAP HANA の `data` と `log` のディレクトリの所有権を **hn1** adm に変更します。   
 
     <pre><code>
     # Execute as root
@@ -655,9 +658,12 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
 ## <a name="test-sap-hana-failover"></a>SAP HANA フェールオーバーのテスト 
 
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*マスター*" と "*スレーブ*" という用語への言及があります。 ソフトウェアからこれらの用語が削除された時点で、この記事から削除します。
+
 1. SAP HANA ワーカー ノードでノード クラッシュをシミュレートします。 次の操作を行います。 
 
-   a. ノード クラッシュをシミュレートする前に、**hn1**adm として次のコマンドを実行して環境の状態をキャプチャします。  
+   a. ノード クラッシュをシミュレートする前に、**hn1** adm として次のコマンドを実行して環境の状態をキャプチャします。  
 
    <pre><code>
     # Check the landscape status
@@ -712,7 +718,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
 2. 次のようにして、ネーム サーバーを強制終了します。
 
-   a. テストの前に、**hn1**adm として次のコマンドを実行し、環境の状態を確認します。  
+   a. テストの前に、**hn1** adm として次のコマンドを実行し、環境の状態を確認します。  
 
    <pre><code>
     #Landscape status 
@@ -734,7 +740,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   b. アクティブなマスター ノード (この場合は **hanadb1**) で **hn1**adm として次のコマンドを実行します。  
+   b. アクティブなマスター ノード (この場合は **hanadb1**) で **hn1** adm として次のコマンドを実行します。  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
@@ -768,7 +774,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   **hanadb1**で SAP HANA が起動されると、次のような状態になります。  
+   **hanadb1** で SAP HANA が起動されると、次のような状態になります。  
 
    <pre><code>
     # Check the instance status
@@ -857,4 +863,5 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 * Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。

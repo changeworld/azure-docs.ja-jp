@@ -1,20 +1,32 @@
 ---
 title: 新機能 - Language Understanding (LUIS)
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 06/15/2020
-ms.openlocfilehash: d178ee2f5db74949f4a8ad68df93bf3c4407c58a
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 02/16/2021
+ms.openlocfilehash: f4ac384a9b1bce944397369cb93392f179643f96
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789210"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558755"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="january-2021"></a>2021 年 1 月
+
+* V3 Prediction API で、[Bing Spellcheck API](luis-tutorial-bing-spellcheck.md) がサポートされるようになりました。
+* リージョン ポータル (au.luis.ai と eu.luis.ai) は、単一のポータルと URL に統合されています。 これらのポータルのいずれかを使用していた場合は、luis.ai に自動的にリダイレクトされます。
+
+### <a name="december-2020"></a>2020 年 12 月
+
+* すべての LUIS ユーザーは、[LUIS オーサリング リソースに移行](luis-migration-authoring.md)する必要があります
+* 新しい[評価エンドポイント](luis-how-to-batch-test.md#batch-testing-using-the-rest-api)では、REST API を使用してバッチ テストを送信し、意図とエンティティの精度の結果を得ることができます。 v3.0-preview LUIS エンドポイント以降で使用できます。
 
 ### <a name="june-2020"></a>2020 年 6 月
 

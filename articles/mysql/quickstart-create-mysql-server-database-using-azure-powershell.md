@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:サーバーを作成する - Azure PowerShell - Azure Database for MySQL
 description: このクイックスタートでは、PowerShell を使用して、Azure Database for MySQL サーバーを Azure リソース グループに作成する方法を説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d12d447acb3b6bf2b6f84e9768e9f063a9a36b03
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543539"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542305"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Database for MySQL サーバーを作成する
 
@@ -45,9 +45,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
-次の例では、**myresourcegroup** という名前のリソース グループを**米国西部**リージョンに作成します。
+次の例では、**myresourcegroup** という名前のリソース グループを **米国西部** リージョンに作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -81,7 +81,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 リージョンおよびレベルごとの有効な **Sku** 値については、「[Azure Database for MySQL の価格レベル](./concepts-pricing-tiers.md)」を参照してください。
 
-次の例では、**米国西部**リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MySQL サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MySQL server 管理者アカウントのパスワードであるため、これを記録しておきます。
+次の例では、**米国西部** リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MySQL サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MySQL server 管理者アカウントのパスワードであるため、これを記録しておきます。
 
 > [!TIP]
 > サーバー名は DNS 名に対応しており、Azure 内でグローバルに一意であることが必要です。
@@ -201,7 +201,7 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 1. **[Setup New Connection]\(新しい接続のセットアップ\)** ダイアログ ボックスで、次の情報を **[Parameters]\(パラメーター\)** タブに入力します。
 
-   ![新しい接続のセットアップ](./media/quickstart-create-mysql-server-database-using-azure-powershell/setup-new-connection.png)
+   :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-powershell/setup-new-connection.png" alt-text="新しい接続のセットアップ":::
 
     |    **設定**    |           **推奨値**           |                      **説明**                       |
     | ----------------- | --------------------------------------- | ---------------------------------------------------------- |
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [PowerShell を使用して接続文字列を生成する - Azure Database for MySQL](connect-powershell.md)
+> [PowerShell を使用して Azure Database for MySQL を設計する](tutorial-design-database-using-powershell.md)

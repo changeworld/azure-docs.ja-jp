@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: d957c5d6521010c7393e2297be16cd7bef41c35f
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509843"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724070"
 ---
 # <a name="use-the-session-management-rest-api"></a>セッション管理 REST API を使用する
 
@@ -37,11 +37,14 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 Remote Rendering アカウントを持っていない場合は、[1 つ作成します](create-an-account.md)。 各リソースは、セッション API 全体で使用される *accountId* によって識別されます。
 
-### <a name="example-script-set-accountid-and-accountkey"></a>スクリプトの例:accountId と accountKey を設定する
+### <a name="example-script-set-accountid-accountkey-and-account-domain"></a>スクリプトの例:accountId、accountKey、アカウント ドメインの設定
+
+アカウント ドメインは、リモート レンダリング アカウントの場所です。 この例では、アカウントの場所はリージョン *eastus* です。
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
+$accountDomain = "eastus.mixedreality.azure.com"
 ```
 
 ## <a name="common-request-headers"></a>共通の要求ヘッダー
@@ -52,7 +55,7 @@ $accountKey = "*******************************************="
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
@@ -73,7 +76,7 @@ $token = $response.AccessToken;
 
 * maxLeaseTime (期間): セッションが自動的に使用停止されるときのタイムアウト値。
 * models (配列): 事前に読み込まれるアセット コンテナーの URL。
-* size (文字列): 構成するサーバー サイズ ([ **"standard"** ](../reference/vm-sizes.md) または [ **"premium"** ](../reference/vm-sizes.md))。 具体的な[サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
+* size (文字列): 構成するサーバー サイズ ([ **"standard"**](../reference/vm-sizes.md) または [ **"premium"**](../reference/vm-sizes.md))。 具体的な[サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
 
 **応答:**
 
@@ -117,7 +120,14 @@ RawContentLength  : 52
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>セッションを更新する
+## <a name="modify-and-query-session-properties"></a>セッション プロパティの変更と照会
+
+既存のセッションのパラメーターを照会または変更するためのコマンドがいくつかあります。
+
+> [!CAUTION]
+> すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合の状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
+
+### <a name="update-session-parameters"></a>セッション パラメーターの更新
 
 このコマンドでは、セッションのパラメーターが更新されます。 現時点では、セッションのリース時間のみを延長できます。
 
@@ -138,7 +148,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 |-----------|:-----------|:-----------|
 | 200 | | Success |
 
-### <a name="example-script-update-a-session"></a>スクリプトの例:セッションを更新する
+#### <a name="example-script-update-a-session"></a>スクリプトの例:セッションを更新する
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,7 +170,7 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>アクティブなセッションを取得する
+### <a name="get-active-sessions"></a>アクティブなセッションを取得する
 
 このコマンドでは、アクティブなセッションの一覧が返されます。
 
@@ -174,7 +184,7 @@ RawContentLength  : 0
 |-----------|:-----------|:-----------|
 | 200 | -sessions: セッション プロパティの配列 | セッション プロパティの説明については、「セッション プロパティを取得する」セクションを参照してください。 |
 
-### <a name="example-script-query-active-sessions"></a>スクリプトの例:アクティブなセッションをクエリする
+#### <a name="example-script-query-active-sessions"></a>スクリプトの例:アクティブなセッションをクエリする
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,7 +213,7 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>セッション プロパティを取得する
+### <a name="get-sessions-properties"></a>セッション プロパティを取得する
 
 このコマンドでは、VM のホスト名など、セッションに関する情報が返されます。
 
@@ -217,7 +227,7 @@ RawContentLength  : 2
 |-----------|:-----------|:-----------|
 | 200 | - message: 文字列<br/>- sessionElapsedTime: 期間<br/>- sessionHostname: 文字列<br/>- sessionId: 文字列<br/>- sessionMaxLeaseTime: 期間<br/>- sessionSize: 列挙型<br/>- sessionStatus: 列挙型 | 列挙型 sessionStatus { starting、ready、stopping、stopped、expired、error}<br/>状態が 'error' または 'expired' である場合、メッセージには詳細情報が含まれます |
 
-### <a name="example-script-get-session-properties"></a>スクリプトの例:セッションのプロパティを取得します
+#### <a name="example-script-get-session-properties"></a>スクリプトの例:セッションのプロパティを取得します
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }

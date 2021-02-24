@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161781"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682616"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
@@ -36,17 +36,19 @@ Windows、Mac、または Linux を使用して公開セキュア シェル (SSH
 ssh-keygen -t rsa -b 2048
 ```
 
-詳細については、[Azure 上の Windows での SSH キーの使用](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に関するページを参照してください。
+詳細については、[Azure 上の Windows での SSH キーの使用](../virtual-machines/linux/ssh-from-windows.md)に関するページを参照してください。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 > [!NOTE]
 >
-> サービス プリンシパルを作成するには、所有者アカウントのアクセス許可が必要です。 サービス プリンシパルの作成を自動化するスクリプトを記述することもできます。 たとえば、Azure CLI で [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) を使用できます。
+> サービス プリンシパルを作成するには、所有者アカウントのアクセス許可が必要です。 サービス プリンシパルの作成を自動化するスクリプトを記述することもできます。 たとえば、Azure CLI で [az ad sp create-for-rbac](/cli/azure/ad/sp) を使用できます。
 
 1. Azure アカウントにサインインします。
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Azure CLI のログイン](media/deploy/az-login-output.png )
  
@@ -54,11 +56,15 @@ ssh-keygen -t rsa -b 2048
 
 2. この構成の既定のサブスクリプションを設定します。
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
 3. PCF 用の Azure Active Directory アプリケーションを作成します。 一意の英数字のパスワードを指定します。 後で使用するために、パスワードを **clientSecret** として格納します。
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
     後で使用するために、出力内の "appId" 値を **clientID** としてコピーします。
 
@@ -68,23 +74,31 @@ ssh-keygen -t rsa -b 2048
 
 4. 新しいアプリ ID でサービス プリンシパルを作成します。
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. サービス プリンシパルのアクセス許可のロールは、共同作成者として設定します。
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     以下を使用することもできます
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![サービス プリンシパルのロールの割り当て](media/deploy/svc-princ.png )
 
 6. アプリ ID、パスワード、およびテナント ID を使用して、サービス プリンシパルに正しくサインインできることを確認します。
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. 次の形式の .json ファイルを作成します。 先ほどコピーした**サブスクリプション ID**、**tenantID**、**clientID**、**clientSecret** の各値を使用します。 ファイルを保存します。
+7. 次の形式の .json ファイルを作成します。 先ほどコピーした **サブスクリプション ID**、**tenantID**、**clientID**、**clientSecret** の各値を使用します。 ファイルを保存します。
 
     ```json
     {
@@ -99,7 +113,7 @@ ssh-keygen -t rsa -b 2048
 
 1. [Pivotal Network](https://network.pivotal.io) アカウントに登録またはサインインします。
 2. ページの右上隅にある自分のプロファイル名を選択します。 **[プロファイルの編集]** を選択します。
-3. ページの一番下までスクロールして、**LEGACY API TOKEN** の値をコピーします。 この値は、後で使用する **Pivotal Network トークン**の値です。
+3. ページの一番下までスクロールして、**LEGACY API TOKEN** の値をコピーします。 この値は、後で使用する **Pivotal Network トークン** の値です。
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Azure で Cloud Foundry クラスターをプロビジョニングする
 
@@ -128,4 +142,3 @@ ssh-keygen -t rsa -b 2048
 5. PCF Ops Manager には、デプロイされた Azure インスタンスが表示されます。 これで、アプリケーションをここでデプロイして管理できます。
                
     ![Pivotal でデプロイされた Azure インスタンス](media/deploy/ops-mgr.png )
- 

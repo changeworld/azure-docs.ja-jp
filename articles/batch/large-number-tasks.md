@@ -1,60 +1,74 @@
 ---
-title: 多数のタスクを送信する
-description: 1 つの Azure Batch ジョブで大量のタスクを効率的に送信する方法
+title: 1 つの Batch ジョブに多数のタスクを送信する
+description: 1 つの Azure Batch ジョブで大量のタスクを効率的に送信する方法について説明します。
 ms.topic: how-to
-ms.date: 08/24/2018
+ms.date: 12/30/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 26230372a04d13a8b8f59d50aa5da1362126413b
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 08cf92507a4556afbf56c9cb7e2c9c1b3a6c9479
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144058"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831518"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>1 つの Batch ジョブに多数のタスクを送信する
 
-大規模な Azure Batch ワークロードを実行しているときに、1 つのジョブに数万、数十、またはそれ以上のタスクを送信したい場合があります。 
+大規模な Azure Batch ワークロードを実行しているときに、1 つのジョブに数万、数十、またはそれ以上のタスクを送信したい場合があります。
 
-この記事では、スループットを大幅に向上して多数のタスクを 1 つの Batch ジョブに送信するためのガイダンスといくつかのコード例を示します。 タスクは送信された後に、Batch キューに格納され、ジョブに指定したプール上で処理されます。
+この記事では、スループットを大幅に向上して多数のタスクを 1 つの Batch ジョブに送信する方法を示します。 タスクは送信された後に、Batch キューに格納され、ジョブに指定したプール上で処理されます。
 
 ## <a name="use-task-collections"></a>タスク コレクションを使用する
 
-Batch API を使用すると、複数のタスクを 1 つの*コレクション*として 1 つのジョブに 1 つずつ効率的に追加できます。 多数のタスクを追加する場合は、適切なメソッドまたはオーバーロードを使用して、1 つのコレクションとしてタスクを追加するようにします。 一般的に、ジョブの入力ファイルまたはパラメーターのセットに対して反復処理を実行するときにタスクを定義することによって、タスク コレクションを構築します。
+多数のタスクを追加する場合は、バッチ API により提供された適切なメソッドまたはオーバーロードを使用して、一度に 1 つではなく、複数のタスクを 1 つの *コレクション* として追加します。 一般的に、ジョブの入力ファイルまたはパラメーターのセットに対して反復処理を実行するときにタスクを定義することによって、タスク コレクションを構築します。
 
 1 回の呼び出しで追加できるタスク コレクションの最大サイズは、使用する Batch API によって異なります。
 
-* 次の Batch API では、コレクションが **100 タスク**に制限されています。 この制限は、タスクのサイズに応じて小さくなる可能性があります。たとえば、タスクに多数のリソース ファイルまたは環境変数がある場合などです。
+### <a name="apis-allowing-collections-of-up-to-100-tasks"></a>最大 100 のタスクのコレクションを可能にする API
 
-    * [REST API](/rest/api/batchservice/task/addcollection)
-    * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations)
-    * [Node.js API](/javascript/api/@azure/batch/task)
+次の Batch API では、コレクションが 100 タスクに制限されています。 この制限は、タスクのサイズに応じて小さくなる可能性があります (たとえば、タスクに多数のリソース ファイルまたは環境変数がある場合)。
 
-  これらの API を使用する場合、タスクの追加が失敗した場合に、コレクションの制限を満たすように複数のタスクに分割し、エラーを処理して再試行するロジックを用意する必要があります。 タスク コレクションが大きすぎて追加できない場合、要求からエラーが生成されるので、より少ないタスクで再試行する必要があります。
+- [REST API](/rest/api/batchservice/task/addcollection)
+- [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations)
+- [Node.js API](/javascript/api/@azure/batch/task)
 
-* 次の API は、大規模なタスク コレクションをサポートしており、送信側クライアントの RAM の空きによってのみ制限されます。 これらの API は、タスクの追加が失敗した場合、低レベルな API に対してタスク コレクションを "チャンク" に分割して処理し、再試行します。
+これらの API を使用する場合、タスクの追加が失敗した場合に、コレクションの制限を満たすように複数のタスクに分割し、エラーを処理して再試行するロジックを用意する必要があります。 タスク コレクションが大きすぎて追加できない場合、要求からエラーが生成されるので、より少ないタスクで再試行する必要があります。
 
-    * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync)
-    * [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync)
-    * Batch CLI テンプレートを使用した [Azure Batch CLI 拡張機能](batch-cli-templates.md)
-    * [Python SDK 拡張機能](https://pypi.org/project/azure-batch-extensions/)
+### <a name="apis-allowing-collections-of-larger-numbers-of-tasks"></a>より多くのタスクを収集できるようにする API
+
+他の Batch API は、大規模なタスク コレクションをサポートしており、送信側クライアントの RAM の空きによってのみ制限されます。 これらの API は、タスクの追加が失敗した場合、低レベルな API に対してタスク コレクションを "チャンク" に分割して処理し、再試行します。
+
+- [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync)
+- [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync)
+- Batch CLI テンプレートを使用した [Azure Batch CLI 拡張機能](batch-cli-templates.md)
+- [Python SDK 拡張機能](https://pypi.org/project/azure-batch-extensions/)
 
 ## <a name="increase-throughput-of-task-submission"></a>タスク送信のスループットを向上する
 
-多数のタスク コレクションをジョブに追加するには時間がかかる場合があります。たとえば、.NET API を使用して 20,000 件のタスクを追加するには、最大で 1 分かかることがあります。 Batch API とワークロードに応じて、次のうち 1 つまたは複数を変更して、タスクのスループットを向上することができます。
+大規模なコレクションをジョブに追加するには、時間がかかることがあります。 たとえば、.NET API を使用して 20,000 のタスクを追加するには最大で 1 分かかる可能性があります。 Batch API とワークロードに応じて、次のうち 1 つまたは複数を変更して、タスクのスループットを向上することができます。
 
-* **タスク サイズ**: 大きなタスクの追加には、小さなタスクの追加よりも時間がかかります。 コレクション内の各タスクのサイズを縮小するには、タスクのコマンド ラインを簡素化する、環境変数の数を減らす、またはタスク実行の要件をより効率的に処理するという方法があります。 たとえば、多数のリソース ファイルを使用する代わりに、プール上の[開始タスク](jobs-and-tasks.md#start-task)を使用してタスクの依存関係をインストールするか、[アプリケーション パッケージ](batch-application-packages.md)または [Docker コンテナー](batch-docker-container-workloads.md)を使用します。
+### <a name="task-size"></a>タスク サイズ
 
-* **同時実行操作数**: Batch API に応じて、Batch クライアントの同時実行操作の最大数を増やすことでスループットを向上します。 この設定の構成には、.NET API の [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) プロパティ、または Batch Python SDK 拡張機能の [ TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations) などのメソッドの `threads` パラメーターを使用します  (このプロパティは、ネイティブの Batch Python SDK では使用できません)。このプロパティは既定では 1 に設定されていますが、操作のスループットを向上するには高く設定してください。 ネットワーク帯域幅を使用し、CPU のパフォーマンスがいくらか低下しますが、スループットは向上します。 タスクのスループットは、`MaxDegreeOfParallelism` または `threads` の最大 100 倍まで増加します。 実用の面では、同時実行操作数を 100 未満に設定することをお勧めします。 
- 
-  Azure Batch CLI 拡張機能と Batch テンプレートを使用すると、使用できるコア数に基づいて同時実行操作数が自動的に増えますが、このプロパティは CLI で構成できません。 
+大きなタスクの追加には、小さなタスクの追加よりも時間がかかります。 コレクション内の各タスクのサイズを縮小するには、タスクのコマンド ラインを簡素化する、環境変数の数を減らす、またはタスク実行の要件をより効率的に処理するという方法があります。
 
-* **HTTP 接続の制限**: 多数のタスクを追加するときに、同時実行されている HTTP 接続が多数の場合、Batch クライアントのパフォーマンスが低下する可能性があります。 一部の API では、HTTP 接続の数は制限されています。 たとえば、.NET API を使用して開発する場合、[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) プロパティは既定で 2 に設定されています。 この値は、同時実行操作数に近い値または大きい値まで増やすことをお勧めします。
+たとえば、多数のリソース ファイルを使用する代わりに、プール上の[開始タスク](jobs-and-tasks.md#start-task)を使用してタスクの依存関係をインストールするか、[アプリケーション パッケージ](batch-application-packages.md)または [Docker コンテナー](batch-docker-container-workloads.md)を使用します。
 
-## <a name="example-batch-net"></a>例:Batch .NET
+### <a name="number-of-parallel-operations"></a>同時実行操作数
+
+Batch API に応じて、Batch クライアントの同時実行操作の最大数を増やすことでスループットを向上します。 この設定の構成には、.NET API の [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) プロパティ、または Batch Python SDK 拡張機能の [ TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations) などのメソッドの `threads` パラメーターを使用します  (このプロパティは、ネイティブの Batch Python SDK では使用できません)。
+
+このプロパティは既定では 1 に設定されていますが、操作のスループットを向上するには高く設定できます。 ネットワーク帯域幅を使用し、CPU のパフォーマンスがいくらか低下しますが、スループットは向上します。 タスクのスループットは、`MaxDegreeOfParallelism` または `threads` の最大 100 倍まで増加します。 実用の面では、同時実行操作数を 100 未満に設定することをお勧めします。
+
+ Azure Batch CLI 拡張機能と Batch テンプレートを使用すると、使用できるコア数に基づいて同時実行操作数が自動的に増えますが、このプロパティは CLI で構成できません。
+
+### <a name="http-connection-limits"></a>HTTP 接続の制限
+
+多数のタスクを追加するときに、同時実行されている HTTP 接続が多数の場合、Batch クライアントのパフォーマンスが低下する可能性があります。 一部の API では、HTTP 接続数が制限されます。 たとえば、.NET API を使用して開発する場合、[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) プロパティは既定で 2 に設定されています。 この値は、同時実行操作数に近い値または大きい値まで増やすことをお勧めします。
+
+## <a name="example-batch-net"></a>例: Batch .NET
 
 次の C# スニペットは、Batch .NET API を使用して多数のタスクを追加するときに構成する設定を示しています。
 
-タスクのスループットを向上するには、[BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) の [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) プロパティの値を増やします。 次に例を示します。
+タスクのスループットを向上するには、[BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) の [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) プロパティの値を増やします。 例:
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -63,8 +77,9 @@ BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
   };
 ...
 ```
+
 [AddTaskAsync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync) または [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask
-) メソッドの適切なオーバーロードを使用して、ジョブにタスク コレクションを追加します。 次に例を示します。
+) メソッドの適切なオーバーロードを使用して、ジョブにタスク コレクションを追加します。 例:
 
 ```csharp
 // Add a list of tasks as a collection
@@ -73,8 +88,7 @@ List<CloudTask> tasksToAdd = new List<CloudTask>(); // Populate with your tasks
 await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions);
 ```
 
-
-## <a name="example-batch-cli-extension"></a>例:Batch CLI 拡張機能
+## <a name="example-batch-cli-extension"></a>例: Batch CLI 拡張機能
 
 Azure Batch CLI 拡張機能と [Batch CLI テンプレート](batch-cli-templates.md)を使用して、[タスク ファクトリ](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md)を含むジョブ テンプレート JSON ファイルを作成します。 タスク ファクトリは、1 つのタスク定義からジョブに関連するタスクのコレクションを構成します。  
 
@@ -115,9 +129,10 @@ Azure Batch CLI 拡張機能と [Batch CLI テンプレート](batch-cli-templat
     }
 }
 ```
+
 テンプレートを使用してジョブを実行するには、[Azure Batch CLI テンプレートの使用とファイル転送](batch-cli-templates.md)に関するページを参照してください。
 
-## <a name="example-batch-python-sdk-extension"></a>例:Batch Python SDK 拡張機能
+## <a name="example-batch-python-sdk-extension"></a>例: Batch Python SDK 拡張機能
 
 Azure Batch Python SDK 拡張機能を使用するには、まず Python SDK と拡張機能をインストールします。
 
@@ -135,8 +150,7 @@ client = batch.BatchExtensionsClient(
 ...
 ```
 
-ジョブに追加するタスクのコレクションを作成します。 次に例を示します。
-
+ジョブに追加するタスクのコレクションを作成します。 例:
 
 ```python
 tasks = list()
@@ -201,5 +215,6 @@ except Exception as e:
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Batch CLI テンプレート](batch-cli-templates.md)に関するページで Azure Batch CLI 拡張機能の使用について学びます。
-* [Batch Python SDK 拡張機能](https://pypi.org/project/azure-batch-extensions/)の詳細について学びます。
+- [Batch CLI テンプレート](batch-cli-templates.md)に関するページで Azure Batch CLI 拡張機能の使用について学びます。
+- [Batch Python SDK 拡張機能](https://pypi.org/project/azure-batch-extensions/)の詳細について学びます。
+- [Azure Batch のベスト プラクティス](best-practices.md)に関するページをご覧ください。

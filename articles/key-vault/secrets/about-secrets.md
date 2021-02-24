@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault のシークレットについて - Azure Key Vault
-description: シークレットに関する Azure Key Vault の REST インターフェイスと開発者の詳細の概要です。
+description: Azure Key Vault のシークレットの概要。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930473"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786041"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
-Key Vault は、パスワードやデータベース接続文字列などのシークレットのセキュリティで保護されたストレージを提供します。
+[Key Vault](../general/overview.md) は、パスワードやデータベース接続文字列などの汎用シークレットのセキュリティで保護されたストレージを提供します。
 
 開発者から見ると、Key Vault API はシークレット値を文字列として受け取って返します。 Key Vault の内部では、シークレットはオクテット (8 ビット バイト) のシーケンスとして格納および管理され、最大サイズはそれぞれ 25k バイトです。 Key Vault サービスでは、シークレットのセマンティクスは提供されていません。 データを受け取り、暗号化し、格納して、シークレット識別子 ("id") を返すだけです。 後で識別子を使用して、シークレットを取得できます。  
 
@@ -35,8 +35,8 @@ Key Vault 内のシークレットはすべて、暗号化した状態で格納�
 
 シークレット データに加えて、次の属性を指定できます。  
 
-- *exp*:IntDate、省略可能、既定値は**無期限**。 *exp* (expiration time: 有効期限) 属性は、[特定の条件](#date-time-controlled-operations)の場合を除き、それを過ぎたらシークレット データを取得してはならない日時を示します。 このフィールドは、特定のシークレットで使用できないキー コンテナー サービスをユーザーに通知するための**情報提供**のみを目的としています。 その値は、IntDate 値を含む数値でなければなりません。   
-- *nbf*:IntDate、省略可能、既定値は**現在**。 *nbf* (not before: 有効期間開始日時) 属性は、[特定の条件](#date-time-controlled-operations)の場合を除き、それより前はシークレット データを取得してはならない日時を示します。 このフィールドは**情報提供**のみを目的としています。 その値は、IntDate 値を含む数値でなければなりません。 
+- *exp*:IntDate、省略可能、既定値は **無期限**。 *exp* (expiration time: 有効期限) 属性は、[特定の条件](#date-time-controlled-operations)の場合を除き、それを過ぎたらシークレット データを取得してはならない日時を示します。 このフィールドは、特定のシークレットで使用できないキー コンテナー サービスをユーザーに通知するための **情報提供** のみを目的としています。 その値は、IntDate 値を含む数値でなければなりません。   
+- *nbf*:IntDate、省略可能、既定値は **現在**。 *nbf* (not before: 有効期間開始日時) 属性は、[特定の条件](#date-time-controlled-operations)の場合を除き、それより前はシークレット データを取得してはならない日時を示します。 このフィールドは **情報提供** のみを目的としています。 その値は、IntDate 値を含む数値でなければなりません。 
 - *enabled*: boolean、省略可能、既定値は **true**。 この属性は、シークレット データを取得できるかどうかを指定します。 enabled 属性は、*nbf* および *exp* と組み合わせて使います。*nbf* と *exp* の間で操作が発生する場合、enabled が **true** に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外部での操作は、[特定の条件](#date-time-controlled-operations)下を除き、自動的に禁止されます。  
 
 シークレット属性を含むすべての応答に含まれる追加の読み取り専用属性があります。  
@@ -44,9 +44,11 @@ Key Vault 内のシークレットはすべて、暗号化した状態で格納�
 - *created*:IntDate、省略可能。 created 属性は、このバージョンのシークレットが作成された日時を示します。 この属性が追加される前に作成されたシークレットについては、この値は null です。 その値は、IntDate 値を含む数値でなければなりません。  
 - *updated*:IntDate、省略可能。 updated 属性は、このバージョンのシークレットが更新された日時を示します。 この属性が追加される前に最後に更新されたシークレットについては、この値は null です。 その値は、IntDate 値を含む数値でなければなりません。
 
+各キー コンテナー オブジェクトの種類の一般的な属性については、「[Azure Key Vault のキー、シークレット、証明書の概要](../general/about-keys-secrets-certificates.md)」をご覧ください。
+
 ### <a name="date-time-controlled-operations"></a>日付と時刻で制御される操作
 
-シークレットの**取得**操作は、*nbf* / *exp* ウィンドウの外側の、有効期間前および期限切れ後のシークレットでも動作します。 有効期間前のシークレットの**取得**操作は、テスト目的に使用できます。 期限切れのシークレットの**取得**は、復旧操作に使用できます。
+シークレットの **取得** 操作は、*nbf* / *exp* ウィンドウの外側の、有効期間前および期限切れ後のシークレットでも動作します。 有効期間前のシークレットの **取得** 操作は、テスト目的に使用できます。 期限切れのシークレットの **取得** は、復旧操作に使用できます。
 
 ## <a name="secret-access-control"></a>シークレットのアクセス制御
 
@@ -68,6 +70,12 @@ Key Vault で管理されているシークレットのアクセス制御は、�
 
 シークレットの処理について詳しくは、[Key Vault REST API リファレンス内のシークレットの操作](/rest/api/keyvault)の説明をご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。 
 
+Key Vault でアクセスを制御するための攻略ガイドについては、次の記事をご覧ください。
+- [CLI を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-cli.md)
+- [PowerShell を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-powershell.md)
+- [Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-portal.md)
+- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)](../general/rbac-guide.md)
+
 ## <a name="secret-tags"></a>シークレットのタグ  
 タグの形式で、アプリケーション固有の追加メタデータを指定できます。 Key Vault は最大 15 個のタグをサポートし、それぞれが 256 文字の名前と 256 文字の値を持つことができます。  
 
@@ -76,14 +84,17 @@ Key Vault で管理されているシークレットのアクセス制御は、�
 
 ## <a name="azure-storage-account-key-management"></a>Azure ストレージ アカウント キーの管理
 
-Key Vault では、Azure ストレージ アカウント キーを管理できます。
+Key Vault では、[Azure ストレージ アカウント](../../storage/common/storage-account-overview.md) キーを管理できます。
 
 - Key Vault の内部では、Azure ストレージ アカウントを使用してキーの一覧表示 (同期) ができます。 
 - Key Vault は定期的にキーを再生成 (ローテーション) します。
 - キーの値は、呼び出し元に応答で返されることはありません。
 - Key Vault では、ストレージ アカウントと従来のストレージ アカウントの両方のキーが管理されます。
 
-詳細については、[Azure Key Vault のストレージ アカウント キー](../secrets/overview-storage-keys.md)に関する記事をご覧ください。
+詳細については、次を参照してください。
+- [ストレージ アカウントのアクセス キー](../../storage/common/storage-account-keys-manage.md)
+- [Azure Key Vault でのストレージ アカウント キーの管理](../secrets/overview-storage-keys.md)
+
 
 ## <a name="storage-account-access-control"></a>ストレージ アカウントのアクセス制御
 
@@ -109,11 +120,18 @@ Key Vault では、Azure ストレージ アカウント キーを管理でき�
 
 詳しくは、[Key Vault REST API リファレンス内のストレージ アカウントの操作](/rest/api/keyvault)に関するページをご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
 
+Key Vault でアクセスを制御するための攻略ガイドについては、次の記事をご覧ください。
+- [CLI を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-cli.md)
+- [PowerShell を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-powershell.md)
+- [Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-portal.md)
+- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)](../general/rbac-guide.md)
+
+
 ## <a name="next-steps"></a>次のステップ
 
 - [Key Vault について](../general/overview.md)
 - [キー、シークレット、証明書について](../general/about-keys-secrets-certificates.md)
 - [キーについて](../keys/about-keys.md)
 - [証明書について](../certificates/about-certificates.md)
-- [認証、要求、応答](../general/authentication-requests-and-responses.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)
 - [Key Vault 開発者ガイド](../general/developers-guide.md)

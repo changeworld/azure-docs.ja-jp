@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:Azure DB for PostgreSQL を作成する - ARM テンプレート
-description: この記事では、Azure Resource Manager テンプレートを使用して、Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
-author: mgblythe
+description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 0661e743fb2493b9eab4b90dcb65297e99c2cc64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661216"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331643"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:ARM テンプレートを使用して、Azure Database for PostgreSQL - Single Server を作成する
 
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL は、高可用性の PostgreSQL データベー�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,34 +66,34 @@ Azure Database for PostgreSQL サーバーは、構成済みの一連のコン�
 
 Azure portal で Azure Database for PostgreSQL サーバーのテンプレートをデプロイするには、次のリンクを選択します。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 **[Deploy Azure Database for PostgreSQL with VNet]\(VNet を使用して Azure Database for PostgreSQL をデプロイする\)** ページで、次の作業を行います。
 
 1. **[リソース グループ]** の **[新規作成]** を選択し、新しいリソース グループの名前を入力し、 **[OK]** を選択します。
 
-2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの**場所**を選択します。
+2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの **場所** を選択します。
 
-3. **サーバー名**、**管理者のログイン**、**管理者のログイン パスワード**を入力します。
+3. **サーバー名** 、 **管理者のログイン** 、 **管理者のログイン パスワード** を入力します。
 
-    ![[Deploy Azure Database for PostgreSQL with VNet]\(VNet を使用して Azure Database for PostgreSQL をデプロイする\) ウィンドウ、Azure クイックスタート テンプレート、Azure portal](./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png)
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="[Deploy Azure Database for PostgreSQL with VNet]\(VNet を使用して Azure Database for PostgreSQL をデプロイする\) ウィンドウ、Azure クイックスタート テンプレート、Azure portal":::
 
 4. 必要に応じて、他の既定の設定を変更します。
 
     * **[サブスクリプション]** : サーバーに使用する Azure サブスクリプション。
-    * **[SKU 容量]** : 仮想コア容量。*2* (既定)、*4*、*8*、*16*、*32*、*64* のいずれかを指定できます。
-    * **[SKU 名]** : SKU レベル プレフィックス、SKU ファミリー、SKU 容量をアンダースコアで結合したもの (例: *B_Gen5_1*、*GP_Gen5_2* (既定)、*MO_Gen5_32*)。
-    * **[SKU サイズ (MB)]** : Azure Database for PostgreSQL サーバーのメガバイト単位のストレージ サイズ (既定値: *51,200*)。
-    * **[SKU レベル]** : デプロイ レベル (例: *Basic*、*GeneralPurpose* (既定)、*MemoryOptimized*)。
+    * **[SKU 容量]** : 仮想コア容量。 *2* (既定)、 *4* 、 *8* 、 *16* 、 *32* 、 *64* のいずれかを指定できます。
+    * **[SKU 名]** : SKU レベル プレフィックス、SKU ファミリー、SKU 容量をアンダースコアで結合したもの (例: *B_Gen5_1* 、 *GP_Gen5_2* (既定)、 *MO_Gen5_32* )。
+    * **[SKU サイズ (MB)]** : Azure Database for PostgreSQL サーバーのメガバイト単位のストレージ サイズ (既定値: *51,200* )。
+    * **[SKU レベル]** : デプロイ レベル (例: *Basic* 、 *GeneralPurpose* (既定)、 *MemoryOptimized* )。
     * **[SKU ファミリ]** : *Gen4* または *Gen5* (既定)。サーバーのデプロイに使用するハードウェアの世代を指定します。
-    * **[Postgresql バージョン]** : デプロイする PostgreSQL サーバーのバージョン (例: *9.5*、*9.6*、*10*、*11* (既定))。
-    * **[Backup Retention Days]\(バックアップ保持期間の日数\)** : geo 冗長バックアップの保持期間の日数を指定します (既定値: *7*)。
-    * **[Geo Redundant Backup]\(geo 冗長バックアップ\)** : geo ディザスター リカバリー (Geo-DR) の要件に応じて "*有効*" または "*無効*" (既定) を選択します。
-    * **[仮想ネットワーク名]** : 仮想ネットワークの名前 (既定値: *azure_postgresql_vnet*)。
-    * **[サブネット名]** : サブネットの名前 (既定値: *azure_postgresql_subnet*)。
-    * **[Virtual Network Rule Name]\(仮想ネットワーク規則名\)** : サブネットを許可する仮想ネットワーク規則の名前 (既定値: *AllowSubnet*)。
-    * **[Vnet Address Prefix]\(VNet のアドレス プレフィックス\)** : 仮想ネットワークのアドレス プレフィックス (既定値: *10.0.0.0/16*)。
-    * **[Subnet Prefix]\(サブネット プレフィックス\)** : サブネットのアドレス プレフィックス (既定値: *10.0.0.0/16*)。
+    * **[Postgresql バージョン]** : デプロイする PostgreSQL サーバーのバージョン (例: *9.5* 、 *9.6* 、 *10* 、 *11* (既定))。
+    * **[Backup Retention Days]\(バックアップ保持期間の日数\)** : geo 冗長バックアップの保持期間の日数を指定します (既定値: *7* )。
+    * **[Geo Redundant Backup]\(geo 冗長バックアップ\)** : geo ディザスター リカバリー (Geo-DR) の要件に応じて " *有効* " または " *無効* " (既定) を選択します。
+    * **[仮想ネットワーク名]** : 仮想ネットワークの名前 (既定値: *azure_postgresql_vnet* )。
+    * **[サブネット名]** : サブネットの名前 (既定値: *azure_postgresql_subnet* )。
+    * **[Virtual Network Rule Name]\(仮想ネットワーク規則名\)** : サブネットを許可する仮想ネットワーク規則の名前 (既定値: *AllowSubnet* )。
+    * **[Vnet Address Prefix]\(VNet のアドレス プレフィックス\)** : 仮想ネットワークのアドレス プレフィックス (既定値: *10.0.0.0/16* )。
+    * **[Subnet Prefix]\(サブネット プレフィックス\)** : サブネットのアドレス プレフィックス (既定値: *10.0.0.0/16* )。
 
 5. 使用条件を読み、 **[上記の使用条件に同意する]** をオンにします。
 

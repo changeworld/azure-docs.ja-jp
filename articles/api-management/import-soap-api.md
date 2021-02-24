@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905652"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011066"
 ---
 # <a name="import-soap-api"></a>SOAP API のインポート
 
@@ -45,7 +45,7 @@ ms.locfileid: "87905652"
 3. **[WSDL 仕様]** で、SOAP API が存在する場所の URL を入力します。
 4. **[SOAP パススルー]** が既定で選択されています。 この場合、API は SOAP として公開されます。 コンシューマーは SOAP 規則を使用する必要があります。 API を "復元・改良" する場合は、[SOAP API のインポートと REST への変換](restify-soap-api.md)に関する記事の手順に従います。
 
-    ![パススルー](./media/import-soap-api/pass-through.png)
+    ![スクリーンショットは、WSDL 仕様を入力できる [Create from WSDL]\(WSDL から作成\) ダイアログ ボックスを示しています。](./media/import-soap-api/pass-through.png)
 5. Tab キーを押します。
 
     SOAP API からの情報が次のフィールドに入力されます: [表示名]、[名前]、[説明]。
@@ -58,7 +58,7 @@ ms.locfileid: "87905652"
 
     * **スターター**
     * **無制限**   
-8. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+8. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
 9. **［作成］** を選択します
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>管理ポータルでの新しい API のテスト

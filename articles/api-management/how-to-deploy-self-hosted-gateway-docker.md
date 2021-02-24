@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82204828"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management のセルフホステッド ゲートウェイを Docker にデプロイする
@@ -37,7 +37,7 @@ ms.locfileid: "82204828"
 
 1. **[Deployment and infrastructure]\(デプロイとインフラストラクチャ\)** から **[ゲートウェイ]** を選択します。
 2. デプロイするゲートウェイ リソースを選択します。
-3. **[Deployment]\(デプロイ\)** を選択します。
+3. **[Deployment]/(デプロイ/)** を選択します。
 4. 既定の **[有効期限]** および **[秘密鍵]** の値を使用して、 **[トークン]** テキスト ボックスのアクセス トークンが自動生成されたことに注意してください。 必要に応じて、いずれかまたは両方のコントロールで必要な値を選択して、新しいトークンを生成します。
 4. **[デプロイ スクリプト]** 下で **[Docker]** が選択されていることを確認します。
 5. **[環境]** の横にある **env.conf** ファイル リンクを選択して、ファイルをダウンロードします。

@@ -3,21 +3,18 @@ title: Azure portal を使用してリソースの正常性アラートを作成
 description: Azure リソースが利用不可になったときに通知するアラートを Azure portal を使用して作成します。
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091574"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540678"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Azure portal を使用してリソースの正常性アラートを構成する
 
 この記事では、Azure portal を使用してリソースの正常性通知を行うアクティビティ ログ アラートを設定する方法について説明します。
 
 Azure Resource Health では、Azure リソースの現在および過去の正常性状態に関する情報が持続的に通知されます。 Azure Resource Health アラートでは、これらのリソースの正常性状態が変化すると、ほぼリアルタイムで通知できます。 Resource Health アラートをプログラムで作成すると、ユーザーは通知を一括で作成およびカスタマイズできます。
-
-> [!NOTE]
-> Resource Health アラートは、現在プレビュー段階です。
 
 リソース正常性通知は、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に保存されます。アクティビティ ログには大量の情報が保存される可能性があるため、リソース正常性通知のアラートの表示と設定を容易にするための別のユーザー インターフェイスがあります。
 Azure リソースでリソース正常性通知を Azure サブスクリプションに送信するときに、アラートを受け取ることができます。 次の情報に基づくアラートを構成できます。

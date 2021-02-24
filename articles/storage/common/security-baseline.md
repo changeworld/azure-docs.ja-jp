@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6358f9d233b3c09dc4ae4f3ecac7c91dea8bba6e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228275"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195723"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure Storage 用の Azure セキュリティ ベースライン
 
 Azure Storage 用の Azure セキュリティ ベースラインには、ご自身のデプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
@@ -32,9 +32,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 注:従来のストレージ アカウントでは、ファイアウォールと仮想ネットワークはサポートされていません。
 
-- [Azure Storage ファイアウォールを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-network-security#change-the-default-network-access-rule)
+- [Azure Storage ファイアウォールを構成する方法](./storage-network-security.md#change-the-default-network-access-rule)
 
-- [Azure Storage のプライベート エンドポイントを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-private-endpoints)
+- [Azure Storage のプライベート エンドポイントを構成する方法](./storage-private-endpoints.md)
 
 **Azure Security Center の監視**: はい
 
@@ -46,13 +46,13 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ストレージ アカウントにプライベート エンドポイントがアタッチされている場合は、サブネットに対してネットワーク セキュリティ グループ (NSG) 規則を構成できないことに注意してください。 
 
-- [Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Azure Storage ファイアウォールおよび仮想ネットワークを構成する](./storage-network-security.md)
 
-- [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [NSG フロー ログを有効にする方法](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Azure Security Center によって提供されるネットワークのセキュリティについて](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Azure Security Center によって提供されるネットワークのセキュリティについて](../../security-center/security-center-network-recommendations.md)
 
-- [Azure Storage のプライベート エンドポイントについて](https://docs.microsoft.com/azure/storage/common/storage-private-endpoints#known-issues)
+- [Azure Storage のプライベート エンドポイントについて](./storage-private-endpoints.md#known-issues)
 
 **Azure Security Center の監視**: はい
 
@@ -70,9 +70,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Storage アカウント用の Advanced Threat Protection を有効にします。 Advanced Threat Protection for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 Azure Security Center 統合アラートは、IP アドレスが既知の危険な IP アドレス (例: 既知の Cryptominer) か、以前には危険として認識されていない IP アドレスかどうかにかかわらず、ネットワーク通信が正常に解決された IP アドレスに関連付けられているアクティビティに基づいています。 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 
 
-- [Advanced Threat Protection を有効にする方法](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Advanced Threat Protection を有効にする方法](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-- [Azure Security Center の統合された脅威インテリジェンスについて](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center の統合された脅威インテリジェンスについて](../../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -82,7 +82,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**:Network Watcher のパケット キャプチャを使用すると、ストレージ アカウントと仮想マシンの間のトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前、どちらの場合でもネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集や、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーできることで、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減されて、貴重な時間の節約になります。 
 
-- [ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する](../../network-watcher/network-watcher-packet-capture-manage-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -92,7 +92,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Advanced Threat Protection for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは Azure Security Center と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 
 
-- [Advanced Threat Protection for Azure Storage を構成する](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Advanced Threat Protection for Azure Storage を構成する](./azure-defender-storage-configure.md)
 
 **Azure Security Center の監視**: はい
 
@@ -112,9 +112,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ネットワーク アクセスのスコープを特定のストレージ アカウントに設定する必要がある場合は、仮想ネットワーク サービス エンドポイント ポリシーを使用します。
 
-- [サービス タグの使用に関する詳細について](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [サービス タグの使用に関する詳細について](../../virtual-network/service-tags-overview.md)
 
-- [Azure Storage の仮想ネットワーク サービス エンドポイント ポリシーに関する詳細について](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Azure Storage の仮想ネットワーク サービス エンドポイント ポリシーに関する詳細について](../../virtual-network/virtual-network-service-endpoint-policies-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -126,13 +126,13 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 次のように、ストレージ アカウントに関連する組み込みのポリシー定義を使用することもできます。ストレージ アカウントは仮想ネットワーク サービス エンドポイントを使用する必要がある 
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-- [ストレージに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#storage)
+- [ストレージに関する Azure Policy のサンプル](../../governance/policy/samples/built-in-policies.md#storage)
 
-- [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [ネットワークに関する Azure Policy のサンプル](../../governance/policy/samples/built-in-policies.md#network)
 
-- [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Azure Blueprint を作成する方法](../../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -142,11 +142,11 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: ネットワーク セキュリティおよびトラフィック フローに関連したネットワーク セキュリティ グループ (NSG) やその他のリソースにタグを使用します。 個々の NSG 規則については、[説明] フィールドを使用して、ネットワークとの間のトラフィックを許可する規則のビジネス ニーズや期間 (など) を指定します。 すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ([タグとその値が必要] など) を使用します。 リソースに対するアクションをそのタグに基づいて検索または実行するには、Azure PowerShell または Azure CLI を使用できます。 
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
-- [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [仮想ネットワークを作成する方法](../../virtual-network/quick-create-portal.md)
 
-- [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [セキュリティ構成を使用して NSG を作成する方法](../../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -156,9 +156,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**:Azure Policy を使用して、ネットワーク リソースへの構成の変更をログに記録します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。 
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -166,7 +166,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-resource"></a>2.1:承認された時刻同期リソースを使用する
 
@@ -180,7 +180,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Monitor を介してログを取り込み、エンドポイント デバイス、ネットワーク リソース、およびその他のセキュリティ システムによって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージには Azure Storage アカウントを使用します。必要に応じて、不変ストレージや保有期間の保持の強制などのセキュリティ機能を使用できます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -190,7 +190,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Storage Analytics には、BLOB、キュー、およびテーブル用のログが用意されています。 Azure portal を使用して、アカウントに対してどのログが記録されるかを構成できます。 
 
-- [Azure Storage アカウントの監視を構成する方法](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-monitoring-for-a-storage-account)
+- [Azure Storage アカウントの監視を構成する方法](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -208,9 +208,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**:Azure Storage アカウントまたは Log Analytics ワークスペースにセキュリティ イベント ログを保存する場合は、組織の要件に従ってアイテム保持ポリシーを設定することができます。 
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](./storage-monitor-storage-account.md#configure-logging)
 
-- [Log Analytics でデータ保持期間を変更する](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -218,13 +218,13 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
-**ガイダンス**: Azure Storage ログを確認するには、Log Analytics オファリングを使用したクエリなどの通常のオプションと、ログ ファイルを直接表示する独自のオプションがあります。 Azure Storage では、ログは BLOB に格納され、 http://accountname.blob.core.windows.net/ $logs で直接アクセスする必要があります (ログ フォルダーは既定では非表示になっているため、直接移動する必要があります。 リスト コマンドには表示されません) 
+**ガイダンス**: Azure Storage ログを確認するには、Log Analytics オファリングを使用したクエリなどの通常のオプションと、ログ ファイルを直接表示する独自のオプションがあります。 Azure Storage では、ログは BLOB に格納され、`http://accountname.blob.core.windows.net/$logs` で直接アクセスする必要があります (ログ フォルダーは既定では非表示になっているため、直接移動する必要があります。 リスト コマンドには表示されません) 
 
 また、Azure Storage アカウント用の Advanced Threat Protection を有効にします。 Advanced Threat Protection for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは Azure Security Center と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 
 
-- [データをログに記録して確認する](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#how-logs-are-stored)
+- [データをログに記録して確認する](./storage-analytics-logging.md#how-logs-are-stored)
 
-- [Advanced Threat Protection を有効にする方法](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Advanced Threat Protection を有効にする方法](./azure-defender-storage-configure.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -234,13 +234,13 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Security Center で、ストレージ アカウント用の Advanced Threat Protection を有効にします。 ストレージ アカウントの診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 Log Analytics ワークスペースを Azure Sentinel にオンボードします。これは、セキュリティ オーケストレーション自動応答 (SOAR) ソリューションが提供されるためです。 これにより、プレイブック (自動化されたソリューション) を作成して、セキュリティの問題を修復するために使用できます。 
 
-- [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-- [Azure Security Center でアラートを管理する方法](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Azure Security Center でアラートを管理する方法](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/learn/tutorial-response.md)
 
-- [Azure Storage Analytics のログ](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage Analytics のログ](./storage-analytics-logging.md)
 
 **Azure Security Center の監視**: はい
 
@@ -250,7 +250,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**:Azure Security Center を使用し、Azure Storage の脅威保護を有効にして、ハッシュ評価分析およびアクティブな Tor 出口ノード (匿名化プロキシ) からの疑わしいアクセスを使用して、Azure Storage へのマルウェアのアップロードを検出します。 
 
-- [Advanced Threat Protection for Azure Storage を構成する](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Advanced Threat Protection for Azure Storage を構成する](./azure-defender-storage-configure.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -260,7 +260,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Monitor の Azure DNS Analytics (プレビュー) ソリューションを使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する分析情報を収集します。 現時点では、Azure Storage アカウントはサポートされていませんが、サード パーティの DNS ログ ソリューションを使用することはできます。 
 
-- [DNS Analytics プレビュー ソリューションを使用した DNS インフラストラクチャに関する分析情報の収集](https://docs.microsoft.com/azure/azure-monitor/insights/dns-analytics)
+- [DNS Analytics プレビュー ソリューションを使用した DNS インフラストラクチャに関する分析情報の収集](../../azure-monitor/insights/dns-analytics.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -276,15 +276,15 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3.1: 管理者アカウントのインベントリを保持する
 
 **ガイダンス**: Azure AD の組み込みロールは、明示的に割り当てる必要があり、クエリ可能でなければなりません。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。 
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -294,9 +294,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Storage アカウントまたは Azure Active Directory には、既定または空のパスワードという概念がありません。 Azure Storage では、Azure のロールベースのアクセス制御 (Azure RBAC) と、共有キーおよび Shared Access Signature (SAS) をサポートするアクセス制御モデルが実装されます。 共有キーと SAS 認証の特徴は、呼び出し元に ID が関連付けられていないため、セキュリティ プリンシパルのアクセス許可ベースの承認を実行できないことです。 
 
-- [Azure Storage 内のデータへのアクセスの承認](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Azure Storage 内のデータへのアクセスの承認](./storage-auth.md)
 
-- [Azure Storage アカウントのセキュリティ プリンシパルとアクセスの制御について](https://docs.microsoft.com/azure/storage/common/storage-introduction)
+- [Azure Storage アカウントのセキュリティ プリンシパルとアクセスの制御について](./storage-introduction.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -308,9 +308,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 また、Microsoft サービスの Azure AD Privileged Identity Management の特権ロール、および Azure ARM を使用して、Just-In-Time または Just-Enough-Access を有効にすることもできます。 
 
-- [Azure Security Center ID とアクセスについて](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Azure Security Center ID とアクセスについて](../../security-center/security-center-identity-access.md)
 
-- [Privileged Identity Management の概要](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management の概要](../../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -320,11 +320,11 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: 可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。 
 
-- [Azure AD を使用した SSO について](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure AD を使用した SSO について](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-- [Azure Storage 内のデータへのアクセスの承認](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Azure Storage 内のデータへのアクセスの承認](./storage-auth.md)
 
-- [Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)
+- [Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](./storage-auth-aad.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -334,9 +334,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Active Directory 多要素認証を有効にし、Azure Security Center の ID とアクセス管理に関する推奨事項に従って、ストレージ アカウントのリソースを保護します。 
 
-- [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Azure で MFA を有効にする方法](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Azure Security Center で ID とアクセスを監視する方法](../../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -346,9 +346,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用してストレージ アカウントのリソースにログインし、構成します。 
 
-- [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Azure で MFA を有効にする方法](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -358,11 +358,11 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Security Center のリスク検出アラートを Azure Monitor に送信し、アクション グループを使用してカスタムのアラートまたは通知を構成します。 Azure Storage アカウント用の Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。 また、Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。 
 
-- [Azure Storage アカウント用の Advanced Threat Protection を設定する方法](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Azure Storage アカウント用の Advanced Threat Protection を設定する方法](./azure-defender-storage-configure.md)
 
-- [Azure AD のリスク検出について](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD のリスク検出について](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [カスタムのアラートおよび通知用にアクション グループを構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../../azure-monitor/platform/action-groups.md)
 
 **Azure Security Center の監視**: はい
 
@@ -372,7 +372,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国、地域の特定の論理グループからのアクセスのみを許可します。 
 
-- [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Azure でネームド ロケーションを構成する方法](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -380,17 +380,17 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure AD には、ストレージ アカウント内のリソースに対するクライアントのアクセスをきめ細かく制御するロールベースのアクセス制御 (RBAC) が用意されています。  セキュリティのベスト プラクティスとして、より侵害されやすいアカウント キーを使用するのではなく、可能な限り Azure AD 資格情報を使用します。 アプリケーション設計において、BLOB ストレージへのアクセスのために Shared Access Signature が必要な場合は、セキュリティを強化するために、可能な限り、Azure AD 資格情報を使用してユーザー委任 Shared Access Signature (SAS) を作成してください。
+**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure には、ストレージ アカウント内のリソースに対するクライアントのアクセスをきめ細かく制御する Azure ロールベースのアクセス制御 (Azure RBAC) が用意されています。  セキュリティのベスト プラクティスとして、より侵害されやすいアカウント キーを使用するのではなく、可能な限り Azure AD 資格情報を使用します。 アプリケーション設計において、BLOB ストレージへのアクセスのために Shared Access Signature が必要な場合は、セキュリティを強化するために、可能な限り、Azure AD 資格情報を使用してユーザー委任 Shared Access Signature (SAS) を作成してください。
 
-- [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Azure AD インスタンスを作成して構成する方法](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
+- [Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする](./authorization-resource-provider.md)
 
-- [Azure portal で RBAC を使用して Azure Blob とキューのデータへのアクセスを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Azure portal で Azure RBAC を使用して Azure Blob とキューのデータへのアクセスを構成する方法](./storage-auth-aad-rbac-portal.md)
 
-- [Azure Storage 内のデータへのアクセスの承認](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Azure Storage 内のデータへのアクセスの承認](./storage-auth.md)
 
-- [共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+- [共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](./storage-sas-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -406,17 +406,17 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 予想外のユーザー アカウント アクセスのリスクを軽減するための効果的な方法の 1 つは、ユーザーに付与するアクセスの期間を制限することです。 期間限定の SAS URI は、ストレージ アカウントへのユーザー アクセスを自動的に有効期限切れにするための 1 つの効果的な方法です。 さらに、ストレージ アカウント キーを頻繁に交換することで、ストレージ アカウント キーを使用した予期しないアクセスの期間が限定されることを保証できます。
 
-- [Azure AD のレポートについて](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートについて](../../active-directory/reports-monitoring/index.yml)
 
-- [Azure Storage アカウント レベルでアクセスを表示および変更する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Azure Storage アカウント レベルでアクセスを表示および変更する方法](./storage-auth-aad-rbac-portal.md)
 
-- [共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+- [共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](./storage-sas-overview.md)
 
-- [コンテナーと BLOB への匿名読み取りアクセスを管理する](https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources)
+- [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/anonymous-read-access-configure.md)
 
-- [Azure Portal でのストレージ アカウントの監視](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Azure Portal でのストレージ アカウントの監視](./storage-monitor-storage-account.md)
 
-- [ストレージ アカウント アクセス キーを管理する](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [ストレージ アカウント アクセス キーを管理する](./storage-account-keys-manage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -428,11 +428,11 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 Azure Active Directory ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペースで必要なアラートを構成できます。 Azure Storage アカウントに対する認証エラーを監視するために、ストレージ リソースのメトリックが特定のしきい値に達したときに通知するアラートを作成できます。 さらに、Azure Monitor を使用して、匿名認証の条件を使用してストレージ アカウントへの匿名アクセスに対するアラートを生成できます。
 
-- [Azure Storage Analytics のログ](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage Analytics のログ](./storage-analytics-logging.md)
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure Storage アカウントのメトリック アラートを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Azure Storage アカウントのメトリック アラートを構成する方法](./storage-monitor-storage-account.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -442,11 +442,11 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure Active Directory のリスクおよび ID Protectoin 機能を使用して、ストレージ アカウント リソースに関連して検出された疑わしいアクションに対する自動応答を構成します。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。 
 
-- [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [Identity Protection のリスク ポリシーを構成して有効にする方法](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -456,7 +456,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Microsoft が顧客データにアクセスする必要のあるサポート シナリオでは、カスタマー ロックボックス (ストレージ アカウントのプレビュー) に、顧客が顧客データへのアクセス要求を確認し、承認または拒否するためのインターフェイスが用意されています。 Microsoft によって、ストレージ アカウント内に格納されている組織のシークレットへのアクセスが必要になったり、要求されたりすることはありません。
 
-- [カスタマー ロックボックスについて](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [カスタマー ロックボックスについて](../../security/fundamentals/customer-lockbox-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -464,13 +464,13 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: 機密情報を格納または処理するストレージ アカウント リソースを追跡しやすくするには、タグを使用します。 
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -478,17 +478,17 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 環境やデータの機密度など、個々のセキュリティ ドメイン用の個別のサブスクリプション、管理グループ、ストレージ アカウントを使用して分離を実装します。  ストレージ アカウントを制限して、使用されるネットワークの種類とサブセットに基づいて、アプリケーションやエンタープライズ環境で求められるストレージ アカウントへのアクセス レベルを制御できます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。 Azure AD RBAC を使用して Azure Storage へのアクセスを制御できます。 また、プライベート エンドポイントを構成してセキュリティを強化することもできます。仮想ネットワークとサービスの間のトラフィックは Microsoft のバックボーン ネットワークを経由することで、パブリック インターネットからの露出が排除されます。 
+**ガイダンス**: 環境やデータの機密度など、個々のセキュリティ ドメイン用の個別のサブスクリプション、管理グループ、ストレージ アカウントを使用して分離を実装します。  ストレージ アカウントを制限して、使用されるネットワークの種類とサブセットに基づいて、アプリケーションやエンタープライズ環境で求められるストレージ アカウントへのアクセス レベルを制御できます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。 Azure RBAC を使用して Azure Storage へのアクセスを制御できます。 また、プライベート エンドポイントを構成してセキュリティを強化することもできます。仮想ネットワークとサービスの間のトラフィックは Microsoft のバックボーン ネットワークを経由することで、パブリック インターネットからの露出が排除されます。 
 
-- [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
-- [Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Azure Storage ファイアウォールおよび仮想ネットワークを構成する](./storage-network-security.md)
 
-- [仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -500,11 +500,11 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 さらに、仮想ネットワーク サービス エンドポイント ポリシーを使用すると、サービス エンドポイント経由の Azure Storage アカウントの仮想ネットワーク エグレス トラフィックをフィルター処理し、データ流出を特定の Azure Storage アカウントのみに許可することができます。
 
-- [Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../../virtual-network/virtual-network-service-endpoint-policies-overview.md)
 
-- [Azure Storage の仮想ネットワーク サービス エンドポイント ポリシー](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
+- [Azure Storage の仮想ネットワーク サービス エンドポイント ポリシー](../../private-link/tutorial-private-endpoint-storage-portal.md)
 
-- [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Azure での顧客データの保護について](../../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -514,9 +514,9 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: ストレージ アカウントの [安全な転送が必須] を有効にすると、HTTPS の使用を強制することができます。 このオプションを有効にすると、HTTP を使った接続は拒否されます。 さらに、Azure Security Center と Azure Policy を使用して、ストレージ アカウントの安全な転送を強制します。
 
-- [Azure Storage で安全な転送を要求する方法](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)
+- [Azure Storage で安全な転送を要求する方法](./storage-require-secure-transfer.md)
 
-- [Security Center により監視される Azure セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-policy-definitions)
+- [Security Center により監視される Azure セキュリティ ポリシー](../../security-center/policy-reference.md)
 
 **Azure Security Center の監視**: はい
 
@@ -526,7 +526,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure Storage アカウントと関連リソースでは、データ特定機能をまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。 
 
-- [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Azure での顧客データの保護について](../../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -534,17 +534,17 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (Azure AD) では、ロールベースのアクセス制御 (RBAC) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールは、Azure Storage によって定義されます。 
+**ガイダンス**:Azure Active Directory (Azure AD) では、Azure ロールベースのアクセス制御 (Azure RBAC) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールは、Azure Storage によって定義されます。 
 
-- [Azure Storage アカウントに Azure ロールを割り当てる方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
+- [Azure Storage アカウントに Azure ロールを割り当てる方法](./storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal)
 
-- [Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
+- [Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする](./authorization-resource-provider.md)
 
-- [Azure portal で RBAC を使用して Azure Blob とキューのデータへのアクセスを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Azure portal で Azure RBAC を使用して Azure Blob とキューのデータへのアクセスを構成する方法](./storage-auth-aad-rbac-portal.md)
 
-- [AAD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [AAD インスタンスを作成して構成する方法](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Azure Storage 内のデータへのアクセスの承認](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Azure Storage 内のデータへのアクセスの承認](./storage-auth.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -562,7 +562,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**:Azure Storage 暗号化はすべてのストレージ アカウントに対して有効になり、無効にすることはできません。 Azure Storage では、データがクラウドに永続化されるときに自動的に暗号化されます。 Azure Storage からデータを読み取ると、Azure Storage によって復号化されてから返されます。 Azure Storage の暗号化を使用すると、コードを変更したり、アプリケーションにコードを追加したりする必要なしに、保存データをセキュリティで保護できます。 
 
-- [Azure Storage の保存時の暗号化について](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Azure Storage の保存時の暗号化について](./storage-service-encryption.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -572,11 +572,11 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、ストレージ アカウント リソースに変更が加えられたときのアラートを作成します。 また、Azure Storage のログ記録を有効にして、Azure Storage に対する各要求がどのように承認されたかを追跡することもできます。 このログでは、OAuth 2.0 トークン、共有キー、または共有アクセス署名 (SAS) を使用して、要求が匿名で行われたかどうかが示されます。 さらに、Azure Monitor を使用して、匿名認証の条件を使用してストレージ アカウントへの匿名アクセスに対するアラートを生成できます。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
 
-- [Azure Storage Analytics のログ](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage Analytics のログ](./storage-analytics-logging.md)
 
-- [Azure Storage アカウントのメトリック アラートを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Azure Storage アカウントのメトリック アラートを構成する方法](./storage-monitor-storage-account.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -584,13 +584,13 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
 **ガイダンス**:Azure Security Center からの推奨事項に従って、ストレージ アカウントの構成を継続的に監査および監視します。 
 
-- [セキュリティの推奨事項 - リファレンス ガイド](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [セキュリティの推奨事項 - リファレンス ガイド](../../security-center/recommendations-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -624,7 +624,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure Security Center によって提供される既定のリスク評価 (セキュリティ スコア) を使用します。 
 
-- [Azure Security Center のセキュリティ スコアについて](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+- [Azure Security Center のセキュリティ スコアについて](../../security-center/secure-score-security-controls.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -632,17 +632,17 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
 **ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (ストレージ アカウントを含む) のクエリや検出を行います。 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。 
 
-- [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure Graph を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
-- [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Azure RBAC について](../../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -652,7 +652,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**:メタデータを提供するストレージ アカウント リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。 
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -664,13 +664,13 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 また、Advanced Threat Protection for Azure Storage を使用して、承認されていない Azure リソースを検出します。 
 
-- [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
-- [Advanced Threat Protection for Azure Storage を構成する](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Advanced Threat Protection for Azure Storage を構成する](./azure-defender-storage-configure.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -694,9 +694,9 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 また、Azure Resource Graph を使用すると、サブスクリプション内のリソースのクエリまたは検出を行えます。 これは、ストレージ アカウントを使用する環境など、高セキュリティ ベースの環境に役立ちます。 
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure Graph を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -714,7 +714,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: お客様は、お客様の会社のポリシーで求められているように、Azure Policy を使用してリソースの作成や使用を防ぐことができます。 
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -735,9 +735,9 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 - 許可されないリソースの種類 
 - 許可されるリソースの種類 
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -755,7 +755,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure Conditional Access を使用して Azure Resource Manager を操作するユーザーの権限を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。 これにより、ストレージ アカウントを使用するリソースなど、高セキュリティ環境内のリソースの作成と変更を防ぐことができます。 
 
-- [ARM へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [ARM へのアクセスをブロックするように条件付きアクセスを構成する方法](../../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -779,7 +779,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースのセキュリティで保護された構成を確立する
 
@@ -792,9 +792,9 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ストレージ アカウントの安全な構成基準として Azure Security Center の推奨事項を使用します。 
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: はい
 
@@ -812,9 +812,9 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: ストレージ アカウント リソース全体にセキュリティで保護された設定を適用するには、Azure Policy [拒否] と [存在する場合はデプロイする] を使用します。 
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy の効果について](../../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -832,9 +832,9 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなど、ご利用のコードを安全に格納して管理するには、Azure Repos を使用します。Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-- [Azure DevOps でのアクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -852,7 +852,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure Policy を利用して、ストレージ アカウントのシステム構成をアラート、監査、および適用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。 
 
-- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -870,7 +870,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure Security Center を利用して、Azure Storage アカウント リソースのベースライン スキャンを実行します。 
 
-- [Azure Security Center の推奨事項を修復する方法](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+- [Azure Security Center の推奨事項を修復する方法](../../security-center/security-center-remediate-recommendations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -890,9 +890,9 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 さらに、ストレージ アカウント キーを頻繁に交換して、ストレージ アカウント キーの紛失や漏えいの影響を軽減します。
 
-- [保存データに対する Azure Storage 暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [保存データに対する Azure Storage 暗号化](./storage-service-encryption.md)
 
-- [ストレージ アカウント アクセス キーを管理する](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [ストレージ アカウント アクセス キーを管理する](./storage-account-keys-manage.md)
 
 **Azure Security Center の監視**: はい
 
@@ -902,7 +902,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**:Azure Active Directory とマネージド ID を使用して、Azure Storage アカウント内の BLOB およびキューへのアクセスを承認します。 Azure の BLOB およびキュー ストレージでは、Azure リソースのマネージド ID を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID により、Azure 仮想マシン (VM) で実行されているアプリケーション、関数アプリ、仮想マシン スケール セット、およびその他のサービスから Azure AD 資格情報を使用して、BLOB およびキューのデータへのアクセスを認証することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。 
 
-- [マネージド ID を使用して Azure BLOB とキュー データへのアクセス権を付与する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [マネージド ID を使用して Azure BLOB とキュー データへのアクセス権を付与する方法](./storage-auth-aad-rbac-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -920,7 +920,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -936,7 +936,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 また、App Service、Data Lake Storage、Blob Storage などのコンピューティング以外の Azure リソースにアップロードする前に、マルウェアの内容を事前にスキャンして、組織の要件を満たすこともできます。
 
-- [Advanced Threat Protection for Azure Storage を構成する](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Advanced Threat Protection for Azure Storage を構成する](./azure-defender-storage-configure.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -952,7 +952,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
@@ -960,11 +960,11 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 また、Azure Automation を有効にして、BLOB のスナップショットを定期的に取得することもできます。
 
-- [Azure Storage の冗長性とサービス レベル アグリーメントについて](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Azure Storage の冗長性とサービス レベル アグリーメントについて](./storage-redundancy.md)
 
-- [BLOB のスナップショットを作成する](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)
+- [BLOB のスナップショットを作成する](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 
-- [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+- [Azure Automation の概要](../../automation/automation-intro.md)
 
 **Azure Security Center の監視**: はい
 
@@ -974,13 +974,13 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: ストレージ アカウントでサポートされているサービスからデータをバックアップするには、azcopy やサード パーティ製のツールを使用するなど、複数の方法を使用できます。 Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータ オブジェクトを WORM (Write Once Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。
 
-- [AzCopy を使ってみる](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [AzCopy を使ってみる](./storage-use-azcopy-v10.md)
 
-- [BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage?tabs=azure-portal)
+- [BLOB ストレージの不変ポリシーを設定および管理する](../blobs/storage-blob-immutability-policies-manage.md?tabs=azure-portal)
 
 顧客が管理または指定するキーは、Azure CLI または PowerShell を使用して Azure Key Vault 内でサポートできます。 
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center の監視**: はい
 
@@ -992,15 +992,15 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret 
 
-- [Key Vault の証明書を復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+- [Key Vault の証明書を復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
-- [Key Vault のキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault のキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
-- [Key Vault のマネージド ストレージ アカウントを復元する方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
+- [Key Vault のマネージド ストレージ アカウントを復元する方法](/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
 
-- [Key Vault のシークレットを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0)
+- [Key Vault のシークレットを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret)
 
-- [AzCopy は、ストレージ アカウント間での BLOB、ファイル、テーブル データのコピーに利用できるコマンドライン ユーティリティです](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [AzCopy は、ストレージ アカウント間での BLOB、ファイル、テーブル データのコピーに利用できるコマンドライン ユーティリティです](./storage-use-azcopy-v10.md)
 
 注:Azure Table Storage サービスとの間でデータをコピーする場合、AzCopy バージョン 7.3 をインストールしてください。
 
@@ -1013,11 +1013,11 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **ガイダンス**:ストレージ アカウントでカスタマー マネージド キーを有効にするには、Azure Key Vault を使用してキーを格納する必要があります。 キー コンテナーで [論理的な削除] と [Do Not Purge]\(消去しない\) の両方のプロパティを有効にする必要があります。 キー コンテナーの [論理的な削除] 機能では、削除されたコンテナーと、キー、シークレット、証明書などのコンテナー オブジェクトを復元できます。 ストレージ アカウント データを Azure Storage BLOB にバックアップする場合、BLOB または BLOB のスナップショットが削除されたときに、論理的な削除機能でデータを保存および復旧することができます。 バックアップを機密データとして扱い、このベースラインの一部として関連するアクセスとデータ保護制御を適用する必要があります。 さらに、保護を強化するために、ビジネスに不可欠なデータ オブジェクトを WORM (Write Once, Read Many) 状態で格納することもできます。
 
-- [Azure Key Vault の論理的な削除を使用する方法](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+- [Azure Key Vault の論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)
 
-- [Azure Storage Blob の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Storage Blob の論理的な削除](../blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+- [不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](../blobs/storage-blob-immutable-storage.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1025,7 +1025,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1047,9 +1047,9 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 また、サブスクリプション ( 運用、非運用など) をタグを使用して明確にマークし、Azure リソース (特に、機密データを処理するもの) を明確に識別して分類するための命名システムを作成します。 インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
-- [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Security alerts in Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1069,7 +1069,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-- [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [Azure Security Center のセキュリティ連絡先を設定する方法](../../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1079,9 +1079,9 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-- [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [連続エクスポートを構成する方法](../../security-center/continuous-export.md)
 
-- [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Azure Sentinel にアラートをストリーミングする方法](../../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1091,7 +1091,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **ガイダンス**: Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して "Logic Apps" で自動的に応答をトリガーし、Azure リソースを保護できます。
 
-- [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [ワークフローの自動化と Logic Apps を構成する方法](../../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1099,7 +1099,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources"></a>11.1:Azure リソースの侵入テストを定期的に実施する
 
@@ -1115,5 +1115,5 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../../security/benchmarks/security-baselines-overview.md)の詳細について学習する

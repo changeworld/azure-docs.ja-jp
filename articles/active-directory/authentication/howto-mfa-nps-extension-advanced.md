@@ -1,32 +1,32 @@
 ---
-title: Azure MFA NPS 拡張機能の構成 - Azure Active Directory
+title: Azure AD MFA NPS 拡張機能の構成 - Azure Active Directory
 description: NPS の拡張機能をインストールした後に、これらの手順を使用して IP の許可リスト登録や UPN の置換などを詳細に構成できます。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7dab1d9e46aec64cc3c0fda9e8e6ba503f696b0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 695261ceae9d64be9395e6de082f97be04292078
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716760"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745987"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション
 
-ネットワーク ポリシー サーバー (NPS) の拡張機能は、クラウドベースの Azure Multi-Factor Authentication 機能をオンプレミスのインフラストラクチャに拡張します。 この記事では、拡張機能をインストール済みであることを前提に、ニーズに合わせて拡張機能をカスタマイズする方法について説明します。 
+ネットワーク ポリシー サーバー (NPS) の拡張機能は、クラウドベースの Azure AD Multi-Factor Authentication 機能をオンプレミスのインフラストラクチャに拡張します。 この記事では、拡張機能をインストール済みであることを前提に、ニーズに合わせて拡張機能をカスタマイズする方法について説明します。
 
 ## <a name="alternate-login-id"></a>代替ログイン ID
 
 NPS の拡張機能はオンプレミスとクラウドの両方のディレクトリに接続するため、オンプレミスのユーザー プリンシパル名 (UPN) がクラウドの名前と一致しない問題が発生する可能性があります。 この問題を解決するには、代替ログイン ID を使用します。 
 
-NPS の拡張機能内では、Azure Multi-Factor Authentication の UPN の代わりに Active Directory 属性を指定して使用できます。 これにより、オンプレミスの UPN を変更することなく、2 段階認証でオンプレミスのリソースを保護できます。 
+NPS の拡張機能内では、Azure AD Multi-Factor Authentication の UPN の代わりに Active Directory 属性を指定して使用できます。 これにより、オンプレミスの UPN を変更することなく、2 段階認証でオンプレミスのリソースを保護できます。 
 
 代替ログイン ID を構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を編集します。
 
@@ -51,8 +51,8 @@ IP 許可リストを構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に
 > [!NOTE]
 > このレジストリ キーは既定でインストーラーによって作成されず、サービスの再起動時に AuthZOptCh ログにエラーが示されます。 ログのこのエラーは無視してもかまいませんが、このレジストリ キーが作成され、不要な場合に空のままにすると、エラー メッセージは返されません。
 
-`IP_WHITELIST` 内に存在する IP アドレスからの要求である場合、2 段階認証はスキップされます。 IP リストが、RADIUS 要求の *ratNASIPAddress* 属性で提供される IP アドレスと比較されます。 RADIUS 要求に ratNASIPAddress 属性がない場合、"P_WHITE_LIST_WARNING::IP Whitelist is being ignored as source IP is missing in RADIUS request in NasIpAddress attribute" という警告がログに記録されます。
+`IP_WHITELIST` 内に存在する IP アドレスからの要求である場合、2 段階認証はスキップされます。 IP リストが、RADIUS 要求の *ratNASIPAddress* 属性で提供される IP アドレスと比較されます。 RADIUS 要求に ratNASIPAddress 属性がない場合、"IP_WHITE_LIST_WARNING::IP Whitelist is being ignored as the source IP is missing in the RADIUS request NasIpAddress attribute." という警告がログに記録されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)
+[Azure AD Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)

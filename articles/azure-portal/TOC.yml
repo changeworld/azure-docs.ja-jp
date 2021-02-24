@@ -14,6 +14,8 @@
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
     - name: ダッシュボードを作成する
       items:
+        - name: Azure CLI
+          href: quickstart-portal-dashboard-azure-cli.md
         - name: Azure PowerShell
           href: quickstart-portal-dashboard-powershell.md
         - name: ARM テンプレート
@@ -21,16 +23,19 @@
           href: quick-create-template.md
 - name: 概念
   items:
-    - name: ロールベースのアクセス制御を使用したダッシュボードの共有
+    - name: Azure ロールベースのアクセス制御を使用したダッシュボードの共有
       href: azure-portal-dashboard-share-access.md
     - name: プログラムによる Azure ダッシュボードの作成
       href: azure-portal-dashboards-create-programmatically.md
+      displayName: 'Azure CLI, az portal dashboard, az portal'
 - name: 操作方法ガイド
   items:
     - name: Azure portal の設定を管理する
       href: set-preferences.md
     - name: お気に入りの追加、削除、並べ替え
       href: azure-portal-add-remove-sort-favorites.md
+    - name: リソース情報の表示とフィルター処理
+      href: manage-filter-resource-views.md
     - name: Azure ダッシュボードを作成する
       items:
         - name: Azure ダッシュボードの作成と共有
@@ -65,8 +70,6 @@
       items:
         - name: 削除されたダッシュボードの復旧
           href: recover-shared-deleted-dashboard.md
-        - name: リージョンまたは SKU のサブスクリプションに関する問題のトラブルシューティング
-          href: supportability/sku-series-unavailable.md
         - name: トラブルシューティングを目的としたブラウザー トレースのキャプチャ
           href: capture-browser-trace.md
 - name: リファレンス
@@ -79,6 +82,9 @@
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
       href: /cli/azure/ext/portal/portal
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

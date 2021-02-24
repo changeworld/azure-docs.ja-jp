@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1f8673b5830cc149bcebd994631732a7d0d08c65
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792379"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852287"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -44,7 +44,7 @@ IP アドレスを追加するには次の 2 つのオプションがありま�
 
 * [リポジトリ](https://github.com/Azure/azure-iot-connected-factory)で `Simulation/Factory/Add-SimulationPublicIp.ps1` PowerShell スクリプトを使用する。 パラメーターとしてデプロイ名を渡します。 ローカル デプロイの場合は、`<your username>ConnFactoryLocal` を使用します。 このスクリプトは VM の IP アドレスを出力します。
 
-* Azure Portal でデプロイ環境のリソース グループを見つけます。 ローカル デプロイの場合を除き、リソース グループは、ソリューション名またはデプロイ名に指定した名前になります。 ビルド スクリプトを使用したローカル デプロイの場合は、リソース グループの名前は `<your username>ConnFactoryLocal` になります。 ここで新しい**パブリック IP アドレス** リソースをリソース グループに追加します。
+* Azure Portal でデプロイ環境のリソース グループを見つけます。 ローカル デプロイの場合を除き、リソース グループは、ソリューション名またはデプロイ名に指定した名前になります。 ビルド スクリプトを使用したローカル デプロイの場合は、リソース グループの名前は `<your username>ConnFactoryLocal` になります。 ここで新しい **パブリック IP アドレス** リソースをリソース グループに追加します。
 
 > [!NOTE]
 > いずれの場合でも、[Ubuntu Web サイト](https://wiki.ubuntu.com/Security/Upgrades)の次の手順を行って、最新のパッチをインストールするようにします。 できる限り長期にわたってパブリック IP アドレスからVMにアクセスできるようにするため、インストールを最新に保ってください。
@@ -55,7 +55,7 @@ IP アドレスを削除するには次の 2 つのオプションがありま�
 
 * [リポジトリ](https://github.com/Azure/azure-iot-connected-factory)の Simulation/Factory/Remove-SimulationPublicIp.ps1 PowerShell スクリプトを使用する。 パラメーターとしてデプロイ名を渡します。 ローカル デプロイの場合は、`<your username>ConnFactoryLocal` を使用します。 このスクリプトは VM の IP アドレスを出力します。
 
-* Azure Portal でデプロイ環境のリソース グループを見つけます。 ローカル デプロイの場合を除き、リソース グループは、ソリューション名またはデプロイ名に指定した名前になります。 ビルド スクリプトを使用したローカル デプロイの場合は、リソース グループの名前は `<your username>ConnFactoryLocal` になります。 ここでリソース グループから**パブリック IP アドレス** リソースを削除します。
+* Azure Portal でデプロイ環境のリソース グループを見つけます。 ローカル デプロイの場合を除き、リソース グループは、ソリューション名またはデプロイ名に指定した名前になります。 ビルド スクリプトを使用したローカル デプロイの場合は、リソース グループの名前は `<your username>ConnFactoryLocal` になります。 ここでリソース グループから **パブリック IP アドレス** リソースを削除します。
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>シミュレーション VM にサインインするにはどうすればいいですか
 
@@ -125,7 +125,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>シミュレーションがクラウドにデータを送信していることを確認するにはどうすればいいですか
 
-[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) または [Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) コマンドを使用すると、特定のデバイスから IoT Hub に送信されるデータを検査できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列を知っている必要があります。 「[ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)」をご覧ください。
+[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) または [Azure IoT CLI Extension monitor-events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events&preserve-view=true) コマンドを使用すると、特定のデバイスから IoT Hub に送信されるデータを検査できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列を知っている必要があります。 「[ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)」をご覧ください。
 
 発行元デバイスの 1 つから送信されるデータを検査します。
 
@@ -194,6 +194,5 @@ OPC UA 非対応デバイスから接続済みファクトリに利用統計情�
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
-* [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)
 * [接続済みファクトリ ソリューション アクセラレータの展開](quickstart-connected-factory-deploy.md)
-* [徹底的な IoT セキュリティ](/azure/iot-fundamentals/iot-security-ground-up)
+* [徹底的な IoT セキュリティ](../iot-fundamentals/iot-security-ground-up.md)

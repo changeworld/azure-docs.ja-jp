@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3f541e28f47bb6456b441811d23baa9e020fde7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293945"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959154"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -181,7 +182,7 @@ SAP Note [2343511] に記載されている Oracle Database 用のいずれか�
 
 Oracle Database には、/oracle、/home/oraod1、および /home/oracle 用のディスクが必要です。
 
-![Linux 上の Oracle Database](media/lama/sap-lama-db-ora-lnx.png)
+![Linux 上の Oracle データベースと、必要なディスクを示す図。](media/lama/sap-lama-db-ora-lnx.png)
 
 #### <a name="manual-deployment-for-microsoft-sql-server"></a>Microsoft SQL Server 用の手動によるデプロイ
 
@@ -260,14 +261,14 @@ SAP LaMa は SQL Server 自体を再配置できないため、データベー�
 
 SAP Software Provisioning Manager (SWPM) を起動する前に、ASCS の仮想ホスト名の IP アドレスをマウントする必要があります。 sapacext を使用することをお勧めします。 sapacextを使用して IP アドレスをマウントする場合は、再起動後に IP アドレスを再マウントしてください。
 
-![Linux][Logo_Linux] Linux
+![Linux ロゴ。][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows ロゴ。][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -276,7 +277,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 SWPM を実行し、 *[ASCS Instance Host Name]\(ASCS インスタンス ホスト名\)* として *ah1-ascs* を使用します。
 
-![Linux][Logo_Linux] Linux  
+![Linux ロゴ。][Logo_Linux] Linux  
 次のプロファイル パラメーターを SAP Host Agent プロファイルに追加します。このプロファイルは /usr/sap/hostctrl/exe/host_profile にあります。 詳しくは、SAP Note [2628497] をご覧ください。
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -387,14 +388,14 @@ HANA 仮想マシンではなくアプリケーション サーバー仮想マ�
 
 SAP Software Provisioning Manager (SWPM) を起動する前に、アプリケーション サーバーの仮想ホスト名の IP アドレスをマウントする必要があります。 sapacext を使用することをお勧めします。 sapacextを使用して IP アドレスをマウントする場合は、再起動後に IP アドレスを再マウントしてください。
 
-![Linux][Logo_Linux] Linux
+![Linux ロゴ。][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows ロゴ。][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -489,7 +490,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
   * 解決策  
     ソースの HANA システムですべてのデータベースのバックアップを作成してください。
 
-* データベース インスタンスのシステム コピー手順の*開始*
+* データベース インスタンスのシステム コピー手順の *開始*
   * Host Agent Operation '000D3A282BC91EE8A1D76CF1F92E2944' failed (OperationException. FaultCode:'127', Message:'Command execution failed. : [Microsoft][ODBC SQL Server Driver][SQL Server]User does not have permission to alter database 'AS2', the database does not exist, or the database is not in a state that allows access checks.') (ホスト エージェント操作 '000D3A282BC91EE8A1D76CF1F92E2944' に失敗しました (OperationException. FaultCode: '127', Message: 'コマンドの実行に失敗しました。: [Microsoft][ODBC SQL Server Driver][SQL Server]ユーザーにデータベース 'AS2' を変更するアクセス許可がないか、データベースが存在しないか、データベースがアクセス チェックできない状態です。'))
   * 解決策  
     *NT AUTHORITY\SYSTEM* が SQL Server にアクセスできることを確認してください。 SAP Note [2562184] をご覧ください。

@@ -3,14 +3,14 @@ title: 専用ホストにデプロイする
 description: 専用ホストを使用して、Azure Container Instances ワークロードに対して真のホストレベルの分離を実現します
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 68b9b31cdfb55e8150b05e3efd35389320905cdc
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259635"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034273"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>専用ホストへのデプロイ
 
@@ -19,6 +19,9 @@ ms.locfileid: "86259635"
 Dedicated SKU は、物理サーバーの観点からワークロードの分離を必要とするコンテナー ワークロードに適しています。
 
 ## <a name="prerequisites"></a>前提条件
+
+> [!NOTE]
+> 現在はいくつかの制限があるため、すべての制限引き上げの要求が承認されるとは限りません。
 
 * Dedicated SKU を使用するサブスクリプションに対する既定の制限は 0 です。 この SKU を運用コンテナーのデプロイに使用する場合は、専用の上限を上げるための [Azure サポート リクエスト][azure-support]を作成してください。
 

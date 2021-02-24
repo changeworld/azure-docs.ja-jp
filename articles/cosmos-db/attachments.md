@@ -8,21 +8,22 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 27d9297809d2bd028918885a88faf55e8314b71d
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b6504c0521328edc356dea1c146fe9aeb6bde55f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817255"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092740"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB の添付ファイル
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の添付ファイルは、外部 BLOB またはメディア ファイルと関連付けられているメタデータへの参照を含む特殊な項目です。
 
 Azure Cosmos DB では 2 種類の添付ファイルがサポートされます。
 
-* **管理対象外の添付ファイル**は、外部サービス (たとえば、Azure Storage、OneDrive など) に格納されている BLOB への URI 参照のラッパーです。 この方法は、標準の Azure Cosmos DB 項目に URI プロパティを格納することと似ています。
-* **管理対象の添付ファイル**は、Azure Cosmos DB によって内部的に管理および格納され、システムによって生成された mediaLink を介して公開される BLOB です。
+* **管理対象外の添付ファイル** は、外部サービス (たとえば、Azure Storage、OneDrive など) に格納されている BLOB への URI 参照のラッパーです。 この方法は、標準の Azure Cosmos DB 項目に URI プロパティを格納することと似ています。
+* **管理対象の添付ファイル** は、Azure Cosmos DB によって内部的に管理および格納され、システムによって生成された mediaLink を介して公開される BLOB です。
 
 
 > [!NOTE]
@@ -102,6 +103,7 @@ namespace attachments
                 foreach (Document document in response)
                 {
                     string attachmentContinuation = null;
+                    PartitionKey docPartitionKey = new PartitionKey(document.Id);
 
                     // Iterate through each attachment within the item (if any).
                     do
@@ -110,7 +112,7 @@ namespace attachments
                             document.SelfLink,
                             new FeedOptions
                             {
-                                PartitionKey = new PartitionKey(document.Id),
+                                PartitionKey = docPartitionKey,
                                 RequestContinuation = attachmentContinuation
                             }
                         );
@@ -134,6 +136,15 @@ namespace attachments
 
                             Console.WriteLine("Copied attachment ... Item Id: {0} , Attachment Id: {1}, Blob Id: {2}", document.Id, attachment.Id, blobId);
                             totalCount++;
+
+                            // Clean up attachment from Azure Cosmos DB.
+                            // Warning: please verify you've succesfully migrated attachments to blog storage prior to cleaning up Azure Cosmos DB.
+                            // await cosmosClient.DeleteAttachmentAsync(
+                            //     attachment.SelfLink,
+                            //     new RequestOptions { PartitionKey = docPartitionKey }
+                            // );
+
+                            // Console.WriteLine("Cleaned up attachment ... Document Id: {0} , Attachment Id: {1}", document.Id, attachment.Id);
                         }
 
                     } while (!string.IsNullOrEmpty(attachmentContinuation));
@@ -150,7 +161,7 @@ namespace attachments
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet)を使用する
-- [Azure Cosmos DB の .NET SDK v2](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.attachment?view=azure-dotnet) を用いて添付ファイルを使用するための参照を取得する
-- [Azure Cosmos DB の Java SDK v2](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.attachment?view=azure-java-stable) を用いて添付ファイルを使用するための参照を取得する
-- [Azure Cosmos DB の REST API](https://docs.microsoft.com/rest/api/cosmos-db/attachments) を用いて添付ファイルを使用するための参照を取得する
+- [Azure BLOB ストレージ](../storage/blobs/storage-quickstart-blobs-dotnet.md)を使用する
+- [Azure Cosmos DB の .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet) を用いて添付ファイルを使用するための参照を取得する
+- [Azure Cosmos DB の Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment?preserve-view=true&view=azure-java-stable) を用いて添付ファイルを使用するための参照を取得する
+- [Azure Cosmos DB の REST API](/rest/api/cosmos-db/attachments) を用いて添付ファイルを使用するための参照を取得する

@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f1f2ea8bd51b7eeda9afdd6a94d5de1d58acef57
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836311"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520648"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
@@ -25,11 +25,11 @@ HDInsight では、それぞれのコンピューティング ノードにロー
 HDFS CLI の詳細については、[公式ドキュメント](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)、および「[HDFS Permissions Guide (HDFS 権限ガイド)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」を参照してください。
 
 >[!NOTE]
->HDInsight の代わりに Azure Databricks を使用しており、コマンド ライン インターフェイスを使用してデータを操作したい場合は、Databricks CLI を使用して Databricks ファイル システムを操作してください。 「[Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)」を参照してください。
+>HDInsight の代わりに Azure Databricks を使用しており、コマンド ライン インターフェイスを使用してデータを操作したい場合は、Databricks CLI を使用して Databricks ファイル システムを操作してください。 「[Databricks CLI](/azure/databricks/dev-tools/cli/)」を参照してください。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Linux の HDInsight Hadoop クラスターで HDFS CLI を使用する
 
-最初に、[サービスへのリモート アクセス](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services)を確立します。 [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) を選択した場合、PowerShell のサンプル コードは、次のようになります。
+最初に、[サービスへのリモート アクセス](../../hdinsight/hdinsight-hadoop-linux-information.md#remote-access-to-services)を確立します。 [SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) を選択した場合、PowerShell のサンプル コードは、次のようになります。
 
 ```powershell
 #Connect to the cluster via SSH.
@@ -120,4 +120,4 @@ hdfs dfs -mkdir /samplefolder
 
 * [Use an Azure Data Lake Storage Gen2 capable account in Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md) (Azure Databricks で Azure Data Lake Storage Gen2 対応アカウントを使用する)
 
-* [ファイルおよびディレクトリに対するアクセス制御リストについて学習する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [ファイルおよびディレクトリに対するアクセス制御リストについて学習する](./data-lake-storage-access-control.md)

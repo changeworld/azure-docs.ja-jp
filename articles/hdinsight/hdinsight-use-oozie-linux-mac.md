@@ -3,17 +3,16 @@ title: Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを
 description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 41c42009252169c141bec5d3dc2ea5c6308d6812
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085941"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931293"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -35,7 +34,7 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 * **SSH クライアント**。 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-* **Azure SQL Database**。  [Azure portal での Azure SQL Database のデータベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、**oozietest** という名前のデータベースを使用します。
+* **Azure SQL Database**。  [Azure portal での Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。  この記事では、**oozietest** という名前のデータベースを使用します。
 
 * クラスターのプライマリ ストレージの URI スキーム。 Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は `abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 

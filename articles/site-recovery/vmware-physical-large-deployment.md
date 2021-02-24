@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131777"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89047084"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
 
@@ -205,7 +205,7 @@ VM の最初のバッチのレプリケーションを開始したら、次の�
     - アプリのエンド ツー エンドの RTO を見積もる。
     - ワークロードのエンド ツー エンドの RPO を見積もる。
     - IP アドレス範囲の競合を識別する。
-    - 訓練を行う場合は、訓練に運用ネットワークを使用せず、運用ネットワークとテスト ネットワークで同じサブネット名は使用しないようにし、訓練の後に毎回テスト フェールオーバーをクリーンアップすることをお勧めします。
+    - 訓練を行う場合は、訓練に運用ネットワークを使用せず、訓練の後に毎回テスト フェールオーバーをクリーンアップすることをお勧めします。
 
 大規模なフェールオーバーを実行する場合は、次のようにすることをお勧めします。
 

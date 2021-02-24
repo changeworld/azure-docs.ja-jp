@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5988a3ca2d44df161a27144d7bfb47ecab1e236e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.custom: devx-track-js
+ms.openlocfilehash: e4be3d4508d342c77507cf824fb036e32084b617
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267311"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329739"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>Azure Media Services で Shaka プレーヤーを使用する方法
 

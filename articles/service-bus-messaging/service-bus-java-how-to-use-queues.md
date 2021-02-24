@@ -1,190 +1,227 @@
 ---
-title: Java で Azure Service Bus キューを使用する
-description: このチュートリアルでは、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。
+title: Azure Service Bus キューを Java で使用する (azure-messaging-servicebus)
+description: このチュートリアルでは、Java を使用して、Azure Service Bus キューとの間でメッセージを送受信する方法について説明します。 新しい azure-messaging-servicebus パッケージを使用します。
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 11/09/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 5447bea686db48157c721978f5510cd80e0924c6
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a910f61389183b77af1f73f8d3553f6c5bbc8452
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065796"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881586"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>クイック スタート:Java で Azure Service Bus キューを使用してメッセージを送受信する
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Azure Service Bus キューとの間でメッセージを送受信する (Java)
+このクイックスタートでは、Azure Service Bus キューとの間でメッセージを送受信する Java アプリを作成します。 
 
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-このチュートリアルでは、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。 
+> [!IMPORTANT]
+> このクイックスタートでは、新しい azure-messaging-servicebus パッケージを使用します。 古い azure-servicebus パッケージを使用したクイックスタートについては、[azure-servicebus を使用したメッセージの送受信](service-bus-java-how-to-use-queues-legacy.md)に関する記事をご覧ください。
 
-> [!NOTE]
-> GitHub の [azure-service-bus のリポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)には、Java のサンプルがあります。
 
 ## <a name="prerequisites"></a>前提条件
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。
-    1. Service Bus **キュー**の**概要**をお読みください。 
-    2. Service Bus **名前空間**を作成します。 
-    3. **接続文字列**を取得します。
-    4. Service Bus **キュー**を作成します。
-3. [Azure SDK for Java][Azure SDK for Java] をインストールします。 
+- Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+- 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。 Service Bus 名前空間の **接続文字列** と、作成した **キュー** の名前をメモしておいてください。
+- [Azure SDK for Java][Azure SDK for Java] をインストールします。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。 IntelliJ を使用している場合は、[Azure Toolkit for IntelliJ のインストール](/azure/developer/java/toolkit-for-intellij/installation)に関するページを参照してください。 
 
-
-## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
-このサンプルを作成する前に [Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 
-
-Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。 IntelliJ を使用している場合は、[Azure Toolkit for IntelliJ のインストール](/azure/developer/java/toolkit-for-intellij/installation)に関するページを参照してください。 
-
-![Microsoft Azure Libraries for Java を Eclipse プロジェクトに追加する](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
-
-
-次の `import` ステートメントを Java ファイルの先頭に追加します。
-
-```java
-// Include the following imports to use Service Bus APIs
-import com.google.gson.reflect.TypeToken;
-import com.microsoft.azure.servicebus.*;
-import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
-import com.google.gson.Gson;
-
-import static java.nio.charset.StandardCharsets.*;
-
-import java.time.Duration;
-import java.util.*;
-import java.util.concurrent.*;
-
-import org.apache.commons.cli.*;
-
-```
 
 ## <a name="send-messages-to-a-queue"></a>メッセージをキューに送信する
-Service Bus キューにメッセージを送信する場合、アプリケーションによって **QueueClient** オブジェクトがインスタンス化され、非同期的にメッセージが送信されます。 次のコードでは、ポータルを使用して作成されたキューにメッセージを送信する方法を示しています。
+このセクションでは、Java コンソール プロジェクトを作成し、既に作成してあるキューにメッセージを送信するコードを追加します。 
 
-```java
-public void run() throws Exception {
-    // Create a QueueClient instance and then asynchronously send messages.
-    // Close the sender once the send operation is complete.
-    QueueClient sendClient = new QueueClient(new ConnectionStringBuilder(ConnectionString, QueueName), ReceiveMode.PEEKLOCK);
-    this.sendMessageAsync(sendClient).thenRunAsync(() -> sendClient.closeAsync());
+### <a name="create-a-java-console-project"></a>Java コンソール プロジェクトを作成する
+Eclipse または任意のツールを使用して Java プロジェクトを作成します。 
 
-    sendClient.close();
-}
+### <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
+Azure Service Bus ライブラリへの参照を追加します。 Service Bus 用の Java クライアント ライブラリは、[Maven Central Repository](https://search.maven.org/search?q=a:azure-messaging-servicebus) にあります。 Maven プロジェクト ファイル内で次の依存関係宣言を使用して、このライブラリを参照できます。
 
-    CompletableFuture<Void> sendMessagesAsync(QueueClient sendClient) {
-        List<HashMap<String, String>> data =
-                GSON.fromJson(
-                        "[" +
-                                "{'name' = 'Einstein', 'firstName' = 'Albert'}," +
-                                "{'name' = 'Heisenberg', 'firstName' = 'Werner'}," +
-                                "{'name' = 'Curie', 'firstName' = 'Marie'}," +
-                                "{'name' = 'Hawking', 'firstName' = 'Steven'}," +
-                                "{'name' = 'Newton', 'firstName' = 'Isaac'}," +
-                                "{'name' = 'Bohr', 'firstName' = 'Niels'}," +
-                                "{'name' = 'Faraday', 'firstName' = 'Michael'}," +
-                                "{'name' = 'Galilei', 'firstName' = 'Galileo'}," +
-                                "{'name' = 'Kepler', 'firstName' = 'Johannes'}," +
-                                "{'name' = 'Kopernikus', 'firstName' = 'Nikolaus'}" +
-                                "]",
-                        new TypeToken<List<HashMap<String, String>>>() {}.getType());
-
-        List<CompletableFuture> tasks = new ArrayList<>();
-        for (int i = 0; i < data.size(); i++) {
-            final String messageId = Integer.toString(i);
-            Message message = new Message(GSON.toJson(data.get(i), Map.class).getBytes(UTF_8));
-            message.setContentType("application/json");
-            message.setLabel("Scientist");
-            message.setMessageId(messageId);
-            message.setTimeToLive(Duration.ofMinutes(2));
-            System.out.printf("\nMessage sending: Id = %s", message.getMessageId());
-            tasks.add(
-                    sendClient.sendAsync(message).thenRunAsync(() -> {
-                        System.out.printf("\n\tMessage acknowledged: Id = %s", message.getMessageId());
-                    }));
-        }
-        return CompletableFuture.allOf(tasks.toArray(new CompletableFuture<?>[tasks.size()]));
-    }
-
+```xml
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-messaging-servicebus</artifactId>
+    <version>7.0.0</version>
+</dependency>
 ```
 
-Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[Message](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) クラスのインスタンスになります。 Message オブジェクトには、(Label、TimeToLive などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。 アプリケーションでは、Message のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。 または、**java.IO.InputStream** オブジェクトを提供することもできます。
+### <a name="add-code-to-send-messages-to-the-queue"></a>キューにメッセージを送信するコードを追加する
+1. 次の `import` ステートメントを Java ファイルの冒頭に追加します。 
 
+    ```java
+    import com.azure.messaging.servicebus.*;
+    import com.azure.messaging.servicebus.models.*;
+    import java.util.concurrent.TimeUnit;
+    import java.util.function.Consumer;
+    import java.util.Arrays;
+    import java.util.List;
+    ```    
+5. このクラスに、接続文字列とキュー名を保持する変数を次のように定義します。 
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。
+    ```java
+    static String connectionString = "<NAMESPACE CONNECTION STRING>";
+    static String queueName = "<QUEUE NAME>";    
+    ```
+
+    `<NAMESPACE CONNECTION STRING>` を Service Bus 名前空間の接続文字列に置き換えます。 さらに、`<QUEUE NAME>` をキューの名前に置き換えます。
+3. 1 つのメッセージをキューに送信するためのメソッドを、`sendMessage` という名前でこのクラスに追加します。 
+
+    ```java
+    static void sendMessage()
+    {
+        // create a Service Bus Sender client for the queue 
+        ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
+                .connectionString(connectionString)
+                .sender()
+                .queueName(queueName)
+                .buildClient();
+        
+        // send one message to the queue
+        senderClient.sendMessage(new ServiceBusMessage("Hello, World!"));
+        System.out.println("Sent a single message to the queue: " + queueName);        
+    }
+    ```
+1. 一連のメッセージを作成するためのメソッドを、`createMessages` という名前でこのクラスに追加します。 通常、これらのメッセージはアプリケーションのさまざまな部分から届きます。 ここでは、次のように一連のサンプル メッセージを作成します。
+
+    ```java
+    static List<ServiceBusMessage> createMessages()
+    {
+        // create a list of messages and return it to the caller
+        ServiceBusMessage[] messages = {
+                new ServiceBusMessage("First message"),
+                new ServiceBusMessage("Second message"),
+                new ServiceBusMessage("Third message")
+        };
+        return Arrays.asList(messages);
+    }
+    ```
+1. 作成したキューにメッセージを送信するためのメソッドを、`sendMessageBatch` という名前で追加します。 このメソッドは、キューの `ServiceBusSenderClient` を作成し、`createMessages` メソッドを呼び出して一連のメッセージを取得した後、1 つまたは複数のバッチを用意して、そのバッチをキューに送信します。 
+
+```java
+    static void sendMessageBatch()
+    {
+        // create a Service Bus Sender client for the queue 
+        ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
+                .connectionString(connectionString)
+                .sender()
+                .queueName(queueName)
+                .buildClient();
+
+        // Creates an ServiceBusMessageBatch where the ServiceBus.
+        ServiceBusMessageBatch messageBatch = senderClient.createMessageBatch();        
+        
+        // create a list of messages
+        List<ServiceBusMessage> listOfMessages = createMessages();
+        
+        // We try to add as many messages as a batch can fit based on the maximum size and send to Service Bus when
+        // the batch can hold no more messages. Create a new batch for next set of messages and repeat until all
+        // messages are sent.        
+        for (ServiceBusMessage message : listOfMessages) {
+            if (messageBatch.tryAddMessage(message)) {
+                continue;
+            }
+
+            // The batch is full, so we create a new batch and send the batch.
+            senderClient.sendMessages(messageBatch);
+            System.out.println("Sent a batch of messages to the queue: " + queueName);
+            
+            // create a new batch
+            messageBatch = senderClient.createMessageBatch();
+
+            // Add that message that we couldn't before.
+            if (!messageBatch.tryAddMessage(message)) {
+                System.err.printf("Message is too large for an empty batch. Skipping. Max size: %s.", messageBatch.getMaxSizeInBytes());
+            }
+        }
+        
+        if (messageBatch.getCount() > 0) {
+            senderClient.sendMessages(messageBatch);
+            System.out.println("Sent a batch of messages to the queue: " + queueName);
+        }
+
+        //close the client
+        senderClient.close();
+    }
+```
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
-キューからメッセージを受信する主な方法は、**ServiceBusContract** オブジェクトを使用することです。 メッセージは 2 つの異なるモードで受信できます。**ReceiveAndDelete** と **PeekLock** です。
+このセクションでは、キューからメッセージを取得するコードを追加します。 
 
-**ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 **ReceiveAndDelete** モード (既定) は最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。
-Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされます。
+1. キューからメッセージを受信するメソッドを、`receiveMessages` という名前で追加します。 このメソッドは、メッセージを処理するためのハンドラーとエラーを処理するためのハンドラーを指定してキューの `ServiceBusProcessorClient` を作成します。 次に、プロセッサを起動して数秒間待機し、受信したメッセージを出力した後、プロセッサを停止して終了します。
 
-**PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して **complete()** を呼び出して受信処理の第 2 段階を完了します。 Service Bus が **complete()** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。 
+    ```java
+    // handles received messages
+    static void receiveMessages() throws InterruptedException
+    {
+        // consumer that processes a single message received from Service Bus
+        Consumer<ServiceBusReceivedMessageContext> messageProcessor = context -> {
+            ServiceBusReceivedMessage message = context.getMessage();
+            System.out.println("Received message: " + message.getBody().toString());
+        };
 
-次の例では、(既定モードではなく) **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。 次の例では、メッセージ ハンドラーを登録したコールバック モデルを使用し、メッセージが `TestQueue` に到着したときにメッセージを処理します。 このモードでは、コールバックが正常に返された場合に **complete ()** が自動的に呼び出され、コールバックが例外をスローした場合は **abandon()** が呼び出されます。 
+        // handles any errors that occur when receiving messages
+        Consumer<Throwable> errorHandler = throwable -> {
+            System.out.println("Error when receiving messages: " + throwable.getMessage());
+            if (throwable instanceof ServiceBusReceiverException) {
+                ServiceBusReceiverException serviceBusReceiverException = (ServiceBusReceiverException) throwable;
+                System.out.println("Error source: " + serviceBusReceiverException.getErrorSource());
+            }
+        };
 
-```java
-    public void run() throws Exception {
-        // Create a QueueClient instance for receiving using the connection string builder
-        // We set the receive mode to "PeekLock", meaning the message is delivered
-        // under a lock and must be acknowledged ("completed") to be removed from the queue
-        QueueClient receiveClient = new QueueClient(new ConnectionStringBuilder(ConnectionString, QueueName), ReceiveMode.PEEKLOCK);
-        this.registerReceiver(receiveClient);
+        // create an instance of the processor through the ServiceBusClientBuilder
+        ServiceBusProcessorClient processorClient = new ServiceBusClientBuilder()
+            .connectionString(connectionString)
+            .processor()
+            .queueName(queueName)
+            .processMessage(messageProcessor)
+            .processError(errorHandler)
+            .buildProcessorClient();
 
-        // shut down receiver to close the receive loop
-        receiveClient.close();
-    }
-    void registerReceiver(QueueClient queueClient) throws Exception {
-        // register the RegisterMessageHandler callback
-        queueClient.registerMessageHandler(new IMessageHandler() {
-        // callback invoked when the message handler loop has obtained a message
-            public CompletableFuture<Void> onMessageAsync(IMessage message) {
-            // receives message is passed to callback
-                if (message.getLabel() != null &&
-                    message.getContentType() != null &&
-                    message.getLabel().contentEquals("Scientist") &&
-                    message.getContentType().contentEquals("application/json")) {
+        System.out.println("Starting the processor");
+        processorClient.start();
 
-                        byte[] body = message.getBody();
-                        Map scientist = GSON.fromJson(new String(body, UTF_8), Map.class);
+        TimeUnit.SECONDS.sleep(10);
+        System.out.println("Stopping and closing the processor");
+        processorClient.close();        
+    }    
+    ```
+2. `sendMessage`、`sendMessageBatch`、`receiveMessages` の各メソッドを呼び出し、`InterruptedException` をスローするように `main` メソッドを更新します。     
 
-                        System.out.printf(
-                            "\n\t\t\t\tMessage received: \n\t\t\t\t\t\tMessageId = %s, \n\t\t\t\t\t\tSequenceNumber = %s, \n\t\t\t\t\t\tEnqueuedTimeUtc = %s," +
-                            "\n\t\t\t\t\t\tExpiresAtUtc = %s, \n\t\t\t\t\t\tContentType = \"%s\",  \n\t\t\t\t\t\tContent: [ firstName = %s, name = %s ]\n",
-                            message.getMessageId(),
-                            message.getSequenceNumber(),
-                            message.getEnqueuedTimeUtc(),
-                            message.getExpiresAtUtc(),
-                            message.getContentType(),
-                            scientist != null ? scientist.get("firstName") : "",
-                            scientist != null ? scientist.get("name") : "");
-                    }
-                    return CompletableFuture.completedFuture(null);
-                }
+    ```java
+    public static void main(String[] args) throws InterruptedException {        
+        sendMessage();
+        sendMessageBatch();
+        receiveMessages();
+    }   
+    ```
 
-                // callback invoked when the message handler has an exception to report
-                public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
-                    System.out.printf(exceptionPhase + "-" + throwable.getMessage());
-                }
-        },
-        // 1 concurrent call, messages are auto-completed, auto-renew duration
-        new MessageHandlerOptions(1, true, Duration.ofMinutes(1)));
-    }
+## <a name="run-the-app"></a>アプリを実行する
+アプリケーションを実行すると、コンソール ウィンドウに次のメッセージが表示されます。 
 
+```console
+Sent a single message to the queue: myqueue
+Sent a batch of messages to the queue: myqueue
+Starting the processor
+Received message: Hello, World!
+Received message: First message in the batch
+Received message: Second message in the batch
+Received message: Three message in the batch
+Stopping and closing the processor
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
-Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側アプリケーションがなんらかの理由によってメッセージを処理できない場合には、**getLockToken()** を介して取得した、受信メッセージのロック トークンを使用して、クライアント オブジェクトで **abandon()** メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
+Azure portal の Service Bus 名前空間の **[概要]** ページで、**受信** メッセージ数と **送信** メッセージ数を確認できます。 最新の値を表示するには、1 分程度待ってから、ページを最新の情報に更新しなければならないことがあります。 
 
-キュー内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、メッセージのロックが自動的に解除され、再度受信できる状態に変わります。
+:::image type="content" source="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="受信メッセージ数と送信メッセージ数" lightbox="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png":::
 
-メッセージが処理された後、**complete()** 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションの再起動時にメッセージがアプリケーションに再配信されます。 一般的に、この動作は "*1 回以上の処理*" と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **getMessageId** メソッドを使用して対処します。このプロパティは、配信が試行された後も同じ値を保持します。
+この **[概要]** ページでキューを選択して、 **[Service Bus キュー]** ページに移動します。 このページにも、**受信** メッセージ数と **送信** メッセージ数が表示されます。 加えて、キューの **現在のサイズ**、**最大サイズ**、**アクティブなメッセージ数** など、他の情報も表示されます。 
 
-> [!NOTE]
-> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
+:::image type="content" source="./media/service-bus-java-how-to-use-queues/queue-details.png" alt-text="キューの詳細" lightbox="./media/service-bus-java-how-to-use-queues/queue-details.png":::
+
+
 
 ## <a name="next-steps"></a>次の手順
-これで、Service Bus キューの基本を学習できました。詳細については、「[Service Bus のキュー、トピック、サブスクリプション][Queues, topics, and subscriptions]」をご覧ください。
+次のドキュメントおよびサンプルを参照してください。
 
-詳細については、 [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)を参照してください。
+- [Java 用の Azure Service Bus クライアント ライブラリ - Readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
+- [GitHub のサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Java API リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
 [Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation

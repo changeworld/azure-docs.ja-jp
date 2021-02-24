@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078920"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001594"
 ---
 # <a name="sensor-partner-integration"></a>センサー パートナーの統合
 
@@ -48,7 +48,7 @@ API には、Swagger の技術ドキュメントが用意されています。 A
 
 FarmBeats では、Microsoft Azure Active Directory 認証が使用されます。 Azure App Service によって、組み込みの認証と承認がサポートされます。
 
-詳細については、「 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)」を参照してください。
+詳細については、「 [Azure Active Directory](../../app-service/overview-authentication-authorization.md)」を参照してください。
 
 FarmBeats Datahub ではベアラー認証が使用され、次の資格情報が必要です。
    - クライアント ID
@@ -201,7 +201,7 @@ FarmBeats は、センサーのメジャーの種類や単位の新規追加を�
 
 ## <a name="send-telemetry-data-to-farmbeats"></a>テレメトリ データを FarmBeats に送信する
 
-テレメトリ データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成します。 テレメトリ データの詳細については、[イベント ハブへのテレメトリの送信](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)に関する記事を参照してください。
+テレメトリ データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成します。 テレメトリ データの詳細については、[イベント ハブへのテレメトリの送信](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)に関する記事を参照してください。
 
 指定されたイベント ハブにクライアントとしてテレメトリを送信する Python コードの例を次に示します。
 

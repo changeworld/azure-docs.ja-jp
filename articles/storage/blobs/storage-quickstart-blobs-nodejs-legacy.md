@@ -3,17 +3,17 @@ title: クイック スタート:JavaScript 用 Azure Blob Storage クライア�
 description: JavaScript 用 Azure Storage クライアント ライブラリ v10 を使用して Node.js で BLOB とコンテナーを作成、アップロード、削除します
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cb1e1baa63e5a38a7f3db251c6c6d551e999befc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431066"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599461"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>クイック スタート:Node.js で JavaScript v10 SDK を使用して BLOB を管理する
 
@@ -139,7 +139,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-API によって行われた要求は、一定の時間後にタイムアウトに設定される場合があります。 [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) クラスは要求がタイムアウトする方法を管理し、このサンプルで使用されるタイムアウトを定義するには次の定数が使用されます。
+API によって行われた要求は、一定の時間後にタイムアウトに設定される場合があります。 [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy&preserve-view=true) クラスは要求がタイムアウトする方法を管理し、このサンプルで使用されるタイムアウトを定義するには次の定数が使用されます。
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -178,13 +178,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 
 このコード ブロックでは次のクラスが使用されます。
 
-- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) クラスでは、要求パイプラインに提供するためにストレージ アカウントの資格情報がラップされます。
+- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy&preserve-view=true) クラスでは、要求パイプラインに提供するためにストレージ アカウントの資格情報がラップされます。
 
-- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) クラスでは、新しいパイプラインが作成されます。
+- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy&preserve-view=true) クラスでは、新しいパイプラインが作成されます。
 
-- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy) では、REST API で使用される URL がモデル化されます。 このクラスのインスタンスを使用すると、コンテナーの一覧の表示や、コンテナーの URL を生成するためのコンテキスト情報の提供といったアクションを実行できます。
+- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy&preserve-view=true) では、REST API で使用される URL がモデル化されます。 このクラスのインスタンスを使用すると、コンテナーの一覧の表示や、コンテナーの URL を生成するためのコンテキスト情報の提供といったアクションを実行できます。
 
-*ServiceURL* のインスタンスを [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) および [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) のインスタンスと併用して、ストレージ アカウントのコンテナーと BLOB を管理します。
+*ServiceURL* のインスタンスを [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy&preserve-view=true) および [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy&preserve-view=true) のインスタンスと併用して、ストレージ アカウントのコンテナーと BLOB を管理します。
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);

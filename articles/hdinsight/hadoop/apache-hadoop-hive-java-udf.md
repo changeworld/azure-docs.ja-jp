@@ -1,19 +1,16 @@
 ---
 title: Apache Hive Azure HDInsight を使用する Java のユーザー定義関数 (UDF)
 description: Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この UDF の例では、テキスト文字列のテーブルを小文字に変換します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
-ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bf9c2ea544c6b510a0507b6b020f0eae0b101dc7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323793"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946559"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 上の Apache Hive で Java UDF を使用する
 
@@ -22,7 +19,7 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
-* [Java Developer Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 

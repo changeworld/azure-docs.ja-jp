@@ -1,23 +1,19 @@
 ---
 title: Azure 上の Oracle データベース用リファレンス アーキテクチャ | Microsoft Docs
 description: Oracle Database Enterprise Edition データベースを Microsoft Azure Virtual Machines 上で実行するためのリファレンス アーキテクチャ。
-services: virtual-machines-linux
-author: rgardler
-manager: ''
-tags: ''
-ms.service: virtual-machines
+author: dbakevlar
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: rogardle
-ms.custom: ''
-ms.openlocfilehash: 8feede515cf7ed861f3219fdf5f4642a33c9e83e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690359"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882299"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上の Oracle Database Enterprise Edition 用リファレンス アーキテクチャ
 
@@ -33,7 +29,7 @@ Oracle データベースのパフォーマンスを最大限に引き出す方�
 
 ## <a name="high-availability-for-oracle-databases"></a>Oracle データベースの高可用性
 
-クラウドで高可用性を実現することは、どの組織の計画と設計においても重要な要素です。 Microsoft Azure は、[可用性ゾーン](../../../availability-zones/az-overview.md)と可用性セット (可用性ゾーンが使用できないリージョンで使用される) を提供します。 詳細については、[仮想マシンの可用性管理](../../../virtual-machines/linux/manage-availability.md)に関するページでクラウドの設計についてご確認ください。
+クラウドで高可用性を実現することは、どの組織の計画と設計においても重要な要素です。 Microsoft Azure は、[可用性ゾーン](../../../availability-zones/az-overview.md)と可用性セット (可用性ゾーンが使用できないリージョンで使用される) を提供します。 詳細については、[仮想マシンの可用性管理](../../manage-availability.md)に関するページでクラウドの設計についてご確認ください。
 
 Oracle は、クラウドネイティブのツールとオファリングに加えて、Azure 上に設定できる、[Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)、[Data Guard with FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)、[GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) などの高可用性のためのソリューションを提供しています。 このガイドでは、これらの各ソリューションのリファレンス アーキテクチャについて説明します。
 
@@ -43,7 +39,7 @@ Oracle は、クラウドネイティブのツールとオファリングに加�
 
 Oracle Real Application Cluster (RAC) は、多くのインスタンスが 1 つのデータベース ストレージにアクセスするようにすることにより高スループットの実現を支援する (全共有型アーキテクチャ パターン)、Oracle が提供するソリューションです。 Oracle RAC は、オンプレミスの高可用性にも使用できますが、Oracle RAC のみを使用してクラウドの高可用性を実現することはできません。これは、Oracle RAC がインスタンス レベルの障害に対してのみ保護を提供し、ラック レベルやデータセンター レベルの障害には保護を提供しないためです。 このため、Oracle では、高可用性を実現するため、データベース (単一インスタンスであれ RAC であれ) と Oracle Data Guard を併用することを推奨しています。 一般に、ミッション クリティカルなアプリケーションを実行する目的で高い SLA が必要とされます。 Oracle RAC は、現時点では、Oracle on Azure の認定やサポートの対象になっていません。 ただし、Azure では、インスタンスレベルの障害に対する保護に役立つ、Availability Zones や計画メンテナンス ウィンドウなどの機能を提供しています。 これに加えて、顧客は Oracle Data Guard、Oracle GoldenGate、Oracle Sharding などのテクノロジを使用して、ラック レベルやデータセンター レベルの障害、地政学的な障害からデータベースを保護することにより、ハイ パフォーマンスと回復性を実現できます。
 
-複数の[可用性ゾーン](../../../availability-zones/az-overview.md)で Oracle Database を Oracle Data Guard や GoldenGate と組み合わせて実行すると、99.99% のアップタイム SLA を実現できます。 可用性ゾーンがまだ存在しない Azure リージョンでは、[可用性セット](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を利用して、99.95% のアップタイム SLA を実現できます。
+複数の[可用性ゾーン](../../../availability-zones/az-overview.md)で Oracle Database を Oracle Data Guard や GoldenGate と組み合わせて実行すると、99.99% のアップタイム SLA を実現できます。 可用性ゾーンがまだ存在しない Azure リージョンでは、[可用性セット](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を利用して、99.95% のアップタイム SLA を実現できます。
 
 >注:Microsoft が提供するアップタイム SLA より大幅に高いアップタイム目標を設定できます。
 
@@ -77,7 +73,7 @@ Oracle Database バージョン 12.2 以降では、単一の Oracle Data Guard 
 
 次の図に、可用性ゾーンを使用して Azure で Oracle Data Guard を使用する場合の推奨アーキテクチャを示します。 このアーキテクチャで、99.99% の VM アップタイム SLA を実現できます。
 
-![Data Guard Broker と可用性ゾーンを使用した Oracle Database - FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
+![可用性ゾーンを使用して Azure で Oracle Data Guard を使用する場合の推奨アーキテクチャを示している図。](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
 上の図では、クライアント システムは、Web 経由で Oracle バックエンドを使用してカスタム アプリケーションにアクセスします。 Web フロントエンドは、ロード バランサーで構成されます。 Web フロント エンドは、適切なアプリケーション サーバーへの呼び出しを行い、作業を処理します。 アプリケーション サーバーは、プライマリ Oracle データベースにクエリを実行します。 この Oracle データベースは、ライセンス コストを節約してパフォーマンスを最大化するため、[制約付きコア vCPU](../../../virtual-machines/constrained-vcpu.md) のハイパースレッド化された[メモリ最適化済み仮想マシン](../../sizes-memory.md)を使用して構成されています。 複数の Premium ディスクまたは Ultra ディスク (マネージド ディスク) が、パフォーマンスと高可用性のために使用されています。
 
@@ -113,7 +109,7 @@ Oracle Data Guard 遠隔同期は、Oracle Database に対してデータ損失�
 
 GoldenGate を使用すると、企業全体の複数の異種プラットフォーム間で、トランザクション レベルでのデータ交換やデータ操作を実行できます。 これは、トランザクションの整合性を維持しつつ、既存のインフラストラクチャに対するオーバーヘッドを最小限に抑えて、コミットされたトランザクションを移動します。 このモジュール式アーキテクチャは、さまざまなトポロジで、選択したデータ レコード、トランザクションの変更、DDL (データ定義言語) への変更を抽出およびレプリケートする柔軟性を提供します。
 
-Oracle GoldenGate を使用すれば、双方向のレプリケーションを提供して、データベースを高可用性用に構成できます。 これを使って、**マルチマスター構成**や**アクティブ/アクティブ構成**を設定できます。 次の図に、Azure での Oracle GoldenGate アクティブ/アクティブ設定の推奨アーキテクチャを示します。 次のアーキテクチャでは、Oracle データベースは、ライセンス コストを節約してパフォーマンスを最大化するため、[制約付きコア vCPU](../../../virtual-machines/constrained-vcpu.md) のハイパースレッド化された[メモリ最適化済み仮想マシン](../../sizes-memory.md)を使用して構成されています。 複数の Premium ディスクまたは Ultra ディスク (マネージド ディスク) が、パフォーマンスと可用性のために使用されています。
+Oracle GoldenGate を使用すれば、双方向のレプリケーションを提供して、データベースを高可用性用に構成できます。 これを使って、**マルチマスター構成** や **アクティブ/アクティブ構成** を設定できます。 次の図に、Azure での Oracle GoldenGate アクティブ/アクティブ設定の推奨アーキテクチャを示します。 次のアーキテクチャでは、Oracle データベースは、ライセンス コストを節約してパフォーマンスを最大化するため、[制約付きコア vCPU](../../../virtual-machines/constrained-vcpu.md) のハイパースレッド化された[メモリ最適化済み仮想マシン](../../sizes-memory.md)を使用して構成されています。 複数の Premium ディスクまたは Ultra ディスク (マネージド ディスク) が、パフォーマンスと可用性のために使用されています。
 
 ![Data Guard Broker と可用性ゾーンを使用した Oracle Database - FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -160,7 +156,7 @@ Oracle シャード データベースをデプロイおよび管理するには
 
 * システム管理のシャーディング - パーティション分割を使用して自動的にシャード間に分散されます。
 * ユーザー定義のシャーディング - シャードへのデータのマッピングをユーザーが指定できます。これは、規制やデータのローカライズ要件が存在する場合に適しています。
-* コンポジット シャーディング - 異なる_シャード領域_のためにシステム管理のシャーディングとユーザー定義のシャーディングを組み合わせたものです。
+* コンポジット シャーディング - 異なる _シャード領域_ のためにシステム管理のシャーディングとユーザー定義のシャーディングを組み合わせたものです。
 * テーブルのサブパーティション - 通常のパーティション テーブルに似ています。
 
 さまざまな[シャーディング方法](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-methods.html)の詳細については、Oracle のドキュメントを参照してください。
@@ -173,7 +169,7 @@ Oracle シャード データベースをデプロイおよび管理するには
 
 Oracle Data Guard は、システム管理、ユーザー定義、コンポジットのシャーディング方法で使用できます。
 
-次の図に、各シャードの高可用性を実現するために Oracle Data Guard で Oracle Sharding を使用する場合のリファレンス アーキテクチャを示します。 このアーキテクチャ図は、_コンポジット シャーディング方法_を示しています。 アーキテクチャ図は、データの局所性、負荷分散、高可用性、ディザスター リカバリーなどの要件が異なるアプリケーションでは異なる可能性があり、異なるシャーディング方法を使用する場合もあります。 Oracle Sharding では、これらのオプションを提供することにより、このような要件を満たし、水平的かつ効率的にスケーリングを行えるようにしています。 同様のアーキテクチャは、Oracle GoldenGate を使用してデプロイすることもできます。
+次の図に、各シャードの高可用性を実現するために Oracle Data Guard で Oracle Sharding を使用する場合のリファレンス アーキテクチャを示します。 このアーキテクチャ図は、_コンポジット シャーディング方法_ を示しています。 アーキテクチャ図は、データの局所性、負荷分散、高可用性、ディザスター リカバリーなどの要件が異なるアプリケーションでは異なる可能性があり、異なるシャーディング方法を使用する場合もあります。 Oracle Sharding では、これらのオプションを提供することにより、このような要件を満たし、水平的かつ効率的にスケーリングを行えるようにしています。 同様のアーキテクチャは、Oracle GoldenGate を使用してデプロイすることもできます。
 
 ![Data Guard Broker と可用性ゾーンを使用した Oracle Database Sharding - FSFO](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
 
@@ -193,7 +189,7 @@ Oracle Data Guard は、システム管理、ユーザー定義、コンポジ�
 
 ![GoldenGate で可用性ゾーンを使用した Oracle Database Sharding](./media/oracle-reference-architecture/oracledb_gg_sh_az.png)
 
-上記のリファレンス アーキテクチャでは、_システム管理_のシャーディング方法を使用してデータをシャード化しています。 Oracle GoldenGate のレプリケーションはチャンク レベルで実行されるため、1 つのシャードにレプリケートされたデータの半分を別のシャードにレプリケートできます。 残りの半分は異なるシャードにレプリケートできます。 
+上記のリファレンス アーキテクチャでは、_システム管理_ のシャーディング方法を使用してデータをシャード化しています。 Oracle GoldenGate のレプリケーションはチャンク レベルで実行されるため、1 つのシャードにレプリケートされたデータの半分を別のシャードにレプリケートできます。 残りの半分は異なるシャードにレプリケートできます。 
 
 データがレプリケートされる方法は、レプリケーション係数によって異なります。 レプリケーション係数が 2 の場合、シャードグループ内の 3 つのシャードにまたがって、データの各チャンクのコピーが 2 つ作成されます。 同様に、レプリケーション係数が 3 で、シャードグループ内に 3 つのシャードが存在する場合、各シャード内のすべてのデータがそのシャードグループ内の他のすべてのシャードにレプリケートされます。 シャードグループ内の各シャードには、異なるレプリケーション係数を指定できます。 この設定は、1 つのシャードグループ内および複数のシャードグループにまたがる高可用性とディザスター リカバリーの設計を効率的に定義するのに役立ちます。
 
@@ -209,18 +205,18 @@ Oracle Data Guard は、システム管理、ユーザー定義、コンポジ�
 
 ## <a name="patching-and-maintenance"></a>修正プログラムの適用とメンテナンス
 
-Oracle ワークロードを Azure にデプロイする場合、ホスト OS レベルのすべての修正プログラムを Microsoft が適用します。 計画された OS レベルのメンテナンスは、その計画メンテナンスに備えてお客様が準備できるよう、事前にお客様に通知されます。 異なる 2 つの Availability Zones の 2 つのサーバーに同時に修正プログラムが適用されることはありません。 VM のメンテナンスと修正プログラムの適用の詳細については、[仮想マシンの可用性管理](../../../virtual-machines/linux/manage-availability.md)に関するページをご覧ください。 
+Oracle ワークロードを Azure にデプロイする場合、ホスト OS レベルのすべての修正プログラムを Microsoft が適用します。 計画された OS レベルのメンテナンスは、その計画メンテナンスに備えてお客様が準備できるよう、事前にお客様に通知されます。 異なる 2 つの Availability Zones の 2 つのサーバーに同時に修正プログラムが適用されることはありません。 VM のメンテナンスと修正プログラムの適用の詳細については、[仮想マシンの可用性管理](../../manage-availability.md)に関するページをご覧ください。 
 
-仮想マシンのオペレーティング システムへの修正プログラムの適用は、[Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) を使用して自動化できます。 Oracle データベースへの修正プログラムの適用とメンテナンスは、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) または [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) を使用して自動化およびスケジュールし、ダウンタイムを最小限に抑えることができます。 Oracle データベースのコンテキストでのその使用方法については、[継続的デリバリーおよびブルー/グリーン デプロイ](/azure/devops/learn/what-is-continuous-delivery)に関するページをご覧ください。
+仮想マシンのオペレーティング システムへの修正プログラムの適用は、[Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化できます。 Oracle データベースへの修正プログラムの適用とメンテナンスは、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) または [Azure Automation Update Management](../../../automation/update-management/overview.md) を使用して自動化およびスケジュールし、ダウンタイムを最小限に抑えることができます。 Oracle データベースのコンテキストでのその使用方法については、[継続的デリバリーおよびブルー/グリーン デプロイ](/azure/devops/learn/what-is-continuous-delivery)に関するページをご覧ください。
 
 ## <a name="architecture-and-design-considerations"></a>アーキテクチャと設計に関する考慮事項
 
 - ライセンス コストを節約してパフォーマンスを最大化するには、Oracle Database VM に[制約付きコア vCPU](../../../virtual-machines/constrained-vcpu.md) のハイパースレッド化された[メモリ最適化済み仮想マシン](../../sizes-memory.md)を使用することをご検討ください。 パフォーマンスと可用性を向上させるには、複数の Premium ディスクまたは Ultra ディスク (マネージド ディスク) を使用します。
-- マネージド ディスクを使用する場合、再起動時にディスク/デバイス名が変更される可能性があります。 再起動後もマウントが確実に持続するようにするため、名前ではなく、デバイス UUID を使用することをお勧めします。 詳細については、 [こちら](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab)で確認できます。
+- マネージド ディスクを使用する場合、再起動時にディスク/デバイス名が変更される可能性があります。 再起動後もマウントが確実に持続するようにするため、名前ではなく、デバイス UUID を使用することをお勧めします。 詳細については、 [こちら](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)で確認できます。
 - リージョン内で高可用性を実現するには、可用性ゾーンを使用します。
 - Oracle データベースには、Ultra ディスク (使用可能な場合) か Premium ディスクの使用をご検討ください。
 - スタンバイ Oracle データベースは、Oracle Data Guard を使用して別の Azure リージョンに設定することをご検討ください。
-- アプリケーションとデータベース層の間の待機時間を短縮するには、[近接通信配置グループ](../../../virtual-machines/linux/co-location.md#proximity-placement-groups)の使用をご検討ください。
+- アプリケーションとデータベース層の間の待機時間を短縮するには、[近接通信配置グループ](../../co-location.md#proximity-placement-groups)の使用をご検討ください。
 - 管理、監視、ログのため、[Oracle Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/) を設定します。
 - データベースのストレージ管理を合理化するには、Oracle Automatic Storage Management (ASM) の使用をご検討ください。
 - データベースへの修正プログラムと更新プログラムの適用を管理してダウンタイムが発生しないようにするには、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) を使用します。

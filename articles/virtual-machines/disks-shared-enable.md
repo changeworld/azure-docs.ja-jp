@@ -4,26 +4,22 @@ description: 複数の VM 間で共有できるように、共有ディスクを
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: e8bb97196fcceea0c86f58fe4a63146e681c427e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752052"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500735"
 ---
 # <a name="enable-shared-disk"></a>共有ディスクを有効にする
 
 この記事では、Azure マネージド ディスクに対して共有ディスク機能を有効にする方法について説明します。 Azure 共有ディスクは、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。 
 
-共有ディスクが有効になっているマネージド ディスクの概念的な情報については、次を参照してください。
-
-* Linux の場合:[Azure 共有ディスク](linux/disks-shared.md)
-
-* Windows の場合:[Azure 共有ディスク](windows/disks-shared.md)
+共有ディスクが有効になっているマネージド ディスクの概念的な情報については、[Azure 共有ディスク](disks-shared.md)に関する記事を参照してください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -31,7 +27,7 @@ ms.locfileid: "88752052"
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-共有ディスクは、複数のオペレーティング システムでサポートされます。 サポートされているオペレーティング システムについては、概念に関する記事の [Windows](windows/disks-shared.md#windows) と [Linux](linux/disks-shared.md#linux) のセクションを参照してください。
+共有ディスクは、複数のオペレーティング システムでサポートされます。 サポートされているオペレーティング システムについては、概念に関する記事の [Windows](./disks-shared.md#windows) と [Linux](./disks-shared.md#linux) のセクションを参照してください。
 
 ## <a name="disk-sizes"></a>ディスク サイズ
 
@@ -147,7 +143,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 `maxShares>1` を使用して共有ディスクをデプロイしたら、そのディスクを1つ以上の VM にマウントできます。
 
 > [!NOTE]
-> Ultra ディスクをデプロイする場合は、必要な要件を満たしていることを確認してください。 詳細については、Ultra ディスクの記事の [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) または [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) セクションを参照してください。
+> Ultra ディスクをデプロイする場合は、必要な要件を満たしていることを確認してください。 詳細については、「[Azure Ultra ディスクの使用](disks-enable-ultra-ssd.md)」を参照してください。
 
 ```azurepowershell-interactive
 

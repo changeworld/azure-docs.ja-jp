@@ -3,20 +3,18 @@ title: データのエクスポートと削除 - LUIS
 titleSuffix: Azure Cognitive Services
 description: お客様は、データの表示、エクスポート、削除を完全に制御できます。 プライバシーとコンプライアンスを確保するために顧客データを削除します。
 services: cognitive-services
-author: diberry
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, references_regions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: 4e3e0d04b0086905b80e26fb4f838c36b5b5545e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 12/10/2020
+ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273355"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680188"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 
@@ -52,7 +50,7 @@ LUIS ユーザーは、ポータルでデータの表示を完全に制御でき
 
 ## <a name="location-of-active-learning"></a>アクティブ ラーニングの場所
 
-[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md#enable-active-learning)を有効にするために、公開済みの LUIS エンドポイントで受信されたユーザーの記録された発話は、次の Azure の地域に格納されます。
+[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning)を有効にするために、公開済みの LUIS エンドポイントで受信されたユーザーの記録された発話は、次の Azure の地域に格納されます。
 
 * [ヨーロッパ](#europe)
 * [オーストラリア](#australia)
@@ -60,34 +58,41 @@ LUIS ユーザーは、ポータルでデータの表示を完全に制御でき
 
 アクティブ ラーニング データ (以下に詳述) を除いて、LUIS は[地域サービス向けのデータ ストレージ プラクティス](https://azuredatacentermap.azurewebsites.net/)に従います。
 
+[!INCLUDE [portal consolidation](includes/portal-consolidation.md)]
+
+
 ### <a name="europe"></a>ヨーロッパ
 
-[eu.luis.ai](https://eu.luis.ai) ポータルおよび Europe Authoring (Programmatic API とも呼ばれる) は、Azure のヨーロッパ地域でホストされています。 eu.luis.ai ポータルおよび Europe Authoring (Programmatic API とも呼ばれる) は、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
+Europe Authoring (Programmatic API とも呼ばれる) のリソースは Azure のヨーロッパ地域でホストされており、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
 
 * ヨーロッパ
 * フランス
 * イギリス
 
-これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure のヨーロッパ地域に格納されます。 アクティブ ラーニングを無効にすることができます。「[Disable active learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)」 (アクティブ ラーニングを無効にする) を参照してください。 格納されている発言を管理するには、「[Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance)」 (発話を削除する) を参照してください。
+これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure のヨーロッパ地域に格納されます。
 
 ### <a name="australia"></a>オーストラリア
 
-[au.luis.ai](https://au.luis.ai) ポータルおよび Australia Authoring (Programmatic API とも呼ばれる) は、Azure のオーストラリア地域でホストされています。 au.luis.ai ポータルおよび Australia Authoring (Programmatic API とも呼ばれる) は、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
+Australia Authoring (Programmatic API とも呼ばれる) のリソースは Azure のオーストラリア地域でホストされており、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
 
 * オーストラリア
 
-これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure のオーストラリア地域に格納されます。 アクティブ ラーニングを無効にすることができます。「[Disable active learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)」 (アクティブ ラーニングを無効にする) を参照してください。 格納されている発言を管理するには、「[Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance)」 (発話を削除する) を参照してください。
+これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure のオーストラリア地域に格納されます。
 
-### <a name="united-states"></a>米国
+### <a name="united-states"></a>アメリカ合衆国
 
-[luis.ai](https://www.luis.ai) ポータルおよび United States Authoring (Programmatic API とも呼ばれる) は、Azure の米国地域でホストされています。 luis.ai ポータルおよび United States Authoring (Programmatic API とも呼ばれる) は、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
+米国 Authoring (Programmatic API とも呼ばれる) のリソースは Azure の米国地域でホストされており、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
 
 * ヨーロッパまたはオーストラリアのオーサリング リージョンではサポートされていない Azure 地域
 
-これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure の米国地域に格納されます。 アクティブ ラーニングを無効にすることができます。「[Disable active learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)」 (アクティブ ラーニングを無効にする) を参照してください。 格納されている発言を管理するには、「[Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance)」 (発話を削除する) を参照してください。
+これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure の米国地域に格納されます。 
+
+## <a name="disable-active-learning"></a>アクティブ ラーニングを無効にする
+
+アクティブ ラーニングを無効にするには、「[アクティブ ラーニングを無効にする](luis-how-to-review-endpoint-utterances.md#disable-active-learning)」を参照してください。 格納されている発言を管理するには、「[Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance)」 (発話を削除する) を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [LUIS リージョン リファレンス](./luis-reference-regions.md)

@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 01/11/2021
 ms.author: radeltch
-ms.openlocfilehash: 3ea8be2bbf3296f97ca0562a2d8e72bfe7a77d3b
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 9c712e1e7536c35a937349aedef3065e1ad34ccc
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760483"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097060"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -185,13 +186,13 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
       1. (A)SCS クラスターの仮想マシンとその IP アドレスを選択します。
       1. [追加] をクリックします。
    1. 正常性プローブを作成します
-      1. ASCS のポート 620**00**
+      1. ASCS のポート 620 **00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
          1. 新しい正常性プローブの名前を入力します (例: **nw1-ascs-hp**)
-         1. プロトコルに TCP、ポートに 620**00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
+         1. プロトコルに TCP、ポートに 620 **00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
          1. [OK] をクリックします
-      1. ASCS ERS のポート 621**02**
-         * 上記の手順を繰り返して、ERS の正常性プローブを作成します (例: 621**02** と **nw1-aers-hp**)
+      1. ASCS ERS のポート 621 **02**
+         * 上記の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **02** と **nw1-aers-hp**)
    1. 負荷分散規則
       1. ASCS の負荷分散規則
          1. ロード バランサーを開き、負荷分散規則を選択して [追加] をクリックします
@@ -219,15 +220,15 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
       1. (A)SCS クラスターの仮想マシンを選択します
       1. [OK] をクリックします
    1. 正常性プローブを作成します
-      1. ASCS のポート 620**00**
+      1. ASCS のポート 620 **00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
          1. 新しい正常性プローブの名前を入力します (例: **nw1-ascs-hp**)
-         1. プロトコルに TCP、ポートに 620**00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
+         1. プロトコルに TCP、ポートに 620 **00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
          1. [OK] をクリックします
-      1. ASCS ERS のポート 621**02**
-         * 上記の手順を繰り返して、ERS の正常性プローブを作成します (例: 621**02** と **nw1-aers-hp**)
+      1. ASCS ERS のポート 621 **02**
+         * 上記の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **02** と **nw1-aers-hp**)
    1. 負荷分散規則
-      1. ASCS の 32**00** TCP
+      1. ASCS の 32 **00** TCP
          1. ロード バランサーを開き、負荷分散規則を選択して [追加] をクリックします
          1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb-3200**)
          1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-ascs-frontend**)
@@ -236,9 +237,12 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
       1. ASCS の追加のポート
-         * ASCS のポート 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 と TCP に対して上記の手順を繰り返します
+         * ASCS のポート 36 **00**、39 **00**、81 **00**、5 **00** 13、5 **00** 14、5 **00** 16 と TCP に対して上記の手順を繰り返します
       1. ASCS ERS の追加のポート
-         * ASCS ERS のポート 33**02**、5**02**13、5**02**14、5**02**16 と TCP に対して上記の手順を繰り返します
+         * ASCS ERS のポート 33 **02**、5 **02** 13、5 **02** 14、5 **02** 16 と TCP に対して上記の手順を繰り返します
+
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](../../../load-balancer/load-balancer-multivip-overview.md#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
 
 > [!Note]
 > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
@@ -403,7 +407,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   インストールで /usr/sap/**NW1**/ASCS**00** へのサブフォルダーの作成に失敗する場合は、ASCS **00** フォルダーの所有者とグループを設定し、もう一度試してください。
+   インストールで /usr/sap/**NW1**/ASCS **00** へのサブフォルダーの作成に失敗する場合は、ASCS **00** フォルダーの所有者とグループを設定し、もう一度試してください。
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -459,7 +463,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   インストールで /usr/sap/**NW1**/ERS**02** へのサブフォルダーの作成に失敗する場合は、ERS **02** フォルダーの所有者とグループを設定し、もう一度試してください。
+   インストールで /usr/sap/**NW1**/ERS **02** へのサブフォルダーの作成に失敗する場合は、ERS **02** フォルダーの所有者とグループを設定し、もう一度試してください。
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
@@ -496,10 +500,10 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
 1. **[A]** キープ アライブを構成します
 
-   SAP NetWeaver アプリケーション サーバーと ASCS/SCS の間の通信は、ソフトウェア ロード バランサーを介してルーティングされます。 ロード バランサーは、構成可能なタイムアウト後に非アクティブな接続を切断します。 これを防止するには、SAP NetWeaver ASCS/SCS プロファイル内にパラメーターを設定し、Linux システム設定を変更する必要があります。 詳細については、[SAP Note 1410736][1410736] を参照してください。
+   SAP NetWeaver アプリケーション サーバーと ASCS/SCS の間の通信は、ソフトウェア ロード バランサーを介してルーティングされます。 ロード バランサーは、構成可能なタイムアウト後に非アクティブな接続を切断します。 これを防止するには、SAP NetWeaver ASCS/SCS プロファイル内にパラメーターを設定し (ENSA1 を使用している場合)、ENSA1/ENSA2 の両方について、すべての SAP サーバーで Linux システムの `keepalive` 設定を変更する必要があります。 詳細については、[SAP Note 1410736][1410736] を参照してください。
 
    <pre><code># Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    </code></pre>
 
 1. **[A]** /usr/sap/sapservices ファイルを更新します
@@ -538,7 +542,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
    sudo pcs constraint location rsc_sap_<b>NW1</b>_ASCS<b>00</b> rule score=2000 runs_ers_<b>NW1</b> eq 1
-   sudo pcs constraint order g-<b>NW1</b>_ASCS then g-<b>NW1</b>_AERS kind=Optional symmetrical=false
+   sudo pcs constraint order start g-<b>NW1</b>_ASCS then stop g-<b>NW1</b>_AERS kind=Optional symmetrical=false
    
    sudo pcs node unstandby <b>nw1-cl-0</b>
    sudo pcs property set maintenance-mode=false
@@ -565,7 +569,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
    sudo pcs constraint order g-<b>NW1</b>_ASCS then g-<b>NW1</b>_AERS kind=Optional symmetrical=false
-   sudo pcs constraint order start g-<b>NW1</b>_ASCS then stop g-<b>NW1</b>_AERS symmetrical=false
+   sudo pcs constraint order start g-<b>NW1</b>_ASCS then stop g-<b>NW1</b>_AERS kind=Optional symmetrical=false
    
    sudo pcs node unstandby <b>nw1-cl-0</b>
    sudo pcs property set maintenance-mode=false
@@ -619,6 +623,8 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    # Probe Port of ERS
    sudo firewall-cmd --zone=public --add-port=621<b>02</b>/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=621<b>02</b>/tcp
+   sudo firewall-cmd --zone=public --add-port=32<b>02</b>/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=32<b>02</b>/tcp
    sudo firewall-cmd --zone=public --add-port=33<b>02</b>/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=33<b>02</b>/tcp
    sudo firewall-cmd --zone=public --add-port=5<b>02</b>13/tcp --permanent
@@ -892,7 +898,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
    次のコマンドを root として実行して、メッセージ サーバーのプロセスを特定し、強制終了します。
 
-   <pre><code>[root@nw1-cl-0 ~]# pgrep ms.sapNW1 | xargs kill -9
+   <pre><code>[root@nw1-cl-0 ~]# pgrep -f ms.sapNW1 | xargs kill -9
    </code></pre>
 
    メッセージ サーバーは、1 回だけ強制終了しても、`sapstart` によって再起動されます。 強制終了を複数回実行すると、Pacemaker は最終的に ASCS インスタンスを他のノードに移動します。 テスト後に、次のコマンドを root として実行して、ASCS と ERS インスタンスのリソースの状態をクリーンアップします。
@@ -935,7 +941,11 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
    ASCS インスタンスが実行されているノードで、次のコマンドを root として実行して、エンキュー サーバーを強制終了します。
 
-   <pre><code>[root@nw1-cl-1 ~]# pgrep en.sapNW1 | xargs kill -9
+   <pre><code>
+    #If using ENSA1 
+    [root@nw1-cl-1 ~]# pgrep -f en.sapNW1 | xargs kill -9
+    #If using ENSA2
+    [root@nw1-cl-1 ~]# pgrep -f enq.sapNW1 | xargs kill -9
    </code></pre>
 
    ASCS インスタンスがすぐに他のノードにフェールオーバーします。 ASCS インスタンスの開始後に、ERS インスタンスもフェールオーバーします。 テスト後に、次のコマンドを root として実行して、ASCS と ERS インスタンスのリソースの状態をクリーンアップします。
@@ -978,7 +988,11 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
    ERS インスタンスが実行されているノードで、次のコマンドを root として実行して、エンキュー レプリケーション サーバー プロセスを強制終了します。
 
-   <pre><code>[root@nw1-cl-1 ~]# pgrep er.sapNW1 | xargs kill -9
+   <pre><code>
+    #If using ENSA1
+    [root@nw1-cl-1 ~]# pgrep -f er.sapNW1 | xargs kill -9
+    #If using ENSA2
+    [root@nw1-cl-1 ~]# pgrep -f enqr.sapNW1 | xargs kill -9
    </code></pre>
 
    このコマンドを 1 回だけ実行しても、プロセスは `sapstart` によって再起動されます。 複数回実行すれば、`sapstart` によるプロセスの再起動はなくなり、リソースは停止状態になります。 テスト後に、次のコマンドを root として実行して、ERS インスタンスのリソースの状態をクリーンアップします。

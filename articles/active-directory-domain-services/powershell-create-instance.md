@@ -2,22 +2,22 @@
 title: PowerShell を使用した Azure DS Domain Services の有効化 | Microsoft Docs
 description: Azure AD PowerShell と Azure PowerShell を使用して Azure Active Directory Domain Services を構成して有効化する方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 07/09/2020
-ms.author: iainfou
+ms.date: 02/04/2021
+ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27fec8b8b76bec4c5ac428258b1495fc1bef1abe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e79bbb2ac6febb39fec27aa6ac3c82ff58f81122
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068968"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575824"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 
@@ -42,9 +42,9 @@ Azure Active Directory Domain Services (Azure AD DS) では、Windows Server Act
 
 ## <a name="create-required-azure-ad-resources"></a>必要な Azure AD リソースを作成する
 
-Azure AD DS には、サービス プリンシパルと Azure AD グループが必要です。 これらのリソースにより、Azure AD DS マネージド ドメインはデータを同期し、マネージド ドメインで管理アクセス許可を持つユーザーを定義できます。
+Azure AD DS を使用するには、認証と通信を行うためのサービス プリンシパルと、マネージド ドメインで管理アクセス許可を持つユーザーを定義するための Azure AD グループが必要です。
 
-まず、Azure AD DS が通信と自身の認証を行うための Azure AD サービス プリンシパルを作成します。 ID *2565bd9d-da50-47d4-8b85-4c97f669dc36* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
+まず、*Domain Controller Services* という名前の特定のアプリケーション ID を使用して、Azure AD サービス プリンシパルを作成します。 パブリック Azure では、この ID 値は *2565bd9d-da50-47d4-8b85-4c97f669dc36* です。 他のクラウドでは、この値は *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* となります。 このアプリケーション ID は変更しないでください。
 
 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] コマンドレットを使用して Azure AD サービス プリンシパルを作成します。
 
@@ -54,26 +54,33 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 次に、*AAD DC Administrators* という名前の Azure AD グループを作成します。 このグループに追加されたユーザーには、マネージド ドメインで管理タスクを実行するためのアクセス許可が付与されます。
 
-[New-AzureADGroup][New-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* グループを作成します。
+まず、[Get-AzureADGroup][Get-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* グループ オブジェクト ID を取得します。 *AAD DC Administrators* グループが存在しない場合は、[New-AzureADGroup][New-AzureADGroup] コマンドレットを使用して作成します。
 
 ```powershell
-New-AzureADGroup -DisplayName "AAD DC Administrators" `
-  -Description "Delegated group to administer Azure AD Domain Services" `
-  -SecurityEnabled $true -MailEnabled $false `
-  -MailNickName "AADDCAdministrators"
-```
-
-*AAD DC Administrators* グループが作成されたら、[Add-AzureADGroupMember][Add-AzureADGroupMember] コマンドレットを使用してグループにユーザーを追加します。 まず、[Get-AzureADGroup][Get-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* グループのオブジェクト ID を取得し、次に [Get-AzureADUser][Get-AzureADUser] コマンドレットを使用して目的のユーザーのオブジェクト ID を取得します。
-
-次の例では、UPN が `admin@contoso.onmicrosoft.com` のアカウントのユーザー オブジェクト ID です。 このユーザー アカウントを、*AAD DC Administrators* グループに追加するユーザーの UPN に置き換えます。
-
-```powershell
-# First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
+# First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
   -Filter "DisplayName eq 'AAD DC Administrators'" | `
   Select-Object ObjectId
 
-# Now, retrieve the object ID of the user you'd like to add to the group.
+# If the group doesn't exist, create it
+if (!$GroupObjectId) {
+  $GroupObjectId = New-AzureADGroup -DisplayName "AAD DC Administrators" `
+    -Description "Delegated group to administer Azure AD Domain Services" `
+    -SecurityEnabled $true `
+    -MailEnabled $false `
+    -MailNickName "AADDCAdministrators"
+  }
+else {
+  Write-Output "Admin group already exists."
+}
+```
+
+*AAD DC Administrators* グループが作成されたら、[Get-AzureADUser][Get-AzureADUser] コマンドレットを使用して、目的のユーザーのオブジェクト ID を取得し、[Add-AzureADGroupMember][Add-AzureADGroupMember] コマンドレットを使用して、そのユーザーをグループに追加します。
+
+次の例では、UPN が `admin@contoso.onmicrosoft.com` のアカウントのユーザー オブジェクト ID です。 このユーザー アカウントを、*AAD DC Administrators* グループに追加するユーザーの UPN に置き換えます。
+
+```powershell
+# Retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
   -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
@@ -82,7 +89,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="create-supporting-azure-resources"></a>サポートする Azure リソースの作成
+## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
 まず、[Register-AzResourceProvider][Register-AzResourceProvider] コマンドレットを使用して、Azure AD Domain Services リソース プロバイダーを登録します。
 
@@ -109,11 +116,13 @@ Azure AD Domain Services の仮想ネットワークとサブネットを作成�
 ```powershell
 $VnetName = "myVnet"
 
-# Create the dedicated subnet for AAD Domain Services.
+# Create the dedicated subnet for Azure AD Domain Services.
+$SubnetName = "DomainServices"
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
-  -Name DomainServices `
+  -Name $SubnetName `
   -AddressPrefix 10.0.0.0/24
 
+# Create an additional subnet for your own VM workloads
 $WorkloadSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name Workloads `
   -AddressPrefix 10.0.1.0/24
@@ -125,6 +134,56 @@ $Vnet= New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+```
+
+### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
+
+Azure AD DS には、マネージド ドメインに必要なポートをセキュリティで保護し、その他すべての受信トラフィックをブロックするネットワーク セキュリティ グループが必要です。 [ネットワーク セキュリティ グループ (NSG)][nsg-overview] には、Azure 仮想ネットワーク内のトラフィックへのネットワーク トラフィックを許可または拒否するルールの一覧が含まれています。 Azure AD DS では、ネットワーク セキュリティ グループは、マネージド ドメインへのアクセスをロックダウンするための追加の保護レイヤーとして機能します。 必要なポートを確認するには、「[ネットワーク セキュリティ グループと必要なポート][network-ports]」を参照してください。
+
+次の PowerShell コマンドレットでは、[New-AzNetworkSecurityRuleConfig][New-AzNetworkSecurityRuleConfig] を使用してルールを作成し、[New-AzNetworkSecurityGroup][New-AzNetworkSecurityGroup] を使用してネットワーク セキュリティ グループを作成します。 ネットワーク セキュリティ グループとルールは、[Set-AzVirtualNetworkSubnetConfig][Set-AzVirtualNetworkSubnetConfig] コマンドレットを使用して仮想ネットワーク サブネットに関連付けられます。
+
+```powershell
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 ```
 
 ## <a name="create-a-managed-domain"></a>マネージド ドメインの作成
@@ -143,6 +202,7 @@ $ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+  -ApiVersion "2017-06-01" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
@@ -155,8 +215,6 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルでマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* マネージド ドメインに対する仮想ネットワーク内のトラフィックを制限するためのネットワーク セキュリティ グループを作成します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
-    * ネットワーク セキュリティ グループと必要な規則を作成するには、まず `Install-Script -Name New-AaddsNetworkSecurityGroup` コマンドを使用して `New-AzureAddsNetworkSecurityGroup` スクリプトをインストールした後、`New-AaddsNetworkSecurityGroup` を実行します。 マネージド ドメインに必要な規則が作成されます。
 * [Azure AD DS とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="complete-powershell-script"></a>完全な PowerShell スクリプト
@@ -164,7 +222,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 次の完全な PowerShell スクリプトは、この記事に示されているすべてのタスクを結合します。 スクリプトをコピーし、`.ps1` 拡張子付きのファイルに保存します。 ローカルの PowerShell コンソール、または [Azure Cloud Shell][cloud-shell] でスクリプトを実行します。
 
 > [!NOTE]
-> Azure AD DS を有効にするには、Azure AD テナントのグローバル管理者である必要があります。 また、Azure サブスクリプションで、少なくとも*共同作成者*権限が必要です。
+> Azure AD DS を有効にするには、Azure AD テナントのグローバル管理者である必要があります。 また、Azure サブスクリプションで、少なくとも *共同作成者* 権限が必要です。
 
 ```powershell
 # Change the following values to match your deployment.
@@ -184,16 +242,22 @@ Connect-AzAccount
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
-# Create the delegated administration group for AAD Domain Services.
-New-AzureADGroup -DisplayName "AAD DC Administrators" `
-  -Description "Delegated group to administer Azure AD Domain Services" `
-  -SecurityEnabled $true -MailEnabled $false `
-  -MailNickName "AADDCAdministrators"
-
-# First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
+# First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
   -Filter "DisplayName eq 'AAD DC Administrators'" | `
   Select-Object ObjectId
+
+# Create the delegated administration group for Azure AD Domain Services if it doesn't already exist.
+if (!$GroupObjectId) {
+  $GroupObjectId = New-AzureADGroup -DisplayName "AAD DC Administrators" `
+    -Description "Delegated group to administer Azure AD Domain Services" `
+    -SecurityEnabled $true `
+    -MailEnabled $false `
+    -MailNickName "AADDCAdministrators"
+  }
+else {
+  Write-Output "Admin group already exists."
+}
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
@@ -212,6 +276,7 @@ New-AzResourceGroup `
   -Location $AzureLocation
 
 # Create the dedicated subnet for AAD Domain Services.
+$SubnetName = "DomainServices"
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name DomainServices `
   -AddressPrefix 10.0.0.0/24
@@ -227,9 +292,52 @@ $Vnet=New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+  
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+  -ApiVersion "2017-06-01" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
@@ -242,8 +350,6 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルでマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* マネージド ドメインに対する仮想ネットワーク内のトラフィックを制限するためのネットワーク セキュリティ グループを作成します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
-    * ネットワーク セキュリティ グループと必要な規則を作成するには、まず `Install-Script -Name New-AaddsNetworkSecurityGroup` コマンドを使用して `New-AzureAddsNetworkSecurityGroup` スクリプトをインストールした後、`New-AaddsNetworkSecurityGroup` を実行します。 マネージド ドメインに必要な規則が作成されます。
 * [Azure AD DS とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="next-steps"></a>次のステップ
@@ -254,6 +360,8 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 [windows-join]: join-windows-vm.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-phs]: tutorial-configure-password-hash-sync.md
+[nsg-overview]: ../virtual-network/network-security-groups-overview.md
+[network-ports]: network-considerations.md#network-security-groups-and-required-ports
 
 <!-- EXTERNAL LINKS -->
 [Connect-AzAccount]: /powershell/module/Az.Accounts/Connect-AzAccount
@@ -270,3 +378,6 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
 [availability-zones]: ../availability-zones/az-overview.md
+[New-AzNetworkSecurityRuleConfig]: /powershell/module/az.network/new-aznetworksecurityruleconfig
+[New-AzNetworkSecurityGroup]: /powershell/module/az.network/new-aznetworksecuritygroup
+[Set-AzVirtualNetworkSubnetConfig]: /powershell/module/az.network/set-azvirtualnetworksubnetconfig

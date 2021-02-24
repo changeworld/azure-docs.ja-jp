@@ -1,21 +1,22 @@
 ---
 title: クイック スタート:Gremlin API と PHP - Azure Cosmos DB
 description: このクイック スタートでは、Azure portal および PHP で Azure Cosmos DB Gremlin API を使ってコンソール アプリケーションを作成する方法を説明します
-author: luisbosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
-ms.author: lbosq
-ms.openlocfilehash: 4a979fd4b3947be62f77bbd6d7c046c6af78466c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: chrande
+ms.openlocfilehash: dfb7b530ce7d907407eef987b5df8af245c90950
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118306"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360838"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>クイック スタート:PHP と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -191,9 +192,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 今度はデータ エクスプローラーに戻って、グラフに追加された頂点を確認し、さらにデータ ポイントを追加してみましょう。
 
-1. **[データ エクスプローラー]** をクリックし、**sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
+1. **[データ エクスプローラー]** をクリックし、 **sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="Azure portal のデータ エクスプローラーで新しいドキュメントを作成する":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="A P I から選択された [グラフ] と、[フィルターの適用] オプションを示すスクリーンショット。":::
 
 2. **[結果]** リストを見ると、新しいユーザーがグラフに追加されていることがわかります。 **ben** を選択すると、彼が robin に接続されていることがわかります。 ドラッグ アンド ドロップで頂点を移動したり、マウスのホイールを回して拡大および縮小したり、双方向矢印でグラフのサイズを大きくしたりできます。 
 
@@ -201,9 +202,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** ボタンをクリックします。
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Azure portal のデータ エクスプローラーで新しいドキュメントを作成する":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="[New Vertex]\(新しい頂点\) ペインを示すスクリーンショット。ここで値を入力できます。":::
 
-4. 「*person*」というラベルを入力します。
+4. 「 *person* 」というラベルを入力します。
 
 5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは **id** のみです。
 
@@ -220,7 +221,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 7. もう一度 **[New Vertex]\(新しい頂点\)** をクリックして、新しいユーザーを追加します。 
 
-8. 「*person*」というラベルを入力します。
+8. 「 *person* 」というラベルを入力します。
 
 9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
     
@@ -240,7 +241,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="グラフ内の頂点のターゲットを変更する":::
 
-13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
+13. **[Target]\(ターゲット\)** ボックスに「 *rakesh* 」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「 *knows* 」と入力して、チェック ボックスをオンにします。
 
     :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="データ エクスプローラーで ashley と rakesh との間の接続を追加する":::
 

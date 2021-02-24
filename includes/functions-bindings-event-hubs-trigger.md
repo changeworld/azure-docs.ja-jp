@@ -4,33 +4,33 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: d8c6b79dca97de3dd46eb9c677f2c94191f276b0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0cd514c852e13b83a679821ca2d940e4ed112bd8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304042"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556468"
 ---
 関数トリガーを使用して、イベント ハブのイベント ストリームに送信されたイベントに応答します。 トリガーを設定するには、基になるイベント ハブへの読み取りアクセスが必要です。 関数がトリガーされると、その関数に渡されるメッセージが文字列として型指定されます。
 
 ## <a name="scaling"></a>Scaling
 
-イベントによってトリガーされる関数の各インスタンスには、1 つの [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスが対応します。 (Event Hubs によって提供される) トリガーにより、1 つの [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスだけが特定のパーティションのリースを取得できるようになります。
+イベントによってトリガーされる関数の各インスタンスには、1 つの [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスが対応します。 (Event Hubs によって提供される) トリガーにより、1 つの [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスだけが特定のパーティションのリースを取得できるようになります。
 
 たとえば、次のようなイベント ハブを検討します。
 
 * 10 個のパーティション。
 * 1000 個のイベントがすべてのパーティション間で均等に分散され、各パーティション内に 100 個のメッセージがある。
 
-関数が最初に有効化されたときに存在する関数インスタンスは 1 つのみです。 最初の関数インスタンス `Function_0` を呼び出しましょう。 `Function_0` 関数は、全 10 個のパーティションの 1 つのリースを保持する [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) の単一のインスタンスを持ちます。 このインスタンスは、パーティション 0 ～ 9 からイベントを読み取ります。 この後、次のいずれかが発生します。
+関数が最初に有効化されたときに存在する関数インスタンスは 1 つのみです。 最初の関数インスタンス `Function_0` を呼び出しましょう。 `Function_0` 関数は、全 10 個のパーティションの 1 つのリースを保持する [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) の単一のインスタンスを持ちます。 このインスタンスは、パーティション 0 ～ 9 からイベントを読み取ります。 この後、次のいずれかが発生します。
 
 * **新しい関数インスタンスは必要とされない**: `Function_0` は、Functions のスケーリング ロジックが有効になる前に、1000 個のイベントをすべて処理できます。 この場合、1000 個のメッセージはすべて `Function_0` によって処理されます。
 
-* **別の関数インスタンスが追加される**:Functions のスケーリング ロジックによって、`Function_0` にその処理能力を超える数のメッセージがあると判断されると、新しい関数アプリ インスタンス (`Function_1`) が作成されます。 この新しい関数にも、[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) のインスタンスが関連付けられています。 基になる Event Hubs は、新しいホスト インスタンスがメッセージを読み取ろうとしていることを検出すると、ホスト インスタンス間でパーティションを負荷分散します。 たとえば、パーティション 0 ～ 4 を `Function_0` に割り当て、パーティション 5 ～ 9 を `Function_1` に割り当てることができます。
+* **別の関数インスタンスが追加される**:Functions のスケーリング ロジックによって、`Function_0` にその処理能力を超える数のメッセージがあると判断されると、新しい関数アプリ インスタンス (`Function_1`) が作成されます。 この新しい関数にも、[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) のインスタンスが関連付けられています。 基になる Event Hubs は、新しいホスト インスタンスがメッセージを読み取ろうとしていることを検出すると、ホスト インスタンス間でパーティションを負荷分散します。 たとえば、パーティション 0 ～ 4 を `Function_0` に割り当て、パーティション 5 ～ 9 を `Function_1` に割り当てることができます。
 
 * **さらに N 個の関数インスタンスが追加される**:Functions のスケーリング ロジックによって、`Function_0` と `Function_1` のどちらにもその処理能力を超える数のメッセージがあると判断されると、新しい `Functions_N` 関数アプリ インスタンスが作成されます。  アプリは、`N` がイベント ハブ パーティションの数を超えた時点で作成されます。 この例では、Event Hubs は、パーティションを再び負荷分散します。この場合、 `Function_0`...`Functions_9` のインスタンス間で負荷分散します。
 
-スケーリングが発生すると、`N` インスタンスはイベント ハブ パーティションの数よりも大きい数になります。 このパターンは、[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスが、他のインスタンスから解放されて使用可能になったパーティションのロックを確実に取得するために使用されます。 関数インスタンスの実行時に使用されたリソースにのみ課金されます。 つまり、オーバー プロビジョニングには課金されません。
+スケーリングが発生すると、`N` インスタンスはイベント ハブ パーティションの数よりも大きい数になります。 このパターンは、[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) インスタンスが、他のインスタンスから解放されて使用可能になったパーティションのロックを確実に取得するために使用されます。 関数インスタンスの実行時に使用されたリソースにのみ課金されます。 つまり、オーバー プロビジョニングには課金されません。
 
 すべての関数の実行が (エラーの有無にかかわらず) 完了すると、関連付けられているストレージ アカウントにチェックポイントが追加されます。 チェックポイントの追加が成功したら、1000 個のすべてのメッセージが再度取得されることはありません。
 
@@ -343,7 +343,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java [関数ランタイム ライブラリ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)で、その値が Event Hub に由来するパラメーター上で [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) 注釈を使用します。 これらの注釈を使用したパラメーターによって、イベントを受信したときに関数が実行されます。 この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
+Java [関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Event Hub に由来するパラメーター上で [EventHubTrigger](/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) 注釈を使用します。 これらの注釈を使用したパラメーターによって、イベントを受信したときに関数が実行されます。 この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
 ---
 
@@ -366,11 +366,11 @@ Java [関数ランタイム ライブラリ](https://docs.microsoft.com/java/api
 
 ## <a name="event-metadata"></a>イベント メタデータ
 
-Event Hubs トリガーには、いくつかの[メタデータ プロパティ](../articles/azure-functions/./functions-bindings-expressions-patterns.md)があります。 メタデータ プロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは、[EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) クラスに由来します。
+Event Hubs トリガーには、いくつかの[メタデータ プロパティ](../articles/azure-functions/./functions-bindings-expressions-patterns.md)があります。 メタデータ プロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは、[EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) クラスに由来します。
 
 |プロパティ|Type|説明|
 |--------|----|-----------|
-|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` のインスタンスです。|
+|`PartitionContext`|[PartitionContext](/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` のインスタンスです。|
 |`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|
 |`Offset`|`string`|イベント ハブ パーティション ストリームを基準としたデータのオフセット。 オフセットは、Event Hubs ストリーム内のイベントのマーカーまたは識別子です。 この識別子は、Event Hubs ストリームのパーティション内で一意です。|
 |`PartitionKey`|`string`|イベント データを送信するパーティション。|

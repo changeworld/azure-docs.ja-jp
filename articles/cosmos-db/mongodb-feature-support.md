@@ -7,25 +7,28 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d9e01ee8b1f6c1cd04e665ad9f7bc57155abfaab
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009309"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028983"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の MongoDB 用 API との通信は、オープン ソースで公開されている任意の MongoDB クライアント [ドライバー](https://docs.mongodb.org/ecosystem/drivers)を使って行うことができます。 Azure Cosmos DB の MongoDB 用 API では、MongoDB [ワイヤ プロトコル](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)に従うことにより、既存のクライアント ドライバーを利用できます。
 
-Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB API を活用できます。[グローバル配信](distribute-data-globally.md)、[自動シャーディング](partition-data.md)、可用性や待ち時間の保証、すべてのフィールドの自動インデックス作成、保存時の暗号化、バックアップを始めとする Cosmos DB のエンタープライズ機能も、すべて利用できます。
+Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB API を活用できます。[グローバル配信](distribute-data-globally.md)、[自動シャーディング](partitioning-overview.md)、可用性や待ち時間の保証、すべてのフィールドの自動インデックス作成、保存時の暗号化、バックアップを始めとする Cosmos DB のエンタープライズ機能も、すべて利用できます。
 
 > [!NOTE]
 > この記事では、Azure Cosmos DB の MongoDB 3.2 用 API を対象にしています。 MongoDB 3.6 バージョンについては、[MongoDB 3.6 でサポートされる機能と構文](mongodb-feature-support-36.md)に関するページを参照してください。
 
 ## <a name="protocol-support"></a>プロトコルのサポート
 
-Azure Cosmos DB の MongoDB 用 API のすべての新しいアカウントは、MongoDB サーバー バージョン **3.6** と互換性があります。 この記事では、MongoDB バージョン 3.2 について説明します。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。
+Azure Cosmos DB の MongoDB 用 API のすべての新しいアカウントは、MongoDB サーバー バージョン **3.6** と互換性があります。 この記事では、MongoDB バージョン 3.2 について説明します。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。 
+
+また、Azure Cosmos DB の MongoDB 用 API は、条件を満たすアカウントにシームレスなアップグレード エクスペリエンスも提供します。 詳細については、[MongoDB バージョン アップグレード ガイド](mongodb-version-upgrade.md)を参照してください。
 
 ## <a name="query-language-support"></a>クエリ言語のサポート
 
@@ -34,6 +37,9 @@ Azure Cosmos DB の MongoDB 用 API では、MongoDB クエリ言語のコンス
 ## <a name="database-commands"></a>データベース コマンド
 
 Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマンドがサポートされています。
+
+> [!NOTE]
+> この記事では、サポートされているサーバー コマンドの一覧のみを示し、クライアント側のラッパー関数については除外しています。 `deleteMany()` や `updateMany()` などのクライアント側のラッパー関数は、内部では `delete()` や `update()` といったサーバー コマンドを利用しています。 サポートされているサーバー コマンドを利用する関数は、Azure Cosmos DB の MongoDB 用 API と互換性があります。
 
 ### <a name="query-and-write-operation-commands"></a>クエリおよび書き込み操作コマンド
 
@@ -306,7 +312,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 `findOneAndUpdate` 操作を使用する場合、単一フィールドに対する並べ替え操作はサポートされていますが、複数フィールドに対する並べ替え操作はサポートされていません。
 
-## <a name="additional-operators"></a>その他の演算子
+## <a name="other-operators"></a>その他の演算子
 
 演算子 | 例 | Notes
 --- | --- | --- |

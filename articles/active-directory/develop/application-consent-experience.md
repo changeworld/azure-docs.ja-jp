@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: c4a4af81c6a216119ae2e1b0221c06ddc349452f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115477"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478135"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD アプリケーションの同意エクスペリエンスについて
 
@@ -30,8 +30,8 @@ Azure Active Directory (Azure AD) アプリケーションの同意ユーザー 
 
 同意を許可する実際のユーザー エクスペリエンスは、ユーザーのテナント、ユーザーの機関でのスコープ (ロール)、クライアント アプリケーションによって要求されている[アクセス許可](../azuread-dev/v1-permissions-consent.md)の種類に設定されたポリシーによって異なります。 つまり、そのアプリケーション開発者とテナント管理者は、同意エクスペリエンスの一部を制御できます。 管理者は、テナントで同意エクスペリエンスを制御するために、テナント上でポリシーまたはアプリを柔軟に設定および無効化することができます。 アプリケーション開発者は、要求されているアクセス許可の種類、およびユーザーの同意フローまたは管理者の同意フローにユーザーをガイドする必要があるかどうかを指示します。
 
-- **ユーザーの同意フロー**は、現在のユーザーのみに対する同意を記録する目的で、アプリケーション開発者がユーザーを承認エンドポイントに直接アクセスさせます。
-- **管理者の同意フロー**は、テナント全体に対する同意を記録する目的で、アプリケーション開発者がユーザーを管理者の同意エンドポイントに直接アクセスさせます。 管理者の同意フローが適切に動作するようにするため、アプリケーション開発者はアプリケーション マニフェストで `RequiredResourceAccess` プロパティのアクセス許可をすべて一覧する必要があります。 詳細については、[アプリケーション マニフェスト](./reference-app-manifest.md)に関するページを参照してください。
+- **ユーザーの同意フロー** は、現在のユーザーのみに対する同意を記録する目的で、アプリケーション開発者がユーザーを承認エンドポイントに直接アクセスさせます。
+- **管理者の同意フロー** は、テナント全体に対する同意を記録する目的で、アプリケーション開発者がユーザーを管理者の同意エンドポイントに直接アクセスさせます。 管理者の同意フローが適切に動作するようにするため、アプリケーション開発者はアプリケーション マニフェストで `RequiredResourceAccess` プロパティのアクセス許可をすべて一覧する必要があります。 詳細については、[アプリケーション マニフェスト](./reference-app-manifest.md)に関するページを参照してください。
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>同意プロンプトの構成要素
 
@@ -65,13 +65,13 @@ Azure Active Directory (Azure AD) アプリケーションの同意ユーザー 
     
     2. ユーザーには従来の同意プロンプトが表示されます。
 
-        ![シナリオ 1b の同意プロンプト](./media/application-consent-experience/consent_prompt_1b.png)
+        ![従来の同意プロンプトを示しているスクリーンショット。](./media/application-consent-experience/consent_prompt_1b.png)
 
 2. 機関の範囲外に 1 つ以上のアクセス許可を必要とするアプリに個人がアクセスする場合。
     1. 管理者には、上記の 1.i と同じプロンプトが表示されます。
     2. ユーザーはアプリケーションへの同意の許可からブロックされ、そのアプリへのアクセス許可を管理者に要求するように指示されます。 
                 
-        ![シナリオ 1b の同意プロンプト](./media/application-consent-experience/consent_prompt_2b.png)
+        ![アプリへのアクセスを管理者に依頼するようユーザーに通知する同意プロンプトのスクリーンショット。](./media/application-consent-experience/consent_prompt_2b.png)
 
 3. 管理者の同意フローに移動するか、管理者の同意フローに直接アクセスする個人の場合。
     1. 管理ユーザーには管理者の同意プロンプトが表示されます。 タイトルとアクセス許可の説明はこのプロンプトで変更され、この変更によって許可するファクトが強調表示され、このプロンプトによってテナント全体の代わりに要求されたデータへのアクセス権がアプリに付与されます。

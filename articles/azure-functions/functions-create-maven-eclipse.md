@@ -1,5 +1,5 @@
 ---
-title: Java と Eclipse を使用して Azure 関数アプリを作成する
+title: Java と Eclipse を使用して Azure Functions アプリを作成する
 description: Java と Eclipse を使用して、単純な HTTP によってトリガーしたサーバーレス アプリを Azure Functions に公開するためのハウツー ガイド。
 author: jeffhollan
 ms.topic: how-to
@@ -7,10 +7,10 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
 ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373319"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
@@ -74,9 +74,9 @@ Azure Functions へのデプロイ プロセスでは、Azure CLI からアカ�
 az login
 ```
 
-新しい**別のユーザーとして実行**構成で `azure-functions:deploy`Maven 目標を使用して、新しい関数アプリにコードを展開します。
+新しい **別のユーザーとして実行** 構成で `azure-functions:deploy`Maven 目標を使用して、新しい関数アプリにコードを展開します。
 
-デプロイが完了すると、Azure 関数アプリへのアクセスに使うことができる URL が表示されます。
+デプロイが完了すると、Azure Functions アプリへのアクセスに使うことができる URL が表示されます。
 
 ```output
 [INFO] Successfully deployed Function App with package.

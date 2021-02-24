@@ -1,6 +1,6 @@
 ---
 title: Windows Azure Media Encoder から Media Encoder Standard に移行する | Microsoft Docs
-description: このトピックでは、Azure Media Encoder から Media Encoder Standard メディア プロセッサに移行する方法について説明します。
+description: このトピックでは、Windows Azure Media Encoder から Media Encoder Standard メディア プロセッサに移行する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a4a5f2f448cc5e954cf21f9785f788925d5a461e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9125639ab5b563a8db7cfa5730bd9673f383071c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263945"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90529249"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Windows Azure Media Encoder から Media Encoder Standard に移行する
 

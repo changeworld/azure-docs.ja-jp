@@ -1,20 +1,21 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 description: このドキュメントでは、MongoDB から Cosmos DB にデータを移行する前提条件の概要について説明します。
-author: LuisBosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.author: lbosq
-ms.openlocfilehash: be38b1cfa698907f44c6deee77bb9b8ca88b77b7
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.author: chrande
+ms.openlocfilehash: 337341daf0e092def639a4e8f6fc8ee0a9b57c75
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318218"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349420"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 (オンプレミスまたはクラウド内の) MongoDB から Azure Cosmos DB の MongoDB 用 API にデータを移行する前に、以下のことを行う必要があります。
 
@@ -36,7 +37,7 @@ ms.locfileid: "89318218"
 
 - **エラスティック容量**:特定のコレクションまたはデータベースの容量は、いつでも変更できます。 これにより、データベースをワークロードのスループット要件に柔軟に適応させることができます。
 
-- **自動シャーディング**:Azure Cosmos DB では、シャード (またはパーティション キー) のみを必要とする自動パーティション分割システムが提供されます。 [自動パーティション分割メカニズム](partition-data.md)は、すべての Azure Cosmos DB API 間で共有されます。これにより、水平分布を通じて、シームレスなデータおよびスループットのスケーリングが可能になります。
+- **自動シャーディング**:Azure Cosmos DB では、シャード (またはパーティション キー) のみを必要とする自動パーティション分割システムが提供されます。 [自動パーティション分割メカニズム](partitioning-overview.md)は、すべての Azure Cosmos DB API 間で共有されます。これにより、水平分布を通じて、シームレスなデータおよびスループットのスケーリングが可能になります。
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>Azure Cosmos DB の MongoDB 用 API の移行オプション
 
@@ -70,7 +71,7 @@ Azure Cosmos DB では、スループットは事前にプロビジョニング�
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-[診断設定](cosmosdb-monitor-resource-logs.md)を使用して、Azure Cosmos DB に対して実行されるクエリの頻度とパターンを理解することもできます。 診断ログの結果は、ストレージ アカウント、EventHub インスタンスまたは [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md) に送信できます。  
+[診断設定](cosmosdb-monitor-resource-logs.md)を使用して、Azure Cosmos DB に対して実行されるクエリの頻度とパターンを理解することもできます。 診断ログの結果は、ストレージ アカウント、EventHub インスタンスまたは [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) に送信できます。  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>パーティション キーの選択
 パーティション分割 (シャーディングともいう) は、データを移行する前に考慮すべき重要な点です。 Azure Cosmos DB では、フルマネージド パーティション分割を使用して、ストレージとスループットの要件を満たすためにデータベースの容量を増やします。 この機能では、ルーティング サーバーのホストや構成は必要ありません。   
@@ -88,7 +89,7 @@ Azure Cosmos DB によって提供されるインデックス作成機能には�
 ## <a name="next-steps"></a>次のステップ
 * [Database Migration Service を使用してお使いの MongoDB データを Cosmos DB に移行する。](../dms/tutorial-mongodb-cosmos-db.md) 
 * [Azure Cosmos のコンテナーとデータベースにスループットをプロビジョニングする](set-throughput.md)
-* [Azure Cosmos DB でのパーティション分割](partition-data.md)
+* [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 * [Azure Cosmos DB でのグローバル分散](distribute-data-globally.md)
 * [Azure Cosmos DB のインデックス作成](index-overview.md)
 * [Azure Cosmos DB の要求ユニット](request-units.md)

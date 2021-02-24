@@ -13,16 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 91e5ca10e97e8fc1646367ac6d575d6813f3a291
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 81b7efdd6bca0471719c11d130be95405f4d54e1
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079861"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210190"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート
 
 Microsoft Azure をご利用のユーザーは、32 ビットの Windows オペレーティング システムを Azure で利用できるようになりました。 特殊化された VHD のみがサポートされ、一般化されたイメージは Azure では機能しません。 これらのオペレーティング システムの一部は既にサポート有効期間が終了しているため、Microsoft では追加サポートを提供しない場合があります。 Microsoft Azure 仮想マシン (VM) 上で実行される Linux ベースまたは Berkeley ソフトウェア配布 (BSD) ベースのオペレーティング システムに対しても、サポートは提供されません。
+
+> [!NOTE]
+> Azure プラットフォームでは、32 ビット オペレーティング システムが実行されている VM に対して、メモリ アドレス空間の制限が設けられています。この場合、VM では 1 GB のメモリしか使用できないことがあり ("*特に、Win7 や Win10 などのクライアント SKU において*")、VM の残りのメモリは、ゲスト VM 内で予約済みとして表示されます。 これは既知の問題であり、現時点では修正に関する ETA はありません。 64 ビット版の OS に移行することをお勧めします。
+> 
 
 ## <a name="more-information"></a>詳細情報
 

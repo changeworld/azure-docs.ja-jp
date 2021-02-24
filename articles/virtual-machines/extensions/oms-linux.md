@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f75ad90a562a39f940e1006a2e4d9123eff2b47c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029095"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202183"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -36,14 +37,16 @@ Azure Monitor ログは、クラウドとオンプレミスの資産全体にま
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-サポートされている Linux ディストリビューションの詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)の記事を参照してください。
+サポートされる Linux ディストリビューションの詳細については、[Azure Monitor エージェントの概要](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)に関する記事をご覧ください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
 次の表は、Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
 | Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
-| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.13.33 | <bpt id="p1">[</bpt>1.13.33<ept id="p1">](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.33-0)</ept> |
+| 1.13.27 | [1.13.27](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.27-0) |
+| 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -109,12 +112,15 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 | apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.7 |
+| typeHandlerVersion | 1.13 |
 | workspaceId (例) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
+
+>[!NOTE]
+>Log Analytics VM 拡張機能の特定のコンポーネントは、[Diagnostics VM 拡張機能](./diagnostics-linux.md)にも付属しています。 このアーキテクチャが原因で、両方の拡張機能が同じ ARM テンプレートでインスタンス化されると、競合が発生する可能性があります。 このようなインストール時の競合を回避するには、[`dependsOn` ディレクティブ](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)を使用して、拡張機能が順番にインストールされるようにします。 拡張機能は、どちらの順序でもインストールできます。
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (Azure Monitor ログへのオンボードなど) が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 Log Analytics エージェント VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)にあります。 
 
@@ -134,7 +140,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -159,7 +165,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -180,7 +186,7 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.10.1 --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
+  --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
   --settings '{"workspaceId":"myWorkspaceId"}'
 ```
 
@@ -211,6 +217,8 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 19 | OMI パッケージのインストールが失敗しました | 
 | 20 | SCX パッケージのインストールが失敗しました |
 | 51 | VM のオペレーティング システムでは、この拡張機能はサポートされていません | |
+| 52 | 依存関係が不足しているため、この拡張機能は失敗しました | 不足している依存関係に関する詳細情報を出力とログで確認します。 |
+| 53 | 構成パラメーターが不足しているか正しくないため、この拡張機能は失敗しました | 正しくない処理に関する詳細情報を出力とログで確認します。 さらに、ワークスペース ID が正しいこと、およびコンピューターがインターネットに接続されていることを確認します。 |
 | 55 | Azure Monitor サービスに接続できない、必要なパッケージが見つからない、または dpkg パッケージ マネージャーがロックされています| システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいこと、および curl ユーティリティと tar ユーティリティがインストールされていることを確認します。 |
 
 その他のトラブルシューティング情報については、[Log Analytics エージェントのトラブルシューティング](../../azure-monitor/platform/vmext-troubleshoot.md)に関する記事を参照してください。

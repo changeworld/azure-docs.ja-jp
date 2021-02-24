@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory を使用してデータを Blob Storage 内でコピーする
-description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
+description: PowerShell を使用して Azure データ ファクトリを作成し、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419342"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013363"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>クイック スタート:PowerShell を使用した Azure データ ファクトリの作成
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>クイックスタート: PowerShell を使用した Azure データ ファクトリの作成
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -28,7 +28,7 @@ ms.locfileid: "81419342"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに**コピー**します。 Azure Data Factory を使用してデータを**変換**する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。
+このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに **コピー** します。 Azure Data Factory を使用してデータを **変換** する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。
 
 > [!NOTE]
 > この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。
@@ -105,7 +105,7 @@ ms.locfileid: "81419342"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 
-* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
+* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者** ロールまたは **所有者** ロールのメンバーであるか、Azure サブスクリプションの **管理者** である必要があります。
 
 * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
@@ -115,8 +115,8 @@ ms.locfileid: "81419342"
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このクイックスタートでは、ソース ストアとシンク ストアの両方として使用される Azure Storage のリンクされたサービスを作成します。 リンクされたサービスは、Data Factory サービスが実行時に接続するために使用する接続情報を持っています。
 
 >[!TIP]
->データ ストアの認証の種類として、このクイックスタートでは "*アカウント キー*" を使用しますが、サポートされている他の認証方法を選ぶこともできます。"*SAS URI*"、"*サービス プリンシパル*"、"*マネージド ID*" を必要に応じて使用してください。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)の対応するセクションを参照してください。
->さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)を参照してください。
+>データ ストアの認証の種類として、このクイックスタートでは "*アカウント キー*" を使用しますが、サポートされている他の認証方法を選ぶこともできます。"*SAS URI*"、"*サービス プリンシパル*"、"*マネージド ID*" を必要に応じて使用してください。 詳細については、[この記事](./connector-azure-blob-storage.md#linked-service-properties)の対応するセクションを参照してください。
+>さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](./store-credentials-in-key-vault.md)を参照してください。
 
 1. 以下の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADFv2QuickStartPSH** フォルダー内に作成します。まだ存在しない場合は、ADFv2QuickStartPSH フォルダーを作成してください。
 

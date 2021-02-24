@@ -1,19 +1,16 @@
 ---
 title: Apache Hive と HiveQL とは - Azure HDInsight
 description: Apache Hive は、Apache Hadoop 用のデータ ウェアハウス システムです。 Transact-SQL に似た HiveQL を使用して、Hive に格納されているデータを照会することができます。 このドキュメントでは、Azure HDInsight で Hive と HiveQL を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 95af0cd4b59863ad0f591476441d9a7733765453
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4e8c6b25055dfc38d56509e1744b8c7fcac40700
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076030"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944291"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -34,7 +31,7 @@ HDInsight には、特定のワークロード用に調整されたいくつか�
 
 HDInsight で Hive を使用するさまざまな方法を次の表に示します。
 
-| **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用元の **クライアントのオペレーティング システム** |
+| **方法** | **対話型** クエリ | **バッチ** 処理の有無 | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
 | [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux、Unix、Mac OS X、または Windows |
 | [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
@@ -88,7 +85,7 @@ Hive で作成できるテーブルには、次の 2 種類があります。
     * 既定以外のストレージ アカウントなど、カスタムの場所が必要である。
     * データの形式、場所などが Hive 以外のプログラムによって管理される。
 
-詳細については、[Hive の内部テーブルと外部テーブルの概要](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)に関するブログ記事を参照してください。
+詳細については、[Hive の内部テーブルと外部テーブルの概要](/archive/blogs/cindygross/hdinsight-hive-internal-and-external-tables-intro)に関するブログ記事を参照してください。
 
 ## <a name="user-defined-functions-udf"></a>ユーザー定義関数 (UDF)
 
@@ -100,7 +97,7 @@ Hive は **ユーザー定義関数 (UDF)** で拡張することもできます
 
 * [C# ユーザー定義関数と Apache Hive の使用](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight にカスタムの Apache Hive ユーザー定義関数を追加する方法](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [HDInsight にカスタムの Apache Hive ユーザー定義関数を追加する方法](/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [日付/時刻の形式を Apache Hive タイムスタンプに変換する Hive ユーザー定義関数の例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -134,7 +131,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 |ステートメント |説明 |
 |---|---|
 |DROP TABLE|テーブルが既に存在する場合は、それを削除します。|
-|CREATE EXTERNAL TABLE|新しい**外部**テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。|
+|CREATE EXTERNAL TABLE|新しい **外部** テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。|
 |ROW FORMAT|データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。|
 |STORED AS TEXTFILE LOCATION|データの格納先 (`example/data` ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。|
 |SELECT|列 **t4** に値 **[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。|
@@ -143,9 +140,9 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 > [!NOTE]  
 > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や MapReduce 操作の場合です。
 >
-> 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
+> 外部テーブルを削除しても、データは削除 **されません**。テーブル定義のみが削除されます。
 
-外部テーブルではなく**内部**テーブルを作成するには、次の HiveQL を使用します。
+外部テーブルではなく **内部** テーブルを作成するには、次の HiveQL を使用します。
 
 ```hiveql
 CREATE TABLE IF NOT EXISTS errorLogs (
@@ -197,11 +194,11 @@ Azure Data Factory では、Data Factory パイプラインの一部として HD
 
 SQL Server Integration Services (SSIS) を使用して Hive ジョブを実行することができます。 Azure Feature Pack for SSIS には、HDInsight の Hive ジョブと連動する次のコンポーネントがあります。
 
-* [Azure HDInsight Hive タスク](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Azure HDInsight Hive タスク](/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure サブスクリプション接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Azure サブスクリプション接続マネージャー](/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-詳細については、[Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) のドキュメントをご覧ください。
+詳細については、[Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis) のドキュメントをご覧ください。
 
 ### <a name="apache-oozie"></a>Apache Oozie
 

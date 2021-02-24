@@ -5,302 +5,108 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 01/22/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116769"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725673"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory で使用できる認証方法と検証方法
 
-Azure Active Directory (Azure AD) のアカウントのサインイン エクスペリエンスの一部として、ユーザーが自分自身を認証する方法はいくつかあります。 従来、ユーザーが資格情報を提供していた最も一般的な方法は、ユーザー名とパスワードです。 Azure AD の先進的な認証とセキュリティ機能を使用すると、基本パスワードを追加の認証方法で補完したり置き換えたりすることができます。
+Azure Active Directory (Azure AD) のアカウントのサインイン エクスペリエンスの一部として、ユーザーが自分自身を認証する方法はいくつかあります。 従来、ユーザーが資格情報を提供していた最も一般的な方法は、ユーザー名とパスワードです。 Azure AD の先進的な認証とセキュリティ機能を使用して、基本パスワードをよりセキュアな認証方法で補完したり置き換えたりする必要があります。
 
-Azure AD のユーザーは、次のいずれかの認証方法を使用して認証することを選択できます。
+![Azure AD における認証方法の強度と推奨の表](media/concept-authentication-methods/authentication-methods.png)
 
-* 従来のユーザー名とパスワード
-* Microsoft Authenticator アプリでのパスワードレスのサインイン
-* OATH ハードウェア トークンまたは FIDO2 セキュリティ キー
-* SMS ベースのパスワードなしのサインイン
+Windows Hello、FIDO2 セキュリティ キー、Microsoft Authenticator アプリなどのパスワードレス認証方法は、最も安全なサインイン イベントを提供します。
 
-Azure AD の多くのアカウントでは、セルフサービス パスワード リセット (SSPR) または Azure Multi-Factor Authentication が有効になっています。 これらの機能には、電話やセキュリティの質問など、追加の検証方法があります。 複数の検証方法を登録するようユーザーに要求することをお勧めします。 ユーザーがある方法を使用できない場合、そのユーザーは別の方法で認証することを選択できます。
+Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーがサインイン時にパスワードのみを使用する場合と比べて、セキュリティが強化されます。 ユーザーに対して、プッシュ通知に応答する、ソフトウェアまたはハードウェア トークンのコードを入力する、または SMS や電話に応答するなど、追加の形式での認証を要求することができます。
 
-次の表は、プライマリまたはセカンダリ認証で使用できる方法をまとめたものです。
+ユーザーのオンボード エクスペリエンスを単純化し、MFA とセルフサービス パスワード リセット (SSPR) の両方に登録するには、[統合されたセキュリティ情報の登録を有効にする](howto-registration-mfa-sspr-combined.md)ことをお勧めします。 回復性を確保するために、ユーザーに複数の認証方法の登録を求めることをお勧めします。 サインインや SSPR の間にユーザーがある方法を使用できない場合、そのユーザーは別の方法で認証することを選択できます。 詳細については、[Azure AD で回復性があるアクセス制御管理戦略を作成する](concept-resilient-controls.md)方法に関するページを参照してください。
 
-| Method | プライマリ認証 | セカンダリ認証 |
-| --- | --- | --- |
-| [パスワード](#password) | はい | |
-| [Microsoft Authenticator アプリ](#microsoft-authenticator-app) | はい (プレビュー) | MFA と SSPR |
-| [FIDO2 セキュリティ キー (プレビュー)](#fido2-security-keys) | はい | MFA のみ |
-| [OATH ソフトウェア トークン](#oath-software-tokens) | いいえ | MFA |
-| [OATH ハードウェア トークン (プレビュー)](#oath-hardware-tokens-preview) | いいえ | MFA |
-| [SMS](#phone-options) | はい (プレビュー) | MFA と SSPR |
-| [音声通話](#phone-options) | いいえ | MFA と SSPR |
-| [セキュリティの質問](#security-questions) | いいえ | SSPR のみ |
-| [電子メール アドレス](#email-address) | いいえ | SSPR のみ |
-| [アプリ パスワード](#app-passwords) | いいえ | MFA のみ(特定の場合) |
+ここでは、組織の安全を確保するために最適な認証方法を選択する際に役立つ[ビデオ](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be)をご紹介します。
 
-これらの認証方法は、Azure portal で構成できます。また、[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用して構成することが増えています。
+## <a name="authentication-method-strength-and-security"></a>認証方法の強度とセキュリティ
 
-この記事では、Azure AD で使用できるさまざまな認証および検証方法についてまとめ、具体的な制限事項や制約事項について説明します。
+組織で Azure AD Multi-Factor Authentication のような機能を展開する場合は、使用可能な認証方法を確認してください。 セキュリティ、ユーザビリティ、および可用性の要件を満たす、あるいは超える方法を選択します。 可能であれば、最高レベルのセキュリティを実現する認証方法を使用してください。
 
-![サインイン画面で使用されている認証方法](media/concept-authentication-methods/overview-login.png)
+次の表は、使用可能な認証方法のセキュリティに関する考慮事項の概要を示しています。 可用性とは、ユーザーが認証方法を利用できるかどうかの指標を指し、Azure AD のサービス可用性ではありません。
 
-## <a name="password"></a>Password
+| 認証方法          | セキュリティ | 使いやすさ | 可用性 |
+|--------------------------------|:--------:|:---------:|:------------:|
+| Windows Hello for Business     | 高     | 高      | 高         |
+| Microsoft Authenticator アプリ    | 高     | 高      | 高         |
+| FIDO2 セキュリティ キー (プレビュー)   | 高     | 高      | 高         |
+| OATH ハードウェア トークン (プレビュー) | Medium   | Medium    | 高         |
+| OATH ソフトウェア トークン           | Medium   | Medium    | 高         |
+| SMS                            | Medium   | 高      | Medium       |
+| 音声                          | Medium   | Medium    | Medium       |
+| Password                       | 低      | 高      | 高         |
 
-Azure AD パスワードは、多くの場合、プライマリ認証方法の 1 つです。 パスワード認証方法を無効にすることはできません。
+セキュリティに関する最新情報については、次のブログ記事をご覧ください。
 
-[SMS ベースのサインイン](howto-authentication-sms-signin.md)などの認証方法を使用していても、ユーザーがパスワードを使用してサインインしない場合、パスワードは使用可能な認証方法として残ります。
+- [認証のための電話転送から脱却する時が来ました](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [認証の脆弱性と攻撃ベクトル](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
-## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator アプリ
+> [!TIP]
+> 柔軟性と使いやすさを実現するために、Microsoft Authenticator アプリを使用することをお勧めします。 この認証方法は、パスワードレス、MFA のプッシュ通知、OATH コードなど、最適なユーザー エクスペリエンスと複数のモードを提供します。
 
-Authenticator アプリは、Azure AD の職場または学校アカウント、あるいは Microsoft アカウントに追加のセキュリティ レベルを提供し、[Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594), and [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) で利用できます。 Microsoft Authenticator アプリを使用すると、ユーザーはサインイン時にパスワードなしの方法で認証したり、セルフサービス パスワード リセット (SSPR) または Azure Multi-Factor Authentication イベントの際に追加の検証オプションとして認証したりすることができます。
+## <a name="how-each-authentication-method-works"></a>各認証方法のしくみ
 
-ユーザーは、モバイル アプリから通知を受け取って承認または拒否することも、Authenticator アプリを使用してサインイン インターフェイスに入力できる OATH 確認コードを生成することもできます。 通知コードと確認コードの両方を有効にすると、Authenticator アプリを登録したユーザーはいずれかの方法を使用して本人確認を行うことができます。
+認証方法の中には、FIDO2 セキュリティ キーやパスワードの利用といった、アプリケーションやデバイスにサインインする際にプライマリ要素として利用できるものがあります。 他の認証方法は、Azure AD Multi-Factor Authentication または SSPR を使用する場合のセカンダリ要素としてのみ使用できます。
 
-ユーザー名とパスワードの組み合わせではなく、サインイン プロンプトで Authenticator アプリを使用する方法については、「[Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)](howto-authentication-passwordless-phone.md)」を参照してください。
+次の表は、サインイン イベント時に各認証方法がどのタイミングで使用できるかの概要を示しています。
 
-> [!NOTE]
-> SSPR を有効にしたときに、ユーザーにモバイル アプリを登録するオプションはありません。 代わりに、ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) で、または統合されたセキュリティ情報の登録の一環として [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) で、モバイル アプリを登録できます。
+| Method                         | プライマリ認証 | セカンダリ認証  |
+|--------------------------------|:----------------------:|:-------------------------:|
+| Windows Hello for Business     | はい                    | MFA                       |
+| Microsoft Authenticator アプリ    | はい (プレビュー)          | MFA と SSPR              |
+| FIDO2 セキュリティ キー (プレビュー)   | はい                    | MFA                       |
+| OATH ハードウェア トークン (プレビュー) | いいえ                     | MFA                       |
+| OATH ソフトウェア トークン           | いいえ                     | MFA                       |
+| SMS                            | Yes                    | MFA と SSPR              |
+| 音声通話                     | いいえ                     | MFA と SSPR              |
+| Password                       | はい                    |                           |
 
-### <a name="notification-through-mobile-app"></a>モバイル アプリでの通知
+これらの認証方法は、すべて Azure portal で構成できます。また、[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用して構成することが増えています。
 
-Authenticator アプリは、スマートフォンまたはタブレットに通知をプッシュして、アカウントへの不正アクセスを防止したり、不正なトランザクションを停止させたりするのに役立ちます。 ユーザーは通知を確認し、適切であった場合は、 **[確認]** を選択します。 適切でない場合は、 **[拒否]** を選択します。
+各認証方法のしくみの詳細については、次の概念に関する個別の記事を参照してください。
 
-![サインイン プロセスを完了するために Authenticator アプリを Web ブラウザーで要求する例のスクリーンショット](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
-
-> [!NOTE]
-> 中国勤務または出張中のスタッフが組織にいる場合、その国/地域では、Android デバイスの "*モバイル アプリによる通知*" 方法は機能しません。これは、Google Play のサービス (プッシュ通知など) がその地域でブロックされているためです。 ただし、iOS の通知は機能します。 Android デバイスの場合、それらのユーザーが代替の認証方法を利用できるようにする必要があります。
-
-### <a name="verification-code-from-mobile-app"></a>モバイル アプリからの確認コード
-
-Authenticator アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。 ユーザー名とパスワードを入力したら、Authenticator アプリから提供されたコードをサインイン インターフェイスに入力します。 検証コードにより、2 番目の形式の認証が行われます。
-
-ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された認証アプリケーション (Microsoft Authenticator アプリなど) を組み合わせることもできます。
-
-> [!WARNING]
-> セルフサービス パスワード リセットで、リセットに必要な方法が 1 つのみのときに最高レベルのセキュリティを確保する場合、ユーザーが使用できるオプションは確認コードのみです。
->
-> 2 つの方法が必要な場合、ユーザーは、通知または確認コードのいずれかと、他の有効な方法を使用して、リセットを行うことができます。
-
-## <a name="fido2-security-keys"></a>FIDO2 セキュリティ キー
-
-FIDO (Fast IDentity Online) Alliance は、オープン認証標準を促進し、ユーザーが認証形式としてパスワードを使用することを減らすのに役立ちます。 FIDO2 は、Web 認証 (WebAuthn) 標準が組み込まれている最新の標準です。
-
-ユーザー名とパスワードの組み合わせではなく、サインイン プロンプトで FIDO2 セキュリティ キーを使用するには、[FIDO2 セキュリティ キーによるパスワードなしのサインインを有効にする方法](howto-authentication-passwordless-security-key.md)に関するページ (プレビュー) を参照してください。
-
-ユーザーは、FIDO2 セキュリティ キーを登録してから、サインイン インターフェイスで認証の主な手段として選択することができます。 これらの FIDO2 セキュリティ キーは通常、USB デバイスですが、Bluetooth または NFC を使用することもできます。 認証を処理するハードウェア デバイスでは公開または推測が可能なパスワードがないため、アカウントのセキュリティが向上します。
-
-Azure AD の FIDO2 セキュリティ キーは現在プレビューの段階です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-## <a name="oath-tokens"></a>OATH トークン
-
-OATH TOTP (Time-based One Time Password) は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 OATH TOTP は、コードを生成するために、ソフトウェアまたはハードウェアを使用して実装できます。 Azure AD は、別のコード生成標準である OATH HOTP をサポートしていません。
-
-### <a name="oath-software-tokens"></a>OATH ソフトウェア トークン
-
-ソフトウェア OATH トークンは、通常、Microsoft Authenticator アプリやその他の認証アプリなどのアプリケーションです。 Azure AD は、各 OTP を生成するためにアプリに入力して使用される秘密鍵 (シード) を生成します。
-
-Authenticator アプリは、プッシュ通知を行うように設定されたときに自動的にコードを生成します。これにより、デバイスが接続されていない場合でも、ユーザーにはバックアップがあります。 OATH TOTP を使用してコードを生成するサード パーティ アプリケーションを使用することもできます。
-
-一部の OATH TOTP ハードウェア トークンはプログラミング可能であり、秘密鍵やシードは事前にプログラミングされていません。 これらのプログラミング可能なハードウェア トークンは、ソフトウェア トークンのセットアップ フローから取得した秘密鍵またはシードを使用して設定できます。 顧客は、選択したベンダーからこれらのトークンを購入し、ベンダーのセットアップ プロセスで秘密鍵またはシードを使用することができます。
-
-### <a name="oath-hardware-tokens-preview"></a>OATH ハードウェア トークン (プレビュー)
-
-Azure AD では、30 秒または 60 秒ごとにコードを更新する OATH-TOTP SHA-1 トークンの使用をサポートしています。 顧客は、選択したベンダーからこれらのトークンを購入できます。
-
-OATH TOTP ハードウェア トークンには、通常、トークンで事前にプログラミングされた秘密鍵 (シード) が付属しています。 これらのキーは、次の手順に従って Azure AD に入力する必要があります。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密キーに含めることができるのは、文字 *a-z* または *A-Z* と数字 *1-7* のみです。また、*Base32* でエンコードする必要があります。
-
-再シードできるプログラミング可能な OATH TOTP ハードウェア トークンは、ソフトウェア トークンのセットアップ フローで Azure AD に設定することもできます。
-
-OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-![OATH トークンの MFA OATH トークン ブレードへのアップロード](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
-
-いったんトークンを取得したら、次に示す例のように、UPN、シリアル番号、秘密鍵、間隔、製造元、モデルを含む、コンマ区切り値 (CSV) ファイル形式でアップロードする必要があります。
-
-```csv
-upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
+* [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
+* [Microsoft Authenticator アプリ](concept-authentication-authenticator-app.md)
+* [FIDO2 セキュリティ キー (プレビュー)](concept-authentication-passwordless.md#fido2-security-keys)
+* [OATH ハードウェア トークン (プレビュー)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [OATH ソフトウェア トークン](concept-authentication-oath-tokens.md#oath-software-tokens)
+* [SMS サインイン](howto-authentication-sms-signin.md)および[検証](concept-authentication-phone-options.md#mobile-phone-verification)
+* [音声通話の確認](concept-authentication-phone-options.md)
+* Password
 
 > [!NOTE]
-> CSV ファイルにヘッダー行が含まれていることを確認します。
+> Azure AD では、多くの場合、パスワードはプライマリ認証方法の 1 つです。 パスワード認証方法を無効にすることはできません。 プライマリ認証要素としてパスワードを使用する場合は、Azure AD Multi-Factor Authentication を使用してサインイン イベントのセキュリティを強化します。
 
-CSV ファイルとして適切な形式が整ったら、管理者は Azure portal にサインインして、 **[Azure Active Directory] > [セキュリティ] > [MFA] > [OATH トークン]** の順に移動し、作成した CSV ファイルをアップロードできます。
+特定のシナリオでは、次の追加認証方法を使用できます。
 
-CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンを選択して、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。 ダウンロードした CSV ファイル内のフィールド名は、アップロードされたバージョンとは異なります。
-
-すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。トークンの **[アクティブ化]** を選択し、トークンに表示されている OTP を入力します。
-
-ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された認証アプリケーション (Microsoft Authenticator アプリなど) を組み合わせることもできます。
-
-## <a name="phone-options"></a>電話のオプション
-
-テキスト メッセージを使用した直接認証では、[ユーザーが SMS ベースの認証を構成して有効にする (プレビュー) ](howto-authentication-sms-signin.md)ことができます。 SMS ベースのサインインは、最前線の従業員に最適です。 SMS ベースのサインインでは、ユーザーはアプリケーションやサービスにアクセスするためのユーザー名とパスワードを知る必要がありません。 代わりに、登録済みの携帯電話番号を入力し、確認コードを含むテキスト メッセージを受信して、サインイン インターフェイスに入力します。
-
-また、ユーザーは、Azure Multi-Factor Authentication またはセルフサービス パスワード リセット (SSPR) で使用される認証のセカンダリ形式として、携帯電話または会社電話を使用して自身を確認することもできます。
-
-正常に動作させるには、電話番号の形式が " *+<国コード> <電話番号>* " (例: *+1 4251234567*) になっている必要があります。
-
-> [!NOTE]
-> 国/地域番号と電話番号の間にスペースを入れる必要があります。
->
-> パスワードのリセットは内線番号をサポートしていません。 *+1 4251234567X12345* の形式であっても、電話がかけられる前に内線番号は削除されます。
-
-### <a name="mobile-phone-verification"></a>携帯電話の確認
-
-Azure Multi-Factor Authentication または SSPR の場合、ユーザーは、サインイン インターフェイスに入力する確認コードを含むテキスト メッセージを受信するか、定義された PIN コードを入力するように求めるメッセージを表示する電話番号を受信するかを選択できます。
-
-ユーザーが、携帯電話番号をディレクトリに表示したくなく、それでもパスワードのリセットにその番号を使いたい場合は、管理者がその電話番号をディレクトリに設定しないようにする必要があります。 一方、ユーザーは、[https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) の統合されたセキュリティ除法登録で **[認証用電話]** 属性を設定する必要があります。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。
-
-![電話番号が設定された認証方法を示す Azure portal のスクリーンショット](media/concept-authentication-methods/user-authentication-methods.png)
-
-Microsoft では、SMS または音声ベースの Multi-Factor Authentication プロンプトを常に同一番号で配信するとは限りません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国/地域ではショート コードをサポートしていません。
-
-#### <a name="text-message-verification"></a>テキスト メッセージの確認
-
-SSPR または Azure Multi-Factor Authentication でテキスト メッセージの確認を行うと、認証コードを含む SMS が携帯電話番号に送信されます。 サインイン プロセスを完了するには、指定された確認コードをサインイン インターフェイスに入力します。
-
-#### <a name="phone-call-verification"></a>音声通話の確認
-
-SSPR または Azure Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に対して自動音声通話が行われます。 サインイン プロセスを完了するには、ユーザーはテンキーで PIN 番号とそれに続いて # を入力するように求められます。
-
-### <a name="office-phone-verification"></a>会社電話の確認
-
-会社電話の属性は Azure AD 管理者によって管理されているので、ユーザー自身が登録することはできません。
-
-SSPR または Azure Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に対して自動音声通話が行われます。 サインイン プロセスを完了するには、ユーザーはテンキーで PIN 番号とそれに続いて # を入力するように求められます。
-
-### <a name="troubleshooting-phone-options"></a>電話オプションのトラブルシューティング
-
-Azure AD の電話認証で問題が発生した場合は、次のトラブルシューティングの手順を確認してください。
-
-* 1 つのデバイスで発信者 ID がブロックされる。
-   * デバイスで構成されているすべてのブロック済み番号を確認します。
-* 電話番号が間違っているか、国/地域コードが正しくない。または、個人の電話番号と勤務先の電話番号を混同している。
-   * ユーザー オブジェクトおよび構成されている認証方法をトラブルシューティングします。 正しい電話番号が登録されていることを確認します。
-* 間違った PIN の入力。
-   * ユーザーが自分のアカウントに登録されている正しい PIN を使用していることを確認します。
-* ボイスメールへの通話の転送。
-   * ユーザーの電話の電源が入っていて、ユーザーがいる場所でサービスを利用できることを確認するか、または別の方法を使います。
-* ユーザーがブロックされている
-   * Azure AD 管理者に Azure portal でユーザーのブロックを解除させます。
-* デバイスで SMS がサブスクライブされていない。
-   * ユーザーに方法を変更させるか、またはデバイスで SMS をアクティブ化させます。
-* 通信プロバイダーの障害 (電話入力が検出されない、DTMF トーンが発行されない、複数のデバイスで発信者 ID がブロックされる、複数のデバイスで SMS がブロックされるなど)。
-   * Microsoft では、認証用の電話呼び出しおよび SMS メッセージのルーティングに、複数の通信プロバイダーが使われています。 上記の問題のいずれかが発生する場合は、ユーザーにその方法を 5 分以内に 5 回以上使わせて、Microsoft サポートに問い合わせるときにそのユーザーの情報を提供できるようにします。
-
-## <a name="security-questions"></a>セキュリティの質問
-
-サインイン イベント中に、セキュリティの質問が認証方法として使用されることはありません。 代わりに、セルフサービス パスワード リセット (SSPR) プロセス中にセキュリティの質問を使用して、ユーザーを確認することができます。 管理者アカウントは、SSPR での確認方法としてセキュリティの質問を使用することはできません。
-
-ユーザーが SSPR に登録すると、使用する認証方法を選択するように求められます。 セキュリティの質問を使用することを選択した場合は、表示される一連の質問を選択して、その回答を入力します。
-
-![認証方法とセキュリティの質問のオプションを示す Azure portal のスクリーンショット](media/concept-authentication-methods/security-questions-authentication-method.png)
-
-> [!NOTE]
-> セキュリティの質問は、ディレクトリ内のユーザー オブジェクトに非公開かつ安全に保存され、登録時にユーザーだけが回答できます。 管理者がユーザーの質問や回答を読み取ったり変更したりすることはありません。
-
-セキュリティの質問は、一部の人が別のユーザーの質問に対する回答を知っている可能性があるため、他の方法に比べて安全性が低い恐れがあります。 SSPR でセキュリティの質問を使用する場合、別の方法と併用することをお勧めします。 ユーザーは、SSPR プロセス中に本人確認のために Microsoft Authenticator アプリまたは電話認証を使用し、ユーザーが電話や登録デバイスを持っていない場合に限りセキュリティの質問を選択するように求められることがあります。
-
-### <a name="predefined-questions"></a>定義済みの質問
-
-SSPR では、次の定義済みのセキュリティの質問を認証方法として使用できます。 これらのセキュリティの質問はすべて、ユーザーのブラウザーのロケールに基づいて Office 365 の完全な言語セットに翻訳およびローカライズされます。
-
-* 最初の配偶者/パートナーと出会った市区町村の名前は?
-* 両親が出会った市区町村の名前は?
-* 最初の職場の市区町村の名前は?
-* 父親が生まれたのは何市ですか?
-* 最初の職場は何市にありましたか?
-* 母親が生まれた市区町村の名前は?
-* 2000 年の元日にいた市区町村の名前は?
-* 高校生のときに好きだった先生の名字は?
-* 出願したのに通わなかった大学の名前は?
-* 初めての結婚披露宴の会場の名前は?
-* 父親のミドル ネームは?
-* 好きな食べ物は?
-* 母方の祖母の氏名は?
-* 母親のミドル ネームは?
-* 一番上の兄または姉の生まれた年と月は? (たとえば、1985 年 11 月)
-* 一番上の兄弟のミドル ネームは?
-* 父方の祖父の氏名は?
-* 一番下の兄弟のミドル ネームは?
-* 6 年生のときに通っていた学校は?
-* 子供の頃の親友の氏名は?
-* 最初の恋人の氏名は?
-* 小学生のときに好きだった先生の名字は?
-* 初めて購入した自動車またはバイクのメーカーとモデルは?
-* 通っていた小学校の名前は?
-* あなたが生まれた病院の名前は?
-* 子供の頃の最初の家の番地は?
-* 子供の頃のヒーローの名前は?
-* お気に入りのぬいぐるみの名前は?
-* 初めて飼ったペットの名前は?
-* 子供の頃のニックネームは?
-* 高校生のときに好きだったスポーツは?
-* 初めて就いた職業は?
-* 子供の頃の電話番号の下 4 桁は?
-* 小さい頃、大きくなったらなりたかったのは?
-* 今まで会った中で一番有名な人は?
-
-### <a name="custom-security-questions"></a>カスタムのセキュリティに関する質問
-
-柔軟性を高めるため、独自にカスタムのセキュリティの質問を定義できます。 カスタムのセキュリティの質問の最大長は、200 文字です。
-
-カスタムのセキュリティの質問は、既定のセキュリティの質問のように自動的にローカライズされることはありません。 カスタムの質問はすべて、管理用のユーザー インターフェイスに入力したときの言語で表示されます。ユーザーのブラウザーのロケールが異なる場合でもそのように表示されます。 ローカライズされた質問が必要な場合は、定義済みの質問を使う必要があります。
-
-### <a name="security-question-requirements"></a>セキュリティの質問の要件
-
-既定とカスタムの両方のセキュリティの質問について、次の要件と制限が適用されます。
-
-* 回答の最小文字数は 3 文字です。
-* 回答の最大文字数は 40 文字です。
-* ユーザーは、同じ質問に何度も回答することはできません。
-* ユーザーは、複数の質問に対して同じ回答をすることはできません。
-* Unicode 文字を含む任意の文字セットを使用して、質問と回答を定義できます。
-* 定義する質問の数は、登録するために必要な質問の数以上にする必要があります。
-
-## <a name="email-address"></a>電子メール アドレス
-
-直接認証方法として電子メール アドレスを使用することはできません。 電子メール アドレスは、セルフサービス パスワード リセット (SSPR) の認証オプションとしてのみ使用できます。 SSPR 中に電子メール アドレスを選択すると、認証/確認プロセスを完了するための電子メールがユーザーに送信されます。
-
-SSPR の登録時に、ユーザーは使用する電子メール アドレスを提供します。 SSPR 中にアクセスできるように、会社アカウントとは異なる電子メール アカウントを使用することをお勧めします。
-
-## <a name="app-passwords"></a>アプリ パスワード
-
-一部の古い非ブラウザー アプリは、認証プロセスの一時停止や中断を理解していません。 ユーザーが多要素認証を有効にしていて、このような古い非ブラウザー アプリのいずれかを使用しようとすると、通常は正常に認証できません。 アプリ パスワードを使用すると、ユーザーは古い非ブラウザー アプリを使用して中断されることなく引き続き正常に認証できます。
-
-既定では、ユーザーはアプリ パスワードを作成できません。 ユーザーにアプリ パスワードの作成を許可する必要がある場合は、ユーザーの Azure Multi-Factor Authentication プロパティの *[サービス設定]* の下で **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する]** を選択します。
-
-![アプリ パスワードをユーザーに許可するための多要素認証サービス設定を示す Azure portal のスクリーンショット](media/concept-authentication-methods/app-password-authentication-method.png)
-
-ユーザーごとの MFA ではなく条件付きアクセス ポリシーを使用して Azure Multi-Factor Authentication を適用する場合は、アプリ パスワードを作成できません。 条件付きアクセス ポリシーを使用してアクセスを制御するモダン アプリケーションにはアプリ パスワードは不要です。
-
-組織がシングル サインオン (SSO) 用に Azure AD とフェデレーションされているときに Azure Multi-factor Authentication を使用する場合は、次の考慮事項が適用されます。
-
-* アプリ パスワードは Azure AD によって検証されます。したがってフェデレーションをバイパスします。 フェデレーションは、アプリ パスワードを設定するときにのみ使用されます。 フェデレーション (SSO) ユーザーの場合、パスワードは組織 ID の中に保存されます。 ユーザーが退職した場合、その情報は、DirSync を使用して組織 ID に送信される必要があります。 アカウントの無効化または削除イベントを同期させるには最大 3 時間かかる可能性があり、Azure AD 内のアプリ パスワードの無効化/削除が遅れることがあります。
-* オンプレミスのクライアント アクセス制御設定は、アプリ パスワードには適用されません。
-* アプリ パスワードに対するオンプレミスの認証ログまたは監査機能はありません。
-* ある種の高度なアーキテクチャ設計では、多要素認証を使用するときに、認証場所によっては、組織のユーザー名とパスワードをアプリ パスワードと組み合わせて使用する必要があります。
-    * オンプレミスのインフラストラクチャに対して認証するクライアントの場合は、組織のユーザー名とパスワードを使用します。
-    * Azure AD に対して認証するクライアントはアプリケーション パスワードを使用します。
+* [アプリ パスワード](howto-mfa-app-passwords.md) - 先進認証をサポートしておらず、ユーザーごとの Azure AD Multi-Factor Authentication 用に構成できる古いアプリケーションに使用されます。
+* [セキュリティの質問](concept-authentication-security-questions.md) - SSPR でのみ使用されます
+* [メールアドレス](concept-sspr-howitworks.md#authentication-methods) - SSPR にのみ使用されます
 
 ## <a name="next-steps"></a>次のステップ
 
-最初に、[セルフサービス パスワード リセット (SSPR) のチュートリアル][tutorial-sspr]と [Azure Multi-Factor Authentication][tutorial-azure-mfa] に関するページを参照してください。
+最初に、[セルフサービス パスワード リセット (SSPR) のチュートリアル][tutorial-sspr]と [Azure AD Multi-Factor Authentication][tutorial-azure-mfa] に関するページを参照してください。
 
 SSPR の概念の詳細については、[Azure AD のセルフサービス パスワード リセットのしくみ][concept-sspr]に関するページを参照してください。
 
-MFA の概念の詳細については、[Azure Multi-Factor Authentication のしくみ][concept-mfa]に関するページを参照してください。
+MFA の概念の詳細については、[Azure AD Multi-Factor Authentication のしくみ][concept-mfa]に関する記事を参照してください。
 
 [Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用した認証方法の構成の詳細について確認してください。
+
+使用されている認証方法を確認するには、[PowerShell を使用した Azure AD Multi-Factor Authentication の認証方法の分析](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)に関する記事を参照してください。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

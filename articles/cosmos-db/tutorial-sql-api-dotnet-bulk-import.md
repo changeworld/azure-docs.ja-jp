@@ -1,21 +1,23 @@
 ---
-title: .Net SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
+title: .NET SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
 description: データをインポートするために必要なプロビジョニング スループット (RU/秒) を最適化する .NET コンソール アプリケーションを作成して、Azure Cosmos DB にデータをインポートしたり取り込んだりする方法を説明します。
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b16402f809da18588b26995e7129d2f27575b48d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019251"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548071"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 このチュートリアルでは、Azure Cosmos DB にデータをインポートするために必要なプロビジョニング スループット (RU/秒) を最適化する .NET コンソール アプリケーションを構築する方法について説明します。 この記事では、サンプル データ ソースからデータを読み取り、Azure Cosmos コンテナーにインポートします。
 このチュートリアルでは、.NET Framework または .NET Core をターゲットとすることができる、Azure Cosmos DB .NET SDK の[バージョン 3.0 以降](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)を使用します。
@@ -86,7 +88,7 @@ Azure portal から [Azure Cosmos DB SQL API アカウントを作成](create-co
 1.  Azure Cosmos アカウントに移動します。
 1.  **[キー]** ウィンドウを開き、アカウントの **[URI]** と **[プライマリ キー]** をコピーします。
 
-Azure Cosmos DB Emulator を使用している場合は、[こちらの記事からエミュレーターの資格情報](local-emulator.md#authenticating-requests)を取得してください。
+Azure Cosmos DB Emulator を使用している場合は、[こちらの記事からエミュレーターの資格情報](local-emulator.md#authenticate-requests)を取得してください。
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>手順 5:一括実行のサポートを適用して CosmosClient オブジェクトを初期化する
 
@@ -173,7 +175,7 @@ Azure Cosmos DB Emulator を使用している場合は、[こちらの記事か
 
 このチュートリアルの手順を実行する時間がない場合や、コード サンプルをダウンロードするだけの場合は、[GitHub](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer) から入手できます。
 
-プロジェクトを複製したら、[Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25) 内の必要な資格情報を必ず更新してください。
+プロジェクトを複製したら、[Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25) 内の必要な資格情報を必ず更新してください。
 
 サンプルを実行するには、リポジトリ ディレクトリに変更し、`dotnet` を使用します。
 

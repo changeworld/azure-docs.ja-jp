@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687805"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226407"
 ---
 # <a name="test-vm-network-latency"></a>VM ネットワークの待ち時間のテスト
 
@@ -45,7 +45,7 @@ Ping などのその他の一般的な接続ツールでは、待機時間を測
 ### <a name="tools-for-testing"></a>テスト用のツール
 待機時間は、次の 2 つの異なるツールオプションを使用して測定できます。
 
-* Windows ベースのシステムの場合: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Windows ベースのシステムの場合: [latte.exe (Windows)](https://github.com/microsoft/latte/releases/download/v0/latte.exe)
 * Linux ベースのシステムの場合:[SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
 これらのツールを使用すると、アプリケーションによって使用されておらず、パフォーマンスに影響を与えない ICMP (Ping) や他の種類のパケットではなく、TCP または UDP ペイロードの配信時間だけが測定されます。
@@ -55,7 +55,7 @@ Ping などのその他の一般的な接続ツールでは、待機時間を測
 VM 構成を作成するときは、次の推奨事項に留意してください。
 - 最新バージョンの Windows または Linux を使用する。
 - 最良の結果を得るため、高速ネットワークを有効にする。
-- [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用して VM をデプロイする。
+- [Azure 近接通信配置グループ](../virtual-machines/co-location.md)を使用して VM をデプロイする。
 - 通常、大規模な VM は小規模の VM よりもパフォーマンスが優れています。
 
 ### <a name="tips-for-analysis"></a>分析に関するヒント
@@ -77,7 +77,7 @@ latte.exe は、別のフォルダー (*c:\tools* など) に入れることを�
 
 ### <a name="allow-latteexe-through-windows-defender-firewall"></a>latte.exe が Windows Defender ファイアウォールを通過することを許可する
 
-*受信側*で、Windows Defender ファイアウォールの許可ルールを作成して、latte.exe トラフィックの到着を許可します。 特定の TCP ポートの受信を許可するのではなく、名前によってlatte.exe プログラム全体を許可する方が簡単です。
+*受信側* で、Windows Defender ファイアウォールの許可ルールを作成して、latte.exe トラフィックの到着を許可します。 特定の TCP ポートの受信を許可するのではなく、名前によってlatte.exe プログラム全体を許可する方が簡単です。
 
 次のコマンドを実行して、latte.exe が Windows Defender ファイアウォールを通過することを許可します。
 
@@ -91,7 +91,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
 ### <a name="run-latency-tests"></a>待機時間テストを実行する
 
-* *受信側*で、latte.exe を起動します (PowerShell からではなく、コマンド ウィンドウから実行します)。
+* *受信側* で、latte.exe を起動します (PowerShell からではなく、コマンド ウィンドウから実行します)。
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,7 +105,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* *送信側*で、latte.exe を起動します (PowerShell からではなく、コマンド ウィンドウから実行します)。
+* *送信側* で、latte.exe を起動します (PowerShell からではなく、コマンド ウィンドウから実行します)。
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
@@ -123,7 +123,7 @@ Linux を実行している VM をテストするには、[SockPerf](https://git
 
 ### <a name="install-sockperf-on-the-vms"></a>SockPerf を VM にインストールする
 
-Linux VM の*送信側*と*受信側*の両方で、次のコマンドを実行して、VM 上に SockPerf を準備します。 一般向けのディストリビューションのためのコマンドが用意されています。
+Linux VM の *送信側* と *受信側* の両方で、次のコマンドを実行して、VM 上に SockPerf を準備します。 一般向けのディストリビューションのためのコマンドが用意されています。
 
 #### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>Red Hat Enterprise Linux (RHEL)/CentOS へのアクセス
 
@@ -176,7 +176,7 @@ sudo make install
 
 SockPerf のインストールが完了すると、VM は待機時間テストを実行する準備が整います。 
 
-まず、*受信側*で SockPerf を起動します。
+まず、*受信側* で SockPerf を起動します。
 
 使用可能な任意のポート番号で構いません。 この例では、ポート 12345 を使用します。
 
@@ -200,7 +200,7 @@ sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用して待機時間を改善する。
+* [Azure 近接通信配置グループ](../virtual-machines/co-location.md)を使用して待機時間を改善する。
 * シナリオに合わせて [VM のネットワークを最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)する方法について学ぶ。
 * [仮想マシンに帯域幅が割り当てられる方法](../virtual-network/virtual-machine-network-throughput.md)に関するページを参照してください。
 * 詳細については、[Azure Virtual Network のよくある質問](../virtual-network/virtual-networks-faq.md)に関するページを参照してください。

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bd3588c207fe8828744a665539830d81805bd7b3
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392852"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184273"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager のメトリックとアラート
 
@@ -58,10 +58,10 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
 
 *図 4: エンドポイントの状態メトリックの分割ビュー*
 
-[Azure Monitor サービス](../azure-monitor/platform/metrics-supported.md)のポータル、[REST API](https://docs.microsoft.com/rest/api/monitor/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor)、および [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights) から、または Traffic Manager のポータル操作のメトリック選択によってこれらのメトリックを使用できます。
+[Azure Monitor サービス](../azure-monitor/platform/metrics-supported.md)のポータル、[REST API](/rest/api/monitor/)、[Azure CLI](/cli/azure/monitor)、および [Azure PowerShell](/powershell/module/az.applicationinsights) から、または Traffic Manager のポータル操作のメトリック選択によってこれらのメトリックを使用できます。
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Traffic Manager メトリックのアラート
-Traffic Manager からメトリックをプロセスおよび表示することに加えて、Azure Monitor ではお客様はこれらのメトリックに関連するアラートを構成して受信できます。 アラートを引き起こすためにこれらのメトリックで満たす必要がある条件、これらの条件を監視する頻度、アラートの送信方法を選択できます。 詳細については、[Azure Monitor アラートのドキュメント](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)をご覧ください。
+Traffic Manager からメトリックをプロセスおよび表示することに加えて、Azure Monitor ではお客様はこれらのメトリックに関連するアラートを構成して受信できます。 アラートを引き起こすためにこれらのメトリックで満たす必要がある条件、これらの条件を監視する頻度、アラートの送信方法を選択できます。 詳細については、[Azure Monitor アラートのドキュメント](../azure-monitor/platform/alerts-metric.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Monitor サービス](../azure-monitor/platform/metrics-supported.md)を確認する

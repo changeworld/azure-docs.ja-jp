@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
-ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710849"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91540270"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>ポータルを使用してピア ASN を Azure サブスクリプションに関連付ける
 
@@ -70,12 +70,12 @@ ms.locfileid: "84710849"
 1. 次に、 **[確認と作成]** をクリックし、入力した情報の基本的な検証がポータルで実行されていることを確認します。 上部のリボンに、"*最終検証を実行しています...* " と表示されます。
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn の確認タブ](./media/peerasn-review-tab-validation.png)
+    > ![[ピア ASN の関連付け] の [基本] タブが表示されているスクリーンショット。](./media/peerasn-review-tab-validation.png)
 
 1. リボンのメッセージが "*検証に成功しました*" に変わったら、情報を確認し、 **[作成]** をクリックして要求を送信します。 検証が成功しなかった場合は、 **[前へ]** をクリックし、上記の手順を繰り返して要求を変更し、入力した値にエラーがないことを確認します。
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn の確認タブ](./media/peerasn-review-tab.png)
+    > ![[ピア ASN の関連付け] の [基本] タブが表示されているスクリーンショット。検証に成功したことが示されています。](./media/peerasn-review-tab.png)
 
 1. 要求を送信した後、デプロイが完了するまで待ちます。 デプロイが失敗した場合は、[Microsoft ピアリング](mailto:peering@microsoft.com)にお問い合わせください。 デプロイが正常に行われると、次のように表示されます。
 

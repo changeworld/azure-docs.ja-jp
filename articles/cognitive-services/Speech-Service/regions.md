@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: seodec18,references_regions
+ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749317"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786793"
 ---
 # <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
@@ -27,7 +27,7 @@ Speech Service を使用すると、アプリケーションで音声をテキ�
 リージョンを検討するとき、次のポイントを念頭に置きます。
 
 * アプリケーションで [Speech SDK](speech-sdk.md) を使用する場合、Speech の構成を作成するときに `westus` などのリージョン ID を指定します。
-* アプリケーションで Speech Service の [REST API](rest-apis.md) のいずれかを使用する場合、要求を行うときに使用するエンドポイント URI にリージョンが含まれます。
+* アプリケーションで Speech Service の [REST API](./overview.md#reference-docs) のいずれかを使用する場合、要求を行うときに使用するエンドポイント URI にリージョンが含まれます。
 * あるリージョン用に作成されたキーはそのリージョンでのみ有効です。 別のリージョンで使用すると認証エラーが発生します。
 
 ## <a name="speech-sdk"></a>Speech SDK
@@ -38,15 +38,17 @@ Speech Service を使用すると、アプリケーションで音声をテキ�
 
 音声カスタマイズ ポータルについては、 https://speech.microsoft.com を参照してください
 
-Speech サービスは、以下のリージョンで**音声認識**、**テキスト読み上げ**、**翻訳**に利用できます。
+Speech サービスは、以下のリージョンで **音声認識**、**テキスト読み上げ**、**翻訳** に利用できます。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-[Speech SDK](speech-sdk.md) を使用する場合、リージョンは**リージョン識別子**によって (たとえば、`SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。 リージョンがサブスクリプションのリージョンと一致していることを確認してください。
+[Speech SDK](speech-sdk.md) を使用する場合、リージョンは **リージョン識別子** によって (たとえば、`SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。 リージョンがサブスクリプションのリージョンと一致していることを確認してください。
+
+オーディオ データを使用してカスタム モデルをトレーニングする場合は、トレーニングを高速化するために[専用のハードウェアを備えたリージョン](custom-speech-overview.md#set-up-your-azure-account)のいずれかを使用します。 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) を使用して、完全にトレーニングされたモデルを後から別のリージョンにコピーできます。
 
 ### <a name="intent-recognition"></a>意図認識
 
-Speech SDK を介して**意図認識**を使用できるリージョンは以下の通りです。
+Speech SDK を介して **意図認識** を使用できるリージョンは以下の通りです。
 
 | グローバル リージョン | リージョン           | リージョン識別子 |
 | ------------- | ---------------- | -------------------- |
@@ -63,21 +65,25 @@ Speech SDK を介して**意図認識**を使用できるリージョンは以�
 | 北米 | 米国西部 2        | `westus2`            |
 | 南アメリカ | ブラジル南部     | `brazilsouth`        |
 
-これは、[Language Understanding サービス (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) でサポートされている公開リージョンのサブセットです。
+これは、[Language Understanding サービス (LUIS)](../luis/luis-reference-regions.md) でサポートされている公開リージョンのサブセットです。
 
 ### <a name="voice-assistants"></a>音声アシスタント
 
-[Speech SDK](speech-sdk.md) は、以下のリージョンで**音声アシスタント**機能をサポートしています。
+[Speech SDK](speech-sdk.md) は、以下のリージョンで [Direct Line Speech](./direct-line-speech.md) による **音声アシスタント** 機能をサポートしています。
 
-| リージョン         | リージョン識別子 |
-| -------------- | -------------------- |
-| 米国西部        | `westus`             |
-| 米国西部 2      | `westus2`            |
-| 米国東部        | `eastus`             |
-| 米国東部 2      | `eastus2`            |
-| 西ヨーロッパ    | `westeurope`         |
-| 北ヨーロッパ   | `northeurope`        |
-| 東南アジア | `southeastasia`      |
+| グローバル リージョン | リージョン           | リージョン識別子    |
+| ------------- | ---------------- | -------------------- |
+| 北米 | 米国西部          | `westus`             |
+| 北米 | 米国西部 2        | `westus2`            |
+| 北米 | 米国東部          | `eastus`             |
+| 北米 | 米国東部 2        | `eastus2`            |
+| 北米 | 米国中西部  | `westcentralus`      |
+| 北米 | 米国中南部 | `southcentralus`     |
+| ヨーロッパ        | 西ヨーロッパ      | `westeurope`         |
+| ヨーロッパ        | 北ヨーロッパ     | `northeurope`        |
+| アジア          | 東アジア        | `eastasia`           |
+| アジア          | 東南アジア   | `southeastasia`      |
+| インド         | インド中部    | `centralindia`       |
 
 ### <a name="speaker-recognition"></a>Speaker Recognition
 

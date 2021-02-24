@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e22738f1fff813e5a928b76f8049e810847fe548
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525614"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358152"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル:Box を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,7 +32,7 @@ Box と Azure AD の統合を構成するには、次のものが必要です。
 - ボックス ビジネス プランまたは進化版
 
 > [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を*使用しない*ことをお勧めします。
+> このチュートリアルの手順をテストする場合、運用環境を *使用しない* ことをお勧めします。
 
 > [!NOTE]
 > 最初に Box アプリケーションでアプリを有効にする必要があります。
@@ -48,7 +48,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、Box アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Box アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="assign-users-and-groups"></a>ユーザーとグループの割り当て
 Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box へのアクセスを許可するユーザーとグループを指定できます。 ユーザーまたはグループを割り当てると、次の処理が実行されます。
@@ -60,7 +60,7 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
   * ユーザー オブジェクトのみをプロビジョニングするよう構成した場合は、直接割り当てられたすべてのユーザーがプロビジョニング キューに配置され、さらに、割り当てられたグループのメンバーであるユーザーもすべてプロビジョニング キューに配置されます。 
   * グループ オブジェクトをプロビジョニングするよう構成した場合は、割り当てられたすべてのグループ オブジェクトと、それらのグループのメンバーであるユーザーもすべて Box にプロビジョニングされます。 Box への書き込み時に、グループとユーザーのメンバーシップは保持されます。
 
-**[属性] の [シングル サインオン]** タブを使用すると、SAML ベースの認証時に Box に提示するユーザーの属性 (または要求) を構成できます。また、**[属性] の [プロビジョニング]** タブを使用すると、プロビジョニング操作時の Azure AD から Box へのユーザーとグループの属性のフロー方法を構成できます。
+**[属性] の [シングル サインオン]** タブを使用すると、SAML ベースの認証時に Box に提示するユーザーの属性 (または要求) を構成できます。また、 **[属性] の [プロビジョニング]** タブを使用すると、プロビジョニング操作時の Azure AD から Box へのユーザーとグループの属性のフロー方法を構成できます。
 
 ### <a name="important-tips-for-assigning-users-to-box"></a>ユーザーを Box に割り当てる際の重要なヒント 
 
@@ -93,17 +93,17 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
-    ![プロビジョニング](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Azure portal の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、[管理者資格情報] の [承認する] が強調表示されています。](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. **[管理者資格情報]** セクションの **[承認する]** をクリックして、新しいブラウザー ウィンドウで Box のログイン ダイアログを開きます。
 
 6. **[Box へのアクセスを許可するにはログインしてください]** ページで、必要な資格情報を入力し、 **[認証する]** をクリックします。 
    
-    ![自動ユーザー プロビジョニングの有効化](./media/box-userprovisioning-tutorial/IC769546.png "自動ユーザー プロビジョニングの有効化")
+    ![[Box へのアクセスを許可するにはログインしてください] 画面のスクリーンショット。[電子メール] と [パスワード] エントリ、および [承認する] ボタンが表示されています。](./media/box-userprovisioning-tutorial/IC769546.png "自動ユーザー プロビジョニングの有効化")
 
 7. **[Box のアクセス許可]** をクリックしてこの操作を承認し、Azure Portal に戻ります。 
    
-    ![自動ユーザー プロビジョニングの有効化](./media/box-userprovisioning-tutorial/IC769549.png "自動ユーザー プロビジョニングの有効化")
+    ![Box へのアクセスを承認する画面のスクリーンショット。説明メッセージと [Box のアクセス許可] ボタンが表示されています。](./media/box-userprovisioning-tutorial/IC769549.png "自動ユーザー プロビジョニングの有効化")
 
 8. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Box アプリに接続できることを確認します。 接続が失敗した場合、使用中の Box アカウントに Team Admin アクセス許可があることを確認して、 **"承認"** の手順をもう一度試してください。
 

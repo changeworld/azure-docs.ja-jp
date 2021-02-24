@@ -1,7 +1,7 @@
 ---
 title: モデルのメモリと CPU の使用状況をプロファイルする
 titleSuffix: Azure Machine Learning
-description: モデルのメモリと CPU の使用状況をプロファイルする方法について説明します
+description: デプロイ前にモデルをプロファイルする方法について説明します。 プロファイルによって、モデルのメモリと CPU の使用率が決まります。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,14 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.reviewer: larryfr
+ms.custom: deploy
+ms.openlocfilehash: b9ae40b3d2673961f9b84ed702f18b25b79b6d0c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935587"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320405"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>モデルをプロファイルしてリソース使用状況を判断する
 
@@ -24,6 +26,10 @@ ms.locfileid: "88935587"
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、Azure Machine Learning でモデルをトレーニングして登録したことを想定しています。 Azure Machine Learning での scikit-learn モデルのトレーニングと登録の例については、[こちらのサンプル チュートリアル](how-to-train-scikit-learn.md)を参照してください。
+
+## <a name="limitations"></a>制限事項
+
+* お使いのワークスペースの Azure Container Registry (ACR) が仮想ネットワーク内にある場合、プロファイルは機能しません。
 
 ## <a name="run-the-profiler"></a>プロファイラーの実行
 
@@ -129,7 +135,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 * [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
-* [Web サービスを使用するクライアント アプリケーションの作成](how-to-consume-web-service.md)
+* [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)

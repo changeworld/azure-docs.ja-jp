@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: 
-  ms.openlocfilehash: 7c643d10971d93a3c6194bc7390d2271c1ed561b
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: 9eeddfefe451eb524484df8a1986c7ec736c4c0f
+  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763767"
+  ms.lasthandoff: 12/18/2020
+  ms.locfileid: "97674374"
 landingContent:
 - title: Azure Arc を使用して Kubernetes クラスターを Azure に接続する
   linkLists:
@@ -36,3 +36,15 @@ landingContent:
       url: use-azure-policy.md
     - text: Azure IoT Edge ワークロードをデプロイする
       url: deploy-azure-iot-edge-workloads.md
+- title: 概念実証
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: ジャンプスタート
+      url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/
+- title: 参照アーキテクチャ
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: ハイブリッド Kubernetes クラスターのデプロイと構成を管理する
+      url: /azure/architecture/hybrid/arc-hybrid-kubernetes

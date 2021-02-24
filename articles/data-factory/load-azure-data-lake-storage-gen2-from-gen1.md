@@ -1,23 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーします
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b90ff8969edf3ce2886630dc88c50bc9185b85e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415822"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370854"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
@@ -97,7 +92,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 7. **[Copy files recursively]\(ファイルを再帰的にコピー\)** オプションと **[バイナリ コピー]** オプションを選択し、コピーの動作を指定します。 **[次へ]** を選択します。
 
-    ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
+    ![[入力ファイルまたはフォルダーの選択] を示すスクリーンショット。ここでは、[Copy file recursively]\(ファイルを再帰的にコピー\) と [Binary Copy]\(バイナリ コピー\) を選択できます。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
 8. **[Destination data store]\(コピー先データ ストア\)** ページで **[+ 新しい接続の作成]** 、 **[Azure Data Lake Storage Gen2]** 、 **[続行]** の順に選択します。
 
@@ -113,7 +108,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 10. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromadlsgen1**」と入力し、 **[次へ]** を選択します。 対応する Azure Data Lake Storage Gen2 ファイル システムとサブフォルダーが存在しない場合、Data Factory により、コピー中、それらが作成されます。
 
-    ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
+    ![入力したフォルダーのパスを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
 
 11. **[設定]** ページで、 **[次へ]** を選択して、既定の設定を使用します。
 

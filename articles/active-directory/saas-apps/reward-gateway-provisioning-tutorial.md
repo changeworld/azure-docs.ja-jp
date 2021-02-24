@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 298ca69a659bec2d5262b344c274fac7371390f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d51903aff6f3fd1cd53d85a980f1b5dc2a893e9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534355"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354286"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>チュートリアル:Reward Gateway を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Reward Gateway に対するユーザーまたはグループのプロビジョニングまたはプロビジョニング解除を自動的に実行するように Azure Active Directory (Azure AD) を構成するために、Reward Gateway と Azure AD で実行される手順を示すことです。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 >
 > 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
@@ -37,7 +37,7 @@ ms.locfileid: "88534355"
 
 ## <a name="assigning-users-to-reward-gateway"></a>Reward Gateway へのユーザーの割り当て 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Reward Gateway へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 それが決まれば、[エンタープライズ アプリへのユーザーまたはグループの割り当て](../manage-apps/assign-user-or-group-access-portal.md)に関するページの手順に従って、これらのユーザーやグループを Reward Gateway に割り当てることができます。
 
@@ -53,15 +53,15 @@ Azure AD での自動ユーザー プロビジョニング用に Reward Gateway 
 
 1. [Reward Gateway 管理コンソール](https://rewardgateway.photoshelter.com/login/)にサインインします。 **[Integrations (統合)]** をクリックします。
 
-    ![Reward Gateway 管理コンソール](media/reward-gateway-provisioning-tutorial/image00.png)
+    ![Reward Gateway 管理コンソールのスクリーンショット。[統合] オプションが選択されています。](media/reward-gateway-provisioning-tutorial/image00.png)
 
 2.  **[My Integration]\(自分の統合\)** を選択します。
 
-    ![Reward Gateway 管理コンソール](media/reward-gateway-provisioning-tutorial/image001.png)
+    ![2 つの [統合] オプションのスクリーンショット。[My Integration]\(自分の統合\) が選択されています。](media/reward-gateway-provisioning-tutorial/image001.png)
 
 3.  **[SCIM URL (v2)]** および **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** の値をコピーします。 これらの値を、Azure portal の Reward Gateway アプリケーションの [プロビジョニング] タブの [テナント URL] および [シークレット トークン] フィールドに入力します。
 
-    ![Reward Gateway 管理コンソール](media/reward-gateway-provisioning-tutorial/image03.png)
+    ![[My Integration]\(自分の統合\) パネルのスクリーンショット。[OAuth Bearer Token]\(OAuth ベアラー トークン\) テキスト ボックスが選択されています。](media/reward-gateway-provisioning-tutorial/image03.png)
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>ギャラリーからの Reward Gateway の追加
 
@@ -81,7 +81,7 @@ Azure AD で自動ユーザー プロビジョニング用に Reward Gateway を
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Reward Gateway**」と入力し、結果ウィンドウで **[Reward Gateway]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Reward Gateway** 」と入力し、結果ウィンドウで **[Reward Gateway]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Reward Gateway](common/search-new-app.png)
 
@@ -104,11 +104,11 @@ Azure AD で自動ユーザー プロビジョニング用に Reward Gateway を
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **[SCIM URL (v2)]** および **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Reward Gateway に接続できることを確認します。 接続できない場合は、使用中の Reward Gateway アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -122,11 +122,11 @@ Azure AD で自動ユーザー プロビジョニング用に Reward Gateway を
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Reward Gateway]\(Azure Active Directory ユーザーを Reward Gateway に同期する\)** を選択します。
 
-    ![Reward Gateway 管理コンソール](media/reward-gateway-provisioning-tutorial/user-mappings.png)
+    ![[マッピング] セクションのスクリーンショット。[Synchronize Azure Active Directory Users to Reward Gateway]\(Azure Active Directory ユーザーを Reward Gateway に同期する\) オプションが選択されています。](media/reward-gateway-provisioning-tutorial/user-mappings.png)
 
 9. **[属性マッピング]** セクションで、Azure AD から Reward Gateway に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Reward Gateway のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Reward Gateway 管理コンソール](media/reward-gateway-provisioning-tutorial/user-attributes.png)
+    ![6 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](media/reward-gateway-provisioning-tutorial/user-attributes.png)
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515386"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629701"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
 
@@ -32,7 +32,7 @@ ms.locfileid: "85515386"
 * 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature (SAS キー) を作成する
 
 > [!Note]  
-> Azure Files には SMB 経由でアクセスできるため、標準の C++ I/O クラスおよび関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述できます。 この記事では、[File REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) を使用して Azure Files と通信する Azure Storage C++ SDK を使用するアプリケーションを記述する方法について説明します。
+> Azure Files には SMB 経由でアクセスできるため、標準の C++ I/O クラスおよび関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述できます。 この記事では、[File REST API](/rest/api/storageservices/file-service-rest-api) を使用して Azure Files と通信する Azure Storage C++ SDK を使用するアプリケーションを記述する方法について説明します。
 
 ## <a name="create-a-c-application"></a>C++ アプリケーションの作成
 
@@ -41,7 +41,7 @@ ms.locfileid: "85515386"
 C++ 用 Azure Storage クライアント 2.4.0 をインストールする場合、次の方法のいずれかを使用できます。
 
 * **Linux:** [C++ 用 Azure ストレージ クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。
-* **Windows:** Visual Studio で、 **[ツール] &gt; [NuGet パッケージ マネージャー] &gt; [パッケージ マネージャー コンソール]** をクリックします。 [NuGet パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。
+* **Windows:** Visual Studio で、 **[ツール] &gt; [NuGet パッケージ マネージャー] &gt; [パッケージ マネージャー コンソール]** をクリックします。 [NuGet パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter** キーを押します。
   
 
 ```powershell

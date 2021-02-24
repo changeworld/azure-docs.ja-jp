@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8921152177d3e4534ca9fb48cf209aed6e1b27c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126607"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183364"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes Service 診断 (プレビュー) の概要
 
@@ -82,5 +82,7 @@ ID とセキュリティ管理では、クラスターとの通信を妨げる�
 ## <a name="next-steps"></a>次のステップ
 
 [AKS Periscope](https://aka.ms/aksperiscope) を使用してログを収集すると、クラスターの問題のさらなるトラブルシューティングに役立ちます。
+
+AKS Day-2 Operations ガイドの[「トリアージのプラクティス」セクション](/azure/architecture/operator-guides/aks/aks-triage-practices)を参照してください。
 
 質問またはフィードバックは、[UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) でタイトルに "[Diag]" を付けて投稿してください。

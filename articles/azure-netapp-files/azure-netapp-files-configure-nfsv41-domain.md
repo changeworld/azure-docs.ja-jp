@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: dda911add42568e76160e4233502a1f4f550520d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483722"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072154"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する
 
@@ -26,11 +26,11 @@ NFSv4 では、認証ドメインの概念が導入されています。 Azure N
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>ユーザー/グループ マッピングの既定の動作
 
-NFSv4 ドメインは `localdomain` に設定されているため、ルート マッピングの既定値は `nobody` ユーザーになります。 Azure NetApp Files NFSv4.1 ボリュームをルートとしてマウントすると、次のようなファイルのアクセス許可が表示されます。  
+NFSv4 ドメインは既定では `localdomain` に設定されているため、ルート マッピングの既定値は `nobody` ユーザーになります。 Azure NetApp Files NFSv4.1 ボリュームをルートとしてマウントすると、次のようなファイルのアクセス許可が表示されます。  
 
 ![NFSv4.1 のユーザー/グループ マッピングの既定の動作](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-上の例に示ように、`file1` のユーザーは `root` であるべきですが、既定では `nobody` にマップされています。  この記事では、`file1` ユーザーを `root` に設定する方法について説明します。  
+上の例に示ように、`file1` のユーザーは `root` であるべきですが、既定では `nobody` にマップされています。  この記事では、`idmap Domain` 設定を `defaultv4iddomain.com` に変更することによって、`file1` ユーザーを `root` に設定する方法について説明します。  
 
 ## <a name="steps"></a>手順 
 
@@ -54,7 +54,7 @@ NFSv4 ドメインは `localdomain` に設定されているため、ルート �
 
 次の例は、結果として得られるユーザー/グループの変更を示しています。 
 
-![NFSv4.1 の結果の構成](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![結果として発生するユーザー/グループの変更の例を示すスクリーンショット。](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
 この例に示すように、ユーザー/グループは `nobody` から `root` に変更されました。
 
@@ -64,7 +64,7 @@ Azure NetApp Files は、NFSv4.1 ボリューム内のファイルまたはフ�
 
 次の例で、`Host1` には 3 つの既存のテスト ユーザー アカウント (`testuser01`、`testuser02`、`testuser03`) があります。 
 
-![NFSv4.1 の結果の構成](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![Host1 に既存のテスト ユーザー アカウントが 3 つあることを示すスクリーンショット。](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
 `Host2` で、テスト ユーザー アカウントは作成されていないが、同じボリュームが両方のホストにマウントされていることに注意してください。
 

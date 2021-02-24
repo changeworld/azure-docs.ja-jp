@@ -7,12 +7,12 @@ keywords: 変更, 追跡, Change Tracking, インベントリ, Automation
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185808"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587935"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM に対する変更のトラブルシューティング
 
@@ -54,7 +54,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     ![変更の有効化](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. [Log Analytics](../azure-monitor/log-query/log-query-overview.md) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
+3. [Log Analytics](../azure-monitor/logs/log-query-overview.md) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -80,7 +80,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Azure Monitor ログでのログ ファイルの実行と検索については、[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
+Azure Monitor ログでのログ ファイルの実行と検索については、[Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
 
 ## <a name="configure-change-tracking"></a>変更の追跡を構成する
 
@@ -198,7 +198,7 @@ Azure portal に変更を表示することは有益ですが、サービスの�
 
     ![シグナル ロジックの構成](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-10. **[アクション グループ]** の **[新規作成]** を選択します。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
+10. **[アクション グループ]** の **[新規作成]** を選択します。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 
 11. **[アラートの詳細]** で、アラートの名前と説明を入力します。 
 
@@ -218,9 +218,9 @@ Azure portal に変更を表示することは有益ですが、サービスの�
 
 18. アラート メールの件名をカスタマイズするには **[アクションをカスタマイズする]** を選択します。 
 
-19. **[ルールの作成]** で、 **[電子メールの件名]** 、 **[アラート ルールの作成]** の順に選択します。 このアラートにより、更新プログラムの展開が成功したことと、その更新プログラムの展開の実行対象となったコンピューターが通知されます。 次の図は、W3SVC サービスが停止したときに受信する電子メールの例です。
+19. **[ルールの作成]** で、 **[電子メールの件名]** 、 **[アラート ルールの作成]** の順に選択します。 このアラートにより、更新プログラムの展開が成功したことと、その更新プログラムの展開の実行対象となったコンピューターが通知されます。 次の図は、W3SVC サービスが停止したときに送信される電子メールの例です。
 
-    ![email](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![W3SVC サービスが停止したときに送信されるメール通知のキャプチャ画面。](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -238,4 +238,4 @@ Azure portal に変更を表示することは有益ですが、サービスの�
 さらに詳しく学ぶには、Change Tracking およびインベントリ機能の概要に進んでください。
 
 > [!div class="nextstepaction"]
-> [Change Tracking とインベントリの概要](./change-tracking.md)
+> [Change Tracking とインベントリの概要](change-tracking/overview.md)

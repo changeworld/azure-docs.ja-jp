@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475781"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165555"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>土壌水分ヒートマップを生成する
 
@@ -54,7 +54,7 @@ Azure FarmBeats にセンサー アカウントをリンクさせたら、対象
 2.  **[MyFarm]\(マイファーム\)**  >  **[Add Devices]\(デバイスの追加\)** の順に選択します。
 3.  **[Add Devices]\(デバイスの追加\)** ウィンドウが表示されます。 自分のファームの土壌水分センサーにリンクされているデバイスを選択します。
 
-    ![プロジェクト (Farm Beats)](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![[Add Devices]\(デバイスの追加\) 画面のスクリーンショット。](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. **[Add Devices]\(デバイスの追加\)** を選択します。     
 
@@ -70,7 +70,7 @@ Azure FarmBeats にセンサー アカウントをリンクさせたら、対象
 6.  **[Select Soil Moisture** **Sensor Measure]\(土壌水分センサーのメジャーの選択\)** で、マップに使用するメジャーを入力します。
     センサーのメジャーを検索するには、 **[Sensors]\(センサー\)** でいずれかの土壌水分センサーを選択します。 **[Sensor Properties]\(センサーのプロパティ\)** の **[Measure Name]\(メジャー名\)** の値を使用します。
 
-    ![プロジェクト (Farm Beats)](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![[Soil Moisture]\(土壌水分\) 画面のスクリーンショット。](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  **[Generate Maps]\(マップの生成\)** を選択します。
@@ -93,4 +93,4 @@ Azure FarmBeats にセンサー アカウントをリンクさせたら、対象
 
 ## <a name="next-steps"></a>次のステップ
 
-土壌水分ヒートマップが正しく生成されました。[センサー配置マップを生成する方法](generate-maps-in-azure-farmbeats.md#sensor-placement-map)と[テレメトリ履歴データを取り込む方法](ingest-historical-telemetry-data-in-azure-farmbeats.md)を参照してください。 
+土壌水分ヒートマップが正しく生成されました。[センサー配置マップを生成する方法](generate-maps-in-azure-farmbeats.md#sensor-placement-map)と[テレメトリ履歴データを取り込む方法](ingest-historical-telemetry-data-in-azure-farmbeats.md)を参照してください。 

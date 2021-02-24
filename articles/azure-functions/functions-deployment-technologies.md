@@ -4,12 +4,12 @@ description: Azure Functions にコードをデプロイするさまざまな方
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 4a65a00c28a20c9381d3dcc6fd7545137528d5c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641961"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943637"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -25,7 +25,7 @@ ms.locfileid: "88641961"
 | -- | -- | -- |
 | ツールベース | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;による発行](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio による発行](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Core Tools による発行](functions-run-local.md#publish) | 開発中のデプロイ、およびその他のアドホック デプロイ。 デプロイはツールによってローカルで管理されます。 | 
 | App Service マネージド| &bull;&nbsp;[Deployment&nbsp;Center&nbsp;(CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[コンテナーの&nbsp;デプロイ](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  ソース管理またはコンテナー レジストリからの継続的配置 (CI/CD)。 デプロイは、App Service プラットフォーム (Kudu) によって管理されます。|
-| 外部パイプライン|&bull;&nbsp;[DevOps パイプライン](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub Actions](functions-how-to-github-actions.md) | 追加の検証、テスト、およびその他のアクションを含む運用および DevOps パイプラインは、自動デプロイの一部として実行されます。 デプロイはパイプラインによって管理されます。 |
+| 外部パイプライン|&bull;&nbsp;[Azure Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub Actions](functions-how-to-github-actions.md) | 追加の検証、テスト、およびその他のアクションを含む運用および DevOps パイプラインは、自動デプロイの一部として実行されます。 デプロイはパイプラインによって管理されます。 |
 
 特定の関数のデプロイでは、そのコンテキストに基づいて最適なテクノロジが使用されますが、ほとんどのデプロイ方法は [zip デプロイ](#zip-deploy)に基づいています。
 
@@ -33,9 +33,9 @@ ms.locfileid: "88641961"
 
 Azure Functions は、クロス プラットフォームのローカル開発と、Windows と Linux でのホスティングをサポートしています。 現時点では、次の 3 つのホスティング プランを利用できます。
 
-+ [従量課金プラン](functions-scale.md#consumption-plan)
-+ [Premium](functions-scale.md#premium-plan)
-+ [専用 (App Service) プラン](functions-scale.md#app-service-plan)
++ [従量課金プラン](consumption-plan.md)
++ [Premium](functions-premium-plan.md)
++ [専用 (App Service) プラン](dedicated-plan.md)
 
 各プランの動作は異なります。 各種の Azure Functions に対してすべてのデプロイ テクノロジが使用できるわけではありません。 次の表は、オペレーティング システムとホスティング プランの各組み合わせでサポートされるデプロイ テクノロジを示しています。
 
@@ -86,7 +86,7 @@ Linux でリモート ビルドを有効にするには、次の[アプリケー
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-既定では、[Azure Functions Core Tools](functions-run-local.md) と [Visual Studio Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、Linux へのデプロイ時にリモート ビルドが実行されます。 このため、どちらのツールでも、これらの設定は Azure で自動的に作成されます。
+既定では、[Azure Functions Core Tools](functions-run-local.md) と [Visual Studio Code 用の Azure Functions 拡張機能](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)の両方で、Linux へのデプロイ時にリモート ビルドが実行されます。 このため、どちらのツールでも、これらの設定は Azure で自動的に作成されます。
 
 Linux 上でリモートでビルドされたアプリは、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。
 
@@ -96,7 +96,7 @@ Linux 上でリモートでビルドされたアプリは、[デプロイ パッ
 
 ##### <a name="dedicated-and-premium-plans"></a>専用プランと Premium プラン
 
-[専用 (App Service) プラン](functions-scale.md#app-service-plan)と [Premium プラン](functions-scale.md#premium-plan)で実行されている Linux 上の関数アプリには、制限された SCM/Kudu サイトがあります。
+[専用 (App Service) プラン](dedicated-plan.md)と [Premium プラン](functions-premium-plan.md)で実行されている Linux 上の関数アプリには、制限された SCM/Kudu サイトがあります。
 
 ## <a name="deployment-technology-details"></a>デプロイ テクノロジの詳細
 
@@ -106,11 +106,11 @@ Azure Functions では、次のデプロイ方法が使用できます。
 
 外部パッケージ URL を使用して、関数アプリが含まれるリモート パッケージ (.zip) ファイルを参照できます。 このファイルは、指定の URL からダウンロードされます。アプリは [Run From Package](run-functions-from-deployment-package.md) モードで実行されます。
 
->__使用方法:__ アプリケーションの設定に `WEBSITE_RUN_FROM_PACKAGE` を追加します。 この設定では、値として URL (実行する特定のパッケージ ファイルの場所) を指定する必要があります。 [ポータルで](functions-how-to-use-azure-function-app-settings.md#settings)、または [Azure CLI を使用して](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)設定を追加できます。
+>__使用方法:__ アプリケーションの設定に [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) を追加します。 この設定では、値として URL (実行する特定のパッケージ ファイルの場所) を指定する必要があります。 [ポータルで](functions-how-to-use-azure-function-app-settings.md#settings)、または [Azure CLI を使用して](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)設定を追加できます。
 >
 >Azure Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) を備えたプライベート コンテナーを使用して、Functions にパッケージへのアクセス権を付与します。 アプリケーションが再起動されるたびに、コンテンツのコピーがフェッチされます。 アプリケーションの有効期間中は、参照が有効である必要があります。
 
->__いつ使用するか:__ ユーザーが[リモート ビルド](#remote-build)の発生を望まない場合、従量課金プランの Linux 上で実行される Azure Functions でサポートされるデプロイ方法は、外部パッケージ URL のみになります。 関数アプリが参照しているパッケージ ファイルを更新する場合、Azure にアプリケーションが変更されたことを通知するために、[トリガーを手動で同期](#trigger-syncing)する必要があります。
+>__いつ使用するか:__ ユーザーが [リモート ビルド](#remote-build)の発生を望まない場合、従量課金プランの Linux 上で実行される Azure Functions でサポートされるデプロイ方法は、外部パッケージ URL のみになります。 関数アプリが参照しているパッケージ ファイルを更新する場合、Azure にアプリケーションが変更されたことを通知するために、[トリガーを手動で同期](#trigger-syncing)する必要があります。
 
 ### <a name="zip-deploy"></a>ZIP デプロイ
 
@@ -118,7 +118,7 @@ ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイ�
 
 >__使用方法:__ 次のお気に入りのクライアント ツールを使用してデプロイします。[Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)、またはコマンド ラインを使用した [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 既定では、これらのツールは zip デプロイを使用し、[パッケージから実行](run-functions-from-deployment-package.md)されます。 Core Tools と Visual Studio Code 拡張機能の両方で、Linux へのデプロイ時に[リモート ビルド](#remote-build)が有効になります。 .zip ファイルを関数アプリに手動でデプロイするには、[.zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)に関する記事の指示に従います。
 
->zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。
+>zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、[`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) アプリケーション設定値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。
 
 >__いつ使用するか:__ zip デプロイは、Azure Functions で推奨されるデプロイ テクノロジです。
 
@@ -181,11 +181,11 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 ポータルベースのエディターでは、関数アプリ内のファイルを直接編集できます (基本的には、変更内容を保存するたびにデプロイされます)。
 
->__使用方法:__ Azure portal で関数を編集できるようにするために、[ポータルで関数を作成](functions-create-first-azure-function.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 (`WEBSITE_RUN_FROM_PACKAGE` など) をすべて削除します。
+>__使用方法:__ Azure portal で関数を編集できるようにするために、[ポータルで関数を作成](./functions-get-started.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 ([`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) など) をすべて削除します。
 
 >__いつ使用するか:__ Azure Functions の使用を開始するには、ポータルが適しています。 より集中的な開発作業には、次のクライアント ツールのいずれかを使用することをお勧めします。
 >
->* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Visual Studio Code](./create-first-function-vs-code-csharp.md)
 >* [Azure Functions Core Tools (コマンド ライン)](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
@@ -212,7 +212,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 ## <a name="deployment-slots"></a>デプロイ スロット
 
-関数アプリを Azure にデプロイする場合、運用環境に直接デプロイする代わりに、個別のデプロイ スロットにデプロイできます。 デプロイ スロットの詳細については、[Azure Functions のデプロイ スロット](../app-service/deploy-staging-slots.md)のドキュメントをご覧ください。
+関数アプリを Azure にデプロイする場合、運用環境に直接デプロイする代わりに、個別のデプロイ スロットにデプロイできます。 デプロイ スロットの詳細については、[Azure Functions のデプロイ スロット](functions-deployment-slots.md)のドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

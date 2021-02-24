@@ -1,16 +1,14 @@
 ---
 title: Visual Studio でのアプリケーションの管理
 description: Visual Studio を利用し、Azure Service Fabric のアプリケーションとサービスを作成、開発、パッケージ化、デプロイ、デバッグします。
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: mikhegn
-ms.openlocfilehash: d6734f5da0fb7e5c9052b26b55b2d90b068bdbbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fd9295a0dead180767febcc5339ef0a25cb1e48
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614334"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574549"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Service Fabric アプリケーションの記述と管理が簡単にするための Visual Studio の利用
 Azure Service Fabric アプリケーションとサービスを Visual Studio で管理できます。 [開発環境のセットアップ](service-fabric-get-started.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
@@ -27,7 +25,7 @@ Azure Service Fabric アプリケーションとサービスを Visual Studio �
 Visual Studio で、 **[F5]** キーを押すと、アプリケーションがデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。
 
 ### <a name="application-debug-mode"></a>アプリケーション デバッグ モード
-Visual Studio には、**アプリケーション デバッグ モード**というプロパティが用意されており、Visual Studio でデバッグ時にアプリケーションのデプロイを処理する方法を制御できます。
+Visual Studio には、**アプリケーション デバッグ モード** というプロパティが用意されており、Visual Studio でデバッグ時にアプリケーションのデプロイを処理する方法を制御できます。
 
 #### <a name="to-set-the-application-debug-mode-property"></a>Application Debug Mode (アプリケーション デバッグ モード) プロパティを設定するには
 1. Service Fabric アプリケーション プロジェクトの (*.sfproj) ショートカット メニューで、 **[プロパティ]** を選択します (または **[F4]** キーを押します)。

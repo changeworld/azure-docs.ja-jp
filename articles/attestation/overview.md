@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320598"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429264"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (プレビュー)
+# <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
-Microsoft Azure Attestation (プレビュー) は、[Intel ソフトウェア ガード エクステンションズ](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) エンクレーブや[仮想化ベースのセキュリティ](/windows-hardware/design/device-experiences/oem-vbs) (VBS) エンクレーブなどの信頼できる実行環境 (TEE) を証明するためのソリューションです。 エンクレーブ構成証明は、エンクレーブがセキュリティで保護され、信頼できることを検証するためのプロセスです。
+Microsoft Azure Attestation は、プラットフォームの信頼性とその内部で実行されているバイナリの整合性をリモートで検証するための統合ソリューションです。 このサービスでは、[Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) エンクレーブや[仮想化ベースのセキュリティ](/windows-hardware/design/device-experiences/oem-vbs) (VBS) エンクレーブなどの高信頼実行環境 (TEE) の状態を証明する機能と共に、トラステッド プラットフォーム モジュール (TPM) によって裏付けられたプラットフォームの構成証明がサポートされています。 
 
 構成証明は、ソフトウェア バイナリが信頼できるプラットフォームで適切にインスタンス化されたことを示すためのプロセスです。 リモートの証明書利用者は、信頼できるハードウェアで上で実行されているのがこのような意図されたソフトウェアのみであるという確信を得ることができます。 Azure Attestation は、構成証明を目的とした、統合された顧客向けのサービスとフレームワークです。
 
@@ -35,16 +35,16 @@ SGX とは、特定の Intel CPU モデルでサポートされているハー�
 
 クライアント アプリケーションは、機密性の高いタスクがそれらのエンクレーブ内で実行されるように委任することで、SGX エンクレーブを利用するように設計できます。 このようなアプリケーションでは、Azure Attestation を利用して定期的にエンクレーブ内で信頼を確立し、その機能を使用して機密データにアクセスすることができます。
 
-### <a name="vbs-attestation"></a>VBS の構成証明
-
-VBS は、Hyper-V に基づくエンクレーブ メモリ保護のためのソフトウェアベース アーキテクチャです。 ホスト管理者コードだけでなく、ローカルおよびクラウド サービスの管理者が VBS エンクレーブ内のデータにアクセスしたり、その実行に影響を与えたりするのを防ぎます。
-
-Azure Attestation は、SGX テクノロジと同様に、構成されているポリシーと照らし合わせた VBS エンクレーブの検証と、有効性の証明としての認定ステートメントの発行をサポートします。
-
 ### <a name="open-enclave"></a>Open Enclave
 [Open Enclave](https://openenclave.io/sdk/) (OE) は、開発者が TEE ベースのアプリケーションの構築に利用する、単一の統合エンクレーブ抽象化の作成を目的としたライブラリのコレクションです。 これは、プラットフォームの特異性を最小限に抑える、セキュリティ保護されたユニバーサルなアプリ モデルを提供します。 Microsoft では、これを、SGX などのハードウェアベースのエンクレーブ テクノロジをだれもが使えるようにし、Azure での利用を拡大するための重要な手段と考えています。
 
 OE は、エンクレーブ証拠の検証に関する特定の要件を標準化します。 これにより、OE は Azure Attestation の非常に適切な構成証明コンシューマーと見なされます。
+
+### <a name="tpm-attestation"></a>TPM の構成証明 
+
+プラットフォームの状態を証明するためには、トラステッド プラットフォーム モジュール (TPM) ベースの構成証明が不可欠です。 TPM は、測定結果 (証拠) に暗号の有効性を提供するセキュリティ コプロセッサおよび信頼のルートとしての役割を果たします。 TPM が搭載されたデバイスは、機能の状態の有効性をブート中に検出する要求と共に構成証明を利用して、ブート整合性が損なわれていないことを証明できます。 
+
+クライアント アプリケーションは TPM 構成証明を利用するように設計できます。プラットフォームが安全であることが確認された後にのみ機密性の高いタスクが実行されるよう委任します。 このようなアプリケーションでは、Azure Attestation を利用して定期的にプラットフォーム内で信頼を確立し、その機能を使用して機密データにアクセスすることができます。
 
 ## <a name="azure-attestation-can-run-in-a-tee"></a>Azure Attestation は TEE で実行可能
 
@@ -65,19 +65,15 @@ Azure Attestation のお客様は、Microsoft が信頼できるコンピュー�
 
 Azure Attestation には以下のベネフィットがあるため、TEE を証明するうえで推奨される選択肢となっています。 
 
-- SGX エンクレーブや VBS エンクレーブなどの複数の TEE を証明するための統合フレームワーク
+- TPM、SGX エンクレーブ、VBS エンクレーブなどの複数の環境を証明するための統合フレームワーク 
 - カスタム構成証明プロバイダーとポリシーを構成してトークンの生成を制限できるマルチテナント サービス
-- ユーザーによる構成なしで証明できる既定のプロバイダーを提供
+- ユーザーによる構成なしで証明できる、リージョンの共有プロバイダーを提供
 - SGX エンクレーブ内での実装により、使用中のデータを保護
-- サービス レベル アグリーメント (SLA) を提供する高可用性サービス
+- 高可用性サービス 
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>事業継続とディザスター リカバリー (BCDR) のサポート
 
-Azure Attestation の[ビジネス継続性とディザスター リカバリー](/azure/best-practices-availability-paired-regions) (BCDR) を使用すると、リージョン内の重大な可用性の問題や災害イベントによって生じるサービスの中断を軽減できます。
-
-現在 BCDR でサポートされているリージョンは次のとおりです
-- 米国東部 2 => 米国中部とペア。
-- 米国中部 => 米国東部 2 とペア。
+Azure Attestation の[ビジネス継続性とディザスター リカバリー](../best-practices-availability-paired-regions.md) (BCDR) を使用すると、リージョン内の重大な可用性の問題や災害イベントによって生じるサービスの中断を軽減できます。
 
 2 つのリージョンにデプロイされたクラスターは、通常の状況下では独立して動作します。 一方のリージョンで障害または停止が発生した場合、次の処理が行われます。
 
@@ -91,4 +87,3 @@ Azure Attestation の[ビジネス継続性とディザスター リカバリー
 - [Azure Attestation の基本的な概念](basic-concepts.md)について学習する
 - [構成証明ポリシーを作成して署名する方法](author-sign-policy.md)
 - [PowerShell を使用して Azure Attestation を設定する](quickstart-powershell.md)
-

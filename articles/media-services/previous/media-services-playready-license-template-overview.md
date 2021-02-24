@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: df28078363162496672232ecdebe02fc99ce50f5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8cdf5915396fc40c12644552bb24a044279ea32d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89261055"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019343"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady ライセンス テンプレートの概要
 
@@ -86,7 +86,7 @@ Media Services は、XML へのシリアル化および XML からの逆シリ�
 > 
 > 
 
-Silverlight でサポートされる保護レベルの例については、「[Silverlight での出力保護のサポート](https://go.microsoft.com/fwlink/?LinkId=617318)」を参照してください。
+Silverlight でサポートされる保護レベルの例については、「[Silverlight での出力保護のサポート](/previous-versions/windows/silverlight/dotnet-windows-silverlight/cc838192(v=vs.95))」を参照してください。
 
 ## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>PlayReady ライセンス テンプレート XML スキーマ
 ```xml

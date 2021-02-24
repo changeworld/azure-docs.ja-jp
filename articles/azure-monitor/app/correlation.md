@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50b858d0bf05aa46ea20a6cf9e088376be2996e3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933360"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693428"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -55,7 +55,7 @@ Application Insights は、分散しているテレメトリを相関付ける�
 
 呼び出し `GET /api/stock/value` が外部サービスに対して行われる場合、`dependency.target` フィールドを適切に設定できるように、該当のサーバーの ID を把握しておく必要があります。 外部サービスで監視がサポートされていない場合、`target` はそのサービスのホスト名 (たとえば `stock-prices-api.com`) に設定されます。 しかし、そのサービスが定義済みの HTTP ヘッダーを返すことでそれ自体を識別している場合、`target` にはサービスの ID が含まれます。Application Insights はそれを使用して、そのサービスに対してテレメトリのクエリを実行することによって分散トレースを構築できます。
 
-## <a name="correlation-headers"></a>相関付けヘッダー
+## <a name="correlation-headers-using-w3c-tracecontext"></a>W3C TraceContext を使用した相関付けヘッダー
 
 Application Insights では、以下を定義する [W3C Trace-Context](https://w3c.github.io/trace-context/) に移行しています。
 
@@ -71,62 +71,19 @@ Application Insights SDK の最新バージョンでは Trace-Context プロト�
 
 Application Insights では、相関付け HTTP プロトコル用の[拡張機能](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)も定義されています。 これは `Request-Context` の名前と値のペアを使用して、直接の呼び出し元または呼び出し先によって使用されたプロパティのコレクションを伝達します。 Application Insights SDK は、このヘッダーを使用して、`dependency.target` フィールドと `request.source` フィールドを設定します。
 
-### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>クラシック ASP.NET アプリの W3C 分散トレース サポートを有効にする
- 
-  > [!NOTE]
-  >  `Microsoft.ApplicationInsights.Web` および `Microsoft.ApplicationInsights.DependencyCollector` 以降は、構成は不要です。
+[W3C Trace-Context](https://w3c.github.io/trace-context/) と Application Insights のデータ モデル マップを次に示します。
 
-W3C Trace-Context のサポートは、下位互換性のある方法で実装されています。 相関付けは、(W3C のサポートがない) 以前のバージョンの SDK によってインストルメント化されたアプリケーションと共に動作することが想定されています。
+| Application Insights                   | W3C TraceContext                                      |
+|------------------------------------    |-------------------------------------------------|
+| `Request` と `Dependency` の `Id`     | [parent-id](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Operation_Id`                         | [trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
+| `Operation_ParentId`                   | この範囲の親範囲の [parent-id](https://w3c.github.io/trace-context/#parent-id)。 これがルート範囲の場合は、このフィールドを空にする必要があります。     |
 
-従来の `Request-Id` プロトコルの使用を継続する場合は、次の構成を使用して Trace-Context を無効にできます。
+詳細については、「[Application Insights Telemetry のデータ モデル](../../azure-monitor/app/data-model.md)」をご覧ください。
 
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>.NET アプリの W3C 分散トレース サポートを有効にする
 
-以前のバージョンの SDK を実行する場合、更新するか、以下の構成を適用することによって Trace-Context を有効にすることをお勧めします。
-この機能は、バージョン 2.8.0-beta1 以降の `Microsoft.ApplicationInsights.Web` および `Microsoft.ApplicationInsights.DependencyCollector` パッケージで利用できます。
-既定では無効になっています。 有効にするには、`ApplicationInsights.config` に対して以下の変更を行います。
-
-- `RequestTrackingTelemetryModule` 下で、`EnableW3CHeadersExtraction` 要素を追加して値を `true` に設定します。
-- `DependencyTrackingTelemetryModule` 下で、`EnableW3CHeadersInjection` 要素を追加して値を `true` に設定します。
-- `TelemetryInitializers`下に `W3COperationCorrelationTelemetryInitializer` を追加します。 次の例のようになります。
-
-```xml
-<TelemetryInitializers>
-  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
-   ...
-</TelemetryInitializers>
-```
-
-### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core アプリの W3C 分散トレース サポートを有効にする
-
- > [!NOTE]
-  > `Microsoft.ApplicationInsights.AspNetCore` バージョン 2.8.0 以降は、構成は不要です。
- 
-W3C Trace-Context のサポートは、下位互換性のある方法で実装されています。 相関付けは、(W3C のサポートがない) 以前のバージョンの SDK によってインストルメント化されたアプリケーションと共に動作することが想定されています。
-
-従来の `Request-Id` プロトコルの使用を継続する場合は、次の構成を使用して Trace-Context を無効にできます。
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-以前のバージョンの SDK を実行する場合、更新するか、以下の構成を適用することによって Trace-Context を有効にすることをお勧めします。
-
-この機能は、`Microsoft.ApplicationInsights.AspNetCore` バージョン 2.5.0-beta1 および `Microsoft.ApplicationInsights.DependencyCollector` バージョン 2.8.0-beta1 で利用できます。
-既定では無効になっています。 有効にするには、`ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` を `true` に設定します。
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddApplicationInsightsTelemetry(o => 
-        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
-    // ....
-}
-```
+W3C TraceContext ベースの分散トレースは、最近のすべての .NET Framework/.NET Core Sdk で既定で有効になっていることに加え、従来の Request-Id プロトコルとの下位互換性があります。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Java アプリの W3C 分散トレース サポートを有効にする
 
@@ -145,7 +102,7 @@ public void ConfigureServices(IServiceCollection services)
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - Spring Boot アプリの場合は、次のプロパティを追加します。
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -175,54 +132,27 @@ public void ConfigureServices(IServiceCollection services)
 
 この機能は `Microsoft.ApplicationInsights.JavaScript` にあります。 既定では無効になっています。 有効にするには、`distributedTracingMode` config を使用します。AI_AND_W3C は、Application Insights によってインストルメント化されたレガシ サービスとの下位互換性のために提供されています。
 
-- **npm セットアップ (スニペット セットアップを使用する場合は無視)**
+- **[npm ベースのセットアップ](./javascript.md#npm-based-setup)**
 
-  ```javascript
-  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
-
-  const appInsights = new ApplicationInsights({ config: {
-    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+次の構成を追加します。
+  ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
-    /* ...other configuration options... */
-  } });
-  appInsights.loadAppInsights();
   ```
-  
-- **スニペット セットアップ (npm セットアップを使用する場合は無視)**
 
+- **[スニペット ベースのセットアップ](./javascript.md#snippet-based-setup)**
+
+次の構成を追加します。
   ```
-  <script type="text/javascript">
-  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-  (
-    {
-      instrumentationKey:"INSTRUMENTATION_KEY",
       distributedTracingMode: 2 // DistributedTracingModes.W3C
-      /* ...other configuration options... */
-    }
-  );
-  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-  </script>
   ```
-
-## <a name="opentracing-and-application-insights"></a>OpenTracing と Application Insights
-
-[OpenTracing データ モデルの仕様](https://opentracing.io/)と Application Insights のデータ モデルの対応を次に示します。
-
-| Application Insights                   | OpenTracing                                        |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `span.kind = server` を含む `Span`                    |
-| `Dependency`                           | `span.kind = client` を含む `Span`                    |
-| `Request` と `Dependency` の `Id`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | タイプ `ChildOf` の `Reference` (親スパン)     |
-
-詳細については、「[Application Insights Telemetry のデータ モデル](../../azure-monitor/app/data-model.md)」をご覧ください。
-
-OpenTracing の概念の定義については、OpenTracing の[仕様](https://github.com/opentracing/specification/blob/master/specification.md)と[セマンティック規則](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)に関するページをご覧ください。
+> [!IMPORTANT] 
+> 相関付けを有効にするために必要なすべての構成を表示するには、[JavaScript の相関付けに関するドキュメント](./javascript.md#enable-correlation)を参照してください。
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python におけるテレメトリの相関付け
 
-OpenCensus Python は、前述した `OpenTracing` データ モデル仕様に従います。 また、構成を必要とせずに [W3C Trace-Context](https://w3c.github.io/trace-context/) もサポートされます。
+OpenCensus Python は、構成を必要とすることなく、[W3C Trace-Context](https://w3c.github.io/trace-context/) をサポートします。
+
+参照として、OpenCensus データ モデルは、[こちら](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace)で見つけることができます。
 
 ### <a name="incoming-request-correlation"></a>着信要求の相関付け
 
@@ -304,26 +234,59 @@ logger.warning('After the span')
 
 `AzureLogHandler` を使用して、ログ データをエクスポートできます。 詳細については、 [こちらの記事](./opencensus-python.md#logs)を参照してください。
 
+また、適切な相関付けのために、あるコンポーネントから別のものにトレース情報を渡すこともできます。 たとえば、`module1` と `module2` の 2 つのコンポーネントがあるシナリオについて考えてみます。 Module1 が Module2 の関数を呼び出し、`module1` と `module2` の両方から単一のトレースでログを取得するためには、次の方法を使用できます。
+
+```python
+# module1.py
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+from module2 import function_1
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+   logger.warning('In the span')
+   function_1(tracer)
+logger.warning('After the span')
+
+
+# module2.py
+
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+def function_1(parent_tracer=None):
+    if parent_tracer is not None:
+        tracer = Tracer(
+                    span_context=parent_tracer.span_context,
+                    sampler=AlwaysOnSampler(),
+                )
+    else:
+        tracer = Tracer(sampler=AlwaysOnSampler())
+
+    with tracer.span("function_1"):
+        logger.info("In function_1")
+```
+
 ## <a name="telemetry-correlation-in-net"></a>.NET におけるテレメトリの相関付け
 
-.NET では、時間をかけて、テレメトリと診断ログを関連付けるためのいくつかの方法を定義してきました。
+.NET ランタイムは、[アクティビティ](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)と [DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) を使用した配布をサポートしています。
 
-- `System.Diagnostics.CorrelationManager`では、[LogicalOperationStack および ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1) を追跡できます。
-- `System.Diagnostics.Tracing.EventSource` および Windows イベント トレーシング (ETW) では、[SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) メソッドが定義されています。
-- `ILogger` では、[ログ スコープ](/aspnet/core/fundamentals/logging#log-scopes)を使用します。
-- Windows Communication Foundation (WCF) および HTTP では、"現在の" コンテキストの伝達が接続されます。
-
-しかし、それらの方法では、自動分散トレースがサポートされていませんでした。 `DiagnosticSource` では、マシン間の自動的な関連付けをサポートします。 .NET ライブラリは `DiagnosticSource` をサポートしており、HTTP などのトランスポート経由で、関連付けのコンテキストをマシン間で自動的に伝達できます。
-
-`DiagnosticSource`の「[Activity User Guide (アクティビティ ユーザー ガイド)](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)」では、アクティビティの追跡の基本を説明しています。
-
-ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビティの開始がサポートされています。
-
-`System.Net.Http.HttpClient` では、バージョン 4.1.0 以降、関連付け HTTP ヘッダーの自動挿入と、アクティビティとしての HTTP 呼び出しの追跡がサポートされています。
-
-クラシック ASP.NET 用には、新しい HTTP モジュール [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) があります。 このモジュールは `DiagnosticSource` を使用してテレメトリの関連付けを実装します。 これは、受信要求ヘッダーに基づいてアクティビティを開始します。 また、インターネット インフォメーション サービス (IIS) の処理の各段階が別のマネージド スレッド上で実行される場合でも、要求処理のさまざまな段階からのテレメトリを関連付けます。
-
-バージョン 2.4.0-beta1 以降の Application Insights SDK は、`DiagnosticSource` と `Activity` を使用してテレメトリを収集し、それを現在のアクティビティに関連付けます。
+Application Insights .NET SDK は、`DiagnosticSource` と `Activity` を使用して、テレメトリを収集し、相関付けます。
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java におけるテレメトリの相関付け
@@ -344,10 +307,8 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 
     ```json
     {
-      "instrumentationSettings": {
-        "preview": {
-          "roleName": "my cloud role name"
-        }
+      "role": {
+        "name": "my cloud role name"
       }
     }
     ```

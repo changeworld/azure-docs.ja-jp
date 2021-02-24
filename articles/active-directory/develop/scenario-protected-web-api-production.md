@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ccae831498c8c10895387b78c07e4f8ddc228be1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf8eb144ab23d45e57ee8d52f06363ea37b600ec
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026562"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375280"
 ---
 # <a name="protected-web-api---move-to-production"></a>保護された Web API - 運用環境への移行
 
@@ -27,18 +27,11 @@ Web API を保護する方法を説明したので、運用環境への移行に
 
 ## <a name="next-steps"></a>次のステップ
 
-ダウンストリーム API を呼び出す方法を学習します。
+「[シナリオ:Web API を呼び出す Web API](scenario-web-api-call-api-overview.md)」でダウンストリーム API を呼び出す方法について学習します。
 
-> [!div class="nextstepaction"]
-> [シナリオ - ダウンストリーム API を呼び出す Web API](scenario-web-api-call-api-overview.md)
 
-チュートリアルとサンプルをさらにご覧ください。
+詳細については、GitHub のチュートリアルとサンプルを参照してください。
 
-> [!div class="nextstepaction"]
-> [デーモンを使用することによる保護された API の呼び出し](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
-
-> [!div class="nextstepaction"]
-> [ASP.NET Core Web API のチュートリアル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
-
-> [!div class="nextstepaction"]
-> [ASP.NET Web API のサンプル](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+- [デーモンを使用することによる保護された API の呼び出し](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
+- [ASP.NET Core Web API のチュートリアル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+- [ASP.NET Web API のサンプル](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

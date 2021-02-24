@@ -9,24 +9,22 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 572b5328a433839dafbfe23eb7207dfaeb9ea309
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017857"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220267"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する
 
-
-
-この攻略ガイドでは、ソリューション開発者が、カスタム ルールと通知を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、デバイスがテレメトリの送信を停止したときのオペレーターへの通知の送信を示します。 このソリューションでは、[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) クエリを使用して、デバイスが利用統計情報の送信をいつ停止したかを検出します。 Stream Analytics ジョブは、[SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) を使用して通知メールを送信するために、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/) を使用します。
+この攻略ガイドでは、ソリューション開発者が、カスタム ルールと通知を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、デバイスがテレメトリの送信を停止したときのオペレーターへの通知の送信を示します。 このソリューションでは、[Azure Stream Analytics](../../stream-analytics/index.yml) クエリを使用して、デバイスが利用統計情報の送信をいつ停止したかを検出します。 Stream Analytics ジョブは、[SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) を使用して通知メールを送信するために、[Azure Functions](../../azure-functions/index.yml) を使用します。
 
 この攻略ガイドでは、既に組み込みのルールとアクションを使用して実行できることを超えて IoT Central を拡張する方法を示します。
 
 この攻略ガイドでは、以下の方法について説明します。
 
-* *継続的データ エクスポート*を使用してテレメトリをストリーム配信します。
+* *継続的データ エクスポート* を使用してテレメトリをストリーム配信します。
 * デバイスがデータの送信を停止したときに検出する Stream Analytics クエリを作成します。
 * Azure Functions と SendGrid サービスを使用してメール通知を送信します。
 
@@ -50,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Azure サブスクリプション | お使いの Azure サブスクリプション |
 | リージョン | 最も近いリージョン |
 
-この記事の例とスクリーンショットでは、**米国**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
+この記事の例とスクリーンショットでは、**米国** リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
 
 このアプリケーション テンプレートには、テレメトリを送信する 2 つのシミュレートされたサーモスタット デバイスが含まれます。
 
@@ -353,7 +351,7 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 この攻略ガイドで学習した内容は次のとおりです。
 
-* *継続的データ エクスポート*を使用してテレメトリをストリーム配信します。
+* *継続的データ エクスポート* を使用してテレメトリをストリーム配信します。
 * デバイスがデータの送信を停止したときに検出する Stream Analytics クエリを作成します。
 * Azure Functions と SendGrid サービスを使用してメール通知を送信します。
 

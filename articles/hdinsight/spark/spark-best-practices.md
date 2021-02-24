@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache Spark のガイドライン
 description: Azure HDInsight で Apache Spark を使用する際のガイドラインを紹介します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: f81435abbedec25cb8abe0b958065a493c15ce4c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562340"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938808"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark のガイドライン
 
@@ -56,14 +53,14 @@ ms.locfileid: "82562340"
 | HDInsight 上の Apache Hive | [Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する](../interactive-query/apache-hive-warehouse-connector.md) |
 | HDInsight での Apache HBase | [Apache Spark を使用した Apache HBase データの読み取り/書き込み](../hdinsight-using-spark-query-hbase.md) |
 | HDInsight での Apache Kafka | [チュートリアル:HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する](../hdinsight-apache-kafka-spark-structured-streaming.md) |
-| Azure Cosmos DB | [Azure Cosmos DB:Azure プラットフォームでラムダ アーキテクチャを実装する](../../cosmos-db/lambda-architecture.md) |
+| Azure Cosmos DB | [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
 
 ## <a name="what-are-my-storage-options"></a>ストレージ オプションについて
 
 | オプション | Documents |
 |---|---|
-| Data Lake Storage Gen2 | [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-| Data Lake Storage Gen1 | [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight-hadoop-use-data-lake-store.md) |
+| Azure Data Lake Storage Gen2 | [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+| Azure Data Lake Storage Gen1 | [Azure HDInsight クラスターで Azure Data Lake Storage Gen1 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
 | Azure Blob Storage | [Azure HDInsight クラスターで Azure Storage を使用する](../hdinsight-hadoop-use-blob-storage.md) |
 
 ## <a name="next-steps"></a>次のステップ

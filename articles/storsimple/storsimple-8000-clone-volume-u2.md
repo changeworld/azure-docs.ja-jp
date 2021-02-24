@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496147"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91767571"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure ポータルで StorSimple デバイス マネージャー サービスを使用してボリュームを複製する
 
@@ -64,11 +64,11 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 
       選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
    
-      ![バックアップ セットの一覧](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![バックアップ セットの一覧 2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
 3. バックアップ セットを展開して、関連付けられているボリュームを表示し、バックアップ セットでボリュームを選択します。 右クリックし、コンテキスト メニューの **[複製]** を選択します。
 
-   ![バックアップ セットの一覧](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![バックアップ セットの一覧 3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
 3. **[複製]** ブレードで、次の操作を行います。
    
@@ -84,17 +84,17 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
           
    3. **[接続済みのホスト]** に、複製のアクセス制御レコード (ACR) を指定します。 新しい ACR を追加することも、既存の一覧から選択することもできます。 ACR は、この複製にアクセスできるホストを決定します。
       
-       ![バックアップ セットの一覧](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![バックアップ セットの一覧 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
    4. **[複製]** をクリックして操作を完了します。
 
 4. 複製ジョブが開始され、複製が正常に作成されると通知が表示されます。 複製ジョブを監視するには、ジョブの通知をクリックするか、 **[ジョブ]** ブレードに移動します。
 
-    ![バックアップ セットの一覧](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![バックアップ セットの一覧 5](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
 7. 複製ジョブが完了したら、デバイスに移動し、 **[ボリューム]** をクリックします。 ボリュームの一覧で、ソース ボリュームがあるボリューム コンテナーと同じボリューム コンテナー内に作成したばかりの複製が表示されます。
 
-    ![バックアップ セットの一覧](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![バックアップ セットの一覧 6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
 このように作成された複製は一時的な複製です。 複製の種類の詳細については、「 [一時的な複製と永続的な複製](#transient-vs-permanent-clones)」を参照してください。
 

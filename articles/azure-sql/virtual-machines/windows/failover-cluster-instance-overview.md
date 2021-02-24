@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653275"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358148"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,8 +31,8 @@ Azure VM 上の SQL Server では、Windows Server フェールオーバー ク�
 
 この記事の残りの部分では、Azure VM 上の SQL Server と共に使用する場合のフェールオーバー クラスター インスタンスの違いに焦点を当てます。 フェールオーバー クラスタリング テクノロジの詳細については、次を参照してください。 
 
-- [Windows クラスター テクノロジ](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server フェールオーバー クラスター インスタンス](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
 ## <a name="quorum"></a>Quorum
 
@@ -46,11 +47,11 @@ Azure Virtual Machines 上の SQL Server を使用するフェールオーバー
 
 Azure VM 上の SQL Server には、SQL Server フェールオーバー クラスター インスタンスをデプロイするための共有記憶域ソリューションとして、さまざまなオプションが用意されています。 
 
-||[Azure 共有ディスク](../../../virtual-machines/windows/disks-shared.md)|[Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[記憶域スペース ダイレクト (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure 共有ディスク](../../../virtual-machines/disks-shared.md)|[Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[記憶域スペース ダイレクト (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**OS の最小バージョン**| All |Windows Server 2012|Windows Server 2016|
 |**SQL Server の最小バージョン**|All|SQL Server 2012|SQL Server 2016|
-|**サポートされる VM の可用性** |近接配置グループを含む可用性セット |可用性セットと可用性ゾーン|可用性セット |
+|**サポートされる VM の可用性** |近接配置グループを含む可用性セット (Premium SSD の場合) </br> 同じ可用性ゾーン (Ultra SSD の場合) |可用性セットと可用性ゾーン|可用性セット |
 |**FileStream のサポート**|はい|いいえ|はい |
 |**Azure BLOB キャッシュ**|いいえ|いいえ|はい|
 
@@ -58,7 +59,7 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 
 ### <a name="azure-shared-disks"></a>Azure 共有ディスク
 
-[Azure 共有ディスク](../../../virtual-machines/windows/disks-shared.md)は [Azure マネージド ディスク](../../../virtual-machines/managed-disks-overview.md)の機能です。 Windows Server フェールオーバー クラスタリングでは、フェールオーバー クラスター インスタンスでの Azure 共有ディスクの使用がサポートされています。 
+[Azure 共有ディスク](../../../virtual-machines/disks-shared.md)は [Azure マネージド ディスク](../../../virtual-machines/managed-disks-overview.md)の機能です。 Windows Server フェールオーバー クラスタリングでは、フェールオーバー クラスター インスタンスでの Azure 共有ディスクの使用がサポートされています。 
 
 **サポートされる OS**:All   
 **サポートされる SQL バージョン**:All     
@@ -66,15 +67,19 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 **利点**: 
 - 高可用性とディザスター リカバリー (HADR) のアーキテクチャをそのまま維持しながら Azure に移行することを検討しているアプリケーションに役立ちます。 
 - SCSI 永続的な予約 (SCSI PR) のサポートにより、クラスター化されたアプリケーションをそのまま Azure に移行できます。 
-- すべてのバージョンの SQL Server に対して共有 Azure Premium SSD が、SQL Server 2019 に対して共有 Azure Ultra Disk Storage がサポートされます。 
+- 共有された Azure Premium SSD と Azure Ultra Disk storage がサポートされます。
 - 1 つの共有ディスクを使用することも、複数の共有ディスクをストライプして共有記憶域プールを作成することもできます。 
 - FileStream がサポートされます。
+- Premium SSD では、可用性セットがサポートされています。 
 
 
 **制限事項**: 
-- 仮想マシンは、同じ可用性セットおよび同じ近接配置グループに配置する必要があります。
-- 可用性ゾーンはサポートされていません。
+- 仮想マシンは、同じ可用性セットおよび同じ近接配置グループに配置することをお勧めします。
+- Ultra Disks では、可用性セットはサポートされていません。 
+- 可用性ゾーンは Ultra Disks でサポートされていますが、VM が同じ可用性ゾーンに存在する必要があるため、仮想マシンの可用性が低下します。 
+- 選択したハードウェア可用性ソリューションに関係なく、Azure 共有ディスクの使用時には、フェールオーバー クラスターの可用性は常に 99.9% になります。 
 - Premium SSD ディスクのキャッシュはサポートされていません。
+
  
 開始するには、[Azure 共有ディスクを使用した SQL Server フェールオーバー クラスター インスタンス](failover-cluster-instance-azure-shared-disks-manually-configure.md)に関する記事をご覧ください。 
 
@@ -140,7 +145,7 @@ Microsoft パートナーの共有記憶域とデータ レプリケーション
 
 ## <a name="connectivity"></a>接続
 
-Azure Virtual Machines 上の SQL Server を使用するフェールオーバー クラスター インスタンスでは、[分散ネットワーク名 (DNN)](hadr-distributed-network-name-dnn-configure.md) または[仮想ネットワーク名 (VNN) と Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を使用して、現在どのノードでクラスター化されたリソースが所有されているかに関係なく、SQL Server インスタンスにトラフィックをルーティングします。 特定の機能と DNN を SQL Server FCI と共に使用する場合は、追加の考慮事項があります。 詳細については、[DNN と SQL Server FCI の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関する記事をご覧ください。 
+Azure Virtual Machines 上の SQL Server を使用するフェールオーバー クラスター インスタンスでは、[分散ネットワーク名 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) または[仮想ネットワーク名 (VNN) と Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を使用して、現在どのノードでクラスター化されたリソースが所有されているかに関係なく、SQL Server インスタンスにトラフィックをルーティングします。 特定の機能と DNN を SQL Server FCI と共に使用する場合は、追加の考慮事項があります。 詳細については、[DNN と SQL Server FCI の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関する記事をご覧ください。 
 
 クラスター接続オプションの詳細については、[HADR 接続を Azure VM 上の SQL Server にルーティングする方法](hadr-cluster-best-practices.md#connectivity)に関する記事をご覧ください。 
 
@@ -148,15 +153,17 @@ Azure Virtual Machines 上の SQL Server を使用するフェールオーバー
 
 Azure Virtual Machines 上の SQL Server を使用するフェールオーバー クラスター インスタンスについて、次の制限事項を考慮してください。 
 
-### <a name="lightweight-resource-provider"></a>軽量リソース プロバイダー   
-現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)の[軽量管理モード](sql-vm-resource-provider-register.md#management-modes)でのみサポートされています。 完全拡張機能モードから軽量モードに変更するには、対応する VM の **SQL 仮想マシン** リソースを削除し、それらを軽量モードで SQL VM リソース プロバイダーに登録します。 Azure portal を使用して **SQL 仮想マシン** リソースを削除するときに、正しい仮想マシンの横のチェック ボックスをオフにします。 
+### <a name="lightweight-extension-support"></a>軽量拡張機能サポート   
 
-完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 エージェントを軽量管理モードで再インストールすると、これらの機能は SQL Server VM で動作しなくなります。
+現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、SQL Server IaaS Agent 拡張機能の[軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)でのみサポートされています。 完全拡張機能モードから軽量モードに変更するには、対応する VM の **SQL 仮想マシン** リソースを削除し、それらを軽量モードで SQL IaaS Agent 拡張機能に登録します。 Azure portal を使用して **SQL 仮想マシン** リソースを削除するときは、仮想マシンを削除してしまうことのないよう、正しい仮想マシンの横のチェック ボックスをオフにします。 
 
-### <a name="msdtc"></a>MSDTC   
-Azure Virtual Machines では、クラスター化共有ボリューム (CSV) および [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上の記憶域を備えた Windows Server 2019 で、MSDTC がサポートされています。
+完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 軽量管理モードで登録された SQL Server VM では、これらの機能が動作しなくなります。
 
-Azure Virtual Machines では、次の理由により、Windows Server 2016 以前では MSDTC がサポートされていません。
+### <a name="msdtc"></a>MSDTC 
+
+Azure Virtual Machines では、クラスター共有ボリューム (CSV) と [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上のストレージを使用する Windows Server 2019、または Azure 共有ディスクを使用する SQL Server VM で、Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされます。 
+
+Azure Virtual Machines では、次の理由により、クラスター共有ボリュームを使用する Windows Server 2016 以前では、MSDTC はサポートされません。
 
 - クラスター化された MSDTC リソースは、共有ストレージを使用するように構成することはできません。 Windows Server 2016 では、MSDTC リソースを作成した場合、ストレージが使用可能であっても、使用可能な共有ストレージは 1 つも表示されません。 この問題は、Windows Server 2019 で修正済みです。
 - Basic Load Balance は、RPC ポートを処理しません。
@@ -170,4 +177,3 @@ Azure Virtual Machines では、次の理由により、Windows Server 2016 以�
 
 - [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
-

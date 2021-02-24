@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) でクラスターのセキュリティとアップグレードを管理する方法に関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 11/12/2020
+ms.openlocfilehash: ad1f14fc92433e8d9cb31de165645e4a5731f01a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003055"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019468"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際には、ワ�
 この記事では、AKS クラスターをセキュリティで保護する方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Active Directory とロールベースのアクセス制御 (RBAC) を使用して API サーバー アクセスをセキュリティで保護する
+> * Azure Active Directory と Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用して API サーバー アクセスをセキュリティで保護する
 > * ノード リソースへのコンテナー アクセスをセキュリティで保護する
 > * AKS クラスターを最新の Kubernetes バージョンにアップグレードする
 > * ノードを最新の状態に保ち、セキュリティ パッチを自動的に適用する
@@ -30,7 +30,7 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際には、ワ�
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>API サーバーとクラスター ノードへのアクセスをセキュリティで保護する
 
-**ベスト プラクティス ガイダンス** - Kubernetes API-Server へのアクセスをセキュリティで保護することは、クラスターをセキュリティで保護するためにできる最も重要な方法の 1 つです。 Kubernetes のロールベース アクセス制御 (RBAC) を Azure Active Directory と統合して、API サーバーへのアクセスを制御します。 このようなコントロールを使用すると、Azure サブスクリプションへのアクセスをセキュリティで保護する場合と同じ方法で AKS をセキュリティで保護できます。
+**ベスト プラクティス ガイダンス** - Kubernetes API-Server へのアクセスをセキュリティで保護することは、クラスターをセキュリティで保護するためにできる最も重要な方法の 1 つです。 Kubernetes のロールベース アクセス制御 (Kubernetes RBAC) を Azure Active Directory と統合して、API サーバーへのアクセスを制御します。 このようなコントロールを使用すると、Azure サブスクリプションへのアクセスをセキュリティで保護する場合と同じ方法で AKS をセキュリティで保護できます。
 
 Kubernetes API サーバーには、クラスター内でアクションを実行する要求向けに単一の接続ポイントが用意されています。 API サーバーへのアクセスをセキュリティで保護および監査するには、アクセスを制限し、特権を必要最小限に抑えたアクセス許可を付与します。 このアプローチは Kubernetes に固有のものではありませんが、マルチテナントに使用するために AKS クラスターが論理的に分離されている場合は特に重要です。
 
@@ -38,11 +38,11 @@ Azure Active Directory (AD) には、AKS クラスターと統合される企業
 
 ![AKS クラスター用の Azure Active Directory 統合](media/operator-best-practices-cluster-security/aad-integration.png)
 
-Kubernetes RBAC と Azure AD 統合を使用して API サーバーをセキュリティで保護し、単一の名前空間など、範囲を指定した一連のリソースに必要な最小限のアクセス許可を付与します。 Azure AD のさまざまなユーザーまたはグループに、さまざまな RBAC のロールを付与することができます。 このような細かいアクセス許可を使用することで、API サーバーへのアクセスを制限し、実行されたアクションの明確な監査証跡を提供することができます。
+Kubernetes RBAC と Azure AD 統合を使用して API サーバーをセキュリティで保護し、単一の名前空間など、範囲を指定した一連のリソースに必要な最小限のアクセス許可を付与します。 Azure AD のさまざまなユーザーまたはグループに、さまざまな Kubernetes のロールを付与することができます。 このような細かいアクセス許可を使用することで、API サーバーへのアクセスを制限し、実行されたアクションの明確な監査証跡を提供することができます。
 
-推奨されるベスト プラクティスとして、個々の ID ではなく、グループを使用してファイルとフォルダーへのアクセス権を付与し、個々の "*ユーザー*" ではなく Azure AD の "*グループ*" メンバーシップを使用してユーザーを RBAC ロールにバインドします。 ユーザーのグループ メンバーシップが変わると、それに応じて AKS クラスターに対するアクセス許可も変わります。 ユーザーをロールに直接バインドすると、その職務が変わる可能性があります。 Azure AD グループのメンバーシップが更新されても、AKS クラスターに対するアクセス許可にはそれが反映されません。 このシナリオでは、最終的に、ユーザーに必要なアクセス許可よりも多くのアクセス許可が付与されることになります。
+推奨されるベスト プラクティスとして、個々の ID ではなく、グループを使用してファイルとフォルダーへのアクセス権を付与し、個々の "*ユーザー*" ではなく Azure AD の "*グループ*" メンバーシップを使用して、ユーザーを Kubernetes ロールにバインドします。 ユーザーのグループ メンバーシップが変わると、それに応じて AKS クラスターに対するアクセス許可も変わります。 ユーザーをロールに直接バインドすると、その職務が変わる可能性があります。 Azure AD グループのメンバーシップが更新されても、AKS クラスターに対するアクセス許可にはそれが反映されません。 このシナリオでは、最終的に、ユーザーに必要なアクセス許可よりも多くのアクセス許可が付与されることになります。
 
-Azure AD 統合と RBAC の詳細については、[AKS の認証と承認のベスト プラクティス][aks-best-practices-identity]に関する記事を参照してください。
+Azure AD 統合、Kubernetes RBAC、および Azure RBAC の詳細については、[AKS での認証と承認のベスト プラクティス][aks-best-practices-identity]に関する記事を参照してください。
 
 ## <a name="secure-container-access-to-resources"></a>リソースへのコンテナー アクセスをセキュリティで保護する
 
@@ -53,7 +53,7 @@ Azure AD 統合と RBAC の詳細については、[AKS の認証と承認のベ
 コンテナー アクションをより細かく制御するには、*AppArmor* や *seccomp* など、組み込みの Linux セキュリティ機能を使用することもできます。 このような機能はノード レベルで定義されてから、ポッド マニフェストを介して実装されます。 組み込みの Linux セキュリティ機能は、Linux ノードとポッドに対してのみ使用できます。
 
 > [!NOTE]
-> AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 ノードに対して、*AppArmor*、*seccomp*、*Pod Security Policy* などの追加のセキュリティ機能や、よりきめ細かいロールベースのアクセス制御 (RBAC) を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
+> AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 ノードに対して、*AppArmor*、*seccomp*、*Pod Security Policy* などの追加のセキュリティ機能や、よりきめ細かい Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
 
 ### <a name="app-armor"></a>App Armor
 
@@ -117,7 +117,7 @@ AppArmor の詳細については、[Kubernetes の AppArmor プロファイル]
 
 ### <a name="secure-computing"></a>セキュア コンピューティング
 
-AppArmor は任意の Linux アプリケーションで機能しますが、[seccomp (*sec*ure *comp*uting)][seccomp] はプロセス レベルで機能します。 seccomp は Linux カーネル セキュリティ モジュールでもあり、AKS ノードで使用される Docker ランタイムでネイティブにサポートされています。 seccomp では、コンテナーが実行できるプロセス呼び出しは制限されています。 許可または拒否するアクションを定義するフィルターを作成してから、ポッド YAML マニフェスト内の注釈を使用して seccomp フィルターに関連付けます。 これは、実行に必要な最小限のアクセス許可のみをコンテナーに付与するというベスト プラクティスと合っています。
+AppArmor は任意の Linux アプリケーションで機能しますが、[seccomp (*sec* ure *comp* uting)][seccomp] はプロセス レベルで機能します。 seccomp は Linux カーネル セキュリティ モジュールでもあり、AKS ノードで使用される Docker ランタイムでネイティブにサポートされています。 seccomp では、コンテナーが実行できるプロセス呼び出しは制限されています。 許可または拒否するアクションを定義するフィルターを作成してから、ポッド YAML マニフェスト内の注釈を使用して seccomp フィルターに関連付けます。 これは、実行に必要な最小限のアクセス許可のみをコンテナーに付与するというベスト プラクティスと合っています。
 
 seccomp の動作を確認するには、ファイルに対するアクセス許可の変更を防止するフィルターを作成します。 [SSH][aks-ssh] で AKS ノードに接続し、 */var/lib/kubelet/seccomp/prevent-chmod* という名前の seccomp フィルターを作成し、次の内容を貼り付けます。
 
@@ -177,7 +177,7 @@ chmod-prevented           0/1       Error     0          7s
 
 Kubernetes は、従来のインフラストラクチャ プラットフォームよりも速いペースで新機能をリリースしています。 Kubernetes の更新プログラムには、新機能、バグやセキュリティの修正が含まれています。 通常、新機能は "*アルファ版*"、"*ベータ版*" の状態を経てから、"*安定版*" になり、一般公開され、運用環境での使用が推奨されるようになります。 このリリース サイクルであれば、定期的に重大な変更が発生したり、展開やテンプレートを調整したりすることなく、Kubernetes を更新できます。
 
-AKS では、Kubernetes の 4 つのマイナー バージョンがサポートされています。 つまり、パッチの新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンとパッチのリリースは、提供終了となります。 Kubernetes のマイナー更新は定期的に行われています。 サポート対象外にならないように、必要に応じて確認してアップグレードするガバナンス プロセスを用意してください。 詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]に関する記事を参照してください。
+AKS では、Kubernetes の 3 つのマイナー バージョンがサポートされています。 つまり、パッチの新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンとパッチのリリースは、提供終了となります。 Kubernetes のマイナー更新は定期的に行われています。 サポート対象外にならないように、必要に応じて確認してアップグレードするガバナンス プロセスを用意してください。 詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]に関する記事を参照してください。
 
 実際のクラスターに使用できるバージョンを確認するには、次の例に示すように [az aks get-upgrades][az-aks-get-upgrades] コマンドを使用します。
 
@@ -186,6 +186,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 次に、[az aks upgrade][az-aks-upgrade] コマンドを使用して AKS クラスターをアップグレードすることができます。 このアップグレード プロセスでは、ノードの遮断と解放を一度に 1 つずつ安全に実行し、残りのノード上のポッドをスケジュールに設定してから、最新の OS および Kubernetes バージョンを実行している新しいノードを展開します。
+
+ワークロードの正常な動作が新しい Kubernetes バージョンでも続けられるように、新しいマイナー バージョンを開発テスト環境でテストすることを強くお勧めします。 バージョン 1.16 のように、ワークロードが依存している可能性がある API が Kubernetes で非推奨になることがあります。 新しいバージョンを運用するとき、[個々のバージョンで複数のノード プール](use-multiple-node-pools.md)を使用することを検証してください。そして、個々のプールを一度に 1 つずつアップグレードし、クラスター全体に更新を徐々に展開します。 複数のクラスターを実行している場合、一度に 1 つのクラスターをアップグレードし、影響や変更を段階的に監視します。
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
@@ -235,4 +237,4 @@ Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェク�
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
-[security-center-aks]: ../security-center/azure-kubernetes-service-integration.md
+[security-center-aks]: ../security-center/defender-for-kubernetes-introduction.md

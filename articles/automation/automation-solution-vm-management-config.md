@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266717"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751293"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を構成する
 
@@ -48,7 +48,7 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
 
 2. VM のコンマ区切りリスト(スペースなし) を **VMList** パラメーター フィールドに追加します。 リストの例は `vm1,vm2,vm3`です。
 
-3. **WHATIF** パラメーター フィールドを True に設定します。
+3. **WHATIF** パラメーター フィールドを True に設定すると、変更をプレビューできます。
 
 4. コンマ区切り値の間にスペースを入れずに、VM のコンマ区切りリスト (VM1,VM2,VM3) で `External_ExcludeVMNames` 変数を構成します。
 
@@ -63,7 +63,7 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>サブスクリプションとリソース グループに対する起動および停止アクションを対象にする
 
-1. `External_Start_ResourceGroupNames` および `External_Stop_ResourceGroupNames` 変数で対象となる VM に、正の整数値を持つ `sequencestart` と `sequencestop` タグを追加します。 起動アクションと停止アクションは昇順で実行されます。 VM にタグを付ける方法については、[Azure で Windows 仮想マシンにタグを付ける方法](../virtual-machines/windows/tag.md)と [Azure で Linux 仮想マシンにタグを付ける方法](../virtual-machines/linux/tag.md)に関するページを参照してください。
+1. `External_Start_ResourceGroupNames` および `External_Stop_ResourceGroupNames` 変数で対象となる VM に、正の整数値を持つ `sequencestart` と `sequencestop` タグを追加します。 起動アクションと停止アクションは昇順で実行されます。 VM にタグを付ける方法については、[Azure で Windows 仮想マシンにタグを付ける方法](../virtual-machines/tag-portal.md)と [Azure で Linux 仮想マシンにタグを付ける方法](../virtual-machines/tag-cli.md)に関するページを参照してください。
 
 2. スケジュール **Sequenced-StartVM** と **Sequenced-StopVM** を、要件を満たす日付と時刻に変更し、スケジュールを有効にします。
 
@@ -79,7 +79,7 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
 
 3. VM のコンマ区切りリスト(スペースなし) を **VMList** パラメーター フィールドに追加します。 リストの例は `vm1,vm2,vm3`です。
 
-4. **WHATIF** を True に設定します。 
+4. 変更内容をプレビューするには、**WHATIF** を True に設定します。 
 
 5. コンマ区切り値の間にスペースを入れずに、VM のコンマ区切りリストで `External_ExcludeVMNames` 変数を構成します。
 
@@ -126,7 +126,7 @@ Start/Stop VMs during off-hours は、営業時間外などの非ピーク期間
 
 ### <a name="target-the-autostop-action-to-a-list-of-vms"></a>VM のリストを自動停止アクションの対象にする
 
-1. 新しい[スケジュール](shared-resources/schedules.md#create-a-schedule)を作成し、**AutoStop_CreateAlert_Parent** Runbook にリンクして、VM 名のコンマ区切りリストを `VMList` パラメーターに追加します。
+1. 新しい [スケジュール](shared-resources/schedules.md#create-a-schedule)を作成し、**AutoStop_CreateAlert_Parent** Runbook にリンクして、VM 名のコンマ区切りリストを `VMList` パラメーターに追加します。
 
 2. (省略可) VM の一部を自動停止アクションから除外する場合、VM 名のコンマ区切りリスト (スペースなし) を `External_ExcludeVMNames` 変数に追加できます。
 
@@ -139,17 +139,17 @@ Start/Stop VMs during off-hours のデプロイ後に電子メール通知を変
 
 1. Azure portal で、 **[監視]** 、 **[アクション グループ]** の順に移動します。 **StartStop_VM_Notication** というアクション グループを選択します。
 
-    ![Automation Update Management ページ](media/automation-solution-vm-management/azure-monitor.png)
+    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="[モニター - アクション グループ] ページのスクリーンショット。":::
 
 2. [StartStop_VM_Notification] ページで、 **[詳細]** の **[詳細の編集]** をクリックします。 これで、[電子メール/SMS/プッシュ/音声] ページが開きます。 メール アドレスを更新し、 **[OK]** をクリックして変更を保存します。
 
-    ![Automation Update Management ページ](media/automation-solution-vm-management/change-email.png)
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="更新されたメール アドレスの例を示す [電子メール/SMS/プッシュ/音声] ページのスクリーンショット。":::
 
     アクション グループにさらにアクションを追加することもできます。アクション グループの詳細については、「[アクション グループ](../azure-monitor/platform/action-groups.md)」を参照してください。
 
 この機能によって仮想マシンがシャットダウンされたときに送信されるメールの例を以下に示します。
 
-![Automation Update Management ページ](media/automation-solution-vm-management/email.png)
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="機能によって仮想マシンがシャットダウンされたときに送信されるメールの例のスクリーンショット。":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>VM を追加または除外する
 

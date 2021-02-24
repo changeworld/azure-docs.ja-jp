@@ -1,24 +1,18 @@
 ---
 title: .NET SDK を使用して Azure データ ファクトリを作成する
-description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
-services: data-factory
-documentationcenter: ''
+description: .NET SDK を使用して Azure データ ファクトリおよびパイプラインを作成し、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/24/2019
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 821f64c46e0ae813e7dcd437bb0d4af848647185
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85504867"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372690"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 
@@ -28,7 +22,7 @@ ms.locfileid: "85504867"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに**コピー**します。 Azure Data Factory を使用してデータを**変換**する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](tutorial-transform-data-spark-portal.md)を参照してください。
+このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに **コピー** します。 Azure Data Factory を使用してデータを **変換** する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](tutorial-transform-data-spark-portal.md)を参照してください。
 
 > [!NOTE]
 > この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。
@@ -48,9 +42,9 @@ ms.locfileid: "85504867"
 「*方法: リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する*」の各セクションの手順に従って、以下のタスクを実行します。
 
 1. 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」で、このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
-2. 「[サインインするための値を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」で、**アプリケーション ID** と**テナント ID** を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。 
-3. 「[証明書とシークレット](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)」で、**認証キー**を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
-4. 「[アプリケーションをロールに割り当てる](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)」で、アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。
+2. 「[サインインするための値を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」で、**アプリケーション ID** と **テナント ID** を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。 
+3. 「[証明書とシークレット](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)」で、**認証キー** を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
+4. 「[アプリケーションをロールに割り当てる](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)」で、アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを **共同作成者** ロールに割り当てます。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -81,6 +75,7 @@ ms.locfileid: "85504867"
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.DataFactory;
     using Microsoft.Azure.Management.DataFactory.Models;
@@ -130,7 +125,7 @@ ms.locfileid: "85504867"
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-**データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。 
+**データ ファクトリ** を作成する次のコードを **Main** メソッドに追加します。 
 
 ```csharp
 // Create a data factory
@@ -153,7 +148,7 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
 
-**Azure Storage のリンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
+**Azure Storage のリンクされたサービス** を作成する次のコードを **Main** メソッドに追加します。
 
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このクイックスタートでは、コピー ソースとシンク ストアの両方のために、Azure Storage のリンクされたサービスを 1 つ作成するだけで済みます。このサービスは、サンプルでは "AzureStorageLinkedService" という名前です。
 
@@ -177,7 +172,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
 
 ## <a name="create-a-dataset"></a>データセットを作成する
 
-**Azure BLOB データセット**を作成する次のコードを **Main** メソッドに追加します。
+**Azure BLOB データセット** を作成する次のコードを **Main** メソッドに追加します。
 
 ソースからシンクにコピーするデータを表すデータセットを定義します。 この例のこの BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照します。 データセットは、データセットを使用するアクティビティで設定された値を持つパラメーターを受け取ります。 パラメーターは、データの存在および格納場所を指す "folderPath" を構築するために使用されます。
 
@@ -206,7 +201,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-**コピー アクティビティが含まれているパイプライン**を作成する次のコードを **Main** メソッドに追加します。
+**コピー アクティビティが含まれているパイプライン** を作成する次のコードを **Main** メソッドに追加します。
 
 この例では、このパイプラインには 1 つのアクティビティが含まれており、2 つのパラメーター (入力 BLOB パスと出力 BLOB パス) を受け取ります。 これらのパラメーターの値は、パイプラインがトリガー/実行されたときに設定されます。 コピー アクティビティは、入力と出力として、前の手順で作成された同じ BLOB データセットを参照します。 データセットが入力データセットとして使用される場合は、入力パスが指定されます。 また、データセットが出力データセットとして使用される場合は、出力パスが指定されます。 
 
@@ -258,7 +253,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 ## <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
 
-**パイプラインの実行をトリガーする**次のコードを **Main** メソッドに追加します。
+**パイプラインの実行をトリガーする** 次のコードを **Main** メソッドに追加します。
 
 また、このコードは、パイプラインで指定された **inputPath** と **outputPath** パラメーターの値を、ソースおよびシンクの BLOB パスの実際の値に設定します。
 

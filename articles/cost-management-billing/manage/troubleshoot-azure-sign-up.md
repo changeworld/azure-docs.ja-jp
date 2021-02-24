@@ -8,21 +8,21 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/28/2021
 ms.author: v-miegge
-ms.openlocfilehash: 86f9f92810cff241f816dadfc6e1e8ca120f1f4a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686651"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054163"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
 Microsoft Azure portal または Azure アカウント センターで新しいアカウントにサインアップしようとすると、問題が発生する場合があります。 この短いガイドでは、サインアップ プロセスの手順と、各ステップでの一般的な問題について説明します。
 
 > [!NOTE]
-> 既にアカウントがあって、サインインの問題をトラブルシューティングするためのガイダンスをお探しの場合は、「[Azure サブスクリプションのサインインに関する問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)」を参照してください。
+> 既にアカウントがあって、サインインの問題をトラブルシューティングするためのガイダンスをお探しの場合は、「[Azure サブスクリプションのサインインに関する問題のトラブルシューティング](./troubleshoot-sign-in-issue.md)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -76,8 +76,8 @@ InPrivate ブラウズはどうですか。
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>次のようなメッセージが表示される: "現在のアカウントの種類はサポートされていません"
 
-この問題は、[アンマネージドの Azure AD ディレクトリ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)にアカウントが登録されているために、組織の Azure AD ディレクトリにはアカウントが存在しない場合に発生します。
-この問題を解決するには、別のアカウントを使用して Azure アカウントにサインアップするか、アンマネージド AD ディレクトリの引き継ぎを行ってください。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)」を参照してください。
+この問題は、[アンマネージドの Azure AD ディレクトリ](../../active-directory/enterprise-users/directory-self-service-signup.md)にアカウントが登録されているために、組織の Azure AD ディレクトリにはアカウントが存在しない場合に発生します。
+この問題を解決するには、別のアカウントを使用して Azure アカウントにサインアップするか、アンマネージド AD ディレクトリの引き継ぎを行ってください。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../../active-directory/enterprise-users/domains-admin-takeover.md)」を参照してください。
 
 ## <a name="identity-verification-by-phone"></a>電話による本人確認
 
@@ -107,7 +107,7 @@ InPrivate ブラウズはどうですか。
 
 #### <a name="credit-card-declined-or-not-accepted"></a>クレジット カードが拒否されます
 
-バーチャルまたはプリペイド式のクレジット カードやデビット カードは、Azure サブスクリプションの支払い方法として認められていません。 カードが拒否される他の原因を確認するには、「[Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)」を参照してください。
+バーチャルまたはプリペイド式のクレジット カードやデビット カードは、Azure サブスクリプションの支払い方法として認められていません。 カードが拒否される他の原因を確認するには、「[Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング](./troubleshoot-declined-card.md)」を参照してください。
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>請求先住所がクレジット カード フォームでサポートされていない
 
@@ -131,7 +131,7 @@ InPrivate ブラウズはどうですか。
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>無料試用版アカウントに料金が表示されている
 
-サインアップ後にお客様のクレジット カード アカウントに少額の承認保留が一時的に表示されることがあります。 この保留は 3 日から 5 日以内に削除されます。 コストの管理についての不安がある場合は、[予想外のコストを防ぐ](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started)方法に関する記事をご覧ください。
+サインアップ後にお客様のクレジット カード アカウントに少額の承認保留が一時的に表示されることがあります。 この保留は 3 日から 5 日以内に削除されます。 コストの管理について不安がある場合の詳細については、「[想定外の料金を分析する](../understand/analyze-unexpected-charges.md)」を参照してください。
 
 ## <a name="agreement"></a>契約
 
@@ -139,19 +139,18 @@ InPrivate ブラウズはどうですか。
 
 ## <a name="other-issues"></a>その他の問題
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>MSDN、BizSpark、BizSparkPlus、MPN などの Azure 特典プランをアクティブ化できません
+### <a name="cant-activate-azure-benefit-plan-like-visual-studio-bizspark-bizsparkplus-or-mpn"></a>Visual Studio、BizSpark、BizSparkPlus、MPN などの Azure 特典プランをアクティブ化できません
 
 サインイン資格情報が正しいことを確認します。 次に、特典プログラムを使用する資格があることを確認します。
-- MSDN
-  - [MSDN アカウント ページ](https://msdn.microsoft.com/subscriptions/manage/default.aspx)で資格の状態を確認します。
-  - 状態を確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](https://msdn.microsoft.com/library/aa493452.aspx)にお問い合わせください。
+- Visual Studio
+  - [Visual Studio アカウント ページ](https://my.visualstudio.com/Benefits)で資格の状態を確認します。
+  - 状態を確認できない場合は、[Visual Studio Subscription のサポート](https://visualstudio.microsoft.com/subscriptions/support/)にお問い合わせください。
 - Microsoft for Startups
   - [Microsoft for Startups ポータル](https://startups.microsoft.com/#start-two)にサインインして、Microsoft for Startups の資格の状態を確認します。
   - 状態を確認できない場合は、[Microsoft for Startups フォーラム](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups)で質問してください。
 - MPN
   - [MPN ポータル](https://mspartner.microsoft.com/Pages/Locale.aspx)にサインインし、資格の状態を確認します。 該当する [クラウド プラットフォーム コンピテンシー](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx)をお持ちの場合、追加特典の資格を与えられることがあります。
   - 状態を確認できない場合は、[MPN サポート](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx)にお問い合わせください。
-
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>新しい Azure イン オープン プラン サブスクリプションをアクティブ化できません
 
@@ -161,10 +160,10 @@ Azure イン オープン プランのサブスクリプションを作成する
 
 Azure の請求とサブスクリプションに関するその他のトラブルシューティング記事
 
-- [拒否されたカード](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [サブスクリプションのサインインの問題](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [サブスクリプションが見つからない](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Enterprise コスト ビューが無効になっている](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [拒否されたカード](./troubleshoot-declined-card.md)
+- [サブスクリプションのサインインの問題](./troubleshoot-sign-in-issue.md)
+- [サブスクリプションが見つからない](./no-subscriptions-found.md)
+- [Enterprise コスト ビューが無効になっている](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>お問い合わせ
 
@@ -172,4 +171,4 @@ Azure の請求とサブスクリプションに関するその他のトラブ�
 
 ## <a name="find-out-more-about-azure-cost-management"></a>Azure Cost Management の詳細を探す
 
-- [Azure Cost Management および Billing のドキュメント](https://docs.microsoft.com/azure/cost-management-billing)
+- [Azure Cost Management および Billing のドキュメント](../index.yml)

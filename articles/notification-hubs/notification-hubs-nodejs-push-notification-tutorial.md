@@ -17,13 +17,13 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9b914c631c829c2e3dc71940a171cdb3dc81960
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: a7ef6ef85ea9d256303852e4b281071da455ebb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077494"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097675"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 
@@ -109,7 +109,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** - メッセージの JSON または未加工の文字列ペイロード
 - **Callback** - コールバック関数。
 
-ペイロード形式の詳細については、[ペイロードに関するドキュメント](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)を参照してください。
+ペイロード形式の詳細については、[ペイロードに関するドキュメント](https://payload.readthedocs.io/en/latest/)を参照してください。
 
 次のコードは、`NotificationHubService` によって公開されている `GcmService` インスタンスを使用して、登録されているすべてのクライアントにプッシュ通知を送信します。
 

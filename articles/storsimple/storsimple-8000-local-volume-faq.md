@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511520"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002716"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple のローカル固定ボリューム: よく寄せられる質問 (FAQ)
 ## <a name="overview"></a>概要

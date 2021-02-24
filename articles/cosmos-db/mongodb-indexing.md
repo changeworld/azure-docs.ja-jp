@@ -5,18 +5,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 01/08/2020
 author: timsander1
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-js
+ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030505"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060090"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でのインデックス作成を管理する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB の MongoDB 用 API では、Azure Cosmos DB のコア インデックス管理機能を利用します。 この記事では、Azure Cosmos DB の MongoDB 用 API を使用してインデックスを追加する方法を重点的に取り上げます。 また、すべての API に関連する [Azure Cosmos DB のインデックス作成の概要](index-overview.md)もご一読ください。
 
@@ -28,6 +29,16 @@ Azure Cosmos DB の MongoDB サーバー バージョン 3.6 用 API では、`_
 
 クエリに並べ替えを適用するには、並べ替え操作で使用されるフィールドに対してインデックスを作成する必要があります。
 
+### <a name="editing-indexing-policy"></a>インデックス作成ポリシーの編集
+
+Azure portal 内のデータ エクスプローラーでインデックス作成ポリシーを編集することをお勧めします。
+. データ エクスプローラーのインデックス作成ポリシー エディターから、1 つフィールド インデックスとワイルドカード インデックスを追加できます。
+
+:::image type="content" source="./media/mongodb-indexing/indexing-policy-editor.png" alt-text="インデックス作成ポリシー エディター":::
+
+> [!NOTE]
+> データ エクスプローラーのインデックス作成ポリシー エディターを使用して複合インデックスを作成することはできません。
+
 ## <a name="index-types"></a>インデックスの種類
 
 ### <a name="single-field"></a>単一フィールド
@@ -36,11 +47,18 @@ Azure Cosmos DB の MongoDB サーバー バージョン 3.6 用 API では、`_
 
 `db.coll.createIndex({name:1})`
 
+Azure portal で `name` に対して同じ 1 つのフィールド インデックスを作成できます。
+
+:::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="インデックス作成ポリシー エディターで名前インデックスを追加する":::
+
 1 つのクエリで、使用可能な場合は複数の単一フィールドのインデックスが使用されます。 コンテナーごとに最大 500 の単一フィールド インデックスを作成できます。
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>複合インデックス (MongoDB サーバー バージョン 3.6)
 
-Azure Cosmos DB の MongoDB 用 API では、バージョン 3.6 のワイヤ プロトコルを使用するアカウントの複合インデックスがサポートされます。 複合インデックスには、最大 8 個のフィールドを含めることができます。 **MongoDB とは異なり、複合インデックスを作成する必要があるのは、一度に複数のフィールドに対してクエリを効率的に並べ替える必要がある場合のみです。** 並べ替える必要がない、複数のフィルターを使用するクエリの場合は、単一の複合インデックスではなく、複数の単一フィールド インデックスを作成します。
+Azure Cosmos DB の MongoDB 用 API では、バージョン 3.6 のワイヤ プロトコルを使用するアカウントの複合インデックスがサポートされます。 複合インデックスには、最大 8 個のフィールドを含めることができます。 MongoDB とは異なり、複合インデックスを作成する必要があるのは、一度に複数のフィールドに対してクエリを効率的に並べ替える必要がある場合のみです。 並べ替える必要がない、複数のフィルターを使用するクエリの場合は、単一の複合インデックスではなく、複数の単一フィールド インデックスを作成します。 
+
+> [!NOTE]
+> 入れ子になったプロパティまたは配列の複合インデックスを作成することはできません。
 
 次のコマンドでは、フィールド `name` と `age` に対して複合インデックスを作成します。
 
@@ -59,7 +77,7 @@ Azure Cosmos DB の MongoDB 用 API では、バージョン 3.6 のワイヤ �
 `db.coll.find().sort({age:1,name:1})`
 
 > [!NOTE]
-> 入れ子になったプロパティまたは配列の複合インデックスを作成することはできません。
+> 複合インデックスは、結果を並べ替えるクエリでのみ使用されます。 並べ替える必要がない複数のフィルターを使用するクエリの場合は、複数の単一フィールド インデックスを作成します。
 
 ### <a name="multikey-indexes"></a>複数キー インデックス
 
@@ -75,7 +93,7 @@ Azure Cosmos DB では、配列に格納されているコンテンツにイン�
 
 ### <a name="text-indexes"></a>テキスト インデックス
 
-Azure Cosmos DB の MongoDB 用 API では、現在、テキスト インデックスはサポートされていません。 文字列に対するテキスト検索クエリの場合は、Azure Cosmos DB との [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) の統合を使用する必要があります。
+Azure Cosmos DB の MongoDB 用 API では、現在、テキスト インデックスはサポートされていません。 文字列に対するテキスト検索クエリの場合は、Azure Cosmos DB との [Azure Cognitive Search](../search/search-howto-index-cosmosdb.md) の統合を使用する必要があります。 
 
 ## <a name="wildcard-indexes"></a>ワイルドカード インデックス
 
@@ -92,7 +110,7 @@ Azure Cosmos DB の MongoDB 用 API では、現在、テキスト インデッ�
   ]
 ```
 
-もう 1 つの例を次に示します。`children` のプロパティのセットが少し異なります。
+もう 1 つの例を次に示します。今回は、`children` のプロパティのセットが少し異なります。
 
 ```json
   "children": [
@@ -131,7 +149,14 @@ Azure Cosmos DB の MongoDB 用 API では、現在、テキスト インデッ�
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
-開発を開始するとき、すべてのフィールドに対するワイルドカード インデックスを作成すると便利な場合があります。 ドキュメント内でインデックスが付けられたプロパティが増えるにつれ、ドキュメントの書き込みと更新に対する要求ユニット (RU) の料金が上がります。 そのため、書き込みが多いワークロードがある場合は、ワイルドカード インデックスを使用するのではなく、個別のインデックスを作成する方法を選択する必要があります。
+Azure portal のデータ エクスプローラーを使用してワイルドカード インデックスを作成することもできます。
+
+:::image type="content" source="./media/mongodb-indexing/add-wildcard-index.png" alt-text="インデックス作成ポリシー エディターでワイルドカード インデックスを追加する":::
+
+> [!NOTE]
+> 開発を開始するだけの場合は、すべてのフィールドに対するワイルドカード インデックスから始めることを **強く** お勧め ます。 これにより、開発が簡素化され、クエリの最適化が容易になります。
+
+多くのフィールドを持つドキュメントでは、書き込みと更新の要求ユニット (RU) 料金が高くなる場合があります。 そのため、書き込みが多いワークロードがある場合は、ワイルドカード インデックスを使用するのではなく、個別のインデックスを作成する方法を選択する必要があります。
 
 ### <a name="limitations"></a>制限事項
 
@@ -141,7 +166,7 @@ Azure Cosmos DB の MongoDB 用 API では、現在、テキスト インデッ�
 - TTL
 - 一意
 
-**MongoDB とは異なり**、MongoDB 用の Azure Cosmos DB の API では、次の場合にワイルドカード インデックスを使用することは**できません**。
+**MongoDB とは異なり**、MongoDB 用の Azure Cosmos DB の API では、次の場合にワイルドカード インデックスを使用することは **できません**。
 
 - 複数の特定のフィールドを含むワイルドカード インデックスの作成
 
@@ -204,7 +229,7 @@ globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { univ
         "ok" : 1,
         "collectionsharded" : "test.coll"
 }
-globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {unique:true})
+globaldb:PRIMARY> db.coll.createIndex( { "university" : 1, "student_id" : 1 }, {unique:true});
 {
         "_t" : "CreateIndexesResponse",
         "ok" : 1,
@@ -324,10 +349,55 @@ Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 では、データベ
 
 新しいインデックスを追加するときに、読み取り可用性への影響はありません。 クエリでは、インデックス変換が完了するまで、新しいインデックスを使用しません。 インデックス変換中、クエリ エンジンでは引き続き既存のインデックスを使用します。そのため、インデックスの変更を開始する前と、インデックスの変換中とで、観察される読み取りパフォーマンスは同じです。 新しいインデックスを追加する場合、クエリ結果が不完全または不整合になるリスクもありません。
 
-インデックスを削除し、削除されたインデックスに対してフィルターを使用するクエリをすぐに実行する場合、インデックス変換が完了するまで、クエリ結果の整合性や完全性は保証されません。 インデックスを削除し、新しく削除されたインデックスがクエリでフィルター処理された場合、クエリ エンジンは結果の整合性または完全性を保証しません。 ほとんどの開発者は、インデックスを削除してからすぐにこれらのクエリを実行しようとはしないため、実際にこのような状況になることはほとんどありません。
+インデックスを削除し、削除されたインデックスに対してフィルターを使用するクエリをすぐに実行する場合、インデックス変換が完了するまで、クエリ結果の整合性や完全性は保証されません。 インデックスを削除し、新しく削除されたインデックスがクエリでフィルター処理された場合、クエリ エンジンによって結果の整合性または完全性は提供されません。 ほとんどの開発者は、インデックスを削除してからすぐにこれらのクエリを実行しようとはしないため、実際にこのような状況になることはほとんどありません。
 
 > [!NOTE]
 > [インデックスの進行状況を追跡する](#track-index-progress)ことができます。
+
+## <a name="reindex-command"></a>reIndex コマンド
+
+`reIndex` コマンドによって、コレクションのすべてのインデックスが再作成されます。 ほとんどの場合、これは必要ありません。 ただし、まれに、`reIndex` コマンドの実行後にクエリのパフォーマンスが向上する場合があります。
+
+`reIndex` コマンドは、次の構文を使用して実行できます。
+
+`db.runCommand({ reIndex: <collection> })`
+
+次の構文を使用して、`reIndex` コマンドを実行する必要があるかどうかを確認できます。
+
+`db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
+
+サンプル出力:
+
+```
+{
+        "database" : "myDB",
+        "collection" : "myCollection",
+        "provisionedThroughput" : 400,
+        "indexes" : [
+                {
+                        "v" : 1,
+                        "key" : {
+                                "_id" : 1
+                        },
+                        "name" : "_id_",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                },
+                {
+                        "v" : 1,
+                        "key" : {
+                                "b.$**" : 1
+                        },
+                        "name" : "b.$**_1",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                }
+        ],
+        "ok" : 1
+}
+```
+
+`reIndex` が必要な場合、**requiresReIndex** が true になります。 `reIndex` が必要ない場合、このプロパティは省略されます。
 
 ## <a name="migrate-collections-with-indexes"></a>インデックス付きのコレクションを移行する
 
@@ -335,7 +405,7 @@ Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 では、データベ
 
 ## <a name="indexing-for-mongodb-version-32"></a>MongoDB バージョン 3.2 のインデックス作成
 
-バージョン 3.2 の MongoDB ワイヤ プロトコルと互換性のある Azure Cosmos アカウントの場合、使用可能なインデックス作成機能と既定値は異なります。 [アカウントのバージョンを確認する](mongodb-feature-support-36.md#protocol-support)ことができます。 [サポート リクエスト](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を提出することで、3.6 バージョンにアップグレードできます。
+バージョン 3.2 の MongoDB ワイヤ プロトコルと互換性のある Azure Cosmos アカウントの場合、使用可能なインデックス作成機能と既定値は異なります。 [アカウントのバージョンを確認](mongodb-feature-support-36.md#protocol-support)し、[バージョン 3.6 にアップグレード](mongodb-version-upgrade.md)できます。
 
 バージョン 3.2 をご利用の場合は、このセクションのバージョン 3.6 との主な違いの概要を参照してください。
 
@@ -352,11 +422,11 @@ Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 では、データベ
 
 ### <a name="compound-indexes-version-32"></a>複合インデックス (バージョン 3.2)
 
-複合インデックスは、ドキュメントの複数のフィールドに対する参照を保持します。 複合インデックスを作成する場合は、[サポート要求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を提出して、バージョン 3.6 にアップグレードします。
+複合インデックスは、ドキュメントの複数のフィールドに対する参照を保持します。 複合インデックスを作成する場合は、[バージョン 3.6 にアップグレード](mongodb-version-upgrade.md)します。
 
 ### <a name="wildcard-indexes-version-32"></a>ワイルドカード インデックス (バージョン 3.2)
 
-ワイルドカード インデックスを作成する場合は、[サポート リクエスト](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を提出して、バージョン 3.6 にアップグレードします。
+ワイルドカード インデックスを作成する場合は、[バージョン 3.6 にアップグレード](mongodb-version-upgrade.md)します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: angle
-ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: shlo
+ms.openlocfilehash: 425096bf7cb75ae3560c06cbcd32778536dc1952
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74776624"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537342"
 ---
 # <a name="disclosure-design-patterns"></a>設計パターンを開示する
 合成音声エクスペリエンスの適切な[開示レベル](concepts-disclosure-guidelines.md#disclosure-assessment)が決定されたので、考えられる設計パターンについて検討するよい機会です。
@@ -184,7 +184,7 @@ Recommendations
 
 デジタル アシスタントができることに関して正確な期待を設定することで、暗黙的に開示を達成できます。 サンプル コマンドを提供して、デジタル アシスタントと対話する方法をユーザーが学べるようにします。また、エクスペリエンスの早い段階から合成音声について詳しく知るための状況依存ヘルプを提供します。
 
-![視覚的な合図とフィードバック](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![作成できる会話への既定の応答集の例。](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>会話のわかりやすさ
 
@@ -237,21 +237,14 @@ Recommendations
 - [音声の制作経緯を詳しく知る機会の提供](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
 - [人へのハンドオフ](#conversational-transparency)
 
-
-
 ## <a name="additional-resources"></a>その他のリソース
 - [Microsoft Bot ガイドライン](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana 設計ガイドライン](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP 音声認識設計ガイドライン](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows 複合現実音声コマンド ガイドライン](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Cortana 設計ガイドライン](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP 音声認識設計ガイドライン](/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows 複合現実音声コマンド ガイドライン](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="reference-docs"></a>リファレンス ドキュメント
+## <a name="see-also"></a>関連項目
 
-* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
+* [ボイス タレント向けの開示](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
-* [規制の概要](concepts-gating-overview.md)
 * [開示する方法](concepts-disclosure-guidelines.md)
-
-## <a name="next-steps"></a>次のステップ
-
-* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)

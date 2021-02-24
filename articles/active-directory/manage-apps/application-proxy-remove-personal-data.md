@@ -3,7 +3,7 @@ title: 個人データの削除 - Azure Active Directory アプリケーショ�
 description: Azure Active Directory アプリケーション プロキシのデバイスにインストールされているコネクタから個人データを削除します。
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90913ba8f7fbe8158a5cfea01e49a175180677b6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759965"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258950"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシの個人データの削除
 
@@ -35,7 +35,7 @@ Azure Active Directory アプリケーション プロキシでは、デバイ�
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>Windows イベント ログから個人データを削除する
 
-Windows イベント ログのデータ保有期間を構成する方法については、「[Settings for event logs (イベント ログの設定)](https://technet.microsoft.com/library/cc952132.aspx)」をご覧ください。 Windows イベント ログについては、「[Using Windows Event Log (Windows イベント ログの使用)](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx)」をご覧ください。
+Windows イベント ログのデータ保有期間を構成する方法については、「[Settings for event logs (イベント ログの設定)](https://technet.microsoft.com/library/cc952132.aspx)」をご覧ください。 Windows イベント ログについては、「[Using Windows Event Log (Windows イベント ログの使用)](/windows/win32/wes/using-windows-event-log)」をご覧ください。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
@@ -54,7 +54,7 @@ Windows イベント ログのデータ保有期間を構成する方法につ�
 
 特定のデータを表示またはエクスポートするには、各コネクタ イベント ログで関連エントリを検索します。 ログは、`C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace` にあります。
 
-ログはテキスト ファイルであるため、[findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) を使用してユーザーに関連するテキスト エントリを検索できます。  
+ログはテキスト ファイルであるため、[findstr](/windows-server/administration/windows-commands/findstr) を使用してユーザーに関連するテキスト エントリを検索できます。  
 
 個人データを見つけるには、ログ ファイルで ユーザー ID を検索します。
 

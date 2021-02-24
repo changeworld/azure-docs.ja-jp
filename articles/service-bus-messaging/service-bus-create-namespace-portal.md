@@ -3,12 +3,12 @@ title: Azure portal で Service Bus 名前空間を作成する方法
 description: この記事では、Azure portal で Azure Service Bus 名前空間を作成する手順を説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3c665dad06ca7cf7bba39b5e1a0f748b420ad770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0844ca144b4303631a0015c06a9b37f3538875b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337762"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498814"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure Portal を使用して Service Bus 名前空間を作成する
 
@@ -19,8 +19,6 @@ ms.locfileid: "85337762"
 お疲れさまでした。 これで、Service Bus メッセージング名前空間が作成されました。
 
 ## <a name="next-steps"></a>次のステップ
-
-Service Bus メッセージングのさらに高度な機能を紹介するサンプルについては、Service Bus [GitHub サンプル][github-samples]を参照してください。
+[Service Bus サンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)を確認してください。
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
-[github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples

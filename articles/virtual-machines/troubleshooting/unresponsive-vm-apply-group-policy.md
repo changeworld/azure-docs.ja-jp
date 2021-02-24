@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7160ec9564ede21eab0a205b2d66a7d566639506
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526012"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632658"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>グループ ポリシーの [ローカル ユーザーとグループ] ポリシーの適用時に VM が応答しない
 
@@ -47,6 +47,9 @@ ms.locfileid: "86526012"
 ## <a name="resolution"></a>解決方法
 
 ### <a name="process-overview"></a>プロセスの概要
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正することができます。
 
 1. [修復 VM を作成してアクセスする](#step-1-create-and-access-a-repair-vm)
 1. [ポリシーを無効にする](#step-2-disable-the-policy)

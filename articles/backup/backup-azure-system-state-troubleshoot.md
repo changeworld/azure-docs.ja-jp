@@ -4,12 +4,12 @@ description: この記事では、オンプレミスの Windows Server のシス
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824272"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89376283"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -66,20 +66,20 @@ PowerShell を使用して Windows Server バックアップをインストー�
 
 サーバー マネージャーを使用して Windows Server バックアップをインストールするには、次の手順を実行します。
 
-1. **サーバー マネージャー**で **[役割と機能の追加]** をクリックします。 **役割と機能の追加ウィザード**が表示されます。
+1. **サーバー マネージャー**で **[役割と機能の追加]** を選択します。 **役割と機能の追加ウィザード**が表示されます。
 
     ![ダッシュボード](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. **[インストールの種類]** を選択し、 **[次へ]** をクリックします。
+2. **[インストールの種類]** を選択し、 **[次へ]** を選択します。
 
     ![インストールの種類](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. サーバー プールからサーバーを選択し、 **[次へ]** をクリックします。 サーバーの役割で、既定の選択のままにし、 **[次へ]** をクリックします。
-4. **[機能]** タブで **[Windows Server バックアップ]** を選択し、 **[次へ]** をクリックします。
+3. サーバー プールからサーバーを選択し、 **[次へ]** を選択します。 サーバーの役割で、既定の選択のままにし、 **[次へ]** を選択します。
+4. **[機能]** タブで **[Windows Server バックアップ]** を選択し、 **[次へ]** を選択します。
 
     ![[機能の選択] ウィンドウ](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. **[確認]** タブで、 **[インストール]** をクリックして、インストール プロセスを開始します。
+5. **[確認]** タブで、 **[インストール]** を選択して、インストール プロセスを開始します。
 6. **[結果]** タブに、Windows Server バックアップ機能が Windows Server に正常にインストールされていることが示されます。
 
     ![インストールの結果](./media/backup-azure-system-state-troubleshoot/results.jpg)

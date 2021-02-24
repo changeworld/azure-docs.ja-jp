@@ -8,23 +8,23 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 11/27/2020
+ms.openlocfilehash: b0b2dd9904682121c83b22b9029097e7ee57fb11
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917858"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303760"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Cognitive Search で複合データ型をモデル化する方法
 
-Azure Cognitive Search インデックスの作成に使われる外部データセットは、さまざまな形状をしている可能性があります。 場合によっては、階層や入れ子の下部構造が含まれます。 たとえば、単一の顧客に複数の住所が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデリングの用語では、このような構造は *complex* (複合)、*compound* (複合)、*composite* (複合)、または *aggregate* (集約) データ型と呼ばれることがあります。 Azure Cognitive Search では、この概念に対して**複合型**という単語が使われます。 Azure Cognitive Search では、複合型は**複合フィールド**を使ってモデル化されます。 複合フィールドは、他の複合型も含めて任意のデータ型を使用できる子 (サブフィールド) が含まれるフィールドです。 これは、プログラミング言語の構造化されたデータ型と同様の方法で機能します。
+Azure Cognitive Search インデックスの作成に使われる外部データセットは、さまざまな形状をしている可能性があります。 場合によっては、階層や入れ子の下部構造が含まれます。 たとえば、単一の顧客に複数の住所が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデリングの用語では、このような構造は *complex* (複合)、*compound* (複合)、*composite* (複合)、または *aggregate* (集約) データ型と呼ばれることがあります。 Azure Cognitive Search では、この概念に対して **複合型** という単語が使われます。 Azure Cognitive Search では、複合型は **複合フィールド** を使ってモデル化されます。 複合フィールドは、他の複合型も含めて任意のデータ型を使用できる子 (サブフィールド) が含まれるフィールドです。 これは、プログラミング言語の構造化されたデータ型と同様の方法で機能します。
 
 複合フィールドでは、データ型に応じて、ドキュメント内の 1 つのオブジェクトまたはオブジェクトの配列が表されます。 `Edm.ComplexType` 型のフィールドでは単一のオブジェクトが表され、`Collection(Edm.ComplexType)` 型のフィールドではオブジェクトの配列が表されます。
 
 Azure Cognitive Search は、複合型とコレクションをネイティブでサポートしています。 これらの型を使うと、Azure Cognitive Search インデックス内のほとんどすべての JSON 構造をモデル化できます。 Azure Cognitive Search API の以前のバージョンでは、フラット化された行セットのみをインポートできました。 最新のバージョンでは、インデックスはソース データにより密接に調和できるようになりました。 つまり、ソース データに複合型がある場合、インデックスも複合型を持つことができます。
 
-Azure portal の**データのインポート** ウィザードで読み込むことができる [Hotels データ セット](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)から始めることをお勧めします。 ウィザードでは、ソース内の複合型が検出され、検出された構造に基づいてインデックス スキーマが提案されます。
+Azure portal の **データのインポート** ウィザードで読み込むことができる [Hotels データ セット](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)から始めることをお勧めします。 ウィザードでは、ソース内の複合型が検出され、検出された構造に基づいてインデックス スキーマが提案されます。
 
 > [!Note]
 > 複合型のサポートは、`api-version=2019-05-06` から一般提供されています。 
@@ -35,11 +35,13 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 次の JSON ドキュメントは、単純フィールドと複合フィールドで構成されています。 `Address` や `Rooms` などの複合フィールドには、サブフィールドがあります。 `Address` はドキュメント内の単一オブジェクトなので、サブフィールドには単一の値のセットがあります。 対照的に、`Rooms` のサブフィールドには、コレクション内の各オブジェクトに 1 つずつ、複数の値のセットがあります。
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,21 +50,28 @@ Azure portal の**データのインポート** ウィザードで読み込む�
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
 
+## <a name="indexing-complex-types"></a>複合型のインデックス作成
+
+インデックス作成時には、1 つのドキュメント内のすべての複合コレクションに対して最大 3,000 個の要素を持つことができます。 複合コレクションの 1 つの要素は、そのコレクションのメンバーです。そのため、部屋 (ホテルの例では唯一の複合コレクション) の場合は、各部屋が 1 つの要素となります。 上の例では、"Secret Point Motel" に 500 室の部屋がある場合、ホテルのドキュメントには 500 の部屋要素が含まれることになります。 入れ子になった複合コレクションでは、外側 (親) の要素に加えて、入れ子になった各要素もカウントされます。
+
+この制限は、複合型 (アドレスなど) や文字列コレクション (タグなど) ではなく、複合コレクションにのみ適用されます。
+
 ## <a name="creating-complex-fields"></a>複合フィールドの作成
 
-他のインデックス定義と同様に、ポータル、[REST API](/rest/api/searchservice/create-index)、または [.NET SDK](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) を使用して、複合型を含むスキーマを作成できます。 
+他のインデックス定義と同様に、ポータル、[REST API](/rest/api/searchservice/create-index)、または [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindex) を使用して、複合型を含むスキーマを作成できます。 
 
 次の例は、単純フィールド、コレクション、および複合型を含む JSON インデックス スキーマを示しています。 最上位レベルのフィールドと同様に、複合型内の各サブフィールドには型があり、場合によっては属性がある点に注意してください。 スキーマは、上記のデータ例に対応しています。 `Address` はコレクションではない複合フィールドです (1 つのホテルには 1 つの住所があります)。 `Rooms` は複合コレクション フィールドです (1 つのホテルには多くの部屋があります)。
 
@@ -93,7 +102,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 ## <a name="updating-complex-fields"></a>複合フィールドの更新
 
-一般にフィールドに適用されるすべての[再インデックス作成規則](search-howto-reindex.md)は、複合フィールドにも適用されます。 ここでいくつかの主な規則を言い換えると、フィールドの追加にはインデックスの再構築が必要ありませんが、ほとんどの修正には必要です。
+一般にフィールドに適用されるすべての[再インデックス作成規則](search-howto-reindex.md)は、複合フィールドにも適用されます。 ここで、主な規則をいくつか言い換えてみます。フィールドの複合型への追加にインデックスの再構築は必要ありませんが、修正する場合には、ほとんどの場合で必要となります。
 
 ### <a name="structural-updates-to-the-definition"></a>定義に対する構造的な更新
 
@@ -145,7 +154,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 > `$filter=Address/Country eq 'Canada'`
 
-複合コレクションのフィールドでフィルター処理するには、**ラムダ式**と [`any` および `all` 演算子](search-query-odata-collection-operators.md)を使うことができます。 その場合、ラムダ式の**範囲変数**はサブフィールドを持つオブジェクトです。 それらのサブフィールドを標準の OData パス構文で参照することができます。 たとえば、次のフィルターでは、デラックス ルームが少なくとも 1 つはあり、すべてが禁煙室であるすべてのホテルが返されます。
+複合コレクションのフィールドでフィルター処理するには、**ラムダ式** と [`any` および `all` 演算子](search-query-odata-collection-operators.md)を使うことができます。 その場合、ラムダ式の **範囲変数** はサブフィールドを持つオブジェクトです。 それらのサブフィールドを標準の OData パス構文で参照することができます。 たとえば、次のフィルターでは、デラックス ルームが少なくとも 1 つはあり、すべてが禁煙室であるすべてのホテルが返されます。
 
 > `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 

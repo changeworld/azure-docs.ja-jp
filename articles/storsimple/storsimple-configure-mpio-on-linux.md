@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183635"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745735"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -21,7 +21,6 @@ ms.locfileid: "88183635"
 
 > [!NOTE]
 > この手順は、StorSimple Cloud Appliance では使用できません。 詳細については、クラウド アプライアンスのホスト サーバーを構成する方法を参照してください。
-
 
 ## <a name="about-multipathing"></a>マルチパスについて
 マルチパス機能を使用すると、ホスト サーバーとストレージ デバイス間に複数の I/O パスを構成することができます。 これらの I/O パスは、別個のケーブル、スイッチ、ネットワーク インターフェイス、コントローラーを使用することができる物理 SAN 接続です。 マルチパスは I/O パスを集約して、集約済みのすべてのパスに関連付けられた新しいデバイスを構成します。
@@ -51,7 +50,7 @@ multipath.conf には次の 5 つのセクションがあります。
 
 - **システム レベルの既定値** *(defaults)* : システム レベルの既定値をオーバーライドすることができます。
 - **ブラックリストに載っているデバイス** *(blacklist)* : device-mapper で制御してはいけないデバイスの一覧を指定することができます。
-- **ブラックリストの例外** *(blacklist_exceptions)* : ブラックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
+- **ブラックリストの例外** *(blacklist_exceptions)* : ブロックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
 - **記憶域コントローラー固有の設定** *(devices)* : 仕入先および製品の情報を持つデバイスに適用する構成設定を指定することができます。
 - **デバイス固有の設定** *(multipaths)* : このセクションは、個々の LUN の構成設定を微調整するために使用することができます。
 
@@ -101,10 +100,10 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
         collisions:0 txqueuelen:0
         RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
     ```
-1. CentOS サーバーに *iSCSI-initiator-utils* をインストールします。 次の手順を実行して、 *iSCSI-initiator-utils*をインストールします。
+1. CentOS サーバーに *iSCSI-initiator-utils* をインストールします。 次の手順を実行して、 *iSCSI-initiator-utils* をインストールします。
    
    1. CentOS ホストに `root` としてログオンします。
-   1. *iSCSI-initiator-utils*をインストールします。 型:
+   1. *iSCSI-initiator-utils* をインストールします。 型:
       
        `yum install iscsi-initiator-utils`
    1. *iSCSI-Initiator-utils* が正常にインストールされた後で、iSCSI サービスを開始します。 型:
@@ -127,7 +126,7 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
         ```
       
        上の例から、iSCSI 環境では、2、3、4、5 の実行レベルでのブート時に実行されることが確認できます。
-1. *device-mapper-multipath*をインストールします。 型:
+1. *device-mapper-multipath* をインストールします。 型:
    
     `yum install device-mapper-multipath`
    
@@ -212,12 +211,12 @@ StorSimple デバイスに必要なものは次のとおりです。
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>手順 2:マルチパスを StorSimple ボリューム用に構成する
-既定では、すべてのデバイスが multipath.conf ファイルのブラック リストに記載されており、バイパスされます。 ブラックリストの例外を作成して、StorSimple デバイスのボリュームのマルチパスを許可する必要があります。
+既定では、すべてのデバイスが multipath.conf ファイルのブロックリストに記載されており、バイパスされます。 ブロックリストの例外を作成して、StorSimple デバイスのボリュームのマルチパスを許可する必要があります。
 
 1. `/etc/mulitpath.conf` ファイルを編集します。 型:
    
     `vi /etc/multipath.conf`
-1. multipath.conf ファイルの blacklist_exceptions セクションを見つけます。 StorSimple デバイスを、ブラックリストの例外としてこのセクションに記載する必要があります。 このファイル内の関連する行のコメントを解除して、次のように変更することができます (使用するデバイスの特定のモデルのみを使用します)。
+1. multipath.conf ファイルの blacklist_exceptions セクションを見つけます。 StorSimple デバイスを、ブロックリストの例外としてこのセクションに記載する必要があります。 このファイル内の関連する行のコメントを解除して、次のように変更することができます (使用するデバイスの特定のモデルのみを使用します)。
    
     ```config
     blacklist_exceptions {
@@ -377,9 +376,9 @@ A. 通常、マルチパスのパスが表示されないのはマルチパス �
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-Q. 自分のデバイスがホワイトリストに登録されているかどうかわかりません。
+Q. 自分のデバイスが許可されているかどうかわかりません。
 
-A. ご使用のデバイスがホワイトリストに登録されているかどうかを確認するには、次のトラブルシューティング用の対話型コマンドを使用します。
+A. ご使用のデバイスが許可されているかどうかを確認するには、次のトラブルシューティング用の対話型コマンドを使用します。
 
 ```console
 multipathd -k
@@ -449,4 +448,3 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 
 * [CentOS での MPIO の設定](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux トレーニング ガイド](http://linux-training.be/linuxsys.pdf)
-

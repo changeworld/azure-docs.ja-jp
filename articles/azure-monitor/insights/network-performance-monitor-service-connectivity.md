@@ -6,21 +6,24 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5d7c7068c4a8669cdff782267030d38ac0f73584
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326105"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832931"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)します。
 
 [Network Performance Monitor](network-performance-monitor.md) のサービス接続モニター機能を使って、TCP ポートが開いている任意のエンドポイントへのネットワーク接続を監視することができます。 対象となるエンドポイントには、Web サイト、SaaS アプリケーション、PaaS アプリケーション、および SQL データベースが含まれます。 
 
 サービス接続モニターを使用して次の機能を実行できます。 
 
-- 複数のブランチ オフィスまたは場所からアプリケーションおよびネットワーク サービスへのネットワーク接続を監視します。 アプリケーションやネットワーク サービスには、Office 365、Dynamics CRM、内部の基幹業務アプリケーション、SQL データベースなどが含まれます。
-- 組み込みテストを使って、Office 365 および Dynamics365 エンドポイントへのネットワーク接続を監視します。 
+- 複数のブランチ オフィスまたは場所からアプリケーションおよびネットワーク サービスへのネットワーク接続を監視します。 アプリケーションやネットワーク サービスには、Microsoft 365、Dynamics CRM、内部の基幹業務アプリケーション、SQL データベースなどが含まれます。
+- 組み込みテストを使って、Microsoft 365 および Dynamics 365 エンドポイントへのネットワーク接続を監視します。 
 - エンドポイントへの接続時に発生した応答時間、ネットワーク待機時間、パケット損失を確認します。
 - アプリケーション パフォーマンスの低下がネットワークに起因するものなのか、それともアプリケーション プロバイダー側の問題によるものなのかを確認します。
 - トポロジ マップ上の各ホップの影響を受けている待機時間を表示することによって、アプリケーション パフォーマンスの低下の原因となっている可能性があるネットワーク上のホット スポットを特定します。
@@ -99,7 +102,7 @@ Network Performance Monitor のダッシュボード ビューに移動します
 
 問題の原因がネットワークであると判断した後は、 **[トポロジ]** ビュー リンクを選び、トポロジ マップ上で問題のホップを確認します。 次の図に例を示します。 ノードとアプリケーション エンドポイント間の合計待機時間である 105 ミリ秒のうち、96 ミリ秒は赤で囲まれたホップに起因しています。 問題のホップを特定したら、是正措置を実行できます。 
 
-![サービス接続モニターのテスト](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![サービス接続モニターのエンドポイント トポロジ](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>診断 
 
@@ -134,4 +137,3 @@ Network Performance Monitor のダッシュボード ビューに移動します
 
 ## <a name="next-steps"></a>次のステップ
 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../log-query/log-query-overview.md)します。
-

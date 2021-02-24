@@ -12,18 +12,18 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04d5a989fcaf3cef3eea3b782842fb3255d4b317
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383939"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661104"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
 Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行されたトークン、および管理者のアクセス権に関するアクティビティ情報を含む監査ログを出力します。 この記事では、監査ログから入手できる情報の概要を示し、Azure AD B2C テナントのこのデータにアクセスする方法について説明します。
 
-監査ログ イベントは **7 日間**のみ保持されます。 より長い保持期間が必要な場合は、次に示すいずれかの方法を使用して、ログをダウンロードして保存するための計画を立てます。
+監査ログ イベントは **7 日間** のみ保持されます。 より長い保持期間が必要な場合は、次に示すいずれかの方法を使用して、ログをダウンロードして保存するための計画を立てます。
 
 > [!NOTE]
 > Azure portal の **[Azure Active Directory]** ページまたは **[Azure AD B2C]** ページの **[ユーザー]** セクションでは、個々の Azure AD B2C アプリケーションのユーザー サインインは確認できません。 そこでのサインイン イベントは、ユーザー アクティビティを示しますが、ユーザーがサインインした B2C アプリケーションに関連付けることはできません。 そのためには、この記事で後ほど説明するように、監査ログを使用する必要があります。
@@ -54,12 +54,12 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 |Section|フィールド|説明|
 |-------|-----|-----------|
 | アクティビティ | Name | 実行されたアクティビティ。 たとえば、実際のユーザー サインインを終了する "*アプリケーションへの id_token の発行*"。 |
-| 開始者 (アクター) | ObjectId | ユーザーがサインインする B2C アプリケーションの**オブジェクト ID**。 この識別子は Azure portal には表示されませんが、Microsoft Graph API を使用してアクセスできます。 |
-| 開始者 (アクター) | Spn | ユーザーがサインインする B2C アプリケーションの**アプリケーション ID**。 |
-| ターゲット | ObjectId | サインインするユーザーの**オブジェクト ID**。 |
-| 追加情報 | TenantId | Azure AD B2C テナントの**テナント ID**。 |
+| 開始者 (アクター) | ObjectId | ユーザーがサインインする B2C アプリケーションの **オブジェクト ID**。 この識別子は Azure portal には表示されませんが、Microsoft Graph API を使用してアクセスできます。 |
+| 開始者 (アクター) | Spn | ユーザーがサインインする B2C アプリケーションの **アプリケーション ID**。 |
+| ターゲット | ObjectId | サインインするユーザーの **オブジェクト ID**。 |
+| 追加情報 | TenantId | Azure AD B2C テナントの **テナント ID**。 |
 | 追加情報 | PolicyId | ユーザーのサインインに使用されるユーザー フロー (ポリシー) の **ポリシー ID**。 |
-| 追加情報 | ApplicationId | ユーザーがサインインする B2C アプリケーションの**アプリケーション ID**。 |
+| 追加情報 | ApplicationId | ユーザーがサインインする B2C アプリケーションの **アプリケーション ID**。 |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Azure portal で監査ログを表示する
 
@@ -84,7 +84,7 @@ Azure portal は、Azure AD B2C テナントの監査ログ イベントへの�
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Azure AD Reporting API を使って監査ログを取得する
 
-監査ログは、Azure Active Directory の他のアクティビティと同じパイプラインに発行されるため、[Azure Active Directory Reporting API](https://docs.microsoft.com/graph/api/directoryaudit-list) を使用してアクセスできます。 詳細については、「[Azure Active Directory Reporting API の概要](../active-directory/reports-monitoring/concept-reporting-api.md)」をご覧ください。
+監査ログは、Azure Active Directory の他のアクティビティと同じパイプラインに発行されるため、[Azure Active Directory Reporting API](/graph/api/directoryaudit-list) を使用してアクセスできます。 詳細については、「[Azure Active Directory Reporting API の概要](../active-directory/reports-monitoring/concept-reporting-api.md)」をご覧ください。
 
 ### <a name="enable-reporting-api-access"></a>Reporting API のアクセスを有効にする
 
@@ -223,4 +223,4 @@ if ($oauth.access_token -ne $null) {
 
 ## <a name="next-steps"></a>次のステップ
 
-他の管理タスクを自動化することもできます。たとえば、[Microsoft Graph を使用して Azure AD B2C ユーザーアカウントを管理します](manage-user-accounts-graph-api.md)。
+他の管理タスクを自動化することもできます。たとえば、[Microsoft Graph を使用して Azure AD B2C ユーザーアカウントを管理します](microsoft-graph-operations.md)。

@@ -1,22 +1,19 @@
 ---
 title: Red Hat Update Infrastructure | Microsoft Docs
 description: Microsoft Azure のオンデマンド Red Hat Enterprise Linux インスタンス用の Red Hat Update Infrastructure について説明します
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.reviewer: cynthn
+ms.openlocfilehash: d4af869a3bf4ba7f454ae8e5c9c9f4eb81f5939f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869220"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957454"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -89,11 +86,11 @@ Extended Update Support (EUS) リポジトリは、VM をプロビジョニン�
 * RHEL 7.6 EUS サポートは、2021 年 5 月 31 日に終了します
 * RHEL 7.7 EUS サポートは、2021 年 8 月 30 日に終了します
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM を EUS に切り替える (特定のマイナー バージョンにバージョン ロックする)
-RHEL VM を特定のマイナー リリースに固定するには、次の手順を使用します (ルートとして実行)。
+### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM 7.x を EUS に切り替える (特定のマイナー バージョンにバージョン ロックする)
+RHEL 7.x VM を特定のマイナー リリースに固定するには、次の手順を使用します (ルートとして実行)。
 
 >[!NOTE]
-> このことは、EUS が利用できるバージョンの RHEL にのみ当てはまります。 この記事の作成時点で、これには RHEL 7.2-7.7 が含まれます。 詳しくは、[Red Hat Enterprise Linux のライフ サイクル](https://access.redhat.com/support/policy/updates/errata)に関するページをご覧ください。
+> このことは、EUS が利用できるバージョンの RHEL 7.x にのみ当てはまります。 この記事の作成時点で、これには RHEL 7.2-7.7 が含まれます。 詳しくは、[Red Hat Enterprise Linux のライフ サイクル](https://access.redhat.com/support/policy/updates/errata)に関するページをご覧ください。
 
 1. EUS 以外のリポジトリを無効にします。
     ```bash
@@ -118,7 +115,45 @@ RHEL VM を特定のマイナー リリースに固定するには、次の手�
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL VM を非 EUS に再び切り替える (バージョン ロックを削除)
+### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM 8.x を EUS に切り替える (特定のマイナー バージョンにバージョン ロックする)
+RHEL 8.x VM を特定のマイナー リリースに固定するには、次の手順を使用します (ルートとして実行)。
+
+>[!NOTE]
+> このことは、EUS が利用できるバージョンの RHEL 8.x にのみ当てはまります。 この記事の作成時点で、これには RHEL 8.1-8.2 が含まれます。 詳しくは、[Red Hat Enterprise Linux のライフ サイクル](https://access.redhat.com/support/policy/updates/errata)に関するページをご覧ください。
+
+1. EUS 以外のリポジトリを無効にします。
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8'
+    ```
+
+1. EUS リポジトリ構成ファイルを取得します。
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8-eus.config
+    ```
+
+1. EUS リポジトリを追加します。
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8-eus.config install rhui-azure-rhel8-eus
+    ```
+
+1. `releasever` 変数をロックします (ルートとして実行):
+    ```bash
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > 上の命令は、RHEL マイナー リリースを現在のマイナー リリースに固定します。 アップグレードに固定しており、最新ではない将来のマイナー リリースに固定する場合は、特定のマイナー リリースを入力します。 たとえば、`echo 8.1 > /etc/yum/vars/releasever` は RHEL バージョンを RHEL 8.1 に固定します。
+
+    >[!NOTE]
+    > releasever にアクセスするためのアクセス許可の問題がある場合は、'nano/etc/yum/vars/releaseve' を使用してファイルを編集し、イメージ バージョンの詳細を追加して保存できます ('Ctrl + o'、Enter キー、'Ctrl + x' キーの順に押します)。  
+
+1. RHEL VM を更新します。
+    ```bash
+    sudo yum update
+    ```
+
+
+### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL 7.x VM を非 EUS に再び切り替える (バージョン ロックを削除)
 次をルートとして実行します。
 1. `releasever` ファイルを削除します。
     ```bash
@@ -135,6 +170,33 @@ RHEL VM を特定のマイナー リリースに固定するには、次の手�
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
     ```
 
+1. RHEL VM を更新します。
+    ```bash
+    sudo yum update
+    ```
+
+### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL 8.x VM を非 EUS に再び切り替える (バージョン ロックを削除)
+次をルートとして実行します。
+1. `releasever` ファイルを削除します。
+    ```bash
+    rm /etc/yum/vars/releasever
+     ```
+
+1. EUS リポジトリを無効にします。
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8-eus'
+   ```
+
+1. 標準リポジトリ構成ファイルを取得します。
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8.config
+    ```
+
+1. EUS リポジトリを追加します。
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8.config install rhui-azure-rhel8
+    ```
+    
 1. RHEL VM を更新します。
     ```bash
     sudo yum update

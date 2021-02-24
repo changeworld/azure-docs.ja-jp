@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515024"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016874"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>StorSimple デバイス マネージャー サービスを使用してストレージ アカウント資格情報を管理する
 
@@ -33,7 +33,7 @@ StorSimple デバイス マネージャー サービス ブレードの **[構�
 
 このチュートリアルでは、ストレージ アカウント資格情報を追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。
 
- ![ストレージ アカウントの資格情報の一覧](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![ストレージ アカウントの資格情報の一覧 1](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 ストレージ アカウントには、クラウド サービス プロバイダーを使用してストレージ アカウントにアクセスするために StorSimple デバイスで使用される資格情報が含まれます。 Microsoft Azure ストレージ アカウントの場合、これらはアカウント名やプライマリ アクセス キーなどの資格情報です。 
 
@@ -55,7 +55,7 @@ StorSimple デバイス マネージャー サービス ブレードの **[構�
 StorSimple デバイスで使用できるストレージ アカウントには、次の 3 つの種類があります。
 
 * **自動生成されたストレージ アカウント** - 名前のとおり、このストレージ アカウントは、サービスが最初に作成されるときに自動的に生成されます。 このストレージ アカウントの作成方法の詳細については、「[手順 1. 新しいサービスを作成する](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service)」(「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」) を参照してください。 
-* **サービス サブスクリプションのストレージ アカウント** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウントです。 このストレージ アカウントの作成方法の詳細については、 [Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)に関するページを参照してください。 
+* **サービス サブスクリプションのストレージ アカウント** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウントです。 このストレージ アカウントの作成方法の詳細については、 [Azure ストレージ アカウント](../storage/common/storage-account-create.md)に関するページを参照してください。 
 * **サービス サブスクリプションの外部のストレージ アカウント** - これらは、サービスに関連付けられていない、サービスが作成される前に存在していた可能性のある Azure ストレージ アカウントです。
 
 ## <a name="add-a-storage-account"></a>ストレージ アカウントの追加
@@ -102,7 +102,7 @@ Azure ストレージ アカウントの資格情報を追加するには、次�
 
 1. StorSimple デバイス マネージャー サービスに移動します。 **[構成]** セクションで **[ストレージ アカウントの資格情報]** をクリックします。
 
-    ![ストレージ アカウントの資格情報](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![ストレージ アカウントの資格情報 2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. **[ストレージ アカウントの資格情報]** ブレードで、ストレージ アカウント資格情報の一覧から編集する資格情報を選択してクリックします。 
 
@@ -137,7 +137,7 @@ Azure ストレージ アカウントの資格情報を追加するには、次�
 
 セキュリティ上の理由から、データ センターではキー ローテーションが必要になることがよくあります。 ストレージ アカウントは、各 Microsoft Azure サブスクリプションにつき 1 つまたは複数作成できます。 これらのアカウントへのアクセスは、各ストレージ アカウントのサブスクリプションとアクセス キーによって制御されます。 
 
-ストレージ アカウントを作成するときに、Microsoft Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。 2 つのストレージ アクセス キーがあると、ストレージ サービスまたはそのサービスへのアクセスを中断することなくキーを再生成できます。 現在使用されているキーは*プライマリ* キーと呼ばれ、バックアップ キーは*セカンダリ* キーと呼ばれます。 Microsoft Azure StorSimple デバイスがクラウド ストレージ サービス プロバイダーにアクセスするときは、これら 2 つのキーのどちらかを指定する必要があります。
+ストレージ アカウントを作成するときに、Microsoft Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。 2 つのストレージ アクセス キーがあると、ストレージ サービスまたはそのサービスへのアクセスを中断することなくキーを再生成できます。 現在使用されているキーは *プライマリ* キーと呼ばれ、バックアップ キーは *セカンダリ* キーと呼ばれます。 Microsoft Azure StorSimple デバイスがクラウド ストレージ サービス プロバイダーにアクセスするときは、これら 2 つのキーのどちらかを指定する必要があります。
 
 ## <a name="what-is-key-rotation"></a>キーのローテーションとは
 
@@ -159,11 +159,11 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
 
 3. **[...More]\(...その他\)** をクリックし、ローテーションを実行するために **[Sync access key]\(アクセスキーの同期\)** を選択します。   
 
-    ![キーの同期](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![キーの同期 2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. StorSimple デバイス マネージャー サービスで、Microsoft Azure Storage サービスで以前に変更されたキーを更新する必要があります。 プライマリ アクセス キーが変更 (再生成) されている場合は、 **[プライマリ]** キーを選択します。 セカンダリ キーが変更されている場合は、 **[セカンダリ]** キーを選択します。 **[キーの同期]** をクリックします。
       
-      ![キーの同期](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![キーの同期 3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 キーが正常に同期されると、通知が表示されます。
 
@@ -179,4 +179,3 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple のセキュリティの詳細](storsimple-8000-security.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
-

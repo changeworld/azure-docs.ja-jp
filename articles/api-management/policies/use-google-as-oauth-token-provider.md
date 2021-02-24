@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: d606d29d84cd5917c74efe188ae02627ad55d4ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f6c9fe2146414f78e90d6ade1a00045cdf3a04f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442368"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078019"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>Google OAuth トークンを使用してアクセスを承認する
 
-この記事では、Google を OAuth トークン プロバイダーとして使用して、エンドポイントへのアクセスを承認する方法を示す、Azure API Management ポリシーのサンプルを紹介します。 ポリシー コードを設定または編集するには、[ポリシーの設定または編集](../set-edit-policies.md)に関するページで説明されている手順に従います。 他の例については、[ポリシーのサンプル](../policy-samples.md)に関するページをご覧ください。
+この記事では、Google を OAuth トークン プロバイダーとして使用して、エンドポイントへのアクセスを承認する方法を示す、Azure API Management ポリシーのサンプルを紹介します。 ポリシー コードを設定または編集するには、[ポリシーの設定または編集](../set-edit-policies.md)に関するページで説明されている手順に従います。 他の例については、[ポリシーのサンプル](../policy-reference.md)に関するページをご覧ください。
 
 ## <a name="policy"></a>ポリシー
 
@@ -35,5 +35,4 @@ ms.locfileid: "75442368"
 APIM ポリシーの詳細については、以下をご覧ください。
 
 + [変換ポリシー](../api-management-transformation-policies.md)
-+ [ポリシーのサンプル](../policy-samples.md)
-
++ [ポリシーのサンプル](../policy-reference.md)

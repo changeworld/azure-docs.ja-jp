@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f7d4403fa480aa03868df5a0daa09e54ce8ecda7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: abe3fbb9fb48021be7c44ddded436460633807ce
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286225"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094777"
 ---
 # <a name="ncv2-series"></a>NCv2 シリーズ
 
@@ -20,13 +20,14 @@ NCv2 シリーズ VM は NVIDIA Tesla P100 GPU を備えています。 これ�
 
 NC24rs v2 構成には、密結合並列コンピューティングのワークロード向けに最適化された、低待機時間かつ高スループットのネットワーク インターフェイスが搭載されています。
 
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション: サポートされていません
-
-メモリ保持更新: サポートされていません
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされていません<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+Nvidia NVLink Interconnect:サポートされていません
 
 > [!IMPORTANT]
 > この VM シリーズでは、ご利用のサブスクリプションの vCPU (コア) クォータが、各リージョンで 0 に初期設定されています。 このシリーズについては、[提供リージョン](https://azure.microsoft.com/regions/services/)で [vCPU クォータの引き上げを要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)してください。

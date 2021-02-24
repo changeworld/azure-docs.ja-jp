@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の ST_DISTANCE
 description: Azure Cosmos DB での SQL システム関数 ST_DISTANCE について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 11/23/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 02844569137a46ea030b2189191b84a9db24ed22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 736cf488efbdc095823a1fa603f191442d907de3
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537297"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004468"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  2 つの GeoJSON Point、Polygon、MultiPolygon、または LineString 式間の距離を返します。 詳細については、[地理空間データと GeoJSON 位置データ](sql-query-geospatial-intro.md)に関する記事を参照してください。
   
 ## <a name="syntax"></a>構文

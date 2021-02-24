@@ -1,23 +1,18 @@
 ---
 title: 新しいファイルや更新されたファイルを増分コピーするためのデータ ツール
 description: Azure データ ファクトリを作成してから、データのコピー ツールを使用して LastModifiedDate を基に新しいファイルを増分的に読み込みます。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/09/2020
+ms.openlocfilehash: f2f0b3e452b39cb81f435dbee4a3b0f524b0213d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730147"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361147"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
@@ -52,7 +47,7 @@ ms.locfileid: "84730147"
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 **[分析]**  >  **[データ ファクトリ]** を選択します。
+1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 **[統合]**  >  **[Data Factory]** を選択します。
 
    ![データ ファクトリの選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -94,7 +89,7 @@ ms.locfileid: "84730147"
 
     c. **[トリガーの種類]** で、 **[Tumbling Window]\(タンブリング ウィンドウ\)** を選択します。
 
-    d. **[Recurrence]\(繰り返し\)** で、**15 分**と指定します。
+    d. **[Recurrence]\(繰り返し\)** で、**15 分** と指定します。
 
     e. **[次へ]** を選択します。
 

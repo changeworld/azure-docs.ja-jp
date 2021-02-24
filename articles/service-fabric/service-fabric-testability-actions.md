@@ -1,17 +1,17 @@
 ---
 title: Azure マイクロサービスでの障害をシミュレートする
 description: この記事は、Microsoft Azure Service Fabric の Testability アクションについて説明します。
-author: motanv
+author: georgewallace
 ms.topic: conceptual
 ms.date: 06/07/2017
-ms.author: motanv
+ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8b1d4ae42fa033c03bd82ae5cee5794d98c23c65
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aea918f75ad9c8aa58b5201d2fdd967794085438
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022175"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547079"
 ---
 # <a name="testability-actions"></a>Testability アクション
 Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。 これらは、Testability アクションとして公開されます。 これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。 これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。

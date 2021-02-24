@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213934"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054959"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -37,17 +37,21 @@ HTTP バインドの詳細については、[概要](./functions-bindings-http-w
 ```cs
 [FunctionName("HttpTriggerCSharp")]
 public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] 
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]
     HttpRequest req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -100,11 +104,15 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -128,111 +136,6 @@ public static string Run(Person person, ILogger log)
 public class Person {
      public string Name {get; set;}
 }
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function(context, req) {
-    context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
-
-    if (req.query.name || (req.body && req.body.name)) {
-        context.res = {
-            // status defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-    "scriptFile": "__init__.py",
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-Python コードを次に示します。
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -421,6 +324,166 @@ public HttpResponseMessage run(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function(context, req) {
+    context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
+
+    if (req.query.name || (req.body && req.body.name)) {
+        context.res = {
+            // status defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、*function.json* ファイルのトリガー バインドと、[PowerShell 関数](functions-reference-node.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+$body = "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
+
+if ($name) {
+    $body = "Hello, $name. This HTTP triggered function executed successfully."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body       = $body
+})
+```
+
+
+# <a name="python"></a>[Python](#tab/python)
+
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "$return"
+        }
+    ]
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+Python コードを次に示します。
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -448,14 +511,6 @@ public static Task<IActionResult> Run(
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-属性は、JavaScript ではサポートされていません。
-
-# <a name="python"></a>[Python](#tab/python)
-
-属性は、Python ではサポートされていません。
-
 # <a name="java"></a>[Java](#tab/java)
 
 この例では、[HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) 属性の使用方法を示します。
@@ -473,6 +528,18 @@ public HttpResponseMessage<String> HttpTrigger(
 ```
 
 完全な例については、[トリガーの例](#example)を参照してください。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
+# <a name="python"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
 
 ---
 
@@ -565,47 +632,6 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Node では、Functions ランタイムによって、`context` オブジェクトから要求本文が提供されます。 詳しくは、[JavaScript トリガーの例](#example)をご覧ください。
-
-次の例では、`context.bindingData` からルート パラメーターを読み取る方法を示します。
-
-```javascript
-module.exports = function (context, req) {
-
-    var category = context.bindingData.category;
-    var id = context.bindingData.id;
-    var message = `Category: ${category}, ID: ${id}`;
-
-    context.res = {
-        body: message;
-    }
-
-    context.done();
-}
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-関数の実行コンテキストは、`func.HttpRequest` として宣言されたパラメーターを介して公開されます。 このインスタンスを使用すると、関数で、データ ルート パラメーター、クエリ文字列の値、HTTP 応答を返すことができるメソッドにアクセスできます。
-
-定義したら、`route_params` メソッドを呼び出すことによって、ルート パラメーターを関数に使用できます。
-
-```python
-import logging
-
-import azure.functions as func
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
-
-    category = req.route_params.get('category')
-    id = req.route_params.get('id')
-    message = f"Category: {category}, ID: {id}"
-
-    return func.HttpResponse(message)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 関数の実行コンテキストは、`HttpTrigger` 属性で宣言されたプロパティです。 属性を使用すると、ルート パラメーター、承認レベル、HTTP 動詞、受信要求インスタンスを定義できます。
@@ -633,6 +659,63 @@ public class HttpTriggerJava {
         return request.createResponseBuilder(HttpStatus.OK).body(message).build();
     }
 }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Node では、Functions ランタイムによって、`context` オブジェクトから要求本文が提供されます。 詳しくは、[JavaScript トリガーの例](#example)をご覧ください。
+
+次の例では、`context.bindingData` からルート パラメーターを読み取る方法を示します。
+
+```javascript
+module.exports = function (context, req) {
+
+    var category = context.bindingData.category;
+    var id = context.bindingData.id;
+    var message = `Category: ${category}, ID: ${id}`;
+
+    context.res = {
+        body: message;
+    }
+
+    context.done();
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+*function.json* ファイルで宣言されたルート パラメーターは、`$Request.Params` オブジェクトのプロパティとしてアクセスできます。
+
+```powershell
+$Category = $Request.Params.category
+$Id = $Request.Params.id
+
+$Message = "Category:" + $Category + ", ID: " + $Id
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $Message
+})
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+関数の実行コンテキストは、`func.HttpRequest` として宣言されたパラメーターを介して公開されます。 このインスタンスを使用すると、関数で、データ ルート パラメーター、クエリ文字列の値、HTTP 応答を返すことができるメソッドにアクセスできます。
+
+定義したら、`route_params` メソッドを呼び出すことによって、ルート パラメーターを関数に使用できます。
+
+```python
+import logging
+
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    category = req.route_params.get('category')
+    id = req.route_params.get('id')
+    message = f"Category: {category}, ID: {id}"
+
+    return func.HttpResponse(message)
 ```
 
 ---
@@ -666,9 +749,13 @@ public class HttpTriggerJava {
 }
 ```
 
+ルート パラメーターを使用すると、関数に対して `invoke_URL_template` が自動的に作成されます。 クライアントは、URL を使って関数を呼び出すときにその URL に渡す必要があるパラメーターについて、URL テンプレートを使用して理解することができます。 [Azure portal](https://portal.azure.com) で HTTP によってトリガーされる関数のいずれかに移動し、 **[関数の URL の取得]** を選択します。
+
+[List 関数](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions)または [Get 関数](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)に対して Azure Resource Manager API を使用して、`invoke_URL_template` にプログラムでアクセスすることができます。
+
 ## <a name="working-with-client-identities"></a>クライアント ID の操作
 
-関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)として使用できます。 
+関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)として使用できます。
 
 また、この情報はバインディング データから参照することもできます。 この機能は、Functions 2.x 以降の Functions ランタイムのみで使用可能です。 また、現在のところ .NET 言語でのみ使用可能です。
 
@@ -738,7 +825,15 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
 
@@ -746,9 +841,6 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
 
-# <a name="java"></a>[Java](#tab/java)
-
-認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
 
 ---
 
@@ -758,11 +850,17 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="obtaining-keys"></a>キーを入手する
 
-キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示には、新しい値を作成したり、新しい値にキーをロールしたり、[Azure ポータル](https://portal.azure.com)で HTTP トリガー機能に移動して、**管理**を選択します。
+キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示したり、新しいものを作成したり、新しい値にキーをロールしたりするには、[Azure portal](https://portal.azure.com) で HTTP によってトリガーされる関数のいずれかに移動して、 **[関数キー]** を選択します。
 
-![ポータルでのファンクション キーを管理します。](./media/functions-bindings-http-webhook/manage-function-keys.png)
+ホスト キーを管理することもできます。 [Azure portal](https://portal.azure.com) で関数アプリに移動し、[**アプリ キー]** を選択します。
 
-[Key Management API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) を使用して、関数キーをプログラムで取得することができます。
+関数およびホスト キーは、Azure Resource Manager API を使用してプログラムで取得できます。 [List 関数キー](/rest/api/appservice/webapps/listfunctionkeys)と [List ホスト キー](/rest/api/appservice/webapps/listhostkeys)への API があります。デプロイ スロットを使用する場合の同等の API は、[List 関数キー スロット](/rest/api/appservice/webapps/listfunctionkeysslot)と [List ホスト キー スロット](/rest/api/appservice/webapps/listhostkeysslot)です。
+
+また、[関数シークレットの作成または更新](/rest/api/appservice/webapps/createorupdatefunctionsecret)、[関数シークレット スロットの作成または更新](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)、[ホスト シークレットの作成または更新](/rest/api/appservice/webapps/createorupdatehostsecret)および[ホスト シークレット スロットの作成または更新](/rest/api/appservice/webapps/createorupdatehostsecretslot) API を使用して、プログラムで新しい関数およびホスト キーを作成することもできます。
+
+関数およびホスト キーは、[関数シークレットの削除](/rest/api/appservice/webapps/deletefunctionsecret)、[関数シークレット スロットの削除](/rest/api/appservice/webapps/deletefunctionsecretslot)、[ホスト シークレットの削除](/rest/api/appservice/webapps/deletehostsecret)、および[ホスト シークレット スロットの削除](/rest/api/appservice/webapps/deletehostsecretslot) API を使用して、プログラムで削除できます。
+
+[従来のキー管理 API を使用して関数キーを取得する](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)こともできますが、代わりに Azure Resource Manager API を使用することをお勧めします。
 
 ## <a name="api-key-authorization"></a>API キーの承認
 

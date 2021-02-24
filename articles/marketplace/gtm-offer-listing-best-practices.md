@@ -4,15 +4,15 @@ description: Microsoft AppSource と Azure Marketplace のオファーを市場�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 07/06/2020
-ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816271"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492091"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
@@ -48,11 +48,11 @@ ms.locfileid: "88816271"
 
 ### <a name="categories"></a>Categories
 
-Microsoft AppSource と Azure Marketplace は、顧客の固有の要件に対応する、2 つの異なるオンライン ストアです。 Azure Marketplace は、Azure 上でソリューションを構築する IT プロフェッショナルと開発者を対象としています。  Microsoft AppSource は、ビジネスや業界の SaaS アプリケーション、Dynamics 365 アドイン、Microsoft 365 アドイン、および Power Platform アプリを探しているビジネス ユーザーを対象としています。
+Microsoft AppSource と Azure Marketplace は、さまざまな種類のソリューションを提供するオンライン ストアです。 Azure Marketplace では、Azure 上または Azure 向けに構築された IT ソリューションが提供されます。  Microsoft AppSource では、産業用 SaaS アプリケーション、Dynamics 365 アドイン、Microsoft 365 アドイン、Power Platform アプリなどのビジネス ソリューションが提供されます。
 
-カテゴリとサブカテゴリは、対象ユーザーに基づいて各オンライン ストアにマップされます。 プランは、プランの種類、プランのトランザクション機能、カテゴリ/サブカテゴリの選択に応じて、Microsoft AppSource または Azure Marketplace に公開されます。 
+カテゴリとサブカテゴリは、ソリューションの種類に基づいて各オンライン ストアにマップされています。 プランは、プランの種類、プランのトランザクション機能、カテゴリ/サブカテゴリの選択に応じて、Microsoft AppSource または Azure Marketplace に公開されます。 
 
-プランと対象ユーザーに最適なカテゴリとサブカテゴリを選択します。 選択できるオプションは次のとおりです。
+ソリューションの種類に最も合ったカテゴリとサブカテゴリを選択します。 選択できるオプションは次のとおりです。
 
 * プライマリ カテゴリとセカンダリ カテゴリを含む、最大 2 つのカテゴリ (省略可能)。
 * プライマリ カテゴリ、セカンダリ カテゴリ、またはその両方についてそれぞれ最大 2 つのサブカテゴリ。 サブカテゴリを選択しない場合でも、選択したカテゴリのみで検出できます。
@@ -61,7 +61,8 @@ Microsoft AppSource と Azure Marketplace は、顧客の固有の要件に対�
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>重要: SaaS プランと Microsoft 365 アドイン
 
-マーケットプレースの顧客がプランを表示および購入する方法にトランザクション機能がどのように影響するかについての詳細は、[プランの種類別のガイド](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)を参照してください。 SaaS オファーでは、オファーのトランザクション機能だけでなく、選択するカテゴリによって、オファーが発行されるオンライン ストアが決まります。
+マーケットプレースの顧客がプランを表示および購入する方法にトランザクション機能がどのように影響するかについての詳細は、[コマーシャル マーケットプレースでの取引](marketplace-commercial-transaction-capabilities-and-considerations.md)を参照してください。 SaaS オファーでは、オファーのトランザクション機能だけでなく、選択するカテゴリによって、オファーが発行されるオンライン ストアが決まります。
+
 
 | SaaS プラン    | SaaS プラン   | SaaS プラン  | SaaS プラン   | SaaS プラン   | SaaS プラン   | SaaS プラン    | 該当するオンライン ストア| 該当するオンライン ストア |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
@@ -129,8 +130,8 @@ AppSource で選択した製品に表示されるオファーについて、ア�
 ## <a name="link-to-your-offer-page-from-your-website"></a>自社の Web サイトからオファーのページにリンクする
 
 自社サイトの AppSource または Marketplace バッジからコマーシャル マーケットプレースのリストにリンクする場合は、URL の末尾に次のクエリ パラメーターを含めることで、強力な分析やレポートに対応できます。
-* **src**:トラフィックが AppSource にルーティングされる元のソースを含めます (Web サイト、LinkedIn、Facebook など)。
-* **mktcmpid**:マーケティング キャンペーン ID。文字、数字、アンダースコア、およびハイフンを組み合わせて 16 文字までを入力できます (たとえば、*blogpost_12*)。
+* **src** :トラフィックが AppSource にルーティングされる元のソースを含めます (Web サイト、LinkedIn、Facebook など)。
+* **mktcmpid** :マーケティング キャンペーン ID。文字、数字、アンダースコア、およびハイフンを組み合わせて 16 文字までを入力できます (たとえば、 *blogpost_12* )。
 
 次の URL の例には、前述のクエリ パラメーターの両方が含まれています。`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

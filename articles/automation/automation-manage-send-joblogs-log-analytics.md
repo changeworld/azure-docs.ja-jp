@@ -3,14 +3,14 @@ title: Azure Monitor ログに Azure Automation のジョブ データを転送�
 description: この記事では、ジョブの状態と Runbook ジョブ ストリームを Azure Monitor ログに送信する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 05/22/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004751"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182871"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Monitor ログに Azure Automation のジョブ データを転送する
 
@@ -22,37 +22,57 @@ Azure Automation では、Runbook ジョブの状態とジョブ ストリーム
 * Automation アカウントをまたいでジョブどうしを関連付ける。
 * カスタム ビューと検索クエリを使用して、Runbook の結果、Runbook ジョブの状態、その他の関連する主要な指標やメトリックを視覚化します。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="prerequisites-and-deployment-considerations"></a>前提条件とデプロイに関する考慮事項
+## <a name="prerequisites"></a>前提条件
 
 Azure Monitor ログへの Automation ログの送信を開始するには、次のものが必要です。
 
 * [Azure PowerShell](/powershell/azure/) の最新リリース。
-* Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの使用](../azure-monitor/overview.md)に関するページを参照してください
+
+* Log Analytics ワークスペースとそのリソース ID。 詳細については、[Azure Monitor ログの使用](../azure-monitor/overview.md)に関するページを参照してください
+
 * Azure Automation アカウントのリソース ID。
 
-自分の Azure Automation アカウントのリソース ID を調べるには、次のコマンドを使用します。
+## <a name="how-to-find-resource-ids"></a>リソース ID を見つける方法
 
-```powershell-interactive
-# Find the ResourceId for the Automation account
-Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
-```
+1. 自分の Azure Automation アカウントのリソース ID を調べるには、次のコマンドを使用します。
 
-自分の Log Analytics ワークスペースのリソース ID を調べるには、次の PowerShell コマンドを実行します。
+    ```powershell-interactive
+    # Find the ResourceId for the Automation account
+    Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
+    ```
 
-```powershell-interactive
-# Find the ResourceId for the Log Analytics workspace
-Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
-```
+2. **ResourceID** の値をコピーします。
+
+3. Log Analytics ワークスペースのリソース ID を見つけるには、次のコマンドを使用します。
+
+    ```powershell-interactive
+    # Find the ResourceId for the Log Analytics workspace
+    Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+    ```
+
+4. **ResourceID** の値をコピーします。
+
+特定のリソース グループの結果を返すには、`-ResourceGroupName` パラメーターを含めます。 詳細については、「[Get-AzResource](/powershell/module/az.resources/get-azresource)」を参照してください。
 
 前のコマンドの出力に複数の Automation アカウントまたはワークスペースが存在する場合、Automation アカウントの完全なリソース ID に含まれる関連するプロパティ (名前など) を次の手順に従って見つけることができます。
 
-1. Azure portal の **Automation アカウント** ページから Automation アカウントを選択します。 
-2. 選択した Automation アカウントのページの **[アカウント設定]** で、 **[プロパティ]** を選択します。  
-3. **[プロパティ]** ページで、以下の情報を書き留めます。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. Azure portal の **Automation アカウント** ページから Automation アカウントを選択します。
+1. 選択した Automation アカウントのページの **[アカウント設定]** で、 **[プロパティ]** を選択します。
+1. **[プロパティ]** ページで、以下の情報を書き留めます。
 
-    ![Automation アカウントのプロパティ](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)。
+    ![Automation アカウントのプロパティ](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+
+## <a name="configure-diagnostic-settings"></a>診断設定を構成する
+
+Automation の診断設定では、次のプラットフォーム ログとメトリック データの転送がサポートされています。
+
+* JobLogs
+* JobStreams
+* DSCNodeStatus
+* メトリック - 合計ジョブ数、更新プログラムのデプロイ マシンの合計実行回数、更新プログラムのデプロイの合計実行回数
+
+Automation ログの Azure Monitor ログへの送信を開始するには、[診断設定の作成](../azure-monitor/platform/diagnostic-settings.md)を確認して、プラットフォーム ログを送信するように診断設定を構成するために使用できる機能と方法を理解します。
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
 
@@ -102,38 +122,9 @@ Azure Automation の診断により、`AzureDiagnostics` というタグの付�
 | ResourceProvider | リソース プロバイダー。 値は MICROSOFT.AUTOMATION です。 |
 | ResourceType | リソースの種類。 値は AUTOMATIONACCOUNTS です。 |
 
-## <a name="set-up-integration-with-azure-monitor-logs"></a>Azure Monitor ログとの統合の設定
-
-1. お使いのコンピューターで、 **[スタート]** 画面から Windows PowerShell を起動します。
-2. 次の PowerShell コマンドを実行します。`$automationAccountId` と `$workspaceId` の値は、前のセクションで記録した値に置き換えます。
-
-   ```powershell-interactive
-   $workspaceId = "resource ID of the log analytics workspace"
-   $automationAccountId = "resource ID of your Automation account"
-
-   Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
-   ```
-
-このスクリプトを実行した後、Azure Monitor ログに書き込まれた新しい `JobLogs` や `JobStreams` のレコードが表示され始めるまでに、1 時間ほどかかる場合があります。
-
-ログを表示するには、Log Analytics のログ検索で次のクエリを実行します: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
-
-### <a name="verify-configuration"></a>構成の確認
-
-Automation アカウントから Log Analytics ワークスペースにログが送信されていることを確認するには、次の PowerShell コマンドを使用して、Automation アカウントに診断が正しく構成されていることを確認します。
-
-```powershell-interactive
-Get-AzDiagnosticSetting -ResourceId $automationAccountId
-```
-
-出力で次のことを確認します。
-
-* `Logs` の下の `Enabled` の値が True であること。
-* `WorkspaceId` が、Log Analytics ワークスペースの `ResourceId` の値に設定されていること。
-
 ## <a name="view-automation-logs-in-azure-monitor-logs"></a>Azure Monitor ログでの Automation ログの確認
 
-Azure Monitor ログへの Automation ジョブ ログの送信を開始したので、次は Azure Monitor ログ内でこれらのログに対して何ができるかを確認しましょう。
+これで、Automation ジョブ ストリームとログの Azure Monitor ログへの送信が開始されたので、Azure Monitor ログの内部でこれらのログを使用して何ができるかを見てみましょう。
 
 ログを表示するには、次のクエリを実行します。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
@@ -163,26 +154,41 @@ Azure Monitor ログへの Automation ジョブ ログの送信を開始した�
 
 ### <a name="view-job-streams-for-a-job"></a>ジョブのジョブ ストリームを確認する
 
-ジョブのデバッグを行っているときに、ジョブ ストリームの確認が必要になることもあります。 次のクエリは、GUID が 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0 である 1 つのジョブのすべてのストリームを表示します。
+ジョブのデバッグを行っているときに、ジョブ ストリームの確認が必要になることもあります。 次のクエリは、GUID が `2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0` である 1 つのジョブのすべてのストリームを示しています。
 
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort by TimeGenerated asc | project ResultDescription`
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0"
+| sort by TimeGenerated asc
+| project ResultDescription
+```
 
 ### <a name="view-historical-job-status"></a>ジョブの状態の履歴を確認する
 
 最後に、ジョブの履歴を時系列で視覚化することが必要になる場合があります。 次のクエリを使うと、ジョブの状態を時系列で検索できます。
 
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`
-<br> ![Log Analytics でのジョブの状態の履歴を示すグラフ](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
-
-## <a name="remove-diagnostic-settings"></a>診断設定を削除する
-
-Automation アカウントから診断設定を削除するには、次のコマンドを実行します。
-
-```powershell-interactive
-$automationAccountId = "[resource ID of your Automation account]"
-
-Remove-AzDiagnosticSetting -ResourceId $automationAccountId
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started"
+| summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)
 ```
+
+![Log Analytics でのジョブの状態の履歴を示すグラフ](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)
+
+### <a name="filter-job-status-output-converted-into-a-json-object"></a>JSON オブジェクトに変換されたジョブの状態の出力をフィルター処理する
+
+最近、Log Analytics サービスで Automation ログ データが `AzureDiagnostics` テーブルに書き込まれる場合の動作が変更されており、JSON プロパティが個別のフィールドに分割されなくなりました。 出力ストリーム内のオブジェクトを個別の列として JSON 形式で書式設定するように Runbook を構成している場合は、それらのプロパティにアクセスするために、そのフィールドを JSON オブジェクトに解析するようにクエリを再構成する必要があります。 これは、[parsejson](/azure/data-explorer/kusto/query/samples?pivots=#parsejson) を使用して、既知のパスにある特定の JSON 要素にアクセスすることによって実現されます。
+
+たとえば、Runbook によって、出力ストリーム内の *ResultDescription* プロパティが複数のフィールドを含む JSON 形式で書式設定されるとします。 **Status** という名前のフィールドで指定されるエラー状態にあるジョブの状態を検索するには、次のクエリ例を使用して、**Failed** の状態を持つ *ResultDescription* を検索します。
+
+```kusto
+AzureDiagnostics
+| where Category == 'JobStreams'
+| extend jsonResourceDescription = parse_json(ResultDescription)
+| where jsonResourceDescription.Status == 'Failed'
+```
+
+![Log Analytics 履歴ジョブ ストリームの JSON 形式](media/automation-manage-send-joblogs-log-analytics/job-status-format-json.png)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: da0c00f0b4a8f2c49996fbcb9b34ee4a1ab65273
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 748c3f8e38b98b2cbdcfecdf7d755827230fdb3d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856648"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962469"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -54,7 +54,7 @@ ms.locfileid: "85856648"
 
 **リソース**
 
-詳細については、「[テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)」を参照してください。
+詳細については、「[テンポラル テーブル](/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)」を参照してください。
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>テーブルの移行には、hierarchyid データ型を持つ 1 つまたは複数の列が含まれます
 
@@ -90,7 +90,7 @@ ms.locfileid: "85856648"
      select * from sys.triggers where is_disabled =0
      ```
 
-2. 「[DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)」に記載されている手順を使用して、ソース データベースのトリガーを無効にします。
+2. 「[DISABLE TRIGGER (Transact-SQL)](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)」に記載されている手順を使用して、ソース データベースのトリガーを無効にします。
 
 3. 移行アクティビティを再実行します。
 

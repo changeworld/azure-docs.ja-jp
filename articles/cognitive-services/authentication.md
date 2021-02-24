@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232748"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363325"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -65,7 +65,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>マルチサービスのサブスクリプション キーによる認証
 
 >[!WARNING]
-> 現在のところ、以下のサービスではマルチサービス キーがサポートされて**いません**。QnA Maker、Speech Services、Custom Vision、および Anomaly Detector。
+> 現在のところ、以下のサービスではマルチサービス キーがサポートされて **いません** 。QnA Maker、Speech Services、Custom Vision、および Anomaly Detector。
 
 この方法も、サブスクリプション キーを使用して要求を認証します。 主な違いは、サブスクリプション キーが特定のサービスに関連付けられておらず、単一のキーを使用して複数の Cognitive Services に対する要求を認証できることです。 リージョン別の提供状況、サポートされている機能、および価格については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)」を参照してください。
 
@@ -177,6 +177,6 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ## <a name="see-also"></a>関連項目
 
-* [Cognitive Services とは](welcome.md)
+* [Cognitive Services とは](./what-are-cognitive-services.md)
 * [Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)
 * [カスタム サブドメイン](cognitive-services-custom-subdomains.md)

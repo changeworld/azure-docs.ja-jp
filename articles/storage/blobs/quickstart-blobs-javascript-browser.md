@@ -7,13 +7,13 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1f3ec5b2b1c46b40c6f99836fc10778c98b59d4c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432009"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001900"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,7 +26,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 * [API リファレンス ドキュメント](/javascript/api/@azure/storage-blob)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [サンプル](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +66,7 @@ Blob Storage には、3 種類のリソースがあります。
 
 ### <a name="create-a-cors-rule"></a>CORS ルールを作成する
 
-Web アプリケーションでクライアントから BLOB ストレージにアクセスするには、アカウントを構成して、[クロス オリジン リソース共有](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効にしておく必要があります。
+Web アプリケーションでクライアントから BLOB ストレージにアクセスするには、アカウントを構成して、[クロス オリジン リソース共有](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効にしておく必要があります。
 
 Azure portal で、自分のストレージ アカウントを選択します。 新しい CORS ルールを定義するために、 **[設定]** セクションに移動し、 **[CORS]** を選択します。 このクイック スタートでは、オープン CORS ルールを作成します。
 
@@ -76,10 +76,10 @@ Azure portal で、自分のストレージ アカウントを選択します。
 
 |設定  |値  | 説明 |
 |---------|---------|---------|
-| **許可されたオリジン** | **\*** | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
+| **許可されたオリジン** | **\** _ | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `_` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
 | **許可されたメソッド** | **DELETE**、**GET**、**HEAD**、**MERGE**、**POST**、**OPTIONS**、**PUT** | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
-| **許可されたヘッダー** | **\*** | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `*` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
-| **公開されるヘッダー** | **\*** | アカウントによって許可される応答ヘッダーの一覧です。 値を `*` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
+| **許可されたヘッダー** | **\** _ | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `_` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
+| **公開されるヘッダー** | **\** _ | アカウントによって許可される応答ヘッダーの一覧です。 値を `_` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
 | **最長有効期間** | **86400** | ブラウザーがプレフライト OPTIONS 要求をキャッシュする最大時間 (秒)。 値を *86,400* にすると、キャッシュが丸 1 日保持されます。 |
 
 この表の値を各フィールドに入力したら、 **[保存]** ボタンをクリックします。
@@ -226,7 +226,7 @@ Azure Blob Storage サービスとやり取りするための [BlobServiceClient
 
 *index.js* ファイルを保存します。
 
-このコードでは、[ContainerClient.deleteBlob](/javascript/api/@azure/storage-blob/containerclient#deleteblob-string--blobdeleteoptions-) 関数を呼び出して、一覧で選択された各ファイルを削除しています。 その後、先ほど紹介した `listFiles` 関数を呼び出して、**ファイル**一覧の内容を更新しています。
+このコードでは、[ContainerClient.deleteBlob](/javascript/api/@azure/storage-blob/containerclient#deleteblob-string--blobdeleteoptions-) 関数を呼び出して、一覧で選択された各ファイルを削除しています。 その後、先ほど紹介した `listFiles` 関数を呼び出して、**ファイル** 一覧の内容を更新しています。
 
 ## <a name="run-the-code"></a>コードの実行
 
@@ -255,7 +255,7 @@ parcel index.html
 
 Parcel によってコードがバンドルされ、ローカル開発サーバーが起動されて `http://localhost:1234/index.html` ページが表示されます。 *index.js* に加えた変更は、ファイルを保存するたびに自動的にビルドされて開発サーバーに反映されます。
 
-**構成されているポート 1234 が使用できない**という内容のメッセージが返された場合は、`parcel -p <port#> index.html` コマンドを実行してポートを変更してください。 *launch.json* ファイルで、URL パスに含まれるポートを適宜更新します。
+**構成されているポート 1234 が使用できない** という内容のメッセージが返された場合は、`parcel -p <port#> index.html` コマンドを実行してポートを変更してください。 *launch.json* ファイルで、URL パスに含まれるポートを適宜更新します。
 
 ### <a name="start-debugging"></a>デバッグを開始する
 
@@ -294,7 +294,7 @@ Visual Studio Code デバッガーをブラウザーにアタッチした状態�
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Visual Studio Code の**ターミナル** コンソールをクリックし、Ctrl キーを押しながら C キーを押して Web サーバーを停止します。
+Visual Studio Code の **ターミナル** コンソールをクリックし、Ctrl キーを押しながら C キーを押して Web サーバーを停止します。
 
 このクイックスタートで作成したリソースを削除するには、[Azure portal](https://portal.azure.com) にアクセスして、「[前提条件](#prerequisites)」セクションで作成したリソース グループを削除します。
 

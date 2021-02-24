@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892764"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806640"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -45,7 +45,7 @@ ms.locfileid: "88892764"
 
 いいえ。 コンテナーに保存されているバックアップ データを別のコンテナーに移行することはできません。
 
-### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>バックアップ後に GRS から LRS へ変更することはできますか?
+### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>バックアップ後、ストレージの冗長設定を変更できますか。
 
 既定では、ストレージ レプリケーションの種類は geo 冗長ストレージ (GRS) に設定されています。 バックアップを構成すると、変更オプションは無効になり、変更できなくなります。
 
@@ -56,13 +56,21 @@ ms.locfileid: "88892764"
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Recovery Services コンテナーにバックアップした VM でアイテム レベルの復元 (ILR) を行うことはできますか。
 
 - ILR は、Azure VM バックアップによってバックアップされている Azure VM に対してサポートされています。 詳しくは、[こちらの記事](backup-azure-restore-files-from-vm.md)をご覧ください
-- ILR は、Azure Backup Server または System Center DPM によってバックアップされているオンプレミスの VM のオンライン復旧ポイントに対してはサポートされていません。
+- ILR は、Azure Backup Server (MABS) または System Center DPM によってバックアップされているオンプレミスの VM のオンライン復旧ポイントに対してはサポートされていません。
+
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Recovery Services コンテナーからオンプレミスにデータを移動するにはどうすればよいですか。
+
+Data Box を使用して Recovery Services コンテナーからオンプレミスにデータを直接エクスポートすることはサポートされていません。 データはストレージ アカウントに復元する必要があります。その後、[Data Box](../databox/data-box-overview.md) または [Import/Export](../import-export/storage-import-export-service.md) を使ってオンプレミスに移動できます。
+
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>geo 冗長ストレージ (GRS) コンテナーで、リージョンをまたがる復元 (CRR) 機能が有効になっている場合とそうでない場合では、どのような違いがありますか。
+
+[CRR](azure-backup-glossary.md#cross-region-restore-crr) 機能が有効になっていない [GRS](azure-backup-glossary.md#grs) コンテナーの場合、Azure によってプライマリ リージョンでの障害が宣言されるまで、セカンダリ リージョンのデータにはアクセスできません。 このような場合、セカンダリ リージョンから復元が行われます。 CRR が有効になっている場合、プライマリ リージョンが稼働している場合でも、セカンダリ リージョンでの復元をトリガーできます。
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Azure VM のバックアップに使用される Azure Backup エージェントについてよく寄せられる質問は、どこで確認できますか。
 
-- Azure VM 上で実行されるエージェントについては、この [FAQ](backup-azure-vm-backup-faq.md) をご覧ください。
+- Azure VM 上で実行されるエージェントについては、この [FAQ](backup-azure-vm-backup-faq.yml) をご覧ください。
 - Azure ファイル フォルダーのバックアップに使用されるエージェントについては、こちらの [FAQ](backup-azure-file-folder-backup-faq.md) をご覧ください。
 
 ## <a name="general-backup"></a>一般的なバックアップ
@@ -172,9 +180,9 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 一般的に、回復ポイントのリテンション期間が長い製品では、バックアップ データが完全なポイントとして格納されます。
 
 - 完全なポイントは、ストレージ効率は *悪く* なりますが、簡単かつ迅速に復元できます。
-- 一方、増分コピーはストレージ効率が*向上*しますが、データのチェーンを復元する必要があり、復旧時間に影響します。
+- 一方、増分コピーはストレージ効率が *向上* しますが、データのチェーンを復元する必要があり、復旧時間に影響します。
 
-Azure Backup のストレージ アーキテクチャを使用すると、高速に復元するためにデータの格納を最適化し、ストレージ コストを低く抑えることで、両方の長所を生かすことができます。 これにより、送受信の帯域幅が効率的に使用されるようになります。 データ ストレージの量とデータ回復にかかる時間がどちらも最小限に抑えられます。 詳細については、[増分バックアップ](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)を参照してください。
+Azure Backup のストレージ アーキテクチャを使用すると、高速に復元するためにデータの格納を最適化し、ストレージ コストを低く抑えることで、両方の長所を生かすことができます。 これにより、送受信の帯域幅が効率的に使用されるようになります。 データ ストレージの量とデータ回復にかかる時間がどちらも最小限に抑えられます。 詳細については、[増分バックアップ](backup-architecture.md#backup-types)を参照してください。
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>作成できる回復ポイント数に制限はありますか。
 
@@ -228,5 +236,5 @@ Microsoft Azure Recovery Services (MARS) エージェントによって使用さ
 
 その他のよく寄せられる質問をお読みください。
 
-- Azure VM バックアップについて[よく寄せられる質問](backup-azure-vm-backup-faq.md)
+- Azure VM バックアップについて[よく寄せられる質問](backup-azure-vm-backup-faq.yml)
 - Azure Backup エージェントについて[よく寄せられる質問](backup-azure-file-folder-backup-faq.md)

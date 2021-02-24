@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9edbb499788b61135d761c5dfa69ce42c9275932
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 84b0a761b52baca4ae1ab81b3c67f18f6b14db92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548752"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608835"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>チュートリアル:SAP Analytics Cloud と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548752"
 * ユーザーが自分の Azure AD アカウントを使用して SAP Analytics Cloud に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -183,33 +183,32 @@ Azure AD ユーザーが SAP Analytics Cloud にサインインできるよう�
 
     その後、次の手順を完了します。
 
-    a. **[USER ID]\(ユーザー ID\)** ボックスに、ユーザーのユーザー ID を入力します (**B** など)。
+    1. **[USER ID]\(ユーザー ID\)** ボックスに、ユーザーのユーザー ID を入力します (**B** など)。
 
-    b. **[FIRST NAME]\(名\)** ボックスに、ユーザーの名を入力します (**B** など)。
+    1. **[FIRST NAME]\(名\)** ボックスに、ユーザーの名を入力します (**B** など)。
 
-    c. **[LAST NAME]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
+    1. **[LAST NAME]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    d. **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (**B.Simon** など)。
+    1. **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (**B.Simon** など)。
 
-    e. **[E-MAIL]\(メール\)** ボックスに、ユーザーのメール アドレスを入力します (`b.simon@contoso.com` など)。
+    1. **[E-MAIL]\(電子メール\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では `b.simon@contoso.com`)。
 
-    f. **[Select Roles]\(ロールの選択\)** ページで、ユーザーの適切なロールを選択し、 **[OK]** を選択します。
+    1. **[Select Roles]\(ロールの選択\)** ページで、ユーザーの適切なロールを選択し、**[OK]** を選択します。
 
-      ![Select role](./media/sapboc-tutorial/user3.png)
+        ![ロールの選択](./media/sapboc-tutorial/user3.png)
 
-    g. **[Save]\(保存\)**  アイコンを選択します。
+    1. **[Save]\(保存\)** アイコンを選択します。
 
 ### <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SAP Analytics Cloud] タイルをクリックすると、SSO を設定した SAP Analytics Cloud に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SAP Analytics Cloud] タイルをクリックすると、SSO を設定した SAP Analytics Cloud に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

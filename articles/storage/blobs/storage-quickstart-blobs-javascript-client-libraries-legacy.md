@@ -3,18 +3,18 @@ title: クイック スタート:ブラウザーでの JavaScript v10 用 Azure 
 description: HTML ページで JavaScript v10 SDK を使用して BLOB をアップロード、一覧表示、および削除する方法について説明します。
 services: storage
 author: mhopkins-msft
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.service: storage
 ms.author: mhopkins
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3982e54d06f2e84c4e8e8703e70e9a26773c389a
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: d212029936bcd257ef5a78eeedc98c2d6e1df514
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429219"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012784"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -35,7 +35,7 @@ ms.locfileid: "87429219"
 
 ## <a name="setting-up-storage-account-cors-rules"></a>ストレージ アカウントの CORS ルールの設定
 
-Web アプリケーションでクライアントから BLOB ストレージにアクセスするには、アカウントの構成を変更して、[クロス オリジン リソース共有](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効化しておく必要があります。
+Web アプリケーションでクライアントから BLOB ストレージにアクセスするには、アカウントの構成を変更して、[クロス オリジン リソース共有](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効化しておく必要があります。
 
 Azure Portal に戻り、ストレージ アカウントを選択します。 新しい CORS ルールを定義するために、 **[設定]** セクションに移動し、 **[CORS]** リンクをクリックします。 次に、 **[追加]** ボタンをクリックして、 **[CORS ルールの追加]** ウィンドウを開きます。 このクイック スタートでは、オープン CORS ルールを作成します。
 
@@ -185,7 +185,7 @@ BLOB ストレージ API の呼び出しを有効にするには、まず [Azure
 
 このコードはスクリプト ファイルへの参照を追加するものであり、独自の JavaScript コードの入力場所にもなります。 このクイック スタートでは、スクリプト ファイルを VS Code で開き、内容を確認してブレークポイントを設定できるように、*azure-storage-blob.js* スクリプト ファイルを使用します。 運用環境では、ZIP ファイルに同梱されている、よりコンパクトな *azure-storage.blob.min.js* ファイルを使ってください。
 
-各 BLOB ストレージ関数の詳細については、[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)を参照してください。 SDK の関数の中には、Node.js とブラウザーのいずれか一方でしか使用できないものがあることに注意してください。
+各 BLOB ストレージ関数の詳細については、[リファレンス ドキュメント](/javascript/api/%40azure/storage-blob/index)を参照してください。 SDK の関数の中には、Node.js とブラウザーのいずれか一方でしか使用できないものがあることに注意してください。
 
 *azure-storage-blob.js* のコードでは、JavaScript コード内で BLOB ストレージ API へのアクセスに使用する、`azblob` というグローバル変数がエクスポートされます。
 
@@ -226,7 +226,7 @@ const containerURL = new azblob.ContainerURL(
     azblob.StorageURL.newPipeline(new azblob.AnonymousCredential));
 ```
 
-このコードでは、アカウントの情報と SAS を使用して、ストレージ コンテナーの作成と操作に役立つ [ContainerURL](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL) インスタンスを作成します。
+このコードでは、アカウントの情報と SAS を使用して、ストレージ コンテナーの作成と操作に役立つ [ContainerURL](/javascript/api/@azure/storage-blob/ContainerURL) インスタンスを作成します。
 
 ### <a name="create-and-delete-a-storage-container"></a>ストレージ コンテナーを作成および削除する
 
@@ -257,7 +257,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-このコードでは、[Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) インスタンスは使用せず、containerURL の [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) 関数と [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) 関数を使用しています。 このクイック スタートの内容をシンプルにしておくため、上記コードでは、ストレージ アカウントが作成済みであり有効化されていることを前提としています。 運用環境のコードで、タイムアウト機能を追加するには、Aborter インスタンスを使用してください。
+このコードでは、[Aborter](/javascript/api/@azure/storage-blob/aborter) インスタンスは使用せず、containerURL の [create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) 関数と [delete](/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) 関数を使用しています。 このクイック スタートの内容をシンプルにしておくため、上記コードでは、ストレージ アカウントが作成済みであり有効化されていることを前提としています。 運用環境のコードで、タイムアウト機能を追加するには、Aborter インスタンスを使用してください。
 
 ### <a name="list-blobs"></a>BLOB を一覧表示する
 
@@ -293,7 +293,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-このコードでは、すべてのセグメントが確実に取得されるよう、[containerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 関数をループ内で呼び出しています。 各セグメントについて、含まれる BLOB 項目の一覧をループ処理し、**ファイル**一覧を更新しています。
+このコードでは、すべてのセグメントが確実に取得されるよう、[containerURL.listBlobFlatSegment](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 関数をループ内で呼び出しています。 各セグメントについて、含まれる BLOB 項目の一覧をループ処理し、**ファイル** 一覧を更新しています。
 
 ### <a name="upload-blobs"></a>BLOB をアップロードする
 
@@ -321,7 +321,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-このコードでは、 **[Select and upload files]\(ファイルを選択してアップロード\)** ボタンを非表示の `file-input` 要素に結び付けています。 こうすることで、ボタンの `click` イベントによりファイル入力の `click` イベントがトリガーされ、ファイル ピッカーが表示されます。 ファイルを選択してダイアログ ボックスを閉じると、`input` イベントが発生して `uploadFiles` 関数が呼び出されます。 この関数では、選択したファイルごとに、ブラウザー専用の [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 関数を呼び出しています。 各呼び出しでは Promise が返されます。これを一覧に追加してすべてのファイルをまとめて待機状態にすることで、全ファイルを並列でアップロードしています。
+このコードでは、 **[Select and upload files]\(ファイルを選択してアップロード\)** ボタンを非表示の `file-input` 要素に結び付けています。 こうすることで、ボタンの `click` イベントによりファイル入力の `click` イベントがトリガーされ、ファイル ピッカーが表示されます。 ファイルを選択してダイアログ ボックスを閉じると、`input` イベントが発生して `uploadFiles` 関数が呼び出されます。 この関数では、選択したファイルごとに、ブラウザー専用の [uploadBrowserDataToBlockBlob](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 関数を呼び出しています。 各呼び出しでは Promise が返されます。これを一覧に追加してすべてのファイルをまとめて待機状態にすることで、全ファイルを並列でアップロードしています。
 
 ### <a name="delete-blobs"></a>BLOB を削除する
 
@@ -349,7 +349,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-このコードでは、[blobURL.delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) 関数を呼び出して、一覧で選択された各ファイルを削除しています。 その後、先ほど紹介した `listFiles` 関数を呼び出して、**ファイル**一覧の内容を更新しています。
+このコードでは、[blobURL.delete](/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) 関数を呼び出して、一覧で選択された各ファイルを削除しています。 その後、先ほど紹介した `listFiles` 関数を呼び出して、**ファイル** 一覧の内容を更新しています。
 
 ### <a name="run-and-test-the-web-application"></a>Web アプリケーションを実行してテストする
 
@@ -364,4 +364,4 @@ deleteButton.addEventListener("click", deleteFiles);
 このクイック スタートでは、ブラウザーベースの JavaScript から BLOB ストレージにアクセスする単純な Web サイトを作成しました。 BLOB ストレージ上で Web サイト自体をホストする方法について学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Blob Storage で静的な Web サイトをホストする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)
+> [Blob Storage で静的な Web サイトをホストする](./storage-blob-static-website-host.md)

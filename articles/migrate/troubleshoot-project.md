@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate プロジェクトのトラブルシューティング
 description: Azure Migrate プロジェクトの作成と管理に関する問題のトラブルシューティングに役立ちます。
-ms.topic: troubleshooting
-author: musa-57
+author: ms-psharma
+ms.author: panshar
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/01/2020
-ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f68a57d3780f388488d48835f322ff04ab7c7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121641"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753384"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate プロジェクトのトラブルシューティング
 
@@ -19,7 +19,7 @@ ms.locfileid: "86121641"
 
 ## <a name="how-to-add-new-project"></a>新しいプロジェクトを追加するには
 
-1 つのサブスクリプションに複数の Azure Migrate プロジェクトを含めることができます。 初めてプロジェクトを作成する方法、またはプロジェクトを[さらに追加する](create-manage-projects.md#create-additional-projects)方法について[説明します](how-to-add-tool-first-time.md)。
+1 つのサブスクリプションに複数の Azure Migrate プロジェクトを含めることができます。 初めてプロジェクトを作成する方法、またはプロジェクトを[さらに追加する](create-manage-projects.md#create-additional-projects)方法について[説明します](./create-manage-projects.md)。
 
 ## <a name="what-azure-permissions-are-needed"></a>必要な Azure アクセス許可とは
 
@@ -40,7 +40,7 @@ Azure Migrate プロジェクトは、[パブリック クラウド](migrate-sup
 
 ## <a name="can-i-upgrade-old-project"></a>古いプロジェクトをアップグレードできますか
 
-以前のバージョンの Azure Migrate のプロジェクトは更新できません。 [新しいプロジェクトを作成して](how-to-add-tool-first-time.md)、ツールを追加する必要があります。
+以前のバージョンの Azure Migrate のプロジェクトは更新できません。 [新しいプロジェクトを作成して](./create-manage-projects.md)、ツールを追加する必要があります。
 
 ## <a name="cant-create-a-project"></a>プロジェクトを作成できない
 
@@ -52,7 +52,7 @@ Azure Migrate プロジェクトは、[パブリック クラウド](migrate-sup
 - エラー "要求にはユーザー ID ヘッダーが含まれていなければなりません" が発生した場合、組織の Azure Active Directory (Azure AD) テナントへのアクセス権がないことが示されている可能性があります。 この場合、次のようになります。
     - ユーザーは、Azure AD テナントに初めて追加されるときに、テナントへの参加を求める招待メールを受け取ります。
     - テナントに追加されるには、招待を承認します。
-    - メールが表示されない場合は、テナントへのアクセス権を持つユーザーに連絡し、[招待を再送信する](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users)ように依頼してください。
+    - メールが表示されない場合は、テナントへのアクセス権を持つユーザーに連絡し、[招待を再送信する](../active-directory/external-identities/add-users-administrator.md#resend-invitations-to-guest-users)ように依頼してください。
     - 招待メールを受け取った後、メールを開き、リンクを選択して招待を承諾します。 その後、Azure portal からサインアウトし、改めてサインインします。 (ブラウザーの更新は機能しません。)これで、移行プロジェクトの作成を始めることができます。
 
 ## <a name="how-do-i-delete-a-project"></a>プロジェクトを削除する方法を教えてください

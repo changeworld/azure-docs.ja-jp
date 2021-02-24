@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512130928c8e18aad90bce351e3be85d6fbe03f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71057265"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878648"
 ---
 # <a name="troubleshoot-rdp-issues"></a>RDP の問題をトラブルシューティングする
 
@@ -36,7 +36,7 @@ ms.locfileid: "71057265"
 - [内部エラーのトラブルシューティング](Troubleshoot-rdp-internal-error.md)
 - [接続が頻繁に切れる問題のトラブルシューティング](troubleshoot-rdp-intermittent-connectivity.md)
 - [一般的なエラーのトラブルシューティング](troubleshoot-rdp-general-error.md)
-- [認証エラーをトラブルシューティングする](troubleshoot-authentication-error-rdp-vm.md)
+- [認証エラーをトラブルシューティングする](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm)
 - [イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング](event-id-troubleshoot-vm-rdp-connecton.md)
 - [静的 IP に起因する VM の RDP エラーのトラブルシューティング](troubleshoot-rdp-static-ip.md)
 - [無効になっている NIC に起因する VM の RDP エラーのトラブルシューティング](troubleshoot-rdp-nic-disabled.md)
@@ -46,4 +46,3 @@ ms.locfileid: "71057265"
 - [ゲスト OS のファイアウォールがインバウンド トラフィックをブロックしている](guest-os-firewall-blocking-inbound-traffic.md)
 - [ゲスト OS のファイアウォールが正しく構成されていない](guest-os-firewall-misconfigured.md) 
 - [netvsc.sys による RDP エラーのトラブルシューティング](troubleshoot-rdp-driver-netvsc.md)
-

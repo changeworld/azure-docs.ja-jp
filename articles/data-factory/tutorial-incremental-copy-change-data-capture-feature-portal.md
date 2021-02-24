@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 754f58fe7ee9bc8d10ba1fa973615781ce4d6dce
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085720"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555918"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>変更データ キャプチャ (CDC) を使用して Azure SQL Managed Instance から Azure Storage へのデータの増分読み込みを行う
 
-このチュートリアルでは、ソース Azure SQL Managed Instance データベースの**変更データ キャプチャ (CDC)** 情報に基づいて、差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure データ ファクトリを作成します。  
+このチュートリアルでは、ソース Azure SQL Managed Instance データベースの **変更データ キャプチャ (CDC)** 情報に基づいて、差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure データ ファクトリを作成します。  
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "86085720"
 > * 完全な増分コピー パイプラインを完成させ、実行して監視します
 
 ## <a name="overview"></a>概要
-Azure SQL Managed Instances (MI) や SQL Server などのデータ ストアでサポートされる変更データ キャプチャ テクノロジを使用して、変更されたデータを識別できます。  このチュートリアルでは、Azure Data Factory と SQL 変更データ キャプチャ テクノロジを使用して、Azure SQL Managed Instance から Azure Blob Storage に差分データの増分読み込みを行う方法について説明します。  SQL 変更データ キャプチャ テクノロジに関するより具体的な情報については、[SQL Server での変更データ キャプチャ](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server)に関するページを参照してください。
+Azure SQL Managed Instances (MI) や SQL Server などのデータ ストアでサポートされる変更データ キャプチャ テクノロジを使用して、変更されたデータを識別できます。  このチュートリアルでは、Azure Data Factory と SQL 変更データ キャプチャ テクノロジを使用して、Azure SQL Managed Instance から Azure Blob Storage に差分データの増分読み込みを行う方法について説明します。  SQL 変更データ キャプチャ テクノロジに関するより具体的な情報については、[SQL Server での変更データ キャプチャ](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)に関するページを参照してください。
 
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
 ここでは、変更データ キャプチャ テクノロジを使用してデータの増分読み込みを行う一般的なエンドツーエンドのワークフロー ステップを取り上げます。
@@ -45,20 +45,20 @@ Azure SQL Managed Instances (MI) や SQL Server などのデータ ストアで�
 ## <a name="high-level-solution"></a>ソリューションの概略
 このチュートリアルでは、次の操作を実行するパイプラインを作成します。  
 
-   1. SQL Database CDC テーブル内の変更されたレコードの数をカウントして IF 条件アクティビティに渡す**検索アクティビティ**を作成します。
-   2. 変更されたレコードがあるかどうかを調べて、ある場合はコピー アクティビティを呼び出す **If 条件**を作成します。
-   3. 挿入、更新、削除されたデータを CDC テーブルから Azure Blob Storage にコピーする**コピー アクティビティ**を作成します。
+   1. SQL Database CDC テーブル内の変更されたレコードの数をカウントして IF 条件アクティビティに渡す **検索アクティビティ** を作成します。
+   2. 変更されたレコードがあるかどうかを調べて、ある場合はコピー アクティビティを呼び出す **If 条件** を作成します。
+   3. 挿入、更新、削除されたデータを CDC テーブルから Azure Blob Storage にコピーする **コピー アクティビティ** を作成します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure SQL Database Managed Instance**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL Database Managed Instance がない場合は、[Azure SQL Database Managed Instance の作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)に関する記事に書かれている手順を参照して作成してください。
+* **Azure SQL Database Managed Instance**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL Database Managed Instance がない場合は、[Azure SQL Database Managed Instance の作成](../azure-sql/managed-instance/instance-create-quickstart.md)に関する記事に書かれている手順を参照して作成してください。
 * **Azure Storage アカウント**。 **シンク** データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 **raw** という名前のコンテナーを作成します。 
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>Azure SQL Database にデータ ソース テーブルを作成する
 
 1. **SQL Server Management Studio** を起動し、Azure SQL Managed Instance サーバーに接続します。
-2. **サーバー エクスプローラー**で目的の**データベース**を右クリックして **[新しいクエリ]** を選択します。
+2. **サーバー エクスプローラー** で目的の **データベース** を右クリックして **[新しいクエリ]** を選択します。
 3. Azure SQL Managed Instance データベースに対して次の SQL コマンドを実行し、ソース データ ストアとして `customers` という名前のテーブルを作成します。  
 
     ```sql
@@ -71,11 +71,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     city varchar(50), CONSTRAINT "PK_Customers" PRIMARY KEY CLUSTERED ("customer_id") 
      );
     ```
-4. 次の SQL クエリを実行して、データベースとソース テーブル (customers) で**変更データ キャプチャ**機構を有効にします。
+4. 次の SQL クエリを実行して、データベースとソース テーブル (customers) で **変更データ キャプチャ** 機構を有効にします。
 
     > [!NOTE]
     > - &lt;your source schema name&gt; は、customers テーブルが含まれる Azure SQL MI のスキーマに置き換えます。
-    > - 変更データ キャプチャでは、追跡対象テーブルを変更するトランザクションの一部としては何も行われません。 代わりに、挿入、更新、削除の各操作がトランザクション ログに書き込まれます。 変更テーブルに格納されるデータは、定期的かつ体系的にクリーンアップしないと、増大して管理しきれなくなります。 詳細については、「[データベースでの変更データ キャプチャの有効化](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?enable-change-data-capture-for-a-database=&view=sql-server-ver15)」を参照してください
+    > - 変更データ キャプチャでは、追跡対象テーブルを変更するトランザクションの一部としては何も行われません。 代わりに、挿入、更新、削除の各操作がトランザクション ログに書き込まれます。 変更テーブルに格納されるデータは、定期的かつ体系的にクリーンアップしないと、増大して管理しきれなくなります。 詳細については、「[データベースでの変更データ キャプチャの有効化](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server#enable-change-data-capture-for-a-database)」を参照してください
 
     ```sql
     EXEC sys.sp_cdc_enable_db 
@@ -111,11 +111,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory.png)
 
-   Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+   Azure データ ファクトリの名前は **グローバルに一意** にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
 
     *データ ファクトリ名 "ADFTutorialDataFactory" は利用できません。*
-3. **バージョン**として **[V2]** を選択します。
-4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+3. **バージョン** として **[V2]** を選択します。
+4. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 5. **[リソース グループ]** について、次の手順のいずれかを行います。
 
    1. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
@@ -127,12 +127,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. **Create** をクリックしてください。
 8. デプロイが完了したら、 **[リソースに移動]** をクリックします
 
-   ![データ ファクトリのホーム ページ](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![スクリーンショットは、デプロイが完了したというメッセージと、リソースに移動するオプションを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-   ![データ ファクトリのホーム ページ](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![スクリーンショットは、デプロイしたデータ ファクトリを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
-11. **開始**ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。
+11. **開始** ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。
 
     ![[Create pipeline]\(パイプラインの作成\) ボタン](./media/tutorial-incremental-copy-change-data-capture-feature-portal/get-started-page.png)
 
@@ -161,7 +161,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この手順では、Azure SQL MI データベースをデータ ファクトリにリンクします。
 
 > [!NOTE]
-> SQL MI を使用している場合、パブリック エンドポイントとプライベート エンドポイントを経由したアクセスの詳細については、[こちら](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database-managed-instance#prerequisites)を参照してください。 プライベート エンドポイントを使用する場合は、セルフホステッド統合ランタイムを使用してこのパイプラインを実行する必要があります。 オンプレミス、VM、または VNet で SQL Server を実行するシナリオに対しても、同じことが当てはまります。
+> SQL MI を使用している場合、パブリック エンドポイントとプライベート エンドポイントを経由したアクセスの詳細については、[こちら](./connector-azure-sql-managed-instance.md#prerequisites)を参照してください。 プライベート エンドポイントを使用する場合は、セルフホステッド統合ランタイムを使用してこのパイプラインを実行する必要があります。 オンプレミス、VM、または VNet で SQL Server を実行するシナリオに対しても、同じことが当てはまります。
 
 1. **[接続]** をクリックし、 **[+ 新規]** をクリックします。
 2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database Managed Instance]** を選択し、 **[続行]** をクリックします。
@@ -193,7 +193,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[プロパティの設定]** タブで、データセット名と接続情報を設定します。
  
    1. **[リンクされたサービス]** で **AzureSqlMI1** を選択します。
-   2. **[テーブル名]** で **[dbo].[dbo_customers_CT]** を選択します。  注: このテーブルは、customers テーブルで CDC を有効にしたときに自動的に作成されたものです。 変更されたデータは、このテーブルから直接クエリされることはなく、代わりに [CDC 関数](https://docs.microsoft.com/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql?view=sql-server-ver15)を使用して抽出されます。
+   2. **[テーブル名]** で **[dbo].[dbo_customers_CT]** を選択します。  注: このテーブルは、customers テーブルで CDC を有効にしたときに自動的に作成されたものです。 変更されたデータは、このテーブルから直接クエリされることはなく、代わりに [CDC 関数](/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql)を使用して抽出されます。
 
    ![ソースの接続](./media/tutorial-incremental-copy-change-data-capture-feature-portal/source-dataset-configuration.png)
 
@@ -212,14 +212,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. **[プロパティの設定]** タブで、データセット名と接続情報を設定します。
 
    1. **[リンクされたサービス]** で **[AzureStorageLinkedService]** を選択します。
-   2. **[ファイル パス]** の**コンテナー**部分には「**raw**」と入力します。
+   2. **[ファイル パス]** の **コンテナー** 部分には「**raw**」と入力します。
    3. **[First row as header]\(先頭の行を見出しとして使用する\)** を有効にします
    4. **[OK]** をクリックします。
 
    ![シンク データセット - 接続](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration.png)
 
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>変更されたデータをコピーするパイプラインを作成する
-このステップで作成するパイプラインでは、最初に、**検索アクティビティ**を使用して、変更テーブルに存在する変更されたレコードの数を調べます。 IF 条件アクティビティでは、変更されたレコードの数が 0 より大きいかどうかが確認され、**コピー アクティビティ**が実行されて、挿入、更新、削除されたデータが Azure SQL Database から Azure Blob Storage にコピーされます。 最後に、タンブリング ウィンドウ トリガーが構成され、開始時刻と終了時刻がウィンドウの開始および終了パラメーターとしてアクティビティに渡されます。 
+このステップで作成するパイプラインでは、最初に、**検索アクティビティ** を使用して、変更テーブルに存在する変更されたレコードの数を調べます。 IF 条件アクティビティでは、変更されたレコードの数が 0 より大きいかどうかが確認され、**コピー アクティビティ** が実行されて、挿入、更新、削除されたデータが Azure SQL Database から Azure Blob Storage にコピーされます。 最後に、タンブリング ウィンドウ トリガーが構成され、開始時刻と終了時刻がウィンドウの開始および終了パラメーターとしてアクティビティに渡されます。 
 
 1. Data Factory の UI で、 **[編集]** タブに切り替えます。左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
@@ -250,7 +250,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![If 条件アクティビティ - 名前](./media/tutorial-incremental-copy-change-data-capture-feature-portal/if-condition-activity-name.png)
 7. **[プロパティ]** ウィンドウで **[アクティビティ]** に切り替えます。
 
-   1. 次の**式**を入力します
+   1. 次の **式** を入力します
    
     ```adf
     @greater(int(activity('GetChangeCount').output.firstRow.changecount),0)
@@ -266,10 +266,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    4. IncrementalCopyPipeline 階層リンクをクリックして、メイン パイプラインに戻ります。
 
-8. パイプラインを**デバッグ** モードで実行し、パイプラインが正常に実行されることを確認します。 
+8. パイプラインを **デバッグ** モードで実行し、パイプラインが正常に実行されることを確認します。 
 
    ![パイプライン - デバッグ](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug.png)
-9. 次に、True 条件のステップに戻り、**待機**アクティビティを削除します。 **[アクティビティ]** ツール ボックスで **[Move & Transform]\(移動と変換\)** を展開し、 **[コピー]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティの名前を「**IncrementalCopyActivity**」に設定します。 
+9. 次に、True 条件のステップに戻り、**待機** アクティビティを削除します。 **[アクティビティ]** ツール ボックスで **[Move & Transform]\(移動と変換\)** を展開し、 **[コピー]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティの名前を「**IncrementalCopyActivity**」に設定します。 
 
    ![コピー アクティビティ - 名前](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-name.png)
 10. **[プロパティ]** ウィンドウで **[ソース]** タブに切り替え、以下の手順を実行します。
@@ -289,11 +289,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 11. プレビューをクリックし、クエリから変更された行数が正しく返されることを確認します。
 
-    ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![スクリーンショットは、クエリを確認するためのプレビューを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. **[Sink]\(コピー先\)** タブに切り替えて、 **[Sink Dataset]\(コピー先データセット\)** フィールドで Azure Storage データセットを指定します。
 
-    ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
-13. クリックしてメイン パイプライン キャンバスに戻り、**検索**アクティビティを **If 条件**アクティビティに 1 つずつ接続します。 **[検索]** アクティビティに付いている**緑**のボタンを **[If Condition]\(If 条件\)** アクティビティにドラッグします。
+    ![スクリーンショットは [シンク] タブを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+13. クリックしてメイン パイプライン キャンバスに戻り、**検索** アクティビティを **If 条件** アクティビティに 1 つずつ接続します。 **[検索]** アクティビティに付いている **緑** のボタンを **[If Condition]\(If 条件\)** アクティビティにドラッグします。
 
     ![検索アクティビティとコピー アクティビティを接続する](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
 14. ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。
@@ -312,28 +312,28 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **IncrementalCopyPipeline** パイプラインの **[パラメーター]** タブに移動し、 **[+ 新規]** ボタンを使用して、2 つのパラメーター (**triggerStartTime** と **triggerEndTime**) をパイプラインに追加します。これは、タンブリング ウィンドウの開始時刻と終了時刻を表します。 デバッグのため、**YYYY-MM-DD HH24:MI:SS.FFF** という形式で既定値を追加します。ただし、triggerStartTime がテーブルで CDC を有効にする時刻より前にならないようにします。そうしないと、エラーが発生します。
 
     ![[Trigger Now]\(今すぐトリガー\) メニュー](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-parameters.png)
-2. **検索**アクティビティの設定タブをクリックし、開始パラメーターと終了パラメーターを使用するようにクエリを構成します。 以下をクエリにコピーします。
+2. **検索** アクティビティの設定タブをクリックし、開始パラメーターと終了パラメーターを使用するようにクエリを構成します。 以下をクエリにコピーします。
     ```sql
     @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 
-3. **If 条件**アクティビティの True の場合の**コピー** アクティビティに移動し、 **[ソース]** タブをクリックします。以下をクエリにコピーします。
+3. **If 条件** アクティビティの True の場合の **コピー** アクティビティに移動し、 **[ソース]** タブをクリックします。以下をクエリにコピーします。
     ```sql
     @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 4. **コピー** アクティビティの **[Sink]\(コピー先\)** タブをクリックし、 **[開く]** をクリックして、データセットのプロパティを編集します。 **[パラメーター]** タブをクリックし、**triggerStart** という名前の新しいパラメーターを追加します    
 
-    ![コピー先データセットの構成 - 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![スクリーンショットは、[パラメーター] タブへの新しいパラメーターの追加を示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. 次に、日付ベースのパーティションで **customers/incremental** サブディレクトリにデータを格納するように、データセットのプロパティを構成します。
    1. データセットのプロパティの **[接続]** タブをクリックし、 **[ディレクトリ]** と **[ファイル]** の両方のセクションに動的なコンテンツを追加します。 
    2. テキスト ボックスの下にある動的コンテンツ リンクをクリックして、 **[ディレクトリ]** セクションに次の式を入力します。
@@ -348,7 +348,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
     ![コピー先データセットの構成 - 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png)
 
-   4. **IncrementalCopyPipeline** タブをクリックして**コピー** アクティビティの **[Sink]\(コピー先\)** 設定に戻ります。 
+   4. **IncrementalCopyPipeline** タブをクリックして **コピー** アクティビティの **[Sink]\(コピー先\)** 設定に戻ります。 
    5. データセットのプロパティを展開し、次の式を使用して、triggerStart パラメーター値に動的コンテンツを入力します。
      ```sql
      @pipeline().parameters.triggerStartTime
@@ -380,7 +380,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![タンブリング ウィンドウ トリガー - 2](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png)
 
 > [!NOTE]
-> トリガーは、公開された後でのみ実行されることにご注意ください。 さらに、タンブリング ウィンドウの予想される動作では、開始日から現在までのすべての履歴間隔が実行されます。 タンブリング ウィンドウ トリガーに関する詳細については、[こちら](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger)を参照してください。 
+> トリガーは、公開された後でのみ実行されることにご注意ください。 さらに、タンブリング ウィンドウの予想される動作では、開始日から現在までのすべての履歴間隔が実行されます。 タンブリング ウィンドウ トリガーに関する詳細については、[こちら](./how-to-create-tumbling-window-trigger.md)を参照してください。 
   
 10. **SQL Server Management Studio** を使用し、次の SQL を実行して、customer テーブルにいくつかの追加の変更を行います。
     ```sql

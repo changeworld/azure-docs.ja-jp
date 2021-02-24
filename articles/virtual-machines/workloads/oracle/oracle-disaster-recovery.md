@@ -1,25 +1,19 @@
 ---
 title: Azure 環境における Oracle ディザスター リカバリー シナリオの概要 | Microsoft Docs
 description: Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: 6d1c7a48332aa49bc5c506ceeae287bc3affef16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: 8c5281b4fe596cf9807d6f0dacb844562dc152dc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074072"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880626"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 
@@ -49,7 +43,7 @@ Azure セットアップの概要は次のとおりです。
 - 別個のサブネット上にあるジャンプボックス、アプリケーション サービス、データベース、および VPN ゲートウェイ
 - アプリケーションおよびデータベースのサブネットに適用されている NSG
 
-![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Azure 上のプライマリ と DR のサイトを示している図](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>シナリオ 2: オンプレミスのプライマリ サイトと Azure 上の DR サイト
 
@@ -75,7 +69,7 @@ Azure セットアップの概要は次のとおりです。
 - 受信 TCP ポート 1521 (またはユーザー定義ポート) を許可するNSG ポリシー/ルール
 - オンプレミス (DB またはアプリケーション) の IP アドレスから仮想ネットワークへのアクセスのみを制限するための NSG ポリシー/ルール
 
-![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![オンプレミスと Azure の間の直接接続を示している図 (ファイアウォール上に開いている TCP ポートが必要)。](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>アプローチ 2: サイト間 VPN
 サイト対サイト VPN は、より優れたアプローチです。 VPN の設定に関する詳細については、「[CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)」を参照してください。
@@ -100,10 +94,10 @@ Azure セットアップの概要は次のとおりです。
 - [Azure での Oracle データベースの設計と実装](oracle-design.md)
 - [Oracle Data Guard の構成](configure-oracle-dataguard.md)
 - [Oracle Golden Gate の構成](configure-oracle-golden-gate.md)
-- [Oracle のバックアップと回復](oracle-backup-recovery.md)
+- [Oracle のバックアップと回復](./oracle-overview.md)
 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:高可用性 VM の作成](../../linux/create-cli-complete.md)
-- [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
+- [VM デプロイ Azure CLI サンプルを探索する](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

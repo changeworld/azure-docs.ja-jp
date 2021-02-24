@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: de14cf8cc79b4e1387950a2ae048da41738f5db1
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589936"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092331"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Key Vault の HSM で保護されたキー (nCipher) をインポートする
 
@@ -61,8 +61,8 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 | --- | --- |
 | Azure のサブスクリプション |Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/) |
 | HSM で保護されたキーをサポートする Azure Key Vault Premium サービス レベル |Azure Key Vault のサービス層と機能に関する詳細については、 [Azure Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/) Web サイトを参照してください。 |
-| nCipher nShield HSM、スマート カード、サポート ソフトウェア |nCipher ハードウェア セキュリティ モジュールにアクセスできることと nCipher nShield HSM の基本操作知識が必要です。 互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、[nCipher nShield ハードウェア セキュリティ モジュール](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)に関するページを参照してください。 |
-| 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の nCipher nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降および [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) **1.1.0 以降**の Windows オペレーティング システムがインストールされたワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを "未接続ワークステーション" と呼んでいます。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の 2 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、この 2 台目のワークステーションを "インターネット接続ワークステーション" と呼んでいます。</p></blockquote><br/> |
+| nCipher nShield HSM、スマート カード、サポート ソフトウェア |nCipher ハードウェア セキュリティ モジュールにアクセスできることと nCipher nShield HSM の基本操作知識が必要です。 互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、[nCipher nShield ハードウェア セキュリティ モジュール](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206)に関するページを参照してください。 |
+| 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の nCipher nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降および [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) **1.1.0 以降** の Windows オペレーティング システムがインストールされたワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを "未接続ワークステーション" と呼んでいます。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の 2 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、この 2 台目のワークステーションを "インターネット接続ワークステーション" と呼んでいます。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>キーを生成し、Azure Key Vault HSM に転送する
 
@@ -166,7 +166,7 @@ KeyVault-BYOK-Tools-Australia.zip
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 ---
-[**Azure Government:** ](https://azure.microsoft.com/features/gov/)
+[**Azure Government:**](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
@@ -231,7 +231,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 ---
 
 
-ダウンロードした BYOK ツールセットの整合性を検証するには、Azure PowerShell セッションから、 [Get FileHash](https://technet.microsoft.com/library/dn520872.aspx) コマンドレットを使用します。
+ダウンロードした BYOK ツールセットの整合性を検証するには、Azure PowerShell セッションから、 [Get FileHash](/powershell/module/microsoft.powershell.utility/get-filehash) コマンドレットを使用します。
 
    ```powershell
    Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -287,7 +287,7 @@ nCipher nShield Edge を使用している場合、モードを変更するに�
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
-このプログラムにより **Security World** ファイルが %NFAST_KMDATA%\local\world で作成されます。これは C:\ProgramData\nCipher\Key Management Data\local フォルダーに対応します。 クォーラムにはさまざまな値を使用できますが、今回の例では、3 枚の空白カードと各カードのピンを入力するように求められます。 いずれかの 2 枚のカードがセキュリティ ワールドに完全アクセスを与えます。 その 2 枚のカードが新しいセキュリティ ワールドの**管理者カード セット**になります。
+このプログラムにより **Security World** ファイルが %NFAST_KMDATA%\local\world で作成されます。これは C:\ProgramData\nCipher\Key Management Data\local フォルダーに対応します。 クォーラムにはさまざまな値を使用できますが、今回の例では、3 枚の空白カードと各カードのピンを入力するように求められます。 いずれかの 2 枚のカードがセキュリティ ワールドに完全アクセスを与えます。 その 2 枚のカードが新しいセキュリティ ワールドの **管理者カード セット** になります。
 
 > [!NOTE]
 > HSM で新しい暗号スイート DLf3072s256mRijndael がサポートされない場合は、--cipher-suite= DLf3072s256mRijndael を --cipher-suite=DLf1024s160mRijndael に置き換えることができます
@@ -416,7 +416,7 @@ nCipher nShield Edge を使用している場合、モードを変更するに�
      >
 2. 次の表示を確認します。これは検証の成功を示します: **Result: SUCCESS**
 
-このスクリプトは nShield ルート キーまで署名者のチェーンを検証します。 このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**になります。 [nCipher Web サイト](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)にアクセスすると、この値を個別に確認することもできます。
+このスクリプトは nShield ルート キーまで署名者のチェーンを検証します。 このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** になります。 [nCipher Web サイト](https://www.ncipher.com)にアクセスすると、この値を個別に確認することもできます。
 
 これで新しいキーを作成する準備が整いました。
 
@@ -432,9 +432,9 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 このコマンドを実行するとき、次の指示に従います。
 
-* *protect* パラメーターの値は、コマンドに示したように **module**に設定する必要があります。 module に設定すると、モジュールで保護されたキーが作成されます。 BYOK ツールセットは、OCS で保護されたキーをサポートしていません。
+* *protect* パラメーターの値は、コマンドに示したように **module** に設定する必要があります。 module に設定すると、モジュールで保護されたキーが作成されます。 BYOK ツールセットは、OCS で保護されたキーをサポートしていません。
 * **ident** と **plainname** の *contosokey* の値を文字列値に置換します。 管理費を最小限に抑え、エラーを犯す可能性を減らすために、両方に同じ値を使用することをお勧めします。 **Ident** 値には数字、ダッシュ、小文字のみを使用できます。
-* pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。 詳細については、[nCipher のドキュメント](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)を参照してください。
+* pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。 詳細については、[nCipher のドキュメント](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)を参照してください。
 
 このコマンドにより %NFAST_KMDATA%\local フォルダーにトークン化されたキーのファイルが作成されます。この名前は "**key_simple_** " で始まり、コマンドで指定した **ident** が続きます。 (例: **key_simple_contosokey**)。 このファイルには暗号化されたキーが含まれます。
 

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: e851da0013cf3a9ff6bb1a0fc1c073b5b796c54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66ec285554299214122a4093837d3506bf642b13
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898549"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368130"
 ---
 # <a name="what-is-azure-scheduler"></a>Azure Scheduler とは
 
@@ -25,7 +25,7 @@ ms.locfileid: "78898549"
 
 [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) は、宣言でアクションを記述することによって、クラウド内で実行される[ジョブ](../scheduler/scheduler-concepts-terms.md)を作成するのに役立ちます。 その後、サービスはそれらのアクションを自動的にスケジュールして実行します。 たとえば、Azure の内部および外部のサービスを呼び出すことができ (HTTP または HTTPS エンドポイントの呼び出しなど)、Azure Storage キューおよび Azure Service Bus キューまたはトピックにメッセージを送信することもできます。 すぐに、または後で、ジョブを実行することができます。 Scheduler は、[複雑なスケジュールおよび高度な定期実行](../scheduler/scheduler-advanced-complexity.md)に容易に対応できます。 Scheduler は、ジョブを実行するタイミングを指定し、ユーザーが確認できるジョブの結果の履歴を保持し、実行するワークロードを予期したとおり確実にスケジュールします。
 
-Azure App Service の [Web Apps](https://azure.microsoft.com/services/app-service/web/) 機能である [Azure WebJobs](../app-service/webjobs-create.md) など、他の Azure スケジュール機能も Scheduler をバックグラウンドで使用します。 これらのアクションの通信の管理に役立つ [Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/) を使用して、これらのアクションの通信を管理できます。
+Azure App Service の [Web Apps](https://azure.microsoft.com/services/app-service/web/) 機能である [Azure WebJobs](../app-service/webjobs-create.md) など、他の Azure スケジュール機能も Scheduler をバックグラウンドで使用します。 これらのアクションの通信の管理に役立つ [Scheduler REST API](/rest/api/scheduler/) を使用して、これらのアクションの通信を管理できます。
 
 Scheduler が役に立ついくつかのシナリオを次に示します。
 
@@ -35,9 +35,9 @@ Scheduler が役に立ついくつかのシナリオを次に示します。
 
   たとえば、管理者は、今後 9 か月間毎日午前 1 時にデータベースをバックアップする、といったことがあります。
 
-Scheduler を使用してスケジュールされたワークロードを作成、管理、および実行できますが、Scheduler がワークロードをホストしたりコードを実行したりすることはありません。 このサービスは、他の場所 (Azure、オンプレミス、別のプロバイダーなど) でホストされているサービスまたはコードを "*呼び出す*" だけです。 Scheduler は、HTTP、HTTPS、Storage キュー、Service Bus キュー、Service Bus トピックを介して呼び出すことができます。
+Scheduler を使用してスケジュールされたワークロードを作成、管理、および実行できますが、Scheduler がワークロードをホストしたりコードを実行したりすることはありません。 このサービスは、他の場所 (Azure、オンプレミス、別のプロバイダーなど) でホストされているサービスまたはコードを " *呼び出す* " だけです。 Scheduler は、HTTP、HTTPS、Storage キュー、Service Bus キュー、Service Bus トピックを介して呼び出すことができます。
 
-ジョブおよび[ジョブ コレクション](../scheduler/scheduler-concepts-terms.md)を作成、スケジュール、管理、更新、または削除するには、コード、[Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/) または [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)を使用できます。
+ジョブおよび[ジョブ コレクション](../scheduler/scheduler-concepts-terms.md)を作成、スケジュール、管理、更新、または削除するには、コード、[Scheduler REST API](/rest/api/scheduler/) または [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

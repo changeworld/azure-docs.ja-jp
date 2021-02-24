@@ -3,20 +3,20 @@ title: イマーシブ リーダーの Cookie ポリシーを設定する
 titleSuffix: Azure Cognitive Services
 description: この記事では、イマーシブ リーダーの Cookie ポリシーを設定する方法について説明します。
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.author: pasta
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6bc55416c335f370151e54d2b09ccf00bd799fdb
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.author: nitinme
+ms.custom: devx-track-js
+ms.openlocfilehash: 02901e6b4a75257b2cda8dee84dbe3438dc15c18
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406896"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91332374"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>イマーシブ リーダーの Cookie ポリシーを設定する方法
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c806e5d1d9c9242b6ba57496327c672d7fed0654
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500029"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704492"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
 
@@ -32,7 +32,7 @@ Azure 仮想マシンでは、内部と外部のネットワーク通信に Azur
 > * ネットワーク トラフィックのセキュリティ保護
 > * バックエンド VM の作成
 
-このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
+このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[使ってみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -300,7 +300,4 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --
 > * ネットワーク トラフィックのセキュリティ保護
 > * バックエンド VM の作成
 
-次のチュートリアルに進み、仮想マシンのデータを Azure Backup で保護する方法を学習してください。 
-
-> [!div class="nextstepaction"]
-> [Azure での Linux 仮想マシンのバックアップ](./tutorial-backup-vms.md)
+VM ディスクの保護の詳細については、[ディスクのバックアップとディザスター リカバリー](backup-and-disaster-recovery-for-azure-iaas-disks.md)に関するページをご覧ください。

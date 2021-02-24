@@ -1,23 +1,18 @@
 ---
 title: Azure Data Explorer との間でデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Data Explorer との間で双方向にデータをコピーする方法について説明します。
-services: data-factory
 ms.author: orspodek
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16126e8b9e5c34529016018273edcf65a31e2280
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82560166"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379983"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -42,7 +37,7 @@ Azure Data Explorer には、サポートされているソース データ ス�
 
 Azure Data Explorer コネクタを使用すると、次のことができます。
 
-* Azure Active Directory (Azure AD) アプリケーション トークン認証と**サービス プリンシパル**を使用して、データをコピーする。
+* Azure Active Directory (Azure AD) アプリケーション トークン認証と **サービス プリンシパル** を使用して、データをコピーする。
 * ソースとして、KQL (Kusto) クエリを使用してデータを取得する。
 * シンクとして、コピー先テーブルにデータを追加する。
 
@@ -67,8 +62,8 @@ Azure Data Explorer のコネクタでは、サービス プリンシパル認�
 
 2. Azure Data Explorer でサービス プリンシパルに適切なアクセス許可を付与します。 ロールおよびアクセス許可の詳細について、またアクセス許可の管理方法の詳細については、「[Azure Data Explorer のデータベース アクセス許可を管理する](/azure/data-explorer/manage-database-permissions)」を参照してください。 一般的に、次のことを行う必要があります。
 
-    - **ソースとして**、少なくとも**データベース ビューアー** ロールをデータベースに付与します。
-    - **シンクとして**、少なくとも**データベースのデータ取り込み**ロールをデータベースに付与します。
+    - **ソースとして**、少なくとも **データベース ビューアー** ロールをデータベースに付与します。
+    - **シンクとして**、少なくとも **データベースのデータ取り込み** ロールをデータベースに付与します。
 
 >[!NOTE]
 >Data Factory UI を使用して作成する場合、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 これらの操作のためのアクセス許可がない場合は、名前を手動で入力します。
@@ -80,9 +75,9 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 | type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります。 | はい |
 | endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net` です。 | はい |
 | database | データベースの名前。 | はい |
-| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "機関 ID" として知られています。 これは、Azure portal の右上隅にマウス ポインターを合わせることで取得できます。 | はい |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 これは、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション クライアント ID" として知られています。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 これは、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション キー" として知られています。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault 内のセキュリティで保護された格納データを参照](store-credentials-in-key-vault.md)します。 | はい |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "機関 ID" として知られています。 これは、Azure portal の右上隅にマウス ポインターを合わせることで取得できます。 | はい |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション クライアント ID" として知られています。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション キー" として知られています。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault 内のセキュリティで保護された格納データを参照](store-credentials-in-key-vault.md)します。 | はい |
 
 **リンクされたサービスのプロパティの例**:
 
@@ -153,7 +148,7 @@ Azure Data Explorer からデータをコピーするには、コピー アク�
 | noTruncation | 返される結果セットを切り詰めるかどうかを示します。 既定では、結果は 500,000 件のレコードまたは 64 メガバイト (MB) の後に切り詰められます。 アクティビティの正常な動作のためには、切り詰めを強くお勧めします。 |いいえ |
 
 >[!NOTE]
->既定では、Azure Data Explorer ソースには、500,000 レコードまたは 64 MB のサイズ制限があります。 切り捨てることなくすべてのレコードを取得するには、クエリの先頭に `set notruncation;` を指定します。 詳細については、「[クエリの制限](https://docs.microsoft.com/azure/kusto/concepts/querylimits)」を参照してください。
+>既定では、Azure Data Explorer ソースには、500,000 レコードまたは 64 MB のサイズ制限があります。 切り捨てることなくすべてのレコードを取得するには、クエリの先頭に `set notruncation;` を指定します。 詳細については、「[クエリの制限](/azure/kusto/concepts/querylimits)」を参照してください。
 
 **例:**
 
@@ -196,7 +191,7 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは、次のように設定する必要があります:**AzureDataExplorerSink** | はい |
 | ingestionMappingName | Kusto テーブルで事前作成済みの[マッピング](/azure/kusto/management/mappings#csv-mapping)の名前。 ソースから Azure Data Explorer に列をマッピングするには (CSV/JSON/Avro 形式など、[サポートされているすべてのソース ストアや形式](copy-activity-overview.md#supported-data-stores-and-formats)に適用されます)、コピー アクティビティの[列マッピング](copy-activity-schema-and-type-mapping.md) (名前で暗黙的に、または構成で明示的に) や Azure Data Explorer のマッピングを使用できます。 | いいえ |
-| additionalProperties | まだ Azure Data Explorer シンクによって設定されていないインジェストのプロパティを指定するために使用できるプロパティ バッグ。 具体的には、インジェスト タグの指定に便利です。 詳細については [Azure Data Explore データ インジェスト ドキュメント](https://docs.microsoft.com/azure/data-explorer/ingestion-properties)でご覧ください。 | いいえ |
+| additionalProperties | まだ Azure Data Explorer シンクによって設定されていないインジェストのプロパティを指定するために使用できるプロパティ バッグ。 具体的には、インジェスト タグの指定に便利です。 詳細については [Azure Data Explore データ インジェスト ドキュメント](/azure/data-explorer/ingestion-properties)でご覧ください。 | いいえ |
 
 **例:**
 

@@ -1,115 +1,36 @@
 ---
 title: Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
-description: この記事では、自動バックアップとオンデマンド データ復元のしくみ、Azure Cosmos DB でバックアップの間隔と保有期間を構成する方法について説明します。
+description: この記事では、自動バックアップとオンデマンドのデータ復元のしくみについて説明します。 また、継続的および定期的な各バックアップ モードの違いについても説明します。
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 08/24/2020
+ms.topic: how-to
+ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2629e9c6e048620d9490a1e091a16c138fd1e615
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853929"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525434"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB では、データのバックアップが一定の間隔で自動的に取得されます。 自動バックアップは、データベース操作のパフォーマンスや可用性に影響を与えずに取得されます。 すべてのバックアップは別々のストレージ サービス内に個別に保存されます。これらのバックアップは、リージョンの障害からの回復性を確保するためにグローバルにレプリケートされます。 自動バックアップは、Azure Cosmos アカウント、データベース、またはコンテナーを誤って削除または更新した後でデータの回復が必要になったシナリオの場合に役に立ちます。
+Azure Cosmos DB では、データのバックアップが一定の間隔で自動的に取得されます。 自動バックアップは、データベース操作のパフォーマンスや可用性に影響を与えずに取得されます。 すべてのバックアップは、ストレージ サービスに個別に格納されます。 自動バックアップは、Azure Cosmos アカウント、データベース、またはコンテナーを誤って削除または更新した後でデータの回復が必要になったシナリオの場合に役に立ちます。 バックアップには、次の 2 つのモードがあります。
 
-## <a name="automatic-and-online-backups"></a>自動的なオンラインのバックアップ
+* **定期的バックアップ モード** - このモードは、すべての既存のアカウントの既定のバックアップ モードです。 このモードでは、バックアップは定期的な間隔で実行され、サポート チームに要求を作成することによってデータが復元されます。 このモードでは、アカウントのバックアップ間隔と保有期間を構成します。 最大保有期間は 1 か月まで延長されます。 最小バックアップ間隔は 1 時間です。  詳細については、[定期的バックアップ モード](configure-periodic-backup-restore.md)に関する記事をご覧ください。
 
-Azure Cosmos DB では、データだけでなく、データのバックアップについても、冗長性とリージョンの障害からの回復性が高められています。 以下の手順は、Azure Cosmos DB によるデータのバックアップ方法を示しています。
+* **継続的バックアップ モード** (現在はパブリック プレビュー) – このモードは、Azure Cosmos DB アカウントの作成時に選択します。 このモードを使用すると、過去 30 日以内の任意の時点に復元できます。 詳細については、[継続的バックアップ モードの概要](continuous-backup-restore-introduction.md)と、[Azure portal](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md)、および [Resource Manager](continuous-backup-restore-template.md) を使用した継続的バックアップの構成に関する記事をご覧ください。
 
-* Azure Cosmos DB によって、データベースが 4 時間ごとと任意の時点で自動的にバックアップされ、既定では最新の 2 回分のバックアップのみが保存されます。 既定の間隔がワークロードに対して十分でない場合は、Azure portal からバックアップ間隔と保有期間を変更できます。 バックアップ構成は、Azure Cosmos アカウントの作成時または作成後に変更できます。 コンテナーまたはデータベースが削除された場合、Azure Cosmos DB には、特定のコンテナーまたはデータベースの既存のスナップショットが 30 日間保持されます。
-
-* Azure Cosmos DB では、これらのバックアップが Azure Blob Storage に保存される一方、実際のデータは Azure Cosmos DB 内にローカルに存在します。
-
-* 短い待機時間を保証するために、バックアップのスナップショットは、現在の書き込みリージョン (または、マルチマスター構成の場合は、書き込みリージョンの **1 つ**) と同じリージョンの Azure Blob Storage に格納されます。 リージョンの障害に対する回復性を確保するために、Azure BLOB ストレージにあるバックアップ データの各スナップショットが、地理冗長ストレージ (GRS) 経由でもう一度レプリケートされます。 バックアップのレプリケート先のリージョンは、ソース リージョンと、ソース リージョンに関連付けられているリージョン ペアに基づいています。 詳細については、[Azure リージョンの geo 冗長ペアの一覧](../best-practices-availability-paired-regions.md)の記事を参照してください。 このバックアップに直接アクセスすることはできません。 サポート リクエストを通してお客様から要求があると、Azure Cosmos DB チームによりバックアップが復元されます。
-
-   次の図は、3 つのプライマリ物理パーティションがすべて米国西部にある Azure Cosmos コンテナーを、米国西部のリモートの Azure Blob Storage アカウントにバックアップした後、米国東部にレプリケートするようすを示しています。
-
-  :::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ" border="false":::
-
-* バックアップは、お使いのアプリケーションのパフォーマンスや可用性に影響を与えずに取得されます。 Azure Cosmos DB では、データのバックアップがバックグラウンドで実行され、プロビジョニング済みのスループット (RU) を余計に消費することも、データベースのパフォーマンスや可用性に影響することもありません。
-
-## <a name="options-to-manage-your-own-backups"></a>独自のバックアップを管理するためのオプション
-
-Azure Cosmos DB SQL API アカウントをお持ちの場合は、次のいずれかの方法を使用して、独自のバックアップを維持することもできます。
-
-* [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) を使用してデータを定期的に任意のストレージに移動します。
-
-* Azure Cosmos DB の[変更フィード](change-feed.md)を使用して、完全バックアップまたは増分変更のデータを定期的に読み取り、独自のストレージに保存します。
-
-## <a name="modify-the-backup-interval-and-retention-period"></a>バックアップ間隔と保有期間を変更する
-
-Azure Cosmos DB によって、データが 4 時間ごとと任意の時点で自動的にバックアップされ、最新の 2 回分のバックアップが保存されます。 この構成は既定のオプションであり、追加コストなしで提供されます。 Azure Cosmos アカウントの作成時またはアカウントの作成後に、既定のバックアップ間隔と保有期間を変更できます。 バックアップ構成は Azure Cosmos アカウント レベルで設定されるので、アカウントごとに構成する必要があります。 アカウントのバックアップ オプションを構成すると、そのアカウント内のすべてのコンテナーに適用されます。 現在、バックアップ オプションは Azure portal でのみ変更できます。
-
-誤ってデータを削除または破損した場合は、**データを復元するためのサポート リクエストを作成する前に、アカウントのバックアップ保有期間を 7 日以上に増やしてください。このイベントの 8 時間以内に保有期間を延長することをお勧めします。** このようにすると、Azure Cosmos DB チームはアカウントを復元するのに十分な時間を確保できます。
-
-既存の Azure Cosmos アカウントの既定のバックアップ オプションを変更するには、次の手順のようにします。
-
-1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. Azure Cosmos アカウントに移動して、 **[バックアップと復元]** ペインを開きます。 必要に応じて、バックアップ間隔とバックアップ保有期間を更新します。
-
-   * **バックアップ間隔** - Azure Cosmos DB によってデータのバックアップ作成が試みられる間隔です。 バックアップには時間がかかり、場合によってはダウンストリームの依存関係が原因で失敗する可能性があります。 Azure Cosmos DB では、構成されている間隔でのバックアップ作成が可能な限り試みられますが、その期間内にバックアップが完了することは保証されません。 この値は、時間または分の単位で構成できます。 バックアップ間隔を 1 時間より短く、または 24 時間より長くすることはできません。 この間隔を変更すると、最後のバックアップが作成された時点から新しい間隔が有効になります。
-
-   * **バックアップ保有期間** - 各バックアップが保有される期間を表します。 時間単位または日単位で構成できます。 最小保有期間を、バックアップ間隔 (時間数) の 2 倍より短く、または 720 時間より長くすることはできません。
-
-   * **Copies of data retained (保持するデータのコピー数)** - 既定では、データの 2 つのバックアップ コピーが無料で提供されます。 追加のコピーが必要な場合は、Azure portal でサポート リクエストを作成する必要があります。追加のコピーには料金がかかります。 追加コピーの正確な価格については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)の「消費されたストレージ」セクションを参照してください。
-
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="既存の Azure Cosmos アカウントのバックアップ間隔と保有期間を構成する" border="true":::
-
-アカウント作成の間にバックアップ オプションを構成する場合は、**バックアップ ポリシー**を構成することができます。これは、**定期的**または**継続的**です。 定期的なポリシーでは、バックアップ間隔とバックアップ保有期間を構成できます。 継続的ポリシーは、現在、サインアップのみで使用できます。 Azure Cosmos DB チームによりワークロードが評価されて、要求が承認されます。
-
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="新しい Azure Cosmos アカウントに対して定期的または継続的バックアップ ポリシーを構成する" border="true":::
-
-## <a name="restore-data-from-an-online-backup"></a>オンライン バックアップからデータを復元する
-
-データを誤って削除または変更する可能性のあるシナリオには、次のようなものがあります。  
-
-* Azure Cosmos アカウント全体を削除する。
-
-* 1 つ以上の Azure Cosmos データベースを削除する。
-
-* 1 つ以上の Azure Cosmos コンテナーを削除する。
-
-* コンテナー内の Azure Cosmos 項目 (たとえばドキュメント) を削除または変更する。 この特定のケースは一般にデータの破損と呼ばれます。
-
-* 共有オファー データベース、または共有オファー データベース内のコンテナーが、削除されるか破損する。
-
-Azure Cosmos DB では、上記のすべてのシナリオにおいてデータを復元できます。 復元時には、復元されたデータを保持するために新しい Azure Cosmos アカウントが作成されます。 新しいアカウントの名前が指定されていない場合、名前は `<Azure_Cosmos_account_original_name>-restored1` の形式になります。 復元が複数回試行されると、最後の桁がインクリメントされます。 事前に作成した Azure Cosmos アカウントにデータを復元することはできません。
-
-Azure Cosmos アカウントを誤って削除した場合は、そのアカウント名が使用されていなければ、同じ名前の新しいアカウントにデータを復元できます。 そのため、削除した後でアカウントを再作成しないことをお勧めします。 復元されたデータに同じ名前が使用されなくなるだけでなく、復元の基になる適切なアカウントを検出することが難しくなるからです。
-
-Azure Cosmos データベースを誤って削除したときは、データベース全体またはそのデータベース内のコンテナーのサブセットを復元することができます。 また、データベース全体で特定のコンテナーを選択し、それらを新しい Azure Cosmos アカウントに復元することもできます。
-
-コンテナー内の 1 つ以上の項目を誤って削除または変更した場合 (データの破損のケース)、どの時点まで復元するかを指定する必要があります。 データが破損している場合は、時間が重要です。 コンテナーはライブ状態であるため、バックアップはまだ実行中です。したがって、保有期間 (既定では 8 時間) より長く待つと、バックアップが上書きされます。 **バックアップが上書きされないようにするには、アカウントのバックアップ保有期間を少なくとも 7 日間に増やします。データの破損から 8 時間以内に、保有期間を延長することをお勧めします。**
-
-誤ってデータを削除した場合またはデータが破損した場合は、Azure Cosmos DB チームがバックアップからのデータの復元をサポートできるように、8 時間以内に [Azure サポート](https://azure.microsoft.com/support/options/)に連絡してください。 このようにすると、Azure Cosmos DB サポート チームはアカウントを復元するのに十分な時間を確保できます。
-
-データベース レベルでスループットをプロビジョニングしている場合、このケースでのバックアップと復元のプロセスは、個々のコンテナー レベルではなく、データベース全体のレベルで行われます。 そのような場合、復元するコンテナーのサブセットを選択することはできません。
-
-## <a name="migrate-data-to-the-original-account"></a>元のアカウントにデータを移行する
-
-データ復元の主な目的は、誤って削除または変更したデータを復旧することです。 そのため、最初に、復旧したデータの内容を検査して、必要なデータが含まれているか確認することをお勧めします。 後で、データを移行してプライマリ アカウントに戻すことができます。 復元したアカウントを新しいアクティブなアカウントとして使用することはできますが、運用ワークロードが存在する場合のオプションとしてはお勧めしません。  
-
-データを元の Azure Cosmos アカウントに移行するさまざまな方法を以下に示します。
-
-* [Azure Cosmos DB データ移行ツール](import-data.md)を使用します。
-* [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) を使用します。
-* Azure Cosmos DB の[変更フィード](change-feed.md)を使用します。
-* 独自のカスタム コードを作成できます。
-
-継続的に料金が発生するため、データの移行が済んだら直ちに、復元されたアカウントを削除してください。
+  > [!NOTE]
+  > 新しいアカウントを継続的バックアップで構成した場合は、Azure portal、PowerShell、または CLI を使用して、セルフサービス復元を行うことができます。 アカウントを継続的モードで構成した場合は、定期的モードに切り替えて戻すことはできません。 現在定期的バックアップモードである既存のアカウントを、継続的モードに変更することはできません。  
 
 ## <a name="next-steps"></a>次のステップ
 
-次に、Azure Cosmos アカウントからデータを復元する方法、またはデータを Azure Cosmos アカウントに移行する方法について学習します。
+次に、アカウントを定期的および継続的バックアップ モードで構成して管理する方法について学習できます。
 
-* 復元の要請を行うために、Azure サポートに連絡して [Azure portal からチケットを申請](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)する。
-* [Azure Cosmos アカウントからデータを復元する方法](how-to-backup-and-restore.md)
-* [Cosmos DB 変更フィードを使用](change-feed.md)してデータを Azure Cosmos DB に移動する。
-* [Azure Data Factory を使用](../data-factory/connector-azure-cosmos-db.md)してデータを Azure Cosmos DB に移動する。
-
+* [定期的なバックアップ ポリシーを構成および管理する](configure-periodic-backup-restore.md)
+* [継続的バックアップ](continuous-backup-restore-introduction.md) モードとは
+* [Azure portal](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md)、または [Azure Resource Manager](continuous-backup-restore-template.md) を使用して継続的バックアップを構成および管理する
+* 継続的バックアップ モードでデータを復元するために必要な[アクセス許可を管理](continuous-backup-restore-permissions.md)する

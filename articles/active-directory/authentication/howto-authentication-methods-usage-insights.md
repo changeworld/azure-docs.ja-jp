@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.date: 12/17/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: bfff8d450a6506cb37730838e4f70609080ca7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717168"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670793"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 
-使用状況と分析情報を使うと、Azure Multi-Factor Authentication やセルフサービス パスワード リセット などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織が登録中の方法や各方法の使用状況を確認するための手段となるものです。
+使用状況と分析情報を使用すると、Azure AD Multi-Factor Authentication やセルフサービス パスワード リセットなどの機能の認証方法が組織内でどのように機能しているかについて理解することができます。 このレポート機能は、組織が登録中の方法や各方法の使用状況を確認するための手段となるものです。
 
 ## <a name="permissions-and-licenses"></a>アクセス許可とライセンス
 
@@ -31,7 +31,7 @@ ms.locfileid: "88717168"
 - セキュリティ管理者
 - レポート閲覧者
 
-使用状況と分析情報にアクセスするうえで追加のライセンスは必要ありません。 Azure Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) のライセンス情報は、[Azure Active Directory の価格に関するサイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+ 使用状況と分析情報にアクセスするには、Azure AD Premium P1 または P2 ライセンスが必要です。 Azure AD Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) のライセンス情報は、[Azure Active Directory の価格に関するサイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -92,7 +92,7 @@ ms.locfileid: "88717168"
 
 これらのレポートに表示されるデータには、最大 60 分のタイム ラグが存在します。 Azure portal には、ご自分のデータがどの程度新しいかを確認できる [最終更新日時] フィールドがあります。
 
-使用状況と分析情報のデータは、Azure Multi-Factor Authentication のアクティビティ レポートや、Azure AD のサインイン レポートに含まれる情報の代わりとなるものではありません。
+使用状況と分析情報のデータは、Azure AD Multi-Factor Authentication のアクティビティ レポート、または Azure AD のサインイン レポートに含まれる情報の代わりとなるものではありません。
 
 現在、外部ユーザーを除外するためにレポートをフィルター処理することはできません。
 

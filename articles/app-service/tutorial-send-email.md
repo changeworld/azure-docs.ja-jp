@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 8072a941cd89290af3e25cc63c4fccccce705df9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962198"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014664"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -54,7 +54,7 @@ ms.locfileid: "88962198"
 
 ## <a name="create-the-logic-app"></a>ロジック アプリを作成する
 
-1. [Azure portal](https://portal.azure.com) で、「[ロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)」の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー**が表示されたら、このチュートリアルに戻ります。
+1. [Azure portal](https://portal.azure.com) で、「[ロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)」の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー** が表示されたら、このチュートリアルに戻ります。
 1. Logic Apps デザイナーのスプラッシュ ページで、 **[一般的なトリガーで開始する]** の **[HTTP 要求の受信時]** を選択します。
 
     ![Logic Apps Designer のスプラッシュ ページのスクリーンショット。[HTTP 要求の受信時] が強調表示されています。](./media/tutorial-send-email/receive-http-request.png)
@@ -84,7 +84,8 @@ ms.locfileid: "88962198"
 1. デザイナーの下部にある **[新しいステップ]** をクリックし、アクション検索ボックスに「**Gmail**」と入力して、 **[メールの送信 (V2)]** を見つけて選択します。
     
     > [!TIP]
-    > SendGrid、MailChimp、Office 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](../logic-apps/index.yml)を参照してください。
+    > SendGrid、MailChimp、Microsoft 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](../logic-apps/index.yml)を参照してください。
+
 1. **[Gmail]** ダイアログで、 **[サインイン]** を選択し、メールの送信に使用する Gmail アカウントにサインインします。
 
     ![電子メールの送信元にする Gmail アカウントにサインインするための [Gmail] ダイアログ ボックスのスクリーンショット。](./media/tutorial-send-email/gmail-sign-in.png)
@@ -115,7 +116,7 @@ ms.locfileid: "88962198"
 
     ![\+ 記号のスクリーンショット。[並列分岐の追加] オプションが強調表示されています。](./media/tutorial-send-email/add-http-response.png)
 
-1. 検索ボックスで**応答**を検索して、**応答**アクションを選択します。
+1. 検索ボックスで **応答** を検索して、**応答** アクションを選択します。
 
     ![検索バーのスクリーンショット。応答アクションが強調表示されています。](./media/tutorial-send-email/choose-response-action.png)
 
@@ -295,7 +296,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-Ruby では、[JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient) を使用して、HTTP Post を簡単に送信できます。 次に例を示します。
+Ruby では、JSONClient を使用して、HTTP Post を簡単に送信できます。 次に例を示します。
 
 ```ruby
 clnt = JSONClient.new

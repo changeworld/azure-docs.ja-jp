@@ -11,23 +11,23 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 147b73b6772675d5143e41ddfff030614e393b95
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031733"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841650"
 ---
-# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する
+# <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication を使用して Azure SQL Database に接続する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この記事では、Azure SQL Database に接続する C# プログラムについて説明します。 このプログラムでは、[Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) をサポートする対話モードの認証を使用します。
+この記事では、Azure SQL Database に接続する C# プログラムについて説明します。 このプログラムでは、[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) をサポートする対話モードの認証を使用します。
 
-SQL ツールでの多要素認証のサポートの詳細については、「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](https://docs.microsoft.com/sql/ssdt/azure-active-directory)」をご覧ください。
+SQL ツールでの多要素認証のサポートの詳細については、「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](/sql/ssdt/azure-active-directory)」をご覧ください。
 
 ## <a name="multi-factor-authentication-for-azure-sql-database"></a>Azure SQL Database の多要素認証
 
-.NET Framework バージョン 4.7.2 以降、列挙型 [`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) に新しい値 `ActiveDirectoryInteractive` が追加されました。 C# クライアント プログラムでこの列挙値を使用すると、Azure SQL Database への接続に、多要素認証をサポートする Azure Active Directory (Azure AD) 対話モードを使用するようシステムに指示します。 プログラムを実行するユーザーには、次のダイアログ ボックスが表示されます。
+.NET Framework バージョン 4.7.2 以降、列挙型 [`SqlAuthenticationMethod`](/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) に新しい値 `ActiveDirectoryInteractive` が追加されました。 C# クライアント プログラムでこの列挙値を使用すると、Azure SQL Database への接続に、多要素認証をサポートする Azure Active Directory (Azure AD) 対話モードを使用するようシステムに指示します。 プログラムを実行するユーザーには、次のダイアログ ボックスが表示されます。
 
 * Azure AD ユーザー名を表示し、そのユーザーのパスワードの入力を求めるダイアログ ボックス。
 
@@ -35,18 +35,18 @@ SQL ツールでの多要素認証のサポートの詳細については、「[
 
    Azure AD ポリシーでユーザーに多要素認証が強制されている場合は、次の 2 つのダイアログ ボックスが表示されます。
 
-* ユーザーが初めて多要素認証を実行するときに、テキスト メッセージの送信先の携帯電話番号を確認するダイアログ ボックスが表示されます。 各メッセージでは、ユーザーが次のダイアログ ボックスに入力する必要がある*確認コード*が提供されます。
+* ユーザーが初めて多要素認証を実行するときに、テキスト メッセージの送信先の携帯電話番号を確認するダイアログ ボックスが表示されます。 各メッセージでは、ユーザーが次のダイアログ ボックスに入力する必要がある *確認コード* が提供されます。
 
 * システムから携帯電話に送信された多要素認証確認コードの入力を求めるダイアログ ボックス。
 
-多要素認証を要求するように Azure AD を構成する方法については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud)」をご覧ください。
+多要素認証を要求するように Azure AD を構成する方法については、「[クラウドベースの Azure AD Multi-Factor Authentication をデプロイする](../../active-directory/authentication/howto-mfa-getstarted.md)」をご覧ください。
 
 これらのダイアログのスクリーンショットについては、「[SQL Server Management Studio と Azure AD 用に多要素認証を構成する](authentication-mfa-ssms-configure.md)」をご覧ください。
 
 > [!TIP]
-> .NET Framework API は [.NET API ブラウザー ツール ページ](https://docs.microsoft.com/dotnet/api/)で検索できます。
+> .NET Framework API は [.NET API ブラウザー ツール ページ](/dotnet/api/)で検索できます。
 >
-> また、省略可能な [?term=&lt;検索値&gt;](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod) パラメーターで直接検索することもできます。
+> また、省略可能な [?term=&lt;検索値&gt;](/dotnet/api/?term=SqlAuthenticationMethod) パラメーターで直接検索することもできます。
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>Azure portal で C# アプリケーションを構成する
 
@@ -54,7 +54,7 @@ SQL ツールでの多要素認証のサポートの詳細については、「[
 
 ### <a name="register-your-app-and-set-permissions"></a>アプリを登録してアクセス許可を設定する
 
-Azure AD 認証を使用するには、C# プログラムで Azure AD アプリケーションとして登録する必要があります。 アプリを登録するには、Azure AD 管理者または Azure AD *Application Developer* のロールが割り当てられたユーザーである必要があります。 ロールの割り当ての詳細については、「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)」を参照してください。
+Azure AD 認証を使用するには、C# プログラムで Azure AD アプリケーションとして登録する必要があります。 アプリを登録するには、Azure AD 管理者または Azure AD *Application Developer* のロールが割り当てられたユーザーである必要があります。 ロールの割り当ての詳細については、「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](../../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)」を参照してください。
 
 アプリの登録を完了すると、**アプリケーション ID** が生成され、表示されます。 接続するには、プログラムにこの ID を含める必要があります。
 
@@ -92,13 +92,13 @@ Azure SQL Database の Azure AD 管理者とユーザーの詳細については
 
 [論理 SQL サーバー](logical-servers.md)の Azure AD 管理者は、C# サンプル プログラムを実行できます。 Azure AD ユーザーは、データベースに登録されていればプログラムを実行できます。 データベースに既に登録され、データベースに対して `ALTER ANY USER` アクセス許可を持つ Azure AD SQL 管理者または Azure AD ユーザーは、ユーザーを追加できます。
 
-SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) コマンドを使用してデータベースにユーザーを追加できます。 たとえば `CREATE USER [<username>] FROM EXTERNAL PROVIDER` です。
+SQL [`Create User`](/sql/t-sql/statements/create-user-transact-sql) コマンドを使用してデータベースにユーザーを追加できます。 たとえば `CREATE USER [<username>] FROM EXTERNAL PROVIDER` です。
 
 詳細については、[SQL Database、Managed Instance、または Azure Synapse Analytics での認証に Azure Active Directory Authentication を使用する](authentication-aad-overview.md)に関するページをご覧ください。
 
 ## <a name="new-authentication-enum-value"></a>新しい認証列挙値
 
-この C# の例は、[`System.Data.SqlClient`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) 名前空間に依存しています。 多要素認証で特に重要なものは列挙型の `SqlAuthenticationMethod` であり、以下の値があります。
+この C# の例は、[`System.Data.SqlClient`](/dotnet/api/system.data.sqlclient) 名前空間に依存しています。 多要素認証で特に重要なものは列挙型の `SqlAuthenticationMethod` であり、以下の値があります。
 
 * `SqlAuthenticationMethod.ActiveDirectoryInteractive`
 
@@ -113,7 +113,7 @@ SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-
   Azure AD のユーザー名とパスワードが必要な認証には、この値を使用します。 Azure SQL Database によって認証が実行されます。 この方法では、多要素認証はサポートされません。
 
 > [!NOTE]
-> .NET Core を使用している場合は、[Microsoft.Data.SqlClient](https://docs.microsoft.com/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
+> .NET Core を使用している場合は、[Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>Azure portal から C# パラメーター値を設定する
 
@@ -134,7 +134,7 @@ C# プログラムを実行する前に、SQL Server Management Studio (SSMS) �
 
 ### <a name="verify-server-level-firewall-ip-addresses"></a>サーバー レベルのファイアウォールの IP アドレスを確認する
 
-C# プログラムを実行する予定の場合、同じ構成で、同じコンピューターから SSMS を実行します。 このテストの場合は、任意の**認証**モードを使用できます。 サーバーが指定した IP アドレスを受け入れていないことを示している場合は、[サーバーレベルとデータベースレベルのファイアウォール規則](firewall-configure.md)に関するページを参照してください。
+C# プログラムを実行する予定の場合、同じ構成で、同じコンピューターから SSMS を実行します。 このテストの場合は、任意の **認証** モードを使用できます。 サーバーが指定した IP アドレスを受け入れていないことを示している場合は、[サーバーレベルとデータベースレベルのファイアウォール規則](firewall-configure.md)に関するページを参照してください。
 
 ### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Azure Active Directory の多要素認証を確認する
 
@@ -148,9 +148,9 @@ C# プログラムを実行する予定の場合、同じ構成で、同じコ�
 ## <a name="c-code-example"></a>C# コード例
 
 > [!NOTE]
-> .NET Core を使用している場合は、[Microsoft.Data.SqlClient](https://docs.microsoft.com/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
+> .NET Core を使用している場合は、[Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
 
-この C# サンプル プログラムでは、[*Microsoft.IdentityModel.Clients.ActiveDirectory*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL アセンブリを利用します。
+この C# サンプル プログラムでは、[*Microsoft.IdentityModel.Clients.ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL アセンブリを利用します。
 
 このパッケージをインストールするには、Visual Studio で **[プロジェクト]**  >  **[NuGet パッケージの管理]** の順に選択します。 「**Microsoft.IdentityModel.Clients.ActiveDirectory**」を検索してインストールします。
 
@@ -342,6 +342,6 @@ In method 'AcquireTokenAsync', case_0 == '.ActiveDirectoryInteractive'.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
-& [Get-AzSqlServerActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)
+& [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)

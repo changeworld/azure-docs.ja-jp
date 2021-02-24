@@ -6,14 +6,14 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 92a9370ec866b6d2c14988871e3c742a40679885
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077810"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805042"
 ---
-# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>StorSimple に Azure Active Directory (AD) 認証を使用する
+# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>StorSimple に Azure Active Directory (AD) 認証を使用する
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -54,7 +54,7 @@ StorSimple 8000 シリーズ デバイスを使用している場合は、次の
 
 | デバイスの状況| 実行するアクション                                    |
 |--------------------------|------------------------|
-| Update 5 以降が実行中で、デバイスはオフライン。 <br> URL がホワイトリストに登録されていないことを示すアラートが表示される。|1.認証 URL を含めるようにファイアウォール規則を変更します。 [認証 URL](#url-changes-for-aad-authentication) に関するセクションをご覧ください。<br>2.[サービスから AAD 登録キーを取得します](#aad-based-registration-keys)。<br>3.[StorSimple 8000 シリーズ デバイスの Windows PowerShell インターフェイスに接続します](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。<br>4.`Redo-DeviceRegistration` コマンドレットを使用して、Windows PowerShell でデバイスを登録します。 前の手順で取得したキーを指定します。|
+| Update 5 以降が実行中で、デバイスはオフライン。 <br> URL が承認されていないことを示すアラートが表示される。|1.認証 URL を含めるようにファイアウォール規則を変更します。 [認証 URL](#url-changes-for-aad-authentication) に関するセクションをご覧ください。<br>2.[サービスから AAD 登録キーを取得します](#aad-based-registration-keys)。<br>3.[StorSimple 8000 シリーズ デバイスの Windows PowerShell インターフェイスに接続します](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。<br>4.`Redo-DeviceRegistration` コマンドレットを使用して、Windows PowerShell でデバイスを登録します。 前の手順で取得したキーを指定します。|
 | Update 5 以降が実行中で、デバイスはオンライン。| 必要な操作はありません。                                       |
 | Update 4 以前が実行中で、デバイスはオフライン。 |1.認証 URL を含めるようにファイアウォール規則を変更します。<br>2.[カタログ サーバーを使用して Update 5 をダウンロードします](storsimple-8000-install-update-5.md#download-updates-for-your-device)。<br>3.[修正プログラムを使用して Update 5 を適用します](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix)。<br>4.[サービスから AAD 登録キーを取得します](#aad-based-registration-keys)。<br>5.[StorSimple 8000 シリーズ デバイスの Windows PowerShell インターフェイスに接続します](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。 <br>6.`Redo-DeviceRegistration` コマンドレットを使用して、Windows PowerShell でデバイスを登録します。 前の手順で取得したキーを指定します。|
 | Update 4 以前が実行中で、デバイスはオンライン。 |認証 URL を含めるようにファイアウォール規則を変更します。<br> Azure Portal を使用して Update 5 をインストールします。              |
@@ -75,7 +75,7 @@ AAD サービス登録キーを生成するには、次の手順を実行しま�
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>AAD サービス登録キーを生成するには
 
-1. **StorSimple デバイス マネージャー**で、 **[管理] &gt;** **[キー]** の順に移動します。 検索バーを使用して、"_キー_" を検索することもできます。
+1. **StorSimple デバイス マネージャー** で、 **[管理] &gt;** **[キー]** の順に移動します。 検索バーを使用して、"_キー_" を検索することもできます。
     
 2. **[キーの生成]** をクリックします。
 
@@ -91,4 +91,3 @@ AAD サービス登録キーを生成するには、次の手順を実行しま�
 ## <a name="next-steps"></a>次のステップ
 
 * [StorSimple 8000 シリーズ デバイス](storsimple-8000-deployment-walkthrough-u2.md)をデプロイする方法に関する詳細を確認します。
-

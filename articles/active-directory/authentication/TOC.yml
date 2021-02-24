@@ -9,7 +9,7 @@
   items:
     - name: セルフサービス パスワード リセットを有効にする
       href: tutorial-enable-sspr.md
-    - name: Azure Multi-Factor Authentication の有効化
+    - name: Azure AD の Multi-Factor Authentication を有効にする
       href: tutorial-enable-azure-mfa.md
     - name: オンプレミスへのパスワード ライトバックを有効にする
       href: tutorial-enable-sspr-writeback.md
@@ -21,7 +21,19 @@
   expanded: true
   items:
     - name: 認証方法
-      href: concept-authentication-methods.md
+      items:
+        - name: 概要
+          href: concept-authentication-methods.md
+        - name: Microsoft Authenticator アプリ
+          href: concept-authentication-authenticator-app.md
+        - name: OATH トークン
+          href: concept-authentication-oath-tokens.md
+        - name: パスワードレス
+          href: concept-authentication-passwordless.md
+        - name: 電話のオプション
+          href: concept-authentication-phone-options.md
+        - name: セキュリティの質問
+          href: concept-authentication-security-questions.md
     - name: セルフサービス パスワード リセット
       items:
         - name: パスワード リセットのしくみ
@@ -46,8 +58,6 @@
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: よく寄せられる質問
           href: multi-factor-authentication-faq.md
-    - name: パスワードレスの認証
-      href: concept-authentication-passwordless.md
     - name: パスワード保護
       items:
         - name: クラウドで脆弱なパスワードを排除する
@@ -70,7 +80,7 @@
           href: howto-sspr-authenticationdata.md
         - name: Windows クライアント用 SSPR
           href: howto-sspr-windows.md
-    - name: Azure Multi-Factor Authentication
+    - name: Azure AD の Multi-Factor Authentication
       items:
         - name: デプロイ ガイド
           href: howto-mfa-getstarted.md
@@ -98,7 +108,7 @@
               href: howto-mfa-nps-extension.md
             - name: NPS 拡張機能の詳細な構成
               href: howto-mfa-nps-extension-advanced.md
-            - name: Azure VPN と Azure MFA
+            - name: Azure VPN と Azure AD MFA
               href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: リモート デスクトップ ゲートウェイ
               href: howto-mfa-nps-extension-rdg.md
@@ -144,9 +154,9 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: エージェントのバージョン履歴
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: SMS ベースの認証の使用 (プレビュー)
+    - name: SMS ベースの認証を使用する
       href: howto-authentication-sms-signin.md
-    - name: メール アドレスのサインインを使用する (プレビュー)
+    - name: メール アドレスのサインインを使用する
       href: howto-authentication-use-email-signin.md
     - name: Azure AD スマート ロックアウト
       href: howto-password-smart-lockout.md
@@ -213,8 +223,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: トラブルシューティング
       items:
-        - name: SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: セルフサービス パスワード リセット (SSPR)
+          href: troubleshoot-sspr.md
+        - name: SSPR の書き戻し
+          href: troubleshoot-sspr-writeback.md
         - name: SSPR に関する FAQ
           href: active-directory-passwords-faq.md
         - name: MFA に関する FAQ
@@ -232,7 +244,7 @@
     - name: Microsoft Graph REST API ベータ版
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: サービスの制限と制約
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

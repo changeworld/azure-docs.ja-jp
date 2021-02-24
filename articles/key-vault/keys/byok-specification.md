@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 141abea0c0946c98b6dfe627f32f01682a18be44
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84198789"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581025"
 ---
 # <a name="bring-your-own-key-specification"></a>Bring Your Own Key の仕様
 
@@ -35,7 +35,7 @@ Key Vault の顧客は、Azure の外部にあるオンプレミスの HSM か�
 |---|---|---|---|
 |キー交換キー (KEK)|RSA|Azure Key Vault HSM|Azure Key Vault で生成される、HSM で保護された RSA キー ペア
 ラッピング キー|AES|ベンダー HSM|オンプレミスの HSM によって生成される [一時的な] AES キー
-ターゲット キー|RSA、EC、AES|ベンダー HSM|Azure Key Vault HSM に転送されるキー
+ターゲット キー|RSA、EC、AES (Managed HSM のみ)|ベンダー HSM|Azure Key Vault HSM に転送されるキー
 
 **キー交換キー**:BYOK キーのインポート先であるキー コンテナー内に顧客が生成する HSM で保護されたキー。 この KEK には、次のプロパティが必要です。
 
@@ -130,9 +130,16 @@ CKM_RSA_AES_KEY_WRAP_PAD が使用される場合、転送 BLOB の JSON シリ�
 
 顧客は、キー転送 BLOB (".byok" ファイル) をオンライン ワークステーションに転送した後、**az keyvault key import** コマンドを実行して、この BLOB を新しい HSM でサポートされるキーとして Key Vault にインポートします。 
 
+RSA キーをインポートするには、このコマンドを使用します。
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok --ops encrypt decrypt
 ```
+EC キーをインポートするには、キーの種類と曲線名を指定する必要があります。
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok --ops sign verify
+```
+
 
 上記のコマンドを実行すると、次のような REST API 要求が送信されます。
 
@@ -140,7 +147,7 @@ az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey
 PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-version=7.0
 ```
 
-要求本文:
+RSA キーをインポートするときの要求本文:
 ```json
 {
   "key": {
@@ -156,22 +163,29 @@ PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-versi
   }
 }
 ```
+
+EC キーをインポートするときの要求本文:
+```json
+{
+  "key": {
+    "kty": "EC-HSM",
+    "crv": "P-256",
+    "key_ops": [
+      "sign",
+      "verify"
+    ],
+    "key_hsm": "<Base64 encoded BYOK_BLOB>"
+  },
+  "attributes": {
+    "enabled": true
+  }
+}
+```
+
 "key_hsm" 値は、Base64 形式でエンコードされた KeyTransferPackage-ContosoFirstHSMkey.byok の内容全体です。
 
 ## <a name="references"></a>References
-
-### <a name="azure-key-vault-rest-api"></a>Azure Key Vault REST API
-
-* [キーの作成](https://docs.microsoft.com/rest/api/keyvault/createkey/createkey)
-* [キーの取得 (キー属性と公開キーのみ)](https://docs.microsoft.com/rest/api/keyvault/getkey/getkey)
-* [キーのインポート](https://docs.microsoft.com/rest/api/keyvault/importkey/importkey)
-
-
-### <a name="azure-cli-commands"></a>Azure CLI コマンド
-* [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)
-* [az keyvault key download](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download)
-* [az keyvault key import](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
-
+- [Key Vault 開発者ガイド](../general/developers-guide.md)
 
 ## <a name="next-steps"></a>次のステップ
 * 詳細な BYOK の手順:[HSM で保護されたキーを Key Vault にインポートする (BYOK)](hsm-protected-keys-byok.md)

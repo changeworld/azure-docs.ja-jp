@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 3193df0848c0d67935faa0020465e79bd50e2151
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f15d00f1050177c6255fb5528f03314153c3ed9a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544980"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>チュートリアル:Azure Active Directory と ThirdLight の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544980"
 * ユーザーが自分の Azure AD アカウントで ThirdLight に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -59,7 +59,7 @@ Azure AD への ThirdLight の統合を設定するには、ギャラリーか�
 
     ![[新しいアプリケーション] を選択する](common/add-new-app.png)
 
-4. 検索ボックスに「**ThirdLight**」と入力します。 検索結果で **[ThirdLight]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに「 **ThirdLight** 」と入力します。 検索結果で **[ThirdLight]** を選択し、 **[追加]** を選択します。
 
      ![[検索結果]](common/search-new-app.png)
 
@@ -91,7 +91,7 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 
@@ -160,9 +160,9 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「 **BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
@@ -219,12 +219,12 @@ Azure AD ユーザーが ThirdLight にサインインできるようにする�
 
 ここで、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストする必要があります。
 
-アクセス パネル上で [ThirdLight] タイルを選択すると、SSO を設定した ThirdLight インスタンスに自動的にサインインします。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+アクセス パネル上で [ThirdLight] タイルを選択すると、SSO を設定した ThirdLight インスタンスに自動的にサインインします。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

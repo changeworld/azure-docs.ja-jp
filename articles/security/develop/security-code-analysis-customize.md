@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206860"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008686"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -39,7 +39,7 @@ ms.locfileid: "86206860"
 
 Windows Defender は、Windows Update クライアントを使用してシグネチャをダウンロードし、インストールします。 ビルド エージェントでシグネチャの更新に失敗した場合、Windows Update から **HRESULT** エラー コードが返される可能性があります。
 
-Windows Update のエラーとその軽減策について詳しくは、「[コンポーネント別の Windows Update エラーコード](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference)」および TechNet の記事「[Windows Update エージェント - エラーコード](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)」をご覧ください。
+Windows Update のエラーとその軽減策について詳しくは、「[コンポーネント別の Windows Update エラーコード](/windows/deployment/update/windows-update-error-reference)」および TechNet の記事「[Windows Update エージェント - エラーコード](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)」をご覧ください。
 
 このタスクの YAML 構成については、[Anti-Malware YAML オプション](yaml-configuration.md#anti-malware-scanner-task)に関するセクションを参照してください
 
@@ -131,7 +131,7 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
 
 > [!NOTE]
 >
-> - Roslyn アナライザーはコンパイラに統合されており、csc.exe コンパイルの一部としてのみ実行できます。 したがって、このタスクでは、ビルドで既に実行されたコンパイラ コマンドを再生または再度実行する必要があります。 この再生または実行は、Visual Studio Team Services (VSTS) に対して MSBuild ビルド タスクのログのクエリを実行することによって行われます。
+> - Roslyn アナライザーはコンパイラに統合されており、csc.exe コンパイルの一部としてのみ実行できます。 したがって、このタスクでは、ビルドで既に実行されたコンパイラ コマンドを再生または再度実行する必要があります。 この再生または実行は、Azure DevOps (旧称、Visual Studio Team Services) に対して MSBuild ビルド タスクのログのクエリを実行することによって行われます。
 >
 >   タスクでビルド定義から MSBuild コンパイル コマンド ラインを確実に取得する方法は、他にはありません。 ユーザーがコマンド ラインを入力できるように、自由形式のテキスト ボックスを追加することが検討されました。 しかし、それらのコマンド ラインを最新の状態に保ち、メイン ビルドと同期させるのは困難です。
 >
@@ -143,7 +143,7 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
 >
 >   新しいタスクが元のタスクと同じエージェント上で実行される場合、新しいタスクの出力によって、*s* ソース フォルダー内の元のタスクの出力が上書きされます。 ビルド出力は同じものですが、MSBuild を実行し、出力を成果物のステージング ディレクトリにコピーしてから、Roslyn アナライザーを実行することをお勧めします。
 
-Roslyn Analyzers タスクに関するその他のリソースについては、Microsoft Docs の「[Roslyn ベースのアナライザー](https://docs.microsoft.com/dotnet/standard/analyzers/)」を参照してください。
+Roslyn Analyzers タスクに関するその他のリソースについては、Microsoft Docs の「[Roslyn ベースのアナライザー](/dotnet/standard/analyzers/api-analyzer)」を参照してください。
 
 このビルド タスクによってインストールされて使用されるアナライザー パッケージは、NuGet の [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) ページで確認できます。
 

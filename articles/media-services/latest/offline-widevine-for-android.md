@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 を使用した Android 用の Widevine のオフライン ストリーミング
-description: このトピックでは、Widevine で保護されたコンテンツのオフライン ストリーミング用に Azure Media Services アカウントを構成する方法を示します。
+title: Android での Widevine のオフライン ストリーミング
+description: このトピックでは、Widevine で保護されたコンテンツのオフライン ストリーミング用に Azure Media Services v3 アカウントを構成する方法を示します。
 services: media-services
 keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8cfc426844180cabc6f42330135d8fc1ff8ebabd
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289394"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955209"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Media Services v3 を使用した Android 用のオフラインの Widevine ストリーミング
 
@@ -30,6 +30,8 @@ ms.locfileid: "89289394"
 
 - コンテンツ プロバイダーによっては、国/地域の境を超えた DRM ライセンス配信を許可しないことがあります。 ユーザーが外国旅行中にコンテンツの視聴を望む場合は、オフライン ダウンロードが必要です。
 - 一部の国/地域では、インターネットの使用や帯域幅が制限されています。 ユーザーはコンテンツをダウンロードすることで、満足できる十分に高い解像度でコンテンツを視聴できます。
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 この記事では、Android デバイスで Widevine によって保護された DASH コンテンツのオフライン モード再生を実装する方法について説明します。 オフライン DRM では、コンテンツのサブスクリプション モデル、レンタル モデル、購入モデルを提供することができ、サービスの利用者はインターネットから切断しているときに簡単にコンテンツを利用できます。
 
@@ -95,7 +97,7 @@ Android デバイスに Widevine 用のオフライン DRM を実装する前に
 
 ## <a name="enable-offline-mode"></a>オフライン モードを有効にする
 
-Widevine ライセンスの**オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](widevine-license-template-overview.md)を構成する必要があります。 [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) に示すように、**policy_overrides** オブジェクトで **can_persist** プロパティを **true** に設定します (既定値は false)。 
+Widevine ライセンスの **オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](widevine-license-template-overview.md)を構成する必要があります。 [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) に示すように、**policy_overrides** オブジェクトで **can_persist** プロパティを **true** に設定します (既定値は false)。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#ConfigureWidevineLicenseTempate)]
 

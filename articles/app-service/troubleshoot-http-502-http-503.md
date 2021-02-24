@@ -7,15 +7,15 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9a41c5912ec285094c1f47540caf3744ddd4d469
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 6dd67ff4f7346daf7a590ab4fb45a32d227f1c3e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958328"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147545"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service での HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
-"502 無効なゲートウェイ" と "503 サービス利用不可" は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でホストされているアプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
+"502 無効なゲートウェイ" と "503 サービス利用不可" は、[Azure App Service](./overview.md) でホストされているアプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
 

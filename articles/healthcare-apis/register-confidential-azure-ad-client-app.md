@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 756645d2df22f1222c3004a44e5a46c7a3bc1a2f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852550"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826221"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Azure Active Directory に Confidential クライアント アプリケーションを登録する
 
@@ -21,61 +21,61 @@ ms.locfileid: "87852550"
 
 クライアント アプリケーションの登録は、ユーザーに代わって認証に使用でき、[リソース アプリケーション](register-resource-azure-ad-client-app.md)へのアクセスを要求できるアプリケーションを Azure Active Directory で表したものです。 Confidential クライアント アプリケーションは、信頼性が高く、シークレットを保持し、アクセス トークンの要求時にそのシークレットを提示できるアプリケーションです。 Confidential アプリケーションの例としては、サーバー側のアプリケーションがあります。
 
-ポータルで新しい Confidential アプリケーションを登録するには、以下の手順に従います。
-
-## <a name="app-registrations-in-azure-portal"></a>Azure portal でのアプリの登録
-
-1. [Azure portal](https://portal.azure.com) の左側のナビゲーション パネルで、 **[Azure Active Directory]** をクリックします。
-
-2. **[Azure Active Directory]** ブレードで、 **[アプリの登録]** をクリックします。
-
-    ![Azure portal。 新しいアプリの登録。](media/how-to-aad/portal-aad-new-app-registration.png)
-
-3. **[新規登録]** をクリックします。
+ポータルで新しい Confidential アプリケーションを登録するには、次の手順に従います。
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 
+1. [Azure portal](https://portal.azure.com) で、 **[Azure Active Directory]** に移動します。
+
+1. **[アプリの登録]** を選択します。
+
+    ![Azure portal。 新しいアプリの登録。](media/how-to-aad/portal-aad-new-app-registration.png)
+
+1. **[新規登録]** を選択します。
+
 1. アプリケーションに表示名を与えます。
 
-2. 応答 URL を入力してください。 これらの詳細は後で変更できますが、アプリケーションの応答 URL がわかっている場合は、ここで入力します。
+1. 応答 URL を入力してください。 これらの詳細は後で変更できますが、アプリケーションの応答 URL がわかっている場合は、ここで入力します。
 
     ![新しい Confidential クライアント アプリの登録。](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+1. **[登録]** を選択します。
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
-次に API のアクセス許可を追加します。
+これでアプリケーションが登録されたので、ユーザーに代わり、このアプリケーションによって要求できる API アクセス許可を選択する必要があります。
 
-1. **API のアクセス許可**を開きます。
+1. **[API のアクセス許可]** を選択します。
 
     ![Confidential クライアント。 API のアクセス許可](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
 
-2. **[アクセス許可の追加]** をクリックします
+1. **[アクセス許可の追加]** を選択します。
 
-3. 適切なリソース API を選択します。
+    Azure API for FHIR を使用する場合は、 **[所属する組織で使用している API]** で **Azure Healthcare API** を検索し、Azure Healthcare API へのアクセス許可を追加します。 これは、既に [Azure API for FHIR](fhir-paas-powershell-quickstart.md) がデプロイされている場合にのみ、見つけることができます。
 
-    Azure API for FHIR (マネージド サービス) の場合、 **[所属する組織で使用している API]** をクリックし、「Azure Healthcare APIs (Azure 医療 API)」を検索します。 オープン ソースの FHIR Server for Azure の場合、[[FHIR API Resource Application Registration]](register-resource-azure-ad-client-app.md)(FHIR API リソース アプリケーションの登録) を選択します。
+    別のリソース アプリケーションを参照している場合は、 **[自分の API][ で作成済みの ](register-resource-azure-ad-client-app.md)FHIR API リソース アプリケーションの登録**を選択します。
 
-    ![Confidential クライアント。 自分の API](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-MyApis.png)
 
-4. ユーザーに代わって Confidential アプリケーションが要求できるスコープ (アクセス許可) を選択します。
+    :::image type="content" source="media/conf-client-app/confidential-client-org-api.png" alt-text="Confidential クライアント。自分の組織の API" lightbox="media/conf-client-app/confidential-app-org-api-expanded.png":::
+    
 
-    ![Confidential クライアント。 委任されたアクセス許可](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-DelegatedPermissions.png)
+3. ユーザーに代わって Confidential アプリケーションが要求できるスコープ (アクセス許可) を選択します。
+
+    :::image type="content" source="media/conf-client-app/confidential-client-add-permission.png" alt-text="Confidential クライアント。自分の組織の API":::
 
 ## <a name="application-secret"></a>アプリケーション シークレット
 
-1. アプリケーション シークレット (クライアント シークレット) を作成します。
+1. **[証明書とシークレット]** を選択します。
+1. **[新しいクライアント シークレット]** を選択します。 
 
     ![Confidential クライアント。 アプリケーション シークレット](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
 
-2. シークレットの説明と期間を指定します。
+2. シークレットの説明と期間を指定します (1 年間、2 年間、または [なし])。
 
 3. 生成されると、ポータルに一度だけ表示されます。 メモし、安全に保管してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Confidential クライアント アプリケーションを Azure Active Directory に登録する方法について学習しました。 これで [Azure API for FHIR](fhir-paas-powershell-quickstart.md) をデプロイできます。
-
-Azure API for FHIR をデプロイしたら、利用できる追加設定を確認できます。
+この記事では、Confidential クライアント アプリケーションを Azure Active Directory に登録する方法について学習しました。 次に、Postman を使用して、FHIR サーバーにアクセスします。
  
 >[!div class="nextstepaction"]
->[Azure API for FHIR をデプロイする](fhir-paas-powershell-quickstart.md)
+>[Postman を使用して Azure API for FHIR にアクセスする](access-fhir-postman-tutorial.md)

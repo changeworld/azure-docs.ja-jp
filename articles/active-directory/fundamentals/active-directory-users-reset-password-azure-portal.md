@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797205"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370901"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
 
@@ -33,7 +33,7 @@ ms.locfileid: "87797205"
 
 ## <a name="to-reset-a-password"></a>パスワードをリセットするには
 
-1. [Azure portal](https://portal.azure.com/) にユーザー管理者またはパスワード管理者としてサインインします。 使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md#available-roles)に関するページを参照してください。
+1. [Azure portal](https://portal.azure.com/) にユーザー管理者またはパスワード管理者としてサインインします。 使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md#available-roles)に関するページを参照してください。
 
 2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、リセットを必要としているユーザーを検索して選択し、 **[パスワードのリセット]** を選択します。
 
@@ -63,4 +63,4 @@ ms.locfileid: "87797205"
 
 - [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
-または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、より複雑なユーザー シナリオを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
+または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、より複雑なユーザー シナリオを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../enterprise-users/index.yml)」を参照してください。

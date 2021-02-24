@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e2561b6cfce0da2ede9cda567091f9a7e23610de
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: db9c8d18d975661edf4a120a2e82b073c884d2a9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682996"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369677"
 ---
 # <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>Azure アカウントで Microsoft 365 サブスクリプションにサインアップする
 
-Azure サブスクライバーは、Azure アカウントを使用して、Microsoft 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active Directory (Azure AD) にユーザーの Microsoft 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者権限を持っているアカウントを使用して、Microsoft 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+Azure サブスクライバーは、Azure アカウントを使用して、Microsoft 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active Directory (Azure AD) にユーザーの Microsoft 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者権限を持っているアカウントを使用して、Microsoft 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../../active-directory/roles/permissions-reference.md)」を参照してください。
 
 既に Microsoft 365 アカウントと Azure サブスクリプションの両方がある場合は、[Microsoft 365 テナントを Azure サブスクリプションに関連付け](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)てください。
 
@@ -60,7 +60,7 @@ Azure サブスクライバーは、Azure アカウントを使用して、Micro
 5. **[ディレクトリ ロール]** をクリックします。
 
     ![Azure ポータルでのディレクトリ ロールの表示のスクリーン ショット](./media/azure-account-for-microsoft-365-subscription/billing-user-directory-role.png)
-6.  既存の Azure Active Directory にユーザーの Microsoft 365 サブスクリプションを作成するには、**グローバル管理者**ロール、または**制限付き管理者** > **課金管理者**ロールが必要です。
+6.  既存の Azure Active Directory にユーザーの Microsoft 365 サブスクリプションを作成するには、 **グローバル管理者** ロール、または **制限付き管理者** > **課金管理者** ロールが必要です。
 
     ![Azure ポータルでの課金管理者ディレクトリ ロールの表示のスクリーン ショット](./media/azure-account-for-microsoft-365-subscription/billing-directoryrole-limited.png)
 

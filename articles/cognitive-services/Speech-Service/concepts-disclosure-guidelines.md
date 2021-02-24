@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: angle
-ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: shlo
+ms.openlocfilehash: f1889d49d1eb4981e59af6248817a6a9b6e2002d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74776387"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537257"
 ---
 # <a name="disclosure-design-guidelines"></a>開示設計のガイドライン
 音声エクスペリエンスが合成であることを明示することにより、顧客との信頼関係を築いて維持する方法を説明します。
@@ -74,12 +74,8 @@ ms.locfileid: "74776387"
 
   ![開示の評価の図](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="reference-docs"></a>リファレンス ドキュメント
-
-* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
-* [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
-* [規制の概要](concepts-gating-overview.md)
-
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 * [開示の設計パターン](concepts-disclosure-patterns.md)
+* [ボイス タレント向けの開示](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)

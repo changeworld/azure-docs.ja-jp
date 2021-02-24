@@ -1,19 +1,17 @@
 ---
 title: アーキテクチャ:オンプレミスの Apache Hadoop から Azure HDInsight
 description: オンプレミスの Hadoop クラスターを Azure HDInsight に移行する場合のアーキテクチャのベスト プラクティスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb01f2fabb89c6928dc4919987efa27df36a8a7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077900"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946448"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
 
@@ -43,9 +41,9 @@ Azure HDInsight クラスターは、特定の種類の計算を利用するた�
 |[Azure CLI (ver 1.0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
-|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
+|[Python SDK](/python/api/overview/azure/hdinsight)||||X|
+|[Java SDK](/java/api/overview/azure/hdinsight)||||X|
 |[Azure リソース マネージャーのテンプレート](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 詳細については、[HDInsight でのクラスターの種類](../hadoop/apache-hadoop-introduction.md)に関する記事を参照してください。
@@ -107,7 +105,7 @@ HDInsight では、Hive metastore と Oozie metastore に Azure SQL Database を
 
 ## <a name="best-practices-for-different-workloads"></a>さまざまなワークロードのベスト プラクティス
 
-- 応答時間が改善された対話型 Hive クエリに LLAP クラスターを使用することを検討します。[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)  は、クエリのメモリ内キャッシュを可能にする Hive 2.0 の新機能です。 LLAP により、Hive クエリは速くなり、 [場合によっては Hive 1.x と比べて最大 26 倍高速化](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)されます。
+- 応答時間が改善された対話型 Hive クエリに LLAP クラスターを使用することを検討します。[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) は、クエリのメモリ内キャッシュを可能にする Hive 2.0 の新機能です。 LLAP により、Hive クエリは[特定のケースで Hive 1.x と比べて最大 26 倍高速化](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)されます。
 - Hive ジョブの代わりに Spark ジョブを使用することを検討します。
 - impala ベースのクエリを LLAP クエリに置き換えることを検討します。
 - MapReduce ジョブを Spark ジョブに置き換えることを検討します。

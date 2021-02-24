@@ -4,10 +4,10 @@ description: Azure Event Grid の Machine Learning ワークスペース イベ�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458044"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid のソースとしての Azure Machine Learning

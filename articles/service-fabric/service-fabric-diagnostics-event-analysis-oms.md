@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257663"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329561"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Monitor ログを使用したイベントの分析と視覚化
  Azure Monitor ログでは、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、それらの可用性とパフォーマンスを最大限に高めるために役立つ分析ツールが提供されます。 この記事では、Azure Monitor ログでクエリを実行して分析情報を取得し、クラスター内の処理をトラブルシューティングする方法について説明します。 次のような一般的な質問に対応します。
@@ -28,7 +28,7 @@ ms.locfileid: "86257663"
 
 Azure Monitor ログでは、Azure ストレージ テーブルやエージェントなどの管理対象リソースからデータを収集し、中央レポジトリで管理します。 それらのデータは分析、アラート、および視覚化、さらにエクスポートに使用できます。 Azure Monitor ログでは、イベント、パフォーマンス データ、またはその他のカスタム データがサポートされます。 [診断の拡張機能を設定してイベントを集計する手順](service-fabric-diagnostics-event-aggregation-wad.md)および [Log Analytics ワークスペースを作成してストレージ内のイベントから読み取りを行う手順](service-fabric-diagnostics-oms-setup.md)を確認して、データが確実に Azure Monitor ログに送信されるようにしてください。
 
-Azure Monitor ログによってデータが受信されたら、Azure に用意されている*管理ソリューション* (パッケージ済みのソリューションまたは運用ダッシュボード) を使用して、さまざまなシナリオに合わせて受信データを監視します。 *Service Fabric Analytics* ソリューションと*コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 この記事では、ワークスペースを使って作成される、Service Fabric Analytics ソリューションを使用する方法について説明します。
+Azure Monitor ログによってデータが受信されたら、Azure に用意されている *管理ソリューション* (パッケージ済みのソリューションまたは運用ダッシュボード) を使用して、さまざまなシナリオに合わせて受信データを監視します。 *Service Fabric Analytics* ソリューションと *コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 この記事では、ワークスペースを使って作成される、Service Fabric Analytics ソリューションを使用する方法について説明します。
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Service Fabric Analytics ソリューションへのアクセス
 
@@ -42,7 +42,7 @@ Azure Monitor ログによってデータが受信されたら、Azure に用意
 
 次の画像には、Service Fabric Analytics ソリューションのホーム ページが示されています。 このホーム ページでは、クラスター内で行われている処理のスナップショット ビューが提供されます。
 
-![Service Fabric ソリューション](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Service Fabric Analytics ソリューションのホーム ページを示すスクリーンショット。](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
  クラスター作成時に診断を有効にした場合は、以下に対するイベントが表示されます。 
 
@@ -55,7 +55,7 @@ Azure Monitor ログによってデータが受信されたら、Azure に用意
 
 ## <a name="view-service-fabric-events-including-actions-on-nodes"></a>ノードに対する操作を含む Service Fabric イベントを表示する
 
-Service Fabric Analytics ページで、**Service Fabric Events** グラフをクリックします。
+Service Fabric Analytics ページで、 **Service Fabric Events** グラフをクリックします。
 
 ![Service Fabric ソリューションの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
@@ -74,7 +74,7 @@ ServiceFabricOperationalEvent
 
 ## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Service Fabric Reliable Service および Actor イベントの表示
 
-Service Fabric Analytics ページで、**Reliable Services** グラフをクリックします。
+Service Fabric Analytics ページで、 **Reliable Services** グラフをクリックします。
 
 ![Service Fabric ソリューションの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 

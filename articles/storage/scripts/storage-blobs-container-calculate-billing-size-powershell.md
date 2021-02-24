@@ -7,18 +7,21 @@ ms.service: storage
 ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/29/2020
 ms.author: fryu
-ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999532"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809566"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
 このスクリプトは、請求額を見積もるために Azure Blob ストレージ内のコンテナーのサイズを計算します。 スクリプトは、コンテナー内の Blob のサイズを合計します。
+
+> [!IMPORTANT]
+> この記事に記載されているサンプル スクリプトでは、BLOB スナップショットの課金サイズが正確に計算されない場合があります。
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -31,7 +34,7 @@ ms.locfileid: "86999532"
 
 BLOB コンテナーの合計サイズには、コンテナー自体のサイズとコンテナーの下のすべての BLOB のサイズが含まれます。
 
-次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。 次のセクションでは Len(X) は文字列の文字数を表します。
+次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。 次のセクションでは Len(X) は文字列の文字数を表します。
 
 ### <a name="blob-containers"></a>BLOB コンテナー
 
@@ -44,6 +47,7 @@ For-Each Signed Identifier[512 bytes]
 ```
 
 内訳は次のようになります。
+
 * コンテナーごとの 48 バイトのオーバーヘッドには、最終更新時刻、アクセス許可、パブリック設定、およびシステムのメタデータが含まれています。
 
 * コンテナー名は Unicode で格納されているため、文字数を取得して 2 を掛けます。
@@ -120,6 +124,6 @@ For-Each Signed Identifier[512 bytes]
 
 - Azure ストレージの課金の詳細については、「[Understanding Windows Azure Storage Billing (Windows Azure Storage の課金について)](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)」をご覧ください。
 
-- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/)をご覧ください。
+- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)をご覧ください。
 
 - その他のストレージ PowerShell サンプル スクリプトは、[Azure Storage 用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)に関するページにあります。

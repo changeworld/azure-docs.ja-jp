@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8566d82ef0d91caff47ff17a9cb12fcdc8241884
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246692"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928030"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric でのバックアップの復元
 
@@ -28,11 +28,16 @@ Azure Service Fabric では、Reliable Stateful サービスおよび Reliable A
 - 復元をトリガーするには、_Fault Analysis Service (FAS)_ がクラスターで有効になっている必要があります。
 - "_バックアップ復元サービス (BRS)_ " がバックアップを作成しました。
 - 復元は、パーティションでのみトリガーできます。
-- 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
+- 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール (プレビュー) をインストールします。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> PowerShellGet のバージョンが 1.6.0 未満の場合、更新して *-AllowPrerelease* フラグのサポートを追加する必要があります。
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - Microsoft.ServiceFabric.Powershell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
 
@@ -190,6 +195,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 TrackRestoreProgress を使用して復元の進行状況を追跡できます。
 
+> [!NOTE]
+> Powershell を使用してパーティションを復元するときに、backuplocation に '$' が含まれている場合は、'~' を使用してエスケープします。
+>
+
 ### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
 Service Fabric Explorer から復元をトリガーできます。 Service Fabric Explorer の設定で、詳細設定モードが有効になっていることを確認します。
 1. 目的のパーティションを選択し、[アクション] をクリックします。 
@@ -251,6 +260,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 TrackRestoreProgress を使用して復元の進行状況を追跡できます。
 
+> [!NOTE]
+> Powershell を使用してパーティションを復元するときに、backuplocation に '$' が含まれている場合は、'~' を使用してエスケープします。
+>
+
 ## <a name="track-restore-progress"></a>復元の進行状況を追跡する
 
 Reliable Stateful サービスまたは Reliable Actors のパーティションで受け付けられる復元要求は、一度に 1 つだけです。 パーティションは、現在の復元要求が完了した後にのみ別の要求を受け入れます。 パーティションが異なれば、同時に複数の復元要求をトリガーできます。
@@ -289,7 +302,7 @@ $restoreResponse | Format-List
     RestoredLsn   : 3552
     ```
     
-3. **成功**、**失敗**、または**タイムアウト**:要求された復元は、次の状態のいずれかで完了する可能性があります。 各状態の重要性と応答の詳細は次のとおりです。
+3. **成功**、**失敗**、または **タイムアウト**:要求された復元は、次の状態のいずれかで完了する可能性があります。 各状態の重要性と応答の詳細は次のとおりです。
     - **成功**:"_成功_" の復元状態は、回復したパーティション状態を示します。 パーティションは、_RestoredEpoch_ および _RestoredLSN_ の状態を UTC 時刻とともに報告します。
 
         ```

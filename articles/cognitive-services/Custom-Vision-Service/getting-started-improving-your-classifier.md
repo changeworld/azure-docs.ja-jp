@@ -10,12 +10,13 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73718533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271360"
 ---
 # <a name="how-to-improve-your-classifier"></a>分類子を改善する方法
 

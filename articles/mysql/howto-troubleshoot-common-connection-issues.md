@@ -2,17 +2,17 @@
 title: 接続の問題のトラブルシューティング - Azure Database for MySQL
 description: 再試行が必要な一時的なエラー、ファイアウォールの問題、障害など、Azure Database for MySQL への接続に関する問題をトラブルシューティングする方法について説明します。
 keywords: mysql 接続,接続文字列,接続の問題,一時的なエラー,接続エラー
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da500087aeb4ad5e2bf516c3d0ce3cceaf8396af
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100891"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000285"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Azure Database for MySQL への接続に関する問題のトラブルシューティング
 

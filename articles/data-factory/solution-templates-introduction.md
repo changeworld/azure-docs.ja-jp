@@ -1,22 +1,18 @@
 ---
 title: テンプレートの概要
 description: 定義済みのテンプレートを使用して Azure Data Factory の使用をすぐに開始する方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: daperlov
 author: djpmsft
-manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c0e4db2bc686fff2bd718f45c63a0fc26f6cd55
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628948"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375393"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -68,9 +64,9 @@ Data Factory では、データ ファクトリ パイプライン テンプレ�
 
         -   オンプレミスの SQL Server から Azure SQL Database へ
 
-        -   オンプレミスの SQL Server から Azure SQL Data Warehouse へ
+        -   オンプレミスの SQL Server から Azure Synapse Analytics へ
 
-        -   オンプレミスの Oracleから Azure SQL Data Warehouse へ
+        -   オンプレミスの Oracle から Azure Synapse Analytics へ
 
 -   SSIS テンプレート
 

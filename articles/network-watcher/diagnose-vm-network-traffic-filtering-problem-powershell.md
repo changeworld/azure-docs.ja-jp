@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:VM ネットワーク トラフィック フィルターの問題を診断する - Azure PowerShell
 titleSuffix: Azure Network Watcher
-description: このクイック スタートでは、Azure Network Watcher の IP フローの確認機能を使って、仮想マシンのネットワーク トラフィック フィルターの問題を診断する方法について説明します。
+description: Azure Network Watcher の IP フローの確認機能を使って、仮想マシンのネットワーク トラフィック フィルターの問題を診断するために、Azure PowerShell を使用する方法について学習します。
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 6d1c41df638c092daf24938931c3526fb18ea3db
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: de46d71127f992ea573d1f2d778afcb7f46ed3e6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074782"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013313"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>クイック スタート:仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure PowerShell
 
@@ -177,7 +177,7 @@ Get-AzEffectiveNetworkSecurityGroup `
   },
 ```
 
-出力では、**DestinationAddressPrefix** が **Internet** であることがわかります。 しかし、「[IP フローの確認を使用する](#use-ip-flow-verify)」でテストしたアドレス 13.107.21.200 が **Internet** にどのように関連するのかはっきりしません。 **ExpandedDestinationAddressPrefix** には複数のアドレス プレフィックスが列記されています。 リストのプレフィックスの 1 つは **12.0.0.0/6** であり、これは 12.0.0.1-15.255.255.254 の IP アドレス範囲を包含します。 13.107.21.200 はそのアドレス範囲内にあるため、**AllowInternetOutBound** 規則は送信トラフィックを許可します。 さらに、`Get-AzEffectiveNetworkSecurityGroup` によって返される出力の中には、この規則をオーバーライドする**優先順位の高い** (小さい値の) 規則はありません。 13.107.21.200 への送信通信を拒否するには、その IP アドレスへのポート 80 での送信を拒否する、優先順位の高いセキュリティ規則を追加します。
+出力では、**DestinationAddressPrefix** が **Internet** であることがわかります。 しかし、「[IP フローの確認を使用する](#use-ip-flow-verify)」でテストしたアドレス 13.107.21.200 が **Internet** にどのように関連するのかはっきりしません。 **ExpandedDestinationAddressPrefix** には複数のアドレス プレフィックスが列記されています。 リストのプレフィックスの 1 つは **12.0.0.0/6** であり、これは 12.0.0.1-15.255.255.254 の IP アドレス範囲を包含します。 13.107.21.200 はそのアドレス範囲内にあるため、**AllowInternetOutBound** 規則は送信トラフィックを許可します。 さらに、`Get-AzEffectiveNetworkSecurityGroup` によって返される出力の中には、この規則をオーバーライドする **優先順位の高い** (小さい値の) 規則はありません。 13.107.21.200 への送信通信を拒否するには、その IP アドレスへのポート 80 での送信を拒否する、優先順位の高いセキュリティ規則を追加します。
 
 「[IP フローの確認を使用する](#use-ip-flow-verify)」で `Test-AzNetworkWatcherIPFlow` コマンドを実行して 172.131.0.100 への送信通信をテストしたとき、出力では **DefaultOutboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultOutboundDenyAll** 規則は、`Get-AzEffectiveNetworkSecurityGroup` コマンドからの次の出力で示されている **DenyAllOutBound** 規則と同じです。
 
@@ -247,6 +247,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、VM を作成し、受信および送信ネットワーク トラフィック フィルターを診断しました。 ネットワーク セキュリティ グループの規則が、VM との間でやり取りされるトラフィックを許可または拒否することを学習しました。 [セキュリティ規則](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)および[セキュリティ規則を作成する](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)方法について、さらに詳しく学習してください。
+このクイック スタートでは、VM を作成し、受信および送信ネットワーク トラフィック フィルターを診断しました。 ネットワーク セキュリティ グループの規則が、VM との間でやり取りされるトラフィックを許可または拒否することを学習しました。 [セキュリティ規則](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)および[セキュリティ規則を作成する](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)方法について、さらに詳しく学習してください。
 
 適切なネットワーク トラフィック フィルターを適用してもまだ、ルーティングの構成のために VM への通信が失敗する可能性があります。 VM ネットワークのルーティングの問題を診断する方法については、「[VM のルーティングに関する問題を診断する](diagnose-vm-network-routing-problem-powershell.md)」をご覧ください。送信ルーティング、待機時間、およびトラフィック フィルター処理の問題を 1 つのツールで診断する方法については、[接続のトラブルシューティング](network-watcher-connectivity-powershell.md)に関するページをご覧ください。

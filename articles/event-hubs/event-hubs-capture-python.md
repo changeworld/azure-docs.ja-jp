@@ -2,15 +2,15 @@
 title: Python アプリから Azure Event Hubs でキャプチャされたデータを読み取る (最新)
 description: この記事では、イベント ハブに送信されたデータをキャプチャし、キャプチャされたイベント データを Azure Storage アカウントから読み取る Python コードを記述する方法について説明します。
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: cb7165565516136a8425c4c77748c2e13715edb7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 01/04/2021
+ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927869"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883199"
 ---
-# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs データを Azure Storage にキャプチャし、Python を使用してそれを読み取る (azure-eventhub バージョン 5)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Event Hubs データを Azure Storage にキャプチャし、Python (azure-eventhub) を使用してそれを読み取る
 
 イベント ハブに送信されたデータが Azure ストレージ アカウントあるいは Azure Data Lake Storage Gen 1 または Gen 2 にキャプチャされるようにイベント ハブを構成できます。 この記事では、イベントをイベント ハブに送信し、キャプチャされたデータを **Azure Blob Storage** から読み取る Python コードを記述する方法を示します。 この機能の詳細については、[Event Hubs Capture 機能の概要](event-hubs-capture-overview.md)に関するページを参照してください。
 
@@ -27,7 +27,11 @@ ms.locfileid: "88927869"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Python 2.7 および 3.5 以降 (PIP がインストールおよび更新されている)。  
+- PIP と次のパッケージがインストールされた Python。 この記事のコードは、これらのバージョンに対してテスト済みです。 
+    - Python 3.7
+    - azure-eventhub 5.2.0
+    - azure-storage-blob 12.6.0
+    - avro-python3 1.10.1
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。  
 - アクティブな Event Hubs 名前空間とイベント ハブ。
 [Event Hubs 名前空間を作成し、その名前空間内にイベント ハブを作成します](event-hubs-create.md)。 Event Hubs 名前空間の名前、イベント ハブの名前、および名前空間のプライマリ アクセス キーを記録しておいてください。 アクセス キーの取得については、「[Event Hubs の接続文字列の取得](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)」を参照してください。 既定のキー名は *RootManageSharedAccessKey* です。 このクイックスタートでは、プライマリ キーのみ必要となります。 接続文字列は必要ありません。  
@@ -43,7 +47,7 @@ ms.locfileid: "88927869"
 このセクションでは、イベント ハブに 200 のイベント (10 デバイス * 20 イベント) を送信する Python スクリプトを作成します。 これらのイベントは、JSON 形式で送信されたサンプルの環境測定値です。 
 
 1. [Visual Studio Code][Visual Studio Code]など、お使いの Python エディターを開きます。
-2. *sender.py*という名前のスクリプトを作成します。 
+2. *sender.py* という名前のスクリプトを作成します。 
 3. 次のコードを "*sender.py*" に貼り付けます。 
    
     ```python
@@ -155,6 +159,13 @@ ms.locfileid: "88927869"
    pip install azure-eventhub
    pip install avro-python3
    ```
+
+    > [!NOTE]
+    > この記事のコードは、これらのバージョンに対してテスト済みです。 
+    > - Python 3.7
+    > - azure-eventhub 5.2.0
+    > - azure-storage-blob 12.6.0
+    > - avro-python3 1.10.1
 2. *sender.py* と *capturereader.py* の保存先ディレクトリに移動して、次のコマンドを実行します。
    
    ```

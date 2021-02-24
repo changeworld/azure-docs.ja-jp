@@ -7,25 +7,26 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 587b26d821b9701df435b9ee0a1c5f9ba5602fc0
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a808e37c0f0aae2816eb536dc43485c125354b81
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050932"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916203"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
+
+**この記事の適用対象:** ✔️ Java
+
 Azure Spring Cloud の IntelliJ プラグインでは、IntelliJ IDEA からのアプリケーションのデプロイがサポートされています。  
 
 この例を実行する前に、[基本的なクイックスタート](spring-cloud-quickstart.md)を試してみることができます。
 
 ## <a name="prerequisites"></a>前提条件
-* [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
-* [Maven 3.5.0 以降](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA、Community または Ultimate Edition、バージョン 2020.1 または 2019.3](https://www.jetbrains.com/idea/download/#section=windows)
+* [IntelliJ IDEA、Community または Ultimate Edition、バージョン 2020.1 または 2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>プラグインをインストールする
-IntelliJ **プラグイン** UI から Azure Toolkit for IntelliJ IDEA 3.35.0 を追加できます。
+IntelliJ **プラグイン** UI から Azure Toolkit for IntelliJ IDEA 3.43.0 を追加できます。
 
 1. IntelliJ を起動します。  以前にプロジェクトを開いていた場合は、プロジェクトを閉じて、ようこそダイアログを表示します。 右下のリンクから **[Configure]\(構成\)** を選択し、 **[Plugins]\(プラグイン\)** をクリックしてプラグインの構成ダイアログを開き、 **[Install Plugins from disk]\(ディスクからプラグインをインストール\)** を選択します。
 
@@ -54,7 +55,7 @@ IntelliJ **プラグイン** UI から Azure Toolkit for IntelliJ IDEA 3.35.0 �
     ![プロジェクトのインポート](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Azure Spring Cloud にデプロイする
-Azure にデプロイするには、Azure アカウントでサインインし、ご自分のサブスクリプションを選択する必要があります。  サインインの詳細については、「[インストールとサインイン](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
+Azure にデプロイするには、Azure アカウントでサインインし、ご自分のサブスクリプションを選択する必要があります。  サインインの詳細については、「[インストールとサインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
 1. IntelliJ のプロジェクト エクスプローラーでプロジェクトを右クリックし、 **[Azure]**  ->  **[Deploy to Azure Spring Cloud]\(Azure Spring Cloud にデプロイ\)** を選択します。
 
@@ -101,5 +102,5 @@ Azure にデプロイするには、Azure アカウントでサインインし�
     ![ストリーミング ログの出力](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Spring Cloud 用に Spring アプリケーションを準備する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
-* [Azure Toolkit for IntelliJ の詳細を確認する](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)
+* [Azure Spring Cloud 用に Spring アプリケーションを準備する](./spring-cloud-tutorial-prepare-app-deployment.md)
+* [Azure Toolkit for IntelliJ の詳細を確認する](/azure/developer/java/toolkit-for-intellij/)

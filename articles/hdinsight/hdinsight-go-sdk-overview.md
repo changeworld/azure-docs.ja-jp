@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight SDK for Go
 description: Azure HDInsight SDK for Go および Apache Hadoop クラスターを使用するための参考資料
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
-ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc8528c40fe7e3b32e2f38152afc8abb0ae18ba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479588"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945994"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go (プレビュー)
 
@@ -21,7 +18,7 @@ ms.locfileid: "79479588"
 HDInsight SDK for Go に用意されているクラスと関数を使用して HDInsight クラスターを管理できます。 これには、スクリプト アクションを作成、削除、更新、一覧表示、サイズ変更、実行したり、HDInsight クラスターのプロパティを監視、取得したりする操作が含まれます。
 
 > [!NOTE]  
->この SDK の GoDoc 参考資料は[こちらでも入手できます](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)。
+>この SDK の GoDoc 参考資料は[こちらでも入手できます](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight)。
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -39,7 +36,7 @@ GOPATH の場所から `go get github.com/Azure/azure-sdk-for-go/tree/master/ser
 SDK は最初に Azure サブスクリプションで認証する必要があります。  以下の例に従って、サービス プリンシパルを作成し、これを使用して認証します。 その後、`ClustersClient` のインスタンスを生成します。これには、管理操作の実行に使用できる関数が多数含まれています (以下のセクションで説明します)。
 
 > [!NOTE]  
-> 認証方法は以下の例の他にもあり、そちらの方がご自身のニーズに適している可能性もあります。 すべての関数の概要は「[Azure SDK for Go における認証方法](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)」にあります。
+> 認証方法は以下の例の他にもあり、そちらの方がご自身のニーズに適している可能性もあります。 すべての関数の概要は「[Azure SDK for Go における認証方法](/azure/go/azure-sdk-go-authorization)」にあります。
 
 ### <a name="authentication-example-using-a-service-principal"></a>サービス プリンシパルを使用した認証の例
 
@@ -365,7 +362,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>OMS 監視の有効化
 
 > [!NOTE]  
-> OMS の監視を有効にするには、既存の Log Analytics ワークスペースが必要です。 まだ作成していない場合、その方法については、「[Azure ポータルで Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)」を参照してください。
+> OMS の監視を有効にするには、既存の Log Analytics ワークスペースが必要です。 まだ作成していない場合、その方法については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
 
 ご自身のクラスターで OMS 監視を有効にするには:
 
@@ -394,7 +391,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 HDInsight には、クラスターをカスタマイズするためにカスタム スクリプトを呼び出すスクリプト アクションという構成関数があります。
 
 > [!NOTE]  
-> スクリプト アクションを使用する方法の詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)」を参照してください
+> スクリプト アクションを使用する方法の詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](./hdinsight-hadoop-customize-cluster-linux.md)」を参照してください
 
 ### <a name="execute-script-actions"></a>スクリプト アクションの実行
 
@@ -491,4 +488,4 @@ for (page.NotDone()) {
 
 ## <a name="next-steps"></a>次のステップ
 
-[GoDoc 参考資料](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)を読みます。 GoDoc では、SDK のすべての関数のために参照文書を用意しています。
+[GoDoc 参考資料](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight)を読みます。 GoDoc では、SDK のすべての関数のために参照文書を用意しています。

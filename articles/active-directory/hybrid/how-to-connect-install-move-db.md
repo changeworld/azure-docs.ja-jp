@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94710e99fa7d04d757f2ad5fd7b2d3f6e01371d1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306344"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect データベースを SQL Server Express から SQL Server に移動する 
 
@@ -41,13 +41,13 @@ ms.locfileid: "85358958"
 
 8. データベースがアタッチされたら、Azure AD Connect サーバーに戻り、Azure AD Connect をインストールします。
 9. MSI のインストールが完了すると、Azure AD Connect ウィザードが簡易モードの設定で開始されます。 [終了] アイコンをクラスター リソースして画面を閉じます。
-   ![ようこそ](./media/how-to-connect-install-move-db/db1.png)
+   ![左側のメニューの [Express 設定] が強調表示された [Azure AD Connect へようこそ] ページを示すスクリーンショット。](./media/how-to-connect-install-move-db/db1.png)
 10. 新しいコマンド プロンプトまたは PowerShell セッションを開始します。 フォルダー \<drive>\program files\Microsoft Azure AD Connect に移動します。 コマンド .\AzureADConnect.exe /useexistingdatabase を実行して、"既存のデータベースを使用する" 設定モードで Azure AD Connect ウィザードを開始します。
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. [Azure AD Connect へようこそ] 画面が表示されます。 ライセンス条項とプライバシーに関する声明に同意したら、 **[続行]** をクリックします。
-    ![ようこそ](./media/how-to-connect-install-move-db/db3.png)
+    ![[Azure AD Connect へようこそ] ページを示すスクリーンショット](./media/how-to-connect-install-move-db/db3.png)
 12. **[必須コンポーネントのインストール]** 画面で **[既存の SQL Server を使用する]** オプションをオンにします。 ADSync データベースをホストしている SQL サーバーの名前を指定します。 ADSync データベースのホストに使用されている SQL エンジン インスタンスが SQL サーバーで既定のインスタンスではない場合、SQL エンジン インスタンス名を指定する必要があります。 さらに、SQL の参照が有効ではない場合、SQL エンジン インスタンスのポート番号も指定する必要があります。 次に例を示します。         
-    ![ようこそ](./media/how-to-connect-install-move-db/db4.png)           
+    ![[必須コンポーネントのインストール] ページを示すスクリーンショット。](./media/how-to-connect-install-move-db/db4.png)           
 
 13. **[Azure AD に接続]** 画面で、Azure AD ディレクトリのグローバル管理者の資格情報を指定する必要があります。 既定の onmicrosoft.com ドメインでアカウントを使用することをお勧めします。 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
     ![接続する](./media/how-to-connect-install-move-db/db5.png)
@@ -57,11 +57,11 @@ ms.locfileid: "85358958"
  
 
 15. ポップアップ ダイアログで、(i) エンタープライズ管理者の資格情報を指定して Azure AD Connect に AD DS アカウントの作成を任せるか、(ii) AD DS アカウントを自分で作成してその資格情報を Azure AD Connect に提供することができます。 オプションを選択し、必要な資格情報を指定したら、 **[OK]** をクリックしてポップアップ ダイアログを閉じます。
-    ![ようこそ](./media/how-to-connect-install-move-db/db7.png)
+    ![[新しい AD アカウントを作成] が選択されている [AD フォレスト アカウント] ポップアップ ダイアログのスクリーンショット。](./media/how-to-connect-install-move-db/db7.png)
  
 
 16. 資格情報を入力すると、赤色の×アイコンは緑色のチェック アイコンで置き換えられます。 **[次へ]** をクリックします。
-    ![ようこそ](./media/how-to-connect-install-move-db/db8.png)
+    ![アカウントの資格情報を入力した後の [ディレクトリの接続] ページを示すスクリーンショット。](./media/how-to-connect-install-move-db/db8.png)
  
 
 17. **[構成の準備完了]** 画面で、 **[インストール]** をクリックします。

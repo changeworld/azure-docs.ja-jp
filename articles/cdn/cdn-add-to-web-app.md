@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079911"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562244"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
 
@@ -43,7 +43,7 @@ ms.locfileid: "88079911"
 このチュートリアルを完了するには、以下が必要です。
 
 - [Git をインストールする](https://git-scm.com/)
-- [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure CLI のインストール](/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -135,7 +135,7 @@ CDN はその配信元の Web アプリからのリソースを、Time to Live (
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 デプロイの完了後、ブラウザーで Web アプリの URL にアクセスして変更を表示します。
@@ -230,7 +230,7 @@ Azure CDN から Web アプリの最新のコンテンツが返されます。�
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
 CDN エンドポイントの URL に新しいクエリ文字列 (`q=2` など) を追加し、ブラウザーでアクセスします。 Azure CDN によって最新の *index.html* ファイルが取得され、*V3* と表示されます。 ただし、`q=1` というクエリ文字列で CDN エンドポイントにアクセスした場合は、*V2* と表示されます。
@@ -269,5 +269,3 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 > [!div class="nextstepaction"]
 > [チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
-
-

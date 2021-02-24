@@ -1,18 +1,18 @@
 ---
 title: 旧バージョンの Azure Migrate を使用する
 description: 旧バージョンの Azure Migrate を使用する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: overview
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
+ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4fda6c51121838bfa1f3624759b1230d8554d573
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001639"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753945"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -31,7 +31,7 @@ Azure Migrate サービスのバージョンには、次の 2 つがあります
 
 ## <a name="upgrade-between-versions"></a>バージョン間でアップグレードする
 
-旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](how-to-add-tool-first-time.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
+旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](./create-manage-projects.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
 
 ## <a name="find-projects-from-previous-version"></a>旧バージョンのプロジェクトを探す
 
@@ -121,7 +121,7 @@ Windows Server 2012 R2 および全 SP | Azure は完全サポートを提供し
 Windows Server 2012 および全 SP | Azure は完全サポートを提供します。 | Azure に対応
 Windows Server 2008 R2 および全 SP | Azure は完全サポートを提供します。| Azure に対応
 Windows Server 2008 (32 ビットおよび 64 ビット) | Azure は完全サポートを提供します。 | Azure に対応
-Windows Server 2003、2003 R2 | サポート対象外。Azure でサポートを受けるには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要になります。 | Azure 条件付きで対応。Azure に移行する前に OS のアップグレードを検討してください。
+Windows Server 2003、2003 R2 | サポート対象外。Azure でサポートを受けるには[カスタム サポート契約 (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) が必要になります。 | Azure 条件付きで対応。Azure に移行する前に OS のアップグレードを検討してください。
 Windows 2000、98、95、NT、3.1、MS-DOS | サポート対象外。 マシンが Azure で起動する可能性はありますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前に OS のアップグレードをお勧めします。
 Windows Client 7、8、10 | Azure は、[Visual Studio サブスクリプション](../virtual-machines/windows/client-images.md)にのみサポートを提供します。 | Azure に条件付きで対応
 Windows 10 Pro デスクトップ | Azure は、[マルチ テナント ホスティング権限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)にサポートを提供します。 | Azure に条件付きで対応
@@ -308,7 +308,7 @@ Kusto クエリを実行するには:
 4. Azure Monitor ログを使用して依存関係データを収集するためのクエリを作成します。 次のセクションでサンプル クエリを見つけます。
 5. [実行] をクリックしてクエリを実行します。 
 
-Kusto クエリの作成方法の[詳細を参照してください](../azure-monitor/log-query/get-started-portal.md)。 
+Kusto クエリの作成方法の[詳細を参照してください](../azure-monitor/log-query/log-analytics-tutorial.md)。 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor ログのサンプル クエリ
 

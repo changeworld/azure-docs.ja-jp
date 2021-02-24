@@ -1,6 +1,6 @@
 ---
 title: RHEL マルチ SID 上の SAP NW に対する Azure VM の高可用性に関するガイド | Microsoft Docs
-description: Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
+description: Azure 仮想マシン (VM) RHEL マルチ SID 上の SAP NW の高可用性を確立します。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 01/11/2021
 ms.author: radeltch
-ms.openlocfilehash: 892c45db835457d5f0127d7377d722fc7f0df518
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 746cd6cbbb79cd1f35c9d703fe182abbd988d36f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760755"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117964"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Red Hat Enterprise Linux for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -128,7 +129,7 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS では、仮想ホス
   * NW3 の IP アドレス: 10.3.1.54
 
 * プローブ ポート
-  * ポート 620<strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、NW3 のプローブ ポートの場合は、620**00**、620**10**、620**20**
+  * ポート 620 <strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、NW3 のプローブ ポートの場合は、620 **00**、620 **10**、620 **20**
 * 負荷分散規則 - インスタンス (つまり、NW1/ASCS、NW2/ASCS、NW3/ASCS) ごとに 1 つ作成します。
   * Standard Load Balancer を使用する場合は、 **[HA ポート]** を選択します
   * Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
@@ -148,7 +149,7 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS では、仮想ホス
   * NW3 の IP アドレス: 10.3.1.55
 
 * プローブ ポート
-  * ポート 621<strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、N3 のプローブ ポートの場合は、621**02**、621**12**、621**22**
+  * ポート 621 <strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、N3 のプローブ ポートの場合は、621 **02**、621 **12**、621 **22**
 * 負荷分散規則 - インスタンス (つまり、NW1/ERS、NW2/ERS、NW3/ERS) ごとに 1 つ作成します。
   * Standard Load Balancer を使用する場合は、 **[HA ポート]** を選択します
   * Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
@@ -160,6 +161,9 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS では、仮想ホス
 
 * バックエンドの構成
   * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
+
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](../../../load-balancer/load-balancer-multivip-overview.md#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
 
 > [!Note]
 > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
@@ -294,7 +298,7 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
     ```
 
-   インストールで /usr/sap/**SID**/ASCS**Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid**adm に設定し、グループを ASCS**Instance#** の sapsys に設定して、もう一度試してください。
+   インストールで /usr/sap/**SID**/ASCS **Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid** adm に設定し、グループを ASCS **Instance#** の sapsys に設定して、もう一度試してください。
 
 3. **[1]** クラスターにデプロイする追加の SAP システムの ERS インスタンス用に、仮想 IP と正常性プローブのクラスター リソースを作成します。 以下の例は、Azure NetApp Files ボリューム上の NFS に NFSv3 プロトコルを使用している **NW2** および **NW3** ERS を示しています。  
 
@@ -347,7 +351,7 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
    > [!NOTE]
    > SWPM SP 20 PL 05 以降を使用します。 これより下位のバージョンではアクセス許可が正しく設定されないため、インストールが失敗します。
 
-   インストールで /usr/sap/**NW2**/ERS**Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid**adm に設定し、グループを ERS**Instance#** フォルダーの sapsys に設定して、もう一度試してください。
+   インストールで /usr/sap/**NW2**/ERS **Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid** adm に設定し、グループを ERS **Instance#** フォルダーの sapsys に設定して、もう一度試してください。
 
    新しくデプロイした SAP システムの ERS グループを別のクラスター ノードに移行する必要があった場合は、ERS グループに対する場所の制約を忘れずに削除してください。 制約を削除するには、次のコマンドを実行します (この例は、SAP システム **NW2** と **NW3** に対するものです)。 必ず、ERS クラスター グループを移動するコマンドで使用したのと同じリソースの一時的な制約を削除してください。
 
@@ -562,6 +566,8 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     # NW2 - ERS
     sudo firewall-cmd --zone=public --add-port=62112/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=62112/tcp
+    sudo firewall-cmd --zone=public --add-port=3212/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=3212/tcp
     sudo firewall-cmd --zone=public --add-port=3312/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=3312/tcp
     sudo firewall-cmd --zone=public --add-port=51213/tcp --permanent
@@ -590,6 +596,8 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     # NW3 - ERS
     sudo firewall-cmd --zone=public --add-port=62122/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=62122/tcp
+    sudo firewall-cmd --zone=public --add-port=3222/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=3222/tcp
     sudo firewall-cmd --zone=public --add-port=3322/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=3322/tcp
     sudo firewall-cmd --zone=public --add-port=52213/tcp --permanent

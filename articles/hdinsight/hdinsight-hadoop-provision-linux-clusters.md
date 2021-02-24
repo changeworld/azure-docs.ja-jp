@@ -1,19 +1,16 @@
 ---
 title: HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 description: Hadoop、Kafka、Spark、HBase、R Server、Storm の HDInsight クラスターをブラウザーや Azure クラシック CLI、Azure PowerShell、REST、SDK からセットアップします。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4e81ccb541b188fedfefd150233082e9cb1f8c22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749871"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945554"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -72,7 +69,7 @@ HDInsight クラスター名には次の制限があります。
 現在、Azure HDInsight では、以下の種類のクラスターを提供しています。それぞれのクラスターは特定の機能を提供する一連のコンポーネントを備えています。
 
 > [!IMPORTANT]  
-> HDInsight クラスターには、さまざまな種類があり、それぞれ単一のワークロードまたはテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network) で接続してください。
+> HDInsight クラスターには、さまざまな種類があり、それぞれ単一のワークロードまたはテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](../virtual-network/index.yml) で接続してください。
 
 | クラスターの種類 | 機能 |
 | --- | --- |
@@ -92,7 +89,7 @@ HDInsight クラスター名には次の制限があります。
 
 HDInsight クラスターでは、クラスターの作成時に次の 2 つのユーザー アカウントを構成できます。
 
-* クラスター ログイン ユーザー名:既定のユーザー名は *admin*です。Azure Portal の基本的な構成を使用します。 "クラスター ユーザー" または "HTTP ユーザー" と呼ばれることもあります。
+* クラスター ログイン ユーザー名:既定のユーザー名は *admin* です。Azure Portal の基本的な構成を使用します。 "クラスター ユーザー" または "HTTP ユーザー" と呼ばれることもあります。
 * Secure Shell (SSH) ユーザー名:SSH を使用してクラスターに接続する際に使用します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 HTTP ユーザー名には次の制限があります。
@@ -139,7 +136,7 @@ HDInsight を使用したストレージ オプションの詳細については
 
 ### <a name="metastore-settings"></a>メタストアの設定
 
-Hive metastore または Apache Oozie metastore を作成できます (任意)。 ただし、クラスターの種類によっては metastore がサポートされません。また Azure SQL Data Warehouse は metastore と互換性がありません。
+Hive metastore または Apache Oozie metastore を作成できます (任意)。 ただし、クラスターの種類によっては metastore がサポートされません。また Azure Synapse Analytics は metastore と互換性がありません。
 
 詳細については、[Azure HDInsight での外部メタデータ ストアの使用](./hdinsight-use-external-metadata-stores.md)に関する記事を参照してください。
 
@@ -172,11 +169,11 @@ Ambari は、HDInsight クラスターの監視、構成の変更、およびク
 
 ### <a name="enterprise-security-package"></a>Enterprise セキュリティ パッケージ
 
-クラスターの種類が Hadoop、Spark、HBase、Kafka、および対話型クエリの場合は、**Enterprise セキュリティ パッケージ**を有効にすることができます。 このパッケージは、Apache Ranger を使用し、Azure Active Direcotry と統合することによってより安全なクラスターのセットアップを行うオプションを提供します。 詳細については、「[Azure HDInsight のエンタープライズ セキュリティの概要](./domain-joined/hdinsight-security-overview.md)」を参照してください。
+クラスターの種類が Hadoop、Spark、HBase、Kafka、および対話型クエリの場合は、**Enterprise セキュリティ パッケージ** を有効にすることができます。 このパッケージは、Apache Ranger を使用し、Azure Active Direcotry と統合することによってより安全なクラスターのセットアップを行うオプションを提供します。 詳細については、「[Azure HDInsight のエンタープライズ セキュリティの概要](./domain-joined/hdinsight-security-overview.md)」を参照してください。
 
 Enterprise セキュリティ パッケージでは、HDInsight を Active Directory と Apache Ranger と統合することができます。 Enterprise セキュリティ パッケージを使用して、複数のユーザーを作成できます。
 
-ドメイン参加済みの HDInsight クラスターの作成の詳細については、[ドメイン参加済みの HDInsight サンドボックス環境の作成](./domain-joined/apache-domain-joined-configure.md)に関する記事を参照してください。
+ドメイン参加済みの HDInsight クラスターの作成の詳細については、[ドメイン参加済みの HDInsight サンドボックス環境の作成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。
 
 ### <a name="tls"></a>TLS
 
@@ -184,7 +181,7 @@ Enterprise セキュリティ パッケージでは、HDInsight を Active Direc
 
 ### <a name="virtual-network"></a>仮想ネットワーク
 
-複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network) で接続してください。 この構成により、クラスターと、それにデプロイするすべてのコードが互いに通信できるようになります。
+複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](../virtual-network/index.yml) で接続してください。 この構成により、クラスターと、それにデプロイするすべてのコードが互いに通信できるようになります。
 
 Azure の仮想ネットワークの HDInsight との併用の詳細については、[HDInsight 用の仮想ネットワークの計画](hdinsight-plan-virtual-network-deployment.md)に関するページをご覧ください。
 
@@ -226,7 +223,7 @@ HDInsight クラスターのコストは、ノード数とノードの仮想マ�
 クラスターの種類によって、ノードの種類、ノード数、ノード サイズが異なります。
 * 種類が Hadoop のクラスターにおける既定のノード数:
     * "*ヘッド ノード*" (x 2)  
-    * 4 つの*ワーカー ノード*
+    * 4 つの *ワーカー ノード*
 * 種類が Storm のクラスターにおける既定のノード数:
     * "*Nimbus ノード*" (x 2)
     * "*Zookeeper ノード*" (x 3)
@@ -235,7 +232,7 @@ HDInsight クラスターのコストは、ノード数とノードの仮想マ�
 HDInsight を試すだけの目的ならば、使用するワーカー ノードは 1 つにすることをお勧めします。 HDInsight の価格の詳細については、「 [HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
 
 > [!NOTE]  
-> クラスター サイズの制限は、Azure サブスクリプションによって異なります。 制限値を上げるには、[Azure の課金サポート](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)にお問い合わせください。
+> クラスター サイズの制限は、Azure サブスクリプションによって異なります。 制限値を上げるには、[Azure の課金サポート](../azure-portal/supportability/how-to-create-azure-support-request.md)にお問い合わせください。
 
 Azure portal を使用してクラスターを構成する際、ノード サイズは **[Configuration + pricing]\(構成と価格\)** タブで確認できます。また、別のノード サイズに関連するコストをポータルで確認することもできます。
 
@@ -243,15 +240,15 @@ Azure portal を使用してクラスターを構成する際、ノード サイ
 
 クラスターをデプロイするとき、デプロイ予定のソリューションに応じてコンピューティング リソースを選択します。 HDInsight クラスターには次の VM が使用されます。
 
-* A シリーズおよび D1 - D4 シリーズの VM: [Linux VM の汎用サイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* D11 - D14 シリーズの VM: [メモリ最適化された Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* A シリーズおよび D1 - D4 シリーズの VM: [Linux VM の汎用サイズ](../virtual-machines/sizes-general.md)
+* D11 - D14 シリーズの VM: [メモリ最適化された Linux VM のサイズ](../virtual-machines/sizes-memory.md)
 
 各種の SDK または Azure PowerShell を使用してクラスターを作成する際、VM サイズの指定で必要となる値については、[HDInsight クラスターに使用する VM サイズ](../cloud-services/cloud-services-sizes-specs.md#size-tables)に関するページを参照してください。 リンク先の記事に掲載されている表の「**サイズ**」列の値を使用します。
 
 > [!IMPORTANT]  
 > クラスターで 32 以上のワーカー ノードが必要になる場合、少なくとも 8 コア、14 GB のヘッド ノード サイズを選択する必要があります。
 
-詳細については、 [仮想マシンのサイズ](../virtual-machines/windows/sizes.md)に関するページをご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。
+詳細については、 [仮想マシンのサイズ](../virtual-machines/sizes.md)に関するページをご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。
 
 ### <a name="add-application"></a>[アプリケーションの追加]
 
@@ -261,7 +258,7 @@ HDInsight のアプリケーションのほとんどは、空のエッジ ノー
 
 ### <a name="script-actions"></a>スクリプト操作
 
-追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。 このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
+追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。 このようなスクリプトは、**スクリプト操作** を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
 Apache Mahout や Cascading などの一部のネイティブ Java コンポーネントは、Java アーカイブ (JAR) ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure Storage に分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳しくは、 [プログラムによる Apache Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページをご覧ください。
 

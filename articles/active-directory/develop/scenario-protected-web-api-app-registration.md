@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518276"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584382"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 
@@ -27,7 +27,7 @@ ms.locfileid: "86518276"
 
 ## <a name="accepted-token-version"></a>承認済みトークンのバージョン
 
-Microsoft ID プラットフォームのエンドポイントでは、v1.0 トークンと v2.0 トークンを発行できます。 これらのトークンの詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
+Microsoft ID プラットフォームでは、v1.0 トークンと v2.0 トークンを発行できます。 これらのトークンの詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
 
 API で承認できるトークンのバージョンは、Azure portal で Web API アプリケーションの登録を作成するときの **[サポートされているアカウントの種類]** の選択によって異なります。
 
@@ -44,7 +44,7 @@ API で承認できるトークンのバージョンは、Azure portal で Web A
 1. トークンのバージョンを変更した場合は、 **[保存]** を選択します。
 
 > [!NOTE]
-> Web API で受け入れられるトークンのバージョンを指定します。 クライアントで、Microsoft ID プラットフォーム (v2.0) エンドポイントに Web API 用のトークンを要求すると、クライアントは Web API によって受け入れられるトークンのバージョンを示すトークンを受け取ります。
+> Web API で受け入れられるトークンのバージョンを指定します。 クライアントで、Microsoft ID プラットフォームに Web API 用のトークンを要求すると、クライアントは Web API が受け入れるトークンのバージョンを示すトークンを受け取ります。
 
 ## <a name="no-redirect-uri"></a>リダイレクト URI なし
 
@@ -58,17 +58,17 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 通常、スコープの形式は `resourceURI/scopeName` です。 Microsoft Graph の場合、スコープにはショートカットがあります。 たとえば、`User.Read` は `https://graph.microsoft.com/user.read` のショートカットです。
 
-アプリの登録時に、次のパラメーターを定義する必要があります。
+アプリの登録時に、これらのパラメーターを定義します。
 
 - リソース URI
 - 1 つまたは複数のスコープ
 - 1 つまたは複数のアプリ ロール
 
-既定では、アプリケーションの登録ポータルでは、リソース URI `api://{clientId}` を使用することをお勧めします。 この URI は一意ですが、人間が判読できるものではありません。 URI を変更する場合は、新しい値が一意になるようにしてください。 アプリケーション登録ポータルにより、[構成された発行元ドメイン](howto-configure-publisher-domain.md)が確実に使用されるようになります
+既定では、アプリケーションの登録ポータルでは、リソース URI `api://{clientId}` を使用することをお勧めします。 この URI は一意ですが、人間が判読できるものではありません。 URI を変更する場合は、新しい値が一意になるようにしてください。 アプリケーション登録ポータルにより、[構成された発行元ドメイン](howto-configure-publisher-domain.md)が確実に使用されるようになります。
 
 クライアント アプリケーションに対して、スコープは Web API に対する "*委任されたアクセス許可*" として表示され、アプリ ロールは "*アプリケーション アクセス許可*" として表示されます。
 
-スコープは、アプリのユーザーに提示される同意ウィンドウにも表示されます。 そのため、次の場合にスコープについて説明する、対応する文字列を指定する必要があります。
+スコープは、アプリのユーザーに提示される同意ウィンドウにも表示されます。 そのため、次の場合にスコープについて説明する、対応する文字列を指定します。
 
 - ユーザーに表示される場合。
 - 管理者の同意を許可できる、テナント管理者に表示される場合。
@@ -99,7 +99,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 #### <a name="exposing-application-permissions-app-roles"></a>アプリケーションのアクセス許可 (アプリ ロール) の公開
 
-アプリケーションのアクセス許可を公開するには、マニフェストを編集する必要があります。
+アプリケーションのアクセス許可を公開するには、マニフェストを編集します。
 
 1. ご利用のアプリケーションのアプリケーション登録の場合は、 **[マニフェスト]** を選択します。
 1. マニフェストを編集するには、`appRoles` の設定を見つけて、アプリケーション ロールを追加します。 ロールの定義は、次のサンプル JSON ブロックで提供されています。
@@ -153,5 +153,4 @@ Web API によってアプリ ロールが確認されます ソフトウェア�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [アプリ コードの構成](scenario-protected-web-api-app-configuration.md)
+このシナリオの次の記事である[アプリ コードの構成](scenario-protected-web-api-app-configuration.md)に関する記事に進みます。

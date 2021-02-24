@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで、自動的に TL
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 452e7d1e8dad0a3ae3d6393598f5f24ef2153aa8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1faabdda869bbaba8027df121d080b0fb421e9f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855939"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728894"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 
@@ -60,14 +60,15 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 インストールの間に、Azure パブリック IP アドレスがイングレス コントローラーに対して作成されます。 このパブリック IP アドレスは、イングレス コントローラーが存続している間は静的です。 イングレス コントローラーを削除すると、パブリック IP アドレスの割り当てが失われます。 続いてさらに別のイングレス コントローラーを作成すると、新しいパブリック IP アドレスが割り当てられます。 パブリック IP アドレスを使用し続けることを望む場合は、代わりに[静的パブリック IP アドレス][aks-ingress-static-tls]を使用してイングレス コントローラーを作成できます。
 
 パブリック IP アドレスを取得するには、`kubectl get service` コマンドを使います。 IP アドレスがサービスに割り当てられるまでに、少し時間がかかる場合があります。
 
-```
+```console
 $ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
 NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
@@ -84,14 +85,14 @@ nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_I
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
-    --record-set-name '*' \
+    --record-set-name * \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
 > [!NOTE]
 > 必要に応じて、イングレス コントローラーの IP アドレスに、カスタム ドメインではなく FQDN を構成することもできます。 このサンプルは、Bash シェル用である点に注意してください。
 > 
-> ```azurecli-interactive
+> ```bash
 > # Public IP address of your ingress controller
 > IP="MY_EXTERNAL_IP"
 > 
@@ -125,13 +126,13 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install \
-  cert-manager \
+helm install cert-manager jetstack/cert-manager \
   --namespace ingress-basic \
   --version v0.16.1 \
   --set installCRDs=true \
-  --set nodeSelector."beta\.kubernetes\.io/os"=linux \
-  jetstack/cert-manager
+  --set nodeSelector."kubernetes\.io/os"=linux \
+  --set webhook.nodeSelector."kubernetes\.io/os"=linux \
+  --set cainjector.nodeSelector."kubernetes\.io/os"=linux
 ```
 
 cert-manager の構成の詳細については、[cert-manager プロジェクト][cert-manager]についてのページを参照してください。
@@ -194,7 +195,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-one
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -232,7 +233,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-two
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -262,7 +263,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 両方のアプリケーションは、Kubernetes クラスターで実行するようになります。 ただし、構成に使用されているサービスの種類は `ClusterIP` であるため、それらのアプリケーションにインターネットからアクセスすることはできません。 公開するには、Kubernetes イングレス リソースを作成します。 イングレス リソースでは、2 つのアプリケーションのいずれかにトラフィックをルーティングするルールを構成します。
 
-次の例では、アドレス *hello-world-ingress.MY_CUSTOM_DOMAIN* へのトラフィックが *aks-helloworld* サービスにルーティングされます。 アドレス *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* へのトラフィックは、*aks-helloworld-two* サービスにルーティングされます。 *hello-world-ingress.MY_CUSTOM_DOMAIN/static* へのトラフィックは、静的アセット用の *aks-helloworld* というサービスにルーティングされます。
+次の例では、アドレス *hello-world-ingress.MY_CUSTOM_DOMAIN* へのトラフィックが *aks-helloworld-one* サービスにルーティングされます。 アドレス *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* へのトラフィックは、*aks-helloworld-two* サービスにルーティングされます。 *hello-world-ingress.MY_CUSTOM_DOMAIN/static* へのトラフィックは、静的アセット用の *aks-helloworld-one* というサービスにルーティングされます。
 
 > [!NOTE]
 > カスタム ドメインではなく、イングレス コントローラーの IP アドレスの FQDN を構成した場合は、*hello-world-ingress.MY_CUSTOM_DOMAIN* ではなく、FQDN を使用します。 たとえば、FQDN が *demo-aks-ingress.eastus.cloudapp.azure.com* の場合は、`hello-world-ingress.yaml` の *hello-world-ingress.MY_CUSTOM_DOMAIN* を *demo-aks-ingress.eastus.cloudapp.azure.com* に置き換えます。
@@ -337,7 +338,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 証明書が正常に作成されたことを確認するには、`kubectl get certificate --namespace ingress-basic` コマンドを使用して、*READY* が *True* になっていることを確認します。これには数分かかることがあります。
 
-```
+```console
 $ kubectl get certificate --namespace ingress-basic
 
 NAME         READY   SECRET       AGE
@@ -370,7 +371,7 @@ kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 
 `helm list` コマンドを使用して、Helm リリースを一覧表示します。 次の出力例に示すように、*nginx* と *cert-manager* という名前のグラフを探します。
 
-```
+```console
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
@@ -380,7 +381,7 @@ nginx                   ingress-basic   1               2020-01-15 10:09:45.9826
 
 `helm uninstall` コマンドでリリースをアンインストールします。 次の例では、NGINX イングレスと cert-manager のデプロイをアンインストールします。
 
-```
+```console
 $ helm uninstall cert-manager nginx --namespace ingress-basic
 
 release "cert-manager" uninstalled
@@ -423,8 +424,8 @@ kubectl delete namespace ingress-basic
 - [Let's Encrypt を使用して静的パブリック IP アドレス付きの TLS 証明書を自動的に生成するイングレス コントローラーを作成する][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/#az-network-dns-record-set-a-add-record
+[custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/
 [helm-cli]: ./kubernetes-helm.md

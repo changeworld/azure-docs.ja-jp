@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4fb45f222fcf5abd762d97d702925655db6cba60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268419"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365771"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -82,7 +82,7 @@ WPAD を使用しない場合は、Windows 10 1709 以降のコンピュータ�
 
 組織が認証されたアウトバウンド プロキシ経由でのインターネットへのアクセスを必要とする場合、お使いの Windows 10 コンピューターがアウトバウンド プロキシに対して正常に認証されることを確認してください。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用してアウトバウンド プロキシ認証を構成します。 構成要件については、送信プロキシ プロバイダーに確認してください。
 
-[デバイス登録接続のテスト](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0)のスクリプトを使用して、デバイスがシステム アカウントで上記の Microsoft リソースにアクセスできることを確認します。
+[デバイス登録接続のテスト](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)のスクリプトを使用して、デバイスがシステム アカウントで上記の Microsoft リソースにアクセスできることを確認します。
 
 ## <a name="configure-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成
 
@@ -90,43 +90,33 @@ Azure AD Connect を使用して Hybrid Azure AD Join を構成するには:
 
 1. Azure AD Connect を起動し、 **[構成]** を選択します。
 
-   ![ようこそ](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
-
 1. **[追加のタスク]** で、 **[デバイス オプションの構成]** を選択し、 **[次へ]** を選択します。
 
    ![追加のタスク](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-additional-tasks.png)
 
 1. **[概要]** で **[次へ]** を選択します。
 
-   ![概要](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-overview.png)
-
 1. **[Azure AD に接続]** で、Azure AD テナントの全体管理者の資格情報を入力します。  
-
-   ![Azure への接続](./media/hybrid-azuread-join-managed-domains/connect-to-azure-ad-username-password.png)
 
 1. **[デバイス オプション]** で、 **[ハイブリッド Azure AD 参加の構成]** を選択し、 **[次へ]** を選択します。
 
    ![デバイス オプション](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
 
-1. **[SCP の構成]** で、Azure AD Connect で SCP を構成するフォレストごとに次の手順を実行し、 **[次へ]** を選択します。
-
-   1. **フォレスト**を選択します。
-   1. **認証サービス**を選択します。
-   1. **[追加]** を選択して、エンタープライズ管理者の資格情報を入力します。
-
-   ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
-
 1. **[デバイスのオペレーティング システム]** で、Active Directory 環境内のデバイスで使用されているオペレーティング システムを選択し、 **[次へ]** を選択します。
 
    ![デバイスのオペレーティング システム](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
+1. **[SCP の構成]** で、Azure AD Connect で SCP を構成するフォレストごとに次の手順を実行し、 **[次へ]** を選択します。
+
+   1. **フォレスト** を選択します。
+   1. **認証サービス** を選択します。
+   1. **[追加]** を選択して、エンタープライズ管理者の資格情報を入力します。
+
+   ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
+
 1. **[構成の準備完了]** で、 **[構成]** を選択します。
 
-   ![構成の準備完了](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
-
 1. **[構成が完了しました]** で、 **[終了]** を選択します。
-
-   ![構成の完了](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
 ## <a name="enable-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの有効化
 
@@ -176,15 +166,15 @@ Azure AD クラウド認証方法として[パスワード ハッシュ同期](.
 1. [直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用して、デバイス ページに移動します。
 2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](./device-management-azure-portal.md)に関するページをご覧ください。
 3. **[登録済み]** 列に **[保留中]** と表示されている場合、Hybrid Azure AD Join は完了していません。
-4. **[登録済み]** 列に**日付/時刻**が含まれている場合、Hybrid Azure AD Join は完了しています。
+4. **[登録済み]** 列に **日付/時刻** が含まれている場合、Hybrid Azure AD Join は完了しています。
 
 ### <a name="using-powershell"></a>PowerShell の使用
 
-**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** を使用して、Azure テナントのデバイス登録状態を確認します。 このコマンドレットは、[Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)内にあります。
+**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** を使用して、Azure テナントのデバイス登録状態を確認します。 このコマンドレットは、[Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1)内にあります。
 
 **Get-MSolDevice** コマンドレットを使用してサービスの詳細を確認する場合:
 
-- Windows クライアントの ID と一致する**デバイス ID** を備えたオブジェクトが存在する必要があります。
+- Windows クライアントの ID と一致する **デバイス ID** を備えたオブジェクトが存在する必要があります。
 - **DeviceTrustType** の値は **[ドメイン参加済み]** です。 この設定は、Azure AD ポータルの **[デバイス]** ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
 - 条件付きアクセスで使用されるデバイスの場合、**Enabled** の値は **True**、**DeviceTrustLevel** の値は **Managed** です。
 

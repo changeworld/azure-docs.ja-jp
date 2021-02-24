@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1869ec9b617a7451ec42fa9d092ea3bb5834f9e8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 51ba981dcc6f36df3bfaacebb503782faed5c91f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585476"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581008"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM で保護されたキーを Key Vault にインポートする (BYOK)
 
@@ -63,15 +63,21 @@ Azure Key Vault の詳細と、Key Vault の使用を開始するチュートリ
 |Fortanix|製造元、<br/>サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS キーを BYOK 用クラウド プロバイダーにエクスポートする - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Manufacturer|以下を含む LiquidSecurity のすべての HSM<ul><li>ファームウェア バージョン 2.0.4 以降</li><li>ファームウェア バージョン 3.2 以降</li></ul>|[Marvell の BYOK ツールとドキュメント](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>詳細については、[Cryptomathic のサイト](https://www.cryptomathic.com/azurebyok)を参照してください|[Cryptomathic の BYOK ツールとドキュメント](https://www.cryptomathic.com/azurebyok)|
-
+|Securosys SA|製造元、サービスとしての HSM|Primus HSM ファミリ、Securosys Clouds HSM|[Primus の BYOK ツールとドキュメント](https://www.securosys.com/primus-azure-byok)|
+|StorMagic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[詳細については、StorMagic のサイト](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)を参照してください|[SvKMS と Azure Key Vault の BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
+|IBM|製造元|IBM 476x、CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+||||
 
 
 ## <a name="supported-key-types"></a>サポートされているキーの種類
 
-|キー名|キーの種類|キー サイズ|出発地|説明|
+|キー名|キーの種類|キー サイズまたは曲線|出発地|説明|
 |---|---|---|---|---|
 |キー交換キー (KEK)|RSA| 2,048 ビット<br />3,072 ビット<br />4,096 ビット|Azure Key Vault HSM|Azure Key Vault で生成される、HSM で保護された RSA キー ペア|
-|ターゲット キー|RSA|2,048 ビット<br />3,072 ビット<br />4,096 ビット|ベンダー HSM|Azure Key Vault HSM に転送されるキー|
+|ターゲット キー|
+||RSA|2,048 ビット<br />3,072 ビット<br />4,096 ビット|ベンダー HSM|Azure Key Vault HSM に転送されるキー|
+||EC|P-256<br />P-384<br />P-521|ベンダー HSM|Azure Key Vault HSM に転送されるキー|
+||||
 
 ## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>キーを生成して Key Vault HSM に転送する
 
@@ -117,7 +123,7 @@ BYOK ツールをダウンロードしてインストールする方法につい
 接続されているコンピューターに BYOK ファイルを転送します。
 
 > [!NOTE] 
-> 1,024 ビットの RSA キーのインポートはサポートされていません。 現時点では、楕円曲線 (EC) キーのインポートはサポートされていません。
+> 1,024 ビットの RSA キーのインポートはサポートされていません。 楕円曲線キー (P-256K 曲線) のインポートはサポートされていません。
 > 
 > **既知の問題**:Luna HSM からの RSA 4K ターゲット キーのインポートは、ファームウェア 7.4.0 以降でのみサポートされています。
 
@@ -125,8 +131,15 @@ BYOK ツールをダウンロードしてインストールする方法につい
 
 キーのインポートを完了するには、切断されたコンピューターからインターネットに接続されているコンピューターにキー転送パッケージ (BYOK ファイル) を転送します。 [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) コマンドを使用して、BYOK ファイルを Key Vault HSM にアップロードします。
 
+RSA キーをインポートするには、次のコマンドを使用します。 パラメーター - kty は省略可能で、既定値は "RSA-HSM" です。
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
+```
+
+EC キーをインポートするには、キーの種類と曲線名を指定する必要があります。
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
 アップロードが正常に行われると、インポートされたキーのプロパティが Azure CLI に表示されます。

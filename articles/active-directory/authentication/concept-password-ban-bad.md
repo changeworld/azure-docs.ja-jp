@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b019c12103a0324e21ef7c06b0c7a5d7fe14e6ec
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235300"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743889"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Azure Active Directory パスワード保護を使用して不適切なパスワードを排除する
 
@@ -24,7 +24,7 @@ ms.locfileid: "88235300"
 
 Azure AD パスワード保護では、既定のグローバル禁止パスワード リストが Azure AD テナント内のすべてのユーザーに自動的に適用されます。 独自のビジネス ニーズやセキュリティ ニーズに対応するため、カスタムの禁止パスワード リストにエントリを定義できます。 ユーザーがパスワードを変更またはリセットすると、これらの禁止パスワード リストがチェックされ、強力なパスワードの使用が強制されます。
 
-Azure AD パスワード保護によって適用される強力なパスワードだけに依存せずに、[Azure Multi-Factor Authentication](concept-mfa-howitworks.md) のような追加機能を使用する必要があります。 サインイン イベントに対して複数のセキュリティ層を使用する方法の詳細については、「[Your Pa$$word doesn't matter (パスワードは関係ない)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)」を参照してください。
+Azure AD パスワード保護によって適用される強力なパスワードだけに依存せずに、[Azure AD Multi-Factor Authentication](concept-mfa-howitworks.md) のような追加機能を使用する必要があります。 サインイン イベントに対して複数のセキュリティ層を使用する方法の詳細については、「[Your Pa$$word doesn't matter (パスワードは関係ない)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)」を参照してください。
 
 > [!IMPORTANT]
 > 概念に関するこの記事では、Azure AD パスワード保護のしくみを管理者向けに説明します。 既にセルフサービス パスワード リセットの登録が済んでいて、ご自分のアカウントに戻る必要があるエンド ユーザーは、[https://aka.ms/sspr](https://aka.ms/sspr) にアクセスしてください。
@@ -33,7 +33,7 @@ Azure AD パスワード保護によって適用される強力なパスワー�
 
 ## <a name="global-banned-password-list"></a>グローバル禁止パスワード リスト
 
-Azure AD Identity Protection チームは、常に Azure AD セキュリティ テレメトリのデータを分析し、一般的に使用される脆弱なパスワードや侵害されたパスワードを探しています。 具体的には、この分析によって脆弱なパスワードとしてよく使用される脆弱な基本用語を探しています。 脆弱な用語が見つかると、その用語は*グローバル禁止パスワード リスト*に追加されます。 グローバル禁止パスワード リストの内容は、外部のデータ ソースではなく、Azure AD のセキュリティ テレメトリと分析の結果に基づいています。
+Azure AD Identity Protection チームは、常に Azure AD セキュリティ テレメトリのデータを分析し、一般的に使用される脆弱なパスワードや侵害されたパスワードを探しています。 具体的には、この分析によって脆弱なパスワードとしてよく使用される脆弱な基本用語を探しています。 脆弱な用語が見つかると、その用語は *グローバル禁止パスワード リスト* に追加されます。 グローバル禁止パスワード リストの内容は、外部のデータ ソースではなく、Azure AD のセキュリティ テレメトリと分析の結果に基づいています。
 
 Azure AD テナントのユーザーのパスワードが変更またはリセットされた場合は、現在のバージョンのグローバル禁止パスワード リストを使用してパスワードの強度が検証されます。 この検証チェックの結果、すべての Azure AD ユーザーのパスワードが強力になります。
 
@@ -44,7 +44,7 @@ Azure AD テナントのユーザーのパスワードが変更またはリセ�
 
 ## <a name="custom-banned-password-list"></a>カスタムの禁止パスワードの一覧
 
-組織によっては、セキュリティを強化するため、グローバル禁止パスワード リストに独自のカスタマイズを追加する場合があります。 独自のエントリを追加するには、*カスタム禁止パスワード リスト*を使用します。 カスタム禁止パスワード リストに追加する用語は、次の例のような組織固有の用語に重点を置く必要があります。
+組織によっては、セキュリティを強化するため、グローバル禁止パスワード リストに独自のカスタマイズを追加する場合があります。 独自のエントリを追加するには、*カスタム禁止パスワード リスト* を使用します。 カスタム禁止パスワード リストに追加する用語は、次の例のような組織固有の用語に重点を置く必要があります。
 
 - ブランド名
 - 製品名
@@ -202,7 +202,7 @@ Azure AD パスワード保護は、パスワード スプレー攻撃で使用�
 > [!IMPORTANT]
 > 禁止パスワード アルゴリズムとグローバル禁止パスワード リストは、継続的なセキュリティ分析と調査に基づいて Azure でいつでも変更できます。
 >
-> ハイブリッド シナリオでのオンプレミスの DC エージェント サービスの場合、更新されたアルゴリズムは DC エージェント ソフトウェアが再インストールされた後でのみ有効になります。
+> ハイブリッド シナリオでのオンプレミスの DC エージェント サービスの場合、更新されたアルゴリズムは DC エージェント ソフトウェアがアップグレードされた後でのみ有効になります。
 
 ## <a name="what-do-users-see"></a>ユーザーに表示される画面
 

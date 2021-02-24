@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: references_regions
+ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289421"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786878"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する
 
-このクイックスタートでは、Speech Studio を使用して基本的なカスタム コマンド アプリケーションを作成してテストします。 また、Windows クライアント アプリからこのアプリケーションにアクセスすることもできます。 **カスタム コマンド**を使用すると、音声優先の対話操作を行うために最適化された、リッチな音声コマンド処理アプリを簡単に構築できます。 これにより、統一された作成エクスペリエンス、自動ホスティング モデル、比較的低い複雑性が実現し、音声コマンドのシナリオに最適なソリューションの構築に専念できるようになります。
+このクイックスタートでは、Speech Studio を使用して基本的なカスタム コマンド アプリケーションを作成してテストします。 また、Windows クライアント アプリからこのアプリケーションにアクセスすることもできます。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 現時点では、カスタム コマンドは、次のリージョンで作成された音声サブスクリプションをサポートしています。
@@ -27,12 +28,12 @@ ms.locfileid: "87289421"
 * 米国西部 2
 * 米国東部
 * 米国東部 2
+* 米国中西部
 * 北ヨーロッパ
 * 西ヨーロッパ
-* 米国中西部
-* インド中部
 * 東アジア
 * 東南アジア
+* インド中部
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -123,7 +124,7 @@ ms.locfileid: "87289421"
 1. **VoiceAssistantClient.exe** を起動します。
 1. 新しい発行プロファイルを作成し、 **[接続プロファイル]** の値を入力します。 **[全般設定]** セクションで、 **[サブスクリプション キー]** (これはアプリケーションの公開時に保存した **[Speech resource key]\(音声リソース キー\)** 値と同じ)、 **[Subscription key region]\(サブスクリプション キーのリージョン\)** 、 **[Custom commands app ID]\(カスタム コマンド アプリの ID\)** の値を入力します。
     > [!div class="mx-imgBorder"]
-    > ![WVAC でのプロファイルの作成](media/custom-commands/create-profile.png)
+    > ![WVAC プロファイルを作成するための [全般設定] セクションが強調表示されているスクリーンショット。](media/custom-commands/create-profile.png)
 1. **[Save and Apply Profile]\(プロファイルを保存して適用する\)** を選択します。
 1. 音声またはテキストを通じて次の入力を試してみます。
     > [!div class="mx-imgBorder"]
@@ -131,8 +132,8 @@ ms.locfileid: "87289421"
 
 
 > [!TIP]
-> **アクティビティ ログ**のエントリをクリックすると、カスタム コマンド サービスから送信されている未加工の応答を調べることができます。
+> **アクティビティ ログ** のエントリをクリックすると、カスタム コマンド サービスから送信されている未加工の応答を調べることができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、既存のアプリケーションを使用しました。 次に、[操作方法に関するセクション](how-to-custom-commands-create-application-with-simple-commands.md)で、カスタム コマンド アプリケーションを最初から設計、開発、デバッグ、テスト、統合する方法について学習します。
+この記事では、既存のアプリケーションを使用しました。 次に、[操作方法に関するセクション](./how-to-develop-custom-commands-application.md)で、カスタム コマンド アプリケーションを最初から設計、開発、デバッグ、テスト、統合する方法について学習します。

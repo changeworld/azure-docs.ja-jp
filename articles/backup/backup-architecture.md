@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824034"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427736"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -35,18 +35,22 @@ Azure Backup では、データ、マシンの状態、オンプレミスのマ�
 
 ## <a name="where-is-data-backed-up"></a>データはどこにバックアップされますか。
 
-Azure Backup では、バックアップしたデータが Recovery Services コンテナーに格納されます。 コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure 上のオンライン ストレージ エンティティです。
+Azure Backup を使用すると、バックアップされたデータはコンテナー (Recovery Services コンテナーとバックアップ コンテナー) に格納されます。 コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure 上のオンライン ストレージ エンティティです。
 
-Recovery Services コンテナーには、次の機能があります。
+コンテナーには次の機能があります。
 
 - コンテナーを使用すると、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。
-- 各 Azure サブスクリプションに、最大 500 個のコンテナーを作成できます。
 - Azure VM とオンプレミスのマシンを含む、コンテナーでバックアップされたアイテムを監視することができます。
 - [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) を使用して、コンテナーのアクセスを管理できます。
 - 冗長性のためにコンテナー内のデータをレプリケートする方法を指定します。
-  - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細については、こちらを参照してください](../storage/common/storage-redundancy.md)。
-  - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細については、こちらを参照してください](../storage/common/storage-redundancy.md)。
+  - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細については、こちらを参照してください](../storage/common/storage-redundancy.md#locally-redundant-storage)。
+  - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細については、こちらを参照してください](../storage/common/storage-redundancy.md#geo-redundant-storage)。
+  - **ゾーン冗長ストレージ (ZRS)** : [可用性ゾーン](../availability-zones/az-overview.md#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。 [詳細情報](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - 既定では、Recovery Services コンテナーでは GRS が使用されます。
+
+Recovery Services コンテナーには、次の追加機能があります。
+
+- 各 Azure サブスクリプションに、最大 500 個のコンテナーを作成できます。
 
 ## <a name="backup-agents"></a>Backup のエージェント
 
@@ -119,6 +123,12 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 - "毎月"、"毎年" のバックアップ ポイントに対するデータ保持は、長期保有 (LTR) と呼ばれます。
 - コンテナーが作成されると、"DefaultPolicy" も作成され、リソースのバックアップに使用できます。
 - バックアップ ポリシーの保持期間に変更が加えられると、新しいものを除き、すべての古い復旧ポイントにさかのぼって適用されます。
+
+### <a name="impact-of-policy-change-on-recovery-points"></a>復旧ポイントに対するポリシーの変更の影響
+
+- **保有期間の増加/減少:** 保有期間を変更すると、新しい保有期間が既存の復旧ポイントにも適用されます。 その結果、一部の復旧ポイントがクリーン アップされます。 保有期間が長くなると、既存の復旧ポイントの保有期間も長くなります。
+- **日単位から週単位への変更:** スケジュールされたバックアップが日次から週次に変更されると、既存の日次の復旧ポイントがクリーン アップされます。
+- **週次から日次への変更:** 既存の週次のバックアップは、現在の保持ポリシーに従って残りの日数に基づいて保持されます。
 
 ### <a name="additional-reference"></a>その他の参照情報
 

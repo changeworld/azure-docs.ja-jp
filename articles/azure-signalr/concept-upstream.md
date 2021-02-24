@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: be7736d0c90d1c384e15e8c7dee29d016b052dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559428"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724059"
 ---
 # <a name="upstream-settings"></a>アップストリームの設定
 
-アップストリームは、Azure SignalR Service からサーバーレス モードで一連のエンドポイントにメッセージと接続イベントを送信できるようになる機能です。 アップストリームを使用すると、サーバーレス モードのクライアントからハブ メソッドを呼び出し、クライアント接続が確立または切断されたときにエンドポイントに通知を送信することができます。
+アップストリームは、Azure SignalR Service からサーバーレス モードで一連のエンドポイントにメッセージと接続イベントを送信できるようになるプレビュー機能です。 アップストリームを使用すると、サーバーレス モードのクライアントからハブ メソッドを呼び出し、クライアント接続が確立または切断されたときにエンドポイントに通知を送信することができます。
 
 > [!NOTE]
 > アップストリーム設定を構成できるのは、サーバーレス モードのみです。
@@ -38,7 +38,7 @@ URL をパラメーター化すると、さまざまなパターンをサポー�
 |---------|---------|
 |{hub}| ハブは Azure SignalR Service の概念です。 ハブは分離の単位です。 ユーザーとメッセージ配信の範囲はハブに制限されています。|
 |{category}| カテゴリには次のいずれかの値を指定することができます。 <ul><li>**connections**:接続の有効期間イベント。 このイベントは、クライアント接続が確立または切断されたときに発生します。 これには connected イベントと disconnected イベントがあります。</li><li>**messages**:クライアントからハブ メソッドが呼び出されたときに発生します。 これには、**connections** カテゴリを除き、他のすべてのイベントが含まれます。</li></ul>|
-|{event}| **messages** カテゴリの場合、イベントはクライアントから送信される[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)のターゲットです。 **connections** カテゴリの場合、*connected* と *disconnected* のみが使用されます。|
+|{event}| **messages** カテゴリの場合、イベントはクライアントから送信される [呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)のターゲットです。 **connections** カテゴリの場合、*connected* と *disconnected* のみが使用されます。|
 
 これらの定義済みパラメーターは、URL パターン内で使用できます。 アップストリーム URL の評価時に、パラメーターは指定された値に置き換えられます。 次に例を示します。 
 ```
@@ -53,12 +53,29 @@ http://host.com/chat/api/connections/connected
 http://host.com/chat/api/messages/broadcast
 ```
 
+### <a name="key-vault-secret-reference-in-url-template-settings"></a>URL テンプレート設定の Key Vault シークレット参照
+
+アップストリームの URL は保存時の暗号化ではありません。 機密情報がある場合は、Key Vault を使用して、アクセス制御が確実に行える場所に保存することをお勧めします。 基本的には、Azure SignalR Service のマネージド ID を有効にした後、Key Vault インスタンスに対する読み取りアクセス許可を付与し、(プレーン テキストではなく) アップストリーム URL パターンで Key Vault 参照を使用することができます。
+
+1. システム割り当て ID またはユーザー割り当て ID を追加します。 [Azure portal でのマネージド ID の追加](./howto-use-managed-identity.md#add-a-system-assigned-identity)に関する説明を参照してください。
+
+2. Key Vault のアクセス ポリシーで、マネージド ID に対する読み取りアクセス許可をシークレットに付与します。 [Azure portal を使用した Key Vault アクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-portal.md)に関する説明を参照してください。
+
+3. 機密テキストをアップストリーム URL パターンの構文 `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` に置き換えます。
+
+> [!NOTE]
+> シークレットの内容は、アップストリーム設定を変更するか、マネージド ID を変更した場合にのみ再び読み込まれます。 Key Vault シークレット参照を使用する前に、マネージド ID に対する読み取りアクセス許可がシークレットに付与されていることを確認してください。
+
 ### <a name="rule-settings"></a>ルールの設定
 
 "*ハブ ルール*"、"*カテゴリ ルール*"、および "*イベント ルール*" のルールを個別に設定できます。 照合ルールは 3 つの形式をサポートしています。 例としてイベント ルールを取り上げます。
 - すべてのイベントに一致させるには、アスタリスク (*) を使用します。
 - 複数のイベントを結合するには、コンマ (,) を使用します。 たとえば、`connected, disconnected` は connected イベントと disconnected イベントと一致します。
 - イベントと一致させるには、完全なイベント名を使用します。 たとえば、`connected` は connected イベントと一致します。
+
+> [!NOTE]
+> Azure Functions および [SignalR トリガー](../azure-functions/functions-bindings-signalr-service-trigger.md)を使用している場合、SignalR トリガーは、次の形式で単一のエンドポイントを公開します: `<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>`。
+> **URL テンプレート設定** にはこの URL を構成し、**ルール設定** は既定のままにします。 `<Function_App_URL>` と `<API_KEY>` の検索方法については、[SignalR Service の統合](../azure-functions/functions-bindings-signalr-service-trigger.md#signalr-service-integration)に関する説明を参照してください。
 
 ### <a name="authentication-settings"></a>[認証設定]
 
@@ -78,13 +95,13 @@ http://host.com/chat/api/messages/broadcast
 3. **[Upstream URL Pattern]\(アップストリームの URL パターン\)** に URL を追加します。 次に **[Hub Rules]\(ハブ ルール\)** などの設定に既定値が表示されます。
 4. **[Hub Rules]\(ハブ ルール\)** 、 **[Event Rules]\(イベント ルール\)** 、 **[Category Rules]\(カテゴリ ルール\)** 、 **[Upstream Authentication]\(アップストリーム認証\)** の設定を行うには、 **[Hub Rules]\(ハブ ルール\)** の値を選択します。 設定を編集できるページが表示されます。
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="アップストリームの設定":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="アップストリームの設定の詳細":::
 
 5. **[Upstream Authentication]\(アップストリーム認証\)** を設定するには、まずマネージド ID を有効にしていることを確認します。 次に、 **[Use Managed Identity]\(マネージド ID の使用\)** を選択します。 必要に応じて、 **[Auth Resource ID]\(認証リソース ID\)** で任意のオプションを選択することができます。 詳細については、「[Azure SignalR Service のマネージド ID](howto-use-managed-identity.md)」を参照してください。
 
 ## <a name="create-upstream-settings-via-resource-manager-template"></a>Resource Manager テンプレートを使用してアップストリームの設定を作成する
 
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)を使用してアップストリームの設定を作成するには、`properties` プロパティで `upstream` プロパティを設定します。 次のスニペットは、アップストリームの設定を作成および更新するために `upstream` プロパティを設定する方法を示しています。
+[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用してアップストリームの設定を作成するには、`properties` プロパティで `upstream` プロパティを設定します。 次のスニペットは、アップストリームの設定を作成および更新するために `upstream` プロパティを設定する方法を示しています。
 
 ```JSON
 {
@@ -111,7 +128,7 @@ http://host.com/chat/api/messages/broadcast
 
 ## <a name="serverless-protocols"></a>サーバーレス プロトコル
 
-Azure SignalR Service からは、次のプロトコルに従うメッセージがエンドポイントに送信されます。
+Azure SignalR Service からは、次のプロトコルに従うメッセージがエンドポイントに送信されます。 Function App で [SignalR Service トリガー バインド](../azure-functions/functions-bindings-signalr-service-trigger.md)を使用して、これらのプロトコルを処理できます。
 
 ### <a name="method"></a>Method
 
@@ -166,3 +183,5 @@ Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 
 - [Azure SignalR Service のマネージド ID](howto-use-managed-identity.md)
 - [Azure SignalR Service を使用した Azure Functions の開発と構成](signalr-concept-serverless-development-config.md)
+- [SignalR Service からのメッセージの処理 (トリガー バインド)](../azure-functions/functions-bindings-signalr-service-trigger.md)
+- [SignalR Service トリガー バインドのサンプル](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

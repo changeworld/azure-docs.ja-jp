@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/07/2020
-ms.openlocfilehash: 135fbe914a1bf99f1cc32bd9291658f60282aa0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 01/11/2021
+ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101291"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119361"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>クイック スタート:Azure Time Series Insights Gen2 デモ環境を探索する
 
@@ -38,12 +38,27 @@ Azure Time Series Insights Gen2 エクスプローラーでは、履歴データ
 
 ## <a name="work-with-historical-data"></a>履歴データを操作する
 
-1. **Contoso Plant 1** の風力タービン **W7** を確認します。  
+1. **[Contoso WindFarm Hierarchy]\(Contoso WindFarm の階層\)** を選択します。
+
+   [![[Contoso WindFarm Hierarchy]\(Contoso WindFarm の階層\)](media/quickstart-explore/quick-start-contoso-1.png)](media/quickstart-explore/quick-start-contoso-1.png#lightbox)
+
+1. **Contoso Plant 1** の風力タービン **W7** を確認します。
+
+   [![Contoso Plant 1 の W7](media/quickstart-explore/quick-start-contoso-2.png)](media/quickstart-explore/quick-start-contoso-2.png#lightbox)
 
    1. 表示範囲を **1/1/17 20:00:00.00 から 3/10/17 20:00:00.00 (UTC)** に変更します。
+
+      [![範囲ビュー](media/quickstart-explore/range-setting-1.png)](media/quickstart-explore/range-setting-1.png#lightbox)
+
+      [![範囲ビューの設定](media/quickstart-explore/range-setting-2.png)](media/quickstart-explore/range-setting-2.png#lightbox)
+
+   1. 拡大 **(+)** および縮小 **(-)** を使用し、スライド バーを動かして範囲ビューを調整します。
+
+      [![範囲ビューの調整](media/quickstart-explore/view-range-setting.png)](media/quickstart-explore/view-range-setting.png#lightbox)
+
    1. センサーを選択するには、**Contoso Plant 1** > **W7** > **Generator System** > **GeneratorSpeed** の順に選択します。 次に、表示される値を確認します。
 
-      [![Contoso Plant 1 の W7](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
+      [![発電機の速度](media/quickstart-explore/quick-start-generator-speed-1.png)](media/quickstart-explore/quick-start-generator-speed-1.png#lightbox)
 
 1. 最近、Contoso は風力タービン **W7** で火災を発見しました。 火災の原因についての見解はさまざまです。 Azure Time Series Insights Gen2 には、火災時に作動した火災アラート センサーが表示されています。
 
@@ -100,7 +115,7 @@ Azure Time Series Insights Gen2 とセンサー テレメトリを使用して�
 
       [![期間を 60 日間に拡大](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. センサーの他のデータ ポイントを追加して、コンテキストを拡大できます。 表示するセンサーの数が多ければ多いほど、問題に対する理解は深まります。 実際の値を表示するマーカーを置いてみましょう。 
+1. センサーの他のデータ ポイントを追加して、コンテキストを拡大できます。 表示するセンサーの数が多ければ多いほど、問題に対する理解は深まります。 実際の値を表示するマーカーを置いてみましょう。
 
     1. **Generator System** を選択してから 3 つのセンサーを選択します: **GridVoltagePhase1**、**GridVoltagePhase2**、**GridVoltagePhase3**。
     1. 表示領域の最後のデータ ポイントにマーカーを置きます。
@@ -127,9 +142,9 @@ Azure Time Series Insights Gen2 とセンサー テレメトリを使用して�
 独自の Azure Time Series Insights Gen2 環境を作成する準備ができました。 開始するには:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 環境の計画](time-series-insights-update-plan.md)
+> [Azure Time Series Insights Gen2 環境の計画](./how-to-plan-your-environment.md)
 
 デモとその機能の使用方法を説明します。
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 エクスプローラー](time-series-insights-update-explorer.md)
+> [Azure Time Series Insights Gen2 エクスプローラー](./concepts-ux-panels.md)

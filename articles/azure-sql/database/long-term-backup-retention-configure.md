@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
-ms.date: 04/14/2020
-ms.openlocfilehash: 4da2572e453339baa3f5e2663a7965fff2035e40
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.reviewer: mathoma, sstein
+ms.date: 12/16/2020
+ms.openlocfilehash: a0653f24eeb0a96c28714d00f1d943dfc7d336db
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531304"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979710"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,7 +76,7 @@ LTR ポリシーを使用して保持されている特定のデータベース�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 以下のセクションでは、PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure ストレージ内のバックアップを表示し、Azure ストレージ内のバックアップから復元する方法について説明します。
 
@@ -100,7 +100,7 @@ LTR ポリシーを使用して保持されている特定のデータベース�
 > [!NOTE]
 > SQL Server の共同作成者ロールには、LTR バックアップを削除するアクセス許可はありません。
 
-RBAC のアクセス許可は、*サブスクリプション*または*リソース グループ*のいずれかのスコープで付与できます。 ただし、削除されたサーバーに属する LTR バックアップにアクセスするには、そのサーバーの*サブスクリプション* スコープにアクセス許可を付与する必要があります。
+Azure RBAC のアクセス許可は、"*サブスクリプション*" または "*リソース グループ*" のいずれかのスコープで付与できます。 ただし、削除されたサーバーに属する LTR バックアップにアクセスするには、そのサーバーの *サブスクリプション* スコープにアクセス許可を付与する必要があります。
 
 - Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
@@ -183,7 +183,7 @@ Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 
 > [!IMPORTANT]
-> LTR バックアップの削除は、元に戻せません。 サーバーが削除された後に LTR バックアップを削除するには、サブスクリプション スコープのアクセス許可が必要です。 Azure Monitor では、"長期保有バックアップを削除します" という操作をフィルター処理することで、それぞれの削除に関する通知を設定できます。 アクティビティ ログには、どのユーザーがいつ要求を行ったかに関する情報が含まれています。 詳しい手順については、[アクティビティ ログ アラートの作成](../../azure-monitor/platform/alerts-activity-log.md)に関するページを参照してください。
+> LTR バックアップの削除は、元に戻せません。 サーバーまたはリソース グループが削除された後に LTR バックアップを削除するには、サブスクリプション スコープのアクセス許可が必要です。 Azure Monitor では、"長期保有バックアップを削除します" という操作をフィルター処理することで、それぞれの削除に関する通知を設定できます。 アクティビティ ログには、どのユーザーがいつ要求を行ったかに関する情報が含まれています。 詳しい手順については、[アクティビティ ログ アラートの作成](../../azure-monitor/platform/alerts-activity-log.md)に関するページを参照してください。
 
 ### <a name="restore-from-ltr-backups"></a>LTR バックアップから復元する
 
@@ -196,10 +196,14 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 ```
 
 > [!IMPORTANT]
-> サーバーが削除された後に LTR バックアップから復元するには、サーバーのサブスクリプションをスコープとしたアクセス許可が必要であり、そのサブスクリプションがアクティブである必要があります。 また、オプションの -ResourceGroupName パラメーターを省略する必要もあります。
+> サーバーまたはリソース グループが削除された後に LTR バックアップから復元するには、サーバーのサブスクリプションをスコープとしたアクセス許可が必要であり、そのサブスクリプションがアクティブである必要があります。 また、オプションの -ResourceGroupName パラメーターを省略する必要もあります。
 
 > [!NOTE]
 > ここから、SQL Server Management Studio を使用して、復元されたデータベースに接続し、必要なタスクを実行できます。たとえば、復元されたデータベースからデータを少し抽出して既存のデータベースにコピーしたり、既存のデータベースを削除し、復元されたデータベースの名前を既存のデータベース名に変更したりできます。 [ポイントインタイム リストア](recovery-using-backups.md#point-in-time-restore)をご覧ください。
+
+## <a name="limitations"></a>制限事項
+- LTR バックアップから復元する場合、読み取りスケール プロパティは無効になります。 復元されたデータベースの読み取りスケールを有効にするには、データベースが作成された後にデータベースを更新します。
+- データベースがエラスティック プール内にあるときに作成された LTR バックアップから復元する場合は、ターゲットのサービス レベル目標を指定する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

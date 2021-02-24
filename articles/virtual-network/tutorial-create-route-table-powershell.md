@@ -17,16 +17,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c94c7709a8066b31a6ac1ebc54180d41a303f44a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5bd52e8865bb704497740851f6a0e3c886ed9d6d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078233"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790209"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 既定では、仮想ネットワーク内のすべてのサブネット間でトラフィックが自動的にルーティングされます。 Azure の既定のルーティングは、独自のルートを作成してオーバーライドすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 この記事では、次のことについて説明します。
 
@@ -114,14 +112,14 @@ $subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) を使用して*myRouteTablePublic* ルート テーブルを "*パブリック*" サブネットに関連付け、[Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) を使用してサブネット構成を仮想ネットワークに書き込みます。
+[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) を使用して *myRouteTablePublic* ルート テーブルを "*パブリック*" サブネットに関連付け、[Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) を使用してサブネット構成を仮想ネットワークに書き込みます。
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork `
   -Name 'Public' `
   -AddressPrefix 10.0.0.0/24 `
-  -RouteTable $routeTablePublic | `
+  -RouteTable $myRouteTablePublic | `
 Set-AzVirtualNetwork
 ```
 
@@ -192,9 +190,9 @@ $vmNva = New-AzVM `
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-後の手順で、*パブリック* サブネットからのトラフィックがネットワーク仮想アプライアンス経由で*プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。
+後の手順で、*パブリック* サブネットからのトラフィックがネットワーク仮想アプライアンス経由で *プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。
 
-[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、*パブリック* サブネット内に VM を作成します。 次の例では、*myVirtualNetwork* 仮想ネットワークの*パブリック* サブネットに、*myVmPublic* という名前の VM を作成します。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、*パブリック* サブネット内に VM を作成します。 次の例では、*myVirtualNetwork* 仮想ネットワークの *パブリック* サブネットに、*myVmPublic* という名前の VM を作成します。
 
 ```azurepowershell-interactive
 New-AzVm `

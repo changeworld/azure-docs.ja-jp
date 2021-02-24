@@ -2,32 +2,24 @@
 title: Azure portal で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: この Azure portal クイックスタートでは、データ インポート ウィザードを使用して、初めての検索インデックスを Azure Cognitive Search に作成して読み込み、クエリを実行します。
-author: tchristiani
 manager: nitinme
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 12/12/2020
+ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935315"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368632"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
-> [!div class="op_single_selector"]
-> * [ポータル](search-get-started-portal.md)
-> * [C#](search-get-started-dotnet.md)
-> * [Java](search-get-started-java.md)
-> * [Node.js](search-get-started-nodejs.md)
-> * [PowerShell](search-get-started-powershell.md)
-> * [Postman](search-get-started-postman.md)
-> * [Python](search-get-started-python.md)
 
-**[データのインポート]** ウィザードは、検索インデックスの作成手順を案内する Azure portal ツールであり、これを使用すれば、関心のあるクエリを数分で記述することができます。 
+架空のホテル データを含んだ組み込みのサンプル データ ソースと **データ インポート** ウィザードを使用して初めてのインデックスを作成します。 ウィザードの案内に従って検索インデックス (hotels-sample-index) を作成できるので、関心のあるクエリを数分で記述することができます。 
 
-また、このウィザードには、AI エンリッチメントのページも用意されているので、イメージ ファイルや非構造化テキストからテキストおよび構造を抽出することができます。 AI を使用したコンテンツ処理には、光学式文字認識 (OCR)、キー フレーズとエンティティ抽出、イメージ分析が含まれます。
+このクイックスタートでは使用しませんが、このウィザードには、AI エンリッチメントのページも用意されているので、画像ファイルや非構造化テキストからテキストおよび構造を抽出することができます。 AI エンリッチメントを含む同様のチュートリアルについては、[コグニティブ スキルセットの作成](cognitive-search-quickstart-blob.md)に関するクイックスタートを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,13 +35,13 @@ ms.locfileid: "88935315"
 
 サービス ダッシュボードのセクションには、既に存在するインデックス、インデクサー、データ ソースの数が表示されます。 
 
-![インデックス、インデクサー、およびデータソースの一覧](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a>インデックスの作成とデータの読み込み
 
 検索クエリは、"[*インデックス*](search-what-is-an-index.md)" を反復処理します。インデックスには、検索可能なデータやメタデータに加え、特定の検索の動作を最適化する構造が含まれています。
 
-このチュートリアルでは、[**データのインポート** ウィザード](search-import-data-portal.md)から "[*インデクサー*](search-indexer-overview.md)" を使用してクロールできる、組み込みのサンプル データセットを使用します。 インデクサーは、サポートされている Azure データ ソースからメタデータとコンテンツを読み取ることができるソース固有のクローラーです。 通常、インデクサーはプログラムで使用されますが、ポータル上では**データのインポート** ウィザードを使用してアクセスできます。 
+このチュートリアルでは、[**データのインポート** ウィザード](search-import-data-portal.md)から "[*インデクサー*](search-indexer-overview.md)" を使用してクロールできる、組み込みのサンプル データセットを使用します。 インデクサーは、サポートされている Azure データ ソースからメタデータとコンテンツを読み取ることができるソース固有のクローラーです。 通常、インデクサーはプログラムで使用されますが、ポータル上では **データのインポート** ウィザードを使用してアクセスできます。 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>手順 1 - データのインポート ウィザードを起動し、データ ソースを作成する
 
@@ -57,11 +49,11 @@ ms.locfileid: "88935315"
 
 1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページ上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
 
-   ![[データのインポート] コマンド](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="[データのインポート] コマンド":::
 
 1. ウィザードで **[データに接続します]**  >  **[サンプル]**  >  **[hotels-sample]** の順にクリックします。 このデータ ソースは組み込まれています。 独自のデータ ソースを作成する場合は、名前、型、接続情報を指定する必要があります。 作成すると、他のインポート操作で再度使用できる "既存のデータ ソース" になります。
 
-   ![サンプル データセットの選択](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="サンプル データセットの選択":::
 
 1. 次のページに進みます。
 
@@ -71,7 +63,7 @@ ms.locfileid: "88935315"
 
 今回はこの手順をスキップして、 **[対象インデックスをカスタマイズします]** に直接進みましょう。
 
-   ![コグニティブ スキル手順のスキップ](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="コグニティブ スキル手順のスキップ":::
 
 > [!TIP]
 > AI インデックス作成の例は、[クイックスタート](cognitive-search-quickstart-blob.md)または[チュートリアル](cognitive-search-tutorial-blob.md)内でステップ実行できます。
@@ -89,13 +81,13 @@ ms.locfileid: "88935315"
 
 ストレージ要件は、選択の結果によって変わりません。 たとえば、複数のフィールドで **[取得可能]** 属性を設定した場合、ストレージ要件は上昇しません。
 
-既定では、ウィザードは一意の識別子のデータ ソースをキー フィールドの基準としてスキャンします。 "*文字列*" は、**取得可能**かつ**検索可能**です。 "*整数*" は、**取得可能**、**フィルター可能**、**ソート可能**、**ファセット可能**です。
+既定では、ウィザードは一意の識別子のデータ ソースをキー フィールドの基準としてスキャンします。 "*文字列*" は、**取得可能** かつ **検索可能** です。 "*整数*" は、**取得可能**、**フィルター可能**、**ソート可能**、**ファセット可能** です。
 
-1. 既定値を受け入れます。 
+1. 既定値を受け入れます。
 
    既存の hotels データ ソースを使用してウィザードを 2 回目に再実行した場合は、インデックスが既定の属性で構成されることはありません。 以降のインポートでは、属性を手動で選択する必要があります。 
 
-   ![生成された hotels のインデックス](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="生成された hotels のインデックス":::
 
 2. 次のページに進みます。
 
@@ -108,7 +100,7 @@ ms.locfileid: "88935315"
 
 **[送信]** をクリックして、インデクサーを作成し、同時に実行します。
 
-  ![hotels のインデクサー](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="hotels のインデクサー":::
 
 ## <a name="monitor-progress"></a>進行状況の監視
 
@@ -116,7 +108,7 @@ ms.locfileid: "88935315"
 
 ポータルによってページが更新されるまで数分かかることがありますが、新規に作成したインデクサーが一覧に表示されます。"進行中" または "成功" を示すステータスと、インデックスが作成されたドキュメントの数も表示されます。
 
-   ![インデクサーの進行状況のメッセージ](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="インデクサーの進行状況のメッセージ":::
 
 ## <a name="view-the-index"></a>インデックスの表示
 
@@ -124,13 +116,13 @@ ms.locfileid: "88935315"
 
 ポータル ページが更新されるまで待ちます。 数分後に、ドキュメント数とストレージ サイズのインデックスが表示されます。
 
-   ![サービスのダッシュボードのインデックスの一覧](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="サービスのダッシュボードのインデックスの一覧":::
 
 この一覧で、作成した *hotels-sample* インデックスをクリックすると、インデックスのスキーマが表示されます。 また、必要に応じて新しいフィールドを追加できます。 
 
 **[フィールド]** タブには、インデックス スキーマが表示されます。 一覧を下までスクロールし、新しいフィールドを入力します。 ほとんどの場合、既存のフィールドを変更することはできません。 既存のフィールドは、Azure Cognitive Search における物理的表現を含んでいるため、コード内でも編集することはできません。 既存のフィールドを根本的に変えるには、インデックスを新たに作成して、元のインデックスは削除します。
 
-   ![サンプル インデックスの定義](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="サンプル インデックスの定義":::
 
 その他のコンストラクト (スコアリング プロファイル、CORS オプションなど) はいつでも追加することができます。
 
@@ -140,7 +132,7 @@ ms.locfileid: "88935315"
 
 この時点で検索インデックスは、ビルトインの [**Search エクスプローラー**](search-explorer.md)のクエリ ページを使って照会する準備が整っています。 このページには、任意のクエリ文字列をテストできるよう検索ボックスが備わっています。
 
-**Search エクスプローラー**は、[REST API 要求](/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
+**Search エクスプローラー** は、[REST API 要求](/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)と [完全な Lucene クエリ パーサー](/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
 
 > [!TIP]
 > [Azure Cognitive Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から次の手順のデモをご覧いただけます。
@@ -148,15 +140,15 @@ ms.locfileid: "88935315"
 
 1. コマンド バーの **[Search エクスプローラー]** をクリックします。
 
-   ![[Search エクスプローラー] コマンド](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="[Search エクスプローラー] コマンド":::
 
 2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2020-06-30) を使用します。
 
-   ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="インデックスと API のコマンド":::
 
 3. 検索バーで次のクエリ文字列を貼り付けて、 **[検索]** をクリックします。
 
-   ![クエリ文字列と検索ボタン](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="クエリ文字列と検索ボタン":::
 
 ## <a name="example-queries"></a>クエリの例
 
@@ -168,7 +160,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * **search** パラメーターは、フルテキスト検索用のキーワード検索の入力に使用します。この例では、ドキュメントのいずれかの検索可能フィールドに *spa* が含まれるホテルのデータが返されます。
 
-* **Search エクスプローラー**は JSON で結果を返しますが、ドキュメント構造が高密度な場合は冗長で読みづらくなります。 これは意図的なものです。開発の目的上、特にテスト時には、ドキュメント全体の可視性が重要となります。 ユーザー エクスペリエンスを高めるためには、[検索結果を処理](search-pagination-page-layout.md)して重要な要素を抽出するコードの作成が必要になるでしょう。
+* **Search エクスプローラー** は JSON で結果を返しますが、ドキュメント構造が高密度な場合は冗長で読みづらくなります。 これは意図的なものです。開発の目的上、特にテスト時には、ドキュメント全体の可視性が重要となります。 ユーザー エクスペリエンスを高めるためには、[検索結果を処理](search-pagination-page-layout.md)して重要な要素を抽出するコードの作成が必要になるでしょう。
 
 * ドキュメントは、インデックスで "取得可能" としてマークされているすべてのフィールドで構成されます。 ポータル上でインデックスの属性を表示するには、 **[インデックス]** 一覧で *hotels-sample* をクリックします。
 
@@ -196,8 +188,8 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>例 (範囲の縮小によるファセット): `search=*&facet=Category&$top=2`
 
-* **search=** * は空の検索です。 空の検索は、すべてを検索します。 空のクエリを送信する理由の 1 つは、ドキュメントのすべてのセットをフィルターまたはファセットすることです。 たとえば、インデックス内のすべてのホテルから成るファセット ナビゲーション構造が必要な場合などです。
-* **facet** は、UI コントロールに渡せるナビゲーション構造を返します。 返されるのはカテゴリと数です。 この場合、カテゴリはちょうど *Category* という名前のフィールドに基づきます。 Azure Cognitive Search には集計機能はありませんが、各カテゴリのドキュメントの数を示す `facet` により、大まかな集計を行うことができます。
+* **search=** _ は空の検索です。 空の検索は、すべてを検索します。 空のクエリを送信する理由の 1 つは、ドキュメントのすべてのセットをフィルターまたはファセットすることです。 たとえば、インデックス内のすべてのホテルから成るファセット ナビゲーション構造が必要な場合などです。
+_ **facet** は、UI コントロールに渡せるナビゲーション構造を返します。 返されるのはカテゴリと数です。 この場合、カテゴリはちょうど *Category* という名前のフィールドに基づきます。 Azure Cognitive Search には集計機能はありませんが、各カテゴリのドキュメントの数を示す `facet` により、大まかな集計を行うことができます。
 
 * **$top=2** では 2 件のドキュメントが返されます。つまり、`top` を使用すると、結果を減らすことも増やすこともできます。
 
@@ -258,7 +250,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 **データのインポート** ウィザードを使って検索インデックスを作成する方法について説明しました。 [インデクサー](search-indexer-overview.md)について取り上げると共に、インデックス設計の基本的なワークフローについて説明しました。その際、[公開済みのインデックスに対して行うことができる変更](/rest/api/searchservice/update-index)についても触れています。
 
-Azure portal の **Search エクスプローラー**を使って、フィルターや検索結果の強調表示、あいまい検索、地理空間検索など、主要な機能を紹介する実践的な例を通じて、基本的なクエリの構文を学びました。
+Azure portal の **Search エクスプローラー** を使って、フィルターや検索結果の強調表示、あいまい検索、地理空間検索など、主要な機能を紹介する実践的な例を通じて、基本的なクエリの構文を学びました。
 
 ポータル上で、インデックス、インデクサー、データ ソースを検索する方法も学びました。 今後、新しいデータ ソースを扱うときにも、ポータルから、ごくわずかな労力で、その定義やフィールド コレクションを簡単に調べることができるでしょう。
 
@@ -276,8 +268,3 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 > [!div class="nextstepaction"]
 > [ポータルでデモ アプリを作成する](search-create-app-portal.md)
-
-クラウドの支出を最適化して節約することをご希望ですか?
-
-> [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

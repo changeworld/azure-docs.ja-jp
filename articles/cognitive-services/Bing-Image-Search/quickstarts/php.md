@@ -12,14 +12,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: aad804179739a77010446a146d32cd51ac6e6757
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: cf5478dfb15665047e39d51c71ec9e85a436fe91
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603368"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341854"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>クイック スタート:Bing Image Search REST API と PHP を使用してイメージを検索する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この記事のシンプルなアプリケーションは、検索クエリを送信し、生の結果を表示します。
 
@@ -138,8 +143,8 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search API とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Bing Image Search API とは](../overview.md)  
 * [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
 * [Bing Search API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure Cognitive Services のドキュメント](../../index.yml)
+* [Bing Image Search API リファレンス](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

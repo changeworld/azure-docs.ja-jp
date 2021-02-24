@@ -11,17 +11,17 @@ manager: shwang
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4679d06e877679f0a56ee782b9a43a5a8147d7a5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81419019"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608121"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Notebook を実行してデータを変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Data Factory パイプライン](concepts-pipelines-activities.md)の Azure Databricks Notebook アクティビティは、Azure Databricks ワークスペースで Databricks Notebook を実行します。 この記事は、データ変換の概要とサポートされる変換アクティビティを説明している [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
+[Data Factory パイプライン](concepts-pipelines-activities.md)の Azure Databricks Notebook アクティビティは、Azure Databricks ワークスペースで Databricks Notebook を実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。  Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks Notebook アクティビティの定義
 
@@ -62,7 +62,7 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
 |name|パイプラインのアクティビティの名前。|はい|
 |description|アクティビティの動作を説明するテキスト。|いいえ|
 |type|Databricks Notebook アクティビティでは、アクティビティの種類は DatabricksNotebook です。|はい|
-|linkedServiceName|Databricks Notebook が実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
+|linkedServiceName|Databricks Notebook が実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。|はい|
 |notebookPath|Databricks ワークスペースで実行するノートブックの絶対パスです。 このパスはスラッシュで始まる必要があります。|はい|
 |baseParameters|キーと値ペアの配列です。 基本パラメーターは、各アクティビティの実行に使うことができます。 指定されていないパラメーターをノートブックが受け取った場合は、ノートブックの既定値が使われます。 パラメーターについて詳しくは、[Databricks Notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair) に関する記事をご覧ください。|いいえ|
 |libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 \<string, object> の配列を指定できます。|いいえ|
@@ -81,7 +81,7 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
         {
             "egg": "dbfs:/mnt/libraries/library.egg"
         },
-    {
+        {
             "whl": "dbfs:/mnt/libraries/mlflow-0.0.1.dev0-py2-none-any.whl"
         },
         {

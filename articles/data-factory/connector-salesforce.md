@@ -1,22 +1,18 @@
 ---
 title: Salesforce との間でデータをコピーする
 description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Salesforce からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Salesforce にデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/13/2020
-ms.openlocfilehash: 292d80f7fad796b2ee4f80478c55099148d7f855
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 02/02/2021
+ms.openlocfilehash: d820be66c70ae336361de7209722c4018ffd5077
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086695"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392172"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 
@@ -42,7 +38,7 @@ Salesforce から、サポートされている任意のシンク データ ス�
 - Salesforce Developer、Professional、Enterprise、または Unlimited エディション。
 - Salesforce 運用環境、サンドボックス、およびカスタム ドメインをコピー先またはコピー元とするデータのコピー。
 
-Salesforce コネクタは、Salesforce REST/Bulk API 上に構築されます。 既定では、コネクタによって、Salesforce からデータをコピーするには [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) が、Salesforce にデータをコピーするには [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) が使用されます。 また、リンクされたサービスで [`apiVersion` プロパティ](#linked-service-properties) を使用して、データの読み取りまたは書き込みに使用する API バージョンを明示的に設定することもできます。
+Salesforce コネクタは、Salesforce REST/Bulk API 上に構築されます。 コネクタは、Salesforce からデータをコピーするとき、既定では [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) を使用し、データ サイズに基づいて REST または Bulk API を自動的に選択します。結果セットが大きい場合は、パフォーマンス向上のために Bulk API が使用されます。コネクタは、Salesforce にデータを書き込むとき、Bulk API の [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) を使用します。 また、リンクされたサービスで [`apiVersion` プロパティ](#linked-service-properties) を使用して、データの読み取りまたは書き込みに使用する API バージョンを明示的に設定することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -75,10 +71,7 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 | password |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 <br/><br/>セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 セキュリティ トークンをスキップできるのは、Salesforce で[信頼済み IP アドレスの一覧](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm)に Integration Runtime の IP を追加した場合のみです。 Azure IR を使用する場合は、「[Azure Integration Runtime の IP アドレス](azure-integration-runtime-ip-addresses.md)」を参照してください。<br/><br/>セキュリティ トークンの取得およびリセット方法については、[セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)に関する記事を参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ |
 | apiVersion | `48.0` など、使用する Salesforce の REST または Bulk API バージョンを指定します。 既定では、コネクタによって、Salesforce からデータをコピーするには [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) が、Salesforce にデータをコピーするには [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) が使用されます。 | いいえ |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」 (ソースにリンクされたサービスに統合ランタイムがない場合) |
-
->[!IMPORTANT]
->Salesforce にデータをコピーする場合は、既定の Azure Integration Runtime を使用してコピーを実行することはできません。 言い換えると、ソースのリンクされたサービスに指定された統合ランタイムがない場合は、Salesforce インスタンスに近い場所に明示的に [Azure Integration Runtime を作成](create-azure-integration-runtime.md#create-azure-ir)します。 次の例のように、Salesforce のリンクされたサービスを関連付けます。
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 **例:Data Factory に資格情報を格納する**
 
@@ -152,7 +145,7 @@ Salesforce をコピー元またはコピー先としてデータをコピーす
 | objectApiName | データの取得元の Salesforce オブジェクト名。 | ソースの場合はいいえ、シンクの場合ははい |
 
 > [!IMPORTANT]
-> カスタム オブジェクトには、**API 名**の "__c" の部分が必要となります。
+> カスタム オブジェクトには、**API 名** の "__c" の部分が必要となります。
 
 ![Data Factory の Salesforce 接続 API 名](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
@@ -198,7 +191,7 @@ Salesforce からデータをコピーするには、コピー アクティビ�
 | readBehavior | 既存のレコード、または削除されたものを含むすべてのレコードの、どちらのクエリを行うかを示します。 指定しない場合の既定の動作は前者です。 <br>使用可能な値: **query** (既定値)、**queryAll**.  | いいえ |
 
 > [!IMPORTANT]
-> カスタム オブジェクトには、**API 名**の "__c" の部分が必要となります。
+> カスタム オブジェクトには、**API 名** の "__c" の部分が必要となります。
 
 ![Data Factory の Salesforce 接続 API 名一覧](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
@@ -302,7 +295,7 @@ Salesforce からデータをコピーするときは、SOQL クエリまたは 
 |:--- |:--- |:--- |
 | 列の選択 | コピーするフィールドをクエリで列挙する必要があります (例: `SELECT field1, filed2 FROM objectname`) | 列の選択に加えて、`SELECT *` がサポートされています。 |
 | 引用符 | フィールド/オブジェクト名を引用符で囲むことはできません。 | フィールド/オブジェクト名を引用符で囲むことができます (例: `SELECT "id" FROM "Account"`) |
-| 日時の形式 |  [こちら](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)の詳細と次のセクションのサンプルをご覧ください。 | [こちら](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)の詳細と次のセクションのサンプルをご覧ください。 |
+| 日時の形式 |  [こちら](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)の詳細と次のセクションのサンプルをご覧ください。 | [こちら](/sql/odbc/reference/develop-app/date-time-and-timestamp-literals)の詳細と次のセクションのサンプルをご覧ください。 |
 | ブール値 | `False` および `True` と表されます (例: `SELECT … WHERE IsDeleted=True`)。 | 0 または 1 と表されます (例: `SELECT … WHERE IsDeleted=1`)。 |
 | 列の名前変更 | サポートされていません。 | サポートされています (例: `SELECT a AS b FROM …`)。 |
 | リレーションシップ | サポートされています (例: `Account_vod__r.nvs_Country__c`)。 | サポートされていません。 |

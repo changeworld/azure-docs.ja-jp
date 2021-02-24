@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 のよく寄せられる質問 | Microsoft Docs
+title: Azure Media Services v3 のよく寄せられる質問
 description: この記事では、Azure Media Services v3 についてよく寄せられる質問に対する回答を提供します。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a452a056ff2bdbad5d2e461716ee1a56d36c8523
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268487"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897562"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -28,13 +28,13 @@ ms.locfileid: "89268487"
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Media Services v3 に関する Azure portal の制限事項とは何ですか。
 
-[Azure portal](https://portal.azure.com/) を使用し、v3 のライブ イベントを管理し、v3 の資産を表示し、API へのアクセスに関する情報を取得し、コンテンツを暗号化できます。 <br/>他のすべての管理タスク (変換とジョブの管理や v3 コンテンツの分析など) には、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、あるいはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+[Azure portal](https://portal.azure.com/) を使用し、v3 のライブ イベントを管理し、v3 の資産を表示し、API へのアクセスに関する情報を取得し、コンテンツを暗号化できます。 <br/>他のすべての管理タスク (変換とジョブの管理や v3 コンテンツの分析など) には、[REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams)、あるいはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ビデオが以前に Media Services v3 API を使用して Media Services アカウントにアップロードされていた場合、またはコンテンツがライブ出力に基づいて生成された場合、Azure portal に **[エンコード]** 、 **[分析]** 、または **[暗号化]** ボタンは表示されません。 これらのタスクを実行するには、Media Services v3 API シリーズを使用してください。  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure Media Services リソースに対してアクションを実行できる Azure のロールは何ですか。 
 
-「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](rbac-overview.md)」を参照してください。
+詳細については、「[Media Services アカウント用の Azure ロールベースのアクセス制御 (Azure RBAC)](rbac-overview.md)」を参照してください。
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Apple iOS デバイスにはどのようにしてストリーミングしますか?
 
@@ -60,7 +60,7 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure Media Services v3 では、どのような機能がまだ利用可能になっていますか。
 
-詳細については、「[v2 API に関する機能のギャップ](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)」を参照してください。
+詳細については、[移行ガイド](migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>サブスクリプション間での Media Services アカウントの移動のプロセスはどのようなものですか?  
 
@@ -163,13 +163,13 @@ ASP.NET のプレーヤー アプリケーションはベスト プラクティ�
 * v3 [アセット](assets-concept.md)を表示します (管理ではありません)。 
 * [API のアクセスに関する情報を取得](./access-api-howto.md)します。 
 
-他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/)、[Azure CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/)、[Azure CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 には AssetFile の概念はありますか?
 
 Storage SDK の依存関係から Media Services を切り離すために、`AssetFile` は Media Services API から削除されました。 現在、Media Services ではなく、Azure Storage で Storage SDK に属する情報が保持されます。 
 
-詳細については、「[Media Services v3 に移行する](media-services-v2-vs-v3.md)」を参照してください。
+詳細については、「[Media Services v3 に移行する](migrate-v-2-v-3-migration-introduction.md)」を参照してください。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>クライアント側でのストレージ暗号化は利用できなくなったのですか?
 

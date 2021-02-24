@@ -3,16 +3,16 @@ title: Azure Image Builder サービスのトラブルシューティング
 description: Azure VM Image Builder サービスを使用するときの一般的な問題とエラーのトラブルシューティングを行います
 author: cynthn
 ms.author: danis
-ms.date: 08/07/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 754d9324137632b928e67bbe4c67a3e6c72e452a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 52801d0d7b02bb3637b5edb03072bde04a023de9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067995"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881790"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder サービスのトラブルシューティング
 
@@ -502,6 +502,28 @@ D1_V2 VM のサイズによるタイミングの問題が原因である可能�
 
 VM のサイズを増やします。 または、60 秒の PowerShell スリープ カスタマイズを追加して、タイミングの問題を回避することもできます。
 
+### <a name="cancelling-builder-after-context-cancellation-context-canceled"></a>コンテキストの取り消しコンテキストの取り消し後にビルダーがキャンセルされる
+
+#### <a name="error"></a>エラー
+```text
+PACKER ERR 2020/03/26 22:11:23 Cancelling builder after context cancellation context canceled
+PACKER OUT Cancelling build after receiving terminated
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling hook after context cancellation context canceled
+..
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling provisioning due to context cancellation: context canceled
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [ERROR] Remote command exited without exit status or exit signal.
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [INFO] RPC endpoint: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] 148974 bytes written for 'stdout'
+PACKER ERR 2020/03/26 22:11:25 [INFO] 0 bytes written for 'stderr'
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC client: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 2300218
+```
+#### <a name="cause"></a>原因
+Image Builder サービスは、ポート 22 (Linux) または 5986 (Windows) を使用してビルド VM に接続します。これはイメージのビルド中にサービスがビルド VM から切断された場合に発生します。 切断の理由はさまざまですが、スクリプトでファイアウォールを有効にしたり構成したりすると、上記のポートがブロックされる可能性があります。
+
+#### <a name="solution"></a>解決策
+ファイアウォールの変更または有効化、あるいは SSH または WinRM への変更についてスクリプトを確認し、上記のポートでサービスとビルド VM の間の常時接続を確立できるように変更してください。 Image Builder のネットワークの詳細については、[要件](./image-builder-networking.md)に関する記事を確認してください。
+
 ## <a name="devops-task"></a>DevOps タスク 
 
 ### <a name="troubleshooting-the-task"></a>タスクのトラブルシューティング
@@ -564,11 +586,23 @@ template name:  t_1556938436xxx
 
 ビルドがユーザーによって取り消されなかった場合は、Azure DevOps ユーザー エージェントによって取り消されました。 最も可能性が高いのは、Azure DevOps の機能により、1 時間のタイムアウトが発生した場合です。 プライベート プロジェクトとエージェントを使用している場合は、60 分のビルド時間が得られます。 ビルドがタイムアウトを超えた場合、DevOps によって実行中のタスクが取り消されます。
 
-Azure DevOps の機能と制限事項の詳細については、「[Microsoft によってホストされるエージェント](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)」を参照してください
+Azure DevOps の機能と制限事項の詳細については、「[Microsoft によってホストされるエージェント](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations)」を参照してください
  
 #### <a name="solution"></a>解決策
 
 独自の DevOps エージェントをホストするか、ビルドの時間を短縮することができます。 たとえば、Shared Image Gallery に配布している場合は、1 つのリージョンにレプリケートします。 非同期的にレプリケートする場合。 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Windows ログオンが遅い:'Windows モジュール インストーラーの処理が完了するのをお待ちください'
+
+#### <a name="error"></a>エラー
+Image Builder を使用して Windows 10 イメージを作成し、そのイメージから VM を作成した後、RDP を使用すると、最初のログオン時に次のメッセージとブルー スクリーンが表示され、数分待つ必要があります。
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>解決策
+まず、イメージのビルドでは、最後のカスタマイズとして Windows 再起動カスタマイザーを追加することで、必要な未完了が存在しないことと、すべてのソフトウェアのインストールが完了していることを確認します。 最後に、AIB に使用される既定の sysprep に [/mode:vm](/windows-hardware/manufacture/desktop/sysprep-command-line-options) オプションを追加します。後述する「AIB イメージから作成される VM が正常に作成されない」 > 「コマンドのオーバーライド」を参照してください。  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>AIB イメージから作成される VM が正常に作成されない
 
@@ -633,11 +667,11 @@ Write-Output '>>> Sysprep complete ...'
 ケース製品を選択します。
 ```bash
 Product Family: Azure
-Product: Virtual Machine Running Windows
-Support Topic: Management
-Support Subtopic: Issues with Azure Image Builder
+Product: Virtual Machine Running (Window\Linux)
+Support Topic: Azure Features
+Support Subtopic: Azure Image Builder
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については、[Azure Image Builder の概要](image-builder-overview.md)に関する記事を参照してください。
+詳細については、[Azure Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。

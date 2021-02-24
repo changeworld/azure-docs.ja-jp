@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory のデータ ファクトリをコピーまたは複製する
 description: Azure Data Factory のデータ ファクトリをコピーまたは複製する方法について説明します
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 304c39f4b6f7852068d4e72adfad2d41eeefc26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ea16785502ce8a82087b79dd8e7f0014c0059fc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552966"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375240"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Data Factory のデータ ファクトリをコピーまたは複製する
 
@@ -28,7 +24,7 @@ ms.locfileid: "85552966"
 
 以下、データ ファクトリのコピーまたは複製が有効な手段となる可能性のある状況をいくつか挙げます。
 
-- 新しいリージョンに**データ ファクトリを移動する**。 データ ファクトリを別のリージョンに移動する場合は、ターゲット リージョンにコピーを作成し、既存のものを削除するのが最善の方法です。
+- 新しいリージョンに **データ ファクトリを移動する**。 データ ファクトリを別のリージョンに移動する場合は、ターゲット リージョンにコピーを作成し、既存のものを削除するのが最善の方法です。
 
 - **データ ファクトリの名前を変更する**。 Azure では、リソースの名前変更がサポートされません。 データ ファクトリの名前を変更したい場合は、別の名前でデータ ファクトリを複製した後、既存のものを削除してください。
 

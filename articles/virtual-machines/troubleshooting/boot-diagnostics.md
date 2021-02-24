@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: ef907aea940a4f01475cebf72528b9bcdde50f4d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9030adb9904095ac9b909e650ec6f11dcdf85ed3
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180237"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475524"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>ブート診断を使用して、Azure 内の仮想マシンをトラブルシューティングする方法
 
@@ -52,7 +52,7 @@ Linux 仮想マシンについては、コンソール ログの出力をポー�
 ![VM を作成する](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> ブート診断機能では、Premium ストレージ アカウントはサポートされていません。 ブート診断に Premium ストレージ アカウントを使用すると、VM の起動時に StorageAccountTypeNotSupported エラーが表示されることがあります。
+> ブート診断機能では、Premium ストレージ アカウントまたはゾーン冗長ストレージのアカウントの種類はサポートされていません。 ブート診断に Premium ストレージ アカウントを使用すると、VM の起動時に StorageAccountTypeNotSupported エラーが表示されることがあります。 
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートからのデプロイ
@@ -94,4 +94,4 @@ Azure Resource Manager テンプレートからデプロイする場合は、ご
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Azure CLI を使用してブート診断を有効にする
 
-Azure CLI を使用して、既存の Azure 仮想マシンでブート診断を有効にすることができます。 詳細については、[az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest) を参照してください。
+Azure CLI を使用して、既存の Azure 仮想マシンでブート診断を有効にすることができます。 詳細については、[az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics) を参照してください。

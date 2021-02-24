@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight で Apache Ambari Hive ビューからクエリを実行するときの例外
 description: Azure HDInsight で Apache Ambari Hive ビューから Apache Hive クエリを実行するときのトラブルシューティング手順。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ef380cd2bd4743b92daf44a0a5b70ade1cbb35
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75895049"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933003"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari Hive ビューからクエリを実行するときの例外
 
@@ -60,7 +57,7 @@ HTTP ハンドラー スレッドは迅速にジョブを準備し、`queryid` �
 
 * クラスターに Rangers がインストールされている場合は、クエリごとに評価する必要がある Rangers ポリシーが多すぎないかどうかを確認します。 重複しているポリシーまたは不要なポリシーを探してください。
 
-* Ambari の **HiveServer2 ヒープ サイズ**の値を確認します。 **[Hive]**  >  **[Configs]\(構成\)**  >  **[設定]**  >  **[最適化]** に移動します。 値が 10 GB よりも大きいことを確認してください。 必要に応じて調整して、パフォーマンスを最適化します。
+* Ambari の **HiveServer2 ヒープ サイズ** の値を確認します。 **[Hive]**  >  **[Configs]\(構成\)**  >  **[設定]**  >  **[最適化]** に移動します。 値が 10 GB よりも大きいことを確認してください。 必要に応じて調整して、パフォーマンスを最適化します。
 
 * Hive クエリが適切にチューニングされていることを確認します。 詳細については、「[Azure HDInsight での Apache Hive クエリの最適化](../hdinsight-hadoop-optimize-hive-query.md)」を参照してください。
 
@@ -72,4 +69,4 @@ HTTP ハンドラー スレッドは迅速にジョブを準備し、`queryid` �
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

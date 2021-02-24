@@ -3,21 +3,23 @@ title: SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS �
 description: SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
 services: virtual-machines-linux,virtual-machines-windows
 author: msjuergent
-manager: patfilot
+manager: bburns
 tags: azure-resource-manager
+keywords: Azure、Db2、SAP、IBM
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/18/2020
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bce8b878de1892162ddce7957befa41649014073
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649614"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959014"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
 
@@ -54,9 +56,10 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM Db2 for LUW 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための IBM Db2 for Linux, UNIX, and Windows 構成ガイドライン
 ### <a name="storage-configuration"></a>ストレージの構成
-SAP ワークロード用の Azure Storage の種類の概要については、「[SAP ワークロードの Azure Storage の種類](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)」を参照してください。すべてのデータベース ファイルは、Azure ブロック ストレージのマウントされたディスクに保存する必要があります (Windows: NFFS、Linux: xfs、ext4 または ext3)。 あらゆる種類のネットワーク ドライブまたは次の Azure サービスのようなリモート共有は、データベース ファイルに対してサポートされて**いません**。 
+SAP ワークロード用の Azure Storage の種類の概要については、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を参照してください。すべてのデータベース ファイルは、Azure ブロック ストレージのマウントされたディスクに保存する必要があります (Windows: NFFS、Linux: xfs、ext4 または ext3)。 あらゆる種類のネットワーク ドライブまたは次の Azure サービスのようなリモート共有は、データベース ファイルに対してサポートされて **いません**。 
 
-* [Microsoft Azure File Service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure File Service](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイの考慮事項](dbms_guide_general.md)」に記載されているステートメントは、Azure Page BLOB Storage をベースとするディスクまたは Managed Disks を使用した Db2 DBMS のデプロイにも適用されます。
@@ -71,7 +74,7 @@ SAP ワークロード用の Azure Storage の種類の概要については、�
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Sapdata と saptmp ディレクトリに対する Db2 ストレージ パスを含むディスクについては、512 KB の物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで `-LogicalSectorSizeDefault` パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> を参照してください。
+`sapdata` ディレクトリと `saptmp` ディレクトリの Db2 ストレージ パスを含むディスクについては、512 KB の物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで `-LogicalSectorSizeDefault` パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> を参照してください。
 
 Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、トランザクション ログへの書き込み待機時間を数分の 1 に短縮できます。 そのため、Db2 のトランザクション ログ用のボリュームを形成する VHD には Azure 書き込みアクセラレータをデプロイする必要があります。 詳細については、「[Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)」を参照してください。
 
@@ -79,58 +82,58 @@ Azure M シリーズ VM で Azure 書き込みアクセラレータを使用す�
 
 SAP NetWeaver Applications 用の IBM Db2 は、SAP サポート ノート [1928533] に記載されているすべての VM の種類でサポートされています。  IBM Db2 データベースを実行するために推奨される VM ファミリは、大規模なマルチテラバイト データベース向けの Esd_v4/Eas_v4/Es_v3 および M/M_v2 シリーズです。 M シリーズの書き込みアクセラレータを有効にすると、IBM Db2 のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 
 
-以下に、小さな規模から非常に大きな規模までの、SAP on Db2 デプロイのさまざまなサイズと使用のベースライン構成を示します。
+以下に、小さな規模から大きな規模までの、SAP on Db2 デプロイのさまざまなサイズと使用のベースライン構成を示します。 この一覧は Azure Premium Storage に基づいています。 ただし、Azure Ultra Disk は Db2 でも完全にサポートされており、同様に使用できます。 容量、バースト スループット、バースト IOPS を使用し、Ultra Disk の構成を定義するだけです。 /db2/<SID>/log_dir の IOPS を 5000 IOPS あたりで制限できます。 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>極小規模の SAP システム: データベース サイズ 50 - 200 GB: 例の Solution Manager
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  ||  |
-|vCPU: 4 |/db2/<SID>/sapdata |P10 |2 |1.000  |200  |256  |7.000  |340  |256 KB |ReadOnly |
-|RAM: 32 GiB |/db2/<SID>/saptmp |P6 |1 |240  |50  |128  |3.500  |170  | ||
-| |/db2/<SID>/log_dir |P6 |2 |480  |100  |128  |7.000  |340  |64 KB ||
-| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  || |
+|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
+|vCPU: 4 |/db2/<SID>/sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
+|RAM: 32 GiB |/db2/<SID>/saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
+| |/db2/<SID>/log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小規模の SAP システム: データベース サイズ 200 - 750 GB: 小規模の Business Suite
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
-|vCPU: 16 |/db2/<SID>/sapdata |P15 |4 |4.400  |500  |1.024  |14.000  |680  |256 KB |ReadOnly |
-|RAM: 128 GiB |/db2/<SID>/saptmp |P6 |2 |480  |100  |128  |7.000  |340  |128 KB ||
-| |/db2/<SID>/log_dir |P15 |2 |2.200  |250  |512  |7.000  |340  |64 KB ||
-| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  ||| 
+|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 16 |/db2/<SID>/sapdata |P15 |4 |4,400  |500  |1.024  |14,000  |680  |256 KB |ReadOnly |
+|RAM: 128 GiB |/db2/<SID>/saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中規模の SAP システム: データベース サイズ 500 - 1000 GB: 小規模の Business Suite
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
-|vCPU: 32 |/db2/<SID>/sapdata |P30 |2 |10.000  |400  |2.048  |10.000  |400  |256 KB |ReadOnly |
-|RAM: 256 GiB |/db2/<SID>/saptmp |P10 |2 |1.000  |200  |256  |7.000  |340  |128 KB ||
-| |/db2/<SID>/log_dir |P20 |2 |4.600  |300  |1.024  |7.000  |340  |64 KB ||
-| |/db2/<SID>/offline_log_dir |P15 |1 |1.100  |125  |256  |3.500  |170  ||| 
+|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 32 |/db2/<SID>/sapdata |P30 |2 |10,000  |400  |2.048  |10,000  |400  |256 KB |ReadOnly |
+|RAM: 256 GiB |/db2/<SID>/saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P20 |2 |4,600  |300  |1.024  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大規模の SAP system: データベース サイズ 750 - 2000 GB: Business Suite
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
-|vCPU: 64 |/db2/<SID>/sapdata |P30 |4 |20.000  |800  |4.096  |20.000  |800  |256 KB |ReadOnly |
-|RAM: 504 GiB |/db2/<SID>/saptmp |P15 |2 |2.200  |250  |512  |7.000  |340  |128 KB ||
-| |/db2/<SID>/log_dir |P20 |4 |9.200  |600  |2.048  |14.000  |680  |64 KB ||
-| |/db2/<SID>/offline_log_dir |P20 |1 |2.300  |150  |512  |3.500  |170  || |
+|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 64 |/db2/<SID>/sapdata |P30 |4 |20,000  |800  |4.096  |20,000  |800  |256 KB |ReadOnly |
+|RAM: 504 GiB |/db2/<SID>/saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P20 |4 |9,200  |600  |2.048  |14,000  |680  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
 
-#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>大規模のマルチテラバイト SAP システム: データベース サイズ 2TB+: Global Business Suite システム
+#### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>大規模のマルチテラバイト SAP システム: データベース サイズ 2 TB+:Global Business Suite システム
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|M128s |/db2 |P10 |1 |500  |100  |128  |3.500  |170  || |
-|vCPU: 128 |/db2/<SID>/sapdata |P40 |4 |30.000  |1.000  |8.192  |30.000  |1.000  |256 KB |ReadOnly |
-|RAM: 2,048 GiB |/db2/<SID>/saptmp |P20 |2 |4.600  |300  |1.024  |7.000  |340  |128 KB ||
-| |/db2/<SID>/log_dir |P30 |4 |20.000  |800  |4.096  |20.000  |800  |64 KB |WriteAccelerator |
-| |/db2/<SID>/offline_log_dir |P30 |1 |5.000  |200  |1.024  |5.000  |200  || |
+|M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
+|vCPU: 128 |/db2/<SID>/sapdata |P40 |4 |30,000  |1.000  |8.192  |30,000  |1.000  |256 KB |ReadOnly |
+|RAM: 2,048 GiB |/db2/<SID>/saptmp |P20 |2 |4,600  |300  |1.024  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P30 |4 |20,000  |800  |4.096  |20,000  |800  |64 KB |WriteAccelerator |
+| |/db2/<SID>/offline_log_dir |P30 |1 |5,000  |200  |1.024  |5,000  |200  || |
 
 
 ### <a name="backuprestore"></a>バックアップ/復元
 IBM Db2 for LUW のバックアップ/復元機能は、標準の Windows Server オペレーティング システムと Hyper-V と同じ方法でサポートされています。
 
-有効なデータベース バックアップ戦略が設定されていることを確認する必要があります。 
+有効なデータベース バックアップ戦略が設定されていることを確認します。 
 
 ベア メタル デプロイメントと同様に、バックアップ/復元のパフォーマンスは、並列で読み取ることができるボリュームの数と、それらのボリュームのスループットに依存します。 さらに、バックアップの圧縮で使用される CPU 使用量は最大 8 CPU スレッドとなり、VM 上で重要な役割を果たします。 そのため、次のことを想定できます。
 
@@ -225,6 +228,12 @@ IBM Database を使用した VM のデプロイについては、「[SAP ワー�
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
+
+
+## <a name="next-steps"></a>次の手順
+記事を読む 
+
+- [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com

@@ -3,22 +3,18 @@ title: クイック スタート:Automation アカウントを作成する - Azu
 titleSuffix: Azure Automation
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して Automation アカウントを作成する方法について説明します。
 services: automation
-documentationcenter: na
-author: mgoedtel
 Customer intent: I want to create an Automation account by using an Azure Resource Manager template so that I can automate processes with runbooks.
-ms.service: automation
-ms.devlang: na
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 4d7d4b5af9b86fe5116dc29f6ed1a789cdbf2047
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055432"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581088"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する
 
@@ -44,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * サンプルの Automation Runbook をアカウントに追加します。
 
 >[!NOTE]
->ARM テンプレートを使用する場合、Automation の実行アカウントの作成はサポートされません。 ポータルからまたは PowerShell を使用して実行アカウントを手動で作成するには、[実行アカウントの管理](manage-runas-account.md)に関するページを参照してください。
+>ARM テンプレートを使用する場合、Automation の実行アカウントの作成はサポートされません。 ポータルからまたは PowerShell を使用して実行アカウントを手動で作成するには、[実行アカウントの作成](create-run-as-account.md)に関するページを参照してください。
 
 これらの手順を完了したら、Runbook ジョブの状態とジョブ ストリームを、リンクされた Log Analytics ワークスペースに送信するために、Automation アカウントの[診断設定を構成する](automation-manage-send-joblogs-log-analytics.md)必要があります。
 
@@ -84,11 +80,11 @@ JSON テンプレートでは、環境で標準構成として使用される可
 
 Azure Automation と Azure Monitor を初めて使用する場合は、次の構成の詳細を理解しておくことが重要です。 これは、新しい Automation アカウントにリンクされた Log Analytics ワークスペースを作成、構成、および使用するときに、エラーを回避するのに役立ちます。
 
-* [追加の詳細](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて十分に理解します。
+* [追加の詳細](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて十分に理解します。
 
 * [ワークスペース マッピング](how-to/region-mappings.md)を確認し、サポートされているリージョンを、インラインまたはパラメーター ファイルで指定します。 サブスクリプション内で Log Analytics ワークスペースと Automation アカウントをリンクすることは、特定のリージョンでのみサポートされています。
 
-* Azure Monitor ログを初めて使用し、ワークスペースをまだデプロイしていない場合は、[ワークスペースの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。 これは、アクセスの制御について学習し、組織に推奨される設計の実装戦略を理解するのに役立ちます。
+* Azure Monitor ログを初めて使用し、ワークスペースをまだデプロイしていない場合は、[ワークスペースの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。 これは、アクセスの制御について学習し、組織に推奨される設計の実装戦略を理解するのに役立ちます。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

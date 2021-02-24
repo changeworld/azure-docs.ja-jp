@@ -4,16 +4,16 @@ description: 完全に管理されたサービスとしてのプラットフォ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/12/2020
+ms.date: 01/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 7878ecd2b1ce223a95c229b93713a875636daa09
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9f8de6ed4f0312a342526fb2ba5d100dfd9ec91f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164310"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582623"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -27,7 +27,7 @@ Azure Analysis Services は、完全に管理されたサービスとしての�
 
 ## <a name="get-up-and-running-quickly"></a>スピーディな起動と実行
 
-Azure Portal から数分で[サーバーを作成する](analysis-services-create-server.md)ことができます。 また、Azure Resource Manager [テンプレート](../azure-resource-manager/resource-manager-create-first-template.md)と PowerShell を使用して、宣言型のテンプレートを使用するサーバーを作成できます。 1 つのテンプレートを使用して、他の Azure コンポーネント (ストレージ アカウントや Azure Functions など) と共にサーバー リソースをデプロイできます。 
+Azure Portal から数分で[サーバーを作成する](analysis-services-create-server.md)ことができます。 また、Azure Resource Manager [テンプレート](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)と PowerShell を使用して、宣言型のテンプレートを使用するサーバーを作成できます。 1 つのテンプレートを使用して、他の Azure コンポーネント (ストレージ アカウントや Azure Functions など) と共にサーバー リソースをデプロイできます。 
 
 **ビデオ:** 「[Automating deployment (デプロイの自動化)](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)」で、Azure Automation を使用してサーバーを迅速に作成する方法を確認してください。
 
@@ -39,7 +39,7 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 
 ### <a name="developer-tier"></a>Developer レベル
 
-このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 このレベルでは、SLA は適用されません。
+このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウトは、このレベルでは *利用できません*。 このレベルでは、SLA は適用されません。
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
@@ -48,7 +48,7 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 
 ### <a name="basic-tier"></a>Basic レベル
 
-このレベルは、表形式モデルが小さく、ユーザーのコンカレンシー数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能*は、このレベルではサポートされません*。  
+このレベルは、表形式モデルが小さく、ユーザーのコンカレンシー数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは *利用できません*。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能 *は、このレベルではサポートされません*。  
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
@@ -71,7 +71,7 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 |S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
 <a name="naar">1</a> - すべてのリージョンで利用できるわけではありません。   
-<a name="rec">2</a> - v2 が推奨されます。
+<a name="rec">2</a> - S8 と S9 は[非推奨](https://azure.microsoft.com/updates/azure-s8-and-s9-analysis-services-skus-retiring-on-31-august-2023/)とされます。 v2 が推奨されます。 
 
 ## <a name="availability-by-region"></a>リージョンごとの可用性
 
@@ -83,18 +83,21 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |---------|---------|:---------:|
 |ブラジル南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
+|カナダ中部     |     S8v2、S9v2   |    1    |
 |米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
-|米国東部 2     |     S8、S9、S8v2、S9v2   |    1    |
+|米国東部 2     |     S8v2、S9v2   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
+|米国中北部     |     S8v2、S9v2    |    1     |
 |米国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中部     |    S8v2、S9v2     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
+|米国中南部     |    S8v2、S9v2     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
-|米国西部     |    S8、S9、S8v2、S9v2   |    2  |
+|米国西部     |    S8v2、S9v2   |    2  |
 |米国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
-|米国西部 2    |    S8、S9、S8v2、S9v2  |    1     |
+|米国西部 2    |    S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>ヨーロッパ
 
@@ -104,17 +107,19 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |北ヨーロッパ     |    S8v2、S9v2      |    3     |
 |英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
 |西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
-|西ヨーロッパ    |   S8、S9、S8v2、S9v2  |  1  |
+|西ヨーロッパ    |   S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |オーストラリア東部     |    B1、B2、S0、S1、S2、S4     |    3     |
-|オーストラリア東部     |    S8、S9、S8v2、S9v2    |    1     |
+|オーストラリア東部     |    S8v2、S9v2    |    1     |
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
+|東日本     |    S8v2、S9v2    |    1     |
+|東南アジア     |     B1、B2、S0、S1、S2、S4、D1     |   1      |
+|東南アジア     |     S8v2、S9v2     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
@@ -137,13 +142,13 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services が基礎
 
-Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](analysis-services-compat-level.md) 1200 以降の表形式モデルをサポートします。 表形式モデルは、Tabular Model Scripting Language (TMSL) と表形式オブジェクト モデル (TOM) コードで表形式メタデータ オブジェクト定義に明記されたリレーショナル モデリング構造 (モデル、テーブル、列) です。 パーティション、パースペクティブ、行レベルのセキュリティ、双方向リレーションシップ、および翻訳のすべてがサポートされています。\* 多次元モデルと PowerPivot for SharePoint は、Azure Analysis Services ではサポートされて "*いません*"。
+Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services) 1200 以降の表形式モデルをサポートします。 表形式モデルは、Tabular Model Scripting Language (TMSL) と表形式オブジェクト モデル (TOM) コードで表形式メタデータ オブジェクト定義に明記されたリレーショナル モデリング構造 (モデル、テーブル、列) です。 パーティション、パースペクティブ、行レベルのセキュリティ、双方向リレーションシップ、および翻訳のすべてがサポートされています。\* 多次元モデルと PowerPivot for SharePoint は、Azure Analysis Services ではサポートされて "*いません*"。
 
 インメモリと DirectQuery モードの両方で表形式モデルがサポートされます。 インメモリ モード (既定値) の表形式モデルでは、複数のデータ ソースがサポートされます。 モデル データは高度に圧縮され、インメモリでキャッシュされるため、このモードは、大量のデータに対するクエリの応答を最速で提供します。 複雑なデータセットとクエリに対する最大の柔軟性も備えています。 
 
 パーティション分割によって増分読み込みが可能になり、並列処理が増加し、メモリの消費量が減少します。 計算テーブルなどの高度なデータ モデリング機能と、すべての DAX 関数がサポートされます。 データ ソースからキャッシュされたデータを更新するには、インメモリ モデルを更新 (処理) する必要があります。 Azure サービス プリンシパルのサポートによる PowerShell、TOM、TMSL、および REST を使用した無人の更新操作によって、モデル データが常に最新の状態であることを柔軟に保証できます。 
 
-DirectQuery モード* では、ストレージとクエリの実行でバックエンドのリレーショナル データベースを活用します。 1 つの SQL Server、SQL Server Data Warehouse、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、Oracle、および Teradata データ ソース内の非常に大きなデータ セットがサポートされます。 バックエンド データ セットは、利用可能なサーバー リソースのメモリを超えることができます。 複雑なデータ モデルの更新シナリオは必要ありません。 また、データ ソースの種類や DAX 式などに制限があり、一部の高度なデータ モデリング機能もサポートされていません。 最適なモードを決定する前に、[DirectQuery モード](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)に関する記事を参照してください。
+DirectQuery モード* では、ストレージとクエリの実行でバックエンドのリレーショナル データベースを活用します。 1 つの SQL Server、SQL Server Data Warehouse、Azure SQL Database、Azure Synapse Analytics、Oracle、および Teradata データ ソース内の非常に大きなデータ セットがサポートされます。 バックエンド データ セットは、利用可能なサーバー リソースのメモリを超えることができます。 複雑なデータ モデルの更新シナリオは必要ありません。 また、データ ソースの種類や DAX 式などに制限があり、一部の高度なデータ モデリング機能もサポートされていません。 最適なモードを決定する前に、[DirectQuery モード](/analysis-services/tabular-models/directquery-mode-ssas-tabular)に関する記事を参照してください。
 
 \* 利用できる機能はレベルによって異なります。
 
@@ -153,12 +158,12 @@ Azure Analysis Services の表形式モデルは、単純なテキスト ファ�
 
 ## <a name="compatibility-level"></a>互換性レベル
 
-互換性レベルとは、Analysis Services エンジンにおけるリリースに固有の動作を指します。 Azure Analysis Services は、互換性レベル 1200 以上の表形式モデルをサポートします。 詳細については、「[テーブル モデルの互換性レベル](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)」を参照してください。
+互換性レベルとは、Analysis Services エンジンにおけるリリースに固有の動作を指します。 Azure Analysis Services は、互換性レベル 1200 以上の表形式モデルをサポートします。 詳細については、「[テーブル モデルの互換性レベル](/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)」を参照してください。
 
 
 ## <a name="your-data-is-secure"></a>データのセキュリティを確保
 
-Azure Analysis Services は、機微なデータを複数のレベルのセキュリティで保護します。 Azure サービスとして、Analysis Services は **Basic** レベルの分散型サービス拒否 (DDoS) 攻撃からの保護を提供します。これは、Azure プラットフォームの一部として自動的に有効にされます。 詳細については、「[Azure DDoS Protection Standard の概要](../virtual-network/ddos-protection-overview.md)」を参照してください。 
+Azure Analysis Services は、機微なデータを複数のレベルのセキュリティで保護します。 Analysis Services は、分散型サービス拒否 (DDoS) 攻撃に対する **基本** レベルの保護を Azure サービスとして提供します。これは、Azure プラットフォームの一部として自動的に有効になります。 詳細については、「[Azure DDoS Protection Standard の概要](../ddos-protection/ddos-protection-overview.md)」を参照してください。 
 
 サーバー レベルでは、Analysis Services はファイアウォール、Azure 認証、サーバー管理者ロール、およびサーバー側暗号化を提供します。 データ モデル レベルでは、ユーザー ロール、行レベルとオブジェクトレベルのセキュリティによってデータの安全性が確保され、意図したユーザーのみにデータが表示されることが保証されます。
 
@@ -178,7 +183,7 @@ Azure Analysis Services は、Azure Blob Storage を使用して、Analysis Serv
 
 ### <a name="roles"></a>ロール
 
-Analysis Services では、サーバーとモデルのデータベース操作、オブジェクト、およびデータへのアクセス権を付与する[ロール ベースの承認](https://docs.microsoft.com/analysis-services/tabular-models/roles-ssas-tabular)を使用します。 サーバーまたはデータベースにアクセスするすべてのユーザーは、割り当てられているロール内の Azure AD ユーザー アカウントを使用してアクセスします。 サーバー管理者ロールは、サーバー リソース レベルで割り当てられます。 既定では、サーバーの作成時に使用されるアカウントが、サーバー管理者ロールに自動的に追加されます。 追加のユーザーとグループのアカウントは、ポータル、SSMS、または PowerShell を使用して追加されます。
+Analysis Services では、サーバーとモデルのデータベース操作、オブジェクト、およびデータへのアクセス権を付与する[ロール ベースの承認](/analysis-services/tabular-models/roles-ssas-tabular)を使用します。 サーバーまたはデータベースにアクセスするすべてのユーザーは、割り当てられているロール内の Azure AD ユーザー アカウントを使用してアクセスします。 サーバー管理者ロールは、サーバー リソース レベルで割り当てられます。 既定では、サーバーの作成時に使用されるアカウントが、サーバー管理者ロールに自動的に追加されます。 追加のユーザーとグループのアカウントは、ポータル、SSMS、または PowerShell を使用して追加されます。
   
 データのクエリを実行する管理者以外のエンドユーザーは、データベース ロールを通してアクセス権が付与されます。 データベース ロールは、データベース内に個別のオブジェクトとして作成され、そのロールが作成されたデータベースにのみ適用されます。 データベース ロールは、(データベースの) 管理者によって定義され、読み取りと処理のアクセス許可が与えられます。 ユーザーとグループのアカウントは、SSMS または PowerShell を使用して追加されます。
 
@@ -188,7 +193,7 @@ Analysis Services では、サーバーとモデルのデータベース操作�
 
 ### <a name="object-level-security"></a>オブジェクト レベルのセキュリティ 
 
-1400 互換性レベルの表形式モデルは、オブジェクト レベルのセキュリティをサポートします。これには、テーブル レベルのセキュリティと列レベルのセキュリティが含まれます。 オブジェクト レベルのセキュリティは、TMSL または TOM を使用して、Model.bim ファイルに JSON ベースのメタデータで設定されます。 詳細については、「[オブジェクト レベルのセキュリティ](https://docs.microsoft.com/analysis-services/tabular-models/object-level-security)」を参照してください。
+1400 互換性レベルの表形式モデルは、オブジェクト レベルのセキュリティをサポートします。これには、テーブル レベルのセキュリティと列レベルのセキュリティが含まれます。 オブジェクト レベルのセキュリティは、TMSL または TOM を使用して、Model.bim ファイルに JSON ベースのメタデータで設定されます。 詳細については、「[オブジェクト レベルのセキュリティ](/analysis-services/tabular-models/object-level-security)」を参照してください。
 
 ### <a name="automation-through-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -211,7 +216,7 @@ Microsoft Analysis Services プロジェクトは、インストール可能な�
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使って、サーバーとモデル データベースを管理します。 クラウド内のサーバーに接続します。 XMLA クエリ ウィンドウから直接 TMSL スクリプトを実行したり、TMSL スクリプトと PowerShell を使用してタスクを自動化したりできます。 新しい機能が次々と登場するため、SSMS は毎月更新されます。
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使って、サーバーとモデル データベースを管理します。 クラウド内のサーバーに接続します。 XMLA クエリ ウィンドウから直接 TMSL スクリプトを実行したり、TMSL スクリプトと PowerShell を使用してタスクを自動化したりできます。 新しい機能が次々と登場するため、SSMS は毎月更新されます。
 
 ### <a name="open-source-tools"></a>オープンソース ツール
 
@@ -223,7 +228,7 @@ Analysis Services には、ツールを作成する開発者の活気に満ち�
 
 ### <a name="object-model-and-scripting"></a>オブジェクト モデルとスクリプト
 
-表形式モデルは開発に要する時間が短く、高度なカスタマイズも可能です。 表形式モデルには、モデル オブジェクトを記述するための[表形式オブジェクト モデル](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) が含まれます。 TOM は、[Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) を通じて JSON 形式で公開され、[Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) 名前空間を通じて AMO データ定義言語で公開されています。 
+表形式モデルは開発に要する時間が短く、高度なカスタマイズも可能です。 表形式モデルには、モデル オブジェクトを記述するための[表形式オブジェクト モデル](/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) が含まれます。 TOM は、[Tabular Model Scripting Language (TMSL)](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) を通じて JSON 形式で公開され、[Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) 名前空間を通じて AMO データ定義言語で公開されています。 
 
 ## <a name="supports-the-latest-client-tools"></a>最新のクライアント ツールをサポート
 
@@ -233,23 +238,23 @@ Power BI、Excel、Reporting Services、サードパーティ製ツールなど�
 
 ## <a name="monitoring-and-diagnostics"></a>監視と診断
 
-Azure Analysis Services は、Azure Monitor のメトリックと統合され、豊富なリソース固有のメトリックを提供します。これらは、サーバーのパフォーマンスと正常性を監視するために役立ちます。 詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。 メトリックは、[リソースのプラットフォーム ログ](../azure-monitor/platform/platform-logs-overview.md)に記録されます。 監視を行ってログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートします。 詳細については、「[診断ログのセットアップ](analysis-services-logging.md)」を参照してください。
+Azure Analysis Services は、Azure Monitor のメトリックと統合され、豊富なリソース固有のメトリックを提供します。これらは、サーバーのパフォーマンスと正常性を監視するために役立ちます。 詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。 メトリックは、[リソースのプラットフォーム ログ](../azure-monitor/essentials/platform-logs-overview.md)に記録されます。 監視を行ってログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートします。 詳細については、「[診断ログのセットアップ](analysis-services-logging.md)」を参照してください。
 
-Azure Analysis Services は、[動的管理ビュー (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) の使用もサポートします。 SQL 構文に基づいて、DMV は、メタデータとサーバー インスタンスに関する監視情報を返すスキーマ行セットとインターフェイスします。
+Azure Analysis Services は、[動的管理ビュー (DMV)](/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) の使用もサポートします。 SQL 構文に基づいて、DMV は、メタデータとサーバー インスタンスに関する監視情報を返すスキーマ行セットとインターフェイスします。
 
 ## <a name="documentation"></a>ドキュメント
 
 ここには、Azure Analysis Services 固有のドキュメントが含まれています。 記事を検索するには、ブラウザー画面の左側にある目次を使用します。 
 
-Azure Analysis Services の表形式モデルは、SQL Server Analysis Services や Power BI Premium データセットの表形式モデルとほぼ同じなので、[Analysis Services のドキュメント](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current)のデータ モデリング チュートリアル、概念、手順、開発、およびリファレンスに関する豊富な記事のライブラリを共有できます。 Analysis Services 共通ドキュメントの記事が Azure Analysis Services にも適用される場合は、記事のタイトルの下の [適用対象] バナーにその旨が表示されます。 目次の上にあるバージョン セレクターを使用して、ご使用のプラットフォームに該当する記事だけを表示することもできます。
+Azure Analysis Services の表形式モデルは、SQL Server Analysis Services や Power BI Premium データセットの表形式モデルとほぼ同じなので、[Analysis Services のドキュメント](/analysis-services/?view=azure-analysis-services-current&preserve-view=true)のデータ モデリング チュートリアル、概念、手順、開発、およびリファレンスに関する豊富な記事のライブラリを共有できます。 Analysis Services 共通ドキュメントの記事が Azure Analysis Services にも適用される場合は、記事のタイトルの下の [適用対象] バナーにその旨が表示されます。 目次の上にあるバージョン セレクターを使用して、ご使用のプラットフォームに該当する記事だけを表示することもできます。
 
 ![共有ドキュメント](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>投稿
 
-この記事のような Analysis Services のドキュメントはオープン ソースです。 投稿方法の詳細については、[Docs 共同作成者ガイド](https://docs.microsoft.com/contribute/)を参照してください。 
+この記事のような Analysis Services のドキュメントはオープン ソースです。 投稿方法の詳細については、[Docs 共同作成者ガイド](/contribute/)を参照してください。 
 
-Azure Analysis Services のドキュメントでは、[GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) も使用されます。 製品またはドキュメントに関するフィードバックを提供できます。 記事の下部にある**フィードバック**をご利用ください。 GitHub Issues は、まだ Analysis Services 共通ドキュメントでは有効になっていません。 
+Azure Analysis Services のドキュメントでは、[GitHub Issues](/teamblog/a-new-feedback-system-is-coming-to-docs) も使用されます。 製品またはドキュメントに関するフィードバックを提供できます。 記事の下部にある **フィードバック** をご利用ください。 GitHub Issues は、まだ Analysis Services 共通ドキュメントでは有効になっていません。 
 
 ## <a name="blogs"></a>ブログ
 
@@ -268,4 +273,4 @@ Analysis Services には活気のあるユーザー コミュニティがあり�
 > [クイック スタート: サーバーの作成 - ポータル](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)  
+> [クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)

@@ -1,19 +1,19 @@
 ---
 title: Azure Files ネットワーク エンドポイントの構成 | Microsoft Docs
-description: Azure Files のネットワーク オプションの概要。
+description: Azure File ネットワーク エンドポイントを構成する方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/17/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a38528e32061f57e3239ef4be26cdd437f4f8746
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078594"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621333"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files ネットワーク エンドポイントの構成
 
@@ -31,8 +31,8 @@ Azure Files では、Azure ファイル共有にアクセスするための次�
 
 - この記事では、既に Azure サブスクリプションが作成されていることを前提としています。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 - この記事では、オンプレミスから接続するストレージ アカウントに Azure ファイル共有が既に作成されていることを前提としています。 Azure ファイル共有を作成する方法については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」をご覧ください。
-- Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](/powershell/azure/install-az-ps)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli)。
 
 ## <a name="endpoint-configurations"></a>エンドポイント構成
 
@@ -55,6 +55,17 @@ Azure Files では、Azure ファイル共有にアクセスするための次�
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-private-portal](../../../includes/storage-files-networking-endpoints-private-portal.md)]
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+[!INCLUDE [storage-files-networking-endpoints-private-powershell](../../../includes/storage-files-networking-endpoints-private-powershell.md)]
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+[!INCLUDE [storage-files-networking-endpoints-private-cli](../../../includes/storage-files-networking-endpoints-private-cli.md)]
+---
+
+## <a name="verify-connectivity"></a>接続を検証する
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 ご使用の仮想ネットワーク内に仮想マシンがある場合、または「[Azure Files の DNS 転送の構成](storage-files-networking-dns.md)」で説明されているような DNS 転送を構成してある場合は、PowerShell、コマンド ライン、またはターミナル (Windows、Linux、または macOS で動作) から次のコマンドを実行して、ご使用のプライベート エンドポイントが正しく設定されていることをテストできます。 `<storage-account-name>` を適切なストレージ アカウント名に置き換える必要があります。
 
 ```
@@ -74,7 +85,6 @@ Aliases:  storageaccount.file.core.windows.net
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-[!INCLUDE [storage-files-networking-endpoints-private-powershell](../../../includes/storage-files-networking-endpoints-private-powershell.md)]
 
 ご使用の仮想ネットワーク内に仮想マシンがある場合、または「[Azure Files の DNS 転送の構成](storage-files-networking-dns.md)」で説明されているような DNS 転送を構成してある場合は、次のコマンドを使用して、ご使用のプライベート エンドポイントが正しく設定されていることをテストできます。
 
@@ -101,7 +111,6 @@ IP4Address : 192.168.0.5
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-[!INCLUDE [storage-files-networking-endpoints-private-cli](../../../includes/storage-files-networking-endpoints-private-cli.md)]
 
 ご使用の仮想ネットワーク内に仮想マシンがある場合、または「[Azure Files の DNS 転送の構成](storage-files-networking-dns.md)」で説明されているような DNS 転送を構成してある場合は、次のコマンドを使用して、ご使用のプライベート エンドポイントが正しく設定されていることをテストできます。
 
@@ -127,10 +136,9 @@ storageaccount.file.core.windows.net      canonical name = storageaccount.privat
 Name:   storageaccount.privatelink.file.core.windows.net
 Address: 192.168.0.5
 ```
-
 ---
 
-### <a name="restrict-public-endpoint-access"></a>パブリック エンドポイント アクセスを制限する
+## <a name="restrict-public-endpoint-access"></a>パブリック エンドポイント アクセスを制限する
 
 パブリック エンドポイント アクセスを制限するには、まず、パブリック エンドポイントへの一般的なアクセスを無効にする必要があります。 パブリック エンドポイントへのアクセスを無効にしても、プライベート エンドポイントには影響しません。 パブリック エンドポイントが無効になったら、そこに引き続きアクセスできる特定のネットワークまたは IP アドレスを選択できます。 一般に、ストレージ アカウントのほとんどのファイアウォール ポリシーではネットワーク アクセスが 1 つ以上の仮想ネットワークに制限されます。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する (プレビュー)
-description: Azure Image Builder を使用して、既存のイメージ バージョンから新しい VM イメージ バージョンを作成します。
+description: Linux で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2020
@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: f233a6fc557d9dbb62585e8cca85f175b3bc3e26
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13cdb444046fd8d3138e1c33ed65495e9bfe5e98
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010599"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685067"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>プレビュー:Linux で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 
-この記事では、[共有イメージ ギャラリー](shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
+この記事では、[共有イメージ ギャラリー](../shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) です。 
 
@@ -185,4 +185,4 @@ az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o t
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](../linux/image-builder-json.md)に関するページを参照してください。

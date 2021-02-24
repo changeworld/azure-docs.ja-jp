@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7012a696684a4e7bc1d3b52943b11ba413c43037
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082054"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376490"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
@@ -35,7 +35,7 @@ ms.locfileid: "87082054"
 
 ### <a name="prerequisites"></a><a name="pre"></a>前提条件
 
-* 両方の VNet が既に作成されている。 リソース マネージャーの仮想ネットワークを作成する必要がある場合は「[リソース グループと仮想ネットワークを作成する](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)」を参照してください。 クラシックの仮想ネットワークを作成するには、[クラシック VNet の作成](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)に関するページをご覧ください。
+* 両方の VNet が既に作成されている。 リソース マネージャーの仮想ネットワークを作成する必要がある場合は「[リソース グループと仮想ネットワークを作成する](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)」を参照してください。 クラシックの仮想ネットワークを作成するには、[クラシック VNet の作成](/previous-versions/azure/virtual-network/create-virtual-network-classic)に関するページをご覧ください。
 * これらの VNet のアドレス範囲が互いに重複していない。また、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していない。
 * 最新の PowerShell コマンドレットがインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/) 」ご覧ください。 必ずサービス管理 (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
 
@@ -90,7 +90,7 @@ Gateway IP addressing configuration = gwipconfig
    ```azurepowershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-3. ダウンロードした .xml ファイルを開き、編集します。 ネットワーク構成ファイルの例については、 [ネットワークの構成スキーマ](https://msdn.microsoft.com/library/jj157100.aspx)に関するページを参照してください。
+3. ダウンロードした .xml ファイルを開き、編集します。 ネットワーク構成ファイルの例については、 [ネットワークの構成スキーマ](/previous-versions/azure/reference/jj157100(v=azure.100))に関するページを参照してください。
 
 ### <a name="2-verify-the-gateway-subnet"></a>2.ゲートウェイ サブネットを確認する
 **VirtualNetworkSites** 要素にゲートウェイ サブネットがまだ作成されていない場合は、VNet に追加します。 ネットワーク構成ファイルを使用する場合は、ゲートウェイ サブネットの名前が "GatewaySubnet" である必要があります。それ以外の場合は、Azure でこれを認識してゲートウェイ サブネットとして使用することができません。
@@ -217,7 +217,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    -AllocationMethod Dynamic
    ```
 
-4. 仮想ネットワークにゲートウェイ サブネットがあることを確認します。 ゲートウェイ サブネットが存在しない場合は追加します。 ゲートウェイ サブネットには、必ず *GatewaySubnet*という名前を付けてください。
+4. 仮想ネットワークにゲートウェイ サブネットがあることを確認します。 ゲートウェイ サブネットが存在しない場合は追加します。 ゲートウェイ サブネットには、必ず *GatewaySubnet* という名前を付けてください。
 5. 次のコマンドを実行して、ゲートウェイに使用されているサブネットを取得します。 この手順では、次の手順で使用する変数も設定します。
    
    **-Name** は、Resource Manager の VNet の名前です。<br>
@@ -237,7 +237,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    -Name gwipconfig -SubnetId $subnet.id `
    -PublicIpAddressId $ipaddress.id
    ```
-7. Resource Manager の仮想ネットワーク ゲートウェイを作成します。 `-VpnType` は、 *RouteBased*である必要があります。 ゲートウェイの作成には 45 分以上かかる場合があります。
+7. Resource Manager の仮想ネットワーク ゲートウェイを作成します。 `-VpnType` は、 *RouteBased* である必要があります。 ゲートウェイの作成には 45 分以上かかる場合があります。
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `
@@ -245,7 +245,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    -IpConfigurations $gwipconfig `
    -EnableBgp $false -VpnType RouteBased
    ```
-8. VPN ゲートウェイを作成したら、パブリック IP アドレスをコピーします。 このアドレスは、クラシック VNet のローカル ネットワーク設定を構成するときに使用します。 次のコマンドレットを使用して、パブリック IP アドレスを取得できます。 パブリック IP アドレスは、 *IpAddress*として戻り値に表示されます。
+8. VPN ゲートウェイを作成したら、パブリック IP アドレスをコピーします。 このアドレスは、クラシック VNet のローカル ネットワーク設定を構成するときに使用します。 次のコマンドレットを使用して、パブリック IP アドレスを取得できます。 パブリック IP アドレスは、 *IpAddress* として戻り値に表示されます。
 
    ```azurepowershell-interactive
    Get-AzPublicIpAddress -Name gwpip -ResourceGroupName RG1

@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 77af95f2decbfb81ed930591b03f71fb71780def
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890503"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805250"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Backup 用の Azure セキュリティ ベースライン
 
@@ -252,9 +252,9 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 サポート ドキュメント:
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center の監視**: はい
 
@@ -298,11 +298,11 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
+**ガイダンス**: Azure Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure AD Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
 
 - [Azure Backup での多要素認証](./backup-azure-security-feature.md)
 
-- [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: はい
 
@@ -310,11 +310,11 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Azure Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure Backup 対応リソースを構成します。
+**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure Backup 対応リソースを構成します。
 
-- [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
+- [Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) (Privileged Access Workstation)
 
-- [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -328,7 +328,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -436,7 +436,7 @@ Recovery Services コンテナーの開発、テスト、運用向けに個別�
 
 - [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -480,13 +480,13 @@ Microsoft では、Azure Backup 用の基になるインフラストラクチャ
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
+**ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 Azure RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 
 Azure Backup では、バックアップの管理操作を制御する 3 つの組み込みロールが提供されます。これらは、バックアップ共同作成者、バックアップ オペレーター、バックアップ リーダーです。 バックアップ組み込みロールをさまざまなバックアップ管理アクションにマップできます。
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
-- [ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理](./backup-rbac-rs-vault.md)
+- [Azure ロールベースのアクセス制御を使用して Azure Backup の復旧ポイントを管理する](./backup-rbac-rs-vault.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -534,7 +534,7 @@ MARS エージェントでバックアップする場合、またはカスタマ
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 Azure Backup で利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-- [Azure Backup で利用可能なセキュリティ コントロールについて](./backup-security-controls.md)
+- [Azure Backup で利用可能なセキュリティ コントロールについて]()
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -612,7 +612,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 - [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -760,9 +760,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -818,7 +818,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/managed-identity.md)
+* [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -866,7 +868,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 - [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware について](../security/fundamentals/antimalware.md)
 
-- [データ サービスに対する Azure Security Center の脅威検出について](../security-center/threat-protection.md)
+- [データ サービスに対する Azure Security Center の脅威検出について](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -912,7 +914,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 **ガイダンス**: バックアップされたカスタマー マネージド キーの復元をテストします。
 
-- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -922,7 +924,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 **ガイダンス**:オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護することができます。
 
-- [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: はい
 
@@ -970,7 +972,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
@@ -980,7 +982,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 - [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 

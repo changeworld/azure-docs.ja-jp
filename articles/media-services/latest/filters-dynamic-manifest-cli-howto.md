@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services で CLI 使用してフィルターを作成する | Microsoft Docs
+title: Azure Media Services で CLI を使用してフィルターを作成する
 description: この記事では、Azure Media Services v3 で CLI を使用してフィルターを作成する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: 5ceff9eba0363ea2784c48e026807c53447f1e32
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 75df01ff65a0910dab140942b520978cd7728775
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296904"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897579"
 ---
 # <a name="creating-filters-with-cli"></a>CLI を使用してフィルターを作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "89296904"
 次に、最終的なマニフェストに追加されるトラック選択条件を定義する例を示します。 このフィルターには、EC-3 のオーディオ トラックと、0 から 1,000,000 の範囲のビットレートのビデオ トラックが含まれます。
 
 > [!TIP]
-> REST で**フィルター**を定義する予定の場合は、"Properties" ラッパー JSON オブジェクトを含める必要があることに注意してください。  
+> REST で **フィルター** を定義する予定の場合は、"Properties" ラッパー JSON オブジェクトを含める必要があることに注意してください。  
 
 ```json
 [

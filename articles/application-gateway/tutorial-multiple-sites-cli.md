@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 350962aed89d04c5508e7b2c50e8a838cd5a7174
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502760"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566148"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLI を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -22,23 +22,22 @@ ms.locfileid: "87502760"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * アプリケーション ゲートウェイの作成
-> * バックエンド リスナーの作成
-> * ルーティング規則の作成
-> * バックエンド プールを含んだ仮想マシン スケール セットの作成
-> * ドメインの CNAME レコードの作成
+* ネットワークのセットアップ
+* アプリケーション ゲートウェイの作成
+* バックエンド リスナーの作成
+* ルーティング規則の作成
+* バックエンド プールを含んだ仮想マシン スケール セットの作成
+* ドメインの CNAME レコードの作成
 
 :::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 好みに応じて、[Azure PowerShell](tutorial-multiple-sites-powershell.md) を使ってこの手順を実行することもできます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -125,7 +124,7 @@ az network application-gateway address-pool create \
 
 >[!NOTE]
 > Application Gateway または WAF v2 SKU では、リスナーごとに最大 5 つのホスト名を構成することもできます。ホスト名にワイルドカード文字を使用できます。 詳細については、「[リスナーにおけるワイルドカードのホスト名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)」を参照してください。
->Azure CLI を使用してリスナーで複数のホスト名とワイルドカード文字を使用するには、`--host-name` ではなく `--host-names` を使用する必要があります。 host-names を使用すると、最大 5 つのホスト名をコンマ区切り値として指定できます。 たとえば、`--host-names "*.contoso.com,*.fabrikam.com"` のように指定します。
+>Azure CLI を使用してリスナーで複数のホスト名とワイルドカード文字を使用するには、`--host-name` ではなく `--host-names` を使用する必要があります。 host-names を使用すると、最大 5 つのホスト名をスペースで区切られた値として指定できます。 たとえば、`--host-names "*.contoso.com *.fabrikam.com"` のように指定します。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

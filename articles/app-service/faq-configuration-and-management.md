@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962351"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234003"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -65,7 +65,9 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
     * Value = *目的のタイム ゾーン*
 3. **[保存]** を選択します。
 
-Windows で実行される App Service の場合、指定可能な値については、[既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。 Linux で実行される App Service の場合、タイム ゾーン値として [TZ データベース名](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)を設定します。 TZ データベース名の例を挙げると、America/Adak のようになります。
+Windows で実行される App Service については、Windows `tzutil /L` コマンドからの出力を参照してください。 各エントリの 2 行目の値を使用します。 次に例を示します。"トンガ標準時"。 これらの値の一部は、「[既定のタイムゾーン](/windows-hardware/manufacture/desktop/default-time-zones)」の **タイムゾーン** 列にも記載されています。
+
+Linux で実行される App Service については、[IANA TZ データベース](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)から値を設定します。 次に例を示します。"America/Adak"。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 
@@ -76,7 +78,7 @@ Windows で実行される App Service の場合、指定可能な値につい�
 Web アプリの送信 IP アドレスの一覧を取得するには、次の手順を実行します。
 
 1. Azure ポータルの Web アプリのブレードで、 **[プロパティ]** メニューに移動します。
-2. **送信 IP アドレス**を検索します。
+2. **送信 IP アドレス** を検索します。
 
 送信 IP アドレスの一覧が表示されます。
 
@@ -282,7 +284,7 @@ App Service の認証と承認の詳細なドキュメントについては、�
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>既定の *.azurewebsites.net ドメインを Azure Web アプリケーションのカスタム ドメインにリダイレクトするにはどうすればよいですか?
 
-Azure の Web アプリを使用して新しい Web サイトを作成するとき、既定の*サイト名*.azurewebsites.net ドメインがサイトに割り当てられます。 カスタム ホスト名をサイトに追加するが、ユーザーが既定の *. azurewebsites.net ドメインにアクセスできないようにする場合、既定の URL をリダイレクトできます。 Web サイトの既定のドメインからすべてのトラフィックをカスタム ドメインにリダイレクトする方法については、「[Redirect the default domain to your custom domain in Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/)」(Azure Web アプリで既定のドメインをカスタム ドメインにリダイレクトする) を参照してください。
+Azure の Web アプリを使用して新しい Web サイトを作成するとき、既定の *サイト名*.azurewebsites.net ドメインがサイトに割り当てられます。 カスタム ホスト名をサイトに追加するが、ユーザーが既定の *. azurewebsites.net ドメインにアクセスできないようにする場合、既定の URL をリダイレクトできます。 Web サイトの既定のドメインからすべてのトラフィックをカスタム ドメインにリダイレクトする方法については、「[Redirect the default domain to your custom domain in Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/)」(Azure Web アプリで既定のドメインをカスタム ドメインにリダイレクトする) を参照してください。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>App Service にインストールされている .NET のバージョンはどうすればわかりますか?
 
@@ -315,3 +317,8 @@ Azure の自動スケールが期待どおりに Web アプリのインスタン
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>オンプレミス環境から App Serviceアプリ サービスへの移行方法を教えてください?
 
 サイトを Windows および Linux の Web サーバーから App Service に移行するには、Azure App Service Migration Assistant を使用できます。 移行ツールは、必要に応じて、Azure に Web アプリとデータベースを作成し、コンテンツを発行します。 詳細については、「[Azure App Service Migration Assistant](https://appmigration.microsoft.com/)」を参照してください。
+
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>証明書が 1 年間ではなく 11 か月で発行されているのはなぜですか?
+
+2020/9/1 より後に発行されたすべての証明書について、最長期間は 397 日になりました。 2020/9/1 より前に発行された証明書は、更新やキー更新を行うまで、最大 825 日間有効になります。2020/9/1 より後に更新された証明書はこの変更による影響を受けます。ユーザーは、更新された証明書の有効期限が短くなっていることに気付く場合があります。
+GoDaddy により、既存の顧客の証明書を優先すると同時に新しい要件を満たすサブスクリプション サービスが実装されています。 新しく発行された証明書の有効期限が切れる 30 日前に、このサービスによって、期間を元の有効期限まで延長する 2 番目の証明書が自動的に発行されます。 App Service では、GoDaddy と連携してこの変更に対処し、お客様が証明書の完全な期間を確実に利用できるようにします。

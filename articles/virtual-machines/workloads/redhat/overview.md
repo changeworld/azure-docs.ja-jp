@@ -1,20 +1,19 @@
 ---
 title: Azure 上の Red Hat ワークロードの概要 | Microsoft Docs
 description: Azure で利用できる Red Hat 製品オファリングについて学習します。
-services: virtual-machines-linux
 author: asinn826
-manager: borisb2015
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: cynthn
+ms.openlocfilehash: 09612ff3d86c669801f9e824d367a2b9a5bb10ac
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052116"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830651"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上の Red Hat ワークロード
 
@@ -37,7 +36,7 @@ Azure には、さまざまな RHEL 従量課金制イメージが用意され�
 ### <a name="red-hat-gold-images"></a>Red Hat Gold Image
 
 Azure には、Red Hat Gold Image (`rhel-byos`) も用意されています。 これらのイメージは、既存の Red Hat サブスクリプションを所有していて、Azure でそれらを使用する必要があるお客様に役立ちます。 既存の Red Hat サブスクリプションを Azure で使用するには、それらを Red Hat Cloud Access に対して有効にしておく必要があります。 これらのイメージへのアクセスは、Red Hat サブスクリプションが Cloud Access に対して有効になっていて、資格要件を満たしたときに自動的に付与されます。 これらのイメージを使用することで、お客様は、従量課金制イメージを使用した場合に発生する可能性のある二重請求を回避できます。
-* [Azure で Cloud Access 用の Red Hat サブスクリプションを有効にする](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)方法を確認する。
+* [Azure で Cloud Access 用の Red Hat サブスクリプションを有効にする](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)方法を確認する。
 * [Azure portal、Azure CLI、または PowerShell コマンドレットで Red Hat Gold Image を見つける](./byos.md)方法を確認する。
 
 > [!NOTE]
@@ -45,7 +44,7 @@ Azure には、Red Hat Gold Image (`rhel-byos`) も用意されています。 �
 
 ### <a name="generation-2-images"></a>第 2 世代イメージ
 
-第 2 世代仮想マシン (VM) には、第 1 世代 VM と比較して、新しい機能がいくつか備わっています。 詳細については、[第 2 世代のドキュメント](../../linux/generation-2.md)を参照してください。 RHEL イメージの観点からの主な違いは、第 2 世代 VM では BIOS ファームウェア インターフェイスではなく UEFI を使用することです。 また、ブート時にマスター ブート レコード (MBR) ではなく、GUID パーティション テーブル (GPT) を使用します。 特に、GPT を使用することにより、2 TB を超える OS ディスク サイズが可能になります。 また、[Mv2 シリーズの VM](../../mv2-series.md) は、第 2 世代イメージでのみ実行されます。
+第 2 世代仮想マシン (VM) には、第 1 世代 VM と比較して、新しい機能がいくつか備わっています。 詳細については、[第 2 世代のドキュメント](../../generation-2.md)を参照してください。 RHEL イメージの観点からの主な違いは、第 2 世代 VM では BIOS ファームウェア インターフェイスではなく UEFI を使用することです。 また、ブート時にマスター ブート レコード (MBR) ではなく、GUID パーティション テーブル (GPT) を使用します。 特に、GPT を使用することにより、2 TB を超える OS ディスク サイズが可能になります。 また、[Mv2 シリーズの VM](../../mv2-series.md) は、第 2 世代イメージでのみ実行されます。
 
 RHEL 第 2 世代イメージは、Azure Marketplace で入手できます。 Azure CLI を使用したときに表示されるすべてのイメージの一覧で、イメージ SKU の "gen2" を探してください。 第 2 世代の VM をデプロイするには、VM デプロイ プロセスで **[詳細]** タブに移動します。
 

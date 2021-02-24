@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005218"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539736"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
@@ -83,7 +83,7 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 次の手順でコンポーネントがインストールされていることを確認し、エラー メッセージがないか確認します。
 
 1. **[コントロール パネル]**  > 、 **[プログラム]**  > 、 **[プログラムと機能]** の順に選択し、2 つのコンポーネントがインストールされていることを確認します。 **Windows Virtual Desktop Agent** と **Windows Virtual Desktop Agent Boot Loader** がない場合、VM にインストールされていません。
-2. **エクスプローラー**を開き、**C:\Windows\Temp\ScriptLog.log** に移動します。 ファイルがない場合、2 つのコンポーネントをインストールした PowerShell DSC が、指定されたセキュリティ状況の中で実行できなかったことを示します。
+2. **エクスプローラー** を開き、**C:\Windows\Temp\ScriptLog.log** に移動します。 ファイルがない場合、2 つのコンポーネントをインストールした PowerShell DSC が、指定されたセキュリティ状況の中で実行できなかったことを示します。
 3. ファイル **C:\Windows\Temp\ScriptLog.log** がある場合、それを開き、エラー メッセージがないか確認します。
 
 ### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>エラー:Windows Virtual Desktop Agent と Windows Virtual Desktop Agent Boot Loader がありません C:\Windows\Temp\ScriptLog.log もありません
@@ -348,6 +348,7 @@ Azure ギャラリーから、最新バージョンの Windows 10 バージョ�
 - Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
 - Windows Virtual Desktop 環境でホスト プールを作成しているときに発生した問題のトラブルシューティングを行うには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Windows Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、[Windows 仮想デスクトップ エージェントに関する一般的な問題のトラブルシューティング](troubleshoot-agent.md)に関するページを参照してください。
 - Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。

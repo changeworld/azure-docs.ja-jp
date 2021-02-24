@@ -6,17 +6,17 @@ ms.service: azure-policy
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7871099e3e05613bec29a4bfc0824dd9647431e7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937458"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201452"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Azure Policy セキュリティ ベースライン
 
-このセキュリティ ベースラインは、[Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)のガイダンスを Azure Policy に適用します。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**コンプライアンス ドメイン**および**セキュリティ制御**によってグループ化されています。これらは、Azure セキュリティ ベンチマークと、Azure Policy に適用できる関連ガイダンスによって定義されています。 Azure Policy に適用できない**制御**は、除外されています。 Azure Policy を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure Policy セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
+このセキュリティ ベースラインは、[Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)のガイダンスを Azure Policy に適用します。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**コンプライアンス ドメイン** および **セキュリティ制御** によってグループ化されています。これらは、Azure セキュリティ ベンチマークと、Azure Policy に適用できる関連ガイダンスによって定義されています。 Azure Policy に適用できない **制御** は、除外されています。 Azure Policy を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure Policy セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
 
 組み込みイニシアチブによって Azure セキュリティ ベンチマーク制御を組み込みのポリシー定義にマッピングする方法については、[規制コンプライアンスの Azure セキュリティ ベンチマーク](../samples/azure-security-benchmark.md)に関するページを参照してください。
 
@@ -59,7 +59,7 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -72,13 +72,13 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 *詳細については、「[セキュリティ コントロール: データ保護](../../../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory のロールベースのアクセス制御 (RBAC) を使用して、Azure Policy へのアクセスを制御します。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Policy へのアクセスを制御します。
 
-* [Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure Policy における Azure RBAC アクセス許可](../overview.md#azure-rbac-permissions-in-azure-policy)
 
-* [Azure で RBAC を構成する方法](../../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC を構成する方法](../../../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center の監視**: 現在は使用できません

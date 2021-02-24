@@ -4,11 +4,11 @@ description: Azure Backup Server を使用して、システム状態をバッ�
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538702"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021624"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに復元する
 
@@ -97,13 +97,13 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 
 ## <a name="before-you-begin"></a>開始する前に
 
-1. **Azure Backup Server をデプロイ**します。 Backup Server が正しくデプロイされていることを確認します。 詳細については、次を参照してください。
+1. **Azure Backup Server をデプロイ** します。 Backup Server が正しくデプロイされていることを確認します。 詳細については、次を参照してください。
     * [Azure Backup Server のシステム要件](/system-center/dpm/install-dpm#setup-prerequisites)
     * [Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)
 
-1. **記憶域をセットアップ**します。 Azure では、ディスク、テープ、およびクラウドにバックアップ データを格納できます。 詳細については、[データ記憶域の準備](/system-center/dpm/plan-long-and-short-term-data-storage)に関するページを参照してください。
+1. **記憶域をセットアップ** します。 Azure では、ディスク、テープ、およびクラウドにバックアップ データを格納できます。 詳細については、[データ記憶域の準備](/system-center/dpm/plan-long-and-short-term-data-storage)に関するページを参照してください。
 
-1. **保護エージェントをセットアップ**します。 バックアップを作成するコンピューターに保護エージェントをインストールします。 詳細については、[DPM 保護エージェントのデプロイ](/system-center/dpm/deploy-dpm-protection-agent)に関するページを参照してください。
+1. **保護エージェントをセットアップ** します。 バックアップを作成するコンピューターに保護エージェントをインストールします。 詳細については、[DPM 保護エージェントのデプロイ](/system-center/dpm/deploy-dpm-protection-agent)に関するページを参照してください。
 
 ## <a name="back-up-system-state-and-bare-metal"></a>システム状態とベア メタルのバックアップ
 
@@ -113,7 +113,7 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 
 1. **[保護グループの種類の選択]** ページで、 **[サーバー]** を選択し、 **[次へ]** を選択します。
 
-1. **[グループ メンバーの選択]** ページで、コンピューターを展開して、**BMR** または**システム状態**のいずれかを選択します。
+1. **[グループ メンバーの選択]** ページで、コンピューターを展開して、**BMR** または **システム状態** のいずれかを選択します。
 
     別のグループで同じコンピューターの BMR とシステム状態の両方を保護することはできません。 また、BMR を選択した場合、システム状態は自動的に有効になります。 詳細については、[保護グループのデプロイ](/system-center/dpm/create-dpm-protection-groups)に関するページを参照してください。
 
@@ -135,8 +135,8 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 
 1. **[ディスク割り当ての確認]** ページでは、保護グループで使用可能な記憶域プール ディスク領域を確認します。
 
-    * **合計データ サイズ**は、バックアップするデータのサイズです。
-    * **Azure Backup Server でプロビジョニングされるディスク領域**は、Backup Server が保護グループ用に推奨する領域です。 Backup Server では、これらの設定を使用して理想的なバックアップ ボリュームを選択します。 **[Disk allocation details]\(ディスク割り当ての詳細\)** でバックアップ ボリュームの選択を編集できます。
+    * **合計データ サイズ** は、バックアップするデータのサイズです。
+    * **Azure Backup Server でプロビジョニングされるディスク領域** は、Backup Server が保護グループ用に推奨する領域です。 Backup Server では、これらの設定を使用して理想的なバックアップ ボリュームを選択します。 **[Disk allocation details]\(ディスク割り当ての詳細\)** でバックアップ ボリュームの選択を編集できます。
     * ワークロードの場合、ドロップダウン メニューで、優先ストレージを選択します。 編集すると、 **[利用できるディスク ストレージ]** ウィンドウの **[ストレージの合計]** と **[空きストレージ]** の値が変わります。 過小にプロビジョニングされた領域は、スムーズなバックアップを確実に行うためにボリュームに追加するよう Backup Server から推奨されるストレージの量です。
 
 1. **[レプリカの作成方法の選択]** ページで、最初の全データのレプリケーションを処理する方法を選択します。
@@ -145,7 +145,7 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 
 1. **[整合性チェック オプションの選択]** ページで、整合性チェックを自動化する方法を選択します。
 
-    整合性チェックは、レプリカ データが不整合になったときにのみ実行することや、スケジュールどおりに実行することを選択できます。 自動整合性チェックを構成しない場合は、いつでも手動でチェックを実行できます。 Backup Server 管理者コンソールの**保護**領域で保護グループを右クリックし、 **[整合性チェックの実行]** を選択します。
+    整合性チェックは、レプリカ データが不整合になったときにのみ実行することや、スケジュールどおりに実行することを選択できます。 自動整合性チェックを構成しない場合は、いつでも手動でチェックを実行できます。 Backup Server 管理者コンソールの **保護** 領域で保護グループを右クリックし、 **[整合性チェックの実行]** を選択します。
 
 1. Azure Backup を使用してクラウドにバックアップするよう選択した場合、 **[オンライン保護するデータの指定]** ページで、Azure にバックアップしたいワークロードを選択します。
 

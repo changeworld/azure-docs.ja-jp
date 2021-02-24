@@ -7,33 +7,35 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042634"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131391"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
-Azure Digital Twins の重要な特性は、独自のボキャブラリを定義し、ビジネスの自己定義用語でツイン グラフを構築できることです。 この機能は、ユーザー定義**モデル**を通じて提供されます。 モデルは、世界を説明するための名詞と考えることができます。 
+Azure Digital Twins の重要な特性は、独自のボキャブラリを定義し、ビジネスの自己定義用語でツイン グラフを構築できることです。 この機能は、ユーザー定義 **モデル** を通じて提供されます。 モデルは、世界を説明するための名詞と考えることができます。 
 
-モデルは、オブジェクト指向プログラミング言語の**クラス**に似ており、実際の作業環境における 1 つの特定の概念のデータ シェイプを定義します。 モデルには名前 (*Room* や *TemperatureSensor* など) があり、プロパティ、テレメトリまたはイベント、環境内でこの型のエンティティに何ができるかを説明するコマンドなどの要素が含まれています。 後で、これらのモデルを使用して、この型の説明と一致する特定のエンティティを表す[**デジタル ツイン**](concepts-twins-graph.md)を作成します。
+モデルは、オブジェクト指向プログラミング言語の **クラス** に似ており、実際の作業環境における 1 つの特定の概念のデータ シェイプを定義します。 モデルには名前 (*Room* や *TemperatureSensor* など) があり、プロパティ、テレメトリまたはイベント、環境内でこの型のエンティティに何ができるかを説明するコマンドなどの要素が含まれています。 後で、これらのモデルを使用して、この型の説明と一致する特定のエンティティを表す [**デジタル ツイン**](concepts-twins-graph.md)を作成します。
 
-モデルは、JSON-LD ベースの **Digital Twin Definition Language (DTDL)** を使用して記述されます。  
+Azure Digital Twins のモデルは、JSON-LD ベースの **Digital Twin Definition language (DTDL)** で表現されます。  
 
-## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>モデルを記述するための Digital Twin Definition Language (DTDL)
+## <a name="digital-twin-definition-language-dtdl-for-models"></a>モデル用の Digital Twin Definition Language (DTDL)
 
 Azure Digital Twins のモデルは、Digital Twins Definition language (DTDL) を使用して定義されます。 DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 
 
 Azure Digital Twins では、DTDL "**_バージョン 2_**" が使用されます。 このバージョンの DTDL の詳細については、GitHub で次の仕様ドキュメントを参照してください: [*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 Azure Digital Twins での DTDL "_バージョン 1_" の使用は、非推奨になっています。
 
-> [!TIP] 
-> DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。 Azure Digital Twins に固有の DTDL 機能の詳細については、この記事の後のセクション「[Azure Digital Twins DTDL の実装の仕様](#azure-digital-twins-dtdl-implementation-specifics)」を参照してください。
+> [!NOTE] 
+> DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。
+>
+> Azure Digital Twins に固有の DTDL 機能の詳細については、この記事の後のセクション「[Azure Digital Twins DTDL の実装の仕様](#azure-digital-twins-dtdl-implementation-specifics)」を参照してください。
 
 ## <a name="elements-of-a-model"></a>モデルの要素
 
-モデル定義内では、最上位レベルのコード項目は**インターフェイス**です。 これにより、モデル全体がカプセル化され、モデルの残りの部分はインターフェイス内で定義されます。 
+モデル定義内では、最上位レベルのコード項目は **インターフェイス** です。 これにより、モデル全体がカプセル化され、モデルの残りの部分はインターフェイス内で定義されます。 
 
 DTDL モデルのインターフェイスには、以下の各フィールドをゼロ個、1 個、または複数個、含めることができます。
 * **Property** - プロパティは、エンティティの状態を表すデータ フィールドです (多くのオブジェクト指向プログラミング言語のプロパティと同様)。 プロパティはバッキング ストレージを備えていて、いつでも読み取ることができます。
@@ -51,17 +53,17 @@ DTDL モデルのインターフェイスには、以下の各フィールドを
 
 ### <a name="properties-vs-telemetry"></a>プロパティとテレメトリ
 
-Azure Digital Twins の DTDL の**プロパティ**と**テレメトリ**のフィールドを区別するための追加のガイダンスを次に示します。
+Azure Digital Twins の DTDL の **プロパティ** と **テレメトリ** のフィールドを区別するための追加のガイダンスを次に示します。
 
 Azure Digital Twins モデルのプロパティとテレメトリの違いは次のとおりです。
-* **プロパティ**には、バッキング ストレージがあることが想定されています。 これは、プロパティをいつでも読み取って、その値を取得できることを意味します。 プロパティが書き込み可能であれば、プロパティに値を格納することもできます。  
-* **テレメトリ**は、イベントのストリームに似たものであり、存続期間の短い一連のデータ メッセージです。 イベントのリッスンおよびその発生時に実行するアクションを設定していないと、後でイベントをトレースできません。 後でそこに戻って読み取ることはできません。 
+* **プロパティ** には、バッキング ストレージがあることが想定されています。 これは、プロパティをいつでも読み取って、その値を取得できることを意味します。 プロパティが書き込み可能であれば、プロパティに値を格納することもできます。  
+* **テレメトリ** は、イベントのストリームに似たものであり、存続期間の短い一連のデータ メッセージです。 イベントのリッスンおよびその発生時に実行するアクションを設定していないと、後でイベントをトレースできません。 後でそこに戻って読み取ることはできません。 
   - C# の用語では、テレメトリは C# イベントに似ています。 
   - IoT の用語では、テレメトリは通常、デバイスによって送信される 1 つの測定値です。
 
-**テレメトリ**は、IoT デバイスで多く使用されます。多くのデバイスには、生成される測定値を格納する能力もその必要性もないためです。 これらは単に、"テレメトリ" イベントのストリームとして送信されます。 この場合、テレメトリ フィールドの最新の値について、いつでもデバイスに照会できるわけではありません。 代わりに、デバイスからのメッセージをリッスンし、メッセージが到着したときにアクションを実行する必要があります。 
+**テレメトリ** は、IoT デバイスで多く使用されます。多くのデバイスには、生成される測定値を格納する能力もその必要性もないためです。 これらは単に、"テレメトリ" イベントのストリームとして送信されます。 この場合、テレメトリ フィールドの最新の値について、いつでもデバイスに照会できるわけではありません。 代わりに、デバイスからのメッセージをリッスンし、メッセージが到着したときにアクションを実行する必要があります。 
 
-そのため、Azure Digital Twins でモデルを設計する際は、ほとんどの場合**プロパティ**を使用して、ツインをモデル化することになると考えられます。 これにより、バッキング ストレージが得られ、データ フィールドの読み取りとクエリを行うことができます。
+そのため、Azure Digital Twins でモデルを設計する際は、ほとんどの場合 **プロパティ** を使用して、ツインをモデル化することになると考えられます。 これにより、バッキング ストレージが得られ、データ フィールドの読み取りとクエリを行うことができます。
 
 多くの場合、テレメトリとプロパティは連携して、デバイスからのデータのイングレスを処理します。 Azure Digital Twins へのすべてのイングレスは [API](how-to-use-apis-sdks.md) を通じて行われるため、通常はイングレス関数を使用してデバイスからテレメトリまたはプロパティのイベントを読み取り、それに応じて ADT でプロパティを設定します。 
 
@@ -76,61 +78,17 @@ DTDL モデルに Azure Digital Twins との互換性を与えるには、これ
 * Azure Digital Twins では、単一レベルのコンポーネントの入れ子のみが許可されます。 これは、コンポーネントとして使用されているインターフェイスが、それ自体はコンポーネントを含められないことを意味します。 
 * インターフェイスは、他の DTDL インターフェイスの内部にインラインで定義することはできません。それらは、独自の ID を備えた個別の最上位レベルのエンティティとして定義する必要があります。 その後、別のインターフェイスがそのインターフェイスをコンポーネントとして含めるか、継承を通じて含めようとする場合は、その ID を参照できます。
 
+Azure Digital Twins では、プロパティまたはリレーションシップの `writable` 属性も監視されません。 これは DTDL 仕様に従って設定できますが、Azure Digital Twins では使用されません。 代わりに、これらは常に、Azure Digital Twins サービスに対する一般的な書き込みアクセス許可を持つ外部クライアントによって書き込み可能として扱われます。
+
 ## <a name="example-model-code"></a>モデル コードの例
 
 ツインの型モデルは、任意のテキスト エディターで記述できます。 DTDL 言語は、JSON 構文に従います。そのため、モデルは *json* という拡張子で保存する必要があります。 JSON 拡張子を使用すると、多くのプログラミング テキスト エディターで、DTDL ドキュメントの基本的な構文チェックと強調表示ができるようになります。 また、[Visual Studio Code](https://code.visualstudio.com/) には、[DTDL 拡張子](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)も使用できます。
 
-このセクションでは、DTDL インターフェイスとして記述された一般的なモデルの例を示します。 このモデルでは、**惑星**とそれぞれの名前、質量、および温度が記述されています。
+このセクションでは、DTDL インターフェイスとして記述された一般的なモデルの例を示します。 このモデルでは、**惑星** とそれぞれの名前、質量、および温度が記述されています。
  
-惑星は衛星である**月**とも相互作用する可能性があり、**クレーター**が含まれる場合もあります。 次の例の `Planet` モデルでは、2 つの外部モデル `Moon` と `Crater` を参照することにより、これらの他のエンティティへの接続が表されています。 以下のコード例ではこれらのモデルも定義されていますが、主要な `Planet` の例から注目が逸れないように、非常に単純にされています。
+惑星は衛星である **月** とも相互作用する可能性があり、**クレーター** が含まれる場合もあります。 次の例の `Planet` モデルでは、2 つの外部モデル `Moon` と `Crater` を参照することにより、これらの他のエンティティへの接続が表されています。 以下のコード例ではこれらのモデルも定義されていますが、主要な `Planet` の例から注目が逸れないように、非常に単純にされています。
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "Temperature",
-        "schema": "double"
-      },
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Crater-Moon.json":::
 
 モデルのフィールドは次のとおりです。
 
@@ -162,57 +120,7 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 次の例では、*Planet* モデルを前の DTDL 例からより大きな *CelestialBody* モデルのサブタイプとして再イメージ化しています。 "親" モデルが先に定義され、次にフィールド `extends` を使用してその上に "子" モデルが構築されます。
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:CelestialBody;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Celestial body",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "temperature",
-        "schema": "double"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "extends": "dtmi:com:contoso:CelestialBody;1",
-    "contents": [
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
 
 この例では、*CelestialBody* によって *Planet* に名前、質量、および温度が提供されます。 `extends` セクションは、インターフェイス名、またはインターフェイス名の配列です (必要に応じて、拡張インターフェイスが複数の親モデルを継承できます)。
 
@@ -220,13 +128,29 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 拡張インターフェイスでは、親インターフェイスの定義は変更できません。定義を追加することだけができます。 また、いずれかの親インターフェイスで既に定義されている機能を再定義することもできません (機能が同じになるように定義される場合でも)。 たとえば、親インターフェイスが `double` プロパティの *mass* を定義している場合、拡張インターフェイスに *mass* の宣言を含めることはできません (それが同様に `double` である場合でも)。
 
-## <a name="validating-models"></a>モデルの検証
+## <a name="best-practices-for-designing-models"></a>モデルの設計に関するベストプラクティス
+
+環境内のエンティティを反映するようにモデルを設計するときには、先を考えること、および設計に対する[クエリ](concepts-query-language.md)の影響を考慮することが有益です。 グラフのトラバーサルから大きな結果セットが生成されない方法で、プロパティを設計することができます。 また、1 つのクエリで回答されるリレーションシップを、単一レベルのリレーションシップとしてモデル化することもできます。
+
+### <a name="validating-models"></a>モデルの検証
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
+## <a name="integrating-with-industry-standard-models"></a>業界標準モデルとの統合
+
+業界標準に基づくモデルや、RDF または OWL などの標準的なオントロジー表現を使用するモデルを使用すると、Azure Digital Twins モデルを設計する場合に充実した出発点を利用できます。 業界モデルの利用は、標準化と情報共有にも役立ちます。
+
+Azure Digital Twins で使用するモデルは、JSON-LD ベースの [**Digital Twins Definition Language (DTDL)**](concepts-models.md) で表現する必要があります。 そのため、業界標準モデルを使用するには、まずそれを DTDL に変換して、Azure Digital Twins で使用できるようにする必要があります。 DTDL モデルは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとして使用されます。
+
+業界標準モデルを DTDL と統合するには、状況によりますが、次の主要な 2 つのパスがあります。
+* モデルをまだ作成していない場合は、業界固有の言語を含む **既存のスターター DTDL オントロジー** に基づいて設計できます。
+* 業界標準に基づく既存のモデルがある場合は、Azure Digital Twins で使用するために、**それらを DTDL に変換** する必要があります。
+
+これら両方のプロセスの詳細については、["*方法: 業界標準モデルの統合*"](how-to-integrate-models.md) に関する記事を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-DigitalTwinsModels API を使用してモデルを管理する方法を参照してください。
+DigitalTwinModels API を使用してモデルを管理する方法を参照してください。
 * [*方法: カスタム モデルを管理する*](how-to-manage-model.md)"
 
 または、モデルに基づいてデジタル ツインがどのように作成されるかについて学習してください。

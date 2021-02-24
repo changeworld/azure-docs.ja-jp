@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758252"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014764"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500 ゲートウェイ デバイスを Azure IoT Central アプリケーションに接続する
 
-"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
+*この記事は、ソリューション ビルダーを対象としています。*
 
 この記事では、ソリューション ビルダーとして、Rigado Cascade 500 ゲートウェイ デバイスを、お使いの Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。 
 
@@ -41,15 +41,15 @@ Cascade 500 ゲートウェイ デバイスをお使いの Azure IoT Central ア
 
 Cascade 500 デバイス テンプレートを追加するには、次のようにします。 
 
-1. 左ウィンドウの ***[Device Templates]\(デバイス テンプレート\)*** タブに移動し、 **[+ 新規]** を選択します。![新しいデバイス テンプレートの作成](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. 表示されたページには、***カスタム テンプレートを作成***または***構成済みデバイス テンプレートを使用***するオプションが示されています
+1. 左ウィンドウの **[Device Templates]\(デバイス テンプレート\)** タブに移動し、[+ 新規] を選択します。![新しいデバイス テンプレートの作成](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. 表示されたページには、*_カスタム テンプレートを作成_* または _*_構成済みデバイス テンプレートを使用_*_ するオプションが示されています
 1. 次に示すように、構成済みデバイス テンプレートの一覧から C500 デバイス テンプレートを選択します。![C500 デバイス テンプレートを選択](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. ***カスタマイズ*** を選択して、次の手順に進みます。 
-1. 次の画面で、***[作成]*** を選択して、C500 デバイス テンプレートをお使いの IoT Central アプリケーションにオンボードします。
+1. _*_[Next: Customize]\(次へ: カスタマイズ\)_*_ を選択して、次の手順に進みます。 
+1. 次の画面で、_*_[Create]\(作成\)_*_ を選択して、C500 デバイス テンプレートをお使いの IoT Central アプリケーションにオンボードします。
 
 ## <a name="retrieve-application-connection-details"></a>アプリケーション接続の詳細を取得する
 
-次に、Cascade 500 デバイスを接続するために、Azure IoT Central アプリケーションの **[スコープ ID]** と **[主キー]** を取得する必要があります。 
+次に、Cascade 500 デバイスを接続するために、Azure IoT Central アプリケーションの *[スコープ ID]* と **[主キー]** を取得する必要があります。 
 
 1. 左側のウィンドウで **[管理]** に移動し、 **[デバイスの接続]** をクリックします。 
 2. IoT Central アプリケーションの **[スコープ ID]** をメモしておきます。
@@ -65,7 +65,7 @@ Cascade 500 デバイスを IoT Central アプリケーションに接続する�
 
 この更新により、IoT Central 接続の詳細情報が Cascade 500 デバイスに 適用され、デバイスの一覧にこのデバイスが表示されるようになります。 
 
-![主キー](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
+![デバイスの一覧](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
 
 これで、IoT Central アプリケーションで C500 デバイスを使用する準備が整いました。
 

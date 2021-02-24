@@ -3,18 +3,18 @@ title: Azure Cost Management での AWS のコストと使用状況の管理
 description: この記事では、Cost Management でのコスト分析と予算を使用して、AWS のコストと使用状況を管理する方法を理解できます。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/16/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266210"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188107"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 
@@ -117,7 +117,7 @@ AWS API にアクセスすると、AWS で追加のコストが発生する場�
 
 - Cost Management の予算では、複数の通貨を持つ管理グループはサポートされていません。 複数の通貨を持つ管理グループには、予算評価が表示されません。 予算を作成するときに、複数の通貨を持つ管理グループを選択すると、エラー メッセージが表示されます。
 - クラウド コネクタは、AWS GovCloud (US)、AWS Gov、または AWS China はサポートしていません。
-- Cost Management は、AWS _使用状況コスト_のみを示します。 税、サポート、返金、RI、クレジット、その他の料金タイプはまだサポートされていません。
+- Cost Management は、AWS _使用状況コスト_ のみを示します。 税、サポート、返金、RI、クレジット、その他の料金タイプはまだサポートされていません。
 
 ## <a name="troubleshooting-aws-integration"></a>AWS 統合のトラブルシューティング
 
@@ -176,6 +176,12 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 **エラー コード:** _ReportIsNotValid_
 
 このエラーは、AWS のコストと使用状況レポートの定義に関連しています。このレポートには固有の設定が必要です。[AWS でのコストと使用状況レポートの作成](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)に記載されている要件を参照してください。
+
+### <a name="internal-error-when-creating-connector"></a>コネクタを作成する際の内部エラー
+
+**エラー コード:** "_Create connector - Failed to create connector &lt;ConnectorName&gt;. (コネクタの作成 - コネクタ <コネクタ名> を作成できませんでした。)理由:内部エラーです。Please verify that the correct AWS properties were provided. (正しい AWS プロパティが指定されていることを確認してください。)_ "
+
+AWS コネクタとサブスクリプションが別々の管理グループに存在すると、このエラーが発生することがあります。 AWS コネクタとサブスクリプションは同じ管理グループに存在している必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34bbf34d53c44dcef7b8e128a93ee64201423c3e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015155"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897039"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Azure Monitor ログとの統合
 
@@ -36,7 +36,7 @@ Azure Monitor ログへの Automation State Configuration レポートの送信�
 
 - 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/) (v2.3.0)。
 - Azure Automation アカウント。 詳細については、「[Azure Automation の概要](automation-intro.md)」を参照してください。
-- Automation & Control サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。
+- Automation & Control サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
 - 1 つ以上の Azure Automation State Configuration ノード。 詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 - [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) モジュール、バージョン 2.7.0.0 以上。 インストール手順については、「[Azure Automation Desired State Configuration (DSC) の問題をトラブルシューティングする](./troubleshoot/desired-state-configuration.md)」を参照してください。
 
@@ -196,7 +196,7 @@ Azure Automation の診断により、Azure Monitor ログに 2 つのカテゴ�
 - 概要については、[Azure Automation State Configuration の概要](automation-dsc-overview.md)に関するページを参照してください。
 - 使用を開始するには、「[Azure Automation State Configuration の使用を開始する](automation-dsc-getting-started.md)」をご覧ください。
 - DSC 構成をコンパイルしてターゲット ノードに割り当てる方法の詳細については、「[Azure Automation State Configuration で DSC 構成をコンパイルする](automation-dsc-compile.md)」をご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 - 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Chocolatey を使用して継続的配置を設定する](automation-dsc-cd-chocolatey.md)」をご覧ください。
 - 各種検索クエリの作成方法と、Azure Monitor ログでの Automation State Configuration ログの確認方法の詳細については、[Azure Monitor ログでのログ検索](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。

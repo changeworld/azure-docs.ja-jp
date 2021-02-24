@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub のメッセージ ルーティングの結果を表示する (.NET) | Microsoft Docs
-description: このチュートリアルのパート 1 を使用してすべてのリソースを設定した後、Azure Stream Analytics にメッセージをルーティングする機能を追加して、PowerBI で結果を表示します。
+title: チュートリアル - Azure IoT Hub のメッセージ ルーティングの結果を表示する (.NET) | Microsoft Docs
+description: チュートリアル - このチュートリアルのパート 1 を使用してすべてのリソースを設定した後、Azure Stream Analytics にメッセージをルーティングする機能を追加して、Power BI で結果を表示します。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019175"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734000"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>チュートリアル:パート 2 - ルーティングされたメッセージを表示する
 
@@ -48,7 +48,7 @@ Service Bus キューは、critical と指定されているメッセージを�
 
    **[場所]** :自分の場所を使用します。 このチュートリアルでは、 **[米国西部]** を使います。
 
-   **Log Analytics**:このトグルはオフにする必要があります。
+   **[Enable Log Analytics]\(Log Analytics の有効化\)** : このトグルはオフにする必要があります。
 
    ![[ロジック アプリの作成] 画面](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -82,7 +82,7 @@ Service Bus キューは、critical と指定されているメッセージを�
 
    ![Office365 のオプション](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Office 365 アカウントにサインインして接続を設定します。 タイムアウトになった場合は、もう一度やり直してください。 メールの受信者のメール アドレスを指定します。 また、件名を指定し、受信者が見るメッセージ本文を入力します。 テストでは、受信者として自分のメール アドレスを入力します。
+8. ご自分の職場または学校アカウントにサインインし、接続を設定します。 タイムアウトになった場合は、もう一度やり直してください。 メールの受信者のメール アドレスを指定します。 また、件名を指定し、受信者が見るメッセージ本文を入力します。 テストでは、受信者として自分のメール アドレスを入力します。
 
    **[動的なコンテンツの追加]** を選択して、含めることができるメッセージの内容を表示します。 **[コンテンツ]** を選びます。メッセージがメールに追加されます。
 
@@ -151,6 +151,8 @@ Power BI の視覚エフェクトにデータを表示するには、最初に�
    **データセット名**:Power BI で使用されるデータセットの名前。 このチュートリアルでは、**contosodataset** を使います。 
 
    **テーブル名**:Power BI で使用されるテーブルの名前。 このチュートリアルでは、**contosotable** を使います。
+
+  **認証モード**:使用するモードを選択します。
 
    その他のフィールドについては、既定値を指定できます。
 
@@ -232,7 +234,7 @@ Power BI レポートを設定するにはデータが必要なので、デバ�
 
 1. [Power BI](https://powerbi.microsoft.com/) アカウントにサインインします。
 
-2. **[ワークスペース]** に移動し、Stream Analytics ジョブの出力を作成するときに設定したワークスペースを選びます。 このチュートリアルでは、**マイ ワークスペース**を使います。 
+2. **[ワークスペース]** に移動し、Stream Analytics ジョブの出力を作成するときに設定したワークスペースを選びます。 このチュートリアルでは、**マイ ワークスペース** を使います。 
 
 3. **[データセット]** を選択します。 データセットがない場合は、数分待ってからもう一度確認してください。
 
@@ -276,11 +278,11 @@ Power BI ウィンドウの上部にある [最新の情報に更新] ボタン�
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Power BI の視覚エフェクトのリソースをクリーンアップする
 
-[Power BI](https://powerbi.microsoft.com/) アカウントにサインインします。 ワークスペースに移動します。 このチュートリアルでは、**マイ ワークスペース**を使います。 Power BI の視覚化を削除するには、[データセット] に移動し、ごみ箱アイコンを選択してデータセットを削除します。 このチュートリアルでは、**contosodataset** を使います。 データセットを削除すると、レポートも削除されます。
+[Power BI](https://powerbi.microsoft.com/) アカウントにサインインします。 ワークスペースに移動します。 このチュートリアルでは、**マイ ワークスペース** を使います。 Power BI の視覚化を削除するには、[データセット] に移動し、ごみ箱アイコンを選択してデータセットを削除します。 このチュートリアルでは、**contosodataset** を使います。 データセットを削除すると、レポートも削除されます。
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLI を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。 `$resourceGroup` は、このチュートリアルの開始時に **ContosoResources** に設定されました。
+リソース グループを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) コマンドを使います。 `$resourceGroup` は、このチュートリアルの開始時に **ContosoResources** に設定されました。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -288,7 +290,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>PowerShell を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドを使います。 `$resourceGroup` は、このチュートリアルの開始時に **ContosoResources** に設定されました。
+リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使います。 `$resourceGroup` は、このチュートリアルの開始時に **ContosoResources** に設定されました。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

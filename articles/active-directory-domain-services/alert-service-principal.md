@@ -2,7 +2,7 @@
 title: Azure AD Domain Services でサービス プリンシパル アラートを解決する | Microsoft Docs
 description: Azure Active Directory Domain Services のサービス プリンシパル構成アラートをトラブルシューティングする方法について説明します
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: justinha
+ms.openlocfilehash: 00ab5c85a477c9c4080acf252cbbde9d4ce816a9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221393"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620241"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services のサービス プリンシパル アラート
 
@@ -38,7 +38,7 @@ ms.locfileid: "86221393"
 
 1. Azure portal で、左側のナビゲーション メニューの **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** を選択します。 **[アプリケーションの種類]** ドロップダウン メニューの *[すべてのアプリケーション]* を選択し、 **[適用]** を選択します。
-1. 次のアプリケーション ID をそれぞれ検索します。 既存のアプリケーションが見つからない場合は、*解決策*の手順に従ってサービス プリンシパルを作成するか、名前空間を再登録します。
+1. 次のアプリケーション ID をそれぞれ検索します。 既存のアプリケーションが見つからない場合は、*解決策* の手順に従ってサービス プリンシパルを作成するか、名前空間を再登録します。
 
     | アプリケーション ID | 解決方法 |
     | :--- | :--- |
@@ -70,7 +70,7 @@ ms.locfileid: "86221393"
 
 アプリケーション ID *443155a6-77f3-45e3-882b-22b3a8d431fb*、*abba844e-bc0e-44b0-947a-dc74e5d09022*、または *d87dcbc6-a371-462e-88e3-28ad15ec4e64* が Azure AD ディレクトリにない場合は、次の手順を実行して *Microsoft.AAD* リソース プロバイダーを再登録します。
 
-1. Azure portal で、**サブスクリプション**を検索して選択します。
+1. Azure portal で、**サブスクリプション** を検索して選択します。
 1. マネージド ドメインに関連付けられているサブスクリプションを選択します。
 1. 左側のナビゲーションから、 **[リソース プロバイダー]** を選択します。
 1. *Microsoft.AAD* を検索し、 **[再登録]** を選択します。
@@ -99,8 +99,8 @@ Azure AD DS は、Azure AD からユーザー アカウントと資格情報を�
 2. それから、次の PowerShell コマンドレットを使用して古いアプリケーションとオブジェクトを削除します。
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```

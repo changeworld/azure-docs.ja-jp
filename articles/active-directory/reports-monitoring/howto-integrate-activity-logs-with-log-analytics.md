@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230570"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180457"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 
@@ -46,6 +46,7 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 * **[監査ログ]** :テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
+* **プロビジョニング ログ**:[プロビジョニング ログ](../app-provisioning/application-provisioning-log-analytics.md)を利用することで、サードパーティ製アプリケーションで作成、更新、削除されたユーザーを監視できます。 
 
 > [!NOTE]
 > 現時点では、B2C 関連の監査およびサインインのアクティビティ ログはサポートされません。

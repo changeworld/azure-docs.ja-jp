@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930487"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556131"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -25,7 +25,7 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 ## <a name="pricing-model"></a>価格モデル
 
-[Azure Application Insights][start] の価格は**従量課金制**モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Live Metrics Stream](./live-stream.md) を使用するためのデータ ボリューム料金はありません。
+[Azure Application Insights][start] の価格は **従量課金制** モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Live Metrics Stream](./live-stream.md) を使用するためのデータ ボリューム料金はありません。
 
 [複数ステップ Web テスト](./availability-multistep.md)に対しては、追加料金が発生します。 複数ステップ Web テストは、一連のアクションを実行する Web テストです。 単一ページの "*ping テスト*" については、個別の料金はかかりません。 Ping テストと複数ステップ テストからのテレメトリについては、アプリの他のテレメトリと同じ料金が請求されます。
 
@@ -148,7 +148,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
 | render areachart
 ```
@@ -167,7 +167,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | where _ResourceId contains "<myAppInsightsResourceName>"
 | summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
 | render areachart
@@ -186,7 +186,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 * **サンプリング**:サンプリングを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 サンプリングは、送信するデータの量を調整するために使用できる主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](./sampling.md)。
 
-* **Ajax 呼び出しの制限**: 各ページ ビューで、[報告できる Ajax 呼び出しの数を制限](./javascript.md#configuration)できます。Ajax レポートを無効にすることもできます。
+* **Ajax 呼び出しの制限**: 各ページ ビューで、[報告できる Ajax 呼び出しの数を制限](./javascript.md#configuration)できます。Ajax レポートを無効にすることもできます。 Ajax 呼び出しを無効にすると [JavaScript の相関関係](./javascript.md#enable-correlation)が無効になることに注意してください。
 
 * **不要なモジュールの無効化**: [ApplicationInsights.config を編集](./configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
 
@@ -264,7 +264,7 @@ Application Insights リソースの既定の保持期間は 90 日です。 App
 
 保持期間を変更するには、ご利用の Application Insights リソースから **[使用量と推定コスト]** ページに移動し、 **[データ保持期間]** オプションを選択します。
 
-![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
+![データ保有期間を変更する場所を示すスクリーンショット。](./media/pricing/pricing-005.png)
 
 保持期間が短縮された場合、最も古いデータが削除されるまでに数日の猶予期間があります。
 
@@ -308,7 +308,7 @@ Per Node (旧 Enterprise) レベルは、料金がノード単位となってお
 ### <a name="how-the-per-node-tier-works"></a>Per Node レベルのしくみ
 
 * Per Node レベルでは、アプリに対してテレメトリを送信するノードごとに料金が課金されます。
-  * *ノード*とは、アプリをホストする物理または仮想サーバー マシン (または、サービスとしてのプラットフォーム (PaaS) ロール インスタンス) のことです。
+  * *ノード* とは、アプリをホストする物理または仮想サーバー マシン (または、サービスとしてのプラットフォーム (PaaS) ロール インスタンス) のことです。
   * 開発マシン、クライアントのブラウザー、およびモバイル デバイスはノードとしてカウントされません。
   * テレメトリを送信するコンポーネント (Web サービスやバックエンド ワーカーなど) がアプリに複数ある場合、それらは個別にカウントされます。
   * [ライブ メトリック ストリーム](./live-stream.md) データは、課金対象としてカウントされません。 サブスクリプション内では、料金はノード単位で計算されます (アプリ単位ではありません)。 12 のアプリに対して 5 つのノードがテレメトリを送信する場合、料金は 5 ノード分になります。
@@ -331,7 +331,7 @@ Per Node (旧 Enterprise) レベルは、料金がノード単位となってお
 * 正確なノード カウントは、アプリケーションで使用している Application Insights SDK によって異なります。 
   * SDK バージョン 2.2 以降では、Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) と [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の両方が、各アプリケーション ホストをノードとして報告します。 例としては、物理サーバーと VM ホストのコンピューター名やクラウド サービスのインスタンス名があります。  唯一の例外は、[.NET Core](https://dotnet.github.io/) と Application Insights Core SDK のみを使用するアプリケーションです。 その場合は、ホスト名が使用できないためすべてのホストに対して 1 つのノードが報告されます。
   * 以前のバージョンの SDK では、[Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく 1 つのノードのみ報告します。
-  * アプリケーションで SDK を使用して**ロール インスタンス**をカスタム値に設定すると、既定ではノード カウントの決定に同じ値が使用されます。
+  * アプリケーションで SDK を使用して **ロール インスタンス** をカスタム値に設定すると、既定ではノード カウントの決定に同じ値が使用されます。
   * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、(クライアント コンピューターやモバイル デバイスの数が多いため) ノード カウントで大きい値が返される可能性があります。
 
 ## <a name="automation"></a>オートメーション

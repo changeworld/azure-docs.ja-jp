@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401318"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184544"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager でリソースログを有効にする
 
@@ -39,14 +39,14 @@ Azure Traffic Manager のリソース ログからは、Traffic Manager プロ�
 
 2. **Traffic Manager プロファイルのリソース ログを有効にする:** 
 
-    前のステップで取得した ID を使用して Traffic Manager プロファイルのリソース ログを有効にするには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) を使用します。 次のコマンドでは、指定した Azure ストレージ アカウントに、Traffic Manager プロファイルの詳細ログが格納されます。 
+    前のステップで取得した ID を使用して Traffic Manager プロファイルのリソース ログを有効にするには、[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) を使用します。 次のコマンドでは、指定した Azure ストレージ アカウントに、Traffic Manager プロファイルの詳細ログが格納されます。 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **診断の設定を検証する:**
 
-      [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest) を使用して、Traffic Manager プロファイルの診断の設定を検証します。 次のコマンドでは、リソースのログに記録されるカテゴリが表示されます。
+      [Get-AzDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest) を使用して、Traffic Manager プロファイルの診断の設定を検証します。 次のコマンドでは、リソースのログに記録されるカテゴリが表示されます。
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
@@ -64,7 +64,7 @@ Azure Traffic Manager のリソース ログからは、Traffic Manager プロ�
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager のログのスキーマ
 
-Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。 最上位のリソース ログのスキーマについては、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../azure-monitor/platform/tutorial-dashboards.md)」をご覧ください。
+Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。 最上位のリソース ログのスキーマについては、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../azure-monitor/platform/resource-logs-schema.md)」をご覧ください。
 
 次の表には、Azure Traffic Manager プロファイル リソースに固有のログ スキーマが含まれています。
 
@@ -77,4 +77,3 @@ Azure Monitor を通じて使用できるすべてのリソース ログには�
 ## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager の監視](traffic-manager-monitoring.md)の詳細を確認する
-

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005380"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108622"
 ---
 # <a name="localization-element"></a>Localization 要素
 
@@ -114,7 +114,7 @@ ms.locfileid: "87005380"
 | Value | はい | このオプションの選択に関連付けられている要求の文字列値。 |
 | SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
 
-次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの**LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
+次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの **LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
 
 ```xml
 <LocalizedResources Id="api.selfasserted.en">
@@ -163,6 +163,7 @@ ElementType は、要求の種類、要求変換、またはローカライズ�
 |述語ユーザー メッセージ|`Predicate`|述語の名前| ローカライズされる述語の属性。 使用可能な値: `HelpText`。|
 |述語グループ ユーザー メッセージ|`InputValidation`|PredicateValidation 要素の ID。|PredicateGroup 要素の ID。 述語グループは、ElementId に定義されている述語検証要素の子である必要があります。|
 |ユーザー インターフェイスの要素 |`UxElement` | | ローカライズされるユーザー インターフェイス要素の ID。|
+|[表示コントロール](display-controls.md) |`DisplayControl` |表示コントロールの ID。 | ローカライズされるユーザー インターフェイス要素の ID。|
 
 ## <a name="examples"></a>例
 
@@ -332,9 +333,26 @@ UxElement 値は、ユーザー インターフェイス要素のいずれかを
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```
 
+### <a name="displaycontrol"></a>DisplayControl
+
+DisplayControl 値は、[表示コントロール](display-controls.md) ユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 次の例は、送信と確認のボタンをローカライズする方法を示しています。 
+
+```xml
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+```
+
+セルフアサート技術プロファイルの Metadata セクションで参照された ContentDefinition の DataUri を[ページ レイアウトのバージョン](page-layout.md) 2.1.0 以上に設定する必要があります。 次に例を示します。
+
+```xml
+<ContentDefinition Id="api.selfasserted">
+  <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:2.1.0</DataUri>
+  ...
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 ローカライズの例については、次の記事を参照してください。
 
-- [Azure Active Directory B2C でのカスタム ポリシーによる言語のカスタマイズ](custom-policy-localization.md)
-- [Azure Active Directory B2C でのユーザー フローによる言語のカスタマイズ](user-flow-language-customization.md)
+- [Azure Active Directory B2C でのカスタム ポリシーによる言語のカスタマイズ](language-customization.md)
+- [Azure Active Directory B2C でのユーザー フローによる言語のカスタマイズ](language-customization.md)

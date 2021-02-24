@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718953"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220288"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -49,6 +49,8 @@ ms.locfileid: "88718953"
 * [弱いローカル管理者パスワードのためにドメイン コントローラーの降格が失敗する](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 妥当な期間にわたってこの機能を監査モードで実行した後、構成を "*監査*" から "*適用*" に切り替えて、さらに安全なパスワードを要求できます。 この期間中に、追加の監視を行うことをお勧めします。
+
+Azure AD のパスワード保護では、パスワードの変更または設定操作中にのみパスワードの検証を行うことができることに注意してください。 Azure AD のパスワード保護をデプロイする前に Active Directory に受け入れられ保存されたパスワードは、検証されず、そのまま動作し続けます。 時間の経過に伴い、すべてのユーザーとアカウントでは、通常どおり既存のパスワードの有効期限が切れると Azure AD のパスワード保護で検証されたパスワードの使用が開始されます。 ただし、[パスワードを無期限にする] を使用して構成されたアカウントを除きます。
 
 ### <a name="multiple-forest-considerations"></a>複数のフォレストに関する考慮事項
 
@@ -97,7 +99,7 @@ Azure AD パスワード保護を複数のフォレストに展開するため�
 
 Azure AD パスワード保護 DC エージェントには、次の要件が適用されます。
 
-* Azure AD パスワード保護 DC エージェント ソフトウェアがインストールされるすべてのマシンで、Windows Server 2012 以降が実行されている必要があります。
+* Azure AD パスワード保護 DC エージェント ソフトウェアがインストールされるすべてのマシンで、Windows Server Core エディションを含め、Windows Server 2012 以降が実行されている必要があります。
     * Active Directory ドメインまたはフォレストは、Windows Server 2012 のドメインの機能レベル (DFL) またはフォレストの機能レベル (FFL) である必要はありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアの実行に必要な最低限の DFL や FFL はありません。
 * Azure AD パスワード保護 DC エージェントを実行するすべてのマシンに .NET 4.5 がインストールされている必要があります。
 * Azure AD パスワード保護 DC エージェント サービスを実行しているすべての Active Directory ドメインは、sysvol レプリケーションに分散ファイル システム レプリケーション (DFSR) を使用する必要があります。
@@ -114,7 +116,7 @@ Azure AD パスワード保護 DC エージェントには、次の要件が適�
 
 Azure AD パスワード保護 プロキシ サービスには、次の要件が適用されます。
 
-* Azure AD パスワード保護プロキシ サービスがインストールされるすべてのマシンで、Windows Server 2012 R2 以降が実行されている必要があります。
+* Azure AD パスワード保護プロキシー サービスがインストールされるすべてのマシンで、Windows Server Core エディションを含め、Windows Server 2012 R2 以降が実行されている必要があります。
 
     > [!NOTE]
     > インターネットへの直接の送信接続がドメイン コントローラーにある場合でも、Azure AD パスワード保護のデプロイには、Azure AD パスワード保護プロキシ サービスのデプロイが必須要件です。
@@ -123,7 +125,7 @@ Azure AD パスワード保護 プロキシ サービスには、次の要件が
     * .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 必要な場合は、「[Windows 用の.NET Framework の 4.7 オフライン インストーラー](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
 * Azure AD パスワード保護プロキシ サービスがホストされているすべてのマシンを、このプロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 この機能は、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
 * Azure AD パスワード保護プロキシ サービスがホストされているすべてのマシンを、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
-* Azure AD に Azure AD パスワード保護プロキシ サービスとフォレストを登録する "*グローバル管理者*" アカウント。
+* Azure AD に Azure AD パスワード保護プロキシ サービスとフォレストを登録する "*グローバル管理者*" または "*セキュリティ管理者*" アカウント。
 * [アプリケーション プロキシ環境の設定手順](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)で指定されている一連のポートと URL に対して、ネットワーク アクセスを有効にする必要があります。
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Microsoft Azure AD Connect エージェント アップデーターの前提条件
@@ -153,9 +155,11 @@ Azure AD パスワード保護プロキシ サービスは、通常、オンプ�
 
 Azure AD パスワード保護プロキシ サービスをホストする 1 つ以上のサーバーを選択します。 このサーバーには、次の考慮事項が適用されます。
 
-* これら各サービスは、単一フォレストのパスワード ポリシーのみを提供できます。 ホスト コンピューターは、そのフォレスト内のドメインに参加する必要があります。 ルート ドメインと子ドメインの両方がサポートされます。 フォレストの各ドメインの少なくとも 1 つの DC とパスワード保護マシンの間にネットワーク接続が必要です。
+* これら各サービスは、単一フォレストのパスワード ポリシーのみを提供できます。 ホスト マシンは、そのフォレスト内の任意のドメインに参加している必要があります。
+* ルートまたは子ドメイン、またはそれらの組み合わせのいずれかのサービスにプロキシをインストールすることがサポートされている必要があります。
+* フォレストの各ドメインの少なくとも 1 つの DC とパスワード保護プロキシ サーバーの間にネットワーク接続が必要です。
 * テストのためにドメイン コントローラーで Azure AD パスワード保護プロキシ サービスを実行することはできますが、その場合、ドメイン コントローラーにはインターネット接続が必要です。 この接続は、セキュリティ上の問題になる可能性があります。 この構成はテスト専用としてお勧めします。
-* [高可用性に関する考慮事項](#high-availability-considerations)について前のセクションで説明したように、冗長性を確保するために少なくとも 2 つの Azure AD パスワード保護プロキシ サーバーを使用することをお勧めします。
+* [高可用性に関する考慮事項](#high-availability-considerations)について前のセクションで説明したように、冗長性を確保するためにフォレストあたり少なくとも 2 つの Azure AD パスワード保護プロキシ サーバーを使用することをお勧めします。
 * 読み取り専用ドメイン コントローラーでの Azure AD パスワード保護プロキシ サービスの実行はサポートされていません。
 
 Azure AD パスワード保護プロキシ サービスをインストールするには、次の手順を実行します。
@@ -193,11 +197,11 @@ Azure AD パスワード保護プロキシ サービスをインストールす�
 
 1. プロキシ サービスはマシンで実行されていますが、Azure AD と通信するための資格情報を保持していません。 `Register-AzureADPasswordProtectionProxy` コマンドレットを使用して、Azure AD に Azure AD パスワード保護プロキシ サーバーを登録します。
 
-    このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 また、フォレスト ルート ドメイン内のオンプレミス Active Directory ドメイン管理者特権も必要です。 また、このコマンドレットは、ローカル管理者特権を持つアカウントを使用して実行する必要があります。
+    このコマンドレットを使用するには、Azure テナントの "*グローバル管理者*" または "*セキュリティ管理者*" の資格情報が必要です。 また、このコマンドレットは、ローカル管理者特権を持つアカウントを使って実行する必要があります。
 
     このコマンドが 1 つの Azure AD パスワード保護プロキシ サービスで 1 回成功すると、その呼び出しは次回以降も成功しますが、必要ありません。
 
-    `Register-AzureADPasswordProtectionProxy` コマンドレットでは、以下の 3 つの認証モードがサポートされます。 Azure Multi-Factor Authentication は、最初の 2 つのモードではサポートされますが、3 つ目のモードではサポートされません。
+    `Register-AzureADPasswordProtectionProxy` コマンドレットでは、以下の 3 つの認証モードがサポートされます。 Azure AD Multi-Factor Authentication は、最初の 2 つのモードではサポートされますが、3 つ目のモードではサポートされません。
 
     > [!TIP]
     > このコマンドレットを特定の Azure テナントに対して最初に実行するときは、完了するまでにかなり時間がかかることがあります。 エラーが報告されない限り、この遅延については心配しないでください。
@@ -227,7 +231,7 @@ Azure AD パスワード保護プロキシ サービスをインストールす�
         ```
 
         > [!NOTE]
-        > このモードは、お使いのアカウントで Azure Multi-Factor Authentication が必要な場合は失敗します。 その場合は、前の 2 つの認証モードのいずれかを使用するか、MFA を必要としない別のアカウントを使用してください。
+        > このモードは、お使いのアカウントで Azure AD Multi-Factor Authentication が必要な場合は失敗します。 その場合は、前の 2 つの認証モードのいずれかを使用するか、MFA を必要としない別のアカウントを使用してください。
         >
         > グローバルに MFA を要求するように Azureデバイス登録 (Azure AD のパスワード保護によってバックグラウンドで使用されます) が構成されている場合も、MFA が必要であることが表示されます。 この要件に対処するには、前の 2 つの認証モードのいずれかで、MFA をサポートしている別のアカウントを使用します。または、Azure Device Registration の MFA 要件を一時的に緩めることもできます。
         >
@@ -244,9 +248,11 @@ Azure AD パスワード保護プロキシ サービスをインストールす�
     > [!NOTE]
     > 環境に複数の Azure AD パスワード保護プロキシ サーバーがインストールされている場合、フォレストの登録にどのプロキシ サーバーを使用しても問題はありません。
 
-    このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 ローカル管理者特権を持つアカウントを使って、このコマンドレットを実行する必要があります。 また、オンプレミスの Active Directory のエンタープライズ管理者特権も必要です。 この手順は、フォレストごとに 1 回実行されます。
+    このコマンドレットを使用するには、Azure テナントの "*グローバル管理者*" または "*セキュリティ管理者*" の資格情報が必要です。 また、オンプレミスの Active Directory のエンタープライズ管理者特権も必要です。 ローカル管理者特権を持つアカウントを使って、このコマンドレットを実行する必要があります。 フォレストの登録に使用される Azure アカウントは、オンプレミスの Active Directory アカウントとは異なる場合があります。
+    
+    この手順は、フォレストごとに 1 回実行されます。
 
-    `Register-AzureADPasswordProtectionForest` コマンドレットでは、以下の 3 つの認証モードがサポートされます。 Azure Multi-Factor Authentication は、最初の 2 つのモードではサポートされますが、3 つ目のモードではサポートされません。
+    `Register-AzureADPasswordProtectionForest` コマンドレットでは、以下の 3 つの認証モードがサポートされます。 Azure AD Multi-Factor Authentication は、最初の 2 つのモードではサポートされますが、3 つ目のモードではサポートされません。
 
     > [!TIP]
     > このコマンドレットを特定の Azure テナントに対して最初に実行するときは、完了するまでにかなり時間がかかることがあります。 エラーが報告されない限り、この遅延については心配しないでください。
@@ -276,7 +282,7 @@ Azure AD パスワード保護プロキシ サービスをインストールす�
         ```
 
         > [!NOTE]
-        > このモードは、お使いのアカウントで Azure Multi-Factor Authentication が必要な場合は失敗します。 その場合は、前の 2 つの認証モードのいずれかを使用するか、MFA を必要としない別のアカウントを使用してください。
+        > このモードは、お使いのアカウントで Azure AD Multi-Factor Authentication が必要な場合は失敗します。 その場合は、前の 2 つの認証モードのいずれかを使用するか、MFA を必要としない別のアカウントを使用してください。
         >
         > グローバルに MFA を要求するように Azureデバイス登録 (Azure AD のパスワード保護によってバックグラウンドで使用されます) が構成されている場合も、MFA が必要であることが表示されます。 この要件に対処するには、前の 2 つの認証モードのいずれかで、MFA をサポートしている別のアカウントを使用します。または、Azure Device Registration の MFA 要件を一時的に緩めることもできます。
         >

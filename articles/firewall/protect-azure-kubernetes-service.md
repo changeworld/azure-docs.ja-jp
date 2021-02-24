@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87412951"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107856"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Firewall を使用して Azure Kubernetes Service (AKS) のデプロイを保護する
 
@@ -47,7 +47,13 @@ Azure Firewall では、構成を簡略化するための AKS FQDN タグが提�
    - API サーバーと通信する必要があるアプリがある場合は、TCP [*IPAddrOfYourAPIServer*]:443 が必要です。 この変更は、クラスターの作成後に設定できます。
    - トンネル フロント ポッドが API サーバー上のトンネルの終端と通信するための TCP ポート 9000 と UDP ポート 1194。
 
-      具体的には、* *.hcp.<location>.azmk8s.io* と次の表のアドレスを参照してください。
+      具体的には、次の表のアドレスを参照してください。
+
+   | 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
+   |----------------------------------------------------------------------------------|----------|---------|------|
+   | **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+   | **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+
    - ネットワーク タイム プロトコル (NTP) の時刻同期 (Linux ノード) 用の UDP ポート 123。
    - API サーバーに直接アクセスするポッドがある場合は、DNS 用の UDP ポート 53 も必要です。
 

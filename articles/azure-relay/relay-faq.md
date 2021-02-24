@@ -3,12 +3,12 @@ title: Azure Relay に関する FAQ | Microsoft Docs
 description: この記事では、Azure Relay サービスに関連する、よく寄せられる質問の一部の回答を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317024"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250055"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -50,7 +50,6 @@ Relay の価格の詳細については、Service Bus の価格の詳細ペー�
     *   接続 B を経由して、1 か月で 6 GB のデータを送信します。
     *   合計料金は 10.50 ドルです。 内訳は、接続 A に 5 ドル、接続 B に 5 ドル、接続 B の 6 GB 目の料金として 0.50 ドルです。
 
-サンプルで使用された料金はハイブリッド接続のプレビュー期間にのみ適用されるものですので、ご注意ください。 価格はハイブリッド接続の一般公開時に変更されます。
 
 ### <a name="how-are-hours-calculated-for-relay"></a>Relay では、時間はどのように計算されますか?
 
@@ -71,7 +70,7 @@ Azure Relay へのメッセージ送信は、そのメッセージを受信す�
 ## <a name="quotas"></a>Quotas (クォータ)
 | クォータ名 | Scope |  Notes | 値 |
 | --- | --- | --- | --- |
-| リレーの同時リスナー |Entity |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
+| リレーの同時リスナー |エンティティ (ハイブリッド接続または WCF リレー) |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
 | あるサービス名前空間に含まれるリレー エンドポイント全部の同時リレー接続 |名前空間 |- |5,000 |
 | サービス名前空間ごとのリレー エンドポイント |名前空間 |- |10,000 |
 | [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) と [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) リレーのメッセージ サイズ |名前空間 |これらのクォータを超える受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 |64 KB |
@@ -119,8 +118,8 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Shared Access Signature とは何ですか? また、どの言語で署名を生成できますか?
 Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node.js、PHP、Python、Java、C、C# で独自の署名を生成する方法については、「[Shared Access Signature による Service Bus の認証][Shared Access Signatures]」を参照してください。
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Relay エンドポイントをホワイトリストに登録することはできますか?
-はい。 リレー クライアントは、完全修飾ドメイン名を使用して Azure Relay サービスへの接続を確立します。 お客様は、DNS ホワイトリスト登録をサポートするファイアウォールで、`*.servicebus.windows.net` のエントリを追加できます。
+### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>一部のリレー エンドポイントのみを許可することはできますか?
+はい。 リレー クライアントは、完全修飾ドメイン名を使用して Azure Relay サービスへの接続を確立します。 お客様は、DNS 承認一覧をサポートするファイアウォールで、`*.servicebus.windows.net` のエントリを追加できます。
 
 ## <a name="next-steps"></a>次のステップ
 * [名前空間を作成する](relay-create-namespace-portal.md)

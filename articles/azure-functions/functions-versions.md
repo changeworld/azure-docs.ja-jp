@@ -4,19 +4,19 @@ description: Azure Functions では、複数のバージョンのランタイム
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 935291c461e275902cb6905c4440fe4d289f0c16
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208105"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653352"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
 現在、Azure Functions では、次の 3 つのバージョンのランタイム ホストがサポートされています。これらは、1.x、2.x、および 3.x です。 3 つのすべてのバージョンは、運用環境シナリオでサポートされています。  
 
 > [!IMPORTANT]
-> バージョン 1.x はメンテナンス モードであり、Azure portal または Windows コンピューター上のローカルでの開発のみをサポートします。 拡張機能は、それ以降のバージョンでのみ提供されます。 
+> バージョン 1.x はメンテナンス モードであり、Azure portal、Azure Stack Hub ポータル、または Windows コンピューター上のローカルでの開発のみをサポートします。 拡張機能は、それ以降のバージョンでのみ提供されます。 
 
 この記事では、各種のバージョン間のいくつかの相違点、各バージョンを作成する方法、およびバージョンの変更方法について詳細に説明します。
 
@@ -27,8 +27,6 @@ ms.locfileid: "88208105"
 次の表は、各ランタイム バージョンでどのプログラミング言語が現在サポートされているかを示しています。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
-
-詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>特定のバージョンで実行する
 
@@ -118,7 +116,7 @@ Visual Studio では、プロジェクトを作成するときにランタイム
 ##### <a name="version-1x"></a>バージョン 1.x
 
 ```xml
-<TargetFramework>net461</TargetFramework>
+<TargetFramework>net472</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 

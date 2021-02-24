@@ -1,17 +1,15 @@
 ---
 title: クイック スタート:Azure Service Fabric 上に Spring Boot アプリを作成する
 description: このクイック スタートでは、Spring Boot サンプル アプリケーションを使用して、Azure Service Fabric 用の Spring Boot アプリケーションをデプロイします。
-author: suhuruli
 ms.topic: quickstart
 ms.date: 01/29/2019
-ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 3fadd1fb4fdc12660b67d5d8bbb7b25251619cff
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 84ce5920af95113801f468e3149421f3b9bd8901
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320393"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91530002"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>クイック スタート:Azure Service Fabric 上に Java Spring Boot アプリをデプロイする
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cb889298a09c30a629c69442ebf31bc735af31d1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268538"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173126"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 
@@ -85,7 +85,7 @@ November 2015 以降のリリースの Windows 10 では、Enterprise State Roam
 
 ローミングが利用できるのは、ユニバーサル Windows アプリに限られます。 既存の Windows デスクトップ アプリケーションでローミングを利用する方法としては、次の 2 つの選択肢があります。
 
-* [Desktop Bridge](https://aka.ms/desktopbridge) を使用する。既存の Windows デスクトップ アプリをユニバーサル Windows プラットフォームに移行できます。 そこから、ごくわずかな変更をコードに加えることで、Azure AD のアプリ データ ローミングを利用できるようになります。 既存のデスクトップ アプリは、そのデータのローミングに必要なアプリ ID を Desktop Bridge から得ることができます。
+* [Desktop Bridge](/windows/msix/desktop/source-code-overview) を使用する。既存の Windows デスクトップ アプリをユニバーサル Windows プラットフォームに移行できます。 そこから、ごくわずかな変更をコードに加えることで、Azure AD のアプリ データ ローミングを利用できるようになります。 既存のデスクトップ アプリは、そのデータのローミングに必要なアプリ ID を Desktop Bridge から得ることができます。
 * [User Experience Virtualization (UE-V)](/previous-versions//dn458947(v=vs.85)) を使用する。Win32 アプリについては、UE-V を使用して既存の Windows デスクトップ アプリ用のカスタム設定テンプレートを作成し、ローミングを有効にできます。 この方法を選んだ場合、アプリの開発者がそのコードを変更する必要はありません。 UE-V は、オンプレミスの Active Directory ローミングに限られ、Microsoft Desktop Optimization Pack を購入済みであることが必要となります。
 
 管理者は、次の [UE-V グループ ポリシー](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)を使用して Windows OS の設定やユニバーサル アプリ データのローミングを変更することで、Windows デスクトップ アプリのデータをローミングするように UE-V を構成できます。
@@ -112,7 +112,7 @@ Windows 10 の MDM やグループ ポリシーには、個々のアプリケー
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>ローミングはどのようにして有効または無効にできますか
 
-**設定**アプリから **[アカウント]**  >  **[設定の同期]** の順に移動します。 このページから、設定のローミングに使用されているアカウントを確認したり、ローミング対象となる設定グループの有効と無効を個別に切り替えたりすることができます。
+**設定** アプリから **[アカウント]**  >  **[設定の同期]** の順に移動します。 このページから、設定のローミングに使用されているアカウントを確認したり、ローミング対象となる設定グループの有効と無効を個別に切り替えたりすることができます。
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Windows 10 におけるローミングの実現手段としてマイクロソフトが推奨する方法は
 

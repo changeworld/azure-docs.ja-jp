@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate で移行マシンの移行を自動化する
 description: Azure Migrate を使用して多数のマシンを移行するための、スクリプトの使用方法について説明します
-author: snehaamicrosoft
-ms.service: azure-migrate
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 04/01/2019
-ms.author: snehaa
-ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 01196b23ce5bf9ce842da89d0773a77e6a1d5107
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109843"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754234"
 ---
 # <a name="scale-migration-of-vms"></a>VM の移行をスケーリングする 
 

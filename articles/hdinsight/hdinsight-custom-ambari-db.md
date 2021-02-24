@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 上のカスタム Apache Ambari データベース
 description: 独自のカスタム Apache Ambari データベースを使用して HDInsight クラスターを作成する方法について学習します。
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
-ms.date: 06/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1858e06567a0ab0907e6d2cb60358ff4ac00f9a2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 01/12/2021
+ms.openlocfilehash: fe38ddc594060c78a2d26e9b25476e38736b4cf7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086349"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946053"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>カスタム Ambari DB を使用して HDInsight クラスターを設定する
 
@@ -59,11 +56,25 @@ Apache Ambari DB を外部データベースでホストする場合は、次の
 Azure CLI を使用してデプロイを開始できます。 `<RESOURCEGROUPNAME>` を、クラスターをデプロイするリソース グループに置き換えます。
 
 ```azurecli
-az group deployment create --name HDInsightAmbariDBDeployment \
+az deployment group create --name HDInsightAmbariDBDeployment \
     --resource-group <RESOURCEGROUPNAME> \
     --template-file azuredeploy.json \
     --parameters azuredeploy.parameters.json
 ```
+
+## <a name="database-sizing"></a>データベースのサイズ設定
+
+次の表は、HDInsight クラスターのサイズに基づいて、どの Azure SQL DB 層を選択すべきかに関するガイドラインを示しています。
+
+| ワーカー ノードの数 | 必要な DB 層 |
+|---|---|
+| <=4 | S0 |
+| >4 かつ <=8 | S1 |
+| >8 かつ <=16 | S2 |
+| >16 かつ <=32 | S3 |
+| >32 かつ <=64 | S4 |
+| >64 かつ <=128 | P2 |
+| >128 | サポートに問い合わせる |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: Event Grid ソースとしての Azure App Configuration
 description: この記事では、Event Grid イベント ソースとして Azure App Configuration を使用する方法について説明します。 スキーマと、チュートリアルおよび操作方法に関する記事へのリンクを提供します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d305236e8408052be4be28ec003f4e545119fc59
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117000"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550676"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Event Grid ソースとしての Azure App Configuration
 この記事では、Azure App Configuration イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 また、Azure App Configuration をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
@@ -92,10 +92,10 @@ Azure App Configuration は次のイベントの種類を発行します。
 |タイトル | 説明 |
 |---------|---------|
 | [Event Grid を使用して Azure App Configuration イベントに応答する](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure App Configuration と Event Grid の統合の概要。 |
-| [クイック スタート: Azure CLI を使用して Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Azure App Configuration イベントを Webhook に送信する方法を示します。 |
+| [データ変更通知に Event Grid を使用する](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure App Configuration イベント サブスクリプションを使用して、キーと値の変更イベントを Web エンドポイントに送信する方法について説明します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。
-* Azure App Configuration イベントの操作の概要については、[Azure App Configuration イベントのルーティング - Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) に関する記事を参照してください。 
+* Azure App Configuration イベントの操作の概要については、[データ変更通知での Event Grid の使用](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json)に関する記事を参照してください。 

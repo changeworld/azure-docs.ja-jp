@@ -11,61 +11,83 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 313f10c77da499f4c405134028b975900d2d2a9e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3c0dd2b4e7e48eeb76d82c26eb52b89b61e9f668
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590236"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134111"
 ---
 # <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
 
-> [!TIP]
-> 2020 年 3 月以降、Azure Security Center の IDとアクセスの推奨事項は、Free 価格レベルのすべてのサブスクリプションに含まれています。 Free レベルのサブスクリプションをお持ちの場合は、これまで ID およびアクセス セキュリティについて評価されていなかったため、セキュリティ スコアが影響を受けます。 
+セキュリティ境界は、ネットワーク境界から ID 境界へと発展してきました。 このデプロイでは、ネットワーク保護のセキュリティよりも、アプリ、データ、およびユーザーのセキュリティを管理することに重点を置いています。
 
-Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
+ID に関連するアクティビティと構成を監視することで、インシデントが発生する前に事前対応型のアクションを実行するか、攻撃が試みられた場合にそれを阻止する事後対応型のアクションを実行することができます。
 
-セキュリティ境界は、ネットワーク境界から ID 境界へと発展してきました。 セキュリティにおいては、ネットワークの保護よりもデータの保護、アプリとユーザーのセキュリティ管理が重要になってきています。 最近では、クラウドに移行するデータやアプリが増加しているため、ID が新たな境界線となっています。
+## <a name="what-identity-and-access-safeguards-does-security-center-provide"></a>Security Center によって提供される ID とアクセスの保護 
 
-ID アクティビティを監視することにより、インシデントが発生する前に事前対応型のアクションを実行するか、攻撃が試みられた場合にそれを阻止する事後対応型のアクションを実行することができます。 たとえば、Security Center では、非推奨のアカウント (不要になり、Azure Active Directory でのサインインがブロックされているアカウント) に対し、削除用のフラグを付ける場合があります。 
+Azure Security Center には、組織の ID とセキュリティの要件を確実に満たすための 2 つの専用のセキュリティ コントロールがあります。 
 
-Azure Security Center の **[Id とアクセス]** リソース セキュリティ セクションに表示される推奨事項の例を次に示します。
+ - **アクセスとアクセス許可の管理** - [最小特権アクセス モデル](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)を採用し、ユーザーが各自の仕事を遂行するために必要なアクセス許可のみを付与することをお勧めします。 このコントロールには、リソースへのアクセスを制御するための [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を実装するための推奨事項も含まれます。
+ 
+ - **MFA の有効化** - [MFA](https://www.microsoft.com/security/business/identity/mfa) を有効にすると、アカウントのセキュリティが強化され、しかもユーザーはそれまでと同様、シングル サインオンでほとんどすべてのアプリケーションに対して認証を行うことができます。
+
+### <a name="example-recommendations-for-identity-and-access"></a>ID とアクセスに対する推奨事項の例
+
+これらの 2 つのコントロールに関して、Security Center の **[推奨事項]** ページに表示される可能性がある推奨事項の例:
 
 - サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - 最大 3 人の所有者をサブスクリプションに対して指定する必要がある
 - 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
-- 非推奨のアカウントをサブスクリプションから削除する必要がある
+- 非推奨のアカウントをサブスクリプションから削除する必要があります (非推奨のアカウントとは不要になったアカウントであり、Azure Active Directory によってサインインがブロックされます)
 
-これらの推奨事項の詳細や、ここに記載されている推奨事項の完全な一覧については、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identity)」を参照してください。
+> [!TIP]
+> これらの推奨事項とこれらのコントロールに関して表示されるその他の推奨事項については、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identityandaccess)」を参照してください。
 
-> [!NOTE]
-> サブスクリプションのアカウント数が 600 を超える場合、Security Center はサブスクリプションに対して ID の推奨事項を実行できません。 実行されない推奨事項については、後述する「利用できない評価」を参照してください。
-Security Center は、クラウド ソリューション プロバイダー (CSP) パートナーの管理者エージェントに対して ID の推奨事項を実行できません。
->
+### <a name="limitations"></a>制限事項
 
+Security Center の ID とアクセスの保護にはいくつかの制限があります。
 
-すべての ID とアクセスの推奨事項は、 **[推奨事項]** ページの 2 つのセキュリティ コントロール内で利用できます。
+- 600 を超えるアカウントを持つサブスクリプションでは、ID に関する推奨事項は利用できません。 このような場合、これらの推奨事項は [利用できない評価] の下に表示されます。
+- クラウド ソリューション プロバイダー (CSP) パートナーの管理エージェントでは、ID に関する推奨事項は利用できません。
+- ID に関する推奨事項では、特権 ID 管理 (PIM) システムによって管理されているアカウントは識別されません。 PIM ツールを使用している場合、**アクセスとアクセス許可の管理** コントロールに不正確な結果が表示されることがあります。
 
-- アクセスおよびアクセス許可の管理 
-- MFA の有効化
+## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>多要素認証 (MFA) と Azure Active Directory 
 
-![ID とアクセスに関連する推奨事項がある 2 つのセキュリティ コントロール](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
-
-
-## <a name="enable-multi-factor-authentication-mfa"></a>多要素認証 (MFA) を有効にする
-
-MFA を有効にするには、[Azure Active Directory (AD) テナントのアクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)が必要です。 
+MFA を有効にするには、[Azure Active Directory (AD) テナントのアクセス許可](../active-directory/roles/permissions-reference.md)が必要です。
 
 - AD の Premium Edition を使用している場合は、[条件付きアクセス](../active-directory/conditional-access/concept-conditional-access-policy-common.md)を使用して MFA を有効にします。
+- AD の無料エディションを使用している場合は、[Azure Active Directory のドキュメント](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)の説明に従って、**セキュリティの既定値** を有効にします。
 
-- AD の無料版を使用している場合は、[AD のドキュメント](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)の説明に従い、Azure Active Directory で**セキュリティの既定値**を有効にします。
+## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>多要素認証 (MFA) が有効になっていないアカウントを識別する
+
+MFA が有効になっていないアカウントを確認するには、次の Azure Resource Graph クエリを使用します。 このクエリによって、"サブスクリプションの所有者アクセス許可を持つアカウントで MFA を有効にする必要があります" という推奨事項があるすべての異常なリソース (アカウント) が返されます。 
+
+1. **Azure Resource Graph エクスプローラー** を開きます。
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
+
+1. 次のクエリを入力し、 **[クエリの実行]** を選択します。
+
+    ```kusto
+    securityresources
+     | where type == "microsoft.security/assessments"
+     | where properties.displayName == "MFA should be enabled on accounts with owner permissions on your subscription"
+     | where properties.status.code == "Unhealthy"
+    ```
+
+1. `additionalData` プロパティによって、MFA が適用されていないアカウントのアカウント オブジェクト ID の一覧が表示されます。 
+
+    > [!NOTE]
+    > アカウントは、アカウント所有者のプライバシーを保護するために、アカウント名ではなくオブジェクト ID として表示されます。
+
+> [!TIP]
+> 別の方法として、Security Center の REST API メソッド [Assessments - Get](/rest/api/securitycenter/assessments/get) を使用できます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次の記事をご覧ください。
 
-- [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 - [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
-- [Azure Security Center での Azure SQL サービスとデータの保護](security-center-sql-service-recommendations.md)

@@ -1,25 +1,31 @@
 ---
 title: Azure Data Factory のマッピング データ フローを使用してエラー行を処理する
 description: Azure Data Factory のマッピング データ フローを使用して SQL の切り捨てエラーを処理する方法について説明します。
-services: data-factory
 author: kromerm
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7a03ff1a58f50f16ebefce48b9e2772a16a011a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254414"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386341"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローで SQL の切り捨てエラー行を処理する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Data Factory でマッピング データ フローを使用する一般的なシナリオは、変換済みのデータを Azure SQL Database のデータベースに書き込むことです。 このシナリオでは一般に、列の切り捨てが起こりやすく、そのようなエラー状態は回避する必要があります。 以降の手順に従って、書き込み先の文字列型列に収まらない列をログに記録するしくみを作れば、そのようなシナリオでもデータ フローを続行することができます。
+Data Factory でマッピング データ フローを使用する一般的なシナリオは、変換済みのデータを Azure SQL Database のデータベースに書き込むことです。 このシナリオでは一般に、列の切り捨てが起こりやすく、そのようなエラー状態は回避する必要があります。
+
+ADF データ フロー内のデータベース シンクにデータを書き込むときにエラーを処理するには、主に 2 つの方法があります。
+
+* データベース データを処理するときに、シンクの[エラー行の処理](./connector-azure-sql-database.md#error-row-handling)を [エラーのまま続行する] に設定します。 これは、データ フロー内でカスタム ロジックを必要としない、包括的な自動化された方法です。
+* または、次の手順に従って、書き込み先の文字列型列に収まらない列をログに記録するしくみを作れば、データ フローを続行することができます。
+
+> [!NOTE]
+> 独自のエラー処理ロジックを記述する次のメソッドではなく、エラー行の自動処理を有効にすると、エラーをトラップするための 2 段階操作を実行する ADF によって、発生するパフォーマンスの低下が抑えられ、追加の手順が実行されます。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -49,6 +55,10 @@ Data Factory でマッピング データ フローを使用する一般的な�
 4. 完成したデータ フローは次のとおりです。 エラー行を切り離すことで SQL 切り捨てエラーを回避し、それらのエントリをログ ファイルに出力できるようになりました。 その一方で、成功した行は、引き続きターゲット データベースに書き込むことができます。
 
     ![完成したデータ フロー](media/data-flow/error2.png)
+
+5. シンク変換でエラー行の処理オプションを選択し、[Output error rows]\(エラー行の出力\) を設定した場合、ADF によって、行データの CSV ファイル出力が、ドライバーから報告されたエラー メッセージと共に自動的に生成されます。 別のオプションを使用して、そのロジックをデータ フローに手動で追加する必要はありません。 このオプションを使用すると、パフォーマンスの低下が抑えられるため、ADF による 2 段階手法の実装、およびエラーのトラップとログ記録が可能になります。
+
+    ![エラー出力のある完全なデータ フロー](media/data-flow/error-row-3.png)
 
 ## <a name="next-steps"></a>次のステップ
 

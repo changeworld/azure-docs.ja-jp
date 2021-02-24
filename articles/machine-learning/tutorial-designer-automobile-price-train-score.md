@@ -1,24 +1,24 @@
 ---
-title: チュートリアル:デザイナー (プレビュー) を使用して自動車の価格を予測する
+title: チュートリアル:デザイナーを使用して自動車の価格を予測する
 titleSuffix: Azure Machine Learning
-description: ドラッグ アンド ドロップ インターフェイスを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行う方法を学習します。 このチュートリアルは、線形回帰を使用した自動車価格の予測に関する 2 部構成のシリーズのパート 1 です。
+description: 線形回帰を使用して自動車の価格を予測する機械学習モデルをトレーニングします。 このチュートリアルは、2 部構成のシリーズのパート 1 です。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812987"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879799"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する
+
 
 この 2 部構成のチュートリアルでは、Azure Machine Learning のデザイナーを使用して、自動車の価格を予測する機械学習モデルをトレーニングおよびデプロイする方法について説明します。 このデザイナーはドラッグ アンド ドロップ式のツールであり、コードを 1 行も書くことなく機械学習モデルを作成できます。
 
@@ -48,11 +48,10 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
 ### <a name="create-a-new-workspace"></a>新しいワークスペースを作成する
 
-デザイナーを使用するためには、まず Azure Machine Learning ワークスペースが必要です。 ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning で作成するすべての成果物を操作するための一元的な場所を提供します。
+デザイナーを使用するには、Azure Machine Learning ワークスペースが必要です。 ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning で作成するすべての成果物を操作するための一元的な場所を提供します。 ワークスペースを作成する手順については、「[Azure Machine Learning ワークスペースを作成して管理する](how-to-manage-workspace.md)」を参照してください。
 
-Azure Machine Learning ワークスペース (Enterprise Edition) がある場合は、[次のセクションに進みます](#create-the-pipeline)。
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
+> [!NOTE]
+> ワークスペースで仮想ネットワークを使用する場合、デザイナーを使用するには、追加の構成手順を使用する必要があります。 詳細については、「[Azure 仮想ネットワークで Azure Machine Learning スタジオを使用する](how-to-enable-studio-virtual-network.md)」を参照してください。
 
 ### <a name="create-the-pipeline"></a>パイプラインを作成する
 
@@ -70,7 +69,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 パイプラインは、ワークスペースにアタッチされたコンピューティング リソースであるコンピューティング先で実行されます。 コンピューティング先を作成した後、それを将来の実行のために再利用できます。
 
-パイプライン全体の**既定のコンピューティング先**を設定できます。この設定により、既定で同じコンピューティング先を使用するようすべてのモジュールに伝えられます。 ただしコンピューティング先は、モジュールごとに自分で指定することができます。
+パイプライン全体の **既定のコンピューティング先** を設定できます。この設定により、既定で同じコンピューティング先を使用するようすべてのモジュールに伝えられます。 ただしコンピューティング先は、モジュールごとに自分で指定することができます。
 
 1. キャンバス上部の、パイプライン名の横に表示される ![歯車アイコンのスクリーンショット](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) (**歯車アイコン**) を選択して **[設定]** ペインを開きます。
 
@@ -79,7 +78,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
     使用できるコンピューティング先が既にある場合は、それを選択してこのパイプラインを実行できます。
 
     > [!NOTE]
-    > デザイナーは、Azure Machine Learning コンピューティングおよび Azure Machine Learning コンピューティング インスタンスでのみトレーニング実験を実行できます。その他のコンピューティング先は表示されません。
+    > デザイナーは、Azure Machine Learning コンピューティングでのみトレーニング実験を実行できます。その他のコンピューティング先は表示されません。
 
 1. コンピューティング リソースの名前を入力します。
 
@@ -94,7 +93,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 デザイナーには、実験に利用できるいくつかのサンプル データセットが含まれています。 このチュートリアルでは、**Automobile price data (Raw)** を使用します。 
 
-1. パイプライン キャンバスの左側には、データセットとモジュールのパレットがあります。 **[データセット]** を選択し、 **[サンプル]** セクションを見て、利用可能なサンプル データセットを確認します。
+1. パイプライン キャンバスの左側には、データセットとモジュールのパレットがあります。 **[サンプル データセット]** を選択して、使用可能なサンプル データセットを表示します。
 
 1. **Automobile price data (Raw)** データセットを選択し、キャンバスにドラッグします。
 
@@ -104,7 +103,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 使用するデータセットを把握するために、データを視覚化することができます。
 
-1. **[Automobile price data (Raw)]** を右クリックし、 **[視覚化]** を選択します。
+1. **[Automobile price data (Raw)]** を右クリックし、 **[視覚化]**  >  **[Dataset output]\(データセットの出力\)** の順に選択します。
 
 1. データ ウィンドウで別の列を選択して、それぞれの情報を表示します。
 
@@ -273,19 +272,19 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
     > [!NOTE]
     > 実験グループの同様のパイプラインは同時に実行されます。 パイプラインを複数回実行する場合は、一連の実行に対して同じ実験を選択できます。
 
-    1. **[New experiment Name]\(新しい実験名\)** にわかりやすい名前を入力します。
+    1. **[New experiment Name]\(新しい実験名\)** に、「**Tutorial-CarPrices**」と入力します。
 
     1. **[Submit]\(送信\)** をクリックします。
     
     実行の状態と詳細は、キャンバスの右上で確認できます。
     
-    最初の実行の場合は、パイプラインの実行が完了するまでに最大 20 分かかることがあります。 既定のコンピューティング設定の最小ノード サイズは 0 です。これは、アイドル状態になった後に、デザイナーによってリソースが割り当てられる必要があることを意味します。 コンピューティング リソースが既に割り当てられているため、パイプラインの反復実行にかかる時間は短くなります。 さらにデザイナーでは、各モジュール用にキャッシュされた結果を使用して、効率を向上させます。
+    これが最初の実行の場合は、パイプラインの実行が完了するまでに最大 20 分かかることがあります。 既定のコンピューティング設定の最小ノード サイズは 0 です。これは、アイドル状態になった後に、デザイナーによってリソースが割り当てられる必要があることを意味します。 コンピューティング リソースが既に割り当てられているため、パイプラインの反復実行にかかる時間は短くなります。 さらにデザイナーでは、各モジュール用にキャッシュされた結果を使用して、効率を向上させます。
 
 ### <a name="view-scored-labels"></a>スコア付けラベルを確認する
 
 実行が完了したら、パイプラインの実行結果を確認できます。 まず、回帰モデルによって生成された予測に注目します。
 
-1. **[Score Model]** モジュールを右クリックし、 **[視覚化]** を選択してその出力を表示します。
+1. **[Score Model]\(モデルのスコアリング\)** モジュールを右クリックし、 **[視覚化]**  >  **[Scored dataset]\(スコアリング済みデータセット\)** の順に選択してその出力を表示します。
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
@@ -295,7 +294,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 テスト データセットに対してトレーニング済みのモデルがどの程度の精度で実行されたかを **[Evaluate Model]\(モデルの評価\)** を使用して確認します。
 
-1. **[Evaluate Model]** モジュールを右クリックし、 **[視覚化]** を選択してその出力を表示します。
+1. **[Evaluate Model]\(モデルの評価\)** モジュールを右クリックし、 **[視覚化]**  >  **[評価結果]** の順に選択してその出力を表示します。
 
 作成したモデルに対して、以下の統計値が表示されます。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191282"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352118"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診断ログ - Azure Content Delivery Network
 
@@ -44,7 +44,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
 
-2. Azure portal で **[すべてのリソース]**  -> **自身の CDN のプロファイル**に移動します。
+2. Azure portal で **[すべてのリソース]**  -> **自身の CDN のプロファイル** に移動します。
 
 2. 診断ログを有効にする CDN エンドポイントを選択します。
 
@@ -59,7 +59,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 ストレージ アカウントを使ってログを保存するには、次の手順に従ってください。
 
  >[!NOTE] 
- >これらの手順を完了するには、ストレージ アカウントが必要です。 以下を参照してください:詳細については、「 **[Azure Storage アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** 」を参照してください。
+ >これらの手順を完了するには、ストレージ アカウントが必要です。 以下を参照してください:詳細については、「 **[Azure Storage アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)** 」を参照してください。
     
 1. **[Diagnostic setting name]\(診断設定の名前\)** には、診断ログ設定の名前を入力します。
  
@@ -78,7 +78,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 ログに Log Analytics を使用するには、次の手順に従います。
 
 >[!NOTE] 
->これらの手順を完了するには、Log Analytics ワークスペースが必要です。 以下を参照してください:詳細については、「 **[Azure ポータルで Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** 」を参照してください。
+>これらの手順を完了するには、Log Analytics ワークスペースが必要です。 以下を参照してください:詳細については、「 **[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)** 」を参照してください。
     
 1. **[Diagnostic setting name]\(診断設定の名前\)** には、診断ログ設定の名前を入力します。
 
@@ -95,7 +95,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 ログにイベント ハブを使用するには、次の手順に従います。
 
 >[!NOTE] 
->これらの手順を完了するには、イベント ハブが必要です。 以下を参照してください: **[クイック スタート:Azure portal を使用したイベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)**
+>これらの手順を完了するには、イベント ハブが必要です。 以下を参照してください: **[クイック スタート:Azure portal を使用したイベント ハブの作成](../event-hubs/event-hubs-create.md)**
     
 1. **[Diagnostic setting name]\(診断設定の名前\)** には、診断ログ設定の名前を入力します。
 
@@ -369,14 +369,7 @@ Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-* [Azure CDN の補助ポータルを使用したコア分析](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
-* [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
-
-
-
-
-
-
-
+* [Azure 診断ログ](../azure-monitor/platform/platform-logs-overview.md)
+* [Azure CDN の補助ポータルを使用したコア分析](./cdn-analyze-usage-patterns.md)
+* [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Log Analytics REST API](/rest/api/loganalytics)

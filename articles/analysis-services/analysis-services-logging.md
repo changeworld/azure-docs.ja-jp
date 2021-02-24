@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5537079341823275ba521c9d44139a0e0305286
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701497"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014938"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
-Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 Azure Analysis Services は Azure Monitor と統合されています。 [Azure Monitor のリソース ログ](../azure-monitor/platform/platform-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
+Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 Azure Analysis Services は Azure Monitor と統合されています。 [Azure Monitor のリソース ログ](../azure-monitor/platform/platform-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/overview.md)にエクスポートしたりすることができます。
 
 ![Storage、Event Hubs、または Azure Monitor ログへのリソースのログ記録](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -28,7 +28,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 ### <a name="engine"></a>エンジン
 
-**[エンジン]** を選択すると、すべての [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) がログに記録されます。 個々のイベントを選択することはできません。 
+**[エンジン]** を選択すると、すべての [xEvents](/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) がログに記録されます。 個々のイベントを選択することはできません。 
 
 |XEvent カテゴリ |イベント名  |
 |---------|---------|
@@ -80,7 +80,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
     * **名前**。 作成するログの名前を入力します。
 
-    * **[ストレージ アカウントへのアーカイブ]** 。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)」を参照してください。 指示に従って、Resource Manager の汎用アカウントを作成し、ポータルのこのページに戻ってストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
+    * **[ストレージ アカウントへのアーカイブ]** 。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 「[ストレージ アカウントを作成する](../storage/common/storage-account-create.md)」を参照してください。 指示に従って、Resource Manager の汎用アカウントを作成し、ポータルのこのページに戻ってストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
     * **イベント ハブにストリーミングします**。 このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 詳細については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
     * **Azure Monitor (Log Analytics ワークスペース) に送信します**。 このオプションを使用するには、既存のワークスペースを使用するか、またはポータルで[新しいワークスペース リソースを作成](../azure-monitor/learn/quick-create-workspace.md)します。 ログを表示する方法について詳しくは、この記事の「[Log Analytics ワークスペースでログを表示する](#view-logs-in-log-analytics-workspace)」をご覧ください。
 
@@ -90,7 +90,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 3. **[保存]** をクリックします。
 
-    "\<workspace name> の診断を更新できませんでした。 サブスクリプション \<subscription id> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure Diagnostics のトラブルシューティング](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
+    "\<workspace name> の診断を更新できませんでした。 サブスクリプション \<subscription id> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure Diagnostics のトラブルシューティング](../azure-monitor/platform/resource-logs.md)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
 
     今後、リソース ログを保存する方法を変更する場合は、このページに戻って設定を変更できます。
 
@@ -136,11 +136,11 @@ PowerShell を使用してメトリックとリソースのログ記録を有効
 
 ### <a name="rest-api"></a>REST API
 
-[Azure Monitor REST API を使用して診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/)方法を学習します。 
+[Azure Monitor REST API を使用して診断設定を変更する](/rest/api/monitor/)方法を学習します。 
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 
-[Resource Manager テンプレートを使用してリソースの作成時に診断設定を有効にする](../azure-monitor/platform/diagnostic-settings-template.md)方法を学習します。 
+[Resource Manager テンプレートを使用してリソースの作成時に診断設定を有効にする](../azure-monitor/samples/resource-manager-diagnostic-settings.md)方法を学習します。 
 
 ## <a name="manage-your-logs"></a>ログを管理する
 
@@ -328,4 +328,4 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 [Azure Monitor のリソースのログ記録](../azure-monitor/platform/platform-logs-overview.md)の詳細について確認します。
 
-PowerShell ヘルプの「[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)」を参照してください。
+PowerShell ヘルプの「[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)」を参照してください。

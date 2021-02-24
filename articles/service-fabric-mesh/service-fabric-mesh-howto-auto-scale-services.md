@@ -1,19 +1,25 @@
 ---
 title: Azure Service Fabric Mesh で実行されているアプリを自動スケーリングする
 description: Service Fabric Mesh アプリケーションのサービスに対して自動スケーリング ポリシーを構成する方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a707e3601bb24b2d5c2aa9402edff4a2e8803033
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75461977"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625906"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションに対する自動スケーリング ポリシーを作成する
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 新しいデプロイは、Service Fabric Mesh API では許可されません。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
+
 Service Fabric Mesh にアプリケーションをデプロイすることの主な利点の 1 つは、サービスを簡単にスケールイン/スケールアウトできることです。これはサービスに対する負荷量の変化に対処するためや可用性を上げるために使用します。 手動でサービスをスケールインまたはスケールアウトしたり、自動スケーリング ポリシーを設定したりできます。
 
 [自動スケーリング](service-fabric-mesh-scalability.md#autoscaling-service-instances)を使用すると、サービス インスタンスの数を動的に増減できます (水平スケーリング)。 自動スケーリングは弾力性に優れ、CPU またはメモリの使用率に基づいてサービス インスタンスをプロビジョニングしたり、削除したりできます。

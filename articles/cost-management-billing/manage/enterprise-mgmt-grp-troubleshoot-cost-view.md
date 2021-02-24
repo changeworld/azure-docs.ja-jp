@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: bd7f1ff20189b971ba32e5c4b40b380fc22611b2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bd0abadb624bced7f603fcbd112f7c422e88fc0c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371849"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング
 
@@ -41,7 +41,7 @@ ms.locfileid: "88686855"
 
 !["アセットは使用できません" というメッセージを示しているスクリーンショット。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 
-Azure サブスクリプションを確認するか、管理グループ管理者にアクセスを依頼してください。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+Azure サブスクリプションを確認するか、管理グループ管理者にアクセスを依頼してください。 詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

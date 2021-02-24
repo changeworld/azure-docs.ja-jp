@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3337d66934c1fe317296cffaa9a663e212cce12d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549336"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル: Azure Active Directory と ClickTime の統合
 
@@ -27,7 +27,7 @@ ClickTime と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して ClickTime に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Azure AD への ClickTime の統合を構成するには、ギャラリーから
 
 4. 検索ボックスに「**ClickTime**」と入力し、結果パネルで **ClickTime** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果リストの ClickTime](common/search-new-app.png)
+    ![結果リストの ClickTime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -104,13 +104,13 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
     a. **[識別子]** テキスト ボックスに、`https://app.clicktime.com/sp/` という URL を入力します。
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
-    
+
     ```http
     https://app.clicktime.com/Login/
     https://app.clicktime.com/App/Login/Consume.aspx
     ```
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -131,15 +131,15 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
 1. 上部にあるツールバーで **[Preferences]** 、 **[Security Settings]** の順にクリックします。
 
 1. **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
-   
+
     ![Security Settings](./media/clicktime-tutorial/tic777280.png "セキュリティ設定")
-   
+
     a.  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
-   
-    b. **[Identity Provider Endpoint]\(ID プロバイダー エンドポイント\)** ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
-   
-    c.  Azure Portal からダウンロードされた **Base-64 でエンコードされた証明書**を**メモ帳**で開き、その内容をコピーしてから、それを **[X.509 証明書]** ボックスに貼り付けます。
-   
+
+    b. **[Identity Provider Endpoint]\(ID プロバイダー エンドポイント\)** ボックスに、Azure portal からコピーした **ログイン URL** を貼り付けます。
+
+    c.  Azure Portal からダウンロードされた **Base-64 でエンコードされた証明書** を **メモ帳** で開き、その内容をコピーしてから、それを **[X.509 証明書]** ボックスに貼り付けます。
+
     d.  **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
@@ -159,7 +159,7 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -206,37 +206,36 @@ ClickTime の場合、プロビジョニングは手動で行います。
 1. **ClickTime** テナントにログインします。
 
 1. 上部のツールバーで、 **[Company]** をクリックし、 **[People]** をクリックします。
-   
-    ![ユーザー](./media/clicktime-tutorial/tic777282.png "ユーザー")
+
+    ![スクリーンショットは、[Company]\(会社\) と [People]\(ユーザー\) が選択されている ClickTime テナントを示しています。](./media/clicktime-tutorial/tic777282.png "ユーザー")
 
 1. **[Add Person]** をクリックします。
-   
+
     ![Add Person](./media/clicktime-tutorial/tic777283.png "[Add Person]")
 
 1. [New Person] セクションで、次の手順を実行します。
-   
-    ![ユーザー](./media/clicktime-tutorial/tic777284.png "ユーザー")
-   
+
+    ![スクリーンショットは、この手順の情報を追加できる [Add Person]\(ユーザーの追加\) セクションを示しています。](./media/clicktime-tutorial/tic777284.png "ユーザー")
+
     a.  **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。 
-  
+
     b.  **[電子メール アドレス]** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
-       
+
     > [!NOTE]
     > 必要に応じて、新しいユーザー オブジェクトの追加プロパティを設定できます。
-   
+
     c.  **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [ClickTime] タイルをクリックすると、SSO を設定した ClickTime に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [ClickTime] タイルをクリックすると、SSO を設定した ClickTime に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

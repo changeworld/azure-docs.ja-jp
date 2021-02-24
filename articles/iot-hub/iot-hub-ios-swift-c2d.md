@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
-ms.openlocfilehash: d8552391e8e8c389a44174595305b8f28224a833
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c0df33b8f09ec71f2be913d72f0785dc766375
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732532"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027535"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信
 
@@ -27,15 +27,15 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 * クラウドからデバイスへのメッセージをデバイスで受信する。
 
-* ソリューション バックエンドから、IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を要求する。
+* ソリューション バックエンドから、IoT Hub からデバイスに送信されたメッセージの配信確認 (" *フィードバック* ") を要求する。
 
 クラウドからデバイスへのメッセージの詳細については、[IoT Hub 開発者ガイドのメッセージに関するセクション](iot-hub-devguide-messaging.md)を参照してください。
 
 この記事の最後で、2 つの Swift iOS プロジェクトを実行します。
 
-* **sample-device**: [Send telemetry from a device to an IoT hub](quickstart-send-telemetry-ios.md) (デバイスから IoT ハブへのテレメトリの送信) で作成されたサンプル アプリであり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
+* **sample-device** : [Send telemetry from a device to an IoT hub](quickstart-send-telemetry-ios.md) (デバイスから IoT ハブへのテレメトリの送信) で作成されたサンプル アプリであり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
 
-* **sample-service**: IoT Hub を介してシミュレート対象デバイス アプリに cloud-to-device メッセージを送信し、その配信確認を受け取ります。
+* **sample-service** : IoT Hub を介してシミュレート対象デバイス アプリに cloud-to-device メッセージを送信し、その配信確認を受け取ります。
 
 > [!NOTE]
 > IoT Hub には、Azure IoT device SDK シリーズを介した多数のデバイス プラットフォームや言語 (C、Java、Python、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、 [Azure IoT デベロッパー センター](https://www.azure.com/develop/iot)のページを参照してください。
@@ -70,7 +70,7 @@ CocoaPods は、サードパーティ製のライブラリを使用する iOS �
 cd quickstart/sample-device
 ```
 
-XCode が終了していることを確認し、次のコマンドを実行して、**podfile** ファイルで宣言されている CocoaPods をインストールします。
+XCode が終了していることを確認し、次のコマンドを実行して、 **podfile** ファイルで宣言されている CocoaPods をインストールします。
 
 ```sh
 pod install
@@ -102,11 +102,11 @@ pod install
 
 6. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。
 
-   ![プロジェクトを実行する](media/iot-hub-ios-swift-c2d/run-sample.png)
+   ![スクリーンショットは、デバイス エミュレーターの [ビルド/実行] ボタンを示しています。](media/iot-hub-ios-swift-c2d/run-sample.png)
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-ios.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-ios.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、 **サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -124,7 +124,7 @@ CocoaPods は、サードパーティ製のライブラリを使用する iOS �
 cd quickstart/sample-service
 ```
 
-XCode が終了していることを確認し、次のコマンドを実行して、**podfile** ファイルで宣言されている CocoaPods をインストールします。
+XCode が終了していることを確認し、次のコマンドを実行して、 **podfile** ファイルで宣言されている CocoaPods をインストールします。
 
 ```sh
 pod install
@@ -144,7 +144,7 @@ pod install
 
 3. XCode で編集するために **ViewController.swift** を開きます。 
 
-4. **connectionString** 変数を検索し、「[Get the IoT hub connection string](#get-the-iot-hub-connection-string)」で前にコピーしたサービス接続文字列で値を更新します。
+4. **connectionString** 変数を検索し、「 [Get the IoT hub connection string](#get-the-iot-hub-connection-string)」で前にコピーしたサービス接続文字列で値を更新します。
 
 5. 変更を保存します。
 
@@ -154,7 +154,7 @@ pod install
 
 7. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。
 
-   ![プロジェクトを実行する](media/iot-hub-ios-swift-c2d/run-app.png)
+   ![スクリーンショットは、[ビルド/実行] ボタンを示しています。](media/iot-hub-ios-swift-c2d/run-app.png)
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c85049d6c8921432a753bf08989cab473b7c734
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709200"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525129"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS での逆引き DNS 参照ゾーンのホスト
 
@@ -48,7 +48,7 @@ IPv4 の逆引き参照ゾーンの名前は、それが表す IP アドレス�
 
 次の例では、`2.0.192.in-addr.arpa` という名前のクラス C 逆引き DNS ゾーンを、Azure Portal を使って Azure DNS に作成する方法を示します。
 
- ![ボックスに入力された [DNS ゾーンの作成] ウィンドウ](./media/dns-reverse-dns-hosting/figure2.png)
+ ![2\.0.192.in-addr.arpa という名前のクラス C 逆引き DNS ゾーンを、Azure portal を使って Azure DNS に作成する方法を示すスクリーンショット。](./media/dns-reverse-dns-hosting/figure2.png)
 
 **[リソース グループの場所]** では、リソース グループの場所を定義します。 これは、DNS ゾーンには影響を与えません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。
 
@@ -117,7 +117,7 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 
 1. **[DNS ゾーン]** ウィンドウの上部にある **[+ レコード セット]** を選択して **[レコード セットの追加]** ウィンドウを開きます。
 
-   ![レコード セットを作成するためのボタン](./media/dns-reverse-dns-hosting/figure4.png)
+   ![[+ レコード セット] ボタンを指す矢印がある [DNS ゾーン] ウィンドウのスクリーンショット。](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. PTR レコードのレコード セットの名前は、IPv4 アドレスの残りの部分を逆の順序にしたものでなければなりません。 
 
@@ -162,7 +162,7 @@ az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.a
 4. **[ドメイン名]** に、その IP アドレスを使うリソースの FQDN を入力します。
 5. ウィンドウ下部の **[OK]** を選択すると、DNS レコードが作成されます。
 
-![ボックスに入力された [レコード セットの追加] ウィンドウ](./media/dns-reverse-dns-hosting/figure7.png)
+![[種類] フィールドの値を指す矢印がある [レコードセットの追加] ウィンドウを示すスクリーンショット。](./media/dns-reverse-dns-hosting/figure7.png)
 
 次の例では、PowerShell または Azure CLI を使用してこのタスクを行う方法を示します。
 

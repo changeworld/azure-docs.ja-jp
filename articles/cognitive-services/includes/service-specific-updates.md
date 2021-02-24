@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: erhopf
 ms.custom: include
-ms.openlocfilehash: e4c1310d8f27e00bf46f8f4de4ae7b76e3d796d6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 10b89fe04da4cd83d47e5601a2b3a81ac42371fc
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224996"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531172"
 ---
 ## <a name="service-specific-updates"></a>サービス固有の更新 
 
@@ -22,5 +22,4 @@ ms.locfileid: "86224996"
 * [Language Understanding (LUIS)](../LUIS/whats-new.md)
 * [Personalizer](../personalizer/whats-new.md)
 * [QnA Maker](../QnAMaker/whats-new.md)
-* [Speech サービス](../Speech-Service/whats-new.md)
 * [Text Analytics](../text-analytics/whats-new.md)

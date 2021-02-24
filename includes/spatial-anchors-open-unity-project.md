@@ -1,16 +1,16 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 05/23/2019
-ms.author: rgarcia
-ms.openlocfilehash: e0038fd5632d512f18d50c4d11577b7f5756baa3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 2eb24691ab4ef4aab015f9fdb319049d8c858395
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67235379"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185352"
 ---
-Unity で、`Unity` フォルダー内のプロジェクトを開きます。 Unity により、プロジェクトと、コンピューターにインストールしたものとの間の Unity バージョンの相違について聞かれる場合があります。 この警告は、Unity エディターのバージョンが、プロジェクトの作成に使用されたバージョンより新しければ、特に問題ありません。 この場合、 **[続行]** をクリックします。 Unity エディターのバージョンがプロジェクトに必要なバージョンよりも古い場合は、 **[終了]** をクリックして、Unity エディターをアップグレードします。
+Unity で、 *[Unity]* フォルダー内のプロジェクトを開きます。 Unity からは、プロジェクトのバージョンと、お使いのコンピューターにインストールされているバージョンの違いについて問われることがあります。 この警告は、Unity エディターのバージョンが、プロジェクトの作成に使用されたバージョンより新しければ、特に問題ありません。 バージョンが新しい場合は **[続行]** を選択します。 バージョンがプロジェクトに必要なバージョンよりも古い場合は、 **[終了]** を選択し、Unity エディターをアップグレードします。
 
-![Unity ウィンドウ](./media/spatial-anchors-unity/unity-window.png)
+![[Unity] ウィンドウのスクリーンショット。](./media/spatial-anchors-unity/unity-window.png)

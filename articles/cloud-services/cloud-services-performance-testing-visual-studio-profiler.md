@@ -1,27 +1,25 @@
 ---
-title: コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル | Microsoft Docs
-services: cloud-services
+title: コンピューティング エミュレーターでのクラウド サービス (クラシック) のローカルなプロファイル | Microsoft Docs
 description: Visual Studio プロファイラーを使用して、クラウド サービスのパフォーマンスの問題を調査します。
-documentationcenter: ''
-author: mikejo
-manager: jillfra
-editor: ''
-tags: ''
-ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/18/2016
-ms.author: mikejo
-ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2f924d84967c1a1928a47b59fd3a8c28da091130
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70094105"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743561"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
+# <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービス (クラシック) のパフォーマンスのローカルなテスト
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。
 Azure にクラウド サービスを発行する場合は、[Azure アプリケーションのプロファイリング][1]に関するページで説明されているように、Visual Studio でプロファイリング データを収集してから、それをローカルで分析することができます。
 また、[Azure でのパフォーマンス カウンターの使用][2]に関するページで説明されているように、診断を使用してさまざまなパフォーマンス カウンターを追跡することもできます。
@@ -166,9 +164,9 @@ public static string Concatenate(int number)
 ## <a name="next-steps"></a>次の手順
 Visual Studio プロファイラーでは、エミュレーター内の Azure バイナリのインストルメント化はサポートされていませんが、メモリの割り当てをテストする場合は、プロファイル時にこのオプションを選択できます。 また、スレッドがロックの競合のために時間を浪費しているかどうかの判断に役立つコンカレンシー プロファイルを選択することも、アプリケーションの層間 (最も多いのはデータ層と worker ロールの間) で相互作用するときのパフォーマンス問題の追跡に役立つ階層の相互作用のプロファイルを選択することもできます。  アプリケーションが生成するデータベース クエリを表示し、プロファイル データを使用してデータベースの使用を強化することができます。 階層の相互作用プロファイルの詳細については、ブログ記事「[Walkthrough:Using the Tier Interaction Profiler in Visual Studio Team System 2010 (チュートリアル: Visual Studio Team System 2010 での階層の相互作用のプロファイラーの使用)][3]」を参照してください。
 
-[1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: https://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
+[1]: ../azure-monitor/app/profiler.md
+[2]: /previous-versions/azure/hh411542(v=azure.100)
+[3]: /archive/blogs/habibh/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325414"
 ---
 # <a name="set-up-a-capacity-pool"></a>容量プールを設定する
 
@@ -49,16 +49,27 @@ ms.locfileid: "85483501"
      このフィールドには、容量プールのターゲット パフォーマンスが表示されます。  
      容量プールのサービス レベルを指定します [**Ultra**](azure-netapp-files-service-levels.md#Ultra)、[**Premium**](azure-netapp-files-service-levels.md#Premium)、または [**Standard**](azure-netapp-files-service-levels.md#Standard)。
 
-   * **サイズ**     
+    * **サイズ**     
      購入する容量プールのサイズを指定します。        
      容量プールの最小サイズは 4 TiB です。 プールは、4 TiB の倍数のサイズで作成することができます。   
-      
-     ![新しい容量プール](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. **[OK]** をクリックします。
+   * **QoS**   
+     容量プールで **[手動]** と **[自動]** のどちらの種類の QoS を使用するかを指定します。  
+
+     QoS の種類の詳細については、[ストレージの階層](azure-netapp-files-understand-storage-hierarchy.md)および[パフォーマンスに関する考慮事項](azure-netapp-files-performance-considerations.md)に関する記事を参照してください。  
+
+     > [!IMPORTANT] 
+     > **QoS の種類**は、永続的に **[手動]** に設定されています。 自動 QoS を使用するように手動 QoS 容量プールを変換することはできません。 ただし、手動 QoS を使用するように自動 QoS 容量プールを変換することはできます。 [手動 QoS の使用を目的とした容量プールの変更](manage-manual-qos-capacity-pool.md#change-to-qos)に関する記事を参照してください。   
+     > 容量プールに手動の種類の QoS を使用するには、登録が必要です。 「[手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md#register-the-feature)」を参照してください。 
+
+    ![新しい容量プール](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+
+4. **Create** をクリックしてください。
 
 ## <a name="next-steps"></a>次のステップ 
 
+- [ストレージの階層](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
-- さまざまなサービス レベルの価格については、[Azure NetApp Files の価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)を参照してください
+- [Azure NetApp Files 価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md)
 - [サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)

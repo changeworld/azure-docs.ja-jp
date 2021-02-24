@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5ade2f0c2afcb15541003cc8c1e5fccdb22de35b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538826"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319144"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>チュートリアル:23 Video と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88538826"
 * ユーザーが自分の Azure AD アカウントを使用して 23 Video に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -138,11 +138,11 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 3. **[Users (ユーザー)]** セクションで **[Configure (構成)]** をクリックします。
 
-    ![ユーザーの割り当て](./media/23video-tutorial/tutorial-23video-10.png)
+    ![[ユーザー] セクションが強調表示されているスクリーンショット。](./media/23video-tutorial/tutorial-23video-10.png)
 
 4. **[Add a new user (新しいユーザーの追加)]** をクリックします。
 
-    ![ユーザーの割り当て](./media/23video-tutorial/tutorial-23video-11.png)
+    ![[Add a new user]\(新しいユーザーの追加\) ボタンが強調表示されているスクリーンショット。](./media/23video-tutorial/tutorial-23video-11.png)
 
 5. **[Invite someone to join this site (別のユーザーをこのサイトに招待)]** セクションで、次の手順を実行します。
 
@@ -156,12 +156,12 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [23 Video] タイルをクリックすると、SSO を設定した 23 Video に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [23 Video] タイルをクリックすると、SSO を設定した 23 Video に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

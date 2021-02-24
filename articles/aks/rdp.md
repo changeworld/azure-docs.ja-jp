@@ -5,12 +5,12 @@ description: トラブルシューティングやメンテナンスのタスク�
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f221a98adb779d32fc5567b201699672c8b90f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208042"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183279"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する
 
@@ -20,15 +20,15 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、Windows Server ノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して Windows コンテナーと共に AKS クラスターを作成する][aks-windows-cli]方法に関する記事を参照してください。 トラブルシューティングを行う Windows Server ノードに対して、Windows 管理者のユーザー名とパスワードが必要です。 [Microsoft リモート デスクトップ][rdp-mac]などの RDP クライアントも必要です。
+この記事は、Windows Server ノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して Windows コンテナーと共に AKS クラスターを作成する][aks-windows-cli]方法に関する記事を参照してください。 トラブルシューティングを行う Windows Server ノードに対して、Windows 管理者のユーザー名とパスワードが必要です。 これらがわからない場合は、「[Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする](../virtual-machines/troubleshooting/reset-rdp.md)」に従ってリセットできます。 [Microsoft リモート デスクトップ][rdp-mac]などの RDP クライアントも必要です。
 
-また、Azure CLI バージョン 2.0.61 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.61 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>クラスターと同じサブネットに仮想マシンをデプロイする
 
 AKS クラスターの Windows Server ノードには、外部からアクセスできる IP アドレスはありません。 RDP 接続を作成するには、Windows Server ノードと同じサブネットに、パブリックにアクセス可能な IP アドレスを持つ仮想マシンをデプロイします。
 
-次の例では、リソース グループ *myResourceGroup*に *myVM* という名前の仮想マシンを作成します。
+次の例では、リソース グループ *myResourceGroup* に *myVM* という名前の仮想マシンを作成します。
 
 最初に、Windows Server ノード プールで使用されるサブネットを取得します。 サブネット ID を取得するには、サブネットの名前が必要です。 サブネットの名前を取得するには、vnet の名前が必要です。 クラスターでネットワークの一覧のクエリを実行して、vnet の名前を取得します。 クラスターのクエリを実行するには、その名前が必要です。 Azure Cloud Shell で次を実行することで、これらをすべて取得できます。
 
@@ -118,7 +118,7 @@ aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67
 
 ![RDP クライアントを使用した仮想マシンへの接続のイメージ](media/rdp/vm-rdp.png)
 
-仮想マシンに接続したら、仮想マシン内から、RDP クライアントを使用してトラブルシューティングを行う Windows Server ノードの*内部 IP アドレス*に接続します。
+仮想マシンに接続したら、仮想マシン内から、RDP クライアントを使用してトラブルシューティングを行う Windows Server ノードの *内部 IP アドレス* に接続します。
 
 ![RDP クライアントを使用した Windows Server ノードへの接続のイメージ](media/rdp/node-rdp.png)
 

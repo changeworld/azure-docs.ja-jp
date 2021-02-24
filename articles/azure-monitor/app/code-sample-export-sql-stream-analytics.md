@@ -3,12 +3,12 @@ title: Azure Application Insights から SQL へのエクスポート | Microsof
 description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311230"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942428"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法について説明します。 
@@ -82,7 +82,7 @@ ms.locfileid: "87311230"
 ![[参照]、[サーバー]、[使用するサーバー]、[設定]、[ファイアウォール]、[Azure へのアクセスの許可]](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Azure SQL Database にテーブルを作成する
-任意の管理ツールを使って前のセクションで作成したデータベースに接続します。 このチュートリアルでは、 [SQL Server Management Tools](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) を使用します。
+任意の管理ツールを使って前のセクションで作成したデータベースに接続します。 このチュートリアルでは、 [SQL Server Management Tools](/sql/ssms/sql-server-management-studio-ssms) (SSMS) を使用します。
 
 ![Azure SQL Database に接続する](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -133,21 +133,21 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
 [Azure Portal](https://portal.azure.com/) で、Azure Stream Analytics サービスを選び、新しい Stream Analytics ジョブを作成します。
 
-![Stream Analytics の設定](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![スクリーンショットには、[作成] ボタンが強調表示された [Stream Analytics ジョブ] ページが示されています。](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
 ![新しい Stream Analytics ジョブ](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 新しいジョブが作成されたら、 **[リソースに移動]** を選びます。
 
-![Stream Analytics の設定](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![スクリーンショットには、[デプロイメントに成功しました] のメッセージと [リソースに移動] ボタンが示されています。](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>新しい入力を追加する
 
-![Stream Analytics の設定](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![スクリーンショットには、[追加] ボタンが選択された [入力] ページが示されています。](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
 連続エクスポート BLOB から入力を取るよう設定します。
 
-![Stream Analytics の設定](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![スクリーンショットには、[入力のエイリアス]、[ソース]、[ストレージ アカウント] のドロップダウン メニュー オプションが選択された [新しい入力] ウィンドウが示されています。](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
 ここで、ストレージ アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。 ストレージ アカウント キーとしてこれを設定します。
 

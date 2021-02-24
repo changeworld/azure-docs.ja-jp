@@ -3,7 +3,7 @@ title: System for Cross-Domain Identity Management (SCIM) 2.0 プロトコル準
 description: SCIM 2.0 をサポートするギャラリー以外のアプリケーションを Azure AD に追加する際に発生する、一般的なプロトコル互換性の問題を解決する方法
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065490"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256900"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -50,7 +50,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="後の動作への SCIM フラグ。":::
 
-* 次の URL を使用して PATCH の動作を更新し、SCIM コンプライアンスを確保します (たとえば、ブール値としての active、適切なグループ メンバーシップの削除)。 この動作は、現在、フラグを使用している場合にのみ使用できますが、今後数か月以内に既定の動作になる予定です。
+* 次の URL を使用して PATCH の動作を更新し、SCIM コンプライアンスを確保します (たとえば、ブール値としての active、適切なグループ メンバーシップの削除)。 この動作は、現在、フラグを使用している場合にのみ使用できますが、今後数か月以内に既定の動作になる予定です。 このプレビュー フラグは現在、オンデマンド プロビジョニングでは機能しません。 
   * **URL (SCIM 準拠):** AzureAdScimPatch062020
   * **SCIM RFC 参照:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
@@ -190,7 +190,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
  以前の動作にダウングレードできますが、これはお勧めしません。これは、customappsso が一部の更新を利用できず、サポートが無期限にとならない可能があるためです。 
 
 1. Azure portal (https://portal.azure.com ) にサインインします。
-2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション] > [アプリケーションの作成]** セクションで、**ギャラリー以外の**新しいアプリケーションを作成します。
+2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション] > [アプリケーションの作成]** セクションで、**ギャラリー以外の** 新しいアプリケーションを作成します。
 3. 新しいカスタム アプリの **[プロパティ]** セクションで、 **[オブジェクト ID]** をコピーします。
 4. 新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、アプリのプロビジョニング構成を初期化します。

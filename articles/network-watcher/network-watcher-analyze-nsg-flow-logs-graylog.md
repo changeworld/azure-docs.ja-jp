@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497116"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965546"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -40,7 +40,7 @@ Network Watcher を使用して、ネットワーク セキュリティ グル�
 
 ### <a name="enable-network-security-group-flow-logging"></a>ネットワーク セキュリティ グループ フロー ログを有効にする
 
-このシナリオでは、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループ フロー ログが有効になっている必要があります。 ネットワーク セキュリティ グループ フロー ログを有効にする手順については、「 [ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」という記事を参照してください。
+このシナリオでは、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループ フロー ログが有効になっている必要があります。 ネットワーク セキュリティ グループ フロー ログを有効にする手順については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」をご覧ください。
 
 ### <a name="setting-up-graylog"></a>Graylog をセットアップする
 
@@ -53,7 +53,7 @@ Network Watcher を使用して、ネットワーク セキュリティ グル�
 
 Graylog は、プラットフォームと基本設定に応じて、さまざまな方法でインストールできます。 使用可能なインストール方法の一覧については、Graylog の公式[ドキュメント](https://docs.graylog.org/en/2.2/pages/installation.html)を参照してください。 Graylog サーバー アプリケーションは、Linux ディストリビューションで実行されます。前提条件は次のとおりです。
 
--  Java SE 8 以降 - [Azul Azure JDK のドキュメント](https://aka.ms/azure-jdks)
+-  Java SE 8 以降 - [Azul Azure JDK のドキュメント](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 -  Elastic Search 2.x (2.1.0 以降) - [Elasticsearch のインストール ドキュメント](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2.4 移行 - [MongoDB のインストール ドキュメント](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -186,7 +186,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
    Graylog サーバーが構成されている IP に入力をバインドする必要があります。 IP アドレスは、Logstash 構成ファイルの UDP 出力の **host** フィールドと一致する必要があります。 既定のポートは *12201* です。 ポートが、Logstash 構成ファイルで指定されている UDP 出力の **port** フィールドと一致することを確認します。
 
-   ![入力](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![スクリーンショットには、Graylog の入力と、入力を起動して検索するオプションが示されています。](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    入力を開始すると、次の図に示すように、 **[Local inputs]\(ローカル入力\)** セクションに表示されます。
 
@@ -200,11 +200,11 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
 Graylog サーバーがメッセージを収集するまでしばらく待ってからメッセージを検索できます。 Graylog サーバーに送信されるメッセージを確認するには、 **[Inputs]\(入力\)** 構成ページで、作成済みの GELF UDP 入力の **[Show received messages]\(受信メッセージの表示\)** ボタンをクリックします。 次の図のような画面が表示されます。 
 
-![ヒストグラム](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
+![スクリーンショットには、検索結果、ヒストグラム、およびメッセージが表示された Graylog サーバーが示されています。](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
 青色の "%{Message}" リンクをクリックすると、各メッセージが展開され、次の図に示すように、各フロー タプルのパラメーターが表示されます。
 
-![メッセージ](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![スクリーンショットには、Graylog サーバーからのメッセージの詳細が示されています。](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
 検索対象となる特定のメッセージ フィールドを選択していない場合、既定ではすべてのメッセージ フィールドが検索に含まれます。 特定のメッセージ ( 特定のソース IP のフロー タプル) を検索する場合は、[こちら](https://docs.graylog.org/en/2.2/pages/queries.html)に記載されている Graylog の検索クエリ言語をご利用いただけます。
 
@@ -218,7 +218,7 @@ Graylog の設定が完了したので、その機能を使用してフロー �
 
 2. そこから、緑色の **[Create dashboard]\(ダッシュボードの作成\)** ボタンをクリックし、簡単なフォームにダッシュボードのタイトルと説明を入力します。 **[Save]\(保存\)** をクリックして、新しいダッシュボードを作成します。 次の図のようなダッシュボードが表示されます。
 
-    ![ダッシュボード](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
+    ![スクリーンショットには、ダッシュボードを作成および編集するオプションと共に、Graylog サーバーのダッシュボードが示されています。](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>ウィジェットを追加する
 
@@ -246,4 +246,4 @@ Network Watcher を Graylog と統合することで、ネットワーク セキ
 
 ## <a name="next-steps"></a>次のステップ
 
- [Power BI を使用したネットワーク セキュリティ グループ フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI でネットワーク セキュリティ グループ フロー ログを視覚化する方法を確認します。
+[Power BI を使用したネットワーク セキュリティ グループ フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI でネットワーク セキュリティ グループ フロー ログを視覚化する方法を確認します。

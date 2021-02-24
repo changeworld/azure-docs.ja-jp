@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10c1680afd6cd6673efe3fe9d2397a0dc6a04859
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181637"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738801"
 ---
 デバイスにリモート接続する手順は、クライアントのオペレーティング システムによって異なります。
 
@@ -23,6 +23,8 @@ Windows クライアントからリモートで接続するには、次の手順
 2. Windows リモート管理サービスがクライアントで実行されていることを確認します。 コマンド プロンプトに、次のコマンドを入力します。
 
     `winrm quickconfig`
+
+    詳細については、「[Windows リモート管理のためのインストールと構成](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration)」をご覧ください。
 
 3. デバイスの IP アドレスに変数を割り当てます。
 
@@ -58,11 +60,11 @@ Windows クライアントからリモートで接続するには、次の手順
 
 接続に使用する Linux クライアントで以下を行います。
 
-- SSH リモート処理機能を取得するために、GitHub から [Linux 用の最新の PowerShell Core をインストールします](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6)。 
+- SSH リモート処理機能を取得するために、GitHub から [Linux 用の最新の PowerShell Core をインストールします](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6)。 
 - [NTLM モジュールから `gss-ntlmssp` パッケージのみをインストールします](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 Ubuntu クライアントでは、次のコマンドを実行します。
     - `sudo apt-get install gss-ntlmssp`
 
-詳細については、「[SSH 経由の PowerShell リモート処理](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)」を参照してください。
+詳細については、「[SSH 経由の PowerShell リモート処理](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)」を参照してください。
 
 NFS クライアントからリモートで接続するには、次の手順に従います。
 

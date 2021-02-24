@@ -1,5 +1,6 @@
 ---
-title: サインアウト時にトークン キャッシュからアカウントを削除する - Microsoft ID プラットフォーム | Azure
+title: サインアウト時にトークン キャッシュからアカウントを削除する | Azure
+titleSuffix: Microsoft identity platform
 description: サインアウト時にトークン キャッシュからアカウントを削除する方法について説明します。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5246100815fde569c55027a555464c44a240d4b3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9fc271dfa9edbedac8527009dd2b2180b7c5e7cd
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119999"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756248"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Web API を呼び出す Web アプリ:グローバル サインアウト時にトークン キャッシュからアカウントを削除する
 
@@ -50,22 +51,18 @@ Python のサンプルでは、グローバル サインアウト時にアカウ
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [Web アプリのトークンを取得する](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore)
+このシナリオの次の記事である [Web アプリのトークンの取得](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore)に関する記事に進みます。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [Web アプリのトークンを取得する](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet)
+このシナリオの次の記事である [Web アプリのトークンの取得](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet)に関する記事に進みます。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Web アプリのトークンを取得する](./scenario-web-app-call-api-acquire-token.md?tabs=java)
+このシナリオの次の記事である [Web アプリのトークンの取得](./scenario-web-app-call-api-acquire-token.md?tabs=java)に関する記事に進みます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Web アプリのトークンを取得する](./scenario-web-app-call-api-acquire-token.md?tabs=python)
+このシナリオの次の記事である [Web アプリのトークンの取得](./scenario-web-app-call-api-acquire-token.md?tabs=python)に関する記事に進みます。
 
 ---

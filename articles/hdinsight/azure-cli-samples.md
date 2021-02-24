@@ -1,19 +1,16 @@
 ---
 title: 'Azure HDInsight: Azure CLI のサンプル'
 description: Azure HDInsight での一般的なタスクのための Azure CLI の例。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9367c1b4d82e984b2b4200768a3f83f9245c7f0f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499570"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946892"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI のサンプル
 
@@ -26,13 +23,13 @@ ms.locfileid: "87499570"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI。 手順については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* Azure CLI。 手順については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-* 省略可能:Bash。 この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。
+* 省略可能:Bash。 この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](/windows/wsl/install-win10)」をご覧ください。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。
 
 ## <a name="az-login"></a>az login
 
-[Azure にログイン](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)します。
+[Azure にログイン](/cli/azure/reference-index#az-login)します。
 
 ```azurecli
 az login
@@ -43,7 +40,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[新しいクラスターを作成](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)します。
+[新しいクラスターを作成](/cli/azure/hdinsight#az-hdinsight-create)します。
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>既存のストレージ アカウントを使用してクラスターを作成する
 
@@ -176,7 +173,7 @@ az hdinsight create \
 
 ## <a name="az-hdinsight-application-create"></a>az hdinsight application create
 
-[HDInsight クラスター向けのアプリケーションを作成](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create)します。
+[HDInsight クラスター向けのアプリケーションを作成](/cli/azure/hdinsight/application#az-hdinsight-application-create)します。
 
 ### <a name="create-an-application-with-a-script-uri"></a>スクリプト URI を使用してアプリケーションを作成する
 
@@ -243,7 +240,7 @@ az hdinsight application create \
 
 ## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-action execute
 
-[指定した HDInsight クラスター上でスクリプト アクションを実行](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)します。
+[指定した HDInsight クラスター上でスクリプト アクションを実行](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)します。
 
 ### <a name="execute-a-script-action-and-persist-on-success"></a>スクリプト アクションを実行して成功時に保持する
 

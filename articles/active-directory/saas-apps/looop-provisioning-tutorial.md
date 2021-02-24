@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: f8bec6b3065cc58f9589cfba0d6f494a9d065355
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549689"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835036"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>チュートリアル:Looop を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -55,13 +55,13 @@ Azure AD での自動ユーザー プロビジョニング用に Looop を構成
 
 1. [Looop 管理コンソール](https://app.looop.co/#/login) にサインインし、 **[アカウント]** を選択します。 **[アカウントの設定]** で **[認証]** を選択します。
 
-    ![Looop での SCIM の追加](media/looop-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Looop 管理コンソールのスクリーンショット。[アカウント] タブが強調表示され、開いています。[アカウント設定] の [認証] が強調表示されています。" border="false":::
 
 2. **[SCIM integration]\(SCIM 統合\)** の下にある **[Reset Token]\(トークンのリセット\)** をクリックして、新しいトークンを生成します。
 
-    ![Looop での SCIM の追加](media/looop-provisioning-tutorial/resettoken.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Looop 管理コンソールのページの [SCIM 統合] セクションのスクリーンショット。[トークンのリセット] ボタンが強調表示されています。" border="false":::
 
-3. **SCIM エンドポイント**と**トークン**をコピーします。 これらの値は、Azure portal の Looop アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力されます。 
+3. **SCIM エンドポイント** と **トークン** をコピーします。 これらの値は、Azure portal の Looop アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力されます。 
 
     ![Looop でのトークンの作成](media/looop-provisioning-tutorial/token.png)
 
@@ -113,13 +113,13 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<organisation_domain>.looop.co/scim/v2`」と入力します。 たとえば、「 `https://demo.looop.co/scim/v2` 」のように指定します。 前の手順で Looop から取得して保存した値を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Looop への接続を確保します。 接続できない場合は、使用中の Looop アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<organisation_domain>.looop.co/scim/v2`」と入力します。 たとえば、「 `https://demo.looop.co/scim/v2` 」のように入力します。 前の手順で Looop から取得して保存した値を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Looop への接続を確保します。 接続できない場合は、使用中の Looop アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -135,7 +135,23 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
 9. **[属性マッピング]** セクションで、Azure AD から Looop に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Looop のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Looop ユーザー属性](media/looop-provisioning-tutorial/userattributes.png)
+   |属性|Type|フィルター処理のサポート|
+   |---|---|---|
+   |userName|String|&check;|
+   |active|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |externalId|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:area|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_1|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_2|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_3|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:location|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:position|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:startAt|String|
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Meta Networks Connector]\(Azure Active Directory グループを Meta Networks Connector に同期する\)** を選択します。
 
@@ -143,7 +159,12 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
 11. **[属性マッピング]** セクションで、Azure AD から Meta Networks Connector に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新操作で Meta Networks Connector のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Looop グループ属性](media/looop-provisioning-tutorial/groupattributes.png)
+    |属性|Type|フィルター処理のサポート|
+    |---|---|---|
+    |displayName|String|&check;|
+    |members|リファレンス|
+    |externalId|String|
+
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

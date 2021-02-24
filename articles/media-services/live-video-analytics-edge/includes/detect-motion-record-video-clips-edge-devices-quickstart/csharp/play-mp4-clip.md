@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: f4a1cc432a50a555fe6e050ca318b4cfaf1092d4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dfb887004cd29b5bd9f1d9886b7dfa5f43c83dbe
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682248"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531314"
 ---
-MP4 ファイルは、OUTPUT_VIDEO_FOLDER_ON_DEVICE キーを使用して *.env* ファイルで構成したエッジ デバイス上のディレクトリに書き込まれます。 既定値を使用している場合、結果は */var/media/* フォルダーに配置されます。
+MP4 ファイルは、VIDEO_OUTPUT_FOLDER_ON_DEVICE キーを使用して *.env* ファイルで構成したエッジ デバイス上のディレクトリに書き込まれます。 既定値を使用している場合、結果は */var/media/* フォルダーに配置されます。
 
 MP4 クリップを再生するには、次のようにします。
 

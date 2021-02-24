@@ -6,14 +6,15 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8dca9e3e29796618b905c4d266eb674f82565969
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097619"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB に組み込まれている Jupyter Notebook のサポート (プレビュー)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Jupyter Notebook はオープン ソースの Web アプリケーションであり、ライブ コード、数式、視覚化、および説明テキストが含まれるドキュメントを作成して共有することができます。 
 

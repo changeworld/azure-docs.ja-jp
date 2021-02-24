@@ -1,19 +1,19 @@
 ---
 title: 安全な接続のために、プライベート エンドポイントを作成する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search Service への安全な接続を行うために、仮想ネットワークにプライベート エンドポイントを設定する
+description: Azure Cognitive Search Service への安全な接続を行うために、仮想ネットワークにプライベート エンドポイントを設定します。
 manager: nitinme
 author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/19/2020
+ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935757"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779942"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Cognitive Search への安全な接続を行うためのプライベート エンドポイントを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "88935757"
 プライベート エンドポイントは、別サービスとして、[Azure Private Link](../private-link/private-link-overview.md) によって提供されます。 コストの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/private-link/)を参照してください。
 
 > [!Important]
-> Azure Cognitive Search に対するプライベート エンドポイントのサポートは、Azure portal または [管理 REST API バージョン 2020-03-13](/rest/api/searchmanagement/) を使用して構成できます。 サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
+> Azure Cognitive Search に対するプライベート エンドポイントのサポートは、Azure portal または [管理 REST API バージョン 2020-03-13](/rest/api/searchmanagement/) を使用して構成できます。 サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。 ポータルの代わりに、[VS Code 拡張機能](https://aka.ms/vscode-search)を使用して、サービス内のさまざまなコンポーネントを操作することもできます。
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>安全なアクセスのためにプライベート エンドポイントを使用する理由
 
@@ -75,9 +75,9 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 1. 残りは既定値のままにして、 **[次へ:ネットワーク]** を選択します。
 
-1. **新しい Search Service - ネットワーク**で、**エンドポイント接続 (データ)** に **[プライベート]** を選択します。
+1. **新しい Search Service - ネットワーク** で、**エンドポイント接続 (データ)** に **[プライベート]** を選択します。
 
-1. **新しい Search Service - ネットワーク**で、**プライベート エンドポイント**の **[+ 追加]** を選択します。 
+1. **新しい Search Service - ネットワーク** で、**プライベート エンドポイント** の **[+ 追加]** を選択します。 
 
 1. **[プライベート エンドポイントの作成]** で、次の情報を入力または選択します。
 
@@ -106,7 +106,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 1. 左側のコンテンツメニューから **[キー]** を選択します。
 
-1. 後からサービスに接続するときのために、**プライマリ管理者キー**をコピーします。
+1. 後からサービスに接続するときのために、**プライマリ管理者キー** をコピーします。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
@@ -152,10 +152,16 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | 受信ポートの選択 | **[HTTP]** と **[RDP]** を選択します。|
     ||
 
+   > [!NOTE]
+   > IPv4 アドレスは [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 形式で表すことができます。 [RFC 1918](https://tools.ietf.org/html/rfc1918) で説明されているように、プライベート ネットワーク用として予約されている IP 範囲は避けてください。
+   >
+   > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
+   > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
+   > - `192.168.0.0 - 192.168.255.255 (192.168/16 prefix)`
+
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。
 
 1. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
-
 
 ## <a name="connect-to-the-vm"></a>VM に接続します
 
@@ -182,7 +188,6 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 1. VM デスクトップが表示されたら最小化してローカル デスクトップに戻ります。  
 
-
 ## <a name="test-connections"></a>テスト接続
 
 このセクションでは、検索サービスへのプライベート ネットワークアクセスを確認し、プライベート エンドポイントにプライベート接続します。
@@ -203,7 +208,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     Aliases:  [search service name].search.windows.net
     ```
 
-1. VM から検索サービスに接続し、インデックスを作成します。 この [クイックスタート](search-get-started-postman.md) に従い、REST API を使用して Postman でのあなたのサービスに新しい検索インデックスを作成できます。 Postman からの要求を設定するには、検索サービス エンドポイント (https://[search service name].search.windows.net) と、これ以前のステップでコピーした管理者 AIP キーが必要です。
+1. VM から検索サービスに接続し、インデックスを作成します。 この[クイックスタート](search-get-started-rest.md)に従うと、REST API を使用してサービスに新しい検索インデックスを作成できます。 Web API テスト ツールからの要求を設定するには、検索サービス エンドポイント (https://[search service name].search.windows.net) と、これ以前のステップでコピーした管理者 AIP キーが必要です。
 
 1. サービスが完全に動作していることが確認できたら、VM からのクイックスタートは完了です。
 
@@ -213,7 +218,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 プライベート エンドポイント、検索サービス、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
-1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。 
+1. ポータルの上部にある **検索** ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。 
 1. **[リソース グループの削除]** を選択します。 
 1. **[リソース グループ名を入力してください]**  に「 *myResourceGroup*」と入力し、 **[削除]** を選択します。
 

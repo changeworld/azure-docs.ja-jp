@@ -1,7 +1,7 @@
 ---
 title: Azure AD Connect - AD FS の管理とカスタマイズ | Microsoft Docs
 description: Azure AD Connect を使用した AD FS の管理と、Azure AD Connect および PowerShell を使用したユーザー AD FS サインイン エクスペリエンスのカスタマイズ。
-keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, サインイン, AD FS カスタマイズ, 信頼の修復, O365, フェデレーション, 証明書利用者
+keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, サインイン, AD FS カスタマイズ, 信頼の修復, M365, フェデレーション, 証明書利用者
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72339d9ce492446d05f23b63ac2d0a1c2d62f766
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276781"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274114"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
 この記事では、Azure Active Directory (Azure AD) Connect を使用して、Active Directory フェデレーション サービス (AD FS) を管理およびカスタマイズする方法について説明します。 また、AD FS ファームの完全な構成のために必要となる可能性のある他の一般的な AD FS タスクについても説明します。
@@ -31,7 +31,7 @@ ms.locfileid: "89276781"
 | トピック | 内容 |
 |:--- |:--- |
 | **AD FS の管理** | |
-| [信頼を修復する](#repairthetrust) |Office 365 とのフェデレーション信頼を修復する方法 |
+| [信頼を修復する](#repairthetrust) |Microsoft 365 とのフェデレーション信頼を修復する方法 |
 | [代替ログイン ID を使用して Azure AD とフェデレーションする](#alternateid) | 代替ログイン ID を使用してフェデレーションを構成する  |
 | [AD FS サーバーを追加する](#addadfsserver) |追加の AD FS サーバーで AD FS ファームを拡張する方法 |
 | [AD FS Web アプリケーション プロキシ サーバーを追加する](#addwapserver) |追加の Web アプリケーション プロキシ (WAP) サーバーで AD FS ファームを拡張する方法 |
@@ -52,11 +52,11 @@ Azure AD Connect を使用して、AD FS と Azure AD の信頼の現在の正�
    ![[AAD と ADFS 信頼を修復します]](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. **[Azure AD に接続]** ページで、Azure AD の全体管理者の資格情報を入力し、 **[次へ]** をクリックします。
-   ![Azure への接続](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![[Azure AD に接続] ページのスクリーンショット。サンプルの資格情報が入力されています。](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. **[リモート アクセスの資格情報]** ページで、ドメイン管理者の資格情報を入力します。
 
-   ![Remote access credentials](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![[リモート アクセスの資格情報] ページのスクリーンショット。サンプルの資格情報が入力されています。](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
     **[次へ]** をクリックすると、Azure AD Connect によって証明書の正常性が確認され、問題がある場合はその問題が表示されます。
 
@@ -64,7 +64,7 @@ Azure AD Connect を使用して、AD FS と Azure AD の信頼の現在の正�
 
     **[構成の準備完了]** ページに、信頼を修復するために実行されるアクションの一覧が表示されます。
 
-    ![構成の準備完了](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![[構成の準備完了] ページのスクリーンショット。アクションの一覧を確認できます。](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. **[インストール]** をクリックして信頼を修復します。
 
@@ -98,7 +98,7 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 
 2. **[Azure AD に接続]** ページで、Azure AD の全体管理者の資格情報を入力し、 **[次へ]** をクリックします。
 
-   ![Azure への接続](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![[Azure AD に接続] ページのスクリーンショット。サンプルの資格情報が入力されています。](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. ドメイン管理者の資格情報を入力します。
 
@@ -106,9 +106,9 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 
 4. Azure AD Connect で新しい AD FS ファームを構成中に指定した PFX ファイルのパスワードを入力するよう求められます。 **[パスワードの入力]** をクリックし、PFX ファイルのパスワードを入力します。
 
-   ![Certificate password](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![[SSL 証明書の指定] ページのスクリーンショット。[証明書のパスワード] ウィンドウが開いています。](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![TLS/SSL 証明書の指定](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![PFX ファイルのパスワードが入力された後の [SSL 証明書の指定] ページのスクリーンショット。](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. **[AD FS サーバー]** ページで、AD FS ファームに追加するサーバーの名前または IP アドレスを入力します。
 
@@ -116,9 +116,9 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 
 6. **[次へ]** をクリックし、最後の **[構成]** ページに進みます。 Azure AD Connect によって AD FS ファームへのサーバーの追加が完了すると、接続を確認するためのオプションが表示されます。
 
-   ![構成の準備完了](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![[構成の準備完了] ページのスクリーンショット。[インストール] のクリック後に完了するアクションの一覧を確認できます。](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![インストールの完了](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    ![[インストールの完了] ページのスクリーンショット。[The Intranet configuration was successfully verified]\(イントラネット構成の有効性が正常に検証されました\) メッセージが表示されています。 ](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
 ## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>AD FS WAP サーバーを追加する 
 
@@ -131,7 +131,7 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 
 2. Azure の全体管理者の資格情報を入力します。
 
-   ![Azure への接続](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![[Azure AD に接続] ページのスクリーンショット。サンプルのユーザー名とパスワードが入力されています。](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. **[SSL 証明書の指定]** ページで、Azure AD Connect で AD FS ファームを構成したときに指定した PFX ファイルのパスワードを入力します。
    ![Certificate password](./media/how-to-connect-fed-management/WapServer3.PNG)
@@ -148,7 +148,7 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 
 6. **[構成の準備完了]** ページに、実行されるアクションの一覧が表示されます。
 
-   ![構成の準備完了](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![[構成の準備完了] ページのスクリーンショット。実行するアクションの一覧を確認できます。](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. **[インストール]** をクリックして構成を終了します。 構成が完了すると、サーバーへの接続を確認するためのオプションが表示されます。 **[確認]** をクリックして接続を確認します。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533905"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842840"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 
@@ -38,7 +38,7 @@ Azure を使用すると、共有物理インフラストラクチャでアプ�
 
 ### <a name="azure-tenancy"></a>Azure テナント
 
-Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)での一意の[テナント](../../active-directory/develop/quickstart-create-new-tenant.md) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される[ロールベースのコントロール](../../role-based-access-control/overview.md)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
+Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)での一意の[テナント](../../active-directory/develop/quickstart-create-new-tenant.md) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
 
 そのディレクトリに登録されたユーザー、グループ、およびアプリケーションのみが、Azure サブスクリプションでリソースを管理できます。 このためのアクセス権は、Azure ポータル、Azure コマンドライン ツール、および Azure 管理 API を使用して割り当てることができます。 Azure AD テナントはセキュリティ境界を使用して論理的に分離されるため、悪意があるか偶発的にかにかかわらず、顧客が他のテナントにアクセスしたり侵入したりすることはできません。 Azure AD は、隔離されたネットワーク セグメント上の分離された "ベア メタル" サーバーで実行します。ここでは、ホストレベルのパケット フィルタリングと Windows Firewall によって、望ましくない接続やトラフィックがブロックされます。
 
@@ -52,7 +52,7 @@ Azure テナント (Azure サブスクリプション) とは、"顧客/課金" 
 
 - Azure AD サービスを構成するサーバーへの物理的なアクセスと Azure AD のバックエンド システムへの直接アクセスは制限されます。
 
-- Azure AD ユーザーには、物理的な資産または場所へのアクセス権はありません。したがって、後で説明する論理 RBAC ポリシー チェックを回避することはできません。
+- Azure AD ユーザーには、物理的な資産または場所へのアクセス権はありません。したがって、後で説明する論理 Azure RBAC ポリシー チェックを回避することはできません。
 
 診断と保守のニーズのため、Just-In-Time 特権昇格システムを採用している運用モデルを使用する必要があります。 Azure AD Privileged Identity Management (PIM) では、管理者候補という概念が導入されています。[管理者候補](../../active-directory/privileged-identity-management/pim-configure.md)とは、常にではなく時折特権アクセスを必要とするユーザーのことです。 このロールは、このユーザーがアクセス権を必要とするまで非アクティブ化されています。そして、ユーザーがアクティブ化プロセスを完了すると、所定の時間の間だけ有効な管理者になります。
 
@@ -80,17 +80,17 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 Azure の残りの Azure ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
 
-「[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](../../role-based-access-control/custom-roles.md)を作成する方法を参照してください。
+「[Azure 組み込みのロール](../../role-based-access-control/built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](../../role-based-access-control/custom-roles.md)を作成する方法を参照してください。
 
 Azure Active Directory のその他の機能を次に示します。
 
 - Azure AD では、どこでホストされているかにかかわらず、SaaS アプリケーションへの SSO が可能です。 一部のアプリケーションは Azure AD とフェデレーションされ、他のアプリケーションはパスワード SSO を使用します。 フェデレーション アプリケーションでは、ユーザー プロビジョニングと[パスワード保管](https://www.techopedia.com/definition/31415/password-vault)もサポートできます。
 
-- [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。 各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](../../storage/common/storage-create-storage-account.md) (SAK)) とセカンダリ秘密キー (Shared Access Signature (SAS)) があります。
+- [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。 各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](../../storage/common/storage-account-create.md) (SAK)) とセカンダリ秘密キー (Shared Access Signature (SAS)) があります。
 
-- Azure AD は、オンプレミス ディレクトリとの [Active Directory フェデレーション サービス (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)、同期、およびレプリケーションを使用し、フェデレーションを通じて ID をサービスとして提供します。
+- Azure AD は、オンプレミス ディレクトリとの [Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)、同期、およびレプリケーションを使用し、フェデレーションを通じて ID をサービスとして提供します。
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
+- [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイしなくても、Azure Virtual Machines を Active Directory ドメインに参加させることができます。 ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
 
@@ -119,7 +119,7 @@ Microsoft Azure ではクラウドベースのコンピューティング サー
 
 ### <a name="dedicated-hosts"></a>専用ホスト
 
-前のセクションで説明した分離ホストに加えて、Azure には専用ホストも用意されています。 Azure における専用ホストは、1 つ以上の仮想マシンをホストできる、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスです。 専用サーバーによって、物理サーバー レベルでのハードウェア分離が実現します。 他の VM はホスト上に配置されません。 専用ホストは同じデータセンターに展開され、他の分離されていないホストと同じネットワークおよび基になるストレージ インフラストラクチャを共有します。 詳細については、[Azure 専用ホスト](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)の概要の詳細を参照してください。
+前のセクションで説明した分離ホストに加えて、Azure には専用ホストも用意されています。 Azure における専用ホストは、1 つ以上の仮想マシンをホストできる、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスです。 専用サーバーによって、物理サーバー レベルでのハードウェア分離が実現します。 他の VM はホスト上に配置されません。 専用ホストは同じデータセンターに展開され、他の分離されていないホストと同じネットワークおよび基になるストレージ インフラストラクチャを共有します。 詳細については、[Azure 専用ホスト](../../virtual-machines/dedicated-hosts.md)の概要の詳細を参照してください。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>ルート VM とゲスト VM の間での Hyper-V とルート OS の分離
 
@@ -194,7 +194,7 @@ Microsoft Azure では、基本設計において VM ベースのコンピュー
 
 ![記憶域アクセス制御を使用する分離](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Azure Storage データ (テーブルを含む) へのアクセス**は、スコープ アクセスを付与する [SAS (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) トークンを介して制御できます。 SAS は、クエリ テンプレート (URL) を使用して作成され、[SAK (ストレージ アカウント キー)](https://msdn.microsoft.com/library/azure/ee460785.aspx) で署名されます。 この[署名付き URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) は他のプロセスに与えることができます (委任)。そのプロセスがクエリの詳細を設定し、記憶域サービスの要求を作成できます。 SAS を使用すると、ストレージ アカウントの秘密キーを公開せずに、時間ベースのアクセス権をクライアントに付与することができます。
+**Azure Storage データ (テーブルを含む) へのアクセス** は、スコープ アクセスを付与する [SAS (Shared Access Signature)](../../storage/common/storage-sas-overview.md) トークンを介して制御できます。 SAS は、クエリ テンプレート (URL) を使用して作成され、[SAK (ストレージ アカウント キー)](/previous-versions/azure/reference/ee460785(v=azure.100)) で署名されます。 この[署名付き URL](../../storage/common/storage-sas-overview.md) は他のプロセスに与えることができます (委任)。そのプロセスがクエリの詳細を設定し、記憶域サービスの要求を作成できます。 SAS を使用すると、ストレージ アカウントの秘密キーを公開せずに、時間ベースのアクセス権をクライアントに付与することができます。
 
 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
 
@@ -225,13 +225,13 @@ Azure では、データを保護するために次の種類の暗号化が提�
 
 - [Storage Service Encryption](../../storage/blobs/security-recommendations.md) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 - [クライアント側の暗号化](../../storage/blobs/security-recommendations.md) には、保存時の暗号化機能もあります。
-- [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
+- [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-仮想マシン (VM) 向けの [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) で管理するキーとポリシーを使用して VM ディスク (ブート ディスクとデータ ディスクを含む) を暗号化するソリューションです。組織のセキュリティとコンプライアンスの要件に対処する際に大きな効果を発揮します。
+仮想マシン (VM) 向けの [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) で管理するキーとポリシーを使用して VM ディスク (ブート ディスクとデータ ディスクを含む) を暗号化するソリューションです。組織のセキュリティとコンプライアンスの要件に対処する際に大きな効果を発揮します。
 
-Windows 向けの Disk Encryption ソリューションのベースは [Microsoft BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)であり、Linux 向けソリューションは [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) がベースになっています。
+Windows 向けの Disk Encryption ソリューションのベースは [Microsoft BitLocker ドライブ暗号化](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))であり、Linux 向けソリューションは [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) がベースになっています。
 
 このソリューションでは、Microsoft Azure で有効にした場合、IaaS VM の以下のシナリオがサポートされます。
 
@@ -243,7 +243,7 @@ Windows 向けの Disk Encryption ソリューションのベースは [Microsof
 - Windows クライアント OS を実行している IaaS VM の暗号化を有効にする
 - ボリュームのマウント パスの暗号化を有効にする
 - [mdadm](https://en.wikipedia.org/wiki/Mdadm) を使用してディスク ストライピング (RAID) が構成されている Linux VM の暗号化を有効にする
-- データ ディスクの [LVM (論理ボリューム マネージャー)](https://msdn.microsoft.com/library/windows/desktop/bb540532) を使用して Linux VM の暗号化を有効にする
+- データ ディスクの [LVM (論理ボリューム マネージャー)](/windows/win32/fileio/about-volume-management) を使用して Linux VM の暗号化を有効にする
 - ストレージ スペースを使用して構成されている Windows VM の暗号化を有効にする
 - Azure のすべてのパブリック リージョンがサポートされる
 

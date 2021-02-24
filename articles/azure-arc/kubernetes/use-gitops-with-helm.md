@@ -8,16 +8,16 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc 対応クラスター構成に対して GitOps と Helm を使用する (プレビュー)
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: cca48910b679ff8f72ee06f4ed990bd480fb2200
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: eea81d458ac6631c4a023134b3198e4cdb04526e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723641"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541613"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする (プレビュー)
 
-Helm は、Kubernetes アプリケーションのインストールとライフサイクルの管理に役立つオープンソースのパッケージ化ツールです。 APT や Yum などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートの管理に使用されます。
+Helm は、Kubernetes アプリケーションのインストールとライフサイクルの管理に役立つオープンソースのパッケージ化ツールです。 APT や Yum などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャート の管理に使用されます。
 
 この記事では、Azure Arc 対応 Kubernetes で Helm を構成して使用する方法を説明します。
 
@@ -25,33 +25,13 @@ Helm は、Kubernetes アプリケーションのインストールとライフ�
 
 この記事では、Azure Arc 対応 Kubernetes に接続されたクラスターが既に存在することを前提としています。 接続されたクラスターが必要な場合は、[クラスターの接続についてのクイックスタート](./connect-cluster.md)のページを参照してください。
 
-最初に、このチュートリアル全体で使用する環境変数を設定しましょう。 接続されたクラスターのリソース グループ名とクラスター名が必要です。
-
-```bash
-export RESOURCE_GROUP=<Resource_Group_Name>
-export CLUSTER_NAME=<ClusterName>
-```
-
-## <a name="verify-your-cluster-is-enabled-with-arc"></a>クラスターで Arc が有効になっていることを確認する
-
-```bash
-az connectedk8s list -g $RESOURCE_GROUP -o table
-```
-
-出力:
-```bash
-Name           Location    ResourceGroup
--------------  ----------  ---------------
-arc-helm-demo  eastus      k8s-clusters
-```
-
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes での GitOps および Helm の使用方法の概要
 
  Helm Operator により、Helm Chart の Release を自動化する Flux への拡張機能が提供されます。 Chart の Release は、HelmRelease と呼ばれる Kubernetes のカスタム リソースによって表現されます。 Flux によってこれらのリソースが Git からクラスターに同期され、Helm Operator によって Helm Chart がリソースで指定されたとおりに確実にリリースされるようにします。
 
- このチュートリアルで使用する Git リポジトリの構造の例を次に示します。
+ このドキュメントで使用される[リポジトリの例](https://github.com/Azure/arc-helm-demo)は、次のように構成されています。
 
-```bash
+```console
 ├── charts
 │   └── azure-arc-sample
 │       ├── Chart.yaml
@@ -98,15 +78,8 @@ Chart ソースの values.yaml で指定されたオプションにより、Helm
 
 `k8sconfiguration` の Azure CLI 拡張機能を使用して、接続されたクラスターを Git リポジトリの例にリンクしましょう。 この構成に `azure-arc-sample` という名前を付け、Flux Operator を `arc-k8s-demo` 名前空間にデプロイします。
 
-```bash
-az k8sconfiguration create --name azure-arc-sample \
-  --resource-group $RESOURCE_GROUP --cluster-name $CLUSTER_NAME \
-  --operator-instance-name flux --operator-namespace arc-k8s-demo \
-  --operator-params='--git-readonly --git-path=releases' \
-  --enable-helm-operator --helm-operator-version='0.6.0' \
-  --helm-operator-params='--set helm.versions=v3' \
-  --repository-url https://github.com/Azure/arc-helm-demo.git  \
-  --scope namespace --cluster-type connectedClusters
+```console
+az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='0.6.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>構成パラメーター
@@ -118,7 +91,7 @@ az k8sconfiguration create --name azure-arc-sample \
 Azure CLI を使用して、`sourceControlConfiguration` の作成が成功したことを確認します。
 
 ```console
-az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-arc-sample --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
+az k8sconfiguration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 `sourceControlConfiguration` リソースで、コンプライアンスの状態、メッセージ、およびデバッグの情報が更新されます。
@@ -158,7 +131,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 次のコマンドを実行し、ブラウザーで `localhost:8080` に移動して、アプリケーションが実行されていることを確認します。
 
-```bash
+```console
 kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 ```
 

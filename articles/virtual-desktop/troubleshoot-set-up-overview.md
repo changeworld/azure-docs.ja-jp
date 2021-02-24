@@ -3,15 +3,15 @@ title: Windows Virtual Desktop トラブルシューティングの概要 - Azur
 description: Windows Virtual Desktop 環境の設定時の問題の解決方法の概要。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 171322fbec099aa9fafc36c4f951213b33007976
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4d4bdc4fa15f634b36f12a650b70b9ffd89b40e0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009360"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539118"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Windows Virtual Desktop のトラブルシューティングの概要、フィードバック、およびサポート
 
@@ -45,7 +45,7 @@ Azure Resource Manager 統合を使用して Windows Virtual Desktop の問題�
 | クライアントの接続                                                                    | [Windows Virtual Desktop サービス接続](troubleshoot-service-connection.md)に関するページを参照してください。それでも問題が解決されない場合は、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」を参照してください。 |
 | リモート アプリケーションまたはデスクトップの応答性                                      | 問題が特定のアプリケーションまたは製品に関連する場合、その製品の担当チームにお問い合わせください。 |
 | ライセンスに関するメッセージまたはエラー                                                          | 問題が特定のアプリケーションまたは製品に関連する場合、その製品の担当チームにお問い合わせください。 |
-| サードパーティの認証方法に関する問題 | サードパーティのプロバイダーが Windows Virtual Desktop のシナリオをサポートしていることを確認し、既知の問題があれば、それらに対処します。 |
+| サードパーティの認証方法またはツールに関する問題 | サードパーティのプロバイダーが Windows Virtual Desktop のシナリオをサポートしていることを確認し、既知の問題があれば、それらに対処します。 |
 | Windows Virtual Desktop で Log Analytics を使用する場合の問題 | 診断スキーマに関する問題については、[Azure サポート リクエストをオープン](https://azure.microsoft.com/support/create-ticket/)してください。<br><br>Log Analytics のクエリ、視覚化、またはその他の問題については、Log Analytics の下で適切な問題の種類を選択してください。 |
 | M365 アプリを使用する場合の問題 | [M365 管理センターのヘルプ オプション](/microsoft-365/admin/contact-support-for-business-products/)のいずれかを使用して、M365 管理センターに連絡してください。 |
 
@@ -53,6 +53,7 @@ Azure Resource Manager 統合を使用して Windows Virtual Desktop の問題�
 
 - Windows Virtual Desktop 環境でホスト プールを作成しているときに発生した問題のトラブルシューティングを行うには、「[ホスト プールの作成](troubleshoot-set-up-issues.md)」を参照してください。
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Windows Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、[Windows 仮想デスクトップ エージェントに関する一般的な問題のトラブルシューティング](troubleshoot-agent.md)に関するページを参照してください。
 - Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。

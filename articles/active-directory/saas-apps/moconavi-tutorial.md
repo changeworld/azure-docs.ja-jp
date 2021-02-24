@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f4ddb41528357d2f1b5c9e671ec2dd1308f9bf11
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554665"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>チュートリアル: Azure Active Directory と moconavi の統合
 
@@ -27,7 +27,7 @@ moconavi と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に moconavi にサインイン (シングル サインオン) するよう指定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ moconavi と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* moconavi では、**SP** によって開始される SSO がサポートされます
+* moconavi では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-moconavi-from-the-gallery"></a>ギャラリーからの moconavi の追加
 
@@ -61,13 +61,13 @@ Azure AD への moconavi の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**moconavi**」と入力し、結果パネルで **[moconavi]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **moconavi** 」と入力し、結果パネルで **[moconavi]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果リストの moconavi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、moconavi で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、moconavi で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと moconavi 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 moconavi で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -110,7 +110,7 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[moconavi クライアント サポート チーム](mailto:support@recomot.co.jp)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -126,7 +126,7 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-moconavi-single-sign-on"></a>moconavi でシングル サインオンを構成する
 
-**moconavi** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [moconavi サポート チーム](mailto:support@recomot.co.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**moconavi** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [moconavi サポート チーム](mailto:support@recomot.co.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -144,9 +144,9 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -169,7 +169,7 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -181,7 +181,7 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-moconavi-test-user"></a>moconavi テスト ユーザーの作成
 
-このセクションでは、moconavi で Britta Simon というユーザーを作成します。  [moconavi サポート チーム](mailto:support@recomot.co.jp)と連携して、moconavi プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、moconavi で Britta Simon というユーザーを作成します。 [moconavi サポート チーム](mailto:support@recomot.co.jp)と連携して、moconavi プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
@@ -191,35 +191,34 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
 3. **[Connect setting]\(接続設定\)** をクリックします。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing1.png)
+    ![moconavi を示すスクリーンショット。[接続設定] ボタンが表示されています。](./media/moconavi-tutorial/testing1.png)
 
-4. **[Connect to URL]\(URL への接続\)** ボックスに「`https://mcs-admin.moconavi.biz/gateway`」と入力し、**[Done]\(完了\)** をクリックします。
+4. **[Connect to URL]\(URL への接続\)** ボックスに「`https://mcs-admin.moconavi.biz/gateway`」と入力し、 **[Done]\(完了\)** をクリックします。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing2.png)
+    ![スクリーンショットは、[URL への接続] ボックスと [完了] ボタンを示すスクリーンショット。](./media/moconavi-tutorial/testing2.png)
 
 5. 次のスクリーンショットで、次の手順を実行します。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing3.png)
+    ![moconavi ページを示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/moconavi-tutorial/testing3.png)
 
-    a. **[Input Authentication Key]\(認証キーを入力\)**: **[Input Authentication Key]\(認証キーを入力\)** ボックスに「`azureAD`」と入力します。
+    a. **[Input Authentication Key]\(認証キーを入力\)** : **[Input Authentication Key]\(認証キーを入力\)** ボックスに「`azureAD`」と入力します。
 
-    b. **[Input User ID]\(ユーザー ID を入力\)**: **[Input User ID]\(ユーザー ID を入力\)** ボックスに `your ad account` を入力します。
+    b. **[Input User ID]\(ユーザー ID を入力\)** : **[Input User ID]\(ユーザー ID を入力\)** ボックスに `your ad account` を入力します。
 
     c. **[LOGIN]\(ログイン\)** をクリックします。
 
 6. **[Password]\(パスワード\)** ボックスに Azure AD のパスワードを入力し、 **[Login]\(ログイン\)** をクリックします。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing4.png)
+    ![Azure AD パスワードを入力する場所を示すスクリーンショット。](./media/moconavi-tutorial/testing4.png)
 
 7. メニューが表示されたら、Azure AD 認証は成功です。
 
-    ![シングル サインオンのテスト](./media/moconavi-tutorial/testing5.png)
+    ![moconavi の [電話] アイコンを示すスクリーンショット。](./media/moconavi-tutorial/testing5.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

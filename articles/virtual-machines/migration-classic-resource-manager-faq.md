@@ -1,6 +1,6 @@
 ---
 title: クラシックから Azure Resource Manager への移行に関してよく寄せられる質問
-description: クラシックから Azure Resource Manager への移行に関してよく寄せられる質問
+description: クラシックから Azure Resource Manager への移行に関してよく寄せられる質問。
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: abf4e4621a7e42829032923a67d21c5322f432ec
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855852"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232728"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行に関してよく寄せられる質問
 
@@ -26,7 +26,7 @@ IaaS VM (クラシック) の "クラシック" という単語は、Azure Servi
 
 ## <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) は、VM の作成、管理、削除、およびその他のコントロール プレーン操作を行う役割を担う、Azure の最新のコントロール プレーンです。 
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) は、VM の作成、管理、削除、およびその他のコントロール プレーン操作を行う役割を担う、Azure の最新のコントロール プレーンです。 
 
 ## <a name="what-is-the-time-required-for-migration"></a>移行にはどれくらいの時間が必要ですか?
 
@@ -42,11 +42,13 @@ IaaS VM (クラシック) がアクティブであるか、またはこれを停
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>"NewClassicVMCreationNotAllowedForSubscription" というエラーが発生するのはなぜですか?
 
-提供終了プロセスの一環として、新しいお客様は IaaS VM (クラシック) を利用できなくなりました。 お客様は新しい顧客として特定されたため、お客様の操作は承認されませんでした。 [ARM を使った Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) を使用することを強くお勧めします。 ARM を使用して Azure VM を使用できない場合は、サブスクリプションを許可リストに追加するよう、サポートにお問い合わせください。
+提供終了プロセスの一環として、新しいお客様は IaaS VM (クラシック) を利用できなくなりました。 お客様は新しい顧客として特定されたため、お客様の操作は承認されませんでした。 Azure Resource Manager を使用することを強くお勧めします。 Azure Resource Manager を使用して Azure VM を使用できない場合は、サブスクリプションを許可リストに追加するよう、サポートにお問い合わせください。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>この移行計画は Azure 仮想マシン上で実行されている既存のサービスやアプリケーションに影響しますか? 
 
-2023 年 3 月 1 日になるまで、IaaS VM (クラシック) には影響しません。 IaaS VM (クラシック) は、一般提供で完全にサポートされるサービスです。 引き続きこうしたリソースを利用して、Microsoft Azure のフットプリントを拡大できます。 2023 年 3 月 1 日に、これらの VM は完全に廃止され、アクティブまたは割り当て済みのすべての VM は停止され、割り当て解除されます。 Cloud Services (クラシック) やストレージ アカウント (クラシック) などの他のクラシック リソースに影響することはありません。   
+2023 年 3 月 1 日になるまで、IaaS VM (クラシック) には影響しません。 IaaS VM (クラシック) は、一般提供で完全にサポートされるサービスです。 引き続きこうしたリソースを利用して、Microsoft Azure のフットプリントを拡大できます。 2023 年 3 月 1 日に、これらの VM は完全に廃止され、アクティブまたは割り当て済みのすべての VM は停止され、割り当て解除されます。
+
+Cloud Services (クラシック) やストレージ アカウント (クラシック) などの他のクラシック リソースに影響することはありません。
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>近日中に移行する予定がない場合、VM はどうなりますか? 
 
@@ -72,19 +74,19 @@ Resource Manager デプロイ モデルへのツールの更新は、移行計�
 
 いいえ。 最近、 [クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](../expressroute/expressroute-move.md)が可能になりました。 ExpressRoute 回線が既にある場合は、新しいものを購入する必要はありません。
 
-## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>クラシック IaaS リソース用にロールベースの Access Control ポリシーを構成した場合はどうすればよいですか? 
+## <a name="what-if-i-had-configured-azure-role-based-access-control-policies-for-my-classic-iaas-resources"></a>クラシック IaaS リソース用に Azure ロールベースのアクセス制御ポリシーを構成した場合はどうすればよいですか? 
 
-移行中に、リソースはクラシックから Resource Manager に変換されます。 したがって、移行後に必要になる RBAC ポリシーの更新を計画しておくことをお勧めします。
+移行中に、リソースはクラシックから Resource Manager に変換されます。 したがって、移行後に必要になる Azure RBAC ポリシーの更新を計画しておくことをお勧めします。
 
 ## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>クラシック VM をコンテナーにバックアップしてあります。 クラシック モードから Resource Manager モードに VM を移行して、Recovery Services コンテナーで保護することはできますか。
 
 クラシックから Resource Manager モードに VM を移行する場合、移行前に作成されたバックアップは、新しく移行した Resource Manager VM には移行されません。 ただし、クラシック VM のバックアップを保持する場合は、移行前に次の手順に従います。 
 
-1. Recovery Services コンテナーで、 **[保護された項目]** タブに移動して VM を選択します。 
-2. [保護の停止] をクリックします。 *[関連付けられたバックアップ データを削除します]* オプションは **オフ**のままにしておきます。
+1. Recovery Services コンテナーで、 **[バックアップ項目]** ブレードに移動して VM を選択します。 
+2. [バックアップの停止] をクリックします。 ドロップダウン メニューで [バックアップデータの保持] を選択します。
 
 > [!NOTE]
-> データを保持するまでは、バックアップ インスタンス コストが課金されます。 バックアップ コピーは、リテンション期間に応じて取り除かれます。 ただし、バックアップ データを明示的に削除するまでは、最後のバックアップ コピーは常に保持されます。 仮想マシンのリテンション期間を確認し、リテンション期間が終了したら、コンテナーの保護された項目に対して "バックアップ データの削除" をトリガーすることをお勧めします。 
+> このオプションを選択すると、今後のすべてのバックアップ ジョブで VM が保護されなくなります。 ただし、Azure Backup サービスは、バックアップされている復旧ポイントを保持します。  コンテナーの復旧ポイントを保持するには、料金を支払う必要があります (詳細については、[Azure Backup の料金に関するページ](https://azure.microsoft.com/pricing/details/backup/)を参照してください)。 必要な場合は、VM を復元することができます。 VM の保護を再開する場合は、*バックアップの再開* オプションを使用できます。
 >
 >
 
@@ -105,7 +107,7 @@ Resource Manager デプロイ モデルへのツールの更新は、移行計�
 
 ## <a name="how-do-i-report-an-issue"></a>問題はどのようにレポートすればよいですか? 
 
-移行の問題や質問については、ClassicIaaSMigration というキーワードを付けて、[VM に関する Microsoft Q&A ページ](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)に投稿してください。 質問はすべてのこのフォーラムに投稿することをお勧めします。 サポート契約がある場合は、サポート チケットを記録してもかまいません。
+移行の問題や質問については、ClassicIaaSMigration というキーワードを付けて、[VM に関する Microsoft Q&A ページ](/answers/topics/azure-virtual-machines.html)に投稿してください。 質問はすべてのこのフォーラムに投稿することをお勧めします。 サポート契約がある場合は、サポート チケットを記録してもかまいません。
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>移行中にプラットフォームで選択されたリソース名が気に入らない場合はどうすればよいですか? 
 
@@ -124,20 +126,20 @@ Resource Manager デプロイ モデルへのツールの更新は、移行計�
 
 Linux の場合:
 
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行計画](./linux/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Review most common migration errors](./linux/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (移行の一般的なエラーを確認する)
+* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](./migration-classic-resource-manager-overview.md)
+* [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行計画](migration-classic-resource-manager-plan.md)
+* [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-ps.md)
+* [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-cli.md)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](migration-classic-resource-manager-community-tools.md)
+* [Review most common migration errors](migration-classic-resource-manager-errors.md) (移行の一般的なエラーを確認する)
 
 Windows の場合:
 
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行計画](./windows/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Review most common migration errors](./windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (移行の一般的なエラーを確認する)
+* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md)
+* [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行計画](migration-classic-resource-manager-plan.md)
+* [PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-ps.md)
+* [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](migration-classic-resource-manager-cli.md)
+* [クラシックから Azure Resource Manager への IaaS リソースの移行を支援するコミュニティ ツール](migration-classic-resource-manager-community-tools.md)
+* [Review most common migration errors](migration-classic-resource-manager-errors.md) (移行の一般的なエラーを確認する)

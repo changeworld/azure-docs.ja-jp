@@ -1,25 +1,19 @@
 ---
 title: Red Hat Enterprise Linux のサブスクリプション持ち込み Azure イメージ | Microsoft Docs
 description: Azure での Red Hat Enterprise Linux のサブスクリプション持ち込みイメージについて説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
-ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: cynthn
+ms.openlocfilehash: 38bf8b3c1c39322aea27f5f4d427c31010837bfb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052164"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391022"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -35,10 +29,7 @@ Red Hat Enterprise Linux (RHEL) イメージは、従量課金制またはサブ
 - Standard サポート ポリシーは、これらのイメージから作成された VM に適用されます。
 - Red Hat Gold Image からプロビジョニングされた VM は、RHEL 従量課金制イメージに関連付けられている RHEL 料金がかかりません。
 - イメージには、権利がありません。 Red Hat から直接更新プログラムを取得するために、Red Hat のサブスクリプション マネージャーを使用して VM を登録およびサブスクライブする必要があります。
-- 現時点では、Linux イメージの BYOS と従量課金制の課金モデルを動的に切り替えることはできません。 課金モデルを切り替えるには、それぞれのイメージから VM を再デプロイする必要があります。
-
->[!NOTE]
-> 現在、第 2 世代の RHEL BYOS イメージは、マーケットプレースのオファーから入手できません。 第 2 世代の RHEL BYOS イメージが必要な場合は、Red Hat サブスクリプション管理の Cloud Access ダッシュボードにアクセスしてください。 詳細については、[Red Hat のドキュメント](https://access.redhat.com/articles/4847681)を参照してください。
+- [Azure ハイブリッド特典](../../linux/azure-hybrid-benefit-linux.md)を使用して、従量課金制イメージから BYOS に切り替えることができます。 ただし、最初にデプロイされた BYOS から従量課金制に Linux イメージの課金モデルを切り替えることはできません。 課金モデルを BYOS から従量課金制に切り替えるには、それぞれのイメージから VM を再デプロイする必要があります。
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Red Hat Gold Image にアクセスするための要件と条件
 
@@ -184,7 +175,7 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
 
 ## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image の暗号化
 
-Red Hat Enterprise Linux の BYOS Gold Image は、[Azure Disk Encryption](../../linux/disk-encryption-overview.md) を利用してセキュリティで保護できます。 サブスクリプションは、暗号化を有効にする前に登録する*必要があります*。 RHEL BYOS Gold Image を登録する方法の詳細については、「[How to register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager (Red Hat サブスクリプション マネージャーを使用して、Red Hat カスタマー ポータルにシステムを登録およびサブスクライブする方法)](https://access.redhat.com/solutions/253273)」を参照してください。 アクティブな Red Hat サブスクリプションをお持ちの場合は、「[Creating Red Hat Customer Portal Activation Keys (Red Hat カスタマー ポータルのアクティベーション キーを作成する)](https://access.redhat.com/articles/1378093)」もご覧ください。
+Red Hat Enterprise Linux の BYOS Gold Image は、[Azure Disk Encryption](../../linux/disk-encryption-overview.md) を利用してセキュリティで保護できます。 サブスクリプションは、暗号化を有効にする前に登録する *必要があります*。 RHEL BYOS Gold Image を登録する方法の詳細については、「[How to register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager (Red Hat サブスクリプション マネージャーを使用して、Red Hat カスタマー ポータルにシステムを登録およびサブスクライブする方法)](https://access.redhat.com/solutions/253273)」を参照してください。 アクティブな Red Hat サブスクリプションをお持ちの場合は、「[Creating Red Hat Customer Portal Activation Keys (Red Hat カスタマー ポータルのアクティベーション キーを作成する)](https://access.redhat.com/articles/1378093)」もご覧ください。
 
 [Red Hat カスタム イメージ](../../linux/redhat-create-upload-vhd.md)では、Azure Disk Encryption はサポートされていません。 Azure Disk Encryption の追加の要件と前提条件については、[Linux VM 向けの Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements) に関するページに記載されています。
 
@@ -200,7 +191,7 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 
     この場合、Microsoft か Red Hat にお問い合わせいただき、サブスクリプションを有効にしてください。
 
-- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](../../linux/shared-image-galleries.md) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
+- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](../../shared-image-galleries.md) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
 
     ```azurecli
     az vm create –image \
@@ -222,4 +213,4 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 - Red Hat Update Infrastructure の詳細については、[Azure Red Hat Update Infrastructure](./redhat-rhui.md) に関する記事を参照してください。
 - Azure でのすべての Red Hat イメージの詳細については、[ドキュメントのページ](./redhat-images.md)を参照してください。
 - すべてのバージョンの RHEL の Red Hat サポート ポリシーの詳細については、「[Red Hat Enterprise Linux life cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」を参照してください。
-- RHEL Gold Image に関するその他のドキュメントについては、[Red Hat のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)を参照してください。
+- RHEL Gold Image に関するその他のドキュメントについては、[Red Hat のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)を参照してください。

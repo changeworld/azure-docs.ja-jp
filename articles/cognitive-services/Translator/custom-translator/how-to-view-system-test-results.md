@@ -2,19 +2,19 @@
 title: システムのテスト結果とデプロイを確認する - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: トレーニングが成功したら、システムのテストを確認し、トレーニング結果を分析します。 トレーニング結果に満足したら、トレーニング済みモデルのデプロイを要求します。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: cae2c95e56312c58d396d1e578f4677ce2b14aa2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509687"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895936"
 ---
 # <a name="view-system-test-results"></a>システムのテスト結果の表示
 
@@ -70,12 +70,12 @@ ms.locfileid: "88509687"
 
 2. 正常にトレーニングが完了したモデルで、まだデプロイされていない場合は、[デプロイ] ボタンが表示されます。
 
-    ![モデルのデプロイ](media/how-to/how-to-deploy-model.png)
+    ![モデルをデプロイするための [デプロイ] ボタンが強調表示されているスクリーンショット。](media/how-to/how-to-deploy-model.png)
 
 3.  [デプロイ] をクリックします。
 4.  モデルをデプロイするリージョンの **[Deployed]\(デプロイ対象\)** を選択し、[保存] をクリックします。 複数のリージョンの **[Deployed]\(デプロイ対象\)** を選択することができます。
 
-    ![モデルのデプロイ](media/how-to/how-to-deploy-model-regions.png)
+    ![モデルをデプロイまたはデプロイ解除する場所を示すスクリーンショット。](media/how-to/how-to-deploy-model-regions.png)
 
 5.  モデルの状態は [状態] 列で確認できます。
 
@@ -90,7 +90,7 @@ ms.locfileid: "88509687"
 
 2. 正常にデプロイされたモデルには、 **[更新]** ボタンが表示されます。
 
-    ![モデルのデプロイ](media/how-to/how-to-update-undeploy-model.png)
+    ![デプロイ設定を更新するための [更新] ボタンが強調表示されているスクリーンショット。](media/how-to/how-to-update-undeploy-model.png)
 
 3.  **[Update]\(更新\)** を選択します。
 4.  モデルをデプロイまたはデプロイ解除するリージョンの **[Deployed]\(デプロイ対象\)** または **[Undeployed]\(デプロイ解除対象\)** を選択して、 **[Save]\(保存\)** をクリックします。
@@ -102,6 +102,6 @@ ms.locfileid: "88509687"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
+- [Microsoft Translator Text API V3](../reference/v3-0-translate.md?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
 - [設定を管理](how-to-manage-settings.md)してワークスペースを共有し、サブスクリプション キーを管理する方法について説明します。
 - [Microsoft Translator Hub](https://hub.microsofttranslator.com) から[ワークスペースとプロジェクトを移行する方法](how-to-migrate.md)について説明します。

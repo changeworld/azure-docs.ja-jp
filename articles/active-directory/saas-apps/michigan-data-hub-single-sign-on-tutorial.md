@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 031190bee2dc81398ee0c4ac23ad9ec62469333a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: acdfd8b6c57ad2005f116ffb1e5a3c94a5cb87f2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528371"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522633"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-michigan-data-hub-single-sign-on"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Michigan Data Hub Single Sign-On の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88528371"
 * ユーザーが自分の Azure AD アカウントを使用して Michigan Data Hub Single Sign-On に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Michigan Data Hub Single Sign-On では、**SP** によって開始される SSO がサポートされます
-* Michigan Data Hub Single Sign-On を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Michigan Data Hub Single Sign-On では、 **SP** によって開始される SSO がサポートされます
+* Michigan Data Hub Single Sign-On を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-michigan-data-hub-single-sign-on-from-the-gallery"></a>ギャラリーからの Michigan Data Hub Single Sign-On の追加
 
@@ -50,7 +50,7 @@ Azure AD への Michigan Data Hub Single Sign-On の統合を構成するには�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Michigan Data Hub Single Sign-On**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Michigan Data Hub Single Sign-On** 」と入力します。
 1. 結果のパネルから **Michigan Data Hub Single Sign-On** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -117,28 +117,28 @@ Michigan Data Hub Single Sign-On で Azure AD の SSO を構成してテスト�
 
 ## <a name="configure-michigan-data-hub-single-sign-on-sso"></a>Michigan Data Hub Single Sign-On の SSO の構成
 
-**Michigan Data Hub Single Sign-On** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Michigan Data Hub Single Sign-On のサポート チーム](mailto:support@midatahub.org)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Michigan Data Hub Single Sign-On** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Michigan Data Hub Single Sign-On のサポート チーム](mailto:support@midatahub.org)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-michigan-data-hub-single-sign-on-test-user"></a>Michigan Data Hub Single Sign-On のテスト ユーザーの作成
 
-このセクションでは、Michigan Data Hub Single Sign-On で B.Simon というユーザーを作成します。  [Michigan Data Hub Single Sign-On のサポート チーム](mailto:support@midatahub.org)と連携して、Michigan Data Hub Single Sign-On プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Michigan Data Hub Single Sign-On で B.Simon というユーザーを作成します。 [Michigan Data Hub Single Sign-On のサポート チーム](mailto:support@midatahub.org)と連携して、Michigan Data Hub Single Sign-On プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Michigan Data Hub Single Sign-On] タイルをクリックすると、SSO を設定した Michigan Data Hub Single Sign-On に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Michigan Data Hub Single Sign-On] タイルをクリックすると、SSO を設定した Michigan Data Hub Single Sign-On に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Michigan Data Hub Single Sign-On を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Michigan Data Hub Single Sign-On を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Michigan Data Hub Single Sign-On を保護する方法](/cloud-app-security/proxy-intro-aad)

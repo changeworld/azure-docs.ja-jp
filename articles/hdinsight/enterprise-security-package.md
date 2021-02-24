@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 用の Enterprise セキュリティ パッケージ
 description: Azure HDInsight 内の Enterprise セキュリティ パッケージのコンポーネントとバージョンについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 442c21c92ef2124ebef1889f99a8d2b806c8ce10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997872"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943308"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Azure HDInsight 用の Enterprise セキュリティ パッケージ
 
@@ -20,7 +17,7 @@ Enterprise セキュリティは、クラスターの作成のワークフロー
 
 * 認証のための Active Directory との統合。
 
-    以前は、ローカル管理者ユーザーとローカル SSH ユーザーと共に HDInsight クラスターを作成しました。 ローカル管理者ユーザーは、すべてのファイル、フォルダー、テーブル、列にアクセスできます。  Enterprise セキュリティ パッケージを使用すると、HDInsight を Active Directory と統合することにより、ロールベースのアクセス制御を有効にできます。 これには、オンプレミスの Active Directory、Azure Active Directory Domain Services、 または IaaS 仮想マシン上の Active Directory が含まれます。 クラスターのドメイン管理者は、自社の (ドメイン) ユーザー名とパスワードを使用する権限をユーザーに付与することができます。
+    以前は、ローカル管理者ユーザーとローカル SSH ユーザーと共に HDInsight クラスターを作成しました。 ローカル管理者ユーザーは、すべてのファイル、フォルダー、テーブル、列にアクセスできます。  Enterprise セキュリティ パッケージを使用すると、HDInsight を Azure Active Directory Domain Services と統合することで、Azure ロールベースのアクセス制御を有効にすることができます。
 
     詳細については、次を参照してください。
 
@@ -28,7 +25,7 @@ Enterprise セキュリティは、クラスターの作成のワークフロー
 
     * [HDInsight で Azure のドメイン参加済み Apache Hadoop クラスターを計画する](./domain-joined/apache-domain-joined-architecture.md)
 
-    * [ドメイン参加済みサンドボックス環境の構成](./domain-joined/apache-domain-joined-configure.md)
+    * [ドメイン参加済みサンドボックス環境の構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
     * [Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 

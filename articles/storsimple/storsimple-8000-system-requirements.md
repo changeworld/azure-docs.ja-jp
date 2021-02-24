@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297703"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966192"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 シリーズのソフトウェア、高可用性、ネットワークの要件
 
@@ -61,7 +61,7 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>StorSimple デバイスのネットワーク要件
 
-StorSimple デバイスはロックされたデバイスです。 ただし、iSCSI、クラウド、管理トラフィックを許可するには、ファイアウォールでポートを開く必要があります。 次の表は、ファイアウォールで開く必要があるポートの一覧です。 この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
+StorSimple デバイスはロックされたデバイスです。 ただし、iSCSI、クラウド、管理トラフィックを許可するには、ファイアウォールでポートを開く必要があります。 次の表は、ファイアウォールで開く必要があるポートの一覧です。 この表では、*イン* または *受信* はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト* または *送信* は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
 | ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | Notes |
 | --- | --- | --- | --- | --- |
@@ -122,7 +122,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 
 ルーティング メトリックは、指定したネットワークにデータをルーティングするインターフェイスとゲートウェイに関連付けられています。 ルーティング プロトコルによって、指定された宛先への最適なパスを計算するために使用されます (同じ宛先への複数のパスが存在することがわかった場合)。 ルーティング メトリックが低いと、優先順位が高くなります。
 
-StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。 ルーティング メトリックをユーザーが変更することはできません。 ただし、 `Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。 Get-HcsRoutingTable コマンドレットの詳細については、 [StorSimple デプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページをご覧ください。
+StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。 ルーティング メトリックをユーザーが変更することはできません。 ただし、 `Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。 Get-HcsRoutingTable コマンドレットの詳細については、 [StorSimple デプロイのトラブルシューティング](./storsimple-8000-troubleshoot-deployment.md)に関するページをご覧ください。
 
 Update 2 以降のバージョンに使用されるルーティング メトリック アルゴリズムは以下のとおりです。
 
@@ -250,4 +250,4 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 * [StorSimple ソリューションをデプロイする方法](storsimple-8000-deployment-walkthrough-u2.md)
 
 <!--Reference links-->
-[1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731844(v=ws.10)

@@ -2,20 +2,20 @@
 title: Azure AD Domain Services でのクラシック デプロイの移行による利点 |Microsoft Docs
 description: Azure Active Directory Domain Services のクラシック デプロイを、Resource Manager デプロイ モデルに移行する利点について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: iainfou
-ms.openlocfilehash: 93dcc1202c08be905cf08513f38e79a8a7674e01
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.author: justinha
+ms.openlocfilehash: 8cc5f5ebf389d35df02474d0561dc7827cde4d0b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650130"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620088"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のクラシックから Resource Manager デプロイ モデルへの移行による利点
 
@@ -36,7 +36,7 @@ Azure Active Directory Domain Services (Azure AD DS) では、クラシック �
 
 * [細かい設定が可能なパスワード ポリシーのサポート][password-policy]。
 * Azure AD と Azure AD Domain Services 間の同期速度の向上。
-* 2 つの新しい[属性が Azure AD から同期される][attributes] - *manager* と *employeeID*。
+* 2 つの新しい [属性が Azure AD から同期される][attributes] - *manager* と *employeeID*。
 * [SKU をアップグレード][skus]した場合の、より強力なドメイン コントローラーへのアクセス。
 * AD アカウントのロックアウトによる保護。
 * [マネージド ドメインのアラートのための電子メール通知][email-alerts]。

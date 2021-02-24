@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e690f6abc9c597cc1facb7b3e59604bb711cf274
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616876"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955669"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>リビジョン 3 スタンプの Type II SKU の OS バックアップと復元
 
@@ -41,7 +42,7 @@ Microsoft `Service Management` チームによるプロビジョニングが完�
 ```
 ## <a name="how-to-take-a-manual-backup"></a>手動バックアップを実行する方法
 
-OS ファイル システムのバックアップは、既に **cron ジョブ**を使用してスケジュールされています。 ただし、オペレーティング システムのファイル レベル バックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
+OS ファイル システムのバックアップは、既に **cron ジョブ** を使用してスケジュールされています。 ただし、オペレーティング システムのファイル レベル バックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
 
 ```
 #rear -v mkbackup
@@ -69,11 +70,11 @@ OS ファイル システムのバックアップは、既に **cron ジョブ**
 
 次のスクリーンショットは、完全バックアップの復元を示しています。
 
-![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![コマンド プロンプト ウィンドウのスクリーンショット。復元を確認できます。](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>ReaR ツールをインストールして構成を変更する方法 
 
-Relax-and-Recover (ReaR) パッケージは、HANA L インスタンスの **Type II SKU** に**プレインストール**されているため、ユーザーは何もする必要がありません。 オペレーティング システムのバックアップのために、ReaR の使用を直接開始することができます。
+Relax-and-Recover (ReaR) パッケージは、HANA L インスタンスの **Type II SKU** に **プレインストール** されているため、ユーザーは何もする必要がありません。 オペレーティング システムのバックアップのために、ReaR の使用を直接開始することができます。
 ただし、パッケージを自分でインストールする必要がある場合は、記載されている手順に従って、ReaR ツールをインストールして構成することができます。
 
 **ReaR** バックアップ パッケージをインストールするには、以下のコマンドを使用します。
@@ -99,4 +100,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-次のスクリーンショットは、完全バックアップの復元を示しています。![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+次のスクリーンショットは、完全バックアップの復元を示しています。![コマンド プロンプト ウィンドウのスクリーンショット。ReaR ツールで復元します。](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

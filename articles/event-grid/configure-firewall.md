@@ -3,12 +3,12 @@ title: Azure Event Grid のトピックまたはドメインに対して IP フ�
 description: この記事では Event Grid のトピックまたはドメインに対してファイアウォール設定を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324163"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインに対して IP ファイアウォールを構成する 
 既定では、要求が有効な認証と承認を受けている限り、トピックおよびドメインにはインターネットからアクセスできます。 IP ファイアウォールを使用すると、[CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみにアクセスを制限できます。 他の IP アドレスから発信するパブリッシャーは拒否され、403 (禁止) の応答が返されます。 Event Grid でサポートされるネットワーク セキュリティ機能の詳細については、[Event Grid のネットワーク セキュリティ](network-security.md)に関する記事を参照してください。
@@ -23,7 +23,7 @@ ms.locfileid: "88509420"
 
     IP ベースのファイアウォール規則を使用して、トラフィックを制限できます。 クラスレス ドメイン間ルーティング (CIDR) 表記で、単一の IPv4 アドレスまたは IP アドレスの範囲を指定します。 
 
-    ![[パブリック ネットワーク] ページ](./media/configure-firewall/public-networks-page.png)
+    ![[Public networks]\(パブリック ネットワーク\) が選択されている [Public network access]\(パブリック ネットワーク アクセス\) ページを示すスクリーンショット。](./media/configure-firewall/public-networks-page.png)
 3. プライベート エンドポイント接続のみにこのリソースへのアクセスを許可するには、 **[Private endpoints only]\(プライベート エンドポイントのみ\)** を選択します。 このページの **[プライベート エンドポイント接続]** タブを使用して、接続を管理します。 
 
     ![[パブリック ネットワーク] ページ](./media/configure-firewall/private-endpoints-page.png)

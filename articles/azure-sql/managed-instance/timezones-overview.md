@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: 84df755d4a89b83a0842a74a619fad5275396dec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711359"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734581"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のタイム ゾーン
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "84711359"
 
 サポートされている一連のタイム ゾーンは、マネージド インスタンスの基になるオペレーティング システムから継承されます。 また、新しいタイム ゾーン定義を取得して既存のものに変更を反映させるために、定期的に更新されています。
 
-[夏時間/タイム ゾーンの変更ポリシー](https://aka.ms/time)により、2010 年以降のヒストリカルな正確さが保証されます。
+[夏時間/タイム ゾーンの変更ポリシー](/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support)により、2010 年以降のヒストリカルな正確さが保証されます。
 
 サポートされているタイム ゾーンの名前を記載したリストは、[sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) システム ビューを介して公開されています。
 
@@ -51,7 +51,7 @@ ms.locfileid: "84711359"
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
-インスタンスの作成時にタイム ゾーンを設定するには、[Resource Manager テンプレート](https://aka.ms/sql-mi-create-arm-posh)で timezoneId プロパティを指定します。
+インスタンスの作成時にタイム ゾーンを設定するには、[Resource Manager テンプレート](./scripts/create-powershell-azure-resource-manager-template.md)で timezoneId プロパティを指定します。
 
 ```json
 "properties": {
@@ -95,7 +95,7 @@ ms.locfileid: "84711359"
 
 ## <a name="limitations"></a>制限事項
 
-- 既存のマネージド インスタンスのタイム ゾーンは変更できません。
+- 既存のマネージド インスタンスのタイム ゾーンは変更できません。 対処方法として、適切なタイム ゾーンで新しいマネージド インスタンスを作成し、手動バックアップおよび復元を実行するか、[クロスインスタンスのポイントインタイム リストア](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database) (推奨) を実行する方法があります。
 - SQL Server エージェントのジョブから起動される外部プロセスでは、インスタンスのタイム ゾーンは確認されません。
 
 ## <a name="list-of-supported-time-zones"></a>サポートされているタイム ゾーンの一覧
@@ -243,7 +243,7 @@ ms.locfileid: "84711359"
 
 ## <a name="see-also"></a>関連項目 
 
-- [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
-- [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
+- [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)
+- [AT TIME ZONE (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

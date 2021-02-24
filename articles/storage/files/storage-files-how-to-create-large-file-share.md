@@ -8,22 +8,22 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 190aaae81d51434b57b5aaa6817a443dc541d26e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5acb8e347046780c84f0aa324b997abb5e2aa840
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069138"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629225"
 ---
 # <a name="enable-and-create-large-file-shares"></a>大きなファイル共有の有効化と作成
 
-ストレージ アカウントで大きなファイル共有を有効にすると、ファイル共有は 100 TiB までスケールアップできます。 既存のファイル共有のため、既存のストレージ アカウントに対してこのスケーリングを有効にすることができます。
+ストレージ アカウントで大きなファイル共有を有効にすると、ファイル共有を 100 TiB までスケール アップでき、標準共有の IOPS とスループットの上限も上がります。 既存のファイル共有のために、既存のストレージ アカウントに対してこのスケーリングを有効にすることもできます。 詳細については、「[ファイル共有とファイルのスケール ターゲット](storage-files-scale-targets.md#azure-files-scale-targets)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- Azure PowerShell モジュールを使用する場合は、[最新バージョンをインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0)してください。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure PowerShell モジュールを使用する場合は、[最新バージョンをインストール](/powershell/azure/install-az-ps?view=azps-4.6.0)してください。
 
 ## <a name="restrictions"></a>制限
 
@@ -65,7 +65,7 @@ ms.locfileid: "89069138"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-まず、大きなファイル共有を有効にできるように、[Azure CLI の最新バージョンをインストールします](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+まず、大きなファイル共有を有効にできるように、[Azure CLI の最新バージョンをインストールします](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 大きなファイル共有が有効なストレージ アカウントを作成するには、次のコマンドを使用します。 `<yourStorageAccountName>`、`<yourResourceGroup>`、および `<yourDesiredRegion>` を実際の情報に置き換えます。
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-まず、大きなファイル共有を有効にできるように、[PowerShell の最新バージョンをインストールします](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)。
+まず、大きなファイル共有を有効にできるように、[PowerShell の最新バージョンをインストールします](/powershell/azure/install-az-ps?view=azps-3.0.0)。
 
 大きなファイル共有が有効なストレージ アカウントを作成するには、次のコマンドを使用します。 `<yourStorageAccountName>`、`<yourResourceGroup>`、および `<yourDesiredRegion>` を実際の情報に置き換えます。
 

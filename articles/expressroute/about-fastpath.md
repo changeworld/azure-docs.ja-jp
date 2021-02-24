@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: bf600d835e177ce51870ed2a8894adcd667e3901
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e1ec175653316029932e0c03214f6f1e1d81e0f1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398054"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185650"
 ---
 # <a name="about-expressroute-fastpath"></a>ExpressRoute FastPath について
 
@@ -33,7 +33,7 @@ FastPath を構成するには、仮想ネットワーク ゲートウェイを�
 * Ultra Performance
 * ErGw3AZ
 
-## <a name="supported-features"></a>サポートされている機能
+## <a name="limitations"></a>制限事項
 
 FastPath ではほとんどの構成がサポートされていますが、次の機能はサポートされていません。
 
@@ -41,7 +41,7 @@ FastPath ではほとんどの構成がサポートされていますが、次�
 
 * VNet ピアリング:他の仮想ネットワークが、ExpressRoute に接続されているものとピアリングされている場合、ご自身のオンプレミス ネットワークから他の仮想ネットワーク (いわゆる "スポーク" VNet) へのネットワーク トラフィックは、引き続き仮想ネットワーク ゲートウェイに送信されます。 回避策として、すべての仮想ネットワークを ExpressRoute 回線に直接接続します。
 
-* Basic Load Balancer:仮想ネットワークに Basic の内部ロード バランサーをデプロイする場合、または仮想ネットワークにデプロイする Azure PaaS サービスで Basic の内部ロード バランサーを使用する場合、オンプレミスのネットワークから Basic Load Balancer でホストされている仮想 IP へのネットワーク トラフィックが仮想ネットワーク ゲートウェイに送信されます。 この問題を解決するには、Basic Load Balancer から [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) にアップグレードします。
+* Basic Load Balancer:仮想ネットワークに Basic の内部ロード バランサーをデプロイする場合、または仮想ネットワークにデプロイする Azure PaaS サービスで Basic の内部ロード バランサーを使用する場合、オンプレミスのネットワークから Basic Load Balancer でホストされている仮想 IP へのネットワーク トラフィックが仮想ネットワーク ゲートウェイに送信されます。 この問題を解決するには、Basic Load Balancer から [Standard Load Balancer](../load-balancer/load-balancer-overview.md) にアップグレードします。
 
 * Private Link:オンプレミス ネットワークから仮想ネットワークの[プライベート エンドポイント](../private-link/private-link-overview.md)に接続する場合、接続は仮想ネットワーク ゲートウェイを通過します。
  

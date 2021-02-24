@@ -7,12 +7,12 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001918"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760773"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central アプリケーションに接続されているデバイスの全体的な正常性状態を監視する
 
@@ -31,7 +31,7 @@ ms.locfileid: "87001918"
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Azure portal でメトリックを表示する
 
-次の手順では、[接続されているデバイス](./tutorial-connect-device-nodejs.md)に [IoT Central アプリケーション](./quick-deploy-iot-central.md)があることを前提としています。
+次の手順では、[接続されているデバイス](./tutorial-connect-device.md)に [IoT Central アプリケーション](./quick-deploy-iot-central.md)があることを前提としています。
 
 ポータルで IoT Central メトリックを表示するには:
 
@@ -46,7 +46,7 @@ Azure portal のメトリックへのアクセスは [Azure ロールベース�
 
 ## <a name="iot-central-metrics"></a>IoT Central メトリック
 
-IoT Central で現在使用できるメトリックの一覧については、「[Azure Monitor のサポートされるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps)」を参照してください。
+IoT Central で現在使用できるメトリックの一覧については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps)」を参照してください。
 
 ### <a name="metrics-and-invoices"></a>メトリックと請求書
 

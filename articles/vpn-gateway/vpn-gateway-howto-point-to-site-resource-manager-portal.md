@@ -1,36 +1,35 @@
 ---
 title: 'P2S VPN と証明書認証を使用して VNet に接続する: ポータル'
 titleSuffix: Azure VPN Gateway
-description: Azure Virtual Network に対し、P2S と自己署名証明書 (または CA によって発行された証明書) を使用して安全に Windows、Mac OS X、および Linux クライアントを接続します。 この記事では Azure Portal を使用します。
+description: P2S と自己署名証明書または CA によって発行された証明書を使用して、Windows、macOS、Linux の各クライアントを Azure 仮想ネットワークに安全に接続します。 この記事では Azure Portal を使用します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 33f35dc2a8224f496e040b66b2b92bc4c2ec4682
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b2fa06bc04bdb584367312b1e89939ed386b4f2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984849"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952850"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:Azure portal
 
-この記事では、Windows、Linux、または Mac OS X が実行されている個々のクライアントを Azure VNet に対して安全に接続する方法を紹介します。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 VNet への接続を必要とするクライアントがごく少ない場合は、サイト対サイト VPN の代わりに P2S を使用することもできます。 ポイント対サイト接続に、VPN デバイスや公開 IP アドレスは必要ありません。 P2S により、SSTP (Secure Socket トンネリング プロトコル) または IKEv2 経由の VPN 接続が作成されます。 ポイント対サイト VPN について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
+この記事では、Windows、Linux、または macOS が実行されている個々のクライアントを Azure VNet に安全に接続する方法を紹介します。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 VNet への接続を必要とするクライアントがごく少ない場合は、サイト対サイト VPN の代わりに P2S を使用することもできます。 ポイント対サイト接続に、VPN デバイスや公開 IP アドレスは必要ありません。 P2S により、SSTP (Secure Socket トンネリング プロトコル) または IKEv2 経由の VPN 接続が作成されます。 ポイント対サイト VPN について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
 
-![コンピューターを Azure VNet に接続する - ポイント対サイト接続の図](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
+:::image type="content" source="./media\vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-diagram.png" alt-text="コンピューターから Azure VNet への接続 - ポイント対サイト接続の図":::
 
-## <a name="architecture"></a>Architecture
+ポイント対サイト VPN の詳細については、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。 Azure PowerShell を使用してこの構成を作成するには、[Azure PowerShell を使用したポイント対サイト VPN の構成](vpn-gateway-howto-point-to-site-rm-ps.md)に関する記事を参照してください。
 
-ポイント対サイトのネイティブ Azure 証明書認証接続には、以下のものが必要となります。これらの要素をこの演習で構成していきます。
+[!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
-* RouteBased VPN ゲートウェイ。
-* Azure にアップロードされた、ルート証明書の公開キー (.cer ファイル)。 証明書をアップロードすると、その証明書は信頼された証明書と見なされ、認証に使用されます。
-* ルート証明書から生成されたクライアント証明書。 VNet に接続する予定の各クライアント コンピューターにインストールされるクライアント証明書です。 この証明書はクライアントの認証に使用されます。
-* VPN クライアント構成。 VPN クライアント構成ファイルには、クライアントが VNet に接続するために必要な情報が含まれています。 このファイルを使用すると、オペレーティング システムにネイティブな既存の VPN クライアントが構成されます。 接続する各クライアントは、構成ファイルの設定を使って構成する必要があります。
+## <a name="prerequisites"></a>前提条件
 
-#### <a name="example-values"></a><a name="example"></a>値の例
+Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
+
+### <a name="example-values"></a><a name="example"></a>値の例
 
 次の値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
 
@@ -52,6 +51,9 @@ ms.locfileid: "84984849"
 ## <a name="1-create-a-virtual-network"></a><a name="createvnet"></a>1.仮想ネットワークの作成
 
 最初に Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
+
+[!INCLUDE [About cross-premises addresses](../../includes/vpn-gateway-cross-premises.md)]
+
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="2-create-a-virtual-network-gateway"></a><a name="creategw"></a>2.仮想ネットワーク ゲートウェイの作成
@@ -70,11 +72,11 @@ ms.locfileid: "84984849"
 
 証明書は、ポイント対サイト VPN 接続を介して VNet に接続するクライアントを認証するために、Azure によって使用されます。 ルート証明書を取得したら、公開キー情報を Azure に[アップロード](#uploadfile)します。 ルート証明書は、Azure によって "信頼された" と見なされ、P2S 経由での仮想ネットワークへの接続に使用されます。 また、信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターにインストールします。 クライアント証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 
 
-### <a name="1-obtain-the-cer-file-for-the-root-certificate"></a><a name="getcer"></a>1.ルート証明書の .cer ファイルの取得
+### <a name="generate-a-root-certificate"></a><a name="getcer"></a>ルート証明書を生成する
 
 [!INCLUDE [root-certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
-### <a name="2-generate-a-client-certificate"></a><a name="generateclientcert"></a>2.クライアント証明書を生成
+### <a name="generate-client-certificates"></a><a name="generateclientcert"></a>クライアント証明書を生成する
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
@@ -82,46 +84,46 @@ ms.locfileid: "84984849"
 
 クライアント アドレス プールとは、指定するプライベート IP アドレスの範囲です。 ポイント対サイト VPN 経由で接続するクライアントは、この範囲内の IP アドレスを動的に受け取ります。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。 複数のプロトコルを構成するとき、SSTP がプロトコルの 1 つの場合、構成後のアドレス プールは構成されるプロトコル間で均等に分割されます。
 
-1. 仮想ネットワーク ゲートウェイが作成されたら、[仮想ネットワーク ゲートウェイ] ページの **[設定]** セクションに移動します。 **[設定]** セクションの **[ポイント対サイトの構成]** を選択します。 **[今すぐ構成]** を選択して、構成ページを開きます。
+1. 仮想ネットワーク ゲートウェイが作成されたら、[仮想ネットワーク ゲートウェイ] ページの **[設定]** セクションに移動します。 **[設定]** で、 **[ポイント対サイトの構成]** を選択します。 **[今すぐ構成]** を選択して、構成ページを開きます。
 
-   ![ポイント対サイトのページ](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-configure.png "今すぐポイント対サイトで構成する")
-2. **[ポイント対サイトの構成]** ページでは、さまざまな設定を構成できます。 このページにトンネルの種類または認証の種類が表示されない場合、ゲートウェイでは Basic SKU が使用されています。 Basic SKU では、IKEv2 と RADIUS 認証はサポートされません。 これらの設定を使用する場合は、ゲートウェイを削除し、別のゲートウェイ SKU を使って再作成する必要があります。
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png" alt-text="[ポイント対サイトの構成] ページ" lightbox="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png":::
+1. **[ポイント対サイトの構成]** ページでは、さまざまな設定を構成できます。 このページにトンネルの種類または認証の種類が表示されない場合、ゲートウェイでは Basic SKU が使用されています。 Basic SKU では、IKEv2 と RADIUS 認証はサポートされません。 これらの設定を使用する場合は、ゲートウェイを削除し、別のゲートウェイ SKU を使って再作成する必要があります。
 
-   [![[ポイント対サイトの構成] ページ](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/certificate-settings-address.png "アドレス プールを指定する")](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/certificate-settings-expanded.png#lightbox)
-3. **[アドレス プール]** ボックスに、使用するプライベート IP アドレス範囲を追加します。 VPN クライアントには、指定した範囲から動的に IP アドレスが割り当てられます。 最小のサブネット マスクは、アクティブ/パッシブ構成の場合は 29 ビット、アクティブ/アクティブ構成の場合は 28 ビットです。
-4. 次のセクションに進み、トンネルの種類を構成します。
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/address-pool.png" alt-text="アドレス プールを指定する" lightbox="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/address-pool.png":::
+1. **[アドレス プール]** ボックスに、使用するプライベート IP アドレス範囲を追加します。 VPN クライアントには、指定した範囲から動的に IP アドレスが割り当てられます。 最小のサブネット マスクは、アクティブ/パッシブ構成の場合は 29 ビット、アクティブ/アクティブ構成の場合は 28 ビットです。
+1. 次のセクションに進み、トンネルの種類を構成します。
 
 ## <a name="5-configure-tunnel-type"></a><a name="tunneltype"></a>5.トンネルの種類の構成
 
-トンネルの種類を選択することができます。 トンネルのオプションには、OpenVPN、SSTP、IKEv2 があります。
+トンネルの種類を選択します。 トンネルのオプションには、OpenVPN、SSTP、IKEv2 があります。
 
 * Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。
 * Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP にフォールバックします。
 * OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
 
-![トンネルの種類](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunnel.png "トンネルの種類を指定する")
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunnel-ike.png" alt-text="トンネルの種類":::
 
 ## <a name="6-configure-authentication-type"></a><a name="authenticationtype"></a>6.認証の種類の構成
 
 **[認証の種類]** で **[Azure 証明書]** を選択します。
 
-  ![認証の種類](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authentication-type.png "認証の種類を指定する")
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/azure-certificate.png" alt-text="認証の種類":::
 
 ## <a name="7-upload-the-root-certificate-public-certificate-data"></a><a name="uploadfile"></a>7.ルート証明書の公開証明書データのアップロード
 
 その後は、最大で合計 20 個まで、信頼されたルート証明書を追加でアップロードできます。 公開証明書データがアップロードされたら、Azure でそれを使用し、信頼されたルート証明書から生成されたクライアント証明書がインストールされているクライアントを認証できます。 ルート証明書の公開キー情報を Azure にアップロードします。
 
 1. 証明書は、 **[ルート証明書]** セクションの **[ポイント対サイトの構成]** ページで追加します。
-2. ルート証明書を Base 64 でエンコードされた X.509 (.cer) ファイルとしてエクスポートしたことを確認してください。 証明書をテキスト エディターで開くことができるように、この形式でエクスポートする必要があります。
-3. 証明書をメモ帳などのテキスト エディターで開きます。 証明書データをコピーするときはに、必ず、テキストを復帰や改行のない 1 つの連続した行としてコピーしてください。 復帰や改行を確認するには、テキスト エディターのビューを "記号を表示する/すべての文字を表示する" ように変更することが必要になる場合があります。 次のセクションのみを 1 つの連続した行としてコピーします。
+1. ルート証明書を Base 64 でエンコードされた X.509 (.cer) ファイルとしてエクスポートしたことを確認してください。 証明書をテキスト エディターで開くことができるように、この形式でエクスポートする必要があります。
+1. 証明書をメモ帳などのテキスト エディターで開きます。 証明書データをコピーするときはに、必ず、テキストを復帰や改行のない 1 つの連続した行としてコピーしてください。 復帰や改行を確認するには、テキスト エディターのビューを "記号を表示する/すべての文字を表示する" ように変更することが必要になる場合があります。 次のセクションのみを 1 つの連続した行としてコピーします。
 
-   ![証明書データ](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png "ルート証明書のデータをコピーする")
-4. **[公開証明書データ]** フィールドに証明書データを貼り付けます。 証明書に**名前を付けて**、 **[保存]** を選択します。 最大 20 個の信頼されたルート証明書を追加できます。
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png" alt-text="証明書データ" border="false":::
+1. **[公開証明書データ]** フィールドに証明書データを貼り付けます。 証明書に **名前を付けて**、 **[保存]** を選択します。 最大 20 個の信頼されたルート証明書を追加できます。
 
-   ![証明書データを貼り付ける](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png "証明書データを貼り付ける")
-5. ページの上部にある **[保存]** を選択して、構成設定をすべて保存します。
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png" alt-text="証明書データを貼り付ける" border="false":::
+1. ページの上部にある **[保存]** を選択して、構成設定をすべて保存します。
 
-   ![構成を保存する](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png "構成を保存する")
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png" alt-text="構成を保存する" border="false":::
 
 ## <a name="8-install-an-exported-client-certificate"></a><a name="installclientcert"></a>8.エクスポートしたクライアント証明書のインストール
 
@@ -139,21 +141,7 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Windows VPN クライアントから接続するには
 
->[!NOTE]
->接続元の Windows クライアント コンピューターの管理者権限が必要です。
->
->
-
-1. VNet に接続するには、クライアント コンピューターで [VPN 接続] に移動し、作成した VPN 接続を見つけます。 仮想ネットワークと同じ名前が付いています。 **[接続]** を選択します。 証明書を使用することを示すポップアップ メッセージが表示される場合があります。 **[続行]** を選択して、昇格された特権を使用します。
-
-2. **[接続]** 状態ページで、 **[接続]** を選択して接続を開始します。 **[証明書の選択]** 画面が表示された場合は、表示されているクライアント証明書が接続に使用する証明書であることを確認します。 そうでない場合は、ドロップダウン矢印を使用して適切な証明書を選び、 **[OK]** を選択します。
-
-   ![VPN クライアントから Azure に接続する](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png "接続する")
-3. 接続が確立されました。
-
-   ![確立された接続](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png "接続が確立される")
-
-#### <a name="troubleshoot-windows-p2s-connections"></a>Windows の P2S 接続のトラブルシューティング
+[!INCLUDE [Connect from a Windows client](../../includes/vpn-gateway-p2s-connect-windows-client.md)]
 
 [!INCLUDE [verifies client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
 
@@ -161,15 +149,15 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 [ネットワーク] ダイアログ ボックスで、使用するクライアント プロファイルを検索し、[VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) の設定を指定して、 **[接続]** を選択します。
 
-手順の詳細については、[Mac (OS X) のインストール](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
+手順の詳細については、[Mac (OS X) のインストール](./point-to-site-vpn-client-configuration-azure-cert.md#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
 
-  ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png "接続する")
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png" alt-text="Mac VPN クライアント接続" border="false":::
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>接続を確認するには
 
 ここで紹介する手順は、Windows クライアントに適用されます。
 
-1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、 *ipconfig/all*を実行します。
+1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、 *ipconfig/all* を実行します。
 2. 結果を表示します。 受信した IP アドレスが、構成に指定したポイント対サイト VPN クライアント アドレス プール内のアドレスのいずれかであることに注意してください。 結果は次の例のようになります。
 
    ```
@@ -189,7 +177,11 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 ここで紹介する手順は、Windows クライアントに適用されます。
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
+
+* VNet に対して DNS サーバーの IP アドレスが指定された後に VPN クライアント構成パッケージが生成されたことを確認します。 DNS サーバーの IP アドレスを更新した場合は、新しい VPN クライアント構成パッケージを生成してインストールしてください。
+
+* 接続元のコンピューターのイーサネット アダプターに割り当てられている IPv4 アドレスを "ipconfig" でチェックします。 その IP アドレスが、接続先の VNet のアドレス範囲内または VPNClientAddressPool のアドレス範囲内にある場合、これを "アドレス空間の重複" といいます。 アドレス空間がこのように重複していると、ネットワーク トラフィックが Azure に到達せずローカル ネットワーク上に留まることになります。
 
 ## <a name="to-add-or-remove-trusted-root-certificates"></a><a name="add"></a>信頼されたルート証明書を追加または削除するには
 
@@ -202,8 +194,8 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 ### <a name="to-remove-a-trusted-root-certificate"></a>信頼されたルート証明書を削除するには
 
 1. 信頼されたルート証明書を削除するには、仮想ネットワーク ゲートウェイの **[ポイント対サイトの構成]** ページに移動します。
-2. ページの **[ルート証明書]** セクションで、削除する証明書を見つけます。
-3. 証明書の横にある省略記号を選び、[削除] を選択します。
+1. ページの **[ルート証明書]** セクションで、削除する証明書を見つけます。
+1. 証明書の横にある省略記号を選び、[削除] を選択します。
 
 ## <a name="to-revoke-a-client-certificate"></a><a name="revokeclient"></a>クライアント証明書を失効させるには
 
@@ -215,19 +207,19 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 失効リストに拇印を追加することで、クライアント証明書を失効させることができます。
 
-1. クライアント証明書の拇印を取得します。 詳細については、「[方法: 証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695.aspx)」を参照してください。
-2. 情報をテキスト エディターにコピーし、文字列が 1 つにつながるようにスペースをすべて削除します。
-3. 仮想ネットワーク ゲートウェイの **[ポイント対サイトの構成]** ページに移動します。 このページは、[信頼されたルート証明書のアップロード](#uploadfile)に使用したものです。
-4. **[失効した証明書]** セクションで、証明書のフレンドリ名を入力します (証明書 CN にする必要はありません)。
-5. 拇印の文字列をコピーして **[拇印]** フィールドに貼り付けます。
-6. 拇印が検証され、自動的に失効リストに追加されます。 リストが更新されていることを示すメッセージが画面に表示されます。 
-7. 更新が完了した後は、証明書を接続に使用することができなくなります。 この証明書を使用して接続を試みたクライアントには、証明書が無効になっていることを示すメッセージが表示されます。
+1. クライアント証明書の拇印を取得します。 詳細については、「[方法: 証明書のサムプリントを取得する](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)」を参照してください。
+1. 情報をテキスト エディターにコピーし、文字列が 1 つにつながるようにスペースをすべて削除します。
+1. 仮想ネットワーク ゲートウェイの **[ポイント対サイトの構成]** ページに移動します。 このページは、[信頼されたルート証明書のアップロード](#uploadfile)に使用したものです。
+1. **[失効した証明書]** セクションで、証明書のフレンドリ名を入力します (証明書 CN にする必要はありません)。
+1. 拇印の文字列をコピーして **[拇印]** フィールドに貼り付けます。
+1. 拇印が検証され、自動的に失効リストに追加されます。 リストが更新されていることを示すメッセージが画面に表示されます。 
+1. 更新が完了した後は、証明書を接続に使用することができなくなります。 この証明書を使用して接続を試みたクライアントには、証明書が無効になっていることを示すメッセージが表示されます。
 
-## <a name="point-to-site-faq"></a><a name="faq"></a>ポイント対サイト接続に関してよく寄せられる質問
+## <a name="point-to-site-faq"></a><a name="faq"></a>ポイント対サイトに関する FAQ
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)」を参照してください。
 
 P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページを参照してください。

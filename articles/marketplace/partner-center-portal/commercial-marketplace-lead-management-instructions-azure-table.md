@@ -4,15 +4,15 @@ description: Azure Table ストレージを使用して Microsoft AppSource お�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855778"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347865"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する
 
@@ -26,7 +26,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
     1. 左側のメニュー バーにある **[+ リソースの作成]** を選択します。 **[新規]** ウィンドウが右側に表示されます。
     1. **[新規]** ウィンドウで **[ストレージ]** を選択します。 **[おすすめ]** の一覧が右側に表示されます。
-    1. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)に関するページの手順に従います。
+    1. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md?tabs=azure-portal)に関するページの手順に従います。
 
         :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="Azure ストレージ アカウントを作成する手順。":::
 
@@ -55,11 +55,11 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
     ![Azure テーブル](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    [Azure Storage Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) またはその他の任意のツールを使用して、ストレージ テーブル内のデータを表示できます。 Azure テーブル内のデータをエクスポートすることもできます。
+    [Azure Storage Explorer](https://www.storageexplorer.com) またはその他の任意のツールを使用して、ストレージ テーブル内のデータを表示できます。 Azure テーブル内のデータをエクスポートすることもできます。
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(省略可能) Power Automate を使用してリード通知を取得する
 
-[Power Automate](https://docs.microsoft.com/flow/) を使用して、Azure Storage テーブルにリードが追加されるたびに通知を自動的に送信できます。 アカウントを持っていない場合は、[無料アカウントにサインアップ](https://flow.microsoft.com/)できます。
+[Power Automate](/flow/) を使用して、Azure Storage テーブルにリードが追加されるたびに通知を自動的に送信できます。 アカウントを持っていない場合は、[無料アカウントにサインアップ](https://flow.microsoft.com/)できます。
 
 ### <a name="lead-notification-example"></a>潜在顧客の通知の例
 
@@ -135,7 +135,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
    次の数個の手順では、条件の結果に基づいて実行するアクションを設定します。
 
    * 条件が **[If no] (いいえの場合)** に解決される場合は、何もしません。
-   * 条件が **[If yes] (はいの場合)** に解決される場合は、電子メールを送信するために Office 365 アカウントに接続するアクションをトリガーします。
+   * 条件を解決すると **はいの場合** は、メールを送信するために職場または学校のアカウントに接続するアクションをトリガーします。 
 
 1. **[はいの場合]** の下で **[アクションの追加]** のリンクを選択します。
 

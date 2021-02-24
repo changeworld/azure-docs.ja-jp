@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (Android) | Microsoft Docs
+title: クイックスタート - Azure IoT Hub への利用統計情報の送信に関するクイックスタート (Android) | Microsoft Docs
 description: このクイック スタートでは、サンプルの Android アプリケーションを実行して、シミュレートされた利用統計情報を IoT ハブに送信し、それをクラウド上で処理するために IoT ハブから読み取ります。
 author: wesmc7777
 manager: philmea
@@ -11,14 +11,15 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
+- devx-track-azurecli
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: 1e5e11d5d04c31fa77adcb0488447c91b0d05254
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dd622f0d55be000e2318c53f200bebf49c373724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317962"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624322"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>クイック スタート:IoT の利用統計情報を Android デバイスから送信する
 
@@ -36,15 +37,7 @@ ms.locfileid: "87317962"
 
 * ファイアウォールでポート 8883 が開放されていること。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Azure IoT 拡張機能を追加する
-
-次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -71,7 +64,7 @@ az extension add --name azure-iot
     **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyAndroidDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyAndroidDevice --output table
     ```
 
     次のようなデバイス接続文字列をメモしておきます。
@@ -107,7 +100,7 @@ az extension add --name azure-iot
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
-このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、Android デバイスから送信されるデバイス メッセージを監視します。
+このセクションでは、[IoT 拡張機能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)と共に Azure Cloud Shell を使用して、Android デバイスから送信されるデバイス メッセージを監視します。
 
 1. Azure Cloud Shell を使用して、次のコマンドを実行して接続し、お使いの IoT ハブからのメッセージを読み取ります。
 

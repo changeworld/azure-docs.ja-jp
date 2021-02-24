@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 677810c21f9ea6151e2ffe7a4e2b9cdc8473a09f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 4c6d8fabbd236a2653fff8168ad73c0b45f09d64
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226920"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027844"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK の React プラグイン
 
@@ -32,17 +32,19 @@ npm install @microsoft/applicationinsights-react-js
 
 ## <a name="basic-usage"></a>基本的な使用方法
 
+Application Insights への接続を初期化します。
+
 ```javascript
-import React from 'react';
+// AppInsights.js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
-import { ReactPlugin, withAITracking } from '@microsoft/applicationinsights-react-js';
-import { createBrowserHistory } from "history";
+import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
+import { createBrowserHistory } from 'history';
 
 const browserHistory = createBrowserHistory({ basename: '' });
-var reactPlugin = new ReactPlugin();
-var appInsights = new ApplicationInsights({
+const reactPlugin = new ReactPlugin();
+const appInsights = new ApplicationInsights({
     config: {
-        instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE'
+        instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
         extensions: [reactPlugin],
         extensionConfig: {
           [reactPlugin.identifier]: { history: browserHistory }
@@ -50,6 +52,15 @@ var appInsights = new ApplicationInsights({
     }
 });
 appInsights.loadAppInsights();
+export { reactPlugin, appInsights };
+```
+
+高階コンポーネント関数を使用してコンポーネントをラップし、そのコンポーネントで Application Insights を有効にします。
+
+```javascript
+import React from 'react';
+import { withAITracking } from '@microsoft/applicationinsights-react-js';
+import { reactPlugin, appInsights } from './AppInsights';
 
 // To instrument various React components usage tracking, apply the `withAITracking` higher-order
 // component function.
@@ -58,8 +69,10 @@ class MyComponent extends React.Component {
     ...
 }
 
-export default withAITracking(reactPlugin,appInsights, MyComponent);
+// withAITracking takes 4 parameters ( reactPlugin, Component, ComponentName, className) 
+// the first two are required and the other two are optional.
 
+export default withAITracking(reactPlugin, MyComponent);
 ```
 
 ## <a name="configuration"></a>構成
@@ -84,6 +97,127 @@ Azure portal でこのメトリックを表示するには、Application Insight
 
 > [!NOTE]
 > 新しいカスタム メトリックが Azure portal に表示されるまでに最大で 10 分かかることがあります。
+
+## <a name="using-react-hooks"></a>React フックを使用する
+
+[React フック](https://reactjs.org/docs/hooks-reference.html)では、クラスベースの React コンポーネントに依存することなく、React アプリケーションでの状態とライフサイクルを管理することができます。 Application Insights React プラグインには、高階コンポーネントのときと同様の方法で動作するフック統合がいくつか用意されています。
+
+### <a name="using-react-context"></a>React Context を使用する
+
+Application Insights の React フックは、[React Context](https://reactjs.org/docs/context.html) をその格納アスペクトとして使用するように設計されています。 Context を使用するには、前述のように Application Insights を初期化してから、Context オブジェクトをインポートします。
+
+```javascript
+import React from "react";
+import { AppInsightsContext } from "@microsoft/applicationinsights-react-js";
+import { reactPlugin } from "./AppInsights";
+
+const App = () => {
+    return (
+        <AppInsightsContext.Provider value={reactPlugin}>
+            /* your application here */
+        </AppInsightsContext.Provider>
+    );
+};
+```
+
+このコンテキスト プロバイダーにより、すべての子コンポーネント内で Application Insights が `useContext` フックとして使用できるようになります。
+
+```javascript
+import React from "react";
+import { useAppInsightsContext } from "@microsoft/applicationinsights-react-js";
+
+const MyComponent = () => {
+    const appInsights = useAppInsightsContext();
+    
+    appInsights.trackMetric("Component 'MyComponent' is in use");
+    
+    return (
+        <h1>My Component</h1>
+    );
+}
+export default MyComponent;
+```
+
+### `useTrackMetric`
+
+`useTrackMetric` フックでは、コンポーネント構造にコンポーネントを追加することなく、`withAITracking` 高階コンポーネントの機能がレプリケートされます。 フックは 2 つの引数を取ります。最初に Application Insights インスタンス (`useAppInsightsContext` フックから取得可能) を取り、次に追跡用のコンポーネントの識別子 (名前など) を取ります。
+
+```javascript
+import React from "react";
+import { useAppInsightsContext, useTrackMetric } from "@microsoft/applicationinsights-react-js";
+
+const MyComponent = () => {
+    const appInsights = useAppInsightsContext();
+    const trackComponent = useTrackMetric(appInsights, "MyComponent");
+    
+    return (
+        <h1 onHover={trackComponent} onClick={trackComponent}>My Component</h1>
+    );
+}
+export default MyComponent;
+```
+
+これは高階コンポーネントと同様に動作しますが、コンポーネントのライフサイクルではなく、フックのライフサイクル イベントに応答します。 特定の操作で実行する必要がある場合は、フックをユーザー イベントに明示的に指定する必要があります。
+
+### `useTrackEvent`
+
+`useTrackEvent` フックは、ボタン クリックやその他の API 呼び出しなど、アプリケーションで追跡が必要になる可能性があるカスタム イベントの追跡に使用されます。 これは 2 つの引数を取ります。最初に Application Insights インスタンス (`useAppInsightsContext` フックから取得可能) を取り、次にイベントの名前を取ります。
+
+```javascript
+import React, { useState, useEffect } from "react";
+import { useAppInsightsContext, useTrackEvent } from "@microsoft/applicationinsights-react-js";
+
+const ProductCart = () => {
+    const appInsights = useAppInsightsContext();
+    const trackCheckout = useTrackEvent(appInsights, "Checkout");
+    const trackCartUpdate = useTrackEvent(appInsights, "Cart Updated");
+    const [cart, setCart] = useState([]);
+    
+    useEffect(() => {
+        trackCartUpdate({ cartCount: cart.length });
+    }, [cart]);
+    
+    const performCheckout = () => {
+        trackCheckout();
+        // submit data
+    };
+    
+    return (
+        <div>
+            <ul>
+                <li>Product 1 <button onClick={() => setCart([...cart, "Product 1"])}>Add to Cart</button>
+                <li>Product 2 <button onClick={() => setCart([...cart, "Product 2"])}>Add to Cart</button>
+                <li>Product 3 <button onClick={() => setCart([...cart, "Product 3"])}>Add to Cart</button>
+                <li>Product 4 <button onClick={() => setCart([...cart, "Product 4"])}>Add to Cart</button>
+            </ul>
+            <button onClick={performCheckout}>Checkout</button>
+        </div>
+    );
+}
+export default MyComponent;
+```
+
+フックを使用すると、データ ペイロードをフックに提供して、Application Insights に格納されているイベントにデータを追加できます。
+
+## <a name="react-error-boundaries"></a>React の Error Boundary
+
+[Error Boundary](https://reactjs.org/docs/error-boundaries.html) では、React アプリケーション内で例外が発生した場合に適切に処理することができます。このようなエラーが発生すると、場合によっては例外をログに記録する必要があります。 Application Insights の React プラグインには、エラーが発生したときに自動的にログに記録する Error Boundary コンポーネントが用意されています。
+
+```javascript
+import React from "react";
+import { reactPlugin } from "./AppInsights";
+import { AppInsightsErrorBoundary } from "@microsoft/applicationinsights-react-js";
+
+const App = () => {
+    return (
+        <AppInsightsErrorBoundary onError={() => <h1>I believe something went wrong</h1>} appInsights={reactPlugin}>
+            /* app here */
+        </AppInsightsErrorBoundary>
+    );
+};
+```
+
+`AppInsightsErrorBoundary` には 2 つのプロパティ、つまりアプリケーション用に作成された `ReactPlugin` インスタンスと、エラーが発生したときにレンダリングされるコンポーネントを渡す必要があります。 未処理のエラーが発生すると、Error Boundary に対して指定された情報を使用して `trackException` が呼び出され、`onError` コンポーネントが表示されます。
 
 ## <a name="sample-app"></a>サンプル アプリ
 

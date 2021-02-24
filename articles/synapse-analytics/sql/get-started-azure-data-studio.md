@@ -1,22 +1,22 @@
 ---
-title: Azure Data Studio (プレビュー) を使用して Synapse SQL に接続する
-description: Azure Data Studio (プレビュー) を使用して Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行します。
+title: Azure Data Studio を使用して Synapse SQL に接続する
+description: Azure Data Studio を使用して Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059561"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258899"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio (プレビュー) を使用して Synapse SQL に接続する
+# <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Azure Data Studio を使用して Synapse SQL に接続する
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "87059561"
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-[Azure Data Studio (プレビュー)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行することができます。 
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行することができます。 
 
 ## <a name="connect"></a>接続する
 
@@ -42,11 +42,11 @@ Synapse SQL に接続するには、Azure Data Studio を開いて **[新しい�
 * **データベース:** データベース名
 
 > [!NOTE]
-> **SQL オンデマンド (プレビュー)** を使用する場合、URL は次のようになります。
+> **サーバーレス SQL プール** を使用する場合、URL は次のようになります。
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net
 >
-> **SQL プール**を使用する場合、URL は次のようになります。
+> **専用 SQL プール** を使用する場合、URL は次のようになります。
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
@@ -73,11 +73,11 @@ Azure Active Directory を使用するには、必要な認証の種類を選択
 
 ## <a name="query"></a>クエリ
 
-接続後、Synapse SQL のインスタンスに対し、サポートされている [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用してクエリを実行することができます。 最初に、ダッシュボード ビューから **[新しいクエリ]** を選択します。
+接続後、Synapse SQL のインスタンスに対し、サポートされている [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用してクエリを実行することができます。 最初に、ダッシュボード ビューから **[新しいクエリ]** を選択します。
 
 ![新しいクエリ](./media/get-started-azure-data-studio/5-new-query.png)
 
-たとえば、SQL オンデマンドを使用して [Parquet ファイルを照会](query-parquet-files.md)するには、次の Transact-SQL ステートメントを使用します。
+たとえば、サーバーレス SQL プールを使用して [Parquet ファイルを照会](query-parquet-files.md)するには、次の Transact-SQL ステートメントを使用します。
 
 ```sql
 SELECT COUNT(*)
@@ -94,4 +94,5 @@ Synapse SQL に接続する他の方法を詳しく見てみましょう。
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [sqlcmd](get-started-connect-sqlcmd.md)
- 
+
+詳細については、「[Azure Synapse Analytics の専用 SQL プールを使用して接続先となる Azure Data Studio を使用し、クエリを実行する](/sql/azure-data-studio/quickstart-sql-dw)」を参照してください。

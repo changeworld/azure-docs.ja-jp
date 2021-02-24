@@ -4,11 +4,11 @@ description: この記事では、Azure Portal を使用して Azure Event Grid 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114885"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008958"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
 この記事では、ポータルを使用して Event Grid のトピックとサブスクリプションのメトリックを表示し、それらのアラートを作成する方法について説明します。 

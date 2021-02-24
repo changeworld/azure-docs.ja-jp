@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: f6480bdd5139d5bc7a5a1887b80f43c3903bf579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b2bb50fc2ad8084d79097fe7acb449821d0a4da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804608"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91331065"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Azure PowerShell を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -21,10 +21,9 @@ ms.locfileid: "84804608"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * リスナーとリダイレクト規則の作成
-> * アプリケーション ゲートウェイの作成
+* ネットワークのセットアップ
+* リスナーとリダイレクト規則の作成
+* アプリケーション ゲートウェイの作成
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -157,9 +156,4 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事で学習した内容は次のとおりです。
-
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * リスナーとリダイレクト規則の作成
-> * アプリケーション ゲートウェイの作成
+- [Azure PowerShell を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する](redirect-internal-site-powershell.md)

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8690b1a4b8527a397fcf4c04892e167b5332358d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3766db0d5070f15216ac612353e2c25737ad092a
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035402"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741628"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory のセルフサービス パスワード リセットのユーザー エクスペリエンスをカスタマイズする
 
@@ -44,13 +44,13 @@ ms.locfileid: "87035402"
 
 既定の連絡先メールは、次の順序で受信者に送信されます。
 
-1. *ヘルプデスク管理者*ロールまたは*パスワード管理者*ロールが割り当てられている場合は、これらのロールを持つ管理者が通知を受け取ります。
+1. *ヘルプデスク管理者* ロールまたは *パスワード管理者* ロールが割り当てられている場合は、これらのロールを持つ管理者が通知を受け取ります。
 1. ヘルプデスク管理者またはパスワード管理者が割り当てられていない場合は、"*ユーザー管理者*" ロールを持つ管理者が通知を受け取ります。
-1. 上記のどのロールも割り当てられていない場合は、*グローバル管理者*が通知を受け取ります。
+1. 上記のどのロールも割り当てられていない場合は、*グローバル管理者* が通知を受け取ります。
 
 どの場合も、最大 100 人の受信者が通知を受け取ります。
 
-さまざまな管理者ロールと、それらの管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+さまざまな管理者ロールと、それらの管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md)」を参照してください。
 
 ### <a name="disable-contact-your-administrator-emails"></a>"管理者に問い合わせてください" メールを無効にする
 
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 環境内での SSPR の使用状況を把握するには、「[Azure AD のパスワード管理に関するレポート オプション](howto-sspr-reporting.md)」を参照してください。
 
-SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](active-directory-passwords-troubleshoot.md)」を参照してください
+SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](./troubleshoot-sspr.md)」を参照してください

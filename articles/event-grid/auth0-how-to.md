@@ -3,12 +3,12 @@ title: Azure Event Grid を使用して Auth0 から Azure にイベントを送
 description: Azure Event Grid を使用して Auth0 から Azure のサービスにイベントを送信する方法です。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 6cd440075c6400b58c23f879b53da26abe4f9e75
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a66a60cb926b933a6b0628a67506d0d52ab7a905
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103282"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077865"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>Azure Event Grid と Auth0 を統合する
 
@@ -90,5 +90,5 @@ Auth0 イベントは、ストリーミング メカニズムを使用して Azu
 ## <a name="next-steps"></a>次のステップ
 
 - [Auth0 パートナー トピック](auth0-overview.md)
-- [パートナー トピックの概要](partner-topics-overview.md)
+- [パートナー トピックの概要](partner-events-overview.md)
 - [Event Grid パートナーになる](partner-onboarding-overview.md)

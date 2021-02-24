@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46919a97364aeff29e2b458c619315571dba7710
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478010"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013670"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure portal を使用する
 Azure portal で次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインし、(B2C ではなく) 適切な AzureAD テナントを選択します。
 2. **[アプリの登録]** セクションに移動して、自分のアプリを選択します。
 3. **[ブランド]** ウィンドウを開きます。
 4. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。
@@ -69,6 +69,11 @@ Azure portal で次の手順に従います。
 ### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>アプリ オブジェクト JSON を使用する
 
 アプリ オブジェクト JSON を直接変更する場合、Azure portal またはアプリケーション登録ポータルでマニフェスト エディターを使用して、自分のアプリのサービス利用規約とプライバシーに関する声明へのリンクを含めることができます。
+
+1. **[アプリの登録]** セクションに移動し、自分のアプリを選択します。
+2. **[マニフェスト]** ペインを開きます。
+3. Ctrl + F キーを押し、"informationalUrls" を検索します。 情報を入力します。
+4. 変更を保存します。
 
 ```json
     "informationalUrls": { 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711410"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012079"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した NAT ゲートウェイの作成
 
@@ -89,7 +89,7 @@ VM をデプロイして NAT ゲートウェイを使用する前に、リソー
 
 ### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-1. ポータルの左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[パブリック IP アドレス]** を選択するか、Marketplace 検索で**パブリック IP アドレス**を検索します。
+1. ポータルの左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[パブリック IP アドレス]** を選択するか、Marketplace 検索で **パブリック IP アドレス** を検索します。
 
 2. **[パブリック IP アドレスの作成]** に次の情報を入力または選択します。
 
@@ -106,7 +106,7 @@ VM をデプロイして NAT ゲートウェイを使用する前に、リソー
 
 ### <a name="create-a-public-ip-prefix"></a>パブリック IP プレフィックスの作成
 
-1. ポータルの左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[パブリック IP プレフィックス]** を選択するか、Marketplace 検索で**パブリック IP プレフィックス**を検索します。 
+1. ポータルの左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[パブリック IP プレフィックス]** を選択するか、Marketplace 検索で **パブリック IP プレフィックス** を検索します。 
 
 2. **[パブリック IP プレフィックスの作成]** の **[基本]** タブに次の値を入力するか選択します。
    - **[サブスクリプション]**  >  **[リソース グループ]** : **[myResourceGroupNAT]** > を選択します
@@ -121,7 +121,7 @@ VM をデプロイして NAT ゲートウェイを使用する前に、リソー
 
 ### <a name="create-a-nat-gateway-resource"></a>NAT ゲートウェイ リソースの作成
 
-1. ポータルの左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[NAT ゲートウェイ]** を選択するか、Marketplace 検索で **NAT ゲートウェイ**を検索します。
+1. ポータルの左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[NAT ゲートウェイ]** を選択するか、Marketplace 検索で **NAT ゲートウェイ** を検索します。
 
 2. **[ネットワーク アドレス変換 (NAT) ゲートウェイを作成します]** の **[基本]** タブに次の値を入力するか選択します。
    - **[サブスクリプション]**  >  **[リソース グループ]** : **[myResourceGroupNAT]** を選択します。

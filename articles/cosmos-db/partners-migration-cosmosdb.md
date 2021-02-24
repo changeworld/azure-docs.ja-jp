@@ -6,18 +6,19 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7fe0817abfac3070f77303bb0d2d662d18010862
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290083"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090505"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB ソリューションをサポートする多くの経験豊かなシステム インテグレーター パートナーおよびツールから選択できます。 
+NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB ソリューションをサポートする多くの経験豊かなシステム インテグレーター パートナーおよびツールから選択できます。 この記事では、Azure Cosmos DB を使用するソリューションまたはサービスを持つパートナーの一覧を示します。 この一覧は、時間の経過と共に変化します。Microsoft は、これらのパートナーのソリューションに対して行われた変更や更新について一切責任を負いません。
 
-## <a name="systems-integrator-partners"></a>システム インテグレーター パートナー
+## <a name="systems-integrator-and-tooling-partners"></a>システム インテグレーターとツール パートナー
 
 |**パートナー**  |**対応分野と強み**  |**サポートされている国/地域**  |
 |---------|---------|---------|
@@ -30,7 +31,7 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 | [Capgemini](https://www.capgemini.com/) | 小売り (在庫目録)、IoT、運用分析 (Spark)、アプリ開発 | 米国、フランス、英国、オランダ、フィンランド  |
 | [Cognizant](https://www.cognizant.com/) | IoT、パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発 |米国、カナダ、英国、デンマーク、オランダ、スイス、オーストラリア、日本 |
 |[Infosys](https://www.infosys.com/)     | アプリケーション開発      |    米国    |  
-| [Lagash Systems](https://www.lagash.com/) | IoT、サーバーレス アーキテクチャ、アプリ開発 | アルゼンチン、チリ、コロンビア、メキシコ|
+| [Lagash Systems](https://www.devex.com/organizations/lagash-systems-131346) | IoT、サーバーレス アーキテクチャ、アプリ開発 | アルゼンチン、チリ、コロンビア、メキシコ|
 | [Lambda3 Informatics](https://www.lambda3.com.br/) | リアルタイム パーソナル化、小売在庫目録、アプリ開発 | ブラジル|
 |[Neal Analytics](https://www.nealanalytics.com/)    |     パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発  |    米国     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL の移行      |   米国      |

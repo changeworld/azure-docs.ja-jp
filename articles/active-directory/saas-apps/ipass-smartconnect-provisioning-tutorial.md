@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 533f31882ad06ecc4b411fe0f686ab51f189c0a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 405a7bc3b653ca7bca026d3318763a4922244e88
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552905"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093708"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>チュートリアル:iPass SmartConnect を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -82,7 +82,7 @@ Azure AD で自動ユーザー プロビジョニング用に iPass SmartConnect
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて iPass SmartConnect のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 > [!TIP]
->  iPass SmartConnect では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[BitaBIZ シングル サインオンのチュートリアル](ipasssmartconnect-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+>  iPass SmartConnect では、SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[iPass SmartConnect シングル サインオンのチュートリアル](ipasssmartconnect-tutorial.md)に記載されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-ipass-smartconnect-in-azure-ad"></a>Azure AD で iPass SmartConnect の自動ユーザー プロビジョニングを構成するには:
 
@@ -96,11 +96,11 @@ Azure AD で自動ユーザー プロビジョニング用に iPass SmartConnect
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://openmobile.ipass.com/moservices/scim/v1`」と入力します。 以前に取得したベアラー トークンを **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から iPass SmartConnect に接続できることを確認します。 接続できない場合は、使用中の iPass SmartConnect アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -114,11 +114,11 @@ Azure AD で自動ユーザー プロビジョニング用に iPass SmartConnect
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to iPass SmartConnect]\(Azure Active Directory ユーザーを iPass SmartConnect に同期する\)** を選択します。
 
-    ![iPass SmartConnect ユーザーのマッピング](media/ipass-smartconnect-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/usermapping.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Synchronize Azure Active Directory Users to iPass SmartConnect]\(Azure Active Directory ユーザーを iPass SmartConnect に同期する\) が表示されています。" border="false":::
 
 9. **[属性マッピング]** セクションで、Azure AD から iPass SmartConnect に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で iPass SmartConnect のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![iPass SmartConnect ユーザーのマッピング](media/ipass-smartconnect-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="[属性マッピング] ページのスクリーンショット。テーブルに、Azure Active Directory と iPass SmartConnect の属性、および照合の優先順位が一覧表示されています。" border="false":::
 
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。

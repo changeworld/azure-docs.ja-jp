@@ -5,21 +5,20 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5db3e538a64e275313e1e0ab01f6cc6350eabb77
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117167"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745436"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>標準クォータ: VM シリーズでの制限の引き上げ
 
 Azure Resource Manager は、仮想マシン向けに次の 2 タイプの vCPU クォータをサポートしています。
 
-* *従量課金制 VM* と*予約 VM インスタンス*には、*標準 vCPU クォータ*が適用されます。
-* *スポット VM* には、*スポット vCPU クォータ*が適用されます。
+* *従量課金制 VM* と *予約 VM インスタンス* には、*標準 vCPU クォータ* が適用されます。
+* *スポット VM* には、*スポット vCPU クォータ* が適用されます。
 
 従量課金制の標準 vCPU クォータと予約仮想マシン インスタンスは、各リージョンのサブスクリプションごとに 2 つのレベルで適用されます。
 
@@ -30,7 +29,7 @@ Azure Resource Manager は、仮想マシン向けに次の 2 タイプの vCPU 
 
 VM シリーズの vCPU クォータ制限の引き上げは、Azure portal を使用して要求できます。 VM シリーズのクォータを増やすと、リージョンの vCPU の合計の制限が同じ量だけ自動的に増えます。
 
-標準 vCPU クォータの詳細については、「[仮想マシンの vCPU クォータ](../../virtual-machines/windows/quotas.md)」および「[Azure サブスクリプションとサービスの制限](https://docs.microsoft.com/azure/azure-supportability/classic-deployment-model-quota-increase-requests)」に関するページを参照してください。
+標準 vCPU クォータの詳細については、「[仮想マシンの vCPU クォータ](../../virtual-machines/windows/quotas.md)」および「[Azure サブスクリプションとサービスの制限](./classic-deployment-model-quota-increase-requests.md)」に関するページを参照してください。
 
 リージョンごとの vCPU 制限を標準クォータに引き上げる方法については、[「標準クォータ: リージョンごとの制限の引き上げ」](regional-quota-requests.md)を参照してください。
 
@@ -61,7 +60,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
    ![クォータを引き上げるサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -91,7 +90,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
       ![新しい vCPU 制限を選択する](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
 
    ![クォータの詳細で追加の場所を指定する](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 
@@ -120,13 +119,13 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
    ![クォータを引き上げるために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
 1. **[クォータの詳細]** で次の手順を実行します。
 
-   1. **[Deployment model]\(デプロイ モデル\)** で適切なモデルを選択し、 **[Locations]\(場所\)** で場所を選択します。
+   1. **[Deployment model]/(デプロイ モデル/)** で適切なモデルを選択し、 **[Locations]/(場所/)** で場所を選択します。
 
       ![クォータの詳細を入力する](./media/resource-manager-core-quotas-request/quota-details-deployment-rm-locations.png)
 
@@ -146,7 +145,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
       ![新しい vCPU 制限を選択する](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。
 
    このステップでは、これ以前の場所であなたが選択した SKU シリーズがプリロードされます。 追加のシリーズに適用したいクォータ制限を入力します。
 

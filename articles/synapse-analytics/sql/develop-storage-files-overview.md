@@ -1,24 +1,24 @@
 ---
-title: SQL オンデマンド (プレビュー) でストレージ上のファイルにアクセスする
-description: Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プールでストレージ上のファイルにアクセスする
+description: Azure Synapse Analytics のサーバーレス SQL プールを使用してストレージ ファイルにクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: f398f80e4e283f971e0d947d0dda131e12fe88a7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986952"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120395"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Synapse SQL (オンデマンド) で外部ストレージにアクセスする
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用して外部ストレージにアクセスする
 
-このドキュメントでは、ユーザーが Synapse SQL (オンデマンド) で、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
+このドキュメントでは、ユーザーがサーバーレス SQL プールで、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
 
 - [OPENROWSET](develop-openrowset.md) 関数。Azure Storage 内のファイルに対するアドホック クエリを有効にします。
 - [外部テーブル](develop-tables-external-tables.md)。外部ファイル セット上に構築された定義済みのデータ構造です。
@@ -27,7 +27,7 @@ ms.locfileid: "87986952"
 
 ## <a name="query-files-using-openrowset"></a>OPENROWSET を使用してファイルに対してクエリを実行する
 
-OPENROWSET を使用すると、ユーザーはストレージにアクセスできる場合に、Azure Storage 上の外部ファイルに対してクエリを実行できます。 Synapse SQL オンデマンド エンドポイントに接続されているユーザーは、次のクエリを使用して、Azure Storage 上のファイルの内容を読み取る必要があります。
+OPENROWSET を使用すると、ユーザーはストレージにアクセスできる場合に、Azure Storage 上の外部ファイルに対してクエリを実行できます。 サーバーレス SQL プールに接続されているユーザーは、次のクエリを使用して、Azure Storage 上のファイルの内容を読み取る必要があります。
 
 ```sql
 SELECT * FROM
@@ -52,12 +52,12 @@ CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-URL に一致するサーバーレベルの資格情報がない場合、または SQL ユーザーがこの資格情報に対する参照権限を持っていない場合は、エラーが返されます。 SQL プリンシパルでは、何らかの Azure AD ID を使用して偽装することはできません。
+URL に一致するサーバーレベルの資格情報がない場合、または SQL ユーザーがこの資格情報に対する参照権限を持っていない場合は、エラーが返されます。 SQL プリンシパルでは、何かの Azure AD ID を使用して偽装することはできません。
 
 ### <a name="direct-access"></a>[直接アクセス](#tab/direct-access)
 
 特別な設定を行わなくても、Azure AD ユーザーはその ID を使用してファイルにアクセスすることができます。
-匿名アクセスを許可する Azure Storage には、すべてのユーザーがアクセスできます (特別な設定は必要ありません)。
+匿名アクセスを許可する Azure ストレージには、すべてのユーザーがアクセスできます (特別な設定は必要ありません)。
 
 ---
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 テーブルを読み取る権限を持つユーザーは、Azure Storage のフォルダーとファイルのセット上に作成された EXTERNAL TABLE を使用して外部ファイルにアクセスできます。
 
-[外部テーブルを作成するための権限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) (CREATE TABLE、ALTER ANY CREDENTIAL、REFERENCES DATABASE SCOPED CREDENTIAL など) を持つユーザーは、次のスクリプトを使用して、Azure Storage データソース上にテーブルを作成できます。
+[外部テーブルを作成するための権限](/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions) (CREATE TABLE、ALTER ANY CREDENTIAL、REFERENCES DATABASE SCOPED CREDENTIAL など) を持つユーザーは、次のスクリプトを使用して、Azure Storage データソース上にテーブルを作成できます。
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681738"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882502"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と請求金額ファイル内の用語について
 
@@ -90,8 +90,8 @@ PublisherType | All | パブリッシャーの種類 (値: **Azure**、**AWS**�
 Quantity | All | 購入または消費されるユニットの数。
 ReservationId | EA、MCA | 購入した予約インスタンスの一意識別子。
 ReservationName | EA、MCA | 購入した予約インスタンスの名前。
-ResourceGroup | All | リソースが属している[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)の名前。 リソース グループにデプロイされたリソースから、すべての料金が発生するわけではありません。 リソース グループが不明な料金は、null または空として表示されるか、 **[その他]** 、または **[適用なし]** と表示されます。
-ResourceId<sup>1</sup> | All | [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) のリソースの一意識別子。
+ResourceGroup | All | リソースが属している[リソース グループ](../../azure-resource-manager/management/overview.md)の名前。 リソース グループにデプロイされたリソースから、すべての料金が発生するわけではありません。 リソース グループが不明な料金は、null または空として表示されるか、 **[その他]** 、または **[適用なし]** と表示されます。
+ResourceId<sup>1</sup> | All | [Azure Resource Manager](/rest/api/resources/resources) のリソースの一意識別子。
 ResourceLocation | All | リソースが実行されているデータセンターの場所。 Location を参照。
 ResourceName | EA、PAYG | リソースの名前。 デプロイされたリソースから、すべての料金が発生するわけではありません。 リソースの種類が不明な料金は、null または空として表示されるか、 **[その他]** 、または **[適用なし]** と表示されます。
 ResourceType | MCA | リソース インスタンスの種類。 デプロイされたリソースから、すべての料金が発生するわけではありません。 リソースの種類が不明な料金は、null または空として表示されるか、 **[その他]** 、または **[適用なし]** と表示されます。
@@ -126,10 +126,24 @@ UsageDate | Date
 UsageEnd | Date
 UsageStart | Date
 
-
 ## <a name="ensure-charges-are-correct"></a>請求金額が正しいことを確認する
 
 利用状況と請求金額の詳細について詳しくは、[従量課金制](review-individual-bill.md)または [Microsoft 顧客契約](review-customer-agreement-bill.md)の請求書に関するページをご覧ください。
+
+## <a name="unexpected-usage-or-charges"></a>想定外の使用または料金
+
+心当たりのない使用または料金がある場合は、その理由を理解するために実行できることがいくつかあります。
+
+- リソースに対する料金が記載されている請求書を確認する
+- コスト分析で請求された料金を確認する
+- リソースの担当者を見つけて、連携する
+- 監査ログを分析する
+- リソースの親スコープに対するユーザーのアクセス許可を分析する
+- 料金の特定に役立てるために [Azure サポート リクエスト](https://go.microsoft.com/fwlink/?linkid=2083458)を作成する
+
+詳細については、「[想定外の料金を分析する](analyze-unexpected-charges.md)」を参照してください。
+
+Azure では、ほとんどのユーザー操作はログされないことに注意してください。 代わりに、Microsoft は課金のためにリソースの使用状況をログします。 過去に使用が急増したことがわかっても、ログを有効にしていなかった場合、Microsoft は原因を特定できません。 適切な技術チームが問題についてお客様を支援できるように、使用の増加を確認する必要があるサービスのログを有効にしてください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

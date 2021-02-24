@@ -1,14 +1,17 @@
 ---
 title: スクリプトを使用して Azure Migrate アプライアンスを設定する
 description: スクリプトを使用して Azure Migrate アプライアンスを設定する方法について
-ms.topic: article
+ms.topic: how-to
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.date: 04/16/2020
-ms.openlocfilehash: 43e47c6b4121a2f389dfec27873b90b7031c4f2c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 38db1e68adde21d0e566256e9393f6fa4fc58824
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929977"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753792"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>スクリプトを使用してアプライアンスを設定する
 
@@ -16,7 +19,7 @@ ms.locfileid: "88929977"
 
 VMware および Hyper-V VM 用のアプライアンスをデプロイするには、スクリプトを使用するか、または Azure portal からダウンロードしたテンプレートを使用します。 ダウンロードしたテンプレートを使用して VM を作成できない場合は、スクリプトを使用する方法が有用です。
 
-- テンプレートを使用するには、[VMware](tutorial-prepare-vmware.md) または [Hyper-V](tutorial-prepare-hyper-v.md) のチュートリアルに従ってください。
+- テンプレートを使用するには、[VMware](./tutorial-discover-vmware.md) または [Hyper-V](./tutorial-discover-hyper-v.md) のチュートリアルに従ってください。
 - 物理サーバー用のアプライアンスを設定する場合は、スクリプトのみ使用できます。 [こちらの記事](how-to-set-up-appliance-physical.md)に従ってください。
 - Azure Government クラウドでアプライアンスを設定するには、[こちらの記事](deploy-appliance-script-government.md)に従ってください。
 
@@ -46,12 +49,12 @@ VMware 用のアプライアンスを設定するには、ポータルまたは[
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
 3. Azure パブリック クラウド向けの最新のアプライアンス バージョンとスクリプトを確認します。
 
     **アルゴリズム** | **ダウンロード** | **SHA256**
     --- | --- | ---
-    VMware (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | 5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
+    VMware (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
 
 
 
@@ -94,13 +97,13 @@ Hyper-V 用のアプライアンスを設定するには、ポータルまたは
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
 
 3. Azure パブリック クラウド向けの最新のアプライアンス バージョンとスクリプトを確認します。
 
     **シナリオ** | **ダウンロード** | **SHA256**
     --- | --- | ---
-    Hyper-V (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) |  5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
+    Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116657) |  9bbef62e2e22481eda4b77c7fdf05db98c3767c20f0a873114fb0dcfa6ed682a
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 

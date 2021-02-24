@@ -2,21 +2,19 @@
 title: エンドポイント クォータを増やす- LUIS
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **公開** ページの **リソースとキー** セクションで LUIS アプリケーションに追加します。
-author: diberry
 manager: nitinme
-ms.custom: seodec18, devx-track-javascript, devx-track-azurepowershell
+ms.custom: seodec18, devx-track-js, devx-track-azurepowershell
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.author: diberry
-ms.openlocfilehash: 96d844d52fa554b7f9a467ae59d8ed4ccd2f6ee2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079882"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95993824"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
 Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **公開** ページの **リソースとキー** セクションで LUIS アプリケーションに追加します。
@@ -32,12 +30,12 @@ Language Understanding (LUIS) では、1 つのキーのクォータを超えて
 
 ![Powershell ウィンドウが開いている Azure portal のスクリーンショット](./media/traffic-manager/azure-portal-powershell.png)
 
-以下のセクションでは、[Traffic Manager PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager)を使用します。
+以下のセクションでは、[Traffic Manager PowerShell コマンドレット](/powershell/module/az.trafficmanager/#traffic_manager)を使用します。
 
 ## <a name="create-azure-resource-group-with-powershell"></a>PowerShell を使用して Azure リソース グループを作成する
 Azure リソースを作成する前に、すべてのリソースを含むリソース グループを作成します。 リソース グループに `luis-traffic-manager` という名前を付け、`West US` リージョンを使用します。 リソース グループのリージョンには、そのグループに関するメタデータが保存されます。 リソースが別のリージョンにあっても、速度が低下することはありません。
 
-次のように **[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)** コマンドレットを使用して、リソース グループを作成します。
+次のように **[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)** コマンドレットを使用して、リソース グループを作成します。
 
 ```powerShell
 New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
@@ -50,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
 2. [LUIS][LUIS] Web サイトの **[管理]** セクションの **[Azure リソース]** ページで、アプリにキーを割り当てて、右上のメニューで **[公開]** ボタンを選択してアプリを再公開します。
 
-    **エンドポイント**列の URL の例では、エンドポイント キーをクエリ パラメーターとして指定した GET 要求を使用します。 2 つの新しいキーのエンドポイント URL をコピーします。 これらは、この記事で後述する Traffic Manager の構成の一部として使用されます。
+    **エンドポイント** 列の URL の例では、エンドポイント キーをクエリ パラメーターとして指定した GET 要求を使用します。 2 つの新しいキーのエンドポイント URL をコピーします。 これらは、この記事で後述する Traffic Manager の構成の一部として使用されます。
 
 ## <a name="manage-luis-endpoint-requests-across-keys-with-traffic-manager"></a>Traffic Manager を使用して複数のキーにわたって LUIS エンドポイント要求を管理する
 Traffic Manager により、エンドポイント用の新しい DNS アクセス ポイントが作成されます。 これは、ゲートウェイやプロキシとして機能するのではなく、厳密には DNS レベルで機能します。 この例では DNS レコードは変更しません。 特定の要求に対して適切なエンドポイントを取得するために、DNS ライブラリを使用して Traffic Manager と通信します。 LUIS を対象とする "_各_" 要求では、使用する LUIS エンドポイントを決定するために、Traffic Manager の要求が必要となります。
@@ -58,7 +56,7 @@ Traffic Manager により、エンドポイント用の新しい DNS アクセ�
 ### <a name="polling-uses-luis-endpoint"></a>ポーリングで LUIS エンドポイントを使用する
 Traffic Manager では、エンドポイントを定期的にポーリングして、エンドポイントが引き続き使用可能であることを確認します。 ポーリングされる Traffic Manager URL は、GET 要求を使用してアクセス可能である必要があり、200 を返す必要があります。 **[Publish]\(公開\)** ページのエンドポイント URL がこれを実現します。 エンドポイント キーによってルートとクエリ文字列パラメーターが異なるため、各エンドポイント キーには異なるポーリング パスが必要です。 Traffic Manager がポーリングするたびに、クォータ要求のコストがかかります。 LUIS エンドポイントの **q** クエリ文字列パラメーターは、LUIS に送信される発話です。 このパラメーターは、発話の送信ではなく、Traffic Manager の構成時に、デバッグ手法として、Traffic Manager によるポーリングを LUIS エンドポイント ログに追加するために使用されます。
 
-各 LUIS エンドポイントには独自のパスが必要であるため、独自の Traffic Manager プロファイルが必要です。 プロファイル全体を管理するために、["_入れ子になった_" Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles) アーキテクチャを作成します。 1 つの親プロファイルが複数の子プロファイルを参照し、それらのトラフィックを管理します。
+各 LUIS エンドポイントには独自のパスが必要であるため、独自の Traffic Manager プロファイルが必要です。 プロファイル全体を管理するために、["_入れ子になった_" Traffic Manager](../../traffic-manager/traffic-manager-nested-profiles.md) アーキテクチャを作成します。 1 つの親プロファイルが複数の子プロファイルを参照し、それらのトラフィックを管理します。
 
 Traffic Manager が構成されたら、ログがポーリングでいっぱいにならないように、logging=false クエリ文字列パラメーターを使用するようにパスを必ず変更してください。
 
@@ -68,7 +66,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 ### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>PowerShell を使用して米国東部 Traffic Manager プロファイルを作成する
 米国東部 Traffic Manager プロファイルを作成するには、プロファイルの作成、エンドポイントの追加、エンドポイントの設定という複数の手順があります。 Traffic Manager プロファイルには多数のエンドポイントを含めることができますが、各エンドポイントでは同じ検証パスを使用します。 リージョンとエンドポイント キーのために、東部と西部のサブスクリプションの LUIS エンドポイント URL が異なるため、各 LUIS エンドポイントはプロファイル内で単一のエンドポイントである必要があります。
 
-1. **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile)** コマンドレットを使用してプロファイルを作成する
+1. **[New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile)** コマンドレットを使用してプロファイルを作成する
 
     次のコマンドレットを使用してプロファイルを作成します。 `appIdLuis` と `subscriptionKeyLuis` を必ず変更してください。 subscriptionKey は米国東部の LUIS キーに対応します。 LUIS アプリ ID とエンドポイント キーを含むパスが正しくない場合は、Traffic Manager が LUIS エンドポイントを正常に要求できないため、Traffic Manager のポーリングは `degraded` の状態になります。 LUIS エンドポイント ログで `q` の値を確認できるように、この値が `traffic-manager-east` であることを確認します。
 
@@ -90,7 +88,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
     要求が成功した場合、応答はありません。
 
-2. **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)** コマンドレットを使用して、米国東部エンドポイントを追加する
+2. **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)** コマンドレットを使用して、米国東部エンドポイントを追加する
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
@@ -125,7 +123,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     Endpoints                        : {luis-east-endpoint}
     ```
 
-3. **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)** コマンドレットを使用して米国東部エンドポイントを設定する
+3. **[Set-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)** コマンドレットを使用して米国東部エンドポイントを設定する
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $eastprofile
@@ -136,7 +134,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 ### <a name="create-the-west-us-traffic-manager-profile-with-powershell"></a>PowerShell を使用して米国西部 Traffic Manager プロファイルを作成する
 米国西部 Traffic Manager プロファイルを作成するには、プロファイルの作成、エンドポイントの追加、エンドポイントの設定という同じ手順に従います。
 
-1. **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** コマンドレットを使用してプロファイルを作成する
+1. **[New-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** コマンドレットを使用してプロファイルを作成する
 
     次のコマンドレットを使用してプロファイルを作成します。 `appIdLuis` と `subscriptionKeyLuis` を必ず変更してください。 subscriptionKey は米国東部の LUIS キーに対応します。 LUIS アプリ ID とエンドポイント キーを含むパスが正しくない場合は、Traffic Manager が LUIS エンドポイントを正常に要求できないため、Traffic Manager のポーリングは `degraded` の状態になります。 LUIS エンドポイント ログで `q` の値を確認できるように、この値が `traffic-manager-west` であることを確認します。
 
@@ -158,7 +156,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 
     要求が成功した場合、応答はありません。
 
-2. **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** コマンドレットを使用して、米国西部エンドポイントを追加する
+2. **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** コマンドレットを使用して、米国西部エンドポイントを追加する
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
@@ -194,7 +192,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     Endpoints                        : {luis-west-endpoint}
     ```
 
-3. **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** コマンドレットを使用して米国西部エンドポイントを設定する
+3. **[Set-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** コマンドレットを使用して米国西部エンドポイントを設定する
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $westprofile
@@ -205,7 +203,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
 ### <a name="create-parent-traffic-manager-profile"></a>Traffic Manager 親プロファイルを作成する
 Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子プロファイルを親にリンクします。
 
-1. **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** コマンドレットを使用して親プロファイルを作成する
+1. **[New-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** コマンドレットを使用して親プロファイルを作成する
 
     ```powerShell
     $parentprofile = New-AzTrafficManagerProfile -Name luis-profile-parent -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-parent -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/"
@@ -225,7 +223,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
 
     要求が成功した場合、応答はありません。
 
-2. **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** と **NestedEndpoints** 型を使用して、米国東部の子プロファイルを親に追加する
+2. **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** と **NestedEndpoints** 型を使用して、米国東部の子プロファイルを親に追加する
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
@@ -237,7 +235,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     |--|--|--|
     |-EndpointName|child-endpoint-useast|東部プロファイル|
     |-TrafficManagerProfile|$parentprofile|このエンドポイントの割り当て先のプロファイル|
-    |-Type|NestedEndpoints|詳しくは、「[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig)」をご覧ください。 |
+    |-Type|NestedEndpoints|詳しくは、「[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig)」をご覧ください。 |
     |-TargetResourceId|$eastprofile.Id|子プロファイルの ID|
     |-EndpointStatus|有効|親に追加した後のエンドポイントの状態|
     |-EndpointLocation|"eastus"|リソースの [Azure リージョン名](https://azure.microsoft.com/global-infrastructure/regions/)|
@@ -262,7 +260,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     Endpoints                        : {child-endpoint-useast}
     ```
 
-3. **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** コマンドレットと **NestedEndpoints** 型を使用して、米国西部の子プロファイルを親に追加する
+3. **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** コマンドレットと **NestedEndpoints** 型を使用して、米国西部の子プロファイルを親に追加する
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
@@ -274,7 +272,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     |--|--|--|
     |-EndpointName|child-endpoint-uswest|西部プロファイル|
     |-TrafficManagerProfile|$parentprofile|このエンドポイントの割り当て先のプロファイル|
-    |-Type|NestedEndpoints|詳しくは、「[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig)」をご覧ください。 |
+    |-Type|NestedEndpoints|詳しくは、「[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig)」をご覧ください。 |
     |-TargetResourceId|$westprofile.Id|子プロファイルの ID|
     |-EndpointStatus|有効|親に追加した後のエンドポイントの状態|
     |-EndpointLocation|"westus"|リソースの [Azure リージョン名](https://azure.microsoft.com/global-infrastructure/regions/)|
@@ -299,7 +297,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     Endpoints                        : {child-endpoint-useast, child-endpoint-uswest}
     ```
 
-4. **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** コマンドレットを使用してエンドポイントを設定する
+4. **[Set-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** コマンドレットを使用してエンドポイントを設定する
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $parentprofile
@@ -308,7 +306,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     正常な応答は手順 3. と同じ応答です。
 
 ### <a name="powershell-variables"></a>PowerShell 変数
-これまでのセクションで、`$eastprofile`、`$westprofile`、`$parentprofile` の 3 つの PowerShell 変数が作成されました。 これらの変数は、Traffic Manager の構成の最後に使用されます。 変数を作成しない場合、作成するのを忘れた場合、または PowerShell ウィンドウがタイムアウトした場合は、PowerShell コマンドレットの **[Get-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** を使用してプロファイルを再度取得し、変数に割り当てることができます。
+これまでのセクションで、`$eastprofile`、`$westprofile`、`$parentprofile` の 3 つの PowerShell 変数が作成されました。 これらの変数は、Traffic Manager の構成の最後に使用されます。 変数を作成しない場合、作成するのを忘れた場合、または PowerShell ウィンドウがタイムアウトした場合は、PowerShell コマンドレットの **[Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** を使用してプロファイルを再度取得し、変数に割り当てることができます。
 
 山かっこ (`<>`) で囲まれた項目を、必要な 3 つの各プロファイルの正しい値に置き換えます。
 
@@ -373,12 +371,12 @@ Traffic Manager の[診断ログ](../../traffic-manager/traffic-manager-diagnost
 
 ## <a name="next-steps"></a>次のステップ
 
-このトラフィック管理コードを BotFramework ボットに追加する方法を理解するために、BotFramework v4 の[ミドルウェア](https://docs.microsoft.com/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler) オプションを確認します。
+このトラフィック管理コードを BotFramework ボットに追加する方法を理解するために、BotFramework v4 の[ミドルウェア](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0) オプションを確認します。
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
-[traffic-manager-docs]: https://docs.microsoft.com/azure/traffic-manager/
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+[traffic-manager-docs]: ../../traffic-manager/index.yml
+[LUIS]: ./luis-reference-regions.md#luis-website
 [azure-portal]: https://portal.azure.com/
 [azure-storage]: https://azure.microsoft.com/services/storage/
-[routing-methods]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods
-[traffic-manager-endpoints]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-endpoint-types
+[routing-methods]: ../../traffic-manager/traffic-manager-routing-methods.md
+[traffic-manager-endpoints]: ../../traffic-manager/traffic-manager-endpoint-types.md

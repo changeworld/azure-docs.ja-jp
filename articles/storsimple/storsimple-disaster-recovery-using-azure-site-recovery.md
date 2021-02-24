@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514907"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301941"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 
@@ -44,7 +44,7 @@ StorSimple ストレージでホストされているファイル共有向けに
    - Azure StorSimple Manager に登録されたオンプレミスの StorSimple ストレージ デバイス
    - Azure StorSimple Manager で作成した StorSimple Cloud Appliance。 アプライアンスは、シャットダウン状態でも保持されます。
    - StorSimple ストレージ デバイスで構成されたボリュームでホストされているファイル共有
-   - [Azure Site Recovery Services コンテナー](../site-recovery/site-recovery-vmm-to-vmm.md)
+   - [Azure Site Recovery Services コンテナー](/azure/site-recovery/hyper-v-vmm-azure-tutorial)
 
 さらに、Azure が復旧サイトに設定されている場合は、 [Azure Virtual Machines 準備状況評価ツール](https://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行し、Azure VM および Azure Site Recovery サービスと互換性があることを確認してください。
 
@@ -75,7 +75,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
 #### <a name="to-prepare-the-on-premises-file-server-environment"></a>オンプレミスのファイル サーバー環境を準備するには
 1. **[ユーザー アカウント制御]** を **[通知しない]** に設定します。 この設定が必要なのは、Azure Site Recovery によってフェールオーバーされた後に、Azure オートメーション スクリプトを使用して iSCSI ターゲットに接続するためです。
    
-   1. Windows キー + Q キーを押して、 **UAC**を検索します。  
+   1. Windows キー + Q キーを押して、 **UAC** を検索します。  
    1. **[ユーザー アカウント制御設定の変更]** の設定を選択します。  
    1. バーを下にドラッグして **[通知しない]** に設定します。  
    1. **[OK]** をクリックして、入力を求められたら **[はい]** を選択します。  
@@ -94,9 +94,9 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
 1. **[次へ]** をクリックします。
 1. **[契約の条項]** をクリックして、 **[次へ]** をクリックします。
 1. **[完了]** をクリックします。
-1. StorSimple ストレージで分割されたボリュームを使用して、ファイル共有を作成します。 詳細については、「 [StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes.md)」を参照してください。
+1. StorSimple ストレージで分割されたボリュームを使用して、ファイル共有を作成します。 詳細については、「 [StorSimple Manager サービスを使用してボリュームを管理する](./index.yml)」を参照してください。
    
-   1. オンプレミスの VM で、Windows キー + Q キーを押して **iSCSI**を検索します。
+   1. オンプレミスの VM で、Windows キー + Q キーを押して **iSCSI** を検索します。
    1. **[iSCSI イニシエーター]** を選択 します。
    1. **[構成]** タブを選択 し、イニシエーターの名前をコピーします。
    1. [Azure Portal](https://portal.azure.com/) にログインします。
@@ -112,19 +112,19 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
    1. ファイル サービスおよびストレージ サービス ロールを使用して、これらのボリュームでファイル共有を作成します。
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Azure Site Recovery コンテナーを作成および準備するには
-ファイル サーバー VM を保護する前に Azure Site Recovery で作業を開始するには、「 [Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する](../site-recovery/site-recovery-hyper-v-site-to-azure.md) 」を参照してください。
+ファイル サーバー VM を保護する前に Azure Site Recovery で作業を開始するには、「 [Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する](/azure/site-recovery/) 」を参照してください。
 
 #### <a name="to-enable-protection"></a>保護を有効にするには
 1. Azure Site Recovery を使用して保護したいオンプレミスの VM から iSCSI ターゲットを切断します。
    
-   1. Windows キー + Q キーを押して、 **iSCSI**を検索します。
+   1. Windows キー + Q キーを押して、 **iSCSI** を検索します。
    1. **[iSCSI イニシエーターのセットアップ]** を選択します。
    1. 既に接続されていた StorSimple デバイスを切断します。 保護を有効にするとき、デバイスを切断する代わりに、ファイル サーバーの電源を数分間オフにすることもできます。
       
    > [!NOTE]
    > この場合、ファイル共有が一時的に使用できなくなります。
    
-1. Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](../site-recovery/site-recovery-hyper-v-site-to-azure.md)。
+1. Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](/azure/site-recovery/hyper-v-azure-tutorial)。
 1. 最初の同期の開始時に、ターゲットに再接続できます。 iSCSI イニシエーターに移動して StorSimple デバイスを選択し、 **[接続]** をクリックします。
 1. 同期の完了後に VM のステータスが **[保護済み]** になっていれば、その VM を選択してから **[構成]** タブをクリックし、設定に合わせて VM のネットワークを更新します (これはフェールオーバーされた VM を含むネットワークです)。 ネットワークが表示されないときは、同期が実行中ということです。
 
@@ -264,7 +264,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
         
    - 同じ **[グループ 1: 後の手順]** セクションで、上記の 4 つのスクリプトの後に手動アクションを追加します。 このアクションを追加するポイントでは、すべてが正しく動作していることを確認できます。 このアクションは、テスト フェールオーバーの一環として追加する必要があります (そのため **[テスト フェールオーバー]** チェック ボックスのみをオンにします)。
     
-   - 手動アクションの後に、他の Runbook に使用した手順と同様に**クリーンアップ** スクリプトを追加します。 復旧計画を**保存**します。
+   - 手動アクションの後に、他の Runbook に使用した手順と同様に **クリーンアップ** スクリプトを追加します。 復旧計画を **保存** します。
     
    > [!NOTE]
    > テスト フェールオーバーの実行中、手動アクションを実行するときにすべてを検証してください。これは手動アクションの完了後に、ターゲット デバイスに複製された StorSimple ボリュームがクリーンアップの一環として削除されてしまうのを防ぐためです。
@@ -294,7 +294,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 1. Azure portal で、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
 1. [復旧計画] ブレードで、 **[詳細]** &gt; **[計画されたフェールオーバー]** をクリックします。
 
-   ![復旧計画](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
+   ![[計画されたフェールオーバー] とフェールオーバー オプションのスクリーンショット。](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. **[計画されたフェールオーバーの確認]** ブレードで、ソースとターゲットの場所を選択し、ターゲット ネットワークを選択し、チェック マーク アイコン ✓ をクリックしてフェールオーバー プロセスを開始します。
 1. レプリカ仮想マシンは、作成後にコミット保留中の状態になります。 **[コミット]** をクリックして、フェールオーバーをコミットします。
 1. レプリケーションが完了すると、仮想マシンがセカンダリの場所で起動します。

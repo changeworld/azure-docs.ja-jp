@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419820"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107363"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
 Windows デバイスを管理するには、ローカル管理者グループのメンバーになる必要があります。 Azure Active Directory (Azure AD) では、Azure AD の参加プロセス時に、デバイス上でのこのグループのメンバーシップが更新されます。 メンバーシップの更新方法は、ビジネス要件に応じてカスタマイズすることもできます。 メンバーシップの更新は、たとえば、デバイスへの管理者権限を要するタスクをヘルプデスク スタッフが実行できるようにするうえで役立ちます。
 
-この記事では、Azure AD 参加中のローカル管理者メンバーシップの更新のしくみと、そのカスタマイズ方法について説明します。 この記事の内容は、**ハイブリッド Azure AD 参加**デバイスには適用されません。
+この記事では、Azure AD 参加中のローカル管理者メンバーシップの更新のしくみと、そのカスタマイズ方法について説明します。 この記事の内容は、**ハイブリッド Azure AD 参加** デバイスには適用されません。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -32,14 +32,13 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 - Azure AD のデバイス管理者ロール 
 - Azure AD 参加を実行するユーザー   
 
-ローカル管理者グループに Azure AD ロールを追加すれば、デバイスに一切変更を加えることなく、デバイスの管理ユーザーを Azure AD でいつでも更新できます。 現時点では、管理者ロールにグループを割り当てることはできません。
-また、Azure AD では、最小権限の原則 (PoLP) をサポートするために、Azure AD のデバイス管理者ロールもローカル管理者グループに追加されます。 グローバル管理者だけでなく、デバイス管理者ロール*だけ*を割り当てられたユーザーにも、デバイスの管理を許可することができます。 
+ローカル管理者グループに Azure AD ロールを追加すれば、デバイスに一切変更を加えることなく、デバイスの管理ユーザーを Azure AD でいつでも更新できます。 また、Azure AD では、最小権限の原則 (PoLP) をサポートするために、Azure AD のデバイス管理者ロールもローカル管理者グループに追加されます。 グローバル管理者だけでなく、デバイス管理者ロール *だけ* を割り当てられたユーザーにも、デバイスの管理を許可することができます。 
 
 ## <a name="manage-the-global-administrators-role"></a>グローバル管理者ロールの管理
 
 グローバル管理者ロールのメンバーシップを表示する方法や更新する方法については、次の記事をご覧ください。
 
-- [Azure Active Directory の管理者ロールのすべてのメンバーを表示する](../users-groups-roles/directory-manage-roles-portal.md)
+- [Azure Active Directory の管理者ロールのすべてのメンバーを表示する](../roles/manage-roles-portal.md)
 - [Azure Active Directory でユーザーを管理者ロールに割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
@@ -72,14 +71,19 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 >[!NOTE]
 > 現在、この機能はプレビュー段階にあります。
 
+
 Windows 10 2004 更新プログラム以降では、Azure AD グループを使用して、[制限されたグループ](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM ポリシーで Azure AD 参加済みデバイスの管理者特権を管理できます。 このポリシーを使用すると、Azure AD 参加済みデバイスのローカル管理者グループに個々のユーザーまたは Azure AD グループを割り当てることができ、さまざまなデバイス グループに対して個別の管理者をきめ細かく構成できます。 
 
-現時点では、Intune にはこのポリシーを管理するための UI がなく、[OMA-URI のカスタム設定](/mem/intune/configuration/custom-settings-windows-10)を使用して構成する必要があります。 このポリシーに関する考慮事項は次のとおりです。 
+>[!NOTE]
+> Windows 10 20H2 更新プログラムを開始する際に、制限されたグループ ポリシーの代わりに、[ローカル ユーザーとグループ](/windows/client-management/mdm/policy-csp-localusersandgroups)のポリシーを 使用することをお勧めします。
 
-- ポリシーを使用して Azure AD グループを追加するには、Groups API を実行して取得できるグループの SID が必要です。 SID は、Groups API の `securityIdentifier` プロパティで定義されています。
-- 制限されたグループ ポリシーが適用されると、グループの現在のメンバーでメンバー一覧にないものは削除されます。 したがって、このポリシーを新しいメンバーまたはグループに適用すると、既存の管理者 (つまり、デバイスを参加させたユーザー)、デバイス管理者ロール、グローバル管理者ロールが、デバイスから削除されます。 既存のメンバーが削除されないようにするには、制限されたグループ ポリシーのメンバー一覧の一部として、それらを構成する必要があります。 
-- このポリシーは、Windows 10 デバイスの既知のグループ (Administrators、Users、Guests、Power Users、Remote Desktop Users、Remote Management Users) にのみ適用できます。 
-- 制限されたグループ ポリシーを使用したローカル管理者の管理は、Hybrid Azure AD Join を使用したデバイスまたは Azure AD 登録済みデバイスには適用されません。
+
+現時点では、Intune にはこのポリシーを管理するための UI がなく、[OMA-URI のカスタム設定](/mem/intune/configuration/custom-settings-windows-10)を使用して構成する必要があります。 これらのポリシーのいずれかを使用する場合の考慮事項は次のとおりです。 
+
+- ポリシーを使用して Azure AD グループを追加するには、[Microsoft Graph API for Groups](/graph/api/resources/group?view=graph-rest-beta) を実行して取得できるグループの SID が必要です。 SID は、API 応答の `securityIdentifier` プロパティで定義されています。
+- 制限されたグループ ポリシーが適用されると、グループの現在のメンバーでメンバー一覧にないものは削除されます。 したがって、このポリシーを新しいメンバーまたはグループに適用すると、既存の管理者 (つまり、デバイスを参加させたユーザー)、デバイス管理者ロール、グローバル管理者ロールが、デバイスから削除されます。 既存のメンバーが削除されないようにするには、制限されたグループ ポリシーのメンバー一覧の一部として、それらを構成する必要があります。 グループ メンバーシップに対する増分更新を許可するローカル ユーザーとグループのポリシーを使用する場合に、この制限に対処します。
+- これら両方ポリシーを使用する管理者特権は、Windows 10 デバイスの既知のグループ (Administrators、Users、Guests、Power Users、Remote Desktop Users、Remote Management Users) 対してにのみ評価されます。 
+- Azure AD グループを使用したローカル管理者の管理は、Hybrid Azure AD Join を使用したデバイスまたは Azure AD 登録済みデバイスには適用されません。
 - 制限されたグループ ポリシーは Windows 10 2004 更新プログラムより前から存在していましたが、デバイスのローカル管理者グループのメンバーとして Azure AD グループはサポートされていませんでした。 
 
 ## <a name="manage-regular-users"></a>通常のユーザーの管理

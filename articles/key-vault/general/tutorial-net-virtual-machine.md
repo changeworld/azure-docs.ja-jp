@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - .NET で仮想マシンを使用して Azure Key Vault を使用する | Microsoft Docs
-description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように ASP.NET Core アプリケーションを構成します。
+description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように 仮想マシン ASP.NET Core アプリケーションを構成します。
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b4f832750f7a94a6a60cbb1d3ba630925dd4fff2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: mvc, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 9557ada8001022d460c35a091fdac7699ac5e5ec
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021733"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289386"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>チュートリアル:.NET で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -204,4 +204,4 @@ using Azure.Security.KeyVault.Secrets;
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [Azure Key Vault REST API](/rest/api/keyvault/)

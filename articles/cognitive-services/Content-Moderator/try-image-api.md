@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 714621fdcc307ee8b29567fc0d95ca41d31aa9e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 542fadd5e5ab91be7b7113064bf8c998dae08d12
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75448257"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912941"
 ---
 # <a name="moderate-images-from-the-api-console"></a>API コンソールで画像をモデレートする
 
@@ -28,7 +28,7 @@ Azure Content Moderator の [Image Moderation API](https://westus.dev.cognitive.
 
    画像モデレーションの **[Image - Evaluate]\(Image - Evaluate\)** ページが開きます。
 
-2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
+2. **API テスト コンソールを開く場合** 、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![試用版: [Image - Evaluate]\(Image - Evaluate\) ページのリージョン選択肢](images/test-drive-region.png)
   
@@ -50,7 +50,7 @@ Azure Content Moderator の [Image Moderation API](https://westus.dev.cognitive.
 
 5. **[送信]** を選択します。
 
-6. API によって、各分類の確率スコアが返されます。 また、画像が条件と一致するかどうかの判断 (**true** または **false**) も返されます。 
+6. API によって、各分類の確率スコアが返されます。 また、画像が条件と一致するかどうかの判断 ( **true** または **false** ) も返されます。 
 
    ![試用版: [Image - Evaluate]\(Image - Evaluate\) コンソールの確率スコアと条件判断](images/try-image-api-3.PNG)
 
@@ -62,7 +62,7 @@ Image Moderation API を使用して、画像で顔を検索します。 この�
 
    **[Image - Find Faces]\(Image - Find Faces\)** ページが開きます。
 
-2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
+2. **API テスト コンソールを開く場合** 、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![試用版: [Image - Find Faces]\(Image - Find Faces\) ページのリージョン選択肢](images/test-drive-region.png)
 
@@ -86,7 +86,7 @@ Content Moderator OCR 機能を使用して、画像内のテキストを検出�
 
    **[Image - OCR]\(Image - OCR\)** ページが開きます。
 
-2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
+2. **API テスト コンソールを開く場合** 、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![[Image - OCR]\(Image - OCR\) ページのリージョン選択肢](images/test-drive-region.png)
 
@@ -102,4 +102,4 @@ Content Moderator OCR 機能を使用して、画像内のテキストを検出�
 
 ## <a name="next-steps"></a>次のステップ
 
-コードで REST API を使用するか、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)に従って、アプリケーションに画像モデレーションを追加します。
+コードで REST API を使用するか、[.NET SDK のクイックスタート](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)に従って、アプリケーションに画像モデレーションを追加します。

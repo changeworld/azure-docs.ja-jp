@@ -11,12 +11,12 @@ ms.date: 06/01/2020
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
-ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327703"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147682"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -35,11 +35,11 @@ IoT Hub では、組み込みの D2C 受信エンドポイントでコンシュ�
 
 保持期間は、[IoT Hub のリソース プロバイダー REST API](/rest/api/iothub/iothubresource) を使用してプログラムにより変更するか、[Azure portal](https://portal.azure.com) を使用して変更できます。
 
-IoT Hub は、**messages/events** 組み込みエンドポイントをバックエンド サービスに公開して、ハブで受信した D2C メッセージを読み取ります。 このエンドポイントには Event Hubs との互換性があり、Event Hubs のサービスがメッセージを読み取るためにサポートするすべてのメカニズムを使用できます。
+IoT Hub は、**messages/events** 組み込みエンドポイントをバックエンド サービスに公開して、Hub で受信した D2C メッセージを読み取ります。 このエンドポイントには Event Hubs との互換性があり、Event Hubs のサービスがメッセージを読み取るためにサポートするすべてのメカニズムを使用できます。
 
 ## <a name="read-from-the-built-in-endpoint"></a>組み込みエンドポイントから読み取る
 
-一部の製品統合と Event Hubs SDK は IoT Hub を認識するので、IoT ハブ サービスの接続文字列を使用して、組み込みのエンドポイントに接続できます。
+一部の製品統合と Event Hubs SDK は IoT Hub を認識するので、IoT Hub サービスの接続文字列を使用して、組み込みのエンドポイントに接続できます。
 
 IoT Hub を認識しない Event Hubs SDK や製品統合を使用している場合は、イベント ハブ互換エンドポイントとイベント ハブ互換名が必要です。 次のように、ポータルからこれらの値を取得できます。
 
@@ -72,12 +72,12 @@ IoT Hub が公開している組み込みのイベント ハブ互換エンド�
 
 IoT Hub が公開している組み込みのイベント ハブ互換エンドポイントで使用できる製品統合は次のとおりです。
 
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。 「[Processing data from IoT Hub with Azure Functions (Azure Functions を使用した IoT Hub のデータの処理)](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)」をご覧ください。
-* [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)。 「[Stream Analytics に入力としてデータをストリーム配信する](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)」をご覧ください。
-* [Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/)。 「[Time Series Insights 環境に IoT Hub イベント ソースを追加する](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md)」をご覧ください。
+* [Azure Functions](../azure-functions/index.yml)。 「[Processing data from IoT Hub with Azure Functions (Azure Functions を使用した IoT Hub のデータの処理)](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)」をご覧ください。
+* [Azure Stream Analytics](../stream-analytics/index.yml)。 「[Stream Analytics に入力としてデータをストリーム配信する](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)」をご覧ください。
+* [Time Series Insights](../time-series-insights/index.yml)。 「[Time Series Insights 環境に IoT Hub イベント ソースを追加する](../time-series-insights/how-to-ingest-data-iot-hub.md)」をご覧ください。
 * [Apache Storm のスパウト](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md)。 [スパウトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs) は GitHub で確認できます。
-* [Apache Spark 統合](../hdinsight/spark/apache-spark-eventhub-streaming.md)。
-* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)。
+* [Apache Spark 統合](../hdinsight/spark/apache-spark-ipython-notebook-machine-learning.md)。
+* [Azure Databricks](/azure/azure-databricks/)。
 
 ## <a name="next-steps"></a>次のステップ
 

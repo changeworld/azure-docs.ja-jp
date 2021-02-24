@@ -9,19 +9,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 4028d6732220dba4848c88306a501ce22af7487a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144025"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796246"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 このチュートリアルでは、Azure CLI 用の機械学習拡張機能を使用して、モデルのトレーニング、登録、デプロイを行います。
 
-このチュートリアルの Python トレーニング スクリプトでは、基本的なモデルをトレーニングするために [scikit-learn](https://scikit-learn.org/) を使用します。 このチュートリアルのフォーカスは、スクリプトやモデルではなく、CLI を使用して Azure Machine Learning を操作するプロセスです。
+このチュートリアルの Python トレーニング スクリプトでは、単純なモデルをトレーニングするために [scikit-learn](https://scikit-learn.org/) を使用します。 このチュートリアルのフォーカスは、スクリプトやモデルではなく、CLI を使用して Azure Machine Learning を操作するプロセスです。
 
 次の操作の実行方法を確認してください。
 
@@ -39,7 +39,7 @@ ms.locfileid: "89144025"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* ご使用の**ローカル環境**からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。
+* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) を使用する場合は、ブラウザーを使用してクラウド内に存在する CLI にアクセスします。
 
@@ -68,14 +68,14 @@ git clone https://github.com/microsoft/MLOps.git
 リポジトリには、トレーニング済みのモデルを Web サービスとしてデプロイするために使用される以下のファイルが含まれています。
 
 * `aciDeploymentConfig.yml`:__デプロイ構成__ ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
-* `inferenceConfig.json`:__推論構成__ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
+* `inferenceConfig.json`:__推論構成__ ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
 * `score.py`:受信データを受け取り、モデルを使用してスコア付けした後、応答を返す python スクリプト。
 * `scoring-env.yml`:モデルと `score.py` スクリプトの実行に必要な conda の依存関係。
 * `testdata.json`:デプロイ済み Web サービスのテストに使用できるデータ ファイル。
 
 ## <a name="connect-to-your-azure-subscription"></a>Azure サブスクリプションへの接続
 
-CLI から Azure サブスクリプションを認証するには、いくつかの方法があります。 最も基本的な方法は、ブラウザーを使用して対話形式で認証することです。 対話形式で認証するには、コマンド ラインまたはターミナルを開き、次のコマンドを使用します。
+CLI から Azure サブスクリプションを認証するには、いくつかの方法があります。 最も簡単な方法は、ブラウザーを使用して対話形式で認証することです。 対話形式で認証するには、コマンド ラインまたはターミナルを開き、次のコマンドを使用します。
 
 ```azurecli-interactive
 az login
@@ -101,7 +101,7 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループは、Azure プラットフォーム上のリソースの基本的なコンテナーです。 Azure Machine Learning を使用する場合、リソース グループには Azure Machine Learning ワークスペースが含まれます。 また、ワークスペースによって使用される他の Azure サービスも含まれます。 たとえば、クラウドベースのコンピューティング リソースを使用してモデルをトレーニングすると、そのリソースがリソース グループ内に作成されます。
+リソース グループは、Azure プラットフォーム上のリソースのコンテナーです。 Azure Machine Learning を使用する場合、リソース グループには Azure Machine Learning ワークスペースが含まれます。 また、ワークスペースによって使用される他の Azure サービスも含まれます。 たとえば、クラウドベースのコンピューティング リソースを使用してモデルをトレーニングすると、そのリソースがリソース グループ内に作成されます。
 
 __新しいリソース グループを作成__ するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
 
@@ -128,7 +128,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-リソース グループの操作の詳細については、「[az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)」を参照してください。
+リソース グループの操作の詳細については、「[az group](/cli/azure/group?preserve-view=true&view=azure-cli-latest)」を参照してください。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
@@ -307,10 +307,10 @@ runconfig ファイルには、トレーニングの実行で使用される環�
 `cpu-cluster` コンピューティング先でトレーニングの実行を開始するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-このコマンドでは、実験の名前 (`myexperiment`) が指定されます。 実験では、この実行に関する情報がワークスペースに格納されます。
+このコマンドでは、実験の名前 (`tutorial-cli`) が指定されます。 実験では、この実行に関する情報がワークスペースに格納されます。
 
 `-c mnist` パラメーターでは、`.azureml/mnist.runconfig` ファイルを指定します。
 
@@ -327,7 +327,7 @@ Accuracy is 0.9185
 
 トレーニング スクリプトを調べると、トレーニング済みのモデルを `outputs/sklearn_mnist_model.pkl` に保存するときにアルファ値も使用されていることがわかります。
 
-モデルは、トレーニングされたコンピューティング先にある `./outputs` ディレクトリに保存されました。 この例では、Azure クラウド内の Azure Machine Learning コンピューティング インスタンスです。 トレーニング プロセスでは、トレーニングが発生したコンピューティング先から Azure Machine Learning ワークスペースに `./outputs` ディレクトリの内容が自動的にアップロードされます。 これは、実験 (この例では `myexperiment`) の一部として保存されます。
+モデルは、トレーニングされたコンピューティング先にある `./outputs` ディレクトリに保存されました。 この例では、Azure クラウド内の Azure Machine Learning コンピューティング インスタンスです。 トレーニング プロセスでは、トレーニングが発生したコンピューティング先から Azure Machine Learning ワークスペースに `./outputs` ディレクトリの内容が自動的にアップロードされます。 これは、実験 (この例では `tutorial-cli`) の一部として保存されます。
 
 ## <a name="register-the-model"></a>モデルを登録する
 
@@ -345,13 +345,13 @@ az ml model register -n mymodel -f runoutput.json --asset-path "outputs/sklearn_
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

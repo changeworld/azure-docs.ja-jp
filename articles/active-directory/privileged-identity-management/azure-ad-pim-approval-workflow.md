@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24471ff5a085be905f9316f1af3c95c3a7912bf1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d74a243ab10d0fffca960dc5149999560a7b54cd
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421537"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980588"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対する要求を承認または拒否する
 
@@ -31,16 +31,16 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)があります。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
     [![[Azure AD] > [Privileged Identity Management] を選択します。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Azure AD ロールに対する要求を承認または拒否するには、この記事の手順に従ってください。
 
-# <a name="new-version"></a>[新しいバージョン](#tab/new)
+## <a name="new-version"></a>[新しいバージョン](#tab/new)
 
-## <a name="view-pending-requests"></a>保留中の要求を表示する
+### <a name="view-pending-requests"></a>保留中の要求を表示する
 
 代理承認者は、Azure AD ロール要求が代理承認者による承認を待っている状態になると、メール通知を受け取ります。 これらの保留中の要求は、Privileged Identity Management で表示できます。
 
@@ -54,11 +54,11 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
     **[ロールのアクティブ化に関する要求]** セクションに、承認が保留されている要求の一覧が表示されます。
 
-## <a name="approve-requests"></a>要求の承認
+### <a name="approve-requests"></a>要求の承認
 
 1. 承認する要求を見つけて選択します。 承認または拒否のページが表示されます。
 
-    ![申請の承認 - 詳細と [根拠] ボックスを含む承認または拒否のウィンドウ](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![[申請の承認 - Azure AD ロール] ページを示すスクリーンショット。](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
 1. **[理由]** ボックスに、業務上の正当な理由を入力します。
 
@@ -66,7 +66,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
     ![要求が承認されたことを示す承認の通知](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
-## <a name="deny-requests"></a>要求を拒否する
+### <a name="deny-requests"></a>要求を拒否する
 
 1. 拒否する要求を見つけて選択します。 承認または拒否のページが表示されます。
 
@@ -76,7 +76,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 1. **[拒否]** を選択します。 拒否すると同時に通知が表示されます。
 
-## <a name="workflow-notifications"></a>ワークフロー通知
+### <a name="workflow-notifications"></a>ワークフロー通知
 
 ワークフロー通知に関するいくつかの情報を次に示します。
 
@@ -88,9 +88,9 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 >[!NOTE]
 >全体管理者または特権ロール管理者は、承認されたユーザーをアクティブにするべきではないと判断した場合、Privileged Identity Management でアクティブなロールの割り当てを削除できます。 管理者は、承認者でない限り、保留中の要求の通知を受け取りませんが、Privileged Identity Management で保留中の要求を表示することで、すべてのユーザーの保留中の要求を確認およびキャンセルできます。
 
-# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
+## <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 
-## <a name="view-pending-requests"></a>保留中の要求を表示する
+### <a name="view-pending-requests"></a>保留中の要求を表示する
 
 代理承認者は、Azure AD ロール要求が代理承認者による承認を待っている状態になると、メール通知を受け取ります。 これらの保留中の要求は、Privileged Identity Management で表示できます。
 
@@ -106,7 +106,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
     承認が保留されている要求の一覧を確認できます。
 
-## <a name="approve-requests"></a>要求の承認
+### <a name="approve-requests"></a>要求の承認
 
 1. 承認する要求を選択し、 **[承認]** をクリックして、[選択した要求の承認] ウィンドウを開きます。
 
@@ -122,7 +122,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
     ![[承認] をクリックした後の [選択した要求の承認] ウィンドウ](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
-## <a name="deny-requests"></a>要求を拒否する
+### <a name="deny-requests"></a>要求を拒否する
 
 1. 拒否する要求を選択し、 **[拒否]** をクリックして、[選択した要求の拒否] ウィンドウを開きます。
 

@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: c94bc949f13ee19a9d2150c9d3c1b6a2bdb959b2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 4abb795335bfcb2c9b335d4fb09ddc9fdb2476b4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850068"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746579"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python を使用した受信要求の追跡
 
@@ -33,7 +33,7 @@ ms.locfileid: "87850068"
     )
     ```
 
-3. `settings.py` の `OPENCENSUS` に AzureExporter が正しく構成されていることを確認します。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
+3. `settings.py` の `OPENCENSUS` に AzureExporter が正しく構成されていることを確認します。 追跡したくない URL からの要求については、その URL を `EXCLUDELIST_PATHS` に追加します。
 
     ```python
     OPENCENSUS = {
@@ -42,7 +42,7 @@ ms.locfileid: "87850068"
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -74,7 +74,7 @@ ms.locfileid: "87850068"
     
     ```
 
-2. `app.config` を使用して `flask` アプリケーションを構成することもできます。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
+2. `app.config` を使用して `flask` アプリケーションを構成することもできます。 追跡したくない URL からの要求については、その URL を `EXCLUDELIST_PATHS` に追加します。
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -83,7 +83,7 @@ ms.locfileid: "87850068"
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -100,7 +100,7 @@ ms.locfileid: "87850068"
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. コードで直接 `pyramid` tween を構成できます。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
+2. コードで直接 `pyramid` tween を構成できます。 追跡したくない URL からの要求については、その URL を `EXCLUDELIST_PATHS` に追加します。
 
     ```python
     settings = {
@@ -110,11 +110,66 @@ ms.locfileid: "87850068"
                 'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                     connection_string="InstrumentationKey=<your-ikey-here>",
                 )''',
-                'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+                'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
             }
         }
     }
     config = Configurator(settings=settings)
+    ```
+
+## <a name="tracking-fastapi-applications"></a>FastAPI アプリケーションの追跡
+
+OpenCensus は FastAPI の拡張機能を備えていません。 独自の FastAPI ミドルウェアを記述するには、次の手順を実行します。
+
+1. 次の依存関係が必要です。 
+    - [fastapi](https://pypi.org/project/fastapi/)
+    - [uvicorn](https://pypi.org/project/uvicorn/)
+
+2. [FastAPI ミドルウェア](https://fastapi.tiangolo.com/tutorial/middleware/)を追加します。 span kind サーバーを必ず設定するようにしてください (`span.span_kind = SpanKind.SERVER`)。
+
+3. アプリケーションを実行します。 FastAPI アプリケーションに対する呼び出しは、自動的に追跡され、テレメトリが Azure Monitor に直接記録される必要があります。
+
+    ```python 
+    # Opencensus imports
+    from opencensus.ext.azure.trace_exporter import AzureExporter
+    from opencensus.trace.samplers import ProbabilitySampler
+    from opencensus.trace.tracer import Tracer
+    from opencensus.trace.span import SpanKind
+    from opencensus.trace.attributes_helper import COMMON_ATTRIBUTES
+    # FastAPI imports
+    from fastapi import FastAPI, Request
+    # uvicorn
+    import uvicorn
+
+    app = FastAPI()
+
+    HTTP_URL = COMMON_ATTRIBUTES['HTTP_URL']
+    HTTP_STATUS_CODE = COMMON_ATTRIBUTES['HTTP_STATUS_CODE']
+
+    # fastapi middleware for opencensus
+    @app.middleware("http")
+    async def middlewareOpencensus(request: Request, call_next):
+        tracer = Tracer(exporter=AzureExporter(connection_string=f'InstrumentationKey={APPINSIGHTS_INSTRUMENTATIONKEY}'),sampler=ProbabilitySampler(1.0))
+        with tracer.span("main") as span:
+            span.span_kind = SpanKind.SERVER
+
+            response = await call_next(request)
+
+            tracer.add_attribute_to_current_span(
+                attribute_key=HTTP_STATUS_CODE,
+                attribute_value=response.status_code)
+            tracer.add_attribute_to_current_span(
+                attribute_key=HTTP_URL,
+                attribute_value=str(request.url))
+
+        return response
+
+    @app.get("/")
+    async def root():
+        return "Hello World!"
+
+    if __name__ == '__main__':
+        uvicorn.run("example:app", host="127.0.0.1", port=5000, log_level="info")
     ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: データ保護
           href: protection-customer-data.md
+    - name: プラットフォームの整合性とセキュリティ
+      href: platform.md
+      items:
+        - name: ファームウェアのセキュリティ
+          href: firmware.md
+        - name: セキュア ブート
+          href: secure-boot.md
+        - name: メジャー ブートとホストの構成証明
+          href: measured-boot-host-attestation.md
+        - name: プロジェクト Cerberus
+          href: project-cerberus.md
+        - name: 保存時の暗号化
+          href: encryption-atrest.md
+        - name: ハイパーバイザー セキュリティ
+          href: hypervisor.md
     - name: Azure クラウドでの分離
       href: isolation-choices.md
 - name: ID 管理
@@ -49,25 +64,27 @@
     - name: セキュリティ チェックリスト
       href: steps-secure-identity.md
     - name: パスワードなしの選択
-      href: ad-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md
 - name: ネットワークのセキュリティ
   items:
     - name: セキュリティの概要
       href: network-overview.md
     - name: ベスト プラクティス
       href: network-best-practices.md
-    - name: DDoS Protection
-      href: ddos-best-practices.md
+    - name: DDoS Protection のベスト プラクティス
+      href: ../../ddos-protection/fundamental-best-practices.md
     - name: DDoS Protection のセキュリティ ベースライン
       href: ddos-protection-security-baseline.md
     - name: 未解決の DNS とサブドメインの引き継ぎ
       href: subdomain-takeover.md
     - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
 - name: IaaS セキュリティ
   items:
     - name: Microsoft Antimalware
       href: antimalware.md
+    - name: Microsoft Antimalware のコード サンプル
+      href: antimalware-code-samples.md
     - name: 仮想マシンのセキュリティの概要
       href: virtual-machines-overview.md
     - name: ベスト プラクティス - IaaS ワークロード
@@ -80,6 +97,8 @@
       href: encryption-overview.md
     - name: 二重暗号化
       href: double-encryption.md
+    - name: TLS 証明書の変更
+      href: tls-certificate-changes.md
     - name: ディスクの暗号化
       items:
         - name: ベスト プラクティス
@@ -93,13 +112,13 @@
     - name: データベースのセキュリティ
       items:
         - name: 概要
-          href: ../../sql-database/sql-database-security-overview.md
+          href: ../../azure-sql/database/security-overview.md
         - name: ベスト プラクティス
-          href: ../../sql-database/sql-database-security-best-practice.md
+          href: ../../azure-sql/database/security-best-practice.md
         - name: セキュリティ チェックリスト
           href: database-security-checklist.md
     - name: Storage のセキュリティ ガイド
-      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
     - name: カスタマー ロックボックス
       href: customer-lockbox-overview.md
     - name: カスタマー ロックボックスのセキュリティ ベースライン
@@ -119,7 +138,7 @@
       href: service-fabric-best-practices.md
 - name: 監視、監査、および操作
   items:
-    - name: 高度な脅威保護
+    - name: 脅威の防止
       href: threat-detection.md
     - name: Azure のログと監査
       href: log-audit.md

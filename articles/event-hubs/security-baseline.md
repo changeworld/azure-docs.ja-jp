@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e49a6b8000def0fe175930629b33203adec1b0f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: c5c4aed7a5ee1726d7afb1a671fea1519acfa67c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537056"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806089"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs 用の Azure セキュリティ ベースライン
 
@@ -72,7 +72,7 @@ Azure Security Center によって提供されるネットワークのセキュ�
 
 **ガイダンス**:イベント ハブに関連付けられた仮想ネットワーク上で DDoS Protection Standard を有効にして、分散型サービス拒否 (DDoS) 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-DDoS 保護を構成する方法: [https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](../virtual-network/manage-ddos-protection.md)
+DDoS 保護を構成する方法: [https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](../ddos-protection/manage-ddos-protection.md)
 
 Azure Security Center の統合された脅威インテリジェンスの詳細については、 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer を参照してください。
 
@@ -293,9 +293,9 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 **ガイダンス**: Azure Active Directory (AD) には、明示的に割り当てる必要があり、クエリ可能な組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。 
 
-PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
-PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 **Azure Security Center の監視**: はい
 
@@ -361,7 +361,7 @@ Azure Security Center 内で ID とアクセスを監視する方法: https://do
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、イベント ハブ対応リソースを構成します。
 
-特権アクセス ワークステーションについて: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+特権アクセス ワークステーションについて: https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -397,7 +397,7 @@ Azure でネームド ロケーションを構成する方法: https://docs.micr
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: Event Hubs などの Azure リソースの主要な認証および承認システムとして Azure Active Directory (AAD) を使用します。 これにより、ロールベースのアクセス制御 (RBAC) で機密性の高いリソースを管理できるようになります。
+**ガイダンス**: Event Hubs などの Azure リソースの主要な認証および承認システムとして Azure Active Directory (AAD) を使用します。 これにより、Azure のロールベースのアクセス制御 (Azure RBAC) で機密性の高いリソースを管理できるようになります。
 
  Azure AD インスタンスを作成して構成する方法: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -443,7 +443,7 @@ Azure Active Directory を使用して Event Hubs リソースへのアクセス
 
 Azure AD の危険なサインインを表示する方法: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-ID Protection のリスク ポリシーを構成して有効にする方法: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Identity Protection のリスク ポリシーを構成して有効にする方法: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
@@ -539,9 +539,9 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。
+**ガイダンス**: Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、セキュリティ プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルが可能です) にアクセス許可を付与できます。
 
-Azure Event Hubs の Azure AD RBAC と使用可能なロールについて: https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+Azure RBAC と Azure Event Hubs で使用できるロールを理解する: https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Azure Security Center の監視**: 適用なし
 
@@ -633,7 +633,7 @@ Azure アクティビティ ログ イベントのアラートを作成する方
 
 Azure Resource Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -779,7 +779,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 Event Hubs 名前空間用の Azure 組み込みポリシー: https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -820,9 +820,9 @@ Azure Policy の効果の詳細については、 https://docs.microsoft.com/azu
 
 **ガイダンス**: Event Hubs または関連リソースにカスタムの Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
-Azure DevOps でコードを格納する方法: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure DevOps でコードを格納する方法: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow
 
-Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index
 
 **Azure Security Center の監視**: 適用なし
 
@@ -882,9 +882,11 @@ Event Hubs 用にカスタマー マネージド キーを構成する: https://
 
 Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-キー コンテナーを作成する方法: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+キー コンテナーを作成する方法: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-マネージド ID で Key Vault の認証を提供する方法: https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault に対して認証を行う方法: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault のアクセス ポリシーを割り当てる方法: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center の監視**: はい
 
@@ -984,7 +986,7 @@ Key Vault のシークレットをバックアップする方法: https://docs.m
 
  
 
-Azure で Key Vault のキーを復元する方法: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+Azure で Key Vault のキーを復元する方法: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1052,7 +1054,7 @@ Azure Security Center のセキュリティ連絡先を設定する方法: https
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 連続エクスポートを構成する方法: https://docs.microsoft.com/azure/security-center/continuous-export
 

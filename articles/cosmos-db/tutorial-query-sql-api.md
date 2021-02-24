@@ -4,20 +4,22 @@ description: チュートリアル:Azure Cosmos DB に対する SQL クエリを
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c206b68495b09988e49f37433ccd5616acd29cb7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135999"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337780"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル:SQL API を使って Azure Cosmos DB に対するクエリを実行する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB [SQL API](documentdb-introduction.md) では SQL を使用したドキュメントのクエリがサポートされます。 この記事には、1 つのサンプル ドキュメントと 2 つのサンプル SQL クエリおよび結果が含まれます。
+Azure Cosmos DB [SQL API](./introduction.md) では SQL を使用したドキュメントのクエリがサポートされます。 この記事には、1 つのサンプル ドキュメントと 2 つのサンプル SQL クエリおよび結果が含まれます。
 
 この記事に含まれるタスクは次のとおりです。 
 
@@ -149,4 +151,3 @@ SQL クエリについて詳しくは、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [データをグローバルに分散する](tutorial-global-distribution-sql-api.md)
-

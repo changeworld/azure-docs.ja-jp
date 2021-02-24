@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 5bedb7da2f088c065d95d60effeda1e4db15d44a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 64955cdc1e4eb0088b53ad73d9c464c9533aa0fa
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589488"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007722"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>Apache Spark と依存コンポーネントでサポートされている言語およびランタイムのバージョン  
 
@@ -30,7 +30,7 @@ Azure Synapse の Apache Spark は Ubuntu バージョン 16.04 で動作しま�
 
 ## <a name="java-version"></a>Java バージョン
 
-Azure Synapse の Apache Spark には Java バージョン 1.8.0_222 が含まれています
+Azure Synapse の Apache Spark には Java バージョン 1.8.0_272 が含まれています
 
 ## <a name="scala-version"></a>Scala バージョン
 
@@ -38,15 +38,15 @@ Azure Synapse の Apache Spark には Scala 2.11.12 が含まれています
 
 ## <a name="net-core-version"></a>.NET Core バージョン
 
-Azure Synapse の Apache Spark には .NET Core 3.0 が含まれています
+Azure Synapse の Apache Spark には .NET Core 3.1 が含まれています
 
 ## <a name="net-support-for-apache-spark"></a>Apache Spark の .NET サポート
 
-Azure Synapse には Apache Spark 0.11.0 の .NET サポートが含まれています
+Azure Synapse には Apache Spark 1.0.0 の .NET サポートが含まれています
 
 ## <a name="delta-lake"></a>Delta Lake
 
-Synapse Analytics には Delta Lake 0.6.0 のサポートが含まれています
+Synapse Analytics には Delta Lake 0.6.1 のサポートが含まれています
 
 ## <a name="python-version"></a>Python バージョン
 

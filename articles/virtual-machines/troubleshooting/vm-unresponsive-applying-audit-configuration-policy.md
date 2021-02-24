@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: e55fa377f28572901202b4d722bea70786edae22
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942017"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632607"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>監査ポリシー構成ポリシーの適用時に仮想マシンが応答しない
 
@@ -27,7 +27,7 @@ ms.locfileid: "88942017"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、オペレーティング システム (OS) が起動中に "**Applying Audit Policy Configuration policy**" (監査ポリシー構成ポリシーを適用中) というメッセージと共に停止したことがスクリーンショットに示されていることがわかります。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、オペレーティング システム (OS) が起動中に "**Applying Audit Policy Configuration policy**" (監査ポリシー構成ポリシーを適用中) というメッセージが表示されたまま応答しなくなったことをそのスクリーンショットの表示で確認できます。
 
   ![次のメッセージが示されている起動中の OS: "Applying Audit Policy Configuration policy" (監査ポリシー構成ポリシーを適用中)](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -46,6 +46,9 @@ ms.locfileid: "88942017"
 
 ### <a name="process-overview"></a>プロセスの概要
 
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
+
 1. 修復 VM を作成してアクセスします。
 1. ポリシーを無効にする。
 1. シリアル コンソールとメモリ ダンプの収集を有効にします。
@@ -54,12 +57,12 @@ ms.locfileid: "88942017"
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
-1. [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
+1. [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 1. リモート デスクトップ接続を使用して修復 VM に接続します。
 
 ### <a name="disable-the-policy"></a>ポリシーを無効にする
 
-1. 修復 VM で、**レジストリ エディター**を開きます。
+1. 修復 VM で、**レジストリ エディター** を開きます。
 1. **HKEY_LOCAL_MACHINE** キーを見つけて、メニューから **[ファイル] > [ハイブの読み込み]** の順に選択します。
 
    ![ハイブを読み込むためのレジストリ エディター内でのナビゲーション。](./media/vm-unresponsive-applying-audit-configuration-policy/3.png)
@@ -105,7 +108,7 @@ ms.locfileid: "88942017"
       `bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum`
 
       - コマンドの `<LETTER OF THE EFI SYSTEM PARTITION>` を、EFI システム パーティションの文字に置き換えます。
-      - ディスクの管理コンソールを起動して、**EFI システム パーティション**というラベルが付いた適切なシステム パーティションを特定すると役立つ場合があります。
+      - ディスクの管理コンソールを起動して、**EFI システム パーティション** というラベルが付いた適切なシステム パーティションを特定すると役立つ場合があります。
       - 識別子は一意の GUID の場合もあれば、既定の **bootmgr** の場合もあります。
 
 1. 次のコマンドを実行します。
@@ -153,7 +156,7 @@ ms.locfileid: "88942017"
    
 ### <a name="rebuild-the-virtual-machine"></a>仮想マシンを再構築する
 
-1. [VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) に従って VM を再構築します。
+1. [VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) に従って VM を再構築します。
 
 1. VM が正常に起動するかテストして、問題が解決したかどうかを確認します。
 
@@ -175,11 +178,11 @@ VM をテストして、正常に動作していることを確認します。 �
 
 #### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>新しい修復 VM に OS ディスクを接続する
 
-1. [VM 修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)の手順 1 から 3 を使用して、新しい修復 VM を準備します。
+1. [VM 修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)の手順 1 から 3 を使用して、新しい修復 VM を準備します。
 1. リモート デスクトップ接続を使用し、修復 VM に接続します。
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
 
 1. 復旧 VM で、接続されている OS ディスクの Windows フォルダーに移動します。 接続されている OS ディスクに割り当てられているドライブ文字が *F* の場合は、`F:\Windows` に移動する必要があります。
 1. `memory.dmp` ファイルを探し、メモリ ダンプ ファイルと共に[サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
-1. `memory.dmp` ファイルが見つからない場合は、代わりに[シリアル コンソールでマスク不可能割り込み (NMI) 呼び出し](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls)を使用します。 そのガイドに従い、[ここで NMI 呼び出しを使用してクラッシュ ダンプ ファイルを生成](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)します。
+1. `memory.dmp` ファイルが見つからない場合は、代わりに[シリアル コンソールでマスク不可能割り込み (NMI) 呼び出し](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)を使用します。 そのガイドに従い、[ここで NMI 呼び出しを使用してクラッシュ ダンプ ファイルを生成](/windows/client-management/generate-kernel-or-complete-crash-dump)します。

@@ -6,13 +6,13 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 175c00440fe9723bbd389db39616f525c2b7f436
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836719"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805480"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric 用の Azure セキュリティ ベースライン
 
@@ -76,9 +76,9 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 **ガイダンス**: DDoS 攻撃からの保護のために、Azure Service Fabric クラスターがデプロイされている仮想ネットワーク上で Azure DDoS Standard Protection を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-* [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -144,7 +144,7 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 **ガイダンス**: Azure Service Fabric クラスターに関連するネットワーク リソースの標準的なセキュリティ構成を定義して、実装します。 Azure Service Fabric クラスターのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ServiceFabric" と "Microsoft.Network" 名前空間内で Azure Policy エイリアスを使用します。
 
-Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整します。
+Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整します。
 
 * [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -380,7 +380,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: 多要素認証 (MFA) が構成された PAW (特権アクセス ワークステーション) を使用してログインし、Azure Service Fabric クラスターと関連リソースを構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -488,7 +488,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -546,7 +546,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **責任**: 共有
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
 **ガイダンス**: 適用できません。この推奨事項は、データを格納するように設計された非コンピューティング リソースを対象にしています。
 
@@ -572,7 +572,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [Azure での保存時の暗号化の概要](../security/fundamentals/encryption-atrest.md)
 
-* [カスタマー マネージド暗号化キーを構成する方法](../storage/common/storage-encryption-keys-portal.md)
+* [カスタマー マネージド暗号化キーを構成する方法](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 * [Windows での Azure Service Fabric クラスター ノードのディスク暗号化の有効化](./service-fabric-enable-azure-disk-encryption-windows.md)
 
@@ -608,7 +608,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 * [Service Fabric クラスターでの制御された混乱の誘発](./service-fabric-controlled-chaos.md)
 
-* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -626,7 +626,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 * [最新のスケール セット モデルで VM を最新の状態にする方法](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure Automation の Update Management の概要](../automation/update-management/update-mgmt-overview.md)
+* [Azure Automation の Update Management の概要](../automation/update-management/overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -698,7 +698,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -868,13 +868,13 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: カスタム イメージを使用する場合は、RBAC を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。
+**ガイダンス**: カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、確実に承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を利用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
-* [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [コンテナー レジストリの RBAC を理解する](../container-registry/container-registry-roles.md)
+* [コンテナー レジストリの Azure RBAC を理解する](../container-registry/container-registry-roles.md)
 
-* [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1042,7 +1042,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 * [Azure Storage の保存時の暗号化](../storage/common/storage-service-encryption.md)
 
-* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1102,7 +1102,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 * [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 

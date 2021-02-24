@@ -1,19 +1,25 @@
 ---
 title: Azure Service Fabric のネットワークの概要
 description: Service Fabric Mesh でのネットワーク、ゲートウェイ、およびインテリジェントなトラフィック ルーティングについて説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef8b40be366afe24b960f7419d84cc2a9976b592
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75459138"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625703"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh アプリケーションでのネットワークの概要
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API を介した新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
+
 この記事では、さまざまな種類のロード バランサー、お使いのアプリケーションのネットワークがゲートウェイによって他のネットワークに接続される方法、およびお使いのアプリケーション内のサービス間でトラフィックがルーティングされる方法について説明します。
 
 ## <a name="layer-4-vs-layer-7-load-balancers"></a>レイヤー 4 のロード バランサーとレイヤー 7 のロード バランサーの比較

@@ -9,21 +9,25 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077395"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608636"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性
 
 [高可用性とディザスター リカバリー (HADR) 構成](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html)の IBM Db2 for Linux, UNIX, and Windows (LUW) は、プライマリ データベース インスタンスを実行する 1 つのノードと、セカンダリ データベース インスタンスを実行する 1 つ以上のノードで構成されています。 プライマリ データベース インスタンスに対する変更は、実際の構成に応じて、同期的または非同期的にセカンダリ データベース インスタンスにレプリケートされます。 
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*マスター*" と "*スレーブ*" という用語への言及があります。 ソフトウェアからこれらの用語が削除された時点で、この記事から削除します。
 
 この記事では、Azure 仮想マシン (VM) をデプロイして構成し、クラスター フレームワークをインストールし、HADR 構成で IBM Db2 LUW をインストールする方法について説明します。 
 
@@ -71,7 +75,7 @@ SAP ノート [1928533] に記載されているように、サポートされ�
 
 以下の図には、データベース サーバーである 2 台の Azure VM の設定が示されています。 どちらのデータベース サーバー Azure VM も、それぞれ独自のストレージが接続され、稼動しています。 HADR では、いずれか 1 つの Azure VM にある 1 つのデータベース インスタンスにプライマリ インスタンスの役割が与えられます。 すべてのクライアントは、プライマリ インスタンスに接続されます。 データベース トランザクションにおけるすべての変更は、Db2 のトランザクション ログとしてローカルに永続化されます。 トランザクション ログ レコードは、ローカルに永続化されると、セカンダリ データベース サーバー (スタンバイ サーバーまたはスタンバイ インスタンス) 上のデータベース インスタンスに TCP/IP 経由で転送されます。 スタンバイ インスタンスは、転送されたトランザクション ログ レコードをロールフォワードすることによってローカル データベースを更新します。 このようにして、スタンバイ サーバーはプライマリ サーバーと同期された状態で維持されます。
 
-HADR は、レプリケーション機能にすぎません。 障害の検出や自動引き継ぎ (フェールオーバー) の機能はありません。 スタンバイ サーバーへの引き継ぎ (切り替え) は、データベース管理者が手動で開始する必要があります。 自動引き継ぎと障害検出を実現するために、Linux Pacemaker クラスタリング機能を使用できます。 Pacemaker では 2 つのデータベース サーバー インスタンスを監視します。 プライマリ データベース サーバー インスタンスがクラッシュすると、Pacemaker で、スタンバイ サーバーによる HADR の*自動* 引き継ぎが開始されます。 また、Pacemaker では確実に仮想 IP アドレスが新しいプライマリ サーバーに割り当てられます。
+HADR は、レプリケーション機能にすぎません。 障害の検出や自動引き継ぎ (フェールオーバー) の機能はありません。 スタンバイ サーバーへの引き継ぎ (切り替え) は、データベース管理者が手動で開始する必要があります。 自動引き継ぎと障害検出を実現するために、Linux Pacemaker クラスタリング機能を使用できます。 Pacemaker では 2 つのデータベース サーバー インスタンスを監視します。 プライマリ データベース サーバー インスタンスがクラッシュすると、Pacemaker で、スタンバイ サーバーによる HADR の *自動* 引き継ぎが開始されます。 また、Pacemaker では確実に仮想 IP アドレスが新しいプライマリ サーバーに割り当てられます。
 
 ![IBM Db2 高可用性の概要](./media/high-availability-guide-rhel-ibm-db2-luw/ha-db2-hadr-lb-rhel.png)
 
@@ -144,7 +148,7 @@ IBM Db2 LUW のリソース エージェントは、Red Hat Enterprise Linux Ser
 
 ## <a name="create-the-pacemaker-cluster"></a>Pacemaker クラスターを作成する
     
-この IBM Db2 サーバー用に基本的な Pacemaker クラスターを作成する場合は、「 [Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする][rhel-pcs-azr]」を参照してください。 
+この IBM Db2 サーバー用に基本的な Pacemaker クラスターを作成する場合は、「[Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする][rhel-pcs-azr]」を参照してください。 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>IBM Db2 LUW と SAP 環境をインストールする
 
@@ -403,6 +407,8 @@ Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU
 > [!NOTE]
 > Standard Load Balancer SKU では、Load Balancer の管理下にあるノードからパブリック IP アドレスへのアクセスが制限されます。 「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」という記事では、それらのノードからパブリック IP アドレスにアクセスできるようにする方法が説明されています
 
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](../../../load-balancer/load-balancer-multivip-overview.md#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
 
 
 1. フロントエンド IP プールを作成する:
@@ -489,7 +495,7 @@ J2EE Config ツールを使用して JDBC URL を確認または更新します�
     
     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
     
-1. 左側のフレームで、**セキュリティ ストア**を選択します。
+1. 左側のフレームで、**セキュリティ ストア** を選択します。
 1. 右側のフレームで、キー `jdbc/pool/\<SAPSID>/url` を選択します。
 1. JDBC URL のホスト名を仮想ホスト名に変更します。
     
@@ -557,7 +563,7 @@ SAP システムにおける最初の状態は、次のイメージに示され�
 > テストを開始する前に、次のことを確認します。
 > * Pacemaker に失敗したアクションがない (pcs status)。
 > * 場所の制約 (移行テストの残り) がない
-> * IBM Db2 HADR 同期が動作している。 ユーザー db2\<sid> で確認します。 <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * IBM Db2 HADR 同期が動作している。 ユーザー db2\<sid> で確認します <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 次のコマンドを実行して、プライマリ Db2 データベースを実行しているノードを移行します。

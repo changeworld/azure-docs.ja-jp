@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 6b50bffd1a44c0cf53f15650f5ff4d938f45df4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 047c8afbfe7b489e5c3ac0ccb677f6fc021443a8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908063"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632641"
 ---
 # <a name="azure-vm-is-unresponsive-while-applying-security-policy-to-the-system"></a>セキュリティ ポリシーをシステムに適用しているときに Azure VM が応答しない
 
@@ -42,6 +42,9 @@ ms.locfileid: "84908063"
 ## <a name="resolution"></a>解決方法
 
 ### <a name="process-overview"></a>プロセスの概要
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 1. [修復 VM を作成してアクセスする](#create-and-access-a-repair-vm)
 2. [シリアル コンソールとメモリ ダンプの収集を有効にする](#enable-serial-console-and-memory-dump-collection)

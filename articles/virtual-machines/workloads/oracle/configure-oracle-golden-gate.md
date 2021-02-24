@@ -1,25 +1,19 @@
 ---
 title: Azure Linux VM での Oracle Golden Gate の実装 | Microsoft Docs
 description: Oracle Golden Gate をすばやく起動し、Azure 環境で実行します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: 6b3f4ef82813fd4c0e5b3b24be59b68a2dc5b2a7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088361"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880391"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -68,7 +62,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>可用性セットの作成
 
-次の手順は省略可能ですが、実施することをお勧めします。 詳細については、[Azure 可用性セットのガイド](../../windows/infrastructure-example.md)に関する記事をご覧ください。
+次の手順は省略可能ですが、実施することをお勧めします。 詳細については、[Azure 可用性セットのガイド](/previous-versions/azure/virtual-machines/windows/infrastructure-example)に関する記事をご覧ください。
 
 ```azurecli
 az vm availability-set create \
@@ -449,19 +443,19 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
 4. インベントリ ディレクトリを変更し、 **[Next]\(次へ\)** を選択して続行します。
 
-   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![インストール ディレクトリが表示された [Select Installation]\(インストールの選択\) ページのスクリーンショット。](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. **[Summary]\(概要\)** 画面で、 **[Install]\(インストール\)** を選択して続行します。
 
-   ![インストーラーの [Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![[Select Installation]\(インストールの選択\) ページと [Install]\(インストール\) ボタンを示すスクリーンショット。](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. スクリプトを "ルート" として実行するよう求められる場合があります。 その場合は別のセッションを開き (VM には ssh、root には sudo)、スクリプトを実行します。 **[OK]** を選択して続行します。
 
-   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![スクリプトの場所と、構成スクリプトを実行する方法を示すスクリーンショット。](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. インストールが完了したら、 **[Close]\(閉じる\)** を選択してプロセスを完了します。
 
-   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![[閉じる] ボタンが表示された [Select Installation]\(インストールの選択\) ページのスクリーンショット。](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>myVM1 (プライマリ) でのサービスのセットアップ
 
@@ -823,4 +817,4 @@ az group delete --name myResourceGroup
 
 [可用性が高い仮想マシンの作成のチュートリアル](../../linux/create-cli-complete.md)
 
-[VM デプロイ CLI サンプルを探索する](../../linux/cli-samples.md)
+[VM デプロイ CLI サンプルを探索する](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) とアップタイム SLA
 description: Azure Kubernetes Service (AKS) API サーバーのオプションのアップタイム SLA オファリングについて説明します。
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
-ms.custom: references_regions
-ms.openlocfilehash: 6523e16bfe3bf0592b78da544d7d52dc3d969af4
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 01/08/2021
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 9f8f697da7499d370c96b77e7e543dec9fbafa3e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749122"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664097"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
@@ -25,13 +25,8 @@ ms.locfileid: "88749122"
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-アップタイム SLA は、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンおよび Azure Government リージョンで利用できます。
-
-* Azure China 21Vianet は現在サポートされていません。
-
-## <a name="limitations"></a>制限事項
-
-* プライベート クラスターは現時点ではサポートされていません。
+* アップタイム SLA は、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンおよび Azure Government リージョンで利用できます。
+* アップタイム SLA は、AKS がサポートされているすべてのパブリック リージョン内の[プライベート AKS クラスター][private-clusters]に対して使用できます。
 
 ## <a name="sla-terms-and-conditions"></a>SLA の使用条件
 
@@ -39,7 +34,7 @@ ms.locfileid: "88749122"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.8.0 以降をインストールします
+* [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.8.0 以降をインストールします
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>アップタイム SLA を使用した新しいクラスターの作成
 
@@ -95,7 +90,7 @@ az group create --name myResourceGroup --location eastus
 az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
 ```
 
-[`az aks update`][az-aks-nodepool-update] コマンドを使用して、既存のクラスターを更新します。
+[`az aks update`][az-aks-update] コマンドを使用して、既存のクラスターを更新します。
 
 ```azurecli-interactive
 # Update an existing cluster to use Uptime SLA
@@ -136,9 +131,10 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [faq]: ./faq.md
 [availability-zones]: ./availability-zones.md
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-create]: /cli/azure/aks?#az-aks-create
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-update]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_update
 [az-group-delete]: /cli/azure/group#az-group-delete
+[private-clusters]: private-clusters.md

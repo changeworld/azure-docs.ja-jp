@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002941"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601154"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK でサポートされているブラウザー
 
-Azure Maps の Web SDK は、[atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-)という名前のヘルパー関数を提供します。 この関数は、マップ コントロールのロードとレンダリグをサポートするために必要な WebGL 機能の最小セットが Web ブラウザにあるかどうかを検出します。 この関数の使用方法の例を次に示します。
+Azure Maps の Web SDK は、[atlas.isSupported](/javascript/api/azure-maps-control/atlas#issupported-boolean-)という名前のヘルパー関数を提供します。 この関数は、マップ コントロールのロードとレンダリグをサポートするために必要な WebGL 機能の最小セットが Web ブラウザにあるかどうかを検出します。 この関数の使用方法の例を次に示します。
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -36,7 +36,7 @@ Azure Maps Web SDK は、次のデスクトップ ブラウザーをサポート
 - Microsoft Edge (現在と以前のバージョン)
 - Google Chrome (現在と以前のバージョン)
 - Mozilla Firefox (現在と以前のバージョン)
-- Apple Safari (Mac OS X) (現在と以前のバージョン)
+- Apple Safari (macOS X) (現在と以前のバージョン)
 
 このアーティクルで後述する「[Target legacy browsers](#Target-Legacy-Browsers) (レガシ ブラウザーをターゲット)」も参照してください。
 
@@ -63,7 +63,7 @@ Azure Maps Web SDK は、次のモバイル ブラウザーをサポートして
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>レガシ ブラウザーを対象にする
 
-WebGL をサポートしていない、または制限付きでのみサポートしている古いブラウザーを対象とする場合があります。 このような場合は、[リーフレット](https://leafletjs.com/)などのオープンソース マップ コントロールと一緒に Azure Maps サービスを使うことをお勧めします。 次に例を示します。
+WebGL をサポートしていない、または制限付きでのみサポートしている古いブラウザーを対象とする場合があります。 このような場合は、[リーフレット](https://leafletjs.com/)などのオープンソース マップ コントロールと一緒に Azure Maps サービスを使うことをお勧めします。 オープン ソースの [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet)を使用する例を次に示します。
 
 <br/>
 
@@ -71,13 +71,12 @@ WebGL をサポートしていない、または制限付きでのみサポー�
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a>」Pen を表示します。
 </iframe>
 
+Leaflet で Azure Maps を使用した追加のコード サンプルについては、[こちら](https://azuremapscodesamples.azurewebsites.net/?search=leaflet)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 Azure Maps Web SDK の詳細について学習します。
 
-> [!div class="nextstepaction"]
-> [マップ コントロール](how-to-use-map-control.md)
+[マップ コントロール](how-to-use-map-control.md)
 
-> [!div class="nextstepaction"]
-> [サービス モジュール](how-to-use-services-module.md)
+[サービス モジュール](how-to-use-services-module.md)

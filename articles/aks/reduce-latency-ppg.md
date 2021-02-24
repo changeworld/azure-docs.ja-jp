@@ -4,62 +4,30 @@ description: 近接配置グループを使用して、AKS クラスターのワ
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 07/10/2020
-author: jluk
-ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 10/19/2020
+ms.openlocfilehash: c30051008474a32ae6c847ee3f840c8ae35b469b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986714"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726809"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>近接配置グループを使用して待機時間を短縮する (プレビュー)
+# <a name="reduce-latency-with-proximity-placement-groups"></a>近接配置グループを使用して待機時間を短縮する
 
 > [!Note]
 > AKS 上で近接配置グループを使用すると、コロケーションはエージェント ノードにのみ適用されます。 ノード間、および対応するホストされたポッド間の待機時間が短縮されます。 コロケーションは、クラスターのコントロール プレーンの配置には影響しません。
 
-Azure にアプリケーションをデプロイするときに、複数のリージョンまたは可用性ゾーンに仮想マシン (VM) インスタンスを分散すると、ネットワーク待機時間が発生し、アプリケーションの全体的なパフォーマンスに影響を及ぼす可能性があります。 近接配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 ゲーム、エンジニアリング シミュレーション、高頻度取引 (HFT) などの一部のアプリケーションでは、短い待機時間と、短時間で完了するタスクが必要です。 これらのようなハイ パフォーマンス コンピューティング (HPC) シナリオでは、クラスターのノード プールに[近接配置グループ](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) を使用することを検討します。
+Azure にアプリケーションをデプロイするときに、複数のリージョンまたは可用性ゾーンに仮想マシン (VM) インスタンスを分散すると、ネットワーク待機時間が発生し、アプリケーションの全体的なパフォーマンスに影響を及ぼす可能性があります。 近接配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 ゲーム、エンジニアリング シミュレーション、高頻度取引 (HFT) などの一部のアプリケーションでは、短い待機時間と、短時間で完了するタスクが必要です。 これらのようなハイ パフォーマンス コンピューティング (HPC) シナリオでは、クラスターのノード プールに[近接配置グループ](../virtual-machines/co-location.md#proximity-placement-groups) (PPG) を使用することを検討します。
 
-## <a name="limitations"></a>制限事項
+## <a name="before-you-begin"></a>開始する前に
+
+この記事では、Azure CLI バージョン 2.14 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+
+### <a name="limitations"></a>制限事項
 
 * 近接配置グループは、最大で 1 つの可用性ゾーンにマップできます。
 * ノード プールでは、Virtual Machine Scale Sets を使用して近接配置グループを関連付ける必要があります。
 * ノード プールでは、ノード プールの作成時にのみ近接配置グループを関連付けることができます。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="before-you-begin"></a>開始する前に
-
-次のリソースがインストールされている必要があります。
-
-- aks-preview 0.4.53 拡張機能
-
-### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>近接配置グループのプレビュー機能を設定する
-
-> [!IMPORTANT]
-> AKS ノード プールで近接配置グループを使用すると、コロケーションはエージェント ノードにのみ適用されます。 ノード間、および対応するホストされたポッド間の待機時間が短縮されます。 コロケーションは、クラスターのコントロール プレーンの配置には影響しません。
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "ProximityPlacementGroupPreview"
-```
-
-登録には数分かかることがあります。 次のコマンドを使用して、機能が登録されていることを確認します。
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/ProximityPlacementGroupPreview')].{Name:name,State:properties.state}"
-```
-
-プレビューの間、近接配置グループを使用するには *aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用した後、[az extension update][az-extension-update] コマンドを使用して、使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="node-pools-and-proximity-placement-groups"></a>ノード プールと近接配置グループ
 
@@ -165,7 +133,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[proximity-placement-groups]: ../virtual-machines/linux/co-location.md#proximity-placement-groups
+[proximity-placement-groups]: ../virtual-machines/co-location.md#proximity-placement-groups
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [system-pool]: ./use-system-pools.md
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add

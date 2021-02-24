@@ -1,24 +1,19 @@
 ---
 title: HC シリーズ VM の概要 - Azure Virtual Machines | Microsoft Docs
 description: Azure での HC シリーズ VM サイズのプレビューサポートについて説明します。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: de6051e8880bbe3df42031a0d0d7b60abc27d2b0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b9fe978da9accd28ea0e538f458325f10c9c5d8d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689801"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831892"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC シリーズの仮想マシンの概要
 
@@ -63,6 +58,6 @@ Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Intel Xeon SP アーキテクチャ](https://bit.ly/2RCYkiE)の詳細を確認します。
+- [Intel Xeon SP アーキテクチャ](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html)の詳細を確認します。
 - [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC の例と結果について参照します。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

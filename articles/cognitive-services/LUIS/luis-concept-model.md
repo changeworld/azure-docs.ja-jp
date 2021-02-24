@@ -1,14 +1,16 @@
 ---
 title: モデルを使用した設計 - LUIS
 description: 言語を理解するために、いくつかの種類のモデルを使用できます。 複数の方法で使用できるモデルもあります。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 576ba945018d13db9cd24888f3c41a2215857694
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683924"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91316513"
 ---
 # <a name="design-with-intent-and-entity-models"></a>意図およびエンティティ モデルを使用した設計
 

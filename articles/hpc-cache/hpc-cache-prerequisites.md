@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 11/05/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1ead2a34b3617093fcbbb63d053f223fc96d698d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094773"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412512"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -37,9 +37,6 @@ Azure portal を使用して新しい Azure HPC Cache を作成する前に、�
 
 有料サブスクリプションをお勧めします。
 
-> [!NOTE]
-> お客様のサブスクリプションを使用してキャッシュ インスタンスを作成する前に、Azure HPC Cache チームがそのサブスクリプションをアクセス リストに追加する必要があります。 この手順によって、それぞれのお客様が確実にそのキャッシュから高品質の応答性を得ることができます。 [こちらのフォーム](https://aka.ms/onboard-hpc-cache)に必要事項を記入してアクセスを要求してください。
-
 ## <a name="network-infrastructure"></a>ネットワーク インフラストラクチャ
 
 キャッシュを使用するには、ネットワークに関連した次の 2 つの前提条件を事前に設定しておく必要があります。
@@ -62,13 +59,26 @@ Azure HPC Cache には、次の条件を満たした専用のサブネットが�
 キャッシュからその仮想ネットワークの外部のリソースにアクセスするためには、DNS が必要です。 使用するリソースによっては、カスタマイズした DNS サーバーをセットアップし、そのサーバーと Azure DNS サーバーとの間の転送を構成する必要があります。
 
 * Azure Blob Storage のエンドポイントなど内部のリソースにアクセスするには、Azure ベースの DNS サーバーが必要です。
-* オンプレミスのストレージにアクセスするためには、ストレージのホスト名を解決できるカスタム DNS サーバーを構成する必要があります。
+* オンプレミスのストレージにアクセスするためには、ストレージのホスト名を解決できるカスタム DNS サーバーを構成する必要があります。 キャッシュを作成する **前** に、これを実行する必要があります。
 
 Blob Storage にだけアクセスできればよいのであれば、Azure に用意されている既定の DNS サーバーをキャッシュに使用できます。 一方、他のリソースにアクセスする必要がある場合は、カスタム DNS サーバーを作成し、Azure 固有の解決要求は Azure DNS サーバーに転送するようそのカスタム DNS サーバーを構成する必要があります
 
+カスタム DNS サーバーを使用するには、キャッシュを作成する前に、次のセットアップ手順を行う必要があります。
+
+* Azure HPC Cache がホストされる仮想ネットワークを作成します。
+* DNS サーバーを作成します。
+* DNS サーバーをキャッシュの仮想ネットワークに追加します。
+
+  Azure portal の仮想ネットワークに DNS サーバーを追加するには、次の手順に従います。
+
+  1. Azure portal で仮想ネットワークを開きます。
+  1. サイドバーの **[設定]** メニューで **[DNS サーバー]** を選択します。
+  1. [**カスタム**] を選択します。
+  1. フィールドに DNS サーバーの IP アドレスを入力します。
+
 単純な DNS サーバーを使用して、利用可能なすべてのキャッシュ マウント ポイント間でクライアント接続を負荷分散することもできます。
 
-Azure 仮想ネットワークと DNS サーバーの構成について詳しくは、「[Azure 仮想ネットワーク内のリソースの名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)」を参照してください。
+Azure 仮想ネットワークと DNS サーバーの構成について詳しくは、「[Azure 仮想ネットワーク内のリソースの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -76,7 +86,7 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 
 * キャッシュ インスタンスで仮想ネットワーク インターフェイス (NIC) を作成できる必要があります。 キャッシュを作成するユーザーは、NIC を作成できるだけの権限をサブスクリプションにおいて有している必要があります。
 
-* Blob Storage を使用する場合、Azure HPC Cache には、ストレージ アカウントにアクセスするための承認が必要です。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。
+* Blob Storage を使用する場合、Azure HPC Cache には、ストレージ アカウントにアクセスするための承認が必要です。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Blob Storage へのアクセス権をキャッシュに与えます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。
 
   ロールを追加するには、[ストレージ ターゲットを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
 
@@ -113,7 +123,7 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
 
 詳細については「 [NAS 構成と NFS ストレージ ターゲットの問題のトラブルシューティング](troubleshoot-nas.md) 」をご参照ください。
 
-* **ネットワーク接続:** Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。 VPN 設定のトラブルシューティングの詳細については、[VPN のパケット サイズの制限](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) に関する追加ヘルプをご参照ください。
+* **ネットワーク接続:** Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](../expressroute/index.yml) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。 VPN 設定のトラブルシューティングの詳細については、[VPN のパケット サイズの制限](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) に関する追加ヘルプをご参照ください。
 
 * **ポート アクセス:** キャッシュには、ストレージ システム上の特定の TCP/UDP ポートへのアクセスが必要です。 ストレージの種類によってポート要件は異なります。
 

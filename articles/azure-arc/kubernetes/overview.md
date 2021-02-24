@@ -2,19 +2,19 @@
 title: Azure Arc 対応 Kubernetes の概要
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/15/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 54b439d73ed5dfb0709d33dea1f588b8bdf4489f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723726"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560264"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
 
@@ -37,6 +37,7 @@ Azure Arc 対応 Kubernetes は、Cloud Native Computing Foundation (CNCF) で�
 * Canonical Charmed Kubernetes 1.18
 * AKS Engine
 * Azure Stack Hub 上の AKS エンジン
+* Azure Stack HCI 上の AKS
 * クラスター API プロバイダー Azure
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ 
@@ -50,6 +51,8 @@ Azure Arc 対応 Kubernetes では、以下のシナリオがサポートされ�
 * コンテナーに対して Azure Monitor を使用して、クラスターを表示および監視する。 
 
 * Kubernetes 用の Azure Policy を使用してポリシーを適用する。 
+
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="supported-regions"></a>サポートされているリージョン 
 

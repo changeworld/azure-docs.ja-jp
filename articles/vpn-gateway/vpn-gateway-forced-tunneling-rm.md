@@ -1,49 +1,39 @@
 ---
 title: サイト間接続用の強制トンネリングを構成する
-description: すべてのインターネットへのトラフィックをオンプレミスの場所に "強制的に" リダイレクトする方法。
+description: すべてのインターネットへのトラフィックをオンプレミスの場所に (強制的に) リダイレクトする方法。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 12/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: e9444291c40ef504a674ee18351ba581695d1dd3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c12297019b49d7b3cb644ae9c7a904e4ca697f0b
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394519"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855041"
 ---
-# <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
+# <a name="configure-forced-tunneling"></a>強制トンネリングについて
 
-強制トンネリングを使用すると、検査および監査のために、サイト間の VPN トンネルを介して、インターネットへのすべてのトラフィックをオンプレミスの場所に戻すようにリダイレクトする (つまり、"強制する") ことができます。 これは、ほとんどの企業 IT ポリシーの重要なセキュリティ要件です。 強制トンネリングを使用しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、常に Azure ネットワーク インフラストラクチャからインターネットへ直接トラバースします。 認証されていないインターネット アクセスは、情報の漏えいまたは他の種類のセキュリティ侵害を招く可能性があります。
+強制トンネリングを使用すると、検査および監査のために、サイト間の VPN トンネルを介して、インターネットへのすべてのトラフィックをオンプレミスの場所に戻すようにリダイレクトする (つまり、"強制する") ことができます。 これは、ほとんどの企業 IT ポリシーの重要なセキュリティ要件です。 強制トンネリングを構成しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、常に Azure ネットワーク インフラストラクチャからインターネットへ直接トラバースします。 認証されていないインターネット アクセスは、情報の漏えいまたは他の種類のセキュリティ侵害を招く可能性があります。
 
-
-
-[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
-
-この記事では、Resource Manager デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。 強制トンネリングは、ポータルを経由せずに、PowerShell を使用して構成できます。 クラシック デプロイ モデル向けに強制トンネリングを構成する場合は、次のドロップダウン リストから従来の記事を選択します。
-
-> [!div class="op_single_selector"]
-> * [PowerShell - クラシック](vpn-gateway-about-forced-tunneling.md)
-> * [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
-> 
-> 
+強制トンネリングは、Azure PowerShell を使用して構成できます。 Azure portal を使用して構成することはできません。 この記事は、Resource Manager デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する際に役立ちます。 クラシック デプロイ モデル向けに強制トンネリングを構成する場合は、[強制トンネリング - クラシック](vpn-gateway-about-forced-tunneling.md)に関する記事を参照してください。
 
 ## <a name="about-forced-tunneling"></a>強制トンネリングについて
 
-以下の図には、強制トンネリングのしくみを示しています。 
+以下の図には、強制トンネリングのしくみを示しています。
 
-![強制トンネリング](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
+:::image type="content" source="./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png" alt-text="図は、強制トンネリングを示しています。":::
 
-上記の例では、フロントエンドのサブネットは、トンネリングを強制されません。 フロントエンドのサブネット内のワークロードは、直接、インターネットから顧客の要求を承認し応答し続けることができます。 Mid-tier および Backend のサブネットは、トンネリングを強制されます。 これら 2 つのサブネットからのインターネットへのオウトバウンド接続は、S2S VPN トンネルの 1 つを介して、オンプレミス サイトに ”強制” リダイレクトされます。
+この例では、フロントエンド サブネットは強制トンネリングされていません。 フロントエンドのサブネット内のワークロードは、直接、インターネットから顧客の要求を承認し応答し続けることができます。 Mid-tier および Backend のサブネットは、トンネリングを強制されます。 これら 2 つのサブネットからインターネットへのアウトバウンド接続は、サイト間 (S2S) VPN トンネルの 1 つを介して、オンプレミス サイトに (強制) リダイレクトされます。
 
 これにより、必要な多層サービス アーキテクチャが継続的に使用可能になっている間は、Azure 内の仮想マシンやクラウド サービスからのインターネット アクセスを制限および検査することができます。 仮想ネットワーク内にインターネットに接続されたワークロードがない場合、仮想ネットワーク全体に強制トンネリングを適用することもできます。
 
 ## <a name="requirements-and-considerations"></a>要件と考慮事項
 
-Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルートを使用して構成されます。 オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。 ユーザー定義のルートおよび仮想ネットワークの詳細については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
+Azure では、強制トンネリングは仮想ネットワークのカスタム ユーザー定義ルートを使用して構成されます。 オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。 ユーザー定義のルーティングおよび仮想ネットワークの詳細については、[カスタム ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md#user-defined)に関する記事を参照してください。
 
 * 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
   
@@ -53,6 +43,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 * この手順ではユーザー定義ルート (UDR) を使用して、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
 * 強制トンネリングは、ルートベースの VPN ゲートウェイを持つ VNet に関連付ける必要があります。 仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。 また、オンプレミス VPN デバイスを、トラフィック セレクターとして 0.0.0.0/0 を使用して構成する必要があります。 
 * ExpressRoute の強制トンネリングは、このメカニズムを使用して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定のルートを通知することで有効化されます。 詳細については、「[ExpressRoute のドキュメント](https://azure.microsoft.com/documentation/services/expressroute/)」を参照してください。
+* VPN Gateway と ExpressRoute Gateway の両方を同じ VNet にデプロイしている場合、ExpressRoute Gateway では構成済みの "既定のサイト" が VNet にアドバタイズされるため、ユーザー定義ルート (UDR) が不要になります。
 
 ## <a name="configuration-overview"></a>構成の概要
 
@@ -69,9 +60,9 @@ Azure Resource Manager PowerShell コマンドレットの最新版をインス�
 >
 >
 
-### <a name="to-log-in"></a>ログインするには
+### <a name="to-sign-in"></a>サインインするには
 
-[!INCLUDE [To log in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [Sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ## <a name="configure-forced-tunneling"></a>強制トンネリングについて
 

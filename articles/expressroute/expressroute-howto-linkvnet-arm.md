@@ -1,21 +1,21 @@
 ---
-title: ExpressRoute:VNet を回線にリンクする:Azure PowerShell
-description: このドキュメントでは、Resource Manager デプロイ モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
+title: チュートリアル:VNet を ExpressRoute 回線にリンクする - Azure PowerShell
+description: このチュートリアルでは、Resource Manager デプロイ モデルと Azure PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 05/20/2018
+ms.topic: tutorial
+ms.date: 10/06/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 49f259178020dd0e8e4f24aed67869aefd73b037
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 69067ca34b231f1b14f8cc854288c3ed4c4ac82a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395844"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855992"
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続する
+# <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>チュートリアル:ExpressRoute 回線に仮想ネットワークを接続する
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
@@ -30,17 +30,23 @@ ms.locfileid: "89395844"
 
 * 単一の VNet を最大 4 つの ExpressRoute 回線にリンクできます。 この記事の手順を使用して、接続先の各 ExpressRoute 回線の新しい接続オブジェクトを作成します。 ExpressRoute 回線は、同じサブスクリプション、異なるサブスクリプション、または両方の組み合わせにすることができます。
 
-* ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクしたり、さらに多くの仮想ネットワークを ExpressRoute 回線にリンクしたりすることができます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。
+* ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクすることができます。 Premium アドオンを使用すると、選択した帯域幅に応じて、10 を超える仮想ネットワークを ExpressRoute 回線に接続することもできます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。
 
+このチュートリアルでは、以下の内容を学習します。
+> [!div class="checklist"]
+> - 同じサブスクリプション内の仮想ネットワークを回線に接続する
+> - 別のサブスクリプション内の仮想ネットワークを回線に接続する
+> - 仮想ネットワーク接続を変更する
+> - ExpressRoute FastPath を構成する
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認します。
 
 * アクティブな ExpressRoute 回線が必要です。 
   * 手順に従って、 [ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md) し、接続プロバイダー経由で回線を有効にしてください。 
   * 回線用に Azure プライベート ピアリングが構成されていることを確認してください。 ルーティング手順については、 [ルーティングの構成](expressroute-howto-routing-arm.md) に関する記事を参照してください。 
-  * Azure プライベート ピアリングが構成されていることを確認します。また、エンド ツー エンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを起動しておく必要があります。
+  * エンドツーエンド接続のために、確実に Azure プライベート ピアリングが構成され、ご使用のネットワークと Microsoft の間の BGP ピアリングを確立します。
   * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを作成](expressroute-howto-add-gateway-resource-manager.md)します。 ExpressRoute 用の仮想ネットワーク ゲートウェイは、VPN ではなく GatewayType 'ExpressRoute' を使用します。
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
@@ -61,19 +67,17 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>別のサブスクリプション内の仮想ネットワークを回線に接続する
 複数のサブスクリプションで ExpressRoute 回線を共有できます。 下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。
 
-大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。 組織内の各部門はサービスのデプロイ用に固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。 1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。 組織内の他のサブスクリプションも ExpressRoute 回線を使用できます。
+大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。 組織内の各部門は、サービスのデプロイを目的として、固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。 1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。 組織内の他のサブスクリプションを使用する場合も、ExpressRoute 回線を使用できます。
 
 > [!NOTE]
 > ExpressRoute 回線の接続と帯域幅の料金は、サブスクリプションの所有者が負担することになります。 すべての仮想ネットワークが同じ帯域幅を共有します。
 > 
-> 
 
-![サブスクリプション間接続](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
-
+:::image type="content" source="./media/expressroute-howto-linkvnet-classic/cross-subscription.png" alt-text="サブスクリプション間接続":::
 
 ### <a name="administration---circuit-owners-and-circuit-users"></a>管理 - 回線所有者と回線ユーザー
 
-"回線所有者" は、ExpressRoute 回線リソースの権限のあるパワー ユーザーです。 回線所有者は、"回線ユーザー" が利用できる承認を作成できます。 回線ユーザーは、ExpressRoute 回線と同じサブスクリプション内にない仮想ネットワーク ゲートウェイの所有者です。 回線ユーザーは、承認を利用できます (仮想ネットワークごとに 1 つの承認)。
+"回線所有者" は、ExpressRoute 回線リソースの権限のあるパワー ユーザーです。 回線所有者は、"回線ユーザー" が利用できる承認を作成できます。 回線ユーザーは、ExpressRoute 回線と同じサブスクリプション内には存在しない仮想ネットワーク ゲートウェイの所有者です。 回線ユーザーは、承認を利用できます (仮想ネットワークごとに 1 つの承認)。
 
 回線所有者は、承認をいつでも変更し、取り消す権限を持っています。 承認を取り消すと、アクセスが取り消されたサブスクリプションからすべてのリンク接続が削除されます。
 
@@ -81,7 +85,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 
 **承認を作成するには**
 
-回線所有者は、承認を作成します。 その結果、回線ユーザーが各自の仮想ネットワーク ゲートウェイを ExpressRoute 回線に接続するために使用できる承認キーが作成されます。 承認は、1 つの接続に対してのみ有効です。
+回線所有者が承認を作成すると、承認キーが作成されます。回線ユーザーは、その承認キーを使用して、各自の仮想ネットワーク ゲートウェイを ExpressRoute 回線に接続します。 承認は、1 つの接続に対してのみ有効です。
 
 次のコマンドレット スニペットは、承認を作成する方法を示しています。
 
@@ -94,8 +98,7 @@ $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $auth1 = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 ```
 
-
-このコマンドレットの応答に、承認キーと状態が含まれます。
+前のコマンドに対する応答には、承認キーと状態が含まれます。
 
 ```azurepowershell
 Name                   : MyAuthorization1
@@ -105,8 +108,6 @@ AuthorizationKey       : ####################################
 AuthorizationUseStatus : Available
 ProvisioningState      : Succeeded
 ```
-
-
 
 **承認を確認するには**
 
@@ -197,5 +198,16 @@ $connection.ExpressRouteGatewayBypass = $True
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ``` 
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+ExpressRoute 接続が不要になった場合は、ゲートウェイが配置されているサブスクリプションから、`Remove-AzVirtualNetworkGatewayConnection` コマンドを使用して、ゲートウェイと回線の間のリンクを削除します。
+
+```azurepowershell-interactive
+Remove-AzVirtualNetworkGatewayConnection "MyConnection" -ResourceGroupName "MyRG"
+```
+
 ## <a name="next-steps"></a>次のステップ
-ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
+ExpressRoute の詳細については、「 ExpressRoute のFAQ」をご覧ください。
+
+> [!div class="nextstepaction"]
+> [ExpressRoute の FAQ](expressroute-faqs.md)

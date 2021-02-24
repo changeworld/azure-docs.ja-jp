@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c70de186468eb3efacc82c1d5c8802612475fd4d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653513"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232796"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -72,7 +73,7 @@ ms.locfileid: "88653513"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
-[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -543,11 +544,11 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 プライベート イメージを作成する手順は、Windows と Linux で異なります。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 >
 > 複数の仮想マシンをデプロイするために使用できる Windows イメージを準備するには、オンプレミス VM で Windows 設定 (Windows SID やホスト名など) を抽象化または汎用化する必要があります。 これを行うには、[sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) を使用します。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux ロゴ。][Logo_Linux] Linux
 >
 > 複数の仮想マシンをデプロイするために使用できる Linux イメージを準備するには、オンプレミス VM で一部の Linux 設定を抽象化または汎用化する必要があります。 これを行うには、`waagent -deprovision` を使用します。 詳細については、[Azure で実行されている Linux 仮想マシンのキャプチャ][virtual-machines-linux-capture-image]に関する記事、および「[Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide-command-line-options]」をご覧ください。
 >
@@ -678,16 +679,16 @@ SAP で現在の環境がサポートされるように、「[Azure Extension fo
 
 このシナリオでは、特定の SAP システムをオンプレミス環境から Azure に移行します。 これを行うには、OS、SAP バイナリ、最終的な DBMS バイナリを格納している VHD と、DBMS のデータ ファイルとログ ファイルを格納している VHD を Azure にアップロードします。 「[シナリオ 2: SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」で説明されたシナリオとは異なり、この場合は、ホスト名、SAP SID、および SAP ユーザー アカウントがオンプレミスの環境で構成されたため、これらを Azure VM に保持します。 OS を汎用化する必要はありません。 ほとんどの場合、このシナリオは、SAP ランドスケープの一部がオンプレミスで実行され、一部が Azure で実行されるクロスプレミス シナリオに適用されます。
 
-このシナリオでは、VM エージェントはデプロイ時に自動的にインストール**されません**。 Azure で SAP NetWeaver を実行するには VM エージェントと Azure Extension for SAP が必要であるため、仮想マシンの作成後に両方のコンポーネントを手動でダウンロードしてインストールし、有効にする必要があります。
+このシナリオでは、VM エージェントはデプロイ時に自動的にインストール **されません**。 Azure で SAP NetWeaver を実行するには VM エージェントと Azure Extension for SAP が必要であるため、仮想マシンの作成後に両方のコンポーネントを手動でダウンロードしてインストールし、有効にする必要があります。
 
 Azure VM エージェントの詳細については、次のリソースを参照してください。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 >
 > [Azure 仮想マシン エージェントの概要][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux ロゴ。][Logo_Linux] Linux
 >
 > [Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide]
 >
@@ -856,7 +857,7 @@ Azure VM エージェントを更新する際にユーザーの操作は不要�
 
 1. **[スタート]** メニューで「**gpedit.msc**」と入力し、**Enter** キーを押します。
 1. **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Internet Explorer]** を選択します。 **[コンピューター別にプロキシを設定する (ユーザー別ではなく)]** が無効になっているか、構成されていないことを確認します。
-1. **コントロール パネル**で、 **[ネットワークと共有センター]**  >  **[インターネット オプション]** に移動します。
+1. **コントロール パネル** で、 **[ネットワークと共有センター]**  >  **[インターネット オプション]** に移動します。
 1. **[接続]** タブの **[LAN の設定]** をクリックします。
 1. **[設定を自動的に検出する]** チェック ボックスをオフにします。
 1. **[LAN にプロキシ サーバーを使用する]** チェック ボックスをオンにし、プロキシのアドレストとポートを入力します。
@@ -911,8 +912,8 @@ Microsoft Azure ゲスト エージェントの構成ファイル (\\etc\\waagen
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Azure Extension for SAP を構成する
 
 > [!NOTE]
-> 一般的なサポートに関する声明:Azure Extension for SAP に関するサポートが必要な場合は、常にコンポーネント BC-OP-NT-AZR (Windows の場合) または BC-OP-LNX-AZR で SAP に関するインシデントを開始してください。
-> 共同のお客様を支援するために、SAP サポート システムで作業している専門の Microsoft サポート エンジニアが存在します。
+> 一般的なサポートに関する声明:  
+> Azure Extension for SAP のサポートは、SAP のサポート チャネルを通じて提供されます。 Azure Extension for SAP に関するサポートが必要な場合は、[SAP サポート](https://support.sap.com/)でサポート ケースをオープンしてください。 
 
 [Azure 上の SAP 用 VM のデプロイ シナリオ][deployment-guide-3]に関するセクションの説明に従って VM を準備すると、Azure VM エージェントが仮想マシンにインストールされます。 次に、Azure グローバル データセンターの Azure 拡張リポジトリで入手できる Azure Extension for SAP をデプロイします。 詳しくは、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide-9.1]」をご覧ください。
 
@@ -1069,8 +1070,14 @@ SAP 用の新しい VM 拡張機能では、VM の監視データと構成デー
     例:
 
     ```azurecli
+    # Azure CLI on Linux
     spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
     rgId=$(az group show -g <resource-group-name> --query id --out tsv)
+    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
+
+    # Azure CLI on Windows/PowerShell
+    $spID=az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines
+    $rgId=az group show -g <resource-group-name> --query id --out tsv
     az role assignment create --assignee $spID --role 'Reader' --scope $rgId
     ```
 
@@ -1078,11 +1085,19 @@ SAP 用の新しい VM 拡張機能では、VM の監視データと構成デー
     現時点では、この拡張機能は AzureCloud でのみサポートされています。 Azure China 21Vianet、Azure Government、またはその他の特殊な環境はまだサポートされていません。
 
     ```azurecli
-    # For Linux machines
+    # Azure CLI on Linux
+    ## For Linux machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
 
-    #For Windows machines
+    ## For Windows machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+
+    # Azure CLI on Windows/PowerShell
+    ## For Linux machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
+
+    ## For Windows machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
     ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>確認とトラブルシューティング
@@ -1309,7 +1324,7 @@ http://127.0.0.1:11812/azure4sap/metrics でアクセスできる XML ファイ�
 > [!NOTE]
 > VM 拡張機能には 2 つのバージョンがあります。 この章では、既定の VM 拡張機能について説明します。 新しい VM 拡張機能がインストールされている場合は、「[新しい Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3-new]」の章を参照してください。
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows ロゴ。][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows サービスによって収集されます。 サービスが正しくインストールされていない場合、または VM で実行されていない場合は、パフォーマンス メトリックを収集できません。
 
@@ -1350,13 +1365,13 @@ AzureEnhancedMonitoring Windows サービスが存在し、有効になってい
 
 構成が正しくありません。 「[Azure Extension for SAP を構成する][deployment-guide-4.5]」の説明に従って、VM で Azure Extension for SAP を再起動します。
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows ロゴ。][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows サービスによって収集されます。 このサービスは、複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure Diagnostics から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログ記録から使用されます。
 
 SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、`Set-AzVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux ロゴ。][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。 デーモンが実行されていない場合、パフォーマンス メトリックを収集できません。
 
@@ -1389,7 +1404,7 @@ WARNING: [WARN] Standard Managed Disks are not supported. Extension will be inst
 このメッセージの原因は、Standard Azure ストレージ アカウントの統計情報を確認するために Azure Extension for SAP によって使用される API が、Standard Managed Disks で提供されていないためです。 これは、重要な問題ではありません。 Standard Disk Storage アカウントにデータ収集が導入されたのは、頻繁に発生する入出力を調整するためでした。 Managed Disks では、ストレージ アカウント内のディスクの数を制限することによってこのような調整は回避されます。 そのため、その種のデータがなくても重要ではありません。
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux ロゴ。][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。デーモンは複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure Diagnostics から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログから使用されます。
 
@@ -1402,7 +1417,7 @@ SAP Note [1999351] を使用したトラブルシューティングで問題が�
 > [!NOTE]
 > VM 拡張機能には 2 つのバージョンがあります。 この章では、新しい VM 拡張機能について説明します。 既定の VM 拡張機能がインストールされている場合は、「[Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3]」の章を参照してください。
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows ロゴ。][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring プロセスによって収集されます。 VM でこのプロセスが実行されていない場合、パフォーマンス メトリックを収集することはできません。
 
@@ -1416,13 +1431,13 @@ Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring プ�
 
 拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 場合によっては、マシンを再起動するか、VM 拡張機能をもう一度インストールする必要があります。
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows ロゴ。][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows プロセスによって収集されます。 このプロセスでは、複数のソースからデータが取得されます。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure Monitor から読み取られます。
 
 SAP Note [1999351] を使用してトラブルシューティングを行っても問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。 ログ ファイル C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Windows\\&lt;バージョン>\\logapp.txt をインシデントに添付してください。
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux ロゴ。][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。 デーモンが実行されていない場合、パフォーマンス メトリックを収集できません。
 
@@ -1436,7 +1451,7 @@ Azure のパフォーマンス メトリックは、デーモンによって収�
 
 拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 場合によっては、マシンを再起動するか、VM 拡張機能をもう一度インストールする必要があります。
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux ロゴ。][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。デーモンは複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure Monitor から読み取られます。
 

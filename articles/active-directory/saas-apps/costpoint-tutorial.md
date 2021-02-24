@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 16c9d64cc4dd49898245d74108cd6a4f2f0e4660
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549249"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455172"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>チュートリアル:Costpoint と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549249"
 * ユーザーが自分の Azure AD アカウントを使用して Costpoint に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,13 +37,13 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Costpoint では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Costpoint では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 ## <a name="generate-costpoint-metadata"></a>Costpoint メタデータの生成
 
-Costpoint SAML SSO 構成については、**DeltekCostpoint711Security.pdf** ガイドで説明されています。 Deltek Costpoint サポート サイトからこのガイドをダウンロードし、「**SAML シングル サインオンの設定**」 > 「**Costpoint と Microsoft Azure 間の SAML シングル サインオンの構成**」セクションを参照してください。 指示に従って、**Costpoint SP フェデレーション メタデータ XML** ファイルを生成します。 
+Costpoint SAML SSO 構成については、 **DeltekCostpoint711Security.pdf** ガイドで説明されています。 Deltek Costpoint サポート サイトからこのガイドをダウンロードし、「 **SAML シングル サインオンの設定** 」 > 「 **Costpoint と Microsoft Azure 間の SAML シングル サインオンの構成** 」セクションを参照してください。 指示に従って、 **Costpoint SP フェデレーション メタデータ XML** ファイルを生成します。 
 
-![Costpoint Configuration Utility (Costpoint 構成ユーティリティ)](./media/costpoint-tutorial/config-utility.png)
+![[Weblogic] - [Security]\(セキュリティ\) タブが選択された Product Configuration Utility を示すスクリーンショット。](./media/costpoint-tutorial/config-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>ギャラリーからの Costpoint の追加
 
@@ -63,7 +63,7 @@ Costpoint を Azure AD に統合するには、まず、Azure portal でギャ�
 
    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Costpoint**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Costpoint** 」と入力します。
 
    ![結果一覧の Costpoint](common/search-new-app.png)
 
@@ -90,7 +90,7 @@ Costpoint で Azure AD SSO を構成してテストするには、次の構成�
 
    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[基本的な SAML 構成]** セクションで、"*サービス プロバイダー メタデータ ファイル*" がある場合は、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、" *サービス プロバイダー メタデータ ファイル* " がある場合は、次の手順を実行します。
 
    > [!NOTE]
    > サービス プロバイダー メタデータ ファイルは、「[Costpoint メタデータの生成](#generate-costpoint-metadata)」で取得します。 このファイルの使用方法については、このチュートリアルの後半で説明します。
@@ -99,20 +99,20 @@ Costpoint で Azure AD SSO を構成してテストするには、次の構成�
 
       ![メタデータ ファイルをアップロードする](./media/costpoint-tutorial/upload-metadata.png)
     
-   1. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、Costpoint セクションに自動的に設定されます。
+   1. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、Costpoint セクションに自動的に設定されます。
 
       > [!NOTE]
-      > **識別子**と **URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。 **[識別子 (エンティティ ID)]** および **[応答 URL (Assertion Consumer Service URL)]** が正しく設定され、 **[ACS URL]** が **/LoginServlet.cps** で終わる有効な Costpoint URL であることを確認してください。
+      > **識別子** と **URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。 **[識別子 (エンティティ ID)]** および **[応答 URL (Assertion Consumer Service URL)]** が正しく設定され、 **[ACS URL]** が **/LoginServlet.cps** で終わる有効な Costpoint URL であることを確認してください。
 
-   1. **[追加の URL を設定します]** を選択します。 **[リレー状態]** に、次のパターンを使用して値を入力します: `system=[your system]`(例: **system = DELTEKCP**)。
+   1. **[追加の URL を設定します]** を選択します。 **[リレー状態]** に、次のパターンを使用して値を入力します: `system=[your system]`(例: **system = DELTEKCP** )。
 
-1. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、**コピー** アイコンを選択して **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に保存します。
+1. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、 **コピー** アイコンを選択して **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に保存します。
 
    ![[SAML Signing Certificate (SAML 署名証明書)]](common/copy-metadataurl.png)
 
 ### <a name="configure-costpoint"></a>Costpoint の構成
 
-1. Costpoint Configuration Utility (Costpoint 構成ユーティリティ) に戻ります。 **[IdP Federation Metadata XML]\(IdP フェデレーション メタデータ XML\)** ボックスに、"*アプリのフェデレーション メタデータ URL*" ファイルの内容を貼り付けます。 
+1. Costpoint Configuration Utility (Costpoint 構成ユーティリティ) に戻ります。 **[IdP Federation Metadata XML]\(IdP フェデレーション メタデータ XML\)** ボックスに、" *アプリのフェデレーション メタデータ URL* " ファイルの内容を貼り付けます。 
 
    ![Costpoint Configuration Utility (Costpoint 構成ユーティリティ)](./media/costpoint-tutorial/config-utility-idp.png)
 
@@ -134,7 +134,7 @@ Costpoint で Azure AD SSO を構成してテストするには、次の構成�
 
    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-   1. **[名前]** フィールドに「**B.Simon**」と入力します。
+   1. **[名前]** フィールドに「 **B.Simon** 」と入力します。
    
    1. **[ユーザー名]** フィールドに「`b.simon\@yourcompanydomain.extension`」と入力します (たとえば、B.Simon@contoso.com)。
    
@@ -174,12 +174,12 @@ Costpoint で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="test-sso"></a>SSO のテスト
 
-SSO が設定されているため、アクセス パネルで [Costpoint] タイルを選択すると Costpoint アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+SSO が設定されているため、アクセス パネルで [Costpoint] タイルを選択すると Costpoint アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

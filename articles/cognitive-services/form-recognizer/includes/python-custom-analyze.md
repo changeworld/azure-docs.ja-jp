@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 88be632e17912012618ab559f22f97487ad26c9c
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 6a6b0d9740d19270f8daa3608bc125edd0fbec37
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723497"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005090"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>キーと値のペアおよびテーブルについてフォームを分析する
 
 次に、新しくトレーニングしたモデルを使用してドキュメントを分析し、そこからキーと値のペアおよびテーブルを抽出します。 新しい Python スクリプトから、次のコードを実行して **[Analyze Form](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API を呼び出します。 スクリプトを実行する前に、次の変更を行います。
 
-1. `<file path>` をお使いのフォームのファイル パス (例: C:\temp\file.pdf) に置き換えます。 リモート ファイルの URL を指定することもできます。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Test** フォルダーにあるファイルを使用できます。
+1. `<file path>` をお使いのフォームのファイル パス (例: C:\temp\file.pdf) に置き換えます。 リモート ファイルの URL を指定することもできます。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Test** フォルダーにあるファイルを使用できます (*sample_data.zip* をダウンロードして展開します)。
 1. `<model_id>` を、前のセクションで受信したモデル ID で置き換えます。
 1. `<endpoint>` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
 1. `<file type>` を、ファイルの種類で置き換えます。 サポートされている種類: `application/pdf`、`image/jpeg`、`image/png`、`image/tiff`。
@@ -69,7 +69,7 @@ ms.locfileid: "88723497"
     endpoint = r"<endpoint>"
     apim_key = "<subsription key>"
     model_id = "<model_id>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/custom/models/%s/analyze" % model_id
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/custom/models/%s/analyze" % model_id
     source = r"<file path>"
     params = {
         "includeTextDetails": True

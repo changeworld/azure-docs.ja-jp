@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 02/07/2019
-ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 02/01/2021
+ms.openlocfilehash: 5771f95da7b63c6c16bb581b84cc28c4b838ec27
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844849"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259018"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman を使用して Azure API for FHIR にアクセスする
 
@@ -23,7 +23,8 @@ ms.locfileid: "87844849"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure 内の FHIR エンドポイント。 これは、マネージド Azure API for FHIR またはオープンソースの FHIR Server for Azure を使用して設定できます。 [Azure portal](fhir-paas-portal-quickstart.md)、[PowerShell](fhir-paas-powershell-quickstart.md)、または [Azure CLI](fhir-paas-cli-quickstart.md) を使用して、マネージド Azure API for FHIR を設定します。
-- FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)
+- FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)。
+- FHIR サービスにアクセスするためのアクセス許可 ("FHIR データ共同作成者" など) をクライアント アプリケーションに付与済みである。 詳細については、「[FHIR 用に Azure RBAC を構成する](https://docs.microsoft.com/azure/healthcare-apis/configure-azure-rbac)」を参照してください。
 - Postman がインストールされている。 これは [https://www.getpostman.com](https://www.getpostman.com) から入手できます
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR サーバーと認証の詳細
@@ -32,7 +33,7 @@ Postman を使用するには、次の詳細情報が必要です。
 
 - ご使用の FHIR サーバーの URL (例: `https://MYACCOUNT.azurehealthcareapis.com`)
 - ご使用の FHIR サーバーの ID プロバイダー `Authority` (例: `https://login.microsoftonline.com/{TENANT-ID}`)
-- 構成済みの `audience`。 通常、これは FHIR サーバーの URL です (例: `https://MYACCOUNT.azurehealthcareapis.com` や `https://azurehealthcareapis.com` のみ)。
+- 構成済みの `audience`。 通常、これは FHIR サーバーの URL です (例: `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` や `https://azurehealthcareapis.com` のみ)。
 - FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)の `client_id` (またはアプリケーション ID)。
 - クライアント アプリケーションの `client_secret` (またはアプリケーション シークレット)。
 
@@ -121,7 +122,7 @@ Azure API for FHIR のメタデータ URL は `https://MYACCOUNT.azurehealthcare
 
 [Send]\(送信\) をクリックすると、患者が正常に作成されていることがわかります。
 
-![作成された患者](media/tutorial-postman/postman-patient-created.png)
+![患者が正常に作成されたことを示すスクリーンショット。](media/tutorial-postman/postman-patient-created.png)
 
 患者の検索を繰り返すと、患者のレコードが表示されます。
 

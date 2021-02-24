@@ -9,16 +9,16 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042804"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621282"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル:Custom Vision Service を使用してエッジで画像の分類を実行する
 
-Azure IoT Edge では、ワークロードをクラウドからエッジに移すことにより、IoT ソリューションの効率性を高めることができます。 この機能は、コンピューター ビジョン モデルのような、多くのデータを処理するサービスに適しています。 [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) を使用すると、カスタム画像分類器を構築して、コンテナーとしてデバイスにデプロイすることが可能です。 この 2 つのサービスを組み合わせることで、あらかじめサイトからすべてのデータを転送しなくても、画像やビデオ ストリームから分析情報を得ることができます。 Custom Vision では、トレーニングされたモデルに対して画像を比較して分析情報を生成する分類器が提供されます。
+Azure IoT Edge では、ワークロードをクラウドからエッジに移すことにより、IoT ソリューションの効率性を高めることができます。 この機能は、コンピューター ビジョン モデルのような、多くのデータを処理するサービスに適しています。 [Custom Vision Service](../cognitive-services/custom-vision-service/overview.md) を使用すると、カスタム画像分類器を構築して、コンテナーとしてデバイスにデプロイすることが可能です。 この 2 つのサービスを組み合わせることで、あらかじめサイトからすべてのデータを転送しなくても、画像やビデオ ストリームから分析情報を得ることができます。 Custom Vision では、トレーニングされたモデルに対して画像を比較して分析情報を生成する分類器が提供されます。
 
 たとえば、IoT Edge デバイス上の Custom Vision では、高速道路の交通量が通常よりも多いか少ないかや、駐車場に連続した駐車スペースがあるかどうかを判断することができます。 これらの分析情報は、アクションを実行する別のサービスと共有できます。
 
@@ -46,7 +46,7 @@ Azure IoT Edge では、ワークロードをクラウドからエッジに移�
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
-* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
@@ -76,7 +76,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
    | ----- | ----- |
    | 名前 | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
    | 説明 | オプションのプロジェクトの説明。 |
-   | リソース | Custom Vision Service リソースを含む Azure リソース グループを 1 つ選択するか、まだ追加していない場合は**新規作成**します。 |
+   | リソース | Custom Vision Service リソースを含む Azure リソース グループを 1 つ選択するか、まだ追加していない場合は **新規作成** します。 |
    | プロジェクトの種類 | **分類** |
    | 分類の種類 | **[Multiclass (single tag per image)]\(マルチクラス (画像ごとに 1 つのタグ)\)** |
    | ドメイン | **[General (compact)]\(汎用 (コンパクト)\)** |
@@ -88,7 +88,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 画像分類器を作成するには、トレーニング画像のセットと、テスト画像が必要です。
 
-1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) リポジトリのサンプル画像を、ローカル開発マシンにクローンまたはダウンロードします。
+1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) リポジトリのサンプル画像を、ローカル開発マシンに複製またはダウンロードします。
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
@@ -96,7 +96,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 2. Custom Vision プロジェクトに戻り、 **[Add images]\(画像の追加\)** を選択します。
 
-3. ローカルにクローンした Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。
+3. ローカルに複製した Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。
 
 4. この画像のグループにタグ **hemlock** を追加し、**Enter** キーを押してタグを適用します。
 
@@ -152,7 +152,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
    | Provide a solution name (ソリューション名の指定) | **CustomVisionSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **[Python モジュール]** を選択します。 |
    | Provide a module name (モジュール名の指定) | モジュールに **classifier** という名前を付けます。<br><br>このモジュール名は、小文字にすることが重要です。 IoT Edge では、モジュールを参照するときに大文字と小文字が区別されます。このソリューションでは、すべての要求が小文字で書式設定されるライブラリを使用します。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。<br><br>文字列は最終的に、 **\<registry name\>.azurecr.io/classifier** のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。<br><br>文字列は最終的に、 **\<registry name\>.azurecr.io/classifier** のようになります。 |
  
    ![Docker イメージ リポジトリを指定する](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -165,7 +165,7 @@ Visual Studio Code ウィンドウによって、IoT Edge ソリューション 
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、.env ファイルを開きます。
-2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. このファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
@@ -219,7 +219,7 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
    | Select deployment template file (配置テンプレート ファイルの選択) | CustomVisionSolution フォルダー内の **deployment.template.json** ファイルを選択します。 |
    | Select module template (モジュール テンプレートの選択) | **[Python モジュール]** を選択します |
    | Provide a module name (モジュール名の指定) | モジュールに **cameraCapture** という名前を付けます |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。<br><br>文字列は最終的に、 **\<registryname\>.azurecr.io/cameracapture** のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。<br><br>文字列は最終的に、 **\<registryname\>.azurecr.io/cameracapture** のようになります。 |
 
    VS Code ウィンドウで、新しいモジュールがソリューション ワークスペースに読み込まれ、deployment.template.json ファイルが更新されます。 これで、classifier と cameraCapture という 2 つのモジュール フォルダーが表示されるようになりました。 
 
@@ -449,9 +449,7 @@ cameraCapture モジュールからのメッセージとして送信される、
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Custom Vision モデルをトレーニングし、モジュールとして IoT Edge デバイスにデプロイしました。 次に、画像分類サービスに対してクエリを実行し、その結果を IoT Hub にレポートできるモジュールを構築しました。 
-
-ライブのカメラ フィードを使用してこのシナリオのより詳細なバージョンを試したい場合は、[Custom Vision and Azure IoT Edge on a Raspberry Pi 3 (Raspberry Pi 3 での Custom Vision と Azure IoT Edge)](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) GitHub プロジェクトを参照してください。 
+このチュートリアルでは、Custom Vision モデルをトレーニングし、モジュールとして IoT Edge デバイスにデプロイしました。 次に、画像分類サービスに対してクエリを実行し、その結果を IoT Hub にレポートできるモジュールを構築しました。
 
 引き続き次のチュートリアルを実行すると、Azure IoT Edge を利用して、エッジでデータをビジネス上の分析情報に変える他の方法について学習できます。
 

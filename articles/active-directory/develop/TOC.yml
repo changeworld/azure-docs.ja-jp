@@ -1,28 +1,26 @@
 - name: Microsoft ID プラットフォームのドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Microsoft ID プラットフォームとは
       href: v2-overview.md
+    - name: ドキュメントの最新情報
+      href: whats-new-docs.md
 - name: クイックスタート
-  expanded: true
   items:
-    - name: テナントを設定する
-      href: quickstart-create-new-tenant.md
-    - name: アプリケーションの構成
+    - name: 開発の準備
       items:
-        - name: アプリを登録します
+        - name: Azure AD テナントの取得
+          href: quickstart-create-new-tenant.md
+        - name: アプリまたは Web API の登録
           href: quickstart-register-app.md
-        - name: Web API を公開するためにアプリを構成する
+        - name: Web API 登録でスコープを公開する
           href: quickstart-configure-app-expose-web-apis.md
-        - name: Web API にアクセスするためにアプリを構成する
+        - name: Web API にスコープ付きアクセス許可を付与する
+          displayName: 'permissions, scp, scp claims'
           href: quickstart-configure-app-access-web-apis.md
-        - name: アプリでサポートされるアカウントを変更する
-          href: quickstart-modify-supported-accounts.md
-        - name: アプリの削除
-          href: quickstart-remove-app.md
-    - name: シングルページ アプリ
-      displayName: SPA
+    - name: シングルページ アプリ (SPA)
       items:
         - name: Angular
           href: quickstart-v2-angular.md
@@ -30,15 +28,19 @@
           href: quickstart-v2-javascript-auth-code.md
         - name: JavaScript - 暗黙的フロー
           href: quickstart-v2-javascript.md
-    - name: Web Apps
+    - name: Web アプリ
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: ASP.NET Core (ユーザーのサインイン)
           href: quickstart-v2-aspnet-core-webapp.md
-        - name: NodeJS
+        - name: ASP.NET Core (Microsoft Graph の呼び出し)
+          href: quickstart-v2-aspnet-core-webapp-calls-graph.md
+        - name: Node.js - MSAL | プレビュー
+          href: quickstart-v2-nodejs-webapp-msal.md
+        - name: Node.js - Passport.js
+          displayName: 'OIDC, express'
           href: quickstart-v2-nodejs-webapp.md
-          displayName: OIDC
         - name: Java
           href: quickstart-v2-java-webapp.md
         - name: Python
@@ -48,8 +50,8 @@
         - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
         - name: ASP.NET Core
-          href: 'https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/active-directory-dotnet-native-aspnetcore-v2/'
-    - name: モバイル アプリとデスクトップ アプリ
+          href: quickstart-v2-aspnet-core-web-api.md
+    - name: モバイルとデスクトップ
       items:
         - name: Android
           href: quickstart-v2-android.md
@@ -60,28 +62,33 @@
           href: quickstart-v2-uwp.md
         - name: Windows デスクトップ .NET
           href: quickstart-v2-windows-desktop.md
-    - name: デーモン アプリ
+    - name: デーモンまたはバックエンド サービス
       items:
         - name: .NET Core コンソール (デーモン)
           href: quickstart-v2-netcore-daemon.md
         - name: Python コンソール デーモン
           href: quickstart-v2-python-daemon.md
+        - name: Java コンソール デーモン
+          href: quickstart-v2-java-daemon.md
 - name: チュートリアル
   items:
-    - name: シングルページ アプリ
-      displayName: SPA
+    - name: シングルページ アプリ (SPA)
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: Blazor WebAssembly
+          href: tutorial-blazor-webassembly.md
         - name: JavaScript - 認証コード フロー
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript - 暗黙的フロー
           href: tutorial-v2-javascript-spa.md
-    - name: Web Apps
+    - name: Web アプリ
       items:
         - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
-    - name: モバイル アプリとデスクトップ アプリ
+        - name: Blazor サーバー
+          href: tutorial-blazor-server.md
+    - name: モバイルとデスクトップ
       items:
         - name: Android
           href: tutorial-v2-android.md
@@ -94,7 +101,7 @@
           href: tutorial-v2-windows-desktop.md
         - name: Android アプリでの共有デバイス モードの使用
           href: tutorial-v2-shared-device-mode.md
-    - name: デーモン アプリ
+    - name: デーモンまたはバックエンド サービス
       items:
         - name: ASP.NET デーモン Web アプリ
           href: tutorial-v2-aspnet-daemon-web-app.md
@@ -112,18 +119,37 @@
           href: security-tokens.md
         - name: アプリケーション モデル
           href: application-model.md
-        - name: アプリのサインイン フロー
-          href: app-sign-in-flow.md
-    - name: 認証フローとアプリ シナリオ
+    - name: 認証ライブラリ
+      displayName: 'msal, microsoft.identity.web'
+      items:
+        - name: Microsoft Authentication Library (MSAL)
+          href: msal-overview.md
+        - name: Microsoft Identity Web ライブラリ
+          href: microsoft-identity-web.md
+          displayName: 'auth, library, .NET Core, msal'
+    - name: アプリ シナリオと認証フロー
       displayName: Auth flows
       href: authentication-flows-app-scenarios.md
+    - name: アプリケーションとサービス プリンシパル
+      href: app-objects-and-service-principals.md
     - name: ID プラットフォームのベスト プラクティス
       href: identity-platform-integration-checklist.md
-    - name: アプリケーションのシナリオ
+    - name: アクセス許可と同意
+      displayName: Scopes
+      href: v2-permissions-and-consent.md
+    - name: 条件付きアクセス
+      href: v2-conditional-access-dev-guide.md
+    - name: 自動ユーザー プロビジョニング (SCIM)
+      href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+- name: 操作方法
+  items:
+    - name: アプリ シナリオの統合
       displayName: App scenarios
       items:
         - name: サインイン対象ユーザー
           href: v2-supported-account-types.md
+        - name: アプリのサインイン フロー
+          href: app-sign-in-flow.md
         - name: シングルページ アプリ
           displayName: SPA
           items:
@@ -256,113 +282,10 @@
               href: scenario-mobile-call-api.md
             - name: 運用環境に移行する
               href: scenario-mobile-production.md
-    - name: Microsoft Authentication Library (MSAL)
+    - name: Microsoft Authentication Library の使用
+      displayName: MSAL
       items:
-        - name: 概要
-          href: msal-overview.md
-        - name: .NET
-          displayName: 'xamarin, ASP.NET Core'
-          items:
-            - name: アプリケーションの初期化
-              href: msal-net-initializing-client-applications.md
-            - name: クライアント アサーション
-              href: msal-net-client-assertions.md
-            - name: Azure AD B2C との統合
-              href: msal-net-aad-b2c-considerations.md
-            - name: ADFS による統合
-              href: msal-net-adfs-support.md
-            - name: MSAL.NET への移行
-              href: msal-net-migration.md
-            - name: ブローカーを使用する Xamarin Android アプリの MSAL.NET への移行
-              href: msal-net-migration-android-broker.md
-            - name: ブローカーを使用する Xamarin iOS アプリの MSAL.NET への移行
-              href: msal-net-migration-ios-broker.md
-            - name: Web ブラウザーの考慮事項
-              href: msal-net-web-browsers.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=dotnet
-            - name: ログ記録
-              href: msal-logging.md?tabs=dotnet
-        - name: Android
-          items:
-            - name: アカウントとテナント プロファイル
-              href: accounts-overview.md
-            - name: 承認エージェント
-              href: authorization-agents.md
-            - name: 仲介型認証
-              href: brokered-auth.md
-            - name: Azure AD B2C との統合
-              href: msal-android-b2c.md
-            - name: MSAL.Android への移行
-              href: migrate-android-adal-msal.md
-            - name: 共有デバイス モード
-              href: msal-android-shared-devices.md
-              displayName: 'firstline worker, frontline worker, flw'
-            - name: 単一および複数アカウントのパブリック クライアント アプリ
-              href: single-multi-account.md
-            - name: エラーと例外を処理する
-              href: msal-android-handling-exceptions.md
-              displayName: 'android, mobile'
-            - name: ログ記録
-              href: msal-logging.md?tabs=android
-        - name: iOS と macOS
-          items:
-            - name: Azure AD B2C との統合
-              href: config-authority.md#b2c
-            - name: MSAL.iOS/macOS への移行
-              href: migrate-objc-adal-msal.md
-            - name: iOS デバイスの共有デバイス モード
-              href: msal-ios-shared-devices.md
-              displayName: 'firstline worker, frontline worker, flw'
-            - name: MSAL アプリ間の SSO
-              href: single-sign-on-macos-ios.md
-            - name: ADAL アプリと MSAL アプリの間の SSO
-              href: sso-between-adal-msal-apps-macos-ios.md
-            - name: SSL に関する問題のトラブルシューティング (MSAL iOS/macOS)
-              href: ssl-issues.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=iosmacos
-            - name: ログ記録
-              href: msal-logging.md?tabs=swift
-        - name: Java
-          items:
-            - name: MSAL for Java への移行
-              href: migrate-adal-msal-java.md
-            - name: MSAL for Java での ADFS のサポート
-              href: msal-java-adfs-support.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=java
-            - name: ログ記録
-              href: msal-logging.md?tabs=java
-        - name: JavaScript と Node.js
-          items:
-            - name: アプリケーションの初期化 - JavaScript
-              href: msal-js-initializing-client-applications.md
-            - name: Azure AD B2C との統合
-              href: msal-b2c-overview.md
-            - name: MSAL.js への移行
-              href: msal-compare-msal-js-and-adal-js.md
-            - name: MSAL.js でのシングル サインオン
-              href: msal-js-sso.md
-            - name: 考慮事項 - IE
-              href: msal-js-use-ie-browser.md
-            - name: 既知の問題 - IE と Microsoft Edge
-              href: msal-js-known-issues-ie-edge-browsers.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=javascript
-            - name: ログ記録
-              href: msal-logging.md?tabs=javascript
-        - name: Python
-          items:
-            - name: MSAL Python への移行
-              href: migrate-python-adal-msal.md
-            - name: MSAL for Python での ADFS のサポート
-              href: msal-python-adfs-support.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md?tabs=python
-            - name: ログ記録
-              href: msal-logging.md?tabs=python
-        - Name: すべてのプラットフォーム
+        - name: すべてのプラットフォーム
           items:
             - name: サポートされている認証フロー
               href: msal-authentication-flows.md
@@ -382,12 +305,254 @@
             - name: ADAL から MSAL へのアプリの移行
               href: msal-migration.md
               displayName: migration
+            - name: 各国のクラウドと MSAL
+              href: msal-national-cloud.md
+              displayName: 'china, germany, gov, 21vianet'
+        - name: MSAL.NET
+          displayName: 'xamarin, ASP.NET Core'
+          items:
+            - name: アプリケーションの初期化
+              href: msal-net-initializing-client-applications.md
+            - name: クライアント アサーション
+              href: msal-net-client-assertions.md
+            - name: Azure AD B2C との統合
+              href: msal-net-aad-b2c-considerations.md
+            - name: ADFS による統合
+              href: msal-net-adfs-support.md
+            - name: MSAL.NET への移行
+              href: msal-net-migration.md
+            - name: ブローカーを使用する Xamarin Android アプリの MSAL.NET への移行
+              href: msal-net-migration-android-broker.md
+            - name: ブローカーを使用する Xamarin iOS アプリの MSAL.NET への移行
+              href: msal-net-migration-ios-broker.md
+            - name: Web ブラウザーの考慮事項
+              href: msal-net-web-browsers.md
+            - name: MSAL.NET におけるエラーと例外の処理
+              href: msal-error-handling-dotnet.md
+              displayName: 'handling, catch'
+            - name: MSAL.NET でのログ
+              href: msal-logging-dotnet.md
+            - name: キャッシュからトークンを取得する
+              href: msal-net-acquire-token-silently.md
+            - name: トークン キャッシュのシリアル化
+              href: msal-net-token-cache-serialization.md
+            - name: トークン キャッシュをクリアする
+              href: msal-net-clear-token-cache.md
+            - name: パブリック クライアント アプリをインスタンス化する
+              href: msal-net-instantiate-public-client-config-options.md
+            - name: オプションを使用して機密クライアントをインスタンス化する
+              href: msal-net-instantiate-confidential-client-config-options.md
+            - name: いくつかのリソースの同意を得る
+              href: msal-net-user-gets-consent-for-multiple-resources.md
+            - name: 独自の HttpClient の指定
+              href: msal-net-provide-httpclient.md
+        - name: MSAL.js (JavaScript と Node.js)
+          items:
+            - name: ページのリロードを回避する
+              href: msal-js-avoid-page-reloads.md
+            - name: 認証要求内でカスタムの状態を渡す
+              href: msal-js-pass-custom-state-authentication-request.md
+            - name: プロンプトの動作
+              href: msal-js-prompt-behavior.md
+            - name: 暗黙から認証コード フローに SPA を移行する
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
+            - name: アプリケーションの初期化 - JavaScript
+              href: msal-js-initializing-client-applications.md
+            - name: Azure AD B2C との統合
+              href: msal-b2c-overview.md
+            - name: MSAL.js への移行
+              href: msal-compare-msal-js-and-adal-js.md
+            - name: MSAL.js でのシングル サインオン
+              href: msal-js-sso.md
+            - name: 考慮事項 - IE
+              href: msal-js-use-ie-browser.md
+            - name: 既知の問題 - IE と Microsoft Edge
+              href: msal-js-known-issues-ie-edge-browsers.md
+            - name: MSAL.js におけるエラーと例外の処理
+              href: msal-error-handling-js.md
+              displayName: 'handling, catch'
+            - name: MSAL.js でのログ記録
+              href: msal-logging-js.md
+        - name: iOS および macOS 用の MSAL
+          items:
+            - name: iOS および macOS 用の MSAL の違い
+              href: msal-differences-ios-macos.md
+            - name: キーチェーンの構成
+              href: howto-v2-keychain-objc.md
+            - name: ブラウザーと WebView のカスタマイズ
+              href: customize-webviews.md
+            - name: カスタム要求のリクエスト
+              href: request-custom-claims.md
+            - name: リダイレクト URI の構成
+              href: redirect-uris-ios.md
+            - name: Azure AD B2C との統合
+              href: config-authority.md#b2c
+            - name: MSAL.iOS/macOS への移行
+              href: migrate-objc-adal-msal.md
+            - name: iOS デバイスの共有デバイス モード
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker, flw'
+            - name: MSAL アプリ間の SSO
+              href: single-sign-on-macos-ios.md
+            - name: ADAL アプリと MSAL アプリの間の SSO
+              href: sso-between-adal-msal-apps-macos-ios.md
+            - name: SSL に関する問題のトラブルシューティング (MSAL iOS/macOS)
+              href: ssl-issues.md
+            - name: iOS および macOS 用の MSAL におけるエラーと例外の処理
+              href: msal-error-handling-ios.md
+              displayName: 'handling, catch'
+            - name: iOS および macOS 用の MSAL でのログ記録
+              href: msal-logging-ios.md
+        - name: MSAL for Python
+          items:
+            - name: カスタム トークン キャッシュのシリアル化
+              href: msal-python-token-cache-serialization.md
+            - name: MSAL Python への移行
+              href: migrate-python-adal-msal.md
+            - name: MSAL for Python での ADFS のサポート
+              href: msal-python-adfs-support.md
+            - name: Python 用の MSAL におけるエラーと例外の処理
+              href: msal-error-handling-python.md
+              displayName: 'handling, catch'
+            - name: Python 用の MSAL でのログ記録
+              href: msal-logging-python.md
+        - name: MSAL for Java
+          items:
+            - name: カスタム トークン キャッシュのシリアル化
+              href: msal-java-token-cache-serialization.md
+            - name: トークン キャッシュのアカウントの取得と削除
+              href: msal-java-get-remove-accounts-token-cache.md
+            - name: MSAL for Java への移行
+              href: migrate-adal-msal-java.md
+            - name: MSAL for Java での ADFS のサポート
+              href: msal-java-adfs-support.md
+            - name: Java 用の MSAL におけるエラーと例外の処理
+              href: msal-error-handling-java.md
+              displayName: 'handling, catch'
+            - name: MSAL for Java でのログ記録
+              href: msal-logging-java.md
+        - name: MSAL for Android
+          items:
+            - name: アカウントとテナント プロファイル
+              href: accounts-overview.md
+            - name: MSAL Android での SSO
+              href: msal-android-single-sign-on.md
+            - name: Azure AD B2C との統合
+              href: msal-android-b2c.md
+            - name: MSAL.Android への移行
+              href: migrate-android-adal-msal.md
+            - name: 共有デバイス モード
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker, flw'
+            - name: 単一および複数アカウントのパブリック クライアント アプリ
+              href: single-multi-account.md
+            - name: Android 用の MSAL におけるエラーと例外の処理
+              href: msal-android-handling-exceptions.md
+              displayName: 'android, mobile, handling, catch'
+            - name: Android 用の MSAL でのログ記録
+              href: msal-logging-android.md
+    - name: トークンと要求のカスタマイズ
+      items:
+        - name: ロール要求の構成
+          href: active-directory-enterprise-app-role-management.md
+        - name: Azure portal を使用した要求のカスタマイズ
+          href: active-directory-saml-claims-customization.md
+        - name: PowerShell を使用した要求のカスタマイズ
+          href: active-directory-claims-mapping.md
+        - name: 省略可能な要求の構成
+          href: active-directory-optional-claims.md
+        - name: 要求でのディレクトリ スキーマ拡張属性の使用
+          href: active-directory-schema-extensions.md
+        - name: トークンの有効期間の構成
+          href: configure-token-lifetimes.md
+        - name: 継続的アクセス評価 API の使用
+          href: app-resilience-continuous-access-evaluation.md
+          displayName: cae
+    - name: ブラウザーの Cookie の制限を処理
+      items:
+        - name: Safari での ITP の処理
+          href: reference-third-party-cookies-spas.md
+        - name: Chrome における SameSite Cookie の変更を処理
+          href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: アプリとサービスを認証する
+      items:
+        - name: Azure PowerShell を使用してサービス プリンシパルを作成する
+          href: howto-authenticate-service-principal-powershell.md
+        - name: Azure Portal を使用してサービス プリンシパルを作成する
+          href: howto-create-service-principal-portal.md
+    - name: 複数のテナントからのサインインを受け入れる
+      items:
+        - name: アプリでサポートされるアカウントを変更する
+          href: quickstart-modify-supported-accounts.md
+        - name: マルチテナントのログインを有効にする
+          href: howto-convert-app-to-be-multi-tenant.md
+        - name: パブリッシャー ドメインを構成する
+          displayName: 'verified domain, verified publisher domain'
+          href: howto-configure-publisher-domain.md
+    - name: アプリとリソースへのアクセスを承認する
+      items:
+        - name: ご利用のアプリを特定のユーザー セットに制限する
+          href: howto-restrict-your-app-to-a-set-of-users.md
+        - name: ご利用のアプリケーションにアプリ ロールを追加する
+          href: howto-add-app-roles-in-azure-ad-apps.md
+    - name: Microsoft Graph API を使用する
+      href: microsoft-graph-intro.md
+    - name: アプリを市場に導入する
+      items:
+        - name: ブランド化ガイドラインに従う
+          displayName: Add branding
+          href: howto-add-branding-in-azure-ad-apps.md
+        - name: サービス使用条件とプライバシーに関する声明の構成
+          href: howto-add-terms-of-service-privacy-statement.md
+        - name: アプリの発行者の確認を構成する
+          items:
+            - name: アプリを発行者確認済みとしてマークする
+              href: mark-app-as-publisher-verified.md
+            - name: 発行元の確認に関するトラブルシューティング
+              href: troubleshoot-publisher-verification.md
+        - name: App Source に公開する
+          href: v2-howto-get-appsource-certified.md
+        - name: Azure AD アプリ ギャラリーに公開する
+          href: v2-howto-app-gallery-listing.md
+        - name: Office 365 販売者ダッシュボードに公開する
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
+    - name: Visual Studio を使用する
+      items:
+        - name: Active Directory 接続済みサービスの使用
+          href: vs-active-directory-add-connected-service.md
+        - name: .NET MVC プロジェクトの作業開始
+          href: vs-active-directory-dotnet-getting-started.md
+        - name: .NET MVC プロジェクトの変更点
+          href: vs-active-directory-dotnet-what-happened.md
+        - name: WebAPI プロジェクトの作業開始
+          href: vs-active-directory-webapi-getting-started.md
+        - name: WebAPI プロジェクトの変更点
+          href: vs-active-directory-webapi-what-happened.md
+        - name: 認証時のエラーを診断する
+          href: vs-active-directory-error.md
+    - name: アプリ登録を削除する
+      href: quickstart-remove-app.md
+- name: リファレンス
+  items:
+    - name: 用語集
+      href: developer-glossary.md
+    - name: アプリケーションの構成
+      displayName: App configuration
+      items:
+        - name: アプリを Azure AD に追加する方法と理由
+          href: active-directory-how-applications-are-added.md
+        - name: リダイレクト URI および応答 URL に関する制約と制限
+          href: reply-url.md
+        - name: サポートされているアカウントの種類別の検証の相違点
+          href: supported-accounts-validation.md
+        - name: 単一テナント アプリとマルチテナント アプリ
+          href: single-and-multi-tenant-apps.md
+        - name: 発行元の確認
+          href: publisher-verification-overview.md
     - name: 認証プロトコル
       displayName: Auth protocol
       items:
-        - name: アプリケーションの種類と OAuth 2.0
-          displayName: 'App types, OAuth'
-          href: v2-app-types.md
         - name: OAuth 2.0 と OpenID Connect プロトコル
           items:
             - name: OAuth 2.0 と OpenID Connect
@@ -408,14 +573,16 @@
             - name: OAuth 2.0 リソース所有者パスワード資格情報の付与
               displayName: ROPC
               href: v2-oauth-ropc.md
-            - name: OAuth 2.0 SAML ベアラー アサーション フロー
-              href: v2-saml-bearer-assertion.md
             - name: 署名キーのロールオーバー
               href: active-directory-signing-key-rollover.md
+            - name: トークン交換シナリオ
+              href: scenario-token-exchange-saml-oauth.md
             - name: ID トークン
               href: id-tokens.md
             - name: アクセス トークン
               href: access-tokens.md
+            - name: トークンの有効期間の構成
+              href: active-directory-configurable-token-lifetimes.md
             - name: UserInfo エンドポイント
               href: userinfo.md
             - name: 証明書の資格情報
@@ -431,210 +598,9 @@
               href: active-directory-saml-protocol-reference.md
             - name: SAML トークン
               href: reference-saml-tokens.md
-    - name: アプリケーションの構成
-      displayName: App configuration
-      items:
-        - name: アプリケーションとサービス プリンシパル
-          displayName: 'Apps, service principals'
-          href: app-objects-and-service-principals.md
-        - name: アプリを Azure AD に追加する方法と理由
-          href: active-directory-how-applications-are-added.md
-        - name: リダイレクト URI および応答 URL に関する制約と制限
-          href: reply-url.md
-        - name: サポートされているアカウントの種類別の検証の相違点
-          href: supported-accounts-validation.md
-        - name: 単一テナント アプリとマルチテナント アプリ
-          href: single-and-multi-tenant-apps.md
-        - name: 発行者の確認 (プレビュー)
-          href: publisher-verification-overview.md
-    - name: アクセス許可と同意
-      displayName: Scopes
-      items:
-        - name: アクセス許可と同意の種類
-          href: v2-permissions-and-consent.md
-        - name: 同意フレームワーク
-          href: consent-framework.md
-        - name: 管理者の同意
-          href: v2-admin-consent.md
-        - name: アプリケーションの同意エクスペリエンス
-          displayName: App consent experiences
-          href: application-consent-experience.md
-    - name: 条件付きアクセス
-      href: v2-conditional-access-dev-guide.md
-    - name: 各国のクラウド
-      items:
-        - name: 概要
-          href: authentication-national-cloud.md
-        - name: 認証
-          href: msal-national-cloud.md
-    - name: 自動ユーザー プロビジョニング (SCIM)
-      items:
-        - name: 自動ユーザー プロビジョニングとは
-          href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
-        - name: SCIM エンドポイントの開発と統合
-          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
-        - name: 一般的なプロビジョニングのシナリオ
-          href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
-        - name: MS Graph を使用した構成の自動化
-          href: ../app-provisioning/application-provisioning-configure-api.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
-    - name: Azure portal のヘルプ記事
-      items:
-        - name: 独自に開発したアプリケーションのトークン有効期間の既定値
-          href: registration-config-change-token-lifetime-how-to.md
-        - name: エンドポイントを検出する
-          href: registration-config-how-to.md
-        - name: 指定の API のアクセス許可を選択する
-          href: perms-for-given-api.md
-        - name: 認証プロトコル
-          href: active-directory-authentication-protocols.md
-        - name: 委任されたアクセス許可とアプリケーションのアクセス許可の違い
-          href: delegated-and-app-perms.md
-        - name: アプリケーションの同意のしくみ
-          href: consent-framework-links.md
-        - name: 独自に開発したアプリケーションに必要な特定の API を見つける
-          href: api-find-an-api-how-to.md
-        - name: アプリ登録のリファレンス
-          href: active-directory-v2-registration-portal.md
-        - name: 独自に開発したアプリ用の Azure portal の登録フィールド
-          href: registration-config-specific-application-property-how-to.md
-        - name: 新しいマルチテナント アプリケーションを構成する
-          href: setup-multi-tenant-app.md
-        - name: Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションを追加する
-          href: registration-config-multi-tenant-application-add-to-gallery-how-to.md
-        - name: Azure Active Directory との統合
-          href: active-directory-how-to-integrate.md
-        - name: アプリケーションのシングル サインオンを構成する
-          href: registration-config-sso-how-to.md
-- name: 操作方法ガイド
-  items:
-    - name: 認証
-      items:
-        - name: ロール要求の構成
-          href: active-directory-enterprise-app-role-management.md
-        - name: 要求のカスタマイズ - ポータル
-          href: active-directory-saml-claims-customization.md
-        - name: 要求のカスタマイズ - PowerShell
-          href: active-directory-claims-mapping.md
-        - name: 省略可能な要求の構成
-          href: active-directory-optional-claims.md
-        - name: 要求でのディレクトリ スキーマ拡張属性の使用
-          href: active-directory-schema-extensions.md
-        - name: トークンの有効期間の構成
-          href: active-directory-configurable-token-lifetimes.md
-        - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理
-          href: howto-handle-samesite-cookie-changes-chrome-browser.md
-        - name: Safari での ITP の処理
-          href: reference-third-party-cookies-spas.md
-    - name: アプリケーションの構成
-      displayName: App configuration
-      items:
-        - name: Azure portal のアプリ登録に関するトレーニング ガイド
-          href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-        - name: Azure portal のアプリ登録エクスペリエンス
-          href: app-registration-portal-training-guide.md
-        - name: シングルテナント アプリをマルチテナント アプリに変換する
-          href: howto-convert-app-to-be-multi-tenant.md
-        - name: サービス プリンシパルの作成
-          items:
-            - name: Azure PowerShell の使用
-              href: howto-authenticate-service-principal-powershell.md
-            - name: Azure ポータルの使用
-              href: howto-create-service-principal-portal.md
-        - name: ご利用のアプリを特定のユーザー セットに制限する
-          href: howto-restrict-your-app-to-a-set-of-users.md
-        - name: ご利用のアプリケーションにアプリ ロールを追加する
-          href: howto-add-app-roles-in-azure-ad-apps.md
-        - name: ブランド化ガイドラインに従う
-          displayName: Add branding
-          href: howto-add-branding-in-azure-ad-apps.md
-        - name: パブリッシャー ドメインの構成
-          href: howto-configure-publisher-domain.md
-        - name: サービス使用条件とプライバシーに関する声明の構成
-          href: howto-add-terms-of-service-privacy-statement.md
-        - name: アプリの発行者の確認を構成する
-          items:
-            - name: アプリを発行者確認済みとしてマークする (プレビュー)
-              href: mark-app-as-publisher-verified.md
-            - name: 発行者確認のトラブルシューティング (プレビュー)
-              href: troubleshoot-publisher-verification.md
-    - name: Microsoft Authentication Library の使用
-      displayName: MSAL
-      items:
-        - name: MSAL.NET
-          items:
-            - name: キャッシュからトークンを取得する
-              href: msal-net-acquire-token-silently.md
-            - name: トークン キャッシュのシリアル化
-              href: msal-net-token-cache-serialization.md
-            - name: トークン キャッシュをクリアする
-              href: msal-net-clear-token-cache.md
-            - name: パブリック クライアント アプリをインスタンス化する
-              href: msal-net-instantiate-public-client-config-options.md
-            - name: オプションを使用して機密クライアントをインスタンス化する
-              href: msal-net-instantiate-confidential-client-config-options.md
-            - name: いくつかのリソースの同意を得る
-              href: msal-net-user-gets-consent-for-multiple-resources.md
-            - name: 独自の HttpClient の指定
-              href: msal-net-provide-httpclient.md
-        - name: MSAL.js
-          items:
-            - name: ページのリロードを回避する
-              href: msal-js-avoid-page-reloads.md
-            - name: 認証要求内でカスタムの状態を渡す
-              href: msal-js-pass-custom-state-authentication-request.md
-            - name: プロンプトの動作
-              href: msal-js-prompt-behavior.md
-            - name: 暗黙から認証コード フローに SPA を移行する
-              href: migrate-spa-implicit-to-auth-code.md
-              displayName: 'authorization, single-page app, 2.0'
-        - name: iOS および macOS 用の MSAL
-          items:
-            - name: iOS および macOS 用の MSAL の違い
-              href: msal-differences-ios-macos.md
-            - name: キーチェーンの構成
-              href: howto-v2-keychain-objc.md
-            - name: ブラウザーと WebView のカスタマイズ
-              href: customize-webviews.md
-            - name: カスタム要求のリクエスト
-              href: request-custom-claims.md
-            - name: リダイレクト URI の構成
-              href: redirect-uris-ios.md
-        - name: MSAL for Python
-          items:
-            - name: カスタム トークン キャッシュのシリアル化
-              href: msal-python-token-cache-serialization.md
-        - name: MSAL for Java
-          items:
-            - name: カスタム トークン キャッシュのシリアル化
-              href: msal-java-token-cache-serialization.md
-            - name: トークン キャッシュのアカウントの取得と削除
-              href: msal-java-get-remove-accounts-token-cache.md
-    - name: Microsoft Graph API を使用する
-      href: microsoft-graph-intro.md
-    - name: Visual Studio を使用する
-      items:
-        - name: Active Directory 接続済みサービスの使用
-          href: vs-active-directory-add-connected-service.md
-        - name: .NET MVC プロジェクトの作業開始
-          href: vs-active-directory-dotnet-getting-started.md
-        - name: .NET MVC プロジェクトの変更点
-          href: vs-active-directory-dotnet-what-happened.md
-        - name: WebAPI プロジェクトの作業開始
-          href: vs-active-directory-webapi-getting-started.md
-        - name: WebAPI プロジェクトの変更点
-          href: vs-active-directory-webapi-what-happened.md
-        - name: 認証時のエラーを診断する
-          href: vs-active-directory-error.md
-    - name: アプリを市場に導入する
-      items:
-        - name: App Source に公開する
-          href: v2-howto-get-appsource-certified.md
-        - name: Azure AD アプリ ギャラリーに公開する
-          href: v2-howto-app-gallery-listing.md
-        - name: Office 365 販売者ダッシュボードに公開する
-          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
-- name: リファレンス
-  items:
+    - name: アプリケーションの種類と OAuth 2.0
+      displayName: 'App types, OAuth'
+      href: v2-app-types.md
     - name: アプリケーション マニフェスト
       href: reference-app-manifest.md
       displayName: app manifest
@@ -650,10 +616,32 @@
       href: reference-aadsts-error-codes.md
     - name: 重大な変更
       href: reference-breaking-changes.md
+    - name: モバイル シングル サインオン (SSO)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
+    - name: アクセス許可と同意
+      displayName: Scopes
+      items:
+        - name: 同意フレームワーク
+          href: consent-framework.md
+        - name: 管理者の同意
+          href: v2-admin-consent.md
+        - name: アプリケーションの同意エクスペリエンス
+          displayName: App consent experiences
+          href: application-consent-experience.md
+    - name: 各国のクラウド認証エンドポイント
+      href: authentication-national-cloud.md
+      displayName: 'china, germany, gov, 21vianet'
+    - name: 自動ユーザー プロビジョニング (SCIM)
+      items:
+        - name: SCIM エンドポイントの開発と統合
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: 一般的なプロビジョニングのシナリオ
+          href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: MS Graph を使用した構成の自動化
+          href: /graph/application-provisioning-configure-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
 - name: リソース
   items:
-    - name: 用語集
-      href: developer-glossary.md
     - name: ビデオ
       href: identity-videos.md
     - name: Microsoft の ID プラットフォーム開発者ブログ

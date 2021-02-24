@@ -1,11 +1,20 @@
 ---
-ms.openlocfilehash: 93c88f34e32e2057efd3eae25b1f41f58b948575
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c99d2489efe7c46b8d50b08861fcbbcd6f8a1966
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682357"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532128"
 ---
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
 1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウに、いくつかのメッセージが出力されます。
 1. *operations.json* コードにより、ダイレクト メソッド `GraphTopologyList` および `GraphInstanceList` が呼び出されます。 前回のクイックスタート後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されてから、一時停止します。 Enter キーを押します。
     
@@ -14,7 +23,7 @@ ms.locfileid: "88682357"
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -32,7 +41,7 @@ ms.locfileid: "88682357"
   
   ```
   {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "Sample-Graph",
     "properties": {
       "topologyName": "EVRToFilesOnMotionDetection",

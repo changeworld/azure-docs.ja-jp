@@ -3,12 +3,12 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207772"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934885"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
@@ -16,9 +16,9 @@ ms.locfileid: "88207772"
 
 | プラン | 説明 |
 | ---- | ----------- |
-| [**従量課金**](functions-scale.md#consumption-plan) | 関数アプリが実行された時間に対してのみ課金されます。 このプランには、サブスクリプションごとの[無料提供][価格ページ]が含まれます。|
-| [**Premium**](functions-scale.md#premium-plan) | 従量課金プランと同じ機能とスケーリング メカニズムが提供されますが、パフォーマンスと VNET アクセスが増強されています。 コストは、お客様が選択した価格レベルに基づきます。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。 |
-| [**専用 (App Service)** ](functions-scale.md#app-service-plan) <br/>(Basic レベル以上) | 専用 VM または分離環境で実行する必要がある場合は、カスタム イメージつまり超過した App Service プラン容量を使用します。 [標準の App Service プランの料金](https://azure.microsoft.com/pricing/details/app-service/)を使用します。 コストは、お客様が選択した価格レベルに基づきます。|
+| [**従量課金**](consumption-plan.md) | 関数アプリが実行された時間に対してのみ課金されます。 このプランには、サブスクリプションごとの[無料提供][価格ページ]が含まれます。|
+| [**Premium**](functions-premium-plan.md) | 従量課金プランと同じ機能とスケーリング メカニズムが提供されますが、パフォーマンスと VNET アクセスが増強されています。 コストは、お客様が選択した価格レベルに基づきます。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。 |
+| [**専用 (App Service)**](dedicated-plan.md) <br/>(Basic レベル以上) | 専用 VM または分離環境で実行する必要がある場合は、カスタム イメージつまり超過した App Service プラン容量を使用します。 [標準の App Service プランの料金](https://azure.microsoft.com/pricing/details/app-service/)を使用します。 コストは、お客様が選択した価格レベルに基づきます。|
 
 関数のパフォーマンスとコストの要件に最適なプランを選択します。 詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md)」を参照してください。
 
@@ -50,7 +50,7 @@ HTTP によってトリガーされる関数の場合、関数コードの実行
 | 関連コスト | 説明 |
 | ------------ | ----------- |
 | **ストレージ アカウント** | 各関数アプリには、General Purpose [Azure ストレージ アカウント](../storage/common/storage-introduction.md#types-of-storage-accounts)が関連付けられている必要があり、これは[別途課金](https://azure.microsoft.com/pricing/details/storage/)されます。 このアカウントは、Functions ランタイムによって内部的に使用されますが、ストレージのトリガーとバインドにも使用できます。 ストレージ アカウントを持っていない場合は、関数アプリの作成時に作成されます。 詳しくは、「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」をご覧ください。|
-| **Application Insights** | Functions では、関数アプリに高パフォーマンスの監視エクスペリエンスを提供するために、[Application Insights](../azure-monitor/app/app-insights-overview.md) が利用されます。 必須ではありませんが、[Application Insights の統合を有効にする](functions-monitoring.md#enable-application-insights-integration)ことをお勧めします。 テレメトリ データの無料提供が毎月含まれます。 詳しくは、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページをご覧ください。 |
+| **Application Insights** | Functions では、関数アプリに高パフォーマンスの監視エクスペリエンスを提供するために、[Application Insights](../azure-monitor/app/app-insights-overview.md) が利用されます。 必須ではありませんが、[Application Insights の統合を有効にする](configure-monitoring.md#enable-application-insights-integration)ことをお勧めします。 テレメトリ データの無料提供が毎月含まれます。 詳しくは、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページをご覧ください。 |
 | **ネットワーク帯域幅** | 同じリージョン内の Azure サービス間のデータ転送に対する支払いはありません。 ただし、別のリージョンまたは Azure の外部への送信データ転送に対するコストが発生する可能性があります。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。 |
 
 ## <a name="behaviors-affecting-execution-time"></a>実行時間に影響を与える動作
@@ -61,13 +61,15 @@ HTTP によってトリガーされる関数の場合、関数コードの実行
 
 + **非同期実行**: 非同期要求 (C# では `await`) の結果に対する関数の待機時間は、実行時間としてカウントされます。 GB 秒数の計算は、関数の開始時刻と終了時刻、およびその期間のメモリ使用量に基づいています。 その間に発生した CPU アクティビティは、計算では考慮されません。 [Durable Functions](durable/durable-functions-overview.md) を使用することで、非同期操作中のコストを削減できます。 オーケストレーター関数での待機時間に対して課金されることはありません。
 
-## <a name="view-execution-data"></a>実行データを表示する
+## <a name="viewing-cost-related-data"></a>コスト関連データを表示する
 
 [請求書](../cost-management-billing/understand/download-azure-invoice.md)では、 **[Total Executions - Functions]\(合計実行数 - Functions\)** および **[Execution Time - Functions]\(実行時間 - Functions\)** のコスト関連データと、実際に請求されたコストを見ることができます。 ただし、この請求データは過去の請求期間の月次集計です。 
 
+### <a name="function-app-level-metrics"></a>関数アプリレベルのメトリック
+
 関数のコストへの影響をより深く理解するには、Azure Monitor を使用することで、関数アプリによって現在生成されているコスト関連メトリックを表示できます。 このデータを取得するには、[Azure portal] の [Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-getting-started.md)または REST API を使用できます。
 
-### <a name="monitor-metrics-explorer"></a>Monitor メトリックス エクスプローラー
+#### <a name="monitor-metrics-explorer"></a>Monitor メトリックス エクスプローラー
 
 従量課金プランの関数アプリのコスト関連データをグラフィック形式で表示するには、[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-getting-started.md)を使用します。 
 
@@ -101,7 +103,7 @@ HTTP によってトリガーされる関数の場合、関数コードの実行
 
 このグラフでは、MB ミリ秒数で測定して、2 時間に合計で 11.1 億の `Function Execution Units` が消費されたことが示されています。 GB 秒数に変換するには、1,024,000 で割ります。 この例の関数アプリでは、`1110000000 / 1024000 = 1083.98` GB 秒が消費されました。 この値を取得し、[Functions の価格ページ][価格ページ]で示されている実行時間の現在の料金を乗算することにより、この 2 時間のコストがわかります (実行時間の無料提供を既に使用してあるものとします)。 
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure/) には、メトリックを取得するためのコマンドがあります。 ローカル コマンド環境から、または [Azure Cloud Shell](../cloud-shell/overview.md) を使用してポータルから直接、CLI を使用できます。 たとえば、次の [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) コマンドでは、前に使用したのと同じ期間に対する 1 時間あたりのデータが返されます。
 
@@ -192,47 +194,13 @@ az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resour
 ```
 この特定の応答では、`2019-09-11T21:46` から `2019-09-11T23:18` までの間に、アプリで 1,110,000,000 MB ミリ秒 (1083.98 GB 秒) が消費されたことが示されています。
 
-## <a name="determine-memory-usage"></a>メモリの使用量を確認する
+### <a name="function-level-metrics"></a>関数レベルのメトリック
 
 関数の実行単位は、実行時間とメモリ使用量を組み合わせたものであり、メモリ使用量を理解するのが困難なメトリックになっています。 現在、Azure Monitor では、メモリ データのメトリックは使用できません。 ただし、アプリのメモリ使用量を最適化したい場合は、Application Insights によって収集されるパフォーマンス カウンター データを使用できます。  
 
-まだ行っていない場合は、[関数アプリで Application Insights を有効にします](functions-monitoring.md#enable-application-insights-integration)。 この統合を有効にすると、[ポータルでこのテレメトリ データのクエリを実行する](functions-monitoring.md#query-telemetry-data)ことができます。  
+まだ行っていない場合は、[関数アプリで Application Insights を有効にします](configure-monitoring.md#enable-application-insights-integration)。 この統合を有効にすると、[ポータルでこのテレメトリ データのクエリを実行する](analyze-telemetry-data.md#query-telemetry-data)ことができます。 
 
-**[Monitoring]\(監視\)** の **[ログ (Analytics)]** を選択した後、次のテレメトリ クエリをコピーしてクエリ ウィンドウに貼り付け、 **[実行]** を選択します。 このクエリでは、サンプリングされた各時刻におけるメモリ使用量の合計が返されます。
-
-```
-performanceCounters
-| where name == "Private Bytes"
-| project timestamp, name, value
-```
-
-結果は次の例のようになります。
-
-| タイムスタンプ \[UTC\]          | name          | value       |
-|----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | Private Bytes | 209,932,288 |
-| 9/12/2019, 1:06:14\.994 AM | Private Bytes | 212,189,184 |
-| 9/12/2019, 1:06:30\.010 AM | Private Bytes | 231,714,816 |
-| 9/12/2019, 1:07:15\.040 AM | Private Bytes | 210,591,744 |
-| 9/12/2019, 1:12:16\.285 AM | Private Bytes | 216,285,184 |
-| 9/12/2019, 1:12:31\.376 AM | Private Bytes | 235,806,720 |
-
-## <a name="function-level-metrics"></a>関数レベルのメトリック
-
-Azure Monitor ではリソース レベルでメトリックが追跡され、Functions の場合は関数アプリです。 Application Insights の統合では、関数ごとにメトリックが出力されます。 関数の平均継続時間を取得するための分析クエリの例を次に示します。
-
-```
-customMetrics
-| where name contains "Duration"
-| extend averageDuration = valueSum / valueCount
-| summarize averageDurationMilliseconds=avg(averageDuration) by name
-```
-
-| name                       | averageDurationMilliseconds |
-|----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16\.087                     |
-| QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationMs | 8\.522                      |
+[!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

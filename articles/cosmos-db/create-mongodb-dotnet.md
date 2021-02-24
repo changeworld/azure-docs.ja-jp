@@ -7,16 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 105578df0a37ba1d53df2be8ebed1d1f6d77499f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5d3c73bdc107ce1971e2958073ad5c100c6bf6bd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018792"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349199"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して .NET Web アプリを構築する 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -27,7 +28,7 @@ ms.locfileid: "89018792"
 > * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
+Azure Cosmos DB は、あらゆる規模に対応する、オープン API を備えた Microsoft の高速 NoSQL データベースです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
 
 このクイック スタートでは、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用して Cosmos アカウントを作成する方法を示します。 次に、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)を使用してタスク リスト Web アプリを構築し、デプロイします。
 
@@ -53,7 +54,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
@@ -145,7 +146,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
     
 ## <a name="run-the-web-app"></a>Web アプリの実行
 
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio の **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
 
 2. NuGet の **[参照]** ボックスに「*MongoDB.Driver*」と入力します。
 
@@ -168,4 +169,4 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
-> [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
+> [MongoDB データを Azure Cosmos DB にインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

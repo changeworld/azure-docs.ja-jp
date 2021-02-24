@@ -7,53 +7,31 @@
       href: overview.md
     - name: 新機能
       href: whats-new.md
-- name: クイックスタート
+- name: Form Recognizer の概要
   expaned: true
   items:
-    - name: クライアント ライブラリの使用
+    - name: クライアント ライブラリまたは REST API を使用する
       href: quickstarts/client-library.md
     - name: サンプル ラベル付けツールの使用
-      items:
-        - name: ラベルを使用してカスタム モデルをトレーニングする
-          href: quickstarts/label-tool.md
-    - name: REST API の使用
-      items:
-        - name: ラベルを使用しないカスタム モデルのトレーニングと使用
-          items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
-            - name: Python
-              href: quickstarts/python-train-extract.md
-        - name: ラベルを使用したカスタム モデルのトレーニングと使用
-          items:
-            - name: Python
-              href: quickstarts/python-labeled-data.md
-        - name: あらかじめ構築されたレシート モデルを使用する
-          items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
-            - name: Python
-              href: quickstarts/python-receipts.md
-        - name: あらかじめ構築された名刺モデルを使用する
-          items:
-            - name: Python
-              href: quickstarts/python-business-cards.md
-        - name: テキスト レイアウト情報を取得する
-          items:
-            - name: Python
-              href: quickstarts/python-layout.md
+      href: quickstarts/label-tool.md
 - name: チュートリアル
   items:
     - name: Cognitive Search で Form Recognizer を使用する
-      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+      href: ../../search/cognitive-search-custom-skill-form.md
     - name: AI Builder で Form Recognizer を使用する
       href: tutorial-ai-builder.md
+    - name: フォーム データを一括で抽出する
+      href: tutorial-bulk-processing.md
 - name: 概念
   items:
+    - name: レイアウトの抽出
+      href: concept-layout.md
     - name: Receipts
       href: concept-receipts.md
     - name: 名刺
       href: concept-business-cards.md
+    - name: Invoices
+      href: concept-invoices.md
 - name: 操作方法ガイド
   items:
     - name: トレーニング データ セットの作成
@@ -69,33 +47,38 @@
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Container Instances の使用
-          href: deploy-form-recognizer-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
     - name: モデルのバックアップと復旧
       href: disaster-recovery.md
 - name: リファレンス
   items:
     - name: Form Recognizer API v2.1 プレビュー
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync'
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
     - name: Form Recognizer API v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre'
+          href: /dotnet/api/overview/azure/ai.formrecognizer-readme
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer'
+          href: /python/api/azure-ai-formrecognizer/?view=azure-python
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre'
+          href: /java/api/overview/azure/ai-formrecognizer-readme
         - name: JavaScript
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre'
+          href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: 料金と制限
-      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/form-recognizer/'
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
     - name: Stack Overflow
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
+      href: 'https://stackoverflow.com/questions/tagged/form-recognizer'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: リージョン別の提供状況
@@ -105,4 +88,4 @@
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化
-      href: form-recognizer-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 938a19276839d5e0d2bd3e0244510fc068cb029c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885482"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582909"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すデーモン アプリ - アプリの登録
 
@@ -24,7 +24,7 @@ ms.locfileid: "80885482"
 
 ## <a name="supported-account-types"></a>サポートされているアカウントの種類
 
-デーモン アプリケーションは、Azure AD テナントでのみ意味があります。 そのため、このアプリケーションを作成するときは、次のいずれかのオプションを選択する必要があります。
+デーモン アプリケーションは、Azure AD テナントでのみ意味があります。 そのため、このアプリケーションを作成するときは、次のいずれかのオプションを選択します。
 
 - **この組織のディレクトリ内のアカウントのみ**。 デーモン アプリケーションは通常、基幹業務 (LOB) の開発者によって作成されるため、この選択が最も一般的なものです。
 - **任意の組織のディレクトリ内のアカウント**。 お客様が顧客にユーティリティ ツールを提供する ISV である場合は、この選択を行います。 顧客のテナント管理者に承認してもらう必要があります。
@@ -50,5 +50,4 @@ ms.locfileid: "80885482"
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのコード構成](./scenario-daemon-app-configuration.md)
+このシナリオの次の記事である[アプリ コードの構成](./scenario-daemon-app-configuration.md)に関する記事に進みます。

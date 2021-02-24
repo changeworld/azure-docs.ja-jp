@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
-ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45d7977dda4870be9a087b3277dd1db828c91178
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190403"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871436"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>ポータルを使用して、近接通信配置グループを作成します。
 
-各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
+各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](../co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
 
 近接通信配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 近接通信配置グループは、短い待ち時間が要件であるワークロードに役立ちます。
 
@@ -55,7 +55,7 @@ ms.locfileid: "82190403"
 
 VM が可用性セットの一部である場合は、VM を追加する前に、配置グループに可用性セットを追加する必要があります。
 
-1. [ポータル](https://portal.azure.com)で*可用性セット*を検索し、結果から可用性セットを選択します。
+1. [ポータル](https://portal.azure.com)で *可用性セット* を検索し、結果から可用性セットを選択します。
 1. 各 VM を停止または割り当てを解除するために、可用性セット内の VM を選択して VM のページで **[停止]** を選択し、 **[OK]** を選択して VM を停止します。
 1. 可用性セットのページで、すべての VM の **[状態]** が **[停止済み (割り当て解除)]** として表示されていることを確認します。
 1. 左側のメニューで **[構成]** を選択します。
@@ -77,4 +77,3 @@ VM が可用性セットの一部である場合は、VM を追加する前に�
 ## <a name="next-steps"></a>次のステップ
 
 [Azure PowerShell](proximity-placement-groups.md) を使用して近接通信配置グループを作成することもできます。
-

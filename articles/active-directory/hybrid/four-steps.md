@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279331"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412376"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -26,7 +26,7 @@ ms.locfileid: "89279331"
 
 Azure Active Directory (Azure AD) のハイブリッド ID ソリューションを採用することで、組織は、自動化、委任、セルフサービス、シングル サインオンの各機能を通じて生産性を高めるプレミアムな機能にアクセスできます。 これにより、従業員は、作業を行う必要があるどの場所からでも会社のリソースにアクセスでき、一方 IT チームは、適切な人が適切なリソースに適切にアクセスして安全な生産性を確立できるようにすることでそのアクセスを管理できます。
 
-学習したことに基づき、このベスト プラクティスのチェックリストは、推奨されたアクションを素早く展開して組織に*強固な* ID 基盤を構築する上で役立ちます。
+学習したことに基づき、このベスト プラクティスのチェックリストは、推奨されたアクションを素早く展開して組織に *強固な* ID 基盤を構築する上で役立ちます。
 
 * アプリに簡単に接続する
 * すべてのユーザーに対して 1 つの ID を自動的に確立する
@@ -46,11 +46,11 @@ Azure AD を使用すると、管理者は [Azure portal](https://portal.azure.c
 アプリケーションが Azure AD ギャラリーに追加されると、ユーザーは自分に割り当てられたアプリを表示し、必要に応じて他のアプリを検索して要求することができます。 Azure AD には、ユーザーが自分のアプリにアクセスするための[いくつかの方法](../manage-apps/end-user-experiences.md)が用意されています。
 
 * アクセス パネル/マイ アプリ
-* Office 365 アプリ起動ツール
+* Microsoft 365 アプリ起動ツール
 * フェデレーション アプリへの直接サインオン
 * 直接サインオンのリンク
 
-アプリへのユーザー アクセスの詳細については、この記事の「**ステップ 3 -- ユーザーに権限を与える**」を参照してください。
+アプリへのユーザー アクセスの詳細については、この記事の「 **ステップ 3 -- ユーザーに権限を与える** 」を参照してください。
 
 ### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Active Directory フェデレーション サービスから Azure AD にアプリを移行する
 
@@ -83,7 +83,7 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 
 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能の恩恵を受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
 
-<em>"**Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>" **Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 シャドウ IT を検出することに加え、MCAS は、アプリのリスク レベルを判別し、会社のデータへの未承認アクセス、データ漏洩の可能性、およびアプリケーションに固有のその他のセキュリティ リスクを防止することもできます。
 
@@ -115,7 +115,7 @@ Azure AD Connect のプライマリ サーバーがオフラインになった�
 
 Azure AD でオンプレミス ディレクトリ オブジェクトのクラウド認証を有効にするための最も単純で推奨される方法は、[パスワード ハッシュ同期](./how-to-connect-password-hash-synchronization.md) (PHS) を有効にすることです。 または、組織によっては、[パススルー認証](./how-to-connect-pta-quick-start.md) (PTA) の有効化を検討することもできます。
 
-PHS または PTA のどちらを選択する場合も、[シームレス シングル サインオン](./how-to-connect-sso.md)を忘れずに有効にしてください。これにより、社内のネットワークで Windows 7 と 8 のデバイスを使用しているときに、ユーザーがアプリにユーザー名とパスワードを繰り返し入力せずにクラウド アプリにアクセスできるようになります。 シングル サインオンを使用しない場合、ユーザーはアプリケーション固有のパスワードを覚えて、各アプリケーションにサインインする必要があります。 同様に、IT スタッフは、Office 365、Box、Salesforce など、アプリケーションごとにユーザー アカウントを作成し、更新する必要があります。 ユーザーはパスワードを覚えておくことに加え、各アプリケーションにサインインするのに時間を費やす必要があります。 標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。
+PHS または PTA のどちらを選択する場合も、[シームレス シングル サインオン](./how-to-connect-sso.md)を忘れずに有効にしてください。これにより、社内のネットワークで Windows 7 と 8 のデバイスを使用しているときに、ユーザーがアプリにユーザー名とパスワードを繰り返し入力せずにクラウド アプリにアクセスできるようになります。 シングル サインオンを使用しない場合、ユーザーはアプリケーション固有のパスワードを覚えて、各アプリケーションにサインインする必要があります。 同様に、IT スタッフは、Microsoft 365、Box、Salesforce などのアプリケーションごとにユーザー アカウントを作成し、更新する必要があります。 ユーザーはパスワードを覚えておくことに加え、各アプリケーションにサインインするのに時間を費やす必要があります。 標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。
 
 既に AD FS または別のオンプレミス認証プロバイダーを使用している組織では、ID プロバイダーを Azure AD に移行することで、複雑さが軽減されて、可用性が向上します。 フェデレーションを使用する具体的なユース ケースがない限りは、フェデレーション認証から、PHS とシームレス SSO または PTA とシームレス SSO のいずれかに移行して、オンプレミスのフットプリントの削減と、向上したユーザー エクスペリエンスと共にクラウドで提供される柔軟性の利点を得られるようにすることをお勧めします。 詳細については、「[Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する](./plan-migrate-adfs-password-hash-sync.md)」を参照してください。
 
@@ -147,7 +147,7 @@ MFA の[サインイン レポート](../authentication/howto-mfa-reporting.md)�
 
 ### <a name="self-service-app-management"></a>セルフサービス アプリの管理
 
-ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可するアプリケーションに対して、[アプリケーションのセルフ サービス アクセス](../manage-apps/access-panel-manage-self-service-access.md)を有効にする必要があります。 アプリケーションのセルフ サービス アクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ユーザーに割り当てられた[パスワード シングル サインオン アプリケーション](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app)の資格情報をビジネス グループがアクセス パネルから直接管理できるように許可できます。
+ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可するアプリケーションに対して、[アプリケーションのセルフ サービス アクセス](../manage-apps/access-panel-manage-self-service-access.md)を有効にする必要があります。 アプリケーションのセルフ サービス アクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ユーザーに割り当てられた[パスワード シングル サインオン アプリケーション](../manage-apps/troubleshoot-password-based-sso.md#automatically-capture-sign-in-fields-for-an-app)の資格情報をビジネス グループがアクセス パネルから直接管理できるように許可できます。
 
 ### <a name="self-service-group-management"></a>セルフサービスのグループ管理
 
@@ -156,7 +156,7 @@ MFA の[サインイン レポート](../authentication/howto-mfa-reporting.md)�
 * 動的グループ メンバーシップを使った属性ベース
 * アプリの所有者への委任
 
-Azure AD には、セキュリティ グループと Office 365 グループを使用してリソースへのアクセスを管理する機能があります。 これらのグループは、メンバーシップ要求の承認または拒否、グループ メンバーシップの制御の委任を実行できるグループ所有者によって管理できます。 [セルフサービス グループ管理](../users-groups-roles/groups-self-service-management.md)と呼ばれるこの機能では、管理者ロールを割り当てられていないグループ所有者が、要求を処理するために管理者に頼らずにグループを作成および管理できるようにすることで時間を節約します。
+Azure AD には、セキュリティ グループと Microsoft 365 グループを使用してリソースへのアクセスを管理する機能があります。 これらのグループは、メンバーシップ要求の承認または拒否、グループ メンバーシップの制御の委任を実行できるグループ所有者によって管理できます。 [セルフサービス グループ管理](../enterprise-users/groups-self-service-management.md)と呼ばれるこの機能では、管理者ロールを割り当てられていないグループ所有者が、要求を処理するために管理者に頼らずにグループを作成および管理できるようにすることで時間を節約します。
 
 ## <a name="step-4---operationalize-your-insights"></a>ステップ 4 - 分析情報を運用化する
 
@@ -172,9 +172,9 @@ Azure AD には、セキュリティ グループと Office 365 グループを�
 
 操作に対するアプローチを考えるとき、検討すべきいくつかの管理レベルがあります。 最初のレベルは、管理の負担をグローバル管理者に負わせます。 常にグローバル管理者ロールを使用することは、小規模の会社では適切と考えられます。 しかし、特定のタスクを担当するヘルプ デスク担当者と管理者がいる大規模な組織では、グローバル管理者のロールを割り当てることにより、本来実行できる以上のタスクを管理する能力をそれらの個人に提供するため、セキュリティ リスクになる可能性があります。
 
-この場合は、次の管理レベルを検討する必要があります。 Azure AD を使用すると、エンド ユーザーを、低い特権ロールでタスクを管理できる "制限付き管理者" に指定することができます。 たとえば、ヘルプ デスクの担当者に[セキュリティ閲覧者](../users-groups-roles/directory-assign-admin-roles.md#security-reader)のロールを割り当てることで、読み取り専用アクセス権を使用したセキュリティ関連機能の管理を許可できます。 あるいは、[認証管理者](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator)ロールを個人に割り当てることで、パスワード以外の資格情報をリセットしたり、Azure Service Health の構成や読み取りを行ったりする権限を付与することは、おそらく理にかなっています。
+この場合は、次の管理レベルを検討する必要があります。 Azure AD を使用すると、エンド ユーザーを、低い特権ロールでタスクを管理できる "制限付き管理者" に指定することができます。 たとえば、ヘルプ デスクの担当者に[セキュリティ閲覧者](../roles/permissions-reference.md#security-reader)のロールを割り当てることで、読み取り専用アクセス権を使用したセキュリティ関連機能の管理を許可できます。 あるいは、[認証管理者](../roles/permissions-reference.md#authentication-administrator)ロールを個人に割り当てることで、パスワード以外の資格情報をリセットしたり、Azure Service Health の構成や読み取りを行ったりする権限を付与することは、おそらく理にかなっています。
 
-詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)」を参照してください。
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使ってハイブリッド コンポーネント (Azure AD Connect 同期、AD FS) を監視する
 
@@ -267,6 +267,6 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory の機能とこの 5 ステップのチェックリストを使ってセキュリティ体制を向上させる方法について学習します - 「[ID インフラストラクチャをセキュリティ保護する 5 つのステップ](https://aka.ms/securitysteps)」。
+Azure Active Directory の機能とこの 5 ステップのチェックリストを使ってセキュリティ体制を向上させる方法について学習します - 「[ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/fundamentals/steps-secure-identity.md)」。
 
-組織が従来のオンプレミス システムから Azure AD へとより多くの ID 管理を迅速に採用して移行できるようにするソリューションと機能を提供することで、Azure AD の ID 機能を使用してクラウド ガバナンス管理への移行を加速させる方法について学習します - 「[Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法](https://aka.ms/cloudgoverned)」。
+組織が従来のオンプレミス システムから Azure AD へとより多くの ID 管理を迅速に採用して移行できるようにするソリューションと機能を提供することで、Azure AD の ID 機能を使用してクラウド ガバナンス管理への移行を加速させる方法について学習します - 「[Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法](./cloud-governed-management-for-on-premises.md)」。

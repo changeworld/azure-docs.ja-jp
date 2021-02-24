@@ -1,22 +1,18 @@
 ---
 title: 初めてのデータ ファクトリを作成する (Azure portal)
 description: このチュートリアルでは、Azure Portal で Data Factory エディターを使用して、サンプルの Azure Data Factory パイプラインを作成します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 4b291dcc95e0beecb1fd9fbf038055d8a77c7b79
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 449c8ec976a71d68e3ddddfea839ef06094c2176
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254975"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392223"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -31,7 +27,7 @@ ms.locfileid: "85254975"
 > この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 > [!WARNING]
-> ADF v1 パイプラインの作成とデプロイのための Azure portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](https://docs.microsoft.com/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
+> ADF v1 パイプラインの作成とデプロイのための Azure portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](/powershell/module/az.datafactory/)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models)、[ADF v1 REST API](/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
 
 この記事では、[Azure Portal](https://portal.azure.com/) を使用して最初のデータ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
 
@@ -161,7 +157,7 @@ ms.locfileid: "85254975"
 
      c. HDInsight クラスターは、JSON プロパティ (**linkedServiceName**) で指定した BLOB ストレージに既定のコンテナーを作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
 
-     処理されるスライスが多いほど、BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 BLOB ストレージ内のコンテナーを削除するには、[Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
+     処理されるスライスが多いほど、BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf **データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 BLOB ストレージ内のコンテナーを削除するには、[Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
      詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
 
@@ -171,7 +167,7 @@ ms.locfileid: "85254975"
 
 1. **AzureStorageLinkedService** と **HDInsightOnDemandLinkedService** が両方とも左側のツリー ビューに表示されていることを確認します。
 
-    ![リンクされたサービスを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
+    ![AzureStorageLinkedService と HDInsightOnDemandLinkedService が相互にリンクされていることを示すスクリーンショット。](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
 ## <a name="create-datasets"></a>データセットを作成する
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。 これらのデータセットは、このチュートリアルで前に作成した AzureStorageLinkedService を参照します。 このリンクされたサービスは、ストレージ アカウントを指します。 データセットは、入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。   

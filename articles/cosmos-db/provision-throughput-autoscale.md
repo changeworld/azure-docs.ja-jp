@@ -5,21 +5,21 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/11/2020
+ms.custom: seo-nov-2020
+ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791148"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368666"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>自動スケーリングのスループットを使用して Azure Cosmos コンテナーとデータベースを作成する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB を使用すると、標準 (手動) または自動スケーリングのプロビジョニング スループットをデータベースおよびコンテナーに設定できます。 この記事では、自動スケーリングのプロビジョニング スループットの利点とユース ケースについて説明します。 
+Azure Cosmos DB では、データベースとコンテナーに対して標準 (手動) または自動スケーリングのプロビジョニング スループットを構成できます。 Azure Cosmos DB で自動スケーリング プロビジョニング スループットを使用すると、**お使いのデータベースまたはコンテナーのスループット (RU/秒) を自動的かつ即座にスケーリング** できます。 ワークロードの可用性、待機時間、スループット、またはパフォーマンスに影響を与えずに、使用量に基づいてスループットがスケーリングされます。
 
-自動スケーリングのプロビジョニング スループットは、トラフィック パターンが変動し予測できないミッション クリティカルなワークロードに最適であり、ハイ パフォーマンスとスケーリングに対する SLA を必要とします。 
-
-自動スケーリングの場合、Azure Cosmos DB では、ワークロードの可用性、待機時間、スループット、またはパフォーマンスに影響を与えずに、使用率に基づいてデータベースまたはコンテナーの**スループット (RU/秒) が自動的かつ瞬時にスケーリングされます**。 
+自動スケーリングのプロビジョニング スループットは、トラフィック パターンが変動し予測できないミッション クリティカルなワークロードに最適であり、ハイ パフォーマンスとスケーリングに対する SLA を必要とします。 この記事では、自動スケーリングのプロビジョニング スループットの利点とユース ケースについて説明します。
 
 ## <a name="benefits-of-autoscale"></a>自動スケールの利点
 
@@ -59,7 +59,7 @@ Azure Cosmos DB を使用すると、標準 (手動) または自動スケーリ
 
 ## <a name="enable-autoscale-on-existing-resources"></a>既存のリソースに対して自動スケーリングを有効にする
 
-[Azure portal ](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)を使用して、既存のデータベースまたはコンテナーに対して自動スケーリングを有効にします。 自動スケーリングと標準 (手動) のプロビジョニング スループット間の切り替えは、いつでも行うことができます。 詳細については、こちらの[ドキュメント](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)を参照してください。 現在、すべての API において、既存のリソースで自動スケールを有効にするには、Azure portal のみを使用できます。
+[Azure portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、[Azure Resource Manager テンプレート](how-to-provision-autoscale-throughput.md#azure-resource-manager)、[CLI](how-to-provision-autoscale-throughput.md#azure-cli)、または [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) を使用して、既存のデータベースまたはコンテナーで自動スケーリングを有効にします。 自動スケーリングと標準 (手動) のプロビジョニング スループット間の切り替えは、いつでも行うことができます。 詳細については、こちらの[ドキュメント](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)を参照してください。
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> 自動スケーリングのスループットとストレージ制限
 
@@ -77,7 +77,7 @@ Azure Cosmos DB を使用すると、標準 (手動) または自動スケーリ
 | **プロビジョニング スループット (RU/秒)** | 手動でプロビジョニングします。 | ワークロードの使用パターンに基づいて、自動的に瞬時にスケーリングされます。 |
 | **要求/操作のレート制限 (429)**  | 使用量がプロビジョニング済みの容量を超えた場合、発生する可能性があります。 | 設定した自動スケーリングのスループットの範囲内で RU/秒を使用する場合は、発生しません。    |
 | **容量計画** |  容量計画を行い、必要とされる正確なスループットをプロビジョニングする必要があります。 |    容量計画と容量管理は、システムによって自動的に行われます。 |
-| **料金** | [1 時間あたりの標準 (手動) の RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、手動でプロビジョニングされた RU/秒に対して、時間単位で料金を支払います。 | システムによって 1 時間の枠内でスケールアップされた最大 RU/秒に対して、時間単位で料金を支払います。 <br/><br/> 単一の書き込みリージョンのアカウントの場合、[1 時間あたりの自動スケーリングの RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、使用された RU/秒に対して時間単位で料金を支払います。 <br/><br/>書き込みリージョンが複数あるアカウントの場合、自動スケーリングに対する追加料金は発生しません。 同じ [1 時間あたりのマルチマスター RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、使用されたスループットに対して時間単位で料金を支払います。 |
+| **料金** | [1 時間あたりの標準 (手動) の RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、手動でプロビジョニングされた RU/秒に対して、時間単位で料金を支払います。 | システムによって 1 時間の枠内でスケールアップされた最大 RU/秒に対して、時間単位で料金を支払います。 <br/><br/> 単一の書き込みリージョンのアカウントの場合、[1 時間あたりの自動スケーリングの RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、使用された RU/秒に対して時間単位で料金を支払います。 <br/><br/>書き込みリージョンが複数あるアカウントの場合、自動スケーリングに対する追加料金は発生しません。 同じ [1 時間あたりの複数リージョン書き込み RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、使用されたスループットに対して時間単位で料金を支払います。 |
 | **最適なワークロードの種類** |  予測可能で安定したワークロード|   予測不可能で変動するワークロード  |
 
 ## <a name="next-steps"></a>次のステップ
@@ -85,6 +85,6 @@ Azure Cosmos DB を使用すると、標準 (手動) または自動スケーリ
 * [自動スケーリングに関する FAQ](autoscale-faq.md) を確認する。
 * [手動および自動スケーリングのスループットから選択する](how-to-choose-offer.md)方法を確認する。
 * [Azure Cosmos データベースまたはコンテナー上で自動スケーリングのスループットをプロビジョニングする](how-to-provision-autoscale-throughput.md)方法を確認する。
-* Azure Cosmos DB での[パーティション分割](partition-data.md)について詳細を確認する。
+* Azure Cosmos DB での[パーティション分割](partitioning-overview.md)について詳細を確認する。
 
 

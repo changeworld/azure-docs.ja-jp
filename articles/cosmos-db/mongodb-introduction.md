@@ -4,23 +4,27 @@ description: Azure Cosmos DB の MongoDB 用 API を使用して、Azure Cosmos 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 10/1/2019
+ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8fb9f422f2d2c4ed035b04b4abe4141bbb8ebfc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ab335c8cc682f6b33dcb30509d682186a178c676
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299849"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861059"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 Azure Cosmos DB サービスは、Cassandra、MongoDB、Gremlin、Azure Table Storage など、一般的な NoSQL API 向けのワイヤ プロトコルを実装しています。 これにより、使い慣れた NoSQL クライアント ドライバーとツールを使用して、Cosmos データベースを操作できます。
+[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partitioning-overview.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 Azure Cosmos DB サービスは、Cassandra、MongoDB、Gremlin、Azure Table Storage など、一般的な NoSQL API 向けのワイヤ プロトコルを実装しています。 これにより、使い慣れた NoSQL クライアント ドライバーとツールを使用して、Cosmos データベースを操作できます。
+
+> [!NOTE]
+> Azure Cosmos DB の MongoDB 用 API で[サーバーレス容量モード](serverless.md)が利用できるようになりました。
 
 ## <a name="wire-protocol-compatibility"></a>ワイヤ プロトコルの互換性
 
-Azure Cosmos DB には MongoDB 用のワイヤ プロトコルが実装されています。 この実装により、ネイティブの MongoDB クライアント SDK、ドライバー、およびツールとの透過的な互換性が実現されます。 Azure Cosmos DB では、MongoDB データベース エンジンをホストします。 MongoDB でサポートされている機能の詳細については、次を参照してください。 
+Azure Cosmos DB には MongoDB 用のワイヤ プロトコルが実装されています。 この実装により、ネイティブの MongoDB クライアント SDK、ドライバー、およびツールとの透過的な互換性が実現されます。 Azure Cosmos DB は、MongoDB データベース エンジンをホストしません。 MongoDB でサポートされている機能の詳細については、次を参照してください。 
 - [Azure Cosmos DB の MongoDB エンジン用 API バージョン 3.6](mongodb-feature-support-36.md)
 - [Azure Cosmos DB の MongoDB エンジン用 API バージョン 3.2](mongodb-feature-support.md)
 
@@ -36,7 +40,7 @@ Azure Cosmos DB には MongoDB 用のワイヤ プロトコルが実装されて
 * アプリケーションの移植性を保持して、クラウド ベンダーに非依存な状態を維持できます。
 * Cosmos DB を利用した一般的な NoSQL API 向けに、業界最高レベルの、ご利用料金に基づく SLA が手に入ります。
 * Cosmos データベースのプロビジョニング済みのスループットと容量を、ニーズに応じてエラスティックにスケーリングでき、お支払いは必要なスループットとストレージの分のみとなります。 これにより、大幅にコストを削減できます。
-* マルチマスター レプリケーションによるターンキーのグローバル分散が可能になります。
+* マルチリージョン書き込みレプリケーションによるターンキーのグローバル分散が可能になります。
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>Cosmos DB の MongoDB 用 API
 
@@ -52,7 +56,7 @@ Azure Cosmos DB には MongoDB 用のワイヤ プロトコルが実装されて
 
 * チュートリアル「[Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)」に従って、アカウントの接続文字列の情報を取得する方法について学習します。
 * [Azure Cosmos DB での Studio 3T の使用](mongodb-mongochef.md)に関するチュートリアルに従って、Studio 3T で Cosmos データベースと MongoDB アプリの間の接続を作成する方法を学習します。
-* [Azure Cosmos DB への MongoDB データのインポート](mongodb-migrate.md)に関するチュートリアルに従って、データを Cosmos データベースにインポートします。
+* [Azure Cosmos DB への MongoDB データのインポート](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)に関するチュートリアルに従って、データを Cosmos データベースにインポートします。
 * [Robo 3T](mongodb-robomongo.md) を使用して Cosmos アカウントに接続します。
 * [グローバル分散アプリの読み取り設定を構成する](../cosmos-db/tutorial-global-distribution-mongodb.md)方法について学習します。
 * よく見られるエラーの解決策については、[トラブルシューティング ガイド](mongodb-troubleshoot.md)を参照してください

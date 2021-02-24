@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7ac836992db33c6212fd009b914b30b7221249d8
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827675"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745585"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>近接配置グループで実行されている Azure 仮想マシンを別のリージョンにレプリケートする
 
@@ -62,17 +62,20 @@ ms.locfileid: "87827675"
 $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+#Make sure to replace the variables $OSdiskName with OS disk name.
 
 #OS Disk
-$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName $OSdiskResourceGroup
+$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName "A2AdemoRG"
 $OSdiskId = $OSdisk.Id
 $RecoveryOSDiskAccountType = $OSdisk.Sku.Name
 $RecoveryReplicaDiskAccountType = $OSdisk.Sku.Name
 
 $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
+#Make sure to replace the variables $datadiskName with data disk name.
+
 #Data disk
-$datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName $datadiskResourceGroup
+$datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName "A2AdemoRG"
 $datadiskId1 = $datadisk[0].Id
 $RecoveryReplicaDiskAccountType = $datadisk[0].Sku.Name
 $RecoveryTargetDiskAccountType = $datadisk[0].Sku.Name
@@ -88,6 +91,53 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
+
+複数のデータ ディスクに対してレプリケーションを有効にする場合は、次の PowerShell コマンドレットを使用します。
+
+```azurepowershell
+#Get the resource group that the virtual machine must be created in when failed over.
+$RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
+
+#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+#Make sure to replace the variables $OSdiskName with OS disk name.
+
+#OS Disk
+$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName "A2AdemoRG"
+$OSdiskId = $OSdisk.Id
+$RecoveryOSDiskAccountType = $OSdisk.Sku.Name
+$RecoveryReplicaDiskAccountType = $OSdisk.Sku.Name
+
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
+
+$diskconfigs = @()
+$diskconfigs.Add($OSDiskReplicationConfig)
+
+#Data disk
+
+# Add data disks
+Foreach( $disk in $VM.StorageProfile.DataDisks)
+{
+    $datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName "A2AdemoRG"
+    $dataDiskId1 = $datadisk[0].Id
+    $RecoveryReplicaDiskAccountType = $datadisk[0].Sku.Name
+    $RecoveryTargetDiskAccountType = $datadisk[0].Sku.Name
+    $DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id `
+         -DiskId $dataDiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
+         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+    $diskconfigs.Add($DataDisk1ReplicationConfig)
+}
+
+#Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
+
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
+```
+
+PPG によるゾーン間レプリケーションを有効にすると、レプリケーションを開始するコマンドが次のように PowerShell コマンドレットと交換されます。
+
+```azurepowershell
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id -RecoveryAvailabilityZone "2"
+```
+
 レプリケーションの開始操作が成功すると、仮想マシンのデータが復旧リージョンにレプリケートされます。
 
 レプリケーション プロセスは、最初に、復旧リージョン内で仮想マシンのレプリケートする側のディスクのコピーをシード処理することによって始まります。 このフェーズは、初期レプリケーション フェーズと呼ばれます。

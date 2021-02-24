@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a0dab64aac8bc5fa68a53fad6cd8e6f6bb4bac03
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543488"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217143"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> この記事では、Azure ポータルを使用して Azure Resource Manager デプロイ モデルで仮想マシン (VM) を作成する方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
+> この記事では、Azure ポータルを使用して Azure Resource Manager デプロイ モデルで仮想マシン (VM) を作成する方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -53,7 +53,7 @@ ms.locfileid: "87543488"
 新しいプライベート IP アドレスを追加するには、次の手順を完了します。
 
 1. この記事の「[コア ステップ](#coreadd)」セクションの手順を完了し、VM ネットワーク インターフェイスの **[IP 構成]** セクションにいることを確認します。  既定として表示されているサブネット (10.0.0.0/24 など) を確認します。
-2. **[追加]** をクリックします。 表示された **[IP 構成の追加]** ウィンドウで、「*IPConfig-4*」という名前の IP 構成を作成し、最終オクテットに新しい数値を選ぶことによって新しい*静的*プライベート IP アドレスを指定し、 **[OK]** をクリックします。  (10.0.0.0/24 のサブネットの場合、IP の例は *10.0.0.7* です。)
+2. **[追加]** をクリックします。 表示された **[IP 構成の追加]** ウィンドウで、「*IPConfig-4*」という名前の IP 構成を作成し、最終オクテットに新しい数値を選ぶことによって新しい *静的* プライベート IP アドレスを指定し、 **[OK]** をクリックします。  (10.0.0.0/24 のサブネットの場合、IP の例は *10.0.0.7* です。)
 
     > [!NOTE]
     > 静的 IP アドレスを追加するときは、NIC が接続されているサブネット上に未使用の有効なアドレスを指定する必要があります。 選択したアドレスが利用できない場合はポータルで IP アドレスに X が表示され、別のアドレスを選択する必要があります。

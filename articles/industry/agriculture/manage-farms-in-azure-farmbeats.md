@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc06f7c75e27d831994b97b97f3d20bb34c3a6c5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847487"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167935"
 ---
 # <a name="manage-farms"></a>ファームの管理
 
@@ -25,7 +25,7 @@ Azure FarmBeats ではファームを管理することができます。 この
 
     サンプル画像を次に示します。
 
-    ![プロジェクト (Farm Beats)](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![[ファーム] ページを示すスクリーンショット。](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
 2. **[Create Farm]\(ファームの作成\)** を選択し、 **[Name]\(名前\)** 、 **[Crops]\(作物\)** 、 **[Address]\(住所\)** を指定します。
@@ -33,14 +33,14 @@ Azure FarmBeats ではファームを管理することができます。 この
 
 ファームの境界を定義するには、次の 2 つの方法があります。
 
-1. **[Mark on Map]\(マップにマーク\)** : マップ管理ツールを使用して、ファームの境界線を描画してマークします。 境界をマークするには、![[Project Farm Beats]\(プロジェクト (Farm Beats)\)](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) で、正確な境界をマークします。
+1. **[Mark on Map]\(マップにマーク\)** : マップ管理ツールを使用して、ファームの境界線を描画してマークします。 境界をマークするには、![マップに境界を描画するための鉛筆アイコンを示すスクリーンショット](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) をクリックして、正確な境界をマークします。
 
-    ![プロジェクト (Farm Beats)](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![マップに描画された境界を示すスクリーンショット。](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
 2. **[Paste GeoJSON code]\(GeoJSON コードの貼り付け\)** : GeoJSON は、JavaScript Object Notation (JSON) を使用して地理的なデータ構造をエンコードするための形式です。 このオプションによってテキスト ボックスが表示され、ファームの境界をマークするための GeoJSON 文字列を入力できます。 また、GeoJSON.io から GeoJSON コードを作成することもできます。
 ヒントを使用すると、情報の入力に役立ちます。
 
-    ![プロジェクト (Farm Beats)](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![[ファームの作成] 画面の [GeoJson コードの貼り付け] オプションが強調表示されているスクリーンショット。](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
 3.  **[送信]** を選択してファームを作成します。 新しいファームが作成され、 **[Farms]\(ファーム\)** ページに表示されます。
 
@@ -71,7 +71,7 @@ Azure FarmBeats ではファームを管理することができます。 この
 1.  詳細を削除するファームを一覧から選択します。
 2.  **[Delete Farm]\(ファームの削除\)** を選択して、ファームを削除します。
 
-    ![プロジェクト (Farm Beats)](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![[ファームの削除] 画面が表示されているスクリーンショット。[削除] ボタンが強調表示されています。](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
     > ファームを削除しても、そのファームに関連付けられているデバイスとマップは削除されません。 デバイスとマップに関連付けられているファーム情報は関連性がなくなります。 引き続き、FarmBeats サービスからデバイス、テレメトリ、およびマップを確認することができます。

@@ -3,16 +3,16 @@ title: Event Grid ソースとしての Azure Blob Storage
 description: Blob Storage イベントに関して Azure Event Grid に用意されているプロパティについて説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1a81b30fcb775f5e8bc99bda70307f7f1aed9796
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87458945"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452548"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
 
-この記事では、Blob Storage イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 また、Azure Blob Storage をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
+この記事では、Blob Storage イベントのプロパティとスキーマについて説明します。  イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 また、Azure Blob Storage をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
 
 
 >[!NOTE]
@@ -33,11 +33,11 @@ ms.locfileid: "87458945"
  |**Microsoft.Storage.BlobDeleted** |BLOB が削除されたときにトリガーされます。 <br>具体的には、クライアントが BLOB REST API で使用可能な `DeleteBlob` 操作を呼び出した場合に、このイベントがトリガーされます。 |
 
 > [!NOTE]
-> ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされることを確認する場合、`CopyBlob`、`PutBlob`、および `PutBlockList` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、これらの API 呼び出しによって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](./how-to-filter-events.md)」をご覧ください。
+> **Azure Blob Storage** の場合、ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされるようにするには、`CopyBlob`、`PutBlob`、`PutBlockList` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、これらの API 呼び出しによって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](./how-to-filter-events.md)」をご覧ください。
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API のイベント一覧
 
-ストレージ アカウントの階層型名前空間を有効にした状態でクライアントが Azure Data Lake Storage Gen2 REST API を呼び出すと、これらのイベントがトリガーされます。 Azure Data Lake Storage Gen2 の詳細については、「[Azure Data Lake Storage Gen2 の概要](../storage/blobs/data-lake-storage-introduction.md)」を参照してください。
+ストレージ アカウントの階層型名前空間を有効にした状態で、クライアントが Azure Data Lake Storage Gen2 REST API を使用すると、これらのイベントがトリガーされます。 Azure Data Lake Storage Gen2 の詳細については、「[Azure Data Lake Storage Gen2 の概要](../storage/blobs/data-lake-storage-introduction.md)」を参照してください。
 
 |イベント名|説明|
 |----------|-----------|
@@ -49,7 +49,7 @@ ms.locfileid: "87458945"
 |**Microsoft.Storage.DirectoryDeleted**|ディレクトリが削除されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `DeleteDirectory` 操作を使用した場合に、このイベントがトリガーされます。|
 
 > [!NOTE]
-> ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされることを確認する場合、`FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、この API によって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](./how-to-filter-events.md)」をご覧ください。
+> **Azure Data Lake Storage Gen2** の場合、ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされるようにするには、`FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、この API によって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](./how-to-filter-events.md)」をご覧ください。
 
 <a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>イベント応答の内容
@@ -88,7 +88,7 @@ ms.locfileid: "87458945"
 
 ### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobCreated イベント (Data Lake Storage Gen2)
 
-BLOB ストレージ アカウントに階層型名前空間がある場合、以下の変更点を除き、データは前の例と同じようになります。
+BLOB ストレージ アカウントに階層型名前空間がある場合、これらの変更点を除き、データは前の例と同じようになります。
 
 * `dataVersion` キーは値 `2` に設定されます。
 
@@ -153,7 +153,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 ### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobDeleted イベント (Data Lake Storage Gen2)
 
-BLOB ストレージ アカウントに階層型名前空間がある場合、以下の変更点を除き、データは前の例と同じようになります。
+BLOB ストレージ アカウントに階層型名前空間がある場合、これらの変更点を除き、データは前の例と同じようになります。
 
 * `dataVersion` キーは値 `2` に設定されます。
 
@@ -315,8 +315,8 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 | blobType | string | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
 | contentOffset | number | イベントをトリガーしたアプリケーションがファイルへの書き込みを完了した時点で実行される書き込み操作のバイト単位のオフセット。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。|
 | destinationUrl |string | 操作の完了後に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`destinationUrl` プロパティには新しいファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。|
-| sourceUrl |string | 操作の前に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`sourceUrl` には名前変更操作が行われる前の元のファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
-| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url の構造は *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* です。 <br>クライアントが Data Lake Storage REST API を使用する場合、url の構造は *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* です。 |
+| sourceUrl |string | 操作が実行される前に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`sourceUrl` には、名前変更操作が行われる前の元のファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
+| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url の構造は `<storage-account-name>.blob.core.windows.net\<container-name>\<file-name>` です。 <br>クライアントが Data Lake Storage REST API を使用する場合、url の構造は `<storage-account-name>.dfs.core.windows.net/<file-system-name>/<file-name>` です。 |
 | recursive | string | すべての子ディレクトリに対して操作を実行する場合は `True`、それ以外の場合は `False`。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
 | sequencer | string | 特定の BLOB 名に対するイベントの論理シーケンスを表す非透過的な文字列値です。  ユーザーは、標準的な文字列比較を使って、同じ BLOB 名での 2 つのイベントの相対的な順序を理解できます。 |
 | storageDiagnostics | object | Azure Storage サービスによって追加されることがある診断データです。 含まれる場合、イベントのコンシューマーは無視する必要があります。 |

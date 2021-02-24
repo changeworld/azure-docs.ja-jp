@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7258b37c9d92f25227eac678dde77963e644e64b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510931"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483319"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>チュートリアル:商用の Azure Remote Rendering アプリケーションの作成
 
@@ -35,8 +35,8 @@ Azure Remote Rendering を使用すると、複合現実の可能性が広がり
 
 システム全体のアーキテクチャに関するベスト プラクティスの概要については、以下を参照してください。
 
-* [Azure アーキテクチャ センター](https://docs.microsoft.com/azure/architecture/)
-* [Azure 開発者向けファースト ステップ ガイド](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)
+* [Azure アーキテクチャ センター](/azure/architecture/)
+* [Azure 開発者向けファースト ステップ ガイド](../../../../guides/developer/azure-developer-guide.md)
 
 ## <a name="analytics"></a>Analytics
 
@@ -54,7 +54,7 @@ Azure Remote Rendering を使用すると、複合現実の可能性が広がり
 
 リソースの名前付けとタグ付けの詳細については、まず次を参照してください。
 
-* [リソースの名前付けとタグ付けの意思決定ガイド](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+* [リソースの名前付けとタグ付けの意思決定ガイド](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 ### <a name="diagnostics"></a>診断
 
@@ -62,9 +62,9 @@ Event Trace for Windows (ETW) やイベント トレース ログ (ETL) など�
 
 詳細については、以下を参照してください。
 
-* [クライアント側のパフォーマンス トレースの作成](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
-* [Event Trace for Windows (ETW) データの収集方法](https://docs.microsoft.com/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
-* [Windows デバイス ポータルの使用: ログ](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
+* [クライアント側のパフォーマンス トレースの作成](../../../how-tos/performance-tracing.md)
+* [Event Trace for Windows (ETW) データの収集方法](/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
+* [Windows デバイス ポータルの使用: ログ](/windows/mixed-reality/using-the-windows-device-portal)
 
 ### <a name="usage-analysis"></a>利用状況の分析
 
@@ -72,7 +72,7 @@ Azure Application Insights は、ユーザーが Azure Remote Rendering アプ�
 
 詳細については、以下を参照してください。
 
-* [Application Insights による利用状況分析](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)
+* [Application Insights による利用状況分析](../../../../azure-monitor/app/usage-overview.md)
 
 ## <a name="fast-startup-time-strategies"></a>起動時間を短縮するための戦略
 
@@ -102,7 +102,7 @@ Azure Remote Rendering には前処理済みの 3D モデルが必要であり�
 
 Azure Remote Rendering のセッションの詳細については、次を参照してください。
 
-* [Remote Rendering のセッション](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
+* [Remote Rendering のセッション](../../../concepts/sessions.md)
 
 ## <a name="standard-vs-premium-server-size-routing-strategies"></a>Standard と Premium のサーバー サイズの選択戦略
 
@@ -164,9 +164,9 @@ Azure Remote Rendering VM とエンド クライアントの間に存在する�
 ネットワーク分析の詳細については、次を参照してください。
 
 * [Azure Storage Blob のダウンロード速度テスト](https://www.azurespeed.com/Azure/Download)
-* [Azure ネットワーク ラウンド トリップ待ち時間統計](https://docs.microsoft.com/azure/networking/azure-network-latency)
-* [サーバー側のパフォーマンス トレース](https://docs.microsoft.com/azure/remote-rendering/overview/features/performance-queries)
-* [クライアント側のパフォーマンス トレース](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
+* [Azure ネットワーク ラウンド トリップ待ち時間統計](../../../../networking/azure-network-latency.md)
+* [サーバー側のパフォーマンス トレース](../../../overview/features/performance-queries.md)
+* [クライアント側のパフォーマンス トレース](../../../how-tos/performance-tracing.md)
 
 ## <a name="collaboration-considerations"></a>コラボレーションに関する考慮事項
 
@@ -192,8 +192,8 @@ Azure Remote Rendering を使用して共有エクスペリエンスをサポー
 
 詳細情報:
 
-* [複合現実での共有エクスペリエンス](https://docs.microsoft.com/windows/mixed-reality/shared-experiences-in-mixed-reality)
-* [Azure Storage の冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [複合現実での共有エクスペリエンス](/windows/mixed-reality/shared-experiences-in-mixed-reality)
+* [Azure Storage の冗長性](../../../../storage/common/storage-redundancy.md)
 
 ## <a name="managing-model-access"></a>モデル アクセスの管理
 
@@ -230,7 +230,7 @@ OneDrive ファイル ピッカーが Microsoft の混合現実デバイスに�
 詳細情報:
 
 * [Microsoft Power Automate テンプレートを使用した OneDrive から Azure Storage へのレプリケーション](https://flow.microsoft.com/galleries/public/templates/2f90b5d3-029b-4e2e-ad37-1c0fe6d187fe/when-a-file-is-uploaded-to-onedrive-copy-it-to-azure-storage-container/)
-* [OneDrive ファイル ストレージ API の概要](https://docs.microsoft.com/graph/onedrive-concept-overview)
+* [OneDrive ファイル ストレージ API の概要](/graph/onedrive-concept-overview)
 
 ### <a name="direct-cad-access"></a>CAD への直接アクセス
 
@@ -255,7 +255,7 @@ OneDrive ファイル ピッカーが Microsoft の混合現実デバイスに�
 詳細情報:
 
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/)
-* [チュートリアル:Azure マネージド アプリケーションを Marketplace で公開する](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/publish-marketplace-app)
+* [チュートリアル:Azure マネージド アプリケーションを Marketplace で公開する](../../../../marketplace/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>セキュリティ
 
@@ -277,6 +277,6 @@ OneDrive ファイル ピッカーが Microsoft の混合現実デバイスに�
 
 詳細情報:
 
-* [Azure AD サービス認証](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-service-authentication)
+* [Azure AD サービス認証](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [Azure でセキュリティ体制を強化する](https://azure.microsoft.com/overview/security/)
 * [クラウドのセキュリティ](https://azure.microsoft.com/product-categories/security/)

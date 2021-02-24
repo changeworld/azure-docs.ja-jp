@@ -4,17 +4,19 @@ description: チュートリアル:組み込みの Jupyter ノートブックを
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e16a738264e64e37cfa42722832dac7e34fee899
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961100"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339497"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>チュートリアル:Azure Cosmos DB でデータを分析して視覚化するノートブックを作成する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、組み込みの Jupyter ノートブックを使用して、サンプルの小売データを Azure Cosmos DB にインポートする方法について説明します。 SQL と Azure Cosmos DB のマジック コマンドを使用してクエリを実行し、データを分析して、結果を視覚化する方法をご覧ください。
 
@@ -26,13 +28,13 @@ ms.locfileid: "85961100"
  
 このセクションでは、Azure Cosmos データベースとコンテナーを作成し、コンテナーに小売データをインポートします。
 
-1. Azure Cosmos アカウントに移動して、**Data Explorer** を開きます。
+1. Azure Cosmos アカウントに移動して、 **Data Explorer** を開きます。
 
-1. **[Notebooks]** タブに移動し、 **[マイ ノートブック]** の横の [`…`] を選択して**新しいノートブック**を作成します。 既定のカーネルとして **[Python 3]** を選択します。
+1. **[Notebooks]** タブに移動し、 **[マイ ノートブック]** の横の [`…`] を選択して **新しいノートブック** を作成します。 既定のカーネルとして **[Python 3]** を選択します。
 
    :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="新しいノートブックを作成する":::
 
-1. 新しいノートブックが作成された後、その名前を変更できます (**VisualizeRetailData.ipynb** など)。
+1. 新しいノートブックが作成された後、その名前を変更できます ( **VisualizeRetailData.ipynb** など)。
 
 1. 次に、小売データの格納先として、"RetailDemo" という名前のデータベースと "WebsiteData" という名前のコンテナーを作成します。 パーティション キーとしては /CartID を使用できます。 次のコードをコピーし、ノートブック内の新しいセルに貼り付けて実行します。
 
@@ -141,7 +143,7 @@ df_cosmos.head(10)
 
 このセクションでは、取得したデータに対して、いくつかのクエリを実行します。
 
-* **クエリ 1**: データフレームにグループ化クエリを実行して、国または地域ごとの総売上収益の合計を取得し、結果から 5 項目を表示します。 新しいノートブック セルで、次のコードを実行します。
+* **クエリ 1** : データフレームにグループ化クエリを実行して、国または地域ごとの総売上収益の合計を取得し、結果から 5 項目を表示します。 新しいノートブック セルで、次のコードを実行します。
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
@@ -150,7 +152,7 @@ df_cosmos.head(10)
 
    :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="総売上収益出力":::
 
-* **クエリ 2**:購入された項目の上位 5 件のリストを取得するために、新しいノートブック セルを開いて次のコードを実行します。
+* **クエリ 2** :購入された項目の上位 5 件のリストを取得するために、新しいノートブック セルを開いて次のコードを実行します。
 
    ```python
    import pandas as pd

@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 07/27/2020
+  ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 5f6ba56347f76cc707bea2b30fab16e46f8be963
-  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+  ms.openlocfilehash: 58b5b8917aeeefb918914a598655da962019de34
+  ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88651507"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100102973"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -26,17 +26,17 @@ highlightedContent:
     url: guides/developer/azure-developer-guide.md
   - title: Azure アーキテクチャ センターを使用してアプリを設計する
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/
+    url: /azure/architecture/
   - title: クラウド導入フレームワークを使用して組織を準備する
     itemType: overview
-    url: https://docs.microsoft.com/azure/cloud-adoption-framework/
+    url: /azure/cloud-adoption-framework/
   - title: Microsoft Learn でスキルを身に付ける
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
+    url: /learn/browse/?products=azure&resource_type=learning%2bpath
 productDirectory:
   title: Azure 製品を参照する
   items:
-  - title: Anomaly Detector (プレビュー)
+  - title: Anomaly Detector
     summary: アプリに異常検出機能を簡単に追加できます
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
     azureCategories:
@@ -47,7 +47,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/bot-service.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/azure/bot-service/
+    url: /azure/bot-service/
   - title: Azure Cognitive Search
     summary: モバイルおよび Web アプリ開発向け AI 搭載クラウド検索サービス
     imageSrc: https://static.docs.com/ui/media/product/azure/search.svg
@@ -71,6 +71,12 @@ productDirectory:
     - ai-machine-learning
     - analytics
     url: /azure/databricks/
+  - title: Health Bot
+    summary: 仮想医療アシスタントの開発向けに特化されたマネージド サービス。
+    imageSrc: media/index/health-bot-logo.svg
+    azureCategories:
+    - ai-machine-learning
+    url: /azure/health-bot/
   - title: Azure Machine Learning
     summary: 実験とモデル管理ができる、エンドツーエンドのスケーラブルで信頼性の高いプラットフォームで、すべてのユーザーが AI を使えるようにする
     imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
@@ -89,7 +95,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/rtos.svg
     azureCategories:
     - iot
-    url: https://docs.microsoft.com/azure/rtos/
+    url: /azure/rtos/
   - title: Bing Autosuggest
     summary: アプリに検索用のインテリジェントな自動提案機能を追加します
     imageSrc: ./media/index/API_Bing_AutoSuggest.svg
@@ -144,6 +150,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/bing-web-search/overview.md
+  - title: Azure Communication Services (プレビュー)
+    summary: Microsoft Teams が使用するのと同じ安全なプラットフォームで、豊富な通信エクスペリエンスを構築
+    imageSrc: ./media/index/communication-services.svg
+    azureCategories:
+    - web
+    - mobile
+    url: communication-services/overview.md
   - title: Computer Vision
     summary: 画像から意思決定に役立つ情報を抽出します
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -174,13 +187,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/face/index.yml
-  - title: Form Recognizer (プレビュー)
+  - title: Form Recognizer
     summary: フォームを認識する AI を利用したドキュメント抽出サービス
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/form-recognizer/index.yml
-  - title: Immersive Reader (プレビュー)
+  - title: イマーシブ リーダー
     summary: すべての年齢や能力のユーザーがテキストを読んで理解できるようにします
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
@@ -212,6 +225,12 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: genomics/index.yml
+  - title: Metrics Advisor (プレビュー)
+    summary: メトリックを監視して問題を診断する AI サービス
+    imageSrc: ./media/index/metrics-advisor.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/metrics-advisor/index.yml
   - title: Personalizer
     summary: パーソナライズされたユーザー エクスペリエンスを提供する AI サービス
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -223,7 +242,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/bonsai.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/bonsai/
+    url: /bonsai/
   - title: QnA Maker
     summary: 情報から会話形式のナビゲーションしやすい回答を抽出します
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -235,19 +254,19 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/speaker-recognition/home.md
+    url: ./cognitive-services/speech-service/speaker-recognition-overview.md
   - title: 音声テキスト変換
     summary: 音声をテキストに変換してより自然な対話を実現
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=speechtotext
+    url: ./cognitive-services/speech-service/index-speech-to-text.yml
   - title: 音声翻訳
     summary: リアルタイムの音声翻訳をアプリに簡単に統合
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=speechtranslation
+    url: ./cognitive-services/speech-service/index-speech-translation.yml
   - title: Text Analytics
     summary: センチメントとトピックを簡単に評価して、ユーザーが何を求めているのかを把握します
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -259,8 +278,8 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=texttospeech
-  - title: Translator Text
+    url: ./cognitive-services/speech-service/index-text-to-speech.yml
+  - title: Translator
     summary: 単純な REST API 呼び出しで機械翻訳を簡単に行います
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
@@ -300,24 +319,31 @@ productDirectory:
     - storage
     url: data-share/index.yml
   - title: Azure Stream Analytics
-    summary: 数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理
+    summary: アプリケーションやデバイスからのデータの高速移動ストリームのリアルタイム分析
     imageSrc: https://static.docs.com/ui/media/product/azure/stream-analytics.svg
     azureCategories:
     - analytics
     - iot
     url: stream-analytics/index.yml
   - title: Azure Synapse Analytics
-    summary: 分析情報を得る時間の点で比類のない無制限の分析サービス (以前の SQL Data Warehouse)
+    summary: 制限のない分析サービスで分析情報を得るまでの時間を短縮する
     imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
     azureCategories:
     - analytics
-    url: synapse-analytics/sql-data-warehouse/index.yml
+    url: synapse-analytics/index.yml
   - title: Data Catalog
     summary: エンタープライズ データ アセットからより多くの価値を引き出す
     imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
     azureCategories:
     - analytics
     url: data-catalog/index.yml
+  - title: Azure Purview
+    summary: 統一されたデータ ガバナンスでビジネス価値を最大化
+    imageSrc: https://static.docs.com/ui/media/product/azure/purview.svg
+    azureCategories:
+    - analytics
+    - management-and-governance
+    url: purview/index.yml
   - title: Data Factory
     summary: エンタープライズ規模のハイブリッド データ統合を簡単に実現
     imageSrc: https://static.docs.com/ui/media/product/azure/data-factory.svg
@@ -354,7 +380,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/power-bi.svg
     azureCategories:
     - analytics
-    url: https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded
+    url: /power-bi/developer/azure-pbie-what-is-power-bi-embedded
   - title: R Server for HDInsight
     summary: 予測分析、機械学習、ビッグ データの統計モデリング
     imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
@@ -374,7 +400,7 @@ productDirectory:
     - blockchain
     url: blockchain/workbench/index.yml
   - title: Azure Cosmos DB
-    summary: あらゆるスケールに対応するグローバル分散型のマルチモデル データベース
+    summary: あらゆる規模に対応するオープン API を備えた高速 NoSQL データベース。
     imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
     azureCategories:
     - featured
@@ -412,13 +438,13 @@ productDirectory:
     imageSrc: ./media/index/logo_cyclecloud.svg
     azureCategories:
     - compute
-    url: https://docs.microsoft.com/azure/cyclecloud/index
+    url: /azure/cyclecloud/index
   - title: Azure Dedicated Host
     summary: Windows および Linux 用の Azure VM をホストする専用物理サーバー
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
     azureCategories:
     - compute
-    url: virtual-machines/windows/dedicated-hosts.md
+    url: ./virtual-machines/dedicated-hosts.md
   - title: Azure Functions
     summary: サーバーレス コードを使用してイベントを処理
     imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
@@ -436,6 +462,13 @@ productDirectory:
     - compute
     - containers
     url: aks/index.yml
+  - title: Azure Quantum (プレビュー)
+    summary: Azure で量子のインパクトを今すぐ体験
+    imageSrc: ./media/index/quantum.svg
+    azureCategories:
+    - compute
+    - featured
+    url: /azure/quantum/
   - title: Azure Spring Cloud
     summary: Pivotal で構築および運用する、フル マネージドの Spring Cloud サービス
     imageSrc: https://static.docs.com/ui/media/product/azure/spring-cloud.svg
@@ -475,12 +508,6 @@ productDirectory:
     - featured
     - compute
     url: virtual-machines/linux/index.yml
-  - title: SAP HANA on Azure Large Instances
-    summary: どのハイパースケール クラウド プロバイダーよりも大規模な SAP HANA ワークロードを実行
-    imageSrc: https://static.docs.com/ui/media/product/azure/sap.svg
-    azureCategories:
-    - compute
-    url: virtual-machines/workloads/sap/hana-overview-architecture.md
   - title: Service Fabric
     summary: マイクロサービスを開発し、Windows または Linux のコンテナーを調整
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
@@ -488,15 +515,15 @@ productDirectory:
     - compute
     - containers
     url: service-fabric/index.yml
-  - title: Azure Virtual Machines における SQL Server
+  - title: Virtual Machines 上の SQL Server
     summary: エンタープライズ SQL Server アプリをクラウドでホスト
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-server-vm.svg
     azureCategories:
     - compute
     - databases
-    url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
-  - title: 静的 Web アプリ
-    summary: 完全なスタック Web アプリをビルドして GitHub リポジトリから Azure にデプロイする
+    url: ./azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - title: Static Web Apps (Preview)
+    summary: ソース コードからグローバルな高可用性まで、合理化されたフルスタック開発を実現する最新の Web アプリ サービス
     imageSrc: ./media/index/static-apps.svg
     azureCategories:
     - compute
@@ -556,7 +583,7 @@ productDirectory:
     azureCategories:
     - containers
     - web
-    url: app-service/containers/index.yml
+    url: ./app-service/index.yml
   - title: FHIR 用の Azure API
     summary: 医療データ ソリューションと相互運用性のための FHIR サービスを簡単に作成してデプロイする
     imageSrc: https://static.docs.com/ui/media/product/azure/api-for-fhir.svg
@@ -616,7 +643,7 @@ productDirectory:
     azureCategories:
     - databases
     url: azure-sql/managed-instance/index.yml
-  - title: Azure SQL Edge (プレビュー)
+  - title: Azure SQL Edge
     summary: 占有領域が少なく、エッジに対して最適化され、AI が組み込まれたデータ エンジン
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
     azureCategories:
@@ -628,7 +655,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
     - databases
-    url: cosmos-db/table-storage-overview.md
+    url: ./storage/tables/table-storage-overview.md
   - title: App Configuration
     summary: App Configuration 用の高速でスケーラブルなパラメーター ストレージ
     imageSrc: https://static.docs.com/ui/media/product/azure/app-configuration.svg
@@ -636,11 +663,11 @@ productDirectory:
     - developer-tools
     url: azure-app-configuration/index.yml
   - title: Azure Data Studio
-    summary: オンデマンドの SQL クエリを実行して結果をテキスト、JSON、または Excel として表示および保存できる軽量のエディター。
+    summary: サーバーレスの SQL プール クエリを実行して結果をテキスト、JSON、または Excel として表示および保存できる軽量のエディター。
     imageSrc: https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg
     azureCategories:
     - developer-tools
-    url: https://docs.microsoft.com/sql/azure-data-studio/
+    url: /sql/azure-data-studio/
   - title: Azure DevOps
     summary: チームがコードの共有、作業の追跡、ソフトウェアの出荷を行うためのサービス
     imageSrc: https://static.docs.com/ui/media/product/azure/devops.svg
@@ -648,7 +675,7 @@ productDirectory:
     - developer-tools
     - devops
     - hybrid
-    url: https://docs.microsoft.com/azure/devops/
+    url: /azure/devops/
   - title: Azure DevTest Labs
     summary: 再利用可能なテンプレートとアーティファクトを使用して環境をすばやく構築
     imageSrc: https://static.docs.com/ui/media/product/azure/devtest-labs.svg
@@ -668,13 +695,13 @@ productDirectory:
     azureCategories:
     - developer-tools
     - devops
-    url: https://docs.microsoft.com/azure/devops/pipelines/
+    url: /azure/devops/pipelines/
   - title: Visual Studio
     summary: クラウドでアプリケーションを開発するための強力で柔軟な環境
     imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
     azureCategories:
     - developer-tools
-    url: https://docs.microsoft.com/visualstudio/
+    url: /visualstudio/windows
   - title: Visual Studio Code
     summary: クラウド開発向けの強力な軽量コード エディター
     imageSrc: https://docs.microsoft.com/media/logos/logo_vs-code.svg
@@ -686,7 +713,7 @@ productDirectory:
     imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
     azureCategories:
     - developer-tools
-    url: https://docs.microsoft.com/visualstudio/online/overview/what-is-vsonline
+    url: /visualstudio/online/overview/what-is-vsonline
   - title: Application Insights
     summary: アプリケーション、インフラストラクチャ、ネットワークを完全に監視
     imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
@@ -699,13 +726,13 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/artifacts.svg
     azureCategories:
     - devops
-    url: https://docs.microsoft.com/azure/devops/artifacts/
+    url: /azure/devops/artifacts/
   - title: Azure Boards
     summary: チームの垣根を超えて作業を計画、追跡、相談します
     imageSrc: https://static.docs.com/ui/media/product/azure/boards.svg
     azureCategories:
     - devops
-    url: https://docs.microsoft.com/azure/devops/boards/
+    url: /azure/devops/boards/
   - title: Azure Monitor
     summary: アプリケーション、インフラストラクチャ、ネットワークを完全に監視
     imageSrc: https://static.docs.com/ui/media/product/azure/monitor.svg
@@ -718,20 +745,20 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/repos.svg
     azureCategories:
     - devops
-    url: https://docs.microsoft.com/azure/devops/repos/
+    url: /azure/devops/repos/
   - title: Azure Test Plans
     summary: 手動および探索的テストのツールキットを使い、自信を持ってテスト、リリースを実施
     imageSrc: https://static.docs.com/ui/media/product/azure/test-plans.svg
     azureCategories:
     - devops
-    url: https://docs.microsoft.com/azure/devops/test/
+    url: /azure/devops/test/
   - title: Azure 向けの GitHub Actions
     summary: GitHub から Azure へのアプリのビルド、テスト、デプロイ
     imageSrc: ./media/index/github-actions-icon.svg
     azureCategories:
     - devops
     - developer-tools
-    url: https://docs.microsoft.com/en-us/azure/developer/github/github-actions
+    url: /azure/developer/github/github-actions
   - title: Azure Active Directory (AD)
     summary: オンプレミスのディレクトリを同期してシングル サインオンを可能に
     imageSrc: https://static.docs.com/ui/media/product/azure/active-directory.svg
@@ -765,13 +792,25 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/stack.svg
     azureCategories:
     - hybrid
-    url: https://docs.microsoft.com/azure-stack/
-  - title: Azure Stack HCI ソリューション
-    summary: ハイパーコンバージド インフラストラクチャ (HCI) ソリューションを使用して、仮想マシンをオンプレミスで実行し、Azure に簡単に接続できます。
-    imageSrc: ./media/index/azure-stack-hci.svg
+    url: /azure-stack/
+  - title: Azure Stack HCI
+    summary: ハイパーコンバージド インフラストラクチャと Azure およびハイブリッド サービスを統合して、オンプレミスで仮想ワークロードを実行
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
     azureCategories:
     - hybrid
-    url: https://docs.microsoft.com/azure-stack/hci/
+    url: /azure-stack/hci/
+  - title: Azure Stack Hub
+    summary: Azure Stack Hub は統合ハードウェア システムとして販売されており、ソフトウェアは検証済みハードウェアに事前にインストールされています
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hub.svg
+    azureCategories:
+    - hybrid
+    url: /azure-stack/operator/
+  - title: Azure Stack Edge
+    summary: Azure のコンピューティング、ストレージ、インテリジェンスをエッジにもたらす Azure マネージド アプライアンス
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack-edge.svg
+    azureCategories:
+    - hybrid
+    url: ./databox-online/index.yml
   - title: Security Center
     summary: セキュリティ管理を統合し、高度な脅威保護をハイブリッド クラウド ワークロード間で有効化
     imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
@@ -786,12 +825,12 @@ productDirectory:
     - hybrid
     - iot
     url: iot-edge/index.yml
-  - title: Azure Active Directory B2C
+  - title: Azure Active Directory External Identities
     summary: コンシューマーの ID とアクセスの管理をクラウドで実行
     imageSrc: https://static.docs.com/ui/media/product/azure/active-directory-b2c.svg
     azureCategories:
     - identity
-    url: active-directory-b2c/index.yml
+    url: active-directory/external-identities/index.yml
   - title: Azure Active Directory Domain Services
     summary: ドメイン コントローラーを使用せずにドメインに Azure 仮想マシンを参加させる
     imageSrc: https://static.docs.com/ui/media/product/azure/ad-domain-services.svg
@@ -805,7 +844,7 @@ productDirectory:
     azureCategories:
     - identity
     - security
-    url: https://docs.microsoft.com/azure/information-protection/
+    url: /azure/information-protection/
   - title: API Management
     summary: API を開発者、パートナー、従業員に安全かつ大規模に発行
     imageSrc: https://static.docs.com/ui/media/product/azure/api-management.svg
@@ -866,7 +905,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/sphere.svg
     azureCategories:
     - iot
-    url: https://docs.microsoft.com/azure-sphere/
+    url: /azure-sphere/
   - title: Azure Time Series Insights
     summary: IoT デバイスの時系列データを調査して分析
     imageSrc: https://static.docs.com/ui/media/product/azure/time-series-insights-environments.svg
@@ -886,14 +925,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/iot-windows10-core-services.svg
     azureCategories:
     - iot
-    url: https://docs.microsoft.com/windows/iot-core/
-  - title: Security Center for IoT
-    summary: セキュリティ管理を統合し、脅威保護を Azure IoT ソリューション全体で有効にします
-    imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
-    azureCategories:
-    - iot
-    - security
-    url: asc-for-iot/index.yml
+    url: /windows/iot-core/
   - title: オートメーション
     summary: プロセス自動化でクラウド管理を簡素化
     imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
@@ -950,6 +982,12 @@ productDirectory:
     azureCategories:
     - management-and-governance
     url: azure-resource-manager/index.yml
+  - title: Azure Resource Mover (プレビュー)
+    summary: Azure リージョン間で複数のリソースを移動する方法の簡略化
+    imageSrc: https://static.docs.com/ui/media/product/azure/resource-mover.svg
+    azureCategories:
+    - management-and-governance
+    url: resource-mover/index.yml
   - title: ARM テンプレート
     summary: Resource Manager を使用して、あらゆる Azure リソース向けにコードとしてのインフラストラクチャを提供
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
@@ -995,12 +1033,6 @@ productDirectory:
     - management-and-governance
     - networking
     url: network-watcher/index.yml
-  - title: Scheduler
-    summary: 単純または複雑な定期的スケジュールでジョブを実行
-    imageSrc: https://static.docs.com/ui/media/product/azure/scheduler.svg
-    azureCategories:
-    - management-and-governance
-    url: scheduler/index.yml
   - title: Traffic Manager
     summary: 高パフォーマンスと高可用性のために着信トラフィックをルーティング
     imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
@@ -1040,6 +1072,12 @@ productDirectory:
     azureCategories:
     - media
     url: media-services/latest/stream-live-tutorial-with-api.md
+  - title: Live Video Analytics (プレビュー)
+    summary: 任意の AI を使用してインテリジェントなビデオベースのアプリケーションを作成
+    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
+    azureCategories:
+    - media
+    url: media-services/live-video-analytics-edge/overview.md
   - title: Media Services
     summary: 大規模にビデオおよびオーディオをエンコード、保存、ストリーミング
     imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
@@ -1071,13 +1109,13 @@ productDirectory:
     imageSrc: https://docs.microsoft.com/media/logos/logo_vs-mobile-center.svg
     azureCategories:
     - mobile
-    url: https://docs.microsoft.com/appcenter/
+    url: /appcenter/
   - title: Xamarin
     summary: クラウドを活用したモバイル アプリを迅速に作成
     imageSrc: https://docs.microsoft.com/media/logos/logo_xamarin.svg
     azureCategories:
     - mobile
-    url: https://docs.microsoft.com/xamarin/
+    url: /xamarin/
   - title: Application Gateway
     summary: 安全でスケーラブルな高可用性 Web フロントエンドを Azure で構築
     imageSrc: https://static.docs.com/ui/media/product/azure/application-gateways.svg
@@ -1091,13 +1129,26 @@ productDirectory:
     azureCategories:
     - networking
     url: bastion/index.yml
+  - title: Azure Defender
+    summary: ハイブリッド クラウド ワークロードの保護
+    imageSrc: ./media/index/defender.svg
+    azureCategories:
+    - security
+    url: security-center/azure-defender.md
+  - title: Azure Defender for IoT
+    summary: アンマネージドとマネージド両方の IoT または OT デバイスの継続的なアセット管理と脅威検出
+    imageSrc: ./media/index/defender-iot.svg
+    azureCategories:
+    - security
+    - iot
+    url: ./defender-for-iot/index.yml
   - title: Azure DDoS Protection
     summary: お客様のアプリケーションを分散型サービス拒否 (DDoS) 攻撃から保護
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg
     azureCategories:
     - networking
     - security
-    url: virtual-network/ddos-protection-overview.md
+    url: ./ddos-protection/ddos-protection-overview.md
   - title: Azure DNS
     summary: Azure で DNS ドメインをホスト
     imageSrc: https://static.docs.com/ui/media/product/azure/dns.svg
@@ -1121,6 +1172,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
     azureCategories:
     - networking
+    - security
     url: frontdoor/index.yml
   - title: Azure Internet Analyzer (プレビュー)
     summary: ネットワーク インフラストラクチャの変更が顧客のパフォーマンスに及ぼす影響を評価します
@@ -1164,6 +1216,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/frontdoor-waf-policies.svg
     azureCategories:
     - networking
+    - security
     url: web-application-firewall/index.yml
   - title: Azure の専用 HSM
     summary: クラウドで使用するハードウェア セキュリティ モジュールを管理します
@@ -1214,7 +1267,7 @@ productDirectory:
     - storage
     url: storage/blobs/index.yml
   - title: Disk Storage
-    summary: 仮想マシンに対応しセキュリティ保護された永続ディスク
+    summary: Azure Virtual Machines 向けの高パフォーマンスで持続性の高いブロック ストレージ
     imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
     azureCategories:
     - storage
@@ -1225,12 +1278,6 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/files/index.yml
-  - title: Managed Disks
-    summary: Azure 仮想マシン向けの安全で永続的なディスク ストレージ
-    imageSrc: https://static.docs.com/ui/media/product/azure/disk.svg
-    azureCategories:
-    - storage
-    url: virtual-machines/managed-disks-overview.md
   - title: Queue Storage
     summary: トラフィックに応じてアプリを効率的にスケーリング
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
@@ -1238,7 +1285,7 @@ productDirectory:
     - storage
     url: storage/queues/index.yml
   - title: ストレージ
-    summary: データ、アプリ、ワークロード用の、安全で大規模に拡張可能なクラウド ストレージを実現します
+    summary: 耐久性があり、高度にスケーラブルな高可用性クラウド ストレージ
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
     - storage
@@ -1266,28 +1313,28 @@ tools:
   items:
   - title: Python
     imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
-    url: https://docs.microsoft.com/azure/developer/python/
+    url: /azure/developer/python/
   - title: .NET
     imageSrc: ./media/index/net-logo.svg
-    url: https://docs.microsoft.com/dotnet/azure/
+    url: /dotnet/azure/
   - title: JavaScript
     imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
-    url: https://docs.microsoft.com/azure/developer/javascript/
+    url: /azure/developer/javascript/
   - title: Java
     imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
-    url: https://docs.microsoft.com/azure/developer/java/
+    url: /azure/developer/java/
   - title: Go
     imageSrc: https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg
-    url: https://docs.microsoft.com/azure/developer/go/
+    url: /azure/developer/go/
   - title: REST API
     imageSrc: https://docs.microsoft.com/media/logos/logo_REST.svg
-    url: https://docs.microsoft.com/rest/api/
+    url: /rest/api/
   - title: Azure PowerShell
     imageSrc: https://docs.microsoft.com/media/logos/logo_powershell.svg
-    url: https://docs.microsoft.com/powershell/azure/
+    url: /powershell/azure/
   - title: Azure CLI
     imageSrc: https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg
-    url: https://docs.microsoft.com/cli/azure/
+    url: /cli/azure/
   - title: ARM テンプレート
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
     url: azure-resource-manager/templates/index.yml
@@ -1312,4 +1359,4 @@ additionalContent:
       url: germany/index.yml
     - title: Azure China 21Vianet
       summary: 中国に配置され、21Vianet によって運営される専用クラウド。
-      url: https://docs.microsoft.com/azure/china/
+      url: /azure/china/

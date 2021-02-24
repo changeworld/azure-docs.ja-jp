@@ -6,20 +6,19 @@ cloud: na
 documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: ''
 ms.service: security-center
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/02/2020
+ms.topic: overview
+ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 668fe1436feeb0888f7d871144da6cb6b8e3864e
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067224"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922611"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
@@ -44,7 +43,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |セキュリティ ポリシーを編集する|-|✔|-|-|✔|
 |イニシアティブを追加する、または割り当てる (規制コンプライアンス標準を含む)|-|-|-|-|✔|
-|サブスクリプション価格レベルを変更する|-|✔|-|-|✔|
+|Azure Defender を有効または無効にする|-|✔|-|-|✔|
 |自動プロビジョニングを有効または無効にする|-|✔|-|✔|✔|
 |セキュリティに関する推奨事項をリソースに適用する</br> (および[クイック修復](security-center-remediate-recommendations.md#quick-fix-remediation)を使用する)|-|-|✔|✔|✔|
 |アラートを無視する|-|✔|-|✔|✔|
@@ -56,10 +55,10 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 >
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、Security Center で RBAC を使用してユーザーにアクセス許可を割り当てる方法について説明し、各ロールに許可されているアクションを示しました。 サブスクリプションのセキュリティ状態を監視するために必要なロールの割り当てについて理解したら、セキュリティ ポリシーを編集し、推奨事項を適用して、次の方法を学習してください。
+この記事では、Security Center で Azure RBAC を使用してユーザーにアクセス許可を割り当てる方法について説明し、各ロールに許可されているアクションを示しました。 サブスクリプションのセキュリティ状態を監視するために必要なロールの割り当てについて理解したら、セキュリティ ポリシーを編集し、推奨事項を適用して、次の方法を学習してください。
 
 - [Security Center でセキュリティ ポリシーを設定する](tutorial-security-policy.md)
 - [Security Center でセキュリティに関する推奨事項を管理する](security-center-recommendations.md)
 - [Azure リソースのセキュリティ正常性を監視する](security-center-monitoring.md)
 - [Security Center でセキュリティのアラートの管理と対応を行う](security-center-managing-and-responding-alerts.md)
-- [パートナー セキュリティ ソリューションを監視する](security-center-partner-solutions.md)
+- [パートナー セキュリティ ソリューションを監視する](./security-center-partner-integration.md)

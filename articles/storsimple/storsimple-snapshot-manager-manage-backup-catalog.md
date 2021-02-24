@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のバックアップ カタログ | Microsof
 description: StorSimple Snapshot Manager MMC スナップインを使用して、バックアップ カタログを表示および管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 94dccdabfa4cf83077bca3629dee8a796d27182a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515469"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90054995"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>StorSimple Snapshot Manager を使用したバックアップ カタログの管理
 

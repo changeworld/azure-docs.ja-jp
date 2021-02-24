@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 6fe256660dc73aa411cf06e2b56ce9ef26934e2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d0a52f06a751fba57a00615e2d57485ff740d04
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548001"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359699"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>チュートリアル:MerchLogix を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -51,11 +51,11 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「**MerchLogix**」と入力します。
+4. 検索ボックスに、「 **MerchLogix** 」と入力します。
 
 5. 結果パネルで **[MerchLogix]** を選択してから、 **[追加]** ボタンをクリックして MerchLogix を SaaS アプリケーションの一覧に追加します。
 
-    ![MerchLogix のプロビジョニング][4]
+    ![ギャラリーからの追加セクションのスクリーンショット。[名前を入力] テキスト ボックスが強調表示されています。][4]
 
 ## <a name="assigning-users-to-merchlogix"></a>MerchLogix へのユーザーの割り当て
 
@@ -88,7 +88,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![MerchLogix のプロビジョニング](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![[MerchLogix - プロビジョニング] セクションのスクリーンショット。[プロビジョニング] オプションが選択されています。[プロビジョニング モード] が [自動] に設定され、[接続のテスト] オプションが選択されています。](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
 5. **[管理者資格情報]** セクションで、次の操作を行います。
 

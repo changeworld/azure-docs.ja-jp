@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: 8c13e0e3f1cb8809a126b11409becd2211864c32
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876548"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556564"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 
@@ -68,7 +68,7 @@ Data Factory では、パイプラインの実行データを 45 日間だけ格
     Console.ReadKey();
     ```
 
-.NET SDK の詳細については、[Data Factory .NET SDK リファレンス](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)に関するページをご覧ください。
+.NET SDK の詳細については、[Data Factory .NET SDK リファレンス](/dotnet/api/microsoft.azure.management.datafactory)に関するページをご覧ください。
 
 ## <a name="python"></a>Python
 Python SDK を使用して、パイプラインを作成し監視する完全なチュートリアルについては、「[Python を使用してデータ ファクトリとパイプラインを作成する](quickstart-create-data-factory-python.md)」をご覧ください。
@@ -86,7 +86,7 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-Python SDK の詳細については、[データ ファクトリの Python SDK リファレンス](/python/api/overview/azure/datafactory?view=azure-python)に関するページをご覧ください。
+Python SDK の詳細については、[データ ファクトリの Python SDK リファレンス](/python/api/overview/azure/datafactory)に関するページをご覧ください。
 
 ## <a name="rest-api"></a>REST API
 REST API を使用して、パイプラインを作成し監視する完全なチュートリアルについては、[REST API を使用したデータ ファクトリとパイプラインの作成](quickstart-create-data-factory-rest-api.md)に関するページをご覧ください。

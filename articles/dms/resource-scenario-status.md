@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 4e6f8a115e996ac6862f2fb04e5050b94f9f823b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132739"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319918"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -25,11 +25,11 @@ Azure Database Migration Service は、オフライン (1 回限り) とオン�
 
 ## <a name="offline-versus-online-migrations"></a>オフライン移行とオンライン移行
 
-Azure Database Migration Service では、オフラインまたはオンラインの移行を行えます。 "*オフライン*" 移行では、移行開始と同時にアプリケーションのダウンタイムが始まります。 ダウンタイムを、移行が完了して新しい環境に切り替えるために必要な時間に抑えるには、"*オンライン*" 移行を使用します。 オフライン移行をテストして、ダウンタイムが許容可能かどうかを判断することをお勧めします。できない場合は、オンライン移行を行います。
+Azure Database Migration Service では、オフラインまたはオンラインの移行を行えます。 " *オフライン* " 移行では、移行開始と同時にアプリケーションのダウンタイムが始まります。 ダウンタイムを、移行が完了して新しい環境に切り替えるために必要な時間に抑えるには、" *オンライン* " 移行を使用します。 オフライン移行をテストして、ダウンタイムが許容可能かどうかを判断することをお勧めします。できない場合は、オンライン移行を行います。
 
 ## <a name="migration-scenario-status"></a>データベース移行シナリオの状態
 
-Azure Database Migration Service によってサポートされる移行シナリオの状態は、時間と共に変化します。 一般に、シナリオは最初**プライベート プレビュー**でリリースされます。 プライベート プレビューに参加する場合、お客様は [DMS プレビュー サイト](https://aka.ms/dms-preview)を通じて申請を送信する必要があります。 プライベート プレビューの後、シナリオの状態は**パブリック プレビュー**に変わります。 Azure Database Migration Service のユーザーは、ユーザー インターフェイスから直接、パブリック プレビューの移行シナリオを試すことができます。 サインアップは必要ありません。  ただし、パブリック プレビューの移行シナリオはすべてのリージョンで使用できるわけではなく、最終リリース前にさらに変更が行われる可能性があります。 パブリック プレビューの後、シナリオの状態は**一般提供**に変わります。 一般提供 (GA) は最終的なリリースの状態です。機能が完成しており、すべてのユーザーが利用できます。
+Azure Database Migration Service によってサポートされる移行シナリオの状態は、時間と共に変化します。 一般に、シナリオは最初 **プライベート プレビュー** でリリースされます。 プライベート プレビューに参加する場合、お客様は [DMS プレビュー サイト](https://aka.ms/dms-preview)を通じて申請を送信する必要があります。 プライベート プレビューの後、シナリオの状態は **パブリック プレビュー** に変わります。 Azure Database Migration Service のユーザーは、ユーザー インターフェイスから直接、パブリック プレビューの移行シナリオを試すことができます。 サインアップは必要ありません。  ただし、パブリック プレビューの移行シナリオはすべてのリージョンで使用できるわけではなく、最終リリース前にさらに変更が行われる可能性があります。 パブリック プレビューの後、シナリオの状態は **一般提供** に変わります。 一般提供 (GA) は最終的なリリースの状態です。機能が完成しており、すべてのユーザーが利用できます。
 
 ## <a name="migration-scenario-support"></a>移行シナリオのサポート
 
@@ -81,13 +81,12 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
 | **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | ✔ | GA |
-|   | Azure DB for PostgreSQL - 単一サーバー* | ✔ | GA |
+|   | Azure DB for PostgreSQL - 単一サーバー | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | パブリック プレビュー |
 | **Azure DB for PostgreSQL - Hyperscale (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 
-*PostgreSQL バージョン 10 以降でサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

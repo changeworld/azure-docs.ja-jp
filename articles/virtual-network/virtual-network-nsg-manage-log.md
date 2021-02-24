@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: c56b5ac1c1aa6fa5894d1aedcb94fe4694c2db28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 412556f3bd517539fc8ccad94c4de52226f16597
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696033"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946220"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループのリソース ログ
 
@@ -24,9 +24,9 @@ ms.locfileid: "84696033"
 NSG に対するログを有効にすると、次の種類のリソース ログ情報を収集できます。
 
 * **イベント:** MAC アドレスに基づいて、VM に適用される NSG ルールに関するエントリがログに記録されます。
-* **ルール カウンター:** トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
+* **ルール カウンター:** トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。 これらのルールの状態は、300 秒ごとに収集されます。
 
-リソース ログは、Azure Resource Manager デプロイ モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイ モデルでデプロイされた NSG についてはリソース ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイ モデルの理解](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+リソース ログは、Azure Resource Manager デプロイ モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイ モデルでデプロイされた NSG についてはリソース ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイ モデルの理解](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
 リソース ログは、診断データの収集対象とする "*個々の*" NSG に対して個別に有効にします。 アクティビティ (操作) ログに関心がある場合は、Azure の [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
 
@@ -87,13 +87,13 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-両方ではなくどちらか一方のカテゴリのデータだけを記録したい場合は、前のコマンドに `-Categories` オプションを追加し、続けて *NetworkSecurityGroupEvent* または  *NetworkSecurityGroupRuleCounter* を指定します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Event Hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切なパラメーターを使います。
+両方ではなくどちらか一方のカテゴリのデータだけを記録したい場合は、前のコマンドに `-Categories` オプションを追加し、続けて *NetworkSecurityGroupEvent* または  *NetworkSecurityGroupRuleCounter* を指定します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)または [Event Hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) の適切なパラメーターを使います。
 
 ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから Azure CLI を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 コンピューターから CLI を実行する場合は、バージョン 2.0.38 以降が必要です。 コンピューターで `az --version` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。 CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にサインインする必要もあります。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから Azure CLI を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 コンピューターから CLI を実行する場合は、バージョン 2.0.38 以降が必要です。 コンピューターで `az --version` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にサインインする必要もあります。
 
 リソース ログを有効にするには、既存の NSG の ID が必要です。 既存の NSG がない場合は、[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用して作成できます。
 
@@ -122,16 +122,16 @@ az monitor diagnostic-settings create \
 
 既存のワークスペースがない場合は、[Azure portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) を使って作成できます。 2 つのカテゴリのログを有効にすることができます。
 
-あるカテゴリまたは他のカテゴリのデータのみをログに記録する場合は、前のコマンドでデータをログに記録しないカテゴリを削除します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Event Hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切なパラメーターを使います。
+あるカテゴリまたは他のカテゴリのデータのみをログに記録する場合は、前のコマンドでデータをログに記録しないカテゴリを削除します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)または [Event Hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) の適切なパラメーターを使います。
 
 ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
 
 ## <a name="log-destinations"></a>ログの保存先
 
 診断データは次のようにすることができます。
-- 監査や手動での検査に使用するために、[Azure ストレージ アカウントに書き込みます](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
-- サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[Event ハブにストリーミングします](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- [Azure Monitor ログに書き込みます](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 監査や手動での検査に使用するために、[Azure ストレージ アカウントに書き込みます](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
+- サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[Event ハブにストリーミングします](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)。
+- [Azure Monitor ログに書き込みます](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。
 
 ## <a name="log-categories"></a>ログのカテゴリ
 

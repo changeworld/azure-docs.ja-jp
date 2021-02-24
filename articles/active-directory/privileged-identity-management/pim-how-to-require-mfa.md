@@ -14,12 +14,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf1113f7b2f396deed849fa46108537f290b53a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4344e769cc8466287dab1e98e95cc3fbe705ffbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742098"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835001"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>多要素認証と Privileged Identity Management
 
@@ -28,15 +28,15 @@ ms.locfileid: "84742098"
 多要素認証チャレンジは、ユーザーがサインインしたときに完了するよう要求できます。 ユーザーが Azure Active Directory (Azure AD) Privileged Identity Management (PIM) でロールをアクティブ化するときに多要素認証チャレンジを完了することを必須にすることもできます。 この場合は、サインイン時に多要素認証チャレンジを完了していないユーザーには、完了するよう求めるメッセージが Privileged Identity Management に表示されます。
 
 > [!IMPORTANT]
-> 現時点では、Azure Multi-Factor Authentication は職場または学校のアカウントでのみ機能します。Microsoft アカウント (通常は、Skype、Xbox、Outlook.com などの Microsoft サービスにサインインするために使用される個人アカウント) では機能しません。 このため、個人用アカウントを使用するユーザーは対象管理者にすることはできません。ロールをアクティブ化するために多要素認証を使用することができないからです。 Microsoft アカウントを使用してワークロードの管理を続行する必要がある場合は、ここで永続的な管理者に昇格させてください。
+> 現時点では、Azure AD Multi-Factor Authentication は職場または学校のアカウントでのみ機能します。Microsoft アカウント (通常は、Skype、Xbox、Outlook.com などの Microsoft サービスにサインインするために使用される個人アカウント) では機能しません。 このため、個人用アカウントを使用するユーザーは対象管理者にすることはできません。ロールをアクティブ化するために多要素認証を使用することができないからです。 Microsoft アカウントを使用してワークロードの管理を続行する必要がある場合は、ここで永続的な管理者に昇格させてください。
 
 ## <a name="how-pim-validates-mfa"></a>PIM が MFA を検証する方法
 
 ユーザーがロールをアクティブ化するときに多要素認証を検証するためのオプションは 2 つあります。
 
-最も簡単な方法は、特権ロールをアクティブ化するユーザーに対して Azure Multi-Factor Authentication を使用することです。 これを行うには、先に、そのユーザーにライセンスが付与されていることと (必要な場合)、Azure Multi-Factor Authentication に登録されていることを確認する必要があります。 Azure Multi-Factor Authentication のデプロイの詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md)」を参照してください。 ユーザーのサインイン時に多要素認証を適用するように Azure AD を構成することは、必須ではありませんが、お勧めします。 これは、多要素認証チェックが Privileged Identity Management 自体によって行われるためです。
+最も簡単な方法は、特権ロールをアクティブ化するユーザーに対して Azure AD Multi-Factor Authentication を使用することです。 これを行うには、先に、そのユーザーにライセンスが付与されていることと (必要な場合)、Azure AD Multi-Factor Authentication に登録されていることを確認する必要があります。 Azure AD Multi-Factor Authentication のデプロイの詳細については、「[クラウドベースの Azure AD Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md)」を参照してください。 ユーザーのサインイン時に多要素認証を適用するように Azure AD を構成することは、必須ではありませんが、お勧めします。 これは、多要素認証チェックが Privileged Identity Management 自体によって行われるためです。
 
-また、ユーザーをオンプレミスで認証する場合は、ID プロバイダーで多要素認証を行うようにすることができます。 たとえば、Azure AD にアクセスする前にスマートカード ベースの認証を要求するように AD フェデレーション サービスを構成した場合は、「 [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](../authentication/howto-mfa-adfs.md) 」の手順に従って、Azure AD に要求を送信するように AD FS を構成します。 ユーザーがロールをアクティブ化しようとしたとき、Privileged Identity Management は、適切な要求を受信した後で、ユーザーに対して多要素認証が検証済みであることを受け入れます。
+また、ユーザーをオンプレミスで認証する場合は、ID プロバイダーで多要素認証を行うようにすることができます。 たとえば、Azure AD にアクセスする前にスマートカード ベースの認証を要求するように AD フェデレーション サービスを構成した場合は、「[Azure AD Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](../authentication/howto-mfa-adfs.md)」の手順に従って、Azure AD に要求を送信するように AD FS を構成します。 ユーザーがロールをアクティブ化しようとしたとき、Privileged Identity Management は、適切な要求を受信した後で、ユーザーに対して多要素認証が検証済みであることを受け入れます。
 
 ## <a name="next-steps"></a>次のステップ
 

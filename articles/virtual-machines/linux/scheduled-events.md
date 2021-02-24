@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 3bda1e2076e29fc1365bfc236adc9071db2564a1
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816730"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104741"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -71,7 +71,7 @@ VNET が有効な VM の場合は、静的でルーティング不可能な IP �
 VM が仮想ネットワーク内で作成されていない場合 (クラウド サービスと従来の VM の既定のケース)、使用する IP アドレスを検出する追加のロジックが必要となります。 [ホスト エンドポイントの検出](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)方法の詳細については、このサンプルを参照してください。
 
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
-スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2019-01-01` です。
+スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2019-08-01` です。
 
 | Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - | 
@@ -135,7 +135,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | EventId | このイベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:仮想マシンは数秒間の一時停止がスケジュールされています。 CPU とネットワーク接続が中断する場合がありますが、メモリや開いているファイルへの影響はありません。<li>`Reboot`:Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`:Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 <li>`Preempt`:スポット仮想マシンが削除されています（一時ディスクは失われています）。 <li> `Terminate`:仮想マシンは削除がスケジュールされています。 |
 | ResourceType | このイベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>`VirtualMachine`|
-| リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](../manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`:このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`:このイベントは開始されています。</ul> `Completed` や類似の状態が提供されることはありません。 イベントが完了すると、イベントは返されなくなります。
 | NotBefore| このイベントが開始される時間。 <br><br> 例: <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
 | 説明 | このイベントの説明。 <br><br> 例: <br><ul><li> ホスト サーバーのメンテナンス中です。 |
@@ -154,6 +154,10 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 > [!NOTE] 
 > Azure では、劣化したハードウェアに起因するホストの故障を予測が可能になり、移行をスケジュールすることでサービスの中断を軽減しようとすることがあります。 影響を受ける仮想マシンには、スケジュールされているイベントと `NotBefore` が届きます。これは通常、2、3 日先になります。 実際の時間は、予測された故障のリスク評価によって異なります。 Azure では、可能であれば、7 日前に通知を行いますが、実際の時間はさまざまであり、ハードウェアが今にも故障する可能性が高い場合、7 日より短くなることがあります。 システムによって開始される移行の前にハードウェアで障害が発生した場合に備えて、サービスのリスクを最小限に抑えるために、できるだけ早く仮想マシンをご自身で再デプロイすることをお勧めします。
+
+### <a name="polling-frequency"></a>ポーリング頻度
+
+更新のエンドポイントは、任意の頻度でポーリングできます。 ただし、要求間の間隔が長くなるほど、発生するイベントに対応するのが遅くなる可能性があります。 ほとんどのイベントは、5 - 15 分前に通知されますが、場合によっては、通知がわずか 30 秒前ということもあります。 対策を講じるための時間をできるだけ多く確保するために、1 秒に 1 回サービスをポーリングすることをお勧めします。
 
 ### <a name="start-an-event"></a>イベントの開始 
 

@@ -4,18 +4,18 @@ description: Azure SQL Database 監査ログの構成方法について説明し
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: reference
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f4da14c1fbdaf71018e62b0f97e288a66edef5c8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954113"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677287"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database 監査ログの形式
 
@@ -89,8 +89,8 @@ Azure BLOB ストレージに格納されている監査ログは、Azure スト
 | target_server_principal_name | target_server_principal_name_s | アクションの対象ログイン。 該当しない場合は NULL です。 | sysname | string |
 | target_server_principal_sid | target_server_principal_sid_s | 対象ログインのセキュリティ ID。 該当しない場合は NULL です。 | varbinary | string |
 | transaction_id | transaction_id_d | SQL Server のみ (2016 年以降) - Azure SQL Database の場合は 0 | bigint | INT |
-| user_defined_event_id | user_defined_event_id_d | sp_audit_write に引数として渡されたユーザー定義のイベント ID。 システム イベントの場合は NULL (既定値) で、ユーザー定義のイベントの場合は 0 以外です。 詳細については、「[sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql)」を参照してください。 | smallint | INT |
-| user_defined_information | user_defined_information_s | sp_audit_write に引数として渡されたユーザー定義の情報。 システム イベントの場合は NULL (既定値) で、ユーザー定義のイベントの場合は 0 以外です。 詳細については、「[sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql)」を参照してください。 | nvarchar(4000) | string |
+| user_defined_event_id | user_defined_event_id_d | sp_audit_write に引数として渡されたユーザー定義のイベント ID。 システム イベントの場合は NULL (既定値) で、ユーザー定義のイベントの場合は 0 以外です。 詳細については、「[sp_audit_write (Transact-SQL)](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql)」を参照してください。 | smallint | INT |
+| user_defined_information | user_defined_information_s | sp_audit_write に引数として渡されたユーザー定義の情報。 システム イベントの場合は NULL (既定値) で、ユーザー定義のイベントの場合は 0 以外です。 詳細については、「[sp_audit_write (Transact-SQL)](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql)」を参照してください。 | nvarchar(4000) | string |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,17 +3,19 @@ title: Azure Cosmos DB アカウントでノートブックを有効にする (�
 description: Azure Cosmos DB の組み込みノートブックを使用すると、ポータル内からデータを分析して視覚化することができます。 この記事では、Cosmos アカウントに対してこの機能を有効にする方法について説明します。
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261904"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187818"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Azure Cosmos DB アカウントのノートブックを有効にする (プレビュー)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB 用の組み込みノートブックは、現在、次の Azure リージョンで使用できます。オーストラリア東部、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、英国南部、西ヨーロッパ、米国西部 2。 ノートブックを使用するには、[ノートブックを使用して新しいアカウントを作成する](#enable-notebooks-in-a-new-cosmos-account)か、これらのリージョンのいずれかの[既存のアカウントでノートブックを有効にします](#enable-notebooks-in-an-existing-cosmos-account)。
@@ -74,4 +76,4 @@ Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Cosmos DB Jupyter ノートブック](cosmosdb-jupyter-notebooks.md)の長所について学習する
+- [Azure Cosmos DB Jupyter Notebooks](cosmosdb-jupyter-notebooks.md) の長所について学習する

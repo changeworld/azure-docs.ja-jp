@@ -1,14 +1,16 @@
 ---
 title: アプリ スキーマ定義
 description: LUIS アプリは `.json` または `.lu` で表され、すべての意図、エンティティ、発話の例、機能、および設定を含んでいます。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
-ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756790"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91327325"
 ---
 # <a name="app-schema-definition"></a>アプリ スキーマ定義
 

@@ -1,21 +1,18 @@
 ---
 title: Data Factory の関数およびシステム変数
 description: Azure Data Factory の関数およびシステム変数の一覧を提供する
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d47a26b46fad1ab8238f9fa7a1183aad20530ef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73667650"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363935"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]
@@ -70,7 +67,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 }
 ```
 
-使用できるさまざまな書式設定オプション (例: yy と yyyy) については、「[カスタム日時書式指定文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)」を参照してください。 
+使用できるさまざまな書式設定オプション (例: yy と yyyy) については、「[カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 
 
 ### <a name="functions"></a>関数
 次の表は、Azure Data Factory の全関数の一覧です。
@@ -227,5 +224,4 @@ SliceStart によって表される日ではなく前の日のデータを読み
 }
 ```
 
-使用できるさまざまな書式設定オプション (例: yy と yyyy) については、「 [カスタム日時書式指定文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx) 」をご覧ください。 
-
+使用できるさまざまな書式設定オプション (例: yy と yyyy) については、「 [カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings) 」をご覧ください。

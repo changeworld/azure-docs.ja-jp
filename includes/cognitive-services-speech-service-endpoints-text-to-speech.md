@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: a1de313245e826511a7e9c864165ac44bcb48530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234195"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569593"
 ---
 ### <a name="standard-and-neural-voices"></a>標準およびニューラル音声
 
@@ -38,6 +38,9 @@ ms.locfileid: "80234195"
 | 米国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
 | 米国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
 
+> [!TIP]
+> [プレビュー段階の音声](../articles/cognitive-services/Speech-Service/language-support.md#neural-voices-in-preview)は 3 つのリージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
+
 ### <a name="custom-voices"></a>カスタム音声
 
 カスタム音声フォントを作成した場合は、作成したエンドポイントを使用します。 また、以下の一覧に示したエンドポイントを使用して、`{deploymentId}` を音声モデル用のデプロイ ID に置き換えます。
@@ -49,7 +52,7 @@ ms.locfileid: "80234195"
 | カナダ中部 | `https://canadacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 米国中部 | `https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 東アジア | `https://eastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
-| East US | `https://eastus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 米国東部 | `https://eastus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 米国東部 2 | `https://eastus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | フランス中部 | `https://francecentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | インド中部 | `https://centralindia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
@@ -64,3 +67,14 @@ ms.locfileid: "80234195"
 | 西ヨーロッパ | `https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 米国西部 | `https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | 米国西部 2 | `https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+
+### <a name="custom-neural-voice"></a>カスタム ニューラル音声
+
+次の表は、カスタム ニューラル音声機能のリージョン サポートの詳細を示しています。
+
+| 機能 | サポートされているリージョン |
+|---|---|
+| 音声モデル ホスティング | 米国東部、米国西部 2、米国中南部、東南アジア、英国南部、西ヨーロッパ、オーストラリア東部 |
+| リアルタイムの文字 | 米国東部、米国西部 2、米国中南部、東南アジア、英国南部、西ヨーロッパ、オーストラリア東部 |
+| 文字数 (長い音声出力) | 米国東部、西ヨーロッパ、英国南部、東南アジア、インド中部 |
+| カスタム ニューラル トレーニング | 米国東部、英国南部 |

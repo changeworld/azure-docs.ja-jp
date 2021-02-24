@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: データ サイエンスを実行するためのツールとライブラリがプレインストール、構成されている、Azure クラウド プラットフォームで簡単に利用できる仮想マシン、Azure Data Science Virtual Machine の概要を紹介します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 2bfcdfcb01e7908c199054e793d82cdfa1b726c7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bd2333d89e4d1789b3464606b49f624609ef67d5
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816339"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518761"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure Data Science Virtual Machine とは
 
@@ -28,7 +27,7 @@ DSVM を利用できる OS:
 
 ## <a name="comparison-with-azure-machine-learning"></a>Azure Machine Learning との比較
 
-DSVM がデータ サイエンス向けにカスタマイズされた VM イメージであるのに対し、[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AzureML) は、次の機能を含んだエンド ツー エンドのプラットフォームです。
+DSVM がデータ サイエンス向けにカスタマイズされた VM イメージであるのに対し、[Azure Machine Learning](../overview-what-is-azure-ml.md) (AzureML) は、次の機能を含んだエンド ツー エンドのプラットフォームです。
 
 + フル マネージドのコンピューティング
   + コンピューティング インスタンス
@@ -44,7 +43,7 @@ DSVM がデータ サイエンス向けにカスタマイズされた VM イメ�
 
 ### <a name="comparison-with-azureml-compute-instances"></a>AzureML コンピューティング インスタンスとの比較
 
-[Azure Machine Learning コンピューティング インスタンス](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance)がフル構成の__マネージド__ VM イメージであるのに対し、DSVM は__アンマネージド__ VM です。
+[Azure Machine Learning コンピューティング インスタンス](../concept-compute-instance.md)がフル構成の __マネージド__ VM イメージであるのに対し、DSVM は __アンマネージド__ VM です。
 
 2 つの製品の主な違いは次のとおりです。
 

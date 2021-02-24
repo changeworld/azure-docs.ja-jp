@@ -1,7 +1,7 @@
 ---
 title: Azure 仮想マシンのパフォーマンス診断 | Microsoft Docs
 description: Windows 用の Azure パフォーマンス診断について説明します。
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: cshepard
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70d1a52ff3326fcd3a628cc7f0f9d91edc9274e7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70080597"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655392"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 仮想マシンのパフォーマンス診断
 
@@ -33,22 +33,39 @@ Azure portal から直接パフォーマンス診断を実行することもで�
 
 ### <a name="windows"></a>Windows
 
-Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Windows Server 2016、Windows Server 2012、Windows Server 2012 Datacenter、Windows Server 2012 R2、Windows Server 2012 R2 Datacenter、Windows Server 2012 R2 Standard、Windows Server 2012 Standard、Windows Server 2008 R2、Windows Server 2008 R2 Datacenter、Windows Server 2008 R2 Enterprise、Windows Server 2008 R2 Foundation、Windows Server 2008 R2 SP1、Windows Server 2008 R2 Standard。
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux サーバー 6.10 [`*`]、7.3、7.6、7.5 (Oracle-Database-Ee 13.8 マーケットプレース イメージ)、CentOS 6.5 [`*`]、7.6、RHEL 7.2、7.5、8.0 [`*`]、Ubuntu 14.04、16.04、18.04、Debian 8、9、10 [`*`]、SLES 12 SP4 [`*`]
+- 現在、次のディストリビューションがサポートされています。
+
+    | Distribution               | Version                                         |
+    |----------------------------|-------------------------------------------------|
+    | Oracle Linux Server        | 6.10 [`*`]、7.3、7.5、7.6、7.7、7.8 |
+    | CentOS                     | 6.5 [`*`]、7.6、7.7、7.8                                    |
+    | RHEL                       | 7.2、7.5、8.0 [`*`]、8.1、8.2                               |
+    | Ubuntu                     | 14.04、16.04、18.04、20.04                               |
+    | Debian                     | 8、9、10 [`*`]                                    |
+    | SLES                       | 12 SP4 [`*`]、12 SP5 [`*`]、15 [`*`]、15 SP1 [`*`]、15 SP2 [`*`]                                      |
+    |                            |                                                   |
 
 >[!Note]
 >[`*`] [既知の問題](how-to-use-perfinsights-linux.md#known-issues)に関するページを参照してください。
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>VM にパフォーマンス診断をインストールして実行する
 
-パフォーマンス診断では、PerfInsights という名前の診断ツールを実行する VM 拡張機能がインストールされます。 PerfInsights は、[Windows](https://aka.ms/perfinsights) と [Linux](https://aka.ms/perfinsightslinux) の両方に用意されています。 パフォーマンス診断をインストールして実行するには、次の手順を実行します。
+パフォーマンス診断では、PerfInsights という名前の診断ツールを実行する VM 拡張機能がインストールされます。 PerfInsights は、[Windows](./how-to-use-perfinsights.md) と [Linux](./how-to-use-perfinsights-linux.md) の両方に用意されています。 パフォーマンス診断をインストールして実行するには、次の手順を実行します。
 
 1. コマンドの左側の列にある **[仮想マシン]** を選択します。
 1. VM 名の一覧から、診断を実行する VM を選択します。
-1. コマンドの右側の列で、 **[パフォーマンス診断]** を選択します。
+1. コマンドの右側の列で、**[パフォーマンス診断]** を選択します。
 
     ![パフォーマンス診断の [インストール] ボタンが強調表示されている Azure portal のスクリーンショット](media/performance-diagnostics/performance-diagnostics-install.png)
 
@@ -65,7 +82,7 @@ Oracle Linux サーバー 6.10 [`*`]、7.3、7.6、7.5 (Oracle-Database-Ee 13.8 
     ![[パフォーマンス診断の設定] ブレードのストレージ アカウントの選択のスクリーンショット](media/performance-diagnostics/select-storage-account.png)
 
 1. **[パフォーマンス診断のインストール]** ボタンを選択します。
-1. インストールが完了した後で診断を実行するには、 **[診断の実行]** チェック ボックスをオンにします。 この選択を行うと、パフォーマンス分析シナリオと関連オプションを選択できるようになります。
+1. インストールが完了した後で診断を実行するには、**[診断の実行]** チェック ボックスをオンにします。 この選択を行うと、パフォーマンス分析シナリオと関連オプションを選択できるようになります。
 
     ![パフォーマンス診断のインストール ボタンのスクリーンショット](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -74,16 +91,16 @@ Oracle Linux サーバー 6.10 [`*`]、7.3、7.6、7.5 (Oracle-Database-Ee 13.8 
 次の分析シナリオは、Azure portal から使用できます。 発生しているパフォーマンスの問題に応じて、分析を選択します。 分析に必要な期間とトレースのオプションを選択します。
 
 * **パフォーマンスのクイック分析**  
-    既知の問題を確認し、ベスト プラクティスを分析し、診断データを収集します。 この分析の実行には数分かかります。 詳細情報: [Windows](https://aka.ms/perfinsights/quick) または [Linux](https://aka.ms/perfinsightslinux/quick)
+    既知の問題を確認し、ベスト プラクティスを分析し、診断データを収集します。 この分析の実行には数分かかります。 詳細情報: [Windows](./how-to-use-perfinsights.md) または [Linux](./how-to-use-perfinsights-linux.md)
 
 * **パフォーマンス分析**  
-    クイック パフォーマンス分析のすべてのチェックを含み、高いリソース使用量を監視します。 このバージョンは、CPU、メモリ、ディスク使用量などの一般的なパフォーマンスの問題を解決するために使用します。 この分析には、選択した期間に応じて 30 秒から 15 分かかります。 詳細情報: [Windows](https://aka.ms/perfinsights/vmslow) または [Linux](https://aka.ms/perfinsightslinux/vmslow)
+    クイック パフォーマンス分析のすべてのチェックを含み、高いリソース使用量を監視します。 このバージョンは、CPU、メモリ、ディスク使用量などの一般的なパフォーマンスの問題を解決するために使用します。 この分析には、選択した期間に応じて 30 秒から 15 分かかります。 詳細情報: [Windows](./how-to-use-perfinsights.md) または [Linux](./how-to-use-perfinsights-linux.md)
 
 * **高度なパフォーマンス分析** `*`  
-    パフォーマンス分析のすべてのチェックを含み、以下のセクションに記載されている 1 つまたは複数のトレースを収集します。 このシナリオは、追加のトレースが必要な複雑な問題を解決するために使用します。 このシナリオを長期間実行すると、VM のサイズと選択したトレース オプションに応じて、診断の出力の全体的なサイズが大きくなります。 この分析の実行には、選択した期間に応じて 30 秒から 15 分かかります。 [詳細情報](https://aka.ms/perfinsights/advanced)
+    パフォーマンス分析のすべてのチェックを含み、以下のセクションに記載されている 1 つまたは複数のトレースを収集します。 このシナリオは、追加のトレースが必要な複雑な問題を解決するために使用します。 このシナリオを長期間実行すると、VM のサイズと選択したトレース オプションに応じて、診断の出力の全体的なサイズが大きくなります。 この分析の実行には、選択した期間に応じて 30 秒から 15 分かかります。 [詳細情報](./how-to-use-perfinsights.md)
 
 * **Azure Files 分析** `*`  
-    パフォーマンス分析のすべてのチェックを含み、ネットワーク トレースと SMB カウンターをキャプチャします。 このシナリオは、Azure ファイルのパフォーマンスを解決するために使用します。 この分析の実行には、選択した期間に応じて 30 秒から 15 分かかります。 [詳細情報](https://aka.ms/perfinsights/azurefiles)
+    パフォーマンス分析のすべてのチェックを含み、ネットワーク トレースと SMB カウンターをキャプチャします。 このシナリオは、Azure ファイルのパフォーマンスを解決するために使用します。 この分析の実行には、選択した期間に応じて 30 秒から 15 分かかります。 [詳細情報](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[`*`] これらの分析シナリオは、Windows でのみサポートされています。
@@ -150,7 +167,7 @@ Oracle Linux サーバー 6.10 [`*`]、7.3、7.6、7.5 (Oracle-Database-Ee 13.8 
 
 ## <a name="manage-performance-diagnostics-reports"></a>パフォーマンス診断レポートを管理する
 
-1 つまたは複数のパフォーマンス診断レポートを削除するには、 **[レポートの削除]** ボタンを使用します。
+1 つまたは複数のパフォーマンス診断レポートを削除するには、**[レポートの削除]** ボタンを使用します。
 
 ## <a name="how-to-uninstall-performance-diagnostics"></a>パフォーマンス診断をアンインストールする方法
 
@@ -170,11 +187,11 @@ VM からパフォーマンス診断をアンインストールすることが�
 
 診断レポートを Microsoft と共有するには、複数の方法があります。
 
-**オプション 1:** 最新のレポートを自動的に共有する  
-Microsoft とのサポート チケットを開くときに、パフォーマンス診断レポートを共有することが重要です。 診断の実行時に ( **[診断情報を Microsoft と共有することに同意します]** チェック ボックスをオンにして) この情報を Microsoft と共有することを選択した場合、Microsoft は、実行日から最大 30 日間、出力 zip ファイルへの SAS リンクを使用して、お客様のストレージ アカウントのレポートにアクセスできます。 サポート エンジニアが使用できるのは、最新のレポートのみです。
+**方法 1:** 最新のレポートを自動的に共有する  
+Microsoft とのサポート チケットを開くときに、パフォーマンス診断レポートを共有することが重要です。 診断の実行時に (**[診断情報を Microsoft と共有することに同意します]** チェック ボックスをオンにして) この情報を Microsoft と共有することを選択した場合、Microsoft は、実行日から最大 30 日間、出力 zip ファイルへの SAS リンクを使用して、お客様のストレージ アカウントのレポートにアクセスできます。 サポート エンジニアが使用できるのは、最新のレポートのみです。
 
-**オプション 2:** 診断レポートの圧縮ファイルのために Shared Access Signature を生成する  
-Shared Access Signature を使用して、レポートの圧縮ファイルへのリンクを共有することができます。 そのためには、次の手順に従います。
+**方法 2:** 診断レポートの圧縮ファイルのために Shared Access Signature を生成する  
+Shared Access Signature を使用して、レポートの圧縮ファイルへのリンクを共有することができます。 この操作を行うには、次の手順に従います。
 
 1. Azure portal で、診断データが保存されているストレージ アカウントを参照します。
 1. **[Blob service]** セクションにある **[BLOB]** を選択します。
@@ -184,7 +201,7 @@ Shared Access Signature を使用して、レポートの圧縮ファイルへ�
 1. **[BLOB SAS トークンおよび URL を生成]** をクリックします。
 1. **[BLOB SAS URL]** をコピーし、サポート エンジニアに伝えます。
 
-**オプション 3:** ストレージ アカウントからレポートをダウンロードする
+**方法 3:** ストレージ アカウントからレポートをダウンロードする
 
 方法 2 の手順 1 から 4 を使用して、パフォーマンス診断レポートの圧縮ファイルを見つけることもできます。 ファイルのダウンロードを選択し、電子メールで共有するか、サポート エンジニアにファイルのアップロード手順を尋ねます。  
 
@@ -197,7 +214,7 @@ Shared Access Signature を使用して、レポートの圧縮ファイルへ�
 
 現在のところ、VM 拡張機能のインストールが完了したときを正確に把握する簡単な方法はありません。 一般的に、VM 拡張機能のインストールには約 45 秒から 1 分かかります。 VM 拡張機能をインストールした後は、パフォーマンス診断でトラブルシューティングのために正しいデータ セットがキャプチャされるように再現手順を実行できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 パフォーマンス診断の分析情報とレポートを確認しても問題の原因を特定できず、さらにサポートが必要な場合は、Microsoft カスタマー サポートとのサポート チケットを開くことができます。
 

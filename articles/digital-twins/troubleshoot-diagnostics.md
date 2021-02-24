@@ -1,34 +1,38 @@
 ---
-title: 診断を設定する
+title: 診断ログの有効化とクエリ
 titleSuffix: Azure Digital Twins
-description: 診断設定を使用してログ記録を有効にする方法について確認します。
+description: 診断設定を使用したログ記録を有効にし、ログに対してクエリを実行してすぐに表示する方法を確認する。
 author: baanders
 ms.author: baanders
-ms.date: 7/28/2020
-ms.topic: troubleshooting
+ms.date: 11/9/2020
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723930"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616656"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
-Azure Digital Twins では、リソースの状態に関する情報を提供する、サービス インスタンスの[メトリック](troubleshoot-metrics.md)が収集されます。 これらのメトリックを使用すると、Azure Digital Twins サービスやそれに接続されているリソースの全体的な正常性を評価できます。 これらのユーザー向けの統計情報は、Azure Digital Twins で何が起きているかを確認するのに役立ち、Azure サポートに連絡することなく問題の根本原因の分析を実行する助けとなります。
+Azure Digital Twins を使用すると、サービス インスタンスのログを収集し、そのパフォーマンス、アクセス、およびその他のデータを監視できます。 これらのログを使用して、Azure Digital Twins インスタンスで何が起こっているかを把握し、問題の根本原因を分析できます。Azure サポートに連絡する必要はありません。
 
-この記事では、Azure Digital Twins インスタンスからメトリック データの**診断ログ**を有効にする方法について説明します。 これらのログを使用して、サービスの問題をトラブルシューティングしたり、Azure Digital Twins のメトリックを異なる宛先に送信するように診断設定を構成したりできます。 これらの設定の詳細については、「[*プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する*](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+この記事には、Azure Digital Twins インスタンスからのログの収集を開始するために、[Azure portal](https://portal.azure.com) で [**診断設定を構成する**](#turn-on-diagnostic-settings)方法が示されています。 また、ログの保存場所 (Log Analytics や任意のストレージ アカウントなど) を指定することもできます。
 
-## <a name="turn-on-diagnostic-settings-with-the-azure-portal"></a>Azure portal 上で診断設定を有効にする
+この記事には、Azure Digital Twins で収集されるすべての[ログ カテゴリ](#log-categories)と[ログ スキーマ](#log-schemas)の一覧も含まれています。
 
-Azure Digital Twins インスタンスの診断設定を有効にする方法は次のとおりです。
+ログを設定した後、[**ログに対してクエリを実行**](#view-and-query-logs)し、カスタム分析情報をすばやく収集することもできます。
+
+## <a name="turn-on-diagnostic-settings"></a>診断設定を有効にする 
+
+診断設定を有効にして、Azure Digital Twins インスタンスでのログ収集を開始します。 エクスポートされたログの保存先を選択することもできます。 Azure Digital Twins インスタンスの診断設定を有効にする方法は次のとおりです。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、Azure Digital Twins インスタンスに移動します。 その名前をポータルの検索バーに入力して、検索することができます。 
 
 2. メニューから **[診断設定]** 、 **[診断設定を追加する]** の順に選択します。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが表示されたスクリーンショット":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが表示されたスクリーンショット" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. 次のページで、以下の値を入力します。
      * **診断設定の名前**:診断設定の名前を付けます。
@@ -39,7 +43,7 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
         - QueryOperation
         - AllMetrics
         
-        これらのオプションの詳細については、下の「[*カテゴリの詳細*](#category-details)」を参照してください。
+        これらのカテゴリとそれらに含まれる情報の詳細については、後述の「[*ログのカテゴリ*](#log-categories)」セクションを参照してください。
      * **宛先の詳細**:ログの送信先を選択します。 3 つのオプションを自由に組み合わせて選択できます。
         - Log Analytics への送信
         - ストレージ アカウントへのアーカイブ
@@ -49,13 +53,15 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
     
 4. 新しい設定を保存します。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="診断設定ページを示すスクリーンショット。ここで、ユーザーは、診断設定の名前を入力し、[カテゴリの詳細] および [宛先の詳細] のチェックボックスをいくつか選択しています。[保存] ボタンが強調表示されています。":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="診断設定ページを示すスクリーンショット。ここで、ユーザーは、診断設定の名前を入力し、[カテゴリの詳細] および [宛先の詳細] のチェックボックスをいくつか選択しています。[保存] ボタンが強調表示されています。" lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
 
 新しい設定は、10 分ほどで有効になります。 その後、インスタンスの **[診断設定]** ページ上の構成されたターゲットにログが表示されます。 
 
-## <a name="category-details"></a>カテゴリの詳細
+診断設定とそれらの設定オプションの詳細については、「[*プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する*](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
 
-診断設定を構成するとき **[カテゴリの詳細]** で選択できるログ カテゴリの詳細を次に示します。
+## <a name="log-categories"></a>ログのカテゴリ
+
+ここでは、Azure Digital Twins で収集されるログのカテゴリについて詳しく説明します。
 
 | ログのカテゴリ | 説明 |
 | --- | --- |
@@ -73,7 +79,7 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
 | 削除 | DELETE |
 | アクション | POST |
 
-各カテゴリに記録される操作と対応する [Azure Digital Twins REST API 呼び出し](https://docs.microsoft.com/rest/api/azure-digitaltwins/)の一覧を次に示します。 
+各カテゴリに記録される操作と対応する [Azure Digital Twins REST API 呼び出し](/rest/api/azure-digitaltwins/)の一覧を次に示します。 
 
 >[!NOTE]
 > 各ログ カテゴリには、複数の操作/REST API 呼び出しが含まれています。 次の表では、各ログ カテゴリがすべての操作/REST API 呼び出しにマップされています (次のログ カテゴリが表示されるまで)。 
@@ -132,7 +138,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "time": "2020-03-14T21:11:14.9918922Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/digitaltwins/write",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "DigitalTwinOperation",
   "resultType": "Success",
   "resultSignature": "200",
@@ -142,7 +148,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-05-31-preview"
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
 }
 ```
 
@@ -153,7 +159,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "time": "2020-10-29T21:12:24.2337302Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/models/write",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "ModelsOperation",
   "resultType": "Success",
   "resultSignature": "201",
@@ -163,7 +169,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-05-31-preview",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
 }
 ```
 
@@ -174,7 +180,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "time": "2020-12-04T21:11:44.1690031Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/query/action",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "QueryOperation",
   "resultType": "Success",
   "resultSignature": "200",
@@ -184,7 +190,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-05-31-preview",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
 }
 ```
 
@@ -222,6 +228,34 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   }
 }
 ```
+
+## <a name="view-and-query-logs"></a>ログを表示してクエリを実行する
+
+この記事の前半では、保存するログの種類を構成し、それらの保存場所を指定しました。
+
+問題のトラブルシューティングを行い、これらのログから分析情報を生成するために、**カスタム クエリ** を生成することができます。 作業を開始するために、サービスによって提供されるいくつかのサンプル クエリを活用することもできます。これにより、インスタンスについて顧客から寄せられる可能性のあるよくある質問に対処できます。
+
+ここでは、インスタンスのログに対してクエリを実行する方法を示します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、Azure Digital Twins インスタンスに移動します。 その名前をポータルの検索バーに入力して、検索することができます。 
+
+2. メニューから **[ログ]** を選択して、ログ クエリ ページを開きます。 ページが開き、 *[クエリ]* というウィンドウが表示されます。
+
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Azure Digital Twins インスタンスの [ログ] ページが示されているスクリーンショット。DigitalTwin API 待機時間やモデル API 待機時間など、さまざまなログ オプションに基づく名前が付けられた構築済みクエリを示す [クエリ] ウィンドウが重なっている。" lightbox="media/troubleshoot-diagnostics/logs.png":::
+
+    これらは、さまざまなログ用に記述された構築済みのサンプル クエリです。 クエリの 1 つを選択してクエリ エディターに読み込み、それを実行してインスタンスのこれらのログを確認できます。
+
+    また、カスタム クエリ コードを記述したり編集したりできる、クエリ エディター ページに直接移動するために何も実行せずに *[クエリ]* ウィンドウを閉じることもできます。
+
+3. *[クエリ]* ウィンドウを閉じた後、クエリ エディターのメイン ページが表示されます。 ここでは、サンプル クエリのテキストを表示および編集したり、独自のクエリを最初から記述したりすることができます。
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Azure Digital Twins インスタンスの [ログ] ページが示されているスクリーンショット。[クエリ] ウィンドウが表示されなくなり、代わりに別のログの一覧、編集可能なクエリ コードを示す編集ペイン、および [クエリの履歴] を示すペインが表示されている。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+
+    左側のペインでは、 
+    - *[テーブル]* タブに、クエリで使用できるさまざまな Azure Digital Twins の [ログ カテゴリ](#log-categories)が表示されています。 
+    - *[クエリ]* タブには、エディターに読み込むことができるクエリの例が含まれています。
+    - *[フィルター]* タブでは、クエリによって返されるデータのフィルター処理されたビューをカスタマイズできます。
+
+ログ クエリとその記述方法の詳細については、[*Azure Monitor のログ クエリの概要*](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

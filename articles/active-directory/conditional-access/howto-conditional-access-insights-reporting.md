@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253275"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89049419"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>条件付きアクセスに関する分析情報とレポート
 
@@ -97,6 +97,22 @@ Azure AD ログを Azure Monitor ログと統合していない場合は、ブ�
 
 また、ダッシュボードの下部でサインインを検索して、特定のユーザーのサインインを調査することもできます。 左側のクエリでは、頻度が最も高いユーザーが表示されます。 ユーザーを選択すると、クエリがフィルター処理されて右側に表示されます。  
 
+> [!NOTE]
+> サインイン ログをダウンロードする場合は、条件付きアクセスの レポート専用の結果データを含めるための JSON 形式を選択します。
+
+## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>レポートのみモードで条件付きアクセス ポリシーを構成する
+
+レポートのみモードで条件付きアクセス ポリシーを構成するには:
+
+1. **Azure portal** に、条件付きアクセス管理者、セキュリティ管理者、またはグローバル管理者としてサインインします。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
+1. 既存のポリシーを選択するか、新しいポリシーを作成します。
+1. **[ポリシーの有効化]** の下で、トグルを **[レポートのみ]** モードに設定します。
+1. **[保存]** を選びます。
+
+> [!TIP]
+> 既存のポリシーの **[ポリシーの有効化]** の状態を **[オン]** から **[レポート専用]** に編集すると、既存のポリシーの適用が無効になります。 
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>アクセス許可エラーに起因してクエリに失敗するのはなぜですか。
@@ -111,6 +127,10 @@ Azure AD ログを Azure Monitor ログと統合していない場合は、ブ�
 ![クエリ失敗の問題解決](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
 
 Azure AD サインイン ログを Log Analytics ワークスペースにストリーミングする方法の詳細については、「[Azure AD ログを Azure Monitor ログと統合する](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)」を参照してください。
+
+### <a name="why-are-the-queries-in-the-workbook-failing"></a>ブック内のクエリがエラーになるのはなぜですか?
+
+お客様は、誤ったワークスペースや複数のワークスペースがブックに関連付けられている場合に、クエリがエラーになることがあるとお気付きになりました。 この問題を解決するには、ブックの最上部にある **[編集]** をクリックして、設定の歯車をクリックします。 ブックに関連付けられていないワークスペースを選択して削除します。 各ブックに関連付けられているワークスペースは 1 つだけになります。
 
 ### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>条件付きアクセス ポリシー パラメーターが空であるのはなぜですか。
 
@@ -134,4 +154,8 @@ Azure AD サインイン ログを Log Analytics ワークスペースにスト�
  
 ## <a name="next-steps"></a>次のステップ
 
-[条件付きアクセスのレポート専用モード](concept-conditional-access-report-only.md)
+- [条件付きアクセスのレポート専用モード](concept-conditional-access-report-only.md)
+
+- Azure AD ブックに関する詳細については、[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](../reports-monitoring/howto-use-azure-monitor-workbooks.md)に関する記事を参照してください。
+
+- [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)

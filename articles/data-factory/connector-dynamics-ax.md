@@ -1,23 +1,18 @@
 ---
 title: Dynamics AX からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Dynamics AX のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38ff77ad56f16fbd33b77021b18be77f6a153b3f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982698"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380986"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics AX からデータをコピーする
 
@@ -34,10 +29,10 @@ ms.locfileid: "84982698"
 
 Dynamics AX から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 
-具体的には、この Dynamics AX コネクタは、**OData プロトコル**と**サービス プリンシパル認証**を使用した Dynamics AX からのデータ コピーをサポートしています。
+具体的には、この Dynamics AX コネクタは、**OData プロトコル** と **サービス プリンシパル認証** を使用した Dynamics AX からのデータ コピーをサポートしています。
 
 >[!TIP]
->**Dynamics 365 Finance and Operations** からデータをコピーするために、このコネクタを使用することもできます。 Dynamics 365 の [OData のサポート](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata)と[認証方法](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)に関するページを参照してください。
+>**Dynamics 365 Finance and Operations** からデータをコピーするために、このコネクタを使用することもできます。 Dynamics 365 の [OData のサポート](/dynamics365/unified-operations/dev-itpro/data-entities/odata)と[認証方法](/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)に関するページを参照してください。
 
 ## <a name="get-started"></a>はじめに
 

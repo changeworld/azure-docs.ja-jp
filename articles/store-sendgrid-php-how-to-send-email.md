@@ -16,16 +16,16 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67870910"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023790"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP から SendGrid 電子メール サービスを使用する方法
 
 このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは PHP で記述されています。
-紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、および**添付ファイルの追加**です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ](#next-steps) 」を参照してください。
+紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、および **添付ファイルの追加** です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ](#next-steps) 」を参照してください。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid 電子メール サービスとは
 SendGrid は、信頼性の高い[トランザクション メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。 SendGrid の一般的な使用シナリオを次に示します。
@@ -299,7 +299,7 @@ Web API を使用した添付ファイルの送信は、Web API を使用した�
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法:フィルターを使用してフッター、追跡、および分析を有効にする
 
-SendGrid では、 *フィルター*を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。
+SendGrid では、 *フィルター* を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。
 
 フィルターは、フィルターのプロパティを使用してメッセージに適用できます。 各フィルターは、フィルター固有の設定を格納したハッシュで指定します。 次の例では、フッター フィルターを有効にし、電子メール メッセージの下部に追加されるテキスト メッセージを指定しています。 この例では、 [sendgrid-php]ライブラリを使用します。
 

@@ -13,12 +13,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d692302df1f5c03a7dce60858b31e0ca66de4c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744537"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537092"
 ---
 # <a name="delegate-user-management-with-my-staff-preview"></a>マイ スタッフでユーザーの管理を委任する (プレビュー)
 
@@ -104,7 +104,7 @@ ms.locfileid: "83744537"
 
 1. 終わったら、 **[OK]** を選択します。
 
-    ![マイ スタッフでスタッフ メンバーの電話番号を削除する](media/my-staff-team-manager/enableforms2.png)
+    ![[サインインに電話番号を有効にしますか?] ウィンドウを示すスクリーンショット。 [OK] ボタンが選択されています。](media/my-staff-team-manager/enableforms2.png)
 
 ### <a name="remove-a-phone-number"></a>電話番号を削除する
 

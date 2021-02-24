@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services で VM のパスワードを設定する | Microsoft Docs
-description: Azure Lab Services のクラスルーム ラボで仮想マシン (VM) のパスワードを設定およびリセットする方法について説明します。
+description: Azure Lab Services のラボで仮想マシン (VM) のパスワードを設定およびリセットする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443776"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434228"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 
 この記事では、次のタスクの手順について説明します。
@@ -21,10 +21,10 @@ ms.locfileid: "85443776"
 ラボの容量 (ラボ内の仮想マシンの数) を増減するには、次の手順を実行します。
 
 1. **[Virtual machine pool]\(仮想マシン プール\)** ページで、 **[Lab capacity: &lt;number&gt; machines]\(ラボの容量: <数> 台のマシン\)** を選択します。
-2. ラボに必要な新しい **VM 数**を入力します。 この数値は、ラボに登録されているユーザーの数以上である必要があります。 
+2. ラボに必要な新しい **VM 数** を入力します。 この数値は、ラボに登録されているユーザーの数以上である必要があります。 
 3. 次に、 **[保存]** を選択します。 
 
-    ![[Start all]\(すべて開始\) ボタン](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![[ラボ内の最大マシン数] と [保存] ボタンが選択された [ラボの容量] ウィンドウを示すスクリーンショット。](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. 容量を増やした場合は、1 台以上の VM が作成されているのを確認できます。 一覧に新しい VM が表示されない場合は、ページを更新してください。 
 
     ![VM が作成されている](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)
@@ -53,6 +53,7 @@ ms.locfileid: "85443776"
 > 教師が学生用 VM をオンにしても、学生のクォータは影響を受けません。 ユーザーのクォータによって指定されるのは、スケジュールされたクラス時間外にユーザーが使用できるラボ時間数です。 クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md?#set-quotas-for-users)」を参照してください。
 
 ## <a name="reset-vms"></a>VM をリセットする
+
 1 台以上の VM をリセットするには、一覧からそれらを選択し、次にツールバーの **[Reset]\(リセット\)** を選択します。 
 
 ![選択した VM をリセットする](./media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
@@ -60,8 +61,6 @@ ms.locfileid: "85443776"
 **[Reset virtual machine(s)]\(仮想マシンのリセット\)** ダイアログ ボックスで、 **[Reset]\(リセット\)** を選択します。 
 
 ![[Reset VM]\(VM のリセット\) ダイアログ ボックス](./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
-
-
 
 ## <a name="set-password-for-vms"></a>VM のパスワードを設定する
 ラボ所有者 (教師) は、ラボの作成時 (ラボ作成ウィザード)、またはラボの作成後に **[テンプレート]** ページで、VM のパスワードを設定またはリセットすることができます。 
@@ -103,4 +102,4 @@ ms.locfileid: "85443776"
 ## <a name="next-steps"></a>次のステップ
 (ラボ所有者として) 構成できる他の学生の使用オプションの詳細については、次の記事を参照してください。[学生の使用の構成](how-to-configure-student-usage.md)
 
-学生が各自の VM のパスワードをリセットする方法については、「[クラスルーム ラボの仮想マシンに対するパスワードを設定またはリセットする (学生)](how-to-set-virtual-machine-passwords-student.md)」を参照してください。
+学生が各自の VM のパスワードをリセットする方法については、「[ラボの仮想マシンに対するパスワードを設定またはリセットする (学生)](how-to-set-virtual-machine-passwords-student.md)」を参照してください。

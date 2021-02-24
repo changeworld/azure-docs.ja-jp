@@ -4,44 +4,44 @@ description: Azure Cosmos DB の SQL クエリに関する問題を特定、診�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117915"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524309"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-この記事では、Azure Cosmos DB のクエリのトラブルシューティングに関する一般的な推奨アプローチについて説明します。 この記事で説明されている手順により、クエリで発生する可能性がある問題を完全に防ぐことができると考えてはいけませんが、パフォーマンスに関する最も一般的なヒントを示してあります。 この記事は、Azure Cosmos DB Core (SQL) API の低速クエリまたはコストの高いクエリのトラブルシューティングのための出発点として使用してください。 また、[診断ログ](cosmosdb-monitor-resource-logs.md)を使用して、遅いクエリやスループットの消費量が多いクエリを特定することもできます。
+この記事では、Azure Cosmos DB のクエリのトラブルシューティングに関する一般的な推奨アプローチについて説明します。 この記事で説明されている手順により、クエリで発生する可能性がある問題を完全に防ぐことができると考えてはいけませんが、パフォーマンスに関する最も一般的なヒントを示してあります。 この記事は、Azure Cosmos DB Core (SQL) API の低速クエリまたはコストの高いクエリのトラブルシューティングのための出発点として使用してください。 また、[診断ログ](cosmosdb-monitor-resource-logs.md)を使用して、遅いクエリやスループットの消費量が多いクエリを特定することもできます。 Azure Cosmos DB の MongoDB 用 API を使用する場合、[Azure Cosmos DB の MongoDB 用 API クエリのトラブルシューティング ガイド](mongodb-troubleshoot-query.md)をご利用ください。
 
-Azure Cosmos DB では、次のようにクエリ最適化を幅広く分類できます。
+Azure Cosmos DB でのクエリの最適化は、次のように大きく分類されています。
 
 - クエリの要求ユニット (RU) 使用量を削減する最適化
 - クエリの待機時間を短縮するだけの最適化
 
-クエリの RU 使用量を減らすことで、待機時間も短くなります。
+クエリの RU 使用量を減らすと、一般的に待機時間も短くなります。
 
-この記事では、[栄養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)データセットを使用して再作成できる例を示します。
+この記事では、[栄養データセット](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)を使用して再作成できる例を示します。
 
 ## <a name="common-sdk-issues"></a>SDK に関する一般的な問題
 
 このガイドを読む前に、クエリ エンジンに関連しない一般的な SDK の問題について検討することをお勧めします。
 
-- 最適なパフォーマンスを得るためには、これらの[パフォーマンスに関するヒント](performance-tips.md)に従ってください。
-    > [!NOTE]
-    > パフォーマンス向上のため、Windows 64 ビットのホスト処理をお勧めします。 SQL SDK には、ローカル環境でクエリを解析して最適化するためのネイティブ ServiceInterop.dll が含まれています。 ServiceInterop.dll は、Windows x64 プラットフォームでのみサポートされています。 Linux および ServiceInterop.dll を使用できない他のサポート対象外プラットフォームでは、最適化されたクエリを取得するために、ゲートウェイに対して追加のネットワーク呼び出しが行われます。
+- これらの [SDK パフォーマンスのヒント](performance-tips.md)に従ってください。
+    - [.NET SDK トラブルシューティング ガイド](troubleshoot-dot-net-sdk.md)
+    - [Java SDK トラブルシューティング ガイド](troubleshoot-java-sdk-v4-sql.md)
 - SDK では、クエリの `MaxItemCount` を設定できますが、最小項目数は指定できません。
     - コードで、0 から `MaxItemCount` までのすべてのページ サイズを処理する必要があります。
-    - ページ内の項目数は、常に、指定された `MaxItemCount` 以下になります。 ただし、`MaxItemCount` は厳密に最大値であり、結果の数はこの量よりも少なくなる可能性があります。
 - 将来のページには結果がある場合でも、クエリで空のページを受け取ることがあります。 これには、次のような理由が考えられます。
     - SDK が複数のネットワーク呼び出しを実行している可能性があります。
     - クエリでドキュメントを取得するのに時間がかかっている可能性があります。
-- すべてのクエリには、クエリの続行を許可する継続トークンがあります。 必ず、クエリを完全にドレインするようにしてください。 SDK のサンプルを参照し、`FeedIterator.HasMoreResults` で `while` ループを使用して、クエリ全体をドレインします。
+- すべてのクエリには、クエリの続行を許可する継続トークンがあります。 必ず、クエリを完全にドレインするようにしてください。 [複数にわたる結果のページの処理](sql-query-pagination.md#handling-multiple-pages-of-results)に関するページをご覧ください
 
 ## <a name="get-query-metrics"></a>クエリのメトリックを取得する
 
@@ -62,6 +62,8 @@ Azure Cosmos DB でクエリを最適化する場合、最初の手順は常に�
 - [インデックス作成ポリシーに必要なパスを含める。](#include-necessary-paths-in-the-indexing-policy)
 
 - [インデックスを使用するシステム関数について理解する。](#understand-which-system-functions-use-the-index)
+
+- [文字列システム関数の実行を改善する。](#improve-string-system-function-execution)
 
 - [インデックスを使用する集計クエリについて理解する。](#understand-which-aggregate-queries-use-the-index)
 
@@ -192,29 +194,79 @@ WHERE c.description = "Malabar spinach, cooked"
 
 **RU 使用量:** 2.98 RU
 
-書き込み可用性やパフォーマンスに影響を与えることなく、いつでもインデックス作成ポリシーにプロパティを追加できます。 新しいプロパティをインデックスに追加すると、そのプロパティを使用するクエリでは、使用可能な新しいインデックスが直ちに使用されます。 そのクエリでは、構築中に新しいインデックスが使用されます。 そのため、インデックスの再構築が行われている間、クエリ結果が不整合になる可能性があります。 新しいプロパティのインデックスが作成される場合、既存のインデックスのみを使用するクエリは、インデックスの再構築中に影響を受けません。 [インデックス変換の進行状況を追跡](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)できます。
+書き込みまたは読み取りの可用性に影響を与えることなく、いつでもインデックス作成ポリシーにプロパティを追加できます。 [インデックス変換の進行状況を追跡](./how-to-manage-indexing-policy.md#dotnet-sdk)できます。
 
 ### <a name="understand-which-system-functions-use-the-index"></a>インデックスを使用するシステム関数について理解する
 
-式を文字列値の範囲に変換できる場合、インデックスを使用できます。 そうでない場合は使用できません。
+ほとんどのシステム関数では、インデックスが使用されます。 インデックスを使用する一般的な文字列関数の一覧を次に示します。
 
-インデックスを使用できるいくつかの一般的な文字列関数の一覧を次に示します。
+- StartsWith
+- Contains
+- RegexMatch
+- Left
+- Substring - ただし、最初の num_expr が 0 の場合のみ
 
-- STARTSWITH(str_expr1, str_expr2, bool_expr)  
-- CONTAINS(str_expr, str_expr, bool_expr)
-- LEFT(str_expr, num_expr) = str_expr
-- SUBSTRING(str_expr, num_expr, num_expr) = str_expr (ただし、最初の num_expr が 0 の場合のみ)
-
-インデックスを使用せず、各ドキュメントを読み込む必要がある一般的なシステム関数は、次のとおりです。
+`WHERE` 句で使用されたときに、インデックスを使用せず、各ドキュメントを読み込む必要がある一般的なシステム関数は、次のとおりです。
 
 | **システム関数**                     | **最適化のアイデア**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| UPPER/LOWER                             | システム関数を使用して比較のためにデータを正規化する代わりに、挿入時に大文字と小文字を正規化します。 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` のようなクエリが、```SELECT * FROM c WHERE c.name = 'BOB'``` になります。 |
+| UPPER/LOWER                         | システム関数を使用して比較のためにデータを正規化する代わりに、挿入時に大文字と小文字を正規化します。 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` のようなクエリが、```SELECT * FROM c WHERE c.name = 'BOB'``` になります。 |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | クエリ実行前に現在の時刻を計算し、その文字列値を `WHERE` 句で使用します。 |
 | 数学関数 (非集計) | クエリで値を頻繁に計算する必要がある場合は、JSON ドキュメントのプロパティとして値を格納することを検討します。 |
 
-------
+`SELECT` 句で使用された場合、非効率的なシステム関数は、クエリでインデックスを使用する方法に影響しません。
 
-システム関数では行われていない場合でも、クエリの他の部分でインデックスが使用されている可能性があります。
+### <a name="improve-string-system-function-execution"></a>文字列システム関数の実行を改善する
+
+インデックスを使用するシステム関数の中には、クエリに `ORDER BY` 句を追加することによって、クエリの実行を改善できるものもあります。 
+
+具体的には、プロパティのカーディナリティが増加するにつれて RU 料金が増加するすべてのシステム関数は、クエリに `ORDER BY` を含めることでメリットが得られる可能性があります。 これらのクエリではインデックス スキャンが実行されるため、クエリ結果を並べ替えることにより、クエリの効率を高めることができます。
+
+この最適化により、次のシステム関数の実行が向上します。
+
+- StartsWith (大文字と小文字を区別しない = true)
+- StringEquals (大文字と小文字を区別しない = true)
+- Contains
+- RegexMatch
+- EndsWith
+
+たとえば、次のような `CONTAINS` が含まれる SQL クエリについて考えます。 `CONTAINS` ではインデックスが使用されますが、関連するインデックスを追加した後でも、次のクエリを実行すると非常に高い RU 料金が発生する場合があります。
+
+元のクエリ:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+`ORDER BY` を追加することで、クエリの実行を改善させることができます。
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
+
+同じ最適化は、フィルターを追加したクエリにも役立ちます。 この場合、`ORDER BY` 句に等値フィルターを含むプロパティも追加することをお勧めします。
+
+元のクエリ:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+```
+
+`ORDER BY` と (c.name, c.town) の[複合インデックス](index-policy.md#composite-indexes)を追加することで、クエリの実行を改善することができます。
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+ORDER BY c.name, c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>インデックスを使用する集計クエリについて理解する
 
@@ -271,7 +323,7 @@ WHERE c.foodGroup = "Sausages and Luncheon Meats"
 GROUP BY c.description
 ```
 
-同じ集計クエリを頻繁に実行する予定がある場合は、個々のクエリを実行するのではなく、[Azure Cosmos DB の変更フィード](change-feed.md)を使用して、リアルタイムの具体化されたビューを作成する方が効率的です。
+同じ集計クエリを頻繁に実行する予定がある場合は、個々のクエリを実行するのではなく、[Azure Cosmos DB の変更フィード](change-feed.md)を使用して、リアルタイムのマテリアライズドビューを作成する方が効率的です。
 
 ### <a name="optimize-queries-that-have-both-a-filter-and-an-order-by-clause"></a>フィルターと ORDER BY 句の両方を使用するクエリを最適化する
 
@@ -470,7 +522,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 ## <a name="optimizations-that-reduce-query-latency"></a>クエリの待機時間を短縮する最適化
 
-多くの場合、クエリの待機時間がまだ長すぎるときは、RU 使用量が許容される可能性があります。 以下のセクションでは、クエリの待機時間を短縮するためのヒントの概要を説明します。 同じクエリを同じデータセットに対して複数回実行すると、毎回同じ RU 使用量が発生します。 ただし、クエリの待機時間はクエリの実行間隔によって異なる場合があります。
+多くの場合、クエリの待機時間がまだ長すぎるときは、RU 使用量が許容される可能性があります。 以下のセクションでは、クエリの待機時間を短縮するためのヒントの概要を説明します。 同じクエリを同じデータセットに対して複数回実行すると、一般的には毎回同じ RU 使用量が発生します。 ただし、クエリの待機時間はクエリの実行間隔によって異なる場合があります。
 
 ### <a name="improve-proximity"></a>近接性の向上
 
@@ -492,5 +544,6 @@ Azure Cosmos DB では、プロビジョニングされたスループットは�
 クエリあたりの RU 数を測定する方法や、実行の統計を取得してクエリの調整を行う方法などについては、次の記事を参照してください。
 
 * [.NET SDK を使用して SQL クエリの実行メトリックを取得する](profile-sql-api-query.md)
-* [Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング](sql-api-sql-query-metrics.md)
+* [Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング](./sql-api-query-metrics.md)
 * [.NET SDK のパフォーマンスに関するヒント](performance-tips.md)
+* [Java v4 SDK のパフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)

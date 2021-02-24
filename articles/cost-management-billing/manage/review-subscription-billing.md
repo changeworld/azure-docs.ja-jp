@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684713"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132382"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API を使用してサブスクリプションの課金を確認する
 
@@ -32,7 +32,7 @@ Authorization: Bearer
 
 `{subscriptionID}` パラメーターが必須です。これでターゲット サブスクリプションを指定します。
 
-`{billingPeriod}` パラメーターが必須です。これで現在の[請求期間](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)を指定します。
+`{billingPeriod}` パラメーターが必須です。これで現在の[請求期間](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)を指定します。
 
 この例では `${startDate}` パラメーターおよび `${endDate}` パラメーターが必須ですが、エンドポイントでは省略可能です。 日付範囲を文字列として YYYY-MM-DD の形式で指定します (例: `'20180501'` および `'20180615'`)。
 
@@ -41,7 +41,7 @@ Authorization: Bearer
 |要求ヘッダー|説明|
 |--------------------|-----------------|
 |*Content-Type:*|必須。 `application/json` を設定します。|
-|*Authorization:*|必須。 有効な `Bearer` [アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
+|*Authorization:*|必須。 有効な `Bearer` [アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
 
 ## <a name="response"></a>Response
 
@@ -85,7 +85,7 @@ Authorization: Bearer
 |**meterDetails** | 使用に関する詳細情報。 |
 |**nextLink**| 設定時には、詳細の次のページの URL が指定されます。 ページが最終ページの場合は空白です。 |
 
-この例は省略されたものです。response の各フィールドの詳しい説明については、[使用状況の詳細の一覧](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy)をご覧ください。
+この例は省略されたものです。response の各フィールドの詳しい説明については、[使用状況の詳細の一覧](/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy)をご覧ください。
 
 その他の状態コードは､エラー状態を示します｡ そのような場合､response オブジェクトによって､要求が失敗した理由が説明されます。
 
@@ -101,6 +101,6 @@ Authorization: Bearer
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- 「[Enterprise Reporting の概要](https://docs.microsoft.com/azure/billing/billing-enterprise-api)」を参照してください。
-- [Enterprise Billing REST API](https://docs.microsoft.com/rest/api/billing/) について調べます。
-- [Azure Rest API の開始](https://docs.microsoft.com/rest/api/azure/)
+- 「[Enterprise Reporting の概要](./enterprise-api.md)」を参照してください。
+- [Enterprise Billing REST API](/rest/api/billing/) について調べます。
+- [Azure Rest API の開始](/rest/api/azure/)

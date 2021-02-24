@@ -9,14 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom:
+- seo-lt-2019
+- references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225684"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980380"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -49,17 +51,17 @@ Azure Data Factory マネージド仮想ネットワーク (VNET) 内に Azure I
 
 ![新しいマネージド プライベート エンドポイント](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory では、プライベート リンクがサポートされます。 プライベート リンクを使用すると、Azure (PaaS) サービス (Azure Storage、Azure Cosmos DB、Azure Synapse Analytics (以前の Azure SQL Data Warehouse) など) にアクセスできます。
+Azure Data Factory では、プライベート リンクがサポートされます。 プライベート リンクを使用すると、Azure (PaaS) サービス (Azure Storage、Azure Cosmos DB、Azure Synapse Analytics (以前の SQL Data Warehouse) など) にアクセスできます。
 
 プライベート リンクを使用すると、データ ストアとマネージド仮想ネットワーク間のトラフィックは、全面的に Microsoft のバックボーンネットワークを介して転送されます。 プライベート リンクによって、データ流出のリスクから身を守ることができます。 リソースへのプライベート リンクは、プライベート エンドポイントを作成することによって確立します。
 
-プライベート エンドポイントでは、マネージド仮想ネットワークでプライベート IP アドレスを使用して、効率的にサービスを取り込みます。 プライベート エンドポイントは、サービス全体にではなく Azure 内の特定のリソースにマップされます。 顧客は、その組織で承認されている特定のリソースに接続を制限することができます。 [プライベート リンクとプライベート エンドポイント](https://docs.microsoft.com/azure/private-link/)についての詳しい情報をご覧ください。
+プライベート エンドポイントでは、マネージド仮想ネットワークでプライベート IP アドレスを使用して、効率的にサービスを取り込みます。 プライベート エンドポイントは、サービス全体にではなく Azure 内の特定のリソースにマップされます。 顧客は、その組織で承認されている特定のリソースに接続を制限することができます。 [プライベート リンクとプライベート エンドポイント](../private-link/index.yml)についての詳しい情報をご覧ください。
 
 > [!NOTE]
 > Azure のデータ ソースとの接続にはすべて、マネージド プライベート エンドポイントを作成することをお勧めします。 
  
 > [!WARNING]
-> PaaS データ ストア (BLOB、ADLS Gen2、SQL DW) に対してプライベート エンドポイントが既に作成されており、すべてのネットワークからのアクセスが許可されている場合でも、ADF からはマネージド プライベート エンドポイントを使用してのみアクセスできます。 このようなシナリオでは、必ずプライベート エンドポイントを作成してください。 
+> PaaS データ ストア (BLOB、ADLS Gen2、Azure Synapse Analytics) に対してプライベート エンドポイントが既に作成されており、すべてのネットワークからのアクセスが許可されている場合でも、ADF からはマネージド プライベート エンドポイントを使用してのみアクセスできます。 このようなシナリオでは、必ずプライベート エンドポイントを作成してください。 
 
 Azure Data Factory にマネージド プライベート エンドポイントを作成すると、プライベート エンドポイント接続は "保留" 状態で作成されます。 承認ワークフローが開始されます。 接続を承認または拒否する役割は、プライベート リンク リソースの所有者が担います。
 
@@ -71,6 +73,11 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 
 承認済み状態のマネージド プライベート エンドポイントのみが、指定されたプライベート リンク リソースにトラフィックを送信できます。
 
+## <a name="interactive-authoring"></a>インタラクティブな作成
+インタラクティブな作成機能は、テスト接続、フォルダー一覧とテーブル リストの参照、スキーマの取得、データのプレビューなどの機能に使用されます。 ADF で管理されている仮想ネットワーク内の Azure Integration Runtime を作成または編集する際に、インタラクティブな作成を有効にすることができます。 バックエンド サービスでは、インタラクティブな作成機能のためにコンピューティングが事前に割り当てられます。 そうしないと、インタラクティブな操作が実行されるたびにコンピューティングが割り当てられ、時間がかかります。 インタラクティブな作成の Time To Live (TTL) は 60 分です。つまり、前回のインタラクティブな作成操作から 60 分が経過すると、この機能が自動的に無効になります。
+
+![インタラクティブな作成](./media/managed-vnet/interactive-authoring.png)
+
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 ### <a name="supported-data-sources"></a>サポートされるデータ ソース
 次のデータ ソースでは、ADF マネージド仮想ネットワークからのプライベート リンクを介した接続がサポートされています。
@@ -79,14 +86,37 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 - Azure Files
 - Azure Data Lake Gen2
 - Azure SQL Database (Azure SQL Managed Instance を含まない)
-- Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)
+- Azure Synapse Analytics (旧称 SQL Data Warehouse)
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure Private Link サービス
+- Azure Search
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+
+### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory マネージド仮想ネットワークは次の Azure リージョンでご利用いただけます。
+- 米国東部
+- 米国東部 2
+- 米国中西部
+- 米国西部
+- 米国西部 2
+- 米国中南部
+- 米国中部
+- 北ヨーロッパ
+- 西ヨーロッパ
+- 英国南部
+- 東南アジア
+- オーストラリア東部
+- オーストラリア南東部
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF マネージド仮想ネットワークからのパブリック エンドポイントを介した送信方向の通信
 - 送信方向の通信用には、ポート 443 のみが開かれています。
 - Azure Storage および Azure Data Lake Gen2 では、ADF マネージド仮想ネットワークからパブリック エンドポイント経由で接続することはサポートされていません。
+
+### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault のリンクされたサービスの作成 
+- Azure Key Vault のリンクされたサービスを作成する場合、Azure Integration Runtime の参照はありません。 そのため、Azure Key Vault のリンクされたサービスの作成中にプライベート エンドポイントを作成することはできません。 ただし、Azure Key Vault のリンクされたサービスを参照するデータ ストアに対してリンクされたサービスを作成し、そのリンクされたサービスが、マネージド仮想ネットワークが有効になっている Azure Integration Runtime を参照する場合は、作成中に Azure Key Vault のリンクされたサービスのプライベート エンドポイントを作成できます。 
+- Azure Key Vault のリンクされたサービスの **テスト接続** 操作では、単に URL 形式が検証され、ネットワーク操作は実行されません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,22 +7,22 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
-ms.author: matjazl
+ms.author: cavoeg
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e1aa3362217a4edcfcf547c69b9effde00459f7e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3340cd0a39b0f5311487fec5b05d37e3376d433a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850561"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659253"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure API for FHIR をデプロイする
 
 このクイックスタートでは、Azure CLI を使用して Azure API for FHIR を Azure にデプロイする方法について説明します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="add-healthcareapis-extension"></a>HealthcareAPIs 拡張機能を追加する
 
@@ -68,7 +68,10 @@ az group delete --name "myResourceGroup"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタート ガイドでは、ご利用のサブスクリプションに Azure API for FHIR をデプロイしました。 Azure API for FHIR に対してその他の設定を行うには、追加設定の攻略ガイドに進んでください。
+このクイックスタート ガイドでは、ご利用のサブスクリプションに Azure API for FHIR をデプロイしました。 Azure API for FHIR に対してその他の設定を行うには、追加設定の攻略ガイドに進んでください。 Azure API for FHIR を使い始める準備ができたら、アプリケーションの登録方法についての詳しい情報をご覧ください。
 
 >[!div class="nextstepaction"]
 >[Azure API for FHIR の追加設定](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[アプリケーションの登録の概要](fhir-app-registration.md)

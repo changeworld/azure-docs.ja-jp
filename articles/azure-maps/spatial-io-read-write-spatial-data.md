@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.custom: devx-track-js
+ms.openlocfilehash: 133674e6764e12742f5b238946e943d9b5011cd2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816764"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891331"
 ---
 # <a name="read-and-write-spatial-data"></a>空間データの読み取りと書き込み
 
@@ -160,38 +160,31 @@ GML は、他の XML 仕様の拡張としてよく使用される、空間 XML 
 - EPSG:4269、EPSG:4283、EPSG:4258、EPSG:4308、EPSG:4230、EPSG:4272、EPSG:4271、EPSG:4267、EPSG:4608、EPSG:4674 (場合によっては、わずかな許容誤差があります)
 - EPSG:3857、EPSG:102100、EPSG:3785、EPSG:900913、EPSG:102113、EPSG:41001、EPSG:54004
 
-## <a name="next-steps"></a>次のステップ
+## <a name="more-resources"></a>その他のリソース
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
-> [!div class="nextstepaction"]
-> [atlas.io 静的関数](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io)
+[atlas.io 静的関数](/javascript/api/azure-maps-spatial-io/atlas.io)
 
-> [!div class="nextstepaction"]
-> [SpatialDataSet](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdataset)
+[SpatialDataSet](/javascript/api/azure-maps-spatial-io/atlas.spatialdataset)
 
-> [!div class="nextstepaction"]
-> [SpatialDataSetStats](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
+[SpatialDataSetStats](/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
 
-> [!div class="nextstepaction"]
-> [GmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader?view=azure-maps-typescript-latest)
+[GmlReader](/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader)
 
-> [!div class="nextstepaction"]
-> [GmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter?view=azure-maps-typescript-latest)
+[GmlWriter](/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter)
 
-> [!div class="nextstepaction"]
-> [atlas.io.ogc.WKT 関数](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)
+[atlas.io.ogc.WKT 関数](/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)
+
+[WFS サービスへの接続](spatial-io-connect-wfs-service.md)
+
+[コア操作の活用](spatial-io-core-operations.md)
+
+[サポートされるデータ形式の詳細](spatial-io-supported-data-format-details.md)
+
+
+## <a name="next-steps"></a>次のステップ
 
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 
-> [!div class="nextstepaction"]
-> [OGC マップ レイヤーの追加](spatial-io-add-ogc-map-layer.md)
-
-> [!div class="nextstepaction"]
-> [WFS サービスへの接続](spatial-io-connect-wfs-service.md)
-
-> [!div class="nextstepaction"]
-> [コア操作の活用](spatial-io-core-operations.md)
-
-> [!div class="nextstepaction"]
-> [サポートされるデータ形式の詳細](spatial-io-supported-data-format-details.md)
+[OGC マップ レイヤーの追加](spatial-io-add-ogc-map-layer.md)

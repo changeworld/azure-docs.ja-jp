@@ -1,5 +1,5 @@
 - name: Azure Queue storage のドキュメント
-  href: /azure/storage/queues/
+  href: ./index.yml
 - name: 概要
   expanded: true
   items:
@@ -43,13 +43,13 @@
   items:
     - name: ストレージ アカウント
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Storage の保存時の暗号化
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
-            - name: Azure Key Vault でのカスタマー マネージド キー
-              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: カスタマー マネージド キーを使用した暗号化
+              href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: データ操作の承認
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
@@ -69,10 +69,8 @@
               href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 管理操作の承認
           href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 高度な脅威保護
-          href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 組み込みのセキュリティ制御
-          href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Azure プライベート エンドポイントの使用
           href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Azure Policy によるセキュリティ制御
@@ -96,28 +94,22 @@
               href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: パフォーマンスとスケーラビリティのチェックリスト
           href: storage-performance-checklist.md
-    - name: コンカレンシー
-      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: 監視とトラブルシューティング
       items:
-        - name: トラブルシューティングのチュートリアル
-          href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 監視、診断、およびトラブルシューティング
-          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Azure Portal での監視
-          href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: メトリックとログ
+        - name: Queue Storage の監視
+          href: monitor-queue-storage.md
+        - name: クラシック メトリックからの移行
+          href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 監視 (クラシック)
           items:
-            - name: Azure Monitor のメトリック
-              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: 新しいメトリックへの移行
-              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Storage Analytics
               href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Storage Analytics のメトリック (クラシック)
+            - name: メトリック
               href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Storage Analytics のログ
+            - name: ログ
               href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: 監視、診断、およびトラブルシューティング
+              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: 方法
   items:
     - name: ストレージ アカウントの作成と管理
@@ -127,6 +119,8 @@
           href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: ストレージ アカウントのアップグレード
           href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 削除されたストレージ アカウントを復旧します
+          href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: キュー データのセキュリティ保護
       items:
         - name: キュー データへのアクセスの承認
@@ -134,12 +128,12 @@
             - name: ユーザーの承認オプション
               items:
                 - name: ポータル
-                  href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                  href: authorize-data-operations-portal.md
                 - name: PowerShell
-                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                  href: authorize-data-operations-powershell.md
                 - name: Azure CLI
-                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: RBAC を使用したアクセス権の管理
+                  href: authorize-data-operations-cli.md
+            - name: Azure RBAC を使用したアクセス権の管理
               items:
                 - name: ポータル
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -167,17 +161,15 @@
           items:
             - name: 顧客管理キーをサポートするアカウントの作成
               href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: 顧客管理キーの構成
+            - name: カスタマー マネージド キーによる暗号化を構成する
               items:
-                - name: ポータル
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: カスタマー マネージド キーをキー コンテナーに格納する
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: カスタマー マネージド キーをマネージド HSM に格納する
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: アカウントの暗号化キー モデルの確認
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: ストレージ アカウントのインフラストラクチャの暗号化を有効にする
+            - name: アカウントのインフラストラクチャ暗号化を有効にする
               href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: クライアント側の暗号化の構成
           items:
@@ -199,6 +191,8 @@
                   href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: クライアント アプリケーションの TLS バージョンを構成する
                   href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 脅威保護のために Azure Defender を構成する
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: データの冗長性を管理する
       items:
         - name: データのレプリケート方法の変更
@@ -239,6 +233,10 @@
           href: storage-powershell-how-to-use-queues.md
         - name: 中国、政府機関、ドイツのクラウド用の PowerShell
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 監視 (クラシック)
+          items:
+            - name: Azure portal での監視 (クラシック)
+              href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: トラブルシューティング
       items:
         - name: 待機時間に関する問題
@@ -247,6 +245,8 @@
   items:
     - name: Azure Queue storage リファレンス
       href: ../queues/reference.md
+    - name: Azure Queue Storage のリファレンスの監視
+      href: monitor-queue-storage-reference.md
     - name: Resource Manager テンプレート
       displayName: ARM
       href: /azure/templates/microsoft.storage/allversions
@@ -261,15 +261,15 @@
         - name: Storage Explorer の概要
           href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: ストレージ エクスプローラーのリリース ノート
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
         - name: ストレージ エクスプローラーのトラブルシューティング
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: ストレージ エクスプローラーのアクセシビリティ
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Microsoft Q&A の Azure Storage
-      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
-    - name: Stack Overflow の Azure Storage
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Microsoft Q&A の Queue storage
+      href: /answers/topics/azure-queue-storage.html
+    - name: Stack Overflow の Queue storage
+      href: 'https://stackoverflow.com/questions/tagged/azure-queues'
     - name: Queue Storage の価格
       href: 'https://azure.microsoft.com/pricing/details/storage/queues/'
     - name: Azure 料金計算ツール
@@ -279,17 +279,17 @@
     - name: NuGet パッケージ (.NET)
       items:
         - name: Microsoft.Azure.Storage.Common (バージョン 11.x)
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+          href: 'https://www.nuget.org/packages/microsoft.azure.storage.common/'
         - name: Azure.Storage.Common (バージョン 12.x)
           href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
         - name: Microsoft.Azure.Storage.Queue (バージョン 11.x)
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/'
+          href: 'https://www.nuget.org/packages/microsoft.azure.storage.queue/'
         - name: Azure.Storage.Queue (バージョン 12.x)
-          href: 'https://www.nuget.org/packages/Azure.Storage.Queues/'
+          href: 'https://www.nuget.org/packages/azure.storage.queues/'
         - name: Azure Configuration Manager
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+          href: 'https://www.nuget.org/packages/microsoft.azure.configurationmanager/'
         - name: ストレージ リソース プロバイダーのライブラリ
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
+          href: 'https://www.nuget.org/packages/microsoft.azure.management.storage/'
     - name: ソース コード
       items:
         - name: .NET
@@ -309,7 +309,7 @@
             - name: Azure Storage クライアント ライブラリ バージョン 12.x
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: BLOB、キュー、ファイル (バージョン 8)
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+              href: /java/api/overview/azure/storage?view=azure-java-legacy
             - name: Azure Storage クライアント ライブラリ バージョン 8.x 以前
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

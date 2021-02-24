@@ -1,7 +1,6 @@
 ---
-title: 監視データのリファレンス | Microsoft Docs
-titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 用に収集され、かつ Azure Monitor で利用できるデータとリソースについて説明します。 Azure Monitor を使用すると、ご利用の Azure Machine Learning ワークスペースに関するデータを収集して表示できるほか、メトリックの表示、アラートの設定、ログ データの分析も行うことができます。
+title: Azure Machine Learning データの監視のリファレンス | Microsoft Docs
+description: Azure Machine Learning の監視に関するリファレンス ドキュメント。 Azure Monitor で収集して利用できるデータとリソースについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +8,128 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 04/27/2020
-ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: subject-monitoring
+ms.date: 10/02/2020
+ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856024"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585128"
 ---
-# <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning 監視データのリファレンス
+# <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning データの監視のリファレンス
 
 ご利用の Azure Machine Learning ワークスペースから Azure Monitor によって収集されるデータとリソースについて説明します。 監視データの収集と分析の詳細については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
 
+## <a name="metrics"></a>メトリック
+
+このセクションには、Azure Machine Learning 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 これらのメトリックのリソース プロバイダーは、[Microsoft.MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) です。
+
+**Model**
+
+| メトリック | ユニット | 説明 |
+| ----- | ----- | ----- |
+| モデルのデプロイが失敗しました | Count | 失敗したモデルのデプロイの数。 |
+| 開始されたモデル デプロイ | Count | 開始されたモデル デプロイの数。 |
+| モデルのデプロイが成功しました | Count | 成功したモデル デプロイの数。 |
+| モデルの登録が失敗しました | Count | 失敗したモデル登録の数。 |
+| モデルの登録が成功しました | Count | 成功したモデル登録の数。 |
+
+**[クォータ]**
+
+クォータ情報は Azure Machine Learning のコンピューティングのみを対象としています。
+
+| メトリック | ユニット | 説明 |
+| ----- | ----- | ----- |
+| アクティブなコア | Count | アクティブなコンピューティング コアの数。 |
+| アクティブなノード | Count | アクティブなノードの数。 |
+| アイドル状態のコア | Count | アイドル状態のコンピューティング コアの数。 |
+| アイドル状態のノード | Count | アイドル状態のコンピューティング ノードの数。 |
+| 終了中のコア | Count | 終了中のコアの数。 |
+| 終了中のノード | Count | 終了中のノードの数。 |
+| 割り込まれたコア | Count | 割り込まれたコアの数。 |
+| Preempted Node (割り込まれたノード) | Count | 割り込まれたノードの数。 |
+| クォータ使用率 | Percent | 使用されているクォータの割合。 |
+| コア総数 | Count | コア総数。 |
+| ノード総数 | Count | ノード総数。 |
+| 使用できないコア | Count | 使用できないコアの数。 |
+| 使用できないノード | Count | 使用できないノードの数。 |
+
+**リソース**
+
+| メトリック | ユニット | 説明 |
+| ----- | ----- | ----- |
+| CpuUtilization | Percent | 実行/ジョブ中に特定のノードで使用された CPU の割合。 このメトリックは、ジョブがノード上で実行されている場合にのみ発行されます。 1 つのジョブで 1 つ以上のノードを使用できます。 このメトリックはノードごとに発行されます。 |
+| GpuUtilization | Percent | 実行/ジョブ中に特定のノードで使用された GPU の割合。 1 つのノードが 1 つ以上の GPU を持つことができます。 このメトリックは、ノードごと、GPU ごとに発行されます。 |
+
+**[実行]**
+
+トレーニングの実行に関する情報。
+
+| メトリック | ユニット | 説明 |
+| ----- | ----- | ----- |
+| 完了した実行 | Count | 完了した実行の数。 |
+| 失敗した実行 | Count | 失敗した実行の数。 |
+| 開始された実行 | Count | 開始された実行の数。 |
+
+## <a name="metric-dimensions"></a>メトリック ディメンション
+
+メトリック ディメンションの詳細については、「[多次元メトリック](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
+
+Azure Machine Learning では、次のディメンションがメトリックに関連付けられています。
+
+| Dimension | 説明 |
+| ---- | ---- |
+| クラスター名 | コンピューティング クラスター リソースの名前。 すべてのクォータ メトリックで使用できます。 |
+| VM ファミリ名 | クラスターによって使用される VM ファミリの名前。 クォータ使用率で使用できます。 |
+| VM 優先度 | VM の優先度。 クォータ使用率で使用できます。
+| CreatedTime | CpuUtilization と GpuUtilization でのみ使用できます。 |
+| deviceId | デバイスの ID (GPU)。 GpuUtilization でのみ使用できます。 |
+| NodeId | ジョブが実行されている場所で作成されたノードの ID。 CpuUtilization と GpuUtilization でのみ使用できます。 |
+| RunId | 実行/ジョブの ID。 CpuUtilization と GpuUtilization でのみ使用できます。 |
+| ComputeType | 実行で使用されるコンピューティングの種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
+| PipelineStepType | 実行で使用される [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) の種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
+| PublishedPipelineId | 実行で使用される公開済みパイプラインの ID。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
+| RunType | 実行の種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
+
+RunType ディメンションの有効な値は次のとおりです。
+
+| 値 | 説明 |
+| ----- | ----- |
+| 実験 | パイプライン以外の実行。 |
+| PipelineRun | StepRun の親であるパイプラインの実行。 |
+| StepRun | パイプライン ステップの実行。 |
+| ReusedStepRun | 前回の実行を再利用するパイプライン ステップの実行。 |
+
+## <a name="activity-log"></a>アクティビティ ログ
+
+次の表は、アクティビティ ログで作成される可能性がある Azure Machine Learning に関連する操作を示しています。
+
+| 操作 | 説明 |
+|:---|:---|
+| Machine Learning ワークスペースを作成または更新します | ワークスペースが作成または更新されました |
+| CheckComputeNameAvailability | コンピューティング名が既に使用されているかどうかを確認します |
+| コンピューティング リソースを作成または更新します | コンピューティング リソースが作成または更新されました |
+| コンピューティング リソースを削除します | コンピューティング リソースが削除されました |
+| シークレットのリスト | Machine Learning ワークスペースの操作のシークレットのリスト |
+
 ## <a name="resource-logs"></a>リソース ログ
 
-次の表に、Azure Monitor ログまたは Azure Storage で Azure Machine Learning リソース ログが収集される場合のそれらのプロパティを示します。
+このセクションでは、Azure Machine Learning ワークスペース用に収集できるリソース ログの種類を示します。
+
+リソース プロバイダーと種類:[Microsoft.MachineLearningServices/workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces)。
+
+| カテゴリ | 表示名 |
+| ----- | ----- |
+| AmlComputeClusterEvent | AmlComputeClusterEvent |
+| AmlComputeClusterNodeEvent | AmlComputeClusterNodeEvent |
+| AmlComputeCpuGpuUtilization | AmlComputeCpuGpuUtilization |
+| AmlComputeJobEvent | AmlComputeJobEvent |
+| AmlRunStatusChangedEvent | AmlRunStatusChangedEvent |
+
+## <a name="schemas"></a>スキーマ
+
+次のスキーマは、Azure Machine Learning によって使用されています
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents テーブル
 
@@ -42,8 +148,8 @@ ms.locfileid: "82856024"
 | ResourceGroupName | リソース グループの名前 |
 | JobName | ジョブの名前 |
 | ClusterId | クラスターの ID |
-| EventType | ジョブ イベントの種類 (例: JobSubmitted、JobRunning、JobFailed、JobSucceeded など)。 |
-| ExecutionState | ジョブ (実行) の状態 (例: 処理待ち、実行中、成功、失敗) |
+| EventType | ジョブ イベントの種類。 たとえば、JobSubmitted、JobRunning、JobFailed、JobSucceeded など。 |
+| ExecutionState | ジョブ (実行) の状態。 たとえば、キューに登録済み、実行中、成功、失敗など |
 | ErrorDetails | ジョブ エラーの詳細 |
 | CreationApiVersion | ジョブの作成に使用される API バージョン |
 | ClusterResourceGroupName | クラスターのリソース グループ名 |
@@ -109,7 +215,7 @@ ms.locfileid: "82856024"
 | VmSize | ノードの VM サイズ |
 | VmFamilyName | ノードが属している VM ファミリ |
 | VmPriority | 作成されたノードの優先順位: Dedicated/LowPriority |
-| Publisher | VM イメージの発行元 (例: microsoft-dsvm) |
+| Publisher | VM イメージの発行元。 たとえば、microsoft-dsvm など |
 | プラン | VM 作成に関連付けられているプラン |
 | Sku | 作成されたノード/VM の SKU |
 | Version | ノード/VM の作成時に使用されるイメージのバージョン |
@@ -122,93 +228,8 @@ ms.locfileid: "82856024"
 | StartTaskEndTime | ノードに割り当てられたタスクが終了した時刻 |
 | TotalE2ETimeInSeconds | ノードがアクティブだった合計時間 |
 
-### <a name="metrics"></a>メトリック
 
-次の表に、Azure Machine Learning に対して収集されたプラットフォーム メトリックを示します。すべてのメトリックは、名前空間 **Azure Machine Learning ワークスペース**に格納されます。
-
-**Model**
-
-| メトリック | ユニット | 説明 |
-| ----- | ----- | ----- |
-| モデルのデプロイが失敗しました | Count | 失敗したモデルのデプロイの数。 |
-| 開始されたモデル デプロイ | Count | 開始されたモデル デプロイの数。 |
-| モデルのデプロイが成功しました | Count | 成功したモデル デプロイの数。 |
-| モデルの登録が失敗しました | Count | 失敗したモデル登録の数。 |
-| モデルの登録が成功しました | Count | 成功したモデル登録の数。 |
-
-**[クォータ]**
-
-クォータ情報は Azure Machine Learning のコンピューティングのみを対象としています。
-
-| メトリック | ユニット | 説明 |
-| ----- | ----- | ----- |
-| アクティブなコア | Count | アクティブなコンピューティング コアの数。 |
-| アクティブなノード | Count | アクティブなノードの数。 |
-| アイドル状態のコア | Count | アイドル状態のコンピューティング コアの数。 |
-| アイドル状態のノード | Count | アイドル状態のコンピューティング ノードの数。 |
-| 終了中のコア | Count | 終了中のコアの数。 |
-| 終了中のノード | Count | 終了中のノードの数。 |
-| 割り込まれたコア | Count | 割り込まれたコアの数。 |
-| Preempted Node (割り込まれたノード) | Count | 割り込まれたノードの数。 |
-| クォータ使用率 | Percent | 使用されているクォータの割合。 |
-| コア総数 | Count | コア総数。 |
-| ノード総数 | Count | ノード総数。 |
-| 使用できないコア | Count | 使用できないコアの数。 |
-| 使用できないノード | Count | 使用できないノードの数。 |
-
-クォータ メトリックをフィルター処理するのに使用できるディメンションを次に示します。
-
-| Dimension | 利用可能なメトリック | 説明 |
-| ---- | ---- | ---- |
-| クラスター名 | すべてのクォータ メトリック | コンピューティング インスタンスの名前。 |
-| VM ファミリ名 | クォータ使用率 | クラスターによって使用される VM ファミリの名前。 |
-| VM 優先度 | クォータ使用率 | VM の優先度。
-
-**リソース**
-
-| メトリック | ユニット | 説明 |
-| ----- | ----- | ----- |
-| CpuUtilization | Percent | 実行/ジョブ中に特定のノードで使用された CPU の割合。 このメトリックは、ジョブがノード上で実行されている場合にのみ発行されます。 1 つのジョブで 1 つ以上のノードを使用できます。 このメトリックはノードごとに発行されます。 |
-| GpuUtilization | Percent | 実行/ジョブ中に特定のノードで使用された GPU の割合。 1 つのノードが 1 つ以上の GPU を持つことができます。 このメトリックは、ノードごと、GPU ごとに発行されます。 |
-
-リソース メトリックのフィルター処理に使用できるディメンションを次に示します。
-
-| Dimension | 説明 |
-| ----- | ----- |
-| CreatedTime | |
-| deviceId | デバイスの ID (GPU)。 GpuUtilization でのみ使用できます。 |
-| NodeId | ジョブが実行されている場所で作成されたノードの ID。 |
-| RunId | 実行/ジョブの ID。 |
-
-**[実行]**
-
-トレーニングの実行に関する情報。
-
-| メトリック | ユニット | 説明 |
-| ----- | ----- | ----- |
-| 完了した実行 | Count | 完了した実行の数。 |
-| 失敗した実行 | Count | 失敗した実行の数。 |
-| 開始された実行 | Count | 開始された実行の数。 |
-
-実行メトリックをフィルター処理するのに使用できるディメンションを次に示します。
-
-| Dimension | 説明 |
-| ---- | ---- |
-| ComputeType | 実行で使用されるコンピューティングの種類。 |
-| PipelineStepType | 実行で使用される [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) の種類。 |
-| PublishedPipelineId | 実行で使用される公開済みパイプラインの ID。 |
-| RunType | 実行の種類。 |
-
-RunType ディメンションの有効な値は次のとおりです。
-
-| 値 | 説明 |
-| ----- | ----- |
-| 実験 | パイプライン以外の実行。 |
-| PipelineRun | StepRun の親であるパイプラインの実行。 |
-| StepRun | パイプライン ステップの実行。 |
-| ReusedStepRun | 前回の実行を再利用するパイプライン ステップの実行。 |
-
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - Azure Machine Learning の説明については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resource)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。

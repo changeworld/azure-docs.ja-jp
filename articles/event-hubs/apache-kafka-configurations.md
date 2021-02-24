@@ -2,13 +2,13 @@
 title: Apache Kafka クライアントの推奨される構成 - Azure Event Hubs
 description: この記事では、Apache Kafka 用の Azure Event Hubs と対話するクライアントに推奨される Apache Kafka 構成について説明します。
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 01/07/2021
+ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094596"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028830"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Apache Kafka クライアントに推奨される構成
 Apache Kafka クライアント アプリケーションから Azure Event Hubs を使用する場合に推奨される構成を以下に示します。 
@@ -27,7 +27,7 @@ Apache Kafka クライアント アプリケーションから Azure Event Hubs 
 
 プロパティ | 推奨値 | 許可される範囲 | Notes
 ---|---:|---:|---
-`max.request.size` | 1000000 | < 1046528 | 1,046,528 バイトを超える要求が送信されると、サービスによって接続は閉じられます。  "*この値は変更する**必要**があり、高スループットの生成シナリオで問題が発生します。* "
+`max.request.size` | 1000000 | < 1046528 | 1,046,528 バイトを超える要求が送信されると、サービスによって接続は閉じられます。  "*この値は変更する **必要** があり、高スループットの生成シナリオで問題が発生します。* "
 `retries` | > 0 | | 場合によっては、delivery.timeout.ms の値を増やす必要があります。ドキュメントを参照してください。
 `request.timeout.ms` | 30000 .. 60000 | > 20000| EH は、内部では既定値で最小 20,000 ミリ秒以上に設定されます。  "*タイムアウト値の低い要求は受け入れられますが、クライアントの動作は保証されません。* "
 `metadata.max.idle.ms` | 180000 | > 5000 | プロデューサーでアイドル状態のトピックのメタデータがキャッシュされる期間を制御します。 トピックが最後に作成されてからの経過時間がメタデータのアイドル期間を超えた場合、トピックのメタデータは忘れられ、次のアクセスでメタデータ フェッチ要求が強制的に実行されます。
@@ -79,7 +79,7 @@ Apache Kafka クライアント アプリケーションから Azure Event Hubs 
 
 現象 | 問題 | 解決策
 ----|---|-----
-再調整によるオフセット コミットの失敗 | poll() の呼び出しの間にコンシューマーが待機する時間が長すぎて、サービスによってコンシューマーがグループから削除されます。 | いくつかのオプションがあります。 <ul><li>セッション タイムアウトを増やす</li><li>メッセージのバッチサイズを減らして処理を高速化する</li><li>処理の並列化を改善して、consumer.poll() をブロックしないようにする</li></ul> 3 つのいずれかの組み合わせを適用することをお勧めします。
+再調整によるオフセット コミットの失敗 | poll() の呼び出しの間にコンシューマーが待機する時間が長すぎて、サービスによってコンシューマーがグループから削除されます。 | いくつかのオプションがあります。 <ul><li>ポーリング処理のタイムアウトを増加する (`max.poll.interval.ms`)</li><li>メッセージ バッチのサイズを減らして処理を高速化する</li><li>処理の並列化を改善して、consumer.poll() をブロックしないようにする</li></ul> 3 つのいずれかの組み合わせを適用することをお勧めします。
 高生成スループットでのネットワーク例外 | Java クライアント + 既定の max.request.size を使用していますか。  要求が大きすぎる可能性があります。 | 上記の Java 構成を参照してください。
 
 ## <a name="next-steps"></a>次のステップ

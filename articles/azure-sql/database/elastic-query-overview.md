@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: 0497356e536632d179f4f64a6a9df8551a7a1897
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557870"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781058"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "85557870"
 
 ## <a name="why-use-elastic-queries"></a>エラスティック クエリを使用する理由
 
-### <a name="azure-sql-database"></a>Azure SQL データベース
+### <a name="azure-sql-database"></a>Azure SQL Database
 
 T-SQL で Azure SQL Database 内のデータベースにわたって完全なクエリを実行します。 これにより、リモート データベースの読み取り専用クエリが可能になり、現在の SQL Server のお客様が 3 部および 4 部構成名または SQL Database へのリンク サーバーを使用してアプリケーションを移行できるようになります。
 
@@ -39,7 +39,7 @@ T-SQL で Azure SQL Database 内のデータベースにわたって完全なク
 
 ### <a name="stored-procedure-execution"></a>ストアド プロシージャの実行
 
-[sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) を使用して、リモート ストアド プロシージャ呼び出しまたはリモート関数を実行します。
+[sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) を使用して、リモート ストアド プロシージャ呼び出しまたはリモート関数を実行します。
 
 ### <a name="flexibility"></a>柔軟性
 
@@ -87,10 +87,10 @@ T-SQL で Azure SQL Database 内のデータベースにわたって完全なク
 
 次の手順では、SQL Database 内の同じスキーマを持つリモート データベース上にあるテーブルへのアクセスを必要とする列方向のパーティション分割シナリオ向けに、エラスティック データベース クエリを構成します。
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource ( **RDBMS**
-* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
+* [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* [CREATE/DROP EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource ( **RDBMS**
+* [CREATE/DROP EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 DDL ステートメントを実行すると、ローカル テーブルであるかのようにリモート テーブル "mytable" にアクセスできます。 Azure SQL Database により、リモート データベースへの接続が自動的に開かれてリモート データベースで要求が処理され、その結果が返されます。
 
@@ -108,11 +108,11 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 次の手順では、SQL Database 内の (通常は) いくつかのリモート データベース上にある一連のテーブルへのアクセスを必要とする行方向のパーティション分割シナリオ向けに、エラスティック データベース クエリを構成します。
 
-* [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * エラスティック データベース クライアント ライブラリを使用して、データ層を表す [シャード マップ](elastic-scale-shard-map-management.md) を作成します。
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource (**SHARD_MAP_MANAGER** 型)
-* [CREATE/DROP EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
+* [CREATE/DROP EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource (**SHARD_MAP_MANAGER** 型)
+* [CREATE/DROP EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 これらの手順を実行すると、ローカル テーブルであるかのように、行方向にパーティション分割されたテーブル "mytable" にアクセスできます。 Azure SQL Database により、テーブルが物理的に格納されているリモート データベースへの複数の並列接続が自動的に開かれます。さらに、リモート データベースで要求が処理され、その結果が返されます。
 行方向のパーティション分割シナリオに必要な手順の詳細については、[行方向のパーティション分割のためのエラスティック クエリ](elastic-query-horizontal-partitioning.md)に関するページをご覧ください。
@@ -120,7 +120,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 コーディングを開始するには、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](elastic-query-getting-started.md)」をご覧ください。
 
 > [!IMPORTANT]
-> 多数のデータベースに対するエラスティック クエリの正常な実行は、クエリの実行中に各データベースを使用できることに大きく依存しています。 いずれかのデータベースが使用できない場合は、クエリ全体が失敗します。 数百または数千のデータベースに対するクエリを一度に実行することを計画している場合は、クライアント アプリケーションに再試行ロジックが埋め込まれていることを確認してください。または、[Elastic Database Jobs](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (プレビュー) を活用して、データベースの小さなサブセットに対してクエリを実行し、各クエリの結果を単一の宛先に統合することを検討してください。
+> 多数のデータベースに対するエラスティック クエリの正常な実行は、クエリの実行中に各データベースを使用できることに大きく依存しています。 いずれかのデータベースが使用できない場合は、クエリ全体が失敗します。 数百または数千のデータベースに対するクエリを一度に実行することを計画している場合は、クライアント アプリケーションに再試行ロジックが埋め込まれていることを確認してください。または、[Elastic Database Jobs](./job-automation-overview.md#elastic-database-jobs-preview) (プレビュー) を活用して、データベースの小さなサブセットに対してクエリを実行し、各クエリの結果を単一の宛先に統合することを検討してください。
 
 ## <a name="t-sql-querying"></a>T-SQL クエリの実行
 
@@ -158,7 +158,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 * 列方向にパーティション分割されたデータの構文とサンプル クエリについては、「[例: 列方向にパーティション分割されたデータベースのクエリ](elastic-query-vertical-partitioning.md)」をご覧ください。
 * 行方向のパーティション分割 (シャード化) のチュートリアルについては、「[スケールアウトされたクラウド データベース全体のレポート (プレビュー)](elastic-query-getting-started.md)」をご覧ください。
 * 行方向にパーティション分割されたデータの構文とサンプル クエリについては、「[スケールアウトされたクラウド データベース全体をレポートする (プレビュー)](elastic-query-horizontal-partitioning.md)」をご覧ください。
-* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714)」をご覧ください。
+* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)」をご覧ください。
 
 <!--Image references-->
 [1]: ./media/elastic-query-overview/overview.png

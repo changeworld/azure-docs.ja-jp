@@ -11,9 +11,9 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: .NET Core
+    - name: ASP.NET Core
       href: quickstart-dotnetcore.md
-    - name: .NET Framework
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -27,17 +27,34 @@
       href: quickstart-ruby.md
     - name: 静的な HTML サイト
       href: quickstart-html.md
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: quickstart-arm-template.md
     - name: カスタム コンテナー
       href: quickstart-custom-container.md
     - name: 複数コンテナー アプリ
       href: quickstart-multi-container.md
 - name: チュートリアル
   items:
+    - name: アプリ アクセス ストレージと Microsoft Graph をセキュリティで保護する
+      items:
+        - name: 概要
+          href: scenario-secure-app-overview.md
+        - name: App Service 認証を設定する
+          href: scenario-secure-app-authentication-app-service.md
+        - name: アプリ アクセス ストレージをセキュリティで保護する
+          href: scenario-secure-app-access-storage.md
+        - name: アプリ アクセス Microsoft Graph をユーザーとしてセキュリティで保護する
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: アプリ アクセス Microsoft Graph をアプリとしてセキュリティで保護する
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: リソースをクリーンアップする
+          href: scenario-secure-app-clean-up-resources.md
     - name: アプリと DB
       items:
-        - name: .NET Core と SQL DB
+        - name: ASP.NET Core と SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: .NET Framework と SQL DB
+        - name: ASP.NET と SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP と MySQL
           href: tutorial-php-mysql-app.md
@@ -85,11 +102,13 @@
   items:
     - name: App Service プラン
       href: overview-hosting-plans.md
+    - name: コスト管理
+      href: overview-manage-costs.md
     - name: OS 機能
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 推奨事項
           href: security-recommendations.md
@@ -97,8 +116,8 @@
           href: overview-authentication-authorization.md
         - name: OS とランタイムの修正プログラムの適用
           href: overview-patch-os-runtime.md
-        - name: 組み込みのセキュリティ制御
-          href: app-service-security-controls.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -144,7 +163,7 @@
           href: configure-language-java.md
         - name: Ruby の構成
           href: configure-language-ruby.md
-        - name: カスタム Linux コンテナーの構成
+        - name: カスタム コンテナーの構成
           href: configure-custom-container.md
         - name: オンプレミスのリソースへの接続
           href: web-sites-integrate-with-vnet.md
@@ -206,6 +225,8 @@
               href: configure-authentication-provider-twitter.md
             - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
               href: configure-authentication-provider-openid-connect.md
+            - name: Apple でのサインインを使用した認証 (プレビュー)
+              href: configure-authentication-provider-apple.md
         - name: 高度な認証
           href: app-service-authentication-how-to.md
         - name: アクセスを制限する
@@ -224,7 +245,7 @@
       items:
         - name: サーバー容量のスケールアップ
           href: manage-scale-up.md
-        - name: PremiumV2 レベルの構成
+        - name: PremiumV3 レベルの構成
           href: app-service-configure-premium-tier.md
         - name: 複数のインスタンスへのスケールアウト
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
@@ -238,6 +259,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: リソース イベントの取得
           href: get-resource-events.md
+        - name: 正常性チェック
+          href: monitor-instances-health-check.md
         - name: Linux コンテナーへの SSH セッションを開く
           href: configure-linux-open-ssh-session.md
     - name: アプリの管理

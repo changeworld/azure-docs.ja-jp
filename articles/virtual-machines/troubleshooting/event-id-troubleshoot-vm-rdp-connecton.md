@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c293945a52dd810975b36144f224278163166ba8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088599"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878445"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング 
 
@@ -235,7 +235,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 RDP では、既定のプロトコルとして TLS 1.0 が使用されます。 ただし、プロトコルが新しい TLS 1.1 に変更されている場合があります。
 
-この問題のトラブルシューティングについては、「[RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティング](troubleshoot-authentication-error-rdp-vm.md#tls-version)」をご覧ください。
+この問題のトラブルシューティングについては、「[RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティング](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm#tls-version)」をご覧ください。
 
 ## <a name="scenario-3"></a>シナリオ 3
 

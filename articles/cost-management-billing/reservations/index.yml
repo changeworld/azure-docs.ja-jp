@@ -11,12 +11,12 @@ metadata:
   author: bandersmsft
   ms.author: banders
   ms.date: 04/30/2020
-  ms.openlocfilehash: d8c7e7eee6307ce48e89cb5ade65d7dbff0f42d4
-  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+  ms.openlocfilehash: db01f91401b3a0f33b8ad53e91eb60839ecbcb7f
+  ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88684696"
+  ms.lasthandoff: 02/05/2021
+  ms.locfileid: "99576297"
 landingContent:
 - title: 予約の購入
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
     - text: 予約の交換と返金
       url: exchange-and-refund-azure-reservations.md
     - text: 月額払いで予約を購入する
-      url: monthly-payments-reservations.md
+      url: ./prepare-buy-reservation.md
   - linkListType: how-to-guide
     links:
     - text: 予約の更新
@@ -35,19 +35,19 @@ landingContent:
     - text: Azure Synapse Analytics
       url: prepay-sql-data-warehouse-charges.md
     - text: 仮想マシン
-      url: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+      url: ../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
     - text: Azure Storage
       url: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
     - text: Cosmos DB
       url: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
     - text: SQL Database
-      url: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+      url: ../../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2ftoc.json
     - text: Azure Data Explorer
       url: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
     - text: Azure Databricks
       url: prepay-databricks-reserved-capacity.md
     - text: App Service
-      url: prepay-app-service-isolated-stamp.md
+      url: prepay-app-service.md
     - text: Azure ソフトウェア プラン
       url: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
 - title: 割引が適用されるしくみについて
@@ -69,7 +69,7 @@ landingContent:
     - text: Azure Databricks
       url: reservation-discount-databricks.md
     - text: App Service
-      url: reservation-discount-app-service-isolated-stamp.md
+      url: reservation-discount-app-service.md
     - text: Azure ソフトウェアの料金
       url: understand-suse-reservation-charges.md
 - title: Azure Database に割引が適用されるしくみ

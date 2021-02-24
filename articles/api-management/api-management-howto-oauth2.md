@@ -11,21 +11,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 08/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: fae4e349d46425c0c2b2b923d6a61e2e588708c1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902260"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077253"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
 多くの API では、[OAuth 2.0](https://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。 Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
-
-> [!IMPORTANT]
-> OAuth 2.0 認証は、新しい開発者ポータルの対話型コンソールではまだ使用できません。
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>前提条件
 
@@ -66,7 +63,7 @@ ms.locfileid: "87902260"
 
 5. 次に、 **[トークン エンドポイントの URL]** 、 **[クライアント認証方法]** 、 **[アクセス トークンの送信方法]** 、および **[既定のスコープ]** を指定します。
 
-    ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-03.png)
+    ![[OAuth2 サービスの追加] 画面を示すスクリーンショット。](./media/api-management-howto-oauth2/oauth-03.png)
 
     Azure Active Directory OAuth 2.0 サーバーでは、 **[Token endpoint URL (トークン エンドポイント URL)]** の形式が以下のようになります。ここで、`<TenantID>` の形式は `yourapp.onmicrosoft.com` です。
 
@@ -81,7 +78,7 @@ ms.locfileid: "87902260"
     - 承認コード付与フローの場合は `/signin-oauth/code/callback/{authServerName}`
     - 暗黙的な許可のフローの場合は `/signin-oauth/implicit/callback`
 
-    ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-04.png)
+    ![新しい OAuth2 サービス用のクライアント資格情報を追加する場所を示すスクリーンショット。](./media/api-management-howto-oauth2/oauth-04.png)
 
     **[承認許可の種類]** を **[リソース所有者のパスワード]** に設定した場合は、 **[リソース所有者のパスワード資格情報]** セクションを使用してそれらの資格情報を指定します。それ以外の場合は、空白のままにすることができます。
 
@@ -99,7 +96,7 @@ ms.locfileid: "87902260"
 
 3. 必要な **[Authorization server (認証サーバー)]** をドロップダウン リストで選択して、 **[保存]** をクリックします。
 
-    ![OAuth 2.0 の設定](./media/api-management-howto-oauth2/oauth-07.png)
+    ![選択した承認サーバーと [保存] ボタンが強調表示されているスクリーンショット。](./media/api-management-howto-oauth2/oauth-07.png)
 
 ## <a name="legacy-developer-portal---test-the-oauth-20-user-authorization"></a><a name="step3"> </a>従来の開発者ポータル - OAuth 2.0 ユーザー承認をテストする
 

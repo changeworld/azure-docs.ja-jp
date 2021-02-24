@@ -10,19 +10,19 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212141"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676232"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>sqlcmd を使用して Synapse SQL プールに接続する
+# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>sqlcmd を使用して Azure Synapse Analytics の SQL プールに接続する
 
 > [!div class="op_single_selector"]
 >
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
@@ -32,10 +32,10 @@ ms.locfileid: "85212141"
 
 ## <a name="1-connect"></a>1.接続する
 
-[sqlcmd][sqlcmd] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL プール データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
+[sqlcmd][sqlcmd] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL プールの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
 
 * **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します。
-* **データベース (-d):** データベース名。
+* **データベース (-d):** SQL プール名。
 * **引用符で囲まれた ID の有効化 (-I):** SQL プール インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
 
 SQL Server 認証を使用するには、ユーザー名とパスワードのパラメーターを追加する必要があります。
@@ -85,4 +85,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>次のステップ
 
-sqlcmd で使用可能なオプションの詳細については、[sqlcmd に関するドキュメント](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を参照してください。
+sqlcmd で使用可能なオプションの詳細については、[sqlcmd に関するドキュメント](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を参照してください。

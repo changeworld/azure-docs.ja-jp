@@ -9,15 +9,16 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8fbf06d6bd93de578039959d9f0235f1f55d448e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1425b89e42450123c1696ddcee4458e1f69b8a6c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424275"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348570"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 このビデオ チュートリアルでは、React フロントエンドでヒーローの追跡アプリを作成する方法を複数のパートにわたって紹介しています。 このアプリは、サーバーに Node と Express を使用し、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) で構成された Cosmos データベースに接続した後、アプリのサーバー部分に React フロントエンドを接続するものです。 このチュートリアルでは、Azure portal からポイントアンドクリック方式で Cosmos DB をスケーリングする方法や、アプリをインターネットにデプロイしてだれでもお気に入りのヒーローを追跡できるようにする方法も紹介しています。 
 
@@ -107,5 +108,4 @@ ms.locfileid: "87424275"
 次のチュートリアルに進み、MongoDB のデータを Azure Cosmos DB にインポートする方法を学習しましょう。  
 
 > [!div class="nextstepaction"]
-> [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
- 
+> [MongoDB データを Azure Cosmos DB にインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

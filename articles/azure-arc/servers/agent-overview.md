@@ -1,18 +1,21 @@
 ---
 title: Connected Machine Windows エージェントの概要
-description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー (プレビュー) エージェントの詳細な概要を提供します。
-ms.date: 08/06/2020
+description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
+ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ed77ee00510fedaf42226081fcf11c4753b8a63a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212987"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626310"
 ---
-# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Azure Arc 対応サーバー (プレビュー) エージェントの概要
+# <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
-Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントを使用すると、企業ネットワークまたは他のクラウド プロバイダー上の Azure の外部でホストされている Windows および Linux コンピューターを管理できます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
+Azure Arc 対応サーバー Connected Machine エージェントを使用すると、企業ネットワークまたは他のクラウド プロバイダー上の Azure の外部でホストされている Windows および Linux コンピューターを管理できます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
+
+>[!NOTE]
+>2020 年 9 月の Azure Arc 対応サーバーの一般リリース以降では、Azure Connected Machine エージェント (バージョン 1.0 以前のエージェント) のプレリリース バージョンはすべて、**2021 年 2 月 2 日** までに **非推奨** となります。  プレリリースされたエージェントが Azure Arc 対応サーバー サービスと通信できなくなる前に、この期間にバージョン 1.0 以降にアップグレードすることができます。
 
 ## <a name="agent-component-details"></a>エージェント コンポーネントの詳細
 
@@ -28,7 +31,7 @@ Azure Connected Machine エージェント パッケージには、まとめて�
     * ゲスト割り当ては 14 日間ローカルに格納されます。 14 日の期間内に Connected Machine エージェントがサービスに再接続した場合は、ポリシー割り当てが再適用されます。
     * 割り当ては 14 日後に削除され、14 日の期間の後にマシンに再割り当てされることはありません。
 
-* 拡張エージェントは VM 拡張機能 (インストール、アンインストール、アップグレードなど) を管理します。 拡張機能は Azure からダウンロードされ、Windows では `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` フォルダー、Linux の場合は `/opt/GC_Ext/downloads` にコピーされます。 Windows では、拡張機能はパス `%SystemDrive%\Packages\Plugins\<extension>` にインストールされます。Linux では、拡張機能は `/var/lib/waagent/<extension>` にインストールされます。
+* 拡張エージェントは VM 拡張機能 (インストール、アンインストール、アップグレードなど) を管理します。 拡張機能は Azure からダウンロードされ、Windows では `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` フォルダー、Linux の場合は `/opt/GC_Ext/downloads` にコピーされます。 Windows では、拡張機能はパス `%SystemDrive%\Packages\Plugins\<extension>` にインストールされます。Linux では、拡張機能は `/var/lib/waagent/<extension>` にインストールされます。
 
 ## <a name="download-agents"></a>エージェントをダウンロードする
 
@@ -44,28 +47,30 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。 
+Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。
 
-- Windows Server 2012 R2 以上 (Windows Server Core を含む)
-- Ubuntu 16.04 および 18.04 (x64)
+- Windows Server 2008 R2、Windows Server 2012 R2 以上 (Server Core を含む)
+- Ubuntu 16.04 および 18.04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
+- Oracle Linux 7
 
->[!NOTE]
->このプレビュー リリースの Windows 用 Connected Machine エージェントでサポートされるのは、英語を使用するように構成された Windows Server だけです。
->
+> [!WARNING]
+> Linux ホスト名または Windows コンピューター名では、予約語や商標を名前に使用できません。使用した場合、接続されているマシンを Azure に登録しようとすると失敗します。 予約語の一覧については、「[予約されたリソース名のエラーを解決する](../../azure-resource-manager/templates/error-reserved-resource-name.md)」を参照してください。
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
 * マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
 
-* マシンの読み取り、変更、再オンボード、および削除を行うには、**Azure Connected Machine のリソース管理者**ロールのメンバーである必要があります。 
+* マシンの読み取り、変更、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
-Azure Arc 対応サーバー (プレビュー) でコンピューターを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続されるコンピューターの数を計画してください。
+Azure Arc 対応サーバーでコンピューターを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続されるコンピューターの数を計画してください。
+
+Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5, 000 個のマシン インスタンスがサポートされます。
 
 ### <a name="transport-layer-security-12-protocol"></a>トランスポート層セキュリティ 1.2 プロトコル
 
@@ -78,14 +83,20 @@ Azure に転送中のデータのセキュリティを確保するには、ト�
 
 ### <a name="networking-configuration"></a>ネットワーク構成
 
-Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続する場合、以下の要件を確認してネットワーク構成の要件を把握してください。
+Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続されている場合は、次を確認してネットワーク構成の要件を把握してください。
 
-アウトバウンド接続がファイアウォールやプロキシ サーバーによって制限されている場合は、以下に示す URL がブロックされていないことを確認してください。 エージェントに必要な IP 範囲またはドメイン名のみにサービスとの通信を許可する場合は、次のサービス タグおよび URL へのアクセスも許可する必要があります。
+> [!NOTE]
+> Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)を使用することはサポートされていません。
+>
+
+アウトバウンド接続がファイアウォールやプロキシ サーバーによって制限されている場合は、以下に示す URL がブロックされていないことを確認してください。 エージェントがサービスと通信するために必要な IP 範囲またはドメイン名のみを許可する場合は、次のサービス タグおよび URL へのアクセスを許可する必要があります。
 
 サービス タグ:
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureResourceManager
+* AzureArcInfrastructure
 
 URL:
 
@@ -93,40 +104,47 @@ URL:
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
+|`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
-|`agentserviceapi.azure-automation.net`|ゲスト構成|
-|`*-agentservice-prod-1.azure-automation.net`|ゲスト構成|
 |`*.guestconfiguration.azure.com` |ゲスト構成|
 |`*.his.arc.azure.com`|ハイブリッド ID サービス|
+|`www.office.com`|Office 365|
 
-各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 詳細については、「[サービス タグ](../../virtual-network/security-overview.md#service-tags)」を参照してください。
+プレビュー エージェント (バージョン 0.11 以下) でも、次の URL へのアクセスが必要になります。
 
-前の表に記載した URL は、サービス タグの IP アドレス範囲情報とは別に必要となります。現在、ほとんどのサービスにはサービス タグの登録がないためです。 結果として IP アドレスが変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、**AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
+| エージェントのリソース | 説明 |
+|---------|---------|
+|`agentserviceapi.azure-automation.net`|ゲスト構成|
+|`*-agentservice-prod-1.azure-automation.net`|ゲスト構成|
+
+各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 JSON ファイル内のこの情報は、各サービス タグに対応する現在の特定時点の IP 範囲の一覧です。 IP アドレスは変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、**AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
+
+詳細については、[サービス タグの概要](../../virtual-network/service-tags-overview.md)に関するページをご確認ください。
 
 ### <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
 
-Azure Arc 対応サーバー (プレビュー) は、このサービスを使用するために、サブスクリプション内の次の Azure リソース プロバイダーに依存しています。
+Azure Arc 対応サーバーは、このサービスを使用するために、サブスクリプション内の次の Azure リソース プロバイダーに依存しています。
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**
 
 これらが登録されていない場合は、次のコマンドを使って登録できます。
 
-Azure PowerShell:
+Azure PowerShell:
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Azure CLI:
+Azure CLI:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 「[Azure portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」の手順に従って、Azure portal でリソースプロバイダーを登録することもできます。
@@ -134,6 +152,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ## <a name="installation-and-configuration"></a>インストールと構成
 
 要件に応じたさまざまな方法を使用して、ハイブリッド環境内のマシンを直接 Azure に接続することができます。 次の表は、どの方法が組織にとって最も効果的であるかを判断するために各方法について説明しています。
+
+> [!IMPORTANT]
+> Connected Machine エージェントを Azure Windows 仮想マシンにインストールすることはできません。 インストールを試みた場合は、インストールによってこの操作が検出され、ロールバックされます。
 
 | Method | 説明 |
 |--------|-------------|
@@ -151,7 +172,7 @@ Windows 用 Connected Machine エージェントは、次の 3 つの方法の�
 * コマンド シェルから Windows インストーラー パッケージ `AzureConnectedMachineAgent.msi` を実行して手動で。
 * スクリプト化されたメソッドを使用して PowerShell セッションから。
 
-Windows 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成の変更がさらに適用されます。
+Windows 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更が適用されます。
 
 * 次のインストール フォルダーは、セットアップ中に作成されます。
 
@@ -161,16 +182,17 @@ Windows 用 Connected Machine エージェントをインストールした後�
     |%ProgramData%\AzureConnectedMachineAgent |エージェント構成ファイルが含まれています。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |取得したトークンが含まれています。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |サービスへの登録情報を記録する `agentconfig.json` エージェント構成ファイルが含まれています。|
-    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | ゲスト構成エージェント ファイルを含むインストール パス。 |
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | ゲスト構成エージェント ファイルを含むインストール パス。 |
     |%ProgramData%\GuestConfig |Azure からの (適用された) ポリシーが含まれています。|
-    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 拡張機能は Azure からダウンロードされ、ここにコピーされます。|
+    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | 拡張機能は Azure からダウンロードされ、ここにコピーされます。|
 
 * エージェントのインストール中に、次の Windows サービスがターゲット マシン上に作成されます。
 
     |[サービス名] |Display name |[処理名] |説明 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure Hybrid Instance Metadata Service |himds.exe |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
-    |DscService |ゲスト構成サービス |dsc_service.exe |ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
+    |himds |Azure Hybrid Instance Metadata Service |himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
+    |GCArcService |ゲスト構成 Arc サービス |gc_service |マシンの必要な状態構成を監視します。|
+    |ExtensionService |ゲスト構成拡張機能サービス | gc_service |マシンをターゲットとする必要な拡張機能をインストールします。|
 
 * 次の環境変数は、エージェントのインストール中に作成されます。
 
@@ -187,14 +209,14 @@ Windows 用 Connected Machine エージェントをインストールした後�
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |詳細 (-v) 引数が使用されている場合は、azcmagent ツール コマンドの出力が含まれます。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |DSC サービス アクティビティの詳細を記録します<br> (特に、HIMDS サービスと Azure Policy の間の接続)。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
-    |%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs|拡張エージェント コンポーネントに関する詳細を記録します。|
-    |%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>|インストールされた拡張機能の詳細を記録します。|
+    |%ProgramData%\GuestConfig\ext_mgr_logs|拡張エージェント コンポーネントに関する詳細を記録します。|
+    |%ProgramData%\GuestConfig\extension_logs\<Extension>|インストールされた拡張機能の詳細を記録します。|
 
-* ローカル セキュリティ グループの**ハイブリッド エージェント拡張アプリケーション**が作成されます。
+* ローカル セキュリティ グループの **ハイブリッド エージェント拡張アプリケーション** が作成されます。
 
 * エージェントのアンインストール中に、次の成果物は削除されません。
 
-    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
+    * %ProgramData%\AzureConnectedMachineAgent\Log
     * %ProgramData%\AzureConnectedMachineAgent とサブディレクトリ
     * %ProgramData%\GuestConfig
 
@@ -202,7 +224,7 @@ Windows 用 Connected Machine エージェントをインストールした後�
 
 Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 エージェントは、シェル スクリプト バンドルの [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) を使用してインストールおよび構成されます。
 
-Linux 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更がさらに適用されます。
+Linux 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更が適用されます。
 
 * 次のインストール フォルダーは、セットアップ中に作成されます。
 
@@ -220,8 +242,9 @@ Linux 用 Connected Machine エージェントをインストールした後、�
 
     |[サービス名] |Display name |[処理名] |説明 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
-    |dscd.service |ゲスト構成サービス |/opt/DSC/dsc_linux_service |これは、ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
+    |himdsd.service |Azure Connected Machine Agent サービス。 |himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
+    |gcad.servce |GC Arc サービス |gc_linux_service |マシンの必要な状態構成を監視します。 |
+    |extd.service |拡張機能サービス |gc_linux_service | マシンをターゲットとする必要な拡張機能をインストールします。|
 
 * トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
 
@@ -232,7 +255,7 @@ Linux 用 Connected Machine エージェントをインストールした後、�
     |/opt/logs/dsc.log |DSC サービス アクティビティの詳細を記録します<br> (特に、himds サービスと Azure Policy 間の接続)。|
     |/opt/logs/dsc.telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
     |/var/lib/GuestConfig/ext_mgr_logs |拡張エージェント コンポーネントに関する詳細を記録します。|
-    |/var/log/GuestConfig/extension_logs|インストールされた拡張機能の詳細を記録します。|
+    |/var/lib/GuestConfig/extension_logs|インストールされた拡張機能の詳細を記録します。|
 
 * 次の環境変数は、エージェントのインストール中に作成されます。 これらの変数は `/lib/systemd/system.conf.d/azcmagent.conf` に設定されます。
 
@@ -248,4 +271,6 @@ Linux 用 Connected Machine エージェントをインストールした後、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Arc 対応サーバー (プレビュー) の評価を開始するには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」の記事に従ってください。
+* Azure Arc 対応サーバーの評価を開始するには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」の記事に従ってください。
+
+* トラブルシューティング情報は、[Connected Machine エージェントのトラブルシューティング ガイド](troubleshoot-agent-onboard.md)に関する記事を参照してください。

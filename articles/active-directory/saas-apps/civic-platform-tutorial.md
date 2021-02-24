@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 26109d4b8875dd0b442521513dbd219dc0de06e0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520383"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455971"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>チュートリアル:Civic Platform と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88520383"
 * ユーザーが自分の Azure AD アカウントを使用して Civic Platform に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Civic Platform では、**SP** Initiated SSO がサポートされます
+* Civic Platform では、 **SP** Initiated SSO がサポートされます
 
 
 
@@ -53,7 +53,7 @@ Azure AD への Civic Platform の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Civic Platform**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Civic Platform** 」と入力します。
 1. 結果ウィンドウで **[Civic Platform]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -91,7 +91,7 @@ Civic Platform で Azure AD SSO を構成してテストするには、次の構
 
 1. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+    ![スクリーンショットは、アプリのフェデレーション メタデータ URL をコピーできる [SAML 署名証明書] ページを示しています。](common/copy-metadataurl.png)
 
 1. **Azure Active Directory** >  Azure AD の **[アプリの登録]** の順に移動し、アプリケーションを選択します。
 
@@ -120,27 +120,27 @@ Civic Platform で Azure AD SSO を構成してテストするには、次の構
 
 1. **[Standard Choices]\(標準選択項目\)** をクリックします。
 
-    ![証明書のダウンロードのリンク](media/civic-platform-tutorial/standard-choices.png)
+    ![スクリーンショットは、[Administrator Tools]\(管理ツール\) で [Standard Choices]\(標準選択項目\) が選択されている Atlassian Cloud サイトを示しています。](media/civic-platform-tutorial/standard-choices.png)
 
 1. 標準選択項目 **ssoconfig** を作成します。
 
 1. **ssoconfig** を検索して送信します。
 
-    ![証明書のダウンロードのリンク](media/civic-platform-tutorial/sso-config.png)
+    ![スクリーンショットは、ssoconfig という名前が入力された [Standard Choices - Search]\(標準選択項目 - 検索\) を示しています。](media/civic-platform-tutorial/sso-config.png)
 
 1. 赤い点をクリックして、[SSOCONFIG] を展開します。
 
-    ![証明書のダウンロードのリンク](media/civic-platform-tutorial/sso-config01.png)
+    ![スクリーンショットは、S S O CONFIG が利用できる [Standard Choices - Browse]\(標準選択項目 - 参照\) を示しています。](media/civic-platform-tutorial/sso-config01.png)
 
 1. 次の手順に従って、SSO 関連の構成情報を指定します。
 
-    ![証明書のダウンロードのリンク](media/civic-platform-tutorial/sso-config02.png)
+    ![スクリーンショットは、S S O CONFIG の [Standard Choices Item - Edit]\(標準選択項目 - 編集\) を示しています。](media/civic-platform-tutorial/sso-config02.png)
 
-    1. **[applicationid]** フィールドに、Azure portal からコピーした**アプリケーション ID** の値を入力します。
+    1. **[applicationid]** フィールドに、Azure portal からコピーした **アプリケーション ID** の値を入力します。
 
-    1. **[clientSecret]** フィールドに、Azure portal からコピーした**シークレット**の値を入力します。
+    1. **[clientSecret]** フィールドに、Azure portal からコピーした **シークレット** の値を入力します。
 
-    1. **[directoryId]** フィールドに、Azure portal からコピーした**ディレクトリ (テナント) ID** の値を入力します。
+    1. **[directoryId]** フィールドに、Azure portal からコピーした **ディレクトリ (テナント) ID** の値を入力します。
 
     1. [idpName] を入力します。 例: `Azure`。
 
@@ -182,13 +182,12 @@ Civic Platform で Azure AD SSO を構成してテストするには、次の構
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Civic Platform] タイルをクリックすると、SSO を設定した Civic Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Civic Platform] タイルをクリックすると、SSO を設定した Civic Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

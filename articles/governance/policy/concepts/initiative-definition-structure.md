@@ -1,14 +1,14 @@
 ---
 title: イニシアチブ定義の構造の詳細
 description: ポリシー イニシアチブ定義を使用し、組織の Azure リソースのデプロイのポリシー定義をグループ化する方法について説明します。
-ms.date: 08/17/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048501"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876177"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy イニシアチブ定義の構造
 
@@ -248,19 +248,18 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 ]
 ```
 
-## <a name="policy-definitions-groups-preview"></a><a name="policy-definition-groups"></a>ポリシー定義グループ (プレビュー)
+## <a name="policy-definition-groups"></a>ポリシー定義グループ
 
-Azure Policy の [規制コンプライアンス](./regulatory-compliance.md) (プレビュー) 機能の一部として、イニシアチブ定義のポリシー定義をグループ化できます。 これらの情報は、 `policyDefinitionGroups` _配列_プロパティで定義されます。 これらのグループには、ポリシー定義によって提供される **制御**や**コンプライアンス ドメイン**などの追加情報が含まれています。
-追加のグループ化の詳細については、Microsoft によって作成された **policyMetadata** オブジェクトを参照してください。 詳細については、[メタデータ オブジェクト](#metadata-objects)に関するページを参照してください。
+イニシアチブ定義のポリシー定義グループをグループ化して分類できます。 Azure Policy の[規制コンプライアンス](./regulatory-compliance.md) (プレビュー) 機能では、このプロパティを使用して定義が**コントロール**と**コンプライアンス ドメイン**にグループ化されます。 これらの情報は、 `policyDefinitionGroups` _配列_プロパティで定義されます。 追加のグループ化の詳細については、Microsoft によって作成された **policyMetadata** オブジェクトを参照してください。 詳細については、[メタデータ オブジェクト](#metadata-objects)に関するページを参照してください。
 
 ### <a name="policy-definition-groups-parameters"></a>ポリシー定義グループのパラメーター
 
 `policyDefinitionGroups` の各_配列_要素は、次のプロパティを両方持つ必要があります。
 
-- `name` (string) \[必要\]:**コントロール**の短い名前。 このプロパティの値は `policyDefinitions` で `groupNames` により使用されます。
-- `category` (string):コントロールの **コンプライアンス ドメイン**。
-- `displayName` (string):**コントロール**のフレンドリ名。 ポータルで使用されます。
-- `description` (string):**コントロール**が行うことの説明です。
+- `name` (string) \[必要\]:**グループ**の短い名前。 規制コンプライアンスでは、**コントロール**。 このプロパティの値は `policyDefinitions` で `groupNames` により使用されます。
+- `category` (string):グループが属している階層。 規制コンプライアンスでは、コントロールの**コンプライアンス ドメイン**。
+- `displayName` (string):**グループ**または**コントロール**のフレンドリ名。 ポータルで使用されます。
+- `description` (string):**グループ**または**コントロール**の対象の説明です。
 - `additionalMetadataId` (string):[policyMetadata](#metadata-objects) オブジェクトの場所。 **コントロール**および**コンプライアンス ドメイン**に関する追加情報が含まれています。
 
   > [!NOTE]

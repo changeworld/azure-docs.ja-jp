@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 149656bebac7e8fab24dc1e1847a4e56bf5f3888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547343"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル: Azure Active Directory と Bime の統合
 
@@ -27,7 +27,7 @@ Bime と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Bime に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Azure AD への Bime の統合を構成するには、ギャラリーから管�
 
 4. 検索ボックスに「**Bime**」と入力し、結果パネルで **Bime** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Bime](common/search-new-app.png)
+    ![結果一覧の Bime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -131,16 +131,16 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 1. 別の Web ブラウザー ウィンドウで、Bime 企業サイトに管理者としてログインします。
 
 2. ツールバーで、 **[管理者]** 、 **[アカウント]** の順にクリックします。
-  
-    ![管理者](./media/bime-tutorial/ic775558.png "[Admin]")
+
+    ![スクリーンショットは、[管理者] および [アカウント] が選択されていることを示しています。](./media/bime-tutorial/ic775558.png "[Admin]")
 
 3. アカウント構成ページで、次の手順に従います。
-  
+
     ![シングル サインオンの構成](./media/bime-tutorial/ic775559.png "Configure single sign-on")
 
     a. **[SAML 認証を有効にする]** を選択します。
 
-    b. **[リモート ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[リモート ログイン URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** ボックスに、Azure portal からコピーした **THUMBPRINT (拇印)** 値を貼り付けます。
 
@@ -163,7 +163,7 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -207,7 +207,7 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 2. ツールバーで、 **[管理者]** 、 **[ユーザー]** の順にクリックします。
 
-    ![管理者](./media/bime-tutorial/ic775561.png "[Admin]")
+    ![スクリーンショットは、[管理者] および [ユーザー] が選択されていることを示しています。](./media/bime-tutorial/ic775561.png "[Admin]")
 
 3. **[ユーザー リスト]** で、 **[新しいユーザーの追加]** ("+") をクリックします。
 
@@ -232,13 +232,12 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Bime] タイルをクリックすると、SSO を設定した Bime に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Bime] タイルをクリックすると、SSO を設定した Bime に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

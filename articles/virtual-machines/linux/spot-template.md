@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 7b1d6aa36653733197791554451d28332403906a
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0cf6fc1b37064ef6193f35334711dcc5b8d01088
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816050"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200789"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してスポット VM をデプロイする
 
@@ -173,8 +173,25 @@ VM に対して、1 時間あたりに支払うことができる最大価格を
 }
 ```
 
+## <a name="simulate-an-eviction"></a>削除をシミュレートする
+
+スポット VM の[削除をシミュレート](/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対するアプリケーションの応答をテストすることができます。 
+
+次の情報をお客様の情報に置き換えてください。 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 [Azure PowerShell](../windows/spot-powershell.md) または [Azure CLI](spot-cli.md) を使って、スポット VM を作成することもできます。
 
-エラーが発生した場合は、[エラー コード](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
+スポットの価格についての情報が記載されている [Azure 小売価格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) に関する記事を参照して、現在の価格情報を照会してください。 `meterName` と `skuName` の両方に `Spot` が含まれています。
+
+エラーが発生した場合は、[エラー コード](../error-codes-spot.md)を参照してください。

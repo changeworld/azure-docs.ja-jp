@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e458f98d82c910ec845ebf951b7f6470b6aba10d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465220"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527328"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>静的な Web サイトを Azure CDN と統合する
 
@@ -63,7 +63,7 @@ Azure CDN の価格については、[Azure CDN の価格](https://azure.microso
 
 Azure CDN にオブジェクトをキャッシュする必要がなくなった場合は、次のいずれかの手順を実行できます。
 
-* コンテナーをパブリックではなくプライベートにします。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
+* コンテナーをパブリックではなくプライベートにします。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](./anonymous-read-access-configure.md)」を参照してください。
 * Azure Portal を使って、CDN エンドポイントを無効にするか削除します。
 * オブジェクトの要求に応答しなくなるように、ホストされるサービスを変更します。
 

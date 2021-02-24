@@ -13,6 +13,7 @@
     - name: パブリック ロード バランサ―の作成 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
     - name: パブリック ロード バランサ―の作成 - Resource Manager テンプレート
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
     - name: 内部ロード バランサ―の作成 - Azure PowerShell
       href: quickstart-load-balancer-standard-internal-portal.md
@@ -20,25 +21,20 @@
       href: quickstart-load-balancer-standard-internal-powershell.md
     - name: 内部ロード バランサーの作成 - Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
+    - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
+      displayName: Resource Manager
+      href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: チュートリアル
   items:
-    - name: 内部ロード バランサー
-      items:
-        - name: 内部ロード バランサーの作成 - ポータル
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: 内部ロード バランサーの作成 - Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: 内部ロード バランサーの作成 - Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
-          href: load-balancer-get-started-ilb-arm-template.md
     - name: 可用性ゾーン間で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Load Balancer でのポート転送の構成
       href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: リージョン間ロード バランサーの作成 - ポータル
+      href: tutorial-cross-region-portal.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -47,9 +43,13 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: リージョン間のロード バランサー
+      href: cross-region-overview.md
+    - name: 新機能
+      href: whats-new.md
     - name: コンポーネント
       href: components.md
-    - name: 概念
+    - name: 負荷分散アルゴリズム
       href: concepts.md
     - name: SKU
       href: skus.md
@@ -57,9 +57,11 @@
       items:
         - name: 正常性プローブ
           href: load-balancer-custom-probe-overview.md
+        - name: Load Balancer 用の Azure Monitor 分析情報
+          href: load-balancer-insights.md
         - name: Standard Load Balancer のメトリックと診断
           href: load-balancer-standard-diagnostics.md
-        - name: Basic Load Balancer の Azure Monitor ログ
+        - name: Load Balancer 用の Azure Monitor のログ
           href: load-balancer-monitor-log.md
         - name: REST を使用して Load Balancer のメトリックを取得する
           href: load-balancer-query-metrics-rest-api.md
@@ -67,22 +69,34 @@
       href: load-balancer-ha-ports-overview.md
     - name: 複数のフロントエンド
       href: load-balancer-multivip-overview.md
-    - name: 送信接続
+    - name: インターネットへの送信接続での SNAT
       href: load-balancer-outbound-connections.md
+    - name: 送信ルールを構成する
+      href: outbound-rules.md
     - name: アイドル タイムアウトの TCP リセット
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer と可用性ゾーン
       href: load-balancer-standard-availability-zones.md
-    - name: 組み込みのセキュリティ制御
-      href: load-balancer-security-controls.md
+    - name: フローティング IP 構成
+      href: load-balancer-floating-ip.md
+    - name: 分散モード
+      href: distribution-mode-concepts.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: バックエンド プールの管理
       href: backend-pool-management.md
     - name: Standard Load Balancer と Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: 方法
+- name: 操作方法
   items:
+    - name: ポータルの設定
+      href: manage.md
     - name: 仮想マシン スケール セット
       items:
+        - name: 仮想マシン スケール セットで使用される既存の Azure Load Balancer を更新または削除する
+          href: update-load-balancer-with-vm-scale-set.md
         - name: 既存の Azure Load Balancer での使用 - ポータル
           href: configure-vm-scale-set-portal.md
         - name: 既存の Azure Load Balancer での使用 - PowerShell
@@ -100,13 +114,13 @@
     - name: IPv6 を使用してパブリック ロード バランサーを作成する
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
+          href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
-          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
+          href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
         - name: Azure Resource Manager テンプレート
-          href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
+          href: ../virtual-network/ipv6-configure-standard-load-balancer-template-json.md
           displayName: ARM
-    - name: Load Balancer の TCP アイドル タイムアウトを構成する
+    - name: TCP リセットとアイドル タイムアウトを構成する
       href: load-balancer-tcp-idle-timeout.md
     - name: Load Balancer の分散モードを構成する
       href: load-balancer-distribution-mode.md
@@ -134,11 +148,15 @@
       items:
         - name: Azure Load Balancer のトラブルシューティング
           href: load-balancer-troubleshoot.md
-        - name: 一般的なデプロイ エラーのトラブルシューティング
+        - name: 正常性プローブの状態
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: バックエンド プール (VM) のトラフィック
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: 一般的なデプロイのエラー
           href: load-balancer-common-deployment-errors.md
-        - name: 送信接続に関する一般的な問題のトラブルシューティング
+        - name: 送信接続に関する一般的な問題
           href: troubleshoot-outbound-connection.md
-        - name: リソース正常性と受信の可用性に関する問題のトラブルシューティング
+        - name: リソース正常性と受信の可用性に関する問題
           href: troubleshoot-rhc.md
 - name: リファレンス
   items:
@@ -159,9 +177,9 @@
     - name: Python
       href: /python/api/azure-mgmt-network/azure.mgmt.network.v2019_02_01.operations.loadbalancersoperations
     - name: REST
-      href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+      href: /rest/api/load-balancer/loadbalancers
     - name: Resource Manager テンプレート
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
+      href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
 - name: リソース
   items:

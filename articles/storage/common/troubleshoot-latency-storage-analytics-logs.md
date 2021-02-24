@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075956"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221110"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Storage Analytics ログを使用した待ち時間のトラブルシューティング
 
@@ -27,7 +27,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 
 ## <a name="recommended-steps"></a>推奨される手順
 
-1. [Storage Analytics のログ](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)をダウンロードします。
+1. [Storage Analytics のログ](./manage-storage-analytics-logs.md#download-storage-logging-log-data)をダウンロードします。
 
 2. 次の PowerShell スクリプトを使用して、未加工の形式のログを表形式に変換します。
 
@@ -114,7 +114,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 * サーバーの待ち時間
 * クライアントの待ち時間
 
-**RequestStatus = Success** の **GetBlob 操作**において**最大時間**が**クライアントの待ち時間**で費やされている場合、これは Azure Storage がクライアントにデータを書き込むために大量の時間を費やしていることを示します。 この待ち時間は、クライアント側の問題を示しています。
+**RequestStatus = Success** の **GetBlob 操作** において **最大時間** が **クライアントの待ち時間** で費やされている場合、これは Azure Storage がクライアントにデータを書き込むために大量の時間を費やしていることを示します。 この待ち時間は、クライアント側の問題を示しています。
 
 **推奨事項:**
 
@@ -129,7 +129,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 * サーバーの待ち時間
 * クライアントの待ち時間
 
-**RequestStatus = (SAS)NetworkError** の **GetBlob 操作**において**最大時間**が**クライアントの待ち時間**で費やされている場合、最も一般的な問題は、ストレージ サービスでタイムアウトが期限切れになる前にクライアントが切断されていることです。
+**RequestStatus = (SAS)NetworkError** の **GetBlob 操作** において **最大時間** が **クライアントの待ち時間** で費やされている場合、最も一般的な問題は、ストレージ サービスでタイムアウトが期限切れになる前にクライアントが切断されていることです。
 
 **推奨事項:**
 
@@ -144,7 +144,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 * サーバーの待ち時間
 * クライアントの待ち時間
 
-**RequestStatus = Success** の **Put 操作**において**最大時間**が**クライアントの待ち時間**で費やされている場合、これはクライアントが Azure Storage にデータを送信するのに時間がかかっていることを示します。 この待ち時間は、クライアント側の問題を示しています。
+**RequestStatus = Success** の **Put 操作** において **最大時間** が **クライアントの待ち時間** で費やされている場合、これはクライアントが Azure Storage にデータを送信するのに時間がかかっていることを示します。 この待ち時間は、クライアント側の問題を示しています。
 
 **推奨事項:**
 
@@ -159,10 +159,9 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 * サーバーの待ち時間
 * クライアントの待ち時間
 
-**RequestStatus = (SAS)NetworkError** の **PutBlob 操作**において**最大時間**が**クライアントの待ち時間**で費やされている場合、最も一般的な問題は、ストレージ サービスでタイムアウトが期限切れになる前にクライアントが切断されていることです。
+**RequestStatus = (SAS)NetworkError** の **PutBlob 操作** において **最大時間** が **クライアントの待ち時間** で費やされている場合、最も一般的な問題は、ストレージ サービスでタイムアウトが期限切れになる前にクライアントが切断されていることです。
 
 **推奨事項:**
 
 * クライアントのコードを調べて、Storage サービスからクライアントが切断した理由とタイミングを把握してください。
 * Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。
-
