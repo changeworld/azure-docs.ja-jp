@@ -183,7 +183,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 現在、Storage Explorer は次の 2 つの公式ストレージ エミュレーターをサポートしています。
 
-* [Azure ストレージ エミュレーター](storage/common/storage-use-emulator.md) (Windows のみ)
+* [Azure Storage Emulator](storage/common/storage-use-emulator.md) (Windows のみ)
 * [Azurite](https://github.com/azure/azurite) (Windows、macOS、または Linux)
 
 エミュレーターが既定のポートでリッスンしている場合は、**エミュレーター - 既定のポート** ノードを使用して、エミュレーターにアクセスできます。 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下で、**エミュレーター - 既定のポート** を探します。
