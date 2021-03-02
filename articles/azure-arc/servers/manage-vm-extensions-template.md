@@ -3,12 +3,12 @@ title: Azure Resource Manager テンプレートを使用して VM 拡張機能�
 description: この記事では、Azure Resource Manager テンプレートを使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b84f9d4d13de3ce2d661e254528e1f0a304001f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555097"
+ms.locfileid: "100580919"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM テンプレートを使用して VM 拡張機能を有効にする
 
@@ -545,7 +545,7 @@ PowerShell DSC 拡張機能を使用するため、Windows および Linux で�
 
 ## <a name="deploy-the-dependency-agent-extension"></a>Dependency Agent 拡張機能をデプロイする
 
-Azure Monitor 依存関係エージェント拡張機能を使用するため、Windows および Linux で実行する次のサンプルが提供されています。 依存関係エージェントの詳細については、「[Azure Monitor エージェントの概要](../../azure-monitor/platform/agents-overview.md#dependency-agent)」を参照してください。
+Azure Monitor 依存関係エージェント拡張機能を使用するため、Windows および Linux で実行する次のサンプルが提供されています。 依存関係エージェントの詳細については、「[Azure Monitor エージェントの概要](../../azure-monitor/agents/agents-overview.md#dependency-agent)」を参照してください。
 
 ### <a name="template-file-for-linux"></a>Linux 用テンプレート ファイル
 

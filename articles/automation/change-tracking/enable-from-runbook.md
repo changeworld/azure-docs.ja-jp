@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e5b42d6102737b778ea5d19cd7da3c2f64881b1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052619"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585921"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Runbook で変更履歴とインベントリを有効にする
 
@@ -28,7 +28,7 @@ ms.locfileid: "99052619"
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * マシンを管理する [Automation アカウント](../automation-security-overview.md)。
-* [Log Analytics ワークスペース](../../azure-monitor/platform/design-logs-deployment.md)
+* [Log Analytics ワークスペース](../../azure-monitor/logs/design-logs-deployment.md)
 * [仮想マシン](../../virtual-machines/windows/quick-create-portal.md)。
 * **Enable-AutomationSolution** Runbook によって使用される 2 つの Automation 資産。 この Runbook が Automation アカウントにまだ存在しない場合、最初の実行時に **Enable-MultipleSolution** Runbook によって自動的にインポートされます。
     * *LASolutionSubscriptionId*:Log Analytics ワークスペースが配置されているサブスクリプション ID。

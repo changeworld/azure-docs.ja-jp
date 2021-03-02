@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753447"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581792"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -160,12 +160,12 @@ Windows VM の場合:
 
     ![MMA のステータス](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux VM の場合、MMA と依存関係エージェントのインストールに関するすべてのコマンドが正常に実行されたことを確認します。 詳細については、[こちら](../azure-monitor/insights/service-map.md#post-installation-issues)のトラブルシューティング ガイドを参照してください。
+Linux VM の場合、MMA と依存関係エージェントのインストールに関するすべてのコマンドが正常に実行されたことを確認します。 詳細については、[こちら](../azure-monitor/vm/service-map.md#post-installation-issues)のトラブルシューティング ガイドを参照してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-- **MMS エージェント**:サポートされている [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems) オペレーティング システムと [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) オペレーティング システムを確認します。
-- **依存関係エージェント**: サポートされている [Windows および Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) オペレーティング システムを確認します。
+- **MMS エージェント**:サポートされている [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems) オペレーティング システムと [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems) オペレーティング システムを確認します。
+- **依存関係エージェント**: サポートされている [Windows および Linux](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) オペレーティング システムを確認します。
 
 ## <a name="visualize-dependencies-for--hour"></a>最大 1 時間分の依存関係を視覚化する
 

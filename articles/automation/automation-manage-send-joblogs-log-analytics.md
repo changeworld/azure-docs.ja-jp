@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182871"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581221"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Monitor ログに Azure Automation のジョブ データを転送する
 
@@ -72,7 +72,7 @@ Automation の診断設定では、次のプラットフォーム ログとメ�
 * DSCNodeStatus
 * メトリック - 合計ジョブ数、更新プログラムのデプロイ マシンの合計実行回数、更新プログラムのデプロイの合計実行回数
 
-Automation ログの Azure Monitor ログへの送信を開始するには、[診断設定の作成](../azure-monitor/platform/diagnostic-settings.md)を確認して、プラットフォーム ログを送信するように診断設定を構成するために使用できる機能と方法を理解します。
+Automation ログの Azure Monitor ログへの送信を開始するには、[診断設定の作成](../azure-monitor/essentials/diagnostic-settings.md)を確認して、プラットフォーム ログを送信するように診断設定を構成するために使用できる機能と方法を理解します。
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
 
@@ -140,7 +140,7 @@ Azure Automation の診断により、`AzureDiagnostics` というタグの付�
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。 Automation アカウント名は `JobLogs` の検索の `Resource` フィールドで確認できます。
 
-3. **[ルールの作成]** 画面を開くには、ページの上部にある **[新しいアラート ルール]** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../azure-monitor/platform/alerts-unified-log.md)」をご覧ください。
+3. **[ルールの作成]** 画面を開くには、ページの上部にある **[新しいアラート ルール]** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../azure-monitor/alerts/alerts-unified-log.md)」をご覧ください。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>エラーが発生したすべてのジョブを特定する
 
@@ -192,8 +192,8 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>次のステップ
 
-* 検索クエリの作成方法と、Azure Monitor ログでの Automation ジョブ ログの確認方法については、[Azure Monitor ログでのログ検索](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
+* 検索クエリの作成方法と、Azure Monitor ログでの Automation ジョブ ログの確認方法については、[Azure Monitor ログでのログ検索](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
 * Runbook の出力とエラー メッセージを作成および取得する方法については、「[Runbook 出力を監視する](automation-runbook-output-and-messages.md)」を参照してください。
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
-* Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
-* Log Analytics のトラブルシューティングについては、[Log Analytics がデータを収集しなくなった場合のトラブルシューティング](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)に関する記事を参照してください。
+* Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
+* Log Analytics のトラブルシューティングについては、[Log Analytics がデータを収集しなくなった場合のトラブルシューティング](../azure-monitor/logs/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)に関する記事を参照してください。

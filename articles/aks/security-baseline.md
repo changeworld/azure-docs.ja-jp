@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8e86679e7531bb70d6d4f1a27718c2fc8f0e8a9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202030"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578542"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes Service 用の Azure セキュリティ ベースライン
 
@@ -196,9 +196,9 @@ Azure Policy のタグ付けに関連したいずれかの組み込み定義 ("�
 
 Azure Monitor ログを使用して、AKS マスター コンポーネントである kube-apiserver と kube-controller-manager からのログを有効にして、照会します。 kubelet とコンテナー ランタイムを実行するノードを作成して管理し、マネージド Kubernetes API サーバーを通じてアプリケーションをデプロイします。 
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー](view-master-logs.md)
 
@@ -240,9 +240,9 @@ kube-audit などの他の監査ログも有効にします。
 
 - [ログのロールを含むログ スキーマを確認する](view-master-logs.md)
 
-- [Azure Monitor for Containers を理解する](../azure-monitor/insights/container-insights-overview.md)
+- [Azure Monitor for Containers を理解する](../azure-monitor/containers/container-insights-overview.md)
 
-- [Azure Monitor for Containers を有効にする方法](../azure-monitor/insights/container-insights-onboard.md)
+- [Azure Monitor for Containers を有効にする方法](../azure-monitor/containers/container-insights-onboard.md)
 
 - [Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー](view-master-logs.md)
 
@@ -294,7 +294,7 @@ kube-audit などの他の監査ログもオンにします。
 
 **ガイダンス**:Azure Kubernetes Service (AKS) インスタンスを Azure Monitor にオンボードし、対応する Azure Log Analytics ワークスペースの保持期間を組織のコンプライアンス要件に従って設定します。 
 
-- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -312,7 +312,7 @@ AKS マスター コンポーネントによって生成されたログを表示
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: はい
 
@@ -422,7 +422,7 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 **ガイダンス**:AKS クラスターの Azure Active Directory (Azure AD) 統合認証と共に Azure Kubernetes Service (AKS) のシングル サインオンを使用します。
 
-- [Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法](../azure-monitor/insights/container-insights-livedata-overview.md)
+- [Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法](../azure-monitor/containers/container-insights-livedata-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -518,7 +518,7 @@ Azure ID アクセス レビューを実行して、グループ メンバーシ
 **ガイダンス**:Azure Kubernetes Service (AKS) のユーザー認証を Azure Active Directory (Azure AD) に統合します。 Azure AD の診断設定を作成し、監査ログとサインイン ログを Azure Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で、必要なアラート (非アクティブ化されたアカウントがログインしようとした場合など) を構成します。
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure Monitor を使用してログ アラートを作成、表示、管理する方法](../azure-monitor/platform/alerts-log.md)。
+- [Azure Monitor を使用してログ アラートを作成、表示、管理する方法](../azure-monitor/alerts/alerts-log.md)。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -673,11 +673,11 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 Azure アクティビティ ログを使用して、AKS クラスターと関連リソースを概要レベルで監視します。 Prometheus と統合して、クエリを使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、詳細な分析を作成します。
 
-- [Azure Monitor for Containers を理解する](../azure-monitor/insights/container-insights-overview.md)
+- [Azure Monitor for Containers を理解する](../azure-monitor/containers/container-insights-overview.md)
 
-- [Azure Monitor for containers を有効にする方法](../azure-monitor/insights/container-insights-onboard.md)
+- [Azure Monitor for containers を有効にする方法](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center の監視**: はい
 

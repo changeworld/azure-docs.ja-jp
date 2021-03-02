@@ -4,12 +4,12 @@ description: Application Insights を使用して Node.js サービスのパフ�
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611017"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585760"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -425,7 +425,7 @@ client.config.PROPERTYNAME = VALUE;
 ## <a name="next-steps"></a>次のステップ
 
 * [ポータル内でテレメトリを監視する](./overview-dashboard.md)
-* [テレメトリに関する分析クエリを記述する](../log-query/log-analytics-tutorial.md)
+* [テレメトリに関する分析クエリを記述する](../logs/log-analytics-tutorial.md)
 
 <!--references-->
 

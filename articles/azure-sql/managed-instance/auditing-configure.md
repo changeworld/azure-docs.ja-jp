@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505667"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575464"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -211,7 +211,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
 - システム関数 `sys.fn_get_audit_file` (T-SQL) を使って、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file のドキュメント](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)を参照してください。
 
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](../database/audit-log-format.md)を参照してください。
+- [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](../database/audit-log-format.md)を参照してください。
 
 - 監査ログの使い方の完全な一覧については、[Azure SQL Database 監査の使用](../../azure-sql/database/auditing-overview.md)に関するページをご覧ください。
 
@@ -223,7 +223,7 @@ Event Hubs の監査ログ データを使用するには、イベントを処�
 
 監査ログが Azure Monitor ログに書き込まれると、それらの監査ログが Log Analytics ワークスペースで使用可能になります。Log Analytics ワークスペースでは、監査データに対して高度な検索を実行できます。 最初に、Log Analytics ワークスペースに移動します。 **[全般]** セクションで、 **[ログ]** をクリックし、単純なクエリ (例: `search "SQLSecurityAuditEvents"`) を入力して監査ログを表示します。  
 
-Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](../../azure-monitor/log-query/log-query-overview.md)に関するページをご覧ください。
+Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](../../azure-monitor/logs/log-query-overview.md)に関するページをご覧ください。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 

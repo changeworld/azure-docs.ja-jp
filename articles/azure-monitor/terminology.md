@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99592544d97793f82db36e1d2cb33ba8c6af1c9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498612"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586969"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor の名称と用語の変更
 最近、Azure Monitor に大きな変更が加えられ、Azure のお客様が監視を簡単に行えるようにするためにさまざまなサービスが統合されました。 この記事では、Azure Monitor のドキュメント内で最近行われた名称と用語の変更について説明します。
@@ -23,12 +23,12 @@ ms.locfileid: "86498612"
 Azure Monitor にさまざまなサービスを統合した後、次の段階として、Azure Monitor サービスとそのさまざまなコンポーネントをよりわかりやすく説明するためにドキュメント内の用語を変更しています。 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集および分析されますが、_Log Analytics_ という用語は多くの場所で _Azure Monitor ログ_ に変更されています。 この用語は、Azure Monitor におけるその役割をより適切に反映するものであり、[Azure Monitor のメトリック](platform/data-platform-metrics.md)との一貫性を向上させます。
+Azure Monitor ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集および分析されますが、_Log Analytics_ という用語は多くの場所で _Azure Monitor ログ_ に変更されています。 この用語は、Azure Monitor におけるその役割をより適切に反映するものであり、[Azure Monitor のメトリック](essentials/data-platform-metrics.md)との一貫性を向上させます。
 
-現在、_ログ分析_ という用語は、クエリの記述と実行およびログ データの分析に使用する Azure portal 内のページに主に適用されています。 これは、メトリック データの分析に使用する Azure portal 内のページである[メトリックス エクスプローラー](platform/metrics-charts.md)と同等の機能です。
+現在、_ログ分析_ という用語は、クエリの記述と実行およびログ データの分析に使用する Azure portal 内のページに主に適用されています。 これは、メトリック データの分析に使用する Azure portal 内のページである[メトリックス エクスプローラー](essentials/metrics-charts.md)と同等の機能です。
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics ワークスペース
-Azure Monitor 内のログ データを保持する[ワークスペース](platform/manage-access.md)は引き続き Log Analytics ワークスペースと呼ばれます。 Azure portal 内の **[Log Analytics]** メニューの名称は **[Log Analytics ワークスペース]** に変更されました。ここでは、[新しいワークスペースを作成](learn/quick-create-workspace.md)し、データ ソースを構成します。 **Azure Monitor** ではログおよびその他の監視データを分析し、 **[Log Analytics ワークスペース]** ではワークスペースを構成します。
+Azure Monitor 内のログ データを保持する[ワークスペース](logs/manage-access.md)は引き続き Log Analytics ワークスペースと呼ばれます。 Azure portal 内の **[Log Analytics]** メニューの名称は **[Log Analytics ワークスペース]** に変更されました。ここでは、[新しいワークスペースを作成](logs/quick-create-workspace.md)し、データ ソースを構成します。 **Azure Monitor** ではログおよびその他の監視データを分析し、 **[Log Analytics ワークスペース]** ではワークスペースを構成します。
 
 ### <a name="management-solutions"></a>管理ソリューション
 [管理ソリューション](insights/solutions.md)の名称は、その機能をよりわかりやすく示すために _監視ソリューション_ に変更されました。
@@ -59,4 +59,4 @@ Operations Management Suite (OMS) は、ライセンス目的で以下の Azure 
 ## <a name="next-steps"></a>次のステップ
 
 - さまざまなコンポーネントと機能については、[Azure Monitor の 概要](overview.md)に関するページを参照してください。
-- [OMS ポータルの移行](./platform/oms-portal-transition.md)に関するページを参照してください。
+- [OMS ポータルの移行](./logs/oms-portal-transition.md)に関するページを参照してください。

@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388007"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580994"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
 
@@ -128,7 +128,7 @@ Hybrid Runbook Worker で実行される Runbook が次のエラー メッセー
 #### <a name="resolution"></a>解決策
 
 ##### <a name="mistyped-workspace-id-or-key"></a>ワークスペース ID またはキーの入力ミス
-エージェントのワークスペース ID またはワークスペース キーに入力ミスがあったかどうかを確認するには、Windows エージェントの場合は [Windows エージェントでのワークスペースの追加または削除](../../azure-monitor/platform/agent-manage.md#windows-agent)に関する記事を、Linux エージェントの場合は [Linux エージェントでのワークスペースの追加または削除](../../azure-monitor/platform/agent-manage.md#linux-agent)に関する記事を参照してください。 Azure portal から完全な文字列を選択し、注意深くコピーと貼り付けを行うようにします。
+エージェントのワークスペース ID またはワークスペース キーに入力ミスがあったかどうかを確認するには、Windows エージェントの場合は [Windows エージェントでのワークスペースの追加または削除](../../azure-monitor/agents/agent-manage.md#windows-agent)に関する記事を、Linux エージェントの場合は [Linux エージェントでのワークスペースの追加または削除](../../azure-monitor/agents/agent-manage.md#linux-agent)に関する記事を参照してください。 Azure portal から完全な文字列を選択し、注意深くコピーと貼り付けを行うようにします。
 
 ##### <a name="configuration-not-downloaded"></a>構成がダウンロードされていない
 
@@ -169,7 +169,7 @@ Runbook が `Set-AzStorageBlobContent` の実行を試みたときに失敗し�
 
 ## <a name="linux"></a>Linux
 
-Linux Hybrid Runbook Worker は、[Linux 用 Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md) を使用することにより、Automation アカウントと通信してワーカーの登録、Runbook ジョブの受信、状態の報告を行います。 ワーカーの登録に失敗した場合に考えられるエラーの原因を次に示します。
+Linux Hybrid Runbook Worker は、[Linux 用 Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md) を使用することにより、Automation アカウントと通信してワーカーの登録、Runbook ジョブの受信、状態の報告を行います。 ワーカーの登録に失敗した場合に考えられるエラーの原因を次に示します。
 
 ### <a name="scenario-linux-hybrid-runbook-worker-receives-prompt-for-a-password-when-signing-a-runbook"></a><a name="prompt-for-password"></a>シナリオ:Linux Hybrid Runbook Worker で、Runbook に署名するときにパスワードの入力が求められる
 
@@ -197,7 +197,7 @@ Linux 用 Log Analytics エージェントが実行されていません。
 
 エージェントが実行されていない場合、Linux Hybrid Runbook Worker は Azure Automation と通信できません。 さまざまな理由で、エージェントが実行されていない可能性があります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
  `ps -ef | grep python` コマンドを入力して、このエージェントが実行されていることを確認します。 次のような出力が表示されます。 Python では、**nxautomation** ユーザー アカウントを使用して処理が行われます。 Azure Automation 機能が有効になっていない場合、次のどのプロセスも実行されていません。
 
@@ -225,7 +225,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-Windows Hybrid Runbook Worker は、[Windows 用 Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md) を使用することにより、Automation アカウントと通信してワーカーの登録、Runbook ジョブの受信、状態の報告を行います。 このセクションには、ワーカーの登録に失敗した場合の考えられる理由をいくつか示しています。
+Windows Hybrid Runbook Worker は、[Windows 用 Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md) を使用することにより、Automation アカウントと通信してワーカーの登録、Runbook ジョブの受信、状態の報告を行います。 このセクションには、ワーカーの登録に失敗した場合の考えられる理由をいくつか示しています。
 
 ### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>シナリオ:Windows 用 Log Analytics エージェントが実行されていない
 
@@ -237,7 +237,7 @@ Windows Hybrid Runbook Worker は、[Windows 用 Log Analytics エージェン�
 
 Windows サービス用の Log Analytics が実行されていない場合、Hybrid Runbook Worker は Azure Automation と通信できません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 PowerShell で次のコマンドを入力して、このエージェントが実行されていることを確認します: `Get-Service healthservice`。 サービスが停止している場合は、PowerShell で次のコマンドを入力してサービスを開始します: `Start-Service healthservice`。
 
@@ -253,7 +253,7 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 #### <a name="resolution"></a>解決策
 
-ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 警告やエラー イベントが、**アプリケーションとサービス ログ\Microsoft-SMA\Operations** と **アプリケーションとサービス ログ\Operations Manager** イベント ログにあるかどうかを確認できます。 これらのログは、Azure Automation に対するロールの有効化に影響する接続や他の種類の問題、または通常の操作中に発生した問題を示しています。 Log Analytics エージェントに関する問題のトラブルシューティングの詳細については、[Log Analytics Windows エージェントの問題のトラブルシューティング](../../azure-monitor/platform/agent-windows-troubleshoot.md)に関するページを参照してください。
+ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 警告やエラー イベントが、**アプリケーションとサービス ログ\Microsoft-SMA\Operations** と **アプリケーションとサービス ログ\Operations Manager** イベント ログにあるかどうかを確認できます。 これらのログは、Azure Automation に対するロールの有効化に影響する接続や他の種類の問題、または通常の操作中に発生した問題を示しています。 Log Analytics エージェントに関する問題のトラブルシューティングの詳細については、[Log Analytics Windows エージェントの問題のトラブルシューティング](../../azure-monitor/agents/agent-windows-troubleshoot.md)に関するページを参照してください。
 
 ハイブリッド worker により、クラウドで実行されている Runbook ジョブが出力とメッセージを送信するのと同じ方法で、[Runbook の出力とメッセージ](../automation-runbook-output-and-messages.md)が Azure Automation に送信されます。 詳細ストリームと進行状況ストリームは、Runbook の場合と同じように有効にすることができます。
 
@@ -269,7 +269,7 @@ Windows Hybrid Runbook Worker で実行されるスクリプトを、想定ど�
 
 サーバー上の Active Directory フェデレーション サービス (AD FS) への接続でプロキシをバイパスすることはできません。 PowerShell サンドボックスはログインしたユーザーとして実行されることに注意してください。 ただし、Orchestrator サンドボックスは大幅にカスタマイズされており、**Orchestrator.Sandbox.exe.config** ファイルの設定は無視されることがあります。 それにはマシンまたは Log Analytics エージェントのプロキシ設定を処理するための特殊なコードが含まれていますが、それら以外のカスタム プロキシ設定は処理されません。 
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 PowerShell コマンドレットのスクリプトを、MSOnline モジュールではなく Azure Active Directory モジュールを使用するように移行することで、Orchestrator サンドボックスの問題を解決できます。 詳細については、「[Orchestrator から Azure Automation (ベータ版) へ移行する](../automation-orchestrator-migration.md)」を参照してください。
 
@@ -303,7 +303,7 @@ Heartbeat
 
 この問題は、Hybrid Runbook Worker 上のキャッシュの破損が原因である可能性があります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 この問題を解決するには、Hybrid Runbook Worker にサインインし、次のスクリプトを実行します。 このスクリプトは、Windows 用 Log Analytics エージェントを停止し、そのキャッシュを削除して、サービスを再起動します。 この操作により、Hybrid Runbook Worker の構成が Azure Automation から強制的に再ダウンロードされます。
 
@@ -327,7 +327,7 @@ Start-Service -Name HealthService
 
 この問題は、マシンが既に別の Automation アカウントに登録されている場合や、マシンから Hybrid Runbook Worker を削除した後にそれを再度追加しようとした場合に発生する可能性があります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 この問題を解決するには、次のレジストリ キーを削除し、`HealthService` を再起動して、もう一度 `Add-HybridRunbookWorker` コマンドレットを試します。
 

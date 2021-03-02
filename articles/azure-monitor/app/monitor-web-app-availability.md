@@ -4,12 +4,12 @@ description: Application Insights で Web テストを設定します。 Web サ
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937416"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585942"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
@@ -151,7 +151,7 @@ Azure Resource Manager を使用して可用性 URL の ping テストをデプ�
 
 ![サーバー側診断](./media/monitor-web-app-availability/open-instance-4.png)
 
-生の結果に加えて、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に 2 つの重要な可用性メトリックを表示することもできます。
+生の結果に加えて、[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)に 2 つの重要な可用性メトリックを表示することもできます。
 
 1. 可用性:すべてのテスト実行にわたる、成功したテストの割合 (%)。
 2. テスト期間:すべてのテスト実行にわたる平均のテスト期間。
@@ -159,7 +159,7 @@ Azure Resource Manager を使用して可用性 URL の ping テストをデプ�
 ## <a name="automation"></a>Automation
 
 * [PowerShell スクリプトを使用して、可用性テストを自動的に設定します](./powershell.md#add-an-availability-test)。
-* アラートが発生したときに呼び出される [webhook](../platform/alerts-webhooks.md) を設定する。
+* アラートが発生したときに呼び出される [webhook](../alerts/alerts-webhooks.md) を設定する。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

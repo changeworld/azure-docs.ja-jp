@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549937"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590344"
 ---
 # <a name="azure-threat-protection"></a>Azure 脅威防止
 
@@ -89,7 +89,7 @@ Azure Monitor ログは、価値のある独自のサービスに加え、[Syste
 Azure Monitor ログのダッシュボードは、あらゆる環境における包括的なセキュリティ体制をすばやく簡単に理解するのに役立ちます。これはすべて、ソフトウェアの更新プログラムの評価、マルウェア対策の評価、構成基準などを含む IT オペレーションのコンテキストの中で行われます。 セキュリティ ログ データに容易にアクセスできるため、セキュリティとコンプライアンスを目的とする監査プロセスが合理化されます。
 
 ### <a name="insight-and-analytics"></a>分析情報と分析
-[Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md)の核となる機能は、Azure でホストされているリポジトリです。
+[Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)の核となる機能は、Azure でホストされているリポジトリです。
 
 ![分析情報と分析の図](./media/threat-detection/azure-threat-detection-fig4.png)
 
@@ -98,8 +98,8 @@ Azure Monitor ログのダッシュボードは、あらゆる環境における
 データ ソースとソリューションは、独自のプロパティのセットを持つレコードの種類をそれぞれ別々に作成しますが、リポジトリに対するクエリでまとめて分析することもできます。 同じツールとメソッドを使用することで、さまざまなソースによって収集された各種のデータを使用することができます。
 
 Azure Monitor ログとのやり取りのほとんどは、任意のブラウザーで実行する Azure portal を通じて行います。ここから構成設定や複数のツールにアクセスして収集したデータの分析や操作ができる機能が提供されます。 ポータルでは、以下を使用できます。
-* [ログ検索](../../azure-monitor/log-query/log-query-overview.md)。収集されたデータを分析するためのクエリを構築します。
-* [ダッシュボード](../../azure-monitor/learn/tutorial-logs-dashboards.md)。最も重要な検索のグラフィカル表示でカスタマイズできます。
+* [ログ検索](../../azure-monitor/logs/log-query-overview.md)。収集されたデータを分析するためのクエリを構築します。
+* [ダッシュボード](../../azure-monitor/visualize/tutorial-logs-dashboards.md)。最も重要な検索のグラフィカル表示でカスタマイズできます。
 * [ソリューション](../../azure-monitor/insights/solutions.md)。追加の機能と分析ツールが提供されます。
 
 ソリューションにより、Azure Monitor ログに機能が追加されます。 これらは主にクラウドで実行し、Log Analytics リポジトリで収集されたデータの分析を提供します。 また、ソリューションでは、新しいレコードの種類を収集対象として定義することもできます。それらは Log Analytics ダッシュボード内でソリューションによって提供される追加のユーザー インターフェイスを使用するか、ログ検索を使用して分析できます。

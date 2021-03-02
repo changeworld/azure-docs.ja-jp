@@ -3,12 +3,12 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934885"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578558"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
@@ -67,11 +67,11 @@ HTTP によってトリガーされる関数の場合、関数コードの実行
 
 ### <a name="function-app-level-metrics"></a>関数アプリレベルのメトリック
 
-関数のコストへの影響をより深く理解するには、Azure Monitor を使用することで、関数アプリによって現在生成されているコスト関連メトリックを表示できます。 このデータを取得するには、[Azure portal] の [Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-getting-started.md)または REST API を使用できます。
+関数のコストへの影響をより深く理解するには、Azure Monitor を使用することで、関数アプリによって現在生成されているコスト関連メトリックを表示できます。 このデータを取得するには、[Azure portal] の [Azure Monitor メトリックス エクスプローラー](../azure-monitor/essentials/metrics-getting-started.md)または REST API を使用できます。
 
 #### <a name="monitor-metrics-explorer"></a>Monitor メトリックス エクスプローラー
 
-従量課金プランの関数アプリのコスト関連データをグラフィック形式で表示するには、[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-getting-started.md)を使用します。 
+従量課金プランの関数アプリのコスト関連データをグラフィック形式で表示するには、[Azure Monitor メトリックス エクスプローラー](../azure-monitor/essentials/metrics-getting-started.md)を使用します。 
 
 1. [Azure portal] の先頭にある **[リソース、サービス、ドキュメントの検索]** で「`monitor`」を検索し、 **[サービス]** の下にある **[モニター]** を選択します。
 

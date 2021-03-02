@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f885416c5e9cb656d01a65b9c503f8897d2f9f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83743754"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593894"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を有効にする
 
@@ -23,7 +23,7 @@ ms.locfileid: "83743754"
 ## <a name="create-resources-for-the-feature"></a>機能のリソースを作成する
 
 1. Azure [Portal](https://portal.azure.com) にサインインします。
-2. **Automation アカウント**を検索して選択します。
+2. **Automation アカウント** を検索して選択します。
 3. [Automation アカウント] ページで、一覧から Automation アカウントを選択します。
 4. Automation アカウントから、 **[関連リソース]** の下にある **[VM の開始/停止]** を選択します。 この画面では、 **[Learn more about and enable the solution]\(ソリューションの詳細と有効化\)** をクリックして確認できます。 この機能が既にデプロイされている場合は、 **[ソリューションの管理]** をクリックし、それを一覧から見つけることができます。
 
@@ -49,7 +49,7 @@ ms.locfileid: "83743754"
 2. ワークスペースがない場合は、 **[新しいワークスペースの作成]** を選択します。 [Log Analytics ワークスペース] ページで、次の手順を行います。
 
    - 新しい Log Analytics ワークスペースの名前 (**ContosoLAWorkspace** など) を指定します。
-   - 既定値が適切でない場合は、リンクする**サブスクリプション**をドロップダウン リストから選択します。
+   - 既定値が適切でない場合は、リンクする **サブスクリプション** をドロップダウン リストから選択します。
    - **[リソース グループ]** では、新しいリソース グループを作成するか、既存のリソース グループを選択できます。
    - **[場所]** を選択します。
    - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Azure Monitor ログは[価格](https://azure.microsoft.com/pricing/details/log-analytics/)が更新され、GB あたりのレベルが唯一のオプションです。
@@ -82,7 +82,7 @@ ms.locfileid: "83743754"
   
 4. **[スケジュール]** フィールドを使用して、機能による VM 管理のスケジュールを選択します。 スケジュールの開始日時を選択して、選択した時刻に開始する定期的な日単位のスケジュールを作成します。 別のリージョンを選択することはできません。 機能の構成後、スケジュールを特定のタイム ゾーンに構成するには、「[起動および停止スケジュールの変更](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules)」を参照してください。
 
-5. [アクション グループ](../azure-monitor/platform/action-groups.md)から電子メール通知を受信するには、 **[メール通知]** フィールドで既定値の **[はい]** を使用し、有効なメール アドレスを指定します。 **[いいえ]** を選択したものの、後日、電子メール通知を受信することにした場合は、コンマで区切られた有効なメール アドレスで作成されたアクション グループを更新することができます。 
+5. [アクション グループ](../azure-monitor/alerts/action-groups.md)から電子メール通知を受信するには、 **[メール通知]** フィールドで既定値の **[はい]** を使用し、有効なメール アドレスを指定します。 **[いいえ]** を選択したものの、後日、電子メール通知を受信することにした場合は、コンマで区切られた有効なメール アドレスで作成されたアクション グループを更新することができます。 
 
 6. 次のアラート ルールを有効にします。
 
@@ -92,7 +92,7 @@ ms.locfileid: "83743754"
 
 ## <a name="create-alerts"></a>アラートを作成する
 
-Start/Stop VMs during off-hours には、事前に定義された一連のアラートは含まれていません。 [Azure Monitor を使用したログ アラートの作成](../azure-monitor/platform/alerts-log.md)に関するページを参照して、ジョブ失敗アラートを作成し、DevOps や運用プロセスおよび手順をサポートする方法について学習してください。
+Start/Stop VMs during off-hours には、事前に定義された一連のアラートは含まれていません。 [Azure Monitor を使用したログ アラートの作成](../azure-monitor/alerts/alerts-log.md)に関するページを参照して、ジョブ失敗アラートを作成し、DevOps や運用プロセスおよび手順をサポートする方法について学習してください。
 
 ## <a name="deploy-the-feature"></a>機能をデプロイする
 

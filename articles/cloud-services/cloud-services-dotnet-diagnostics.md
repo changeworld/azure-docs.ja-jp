@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742150"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578187"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) での Azure Diagnostics の有効化
 
@@ -189,13 +189,13 @@ Visual Studio の **サーバー エクスプローラー** で、wadexample ス
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>構成ファイル スキーマ
-診断構成ファイルでは、診断エージェントの起動時に診断構成設定の初期化に使用される値を定義します。 有効な値と例については、「 [Azure 診断構成スキーマ](../azure-monitor/platform/diagnostics-extension-versions.md) 」をご覧ください。
+診断構成ファイルでは、診断エージェントの起動時に診断構成設定の初期化に使用される値を定義します。 有効な値と例については、「 [Azure 診断構成スキーマ](../azure-monitor/agents/diagnostics-extension-versions.md) 」をご覧ください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) 」をご覧ください。
+問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) 」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../azure-monitor/platform/diagnostics-extension-overview.md)をご覧ください。
+収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../azure-monitor/agents/diagnostics-extension-overview.md)をご覧ください。
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 

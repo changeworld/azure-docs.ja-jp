@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509555"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586094"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](./overview.md) には、[Azure portal](https://portal.azure.com) の Web アプリ、モバイル、および API アプリに対する組み込みの監視機能が用意されています。
@@ -136,7 +136,7 @@ CPU の使用状況を反映するメトリックには、次の 2 つがあり�
 **CPU の割合**:Basic、Standard、および Premium プランでホストされるアプリで使用します。これらはスケール アウトが可能だからです。CPU 使用率は、すべてのインスタンスにわたる使用率の有効な指標になります。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>メトリックの粒度と保持ポリシー
-アプリと App Service プランのメトリックは、サービスによってログに記録され、集計され、[これらの規則に従って保持されます](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
+アプリと App Service プランのメトリックは、サービスによってログに記録され、集計され、[これらの規則に従って保持されます](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics)。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure portal でのクォータとメトリックの監視
 アプリに影響するさまざまなクォータとメトリックの状態を確認するには、[Azure portal](https://portal.azure.com) にアクセスします。
@@ -153,14 +153,14 @@ CPU の使用状況を反映するメトリックには、次の 2 つがあり�
 
 これらのグラフのいずれかをクリックするとメトリック ビューが表示され、そこでカスタム グラフの作成や別のメトリックへのクエリ実行などのさまざまな操作を実行できます。 
 
-メトリックについて詳しくは、「[サービス メトリックの監視](../azure-monitor/platform/data-platform.md)」をご覧ください。
+メトリックについて詳しくは、「[サービス メトリックの監視](../azure-monitor/data-platform.md)」をご覧ください。
 
 ## <a name="alerts-and-autoscale"></a>アラートと自動スケーリング
-アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳細については、[アラート通知の受信](../azure-monitor/platform/alerts-classic-portal.md)に関するページをご覧ください。
+アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳細については、[アラート通知の受信](../azure-monitor/alerts/alerts-classic-portal.md)に関するページをご覧ください。
 
 Basic 以上の App Service プランでホストされている App Service アプリでは自動スケーリングがサポートされます。 自動スケーリングでは、App Service プランのメトリックを監視するルールを構成することができます。 ルールによって、必要に応じて追加リソースを提供するインスタンス数を増減できます。 また、アプリがオーバー プロビジョニングされたときのコスト削減にも役立ちます。
 
-自動スケーリングについて詳しくは、[スケールの方法](../azure-monitor/platform/autoscale-get-started.md)に関する記事と [Azure Monitor の自動スケーリングのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)に関する記事をご覧ください。
+自動スケーリングについて詳しくは、[スケールの方法](../azure-monitor/autoscale/autoscale-get-started.md)に関する記事と [Azure Monitor の自動スケーリングのベスト プラクティス](../azure-monitor/autoscale/autoscale-best-practices.md)に関する記事をご覧ください。
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

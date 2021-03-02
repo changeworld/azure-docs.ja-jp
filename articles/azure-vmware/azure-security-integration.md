@@ -3,12 +3,12 @@ title: Azure Security Center 統合を使用して Azure VMware Solution VM を�
 description: Azure Security Center のダッシュボードから Azure のネイティブ セキュリティ ツールを使用して Azure VMware Solution VM を保護します。
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516364"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578256"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
 
@@ -50,7 +50,7 @@ Log Analytics ワークスペースで、Azure Sentinel によるアラートの
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 
-さまざまなソースからデータを収集するには、Log Analytics ワークスペースが必要になります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 
+さまざまなソースからデータを収集するには、Log Analytics ワークスペースが必要になります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../azure-monitor/logs/quick-create-workspace.md)に関するページを参照してください。 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Security Center をデプロイして Azure VMware Solution VM を構成する
 
@@ -243,5 +243,5 @@ Windows サーバーへのサインインの試みが 3 回失敗すると、作
 Azure VMware Solution VM を保護する方法について説明したので、次のことについて学習します。
 
 - [Azure Defender ダッシュボード](../security-center/azure-defender-dashboard.md)の使用。
-- [Azure Sentinel での高度なマルチステージ攻撃の検出](../azure-monitor/learn/quick-create-workspace.md)。
+- [Azure Sentinel での高度なマルチステージ攻撃の検出](../azure-monitor/logs/quick-create-workspace.md)。
 - [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)。

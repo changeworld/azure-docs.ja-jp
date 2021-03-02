@@ -9,16 +9,19 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098080"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585400"
 ---
 # <a name="trusted-storage-for-media-services"></a>Media Services 用の信頼されたストレージ
 
 Media Services アカウントを作成するときは、それをストレージ アカウントに関連付ける必要があります。 システム認証またはマネージド ID 認証を使用することで、Media Services からそのストレージ アカウントにアクセスできます。 Media Services により、Media Services アカウントとストレージ アカウントが同じサブスクリプションに含まれていることが検証され、また、関連付けを追加するユーザーが Azure Resource Manager RBAC を使用してストレージ アカウントにアクセスしていることが検証されます。
+
+>[!NOTE]
+>信頼されたストレージは API でのみ使用でき、現在、Azure portal では有効になっていません。
 
 ## <a name="trusted-storage-with-a-firewall"></a>ファイアウォールを使用した信頼されたストレージ
 

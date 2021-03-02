@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007008"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593826"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
-Start/Stop VMs during off-hours 機能は、有効になっている Azure VM を開始または停止するものです。 ユーザー定義のスケジュールでマシンを開始または停止し、Azure Monitor ログを介して分析情報を取得し、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用してオプションのメールを送信することができます。 この機能は、ほとんどのシナリオにおいて、Azure Resource Manager とクラシック VM の両方で有効にできます。
+Start/Stop VMs during off-hours 機能は、有効になっている Azure VM を開始または停止するものです。 ユーザー定義のスケジュールでマシンを開始または停止し、Azure Monitor ログを介して分析情報を取得し、[アクション グループ](../azure-monitor/alerts/action-groups.md)を使用してオプションのメールを送信することができます。 この機能は、ほとんどのシナリオにおいて、Azure Resource Manager とクラシック VM の両方で有効にできます。 
 
 この機能では、[Start-AzVm](/powershell/module/az.compute/start-azvm) コマンドレットを使用して VM を開始します。 VM を停止するためには、[Stop-AzVM](/powershell/module/az.compute/stop-azvm) を使用します。
 

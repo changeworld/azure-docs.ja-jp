@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 63d1a0bf437df6bc0b68474e092ca23985493b24
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 0bf3a95814aadf687efcc27294b760e14f7d45d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559590"
+ms.locfileid: "100585644"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>スマート検出の電子メール通知に関する変更
 
@@ -27,7 +27,7 @@ ms.locfileid: "100559590"
 
 * プレビューとしてマークされているスマート検出ルール。 これらのスマート検出ルールでは、現在、電子メール通知はサポートされていません。
 
-* 失敗の異常ルール。 このルールは、クラシック アラートから統合アラート プラットフォームに移行された後、新しい既定のロールへの適用が開始されます (詳細については、[こちら](../platform/monitoring-classic-retirement.md)をご覧ください)。
+* 失敗の異常ルール。 このルールは、クラシック アラートから統合アラート プラットフォームに移行された後、新しい既定のロールへの適用が開始されます (詳細については、[こちら](../alerts/monitoring-classic-retirement.md)をご覧ください)。
 
 ## <a name="how-to-prepare-for-this-change"></a>この変更に備える方法は?
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c3934af1af040b8b45175bacde43237802ab82cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607145"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582405"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -35,10 +35,10 @@ DNS 分析ソリューションは、Windows DNS の分析ログと監査ログ�
 
 | **接続先ソース** | **サポート** | **説明** |
 | --- | --- | --- |
-| [Windows エージェント](../platform/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
-| [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
-| [System Center Operations Manager 管理グループ](../platform/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
-| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
+| [Windows エージェント](../agents/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
+| [Linux エージェント](../vm/quick-collect-linux-computer.md) | いいえ | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
+| [System Center Operations Manager 管理グループ](../agents/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| [Azure Storage アカウント](../essentials/resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
 
 ### <a name="data-collection-details"></a>データ収集の詳細
 
@@ -48,7 +48,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 次の情報を使用して、ソリューションを構成します。
 
-- 監視対象の各 DNS サーバーに [Windows](../platform/agent-windows.md) エージェントまたは [Operations Manager](../platform/om-agents.md) エージェントが必要です。
+- 監視対象の各 DNS サーバーに [Windows](../agents/agent-windows.md) エージェントまたは [Operations Manager](../agents/om-agents.md) エージェントが必要です。
 - [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS Analytics ソリューションを Log Analytics ワークスペースに追加できます。 [Solutions Gallery からの Azure Monitor ソリューションの追加](solutions.md)に関するページで説明されている手順も使用できます。
 
 さらに構成を行わなくても、ソリューションはデータの収集を開始します。 ただし、次の構成を使用してデータ収集をカスタマイズできます。
@@ -76,7 +76,7 @@ Operations Manager 管理グループが Log Analytics ワークスペースに�
 - Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
 - Microsoft System Center Advisor DNS Analytics Configuration (Microsoft.IntelligencePack.Dns.Configuration)
 
-ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../platform/om-agents.md)」を参照してください。
+ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../agents/om-agents.md)」を参照してください。
 
 ## <a name="use-the-dns-analytics-solution"></a>DNS 分析ソリューションを使用する
 
@@ -185,4 +185,4 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ログをクエリ](../log-query/log-query-overview.md)して、詳細な DNS ログ レコードを確認します。
+[ログをクエリ](../logs/log-query-overview.md)して、詳細な DNS ログ レコードを確認します。

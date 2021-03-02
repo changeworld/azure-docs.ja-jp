@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38214174fd4e3aa6859f05fd24737d9e9d1f963
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085350"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587211"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Azure Monitor で Surface Hub を監視して正常性を追跡する
 
@@ -26,7 +26,7 @@ ms.locfileid: "90085350"
 
 * 監視する台数のデバイスをサポートする [Log Analytics サブスクリプション](https://azure.microsoft.com/pricing/details/log-analytics/) レベル。 Log Analytics の価格は、登録されるデバイスの台数とデータの処理量によって決まります。 Surface Hub の展開を計画する際は、この点を考慮してください。
 
-次に、既存の Log Analytics ワークスペースを追加するか、新しいワークスペースを作成します。 いずれの方法の使用に関する詳細も、「[Create a Log Analytics workspace in the Azure portal](../learn/quick-create-workspace.md)」(Azure portal で Log Analytics ワークスペースを作成する) に記載されています。 Log Analytics ワークスペースを構成した後、Surface Hub デバイスを登録するには 2 つの方法があります。
+次に、既存の Log Analytics ワークスペースを追加するか、新しいワークスペースを作成します。 いずれの方法の使用に関する詳細も、「[Create a Log Analytics workspace in the Azure portal](../logs/quick-create-workspace.md)」(Azure portal で Log Analytics ワークスペースを作成する) に記載されています。 Log Analytics ワークスペースを構成した後、Surface Hub デバイスを登録するには 2 つの方法があります。
 
 * Intune を通して自動で
 * Surface Hub デバイスの **[設定]** を通して手動で
@@ -74,8 +74,8 @@ Surface Hub のタイルをクリックすると、デバイスの正常性が�
 
    ![Surface Hub ダッシュボード](./media/surface-hubs/surface-hub-dashboard.png)
 
-既存またはカスタムのログ検索に基づく[アラート](../platform/alerts-overview.md)を作成できます。 Azure Monitor によって Surface Hub から収集されたデータを使用して、ユーザーがデバイスに対して定義した条件に該当する問題とアラートを検索できます。
+既存またはカスタムのログ検索に基づく[アラート](../alerts/alerts-overview.md)を作成できます。 Azure Monitor によって Surface Hub から収集されたデータを使用して、ユーザーがデバイスに対して定義した条件に該当する問題とアラートを検索できます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、Surface Hub の詳細なデータを表示します。
-* Surface Hub で問題が発生した場合に通知する[アラート](../platform/alerts-overview.md)を作成します。
+* [Azure Monitor でログ クエリ](../logs/log-query-overview.md)を使用して、Surface Hub の詳細なデータを表示します。
+* Surface Hub で問題が発生した場合に通知する[アラート](../alerts/alerts-overview.md)を作成します。

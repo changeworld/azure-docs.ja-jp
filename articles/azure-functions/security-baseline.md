@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5b38da5539cb80110b2a769a219213a5c74e1506
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b57de23bf59f1b9c84674fe95495f980c4594e2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198557"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587609"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions 用の Azure セキュリティ ベースライン
 
@@ -207,9 +207,9 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Functions デプロイに関連するネットワーク設定とリソースの変更を検出します。 重要なネットワーク設定とリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。 
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -237,7 +237,7 @@ Functions アプリ内に組み込みのカスタム セキュリティおよび
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Insights を使用して Azure Functions を設定する方法](./functions-monitoring.md)
 
@@ -255,7 +255,7 @@ Functions アプリ内に組み込みのカスタム セキュリティおよび
 
 Functions アプリ内に組み込みのカスタム セキュリティおよび監査ログがある場合は、診断設定 "FunctionAppLogs" を有効にして、アーカイブのために Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージ アカウントにログを送信します。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Functions に対して診断設定 (ユーザーが生成するログ) を有効にする方法](./functions-monitor-log-analytics.md)
 
@@ -275,7 +275,7 @@ Functions アプリ内に組み込みのカスタム セキュリティおよび
 
 **ガイダンス**:Azure Monitor で、組織のコンプライアンス規則に従って、Functions アプリに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -291,7 +291,7 @@ Functions アプリ内に組み込みのカスタム セキュリティおよび
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Functions に対して診断設定を有効にする方法](./functions-monitor-log-analytics.md)
 
@@ -311,13 +311,13 @@ Functions アプリの Application Insights を有効にして、ログ、パフ
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Functions に対して診断設定を有効にする方法](./functions-monitor-log-analytics.md)
 
 - [Azure Functions に対して Application Insights を有効にする方法](./configure-monitoring.md#enable-application-insights-integration)
 
-- [Azure 内でアラートを作成する方法](../azure-monitor/learn/tutorial-response.md)
+- [Azure 内でアラートを作成する方法](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -441,7 +441,7 @@ Functions アプリには複数の導入方法を使用できます。その一�
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -631,7 +631,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 **ガイダンス**:運用環境のFunctions アプリおよびその他の重要な、または関連するリソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -850,7 +850,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**:Azure Policy を使用して、Functions アプリの標準的なセキュリティ構成を定義して実装します。 "Microsoft.Web" 名前空間で Azure Policy エイリアスを使用して、Functions アプリの構成を監査または適用するカスタム ポリシーを作成します。 次のように、組み込みのポリシー定義を使用することもできます。
-- Functions アプリではマネージド ID を使用する必要がある
+- 関数アプリではマネージド ID を使用する必要がある
 - Functions アプリのリモート デバッグを無効にする必要がある
 - Functions アプリには HTTPS 経由でのみアクセスできる必要がある
 

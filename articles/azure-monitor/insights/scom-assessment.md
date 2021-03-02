@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 685bf35bfb6d6e85d70bd1f1b446370d66a320f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004910"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573394"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -229,7 +229,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](../log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](../logs/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](../log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](../logs/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,5 +295,5 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログの検索](../log-query/log-query-overview.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。
+- [ログの検索](../logs/log-query-overview.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。
 

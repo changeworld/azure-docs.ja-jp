@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 91bb303fca4517f84ad8b430f26543e9f116fddc
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 477512c0b1de8548e2aa1e2971a5d831e84d2139
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833084"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578366"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター
 
@@ -143,4 +143,5 @@ Network Performance Monitor は、いくつかの回線接続の問題を診断�
  
 
 ## <a name="next-steps"></a>次のステップ
-詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../log-query/log-query-overview.md)します。
+詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../logs/log-query-overview.md)します。
+

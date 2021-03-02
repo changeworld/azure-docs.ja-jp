@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
-ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d72e3ffc8698d9f3a2df170bd87f2969475ca9ed
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333955"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580679"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する
 
-実行時にロジック アプリに関するより豊富なデバッグ情報を取得するには、[Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)を設定して使用し、トリガー イベント、実行イベント、アクション イベントなどのランタイム データやイベントに関する情報を [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に記録して格納します。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 Azure Monitor ログを使用することで、この情報を収集して確認するのに役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。 さらに、Azure Storage や Azure Event Hubs などの[他の Azure サービスでこの診断データを使用する](#extend-data)こともできます。
+実行時にロジック アプリに関するより豊富なデバッグ情報を取得するには、[Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)を設定して使用し、トリガー イベント、実行イベント、アクション イベントなどのランタイム データやイベントに関する情報を [Log Analytics ワークスペース](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)に記録して格納します。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 Azure Monitor ログを使用することで、この情報を収集して確認するのに役立つ[ログ クエリ](../azure-monitor/logs/log-query-overview.md)を作成できます。 さらに、Azure Storage や Azure Event Hubs などの[他の Azure サービスでこの診断データを使用する](#extend-data)こともできます。
 
 ロジック アプリのログを設定するには、[ロジック アプリを作成するときに Log Analytics を有効にする](#logging-for-new-logic-apps)か、既存のロジック アプリの Log Analytics ワークスペースに [Logic Apps 管理ソリューション をインストール](#install-management-solution)します。 このソリューションでは、ロジック アプリの実行に関する集約情報が提供され、状態、実行時間、再送信の状態、関連付け ID などの特定の詳細情報が含まれています。 次に、この情報に対してログの記録とクエリの作成を有効にするために、[Azure Monitor ログを設定します](#set-up-resource-logs)。
 
@@ -23,7 +23,7 @@ ms.locfileid: "91333955"
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、[Log Analytics ワークスペース](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)が必要です。 ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)について確認してください。
+開始する前に、[Log Analytics ワークスペース](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)が必要です。 ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/logs/quick-create-workspace.md)について確認してください。
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -35,7 +35,7 @@ ms.locfileid: "91333955"
 
    1. **[Log Analytics]** で **[オン]** を選択します。
 
-   1. **Log Analytics ワークスペース**の一覧から、ロジック アプリの実行からデータを送信するワークスペースを選択します。
+   1. **Log Analytics ワークスペース** の一覧から、ロジック アプリの実行からデータを送信するワークスペースを選択します。
 
       ![ロジック アプリに関する情報の入力](./media/monitor-logic-apps-log-analytics/create-logic-app-details.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "91333955"
 
 ## <a name="set-up-azure-monitor-logs"></a>Azure Monitor ログを設定する
 
-ランタイム イベントおよびデータに関する情報を [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)に格納するとき、この情報の検索と確認に役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。
+ランタイム イベントおよびデータに関する情報を [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)に格納するとき、この情報の検索と確認に役立つ[ログ クエリ](../azure-monitor/logs/log-query-overview.md)を作成できます。
 
 > [!NOTE]
 > 診断設定を有効にした後、診断データが指定された宛先 (Log Analytics、イベント ハブ、ストレージ アカウントなど) のログに最大 30 分間送信されない場合があります。 この遅延は、この期間の診断データが存在しないため確認できない可能性があることを意味します。 完了したイベントと[追跡対象プロパティ](#extend-data)は、10 ～ 15 分間 Log Analytics ワークスペースに表示されない場合があります。
@@ -144,7 +144,7 @@ ms.locfileid: "91333955"
    ![ロジック アプリの実行と状態を表示する](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
    > [!NOTE]
-   > このページの**再送信**機能は現在使用できません。
+   > このページの **再送信** 機能は現在使用できません。
 
    [追跡対象プロパティを設定した](#extend-data)アクションでは、 **[追跡対象プロパティ]** 列で **[表示]** を選択してプロパティを表示することもできます。 追跡対象プロパティを検索するには、列フィルターを使用します。
 
@@ -178,10 +178,10 @@ ms.locfileid: "91333955"
 
 Azure Monitor ログと併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。
 
-* [Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-* [Azure プラットフォーム ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
+* [Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+* [Azure プラットフォーム ログを Azure Event Hubs にストリーミングする](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)
 
-これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../azure-monitor/platform/powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 次に例を示します。
+これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../azure-monitor/visualize/powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 次に例を示します。
 
 * [Event Hubs からStream Analytics にデータをストリーミングする](../stream-analytics/stream-analytics-define-inputs.md)
 * [ストリーミング データを Stream Analytics で分析し、Power BI でリアルタイム分析ダッシュボードを作成する](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -194,7 +194,7 @@ Azure Monitor ログと併せて、ロジック アプリの診断データを�
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure Monitor の診断イベント
 
-各診断イベントには、ご利用のロジック アプリとそのイベントに関する詳細 (状態、開始時刻、終了時刻など) が含まれています。 監視、追跡、ログをプログラムで設定する際に、この情報を [Azure Logic Apps 用 REST API](/rest/api/logic) と [Azure Monitor 用 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) で使用できます。 また、次に示す `clientTrackingId` および `trackedProperties` プロパティを使用することもできます。 
+各診断イベントには、ご利用のロジック アプリとそのイベントに関する詳細 (状態、開始時刻、終了時刻など) が含まれています。 監視、追跡、ログをプログラムで設定する際に、この情報を [Azure Logic Apps 用 REST API](/rest/api/logic) と [Azure Monitor 用 REST API](../azure-monitor/essentials/metrics-supported.md#microsoftlogicworkflows) で使用できます。 また、次に示す `clientTrackingId` および `trackedProperties` プロパティを使用することもできます。 
 
 * `clientTrackingId`:指定しなかった場合、自動的にこの ID が生成され、ロジック アプリの実行でイベント (このロジック アプリから呼び出される入れ子になったワークフローなど) どうしが関連付けられます。 この ID は、カスタム ID 値を指定した `x-ms-client-tracking-id` ヘッダーをトリガー要求で渡すことで、トリガー内で手動で指定できます。 要求トリガー、HTTP トリガー、または webhook トリガーを使用できます。
 

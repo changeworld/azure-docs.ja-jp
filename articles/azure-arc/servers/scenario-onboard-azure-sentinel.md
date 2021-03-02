@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを Azure Sentinel にオンボードする
 description: Azure Arc 対応サーバーを Azure Sentinel に追加し、そのセキュリティ状態を予防的に監視する方法について説明します。
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60018e710613a27bcb5c00f38ee90be6ff46c61d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94810931"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584739"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Azure Arc 対応サーバーを Azure Sentinel にオンボードする
 
@@ -18,7 +18,7 @@ ms.locfileid: "94810931"
 
 始める前に、次の要件を満たしていることを確認します。
 
-- [Log Analytics ワークスペース。](../../azure-monitor/platform/data-platform-logs.md) Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../../azure-monitor/platform/design-logs-deployment.md)」を参照してください。
+- [Log Analytics ワークスペース。](../../azure-monitor/logs/data-platform-logs.md) Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../../azure-monitor/logs/design-logs-deployment.md)」を参照してください。
 
 - [サブスクリプションで有効になっている](../../sentinel/quickstart-onboard.md) Azure Sentinel。
 

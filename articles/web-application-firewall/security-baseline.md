@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807871"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581239"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web Application Firewall の Azure セキュリティ ベースライン
 
@@ -111,9 +111,9 @@ Azure PowerShell または Azure CLI を選択して、タグに基づいたリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Web Application Firewall (WAF) デプロイに関連するネットワーク設定とリソースの変更を検出します。 重要なネットワーク設定またはリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -153,9 +153,9 @@ Azure Sentinel には、Azure WAF のセキュリティ イベントの概要を
 
 - [ログ記録の概要](ag/ag-overview.md#logging)
 
-- [Azure Monitor ログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)
+- [Azure Monitor ログ クエリの概要](../azure-monitor/logs/log-query-overview.md)
 
-- [Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure プラットフォーム ログの概要](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -192,9 +192,9 @@ Azure Sentinel には、WAF のセキュリティ イベントの概要を提供
 
 **ガイダンス**:Azure アクティビティ ログの診断設定と Azure WAF の診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 Log Analytics でクエリを実行して、用語の検索、傾向の特定、パターンの分析を行い、収集されたデータに基づいて他の多くの分析情報を提供します。 WAF メトリックに基づいて異常なアクティビティについてのアラートを作成します。 たとえば、ブロックされた要求の数が 'X' を超えた場合に 'Y' を実行します。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-- [Azure 内でアラートを作成する方法](../azure-monitor/learn/tutorial-response.md)
+- [Azure 内でアラートを作成する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 適用なし
 

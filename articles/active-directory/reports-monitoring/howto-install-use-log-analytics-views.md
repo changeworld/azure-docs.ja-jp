@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc1592681429998f5082fbadcd45fa068f130e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 86ad698793d562f93f9972903ca21e50c209c79c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180474"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580005"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用のログ分析ビューのインストールと使用
 
@@ -35,7 +35,7 @@ Azure Active Directory のログ分析ビューを使用して、お使いの Az
 
 ログ分析ビューを使用するには、次の準備が必要です。
 
-* Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../../azure-monitor/learn/quick-create-workspace.md)を確認してください。
+* Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../../azure-monitor/logs/quick-create-workspace.md)を確認してください。
 * 最初に、[Azure AD アクティビティ ログを Log Analytics ワークスペースにルーティングする](howto-integrate-activity-logs-with-log-analytics.md)手順を完了する。
 * [GitHub リポジトリ](https://aka.ms/AADLogAnalyticsviews)からローカル コンピューターに、ビューをダウンロードする。
 
@@ -67,11 +67,11 @@ Azure Active Directory のログ分析ビューを使用して、お使いの Az
 
     ![ルールを作成する](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. アラートに対するアクション グループを選択します。 これは一般に、、電子メールまたはテキスト メッセージ経由で通知したいチームか、Webhook、Runbook、関数、ロジック アプリ、または外部の ITSM ソリューションを使用して自動化されたタスクになります。 [Azure portal でアクション グループを作成および管理する方法](../../azure-monitor/platform/action-groups.md)について確認してください。
+6. アラートに対するアクション グループを選択します。 これは一般に、、電子メールまたはテキスト メッセージ経由で通知したいチームか、Webhook、Runbook、関数、ロジック アプリ、または外部の ITSM ソリューションを使用して自動化されたタスクになります。 [Azure portal でアクション グループを作成および管理する方法](../../azure-monitor/alerts/action-groups.md)について確認してください。
 
 7. **[アラート ルールの作成]** を選択して、アラートを作成します。 これで、サインイン エラーが発生するたびに、アラート通知が行われるようになりました。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログでアクティビティ ログを分析する方法](howto-analyze-activity-logs-log-analytics.md)
-* [Azure portal での Azure Monitor ログの概要](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Azure portal での Azure Monitor ログの概要](../../azure-monitor/logs/log-analytics-tutorial.md)

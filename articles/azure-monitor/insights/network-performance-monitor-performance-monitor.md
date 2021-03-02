@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5335882c11ee6a1a7352ef3dc9822cfa88eda196
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832965"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573512"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor ソリューション:パフォーマンスの監視
 
@@ -131,4 +131,5 @@ Network Performance Monitor では、代理トランザクションを実行す�
 ![ノードのプロパティが選ばれたトポロジ マップ](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>次のステップ
-詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../log-query/log-query-overview.md)します。
+詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../logs/log-query-overview.md)します。
+
