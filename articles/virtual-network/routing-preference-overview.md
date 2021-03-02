@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 7fdd23aea5e435c94493a0cbe86b6ffcdb0d2e10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.custom: references_regions
+ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
+ms.sourcegitcommit: 8c93b05c27c7e8a5ba62a4d6fc6fc4d0c3980a21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539072"
+ms.lasthandoff: 02/26/2021
+ms.locfileid: "101593256"
 ---
-# <a name="what-is-routing-preference-preview"></a>ルーティング優先設定とは (プレビュー)
+# <a name="what-is-routing-preference"></a>ルーティング設定とは
 
 Azure のルーティング優先設定を使用すると、Azure とインターネットにトラフィックをルーティングする方法を選択できます。 Microsoft ネットワーク経由または ISP ネットワーク (パブリック インターネット) 経由のどちらでトラフィックをルーティングするかを選択できます。 これらのオプションはそれぞれ "*コールド ポテト ルーティング*" および "*ホット ポテト ルーティング*" とも呼ばれます。 エグレス データ転送の料金は、ルーティングの選択によって異なります。 パブリック IP アドレスを作成するときに、ルーティング オプションを選択できます。 パブリック IP アドレスは、仮想マシン、仮想マシン スケール セット、インターネットに接続するロード バランサーなどのリソースに関連付けることができます。また、BLOB、Files、Web、Azure Data Lake などの Azure Storage リソースに対してルーティング優先設定を設定することもできます。 既定では、すべての Azure サービスについて、トラフィックは Microsoft グローバル ネットワーク経由でルーティングされます。
-
-> [!IMPORTANT]
-> 現在、ルーティング優先設定はパブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="routing-via-microsoft-global-network"></a>Microsoft グローバル ネットワーク経由のルーティング
 
@@ -70,13 +67,13 @@ Azure のルーティング優先設定を使用すると、Azure とインタ�
 * Azure Data Lake
 
 ## <a name="pricing"></a>価格
-両方のオプションの価格差は、インターネット エグレス データ転送の価格に反映されます。 **Microsoft グローバル ネットワーク** 経由のルーティングのデータ転送料金は、現在のインターネット エグレス料金と同じです。 最新の価格の情報については、[Azure 帯域幅の価格に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)を参照してください。 
+両方のオプションの価格差は、インターネット エグレス データ転送の価格に反映されます。 **Microsoft グローバル ネットワーク** 経由のルーティングのデータ転送料金は、現在のインターネット エグレス料金と同じです。 最新の価格の情報については、[Azure 帯域幅の価格に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)を参照してください。
 
 ## <a name="limitations"></a>制限事項
 
+* 現在のところ、ルーティングの設定は、オーストラリア中部、オーストラリア中部 2、カナダ東部、ブラジル南部、韓国中部、韓国南部ではサポートされていません。
 * ルーティング優先設定は、パブリック IP アドレスのゾーン冗長 Standard SKU とのみ互換性があります。 パブリック IP アドレスの Basic SKU はサポートされていません。
 * 現在、ルーティング優先設定では IPv4 のパブリック IP アドレスのみがサポートされています。 IPv6 のパブリック IP アドレスはサポートされていません。
-* 複数の NIC を備えた仮想マシンでは、1 種類のルーティング優先設定しか使用できません。
 
 
 ## <a name="next-steps"></a>次のステップ
