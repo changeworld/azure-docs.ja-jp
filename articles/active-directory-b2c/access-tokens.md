@@ -11,16 +11,16 @@ ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631395"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654478"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
-*アクセス トークン* には、Azure Active Directory B2C (Azure AD B2C) で API に付与されているアクセス許可を識別するために使用できる要求が含まれています。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。 アクセス トークンは、Azure AD B2C からの応答で、 **access_token** として示されます。
+*アクセス トークン* には、Azure Active Directory B2C (Azure AD B2C) で API に付与されているアクセス許可を識別するために使用できる要求が含まれています。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。 アクセス トークンは、Azure AD B2C からの応答で、**access_token** として示されます。
 
 この記事では、Web アプリケーションと Web API に対してアクセス トークンを要求する方法を示します。 Azure AD B2C でのトークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](tokens-overview.md)」を参照してください。
 
@@ -60,7 +60,7 @@ OpenID Connect 標準では、いくつかの特別な scope 値が指定され�
 - **offline_access** - [認証コード フロー](authorization-code-flow.md)を使用して更新トークンを要求します。
 - **00000000-0000-0000-0000-000000000000** - クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。
 
-`/authorize` 要求の **response_type** パラメーターに `token` が含まれる場合、 **scope** パラメーターには、付与されるリソース スコープを `openid` と `offline_access` 以外に少なくとも 1 つ含める必要があります。 そうしないと、`/authorize` 要求は失敗します。
+`/authorize` 要求の **response_type** パラメーターに `token` が含まれる場合、**scope** パラメーターには、付与されるリソース スコープを `openid` と `offline_access` 以外に少なくとも 1 つ含める必要があります。 そうしないと、`/authorize` 要求は失敗します。
 
 ## <a name="request-a-token"></a>トークンの要求
 
@@ -71,7 +71,7 @@ OpenID Connect 標準では、いくつかの特別な scope 値が指定され�
 - `<tenant-name>` - Azure AD B2C テナントの名前。
 - `<policy-name>` - カスタム ポリシーまたはユーザー フローの名前。
 - `<application-ID>` - ユーザー フローをサポートするために登録した Web アプリケーションのアプリケーション識別子。
-- `<redirect-uri>` - クライアント アプリケーションを登録したときに入力した **リダイレクト URI** 。
+- `<redirect-uri>` - クライアント アプリケーションを登録したときに入力した **リダイレクト URI**。
 
 ```http
 GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
@@ -91,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

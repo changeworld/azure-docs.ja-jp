@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af2c848fe06d9ebc44443bdcce61af0c8de08b2d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 2270ff360c7bb923555c9b4ffb0c35ccd4382d0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537003"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647491"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory の認証方法 - OATH トークン
 
@@ -29,15 +29,13 @@ Authenticator アプリは、プッシュ通知を行うように設定された
 
 一部の OATH TOTP ハードウェア トークンはプログラミング可能であり、秘密鍵やシードは事前にプログラミングされていません。 これらのプログラミング可能なハードウェア トークンは、ソフトウェア トークンのセットアップ フローから取得した秘密鍵またはシードを使用して設定できます。 顧客は、選択したベンダーからこれらのトークンを購入し、ベンダーのセットアップ プロセスで秘密鍵またはシードを使用することができます。
 
-## <a name="oath-hardware-tokens-preview"></a>OATH ハードウェア トークン (プレビュー)
+## <a name="oath-hardware-tokens"></a>OATH ハードウェア トークン
 
 Azure AD では、30 秒または 60 秒ごとにコードを更新する OATH-TOTP SHA-1 トークンの使用をサポートしています。 顧客は、選択したベンダーからこれらのトークンを購入できます。
 
 OATH TOTP ハードウェア トークンには、通常、トークンで事前にプログラミングされた秘密鍵 (シード) が付属しています。 これらのキーは、次の手順に従って Azure AD に入力する必要があります。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密キーに含めることができるのは、文字 *a-z* または *A-Z* と数字 *2-7* のみです。また、*Base32* でエンコードする必要があります。
 
 再シードできるプログラミング可能な OATH TOTP ハードウェア トークンは、ソフトウェア トークンのセットアップ フローで Azure AD に設定することもできます。
-
-OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ![OATH トークンの MFA OATH トークン ブレードへのアップロード](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

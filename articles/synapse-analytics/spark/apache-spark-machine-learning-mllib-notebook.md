@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 39ba8a5884abb4be9fa0b8e32a292e06738e1550
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5caa41b852bf55a11489db6c0bab871b20720e05
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935655"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670660"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>チュートリアル:Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
@@ -197,7 +197,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 > [!Note]
 > モデルを保存するためには、*Storage BLOB データ共同作成者* の Azure ロールが必要です。 お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロールの割り当ての追加]** を選択します。 Storage BLOB データ共同作成者ロールを Azure SQL Database サーバーに割り当てます。 所有者特権を持つメンバーのみが、この手順を実行できます。 
 >
->さまざまな Azure の組み込みロールについては、[こちらのガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
+>さまざまな Azure の組み込みロールについては、[こちらのガイド](../../role-based-access-control/built-in-roles.md)を参照してください。
 
 ```python
 ## Create a new logistic regression object for the model
@@ -256,9 +256,9 @@ plt.show()
 
 ## <a name="next-steps"></a>次のステップ
 
-- [.NET for Apache Spark ドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark ドキュメント](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)
 - [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
-> Apache Spark の公式ドキュメントの一部では、Spark コンソールの使用を前提としていますが、これは Azure Synapse Analytics の Apache Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)または [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) のエクスペリエンスを使用してください。
+> Apache Spark の公式ドキュメントの一部では、Spark コンソールの使用を前提としていますが、これは Azure Synapse Analytics の Apache Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md)または [IntelliJ](../spark/intellij-tool-synapse.md) のエクスペリエンスを使用してください。

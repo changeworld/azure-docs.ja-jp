@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560103"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633599"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -36,11 +36,6 @@ ms.locfileid: "97560103"
 
 - Azure Defender の価値と機能を評価する
 - セキュリティ アラートに対して行った構成 (SIEM 統合、ワークフローの自動化、電子メール通知など) を検証する
-
-> [!NOTE]
-> この手順には、 **[セキュリティ アラート]** ページの上部にあるバナーから使用できる新しいアラート エクスペリエンス (プレビュー) が必要です。
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー":::
 
 アラートのサンプルを作成するには:
 

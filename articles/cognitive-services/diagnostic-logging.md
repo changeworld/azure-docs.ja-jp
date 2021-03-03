@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e33e8fe6e626700790a3b62265c6889f06e0861b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a2005ca7b32136ff0032d27e04035c46b2e4e904
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366606"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595361"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Cognitive Services の診断ログを有効にする
 
@@ -24,24 +24,24 @@ ms.locfileid: "94366606"
 
 診断ログを有効にするには、ログ データを格納する場所が必要になります。 このチュートリアルでは、Azure Storage と Log Analytics を使用します。
 
-* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) - ポリシー監査、静的解析、またはバックアップの診断ログを保持します。 設定を構成するユーザーが両方のサブスクリプションに対して適切な Azure RBAC アクセスを持っている限り、ストレージ アカウントはログを出力するリソースと同じサブスクリプションに属している必要はありません。
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) - ポリシー監査、静的解析、またはバックアップの診断ログを保持します。 設定を構成するユーザーが両方のサブスクリプションに対して適切な Azure RBAC アクセスを持っている限り、ストレージ アカウントはログを出力するリソースと同じサブスクリプションに属している必要はありません。
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
 
 > [!NOTE]
-> その他の構成オプションも使用できます。 詳細については、[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
+> その他の構成オプションも使用できます。 詳細については、[Azure リソースからのログ データの収集と使用](../azure-monitor/essentials/platform-logs-overview.md)に関するページを参照してください。
 
 ## <a name="enable-diagnostic-log-collection"></a>診断ログの収集を有効にする  
 
 最初に、Azure portal を使用して診断ログを有効にします。
 
 > [!NOTE]
-> PowerShell または Azure CLI を使用してこの機能を有効にするには、[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/platform-logs-overview.md)に関するページに示されている手順を使用します。
+> PowerShell または Azure CLI を使用してこの機能を有効にするには、[Azure リソースからのログ データの収集と使用](../azure-monitor/essentials/platform-logs-overview.md)に関するページに示されている手順を使用します。
 
 1. Azure Portal に移動します。 次に、Cognitive Services リソースを見つけて選択します。 たとえば、Bing Web Search へのサブスクリプションを選択します。   
 2. 次に、左側のナビゲーション メニューから、 **[監視]** を見つけて **[診断設定]** を選択します。 この画面には、このリソースに対して前に作成したすべての診断設定が含まれています。
 3. 前に作成したリソースで使用したいものが存在する場合は、ここでそれを選択できます。 それ以外の場合は、 **[+ Add diagnostic setting] (+ 診断設定の追加)** を選択します。
 4. 設定の名前を入力します。 次に、 **[ストレージ アカウントへのアーカイブ]** および **[Log Analytics への送信]** を選択します。
-5. 構成するよう求めるメッセージが表示されたら、診断ログを格納するために使用するストレージ アカウントと OMS ワークスペースを選択します。 **注** :ストレージ アカウントまたは OMS ワークスペースがない場合は、プロンプトに従って作成してください。
+5. 構成するよう求めるメッセージが表示されたら、診断ログを格納するために使用するストレージ アカウントと OMS ワークスペースを選択します。 **注**:ストレージ アカウントまたは OMS ワークスペースがない場合は、プロンプトに従って作成してください。
 6. **[Audit]** 、 **[RequestResponse]** 、および **[AllMetrics]** を選択します。 次に、診断ログ データの保持期間を設定します。 保持ポリシーが 0 に設定されていると、そのログ カテゴリのイベントは無期限に格納されます。
 7. **[保存]** をクリックします。
 
@@ -113,9 +113,9 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>次のステップ
 
-* ログ記録を有効にする方法、および各種の Azure サービスでサポートされているメトリックやログのカテゴリを理解するには、Microsoft Azure での[メトリックの概要](../azure-monitor/platform/data-platform.md)に関するページと「[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)」の記事の両方を参照してください。
+* ログ記録を有効にする方法、および各種の Azure サービスでサポートされているメトリックやログのカテゴリを理解するには、Microsoft Azure での[メトリックの概要](../azure-monitor/data-platform.md)に関するページと「[Azure 診断ログの概要](../azure-monitor/essentials/platform-logs-overview.md)」の記事の両方を参照してください。
 * Event Hubs については次の記事をご覧ください。
   * [Azure Event Hubs とは](../event-hubs/event-hubs-about.md)
   * [Event Hubs の使用](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 * [Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)に関する記事をご覧ください。
-* 「[Azure Monitor ログでのログ検索について](../azure-monitor/log-query/log-query-overview.md)」をお読みください。
+* 「[Azure Monitor ログでのログ検索について](../azure-monitor/logs/log-query-overview.md)」をお読みください。

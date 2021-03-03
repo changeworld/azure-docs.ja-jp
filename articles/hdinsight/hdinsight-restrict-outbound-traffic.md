@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932130"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574600"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>ファイアウォールを使用して Azure HDInsight クラスターのアウトバウンド ネットワーク トラフィックを構成する
 
@@ -58,7 +58,7 @@ Azure Firewall を使用して既存の HDInsight からのエグレスをロッ
 
     **一番上のセクション**
 
-    | プロパティ|  [値]|
+    | プロパティ|  値|
     |---|---|
     |名前| FwAppRule|
     |Priority|200|
@@ -92,7 +92,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
     **一番上のセクション**
 
-    | プロパティ|  [値]|
+    | プロパティ|  値|
     |---|---|
     |名前| FwNetRule|
     |Priority|200|
@@ -165,7 +165,7 @@ Azure Firewall は、いくつかの異なるストレージ システムにロ�
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-アプリケーションを初めて使用する際には、Azure Firewall と Azure Monitor ログを統合すると便利です。 特に、アプリケーションの依存関係をすべては把握していない場合に便利です。 Azure Monitor ログについて詳しくは、「[Azure Monitor でログ データを分析する](../azure-monitor/log-query/log-query-overview.md)」をご覧ください
+アプリケーションを初めて使用する際には、Azure Firewall と Azure Monitor ログを統合すると便利です。 特に、アプリケーションの依存関係をすべては把握していない場合に便利です。 Azure Monitor ログについて詳しくは、「[Azure Monitor でログ データを分析する](../azure-monitor/logs/log-query-overview.md)」をご覧ください
 
 Azure Firewall のスケールの制限と要求の増加については、[こちら](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)のドキュメント、または [FAQ](../firewall/firewall-faq.yml) を参照してください。
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 88f8d62a6321deae8a46d32441625c5960547694
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 6b03d4fb51021019da4c7d31fccf28b0ee157f32
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982074"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670551"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension 3.0 を使用して、メトリックとログを監視する
 
@@ -569,7 +569,7 @@ PercentUsedSwap | 合計スワップに対する使用中のスワップ領域�
 
 ### <a name="builtin-metrics-for-the-network-class"></a>"ネットワーク" クラスの組み込みのメトリック
 
-"ネットワーク" クラスのメトリックは、起動後の個々のネットワーク インターフェイス上のネットワーク アクティビティに関する情報を提供します。 LAD は、ホスト メトリックから取得できる帯域幅メトリックを公開しません。
+メトリックのネットワーク クラスは、起動後の個々のネットワーク インターフェイスでのネットワーク アクティビティに関する情報を提供します。 LAD は、ホスト メトリックから取得できる帯域幅メトリックを公開しません。
 
 counter | 意味
 ------- | -------
@@ -818,13 +818,13 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 
 この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-30-configuration)と正確には一致しません。
 
-:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="Azure Storage Explorer を示すスクリーンショット。":::
+:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="スクリーンショットに Azure Storage Explorer が示されています。":::
 
 
 EventHubs エンドポイントに発行されたメッセージを使用する方法については、関連する [EventHubs ドキュメント](../../event-hubs/event-hubs-about.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 収集するメトリックのメトリック アラートを [Azure Monitor](../../azure-monitor/platform/alerts-classic-portal.md) で作成します。
-* メトリックの[監視グラフ](../../azure-monitor/platform/data-platform.md)を作成します。
+* 収集するメトリックのメトリック アラートを [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md) で作成します。
+* メトリックの[監視グラフ](../../azure-monitor/data-platform.md)を作成します。
 * メトリックを使用して[仮想マシン スケール セットを作成](../linux/tutorial-create-vmss.md)し、自動スケールを制御する方法について説明します。

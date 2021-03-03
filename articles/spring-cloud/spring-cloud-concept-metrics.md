@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 119b00e67cf8337123028840ec6a7ecd29e97a05
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 5506d2da0ccf09de7db7aff744984ae93c59fd32
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051602"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571711"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリックについて
 
@@ -173,7 +173,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 
 * [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](spring-cloud-quickstart-logs-metrics-tracing.md)に関するページ
 
-* [Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)
+* [Azure メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)
 
 * [診断設定でログとメトリックを分析する](./diagnostic-services.md)
 

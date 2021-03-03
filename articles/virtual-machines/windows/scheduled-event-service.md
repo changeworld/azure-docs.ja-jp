@@ -3,16 +3,16 @@ title: Azure で VM 用にスケジュールされたイベントを監視する
 description: Azure 仮想マシンでスケジュールされているイベントを監視する方法について説明します。
 author: mysarn
 ms.service: virtual-machines
-ms.subservice: monitoring
+ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 866522da162d22621bd37bf9d2f2fa6838206e17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702272"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674687"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure VM のスケジュールされたイベントを監視する
 
@@ -25,7 +25,7 @@ ms.locfileid: "98702272"
 
 Scheduled Events は、すべての Azure 仮想マシン上で使用できる [Azure Instance Metadata Service](instance-metadata-service.md) の一部として提供されます。 お客様は、仮想マシンのエンドポイントに対してクエリを実行することで、スケジュールされたメンテナンス通知を検索して、状態の保存や仮想マシンのローテーションからの除外などの軽減策を実行するといった、自動化を作成できます。 Scheduled Events を記録する自動化を作成することをお勧めします。これにより、Azure メンテナンス イベントの監査ログを取得できます。 
 
-この記事では、メンテナンスの Scheduled Events を Log Analytics にキャプチャする方法について説明します。 さらに、いくつかの基本的な通知アクションをトリガーします。たとえば、所属チームへのメール送信や、ご利用の仮想マシンに影響を与えているすべてのイベントの履歴ビューの取得などがあります。 ここではイベントの集計と自動化に [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) を使用しますが、これらのログの収集と自動化のトリガーには任意の監視ソリューションを使用できます。
+この記事では、メンテナンスの Scheduled Events を Log Analytics にキャプチャする方法について説明します。 さらに、いくつかの基本的な通知アクションをトリガーします。たとえば、所属チームへのメール送信や、ご利用の仮想マシンに影響を与えているすべてのイベントの履歴ビューの取得などがあります。 ここではイベントの集計と自動化に [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) を使用しますが、これらのログの収集と自動化のトリガーには任意の監視ソリューションを使用できます。
 
 ![イベントのライフサイクルを示す図](./media/notifications/events.png)
 
@@ -35,7 +35,7 @@ Scheduled Events は、すべての Azure 仮想マシン上で使用できる [
 
 このチュートリアルの終了時に、グループ リソース グループを削除しないでください。
 
-また、可用性セット内の VM からの情報を集約するために [Log Analytics ワークスペースを作成](../../azure-monitor/learn/quick-create-workspace.md)する必要があります。
+また、可用性セット内の VM からの情報を集約するために [Log Analytics ワークスペースを作成](../../azure-monitor/logs/quick-create-workspace.md)する必要があります。
 
 ## <a name="set-up-the-environment"></a>環境をセットアップする
 
@@ -132,7 +132,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Azure Monitor を使用したアラート ルールの作成 
 
 
-イベントが Log Analytics にプッシュされたら、次の[クエリ](../../azure-monitor/log-query/log-analytics-tutorial.md)を実行して、スケジュール イベントを探すことができます。
+イベントが Log Analytics にプッシュされたら、次の[クエリ](../../azure-monitor/logs/log-analytics-tutorial.md)を実行して、スケジュール イベントを探すことができます。
 
 1. ページの上部にある **[ログ]** を選択し、次の内容をテキスト ボックスに貼り付けます。
 

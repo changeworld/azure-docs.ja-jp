@@ -5,14 +5,14 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 6d9a74729768a326379b5efddb864a4fee02fa59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493220"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658573"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API の一般的な問題のトラブルシューティング
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -32,7 +32,7 @@ Azure Cosmos DB の Cassandra API は互換性レイヤーであり、広く普�
 次のエラーが表示されることがあります: `Cannot connect to any host, scheduling retry in 600000 milliseconds`。 
 
 ### <a name="solution"></a>解決策
-これはクライアント側での SNAT の枯渇である可能性があります。 この問題を解決するには、[アウトバウンド接続での SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) に関するページの手順に従ってください。 これは、Azure ロード バランサーで既定で 4 分間のアイドル タイムアウトが発生する、アイドル タイムアウトの問題である場合もあります。 [ロード バランサーのアイドル タイムアウト](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal)に関するドキュメントを参照してください。 ドライバー設定から TCP キープアライブを有効にし ([下記](#enable-keep-alive-for-java-driver)参照)、オペレーティング システムの `keepAlive` 間隔を 4 分未満に設定してください。
+これはクライアント側での SNAT の枯渇である可能性があります。 この問題を解決するには、[アウトバウンド接続での SNAT](../load-balancer/load-balancer-outbound-connections.md) に関するページの手順に従ってください。 これは、Azure ロード バランサーで既定で 4 分間のアイドル タイムアウトが発生する、アイドル タイムアウトの問題である場合もあります。 [ロード バランサーのアイドル タイムアウト](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal)に関するドキュメントを参照してください。 ドライバー設定から TCP キープアライブを有効にし ([下記](#enable-keep-alive-for-java-driver)参照)、オペレーティング システムの `keepAlive` 間隔を 4 分未満に設定してください。
 
  
 

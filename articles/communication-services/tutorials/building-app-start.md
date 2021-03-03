@@ -8,16 +8,14 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4655a20ddd419993f5a73ec54420abec96d32a62
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d682524ae3ff5b82233a69959a309a7495e30bed
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546178"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658065"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>チュートリアル:Azure Communication Services 用の Web アプリを準備する (Node.js)
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services を使用すると、自分のアプリケーションにリアルタイム コミュニケーションを追加することができます。 このチュートリアルでは、Azure Communication Services をサポートする Web アプリケーションの設定方法について説明します。 リアルタイム コミュニケーションの実装を始めたいと考えている新規開発者向けの入門チュートリアルとなっています。
 
@@ -38,12 +36,12 @@ Azure Communication Services を使用すると、自分のアプリケーショ
 - [Visual Studio Code](https://code.visualstudio.com/):ローカル開発環境でコードを編集する際に使用します。
 - [webpack](https://webpack.js.org/): コードをバンドルしてローカルでホストする際に使用します。
 - [Node.js](https://nodejs.org/en/):Azure Communication Services クライアント ライブラリや webpack などの依存関係をインストールして管理する際に使用します。
-- [nvm および npm](https://docs.microsoft.com/windows/nodejs/setup-on-windows): バージョン コントロールの運用に使用します。
-- Visual Studio Code 用の [Azure Storage 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)。 アプリケーションを Azure Storage に発行する際に、この拡張機能が必要となります。 [詳細については、Azure Storage での静的 Web サイトのホスティングに関する記事を参照してください](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)。
+- [nvm および npm](/windows/nodejs/setup-on-windows): バージョン コントロールの運用に使用します。
+- Visual Studio Code 用の [Azure Storage 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)。 アプリケーションを Azure Storage に発行する際に、この拡張機能が必要となります。 [詳細については、Azure Storage での静的 Web サイトのホスティングに関する記事を参照してください](../../storage/blobs/storage-blob-static-website.md)。
 - [Azure App Service 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。 この拡張機能を使用すると、(従来と同様の) Web サイトをデプロイすることに加え、フル マネージドの CI/CD (継続的インテグレーションと継続的デリバリー) を構成することもできます。
 - 独自のサーバーレス アプリケーションを構築するための [Azure Function 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。 たとえば、Azure Functions で認証アプリケーションをホストすることができます。
 - アクティブな Communication Services リソースと接続文字列。 [Communication Services リソースを作成します](../quickstarts/create-communication-resource.md)。
-- ユーザー アクセス トークン。 手順については、[アクセス トークンに関するクイックスタート](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-javascript)または[信頼されたサービスに関するチュートリアル](https://docs.microsoft.com/azure/communication-services/tutorials/trusted-service-tutorial)を参照してください。
+- ユーザー アクセス トークン。 手順については、[アクセス トークンに関するクイックスタート](../quickstarts/access-tokens.md?pivots=programming-language-javascript)または[信頼されたサービスに関するチュートリアル](./trusted-service-tutorial.md)を参照してください。
 
 
 ## <a name="configure-your-development-environment"></a>開発環境を構成する
@@ -57,7 +55,7 @@ Azure Communication Services を使用すると、自分のアプリケーショ
 
 クライアント側アプリケーションに必要な各種依存関係は、Node.js を使用してダウンロード、インストールします。 それを使用して静的ファイルを生成し、それらのファイルを Azure でホストすることになるため、自分のサーバー上での構成を気にする必要はありません。
 
-Windows 開発者の方は、[こちらの NodeJS チュートリアル](https://docs.microsoft.com/windows/nodejs/setup-on-windows)に従って、Node、nvm、npm を構成してください。 
+Windows 開発者の方は、[こちらの NodeJS チュートリアル](/windows/nodejs/setup-on-windows)に従って、Node、nvm、npm を構成してください。
 
 このチュートリアルは、LTS 12.20.0 バージョンを使用してテストしました。 nvm のインストール後、次の PowerShell コマンドを使用して目的のバージョンをデプロイします。
 
@@ -161,7 +159,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }     
+    }
 }
 ```
 
@@ -218,7 +216,7 @@ module.exports = merge(common, {
 }
 ```
 
-npm から使用できるコマンドを追加しました。 
+npm から使用できるコマンドを追加しました。
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="package.json に変更を加える":::
 
@@ -279,13 +277,13 @@ npm run build:dev
 サーバーの実行場所がコンソールに表示されます。 既定では、これは `http://localhost:8080` です。 build:dev コマンドは、先ほど `package.json` に追加したコマンドです。
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="開発サーバーを起動する":::
- 
+
  ブラウザーで目的のアドレスに移動すると、前の手順で構成したページとアラートが表示されるはずです。
- 
+
   :::image type="content" source="./media/step-one-pic-17.png" alt-text="HTML ページ":::
-  
- 
-サーバーの実行中にコードに変更を加えることができます。その場合、サーバーと HTML ページが自動的にリロードされます。 
+
+
+サーバーの実行中にコードに変更を加えることができます。その場合、サーバーと HTML ページが自動的にリロードされます。
 
 次に、Visual Studio Code で `app.js` ファイルに移動し、`alert('Hello world alert!');` を削除します。 ファイルを保存し、ブラウザーからアラートが消えたことを確認します。
 
@@ -323,11 +321,11 @@ const { merge } = require('webpack-merge');
  ```
 
 この構成は webpack.common.js (入力ファイルと結果の保存先を指定したファイル) にマージされることに注意してください。また、この構成によってモードが "production" に設定されます。
- 
+
 `package.json` に次のコードを追加します。
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js" 
+"build:prod": "webpack --config webpack.prod.js"
 ```
 
 ファイルは次のようになります。
@@ -341,14 +339,14 @@ const { merge } = require('webpack-merge');
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js" 
+    "build:prod": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.3",
-    "@azure/communication-common": "^1.0.0-beta.3"
+    "@azure/communication-calling": "^1.0.0-beta.6",
+    "@azure/communication-common": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -368,13 +366,13 @@ const { merge } = require('webpack-merge');
 npm run build:prod
 ```
 
-このコマンドによって `dist` フォルダーが作成され、運用環境用の `app.js` 静的ファイルがそこに作成されます。 
+このコマンドによって `dist` フォルダーが作成され、運用環境用の `app.js` 静的ファイルがそこに作成されます。
 
  :::image type="content" source="./media/step-one-pic-21.png" alt-text="運用環境向けのビルド":::
- 
- 
+
+
 ### <a name="deploy-your-app-to-azure-storage"></a>Azure Storage にアプリをデプロイする
- 
+
 `dist` フォルダーに `index.html` と `app.css` をコピーします。
 
 `dist` フォルダーに、新しいファイルを作成し、`404.html` という名前を付けます。 そのファイルに次のマークアップをコピーします。
@@ -399,45 +397,45 @@ npm run build:prod
 右クリックして [Deploy to Static Website via Azure Storage]\(Azure Storage を介して静的 Web サイトにデプロイ\) を選択します。
 
 :::image type="content" source="./media/step-one-pic-22.png" alt-text="Azure へのデプロイを開始する":::
- 
+
 `Select subscription` フィールドで、[Azure にサインイン] (過去にサブスクリプションを作成したことがない場合は [無料の Azure アカウントの作成]) を選択します。
- 
+
 :::image type="content" source="./media/step-one-pic-23.png" alt-text="Azure へのサインイン":::
- 
+
 `Create new Storage Account`[ > ]`Advanced` を選択します。
 
  :::image type="content" source="./media/step-one-pic-24.png" alt-text="ストレージ アカウント グループを作成する":::
- 
+
  ストレージ グループの名前を入力します。
- 
+
  :::image type="content" source="./media/step-one-pic-25.png" alt-text="アカウントの名前を追加する":::
- 
+
 必要に応じて新しいリソース グループを作成します。
- 
+
   :::image type="content" source="./media/step-one-pic-26.png" alt-text="新しいグループを作成する":::
-  
+
   "Would you like to enable static website hosting?" (静的 Web サイトのホスティングを有効にしますか?) で [はい] を選択します。
-  
+
   :::image type="content" source="./media/step-one-pic-27.png" alt-text="静的 Web サイトのホスティングを有効にするためのオプションを選択する":::
-  
+
 [Enter the index document name]\(インデックス ドキュメントの名前を入力してください\) には、既定のファイル名 (先ほど作成した `index.html` ファイル) をそのまま使用します。
 
-[Enter the 404 error document path]\(404 エラー ドキュメントのパスを入力してください\) には「`404.html`」と入力します。  
-  
-アプリケーションの場所を選択します。 選択した場所によって、今後通話アプリケーションのグループ通話で使用されるメディア プロセッサが定義されます。 
+[Enter the 404 error document path]\(404 エラー ドキュメントのパスを入力してください\) には「`404.html`」と入力します。
+
+アプリケーションの場所を選択します。 選択した場所によって、今後通話アプリケーションのグループ通話で使用されるメディア プロセッサが定義されます。
 
 メディア プロセッサは、アプリケーションの場所に基づいて Azure Communication Services が選択します。
 
 :::image type="content" source="./media/step-one-pic-28.png" alt-text="場所を選択する":::
-  
-リソースと Web サイトが作成されるまで待ちます。 
- 
+
+リソースと Web サイトが作成されるまで待ちます。
+
 [Browse to website]\(Web サイトを参照\) をクリックします。
 
 :::image type="content" source="./media/step-one-pic-29.png" alt-text="デプロイメントが完了":::
- 
+
 ブラウザーの開発ツールからソースをチェックし、運用に必要なファイルが準備されていることを確認します。
- 
+
 :::image type="content" source="./media/step-one-pic-30.png" alt-text="Web サイト":::
 
 [Azure portal](https://portal.azure.com/#home) に移動し、リソース グループを選択します。作成したアプリケーションを選択し、`Settings` > `Static website` に移動します。 静的 Web サイトが有効になっていることが確認できます。プライマリ エンドポイント、インデックス ドキュメント、エラー ドキュメント ファイルのパスに注目してください。
@@ -448,7 +446,7 @@ npm run build:prod
 
 :::image type="content" source="./media/step-one-pic-32.png" alt-text="コンテナーの構成":::
 
-`$web` に移動すると、Visual Studio で作成して Azure にデプロイしたファイルが表示されます。 
+`$web` に移動すると、Visual Studio で作成して Azure にデプロイしたファイルが表示されます。
 
 :::image type="content" source="./media/step-one-pic-33.png" alt-text="デプロイ":::
 

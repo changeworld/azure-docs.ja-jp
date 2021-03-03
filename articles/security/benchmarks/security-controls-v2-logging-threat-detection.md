@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369074"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576810"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>セキュリティ コントロール V2:ログと脅威検出
 
@@ -48,7 +48,7 @@ Azure Security Center の組み込みの脅威検出機能を使用します。�
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
-- [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [脅威インテリジェンス](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -85,7 +85,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
-- [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [脅威インテリジェンス](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -133,7 +133,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 Azure Security Center と Azure Policy を使用すると、監査ログ、セキュリティ ログ、リソース ログにアクセスするために、Azure リソースのリソース ログとログ データの収集を有効にできます。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。 
 
-- [Azure でのログ記録とログのさまざまな種類について](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Security Center のデータ収集について](../../security-center/security-center-enable-data-collection.md)
 
@@ -163,7 +163,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
@@ -187,7 +187,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 Azure Monitor で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定できます。 長期ストレージおよびアーカイブ ストレージには、Azure Storage、Data Lake、または Log Analytics ワークスペースのアカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Azure Storage アカウント ログの保持ポリシーを構成する方法](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 

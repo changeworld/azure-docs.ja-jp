@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: cdb43bd8b91881905b1734d0c0b36c33fb27d232
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707692"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577510"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -113,11 +113,11 @@ Network Insights ブックを使用すると、次のような、Azure Monitor �
 
 * [メトリック](../insights/network-insights-overview.md#resource-health-and-metrics) とログ データの両方を使用して監視およびトラブルシューティングを行うための一元化されたコンソール。
 
-* カスタムの豊富な[視覚化](../platform/workbooks-overview.md#visualizations)の作成をサポートする柔軟なキャンバス。
+* カスタムの豊富な[視覚化](../visualize/workbooks-overview.md#visualizations)の作成をサポートする柔軟なキャンバス。
 
-* [ブック テンプレートを消費し、より広範なコミュニティと共有](../platform/workbooks-overview.md#workbooks-versus-workbook-templates)する機能。
+* [ブック テンプレートを消費し、より広範なコミュニティと共有](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates)する機能。
 
-新しいブック ソリューションの機能の詳細については、「[ブックの概要](../platform/workbooks-overview.md)」を確認してください
+新しいブック ソリューションの機能の詳細については、「[ブックの概要](../visualize/workbooks-overview.md)」を確認してください
 
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Azure Gateway 分析ソリューションから Azure Monitor ブックへの移行
 
@@ -129,7 +129,7 @@ Network Insights ブックを使用すると、次のような、Azure Monitor �
 > [!NOTE]
 > 以前のすべてのデータは、診断設定が最初に有効になった時点からブック内で既に使用可能です。 データ転送は必要ありません。
 
-2. Application Gateway リソースの [既定の分析情報ブック](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights)にアクセスします。 Application Gateway 分析ソリューションでサポートされている既存のすべての分析情報が、ブックに既に存在しています。 メトリックおよびログ データに基づいて、カスタムの [視覚化](../platform/workbooks-overview.md#visualizations)を追加することでこれを拡張できます。
+2. Application Gateway リソースの [既定の分析情報ブック](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights)にアクセスします。 Application Gateway 分析ソリューションでサポートされている既存のすべての分析情報が、ブックに既に存在しています。 メトリックおよびログ データに基づいて、カスタムの [視覚化](../visualize/workbooks-overview.md#visualizations)を追加することでこれを拡張できます。
 
 3. すべてのメトリックおよびログ分析情報を確認できるようになると、ワークスペースから Azure Gateway 分析ソリューションをクリーンアップするために、ソリューションのリソース ページからソリューションを削除できます。
 
@@ -232,5 +232,5 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な Azure 診断データを表示します。
+* [Azure Monitor でログ クエリ](../logs/log-query-overview.md)を使用して、詳細な Azure 診断データを表示します。
 

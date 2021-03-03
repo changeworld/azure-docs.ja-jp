@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ba15deed98af16b9b501439082ee6c9237fe20b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d95a2318d94f52352c9546aedc24d0111c5ba0a4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807209"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571666"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure Sentinel の Azure セキュリティ ベースライン
 
@@ -37,9 +37,9 @@ ms.locfileid: "99807209"
 
 - [Azure Sentinel で監査を有効にする方法](resources.md)
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -73,7 +73,7 @@ ms.locfileid: "99807209"
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、Azure Sentinel ワークスペースに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -181,7 +181,7 @@ ms.locfileid: "99807209"
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -341,7 +341,7 @@ Log Analytics ロールには、Log Analytics 共同作成者、Log Analytics �
 
 **ガイダンス**: Azure Sentinel および Azure Monitor Log Analytics ワークスペースでは、現在、保存データを暗号化するために Microsoft マネージド キーが使用されます。 独自のキーを取り込む機能は、Sentinel ではまだ完全にはサポートされていませんが、近い将来に導入される予定です。
 
-- [Azure Monitor カスタマー マネージド キーの概要](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
+- [Azure Monitor カスタマー マネージド キーの概要](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview)
 
 - [Azure Sentinel でのカスタマー マネージド キー (プレビュー) について](customer-managed-keys.md)
 

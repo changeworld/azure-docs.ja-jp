@@ -164,6 +164,8 @@
     - name: 動作保証済み Linux ディストリビューション
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
+    - name: オーケストレーション モード (プレビュー)
+      href: virtual-machine-scale-sets-orchestration-modes.md
     - name: メンテナンスと更新
       items:
         - name: 概要
@@ -210,7 +212,7 @@
           href: security-baseline.md
       maintainContext: true
     - name: 監視
-      href: ../azure-monitor/insights/monitor-vm-azure.md
+      href: ../azure-monitor/vm/monitor-vm-azure.md
       maintainContext: true
     - name: デプロイに関する考慮事項
       items:
@@ -304,7 +306,7 @@
             - name: Azure ポータルの使用
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: 高度な自動スケール
-              href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              href: ../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md
               maintainContext: true
             - name: 自動スケールのトラブルシューティング
               href: virtual-machine-scale-sets-troubleshoot.md
@@ -344,7 +346,7 @@
               href: ../virtual-machines/windows/dedicated-hosts-powershell.md
             - name: ポータル
               href: ../virtual-machines/dedicated-hosts-portal.md
-        - name: スポット インスタンスを使用する
+        - name: Azure スポット仮想マシン
           href: use-spot.md
     - name: 管理する
       items:

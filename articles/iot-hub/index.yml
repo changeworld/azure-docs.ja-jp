@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 665692e1d902dfed8cdab535d0639f356f4e709c
-  ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+  ms.openlocfilehash: 5e26ebb2bd19806e23c9c044021df97200da21ea
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/19/2020
-  ms.locfileid: "94885922"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101658386"
 landingContent:
 - title: 作業の開始
   linkLists:
@@ -78,6 +78,24 @@ landingContent:
       url: tutorial-routing-config-message-routing-rm-template.md
     - text: ルーティング結果の実行と表示
       url: tutorial-routing-view-message-routing-results.md
+- title: IoT Hub 用のデバイス更新 (プレビュー)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: IoT Hub 用のデバイス更新の概要
+      url: /iot-hub-device-update/understand-device-update.md
+  - linkListType: how-to-guide
+    links:
+    - text: 更新プログラムのインポート
+      url: /iot-hub-device-update/import-update.md
+  - linkListType: how-to-guide
+    links:
+    - text: 更新グループの作成
+      url: /iot-hub-device-update/create-update-group.md
+  - linkListType: how-to-guide
+    links:
+    - text: 更新プログラムの展開
+      url: /iot-hub-device-update/deploy-update.md
 - title: Azure Stack Hub 上の IoT Hub (プレビュー)
   linkLists:
   - linkListType: overview

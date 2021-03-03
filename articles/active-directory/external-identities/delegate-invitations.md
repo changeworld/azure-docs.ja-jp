@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365550"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645825"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する
 
@@ -78,11 +78,11 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
    >
    >![オプトインされた電子メール ワンタイム パスコードを有効にする](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-7. ユーザーがアプリにサインアップできるようにユーザー フローを作成したい場合は、 **[ユーザー フローによるゲストのセルフサービス サインアップを有効にする (プレビュー)]** で **[はい]** を選択します。 この設定の詳細については、「[セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)](self-service-sign-up-user-flow.md)」を参照してください。
+7. ユーザーがアプリにサインアップできるようにユーザー フローを作成する場合は、 **[Enable guest self-service sign up via user flows]\(ユーザー フローによるゲスト セルフサービス サインアップを有効にする\)** で **[はい]** を選択します。 この設定の詳細については、[アプリへのセルフサービス サインアップ ユーザー フローの追加](self-service-sign-up-user-flow.md)に関するページを参照してください。
 
     ![ユーザー フローによるセルフサービス サインアップの設定](./media/delegate-invitations/self-service-sign-up-setting.png)
 
-7. **[コラボレーションの制限]** で、指定したドメインへの招待を許可または拒否するかを選択します。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](allow-deny-list.md)」を参照してください。
+7. **[コラボレーションの制限]** で、指定したドメインへの招待を許可するか拒否するかを選択し、テキスト ボックスに特定のドメイン名を入力できます。 複数ドメインの場合は、それぞれのドメインを新しい行に入力します。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](allow-deny-list.md)」を参照してください。
 
     ![コラボレーションの制限の設定](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>ゲスト招待元ロールをユーザーに割り当てる

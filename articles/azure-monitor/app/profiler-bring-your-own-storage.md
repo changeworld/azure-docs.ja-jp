@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202540"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589674"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>BYOS (Bring Your Own Storage) を Application Insights Profiler および Visual Studio スナップショット デバッガー用に構成する
 
@@ -21,9 +21,9 @@ Application Insights Profiler または Visual Studio スナップショット �
 Bring Your Own Storage を使用すると、これらの成果物は、ユーザーが制御するストレージ アカウントにアップロードされます。 つまり、保存時の暗号化ポリシー、有効期間の管理ポリシー、ネットワーク アクセスをユーザーが制御することになります。 ただし、そのストレージ アカウントに関連するコストについては、お客様が責任を負うものとします。
 
 > [!NOTE]
-> Private Link を有効にする場合、Bring Your Own Storage は必須です。 Application Insights 用の Private Link の詳細については、[こちらのドキュメントを参照してください。](../platform/private-link-security.md)
+> Private Link を有効にする場合、Bring Your Own Storage は必須です。 Application Insights 用の Private Link の詳細については、[こちらのドキュメントを参照してください。](../logs/private-link-security.md)
 >
-> カスタマー マネージド キーを有効にする場合、Bring Your Own Storage は必須です。 Application Insights 用のカスタマー マネージド キーの詳細については、[こちらのドキュメントを参照してください。](../platform/customer-managed-keys.md)
+> カスタマー マネージド キーを有効にする場合、Bring Your Own Storage は必須です。 Application Insights 用のカスタマー マネージド キーの詳細については、[こちらのドキュメントを参照してください。](../logs/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>ストレージ アカウントにアクセスする方法
 1. Virtual Machines または App Service 内で実行されるエージェントでは、成果物 (プロファイル、スナップショット、シンボル) をご使用のアカウント内の BLOB コンテナーにアップロードします。 このプロセスでは、Application Insights Profiler または Visual Studio スナップショット デバッガーに接続して、ご使用のストレージ アカウント内の新しい BLOB の SAS (Shared Access Signature) トークンを取得する必要があります。

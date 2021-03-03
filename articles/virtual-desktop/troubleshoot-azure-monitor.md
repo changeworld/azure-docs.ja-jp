@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367675"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571361"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows Virtual Desktop 向けの Azure Monitor (プレビュー) のトラブルシューティング
 
@@ -26,9 +26,9 @@ ms.locfileid: "100367675"
 
 - 診断を手動で有効にするか、Log Analytics ワークスペースにアクセスする場合は、[Log Analytics への Windows Virtual Desktop 診断の送信](diagnostics-log-analytics.md)に関する記事をご覧ください。
 - Log Analytics 拡張機能をホストに手動でインストールする場合は、「[Windows 用の Log Analytics 仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)」をご覧ください。
-- 新しい Log Analytics ワークスペースを設定する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」をご覧ください。
-- パフォーマンス カウンターを追加または削除する場合は、「[パフォーマンス カウンターの構成](../azure-monitor/platform/data-sources-performance-counters.md)」をご覧ください。
-- Log Analytics ワークスペースのイベントを構成する場合は、「[Log Analytics エージェントを使用して Windows イベント ログのデータソースを収集する](../azure-monitor/platform/data-sources-windows-events.md)」をご覧ください。
+- 新しい Log Analytics ワークスペースを設定する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」をご覧ください。
+- パフォーマンス カウンターを追加または削除する場合は、「[パフォーマンス カウンターの構成](../azure-monitor/agents/data-sources-performance-counters.md)」をご覧ください。
+- Log Analytics ワークスペースのイベントを構成する場合は、「[Log Analytics エージェントを使用して Windows イベント ログのデータソースを収集する](../azure-monitor/agents/data-sources-windows-events.md)」をご覧ください。
 
 ## <a name="my-data-isnt-displaying-properly"></a>自分のデータが正しく表示されない
 
@@ -44,7 +44,7 @@ ms.locfileid: "100367675"
 
 - Azure Monitor がポータルにデータを送信できるように、お使いのサーバーのファイアウォールで送信ポートを開く必要がある場合があります。[送信ポート](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)に関する記事を参照してください。 
 
-- 最近のアクティビティのデータが表示されない場合。 15 分間待機して、フィードを更新することをお勧めします。 Azure Monitor にはログ データの入力に 15 分の待機時間があります。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../azure-monitor/platform/data-ingestion-time.md)」をご覧ください。
+- 最近のアクティビティのデータが表示されない場合。 15 分間待機して、フィードを更新することをお勧めします。 Azure Monitor にはログ データの入力に 15 分の待機時間があります。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../azure-monitor/logs/data-ingestion-time.md)」をご覧ください。
 
 情報がすべて入力されていても、データが正しく表示されない場合は、クエリまたはデータソースに問題があるおそれがあります。 既知の問題と制限事項を確認してください。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "100367675"
 
 Windows Virtual Desktop 向けの Azure Monitor は、Azure Monitor ブックを使用します。 ブックを使用すると、Windows Virtual Desktop ブック テンプレートのコピーを保存して、独自のカスタマイズを行うことができます。
 
-仕様により、カスタム ブック テンプレートでは、製品グループの更新プログラムが自動的に適用されることはありません。 詳細については、「[ブックベースの分析情報のトラブルシューティング](../azure-monitor/insights/troubleshoot-workbooks.md)」および[ブックの概要](../azure-monitor/platform/workbooks-overview.md)に関するページをご覧ください。
+仕様により、カスタム ブック テンプレートでは、製品グループの更新プログラムが自動的に適用されることはありません。 詳細については、「[ブックベースの分析情報のトラブルシューティング](../azure-monitor/insights/troubleshoot-workbooks.md)」および[ブックの概要](../azure-monitor/visualize/workbooks-overview.md)に関するページをご覧ください。
 
 ## <a name="i-cant-interpret-the-data"></a>データを解釈できない
 

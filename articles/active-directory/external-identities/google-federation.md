@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53d2369e93052ef28191dd1862034c1aaa488add
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355598"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653323"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
-Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウントを作成することなく、独自の Gmail アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。 
+Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウントを作成することなく、独自の Gmail アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。
+
+アプリケーションのサインイン オプションの 1 つとして Google を追加すると、ユーザーは **[サインイン]** ページで、Google へのサインインに使用するメール アドレスを入力するか、 **[サインイン オプション]** を選択してから **[Google アカウントでサインイン]** を選択できます。 どちらの場合も、認証のために Google のサインイン ページにリダイレクトされます。
+
+![Google ユーザーのサインイン オプション](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
 > Google フェデレーションは Gmail ユーザー専用に設計されています。 G Suite ドメインとのフェデレーションを行うには、[直接フェデレーション](direct-federation.md)を使用します。
@@ -30,13 +34,33 @@ Google とのフェデレーションを設定することで、招待された�
 > **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google ユーザーのエクスペリエンスの内容
-Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザーは、テナント コンテキストが含まれているリンクを使用して共有アプリまたはリソースにアクセスする必要があります。 Google に既にサインインしているかどうかによって、エクスペリエンスが異なります。
-  - Google にサインインしていないゲストユーザーには、そうするように求めるメッセージが表示されます。
-  - Google に既にサインインしているゲスト ユーザーには、使用するアカウントの選択を求めるメッセージが表示されます。 招待に使用されたアカウントを選択する必要があります。
+
+Google ユーザーが招待を引き換えたときのエクスペリエンスは、Google に既にサインインしているかどうかによって異なります。
+
+- Google にサインインしていないゲストユーザーには、そうするように求めるメッセージが表示されます。
+- Google に既にサインインしているゲスト ユーザーには、使用するアカウントの選択を求めるメッセージが表示されます。 招待に使用されたアカウントを選択する必要があります。
 
 "ヘッダーが長すぎます" というエラーが表示されたゲスト ユーザーは、Cookie をクリアするか、プライベートまたは匿名のウィンドウを開いて、もう一度サインインを試すことができます。
 
 ![Google のサインイン ページを示すスクリーンショット。](media/google-federation/google-sign-in.png)
+
+## <a name="sign-in-endpoints"></a>サインインのエンドポイント
+
+Google ゲスト ユーザーは、[共通のエンドポイント](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (つまり、テナント コンテキストを含まない一般的なアプリ URL) を使用して、マルチテナントまたは Microsoft のファーストパーティ アプリにサインインできるようになりました。 一般的なエンドポイントの例を次に示します。
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+サインイン プロセス中に、ゲスト ユーザーは **[サインイン オプション]** を選択してから、 **[Sign in to an organization]\(組織にサインイン\)** を選択します。 次に、ユーザーは組織の名前を入力し、Google 資格情報を使用してサインインを続行します。
+
+Google ゲスト ユーザーは、テナント情報を含むアプリケーション エンドポイントを使用することもできます。次に例を示します。
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+また、`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` のようにテナント情報を含めることによって、アプリケーションまたはリソースへの直接リンクを Google ゲスト ユーザーに提供することもできます。
 
 ## <a name="deprecation-of-webview-sign-in-support"></a>WebView サインイン サポートの廃止
 
@@ -66,23 +90,13 @@ Microsoft はさまざまなプラットフォームおよびシナリオのテ�
    - 以前のバージョンの Windows で Windows アプリが埋め込み WebView または WebAccountManager (WAM) を使用している場合は、最新バージョンの Windows に更新してください。
    - サインインにシステム ブラウザーを使用するようにアプリを変更します。 詳細については、MSAL.NET のドキュメントの「[埋め込み Web UI とシステム Web UI の比較](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui)」を参照してください。  
 
-## <a name="sign-in-endpoints"></a>サインインのエンドポイント
 
-Teams では、すべてのデバイスで Google ゲスト ユーザーを完全にサポートしています。 Google ユーザーは、`https://teams.microsoft.com` などの一般的なエンドポイントから Teams にサインインできます。
-
-他のアプリケーションの一般的なエンドポイントは、Google ユーザーをサポートしていない場合があります。 Google ゲスト ユーザーは、テナント情報が含まれるリンクを使用してサインインする必要があります。 次に例を示します。
-  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
-  * `https://portal.azure.com/<your tenant ID>`
-  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
-
-   `https://myapps.microsoft.com` や `https://portal.azure.com` のようなリンクを Google ゲスト ユーザーが使おうとすると、エラーになります。
-
-リンクにテナント情報が含まれている限り、アプリケーションまたはリソースへの直接リンクを Google ゲスト ユーザーに提供することもできます。 たとえば、`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` のようにします。 
 ## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure Active Directory (Azure AD) に後で追加できるクライアント ID とクライアント シークレットを取得します。 
 1. https://console.developers.google.com で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
 2. サービスの使用条件への同意を求めるメッセージが表示されたらそのようにします。
-3. 新しいプロジェクトを作成します。ダッシュボードで、 **[プロジェクトの作成]** を選択し、プロジェクトに名前 (**Azure AD B2B** など) を付け、 **[作成]** を選択します。 
+3. 新しいプロジェクトを作成する: ページの左上隅にあるプロジェクトの一覧を選択し、 **[プロジェクトの選択]** ページで **[新しいプロジェクト]** を選択します。
+4. **[新しいプロジェクト]** ページで、プロジェクトに名前 (「**Azure AD B2B**」など) を付け、 **[作成]** を選択します。 
    
    ![[新しいプロジェクト] ページを示すスクリーンショット。](media/google-federation/google-new-project.png)
 

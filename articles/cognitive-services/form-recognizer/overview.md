@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動データ処理、ドキュメント処理、自動データ入力、フォーム処理
-ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95bbc33035ca99a64242274570be5c9263029aef
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584568"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094375"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -27,26 +27,27 @@ Azure Form Recognizer は、機械学習テクノロジを利用して自動デ�
 Form Recognizer は、カスタム ドキュメント処理モデル、および請求書、レシート、名刺に対する事前構築済みモデル、およびレイアウト モデルで構成されています。 REST API またはクライアント ライブラリ SDK を使用して Form Recognizer モデルを呼び出すことにより、複雑さを軽減し、自分のワークフローやアプリケーションに統合することができます。
 
 Form Recognizer は、次のサービスで構成されています。
+
 * **[Layout API](#layout-api)** - テキスト、選択マーク、およびテーブルの構造を、対応する境界ボックスの座標と共にドキュメントから抽出します。
 * **[カスタム モデル](#custom-models)** - フォームからテキスト、キーと値のペア、選択マーク、およびテーブル データを抽出します。 これらのモデルは自分が用意した独自のデータでトレーニングされるため、実際のフォームに合わせて調整されます。
 * **[事前構築済みモデル](#prebuilt-models)** - 事前構築済みモデルを使用して、一意のフォームの種類からデータを抽出します。 現在使用できるのは、次の事前構築済みモデルです。
-    * [Invoices](./concept-invoices.md)
-    * [レシート](./concept-receipts.md)
-    * [名刺](./concept-business-cards.md)
-
+  * [Invoices](./concept-invoices.md)
+  * [レシート](./concept-receipts.md)
+  * [名刺](./concept-business-cards.md)
 
 ## <a name="try-it-out"></a>試してみる
 
 Form Recognizer サービスを試してみるには、オンラインのサンプル UI ツールにアクセスしてください。
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Form Recognizer を試す](https://fott.azurewebsites.net/)
-
+<!-- markdownlint-disable MD025 -->
 # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)
+
 > [!div class="nextstepaction"]
 > [Form Recognizer を試す](https://fott-preview.azurewebsites.net/)
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Form Recognizer を試す](https://fott.azurewebsites.net/)
 
 ---
 
@@ -137,12 +138,11 @@ Form Recognizer には、固有のフォームの種類を持つ自動データ�
 | **Analyze Receipt** | レシート ドキュメントを分析して、主要な情報と、レシートのその他のテキストを抽出します。|
 | **名刺を分析する** | 名刺を分析し、主要な情報とテキストを抽出します。|
 
+# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)
+詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
-
-# <a name="v21"></a>[v2.1](#tab/v2-1)
-詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
 
 ---
 

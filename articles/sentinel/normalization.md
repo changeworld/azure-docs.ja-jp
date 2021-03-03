@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390812"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570452"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel での正規化
 
@@ -147,7 +147,7 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 
 JSON、XML、CSV は、クエリ時の解析に特に便利です。 Azure Sentinel には、JSON、XML、CSV 用の解析関数のほか、JSON 解析ツールが組み込まれています。  詳細については、[Azure Sentinel での JSON フィールドの使用](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747)に関するページ (ブログ) を参照してください。 
 
-Log Analytics の[保存されたクエリ](../azure-monitor/log-query/example-queries.md) (クエリ時パーサーの実装) の詳細を確認してください。
+Log Analytics の[保存されたクエリ](../azure-monitor/logs/example-queries.md) (クエリ時パーサーの実装) の詳細を確認してください。
 
 
 ## <a name="next-steps"></a>次のステップ

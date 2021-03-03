@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4f28665998dcac9f641d4142a0dea60707fb02e9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 579baa611db47215c8ada554328d254ce99f17cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805362"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579759"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure Application Gateway 用の Azure セキュリティ ベースライン
 
@@ -188,9 +188,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Application Gateway デプロイに関連するネットワーク設定とリソースの変更を検出します。 重要なネットワーク設定とリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -216,7 +216,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 Azure Application Gateway では、Azure Application Insights とのビルトイン統合も提供されます。 Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 Application Insights は、パフォーマンスの異常を自動的に検出するほか、問題の診断や、Web アプリの使用状況の理解に役立つ強力な分析ツールを備えています。 連続エクスポートを有効にすると、Application Insights からのテレメトリを一元化された場所にエクスポートして、標準の保持期間より長い間データを維持することができます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Application Gateway の診断設定を有効にする方法](./application-gateway-diagnostics.md)
 
@@ -236,7 +236,7 @@ Azure Application Gateway では、Azure Application Insights とのビルトイ
 
 Azure Application Gateway では、Azure Application Insights とのビルトイン統合も提供されます。 Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 Application Insights は、パフォーマンスの異常を自動的に検出するほか、問題の診断や、Web アプリの使用状況の理解に役立つ強力な分析ツールを備えています。 連続エクスポートを有効にすると、Application Insights からのテレメトリを一元化された場所にエクスポートして、標準の保持期間より長い間データを維持することができます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Application Gateway の診断設定を有効にする方法](./application-gateway-diagnostics.md)
 
@@ -260,7 +260,7 @@ Azure Application Gateway では、Azure Application Insights とのビルトイ
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -274,7 +274,7 @@ Azure Application Gateways などのデプロイされたすべてのネット�
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Application Gateway の診断設定を有効にする方法](./application-gateway-diagnostics.md)
 
@@ -294,13 +294,13 @@ Azure Application Gateways などのデプロイされたすべてのネット�
 
 * [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Application Gateway の診断設定を有効にする方法](./application-gateway-diagnostics.md)
 
 * [Azure Monitor for Networks の使用方法](../azure-monitor/insights/network-insights-overview.md)
 
-* [Azure 内でアラートを作成する方法](../azure-monitor/learn/tutorial-response.md)
+* [Azure 内でアラートを作成する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -591,7 +591,7 @@ Microsoft では、Azure Application Gateway の基になるインフラスト�
 
 **ガイダンス**: Azure Monitor と Azure アクティビティ ログを使用して、運用環境の Azure Application Gateway インスタンスおよびその他の重要なリソースまたは関連リソースへの変更が発生したときに、アラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 

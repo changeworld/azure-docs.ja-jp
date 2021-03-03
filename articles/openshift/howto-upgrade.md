@@ -1,18 +1,18 @@
 ---
 title: Azure Red Hat OpenShift クラスターをアップグレードする
 description: OpenShift 4 を実行する Azure Red Hat OpenShift のクラスターをアップグレードする方法について説明します
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 1/10/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro、openshift、az aro、red hat、cli
-ms.openlocfilehash: 98ab8ff1e321929a9007c28f487d5861f6ac9930
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 2c2c8607374493aa4e1135bbef0156b9c0b66fa6
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064378"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634977"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>Azure Red Hat OpenShift (ARO) クラスターをアップグレードする
 

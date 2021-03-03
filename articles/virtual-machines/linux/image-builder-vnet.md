@@ -5,15 +5,16 @@ author: danielsollondon
 ms.author: danis
 ms.date: 08/10/2020
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: cbff2358dcf8685298e31f18c430c35ec7de4948
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 0b2f5f7881ab9c07320eba323e690de109eab8c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437339"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673402"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Linux VM の Azure Image Builder を使用して既存の Azure VNET へのアクセスを許可する
 
@@ -134,7 +135,7 @@ az network vnet subnet update \
 
 Image Builder ネットワークの詳細については、「[Azure Image Builder サービス ネットワークのオプション](image-builder-networking.md)」を参照してください。
 
-## <a name="modify-the-example-template-and-create-role"></a>サンプル テンプレートの変更とロールの作成
+## <a name="modify-the-example-template-and-create-role"></a>サンプル テンプレートを変更し、ロールを作成する
 
 ```bash
 # download the example and configure it with your vars
@@ -316,4 +317,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure 共有イメージ ギャラリー](shared-image-galleries.md)に関するページを参照してください。
+詳細については、[Azure 共有イメージ ギャラリー](../shared-image-galleries.md)に関するページを参照してください。

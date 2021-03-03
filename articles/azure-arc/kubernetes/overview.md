@@ -2,47 +2,42 @@
 title: Azure Arc 対応 Kubernetes の概要
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/19/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 54b439d73ed5dfb0709d33dea1f588b8bdf4489f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 42a04bb349b2acbd68c7088bc0348deda1ee09e1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560264"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652270"
 ---
-# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
+# <a name="what-is-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes とは
 
-Azure Arc 対応 Kubernetes プレビューを使用して、Azure の内部または外部で Kubernetes クラスターを接続して構成することができます。 Kubernetes クラスターが Azure Arc に接続されると、Azure portal に表示されます。 また、Azure Resource Manager ID とマネージド ID が割り当てられます。 クラスターは、標準の Azure サブスクリプションに接続され、リソース グループ内に存在し、他の Azure リソースと同様にタグを受け取ることができます。 
+Azure Arc 対応 Kubernetes を使用すると、Azure の内部または外部にある Kubernetes クラスターを接続して構成することができます。 Kubernetes クラスターを Azure Arc に接続すると、クラスターは次のようになります。
+* Azure portal に表示され、Azure Resource Manager ID とマネージド ID が割り当てられる。 
+* Azure サブスクリプションおよびリソース グループに配置される。
+* 他の Azure リソースと同様にタグを追加できる。 
 
-Kubernetes クラスターを Azure に接続するには、クラスター管理者がエージェントをデプロイする必要があります。 これらのエージェントは、`azure-arc` という名前の Kubernetes 名前空間で実行され、標準の Kubernetes デプロイです。 エージェントは、Azure への接続、Azure Arc ログおよびメトリックの収集、構成要求の監視を担当します。 
+Kubernetes クラスターを Azure に接続するには、クラスター管理者がエージェントをデプロイする必要があります。 エージェントは次のことを行います。
+* `azure-arc` Kubernetes 名前空間で、標準の Kubernetes デプロイとして実行される。
+* Azure への接続を処理する。
+* Azure Arc のログとメトリックを収集する。
+* 構成要求を監視する。 
 
 Azure Arc 対応 Kubernetes では、転送中のデータをセキュリティで保護する業界標準の SSL がサポートされます。 また、保存中は Azure Cosmos DB データベースに暗号化された状態で格納されるので、データの機密性が確保されます。
- 
-> [!NOTE]
-> Azure Arc 対応 Kubernetes はプレビュー段階です。 運用環境のワークロード用にはお勧めしません。
 
 ## <a name="supported-kubernetes-distributions"></a>サポートされている Kubernetes ディストリビューション
 
-Azure Arc 対応 Kubernetes は、Cloud Native Computing Foundation (CNCF) で認定されたすべての Kubernetes クラスター (Azure 上の AKS エンジン、Azure Stack Hub 上の AKS エンジン、GKE、EKS、VMware vSphere クラスターなど) で動作します。
-
-次のディストリビューションについて、Azure Arc 対応 Kubernetes の機能が Arc チームによってテストされています。
-* Red Hat OpenShift 4.3
-* Rancher RKE 1.0.8
-* Canonical Charmed Kubernetes 1.18
-* AKS Engine
-* Azure Stack Hub 上の AKS エンジン
-* Azure Stack HCI 上の AKS
-* クラスター API プロバイダー Azure
+Azure Arc 対応 Kubernetes は、すべての Cloud Native Computing Foundation (CNCF) 認定 Kubernetes クラスターで動作します。 Azure Arc チームは、[主要な業界パートナーと協力して、各 Kubernetes ディストリビューションと Azure Arc 対応 Kubernetes の適合性を検証](./validation-program.md)してきました。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ 
 
-Azure Arc 対応 Kubernetes では、以下のシナリオがサポートされます。 
+Azure Arc 対応 Kubernetes は、次のシナリオをサポートします。 
 
 * インベントリ、グループ化、タグ付けのために Azure 外部で実行されている Kubernetes を接続する。
 
@@ -58,9 +53,17 @@ Azure Arc 対応 Kubernetes では、以下のシナリオがサポートされ�
 
 Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポートされています。 
 
-* 米国東部 
+* 米国東部
 * 西ヨーロッパ
+* 米国中西部
+* 米国中南部
+* 東南アジア
+* 英国南部
+* 米国西部 2
+* オーストラリア東部
+* 米国東部 2
+* 北ヨーロッパ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クラスターを接続する](./connect-cluster.md)
+* [Azure Arc にクラスターを接続する](./quickstart-connect-cluster.md)

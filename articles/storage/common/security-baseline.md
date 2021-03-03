@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195723"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591553"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure Storage 用の Azure セキュリティ ベースライン
 
@@ -158,7 +158,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Monitor でアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -180,7 +180,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Monitor を介してログを取り込み、エンドポイント デバイス、ネットワーク リソース、およびその他のセキュリティ システムによって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージには Azure Storage アカウントを使用します。必要に応じて、不変ストレージや保有期間の保持の強制などのセキュリティ機能を使用できます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -210,7 +210,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [Azure Storage アカウント ログの保持ポリシーを構成する方法](./storage-monitor-storage-account.md#configure-logging)
 
-- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -238,7 +238,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [Azure Security Center でアラートを管理する方法](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Storage Analytics のログ](./storage-analytics-logging.md)
 
@@ -362,7 +362,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [Azure AD のリスク検出について](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../../azure-monitor/platform/action-groups.md)
+- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center の監視**: はい
 
@@ -572,7 +572,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、ストレージ アカウント リソースに変更が加えられたときのアラートを作成します。 また、Azure Storage のログ記録を有効にして、Azure Storage に対する各要求がどのように承認されたかを追跡することもできます。 このログでは、OAuth 2.0 トークン、共有キー、または共有アクセス署名 (SAS) を使用して、要求が匿名で行われたかどうかが示されます。 さらに、Azure Monitor を使用して、匿名認証の条件を使用してストレージ アカウントへの匿名アクセスに対するアラートを生成できます。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Storage Analytics のログ](./storage-analytics-logging.md)
 

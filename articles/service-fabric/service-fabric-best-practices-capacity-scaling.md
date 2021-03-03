@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 32a9c26bb9e89cf4057cc753b02ad3c006d0bae6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784682"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595076"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 
@@ -26,7 +26,7 @@ Azure Service Fabric クラスターの作成前、またはクラスターを�
 
 * 適切な容量が宣言されている Resource Manager テンプレートをデプロイしても、実際のユース ケースがサポートされない。
      
-   手動スケーリングに加えて、[Azure リソース グループのデプロイ プロジェクトを使用することで、Azure DevOps Services で継続的インテグレーションと配信パイプライン](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)を構成できます。 このパイプラインは、通常、[Azure Monitor REST API](../azure-monitor/platform/rest-api-walkthrough.md) からクエリされる仮想マシンのパフォーマンス メトリックを使用するロジック アプリによってトリガーされます。 パイプラインでは、Resource Manager テンプレート用に最適化しながら、任意の必要なメトリックに基づいた効果的な自動スケーリングが行われます。
+   手動スケーリングに加えて、[Azure リソース グループのデプロイ プロジェクトを使用することで、Azure DevOps Services で継続的インテグレーションと配信パイプライン](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)を構成できます。 このパイプラインは、通常、[Azure Monitor REST API](../azure-monitor/essentials/rest-api-walkthrough.md) からクエリされる仮想マシンのパフォーマンス メトリックを使用するロジック アプリによってトリガーされます。 パイプラインでは、Resource Manager テンプレート用に最適化しながら、任意の必要なメトリックに基づいた効果的な自動スケーリングが行われます。
 * 一度に 1 つの仮想マシン スケール セット ノードのみを水平方向にスケールする必要がある。
    
    一度に 3 つ以上のノードをスケールアウトするには、[仮想マシン スケール セットを追加することで、Service Fabric クラスターをスケールアウトする](virtual-machine-scale-set-scale-node-type-scale-out.md)必要があります。 仮想マシン スケール セットを水平方向に、一度に 1 ノードずつスケールインおよびスケールアウトするのが最も安全です。

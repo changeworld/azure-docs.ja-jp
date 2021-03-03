@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c981214c69653b3a4a687a861cb348f3587def7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06c614d57002c7944d88df123d06ac63d04b288f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078760"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591143"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 用の Azure Diagnostics 拡張機能
 
@@ -34,7 +34,7 @@ Azure Diagnostics 拡張機能では、ターゲットの仮想マシンがイ�
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-[このドキュメントでは、Azure Diagnostics 拡張機能のスキーマとプロパティ値について説明します。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[このドキュメントでは、Azure Diagnostics 拡張機能のスキーマとプロパティ値について説明します。](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
@@ -73,7 +73,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>[トラブルシューティング]
+### <a name="troubleshoot"></a>トラブルシューティング
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 
@@ -81,12 +81,12 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Azure Diagnostics 拡張機能の包括的なトラブルシューティング ガイドについては、[こちらの記事](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md)を参照してください。
+Azure Diagnostics 拡張機能の包括的なトラブルシューティング ガイドについては、[こちらの記事](../../azure-monitor/agents/diagnostics-extension-troubleshooting.md)を参照してください。
 
 ### <a name="support"></a>サポート
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Diagnostics 拡張機能の詳細](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [拡張機能スキーマとバージョンの確認](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+* [Azure Diagnostics 拡張機能の詳細](../../azure-monitor/agents/diagnostics-extension-overview.md)
+* [拡張機能スキーマとバージョンの確認](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)

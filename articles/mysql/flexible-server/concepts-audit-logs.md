@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542220"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591757"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーで監査ログを使用してデータベース アクティビティを追跡する
 
@@ -50,7 +50,7 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
 
 ## <a name="access-audit-logs"></a>監査ログにアクセスする
 
-監査ログは、Azure Monitor の診断設定と統合されます。 MySQL フレキシブル サーバーで監査ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage にそれらを出力できます。 診断設定の詳細については、[診断ログのドキュメント](../../azure-monitor/platform/platform-logs-overview.md)を参照してください。 Azure portal で診断設定を有効にする方法の詳細については、[監査ログに関するポータルの記事](how-to-configure-audit-logs-portal.md#set-up-diagnostics)を参照してください。
+監査ログは、Azure Monitor の診断設定と統合されます。 MySQL フレキシブル サーバーで監査ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage にそれらを出力できます。 診断設定の詳細については、[診断ログのドキュメント](../../azure-monitor/essentials/platform-logs-overview.md)を参照してください。 Azure portal で診断設定を有効にする方法の詳細については、[監査ログに関するポータルの記事](how-to-configure-audit-logs-portal.md#set-up-diagnostics)を参照してください。
 
 次のセクションでは、イベントの種類に基づく MySQL 監査ログの出力について説明します。 出力方法に応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
 

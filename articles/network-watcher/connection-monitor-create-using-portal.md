@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833169"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570903"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal を使用して接続モニターでモニターを作成する
 
 > [!IMPORTANT]
-> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 接続モニター (クラシック) で、新しい接続モニターを追加することもできなくなります。 2021 年 7 月 1 日より前に作成されたテストと接続モニターは引き続き使用できます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor からテストを移行する](migrate-to-connection-monitor-from-network-performance-monitor.md)か、[接続モニター (クラシック) から Azure Network Watcher の新しい接続モニターに移行](migrate-to-connection-monitor-from-connection-monitor-classic.md)します。
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 接続モニター (クラシック) に新しい接続モニターを追加することもできなくなります。 2021 年 7 月 1 日より前に作成されたテストおよび接続モニターは引き続き使用することができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor からテストを移行する](migrate-to-connection-monitor-from-network-performance-monitor.md)か、[接続モニター (クラシック) から Azure Network Watcher の新しい接続モニターに移行](migrate-to-connection-monitor-from-connection-monitor-classic.md)します。
 
 接続モニターを使用して、リソース間の通信を監視する方法について説明します。 この記事では、Azure portal を使用してモニターを作成する方法について説明します。 接続モニターでは、ハイブリッドと Azure クラウドのデプロイがサポートされています。
 
@@ -186,7 +186,7 @@ Azure portal において接続モニターでアラートを作成するには�
 
 - **条件名**:`Test Result(preview)` メトリックにアラートが作成されます。 接続モニター テストの結果が失敗した場合は、アラート ルールが起動します。 
 
-- **アクション グループ名**:メール アドレスを直接入力することも、アクション グループを使用してアラートを作成することもできます。 メール アドレスを直接入力すると、**NPM Email ActionGroup** という名前のアクション グループが作成されます。 メール ID がそのアクション グループに追加されます。 アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法の詳細については、[Azure portal でのアクション グループの作成](../azure-monitor/platform/action-groups.md)に関するページを参照してください。 アラートが作成されたら、[アラートを管理する](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal)ことができます。 
+- **アクション グループ名**:メール アドレスを直接入力することも、アクション グループを使用してアラートを作成することもできます。 メール アドレスを直接入力すると、**NPM Email ActionGroup** という名前のアクション グループが作成されます。 メール ID がそのアクション グループに追加されます。 アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法の詳細については、[Azure portal でのアクション グループの作成](../azure-monitor/alerts/action-groups.md)に関するページを参照してください。 アラートが作成されたら、[アラートを管理する](../azure-monitor/alerts/alerts-metric.md#view-and-manage-with-azure-portal)ことができます。 
 
 - **アラート ルール名**:接続モニターの名前です。
 

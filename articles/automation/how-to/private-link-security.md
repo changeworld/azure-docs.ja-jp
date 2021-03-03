@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: 26e7dbf3f5629d4691211b6c9b82446ba4035421
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347642"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579799"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する
 
@@ -34,7 +34,7 @@ Private Link を使用すると、次のことができます。
 - パブリック ネットワーク アクセスを開かずに Azure Monitor Log Analytics ワークスペースにプライベートに接続する。
 
     >[!NOTE]
-    >Log Analytics ワークスペース用の別のプライベート エンドポイントが必要になるのは、ジョブ データを転送するために Automation アカウントが Log Analytics ワークスペースにリンクされていて、Update Management、変更履歴とインベントリ、State Configuration、Start/Stop VMs during off-hours などの機能が有効になっている場合です。 Azure Monitor のプライベート リンクの詳細については、「[Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](../../azure-monitor/platform/private-link-security.md)」を参照してください。
+    >Log Analytics ワークスペース用の別のプライベート エンドポイントが必要になるのは、ジョブ データを転送するために Automation アカウントが Log Analytics ワークスペースにリンクされていて、Update Management、変更履歴とインベントリ、State Configuration、Start/Stop VMs during off-hours などの機能が有効になっている場合です。 Azure Monitor のプライベート リンクの詳細については、「[Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](../../azure-monitor/logs/private-link-security.md)」を参照してください。
 
 - 承認されたプライベート ネットワーク経由でのみ Automation データにアクセスできるようにする。
 - プライベート エンドポイント経由で接続する Azure Automation リソースを定義して、プライベート ネットワーク経由のデータ流出を防ぐ。
@@ -46,8 +46,8 @@ Private Link を使用すると、次のことができます。
 ## <a name="limitations"></a>制限事項
 
 - Private Link の現在の実装では、Automation アカウントのクラウド ジョブは、プライベート エンドポイントを使用してセキュリティ保護された Azure リソースにアクセスできません。 たとえば、Azure Key Vault、Azure SQL、Azure Storage アカウントなどです。これを回避するには、代わりに [Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) を使用します。
-- Windows または Linux の場合、最新バージョンの [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)を使用する必要があります。
-- [Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)では、Private Link はサポートされていません。
+- Windows または Linux の場合、最新バージョンの [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)を使用する必要があります。
+- [Log Analytics ゲートウェイ](../../azure-monitor/agents/gateway.md)では、Private Link はサポートされていません。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -76,7 +76,7 @@ Update Management の概要と構成方法については、「[Update Managemen
 
 Update Management 用に構成されたマシンを、Private Link チャネルを介して安全な方法で Automation および Log Analytics ワークスペースに接続するには、Private Link を使用して構成された Automation アカウントにリンクされている Log Analytics ワークスペースに対して Private Link を有効にする必要があります。
 
-プライベート リンク スコープの外部から Log Analytics ワークスペースにアクセスする方法を制御するには、「[Log Analytics の構成](../../azure-monitor/platform/private-link-security.md#configure-log-analytics)」に記載されている手順に従います。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンは、このワークスペースにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、このワークスペースのデータにアクセスできません。
+プライベート リンク スコープの外部から Log Analytics ワークスペースにアクセスする方法を制御するには、「[Log Analytics の構成](../../azure-monitor/logs/private-link-security.md#configure-log-analytics)」に記載されている手順に従います。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンは、このワークスペースにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、このワークスペースのデータにアクセスできません。
 
 **DSCAndHybridWorker** ターゲット サブリソースを使用して、ユーザーおよびシステムのハイブリッド worker に対して Private Link を有効にします。
 

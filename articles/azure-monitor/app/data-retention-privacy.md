@@ -4,12 +4,12 @@ description: データ保持およびプライバシー ポリシー ステー�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579589"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -56,7 +56,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 * [例外](./asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、`build id`、CPU タイプ。 
 * [依存関係](./asp-net-dependencies.md) - REST、SQL、AJAX など、外部サービスの呼び出し。 URI または接続文字列、期間、成功、コマンド。
 * [可用性テスト](./monitor-web-app-availability.md) - テストとステップの期間、応答。
-* [トレース ログ](./asp-net-trace-logs.md)と[カスタム テレメトリ](./api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
+* [トレース ログ](./asp-net-trace-logs.md)と [カスタム テレメトリ](./api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
 
 [詳細](#data-sent-by-application-insights)。
 
@@ -120,7 +120,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 ローカル ストレージを利用するテレメトリ チャネルは、TEMP または APPDATA ディレクトリ内に一時ファイルを作成します。これらは、アプリケーションを実行している特定のアカウントだけに制限されます。 これは、エンドポイントが一時的に使用できなくなったか、または調整制限に達した場合に発生する可能性があります。 この問題が解決されると、テレメトリ チャネルは、すべての新しいデータおよび保持されているデータの送信を再開します。
 
-この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 詳細については、「[プライベート データをエクスポートして削除する方法](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
+この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 詳細については、「[プライベート データをエクスポートして削除する方法](../logs/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
 
 顧客がこのディレクトリを特定のセキュリティ要件で構成する必要がある場合は、フレームワークごとに構成できます。 アプリケーションを実行しているプロセスにこのディレクトリへの書き込みアクセス権があることを確認してください。ただし、意図しないユーザーによってテレメトリが読み取られることを防ぐために、このディレクトリが保護されていることも確認してください。
 
@@ -158,11 +158,11 @@ Web ページのコード内にインストルメンテーション キーがあ
 Linux 環境では、ストレージ フォルダーが指定されていない限り、ローカル ストレージは無効になります。
 
 > [!NOTE]
-> リリース 2.15.0-beta3 以降、ローカル ストレージは Linux、Mac、Windows で自動的に作成されるようになりました。 Windows 以外のシステムの場合、次のロジックに基づいてローカル ストレージ フォルダーが自動的に作成されます。
+> リリース 2.15.0-beta3 以降、ローカル ストレージは Linux、Mac、Windows で自動的に作成されるようになりました。 Windows 以外のシステムの場合、SDK は次のロジックに基づいてローカル ストレージ フォルダーを自動的に作成します。
 > - `${TMPDIR}` - `${TMPDIR}` 環境変数が設定されている場合、この場所が使用されます。
-> - `/var/tmp` - 前述の場所が存在しない場合は、`/var/tmp` を試します。
-> - `/tmp` - 前述のどちらの場所も存在しない場合は、`tmp` を試します。 
-> - これらの場所のいずれも存在しない場合、ローカル ストレージは作成されません。以前と同様に、手動による構成が必要になります。 [実装の詳細については、こちらをご覧ください](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
+> - `/var/tmp` - 前述の場所が存在しない場合は、`/var/tmp` が試行されます。
+> - `/tmp` - 前述のどちらの場所も存在しない場合は、`tmp` が試行されます。 
+> - これらの場所のいずれも存在しない場合、ローカル ストレージは作成されず、引き続き手動による構成が必要になります。 [実装の詳細については、こちらをご覧ください](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
 
 次のコード スニペットは、`Startup.cs` クラスの `ConfigureServices()` メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
 
@@ -240,7 +240,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights に格納される個人データ
 
-この件については、[Application Insights の個人データに関する記事](../platform/personal-data-mgmt.md)に詳しく説明されています。
+この件については、[Application Insights の個人データに関する記事](../logs/personal-data-mgmt.md)に詳しく説明されています。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>ユーザーは Application Insights を無効にできますか。
 直接無効にすることはできません。 ユーザーが Application Insights を無効にするために操作できるスイッチはありません。
@@ -293,7 +293,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [ApplicationInsights.config を編集して、データの一部をオフにする][config]ことができます
 
 > [!NOTE]
-> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](./ip-collection.md)のオプションについての説明をご覧ください。
+> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../logs/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](./ip-collection.md)のオプションについての説明をご覧ください。
 
 ## <a name="credits"></a>謝辞
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [https://www.maxmind.com](https://www.maxmind.com) から入手できます。

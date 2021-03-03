@@ -177,7 +177,7 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -349,6 +349,16 @@
           href: iot-hub-azure-service-health-integration.md
         - name: Event Grid からのデバイス接続状態イベントの順序付け
           href: iot-hub-how-to-order-connection-state-events.md
+    - name: 更新プログラムの展開
+      items:
+        - name: デバイス更新アカウントの作成
+          href: /iot-hub-device-update/create-device-update-account.md
+        - name: 更新プログラムのインポート
+          href: /iot-hub-device-update/import-update.md
+        - name: 更新グループの作成
+          href: /iot-hub-device-update/create-update-group.md
+        - name: 更新プログラムの展開
+          href: /iot-hub-device-update/deploy-update.md
     - name: 実在のデバイスの使用
       items:
         - name: オンライン シミュレーターの使用

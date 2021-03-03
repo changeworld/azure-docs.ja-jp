@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 82b72567a0db4dc9dbff9128402d0ee9f40f3512
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 0346b467bc299b4eb6125df04a4449e94c035e47
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100094153"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666465"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>クイックスタート: Azure portal で Azure Purview アカウントを作成する
 
@@ -117,7 +117,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Azure portal で Azure Purview アカウント インスタンスを作成する方法のスクリーンショット。":::
 
     > [!Note] 
-    > Azure Purview では、リージョン間でのアカウントの移動はサポートされていません。 詳細については、[Azure でサポートされるサービスに関するページ](https://docs.microsoft.com/azure/azure-resource-manager/management/region-move-support)をご覧ください。
+    > Azure Purview では、リージョン間でのアカウントの移動はサポートされていません。 詳細については、[Azure でサポートされるサービスに関するページ](../azure-resource-manager/management/region-move-support.md)をご覧ください。
 
 1. **[基本]** タブで、次の操作を行います。
     1. **リソース グループ** を選択します。

@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546450"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591733"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -196,7 +196,7 @@ Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示�
 
 - [Retrieve Azure Monitor metrics with .NET (.NET を使用した Azure Monitor メトリックの取得)](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) このサンプルでは、ユーザー名とパスワードを使用します。 証明書を使用するために、[この例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)に示すように、FromServicePrincipal メソッドをオーバーロードして、証明書を提供します。 
 - [Getting metrics and activity logs for a resource (リソースのメトリックとアクティビティ ログの取得)](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Azure 監視 REST API のチュートリアル](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Azure 監視 REST API のチュートリアル](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > 通知の成功は、単にプッシュ通知が外部の PNS (たとえば iOS および macOS の APNs や Android デバイスの FCM) に配信されたことを意味します。 ターゲット デバイスに通知を配信するのは、PNS の役目です。 通常、PNS は、配信メトリックを第三者に公開しません。  
@@ -211,7 +211,7 @@ Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示�
 [Notification Hubs のセキュリティ モデル]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [Notification Hubs の安全なプッシュのチュートリアル]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [Notification Hubs のトラブルシューティング]: ./notification-hubs-push-notification-fixer.md
-[Notification Hubs のメトリック]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs のメトリック]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [登録のエクスポートとインポート]: ./export-modify-registrations-bulk.md
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

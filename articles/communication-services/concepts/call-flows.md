@@ -9,26 +9,24 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 5b1d24dc6056de0b8dd19d0d0e52c85055596a1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559446"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664137"
 ---
 # <a name="call-flow-basics"></a>通話フローの基礎
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 次のセクションでは、Azure Communication Services での通話フローの概要を示します。 信号とメディアのフローは、ユーザーが行う通話の種類によって異なります。 通話の種類の例としては、一対一の VoIP、一対一の PSTN、および VoIP と PSTN で接続された参加者の組み合わせを含むグループ通話などがあります。 [通話の種類](./voice-video-calling/about-call-types.md)を確認してください。
 
 ## <a name="about-signaling-and-media-protocols"></a>信号とメディアのプロトコルについて
 
-ピアツーピアまたはグループ通話を確立する際には、2 つのプロトコル (信号用の HTTP (REST) とメディア用の SRTP) がバックグラウンドで使用されます。 
+ピアツーピアまたはグループ通話を確立する際には、2 つのプロトコル (信号用の HTTP (REST) とメディア用の SRTP) がバックグラウンドで使用されます。
 
-クライアント ライブラリ間、またはクライアント ライブラリと Communication Services Signaling Controllers 間の信号は、HTTP REST (TLS) を使用して処理されます。 リアルタイム メディア トラフィック (RTP) の場合、ユーザー データグラム プロトコル (UDP) が優先されます。 ファイアウォールによって UDP の使用が許可されない場合、クライアント ライブラリは、メディア用に伝送制御プロトコル (TCP) を使用します。 
+クライアント ライブラリ間、またはクライアント ライブラリと Communication Services Signaling Controllers 間の信号は、HTTP REST (TLS) を使用して処理されます。 リアルタイム メディア トラフィック (RTP) の場合、ユーザー データグラム プロトコル (UDP) が優先されます。 ファイアウォールによって UDP の使用が許可されない場合、クライアント ライブラリは、メディア用に伝送制御プロトコル (TCP) を使用します。
 
-さまざまなシナリオでの信号とメディアのプロトコルを確認します。 
+さまざまなシナリオでの信号とメディアのプロトコルを確認します。
 
 ## <a name="call-flow-cases"></a>通話フローのケース
 
@@ -40,7 +38,7 @@ ms.locfileid: "100559446"
 
 ### <a name="case-2-voip-where-a-direct-connection-between-devices-is-not-possible-but-where-connection-between-nat-devices-is-possible"></a>ケース 2: デバイス間の直接接続はできないが、NAT デバイス間の接続は可能な VoIP
 
-サブネットに配置された 2 つのデバイスが相互に到達できない (たとえば、Alice がコーヒー ショップで仕事をしていて、Bob がホーム オフィスで仕事をしている) が、NAT デバイス間の接続は可能な場合、クライアント側のクライアント ライブラリは NAT デバイス経由で接続を確立します。 
+サブネットに配置された 2 つのデバイスが相互に到達できない (たとえば、Alice がコーヒー ショップで仕事をしていて、Bob がホーム オフィスで仕事をしている) が、NAT デバイス間の接続は可能な場合、クライアント側のクライアント ライブラリは NAT デバイス経由で接続を確立します。
 
 Alice の場合、コーヒー ショップの NAT が使用され、Bob の場合、ホーム オフィスの NAT が使用されます。 Alice のデバイスは彼女の NAT の外部アドレスを送信し、Bob のデバイスも同様に送信します。 クライアント ライブラリは、Azure Communication Services が無料で提供している STUN (Session Traversal Utilities for NAT) サービスから外部アドレスを学習します。 Alice と Bob の間のハンドシェイクを処理するロジックは、Azure Communication Services 提供のクライアント ライブラリ内に組み込まれています。 (追加の構成は不要です)
 
@@ -51,7 +49,7 @@ Alice の場合、コーヒー ショップの NAT が使用され、Bob の場�
 一方または両方のクライアント デバイスが対称 NAT の内側にある場合は、2 つのクライアント ライブラリ間でメディアを中継するための別のクラウド サービスが必要です。 このサービスは、TURN (Traversal Using Relays around NAT) と呼ばれ、Communication Services でも提供されています。 Communication Services の通話クライアント ライブラリは、検出されたネットワーク状態に基づいて自動的に TURN サービスを使用します。 Microsoft の TURN サービスのご利用には別途料金がかかります。
 
 :::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="TURN 接続を利用する VoIP 通話を示す図。":::
- 
+
 ### <a name="case-4-group-calls-with-pstn"></a>ケース 4:PSTN での通話のグループ化
 
 PSTN 通話の信号とメディアの両方で、Azure Communication Services のテレフォニー リソースが使用されます。 このリソースは、他の通信事業者と相互接続されています。
@@ -78,7 +76,7 @@ PSTN メディア トラフィックは、メディア プロセッサと呼ば�
 
 ### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>ケース 5: スケジュールされた Teams の会議に Communication Services クライアント ライブラリと Microsoft Teams が参加
 
-シグナリングのフローは、シグナリング コントローラーを経由します。 メディアのフローは、メディア プロセッサを経由します。 シグナリング コントローラーとメディア プロセッサは、Communication Services と Microsoft Teams との間で共有されます。 
+シグナリングのフローは、シグナリング コントローラーを経由します。 メディアのフローは、メディア プロセッサを経由します。 シグナリング コントローラーとメディア プロセッサは、Communication Services と Microsoft Teams との間で共有されます。
 
 :::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="スケジュールされた Teams の会議に参加する Communication Services クライアント ライブラリと Teams クライアントを示す図。":::
 

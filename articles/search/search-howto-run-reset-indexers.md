@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 06f9d336bb04aa26cea4ebcdae1cfd045e1c2a1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361249"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667673"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>インデクサー、スキル、またはドキュメントを実行またはリセットする方法
 
@@ -101,7 +101,7 @@ POST https://[service name].search.windows.net/skillsets/[skillset name]/resetsk
 > [!IMPORTANT] 
 > [ドキュメントのリセット](/rest/api/searchservice/preview-api/reset-documents)はパブリック プレビュー段階にあり、プレビュー REST API を介してのみ利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。
 
-[ドキュメントのリセット API](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents) は、ドキュメント キーの一覧を受け取って、特定のドキュメントを更新できるようにします。 リセット パラメーターを指定すると、基になるデータの他の変更には関係なく、リセット パラメーターによってのみ処理対象が決定されます。 たとえば、インデクサーの最後の実行後に 20 個の BLOB が追加または更新されたが、1 つのドキュメントのみをリセットした場合、その 1 つのドキュメントだけが処理されます。
+[ドキュメントのリセット API](/rest/api/searchservice/preview-api/reset-documents) は、ドキュメント キーの一覧を受け取って、特定のドキュメントを更新できるようにします。 リセット パラメーターを指定すると、基になるデータの他の変更には関係なく、リセット パラメーターによってのみ処理対象が決定されます。 たとえば、インデクサーの最後の実行後に 20 個の BLOB が追加または更新されたが、1 つのドキュメントのみをリセットした場合、その 1 つのドキュメントだけが処理されます。
 
 ドキュメントごとに、その検索ドキュメント内のすべてのフィールドがデータ ソースの値で更新されます。 更新するフィールドを選択することはできません。 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 00d19d7b554e8a867412cfb982e1377fd90bd936
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8b3a67fc06594a4782ba55c17ab36c0bad9cf2a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624525"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574929"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus 用の Azure セキュリティ ベースライン
 
@@ -143,9 +143,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Service Bus に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -161,7 +161,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Service Bus の診断設定を構成する方法](service-bus-diagnostic-logs.md)
 
-- [Azure アクティビティ ログについて](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure アクティビティ ログについて](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
@@ -177,7 +177,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Service Bus の診断設定を有効にする方法](service-bus-diagnostic-logs.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -187,7 +187,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定し、Service Bus 関連のインシデントを取得して確認します。
 
-- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -197,9 +197,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:異常な動作がないかログを分析および監視し、Service Bus エンティティに関連する結果を定期的に確認します。 Azure Monitor を使用して、ログを確認したり、Service Bus に関連するログ データにクエリを実行したりします。
 
-- [Log Analytics ワークスペースの詳細について](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics ワークスペースの詳細について](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -215,7 +215,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -491,7 +491,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:Azure Service Bus の運用インスタンスや、その他の重要または関連リソースに変更が生じたときにアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 

@@ -3,12 +3,12 @@ title: Azure VMware Solution VM のライフサイクル管理
 description: Microsoft Azure ネイティブ ツールを使用して、Azure VMware Solution VM のライフサイクルのあらゆる側面を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 2cb9964b68769b1e784cebf62b4d336b355c68fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988524"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572195"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理
 
@@ -45,9 +45,9 @@ Microsoft Azure ネイティブ ツールを使用すると、Azure 環境の仮
 Azure を初めて使用する場合、または前に説明したサービスに慣れていない場合は、次の記事を確認してください。
 
 - [Automation アカウントの認証の概要](../automation/automation-security-overview.md)
-- [Azure Monitor ログのデプロイの設計](../azure-monitor/platform/design-logs-deployment.md)と [Azure Monitor](../azure-monitor/overview.md)
+- [Azure Monitor ログのデプロイの設計](../azure-monitor/logs/design-logs-deployment.md)と [Azure Monitor](../azure-monitor/overview.md)
 - Azure Security Center の[計画](../security-center/security-center-planning-and-operations-guide.md)と[サポートされているプラットフォーム](../security-center/security-center-os-coverage.md)
-- [Azure Monitor for VMs の有効化の概要](../azure-monitor/insights/vminsights-enable-overview.md)
+- [Azure Monitor for VMs の有効化の概要](../azure-monitor/vm/vminsights-enable-overview.md)
 - 「[Azure Arc 対応サーバーとは](../azure-arc/servers/overview.md)」と「[Azure Arc 対応 Kubernetes とは](../azure-arc/kubernetes/overview.md)」
 - [Update Management の概要](../automation/update-management/overview.md)
 
@@ -59,7 +59,7 @@ Azure Automation の Azure Update Management は、ハイブリッド環境の W
 
 1.  Azure Update Management に Log Analytics を追加するには、まず [Azure Automation アカウントを作成する](../automation/automation-create-standalone-account.md)必要があります。 テンプレートを使用してアカウントを作成したい場合は、「[Azure Resource Manager テンプレートを使用して Automation アカウントを作成する](../automation/quickstart-create-automation-account-template.md)」を参照してください。
 
-2. **Log Analytics ワークスペース** により、Log Analytics エージェントまたは拡張機能を使用して、ログ収集およびパフォーマンス カウンターの収集が可能になります。 Log Analytics ワークスペースを作成するには、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 必要に応じて、[CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、[PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)、または [Azure Resource Manager テンプレート](../azure-monitor/samples/resource-manager-workspace.md)を使用してワークスペースを作成することもできます。
+2. **Log Analytics ワークスペース** により、Log Analytics エージェントまたは拡張機能を使用して、ログ収集およびパフォーマンス カウンターの収集が可能になります。 Log Analytics ワークスペースを作成するには、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」を参照してください。 必要に応じて、[CLI](../azure-monitor/logs/quick-create-workspace-cli.md)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md)、または [Azure Resource Manager テンプレート](../azure-monitor/logs/resource-manager-workspace.md)を使用してワークスペースを作成することもできます。
 
 3. VM に対して Azure Update Management を有効にするには、「[Automation アカウントから Update Management を有効にする](../automation/update-management/enable-from-automation-account.md)」を参照してください。 このプロセスでは、Log Analytics ワークスペースを Automation アカウントにリンクします。 
  
@@ -99,22 +99,14 @@ Azure VMware Solution VM は、Log Analytics エージェント (Microsoft Monit
 
 Azure Monitor は、クラウドおよびオンプレミス環境からのテレメトリを収集、分析して対応する、包括的なソリューションです。 デプロイは必要ありません。 Azure Monitor を使用すると、ゲスト オペレーティング システムのパフォーマンスを監視し、Azure VMware Solution またはオンプレミスの VM のアプリケーションの依存関係を検出してマップすることができます。
 
-- Azure Monitor を使用すると、さまざまなソースからデータを収集して、監視および分析できます。 詳細については、「[Azure Monitor で使用する監視データのソース](../azure-monitor/platform/data-sources.md)」を参照してください。
+- Azure Monitor を使用すると、さまざまなソースからデータを収集して、監視および分析できます。 詳細については、「[Azure Monitor で使用する監視データのソース](../azure-monitor/agents/data-sources.md)」を参照してください。
 
-- 分析や視覚化、アラート用に、さまざまな種類のデータを収集します。 詳細については、「[Azure Monitor データ プラットフォーム](../azure-monitor/platform/data-platform.md)」を参照してください。
+- 分析や視覚化、アラート用に、さまざまな種類のデータを収集します。 詳細については、「[Azure Monitor データ プラットフォーム](../azure-monitor/data-platform.md)」を参照してください。
 
-- Log Analytics ワークスペースで Azure Monitor を構成するには、「[Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する](../azure-monitor/insights/vminsights-configure-workspace.md)」を参照してください。
+- Log Analytics ワークスペースで Azure Monitor を構成するには、「[Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する](../azure-monitor/vm/vminsights-configure-workspace.md)」を参照してください。
 
 - アラート ルールを作成することにより、高いリソースの使用率や不足しているパッチ、ディスク容量の不足、VM のハートビートなどの、環境内の問題を特定できます。 また、IT Service Management (ITSM) ツールにアラートを送信することで、検出されたイベントに対する自動応答を設定することもできます。 アラート検出の通知は、電子メールでも送信できます。 こうしたルールを作成するには、以下を参照してください。
-    - [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)。
-    - [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-log.md)。
-    - 自動アクションと通知を設定するための[アクション ルール](../azure-monitor/platform/alerts-action-rules.md)。
-    - [IT Service Management Connector を使用して Azure を ITSM ツールに接続する](../azure-monitor/platform/itsmc-overview.md)。
-    
- ## <a name="next-steps"></a>次のステップ
-
-Azure のネイティブ ツールを使用して、Azure VMware Solution VM をそれらのライフサイクルを通して管理する方法を理解したので、次のことについて確認する必要がある可能性があります。
-
-- [Azure Security Center による Azure VMware Solution VM の保護](azure-security-integration.md)。
-- [Azure VMware Solution 向けの Azure Backup Server の設定](set-up-backup-server-for-azure-vmware-solution.md)。
-- [ハブ アンド スポークのアーキテクチャでの Azure VMware Solution の統合](concepts-hub-and-spoke.md)。
+    - [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-metric.md)。
+    - [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-log.md)。
+    - 自動アクションと通知を設定するための[アクション ルール](../azure-monitor/alerts/alerts-action-rules.md)。
+    - [IT Service Management Connector を使用して Azure を ITSM ツールに接続する](../azure-monitor/alerts/itsmc-overview.md)。

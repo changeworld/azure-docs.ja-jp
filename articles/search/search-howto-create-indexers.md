@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 596eca0d73ffc4a590fae9b346658a2c31a1d68c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360960"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676475"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの作成
 
@@ -155,7 +155,7 @@ Cognitive Search の場合、一般公開される機能は Azure SDK によっ�
 
 大規模なインデックス作成の読み込みの場合、インデクサーは、内部の "高基準値" を使用して、最後に処理したドキュメントを追跡します。 このマーカーは API では公開されませんが、内部的には、インデクサーは停止した場所を追跡します。 スケジュールされた実行またはオンデマンド呼び出しによってインデックス作成が再開されると、インデクサーは、中断された場所を取得できるように高基準値を参照します。
 
-高基準値をクリアしてインデックスをすべて再作成する必要がある場合は、[インデクサーのリセット](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)を行います。 より選択的にインデックスを再作成する場合は、[スキルのリセット](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)または[ドキュメントのリセット](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents)を行います。 リセット API を使用して内部状態をクリアできます。また、[インクリメンタル エンリッチメント](search-howto-incremental-index.md)を有効にした場合は、キャッシュもフラッシュできます。 各リセット オプションの背景情報と比較の詳細については、[インデクサー、スキル、ドキュメントの実行またはリセット](search-howto-run-reset-indexers.md)に関するページを参照してください。
+高基準値をクリアしてインデックスをすべて再作成する必要がある場合は、[インデクサーのリセット](/rest/api/searchservice/reset-indexer)を行います。 より選択的にインデックスを再作成する場合は、[スキルのリセット](/rest/api/searchservice/preview-api/reset-skills)または[ドキュメントのリセット](/rest/api/searchservice/preview-api/reset-documents)を行います。 リセット API を使用して内部状態をクリアできます。また、[インクリメンタル エンリッチメント](search-howto-incremental-index.md)を有効にした場合は、キャッシュもフラッシュできます。 各リセット オプションの背景情報と比較の詳細については、[インデクサー、スキル、ドキュメントの実行またはリセット](search-howto-run-reset-indexers.md)に関するページを参照してください。
 
 ## <a name="know-your-data"></a>データについて理解する
 
@@ -165,7 +165,7 @@ Cognitive Search の場合、一般公開される機能は Azure SDK によっ�
 
 フラット化されたデータに加えて、検索可能なデータのみをプルすることが重要です。 検索可能なデータは英数字です。 Cognitive Search を使用すると、どのような形式でもバイナリ データを検索することはできませんが、画像ファイル内のテキスト記述を抽出して推測し ([AI エンリッチメント](cognitive-search-concept-intro.md)に関するページを参照)、検索可能なコンテンツを作成することはできます。 同様に、AI エンリッチメントを使用すると、大規模なテキストを自然言語モデルで分析して、構造や関連情報を発見し、検索ドキュメントに追加できる新しいコンテンツを生成することができます。
 
-インデクサーによってデータの問題が解決されない場合は、他の形式のデータ クレンジングや操作が必要になることがあります。 詳細については、お使いの [Azure データベース製品](/azure/?product=databases)の製品ドキュメントを参照してください。
+インデクサーによってデータの問題が解決されない場合は、他の形式のデータ クレンジングや操作が必要になることがあります。 詳細については、お使いの [Azure データベース製品](../index.yml?product=databases)の製品ドキュメントを参照してください。
 
 ## <a name="know-your-index"></a>インデックスについて理解する
 

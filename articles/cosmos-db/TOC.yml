@@ -860,6 +860,9 @@
           items:
             - name: クロス オリジン リソース共有 (CORS) の構成
               href: how-to-configure-cross-origin-resource-sharing.md
+            - name: ロールベースのアクセス制御の構成
+              href: how-to-setup-rbac.md
+              displayName: 'aad, active directory, rbac'
             - name: マネージド ID を使用してデータにアクセスする
               href: managed-identity-based-authentication.md
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
@@ -1068,7 +1071,7 @@
         - name: Node.js
           href: create-mongodb-nodejs.md
         - name: Python
-          href: create-mongodb-flask.md
+          href: ./mongodb-introduction.md
         - name: Xamarin
           href: create-mongodb-xamarin.md
         - name: Golang
@@ -1103,9 +1106,11 @@
           href: tutorial-global-distribution-mongodb.md
     - name: 概念
       items:
-        - name: ワイヤ プロトコルのサポート (3.6)
+        - name: API バージョン 4.0
+          href: mongodb-feature-support-40.md
+        - name: API バージョン 3.6
           href: mongodb-feature-support-36.md
-        - name: ワイヤ プロトコルのサポート (3.2)
+        - name: API バージョン 3.2
           href: mongodb-feature-support.md
         - name: よく寄せられる質問
           href: mongodb-api-faq.md
@@ -1125,7 +1130,7 @@
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 移行後ガイド
               href: mongodb-post-migration.md
-        - name: MongoDB 3.2 から 3.6 へのアップグレード
+        - name: API バージョン 4.0 または 3.6 にアップグレードする
           href: mongodb-version-upgrade.md
         - name: 接続文字列を取得する
           href: connect-mongodb-account.md
@@ -1146,6 +1151,8 @@
           href: mongodb-change-streams.md
         - name: データのインデックス作成を管理する
           href: mongodb-indexing.md
+        - name: マルチドキュメント トランザクションを使用する
+          href: use-multi-document-transactions.md
         - name: コンテナーの作成 - MongoDB API
           href: how-to-create-container-mongodb.md
         - name: スループットのプロビジョニング - MongoDB API
@@ -1374,6 +1381,8 @@
           href: configure-synapse-link.md
         - name: Azure Synapse Link に接続する
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 分析ストアとプライベート エンドポイント
+          href: analytical-store-private-endpoints.md
         - name: Azure Synapse Spark を使用してクエリを実行する
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: サーバーレス SQL プールを使用してクエリを実行する

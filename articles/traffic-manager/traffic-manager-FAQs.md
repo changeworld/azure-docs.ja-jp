@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184579"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576674"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -347,7 +347,7 @@ Azure Resource Manager では、すべてのリソース グループに対し�
 
 各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](/rest/api/trafficmanager/)、[PowerShell コマンドレット](/powershell/module/az.trafficmanager)、および [クロスプラットフォームの Azure CLI](/cli/azure/install-classic-cli) を使用して取得することもできます。
 
-Azure Monitor を使用すると、エンドポイントの正常性を追跡して、視覚的に表現することもできます。 Azure Monitor の使用方法について詳しくは、[Azure Monitoring のドキュメント](../azure-monitor/platform/data-platform.md)をご覧ください。
+Azure Monitor を使用すると、エンドポイントの正常性を追跡して、視覚的に表現することもできます。 Azure Monitor の使用方法について詳しくは、[Azure Monitoring のドキュメント](../azure-monitor/data-platform.md)をご覧ください。
 
 ### <a name="can-i-monitor-https-endpoints"></a>HTTPS エンドポイントを監視できますか。
 
@@ -458,7 +458,7 @@ Traffic Manager では、エンドポイントに対して開始される HTTP(S
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>いずれかのエンドポイントがダウンした場合に通知を受ける方法を教えてください。
 
-Traffic Manager が提供しているメトリックの 1 つにプロファイルのエンドポイントの正常性状態があります。 プロファイル内のすべてのエンドポイントの集計として (たとえば、お使いのエンドポイントの 75% が正常) またはエンドポイントごとに正常性を確認できます。 Traffic Manager のメトリックは Azure Monitor で公開されていて、[アラート機能](../azure-monitor/platform/alerts-metric.md)を使用して、お使いのエンドポイントの正常性状態に変化があった場合に通知を受けることができます。 詳細については、「[Traffic Manager のメトリックとアラート](traffic-manager-metrics-alerts.md)」を参照してください。  
+Traffic Manager が提供しているメトリックの 1 つにプロファイルのエンドポイントの正常性状態があります。 プロファイル内のすべてのエンドポイントの集計として (たとえば、お使いのエンドポイントの 75% が正常) またはエンドポイントごとに正常性を確認できます。 Traffic Manager のメトリックは Azure Monitor で公開されていて、[アラート機能](../azure-monitor/alerts/alerts-metric.md)を使用して、お使いのエンドポイントの正常性状態に変化があった場合に通知を受けることができます。 詳細については、「[Traffic Manager のメトリックとアラート](traffic-manager-metrics-alerts.md)」を参照してください。  
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager の入れ子になったプロファイル
 

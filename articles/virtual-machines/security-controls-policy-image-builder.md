@@ -6,14 +6,15 @@ ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: image-builder
+ms.collection: linux
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: bc918e6a63ebfdc2ce271c62a6641735e0fffd00
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ef264519cb6fc8012d13eb70ea471d9993a0b313
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098913"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673933"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-image-builder"></a>Azure Image Builder 用の Azure Policy 規制コンプライアンス コントロール
 

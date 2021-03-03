@@ -1,5 +1,5 @@
 ---
-title: ランク付けの類似性アルゴリズム
+title: ランク付けの類似性アルゴリズムの構成
 titleSuffix: Azure Cognitive Search
 description: 類似性アルゴリズムを設定し、ランク付けの新しい類似性アルゴリズムを試す方法
 manager: nitinme
@@ -7,36 +7,47 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.openlocfilehash: e2caa09d41abb1842100ed8259e82ec411390ccb
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/02/2021
+ms.openlocfilehash: 9f806b512ae8e118fca8f32115c8be3b493fd681
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520631"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677784"
 ---
-# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure Cognitive Search のランク付けアルゴリズム
+# <a name="configure-ranking-algorithms-in-azure-cognitive-search"></a>Azure Cognitive Search でランク付けアルゴリズムを構成する
 
-> [!IMPORTANT]
-> 2020 年 7 月 15 日より、新しく作成された検索サービスでは BM25 ランク付け関数が自動的に使用されます。この関数はほとんどの場合、現行の既定のランク付けよりもユーザーの予測に沿った検索ランク付けを与えることが証明されています。 ランク付けで優れている以外に、BM25 では、ドキュメントのサイズなどの要素に基づいて結果を調整する構成オプションを使用できます。  
->
-> 今回の変更では、おそらく、検索結果の順序にわずかな変化が見られるでしょう。 この変更の影響をテストする必要がある場合は、api-version 2019-05-06-Preview および 2020-06-30 で BM25 アルゴリズムを使用できます。  
+Azure Cognitive Search では、2 つの類似性ランク付けアルゴリズムがサポートされています。
 
-この記事では、Preview API を使用して作成およびクエリされた新しいインデックスに対して、既存の検索サービスで新しい BM25 ランク付けアルゴリズムを使用する方法について説明します。
++ *クラシック類似性* アルゴリズム。2020 年 7 月 15 日まで、すべての検索サービスで使用されます。
++ *Okapi BM25* アルゴリズムの実装。7 月 15 日以降に作成されるすべての検索サービスで使用されます。
 
-Azure Cognitive Search では、Okapi BM25 アルゴリズムの公式 Lucene 実装、*BM25Similarity* の採用過程にあります。これは、以前に使用されていた *ClassicSimilarity* 実装に取って代わります。 以前の ClassicSimilarity アルゴリズムと同じく、BM25Similarity は TF-IDF タイプの取得関数です。この関数では、単語の出現頻度 (TF) と逆文書頻度 (IDF) が変数として使用され、ドキュメントとクエリの組みごとに関連スコアが計算されます。ドキュメントとクエリの組みはその後、ランク付けに使用されます。 
+BM25 ランク付けは新しい既定値です。この方が、よりユーザーの期待に合致する検索ランキングが生成される傾向があるためです。 さらに、ドキュメント サイズなどの要素に基づいて結果をチューニングするための構成オプションを使用できます。 2020 年 7 月 15 日以降に作成された新しいサービスでは、BM25 が自動的に使用され、これは唯一の類似性アルゴリズムです。 新しいサービスで類似性を ClassicSimilarity に設定しようとすると、サービスでそのアルゴリズムがサポートされていないため、エラー 400 が返されます。
 
-概念的には以前の ClassicSimilarity アルゴリズムと同じですが、BM25 の根底は確率的情報取得にあり、それを基に改良されています。 BM25 には高度なカスタマイズ オプションもあります。たとえば、ユーザーは、一致した単語の出現頻度で関連性スコアが変動するしくみを決定できます。
+2020 年 7 月 15 日より前に作成された古いサービスでは、クラシック類似性は既定のアルゴリズムのままになります。 古いサービスでは、次に説明するように、検索インデックスにプロパティを設定して、BM25 を呼び出すことができます。 クラシックから BM25 に切り替えようとする場合、検索結果の順序にいくらかの違いが発生すると予想されます。
 
-## <a name="how-to-test-bm25-today"></a>今すぐ BM25 をテストする方法
+> [!NOTE]
+> セマンティック検索は、予測と結果のギャップをさらに狭める、セマンティックによる再ランク付けアルゴリズムです。 他のアルゴリズムとは異なり、既存の結果セットを反復処理するアドオン機能です。 プレビュー セマンティック検索アルゴリズムを使用するには、新しいサービスを作成する必要があり、[セマンティック クエリの種類](semantic-how-to-query-request.md)を指定する必要があります。 詳細については、「[セマンティック検索の概要](semantic-search-overview.md)」を参照してください。
 
-新しいインデックスを作成するとき、**similarity** プロパティを設定してアルゴリズムを指定できます。 次に示すように `api-version=2019-05-06-Preview` を使用するか、`api-version=2020-06-30` を使用することができます。
+## <a name="create-a-search-index-for-bm25-scoring"></a>BM25 スコアリング用の検索インデックスを作成する
+
+2020 年 7 月 15 日より前に作成された検索サービスを実行している場合は、インデックス定義で類似性プロパティを BM25Similarity または ClassicSimilarity に設定できます。 similarity プロパティを省略するか、null に設定した場合、インデックスでは Classic アルゴリズムが使用されます。
+
+類似性アルゴリズムは、インデックスの作成時にのみ設定できます。 ただし、BM25 を使用してインデックスを作成したら、既存のインデックスを更新して、BM25 パラメーターを設定または変更できます。
+
+| クライアント ライブラリ | 類似性プロパティ |
+|----------------|---------------------|
+| .NET  | [SearchIndex.Similarity](/dotnet/api/azure.search.documents.indexes.models.searchindex.similarity) |
+| Java | [SearchIndex.setSimilarity](/java/api/com.azure.search.documents.indexes.models.searchindex.setsimilarity) |
+| JavaScript | [SearchIndex.Similarity](/javascript/api/@azure/search-documents/searchindex#similarity) |
+| Python | [SearchIndex の類似性プロパティ](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) |
+
+### <a name="rest-example"></a>REST の例
+
+次の例に示すように、[REST API](/rest/api/searchservice/create-index) を使用することもできます。
 
 ```http
-PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
-```
-
-```json  
+PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2020-06-30
 {
     "name": "indexName",
     "fields": [
@@ -59,48 +70,28 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-**similarity** プロパティは、両方のアルゴリズムを既存のサービスでのみ使用できる、この中間期間中に便利です。 
-
-| プロパティ | 説明 |
-|----------|-------------|
-| similarity | 省略可能。 有効な値には、 *"#Microsoft.Azure.Search.ClassicSimilarity"* や *"#Microsoft.Azure.Search.BM25Similarity"* などがあります。 <br/> 2020 年 7 月 15 日より前に作成された検索サービスでは、`api-version=2019-05-06-Preview` 以降が必要です。 |
-
-2020 年 7 月 15 日以降に作成された新しいサービスでは、BM25 が自動的に使用され、これは唯一の類似性アルゴリズムです。 新しいサービスで **similarity** を `ClassicSimilarity` に設定しようとすると、新しいサービスではそのアルゴリズムがサポートされていないため、エラー 400 が返されます。
-
-2020 年 7 月 15 日より前に作成された既存のサービスでは、ClassicSimilarity は既定のアルゴリズムのままです。 **similarity** プロパティを省略するか、null に設定した場合、インデックスでは Classic アルゴリズムが使用されます。 新しいアルゴリズムを使用する場合は、前述のように **similarity** を設定する必要があります。
-
 ## <a name="bm25-similarity-parameters"></a>BM25 類似性パラメーター
 
-BM25 類似性では、計算後の関連性スコアを制御するため、ユーザーがカスタマイズできるパラメーターが 2 つ加わります。
+BM25 類似性では、計算後の関連性スコアを制御するため、ユーザーがカスタマイズできるパラメーターが 2 つ加わります。 インデックスの作成時、またはインデックスの作成時に BM25 アルゴリズムが指定されている場合は、インデックスの更新として、BM25 パラメーターを設定できます。
 
-### <a name="k1"></a>k1
-
-*k1* パラメーターによって、一致する各単語の出現頻度とドキュメントとクエリのペアの最終的な関連性スコアの間のスケーリング関数が制御されます。
-
-値が 0 のときは "バイナリ モデル" となり、一致する 1 つの単語は、その単語がテキスト内に出現する回数に関係なく、一致するすべてのドキュメントに対して等しく寄与します。一方、k1 値がそれより大きいときは、ドキュメント内で同じ単語が見つかるのに合わせてスコアを継続的に増やすことができます。 Azure Cognitive Search の既定では、k1 パラメーターの値に 1.2 が使用されます。 複数の単語が検索クエリに含まれるとき、場合によっては、k1 値を高くすることが重要です。 そのような場合、1 つの検索クエリ単語だけ複数回一致するドキュメントより、たくさんの異なる単語が一致するドキュメントを優先することが推奨されるかもしれません。 たとえば、"Apollo Spaceflight" という言葉が含まれるドキュメントのインデックスを問い合わせるとき、"Spaceflight" は出てこないが "Apollo" という単語が何度も出てくるギリシャ神話に関する記事のスコアを、"Apollo" と "Spaceflight" の両方がほんの数回だけ出てくる別の記事よりも下げることが推奨されるときがあります。 
- 
-### <a name="b"></a>b
-
-*b* パラメーターでは、ドキュメントの長さが関連性スコアに与える影響が制御されます。
-
-値が 0.0 のとき、ドキュメントの長さはスコアに影響を与えません。一方、値が 1.0 のとき、単語の出現頻度が関連性スコアに与える影響はドキュメントの長さによって正規化されます。 Azure Cognitive Search で b パラメーターに使用される既定値は 0.75 です。 ドキュメントの長さで単語の出現頻度を正規化することは、長いドキュメントに罰則を科す場合に役立ちます。 ドキュメントが長いと (1 冊の小説全体など)、それよりずっと短いドキュメントに比べ、関係のない単語が多く含まれる可能性が高くなります。
+| プロパティ | Type | 説明 |
+|----------|------|-------------|
+| k1 | number | 一致する各単語の出現頻度とドキュメントとクエリのペアの最終的な関連性スコアの間のスケーリング関数が制御されます。 値は通常 0.0 から 3.0 で、既定値は 1.2 です。 </br></br>値が 0.0 のときは "バイナリ モデル" となり、一致する 1 つの単語は、その単語がテキスト内に出現する回数に関係なく、一致するすべてのドキュメントに対して等しく寄与します。一方、k1 値がそれより大きいときは、ドキュメント内で同じ単語が見つかるのに合わせてスコアを継続的に増やすことができます。 </br></br>複数の単語が検索クエリに含まれるとき、場合によっては、k1 値を高くすることが重要です。 そのような場合、1 つの検索クエリ単語だけ複数回一致するドキュメントより、たくさんの異なる単語が一致するドキュメントを優先することが推奨されるかもしれません。 たとえば、"Apollo Spaceflight" という言葉が含まれるドキュメントのインデックスを問い合わせるとき、"Spaceflight" は出てこないが "Apollo" という単語が何度も出てくるギリシャ神話に関する記事のスコアを、"Apollo" と "Spaceflight" の両方がほんの数回だけ出てくる別の記事よりも下げることが推奨されるときがあります。 |
+| b | number | ドキュメントの長さが関連性スコアに与える影響が制御されます。 値は 0 から 1 の間で、既定値は 0.75 です。 </br></br>値が 0.0 のとき、ドキュメントの長さはスコアに影響を与えません。一方、値が 1.0 のとき、単語の出現頻度が関連性スコアに与える影響はドキュメントの長さによって正規化されます。 </br></br>ドキュメントの長さで単語の出現頻度を正規化することは、長いドキュメントに罰則を科す場合に役立ちます。 ドキュメントが長いと (1 冊の小説全体など)、それよりずっと短いドキュメントに比べ、関係のない単語が多く含まれる可能性が高くなります。 |
 
 ### <a name="setting-k1-and-b-parameters"></a>k1 パラメーターと b パラメーターを設定する
 
-b または k1 値をカスタマイズするには、BM25 の使用時、類似性オブジェクトにプロパティとして値を追加します。
+B 値または k1 値を設定または変更するには、それらを BM25 類似性オブジェクトに追加します。 既存のインデックスでこれらの値を設定するか変更すると、インデックスが少なくとも数秒間オフラインになり、アクティブなインデックス作成やクエリ要求が失敗します。 そのため、更新要求の "allowIndexDowntime=true" パラメーターを設定する必要があります。
 
-```json
+```http
+PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2020-06-30&allowIndexDowntime=true
+{
     "similarity": {
         "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
         "b" : 0.5,
         "k1" : 1.3
     }
-```
-
-類似性アルゴリズムは、インデックスの作成時にのみ設定できます。 つまり、既存のインデックスに使用されている類似性アルゴリズムは変更できません。 *"b"* パラメーターと *"k1"* パラメーターは、BM25 を使用する既存のインデックス定義を更新するときに変更できます。 既存のインデックスでこれらの値を変更すると、インデックスが少なくとも数秒間オフラインになり、インデックス作成やクエリ要求が失敗します。 そのため、更新要求のクエリ文字列に "allowIndexDowntime=true" パラメーターを設定する必要があります。
-
-```http
-PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
+}
 ```
 
 ## <a name="see-also"></a>関連項目  

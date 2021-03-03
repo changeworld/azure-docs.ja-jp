@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 430629f94695f0689422434c8d80fe4e1876e5dd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 94e7ae93d05ae8ee35028882e14d8da74814d833
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900054"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650228"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>チュートリアル:セキュリティで保護されたハイブリッド アクセスのために Azure Active Directory B2C で Ping Identity を構成する
 
@@ -80,7 +80,7 @@ PingFederate は、認証プロバイダーとして、または必要に応じ�
 
 - Azure サブスクリプション。 所有していない場合は、[無料アカウント](https://azure.microsoft.com/free/)を入手してください。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
 - Docker コンテナーに、または直接 Azure VM にデプロイされた PingAccess と PingFederate。
 
@@ -107,7 +107,7 @@ PingFederate は、認証プロバイダーとして、または必要に応じ�
 
 ![画像は、トークンの設定を示しています](./media/partner-ping/token-setting.png)
 
-高度なポリシーでは、これは、[JWT トークン発行者の技術プロファイル](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile)で **IssuanceClaimPattern** メタデータ要素を **AuthorityWithTfp** 値に設定することによって構成できます。
+高度なポリシーでは、これは、[JWT トークン発行者の技術プロファイル](./jwt-issuer-technical-profile.md)で **IssuanceClaimPattern** メタデータ要素を **AuthorityWithTfp** 値に設定することによって構成できます。
 
 ## <a name="configure-pingaccesspingfederate"></a>PingAccess または PingFederate を構成する
 
@@ -160,7 +160,7 @@ PingFederate を PingAccess のトークン プロバイダーとして構成す
 
 7. **[クライアント シークレット]** フィールドに、Azure AD でアプリケーション用に生成した **キー** を入力します。
 
-8. 省略可能 - Microsoft Graph API を使用してカスタム要求を作成して使用することができます。 これを選択した場合は、 **[Advanced]\(拡張\)** を選択し、 **[Request Profile]\(プロファイルの要求\)** と **[Refresh User Attributes]\(ユーザー属性の更新\)** オプションの選択を解除します。 カスタム要求の使用方法について詳しくは、[カスタム要求の使用](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#optional---use-a-custom-claim)に関するページ参照してください。
+8. 省略可能 - Microsoft Graph API を使用してカスタム要求を作成して使用することができます。 これを選択した場合は、 **[Advanced]\(拡張\)** を選択し、 **[Request Profile]\(プロファイルの要求\)** と **[Refresh User Attributes]\(ユーザー属性の更新\)** オプションの選択を解除します。 カスタム要求の使用方法について詳しくは、[カスタム要求の使用](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md)に関するページ参照してください。
 
 9. **[保存]** を選びます。
 
@@ -265,6 +265,6 @@ Azure AD B2C テナントによって提供されている複数の IdP にフ�
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

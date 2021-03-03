@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a919338789a02d50cbb6976ee50b214cb0d612
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d081754616b40a21b3b842758844eb13e2752569
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416620"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650959"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>スタンドアロンの管理サービス アカウントのセキュリティ保護
 
@@ -44,7 +44,7 @@ sMSA は、サービス アカウントとして使用されるユーザー ア�
 
    * ホスト コンピューターの DNS 名が変更された場合
 
-   * [PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) を使用して、追加の sam-accountname パラメーターまたは dns-hostname パラメーターを追加または削除する場合
+   * [PowerShell](/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) を使用して、追加の sam-accountname パラメーターまたは dns-hostname パラメーターを追加または削除する場合
 
 ## <a name="when-to-use-smsas"></a>sMSA を使用する場合
 
@@ -53,7 +53,7 @@ sMSA を使用すると、管理タスクとセキュリティ タスクを簡�
 > [!NOTE] 
 > 複数のサービスに対して sMSA を使用できますが、監査のために、各サービスに独自の ID を設定することをお勧めします。 
 
-MSA を使用できるかどうかをソフトウェアの作成者が判断できない場合は、アプリケーションをテストする必要があります。 これを行うには、テスト環境を作成し、必要なすべてのリソースにアクセスできることを確認します。 詳細な手順については、[sMSA の作成とインストール](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting)に関するページを参照してください。
+MSA を使用できるかどうかをソフトウェアの作成者が判断できない場合は、アプリケーションをテストする必要があります。 これを行うには、テスト環境を作成し、必要なすべてのリソースにアクセスできることを確認します。 詳細な手順については、[sMSA の作成とインストール](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting)に関するページを参照してください。
 
 ### <a name="assess-security-posture-of-smsas"></a>sMSA のセキュリティ体制の評価
 
@@ -112,7 +112,7 @@ sMSA を管理するには、次の Active Directory PowerShell コマンドレ�
 
 ## <a name="move-to-smsas"></a>sMSA への移行
 
-アプリケーション サービスで sMSA はサポートされているが gMSA がサポートされておらず、現在、セキュリティ コンテキストにユーザー アカウントまたはコンピューター アカウントを使用している場合は、サーバーに [sMSA を作成してインストール](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting)します。 
+アプリケーション サービスで sMSA はサポートされているが gMSA がサポートされておらず、現在、セキュリティ コンテキストにユーザー アカウントまたはコンピューター アカウントを使用している場合は、サーバーに [sMSA を作成してインストール](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting)します。 
 
 理想としては、Azure にリソースを移動し、Azure のマネージド ID またはサービス プリンシパルを使用します。
 
@@ -133,4 +133,3 @@ sMSA を管理するには、次の Active Directory PowerShell コマンドレ�
 
 * [オンプレミス サービス アカウントを管理する](service-accounts-govern-on-premises.md)
 
- 

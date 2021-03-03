@@ -5,13 +5,13 @@ author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.openlocfilehash: a0ea9a0871dd57088473999b28553258ff210038
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/18/2021
+ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628766"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668301"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure の仮想マシンの可用性オプション
 
@@ -52,6 +52,10 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 **障害ドメインと更新ドメイン**
 
 仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 [Azure での仮想マシンの可用性の管理](./manage-availability.md)に関する記事を参照してください。
+
+**スケール セットのオーケストレーション モード**
+
+仮想マシン スケール セットのオーケストレーション モードを使用すると、スケール セットでの仮想マシン インスタンスの管理方法をより詳細に制御できます。 スケール セットで、統一または柔軟なオーケストレーション モードを有効にすることができます。 統一オーケストレーションは、同一のインスタンスを持つ大規模なステートレス ワークロードに最適化されています。 柔軟なオーケストレーション (プレビュー) は、同一または複数の仮想マシンの種類を使用して大規模な高可用性を実現することを目的としています。 これらのオーケストレーション モードの詳細と有効にする方法については、[こちら](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md)をご覧ください。
 
 
 ## <a name="availability-sets"></a>可用性セット

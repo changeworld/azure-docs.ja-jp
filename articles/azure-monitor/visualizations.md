@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881233"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589413"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -19,7 +19,7 @@ ms.locfileid: "98881233"
 チャートやグラフなどの視覚化は、監視データを分析して問題をドリルダウンし、パターンを特定するのに役立ちます。 使用するツールによっては、組織の内外の他のユーザーと視覚化を共有するオプションもあります。
 
 ## <a name="workbooks"></a>Workbooks
-[Workbooks](./platform/workbooks-overview.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
+[Workbooks](./visualize/workbooks-overview.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
 
 ![図には、ページ ビューの分析、使用状況、ページで費やされた時間を含む、ブックからのいくつかのページのスクリーンショットが示されています。](media/visualizations/workbook.png)
 
@@ -46,9 +46,9 @@ ms.locfileid: "98881233"
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>長所
-- Azure との緊密な統合。 視覚化は、[メトリックス エクスプローラー](platform/metrics-charts.md)、[Log Analytics](log-query/log-analytics-overview.md)、[Application Insights](app/app-insights-overview.md) など、複数の Azure ページからダッシュボードにピン留めできます。
+- Azure との緊密な統合。 視覚化は、[メトリックス エクスプローラー](essentials/metrics-charts.md)、[Log Analytics](logs/log-analytics-overview.md)、[Application Insights](app/app-insights-overview.md) など、複数の Azure ページからダッシュボードにピン留めできます。
 - メトリックとログの両方をサポート。
-- [メトリックス エクスプローラー](platform/metrics-charts.md)、[ログ クエリ](log-query/log-query-overview.md)、[Application Insights](app/app-insights-overview.md) の[マップ](app/app-map.md)と可用性からの出力など、複数のソースからのデータを結合します。
+- [メトリックス エクスプローラー](essentials/metrics-charts.md)、[ログ クエリ](logs/log-query-overview.md)、[Application Insights](app/app-insights-overview.md) の[マップ](app/app-map.md)と可用性からの出力など、複数のソースからのデータを結合します。
 - 個人または共有のダッシュボードのオプション。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と統合。
 - 自動更新。 メトリックの更新は、最短 5 分の時間範囲に依存します。 特定の視覚エフェクトの [更新] アイコンをクリックするか、ダッシュボード全体を更新することにより、オンデマンドで手動更新オプションを使って 1 時間ごとに更新をログに記録します。
 - タイムスタンプとカスタム パラメーターでパラメーター化されたメトリック ダッシュボード。
@@ -66,7 +66,7 @@ ms.locfileid: "98881233"
 
 
 ## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) は、ビジネス中心のダッシュボードとレポート、および長期的な KPI 傾向の分析レポートを作成するのに特に便利です。 [ログ クエリの結果を Power BI のデータセットにインポート](platform/powerbi.md)できます。そうすることでさまざまなソースのデータを組み合わせたり、Web とモバイル デバイス上でレポートを共有したりするような機能を利用できます。
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) は、ビジネス中心のダッシュボードとレポート、および長期的な KPI 傾向の分析レポートを作成するのに特に便利です。 [ログ クエリの結果を Power BI のデータセットにインポート](visualize/powerbi.md)できます。そうすることでさまざまなソースのデータを組み合わせたり、Web とモバイル デバイス上でレポートを共有したりするような機能を利用できます。
 
 ![Power BI](media/visualizations/power-bi.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "98881233"
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) は、運用ダッシュボードに優れたオープン プラットフォームです。 運用上のインシデントの検出、分離、トリアージに特に役立ちます。 お使いの Azure サブスクリプションに [Grafana Azure Monitor データ ソース プラグイン](platform/grafana-plugin.md)を追加することで、Azure のメトリック データを視覚化することができます。
+[Grafana](https://grafana.com/) は、運用ダッシュボードに優れたオープン プラットフォームです。 運用上のインシデントの検出、分離、トリアージに特に役立ちます。 お使いの Azure サブスクリプションに [Grafana Azure Monitor データ ソース プラグイン](visualize/grafana-plugin.md)を追加することで、Azure のメトリック データを視覚化することができます。
 
 ![Grafana 視覚化のスクリーンショット。](media/visualizations/grafana.png)
 
@@ -115,9 +115,9 @@ Azure Monitor のメトリック データとログ データには、その API
 ## <a name="azure-monitor-views"></a>Azure Monitor ビュー
 
 > [!IMPORTANT]
-> ビューは今後非推奨となる予定です。 ビューをブックに変換する方法のガイドラインについては、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](platform/view-designer-conversion-overview.md)」を参照してください。
+> ビューは今後非推奨となる予定です。 ビューをブックに変換する方法のガイドラインについては、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](visualize/view-designer-conversion-overview.md)」を参照してください。
 
-[Azure Monitor のビュー](platform/view-designer.md)では、ログ データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](insights/solutions.md)が収集したデータを表示するために使用します。
+[Azure Monitor のビュー](visualize/view-designer.md)では、ログ データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](insights/solutions.md)が収集したデータを表示するために使用します。
 
 
 ![スクリーンショットには、コンテナー監視ソリューション タイルと、選択すると開く詳細な Azure Monitor ビューが表示されています。](media/visualizations/view.png)
@@ -126,7 +126,7 @@ Azure Monitor のメトリック データとログ データには、その API
 - ログ データの高度な視覚化。
 - ビューを他のリソース グループとサブスクリプションに転送するためのビューのエクスポートとインポート。
 - ワークスペースと監視ソリューションを持つ Azure Monitor 管理モデルへの統合。
-- カスタム パラメーターの[フィルター処理](platform/view-designer-filters.md)。
+- カスタム パラメーターの[フィルター処理](visualize/view-designer-filters.md)。
 - 対話型、複数レベルのドリルイン (別のビューに絞り込むビュー) をサポート
 
 ### <a name="limitations"></a>制限事項
@@ -138,11 +138,11 @@ Azure Monitor のメトリック データとログ データには、その API
 - クエリの応答サイズは 8 MB に制限され、クエリの実行時間は 110 秒に制限される。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Monitor によって収集されたデータ](platform/data-platform.md)について学習します。
+- [Azure Monitor によって収集されたデータ](/data-platform.md)について学習します。
 - [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)について学習します。
-- [メトリックス エクスプローラー](platform/metrics-getting-started.md)について学習します。
-- [Workbooks](./platform/workbooks-overview.md) について学習します。
-- [ログ データの Power BI へのインポート](./platform/powerbi.md)について学習します。
-- [Grafana Azure Monitor データ ソース プラグイン](./platform/grafana-plugin.md)について学習します。
-- [Azure Monitor のビュー](platform/view-designer.md)について学習します。
+- [メトリックス エクスプローラー](essentials/metrics-getting-started.md)について学習します。
+- [Workbooks](./visualize/workbooks-overview.md) について学習します。
+- [ログ データの Power BI へのインポート](./visualize/powerbi.md)について学習します。
+- [Grafana Azure Monitor データ ソース プラグイン](./visualize/grafana-plugin.md)について学習します。
+- [Azure Monitor のビュー](visualize/view-designer.md)について学習します。
 

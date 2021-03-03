@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: マルチモデル機能
           href: multi-model-features.md
+        - name: 予定メンテナンス
+          items:
+            - name: メンテナンス期間
+              href: database/maintenance-window.md
+            - name: メンテナンス期間の構成
+              href: database/maintenance-window-configure.md
+            - name: メンテナンス期間に関する FAQ
+              href: database/maintenance-window-faq.yml
+            - name: 事前通知
+              href: database/advance-notifications.md
         - name: インメモリ OLTP
           href: in-memory-oltp-overview.md
         - name: テンポラル テーブル

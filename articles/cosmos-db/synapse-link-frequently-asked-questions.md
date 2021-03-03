@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627779"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658471"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -67,6 +67,12 @@ Azure Synapse Link は、Azure Cosmos DB SQL (Core) API と、Azure Cosmos DB �
 ### <a name="is-there-any-effect-on-azure-cosmos-db-transactional-store-provisioned-rus"></a>Azure Cosmos DB トランザクション ストアにプロビジョニングされた RU に影響はありますか?
 
 Azure Cosmos DB では、トランザクション ワークロードと分析ワークロード間のパフォーマンスの分離が保証されています。 コンテナーで分析ストアを有効にしても、Azure Cosmos DB トランザクション ストアにプロビジョニングされた RU には影響しません。 分析ストアのトランザクション (読み取りおよび書き込み) とストレージのコストは個別に課金されます。 詳細については、[Azure Cosmos DB 分析ストアの価格](analytical-store-introduction.md#analytical-store-pricing)に関するセクションを参照してください。
+
+### <a name="can-i-restrict-access-to-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアへのアクセスを制限することはできますか?
+
+はい。[マネージド プライベート エンドポイント](analytical-store-private-endpoints.md)を構成して、分析ストアのネットワーク アクセスを Azure Synapse のマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。 また、他の Azure データ サービスの中で特に、トランザクション ストアへの書き込みアクセスも、このプライベート エンドポイントによって制限されます。
+
+Azure Synapse Analytics ワークスペース内で、トランザクション ストアと分析ストアの両方のプライベート エンドポイントを同じ Azure Cosmos DB アカウントに追加できます。 実行するのが分析クエリのみであれば、マップする必要があるのは、分析のプライベート エンドポイントのみです。
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>トランザクション ストアに対する削除と更新の操作は分析ストアに反映されますか?
 

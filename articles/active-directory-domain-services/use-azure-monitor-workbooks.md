@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 3067388265fb69b916fe0e179cb896401b7c2dc4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618163"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574214"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure Active Directory Domain Services のセキュリティ監査イベントを確認する
 
@@ -46,7 +46,7 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 * セキュリティの概要レポート
 * アカウント アクティビティ レポート
 
-ブックを編集および管理する方法の詳細については、「[Azure Monitor ブックの概要](../azure-monitor/platform/workbooks-overview.md)」を参照してください。
+ブックを編集および管理する方法の詳細については、「[Azure Monitor ブックの概要](../azure-monitor/visualize/workbooks-overview.md)」を参照してください。
 
 ## <a name="use-the-security-overview-report-workbook"></a>セキュリティの概要レポート ブックを使用する
 

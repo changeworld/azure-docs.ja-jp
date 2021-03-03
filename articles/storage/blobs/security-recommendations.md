@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878089"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592351"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB ストレージのセキュリティに関する推奨事項
 
@@ -71,7 +71,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | 推奨 | 説明 | Security Center |
 |-|----|--|
 | 要求がどのように承認されたかを追跡する | Azure Storage のログ記録を有効にして、Azure Storage に対する各要求がどのように承認されたかを追跡します。 このログでは、OAuth 2.0 トークン、共有キー、または共有アクセス署名 (SAS) を使用して、要求が匿名で行われたかどうかが示されます。 詳細については、[Azure Monitor を使用した Azure Blob storage の監視](monitor-blob-storage.md)、または[クラシックな監視を使用した Azure Storage Analytics のログ記録](../common/storage-analytics-logging.md)に関する各記事を参照してください。 | - |
-| Azure Monitor でアラートを設定する | ログ アラートを構成して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 詳しくは、「[Azure Monitor でのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)」を参照してください。 | - |
+| Azure Monitor でアラートを設定する | ログ アラートを構成して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 詳しくは、「[Azure Monitor でのログ アラート](../../azure-monitor/alerts/alerts-unified-log.md)」を参照してください。 | - |
 
 ## <a name="next-steps"></a>次のステップ
 

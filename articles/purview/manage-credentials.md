@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526699"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673527"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview でのソース認証用の資格情報
 
@@ -85,8 +85,9 @@ Purview マネージド ID を使用してスキャンを設定する場合は�
 - サービス プリンシパル:**サービス プリンシパルのキー** をシークレットとしてキー コンテナーに追加します。
 - SQL 認証:**パスワード** をシークレットとしてキー コンテナーに追加します。
 - アカウント キー:**アカウント キー** をシークレットとしてキー コンテナーに追加します。
+- ロール ARN: Amazon S3 データ ソースの場合は、AWS に **ロール ARN** を追加します。 
 
-詳細については、「[Key Vault にシークレットを追加する](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)」を参照してください。
+詳細については、「[Key Vault にシークレットを追加する](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)」および「[Purview 用の新しい AWS ロールを作成する](register-scan-amazon-s3.md#create-a-new-aws-role-for-purview)」を参照してください。
 
 シークレットをキー コンテナーに格納した後、次のようにします。
 

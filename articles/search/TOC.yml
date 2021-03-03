@@ -96,6 +96,8 @@
   items:
     - name: フルテキスト検索
       href: search-lucene-query-architecture.md
+    - name: セマンティック検索
+      href: semantic-search-overview.md
     - name: 関連性のスコアリング
       href: index-similarity-and-scoring.md
     - name: インデクサー
@@ -218,6 +220,8 @@
           href: search-howto-schedule-indexers.md
         - name: フィールド マッピングの定義
           href: search-indexer-field-mappings.md
+        - name: コンテンツ メタデータ プロパティ
+          href: search-blob-metadata-properties.md
         - name: マネージド ID を使用して接続する
           items:
             - name: マネージド ID の概要
@@ -228,6 +232,8 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
+        - name: SharePoint Online
+          href: search-howto-index-sharepoint-online.md
         - name: Azure BLOB
           items:
             - name: BLOB を検索する
@@ -248,8 +254,6 @@
               href: search-howto-index-json-blobs.md
             - name: 暗号化された BLOB にインデックスを付ける
               href: search-howto-index-encrypted-blobs.md
-            - name: BLOB コンテンツのメタデータ プロパティ
-              href: search-blob-metadata-properties.md
         - name: Azure テーブル
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB
@@ -306,6 +310,10 @@
       items:
         - name: 基本的なクエリの作成
           href: search-query-create.md
+        - name: セマンティック クエリを作成する
+          href: semantic-how-to-query-request.md
+        - name: クエリにスペル チェックを追加する
+          href: speller-how-to-add.md
         - name: クエリの種類と構成
           href: search-query-overview.md
         - name: 単純な構文の使用 (例)
@@ -348,6 +356,8 @@
       items:
         - name: 結果を操作する
           href: search-pagination-page-layout.md
+        - name: セマンティック応答を構築する
+          href: semantic-how-to-query-response.md
         - name: スコアリング プロファイル
           href: index-add-scoring-profiles.md
         - name: 類似性アルゴリズム
@@ -388,6 +398,8 @@
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
+        - name: Azure CLI
+          href: search-manage-azure-cli.md
         - name: リージョン間でのサービスの移動
           href: search-howto-move-across-regions.md
         - name: ロール ベースの管理者アクセス

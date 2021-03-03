@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーをリージョン間で移行する方法
 description: Azure Arc 対応サーバーをリージョン間で移行する方法について説明します。
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4e0f1e41e928ab489f7c2c167eea31785d9bc21
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416835"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650177"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Azure Arc 対応サーバーをリージョン間で移行する方法
 
@@ -36,4 +36,4 @@ Azure Arc 対応サーバーをある Azure リージョンから別のものに
 
 * トラブルシューティング情報は、[Connected Machine エージェントの問題解決ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法 (たとえば、VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、予期された Log Analytics ワークスペースにマシンが報告していることの確認、[VM ポリシーを使用した Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) での監視の有効化など) について説明します。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法 (たとえば、VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、予期された Log Analytics ワークスペースにマシンが報告していることの確認、[VM ポリシーを使用した Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) での監視の有効化など) について説明します。

@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 35efcd4059ab654178fb87c133a6f64721caf7d2
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989053"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652098"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>チュートリアル:SCIM エンドポイントのプロビジョニングを開発および計画する
 
@@ -882,7 +882,7 @@ Azure Active Directory からの要求には、OAuth 2.0 のベアラー トー�
 
 ベアラートークンは、提供された [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)を使用し、localhost を使用してローカル デバッグを実行するためにも必要です。 このサンプル コードでは、ASP.NET Core 環境を使用し、開発段階で認証オプションを変更して、自己署名トークンを使用できるようにします。
 
-ASP.NET Core の複数の環境について詳しくは、「[ASP.NET Core で複数の環境を使用する](https://docs.microsoft.com/aspnet/core/fundamentals/environments)」を参照してください。
+ASP.NET Core の複数の環境について詳しくは、「[ASP.NET Core で複数の環境を使用する](/aspnet/core/fundamentals/environments)」を参照してください。
 
 次のコードでは、あらゆるサービスのエンドポイントに対する要求が、カスタム キーを使用して署名されたベアラー トークンを使用して認証されるようになります。
 

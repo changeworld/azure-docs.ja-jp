@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 389c0b1fd5a2fde33c2bf19ac2807cca45691523
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373149"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586863"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリの監視とアラート送信を行う
 
@@ -76,7 +76,7 @@ Data Factory では、パイプライン実行データを 45 日間だけ格納
    ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Log Analytics の既知の制限](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
+    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Log Analytics の既知の制限](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
 
 1. **[保存]** を選択します。
 
@@ -151,7 +151,7 @@ Azure Data Factory バージョン 2 で出力されるメトリックの一部�
 | SSISPackageExecutionFailed           | 失敗した SSIS パッケージ実行回数のメトリック    | Count    | 合計                | 1 分の枠内で失敗した SSIS パッケージ実行の合計数。 |
 | SSISPackageExecutionSucceeded        | 成功した SSIS パッケージ実行回数のメトリック | Count    | 合計                | 1 分の枠内で成功した SSIS パッケージ実行の合計数。 |
 
-メトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](../azure-monitor/platform/data-platform.md)」に記載された手順に従います。
+メトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](../azure-monitor/data-platform.md)」に記載された手順に従います。
 
 > [!NOTE]
 > 完了済みのトリガーされたアクティビティとパイプラインの実行からのイベントのみが出力されます。 進行中およびデバッグの実行は出力 **されません**。 その一方で、呼び出しメソッドに関係なく、**すべての** SSIS パッケージ実行からのイベントが出力されます。これには、呼び出し方法に関係なく、完了済みのものと進行中のものが含まれます。 たとえば、SSMS、SQL Server エージェント、またはその他の指定されたツールで T-SQL を使用して、ADF パイプラインでの Execute SSIS Package アクティビティのトリガーされたまたはデバッグの実行として、Azure 対応 SQL Server Data Tools (SSDT) のパッケージ実行を呼び出すことができます。
@@ -265,7 +265,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | --- | --- | --- |
 | **storageAccountId** |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
 | **serviceBusRuleId** |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、`{service bus resource ID}/authorizationrules/{key name}` です。|
@@ -438,7 +438,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | Type | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -484,7 +484,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | Type | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -527,7 +527,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | Type | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -564,7 +564,7 @@ SSIS IR の開始/停止/メンテナンス操作のログの属性を次に示�
 }
 ```
 
-| プロパティ                   | 種類   | 説明                                                   | 例                        |
+| プロパティ                   | Type   | 説明                                                   | 例                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | SSIS IR 操作の名前                            | `Start/Stop/Maintenance` |
@@ -604,7 +604,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 }
 ```
 
-| プロパティ                   | 種類   | 説明                                                          | 例                        |
+| プロパティ                   | Type   | 説明                                                          | 例                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | これは `YourSSISIRName-SSISPackageEventMessageContext` に設定されています       | `mysqlmissisir-SSISPackageEventMessageContext` |
@@ -654,7 +654,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 }
 ```
 
-| プロパティ                   | 種類   | 説明                                                        | 例                        |
+| プロパティ                   | Type   | 説明                                                        | 例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | これは `YourSSISIRName-SSISPackageEventMessages` に設定されています           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -703,7 +703,7 @@ SSIS IR での SSIS パッケージ実行により生成される実行可能フ
 }
 ```
 
-| プロパティ                   | 種類   | 説明                                                      | 例                        |
+| プロパティ                   | Type   | 説明                                                      | 例                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | これは `YourSSISIRName-SSISPackageExecutableStatistics` に設定されています  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -748,7 +748,7 @@ SSIS IR での SSIS パッケージ実行により生成されるデータ フ�
 }
 ```
 
-| プロパティ                   | 種類   | 説明                                                         | 例                        |
+| プロパティ                   | Type   | 説明                                                         | 例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | これは `YourSSISIRName-SSISPackageExecutionComponentPhases` に設定されています | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -796,7 +796,7 @@ SSIS IR での SSIS パッケージ実行により生成されるデータ フ�
 }
 ```
 
-| プロパティ                     | 種類   | 説明                                                        | 例                        |
+| プロパティ                     | Type   | 説明                                                        | 例                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | これは `YourSSISIRName-SSISPackageExecutionDataStatistics` に設定されています | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
@@ -848,7 +848,7 @@ SSIS ワークロードをリフト アンド シフトするには、次をサ�
 
 プロビジョニングが完了すると、[Azure PowerShell を使うか、ADF ポータルの **[監視]** ハブで、SSIS IR の動作状態をチェック](./monitor-integration-runtime.md#azure-ssis-integration-runtime)できるようになります。 プロジェクト デプロイ モデルでは、SSIS パッケージ実行ログは SSISDB 内部テーブルまたはビューに格納されるため、SSMS などの指定されたツールを使用して、クエリ、分析、および視覚的な表示を実行できます。 パッケージ デプロイ モデルでは、SSIS パッケージ実行ログをファイル システムまたは Azure Files に CSV ファイルとして保存できますが、クエリ、分析、および視覚的な表示を実行する前に、指定された他のツールを使用して解析と処理を行う必要があります。
 
-[Azure Monitor](../azure-monitor/platform/data-platform.md) の統合により、SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメトリックとログを、Azure portal でクエリ、分析、および視覚的に表示できるようになりました。 さらに、それらに関するアラートを生成することもできます。
+[Azure Monitor](../azure-monitor/data-platform.md) の統合により、SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメトリックとログを、Azure portal でクエリ、分析、および視覚的に表示できるようになりました。 さらに、それらに関するアラートを生成することもできます。
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>SSIS 操作の診断設定とワークスペースを構成する
 
@@ -856,9 +856,9 @@ SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメト
 
 ### <a name="ssis-operational-metrics"></a>SSIS 操作のメトリック
 
-SSIS 操作の[メトリック](../azure-monitor/platform/data-platform-metrics.md)は、SSIS IR の開始および停止操作の状態と特定の時点での SSIS パッケージ実行の状態を示すパフォーマンス カウンターまたは数値です。 それらは、[Azure Monitor の ADF メトリック](#data-factory-metrics)の一部です。
+SSIS 操作の[メトリック](../azure-monitor/essentials/data-platform-metrics.md)は、SSIS IR の開始および停止操作の状態と特定の時点での SSIS パッケージ実行の状態を示すパフォーマンス カウンターまたは数値です。 それらは、[Azure Monitor の ADF メトリック](#data-factory-metrics)の一部です。
 
-Azure Monitor で ADF の診断設定とワークスペースを構成するときに、 _[AllMetrics]_ チェック ボックスをオンにすると、[Azure メトリックス エクスプローラーを使用した対話型分析](../azure-monitor/platform/metrics-getting-started.md)、[Azure ダッシュボードでの表示](../azure-monitor/learn/tutorial-app-dashboards.md)、および [準リアルタイムのアラート](../azure-monitor/platform/alerts-metric.md)のために SSIS 操作のメトリックを使用できるようになります。
+Azure Monitor で ADF の診断設定とワークスペースを構成するときに、 _[AllMetrics]_ チェック ボックスをオンにすると、[Azure メトリックス エクスプローラーを使用した対話型分析](../azure-monitor/essentials/metrics-getting-started.md)、[Azure ダッシュボードでの表示](../azure-monitor/app/tutorial-app-dashboards.md)、および [準リアルタイムのアラート](../azure-monitor/alerts/alerts-metric.md)のために SSIS 操作のメトリックを使用できるようになります。
 
 ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -874,9 +874,9 @@ Azure portal から SSIS 操作のメトリックに関するアラートを生�
 
 ### <a name="ssis-operational-logs"></a>SSIS 操作のログ
 
-SSIS 操作の[ログ](../azure-monitor/platform/data-platform-logs.md)は、SSIS IR 操作と SSIS パッケージ実行によって生成されるイベントであり、特定された任意の問題に関する十分なコンテキストを提供するため、根本原因の分析に役立ちます。 
+SSIS 操作の[ログ](../azure-monitor/logs/data-platform-logs.md)は、SSIS IR 操作と SSIS パッケージ実行によって生成されるイベントであり、特定された任意の問題に関する十分なコンテキストを提供するため、根本原因の分析に役立ちます。 
 
-Azure Monitor で ADF の診断設定やワークスペースを構成するとき、関連する SSIS 操作ログを選択して、Azure Data Explorer に基づく Log Analytics にそれらを送信できます。 そこで、[豊富なクエリ言語を使用した分析](../azure-monitor/log-query/log-query-overview.md)、[Azure ダッシュボードでの表示](../azure-monitor/learn/tutorial-app-dashboards.md)、および[準リアルタイムのアラート](../azure-monitor/platform/alerts-log.md)のためにそれらを使用できます。
+Azure Monitor で ADF の診断設定やワークスペースを構成するとき、関連する SSIS 操作ログを選択して、Azure Data Explorer に基づく Log Analytics にそれらを送信できます。 そこで、[豊富なクエリ言語を使用した分析](../azure-monitor/logs/log-query-overview.md)、[Azure ダッシュボードでの表示](../azure-monitor/app/tutorial-app-dashboards.md)、および[準リアルタイムのアラート](../azure-monitor/alerts/alerts-log.md)のためにそれらを使用できます。
 
 ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 

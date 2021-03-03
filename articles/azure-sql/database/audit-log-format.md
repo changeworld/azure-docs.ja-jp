@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: f4da14c1fbdaf71018e62b0f97e288a66edef5c8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677287"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572218"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database 監査ログの形式
 
@@ -42,7 +42,7 @@ Azure BLOB ストレージに格納されている監査ログは、Azure スト
 
 ### <a name="log-analytics"></a>Log Analytics
 
-監査イベントは、監査の構成中に定義された Log Analytics ワークスペースである `AzureDiagnostics` カテゴリを持つテーブル `SQLSecurityAuditEvents`に書き込まれます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../../azure-monitor/log-query/log-query-overview.md)に関するページをご覧ください。
+監査イベントは、監査の構成中に定義された Log Analytics ワークスペースである `AzureDiagnostics` カテゴリを持つテーブル `SQLSecurityAuditEvents`に書き込まれます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../../azure-monitor/logs/log-query-overview.md)に関するページをご覧ください。
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>監査ログのフィールド
 

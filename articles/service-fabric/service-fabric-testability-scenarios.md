@@ -1,17 +1,15 @@
 ---
 title: Azure Service Fabric の混乱テストとフェールオーバー テストを作成する
 description: Service Fabric の混乱テストとフェールオーバー テストのシナリオを利用し、障害を誘導し、サービスの信頼性を検証します。
-author: georgewallace
 ms.topic: conceptual
 ms.date: 10/1/2019
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78e613e9d86c44ad7daf8778b35e6af49abb7d38
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 9939ef12dcbcc2b5d8733a68166c8e7162c4b0ea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546365"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594996"
 ---
 # <a name="testability-scenarios"></a>Testability のシナリオ
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。 高品質なサービスのコードを記述するには、開発者はこのような信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。

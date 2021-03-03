@@ -1,21 +1,21 @@
 ---
-title: Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする (プレビュー)
+title: Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Azure Arc 対応クラスター構成に対して GitOps と Helm を使用する (プレビュー)
+description: Azure Arc 対応クラスター構成に対して GitOps と Helm を使用します
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 2dfb516487d1064f29b4018cc8b322e8db44e53a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 117fc8dabdce2fdf23cbc2b9fe78137db1c656a5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558527"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647644"
 ---
-# <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする (プレビュー)
+# <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする
 
 Helm は、Kubernetes アプリケーションのインストールとライフサイクルの管理に役立つオープンソースのパッケージ化ツールです。 APT や Yum などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャート の管理に使用されます。
 
@@ -23,7 +23,7 @@ Helm は、Kubernetes アプリケーションのインストールとライフ�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure Arc 対応 Kubernetes に接続されたクラスターが既に存在することを確認します。 接続されたクラスターが必要な場合は、[Azure Arc 対応 Kubernetes クラスターの接続に関するクイックスタート](./connect-cluster.md)を参照してください。
+Azure Arc 対応 Kubernetes に接続されたクラスターが既に存在することを確認します。 接続されたクラスターが必要な場合は、[Azure Arc 対応 Kubernetes クラスターの接続に関するクイックスタート](./quickstart-connect-cluster.md)を参照してください。
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes での GitOps および Helm の使用方法の概要
 
@@ -69,7 +69,7 @@ Helm Release の構成には、次のフィールドが含まれています。
 | `metadata.name` | 必須フィールドです。 Kubernetes の名前付け規則に従っている必要があります。 |
 | `metadata.namespace` | 省略可能なフィールド。 Release の作成場所を指定します。 |
 | `spec.releaseName` | 省略可能なフィールド。 指定されない場合、Release 名は `$namespace-$name` になります。 |
-| `spec.chart.path` | Chart が含まれているディレクトリであり、リポジトリのルートからの相対パスとして指定されます。 |
+| `spec.chart.path` | チャートが含まれているディレクトリ (リポジトリのルートからの相対パス)。 |
 | `spec.values` | Chart そのものからの既定のパラメーター値に対するユーザーによるカスタム値です。 |
 
 Chart ソースの `values.yaml` で指定されたオプションにより、HelmRelease の `spec.values` に指定されたオプションはオーバーライドされます。
@@ -78,30 +78,27 @@ Chart ソースの `values.yaml` で指定されたオプションにより、He
 
 ## <a name="create-a-configuration"></a>構成を作成する
 
-`k8sconfiguration` の Azure CLI 拡張機能を使用して、接続されたクラスターを Git リポジトリの例にリンクします。 この構成に `azure-arc-sample` という名前を付け、Flux Operator を `arc-k8s-demo` 名前空間にデプロイします。
+`k8s-configuration` の Azure CLI 拡張機能を使用して、接続されたクラスターを Git リポジトリの例にリンクします。 この構成に `azure-arc-sample` という名前を付け、Flux Operator を `arc-k8s-demo` 名前空間にデプロイします。
 
 ```console
-az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
+az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
-### <a name="configuration-parameters"></a>構成パラメーター
+### <a name="configuration-parameters"></a>構成パラメータ
 
-構成の作成をカスタマイズするには、[使用可能な追加のパラメーター](./use-gitops-connected-cluster.md#additional-parameters)に関するページを参照してください。
+構成の作成をカスタマイズするには、[その他のパラメーターを確認してください](./tutorial-use-gitops-connected-cluster.md#additional-parameters)。
 
-## <a name="validate-the-configuration"></a>構成を検証する
+## <a name="validate-the-configuration"></a>構成の検証
 
-Azure CLI を使用して、`sourceControlConfiguration` の作成が成功したことを確認します。
+Azure CLI を使用して、構成の作成が成功したことを検証します。
 
 ```console
-az k8sconfiguration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
+az k8s-configuration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
-`sourceControlConfiguration` リソースで、コンプライアンスの状態、メッセージ、およびデバッグの情報が更新されます。
+構成リソースで、コンプライアンスの状態、メッセージ、およびデバッグの情報が更新されます。
 
-**出力:**
-
-```console
-Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
+```output
 {
   "complianceStatus": {
     "complianceState": "Installed",

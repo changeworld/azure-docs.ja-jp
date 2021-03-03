@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9535c1aa044fdce529d83c2e46a1b585e8e5f056
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0f5f0714235ee23624b3a199eac744155d2bbdd1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370040"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093389"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -69,19 +69,8 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    > ![[Docker] を選択する](./media/quickstarts/select-docker.png)
 
 6. ここでは、Docker コンテナーを構成します。 特に注意がない限り、すべてのフィールドが必須です。
-
-    # <a name="v20"></a>[v2.0](#tab/v2-0)
-
-* [オプション] - **[単一コンテナー]** を選択します
-* [イメージ ソース] - **[プライベート レジストリ]** を選択します 
-* [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
-* [ユーザー名] (省略可能) - ユーザー名を作成します。 
-* [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
-* [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
-* 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
-* [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
-
-    # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1) 
+<!-- markdownlint-disable MD025 -->
+# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)
 
 * [オプション] - **[単一コンテナー]** を選択します
 * [イメージ ソース] - **[プライベート レジストリ]** を選択します 
@@ -92,7 +81,18 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
 * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
 
-    ---
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+* [オプション] - **[単一コンテナー]** を選択します
+* [イメージ ソース] - **[プライベート レジストリ]** を選択します 
+* [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
+* [ユーザー名] (省略可能) - ユーザー名を作成します。 
+* [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
+* [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
+* 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
+* [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
+
+ ---
 
    > [!div class="mx-imgBorder"]
    > ![Docker を構成する](./media/quickstarts/configure-docker.png)
@@ -104,7 +104,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 
 > [!IMPORTANT]
 > Web アプリが `https` アドレスで表示されるようにするために、TLS を有効にしなければならない場合があります。 [TLS エンドポイントを有効にする](../../container-instances/container-instances-container-group-ssl.md)ための手順に従って、Web アプリの TLS/SSL を有効にするサイドカー コンテナーを設定してください。
-
+<!-- markdownlint-disable MD001 -->
 ### <a name="azure-cli"></a>Azure CLI
 
 Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
@@ -113,12 +113,32 @@ Azure portal を使用する代わりに、Azure CLI を使用してリソース
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM` ではランダムな DNS 名が生成されます。 
 * このサンプルでは、リソースの作成に使用できるリソース グループがあることを前提としています。 `<resource_group_name>` は、サブスクリプションに関連付けられている有効なリソース グループに置き換えます。 
-* リソースを作成する場所を指定する必要があります。 `<region name>` は、Web アプリの目的のリージョンに置き換えます。 
+* リソースを作成する場所を指定する必要があります。 `<region name>` は、Web アプリの目的のリージョンに置き換えます。
 * このコマンドでは、EULA が自動的に受け入れられます。
 
 Azure CLI から次のコマンドを実行して、サンプル ラベル付けツール用の Web アプリ リソースを作成します。
 
+<!-- markdownlint-disable MD024 -->
+# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)
+
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resource_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8 \
+  --command-line "./run.sh eula=accept"
+
+```
+
 # <a name="v20"></a>[v2.0](#tab/v2-0)
+
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
@@ -133,24 +153,8 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
-`
+``` 
 
-# [v2.1 preview](#tab/v2-1) 
-   
-```azurecli
-DNS_NAME_LABEL=aci-demo-$RANDOM
-
-az container create \
-  --resource-group <resource_group_name> \
-  --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
-  --ports 3000 \
-  --dns-name-label $DNS_NAME_LABEL \
-  --location <region name> \
-  --cpu 2 \
-  --memory 8 \
-  --command-line "./run.sh eula=accept"
-```
 
 ---
 

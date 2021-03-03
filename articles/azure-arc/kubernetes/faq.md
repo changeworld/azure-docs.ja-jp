@@ -2,18 +2,18 @@
 title: Azure Arc 対応 Kubernetes に関してよく寄せられる質問
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: この記事には、Azure Arc 対応 Kubernetes に関してよく寄せられる質問の一覧が記載されています。
 keywords: Kubernetes, Arc, Azure, コンテナー, 構成, GitOps, faq
-ms.openlocfilehash: 237b2629b833a63552b172636f46a1ac92e321c0
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: dc12294b5d53372be5f2e1dd71436973fefbb194
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561242"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647865"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>よく寄せられる質問 - Azure Arc 対応 Kubernetes
 
@@ -31,11 +31,13 @@ Azure Arc 対応 Kubernetes を使用すると、Kubernetes クラスターを A
     
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>Azure Stack Hub と Azure Stack Edge 上の AKS-HCI クラスターと Kubernetes クラスターを Azure Arc に接続する必要がありますか?
 
-はい。Azure Stack Edge または Azure Stack Hub 上の AKS-HCI クラスターまたは Kubernetes クラスターを Azure Arc に接続することで、Azure Resource Manager のリソース表現がクラスターに提供されます。 このリソース表現により、クラスター構成、Azure Monitor、Azure Policy (Gatekeeper) などの機能を、接続する Kubernetes クラスターに拡張できます。
+はい。Azure Stack Edge または Azure Stack Hub 上の AKS-HCI クラスターまたは Kubernetes クラスターを Azure Arc に接続することで、Azure Resource Manager のリソース表現がクラスターに提供されます。 このリソースの表現により、クラスターの構成、Azure Monitor、Azure Policy (Gatekeeper) などの機能が、接続された Kubernetes クラスターに拡張されます。
+
+Azure Arc 対応 Kubernetes クラスターが Azure Stack Edge、AKS on Azure Stack HCI (2021 年 4 月以降の更新プログラム)、または AKS on Windows Server 2019 Datacenter (2021 年 4 月以降の更新プログラム) 上にある場合、Kubernetes の構成は無料で提供されます。
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>期限切れの Azure Arc 対応 Kubernetes リソースの処理方法は?
 
-Azure Arc 対応 Kuberenetes に関連付けられているマネージド サービス ID (MSI) 証明書の有効期限は 90 日です。 この証明書の有効期限が切れると、リソースは `Expired` であると見なされ、このクラスターで構成、監視、ポリシーなどのすべての機能が停止します。 次の手順に従って、Kubernetes クラスターが Azure Arc で再び機能するようにしてください。
+Azure Arc 対応 Kubernetes に関連付けられているマネージド サービス ID (MSI) 証明書の有効期限は 90 日です。 この証明書の有効期限が切れると、リソースは `Expired` であると見なされ、このクラスターですべての機能 (構成、監視、ポリシーなど) が停止します。 Kubernetes クラスターが Azure Arc でもう一度機能するようにするには
 
 1. クラスター上の Azure Arc 対応 Kubernetes リソースとエージェントを削除します。 
 
@@ -43,7 +45,7 @@ Azure Arc 対応 Kuberenetes に関連付けられているマネージド サ�
     az connectedk8s delete -n <name> -g <resource-group>
     ```
 
-1. クラスターにエージェントを再デプロイして、Azure Arc 対応 Kubernetes リソースを再作成します。
+1. クラスターにエージェントをデプロイして、Azure Arc 対応 Kubernetes リソースを再作成します。
     
     ```console
     az connectedk8s connect -n <name> -g <resource-group>
@@ -62,12 +64,14 @@ CI/CD パイプラインでは、パイプラインの実行中に変更が 1 �
 
 **GitOps が全体的に適用される**
 
-CI/CD パイプラインは、Kubernetes クラスターへのイベント ドリブン デプロイに適しています。この場合、イベントを Git リポジトリにプッシュできます。 ただし、すべての Kubernetes クラスターに同じ構成をデプロイするには、これらの各 Kubernetes クラスターの資格情報を使用して CI/CD パイプラインを手動で構成する必要があります。 それに対し、Azure Arc 対応 Kubernetes の場合は、Azure Resource Manager によって構成が管理されるため、Azure Policy を使用することで、すべての Kubernetes クラスターに対する必要な構成の適用を、サブスクリプションまたはリソース グループのスコープのもとで一括して自動化できます。 この機能は、ポリシーの割り当て後に作成された Azure Arc 対応 Kubernetes リソースにも適用できます。
+CI/CD パイプラインは、Kubernetes クラスターへのイベント ドリブン デプロイ (Git リポジトリへのプッシュなど) に役立ちます。 ただし、すべての Kubernetes クラスターに同じ構成をデプロイする場合は、各 Kubernetes クラスターの資格情報を CI/CD パイプラインに手動で構成する必要があります。 
 
-この構成機能は、コンプライアンスとガバナンスの要件を満たすために、Kubernetes クラスターのインベントリ全体に対するネットワーク ポリシー、ロール バインド、ポッド セキュリティ ポリシーなどのベースライン構成の適用に使用されます。
+Azure Arc 対応 Kubernetes の場合、Azure Resource Manager によって構成が管理されるので、Azure Policy を使用して、サブスクリプションまたはリソース グループのスコープ内のすべての Azure Arc 対応 Kubernetes リソースで同じ構成の作成を自動化することができます。 この機能は、ポリシーの割り当て後に作成された Azure Arc 対応 Kubernetes リソースにも適用できます。
+
+この機能は、コンプライアンスとガバナンスの要件を満たすために、Kubernetes クラスターのインベントリ全体でベースライン構成 (ネットワーク ポリシー、ロール バインド、ポッド セキュリティ ポリシーなど) に適用されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Arc にクラスターを接続する](./connect-cluster.md)
-* [Arc 対応 Kubernetes クラスターの構成を作成する](./use-gitops-connected-cluster.md)
+* [Azure Arc にクラスターを接続する](./quickstart-connect-cluster.md)
+* [Arc 対応 Kubernetes クラスターで構成を作成する](./use-gitops-connected-cluster.md)
 * [Azure Policy を使用して構成を大規模に適用する](./use-azure-policy.md)

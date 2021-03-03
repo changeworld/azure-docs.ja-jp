@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896631"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572609"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -34,9 +34,9 @@ ms.locfileid: "98896631"
 
 変更履歴とインベントリに含まれる機能をすべて有効にすると、追加料金が発生する可能性があります。 続行する前に、[Automation の価格](https://azure.microsoft.com/pricing/details/automation/)と [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)を確認してください。
 
-変更履歴とインベントリでは、Azure Monitor ログにデータが転送され、収集されたデータが Log Analytics ワークスペースに格納されます。 ファイルの整合性の監視 (FIM) 機能は、**Azure Defender for servers** が有効な場合にのみ使用できます。 詳細については、Azure Security Center の[価格](../../security-center/security-center-pricing.md)を参照してください。 FIM では、変更履歴とインベントリのデータを格納するために作成されたものと同じ Log Analytics ワークスペースにデータがアップロードされます。 正確な使用量を把握するために、リンクされた Log Analytics ワークスペースを監視することが推奨されています。 Azure Monitor ログのデータ使用量を分析する方法の詳細については、[使用量とコストの管理](../../azure-monitor/platform/manage-cost-storage.md)に関するページを参照してください。
+変更履歴とインベントリでは、Azure Monitor ログにデータが転送され、収集されたデータが Log Analytics ワークスペースに格納されます。 ファイルの整合性の監視 (FIM) 機能は、**Azure Defender for servers** が有効な場合にのみ使用できます。 詳細については、Azure Security Center の[価格](../../security-center/security-center-pricing.md)を参照してください。 FIM では、変更履歴とインベントリのデータを格納するために作成されたものと同じ Log Analytics ワークスペースにデータがアップロードされます。 正確な使用量を把握するために、リンクされた Log Analytics ワークスペースを監視することが推奨されています。 Azure Monitor ログのデータ使用量を分析する方法の詳細については、[使用量とコストの管理](../../azure-monitor/logs/manage-cost-storage.md)に関するページを参照してください。
 
-Log Analytics ワークスペースに接続されているマシンでは、[Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)を使用して、監視対象サーバーにインストールされているソフトウェア、Microsoft サービス、Windows のレジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントから Azure Monitor ログに送信されます。 Azure Monitor ログでは、受信したデータにロジックが適用され、記録されて分析可能になります。
+Log Analytics ワークスペースに接続されているマシンでは、[Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)を使用して、監視対象サーバーにインストールされているソフトウェア、Microsoft サービス、Windows のレジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントから Azure Monitor ログに送信されます。 Azure Monitor ログでは、受信したデータにロジックが適用され、記録されて分析可能になります。
 
 > [!NOTE]
 > Change Tracking とインベントリでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[Azure でのワークスペースのマッピング](../how-to/region-mappings.md)に関する記事をご覧ください。 リージョン マッピングは、Automation アカウントとは別のリージョンの VM を管理する機能には影響しません。
@@ -48,7 +48,7 @@ Log Analytics ワークスペースに接続されているマシンでは、[Lo
 - Windows レジストリ追跡用の再帰
 - ネットワーク ファイル システム
 - さまざまなインストール方法
-- Windows に格納されている **_.exe_* ファイル
+- Windows に格納されている * **.exe** ファイル
 - **[最大ファイル サイズ]** 列と値は現在の実装では使用されません。
 - 30 分間の収集サイクルで 2500 を超えるファイルを収集しようとすると、変更履歴とインベントリのパフォーマンスが低下する可能性があります。
 - ネットワーク トラフィックが高い場合は、変更レコードが表示されるまでに最大 6 時間かかることがあります。
@@ -58,7 +58,7 @@ Log Analytics ワークスペースに接続されているマシンでは、[Lo
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-変更履歴とインベントリは、Log Analytics エージェントの要件を満たすすべてのオペレーティング システムでサポートされます。 Log Analytics エージェントで現在サポートされている Windows および Linux オペレーティング システムのバージョンの一覧については、「[サポートされるオペレーティング システム](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)」を参照してください。
+変更履歴とインベントリは、Log Analytics エージェントの要件を満たすすべてのオペレーティング システムでサポートされます。 Log Analytics エージェントで現在サポートされている Windows および Linux オペレーティング システムのバージョンの一覧については、「[サポートされるオペレーティング システム](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)」を参照してください。
 
 TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)」を参照してください。
 
@@ -159,7 +159,7 @@ Change Tracking とインベントリを使用すると、Windows レジスト�
 |サービス|250|
 |デーモン|250|
 
-変更履歴とインベントリを使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です (環境によって異なります)。 Log Analytics ワークスペースの使用量と推定コスト機能を使用して、Change Tracking とインベントリによって取り込まれたデータを使用状況グラフに表示できます。 このデータ ビューを使用して、データの使用量を評価し、それが請求にどのように影響しているかを判断します。 「[ご自分の使用量を理解してコストを見積もる](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)」を参照してください。
+変更履歴とインベントリを使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です (環境によって異なります)。 Log Analytics ワークスペースの使用量と推定コスト機能を使用して、Change Tracking とインベントリによって取り込まれたデータを使用状況グラフに表示できます。 このデータ ビューを使用して、データの使用量を評価し、それが請求にどのように影響しているかを判断します。 「[ご自分の使用量を理解してコストを見積もる](../../azure-monitor/logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)」を参照してください。
 
 ### <a name="microsoft-service-data"></a>Microsoft サービス データ
 

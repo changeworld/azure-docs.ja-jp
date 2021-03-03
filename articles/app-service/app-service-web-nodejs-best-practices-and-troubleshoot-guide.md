@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: bfbd93cc3d4e67c8a96a1413221fdd7190c4f0b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060162"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572631"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -140,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>node アプリケーションが消費する CPU が多すぎる
 
-高い CPU 消費率に関する Azure App Service からの推奨事項がポータルに表示されている可能性があります。 特定の[メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure portal ダッシュボード](../azure-monitor/platform/metrics-charts.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
+高い CPU 消費率に関する Azure App Service からの推奨事項がポータルに表示されている可能性があります。 特定の[メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure portal ダッシュボード](../azure-monitor/essentials/metrics-charts.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
 アプリケーションによる CPU の消費量が明らかに多すぎるが、理由を説明できない場合は、node アプリケーションをプロファイリングして調べることができます。
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>V8-Profiler を使用した Azure App Service の node アプリケーションのプロファイリング
@@ -213,7 +213,7 @@ http.createServer(function (req, res) {
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>node アプリケーションで消費されるメモリが多すぎる
 
-アプリケーションの消費メモリ量が多すぎる場合は、Portal にメモリ消費量が多いことに関する Azure App Service の通知が表示されます。 特定の[メトリック](web-sites-monitor.md)を監視するようにモニターを設定できます。 [Azure portal ダッシュボード](../azure-monitor/platform/metrics-charts.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
+アプリケーションの消費メモリ量が多すぎる場合は、Portal にメモリ消費量が多いことに関する Azure App Service の通知が表示されます。 特定の[メトリック](web-sites-monitor.md)を監視するようにモニターを設定できます。 [Azure portal ダッシュボード](../azure-monitor/essentials/metrics-charts.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>node.js のリーク検出とヒープの比較
 

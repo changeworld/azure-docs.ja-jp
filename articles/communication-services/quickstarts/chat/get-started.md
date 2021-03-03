@@ -9,17 +9,15 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-zone_pivot_groups: acs-js-csharp-java-python-swift
-ms.openlocfilehash: 97b9644b3d075a0d65826cbd38747ff0e45d51a4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+zone_pivot_groups: acs-js-csharp-java-python-swift-android
+ms.openlocfilehash: d8b2edff432bdcbd21afdf81ffea2617b22b0452
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379670"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661631"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>クイック スタート:チャットをアプリに追加する
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Communication Services チャット クライアント ライブラリを使用してリアルタイム チャットをアプリケーションに追加することによって、Azure Communication Services の使用を開始します。 このクイックスタートでは、チャット クライアント ライブラリを使用して、ユーザーが相互に会話できるようにするチャット スレッドを作成します。 チャットの概念の詳細については、 [チャットの概念に関するドキュメント](../../concepts/chat/concepts.md)を参照してください。
 
@@ -33,6 +31,10 @@ Communication Services チャット クライアント ライブラリを使用�
 
 ::: zone pivot="programming-language-java"
 [!INCLUDE [Chat with Java client library](./includes/chat-java.md)]
+::: zone-end
+
+::: zone pivot="programming-language-android"
+[!INCLUDE [Chat with Android client library](./includes/chat-android.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"

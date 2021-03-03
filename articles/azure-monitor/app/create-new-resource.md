@@ -3,12 +3,12 @@ title: 新しい Azure Application Insights リソースの作成 | Microsoft Do
 description: 新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104588"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575623"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | **リソース モード** | `Classic` または `Workspace-based` | ワークスペースベースのリソースは現在パブリック プレビューの段階にあります。これを使用すれば、Application Insightsテレメトリを共通のLog Analyticsワークスペースに送信できます。 詳細については、[ワークスペースベースのリソースに関する記事](create-workspace-resource.md)を参照してください。
 
 > [!NOTE]
-> 異なるリソースグループ間で同じリソース名を使用できますが、グローバルに一意の名前を使用すると便利です。 これは、必要な構文が簡略化するため、 [クロスリソース クエリを実行するする](../log-query/cross-workspace-query.md#identifying-an-application)場合に便利です。
+> 異なるリソースグループ間で同じリソース名を使用できますが、グローバルに一意の名前を使用すると便利です。 これは、必要な構文が簡略化するため、 [クロスリソース クエリを実行するする](../logs/cross-workspace-query.md#identifying-an-application)場合に便利です。
 
 必須フィールドに適切な値を入力し、 **[確認と作成]** を選択します。
 
@@ -159,13 +159,13 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 ## <a name="next-steps"></a>次のステップ
 * [診断検索](./diagnostic-search.md)
-* [メトリックを探索する](../platform/metrics-charts.md)
-* [Analytics クエリを作成する](../log-query/log-query-overview.md)
+* [メトリックを探索する](../essentials/metrics-charts.md)
+* [Analytics クエリを作成する](../logs/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ./api-custom-events-metrics.md
 [diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
 

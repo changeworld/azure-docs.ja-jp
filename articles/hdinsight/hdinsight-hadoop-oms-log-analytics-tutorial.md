@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 5f849248021de3c17b69517d214f6f3fd6e4ee3a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945632"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590825"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
 Azure Monitor ログを有効にして、HDInsight で Hadoop クラスターの操作を監視する方法を説明します。 また、HDInsight 監視ソリューションを追加する方法について説明します。
 
-[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)は、クラウド環境とオンプレミス環境を監視する Azure Monitor サービスです。 この監視では、可用性とパフォーマンスを維持します。 クラウド、オンプレミス環境内にあるリソースによって生成されたデータと他の監視ツールのデータを収集します。 データは、複数のソースにわたる分析を提供するために使用されます。
+[Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)は、クラウド環境とオンプレミス環境を監視する Azure Monitor サービスです。 この監視では、可用性とパフォーマンスを維持します。 クラウド、オンプレミス環境内にあるリソースによって生成されたデータと他の監視ツールのデータを収集します。 データは、複数のソースにわたる分析を提供するために使用されます。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -24,7 +24,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Log Analytics ワークスペース。 このワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Azure Monitor ログ環境と考えることができます。 手順については、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)に関するページをご覧ください。
+* Log Analytics ワークスペース。 このワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Azure Monitor ログ環境と考えることができます。 手順については、[Log Analytics ワークスペースの作成](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace)に関するページをご覧ください。
 
 * Azure HDInsight クラスター。 現在、Azure Monitor ログは次の HDInsight クラスター タイプで使用できます。
 
@@ -144,7 +144,7 @@ HDInsight では、Azure Monitor ログに追加できるクラスター固有�
 
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
 
-Azure Monitor では、クラスター内のノードのパフォーマンス メトリックの収集と分析がサポートされています。 詳細については、[Azure Monitor の Linux パフォーマンス データ ソース](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters)に関する記事をご覧ください。
+Azure Monitor では、クラスター内のノードのパフォーマンス メトリックの収集と分析がサポートされています。 詳細については、[Azure Monitor の Linux パフォーマンス データ ソース](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters)に関する記事をご覧ください。
 
 ## <a name="cluster-auditing"></a>クラスターの監査
 
