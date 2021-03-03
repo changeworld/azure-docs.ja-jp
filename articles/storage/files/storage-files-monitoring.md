@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d71f3fa27dda9edc4c88ad9ed563e5c3a95ffa4b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e872d28063a3e0671558ee4d388cad280b94f45b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574535"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596923"
 ---
 # <a name="monitoring-azure-files"></a>Azure Files の監視
 
@@ -28,7 +28,7 @@ Azure portal で、各 Azure Files リソースの **[概要]** ページには�
 ## <a name="what-is-azure-monitor"></a>Azure Monitor とは
 Azure Files は、Azure のフルスタック監視サービスである [Azure Monitor](../../azure-monitor/overview.md) を使用して監視データを作成します。 Azure Monitor には、Azure リソースと、他のクラウドおよびオンプレミスのリソースを監視するための完全な機能セットが用意されています。 
 
-まず「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」の記事にある次の事項の説明をお読みください。
+まず「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」の記事にある次の事項の説明をお読みください。
 
 - Azure Monitor とは
 - 監視に関連するコスト
@@ -40,7 +40,7 @@ Azure Files は、Azure のフルスタック監視サービスである [Azure 
 
 ## <a name="monitoring-data"></a>データの監視
 
-Azure Files では、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースの監視データ](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)に関するページをご覧ください。 
+Azure Files では、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースの監視データ](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関するページをご覧ください。 
 
 Azure Files によって作成されるメトリックとログの詳細については、「[Azure Files 監視データのリファレンス](storage-files-monitoring-reference.md)」を参照してください。
 
@@ -67,7 +67,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 > [!NOTE]
 > Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 この機能は、Azure Resource Manager デプロイ モデルを使用して作成されたすべてのストレージ アカウントで使用できます。 「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
-一般的なガイダンスについては、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../../azure-monitor/platform/diagnostic-settings.md)に関するページを参照してください。
+一般的なガイダンスについては、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../../azure-monitor/essentials/diagnostic-settings.md)に関するページを参照してください。
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -106,7 +106,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 2. **[ストレージ アカウント]** ドロップダウン リストで、ログのアーカイブ先となるストレージ アカウントを選択し、 **[OK]** ボタンをクリックして、 **[保存]** ボタンをクリックします。
 
    > [!NOTE]
-   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件をご確認ください。
+   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件をご確認ください。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>ログを Azure Event Hubs にストリーミングする
 
@@ -160,7 +160,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-各パラメーターの説明については、[Azure PowerShell を使用した Azure リソース ログのアーカイブ](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
+各パラメーターの説明については、[Azure PowerShell を使用した Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
 
 #### <a name="stream-logs-to-an-event-hub"></a>イベント ハブにログをストリーム配信する
 
@@ -176,7 +176,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-各パラメーターの説明については、[PowerShell コマンドレットを使用した Event Hubs へのデータのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
+各パラメーターの説明については、[PowerShell コマンドレットを使用した Event Hubs へのデータのストリーム配信](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
 
 #### <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
 
@@ -190,7 +190,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
+詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -222,7 +222,7 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-各パラメーターの説明については、[Azure CLI を使用した Azure リソース ログのアーカイブ](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
+各パラメーターの説明については、[Azure CLI を使用した Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
 
 #### <a name="stream-logs-to-an-event-hub"></a>イベント ハブにログをストリーム配信する
 
@@ -238,7 +238,7 @@ az monitor diagnostic-settings create --name <setting-name> --event-hub <event-h
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-各パラメーターの説明については、[Azure CLI を使用した Event Hubs へのデータのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
+各パラメーターの説明については、[Azure CLI を使用した Event Hubs へのデータのストリーム配信](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
 
 #### <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
 
@@ -252,24 +252,24 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- 詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
+ 詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
 
 ### <a name="template"></a>[テンプレート](#tab/template)
 
-診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
+診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
 
 ---
 
 ## <a name="analyzing-metrics"></a>メトリックの分析
 
-メトリックス エクスプローラーを使用して、他の Azure サービスのメトリックと共に Azure Storage のメトリックを分析できます。 メトリックス エクスプローラーを開くには、 **[Azure Monitor]** メニューの **[メトリック]** を選択します。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」をご覧ください。 
+メトリックス エクスプローラーを使用して、他の Azure サービスのメトリックと共に Azure Storage のメトリックを分析できます。 メトリックス エクスプローラーを開くには、 **[Azure Monitor]** メニューの **[メトリック]** を選択します。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/essentials/metrics-getting-started.md)」をご覧ください。 
 
 ディメンションをサポートするメトリックについては、目的のディメンション値でメトリックをフィルター処理できます。  Azure Storage でサポートされるディメンションの完全な一覧については、「[メトリックのディメンション](storage-files-monitoring-reference.md#metrics-dimensions)」をご覧ください。 Azure Files のメトリックは、こちらの名前空間にあります。 
 
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/fileServices
 
-(Azure Files を含む) すべての Azure Monitor サポート メトリックの一覧については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)」をご覧ください。
+(Azure Files を含む) すべての Azure Monitor サポート メトリックの一覧については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices)」をご覧ください。
 
 ### <a name="accessing-metrics"></a>メトリックにアクセスする
 
@@ -513,20 +513,20 @@ Azure Files サービスそのものによる要求 (ログの作成や削除な
 
 ![監査ログ](media/storage-files-monitoring/event-hub-log.png)
 
-イベント ハブに送信されるログ データのアクセスと読み取りには、セキュリティ情報とイベント管理のツールと監視ツールを使用します。 詳細については、[イベント ハブに送信された監視データを処理する方法](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)に関するページを参照してください。
+イベント ハブに送信されるログ データのアクセスと読み取りには、セキュリティ情報とイベント管理のツールと監視ツールを使用します。 詳細については、[イベント ハブに送信された監視データを処理する方法](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)に関するページを参照してください。
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Log Analytics ワークスペースのログにアクセスする
 
 Azure Monitor ログ クエリを使用して、Log Analytics ワークスペースに送信されたログにアクセスできます。 データは **StorageFileLogs** テーブルに格納されます。 
 
-詳細については、「[Log Analytics のチュートリアル](../../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
+詳細については、「[Log Analytics のチュートリアル](../../azure-monitor/logs/log-analytics-tutorial.md)」を参照してください。
 
 #### <a name="sample-kusto-queries"></a>サンプル Kusto クエリ
 
-**[ログ検索]** バーに入力して Azure Files の監視に利用できるクエリを紹介します。 これらのクエリは[新しい言語](../../azure-monitor/log-query/log-query-overview.md)で使用できます。
+**[ログ検索]** バーに入力して Azure Files の監視に利用できるクエリを紹介します。 これらのクエリは[新しい言語](../../azure-monitor/logs/log-query-overview.md)で使用できます。
 
 > [!IMPORTANT]
-> ストレージ アカウント リソース グループ メニューから **[ログ]** を選択すると、クエリのスコープが現在のリソース グループに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソース グループのデータのみが含まれます。 他のリソースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、**Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../../azure-monitor/log-query/scope.md)」を参照してください。
+> ストレージ アカウント リソース グループ メニューから **[ログ]** を選択すると、クエリのスコープが現在のリソース グループに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソース グループのデータのみが含まれます。 他のリソースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、**Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../../azure-monitor/logs/scope.md)」を参照してください。
 
 これらのクエリを使用すると、Azure ファイル共有の監視に役立ちます。
 
@@ -567,11 +567,11 @@ StorageFileLogs
 
 Azure Files の列名と説明の一覧については、「[StorageFileLogs](/azure/azure-monitor/reference/tables/storagefilelogs)」を参照してください。
 
-クエリを記述する方法の詳細については、「[Log Analytics のチュートリアル](../../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
+クエリを記述する方法の詳細については、「[Log Analytics のチュートリアル](../../azure-monitor/logs/log-analytics-tutorial.md)」を参照してください。
 
 ## <a name="alerts"></a>警告
 
-Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../../azure-monitor/platform/alerts-metric-overview.md)、[ログ](../../azure-monitor/platform/alerts-unified-log.md)、[アクティビティ ログ](../../azure-monitor/platform/activity-log-alerts.md)に対して設定できます。 
+Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../../azure-monitor/alerts/alerts-metric-overview.md)、[ログ](../../azure-monitor/alerts/alerts-unified-log.md)、[アクティビティ ログ](../../azure-monitor/alerts/activity-log-alerts.md)に対して設定できます。 
 
 次の表に、監視するシナリオの例とアラートに使用する適切なメトリックを示します。
 
@@ -629,7 +629,7 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
     - ClientShareIopsThrottlingError
 
    > [!NOTE]
-   > 応答の種類が **[ディメンション値]** ドロップダウンに一覧表示されない場合は、リソースがスロットルされていないことを意味します。 ディメンション値を追加するには、 **[ディメンション値]** ドロップダウン リストの横にある **[カスタム値を追加]** を選択し、応答の種類 (**SuccessWithThrottling** など) を入力し、 **[OK]** を選択します。その後、これらの手順を繰り返して、ファイル共有に適用できるすべての応答の種類を追加します。
+   > 応答の種類が **[ディメンション値]** ドロップダウンに一覧表示されない場合は、リソースがスロットルされていないことを意味します。 ディメンション値を追加するには、 **[ディメンション値]** ドロップダウン リストの横にある **[カスタム値を追加]** を選択し、応答の種類 (**SuccessWithThrottling** など) を入力し、 **[OK]** を選択します。その後、これらの手順を繰り返して、自分のファイル共有に適用できるすべての応答の種類を追加します。
 
 8. **[ディメンション名]** ドロップダウンをクリックし、 **[ファイル共有]** を選択します。
 9. **[ディメンション値]** ドロップダウンをクリックして、アラートの対象とするファイル共有を選択します。
@@ -643,7 +643,7 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
     > [!TIP]
     > 静的しきい値を使おうとしている場合は、ファイル共有が現在スロットルされているかどうかの妥当なしきい値を判断するのにメトリック グラフが役立つことがあります。 動的しきい値を使用している場合は、メトリック グラフに最新のデータに基づいて計算されたしきい値が表示されます。
 
-11. **[アクション グループの追加]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、**アクション グループ** (メール、SMS など) をアラートに追加します。
+11. **[Add action groups]\(アクション グループの追加\)** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、**アクション グループ** (電子メール、SMS など) をアラートに追加します。
 12. **[アラート ルール名]** 、 **[説明]** 、 **[重大度]** などの **[アラートの詳細]** を指定します。
 13. **[アラート ルールの作成]** をクリックして、アラートを作成します。
 
@@ -689,7 +689,7 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Files 監視データのリファレンス](storage-files-monitoring-reference.md)
-- [Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)
+- [Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)
 - [Azure Storage メトリックの移行](../common/storage-metrics-migration.md)
 - [Azure Files のデプロイの計画](./storage-files-planning.md)
 - [Azure Files のデプロイ方法](./storage-how-to-create-file-share.md)

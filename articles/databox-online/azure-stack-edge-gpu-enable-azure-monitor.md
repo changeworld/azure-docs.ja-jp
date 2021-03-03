@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595979"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで Azure Monitor を有効にする
 
@@ -49,7 +49,7 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
 
         ![Log Analytics ワークスペースの [確認と作成]](media/azure-stack-edge-gpu-enable-azure-monitor/create-log-analytics-workspace-review-create-1.png)
 
-詳細については、[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)方法に関するページに記載されている詳細な手順を参照してください。
+詳細については、[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)方法に関するページに記載されている詳細な手順を参照してください。
 
 
 
@@ -57,7 +57,7 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
 
 次の手順を実行して、ワークスペースで Container Insights を有効にします。 
 
-1. 「[Azure Monitor のコンテナー ソリューションを追加する方法](../azure-monitor/insights/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution)」の詳細な手順に従います。 次のテンプレート ファイル (`containerSolution.json`) を使用します。
+1. 「[Azure Monitor のコンテナー ソリューションを追加する方法](../azure-monitor/containers/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution)」の詳細な手順に従います。 次のテンプレート ファイル (`containerSolution.json`) を使用します。
 
     ```yml
     {

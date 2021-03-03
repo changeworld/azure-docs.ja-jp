@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cd43b6c7b11cde17bc9f9923374baf3416e5b370
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 449fc686fb30cde0d15759036b58fea3bcfc6723
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791864"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596897"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azure Lighthouse 用の Azure セキュリティ ベースライン
 
@@ -360,9 +360,9 @@ Azure Lighthouse では、管理下にある顧客テナント全体を対象と
 
 Azure Lighthouse に委任されたサブスクリプションのあるお客様は、Azure アクティビティ ログ データを表示して、実行されたすべてのアクションを確認できます。 これにより顧客は、サービス プロバイダーが実行している操作と、顧客独自の Azure Active Directory (Azure AD) テナント内のユーザーが実行した操作を完全に可視化できます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [委任されたリソースを大規模に監視する](how-to/monitor-at-scale.md)
 
@@ -386,7 +386,7 @@ Azure Lighthouse に委任されたサブスクリプションのあるお客様
 
 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [委任されたリソースを大規模に監視する](how-to/monitor-at-scale.md)
 
@@ -404,7 +404,7 @@ Azure Lighthouse に委任されたサブスクリプションのあるお客様
 
 Azure Monitor で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定できます。 長期ストレージおよびアーカイブ ストレージには、Azure Storage、Data Lake、または Log Analytics ワークスペースのアカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
 

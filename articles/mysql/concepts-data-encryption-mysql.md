@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 4c8f4b490c46ed8061201ba6362999f0e426ecb7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518806"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596328"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化
 
@@ -61,8 +61,8 @@ Key Vault に格納されているカスタマーマネージド キーを使用
 Key Vault を構成するための要件を以下に示します。
 
 * Key Vault と Azure Database for MySQL は、同じ Azure Active Directory (Azure AD) テナントに属している必要があります。 テナント間の Key Vault とサーバーの対話はサポートされていません。 後で Key Vault リソースを移動する場合は、データ暗号化を再構成する必要があります。
-* キー (または Key Vault) を誤って削除した場合にデータの損失を防ぐには、保有期間を **90 日** に設定して、キー コンテナーの[論理的な削除](../key-vault/general/soft-delete-overview.md)機能を有効にします。 保有期間が明示的に 90 日以下に設定されていない限り、論理的に削除されたリソースは、既定で 90 日間保持されます。 復旧と消去のアクションには、Key Vault のアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は既定ではオフになっていますが、PowerShell または Azure CLI を介して有効にすることができます (Azure portal を介して有効にできないことに注意してください)。
-* 保有期間を **90 日** に設定して、キー コンテナーの[消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)機能を有効にします。 消去保護は、論理的な削除が有効な場合にのみ有効にすることができます。 これは Azure CLI または PowerShell を使用して有効にできます。 消去保護が有効な場合、削除状態のコンテナーまたはオブジェクトは、保持期間が経過するまで消去できません｡ 論理的に削除されたこれらのコンテナーとオブジェクトはまだ回復可能で、アイテム保持ポリシーに確実に従うことができます。 
+* キー (または Key Vault) を誤って削除した場合にデータの損失を防ぐには、保有期間を **90 日** に設定して、キー コンテナーの [論理的な削除](../key-vault/general/soft-delete-overview.md)機能を有効にします。 保有期間が明示的に 90 日以下に設定されていない限り、論理的に削除されたリソースは、既定で 90 日間保持されます。 復旧と消去のアクションには、Key Vault のアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は既定ではオフになっていますが、PowerShell または Azure CLI を介して有効にすることができます (Azure portal を介して有効にできないことに注意してください)。
+* 保有期間を **90 日** に設定して、キー コンテナーの [消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)機能を有効にします。 消去保護は、論理的な削除が有効な場合にのみ有効にすることができます。 これは Azure CLI または PowerShell を使用して有効にできます。 消去保護が有効な場合、削除状態のコンテナーまたはオブジェクトは、保持期間が経過するまで消去できません｡ 論理的に削除されたこれらのコンテナーとオブジェクトはまだ回復可能で、アイテム保持ポリシーに確実に従うことができます。 
 * Azure Database for MySQL に対し、その一意のマネージド ID を使用して、get、wrapKey、および unwrapKey アクセス許可による Key Vault へのアクセスを付与します。 Azure portal では、MySQL でのデータ暗号化を有効にすると、一意の "サービス" ID が自動的に作成されます。 Azure portal を使用する場合の詳細な手順については、[MySQL のデータ暗号化の構成](howto-data-encryption-portal.md)に関するページを参照してください。
 
 カスタマーマネージド キーを構成するための要件を以下に示します。
@@ -70,7 +70,7 @@ Key Vault を構成するための要件を以下に示します。
 * DEK の暗号化に使用されるカスタマーマネージド キーは、非対称の RSA 2048 のみです。
 * キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限は設定しません。
 * キーは、"*有効*" 状態になっている必要があります。
-* キーには、保有期間を **90 日** に設定した[論理的な削除](../key-vault/general/soft-delete-overview.md)が必要です。これにより、必要なキー属性 recoveryLevel: "Recoverable" が暗黙的に設定されます。 保有期間を 90 日未満に設定すると、recoveryLevel: "CustomizedRecoverable" となります。これは、要件を持たないので、保有期間を確実に **90 日** に設定するようにしてください。
+* キーには、保有期間を **90 日** に設定した [論理的な削除](../key-vault/general/soft-delete-overview.md)が必要です。これにより、必要なキー属性 recoveryLevel: "Recoverable" が暗黙的に設定されます。 保有期間を 90 日未満に設定すると、recoveryLevel: "CustomizedRecoverable" となります。これは、要件を持たないので、保有期間を確実に **90 日** に設定するようにしてください。
 * キーで[消去保護が有効](../key-vault/general/soft-delete-overview.md#purge-protection)になっている必要があります。
 * Key Vault に[既存のキーをインポート](/rest/api/keyvault/ImportKey/ImportKey)する場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で提供してください。
 
@@ -118,7 +118,7 @@ Key Vault に対する十分なアクセス権を持つユーザーが、次の�
 * [Azure Resource Health](../service-health/resource-health-overview.md):カスタマー キーにアクセスできなくなったアクセス不可のデータベースでは、データベースへの最初の接続が拒否された後、"アクセス不可" と表示されます。
 * [アクティビティ ログ](../service-health/alerts-activity-log-service-notifications-portal.md):カスタマーマネージド Key Vault 内のカスタマー キーへのアクセスに失敗すると、アクティビティ ログにエントリが追加されます。 これらのイベントに対してアラートを作成した場合は、できるだけ早くアクセスを再開できます。
 
-* [アクション グループ](../azure-monitor/platform/action-groups.md):必要に応じて通知とアラートを送信するように、これらのグループを定義します。
+* [アクション グループ](../azure-monitor/alerts/action-groups.md):必要に応じて通知とアラートを送信するように、これらのグループを定義します。
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Key Vault 内の顧客のマネージド キーを使用して復元およびレプリケートする
 

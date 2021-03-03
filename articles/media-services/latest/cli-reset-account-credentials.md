@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6fe958c9300d6a6feeb6926f84dbecf565dfafc1
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: cc605a08147da1d076b302e515a4ebe8d411a782
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954346"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091837"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI の例: アカウント資格情報のリセット
 
@@ -31,8 +31,6 @@ ms.locfileid: "98954346"
 ## <a name="prerequisites"></a>前提条件
 
 [Media Services アカウントを作成する](./create-account-howto.md)
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>サンプル スクリプト
 

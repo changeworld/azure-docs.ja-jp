@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 10/12/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 6e1d9b8a53eaf69c2294ab42dc0718863e6c1837
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d905dd1e6acab8f9f6d3885c882dd9c32133cb4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804939"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596426"
 ---
 # <a name="using-azure-sentinel-with-azure-web-application-firewall"></a>Azure Sentinel と Azure Web Application Firewall の併用
 
@@ -82,4 +82,4 @@ WAF ブックは、すべての Azure Front Door、Application Gateway、およ�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Sentinel に関する詳細](../sentinel/overview.md)
-- [Azure Monitor ブックに関する詳細](../azure-monitor/platform/workbooks-overview.md)
+- [Azure Monitor ブックに関する詳細](../azure-monitor/visualize/workbooks-overview.md)

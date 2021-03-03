@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683131"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596475"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API アカウントで Azure Cosmos DB Java SDK v4 を使用する場合の問題のトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,7 +54,7 @@ SDK での再試行が可能な場合、すべての IO エラーで Cosmos DB S
 パフォーマンスを最大限高めるためのヒントを示します。
 * アプリが Azure Cosmos DB アカウントと同じリージョンで実行されていることを確認します。 
 * アプリが実行されているホストの CPU 使用率を確認します。 CPU 使用率が 50% 以上の場合は、より高度な構成のホスト上でアプリを実行します。 また、より多数のマシンに負荷を分散することもできます。
-    * Azure Kubernetes Service でアプリケーションを実行している場合は、[Azure Monitor を使用して CPU 使用率を監視する](../azure-monitor/insights/container-insights-analyze.md)ことができます。
+    * Azure Kubernetes Service でアプリケーションを実行している場合は、[Azure Monitor を使用して CPU 使用率を監視する](../azure-monitor/containers/container-insights-analyze.md)ことができます。
 
 #### <a name="connection-throttling"></a>接続の帯域幅調整
 接続の帯域幅調整は、[ホスト マシンの接続制限]、または [Azure SNAT (PAT) ポート不足]のいずれかが原因で発生します。

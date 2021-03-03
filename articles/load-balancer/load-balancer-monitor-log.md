@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785822"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596807"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Standard Load Balancer 用の Azure Monitor のログ
 
@@ -63,7 +63,7 @@ Azure Monitor の各種ログを使用して、Azure Standard Load Balancer の�
      5. **[イベント ハブ ポリシー名の選択]** ドロップダウン リストで、名前を選択します。
      6. **[OK]** を選択します。
 
-   * **[Log Analytics への送信]** 。 このプロセスでは、Log Analytics ワークスペースが既に作成され、構成されている必要があります。 Log Analytics ワークスペースを作成する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください
+   * **[Log Analytics への送信]** 。 このプロセスでは、Log Analytics ワークスペースが既に作成され、構成されている必要があります。 Log Analytics ワークスペースを作成する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」を参照してください
      1. **[Log Analytics への送信]** チェック ボックスをオンにします。
      2. **[サブスクリプション]** ドロップダウン リストで、Log Analytics ワークスペースがあるサブスクリプションを選択します。
      3. **[Log Analytics ワークスペース]** ドロップダウン リストで、ワークスペースを選択します。
@@ -100,10 +100,10 @@ Standard Load Balancer の診断設定で **AllMetrics** を有効にした後�
 > Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 
 ## <a name="stream-to-an-event-hub"></a>イベント ハブへのストリーミング
-診断情報がイベント ハブにストリーム配信されたら、Azure Monitor 統合を利用し、パートナーの SIEM ツールで集中ログ分析に使用できます。 詳細については、[イベント ハブへの Azure 監視データのストリーム配信](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)に関するページを参照してください。
+診断情報がイベント ハブにストリーム配信されたら、Azure Monitor 統合を利用し、パートナーの SIEM ツールで集中ログ分析に使用できます。 詳細については、[イベント ハブへの Azure 監視データのストリーム配信](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)に関するページを参照してください。
 
 ## <a name="send-to-log-analytics"></a>Log Analytics への送信
-Azure のリソースの診断情報は、Log Analytics ワークスペースに直接送信できます。 このワークスペースでは、トラブルシューティングや分析のために情報に対して複雑なクエリを実行できます。 詳細については、[Azure Monitor の Log Analytics ワークスペースでの Azure リソース ログの収集](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
+Azure のリソースの診断情報は、Log Analytics ワークスペースに直接送信できます。 このワークスペースでは、トラブルシューティングや分析のために情報に対して複雑なクエリを実行できます。 詳細については、[Azure Monitor の Log Analytics ワークスペースでの Azure リソース ログの収集](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
 
 ## <a name="limitations"></a>制限事項
 Azure Load Balancer 用のメトリックからログへのエクスポート機能には、次の制限があります。

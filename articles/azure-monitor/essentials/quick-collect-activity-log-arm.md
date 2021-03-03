@@ -7,12 +7,12 @@ ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 8150a172c49b2b0e969ff35928976e5909b7daa8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7465127ed9c52941d6c3ccfd40446546f0795455
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626485"
+ms.locfileid: "100635474"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する
 
@@ -260,7 +260,7 @@ az deployment sub create --name CreateDiagnosticSetting --location eastus --temp
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```powershell
-New-AzSubscriptionDeployment -Name CreateDiagnosticSetting -location eastus -TemplateFile CreateDiagnosticSetting.json -settingName="Send Activity log to workspace" -workspaceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace-01"
+New-AzSubscriptionDeployment -Name CreateDiagnosticSetting -location eastus -TemplateFile CreateDiagnosticSetting.json -settingName "Send Activity log to workspace" -workspaceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace-01"
 ```
 ---
 
@@ -277,7 +277,7 @@ az monitor diagnostic-settings show --resource '/subscriptions/00000000-0000-000
 
 ## <a name="generate-log-data"></a>ログ データの生成
 
-新しいアクティビティ ログ エントリのみが Log Analytics ワークスペースに送信されるため、ご自分のサブスクリプションで、仮想マシンの起動または停止、別のリソースの作成や変更など、ログに記録されるいくつかの操作を実行します。 診断設定が作成され、データが最初にワークスペースに書き込まれるまで、数分間待つ必要がある場合があります。 この待ち時間の後、アクティビティ ログに書き込まれたすべてのイベントが、数秒以内にワークスペースに送信されます。
+新しいアクティビティ ログ エントリのみが Log Analytics ワークスペースに送信されるため、ご自分のサブスクリプションで、仮想マシンの起動または停止、別のリソースの作成や変更など、ログに記録されるいくつかの操作を行ってください。 診断設定が作成され、データが最初にワークスペースに書き込まれるまで、数分間待つ必要がある場合があります。 この待ち時間の後、アクティビティ ログに書き込まれたすべてのイベントが、数秒以内にワークスペースに送信されます。
 
 ## <a name="retrieve-data-with-a-log-query"></a>ログ クエリを使用したデータの取得
 
@@ -303,7 +303,7 @@ Log Analytics を使用してワークスペースからデータを取得する
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことができます。 不要になったら、リソース グループを削除します。これにより、アラート ルールと関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには
+後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことができます。 不要になったら、リソース グループを削除します。これにより、アラート ルールと関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには、次を実行します。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
