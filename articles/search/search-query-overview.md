@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.date: 03/03/2021
+ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400813"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043016"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Cognitive Search のクエリ
 
@@ -84,8 +84,8 @@ Cognitive Search では、フルテキスト検索は Apache Lucene クエリ �
 
 | ユーザー シナリオ | 説明 |
 |-----------------|-------------|
-| 範囲フィルター | Azure Cognitive Search では、範囲クエリは filter パラメーターを使用して作成されます。 詳細と例については、「[範囲フィルターの例](search-query-simple-examples.md#example-4-range-filters)」をご覧ください。 |
-| 地理的な位置の検索 | 検索可能なフィールドが [Edm.GeographyPoint 型](/rest/api/searchservice/supported-data-types)の場合は、"近くを検索" またはマップに基づいた検索コントロールのフィルター式を作成できます。 地理空間検索を操作するフィールドには座標が含まれます。 詳細および例については、「[地理空間検索の例](search-query-simple-examples.md#example-5-geo-search)」をご覧ください。 |
+| 範囲フィルター | Azure Cognitive Search では、範囲クエリは filter パラメーターを使用して作成されます。 詳細と例については、「[範囲フィルターの例](search-query-simple-examples.md#example-5-range-filters)」をご覧ください。 |
+| 地理的な位置の検索 | 検索可能なフィールドが [Edm.GeographyPoint 型](/rest/api/searchservice/supported-data-types)の場合は、"近くを検索" またはマップに基づいた検索コントロールのフィルター式を作成できます。 地理空間検索を操作するフィールドには座標が含まれます。 詳細および例については、「[地理空間検索の例](search-query-simple-examples.md#example-6-geo-search)」をご覧ください。 |
 | ファセット ナビゲーション | ファセット ナビゲーション構造は、ファセットでの `onclick` イベントに応答してフィルターを呼び出するときに、ユーザー向けのナビゲーションに役立ちます。 そのため、ファセットとフィルターは連携しています。 ファセット ナビゲーションを追加する場合は、エクスペリエンスを完了するためのフィルターが必要です。 詳細については、[ファセット フィルターの作成方法](search-filters-facets.md)に関するページをご覧ください。 |
 
 > [!NOTE]
@@ -101,12 +101,12 @@ Cognitive Search では、フルテキスト検索は Apache Lucene クエリ �
 
 | クエリの種類 | 使用法 | 例と詳細 |
 |------------|--------|------------------------------|
-| [フィールド検索](query-lucene-syntax.md#bkmk_fields) | **`search`** パラメーター、 **`queryType=full`**  | 1 つのフィールドを対象とする複合クエリ式を作成します。 <br/>[フィールド検索の例](search-query-lucene-examples.md#example-2-fielded-search) |
-| [あいまい検索](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** パラメーター、 **`queryType=full`** | 構造やスペリングが似ている語句を照合します。 <br/>[あいまい検索の例](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [近接検索](query-lucene-syntax.md#bkmk_proximity) | **`search`** パラメーター、 **`queryType=full`** | ドキュメント内で近くにある語句を検索します。 <br/>[近接検索の例](search-query-lucene-examples.md#example-4-proximity-search) |
-| [用語ブースト](query-lucene-syntax.md#bkmk_termboost) | **`search`** パラメーター、 **`queryType=full`** | ブーストされた語を含むドキュメントの順位を、含まないドキュメントよりも引き上げます。 <br/>[用語ブーストの例](search-query-lucene-examples.md#example-5-term-boosting) |
-| [正規表現検索](query-lucene-syntax.md#bkmk_regex) | **`search`** パラメーター、 **`queryType=full`** | 正規表現の内容に基づいて照合します。 <br/>[正規表現の例](search-query-lucene-examples.md#example-6-regex) |
-|  [ワイルドカードまたはプレフィックス検索](query-lucene-syntax.md#bkmk_wildcard) | **_`~`_* または **`?`** を使用した **`search`** パラメーター、 **`queryType=full`**| プレフィックスとチルダ (`~`) または 1 つの文字 (`?`) に基づいて照合します。 <br/>[ワイルドカード検索の例](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [フィールド検索](query-lucene-syntax.md#bkmk_fields) | **`search`** パラメーター、 **`queryType=full`**  | 1 つのフィールドを対象とする複合クエリ式を作成します。 <br/>[フィールド検索の例](search-query-lucene-examples.md#example-1-fielded-search) |
+| [あいまい検索](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** パラメーター、 **`queryType=full`** | 構造やスペリングが似ている語句を照合します。 <br/>[あいまい検索の例](search-query-lucene-examples.md#example-2-fuzzy-search) |
+| [近接検索](query-lucene-syntax.md#bkmk_proximity) | **`search`** パラメーター、 **`queryType=full`** | ドキュメント内で近くにある語句を検索します。 <br/>[近接検索の例](search-query-lucene-examples.md#example-3-proximity-search) |
+| [用語ブースト](query-lucene-syntax.md#bkmk_termboost) | **`search`** パラメーター、 **`queryType=full`** | ブーストされた語を含むドキュメントの順位を、含まないドキュメントよりも引き上げます。 <br/>[用語ブーストの例](search-query-lucene-examples.md#example-4-term-boosting) |
+| [正規表現検索](query-lucene-syntax.md#bkmk_regex) | **`search`** パラメーター、 **`queryType=full`** | 正規表現の内容に基づいて照合します。 <br/>[正規表現の例](search-query-lucene-examples.md#example-5-regex) |
+|  [ワイルドカードまたはプレフィックス検索](query-lucene-syntax.md#bkmk_wildcard) | **_`~`_* または **`?`** を使用した **`search`** パラメーター、 **`queryType=full`**| プレフィックスとチルダ (`~`) または 1 つの文字 (`?`) に基づいて照合します。 <br/>[ワイルドカード検索の例](search-query-lucene-examples.md#example-6-wildcard-search) |
 
 ## <a name="next-steps"></a>次の手順
 

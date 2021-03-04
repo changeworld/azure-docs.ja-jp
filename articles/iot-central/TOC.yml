@@ -183,6 +183,8 @@
       href: core/concepts-telemetry-properties-commands.md
     - name: IoT Edge デバイスへの接続
       href: core/concepts-iot-edge.md
+    - name: ベスト プラクティス
+      href: core/concepts-best-practices.md
 - name: 操作方法ガイド
   items:
     - name: デバイスの開発と接続

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: a03707133b384f7717a624e810d0f7a41267969d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 596113f9fcb7326010090e67b3a52ca03faa25d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670878"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041979"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 
@@ -25,7 +25,7 @@ ms.locfileid: "101670878"
 |---------|------------------|-------------|---------------|
 | [**セマンティック検索**](semantic-search-overview.md) | 関連性 (スコアリング) | セマンティック ランク付けアルゴリズム、クエリの種類、およびクエリの応答。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/) |
 | [**スペル チェック**](cognitive-search-aml-skill.md) | クエリ | 単純、完全、およびセマンティック クエリのクエリ用語入力に対するスペル修正 (オプション)。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/) |
-| SharePoint Online インデクサー | インデクサー データ ソース | SharePoint コンテンツのインデクサーベースのインデックス作成用の新しいデータソースです。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/) |
+| [**SharePoint Online インデクサー**](search-howto-index-sharepoint-online.md) | インデクサー データ ソース | SharePoint コンテンツのインデクサーベースのインデックス作成用の新しいデータソースです。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/) |
 | [**Azure Machine Learning (AML) スキル**](cognitive-search-aml-skill.md) | AI エンリッチメント| Azure Machine Learning からの推論エンドポイントを統合するための新しいスキルの種類です。 [このチュートリアル](cognitive-search-tutorial-aml-custom-skill.md)で作業を開始します。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/) または 2019-05-06-Preview を使用します。 また、Cognitive Search と Azure ML サービスが同じサブスクリプションにデプロイされていることを前提として、ポータル (スキルセットの設計) でも利用できます。 |
 | [**featuresMode パラメーター**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | 関連性 (スコアリング) | 関連性のスコアリングで、フィールドごとの類似性スコア、フィールドごとの用語の頻度、およびフィールドごとの一致した一意のトークン数の詳細が含まれ強化されました。 これらのデータ ポイントは、[カスタム スコアリング ソリューション](https://github.com/Azure-Samples/search-ranking-tutorial)で使用できます。 | このクエリ パラメーターを、api-version=2020-06-30-Preview または 2019-05-06-Preview の [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) を使用して追加します。 |
 | [**デバッグ セッション**](cognitive-search-debug-session.md) | ポータル、AI エンリッチメント (スキルセット) | スキルセットの問題を調査して解決するために使用する、セッション内スキルセット エディター。 デバッグ セッション中に適用された修正は、サービス内のスキルセットに保存できます。 | ポータルのみで、デバッグ セッションを開くための [概要] ページの中間ページのリンクを使用します。 |

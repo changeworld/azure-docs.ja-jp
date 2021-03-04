@@ -113,12 +113,12 @@
             - name: 必要なアプライアンスを特定する
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
               href: how-to-identify-required-appliances.md
-            - name: ソフトウェアをインストールする
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install, deploy'
-              href: how-to-install-software.md
             - name: ネットワークをセットアップする
               displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
               href: how-to-set-up-your-network.md
+            - name: ソフトウェアをインストールする
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
+              href: how-to-install-software.md
         - name: センサーを準備する
           items:
             - name: センサーをオンボードする
@@ -155,7 +155,7 @@
         - name: クラウドでセンサーを管理する
           href: how-to-manage-sensors-on-the-cloud.md
         - name: オンプレミスの管理コンソールを管理する
-          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, sync, backup, restore, software update, failure'
+          displayName: 'upgrade, activation, certificate, software update, backup, restore, proxy, password recovery'
           href: how-to-manage-the-on-premises-management-console.md
         - name: 脅威インテリジェンス パッケージを操作する
           href: how-to-work-with-threat-intelligence-packages.md

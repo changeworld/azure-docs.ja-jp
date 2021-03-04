@@ -1,17 +1,16 @@
 ---
 title: Log Analytics のチュートリアル
 description: このチュートリアルでは、Azure portal 内で Azure Monitor の Log Analytics の機能を使用して、ログ クエリを作成して実行し、その結果を分析する方法について説明します。
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723182"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041146"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics のチュートリアル
 Log Analytics は、Azure Monitor ログによって収集されたデータからログ クエリを編集して実行し、その結果を対話形式で分析する Azure portal のツールです。 Log Analytics クエリを使用すると、特定の条件に一致するレコードの取得、傾向の特定、パターンの分析を行って、データに関するさまざまな分析情報を入手できます。 
