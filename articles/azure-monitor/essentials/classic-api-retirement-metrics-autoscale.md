@@ -1,15 +1,14 @@
 ---
 title: Azure Monitor のメトリックと自動スケーリング用デプロイ API の提供終了
 description: メトリックおよび自動スケーリングのクラシック API (Azure Service Management (ASM) や RDFE デプロイ モデルともいう) の提供終了
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: d818e06b13454633199488ca94e1ff8fbe418360
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0169de93b92de179c0ae9a36ff8dba3b7b1dc0fb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600465"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049034"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
 

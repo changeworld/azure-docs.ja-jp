@@ -416,7 +416,7 @@
                 - name: Event Hubs への送信
                   href: agents/diagnostics-extension-stream-event-hubs.md
                 - name: ログへの送信
-                  href: essentials/diagnostics-extension-logs.md
+                  href: agents/diagnostics-extension-logs.md
                 - name: Application Insights への送信
                   href: agents/diagnostics-extension-to-application-insights.md
                 - name: バージョン履歴
@@ -964,7 +964,7 @@
               href: app/code-sample-export-sql-stream-analytics.md
             - name: データのエクスポート モデル
               href: app/export-data-model.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           items:
             - name: F5 による洞察
               href: app/visual-studio.md
@@ -993,7 +993,7 @@
         - name: 一般提供の FAQ
           href: vm/vminsights-ga-release-faq.md
         - name: よく寄せられる質問
-          href: faq.md#azure-monitor-for-vms
+          href: faq.md#vm-insights
         - name: ワークスペースの構成
           href: vm/vminsights-configure-workspace.md
         - name: エージェントのインストール
@@ -1045,7 +1045,7 @@
         - name: 概要
           href: containers/container-insights-overview.md
         - name: よく寄せられる質問
-          href: faq.md#azure-monitor-for-containers
+          href: faq.md#container-insights
         - name: 監視を有効にする
           items:
             - name: 監視の有効化の概要

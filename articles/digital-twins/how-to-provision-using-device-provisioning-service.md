@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 24dac044982d59e93da17ee75190f378d5e3cdea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736544"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050921"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Device Provisioning Service (DPS) を使用して Azure Digital Twins でデバイスを自動管理する
 
@@ -85,7 +85,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 新しく作成された関数コード ファイル内に次のコードを貼り付けます。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_allocate.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
 
 ファイルを保存し、関数アプリを再発行します。 関数アプリを発行する手順については、エンドツーエンドのチュートリアルの「[*アプリの発行*](tutorial-end-to-end.md#publish-the-app)」のセクションを参照してください。
 
@@ -182,7 +182,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 
 発行された関数アプリ内で、"*イベント ハブ トリガー*" 型の新しい関数クラスを追加し、次のコードを貼り付けます。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_delete.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
 
 プロジェクトを保存し、関数アプリを再度発行します。 関数アプリを発行する手順については、エンドツーエンドのチュートリアルの「[*アプリの発行*](tutorial-end-to-end.md#publish-the-app)」のセクションを参照してください。
 
@@ -223,7 +223,7 @@ IoT Hub ルートを作成する手順は、こちらの記事で説明されて
 
 [この記事の前半](#auto-provision-device-using-device-provisioning-service)で、IoT Hub 内にデバイスを作成し、対応するデジタル ツインを作成しました。 
 
-次に、IoT Hub にアクセスし、そのデバイスを削除します (これは、[Azure CLI コマンド](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete)または [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs) で行うことができます)。 
+次に、IoT Hub にアクセスし、そのデバイスを削除します (これは、[Azure CLI コマンド](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_iot_hub_module_identity_delete)または [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs) で行うことができます)。 
 
 デバイスが Azure Digital Twins から自動的に削除されます。 
 
