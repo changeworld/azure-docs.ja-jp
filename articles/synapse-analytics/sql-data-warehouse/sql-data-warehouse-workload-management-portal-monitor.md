@@ -11,17 +11,17 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 04a3fa79a6940a5b7a4bb98d08aa8be48a442903
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: eb7dcb9a384360d698c49a97f649bf75588d94f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728602"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574230"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics - ワークロード管理ポータル監視
 
 この記事では、[ワークロード グループ](sql-data-warehouse-workload-isolation.md#workload-groups)のリソース使用率とクエリ アクティビティを監視する方法について説明します。
-Azure メトリックス エクスプローラーの構成方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」を参照してください。  システム リソースの消費を監視する方法の詳細については、Azure Synapse Analytics 監視に関するドキュメントの「[リソース使用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)」セクションを参照してください。
+Azure メトリックス エクスプローラーの構成方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/essentials/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」を参照してください。  システム リソースの消費を監視する方法の詳細については、Azure Synapse Analytics 監視に関するドキュメントの「[リソース使用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)」セクションを参照してください。
 ワークロード管理を監視するために用意されているワークロード グループ メトリックには、リソース割り当てとクエリ アクティビティの 2 つの異なるカテゴリがあります。  これらのメトリックは、ワークロード グループ別に分割およびフィルター処理できます。  メトリックは、システム定義メトリック (リソース クラス ワークロード グループ) であるか、([CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文を使用してユーザーによって作成された) ユーザー定義メトリックであるかに基づいて、分割およびフィルター処理できます。
 
 ## <a name="workload-management-metric-definitions"></a>ワークロード管理メトリックの定義

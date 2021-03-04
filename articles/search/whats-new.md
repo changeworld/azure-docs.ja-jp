@@ -6,18 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 02/09/2021
+ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6de91d51f3700c25ba1e0f361c948dc8ab338c43
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590548"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676397"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
-サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。 パブリック プレビュー段階の機能については、「[プレビュー機能一覧](search-api-preview.md)」をご覧ください。
+サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。 まだ一般提供されていない機能の包括的な一覧を確認するには、[プレビュー段階の機能の一覧](search-api-preview.md)に関するページを参照してください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+|機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
+|------------------------------|---------------|---------------|
+| [セマンティック検索](semantic-search-overview.md) | 検索結果を変更してより関連性の高い結果を生成するクエリ関連の機能のコレクション。 検索要求を少し変更するだけで、これらの機能を既存の検索インデックスで試すことができます。</br></br>[セマンティック クエリ](semantic-how-to-query-request.md) は、自然言語処理における進歩を活用してランク付けを向上させ、クエリの意図を理解して、回答、キャプション、セマンティック強調表示を提供する新しい種類のクエリです。</br></br>[セマンティック ランク付けと応答 (回答、キャプション、強調表示)](semantic-how-to-query-response.md) は、セマンティック クエリと応答の構造を定義するアルゴリズムを指します。 | パブリック プレビュー ([要求による](https://aka.ms/SemanticSearchPreviewSignup))。 </br></br>Azure portal で、[Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) api-version = 2020-06-30-Preview と [Search エクスプローラー](search-explorer.md)を使用してください。 </br></br>リージョンとレベルの制限が適用されます。 |
+| [クエリ用語のスペル チェック](speller-how-to-add.md) | クエリの用語が検索エンジンに到達する前に、スペル ミスをチェックすることができます。 `speller` オプションは、任意の種類のクエリ (単純、フル、またはセマンティック) で動作します。 |  パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview|
+| [SharePoint Online インデクサー](search-howto-index-sharepoint-online.md) | ドキュメント ライブラリのコンテンツにインデックスを付けることができるように、このインデクサーによって SharePoint Online サイトに接続されます。 | パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview |
 
 ## <a name="february-2021"></a>2021 年 2 月
 

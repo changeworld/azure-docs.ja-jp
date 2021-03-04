@@ -1,39 +1,33 @@
 ---
-title: Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API でサポートされる機能と構文
-description: Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API でサポートされる機能と構文について説明します。
+title: Azure Cosmos DB の MongoDB 用 API で 4.0 サーバー バージョンのサポートされる機能と構文
+description: Azure Cosmos DB の MongoDB 4.0 サーバー バージョン用 API でサポートされる機能と構文について説明します。 データベース コマンド、クエリ言語サポート、データ型、集計パイプライン コマンド、およびサポートされている演算子について説明します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 03/02/2021
-author: sivethe
-ms.author: sivethe
-ms.openlocfilehash: 4d053e33b8751095be13a40446914033b31feeed
+author: gahl-levy
+ms.author: gahllevy
+ms.openlocfilehash: 4a7e80b77048d1853c9cb0d6e59c5bdd76e8d823
 ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656416"
+ms.locfileid: "101664277"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
+# <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (4.0 サーバー バージョン) 用 API: サポートされる機能と構文
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の MongoDB 用 API との通信は、オープン ソースで公開されている任意の MongoDB クライアント [ドライバー](https://docs.mongodb.org/ecosystem/drivers)を使って行うことができます。 Azure Cosmos DB の MongoDB 用 API では、MongoDB [ワイヤ プロトコル](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)に従うことにより、既存のクライアント ドライバーを利用できます。
 
 Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB API を活用できます。[グローバル配信](distribute-data-globally.md)、[自動シャーディング](partitioning-overview.md)、可用性や待ち時間の保証、保存時の暗号化、バックアップを始めとする Cosmos DB のエンタープライズ機能も、すべて利用できます。
 
-> [!NOTE]
-> この記事では、Azure Cosmos DB の MongoDB 3.6 用 API を対象にしています。 MongoDB 4.0 バージョンについては、[MongoDB 4.0 でサポートされる機能と構文](mongodb-feature-support-40.md)に関するページを参照してください。
-
 ## <a name="protocol-support"></a>プロトコルのサポート
 
-Azure Cosmos DB の MongoDB 用 API は、新しいアカウントでは、既定で MongoDB サーバー バージョン **3.6** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。 Azure Cosmos DB の MongoDB 用 API アカウントを使用するときは、3.6 バージョンのアカウントのエンドポイントが `*.mongo.cosmos.azure.com` という形式であるのに対し、3.2 バージョンのアカウントのエンドポイントは `*.documents.azure.com` という形式であることに注意してください。
+以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。 Azure Cosmos DB の MongoDB 用 API アカウントを使用するときは、3.6 以降のバージョンのアカウントのエンドポイントが `*.mongo.cosmos.azure.com` という形式であるのに対し、3.2 バージョンのアカウントのエンドポイントは `*.documents.azure.com` という形式です。
 
 ## <a name="query-language-support"></a>クエリ言語のサポート
 
-Azure Cosmos DB の MongoDB 用 API では、MongoDB クエリ言語のコンストラクトが包括的にサポートされています。 次のセクションでは、Azure Cosmos DB で現在サポートされているサーバー操作、演算子、ステージ、コマンド、およびオプションの詳細な一覧を示します。
-
-> [!NOTE]
-> この記事では、サポートされているサーバー コマンドの一覧のみを示し、クライアント側のラッパー関数については除外しています。 `deleteMany()` や `updateMany()` などのクライアント側のラッパー関数は、内部では `delete()` や `update()` といったサーバー コマンドを利用しています。 サポートされているサーバー コマンドを利用する関数は、Azure Cosmos DB の MongoDB 用 API と互換性があります。
+Azure Cosmos DB の MongoDB 用 API では、MongoDB クエリ言語のコンストラクトが包括的にサポートされています。 以下に、現在サポートされている操作、演算子、ステージ、コマンド、およびオプションの詳細な一覧を示します。
 
 ## <a name="database-commands"></a>データベース コマンド
 
@@ -55,6 +49,13 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 | parallelCollectionScan | いいえ |
 | resetError | いいえ |
 | update | はい |
+
+### <a name="transaction-commands"></a>トランザクション コマンド
+
+| command | サポートされています |
+|---------|---------|
+| abortTransaction | はい |
+| commitTransaction | はい |
 
 ### <a name="authentication-commands"></a>認証コマンド
 
@@ -88,7 +89,6 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 | reIndex | はい |
 | renameCollection | いいえ |
 
-
 ### <a name="diagnostics-commands"></a>診断コマンド
 
 | command | サポートされています |
@@ -110,9 +110,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 | top | いいえ |
 | whatsmyuri | はい |
 
-<a name="aggregation-pipeline"></a>
-
-## <a name="aggregation-pipelinea"></a>集計パイプライン</a>
+## <a name="aggregation-pipeline"></a><a name="aggregation-pipeline"></a>集計パイプライン
 
 ### <a name="aggregation-commands"></a>集計コマンド
 
@@ -162,6 +160,20 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 | $and | はい |
 | $not | はい |
 | $or | はい |
+
+### <a name="conversion-expressions"></a>型変換式
+
+| command | サポートされています |
+|---------|---------|
+| $convert | はい |
+| $toBool | はい |
+| $toDate | はい |
+| $toDecimal | はい |
+| $toDouble | はい |
+| $toInt | はい |
+| $toLong | はい |
+| $toObjectId | はい |
+| $toString | はい |
 
 ### <a name="set-expressions"></a>設定式
 
@@ -216,6 +228,9 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 | $concat | はい |
 | $indexOfBytes | はい |
 | $indexOfCP | はい |
+| $ltrim | はい |
+| $rtrim | はい |
+| $trim | はい |
 | $split | はい |
 | $strLenBytes | はい |
 | $strLenCP | はい |
@@ -334,6 +349,10 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 ## <a name="data-types"></a>データ型
 
+Azure Cosmos DB の MongoDB 用 API では、MongoDB BSON 形式でエンコードされたドキュメントをサポートしています。 4\.0 API バージョンでは、この形式の内部使用が強化され、パフォーマンスを向上し、コストを削減します。 4\.0 を実行しているエンドポイントで作成または更新されたドキュメントは、これによってメリットが得られます。
+ 
+[アップグレード シナリオ](mongodb-version-upgrade.md)では、バージョン 4.0 へのアップグレードの前に作成されたドキュメントでは、4.0 エンドポイント経由の書き込み操作によって更新されるまで、強化されたパフォーマンスのメリットは得られません。
+
 | command | サポートされています |
 |---------|---------|
 | Double | はい |
@@ -412,11 +431,11 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 $regex クエリでは、左固定の式でインデックス検索が可能です。 ただし、'i' 修飾子 (大文字と小文字の区別なし) や 'm' 修飾子 (複数行) を使用すると、すべての式でコレクション スキャンが発生します。
 
-'$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。 たとえば、元のクエリとして ```find({x:{$regex: /^abc$/})``` がある場合、次のように変更する必要があります:
+'$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。 たとえば、元のクエリとして `find({x:{$regex: /^abc$/})` がある場合、次のように変更する必要があります:
 
-```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```
+`find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})`
 
-最初の部分では、インデックスを使用して検索を ^abc で始まるドキュメントに制限し、2 番目の部分で入力そのものを照合します。 バー演算子 '|' は "or" 関数として機能します。そのためクエリ ```find({x:{$regex: /^abc |^def/})``` は、フィールド 'x' の値が "abc" または "def" で始まるドキュメントに一致します。 インデックスを利用するには、```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })``` のように、クエリを 2 つの異なるクエリに分割し、$or 演算子で結合することをお勧めします。
+最初の部分では、インデックスを使用して検索を ^abc で始まるドキュメントに制限し、2 番目の部分で入力そのものを照合します。 バー演算子 '|' は "or" 関数として機能します。そのためクエリ `find({x:{$regex: /^abc |^def/})` は、フィールド 'x' の値が "abc" または "def" で始まるドキュメントに一致します。 インデックスを利用するには、`find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })` のように、クエリを 2 つの異なるクエリに分割し、$or 演算子で結合することをお勧めします。
 
 ### <a name="array-operators"></a>配列演算子
 
@@ -470,7 +489,6 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 | $push | はい |
 | $pushAll | はい |
 
-
 #### <a name="update-modifiers"></a>更新修飾子
 
 | command | サポートされています |
@@ -512,16 +530,16 @@ $polygon | いいえ |
 
 ## <a name="unique-indexes"></a>一意なインデックス
 
-[一意なインデックス](mongodb-indexing.md#unique-indexes)によって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 Cosmos DB で一意なインデックスを作成するには、`unique` 制約パラメーターを指定して `createIndex` コマンドを実行します。
+[一意なインデックス](mongodb-indexing.md#unique-indexes)によって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 Azure Cosmos DB で一意なインデックスを作成するには、`unique` 制約パラメーターを指定して `createIndex` コマンドを実行します。
 
 ```javascript
 globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
 {
-        "_t" : "CreateIndexesResponse",
-        "ok" : 1,
-        "createdCollectionAutomatically" : false,
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 4
+    "_t" : "CreateIndexesResponse",
+    "ok" : 1,
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 4
 }
 ```
 
@@ -532,28 +550,24 @@ globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
 ```javascript
 globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
 {
-        "createdCollectionAutomatically" : false, 
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 2,
-        "ok" : 1
+    "createdCollectionAutomatically" : false, 
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 2,
+    "ok" : 1
 }
 ```
 
 ## <a name="gridfs"></a>GridFS
 
-Azure Cosmos DB では、GridFS と互換性のある MongoDB ドライバーを通じて GridFS がサポートされています。
+Azure Cosmos DB では、GridFS と互換性のある Mongo ドライバーを通じて GridFS をサポートしています。
 
 ## <a name="replication"></a>レプリケーション
 
-Cosmos DB では、最下位のレイヤーで、自動のネイティブ レプリケーションがサポートされています。 このロジックは、低待機時間のグローバルなレプリケーションも実現するために拡張されています。 Cosmos DB Cosmos では、手動のレプリケーション コマンドはサポートされていません。
-
-
-
-
+Cosmos azure DB では、最下位のレイヤーで、自動のネイティブ レプリケーションがサポートされています。 このロジックは、低待機時間のグローバルなレプリケーションも実現するために拡張されています。 Cosmos DB Cosmos では、手動のレプリケーション コマンドはサポートされていません。
 
 ## <a name="retryable-writes"></a>再試行可能書き込み
 
-Azure Cosmos DB では、再試行可能書き込みはまだサポートされていません。 クライアントのドライバーでは、接続文字列に `retryWrites=false` を追加する必要があります。
+Cosmos DB では、再試行可能書き込みをまだサポートされていません。 クライアント ドライバーは、接続文字列に 'retryWrites=false' URL パラメーターを追加する必要があります。 URL パラメーターを追加するには、'&' でプレフィックスを付ける必要があります。 
 
 ## <a name="sharding"></a>シャーディング
 
@@ -565,19 +579,22 @@ Azure Cosmos DB では、サーバー側のセッション コマンドはまだ
 
 ## <a name="time-to-live-ttl"></a>Time-to-live (TTL)
 
-Azure Cosmos DB では、ドキュメントのタイムスタンプに基づく Time-to-live (TTL) がサポートされます。 コレクションに対して TTL を有効にするには、[Azure portal](https://portal.azure.com) を使用します。
+Azure Cosmos DB では、ドキュメントのタイムスタンプに基づく Time-to-live (TTL) がサポートされます。 [Azure portal](https://portal.azure.com) にアクセスすると、コレクションに対して TTL を有効にできます。
+
+## <a name="transactions"></a>トランザクション
+
+Azure Cosmos DB では、シャード化されていないコレクションのトランザクションがサポートされます。 トランザクションのタイムアウトは 5 秒に固定されています。
 
 ## <a name="user-and-role-management"></a>ユーザーとロールの管理
 
-Azure Cosmos DB では、ユーザーとロールはまだサポートされていません。 ただし、Azure ロールベース アクセス制御 (Azure RBAC) と、[Azure portal](https://portal.azure.com) ([接続文字列] ペイン) から取得できる読み取り/書き込みおよび読み取り専用のパスワードまたはキーがサポートされています。
+Azure Cosmos DB では、ユーザーとロールはまだサポートされていません。 ただし、Azure ロールベース アクセス制御 (Azure RBAC) と、[Azure portal](https://portal.azure.com) ([接続文字列] ページ) から取得できる読み取りと書き込みおよび読み取り専用のパスワードとキーがサポートされています。
 
 ## <a name="write-concern"></a>書き込み確認
 
-一部のアプリケーションでは、書き込み操作中に必要な応答数を指定する[書き込み確認](https://docs.mongodb.com/manual/reference/write-concern/)が利用されています。 Azure Cosmos DB でレプリケーションが処理される方法のため、厳密な整合性を使用する場合、すべての書き込みが既定で自動的にマジョリティ クォーラムになります。 クライアント コードによって指定される書き込み確認はすべて無視されます。 詳細については、[整合性レベルを使用した可用性とパフォーマンスの最大化](consistency-levels.md)に関する記事を参照してください。
+一部のアプリケーションでは、書き込み操作中に必要な応答数を指定する[書き込み確認](https://docs.mongodb.com/manual/reference/write-concern/)が利用されています。 Cosmos DB が背景でレプリケーションを処理する方法により、既定ですべての書き込みが自動的にクォーラムになります。 クライアント コードによって指定される書き込み確認はすべて無視されます。 詳細については、[整合性レベルを使用して可用性とパフォーマンスを最大化する方法](consistency-levels.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[Mongo 3.6 バージョンの機能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)を参照してください。
 - Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
 - Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学びます。
 - Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調査します。
