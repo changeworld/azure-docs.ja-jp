@@ -1,24 +1,24 @@
 ---
 title: ハイブリッド FIDO2 セキュリティ キーのデプロイに関する FAQ - Azure Active Directory
-description: Azure Active Directory を使用するパスワードレスのハイブリッド FIDO2 セキュリティ キー サインイン (プレビュー) に関してよく寄せられる質問について説明します
+description: Azure Active Directory を使用するパスワードレスのハイブリッド FIDO2 セキュリティ キー サインインに関してよく寄せられる質問について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743532"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646386"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キー (プレビュー) のデプロイに関してよく寄せられる質問 (FAQ)
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キーのデプロイに関してよく寄せられる質問 (FAQ) 
 
 この記事では、ハイブリッド Azure AD 参加済みデバイスと、オンプレミスのリソースへのパスワードレス サインインに関してよく寄せられるデプロイの質問 (FAQ) について説明します。 このパスワードレスの機能により、FIDO2 セキュリティ キーを使用して、Windows 10 デバイスをハイブリッド Azure AD 参加済みデバイスとして Azure AD 認証することができます。 ユーザーは、FIDO2 キーのような最新の資格情報を使用してデバイス上の Windows にサインインし、オンプレミスのリソースへのシームレスなシングル サインオン (SSO) エクスペリエンスにより、従来の Active Directory Domain Services (AD DS) ベースのリソースにアクセスできます。
 
@@ -32,9 +32,6 @@ FIDO2 のセキュリティ キーおよびオンプレミスのリソースへ�
 * [パスワードレスの FIDO2 セキュリティ キー](howto-authentication-passwordless-security-key.md)
 * [パスワードレスの Windows 10](howto-authentication-passwordless-security-key-windows.md)
 * [パスワードレスのオンプレミス](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="security-keys"></a>セキュリティ キー
 

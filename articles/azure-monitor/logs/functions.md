@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor ログ クエリの関数 | Microsoft Docs
 description: この記事では、Azure Monitor で関数を使用して、あるクエリを別のログ クエリから呼び出す方法について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 5eaa2d686ecd38c006a720e9ffb97a4604f18ba8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9b2466bbe061dc147d020104b13da197840fe40a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708868"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030785"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 

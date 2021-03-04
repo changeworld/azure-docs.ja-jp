@@ -97,9 +97,9 @@
           href: logs/resource-manager-log-queries.md
         - name: Workbooks
           href: visualize/resource-manager-workbooks.md
-        - name: コンテナーに対する Azure Monitor
+        - name: コンテナーの分析情報
           href: containers/resource-manager-container-insights.md
-        - name: VM に対する Azure Monitor
+        - name: VM の分析情報
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
       href: cli-samples.md
@@ -879,8 +879,6 @@
             - name: 概要
               displayname: 'user behavior analytics, user behavior, usage, behavioral analytics'
               href: app/usage-overview.md
-            - name: ユーザー コンテキストの送信
-              href: app/usage-send-user-context.md
             - name: ユーザー、セッション、イベント
               href: app/usage-segmentation.md
             - name: ファネル
@@ -966,7 +964,7 @@
               href: app/code-sample-export-sql-stream-analytics.md
             - name: データのエクスポート モデル
               href: app/export-data-model.md
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           items:
             - name: F5 による洞察
               href: app/visual-studio.md
@@ -988,7 +986,7 @@
           href: app/change-analysis-visualizations.md
         - name: トラブルシューティング
           href: app/change-analysis-troubleshoot.md
-    - name: VM に対する Azure Monitor
+    - name: VM の分析情報
       items:
         - name: 概要
           href: vm/vminsights-overview.md
@@ -1042,7 +1040,7 @@
           href: vm/vminsights-workbooks.md
         - name: 監視を無効にする
           href: vm/vminsights-optout.md
-    - name: コンテナーに対する Azure Monitor
+    - name: コンテナーの分析情報
       items:
         - name: 概要
           href: containers/container-insights-overview.md

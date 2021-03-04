@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor ログ クエリでのコンピューター グループ | Microsoft Docs
 description: Azure Monitor では、コンピューター グループを使用して、ログ クエリの範囲を特定のコンピューターのセットに限定することができます。  この記事では、コンピューター グループを作成する各種の方法とそれらをログ クエリで使用する方法について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 3dffab040b8ee17760e23aa8b1d8fb65aa0417e7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d8702b498e08561175aa7ee975c7b6b46fdf1687
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734130"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031091"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでのコンピューター グループ
 Azure Monitor では、コンピューター グループを使用して、[ログ クエリ](./log-query-overview.md)の範囲を特定のコンピューターのセットに限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログ クエリに含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。

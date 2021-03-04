@@ -85,7 +85,7 @@
               href: create-routebased-vpn-gateway-cli.md
         - name: VPN ゲートウェイ接続の確認
           href: vpn-gateway-verify-connection-resource-manager.md
-        - name: VPN ゲートウェイのリセット
+        - name: VPN ゲートウェイまたは接続をリセットする
           href: reset-gateway.md
         - name: VPN ゲートウェイの削除
           items:
@@ -177,6 +177,10 @@
               href: about-vpn-profile-download.md
             - name: Intune - VPN クライアント プロファイルのデプロイ
               href: vpn-profile-intune.md
+        - name: 複数の認証の種類
+          items:
+            - name: Azure portal
+              href: howto-point-to-site-multi-auth.md
         - name: OpenVPN
           items:
             - name: OpenVPN トンネルの種類を構成する
@@ -205,6 +209,8 @@
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
               href: bgp-how-to-cli.md
+        - name: BGP の診断
+          href: bgp-diagnostics.md
         - name: 強制トンネリングについて
           items:
             - name: Azure PowerShell

@@ -1,27 +1,27 @@
 ### YamlMime:Landing
-title: IoT デバイスとアプリケーションの開発のドキュメント
-summary: 埋め込みデバイスの開発とデバイス対応のクラウド アプリケーションの構築に関する Azure IoT ドキュメントを参照してください。
+title: IoT デバイス開発のドキュメント
+summary: クラウドに接続された組み込みデバイスとデバイス アプリケーションを開発するための Azure IoT ドキュメントを紹介します。
 metadata:
-  title: IoT デバイスとアプリケーションの開発
-  description: Azure IoT を使用して埋め込みデバイス開発を行い、デバイス対応クラウド アプリケーションを構築する方法について説明します。
+  title: IoT デバイス開発
+  description: クラウドに接続された組み込みデバイスとデバイス アプリケーションを開発するために Azure IoT を使用する方法について説明します。
   services: iot-develop
   ms.service: iot-develop
   ms.topic: landing-page
   author: timlt
   ms.author: timlt
   ms.date: 01/11/2021
-  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: bb3bd1766e20fd16fa996eb66008140009f6bd5d
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100656279"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101721448"
 landingContent:
-- title: IoT デバイスとアプリケーションの開発について
+- title: IoT デバイスの開発の概要
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure IoT デバイスとアプリケーションの開発とは
+    - text: Azure IoT デバイスの開発とは
       url: about-iot-develop.md
     - text: 使用する SDK
       url: about-iot-sdks.md

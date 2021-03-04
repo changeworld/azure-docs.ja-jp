@@ -138,7 +138,7 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: アーキテクチャ
+    - name: Architecture
       href: service-fabric-architecture.md
     - name: Security
       items:
@@ -201,7 +201,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -330,7 +330,7 @@
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -448,12 +448,14 @@
           href: how-to-managed-cluster-vmss-extension.md
         - name: 管理対象クラスターの構成
           href: how-to-managed-cluster-configuration.md
+        - name: NSG ルールおよびその他のマネージド クラスター ネットワーク オプションを追加する
+          href: how-to-managed-cluster-networking.md
         - name: ARM テンプレートを使用して管理対象クラスター アプリケーションをデプロイする
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: マネージド ID を使用して管理対象クラスターを構成する
-          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: 管理対象クラスター ノードでのディスク暗号化の有効化
           href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: マネージド クラスター ノードのマネージド ID を使用する
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 計画と準備
       items:
         - name: クラスター容量の計画

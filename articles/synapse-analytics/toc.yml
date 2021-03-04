@@ -419,7 +419,7 @@
           items:
             - name: 復元ポイントの作成
               href: ./backuprestore/sqlpool-create-restore-point.md
-            - name: Synapse SQL プールを復元する
+            - name: 専用 SQL プールの復元
               href: ./backuprestore/restore-sql-pool.md
         - name: 管理および監視
           items:
@@ -552,6 +552,10 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
         - name: Spark ジョブ定義の送信
           href: ./spark/apache-spark-job-definitions.md
+        - name: Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
+          href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+        - name: Prometheus と Grafana を使用して Apache Spark アプリケーション レベルのメトリックを監視する
+          href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
     - name: 概念
       items:
         - name: Apache Spark
@@ -566,17 +570,21 @@
           href: ./spark/apache-spark-machine-learning-concept.md
         - name: ノートブック
           href: ./spark/apache-spark-notebook-concept.md
+        - name: パッケージの管理
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
         - name: 監視ツール
           href: monitoring/how-to-monitor-spark-applications.md
     - name: 操作方法ガイド
       items:
         - name: Delta Lake を使用する
           href: ./spark/apache-spark-delta-lake-overview.md
-        - name: ライブラリを管理する
+        - name: パッケージの管理
           items:
-            - name: ライブラリの追加と管理
-              href: ./spark/apache-spark-azure-portal-add-libraries.md
-            - name: ライブラリのインストール エラーのトラブルシューティング
+            - name: Python パッケージの管理
+              href: ./spark/apache-spark-manage-python-packages.md
+            - name: Scala パッケージの管理
+              href: ./spark/apache-spark-manage-scala-packages.md
+            - name: Python パッケージのインストール エラーのトラブルシューティング
               href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: ノートブックと IDE ツールを使用する
           items:

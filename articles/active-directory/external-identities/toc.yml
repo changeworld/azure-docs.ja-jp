@@ -86,8 +86,10 @@
               href: add-user-without-invite.md
             - name: API を使用して招待をカスタマイズする
               href: customize-invitation-api.md
-        - name: 外部 ID プロバイダーとフェデレーションする
+        - name: ID プロバイダー
           items:
+            - name: Microsoft アカウント (プレビュー)
+              href: microsoft-account.md
             - name: Google のフェデレーション
               href: google-federation.md
             - name: Facebook フェデレーション

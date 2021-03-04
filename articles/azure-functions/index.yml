@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Functions のドキュメント
-summary: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。 Azure Functions では、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
+summary: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Functions が処理します。 Functions には、Azure 用のサーバーレス コンピューティングが用意されています。 Functions を使用すると、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
 metadata:
   title: Azure Functions のドキュメント
-  description: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。 Azure Functions では、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
+  description: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。 Functions には、Azure 用のサーバーレス コンピューティングが用意されています。 Azure Functions では、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
-  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.openlocfilehash: 4d856232d2f0780852a1f369548b08012d124834
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/14/2021
-  ms.locfileid: "100363034"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101729166"
 landingContent:
 - title: Azure Functions について
   linkLists:

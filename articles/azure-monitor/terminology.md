@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor の用語の更新 | Microsoft Docs
 description: Azure 監視サービスに対して行われた最近の用語の変更について説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 99592544d97793f82db36e1d2cb33ba8c6af1c9c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fea85a85db1e555adea63f5b65b09a9285d714da
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586969"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031975"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor の名称と用語の変更
 最近、Azure Monitor に大きな変更が加えられ、Azure のお客様が監視を簡単に行えるようにするためにさまざまなサービスが統合されました。 この記事では、Azure Monitor のドキュメント内で最近行われた名称と用語の変更について説明します。

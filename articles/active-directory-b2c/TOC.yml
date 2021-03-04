@@ -121,10 +121,14 @@
           href: add-sign-up-and-sign-in-policy.md
         - name: サインイン ポリシー
           href: add-sign-in-policy.md
-        - name: パスワードのリセット ポリシー
-          href: add-password-reset-policy.md
-        - name: パスワードの変更ポリシー
-          href: add-password-change-policy.md
+        - name: パスワード リセットのポリシー
+          items:
+            - name: セルフサービス パスワード リセット
+              href: add-password-reset-policy.md
+            - name: セルフサービスのパスワード変更
+              href: add-password-change-policy.md
+            - name: パスワードの強制的なリセット
+              href: force-password-reset.md
         - name: プロファイルの編集ポリシー
           href: add-profile-editing-policy.md
         - name: リソース所有者のパスワード資格情報ポリシー
@@ -520,4 +524,4 @@
       href: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
       displayName: technical
     - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'
+      href: azure-ad-external-identities-videos.md

@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor サービスの制限 | Microsoft Docs
 description: Azure Monitor のさまざまな領域における制限の一覧を示します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 41dcd4fb342c257777d950ee5b8cacc7e8d417c0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 73598c7f5733dd65222770b80e79e2cf6ec27fbf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587000"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032009"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor サービスの制限
 

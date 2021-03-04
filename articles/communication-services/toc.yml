@@ -5,6 +5,8 @@
   items:
     - name: Azure Communication Services とは
       href: overview.md
+    - name: サポート オプションとヘルプ オプション
+      href: support.md
 - name: クイックスタート
   expanded: true
   items:

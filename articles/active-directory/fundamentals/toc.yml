@@ -51,6 +51,14 @@
               href: 9-secure-access-teams-sharepoint.md
         - name: サービス アカウントのセキュリティ保護
           items:
+            - name: Azure サービス アカウントの概要
+              href: service-accounts-introduction-azure.md
+            - name: マネージド ID のセキュリティ保護
+              href: service-accounts-managed-identities.md
+            - name: サービス プリンシパルのセキュリティ保護
+              href: service-accounts-principal.md
+            - name: Azure サービス アカウントの管理
+              href: service-accounts-governing-azure.md
             - name: オンプレミス サービス アカウントの概要
               href: service-accounts-on-premises.md
             - name: グループ MSA のセキュリティ保護

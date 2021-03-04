@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6329e93bb5e628d68afbb2700ce0b9e3a2a711ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678629"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030632"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>Device Update for IoT Hub のトラブルシューティング ガイド
 
@@ -46,7 +46,7 @@ _デバイスのコンプライアンス状態は、更新されるまでに最�
 ### <a name="q-my-devices-deployment-status-shows-incompatible-what-should-i-do"></a>Q: デバイスのデプロイの状態には互換性がないことが示されてます。どうすればよいですか?
 _デバイスを IoT Hub に接続した後に、対象デバイスの製造元とモデルのプロパティが変更されたため、デバイスが現在のデプロイの更新プログラム コンテンツと互換性がないと見なされるようになっている可能性があります。_
 
-_[ADU Core インターフェイス](./device-update-plug-and-play)をチェックして、デバイスがデバイス更新サービスにどのような製造元とモデルを報告しているかを確認し、それがデプロイされる更新プログラム コンテンツの [インポート マニフェスト](./import-concepts.md)で指定した製造元とモデルに一致していることを確認してください。特定のデバイスのこれらのプロパティは、[デバイス更新構成ファイル](./device-update-cofiguration-file.md)を使用して変更できます。_
+_[ADU Core インターフェイス](./device-update-plug-and-play.md)をチェックして、デバイスがデバイス更新サービスにどのような製造元とモデルを報告しているかを確認し、それがデプロイされる更新プログラム コンテンツの [インポート マニフェスト](./import-concepts.md)で指定した製造元とモデルに一致していることを確認してください。特定のデバイスのこれらのプロパティは、[デバイス更新構成ファイル](./device-update-configuration-file.md)を使用して変更できます。_
 
 ### <a name="q-i-see-my-deployment-is-in-active-stage-but-none-of-my-devices-are-in-progress-with-the-update-what-should-i-do"></a>Q: デプロイは "アクティブ" ステージと表示されていますが、どのデバイスでも更新プログラムが "進行中" になっていません。 どうすればよいですか。
 _デプロイ開始日が将来に設定されていないことを確認してください。新しいデプロイを作成した場合、デプロイ開始日は、明示的に変更しない限り、保護機能として既定で翌日に設定されます。デプロイ開始日に達するまで待つか、または進行中のデプロイをキャンセルし、目的の開始日で新しいデプロイを作成することができます。_

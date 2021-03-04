@@ -6,15 +6,15 @@ ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 03/25/2020
+ms.date: 02/26/2021
 ms.reviewer: cynthn
-ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 265f78970f17fe7321db8786c2fb8dd2304bb578
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558680"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675022"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure Spot Virtual Machines 
 
@@ -46,19 +46,38 @@ Azure Spot Virtual Machine は、Microsoft Azure China 21Vianet を除き、任�
 -   Enterprise Agreement
 -   従量課金制 (プラン コード: 003P)
 -   スポンサー
-- クラウド サービス プロバイダー (CSP) の場合、パートナーにお問い合わせください
+- クラウド サービス プロバイダー (CSP) については、[パートナー センター](https://docs.microsoft.com/partner-center/azure-plan-get-started)を参照するか、パートナーに直接お問い合わせください。
 
 ## <a name="eviction-policy"></a>削除ポリシー
 
-Azure スポット仮想マシン スケール セットの作成では､削除ポリシーを *[割り当て解除]* (既定値) または *[削除]* に設定できます｡ 
+Azure Spot Virtual Machines を使用してスケール セットを作成するときは､削除ポリシーを *[割り当て解除]* (既定値) または *[削除]* に設定できます。 
 
 *[Deallocate]\(割り当て解除\)* ポリシーでは､排除されたインスタンスは [stopped-deallocated]\(停止 - 割り当て解除\) 状態に移行し､排除されたインスタンスはデプロイし直すことができます｡ ただし､割り当てが成功する保証はありません｡ 割り当てを解除された VM は、スケール セットのインスタンス クォータを基にカウントされ、構成しているディスクの料金が課金されます。 
 
-Azure スポット仮想マシン スケール セットのインスタンスが排除されるときにインスタンス を削除したい場合は、削除ポリシーを *[削除]* に設定できます。 排除ポリシーを削除に設定した場合、スケール セット インスタンスのカウント プロパティを増やすことで、新しい VM を作成できます。 排除された VM は基になっているディスクと共に削除されるので、ストレージが課金されることはありません。 また、スケール セットの自動スケーリング機能を使って、排除された VM の自動的な補正を試みることはできますが、割り当てが成功するという保証はありません。 ディスクのコストとクォータ制限への到達を回避するために、削除ポリシーを [削除] に設定しているときだけ、Azure スポット仮想マシン スケール セットで自動スケーリング機能を使うことをお勧めします。 
+それらが削除されたときにインスタンスを削除する場合は、削除ポリシーを *[削除]* に設定します。 排除ポリシーを削除に設定した場合、スケール セット インスタンスのカウント プロパティを増やすことで、新しい VM を作成できます。 排除された VM は基になっているディスクと共に削除されるので、ストレージが課金されることはありません。 また、スケール セットの自動スケーリング機能を使って、排除された VM の自動的な補正を試みることはできますが、割り当てが成功するという保証はありません。 ディスクのコストとクォータ制限への到達を回避するために、削除ポリシーを [削除] に設定しているときだけ、Azure スポット仮想マシン スケール セットで自動スケーリング機能を使うことをお勧めします。 
 
 ユーザーは、[Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) を通じて VM 内通知を受け取ることができます。 これにより、VM が排除されつつある場合には通知が送られ、排除される前にジョブを完了し、タスクのシャットダウンを実行するために 30 秒が与えられます。 
 
+<a name="bkmk_try"></a>
+## <a name="try--restore-preview"></a>試行と復元 (プレビュー)
+
+この新しいプラットフォーム レベルの機能では、AI を使用して、ターゲットのインスタンス数を維持するために、スケール セット内の削除された Azure Spot Virtual Machine のインスタンスの自動的な復元を試行します。 
+
+> [!IMPORTANT]
+> 現在、試行と復元はパブリック プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+試行と復元のメリット:
+- Azure スポット仮想マシンをスケール セットにデプロイするときに、既定で有効になります。
+- 容量が原因で削除された Azure スポット仮想マシンの復元を試行します。
+- 復元された Azure スポット仮想マシンは、容量が原因で削除がトリガーされる確率が低くなることで、より長い期間実行されることが期待されます。
+- Azure スポット仮想マシンの有効期間が長くなることで、ワークロードの実行時間が長くなります。
+- 従量課金制 VM 用に既に存在するターゲット数を維持する機能と同様に、Azure Spot Virtual Machines で Virtual Machine Scale Sets のターゲット数を維持するのを支援します。
+
+試行と復元は、[自動スケーリング](virtual-machine-scale-sets-autoscale-overview.md)を使用するスケール セットでは無効になっています。 スケール セット内の VM の数は、自動スケーリング規則によって決まります。
+
 ## <a name="placement-groups"></a>配置グループ
+
 配置グループは、Azure 可用性セットに似た構造で、独自の障害ドメインとアップグレード ドメインが備わっています。 既定では、スケール セットは、最大サイズが 100 個の VM である 1 つの配置グループで構成されます。 `singlePlacementGroup` というスケール セット プロパティが *false* に設定されている場合、そのスケール セットは、複数の配置グループで構成することができ、0 ～ 1,000 個の VM が含まれます。 
 
 > [!IMPORTANT]
@@ -136,6 +155,24 @@ Azure Spot Virtual Machine テンプレートのデプロイの場合は、`"api
 ```
 
 無効にしたインスタンスを削除するには、`evictionPolicy` パラメーターを `Delete` に変更します。
+
+
+## <a name="simulate-an-eviction"></a>削除をシミュレートする
+
+Azure スポット仮想マシンの[削除をシミュレート](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対してアプリケーションがどの程度適切に対応するかをテストすることができます。 
+
+次の情報をお客様の情報に置き換えてください。 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+`Response Code: 204` は、シミュレートされた削除が成功したことを意味します。 
 
 ## <a name="faq"></a>よく寄せられる質問
 

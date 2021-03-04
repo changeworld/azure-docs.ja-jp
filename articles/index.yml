@@ -13,12 +13,12 @@ metadata:
   ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 58b5b8917aeeefb918914a598655da962019de34
-  ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+  ms.openlocfilehash: 2503d6f54efaa32ab76a9321543815e36f37cdcb
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/10/2021
-  ms.locfileid: "100102973"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101709972"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -36,6 +36,12 @@ highlightedContent:
 productDirectory:
   title: Azure 製品を参照する
   items:
+  - title: Azure Percept
+    summary: シリコンからサービスへのエッジ インテリジェンス
+    imageSrc: ./media/index/azure-percept.svg
+    azureCategories:
+    - iot
+    url: azure-percept/index.yml
   - title: Anomaly Detector
     summary: アプリに異常検出機能を簡単に追加できます
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
@@ -174,7 +180,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/custom-vision.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/Custom-Vision-Service/index.yml
+    url: cognitive-services/custom-vision-service/index.yml
   - title: データ サイエンス仮想マシン
     summary: AI 開発用の包括的な構成済み環境
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
@@ -204,7 +210,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/ink-recognizer/index.yml
+    url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
   - title: Kinect DK
     summary: 高度な AI センサーと開発者キットを使用して、コンピューターによる視覚と音声のモデルを構築します
     imageSrc: ./media/index/kinect-viewer.svg
@@ -408,6 +414,12 @@ productDirectory:
     - databases
     - iot
     url: cosmos-db/index.yml
+  - title: Azure Managed Instance for Apache Cassandra
+    summary: マネージド オープンソースの Apache Cassandra データセンターのデプロイとスケーリングを自動化する
+    imageSrc: ./media/index/managed-instance-apache-cassandra.svg
+    azureCategories:
+    - databases
+    url: managed-instance-apache-cassandra/index.yml
   - title: Logic Apps
     summary: コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化
     imageSrc: https://static.docs.com/ui/media/product/azure/logic-apps.svg
@@ -507,7 +519,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/linux/index.yml
+    url: ./virtual-machines/index.yml
   - title: Service Fabric
     summary: マイクロサービスを開発し、Windows または Linux のコンテナーを調整
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
@@ -557,7 +569,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/windows/index.yml
+    url: ./virtual-machines/index.yml
   - title: Azure Dev Spaces
     summary: Azure AKS でのマイクロサービス アプリのテストと反復開発
     imageSrc: ./media/index/AzureDevSpaceController_50x.svg
@@ -1192,6 +1204,12 @@ productDirectory:
     azureCategories:
     - networking
     url: load-balancer/index.yml
+  - title: Azure Route Server (プレビュー)
+    summary: ネットワーク アプライアンスの操作管理を簡素化する
+    imageSrc: ./media/index/azure-route-server.svg
+    azureCategories:
+    - networking
+    url: route-server/index.yml
   - title: Virtual Network
     summary: プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg

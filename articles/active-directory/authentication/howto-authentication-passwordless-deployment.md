@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/22/2021
 ms.author: baselden
 author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530350"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651129"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -149,7 +149,7 @@ Microsoft Authenticator アプリは Google Play または Apple App Store か�
 
 -    サポートされているブラウザーでの Azure Active Directory Web アプリ
 -    Azure Active Directory 参加済み Windows 10 デバイス
--    ハイブリッド Azure Active Directory 参加済み Windows 10 デバイス (プレビュー)
+-    Hybrid Azure Active Directory 参加済み Windows 10 デバイス
      -    クラウドベースとオンプレミスの両方のリソースへのアクセスを提供します。 オンプレミスのリソースへのアクセスの詳細については、「[FIDO2 キーを使用したオンプレミスのリソースへの SSO](./howto-authentication-passwordless-security-key-on-premises.md)」を参照してください
 
 **互換性のある FIDO2 セキュリティ キー** を有効にする必要があります。 Microsoft は、[FIDO2 キー ベンダーとの重要なパートナーシップ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)を発表しました。
@@ -193,7 +193,7 @@ FIDO2 セキュリティ キーを使用して Windows 10 のサインインを�
 
 #### <a name="enable-on-premises-integration"></a>オンプレミス統合を有効にする
 
-オンプレミスのリソースへのアクセスを有効にするには、[オンプレミスのリソースへのパスワードなしのセキュリティ キー サインイン (プレビュー) を有効にする](howto-authentication-passwordless-security-key-on-premises.md)手順に従います。
+オンプレミスのリソースへのアクセスを有効にするには、[オンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする](howto-authentication-passwordless-security-key-on-premises.md)手順に従います。
 
 > [!IMPORTANT]
 > この手順は、Windows 10 サインインの FIDO2 セキュリティキーを利用するために、すべてのハイブリッド Azure AD 参加済みデバイスでも実行する必要があります。

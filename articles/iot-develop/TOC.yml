@@ -1,8 +1,8 @@
-- name: IoT デバイスとアプリケーションの開発
+- name: IoT デバイス開発
   href: index.yml
 - name: 概要
   items:
-    - name: IoT デバイスとアプリケーションの開発とは
+    - name: IoT デバイス開発とは
       href: about-iot-develop.md
     - name: 使用する SDK
       href: about-iot-sdks.md
@@ -22,7 +22,7 @@
 - name: チュートリアル
   items:
     - name: IoT デバイスをクラウドに安全に接続する
-      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+      href: /learn/paths/securely-connect-iot-devices/
 - name: 概念
   items:
     - name: デバイス開発者向けの接続オプション

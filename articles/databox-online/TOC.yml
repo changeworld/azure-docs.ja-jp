@@ -272,6 +272,8 @@
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: 更新プログラムの適用
               href: azure-stack-edge-gpu-install-update.md
+            - name: デバイスのリセット、再アクティブ化
+              href: azure-stack-edge-reset-reactivate-device.md
             - name: デバイスの返却
               href: azure-stack-edge-return-device.md
             - name: デバイスの置換

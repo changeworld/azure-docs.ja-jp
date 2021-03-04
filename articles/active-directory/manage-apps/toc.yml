@@ -105,7 +105,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: Security
+        - name: セキュリティ
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -150,8 +150,10 @@
           href: disable-user-sign-in-portal.md
         - name: セルフサービス アプリの割り当ての構成
           href: manage-self-service-access.md
-        - name: ホーム領域検出
+        - name: ホーム領域検出ポリシーを介して自動アクセラレーションを強制する
           href: configure-authentication-for-federated-users-portal.md
+        - name: ホーム領域検出ポリシーを使用してサインインの自動アクセラレーションを防ぐ
+          href: prevent-domain-hints-with-home-realm-discovery.md
     - name: Azure AD への ID 管理の移行
       items:
         - name: 移行リソース

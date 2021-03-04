@@ -1,17 +1,16 @@
 ---
 title: Configuration Manager を Azure Monitor に接続する | Microsoft Docs
 description: この記事では、Configuration Manager を Azure Monitor のワークスペースに接続してデータの分析を開始する手順を示します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/30/2020
-ms.openlocfilehash: f2d2670b974555b83ec622b22eb2dae8f3c9899b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7302f61fce6763fdbb41c2b4899dea749ac3225f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710981"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031074"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの Microsoft Endpoint Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
