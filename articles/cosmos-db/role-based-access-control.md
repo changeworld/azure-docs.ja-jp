@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8f3e2e96a529ea3347f09729146e73d5517ed759
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3a0f0f617e45834f1f205bcb4c8bcbc884b20d22
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692149"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048116"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB での Azure ロールベースのアクセス制御
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -72,7 +72,7 @@ Azure portal の **[アクセス制御 (IAM)]** ウィンドウは、Azure Cosmo
 
 - ストアド プロシージャ、トリガー、またはユーザー定義関数の変更。
 
-このような操作がアプリケーションにより (または Azure portal 経由でユーザーにより) 実行される場合は、[ARM テンプレート](./manage-with-templates.md)、[PowerShell](manage-with-powershell.md)、[Azure CLI](manage-with-cli.md)、REST または [Azure 管理ライブラリ](https://github.com/Azure-Samples/cosmos-management-net)経由で実行されるように移行する必要があります。 Azure の管理は、[複数の言語](../index.yml?product=developer-tools#languages-and-tools)で使用できることに留意してください。
+このような操作がアプリケーションにより (または Azure portal 経由でユーザーにより) 実行される場合は、[ARM テンプレート](./manage-with-templates.md)、[PowerShell](manage-with-powershell.md)、[Azure CLI](manage-with-cli.md)、REST または [Azure 管理ライブラリ](https://github.com/Azure-Samples/cosmos-management-net)経由で実行されるように移行する必要があります。 Azure の管理は、[複数の言語](/azure/?product=developer-tools#languages-and-tools)で使用できることに留意してください。
 
 ### <a name="set-via-arm-template"></a>ARM テンプレートを使用して設定する
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: fc68dc25aad3671a55e5c11cbee094b4027e7070
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674645"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047674"
 ---
 # <a name="create-a-data-source-android-sdk"></a>データ ソースを作成する (Android SDK)
 
@@ -360,14 +360,17 @@ Azure Maps は、オープン スタンダードである [Mapbox Vector Tile �
 - Traffic flow [ドキュメント](/rest/api/maps/traffic/gettrafficflowtile) | [データ形式の詳細](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
 - Azure Maps の作成者は、[Get Tile Render V2](/rest/api/maps/renderv2/getmaptilepreview) を使用して、カスタム ベクター タイルを作成およびアクセスすることもできます
 
+> [!TIP]
+> Web SDK を使用して Azure Maps の Render Service からベクターまたはラスター イメージのタイルを使用する場合、`atlas.microsoft.com` をプレースホルダー `azmapsdomain.invalid` に置き換えることができます。 このプレースホルダーは、マップによって使用されるのと同じドメインに置き換えられ、同じ認証の詳細も自動的に追加されます。 これにより、Azure Active Directory 認証を使用するときに、Render Service での認証が大幅に簡単になります。
+
 マップにベクター タイル ソースからのデータを表示するには、ソースをいずれかのデータ レンダリング レイヤーに接続します。 ベクター ソースを使用するすべてのレイヤーでオプションの `sourceLayer` 値を指定する必要があります。 次のコードでは、Azure Maps のトラフィック フロー ベクター タイル サービスをベクター タイル ソースとして読み込み、その後、線レイヤーを使用してマップに表示します。 このベクター タイル ソースには、ソース レイヤーに "Traffic flow" という 1 つのデータ セットがあります。 このデータ セット内の行データには、`traffic_level` というプロパティがあります。これは、色を選択して線のサイズを拡大縮小するために、このコードで使用されます。
 
 ```java
 //Formatted URL to the traffic flow vector tiles, with the maps subscription key appended to it.
-String trafficFlowUrl = "https://atlas.microsoft.com/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}&subscription-key=" + AzureMaps.getSubscriptionKey();
+String trafficFlowUrl = "https://azmapsdomain.invalid/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}";
 
 //Create a vector tile source and add it to the map.
-VectorTileSource source = new VectorTileSource("flowLayer",
+VectorTileSource source = new VectorTileSource(
     tiles(new String[] { trafficFlowUrl }),
     maxSourceZoom(22)
 );
@@ -498,7 +501,7 @@ map.layers.add(new Layer[] { polygonLayer, lineLayer, bubbleLayer });
 > `map.layers.add` 関数を使用してマップにレイヤーを追加するときに、既存のレイヤーの ID またはインスタンスを 2 番目のパラメーターとして渡すことができます。 これにより、マップには、追加される新しいレイヤーを既存のレイヤーの下に挿入するように指示されます。 レイヤー ID を渡すだけでなく、このメソッドでは次の値もサポートされます。
 >
 > - `"labels"` - マップ ラベル レイヤーの下に新しいレイヤーを挿入します。
-> - `"transit"` - マップの道路および輸送レイヤーの下に新しいレイヤーを挿入します。
+> - `"transit"` - マップの道路および輸送のレイヤーの下に新しいレイヤーを挿入します。
 
 ## <a name="next-steps"></a>次のステップ
 
