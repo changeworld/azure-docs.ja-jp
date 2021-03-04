@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 4517c939e14f3157db606f087ef042c1ba7eba3e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ed6319d5374db56cfe85e7ef9413480e523d9a34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672258"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050887"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 
@@ -24,7 +24,6 @@ Azure PowerShell バージョン 2.8.0 以降がインストールされてい�
 
 ## <a name="limitations"></a>制限事項
 
-- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
 - 専用ホストで使用できるサイズとハードウェアの種類は、リージョンによって異なります。 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
 
 ## <a name="create-a-host-group"></a>ホスト グループを作成する

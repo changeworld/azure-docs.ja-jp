@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 27064ecfce0114f7d80e464e2a51928a24919856
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f43d2979ad9770c63504d46666dffd78f761a73
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653407"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097110"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>クイックスタート: 認可コード フローを使用して Angular SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -26,6 +26,8 @@ ms.locfileid: "101653407"
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 このクイックスタートでは、認可コード フローで MSAL Angular v2 を使用します。 暗黙的なフローで MSAL Angular 1.x を使用する同様のクイックスタートについては、[クイックスタート: JavaScript シングルページ アプリ内でのユーザーのサインイン](./quickstart-v2-angular.md)に関するページを参照してください。
+
+この機能[!INCLUDE [active-directory-develop-preview](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

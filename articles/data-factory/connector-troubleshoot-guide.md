@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727823"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042438"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -831,7 +831,7 @@ ms.locfileid: "101727823"
 
     秘密キーのコンテンツが Key Vault からのものである場合、SFTP リンク サービスに直接アップロードすると、元のキー ファイルが機能する可能性があります。
 
-    詳細については、「[Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする](./connector-sftp.md#using-ssh-public-key-authentication)」を参照してください。 秘密キーのコンテンツは、Base64 でエンコードされた SSH 秘密キーのコンテンツです。
+    詳細については、「[Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする](./connector-sftp.md#use-ssh-public-key-authentication)」を参照してください。 秘密キーのコンテンツは、Base64 でエンコードされた SSH 秘密キーのコンテンツです。
 
     Base64 エンコードを使用して元の秘密キー ファイル "*全体*" をエンコードし、エンコードされた文字列を Key Vault に格納します。 ファイルから **[アップロード]** を選択した場合、元の秘密キー ファイルが、SFTP リンク サービスで使用できるキー ファイルです。
 

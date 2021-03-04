@@ -15,12 +15,12 @@ ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: daab07a72f61cfdf4f39cae03a1c61bd18f37a8f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 24ff39fba5ce4b484f23595a9f7d718b12faae10
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557439"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037270"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -99,7 +99,7 @@ Azure AD ロールは、ディレクトリ内の Azure AD リソースの管理�
 
 | Azure AD ロール | アクセス許可 | Notes |
 | --- | --- | --- |
-| [全体管理者](../active-directory/roles/permissions-reference.md#global-administrator-permissions) | <ul><li>Azure Active Directory のすべての管理機能や、Azure Active Directory に統合されたサービスへのアクセスを管理する</li><li>他のユーザーに管理者ロールを割り当てる</li><li>すべてのユーザーと他のすべての管理者のパスワードをリセットする</li></ul> | Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 |
+| [全体管理者](../active-directory/roles/permissions-reference.md#global-administrator) | <ul><li>Azure Active Directory のすべての管理機能や、Azure Active Directory に統合されたサービスへのアクセスを管理する</li><li>他のユーザーに管理者ロールを割り当てる</li><li>すべてのユーザーと他のすべての管理者のパスワードをリセットする</li></ul> | Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 |
 | [ユーザー管理者](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>ユーザーとグループのすべての側面を作成および管理する</li><li>サポート チケットの管理</li><li>サービス正常性の監視</li><li>ユーザー、ヘルプデスク管理者、およびその他のユーザー管理者のパスワードを変更する</li></ul> |  |
 | [課金管理者](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>購入する</li><li>サブスクリプションの管理</li><li>サポート チケットの管理</li><li>サービスの正常性を監視する</li></ul> |  |
 

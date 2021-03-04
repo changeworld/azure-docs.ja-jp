@@ -2,14 +2,13 @@
 title: スマート グループを管理する
 description: アラート インスタンスに対して作成されたスマート グループを管理します
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: 564440336bf6a90cbd40aba6c8284cbc6c5e3ff3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3b736fb7e4002f44ddb5d9a34b0ae3c19e21e35a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701078"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042659"
 ---
 # <a name="manage-smart-groups"></a>スマート グループを管理する
 

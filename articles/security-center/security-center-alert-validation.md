@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633599"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099524"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -97,5 +97,4 @@ Kubernetes のノードとクラスターの防御の詳細については、「
 
 * [Azure Security Center による Azure Key Vault 脅威検出](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md) - Security Center で、アラートの管理とセキュリティ インシデントへの対応を行う方法について説明しています。
-* 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 - Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center のセキュリティ アラートの概要](./security-center-alerts-overview.md) - さまざまな種類のセキュリティ アラートについて説明しています。
