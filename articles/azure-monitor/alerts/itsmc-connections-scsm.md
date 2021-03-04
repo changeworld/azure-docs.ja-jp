@@ -1,17 +1,16 @@
 ---
 title: SCSM を IT Service Management Connector に接続する
 description: この記事では、SCSM を Azure Monitor の IT Service Management Connector (ITSMC) に接続して、ITSM 作業項目を一元的に監視して管理する方法に関する情報を提供します。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 32cc45f318e6310ca89f3341add7164a0712f416
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f80c42be217d062510c687075cf46b4e7539419
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603550"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045345"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>System Center Service Manager を IT Service Management Connector に接続する
 

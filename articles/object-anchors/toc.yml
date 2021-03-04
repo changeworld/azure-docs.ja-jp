@@ -14,7 +14,7 @@
   expanded: true
   items:
     - name: モデルを作成する
-      href: quickstarts/get-started-model-ingestion.md
+      href: quickstarts/get-started-model-conversion.md
     - name: Unity アプリの作成
       expanded: true
       items:
