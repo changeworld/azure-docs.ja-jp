@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a428c322b65bfbb982be7a7e0c8b9fab7eed18
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132734"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100714"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -76,7 +76,7 @@ Security Center では、スキャナーによる検出結果がフィルター�
 はい。 結果は [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/) の下にあります。 また、Azure Resource Graph (ARG) を利用できます。これはすべてのリソースを対象とする Kusto のような API であり、1 つのクエリで特定のスキャンをフェッチできます。
 
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>どのようなレジストリの種類がスキャンされますか。 どのような種類が課金されますか。
-コンテナー レジストリ用 Azure Defender によってサポートされているコンテナー レジストリの種類の一覧については、「[可用性](defender-for-container-registries-usage.md#availability)」をご覧ください。
+コンテナー レジストリ用 Azure Defender によってサポートされているコンテナー レジストリの種類の一覧については、「[可用性](#availability)」をご覧ください。
 
 サポートされていないレジストリを Azure サブスクリプションに接続している場合、これらはスキャンされず、課金対象にもなりません。
 

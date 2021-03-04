@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96014578"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100731"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
 
@@ -21,8 +21,6 @@ ms.locfileid: "96014578"
 **コンテナー レジストリ用の Azure Defender** が有効になっている場合、ご利用のレジストリにプッシュしたイメージは直ちにスキャンされます。 さらに、過去 30 日以内にプルされたイメージもスキャンされます。 
 
 スキャナーから Security Center に脆弱性が報告されると、その結果と関連情報が推奨事項として Security Center によって表示されます。 さらに、結果には関連情報 (修復の手順、関連する CVE、CVES スコアなど) も含まれています。 1 つまたは複数のサブスクリプション、あるいは特定のレジストリで識別された脆弱性を表示することができます。
-
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Azure コンテナー レジストリでイメージの脆弱性を識別する 

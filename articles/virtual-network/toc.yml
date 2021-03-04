@@ -25,10 +25,8 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: 仮想ネットワークの接続
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT ゲートウェイの作成
-      href: quickstart-create-nat-gateway-portal.md
     - name: NAT ゲートウェイの作成と検証
-      href: tutorial-create-validate-nat-gateway-portal.md
+      href: tutorial-create-nat-gateway-portal.md
 - name: サンプル
   items:
     - name: Azure CLI

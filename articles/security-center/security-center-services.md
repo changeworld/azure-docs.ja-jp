@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 0e1f669b6955d5c5b70f2f29ff39ba5aef0a9a56
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1ba030ea42d3e865021aa52c651cd72eead9f1a1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100544818"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100272"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -117,8 +117,8 @@ ms.locfileid: "100544818"
 |[Microsoft Defender for Endpoint](harden-docker-hosts.md) (1)|✔|-|
 |[AWS アカウントを接続する](quickstart-onboard-aws.md) (1)|-|-|
 |[GCP アカウントを接続する](quickstart-onboard-gcp.md) (1)|-|-|
-|[連続エクスポート](continuous-export.md)|✔|✔ (2)|
-|[ワークフローの自動化](workflow-automation.md)|✔ (2)|✔|
+|[連続エクスポート](continuous-export.md)|✔|✔|
+|[ワークフローの自動化](workflow-automation.md)|✔|✔|
 |[推奨事項の除外規則](exempt-resource.md)|-|-|
 |[アラートの抑制ルール](alerts-suppression-rules.md)|✔|✔|
 |[セキュリティ アラートのメール通知](security-center-provide-security-contact-details.md)|✔|✔|
@@ -130,7 +130,7 @@ ms.locfileid: "100544818"
 |[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)|-|-|
 |[Azure Defender for DNS](defender-for-dns-introduction.md)|-|-|
 |[Azure Defender for container registries](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
-|[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔ (2)|✔|
+|[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔|✔|
 |[Kubernetes ワークロード保護](kubernetes-workload-protections.md)|✔|✔|
 |||
 
