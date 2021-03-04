@@ -1,18 +1,17 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する
 description: ARM テンプレートを使用して Log Analytics ワークスペースと診断設定を作成し、アクティビティ ログを Azure Monitor ログに送信します。
-ms.subservice: logs
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 0a740b4c6c6e89c9a4990651779ea4f0b376c971
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 56810cffcb9665810c452276be34e6924fd992b2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734351"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033284"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する
 

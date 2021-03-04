@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3ca73e020009817001f309ddf29c2984a8541026
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: cc9e0be90c138ba33e1b4dfe11ea6f9c8b7da297
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527049"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033556"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>電話ベースの多要素認証 (MFA) のセキュリティ保護
 
@@ -89,7 +89,7 @@ GitHub の [Azure AD B2C レポートとアラート](https://github.com/azure-a
 - ユーザー フローの **推奨される** バージョンを使用して、次の操作を実行します。
      
    - MFA の[電子メール ワンタイム パスコード機能 (OTP) を有効にします](phone-authentication-user-flows.md) (サインアップ フローとサインイン フローの両方に適用されます)。
-   - 場所に基づくサインインをブロックするように、[条件付きアクセス ポリシーを構成します](conditional-access-identity-protection-setup.md) (サインイン フローのみに適用され、サインアップ フローには適用されません)。
+   - 場所に基づくサインインをブロックするように、[条件付きアクセス ポリシーを構成します](conditional-access-user-flow.md) (サインイン フローのみに適用され、サインアップ フローには適用されません)。
    - API コネクタを使用して、[reCAPTCHA などのアンチボット ソリューションと統合します](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) (サインアップ フローに適用されます)。
 
 - ユーザーが電話番号を検証するドロップダウン メニューから、組織に関係のない国番号を削除します (この変更は今後のサインアップに適用されます)。

@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
-ms.subservice: logs
-ms.openlocfilehash: 7a57a39dd72e2330c2adde2b471bca2f9f2e00a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725851"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033301"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure プラットフォーム ログの概要
 プラットフォーム ログでは、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 これらは自動的に生成されますが、特定のプラットフォーム ログを保持するための 1 つ以上の送信先に転送するように構成する必要があります。 この記事では、提供される情報の内容や収集と分析のための構成方法など、プラットフォーム ログの概要について説明します。

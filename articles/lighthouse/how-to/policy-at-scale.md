@@ -1,14 +1,14 @@
 ---
 title: 委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 description: Azure Lighthouse によって、ポリシー定義とポリシー割り当てを複数のテナントにわたってデプロイする方法について説明します。
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412070"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049782"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 
@@ -51,6 +51,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> 複数のテナントにポリシーをデプロイすることはできますが、現時点では、これらのテナント内の非準拠リソースに関する[コンプライアンスの詳細を表示](../../governance/policy/how-to/determine-non-compliance.md#compliance-details)することはできません。
+
 ## <a name="validate-the-policy-deployment"></a>ポリシーのデプロイを検証する
 
 Azure Resource Manager テンプレートをデプロイした後は、委任されたサブスクリプションのいずれかで **EnableHttpsTrafficOnly** を **false** に設定してストレージ アカウントの作成を試みることで、ポリシー定義が正しく適用されたことを確認できます。 ポリシーの割り当てにより、このストレージ アカウントの作成はできないはずです。  
@@ -90,9 +93,6 @@ foreach ($ManagedSub in $ManagedSubscriptions)
     }
 }
 ```
-
-> [!NOTE]
-> 複数のテナントにポリシーをデプロイすることはできますが、現時点では、これらのテナント内の非準拠リソースに関する[コンプライアンスの詳細を表示](../../governance/policy/how-to/determine-non-compliance.md#compliance-details)することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

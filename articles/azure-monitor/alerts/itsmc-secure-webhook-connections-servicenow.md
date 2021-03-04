@@ -1,17 +1,16 @@
 ---
 title: IT Service Management Connector - Azure Monitor のセキュア エクスポート - ServiceNow を使用した構成
 description: この記事では、ITSM 製品またはサービスを、Azure Monitor のセキュア エクスポートで ServiceNow に接続する方法について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
-ms.openlocfilehash: 02b167219a4f1604d340d72f9dc47e67919c2542
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f296037a56b25255c7f7c7d48a8e8b7d4889052f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714138"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041639"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>ServiceNow を Azure Monitor に接続する
 

@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor エージェントのインストール
 description: Azure 仮想マシンと Azure Arc 対応サーバーに Azure Monitor エージェント (AMA) をインストールするためのオプション。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6bf0e8b90ca50a90f84c18981ab6accae8477b46
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719952"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034313"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Azure Monitor エージェントをインストールする (プレビュー)
 この記事では、Azure 仮想マシンと Azure Arc 対応サーバーの両方に [Azure Monitor エージェント](azure-monitor-agent-overview.md) をインストールするために現在使用できるさまざまなオプションについて説明し、エージェントが収集するデータを定義する[データ収集ルールとの関連付け](data-collection-rule-azure-monitor-agent.md)を作成するオプションについても説明します。
