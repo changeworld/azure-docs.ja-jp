@@ -1,5 +1,5 @@
 ---
-title: イベントの集計 (プレビュー)
+title: イベントの集計
 titleSuffix: Azure Defender for IoT
 description: Defender for IoT セキュリティ エージェントにより、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 9ce24a44e48f090a0dc7d355952b3cf50dd4318c
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 53811c20330d96b279eeb24e1aa90248b60fcb32
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809676"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120047"
 ---
-# <a name="event-aggregation-preview"></a>イベントの集計 (プレビュー)
+# <a name="event-aggregation"></a>イベントの集計 
 
 Defender for IoT セキュリティ エージェントにより、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。 Defender for IoT マクロ エージェントは、新しいプロセスなどのさまざまな種類のデバイス イベントとすべての新しい接続イベントを収集します。 新しいプロセスと新しい接続イベントの両方がデバイス上で 1 秒以内に頻繁に発生する可能性があります。 この機能は、包括的なセキュリティを実現するために重要ですが、セキュリティ エージェントが送信するメッセージの数は、IoT Hub のクォータとコストの上限に短期間で達するか、それを超える可能性があります。 ただし、これらのイベントには、デバイスの保護に不可欠な重要なセキュリティ情報が含まれています。 
 
@@ -43,7 +43,7 @@ Defender for IoT エージェントにより、間隔の期間または時間枠
 
 現在、ネットワーク接続イベントは Azure RTO でのみサポートされています。 
 
-ネットワーク接続イベントは、*ローカル ポート*、 *リモート ポート*、 *トランスポート プロトコル*、 *ローカル アドレス*、および *リモート アドレス* が同一である場合に同一と見なされます。 
+ネットワーク接続イベントは、*ローカル ポート*、 *リモート ポート*、 *トランスポート プロトコル*、 *ローカル アドレス*、および  *リモート アドレス* が同一である場合に同一と見なされます。 
 
 ネットワーク接続イベントの既定のバッファーは 64 です。 新しいネットワーク イベントは、次の収集サイクルまでキャッシュされません。 キャッシュ サイズを増やす際の警告がログに記録されます。
 

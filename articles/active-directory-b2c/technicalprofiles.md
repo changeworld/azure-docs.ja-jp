@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbb0c5617696347b566ba09a481afae4f52379aa
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: a70b8be6c034f002f0e387b5d3b4ba5deafa1a5e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096039"
+ms.locfileid: "102120506"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -555,7 +555,7 @@ ms.locfileid: "102096039"
 
 ## <a name="enabled-for-user-journeys"></a>ユーザー体験に対して有効
 
-ユーザー体験の [ClaimsProviderSelections](userjourneys.md#claimsproviderselection) は、クレーム プロバイダー選択オプションの一覧とその順序を定義します。 **EnabledForUserJourneys** 要素を使用して、ユーザーが利用できるクレーム プロバイダーをフィルタリングします。 **EnabledForUserJourneys** 要素には、次の値のいずれかが含まれています。
+ユーザー体験の [ClaimsProviderSelections](userjourneys.md#identity-provider-selection) は、クレーム プロバイダー選択オプションの一覧とその順序を定義します。 **EnabledForUserJourneys** 要素を使用して、ユーザーが利用できるクレーム プロバイダーをフィルタリングします。 **EnabledForUserJourneys** 要素には、次の値のいずれかが含まれています。
 
 - **Always**、技術プロファイルを実行します。
 - **Never**、技術プロファイルをスキップします。

@@ -102,7 +102,7 @@
     - name: 概要
       items:
         - name: Azure Stack Edge Mini R とは
-          href: azure-stack-edge-k-series-overview.md
+          href: azure-stack-edge-mini-r-overview.md
     - name: 概念
       items:
         - name: 安全性の準備完了
