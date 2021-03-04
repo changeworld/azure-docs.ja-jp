@@ -173,7 +173,7 @@
             - name: Azure CLI を使用した Private Link の構成
               href: howto-configure-privatelink-cli.md
               displayName: 'private link, private endpoint'
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティの概要
           href: concepts-security.md
@@ -196,7 +196,7 @@
             - name: TLS の構成
               href: howto-tls-configurations.md
               displayName: 'TLS, security, development'
-            - name: Advanced Threat Protection
+            - name: 高度な脅威保護
               items:
                 - name: 概念
                   href: concepts-data-access-and-security-threat-protection.md
@@ -413,7 +413,7 @@
         - name: フレキシブル サーバーとは
           href: flexible-server/overview.md
         - name: サポートされているバージョン
-          href: flexible-server/concepts-supported-versions.md
+          href: concepts-supported-versions.md
         - name: コンピューティングとストレージ
           href: flexible-server/concepts-compute-storage.md
     - name: クイックスタート

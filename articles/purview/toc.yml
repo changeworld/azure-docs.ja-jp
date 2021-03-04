@@ -122,8 +122,6 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: 用語テンプレートの管理
             href: how-to-manage-term-templates.md
-          - name: 用語集の用語を割り当てるために、アセットを一括編集する
-            href: how-to-bulk-edit-assets.md
       - name: 一括編集
         items:
           - name: 資産を一括編集して注釈と連絡先にタグを付ける

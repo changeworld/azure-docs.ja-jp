@@ -1,17 +1,16 @@
 ---
 title: IT Service Management Connector - Azure Monitor のセキュア エクスポート
 description: この記事では、ITSM 製品/サービスを Azure Monitor のセキュア エクスポートに接続して、ITSM 作業項目を一元的に監視および管理する方法について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 330b97e66ba1a9b95f2ef7a34a7ea046414b8bd8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728979"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037515"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>セキュア エクスポートを使用して Azure を ITSM ツールに接続する
 

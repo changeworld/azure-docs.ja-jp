@@ -6,13 +6,12 @@ ms.author: dukek
 services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
-ms.subservice: alerts
-ms.openlocfilehash: 98558c2b1525094277dd6c165349f25ce5cd3b23
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e46517865ba01a0d4d113696fbadabf5ae7b0105
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717878"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037933"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
 

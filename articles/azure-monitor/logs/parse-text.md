@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor ログのテキスト データの解析 | Microsoft Docs
 description: データが取り込まれたとき、またデータがクエリで取得されたときに、Azure Monitor レコード内のログ データを解析するためのさまざまなオプションについて説明します。また、それぞれの相対的な利点について比較します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 8f6c35fd1bb6b46f512f9245d8e3d41df428692b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2e2babd39dc9dadf06c9a3ca3292e021e0c1deaa
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733943"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037185"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Monitor ログのテキスト データの解析
 Azure Monitor によって収集された一部のログ データでは、1 つのプロパティに複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../agents/data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。

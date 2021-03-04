@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704839"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039803"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -42,7 +42,7 @@ ms.locfileid: "101704839"
 - [プライベート証明書をアプリに追加する](configure-ssl-certificate.md)
 
 > [!NOTE]
-> プライベート証明書を追加する最も簡単な方法は、[無料の App Service マネージド証明書 (プレビュー) を作成する](configure-ssl-certificate.md#create-a-free-certificate-preview)ことです。
+> プライベート証明書を追加する最も簡単な方法は、[無料の App Service マネージド証明書 (プレビュー) を作成する](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)ことです。
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "101704839"
 - **App Service 証明書のインポート** - 「[App Service 証明書をインポートする](configure-ssl-certificate.md#import-an-app-service-certificate)」のワークフローに従い、ここでこのオプションを選択します。
 
 > [!NOTE]
-> [無料証明書を作成](configure-ssl-certificate.md#create-a-free-certificate-preview)したり (プレビュー)、[Key Vault 証明書をインポート](configure-ssl-certificate.md#import-a-certificate-from-key-vault)したりすることもできますが、それは別々に行い、 **[TLS/SSL バインド]** ダイアログに戻る必要があります。
+> [無料証明書を作成](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)したり (プレビュー)、[Key Vault 証明書をインポート](configure-ssl-certificate.md#import-a-certificate-from-key-vault)したりすることもできますが、それは別々に行い、 **[TLS/SSL バインド]** ダイアログに戻る必要があります。
 
 ### <a name="create-binding"></a>バインドを作成する
 

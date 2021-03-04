@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor での CollectD からのデータの収集 | Microsoft Docs
 description: CollectD は、アプリケーションおよびシステム レベルの情報から定期的にデータを収集するオープン ソースの Linux デーモンです。  この記事では、Azure Monitor での CollectD からのデータの収集に関する情報を提供します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 6848b4e0463be803fb4f41797d933386cb575a0c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: daeb587349d885b3e6820b8da2951c3790eb1ac6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732107"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039582"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Azure Monitor での CollectD からのパフォーマンス データの収集に関する情報を提供します。

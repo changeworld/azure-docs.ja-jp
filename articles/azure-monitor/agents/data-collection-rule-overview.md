@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor のデータ収集ルール (プレビュー)
 description: Azure Monitor のデータ収集ルール (DCR) の概要 (その内容と構造、それらを作成して使用する方法など)。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: 0bae058804bdb1f199c39497c59e89bda8087424
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604522"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039616"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor のデータ収集ルール (プレビュー)
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータを送信または格納する場所を指定します。 この記事では、データ収集ルールの概要 (その内容と構造、それらを作成して使用する方法など) について説明します。

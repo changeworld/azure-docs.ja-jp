@@ -1,18 +1,17 @@
 ---
 title: Log Analytics のアラートを使用してイベントに応答する | Microsoft Docs
 description: このチュートリアルでは、ワークスペース内の重要な情報の識別、問題に関する事前の通知、または問題を修正するためのアクションの呼び出しを行うために使用できる Log Analytics のアラートについて理解します。
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 67d03636b118db71502a6245e60f71c94afdddf6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2564711fce6e8578829fb15fdbc04ae2b9d64959
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701010"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039429"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure Monitor のアラートを使用してイベントに応答する
 Azure Monitor のアラートは、Log Analytics リポジトリ内の重要な情報を特定できます。 アラートは定期的にログ検索を自動的に実行するアラート ルールによって作成され、ログ検索の結果が特定の条件と一致している場合はアラート レコードが作成され、自動化された応答を実行するように構成できます。  このチュートリアルは、「[Log Analytics データのダッシュボードを作成して共有する](../visualize/tutorial-logs-dashboards.md)」チュートリアルの続きです。   

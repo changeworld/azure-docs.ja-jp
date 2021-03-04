@@ -3,13 +3,12 @@ title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.subservice: alerts
-ms.openlocfilehash: fc0f41f23f1d9387f806c947ac27e6f31cc0e053
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 03968b3aa3eaf8f32019cfc5e9e2430c71419f62
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723607"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038137"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 

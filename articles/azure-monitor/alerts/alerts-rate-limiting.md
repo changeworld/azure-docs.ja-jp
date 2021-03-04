@@ -5,13 +5,12 @@ author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
-ms.subservice: alerts
-ms.openlocfilehash: 717f4087dabbb3286607498ab7f04bcbcce663dd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a0e1c74c19d56e3dd4b6dbb1cb9ababbbb49d062
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737275"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037950"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>音声、SMS、電子メール、Azure アプリ プッシュ通知、webhook 投稿のレート制限
 レート制限とは、特定の電話番号、電子メール アドレス、またはデバイスに送信される通知が多すぎる場合に、通知が一時的に停止されることです。 レート制限によって、アラートを管理しやすくなりアクション可能な状態が保証されます。

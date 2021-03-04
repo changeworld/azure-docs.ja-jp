@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor CLI のサンプル
 description: Azure Monitor の機能用のサンプル CLI コマンドです。 Azure Monitor は、アラート通知の送信、構成済みのテレメトリ データの値に基づく Web URL の呼び出しに加え、Cloud Services、Virtual Machines、Web Apps の自動スケーリングを行うことができる Microsoft Azure サービスです。
-ms.subservice: ''
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 196a1d580bd5888a6604c3f98b108e39c08a3412
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8eaf8c2e140f0b323db0c20a2e9946884c51df04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597986"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039174"
 ---
 # <a name="azure-monitor-cli-samples"></a>Azure Monitor CLI のサンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
