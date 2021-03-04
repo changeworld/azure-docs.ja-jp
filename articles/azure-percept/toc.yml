@@ -38,12 +38,6 @@
           href: tutorial-nocode-vision.md
         - name: コーディングなしの音声ソリューションを構築してデプロイする
           href: tutorial-no-code-speech.md
-    - name: 高度な開発
-      items:
-        - name: 高度な開発チュートリアル (クラウド)
-          href: advanced-development-cloud.md
-        - name: 高度な開発チュートリアル (ローカル)
-          href: advanced-development-local.md
 - name: 概念
   items:
     - name: Azure Percept Audio
@@ -106,5 +100,3 @@
           href: azure-percept-vision-datasheet.md
         - name: Azure Percept Audio のデータシート
           href: azure-percept-audio-datasheet.md
-- name: リソース
-  items: null

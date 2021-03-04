@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 79bac3f057412f3973121f48cd735f72d0a97d04
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01ce213f71fc2ac070ca0b09780bd45ede4e61c1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678631"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097756"
 ---
 # <a name="device-update-agent"></a>デバイス更新エージェント
 
@@ -32,7 +32,7 @@ IoT Hub 用デバイス更新では、イメージベースとパッケージベ
 
 ## <a name="modifying-the-device-update-agent"></a>デバイス更新エージェントの変更
 
-次に、エージェントをイメージに組み込むために必要な変更を行います。  ガイダンスについては、デバイス更新エージェントを[変更](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-modify-the-agent-code.m)する方法をご覧ください。
+次に、エージェントをイメージに組み込むために必要な変更を行います。  ガイダンスについては、デバイス更新エージェントを[変更](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-modify-the-agent-code.md)する方法をご覧ください。
 
 ### <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 

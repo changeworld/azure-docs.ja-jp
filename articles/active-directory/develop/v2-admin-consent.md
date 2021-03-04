@@ -12,12 +12,12 @@ ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 13cff9f3a6037a16d7c3b9cf233d26c6e9518bc1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b6fb5f680dfa5e2c87533083e3df4c2bae1ed12a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756113"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097025"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームの管理者の同意
 
@@ -33,19 +33,16 @@ ms.locfileid: "98756113"
 
 組織の管理者にアクセス許可を要求する準備ができたら、Microsoft ID プラットフォームの *管理者の同意エンドポイント* にユーザーをリダイレクトできます。
 
-```HTTP
-// Line breaks are for legibility only.
-GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&state=12345
-&redirect_uri=http://localhost/myapp/permissions
-&scope=
-https://graph.microsoft.com/calendars.read
-https://graph.microsoft.com/mail.send
+```none
+https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
+        ?client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+        &scope=https://graph.microsoft.com/Calendars.Read https://graph.microsoft.com/Mail.Send
+        &redirect_uri=http://localhost/myapp/permissions
+        &state=12345
 ```
 
 | パラメーター | 条件 | 説明 |
-| ---: | ---: | :---: |
+| :--- | :--- | :--- |
 | `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように `organizations` で総称的に参照できます。 'Common' は使用しないでください。個人のアカウントは、テナントのコンテキスト以外で管理者の同意を提供することはできません。 テナントを管理する個人用アカウントとの最善の互換性を確保するには、可能であればテナント ID を使用します。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。 |
 | `redirect_uri` | 必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
@@ -58,12 +55,16 @@ https://graph.microsoft.com/mail.send
 
 管理者がアプリにアクセス許可を承認すると、成功応答は次のようになります。
 
-```
-http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
+```none
+http://localhost/myapp/permissions
+    ?admin_consent=True
+    &tenant=fa00d692-e9c7-4460-a743-29f2956fd429
+    &scope=https://graph.microsoft.com/Calendars.Read https://graph.microsoft.com/Mail.Send
+    &state=12345
 ```
 
 | パラメーター | 説明 |
-| ---: | :---: |
+| :--- | :--- |
 | `tenant`| アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。|
 | `state` | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。|
 | `scope` | アプリケーションに対するアクセス権を与えた一連のアクセス許可。|
@@ -71,12 +72,19 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 ### <a name="error-response"></a>エラー応答
 
-`http://localhost/myapp/permissions?error=consent_required&error_description=AADSTS65004%3a+The+resource+owner+or+authorization+server+denied+the+request.%0d%0aTrace+ID%3a+d320620c-3d56-42bc-bc45-4cdd85c41f00%0d%0aCorrelation+ID%3a+8478d534-5b2c-4325-8c2c-51395c342c89%0d%0aTimestamp%3a+2019-09-24+18%3a34%3a26Z&admin_consent=True&tenant=fa15d692-e9c7-4460-a743-29f2956fd429&state=12345`
+```none
+http://localhost/myapp/permissions
+        ?admin_consent=True
+        &tenant=fa15d692-e9c7-4460-a743-29f2956fd429
+        &error=consent_required
+        &error_description=AADSTS65004%3a+The+resource+owner+or+authorization+server+denied+the+request.%0d%0aTrace+ID%3a+d320620c-3d56-42bc-bc45-4cdd85c41f00%0d%0aCorrelation+ID%3a+8478d534-5b2c-4325-8c2c-51395c342c89%0d%0aTimestamp%3a+2019-09-24+18%3a34%3a26Z
+        &state=12345
+```
 
 成功時の応答に見られるパラメーター以外に、以下のようなエラー パラメーターが表示されます。
 
 | パラメーター | 説明 |
-|-------------------:|:-------------------------------------------------------------------------------------------------:|
+|:-------------------|:-------------------------------------------------------------------------------------------------|
 | `error` | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。|
 | `error_description` | エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。|
 | `tenant`| アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。|
