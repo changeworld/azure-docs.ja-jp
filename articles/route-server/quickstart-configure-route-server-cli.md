@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 518baa47fd16d69bf935cd3253f5bebeb413b513
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680561"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695245"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>クイック スタート: Azure CLI を使用してルート サーバーを作成および構成する 
 
@@ -33,7 +33,23 @@ ms.locfileid: "101680561"
 
 ###  <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択します。 
 
-[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)] 
+構成を始めるには、Azure アカウントにサインインします。 Cloud Shell の "試してみる" オプションを使用している場合は、自動的にサインインします。 接続については、次の例を参照してください。
+
+```azurecli-interactive
+az login
+```
+
+アカウントのサブスクリプションを確認します。
+
+```azurecli-interactive
+az account list
+```
+
+ExpressRoute 回線を作成するサブスクリプションを選択します。
+
+```azurecli-interactive
+az account set --subscription "<subscription ID>"
+```
 
 ### <a name="create-a-resource-group-and-virtual-network"></a>リソース グループと仮想ネットワークを作成する 
 

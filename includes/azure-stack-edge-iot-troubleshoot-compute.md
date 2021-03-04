@@ -4,12 +4,12 @@ ms.service: databox
 ms.author: alkohli
 ms.topic: include
 ms.date: 02/05/2021
-ms.openlocfilehash: b06b91e972fd07543cf02105360cb0400ef6b0f1
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ad981264a99bd48e27f745a789ebe857b7f17d80
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831547"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750199"
 ---
 IoT Edge エージェント ランタイムの応答を使用すると、コンピューティング関連のエラーをトラブルシューティングできます。 考えられる応答の一覧を以下に示します。
 
@@ -20,7 +20,7 @@ IoT Edge エージェント ランタイムの応答を使用すると、コン�
 * 406 - IoT Edge デバイスがオフラインであるか、状態レポートを送信していません。
 * 500 - IoT Edge ランタイムでエラーが発生しました。
 
-詳細については、「[IoT Edge エージェント](/azure/iot-edge/iot-edge-runtime?view=iotedge-2018-06&preserve-view=true#iot-edge-agent)」を参照してください。
+詳細については、「[IoT Edge エージェント](../articles/iot-edge/iot-edge-runtime.md?preserve-view=true&view=iotedge-2018-06#iot-edge-agent)」を参照してください。
 
 次のエラーは、ご使用の Azure Stack Edge Pro の IoT Edge サービスに関連しています<!--/ Data Box Gateway--> すばやく答えを得ることができます。
 

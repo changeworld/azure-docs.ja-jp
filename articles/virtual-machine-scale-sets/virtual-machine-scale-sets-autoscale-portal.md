@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb4084a7ee0d9d719a88c077fa8c63803aa6934
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080592"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591361"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。
@@ -35,7 +35,7 @@ ms.locfileid: "87080592"
 
     ![Azure Portal で自動スケールを有効にする](media/virtual-machine-scale-sets-autoscale-portal/enable-autoscale.png)
 
-4. *autoscale* などの設定の名前を入力し、**ルールを追加する**オプションを選択します。
+4. *autoscale* などの設定の名前を入力し、**ルールを追加する** オプションを選択します。
 
 5. CPU に対する負荷の平均が 10 分間に 70% を上回った場合にスケール セット内の VM インスタンスの数を増やすルールを作成してみましょう。 ルールがトリガーされると、VM インスタンスの数が 20% 増加します。 VM インスタンスの数が少ないスケール セットでは、 **[操作]** を *[カウントを増やす量]* に設定し、 *[インスタンス数]* に *1* または *2* を指定します。 VM インスタンス数が多いスケール セットでは、VM インスタンスを 10% または 20% 増やすとより適切になる場合があります。
 
@@ -63,7 +63,7 @@ ms.locfileid: "87080592"
 ## <a name="create-a-rule-to-automatically-scale-in"></a>自動的にスケールインするルールの作成
 夜間や週末は、アプリケーションの需要が低下する可能性があります。 この低下した負荷が一定期間持続する場合、スケール セット内の VM インスタンスの数を減らす自動スケール ルールを構成できます。 このスケールイン アクションによって、現在の需要を満たすのに必要な数のインスタンスのみが実行されるようになるため、スケール セットの実行コストが削減されます。
 
-1. もう一度**ルールを追加する**オプションを選択します。
+1. もう一度 **ルールを追加する** オプションを選択します。
 2. CPU に対する負荷の平均が 10 分間に 30% を下回った場合にスケール セット内の VM インスタンスの数を減らすルールを作成します。 ルールがトリガーされると、VM インスタンスの数が 20% 減ります。
 
     前のルールと同じ方法を使用します。 ルールの次の設定を調整します。
@@ -125,4 +125,4 @@ VM インスタンスの数と状態を確認するには、スケール セッ�
 
 VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](./virtual-machine-scale-sets-manage-powershell.md)に関するページを参照してください。
 
-自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/autoscale-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/alerts-log-webhook.md)こともできます。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../azure-monitor/autoscale/autoscale-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../azure-monitor/alerts/alerts-log-webhook.md)こともできます。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5367fbcb88e19253eead58d8f99933fdadc41898
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591553"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714716"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure Storage 用の Azure セキュリティ ベースライン
 
@@ -190,7 +190,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Storage Analytics には、BLOB、キュー、およびテーブル用のログが用意されています。 Azure portal を使用して、アカウントに対してどのログが記録されるかを構成できます。 
 
-- [Azure Storage アカウントの監視を構成する方法](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
+- [Azure Storage アカウントの監視を構成する方法](./manage-storage-analytics-logs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -208,7 +208,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**:Azure Storage アカウントまたは Log Analytics ワークスペースにセキュリティ イベント ログを保存する場合は、組織の要件に従ってアイテム保持ポリシーを設定することができます。 
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](./storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](./manage-storage-analytics-logs.md#configure-logging)
 
 - [Log Analytics でデータ保持期間を変更する](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -414,7 +414,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/anonymous-read-access-configure.md)
 
-- [Azure Portal でのストレージ アカウントの監視](./storage-monitor-storage-account.md)
+- [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
 
 - [ストレージ アカウント アクセス キーを管理する](./storage-account-keys-manage.md)
 
@@ -432,7 +432,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure Storage アカウントのメトリック アラートを構成する方法](./storage-monitor-storage-account.md)
+- [Azure Storage アカウントのメトリック アラートを構成する方法](./manage-storage-analytics-logs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -576,7 +576,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 - [Azure Storage Analytics のログ](./storage-analytics-logging.md)
 
-- [Azure Storage アカウントのメトリック アラートを構成する方法](./storage-monitor-storage-account.md)
+- [Azure Storage アカウントのメトリック アラートを構成する方法](./manage-storage-analytics-logs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 

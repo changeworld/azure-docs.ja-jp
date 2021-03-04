@@ -3,12 +3,12 @@ title: Azure Backup を使用して Azure に SAP HANA データベースをバ�
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 87111660983e2626d8f61ddc65fdc13394509a4f
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e7735c4240529cc6fc9bb6470934dd335d22aa77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831637"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719612"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -172,7 +172,7 @@ Azure VM で実行されている SAP HANA データベースをバックアッ�
     ![差分バックアップ ポリシー](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
-    > パブリック プレビューでは、増分バックアップがサポートされるようになりました。 毎日のバックアップとしては、差分バックアップまたは増分バックアップのどちらかを選択できます。両方を選択することはできません。
+    > 毎日のバックアップとしては、差分バックアップまたは増分バックアップのどちらかを選択できます。両方を選択することはできません。
 1. **[増分バックアップ ポリシー]** で、 **[有効]** を選択して頻度と保有期間の制御を開きます。
     * 最多で、1 日に 1 回の増分バックアップをトリガーできます。
     * 増分バックアップは、最大 180 日間保持できます。 より長いリテンション期間が必要な場合は、完全バックアップを使用する必要があります。

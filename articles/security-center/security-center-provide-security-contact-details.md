@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d5c8ad0c4d9995a36b95ad2e67878f678887bfd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988567"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701979"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>セキュリティ アラートの電子メール通知を構成する 
 
@@ -61,7 +61,7 @@ ms.locfileid: "99988567"
 1. セキュリティ連絡先の情報をサブスクリプションに適用するには、 **[保存]** を選択します。
 
 ## <a name="customize-the-alerts-email-notifications-through-the-api"></a>API を通じてアラートのメール通知をカスタマイズする
-提供されている REST API を使用してメール通知を管理することもできます。 詳細については、[SecurityContacts API に関するドキュメント](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts)を参照してください。
+提供されている REST API を使用してメール通知を管理することもできます。 詳細については、[SecurityContacts API に関するドキュメント](/rest/api/securitycenter/securitycontacts)を参照してください。
 
 これは、セキュリティ連絡先の構成を作成する際の PUT 要求本文の例です。
 

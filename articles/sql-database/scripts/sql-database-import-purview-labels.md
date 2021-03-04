@@ -10,12 +10,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
-ms.openlocfilehash: d202a931e7af1dc212e3ab688580fd38c64dbdcb
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 2eab7c535ff0c68da772e8a45ead12420734279c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653749"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714903"
 ---
 # <a name="classify-your-azure-sql-data-using-azure-purview-labels"></a>Azure Purview ラベルを使用して Azure SQL データを分類する
 [!INCLUDE[appliesto-sqldb-asa](../../azure-sql/includes/appliesto-sqldb-asa.md)]
@@ -254,6 +254,6 @@ foreach ($referredEntity in $referredEntities.psobject.Properties.GetEnumerator(
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)を参照してください。
 
-Azure Purview の詳細については、「[Azure Purview のドキュメント](https://docs.microsoft.com/azure/purview/)」を参照してください。
+Azure Purview の詳細については、「[Azure Purview のドキュメント](../../purview/index.yml)」を参照してください。

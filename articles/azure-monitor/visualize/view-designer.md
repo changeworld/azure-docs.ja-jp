@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
-ms.openlocfilehash: d63627c00f6fd06ba00a9d8a905891238ce94697
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 11a6d21a7a066d331a92453e9aaa876800da0bf4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600548"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700543"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -38,10 +38,10 @@ Azure portal の Azure Monitor **[概要]** ページにビューが表示され
 |:--- |:--- |
 | タイル | Azure Monitor **[概要]** ページに表示されます。 各タイルには、それが表しているカスタム ビューの視覚的な概要が表示されます。 各タイルの種類では、レコードのさまざまな視覚化が提供されます。 カスタム ビューを表示するにはタイルを選択します。 |
 | カスタム ビュー | タイルを選択すると表示されます。 各ビューには、1 つまたは複数の視覚化パーツが含まれます。 |
-| 視覚化パーツ | 1 つまたは複数の[ログ クエリ](../log-query/log-query-overview.md)に基づく Log Analytics ワークスペース内のデータの視覚化を表します。 ほとんどのパーツには、概要レベルの視覚化を提供するヘッダーと、上位の結果を表示する一覧が含まれています。 各パーツの種類では、Log Analytics ワークスペース内のレコードのさまざまな視覚化が提供されます。 パーツの要素を選択すると、ログ クエリが実行されて、詳細なレコードが提供されます。 |
+| 視覚化パーツ | 1 つまたは複数の[ログ クエリ](../logs/log-query-overview.md)に基づく Log Analytics ワークスペース内のデータの視覚化を表します。 ほとんどのパーツには、概要レベルの視覚化を提供するヘッダーと、上位の結果を表示する一覧が含まれています。 各パーツの種類では、Log Analytics ワークスペース内のレコードのさまざまな視覚化が提供されます。 パーツの要素を選択すると、ログ クエリが実行されて、詳細なレコードが提供されます。 |
 
 ## <a name="required-permissions"></a>必要なアクセス許可
-ビューの作成または編集には、少なくとも Log Analytics ワークスペースの[共同作成者レベルのアクセス許可](../platform/manage-access.md#manage-access-using-azure-permissions)が必要です。 このアクセス許可がないと、[ビュー デザイナー] オプションがメニューに表示されません。
+ビューの作成または編集には、少なくとも Log Analytics ワークスペースの[共同作成者レベルのアクセス許可](../logs/manage-access.md#manage-access-using-azure-permissions)が必要です。 このアクセス許可がないと、[ビュー デザイナー] オプションがメニューに表示されません。
 
 
 ## <a name="work-with-an-existing-view"></a>既存のビューの使用
@@ -54,7 +54,7 @@ Azure portal の Azure Monitor **[概要]** ページにビューが表示され
 | オプション | 説明 |
 |:--|:--|
 | 更新   | 最新データで表示を更新します。 | 
-| ログ      | ログ クエリを使用してデータを分析するための [Log Analytics](../log-query/log-query-overview.md) が開きます。 |
+| ログ      | ログ クエリを使用してデータを分析するための [Log Analytics](../logs/log-query-overview.md) が開きます。 |
 | [編集]       | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
 | 複製      | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 | 期間 | ビューに含まれるデータの日付と時間範囲のフィルターを設定します。 この日付範囲は、ビューのクエリで設定されたすべての日付範囲の前に適用されます。  |

@@ -113,6 +113,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: 概念
       items:
         - name: サーバー
@@ -572,14 +575,6 @@
         - name: リアルタイム ダッシュボードを設計する
           href: tutorial-design-database-hyperscale-realtime.md
           displayName: 'hyperscale, tutorial, real-time'
-    - name: サンプル
-      items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-          displayName: 'samples, azure cli'
-        - name: Azure Policy の組み込み
-          displayName: 'samples, policies, definitions'
-          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 分散データ

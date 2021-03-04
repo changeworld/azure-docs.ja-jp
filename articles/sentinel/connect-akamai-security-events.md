@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c833d87b8d85c75c4f050f0130ddfd74342f4c52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 8aa5a52a06713b4f00b43205a57148049a8ef8da
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711962"
 ---
 # <a name="connect-your-akamai-security-events-collector-to-azure-sentinel"></a>Azure Sentinel に Akamai セキュリティ イベント コレクターを接続する
 
@@ -35,7 +35,7 @@ ms.locfileid: "99566611"
 
 - Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
-- ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)を参照してください。
+- ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)を参照してください。
 
 ## <a name="send-akamai-security-events-logs-to-azure-sentinel"></a>Akamai セキュリティ イベントのログを Azure Sentinel に送信する
 

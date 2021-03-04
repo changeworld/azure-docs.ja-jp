@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728112"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services をデプロイするための前提条件 (延長サポート)
 
@@ -42,7 +42,7 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>必要なサービス構成 (.cscfg) ファイルの更新
 
 ### <a name="1-virtual-network"></a>1) 仮想ネットワーク
-Cloud Service (延長サポート) のデプロイは、仮想ネットワーク内に存在する必要があります。 仮想ネットワークは、[Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)、[PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell)、[Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli)、または [ARM テンプレート](https://docs.microsoft.com/azure/virtual-network/quick-create-template)を使用して作成できます。 また、仮想ネットワークとサブネットが、サービス構成 (.cscfg) の [NetworkConfiguration](schema-cscfg-networkconfiguration.md) セクションで参照されている必要があります。 
+Cloud Service (延長サポート) のデプロイは、仮想ネットワーク内に存在する必要があります。 仮想ネットワークは、[Azure portal](../virtual-network/quick-create-portal.md)、[PowerShell](../virtual-network/quick-create-powershell.md)、[Azure CLI](../virtual-network/quick-create-cli.md)、または [ARM テンプレート](../virtual-network/quick-create-template.md)を使用して作成できます。 また、仮想ネットワークとサブネットが、サービス構成 (.cscfg) の [NetworkConfiguration](schema-cscfg-networkconfiguration.md) セクションで参照されている必要があります。 
 
 Cloud Service と同じリソース グループに属する仮想ネットワークの場合、サービス構成 (.cscfg) ファイルで仮想ネットワーク名を参照するだけで十分です。 仮想ネットワークと Cloud Service が 2 つの異なるリソース グループにある場合は、仮想ネットワークの完全な Azure Resource Manager ID をサービス構成 (.cscfg) ファイルで指定する必要があります。
  
@@ -103,7 +103,7 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
  たとえば、`<WorkerRole name="WorkerRole1" vmsize="Medium"` は `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"` になります。
  
 > [!NOTE]
-> 利用可能なサイズの一覧を取得するには、「[リソース SKU - 一覧](https://docs.microsoft.com/rest/api/compute/resourceskus/list)」を参照し、次のフィルターを適用します。 <br>
+> 利用可能なサイズの一覧を取得するには、「[リソース SKU - 一覧](/rest/api/compute/resourceskus/list)」を参照し、次のフィルターを適用します。 <br>
 `ResourceType = virtualMachines ` <br>
 `VMDeploymentTypes = PaaS `
 
@@ -120,10 +120,10 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
 
 ## <a name="key-vault-creation"></a>Key Vault の作成 
 
-Key Vault は、Cloud Services (延長サポート) に関連付けられている証明書を格納するために使用されます。 証明書を Key Vault に追加してから、サービス構成ファイルでその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースで Key Vault からシークレットとして格納されている証明書を取得できるようにするために、適切なアクセス許可に対して Key Vault を有効にする必要があります。 Key Vault は、[Azure portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal) および [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell) を使用して作成できます。 Key Vault は、Cloud Service と同じリージョンおよびサブスクリプションに作成する必要があります。 詳細については、「[Azure Cloud Services (延長サポート) で証明書を使用する](certificates-and-key-vault.md)」を参照してください。
+Key Vault は、Cloud Services (延長サポート) に関連付けられている証明書を格納するために使用されます。 証明書を Key Vault に追加してから、サービス構成ファイルでその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースで Key Vault からシークレットとして格納されている証明書を取得できるようにするために、適切なアクセス許可に対して Key Vault を有効にする必要があります。 Key Vault は、[Azure portal](../key-vault/general/quick-create-portal.md) および [PowerShell](../key-vault/general/quick-create-powershell.md) を使用して作成できます。 Key Vault は、Cloud Service と同じリージョンおよびサブスクリプションに作成する必要があります。 詳細については、「[Azure Cloud Services (延長サポート) で証明書を使用する](certificates-and-key-vault.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
-- [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用して Cloud Service (延長サポート) をデプロイします。
+- [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
 - Cloud Services (延長サポート) の[よく寄せられる質問](faq.md)を確認します。
 - [Cloud Services (延長サポート) のサンプル リポジトリ](https://github.com/Azure-Samples/cloud-services-extended-support)に関する記事を確認します。

@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051297"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698741"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge のトラブルシューティング
 
@@ -105,7 +105,7 @@ Live Video Analytics は、IoT Edge デバイスに IoT Edge モジュールと�
 * **ポリシー違反に起因してテンプレートのデプロイが失敗しました。**
     * この問題を解決するには、IT 管理者と協力して、仮想マシンを作成するための呼び出しで、ssh 認証のブロックがバイパスされるようにしてください。 Azure リソースとの通信にはユーザー名とパスワードを必要とするセキュリティで保護された Bastion ネットワークを使用しているため、これは必要ありません。 これらの資格情報は、仮想マシンが正常に作成され、IoT Hub にデプロイされアタッチされた後、Cloud Shell の **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** ファイルに保存されます。
 * セットアップ スクリプトで、サービス プリンシパル、Azure リソース、またはこの両方を作成できない。
-    * この問題を解決するには、サブスクリプションと Azure テナントがサービスの上限に達していないことを確認してください。 詳細については、「[Azure AD サービスの制限と制約](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions)」と「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
+    * この問題を解決するには、サブスクリプションと Azure テナントがサービスの上限に達していないことを確認してください。 詳細については、「[Azure AD サービスの制限と制約](../../active-directory/enterprise-users/directory-service-limits-restrictions.md)」と「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
 > [!TIP]
 > 支援が必要な追加の問題がある場合は、 **[ログを収集し、サポート チケットを送信](#collect-logs-for-submitting-a-support-ticket)** してください。 **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** 宛にメールで問い合わせることもできます。

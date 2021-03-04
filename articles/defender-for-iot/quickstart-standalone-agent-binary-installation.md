@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/18/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 0841bbd8baa524d3eea3afcbffc0aa5ead41409e
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 8d7e6dffcc40ba1e34a4a84ecccccc1f8b181393
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99810050"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703050"
 ---
 # <a name="install-defender-for-iot-micro-agent-preview"></a>Defender for IoT マイクロ エージェントをインストールする (プレビュー)
 
@@ -25,7 +25,7 @@ Defender for IoT モジュールをインストールする前に、IoT Hub に�
 
 ## <a name="install-the-package"></a>パッケージをインストールする
 
-[これらの手順](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)に従って、Microsoft パッケージ リポジトリをインストールし、構成します。 
+[これらの手順](/windows-server/administration/linux-package-repository-for-microsoft-software)に従って、Microsoft パッケージ リポジトリをインストールし、構成します。 
 
 Debian 9 の場合は、追加する必要があるリポジトリが手順に含まれていません。以下のコマンドを使用して、リポジトリを追加してください。 
 

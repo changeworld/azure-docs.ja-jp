@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 7e01d234b5b94997cbfd275c4b4566ec4fa332a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 136e063f6d272589c609bad93532df025a15a68d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600504"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723624"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -92,7 +92,7 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 | NOT_DEFINED | 必要な依存関係がインストールされていないため、auoms auditd プラグインはインストールされません | auoms のインストールが失敗しました。パッケージ auditd をインストールします。 |
 | 2 | シェル バンドルに提供されたオプションが無効です。 使用方法については `sudo sh ./omsagent-*.universal*.sh --help` を実行してください |
 | 3 | シェル バンドルにオプションが提供されていません。 使用方法については `sudo sh ./omsagent-*.universal*.sh --help` を実行してください。 |
-| 4 | パッケージの種類またはプロキシの設定が無効です。omsagent-*rpm*.sh パッケージは RPM ベースのシステムにのみインストールでき、omsagent-*deb*.sh パッケージは Debian ベースのシステムにのみインストールできます。 [最新リリース](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)のユニバーサル インストーラーを使うことをお勧めします。 また、プロキシの設定を確認してください。 |
+| 4 | パッケージの種類またはプロキシの設定が無効です。omsagent-*rpm*.sh パッケージは RPM ベースのシステムにのみインストールでき、omsagent-*deb*.sh パッケージは Debian ベースのシステムにのみインストールできます。 [最新リリース](../vm/quick-collect-linux-computer.md#install-the-agent-for-linux)のユニバーサル インストーラーを使うことをお勧めします。 また、プロキシの設定を確認してください。 |
 | 5 | シェル バンドルはルートとして実行する必要があります。または、オンボード中に 403 エラーが返されました。 `sudo` を使用してコマンドを実行してください。 |
 | 6 | パッケージのアーキテクチャが無効であるか、または、オンボード中に 200 エラーが返されました。omsagent-*x64.sh パッケージは 64 ビット システムにのみインストールでき、omsagent-* x86.sh パッケージは 32 ビット システムにのみインストールできます。 アーキテクチャに合った適切なパッケージを、[最新リリース](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)からダウンロードしてください。 |
 | 17 | OMS パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
@@ -116,7 +116,7 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 | --- | --- |
 | 2 | omsadmin スクリプトに提供されたオプションが無効です。 使用方法については `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` を実行してください。 |
 | 3 | omsadmin スクリプトに提供された構成が無効です。 使用方法については `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` を実行してください。 |
-| 4 | omsadmin スクリプトに提供されたプロキシが無効です。 プロキシを確認し、[HTTP プロキシの使用方法に関するドキュメント](../platform/log-analytics-agent.md#firewall-requirements)を参照してください。 |
+| 4 | omsadmin スクリプトに提供されたプロキシが無効です。 プロキシを確認し、[HTTP プロキシの使用方法に関するドキュメント](./log-analytics-agent.md#firewall-requirements)を参照してください。 |
 | 5 | Azure Monitor から受信された 403 HTTP エラー。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
 | 6 | Azure Monitor から受信された 200 以外の HTTP エラー。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
 | 7 | Azure Monitor に接続できません。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
@@ -198,7 +198,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 
 2. 「[プロキシ設定を更新する](agent-manage.md#update-proxy-settings)」セクションを参照して、プロキシ サーバー経由で通信するようにエージェントを正しく構成したことを確認します。    
 
-3. Azure Monitor の[ネットワーク ファイアウォール要件](../platform/log-analytics-agent.md#firewall-requirements)の一覧で示されているエンドポイントが許可リストに正しく追加されていることを再確認します。 Azure Automation を使用する場合に必要なネットワーク構成手順も、上記のリンクで示されています。
+3. Azure Monitor の[ネットワーク ファイアウォール要件](./log-analytics-agent.md#firewall-requirements)の一覧で示されているエンドポイントが許可リストに正しく追加されていることを再確認します。 Azure Automation を使用する場合に必要なネットワーク構成手順も、上記のリンクで示されています。
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>問題点:オンボードしようとすると 403 エラーが発生する
 
@@ -447,7 +447,7 @@ sudo sh ./onboard_agent.sh --purge
 ### <a name="resolution"></a>解像度 
 問題を修正するには次の手順を実行します。
 1. Azure portal から拡張機能を削除します。
-2. [指示](../learn/quick-collect-linux-computer.md)に従ってエージェントをインストールします。
+2. [指示](../vm/quick-collect-linux-computer.md)に従ってエージェントをインストールします。
 3. 次のコマンドを実行してエージェントを再起動します。`sudo /opt/microsoft/omsagent/bin/service_control restart`
 * 数分待つと、プロビジョニングの状態が **プロビジョニング成功** に変わります。
 

@@ -9,16 +9,16 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712455"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
-この記事では、[SAP コネクタ](https://docs.microsoft.com/connectors/sap/)を使用して Logic Apps から SAP リソースにアクセスする方法について説明します。
+この記事では、[SAP コネクタ](/connectors/sap/)を使用して Logic Apps から SAP リソースにアクセスする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -547,14 +547,14 @@ SAP コネクタを使用してロジック アプリの非同期要求-応答�
 
 [Logic Apps 用のオンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-install.md)を使用する場合は、SAP コネクタ用に拡張ログ ファイルを構成できます。 オンプレミス データ ゲートウェイを使用して、Event Tracing for Windows (ETW) イベントをゲートウェイの .zip 形式のログ ファイルに含まれているローテーション ログ ファイルにリダイレクトできます。 
 
-ゲートウェイ アプリの設定から、[ゲートウェイの構成とサービス ログをすべて](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) .zip ファイルにエクスポート ことができます。
+ゲートウェイ アプリの設定から、[ゲートウェイの構成とサービス ログをすべて](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) .zip ファイルにエクスポート ことができます。
 
 > [!NOTE]
 > 拡張ログが常に有効になっていると、ロジック アプリのパフォーマンスに影響を与える可能性があります。 問題の分析とトラブルシューティングを完了した後は、拡張ログ ファイルをオフにすることをお勧めします。
 
 #### <a name="capture-etw-events"></a>ETW イベントのキャプチャ
 
-必要に応じて、上級ユーザーは ETW イベントを直接キャプチャすることができます。 その後、[Azure Diagnostics のデータを Event Hubs で使用したり](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs)、[Azure Monitor Logs にデータを収集する](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs)ことができます。 詳細については、[データを収集して格納するためのベスト プラクティス](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data)に関するセクションを参照してください。 [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) を使用して、生成される ETL ファイルを操作したり、独自のプログラムを作成したりすることができます。 このチュートリアルでは、PerfView を使用します。
+必要に応じて、上級ユーザーは ETW イベントを直接キャプチャすることができます。 その後、[Azure Diagnostics のデータを Event Hubs で使用したり](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md)、[Azure Monitor Logs にデータを収集する](/azure/azure-monitor/agents/diagnostics-extension-logs)ことができます。 詳細については、[データを収集して格納するためのベスト プラクティス](/azure/architecture/best-practices/monitoring#collecting-and-storing-data)に関するセクションを参照してください。 [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) を使用して、生成される ETL ファイルを操作したり、独自のプログラムを作成したりすることができます。 このチュートリアルでは、PerfView を使用します。
 
 1. [PerfView] メニューで、 **[Collect]\(収集\)** &gt; **[Collect]\(収集\)** を選択して、イベントをキャプチャします。
 
@@ -1336,7 +1336,7 @@ Call BAPI (BAPI の呼び出し) アクションを使用する方法の詳細�
 
 ### <a name="send-idoc-action"></a>Send IDoc (IDoc を送信する) アクション
 
-[Send IDoc (`SendIDoc`)](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview)) (IDoc を送信する) アクションを使用すると、SAP サーバーに IDoc メッセージが送信されます。
+[Send IDoc (`SendIDoc`)](/connectors/sap/) (IDoc を送信する) アクションを使用すると、SAP サーバーに IDoc メッセージが送信されます。
 
 呼び出しには、次のパラメーターを使用する必要があります。 
 

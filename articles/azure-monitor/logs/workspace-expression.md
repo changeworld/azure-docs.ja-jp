@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 9ce9957d348fc9d57ff688408d6aaade67e95465
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34b1f850b262a0027d3a9cb2e926bcb2c8a49665
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604147"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710908"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor ログ クエリの workspace() 式
 
@@ -34,7 +34,7 @@ ms.locfileid: "100604147"
 | Azure リソース ID | Azure リソースの識別子 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
-## <a name="notes"></a>Notes
+## <a name="notes"></a>ノート
 
 * ワークスペースへの読み取りアクセスが必要です。
 * 関連する式は、Application Insights のアプリケーション間でクエリすることができる `app` です。
@@ -64,6 +64,6 @@ union
 
 ## <a name="next-steps"></a>次のステップ
 
-- Application Insights アプリを参照する場合には、[app 式](../log-query/app-expression.md)に関するページをご覧ください。
-- [Azure Monitor データ](../log-query/log-query-overview.md)の格納方法を確認します。
+- Application Insights アプリを参照する場合には、[app 式](./app-expression.md)に関するページをご覧ください。
+- [Azure Monitor データ](./log-query-overview.md)の格納方法を確認します。
 - [Kusto クエリ言語](/azure/kusto/query/)の完全なドキュメントにアクセスします。

@@ -2,16 +2,16 @@
 title: テンプレートでの Azure Key Vault の使用
 description: Azure Key Vault を使用して Azure Resource Manager テンプレート (ARM テンプレート) のデプロイ時にセキュリティで保護されたパラメーターの値を渡す方法について説明します。
 author: mumian
-ms.date: 04/23/2020
+ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 44a5131a7ad90feeeeff56e95b64e65f3f18855c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 388996dc0054192f6d9f3c87e11ca1d15e8a85e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674159"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703887"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -93,7 +93,14 @@ ID をコピーして貼り付けると、ID が複数の行に分かれてし�
 デプロイを検証するには、同じシェル ウィンドウで次の PowerShell コマンドを実行して、シークレットをクリア テキストで取得します。 このコマンドは、前述の PowerShell スクリプトで定義された `$keyVaultName` 変数を使用しているため、同じシェル セッションでのみ機能します。
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
+$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword"
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 キー コンテナーとシークレットの準備ができました。 以降のセクションでは、デプロイ時にシークレットを取得するように既存のテンプレートをカスタマイズする方法について説明します。
@@ -141,7 +148,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     "adminPassword": {
         "reference": {
             "keyVault": {
-            "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
+                "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
             },
             "secretName": "vmAdminPassword"
         }

@@ -7,12 +7,12 @@ ms.date: 1/10/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro、openshift、az aro、red hat、cli
-ms.openlocfilehash: 2c2c8607374493aa4e1135bbef0156b9c0b66fa6
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 742da12bd3a10cd1f541e9c43f654cfe7df04340
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634977"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720887"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>Azure Red Hat OpenShift (ARO) クラスターをアップグレードする
 
@@ -20,7 +20,7 @@ ARO クラスター ライフサイクルの一部には、最新の OpenShift �
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure CLI バージョン 2.0.65 以降を実行している必要があります。 現在のバージョンを調べるには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください
+この記事では、Azure CLI バージョン 2.0.65 以降を実行している必要があります。 現在のバージョンを調べるには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください
 
 この記事では、既存の Azure Red Hat OpenShift クラスターに、`admin` 特権を持つユーザーとしてアクセスできることを前提としています。
 
@@ -39,4 +39,3 @@ OpenShift Web コンソールで、 **[管理]**  >  **[クラスター設定]**
 ## <a name="next-steps"></a>次のステップ
 - [OC CLI を使用して ARO クラスターをアップグレードする方法について確認します](https://docs.openshift.com/container-platform/4.6/updating/updating-cluster-between-minor.html)
 - 使用可能な OpenShift Container Platform のアドバイザリと更新プログラムに関する情報については、カスタマー ポータルの [errata セクション](https://access.redhat.com/downloads/content/290/ver=4.6/rhel---8/4.6.0/x86_64/product-errata)を参照してください。
-  

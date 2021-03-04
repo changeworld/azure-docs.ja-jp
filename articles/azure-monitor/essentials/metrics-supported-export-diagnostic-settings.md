@@ -5,20 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
-ms.openlocfilehash: 8f503623031b7071c5e0a206d078175e16a7e919
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d48dcb4e45bbaf3d516f2a45e14a6be0837b55c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601583"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734385"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック
 
-Azure Monitor には、構成なしの[プラットフォーム メトリック](../essentials/data-platform-metrics.md)が既定で用意されています。 これにより、複数の方法を使用してプラットフォーム メトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 Azure Monitor の統合メトリック パイプラインで現在利用可能なプラットフォーム メトリックの完全な一覧については、[サポートされるメトリック](../platform/metrics-supported.md)に関するページを参照してください。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](/rest/api/monitor/metricdefinitions) を使ってください。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。
+Azure Monitor には、構成なしの[プラットフォーム メトリック](../essentials/data-platform-metrics.md)が既定で用意されています。 これにより、複数の方法を使用してプラットフォーム メトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 Azure Monitor の統合メトリック パイプラインで現在利用可能なプラットフォーム メトリックの完全な一覧については、[サポートされるメトリック](./metrics-supported.md)に関するページを参照してください。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](/rest/api/monitor/metricdefinitions) を使ってください。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポートできないメトリック
 
-この場所にあったコンテンツは、[Azure Monitor メトリックのサポート リスト](../platform/metrics-supported.md#exporting-platform-metrics-to-other-locations)に移動されました。
+この場所にあったコンテンツは、[Azure Monitor メトリックのサポート リスト](./metrics-supported.md#exporting-platform-metrics-to-other-locations)に移動されました。
 
 診断設定を使用してメトリックをエクスポートする場合は、制限があります。 メトリックはすべて、REST API を使用してエクスポートできます。 
 
@@ -548,5 +548,4 @@ Azure Monitor には、構成なしの[プラットフォーム メトリック]
 | Microsoft.Sql/servers/elasticPools | xtp_storage_percent | インメモリ OLTP ストレージの割合 | 
 | Microsoft.Sql/servers | dtu_consumption_percent | DTU の割合 | 
 | Microsoft.Sql/servers | dtu_used | 使用された DTU | 
-| Microsoft.Sql/managedInstances | avg_cpu_percent | 平均 CPU の割合 | 
-
+| Microsoft.Sql/managedInstances | avg_cpu_percent | 平均 CPU の割合 |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 79558bd2c8e9bfec0aff47d254944977d271a762
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8d748f93337a770e0d565bab79fdfb3625bda70d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587816"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735524"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -61,14 +61,14 @@ VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
 ホスト ネットワーク: NIC チーミング | はい | はい
-ホスト ネットワーク: VLAN | はい | ○
-ホスト ネットワーク: IPv4 | はい | ○
-ホスト ネットワーク: IPv6 | いいえ | ×
+ホスト ネットワーク: VLAN | はい | はい
+ホスト ネットワーク: IPv4 | はい | はい
+ホスト ネットワーク: IPv6 | いいえ | いいえ
 ゲスト VM ネットワーク: NIC チーミング | いいえ | いいえ
-ゲスト VM ネットワーク: IPv4 | はい | ○
-ゲスト VM ネットワーク: IPv6 | いいえ | [はい]
-ゲスト VM ネットワーク: 静的 IP (Windows) | ○ | ○
-ゲスト VM ネットワーク: 静的 IP (Linux) | × | いいえ
+ゲスト VM ネットワーク: IPv4 | はい | はい
+ゲスト VM ネットワーク: IPv6 | いいえ | はい
+ゲスト VM ネットワーク: 静的 IP (Windows) | はい | はい
+ゲスト VM ネットワーク: 静的 IP (Linux) | いいえ | いいえ
 ゲスト VM ネットワーク: マルチ NIC | はい | はい
 HTTPS プロキシ | いいえ | ×
 Site Recovery サービスへの Private Link アクセス | はい。 [詳細については、こちらを参照してください](hybrid-how-to-enable-replication-private-endpoints.md)。 | はい。 [詳細については、こちらを参照してください](hybrid-how-to-enable-replication-private-endpoints.md)。
@@ -85,65 +85,65 @@ ILB | はい | はい
 ELB | はい | はい
 Azure の Traffic Manager | はい | はい
 マルチ NIC | はい | はい
-予約済み IP | ○ | はい
-IPv4 | ○ | ○
-送信元 IP アドレスを保持する | ○ | ○
-Azure 仮想ネットワーク サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | ○ | ○
-高速ネットワーク | いいえ | ×
+予約済み IP | はい | はい
+IPv4 | はい | はい
+送信元 IP アドレスを保持する | はい | はい
+Azure 仮想ネットワーク サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | はい | はい
+高速ネットワーク | いいえ | いいえ
 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V ホスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | --- 
-NFS | N/A | N/A
-SMB 3.0 | はい | ○
-SAN (ISCSI) | ○ | ○
-マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | ○ | はい
+NFS | NA | NA
+SMB 3.0 | はい | はい
+SAN (ISCSI) | はい | はい
+マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | はい | はい
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM ゲスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-VMDK | N/A | N/A
+VMDK | NA | NA
 VHD/VHDX | はい | はい
-Generation 2 VM | ○ | ○
-EFI/UEFI<br></br>Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。| ○ | ○
+Generation 2 VM | はい | はい
+EFI/UEFI<br></br>Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。| はい | はい
 共有クラスター ディスク | いいえ | いいえ
-暗号化されたディスク | × | いいえ
-NFS | N/A | N/A
-SMB 3.0 | × | ×
+暗号化されたディスク | いいえ | いいえ
+NFS | NA | NA
+SMB 3.0 | いいえ | いいえ
 RDM | NA | NA
 1 TB より大きいディスク | はい、最大 4,095 GB | はい、最大 4,095 GB
 ディスク:4K 論理および物理セクター | サポートされない: Gen 1/Gen 2 | サポートされない: Gen 1/Gen 2
-ディスク:4K 論理および 512 バイトの物理セクター | はい |  ○
+ディスク:4K 論理および 512 バイトの物理セクター | はい |  はい
 論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | はい | はい
 ストライピングされたディスクのボリューム > 1 TB | はい | はい
-記憶域スペース | × | ×
-ディスクのホット アド/削除 | × | ×
-ディスクの除外 | ○ | はい
-マルチパス (MPIO) | ○ | はい
+記憶域スペース | いいえ | いいえ
+ディスクのホット アド/削除 | いいえ | いいえ
+ディスクの除外 | はい | はい
+マルチパス (MPIO) | はい | はい
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-ローカル冗長ストレージ | ○ | ○
-geo 冗長ストレージ | ○ | ○
+ローカル冗長ストレージ | はい | はい
+geo 冗長ストレージ | はい | はい
 読み取りアクセス geo 冗長ストレージ | はい | はい
-ゾーン冗長ストレージ | × | ×
-クール ストレージ | × | いいえ
-ホット ストレージ| いいえ | ×
+ゾーン冗長ストレージ | いいえ | いいえ
+クール ストレージ | いいえ | いいえ
+ホット ストレージ| いいえ | いいえ
 ブロック blob | いいえ | いいえ
 保存時の暗号化 (SSE)| はい | はい
 保存時の暗号化 (CMK) <br></br> (マネージド ディスクへのフェールオーバーの場合のみ)| はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
 保存時の二重暗号化 <br></br> (マネージド ディスクへのフェールオーバーの場合のみ) <br></br> [Windows](../virtual-machines/disk-encryption.md) および [Linux](../virtual-machines/disk-encryption.md) でサポートされているリージョンの詳細について参照してください | はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
-Premium Storage | はい | ○
+Premium Storage | はい | はい
 Standard Storage | はい | はい
 Import/Export サービス | いいえ | いいえ
 ファイアウォールが有効になっている Azure Storage アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
 ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure Storage アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
-転送オプションのセキュリティ保護 | はい
+転送オプションのセキュリティ保護 | はい | はい
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 34223298dbf0dad9d9214676a5190bef063a8228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34168a02b5a2d2dfe74e2a5839e0bfddcf684222
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577036"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712183"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -37,7 +37,7 @@ Azure Private Link には次のような利点があります。
  
 - **独自のサービスへの拡張**: Azure 上のコンシューマーに対し、同じエクスペリエンスと機能でプライベートにサービスを提供できます。 Standard Azure Load Balancer の内側にサービスを配置することで、サービスを Private Link 対応にすることができます。 そうすれば、コンシューマーは自身の仮想ネットワーク内のプライベート エンドポイントを使用して直接そのサービスに接続できます。 接続要求は、承認呼び出しフローを使用して管理できます。 Azure Private Link は、異なる Azure Active Directory テナントに属するコンシューマーとサービスに対しても機能します。 
 
-## <a name="availability"></a>利用可能なサービス 
+## <a name="availability"></a>可用性 
  次の表に、Private Link サービスと、それらを使用可能なリージョンの一覧を示します。 
 
 |サポートされているサービス  |対応リージョン | その他の注意点 | Status  |
@@ -54,7 +54,7 @@ Azure Private Link には次のような利点があります。
 |  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン     | General Purpose とメモリ最適化の価格レベルでサポートされます | GA <br/> [Azure Database for PostgreSQL のプライベート エンドポイントを作成する方法を確認します。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン      |  | GA <br/> [Azure Database for MySQL のプライベート エンドポイントを作成する方法を確認します。](../mysql/concepts-data-access-security-private-link.md)     |
 |  Azure Database for MariaDB         | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン     |  | GA <br/> [Azure Database for MariaDB のプライベート エンドポイントを作成する方法を確認します。](../mariadb/concepts-data-access-security-private-link.md)      |
-|  Azure Digital Twins         | Azure Digital Twins でサポートされるすべてのパブリック リージョン     |  | プレビュー <br/> [Azure Digital Twins のプライベート エンドポイントを作成する方法を確認します。](../digital-twins/how-to-enable-private-link.md)      |
+|  Azure Digital Twins         | Azure Digital Twins でサポートされるすべてのパブリック リージョン     |  | プレビュー <br/> [Azure Digital Twins のプライベート エンドポイントを作成する方法を確認します。](../digital-twins/how-to-enable-private-link-portal.md)      |
 |  Azure Key Vault         | すべてのパブリック リージョン<br/> すべての Government リージョン      |  | GA   <br/> [Azure Key Vault のプライベート エンドポイントを作成する方法を確認します。](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes Service - Kubernetes API | すべてのパブリック リージョン      |  | GA   <br/> [Azure Kubernetes Service のプライベート エンドポイントを作成する方法を確認します。](../aks/private-clusters.md)   |
 |Azure Search | すべてのパブリック リージョン <br/> すべての Government リージョン | プライベート モードのサービスでサポートされます | GA   <br/> [Azure Search のプライベート エンドポイントを作成する方法を確認します。](../search/service-create-private-endpoint.md)    |

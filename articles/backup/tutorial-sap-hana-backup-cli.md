@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure CLI を使用して、Azu
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: ba06ef876f30dc51e04fe7491d491621f5d8e21b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710602"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースをバックアップする
 
@@ -176,9 +176,7 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 応答によってジョブ名がわかります。 このジョブ名を使用し、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用してジョブの状態を追跡できます。
 
 >[!NOTE]
->完全バックアップまたは差分バックアップをスケジュールするだけでなく、手動でトリガーすることもできます。 ログ バックアップは、内部的に SAP HANA によって自動的にトリガーおよび管理されます。
->
-> 増分バックアップは、現在 Azure Backup ではサポートされていません。
+>ログ バックアップは、内部的に SAP HANA によって自動的にトリガーおよび管理されます。
 
 ## <a name="next-steps"></a>次のステップ
 

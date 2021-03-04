@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 040c487df83c117e177b8a8b0e8fddde8682c67f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600588"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700645"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージにデータをアーカイブする
 この記事では、[Azure Logic Apps](../../logic-apps/index.yml) を使用して Azure Monitor の Log Analytics ワークスペースにあるデータを照会し、Azure Storage に送信する方法について説明します。 このプロセスは、監査とコンプライアンスのシナリオに合わせて Azure Monitor のログ データをエクスポートする必要がある場合や、別のサービスでこのデータを取得できるようにする場合に使用します。  
@@ -118,7 +118,7 @@ AzureActivity
     ResourceId = _ResourceId 
 ```
 
-**[時間の範囲]** には、**TimeGenerated** 列に基づいてクエリに含まれるレコードを指定します。 これは、クエリで選択した時間の範囲と同じかそれよりも大きい値に設定する必要があります。 このクエリには **TimeGenerated** 列が使用されていないため、 **[クエリに設定します]** オプションは使用できません。 時間の範囲の詳細については、「[クエリ スコープ](../log-query/scope.md)」を参照してください。 
+**[時間の範囲]** には、**TimeGenerated** 列に基づいてクエリに含まれるレコードを指定します。 これは、クエリで選択した時間の範囲と同じかそれよりも大きい値に設定する必要があります。 このクエリには **TimeGenerated** 列が使用されていないため、 **[クエリに設定します]** オプションは使用できません。 時間の範囲の詳細については、「[クエリ スコープ](./scope.md)」を参照してください。 
 
 **[時間の範囲]** で **[過去 4 時間]** を選択します。 これにより、インジェスト時間が **TimeGenerated** よりも大きいレコードが結果に含まれるようになります。
    
@@ -210,6 +210,6 @@ Azure portal の **[ストレージ アカウント]** メニューに移動し�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)についての詳細を見る。
+- [Azure Monitor のログ クエリ](./log-query-overview.md)についての詳細を見る。
 - [Logic Apps](../../logic-apps/index.yml) についての詳細を見る
 - [Power Automate](https://flow.microsoft.com) についての詳細を見る。

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: e8ee45a1bf6a45be1fd976d3fb1b8aba60d2b989
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca36c35d859e651c0d949f4b7fbb28137d01af90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734963"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -164,7 +164,7 @@ $mma.ReloadConfiguration()
 変更を有効にするために、エージェント サービスを再起動する必要はありません。
 
 ## <a name="update-proxy-settings"></a>プロキシ設定を更新する
-配置後にプロキシ サーバーまたは [Log Analytics ゲートウェイ](../platform/gateway.md)経由で通信するようにエージェントを構成するには、次の方法のいずれかを使用して、このタスクを完了します。
+配置後にプロキシ サーバーまたは [Log Analytics ゲートウェイ](./gateway.md)経由で通信するようにエージェントを構成するには、次の方法のいずれかを使用して、このタスクを完了します。
 
 ### <a name="windows-agent"></a>Windows エージェント
 

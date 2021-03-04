@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2a6e31115fb2548f8248f741213970605f230036
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c404aa93669cd95dccb0ad185d71d2ec16256d0d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390727"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570437"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -32,7 +32,7 @@ ms.locfileid: "100390727"
 
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
-Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に保持されます。
+Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)に保持されます。
 
 次のサポートされている操作を監査できます。
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c99a9086171192e5d954fb5a9bfbe5d2d7ef4ea5
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 8a9149119bc754ff0715f2841925da01301faecd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749933"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>サンプル ファイルを調べて編集する
 
@@ -26,11 +26,11 @@ ms.locfileid: "99569451"
 1. *operations.json* ファイルを編集します。
  
     * グラフ トポロジへのリンクを変更します。
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-with-grpcExtension/2.0/topology.json"`
     * GraphInstanceSet で、前のリンクの値と一致するようにグラフ トポロジの名前を編集します。
-    * `"topologyName"` : `"InferencingWithGrpcExtension"`
+    * `"topologyName"` : `"EVROnMotionPlusGrpcExtension"`
     * GraphTopologyDelete で、名前を編集します。
-    * `"name"` : `"InferencingWithGrpcExtension"`
+    * `"name"` : `"EVROnMotionPlusGrpcExtension"`
 
 > [!NOTE]
 > <p>
@@ -51,7 +51,7 @@ ms.locfileid: "99569451"
 >   },
 >   "dataTransfer": {
 >       "mode": "sharedMemory",
->       "SharedMemorySizeMiB": "5"
+>       "SharedMemorySizeMiB": "256"
 >   },
 >   "image": {
 >       "scale": {
@@ -107,10 +107,10 @@ ms.locfileid: "99569451"
         > 上記の手順は、セットアップ スクリプトによって作成された仮想マシンの使用を前提としています。 独自のエッジ デバイスを使用している場合は、エッジ デバイスにアクセスし、**管理者権限** で次のコマンドを実行して、このクイックスタートで使用するサンプル ビデオ ファイルをプルして保存します。  
 
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * **lvaExtension** モジュール。これは、通信方法として gRPC を使用し、コンピューター ビジョンを画像に適用して、オブジェクトの種類のクラスを複数返す YOLOv3 オブジェクト検出モデルです。
     
@@ -167,7 +167,7 @@ ms.locfileid: "99569451"
       "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
-        "topologyName": "InferencingWithGrpcExtension",
+        "topologyName": "EVROnMotionPlusGrpcExtension",
         "description": "Sample graph description",
         "parameters": [
           {

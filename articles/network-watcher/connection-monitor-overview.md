@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361028"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712319"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>接続モニターによるネットワーク接続の監視
 
@@ -89,7 +89,7 @@ Linux マシンの場合、使用する portNumber を手動で変更する必�
 
  使用するポート番号は、ワークスペースで使用されているすべてのエージェントで同じである必要があることに注意してください。 
 
-このスクリプトは、ソリューションで必要なレジストリ キーを作成します。 エージェントが互いに TCP 接続を作成することを許可する Windows ファイアウォール規則も作成されます。 スクリプトによって作成されたレジストリ キーは、デバッグ ログとログ ファイルのパスを記録するかどうかを指定します。 このスクリプトは、また、通信で使われるエージェント TCP ポートを定義します。 これらのキーの値は、スクリプトによって自動的に設定されます。 これらのキーを手動で変更しないでください。 既定で開かれるポートは 8084 です。 パラメーター "portNumber" をスクリプトに指定することでカスタム ポートを使用できます。 スクリプトが実行されるすべてのコンピューターで同じポートを使います。 Log Analytics エージェントのネットワーク要件の[詳細情報](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements)を参照してください。
+このスクリプトは、ソリューションで必要なレジストリ キーを作成します。 エージェントが互いに TCP 接続を作成することを許可する Windows ファイアウォール規則も作成されます。 スクリプトによって作成されたレジストリ キーは、デバッグ ログとログ ファイルのパスを記録するかどうかを指定します。 このスクリプトは、また、通信で使われるエージェント TCP ポートを定義します。 これらのキーの値は、スクリプトによって自動的に設定されます。 これらのキーを手動で変更しないでください。 既定で開かれるポートは 8084 です。 パラメーター "portNumber" をスクリプトに指定することでカスタム ポートを使用できます。 スクリプトが実行されるすべてのコンピューターで同じポートを使います。 Log Analytics エージェントのネットワーク要件の[詳細情報](../azure-monitor/agents/log-analytics-agent.md#network-requirements)を参照してください。
 
 このスクリプトでは、Windows ファイアウォールがローカルでのみ構成されます。 ネットワーク ファイアウォールがある場合、ネットワーク パフォーマンス モニターによって使われている TCP ポート宛てのトラフィックを許可する必要があります。
 

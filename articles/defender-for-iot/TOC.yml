@@ -1,11 +1,13 @@
 - name: Azure Defender for IoT のドキュメント
   href: index.yml
 - name: 概要
+  displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
     - name: 新機能
       href: release-notes.md
     - name: エージェントレス ソリューション アーキテクチャ
+      displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: エージェントベースのソリューション アーキテクチャ
       href: architecture-agent-based.md
@@ -15,8 +17,10 @@
     - name: 組織向けのエージェントレス ソリューション
       items:
         - name: システムの前提条件
+          displayName: 'firewall, proxy, open ports'
           href: quickstart-system-prerequisites.md
         - name: Azure Defender for IoT を使用した作業の開始
+          displayName: 'getting started, registration, onboarding'
           href: getting-started.md
     - name: デバイス ビルダー向けのエージェントベースのソリューション
       items:
@@ -110,7 +114,7 @@
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
               href: how-to-identify-required-appliances.md
             - name: ソフトウェアをインストールする
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install, deploy'
               href: how-to-install-software.md
             - name: ネットワークをセットアップする
               displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
@@ -118,15 +122,15 @@
         - name: センサーを準備する
           items:
             - name: センサーをオンボードする
-              displayName: 'onboard, cloud, register, activate'
+              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: センサーをアクティブにしてセットアップする
-              displayName: 'onboard, register, activation, certificate, cloud connected, sign in, login, setup, learning mode, initial'
+              displayName: 'onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
               href: how-to-activate-and-set-up-your-sensor.md
         - name: オンプレミス管理コンソールを準備する
           items:
             - name: オンプレミス管理コンソールをアクティブにしてセットアップする
-              displayName: 'activate, certificate, sign in, login, setup, initial, committed'
+              displayName: 'activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
               href: how-to-activate-and-set-up-your-on-premises-management-console.md
             - name: 高可用性のセットアップ
               displayName: 'primary, secondary, failover, failback fail, recovery'
@@ -147,11 +151,11 @@
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
         - name: 個々のセンサーの管理
           href: how-to-manage-individual-sensors.md
-          displayName: 'activation, certificate, SSL, TLS, connect, timezone time zone, backup, restore, software update, failure'
+          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, timezone time zone, backup, sync, restore, software update, failure'
         - name: クラウドでセンサーを管理する
           href: how-to-manage-sensors-on-the-cloud.md
         - name: オンプレミスの管理コンソールを管理する
-          displayName: 'activation, certificate, software update, backup, restore, proxy, password recovery'
+          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, sync, backup, restore, software update, failure'
           href: how-to-manage-the-on-premises-management-console.md
         - name: 脅威インテリジェンス パッケージを操作する
           href: how-to-work-with-threat-intelligence-packages.md
@@ -162,10 +166,10 @@
               displayName: classification
             - name: デバイス インベントリのセンサー検出を調査する
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
-              displayName: 'classification, Windows registry'
+              displayName: 'classification, Windows registry, asset, device, firmware, import'
         - name: センサー デバイス マップを操作する
           href: how-to-work-with-the-sensor-device-map.md
-          displayName: 'connections, Purdue, zoom'
+          displayName: 'connections, Purdue, zoom, delete device'
         - name: センサーによって検出されたアラートを操作する
           items:
             - name: センサーでのアラートの操作
@@ -183,7 +187,7 @@
               displayName: 'custom, alerts, comments, groups'
             - name: アラート情報を転送する
               href: how-to-forward-alert-information-to-partners.md
-              displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
+              displayName: 'integration, 3rd party, partners, vendor, Syslog server, NetWitness, CEF, LEEF, email, SOC, SIEM, SOAR, incident response'
         - name: グローバル、地域、ローカルの脅威に関する分析情報を得る
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
           displayName: 'site, business unit, region, map'
@@ -193,10 +197,12 @@
           items:
             - name: リスク評価レポートの作成
               href: how-to-create-risk-assessment-reports.md
-              displayName: 'vulnerability, security score, score'
+              displayName: 'vulnerability, security score, score, CVE'
             - name: 攻撃ベクトル レポートの作成
               href: how-to-create-attack-vector-reports.md
+              displayName: 'Attack surface, prediction,simulation'
             - name: データ マイニング レポートの作成
+              displayName: 'CVE, activity'
               href: how-to-create-data-mining-queries.md
             - name: 傾向と統計レポートの作成
               href: how-to-create-trends-and-statistics-reports.md
@@ -204,7 +210,7 @@
         - name: デバイス情報を強化する
           items:
             - name: デバイス通知を操作する
-              displayName: 'notifications, operating systems, enrich, device information, classification'
+              displayName: 'notifications, operating systems, enrich, device information, classification, delete devices'
               href: how-to-work-with-device-notifications.md
             - name: ポートと VLAN の名前解決を強化する
               displayName: 'port, VLAN'

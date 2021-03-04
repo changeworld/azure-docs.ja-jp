@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 26cfdf05847b01d28a8574483acc89cfeced0ffa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603394"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717742"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
@@ -243,9 +243,9 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 
 [Azure の自動スケールのベスト プラクティス](autoscale-best-practices.md)
 
-[PowerShell を使用した自動スケールの管理](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
+[PowerShell を使用した自動スケールの管理](../powershell-samples.md#create-and-manage-autoscale-settings)
 
-[CLI を使用した自動スケールの管理](../samples/cli-samples.md#autoscale)
+[CLI を使用した自動スケールの管理](../cli-samples.md#autoscale)
 
 [自動スケールに関する webhook と電子メールの通知の構成](autoscale-webhook-email.md)
 

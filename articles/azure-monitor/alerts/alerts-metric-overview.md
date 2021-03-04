@@ -4,16 +4,16 @@ description: メトリック アラートの用途と、Azure Monitor での機�
 ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 989c3b8a50c3e613e67726684f35c6adce9c8b96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc0f41f23f1d9387f806c947ac27e6f31cc0e053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723607"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
-Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、[プラットフォーム メトリック](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[カスタム メトリック](../platform/metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリック](./alerts-metric-logs.md)への変換、Application Insights のメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
+Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、[プラットフォーム メトリック](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[カスタム メトリック](../essentials/metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリック](./alerts-metric-logs.md)への変換、Application Insights のメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
 
 ## <a name="how-do-metric-alerts-work"></a>メトリック アラートの機能
 
@@ -26,7 +26,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 静的
-- 集計の種類 (生のメトリック値に対して実行される統計。 [サポートされる集計の種類](../platform/metrics-aggregation-explained.md#aggregation-types)は、最小、最大、平均、合計、カウントです):Average
+- 集計の種類 (生のメトリック値に対して実行される統計。 [サポートされる集計の種類](../essentials/metrics-aggregation-explained.md#aggregation-types)は、最小、最大、平均、合計、カウントです):Average
 - 期間 (メトリック値がチェックされるルック バック期間): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
 - 演算子:より大きい
@@ -43,7 +43,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 動的
-- 集計の種類 (生のメトリック値に対して実行される統計。 [サポートされる集計の種類](../platform/metrics-aggregation-explained.md#aggregation-types)は、最小、最大、平均、合計、カウントです):Average
+- 集計の種類 (生のメトリック値に対して実行される統計。 [サポートされる集計の種類](../essentials/metrics-aggregation-explained.md#aggregation-types)は、最小、最大、平均、合計、カウントです):Average
 - 期間 (メトリック値がチェックされるルック バック期間): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
 - 演算子:より大きい
@@ -180,9 +180,8 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure でメトリック アラートを作成、表示、管理する方法を学習する](../alerts/alerts-metric.md)
-- [Azure Monitor メトリックス エクスプローラー内でアラートを作成する方法を学習する](../platform/metrics-charts.md#alert-rules)
+- [Azure Monitor メトリックス エクスプローラー内でアラートを作成する方法を学習する](../essentials/metrics-charts.md#alert-rules)
 - [Azure Resource Manager のテンプレートを使ってメトリック アラートを配置する方法を学習する](./alerts-metric-create-templates.md)
-- [アクション グループの詳細について学習する](../platform/action-groups.md)
+- [アクション グループの詳細について学習する](./action-groups.md)
 - [動的しきい値の条件タイプの詳細について学習する](../alerts/alerts-dynamic-thresholds.md)
 - [メトリック警告に関する問題のトラブルシューティングについて学習する](alerts-troubleshoot-metric.md)
-

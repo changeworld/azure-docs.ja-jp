@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 53f189921a44d63d7e344fb733519661f5b17dc6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e7ab83b2b16a1340b354b9333d00c8166b5cfdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722961"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -322,7 +322,7 @@ Azure Monitor ログ内のすべてのログは、**TimeGenerated** 列に従っ
 
 期間が 15 日間を超えるクエリは、リソースを過度に消費するクエリと見なされます。 期間が 90 日間を超えるクエリはリソースを酷使するクエリと見なされ、調整されることがあります。
 
-時間範囲は、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../log-query/scope.md#time-range)」で説明されているように、Log Analytics 画面で時間範囲セレクターを使用して設定できます。 選択した時間範囲がクエリ メタデータを使用してバックエンドに渡されるため、この方法をお勧めします。 
+時間範囲は、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](./scope.md#time-range)」で説明されているように、Log Analytics 画面で時間範囲セレクターを使用して設定できます。 選択した時間範囲がクエリ メタデータを使用してバックエンドに渡されるため、この方法をお勧めします。 
 
 別の方法として、クエリの **TimeGenerated** に [where](/azure/kusto/query/whereoperator) 条件を明示的に含めることもできます。 この方法を使用すると、クエリが別のインターフェイスから使用される場合でも、期間が確実に固定されます。
 クエリのすべての要素には必ず **TimeGenerated** フィルターを指定する必要があります。 複数のテーブルまたは同じテーブルからデータを取得するサブクエリがクエリに含まれている場合、それぞれに独自の [where](/azure/kusto/query/whereoperator) 条件を含める必要があります。

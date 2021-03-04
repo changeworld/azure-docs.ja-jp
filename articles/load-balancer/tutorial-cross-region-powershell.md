@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/10/2021
-ms.openlocfilehash: b1a249bac4a1a46e52bf52eccd56649153eefe8e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88e400cea764be84521c003a681aa74885dc29ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360926"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721346"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -195,7 +195,7 @@ Set-AzLoadBalancerBackendAddressPool @bepoolcr
 
 このセクションでは、リージョン間ロード バランサーをテストします。 Web ブラウザーで、パブリック IP アドレスに接続します。  いずれかのリージョン ロード バランサーのバックエンド プールにある仮想マシンを停止し、フェールオーバーを観察します。
 
-1. [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用して、ロード バランサーのパブリック IP アドレスを取得します。
+1. [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、ロード バランサーのパブリック IP アドレスを取得します。
 
 ```azurepowershell-interactive
 $ip = @{

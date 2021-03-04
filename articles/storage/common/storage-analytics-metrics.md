@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8f698aadc24d0dc0691743f1d8dd54c5d5fd287e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220958"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714733"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
 
@@ -25,7 +25,7 @@ Azure Storage では、Storage Analytics を利用し、ストレージ サー�
 - ストレージ サービスに対して行われた要求の問題の診断。
 - サービスを使用するアプリケーションのパフォーマンスの向上。
 
- 新しいストレージ アカウントでは、Storage Analytics Metrics が既定で有効になっています。 メトリックは、PowerShell を使用するか Azure CLI を使用して [Azure portal](https://portal.azure.com/) で構成することができます。 ステップ バイ ステップ ガイダンスについては、[Azure Storage Analytics メトリックを有効にして管理する (クラシック)](./storage-monitor-storage-account.md) に関する記事を参照してください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 サービスごとに Storage Analytics を有効にするには、サービス プロパティの設定操作を行います。  
+ 新しいストレージ アカウントでは、Storage Analytics Metrics が既定で有効になっています。 メトリックは、PowerShell を使用するか Azure CLI を使用して [Azure portal](https://portal.azure.com/) で構成することができます。 ステップ バイ ステップ ガイダンスについては、[Azure Storage Analytics メトリックを有効にして管理する (クラシック)](./manage-storage-analytics-logs.md) に関する記事を参照してください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 サービスごとに Storage Analytics を有効にするには、サービス プロパティの設定操作を行います。  
 
 > [!NOTE]
 > Storage Analytics メトリックは、Azure Blob ストレージ、Azure Queue ストレージ、Azure Table ストレージ、Azure Files でお使いいただけます。
@@ -69,7 +69,7 @@ Azure Storage では、Storage Analytics を利用し、ストレージ サー�
  これらのテーブルは、Storage Analytics がストレージ サービス エンドポイントに対して有効化されたときに自動的に作成されます。 これらのテーブルには、ストレージ アカウントの名前空間を介してアクセスします (例: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`)。 メトリック テーブルは、操作の一覧には表示されません。また、テーブル名を使用して直接アクセスする必要があります。
 
 ## <a name="metrics-alerts"></a>メトリック アラート
-ストレージ サービスの動作の重要な変更が自動的に通知されるように、[Azure Portal](https://portal.azure.com) でアラートを設定することをご検討ください。 ステップバイステップ ガイダンスについては、[メトリック アラートの作成](storage-monitor-storage-account.md#create-metric-alerts)に関する記事を参照してください。
+ストレージ サービスの動作の重要な変更が自動的に通知されるように、[Azure Portal](https://portal.azure.com) でアラートを設定することをご検討ください。 ステップバイステップ ガイダンスについては、[メトリック アラートの作成](./manage-storage-analytics-logs.md)に関する記事を参照してください。
 
 Storage Explorer ツールを使ってこのメトリック データを区切り形式でダウンロードすると、Microsoft Excel を使ってデータを分析できます。 利用できる Storage Explorer ツールの一覧については、[Azure Storage クライアント ツール](./storage-explorers.md)に関するページをご覧ください。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a9b93cf05141442901531e745971ee16348cdaae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d83ee4b53d4ccda9cb2af21fa0cb4c91822ec7c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600959"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732022"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -89,7 +89,7 @@ Log Analytics ゲートウェイは、次の言語で利用できます。
 
 Log Analytics ゲートウェイは、トランスポート層セキュリティ (TLS) 1.0、1.1、1.2 のみをサポートします。  Secure Sockets Layer (SSL) はサポートされません。  Log Analytics へのデータの転送時のセキュリティを保証するため、少なくとも TLS 1.2 を使用するようにゲートウェイを構成してください。 以前のバージョンの TLS または SSL には脆弱性が存在します。 現在、これらは下位互換性を維持するために残されていますが、使用は避けてください。  
 
-詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
+詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../logs/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
 
 ### <a name="supported-number-of-agent-connections"></a>サポートされるエージェント接続の数
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703407"
 ---
 # <a name="precise-answering"></a>正確な回答
 
@@ -32,7 +32,7 @@ QnA Maker ポータルで [テスト] ウィンドウを開くと、上部に **
 
 ## <a name="publishing-a-qna-maker-bot"></a>QnA Maker ボットを発行する
 
-ボットを発行すると、自分のアプリケーションで既定で正確な回答を、回答文章と共に短い回答を表示して提供できるようになります。 応答で正確な回答を使用する (AnswerSpan) 方法については、API リファレンスの「[回答を生成する](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan)」を参照してください。 Bot アプリ サービスを使用してテンプレートを更新すると、ユーザーは他のエクスペリエンスも柔軟に選択できるようになります。 
+ボットを発行すると、自分のアプリケーションで既定で正確な回答を、回答文章と共に短い回答を表示して提供できるようになります。 応答で正確な回答を使用する (AnswerSpan) 方法については、API リファレンスの「[回答を生成する](/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan)」を参照してください。 Bot アプリ サービスを使用してテンプレートを更新すると、ユーザーは他のエクスペリエンスも柔軟に選択できるようになります。 
 
 ## <a name="language-support"></a>言語のサポート
 

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5850644aac9c3324d9ffb17817195cbaaa6020ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a8626174e157e79d0250824e0a3cfa97141d50dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667546"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695041"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link に接続する
 
@@ -67,5 +67,5 @@ Azure Cosmos DB データベースは、 **[Azure Cosmos DB]** セクション�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Synapse と Azure Cosmos DB の間でサポートされている内容について学習する](./concept-synapse-link-cosmos-db-support.md)
-* [Azure Cosmos DB 分析ストアのプライベート エンドポイントを構成する](../cosmos-db/analytical-store-private-endpoints.md)
+* [Azure Cosmos DB 分析ストアのプライベート エンドポイントを構成する](../../cosmos-db/analytical-store-private-endpoints.md)
 * [Spark を使用して分析ストアにクエリを実行する方法を学習する](./how-to-query-analytical-store-spark.md)

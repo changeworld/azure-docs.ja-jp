@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: 3ca776a1869874042a6a97cdd59dc00d3a917d33
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98558c2b1525094277dd6c165349f25ce5cd3b23
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600684"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717878"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
 
@@ -42,7 +42,6 @@ ms.locfileid: "100600684"
 >SMS アラートの登録を解除したユーザーが新しいアクション グループに追加されると、その新しいアクション グループの SMS アラートを受け取りますが、以前のすべてのアクション グループの登録は解除されたままになります。
 
 ## <a name="next-steps"></a>次の手順
-[アクティビティ ログ アラートの概要](../platform/alerts-overview.md)を把握し、アラートを生成する方法について学習してください  
+[アクティビティ ログ アラートの概要](./alerts-overview.md)を把握し、アラートを生成する方法について学習してください  
 [SMS レートの制限](alerts-rate-limiting.md)について学習します  
-[アクション グループ](../platform/action-groups.md)の詳細を確認する
-
+[アクション グループ](./action-groups.md)の詳細を確認する

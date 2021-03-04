@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570903"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702166"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal を使用して接続モニターでモニターを作成する
 
@@ -121,7 +121,7 @@ Azure portal において接続モニターでテスト グループを作成す
 
    * オンプレミスのエージェントを選択するには、 **[非 Azure エンドポイント]** タブを選択します。既定では、エージェントはリージョンごとにワークスペースにグループ化されます。 これらのワークスペースのすべてに、Network Performance Monitor が構成されます。 
    
-       ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](../azure-monitor/insights/solutions.md)」をご覧ください。 
+       ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](../azure-monitor/insights/solutions.md)」をご覧ください。 
    
        **[接続モニターの作成]** の **[基本]** タブでは、既定のリージョンが選択されています。 リージョンを変更する場合、新しいリージョンのワークスペースからエージェントを選択できます。 1 つ以上のエージェントまたはサブネットを選択できます。 **[サブネット]** ビューで、監視する特定の IP を選択できます。 複数のサブネットを追加すると、**OnPremises_Network_1** という名前のカスタムのオンプレミス ネットワークが作成されます。 また、**Group by** セレクターを変更して、エージェントごとにグループ化することもできます。
 

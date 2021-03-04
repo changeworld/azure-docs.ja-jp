@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 692b52e8ea6a88a119ca98985864cb9e1daa14c3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7dacec1521787e55ee4c7fd5f08b9e56d9dd4842
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595745"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736000"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure Private Link の Azure セキュリティ ベースライン
 
@@ -82,7 +82,7 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: 現在は使用できません
 

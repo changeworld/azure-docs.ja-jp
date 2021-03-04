@@ -3,12 +3,12 @@ title: プライベート エンドポイント
 description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: a22da7341e3ebeff29bc784cfff0cc8aeb87fb9b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728214"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
@@ -170,9 +170,9 @@ Azure Resource Manager クライアントを使用してプライベート エ�
     > 上のテキストで、`<geo>` はリージョン コードを示します (たとえば、米国東部と北ヨーロッパはそれぞれ *eus* と *ne*)。 リージョン コードについては、次の一覧を参照してください。
     >
     > - [すべてのパブリック クラウド](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
-    > - [中国](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-    > - [ドイツ](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-    > - [US Gov ](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+    > - [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+    > - [ドイツ](../germany/germany-developer-guide.md#endpoint-mapping)
+    > - [US Gov ](../azure-government/documentation-government-developer-guide.md)
 
 1. 次に、必要な DNS レコードを追加する必要があります。 Backup DNS ゾーンに追加する必要があるレコードを表示するには、上で作成したプライベート エンドポイントに移動し、左側のナビゲーション バーの下にある **[DNS 構成]** オプションに移動します。
 

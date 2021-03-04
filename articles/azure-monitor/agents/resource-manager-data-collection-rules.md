@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f98e22ba28dcd05d164f40c301a2e43df66898de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60de25231f5fad3e7b1ddec21048d048e31f3416
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597486"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737326"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Azure Monitor のデータ収集ルールのための Resource Manager テンプレート サンプル
-この記事には、Azure Monitor で仮想マシンに対して [Log Analytics エージェント](../platform/log-analytics-agent.md)と[診断拡張機能](../platform/diagnostics-extension-overview.md)をデプロイして構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure Monitor で仮想マシンに対して [Log Analytics エージェント](./log-analytics-agent.md)と[診断拡張機能](./diagnostics-extension-overview.md)をデプロイして構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -144,6 +144,6 @@ ms.locfileid: "100597486"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor の他のサンプル テンプレートを入手します](../samples/resource-manager-samples.md)。
-* [Log Analytics の詳細情報](../platform/log-analytics-agent.md)。
-* [診断拡張機能の詳細情報](../platform/diagnostics-extension-overview.md)。
+* [Azure Monitor の他のサンプル テンプレートを入手します](../resource-manager-samples.md)。
+* [Log Analytics の詳細情報](./log-analytics-agent.md)。
+* [診断拡張機能の詳細情報](./diagnostics-extension-overview.md)。

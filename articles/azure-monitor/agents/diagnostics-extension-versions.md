@@ -1,17 +1,16 @@
 ---
 title: Windows Azure Diagnostics 拡張機能 (WAD) の構成スキーマのバージョン履歴
 description: Azure Virtual Machines、VM Scale Sets、Service Fabric、および Cloud Services のパフォーマンス カウンターの収集に関連しています。
-ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 3b6dc0e19c181ebf4df2778633f981258023e046
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 57ba1c760fe8919fff95493c5c81da4368894f73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601667"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719816"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Diagnostics 拡張機能 (WAD) の構成スキーマのバージョンと履歴
 この記事では、Microsoft Azure SDK の一部として付属している、[Windows 用の Azure Diagnostics 拡張機能 (WAD)](diagnostics-extension-overview.md) スキーマ バージョンのバージョン履歴を提供します。  
@@ -47,7 +46,7 @@ ms.locfileid: "100601667"
 ### <a name="diagnostics-extension-111"></a>診断拡張機能 1.11
 Azure Monitor シンクに対応しました。 このシンクはパフォーマンス カウンターにのみ適用されます。 VM、VMSS、またはクラウド サービスで収集されたパフォーマンス カウンターを Azure Monitor にカスタム メトリックとして送信できるようになります。 Azure Monitor シンクは以下をサポートします。
 * [Azure Monitor メトリック API](/rest/api/monitor/metrics/list) を使用して、Azure Monitor に送信されたすべてのパフォーマンス カウンターを取得します。
-* Azure Monitor の新しい[統合アラート エクスペリエンス](../platform/alerts-overview.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
+* Azure Monitor の新しい[統合アラート エクスペリエンス](../alerts/alerts-overview.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
 * パフォーマンス カウンターでワイルドカード演算子をメトリックの "Instance" ディメンションとして扱います。 たとえば、"LogicalDisk(\*)/DiskWrites/sec" カウンターを収集した場合、"Instance" ディメンションでフィルターして分割し、各論理ディスクのディスク書き込み回数/秒をプロットまたはアラートすることができます (C:、D: など)。
 
 診断拡張機能の構成で新しいシンクとして Azure Monitor を定義します
@@ -190,4 +189,3 @@ Azure SDK 2.5 から Azure SDK 2.6 以降に移行するとき、.wadcfgx ファ
 * **クラウド サービス アプリケーションの診断はロール レベルでのみ構成でき、インスタンス レベルでは構成できません。**
 * **アプリケーションをデプロイするたびに診断の構成が更新されます** – サーバー エクスプローラーで診断の構成を変更してからアプリを再デプロイした場合、これによってパリティの問題が発生する可能性があります。
 * **Azure SDK 2.5 以降では、クラッシュ ダンプがコードからではなく診断構成ファイルで構成されます** - クラッシュ ダンプをコードから構成していた場合は、その構成を手動でコードから構成ファイルに移す必要があります。Azure SDK 2.6 への移行の際にクラッシュ ダンプは移行されません。
-

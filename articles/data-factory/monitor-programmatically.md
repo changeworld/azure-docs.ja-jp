@@ -7,12 +7,12 @@ ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
 ms.custom: devx-track-python
-ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740443"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 
@@ -30,7 +30,7 @@ Data Factory では、パイプラインの実行データを 45 日間だけ格
 
 ## <a name="pipeline-run-information"></a>パイプライン実行情報
 
-パイプライン実行プロパティについては、[PipelineRun API リファレンス](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun)を参照してください。 パイプライン実行は、そのライフサイクル中にさまざまな状態になります。考えられる実行状態の値を次に示します。
+パイプライン実行プロパティについては、[PipelineRun API リファレンス](/rest/api/datafactory/pipelineruns/get#pipelinerun)を参照してください。 パイプライン実行は、そのライフサイクル中にさまざまな状態になります。考えられる実行状態の値を次に示します。
 
 * キューに登録済み
 * InProgress
@@ -163,5 +163,4 @@ PowerShell を使用して、パイプラインを作成し監視する完全な
 PowerShell コマンドレットの詳細については、[データ ファクトリの PowerShell コマンドレット リファレンス](/powershell/module/az.datafactory)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Monitor を使って Data Factory のパイプラインを監視する方法については、[Azure Monitor を使ったパイプラインの監視](monitor-using-azure-monitor.md)に関する記事をご覧ください。 
-
+Azure Monitor を使って Data Factory のパイプラインを監視する方法については、[Azure Monitor を使ったパイプラインの監視](monitor-using-azure-monitor.md)に関する記事をご覧ください。

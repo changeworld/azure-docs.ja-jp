@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 471ccd6176bd8821ce7e40fde6d961bd9bcf7f0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702149"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 単一サーバーでのメジャー バージョンのアップグレード
 
@@ -59,7 +59,7 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
  
    このアップグレードでは、Azure CLI のバージョン 2.16.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。 az version を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、az upgrade を実行します。
 
-2. サインインしたら、[az mysql server upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) コマンドを実行します。
+2. サインインしたら、[az mysql server upgrade](/cli/azure/mysql/server?preserve-view=true&view=azure-cli-latest#az_mysql_server_upgrade) コマンドを実行します。
 
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
@@ -89,7 +89,7 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
 
 1. [Azure portal](https://portal.azure.com/) で、既存の Azure Database for MySQL 5.6 を選択します。
 
-2. プライマリ サーバーから[読み取りレプリカ](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica)を作成します。
+2. プライマリ サーバーから[読み取りレプリカ](./concepts-read-replicas.md#create-a-replica)を作成します。
 
 3. [読み取りレプリカをバージョン 5.7 にアップグレード](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal)します。
 
@@ -105,7 +105,7 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
 
    `Slave_IO_Running` と `Slave_SQL_Running` の状態が "yes" で、`Seconds_Behind_Master` の値が "0" であれば、レプリケーションは正常に機能しています。 `Seconds_Behind_Master` は、レプリカの遅れの程度を示しています。 この値が "0" 以外である場合、レプリカで更新処理が実行されていることを意味します。 `Seconds_Behind_Master` が "0" であることを確認したら、安全にレプリケーションを停止できます。
 
-6. [レプリケーションを停止](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server)して、読み取りレプリカをプライマリに昇格します。
+6. [レプリケーションを停止](./howto-read-replicas-portal.md#stop-replication-to-a-replica-server)して、読み取りレプリカをプライマリに昇格します。
 
 7. サーバー 5.7 を実行している新しいプライマリ (以前のレプリカ) にアプリケーションをポイントします。 各サーバーには一意の接続文字列があります。 ソースではなく、(以前の) レプリカを指すようにアプリケーションを更新します。
 

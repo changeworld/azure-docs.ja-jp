@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 9eb1bb87792dbc61e7c85dbc20c136499f23f67c
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 414dc161d7cba2e89d15c47b8da5abdfb7cb3338
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530214"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712166"
 ---
 # <a name="use-the-session-management-rest-api"></a>セッション管理 REST API を使用する
 
@@ -18,7 +18,7 @@ Azure Remote Rendering 機能を使用するには、"*セッション*" を作�
 
 ## <a name="rest-api-reference"></a>REST API リファレンス
 
-REST API リファレンスは[こちら](https://docs.microsoft.com/rest/api/mixedreality/2021-01-01preview/remoterendering)で参照できます。Swagger の定義は[こちら](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)で参照できます。
+REST API リファレンスは[こちら](/rest/api/mixedreality/2021-01-01preview/remoterendering)で参照できます。Swagger の定義は[こちら](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)で参照できます。
 *Scripts* フォルダー内の [ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)に、サービスの使用方法を示す *RenderingSession.ps1* という名前の PowerShell スクリプトが提供されています。 スクリプトとその構成については、次を参照してください: [PowerShell スクリプトの例](../samples/powershell-example-scripts.md)。
 [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality/Azure.MixedReality.RemoteRendering)、Java、Python 用の SDK も用意されています。
 
@@ -26,7 +26,7 @@ REST API リファレンスは[こちら](https://docs.microsoft.com/rest/api/mi
 > 待機時間は、リモート レンダリングを使用する場合の重要な要素です。 最適なエクスペリエンスを実現するために、最も近いリージョンにセッションを作成します。 [Azure 待機時間テスト](https://www.azurespeed.com/Azure/Latency)を使用して、最も近いリージョンを特定できます。
 
 > [!IMPORTANT]
-> クライアント デバイスがレンダリング セッションに接続するために、ARR ランタイム SDK が必要です。 これらの SDK は、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) と [C++](https://docs.microsoft.com/cpp/api/remote-rendering/) で利用できます。 サービスへの接続とは別に、これらの SDK を使用してセッションを開始および停止することもできます。
+> クライアント デバイスがレンダリング セッションに接続するために、ARR ランタイム SDK が必要です。 これらの SDK は、[.NET](/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) と [C++](/cpp/api/remote-rendering/) で利用できます。 サービスへの接続とは別に、これらの SDK を使用してセッションを開始および停止することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

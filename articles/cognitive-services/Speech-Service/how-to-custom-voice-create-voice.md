@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0650a173b02e1b8f1f829953be1dd852024e6f65
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524517"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703373"
 ---
 # <a name="create-a-custom-voice"></a>Custom Voice を作成する
 
@@ -60,7 +60,7 @@ ms.locfileid: "99524517"
 
 > [!NOTE]
 > カスタム ニューラル音声を使用している場合は、 **[Voice Talent]\(ボイス タレント\)** タブでボイス タレントを登録する必要があります。録音スクリプトを準備するときは、TTS 音声モデルを作成して合成音声を生成するために音声データを使用することについて、ボイス タレントの同意を得るため、以下の文を必ず含めてください。 "I [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice." (私 [自分の姓名] は、私の音声の合成バージョンを作成して使用するために、私の音声が [会社名] によって使用されることを承知しています。)
-この文は、トレーニング データセット内の録音が、同意したのと同じ人物によって行われたかどうかを確認するために使用されます。 [データが処理される方法およびボイス タレントの確認が行われる方法の詳細については、こちらで確認してください](https://aka.ms/CNV-data-privacy)。 
+この文は、トレーニング データセット内の録音が、同意したのと同じ人物によって行われたかどうかを確認するために使用されます。 [データが処理される方法およびボイス タレントの確認が行われる方法の詳細については、こちらで確認してください](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
 
 ## <a name="build-your-custom-voice-model"></a>ご自分のカスタム音声モデルを作成する
 
@@ -87,7 +87,7 @@ ms.locfileid: "99524517"
 5. 次のステップで、**トレーニング方法** を選択します。 
 
     > [!NOTE]
-    > ニューラル音声をトレーニングする場合は、ボイス タレントのプロファイルと共に、自分の音声データがカスタム音声モデルのトレーニングに使用されることをボイス タレントが承認している音声同意ファイルを、指定する必要があります。 カスタム ニューラル音声を利用するためのアクセスには制限があります。 [責任ある AI の要件](https://aka.ms/gating-overview)について理解し、[こちらのアクセスを適用](https://aka.ms/customneural)してください。 
+    > ニューラル音声をトレーニングする場合は、ボイス タレントのプロファイルと共に、自分の音声データがカスタム音声モデルのトレーニングに使用されることをボイス タレントが承認している音声同意ファイルを、指定する必要があります。 カスタム ニューラル音声を利用するためのアクセスには制限があります。 [責任ある AI の要件](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)について理解し、[こちらのアクセスを適用](https://aka.ms/customneural)してください。 
     
     このページでは、テスト用のスクリプトのアップロードを選択することもできます。 テスト スクリプトは、1 Mb 未満の txt ファイルである必要があります。 サポートされているエンコード形式は、ANSI/ASCII、UTF-8、UTF-8-BOM、UTF-16-LE、または UTF-16-BE です。 発話の段落ごとに、個別の音声になります。 すべての文を 1 つの音声に結合したい場合は、1 つの段落にします。 
 
@@ -126,7 +126,7 @@ ms.locfileid: "99524517"
 
 3.  モデルの詳細ページの **[テスト]** タブで、サンプルのオーディオ ファイルが見つかります。 
 
-音声の品質は、トレーニング データのサイズ、録音の品質、トランスクリプト ファイルの正確さ、トレーニング データに録音された音声が目的のユース ケースに合わせて設計された音声の性格とどの程度一致しているかなど、さまざまな要因に依存します。 [テクノロジの機能と制限、およびモデルの品質を向上させるためのベスト プラクティスの詳細については、こちらを確認してください](https://aka.ms/CNV-limits)。 
+音声の品質は、トレーニング データのサイズ、録音の品質、トランスクリプト ファイルの正確さ、トレーニング データに録音された音声が目的のユース ケースに合わせて設計された音声の性格とどの程度一致しているかなど、さまざまな要因に依存します。 [テクノロジの機能と制限、およびモデルの品質を向上させるためのベスト プラクティスの詳細については、こちらを確認してください](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>カスタム音声エンドポイントを作成して使用する
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378623"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691197"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 - `SINGLE_USER`
 - `WITNESS`
 
-一部の `ALTER DATABASE` ステートメント (たとえば、[SET CONTAINMENT](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) は、データベースの自動バックアップ中やデータベースの作成直後などに一時的に失敗することがあります。 この場合、`ALTER DATABASE` ステートメントを再試行する必要があります。 関連するエラー メッセージの詳細については、「[解説](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)」セクションを参照してください。
+一部の `ALTER DATABASE` ステートメント (たとえば、[SET CONTAINMENT](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#converting-a-database-to-partially-contained-using-transact-sql)) は、データベースの自動バックアップ中やデータベースの作成直後などに一時的に失敗することがあります。 この場合、`ALTER DATABASE` ステートメントを再試行する必要があります。 関連するエラー メッセージの詳細については、「[解説](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&tabs=sqlpool&view=azuresqldb-mi-current#remarks-2)」セクションを参照してください。
 
 詳細については、[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options) に関する記事をご覧ください。
 
@@ -395,12 +395,12 @@ In-Database R および Python 外部ライブラリは、限られたパブリ�
 SQL Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。
 
 - サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL の[サーバーレス](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)と専用プール、および SQL Server インスタンスです。 
-- 分散書き込み可能なトランザクションは、マネージド インスタンス間でのみ可能です。 詳細については、[分散トランザクション](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)に関する記事を参照してください。 ただし、MS DTC はサポートされていません。
+- 分散書き込み可能なトランザクションは、マネージド インスタンス間でのみ可能です。 詳細については、[分散トランザクション](../database/elastic-transactions-overview.md)に関する記事を参照してください。 ただし、MS DTC はサポートされていません。
 - サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイル インポートの代わりに `BULK INSERT` または `OPENROWSET` を使用して Azure Blob Storage からネイティブ CSV インポートを使用するか、[Azure Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)を使用してファイルの読み込みを試行します。
 
 操作: 
 
-- [インスタンス間](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)書き込みトランザクションは、マネージド インスタンスでのみサポートされています。
+- [インスタンス間](../database/elastic-transactions-overview.md)書き込みトランザクションは、マネージド インスタンスでのみサポートされています。
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。

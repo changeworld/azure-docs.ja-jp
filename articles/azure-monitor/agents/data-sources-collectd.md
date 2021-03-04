@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: a0efeaa3df0ecc69fa29dcb2cbb50874c4ab486a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6848b4e0463be803fb4f41797d933386cb575a0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601546"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732107"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Azure Monitor での CollectD からのパフォーマンス データの収集に関する情報を提供します。
@@ -132,5 +132,5 @@ Azure Monitor での CollectD データの収集を構成するための基本�
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>次のステップ
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
-* [カスタム フィールド](../platform/custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
+* [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [カスタム フィールド](../logs/custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。

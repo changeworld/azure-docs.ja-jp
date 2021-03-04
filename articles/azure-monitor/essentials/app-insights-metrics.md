@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 400f239f3e7b736196bf950e81148fa2e39aca96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca19fdfa617b71b1465e4710d8ca52b18c9ebff5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731682"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights ログベースのメトリック
 
@@ -21,13 +21,13 @@ Application Insights ログベースのメトリックを使用すると、監�
 * バック グラウンドの[ログベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)は、格納されているイベントから [Kusto クエリ](/azure/kusto/query/)に変換されます。
 * [標準メトリック](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)は、事前に集計された時系列として格納されます。
 
-*標準メトリック* は収集中に事前に集計されるため、クエリ時のパフォーマンスが優れています。 このことから、ダッシュボードやリアルタイム アラートで使用することをお勧めします。 *ログベースのメトリック* には、より多くのディメンションがあるため、データ分析やアドホック診断のための優れたオプションとなります。 [名前空間セレクター](../platform/metrics-getting-started.md#create-your-first-metric-chart)を使用して、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)でログベースのメトリックと標準メトリックを切り替えます。
+*標準メトリック* は収集中に事前に集計されるため、クエリ時のパフォーマンスが優れています。 このことから、ダッシュボードやリアルタイム アラートで使用することをお勧めします。 *ログベースのメトリック* には、より多くのディメンションがあるため、データ分析やアドホック診断のための優れたオプションとなります。 [名前空間セレクター](./metrics-getting-started.md#create-your-first-metric-chart)を使用して、[メトリックス エクスプローラー](./metrics-getting-started.md)でログベースのメトリックと標準メトリックを切り替えます。
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>この記事のクエリを解釈して使用する
 
 この記事ではメトリックについて説明し、サポートされる集計方法とディメンションを示します。 ログベースのメトリックの詳細情報には、基になる Kusto クエリ ステートメントが含まれています。 各クエリは便宜上、時間の粒度、グラフの種類、および場合によっては分割セグメントに既定値を使用します。これにより、Log Analytics でクエリを変更せずに簡単に使用できます。
 
-同じメトリックを[メトリックス エクスプローラー](../platform/metrics-getting-started.md)でプロットすると、既定値は存在せず、クエリはグラフの設定に基づいて動的に調整されます。
+同じメトリックを[メトリックス エクスプローラー](./metrics-getting-started.md)でプロットすると、既定値は存在せず、クエリはグラフの設定に基づいて動的に調整されます。
 
 - 選択された **時間の範囲** は、選択された時間の範囲のイベントのみを選択する追加の *where timestamp...* 句に変換されます。 たとえば、過去 24 時間のデータを示すグラフの場合、クエリには *| where timestamp > ago (24 h)* が含まれます。
 
@@ -38,7 +38,7 @@ Application Insights ログベースのメトリックを使用すると、監�
 - 選択された **グラフの分割** のディメンションは、追加の集計プロパティに変換されます。 たとえば、*場所* によってグラフを分割し、5 分の時間の粒度を使用してプロットする場合、*summarize* 句は *... by bin(timestamp, 5 m), location* となります。
 
 > [!NOTE]
-> Kusto クエリ言語を初めて使用する場合は、まず Kusto ステートメントをコピーし、変更を加えずに Log Analytics クエリ ウィンドウに貼り付けます。 **[Run]\(実行\)** をクリックして、基本的なグラフを表示します。 クエリ言語の構文を理解し始めたら、わずかな変更を行い変更の影響を確認します。 [Log Analytics](../log-query/log-analytics-tutorial.md) と [Azure Monitor](../overview.md) の最大限の能力を理解するには、独自のデータを探索することから始めるのが最もよいやり方です。
+> Kusto クエリ言語を初めて使用する場合は、まず Kusto ステートメントをコピーし、変更を加えずに Log Analytics クエリ ウィンドウに貼り付けます。 **[Run]\(実行\)** をクリックして、基本的なグラフを表示します。 クエリ言語の構文を理解し始めたら、わずかな変更を行い変更の影響を確認します。 [Log Analytics](../logs/log-analytics-tutorial.md) と [Azure Monitor](../overview.md) の最大限の能力を理解するには、独自のデータを探索することから始めるのが最もよいやり方です。
 
 ## <a name="availability-metrics"></a>可用性のメトリック
 

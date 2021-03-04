@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007297"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733518"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -39,10 +39,10 @@ Custom Voice を開始する前に、Azure アカウントと音声サービス�
 
 ## <a name="custom-neural-voices"></a>カスタム ニューラル音声
 
-現在、Custom Voice では、Standard およびニューラル レベルがサポートされています。 カスタム ニューラル音声によって、ユーザーはより少ないデータでより高品質の音声モデルを構築できるようになります。また、AI を責任を持ってデプロイするための手段として利用できます。 カスタム ニューラル音声を使用して、より自然な会話インターフェイスのためのよりリアルな音声を開発し、顧客とエンド ユーザーが責任ある方法で最新のテキスト読み上げテクノロジを使用できるようにすることをお勧めします。 [カスタム ニューラル音声の詳細については、こちらを参照してください](https://aka.ms/CNV-Transparency-Note)。 
+現在、Custom Voice では、Standard およびニューラル レベルがサポートされています。 カスタム ニューラル音声によって、ユーザーはより少ないデータでより高品質の音声モデルを構築できるようになります。また、AI を責任を持ってデプロイするための手段として利用できます。 カスタム ニューラル音声を使用して、より自然な会話インターフェイスのためのよりリアルな音声を開発し、顧客とエンド ユーザーが責任ある方法で最新のテキスト読み上げテクノロジを使用できるようにすることをお勧めします。 [カスタム ニューラル音声の詳細については、こちらを参照してください](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
 
 > [!NOTE]
-> 責任ある AI を設計するという Microsoft の取り組みの一環として、Microsoft ではカスタム ニューラル音声の使用を制限しています。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の責任ある AI の原則に沿ってアプリケーションを使用することを確約した場合のみです。 詳細については、[アクセスの制限に対するポリシー](https://aka.ms/gating-overview)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 Custom Voice の Standard バージョンとニューラル バージョンでサポートされている[言語](language-support.md#customization)と[リージョン](regions.md#custom-voices)は異なります。 開始する前に詳細を確認してください。  
+> 責任ある AI を設計するという Microsoft の取り組みの一環として、Microsoft ではカスタム ニューラル音声の使用を制限しています。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の責任ある AI の原則に沿ってアプリケーションを使用することを確約した場合のみです。 詳細については、[アクセスの制限に対するポリシー](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 Custom Voice の Standard バージョンとニューラル バージョンでサポートされている[言語](language-support.md#customization)と[リージョン](regions.md#custom-voices)は異なります。 開始する前に詳細を確認してください。  
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 
@@ -71,7 +71,7 @@ Azure アカウントと音声サービス サブスクリプションを作成�
 
 ニューラル以外 (または標準) の Custom Voice を使用している場合は、次の手順に従って、カスタム ニューラル音声に移行することを検討してください。 カスタム ニューラル音声の使用に移行することで、より自然な会話インターフェイスのためのよりリアルな音声を開発し、顧客とエンド ユーザーが責任ある方法で最新のテキスト読み上げテクノロジを使用できるようになります。 
 
-1. 詳細については、[アクセスの制限に対するポリシー](https://aka.ms/gating-overview)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 カスタム ニューラル音声サービスへのアクセスは、Microsoft の資格基準に基づいて、Microsoft の独自の裁量の対象であることに注意してください。 お客様は、お客様のアプリケーションがレビューされ、「[責任ある AI の原則](https://microsoft.com/ai/responsible-ai)」と[倫理規定](https://aka.ms/custom-neural-code-of-conduct)に従ってこのテクノロジを使用することに合意した後にのみ、このテクノロジにアクセスできます。 
+1. 詳細については、[アクセスの制限に対するポリシー](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 カスタム ニューラル音声サービスへのアクセスは、Microsoft の資格基準に基づいて、Microsoft の独自の裁量の対象であることに注意してください。 お客様は、お客様のアプリケーションがレビューされ、「[責任ある AI の原則](https://microsoft.com/ai/responsible-ai)」と[倫理規定](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)に従ってこのテクノロジを使用することに合意した後にのみ、このテクノロジにアクセスできます。 
 2. アプリケーションが承認されると、"ニューラル" トレーニング機能にアクセスできるようになります。 アプリケーションで指定したのと同じ Azure サブスクリプションを使用して [Custom Voice ポータル](https://speech.microsoft.com/customvoice)にログインしていることを確認します。 
     > [!IMPORTANT]
     > ボイス タレントを保護し、無許可の録音やボイス タレントからの承諾なしの音声モデルのトレーニングを防止するために、ボイス タレントが自分の同意を与える録音された声明をお客様がアップロードすることが求められます。 録音スクリプトを準備するときは、この文を必ず含めてください。 "I [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice." (私 [自分の姓名] は、私の音声の合成バージョンを作成して使用するために、私の音声が [会社名] によって使用されることを承知しています。)

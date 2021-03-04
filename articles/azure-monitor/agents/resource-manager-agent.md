@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 9f8ad1e9a3c69d4ab629694fb18eab4bce95bb38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597822"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737343"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Azure Monitor のエージェント用の Resource Manager テンプレートのサンプル
-この記事には、Azure Monitor で仮想マシンに対して [Log Analytics エージェント](../platform/log-analytics-agent.md)と[診断拡張機能](../platform/diagnostics-extension-overview.md)をデプロイして構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure Monitor で仮想マシンに対して [Log Analytics エージェント](./log-analytics-agent.md)と[診断拡張機能](./diagnostics-extension-overview.md)をデプロイして構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -421,7 +421,7 @@ ms.locfileid: "100597822"
 このセクションのサンプルでは、Azure の Windows 仮想マシンおよび Linux 仮想マシンに診断拡張機能をインストールし、データ収集のための構成を行います。
 
 ### <a name="windows"></a>Windows
-次のサンプルでは、Microsoft Azure 仮想マシンで診断拡張機能を有効にして構成します。 構成の詳細については、「[Windows Diagnostics 拡張機能のスキーマ](../platform/diagnostics-extension-schema-windows.md)」を参照してください。
+次のサンプルでは、Microsoft Azure 仮想マシンで診断拡張機能を有効にして構成します。 構成の詳細については、「[Windows Diagnostics 拡張機能のスキーマ](./diagnostics-extension-schema-windows.md)」を参照してください。
 
 #### <a name="template-file"></a>テンプレート ファイル
 
@@ -807,6 +807,6 @@ ms.locfileid: "100597822"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor の他のサンプル テンプレートを入手します](../samples/resource-manager-samples.md)。
-* [Log Analytics の詳細情報](../platform/log-analytics-agent.md)。
-* [診断拡張機能の詳細情報](../platform/diagnostics-extension-overview.md)。
+* [Azure Monitor の他のサンプル テンプレートを入手します](../resource-manager-samples.md)。
+* [Log Analytics の詳細情報](./log-analytics-agent.md)。
+* [診断拡張機能の詳細情報](./diagnostics-extension-overview.md)。

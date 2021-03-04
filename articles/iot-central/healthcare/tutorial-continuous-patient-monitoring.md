@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: f98482a43516683499e83bebafe4eeadc5b7a8b7
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 56ff43980aafc75d5936b86c6ba2cd400311c5fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832506"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719102"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>チュートリアル:患者の継続的なモニタリング アプリ テンプレートのデプロイとウォークスルー
 
@@ -134,4 +134,4 @@ Azure サブスクリプションをお勧めします。 また、7 日間無�
 次の記事に進んで、IoT Central アプリケーションに接続するプロバイダー ダッシュボードを作成する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [プロバイダー ダッシュボードを構築する](howto-health-data-triage.md)
+> [プロバイダー ダッシュボードを構築する](tutorial-health-data-triage.md)

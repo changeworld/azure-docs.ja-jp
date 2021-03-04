@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: 304a7adf69ed3622cf2031cfbebb920bff5238cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5589697771227c8105adcce61e4daeebdb315391
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714342"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -27,7 +27,7 @@ ms.locfileid: "100600724"
 
 1. アラートの作成方法を記述した JSON ファイルとして以下のテンプレートの 1 つを利用します｡
 2. 対応するパラメーター ファイルを編集し、JSON として利用してアラートをカスタマイズします。
-3. `metricName` パラメーターについては、「[Azure Monitor のサポートされるメトリック](../platform/metrics-supported.md)」で使用可能なメトリックを確認してください。
+3. `metricName` パラメーターについては、「[Azure Monitor のサポートされるメトリック](../essentials/metrics-supported.md)」で使用可能なメトリックを確認してください。
 4. [任意のデプロイ方法](../../azure-resource-manager/templates/deploy-powershell.md)を使用してテンプレートをデプロイします｡
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>単純な静的しきい値メトリック アラートのテンプレート
@@ -1247,7 +1247,7 @@ az deployment group create \
 
 次のテンプレートを使用すると、カスタム メトリックに関するより高度な静的しきい値メトリック アラート ルールを作成できます。
 
-Azure Monitor のカスタム メトリックの詳細については、「[Azure Monitor のカスタム メトリック](../platform/metrics-custom-overview.md)」を参照してください。
+Azure Monitor のカスタム メトリックの詳細については、「[Azure Monitor のカスタム メトリック](../essentials/metrics-custom-overview.md)」を参照してください。
 
 カスタム メトリックに関するアラート ルールを作成する場合は、メトリック名とメトリック名前空間の両方を指定する必要があります。 まだ存在しないカスタム メトリックに対してアラート ルールを作成することはできないため、カスタム メトリックが既に報告されていることを確認する必要もあります。
 
@@ -1503,7 +1503,7 @@ az deployment group create \
 
 >[!NOTE]
 >
-> 特定のカスタム メトリックのメトリック名前空間を確認するには、[Azure portal でカスタム メトリックを参照](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)します。
+> 特定のカスタム メトリックのメトリック名前空間を確認するには、[Azure portal でカスタム メトリックを参照](../essentials/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)します。
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>複数のリソースを監視するメトリック アラートのテンプレート
@@ -3624,7 +3624,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure でのアラートの](../platform/alerts-overview.md)詳細を確認
+- [Azure でのアラートの](./alerts-overview.md)詳細を確認
 - [Resource Manager テンプレートを使用したアクション グループの作成](../alerts/action-groups-create-resource-manager-template.md)
 - JSON の構文とプロパティについては、[Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) テンプレート リファレンスをご覧ください。
-

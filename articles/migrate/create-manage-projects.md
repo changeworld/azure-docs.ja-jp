@@ -6,18 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 25572a4cc342277289459891c9bee2fa7f1cccd7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0656a9eabb692453331c5c4b229ce26f41ecfdf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589097"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730203"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate プロジェクトの作成と管理
 
 この記事では、[Azure Migrate](migrate-services-overview.md) プロジェクトを作成、管理、および削除する方法について説明します。 
 
-従来の Azure Migrate は 2024 年 2 月に廃止されます。 2024 年 2 月以降、クラシック バージョンの Azure Migrate はサポートされなくなり、クラシック プロジェクトのインベントリ メタデータは削除されます。 従来の Azure Migrate プロジェクトを使用している場合は、それらのプロジェクトを削除し、手順に従って新しい Azure Migrate プロジェクトを作成してください。 従来の Azure Migrate プロジェクトまたはコンポーネントは Azure Migrate にアップグレードできません。 作成プロセスを開始する前に、[よくあるご質問](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version)を参照してください。
+従来の Azure Migrate は 2024 年 2 月に廃止されます。 2024 年 2 月以降、クラシック バージョンの Azure Migrate はサポートされなくなり、クラシック プロジェクトのインベントリ メタデータは削除されます。 従来の Azure Migrate プロジェクトを使用している場合は、それらのプロジェクトを削除し、手順に従って新しい Azure Migrate プロジェクトを作成してください。 従来の Azure Migrate プロジェクトまたはコンポーネントは Azure Migrate にアップグレードできません。 作成プロセスを開始する前に、[よくあるご質問](./resources-faq.md#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version)を参照してください。
 
 Azure Migrate のプロジェクトは、評価または移行しようとしている環境から収集された検出、評価、移行のメタデータを格納するために使用されます。 プロジェクト内で、検出された資産を追跡し、評価を作成して、Azure への移行を調整することができます。  
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: bed9cd23abc96c51cad0a13e81ee0b64f0d433b6
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723845"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Automation アカウントから Start/Stop VMs during off-hours を削除する
 
@@ -94,7 +94,7 @@ Automation アカウントとのリンク解除が試行されている間、メ
 
 ## <a name="delete-the-feature"></a>機能を削除する
 
-Automation アカウントから Start/Stop VMs during off-hours を削除するには、次の手順を実行します。 Automation アカウントと Log Analytics ワークスペースは、このプロセスの一部として削除されません。 Log Analytics ワークスペースを保持しない場合は、手動で削除する必要があります。 ワークスペースの削除の詳細については、「[Azure Log Analytics ワークスペースの削除と復旧](../azure-monitor/platform/delete-workspace.md)」を参照してください。
+Automation アカウントから Start/Stop VMs during off-hours を削除するには、次の手順を実行します。 Automation アカウントと Log Analytics ワークスペースは、このプロセスの一部として削除されません。 Log Analytics ワークスペースを保持しない場合は、手動で削除する必要があります。 ワークスペースの削除の詳細については、「[Azure Log Analytics ワークスペースの削除と復旧](../azure-monitor/logs/delete-workspace.md)」を参照してください。
 
 1. 自分の Automation アカウントに移動して、 **[関連リソース]** の **[リンクされたワークスペース]** を選択します。
 

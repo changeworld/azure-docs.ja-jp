@@ -4,12 +4,12 @@ description: トラブルシューティングやメンテナンスのタスク�
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: c044b552cd0c28a7073364c48b9572045a290331
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 96334985862c65000d783df3a205406f046be07a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740547"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -211,7 +211,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 [az-vm-user-update]: /cli/azure/vm/user#az-vm-user-update
 [az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
-[view-master-logs]: view-master-logs.md
+[view-master-logs]: ./view-control-plane-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

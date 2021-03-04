@@ -4,12 +4,12 @@ description: Microsoft Azure の自動スケール
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: bd7c1582cdb4b2b1b72d3f969ad08879d208785f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603426"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726004"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure の自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -90,8 +90,8 @@ Azure Monitor 自動スケールは、[Virtual Machine Scale Sets](https://azure
 以下を通じて、自動スケールを設定することができます。
 
 * [Azure Portal](autoscale-get-started.md)
-* [PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
-* [クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../samples/cli-samples.md#autoscale)
+* [PowerShell](../powershell-samples.md#create-and-manage-autoscale-settings)
+* [クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../cli-samples.md#autoscale)
 * [Azure 監視 REST API](/rest/api/monitor/autoscalesettings)
 
 ## <a name="supported-services-for-autoscale"></a>自動スケールでサポートされているサービス

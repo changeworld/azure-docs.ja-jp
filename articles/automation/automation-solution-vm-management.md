@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732277"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
@@ -39,7 +39,7 @@ Start/Stop VMs during off-hours 機能は、有効になっている Azure VM �
 
 - Start/Stop VMs during off hours 機能の Runbook は [Azure 実行アカウント](./automation-security-overview.md#run-as-accounts)と連動します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
 
-- Runbook ジョブ ログとジョブ ストリーム結果をクエリおよび分析目的でワークスペースに格納する [Azure Monitor Log Analytics ワークスペース](../azure-monitor/platform/design-logs-deployment.md)。 Automation アカウントは新規または既存の Log Analytics ワークスペースにリンクできます。いずれのリソースも同じリソース グループに属する必要があります。
+- Runbook ジョブ ログとジョブ ストリーム結果をクエリおよび分析目的でワークスペースに格納する [Azure Monitor Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)。 Automation アカウントは新規または既存の Log Analytics ワークスペースにリンクできます。いずれのリソースも同じリソース グループに属する必要があります。
 
 Start/Stop VMs during off-hours 機能には、別の Automation アカウントを使用することをお勧めします。 多くの場合、Azure モジュールのバージョンがアップグレードされ、そのパラメーターが変更される可能性があります。 この機能は同じペースでアップグレードされないため、使用するコマンドレットの新しいバージョンでは動作しない可能性があります。 更新後のモジュールを運用 Automation アカウントにインポートする前に、テスト Automation アカウントにインポートして互換性問題がないことを確認することをお勧めします。
 

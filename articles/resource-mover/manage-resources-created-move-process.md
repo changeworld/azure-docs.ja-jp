@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 7ad0e73a90e733af0dd752100ebc71908f68181a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3c4c4e86e2461ea1d05af284e724a5a2991f040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388483"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727041"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>VM 移動用に作成されたリソースを管理する
 
@@ -24,7 +24,7 @@ ms.locfileid: "100388483"
 
 移動コレクションと、VM 移動用に作成された Site Recovery リソースを手動で削除します。
 
-1. リソース グループ ```ResourceMoverRG-<sourceregion>-<target-region>``` でリソースを確認します。
+1. リソース グループ ```ResourceMoverRG-<sourceregion>-<target-region>-<metadataRegionShortName>``` でリソースを確認します。
 2. VM、および移動コレクション内の他のすべてのソース リソースが移動または削除されていることを確認します。 これにより、それらを使用している保留中のリソースがないことが保証されます。
 2. これらのリソースを削除します。
 

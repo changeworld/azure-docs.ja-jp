@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6f63315c3e9b150a54e122d9a1c6948087603d51
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 314404ef132c55a783ce4d2d0069eb8a930439a1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537409"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691452"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>複数の Azure リージョンにまたがる SQL Server Always On 可用性グループを構成する
 
@@ -202,6 +202,6 @@ ms.locfileid: "99537409"
 ## <a name="next-steps"></a>次のステップ
 
 * [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
-* [Azure Virtual Machines](../../../virtual-machines/windows/index.yml)
+* [Azure Virtual Machines](../../../virtual-machines/index.yml)
 * [Azure Load Balancer](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
 * [Azure の可用性セット](../../../virtual-machines/manage-availability.md)

@@ -3,12 +3,12 @@ title: ダウンタイム、SLA、および停止のブック - Application Insi
 description: Application Insights リソースと Azure サブスクリプションにわたる 1 つのウィンドウで、Web テストの SLA を計算してレポートします。
 ms.topic: conceptual
 ms.date: 02/8/2021
-ms.openlocfilehash: 884d65d10ab0360957360efa8bf9dc4cac59949b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989202"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714053"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>ダウンタイム、SLA、および停止のブック
 
@@ -51,13 +51,13 @@ SLA ブック テンプレートには、Application Insights リソースのブ
 
 ## <a name="edit-the-report"></a>レポートの編集
 
-レポートは、他の [Azure Monitor ブック](../platform/workbooks-overview.md)と同様に編集できます。 チームのニーズに基づいて、クエリや視覚化をカスタマイズできます。
+レポートは、他の [Azure Monitor ブック](../visualize/workbooks-overview.md)と同様に編集できます。 チームのニーズに基づいて、クエリや視覚化をカスタマイズできます。
 
 :::image type="content" source="./media/sla-report/edit.gif" alt-text=" [編集] ボタンを選択し、視覚化を円グラフに変更している状態の GIF。" lightbox="./media/sla-report/edit.gif":::
 
 ### <a name="log-analytics"></a>Log Analytics
 
-クエリはすべて [Log Analytics](../log-query/log-analytics-overview.md) で実行し、他のレポートまたはダッシュボードで使用することができます。 パラメーターの制限を解除して、コア クエリを再利用してください。
+クエリはすべて [Log Analytics](../logs/log-analytics-overview.md) で実行し、他のレポートまたはダッシュボードで使用することができます。 パラメーターの制限を解除して、コア クエリを再利用してください。
 
 :::image type="content" source="./media/sla-report/logs.gif" alt-text=" ログ クエリの GIF。" lightbox="./media/sla-report/logs.gif":::
 
@@ -69,6 +69,6 @@ SLA ブック テンプレートには、Application Insights リソースのブ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Log Analytics のクエリ最適化のヒント](../log-query/query-optimization.md)。
-- [ブックでグラフを作成する](../platform/workbooks-chart-visualizations.md)方法について学習する。
+- [Log Analytics のクエリ最適化のヒント](../logs/query-optimization.md)。
+- [ブックでグラフを作成する](../visualize/workbooks-chart-visualizations.md)方法について学習する。
 - [可用性テスト](monitor-web-app-availability.md)で Web サイトを監視する方法について学習する。

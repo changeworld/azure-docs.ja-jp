@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: 25a3613f2aa45d31f47a8a4f288abbb1e9ee78fa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 305536b8af9888e5fe3965cabd05f48ad4e93086
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947127"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751025"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
 
@@ -20,7 +20,7 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="skip-to-samples-on-github"></a>記事をスキップして GitHub 上のサンプルにアクセスする
 
-この記事をスキップしてサンプル コードをご覧になりたい方は、GitHub 上の [JavaScript クイックスタート サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node)を参照してください。
+この記事をスキップしてサンプル コードをご覧になりたい方は、GitHub 上の [JavaScript クイックスタート サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/translate-speech-to-text)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

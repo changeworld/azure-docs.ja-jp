@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 36937ace82d2bd8d4317f90a375042de10fe719f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596807"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709820"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Standard Load Balancer 用の Azure Monitor のログ
 
@@ -74,7 +74,7 @@ Azure Monitor の各種ログを使用して、Azure Standard Load Balancer の�
 
 ## <a name="view-and-analyze-the-activity-log"></a>アクティビティ ログの表示と分析
 
-アクティビティ ログは既定で生成されます。 [こちらの記事の手順に従って](../azure-monitor/platform/activity-log.md)、サブスクリプション レベルでエクスポートするように構成できます。 これらのログについて詳しくは、「[リソースのアクションを監視するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
+アクティビティ ログは既定で生成されます。 [こちらの記事の手順に従って](../azure-monitor/essentials/activity-log.md)、サブスクリプション レベルでエクスポートするように構成できます。 これらのログについて詳しくは、「[リソースのアクションを監視するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
 
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
@@ -113,4 +113,4 @@ Azure Load Balancer 用のメトリックからログへのエクスポート機
 
 ## <a name="next-steps"></a>次のステップ
 * [ロード バランサーで使用可能なメトリックを確認する](./load-balancer-standard-diagnostics.md)
-* [Azure Monitor の指示に従ってクエリを作成してテストする](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Monitor の指示に従ってクエリを作成してテストする](../azure-monitor/logs/log-query-overview.md)

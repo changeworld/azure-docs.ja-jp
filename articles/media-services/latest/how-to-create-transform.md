@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adbd7deccf32312f67cff7b92ff7813036e9b1b3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 4623610960d8f21a2dab3293c7499a2112416254
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898530"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101718915"
 ---
 # <a name="create-a-transform"></a>変換を作成する
 
@@ -33,8 +33,6 @@ ms.locfileid: "98898530"
 [Media Services アカウントを作成する](./create-account-howto.md)
 
 ## <a name="cli"></a>[CLI](#tab/cli/)
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 > [!NOTE]
 > 指定できるのは、カスタム Standard Encoder プリセットの JSON ファイルに対するパスだけです。[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) については、[カスタム変換を使用したエンコード](custom-preset-cli-howto.md)の例を参照してください。
@@ -53,4 +51,4 @@ ms.locfileid: "98898530"
 
 ## <a name="next-steps"></a>次のステップ
 
-[変換とジョブについての詳細情報](transforms-jobs-concept.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

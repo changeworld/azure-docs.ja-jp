@@ -1,40 +1,38 @@
 ---
-title: Azure Policy を使用してクラスター構成を大規模に適用する (プレビュー)
+title: Azure Policy を使用してクラスター構成を大規模に適用する
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure Policy を使用してクラスター構成を大規模に適用する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: b80e50cb4823632f054de3b7f9da71392f8578d7
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560193"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652149"
 ---
-# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Azure Policy を使用してクラスター構成を大規模に適用する (プレビュー)
+# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Azure Policy を使用してクラスター構成を大規模に適用する
 
 ## <a name="overview"></a>概要
 
-Azure Policy を使用すると、次のリソースのいずれかに特定の `Microsoft.KubernetesConfiguration/sourceControlConfigurations` が適用されるように強制することができます。
-*  `Microsoft.Kubernetes/connectedclusters` リソース。
-* GitOps 対応の `Microsoft.ContainerService/managedClusters` リソース。 
+Azure Policy を使用すると、Azure Arc 対応 Kubernetes クラスター (`Microsoft.Kubernetes/connectedclusters`) に構成 (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`) を大規模に適用できます。
 
 Azure Policy を使用するには、既存のポリシー定義を選択して、ポリシーの割り当てを作成します。 ポリシー割り当てを作成する場合は、次の手順を実行します。
 1. 割り当てのスコープを設定します。
     * スコープは、Azure リソース グループまたはサブスクリプションになります。 
-2. 作成される `sourceControlConfiguration` のパラメーターを設定します。 
+2. 作成される構成に対してパラメーターを設定します。 
 
-割り当てが作成されると、Azure Policy エンジンでスコープ内のすべての `connectedCluster` または `managedCluster` リソースが識別され、それぞれに対して `sourceControlConfiguration` が適用されます。
+割り当てが作成されると、Azure Policy エンジンによって、スコープ内にあるすべての Azure Arc 対応 Kubernetes クラスターが識別され、各クラスターに構成が適用されます。
 
-複数のポリシー割り当てを使用して、各クラスターの真実のソースとして複数の Git リポジトリを有効にすることができます。 各ポリシー割り当ては、別の Git リポジトリを使用するように構成されます。たとえば、中央の IT/クラスター オペレーター用の 1 つのリポジトリと、アプリケーション チーム用のその他のリポジトリです。
+複数のポリシー割り当てを使用して、それぞれ異なる Git リポジトリをポイントする複数の構成を作成できます。 たとえば、中央の IT またはクラスター オペレーター用に 1 つのリポジトリと、アプリケーション チーム用に他のリポジトリとすることができます。
 
 ## <a name="prerequisite"></a>前提条件
 
-このポリシー割り当てを作成するスコープ (サブスクリプションまたはリソース グループ) に対する `Microsoft.Authorization/policyAssignments/write` アクセス許可があることを確認してください。
+このポリシー割り当てを作成するスコープ (サブスクリプションまたはリソース グループ) に対する `Microsoft.Authorization/policyAssignments/write` アクセス許可があることをご確認ください。
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
@@ -54,24 +52,21 @@ Azure Policy を使用するには、既存のポリシー定義を選択して�
     * 詳細については、[ポリシー割り当ての作成のクイック スタート](../../governance/policy/assign-policy-portal.md)および [Azure Policy に準拠していないリソースの修復に関する記事](../../governance/policy/how-to/remediate-resources.md)を参照してください。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-ポリシー割り当てを作成した後、割り当てのスコープ内にある次のリソースのいずれかに対して `sourceControlConfiguration` が適用されます。
-* 新しい `connectedCluster` リソース。
-* GitOps エージェントがインストールされている新しい `managedCluster` リソース。 
+ポリシー割り当てを作成すると、ポリシー割り当てのスコープ内で作成された新しい Azure Arc 対応 Kubernetes クラスターに構成が適用されます。
 
 既存のクラスターに対しては、修復タスクを手動で実行する必要があります。 通常、このタスクには、ポリシー割り当てが有効になるまで 10 ～ 20 分かかります。
 
 ## <a name="verify-a-policy-assignment"></a>ポリシーの割り当てを確認する
 
-1. Azure portal で `connectedCluster` リソースのいずれかに移動します。
+1. Azure portal で、Azure Arc 対応 Kubernetes クラスターのいずれかに移動します。
 1. サイドバーの **[設定]** セクションで、 **[ポリシー]** を選択します。 
-    * AKS クラスター UX はまだ実装されていません。
     * ポリシー一覧に、前に作成した、 **[コンプライアンスの状態]** が *[準拠している]* に設定されているポリシーの割り当てが表示されます。
 1. サイドバーの **[設定]** セクションで、 **[構成]** を選択します。
-    * 構成の一覧に、ポリシー割り当てで作成された `sourceControlConfiguration` が表示されます。
+    * 構成の一覧に、ポリシー割り当てによって作成された構成が表示されます。
 1. `kubectl` を使用してクラスターを問い合わせます。 
-    * `sourceControlConfiguration` によって作成された名前空間と成果物が表示されます。
-    * 5 分以内に、構成された Git リポジトリ内のマニフェストで説明されている成果物がクラスターに表示されます。
+    * 構成リソースによって作成された名前空間と成果物が表示されます。
+    * (クラスターが Azure にネットワーク接続されていると仮定して) 5 分以内に、Git リポジトリのマニフェストで記述されているオブジェクトがクラスター上に作成されていることを確認する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Arc 対応 Kubernetes クラスターを使用して Azure Monitor for Containers を設定する](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)
+* [Arc 対応 Kubernetes クラスターを使用して Azure Monitor for Containers を設定する](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)

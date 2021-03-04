@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0dda015d820d81fdd13eced384f97362e2ee3339
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587559"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708494"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Azure Monitor Application Insights の自動インストルメンテーションまたはコードなしアタッチとは
 
@@ -45,27 +45,27 @@ Application Insights は、さまざまなリソース プロバイダーと統�
 Azure App Service on Windows でのアプリケーション監視は [.NET アプリケーション](./azure-web-apps.md?tabs=net) .NET で使用可能であり、既定で有効です。
 
 #### <a name="netcore"></a>.NETCore
-[.NETCore アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=netcore)の監視をワンクリックで有効にできます。
+[.NETCore アプリケーション](./azure-web-apps.md?tabs=netcore)の監視をワンクリックで有効にできます。
 
 #### <a name="java"></a>Java
-App Service on Windows での Java アプリケーション監視のためのポータル統合は現在利用できませんが、アプリを App Service にデプロイする前にコードに変更を加えることなく、Application Insights [Java 3.0 スタンドアロン エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)をアプリケーションに追加できます。 Application Insights Java 3.0 エージェントは一般提供されています。
+App Service on Windows での Java アプリケーション監視のためのポータル統合は現在利用できませんが、アプリを App Service にデプロイする前にコードに変更を加えることなく、Application Insights [Java 3.0 スタンドアロン エージェント](./java-in-process-agent.md)をアプリケーションに追加できます。 Application Insights Java 3.0 エージェントは一般提供されています。
 
 #### <a name="nodejs"></a>Node.js
-現時点では Windows 上の Node.js アプリケーションの監視をポータルから有効にすることはできません。 Node.js アプリケーションを監視するには、[SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs) を使用します。
+現時点では Windows 上の Node.js アプリケーションの監視をポータルから有効にすることはできません。 Node.js アプリケーションを監視するには、[SDK](./nodejs.md) を使用します。
 
 ### <a name="linux"></a>Linux
 
 #### <a name="netcore"></a>.NETCore
-Linux で実行中の .NETCore アプリケーションを監視するには、[SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) を使用します。
+Linux で実行中の .NETCore アプリケーションを監視するには、[SDK](./asp-net-core.md) を使用します。
 
 #### <a name="java"></a>Java 
-App Service on Linux での Java アプリケーション監視をポータルから有効にすることはできませんが、アプリを App Service にデプロイする前に、[Application Insights Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)をアプリに追加できます。 Application Insights Java 3.0 エージェントは一般提供されています。
+App Service on Linux での Java アプリケーション監視をポータルから有効にすることはできませんが、アプリを App Service にデプロイする前に、[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)をアプリに追加できます。 Application Insights Java 3.0 エージェントは一般提供されています。
 
 #### <a name="nodejs"></a>Node.js
-[App Service on Linux での Node.js アプリケーションの監視](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=nodejs)はパブリック プレビュー段階であり、Azure portal で有効にすることができ、すべてのリージョンで利用可能です。 
+[App Service on Linux での Node.js アプリケーションの監視](./azure-web-apps.md?tabs=nodejs)はパブリック プレビュー段階であり、Azure portal で有効にすることができ、すべてのリージョンで利用可能です。 
 
 #### <a name="python"></a>Python
-SDK を使用して [Python アプリを監視します](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) 
+SDK を使用して [Python アプリを監視します](./opencensus-python.md) 
 
 ## <a name="azure-functions"></a>Azure Functions
 
@@ -77,7 +77,7 @@ Azure Kubernetes Service のコード不要のインストルメンテーショ�
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows VM と仮想マシン スケール セット
 
-Azure VM と仮想マシン スケール セットの自動インストルメンテーションを [.NET](./azure-vm-vmss-apps.md) および [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) で使用できます。  
+Azure VM と仮想マシン スケール セットの自動インストルメンテーションを [.NET](./azure-vm-vmss-apps.md) および [Java](./java-in-process-agent.md) で使用できます。  
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
 [.NET アプリケーション](./status-monitor-v2-overview.md)用および [Java アプリ](./java-in-process-agent.md)用のオンプレミスの Windows サーバーの監視を、簡単に有効にすることができます。
@@ -90,4 +90,3 @@ Azure VM と仮想マシン スケール セットの自動インストルメン
 * [Application Insights の概要](./app-insights-overview.md)
 * [アプリケーション マップ](./app-map.md)
 * [エンドツーエンドのパフォーマンスの監視](../app/tutorial-performance.md)
-

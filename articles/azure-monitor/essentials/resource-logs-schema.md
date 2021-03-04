@@ -4,12 +4,12 @@ description: Azure リソース ログでサポートされているサービス
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: b37535b67ed1873c5a492e28e6bf4da8c67c7e5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c426074bbeb2792f152063d938e867b86dc1f6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717538"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -73,7 +73,7 @@ ms.locfileid: "100601330"
 | フロントドア | [Front Door のログ](../../frontdoor/front-door-diagnostics.md) |
 | IoT Hub | [IoT Hub 操作](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | Key Vault |[Azure Key Vault のログ記録](../../key-vault/general/logging.md) |
-| Kubernetes Service |[Azure Kubernetes のログ記録](../../aks/view-master-logs.md#log-event-schema) |
+| Kubernetes Service |[Azure Kubernetes のログ記録](../../aks/view-control-plane-logs.md#log-event-schema) |
 | Load Balancer |[Azure Load Balancer のログ分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../../virtual-network/virtual-network-nsg-manage-log.md) |

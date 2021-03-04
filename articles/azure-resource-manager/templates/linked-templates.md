@@ -3,12 +3,12 @@ title: デプロイ用のテンプレートをリンクする
 description: Azure Resource Manager テンプレート (ARM テンプレート) でリンクされたテンプレートを使用して、モジュール式のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ac987b1390e939ad2b081745396245b432bb836b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741006"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -668,10 +668,10 @@ QueryString の先頭に "?" がないことを確認してください。 デ�
             "kind": "StorageV2"
             // Copy works here when scope is inner
             // But, when scope is default or outer, you get an error
-            //"copy":{
-            //  "name": "storagecopy",
-            //  "count": 2
-            //}
+            // "copy": {
+            //   "name": "storagecopy",
+            //   "count": 2
+            // }
           }
         ]
       }

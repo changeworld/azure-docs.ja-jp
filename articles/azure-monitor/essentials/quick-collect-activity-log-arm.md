@@ -7,16 +7,16 @@ ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 7465127ed9c52941d6c3ccfd40446546f0795455
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0a740b4c6c6e89c9a4990651779ea4f0b376c971
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734351"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する
 
-アクティビティ ログは、サブスクリプション レベルのイベントの分析情報を提供する Azure のプラットフォーム ログです。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示したり、PowerShell と CLI を使用してエントリを取得したりすることができます。 このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Log Analytics ワークスペースと診断設定を作成し、アクティビティ ログを Azure Monitor ログに送信して、[ログ クエリ](../log-query/log-query-overview.md)を使用して分析したり、[ログ アラート](../alerts/alerts-log-query.md)や[ブック](../visualize/workbooks-overview.md)などの他の機能を有効にしたりする方法について説明します。
+アクティビティ ログは、サブスクリプション レベルのイベントの分析情報を提供する Azure のプラットフォーム ログです。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示したり、PowerShell と CLI を使用してエントリを取得したりすることができます。 このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Log Analytics ワークスペースと診断設定を作成し、アクティビティ ログを Azure Monitor ログに送信して、[ログ クエリ](../logs/log-query-overview.md)を使用して分析したり、[ログ アラート](../alerts/alerts-log-query.md)や[ブック](../visualize/workbooks-overview.md)などの他の機能を有効にしたりする方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -321,7 +321,7 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Log Analytics ワークスペースに送信されるようにアクティビティ ログを構成しました。 これで、他のデータをワークスペースに収集するように構成して、Azure Monitor で[ログ クエリ](../log-query/log-query-overview.md)を使用してまとめて分析したり、[ログ アラート](../alerts/alerts-log-query.md)や[ブック](../visualize/workbooks-overview.md)などの機能を活用したりできます。 次に、Azure リソースから[リソース ログ](../essentials/resource-logs.md)を収集することをお勧めします。これはアクティビティ ログのデータを補完し、各リソース内で実行された操作の分析情報を提供するものです。
+このクイック スタートでは、Log Analytics ワークスペースに送信されるようにアクティビティ ログを構成しました。 これで、他のデータをワークスペースに収集するように構成して、Azure Monitor で[ログ クエリ](../logs/log-query-overview.md)を使用してまとめて分析したり、[ログ アラート](../alerts/alerts-log-query.md)や[ブック](../visualize/workbooks-overview.md)などの機能を活用したりできます。 次に、Azure リソースから[リソース ログ](../essentials/resource-logs.md)を収集することをお勧めします。これはアクティビティ ログのデータを補完し、各リソース内で実行された操作の分析情報を提供するものです。
 
 > [!div class="nextstepaction"]
 > [Azure Monitor を使用してリソース ログを収集して分析する](../essentials/tutorial-resource-logs.md)

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9b5a2c5d004e63c602a30f7808586e97a0e436e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581450"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720938"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー (プレビュー)
 
@@ -72,7 +72,7 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 使用可能なコンピューティング シリーズの詳細については、 [バースト可能 (B シリーズ)](../../virtual-machines/sizes-b-series-burstable.md)、[汎用 (Ddsv4 シリーズ)](../../virtual-machines/ddv4-ddsv4-series.md)、[メモリ最適化 (Edsv4 シリーズ)](../../virtual-machines/edv4-edsv4-series.md) に関する Azure VM ドキュメントを参照して、ください。
 
 >[!NOTE]
->[バースト可能 (B シリーズ) コンピューティング レベル](../../virtual-machines/sizes-b-series-burstable.md)では、VM が開始/停止または再起動すると、クレジットが失われる可能性があります。 詳細については、[バースト可能 (B シリーズ) の FAQ](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart) に関する記事を参照してください。
+>[バースト可能 (B シリーズ) コンピューティング レベル](../../virtual-machines/sizes-b-series-burstable.md)では、VM が開始/停止または再起動すると、クレジットが失われる可能性があります。 詳細については、[バースト可能 (B シリーズ) の FAQ](../../virtual-machines/sizes-b-series-burstable.md#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart) に関する記事を参照してください。
 
 ## <a name="storage"></a>ストレージ
 

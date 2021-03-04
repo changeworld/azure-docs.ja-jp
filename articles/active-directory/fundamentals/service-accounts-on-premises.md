@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de24975dadf27293f305611c6ba07522e8aa90
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a9024bc9fbd460f403db2da8a65af1e9bd2e771b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416622"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645618"
 ---
 # <a name="introduction-to-active-directory-service-accounts"></a>Active Directory サービス アカウントの概要
 
@@ -34,7 +34,7 @@ ms.locfileid: "100416622"
 
 ### <a name="group-msa-accounts"></a>グループ MSA アカウント
 
-オンプレミス環境で実行されているサービスで可能な場合は、[グループの管理サービス アカウント](service-accounts-group-managed.md) (gMSA) を使用します。 gMSA は、サーバー ファームで、またはネットワーク ロード バランサーの背後で実行されるサービスに対して、単一の ID ソリューションを提供します。 また、1 台のサーバーで実行されているサービスにも使用できます。 [gMSA には、満たす必要がある特定の要件があります](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)。
+オンプレミス環境で実行されているサービスで可能な場合は、[グループの管理サービス アカウント](service-accounts-group-managed.md) (gMSA) を使用します。 gMSA は、サーバー ファームで、またはネットワーク ロード バランサーの背後で実行されるサービスに対して、単一の ID ソリューションを提供します。 また、1 台のサーバーで実行されているサービスにも使用できます。 [gMSA には、満たす必要がある特定の要件があります](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)。
 
 ### <a name="standalone-msa-accounts"></a>スタンドアロンの MSA アカウント
 
@@ -138,4 +138,3 @@ Out-GridView
 
 * [オンプレミス サービス アカウントを管理する](service-accounts-govern-on-premises.md)
 
- 

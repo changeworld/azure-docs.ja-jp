@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5eaa2d686ecd38c006a720e9ffb97a4604f18ba8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604691"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708868"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 
@@ -35,7 +35,7 @@ Azure portal の Log Analytics で **[保存]** をクリックした後、次�
 関数は、そのエイリアスを別のクエリに含めることによって使用します。 それは他のテーブルと同じように使用できます。
 
 ## <a name="function-parameters"></a>関数のパラメーター 
-関数にパラメーターを追加すると、呼び出し時に特定の変数の値を指定できできます。 現在、パラメーターを含む関数を作成する唯一の方法は、Resource Manager テンプレートを使用することです。 例については、「[Azure Monitor のログ クエリ用の Resource Manager テンプレート サンプル](../samples/resource-manager-log-queries.md#parameterized-function)」を参照してください。
+関数にパラメーターを追加すると、呼び出し時に特定の変数の値を指定できできます。 現在、パラメーターを含む関数を作成する唯一の方法は、Resource Manager テンプレートを使用することです。 例については、「[Azure Monitor のログ クエリ用の Resource Manager テンプレート サンプル](./resource-manager-log-queries.md#parameterized-function)」を参照してください。
 
 ## <a name="example"></a>例
 次のサンプル クエリでは、最終日に報告された、更新されていないセキュリティ更新プログラムが返されます。 このクエリを、_security_updates_last_day_ というエイリアスを持つ関数として保存します。 

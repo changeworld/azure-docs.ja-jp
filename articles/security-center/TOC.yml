@@ -221,9 +221,9 @@
         - name: Docker ホストのセキュリティを強化する
           displayName: containers
           href: harden-docker-hosts.md
-        - name: Azure Defender for SQL を使用する
-          href: defender-for-sql-usage.md
-          displayName: 'hybrid, arc'
+    - name: Azure Defender for SQL を使用する
+      href: defender-for-sql-usage.md
+      displayName: 'hybrid, arc'
     - name: コンテナー レジストリ用 Azure Defender を使用する
       items:
         - name: レジストリ イメージの脆弱性をスキャンする
@@ -269,8 +269,6 @@
     - name: Kubernetes ワークロードを保護する
       displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
-    - name: 調査で得られたユーザー データの管理
-      href: security-center-investigation-user-data.md
     - name: テナント全体の可視性の確保
       href: security-center-management-groups.md
     - name: SQL 情報の保護ポリシーをカスタマイズする
@@ -292,7 +290,7 @@
           href: faq-vms.md
         - name: Azure Log Analytics の既存のユーザー
           href: faq-azure-monitor-logs.md
-    - name: 組み込みのセキュリティ ポリシー
+    - name: Azure Policy の組み込み
       displayName: 'samples, policy'
       href: policy-reference.md
     - name: Azure ロードマップのブログ

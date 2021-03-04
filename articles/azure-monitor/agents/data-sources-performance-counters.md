@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: f885945dfb6910df919038106487db912d87caee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711554"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Windows と Linux のパフォーマンス データ ソースを収集する
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor では、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために Log Analytics エージェントから頻繁な間隔でパフォーマンス カウンターを収集できます。
 
 > [!IMPORTANT]
-> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](../platform/log-analytics-agent.md)を使用してパフォーマンス データを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントとそれらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](./log-analytics-agent.md)を使用してパフォーマンス データを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントとそれらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
 
 ![パフォーマンス カウンター](media/data-sources-performance-counters/overview.png)
 
@@ -224,5 +224,5 @@ Azure Monitor は、カウンターがインストールされているすべて
 
 ## <a name="next-steps"></a>次のステップ
 * MySQL および Apache HTTP Server を含む [Linux アプリケーションからパフォーマンス カウンターを収集します](data-sources-linux-applications.md)。
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
-* 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](../platform/powerbi.md) にエクスポートします。
+* [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
+* 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](../visualize/powerbi.md) にエクスポートします。

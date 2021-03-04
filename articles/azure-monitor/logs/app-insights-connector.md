@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e103bb3cce364aeb5c25dcc2b54bf78c6993ca0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2dda18232e0cf3afa63a01814e776b90988e0b10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603838"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704346"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -22,7 +22,7 @@ ms.locfileid: "100603838"
 >
 >既存の接続は 2019 年 6 月 30日まで引き続き機能します。  OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 PowerShell を使用して既存の接続を削除するスクリプトについては、後の「[PowerShell でコネクタを削除する](#removing-the-connector-with-powershell)」をご覧ください。
 >
->複数のアプリケーションに対する Application Insights ログ データのクエリを実行する方法については、「[Azure Monitor で複数の Application Insights リソースを統合する](../log-query/unify-app-resource-data.md)」をご覧ください。 OMS ポータルの廃止について詳しくは、「[OMS ポータルの Azure への移行](../platform/oms-portal-transition.md)」をご覧ください。
+>複数のアプリケーションに対する Application Insights ログ データのクエリを実行する方法については、「[Azure Monitor で複数の Application Insights リソースを統合する](./unify-app-resource-data.md)」をご覧ください。 OMS ポータルの廃止について詳しくは、「[OMS ポータルの Azure への移行](./oms-portal-transition.md)」をご覧ください。
 >
 > 
 
@@ -318,5 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログ検索](../log-query/log-query-overview.md)を使用して Application Insights アプリの詳細情報を表示します。
-
+- [ログ検索](./log-query-overview.md)を使用して Application Insights アプリの詳細情報を表示します。

@@ -6,18 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: e3a9810aef356b7acf5ae2522645c14ee445812b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bf55d66f7099717079190a538bad8bf777581825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723556"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
-Azure Monitor のメトリック アラートには、メトリックのいずれかがしきい値を超えた場合に通知を受け取る方法が用意されています。 メトリック アラートは、多次元プラットフォーム メトリック、カスタム メトリック、Application Insights の標準メトリックとカスタム メトリックで動作します。 この記事では、Azure portal および Azure CLI を使用して、メトリック アラート ルールを作成、表示、管理する方法について説明します。 Azure Resource Manager テンプレートを使用してメトリック アラート ルールを作成することもできます。これについては、[別の記事](../platform/alerts-metric-create-templates.md)で説明されています。
+Azure Monitor のメトリック アラートには、メトリックのいずれかがしきい値を超えた場合に通知を受け取る方法が用意されています。 メトリック アラートは、多次元プラットフォーム メトリック、カスタム メトリック、Application Insights の標準メトリックとカスタム メトリックで動作します。 この記事では、Azure portal および Azure CLI を使用して、メトリック アラート ルールを作成、表示、管理する方法について説明します。 Azure Resource Manager テンプレートを使用してメトリック アラート ルールを作成することもできます。これについては、[別の記事](./alerts-metric-create-templates.md)で説明されています。
 
-メトリック アラートの動作について詳しくは、[メトリック アラートの概要](../platform/alerts-metric-overview.md)に関するページをご覧ください。
+メトリック アラートの動作について詳しくは、[メトリック アラートの概要](./alerts-metric-overview.md)に関するページをご覧ください。
 
 ## <a name="create-with-azure-portal"></a>Azure Portal での作成
 
@@ -32,7 +32,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 3. **[ターゲットの選択]** をクリックし、読み込まれるコンテキスト ウィンドウで、アラートを設定するターゲット リソースを選択します。 **サブスクリプション** と **リソースの種類** のドロップダウン リストを使用して、監視するリソースを検索します。 検索バーを使用して、リソースを検索することもできます。
 
-4. 選択したリソースにアラートを作成できるメトリックがある場合は、右下の **[使用可能なシグナル]** にメトリックが表示されます。 メトリック アラートでサポートされているリソースの種類の完全な一覧については、[こちらの記事](../platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
+4. 選択したリソースにアラートを作成できるメトリックがある場合は、右下の **[使用可能なシグナル]** にメトリックが表示されます。 メトリック アラートでサポートされているリソースの種類の完全な一覧については、[こちらの記事](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
 
 5. ターゲット リソースを選択した後、 **[条件の追加]** をクリックします。
 
@@ -45,7 +45,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
     - 探しているディメンション値が表示されない場合は、[カスタム値を追加] をクリックしてカスタム ディメンション値を追加します。
     - また、任意のディメンションの **現在および将来の値をすべて選択する** こともできます。 これにより、選択範囲がディメンションの現在と将来のすべての値に動的にスケーリングされます。
 
-    メトリック アラート ルールでは、選択された値のすべての組み合わせについての条件が評価されます。 [多次元メトリックでのアラート生成のしくみの詳細を参照してください](../platform/alerts-metric-overview.md)。
+    メトリック アラート ルールでは、選択された値のすべての組み合わせについての条件が評価されます。 [多次元メトリックでのアラート生成のしくみの詳細を参照してください](./alerts-metric-overview.md)。
 
 9. **[しきい値]** の種類、 **[演算子]** 、および **[集計の種類]** を選択します。 これにより、メトリック アラート ルールによって評価されるロジックが決まります。
     - **静的な** しきい値を使用している場合は、引き続き **[しきい値]** を定義します。 メトリック グラフを使用すると、想定される妥当なしきい値を決定できます。
@@ -154,8 +154,8 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Resource Manager テンプレートを使用してメトリック アラートを作成します](../platform/alerts-metric-create-templates.md)
-- [メトリック アラートのしくみを理解します](../platform/alerts-metric-overview.md)
+- [Azure Resource Manager テンプレートを使用してメトリック アラートを作成します](./alerts-metric-create-templates.md)
+- [メトリック アラートのしくみを理解します](./alerts-metric-overview.md)
 - [動的しきい値条件のメトリックのアラートのしくみを理解します](../alerts/alerts-dynamic-thresholds.md)
-- [メトリック アラートの Web hook スキーマを理解します](../platform/alerts-metric-near-real-time.md#payload-schema)
-- [メトリック アラートに関する問題をトラブルシューティングします](../platform/alerts-troubleshoot-metric.md)
+- [メトリック アラートの Web hook スキーマを理解します](./alerts-metric-near-real-time.md#payload-schema)
+- [メトリック アラートに関する問題をトラブルシューティングします](./alerts-troubleshoot-metric.md)

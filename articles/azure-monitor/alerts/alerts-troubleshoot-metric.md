@@ -6,25 +6,25 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1908232184218316a1a887f17f2fc8104529a0e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79cc7e1e4b574533fcad4592134109c52897e9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600689"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737258"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
 この記事では、Azure Monitor の[メトリック警告](alerts-metric-overview.md)に関する一般的な問題とそのトラブルシューティングの方法について説明します。
 
-Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 管理者は、その通知を見て、システムのユーザーが問題に気付く前に問題を識別して対処できます。 アラートの詳細については、「[Microsoft Azure のアラートの概要](../platform/alerts-overview.md)」を参照してください。
+Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 管理者は、その通知を見て、システムのユーザーが問題に気付く前に問題を識別して対処できます。 アラートの詳細については、「[Microsoft Azure のアラートの概要](./alerts-overview.md)」を参照してください。
 
 ## <a name="metric-alert-should-have-fired-but-didnt"></a>メトリック警告が発生するはずだが発生しない 
 
 メトリック警告が発生するはずなのに発生せず、Azure portal で見つからない場合は、次の手順を試してください。
 
 1. **構成** - メトリック警告ルールの構成を調べて、適切に構成されていることを確認します。
-    - **[集計の種類]** と **[Aggregation granularity (period)]\(集計の細分性\(期間\)\)** が、意図したとおりに構成されていることを確認します。 **[集計の種類]** では、メトリック値の集計方法を確認できます (詳細については [こちら](../platform/metrics-aggregation-explained.md#aggregation-types)を参照してください)。また、 **[Aggregation granularity (period)]\(集計の細分性\(期間\)\)** では、警告ルールの実行ごとに行うメトリック値の集計を何回前の評価にまで遡って行うかを確認できます。
+    - **[集計の種類]** と **[Aggregation granularity (period)]\(集計の細分性\(期間\)\)** が、意図したとおりに構成されていることを確認します。 **[集計の種類]** では、メトリック値の集計方法を確認できます (詳細については [こちら](../essentials/metrics-aggregation-explained.md#aggregation-types)を参照してください)。また、 **[Aggregation granularity (period)]\(集計の細分性\(期間\)\)** では、警告ルールの実行ごとに行うメトリック値の集計を何回前の評価にまで遡って行うかを確認できます。
     -  **[しきい値]** または **[秘密度]** が、意図したとおりに構成されていることを確認します。
     - 動的しきい値が使用されている警告ルールの場合は、詳細設定が構成されているかどうかを確認します。 **[違反の数]** によって警告がフィルター処理され、 **[次よりも前のデータを無視します]** によってしきい値の計算方法が影響を受けることがあります。
 
@@ -69,10 +69,10 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>警告対象のメトリックが見つからない - 仮想マシンのゲスト メトリック
 
 仮想マシンのゲスト オペレーティング システム メトリック (メモリ、ディスク領域など) についてアラートを作成するには、このデータを Azure Monitor メトリックに収集するために必要なエージェントがインストールされていることを確認します。
-- [Windows VM の場合](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Linux VM の場合](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Windows VM の場合](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
+- [Linux VM の場合](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-仮想マシンのゲスト オペレーティング システムからデータを収集する方法の詳細については、[こちら](../insights/monitor-vm-azure.md#guest-operating-system)を参照してください。
+仮想マシンのゲスト オペレーティング システムからデータを収集する方法の詳細については、[こちら](../vm/monitor-vm-azure.md#guest-operating-system)を参照してください。
 
 > [!NOTE] 
 > Log Analytics ワークスペースに送信されるようにゲスト メトリックを構成した場合、これらのメトリックは Log Analytics ワークスペース リソースの下に表示され、それらを監視する警告ルールを作成した後で **のみ** データの表示が開始されます。 これを行うには、[ログのメトリック アラートを構成する](./alerts-metric-logs.md#configuring-metric-alert-for-logs)手順に従います。
@@ -84,8 +84,8 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 
 警告ルールを作成するときに、特定のメトリックに対するアラートを探していて、それが表示されない場合は、以下を確認してください。
 - リソースのメトリックが表示されない場合は、[リソースの種類がメトリックのアラートでサポートされているかどうかを確認します](./alerts-metric-near-real-time.md)。
-- リソースに対してメトリックがいくつか表示され、特定のメトリックが見つからない場合は、[そのメトリックが使用できるかどうかを確認し](../platform/metrics-supported.md)、その場合はメトリックの説明を参照して、特定のバージョンまたはエディションのリソースでのみ使用できるかどうかを確認します。
-- そのリソースにメトリックを使用できない場合は、リソース ログで使用可能であり、ログ アラートを使用して監視できる可能性があります。 [Azure リソースからリソース ログを収集して分析する方法の詳細についてはこちら](../learn/tutorial-resource-logs.md)を参照してください。
+- リソースに対してメトリックがいくつか表示され、特定のメトリックが見つからない場合は、[そのメトリックが使用できるかどうかを確認し](../essentials/metrics-supported.md)、その場合はメトリックの説明を参照して、特定のバージョンまたはエディションのリソースでのみ使用できるかどうかを確認します。
+- そのリソースにメトリックを使用できない場合は、リソース ログで使用可能であり、ログ アラートを使用して監視できる可能性があります。 [Azure リソースからリソース ログを収集して分析する方法の詳細についてはこちら](../essentials/tutorial-resource-logs.md)を参照してください。
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>警告対象のメトリック ディメンションが見つからない
 
@@ -211,7 +211,7 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 
 - `Metric not found` エラーが発生している場合は、次のようにします。
 
-   - プラットフォーム メトリックの場合: **メトリックの表示名** ではなく、[Azure Monitor でサポートされているメトリックのページ](../platform/metrics-supported.md)の **メトリック** 名を使用していることを確認します
+   - プラットフォーム メトリックの場合: **メトリックの表示名** ではなく、[Azure Monitor でサポートされているメトリックのページ](../essentials/metrics-supported.md)の **メトリック** 名を使用していることを確認します
 
    - カスタム メトリックの場合: メトリックが既に出力されていること (まだ存在していないカスタム メトリックに対してアラート ルールを作成することはできません)、およびカスタム メトリックの名前空間を指定していることを確認します ([ここ](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)にある Resource Manager テンプレートの例を参照)。
 

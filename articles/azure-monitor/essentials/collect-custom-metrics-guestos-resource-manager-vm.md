@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 0ab7d8548494e96b4a7570ef26ccde39456bf690
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0051ec15cafc60af6a0523631f77a9b52294e69c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600466"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731716"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
-Azure 仮想マシンのゲスト OS から収集したパフォーマンス データは、他の[プラットフォーム メトリック](../insights/monitor-azure-resource.md#monitoring-data)のように自動的には収集されません。 Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md)をインストールして、メトリック データベースにゲスト OS メトリックを収集し、凖リアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなど、Azure Monitor メトリックのすべての機能で使用できるようにします。 この記事では、Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS のパフォーマンス メトリックをメトリック データベースに送信するプロセスについて説明します。 
+Azure 仮想マシンのゲスト OS から収集したパフォーマンス データは、他の[プラットフォーム メトリック](./monitor-azure-resource.md#monitoring-data)のように自動的には収集されません。 Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md)をインストールして、メトリック データベースにゲスト OS メトリックを収集し、凖リアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなど、Azure Monitor メトリックのすべての機能で使用できるようにします。 この記事では、Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS のパフォーマンス メトリックをメトリック データベースに送信するプロセスについて説明します。 
 
 > [!NOTE]
 > Azure portal を使用してゲスト OS メトリックを収集するように診断拡張機能を構成する方法の詳細については、「[Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](../agents/diagnostics-extension-windows-install.md)」を参照してください。
@@ -29,7 +29,7 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 - [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](../../cloud-shell/overview.md) がインストールされている必要があります。
 
-- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](../platform/metrics-custom-overview.md#supported-regions)に存在する必要があります。 
+- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](./metrics-custom-overview.md#supported-regions)に存在する必要があります。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor をデータ シンクとして設定する
@@ -250,7 +250,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
-   > 必ず、[カスタム メトリックに対して有効になっている Azure リージョンを使用してください](../platform/metrics-custom-overview.md)。
+   > 必ず、[カスタム メトリックに対して有効になっている Azure リージョンを使用してください](./metrics-custom-overview.md)。
 
 1. 次のコマンドを実行して、Resource Manager テンプレートを使用して VM をデプロイします。
    > [!NOTE]
@@ -285,4 +285,4 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 
 ## <a name="next-steps"></a>次のステップ
-- [カスタム メトリック](../platform/metrics-custom-overview.md)の詳細を確認します。
+- [カスタム メトリック](./metrics-custom-overview.md)の詳細を確認します。

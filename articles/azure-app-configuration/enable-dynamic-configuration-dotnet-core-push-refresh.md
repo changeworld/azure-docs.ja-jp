@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: abarora
-ms.openlocfilehash: 553c5081947ad784a8cdae6ad0eb92fc3e2a2c85
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981925"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701520"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>チュートリアル:.NET Core アプリでプッシュ更新による動的な構成を使用する
 
@@ -27,7 +27,7 @@ App Configuration .NET Core クライアント ライブラリでは、アプリ
 
 1. ポーリング モデル: ポーリングを使用して構成の変更を検出する既定の動作です。 キャッシュされた設定値の有効期限が切れた後、次に `TryRefreshAsync` または `RefreshAsync` を呼び出すと、構成が変更されているかどうかをチェックするための要求がサーバーに送信され、必要に応じて、更新された構成がプルされます。
 
-1. プッシュ モデル: [App Configuration のイベント](./concept-app-configuration-event.md)を使用して構成の変更を検出します。 キー値の変更イベントを Azure Event Grid に送信するよう App Configuration を一度設定すれば、アプリケーションは、それらのイベントを使用できるので、構成を最新の状態に保つために必要な要求の総数は最小限で済みます。 アプリケーションは、Event Grid から直接イベントをサブスクライブするか、Webhook、Azure 関数、Service Bus トピックなど、[サポートされているイベント ハンドラー](https://docs.microsoft.com/azure/event-grid/event-handlers)のいずれかを使用してイベントをサブスクライブすることができます。
+1. プッシュ モデル: [App Configuration のイベント](./concept-app-configuration-event.md)を使用して構成の変更を検出します。 キー値の変更イベントを Azure Event Grid に送信するよう App Configuration を一度設定すれば、アプリケーションは、それらのイベントを使用できるので、構成を最新の状態に保つために必要な要求の総数は最小限で済みます。 アプリケーションは、Event Grid から直接イベントをサブスクライブするか、Webhook、Azure 関数、Service Bus トピックなど、[サポートされているイベント ハンドラー](../event-grid/event-handlers.md)のいずれかを使用してイベントをサブスクライブすることができます。
 
 これらのイベントは、アプリケーションが Event Grid から直接サブスクライブできるほか、Web hook を介したり、Azure Service Bus にイベントを転送したりすることでサブスクライブすることができます。 Azure Service Bus SDK には、メッセージ ハンドラーを登録するための API が用意されています。HTTP エンドポイントがないアプリケーションや、イベント グリッドに絶えず変更をポーリングすることが好ましくないアプリケーションでは、この API を利用することで、このプロセスを単純化することができます。
 
@@ -50,7 +50,7 @@ App Configuration .NET Core クライアント ライブラリでは、アプリ
 
 ## <a name="set-up-azure-service-bus-topic-and-subscription"></a>Azure Service Bus のトピックとサブスクリプションを設定する
 
-このチュートリアルでは、App Configuration に絶えず変更をポーリングすることが望ましくないアプリケーションで構成変更の検出を単純化するために、Service Bus と Event Grid の統合を使用します。 Azure Service Bus SDK には、メッセージ ハンドラーを登録するための API が用意されています。この API を使用することで、App Configuration で変更が検出されたときに構成を更新することができます。 「[Quickstart:Azure portal を使用して Service Bus のトピックとサブスクリプションを作成するクイックスタート](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal)の手順に従って、サービス バスの名前空間、トピック、サブスクリプションを作成します。
+このチュートリアルでは、App Configuration に絶えず変更をポーリングすることが望ましくないアプリケーションで構成変更の検出を単純化するために、Service Bus と Event Grid の統合を使用します。 Azure Service Bus SDK には、メッセージ ハンドラーを登録するための API が用意されています。この API を使用することで、App Configuration で変更が検出されたときに構成を更新することができます。 「[Quickstart:Azure portal を使用して Service Bus のトピックとサブスクリプションを作成するクイックスタート](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md)の手順に従って、サービス バスの名前空間、トピック、サブスクリプションを作成します。
 
 リソースの作成後、以下の環境変数を追加します。 アプリケーション コードで構成変更のイベント ハンドラーを登録する際に使用します。
 
@@ -81,7 +81,7 @@ App Configuration .NET Core クライアント ライブラリでは、アプリ
     ![App Configuration イベント サブスクリプション](./media/event-subscription-view.png)
 
 > [!NOTE]
-> 構成の変更をサブスクライブするとき、1 つまたは複数のフィルターを使用することで、アプリケーションに送信されるイベントの数を減らすことができます。 これらは、[Event Grid サブスクリプション フィルター](https://docs.microsoft.com/azure/event-grid/event-filtering)または [Service Bus サブスクリプション フィルター](https://docs.microsoft.com/azure/service-bus-messaging/topic-filters)として構成できます。 たとえばサブスクリプション フィルターを使用すると、特定の文字列で始まるキーの変更イベントだけをサブスクライブすることができます。
+> 構成の変更をサブスクライブするとき、1 つまたは複数のフィルターを使用することで、アプリケーションに送信されるイベントの数を減らすことができます。 これらは、[Event Grid サブスクリプション フィルター](../event-grid/event-filtering.md)または [Service Bus サブスクリプション フィルター](../service-bus-messaging/topic-filters.md)として構成できます。 たとえばサブスクリプション フィルターを使用すると、特定の文字列で始まるキーの変更イベントだけをサブスクライブすることができます。
 
 ## <a name="register-event-handler-to-reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込むためのイベント ハンドラーを登録する
 
@@ -171,7 +171,7 @@ namespace TestConsole
 }
 ```
 
-更新対象に登録されたキーと値に関して、キャッシュされている値をダーティとして設定するには、[SetDirty](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) メソッドを使用します。 これにより、次回 `RefreshAsync` または `TryRefreshAsync` を呼び出したときに、キャッシュされている値が App Configuration との間で再度確認され、必要に応じて値が更新されます。
+更新対象に登録されたキーと値に関して、キャッシュされている値をダーティとして設定するには、[SetDirty](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) メソッドを使用します。 これにより、次回 `RefreshAsync` または `TryRefreshAsync` を呼び出したときに、キャッシュされている値が App Configuration との間で再度確認され、必要に応じて値が更新されます。
 
 複数のインスタンスが同時に更新されるとき、スロットルが生じる可能性を小さくするために、キャッシュされている値がダーティとしてマークされるまでには、ランダムな待ち時間が追加されます。 キャッシュされている値がダーティとしてマークされるまでの最大待ち時間の既定値は 30 秒ですが、オプションの `TimeSpan` パラメーターを `SetDirty` メソッドに渡すことで、この値はオーバーライドすることができます。
 

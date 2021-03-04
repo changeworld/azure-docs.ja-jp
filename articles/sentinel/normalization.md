@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5d847ac7ed805ad88bc24ed63896edc6f7596f9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570452"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729778"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel での正規化
 
@@ -130,7 +130,7 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 > ハンティングや検出クエリなど、どのクエリでも、Azure Sentinel テーブルの代わりに保存した関数を使用できます。 詳細については、次を参照してください。
 >
 > - [Azure Sentinel のデータの正規化](normalization.md#parsers)
-> - [Azure Monitor ログのテキストの解析](/azure/azure-monitor/log-query/parse-text)
+> - [Azure Monitor ログのテキストの解析](../azure-monitor/logs/parse-text.md)
 >
 #### <a name="customizing-parsers"></a>パーサーのカスタマイズ
 

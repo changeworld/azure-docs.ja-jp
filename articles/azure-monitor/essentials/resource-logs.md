@@ -7,27 +7,27 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3560152ce5e3185e79c7a7ff34e5360f10236980
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcd6522c46b6ca35031092c634803267a8486647
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601323"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731461"
 ---
 # <a name="azure-resource-logs"></a>Azure リソース ログ
-Azure リソース ログは、Azure リソース内で実行された操作に関する分析情報を提供する[プラットフォーム ログ](../essentials/platform-logs-overview.md)です。 リソース ログの内容は、Azure サービスとリソースの種類によって異なります。 既定では、リソース ログは収集されません。 各 Azure リソースのリソース ログを、[Azure Monitor ログ](../platform/data-platform-logs.md)で使用するために Log Analytics ワークスペースに送信したり、Azure の外部に転送するために Azure Event Hubs に送信したり、アーカイブ用に Azure Storage に送信したりするために、各 Azure リソースの診断設定を作成する必要があります。
+Azure リソース ログは、Azure リソース内で実行された操作に関する分析情報を提供する[プラットフォーム ログ](../essentials/platform-logs-overview.md)です。 リソース ログの内容は、Azure サービスとリソースの種類によって異なります。 既定では、リソース ログは収集されません。 各 Azure リソースのリソース ログを、[Azure Monitor ログ](../logs/data-platform-logs.md)で使用するために Log Analytics ワークスペースに送信したり、Azure の外部に転送するために Azure Event Hubs に送信したり、アーカイブ用に Azure Storage に送信したりするために、各 Azure リソースの診断設定を作成する必要があります。
 
 診断設定を作成する方法の詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../essentials/diagnostic-settings.md)」を参照してください。Azure Policy を使用して、作成した各 Azure リソースの診断設定を自動的に作成する方法については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」を参照してください。
 
 ## <a name="send-to-log-analytics-workspace"></a>Log Analytics ワークスペースに送信する
- 次のような [Azure Monitor ログ](../platform/data-platform-logs.md)の機能を有効にするには、リソース ログを Log Analytics ワークスペースに送信します。
+ 次のような [Azure Monitor ログ](../logs/data-platform-logs.md)の機能を有効にするには、リソース ログを Log Analytics ワークスペースに送信します。
 
 - リソース ログ データを、Azure Monitor によって収集されたその他の監視データと関連付けます。
 - 複数の Azure リソース、サブスクリプション、およびテナントのログ エントリを 1 つの場所に統合して、まとめて分析できるようにします。
 - ログ クエリを使用して複雑な分析を実行し、ログ データから詳細な分析情報を得ます。
 - 複雑なアラート ロジックを持つログ アラートを使用します。
 
-リソース ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](../essentials/diagnostic-settings.md)。 このデータは、「[Azure Monitor Logs の構造](../platform/data-platform-logs.md)」の説明に従って、テーブルに格納されます。 リソース ログで使用されるテーブルは、リソースで使用されているコレクションの種類によって異なります。
+リソース ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](../essentials/diagnostic-settings.md)。 このデータは、「[Azure Monitor Logs の構造](../logs/data-platform-logs.md)」の説明に従って、テーブルに格納されます。 リソース ログで使用されるテーブルは、リソースで使用されているコレクションの種類によって異なります。
 
 - Azure 診断 - 書き込まれたすべてのデータが _AzureDiagnostics_ テーブルに含められます。
 - リソース固有 - データは、リソースのカテゴリごとに個別のテーブルに書き込まれます。
@@ -90,7 +90,7 @@ AzureDiagnostics テーブルは次のようになります。
    ![診断設定のモード セレクター](media/resource-logs/diagnostic-settings-mode-selector.png)
 
 > [!NOTE]
-> Resource Manager テンプレートを使用してコレクション モードを設定する例については、「[Azure Monitor の診断設定用の Resource Manager テンプレートのサンプル](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault)」を参照してください。
+> Resource Manager テンプレートを使用してコレクション モードを設定する例については、「[Azure Monitor の診断設定用の Resource Manager テンプレートのサンプル](./resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault)」を参照してください。
 
 
 既存の診断設定をリソース固有モードに変更できます。 この場合、既に収集されたデータは、ワークスペースに対するご利用の保有期間設定に従って削除されるまで、_AzureDiagnostics_ テーブル内に残ります。 新しいデータは、専用のテーブルに収集されます。 両方のテーブルのデータに対してクエリを実行するには、[union](/azure/kusto/query/unionoperator) 演算子を使用します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: db410133bab530db731eee58048d1f9d26a1a3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65f18a21be48b6f78605b10950a2b38709b66f2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600464"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713662"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -30,7 +30,7 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 - [Azure PowerShell](/powershell/azure) がインストールされている必要があります。[Azure Cloud Shell](../../cloud-shell/overview.md) を使用することもできます。 
 
-- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](../platform/metrics-custom-overview.md#supported-regions)に存在する必要があります。
+- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](./metrics-custom-overview.md#supported-regions)に存在する必要があります。
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor をデータ シンクとして設定する 
 Azure Diagnostics 拡張機能では、**データ シンク** と呼ばれる機能を使って、メトリックとログをさまざまな場所にルーティングします。 次の手順では、Resource Manager テンプレートと PowerShell を使用して、新しい Azure Monitor データ シンクを使って VM をデプロイする方法を説明します。 
@@ -252,7 +252,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
    ```
 
    > [!NOTE]  
-   > 必ず、カスタム メトリックに対して有効になっている Azure リージョンを使用してください。 必ず、[カスタム メトリックに対して有効になっている Azure リージョン](../platform/metrics-custom-overview.md#supported-regions)を使用してください。
+   > 必ず、カスタム メトリックに対して有効になっている Azure リージョンを使用してください。 必ず、[カスタム メトリックに対して有効になっている Azure リージョン](./metrics-custom-overview.md#supported-regions)を使用してください。
  
 1. 次のコマンドを実行して、VM をデプロイします。  
 
@@ -292,4 +292,4 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 
 ## <a name="next-steps"></a>次のステップ
-- [カスタム メトリック](../platform/metrics-custom-overview.md)の詳細を確認します。
+- [カスタム メトリック](./metrics-custom-overview.md)の詳細を確認します。

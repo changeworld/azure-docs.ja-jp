@@ -1,17 +1,16 @@
 ---
 title: Windows Diagnostics 拡張機能のスキーマ
 description: Azure Monitor の Windows Diagnostics 拡張機能 (WAD) の構成スキーマ リファレンス。
-ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: eccd4010d796e541e4a0a2c0b0c485b5f18f0366
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4b4b893b222a62619a36d59c2cf042f1aa5590bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603634"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708630"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics 拡張機能のスキーマ
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure コンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 仮想マシンおよびその他のコンピューティング リソースで Diagnostics 拡張機能を構成するために使用するスキーマについて詳細に説明します。

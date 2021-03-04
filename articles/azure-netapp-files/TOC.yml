@@ -29,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Linux のパフォーマンス ベンチマーク
           href: performance-benchmarks-linux.md
+        - name: NFSv4.1 での Kerberos のパフォーマンスに対する影響
+          href: performance-impact-kerberos.md
         - name: Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス
           href: performance-oracle-single-volumes.md
         - name: SMB のパフォーマンスに関する FAQ

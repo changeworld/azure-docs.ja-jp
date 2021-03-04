@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571361"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709174"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows Virtual Desktop 向けの Azure Monitor (プレビュー) のトラブルシューティング
 
@@ -42,7 +42,7 @@ ms.locfileid: "100571361"
     - Windows Virtual Desktop セッション ホストを保持するサブスクリプションのリソース グループへの読み取りアクセス 
     - Log Analytics ワークスペースへの読み取りアクセス
 
-- Azure Monitor がポータルにデータを送信できるように、お使いのサーバーのファイアウォールで送信ポートを開く必要がある場合があります。[送信ポート](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)に関する記事を参照してください。 
+- Azure Monitor がポータルにデータを送信できるように、お使いのサーバーのファイアウォールで送信ポートを開く必要がある場合があります。[送信ポート](../azure-monitor/app/ip-addresses.md)に関する記事を参照してください。 
 
 - 最近のアクティビティのデータが表示されない場合。 15 分間待機して、フィードを更新することをお勧めします。 Azure Monitor にはログ データの入力に 15 分の待機時間があります。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../azure-monitor/logs/data-ingestion-time.md)」をご覧ください。
 
@@ -62,8 +62,8 @@ Windows Virtual Desktop 向けの Azure Monitor は、Azure Monitor ブックを
 
 より多くのパフォーマンス カウンターまたはイベントを監視する場合は、それらを自分の Log Analytics ワークスペースに送信できるようにして、[ホスト診断:ホスト ブラウザー] で監視できます。 
 
-- パフォーマンス カウンターを追加するには、「[パフォーマンス カウンターの構成](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters)」を参照してください
-- Windows イベントを追加するには、「[Windows イベント ログの構成](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs)」を参照してください
+- パフォーマンス カウンターを追加するには、「[パフォーマンス カウンターの構成](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)」を参照してください
+- Windows イベントを追加するには、「[Windows イベント ログの構成](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)」を参照してください
 
 イシューの診断に役立つデータ ポイントが見つかりませんか。 フィードバックをお送りください。
 

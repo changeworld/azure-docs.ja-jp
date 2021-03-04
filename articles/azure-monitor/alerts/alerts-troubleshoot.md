@@ -6,18 +6,18 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3ee29e6c65dcd2b2226dc4dc7844b3b02a571a4f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3f8da7e985e62ce0b40c6dddcd137cce8561e59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600680"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717861"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor のアラートの問題のトラブルシューティング
 
 この記事では、Azure Monitor のアラートと通知に関する一般的な問題について説明します。
 
-Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 管理者は、その通知を見て、システムのユーザーが問題に気付く前に問題を識別して対処できます。 アラートの詳細については、「[Microsoft Azure のアラートの概要](../platform/alerts-overview.md)」を参照してください。
+Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 管理者は、その通知を見て、システムのユーザーが問題に気付く前に問題を識別して対処できます。 アラートの詳細については、「[Microsoft Azure のアラートの概要](./alerts-overview.md)」を参照してください。
 
 予想どおりに始動しない場合も含め、アラートに関する問題については、以下の記事を参照してください。 Azure portal では、"始動した" アラートを確認できます。
 
@@ -36,7 +36,7 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
 
 1. **[アクション ルール](../alerts/alerts-action-rules.md)によってメールが抑制されたか?**
 
-    確認するには、発生したアラートをポータルでクリックし、抑制された[アクション グループ](../platform/action-groups.md)の履歴タブを確認します。
+    確認するには、発生したアラートをポータルでクリックし、抑制された[アクション グループ](./action-groups.md)の履歴タブを確認します。
 
     ![アラート アクション ルール抑制履歴](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -92,7 +92,7 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
 
 1. **[アクション ルール](../alerts/alerts-action-rules.md)によってアクションが抑制されたか?**
 
-    確認するには、発生したアラートをポータルでクリックし、抑制された[アクション グループ](../platform/action-groups.md)の履歴タブを確認します。 
+    確認するには、発生したアラートをポータルでクリックし、抑制された[アクション グループ](./action-groups.md)の履歴タブを確認します。 
 
     ![アラート アクション ルール抑制履歴](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -125,7 +125,7 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
 
 1. **アクション ルールによってアクションが抑制されたか?**
 
-    確認するには、発生したアラートをポータルでクリックし、抑制された[アクション グループ](../platform/action-groups.md)の履歴タブを確認します。
+    確認するには、発生したアラートをポータルでクリックし、抑制された[アクション グループ](./action-groups.md)の履歴タブを確認します。
 
     ![アラート アクション ルール抑制履歴](media/alerts-troubleshoot/history-action-rule.png)
  
@@ -135,7 +135,7 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
 
     1. **発信元 IP アドレスがブロックされていないか?**
     
-       Webhook の呼び出し元 [IP アドレス](../platform/action-groups.md#action-specific-information)を許可リストに追加します。
+       Webhook の呼び出し元 [IP アドレス](./action-groups.md#action-specific-information)を許可リストに追加します。
 
     1. **Webhook エンドポイントは正しく機能しているか?**
 
@@ -180,12 +180,12 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
 
     アクション レベルで指定された形式が想定どおりかどうか確認します。 たとえば、ある形式を想定して (Webhook、関数、ロジック アプリなどの) アラートに応答するコードを開発したが、後からアクションで自分または別の人が別の形式を指定する場合があります。  
 
-    また、[アクティビティ ログ アラート](../alerts/activity-log-alerts-webhook.md)、[ログ検索アラート](../alerts/alerts-log-webhook.md) (Application Insights とログ分析の両方)、[メトリック アラート](alerts-metric-near-real-time.md#payload-schema)、[一般的なアラート スキーマ](../alerts/alerts-common-schema-definitions.md)、非推奨の[クラシック メトリック アラート](../platform/alerts-webhooks.md)のペイロード形式 (JSON) も確認してください。
+    また、[アクティビティ ログ アラート](../alerts/activity-log-alerts-webhook.md)、[ログ検索アラート](../alerts/alerts-log-webhook.md) (Application Insights とログ分析の両方)、[メトリック アラート](alerts-metric-near-real-time.md#payload-schema)、[一般的なアラート スキーマ](../alerts/alerts-common-schema-definitions.md)、非推奨の[クラシック メトリック アラート](./alerts-webhooks.md)のペイロード形式 (JSON) も確認してください。
 
  
 1. **アクティビティ ログ アラート: アクティビティ ログに情報があるか?** 
 
-    [アクティビティ ログ アラート](../platform/activity-log-alerts.md)は、Azure アクティビティ ログに書き込まれたイベントに基づくアラートです。イベントの例には、Azure リソースの作成、更新、削除に関するイベント、サービス正常性とリソース正常性のイベント、Azure Advisor や Azure Policy からの情報などがあります。 アクティビティ ログに基づくアラートを受信したが、必要なフィールドの一部が欠落しているか正しくない場合は、まず、アクティビティ ログ自体でイベントを確認してください。 Azure リソースのアクティビティ ログ イベントで探しているフィールドが、そのリソースによって書き込まれなかった場合、それらのフィールドは対応するアラートに含まれません。 
+    [アクティビティ ログ アラート](./activity-log-alerts.md)は、Azure アクティビティ ログに書き込まれたイベントに基づくアラートです。イベントの例には、Azure リソースの作成、更新、削除に関するイベント、サービス正常性とリソース正常性のイベント、Azure Advisor や Azure Policy からの情報などがあります。 アクティビティ ログに基づくアラートを受信したが、必要なフィールドの一部が欠落しているか正しくない場合は、まず、アクティビティ ログ自体でイベントを確認してください。 Azure リソースのアクティビティ ログ イベントで探しているフィールドが、そのリソースによって書き込まれなかった場合、それらのフィールドは対応するアラートに含まれません。 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>アクション ルールが想定どおりに機能しない 
 
@@ -250,4 +250,4 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
 
 ## <a name="next-steps"></a>次のステップ
 - ログ アラートを使用する場合は、[ログ アラートのトラブルシューティング](./alerts-troubleshoot-log.md)も参照してください。
-- [Azure portal](https://portal.azure.com) に戻り、上記のガイダンスに従って問題が解決したかどうかを確認します 
+- [Azure portal](https://portal.azure.com) に戻り、上記のガイダンスに従って問題が解決したかどうかを確認します

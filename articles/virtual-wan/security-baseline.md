@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6f487467b08332eea4ee19a7fb8836d843bd254f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4bbc1565cec2c356e916f813a6a334648d82754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582661"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726735"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>Virtual WAN 用の Azure セキュリティ ベースライン
 
@@ -384,7 +384,7 @@ Azure Virtual WAN のセキュリティは、Azure Firewall を通じて提供�
 
 - [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Azure Security Center のアラートと推奨事項のエクスポート](../security-center/continuous-export.md)
 

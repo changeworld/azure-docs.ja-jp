@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349958"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650688"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps プレビューに API を追加する
 
@@ -234,7 +234,7 @@ Visual Studio Code を使用して、変更をコミットし、リモート Git
 1. **[GitHub でサインイン]** ボタンをクリックし、GitHub で認証します
 1. 希望する "_組織_" を選択します
 1. **[リポジトリ]** ドロップダウンから _my-vanilla-api_ を選択します
-1. _[ブランチ]_ ドロップダウンから **[master]** を選択します
+1. _[ブランチ]_ ドロップダウンから **[main]** を選択します
 1. _[Build Presets]\(ビルド プリセット\)_ ドロップダウンから、ビルド構成に対して任意のフレームワークを選択します。
 
  > これらのフィールドは、アプリの種類の既定のプロジェクト構造を反映します。 アプリに合わせて値を変更します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 96d1c4c0ad210352be94255609a3a373b408ed23
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d8ef3efcda55868abec188c10ef904ae40a56722
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728146"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 用の Azure セキュリティ ベースライン
 
@@ -140,7 +140,7 @@ Batch を完全に Azure セキュリティ ベンチマークにマップする
 
 **ガイダンス**: ネットワーク リソース構成を監視し、Azure Batch プールに関連したネットワーク リソースの変更を検出するには、Azure アクティビティ ログを使用します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
@@ -516,7 +516,7 @@ Azure Batch プールに関連付けられているストレージ アカウン�
 
 - [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Azure Storage アカウントでの追加のログ記録/監査を有効にする方法](../storage/common/storage-monitor-storage-account.md)
+- [Azure Storage アカウントでの追加のログ記録/監査を有効にする方法](../storage/common/manage-storage-analytics-logs.md)
 
 **Azure Security Center の監視**: はい
 

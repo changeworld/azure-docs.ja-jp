@@ -2,14 +2,14 @@
 title: Web サイトの可用性と応答性の監視 | Microsoft Docs
 description: Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585942"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729030"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
@@ -72,7 +72,6 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 |設定| 説明
 |----|----|----|
 |**準リアルタイム (プレビュー)** | 準リアルタイムのアラートを使用することが推奨されます。 この種類のアラートの構成は、可用性テストの作成後に実行されます。  |
-|**クラシック** | 新しい可用性テストでクラシック アラートを使用することはもう推奨されていません。|
 |**アラートの場所のしきい値**|少なくとも 3/5 の場所にすることをお勧めします。 アラートの場所のしきい値とテストの場所の数の最適な関係は、**アラートの場所のしきい値** = **テストの場所の数** - 2 です。テストの場所は、少なくとも 5 か所にします。|
 
 ### <a name="location-population-tags"></a>位置情報の作成タグ

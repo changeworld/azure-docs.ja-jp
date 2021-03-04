@@ -8,10 +8,13 @@
 - name: 概念
   expanded: true
   items:
-    - name: 仮想マシン
-      href: automanage-virtual-machines.md
-    - name: VM に関するベスト プラクティス
-      href: virtual-machines-best-practices.md
+    - name: Linux 用 Automanage
+      href: automanage-linux.md
+    - name: Windows Server 用 Automanage
+      href: automanage-windows-server.md
+      items:
+        - name: 新しい仮想マシンのホットパッチ
+          href: automanage-hotpatch.md
 - name: 方法
   expanded: true
   items:

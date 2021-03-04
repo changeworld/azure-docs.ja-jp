@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用したセカンダリ リージョン�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 522af9738cac098dcc9e8cb73183c0bd6b3b4902
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 7e9cb2397017c428c3a5251ed0d0c4f9a076c72f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534679"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735541"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -258,6 +258,7 @@ NVMe ストレージ インターフェイス | サポートされていませ�
 Windows OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 | アンマネージド ディスクを使用する VM はサポートされていません。 <br/><br/> HSM で保護されたキーはサポートされていません。 <br/><br/> 1 つのディスク上の個々のボリュームの暗号化はサポートされていません。 |
 Linux OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 | アンマネージド ディスクを使用する VM はサポートされていません。 <br/><br/> HSM で保護されたキーはサポートされていません。 <br/><br/> 1 つのディスク上の個々のボリュームの暗号化はサポートされていません。 <br><br> レプリケーションの有効化に関する既知の問題。 [詳細情報。](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS キーのローテーション | サポートされていません | ストレージ アカウントの SAS キーがローテーションされている場合は、レプリケーションを無効にしてからもう一度有効にする必要があります。 |
+ホスト キャッシュ | サポートされています
 ホット アド    | サポートされています | マネージド ディスクを使用する VM では、レプリケートされた Azure VM に追加するデータ ディスクのレプリケーションの有効化がサポートされています。 <br/><br/> 一度に 1 つのディスクのみ Azure VM にホット アドできます。 複数のディスクの並列追加はサポートされていません。 |
 ディスクのホット リムーブ    | サポートされていません | VM 上でデータ ディスクを削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
 ディスクの除外 | サポート。 [PowerShell](azure-to-azure-exclude-disks.md) を使用して構成する必要があります。 |    一時ディスクは既定で除外されます。

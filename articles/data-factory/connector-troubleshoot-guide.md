@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 63a690ffaaefc506de296d43e7de13020fbd584a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366927"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727823"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "100366927"
 
 - **原因**:Azure Blob Storage 操作に問題があります。
 
-- **推奨事項**:エラーの詳細を確認するには、[Azure Blob Storage エラー コード](https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes)に関する記事を参照してください。 詳細については、Azure Blob Storage チームにお問い合わせください。
+- **推奨事項**:エラーの詳細を確認するには、[Azure Blob Storage エラー コード](/rest/api/storageservices/blob-service-error-codes)に関する記事を参照してください。 詳細については、Azure Blob Storage チームにお問い合わせください。
 
 
 ### <a name="invalid-property-during-copy-activity"></a>コピー アクティビティ中プロパティが無効です
@@ -164,7 +164,7 @@ ms.locfileid: "100366927"
   | 原因分析                                               | 推奨                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | 何らかの操作に失敗したことを示すエラーが Azure Data Lake Storage Gen2 によってスローされた場合。| Azure Data Lake Storage Gen2 によってスローされたエラー メッセージの詳細を確認します。 エラーが一時的なエラーである場合は、操作を再試行してください。 さらに支援が必要な場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。 |
-  | エラー メッセージに "許可されていません" という文字列が含まれている場合は、使用するサービス プリンシパルまたはマネージド ID に、Azure Data Lake Storage Gen2 にアクセスするための十分なアクセス許可がない可能性があります。 | このエラーのトラブルシューティングを行うには、「[Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)」を参照してください。 |
+  | エラー メッセージに "許可されていません" という文字列が含まれている場合は、使用するサービス プリンシパルまたはマネージド ID に、Azure Data Lake Storage Gen2 にアクセスするための十分なアクセス許可がない可能性があります。 | このエラーのトラブルシューティングを行うには、「[Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換](./connector-azure-data-lake-storage.md#service-principal-authentication)」を参照してください。 |
   | エラー メッセージに "InternalServerError" という文字列が含まれている場合は、Azure Data Lake Storage Gen2 によってエラーが返されます。 | このエラーは、一時的なエラーが原因で発生している可能性があります。 その場合は、操作を再試行します。 問題が解決しない場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。 |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Azure Data Lake Storage Gen2 アカウントへの要求によりタイムアウト エラーが発生する
@@ -204,7 +204,7 @@ ms.locfileid: "100366927"
 
 - **原因**:Azure Files ストレージ操作に問題があります。
 
-- **推奨事項**:エラーの詳細を確認するには、[Azure Files のヘルプ](https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes)を参照してください。 詳細については、Azure Files チームにお問い合わせください。
+- **推奨事項**:エラーの詳細を確認するには、[Azure Files のヘルプ](/rest/api/storageservices/file-service-error-codes)を参照してください。 詳細については、Azure Files チームにお問い合わせください。
 
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure Synapse Analytics、Azure SQL Database、および SQL Server
@@ -216,12 +216,12 @@ ms.locfileid: "100366927"
 
     | 原因分析                                               | 推奨                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | Azure SQL では、エラー メッセージに "SqlErrorNumber=47073" という文字列が含まれている場合、接続設定で公衆ネットワーク アクセスが拒否されていることを意味します。 | Azure SQL ファイアウォールで、 **[Deny public network access]\(公衆ネットワーク アクセスを拒否する\)** オプションを *[いいえ]* に設定します。 詳細については、「[Azure SQL の接続の設定](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access)」を参照してください。 |
-    | Azure SQL の場合、エラー メッセージに "SqlErrorNumber = [エラー コード]" などの SQL エラー コードが含まれている場合は、『Azure SQL DB トラブルシューティング ガイド』を参照してください。 | 推奨事項については、「[Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues)」を参照してください。 |
-    | ポート 1433 がファイアウォール許可リストに含まれているかどうかを確認します。 | 詳細については、[SQL Server で使用されるポート](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-)に関する記事を参照してください。 |
-    | エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database のエラーは、何らかの特定の操作が失敗したことを示します。 | 詳細については、「[データベース エンジンのエラー](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
-    | これが一時的な問題 (不安定なネットワーク接続など) の場合は、アクティビティ ポリシーに再試行を追加して軽減します。 | 詳細については、「[Azure Data Factory のパイプラインとアクティビティ](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy)」を参照してください。 |
-    | "Client with IP address '...' is not allowed to access the server" (IP アドレスが '...' のクライアントはサーバーへのアクセスが許可されていません) という文字列がエラー メッセージに含まれており、Azure SQL Database に接続しようとしている場合、通常、このエラーの原因は Azure SQL Database のファイアウォールの問題です。 | Azure SQL Server のファイアウォールの構成で、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** オプションを有効にします。 詳細については、[Azure SQL Database と Azure Synapse の IP ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)に関するページを参照してください。 |
+    | Azure SQL では、エラー メッセージに "SqlErrorNumber=47073" という文字列が含まれている場合、接続設定で公衆ネットワーク アクセスが拒否されていることを意味します。 | Azure SQL ファイアウォールで、 **[Deny public network access]\(公衆ネットワーク アクセスを拒否する\)** オプションを *[いいえ]* に設定します。 詳細については、「[Azure SQL の接続の設定](../azure-sql/database/connectivity-settings.md#deny-public-network-access)」を参照してください。 |
+    | Azure SQL の場合、エラー メッセージに "SqlErrorNumber = [エラー コード]" などの SQL エラー コードが含まれている場合は、『Azure SQL DB トラブルシューティング ガイド』を参照してください。 | 推奨事項については、「[Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](../azure-sql/database/troubleshoot-common-errors-issues.md)」を参照してください。 |
+    | ポート 1433 がファイアウォール許可リストに含まれているかどうかを確認します。 | 詳細については、[SQL Server で使用されるポート](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-)に関する記事を参照してください。 |
+    | エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database のエラーは、何らかの特定の操作が失敗したことを示します。 | 詳細については、「[データベース エンジンのエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
+    | これが一時的な問題 (不安定なネットワーク接続など) の場合は、アクティビティ ポリシーに再試行を追加して軽減します。 | 詳細については、「[Azure Data Factory のパイプラインとアクティビティ](./concepts-pipelines-activities.md#activity-policy)」を参照してください。 |
+    | "Client with IP address '...' is not allowed to access the server" (IP アドレスが '...' のクライアントはサーバーへのアクセスが許可されていません) という文字列がエラー メッセージに含まれており、Azure SQL Database に接続しようとしている場合、通常、このエラーの原因は Azure SQL Database のファイアウォールの問題です。 | Azure SQL Server のファイアウォールの構成で、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** オプションを有効にします。 詳細については、[Azure SQL Database と Azure Synapse の IP ファイアウォール規則](../azure-sql/database/firewall-configure.md)に関するページを参照してください。 |
     
 ### <a name="error-code-sqloperationfailed"></a>エラー コード:SqlOperationFailed
 
@@ -231,9 +231,9 @@ ms.locfileid: "100366927"
 
     | 原因分析                                               | 推奨                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database により、何らかの特定の操作が失敗したことを示すエラーがスローされます。 | SQL エラーが明確でない場合は、データベースを最新の互換性レベル '150' に変更してみてください。 最新バージョンの SQL エラーをスローすることができます。 詳細については、[ドキュメント](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)を参照してください。 <br/> SQL の問題のトラブルシューティングの詳細については、「[データベース エンジンのエラー](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
+    | エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database により、何らかの特定の操作が失敗したことを示すエラーがスローされます。 | SQL エラーが明確でない場合は、データベースを最新の互換性レベル '150' に変更してみてください。 最新バージョンの SQL エラーをスローすることができます。 詳細については、[ドキュメント](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)を参照してください。 <br/> SQL の問題のトラブルシューティングの詳細については、「[データベース エンジンのエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
     | エラー メッセージに "PdwManagedToNativeInteropException" という文字列が含まれている場合は、通常、ソースとシンクの列のサイズが一致していないことが原因です。 | ソースの列とシンクの列の両方のサイズを確認してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
-    | エラー メッセージに "InvalidOperationException" という文字列が含まれている場合は、通常、入力データが無効であることが原因です。 | 問題が発生している行を特定するには、Copy アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)」を参照してください。 |
+    | エラー メッセージに "InvalidOperationException" という文字列が含まれている場合は、通常、入力データが無効であることが原因です。 | 問題が発生している行を特定するには、Copy アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](./copy-activity-fault-tolerance.md)」を参照してください。 |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>エラー コード:SqlUnauthorizedAccess
@@ -331,7 +331,7 @@ ms.locfileid: "100366927"
 
 - **原因**:一括コピー プログラム ユーティリティ (bcp) クライアントから無効な列長を受け取ったため、SQL 一括コピーに失敗しました。
 
-- **推奨事項**:問題が発生した行を特定するには、Copy アクティビティのフォールト トレランス機能を有効にします。 これにより、問題のある行がストレージにリダイレクトされ、さらに調査できるようになります。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)」を参照してください。
+- **推奨事項**:問題が発生した行を特定するには、Copy アクティビティのフォールト トレランス機能を有効にします。 これにより、問題のある行がストレージにリダイレクトされ、さらに調査できるようになります。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](./copy-activity-fault-tolerance.md)」を参照してください。
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>エラー コード:SqlConnectionIsClosed
@@ -470,7 +470,7 @@ ms.locfileid: "100366927"
 
 - **メッセージ**: `Error thrown from driver. Sql code: '%code;'`
 
-- **原因**:エラー メッセージに "SQLSTATE=51002 SQLCODE=-805" という文字列が含まれている場合は、「[Azure Data Factory を使用して DB2 からデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties)」の「ヒント」に従います。
+- **原因**:エラー メッセージに "SQLSTATE=51002 SQLCODE=-805" という文字列が含まれている場合は、「[Azure Data Factory を使用して DB2 からデータをコピーする](./connector-db2.md#linked-service-properties)」の「ヒント」に従います。
 
 - **推奨事項**:`packageCollection` プロパティで "NULLID" の設定を試みます。
 
@@ -647,7 +647,7 @@ ms.locfileid: "100366927"
 
 - **原因**:Parquet 形式は、Azure Data Factory ではサポートされていません。
 
-- **推奨事項**:「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs)」に移動して、ソース データを再確認します。
+- **推奨事項**:「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](./supported-file-formats-and-compression-codecs.md)」に移動して、ソース データを再確認します。
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>エラー コード:ParquetMissedDecimalPrecisionScale
@@ -683,7 +683,7 @@ ms.locfileid: "100366927"
 
 - **原因**:データは、mappings.source に指定されている型に変換できません。
 
-- **推奨事項**:ソース データを再確認するか、Copy アクティビティの列マッピングでこの列に適切なデータ型を指定してください。 詳細については、「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs)」を参照してください。
+- **推奨事項**:ソース データを再確認するか、Copy アクティビティの列マッピングでこの列に適切なデータ型を指定してください。 詳細については、「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](./supported-file-formats-and-compression-codecs.md)」を参照してください。
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>エラー コード:ParquetDataCountNotMatchColumnCount
@@ -831,7 +831,7 @@ ms.locfileid: "100366927"
 
     秘密キーのコンテンツが Key Vault からのものである場合、SFTP リンク サービスに直接アップロードすると、元のキー ファイルが機能する可能性があります。
 
-    詳細については、「[Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication)」を参照してください。 秘密キーのコンテンツは、Base64 でエンコードされた SSH 秘密キーのコンテンツです。
+    詳細については、「[Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする](./connector-sftp.md#using-ssh-public-key-authentication)」を参照してください。 秘密キーのコンテンツは、Base64 でエンコードされた SSH 秘密キーのコンテンツです。
 
     Base64 エンコードを使用して元の秘密キー ファイル "*全体*" をエンコードし、エンコードされた文字列を Key Vault に格納します。 ファイルから **[アップロード]** を選択した場合、元の秘密キー ファイルが、SFTP リンク サービスで使用できるキー ファイルです。
 
@@ -902,7 +902,7 @@ ms.locfileid: "100366927"
     低スループットを昇格する場合は、SFTP 管理者に問い合わせて、コンカレント接続数の上限を引き上げるか、次のいずれかを実行できます。
 
     * セルフホステッド IR を使用している場合は、セルフホステッド IR コンピューターの IP を許可リストに追加します。
-    * Azure IR を使用している場合は、[Azure Integration Runtime IP アドレス](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)を追加します。 SFTP サーバーの許可リストに IP の範囲を追加しない場合は、代わりにセルフホステッド IR を使用してください。
+    * Azure IR を使用している場合は、[Azure Integration Runtime IP アドレス](./azure-integration-runtime-ip-addresses.md)を追加します。 SFTP サーバーの許可リストに IP の範囲を追加しない場合は、代わりにセルフホステッド IR を使用してください。
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online リスト
 
@@ -961,7 +961,7 @@ ms.locfileid: "100366927"
 
 - **原因**:セルフホステッド IR は、Java ランタイムを見つけることができません。 Java ランタイムは、特定のソースを読み取るために必要です。
 
-- **推奨事項**:統合ランタイム環境を確認するには、[セルフホステッド統合ランタイムの使用](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)に関する記事を参照してください。
+- **推奨事項**:統合ランタイム環境を確認するには、[セルフホステッド統合ランタイムの使用](./format-parquet.md#using-self-hosted-integration-runtime)に関する記事を参照してください。
 
 
 ### <a name="error-code-wildcardpathsinknotsupported"></a>エラー コード:WildcardPathSinkNotSupported

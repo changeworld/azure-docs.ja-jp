@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: ee4436d2b8445f2a1d368fb6c76e04d1ec790d98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 862c6c5253c1bb4481476b67c7cfb203c2568e24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604658"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700577"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor ブックのデータ ソース
 
@@ -34,7 +34,7 @@ ms.locfileid: "100604658"
 
 ## <a name="metrics"></a>メトリック
 
-Azure リソースは、ブックを介してアクセスできる[メトリック](../platform/data-platform-metrics.md)を生成します。 ターゲット リソース、目的のメトリック、およびそれらの集計を指定できる特別なコントロールを通じて、ブック内でメトリックにアクセスできます。 このデータは、グラフまたはグリッドにプロットできます。
+Azure リソースは、ブックを介してアクセスできる[メトリック](../essentials/data-platform-metrics.md)を生成します。 ターゲット リソース、目的のメトリック、およびそれらの集計を指定できる特別なコントロールを通じて、ブック内でメトリックにアクセスできます。 このデータは、グラフまたはグリッドにプロットできます。
 
 ![CPU 使用率のブック メトリック グラフのスクリーンショット](./media/workbooks-data-sources/metrics-graph.png)
 
@@ -145,6 +145,6 @@ JSON プロバイダーを使用すると、静的な JSON コンテンツから
 
 ## <a name="next-steps"></a>次のステップ
 
-* ブックの豊富な視覚化オプションの学習を[開始](../platform/workbooks-overview.md#visualizations)します。
-* ブック リソースへのアクセスを[制御](../platform/workbooks-access-control.md)し、共有します。
-* [Log Analytics のクエリ最適化のヒント](../log-query/query-optimization.md)
+* ブックの豊富な視覚化オプションの学習を[開始](./workbooks-overview.md#visualizations)します。
+* ブック リソースへのアクセスを[制御](./workbooks-access-control.md)し、共有します。
+* [Log Analytics のクエリ最適化のヒント](../logs/query-optimization.md)

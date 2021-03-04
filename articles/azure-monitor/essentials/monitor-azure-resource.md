@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 33f7ed21ee20f78bae6803fab10fbb151995345f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7d5fcd4da5ab8b8516794bf99b8aab69ada24644
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708120"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Monitor を使用した Azure リソースの監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -20,7 +20,7 @@ Azure リソースに依存するクリティカルなアプリケーション�
 > この記事は、Azure Monitor を使用する Azure のすべてのサービスに適用されます。 VM や App Service などのコンピューティング リソースでは、ここで説明するのと同じ監視データが生成されますが、ログとメトリックを生成する場合があるゲスト オペレーティング システムもあります。 このデータを収集して分析する方法の詳細については、これらのサービスの監視に関するドキュメントを参照してください。
 
 ## <a name="what-is-azure-monitor"></a>Azure Monitor とは
-Azure Monitor は Azure のフルスタックの監視サービスであり、他のクラウドやオンプレミスのリソースに加えて、Azure リソースを監視するための完全な機能セットが提供されます。 [Azure Monitor データ プラットフォーム](../platform/data-platform.md)では[ログ](../platform/data-platform-logs.md)と[メトリック](../essentials/data-platform-metrics.md)にデータが収集され、完備された監視ツール セットを使用して、それらをまとめて分析できます。 Azure Monitor によって監視できるアプリケーションとサービスの完全な一覧については、「[Azure Monitor によって監視される内容](../monitor-reference.md)」を参照してください。
+Azure Monitor は Azure のフルスタックの監視サービスであり、他のクラウドやオンプレミスのリソースに加えて、Azure リソースを監視するための完全な機能セットが提供されます。 [Azure Monitor データ プラットフォーム](../data-platform.md)では[ログ](../logs/data-platform-logs.md)と[メトリック](../essentials/data-platform-metrics.md)にデータが収集され、完備された監視ツール セットを使用して、それらをまとめて分析できます。 Azure Monitor によって監視できるアプリケーションとサービスの完全な一覧については、「[Azure Monitor によって監視される内容](../monitor-reference.md)」を参照してください。
 
 Azure リソースを作成するとすぐに、Azure Monitor が有効にされ、[Azure portal で表示して分析する](#monitoring-in-the-azure-portal)ことができるメトリックとアクティビティ ログの収集が開始されます。 一部の構成では、追加の監視データを収集し、追加の機能を有効にすることができます。 構成要件の詳細については、後の「[データの監視](#monitoring-data)」を参照してください。
 
@@ -46,15 +46,15 @@ Azure リソースを作成するとすぐに、Azure Monitor が有効にされ
 - API によるメトリックへのアクセス。
 
 ## <a name="monitoring-data"></a>データの監視
-Azure のリソースによって、次の図に示すような[ログ](../platform/data-platform-logs.md)と[メトリック](../essentials/data-platform-metrics.md)が生成されます。 各 Azure サービスによって生成される特定のデータおよび提供されるその他のソリューションや分析情報については、各サービスのドキュメントを参照してください。
+Azure のリソースによって、次の図に示すような[ログ](../logs/data-platform-logs.md)と[メトリック](../essentials/data-platform-metrics.md)が生成されます。 各 Azure サービスによって生成される特定のデータおよび提供されるその他のソリューションや分析情報については、各サービスのドキュメントを参照してください。
 
 ![概要](media/monitor-azure-resource/logs-metrics.png)
 
 
 
 - [プラットフォーム メトリック](../essentials/data-platform-metrics.md) - 一定の間隔で自動的に収集される、特定の時刻におけるリソースのいくつかの側面が記述されている数値。 
-- [リソース ログ](../platform/platform-logs-overview.md) - Azure リソース (データ プレーン) 内で実行された操作に関する分析情報が提供されます。たとえば、キー コンテナーからのシークレットの取得や、データベースに対する要求などです。 リソース ログの内容と構造は、Azure サービスとリソースの種類によって異なります。
-- [アクティビティ ログ](../platform/platform-logs-overview.md) - サブスクリプションの各 Azure リソースに対する外部 (管理プレーン) からの操作についての分析情報が提供されます。新しいリソースの作成や、仮想マシンの起動などです。 これは、サブスクリプションのリソースに対して行われたすべての書き込み操作 (PUT、POST、DELETE) についての、"何"、"誰"、"いつ" に関する情報です。
+- [リソース ログ](./platform-logs-overview.md) - Azure リソース (データ プレーン) 内で実行された操作に関する分析情報が提供されます。たとえば、キー コンテナーからのシークレットの取得や、データベースに対する要求などです。 リソース ログの内容と構造は、Azure サービスとリソースの種類によって異なります。
+- [アクティビティ ログ](./platform-logs-overview.md) - サブスクリプションの各 Azure リソースに対する外部 (管理プレーン) からの操作についての分析情報が提供されます。新しいリソースの作成や、仮想マシンの起動などです。 これは、サブスクリプションのリソースに対して行われたすべての書き込み操作 (PUT、POST、DELETE) についての、"何"、"誰"、"いつ" に関する情報です。
 
 
 ## <a name="configuration-requirements"></a>構成要件
@@ -63,11 +63,11 @@ Azure のリソースによって、次の図に示すような[ログ](../platf
 一部の監視データは自動的に収集されますが、要件に応じた何らかの構成の実行が必要になる場合があります。 監視データの各種類についての具体的な情報は、以下を参照してください。
 
 - [プラットフォーム メトリック](../essentials/data-platform-metrics.md) - プラットフォーム メトリックは、[ Azure Monitor のメトリック](../essentials/data-platform-metrics.md)に自動的に収集され、構成する必要はありません。 エントリを Azure Monitor ログに送信したり、Azure の外部に転送したりするための、診断設定を作成します。
-- [リソース ログ](../platform/platform-logs-overview.md) - リソース ログは、Azure リソースによって自動的に生成されますが、診断設定がないと収集されません。  エントリを Azure Monitor ログに送信したり、Azure の外部に転送したりするための、診断設定を作成します。
-- [アクティビティ ログ](../platform/platform-logs-overview.md) - アクティビティ ログは、構成を必要とせずに自動的に収集され、Azure portal で表示できます。 Azure Monitor ログにコピーしたり、Azure の外部に転送したりするための、診断設定を作成します。
+- [リソース ログ](./platform-logs-overview.md) - リソース ログは、Azure リソースによって自動的に生成されますが、診断設定がないと収集されません。  エントリを Azure Monitor ログに送信したり、Azure の外部に転送したりするための、診断設定を作成します。
+- [アクティビティ ログ](./platform-logs-overview.md) - アクティビティ ログは、構成を必要とせずに自動的に収集され、Azure portal で表示できます。 Azure Monitor ログにコピーしたり、Azure の外部に転送したりするための、診断設定を作成します。
 
 ### <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
-Azure Monitor ログにデータを収集するには、Log Analytics ワークスペースが必要です。 新しいワークスペースを作成してサービスの監視をすぐに始められますが、他のサービスからデータを収集しているワークスペースを使用するとよい場合があります。 ワークスペースの作成の詳細については、「[Azure portal で Log Analytics ワークスペースを作成する](../learn/quick-create-workspace.md)」を参照してください。要件に最適なワークスペースの設計の決定については、「[Azure Monitor ログのデプロイの設計](../platform/design-logs-deployment.md)」を参照してください。 組織内の既存のワークスペースを使用する場合は、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](../platform/manage-access.md)」で説明されているように、適切なアクセス許可が必要です。 
+Azure Monitor ログにデータを収集するには、Log Analytics ワークスペースが必要です。 新しいワークスペースを作成してサービスの監視をすぐに始められますが、他のサービスからデータを収集しているワークスペースを使用するとよい場合があります。 ワークスペースの作成の詳細については、「[Azure portal で Log Analytics ワークスペースを作成する](../logs/quick-create-workspace.md)」を参照してください。要件に最適なワークスペースの設計の決定については、「[Azure Monitor ログのデプロイの設計](../logs/design-logs-deployment.md)」を参照してください。 組織内の既存のワークスペースを使用する場合は、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](../logs/manage-access.md)」で説明されているように、適切なアクセス許可が必要です。 
 
 
 
@@ -76,11 +76,11 @@ Azure Monitor ログにデータを収集するには、Log Analytics ワーク�
 ## <a name="diagnostic-settings"></a>診断設定
 診断設定では、特定のリソースのリソース ログとメトリックを送信する場所を定義します。 使用できる送信先は次のとおりです。
 
-- [Log Analytics ワークスペース](../platform/resource-logs.md#send-to-log-analytics-workspace) - 強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせてデータを分析でき、ログ アラートや視覚化などの Azure Monitor の他の機能を利用することもできます。 
-- [イベント ハブ](../platform/resource-logs.md#send-to-azure-event-hubs) - サードパーティの SIEM や他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。 
-- [Azure ストレージ アカウント](../platform/resource-logs.md#send-to-azure-storage)- 監査、スタティック分析、またはバックアップに役立ちます。
+- [Log Analytics ワークスペース](./resource-logs.md#send-to-log-analytics-workspace) - 強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせてデータを分析でき、ログ アラートや視覚化などの Azure Monitor の他の機能を利用することもできます。 
+- [イベント ハブ](./resource-logs.md#send-to-azure-event-hubs) - サードパーティの SIEM や他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。 
+- [Azure ストレージ アカウント](./resource-logs.md#send-to-azure-storage)- 監査、スタティック分析、またはバックアップに役立ちます。
 
-「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../essentials/diagnostic-settings.md)」の手順に従って、Azure portal で診断設定を作成および管理します。 テンプレートで診断設定を定義し、作成時にリソースの完全な監視を有効にするには、「[Azure で Resource Manager テンプレートを使用して診断設定を作成する](../samples/resource-manager-diagnostic-settings.md)」を参照してください。
+「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../essentials/diagnostic-settings.md)」の手順に従って、Azure portal で診断設定を作成および管理します。 テンプレートで診断設定を定義し、作成時にリソースの完全な監視を有効にするには、「[Azure で Resource Manager テンプレートを使用して診断設定を作成する](./resource-manager-diagnostic-settings.md)」を参照してください。
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Azure Portal の監視機能
@@ -100,9 +100,9 @@ Azure Monitor ログにデータを収集するには、Log Analytics ワーク�
 ![Azure portal での分析情報](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>メトリック
-Azure portal でメトリックを分析するには、ほとんどのサービスの **[メトリック]** メニュー項目から使用できる [メトリックスエクス プローラー](../platform/metrics-getting-started.md)を使用します。 このツールを使用すると、個々のメトリックまたは複数の組み合わせを使用して、相関関係や傾向を特定することができます。 
+Azure portal でメトリックを分析するには、ほとんどのサービスの **[メトリック]** メニュー項目から使用できる [メトリックスエクス プローラー](./metrics-getting-started.md)を使用します。 このツールを使用すると、個々のメトリックまたは複数の組み合わせを使用して、相関関係や傾向を特定することができます。 
 
-- メトリックス エクスプローラーの使用について詳しくは、「[Azure メトリックス エクスプローラーの概要](../platform/metrics-getting-started.md)」を参照してください。
+- メトリックス エクスプローラーの使用について詳しくは、「[Azure メトリックス エクスプローラーの概要](./metrics-getting-started.md)」を参照してください。
 - 複数のメトリックの使用や、フィルターや分割の適用など、メトリックス エクスプローラーの高度な機能については、「[Azure メトリックス エクスプローラーの高度な機能](../essentials/metrics-charts.md)」を参照してください。
 
 ![Azure portal でのメトリック エクスプローラー](media/monitor-azure-resource/metrics.png)
@@ -119,11 +119,11 @@ Azure portal でアクティビティ ログのエントリを表示します。
 ### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 Azure Monitor ログを使用すると、複数のサービスや他のデータ ソースからのログとメトリックが統合され、強力なクエリ ツールで分析することができます。 前に説明したように、Azure Monitor の Log Analytics ワークスペースにプラットフォーム メトリック、アクティビティ ログ、リソース ログを収集するには、診断設定を作成します。
 
-[Log Analytics](../log-query/log-analytics-tutorial.md) では[ログ クエリ](../log-query/log-query-overview.md)を使用できます。これは、すべての機能を備えたクエリ言語を使用してログ データの高度な分析を実行できる、Azure Monitor の強力な機能です。 [クエリ スコープ](../log-query/scope.md#query-scope)としてリソースを使用してログ クエリを操作するには、Azure リソースの **[監視]** メニューの **[ログ]** から Log Analytics を開きます。 これにより、そのリソースだけについて複数のテーブルのデータを分析できます。 すべてのリソースのログにアクセスするには、Azure Monitor のメニューから **[ログ]** を使用します。 
+[Log Analytics](../logs/log-analytics-tutorial.md) では[ログ クエリ](../logs/log-query-overview.md)を使用できます。これは、すべての機能を備えたクエリ言語を使用してログ データの高度な分析を実行できる、Azure Monitor の強力な機能です。 [クエリ スコープ](../logs/scope.md#query-scope)としてリソースを使用してログ クエリを操作するには、Azure リソースの **[監視]** メニューの **[ログ]** から Log Analytics を開きます。 これにより、そのリソースだけについて複数のテーブルのデータを分析できます。 すべてのリソースのログにアクセスするには、Azure Monitor のメニューから **[ログ]** を使用します。 
 
-- ログ クエリの記述に使用されるクエリ言語の使用に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](../log-query/get-started-queries.md)」を参照してください。
-- Azure Monitor ログでのリソース ログの収集方法と、クエリでそれらにアクセスする方法の詳細については、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](../platform/resource-logs.md#send-to-log-analytics-workspace)」を参照してください。
-- Azure Monitor ログでのリソース ログ データの構造については、「[収集モード](../platform/resource-logs.md#send-to-log-analytics-workspace)」を参照してください。
+- ログ クエリの記述に使用されるクエリ言語の使用に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](../logs/get-started-queries.md)」を参照してください。
+- Azure Monitor ログでのリソース ログの収集方法と、クエリでそれらにアクセスする方法の詳細については、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](./resource-logs.md#send-to-log-analytics-workspace)」を参照してください。
+- Azure Monitor ログでのリソース ログ データの構造については、「[収集モード](./resource-logs.md#send-to-log-analytics-workspace)」を参照してください。
 - Azure Monitor ログでのそのテーブルの詳細については、各 Azure サービスのドキュメントを参照してください。
 
 ![Azure Portal の Log Analytics](media/monitor-azure-resource/logs.png)
@@ -139,11 +139,11 @@ Azure Monitor ログを使用すると、複数のサービスや他のデータ
 ## <a name="monitoring-from-rest-api"></a>REST API からの監視
 REST API を使用して、リソースから収集された監視データをカスタム アプリケーションに組み込みます。
 
-- Azure Monitor REST API からのメトリックへのアクセスの詳細については、「[Azure 監視 REST API のチュートリアル](../platform/rest-api-walkthrough.md)」を参照してください。
+- Azure Monitor REST API からのメトリックへのアクセスの詳細については、「[Azure 監視 REST API のチュートリアル](./rest-api-walkthrough.md)」を参照してください。
 - Azure PowerShell からログ クエリを使用して Azure Monitor のログ データにアクセスする方法については、「[Azure Log Analytics REST API](https://dev.loganalytics.io/)」を参照してください。
 
 ## <a name="alerts"></a>警告
-[アラート](../platform/alerts-overview.md)では、監視データで重要な状態が見つかったきに、事前に通知され、場合によっては対処されます。 アラートのターゲット、アラートを作成する条件、応答で実行するアクションを定義する、警告ルールを作成します。
+[アラート](../alerts/alerts-overview.md)では、監視データで重要な状態が見つかったきに、事前に通知され、場合によっては対処されます。 アラートのターゲット、アラートを作成する条件、応答で実行するアクションを定義する、警告ルールを作成します。
 
 警告ルールの種類に応じて、異なる種類の監視データが使用されます。
 
@@ -160,4 +160,4 @@ REST API を使用して、リソースから収集された監視データを�
 
 ## <a name="next-steps"></a>次のステップ
 
-* さまざまな Azure サービスのリソース ログの詳細については、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/resource-logs-schema.md)」を参照してください。
+* さまざまな Azure サービスのリソース ログの詳細については、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](./resource-logs-schema.md)」を参照してください。

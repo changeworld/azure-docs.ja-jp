@@ -3,17 +3,17 @@ title: Azure CLI を使用して Azure Image Builder サービスのアクセス
 description: Azure CLI を使用してアクセス許可と特権を含む Azure VM Image Builder サービスの要件を構成する
 author: cynthn
 ms.author: danis
-ms.date: 05/06/2020
+ms.date: 03/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: accefe6644f8959bb9426a154d4f33e0834fc06c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674884"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695432"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Azure CLI を使用して Azure Image Builder サービスのアクセス許可を構成する
 
@@ -132,7 +132,7 @@ imageResourceGroup=<Resource group>
 identityName="aibIdentity"
 
 # Use *cURL* to download the a sample JSON description 
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 # Create a unique role name to avoid clashes in the same Azure Active Directory domain
 imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
@@ -173,7 +173,7 @@ VnetResourceGroup=<Resource group>
 identityName="aibIdentity"
 
 # Use *cURL* to download the a sample JSON description 
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
 
 # Create a unique role name to avoid clashes in the same domain
 netRoleDefName="Azure Image Builder Network Def"$(date +'%s')
@@ -235,7 +235,7 @@ Image Builder テンプレートでは、ユーザー割り当てマネージド
 | \<Storage account container\> | ストレージ アカウント コンテナーの名前 |
 | \<Subscription ID\> | Azure サブスクリプション |
 
-ユーザー割り当てマネージド ID の使用方法の詳細については、「[Create a Custom Image that will use an Azure User-Assigned Managed Identity to seemlessly access files Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage)」 (Azure ユーザー割り当てマネージド ID を使用してシームレスにファイル Azure Storage にアクセスするカスタム イメージを作成する) を参照してください。 このクイックスタートでは、ユーザー割り当てマネージド ID を作成し、ストレージ アカウントにアクセスするように構成する方法について説明しています。
+ユーザー割り当てマネージド ID の使用方法の詳細については、「[Create a Custom Image that will use an Azure User-Assigned Managed Identity to seemlessly access files Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)」 (Azure ユーザー割り当てマネージド ID を使用してシームレスにファイル Azure Storage にアクセスするカスタム イメージを作成する) を参照してください。 このクイックスタートでは、ユーザー割り当てマネージド ID を作成し、ストレージ アカウントにアクセスするように構成する方法について説明しています。
 
 ## <a name="next-steps"></a>次の手順
 

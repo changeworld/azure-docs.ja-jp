@@ -6,33 +6,33 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 88643663c2f14cb7d8883eb1210bdee07b00eece
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5e7909725f5e390f4e42a7d62e80f90f897c840f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600669"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714155"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
 ## <a name="overview"></a>概要
 
-ログ アラートは、[Azure アラート](../platform/alerts-overview.md)でサポートされているアラートの種類の 1 つです。 ログ アラートにより、ユーザーは [Log Analytics](../log-query/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](../platform/action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。
+ログ アラートは、[Azure アラート](./alerts-overview.md)でサポートされているアラートの種類の 1 つです。 ログ アラートにより、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。
 
 > [!NOTE]
-> [Log Analytics ワークスペース](../log-query/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
+> [Log Analytics ワークスペース](../logs/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
 
 > [!NOTE]
 > 現時点では、API バージョン `2020-05-01-preview` とリソース中心のログ アラートに関して追加料金は発生しません。  プレビュー段階にある機能の価格は、後で発表され、課金が始まる前に通知されます。 通知期間後も新しい API バージョンとリソース中心ログ アラートを引き続き使用することを選択した場合は、該当する料金が適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-ログ アラートで、Log Analytics データに対するクエリを実行します。 最初に、[ログ データの収集](../platform/resource-logs.md)を開始し、ログ データで問題を照会する必要があります。 検出できることを理解したり、[独自のクエリの記述を開始](../log-query/log-analytics-tutorial.md)したりするには、Log Analytics での[アラートのクエリの例に関するトピック](../log-query/example-queries.md)を使用してください。
+ログ アラートで、Log Analytics データに対するクエリを実行します。 最初に、[ログ データの収集](../essentials/resource-logs.md)を開始し、ログ データで問題を照会する必要があります。 検出できることを理解したり、[独自のクエリの記述を開始](../logs/log-analytics-tutorial.md)したりするには、Log Analytics での[アラートのクエリの例に関するトピック](../logs/example-queries.md)を使用してください。
 
-[Azure 監視共同作成者](../platform/roles-permissions-security.md)は、ログ アラートの作成、変更、更新に必要な一般的なロールです。 リソース ログに対するアクセスとクエリ実行の権限も必要です。 リソース ログに部分的にアクセスすると、クエリが失敗したり、部分的な結果が返されたりすることがあります。 [Azure でのログ アラートの構成に関する詳細を確認してください](./alerts-log.md)。
+[Azure 監視共同作成者](../roles-permissions-security.md)は、ログ アラートの作成、変更、更新に必要な一般的なロールです。 リソース ログに対するアクセスとクエリ実行の権限も必要です。 リソース ログに部分的にアクセスすると、クエリが失敗したり、部分的な結果が返されたりすることがあります。 [Azure でのログ アラートの構成に関する詳細を確認してください](./alerts-log.md)。
 
 > [!NOTE]
-> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](../platform/api-alerts.md) を使用して管理されていました。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](../alerts/alerts-log-api-switch.md)。
+> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](./api-alerts.md) を使用して管理されていました。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](../alerts/alerts-log-api-switch.md)。
 
 ## <a name="query-evaluation-definition"></a>クエリ評価の定義
 
@@ -44,17 +44,17 @@ ms.locfileid: "100600669"
 以下のセクションでは、上記のロジックを設定するために使用できるさまざまなパラメーターについて説明します。
 
 ### <a name="log-query"></a>Log query
-ルールの評価に使用される [Log Analytics](../log-query/log-analytics-tutorial.md) クエリ。 このクエリによって返される結果を使用して、アラートをトリガーするかどうかが決まります。 クエリのスコープは次のように設定できます。
+ルールの評価に使用される [Log Analytics](../logs/log-analytics-tutorial.md) クエリ。 このクエリによって返される結果を使用して、アラートをトリガーするかどうかが決まります。 クエリのスコープは次のように設定できます。
 
 - 仮想マシンなどの特定のリソース。
 - サブスクリプションやリソース グループなどの大きなリソース。
-- [クロスリソース クエリ](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)を使用する複数のリソース。 
+- [クロスリソース クエリ](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)を使用する複数のリソース。 
  
 > [!IMPORTANT]
 > アラート クエリには、最適なパフォーマンスと結果の関連性を保証するための制約があります。 [こちら](./alerts-log-query.md)を参照してください。
 
 > [!IMPORTANT]
-> リソース中心クエリと[クロスリソース クエリ](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)は、現在の scheduledQueryRules API を使用してのみサポートされます。 従来の [Log Analytics Alert API](../platform/api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について確認してください](./alerts-log-api-switch.md)
+> リソース中心クエリと[クロスリソース クエリ](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)は、現在の scheduledQueryRules API を使用してのみサポートされます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について確認してください](./alerts-log-api-switch.md)
 
 #### <a name="query-time-range"></a>クエリ時間の範囲
 
@@ -154,7 +154,7 @@ requests
 このルールでは、過去 15 分間にエラー イベントが発生した仮想マシンがあるかどうかが監視されます。 各仮想マシンは個別に監視され、アクションが個別にトリガーされます。
 
 > [!NOTE]
-> アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](../platform/api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-05-01-preview` 以上の API バージョンでのみサポートされています。
+> アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-05-01-preview` 以上の API バージョンでのみサポートされています。
 
 ## <a name="alert-logic-definition"></a>アラート ロジックの定義
 
@@ -197,17 +197,17 @@ requests
 
 - Application Insights のログ アラートが正しいリソース名でリソース グループとアラート プロパティと共に表示されます。
 - [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) を使用して作成されている場合、Log Analytics のログ アラートは、正しいリソース名でリソース グループとアラート プロパティと共に表示されます。
-- [従来の Log Analytics API](../platform/api-alerts.md) から作成されたログ アラートは、[Azure リソース](../../azure-resource-manager/management/overview.md)で追跡されず、一意のリソース名は適用されません。 これらのアラートは、非表示リソースとして `microsoft.insights/scheduledqueryrules` でまだ作成され、`<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` というリソース名前付け構造が使用されます。 従来の API のログ アラートは、上記の非表示リソース名で、リソース グループとアラート プロパティと共に表示されます。
+- [従来の Log Analytics API](./api-alerts.md) から作成されたログ アラートは、[Azure リソース](../../azure-resource-manager/management/overview.md)で追跡されず、一意のリソース名は適用されません。 これらのアラートは、非表示リソースとして `microsoft.insights/scheduledqueryrules` でまだ作成され、`<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` というリソース名前付け構造が使用されます。 従来の API のログ アラートは、上記の非表示リソース名で、リソース グループとアラート プロパティと共に表示されます。
 
 > [!NOTE]
 > `<, >, %, &, \, ?, /` などのサポートされていないリソース文字は、非表示リソース名では `_` に置き換えられ、これは課金情報にも反映されます。
 
 > [!NOTE]
-> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](../platform/api-alerts.md) と [Log Analytics の保存された検索とアラート](../insights/solutions.md)の従来のテンプレートを使用して、管理されていました。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](../alerts/alerts-log-api-switch.md)。 すべてのアラート ルール管理は、切り替えを選択して非表示のリソースを使用できないようにするまで、[従来の Log Analytics API](../platform/api-alerts.md) を使用して行う必要があります。
+> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](./api-alerts.md) と [Log Analytics の保存された検索とアラート](../insights/solutions.md)の従来のテンプレートを使用して、管理されていました。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](../alerts/alerts-log-api-switch.md)。 すべてのアラート ルール管理は、切り替えを選択して非表示のリソースを使用できないようにするまで、[従来の Log Analytics API](./api-alerts.md) を使用して行う必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure でのログ アラートの作成](./alerts-log.md)について学習します。
 * [Azure のログ アラートの Webhook](../alerts/alerts-log-webhook.md) について理解する。
-* [Azure アラート](../platform/alerts-overview.md)について学習します。
-* [Log Analytics](../log-query/log-query-overview.md) についてさらに学習します。
+* [Azure アラート](./alerts-overview.md)について学習します。
+* [Log Analytics](../logs/log-query-overview.md) についてさらに学習します。

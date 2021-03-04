@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 90646339ef41d0629a4d1ce8efed4b50427d3b2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416879"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724355"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel カスタム コネクタを作成するためのリソース
 
@@ -55,9 +55,9 @@ Azure Sentinel を使用すると、[Azure サービスと外部ソリューシ�
 
 データ ソースによってファイルにイベントが配信される場合は、Azure Monitor Log Analytics エージェントを使用してカスタム コネクタを作成することをお勧めします。
 
-- 詳細については、[Azure Monitor でのカスタム ログの収集](/azure/azure-monitor/platform/data-sources-custom-logs)に関するページを参照してください。
+- 詳細については、[Azure Monitor でのカスタム ログの収集](../azure-monitor/agents/data-sources-custom-logs.md)に関するページを参照してください。
 
-- この方法の例については、「[Azure Monitor での Linux 用 Log Analytics エージェントを使用したカスタム JSON データ ソースの収集](/azure/azure-monitor/platform/data-sources-json)」を参照してください。
+- この方法の例については、「[Azure Monitor での Linux 用 Log Analytics エージェントを使用したカスタム JSON データ ソースの収集](../azure-monitor/agents/data-sources-json.md)」を参照してください。
 
 ## <a name="connect-with-logstash"></a>Logstash を使用して接続する
 
@@ -83,7 +83,7 @@ Logstash をカスタム コネクタとして使用する例については、�
 
 ## <a name="connect-with-logic-apps"></a>Logic Apps を使用して接続する
 
-Azure Sentinel 用のサーバーレスのカスタム コネクタを作成するには、[Azure ロジック アプリ](/azure/logic-apps/)を使用します。
+Azure Sentinel 用のサーバーレスのカスタム コネクタを作成するには、[Azure ロジック アプリ](../logic-apps/index.yml)を使用します。
 
 > [!NOTE]
 > Logic Apps を使用してサーバーレス コネクタを作成すると便利な場合がありますが、コネクタに Logic Apps を使用すると、大量のデータではコストがかかる可能性があります。
@@ -95,9 +95,9 @@ Azure Sentinel 用のサーバーレスのカスタム コネクタを作成す�
 
     |トリガー  |[説明]  |
     |---------|---------|
-    |**定期的なタスク**     |   たとえば、特定のファイル、データベース、または外部 API から定期的にデータを取得するように、ロジック アプリをスケジュールします。 <br>詳細については、[Azure Logic Apps での定期的なタスクとワークフローの作成、スケジュール、実行](/azure/connectors/connectors-native-recurrence)に関するページを参照してください。      |
-    |**オンデマンド トリガー**     | 手動によるデータの収集とテストのために、ロジック アプリをオンデマンドで実行します。 <br>詳細については、[HTTPS エンドポイントを使用したロジック アプリの呼び出し、トリガー、入れ子化](/azure/logic-apps/logic-apps-http-endpoint)に関するページを参照してください。        |
-    |**HTTP/S エンドポイント**     |  ストリーミングの場合、およびソース システムがデータ転送を開始できる場合に推奨されます。 <br>詳細については、[HTTP または HTTPS によるサービス エンドポイントの呼び出し](/azure/connectors/connectors-native-http)に関するページを参照してください。       |
+    |**定期的なタスク**     |   たとえば、特定のファイル、データベース、または外部 API から定期的にデータを取得するように、ロジック アプリをスケジュールします。 <br>詳細については、[Azure Logic Apps での定期的なタスクとワークフローの作成、スケジュール、実行](../connectors/connectors-native-recurrence.md)に関するページを参照してください。      |
+    |**オンデマンド トリガー**     | 手動によるデータの収集とテストのために、ロジック アプリをオンデマンドで実行します。 <br>詳細については、[HTTPS エンドポイントを使用したロジック アプリの呼び出し、トリガー、入れ子化](../logic-apps/logic-apps-http-endpoint.md)に関するページを参照してください。        |
+    |**HTTP/S エンドポイント**     |  ストリーミングの場合、およびソース システムがデータ転送を開始できる場合に推奨されます。 <br>詳細については、[HTTP または HTTPS によるサービス エンドポイントの呼び出し](../connectors/connectors-native-http.md)に関するページを参照してください。       |
     |     |         |
 
 1. **情報を読み取るいずれかの Logic Apps コネクタを使用して、イベントを取得します**。 次に例を示します。
@@ -112,9 +112,9 @@ Azure Sentinel 用のサーバーレスのカスタム コネクタを作成す�
 
 1. **取得する情報を準備します**。
 
-    たとえば、[JSON 解析アクション](/azure/logic-apps/logic-apps-perform-data-operations#parse-json-action)を使用して JSON コンテンツのプロパティにアクセスすると、ロジック アプリの入力を指定するときに、動的コンテンツ リストからそれらのプロパティを選択できるようになります。
+    たとえば、[JSON 解析アクション](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)を使用して JSON コンテンツのプロパティにアクセスすると、ロジック アプリの入力を指定するときに、動的コンテンツ リストからそれらのプロパティを選択できるようになります。
 
-    詳細については、「[Azure Logic Apps でデータの操作を実行する](/azure/logic-apps/logic-apps-perform-data-operations)」を参照してください。
+    詳細については、「[Azure Logic Apps でデータの操作を実行する](../logic-apps/logic-apps-perform-data-operations.md)」を参照してください。
 
 1. **Log Analytics にデータを書き込みます**。
 
@@ -174,14 +174,14 @@ Log Analytics Data Collector API を使用して RESTful エンドポイント�
 
 RESTful エンドポイントを直接呼び出すには、より多くのプログラミングが必要ですが、柔軟性も高くなります。
 
-詳細については、[Log Analytics Data Collector API](/azure/azure-monitor/platform/data-collector-api) に関するページの、特に次の例を参照してください。
+詳細については、[Log Analytics Data Collector API](../azure-monitor/logs/data-collector-api.md) に関するページの、特に次の例を参照してください。
 
-- [C#](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#c-sample)
-- [Python 2](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#python-2-sample)
+- [C#](../azure-monitor/logs/data-collector-api.md#c-sample)
+- [Python 2](../azure-monitor/logs/data-collector-api.md#python-2-sample)
 
 ## <a name="connect-with-azure-functions"></a>Azure Functions を使用して接続する
 
-Azure Functions と RESTful API および [PowerShell](/azure/azure-functions/functions-reference-powershell) などのさまざまなコーディング言語を使用して、サーバーレスのカスタム コネクタを作成します。
+Azure Functions と RESTful API および [PowerShell](../azure-functions/functions-reference-powershell.md) などのさまざまなコーディング言語を使用して、サーバーレスのカスタム コネクタを作成します。
 
 この方法の例については、以下を参照してください。
 
@@ -189,7 +189,7 @@ Azure Functions と RESTful API および [PowerShell](/azure/azure-functions/fu
 - [Azure 関数を使用して Okta シングル サインオンを Azure Sentinel に接続する](connect-okta-single-sign-on.md)
 - [Azure Functions を使用して Proofpoint TAP を Azure Sentinel に接続する](connect-proofpoint-tap.md)
 - [Azure Functions を使用して Qualys VM を Azure Sentinel に接続する](connect-qualys-vm.md)
-- [XML や CSV など各種形式のデータを取り込む](/azure/azure-monitor/platform/create-pipeline-datacollector-api#ingesting-xml-csv-or-other-formats-of-data)
+- [XML や CSV など各種形式のデータを取り込む](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
 - [Azure Sentinel を使用した Zoom の監視](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (ブログ)
 - [Office 365 Management API のデータを取得するための関数アプリを Azure Sentinel にデプロイする](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (Azure Sentinel GitHub コミュニティ)
 

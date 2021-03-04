@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686480"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Azure portal で Azure Arc データ コントローラーを作成する
 
@@ -48,6 +48,10 @@ Azure portal と Azure Data Studio を使用して Azure Arc データ コント
 1. デプロイ構成ファイルを選択します。
 1. **[Azure Studio で開く]** ボタンをクリックします。
 1. 次の画面には、選択内容の概要と、生成されたノートブックが表示されます。  **[プロビジョニングしているノートブックのダウンロード]** ボタンをクリックして、ノートブックをダウンロードできます。
+
+   > [!IMPORTANT]
+   > Azure Red Hat OpenShift または Red Hat OpenShift コンテナー プラットフォームでは、データ コントローラーを作成する前にセキュリティ コンテキスト制約を適用する必要があります。 「[OpenShift で Azure Arc 対応データ サービスのセキュリティ コンテキスト制約を適用する](how-to-apply-security-context-constraint.md)」の手順に従います。
+
 1. Azure Data Studio でノートブックを開き、上部にある **[すべて実行]** ボタンをクリックします。
 1. 表示されるプロンプトとノートブックの指示に従って、データ コントローラーの作成を完了します。
 

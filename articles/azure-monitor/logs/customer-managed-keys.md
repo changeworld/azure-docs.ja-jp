@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa826e951b9fe34eb27481718b8f026747011e4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717419"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -25,11 +25,11 @@ Azure Monitor のデータは、Microsoft マネージド キーを使用して�
 
 Azure Monitor により、Microsoft マネージド キー (MMK) を使用して、すべてのデータおよび保存されたクエリが保存時に暗号化されるようになります。 Azure Monitor には、[Azure Key Vault](../../key-vault/general/overview.md) に格納されている独自のキーを使用した暗号化のオプションも用意されています。これにより、いつでもデータへのアクセスを取り消すことができます。 Azure Monitor での暗号化の使用は、[Azure Storage の暗号化](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)での運用方法とまったく同じです。
 
-カスタマー マネージド キーは、より高い保護レベルと制御を可能にする[専用のクラスター](../log-query/logs-dedicated-clusters.md)で提供されます。 専用クラスターに取り込まれたデータは、2 回暗号化されます。Microsoft のマネージド キーまたはカスタマー マネージド キーを使用してサービス レベルで一度暗号化され、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用してインフラストラクチャ レベルで一度暗号化されます。 [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。 専用クラスターを使用すると、[ロックボックス](#customer-lockbox-preview) コントロールを使用してデータを保護することもできます。
+カスタマー マネージド キーは、より高い保護レベルと制御を可能にする[専用のクラスター](./logs-dedicated-clusters.md)で提供されます。 専用クラスターに取り込まれたデータは、2 回暗号化されます。Microsoft のマネージド キーまたはカスタマー マネージド キーを使用してサービス レベルで一度暗号化され、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用してインフラストラクチャ レベルで一度暗号化されます。 [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。 専用クラスターを使用すると、[ロックボックス](#customer-lockbox-preview) コントロールを使用してデータを保護することもできます。
 
 過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、カスタマー マネージド キーの構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#key-revocation)に従います。 2021 年の前半には、カスタマー マネージド キーを使用して SSD データを暗号化できるように準備しています。
 
-Log Analytics 専用クラスターには、1000 GB/日以上の容量予約[価格モデル](../log-query/logs-dedicated-clusters.md#cluster-pricing-model)を使用します。
+Log Analytics 専用クラスターには、1000 GB/日以上の容量予約[価格モデル](./logs-dedicated-clusters.md#cluster-pricing-model)を使用します。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Monitor でのカスタマー マネージド キーの動作
 
@@ -145,7 +145,7 @@ Azure Key Vault を作成するか既存のものを使用して、データの�
 > [!IMPORTANT]
 > Key Vault がプライベート リンク (VNet) に配置されている場合は、ユーザー割り当てマネージド ID を使用できません。 このシナリオでは、システム割り当てマネージド ID を使用できます。
 
-[専用クラスターに関する記事](../log-query/logs-dedicated-clusters.md#creating-a-cluster)で示されている手順に従います。 
+[専用クラスターに関する記事](./logs-dedicated-clusters.md#creating-a-cluster)で示されている手順に従います。 
 
 ## <a name="grant-key-vault-permissions"></a>Key Vault アクセス許可を付与する
 
@@ -253,7 +253,7 @@ Content-type: application/json
 
 この操作を実行するには、ワークスペースとクラスターの両方に対して、`Microsoft.OperationalInsights/workspaces/write` および `Microsoft.OperationalInsights/clusters/write` が含まれる "書き込み" アクセス許可が必要です。
 
-[専用クラスターに関する記事](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster)で示されている手順に従います。
+[専用クラスターに関する記事](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)で示されている手順に従います。
 
 ## <a name="key-revocation"></a>キーの失効
 
@@ -387,7 +387,7 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
 ## <a name="customer-managed-key-operations"></a>カスタマー マネージド キーの操作
 
-カスタマー マネージド キーは専用クラスター上で指定されます。これらの操作については[専用クラスターに関する記事](../log-query/logs-dedicated-clusters.md#change-cluster-properties)を参照してください。
+カスタマー マネージド キーは専用クラスター上で指定されます。これらの操作については[専用クラスターに関する記事](./logs-dedicated-clusters.md#change-cluster-properties)を参照してください。
 
 - リソース グループ内のすべてのクラスターを取得する  
 - サブスクリプション内のすべてのクラスターを取得する
@@ -470,8 +470,8 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
   **クラスターの更新**
   -  400 -- Cluster is in deleting state. (400 -- クラスターは削除中の状態です。) 非同期操作が進行中です。 更新操作を実行する前に、クラスターでの操作が完了している必要があります。
-  -  400 -- KeyVaultProperties is not empty but has a bad format. (400 -- KeyVaultProperties は空ではありませんが、形式が無効です。) [キー識別子の更新](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details)に関するセクションを参照してください。
-  -  400 -- Failed to validate key in Key Vault. (400 -- Key Vault 内のキーの検証に失敗しました。) 必要なアクセス許可がないことが原因である可能性があります。または、キーが存在しません。 Key Vault で[キーとアクセス ポリシーを設定](../platform/customer-managed-keys.md#grant-key-vault-permissions)したことを確認してください。
+  -  400 -- KeyVaultProperties is not empty but has a bad format. (400 -- KeyVaultProperties は空ではありませんが、形式が無効です。) [キー識別子の更新](#update-cluster-with-key-identifier-details)に関するセクションを参照してください。
+  -  400 -- Failed to validate key in Key Vault. (400 -- Key Vault 内のキーの検証に失敗しました。) 必要なアクセス許可がないことが原因である可能性があります。または、キーが存在しません。 Key Vault で[キーとアクセス ポリシーを設定](#grant-key-vault-permissions)したことを確認してください。
   -  400 -- Key is not recoverable. (400 -- キーは回復不能です。) Key Vault に論理的な削除と消去保護を設定する必要があります。 [Key Vault のドキュメント](../../key-vault/general/soft-delete-overview.md)を参照してください
   -  400 -- Operation cannot be executed now. (400 -- 現在、操作を実行できません。) 非同期操作が完了するまで待ってから、もう一度お試しください。
   -  400 -- Cluster is in deleting state. (400 -- クラスターは削除中の状態です。) 非同期操作が完了するまで待ってから、もう一度お試しください。
@@ -492,5 +492,5 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   -  409 -- ワークスペースのリンクまたはリンク解除操作が進行中です。
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics 専用クラスターの課金](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)について学習します
-- [Log Analytics ワークスペースの適切な設計](../platform/design-logs-deployment.md)について学習します
+- [Log Analytics 専用クラスターの課金](./manage-cost-storage.md#log-analytics-dedicated-clusters)について学習します
+- [Log Analytics ワークスペースの適切な設計](./design-logs-deployment.md)について学習します

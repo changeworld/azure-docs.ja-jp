@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379830"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737649"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -55,7 +55,7 @@ Azure Storage での冗長性の詳細については、「[Azure Storage の冗
 
 - **ディスク:** [Azure Backup](https://azure.microsoft.com/services/backup/) を使用して、Azure 仮想マシンで使用される VM ディスクをバックアップします。 また、[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) を使用して地域的な災害が発生した場合の VM の保護も検討します。
 - **ブロック BLOB:** [ソフト削除](../blobs/soft-delete-blob-overview.md)を有効にしてオブジェクトレベルの削除および上書きから保護するか、[AzCopy](./storage-use-azcopy-v10.md)、[Azure PowerShell](/powershell/module/az.storage/)、または [Azure Data Movement Library](storage-use-data-movement-library.md) を使用して、他のリージョンの別のストレージ アカウントにブロック BLOB をコピーします。
-- **ファイル:** [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) を使用して、ファイル共有をバックアップします。 また、予期しないファイル共有の削除を防ぐために、[論理的な削除](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)も有効にします。 GRS を使用できないときの geo 情報の場合は、[AzCopy](./storage-use-azcopy-v10.md) または [Azure PowerShell](/powershell/module/az.storage/) を使用して、異なるリージョンの別のストレージ アカウントにファイルをコピーすることができます。
+- **ファイル:** [Azure Backup](../../backup/azure-file-share-backup-overview.md) を使用して、ファイル共有をバックアップします。 また、予期しないファイル共有の削除を防ぐために、[論理的な削除](../files/storage-files-prevent-file-share-deletion.md)も有効にします。 GRS を使用できないときの geo 情報の場合は、[AzCopy](./storage-use-azcopy-v10.md) または [Azure PowerShell](/powershell/module/az.storage/) を使用して、異なるリージョンの別のストレージ アカウントにファイルをコピーすることができます。
 - **テーブル:** [AzCopy](./storage-use-azcopy-v10.md) を使用して、テーブル データを、他のリージョンの別のストレージ アカウントにエクスポートします。
 
 ## <a name="track-outages"></a>障害を追跡する

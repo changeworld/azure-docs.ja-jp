@@ -6,12 +6,12 @@ ms.author: brjones
 ms.service: notification-hubs
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: b532dca6ceba44a32132bf64b322e1b4764fd5fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b98a04a70062461cec603bea83052c4f1224819e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416803"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736238"
 ---
 # <a name="enable-diagnostics-logs-for-notification-hubs"></a>Notification Hubs の診断ログを有効にする
 
@@ -141,8 +141,7 @@ Notification Hubs の REST API への呼び出しの場合、`identity` フィ�
 ## <a name="next-steps"></a>次のステップ
 
 診断設定の構成の詳細については、次を参照してください。
-* [Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)。
+* [Azure 診断ログの概要](../azure-monitor/essentials/platform-logs-overview.md)。
 
 Azure Notification Hubs の詳細については、次を参照してください。
 * [Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)
-

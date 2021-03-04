@@ -3,22 +3,21 @@ title: Azure Application Insights からの Stream Analytics のエクスポー�
 description: Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: c8486d7e5656a7770aec4a50739d3a9160e123e3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584328"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719799"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
+
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
 
 この例では、Application Insights からデータを取得し、一部のフィールドの名前を変更して処理した後、Power BI にパイプするアダプターを作成します。
 
 > [!WARNING]
 > [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](./export-power-bi.md)があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
-> 
-> 
 
 ![SA を介した PBI へのエクスポートのブロック図](./media/export-stream-analytics/020.png)
 
@@ -38,6 +37,7 @@ ms.locfileid: "100584328"
     ![ストレージで、[設定]、[キー] の順に開き、プライマリ アクセス キーのコピーを取ります](./media/export-stream-analytics/045.png)
 
 ## <a name="start-continuous-export-to-azure-storage"></a>Azure Storage への連続エクスポートの開始
+
 [連続エクスポート](export-telemetry.md) は、Application Insights から Azure のストレージにデータを移動します。
 
 1. Azure ポータルで、アプリケーション用に作成した Application Insights リソースを参照します。
@@ -55,18 +55,19 @@ ms.locfileid: "100584328"
 
     ![イベントの種類の選択](./media/export-stream-analytics/080.png)
 
-1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../essentials/metrics-charts.md)に表示され、個々のイベントが[診断検索](./diagnostic-search.md)に表示されます。 
+1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../essentials/metrics-charts.md)に表示され、個々のイベントが[診断検索](./diagnostic-search.md)に表示されます。
    
     また、データはストレージにもエクスポートされます。 
 2. エクスポートされたデータを検査します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
    
     ![表示するイベントの種類を設定する方法を示すスクリーンショット。](./media/export-stream-analytics/04-data.png)
    
-    パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。 
+    パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。
 
 イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
+
 [Azure Portal](https://portal.azure.com/) で、Azure Stream Analytics サービスを選び、新しい Stream Analytics ジョブを作成します。
 
 ![Azure portal で Stream Analytics ジョブを作成するためのメイン ページを示すスクリーンショット。](./media/export-stream-analytics/SA001.png)
@@ -104,9 +105,9 @@ ms.locfileid: "100584328"
 
 > [!NOTE]
 > ストレージを検査して、正しいパスを取得されることを確認してください。
-> 
 
 ## <a name="add-new-output"></a>新しい出力を追加する
+
 ジョブを選んでから、 **[出力]**  >  **[追加]** の順に選びます。
 
 ![新しい出力を追加するための Stream Analytics ジョブの選択を示すスクリーンショット。](./media/export-stream-analytics/SA006.png)
@@ -117,11 +118,13 @@ ms.locfileid: "100584328"
 **作業または学校のアカウント** を指定し、Power BI リソースにアクセスする許可を Stream Analytics に与えます。 次に、出力に名前を付け、ターゲット Power BI データセットと表に名前を付けます。
 
 ## <a name="set-the-query"></a>クエリの設定
+
 クエリでは、入力から出力への変換を制御します。
 
-テスト機能を使用し、出力が正しいことを確認します。 入力ページから取得したサンプル データを指定します。 
+テスト機能を使用し、出力が正しいことを確認します。 入力ページから取得したサンプル データを指定します。
 
 ### <a name="query-to-display-counts-of-events"></a>イベントの数を表示するためのクエリ
+
 このクエリを貼り付けます。
 
 ```SQL
@@ -154,7 +157,7 @@ OUTER APPLY GetElements(A.context.custom.metrics) as flat
 GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
 ```
 
-* このクエリはメトリックス テレメトリをドリルダウンし、イベント時刻とメトリック値を取得します。 メトリック値は配列内に置かれます。そのため、OUTER APPLY GetElements パターンを使用し、行を抽出します。 「myMetric」がこのケースのメトリックの名前になります。 
+* このクエリはメトリックス テレメトリをドリルダウンし、イベント時刻とメトリック値を取得します。 メトリック値は配列内に置かれます。そのため、OUTER APPLY GetElements パターンを使用し、行を抽出します。 「myMetric」がこのケースのメトリックの名前になります。
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>ディメンション プロパティの値を追加するクエリ
 
@@ -178,17 +181,18 @@ FROM flat
 * このクエリは、次元配列の固定インデックスにある特定のディメンションに依存せず、ディメンション プロパティの値を追加します。
 
 ## <a name="run-the-job"></a>ジョブの実行
-ジョブを開始する過去の日付を選択できます。 
+
+ジョブを開始する過去の日付を選択できます。
 
 ![ジョブを選択し、[クエリ] をクリックします。 以下のサンプルを貼り付けます。](./media/export-stream-analytics/SA008.png)
 
 ジョブが実行されるまで待ちます。
 
 ## <a name="see-results-in-power-bi"></a>Power BI で結果を確認します。
+
 > [!WARNING]
 > [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](./export-power-bi.md)があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
-> 
-> 
+
 
 職場または学校のアカウントで Power BI を開き、Stream Analytics ジョブの出力として定義したデータセットとテーブルを選択します。
 
@@ -199,17 +203,10 @@ FROM flat
 ![スクリーンショットは、Power BI のデータセットから作成されたレポートの例を示しています。](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>データが表示されない場合
+
 * [日付の書式が YYYY-MM-DD (ダッシュ付き) に正しく設定されている](#set-path-prefix-pattern) ことを確認してください。
-
-## <a name="video"></a>ビデオ
-Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデータを処理する方法を示します。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
-> 
-> 
 
 ## <a name="next-steps"></a>次のステップ
 * [連続エクスポート](export-telemetry.md)
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
 * [Application Insights](./app-insights-overview.md)
-

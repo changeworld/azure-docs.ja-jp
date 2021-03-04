@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: a70f2cff1df5d0f5d1d4a36bbc2a440518ce5ed4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2cb284e1978ad6c890835318c51c6095891397cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601174"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723012"
 ---
 # <a name="interactive-workbooks"></a>対話型ブック
 
@@ -188,5 +188,5 @@ ms.locfileid: "100601174"
 
 ## <a name="next-steps"></a>次のステップ
 
-* ブックの豊富な視覚化オプションの学習を[開始](../platform/workbooks-overview.md#visualizations)します。
-* ブック リソースへのアクセスを[制御](../platform/workbooks-access-control.md)し、共有します。
+* ブックの豊富な視覚化オプションの学習を[開始](./workbooks-overview.md#visualizations)します。
+* ブック リソースへのアクセスを[制御](./workbooks-access-control.md)し、共有します。

@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 65245b3c4b7e18670682f7e9e890453e32337644
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ff7cfb8c7aa8469111d4531da17c7cd184920f9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820081"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727568"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>チュートリアル:接続された廃棄物管理アプリを作成する
 
@@ -21,12 +21,13 @@ ms.locfileid: "99820081"
 具体的には、次の方法を学習します。 
 
 > [!div class="checklist"]
-> Azure IoT Central の "*コネクテッド廃棄物管理*" テンプレートを使用してアプリを作成します。
-> オペレーター ダッシュボードを探索してカスタマイズします。 コネクテッド廃棄物処理デバイス テンプレートを探索します。
-> シミュレートされたデバイスを探索します。
-> ルールを探索して構成します。
-> ジョブを構成します。
-> アプリケーションのブランドをカスタマイズします。
+> * Azure IoT Central の "*コネクテッド廃棄物管理*" テンプレートを使用してアプリを作成します。
+> * オペレーター ダッシュボードを探索してカスタマイズします。 
+> * コネクテッド廃棄物処理デバイス テンプレートを探索します。
+> * シミュレートされたデバイスを探索します。
+> * ルールを探索して構成します。
+> * ジョブを構成します。
+> * アプリケーションのブランドをカスタマイズします。
 
 ## <a name="prerequisites"></a>前提条件
 

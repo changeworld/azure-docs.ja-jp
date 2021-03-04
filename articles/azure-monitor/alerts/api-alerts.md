@@ -4,12 +4,12 @@ description: Log Analytics のアラート REST API は、Log Analytics の一�
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6c347b7b8ddaac103019e15e32fb5c06219e0064
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4acb6cdcb544e8774fb60bf1ead1a4a13140024a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604731"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717810"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する 
 
@@ -21,7 +21,7 @@ Log Analytics のアラート REST API は、Log Analytics でアラートを作
 Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンドライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインから API にアクセスする例を示します。 Log Analytics 検索 API には、ARMClient や PowerShell を使用する以外にもさまざまな方法でアクセスできます。 これらのツールを使用すると、RESTful Azure Resource Manager API を使用して Log Analytics のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
 
 ## <a name="prerequisites"></a>前提条件
-現時点では、アラートは Log Analytics の保存した検索条件でのみ作成できます。  詳細については、「 [Log Search REST API (ログ検索 REST API)](../log-query/log-query-overview.md) 」を参照してください。
+現時点では、アラートは Log Analytics の保存した検索条件でのみ作成できます。  詳細については、「 [Log Search REST API (ログ検索 REST API)](../logs/log-query-overview.md) 」を参照してください。
 
 ## <a name="schedules"></a>スケジュール
 保存した検索条件には、1 つ以上のスケジュールを設定できます。 スケジュールは、検索を実行する頻度と、条件を識別する時間間隔を定義します。
@@ -387,7 +387,6 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 
 ## <a name="next-steps"></a>次のステップ
 
-* Log Analytics で [ログ検索を実行するための REST API](../log-query/log-query-overview.md) を使用します。
+* Log Analytics で [ログ検索を実行するための REST API](../logs/log-query-overview.md) を使用します。
 * [Azure Monitor でのログ アラート](./alerts-unified-log.md)について学習します
 * [Azure Monitor でログ アラート ルールを作成、編集、または管理する](./alerts-log.md)方法
-

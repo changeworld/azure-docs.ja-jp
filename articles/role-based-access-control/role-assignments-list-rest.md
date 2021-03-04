@@ -5,22 +5,18 @@ services: active-directory
 documentationcenter: na
 author: rolyon
 manager: mtillman
-editor: ''
-ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
-ms.devlang: na
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 02/27/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 1d90e83405cf9c560f644277a04012571e1a5a9d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 9780902a1c5f4a711e1abffa6b508c28efe269ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735882"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>REST API を使用して Azure でのロールの割り当てを一覧表示する
 
@@ -28,6 +24,8 @@ ms.locfileid: "100556899"
 
 > [!NOTE]
 > 組織で、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="list-role-assignments"></a>ロールの割り当ての一覧表示
 

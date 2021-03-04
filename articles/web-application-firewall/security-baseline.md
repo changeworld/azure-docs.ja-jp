@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581239"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737411"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web Application Firewall の Azure セキュリティ ベースライン
 
@@ -164,7 +164,7 @@ Azure Sentinel には、Azure WAF のセキュリティ イベントの概要を
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
 **ガイダンス**:Azure Web Application Firewall (WAF) のログをカスタム ストレージ アカウントに送信し、保持ポリシーを定義します。 Azure Monitor を使用して、組織のコンプライアンス要件に基づいて Log Analytics ワークスペースの保持期間を設定します。
-- [ストレージ アカウントの監視の設定](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [ストレージ アカウントの監視の設定](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: 適用なし
 

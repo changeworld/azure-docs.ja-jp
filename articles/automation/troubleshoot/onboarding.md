@@ -2,15 +2,14 @@
 title: Azure Automation 機能のデプロイに関する問題のトラブルシューティング
 description: この記事では、Azure Automation 機能をデプロイするときに発生する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-ms.subservice: ''
-ms.date: 06/30/2020
+ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 43bc367be9ad9bb32f33f94df774acb3e808182a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008164"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651121"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>機能のデプロイに関する問題のトラブルシューティング
 
@@ -82,7 +81,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](../../azure-monitor/platform/usage-estimated-costs.md)」を参照してください。
+このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](../../azure-monitor//usage-estimated-costs.md)」を参照してください。
 
 #### <a name="resolution"></a>解決方法
 

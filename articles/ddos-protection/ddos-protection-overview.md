@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2b0f8a73a6852883f87ba9fc4333cb6fa8101a39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703118"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -54,7 +54,7 @@ Azure DDoS Protection Standard の価格については、「[Azure DDoS Protect
 
 ## <a name="reference-architectures"></a>参照用アーキテクチャ
 
-DDoS Protection Standard は、[仮想ネットワークにデプロイされるサービス](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)用に設計されています。 他のサービスには、既定の DDoS Protection Basic が適用されます。 サポートされているアーキテクチャの詳細については、「[DDoS Protection の参照アーキテクチャ](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures)」を参照してください。 
+DDoS Protection Standard は、[仮想ネットワークにデプロイされるサービス](../virtual-network/virtual-network-for-azure-services.md)用に設計されています。 他のサービスには、既定の DDoS Protection Basic が適用されます。 サポートされているアーキテクチャの詳細については、「[DDoS Protection の参照アーキテクチャ](./ddos-protection-reference-architectures.md)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

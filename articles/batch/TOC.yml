@@ -158,9 +158,6 @@
           href: batch-sig-images.md
         - name: マネージド イメージ リソースを使用してプールを作成する
           href: batch-custom-images.md
-        - name: Availability Zones 間でプールを作成する
-          displayName: 'region, zonal policy'
-          href: create-pool-availability-zones.md
         - name: ディスク暗号化が有効になっているプールを作成する
           href: disk-encryption.md
         - name: 仮想ネットワーク内にプールを作成する
@@ -172,8 +169,6 @@
         - name: パブリック IP アドレスのないプールを作成する
           displayName: private
           href: batch-pool-no-public-ip-address.md
-        - name: プールで拡張機能を使用する
-          href: create-pool-extensions.md
         - name: マネージド ID の構成
           displayName: user-assigned
           href: managed-identity-pools.md

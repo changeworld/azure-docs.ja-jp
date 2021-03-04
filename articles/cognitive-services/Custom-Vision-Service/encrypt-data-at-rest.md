@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 822a4249b6ed054f36605d0367803da68bab090b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524081"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652260"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Custom Vision による保存データの暗号化
 
@@ -24,15 +24,6 @@ Azure Custom Vision では、クラウドに永続化されるときにデータ
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、2020年 5 月 11 日より後に作成されたリソースのみに使用できます。 Custom Vision と共に CMK を使用するには、新しい Custom Vision リソースを作成する必要があります。 リソースが作成されたら、Azure Key Vault を使用してマネージド ID を設定できます。
-
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-カスタマー マネージド キーは、現在、次のリージョンで利用できます。
-
-* 米国中南部
-* 米国西部 2
-* 米国東部
-* US Gov バージニア州
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

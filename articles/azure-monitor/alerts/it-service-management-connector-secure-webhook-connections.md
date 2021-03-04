@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 6b273b864c8329547ef91eb7063a064e0f5cb77d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604715"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728979"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>セキュア エクスポートを使用して Azure を ITSM ツールに接続する
 
 この記事では、セキュア エクスポートを使用して、IT Service Management (ITSM) 製品またはサービスの間の接続を構成する方法について説明します。
 
-セキュア エクスポートは、[IT Service Management Connector (ITSMC)](../platform/itsmc-overview.md) の更新されたバージョンです。 どちらのバージョンでも、Azure Monitor がアラートを送信するときに、ITSM ツールで作業項目を作成できます。 この機能には、メトリック、ログ、およびアクティビティ ログ アラートが含まれます。
+セキュア エクスポートは、[IT Service Management Connector (ITSMC)](./itsmc-overview.md) の更新されたバージョンです。 どちらのバージョンでも、Azure Monitor がアラートを送信するときに、ITSM ツールで作業項目を作成できます。 この機能には、メトリック、ログ、およびアクティビティ ログ アラートが含まれます。
 
 ITSMC では、ユーザー名とパスワードの資格情報が使用されます。 セキュア エクスポートでは Azure Active Directory (Azure AD) が使用されるため、認証がより強力です。 Azure AD は、Microsoft のクラウドベースの ID およびアクセス管理サービスです。 ユーザーがサインインしたり、内部または外部のリソースにアクセスしたりするために役立ちます。 ITSM と共に Azure AD を使用すると、外部システムに送信された Azure アラートを識別できます (Azure AD アプリケーション ID を使用)。
 
@@ -55,4 +55,4 @@ ITSMC では、ユーザー名とパスワードの資格情報が使用され�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure アラートから ITSM 作業項目を作成する](../platform/itsmc-overview.md)
+* [Azure アラートから ITSM 作業項目を作成する](./itsmc-overview.md)

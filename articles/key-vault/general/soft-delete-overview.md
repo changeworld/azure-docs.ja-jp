@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: e06a388f2391f4ed94370dd072a66a162ba5240f
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 331a7b1bef3621a080fe2fa891cf83565a1e55ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526665"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702574"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -102,6 +102,6 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 次の 2 つのガイドでは、論理的な削除を使用する場合の主な使用シナリオを紹介しています。
 
-- [Portal で Key Vault の論理的な削除を使用する方法](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal)
+- [Portal で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md?tabs=azure-portal)
 - [PowerShell で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md) 
 - [CLI で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md)

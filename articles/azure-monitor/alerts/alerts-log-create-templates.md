@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b1403b12c05420c6296cbafd0d4ee0bc02f8dd4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 665137688a000433a9101a77342fa6f9350d7141
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714325"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでログ アラートを作成する
 
-ログ アラートにより、ユーザーは [Log Analytics](../log-query/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](../platform/action-groups.md)を使用することで、ルールによって 1 つ以上のアクションの実行をトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](../platform/alerts-unified-log.md)。
+ログ アラートにより、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションの実行をトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](./alerts-unified-log.md)。
 
-この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[ログ アラート](../platform/alerts-unified-log.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ ログ アラートは `Microsoft.Insights/scheduledQueryRules` リソース プロバイダーで作成されます。 API リファレンスについては、[Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) のページを参照してください。
+この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[ログ アラート](./alerts-unified-log.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ ログ アラートは `Microsoft.Insights/scheduledQueryRules` リソース プロバイダーで作成されます。 API リファレンスについては、[Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) のページを参照してください。
 
 基本的な手順は次のとおりです。
 
@@ -26,15 +26,15 @@ ms.locfileid: "100603614"
 4. 任意のデプロイ方法を使用してテンプレートをデプロイします｡
 
 > [!NOTE]
-> [Log Analytics ワークスペース](../log-query/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](../platform/alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](../platform/alerts-metric-logs.md)に関するページを参照してください。
+> [Log Analytics ワークスペース](../logs/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](./alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](./alerts-metric-logs.md)に関するページを参照してください。
 
 > [!NOTE]
-> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](../platform/api-alerts.md) と [Log Analytics の保存された検索とアラート](../insights/solutions.md)の従来のテンプレートを使用して、管理されていました。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](alerts-log-api-switch.md)。
+> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](./api-alerts.md) と [Log Analytics の保存された検索とアラート](../insights/solutions.md)の従来のテンプレートを使用して、管理されていました。 [現在の ScheduledQueryRules API への切り替えの詳細について確認してください](alerts-log-api-switch.md)。
 
 
 ## <a name="simple-template-up-to-api-version-2018-04-16"></a>単純なテンプレート (API バージョン 2018-04-16 まで)
 
-[結果ログ アラートの数](../platform/alerts-unified-log.md#count-of-the-results-table-rows)を基準にする [Scheduled Query Rules 作成](/rest/api/monitor/scheduledqueryrules/createorupdate)テンプレート (サンプル データは変数として設定):
+[結果ログ アラートの数](./alerts-unified-log.md#count-of-the-results-table-rows)を基準にする [Scheduled Query Rules 作成](/rest/api/monitor/scheduledqueryrules/createorupdate)テンプレート (サンプル データは変数として設定):
 
 ```json
 {
@@ -109,7 +109,7 @@ ms.locfileid: "100603614"
 
 ## <a name="template-with-cross-resource-query-up-to-api-version-2018-04-16"></a>リソース間のクエリのテンプレート (API バージョン 2018-04-16 まで)
 
-[リソース間](../log-query/cross-workspace-query.md)クエリを実行する[メトリック測定](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)に基づく [Scheduled Query Rules 作成](/rest/api/monitor/scheduledqueryrules/createorupdate)テンプレート (サンプル データは変数として設定):
+[リソース間](../logs/cross-workspace-query.md)クエリを実行する[メトリック測定](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)に基づく [Scheduled Query Rules 作成](/rest/api/monitor/scheduledqueryrules/createorupdate)テンプレート (サンプル データは変数として設定):
 
 ```json
 {
@@ -432,7 +432,7 @@ ms.locfileid: "100603614"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ログ アラート](../platform/alerts-unified-log.md)について確認します。
-* [ログ アラートの管理](../platform/alerts-log.md)について確認します。
-* [ログ アラートの Webhook アクション](../platform/alerts-log-webhook.md)を理解します。
-* [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します
+* [ログ アラート](./alerts-unified-log.md)について確認します。
+* [ログ アラートの管理](./alerts-log.md)について確認します。
+* [ログ アラートの Webhook アクション](./alerts-log-webhook.md)を理解します。
+* [ログ クエリ](../logs/log-query-overview.md)についてさらに学習します

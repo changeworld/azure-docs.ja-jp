@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: bef7db19142f0387077af1487230e7891c255aa1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09df1c2ecb94089f23a88dd36c5343bb4cf2feea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603375"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710942"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースの正常性を監視する
 Azure Monitor で Log Analytics ワークスペースのパフォーマンスと可用性を維持するには、発生する問題を事前に検出できるようにする必要があります。 この記事では、[Operation](/azure/azure-monitor/reference/tables/operation) テーブル内のデータを使用して、Log Analytics ワークスペースの正常性を監視する方法について説明します。 このテーブルはすべての Log Analytics ワークスペースに含まれているもので、その中にはお使いのワークスペースで発生したエラーと警告が入っています。 このデータを定期的に確認し、ワークスペース内に重要なインシデントがあるときは、アラートを作成して事前に通知する必要があります。
@@ -58,10 +58,10 @@ Azure Monitor ログでは、問題が発生したワークスペース内の [O
 | カスタム ログ | エラー   | カスタム フィールドの列数の上限に達しました。 | [Azure Monitor サービスの制限](../service-limits.md#log-analytics-workspaces) |
 | カスタム ログ | エラー   | カスタム ログのインジェストに失敗しました。 | |
 | Metadata。 | エラー | 構成エラーが検出されました。 | |
-| データ コレクション | エラー   | 設定された日数より前に要求が作成されたため、データが削除されました。 | [Azure Monitor ログで使用量とコストを管理する](../platform/manage-cost-storage.md#alert-when-daily-cap-reached)
+| データ コレクション | エラー   | 設定された日数より前に要求が作成されたため、データが削除されました。 | [Azure Monitor ログで使用量とコストを管理する](./manage-cost-storage.md#alert-when-daily-cap-reached)
 | データ コレクション | ［情報］    | コレクション マシンの構成が検出されました。| |
-| データ コレクション | ［情報］    | データ コレクションが新しい日で開始されました。 | [Azure Monitor ログで使用量とコストを管理する](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| データ コレクション | 警告 | 1 日の上限に達したため、データ コレクションが停止しました。| [Azure Monitor ログで使用量とコストを管理する](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| データ コレクション | ［情報］    | データ コレクションが新しい日で開始されました。 | [Azure Monitor ログで使用量とコストを管理する](./manage-cost-storage.md#alert-when-daily-cap-reached) |
+| データ コレクション | 警告 | 1 日の上限に達したため、データ コレクションが停止しました。| [Azure Monitor ログで使用量とコストを管理する](./manage-cost-storage.md#alert-when-daily-cap-reached) |
 | データ処理 | エラー   | JSON 形式が無効です。 | [HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する (パブリック プレビュー)](../logs/data-collector-api.md#request-body) | 
 | データ処理 | 警告 | 値が許容される最大サイズにトリミングされました。 | [Azure Monitor サービスの制限](../service-limits.md#log-analytics-workspaces) |
 | データ処理 | 警告 | サイズの上限に達したため、フィールド値がトリミングされました。 | [Azure Monitor サービスの制限](../service-limits.md#log-analytics-workspaces) | 
@@ -125,4 +125,4 @@ Azure Monitor で[ログ クエリ アラート](../alerts/alerts-log-query.md)�
 ## <a name="next-steps"></a>次の手順
 
 - [ログ アラート](../alerts/alerts-log.md)の詳細を確認します。
-- お使いのワークスペースに関する[クエリの監査データを収集](../log-query/query-audit.md)します。
+- お使いのワークスペースに関する[クエリの監査データを収集](./query-audit.md)します。

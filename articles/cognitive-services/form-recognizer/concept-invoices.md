@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: adcfef19de5987b9b4c54f6765589f2ae9868c11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585077"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736748"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
 
@@ -41,7 +41,7 @@ Form Recognizer の請求書サービスを試すには、Azure サブスクリ�
 
 ### <a name="input-requirements"></a>入力の要件 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-invoice-operation"></a>請求書分析操作
 
@@ -80,8 +80,8 @@ JSON 出力には次の 3 つの部分があります。
 | CustomerId | string | 顧客の参照 ID | CID-12345 |  |
 | PurchaseOrder | string | 注文書の参照番号 | PO-3333 | |  |
 | InvoiceId | string | この特定の請求書の ID (多くの場合、"請求書番号") | INV-100 | |  |
-| InvoiceDate | date | 請求書の発行日 | 2019 年 11 月 15 日 | 
-| DueDate | date | この請求書の支払期日 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | 請求書の発行日 | 2019 年 11 月 15 日 | 2019-11-15 |
+| DueDate | date | この請求書の支払期日 | 12/15/2019 | 2019-12-15 |
 | VendorName | string | この請求書を作成したベンダー | CONTOSO LTD. | |
 | VendorAddress | string | ベンダーの住所 | 123 456th St New York, NY, 10001 | |
 | VendorAddressRecipient | string | VendorAddress に関連付けられている名前 | Contoso Headquarters | |

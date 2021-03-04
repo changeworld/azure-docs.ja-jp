@@ -1,24 +1,23 @@
 ---
 title: FAQ - Azure の Network Performance Monitor ソリューション | Microsoft Docs
 description: この記事では、Azure の Network Performance Monitor についてよく寄せられる質問について説明します。 Network Performance Monitor (NPM) は、ネットワークのパフォーマンスをほぼリアルタイムで監視し、ネットワーク パフォーマンスのボトルネックを検出して特定するのに役立ちます。
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: c58f94bcdb659eed67ebf023af473545d8cee1a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587263"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708052"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
 ![ネットワーク パフォーマンス モニターのシンボル](media/network-performance-monitor-faq/npm-symbol.png)
 
 > [!IMPORTANT]
-> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)します。
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)します。
 
 この記事では、Azure の Network Performance Monitor (NPM) についてよく寄せられる質問 (FAQ) について説明します
 

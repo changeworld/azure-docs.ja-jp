@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 5d34893c522bd3cc3b862284cb84b44bab40856a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65d60c77280b569d1bff5e4d3acbdf97ead96270
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626337"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733790"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Monitor を使用してハイブリッド環境の Windows コンピューターからデータを収集する
 
@@ -122,7 +122,7 @@ Azure Monitor では、指定されたイベントを Windows イベント ロ�
 
 8. 新しい Log Analytics ワークスペースの Windows パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 各オプションが一覧表示され、その横にチェック ボックスがあります。
 
-    ![Windows パフォーマンス カウンター](media/quick-collect-windows-computer/windows-perfcounters-default.png)。
+    ![Windows パフォーマンス カウンター](media/quick-collect-windows-computer/windows-perfcounters-default.png).
     
     **[選択したパフォーマンス カウンターを追加する]** を選択します。 カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。
 
@@ -165,4 +165,4 @@ Azure Monitor では、指定されたイベントを Windows イベント ロ�
 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics でのデータの表示と分析](../log-query/log-analytics-tutorial.md)
+> [Log Analytics でのデータの表示と分析](../logs/log-analytics-tutorial.md)

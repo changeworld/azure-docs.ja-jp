@@ -9,16 +9,15 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2448840fcbbea686972f8f948d428bda7b3c2bf2
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e4518fb41c839d83c59cd245b39c547ddb02b68e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391747"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658216"
 ---
 # <a name="sms-client-library-overview"></a>SMS クライアント ライブラリの概要
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure Communication Services の SMS クライアント ライブラリを使用して、アプリケーションに SMS メッセージングを追加できます。

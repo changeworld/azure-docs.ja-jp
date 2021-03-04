@@ -4,14 +4,14 @@ description: スマート検出の既定の通知受信者を変更します。 
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 03/13/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0bf3a95814aadf687efcc27294b760e14f7d45d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa14f0dd40a30a4750d9bb102d8e67608f958135
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585644"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734504"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>スマート検出の電子メール通知に関する変更
 
@@ -27,7 +27,7 @@ ms.locfileid: "100585644"
 
 * プレビューとしてマークされているスマート検出ルール。 これらのスマート検出ルールでは、現在、電子メール通知はサポートされていません。
 
-* 失敗の異常ルール。 このルールは、クラシック アラートから統合アラート プラットフォームに移行された後、新しい既定のロールへの適用が開始されます (詳細については、[こちら](../alerts/monitoring-classic-retirement.md)をご覧ください)。
+* 失敗の異常ルール。
 
 ## <a name="how-to-prepare-for-this-change"></a>この変更に備える方法は?
 

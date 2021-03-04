@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832047"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721465"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>チュートリアル:ライブ ビデオ分析ゲートウェイ モジュールの変更とビルド
 
@@ -25,11 +25,13 @@ ms.locfileid: "99832047"
 
 このチュートリアルを完了するには、以下が必要になります。
 
-* [Node.js](https://nodejs.org/en/download/) v10 以降
-* [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 拡張機能がインストールされた [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Docker](https://www.docker.com/products/docker-desktop) エンジン
-* モジュールのバージョンをホストするための [Azure Container Registry](../../container-registry/index.yml)。
-* [Azure Media Services](../../media-services/index.yml) アカウント。 先行するチュートリアルが済んでいる場合は、以前に作成したものを再利用してかまいません。
+
+> [!div class="checklist"]
+> * [Node.js](https://nodejs.org/en/download/) v10 以降
+> * [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 拡張機能がインストールされた [Visual Studio Code](https://code.visualstudio.com/Download)
+> * [Docker](https://www.docker.com/products/docker-desktop) エンジン
+> * モジュールのバージョンをホストするための [Azure Container Registry](../../container-registry/index.yml)。
+> * [Azure Media Services](../../media-services/index.yml) アカウント。 先行するチュートリアルが済んでいる場合は、以前に作成したものを再利用してかまいません。
 
 ## <a name="clone-the-repository"></a>リポジトリの複製
 

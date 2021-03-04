@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: 80a508aeb7eff9567bea67cb84350fc2e77551da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d1db5f5e4164d971dff3ec6b042fa4b0a969e508
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600593"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704244"
 ---
 # <a name="log-analytics-integration-with-power-bi"></a>Log Analytics の Power BI との統合
 
@@ -19,7 +19,7 @@ ms.locfileid: "100600593"
 
 ## <a name="background"></a>バックグラウンド 
 
-Azure Monitor ログは、ログの取り込みのためのエンドツーエンドのソリューションを提供するプラットフォームです。 [Azure Monitor Log Analytics](../platform/data-platform.md#) は、これらのログを照会するためのインターフェイスです。 Log Analytics を含む Azure Monitor データプラットフォーム全体の詳細については、「[Azure Monitor データ プラットフォーム](../platform/data-platform.md)」を参照してください。 
+Azure Monitor ログは、ログの取り込みのためのエンドツーエンドのソリューションを提供するプラットフォームです。 [Azure Monitor Log Analytics](../platform/data-platform.md#) は、これらのログを照会するためのインターフェイスです。 Log Analytics を含む Azure Monitor データプラットフォーム全体の詳細については、「[Azure Monitor データ プラットフォーム](../data-platform.md)」を参照してください。 
 
 Microsoft Power BI は、Microsoft のデータ視覚化プラットフォームです。 開始方法の詳細については、[Power BI のホームページ](https://powerbi.microsoft.com/)を参照してください。 
 
@@ -82,4 +82,4 @@ Power BI で使用されるのと同じ M 統合を使用して、Excel スプ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Log Analytics クエリ](../log-query/log-query-overview.md)の使用を開始します。
+[Log Analytics クエリ](./log-query-overview.md)の使用を開始します。

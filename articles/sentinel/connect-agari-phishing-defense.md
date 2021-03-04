@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a60a0291d6669b2a9115dffa8e0d4d63fae4a440
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806988"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724440"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Agari のフィッシング対策とブランド保護ソリューションを Azure Sentinel に接続する
 
@@ -39,7 +39,7 @@ Agari のフィッシング対策とブランド保護ソリューションを A
 
 - Azure Sentinel ワークスペースに対する読み取りと書き込みのアクセス許可。
 
-- ワークスペースの共有キーに対する読み取りアクセス許可。 ワークスペース キーの詳細については、[こちら](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)を参照してください。
+- ワークスペースの共有キーに対する読み取りアクセス許可。 ワークスペース キーの詳細については、[こちら](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)を参照してください。
 
 - 関数アプリを作成するための、Azure Functions に対する読み取りと書き込みのアクセス許可。 [Azure Functions](../azure-functions/index.yml) の詳細を確認してください。
 

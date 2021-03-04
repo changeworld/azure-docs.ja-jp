@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d2162a5c3d88eaae69b3a67456fdc29f19b1a79a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7a57a39dd72e2330c2adde2b471bca2f9f2e00a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601378"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725851"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure プラットフォーム ログの概要
 プラットフォーム ログでは、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 これらは自動的に生成されますが、特定のプラットフォーム ログを保持するための 1 つ以上の送信先に転送するように構成する必要があります。 この記事では、提供される情報の内容や収集と分析のための構成方法など、プラットフォーム ログの概要について説明します。
@@ -22,7 +22,7 @@ ms.locfileid: "100601378"
 
 | ログ | レイヤー | 説明 |
 |:---|:---|:---|
-| [リソース ログ](../platform/resource-logs.md) | Azure リソース | Azure リソース ("*データ プレーン*") 内で実行された操作に関する分析情報を提供します。たとえば、Key Vault からのシークレットの取得や、データベースに対する要求などです。 リソース ログの内容は、Azure サービスとリソースの種類によって異なります。<br><br>*リソース ログは、以前は診断ログと呼ばれていました。*  |
+| [リソース ログ](./resource-logs.md) | Azure リソース | Azure リソース ("*データ プレーン*") 内で実行された操作に関する分析情報を提供します。たとえば、Key Vault からのシークレットの取得や、データベースに対する要求などです。 リソース ログの内容は、Azure サービスとリソースの種類によって異なります。<br><br>*リソース ログは、以前は診断ログと呼ばれていました。*  |
 | [アクティビティ ログ](../essentials/activity-log.md) | Azure サブスクリプション | Service Health イベントの更新に加えて、外部 ("*管理プレーン*") からサブスクリプションの各 Azure リソースに対する操作についての分析情報を提供します。 アクティビティ ログを使用して、サブスクリプションのリソースに対して行われるすべての書き込み操作 (PUT、POST、DELETE) について、"_何を_"、"_誰が_"、"_いつ_" 行ったのかを確認できます。 Azure サブスクリプションごとに 1 つのアクティビティ ログがあります。 |
 | [Azure Active Directory ログ](../../active-directory/reports-monitoring/overview-reports.md) | Azure テナント |  サインイン アクティビティの履歴と、特定のテナントに対して Azure Active Directory で行われた変更の監査証跡が含まれます。   |
 
@@ -46,7 +46,7 @@ ms.locfileid: "100601378"
 
 | 到着地 | 説明 |
 |:---|:---|
-| Log Analytics ワークスペース | すべての Azure リソースのログをまとめて分析し、[ログ クエリ](../log-query/log-query-overview.md)と[ログ アラート](../alerts/alerts-log.md)を含めて、[Azure Monitor ログ](../platform/data-platform-logs.md)に使用できるすべての機能を活用します。 ログ クエリの結果を Azure ダッシュボードにピン留めするか、対話型のレポートの一部としてブックに含めます。 |  |
+| Log Analytics ワークスペース | すべての Azure リソースのログをまとめて分析し、[ログ クエリ](../logs/log-query-overview.md)と[ログ アラート](../alerts/alerts-log.md)を含めて、[Azure Monitor ログ](../logs/data-platform-logs.md)に使用できるすべての機能を活用します。 ログ クエリの結果を Azure ダッシュボードにピン留めするか、対話型のレポートの一部としてブックに含めます。 |  |
 | イベント ハブ | たとえば、サードパーティ製の SIEM やカスタム テレメトリ プラットフォームなど、Azure の外部のプラットフォーム ログ データを送信します。
 | Azure Storage | 監査やバックアップのためにログをアーカイブします。 |
 
@@ -61,5 +61,4 @@ ms.locfileid: "100601378"
 ## <a name="next-steps"></a>次のステップ
 
 * [詳細については、アクティビティ ログに関するページをご覧ください](../essentials/activity-log.md)
-* [詳細については、リソース ログに関するページをご覧ください](../platform/resource-logs.md)
-
+* [詳細については、リソース ログに関するページをご覧ください](./resource-logs.md)

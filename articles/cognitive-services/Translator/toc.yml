@@ -101,7 +101,7 @@
     - name: リファレンス
       items:
         - name: Document Translation API のリファレンス
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Custom Translator
   items:
     - name: 概要

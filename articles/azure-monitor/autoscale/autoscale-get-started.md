@@ -4,12 +4,12 @@ description: Azure でリソースの Web アプリ、クラウド サービス�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6ac3ebb4cf007141967786f51243c741a6045c83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603430"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726055"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
@@ -128,7 +128,7 @@ Azure Web アプリを複数のインスタンスにスケールアウトする�
 ### <a name="move"></a>詳細ビュー
 新しい環境で自動スケーリング設定を作成するには、[REST API](/rest/api/monitor/autoscalesettings/createorupdate) を使います。 移動先のリージョンで作成される自動スケーリング設定は、移動元リージョンの自動スケーリング設定のコピーになります。
 
-移動元リージョンの自動スケーリング設定と関連付けて作成された[診断設定](../platform/diagnostic-settings.md)は移動できません。 自動スケーリング設定の作成が完了した後で、移行先リージョンで診断設定を再作成する必要があります。 
+移動元リージョンの自動スケーリング設定と関連付けて作成された[診断設定](../essentials/diagnostic-settings.md)は移動できません。 自動スケーリング設定の作成が完了した後で、移行先リージョンで診断設定を再作成する必要があります。 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Azure リージョン間でのリソースの移動に関する詳細情報
 リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。

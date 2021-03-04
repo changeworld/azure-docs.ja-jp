@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: makromer
-ms.openlocfilehash: 3b97f09c2b6f4c5f5352bbaa081e0bcae900ebd5
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 12b640fd97f48e293320593b33ab2fdc54980c0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716297"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-data-factory-data-flows"></a>Azure Data Factory データ フローに対する予約割引の適用方法
 
@@ -32,7 +32,7 @@ ADF データ フローの予約容量割引は、統合ランタイムの実行
 - シナリオ 1:メモリ最適化のコンピューティングの種類の数量として「80」を入力して、ADF データ フロー用の 1 時間の 80 コアでのメモリ最適化コンピューティングの予約を購入します。 Azure 統合ランタイムを 144 コアのメモリ最適化に設定して、1 時間データ フローを実行します。 1 時間のデータ フロー使用量のうち 64 コア分には従量課金制の料金が適用されます。 80 コアのメモリ最適化使用量の 1 時間分には予約割引が適用されます。
 - シナリオ 2: 汎用のコンピューティングの種類の数量として「32」を入力して、ADF データ フロー用の 1 時間の 32 コアでの汎用コンピューティングの予約を購入します。 32 コアの一般コンピューティングの Azure 統合ランタイムを使用して 1 時間データ フローをデバッグします。 使用した時間全体に対して予約割引が適用されます。
 
-Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)に関するページを参照してください。
+Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)に関するページを参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
@@ -42,4 +42,4 @@ Azure の予約の適用状況を把握し、課金の使用状況レポート�
 
 Azure の予約の詳細については、次の記事を参照してください。
 
-- [Azure の予約とは](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 074c5dda8ff8d5f837e8ea2a85c183c69421bedb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710874"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor のビュー デザイナー視覚化パーツのリファレンス ガイド
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事は、カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドです。
@@ -39,7 +39,7 @@ Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワ
 次のセクションでは、タイルの種類とそのプロパティについて詳細に説明します。
 
 > [!NOTE]
-> ビュー内のパーツは、お使いの Log Analytics ワークスペースの[ログ クエリ](../log-query/log-query-overview.md)に基づいています。 これらでは現在、Application Insights からデータを取得するための[クロス リソース クエリ](../log-query/cross-workspace-query.md)はサポートされていません。
+> ビュー内のパーツは、お使いの Log Analytics ワークスペースの[ログ クエリ](../logs/log-query-overview.md)に基づいています。 これらでは現在、Application Insights からデータを取得するための[クロス リソース クエリ](../logs/cross-workspace-query.md)はサポートされていません。
 
 ## <a name="list-of-queries-part"></a>[クエリのリスト] パーツ
 [クエリのリスト] パーツには、ログ クエリのリストが表示されます。 各クエリを選択すると、その結果が表示されます。 このビューには、既定では 1 つのクエリが含まれます。 **[+ Query]** (クエリの追加) を選択すると、クエリを追加できます。
@@ -318,7 +318,7 @@ Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワ
 たとえば、*Location* というプロパティに、*Redmond-Building 41* や *Bellevue-Building 12* のような値が含まれるとします。 [Name & Value Separator] (名前と値区切り) に「-」(ダッシュ) を指定し、[名前] に「*City-Building*」を指定できます。 この手法で、それぞれの値が *City* と *Building* という名前の 2 つのプロパティとして解析されます。
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>クリックスルー ナビゲーション
-クリックスルー ナビゲーションには、ビュー内のヘッダーまたはリスト項目をクリックしたときに実行されるアクションを定義します。  これにより、[Log Analytics](../log-query/log-query-overview.md) 内にクエリが開かれるか、別のビューが起動されます。
+クリックスルー ナビゲーションには、ビュー内のヘッダーまたはリスト項目をクリックしたときに実行されるアクションを定義します。  これにより、[Log Analytics](../logs/log-query-overview.md) 内にクエリが開かれるか、別のビューが起動されます。
 
 クリックスルー ナビゲーションの設定を次の表に示します。
 
@@ -357,4 +357,4 @@ Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワ
 | Color |しきい値の値を示す色。 |
 
 ## <a name="next-steps"></a>次のステップ
-* 視覚化パーツのクエリをサポートする[ログ クエリ](../log-query/log-query-overview.md)について学びます。
+* 視覚化パーツのクエリをサポートする[ログ クエリ](../logs/log-query-overview.md)について学びます。

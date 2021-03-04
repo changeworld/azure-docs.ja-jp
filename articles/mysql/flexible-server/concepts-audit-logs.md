@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591757"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718745"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーで監査ログを使用してデータベース アクティビティを追跡する
 
@@ -46,7 +46,7 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
 | `DCL` | "GRANT PERMISSION" のようなクエリ |
 | `ADMIN` | "SHOW STATUS" のようなクエリ |
 | `GENERAL` | DML_SELECT、DML_NONSELECT、DML、DDL、DCL、および ADMIN のすべて |
-| `TABLE_ACCESS` | - MySQL 5.7 でのみ利用可能 <br> テーブル読み取りステートメント。たとえば、SELECT、INSERT INTO ...SELECT <br> - テーブル削除ステートメント。たとえば、DELETE、TRUNCATE TABLE <br> - テーブル挿入ステートメント。たとえば、INSERT、REPLACE <br> - テーブル更新ステートメント。たとえば、UPDATE |
+| `TABLE_ACCESS` | テーブル読み取りステートメント。たとえば、SELECT、INSERT INTO ...SELECT <br> - テーブル削除ステートメント。たとえば、DELETE、TRUNCATE TABLE <br> - テーブル挿入ステートメント。たとえば、INSERT、REPLACE <br> - テーブル更新ステートメント。たとえば、UPDATE |
 
 ## <a name="access-audit-logs"></a>監査ログにアクセスする
 
@@ -72,7 +72,7 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | サーバーの名前 |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`、`DISCONNECT`、`CHANGE USER` (MySQL 5.7 でのみ利用可能) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` |
 | `connection_id_d` | MySQL によって生成された一意の接続 ID |
 | `host_s` | 空白 |
 | `ip_s` | MySQL に接続しているクライアントの IP アドレス |
@@ -116,7 +116,7 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
 ### <a name="table-access"></a>テーブル アクセス
 
 > [!NOTE]
-> テーブル アクセス ログは、MySQL 5.7 のみに関する出力です。<br>`sql_text_s` の場合、2048 文字を超えたログは切り捨てられます。
+> `sql_text_s` の場合、2048 文字を超えたログは切り捨てられます。
 
 | **プロパティ** | **説明** |
 |---|---|

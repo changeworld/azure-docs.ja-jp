@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104520"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733433"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 
@@ -18,7 +18,7 @@ ms.locfileid: "100104520"
 
 ## <a name="extraction"></a>抽出
 
-QnA Maker サービスは継続的に、コンテンツから QnA を抽出するアルゴリズムを改善し、サポートされるファイルおよび HTML 形式のリストを拡大しています。 ドキュメントの種類に応じた、データ抽出の[ガイドライン](../index.yml)に従ってください。
+QnA Maker サービスは継続的に、コンテンツから QnA を抽出するアルゴリズムを改善し、サポートされるファイルおよび HTML 形式のリストを拡大しています。 ドキュメントの種類に応じた、データ抽出の[ガイドライン](../Concepts/data-sources-and-content.md)に従ってください。
 
 一般的に、FAQ ページは独立させ、他の情報と組み合わせないでください。 製品マニュアルにはわかりやすい見出しを付けてください。索引ページを付けることもお勧めします。
 

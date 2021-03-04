@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987784"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703683"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -105,7 +105,7 @@ SAP HANA Azure VM では、Backint によってバックアップ (ログとそ�
 
 HANA の Backint コンポーネントは、ディスクに接続された "パイプ" (情報を読み取るためのパイプと書き込むためのパイプ) の役割を果たします。基になるディスクには、データベース ファイルが存在します。それらが Azure Backup サービスによって読み取られて、Azure Recovery Services コンテナーに転送されます。 Azure Backup サービスは、backint のネイティブ検証チェックとは別に、チェックサムによってストリームを検証します。 これらの検証によって、Azure Recovery Services コンテナーにあるデータが確かに信頼できるものであり、回復可能であることが確認されます。
 
-ストリームの処理対象になるのは主にディスクであるため、バックアップと復元のパフォーマンスを正確に測定するためには、ディスクのパフォーマンスを把握する必要があります。 Azure VM におけるディスクのスループットとパフォーマンスを深く理解するために、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/disks-performance)を参照してください。 これらはバックアップと復元のパフォーマンスにも当てはまります。
+ストリームの処理対象になるのは主にディスクであるため、バックアップと復元のパフォーマンスを正確に測定するためには、ディスクのパフォーマンスを把握する必要があります。 Azure VM におけるディスクのスループットとパフォーマンスを深く理解するために、[こちらの記事](../virtual-machines/disks-performance.md)を参照してください。 これらはバックアップと復元のパフォーマンスにも当てはまります。
 
 **Azure Backup サービスは、ログ バックアップ以外 (完全、差分、増分など) で最大約 420 MBps を、HANA のログ バックアップで最大 100 MBps を達成しようと試みます**。 前述のように、これらの速度は保証されているわけではなく、次の要因に左右されます。
 
@@ -267,8 +267,8 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    ![差分バックアップ ポリシー](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >パブリック プレビューでは、増分バックアップが使用できるようになりました。 毎日のバックアップとしては、差分バックアップまたは増分バックアップのどちらかを選択できます。両方を選択することはできません。
-   >
+   >毎日のバックアップとしては、差分バックアップまたは増分バックアップのどちらかを選択できます。両方を選択することはできません。
+
 7. **[増分バックアップ ポリシー]** で、 **[有効]** を選択して頻度と保有期間の制御を開きます。
     * 最多で、1 日に 1 回の増分バックアップをトリガーできます。
     * 増分バックアップは、最大 180 日間保持できます。 より長いリテンション期間が必要な場合は、完全バックアップを使用する必要があります。

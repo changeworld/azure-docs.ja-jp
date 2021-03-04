@@ -5,12 +5,12 @@ services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0ae7af848fd3ceb1d5b186a5a326c8fa43a69d24
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388024"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723811"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -160,7 +160,7 @@ Run Login-AzureRMAccount to login.
 
 1. サブスクリプションの名前をコピーします。
 
-1. 次の Runbook コードを使用して、Automation アカウントから他のサブスクリプションへのアクセス許可をテストできるようになります。 `"\<CertificateThumbprint\>"` を、手順 1. でコピーした値に置き換えます。 `"\<SubscriptionName\>"` を、手順 4. でコピーした値に置き換えます。
+1. 次の Runbook コードを使用して、Automation アカウントから他のサブスクリプションへのアクセス許可をテストできるようになります。 `<CertificateThumbprint>` を、手順 1. でコピーした値に置き換えます。 `"<SubscriptionName>"` を、手順 4. でコピーした値に置き換えます。
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 02/16/2021
-ms.openlocfilehash: f4ac384a9b1bce944397369cb93392f179643f96
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558755"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706743"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -56,7 +56,7 @@ ms.locfileid: "100558755"
 * 開発者向けの新しいリソース
     * [継続的インテグレーション ツール](developer-reference-resource.md#continuous-integration-tools)
     * ワークショップ - [LUIS を使用した "_自然言語理解_" (NLU)](developer-reference-resource.md#workshops) のためのベスト プラクティスを学習
-* [カスタマー マネージド キー](luis-encryption-of-data-at-rest.md) - 独自のキーを使用して LUIS で使用するデータをすべて暗号化
+* [カスタマー マネージド キー](./encrypt-data-at-rest.md) - 独自のキーを使用して LUIS で使用するデータをすべて暗号化
 * [AI Show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (ビデオ) - LUIS の新機能を参照
 
 

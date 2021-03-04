@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578187"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703509"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) での Azure Diagnostics の有効化
 
 > [!IMPORTANT]
 > [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
-Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-diagnostics.md) 」をご覧ください。
+Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-monitor/agents/diagnostics-extension-overview.md) 」をご覧ください。
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Worker ロールの診断を有効にする方法
 このチュートリアルでは、.NET EventSource クラスを使用してテレメトリ データを生成する Azure Worker ロールの実装方法について説明します。 Azure Diagnostics を使用してテレメトリ データを収集し、これを Azure ストレージ アカウントに格納します。 Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。 次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。

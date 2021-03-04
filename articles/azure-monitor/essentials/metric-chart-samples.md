@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0430f8efedbcefba551ce3ee81d0db8a654f5b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 882c9e50c344b792d70d09017aeca3a2874cb106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601591"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700747"
 ---
 # <a name="metric-chart-examples"></a>メトリック グラフの例 
 
-Azure プラットフォームでは [1,000 個を超えるメトリック](../platform/metrics-supported.md)が提供されます。その多くはディメンションを備えています。 [ディメンション フィルター](./metrics-charts.md)の使用、[分割](./metrics-charts.md)の適用、グラフの種類の制御、グラフ設定の調整を通じて、お客様のインフラストラクチャとアプリケーションの正常性に関する分析情報を提供する強力な診断ビューとダッシュボードを作成できます。 この記事では、お客様が[メトリックス エクスプローラー](./metrics-charts.md)を使用して作成できるグラフの例をいくつか紹介し、これらのそれぞれのグラフを構成するために必要な手順を説明します。
+Azure プラットフォームでは [1,000 個を超えるメトリック](./metrics-supported.md)が提供されます。その多くはディメンションを備えています。 [ディメンション フィルター](./metrics-charts.md)の使用、[分割](./metrics-charts.md)の適用、グラフの種類の制御、グラフ設定の調整を通じて、お客様のインフラストラクチャとアプリケーションの正常性に関する分析情報を提供する強力な診断ビューとダッシュボードを作成できます。 この記事では、お客様が[メトリックス エクスプローラー](./metrics-charts.md)を使用して作成できるグラフの例をいくつか紹介し、これらのそれぞれのグラフを構成するために必要な手順を説明します。
 
 お持ちの優れたグラフのサンプルを世間に公表しませんか。 GitHub のこのページに投稿して、ご自分のグラフのサンプルをそこに公表しましょう。
 
@@ -54,4 +54,3 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](../p
 
 * Azure Monitor [Workbooks](../visualize/workbooks-overview.md) について学習します
 * [メトリックス エクスプローラー](metrics-charts.md)について学習します
-

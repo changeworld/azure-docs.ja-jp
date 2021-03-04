@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573751"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726184"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -294,7 +294,7 @@ Per Node (旧 Enterprise) レベルは、料金がノード単位となってお
 
 ### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>レガシ エンタープライズ (ノードごと) レベルでの課金の使用状況について 
 
-以下で説明するように、従来のレガシ エンタープライズ (ノードごと) レベルでは、サブスクリプション内のすべての Application Insights リソースの使用状況を組み合わせて、ノード数とデータ超過分数を計算します。 この組み合わせプロセスにより、**サブスクリプション内のすべての Application Insights リソースの使用状況が 1 つのリソースに対してのみ報告されます**。  これにより、Application Insights リソースごとに計測する使用量と[課金された使用量](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill)の調整が非常に複雑になります。 
+以下で説明するように、従来のレガシ エンタープライズ (ノードごと) レベルでは、サブスクリプション内のすべての Application Insights リソースの使用状況を組み合わせて、ノード数とデータ超過分数を計算します。 この組み合わせプロセスにより、**サブスクリプション内のすべての Application Insights リソースの使用状況が 1 つのリソースに対してのみ報告されます**。  これにより、Application Insights リソースごとに計測する使用量と[課金された使用量](#viewing-application-insights-usage-on-your-azure-bill)の調整が非常に複雑になります。 
 
 > [!WARNING]
 > 従来のエンタープライズ (ノードごと) レベルでの Application Insights リソースの使用状況は追跡することも理解することも複雑であるため、現在の従量課金制の価格レベルを使用することを強くお勧めします。 

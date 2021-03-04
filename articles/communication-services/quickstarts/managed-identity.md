@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.author: gistefan
 ms.reviewer: mikben
-ms.openlocfilehash: 9fd8a17deeb49d836ff5902042bdb88696e29f31
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7e8d9b56077819fc404d6c2bdc39f9f697224136
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692183"
 ---
 # <a name="use-managed-identities-net"></a>マネージド ID を使用する (.NET)
 
@@ -25,7 +25,7 @@ ms.locfileid: "100416864"
 ## <a name="prerequisites"></a>前提条件
 
  - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成する](https://azure.microsoft.com/free)
- - アクティブな Communication Services リソースと接続文字列。 [Communication Services のリソースを作成する](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp)。
+ - アクティブな Communication Services リソースと接続文字列。 [Communication Services のリソースを作成する](./create-communication-resource.md?pivots=platform-azp&tabs=windows)。
 
 ## <a name="setting-up"></a>設定
 
@@ -76,7 +76,7 @@ using Azure.Communication.Configuration;
 using Azure.Communication.Sms;
 ```
 
-下の例では [DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) が使用されています。 この資格情報は、運用と開発の各環境に適しています。
+下の例では [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) が使用されています。 この資格情報は、運用と開発の各環境に適しています。
 
 ### <a name="create-an-identity-and-issue-a-token"></a>ID を作成してトークンを発行する
 
@@ -124,7 +124,7 @@ using Azure.Communication.Sms;
 次のことも実行できます。
 
 - [Azure のロールベースのアクセス制御の詳細について学習する](../../../articles/role-based-access-control/index.yml)
-- [.NET 用 Azure ID ライブラリの詳細について学習する](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)
+- [.NET 用 Azure ID ライブラリの詳細について学習する](/dotnet/api/overview/azure/identity-readme)
 - [ユーザー アクセス トークンを作成する](../quickstarts/access-tokens.md)
 - [SMS メッセージの送信](../quickstarts/telephony-sms/send.md)
 - [SMS に関する詳細](../concepts/telephony-sms/concepts.md)

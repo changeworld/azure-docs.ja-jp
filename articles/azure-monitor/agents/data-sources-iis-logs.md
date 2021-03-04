@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
-ms.openlocfilehash: 089c0739ff091d49734cad048c2bfb10d857617c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601499"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732056"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Monitor で Log Analytics エージェントを使用して IIS ログを収集する
-インターネット インフォメーション サービス (IIS) では、Log Analytics エージェントが収集して [Azure Monitor ログ](../platform/data-platform.md)に格納できるログ ファイル内に、ユーザー アクティビティが格納されます。
+インターネット インフォメーション サービス (IIS) では、Log Analytics エージェントが収集して [Azure Monitor ログ](../data-platform.md)に格納できるログ ファイル内に、ユーザー アクティビティが格納されます。
 
 > [!IMPORTANT]
-> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](../platform/log-analytics-agent.md)で IIS ログを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントと、それらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](./log-analytics-agent.md)で IIS ログを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントと、それらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
 
 ![IIS ログ](media/data-sources-iis-logs/overview.png)
 
@@ -75,4 +75,4 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 
 ## <a name="next-steps"></a>次のステップ
 * 分析のために他の[データ ソース](../agents/agent-data-sources.md)を収集するように Azure Monitor を構成します。
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

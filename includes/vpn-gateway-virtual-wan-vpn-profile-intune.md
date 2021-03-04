@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515103"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750028"
 ---
 Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) のプロファイルを展開できます。 この記事では、カスタム設定を使用して Intune プロファイルを作成する方法について説明します。
 
@@ -30,7 +30,7 @@ Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) の
 * 自動接続オン
 * 信頼されたネットワークの検出が有効。
 
-サポートされているその他のオプションについては、[VPNv2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) の記事を参照してください。
+サポートされているその他のオプションについては、[VPNv2 CSP](/windows/client-management/mdm/vpnv2-csp) の記事を参照してください。
 
 1. Azure portal から VPN プロファイルをダウンロードし、パッケージから *azurevpnconfig.xml* ファイルを抽出します。
 1. 次のテキストをコピーし、新しいテキスト エディター ファイルに貼り付けます。
@@ -82,4 +82,4 @@ Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) の
 1. **[確認および作成]** ページで、 **[作成]** を選択します。
 
     :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/create-profile.png" alt-text="Create profile":::
-1. これでカスタム プロファイルが作成されました。 このプロファイルを展開する Microsoft Intune 手順については、[ユーザーとデバイスのプロファイルの割り当て](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign)に関するページを参照してください。
+1. これでカスタム プロファイルが作成されました。 このプロファイルを展開する Microsoft Intune 手順については、[ユーザーとデバイスのプロファイルの割り当て](/mem/intune/configuration/device-profile-assign)に関するページを参照してください。

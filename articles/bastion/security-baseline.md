@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b8f0cfdf3ca6e3b0bb0b455a5690d6a2727786ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392376"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586754"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Azure Bastion 用の Azure セキュリティ ベースライン
 
@@ -376,9 +376,9 @@ Azure Bastion リソースをデプロイした仮想ネットワークに適用
 
 **ガイダンス**:自動的に利用できるアクティビティ ログには、読み取り操作 (GET) を除く、Azure Bastion リソースに対するすべての書き込み操作 (PUT、POST、DELETE) が含まれています。 アクティビティ ログを使用すると、トラブルシューティング時にエラーを見つけたり、組織内のユーザーがリソースをどのように変更したかを監視したりできます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Bastion で Azure リソース ログを有効にする](diagnostic-logs.md)
 
@@ -396,7 +396,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -410,9 +410,9 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 Azure Monitor で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定できます。
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 - [Azure Bastion ログを有効にして使用する](diagnostic-logs.md)
 

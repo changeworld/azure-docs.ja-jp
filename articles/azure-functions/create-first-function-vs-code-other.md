@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して Go または Rust の関数を作成�
 description: Visual Studio Code の Azure Functions 拡張機能を使用して、Azure Functions のカスタム ハンドラーとして Go 関数を作成し、ローカル プロジェクトを Azure Functions のサーバーレス ホスティングに発行する方法について説明します。
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: a3ef7bdd19badf7a7deaa8376440016e39e0d14b
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 1142ff76425e2e4bff0d3881be1378d9da07806e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704737"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に Go または Rust の関数を作成する
 
@@ -89,14 +89,14 @@ HTTP トリガー関数は、*HttpExample* フォルダー内の *function.json*
 
     ```go
     package main
-
+    
     import (
         "fmt"
         "log"
         "net/http"
         "os"
     )
-
+    
     func helloHandler(w http.ResponseWriter, r *http.Request) {
         message := "This HTTP triggered function executed successfully. Pass a name in the query string for a personalized response.\n"
         name := r.URL.Query().Get("name")
@@ -105,7 +105,7 @@ HTTP トリガー関数は、*HttpExample* フォルダー内の *function.json*
         }
         fmt.Fprint(w, message)
     }
-
+    
     func main() {
         listenAddr := ":8080"
         if val, ok := os.LookupEnv("FUNCTIONS_CUSTOMHANDLER_PORT"); ok {

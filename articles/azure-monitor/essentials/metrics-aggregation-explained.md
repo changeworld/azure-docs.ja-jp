@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: c47c316c82d8c510b4446e4335a219f400d476e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a88a52163f03d2bffb0c9c4eab53fd814d9554fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600831"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725868"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor メトリックによるメトリックの集計と表示の説明
 
@@ -101,7 +101,7 @@ ms.locfileid: "100600831"
 
 メトリック エクスプローラーでメトリックをグラフ化する場合、グラフをディメンションで "分割" するオプションがあります。  グラフを分割するということは、基になるデータを詳細に調べ、メトリック エクスプローラーでグラフ化またはフィルター処理されたそのデータを表示することを意味します。
 
-たとえば、[Microsoft.ApiManagement/service](../platform/metrics-supported.md#microsoftapimanagementservice) には、多くのメトリックのディメンションとして "*場所*" があります。 
+たとえば、[Microsoft.ApiManagement/service](./metrics-supported.md#microsoftapimanagementservice) には、多くのメトリックのディメンションとして "*場所*" があります。 
 
 - **容量** は、このようなメトリックの 1 つです。 "*場所*" ディメンションを持つということは、基になるシステムが、集計量に対して 1 つだけではなく、それぞれの場所の容量のメトリック レコードを格納することを意味します。 次に、その情報をメトリック グラフ内で取得したり分割したりできます。  
 
@@ -109,7 +109,7 @@ ms.locfileid: "100600831"
 
 - より柔軟なメトリックの 1 つである **要求** には、7 つの異なるディメンションがあります。 
  
-各メトリックと使用可能なディメンションの詳細については、Azure Monitor の[サポートされているメトリック](../platform/metrics-supported.md)に関する記事をご覧ください。 さらに、各リソース プロバイダーと種類についてのドキュメントに、ディメンションとその測定対象に関する追加情報が記載されている場合があります。
+各メトリックと使用可能なディメンションの詳細については、Azure Monitor の[サポートされているメトリック](./metrics-supported.md)に関する記事をご覧ください。 さらに、各リソース プロバイダーと種類についてのドキュメントに、ディメンションとその測定対象に関する追加情報が記載されている場合があります。
 
 分割とフィルター処理を併用して、問題を掘り下げることができます。 次に示すのは、リソース グループ内の VM グループの "*平均ディスク書き込みバイト数*" を示す図の例です。 このメトリックに関するすべての VM がロールアップされていますが、午前 6 時頃のピークの実際の原因が何かを掘り下げて調べたい場合があります。 これらは同じマシンでしょうか。 何台のマシンが関係しているでしょうか。  
 

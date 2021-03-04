@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 36885e4673b83d1db7972f03c4a6309f766206c5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713101"
 ---
 # <a name="what-is-custom-neural-voice"></a>カスタム ニューラル音声とは
 
-カスタム ニューラル音声は、[テキスト読み上げ](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) (TTS) 機能です。この機能を使用すると、サンプルとして独自のオーディオ データを提供することによって、アプリケーション用に独自にカスタマイズされた 1 つの合成音声を作成できます。 テキスト読み上げは、選択した音声のように聞こえる機械学習モデルを使用して、テキストを合成音声に変換することによって機能します。 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) を使用すると、アプリが[事前に構築された音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)モデル、またはカスタム ニューラル音声機能を使用して開発された独自の[カスタム音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-prepare-data)を使用して発話することが可能になります。 カスタム ニューラル音声は、自然な音声を作成するニューラル TTS テクノロジをベースにしています。これは、人間の声と比べて区別がつかない音声になることがよくあります。
+カスタム ニューラル音声は、[テキスト読み上げ](./text-to-speech.md) (TTS) 機能です。この機能を使用すると、サンプルとして独自のオーディオ データを提供することによって、アプリケーション用に独自にカスタマイズされた 1 つの合成音声を作成できます。 テキスト読み上げは、選択した音声のように聞こえる機械学習モデルを使用して、テキストを合成音声に変換することによって機能します。 [REST API](./rest-text-to-speech.md) を使用すると、アプリが[事前に構築された音声](./language-support.md#neural-voices)モデル、またはカスタム ニューラル音声機能を使用して開発された独自の[カスタム音声](./how-to-custom-voice-prepare-data.md)を使用して発話することが可能になります。 カスタム ニューラル音声は、自然な音声を作成するニューラル TTS テクノロジをベースにしています。これは、人間の声と比べて区別がつかない音声になることがよくあります。
 カスタム ニューラル音声のリアルで自然な声は、ブランドや擬人化したコンピューターを表し、ユーザーが自然な方法で対話的にアプリケーションと応答することが可能になります。
 
 > [!NOTE]
@@ -35,7 +35,7 @@ ms.locfileid: "99525264"
 
 ニューラル TTS 音声モデルは、人間の声の録音サンプルに基づいて、ディープ ニューラル ネットワークを使用してトレーニングされます。 この[ブログ](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911)では、ニューラル TTS が最先端のニューラル音声合成モデルとどのように連携するかについて説明します。 また、このブログでは、対象話者からの 2 時間未満 (または 2,000 個未満の録音された発言) の音声データを使用して、ユニバーサル基本モデルを適合させる方法と、対象話者の音声で読み上げる方法についても説明します。 ニューラル ボコーダーのトレーニング方法については、この[ブログ投稿](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)を参照してください。
 
-カスタム ニューラル音声のカスタマイズ機能により、ニューラル TTS エンジンをユーザーのシナリオに合わせて調整できます。 カスタム ニューラル音声を作成するには、[Speech Studio](https://speech.microsoft.com/customvoice) を使用して、録音された音声とそれに対応するスクリプトをアップロードし、モデルをトレーニングして、音声をカスタム エンドポイントにデプロイします。 ユース ケースによっては、カスタム ニューラル音声をリアルタイム (スマート仮想アシスタントで使用する場合など) でテキストを音声に変換するか、オフライン (オーディオ ブックや E ラーニング アプリケーションの指示として使用する場合など) でユーザーが入力したテキスト入力と一緒にオーディオ コンテンツを生成するために使用できます。 これは、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)、[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=script%2Cwindowsinstall&pivots=programming-language-csharp)、または [Web ポータル](https://speech.microsoft.com/audiocontentcreation)を使用して提供されます。
+カスタム ニューラル音声のカスタマイズ機能により、ニューラル TTS エンジンをユーザーのシナリオに合わせて調整できます。 カスタム ニューラル音声を作成するには、[Speech Studio](https://speech.microsoft.com/customvoice) を使用して、録音された音声とそれに対応するスクリプトをアップロードし、モデルをトレーニングして、音声をカスタム エンドポイントにデプロイします。 ユース ケースによっては、カスタム ニューラル音声をリアルタイム (スマート仮想アシスタントで使用する場合など) でテキストを音声に変換するか、オフライン (オーディオ ブックや E ラーニング アプリケーションの指示として使用する場合など) でユーザーが入力したテキスト入力と一緒にオーディオ コンテンツを生成するために使用できます。 これは、[REST API](./rest-text-to-speech.md)、[Speech SDK](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall)、または [Web ポータル](https://speech.microsoft.com/audiocontentcreation)を使用して提供されます。
 
 ## <a name="terms-and-definitions"></a>用語と定義
 

@@ -6,12 +6,12 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c4d6ebc8d57857deeb2a5cc71867484bd3519ea6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699693"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>予約容量を使用してリソースのコストを節約する - Azure Data Factory データ フロー
 
@@ -21,12 +21,12 @@ ms.locfileid: "100526308"
 
 その予約を特定のファクトリまたは統合ランタイムに割り当てる必要はありません。 既存のファクトリや新しくデプロイされたファクトリには、この特典が自動的に適用されます。 予約を購入することで、データ フローのコンピューティング コストの 1 年間または 3 年間の使用を確約したことになります。 予約を購入するとすぐに、予約の属性に一致するコンピューティング料金は従量課金制で課金されなくなります。 
 
-[予約数量](https://portal.azure.com)を購入する場合、[前払いまたは月払い](https://docs.microsoft.com/azure/cost-management-billing/reservations/prepare-buy-reservation.md)での予約を選択します。 予約容量を購入するには:
+[予約数量](https://portal.azure.com)を購入する場合、[前払いまたは月払い](../cost-management-billing/reservations/prepare-buy-reservation.md)での予約を選択します。 予約容量を購入するには:
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
 - Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。 予約容量。
 
-エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage)」をご覧ください。
+エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)」をご覧ください。
 
 > [!NOTE]
 > 予約容量を購入しても、特定のインフラストラクチャ リソース (仮想マシンまたはクラスター) の使用が事前に割り当てされたり、予約されたりすることはありません。
@@ -49,7 +49,7 @@ ms.locfileid: "100526308"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 

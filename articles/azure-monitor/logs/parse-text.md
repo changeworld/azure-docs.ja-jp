@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 29393126f94d77dbced0ef896616b945443184fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8f6c35fd1bb6b46f512f9245d8e3d41df428692b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733943"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Monitor ログのテキスト データの解析
 Azure Monitor によって収集された一部のログ データでは、1 つのプロパティに複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../agents/data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。
@@ -188,4 +188,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>次のステップ
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* [ログ クエリ](./log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

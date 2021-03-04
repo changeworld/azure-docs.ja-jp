@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7534052412c2bee0f31e352fc577d376c11215c3
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804930"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730713"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイス用の GPU VM
 
@@ -110,8 +110,8 @@ Nvidia GPU ドライバー拡張機能により、適切な Nvidia CUDA ドラ�
 1. VM が作成されたら、拡張機能テンプレートを使用して GPU 拡張機能をデプロイします。 Linux VM の場合は、[Linux 用の GPU 拡張機能のインストール](#gpu-extension-for-linux)に関するページを参照してください。Windows VM の場合は、[Windows 用の GPU 拡張機能のインストール](#gpu-extension-for-windows)に関するページを参照してください。
 
 1. GPU 拡張機能のインストールを確認するには、GPU VM に接続します。
-    1. Windows VM を使用している場合は、「[Windows VM への接続](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-windows-vm)」の手順に従ってください。 [インストールを確認します](#verify-windows-driver-installation)。
-    1. Linux VM を使用している場合は、「[Linux VM への接続](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm)」の手順に従ってください。 [インストールを確認します](#verify-linux-driver-installation)。
+    1. Windows VM を使用している場合は、「[Windows VM への接続](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm)」の手順に従ってください。 [インストールを確認します](#verify-windows-driver-installation)。
+    1. Linux VM を使用している場合は、「[Linux VM への接続](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm)」の手順に従ってください。 [インストールを確認します](#verify-linux-driver-installation)。
 
 1. 必要に応じて、コンピューティング ネットワークを任意のものに切り替えることができます。 
 
@@ -545,7 +545,7 @@ PS C:\WINDOWS\system32>
 
 ドライバーのインストールを確認するには、次の手順に従います。
 
-1. GPU VM に接続します。 「[Linux VM への接続](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm)」の手順に従います。 
+1. GPU VM に接続します。 「[Linux VM への接続](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm)」の手順に従います。 
 
     出力例を次に示します。
 

@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593420"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690585"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ General Purpose サービス レベルのゾーン冗長構成では、[Azure Av
 
 General Purpose レベル向けのゾーン冗長構成には、次の 2 つの層があります。  
 
-- ステートフル データ レイヤー。データベース ファイル (.mdf/.ldf) は ZRS PFS (ゾーン冗長[ストレージ Premium ファイル共有](../../storage/files/storage-how-to-create-premium-fileshare.md)) に保存されています。 [ゾーン冗長ストレージ](../../storage/common/storage-redundancy.md)を使用すると、データとログ ファイルは、物理的に分離された 3 つの Azure 可用性ゾーン間で同期的にコピーされます。
+- ステートフル データ レイヤー。データベース ファイル (.mdf/.ldf) は ZRS PFS (ゾーン冗長[ストレージ Premium ファイル共有](../../storage/files/storage-how-to-create-file-share.md)) に保存されています。 [ゾーン冗長ストレージ](../../storage/common/storage-redundancy.md)を使用すると、データとログ ファイルは、物理的に分離された 3 つの Azure 可用性ゾーン間で同期的にコピーされます。
 - ステートレス コンピューティング レイヤー。sqlservr.exe プロセスを実行しており、一時的なデータとキャッシュ データのみ (TempDB、アタッチされた SSD 上のモデル データベース、およびメモリ内のプラン キャッシュ、バッファー プール、列ストア プールなど) が含まれています。 このステートレス ノードは、sqlservr.exe の初期化、ノードの正常性の制御、および他のノードへのフェールオーバーを必要に応じて実行する Azure Service Fabric によって操作されます。 ゾーン冗長 General Purpose データベースの場合、予備の容量があるノードをフェールオーバーのために他の Availability Zones ですぐに使用できます。
 
 ゾーン冗長による General Purpose サービス レベル向けの高可用性アーキテクチャを、次の図に示します。

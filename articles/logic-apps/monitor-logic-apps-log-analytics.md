@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
-ms.openlocfilehash: d72e3ffc8698d9f3a2df170bd87f2969475ca9ed
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d1c095be1d0525cc843c04a3b83e14bb4211b175
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580679"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721261"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する
 
@@ -142,9 +142,6 @@ ms.locfileid: "100580679"
    特定のロジック アプリのすべての実行を表示する例は次の通りです。
 
    ![ロジック アプリの実行と状態を表示する](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
-
-   > [!NOTE]
-   > このページの **再送信** 機能は現在使用できません。
 
    [追跡対象プロパティを設定した](#extend-data)アクションでは、 **[追跡対象プロパティ]** 列で **[表示]** を選択してプロパティを表示することもできます。 追跡対象プロパティを検索するには、列フィルターを使用します。
 

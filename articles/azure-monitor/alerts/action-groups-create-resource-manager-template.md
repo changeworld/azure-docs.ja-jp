@@ -4,15 +4,15 @@ description: Azure Resource Manager テンプレートを使用してアクシ�
 author: dkamstra
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 02/19/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 2275ea059b762e81330d3e6150c563e18a64b554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 978372481513f3d68fdc587ccc1148976640bc80
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729132"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用したアクション グループの作成
 この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して、アクション グループを構成する方法について説明します。 テンプレートを使用することで、特定の種類のアラートで再利用できるアクション グループを自動的に設定できます。 このようなアクション グループを使用することで、アラートがトリガーされたときに、すべての適切な関係者が通知を確実に受け取ることができます。
@@ -50,7 +50,7 @@ Resource Manager テンプレートを使用してアクション グループ�
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2018-03-01",
+      "apiVersion": "2019-03-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {
@@ -71,21 +71,26 @@ Resource Manager テンプレートを使用してアクション グループ�
         "emailReceivers": [
           {
             "name": "contosoEmail",
-            "emailAddress": "devops@contoso.com"
+            "emailAddress": "devops@contoso.com",
+            "useCommonAlertSchema": true
+
           },
           {
             "name": "contosoEmail2",
-            "emailAddress": "devops2@contoso.com"
+            "emailAddress": "devops2@contoso.com",
+            "useCommonAlertSchema": true
           }
         ],
         "webhookReceivers": [
           {
             "name": "contosoHook",
-            "serviceUri": "http://requestb.in/1bq62iu1"
+            "serviceUri": "http://requestb.in/1bq62iu1",
+            "useCommonAlertSchema": true
           },
           {
             "name": "contosoHook2",
-            "serviceUri": "http://requestb.in/1bq62iu2"
+            "serviceUri": "http://requestb.in/1bq62iu2",
+            "useCommonAlertSchema": true
           }
         ]
       }
@@ -133,7 +138,7 @@ Resource Manager テンプレートを使用してアクション グループ�
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2018-03-01",
+      "apiVersion": "2019-03-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {
@@ -146,7 +151,8 @@ Resource Manager テンプレートを使用してアクション グループ�
         "webhookReceivers": [
           {
             "name": "[parameters('webhookReceiverName')]",
-            "serviceUri": "[parameters('webhookServiceUri')]"
+            "serviceUri": "[parameters('webhookServiceUri')]",
+            "useCommonAlertSchema": true
           }
         ]
       }
@@ -163,7 +169,6 @@ Resource Manager テンプレートを使用してアクション グループ�
 
 
 ## <a name="next-steps"></a>次のステップ
-* [アクション グループ](../platform/action-groups.md)について学習します。
-* [アラート](../platform/alerts-overview.md)の詳細について学習します。
-* [Resource Manager テンプレートを使用してアクション グループ](../platform/alerts-activity-log.md)を追加する方法を学習します。
-
+* [アクション グループ](./action-groups.md)について学習します。
+* [アラート](./alerts-overview.md)の詳細について学習します。
+* [Resource Manager テンプレートを使用してアクション グループ](./alerts-activity-log.md)を追加する方法を学習します。

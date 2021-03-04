@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364692"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703390"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
@@ -91,7 +91,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 * **通貨のサポート** - グローバル通貨記号の検出と抽出。
 * **Azure Gov** - Form Recognizer が、Azure Gov でも使用できるようになりました。
 * **強化されたセキュリティ機能**: 
-   * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./form-recognizer-encryption-of-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。  
+   * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./encrypt-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。  
    * **プライベート エンドポイント** – 仮想ネットワーク (VNet) を使用して、[Private Link を介してデータに安全にアクセスできるようになります。](../../private-link/private-link-overview.md)
 
 
@@ -123,7 +123,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 ### <a name="security-improvements"></a>セキュリティの強化
 
-* FormRecognizer でカスタマー マネージド キーが利用できるようになりました。 詳細については、[Form Recognizer による保存データの暗号化](./form-recognizer-encryption-of-data-at-rest.md)に関するページを参照してください。
+* FormRecognizer でカスタマー マネージド キーが利用できるようになりました。 詳細については、[Form Recognizer による保存データの暗号化](./encrypt-data-at-rest.md)に関するページを参照してください。
 * Azure Active Directory を使用した Azure リソースへのアクセスにマネージド ID を使用します。 詳細については、[マネージド ID に対するアクセスの承認](../authentication.md#authorize-access-to-managed-identities)に関するページを参照してください。
 
 ## <a name="march-2020"></a>2020 年 3 月 

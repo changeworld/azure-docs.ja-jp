@@ -7,16 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: f90709431ea54a640554b642b96a63c7edac472e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19cf900b8e943b4f9ee69a6241ebc7ddb5a3dba6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601431"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704397"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 
-[ログ アラート](alerts-log.md)は、[Webhook アクション グループの構成](../platform/action-groups.md#webhook)をサポートします。 この記事では、使用できるプロパティと、カスタム JSON Webhook の構成方法について説明します。
+[ログ アラート](alerts-log.md)は、[Webhook アクション グループの構成](./action-groups.md#webhook)をサポートします。 この記事では、使用できるプロパティと、カスタム JSON Webhook の構成方法について説明します。
 
 > [!NOTE]
 > 現在、JSON ベースの Webhook は API バージョン `2020-05-01-preview` ではサポートされていません。
@@ -47,7 +47,7 @@ Webhook アクションを使用して、1 つの HTTP POST 要求を呼び出�
 | *SearchQuery* |#searchquery |アラート ルールで使用されるログ検索クエリ。 |
 | *SearchResults* |"IncludeSearchResults": true|最初の 1,000 レコードに制限された、クエリによって JSON テーブルとして返されるレコード。 "IncludeSearchResults": true が、最上位レベルのプロパティとしてカスタム JSON Webhook 定義に追加されます。 |
 | *Dimensions* |"IncludeDimensions": true|JSON セクションとしてそのアラートをトリガーしたディメンション値の組み合わせ。 "IncludeDimensions": true が、最上位レベルのプロパティとしてカスタム JSON Webhook 定義に追加されます。 |
-| *Alert Type*| #alerttype | 構成されたログ アラート ルールの種類であり、[メトリック測定または結果の数](../platform/alerts-unified-log.md#measure)。|
+| *Alert Type*| #alerttype | 構成されたログ アラート ルールの種類であり、[メトリック測定または結果の数](./alerts-unified-log.md#measure)。|
 | *WorkspaceID* |#workspaceid |Log Analytics ワークスペースの ID |
 | *アプリケーション ID* |#applicationid |Application Insights アプリの ID。 |
 | *サブスクリプション ID* |#subscriptionid |使用された Azure サブスクリプションの ID。 |
@@ -84,7 +84,7 @@ Webhook アクションを使用して、1 つの HTTP POST 要求を呼び出�
 次のサンプル ペイロードは、Log Analytics に基づくアラートに使用される、標準 Webhook アクションに対するものです。
 
 > [!NOTE]
-> [重要度] フィールドの値は、[現在の scheduledQueryRules API](../alerts/alerts-log-api-switch.md) に[従来の Log Analytics Alert API](../platform/api-alerts.md) から切り替えた場合に変更されます。
+> [重要度] フィールドの値は、[現在の scheduledQueryRules API](../alerts/alerts-log-api-switch.md) に[従来の Log Analytics Alert API](./api-alerts.md) から切り替えた場合に変更されます。
 
 ```json
 {
@@ -318,8 +318,8 @@ Webhook アクションを使用して、1 つの HTTP POST 要求を呼び出�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure アラートでのログ アラート](../platform/alerts-unified-log.md)について学習します。
+- [Azure アラートでのログ アラート](./alerts-unified-log.md)について学習します。
 - [Azure でログ アラートを管理する](alerts-log.md)方法を理解します。
-- [Azure でアクション グループ](../platform/action-groups.md)を作成および管理します。
-- [Application Insights](../log-query/log-query-overview.md) についてさらに学習します。
-- [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します 
+- [Azure でアクション グループ](./action-groups.md)を作成および管理します。
+- [Application Insights](../logs/log-query-overview.md) についてさらに学習します。
+- [ログ クエリ](../logs/log-query-overview.md)についてさらに学習します

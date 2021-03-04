@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 0fc57b87e5ec1d7f47d9f9d74698af56172246ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab7d4bf0b8d8ca32dafe6f19b46047eca89a7734
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603363"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733977"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
@@ -64,7 +64,7 @@ Azure portal のアクセス管理は、OMS ポータルのアクセス管理よ
  
 
 ## <a name="new-workspaces"></a>新しいワークスペース
-OMS ポータルを使用して新しいワークスペースを作成することはできなくなりました。 Azure Portal で新しいワークスペースを作成するには、「[Azure Portal で Log Analytics ワークスペースを作成する](../learn/quick-create-workspace.md)」のガイダンスに従ってください。
+OMS ポータルを使用して新しいワークスペースを作成することはできなくなりました。 Azure Portal で新しいワークスペースを作成するには、「[Azure Portal で Log Analytics ワークスペースを作成する](./quick-create-workspace.md)」のガイダンスに従ってください。
 
 ## <a name="changes-to-alerts"></a>アラートの変更内容
 
@@ -73,9 +73,9 @@ OMS ポータルを使用して新しいワークスペースを作成するこ�
 アラートは [Azure portal に拡張されました](../alerts/alerts-unified-log.md)。既存のアラートは引き続き OMS ポータルに表示されますが、Azure portal でのみこれらを管理できます。 Log Analytics Alert REST API または Log Analytics のアラート リソース テンプレートを使用してプログラムでアラートにアクセスする場合は、API 呼び出し、Azure Resource Manager テンプレート、PowerShell コマンドではアクションではなくアクション グループを使用する必要があります。
 
 ### <a name="alert-management-solution"></a>アラート管理ソリューション
-以前のお知らせからの変更点として、[アラート管理ソリューション](../platform/alert-management-solution.md)は Azure portal で引き続き使用でき、完全にサポートされます。 Azure Marketplace からソリューションを引き続きインストールできます。
+以前のお知らせからの変更点として、[アラート管理ソリューション](../insights/alert-management-solution.md)は Azure portal で引き続き使用でき、完全にサポートされます。 Azure Marketplace からソリューションを引き続きインストールできます。
 
-アラート管理ソリューションは引き続き使用できますが、Azure でのすべてのアラートを視覚化して管理するには [Azure Monitor の統合アラート インターフェイス](../platform/alerts-overview.md)を使用することをお勧めします。 この新しいエクスペリエンスでは、Log Analytics からのログ アラートをはじめ、Azure 内の複数のソースからのアラートがネイティブに集約されます。 Azure Monitor の統合アラート インターフェイスを使用する場合、アラート管理ソリューションは、System Center Operation Manager から Azure へのアラートの統合を有効にする場合のみ必要になります。 Azure Monitor の統合アラート インターフェイスでは、アラートの分布の表示、関連するアラートをスマート グループで自動的にグループ化する機能の活用、複数のサブスクリプションにわたるアラートの表示が可能なほか、さまざまなフィルターを適用することもできます。 アラート管理に関する今後の高度な機能は、主にこの新しいエクスペリエンスから利用できます。 
+アラート管理ソリューションは引き続き使用できますが、Azure でのすべてのアラートを視覚化して管理するには [Azure Monitor の統合アラート インターフェイス](../alerts/alerts-overview.md)を使用することをお勧めします。 この新しいエクスペリエンスでは、Log Analytics からのログ アラートをはじめ、Azure 内の複数のソースからのアラートがネイティブに集約されます。 Azure Monitor の統合アラート インターフェイスを使用する場合、アラート管理ソリューションは、System Center Operation Manager から Azure へのアラートの統合を有効にする場合のみ必要になります。 Azure Monitor の統合アラート インターフェイスでは、アラートの分布の表示、関連するアラートをスマート グループで自動的にグループ化する機能の活用、複数のサブスクリプションにわたるアラートの表示が可能なほか、さまざまなフィルターを適用することもできます。 アラート管理に関する今後の高度な機能は、主にこの新しいエクスペリエンスから利用できます。 
 
 アラート管理ソリューションで収集されたデータ (アラートの種類を含むレコード) は、このソリューションがワークスペースにインストールされているかぎり、引き続き Log Analytics に保存されます。 
 
@@ -83,7 +83,7 @@ OMS ポータルを使用して新しいワークスペースを作成するこ�
 OMS モバイル アプリは、OMS ポータルと共に非推奨となります。 OMS モバイル アプリの代わりに、モバイル デバイスのブラウザーから直接 Azure portal にアクセスすることで、IT インフラストラクチャ、ダッシュ ボード、保存されたクエリに関する情報にアクセスできます。 アラートを取得するには、[Azure のアクション グループ](../alerts/action-groups.md)を構成して、SMS または音声通話の形式で通知が届くようにする必要があります。
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector と Application Insights ソリューション
-[Application Insights Connector](../logs/app-insights-connector.md) では、Application Insights のデータを Log Analytics のワークスペースに含めることができます。 このデータの重複は、インフラストラクチャとアプリケーションのデータ全体を視覚化するために必要でした。 Application Insights のデータ保有期間サポートが 2019 年 3 月まで延長されたこと、[リソース間のクエリ](../logs/cross-workspace-query.md)を実行する機能が利用できること、[複数の Azure Monitor Application Insights リソースを表示できること](../log-query/unify-app-resource-data.md)から、Application Insights リソースからのデータを複製して Log Analytics に送信する必要はありません。 さらに、Connector はアプリケーション プロパティのサブセットを Log Analytics に送信する一方、リソース間のクエリによって高い柔軟性が提供されます。  
+[Application Insights Connector](../logs/app-insights-connector.md) では、Application Insights のデータを Log Analytics のワークスペースに含めることができます。 このデータの重複は、インフラストラクチャとアプリケーションのデータ全体を視覚化するために必要でした。 Application Insights のデータ保有期間サポートが 2019 年 3 月まで延長されたこと、[リソース間のクエリ](../logs/cross-workspace-query.md)を実行する機能が利用できること、[複数の Azure Monitor Application Insights リソースを表示できること](./unify-app-resource-data.md)から、Application Insights リソースからのデータを複製して Log Analytics に送信する必要はありません。 さらに、Connector はアプリケーション プロパティのサブセットを Log Analytics に送信する一方、リソース間のクエリによって高い柔軟性が提供されます。  
 
 そのため、Application Insights Connector は 2019 年 3 月 30 日の OMS ポータルの廃止と一緒に非推奨になり、Azure Marketplace から削除されました。 既存の接続は 2019 年 6 月 30日まで引き続き機能します。 OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 これは 2019 年 1 月に利用できる予定の REST API を使用してサポートされます。通知は [Azure の更新情報](https://azure.microsoft.com/updates/)に掲載されます。 
 

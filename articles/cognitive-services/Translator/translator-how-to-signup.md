@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 37b9860546f9fd16045906ce9385a1590c46b970
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712931"
 ---
 # <a name="create-a-translator-resource"></a>Translator リソースを作成する
 
@@ -38,9 +38,9 @@ Translator サービスには、2 つの異なるリソースの種類を使用�
 
 ## <a name="create-your-resource"></a>リソースを作成する
 
-* Azure portal の [ **[Create Translator]\(Translator の作成\)** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) ページに直接移動し、プロジェクトの詳細を入力します。
+* Azure portal の [ **[Create Translator]\(Translator の作成\)**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) ページに直接移動し、プロジェクトの詳細を入力します。
 
-* Azure portal の [ **[Create Cognitive Services]\(Cognitive Services の作成\)** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) ページに直接移動し、プロジェクトの詳細を入力します。
+* Azure portal の [ **[Create Cognitive Services]\(Cognitive Services の作成\)**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) ページに直接移動し、プロジェクトの詳細を入力します。
 
 >[!TIP]
 >必要に応じて、Azure portal のホーム ページから、次のように **作成** プロセスを開始できます。
@@ -57,7 +57,7 @@ Translator サービスには、2 つの異なるリソースの種類を使用�
 
 1. **[リソース グループ]**。 選択した Azure リソース グループは、新しいリソースの仮想コンテナーとして機能します。 新しいリソース グループを作成するか、同じライフサイクル、アクセス許可、ポリシーを共有する既存のリソース グループにリソースを追加することができます。
 
-1. **[リソース リージョン]** . ご自身のビジネスまたはアプリケーションが特定のリージョンを必要としない限り、 **[グローバル]** を選択します。 Translator は、非リージョン サービスです。特定の Azure リージョンンに依存することはありません。 「[Azure のリージョンと Availability Zones](/azure/availability-zones/az-overview)」を "*参照*" してください。
+1. **[リソース リージョン]** . ご自身のビジネスまたはアプリケーションが特定のリージョンを必要としない限り、 **[グローバル]** を選択します。 Translator は、非リージョン サービスです。特定の Azure リージョンンに依存することはありません。 「[Azure のリージョンと Availability Zones](../../availability-zones/az-overview.md)」を "*参照*" してください。
 
 1. **[名前]**。 自分のリソースに対して選択した名前を入力します。 選択した名前は Azure 内で一意である必要があります。
 

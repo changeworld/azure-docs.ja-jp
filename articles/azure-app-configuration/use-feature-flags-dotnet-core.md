@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380238"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726429"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -74,7 +74,7 @@ public class Startup
 ```
 
 
-機能フラグにフィルターを使用する場合は、[Microsoft.FeatureManagement.FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) 名前空間をインクルードし、[AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) の呼び出しを追加して、メソッドのジェネリック型として使用するフィルターの型名を指定する必要があります。 機能フィルターを使用して動的に機能を有効化または無効化する方法について詳しくは、「[対象ユーザーに対する機能の段階的なロールアウトを有効にする](/azure/azure-app-configuration/howto-targetingfilter-aspnet-core)」を参照してください。
+機能フラグにフィルターを使用する場合は、[Microsoft.FeatureManagement.FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) 名前空間をインクルードし、[AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) の呼び出しを追加して、メソッドのジェネリック型として使用するフィルターの型名を指定する必要があります。 機能フィルターを使用して動的に機能を有効化または無効化する方法について詳しくは、「[対象ユーザーに対する機能の段階的なロールアウトを有効にする](./howto-targetingfilter-aspnet-core.md)」を参照してください。
 
 次の例は、`PercentageFilter` という組み込み機能フィルターを使用する方法を示しています。
 
@@ -211,14 +211,14 @@ config.AddAzureAppConfiguration(options =>
 
 * `FeatureA` は "*オン*" です。
 * `FeatureB` は "*オフ*" です。
-* `FeatureC` は、`Parameters` プロパティとともに `Percentage` という名前のフィルターを指定します。 `Percentage` は、構成可能なフィルターです。 この例で、`Percentage` は、`FeatureC` フラグが "*オン*" になる確率を 50% に指定しています。 機能フィルターの使用に関する攻略ガイドについては、「[機能フィルターを使用して条件付き機能フラグを有効にする](/azure/azure-app-configuration/howto-feature-filters-aspnet-core)」を参照してください。
+* `FeatureC` は、`Parameters` プロパティとともに `Percentage` という名前のフィルターを指定します。 `Percentage` は、構成可能なフィルターです。 この例で、`Percentage` は、`FeatureC` フラグが "*オン*" になる確率を 50% に指定しています。 機能フィルターの使用に関する攻略ガイドについては、「[機能フィルターを使用して条件付き機能フラグを有効にする](./howto-feature-filters-aspnet-core.md)」を参照してください。
 
 
 
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>依存関係の挿入を使用して IFeatureManager にアクセスする 
 
-機能フラグの値を手動でチェックするなど一部の操作では、[IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) のインスタンスを取得する必要があります。 ASP.NET Core MVC では、依存関係の挿入を介して機能マネージャー `IFeatureManager` にアクセスできます。 以下の例では、コントローラーのコンストラクターのシグネチャに `IFeatureManager` 型の引数が追加されています。 このランタイムは、コンストラクターを呼び出す際に、参照を自動的に解決してインターフェイスを提供します。 最初からコントローラーのコンストラクターに依存関係の挿入のための引数が少なくとも 1 つあるようなアプリケーション テンプレートを使用している場合は (`ILogger` など)、単純に引数として `IFeatureManager` を追加することができます。
+機能フラグの値を手動でチェックするなど一部の操作では、[IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) のインスタンスを取得する必要があります。 ASP.NET Core MVC では、依存関係の挿入を介して機能マネージャー `IFeatureManager` にアクセスできます。 以下の例では、コントローラーのコンストラクターのシグネチャに `IFeatureManager` 型の引数が追加されています。 このランタイムは、コンストラクターを呼び出す際に、参照を自動的に解決してインターフェイスを提供します。 最初からコントローラーのコンストラクターに依存関係の挿入のための引数が少なくとも 1 つあるようなアプリケーション テンプレートを使用している場合は (`ILogger` など)、単純に引数として `IFeatureManager` を追加することができます。
 
 ### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
     

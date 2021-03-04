@@ -6,24 +6,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 485c2cc6c95f5922025fe887f7c25131e849a01d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604683"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723165"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Monitor の Log Analytics の概要
 Log Analytics は、Azure portal のツールであり、Azure Monitor ログのデータでのログ クエリの編集と実行に使用します。 一連のレコードを返す単純なクエリを作成後、Log Analytics の機能を使用して、それらのレコードを並べ替え、フィルター、および分析できます。 また、より高度なクエリを作成して統計分析を実行し、結果をグラフで視覚化して特定の傾向を識別することもできます。 クエリの結果を対話的に操作する場合でも、ログ クエリ アラートやブックなどの他の Azure Monitor の機能で使用する場合でも、クエリ結果の書き込みとテストのためのツールとして Log Analytics を使用します。 
 
 
 > [!TIP]
-> この記事では、Log Analytics とその各機能について説明します。 チュートリアルに直接進む場合は、「[Log Analytics のチュートリアル](../log-query/log-analytics-tutorial.md)」を参照してください。
+> この記事では、Log Analytics とその各機能について説明します。 チュートリアルに直接進む場合は、「[Log Analytics のチュートリアル](./log-analytics-tutorial.md)」を参照してください。
 
 
 
 ## <a name="starting-log-analytics"></a>Log Analytics の起動
-Azure portal の **[Azure Monitor]** メニューの **[ログ]** から Log Analytics を起動します。 このオプションは、ほとんどの Azure リソースのメニューにも表示されます。 どこから起動しても、同じ Log Analytics ツールが起動します。 Log Analytics を起動するために使用するメニューによって、使用可能なデータが決まります。 **[Azure Monitor]** メニューまたは **[Log Analytics ワークスペース]** メニューから起動した場合、ワークスペース内のすべてのレコードにアクセスできます。 別の種類のリソースから **[ログ]** を選択した場合、データはそのリソースのログ データに制限されます。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../log-query/scope.md)」を参照してください。
+Azure portal の **[Azure Monitor]** メニューの **[ログ]** から Log Analytics を起動します。 このオプションは、ほとんどの Azure リソースのメニューにも表示されます。 どこから起動しても、同じ Log Analytics ツールが起動します。 Log Analytics を起動するために使用するメニューによって、使用可能なデータが決まります。 **[Azure Monitor]** メニューまたは **[Log Analytics ワークスペース]** メニューから起動した場合、ワークスペース内のすべてのレコードにアクセスできます。 別の種類のリソースから **[ログ]** を選択した場合、データはそのリソースのログ データに制限されます。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](./scope.md)」を参照してください。
 
 [![Log Analytics の起動](media/log-analytics-overview/start-log-analytics.png)](media/log-analytics-overview/start-log-analytics.png#lightbox)
 
@@ -39,9 +39,9 @@ Log Analytics を起動すると、最初に表示されるのは、[クエリ�
 
 | オプション | 説明 |
 |:---|:---|
-| Scope | クエリに使用するデータのスコープを指定します。 Log Analytics ワークスペース内のすべてのデータでも、複数のワークスペースにわたる特定のリソースのデータでもかまいません。 「[クエリ スコープ](../log-query/scope.md)」を参照してください。 |
+| Scope | クエリに使用するデータのスコープを指定します。 Log Analytics ワークスペース内のすべてのデータでも、複数のワークスペースにわたる特定のリソースのデータでもかまいません。 「[クエリ スコープ](./scope.md)」を参照してください。 |
 | [実行] ボタン | クリックすると、選択したクエリがクエリ ウィンドウで実行されます。 Shift + Enter キーを押してクエリを実行することもできます。 |
-| 時刻の選択ツール | クエリで使用できるデータの時間範囲を選択します。 これは、クエリに時間フィルターを含めるとオーバーライドされます。 「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../log-query/scope.md)」を参照してください。 |
+| 時刻の選択ツール | クエリで使用できるデータの時間範囲を選択します。 これは、クエリに時間フィルターを含めるとオーバーライドされます。 「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](./scope.md)」を参照してください。 |
 | [保存] ボタン | クエリをこのワークスペースのクエリ エクスプローラーに保存します。 |
  コピー ボタン | クエリへのリンク、クエリ テキスト、またはクエリ結果をクリップボードにコピーします。 |
 | [新しいアラート ルール] ボタン | 空のクエリを含む新しいタブを作成します。 |
@@ -91,5 +91,5 @@ Log Analytics を起動すると、最初に表示されるのは、[クエリ�
 Azure Data Explorer Web UI に慣れている場合は、Log Analytics の外観に見覚えがあるでしょう。 これは、Log Analytics が Azure Data Explorer を基に構築されており、同じ Kusto クエリ言語 (KQL) を使用するためです。 Log Analytics には、時間範囲によるフィルターや、クエリからのアラート ルールの作成機能など、Azure Monitor 固有の機能が追加されています。 どちらのツールにも、使用可能なテーブルの構造をスキャンできるできるエクスプローラーが含まれますが、Azure Data Explorer Web UI は主に Azure Data Explorer データベース内のテーブルを処理し、一方 Log Analytics は Log Analytics ワークスペース内のテーブルを処理します。 
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure portal 内での Log Analytics の使用に関するチュートリアル](../log-query/log-analytics-tutorial.md)を進めます。
-- [クエリの作成に関するチュートリアル](../log-query/get-started-queries.md)を進めます。
+- [Azure portal 内での Log Analytics の使用に関するチュートリアル](./log-analytics-tutorial.md)を進めます。
+- [クエリの作成に関するチュートリアル](./get-started-queries.md)を進めます。

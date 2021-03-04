@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 9a6c62e91a2d3c600326730b3e6345f97bf6f5f9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0e928f3890e0d86aff7e4615d6d12e1b53c3b6f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597588"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734691"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Monitor のメトリック アラート ルール用の Resource Manager テンプレート サンプル
 
@@ -3303,6 +3303,5 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor の他のサンプル テンプレートを入手します](../resource-manager-samples.md)。
-- [アラートの詳細を確認する](../platform/alerts-overview.md)
+- [アラートの詳細を確認する](./alerts-overview.md)
 - [Resource Manager テンプレートを使用してアクション グループを作成するサンプルを入手します](resource-manager-action-groups.md)
-

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d4ead88fb34d6475dae66d9708d7203eb94eaef1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4e711eb70c1fa099dd67b1ec23a0e8014ee11e47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601571"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731393"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -268,7 +268,7 @@ Usage
 - アラート ルール名: 1 日のデータ制限に達しました
 - 重大度: 警告 (重大度 1)
 
-アラートを定義した後で制限に達すると、アラートがトリガーされ、アクション グループで定義されている応答が実行されます。 メールおよびテキスト メッセージでチームに通知したり、webhook、Automation Runbook、または[外部の ITSM ソリューションとの統合](../platform/itsmc-definition.md#create-itsm-work-items-from-azure-alerts)を使ってアクションを自動化したりできます。 
+アラートを定義した後で制限に達すると、アラートがトリガーされ、アクション グループで定義されている応答が実行されます。 メールおよびテキスト メッセージでチームに通知したり、webhook、Automation Runbook、または[外部の ITSM ソリューションとの統合](../alerts/itsmc-definition.md#create-itsm-work-items-from-azure-alerts)を使ってアクションを自動化したりできます。 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>使用量が予想よりも多い理由のトラブルシューティング
 
@@ -488,8 +488,8 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | AzureDiagnostics           | [リソース ログの収集](../essentials/diagnostic-settings.md#create-in-azure-portal)を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
 | ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../insights/solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
 | Application Insights | [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) のオプションを確認します。 |
-| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | [AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) を使用して、監査設定を調整します。 |
-| Azure Sentinel | 追加のデータ ボリュームのソースとして最近有効にした [Sentinel データ ソース](https://docs.microsoft.com/azure/sentinel/connect-data-sources)を確認します。 |
+| [SQL Analytics](../insights/azure-sql.md) | [AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) を使用して、監査設定を調整します。 |
+| Azure Sentinel | 追加のデータ ボリュームのソースとして最近有効にした [Sentinel データ ソース](../../sentinel/connect-data-sources.md)を確認します。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>ノードごとの価格レベルでの課金対象のノードの取得
 

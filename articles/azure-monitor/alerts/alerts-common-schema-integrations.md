@@ -4,12 +4,12 @@ description: 共通アラートのスキーマを利用してすべてのアラ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 4553ecc8d2df20ffdf9b76d381ecf3b88d84ef38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4824c5ab1826260ee1eb3639712d7138c7c85bfe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738669"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>共通アラート スキーマを Logic Apps と統合する方法
 
@@ -23,8 +23,8 @@ ms.locfileid: "100600740"
 ## <a name="prerequisites"></a>前提条件 
 
 この記事は、以下を理解していることを前提としています。 
-* アラート ルールの設定 ([メトリック](../alerts/alerts-metric.md)、[ログ](../platform/alerts-log.md)、[アクティビティ ログ](../platform/alerts-activity-log.md))
-* [アクション グループ](../platform/action-groups.md)の設定
+* アラート ルールの設定 ([メトリック](../alerts/alerts-metric.md)、[ログ](./alerts-log.md)、[アクティビティ ログ](./alerts-activity-log.md))
+* [アクション グループ](./action-groups.md)の設定
 * アクション グループ内からの[共通アラート スキーマ](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)の有効化
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>共通アラート スキーマを活用するロジック アプリを作成する
@@ -137,5 +137,5 @@ ms.locfileid: "100600740"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アクション グループについて学習します](../platform/action-groups.md)。
+* [アクション グループについて学習します](./action-groups.md)。
 * [共通アラート スキーマについて学習します](./alerts-common-schema.md)。

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 4174e63ed12faf5d10029db5b4eb9bf9a40b9b5b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576280"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727262"
 ---
 # <a name="create-a-video-indexer-account"></a>Video Indexer アカウントを作成する
 
@@ -201,7 +201,7 @@ Azure Media Services に関する次の考慮事項が適用されます。
 
 ### <a name="prerequisites-for-connecting-to-azure-government"></a>Azure Government に接続するための前提条件
 
--   [Azure Government](https://docs.microsoft.com/azure/azure-government/) の Azure サブスクリプション。
+-   [Azure Government](../../azure-government/index.yml) の Azure サブスクリプション。
 - Azure Government の Azure AD アカウント。
 - 「[Azure に接続するための前提条件](#prerequisites-for-connecting-to-azure)」で前述したアクセス許可とリソースの前提条件すべて。
 
@@ -222,7 +222,7 @@ Video Indexer ポータルを使用して有料アカウントを作成するに
     
 ### <a name="create-new-account-via-the-api-on-azure-government"></a>Azure Government で API を使用して新しいアカウントを作成する
 
-Azure Government で有料アカウントを作成するには、[Create-Paid-Account](/azure/media-services/video-indexer/connect-to-azure) の手順に従います。 この API エンド ポイントには、Government クラウドのリージョンのみが含まれます。
+Azure Government で有料アカウントを作成するには、[Create-Paid-Account]() の手順に従います。 この API エンド ポイントには、Government クラウドのリージョンのみが含まれます。
 
 ### <a name="limitations-of-video-indexer-on-azure-government"></a>Azure Government での Video Indexer の制限事項
 

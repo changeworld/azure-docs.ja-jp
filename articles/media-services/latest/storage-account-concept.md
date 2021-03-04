@@ -42,7 +42,7 @@ Media Services v3 では、Storage API シリーズを使用してファイル�
 
 ## <a name="storage-account-double-encryption"></a>ストレージ アカウントの二重暗号化
 
-ストレージ アカウントでは二重暗号化がサポートされています。ただし、2 番目のレイヤーを明示的に有効にする必要があります。 「[保存データに対する Azure Storage 暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption)」を参照してください。  
+ストレージ アカウントでは二重暗号化がサポートされています。ただし、2 番目のレイヤーを明示的に有効にする必要があります。 「[保存データに対する Azure Storage 暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)」を参照してください。  
 
 ## <a name="storage-account-errors"></a>ストレージ アカウント エラー
 

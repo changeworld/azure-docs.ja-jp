@@ -5,18 +5,18 @@ author: harelbr
 ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 06/26/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: b09c7f1ff429a3daf675b0f44cc8b64f27e79a07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435f7b9b585b4effe6b06d78587845bf53a7d051
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600691"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714206"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>ターゲット リソースが別の Azure リージョンに移動されるときにアラート ルールまたはアクション ルールを更新する方法
 
-この記事では、他の Azure リソースをリージョン間で移動するときに、既存の[アラート ルール](../platform/alerts-overview.md)と[アクション ルール](./alerts-action-rules.md)が影響を受ける可能性がある理由と、それらの問題を特定して解決する方法について説明します。 主要な[リソースの移動に関するドキュメント](../../azure-resource-manager/management/move-region.md)を参照して、リージョン間のリソースの移動が有用な場合と、移動プロセスを設計する際のチェックリストに関する追加情報を確認してください。
+この記事では、他の Azure リソースをリージョン間で移動するときに、既存の[アラート ルール](./alerts-overview.md)と[アクション ルール](./alerts-action-rules.md)が影響を受ける可能性がある理由と、それらの問題を特定して解決する方法について説明します。 主要な[リソースの移動に関するドキュメント](../../azure-resource-manager/management/move-region.md)を参照して、リージョン間のリソースの移動が有用な場合と、移動プロセスを設計する際のチェックリストに関する追加情報を確認してください。
 
 ## <a name="why-the-problem-exists"></a>問題が存在する理由
 
@@ -48,7 +48,6 @@ ms.locfileid: "100600691"
 
 - アクティビティ ログ アラート ルール
 - アクション ルール
-- クラシック アラート
 - メトリック アラート – 詳細については、次のセクション「[メトリックに基づくアラート ルール](#alert-rules-based-on-metrics)」を参照してください。
 
 > [!NOTE]
@@ -112,4 +111,4 @@ Azure リソースによって出力されるメトリックはリージョン�
 
 ## <a name="next-steps"></a>次のステップ
 
-[アラート通知](alerts-troubleshoot.md)、[メトリック アラート](alerts-troubleshoot-metric.md)、[ログ アラート](alerts-troubleshoot-log.md)に関するその他の問題の解決方法について説明します。 
+[アラート通知](alerts-troubleshoot.md)、[メトリック アラート](alerts-troubleshoot-metric.md)、[ログ アラート](alerts-troubleshoot-log.md)に関するその他の問題の解決方法について説明します。

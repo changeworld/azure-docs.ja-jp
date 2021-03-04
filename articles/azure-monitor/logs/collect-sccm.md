@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/30/2020
-ms.openlocfilehash: 540ca293afdd7514793b8eec390b4751885859df
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2d2670b974555b83ec622b22eb2dae8f3c9899b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710981"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの Microsoft Endpoint Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
@@ -44,7 +44,7 @@ Azure Monitor では、Configuration Manager の現在のブランチ バージ�
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Configuration Manager に Log Analytics へのアクセス許可を付与する
 
-次の手順では、前に Configuration Manager 用に作成した AD アプリケーションとサービス プリンシパルに、Log Analytics ワークスペースの "*共同作成者*" ロールを付与します。 まだワークスペースがない場合は、続行する前に [Azure Monitor でのワークスペースの作成](../learn/quick-create-workspace.md)に関するページを参照してください。 これにより、Configuration Manager は認証を行って Log Analytics ワークスペースに接続できます。  
+次の手順では、前に Configuration Manager 用に作成した AD アプリケーションとサービス プリンシパルに、Log Analytics ワークスペースの "*共同作成者*" ロールを付与します。 まだワークスペースがない場合は、続行する前に [Azure Monitor でのワークスペースの作成](./quick-create-workspace.md)に関するページを参照してください。 これにより、Configuration Manager は認証を行って Log Analytics ワークスペースに接続できます。  
 
 > [!NOTE]
 > Log Analytics ワークスペースへのアクセス許可を Configuration Manager に指定する必要があります。 そうしないと、Configuration Manager で構成ウィザードを使用するときにエラー メッセージが表示されます。
@@ -148,9 +148,8 @@ Log Analytics 接続を Configuration Manager に追加し、Configuration Manag
 
 ![[Configuration Manager コレクション メンバーシップをインポートする] のオプションが選択されていることを示す SCCM のコンピューター グループ詳細設定のスクリーンショット。](./media/collect-sccm/sccm-computer-groups02.png)
 
-いずれかをクリックすると、ログ クエリ エディターが開き、インポートされたすべてのグループか、各グループに属しているすべてのコンピューターが表示されます。 [ログ検索](../log-query/log-query-overview.md)を使用すると、コレクション メンバーシップ データをさらに詳しく分析できます。
+いずれかをクリックすると、ログ クエリ エディターが開き、インポートされたすべてのグループか、各グループに属しているすべてのコンピューターが表示されます。 [ログ検索](./log-query-overview.md)を使用すると、コレクション メンバーシップ データをさらに詳しく分析できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[ログの検索](../log-query/log-query-overview.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。
-
+[ログの検索](./log-query-overview.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。

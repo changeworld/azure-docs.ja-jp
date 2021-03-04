@@ -1,24 +1,23 @@
 ---
 title: Azure の Network Performance Monitor ソリューション | Microsoft Docs
 description: Azure の Network Performance Monitor は、ネットワークのパフォーマンスを監視して、ネットワーク パフォーマンスのボトルネックをほぼリアルタイムで検出して特定するのに役立ちます。
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573432"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711129"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
 ![ネットワーク パフォーマンス モニターのシンボル](./media/network-performance-monitor/npm-symbol.png)
 
 > [!IMPORTANT]
-> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)します。
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)します。
 
 Network Performance Monitor は、クラウド ベースのハイブリッド ネットワーク監視ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、サービスやアプリケーションのエンドポイントへのネットワーク接続の監視、および Azure ExpressRoute のパフォーマンスの監視にも利用できます。 
 
@@ -301,4 +300,4 @@ Azure portal を介してアラートを作成する NPM ユーザーの場合:
 * **コーホートへの参加:** Microsoft が実施しているコーホートにぜひご参加ください。 その一環として、新機能にいち早く触れることができます。ネットワーク パフォーマンス モニターの機能向上にぜひご協力ください。 参加にご興味がある方は、こちらの[簡単なアンケート](https://aka.ms/npmcohort)にご回答ください。 
 
 ## <a name="next-steps"></a>次のステップ 
-[パフォーマンスの監視](network-performance-monitor-performance-monitor.md)、[サービス接続の監視](network-performance-monitor-performance-monitor.md)、および [ExpressRoute の監視](network-performance-monitor-expressroute.md)の詳細情報を確認します。 
+[パフォーマンスの監視](network-performance-monitor-performance-monitor.md)、[サービス接続の監視](network-performance-monitor-performance-monitor.md)、および [ExpressRoute の監視](network-performance-monitor-expressroute.md)の詳細情報を確認します。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: cbfc9c8a32eb5345cfc69f51f40e0634e05bd978
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4789594cef0f7e900582dd9aad231b81547d3b3e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600629"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728418"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor クエリでの app() 式
 
@@ -73,6 +73,5 @@ union
 ## <a name="next-steps"></a>次のステップ
 
 - [ワークスペースの式](../logs/workspace-expression.md)に関するページを見て、Log Analytics ワークスペースについて参照します。
-- [Azure Monitor データ](../log-query/log-query-overview.md)の格納方法を確認します。
+- [Azure Monitor データ](./log-query-overview.md)の格納方法を確認します。
 - [Kusto クエリ言語](/azure/kusto/query/)の完全なドキュメントにアクセスします。
-

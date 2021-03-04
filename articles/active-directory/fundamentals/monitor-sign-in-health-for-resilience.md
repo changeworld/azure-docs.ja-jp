@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40bfa27dba905cb2e9a363c7739f0a43e7c2afdf
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100998"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650993"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>回復性のためにアプリケーションのサインインの正常性を監視する
 
@@ -51,7 +51,7 @@ ms.locfileid: "100100998"
 
 * Azure Monitor ログにログを送信するための、Azure サブスクリプション内の Azure Log Analytics ワークスペース。 
 
-   * [Log Analytics ワークスペースの作成](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)方法をご確認ください
+   * [Log Analytics ワークスペースの作成](../../azure-monitor/logs/quick-create-workspace.md)方法をご確認ください
 
 * Azure Monitor ログと統合された Azure AD ログ
 
@@ -94,7 +94,7 @@ Azure Monitor でアラート ルールを作成し、保存済みのクエリ�
 
  基になるクエリを構成し、アラートを設定するには、次の手順を行います。 このサンプル クエリを実際の構成の基礎として使用します。 このセクションの最後にクエリ構造の説明があります。
 
-Azure Monitor を使用してログ アラートを作成、表示、管理する方法の詳細については、[ログ アラートの管理](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)に関するページを参照してください。
+Azure Monitor を使用してログ アラートを作成、表示、管理する方法の詳細については、[ログ アラートの管理](../../azure-monitor/alerts/alerts-log.md)に関するページを参照してください。
 
  
 1. ブックで、 **[編集]** を選択し、グラフの右側のすぐ上にある **[クエリ]** アイコンを選択します。   
@@ -280,10 +280,9 @@ thisWeek
 
 ## <a name="next-steps"></a>次のステップ
 
-[ブックの詳細情報](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)
+[ブックの詳細情報](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
  
 
  
 
- 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: db83e24931ec91449ac8c08bf4ce476e0f527b26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f924bcdce0937c74c3deeab96f3d4b2a85e3944d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601494"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704448"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Monitor で Linux アプリケーションのパフォーマンス カウンターを収集する 
 
@@ -167,4 +167,4 @@ Azure Monitor にデータを送信するように Linux 用 Log Analytics エ�
 
 ## <a name="next-steps"></a>次のステップ
 * Linux エージェントから[パフォーマンス カウンターを収集します](data-sources-performance-counters.md)。
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

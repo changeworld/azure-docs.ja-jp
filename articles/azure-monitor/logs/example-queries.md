@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: e1b6ba22c41e2061acfdf33351619512f9d7f424
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e421676ab8c44abc3432ab7ac45aecf98c98c304
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708035"
 ---
 # <a name="example-queries-in-azure-monitor-log-analytics"></a>Azure Monitor の Log Analytics のサンプル クエリ
 Log Analytics には、ユーザーが自分で実行したり、自分のクエリの出発点として使用したりできるサンプル クエリのセットが用意されています。 この記事では、サンプル クエリとそれらの使用方法について説明します。
@@ -109,5 +109,4 @@ Log Analytics の上部バーにある *[サンプル クエリ]* ボタンか�
 
 ## <a name="next-steps"></a>次のステップ
 
-[KQL クエリの概要](../log-query/get-started-queries.md)
-
+[KQL クエリの概要](./get-started-queries.md)

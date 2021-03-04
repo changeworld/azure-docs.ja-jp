@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 73496e350a5e40a3945343271b76c6d883991b62
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ea33c7dca55e22687bd1db873c281caa1a3c4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601538"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719935"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Monitor で Log Analytics エージェントを使用してカスタム ログを収集する
 
 Azure Monitor の Log Analytics エージェントのカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。 収集されたデータは、クエリで解析して個別のフィールドに格納するか、または収集時に個別のフィールドに抽出することができます。
 
 > [!IMPORTANT]
-> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](../platform/log-analytics-agent.md)でカスタム ログを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントと、それらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](./log-analytics-agent.md)でカスタム ログを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントと、それらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
 
 ![カスタム ログの収集](media/data-sources-custom-logs/overview.png)
 
@@ -105,7 +105,7 @@ Azure Monitor がカスタム ログから収集を始めると、そのレコ�
 > RawData プロパティがクエリに表示されない場合、ブラウザーを閉じて再び開いてみてください。
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>手順 6. カスタム ログ エントリを解析する
-ログ エントリ全体は、 **RawData** と呼ばれる 1 つのプロパティに格納されます。  それぞれのエントリに含まれる異なる情報を、各レコードの個別のプロパティに分けたいと考えるケースが大半でしょう。 **RawData** を解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
+ログ エントリ全体は、 **RawData** と呼ばれる 1 つのプロパティに格納されます。  それぞれのエントリに含まれる異なる情報を、各レコードの個別のプロパティに分けたいと考えるケースが大半でしょう。 **RawData** を解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../logs/parse-text.md)に関するページを参照してください。
 
 ## <a name="removing-a-custom-log"></a>カスタム ログの削除
 Azure Portal で次のプロセスを使用して、これまでに定義したカスタム ログを削除します。
@@ -116,7 +116,7 @@ Azure Portal で次のプロセスを使用して、これまでに定義した�
 ## <a name="data-collection"></a>データ コレクション
 Azure Monitor は約 5 分おきに各カスタム ログから新しいエントリを収集します。  エージェントは、収集元の場所を各ログ ファイルに記録します。  エージェントが一定時間オフラインになった場合、Azure Monitor は中止した箇所からエントリを回収し、オンラインの間に作成されたエントリも回収されます。
 
-ログ エントリのコンテンツ全体は **RawData** という名前の 1 つのプロパティに書き込まれます。  インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
+ログ エントリのコンテンツ全体は **RawData** という名前の 1 つのプロパティに書き込まれます。  インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../logs/parse-text.md)に関するページを参照してください。
 
 ## <a name="custom-log-record-properties"></a>カスタム ログ レコードのプロパティ
 カスタム ログ レコードには、種類、ユーザーが指定するログ名、次の表にあるプロパティが与えられます。
@@ -125,7 +125,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 |:--- |:--- |
 | TimeGenerated |Azure Monitor がレコードを収集した日付と時刻。  ログが時間基準の区切り記号を使用する場合、これはエントリから収集された時間になります。 |
 | SourceSystem |レコードが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または System Center Operations Manager <br> Linux – すべての Linux エージェント |
-| RawData |収集されたエントリの完全テキスト。 [このデータを解析して個別のプロパティに格納する](../log-query/parse-text.md)のが最も一般的です。 |
+| RawData |収集されたエントリの完全テキスト。 [このデータを解析して個別のプロパティに格納する](../logs/parse-text.md)のが最も一般的です。 |
 | ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です |
 
 
@@ -171,8 +171,8 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 カスタム ログではデータを収集できない場合、次の代替手段を検討してください。
 
 - カスタム スクリプトまたはその他の手法を使用し、Azure Monitor によって収集される [Windows イベント](data-sources-windows-events.md)または [Syslog](data-sources-syslog.md) にデータを書き込む。 
-- [HTTP Data Collector API](../platform/data-collector-api.md) を使用して Azure Monitor に直接データを送信する。 
+- [HTTP Data Collector API](../logs/data-collector-api.md) を使用して Azure Monitor に直接データを送信する。 
 
 ## <a name="next-steps"></a>次のステップ
-* インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../logs/parse-text.md)に関するページを参照してください。
+* [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

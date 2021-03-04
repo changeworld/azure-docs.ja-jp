@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 2b52a9227e8bd487a8929df11047eef4672f7f4a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2e9f3c877a5c4650d3e31fa414cac76837f4c9e8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416419"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655753"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-mongodb-native-tools"></a>チュートリアル:MongoDB ネイティブ ツールを使用して、MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
 
@@ -31,7 +31,7 @@ MongoDB ネイティブ ツールを使用して、MongoDB のオンプレミス
 
 MongoDB ネイティブ ツールでは、ホスト ハードウェアで可能な速度でのみ、データを移動できます。ネイティブ ツールは、総移行時間が問題にならない小規模なデータセットに使用する場合の最も簡単なソリューションです。 スケーラブルな移行パイプラインが必要な場合は、[MongoDB Spark コネクタ](https://docs.mongodb.com/spark-connector/current/)、[Azure Data Migration Service (DMS)](../dms/tutorial-mongodb-cosmos-db.md)、または [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db-mongodb-api.md) の方が適している可能性があります。
 
-MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](../virtual-machines/windows/install-mongodb.md)」をご覧ください。
+MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](/previous-versions/azure/virtual-machines/windows/install-mongodb)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

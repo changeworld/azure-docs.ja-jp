@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 28661d15cd051d2e77174fc438632d02753a4a94
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 670ceb9f342bc629ebad4630f2ecdff311e54d1b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457505"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>チュートリアル:Azure Active Directory と AuditBoard の統合
 
@@ -41,7 +41,7 @@ AuditBoard と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* AuditBoard では、 **SP と IDP** によって開始される SSO がサポートされます
+* AuditBoard では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-auditboard-from-the-gallery"></a>ギャラリーから AuditBoard を追加する
 
@@ -61,13 +61,13 @@ Azure AD への AuditBoard の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **AuditBoard** 」と入力し、結果ウィンドウで **AuditBoard** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**AuditBoard**」と入力し、結果ウィンドウで **AuditBoard** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の AuditBoard](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、AuditBoard で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、AuditBoard で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと AuditBoard 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 AuditBoard で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -138,9 +138,9 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 

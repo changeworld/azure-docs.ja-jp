@@ -4,18 +4,18 @@ description: Azure Data Factory を使用して Office 365 からデータをコ
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 8b98344dcb2321d5d91c9974dc833a735164d428
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 54aa511414695d28e390529af61d484e465f1c19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370658"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710267"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Data Factory を使用して _Office 365 から Azure BLOB ストレージにデータを読み込む_ 方法を示します。 同様の手順に従って Azure Data Lake Gen1 または Gen2 にデータをコピーすることもできます。 Office 365 からデータをコピーすること全般については、[Office 365 コネクタに関する記事](connector-office-365.md)を参照してください。
 

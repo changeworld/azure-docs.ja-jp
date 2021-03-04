@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2f68452bed69e4e174f126d259e8df6d2283e6cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585222"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724253"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -789,7 +789,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 Azure Storage の分析については、次のリソースを参照してください。
 
-* [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
+* [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
 * [Storage Analytics](storage-analytics.md)
 * [Storage Analytics のメトリック](storage-analytics-metrics.md)
 * [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema)

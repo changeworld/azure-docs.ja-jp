@@ -4,18 +4,18 @@ description: アクティビティ ログで特定のイベントが発生した
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: cfe44fb5220b217b73c17280d5c8aaf87c57ebaf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a8ab9520527a0d5ebc1de698f84e9f64e28b869a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718116"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート
 
 ## <a name="overview"></a>概要
 
-アクティビティ ログ アラートは、アラートに指定した条件と一致する新しい[アクティビティのログ イベント](../essentials/activity-log-schema.md)が発生したときにアクティブになるアラートです。 [Azure アクティビティ ログ](../platform/platform-logs-overview.md)に記録されたイベントの順序と量に基づいて、アラートルールが起動します。 アクティビティ ログ アラートは Azure リソースであるため、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 アクティビティ ログ アラート ルールの作成と使用の詳細については、[アクティビティ ログ アラートの作成と管理](alerts-activity-log.md)に関するページをご覧ください。
+アクティビティ ログ アラートは、アラートに指定した条件と一致する新しい[アクティビティのログ イベント](../essentials/activity-log-schema.md)が発生したときにアクティブになるアラートです。 [Azure アクティビティ ログ](../essentials/platform-logs-overview.md)に記録されたイベントの順序と量に基づいて、アラートルールが起動します。 アクティビティ ログ アラートは Azure リソースであるため、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 アクティビティ ログ アラート ルールの作成と使用の詳細については、[アクティビティ ログ アラートの作成と管理](alerts-activity-log.md)に関するページをご覧ください。
 
 > [!NOTE]
 > * アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは **できません**。
@@ -54,12 +54,12 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 * アクティビティ ログ アラートで既存のアクション グループを使用します。
 * 新しいアクション グループを作成できます。
 
-アクション グループの詳細については、「[Azure Portal でのアクション グループの作成および管理](../platform/action-groups.md)」を参照してください。
+アクション グループの詳細については、「[Azure Portal でのアクション グループの作成および管理](./action-groups.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アラートの概要](../platform/alerts-overview.md)について把握します。
+- [アラートの概要](./alerts-overview.md)について把握します。
 - [アクティビティ ログ アラートの作成と変更](alerts-activity-log.md)について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../alerts/activity-log-alerts-webhook.md)を確認します。
 - [サービス正常性の通知](../../service-health/service-notifications.md)について学習します。

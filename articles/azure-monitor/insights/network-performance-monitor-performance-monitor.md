@@ -1,22 +1,21 @@
 ---
 title: Network Performance Monitor のパフォーマンス モニター
 description: Network Performance Monitor のパフォーマンス モニター機能を使うと、ネットワーク内のさまざまなポイントでネットワーク接続を監視できます。 クラウド展開やオンプレミスの場所、複数のデータ センターやブランチ オフィス、ミッション クリティカルな多層アプリケーション/マイクロ サービスを監視できます。
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 5335882c11ee6a1a7352ef3dc9822cfa88eda196
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728622"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor ソリューション:パフォーマンスの監視
 
 > [!IMPORTANT]
-> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)します。
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)します。
 
 [Network Performance Monitor](network-performance-monitor.md) のパフォーマンス モニター機能を使うと、ネットワーク内のさまざまなポイントでネットワーク接続を監視できます。 クラウド展開やオンプレミスの場所、複数のデータ センターやブランチ オフィス、ミッション クリティカルな多層アプリケーション/マイクロ サービスを監視できます。 パフォーマンスの監視では、ユーザーから不満があがる前に、ネットワークの問題を検出できます。 次のような利点があります。 
 
@@ -132,4 +131,3 @@ Network Performance Monitor では、代理トランザクションを実行す�
 
 ## <a name="next-steps"></a>次のステップ
 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../logs/log-query-overview.md)します。
-

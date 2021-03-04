@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 139241d679007bf72680f91a1518a1ef90cc7efc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600608"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700628"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Log Analytics ダッシュボードの視覚化のアップグレード
 
@@ -82,4 +82,4 @@ Log Analytics のピン留めされたパーツをアップグレードできる
 
 ## <a name="next-steps"></a>次のステップ
 
-[Log Analytics でダッシュボードを作成して共有する](../learn/tutorial-logs-dashboards.md)
+[Log Analytics でダッシュボードを作成して共有する](../visualize/tutorial-logs-dashboards.md)

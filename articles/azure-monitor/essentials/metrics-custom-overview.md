@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 9fba5b7636bcef68b55528350ea63ce9d386bb16
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1e61d0b8eb8312c78acabbd087208bb64a2d0d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600813"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734453"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
-Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらのメトリックは[標準またはプラットフォーム](../platform/metrics-supported.md)と呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 
+Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらのメトリックは[標準またはプラットフォーム](./metrics-supported.md)と呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 
 
 より詳細な洞察を得るために、いくつかのカスタム パフォーマンス指標またはビジネス固有のメトリックを収集することができます。 これらの **カスタム** メトリックは、アプリケーション テレメトリ、Azure リソース上で実行されるエージェント、またはアウトサイドイン型の監視システムによって収集し、Azure Monitor に直接送信することができます。 Azure のリソースおよびアプリケーションのカスタム メトリックが Azure Monitor に発行されたら、Azure によって出力された標準メトリックと共に、それらのメトリックを参照、クエリしたり、メトリックに基づいたアラートを設定したりできます。
 
@@ -223,5 +223,3 @@ Azure Monitor では、カスタム メトリックの使用に次の制限が�
  - [Telegraf エージェントを使用した Linux 仮想マシン](../essentials/collect-custom-metrics-linux-telegraf.md)
  - [REST API](./metrics-store-custom-rest-api.md)
  - [従来の Cloud Services](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md)
- 
-

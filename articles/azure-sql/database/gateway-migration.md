@@ -10,19 +10,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690534"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure インフラストラクチャの機能強化に伴い、Microsoft は可能な限り最高のカスタマー エクスペリエンスを提供するためにハードウェアを定期的に更新しています。 今後数か月間で、より新しいハードウェア世代に基づくゲートウェイを追加し、それらにトラフィックを移行して、最終的に一部のリージョンでは以前のハードウェアに基づくゲートウェイの使用を停止する予定です。  
 
-各リージョンで使用できるゲートウェイが変更される場合は、事前にサービス正常性通知でお客様にお知らせします。 お客様は、[Azure portal を使用してアクティビティ ログ アラートを設定](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal)できます。
+各リージョンで使用できるゲートウェイが変更される場合は、事前にサービス正常性通知でお客様にお知らせします。 お客様は、[Azure portal を使用してアクティビティ ログ アラートを設定](../../service-health/alerts-activity-log-service-notifications-portal.md)できます。
 
 最新の情報は、「[Azure SQL Database ゲートウェイ IP アドレス](connectivity-architecture.md#gateway-ip-addresses)」の表に保持される予定です。
 

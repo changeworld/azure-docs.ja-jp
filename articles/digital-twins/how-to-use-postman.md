@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715702"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Postman を使用して Azure Digital Twins API に要求を送信する方法
 
@@ -140,7 +140,7 @@ Azure Digital Twins API のいずれかに対する Postman 要求を行うに�
 1. *[Header]\(ヘッダー\)* タブに表示されている要求のヘッダーが、リファレンス ドキュメントに記載されているものと一致していることを確認します。 この要求には複数のヘッダーが自動的に入力されています。 クエリ API の場合、ヘッダー オプションはどれも必要ないため、この手順は完了です。
 1. *[Body]\(本文\)* タブに表示されている要求の本文が、リファレンス ドキュメントに記載されているニーズに一致していることを確認します。 クエリ API には、クエリ テキストを指定する JSON 本文が必要です。 この要求の本文の例を次に示します。インスタンス内のすべてのデジタル ツインを照会しています。
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="新しい要求の詳細に [Body]\(本文\) タブが表示されています。それには、&quot;SELECT * FROM DIGITALTWINS&quot; というクエリを含む生の JSON 本文が含まれています。"lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="新しい要求の詳細に [Body]\(本文\) タブが表示されています。それには、&quot;SELECT * FROM DIGITALTWINS&quot; というクエリを含む生の JSON 本文が含まれています。" lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    Azure Digital Twins クエリの作成の詳細については、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
 

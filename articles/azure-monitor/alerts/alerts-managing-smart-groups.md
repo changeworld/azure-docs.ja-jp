@@ -4,16 +4,16 @@ description: アラート インスタンスに対して作成されたスマー
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: c36162f35c152fd5b9898d92b57e2e12044635a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 564440336bf6a90cbd40aba6c8284cbc6c5e3ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600915"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701078"
 ---
 # <a name="manage-smart-groups"></a>スマート グループを管理する
 
-[スマート グループ](../platform/alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)では、機械学習アルゴリズムを使用して、同時発生または類似性に基づいてアラートがグループ化されるので、ユーザーは、各アラートを個別に管理するのではなく、スマート グループを管理することができます。 この記事では、Azure Monitor でスマート グループにアクセスしてそれを使用する手順について説明します。
+[スマート グループ](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)では、機械学習アルゴリズムを使用して、同時発生または類似性に基づいてアラートがグループ化されるので、ユーザーは、各アラートを個別に管理するのではなく、スマート グループを管理することができます。 この記事では、Azure Monitor でスマート グループにアクセスしてそれを使用する手順について説明します。
 
 1. アラート インスタンスに対して作成されたスマート グループを表示するには、次のどちらかの方法を使用できます。
 

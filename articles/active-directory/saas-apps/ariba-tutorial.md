@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 2b03c093a871c8a662d45b257e6feb95c4945a8e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3ecbe96e0385bff6199094af7138017df500175b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374560"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647253"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル: Azure Active Directory と Ariba の統合
 
@@ -77,7 +77,7 @@ Ariba に対する Azure AD SSO を構成してテストするには、次の手
 
     ![[Asana のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     
     ```http
     https://<subdomain>.sourcing.ariba.com
@@ -143,8 +143,8 @@ Ariba に対する Azure AD SSO を構成してテストするには、次の手
 
 * Ariba のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Ariba] タイルをクリックすると、Ariba のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Ariba] タイルをクリックすると、Ariba のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Ariba を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Ariba を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

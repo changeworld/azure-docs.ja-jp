@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 17d89414a762dd6bf68176b5044787179eb80250
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 501e395cf91630789824cc111614e7150dddaa7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600597"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700611"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -57,7 +57,7 @@ Azure データが Log Analytics のインジェスト ポイントで使用可�
 各ソリューションのコレクションの頻度を判断するには、そのドキュメントを参照してください。
 
 ### <a name="pipeline-process-time"></a>パイプライン処理時間
-([_TimeReceived](../platform/log-standard-columns.md#_timereceived) プロパティに指定されているように) ログ レコードは Azure Monitor パイプラインに取り込まれると、テナントが分離され、データが失われないように、一時的なストレージに書き込まれます。 通常、このプロセスにより、さらに 5 - 15 秒が加算されます。 一部の管理ソリューションでは、データのストリーミング時に、データを集計し、分析情報を派生させるため、より重いアルゴリズムが実装されます。 たとえば、ネットワーク パフォーマンス監視は、3 分間隔で受信データを集計するため、事実上 3 分間の待機時間が加算されます。 待機時間を増やす別のプロセスは、カスタム ログを処理するプロセスです。 場合によっては、このプロセスによって、エージェントがファイルから収集するログの待機時間が数分増えることがあります。
+([_TimeReceived](./log-standard-columns.md#_timereceived) プロパティに指定されているように) ログ レコードは Azure Monitor パイプラインに取り込まれると、テナントが分離され、データが失われないように、一時的なストレージに書き込まれます。 通常、このプロセスにより、さらに 5 - 15 秒が加算されます。 一部の管理ソリューションでは、データのストリーミング時に、データを集計し、分析情報を派生させるため、より重いアルゴリズムが実装されます。 たとえば、ネットワーク パフォーマンス監視は、3 分間隔で受信データを集計するため、事実上 3 分間の待機時間が加算されます。 待機時間を増やす別のプロセスは、カスタム ログを処理するプロセスです。 場合によっては、このプロセスによって、エージェントがファイルから収集するログの待機時間が数分増えることがあります。
 
 ### <a name="new-custom-data-types-provisioning"></a>新しいカスタム データ型のプロビジョニング
 新しいカスタム データの型を[カスタム ログ](../agents/data-sources-custom-logs.md)または[データ コレクター API](../logs/data-collector-api.md) から作成すると、システムにより専用のストレージ コンテナーが作成されます。 これは、最初にこのデータ型が出現したときにのみ発生する 1 回限りのオーバーヘッドです。
@@ -77,8 +77,8 @@ Azure Monitor の最優先事項は、顧客データが失われることがな
 
 | 手順 | プロパティまたは関数 | 説明 |
 |:---|:---|:---|
-| データ ソースで作成されるレコード | [TimeGenerated](../platform/log-standard-columns.md#timegenerated-and-timestamp) <br>データ ソースがこの値を設定しない場合は、_TimeReceived と同じ時間に設定されます。 |
-| Azure Monitor のインジェスト エンドポイントによって受信されるレコード | [_TimeReceived](../platform/log-standard-columns.md#_timereceived) | |
+| データ ソースで作成されるレコード | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>データ ソースがこの値を設定しない場合は、_TimeReceived と同じ時間に設定されます。 |
+| Azure Monitor のインジェスト エンドポイントによって受信されるレコード | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
 | ワークスペースに保存され、クエリに使用できるレコード | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>インジェストの待ち時間

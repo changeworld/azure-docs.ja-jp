@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 503d5c5c8d605e56ca510f12cd9c6f5a1f21c0bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88fdfa1f449a0b65861ee09f2e78055a606c99d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416624"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649208"
 ---
 # <a name="governing-on-premises-service-accounts"></a>オンプレミス サービス アカウントの管理
 
@@ -60,11 +60,11 @@ Windows Active Directory には、4 種類のオンプレミス サービス ア
 
 サービス アカウントとして使用されるユーザー アカウントでは、次の設定を使用します。
 
-* [**アカウントの有効期限**](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): 継続する必要があると判断されない限り、レビュー期間後の設定された時間にサービス アカウントが自動的に期限切れになるように設定します。
+* [**アカウントの有効期限**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): 継続する必要があると判断されない限り、レビュー期間後の設定された時間にサービス アカウントが自動的に期限切れになるように設定します。
 
 *  **ログオンできるワークステーション**: サービス アカウントがサインインできる場所のアクセス許可を制限します。 マシン上でローカルに実行され、そのマシン上のリソースにのみアクセスする場合は、それ以外の場所でのログオンを制限します。
 
-* [**パスワードを変更できない**](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps): パラメーターを false に設定することで、サービス アカウントが自身のパスワードを変更できないようにします。
+* [**パスワードを変更できない**](/powershell/module/addsadministration/set-aduser?view=win10-ps): パラメーターを false に設定することで、サービス アカウントが自身のパスワードを変更できないようにします。
 
  
 ## <a name="build-a-lifecycle-management-process"></a>ライフサイクル管理プロセスを作成する
@@ -149,17 +149,17 @@ Web サイトを実行するために使用され、1 つ以上の SQL データ
 
 サービス アカウントの作成は、関連情報を CMDB 内に文書化して、リスク評価を実行した後にのみ行ってください。 アカウントの制限は、リスク評価に合わせる必要があります。 評価に関連する場合は、次の制限事項を考慮してください。
 
-* [アカウントの有効期限](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [アカウントの有効期限](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
 
-   * サービス アカウントとして使用されるすべてのユーザー アカウントに対して、現実的で限定された使用終了日を定義します。 これを設定するには、"アカウントの有効期限" フラグを使用します。 詳細については、「[Set-ADAccountExpiration](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps)」を参照してください。 
+   * サービス アカウントとして使用されるすべてのユーザー アカウントに対して、現実的で限定された使用終了日を定義します。 これを設定するには、"アカウントの有効期限" フラグを使用します。 詳細については、「[Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps)」を参照してください。 
 
-* ログオン先 ([LogonWorkstation](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps))
+* ログオン先 ([LogonWorkstation](/powershell/module/addsadministration/set-aduser?view=win10-ps))
 
-* [パスワード ポリシー](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy)の要件
+* [パスワード ポリシー](../../active-directory-domain-services/password-policy.md)の要件
 
-* 特権ユーザーのみを対象とした管理が保証される [OU の場所](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous)での作成
+* 特権ユーザーのみを対象とした管理が保証される [OU の場所](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous)での作成
 
-* サービス アカウントと[サービス アカウントの使用](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html)に対する[変更を検出する](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes)監査を設定して収集します。
+* サービス アカウントと[サービス アカウントの使用](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html)に対する[変更を検出する](/windows/security/threat-protection/auditing/audit-directory-service-changes)監査を設定して収集します。
 
 運用環境に移行する準備ができたら、サービス アカウントにアクセス権を安全に付与します。 
 
@@ -193,7 +193,7 @@ Web サイトを実行するために使用され、1 つ以上の SQL データ
 
 3. 無効のままにするポリシーが満たされたら、サービス アカウントを削除します。 
 
-   * MSA の場合は、PowerShell を使用して[アンインストール](https://docs.microsoft.com/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps)することも、管理されたサービス アカウント コンテナーから手動で削除することもできます。
+   * MSA の場合は、PowerShell を使用して[アンインストール](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps)することも、管理されたサービス アカウント コンテナーから手動で削除することもできます。
 
    * コンピューターまたはユーザー アカウントの場合は、Active Directory で手動でアカウントを削除できます。
 

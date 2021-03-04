@@ -6,18 +6,18 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 03/02/2021
 ms.reviewer: sngun
 adobe-target: true
 adobe-target-activity: DocsExp-A/B-384740-MongoDB-2.8.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./connect-mongodb-account-experimental
-ms.openlocfilehash: 702c2d896da2316a2e75c4dbbe4f16249537832b
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: b3e10931307914f1471b8a6fbffd38953ee4717b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093422"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659479"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB への MongoDB アプリケーションの接続
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -74,6 +74,12 @@ Azure Cosmos DB は、標準の MongoDB 接続文字列の URI 形式をサポ�
 たとえば、 **[接続文字列]** ブレードに表示されているアカウントでは次のようになります。 有効な接続文字列は次のようになります。
 
 `mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true`
+
+## <a name="driver-requirements"></a>ドライバーの要件
+
+ワイヤ プロトコル バージョン 3.4 以上をサポートするすべてのドライバーで、MongoDB 用 Azure Cosmos DB API がサポートされます。
+
+具体的には、クライアント ドライバーは、SNI (Service Name Identification) TLS 拡張と appName 接続文字列のどちらかまたは両方のオプションをサポートしている必要があります。 `appName` パラメーターが指定されている場合、Azure portal に見られる接続文字列値と同じように追加されている必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

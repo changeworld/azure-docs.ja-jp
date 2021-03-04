@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587987"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737564"
 ---
 # <a name="monitoring-time-series-insights"></a>Time Series Insights の監視
 
@@ -63,7 +63,7 @@ Azure Time Series Insights については、次のカテゴリからログを�
 
 ## <a name="analyzing-metrics"></a>メトリックの分析
 
-Azure Monitor のメニューから [メトリック] を開くことにより、Azure Time Series Insights のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
+Azure Monitor のメニューから [メトリック] を開くことにより、Azure Time Series Insights のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。
 
 収集されるプラットフォーム メトリックの一覧については、「[Azure Time Series Insights 監視データ リファレンス](how-to-monitor-tsi-reference.md#metrics)」を参照してください
 
@@ -115,7 +115,7 @@ Azure Time Series Insights のデータは、次のテーブルに格納され�
 
 ## <a name="alerts"></a>警告
 
-Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../azure-monitor/platform/alerts-metric-overview.md)、[ログ](../azure-monitor/platform/alerts-unified-log.md)、[アクティビティ ログ](../azure-monitor/platform/activity-log-alerts.md)に対して設定できます。 アラートの種類に応じて、さまざまな利点と欠点があります。
+Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../azure-monitor/alerts/alerts-metric-overview.md)、[ログ](../azure-monitor/alerts/alerts-unified-log.md)、[アクティビティ ログ](../azure-monitor/alerts/activity-log-alerts.md)に対して設定できます。 アラートの種類に応じて、さまざまな利点と欠点があります。
 
 プラットフォーム メトリックに基づいてアラート ルールを作成する場合は、カウント単位で収集される Time Series Insights のプラットフォーム メトリックについて、一部の集計が有効でない場合や使用できない場合があることにご注意ください。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 703a5f145aee93fe7ec4ad2f8ec102f98bdd4174
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2b7648155c28ec9b6cf2048246c17805b5f22404
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601491"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700730"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Azure Diagnostics 拡張機能から Azure Monitor ログにデータを収集する
 Azure Diagnostics 拡張機能は、仮想マシンを含む Azure コンピューティング リソースのゲスト オペレーティング システムから監視データを収集する、[Azure Monitor のエージェント](../agents/agents-overview.md)です。 この記事では、診断拡張機能によって収集されたデータを Azure Storage から Azure Monitor ログに収集する方法について説明します。
@@ -63,7 +63,6 @@ Azure Storage アカウントからの診断拡張機能データの収集を有
 
 ## <a name="next-steps"></a>次のステップ
 
-* サポートされている Azure サービスの[ログとメトリックを収集](../platform/resource-logs.md#send-to-log-analytics-workspace)します。
+* サポートされている Azure サービスの[ログとメトリックを収集](./resource-logs.md#send-to-log-analytics-workspace)します。
 * [ソリューションを有効](../insights/solutions.md) にして、データに対する洞察を得ます。
-* [検索クエリを使用](../log-query/log-query-overview.md) して、データを分析します。
-
+* [検索クエリを使用](../logs/log-query-overview.md) して、データを分析します。

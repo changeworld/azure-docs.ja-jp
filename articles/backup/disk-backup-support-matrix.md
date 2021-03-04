@@ -4,12 +4,12 @@ description: Azure ディスク バックアップのサポート設定と制限
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d6de863a45bcadd73e847cbf407c13363952151
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806106"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707219"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure ディスク バックアップのサポート マトリックス (プレビュー)
 
@@ -58,7 +58,7 @@ ms.locfileid: "99806106"
 
 - 現在 (プレビュー期間中)、ディスクのバックアップと復元を構成するための PowerShell と Azure CLI の使用はサポートされていません。
 
-- バックアップを構成する場合は、バックアップ対象として選択されたディスクと、スナップショットが格納されるスナップショット リソース グループが同じサブスクリプションに含まれている必要があります。 特定のディスクの増分スナップショットを、そのディスクのサブスクリプションの外部で作成することはできません。 詳細については、マネージド ディスクの[増分スナップショット](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions)に関するページをご覧ください。 スナップショット リソース グループを選択する方法の詳細については、「[バックアップを構成する](backup-managed-disks.md#configure-backup)」を参照してください。
+- バックアップを構成する場合は、バックアップ対象として選択されたディスクと、スナップショットが格納されるスナップショット リソース グループが同じサブスクリプションに含まれている必要があります。 特定のディスクの増分スナップショットを、そのディスクのサブスクリプションの外部で作成することはできません。 詳細については、マネージド ディスクの[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md#restrictions)に関するページをご覧ください。 スナップショット リソース グループを選択する方法の詳細については、「[バックアップを構成する](backup-managed-disks.md#configure-backup)」を参照してください。
 
 - バックアップと復元の操作を正常に実行するには、バックアップ コンテナーのマネージド ID によるロールの割り当てが必要です。 ドキュメントに記載されているロールの定義のみを使用してください。 所有者や共同作成者などの他のロールの使用はサポートされていません。 ロールの割り当て後すぐにバックアップまたは復元の操作の構成を開始すると、アクセス許可の問題が発生する可能性があります。 これは、ロールの割り当てが有効になるまでに数分かかるためです。
 

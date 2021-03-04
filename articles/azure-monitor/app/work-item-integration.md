@@ -3,12 +3,12 @@ title: 作業項目の統合 (プレビュー) - Application Insights
 description: Application Insights データが埋め込まれた作業項目を GitHub または Azure DevOps で作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/9/2021
-ms.openlocfilehash: 0c1d6ffd6a5a39fa49eadc558aa80f365f856df2
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101018"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731920"
 ---
 # <a name="work-item-integration-preview"></a>作業項目の統合 (プレビュー)
 
@@ -53,7 +53,7 @@ ms.locfileid: "100101018"
 
 :::image type="content" source="./media/work-item-integration/edit-template.png" alt-text=" [編集] 鉛筆アイコンが選択されている [作業項目] タブのスクリーンショット。":::
 
-上部にある [編集] ![編集アイコン](./media/work-item-integration/edit-icon.png) を選択して、テンプレートの編集を開始します。 作業項目テンプレートは [Azure Monitor ブック](../platform/workbooks-overview.md)に基づいています。 作業項目情報は、キーワード クエリ言語を使用して生成されます。 クエリを変更して、チームに必要なコンテキストをさらに追加できます。 編集が完了したら、上部のツールバーにある [保存] アイコン ![保存アイコン](./media/work-item-integration/save-icon.png) 選択してブックを保存します。
+上部にある [編集] ![編集アイコン](./media/work-item-integration/edit-icon.png) を選択して、テンプレートの編集を開始します。 作業項目テンプレートは [Azure Monitor ブック](../visualize/workbooks-overview.md)に基づいています。 作業項目情報は、キーワード クエリ言語を使用して生成されます。 クエリを変更して、チームに必要なコンテキストをさらに追加できます。 編集が完了したら、上部のツールバーにある [保存] アイコン ![保存アイコン](./media/work-item-integration/save-icon.png) 選択してブックを保存します。
 
 :::image type="content" source="./media/work-item-integration/edit-workbook.png" alt-text=" 編集モードの作業項目テンプレート ブックのスクリーンショット。" lightbox="./media/work-item-integration/edit-workbook.png":::
 

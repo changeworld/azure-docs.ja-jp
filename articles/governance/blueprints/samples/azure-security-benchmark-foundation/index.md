@@ -3,16 +3,16 @@ title: Azure セキュリティ ベンチマーク基盤ブループリント �
 description: Azure セキュリティ ベンチマーク基盤ブループリント サンプルの概要とアーキテクチャ。
 ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095271"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741873"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure セキュリティ ベンチマーク基盤ブループリント サンプルの概要
 
-Azure セキュリティ ベンチマーク基盤ブループリント サンプルは、コンプライアンスに準拠している安全な Azure 環境を構築するのに役立つ一連のベースライン インフラストラクチャ パターンを提供します。 このブループリントは、認定またはコンプライアンスの要件があるシナリオにソリューションを提供するクラウドベースのアーキテクチャをデプロイするのに役立ちます。 この基本ブループリント サンプルは、[Azure セキュリティ ベンチマーク ブループリント サンプル](../azure-security-benchmark/index.md)を拡張したものです。 これにより、[Azure セキュリティ ベンチマーク](../../../../security/benchmarks/index.yml)で定義されたポリシーとその他のガードレールに沿って、ネットワーク境界、監視、その他のリソースをデプロイして構成できます。
+Azure セキュリティ ベンチマーク基盤ブループリント サンプルは、コンプライアンスに準拠している安全な Azure 環境を構築するのに役立つ一連のベースライン インフラストラクチャ パターンを提供します。 このブループリントは、認定またはコンプライアンスの要件があるシナリオにソリューションを提供するクラウドベースのアーキテクチャをデプロイするのに役立ちます。 この基本ブループリント サンプルは、[Azure セキュリティ ベンチマーク ブループリント サンプル](../azure-security-benchmark.md)を拡張したものです。 これにより、[Azure セキュリティ ベンチマーク](../../../../security/benchmarks/index.yml)で定義されたポリシーとその他のガードレールに沿って、ネットワーク境界、監視、その他のリソースをデプロイして構成できます。
 
 ## <a name="architecture"></a>Architecture
 
@@ -23,7 +23,7 @@ Azure セキュリティ ベンチマーク基盤ブループリント サンプ
 
 このブループリントでは、セキュリティで保護され、監視されたエンタープライズ対応の基盤を実現するために、複数の Azure サービスをデプロイします。 この環境は、以下で構成されます。
 
-- [Azure Monitor ログ](../../../../azure-monitor/platform/data-platform-logs.md)と Azure ストレージ アカウント。クエリ、分析、アーカイブ、アラートを簡単に実行できるように、リソース ログ、アクティビティ ログ、メトリック、ネットワーク トラフィック フローを一元的な場所に確実に格納します。
+- [Azure Monitor ログ](../../../../azure-monitor/logs/data-platform-logs.md)と Azure ストレージ アカウント。クエリ、分析、アーカイブ、アラートを簡単に実行できるように、リソース ログ、アクティビティ ログ、メトリック、ネットワーク トラフィック フローを一元的な場所に確実に格納します。
 - [Azure Security Center](../../../../security-center/security-center-introduction.md) (標準バージョン)。Azure リソースを脅威から保護します。
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) (ハブ内)。オンプレミス ネットワークに接続するためのサブネット、インターネット接続用のイングレス/エグレス スタック、追加の運用または管理サービスをデプロイするためのオプションのサブネットをサポートします。 スポーク内の仮想ネットワークには、アプリケーション ワークロードをホストするためのサブネットが含まれています。 該当するシナリオに対応するために、必要に応じてデプロイ後に追加のサブネットを作成することができます。
 - [Azure Firewall](../../../../firewall/overview.md)。すべてのアウトバウンド インターネット トラフィックをルーティングして、ジャンプ ボックス経由でインバウンド インターネット トラフィックを有効にします。 (既定のファイアウォール ルールでは、インバウンドとアウトバウンドのインターネット トラフィックがすべてブロックされるため、デプロイ後に適宜、ルールを構成する必要があります。)

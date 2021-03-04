@@ -9,12 +9,12 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 80aa160c53b278137467dba2afa41384c7c4f378
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747259"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722672"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Visual Studio を使用して Azure クラウド サービス (延長サポート) を作成およびデプロイする
 
@@ -63,7 +63,7 @@ Visual Studio の Azure プロジェクトは、ソリューション内のロ�
 - **サービス定義ファイル** - 必要なロール、エンドポイント、仮想マシンのサイズなど、アプリケーションのランタイム設定を定義します。
 - **サービス構成ファイル** - 実行されるロールのインスタンス数とロールに定義されている設定の値を構成します。
 
-これらのファイルの詳細については、[Visual Studio を使用した Azure クラウド サービスのロールの構成](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)に関する記事をご覧ください。
+これらのファイルの詳細については、[Visual Studio を使用した Azure クラウド サービスのロールの構成](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)に関する記事をご覧ください。
 
 ## <a name="publish-a-cloud-service"></a>クラウド サービスの発行
 
@@ -75,7 +75,7 @@ Visual Studio の Azure プロジェクトは、ソリューション内のロ�
 
 1. **アカウント** - アカウント ドロップダウン リストでアカウントを選択するか、**[アカウントの追加]** を選択します。
 
-1. **[サブスクリプションの選択]** - デプロイに使用するサブスクリプションを選択します。 Cloud Services (延長サポート) のデプロイに使用するサブスクリプションには、ロールベースのアクセス制御 (RBAC) を使用して所有者または共同作成者のロールが割り当てられている必要があります。 ご自分のサブスクリプションにこれらのロールのいずれも含まれていない場合は、「[ロールの割り当てを追加する手順](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-steps)」を参照して、先に進む前にこれを追加してしてください。
+1. **[サブスクリプションの選択]** - デプロイに使用するサブスクリプションを選択します。 Cloud Services (延長サポート) のデプロイに使用するサブスクリプションには、ロールベースのアクセス制御 (RBAC) を使用して所有者または共同作成者のロールが割り当てられている必要があります。 ご自分のサブスクリプションにこれらのロールのいずれも含まれていない場合は、「[ロールの割り当てを追加する手順](../role-based-access-control/role-assignments-steps.md)」を参照して、先に進む前にこれを追加してしてください。
 
 1. **[次へ]** を選択して、 **[設定]** ページに移動します。
 
@@ -105,7 +105,7 @@ Visual Studio の Azure プロジェクトは、ソリューション内のロ�
 
    ![診断設定](./media/diagnostics-settings.png)
 
-   診断を使用して、Azure クラウド サービス (または Azure 仮想マシン) のトラブルシューティングを行うことができます。 診断については、「[Azure クラウド サービスおよび仮想マシン用の診断の構成](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)」をご覧ください。 Application Insights については、「[Application Insights とは何か?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)」をご覧ください。
+   診断を使用して、Azure クラウド サービス (または Azure 仮想マシン) のトラブルシューティングを行うことができます。 診断については、「[Azure クラウド サービスおよび仮想マシン用の診断の構成](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)」をご覧ください。 Application Insights については、「[Application Insights とは何か?](../azure-monitor/app/app-insights-overview.md)」をご覧ください。
 
 1. **[次へ]** を選択して **[概要]** ページに移動します。
 
@@ -126,4 +126,4 @@ Visual Studio の Azure プロジェクトは、ソリューション内のロ�
 
 ## <a name="next-steps"></a>次のステップ
 
-**[発行]** 画面の **[構成]** ボタンを使用して、継続的インテグレーション (CI) を設定します。 詳細については、「[Azure Pipelines のドキュメント](https://docs.microsoft.com/azure/devops/pipelines)」を参照してください。
+**[発行]** 画面の **[構成]** ボタンを使用して、継続的インテグレーション (CI) を設定します。 詳細については、「[Azure Pipelines のドキュメント](/azure/devops/pipelines)」を参照してください。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f0d062766f0a5d58fbcaaa32b1df5a5e40c783b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600489"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719952"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Azure Monitor エージェントをインストールする (プレビュー)
 この記事では、Azure 仮想マシンと Azure Arc 対応サーバーの両方に [Azure Monitor エージェント](azure-monitor-agent-overview.md) をインストールするために現在使用できるさまざまなオプションについて説明し、エージェントが収集するデータを定義する[データ収集ルールとの関連付け](data-collection-rule-azure-monitor-agent.md)を作成するオプションについても説明します。
@@ -42,7 +42,7 @@ Resource Manager テンプレートを使用して、Azure 仮想マシンおよ
 エージェントをインストールし、関連付けを作成するためのサンプル テンプレートを、以下から取得します。 
 
 - [Azure Monitor エージェント (Azure および Azure Arc) をインストールするためのテンプレート](../agents/resource-manager-agent.md#azure-monitor-agent-preview) 
-- [データ収集ルールとの関連付けを作成するためのテンプレート](../samples/resource-manager-data-collection-rules.md)
+- [データ収集ルールとの関連付けを作成するためのテンプレート](./resource-manager-data-collection-rules.md)
 
 次のコマンドのような、[Resource Manager テンプレートのデプロイ方法のいずれか](../../azure-resource-manager/templates/deploy-powershell.md)を使用して、テンプレートをインストールします。
 

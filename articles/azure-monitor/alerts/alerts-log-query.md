@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: cfe6aa489bcc771213ec04ca9cddd1267ccf1338
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cda3af012a83342d5650c542fafdcd6bc36bd8e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601254"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717980"
 ---
 # <a name="optimizing-log-alert-queries"></a>ログ アラート クエリの最適化
-この記事では、最適なパフォーマンスを実現するために[ログ アラート](../platform/alerts-unified-log.md) クエリを記述して変換する方法について説明します。 最適化されたクエリを使用すると、頻繁に実行されるアラートの待機時間と負荷が軽減されます。
+この記事では、最適なパフォーマンスを実現するために[ログ アラート](./alerts-unified-log.md) クエリを記述して変換する方法について説明します。 最適化されたクエリを使用すると、頻繁に実行されるアラートの待機時間と負荷が軽減されます。
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>アラート ログ クエリの記述を開始する方法
 
-アラート クエリは、問題を示す[ログ分析のログ データを照会](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)することから開始します。 何が検出できるかを理解するには、[アラートのクエリ例に関するトピック](../log-query/example-queries.md)を使用できます。 また、[独自のクエリの記述を記述する](../log-query/log-analytics-tutorial.md)ことから開始することもできます。 
+アラート クエリは、問題を示す[ログ分析のログ データを照会](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)することから開始します。 何が検出できるかを理解するには、[アラートのクエリ例に関するトピック](../logs/example-queries.md)を使用できます。 また、[独自のクエリの記述を記述する](../logs/log-analytics-tutorial.md)ことから開始することもできます。 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>アラートでなく問題を示すクエリ
 
@@ -44,7 +44,7 @@ SecurityEvent
 クエリで `limit` と `take` を使用すると、結果が時間の経過とともに一貫しないため、待機時間とアラートの負荷が増加する可能性があります。 必要な場合にのみ使用することをお勧めします。
 
 ## <a name="log-query-constraints"></a>ログ クエリの制約
-[Azure Monitor のログ クエリ](../log-query/log-query-overview.md)は、テーブルか、[`search`](/azure/kusto/query/searchoperator) 演算子または [`union`](/azure/kusto/query/unionoperator) 演算子のいずれかで始まります。
+[Azure Monitor のログ クエリ](../logs/log-query-overview.md)は、テーブルか、[`search`](/azure/kusto/query/searchoperator) 演算子または [`union`](/azure/kusto/query/unionoperator) 演算子のいずれかで始まります。
 
 ログ アラート ルールのクエリは、常に明確な範囲を定義するテーブルで始める必要があります。これにより、クエリのパフォーマンスと結果の関連性の両方が向上します。 アラート ルール内のクエリは頻繁に実行されるので、`search` と `union` を使用すると、複数のテーブルにわたるスキャンが必要になるため、アラートの待機時間が増加するオーバーヘッドが過剰に生じる可能性があります。 また、これらの演算子は、アラート サービスがクエリを最適化する機能を低下させます。
 
@@ -57,7 +57,7 @@ SecurityEvent
 | where EventID == 4624
 ```
 
-リソース間のクエリは `union` 型を使用し、これによりクエリの範囲が特定のリソースに制限されるため、[リソース間のクエリ](../log-query/cross-workspace-query.md)を使用するログ アラート ルールはこの変更による影響は受けません。 次の例は、ログ アラート クエリで有効です。
+リソース間のクエリは `union` 型を使用し、これによりクエリの範囲が特定のリソースに制限されるため、[リソース間のクエリ](../logs/cross-workspace-query.md)を使用するログ アラート ルールはこの変更による影響は受けません。 次の例は、ログ アラート クエリで有効です。
 
 ```Kusto
 union
@@ -67,7 +67,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
-> [リソース間のクエリ](../log-query/cross-workspace-query.md)は、新しい [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) でサポートされています。 まだ[従来の Log Analytics Alert API](../platform/api-alerts.md) を使用してログ アラートを作成する場合は、切り替えについて[ここ](../alerts/alerts-log-api-switch.md)を参照してください。
+> [リソース間のクエリ](../logs/cross-workspace-query.md)は、新しい [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) でサポートされています。 まだ[従来の Log Analytics Alert API](./api-alerts.md) を使用してログ アラートを作成する場合は、切り替えについて[ここ](../alerts/alerts-log-api-switch.md)を参照してください。
 
 ## <a name="examples"></a>例
 次の例には、`search` と `union` を使用するログ クエリが含まれていて、アラート ルールで使用するためにこれらのクエリを変更する際に使用できる手順を示しています。
@@ -217,4 +217,4 @@ SecurityEvent
 
 ## <a name="next-steps"></a>次のステップ
 - Azure Monitor での[ログ アラート](alerts-log.md)について学習します。
-- [ログ クエリ](../log-query/log-query-overview.md)について学習します。
+- [ログ クエリ](../logs/log-query-overview.md)について学習します。

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 86caf39e0d31a41ca454c65311ff2fab52b56f5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691163"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium ファイル共有を使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、[Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md)を使用して Azure Virtual Machines (VM) 上の SQL Server でフェールオーバー クラスター インスタンス (FCI) を作成する方法について説明します。
+この記事では、[Premium ファイル共有](../../../storage/files/storage-how-to-create-file-share.md)を使用して Azure Virtual Machines (VM) 上の SQL Server でフェールオーバー クラスター インスタンス (FCI) を作成する方法について説明します。
 
 Premium ファイル共有は、記憶域スペース ダイレクト (SSD) によってバックアップされる、継続的に待機時間の短いファイル共有であり、Windows Server 2012 以降上の SQL Server 2012 以降のフェールオーバー クラスター インスタンスとの使用が完全にサポートされています。 Premium ファイル共有を使用すると、柔軟性が向上し、ダウンタイムなしでファイル共有のサイズを変更したり拡張したりすることができます。
 
@@ -37,7 +37,7 @@ Premium ファイル共有は、記憶域スペース ダイレクト (SSD) に�
 - Azure サブスクリプション。
 - Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つアカウント。
 - [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)内または異なる[可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)内の [2 つ以上の準備済みの Windows Azure 仮想マシン](failover-cluster-instance-prepare-vm.md)。
-- データ ファイル用のデータベースのストレージ クォータに基づいて、クラスター化されたドライブとして使用される [Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md)。
+- データ ファイル用のデータベースのストレージ クォータに基づいて、クラスター化されたドライブとして使用される [Premium ファイル共有](../../../storage/files/storage-how-to-create-file-share.md)。
 - 最新バージョンの [PowerShell](/powershell/azure/install-az-ps)。 
 
 ## <a name="mount-premium-file-share"></a>Premium ファイル共有をマウントする

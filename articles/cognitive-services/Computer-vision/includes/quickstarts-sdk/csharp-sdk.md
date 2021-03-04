@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bb0c8e58c7b5eb1a0ba8a8ca4006ef04b2e2423
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: a00ea22ee0d9125588f2bb97505d7a4c0ba9a1ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99531979"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749947"
 ---
 <a name="HOLTop"></a>
 
@@ -106,7 +106,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
 > [!div class="nextstepaction"]
-> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=set-up-client)
+> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=set-up-client)
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -136,7 +136,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
 > [!div class="nextstepaction"]
-> [クライアントを認証しました](?success=authenticate-client#analyze-an-image) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
+> [クライアントを認証しました](?success=authenticate-client#analyze-an-image) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=authenticate-client)
 
 ## <a name="analyze-an-image"></a>イメージを分析する
 
@@ -238,7 +238,7 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_type)]
 
 > [!div class="nextstepaction"]
-> [画像を分析しました](?success=analyze-image#read-printed-and-handwritten-text) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+> [画像を分析しました](?success=analyze-image#read-printed-and-handwritten-text) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=analyze-image)
 
 ## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
 

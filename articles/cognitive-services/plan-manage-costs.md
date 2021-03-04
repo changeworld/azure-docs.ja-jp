@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 661af89ad223978abbefd71dd8008577475c5875
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: db99fa5caff27a24aa04e4780b25ade3f7c25496
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221383"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699931"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Azure Cognitive Services のコストを計画および管理する
 
@@ -68,7 +68,7 @@ Cognitive Services の料金は、Azure 前払い (旧称: 年額コミットメ
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. Replace example screenshots with ones taken for your service. If you need assistance capturing screenshots, ask banders for help. -->
 
-Cognitive Services で Azure リソースを使用と、コストが発生します。 Azure リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。 Cognitive Services を使い始めるとすぐにコストが発生し、[コスト分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)でコストを確認できます。
+Cognitive Services で Azure リソースを使用と、コストが発生します。 Azure リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。 Cognitive Services を使い始めるとすぐにコストが発生し、[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)でコストを確認できます。
 
 コスト分析を使用すると、さまざまな期間について、Cognitive Services のコストをグラフや表で表示できます。 たとえば、日単位、現在の月、以前の月、年単位などがあります。 予算や予想コストを基準としてコストを表示することもできます。 時間経過を示す、より長い期間のビューに切り替えると、支出の傾向を特定するのに役立ちます。 超過出費が発生した可能性のある時期を確認できます。 予算を作成したら、それを超えた場所も簡単に確認できます。
 

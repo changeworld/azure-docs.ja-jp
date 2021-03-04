@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b258f2ef82e74073e3e4f1aa61b036d423c30300
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100419410"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659258"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>SIP インターフェイスのインフラストラクチャ要件 
 
@@ -31,7 +31,7 @@ ms.locfileid: "100419410"
 |セッション ボーダー コントローラー (SBC)|サポートされている SBC。 詳細については、[サポートされる SBC](#supported-session-border-controllers-sbcs) に関するページを参照してください。|
 |SBC に接続されたテレフォニー トランク|SBC に接続された 1 つまたは複数のテレフォニー トランク。 SBC の片側は、SIP インターフェイスを介して Azure Communication Services に接続されます。 PBX や Analog Telephony Adapter など、サードパーティのテレフォニー エンティティに SBC を接続することもできます。 SBC に接続された任意の PSTN 接続オプションを使用できます (SBC に対する PSTN トランクの構成については、SBC ベンダーまたはトランク プロバイダーにお問い合わせください)。|
 |Azure サブスクリプション|ACS リソースを作成したり、SBC の構成と SBC への接続を作成したりする際に使用する Azure サブスクリプション。|
-|Communication Services のアクセス トークン|電話をかけるには、`voip` スコープの有効なアクセス トークンが必要です。 「[アクセス トークン](https://docs.microsoft.com/azure/communication-services/concepts/identity-model#access-tokens)」を参照してください。|
+|Communication Services のアクセス トークン|電話をかけるには、`voip` スコープの有効なアクセス トークンが必要です。 「[アクセス トークン](../identity-model.md#access-tokens)」を参照してください。|
 |SBC のパブリック IP アドレス|SBC への接続に使用できるパブリック IP アドレス。 SBC の種類によっては NAT を使用できます。|
 |SBC の完全修飾ドメイン名 (FQDN)|SBC の FQDN。この FQDN のドメイン部分は、Microsoft 365 や Office 365 組織の登録済みドメインとは一致しません。 詳細については、「[SBC ドメイン名](#sbc-domain-names)」を参照してください。|
 |SBC のパブリック DNS エントリ |SBC の FQDN をパブリック IP アドレスにマップするパブリック DNS エントリ。 |
@@ -187,7 +187,7 @@ SIP プロキシとメディア プロセッサの両方のコンポーネント
 
 ## <a name="supported-session-border-controllers-sbcs"></a>サポートされるセッション ボーダー コントローラー (SBC)
 
-現在、認定作業を進めています。 その間は、[Teams の認定セッション ボーダー コントローラー](https://docs.microsoft.com/MicrosoftTeams/direct-routing-border-controllers)をご利用ください。 
+現在、認定作業を進めています。 その間は、[Teams の認定セッション ボーダー コントローラー](/MicrosoftTeams/direct-routing-border-controllers)をご利用ください。 
 
 ## <a name="next-steps"></a>次の手順
 

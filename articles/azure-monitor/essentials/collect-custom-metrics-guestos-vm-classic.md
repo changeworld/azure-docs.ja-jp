@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 48c7323a630f5c79c7ecb16e26c9ec79ec2014a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f0c97d128837e77325e68ae28161a98938510ff8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723284"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor メトリック データベースに送信する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md) ("WAD" または "診断" と呼ばれる) を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの異なる場所](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
+Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md) ("WAD" または "診断" と呼ばれる) を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの異なる場所](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json)にテレメトリを送信できます。
 
 この記事では、Windows 仮想マシン (クラシック) 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック データベースに送信するプロセスについて説明します。 診断拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 
 
@@ -34,7 +34,7 @@ Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md) 
 
 - [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](../../cloud-shell/overview.md) がインストールされている必要があります。
 
-- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](../platform/metrics-custom-overview.md#supported-regions)に存在する必要があります。
+- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](./metrics-custom-overview.md#supported-regions)に存在する必要があります。
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>クラシック仮想マシンおよびストレージ アカウントを作成する
 
@@ -203,4 +203,4 @@ Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md) 
 
 
 ## <a name="next-steps"></a>次のステップ
-- [カスタム メトリック](../platform/metrics-custom-overview.md)の詳細を確認します。
+- [カスタム メトリック](./metrics-custom-overview.md)の詳細を確認します。

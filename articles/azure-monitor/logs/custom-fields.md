@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 685c54131e4a82950ea64e5374d9e1d260ffabc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f35100d703e56d1fda731aab5e6a96c791c8f0d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604102"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713679"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) の Log Analytics ワークスペースでカスタム フィールドを作成する
 
 > [!NOTE]
-> この記事では、Log Analytics ワークスペースでテキスト データの収集時に解析する方法について説明します。 「[Azure Monitor ログのテキスト データの解析](../log-query/parse-text.md)」で説明されているガイダンスに従って、収集後に、クエリ フィルターのテキスト データを解析することをお勧めします。 カスタム フィールドを使用するよりもすぐれた点がいくつかあります。
+> この記事では、Log Analytics ワークスペースでテキスト データの収集時に解析する方法について説明します。 「[Azure Monitor ログのテキスト データの解析](./parse-text.md)」で説明されているガイダンスに従って、収集後に、クエリ フィルターのテキスト データを解析することをお勧めします。 カスタム フィールドを使用するよりもすぐれた点がいくつかあります。
 
 > [!IMPORTANT]
-> カスタム フィールドを使用すると、Log Analytics ワークスペースで収集されるデータの量が増加し、コストが増加する可能性があります。 「[Azure Monitor ログで使用量とコストを管理する](../platform/manage-cost-storage.md#pricing-model)」をご覧ください。
+> カスタム フィールドを使用すると、Log Analytics ワークスペースで収集されるデータの量が増加し、コストが増加する可能性があります。 「[Azure Monitor ログで使用量とコストを管理する](./manage-cost-storage.md#pricing-model)」をご覧ください。
 
 Azure Monitor の **カスタム フィールド** 機能を使用すると、独自の検索可能なフィールドを追加して、ご自身の Log Analytics ワークスペースの既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
 
@@ -42,9 +42,9 @@ Azure Monitor の **カスタム フィールド** 機能を使用すると、�
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>手順 1 - カスタム フィールドを追加するレコードを指定する
-最初の手順は、カスタム フィールドを追加するレコードの指定です。  まず[標準のログ クエリ](../log-query/log-query-overview.md)から始めて、Azure Monitor の学習元になる、モデルとして動作するレコードを選択します。  データをカスタム フィールドに抽出しようとすると、**フィールド抽出ウィザード** が開きます。この画面で、条件を検証し、調整します。
+最初の手順は、カスタム フィールドを追加するレコードの指定です。  まず[標準のログ クエリ](./log-query-overview.md)から始めて、Azure Monitor の学習元になる、モデルとして動作するレコードを選択します。  データをカスタム フィールドに抽出しようとすると、**フィールド抽出ウィザード** が開きます。この画面で、条件を検証し、調整します。
 
-1. **[ログ]** に移動し、[クエリを使用してカスタム フィールドがあるレコードを取得](../log-query/log-query-overview.md)します。
+1. **[ログ]** に移動し、[クエリを使用してカスタム フィールドがあるレコードを取得](./log-query-overview.md)します。
 2. Log Analytics でカスタム フィールドを設定するデータを抽出する際に、モデルとして機能するために使用するレコードを選択します。  このレコードから抽出するデータを特定すると、Log Analytics はその情報を使用して、すべての同様のレコードのカスタム フィールドを設定します。
 3. レコードのプロパティを展開し、レコードの最上位のプロパティの左にある省略記号をクリックして、 **[Extract fields from]\(フィールドの抽出\)** を選択します。
 4. **フィールドの抽出ウィザード** が開き、選択したレコードが **[メインの例]** 列に表示されます。  選択したプロパティと同じ値を持つ、そのレコードのカスタム フィールドが定義されます。  
@@ -128,6 +128,5 @@ Service Control Manager からイベント ID が 7036 のすべてのイベン�
 ![クエリによるグループ化](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>次のステップ
-* 基準となるカスタム フィールドを使用してクエリを作成するための[ログ クエリ](../log-query/log-query-overview.md)について学習します。
+* 基準となるカスタム フィールドを使用してクエリを作成するための[ログ クエリ](./log-query-overview.md)について学習します。
 * カスタム フィールドを使用して解析対象の[カスタム ログ ファイル](../agents/data-sources-custom-logs.md)を監視します。
-

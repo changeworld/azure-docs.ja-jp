@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 53fc01839ef522afaffe52cd8a3126e40ba94a05
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e32b9c690db70baeda7dec2f9f1270f82c6881bd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809620"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733297"
 ---
 # <a name="configure-azure-defender-for-iot-agent-based-solution"></a>Azure Defender for IoT エージェントベースのソリューションを構成する  
 
@@ -87,7 +87,7 @@ Log Analytics のワークスペースの構成を変更するには、次の手
 
 1. **[Investigate recommendations in Log Analytics workspace]\(Log Analytics ワークスペースで推奨事項を調査\)** を選択します。 
  
-Log Analytics からデータのクエリを実行する方法の詳細については、 [Log Analytics のクエリの概要](../azure-monitor/log-query/get-started-queries.md)に関する記事を参照してください。 
+Log Analytics からデータのクエリを実行する方法の詳細については、 [Log Analytics のクエリの概要](../azure-monitor/logs/get-started-queries.md)に関する記事を参照してください。 
 
 ## <a name="turn-off-defender-for-iot"></a>Defender for IoT を無効にする 
 
@@ -99,4 +99,4 @@ Log Analytics からデータのクエリを実行する方法の詳細につい
 
 ## <a name="next-steps"></a>次のステップ 
 
-次の記事に進んで、[ソリューションを構成](quickstart-configure-your-solution.md)してください。 
+次の記事に進んで、[ソリューションを構成](quickstart-configure-your-solution.md)してください。

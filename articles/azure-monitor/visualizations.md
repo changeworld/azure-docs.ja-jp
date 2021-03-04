@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29164bbb205e9f3ad59ac28200b5c6cd1e47bf39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589413"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707576"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -138,7 +138,7 @@ Azure Monitor のメトリック データとログ データには、その API
 - クエリの応答サイズは 8 MB に制限され、クエリの実行時間は 110 秒に制限される。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Monitor によって収集されたデータ](/data-platform.md)について学習します。
+- [Azure Monitor によって収集されたデータ](data-platform.md)について学習します。
 - [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)について学習します。
 - [メトリックス エクスプローラー](essentials/metrics-getting-started.md)について学習します。
 - [Workbooks](./visualize/workbooks-overview.md) について学習します。

@@ -4,12 +4,12 @@ description: Azure Monitor におけるアクション ルールとはどのよ�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 5fc9b1f75faec7f2be8f9e6126fdacf9697413f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1a837ac9aa94effa021d5395fb4856d1d5df2e90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604578"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718150"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -209,7 +209,7 @@ Contoso では、メンテナンスのため、**ContosoSub** 内の **Computer-
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>シナリオ 3: リソース グループで定義されているアクション グループ
 
-Contoso は、[1 つのサブスクリプション レベルで 1 つのメトリック アラート](../platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)を定義しました。 ただし、リソース グループ **ContosoRG** から生成されるアラート専用にトリガーするアクションを定義したいと考えています。
+Contoso は、[1 つのサブスクリプション レベルで 1 つのメトリック アラート](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)を定義しました。 ただし、リソース グループ **ContosoRG** から生成されるアラート専用にトリガーするアクションを定義したいと考えています。
 
 **解決方法:** 次のアクション ルールを作成します。
 * スコープ = **ContosoRG**
@@ -253,11 +253,11 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-[結果の数](../platform/alerts-unified-log.md)オプションで作成したログ アラートでは、検索結果全体を使用して 1 つのアラート インスタンスが生成されます (たとえば、複数のコンピューターが含まれる可能性があります)。 このシナリオでは、アクション ルールで **アラート コンテキスト (ペイロード)** フィルターが使用される場合、一致する限りアラート インスタンスに対して作用します。 前に説明したシナリオ 2 では、生成されたログ アラートの検索結果に、**Computer-01** と **Computer-02** の両方が含まれる場合は、通知全体が抑制されます。 つまり、**Computer-02** に対しても通知はまったく生成されません。
+[結果の数](./alerts-unified-log.md)オプションで作成したログ アラートでは、検索結果全体を使用して 1 つのアラート インスタンスが生成されます (たとえば、複数のコンピューターが含まれる可能性があります)。 このシナリオでは、アクション ルールで **アラート コンテキスト (ペイロード)** フィルターが使用される場合、一致する限りアラート インスタンスに対して作用します。 前に説明したシナリオ 2 では、生成されたログ アラートの検索結果に、**Computer-01** と **Computer-02** の両方が含まれる場合は、通知全体が抑制されます。 つまり、**Computer-02** に対しても通知はまったく生成されません。
 
 ![アクション ルールとログ アラートの図。アラート インスタンスが 1 つ強調表示されています。](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-アクション ルールでログ アラートを最適に利用するには、[メトリック測定](../platform/alerts-unified-log.md)オプションを使ってログ アラートを作成します。 このオプションを使用すると、その定義されたグループ フィールドに基づいて個別のアラート インスタンスが生成されます。 シナリオ 2 では、**Computer-01** と **Computer-02** に対して個別のアラート インスタンスが生成されます。 シナリオで説明されているアクション ルールに従って、**Computer-01** の通知のみが抑制されます。 **Computer-02** の通知は、引き続き通常どおり起動されます。
+アクション ルールでログ アラートを最適に利用するには、[メトリック測定](./alerts-unified-log.md)オプションを使ってログ アラートを作成します。 このオプションを使用すると、その定義されたグループ フィールドに基づいて個別のアラート インスタンスが生成されます。 シナリオ 2 では、**Computer-01** と **Computer-02** に対して個別のアラート インスタンスが生成されます。 シナリオで説明されているアクション ルールに従って、**Computer-01** の通知のみが抑制されます。 **Computer-02** の通知は、引き続き通常どおり起動されます。
 
 ![アクション ルールとログ アラート (結果の数)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
@@ -287,7 +287,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>アクション ルールによって抑制されているアラートを表示できますか?
 
-[アラート一覧ページ](../platform/alerts-managing-alert-instances.md)で、 **[抑制の状態]** という名前の追加列を選択できます。 アラート インスタンスの通知が抑制されている場合、一覧にその状態が表示されます。
+[アラート一覧ページ](./alerts-managing-alert-instances.md)で、 **[抑制の状態]** という名前の追加列を選択できます。 アラート インスタンスの通知が抑制されている場合、一覧にその状態が表示されます。
 
 ![抑制されたアラート インスタンス](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -321,4 +321,4 @@ VM1 のすべてのアラートについては、アクション グループ AG
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure でのアラートについてさらに詳しく学習する](../platform/alerts-overview.md)
+- [Azure でのアラートについてさらに詳しく学習する](./alerts-overview.md)

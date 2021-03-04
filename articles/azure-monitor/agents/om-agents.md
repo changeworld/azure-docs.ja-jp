@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: f9418b9a4bac9c458c530b246f7400ac067f5623
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9c20994c27680aaccb68db2ff78deb6b6bf9f8cf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603623"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718133"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -40,8 +40,8 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 * Azure Monitor では、System Center Operations Manager 2016 以降、Operations Manager 2012 SP1 UR6 以降、Operations Manager 2012 R2 UR2 以降のみがサポートされています。 プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
 * System Center Operations Manager 2016 と US Government クラウドの統合には、Update Rollup 2 以降に含まれる更新された Advisor 管理パックが必要です。 System Center Operations Manager 2012 R2 には、Update Rollup 3 以降に含まれる更新された Advisor 管理パックが必要です。
 * すべての Operations Manager エージェントが最小サポート要件を満たす必要があります。 エージェントに最小限の更新プログラムが適用されていることを確認してください。そうしないと、Windows エージェントの通信が失敗し、Operations Manager イベント ログにエラーが生成される可能性があります。
-* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](../platform/design-logs-deployment.md)に関する記事をご覧ください。
-* [Log Analytics Contributor ロール](../platform/manage-access.md#manage-access-using-azure-permissions)のメンバーであるアカウントを使用して Azure の認証を受けます。
+* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](../logs/design-logs-deployment.md)に関する記事をご覧ください。
+* [Log Analytics Contributor ロール](../logs/manage-access.md#manage-access-using-azure-permissions)のメンバーであるアカウントを使用して Azure の認証を受けます。
 
 * サポートされているリージョン - Log Analytics ワークスペースに接続するために、System Center Operations Manager では次の Azure リージョンのみがサポートされています。
     - 米国中西部
@@ -95,7 +95,7 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
 
-Azure Monitor へのデータの転送時のセキュリティを保証するため、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するようにエージェントと管理グループを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。
+Azure Monitor へのデータの転送時のセキュリティを保証するため、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するようにエージェントと管理グループを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../logs/data-security.md#sending-data-securely-using-tls-12)」を参照してください。
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -345,4 +345,3 @@ Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つの�
 ## <a name="next-steps"></a>次のステップ
 
 機能を追加し、データを収集するには、[Solutions Gallery から Azure Monitor ソリューションを追加する](../insights/solutions.md)方法に関するページを参照してください。
-

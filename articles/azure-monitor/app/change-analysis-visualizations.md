@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 643645eb3b361cd68def1177ba7e8af89f1963bc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520830"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734623"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>アプリケーション変更分析の視覚化 (プレビュー)
 
@@ -80,13 +80,13 @@ Azure Monitor では、変更分析はセルフサービスの **問題の診断
 
 ## <a name="activity-log-change-history"></a>アクティビティ ログ変更履歴
 
-アクティビティ ログの[変更履歴の表示](../platform/activity-log.md#view-change-history)機能では、アプリケーション変更分析サービス バックエンドを呼び出して、操作に関連付けられている変更を取得します。 **変更履歴** では、[Azure Resource Graph](../../governance/resource-graph/overview.md) が直接呼び出されていましたが、バックエンドが交換され、アプリケーション変更分析が呼び出されるようになったため、返される変更に、[Azure リソースグラフ](../../governance/resource-graph/overview.md)からのリソースレベルの変更、 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) からのリソース プロパティ、App Services Web アプリなどの PaaS サービスからのゲスト内の変更が含まれるようになります。 アプリケーション変更分析サービスで、ユーザーのサブスクリプションの変更をスキャンできるようにするには、リソース プロバイダーを登録する必要があります。 **[変更履歴]** タブに初めて入ると、ツールによって **Microsoft.ChangeAnalysis** リソース プロバイダーの登録が自動的に開始されます。 登録後、**Azure Resource Graph** からの変更がすぐに利用できるようになり、過去 14 日間が対象になります。 ほかのソースからの変更は、サブスクリプションのオンボードから 4 時間後に使用できるようになります。
+アクティビティ ログの[変更履歴の表示](../essentials/activity-log.md#view-change-history)機能では、アプリケーション変更分析サービス バックエンドを呼び出して、操作に関連付けられている変更を取得します。 **変更履歴** では、[Azure Resource Graph](../../governance/resource-graph/overview.md) が直接呼び出されていましたが、バックエンドが交換され、アプリケーション変更分析が呼び出されるようになったため、返される変更に、[Azure リソースグラフ](../../governance/resource-graph/overview.md)からのリソースレベルの変更、 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) からのリソース プロパティ、App Services Web アプリなどの PaaS サービスからのゲスト内の変更が含まれるようになります。 アプリケーション変更分析サービスで、ユーザーのサブスクリプションの変更をスキャンできるようにするには、リソース プロバイダーを登録する必要があります。 **[変更履歴]** タブに初めて入ると、ツールによって **Microsoft.ChangeAnalysis** リソース プロバイダーの登録が自動的に開始されます。 登録後、**Azure Resource Graph** からの変更がすぐに利用できるようになり、過去 14 日間が対象になります。 ほかのソースからの変更は、サブスクリプションのオンボードから 4 時間後に使用できるようになります。
 
 ![アクティビティ ログ変更履歴の統合](./media/change-analysis/activity-log-change-history.png)
 
 ## <a name="vm-insights-integration"></a>VM Insights の統合
 
-[VM Insights](../insights/vminsights-overview.md) を有効にしているユーザーは、仮想マシンの変更内容を見て、CPU やメモリなどのメトリック グラフでスパイクを発生させた可能性があるものを確認できます。 変更データは、VM Insights のサイド ナビゲーションバーに統合されています。 ユーザーは、VM で変更が発生したかどうかを確認し、 **[変更の調査]** を選択して、アプリケーション変更分析スタンドアロン UI で変更の詳細を表示できます。
+[VM Insights](../vm/vminsights-overview.md) を有効にしているユーザーは、仮想マシンの変更内容を見て、CPU やメモリなどのメトリック グラフでスパイクを発生させた可能性があるものを確認できます。 変更データは、VM Insights のサイド ナビゲーションバーに統合されています。 ユーザーは、VM で変更が発生したかどうかを確認し、 **[変更の調査]** を選択して、アプリケーション変更分析スタンドアロン UI で変更の詳細を表示できます。
 
 [![VM insights の統合](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
 

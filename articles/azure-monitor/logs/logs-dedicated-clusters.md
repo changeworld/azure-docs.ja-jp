@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 818cf97a640952de79e84184c52c20575a0cc92b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fe7bd4b9f800b59d2c16d4aa3dadd3626c55b7e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600592"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707644"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -34,7 +34,7 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 
 専用クラスターに取り込まれたデータは、2 回暗号化されます。Microsoft のマネージド キーまたは[カスタマー マネージド キー](../logs/customer-managed-keys.md)を使用してサービス レベルで一度暗号化され、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用してインフラストラクチャ レベルで一度暗号化されます。 [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。 専用クラスターを使用すると、[ロックボックス](../logs/customer-managed-keys.md#customer-lockbox-preview) コントロールを使用してデータを保護することもできます。
 
-クラスター レベルでのすべての操作には、クラスターに対する `Microsoft.OperationalInsights/clusters/write` アクション権限が必要です。 このアクセス許可を付与するには、`*/write` アクションを含む所有者または共同作成者、または `Microsoft.OperationalInsights/*` アクションを含む Log Analytics 共同作成者ロールを使用します。 Log Analytics のアクセス許可の詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](../platform/manage-access.md)」を参照してください。 
+クラスター レベルでのすべての操作には、クラスターに対する `Microsoft.OperationalInsights/clusters/write` アクション権限が必要です。 このアクセス許可を付与するには、`*/write` アクションを含む所有者または共同作成者、または `Microsoft.OperationalInsights/*` アクションを含む Log Analytics 共同作成者ロールを使用します。 Log Analytics のアクセス許可の詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](./manage-access.md)」を参照してください。 
 
 
 ## <a name="cluster-pricing-model"></a>クラスターの価格モデル
@@ -77,7 +77,7 @@ Authorization: Bearer <token>
 - **ClusterName**:管理目的で使用されます。 この名前はユーザーには公開されません。
 - **ResourceGroupName**:すべての Azure リソースと同様に、クラスターはリソース グループに属します。 クラスターは通常、組織内の多くのチームによって共有されるため、中央の IT リソース グループを使用することをお勧めします。 設計に関するその他の考慮事項については、「[Azure Monitor ログのデプロイの設計](../logs/design-logs-deployment.md)」を参照してください。
 - **[場所]** :クラスターは特定の Azure リージョンにあります。 このクラスターにリンクできるのは、このリージョンにあるワークスペースだけです。
-- **SkuCapacity**:"*クラスター*" リソースを作成するときに、"*容量予約*" レベル (sku) を指定する必要があります。 "*容量予約*" レベルは、1 日あたり 1,000 GB から 3,000 GB の範囲で指定できます。 必要に応じて、後から 100 刻みで更新できます。 1 日あたり 3,000 GB を超える容量予約レベルが必要な場合は、LAIngestionRate@microsoft.com までお問い合わせください。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
+- **SkuCapacity**:"*クラスター*" リソースを作成するときに、"*容量予約*" レベル (sku) を指定する必要があります。 "*容量予約*" レベルは、1 日あたり 1,000 GB から 3,000 GB の範囲で指定できます。 必要に応じて、後から 100 刻みで更新できます。 1 日あたり 3,000 GB を超える容量予約レベルが必要な場合は、LAIngestionRate@microsoft.com までお問い合わせください。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
 
 "*クラスター*" リソースを作成した後、*sku*、*keyVaultProperties、*billingType* などの追加のプロパティを編集できます。 詳細については、以下を参照してください。
 
@@ -300,7 +300,7 @@ Authorization: Bearer <token>
 - **keyVaultProperties** - Azure Key Vault のキーを更新します。 「[キー識別子の詳細を使用してクラスターを更新する](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details)」をご覧ください。 これには次のパラメーターが含まれています。*KeyVaultUri*、*KeyName*、*KeyVersion*。 
 - **billingType** - *billingType* プロパティによって、"*クラスター*" リソースとそのデータの課金の帰属が決まります。
   - **クラスター** (既定) - クラスターの容量予約コストは、"*クラスター*" リソースに帰属します。
-  - **ワークスペース** - クラスターの容量予約コストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データが容量予約を下回る場合に使用量の一部が "*クラスター*" リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。 
+  - **ワークスペース** - クラスターの容量予約コストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データが容量予約を下回る場合に使用量の一部が "*クラスター*" リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。 
 
 > [!NOTE]
 > *billingType* プロパティは、PowerShell ではサポートされていません。
@@ -573,5 +573,5 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics 専用クラスターの課金](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)について学習します
+- [Log Analytics 専用クラスターの課金](./manage-cost-storage.md#log-analytics-dedicated-clusters)について学習します
 - [Log Analytics ワークスペースの適切な設計](../logs/design-logs-deployment.md)について学習します

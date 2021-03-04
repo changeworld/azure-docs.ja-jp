@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2947f1c484f013c2d0bef9899b849f7ea761d89e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600507"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720020"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Monitor の Log Analytics エージェントのデータ ソース
-Azure Monitor で [Log Analytics](../platform/log-analytics-agent.md) エージェントを使用して仮想マシンから収集されるデータは、[Log Analytics ワークスペース](../platform/data-platform-logs.md)で構成するデータ ソースによって定義されます。   データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
+Azure Monitor で [Log Analytics](./log-analytics-agent.md) エージェントを使用して仮想マシンから収集されるデータは、[Log Analytics ワークスペース](../logs/data-platform-logs.md)で構成するデータ ソースによって定義されます。   データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
 
 > [!IMPORTANT]
-> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](../platform/log-analytics-agent.md)のデータ ソースについて説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントとそれらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](./log-analytics-agent.md)のデータ ソースについて説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントとそれらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
 
 ![ログ データ コレクション](media/agent-data-sources/overview.png)
 
@@ -51,7 +51,7 @@ Log Analytics エージェントのデータ ソースを構成するには、Az
 ## <a name="data-collection"></a>データ コレクション
 データ ソースの構成は、数分以内に Azure Monitor に直接接続されたエージェントに配信されます。  指定されたデータがエージェントから収集され、各データ ソースに固有の間隔で Azure Monitor に直接配信されます。  詳しくは、各データ ソースのドキュメントを参照してください。
 
-接続された管理グループ内の System Center Operations Manager エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Azure Monitor に転送されるか、エージェントが管理サーバーを介さずに Azure Monitor に送信します。 詳しくは、[Azure における監視ソリューションのデータ収集の詳細](../monitor-reference.md)に関するページを参照してください。  Operations Manager および Azure Monitor への接続と構成の配信頻度の変更の詳細については、[System Center Operations Manager との統合の構成](../platform/om-agents.md)に関するページを参照してください。
+接続された管理グループ内の System Center Operations Manager エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Azure Monitor に転送されるか、エージェントが管理サーバーを介さずに Azure Monitor に送信します。 詳しくは、[Azure における監視ソリューションのデータ収集の詳細](../monitor-reference.md)に関するページを参照してください。  Operations Manager および Azure Monitor への接続と構成の配信頻度の変更の詳細については、[System Center Operations Manager との統合の構成](./om-agents.md)に関するページを参照してください。
 
 エージェントが Azure Monitor または Operations Manager に接続できない場合は、そのままデータの収集を続け、接続が確立されたときにデータを送信します。  データの量がクライアントの最大キャッシュ サイズに達した場合、またはエージェントが 24 時間以内に接続を確立できなかった場合は、データが失われることがあります。
 
@@ -60,5 +60,5 @@ Azure Monitor によって収集されたすべてのログ データは、レ�
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Monitor に機能を追加し、Azure Monitor ワークスペース内にデータを収集する[監視ソリューション](../insights/solutions.md)について学習します。
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースと監視ソリューションから収集されたデータを分析します。  
-* データ ソースや監視ソリューションから収集された重要なデータについて事前に通知する[アラート](../platform/alerts-overview.md)を構成します。
+* [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースと監視ソリューションから収集されたデータを分析します。  
+* データ ソースや監視ソリューションから収集された重要なデータについて事前に通知する[アラート](../alerts/alerts-overview.md)を構成します。

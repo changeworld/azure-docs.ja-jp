@@ -1,17 +1,16 @@
 ---
 title: Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する
 description: Azure の外部の場所にデータを転送できるよう、Azure Event Hubs にデータを送信するように、Azure Monitor で Diagnostics 拡張機能を構成します。
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603631"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732039"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Azure の外部の場所にデータを転送できるように、Windows Azure Diagnostic (WAD) 拡張機能から [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にデータを送信する方法について説明します。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 3094d20a921f9aa13e111e7af60955ce934b91db
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a37abf369d1f34dc8f4a27802dfad88dab79be44
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566593"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698435"
 ---
 # <a name="connect-your-imperva-waf-gateway-appliance-to-azure-sentinel"></a>Imperva WAF Gateway アプライアンスを Azure Sentinel に接続する
 
@@ -35,7 +35,7 @@ ms.locfileid: "99566593"
 
 - Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
-- ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)を参照してください。
+- ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)を参照してください。
 
 ## <a name="send-imperva-waf-gateway-logs-to-azure-sentinel"></a>Imperva WAF Gateway ログを Azure Sentinel に送信する
 

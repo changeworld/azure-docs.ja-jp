@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d62c4b79fcb86080649c542e34b81d3213978604
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a3bf022d178fbd0de3ca800e0a560235c3f33b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601371"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731495"
 ---
 # <a name="troubleshooting-metrics-charts"></a>メトリック グラフのトラブルシューティング
 
@@ -62,7 +62,7 @@ Azure では、メトリックへのアクセスは、[Azure ロールベース�
 
 この問題は、ダッシュボードを作成するときに使ったメトリックが後で非推奨になって Azure から削除された場合に、発生することがあります。 それに該当するかどうかを確認するには、リソースの **[メトリック]** タブを開き、メトリック ピッカーでメトリックを使用できるかどうかを調べます。 メトリックが表示されない場合、メトリックは Azure から削除されています。 通常、メトリックが非推奨になったときは、リソースの正常性について似た観点を提供する、さらに新しくて良いメトリックがあります。
 
-**解決方法:** ダッシュボードでグラフに対して別のメトリックを選択し、障害が発生したタイルを更新します。 [Azure サービスで使用可能なメトリックのリストを確認する](../platform/metrics-supported.md)ことができます。
+**解決方法:** ダッシュボードでグラフに対して別のメトリックを選択し、障害が発生したタイルを更新します。 [Azure サービスで使用可能なメトリックのリストを確認する](./metrics-supported.md)ことができます。
 
 ## <a name="chart-shows-dashed-line"></a>グラフに破線が表示される
 
@@ -104,5 +104,5 @@ Azure のメトリック グラフでは、2 つの既知の時間グレイン �
 
 * [メトリックス エクスプローラーの概要について確認する](metrics-getting-started.md)
 * [メトリックス エクスプローラーの高度な機能の詳細](../essentials/metrics-charts.md)
-* [Azure サービスで使用可能なメトリックのリストを表示する](../platform/metrics-supported.md)
+* [Azure サービスで使用可能なメトリックのリストを表示する](./metrics-supported.md)
 * [構成されたグラフの例を参照する](../essentials/metric-chart-samples.md)

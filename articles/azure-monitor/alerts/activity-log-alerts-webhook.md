@@ -4,19 +4,19 @@ description: アクティビティ ログ アラートがアクティブにな�
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: bdac71655ca0c517624f8aa033ee5bc7fcc9d12a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9f5fbc6b0c7ae77181c8c5afdbaffb4e62dccd12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701146"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
 
-アクティビティ ログ アラートについて詳しくは、「[アクティビティ ログ アラートの作成](../platform/activity-log-alerts.md)」をご覧ください。
+アクティビティ ログ アラートについて詳しくは、「[アクティビティ ログ アラートの作成](./activity-log-alerts.md)」をご覧ください。
 
-アクション グループについて詳しくは、[アクション グループを作成](../platform/action-groups.md)する方法をご覧ください。
+アクション グループについて詳しくは、[アクション グループを作成](./action-groups.md)する方法をご覧ください。
 
 > [!NOTE]
 > [共通アラート スキーマ](./alerts-common-schema.md)を使用することもできます。このスキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードによって Webhook の統合を実現できることです。 [共通アラート スキーマの定義については、こちらを参照してください。](./alerts-common-schema-definitions.md)
@@ -298,10 +298,10 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | status |文字列 をオンにします。 操作の状態。 一般的な値は Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | subStatus |通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。 また、subStatus を説明する他の文字列を含めることもできます。 一般的な subStatus の値は、OK (HTTP 状態コード: 200)、Created (HTTP 状態コード: 201)、Accepted (HTTP 状態コード: 202)、No Content (HTTP 状態コード: 204)、Bad Request (HTTP 状態コード: 400)、Not Found (HTTP 状態コード: 404)、Conflict (HTTP 状態コード: 409)、Internal Server Error (HTTP 状態コード: 500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504) です。 |
 
-その他のすべてのアクティビティ ログ アラートの特定のスキーマについて詳しくは、[Azure アクティビティ ログの概要](../platform/platform-logs-overview.md)に関するページをご覧ください。
+その他のすべてのアクティビティ ログ アラートの特定のスキーマについて詳しくは、[Azure アクティビティ ログの概要](../essentials/platform-logs-overview.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* [アクティビティ ログについて詳しく学習します](../platform/platform-logs-overview.md)。
+* [アクティビティ ログについて詳しく学習します](../essentials/platform-logs-overview.md)。
 * [Azure アラートで Azure Automation スクリプト (Runbook) を実行します](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS を送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
 * [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。

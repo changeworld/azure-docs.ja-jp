@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390404"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738227"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
@@ -50,8 +50,8 @@ Read API については、[こちら](concept-recognizing-text.md)を参照し�
 * **破壊的変更**:*personZoneEvent* イベントの名前が *personZoneEnterExitEvent* に変更されました。 人がゾーンに出入りするときに *personcrossingpolygon* イベントが発生し、交差したゾーンの番号付き側に方向情報を提供します。
 * ビデオの URL を、すべての操作で "Private Parameter/obfuscated" として指定できます。 難読化はオプションになり、`KEY` および `IV` が環境変数として指定されている場合にのみ機能します。
 * 既定では、すべての操作で較正が有効になっています。 無効にするには、`do_calibration: false` を設定します。
-* `enable_recalibration` パラメーターによる自動再較正 (既定では無効) のサポートを追加しました。詳細については、「[空間分析操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations)」参照してください
-* カメラ較正のパラメーターを `DETECTOR_NODE_CONFIG` にします。 詳細については、「[空間分析操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations)」を参照してください。
+* `enable_recalibration` パラメーターによる自動再較正 (既定では無効) のサポートを追加しました。詳細については、「[空間分析操作](./spatial-analysis-operations.md)」参照してください
+* カメラ較正のパラメーターを `DETECTOR_NODE_CONFIG` にします。 詳細については、「[空間分析操作](./spatial-analysis-operations.md)」を参照してください。
 
 
 ## <a name="october-2020"></a>2020 年 10 月

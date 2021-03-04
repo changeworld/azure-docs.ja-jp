@@ -236,7 +236,7 @@
         - name: 監視 (クラシック)
           items:
             - name: Azure portal での監視 (クラシック)
-              href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+              href: ../common/manage-storage-analytics-logs.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: トラブルシューティング
       items:
         - name: 待機時間に関する問題

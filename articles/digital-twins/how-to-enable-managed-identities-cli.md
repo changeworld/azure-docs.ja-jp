@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 32cbe31f95c03f9b0b5eb1a31a28033dce18b112
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 035d782321feb5d467638159fc191f65573b1042
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100473485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716127"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー)Azure CLI
 
@@ -87,8 +87,7 @@ Azure Digital Twins でのルーティングでサポートされているエン
 
 ### <a name="assign-the-role"></a>ロールを割り当てる
 
->[!NOTE]
-> このセクションは、Azure リソースへのユーザー アクセスを管理するためのアクセス許可を持つ Azure ユーザーが行う必要があります (アクセス許可の付与と委任を含みます)。 この要件を満たす一般的なロールは、*所有者*、*アカウント管理者*、*ユーザー アクセス管理者* と *共同作成者* の組み合わせです。 Azure Digital Twins のロールのアクセス許可要件に関する詳細については、"[*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements)" に関する記事を参照してください。
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 指定したロールを持つ 1 つ以上のスコープに ID を割り当てるために、`--scopes` パラメーターを `az dt create` コマンドに追加できます。 これは、最初にインスタンスを作成するときに使用することも、既に存在するインスタンスの名前を渡すことで後で使用することもできます。
 
@@ -102,7 +101,7 @@ az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "
 
 また、ロールを作成および管理するために、[**az role assignment**](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) コマンド グループも使用できます。 これは、create コマンドでロールの割り当てをグループ化したくない場合の追加のシナリオをサポートするために使用できます。
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>ID ベースの承認を使用してエンドポイントを作成する
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>ID ベースの認証を使用してエンドポイントを作成する
 
 Azure Digital Twins インスタンスのシステム マネージド ID を設定し、それに適切なロールを割り当てた後は、認証にその ID を使用できる Azure Digital Twins [エンドポイント](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)を作成できます。 このオプションは、種類が Event Hubs と Service Bus のエンドポイントでのみ使用できます (Event Grid ではサポートされていません)。
 

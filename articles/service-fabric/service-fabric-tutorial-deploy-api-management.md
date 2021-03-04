@@ -4,12 +4,12 @@ description: Azure API Management をすぐに使い始め、Service Fabric の�
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f1ae658ac4944f8d39dc11769669d32958fd14f4
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 681a1c5241743a0164d83d73753efa0b6c446109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491284"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735592"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -277,7 +277,7 @@ az deployment group create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
-Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用します。
+Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用します。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

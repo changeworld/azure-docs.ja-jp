@@ -4,12 +4,12 @@ description: Service Fabric、Virtual Machines、Web Apps、クラウド サー�
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 8936d1b94082291f5c081c47f8331cc64042896b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0fed6c2d06edcb2c9eb8d715feb0ef6c6ade46f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603406"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711401"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自動スケーリングのトラブルシューティング
  
@@ -24,14 +24,14 @@ Azure Monitor 自動スケーリングを使用すると、適切な量のリソ
   
 ## <a name="autoscale-metrics"></a>自動スケーリング メトリック
 
-自動スケーリングでは、操作を理解するための [4 つのメトリック](../platform/metrics-supported.md#microsoftinsightsautoscalesettings)が提供されます。 
+自動スケーリングでは、操作を理解するための [4 つのメトリック](../essentials/metrics-supported.md#microsoftinsightsautoscalesettings)が提供されます。 
 
 - **実際のメトリック値** - スケール アクションを実行するために選択したメトリックの値。自動スケーリング エンジンによって表示または計算されます。 1 つの自動スケーリング設定に複数のルールを設定できるため、"メトリック ソース" をディメンションとして使用して、複数のメトリック ソースをフィルター処理できます。
 - **メトリックのしきい値** - スケール アクションを実行するために設定するしきい値。 1 つの自動スケーリング設定に複数のルールを設定できるため、"メトリック ルール" をディメンションとして使用して、複数のメトリック ソースをフィルター処理できます。
 - **実際の容量** - 自動スケーリング エンジンから見たターゲット リソースのアクティブなインスタンス数。
 - **スケール アクション開始** - 自動スケーリング エンジンによって開始されるスケールアウトおよびスケールイン アクションの数。 スケールアウトとスケールイン アクションでフィルター処理できます。
 
-[メトリックス エクスプローラー](../platform/metrics-getting-started.md) を使用すると、上記のメトリックをすべて 1 か所でグラフ化できます。 グラフには次が表示されます。
+[メトリックス エクスプローラー](../essentials/metrics-getting-started.md) を使用すると、上記のメトリックをすべて 1 か所でグラフ化できます。 グラフには次が表示されます。
 
   - 実際のメトリック
   - 自動スケーリング エンジンから見た/計算されたメトリック
@@ -87,7 +87,7 @@ Azure Monitor 自動スケーリングを使用すると、適切な量のリソ
  - **実際の容量** (紫色) は、自動スケーリング エンジンによって検出されたインスタンス数を示します。 
  - **メトリックのしきい値** (明るい緑) は 10 に設定されています。 
 
-複数のスケール アクション ルールがある場合は、[分割] を使用するか、メトリックス エクスプローラー グラフの **[フィルターの追加]** オプションを選択して、特定のソースまたはルールでメトリックを確認できます。 メトリック グラフの分割の詳細については、[メトリック グラフの高度な機能 - 分割](../platform/metrics-charts.md#apply-splitting)に関する記事を参照してください。
+複数のスケール アクション ルールがある場合は、[分割] を使用するか、メトリックス エクスプローラー グラフの **[フィルターの追加]** オプションを選択して、特定のソースまたはルールでメトリックを確認できます。 メトリック グラフの分割の詳細については、[メトリック グラフの高度な機能 - 分割](../essentials/metrics-charts.md#apply-splitting)に関する記事を参照してください。
 
 ## <a name="example-3---understanding-autoscale-events"></a>例 3 - 自動スケーリング イベントについて
 
@@ -97,13 +97,13 @@ Azure Monitor 自動スケーリングを使用すると、適切な量のリソ
 
 ## <a name="autoscale-resource-logs"></a>自動スケーリングのリソース ログ
 
-他の Azure リソースと同じように、自動スケーリング サービスは[リソース ログ](../platform/platform-logs-overview.md)を提供します。 イベント ログには、次の 2 つがあります。
+他の Azure リソースと同じように、自動スケーリング サービスは[リソース ログ](../essentials/platform-logs-overview.md)を提供します。 イベント ログには、次の 2 つがあります。
 
 - **自動スケーリング評価** - 自動スケーリング エンジンでは、チェックを行うたびに、単一の条件評価ごとにログ エントリが記録されます。  エントリには、メトリックの実際の値、評価されたルール、評価の結果がスケール アクションであったかどうかに関する詳細が含まれます。
 
 - **自動スケーリング アクション** - エンジンは、自動スケーリング サービスによって開始されるスケール アクション イベントと、スケール アクションの結果 (成功、失敗、および自動スケーリング サービスから見たスケーリングの数) を記録します。
 
-サポートされている Azure Monitor サービスと同様に、[[診断設定]](../platform/diagnostic-settings.md) を使用して、ログを次へルーティングできます。
+サポートされている Azure Monitor サービスと同様に、[[診断設定]](../essentials/diagnostic-settings.md) を使用して、ログを次へルーティングできます。
 
 - Log Analytics ワークスペースへ (詳細な分析のため)
 - Event Hubs の後に Azure 以外のツールへ
@@ -206,4 +206,4 @@ AutoscaleScaleActionsLog
 詳細については、[自動スケーリングのリソース ログ](autoscale-resource-log-schema.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-[自動スケーリングのベストプラクティス](autoscale-best-practices.md)に関する情報を参照してください。 
+[自動スケーリングのベストプラクティス](autoscale-best-practices.md)に関する情報を参照してください。

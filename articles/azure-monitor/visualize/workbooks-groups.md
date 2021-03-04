@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 2614117d153b1db50d4487bf4045a63af430f3ac
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b36dec79e5d60d97c11b9f8c74790527e1bd19fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600979"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731359"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>ブックでグループを使用する方法
 
@@ -143,5 +143,5 @@ ms.locfileid: "100600979"
 6. 次に、グループ ステップをテンプレートから読み込むように変更し、手順 5 で作成したブックまたはテンプレートに [テンプレート ID] フィールドを設定します。 ブック ID を使用するには、ソースが共有ブックのリソース ID である必要があります。 *[読み込み]* を押すと、そのグループの内容が、この外部ブック内に保存されるのではなく、そのサブテンプレートから読み込まれるようになります。
 
 ## <a name="next-steps"></a>次のステップ
-- [ブックの概要](../platform/workbooks-overview.md)
+- [ブックの概要](./workbooks-overview.md)
 - [ブックでの JSONPath の使用](workbooks-jsonpath.md)

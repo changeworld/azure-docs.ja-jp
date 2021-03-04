@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386749"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735048"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
@@ -70,9 +70,9 @@ ms.locfileid: "100386749"
 
 | プロジェクト名 | 説明 |
 |-|-|
-| [Azure Maps Cesium プラグイン](https://github.com/azure-samples/azure-maps-cesium) | [タイル レイヤー](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)や[ジオコーディング サービス](https://docs.microsoft.com/rest/api/maps/search)など、Azure Maps サービスを簡単に統合できる [Cesium JS](https://cesium.com/cesiumjs/) プラグイン。 |
-| [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet) | [Azure Maps タイル サービス](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [Leaflet](https://leafletjs.com/) JavaScript プラグイン。 |
- | [Azure Maps OpenLayers プラグイン](https://github.com/azure-samples/azure-maps-openlayers) | [Azure Maps タイル サービス](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [OpenLayers](https://www.openlayers.org/) JavaScript プラグイン。 |
+| [Azure Maps Cesium プラグイン](https://github.com/azure-samples/azure-maps-cesium) | [タイル レイヤー](/rest/api/maps/renderv2/getmaptilepreview)や[ジオコーディング サービス](/rest/api/maps/search)など、Azure Maps サービスを簡単に統合できる [Cesium JS](https://cesium.com/cesiumjs/) プラグイン。 |
+| [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet) | [Azure Maps タイル サービス](/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [Leaflet](https://leafletjs.com/) JavaScript プラグイン。 |
+ | [Azure Maps OpenLayers プラグイン](https://github.com/azure-samples/azure-maps-openlayers) | [Azure Maps タイル サービス](/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [OpenLayers](https://www.openlayers.org/) JavaScript プラグイン。 |
 
 **ツールとリソース**
 

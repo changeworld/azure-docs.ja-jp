@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054959"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726395"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -751,7 +751,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ルート パラメーターを使用すると、関数に対して `invoke_URL_template` が自動的に作成されます。 クライアントは、URL を使って関数を呼び出すときにその URL に渡す必要があるパラメーターについて、URL テンプレートを使用して理解することができます。 [Azure portal](https://portal.azure.com) で HTTP によってトリガーされる関数のいずれかに移動し、 **[関数の URL の取得]** を選択します。
 
-[List 関数](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions)または [Get 関数](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)に対して Azure Resource Manager API を使用して、`invoke_URL_template` にプログラムでアクセスすることができます。
+[List 関数](/rest/api/appservice/webapps/listfunctions)または [Get 関数](/rest/api/appservice/webapps/getfunction)に対して Azure Resource Manager API を使用して、`invoke_URL_template` にプログラムでアクセスすることができます。
 
 ## <a name="working-with-client-identities"></a>クライアント ID の操作
 

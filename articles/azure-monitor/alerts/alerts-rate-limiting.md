@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: fc49e923676b63e301b2d63b4274ae11b3043906
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 717f4087dabbb3286607498ab7f04bcbcce663dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737275"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>音声、SMS、電子メール、Azure アプリ プッシュ通知、webhook 投稿のレート制限
 レート制限とは、特定の電話番号、電子メール アドレス、またはデバイスに送信される通知が多すぎる場合に、通知が一時的に停止されることです。 レート制限によって、アラートを管理しやすくなりアクション可能な状態が保証されます。
@@ -31,5 +31,5 @@ ms.locfileid: "100600698"
 
 ## <a name="next-steps"></a>次のステップ ##
 * 詳細については、「[SMS アラート動作](alerts-sms-behavior.md)」を参照してください。
-* [アクティビティ ログ アラートの概要](../platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
+* [アクティビティ ログ アラートの概要](./alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
 * [サービスの正常性通知が投稿されるたびにアラートを設定](../../service-health/alerts-activity-log-service-notifications-portal.md)する方法について学習します。

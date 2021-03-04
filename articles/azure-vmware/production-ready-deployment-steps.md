@@ -2,13 +2,13 @@
 title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/22/2021
+ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762868"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733664"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -51,12 +51,6 @@ Azure VMware Solution のデプロイ時に使用するサイズ ホストを特
 Azure VMware Solution プライベート クラウドにデプロイするホストの数を定義します。  最小ホスト数は 3 で、最大はクラスターあたり 16 個です。  詳細については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#clusters)に関するドキュメントを参照してください。
 
 当初のデプロイ数を超える数にする必要がある場合は、後でいつでもクラスターを拡張できます。
-
-## <a name="vcenter-admin-password"></a>vCenter 管理者パスワード
-vCenter 管理者パスワードを定義します。  デプロイ時に vCenter 管理者パスワードを作成します。 パスワードは、vCenter ビルド時の cloudadmin@vsphere.local 管理者アカウントに対するものです。 これを使用して vCenter にサインインします。
-
-## <a name="nsx-t-admin-password"></a>NSX-T 管理者パスワード
-NSX-T 管理者パスワードを定義します。  デプロイ時に NSX-T 管理者パスワードを作成します。 パスワードは、NSX のビルド時に、NSX アカウントの管理者ユーザーに割り当てられます。 これを使用して NSX-T Manager にログインします。
 
 ## <a name="ip-address-segment"></a>IP アドレス セグメント
 

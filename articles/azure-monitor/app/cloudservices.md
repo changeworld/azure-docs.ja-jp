@@ -4,15 +4,15 @@ description: Application Insights で Web と worker ロールを効果的に監
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: ccd863db55ef0ff9f4051947321321c8b01430c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920690"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573869"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
-[Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](../platform/diagnostics-extension-overview.md)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
+[Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](../agents/diagnostics-extension-overview.md)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
 ![概要ダッシュボード](./media/cloudservices/overview-graphs.png)
 
@@ -32,7 +32,7 @@ Application Insights を使ってクラウド サービスを監視する最も�
 
 このオプションで十分な場合、これで完了です。 
 
-次の手順は、[アプリからのメトリックの表示](../platform/metrics-charts.md)、[Analytics によるデータのクエリの実行](../log-query/log-query-overview.md)です。 
+次の手順は、[アプリからのメトリックの表示](../essentials/metrics-charts.md)、[Analytics によるデータのクエリの実行](../logs/log-query-overview.md)です。 
 
 ブラウザーでパフォーマンスを監視するには、[可用性テスト](./monitor-web-app-availability.md)を設定して、[お客様の Web ページにコードを追加](./javascript.md)することもできます。
 
@@ -95,7 +95,7 @@ Application Insights を使ってクラウド サービスを監視する最も�
 
 これにより、お客様の Application Insights インストルメンテーション キーが *ServiceConfiguration.\*.cscfg* という名前のファイルに挿入されます。 こちらに[サンプル コード](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)があります。
 
-Application Insights に送信される診断情報のレベルを変更したい場合、[ *.cscfg* ファイルを直接編集することで](../platform/diagnostics-extension-to-application-insights.md)実行できます。
+Application Insights に送信される診断情報のレベルを変更したい場合、[ *.cscfg* ファイルを直接編集することで](../agents/diagnostics-extension-to-application-insights.md)実行できます。
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>各プロジェクトに SDK をインストールする
 このオプションでは、カスタム ビジネス テレメトリを任意のロールに追加できます。 お客様のアプリの使用状況とパフォーマンスについてより詳しい分析が得られます。
@@ -167,7 +167,7 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 
 1. お客様が作成した Application Insights リソースを開きます。
 
-   個別のデータ ポイントは [[検索]][diagnostic] に表示され、集計されたデータは [[メトリック エクスプローラー]](../platform/metrics-charts.md) に表示されます。
+   個別のデータ ポイントは [[検索]][diagnostic] に表示され、集計されたデータは [[メトリック エクスプローラー]](../essentials/metrics-charts.md) に表示されます。
 
 1. さらにテレメトリを追加し (以下のセクションを参照)、お客様のアプリを発行して、ライブの診断と使用状況のフィードバックを取得します。 
 
@@ -180,17 +180,17 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 詳細については、「 [トラブルシューティング][qna]」を参照してください。
 
 ## <a name="view-azure-diagnostics-events"></a>Azure 診断イベントを表示する
-Application Insights の [Azure 診断](../platform/diagnostics-extension-overview.md)情報は、以下の場所にあります。
+Application Insights の [Azure 診断](../agents/diagnostics-extension-overview.md)情報は、以下の場所にあります。
 
 * パフォーマンス カウンターは、カスタム メトリックとして表示されます。 
 * Windows イベント ログは、トレースとカスタム イベントとして表示されます。
 * アプリケーション ログ、ETW ログ、診断インフラストラクチャ ログは、トレースとして表示されます。
 
-パフォーマンス カウンターおよびイベント数を表示するには、[[メトリックス エクスプローラー]](../platform/metrics-charts.md) を開き、次のグラフを追加します。
+パフォーマンス カウンターおよびイベント数を表示するには、[[メトリックス エクスプローラー]](../essentials/metrics-charts.md) を開き、次のグラフを追加します。
 
 ![Azure 診断データ](./media/cloudservices/23-wad.png)
 
-Azure 診断によって送信されるさまざまなトレース ログ全体を検索するには、[[検索]](./diagnostic-search.md) または [Analytics クエリ](../log-query/log-analytics-tutorial.md)を使用します。 たとえば、ハンドルされない例外が発生し、それによってロールがクラッシュしてリサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 [検索] を使用して Windows イベント ログのエラーを表示し、例外の完全なスタック トレースを取得できます。 これは、問題の根本原因の発見に役立ちます。
+Azure 診断によって送信されるさまざまなトレース ログ全体を検索するには、[[検索]](./diagnostic-search.md) または [Analytics クエリ](../logs/log-analytics-tutorial.md)を使用します。 たとえば、ハンドルされない例外が発生し、それによってロールがクラッシュしてリサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 [検索] を使用して Windows イベント ログのエラーを表示し、例外の完全なスタック トレースを取得できます。 これは、問題の根本原因の発見に役立ちます。
 
 ![Azure 診断の検索](./media/cloudservices/25-wad.png)
 
@@ -261,7 +261,7 @@ worker ロールでこのビューを実現するには、カスタムのテレ�
 
 お客様のシステムで他の Azure サービス (Stream Analytics など) が使用されている場合は、それらの監視グラフも含めます。 
 
-クライアントのモバイル アプリがある場合は、[App Center](../learn/mobile-center-quickstart.md) を使用してください。 [Analytics](../log-query/log-query-overview.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
+クライアントのモバイル アプリがある場合は、[App Center](../app/mobile-center-quickstart.md) を使用してください。 [Analytics](../logs/log-query-overview.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
 
 ## <a name="example"></a>例
 [この例](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) では、1 つの Web ロールと 2 つの worker ロールが含まれたサービスを監視します。
@@ -274,7 +274,7 @@ worker ロールでこのビューを実現するには、カスタムのテレ�
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次のステップ
-* [Application Insights に Azure Diagnostics を送信するための構成](../platform/diagnostics-extension-to-application-insights.md)
+* [Application Insights に Azure Diagnostics を送信するための構成](../agents/diagnostics-extension-to-application-insights.md)
 * [Application Insights リソースの自動的な作成](./powershell.md)
 * [Azure 診断の自動化](./powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

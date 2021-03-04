@@ -1,22 +1,21 @@
 ---
 title: Azure Network Performance Monitor の価格についてよくあるご質問 | Microsoft Docs
 description: よくあるご質問 - Azure Network Performance Monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: 4b9e8a81095a63c667925f8b51d9f9f2aa081f8d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 56163d3267a69099cbf6a18266168e9198ea04c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832880"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717436"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Network Performance Monitor の価格の変更
 
 > [!IMPORTANT]
-> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)します。
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)します。
 
 お客様のフィードバックを参考にして、最近、Azure のさまざまな監視サービスに[新しい価格エクスペリエンス](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)が導入されました。 この記事では、Azure [Network Performance Monitor](../../networking/network-monitoring-overview.md) (NPM) に関連する価格の変更を、読みやすい質問と回答の形式で説明します。
 

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: a95cacafc5b1d00b1e4d04fd84cdda2de72b6a59
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4545c3529baf92e2f90d9289ec6828ad9a720e3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738006"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でマッピング データ フローをトラブルシューティングする
 
@@ -132,7 +132,7 @@ ms.locfileid: "100523007"
  
 - **メッセージ**:実行中に、クラスターにメモリ不足の問題が発生しました。コア数がより大きく、メモリが最適化されたコンピューティングの種類で統合ランタイムを使用して、もう一度お試しください
 - **原因**:クラスターのメモリがメモリ不足しています。
-- **推奨事項**:デバッグ クラスターは、開発を目的とするものではありません。 データ サンプリング、適切なコンピューティングの種類、およびサイズを利用して、ペイロードを実行します。 最適なパフォーマンスを得るためにデータフローをチューニングするには、[データフロー パフォーマンスに関するガイド](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance)を参照してください。
+- **推奨事項**:デバッグ クラスターは、開発を目的とするものではありません。 データ サンプリング、適切なコンピューティングの種類、およびサイズを利用して、ペイロードを実行します。 最適なパフォーマンスを得るためにデータフローをチューニングするには、[データフロー パフォーマンスに関するガイド](./concepts-data-flow-performance.md)を参照してください。
 
 ### <a name="error-code-df-executor-illegalargument"></a>エラー コード:DF-Executor-illegalArgument
 - **メッセージ**: リンクされたサービスのアクセス キーが正しいことを確認してください。
@@ -182,7 +182,7 @@ ms.locfileid: "100523007"
 
 - **メッセージ**: 無効な範囲が指定されています。
 - **原因**:[Undetermined]\(不明\)
-- **推奨事項**:パラメーター値を確認し、有効な範囲を参照渡しで指定してください。[Excel のプロパティ](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties)。
+- **推奨事項**:パラメーター値を確認し、有効な範囲を参照渡しで指定してください。[Excel のプロパティ](./format-excel.md#dataset-properties)。
 
 - **メッセージ**: 無効な Excel ファイルが指定されていますが、.xlsx と .xls のみがサポートされています
 - **原因**:[Undetermined]\(不明\)
@@ -204,7 +204,7 @@ ms.locfileid: "100523007"
 
 ### <a name="error-code-4502"></a>エラー コード:4502
 - **メッセージ**: Integration Runtime での調整のために障害を発生させている、多くの同時 MappingDataflow 実行があります。
-- **原因**:Integration Runtime で大量のデータフロー アクティビティが同時に実行されています。 [Azure Data Factory の制限事項](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#data-factory-limits)の詳細をご確認ください。
+- **原因**:Integration Runtime で大量のデータフロー アクティビティが同時に実行されています。 [Azure Data Factory の制限事項](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)の詳細をご確認ください。
 - **推奨事項**:多くのデータ フロー アクティビティを並行して実行する場合は、複数の統合ランタイムに分散してください。
 
 

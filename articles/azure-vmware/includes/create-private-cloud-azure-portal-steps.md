@@ -3,12 +3,12 @@ title: Azure VMware Solution のプライベート クラウドを作成する
 description: Azure portal を使用して、Azure VMware Solution のプライベート クラウドを作成する手順です。
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: 983dccfaa9ea43955bfecc68bbbe432c579d51d1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653137"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725406"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -26,8 +26,6 @@ ms.locfileid: "100653137"
    | **リソース名** | Azure VMware Solution のプライベート クラウドの名前。 |
    | **SKU** | 次の SKU 値を選択します。AV36 |
    | **ホスト** | プライベート クラウド クラスターに追加するホストの数。 既定値は 3 です。この値は、デプロイ後に増減できます。  |
-   | **vCenter 管理者パスワード** | クラウド管理者のパスワードを入力します。 |
-   | **NSX-T Manager のパスワード** | NSX-T 管理者のパスワードを入力します。 |
    | **アドレス ブロック** | プライベート クラウドの CIDR ネットワークの IP アドレス ブロックを入力します (例: 10.175.0.0/22)。 |
    | **Virtual Network** | Virtual Network を選択するか、Azure VMware Solution プライベート クラウド用に新しいものを作成します。  |
 

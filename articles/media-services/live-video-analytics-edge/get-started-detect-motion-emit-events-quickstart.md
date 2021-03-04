@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d9f2637166c3807e36f4304e9394bf2ecf91d88c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 57edf1721249f839f5c781756b3e09bf59888dab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573808"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730288"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -69,10 +69,10 @@ ms.locfileid: "99573808"
     1. **ネットワーク インターフェイス** - Azure Virtual Machine がインターネットや Azure、その他各種リソースと通信できるようにします。
     1. **bastion 接続** - ブラウザーと Azure portal を使用して仮想マシンに接続することができます。
     1. **パブリック IP アドレス** - Azure リソースからインターネットへの通信と、公開されている Azure サービスへの通信が可能になります。
-    1. **Azure ネットワーク** - 仮想マシンなどのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 詳細については、[仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)に関するページを参照してください。
+    1. **Azure ネットワーク** - 仮想マシンなどのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 詳細については、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
     1. **IoT Hub** - IoT アプリケーションと IoT Edge モジュール、さらにそれが管理するデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。
     1. **Media Services アカウント** - Azure におけるメディア コンテンツの管理とストリーミングに使用されます。
-    1. **ストレージ アカウント** - 1 つのプライマリ ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数のセカンダリ ストレージ アカウントを持つことができます。 詳細については、[Azure Storage アカウントの Azure Media Services アカウント](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept)に関するページを参照してください。
+    1. **ストレージ アカウント** - 1 つのプライマリ ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数のセカンダリ ストレージ アカウントを持つことができます。 詳細については、[Azure Storage アカウントの Azure Media Services アカウント](../latest/storage-account-concept.md)に関するページを参照してください。
     1. **コンテナー レジストリ** - プライベート Docker コンテナー イメージおよび関連する成果物の格納と管理に使用されます。
 
 スクリプトの出力では、リソースの表に IoT ハブ名が一覧表示されます。 リソースの種類 **`Microsoft.Devices/IotHubs`** を探し、名前を書き留めます。 この名前は次の手順で必要になります。  

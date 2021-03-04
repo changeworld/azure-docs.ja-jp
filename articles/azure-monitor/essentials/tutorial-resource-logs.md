@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 88138cc1366dcef68aeccf652af05704e72c8e15
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3c3eff32120438fd891cb32fe98d73424f82b7f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597546"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734147"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>チュートリアル:Azure リソースからリソース ログを収集して分析する
 
@@ -93,7 +93,7 @@ Log Analytics ワークスペースからデータを取得するには、Kusto 
 
 
 5. クエリを入力し、 **[実行]** をクリックして結果を調べます。 
-6. ログ クエリの記述に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](../log-query/get-started-queries.md)」を参照してください。
+6. ログ クエリの記述に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](../logs/get-started-queries.md)」を参照してください。
 
     ![Log query](media/tutorial-resource-logs/log-query-1.png)
 
@@ -104,4 +104,4 @@ Log Analytics ワークスペースからデータを取得するには、Kusto 
 Log Analytics ワークスペースにリソース ログを収集する方法を学習したので、このデータを分析するためのログ クエリの作成に関するチュートリアルを済ませてくさい。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor でログ クエリの使用を開始する](../log-query/get-started-queries.md)
+> [Azure Monitor でログ クエリの使用を開始する](../logs/get-started-queries.md)

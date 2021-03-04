@@ -7,12 +7,12 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: e541869d040cc1eead2d295583c42016b64d5edb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: db8f8628f77ef2a04a7e6d42d6470f254e458e01
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708086"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>イベント ハブまたは外部パートナーへの Azure 監視データのストリーム配信
 
@@ -58,10 +58,9 @@ Azure Monitor で監視データをイベント ハブにルーティングす�
 | LogRhythm | いいえ| LogRhythm を設定してイベント ハブからログを収集するための手順については、[こちら](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)を参照してください。 
 |Logz.io | はい | 詳細については、[Azure で実行される Java アプリ用の Logz.io を使用した監視とログ記録の概要](/azure/developer/java/fundamentals/java-get-started-with-logzio)に関するページを参照してください。
 
-他のパートナーも利用できる場合があります。 すべての Azure Monitor パートナーとその機能の詳細な一覧については、「[Azure Monitor パートナーとの統合](../platform/partners.md)」を参照してください。
+他のパートナーも利用できる場合があります。 すべての Azure Monitor パートナーとその機能の詳細な一覧については、「[Azure Monitor パートナーとの統合](../partners.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [ストレージ アカウントにアクティビティ ログをアーカイブする](./activity-log.md#legacy-collection-methods)
 * [Azure アクティビティ ログの概要を確認する](../essentials/platform-logs-overview.md)
 * [アクティビティ ログ イベントに基づいてアラートを設定する](../alerts/alerts-log-webhook.md)
-

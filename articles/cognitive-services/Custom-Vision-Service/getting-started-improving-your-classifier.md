@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096533"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731087"
 ---
 # <a name="how-to-improve-your-custom-vision-model"></a>Custom Vision のモデルを改善する方法
 
-このガイドでは、Custom Vision Service のモデルの品質を向上させる方法について説明します。 [分類子](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)または[オブジェクト検出器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector)の品質は、そこに提供するラベル付きデータの量、品質、多様性や、データセット全体のバランスがどれだけとれているかに依存します。 適切なモデルには、そのモデルに送信されるものを代表する、バランスのとれたトレーニング データセットがあります。 このようなモデルを構築するプロセスは反復的です。予想される結果に到達するために、数回のトレーニングが必要になることが一般的です。
+このガイドでは、Custom Vision Service のモデルの品質を向上させる方法について説明します。 [分類子](./getting-started-build-a-classifier.md)または[オブジェクト検出器](./get-started-build-detector.md)の品質は、そこに提供するラベル付きデータの量、品質、多様性や、データセット全体のバランスがどれだけとれているかに依存します。 適切なモデルには、そのモデルに送信されるものを代表する、バランスのとれたトレーニング データセットがあります。 このようなモデルを構築するプロセスは反復的です。予想される結果に到達するために、数回のトレーニングが必要になることが一般的です。
 
 より正確なモデルのトレーニングに役立つ一般的なパターンを次に示します。
 

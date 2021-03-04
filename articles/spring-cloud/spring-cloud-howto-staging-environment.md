@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 82a8da9d2663b03d89ad0819ec6d918bebaf5f5e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d610e79773dabb9942352747f1f032b17730ffca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574731"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738754"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure Spring Cloud でステージング環境を設定する
 
@@ -23,7 +23,7 @@ ms.locfileid: "99574731"
 ## <a name="prerequisites"></a>前提条件
 
 * *Standard* **価格レベル** の Azure Spring Cloud インスタンス。
-* Azure CLI [Azure Spring Cloud 拡張機能](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)。
+* Azure CLI [Azure Spring Cloud 拡張機能](/cli/azure/azure-cli-extensions-overview)。
 
 この記事では、Spring Initializer からビルドされたアプリケーションを使用します。 この例に別のアプリケーションを使用したい場合は、ステージング環境のデプロイを運用環境と区別するために、そのアプリケーションの公開部分に簡単な変更を加える必要があります。
 

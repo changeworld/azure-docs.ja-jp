@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545915"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703093"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー):Azure portal
 
@@ -89,8 +89,7 @@ Azure Digital Twins でのルーティングでサポートされているエン
 
 ### <a name="assign-the-role"></a>ロールを割り当てる
 
->[!NOTE]
-> このセクションは、Azure リソースへのユーザー アクセスを管理するためのアクセス許可を持つ Azure ユーザーが行う必要があります (アクセス許可の付与と委任を含みます)。 この要件を満たす一般的なロールは、*所有者*、*アカウント管理者*、*ユーザー アクセス管理者* と *共同作成者* の組み合わせです。 Azure Digital Twins のロールのアクセス許可要件に関する詳細については、"[*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements)" に関する記事を参照してください。
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 ID にロールを割り当てるには、最初に [Azure portal](https://portal.azure.com) を開きます。
 
@@ -116,7 +115,7 @@ ID にロールを割り当てるには、最初に [Azure portal](https://porta
 
 詳細の入力が終わったら、 **[保存]** を選択します。
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>ID ベースの承認を使用してエンドポイントを作成する
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>ID ベースの認証を使用してエンドポイントを作成する
 
 Azure Digital Twins インスタンスのシステム マネージド ID を設定し、それに適切なロールを割り当てた後は、認証にその ID を使用できる Azure Digital Twins [エンドポイント](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)を作成できます。 このオプションは、種類が Event Hubs と Service Bus のエンドポイントでのみ使用できます (Event Grid ではサポートされていません)。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 02/08/2021
-ms.openlocfilehash: 92d75289fd4459db8c469a4cb562fe28e8aab779
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989000"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710323"
 ---
 # <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Cognitive Services ドキュメント:2021 年 1 月 1 日から 2021 年 1 月 31 日の新機能
 
@@ -29,31 +29,31 @@ ms.locfileid: "99989000"
 
 **新しい記事**
 
-- [チュートリアル:Azure Data Factory を使用したフォーム データの一括抽出](/azure/cognitive-services/form-recognizer/tutorial-bulk-processing.md)
+- [チュートリアル:Azure Data Factory を使用したフォーム データの一括抽出](./form-recognizer/tutorial-bulk-processing.md)
 
 **更新された記事**
 
-- [Form Recognizer とは](/azure/cognitive-services/form-recognizer/overview.md)
+- [Form Recognizer とは](./form-recognizer/overview.md)
 
 ## <a name="immersive-reader"></a>イマーシブ リーダー
 
 **更新された記事**
 
-- [イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する](./immersive-reader/how-to-create-immersive-reader.md)
 
 ## <a name="personalizer"></a>Personalizer
 
 **更新された記事**
 
-- [フィーチャーはアクションとコンテキストに関する情報です。](/azure/cognitive-services/personalizer/concepts-features.md)
+- [フィーチャーはアクションとコンテキストに関する情報です。](./personalizer/concepts-features.md)
 
 ## <a name="text-analytics"></a>Text Analytics
 
 **更新された記事**
 
-- [Text Analytics API v3 の言語のサポート](/azure/cognitive-services/text-analytics/language-support.md)
-- [Text Analytics API のバージョン 3.x への移行](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [Text Analytics API の新機能](/azure/cognitive-services/text-analytics/whats-new.md)
+- [Text Analytics API v3 の言語のサポート](./text-analytics/language-support.md)
+- [Text Analytics API のバージョン 3.x への移行](./text-analytics/migration-guide.md)
+- [Text Analytics API の新機能](./text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>コミュニティの共同作成者
 

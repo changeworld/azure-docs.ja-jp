@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/22/2020
-ms.openlocfilehash: b877cba794f97dd4736e30a72d91695774c8e688
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9352b27002162e08d53bc8166ceddd010be3c8d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600683"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738652"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
 この記事では、Azure Monitor 内のログ アラートに関する一般的な問題の解決方法について説明します。 また、ログ アラートの機能や構成でよく発生する問題の解決策も紹介しています。
 
-ログ アラートを使用すると、ユーザーは [Log Analytics](../log-query/log-analytics-tutorial.md) クエリを使用して、設定した頻度で毎回リソース ログを評価し、結果に基づいてアラートを発生させることができます。 [アクション グループ](../platform/action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
+ログ アラートを使用すると、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定した頻度で毎回リソース ログを評価し、結果に基づいてアラートを発生させることができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](alerts-unified-log.md)。
 
 > [!NOTE]
 > この記事では、トリガーされ Azure portal に表示されたアラート ルールの通知が、関連付けられているアクション グループで対処されなかった場合については考慮していません。 そのような場合は、[ここ](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)でトラブルシューティングに関する詳細を参照してください。
@@ -26,7 +26,7 @@ ms.locfileid: "100600683"
 
 ### <a name="data-ingestion-time-for-logs"></a>ログのデータ インジェストの時間
 
-Azure Monitor では、世界中にわたる顧客のテラバイト単位のログを処理します。それにより、[ログ インジェストの待機時間](../platform/data-ingestion-time.md)が発生する可能性があります。
+Azure Monitor では、世界中にわたる顧客のテラバイト単位のログを処理します。それにより、[ログ インジェストの待機時間](../logs/data-ingestion-time.md)が発生する可能性があります。
 
 ログは半構造化されたデータであり、本質的にメトリックよりも潜在的な状態で存在します。 発せられたアラートの遅延が 4 分以上発生している場合は、[メトリック アラート](alerts-metric-overview.md)の使用を検討してください。 [ログのメトリック アラート](alerts-metric-logs.md)を使用して、ログからメトリック ストアにデータを送信できます。
 
@@ -60,7 +60,7 @@ Azure Monitor では、世界中にわたる顧客のテラバイト単位のロ
 
 ### <a name="alert-triggered-by-partial-data"></a>一部のデータによってアラートがトリガーされる
 
-Azure Monitor では、世界中にわたる顧客のテラバイト単位のログを処理します。それにより、[ログ インジェストの待機時間](../platform/data-ingestion-time.md)が発生する可能性があります。
+Azure Monitor では、世界中にわたる顧客のテラバイト単位のログを処理します。それにより、[ログ インジェストの待機時間](../logs/data-ingestion-time.md)が発生する可能性があります。
 
 ログは半構造化されたデータであり、本質的にメトリックよりも潜在的な状態で存在します。 発せられたアラートで、誤発生が多数起きている場合は、[メトリック アラート](alerts-metric-overview.md)の使用を検討してください。 [ログのメトリック アラート](alerts-metric-logs.md)を使用して、ログからメトリック ストアにデータを送信できます。
 
@@ -87,7 +87,7 @@ SecurityEvent
 
 クエリにアラート ロジックを追加する必要はなく、それを行うと問題を引き起こす可能性さえあります。 上の例では、クエリに `count` を含めると、アラート サービスによって `count` の `count` が行われるため、常に値 1 が返されます。
 
-最適化されたクエリは、ログ アラート サービスによって実行されるものです。 変更されたクエリは、Log Analytics の[ポータル](../log-query/log-query-overview.md)または [API](/rest/api/loganalytics/) で実行できます。
+最適化されたクエリは、ログ アラート サービスによって実行されるものです。 変更されたクエリは、Log Analytics の[ポータル](../logs/log-query-overview.md)または [API](/rest/api/loganalytics/) で実行できます。
 
 ワークスペースと Application Insights の場合は **[実行するクエリ]** という名前で、条件ペインにあります。 他のリソースの種類ではすべて、条件タブで **[最終的なアラート クエリを表示]** を選択します。
 
@@ -108,7 +108,7 @@ Azure Monitor では、連続して失敗する場合は 1 週間後にログ �
 ログ アラート ルールが作成されるときには、クエリの構文が正しいか検証されます。 ただし場合によっては、ログ アラート ルールで指定されたクエリが失敗し始めることがあります。 一般的な理由を以下にいくつか示します。
 
 - ルールが API によって作成され、検証がユーザーによってスキップされました。
-- クエリが[複数のリソースに対して実行](../log-query/cross-workspace-query.md)され、1 つ以上のリソースが削除または移動されました。
+- クエリが[複数のリソースに対して実行](../logs/cross-workspace-query.md)され、1 つ以上のリソースが削除または移動されました。
 - [クエリが失敗する](https://dev.loganalytics.io/documentation/Using-the-API/Errors)のは以下のためです。
     - ログ記録ソリューションが[ワークスペースにデプロイ](../insights/solutions.md#install-a-monitoring-solution)されなかったために、テーブルが作成されていません。
     - クエリのテーブルへのデータ フローが 30 日より長く停止しました。
@@ -219,5 +219,5 @@ Azure Monitor では、連続して失敗する場合は 1 週間後にログ �
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure でのログ アラート](./alerts-unified-log.md)について学習します。
-- [ログ アラートの構成](../log-query/log-query-overview.md)に関する詳細を確認します。
-- [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します
+- [ログ アラートの構成](../logs/log-query-overview.md)に関する詳細を確認します。
+- [ログ クエリ](../logs/log-query-overview.md)についてさらに学習します

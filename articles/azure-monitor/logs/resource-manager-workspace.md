@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f57ff130fcf61ae8f831cda33c9510b37a5880e5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a908709e49bed1e07a5fdfecd165c45f8792987c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597870"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725596"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペース用の Resource Manager テンプレートのサンプル
 この記事には、Azure Monitor で Log Analytics ワークスペースを作成および構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
@@ -824,6 +824,6 @@ ms.locfileid: "100597870"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor の他のサンプル テンプレートを入手します](../samples/resource-manager-samples.md)。
-* [Log Analytics ワークスペースの詳細情報](../learn/quick-create-workspace.md)。
+* [Azure Monitor の他のサンプル テンプレートを入手します](../resource-manager-samples.md)。
+* [Log Analytics ワークスペースの詳細情報](./quick-create-workspace.md)。
 * [エージェント データ ソースの詳細情報](../agents/agent-data-sources.md)。

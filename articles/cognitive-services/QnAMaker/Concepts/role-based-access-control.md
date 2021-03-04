@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: c411250f7d850e56c9c54c27e888cba8f3acfece
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 5d5a580e2b7be4699933b43687dcf164bf8f4a4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700084"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>他の作成者や編集者との共同作業
 
@@ -25,7 +25,7 @@ QnA Maker リソースに設定された Azure ロールベースのアクセス
 * 制御はナレッジ ベース レベルではなくリソース レベルであるため、リソース内のすべてのナレッジ ベースに作成者と編集者をすばやく追加できます。
 
 > [!NOTE]
-> 必ずリソース用のカスタム サブドメインを追加してください。 [カスタム サブドメイン](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)は既定で存在しているはずですが、存在しない場合は追加してください。
+> 必ずリソース用のカスタム サブドメインを追加してください。 [カスタム サブドメイン](../../cognitive-services-custom-subdomains.md)は既定で存在しているはずですが、存在しない場合は追加してください。
 
 ## <a name="access-is-provided-by-a-defined-role"></a>アクセスは定義済みのロールによって提供される
 

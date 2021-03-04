@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: d1f3e59cc88ea9cb30e7eacbd26591e08d71be61
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58db217ca173acbe0356596de916216c4ab7f241
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575242"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715549"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure Front Door でのメトリックとログの監視
 
@@ -25,7 +25,7 @@ Azure Front Door を使用すると、次の方法でリソースを監視でき
 - **メトリック**。 現在、Azure Front Door にはパフォーマンス カウンターを表示するメトリックが 8 つあります。
 - **ログ**。 アクティビティ ログや診断ログでは、リソースのパフォーマンス、アクセス、その他のデータを監視目的で保存または使用することができます。
 
-### <a name="metrics"></a>メトリック
+##  <a name="metrics"></a><a name="metrics"></a>メトリック
 
 メトリックとは、ポータルでパフォーマンス カウンターを表示できるようにする特定の Azure リソース用の機能です。 利用可能な Front Door メトリックは次のとおりです。
 

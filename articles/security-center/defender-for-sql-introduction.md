@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 5d8c5eb385baff4aac450c470fb6103e2fb315f3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 21f07ed76ef0b900a723677acc2bf576649fe861
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590407"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702013"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -43,7 +43,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 - **マシン上の SQL サーバー向け Azure Defender** では、Azure ネイティブの SQL Server の保護を拡張してハイブリッド環境を完全にサポートし、Azure、他のクラウド環境、さらにはオンプレミスのマシンでホストされている SQL サーバー (サポートされているすべてのバージョン) を保護します。
     - [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - オンプレミスの SQL サーバー:
-        - [Azure Arc 対応 SQL Server (プレビュー)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Azure Arc 対応 SQL Server (プレビュー)](/sql/sql-server/azure-arc/overview)
         - [Windows マシン上で実行される SQL Server (Azure Arc なし)](../azure-monitor/agents/agent-windows.md)
 
 

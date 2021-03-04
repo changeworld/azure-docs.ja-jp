@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b3c3d4d474c61cbe472b4122ac2f80f218bf8d
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797248"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646284"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
@@ -42,7 +42,7 @@ ms.locfileid: "98797248"
 | 手順 | 説明 |
 |--------------|-----------------------|
 | 1. |ユーザーが、別のテナントのリソースへのアクセスを要求します。 このリソースで、ユーザーをそのリソース テナント (信頼された IdP) にリダイレクトします。|
-| 2. | リソース テナントで、ユーザーを[外部のメール ワンタイム パスコード (OTP) ユーザー](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode)として識別し、OTP を含むメールをユーザーに送信します。|
+| 2. | リソース テナントで、ユーザーを[外部のメール ワンタイム パスコード (OTP) ユーザー](./one-time-passcode.md)として識別し、OTP を含むメールをユーザーに送信します。|
 | 3. | ユーザーが OTP を取得し、コードを送信します。 リソース テナントで、ユーザーをその CA ポリシーに照らして評価します。
 | 4. | すべての CA ポリシーが満たされると、リソース テナントでトークンを発行し、ユーザーをそのリソースにリダイレクトします。 |
 
@@ -64,7 +64,7 @@ ms.locfileid: "98797248"
 
 5. このシナリオは、Azure AD や個人用 Microsoft アカウント (MSA) など、どの ID でも機能します。 たとえば、Contoso のユーザーがソーシャル ID を使用して認証するとします。
 
-6. Fabrikam は、Azure AD Multi-Factor Authentication をサポートするのに十分な Azure AD Premium ライセンスを保有している必要があります。 その後、Contoso のユーザーはこの Fabrikam のライセンスを使用します。 B2B ライセンスの詳細については、「[Azure AD External Identities の課金モデル](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing)」を参照してください。
+6. Fabrikam は、Azure AD Multi-Factor Authentication をサポートするのに十分な Azure AD Premium ライセンスを保有している必要があります。 その後、Contoso のユーザーはこの Fabrikam のライセンスを使用します。 B2B ライセンスの詳細については、「[Azure AD External Identities の課金モデル](./external-identities-pricing.md)」を参照してください。
 
 >[!NOTE]
 >予測可能性を確保するため、Azure AD Multi-Factor Authentication はリソース テナントで実行されます。
@@ -115,44 +115,43 @@ B2B ゲスト ユーザーの CA ポリシーに影響を与えるさまざま�
 
 ### <a name="device-based-conditional-access"></a>デバイスベースの条件付きアクセス
 
-CA には、ユーザーの[デバイスが準拠しているか、Hybrid Azure AD 参加済みである](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview)ことを要求するオプションがあります。 B2B ゲスト ユーザーは、リソース テナントが自身のデバイスを管理できる場合にのみ、コンプライアンスを満たすことができます。 デバイスを一度に複数の組織で管理することはできません。 B2B ゲスト ユーザーは、オンプレミスの AD アカウントを持っていないため、Hybrid Azure AD 参加を満たすことができません。 ゲスト ユーザーは、自身のデバイスがアンマネージドである場合にのみ、リソース テナントにデバイスを登録して、その後デバイスを準拠させることができます。 その後、ユーザーは許可制御を満たすことができます。
+CA には、ユーザーの[デバイスが準拠しているか、Hybrid Azure AD 参加済みである](../conditional-access/concept-conditional-access-conditions.md#device-state-preview)ことを要求するオプションがあります。 B2B ゲスト ユーザーは、リソース テナントが自身のデバイスを管理できる場合にのみ、コンプライアンスを満たすことができます。 デバイスを一度に複数の組織で管理することはできません。 B2B ゲスト ユーザーは、オンプレミスの AD アカウントを持っていないため、Hybrid Azure AD 参加を満たすことができません。 ゲスト ユーザーは、自身のデバイスがアンマネージドである場合にのみ、リソース テナントにデバイスを登録して、その後デバイスを準拠させることができます。 その後、ユーザーは許可制御を満たすことができます。
 
 >[!Note]
 >外部ユーザーにマネージド デバイスを要求することはお勧めしません。
 
 ### <a name="mobile-application-management-policies"></a>モバイル アプリケーション管理ポリシー
 
-CA の **承認済みクライアント アプリを必須にする** および **アプリの保護ポリシーを必須にする** ポリシーなどの許可制御では、テナントにデバイスを登録する必要があります。 これらの制御は、[iOS および Android デバイス](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms)にのみ適用できます。 しかし、B2B ゲスト ユーザーのデバイスが別の組織によってすでに管理されている場合は、これらの制御をユーザーに適用できません。 モバイル デバイスを一度に複数のテナントに登録することはできません。 モバイル デバイスが別の組織によって管理されている場合、ユーザーはブロックされます。 ゲスト ユーザーは、自身のデバイスがアンマネージドである場合にのみ、リソース テナントにデバイスを登録できます。 その後、ユーザーは許可制御を満たすことができます。  
+CA の **承認済みクライアント アプリを必須にする** および **アプリの保護ポリシーを必須にする** ポリシーなどの許可制御では、テナントにデバイスを登録する必要があります。 これらの制御は、[iOS および Android デバイス](../conditional-access/concept-conditional-access-conditions.md#device-platforms)にのみ適用できます。 しかし、B2B ゲスト ユーザーのデバイスが別の組織によってすでに管理されている場合は、これらの制御をユーザーに適用できません。 モバイル デバイスを一度に複数のテナントに登録することはできません。 モバイル デバイスが別の組織によって管理されている場合、ユーザーはブロックされます。 ゲスト ユーザーは、自身のデバイスがアンマネージドである場合にのみ、リソース テナントにデバイスを登録できます。 その後、ユーザーは許可制御を満たすことができます。  
 
 >[!NOTE]
 >外部ユーザーにアプリ保護ポリシーを要求することはお勧めしません。
 
 ### <a name="location-based-conditional-access"></a>場所ベースの条件付きアクセス
 
-招待側組織でパートナー組織を定義する信頼された IP アドレス範囲を作成できる場合は、IP 範囲に基づく[場所ベースの条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#locations)を適用できます。
+招待側組織でパートナー組織を定義する信頼された IP アドレス範囲を作成できる場合は、IP 範囲に基づく[場所ベースの条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-conditions.md#locations)を適用できます。
 
 **地理的な場所** に基づいてポリシーを適用することもできます。
 
 ### <a name="risk-based-conditional-access"></a>リスクベースの条件付きアクセス
 
-B2B ゲスト ユーザーが許可制御を満たしている場合は、[サインイン リスク ポリシー](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk)が適用されます。 たとえば、組織で、サインイン リスクが中または高のときに Azure AD Multi-Factor Authentication を要求できます。 ただし、ユーザーがリソース テナントで以前に Azure AD Multi-Factor Authentication に登録したことがない場合、そのユーザーはブロックされます。 これは、正当なユーザーのパスワードが侵害された場合に、悪意のあるユーザーが独自の Azure AD Multi-Factor Authentication 資格情報を登録するのを防ぐために行われます。
+B2B ゲスト ユーザーが許可制御を満たしている場合は、[サインイン リスク ポリシー](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)が適用されます。 たとえば、組織で、サインイン リスクが中または高のときに Azure AD Multi-Factor Authentication を要求できます。 ただし、ユーザーがリソース テナントで以前に Azure AD Multi-Factor Authentication に登録したことがない場合、そのユーザーはブロックされます。 これは、正当なユーザーのパスワードが侵害された場合に、悪意のあるユーザーが独自の Azure AD Multi-Factor Authentication 資格情報を登録するのを防ぐために行われます。
 
-ただし、[ユーザー リスク ポリシー](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#user-risk)はリソース テナントで解決できません。 たとえば、リスクの高いゲスト ユーザーに対してパスワードの変更を要求した場合、リソース ディレクトリ内のパスワードをリセットできないため、そのユーザーはブロックされます。
+ただし、[ユーザー リスク ポリシー](../conditional-access/concept-conditional-access-conditions.md#user-risk)はリソース テナントで解決できません。 たとえば、リスクの高いゲスト ユーザーに対してパスワードの変更を要求した場合、リソース ディレクトリ内のパスワードをリセットできないため、そのユーザーはブロックされます。
 
 ### <a name="conditional-access-client-apps-condition"></a>条件付きアクセスのクライアント アプリの条件
 
-[クライアント アプリの条件](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps)は、B2B ゲスト ユーザーに対しても、他の種類のユーザーの場合と同じように動作します。 たとえば、ゲスト ユーザーがレガシ認証プロトコルを使用するのを防ぐことができます。
+[クライアント アプリの条件](../conditional-access/concept-conditional-access-conditions.md#client-apps)は、B2B ゲスト ユーザーに対しても、他の種類のユーザーの場合と同じように動作します。 たとえば、ゲスト ユーザーがレガシ認証プロトコルを使用するのを防ぐことができます。
 
 ### <a name="conditional-access-session-controls"></a>条件付きアクセのセッション制御
 
-[セッション制御](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)は、B2B ゲスト ユーザーに対しても、他の種類のユーザーの場合と同じように動作します。
+[セッション制御](../conditional-access/concept-conditional-access-session.md)は、B2B ゲスト ユーザーに対しても、他の種類のユーザーの場合と同じように動作します。
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、Azure AD B2B コラボレーションに関する以下の記事をご覧ください。
 
-- [Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/external-identities/what-is-b2b)
-- [Identity Protection と B2B ユーザー](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-b2b)
+- [Azure AD B2B コラボレーションとは](./what-is-b2b.md)
+- [Identity Protection と B2B ユーザー](../identity-protection/concept-identity-protection-b2b.md)
 - [External Identities の価格](https://azure.microsoft.com/pricing/details/active-directory/)
-- [よく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/active-directory/external-identities/faq)
-
+- [よく寄せられる質問 (FAQ)](./faq.md)

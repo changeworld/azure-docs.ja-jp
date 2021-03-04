@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 5a26e5d045be78772ee5dc940fcfecd3cfde9dc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f24947eba71588d8b97afafea35f9a0bcab33c86
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603774"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711010"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Monitor からエクスポートされたデータのクエリを実行する (プレビュー)
 Azure Monitor から Azure ストレージ アカウントにデータをエクスポートすると、低コストのリテンション期間が有効になり、ログを別のリージョンに再割り当てすることができます。 Azure Data Explorer を使用して、Log Analytics ワークスペースからエクスポートされたデータのクエリを実行します。 構成されると、ワークスペースから Azure ストレージ アカウントに送信されるサポートされているテーブルが、Azure Data Explorer のデータ ソースとして使用できるようになります。
@@ -30,9 +30,9 @@ Azure Monitor から Azure ストレージ アカウントにデータをエク�
 ## <a name="send-data-to-azure-storage"></a>Azure ストレージにデータを送信する
 Azure Monitor ログは、次のいずれかのオプションを使用して Azure ストレージ アカウントにエクスポートできます。
 
-- Log Analytics ワークスペースのすべてのデータを Azure ストレージ アカウントまたはイベント ハブにエクスポートするには、Azure Monitor ログの Log Analytics ワークスペース データ エクスポート機能を使用します。 「[Azure Monitor の Log Analytics ワークスペース データ エクスポート (プレビュー)](../platform/logs-data-export.md)」を参照してください。
-- ロジック アプリを使用したログ クエリからのスケジュールされたエクスポート。 これはデータ エクスポート機能に似ていますが、フィルター処理または集計されたデータを Azure ストレージに送信できます。 ただし、この方法には[ログ クエリの制限](../service-limits.md#log-analytics-workspaces)が適用されます。「[ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージへデータをアーカイブする](../platform/logs-export-logic-app.md)」を参照してください。
-- ロジック アプリを使用したワンタイム エクスポート。 「[Logic Apps および Power Automate の Azure Monitor Logs コネクタ](../platform/logicapp-flow-connector.md)」を参照してください。
+- Log Analytics ワークスペースのすべてのデータを Azure ストレージ アカウントまたはイベント ハブにエクスポートするには、Azure Monitor ログの Log Analytics ワークスペース データ エクスポート機能を使用します。 「[Azure Monitor の Log Analytics ワークスペース データ エクスポート (プレビュー)](./logs-data-export.md)」を参照してください。
+- ロジック アプリを使用したログ クエリからのスケジュールされたエクスポート。 これはデータ エクスポート機能に似ていますが、フィルター処理または集計されたデータを Azure ストレージに送信できます。 ただし、この方法には[ログ クエリの制限](../service-limits.md#log-analytics-workspaces)が適用されます。「[ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージへデータをアーカイブする](./logs-export-logic-app.md)」を参照してください。
+- ロジック アプリを使用したワンタイム エクスポート。 「[Logic Apps および Power Automate の Azure Monitor Logs コネクタ](./logicapp-flow-connector.md)」を参照してください。
 - PowerShell スクリプトを使用したローカル コンピューターへのワンタイム エクスポート。 「[Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)」を参照してください。
 
 > [!TIP]

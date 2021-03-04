@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: c911b3a2ef927bf000513665dfafd735e3bcf181
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600954"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719867"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Windows イベント ログのデータ ソースを収集する
 Windows イベント ログは、Windows 仮想マシン上の Log Analytics エージェントの最も一般的な[データ ソース](../agents/agent-data-sources.md)の 1 つです。これは、多くのアプリケーションから Windows イベント ログへ書き込みが行われるためです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
 
 > [!IMPORTANT]
-> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](../platform/log-analytics-agent.md)を使用して Windows イベントを収集する方法について説明します。 他のエージェントでは異なるデータが収集され、異なる方法で構成されます。 使用可能なエージェントとそれらを使用して収集できるデータの一覧については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](./log-analytics-agent.md)を使用して Windows イベントを収集する方法について説明します。 他のエージェントでは異なるデータが収集され、異なる方法で構成されます。 使用可能なエージェントとそれらを使用して収集できるデータの一覧については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
 
 ![Windows イベント](media/data-sources-windows-events/overview.png)     
 
@@ -73,5 +73,5 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 
 ## <a name="next-steps"></a>次のステップ
 * 分析のために別の [データ ソース](../agents/agent-data-sources.md) を収集するように Log Analytics を構成します。
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
+* [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * お使いの Windows エージェントから [パフォーマンス カウンターの収集](data-sources-performance-counters.md) を構成します。

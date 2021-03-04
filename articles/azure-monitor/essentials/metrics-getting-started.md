@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d914c9b5f96cf502247d40a913ce8ad4651a4a14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 68a9dd5cb24dda54e867580cf7c1bc869e692833
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600803"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734419"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの概要
 
@@ -29,7 +29,7 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 メトリック グラフを作成するには、ご利用のリソース、リソース グループ、サブスクリプション、または Azure Monitor ビューから、 **[メトリック]** タブを開き、次の手順に従います。
 
-1. [スコープの選択] ボタンをクリックして、リソース スコープ ピッカーを開きます。 これにより、メトリックを表示するリソースを選択できます。 リソースのメニューからメトリックス エクスプローラーを開いた場合、リソースは既に設定されています。 複数のリソースにわたるメトリックを表示する方法については、[こちらの記事を参照](../platform/metrics-dynamic-scope.md)してください。
+1. [スコープの選択] ボタンをクリックして、リソース スコープ ピッカーを開きます。 これにより、メトリックを表示するリソースを選択できます。 リソースのメニューからメトリックス エクスプローラーを開いた場合、リソースは既に設定されています。 複数のリソースにわたるメトリックを表示する方法については、[こちらの記事を参照](./metrics-dynamic-scope.md)してください。
     > ![リソースの選択](./media/metrics-getting-started/scope-picker.png)
 
 2. 一部のリソースについては、名前空間を選択する必要があります。 名前空間は、メトリックを簡単に見つけることができるように整理するために用意された手段です。 たとえば、ストレージ アカウントには、ファイル、テーブル、BLOB、およびキューのメトリックを格納するための個別の名前空間があります。 多くの種類のリソースは、名前空間を 1 つ備えているだけです。
@@ -72,7 +72,7 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 ## <a name="next-steps"></a>次のステップ
 
 * [メトリックス エクスプローラーの高度な機能を確認する](../essentials/metrics-charts.md)
-* [メトリックス エクスプローラーでの複数のリソースの表示](../platform/metrics-dynamic-scope.md)
+* [メトリックス エクスプローラーでの複数のリソースの表示](./metrics-dynamic-scope.md)
 * [メトリックス エクスプローラーのトラブルシューティング](metrics-troubleshoot.md)
-* [Azure サービスで使用可能なメトリックのリストを表示する](../platform/metrics-supported.md)
+* [Azure サービスで使用可能なメトリックのリストを表示する](./metrics-supported.md)
 * [構成されたグラフの例を参照する](../essentials/metric-chart-samples.md)

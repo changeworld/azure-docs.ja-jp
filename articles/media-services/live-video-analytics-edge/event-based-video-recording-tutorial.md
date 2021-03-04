@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ録画をクラウドに記録し、これをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: fda727a1abb488910d52b756455d2b6843e0e8b1
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ea98b4c8981be9fffe7911e4c8402a8f522976f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550254"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702319"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
 
@@ -24,7 +24,7 @@ ms.locfileid: "99550254"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>推奨される事前読み取り  
+## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事  
 
 始める前に、以下の記事をお読みください。
 
@@ -45,14 +45,14 @@ ms.locfileid: "99550254"
     > [!TIP]
     > Docker のインストールを求められる場合があります。 このメッセージは無視してください。
 * 開発マシンにインストールされた [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer)。
-* [Live Video Analytics リソース設定スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)の完了と[環境の設定](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/detect-motion-emit-events-quickstart?pivots=programming-language-csharp#set-up-your-development-environment)
+* [Live Video Analytics リソース設定スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)の完了と[環境の設定](./detect-motion-emit-events-quickstart.md?pivots=programming-language-csharp#set-up-your-development-environment)
 
 これらの手順を完了すると、以下の関連する Azure リソースがご自分の Azure サブスクリプションにデプロイされます。
 
 * Azure IoT Hub
 * Azure ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
+* Azure 上の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
 
 > [!TIP]
 > 作成された Azure リソースで問題が発生した場合は、 **[トラブルシューティング ガイド](troubleshoot-how-to.md#common-error-resolutions)** を参照して、よく発生する問題を解決してください。
@@ -120,8 +120,8 @@ ms.locfileid: "99550254"
     AAD_TENANT_ID="<AAD Tenant ID>"  
     AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
     AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
-    VIDEO_OUTPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/output"  
+    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaedgeuser/samples/input"  
+    VIDEO_OUTPUT_FOLDER_ON_DEVICE="/var/media"  
     APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
     CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
     CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry username>"      
@@ -229,7 +229,7 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {

@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 0ff300a90876841e5a25e4e44ffdaecab2eaee95
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cf079c009e5f6c3ef1ba6f8b22636b9a53b51348
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658729"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689234"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>チュートリアル: GitOps を使用して Azure Arc 対応 Kubernetes クラスターに構成をデプロイする 
 
@@ -26,7 +26,7 @@ ms.locfileid: "101658729"
 
 ## <a name="prerequisites"></a>前提条件
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Azure Arc 対応 Kubernetes に接続された既存のクラスター。
     - まだクラスターを接続していない場合は、[Azure Arc 対応 Kubernetes クラスターの接続に関するクイックスタート](quickstart-connect-cluster.md)をご覧ください。
 - この機能の利点とアーキテクチャについて理解していること。 詳細については、[Azure Arc 対応 Kubernetes での構成と GitOps に関する記事](conceptual-configurations.md)をご覧ください。
@@ -152,7 +152,7 @@ Flux オペレーターは、SSH 接続を確立する前に Git リポジトリ
 | ------------- | ------------- |
 | `--enable-helm-operator`| Helm グラフの配置のサポートを有効にするように切り替えます。 |
 | `--helm-operator-params` | Helm 演算子 (有効な場合) のグラフの値。 たとえば、「 `--set helm.versions=v3` 」のように入力します。 |
-| `--helm-operator-version` | Helm 演算子 (有効な場合) のグラフのバージョン。 バージョン 1.2.0 以降を使用します。 既定値は1.2.0 です。 |
+| `--helm-operator-chart-version` | Helm 演算子 (有効な場合) のグラフのバージョン。 バージョン 1.2.0 以降を使用します。 既定値は1.2.0 です。 |
 | `--operator-namespace` | 演算子の名前空間の名前。 既定値は 'default' です。 最大:23 文字。 |
 | `--operator-params` | 演算子のパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main'``` のように指定します。 
 

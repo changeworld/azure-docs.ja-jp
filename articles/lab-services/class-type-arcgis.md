@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 530597a72b19afa1e80b5c7640b105d86479b1c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373710"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740105"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>ArcMap および ArcGIS Desktop のラボを設定する
 
@@ -24,7 +24,7 @@ Azure サブスクリプションを取得したら、Azure Lab Services で新�
 
 ### <a name="lab-account-settings"></a>ラボ アカウントの設定
 
-次の表の説明に従って、ラボ アカウントの設定を有効にします。  Azure Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Azure Marketplace イメージを指定する](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images)」を参照してください。
+次の表の説明に従って、ラボ アカウントの設定を有効にします。  Azure Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Azure Marketplace イメージを指定する](./specify-marketplace-images.md)」を参照してください。
 
 | ラボ アカウントの設定 | Instructions |
 | ------------------- | ------------ |
@@ -34,7 +34,7 @@ Azure サブスクリプションを取得したら、Azure Lab Services で新�
 
 ArcGIS Desktop が提供するライセンスの一種として[同時使用ライセンス](https://desktop.arcgis.com/en/license-manager/latest/license-manager-basics.htm)があります。  これを使用するには、ArcGIS License Manager をライセンス サーバーにインストールする必要があります。  ライセンス マネージャーは、同時に実行できるソフトウェアのコピーの数を追跡します。  サーバーでライセンス マネージャーを設定する方法について詳しくは、[ライセンス マネージャー ガイド](https://desktop.arcgis.com/en/license-manager/latest/welcome.htm)に関する記事を参照してください。
 
-通常、このライセンス サーバーは、オンプレミスのネットワークに配置されるか、Azure 仮想ネットワーク内の Azure 仮想マシンでホストされます。  ライセンス サーバーを設定した後は、[ラボ アカウント](https://docs.microsoft.com/azure/lab-services/tutorial-setup-lab-account)に[仮想ネットワークをピアリング](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network)する必要があります。  ラボの VM とライセンス サーバーの間で通信できるように、ラボを作成する "前" に、ネットワーク ピアリングを実行する必要があります。
+通常、このライセンス サーバーは、オンプレミスのネットワークに配置されるか、Azure 仮想ネットワーク内の Azure 仮想マシンでホストされます。  ライセンス サーバーを設定した後は、[ラボ アカウント](./tutorial-setup-lab-account.md)に[仮想ネットワークをピアリング](./how-to-connect-peer-virtual-network.md)する必要があります。  ラボの VM とライセンス サーバーの間で通信できるように、ラボを作成する "前" に、ネットワーク ピアリングを実行する必要があります。
 
 詳細については、[共有リソースとしてのライセンス サーバーの設定](how-to-create-a-lab-with-shared-resource.md)に関する記事を参照してください。
 

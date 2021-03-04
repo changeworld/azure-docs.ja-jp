@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: caff705a03f7c4645eedc9423f6a9f9649c1167e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fb3aeb732166537dd4aa98acad0c4dfa5788a8ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571288"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732396"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway に対する Azure セキュリティ ベースライン
 
@@ -126,7 +126,7 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: 現在は使用できません
 

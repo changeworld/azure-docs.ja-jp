@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: abad5a0146f98993cd02425b33466c447f9d97ca
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50bfed0ee4346955a9e478e7567f00610d8184f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600493"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708664"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Windows コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Windows コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -20,7 +20,7 @@ ms.locfileid: "100600493"
 * [Azure Automation Desired State Configuration (DSC)](#install-agent-using-dsc-in-azure-automation)。 
 
 >[!IMPORTANT]
-> この記事で説明するインストール方法は、通常、オンプレミスまたは他のクラウド内の仮想マシンに対して使用されます。 Azure 仮想マシンに使用できるより効率的なオプションについては、「[インストール オプション](../platform/log-analytics-agent.md#installation-options)」を参照してください。
+> この記事で説明するインストール方法は、通常、オンプレミスまたは他のクラウド内の仮想マシンに対して使用されます。 Azure 仮想マシンに使用できるより効率的なオプションについては、「[インストール オプション](./log-analytics-agent.md#installation-options)」を参照してください。
 
 > [!NOTE]
 > 複数のワークスペースに報告するようにエージェントを構成する必要がある場合、この構成は初期設定時には実行できません。「[ワークスペースの追加または削除](agent-manage.md#adding-or-removing-a-workspace)」で説明されているように、後からコントロール パネルまたは PowerShell から更新することでのみ実行できます。  
@@ -42,12 +42,12 @@ Windows エージェントでは、2020 年 8 月 17 日に SHA-2 署名の排�
 4. [TLS 1.2 を使用する](agent-windows.md#configure-agent-to-use-tls-12)ようにエージェントを構成することをお勧めします。 
 
 ## <a name="network-requirements"></a>ネットワークの要件
-Windows エージェントのネットワーク要件については、[Log Analytics エージェントの概要](../platform/log-analytics-agent.md#network-requirements)に関する記事をご覧ください。
+Windows エージェントのネットワーク要件については、[Log Analytics エージェントの概要](./log-analytics-agent.md#network-requirements)に関する記事をご覧ください。
 
 
    
 ## <a name="configure-agent-to-use-tls-12"></a>TLS 1.2 を使用するようエージェントを構成する
-[TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12) プロトコルによって、Windows エージェントと Log Analytics サービス間の通信で転送中のデータのセキュリティを確保します。 [既定で TLS 1.2 が有効になっていないオペレーティング システム](../platform/data-security.md#sending-data-securely-using-tls-12)にインストールする場合は、次の手順に従って TLS 1.2 を構成する必要があります。
+[TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12) プロトコルによって、Windows エージェントと Log Analytics サービス間の通信で転送中のデータのセキュリティを確保します。 [既定で TLS 1.2 が有効になっていないオペレーティング システム](../logs/data-security.md#sending-data-securely-using-tls-12)にインストールする場合は、次の手順に従って TLS 1.2 を構成する必要があります。
 
 1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. TLS 1.2 用に **Protocols** の下に **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2** のサブキーを作成します。
