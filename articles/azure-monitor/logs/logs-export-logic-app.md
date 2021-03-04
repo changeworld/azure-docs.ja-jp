@@ -2,17 +2,16 @@
 title: ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージにデータをアーカイブする
 description: Azure Logic Apps を使用して Log Analytics ワークスペースにあるデータを照会し、Azure Storage に送信する方法について説明します。
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700645"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035689"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージにデータをアーカイブする
 この記事では、[Azure Logic Apps](../../logic-apps/index.yml) を使用して Azure Monitor の Log Analytics ワークスペースにあるデータを照会し、Azure Storage に送信する方法について説明します。 このプロセスは、監査とコンプライアンスのシナリオに合わせて Azure Monitor のログ データをエクスポートする必要がある場合や、別のサービスでこのデータを取得できるようにする場合に使用します。  

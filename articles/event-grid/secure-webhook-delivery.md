@@ -3,12 +3,12 @@ title: Azure Event Grid の Azure AD を使用して WebHook 配信をセキュ�
 description: Azure Event Grid を使用して Azure Active Directory によって保護された HTTPS エンドポイントにイベントを配信する方法について説明します
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: b01f0342e185883c4d1552800ab9bdb30cea3040
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: be38edfb4edfee5b3a3b42d7b1c5a44c9d72ceef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549154"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035447"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Azure Active Directory で保護されたエンドポイントにイベントを発行する
 
@@ -26,7 +26,7 @@ ms.locfileid: "99549154"
 このセクションでは、Event Grid を有効にして Azure AD アプリケーションを使用する方法を紹介します。 
 
 > [!NOTE]
-> このスクリプトを実行するには、[Azure AD アプリケーション管理者ロール](../active-directory/roles/permissions-reference.md#available-roles)のメンバーである必要があります。
+> このスクリプトを実行するには、[Azure AD アプリケーション管理者ロール](../active-directory/roles/permissions-reference.md#all-roles)のメンバーである必要があります。
 
 ### <a name="connect-to-your-azure-tenant"></a>Azure テナントに接続します。
 まず、`Connect-AzureAD` コマンドを使用して Azure テナントに接続します。 

@@ -1,18 +1,17 @@
 ---
 title: ITSM コネクタとそれに関連付けられているアクションの削除
 description: この記事では、ITSM コネクタと、それに関連付けられているアクション グループを削除する方法について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1fbaa48d104642984e604bc66a3aa914fbfed44c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e73510b6c61c58f6f0b2b8067a240214ee35a46c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603530"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036488"
 ---
 # <a name="deletion-of-unused-itsm-connectors"></a>未使用の ITSM コネクタの削除
 

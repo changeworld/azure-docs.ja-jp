@@ -1,17 +1,16 @@
 ---
 title: アクション グループ用 Resource Manager テンプレートのサンプル
 description: Azure Monitor アクション グループをデプロイするための Azure Resource Manager テンプレートのサンプル。
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 12/03/2020
-ms.openlocfilehash: 13a353ba469f0a01011b72b9c014b8f97e4d6fae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c7982c108cf6c238c28c843e1dfbb881a6e0bb4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597885"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036403"
 ---
 # <a name="resource-manager-template-samples-for-action-groups-in-azure-monitor"></a>Azure Monitor のアクション グループ用の Resource Manager テンプレート サンプル
 この記事には、Azure Monitor で[アクション グループ](../alerts/action-groups.md)を作成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。

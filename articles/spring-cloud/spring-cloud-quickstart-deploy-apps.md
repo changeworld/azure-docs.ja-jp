@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735588"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035137"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -143,7 +143,7 @@ ms.locfileid: "92735588"
 1. エンドポイントを割り当てるには、次のコマンドを実行します。
 
    ```azurecli
-   az spring-cloud app update -n solar-system-weather --is-public true
+   az spring-cloud app update -n solar-system-weather --assign-endpoint true
    ```
 
 1. エンドポイントの URL を取得するには、次のコマンドを実行します。
@@ -222,7 +222,7 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. 前の手順でビルドした JAR ファイルを使用して、Azure Spring Cloud マイクロサービスを作成します。 3 つのアプリ ( **gateway** 、 **auth-service** 、および **account-service** ) を作成します。
+1. 前の手順でビルドした JAR ファイルを使用して、Azure Spring Cloud マイクロサービスを作成します。 3 つのアプリ (**gateway**、**auth-service**、および **account-service**) を作成します。
 
     ```azurecli
     az spring-cloud app create --name gateway
@@ -245,10 +245,10 @@ Web ブラウザーを介してアプリケーションにアクセスする手�
 1. 次のコマンドを使用してエンドポイントを割り当ててください。
 
     ```azurecli
-    az spring-cloud app update -n gateway --is-public true
+    az spring-cloud app update -n gateway --assign-endpoint true
     ```
 
-2. アプリケーションが実行されていることを確認できるように、 **gateway** アプリケーションに対してパブリック IP を求めるクエリを実行します。
+2. アプリケーションが実行されていることを確認できるように、**gateway** アプリケーションに対してパブリック IP を求めるクエリを実行します。
 
     ```azurecli
     az spring-cloud app show --name gateway --query properties.url
@@ -310,19 +310,19 @@ Azure にデプロイするには、Azure アカウントで Azure Toolkit for I
 
     ![Azure へのデプロイ 1](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
-1. **[Name]\(名前\)** フィールドで、既存の **名前** に「 *:gateway* 」を追加します。
+1. **[Name]\(名前\)** フィールドで、既存の **名前** に「 *:gateway*」を追加します。
 1. **[Artifact]\(成果物\)** ボックスで、 *[com.piggymetrics:gateway:1.0-SNAPSHOT]* を選択します。
 1. **[Subscription]\(サブスクリプション\)** ボックスで、自分のサブスクリプションを確認します。
-1. **[Spring Cloud]** ボックスで、「 [Azure Spring Cloud インスタンスをプロビジョニングする](./spring-cloud-quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
+1. **[Spring Cloud]** ボックスで、「[Azure Spring Cloud インスタンスをプロビジョニングする](./spring-cloud-quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
 1. **[Public Endpoint]\(パブリック エンドポイント\)** を *[Enable]\(有効化\)* に設定します。
 1. **[App:]\(アプリ:\)** ボックスで、 **[Create app]\(アプリの作成\)** を選択します。
-1. 「 *gateway* 」と入力し、 **[OK]** をクリックします。
+1. 「*gateway*」と入力し、 **[OK]** をクリックします。
 
     ![Azure へのデプロイ [OK]](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
 1. ダイアログの **[Before launch]\(起動前\)** セクションで、 *[Run Maven Goal]\(Maven 目標の実行\)* をダブルクリックします。
-1. **[Working directory]\(作業ディレクトリ\)** ボックスで、 *piggymetrics/gateway* フォルダーに移動します。
-1. **[Command line]\(コマンド ライン\)** ボックスに、「 *package -DskipTests* 」と入力します。 **[OK]** をクリックします。
+1. **[Working directory]\(作業ディレクトリ\)** ボックスで、*piggymetrics/gateway* フォルダーに移動します。
+1. **[Command line]\(コマンド ライン\)** ボックスに、「*package -DskipTests*」と入力します。 **[OK]** をクリックします。
 1. **[Deploy Azure Spring Cloud app]\(Azure Spring Cloud アプリのデプロイ\)** ダイアログの下部にある **[Run]\(実行\)** ボタンをクリックして、デプロイを開始します。 このプラグインは、`gateway` アプリに対して `mvn package` コマンドを実行し、`package` コマンドによって生成された jar をデプロイします。
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>auth-service アプリおよび account-service アプリを Azure Spring Cloud にデプロイする
