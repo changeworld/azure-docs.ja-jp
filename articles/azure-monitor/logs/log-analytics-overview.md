@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor の Log Analytics の概要
 description: Log Analytics について説明します。これは、Azure portal のツールであり、Azure Monitor ログのデータを分析するためのログ クエリの編集と実行に使用します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723165"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052298"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Monitor の Log Analytics の概要
 Log Analytics は、Azure portal のツールであり、Azure Monitor ログのデータでのログ クエリの編集と実行に使用します。 一連のレコードを返す単純なクエリを作成後、Log Analytics の機能を使用して、それらのレコードを並べ替え、フィルター、および分析できます。 また、より高度なクエリを作成して統計分析を実行し、結果をグラフで視覚化して特定の傾向を識別することもできます。 クエリの結果を対話的に操作する場合でも、ログ クエリ アラートやブックなどの他の Azure Monitor の機能で使用する場合でも、クエリ結果の書き込みとテストのためのツールとして Log Analytics を使用します。 

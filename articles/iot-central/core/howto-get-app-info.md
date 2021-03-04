@@ -7,12 +7,12 @@ ms.author: v-anjaso
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: b4a44433a9761bd387b24164653c8ed1538713ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 80a35ab41b05609642667da9e8561921ecc20852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721593"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051712"
 ---
 # <a name="about-your-application"></a>アプリケーションに関する情報
 
@@ -33,7 +33,7 @@ IoT Central アプリケーションに関する情報を取得するには:
 
 1. **[お客様のアプリについて]** ページに、アプリケーションに関する情報が表示されます。  
 
-    :::image type="content" source="media/howto-get-app-info/about-your-app.png" alt-text="[お客様のアプリについて] のスクリーンショット":::
+    :::image type="content" source="media/howto-get-app-info/about-your-app2.png" alt-text="[お客様のアプリについて] のスクリーンショット":::
 
     情報をクリップボードにコピーするには、 **[情報のコピー]** ボタンを使用します。
 

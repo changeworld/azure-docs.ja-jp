@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bbb0c5617696347b566ba09a481afae4f52379aa
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805396"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096039"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -40,8 +40,8 @@ ms.locfileid: "99805396"
 - [OpenID Connect](openid-connect-technical-profile.md) - 任意の OpenID Connect プロトコル ID プロバイダーとのフェデレーション。
 - [電話要素](phone-factor-technical-profile.md) - 電話番号の登録と確認をサポートします。
 - [RESTful プロバイダー](restful-technical-profile.md) - ユーザーの入力の検証、ユーザー データの促進、基幹業務アプリケーションとの統合など、REST API サービスを呼び出します。
-- [SAML ID プロバイダー](saml-identity-provider-technical-profile.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
-- [SAML トークン発行者](saml-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された SAML トークンを発行します。
+- [SAML ID プロバイダー](identity-provider-generic-saml.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
+- [SAML トークン発行者](saml-service-provider.md) - 証明書利用者アプリケーションに戻された SAML トークンを発行します。
 - [セルフアサート](self-asserted-technical-profile.md) - ユーザーとやりとりします。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセットをレンダリングします。
 - [セッション管理](custom-policy-reference-sso.md) - さまざまな種類のセッションを処理します。
 
@@ -127,7 +127,7 @@ ms.locfileid: "99805396"
 
 **Metadata** 要素には、特定のプロトコルに関連する構成オプションが含まれています。 サポートされているメタデータの一覧は、対応する[技術プロファイル](#type-of-technical-profiles)仕様に記載されています。 **Metadata** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | Item | 0:n | 技術プロファイルに関連するメタデータ。 技術プロファイルの種類ごとに、異なるメタデータ項目のセットがあります。 詳細については、技術プロファイルの種類に関するセクションを参照してください。  |
 
@@ -175,9 +175,9 @@ ms.locfileid: "99805396"
 
 統合対象のサービスとの信頼を確立するため、Azure AD B2C により、シークレットと証明書が[ポリシー キー](policy-keys-overview.md)の形式で保存されます。 技術プロファイルの実行中、Azure AD B2C によって Azure AD B2C ポリシー キーから暗号化キーが取得されます。 その後、そのキーを使用して信頼の確立、トークンの暗号化、または署名が行われます。 これらの信頼は次のもので構成されます。
 
-- [OAuth1](oauth1-technical-profile.md#cryptographic-keys)、[OAuth2](oauth2-technical-profile.md#cryptographic-keys)、および [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys) ID プロバイダーとのフェデレーション
+- [OAuth1](oauth1-technical-profile.md#cryptographic-keys)、[OAuth2](oauth2-technical-profile.md#cryptographic-keys)、および [SAML](identity-provider-generic-saml.md) ID プロバイダーとのフェデレーション
 - [REST API サービス](secure-rest-api.md)との接続のセキュリティ保護
-- [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) トークンと [SAML](saml-issuer-technical-profile.md#cryptographic-keys) トークンの署名と暗号化
+- [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) トークンと [SAML](saml-service-provider.md) トークンの署名と暗号化
 
 **CryptographicKeys** 要素には、次の要素が含まれています。
 

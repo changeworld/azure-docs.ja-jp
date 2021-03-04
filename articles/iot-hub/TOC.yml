@@ -352,13 +352,13 @@
     - name: 更新プログラムの展開
       items:
         - name: デバイス更新アカウントの作成
-          href: /iot-hub-device-update/create-device-update-account.md
+          href: ../iot-hub-device-update/create-device-update-account.md
         - name: 更新プログラムのインポート
-          href: /iot-hub-device-update/import-update.md
+          href: ../iot-hub-device-update/import-update.md
         - name: 更新グループの作成
-          href: /iot-hub-device-update/create-update-group.md
+          href: ../iot-hub-device-update/create-update-group.md
         - name: 更新プログラムの展開
-          href: /iot-hub-device-update/deploy-update.md
+          href: ../iot-hub-device-update/deploy-update.md
     - name: 実在のデバイスの使用
       items:
         - name: オンライン シミュレーターの使用

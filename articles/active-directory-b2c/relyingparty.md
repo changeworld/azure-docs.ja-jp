@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0f0f3b6ffcb7ee12a692470b922cf23a3f0f40f0
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: ea23be06939d58b08516a00bbe8aba97c6ccc87d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858436"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095274"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -85,7 +85,7 @@ ms.locfileid: "97858436"
 
 **Endpoints** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | エンドポイント | 1:1 | エンドポイントの参照。|
 
@@ -218,20 +218,6 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | 名前 | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OpenIdConnect` または `SAML2`。 `OpenIdConnect` 値は、OpenID 基盤の仕様に従って、OpenID Connect 1.0 プロトコルの標準を表します。 `SAML2` 値は、OASIS 仕様に従って、SAML 2.0 プロトコルの標準を表します。 |
-
-### <a name="metadata"></a>Metadata
-
-プロトコルが `SAML` である場合、メタデータ要素には次の要素が含まれます。
-
-| 属性 | 必須 | 説明 |
-| --------- | -------- | ----------- |
-| IdpInitiatedProfileEnabled | いいえ | IDP Initiated フローがサポートされているかどうかを示します。 指定できる値: `true` または `false`(既定値)。 | 
-| XmlSignatureAlgorithm | いいえ | SAML 応答に署名するために Azure AD B2C で使用されるメソッド。 指定できる値: `Sha256`、`Sha384`、`Sha512`、または `Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 SAML アサーションを構成するには、[SAML 発行者の技術プロファイルのメタデータ](saml-issuer-technical-profile.md#metadata)に関する記事を参照してください。 |
-| DataEncryptionMethod | No | Advanced Encryption Standard (AES) アルゴリズムを使用してデータを暗号化するために Azure AD B2C で使用される方法を示します。 このメタデータにより、SAML 応答内の `<EncryptedData>` 要素の値が制御されます。 可能な値: `Aes256` (既定)、`Aes192`、`Sha512`、または ` Aes128`。 |
-| KeyEncryptionMethod| No | データの暗号化に使用されたキーのコピーを暗号化するために Azure AD B2C で使用される方法を示します。 このメタデータにより、SAML 応答内の `<EncryptedKey>` 要素の値が制御されます。 使用可能な値: ` Rsa15` (既定) - RSA 公開鍵暗号化標準 (PKCS) バージョン 1.5 アルゴリズム、` RsaOaep` - RSA OAEP (Optimal Asymmetric Encryption Padding) 暗号化アルゴリズム。 |
-| UseDetachedKeys | No |  指定できる値: `true` または `false` (既定値)。 値が `true` に設定されている場合、暗号化されたアサーションの形式が変わります。 デタッチされたキーを使用すると、暗号化されたアサーションが EncryptedData ではなく、EncrytedAssertion の子として追加されます。 |
-| WantsSignedResponses| No | Azure AD B2C が SAML 応答の `Response` セクションに署名するかどうかを示します。 指定できる値: `true` (既定値) または `false`。  |
-| RemoveMillisecondsFromDateTime| いいえ | SAML 応答内の datetime の値からミリ秒を削除するかどうかを示します (これには、 IssueInstant、NotBefore、NotOnOrAfter、および AuthnInstant が含まれます)。 指定できる値: `false` (既定値) または `true`。  |
 
 ### <a name="outputclaims"></a>OutputClaims
 
