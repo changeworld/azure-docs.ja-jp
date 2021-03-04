@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/02/2021
 ms.author: justinha
 author: rhicock
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e90a6060a9c8202f7f743a0ee433f89b9dc9fdd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d25ed1e46823ec6d820addf3944c96c97fcabcb8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689030"
 ---
 # <a name="two-way-sms-unsupported"></a>双方向 SMS のサポート終了
 
@@ -27,7 +27,7 @@ Azure AD Multi-Factor Authentication (MFA) Server の双方向 SMS は、元は 
 ## <a name="required-actions"></a>必要なアクション
 
 1. まだ行っていない場合は、ユーザーのモバイル アプリを有効にします。 詳細については、[MFA Server でのモバイル アプリ認証の有効化](howto-mfaserver-deploy-mobileapp.md)に関する記事を参照してください。
-1. エンド ユーザーに対して、モバイル アプリをアクティブにするために MFA Server [ユーザー ポータル](howto-mfaserver-deploy-userportal.md)にアクセスするよう通知します。 [Microsoft Authenticator アプリ](https://www.microsoft.com/account/authenticator)は、双方向 SMS よりも安全性が高いため、推奨される認証オプションです。 詳細については、「[認証のための電話転送から脱却する時がきました](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)」を参照してください。
+1. エンド ユーザーに対して、モバイル アプリをアクティブにするために MFA Server [ユーザー ポータル](howto-mfaserver-deploy-userportal.md)にアクセスするよう通知します。 [Microsoft Authenticator アプリ](https://www.microsoft.com/en-us/account/authenticator)は、双方向 SMS よりも安全性が高いため、推奨される認証オプションです。 詳細については、「[認証のための電話転送から脱却する時がきました](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)」を参照してください。
 1. 既定の方法として、ユーザー設定を双方向テキスト メッセージからモバイル アプリに変更します。
 
 ## <a name="faq"></a>よく寄せられる質問
