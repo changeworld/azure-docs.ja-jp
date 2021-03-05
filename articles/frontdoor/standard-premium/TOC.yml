@@ -57,8 +57,12 @@
       href: how-to-cache-purge.md
     - name: 圧縮
       href: how-to-compression.md
-    - name: Web アプリへのプライベート リンクを有効にする
-      href: how-to-enable-private-link-web-app.md
+    - name: Private Link を有効にする
+      items:
+        - name: ストレージ アカウントに接続する
+          href: how-to-enable-private-link-storage-account.md
+        - name: Web アプリに接続する
+          href: how-to-enable-private-link-web-app.md
     - name: ログの記録
       href: how-to-logs.md
     - name: 監視とアラート
