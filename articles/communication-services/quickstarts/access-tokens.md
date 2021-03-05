@@ -1,7 +1,7 @@
 ---
 title: クイックスタート - アクセス トークンを作成して管理する
 titleSuffix: An Azure Communication Services quickstart
-description: Azure Communication Services 管理クライアント ライブラリを使用して、ID とアクセス トークンを管理する方法について説明します。
+description: Azure Communication Services ID クライアント ライブラリを使用して、ID とアクセス トークンを管理する方法について説明します。
 author: tomaschladek
 manager: nmurav
 services: azure-communication-services
@@ -10,18 +10,16 @@ ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 246b8041e7e12ea1a1391cb4690d02892bc31b63
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8937210b366981d9768e5329989a8ad14f5e8f35
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325324"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657061"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>クイック スタート:アクセス トークンを作成して管理する
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-Communication Services 管理クライアント ライブラリを使用して、Azure Communication Services の使用を開始します。 これを使用することにより、ID を作成し、アクセス トークンを管理できます。 ID は、Azure Communication Services のアプリケーションのエンティティ (ユーザーやデバイスなど) を表します。 アクセス トークンを使用すると、チャットと通話のクライアント ライブラリが Azure Communication Services に対して直接認証を行うことができます。 アクセス トークンは、サーバー側のサービスで生成することをお勧めします。 その後アクセス トークンは、クライアント デバイス上で Communication Services クライアント ライブラリを初期化するために使用されます。
+Communication Services ID クライアント ライブラリを使用して、Azure Communication Services の使用を開始します。 これを使用することにより、ID を作成し、アクセス トークンを管理できます。 ID は、Azure Communication Services のアプリケーションのエンティティ (ユーザーやデバイスなど) を表します。 アクセス トークンを使用すると、チャットと通話のクライアント ライブラリが Azure Communication Services に対して直接認証を行うことができます。 アクセス トークンは、サーバー側のサービスで生成することをお勧めします。 その後アクセス トークンは、クライアント デバイス上で Communication Services クライアント ライブラリを初期化するために使用されます。
 
 このチュートリアルを通して画像に表示されている料金は、例示のみを目的としています。
 
@@ -69,7 +67,7 @@ Communication Services サブスクリプションをクリーンアップして
 > [!div class="checklist"]
 > * ID を管理する
 > * アクセス トークンを発行する
-> * Communication Services 管理クライアント ライブラリを使用する
+> * Communication Services ID クライアント ライブラリを使用する
 
 
 > [!div class="nextstepaction"]
@@ -80,4 +78,3 @@ Communication Services サブスクリプションをクリーンアップして
  - [認証について学習する](../concepts/authentication.md)
  - [チャットをアプリに追加する](./chat/get-started.md)
  - [クライアントとサーバーのアーキテクチャについて学習する](../concepts/client-and-server-architecture.md)
- 

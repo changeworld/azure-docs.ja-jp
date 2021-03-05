@@ -10,6 +10,8 @@
   items:
     - name: GitOps を使用して構成をデプロイする
       href: tutorial-use-gitops-connected-cluster.md
+    - name: GitOps を使用して CI/CD を実装する
+      href: tutorial-gitops-ci-cd.md
 - name: クイックスタート
   items:
     - name: Azure Arc にクラスターを接続する
@@ -20,6 +22,8 @@
       href: conceptual-agent-architecture.md
     - name: 構成と GitOps
       href: conceptual-configurations.md
+    - name: GitOps を使用した CI/CD ワークフロー
+      href: conceptual-gitops-ci-cd.md
     - name: よく寄せられる質問
       href: faq.md
 - name: 操作方法ガイド

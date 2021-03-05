@@ -10,20 +10,20 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552680"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661638"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 
-- アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。 
+- アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Node.js](https://nodejs.org/en/download/) アクティブ LTS およびメンテナンス LTS バージョン (8.11.1 および 10.14.1 を推奨) をインストールします。
 - Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
-- "*3 人*" の ACS ユーザーを作成し、それに対して[ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモ** してください。 完全なデモでは、最初の 2 名の参加者でスレッドを作成し、3 人目の参加者をスレッドに追加します。
+- "*3 人*" の ACS ユーザーを作成し、それに対して [ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモ** してください。 完全なデモでは、最初の 2 名の参加者でスレッドを作成し、3 人目の参加者をスレッドに追加します。
 
 ## <a name="setting-up"></a>設定
 
@@ -34,7 +34,7 @@ ms.locfileid: "100552680"
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
-   
+
 既定の設定で `npm init -y` を実行して、**package.json** ファイルを作成します。
 
 ```console
@@ -48,7 +48,7 @@ npm init -y
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -86,26 +86,9 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 
 ### <a name="create-a-chat-client"></a>チャット クライアントを作成する
 
-Web アプリにチャット クライアントを作成するには、Communications Service **エンドポイント** と、前提条件の手順で生成された **アクセス トークン** を使用します。 
+Web アプリにチャット クライアントを作成するには、Communications Service **エンドポイント** と、前提条件の手順で生成された **アクセス トークン** を使用します。
 
-ユーザーのアクセス トークンを使用することで、Azure Communication Services に対して直接認証を行うクライアント アプリケーションを作成できます。
-
-##### <a name="server-vs-client-side"></a>サーバーとクライアント側の比較
-
-アクセス トークンは、サーバー側コンポーネントを使用して生成し、クライアント アプリケーションに渡すことをお勧めします。 このシナリオでは、ユーザーの作成と管理、さらに、そのトークンの発行をサーバー側が担います。 その後、クライアント側がサービスからアクセス トークンを受け取り、それを使用して Azure Communication Services クライアント ライブラリの認証を行います。
-
-トークンは、JavaScript 用の Azure Communication Administration ライブラリを使用して、クライアント側で発行することもできます。 この場合、トークンを発行するためには、クライアント側がユーザーを認識する必要があります。
-
-詳細については、「[クライアントとサーバーのアーキテクチャ](../../../concepts/client-and-server-architecture.md)」を参照してください。
-
-下の図では、クライアント側アプリケーションが、信頼済みのサービス レベルからアクセス トークンを受け取っています。 アプリケーションは、そのトークンを使用して、Communication Services のライブラリを認証します。 認証が完了すると、アプリケーションは、Communication Services のクライアント側ライブラリを使用して各種の操作 (他のユーザーとのチャットなど) を実行することができます。
-
-:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="ユーザー アクセス トークンのアーキテクチャを示す図。":::
-
-##### <a name="instructions"></a>Instructions
-このデモでは、チャット アプリケーションのサービス レベルの作成については説明しません。 
-
-ユーザーとそのトークンをまだ生成していない場合は、[ユーザー アクセス トークン](../../access-tokens.md)に関するページの手順に従って生成してください。 スコープは "voip" ではなく、必ず "chat" に設定してください。
+ユーザーのアクセス トークンを使用することで、Azure Communication Services に対して直接認証を行うクライアント アプリケーションを作成できます。 このクイックスタートでは、チャット アプリケーションのトークンを管理するためのサービス レベルの作成については説明しません。 チャット アーキテクチャの詳細については、[チャットの概念](../../../concepts/chat/concepts.md)、アクセス トークンの詳細については、[ユーザー アクセス トークン](../../access-tokens.md)に関するページを参照してください。
 
 **client.js** 内では、下のコードのエンドポイントとアクセス トークンを使用し、JavaScript 用 Azure Communication チャット クライアント ライブラリを使用してチャット機能を追加します。
 
@@ -139,12 +122,12 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 Azure Communication Chat client created!
 ```
 
-## <a name="object-model"></a>オブジェクト モデル 
+## <a name="object-model"></a>オブジェクト モデル
 JavaScript 用 Azure Communication Services チャット クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
 
 | 名前                                   | 説明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | このクラスはチャットの機能に必要です。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
+| ChatClient | このクラスは、チャット機能に必要となります。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
 | ChatThreadClient | このクラスはチャット スレッド機能に必要です。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信、受信、更新、削除、ユーザーの追加、削除、取得、入力通知の送信、開封確認、チャット イベントのサブスクライブを行います。 |
 
 
@@ -154,7 +137,7 @@ JavaScript 用 Azure Communication Services チャット クライアント ラ�
 
 スレッド要求は、`createThreadRequest` を使用して記述します。
 
-- このチャットにトピックを指定するには、`topic` を使用します。チャット スレッドの作成後に、`UpdateThread` 関数を使用してトピックを更新することができます。 
+- このチャットにトピックを指定するには、`topic` を使用します。 チャット スレッドの作成後に、`UpdateThread` 関数を使用してトピックを更新することができます。
 - チャット スレッドに追加する参加者をリストアップするには、`participants` を使用します。
 
 解決されると、`createChatThread` メソッドから `CreateChatThreadResponse` が返されます。 このモデルには `chatThread` プロパティが含まれており、そこから、新しく作成されたスレッドの `id` にアクセスすることができます。 その後、`id` を使用して `ChatThreadClient` のインスタンスを取得できます。 さらに、`ChatThreadClient` を使用すると、メッセージの送信や参加者の一覧表示など、スレッド内で操作を実行できます。
@@ -220,7 +203,7 @@ Chat Thread client for threadId: <threadId>
 
 `sendMessageOptions` は、チャット メッセージ要求の省略可能なフィールドを表します。
 
-- "Normal (標準)" や "High (高)" など、チャット メッセージの優先度を指定するには `priority` を使用します。このプロパティを使用して、自分のアプリ内の受信ユーザーにメッセージへの注意を促す UI インジケーターを表示したり、カスタム ビジネス ロジックを実行したりすることができます。   
+- "Normal (標準)" や "High (高)" など、チャット メッセージの優先度を指定するには `priority` を使用します。 このプロパティを使用して、自分のアプリ内の受信ユーザーにメッセージへの注意を促す UI インジケーターを表示したり、カスタム ビジネス ロジックを実行したりすることができます。
 - 送信者の表示名を指定するには、`senderDisplayName` を使用します。
 
 応答である `sendChatMessageResult` には、ID (そのメッセージの一意の ID) が含まれています。
@@ -263,7 +246,7 @@ chatClient.on("chatMessageReceived", (e) => {
 **client.js** の `<RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>` コメントをこのコードで置き換えます。
 ブラウザー タブを最新の情報に更新すると、コンソールに "`Notification chatMessageReceived`" というメッセージが表示されます。
 
-チャット メッセージは、特定の間隔で `listMessages` メソッドをポーリングすることによって取得することもできます。 
+チャット メッセージは、特定の間隔で `listMessages` メソッドをポーリングすることによって取得することもできます。
 
 ```JavaScript
 
@@ -284,7 +267,7 @@ let nextMessage = await pagedAsyncIterableIterator.next();
 `listMessages` は、メッセージに対して `updateMessage` や `deleteMessage` を使用して行われた編集や削除を含む、最新バージョンのメッセージを返します。
 削除されたメッセージについては、そのメッセージがいつ削除されたかを示す datetime 値が `chatMessage.deletedOn` から返されます。 編集されたメッセージについては、メッセージがいつ編集されたかを示す datetime が `chatMessage.editedOn` から返されます。 メッセージの最初の作成日時には、`chatMessage.createdOn` を使用してアクセスできます。これをメッセージの並べ替えに使用することができます。
 
-`listMessages` は、`chatMessage.type` で識別できるさまざまな種類のメッセージを返します。 これらの種類があります。
+`listMessages` は、`chatMessage.type` で識別できるさまざまな種類のメッセージを返します。 次の種類があります。
 
 - `Text`:スレッド参加者によって送信された通常のチャット メッセージ。
 

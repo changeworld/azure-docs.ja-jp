@@ -40,6 +40,8 @@
       href: connected-cache-disconnected-device-update.md
     - name: Device Update for IoT Hub 用に Microsoft 接続キャッシュを構成する
       href: connected-cache-configure.md
+    - name: インポート関連のスキーマおよびその他の情報
+      href: import-schema.md
 - name: 操作方法ガイド
   items:
     - name: Device Update アカウントの作成

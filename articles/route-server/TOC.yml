@@ -6,6 +6,8 @@
       href: overview.md
 - name: クイックスタート
   items:
+    - name: Route Server の構成 - PortaI
+      href: quickstart-configure-route-server-portal.md
     - name: Route Server の構成 - PowerShell
       href: quickstart-configure-route-server-powershell.md
     - name: Route Server の構成 - CLI

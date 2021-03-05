@@ -197,6 +197,9 @@
           href: supported-languages.md
         - name: C# (クラス ライブラリ)
           href: functions-dotnet-class-library.md
+        - name: C# (分離プロセス)
+          displayName: '.NET isolated, .NET 5'
+          href: dotnet-isolated-process-guide.md
         - name: C# スクリプト (.csx)
           href: functions-reference-csharp.md
         - name: F#
@@ -469,7 +472,7 @@
             - name: 入力
               displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
-            - name: Output
+            - name: 出力
               displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB

@@ -4,6 +4,8 @@
   items:
     - name: ARM テンプレートとは
       href: overview.md
+    - name: Bicep の概要
+      href: bicep-overview.md
 - name: クイックスタート
   items:
     - name: テンプレートの作成 - ポータル
@@ -324,9 +326,7 @@
       href: template-best-practices.md
     - name: Bicep
       items:
-        - name: 概要
-          href: bicep-overview.md
-        - name: JSON から Bicep への移行
+        - name: JSON と Bicep の比較
           href: compare-template-syntax.md
     - name: よく寄せられる質問
       href: frequently-asked-questions.md
@@ -475,7 +475,7 @@
           href: view-resources.md
     - name: オーサリング ツールを使用する
       items:
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: create-visual-studio-deployment-project.md
         - name: VS デプロイ スクリプトを Az モジュールに更新する
           href: update-visual-studio-deployment-script.md

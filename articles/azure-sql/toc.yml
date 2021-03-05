@@ -337,6 +337,8 @@
               href: migration-guides/database/sql-server-to-sql-database-overview.md
             - name: Migrate
               href: migration-guides/database/sql-server-to-sql-database-guide.md
+            - name: 評価ルール
+              href: migration-guides/database/sql-server-to-sql-database-assessment-rules.md
     - name: 概念
       items:
         - name: 接続のアーキテクチャ
@@ -757,6 +759,8 @@
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: パフォーマンス ベースライン
               href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
+            - name: 評価ルール
+              href: migration-guides/managed-instance/sql-server-to-sql-managed-instance-assessment-rules.md
     - name: 概念
       items:
         - name: リソース制限

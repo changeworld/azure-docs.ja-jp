@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 08/17/2020
-  ms.openlocfilehash: 0ee97ba1d0190cfb3331372329677b8ffe740439
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3049f7598990a97e6647011012bae0ddd2651944
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90883841"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102095529"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -24,39 +24,39 @@ landingContent:
     links:
     - text: Security Center の主な機能
       url: security-center-introduction.md
-    - text: サポートされる Windows サーバーおよび Linux のバージョン
-      url: security-center-os-coverage.md
-    - text: Azure Defender とは
+    - text: Azure Defender の主な機能
       url: azure-defender.md
+    - text: サポートされる Windows Server および Linux のバージョン
+      url: security-center-os-coverage.md
 - title: 最新情報
   linkLists:
   - linkListType: whats-new
     links:
     - text: Security Center のリリース ノート
       url: release-notes.md
-    - text: 新しい概要ページを探索する
+    - text: 概要ダッシュボードを探索する
       url: overview-page.md
-    - text: Kubernetes ワークロードを保護する
-      url: kubernetes-workload-protections.md
+    - text: 統合ブック レポートを使用する
+      url: custom-dashboards-azure-workbooks.md
     - text: Azure Defender の Key Vault アラートに対応する
       url: defender-for-key-vault-usage.md
     - text: セキュリティ スコア API
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+      url: secure-score-access-and-track.md#get-your-secure-score-from-the-rest-api
 - title: はじめに
   linkLists:
   - linkListType: get-started
     links:
-    - text: Security Center 入門
+    - text: サブスクリプションで Security Center を有効にする
       url: security-center-get-started.md
-    - text: セキュリティ ポリシーの構成
-      url: tutorial-security-policy.md
-    - text: セキュリティ体制の評価
-      url: secure-score-security-controls.md
-    - text: AWS アカウントを接続する
-      url: quickstart-onboard-aws.md
-    - text: GCP アカウントを接続する
-      url: quickstart-onboard-gcp.md
-- title: セキュア スコアを向上させる
+    - text: Azure Defender を有効にする
+      url: enable-azure-defender.md
+    - text: 自動プロビジョニングを構成する
+      url: security-center-enable-data-collection.md
+    - text: メール通知の設定
+      url: security-center-provide-security-contact-details.md
+    - text: Azure 以外のマシンを接続する
+      url: quickstart-onboard-machines.md
+- title: セキュリティ スコアを向上させる
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -66,10 +66,8 @@ landingContent:
       url: security-center-remediate-recommendations.md
     - text: リソースを推奨事項から除外する
       url: exempt-resource.md
-    - text: 推奨事項を使用してセキュリティを強化する
-      url: security-center-using-recommendations.md
-    - text: セキュア スコア API を使用して追跡する
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+    - text: 時間の経過に伴うスコアの追跡
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-report
 - title: 脅威の軽減
   linkLists:
   - linkListType: how-to-guide
@@ -80,7 +78,5 @@ landingContent:
       url: security-center-adaptive-application.md
     - text: アダプティブ ネットワーク強化の実装
       url: security-center-adaptive-network-hardening.md
-    - text: Azure Defender を 30 日間無料で試用する
-      url: security-center-pricing.md#try-azure-defender-free-for-30-days
     - text: Azure Defender ダッシュボードを使用する
       url: azure-defender-dashboard.md

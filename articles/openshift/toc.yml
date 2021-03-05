@@ -28,6 +28,8 @@
           href: dns-forwarding.md
     - name: Storage
       items:
+        - name: カスタマー マネージド キーを使用して PVC を暗号化する (プレビュー)
+          href: howto-encrypt-data-disks.md
         - name: Azure Files Storageclass を作成する
           href: howto-create-a-storageclass.md
         - name: 組み込みのコンテナー レジストリを使用する

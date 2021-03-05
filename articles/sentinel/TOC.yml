@@ -25,8 +25,12 @@
       href: tutorial-respond-threats-playbook.md
 - name: 概念
   items:
-    - name: ロールを使用したアクセス許可の割り当て
-      href: roles.md
+    - name: アクセスを管理する
+      items:
+        - name: Azure Sentinel のアクセス許可
+          href: roles.md
+        - name: リソースによるアクセスの管理
+          href: resource-context-rbac.md
     - name: 高度なマルチステージ攻撃の検出
       href: fusion.md
     - name: 独自の機械学習プラットフォームを使用する
@@ -248,6 +252,8 @@
       href: create-incidents-from-alerts.md
     - name: インシデント メトリックを使用して SOC をより適切に管理する
       href: manage-soc-with-incident-metrics.md
+    - name: Azure Sentinel クエリとアクティビティの監査
+      href: audit-sentinel-data.md
     - name: 検出
       href: hunting.md
       items:
@@ -259,6 +265,8 @@
           href: livestream.md
     - name: Azure Sentinel の削除
       href: offboard.md
+    - name: 高度な RBAC を実装する
+      items: null
 - name: リファレンス
   items:
     - name: Azure RBAC ロール
@@ -293,8 +301,8 @@
   items:
     - name: 有用なリソース
       href: resources.md
-    - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: /archive/blogs/azuresecurity/
+    - name: Azure Sentinel ブログ
+      href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 価格

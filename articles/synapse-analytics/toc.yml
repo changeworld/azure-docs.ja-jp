@@ -1,6 +1,6 @@
 - name: Azure Synapse Analytics
   href: index.yml
-- name: 専用 SQL プールに切り替える (旧称 SQL DW)
+- name: 専用 SQL プールに切り替える (旧称 SQL DW) >
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: 概要
   items:
@@ -48,17 +48,19 @@
   items:
     - name: クイックスタート
       items:
-        - name: Azure portal を使用してワークスペースを作成する
-          href: quickstart-create-workspace.md
-          displayName: quickstart
-        - name: Azure CLI を使用してワークスペースを作成する
-          href: quickstart-create-workspace-cli.md
-          displayName: quickstart
-        - name: Azure PowerShell を使用してワークスペースを作成する
-          href: quickstart-create-workspace-powershell.md
-          displayName: quickstart
-        - name: テンプレートを使用したデプロイ
-          href: quickstart-deployment-template-workspaces.md
+        - name: ワークスペースの作成
+          items:
+            - name: Azure portal
+              href: quickstart-create-workspace.md
+              displayName: quickstart
+            - name: Azure CLI
+              href: quickstart-create-workspace-cli.md
+              displayName: quickstart
+            - name: Azure PowerShell
+              href: quickstart-create-workspace-powershell.md
+              displayName: quickstart
+            - name: ARM テンプレート
+              href: quickstart-deployment-template-workspaces.md
           displayName: quickstart
         - name: Power BI ワークスペースをリンクする
           href: quickstart-power-bi.md

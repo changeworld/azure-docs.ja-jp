@@ -150,6 +150,8 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
+        - name: Apple (プレビュー)
+          href: identity-provider-apple-id.md
         - name: Azure AD (シングルテナント)
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD (マルチテナント)
@@ -217,11 +219,11 @@
           href: configure-tokens.md
     - name: カスタム属性を定義する
       href: user-flow-custom-attributes.md
-    - name: Identity Protection と条件付きアクセス
+    - name: リスクベースの認証
       items:
-        - name: Identity Protection と条件付きアクセスを設定する
-          href: conditional-access-identity-protection-setup.md
-        - name: 条件付きアクセスの追加
+        - name: Identity Protection を使用してリスクを調査する
+          href: identity-protection-investigate-risk.md
+        - name: 条件付きアクセスを構成する
           href: conditional-access-user-flow.md
     - name: 年齢制限を構成する
       href: basic-age-gating.md
@@ -327,9 +329,6 @@
                       href: aad-sspr-technical-profile.md
                     - name: 要求の変換
                       href: claims-transformation-technical-profile.md
-                    - name: 条件付きアクセス
-                      href: conditional-access-technical-profile.md
-                      displayName: ca
                     - name: ID トークン ヒント
                       href: id-token-hint.md
                     - name: JWT トークン発行者

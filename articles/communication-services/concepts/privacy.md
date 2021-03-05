@@ -8,22 +8,24 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572035"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656195"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services は、お客様が自身のプライバシーおよび個人データの要件を満たせるよう支援することを約束します。 アプリケーションの使用者と直接的な関係がある、Communication Services を使用する開発者は、場合によってはデータの管理者になります。 Azure Communication Services が代理でこのデータを格納しているため、Microsoft はこのデータの処理担当になる可能性が高くなります。 このページには、このサービスがデータを保持するしくみと、このデータを識別、エクスポート、削除する方法がまとめられています。
 
 ## <a name="data-residency"></a>データの保存場所
 
-Communication Services リソースを作成する際は、(Azure データ センターではなく) **地域** を指定します。 Communication Services によって格納されたすべての保存データは、Communication Services によって内部で選択されたデータ センター内のその地域で保持されます。 データは他の地域で転送または処理される可能性はありますが、これらのグローバル エンドポイントは、高パフォーマンスかつ低遅延のエクスペリエンスを場所に関係なくエンドユーザーに提供するために必要です。
+Communication Services リソースを作成する際は、(Azure データ センターではなく) **地域** を指定します。 Communication Services によって格納されたすべての保存データは、Communication Services によって内部で選択されたデータ センター内のその地域で保持されます。 データは他の地域で転送または処理される可能性はあります。 これらのグローバル エンドポイントは、高パフォーマンスかつ低遅延のエクスペリエンスを場所に関係なくエンドユーザーに提供するために必要です。
+
+## <a name="data-residency-and-events"></a>データ所在地とイベント
+
+Azure Communication Services で構成された Event Grid システムのトピックはすべて、グローバルな場所に作成されます。 信頼できる配信をサポートするために、グローバル Event Grid システムのトピックは、イベント データを任意の Microsoft データセンターに格納することができます。 Azure Communication Services を使用して Event Grid を構成すると、自分の管理下にある Azure リソースである Event Grid にイベント データが配信されます。 Azure Event Grid を使用するように Azure Communication Services を構成することはできますが、Event Grid リソースとその中に格納されているデータの管理は、ご自身で行う必要があります。
 
 ## <a name="relating-humans-to-azure-communication-services-identities"></a>Azure Communication Services の ID に人間を関連付ける
 
@@ -61,7 +63,7 @@ Azure Communication Services では、Communication Services リソースに関�
 
 ### <a name="sms"></a>SMS
 
-送受信された SMS メッセージは、サービスによって短時間で処理され、保持されません。 
+送受信された SMS メッセージは、サービスによって短時間で処理され、保持されません。
 
 ### <a name="pstn-voice-calling"></a>PSTN 音声通話
 
