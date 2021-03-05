@@ -166,6 +166,10 @@ items:
             href: sensitivity-insights.md
           - name: ファイル名拡張子の分析情報を表示する
             href: file-extension-insights.md
+      - name: セキュリティとネットワーク
+        items:
+          - name: プライベート エンドポイントを管理する
+            href: catalog-private-link.md
   - name: リファレンス
     items:
       - name: サポートされている分類

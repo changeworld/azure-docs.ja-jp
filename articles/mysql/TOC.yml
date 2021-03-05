@@ -173,7 +173,7 @@
             - name: Azure CLI を使用した Private Link の構成
               href: howto-configure-privatelink-cli.md
               displayName: 'private link, private endpoint'
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: concepts-security.md
@@ -553,6 +553,9 @@
     - name: mysqldump または phpmyadmin でデータを移行する
       href: concepts-migrate-dump-restore.md
       displayName: 'migrate, mysqldump'
+    - name: dbForge Studio for MySQL を使用したデータの移行
+      href: concepts-migrate-dbforge-studio-for-mysql.md
+      displayName: 'migrate, dbforge'
     - name: MySQL Workbench を使用してデータを移行する
       href: concepts-migrate-import-export.md
       displayName: 'import , migrate, export'

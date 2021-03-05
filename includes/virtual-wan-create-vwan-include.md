@@ -1,5 +1,5 @@
 ---
-title: ファイルを含める
+title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-wan
 author: cherylmc

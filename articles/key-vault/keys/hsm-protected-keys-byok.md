@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1e7ea0dc929fdbb4ca306405e6ed8993ed2e4afe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4a3eaddd160acb8d4d2ae9f0da43ce6cb0236055
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "100386103"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198151"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM で保護されたキーを Key Vault にインポートする (BYOK)
 
@@ -52,7 +52,7 @@ Azure Key Vault の詳細と、Key Vault の使用を開始するチュートリ
 | Azure サブスクリプション |Azure Key Vault でキー コンテナーを作成するには、Azure サブスクリプションが必要です。 [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。 |
 | HSM で保護されたキーをインポートするための Key Vault Premium SKU |Azure Key Vault のサービス レベルと機能の詳細については、「[Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/)」をご覧ください。 |
 | サポートされている HSM の一覧に含まれる HSM と、HSM ベンダーから提供されている BYOK ツールおよび説明 | HSM のアクセス許可と HSM の使用方法に関する基本的な知識が必要です。 「[サポートされている HSM](#supported-hsms)」を参照してください。 |
-| Azure CLI バージョン 2.1.0 以降 | 「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。|
+| Azure CLI バージョン 2.1.0 以降 | 「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。|
 
 ## <a name="supported-hsms"></a>サポートされている HSM
 
@@ -101,7 +101,7 @@ KEK には次の条件があります。
 > [!NOTE]
 > KEK には、許可されている唯一のキー操作として「インポート」が必要です。 「インポート」は、他のすべてのキー操作と同時には使用できません。
 
-キー操作が `import` に設定されている KEK を作成するには、[az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) コマンドを使用します。 次のコマンドから返されるキー識別子 (`kid`) を記録しておきます。 (この `kid` 値は[手順 3](#step-3-generate-and-prepare-your-key-for-transfer) で使用します。)
+キー操作が `import` に設定されている KEK を作成するには、[az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) コマンドを使用します。 次のコマンドから返されるキー識別子 (`kid`) を記録しておきます。 (この `kid` 値は[手順 3](#step-3-generate-and-prepare-your-key-for-transfer) で使用します。)
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
@@ -109,7 +109,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>手順 2:KEK 公開キーをダウンロードする
 
-KEK 公開キーを .pem ファイルにダウンロードするには、[az keyvault key download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) を使用します。 インポートするターゲット キーを暗号化するには、KEK 公開キーを使用します。
+KEK 公開キーを .pem ファイルにダウンロードするには、[az keyvault key download](/cli/azure/keyvault/key#az-keyvault-key-download) を使用します。 インポートするターゲット キーを暗号化するには、KEK 公開キーを使用します。
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -130,7 +130,7 @@ BYOK ツールをダウンロードしてインストールする方法につい
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>手順 4:キーを Azure Key Vault に転送する
 
-キーのインポートを完了するには、切断されたコンピューターからインターネットに接続されているコンピューターにキー転送パッケージ (BYOK ファイル) を転送します。 [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) コマンドを使用して、BYOK ファイルを Key Vault HSM にアップロードします。
+キーのインポートを完了するには、切断されたコンピューターからインターネットに接続されているコンピューターにキー転送パッケージ (BYOK ファイル) を転送します。 [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) コマンドを使用して、BYOK ファイルを Key Vault HSM にアップロードします。
 
 RSA キーをインポートするには、次のコマンドを使用します。 パラメーター - kty は省略可能で、既定値は "RSA-HSM" です。
 ```azurecli

@@ -958,6 +958,14 @@ groups:
     title: Azure Arc
   - id: azure-portal
     title: Security Center のポータル ページ
+- id: manage-asc-initiatives
+  title: Security Center イニシアチブの管理
+  prompt: Security Center イニシアチブはどのように管理しますか?
+  pivots:
+  - id: azure-portal
+    title: Azure Portal で次の操作を行います。
+  - id: rest-api
+    title: REST API を使用した場合
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: オペレーティング システム/コンソール
   prompt: オペレーティング システムとコンソールの選択
@@ -1045,9 +1053,9 @@ groups:
   - id: programming-language-kotlin
     title: Kotlin (Android)
 metadata:
-  ms.openlocfilehash: cd30fa892e20dc82c0e314c76d72c2c8d3583bd1
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: 3e17c3c00f5df915394ee81646d8bc3883a8e1ee
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102032451"
+  ms.locfileid: "102097514"

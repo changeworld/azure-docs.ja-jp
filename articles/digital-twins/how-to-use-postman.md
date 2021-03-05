@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715702"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199664"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Postman を使用して Azure Digital Twins API に要求を送信する方法
 
@@ -21,7 +21,7 @@ ms.locfileid: "101715702"
 
 この記事では、Azure Digital Twins API を操作するために、次の手順に従って [Postman REST クライアント](https://www.getpostman.com/)を構成する方法について説明します。
 
-1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用して、Postman で API 要求を行うために使用するベアラー トークンを取得します。
+1. [Azure CLI](/cli/azure/install-azure-cli) を使用して、Postman で API 要求を行うために使用するベアラー トークンを取得します。
 1. Postman コレクションを設定し、ベアラー トークンを使用して認証するように Postman REST クライアントを構成します。
 1. 構成した Postman を使用して要求を作成し、Azure Digital Twins API に送信します。
 
@@ -41,9 +41,9 @@ Postman を使用して Azure Digital Twins API にアクセスするには、Az
 
 Postman と Azure Digital Twins インスタンスを設定したので、次は、Postman 要求で Azure Digital Twins API に対する認証に使用できるベアラー トークンを取得する必要があります。
 
-このトークンを取得するには、いくつかの方法があります。 この記事では、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用して Azure アカウントにサインインし、その方法でトークンを取得します。
+このトークンを取得するには、いくつかの方法があります。 この記事では、[Azure CLI](/cli/azure/install-azure-cli) を使用して Azure アカウントにサインインし、その方法でトークンを取得します。
 
-Azure CLI が[ローカルにインストールされている](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)場合は、お使いのコンピューターでコマンド プロンプトを起動して次のコマンドを実行できます。
+Azure CLI が[ローカルにインストールされている](/cli/azure/install-azure-cli)場合は、お使いのコンピューターでコマンド プロンプトを起動して次のコマンドを実行できます。
 そうでない場合は、ブラウザーで [Azure Cloud Shell](https://shell.azure.com) ウィンドウを開き、そこでコマンドを実行できます。
 
 1. まず、次のコマンドを実行して、適切な資格情報を使用して Azure にログインしていることを確認します。
@@ -52,7 +52,7 @@ Azure CLI が[ローカルにインストールされている](/cli/azure/insta
     az login
     ```
 
-1. 次に、[az account get-access-token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) コマンドを使用して、Azure Digital Twins サービスにアクセスできるベアラー トークンを取得します。
+1. 次に、[az account get-access-token](/cli/azure/account#az_account_get_access_token) コマンドを使用して、Azure Digital Twins サービスにアクセスできるベアラー トークンを取得します。
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0
