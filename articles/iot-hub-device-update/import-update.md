@@ -1,17 +1,17 @@
 ---
 title: 新しい更新プログラムのインポート方法 | Microsoft Docs
 description: 新しい更新プログラムを IoT Hub の Device Update for IoT Hub にインポートするための How-To ガイド。
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d8757f3076f784576f95bbdfc30abf578446c776
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660647"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030734"
 ---
 # <a name="import-new-update"></a>新しい更新プログラムのインポート
 新しい更新プログラムを Device Update for IoT Hub にインポートする方法について説明します。
@@ -53,7 +53,7 @@ ms.locfileid: "101660647"
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    参考として、次に前述のパラメーター値の例を示します。 ドキュメント全体については、以下のインポート マニフェスト スキーマを参照してください。
+    参考として、次に前述のパラメーター値の例を示します。 完成した[インポート マニフェスト スキーマ](import-schema.md)で詳細を確認することもできます。
 
     | パラメーター | 説明 |
     | --------- | ----------- |
@@ -66,19 +66,6 @@ ms.locfileid: "101660647"
     | installedCriteria | <ul><li>更新の種類 `microsoft/swupdate:1` には SWVersion の値を指定します</li><li>更新の種類 `microsoft/apt:1` には推奨値を指定します
     | updateFilePath(s) | コンピューター上の更新プログラム ファイルへのパス
 
-    インポート マニフェスト スキーマ (全体)
-
-    | 名前 | Type | 説明 | 制限 |
-    | --------- | --------- | --------- | --------- |
-    | UpdateId | `UpdateId` オブジェクト | 更新プログラム ID。 |
-    | UpdateType | string | 更新の種類: <ul><li>参照エージェントを使用してパッケージベースの更新を実行する場合は、`microsoft/apt:1` を指定します。</li><li>参照エージェントを使用してイメージベースの更新を実行する場合は、`microsoft/swupdate:1` を指定します。</li><li>サンプル エージェント シミュレーターを使用する場合は、`microsoft/simulator:1` を指定します。</li><li>カスタム エージェントを開発する場合は、カスタムの種類を指定します。</li></ul> | <ul><li>形式: `{provider}/{type}:{typeVersion}`</li><li>最大 32 文字</li></ul> |
-    | InstalledCriteria | string | 更新プログラムが正常に適用されたかどうかを判断するために、エージェントによって解釈される文字列。  <ul><li>更新の種類 `microsoft/swupdate:1` には SWVersion の **値** を指定します。</li><li>更新の種類 `microsoft/apt:1` には `{name}-{version}` を指定します。これは、APT ファイルから取得した名前とバージョンです。</li><li>更新の種類 `microsoft/simulator:1` には更新プログラム ファイルのハッシュを指定します。</li><li>カスタム エージェントを開発する場合は、カスタムの文字列を指定します。</li></ul> | 最大 64 文字 |
-    | 互換性 | `CompatibilityInfo` オブジェクトの配列 | この更新プログラムと互換性のあるデバイスの互換性情報。 | 最大 10 個の項目 |
-    | CreatedDateTime | 日付/時刻 | 更新プログラムが作成された日時。 | ISO 8601 の、区切られた日付と時刻の形式 (UTC) |
-    | ManifestVersion | string | マニフェスト スキーマのバージョンをインポートします。 `2.0` を指定します。これは、`urn:azureiot:AzureDeviceUpdateCore:1` インターフェイスおよび `urn:azureiot:AzureDeviceUpdateCore:4` インターフェイスと互換性があります。</li></ul> | `2.0` である必要があります。 |
-    | ファイル | `File` オブジェクトの配列 | ペイロード更新ファイル | 最大 5 個のファイル |
-
-注: すべてのフィールドが必須です。
 
 ## <a name="review-generated-import-manifest"></a>生成されたインポート マニフェストを確認する
 

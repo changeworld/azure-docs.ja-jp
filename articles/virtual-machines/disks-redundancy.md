@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cafbff86a55ad0bed7da17fcef1aea2b0a53d1b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678681"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043645"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>マネージド ディスクの冗長性オプション
 
@@ -34,7 +34,7 @@ Azure マネージド ディスクには、プレビューとしてのゾーン�
 
 ゾーン冗長ストレージ (ZRS) では、選択されたリージョンにある 3 つの Azure 可用性ゾーン間で Azure マネージド ディスクを同期的にレプリケートします。 各可用性ゾーンは、独立した電源、冷却装置、ネットワークを備えた独立した物理的な場所です。 
 
-ZRS ディスクを使用すると、可用性ゾーン内の障害からの回復が可能になります。 ゾーン全体が停止した場合は、ZRS ディスクを別のゾーン内の VM にアタッチできます。 また、ZRS ディスクを共有ディスクと組み合わせて使用すると、SQL FCI、SAP ASCS/SCS、GFS2 などのクラスター化または分散アプリケーションの可用性を向上させることもできます。 共有 ZRS ディスクを異なるゾーン内のプライマリおよびセカンダリ VM にアタッチすると、ZRS と[可用性ゾーン](../availability-zones/az-overview.md)の両方を利用できます。 プライマリ ゾーンで障害が発生した場合は、[SCSI 永続的予約](disks-shared-enable.md#supported-scsi-pr-commands)を使用して、セカンダリ VM にすばやくフェールオーバーできます。
+ZRS ディスクを使用すると、可用性ゾーン内の障害からの回復が可能になります。 ゾーン全体が停止した場合は、ZRS ディスクを別のゾーン内の VM にアタッチできます。 また、ZRS ディスクを共有ディスクとして使用すると、SQL FCI、SAP ASCS/SCS、GFS2 などのクラスター化または分散アプリケーションの可用性を向上させることもできます。 共有 ZRS ディスクを異なるゾーン内のプライマリおよびセカンダリ VM にアタッチすると、ZRS と[可用性ゾーン](../availability-zones/az-overview.md)の両方を利用できます。 プライマリ ゾーンで障害が発生した場合は、[SCSI 永続的予約](disks-shared-enable.md#supported-scsi-pr-commands)を使用して、セカンダリ VM にすばやくフェールオーバーできます。
 
 ### <a name="limitations"></a>制限事項
 
@@ -56,7 +56,7 @@ ZRS ディスクを使用すると、可用性ゾーン内の障害からの回�
 
 ### <a name="create-zrs-managed-disks"></a>ZRS マネージド ディスクを作成する
 
-ZRS ディスクを作成するには、Azure Resource Manager テンプレートで `2020-12-01` API を使用する必要があります。
+ZRS ディスクを作成するには、Azure Resource Manager テンプレートで `2020-12-01` API を使用してください。
 
 #### <a name="create-a-vm-with-zrs-disks"></a>ZRS ディスクを使用して VM を作成する
 
@@ -120,3 +120,7 @@ New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
 -osDiskType "StandardSSD_LRS" `
 -dataDiskType "Premium_ZRS" `
 ```
+
+## <a name="next-steps"></a>次のステップ
+
+- これらのサンプル [Azure Resource Manager テンプレートを使用して、ZRS ディスクを使用する VM を作成します](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks)。

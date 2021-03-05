@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6e1ed39edfd3c395fbc3e4d26a4aa358d48a1d5b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660602"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035485"
 ---
 # <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>Azure Percept DK にビジョン AI モデルをデプロイする
 
@@ -40,13 +40,11 @@ Azure Percept Studio 内から Azure Percept DK にビジョン AI モデルを�
 
 1. 事前にトレーニングされたいずれかのサンプル ビジョン モデルをデプロイする場合は、次のページで **[サンプル モデルのデプロイ]** をクリックします。 既にある [コーディングなしのカスタム ビジョン ソリューション](./tutorial-nocode-vision.md)をデプロイする場合は、 **[Custom Vision プロジェクトのデプロイ]** をクリックします。
 
-    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="Percept デバイスの一覧。":::
+    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="デプロイのモデルの選択肢。":::
 
 1. コーディングなしでビジョン ソリューションをデプロイしたい場合は、プロジェクトおよび望ましいモデルのイテレーションを選択し、 **[デプロイ]** をクリックします。
 
 1. サンプル モデルをデプロイしたい場合は、モデルを選択し、 **[デバイスへのデプロイ]** をクリックします。
-
-    :::image type="content" source="./media/how-to-deploy-model/select-sample-model.png" alt-text="Percept デバイスの一覧。":::
 
 1. モデル デプロイが成功すると、画面の右上隅にステータス メッセージが表示されます。 モデル推論の動作を確認するには、ステータス メッセージの **[ストリームを表示します]** リンクをクリックして、開発キットの Vision SoM からの RTSP ビデオ ストリームを確認します。
 

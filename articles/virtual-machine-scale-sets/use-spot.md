@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675022"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694990"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure Spot Virtual Machines 
 
@@ -68,13 +68,56 @@ Azure Spot Virtual Machines を使用してスケール セットを作成する
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 試行と復元のメリット:
-- Azure スポット仮想マシンをスケール セットにデプロイするときに、既定で有効になります。
 - 容量が原因で削除された Azure スポット仮想マシンの復元を試行します。
 - 復元された Azure スポット仮想マシンは、容量が原因で削除がトリガーされる確率が低くなることで、より長い期間実行されることが期待されます。
 - Azure スポット仮想マシンの有効期間が長くなることで、ワークロードの実行時間が長くなります。
 - 従量課金制 VM 用に既に存在するターゲット数を維持する機能と同様に、Azure Spot Virtual Machines で Virtual Machine Scale Sets のターゲット数を維持するのを支援します。
 
 試行と復元は、[自動スケーリング](virtual-machine-scale-sets-autoscale-overview.md)を使用するスケール セットでは無効になっています。 スケール セット内の VM の数は、自動スケーリング規則によって決まります。
+
+### <a name="register-for-try--restore"></a>試行と復元のための登録
+
+試行と復元機能を使用する前に、プレビューのサブスクリプションを登録する必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell を使用して、機能の登録を完了することができます。
+
+
+**CLI の使用**
+
+[az feature register](/cli/azure/feature#az-feature-register) を使用して、サブスクリプションでのプレビューを有効にします。 
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには: 
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。 
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute 
+```
+**PowerShell の使用** 
+
+[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。 
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには: 
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。 
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+```
 
 ## <a name="placement-groups"></a>配置グループ
 

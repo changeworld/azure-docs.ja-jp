@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: cdc5de8153e8b2e0ea8bb8ea372fe8610ccb895b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678741"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694803"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Cognitive Search のクエリにスペル チェックを追加する
 
@@ -36,7 +36,7 @@ ms.locfileid: "101678741"
   スペル チェックには queryLanguage が必要であり、現在 "en-us" が唯一の有効な値です。
 
 > [!Note]
-> スペル チェック パラメーターは、セマンティック検索を提供するのと同じリージョン内のすべての階層で使用できます。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
+> スペル チェック パラメーターは、セマンティック検索を提供するのと同じリージョン内のすべての階層で使用できます。 このプレビュー機能にアクセスするためにサインアップする必要はありません。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
 
 ## <a name="spell-correction-with-simple-search"></a>単純な検索でのスペル修正
 
@@ -94,7 +94,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="language-considerations"></a>言語に関する注意点
 
-スペル チェックに必要な queryLanguage パラメーターは、インデックス スキーマのフィールド定義に割り当てられている[言語アナライザー](index-add-language-analyzers.md)と一致している必要があります。 クエリ要求で指定された queryLanguage は、スペル チェックに使用される辞書を決定し、使用している場合は[セマンティック ランク付けアルゴリズム](semantic-how-to-query-response.md)への入力としても使用されます。 言語アナライザーは、インデックス作成中に使用され、検索インデックス内の一致するドキュメントを取得します。 一貫性を保つため、queryLanguage が "en-us" の場合、言語アナライザーも英語のバリアント ("en.microsoft" または "en.lucene") である必要があります。 
+スペル チェックに必要な queryLanguage パラメーターは、インデックス スキーマのフィールド定義に割り当てられている[言語アナライザー](index-add-language-analyzers.md)と一致している必要があります。 
+
++ queryLanguage により、スペル チェックに使用される辞書が決まります。これは、"queryType=semantic" を使用している場合に[セマンティック ランク付けアルゴリズム](semantic-how-to-query-response.md)への入力としても使用されます。
+
++ 言語アナライザーは、検索インデックスで一致するドキュメントを見つけるために、インデックスの作成時とクエリの実行時に使用されます。 言語アナライザーを使用するフィールド定義の例として `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` があります。
+
+スペル チェックの使用時に最良の結果を得るには、queryLanguage が "en-us" の場合、言語アナライザーも英語のバリアント ("en.microsoft" または "en.lucene") である必要があります。
 
 > [!NOTE]
 > 言語に依存しないアナライザー (keyword、simple、standard、stop、whitespace、`standardasciifolding.lucene` など) は、queryLanguage 設定と競合しません。

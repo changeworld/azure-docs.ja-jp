@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 3540204d66bb589c567514f92a9a8acb2159e343
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664319"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041690"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK を設定し、最初の AI モデルをデプロイする
 
@@ -173,7 +173,7 @@ Azure アカウントがサブスクリプションの "所有者" または "�
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="セットアップ エクスペリエンスの切断に関する警告。"::: 
 
-1. Azure ポータルに進む - セットアップ エクスペリエンス ウィンドウに戻り、 **[Azure portal に進む]** ボタンをクリックして、Azure Percept Studio でカスタム AI モデルの作成を開始します。
+1. Azure portal に進む - セットアップ エクスペリエンス ウィンドウに戻り、 **[Azure portal に進む]** ボタンをクリックして、Azure Percept Studio でカスタム AI モデルの作成を開始します。
 
     > [!NOTE]
     > ホスト コンピューターが Wi-Fi 設定の開発キット アクセス ポイントに接続されていないこと、およびローカル Wi-Fi に再接続されていることを確認します。
@@ -205,8 +205,6 @@ Azure アカウントがサブスクリプションの "所有者" または "�
     
 1. 接続されているデバイスに、新しい事前構築済みのサンプルをデプロイします。 ライブラリからサンプルを選択し、[デバイスへのデプロイ] をクリックします
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-1-select-prebuilt.png" alt-text="事前構築済みのものを選択します。":::
-    
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-2-select-journey.png" alt-text="動作中の物体検出を確認します。":::
 
 ## <a name="next-steps"></a>次のステップ

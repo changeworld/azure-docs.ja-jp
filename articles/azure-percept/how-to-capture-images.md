@@ -1,20 +1,20 @@
 ---
-title: Azure Percept DK にビジョン AI モデルをデプロイする
-description: Azure Percept Studio から Azure Percept DK にビジョン AI モデルをデプロイする方法について説明します
+title: Azure Percept Studio でコードなしのビジョン ソリューションの画像をキャプチャする
+description: コードなしのビジョン ソリューションのために、Azure Percept Studio で Azure Percept DK を使用して画像をキャプチャする方法について説明します。
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5ad263f5ae3b0b8e91de30b620002e33086608b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660511"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035536"
 ---
-# <a name="capture-images-for-a-vision-project"></a>ビジョン プロジェクトの画像をキャプチャする
+# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Azure Percept Studio でビジョン プロジェクトの画像をキャプチャする
 
 Azure Percept Studio の既存のビジョン プロジェクトで、Azure Percept DK の Vision SoM を使用して画像をキャプチャするには、このガイドに従ってください。 まだビジョン プロジェクトを作成していない場合は、[コーディングなしのビジョンに関するチュートリアル](./tutorial-nocode-vision.md)を参照してください。
 
@@ -56,7 +56,7 @@ Azure Percept Studio の既存のビジョン プロジェクトで、Azure Perc
         1. **[Capture rate]\(キャプチャ レート\)** で、望ましい画像化レートを選択します。
         1. 収集する画像の合計枚数を **[Target]\(ターゲット\)** で選択します。
 
-    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="利用可能なアクションが一覧表示された Percept デバイス ページ。":::
+    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="画像のキャプチャ画面。":::
 
 すべての画像には、[Custom Vision](https://www.customvision.ai/) からアクセスできます。
 

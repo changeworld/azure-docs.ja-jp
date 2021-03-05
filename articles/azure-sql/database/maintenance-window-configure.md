@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: ae31b329cbea82ac664af24e42ec58d094b3a7ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660694"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048601"
 ---
 # <a name="configure-maintenance-window-preview"></a>メンテナンス期間の構成 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -275,7 +275,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 1. メンテナンス期間を設定するマネージド インスタンスに移動します。
 1. **[設定]** メニューで、 **[メンテナンス]** を選択し、目的のメンテナンス期間を選択します。
 
-   :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="SQL データベースの [メンテナンス] ページ":::
+   :::image type="content" source="media/maintenance-window-configure/maintenance-mi.png" alt-text="SQL マネージド インスタンスのメンテナンス ページ":::
 
 
 
