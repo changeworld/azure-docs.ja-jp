@@ -1,7 +1,7 @@
-- name: App Service 環境
+- name: App Service Environment
 - name: 概要
   items:
-    - name: App Service 環境について
+    - name: App Service Environment について
       href: intro.md
     - name: App Service Environment v3 (プレビュー)
       href: overview.md
