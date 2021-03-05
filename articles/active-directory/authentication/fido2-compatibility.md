@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649242"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175370"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 パスワードレス認証のブラウザー サポート
 
@@ -26,12 +26,14 @@ Azure Active Directory では、[FIDO2 セキュリティ キー](./concept-auth
 
 この表は、Azure Active Directory (Azure AD) および Microsoft アカウント (MSA) の認証のサポートを示しています。 Microsoft アカウントは、Xbox、Skype、Outlook.com などのサービスのコンシューマーによって作成されます。 サポートされているデバイスの種類には、**USB**、近距離無線通信 (**NFC**)、Bluetooth Low Energy (**BLE**) などがあります。
 
-|  | Chrome |  |  | Edge |  |  | Firefox |  |  |
+| OS | Chrome | Chrome  | Chrome | Edge | Edge | Edge | Firefox | Firefox | Firefox |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | | USB | NFC | BLE | USB | NFC | BLE | USB | NFC | BLE |
 | **Windows**  | ![Chrome では、AAD アカウント用に Windows で USB がサポートされます。][y] | ![Chrome では、AAD アカウント用に Windows で NFC がサポートされます。][y] | ![Chrome では、AAD アカウント用に Windows で BLE がサポートされます。][y] | ![Edge では、AAD アカウント用に Windows で USB がサポートされます。][y] | ![Edge では、AAD アカウント用に Windows で NFC がサポートされます。][y] | ![Edge では、AAD アカウント用に Windows で BLE がサポートされます。][y] | ![Firefox では、AAD アカウント用に Windows で USB がサポートされます。][y] | ![Firefox では、AAD アカウント用に Windows で NFC がサポートされます。][y] | ![Firefox では、AAD アカウント用に Windows で BLE がサポートされます。][y] |
 | **macOS**  | ![Chrome では、AAD アカウント用に macOS で USB がサポートされます。][y] | ![Chrome では、AAD アカウント用に macOS で NFC はサポートされません。][n] | ![Chrome では、AAD アカウント用に macOS で BLE はサポートされません。][n] | ![Edge では、AAD アカウント用に macOS で USB がサポートされます。][y] | ![Edge では、AAD アカウント用に macOS で NFC はサポートされません。][n] | ![Edge では、AAD アカウント用に macOS で BLE はサポートされません。][n] | ![Firefox では、AAD アカウント用に macOS で USB はサポートされません。][n] | ![Firefox では、AAD アカウント用に macOS で NFC はサポートされません。][n] | ![Firefox では、AAD アカウント用に macOS で BLE はサポートされません。][n] |
 | **Linux**  | ![Chrome では、AAD アカウント用に Linux で USB がサポートされます。][y] | ![Chrome では、AAD アカウント用に Linux で NFC はサポートされません。][n] | ![Chrome では、AAD アカウント用に Linux で BLE はサポートされません。][n] | ![Edge では、AAD アカウント用に Linux で USB はサポートされません。][n] | ![Edge では、AAD アカウント用に Linux で NFC はサポートされません。][n] | ![Edge では、AAD アカウント用に Linux で BLE はサポートされません。][n] | ![Firefox では、AAD アカウント用に Linux で USB はサポートされません。][n] | ![Firefox では、AAD アカウント用に Linux で NFC はサポートされません。][n] | ![Firefox では、AAD アカウント用に Linux で BLE はサポートされません。][n] |
+
+
 
 ## <a name="unsupported-browsers"></a>サポートされていないブラウザー
 
