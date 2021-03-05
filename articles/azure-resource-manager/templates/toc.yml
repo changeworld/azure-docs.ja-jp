@@ -328,6 +328,8 @@
       items:
         - name: JSON と Bicep の比較
           href: compare-template-syntax.md
+    - name: データ型
+      href: data-types.md
     - name: よく寄せられる質問
       href: frequently-asked-questions.md
     - name: クラウドの一貫性を実現するテンプレート

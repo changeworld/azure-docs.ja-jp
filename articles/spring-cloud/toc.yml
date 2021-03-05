@@ -147,6 +147,8 @@
       items:
         - name: 問題の自己診断と解決
           href: spring-cloud-howto-self-diagnose-solve.md
+        - name: VNET で実行される自己診断
+          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
         - name: トラブルシューティング ガイド
           href: spring-cloud-troubleshoot.md
     - name: Migrate

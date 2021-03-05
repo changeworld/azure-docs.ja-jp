@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: e969cc4bee9f09f4279d137abb33b75ca0672ffc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364717"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179257"
 ---
 # <a name="getting-started-with-azure-functions"></a>Azure Functions の概要
 
@@ -46,7 +46,7 @@ ms.locfileid: "100364717"
 ::: zone pivot="programming-language-javascript"
 | アクション | リソース |
 | --- | --- |
-| **最初の関数を作成する** | 次のいずれかのツールを使用します。<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js ターミナルまたはコマンド プロンプト](./create-first-function-cli-java.md) |
+| **最初の関数を作成する** | 次のいずれかのツールを使用します。<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js ターミナルまたはコマンド プロンプト](./create-first-function-cli-node.md) |
 | **実行中の関数を確認する** | <li>[Azure サンプル ブラウザー](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure コミュニティ ライブラリ](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
 | **対話型チュートリアルを探索する** | <li>[ビジネス シナリオに最適なサーバーレス テクノロジを選択する](/learn/modules/serverless-fundamentals/)<li>[優れた設計のフレームワーク - パフォーマンス効率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Azure Functions を使用してサーバーレス API をビルドする](/learn/modules/build-api-azure-functions/)<li>[Azure Functions を使用したサーバーレス ロジックの作成](/learn/modules/create-serverless-logic-with-azure-functions/)<li>[Azure Functions で Node.js と Express API をサーバーレス API にリファクターする](/learn/modules/shift-nodejs-express-apis-serverless/) <br><br>[対話型チュートリアルの完全な一覧](/learn/browse/?expanded=azure&products=azure-functions)については、Microsoft Learn を参照してください。|
 | **ベスト プラクティスを確認する** |<li>[パフォーマンスと信頼性](./functions-best-practices.md)<li>[接続の管理](./manage-connections.md)<li>[エラー処理と関数の再試行](./functions-bindings-error-pages.md?tabs=javascript)<li>[Security](./security-concepts.md)|
