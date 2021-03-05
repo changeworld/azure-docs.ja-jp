@@ -106,7 +106,7 @@ Traffic Manager と DNS を構成すると、最終的に、`www.scalableasedemo
 4. 先ほど *TrafficRoutingMethod* パラメーターに指定した負荷分散ポリシーに基づいて、構成済みのエンドポイントのいずれかが Traffic Manager によって選択されます。 次に、そのエンドポイントの FQDN がブラウザーまたはデバイスに返されます。
 5. エンドポイントの FQDN は App Service Environment で実行されるアプリ インスタンスの URL であるため、ブラウザーまたはデバイスは FQDN を IP アドレスに解決するよう Microsoft Azure DNS サーバーに要請します。 
 6. ブラウザーまたはデバイスはその IP アドレスに HTTP/S 要求を送信します。  
-7. 要求は、App Service 環境のいずれかで実行されているアプリ インスタンスのいずれかに到達します。
+7. 要求は、App Service Environment のいずれかで実行されているアプリ インスタンスのいずれかに到達します。
 
 次のコンソール画像は、サンプル アプリのカスタム ドメインの DNS 参照を示しています。 ここでは、3 つのサンプル App Service Environment のいずれか (この場合は 3 つの App Service Environment の 2 つ目) で実行されるアプリ インスタンスに正しく解決されています。
 
