@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 83fc88a57a1cdbec35a8f939a81698799d290d70
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734234"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183626"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Azure Cache for Redis を使用して Azure Functions に機械学習モデルをデプロイする 
 
@@ -26,7 +26,7 @@ Azure Cache for Redis は非常にパフォーマンスが高くスケーラブ�
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](../machine-learning/how-to-manage-workspace.md)を参照してください。
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * ワークスペースに登録されているトレーニング済みの機械学習モデル。 モデルがない場合は、[イメージ分類のチュートリアル: モデルのトレーニング](../machine-learning/tutorial-train-models-with-aml.md)を使用して、トレーニングと登録を行います。
 
 > [!IMPORTANT]
