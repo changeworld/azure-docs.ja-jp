@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a512151dce336de42da78232ca30845dae754db3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366276"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202724"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -637,6 +637,6 @@ DFS-N のデプロイがある場合、DFN 名前空間を新しいサーバー 
 ## <a name="next-steps"></a>次の手順
 
 * [Azure File Sync: aka.ms/AFS](./storage-sync-files-planning.md) の詳細を確認します。
-* [クラウドを使った階層化](storage-sync-cloud-tiering.md)ポリシーの柔軟性を理解します。
+* [クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)ポリシーの柔軟性を理解します。
 * Azure ファイル共有で [Azure Backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) を有効にして、スナップショットをスケジュールし、バックアップ保持期間のスケジュールを定義します。
 * Azure portal で、一部のファイルが完全に同期していないことがわかった場合は、その問題を解決する手順について[トラブルシューティング ガイド](storage-sync-files-troubleshoot.md)を確認します。

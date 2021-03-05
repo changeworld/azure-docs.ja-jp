@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 035d782321feb5d467638159fc191f65573b1042
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c9ce87584373bd87a8f89ecb4ea692b44d3fab4d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716127"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202962"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー)Azure CLI
 
@@ -40,7 +40,7 @@ Azure Digital Twins インスタンスでシステム割り当て ID を有効�
 
 このセクションでは、現在作成中の Azure Digital Twins インスタンスで、システム マネージド ID を有効にする方法について説明します。 
 
-これを行うには、インスタンスの作成に使用する `az dt create` コマンドに `--assign-identity` パラメーターを追加します。 (このコマンドの詳細については、その[リファレンス ドキュメント](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_create)または [Azure Digital Twins インスタンスを設定するための一般的な手順](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)に関する記事を参照してください)。
+これを行うには、インスタンスの作成に使用する `az dt create` コマンドに `--assign-identity` パラメーターを追加します。 (このコマンドの詳細については、その[リファレンス ドキュメント](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create)または [Azure Digital Twins インスタンスを設定するための一般的な手順](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)に関する記事を参照してください)。
 
 システム マネージド ID を持つインスタンスを作成するには、このように `--assign-identity` パラメーターを追加します。
 
@@ -97,9 +97,9 @@ Azure Digital Twins でのルーティングでサポートされているエン
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-このコマンドを使用したロールの割り当てのその他の例については、[**az dt create** のリファレンス ドキュメント](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_create)を参照してください。
+このコマンドを使用したロールの割り当てのその他の例については、[**az dt create** のリファレンス ドキュメント](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create)を参照してください。
 
-また、ロールを作成および管理するために、[**az role assignment**](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) コマンド グループも使用できます。 これは、create コマンドでロールの割り当てをグループ化したくない場合の追加のシナリオをサポートするために使用できます。
+また、ロールを作成および管理するために、[**az role assignment**](/cli/azure/role/assignment) コマンド グループも使用できます。 これは、create コマンドでロールの割り当てをグループ化したくない場合の追加のシナリオをサポートするために使用できます。
 
 ## <a name="create-an-endpoint-with-identity-based-authentication"></a>ID ベースの認証を使用してエンドポイントを作成する
 
@@ -108,7 +108,7 @@ Azure Digital Twins インスタンスのシステム マネージド ID を設�
 >[!NOTE]
 > キー ベースの ID で既に作成されているエンドポイントを編集して、ID ベースの認証に変更することはできません。 最初にエンドポイントを作成するときに、認証の種類を選択する必要があります。
 
-これを行うには、エンドポイントの作成に使用する `az dt endpoint create` コマンドに `--auth-type` パラメーターを追加します。 (このコマンドの詳細については、その[リファレンス ドキュメント](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true)または [Azure Digital Twins エンドポイントを設定するための一般的な手順](how-to-manage-routes-apis-cli.md#create-the-endpoint)に関する記事を参照してください)。
+これを行うには、エンドポイントの作成に使用する `az dt endpoint create` コマンドに `--auth-type` パラメーターを追加します。 (このコマンドの詳細については、その[リファレンス ドキュメント](/cli/azure/ext/azure-iot/dt/endpoint/create)または [Azure Digital Twins エンドポイントを設定するための一般的な手順](how-to-manage-routes-apis-cli.md#create-the-endpoint)に関する記事を参照してください)。
 
 ID ベースの認証を使用するエンドポイントを作成するには、`--auth-type` パラメーターを使用して `IdentityBased` 認証の種類を指定します。 下の例は、Event Hubs エンドポイントについて、これを示しています。
 
