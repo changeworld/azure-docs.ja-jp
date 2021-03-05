@@ -23,12 +23,10 @@
           href: access-api-howto.md
         - name: Azure Cloud Shell を設定する
           href: ../../cloud-shell/overview.md
-        - name: REST を使用した開発
+        - name: Media Services への接続
           items:
-            - name: Postman を使用して接続する
+            - name: REST と Postman を使用して接続する
               href: media-rest-apis-with-postman.md
-        - name: SDK を使用した開発
-          items:
             - name: Java を使用して接続する
               href: configure-connect-java-howto.md
             - name: .NET を使用して接続する
@@ -51,6 +49,8 @@
       items:
         - name: ARM を使用してアカウントを作成する
           href: quickstart-arm-template-account.md
+    - name: Python 基本エンコードのクイックスタート
+      href: quickstart-basic-encoding-python.md
 - name: チュートリアル
   items:
     - name: .NET
