@@ -2,20 +2,20 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Arc 対応 Kubernetes について
+    - name: Azure Arc 対応 Kubernetes について
       href: overview.md
     - name: Azure Arc 検証プログラム
       href: validation-program.md
+- name: クイックスタート
+  items:
+    - name: Azure Arc にクラスターを接続する
+      href: quickstart-connect-cluster.md
 - name: チュートリアル
   items:
     - name: GitOps を使用して構成をデプロイする
       href: tutorial-use-gitops-connected-cluster.md
     - name: GitOps を使用して CI/CD を実装する
       href: tutorial-gitops-ci-cd.md
-- name: クイックスタート
-  items:
-    - name: Azure Arc にクラスターを接続する
-      href: quickstart-connect-cluster.md
 - name: 概念
   items:
     - name: エージェントのアーキテクチャ
