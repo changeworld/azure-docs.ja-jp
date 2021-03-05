@@ -1346,7 +1346,7 @@
             - name: 一般提供の FAQ
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: よく寄せられる質問
-              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+              href: ../azure-monitor/faq.md
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要

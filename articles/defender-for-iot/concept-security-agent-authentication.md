@@ -1,5 +1,5 @@
 ---
-title: セキュリティ エージェントの認証 (プレビュー)
+title: セキュリティ エージェントの認証
 titleSuffix: Azure Defender for IoT
 description: 2 つの方法を使用して、マイクロ エージェント認証を実行します。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 018da32b90c7730f82eaa5aa2cd2b5c7a64719a6
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: b0304bd191626adb71041fb0561862b988ee25cd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809669"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124586"
 ---
-# <a name="micro-agent-authentication-methods-preview"></a>マイクロ エージェントの認証方法 (プレビュー)
+# <a name="micro-agent-authentication-methods"></a>マイクロ エージェントの認証方法 
 
 Defender for IoT マイクロ エージェントを使用した認証には、次の 2 つのオプションがあります。 
 

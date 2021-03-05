@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 1bcf9009a039a10017d53ca6fe9e78acec1efd55
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5cdc0080c0d8b06bd0b7e19566b54b4f105648e5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581230"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122104"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Azure Automanage for virtual machines のベスト プラクティス
 
@@ -38,7 +38,7 @@ Automanage for virtual machines を使用すると、このような Azure サ�
 |Log Analytics ワークスペース    |Azure Monitor では、ログ データが Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは Azure リソースであり、データが収集、集計され、管理境界として機能するコンテナーです。 [詳細情報](../azure-monitor/logs/design-logs-deployment.md)。    |Azure VM のベスト プラクティス - 運用、Azure VM のベスト プラクティス - Dev/Test    |No    |
 
 
-<sup>1</sup> Automanage を有効にしている場合は、構成プロファイルを使用できます。 [詳細情報](automanage-virtual-machines.md#configuration-profiles)。 構成プロファイルの既定の設定を調整し、ベスト プラクティスの制約内で独自の基本設定を指定することもできます。
+<sup>1</sup> Automanage を有効にしている場合は、構成プロファイルを使用できます。 [詳細情報](automanage-virtual-machines.md)。 構成プロファイルの既定の設定を調整し、ベスト プラクティスの制約内で独自の基本設定を指定することもできます。
 
 
 ## <a name="next-steps"></a>次の手順

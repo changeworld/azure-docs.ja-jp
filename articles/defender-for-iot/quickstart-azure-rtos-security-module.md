@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: a11a8ec2d8eb82950cf0ab55eb6ca1913b41c84a
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: e8e9eae576c330f17cd33d027152d463fe19a82b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522939"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123894"
 ---
-# <a name="quickstart-security-module-for-azure-rtos-preview"></a>クイック スタート:Azure RTOS 用のセキュリティ モジュール (プレビュー)
+# <a name="quickstart-security-module-for-azure-rtos"></a>クイック スタート: Azure RTOS 用のセキュリティ モジュール 
 
 この記事では、使い始める前の前提条件について説明し、IoT Hub で Azure RTOS サービス用のセキュリティ モジュールを有効にする方法について説明します。 現在 IoT Hub がない場合、作業を開始するには、「[Azure portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」を参照してください。
 

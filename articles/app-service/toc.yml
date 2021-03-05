@@ -108,7 +108,7 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 推奨事項
           href: security-recommendations.md
@@ -187,8 +187,6 @@
               href: deploy-ci-cd-custom-container.md
             - name: ローカル Git からのデプロイ
               href: deploy-local-git.md
-            - name: GitHub アクション
-              href: deploy-github-actions.md
             - name: コンテナーの GitHub アクション
               href: deploy-container-github-action.md
             - name: テンプレートを使用したデプロイ
