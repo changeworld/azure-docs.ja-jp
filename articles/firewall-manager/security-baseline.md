@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ec746a5c347db8cb92c95b1d76f3622498f0039f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bec5cafaf7d506d9ab25228c680d00af91dbf3d0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742383"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200140"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Azure Firewall Manager 用の Azure セキュリティ ベースライン
 
@@ -338,7 +338,7 @@ Azure リソース、リソース グループ、サブスクリプションに�
 
 **ガイダンス**:Azure Firewall Manager リソースが不要になった場合は、それを削除して、攻撃対象領域を最小限に抑えます。 ユーザーは、Azure portal、CLI、または REST API を使用して Azure Firewall Manager リソースを管理できます。
 
-- [Azure Firewall ポリシー CLI](/cli/azure/ext/azure-firewall/network/firewall/policy?preserve-view=true&view=azure-cli-latest)
+- [Azure Firewall ポリシー CLI](/cli/azure/ext/azure-firewall/network/firewall/policy)
 
 - [Azure ネットワーク CLI](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
 
@@ -557,7 +557,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Azure Firewall ポリシー テンプレートのリファレンス](/azure/templates/microsoft.network/firewallpolicies)
 
-- [Azure Firewall ポリシー CLI](/cli/azure/ext/azure-firewall/network/firewall/policy?preserve-view=true&view=azure-cli-latest)
+- [Azure Firewall ポリシー CLI](/cli/azure/ext/azure-firewall/network/firewall/policy)
 
 - [エンタープライズ規模のランディング ゾーンでのガードレールの実装の図](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 
