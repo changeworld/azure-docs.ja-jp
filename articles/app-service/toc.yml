@@ -4,7 +4,7 @@
   items:
     - name: Web Apps について
       href: overview.md
-    - name: App Service 環境について
+    - name: App Service Environment について
       href: environment/intro.md
     - name: ホスティング オプションの比較
       href: /azure/architecture/guide/technology-choices/compute-decision-tree

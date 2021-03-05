@@ -1,6 +1,6 @@
 ---
 title: 外部 ASE の作成
-description: アプリが含まれる App Service 環境を作成する方法、またはスタンドアロンの (空の) ASE を作成する方法について説明します。
+description: アプリが含まれる App Service Environment を作成する方法、またはスタンドアロンの (空の) ASE を作成する方法について説明します。
 author: ccompy
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
 ms.topic: article
@@ -55,7 +55,7 @@ ASE を作成する方法は、3 つあります。
 
 ## <a name="create-an-ase-and-an-app-service-plan-together"></a>ASE と App Service プランを一緒に作成する
 
-App Service プランは、アプリのコンテナーです。 App Service でアプリを作成するときは、App Service プランを選択または作成します。 App Service 環境に App Service プランが存在し、App Service プランにアプリが存在します。
+App Service プランは、アプリのコンテナーです。 App Service でアプリを作成するときは、App Service プランを選択または作成します。 App Service Environment に App Service プランが存在し、App Service プランにアプリが存在します。
 
 App Service プランを作成中に ASE を作成するには、次の手順を実行します。
 
@@ -69,7 +69,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 4. お使いの OS (Windows、Linux、Docker) を選択します。 
 
-5. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+5. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service Environment に追加することはできます。 
 
     ![Azure portal のスクリーンショット。[Web アプリ]、[App Service プラン]、[新しい App Service プラン] の各ウィンドウが開いています。][2]
 
@@ -105,7 +105,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 1. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」を参照してください。
 
-1. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+1. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service Environment に追加することはできます。 
 
     ![Azure portal のスクリーンショット。[Web App for Containers]、[App Service プラン]、[新しい App Service プラン] の各ウィンドウが開いています。][8]
 

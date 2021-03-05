@@ -53,8 +53,8 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcapp
 ```
 
-## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>App Service 環境への既存のアプリの複製
-シナリオ:米国中南部リージョンに既存のアプリがあり、ユーザーはそのコンテンツを既存の App Service 環境 (ASE) の新しいアプリに複製したいと考えています。
+## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>App Service Environment への既存のアプリの複製
+シナリオ:米国中南部リージョンに既存のアプリがあり、ユーザーはそのコンテンツを既存の App Service Environment (ASE) の新しいアプリに複製したいと考えています。
 
 ソース アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース アプリの情報を取得できます (この場合の名前は `source-webapp`)。
 
@@ -128,6 +128,6 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * [App Service の複製](app-service-web-app-cloning.md)
 * [Azure App Service でアプリをバックアップする](manage-backup.md)
 * [Azure Resource Manager による Azure Traffic Manager プレビューのサポート](../traffic-manager/traffic-manager-powershell-arm.md)
-* [App Service 環境の概要](environment/intro.md)
+* [App Service Environment の概要](environment/intro.md)
 * [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
 

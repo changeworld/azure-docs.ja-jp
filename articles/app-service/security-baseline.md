@@ -43,7 +43,7 @@ Web アプリケーション ファイアウォール (WAF) が有効になっ�
 
 サブスクリプションと仮想ネットワーク全体でアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、および記録するために、Azure Firewall を実装することを検討してください。 Azure Firewall では、仮想ネットワーク リソースに静的パブリック IP アドレスが使用されます。これにより、外部ファイアウォールは、仮想ネットワークからのトラフィックを識別できます。 
 
-- [App Service 環境をロックする](environment/firewall-integration.md)
+- [App Service Environment をロックする](environment/firewall-integration.md)
 
 - [Open Web Application Security Project (OWASP) の上位 10 の脆弱性の保護](https://owasp.org/www-project-top-ten/)
 
@@ -98,9 +98,9 @@ Azure Firewall を使用して、トラフィックを送信し、サブスク�
 
 Application Service Environment アプリと同様に、すべてのアプリケーション トラフィックを Azure Firewall デバイス経由で外部に送信し、アプリのログを監視します。
 
-さらに、「App Service 環境をロックする」というドキュメントで推奨事項を確認し、それに従ってください。
+さらに、「App Service Environment をロックする」というドキュメントで推奨事項を確認し、それに従ってください。
 
-- [App Service 環境をロックする](environment/firewall-integration.md)
+- [App Service Environment をロックする](environment/firewall-integration.md)
 
 - [Azure Application Gateway 上の Azure Web Application Firewall](../web-application-firewall/ag/ag-overview.md)
 
@@ -114,7 +114,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**:「App Service 環境をロックする」というドキュメントの説明に従って App Service Environment を保護します。 Azure Security Center の統合された脅威インテリジェンス機能を適用して、既知の悪意のあるパブリック IP アドレス、または未使用のパブリック IP アドレスとの通信を拒否します。 アクセス制限を使用して Application Gateway への受信トラフィックを保護します。 
+**ガイダンス**:「App Service Environment をロックする」というドキュメントの説明に従って App Service Environment を保護します。 Azure Security Center の統合された脅威インテリジェンス機能を適用して、既知の悪意のあるパブリック IP アドレス、または未使用のパブリック IP アドレスとの通信を拒否します。 アクセス制限を使用して Application Gateway への受信トラフィックを保護します。 
 
 インターネットに接続するパブリック エンドポイントを使用して、マルチテナント App Service (Isolated レベルではないアプリ) を保護します。 仮想ネットワーク内の特定のサブネットからのトラフィックのみを許可し、他のすべてのトラフィックをブロックします。 アクセス制限を使用して、許可される受信トラフィックをロック ダウンするようにネットワーク アクセス制御リスト (IP 制限) を構成します。
 
@@ -128,7 +128,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [App Service Environment 向けに Web アプリケーション ファイアウォール (WAF) を構成する方法](environment/app-service-app-service-environment-web-application-firewall.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](environment/firewall-integration.md)
+- [「App Service Environment をロックする」の説明に従って ASE を保護する](environment/firewall-integration.md)
 
 **Azure Security Center の監視**: はい
 
@@ -148,7 +148,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 **ガイダンス**:App Service Environment でアプリのトラフィックを管理します。
 
-- 「App Service 環境をロックする」の説明に従って App Service Environment を保護する
+- 「App Service Environment をロックする」の説明に従って App Service Environment を保護する
 - インターネットに接続するアプリの前面に Azure Web Application Firewall を備えた Application Gateway を配置する
 - HTTPS を介してのみアプリにアクセスできるように設定する
 
@@ -168,7 +168,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](./environment/firewall-integration.md)
+- [「App Service Environment をロックする」の説明に従って ASE を保護する](./environment/firewall-integration.md)
 
 **Azure Security Center の監視**: はい
 
@@ -205,7 +205,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](./environment/firewall-integration.md)
+- [「App Service Environment をロックする」の説明に従って ASE を保護する](./environment/firewall-integration.md)
 
 **Azure Security Center の監視**: 適用なし
 

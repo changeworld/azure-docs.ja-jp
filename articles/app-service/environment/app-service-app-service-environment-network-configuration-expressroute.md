@@ -16,7 +16,7 @@ ms.locfileid: "88961824"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
-顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 App Service 環境は、[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に作成されます。 App Service Environment で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立します。  
+顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 App Service Environment は、[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に作成されます。 App Service Environment で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立します。  
 
 App Service Environment は以下のシナリオで作成できます。
 - Azure Resource Manager の仮想ネットワーク。

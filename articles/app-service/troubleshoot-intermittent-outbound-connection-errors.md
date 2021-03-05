@@ -141,7 +141,7 @@ PHP では接続プールがサポートされていませんが、バックエ�
 
 [App Service 診断](./overview-diagnostics.md)を使用して、SNAT ポート割り当て情報を検索したり、App Service サイトの SNAT ポート割り当てメトリックを監視したりできます。 SNAT ポート割り当て情報を検索するには、次の手順に従います。
 
-1. App Service 診断にアクセスするには、[Azure portal](https://portal.azure.com/) 上の App Service Web アプリまたは App Service 環境に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** を選択します。
+1. App Service 診断にアクセスするには、[Azure portal](https://portal.azure.com/) 上の App Service Web アプリまたは App Service Environment に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** を選択します。
 2. [Availability and Performance] (可用性とパフォーマンス) カテゴリを選択します。
 3. カテゴリの下にある使用可能なタイルの一覧から [SNAT Port Exhaustion] (SNAT ポート枯渇) タイルを選択します。 128 未満に維持することをお勧めします。
 必要な場合、続けてサポート チケットを開くことができます。このとき、サポート エンジニアがお客様に代わってバックエンドからメトリックを取得します。

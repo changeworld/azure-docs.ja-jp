@@ -586,7 +586,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Web/connectionGateways (オンプレミス データ ゲートウェイ)
 - Microsoft.Web/connections (API 接続)
 - Microsoft.Web/customApis (Logic Apps カスタム コネクタ)
-- Microsoft.Web/HostingEnvironments (App Service 環境)
+- Microsoft.Web/HostingEnvironments (App Service Environment)
 - Microsoft.Web/KubeEnvironments (App Service Kubernetes 環境)
 - Microsoft.Web/serverFarms (App Service プラン)
 - Microsoft.Web/sites (App Services)

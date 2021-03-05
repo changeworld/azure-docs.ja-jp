@@ -16,9 +16,9 @@ ms.locfileid: "99226391"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
 ## <a name="overview"></a>概要
-App Service Environment (ASE) は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。 この記事では、App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
+App Service Environment (ASE) は単一の顧客に分離されるため、 App Service Environment にのみ適用できる特定の構成設定があります。 この記事では、 App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
 
-App Service 環境がない場合は、 [App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
+App Service Environment がない場合は、 [App Service Environment の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
 App Service Environment のカスタマイズは、新しい **clusterSettings** 属性の配列を使って保存できます。 この属性は、Azure Resource Manager の *hostingEnvironments* エンティティの "Properties" ディクショナリにあります。
 
