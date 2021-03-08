@@ -314,6 +314,6 @@ Done
 > [!div class="nextstepaction"]
 > [JavaScript 開発者センターの Azure](/azure/developer/javascript/)
 
-* Azure BLOB ストレージを使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
+* Azure Blob Storage を使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
 * Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
 * 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。
