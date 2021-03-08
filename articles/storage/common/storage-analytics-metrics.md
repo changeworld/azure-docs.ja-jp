@@ -28,7 +28,7 @@ Azure Storage では、Storage Analytics を利用し、ストレージ サー�
  新しいストレージ アカウントでは、Storage Analytics Metrics が既定で有効になっています。 メトリックは、PowerShell を使用するか Azure CLI を使用して [Azure portal](https://portal.azure.com/) で構成することができます。 ステップ バイ ステップ ガイダンスについては、[Azure Storage Analytics メトリックを有効にして管理する (クラシック)](./manage-storage-analytics-logs.md) に関する記事を参照してください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 サービスごとに Storage Analytics を有効にするには、サービス プロパティの設定操作を行います。  
 
 > [!NOTE]
-> Storage Analytics メトリックは、Azure Blob ストレージ、Azure Queue ストレージ、Azure Table ストレージ、Azure Files でお使いいただけます。
+> Storage Analytics メトリックは、Azure Blob Storage、Azure Queue ストレージ、Azure Table ストレージ、Azure Files でお使いいただけます。
 > Storage Analytics メトリックはクラシック メトリックになりました。 Microsoft では、Storage Analytics メトリックの代わりに、[Azure Monitor のストレージ メトリック](../blobs/monitor-blob-storage.md)の使用をお勧めしています。
 
 ## <a name="transaction-metrics"></a>トランザクション メトリック  
