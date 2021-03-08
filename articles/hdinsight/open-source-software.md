@@ -1,23 +1,20 @@
 ---
 title: Azure HDInsight でのオープンソース ソフトウェアのサポート
 description: Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f1e1518cce060374f14f1db7d5f4e594e3de8f85
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: fec4cff974031982c782c9265a7d3186d6bb0233
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086264"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942556"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight でのオープンソース ソフトウェアのサポート
 
-Microsoft Azure HDInsight サービスは、Apache Hadoop を中心に形成されたオープン ソース テクノロジの環境を利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳しくは、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」の**サポート範囲**に関するセクションを参照してください。 HDInsight サービスでは、組み込みのコンポーネントに対してさらに高いレベルのサポートを提供しています。
+Microsoft Azure HDInsight サービスは、Apache Hadoop を中心に形成されたオープン ソース テクノロジの環境を利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳しくは、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」の **サポート範囲** に関するセクションを参照してください。 HDInsight サービスでは、組み込みのコンポーネントに対してさらに高いレベルのサポートを提供しています。
 
 ## <a name="components"></a>Components
 
@@ -40,7 +37,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 > [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 または、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 多くのコミュニティ サイトを使用できます。 例として、[HDInsight に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)や [Stack Overflow](https://stackoverflow.com) があります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 または、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 多くのコミュニティ サイトを使用できます。 例として、[HDInsight に関する Microsoft Q&A 質問ページ](/answers/topics/azure-hdinsight.html)や [Stack Overflow](https://stackoverflow.com) があります。
 >
 > Apache プロジェクトにも、[Apache の Web サイト](https://apache.org)にプロジェクトのサイトがあります。 たとえば、[Hadoop](https://hadoop.apache.org/) などです。
 

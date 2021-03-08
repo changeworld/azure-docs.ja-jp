@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 206ff6f888229356743bebb816cf03e4f7a7504b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073127"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778717"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
@@ -38,14 +38,14 @@ CDN キャッシュ規則を設定して、Azure portal からキャッシュの
 > 
 > その他のファイルと BLOB へのアクセスを高速化する Azure CDN のしくみについて詳しくは、「[Azure Content Delivery Network (CDN) の概要](cdn-overview.md)」をご覧ください。
 > 
-> Azure Blob Storage について詳しくは、「[Blob Storage の概要](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)」をご覧ください。
+> Azure Blob Storage について詳しくは、「[Blob Storage の概要](../storage/blobs/storage-blobs-introduction.md)」をご覧ください。
  
 
 ## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN キャッシュ規則を使用した Cache-Control ヘッダーの設定
 BLOB の `Cache-Control` ヘッダーを設定するための推奨される方法は、Azure Portal でのキャッシュ規則の使用です。 CDN キャッシュ規則の詳細については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページを参照してください。
 
 > [!NOTE] 
-> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Azure CDN ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Azure CDN ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
 
 **[CDN キャッシュ規則] ページに移動するには**:
 
@@ -115,7 +115,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>.NET を使った Cache-Control ヘッダーの設定
-.NET コードを使用して BLOB の `Cache-Control` ヘッダーを指定するには、[.NET 用の Azure Storage クライアント ライブラリ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)を使用して [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) プロパティを設定します。
+.NET コードを使用して BLOB の `Cache-Control` ヘッダーを指定するには、[.NET 用の Azure Storage クライアント ライブラリ](../storage/blobs/storage-quickstart-blobs-dotnet.md)を使用して [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) プロパティを設定します。
 
 次に例を示します。
 
@@ -164,7 +164,7 @@ Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新す�
 ![Azure Storage Explorer のプロパティ](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
-[Azure コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure) (CLI) では、コマンド ラインから Azure BLOB リソースを管理することができます。 Azure CLI で BLOB をアップロードするときにキャッシュ制御ヘッダーを設定するには、`-p` スイッチを使って *cacheControl* プロパティを設定します。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
+[Azure コマンド ライン インターフェイス](/cli/azure) (CLI) では、コマンド ラインから Azure BLOB リソースを管理することができます。 Azure CLI で BLOB をアップロードするときにキャッシュ制御ヘッダーを設定するには、`-p` スイッチを使って *cacheControl* プロパティを設定します。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
@@ -183,4 +183,3 @@ BLOB の TTL 設定を簡単に確認できます。 ブラウザーの[開発�
 ## <a name="next-steps"></a>次の手順
 * [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を確認します](cdn-manage-expiration-of-cloud-service-content.md)
 * [キャッシュの概念を学習する](cdn-how-caching-works.md)
-

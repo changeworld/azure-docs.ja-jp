@@ -2,19 +2,19 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 02/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 400c5f0b2281679c3ec913e94643ffec6082d9e6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181228"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552420"
 ---
 #### <a name="to-create-a-volume"></a>ボリュームを作成するには
-1. **[デバイス]** ブレードの表形式のデバイス一覧で、デバイスを選択します。 **[+ ボリュームの追加]** をクリックします。
+1. **[デバイス]** ブレードの表形式のデバイス一覧で、デバイスを選択します。 **[+ ボリュームの追加]** をクリックします。<!--Note to reviewer. No screen updates. Had to rename screens to be able to correct a formatting error.-->
 
-    ![新しいバージョンの追加](./media/storsimple-8000-create-volume-u2/step5createvol1.png)
+    ![新しいバージョンの追加](./media/storsimple-8000-create-volume-u2/create-volume-01.png)
 
 2. **[ボリュームの追加]** ブレードで、次の操作を行います。
    
@@ -35,10 +35,10 @@ ms.locfileid: "67181228"
        ローカル固定のボリュームは 8.5 TB まで、階層化されたボリュームは 200 TB までを 8100 デバイスにプロビジョニングできます。 より大きな 8600 デバイスでは、ローカル固定ボリュームを 22.5 TB まで、階層化ボリュームを 500 TB までプロビジョニングできます。 階層化されたボリュームのワーキング セットをホストするには、デバイス上のローカル領域が必要なため、ローカル固定のボリュームを作成すると、階層化されたボリュームのプロビジョニングに使用できる領域が影響を受けます。 そのため、ローカル固定のボリュームを作成すると、階層化されたボリュームの作成に使用可能な領域が減少します。 同様に、階層化されたボリュームを作成すると、ローカル固定のボリュームの作成に使用可能な領域が減少します。
       
        8100 デバイスに 8.5 TB (許容される最大サイズ) のローカル固定のボリュームをプロビジョニングすると、デバイスで使用可能なローカル領域がすべて使い果たされます。 この時点で、階層化されたボリュームのワーキング セットをホストするためのローカル領域がデバイスになくなるため、階層化されたボリュームを以後作成できなくなります。 既存の階層化されたボリュームも、使用可能な領域に影響します。 たとえば、約 106 TB のボリュームが既に階層化されている 8100 デバイスがある場合、ローカル固定されたボリュームに使用できるのは 4 TB の領域のみになります。
-
+ 
       1. **[接続済みのホスト]** フィールドで矢印をクリックします。 
 
-         ![接続済みのホスト](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
+         ![接続済みのホスト](./media/storsimple-8000-create-volume-u2/create-volume-02.png)
 
       1. **[接続済みのホスト]** ブレードで既存の ACR を選択するか新しい ACR を追加します。具体的には、次の手順を実行します。
 
@@ -47,7 +47,7 @@ ms.locfileid: "67181228"
 
       1. **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
 
-         ![Create をクリックしてください。](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+         ![Create をクリックしてください。](./media/storsimple-8000-create-volume-u2/create-volume-03.png)
 
          > [!NOTE]
          > この時点ではまだボリュームが保護されていないことに注意してください。 スケジュールされたバックアップを作成するには、バックアップ ポリシーを作成してこのボリュームに関連付ける必要があります。 

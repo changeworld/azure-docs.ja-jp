@@ -1,21 +1,20 @@
 ---
-title: Mapping Data Flow の和集合変換
+title: マッピング データ フローの和集合変換
 description: Azure Data Factory マッピング データ フローの新しい分岐変換
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 1874e3536a3dda123c7fff9726c02e5d92d88804
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e61c53cabc8f784ba9f0a3e78b5de01be134b0cd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204340"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367845"
 ---
-# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Data Factory マッピング データ フローの和集合変換
+# <a name="union-transformation-in-mapping-data-flow"></a>マッピング データ フローの和集合変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 

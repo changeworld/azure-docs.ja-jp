@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515013"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591462"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -35,7 +35,7 @@ ms.locfileid: "85515013"
 
 - お使いのアカウントで使用されるサービスと機能が、ターゲット リージョンでサポートされていることを確認してください。
 
-- プレビュー機能については、お使いのサブスクリプションがターゲット リージョンのホワイトリストに登録されていることを確認してください。
+- プレビュー機能については、お使いのサブスクリプションがターゲット リージョンの許可リストに登録されていることを確認してください。
 
 <a id="prepare"></a>
 
@@ -67,7 +67,7 @@ Azure portal を使用してテンプレートをエクスポートするには:
 
 PowerShell を使用してテンプレートをエクスポートするには:
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -167,7 +167,7 @@ PowerShell を使用してテンプレートをデプロイするには:
          }]          
     ```
 
-    リージョン コードを取得するには、[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) コマンドを実行します。
+    リージョン コードを取得するには、[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを実行します。
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -196,7 +196,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) を使って、ターゲット パブリック IP をデプロイするサブスクリプション ID を取得します。
+1. [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) を使って、ターゲット パブリック IP をデプロイするサブスクリプション ID を取得します。
 
    ```azurepowershell-interactive
    Get-AzSubscription
@@ -224,7 +224,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 | **ライフサイクル管理ポリシー** | [Azure Blob Storage のライフサイクルの管理](../blobs/storage-lifecycle-management-concepts.md) |
 | **静的な Web サイト** | [Azure Storage で静的 Web サイトをホストする](../blobs/storage-blob-static-website-how-to.md) |
 | **イベントのサブスクリプション** | [Blob Storage のイベント処理](../blobs/storage-blob-event-overview.md) |
-| **警告** | [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-activity-log.md) |
+| **警告** | [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-activity-log.md) |
 | **Content Delivery Network (CDN)** | [Azure CDN を使用して HTTPS 経由でカスタム ドメインを使用した BLOB にアクセスする](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
@@ -232,14 +232,14 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 ### <a name="move-data-to-the-new-storage-account"></a>新しいストレージ アカウントにデータを移動する
 
-AzCopy は、データの移動に推奨されるツールです。 パフォーマンスのために最適化されています。  より迅速な方法では、データがストレージ サーバー間で直接コピーされます。その場合、AzCopy では、コンピューターのネットワーク帯域幅を使用しません。 コマンド ラインまたはカスタム スクリプトの一部として AzCopy を使用します。 [AzCopy の作業開始](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
+AzCopy は、データの移動に推奨されるツールです。 パフォーマンスのために最適化されています。  より迅速な方法では、データがストレージ サーバー間で直接コピーされます。その場合、AzCopy では、コンピューターのネットワーク帯域幅を使用しません。 コマンド ラインまたはカスタム スクリプトの一部として AzCopy を使用します。 [AzCopy の作業開始](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
 Azure Data Factory を使用してデータを移動することもできます。 これには、直感的なユーザー インターフェイスが用意されています。 Azure Data Factory を使用するには、以下のリンクのいずれかを参照してください。 
 
-  - [Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob ストレージをコピー先、またはコピー元にして、データをコピーする)](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob Storage をコピー先、またはコピー元にして、データをコピーする)](/azure/data-factory/connector-azure-blob-storage)
+  - [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](/azure/data-factory/connector-azure-data-lake-storage)
+  - [Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする](/azure/data-factory/connector-azure-file-storage)
+  - [Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー](/azure/data-factory/connector-azure-table-storage)
 
 ---
 
@@ -273,5 +273,5 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 このチュートリアルでは、Azure ストレージ アカウントをあるリージョンから別のリージョンに移動し、元のリソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 
 
-- [リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM を別のリージョンに移動する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure VM を別のリージョンに移動する](../../site-recovery/azure-to-azure-tutorial-migrate.md)

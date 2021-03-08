@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
-ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.topic: tutorial
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/19/2019
-ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496340"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178077"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>チュートリアル:自動フェールオーバー グループに Azure SQL Database を追加する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "87496340"
 このチュートリアルを完了するには、次のものが必要です。
 
 - Azure サブスクリプション。 [無料のアカウントを作成](https://azure.microsoft.com/free/)します (まだお持ちでない場合)。
-- 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli)。
 
 ---
 
@@ -78,7 +78,7 @@ ms.locfileid: "87496340"
 1. **[フェールオーバー グループ]** ページで、次の値を入力するか選択してから、 **[作成]** を選択します。
 
    - **フェールオーバー グループ名**:一意のフェールオーバー グループ名 (`failovergrouptutorial` など) を入力します。
-   - **セカンダリ サーバー**:*必要な設定を構成*するオプションを選択してから、 **[新しいサーバーの作成]** を選択します。 または、既に存在しているサーバーをセカンダリ サーバーとして選択することもできます。 次の値を入力したら、 **[選択]** を選択します。
+   - **セカンダリ サーバー**:*必要な設定を構成* するオプションを選択してから、 **[新しいサーバーの作成]** を選択します。 または、既に存在しているサーバーをセカンダリ サーバーとして選択することもできます。 次の値を入力したら、 **[選択]** を選択します。
       - **[サーバー名]** : セカンダリ サーバーの一意の名前 (`mysqlsecondary` など) を入力します。
       - **サーバー管理者ログイン**:「`azureuser`」と入力します
       - **パスワード**:パスワードの要件を満たす複雑なパスワードを入力します。
@@ -163,7 +163,7 @@ ms.locfileid: "87496340"
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする Azure SQL Database 内のサーバーを作成します。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Azure SQL Database 内のサーバーのファイアウォール規則を作成します。 |
@@ -199,7 +199,7 @@ ms.locfileid: "87496340"
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | データベースとエラスティック プールをホストするサーバーを作成します。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | サーバーのファイアウォール規則を作成します。 |
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | フェールオーバー グループを更新します。 |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) | フェールオーバー グループを更新します。 |
 
 ---
 
@@ -286,7 +286,7 @@ PowerShell を使用してフェールオーバーをテストします。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Database のフェールオーバー グループを取得または一覧表示します。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Databese のフェールオーバー グループのフェールオーバーを実行します。 |
@@ -322,8 +322,8 @@ Azure CLI を使用してフェールオーバーをテストします。
 
 | コマンド | Notes |
 |---|---|
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | サーバーにフェールオーバー グループが表示されます。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 現在のプライマリ サーバーからすべてのデータベースをフェールオーバーして、フェールオーバー グループのプライマリを設定します。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group#az-sql-failover-group-list) | サーバーにフェールオーバー グループが表示されます。 |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | 現在のプライマリ サーバーからすべてのデータベースをフェールオーバーして、フェールオーバー グループのプライマリを設定します。 |
 
 ---
 
@@ -355,7 +355,7 @@ PowerShell を使用してリソース グループを削除します。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します |
 
@@ -373,7 +373,7 @@ Azure CLI を使用してリソース グループを削除します。
 
 | コマンド | Notes |
 |---|---|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ---
 
@@ -388,7 +388,7 @@ Azure CLI を使用してリソース グループを削除します。
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Azure SQL Database 内の単一データベースとエラスティック プールをホストするサーバーを作成します。 |
@@ -407,17 +407,17 @@ Azure CLI を使用してリソース グループを削除します。
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
+| [az account set](/cli/azure/account#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Azure SQL Database 内の単一データベースとエラスティック プールをホストするサーバーを作成します。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Azure SQL Database にサーバー レベルの IP ファイアウォール規則を作成します。 |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Azure SQL Database にデータベースを作成します。 |
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Azure SQL Database にフェールオーバー グループを作成します。 |
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Azure SQL Database 内のサーバーのフェールオーバー グループを一覧表示します。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 現在のプライマリ サーバーからすべてのデータベースをフェールオーバーして、フェールオーバー グループのプライマリを設定します。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az sql db create](/cli/azure/sql/db) | Azure SQL Database にデータベースを作成します。 |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Azure SQL Database にフェールオーバー グループを作成します。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Azure SQL Database 内のサーバーのフェールオーバー グループを一覧表示します。 |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | 現在のプライマリ サーバーからすべてのデータベースをフェールオーバーして、フェールオーバー グループのプライマリを設定します。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 # <a name="the-portal"></a>[ポータル](#tab/azure-portal)
 

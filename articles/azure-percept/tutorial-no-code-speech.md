@@ -1,0 +1,237 @@
+---
+title: Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する
+description: コーディングなしで音声ソリューションを作成し、Azure Percept DK にデプロイする方法について説明します。
+author: elqu20
+ms.author: v-elqu
+ms.service: azure-percept
+ms.topic: tutorial
+ms.date: 02/17/2021
+ms.custom: template-how-to
+ms.openlocfilehash: de85c4f8cdcd9781345ee1488549aab23e38ec5c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101678145"
+---
+# <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する
+
+このチュートリアルでは、Azure Percept DK と Azure Percept Audio で使用する音声アシスタントをテンプレートから作成します。 音声アシスタントのデモは [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 内で動作し、音声で制御される選りすぐりの仮想オブジェクトを含んでいます。 オブジェクトを制御するには、まずキーワード (デバイスを目覚めさせる単語または短いフレーズ) を発話し、続けてコマンドを発話します。 それぞれのテンプレートは、具体的な一連のコマンドに応答します。
+
+このガイドでは、デバイスのセットアップから、音声アシスタントと必要な [Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview) リソースの作成、音声アシスタントのテスト、キーワードの構成、カスタム キーワードの作成までのプロセスを紹介します。
+
+## <a name="prerequisites"></a>前提条件
+
+- Azure Percept DK (開発キット)
+- Azure Percept Audio
+- スピーカーまたはヘッドホン (省略可)
+- [Azure サブスクリプション](https://azure.microsoft.com/free/)
+- [Azure Percept DK セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md): 開発キットを Wi-Fi ネットワークに接続し、IoT ハブを作成して、開発キットを IoT ハブに接続済みであること
+
+## <a name="device-setup"></a>デバイスのセットアップ
+
+1. (省略可) Audio SoM にヘッドホン ジャック ("Line Out") を介してスピーカーまたはヘッドホンを接続します。 これによって音声アシスタントの音声応答を聴くことができます。 スピーカーやヘッドホンを接続していなくても、応答はテキストとしてデモ ウィンドウに表示されます。
+
+1. 同梱されている USB-A to micro B ケーブルを使用して、開発キットのキャリア ボードに Audio SoM を接続します。
+
+1. 開発キットの電源をオンにします。
+
+    - Audio SoM の LED L01 が緑色 (点灯) に変わり、デバイスの電源が投入されたことがわかります。
+    - LED L02 が緑色 (点滅) に変わり、Audio SoM が認証中であることがわかります。
+
+1. 認証プロセスが完了するまで待機します。これには最大 3 分かかることがあります。
+
+1. 次のいずれかが確認できたら、次のセクションに進みます。
+
+    - LED L01 がオフになり、L02 が白色に変わった。 認証は完了しましたが、キーワードを使用した開発キットの構成はまだ済んでいません。
+    - 3 つの LED がすべて青色に変わった。 認証が完了し、キーワードを使用した開発キットの構成も済んでいます。
+
+    > [!NOTE]
+    > 開発キットが認証されない場合は、サポートにお問い合わせください。
+
+## <a name="create-a-voice-assistant-using-an-available-template"></a>提供されているテンプレートを使用して音声アシスタントを作成する
+
+1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) に移動します。
+
+1. **[Demos & tutorials]\(デモとチュートリアル\)** タブを開きます。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/portal-overview.png" alt-text="Azure portal ホームページのスクリーンショット。":::
+
+1. **[Speech tutorials and demos]\(音声のチュートリアルとデモ\)** の **[Try out voice assistant templates]\(音声アシスタント テンプレートを試す\)** をクリックします。 画面の右側にウィンドウが開きます。
+
+1. このウィンドウで次の操作を行います。
+
+    1. **[IoT Hub]** ドロップダウン メニューで、開発キットの接続先となる IoT ハブを選択します。
+
+    1. **[Device]\(デバイス\)** ドロップダウン メニューから自分の開発キットを選択します。
+
+    1. 提供されているいずれかの音声アシスタント テンプレートを選択します。
+
+    1. **[I agree to terms & conditions for this project]\(このプロジェクトの使用条件に同意する\)** チェック ボックスをオンにします。
+
+    1. **Create** をクリックしてください。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/template-creation.png" alt-text="音声アシスタント テンプレートの作成のスクリーンショット。":::
+
+1. **[作成]** をクリックすると、音声のテーマ リソースを作成するための別のウィンドウが開きます。 このウィンドウで次の操作を行います。
+
+    1. **[サブスクリプション]** ボックスで Azure サブスクリプションを選択します。
+
+    1. **[リソース グループ]** ドロップダウン メニューから任意のリソース グループを選択します。 音声アシスタントで使用する新しいリソース グループを作成する場合は、ドロップダウン メニューの下にある **[作成]** をクリックしてプロンプトに従います。
+
+    1. **[Application prefix]\(アプリケーションのプレフィックス\)** に名前を入力します。 これが、プロジェクトとカスタム コマンド名のプレフィックスになります。
+
+    1. **[リージョン]** で、リソースのデプロイ先となるリージョンを選択します。
+
+    1. **[LUIS prediction pricing tier]\(LUIS 予測価格レベル\)** で **[Standard]** を選択します (Free レベルでは音声要求はサポートされません)。
+
+    1. **[作成]** ボタンをクリックします。 音声アシスタント アプリケーションのリソースは、ご利用のサブスクリプションにはデプロイされません。
+
+        > [!WARNING]
+        > ポータルによってリソースのデプロイが完了するまで、ウィンドウは閉じ **ない** でください。 ウィンドウを途中で閉じると、音声アシスタントに予期しない動作が生じる可能性があります。 リソースがデプロイされると、デモが表示されます。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/resource-group.png" alt-text="サブスクリプションとリソース グループの選択ウィンドウのスクリーンショット。":::
+
+## <a name="test-out-your-voice-assistant"></a>音声アシスタントをテストする
+
+音声アシスタントと対話するには、キーワードに続けてコマンドを発話します。 そのキーワードを Ear SoM が認識すると、デバイスはチャイム (スピーカーまたはヘッドホンが接続されている場合に聞こえます) を出力し、LED が青色で点滅します。 コマンドが処理されている間は LED が濃い青色に変わります。 コマンドに対する音声アシスタントの応答は、デモ ウィンドウにテキストで出力されるほか、スピーカーまたはヘッドホンから音声で出力されます。 既定のキーワード ( **[Custom Keyword]\(カスタム キーワード\)** の横に表示されます) は "Computer" に設定され、各テンプレートには、対応している一連のコマンドが含まれています。これらのコマンドを使用することで、デモ ウィンドウの仮想オブジェクトと対話することができます。 たとえば、Hospitality (接客) デモまたは Healthcare (医療) デモを使用している場合、"Computer, turn on TV (コンピューター、テレビを付けて)" と発話すると、仮想テレビがオンになります。
+
+:::image type="content" source="./media/tutorial-no-code-speech/hospitality-demo.png" alt-text="Hospitality (接客) デモ ウィンドウのスクリーンショット。":::
+
+### <a name="hospitality-and-healthcare-demo-commands"></a>Hospitality (接客) デモと Healthcare (医療) デモのコマンド
+
+Healthcare (医療) と Hospitality (接客) のデモにはどちらも、対話できる仮想テレビ、ライト、ブラインド、サーモスタットがあります。 次のコマンド (およびその他のバリエーション) がサポートされています。
+
+* "Turn on/off the lights. (照明を付けて、照明を消して)"
+* "Turn on/off the TV. (テレビを付けて、テレビを消して)"
+* "Turn on/off the AC. (エアコンを付けて、エアコンを消して)"
+* "Open/close the blinds. (ブラインドを開いて、ブラインドを閉じて)"
+* "Set temperature to X degrees. (温度を X 度に設定して)" (X は 75 など、目的の温度です。)
+
+:::image type="content" source="./media/tutorial-no-code-speech/healthcare-demo.png" alt-text="Healthcare (医療) デモ ウィンドウのスクリーンショット。":::
+
+### <a name="automotive-demo-commands"></a>Automotive (自動車) デモのコマンド
+
+Automotive (自動車) デモには、対話的に操作可能な仮想シート ヒーター、デフロスター、サーモスタットが備わっています。 次のコマンド (およびその他のバリエーション) がサポートされています。
+
+* "Turn on/off the defroster. (デフロスターをオンにして、デフロスターをオフにして)"
+* "Turn on/off the seat warmer. (シート ヒーターをオンにして、シート ヒーターをオフにして)"
+* "Set temperature to X degrees. (温度を X 度に設定して)" (X は 75 など、目的の温度です。)
+* "Increase/decrease the temperature by Y degrees. (温度を Y 度上げて、温度を Y 度下げて)"
+
+:::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="Automotive (自動車) デモ ウィンドウのスクリーンショット。":::
+
+### <a name="inventory-demo-commands"></a>Inventory (在庫) デモのコマンド
+
+Inventory (在庫) デモには、仮想在庫アプリと共に、対話的に操作することができる青、黄、緑の各仮想ボックスが含まれています。 次のコマンド (およびその他のバリエーション) がサポートされています。
+
+* "Add/remove X boxes. (X 箱追加して、X 箱移動して)" (X は 4 など、箱の数です。)
+* "Order/ship X boxes. (X 箱注文して、X 箱出荷して)"
+* "How many boxes are in stock? (在庫に残っている箱はいくつ?)"
+* "Count Y boxes. (Y 色の箱を数えて)" (Y は黄など、箱の色です。)
+* "Ship everything in stock. (在庫に残っているものをすべて出荷して)"
+
+:::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="Inventory (在庫) デモ ウィンドウのスクリーンショット。":::
+
+## <a name="configure-your-keyword"></a>キーワードを構成する
+
+キーワードを変更するには、デモ ウィンドウの **[Custom Keyword]\(カスタム キーワード\)** の横にある **[change]\(変更\)** をクリックします。 対象となるいずれかのキーワードを選択し、 **[Save]\(保存\)** をクリックします。 あらかじめ作成されている一連のキーワードと自分で作成したカスタム キーワードの中から選択できます。
+
+:::image type="content" source="./media/tutorial-no-code-speech/change-keyword.png" alt-text="使用可能な一連のキーワードのスクリーンショット。":::
+
+### <a name="create-a-custom-keyword"></a>カスタム キーワードを作成する
+
+カスタム キーワードを作成するには、デモ ウィンドウの上部近くにある **[+ Create Custom Keyword]\(+ カスタム キーワードの作成\)** をクリックします。 目的のキーワード (1 つの単語または短いフレーズ) を入力し、 **[Speech resource]\(音声リソース\)** (デモ ウィンドウの **[Custom Command]\(カスタム コマンド\)** の横に一覧表示され、アプリケーションのプレフィックスが含まれます) を選択して、 **[Save]\(保存\)** をクリックします。 カスタム キーワードのトレーニングは、ほんの数秒で完了します。
+
+:::image type="content" source="./media/tutorial-no-code-speech/custom-keyword.png" alt-text="カスタム キーワードの作成ウィンドウのスクリーンショット。":::
+
+## <a name="create-a-custom-command"></a>カスタム コマンドを作成する
+
+ポータルには、既存の音声リソースを使用してカスタム コマンドを作成するための機能も用意されています。 "カスタム コマンド" とは、既存のアプリケーション内の特定のコマンドではなく、音声アシスタント アプリケーション自体を指します。 カスタム コマンドを作成すると、新しい音声プロジェクトが作成されます。このプロジェクトは、[Speech Studio](https://speech.microsoft.com/) でさらに開発を行う必要があります。
+
+デモ ウィンドウ内から新しいカスタム コマンドを作成するには、ページの上部にある **[+ Create Custom Command]\(+ カスタム コマンドの作成\)** をクリックし、次の手順を実行します。
+
+1. カスタム コマンドの名前を入力します。
+
+1. プロジェクトの説明を入力します (省略可)。
+
+1. 優先する言語を選択します。
+
+1. 音声リソースを選択します。
+
+1. LUIS リソースを選択します。
+
+1. LUIS 作成リソースを選択するか、新たに作成します。
+
+1. **Create** をクリックしてください。
+
+:::image type="content" source="./media/tutorial-no-code-speech/custom-commands.png" alt-text="カスタム コマンドの作成ウィンドウのスクリーンショット。":::
+
+カスタム コマンドを作成したら、[Speech Studio](https://speech.microsoft.com/) に移動して、さらに開発を行う必要があります。 Speech Studio を開いてもカスタム コマンドが表示されない場合は、次の手順を実行します。
+
+1. Azure Percept Studio の左側のメニュー パネルで、 **[AI プロジェクト]** の **[Speech]\(音声\)** をクリックします。
+
+1. **[Commands]\(コマンド\)** タブを選択します。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/ai-projects.png" alt-text="編集可能なカスタム コマンドの一覧のスクリーンショット。":::
+
+1. 開発するカスタム コマンドを選択します。 Speech Studio でプロジェクトが開きます。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Speech Studio のホーム画面のスクリーンショット。":::
+
+カスタム コマンドの開発について詳しくは、[Speech Service のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands)を参照してください。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>音声アシスタントは作成されましたが、コマンドに応答しません
+
+Audio SoM の LED ライトを確認してください。
+
+* 青色の 3 つのライトが点灯状態である場合、音声アシスタントの準備が完了し、キーワードを待機していることを示します。
+* 中心の LED (L02) が白色である場合、開発キットの初期化は完了していますが、キーワードを使用した構成が必要です。
+* 緑色のライトの任意の組み合わせは、Audio SoM の初期化がまだ完了していないことを示します。 初期化は、完了までに数分かかる場合があります。
+
+Audio SoM LED インジケーターの詳細については、LED に関する記事を参照してください。
+
+### <a name="voice-assistant-does-not-respond-to-a-custom-keyword-created-in-speech-studio"></a>Speech Studio で作成したカスタムキーワードに音声アシスタントが応答しません
+
+音声モジュールが古いと、この症状が発生することがあります。 次の手順に従って、音声モジュールを最新バージョンに更新してください。
+
+1. Azure Percept Studio ホームページの左側のメニュー パネルにある **[Devices]\(デバイス\)** をクリックします。
+
+1. デバイスを探して選択します。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/devices.png" alt-text="Azure Percept Studio のデバイス一覧のスクリーンショット。":::
+
+1. デバイス ウィンドウで **[Speech]\(音声\)** タブを選択します。
+
+1. 音声モジュールのバージョンを確認します。 更新プログラムが利用可能な場合は、バージョン番号の横に **[Update]\(更新\)** ボタンが表示されます。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/devkit.png" alt-text="開発キットの音声設定ウィンドウのスクリーンショット。":::
+
+1. **[Update]\(更新\)** をクリックして、音声モジュールの更新プログラムをデプロイします。 通常、更新プロセスは、完了までに 2 分から 3 分かかります。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+音声アシスタント アプリケーションの作業が完了したら、次の手順に従って、このチュートリアルでデプロイした音声リソースをクリーンアップしてください。
+
+1. [Azure portal](https://ms.portal.azure.com/#home) の左側のメニュー パネルから **[リソース グループ]** を選択するか、検索バーにそのように入力します。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="左側のメニュー パネルとリソース グループが表示されている Azure portal ホームページのスクリーンショット。":::
+
+1. リソース グループを選択します。
+
+1. アプリケーションのプレフィックスが含まれている 6 つのリソースをすべて選択し、上部のメニュー パネルにある **[削除]** アイコンをクリックします。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="削除対象として選択された音声リソースのスクリーンショット。":::
+
+1. 削除を確定するには、確認ボックスに「**yes**」と入力し、正しいリソースが選択されていることを確認して、 **[削除]** をクリックします。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/delete-confirmation.png" alt-text="削除の確認ウィンドウのスクリーンショット。":::
+
+> [!WARNING]
+> 削除する音声リソースと共に作成されたカスタム キーワードがすべて削除され、音声アシスタントのデモは機能しなくなります。
+
+## <a name="next-steps"></a>次の手順
+
+コーディングなしで音声ソリューションを作成したら、Azure Percept DK 向けに、[コーディングなしでビジョン ソリューション](./tutorial-nocode-vision.md)を作成してみましょう。

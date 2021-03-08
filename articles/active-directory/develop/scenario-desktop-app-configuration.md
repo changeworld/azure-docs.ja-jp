@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出すデスクトップ アプリを構成する - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出すデスクトップ アプリを構成する | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出すデスクトップ アプリのコードを構成する方法について説明します
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5b74c817a974378a7fefc71e4eed67e6564765be
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121104"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756554"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出すデスクトップ アプリ:コード構成
 
@@ -261,5 +262,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [デスクトップ アプリのトークンの取得](scenario-desktop-acquire-token.md)
+このシナリオの次の記事である[デスクトップ アプリのトークンの取得](scenario-desktop-acquire-token.md)に関する記事に進みます。

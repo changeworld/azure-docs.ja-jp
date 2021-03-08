@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8eb73fcfde7e294896a12289486ff71794a00ae6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021070"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591720"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>チュートリアル:素材、ライト、および効果の調整
 
@@ -32,11 +32,11 @@ ms.locfileid: "89021070"
 
 視覚的なフィードバックをユーザーに提供することは、どのようなアプリケーションにおいてもユーザー エクスペリエンスの重要な点です。 Azure Remote Rendering では、[階層状態のオーバーライド](../../../overview/features/override-hierarchical-state.md)を通じて視覚的なフィードバック メカニズムを実現します。 階層状態のオーバーライドは、モデルのローカル インスタンスにアタッチされたコンポーネントを使用して実装されます。 これらのローカル インスタンスの作成方法については、「[Unity 階層へのリモート オブジェクト グラフの同期](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy)」で学習しました。
 
-まず、[**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) コンポーネントのラッパーを作成します。 **HierarchicalStateOverrideComponent** は、リモート エンティティのオーバーライドを制御するローカル スクリプトです。 [**チュートリアル アセット**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial)には、**BaseEntityOverrideController** と呼ばれる抽象基底クラスが含まれており、これを拡張してラッパーを作成します。
+まず、[**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) コンポーネントのラッパーを作成します。 **HierarchicalStateOverrideComponent** は、リモート エンティティのオーバーライドを制御するローカル スクリプトです。 [**チュートリアル アセット**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial)には、**BaseEntityOverrideController** と呼ばれる抽象基底クラスが含まれており、これを拡張してラッパーを作成します。
 
 1. **EntityOverrideController** という名前の新しいスクリプトを作成し、その内容を次のコードで置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -160,15 +160,15 @@ ms.locfileid: "89021070"
 
 エンティティに状態を適用するには、前に作成した **RemoteEntityHelper** を変更します。
 
-1. **RemoteEntityHelper** クラスを変更して、**BaseRemoteEntityHelper** 抽象クラスを実装します。 この変更により、**チュートリアル アセット**で提供されているビュー コントローラーを使用できるようになります。 変更すると、次のようになります。
+1. **RemoteEntityHelper** クラスを変更して、**BaseRemoteEntityHelper** 抽象クラスを実装します。 この変更により、**チュートリアル アセット** で提供されているビュー コントローラーを使用できるようになります。 変更すると、次のようになります。
 
-    ```csharp
+    ```cs
     public class RemoteEntityHelper : BaseRemoteEntityHelper
     ```
 
 2. 次のコードを使用して、抽象メソッドをオーバーライドします。
 
-    ```csharp
+    ```cs
     public override BaseEntityOverrideController EnsureOverrideComponent(Entity entity)
     {
         var entityGameObject = entity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -249,7 +249,7 @@ ms.locfileid: "89021070"
 
 1. **RemoteCutPlane** という名前の新しいスクリプトを作成し、そのコードを次のコードで置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -318,18 +318,18 @@ ms.locfileid: "89021070"
     }
     ```
 
-    このコードによって、**チュートリアル アセット**に含まれる **BaseRemoteCutPlane** クラスが拡張されます。 リモートでレンダリングされるモデルと同様に、このスクリプトはリモート コーディネーターにアタッチし、そこから送られてくる `RemoteRenderingState` の変更をリッスンします。 コーディネーターが `RuntimeConnected` の状態になると、そのように設定されていれば自動的に接続を試みます。 ここには `CutPlaneComponent` 変数もあり、追跡する必要があります。 これは、リモート セッションの切断面と同期する Azure Remote Rendering コンポーネントです。 では、切断面を作成するために必要な作業を見ていきましょう。
+    このコードによって、**チュートリアル アセット** に含まれる **BaseRemoteCutPlane** クラスが拡張されます。 リモートでレンダリングされるモデルと同様に、このスクリプトはリモート コーディネーターにアタッチし、そこから送られてくる `RemoteRenderingState` の変更をリッスンします。 コーディネーターが `RuntimeConnected` の状態になると、そのように設定されていれば自動的に接続を試みます。 ここには `CutPlaneComponent` 変数もあり、追跡する必要があります。 これは、リモート セッションの切断面と同期する Azure Remote Rendering コンポーネントです。 では、切断面を作成するために必要な作業を見ていきましょう。
 
 2. `CreateCutPlane()` メソッドを次の完成版で置き換えます。
 
-    ```csharp
+    ```cs
     public override void CreateCutPlane()
     {
         if (remoteCutPlaneComponent != null)
             return; //Nothing to do!
 
         //Create a root object for the cut plane
-        var cutEntity = RemoteRenderingCoordinator.CurrentSession.Actions.CreateEntity();
+        var cutEntity = RemoteRenderingCoordinator.CurrentSession.Connection.CreateEntity();
 
         //Bind the remote entity to this game object
         cutEntity.BindToUnityGameObject(this.gameObject);
@@ -339,7 +339,7 @@ ms.locfileid: "89021070"
         syncComponent.SyncEveryFrame = true;
 
         //Add a cut plane to the entity
-        remoteCutPlaneComponent = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.CutPlaneComponent, cutEntity) as CutPlaneComponent;
+        remoteCutPlaneComponent = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.CutPlaneComponent, cutEntity) as CutPlaneComponent;
 
         //Configure the cut plane
         remoteCutPlaneComponent.Normal = SliceNormal;
@@ -353,7 +353,7 @@ ms.locfileid: "89021070"
 
 3. `DestroyCutPlane()` メソッドを次の完成版で置き換えます。
 
-    ```csharp
+    ```cs
     public override void DestroyCutPlane()
     {
         if (remoteCutPlaneComponent == null)
@@ -391,7 +391,7 @@ ms.locfileid: "89021070"
 
 1. **RemoteSky** という新しいスクリプトを作成し、その内容全体を次のコードで置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -402,7 +402,7 @@ ms.locfileid: "89021070"
 
     public class RemoteSky : BaseRemoteSky
     {
-        public override Dictionary<string, LoadTextureFromSASParams> AvailableCubemaps => builtInTextures;
+        public override Dictionary<string, LoadTextureFromSasOptions> AvailableCubemaps => builtInTextures;
 
         private bool canSetSky;
         public override bool CanSetSky
@@ -426,22 +426,22 @@ ms.locfileid: "89021070"
             }
         }
 
-        private Dictionary<string, LoadTextureFromSASParams> builtInTextures = new Dictionary<string, LoadTextureFromSASParams>()
+        private Dictionary<string, LoadTextureFromSasOptions> builtInTextures = new Dictionary<string, LoadTextureFromSasOptions>()
         {
-            {"Autoshop",new LoadTextureFromSASParams("builtin://Autoshop", TextureType.CubeMap)},
-            {"BoilerRoom",new LoadTextureFromSASParams("builtin://BoilerRoom", TextureType.CubeMap)},
-            {"ColorfulStudio",new LoadTextureFromSASParams("builtin://ColorfulStudio", TextureType.CubeMap)},
-            {"Hangar",new LoadTextureFromSASParams("builtin://Hangar", TextureType.CubeMap)},
-            {"IndustrialPipeAndValve",new LoadTextureFromSASParams("builtin://IndustrialPipeAndValve", TextureType.CubeMap)},
-            {"Lebombo",new LoadTextureFromSASParams("builtin://Lebombo", TextureType.CubeMap)},
-            {"SataraNight",new LoadTextureFromSASParams("builtin://SataraNight", TextureType.CubeMap)},
-            {"SunnyVondelpark",new LoadTextureFromSASParams("builtin://SunnyVondelpark", TextureType.CubeMap)},
-            {"Syferfontein",new LoadTextureFromSASParams("builtin://Syferfontein", TextureType.CubeMap)},
-            {"TearsOfSteelBridge",new LoadTextureFromSASParams("builtin://TearsOfSteelBridge", TextureType.CubeMap)},
-            {"VeniceSunset",new LoadTextureFromSASParams("builtin://VeniceSunset", TextureType.CubeMap)},
-            {"WhippleCreekRegionalPark",new LoadTextureFromSASParams("builtin://WhippleCreekRegionalPark", TextureType.CubeMap)},
-            {"WinterRiver",new LoadTextureFromSASParams("builtin://WinterRiver", TextureType.CubeMap)},
-            {"DefaultSky",new LoadTextureFromSASParams("builtin://DefaultSky", TextureType.CubeMap)}
+            {"Autoshop",new LoadTextureFromSasOptions("builtin://Autoshop", TextureType.CubeMap)},
+            {"BoilerRoom",new LoadTextureFromSasOptions("builtin://BoilerRoom", TextureType.CubeMap)},
+            {"ColorfulStudio",new LoadTextureFromSasOptions("builtin://ColorfulStudio", TextureType.CubeMap)},
+            {"Hangar",new LoadTextureFromSasOptions("builtin://Hangar", TextureType.CubeMap)},
+            {"IndustrialPipeAndValve",new LoadTextureFromSasOptions("builtin://IndustrialPipeAndValve", TextureType.CubeMap)},
+            {"Lebombo",new LoadTextureFromSasOptions("builtin://Lebombo", TextureType.CubeMap)},
+            {"SataraNight",new LoadTextureFromSasOptions("builtin://SataraNight", TextureType.CubeMap)},
+            {"SunnyVondelpark",new LoadTextureFromSasOptions("builtin://SunnyVondelpark", TextureType.CubeMap)},
+            {"Syferfontein",new LoadTextureFromSasOptions("builtin://Syferfontein", TextureType.CubeMap)},
+            {"TearsOfSteelBridge",new LoadTextureFromSasOptions("builtin://TearsOfSteelBridge", TextureType.CubeMap)},
+            {"VeniceSunset",new LoadTextureFromSasOptions("builtin://VeniceSunset", TextureType.CubeMap)},
+            {"WhippleCreekRegionalPark",new LoadTextureFromSasOptions("builtin://WhippleCreekRegionalPark", TextureType.CubeMap)},
+            {"WinterRiver",new LoadTextureFromSasOptions("builtin://WinterRiver", TextureType.CubeMap)},
+            {"DefaultSky",new LoadTextureFromSasOptions("builtin://DefaultSky", TextureType.CubeMap)}
         };
 
         public UnityBoolEvent OnCanSetSkyChanged;
@@ -485,10 +485,10 @@ ms.locfileid: "89021070"
             {
                 Debug.Log("Setting sky to " + skyKey);
                 //Load the texture into the session
-                var texture = await RemoteRenderingCoordinator.CurrentSession.Actions.LoadTextureFromSASAsync(AvailableCubemaps[skyKey]).AsTask();
+                var texture = await RemoteRenderingCoordinator.CurrentSession.Connection.LoadTextureFromSasAsync(AvailableCubemaps[skyKey]);
 
                 //Apply the texture to the SkyReflectionSettings
-                RemoteRenderingCoordinator.CurrentSession.Actions.SkyReflectionSettings.SkyReflectionTexture = texture;
+                RemoteRenderingCoordinator.CurrentSession.Connection.SkyReflectionSettings.SkyReflectionTexture = texture;
                 SkyChanged?.Invoke(skyKey);
             }
             else
@@ -501,12 +501,12 @@ ms.locfileid: "89021070"
 
     このコードの最も重要な部分は、わずか数行です。
 
-    ```csharp
+    ```cs
     //Load the texture into the session
-    var texture = await RemoteRenderingCoordinator.CurrentSession.Actions.LoadTextureFromSASAsync(AvailableCubemaps[skyKey]).AsTask();
+    var texture = await RemoteRenderingCoordinator.CurrentSession.Connection.LoadTextureFromSasAsync(AvailableCubemaps[skyKey]);
 
     //Apply the texture to the SkyReflectionSettings
-    RemoteRenderingCoordinator.CurrentSession.Actions.SkyReflectionSettings.SkyReflectionTexture = texture;
+    RemoteRenderingCoordinator.CurrentSession.Connection.SkyReflectionSettings.SkyReflectionTexture = texture;
     ```
 
     ここでは、組み込みの BLOB ストレージからセッションに読み込むことによって、使用するテクスチャへの参照を取得します。 次は、そのテクスチャをセッションの `SkyReflectionTexture` に割り当てて、適用するだけでかまいません。
@@ -525,7 +525,7 @@ ms.locfileid: "89021070"
 
 1. **RemoteLight** という名前の新しいスクリプトを作成し、そのコードを次のコードで置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -618,7 +618,7 @@ ms.locfileid: "89021070"
 
             //Create a root object for the light
             if(lightEntity == null)
-                lightEntity = RemoteRenderingCoordinator.CurrentSession.Actions.CreateEntity();
+                lightEntity = RemoteRenderingCoordinator.CurrentSession.Connection.CreateEntity();
 
             //Bind the remote entity to this game object
             lightEntity.BindToUnityGameObject(this.gameObject);
@@ -631,13 +631,13 @@ ms.locfileid: "89021070"
             switch (RemoteLightType)
             {
                 case ObjectType.DirectionalLightComponent:
-                    var remoteDirectional = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.DirectionalLightComponent, lightEntity) as DirectionalLightComponent;
+                    var remoteDirectional = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.DirectionalLightComponent, lightEntity) as DirectionalLightComponent;
                     //No additional properties
                     remoteLightComponent = remoteDirectional;
                     break;
 
                 case ObjectType.PointLightComponent:
-                    var remotePoint = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.PointLightComponent, lightEntity) as PointLightComponent;
+                    var remotePoint = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.PointLightComponent, lightEntity) as PointLightComponent;
                     remotePoint.Radius = 0;
                     remotePoint.Length = localLight.range;
                     //remotePoint.AttenuationCutoff = //No direct analog in Unity legacy lights
@@ -726,7 +726,7 @@ ms.locfileid: "89021070"
 
 1. **EntityMaterialController** という名前のスクリプトを作成し、その内容を次のコードで置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -890,7 +890,7 @@ ms.locfileid: "89021070"
 
 `OverrideMaterialProperty` 型は、必要に応じて他のいくつかの素材の値を変更できるくらい十分に柔軟である必要があります。 `OverrideMaterialProperty` 型は、オーバーライドの状態を追跡し、古い値と新しい値を保持し、委任を使用してオーバーライドを設定します。 例として、`ColorOverride` を見てみましょう。
 
-```csharp
+```cs
 ColorOverride = new OverrideMaterialProperty<Color>(
     GetMaterialColor(targetMaterial), //The original value
     targetMaterial, //The target material
@@ -901,7 +901,7 @@ ColorOverride = new OverrideMaterialProperty<Color>(
 
 `ColorOverride` では、`ApplyMaterialColor` メソッドを使用して処理を実行します。
 
-```csharp
+```cs
 private void ApplyMaterialColor(ARRMaterial material, Color color)
 {
     if (material.MaterialSubType == MaterialType.Color)

@@ -3,12 +3,12 @@ title: ハッカソンに Azure Lab Services を使用する
 description: この記事では、ハッカソンの実行に使用できるラボを作成するために Azure Lab Services を使用する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445884"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602582"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>次回のハッカソンに Azure Lab Services を使用する
 Azure Lab Services は、ハッカソン向けの仮想マシン (VM) の新しいラボをすばやく作成できるように、軽量で使いやすく設計されています。  次のチェックリストを使用して、ハッカソンができるだけ円滑に進むようにします。 このチェックリストは、ハッカソン ラボの作成と管理を担当する IT 部門または教員によって作成される必要があります。 
@@ -39,7 +39,7 @@ Azure Lab Services は、ハッカソン向けの仮想マシン (VM) の新し�
 
 - **ラボ アクセスを制限するかどうかを決定します**。 
 
-    ラボにユーザーを追加する場合、既定で有効になっているアクセスの制限オプションがあります。 この機能では、ハッカソン参加者が登録リンクを使用してラボに登録してアクセスする前に、すべてのハッカソン参加者の電子メールを一覧に追加しておく必要があります。 イベントの前に参加者が誰になるかわからないハッカソンがある場合、アクセスの制限オプションを無効にして、任意のユーザーが登録リンクを使用してラボに登録できるようにすることができます。 詳細については、[ユーザーの追加に関する攻略ガイド](how-to-configure-student-usage.md#add-users-to-a-lab)を参照してください。
+    ラボにユーザーを追加する場合、既定で有効になっているアクセスの制限オプションがあります。 この機能では、ハッカソン参加者が登録リンクを使用してラボに登録してアクセスする前に、すべてのハッカソン参加者の電子メールを一覧に追加しておく必要があります。 イベントの前に参加者が誰になるかわからないハッカソンがある場合、アクセスの制限オプションを無効にして、任意のユーザーが登録リンクを使用してラボに登録できるようにすることができます。 詳細については、[ユーザーの追加に関する攻略ガイド](how-to-configure-student-usage.md)を参照してください。
 
 - **Verify schedule, quota, and autoshutdown settings**. 
 
@@ -59,7 +59,7 @@ Azure Lab Services は、ハッカソン向けの仮想マシン (VM) の新し�
 
     ハッカソンの参加者は、ラボ VM への接続に使用するタブレットまたはノート PC に RDP または SSH クライアントがインストールされている必要があります。 次のような種類の RDP または SSH クライアントから選択できます。
 
-    - Microsoft の RDP 接続用の**リモート デスクトップ接続**アプリ。 リモート デスクトップ接続アプリは、Chromebook や [Mac](https://techcommunity.microsoft.com/t5/azure-lab-services/connecting-to-azure-lab-services-environments-on-your-macos/ba-p/1290162) などのさまざまな種類のプラットフォームでサポートされています。
+    - Microsoft の RDP 接続用の **リモート デスクトップ接続** アプリ。 リモート デスクトップ接続アプリは、Chromebook や [Mac](https://techcommunity.microsoft.com/t5/azure-lab-services/connecting-to-azure-lab-services-environments-on-your-macos/ba-p/1290162) などのさまざまな種類のプラットフォームでサポートされています。
     - SSH を使用して Linux VM に接続するための [Putty](https://techcommunity.microsoft.com/t5/azure-lab-services/connecting-to-azure-lab-services-environments-on-your-macos/ba-p/1290162)。
 - **ラボ仮想マシンを確認します**。 
 
@@ -86,4 +86,4 @@ Azure Lab Services は、ハッカソン向けの仮想マシン (VM) の新し�
         詳細については、[ユーザーへの招待の送信に関する攻略ガイド](how-to-configure-student-usage.md?branch=master#send-invitations-to-users)と [Linux VM への接続](how-to-use-remote-desktop-linux-student.md?branch=master)に関する記事を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
-まず、クラスルーム ラボでラボ アカウントを作成します。その場合、「[チュートリアル:Azure Lab Services でラボ アカウントを設定する](tutorial-setup-lab-account.md)」という記事の手順に従います。
+まず、ラボでラボ アカウントを作成します。その場合、「[チュートリアル: Azure Lab Services でラボ アカウントを設定する](tutorial-setup-lab-account.md)」という記事の手順に従います。

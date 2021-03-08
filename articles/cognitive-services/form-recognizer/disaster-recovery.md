@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718817"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808259"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>ご使用の Form Recognizer モデルのバックアップと復旧
 
-Azure portal 内で Form Recognizer リソースを作成するときに、リージョンを指定します。 それ以降、ご使用のリソースとそのすべての操作はその特定の Azure サーバー リージョンに関連付けられたままになります。 リージョン全体に影響が及ぶネットワークの問題が発生することはまれですが、まったくないわけではありません。 ご自分のソリューションを常に使用できるようにする必要がある場合は、別のリージョンにフェールオーバーするか、複数のリージョン間でワークロードを分割するように設計する必要があります。 どちらの方法でも、リージョンごとに少なくとも 2 つの Form Recognizer リソースと、リージョン間で[カスタム モデル](./quickstarts/curl-train-extract.md)を同期する機能が必要です。
+Azure portal 内で Form Recognizer リソースを作成するときに、リージョンを指定します。 それ以降、ご使用のリソースとそのすべての操作はその特定の Azure サーバー リージョンに関連付けられたままになります。 リージョン全体に影響が及ぶネットワークの問題が発生することはまれですが、まったくないわけではありません。 ご自分のソリューションを常に使用できるようにする必要がある場合は、別のリージョンにフェールオーバーするか、複数のリージョン間でワークロードを分割するように設計する必要があります。 どちらの方法でも、リージョンごとに少なくとも 2 つの Form Recognizer リソースと、リージョン間でカスタム モデルを同期する機能が必要です。
 
 コピー API を使用して、1 つの Form Recognizer アカウントから、またはサポートされている任意の地理的リージョン内に存在できる別のアカウントに、カスタム モデルをコピーできるようにすることで、このシナリオを実現できます。 このガイドでは、cURL と共にコピー REST API を使用する方法について説明します。 Postman のような HTTP 要求サービスを使用して、要求を発行することもできます。
 
@@ -41,7 +41,7 @@ Azure portal 内で Form Recognizer リソースを作成するときに、リ�
 1. 操作が成功するまで、ご自分のソース リソースの資格情報を使用して、進行状況の URL に対してクエリを実行します。 また、ターゲット リソース内の新しいモデル ID に対してクエリを実行して、新しいモデルの状態を取得することもできます。
 
 > [!CAUTION]
-> 現在、コピー API では、[作成されたカスタム モデル](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)のモデル ID がサポートされていません。 モデルの作成は、version 2.1-preview. 1 プレビューのプレビュー機能です。 
+> 現在、コピー API では、[作成されたカスタム モデル](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)のモデル ID がサポートされていません。 モデルの作成は、v2.1-preview.2 プレビューのプレビュー機能です。 
 
 ## <a name="generate-copy-authorization-request"></a>コピー承認要求を生成する
 
@@ -69,7 +69,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-実際の要求の本文は、次の形式である必要があります。 ご自分のターゲット リソースのリソース ID とリージョン名を入力する必要があります。 また、前の手順でコピーしたモデル ID、アクセス トークン、有効期限の値も必要です。
+実際の要求の本文は、次の形式である必要があります。 ご自分のターゲット リソースのリソース ID とリージョン名を入力する必要があります。 リソース ID は、Azure portal のリソースの **[プロパティ]** タブにあります。リージョン名は **[キーとエンドポイント]** タブにあります。また、前の手順でコピーしたモデル ID、アクセス トークン、有効期限の値も必要です。
 
 ```json
 {
@@ -91,7 +91,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>一般的なエラー
 
-|エラー|解決方法|
+|エラー|解決策|
 |:--|:--|
 | 400 / `"code:" "1002"` が指定された無効な要求 | 検証エラーまたはコピー要求の形式が正しくないことを示します。 一般的な問題には次のようなものがあります。a) 無効または変更された `copyAuthorization` ペイロード。 b) `expirationDateTimeTicks` トークンの期限切れの値 (`copyAuhtorization` ペイロードは 24 時間有効です)。 c) 無効またはサポートされていない `targetResourceRegion`。 d) 無効または形式が正しくない `targetResourceId` 文字列。
 |
@@ -115,7 +115,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>一般的なエラー
 
-|エラー|解決方法|
+|エラー|解決策|
 |:--|:--|
 |"errors":[{"code":"AuthorizationError",<br>"message":"Authorization failure due to <br>missing or invalid authorization claims."}] (承認要求が見つからないか無効であるため承認が失敗しました)   | `copyAuthorization` ペイロードまたは内容が `copyAuthorization` API によって返されたものから変更されたときに発生します。 ペイロードが、前の `copyAuthorization` の呼び出しから返されたものと確実にまったく同じ内容であるようにします。|
 |"errors":[{"code":"AuthorizationError",<br>"message":"Could not retrieve authorization <br>metadata. If this issue persists use a different <br>target model to copy into."}] (承認メタデータを取得できませんでした。この問題が解決しない場合は、コピー先として異なるターゲット モデルをお使いください。) | `copyAuthorization` ペイロードがコピー要求で再利用されていることを示します。 コピー要求が成功した場合、同じ `copyAuthorization` ペイロードを使用したそれ以上の要求は許可されません。 次に示すような別のエラーが発生した後に、同じ承認ペイロードでコピーを再試行すると、このエラーが発生します。 この解決策は、新しい `copyAuthorization` ペイロードを生成してから、コピー要求を再発行することです。|

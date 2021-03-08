@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: d09f13a65a72c6c856a7fcd3d943ec116f3da43f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721865"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91250642"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
 **Microsoft Azure Machine Learning 自動化データ パイプライン チート シート** は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。
@@ -35,7 +35,6 @@ ms.locfileid: "76721865"
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Machine Learning Studio に役立つその他の情報
-* Microsoft Azure Machine Learning の概要については、「 [Microsoft Azure での機械学習の概要](../studio/what-is-machine-learning.md)」を参照してください。
-* スコアリング Web サービスをデプロイする方法については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」を参照してください。
-* スコアリング Web サービスを使用する方法については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](../studio/consume-web-services.md)」を参照してください。
-
+* Microsoft Azure Machine Learning の概要については、「 [Microsoft Azure での機械学習の概要](../classic/index.yml)」を参照してください。
+* スコアリング Web サービスをデプロイする方法については、「 [Azure Machine Learning Web サービスをデプロイする](../classic/deploy-a-machine-learning-web-service.md)」を参照してください。
+* スコアリング Web サービスを使用する方法については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](../classic/consume-web-services.md)」を参照してください。

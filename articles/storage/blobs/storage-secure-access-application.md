@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: mvc, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: f7c5dbaf30965fdd5f438f0351cfa2cd60e05b70
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001175"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746552"
 ---
 # <a name="secure-access-to-application-data"></a>アプリケーション データへのアクセスをセキュリティで保護する
 
@@ -37,7 +37,7 @@ ms.locfileid: "89001175"
 
 ## <a name="set-container-public-access"></a>コンテナーのパブリック アクセスを設定する
 
-チュートリアル シリーズの今回は、サムネイルへのアクセスに SAS トークンを使用します。 この手順では、*thumbnails* コンテナーのパブリック アクセスを `off` に設定します。
+チュートリアル シリーズの今回は、サムネイルへのアクセスに SAS トークンを使用します。 この手順では、 *thumbnails* コンテナーのパブリック アクセスを `off` に設定します。
 
 ```bash
 blobStorageAccount="<blob_storage_account>"
@@ -160,7 +160,7 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 
 [Azure Storage 暗号化](../common/storage-service-encryption.md)は、保存データを暗号化し、暗号化と解読を処理することで、ユーザーがデータを保護するのを支援します。 現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によってすべてのデータを暗号化します。
 
-Microsoft に暗号化キーの管理を任せることも、Azure Key Vault を使用して、顧客マネージド キーを使用する独自のキーを提供することもできます。 詳細については、「[Azure Key Vault で顧客マネージド キーを使用して Azure Storage の暗号化を管理する](../common/encryption-customer-managed-keys.md)」を参照してください。
+Microsoft に暗号化キーの管理を任せることも、Azure Key Vault または Key Vault Managed Hardware Security Model (HSM) (プレビュー) に格納されたカスタマー マネージド キーによって独自のキーを使用することもできます。 詳細については、「[Azure Storage 暗号化のカスタマー マネージド キー](../common/customer-managed-keys-overview.md)」を参照してください。
 
 Azure Storage 暗号化は、すべてのパフォーマンス レベル (Standard および Premium)、すべてのデプロイ モデル (Azure Resource Manager とクラシック)、すべての Azure Storage サービス (Blob、Queue、Table、File) のデータを自動的に暗号化します。
 

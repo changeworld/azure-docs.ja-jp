@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c689b31f73d732dda37b64793f988febc409e6da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-js
+ms.openlocfilehash: 6f0616df885a7f8fcd76337c810bc368aa02f3c8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797957"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650450"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>チュートリアル:VuePress サイトを Azure Static Web Apps プレビューに発行する
 
@@ -100,7 +100,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 1. ローカル リポジトリを GitHub にプッシュします。
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Web アプリのデプロイ
@@ -135,7 +135,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. **vuepress-static-app** を _[リポジトリ]_ として選択します。
 
-1. _[ブランチ]_ では、**master** を選択します。
+1. _[ブランチ]_ では、**main** を選択します。
 
    :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
 

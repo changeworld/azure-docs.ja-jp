@@ -5,13 +5,13 @@ services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
-ms.date: 07/16/2020
-ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.date: 09/16/2020
+ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292763"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Blockchain Service メンバーを作成する
 
@@ -49,14 +49,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     --------|------------
     サブスクリプション | サービスに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     Resource group | 新しいリソース グループ名を作成するか、サブスクリプションの既存のリソース グループ名を選択します。
-    場所 | メンバーを作成する場所を選択します。 コンソーシアムのメンバーの場所は全員同じにする必要があります。 デプロイに使用できる場所は *westeurope、eastus、southeastasia、westeurope、northeurope、westus2*、および *japaneast* です。 一部のリージョンでは、機能が利用できない場合があります。 Azure Blockchain Data Manager は、次の Azure リージョンで利用できます: 米国東部と西ヨーロッパ) で運営される基本的な Web サイトの 2 つのインスタンス。
-    メンバー名 | Azure Blockchain Service のメンバーの一意の名前を選択します。 ブロックチェーン メンバー名に使用できるのは、小文字と数字のみです。 先頭の文字は英字にする必要があります。 値の長さは 2 から 20 文字にする必要があります。
+    リージョン | リソース グループを作成するリージョンを選択します。 コンソーシアムのメンバーの場所は全員同じにする必要があります。 デプロイに使用できる場所は *westeurope、eastus、southeastasia、westeurope、northeurope、westus2*、および *japaneast* です。 一部のリージョンでは、機能が利用できない場合があります。 Azure Blockchain Data Manager は、次の Azure リージョンで利用できます: 米国東部と西ヨーロッパ) で運営される基本的な Web サイトの 2 つのインスタンス。
+    Blockchain メンバー名 | Azure Blockchain Service のメンバーの一意の名前を選択します。 ブロックチェーン メンバー名に使用できるのは、小文字と数字のみです。 先頭の文字は英字にする必要があります。 値の長さは 2 から 20 文字にする必要があります。
     コンソーシアム名 | 一意の名前を入力します。 コンソーシアムの詳細については、「[Azure Blockchain Service のコンソーシアム](consortium.md)」を参照してください。
-    メンバー パスワード | メンバー アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 メンバー アカウントとメンバー アカウントのパスワードをコンソーシアムの管理に使用します。
-    SKU レベル | 新しいサービスの価格レベル。 **Standard** と **Basic** のいずれかのレベルを選択します。 開発、テスト、概念実証には、*Basic* レベルを使用します。 運用グレードのデプロイには、*Standard* レベルを使用します。 また、Blockchain Data Manager を使用している場合や大量のプライベート トランザクションを送信する場合にも、*Standard* レベルを使用する必要があります。 メンバーの作成後に価格レベルを Basic と Standard の間で変更することはできません。
-    SKU 名 | 新しいサービスのノード構成とコスト。
+    メンバー パスワード | メンバーの既定のトランザクション ノードのパスワード。 このパスワードは、ブロックチェーン メンバーの既定のトランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。
+    コンソーシアム管理アカウントのパスワード | コンソーシアム アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 これは、コンソーシアムの管理に使用されます。
+    SKU レベル | 新しいサービスの価格レベル。 **Standard** と **Basic** のいずれかのレベルを選択します。 開発、テスト、概念実証には、*Basic* レベルを使用します。 運用グレードのデプロイには、*Standard* レベルを使用します。 また、Blockchain Data Manager を使用している場合や大量のプライベート トランザクションを送信する場合にも、*Standard* レベルを使用します。 メンバーの作成後に価格レベルを Basic と Standard の間で変更することはできません。
+    SKU 名 | 新しいサービスのノード構成とコスト。 Basic には **B0** を使用し、Standard には **S0** を使用します。
+    場所 | メンバーを作成する場所を選択します。 既定では、リソース グループの場所 `[resourceGroup().location]` が使用されます。 コンソーシアムのメンバーの場所は全員同じにする必要があります。 デプロイに使用できる場所は *westeurope、eastus、southeastasia、westeurope、northeurope、westus2*、および *japaneast* です。 一部のリージョンでは、機能が利用できない場合があります。 Azure Blockchain Data Manager は、次の Azure リージョンで利用できます: 米国東部と西ヨーロッパ) で運営される基本的な Web サイトの 2 つのインスタンス。
 
-1. **[購入]** を選択してテンプレートをデプロイします。
+1. **[確認と作成]** を選択して、テンプレートを検証してデプロイします。
 
   テンプレートをデプロイするために、ここでは Azure portal を使用します。 Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
 

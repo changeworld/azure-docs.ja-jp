@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: b115b410547b37e6cfa369b825c94b6b22436941
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027013"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011858"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>共有マルチテナント データベースを使用している SaaS アプリケーションでのスキーマの管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "84027013"
 - 参照データの更新をすべてのテナントにわたってデプロイする。
 - 参照データを含むテーブルのインデックスを再構築する。
 
-これらの操作を複数のテナント データベースにわたって実行するために、Azure SQL Database の[エラスティック ジョブ](../../sql-database/elastic-jobs-overview.md)機能を使用します。 このジョブは、'テンプレート' テナント データベースに対しても機能します。 Wingtip Tickets サンプル アプリでは、新しいテナント データベースをプロビジョニングするために、このテンプレート データベースがコピーされます。
+これらの操作を複数のテナント データベースにわたって実行するために、Azure SQL Database の[エラスティック ジョブ](./elastic-jobs-overview.md)機能を使用します。 このジョブは、'テンプレート' テナント データベースに対しても機能します。 Wingtip Tickets サンプル アプリでは、新しいテナント データベースをプロビジョニングするために、このテンプレート データベースがコピーされます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -44,20 +44,20 @@ ms.locfileid: "84027013"
 ## <a name="prerequisites"></a>前提条件
 
 - Wingtip Tickets マルチテナント データベース アプリが、既にデプロイされていること。
-    - 手順については、Wingtip Tickets SaaS マルチテナント データベース アプリケーションについて説明している最初のチュートリアル、<br />「[Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作](../../sql-database/saas-multitenantdb-get-started-deploy.md)」をご覧ください。
+    - 手順については、Wingtip Tickets SaaS マルチテナント データベース アプリケーションについて説明している最初のチュートリアル、<br />「[Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作](./saas-multitenantdb-get-started-deploy.md)」をご覧ください。
         - デプロイ プロセスは 5 分未満で実行されます。
-    - *シャード化されたマルチテナント* バージョンの Wingtip をインストール済みである必要があります。 *スタンドアロン*および*テナントごとのデータベース* バージョンでは、このチュートリアルはサポートされません。
+    - *シャード化されたマルチテナント* バージョンの Wingtip をインストール済みである必要があります。 *スタンドアロン* および *テナントごとのデータベース* バージョンでは、このチュートリアルはサポートされません。
 
-- 最新バージョンの SQL Server Management Studio (SSMS) がインストールされている必要があります。 「[SSMS のダウンロードとインストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)」をご覧ください。
+- 最新バージョンの SQL Server Management Studio (SSMS) がインストールされている必要があります。 「[SSMS のダウンロードとインストール](/sql/ssms/download-sql-server-management-studio-ssms)」をご覧ください。
 
-- Azure PowerShell がインストールされている必要があります。 詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
+- Azure PowerShell がインストールされている必要があります。 詳細については、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」をご覧ください。
 
 > [!NOTE]
 > このチュートリアルでは、限定プレビューに含まれる Azure SQL Database サービスの機能 ([Elastic Database ジョブ](elastic-database-client-library.md)) を使用します。 このチュートリアルを実行する場合、ご使用のサブスクリプション ID を *SaaSFeedback\@microsoft.com* までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、*SaaSFeedback\@microsoft.com* にお問い合わせください。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS スキーマ管理パターンの概要
 
-このサンプルで使用されているシャード化されたマルチテナント データベース モデルでは、テナント データベースに 1 つまたは複数のテナントを含めることができます。 このサンプルでは、複数テナントのデータベースと 1 テナント のデータベースを組み合わせて*ハイブリッド* テナント管理モデルを実現する可能性を探ります。 これらのデータベースへの変更の管理は、複雑になる場合があります。 [エラスティック ジョブ](../../sql-database/elastic-jobs-overview.md)は、大規模数のデータベースの管理をに使用されます。 ジョブにより、テナント データベースのグループに対して、Transact-SQL スクリプトをタスクとして安全かつ確実に実行できます。 このタスクはユーザーの操作や入力に依存しません。 この方法を使用して、スキーマや共通の参照データに対する変更を、アプリケーションのすべてのテナントにわたってデプロイできます。 エラスティック ジョブは、データベースのゴールデン テンプレートのコピーを保持するためにも使用できます。 このテンプレートは新しいテナントの作成に使用され、常に最新のスキーマと参照データが使用されるようにします。
+このサンプルで使用されているシャード化されたマルチテナント データベース モデルでは、テナント データベースに 1 つまたは複数のテナントを含めることができます。 このサンプルでは、複数テナントのデータベースと 1 テナント のデータベースを組み合わせて *ハイブリッド* テナント管理モデルを実現する可能性を探ります。 これらのデータベースへの変更の管理は、複雑になる場合があります。 [エラスティック ジョブ](./elastic-jobs-overview.md)は、大規模数のデータベースの管理をに使用されます。 ジョブにより、テナント データベースのグループに対して、Transact-SQL スクリプトをタスクとして安全かつ確実に実行できます。 このタスクはユーザーの操作や入力に依存しません。 この方法を使用して、スキーマや共通の参照データに対する変更を、アプリケーションのすべてのテナントにわたってデプロイできます。 エラスティック ジョブは、データベースのゴールデン テンプレートのコピーを保持するためにも使用できます。 このテンプレートは新しいテナントの作成に使用され、常に最新のスキーマと参照データが使用されるようにします。
 
 ![スクリーン](./media/saas-multitenantdb-schema-management/schema-management.png)
 
@@ -84,12 +84,12 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 #### <a name="prepare"></a>準備
 
-各テナントのデータベースの **VenueTypes** テーブルには、一連の会場タイプが含まれています。 各会場タイプは、会場で開催できるイベントの種類を定義します。 これらの会場タイプは、テナント イベント アプリに表示される背景画像に対応しています。  この演習では、すべてのデータベースに更新をデプロイして、2 つの会場タイプ*Motorcycle Racing* と *Swimming Club* を追加します。
+各テナントのデータベースの **VenueTypes** テーブルには、一連の会場タイプが含まれています。 各会場タイプは、会場で開催できるイベントの種類を定義します。 これらの会場タイプは、テナント イベント アプリに表示される背景画像に対応しています。  この演習では、すべてのデータベースに更新をデプロイして、2 つの会場タイプ *Motorcycle Racing* と *Swimming Club* を追加します。
 
 最初に、各テナント データベースに含まれている会場の種類を確認します。 SQL Server Management Studio (SSMS) でテナント データベースの 1 つに接続し、VenueTypes テーブルを調べます。  このテーブルは、データベース ページからアクセスする Azure Portal のクエリ エディターでクエリを実行することもできます。
 
 1. SSMS を開き、テナント サーバー *tenants1-dpt-&lt;ユーザー&gt;.database.windows.net* に接続します。
-1. 現在、*Motorcycle Racing* および *Swimming Club* が**含まれていない**ことを確認するために、*tenants1-dpt-&lt;ユーザー&gt;* サーバーの *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルに対してクエリを実行します。
+1. 現在、*Motorcycle Racing* および *Swimming Club* が **含まれていない** ことを確認するために、*tenants1-dpt-&lt;ユーザー&gt;* サーバーの *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルに対してクエリを実行します。
 
 
 
@@ -161,7 +161,7 @@ SSMS で、*tenants1-mt-&lt;user&gt;* サーバーのテナント データベ�
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
-* [スケールアウトされたクラウド データベースの管理](../../sql-database/elastic-jobs-overview.md)
+* [スケールアウトされたクラウド データベースの管理](./elastic-jobs-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -172,5 +172,4 @@ SSMS で、*tenants1-mt-&lt;user&gt;* サーバーのテナント データベ�
 > * すべてのテナント データベース内の参照データを更新する
 > * すべてのテナント データベース内のテーブルにインデックスを作成する
 
-次は、[アドホック レポートのチュートリアル](../../sql-database/saas-multitenantdb-adhoc-reporting.md)を試して、テナント データベース間で実行されている分散クエリを確認してください。
-
+次は、[アドホック レポートのチュートリアル](./saas-multitenantdb-adhoc-reporting.md)を試して、テナント データベース間で実行されている分散クエリを確認してください。

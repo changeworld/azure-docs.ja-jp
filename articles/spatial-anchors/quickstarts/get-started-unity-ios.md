@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Unity iOS アプリを作成する
 description: このクイック スタートでは、Spatial Anchors を使用する iOS アプリを Unity でビルドする方法について説明します。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1fbd7138c393809b279d780004ff476cea4735fe
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b278ac6c824b1583e90cfc9152264f61357dd228
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810328"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95971521"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity iOS アプリを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "87810328"
 
 このクイック スタートを実行するには、以下が必要です。
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a>、最新バージョンの <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>、および <a href="https://cocoapods.org" target="_blank">CocoaPods</a> がインストールされた macOS マシン。
+- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a>、最新バージョンの <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> がインストールされた macOS マシン。
 - HomeBrew を介してインストールされた Git。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 続けて、`brew install git` および `brew install git-lfs` を実行します。
 - 開発者向けの <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 対応</a> iOS デバイス。
 
@@ -56,7 +56,11 @@ ms.locfileid: "87810328"
 
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
-アプリの指示に従って、アンカーを配置し、呼び戻します。
+アプリで矢印を使用して **[BasicDemo]** を選択し、 **[実行]**  ボタンを 押してデモを実行します。 指示に従って、アンカーを配置し、呼び戻します。
+
+![スクリーンショット 1](./media/get-started-unity-ios/screenshot-1.jpg)
+![スクリーンショット 2](./media/get-started-unity-ios/screenshot-2.jpg)
+![スクリーンショット 3](./media/get-started-unity-ios/screenshot-3.jpg)
 
 完了したら、Xcode で **[Stop]\(停止\)** を押してアプリを停止します。
 
@@ -65,16 +69,6 @@ ms.locfileid: "87810328"
 ### <a name="rendering-issues"></a>レンダリングに関する問題
 
 アプリを実行したとき、背景としてカメラが表示されない場合は (たとえば、代わりに空白、青、または他のテクスチャが表示される場合)、Unity に資産を再インポートすることが必要な場合があります。 アプリを停止します。 Unity の上部のメニューで、 **[Assets]\(資産\) -> [Re-import all]\(すべて再インポート\)** を選択します。 その後、アプリをもう一度実行します。
-
-### <a name="cocoapods-issues-on-macos-catalina-1015"></a>macOS Catalina (10.15) での CocoaPods に関する問題
-
-最近 macOS Catalina (10.15) に更新し、そのとき事前に CocoaPods がインストールされていると、CocoaPods が破損した状態になり、ポッドや `.xcworkspace` プロジェクト ファイルを正しく構成できないことがあります。 この問題を解決するには、次のコマンドを実行して CocoaPods を再インストールする必要があります。
-
-```shell
-brew update
-brew install cocoapods --build-from-source
-brew link --overwrite cocoapods
-```
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

@@ -11,16 +11,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855244"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955622"
 ---
-# <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>リソース正常性、フロントエンド、およびバックエンドの可用性に関する問題のトラブルシューティング 
+# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>リソース正常性と受信の可用性に関する問題をトラブルシューティングする 
 
 この記事は、ロードバランサーのフロントエンド IP とバックエンド リソースの可用性に影響を与える問題を調査するためのガイドです。 
+
+ロード バランサーのリソース正常性チェック (RHC) は、ロード バランサーの正常性を判定するために使用されます。 データ パスの可用性メトリックを **2 分** の間隔で分析して、負荷分散エンドポイント、フロントエンド IP、フロントエンド ポートの負荷分散規則との組み合わせが使用可能かどうかを判定します。
+
+次の表では、ロード バランサーの正常性状態を判定するために使用される RHC ロジックについて説明します。
+
+| リソースの正常性状態 | 説明 |
+| --- | --- |
+| 利用可能 | ご利用の Standard Load Balancer リソースは正常であり、使用可能です。 |
+| 低下しています | Standard Load Balancer のプラットフォームやユーザーが開始したイベントのパフォーマンスが影響を受けます。 [データパスの可用性] メトリックでは、少なくとも 2 分間に 90% を下回るが、25% を上回る正常性が報告されました。 パフォーマンスは、中から重大までの影響を受けます。 
+| 使用不可 | ご利用の Standard Load Balancer リソースは正常ではありません。 [データパスの可用性] メトリックでは、少なくとも 2 分間に 25% を下回る正常性が報告されました。 パフォーマンスが大きな影響を受けたり、受信接続の可用性が不足したりします。 ユーザーまたはプラットフォーム イベントによって可用性が失われる可能性もあります。 |
+| Unknown | Standard Load Balancer リソースのリソース正常性状態がまだ更新されていないか、過去 10 分間にデータパスの可用性情報が受信されていません。 これは一時的な状態であり、データが受信されれば、すぐに正しい状態が反映されます。 |
+
 
 ## <a name="about-the-metrics-well-use"></a>使用するメトリックについて
 使用する 2 つのメトリックは、"*データ パスの可用性*" と "*正常性プローブの状態*" で、適切な洞察を得るためにはこれらの意味を理解しておくことが重要です。 
@@ -52,7 +64,7 @@ ms.locfileid: "88855244"
   * この NSG の問題が見つかった場合は、既存の許可規則を移動するか、優先度の高い新しい規則を作成して AzureLoadBalancer トラフィックを許可します
 * OS を確認します。 VM がプローブ ポートでリッスンしていることを確認し、OS のファイアウォール規則を確認して、IP アドレス 168.63.129.16 から送信されるプローブ トラフィックをブロックしていないことを確認します
   * Windows コマンド プロンプトで netstat -a を実行するか、Linux ターミナルで netstat -l を実行することで、リスニング ポートを確認できます
-* ファイアウォール NVA VM をロード バランサーのバックエンド プールに配置しないでください。[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)を使用して、ファイアウォール経由でバックエンド インスタンスにトラフィックをルーティングします
+* ファイアウォール NVA VM をロード バランサーのバックエンド プールに配置しないでください。[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md#user-defined)を使用して、ファイアウォール経由でバックエンド インスタンスにトラフィックをルーティングします
 * 適切なプロトコルを使用していることを確認します。HTTP を使用して、HTTP 以外のアプリケーションをリッスンしているポートをプローブする場合、プローブは失敗します
 
 このチェックリストを使用しても正常性プローブの障害がまだ検出される場合は、インスタンスのプローブ サービスに影響を与える珍しいプラットフォームの問題が発生している可能性があります。 この場合では Azure のサポートを受けられ、すべてのプラットフォームの問題を迅速に解決するための自動アラートが Microsoft のチームに送信されます。
@@ -61,5 +73,3 @@ ms.locfileid: "88855244"
 
 * [Azure Load Balancer の正常性プローブの詳細について学習する](load-balancer-custom-probe-overview.md)
 * [Azure Load Balancer のメトリックの詳細について学習する](load-balancer-standard-diagnostics.md)
-
-

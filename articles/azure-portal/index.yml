@@ -4,20 +4,16 @@ summary: Azure Portal は、コマンドライン ツールに代えて使用で
 metadata:
   title: Azure Portal のドキュメント
   description: Azure Portal の Web ベース コンソールを使用して自分の Azure サブスクリプションとリソースを管理する方法について説明します。 Azure Portal は、コマンドライン ツールの代わりに使用できます。
-  services: Azure Portal
-  ms.service: azure-portal
-  ms.subservice: 
+  services: Azure portal
   ms.topic: landing-page
   ms.collection: collection
-  author: mblythe
-  ms.author: mblythe
   ms.date: 08/05/2020
-  ms.openlocfilehash: f45fc98073dcc6eeee10c691fe9f93860e0fb654
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: c1617f295a101ae645743d60fdbe82a09d936ea2
+  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88212080"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96749013"
 landingContent:
 - title: Azure Portal について
   linkLists:
@@ -43,13 +39,13 @@ landingContent:
     links:
     - text: Azure Portal の URL をセーフリストに追加する
       url: azure-portal-safelist-urls.md
-    - text: ダッシュボードのロールベースのアクセス制御
+    - text: ダッシュボードの Azure ロールベースのアクセス制御
       url: azure-portal-dashboard-share-access.md
   - linkListType: learn
     links:
     - text: Azure でのリソースの管理
       url: /learn/paths/manage-resources-in-azure/
-    - text: ロールベースのアクセス制御 (RBAC) で Azure リソースをセキュリティ保護する
+    - text: Azure ロールベースのアクセス制御 (Azure RBAC) を使用した Azure リソースのセキュリティ保護
       url: /learn//modules/secure-azure-resources-with-rbac/
 - title: はじめに
   linkLists:

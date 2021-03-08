@@ -7,26 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 07/17/2019
+ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd9d477ed20122b0706e7997ab8922dcce7a59ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211178"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685427"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>チュートリアル:Azure Synapse Analytics SQL プールにデータを読み込む
 
-このチュートリアルでは、PolyBase を使用して、Azure Blob Storage から Azure Synapse Analytics SQL プール内のデータ ウェアハウスに WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、次のことを行います。
+このチュートリアルでは、PolyBase を使用して、Azure Blob Storage から Azure Synapse Analytics SQL プール内のデータ ウェアハウスに WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) を使って、次のことを行います。
 
 > [!div class="checklist"]
 >
-> * Azure portal で SQL プールを使用してデータ ウェアハウスを作成する
-> * Azure Portal でサーバーレベルのファイアウォール規則を設定する
-> * SSMS を使用して SQL プールに接続する
 > * データを読み込むように指定されたユーザーを作成する
 > * Azure BLOB をデータ ソースとして使用する外部テーブルを作成する
 > * CTAS T-SQL ステートメントを使ってデータをデータ ウェアハウスに読み込む
@@ -38,112 +35,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) をダウンロードしてインストールします。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
-
-[Azure portal](https://portal.azure.com/) にサインインします。
-
-## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>SQL プールに空のデータ ウェアハウスを作成する
-
-SQL プールは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 SQL プールは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内と[論理 SQL サーバー](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に作成されます。
-
-次の手順のようにして、空の SQL プールを作成します。
-
-1. Azure portal で、 **[リソースの作成]** を選択します。
-
-1. **[新規]** ページの **[データベース]** を選択し、 **[新規]** ページの **[おすすめ]** で **[Azure Synapse Analytics]** を選択します。
-
-    ![SQL プールを作成する](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
-
-1. **[プロジェクトの詳細]** セクションに次の情報を入力します。
-
-   | 設定 | 例 | 説明 |
-   | ------- | --------------- | ----------- |
-   | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **リソース グループ** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
-
-1. **[SQL プールの詳細]** で、SQL プールの名前を指定します。 次に、ドロップダウンから既存のサーバーを選択するか、 **[サーバー]** 設定の **[新規作成]** を選択して新しいサーバーを作成します。 フォームに次の情報を入力します。
-
-    | 設定 | 推奨値 | 説明 |
-    | ------- | --------------- | ----------- |
-    |**SQL プール名**|SampleDW| 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。 |
-    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
-    | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。|
-    | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
-    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
-
-    ![サーバーの作成](./media/load-data-wideworldimportersdw/create-database-server.png)
-
-1. **パフォーマンス レベルを選択します**。 スライダーは、既定で **[DW1000c]** に設定されています。 スライダーを上下に移動して、目的のパフォーマンス スケールを選択します。
-
-    ![サーバーの作成 2](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
-
-1. **[追加の設定]** ページで、 **[既存のデータを使用します]** を [なし] に設定し、 **[照合順序]** は既定値の *SQL_Latin1_General_CP1_CI_AS* のままにします。
-
-1. **[確認と作成]** を選択して設定を確認し、 **[作成]** を選択してデータ ウェアハウスを作成します。 **[通知]** メニューから **[デプロイ中]** ページを開くことで、進行状況を監視できます。
-
-     ![通知 (notification)](./media/load-data-wideworldimportersdw/notification.png)
-
-## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
-
-Azure Synapse Analytics サービスでは、外部のアプリケーションやツールに、サーバーまたはサーバー上のすべてのデータベースへの接続を禁止するファイアウォールが、サーバーレベルで作成されます。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。  次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成します。
+このチュートリアルでは、次の[チュートリアル](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)から SQL 専用プールを既に作成しているものと想定しています。 
 
 > [!NOTE]
-> Azure Synapse Analytics SQL プールの通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、サーバーに接続することはできません。
->
-
-1. デプロイが完了したら、ナビゲーション メニューの検索ボックスでプール名を検索し、SQL プール リソースを選択します。 サーバー名を選択します。
-
-    ![リソースに移動する](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
-
-1. サーバー名を選択します。
-    ![サーバー名](././media/load-data-wideworldimportersdw/find-server-name.png)
-
-1. **[ファイアウォール設定の表示]** を選択します。 サーバーの **[ファイアウォール設定]** ページが開きます。
-
-    ![サーバー設定](./media/load-data-wideworldimportersdw/server-settings.png)
-
-1. **[ファイアウォールと仮想ネットワーク]** ページで **[クライアント IP の追加]** を選択し、現在の IP アドレスを新しいファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
-
-    ![サーバーのファイアウォール規則](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
-
-1. **[保存]** を選択します。 サーバー上でポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
-
-クライアント IP アドレスを使用してサーバーに接続できるようになります。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した serveradmin アカウントを使います。  
-
-> [!IMPORTANT]
-> 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 このページの **[オフ]** をクリックし、 **[保存]** をクリックして、すべての Azure サービスに対してファイアウォールを無効にします。
-
-## <a name="get-the-fully-qualified-server-name"></a>完全修飾サーバー名を取得する
-
-完全修飾サーバー名は、サーバーへの接続に使用される名前です。 Azure portal で SQL プール リソースに移動し、 **[サーバー名]** で完全修飾名を確認します。
-
-![サーバー名](././media/load-data-wideworldimportersdw/find-server-name.png)
-
-## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
-
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、サーバーへの接続を確立します。
-
-1. SQL Server Management Studio を開きます。
-
-2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
-
-    | 設定      | 推奨値 | 説明 |
-    | ------------ | --------------- | ----------- |
-    | サーバーの種類 | データベース エンジン | この値は必須です |
-    | サーバー名 | 完全修飾サーバー名 | たとえば、**sqlpoolservername.database.windows.net** は完全修飾サーバー名です。 |
-    | 認証 | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
-    | ログイン | サーバー管理者アカウント | これはサーバーを作成したときに指定したアカウントです。 |
-    | Password | サーバー管理者アカウントのパスワード | これはサーバーを作成したときに指定したパスワードです。 |
-
-    ![[サーバーに接続]](./media/load-data-wideworldimportersdw/connect-to-server.png)
-
-3. **[Connect]** をクリックします。 SSMS で [オブジェクト エクスプローラー] ウィンドウが開きます。
-
-4. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **[システム データベース]** 、 **[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **SampleDW** を展開して、新しいデータベースのオブジェクトを表示します。
-
-    ![データベース オブジェクト](./media/load-data-wideworldimportersdw/connected.png)
+> このチュートリアルでは、少なくとも DW1000c を使用することをお勧めします。 
 
 ## <a name="create-a-user-for-loading-data"></a>データを読み込むためのユーザーを作成する
 
@@ -214,7 +111,7 @@ Azure Synapse Analytics サービスでは、外部のアプリケーション�
     CREATE MASTER KEY;
     ```
 
-4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部の国際輸入業者のデータの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、 **[実行]** をクリックします。
+4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部の国際輸入業者のデータの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、 **[実行]** をクリックします。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -225,7 +122,7 @@ Azure Synapse Analytics サービスでは、外部のアプリケーション�
     );
     ```
 
-5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。  
+5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat
@@ -240,7 +137,7 @@ Azure Synapse Analytics サービスでは、外部のアプリケーション�
     );
     ```
 
-6. 次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを実行して、外部ファイルの形式のスキーマを作成します。 ext スキーマを使って、作成しようとしている外部テーブルを構造化できます。 データが格納される標準テーブルは、wwi スキーマで構造化します。
+6. 次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを実行して、外部ファイルの形式のスキーマを作成します。 ext スキーマを使って、作成しようとしている外部テーブルを構造化できます。 データが格納される標準テーブルは、wwi スキーマで構造化します。
 
     ```sql
     CREATE SCHEMA ext;
@@ -534,7 +431,7 @@ Azure Synapse Analytics サービスでは、外部のアプリケーション�
 > [!NOTE]
 > このチュートリアルでは、最終テーブルにデータを直接読み込みます。 運用環境では、通常、CREATE TABLE AS SELECT を使用して、ステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 ステージング テーブルのデータを運用テーブルに追加するには、INSERT...SELECT ステートメントを使用します。 詳細については、「[運用テーブルにデータを挿入する](guidance-for-loading-data.md#inserting-data-into-a-production-table)」を参照してください。
 
-このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントによって外部テーブルから選択されると、データ ウェアハウスのリレーショナル テーブルにデータがインポートされます。
+このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントによって外部テーブルから選択されると、データ ウェアハウスのリレーショナル テーブルにデータがインポートされます。
 
 このスクリプトでは、wwi.dimension_Date テーブルと wwi.fact_Sale テーブルへのデータの読み込みは行いません。 これらのテーブルは、大量の行を格納できるようにするため、後続の手順で生成されます。
 

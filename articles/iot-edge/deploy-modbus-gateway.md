@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76511146"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043903"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge デバイス ゲートウェイ経由で Modbus TCP デバイスに接続する
 
@@ -35,7 +35,7 @@ Modbus TCP または RTU プロトコルを使用する IoT デバイスを Azur
 
 Modbus ゲートウェイの機能をテストしたい方のために、Microsoft からサンプル モジュールが提供されています。 このモジュールには Azure Marketplace ([Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)) から、またはイメージの URI (`mcr.microsoft.com/azureiotedge/modbus:1.0`) を使用してアクセスできます。
 
-独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、GitHub で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 コンテナー イメージを作成するには、[Visual Studio での C# モジュールの開発](how-to-visual-studio-develop-csharp-module.md)に関するページ、または [Visual Studio Code でのモジュールの開発](how-to-vs-code-develop-module.md)に関するページをご覧ください。 これらの記事では、新規のモジュール作成や、コンテナー イメージのレジストリへの発行に関する手順について説明します。
+独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、GitHub で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 コンテナー イメージを作成するには、[Visual Studio での C# モジュールの開発](./how-to-visual-studio-develop-module.md)に関するページ、または [Visual Studio Code でのモジュールの開発](how-to-vs-code-develop-module.md)に関するページをご覧ください。 これらの記事では、新規のモジュール作成や、コンテナー イメージのレジストリへの発行に関する手順について説明します。
 
 ## <a name="try-the-solution"></a>ソリューションをお試しください
 

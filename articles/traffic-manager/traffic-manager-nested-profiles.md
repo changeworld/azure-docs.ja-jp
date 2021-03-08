@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: duau
-ms.openlocfilehash: 2159d4d2c71d54d94d9c07eea3dc341383d3237a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5f2aa3d05d349880b5eb2d35a2c58af0741b9855
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392903"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185582"
 ---
 # <a name="nested-traffic-manager-profiles"></a>入れ子になった Traffic Manager プロファイル
 
@@ -97,23 +97,23 @@ Traffic Manager プロファイルの監視の設定は、1 つのプロファ�
 
 ## <a name="faqs"></a>FAQ
 
-* [入れ子になったプロファイルを構成するにはどうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+* [入れ子になったプロファイルを構成するにはどうすればよいですか。](./traffic-manager-faqs.md#traffic-manager-nested-profiles)
 
-* [Traffic Manager では、何層の入れ子がサポートされますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Traffic Manager では、何層の入れ子がサポートされますか。](./traffic-manager-faqs.md#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [同じ Traffic Manager プロファイルに、入れ子になった子プロファイルと他の種類のエンドポイントを混在させることはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [同じ Traffic Manager プロファイルに、入れ子になった子プロファイルと他の種類のエンドポイントを混在させることはできますか。](./traffic-manager-faqs.md#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [入れ子になったプロファイルに対して課金モデルはどのように適用されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [入れ子になったプロファイルに対して課金モデルはどのように適用されますか。](./traffic-manager-faqs.md#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [入れ子になったプロファイルでは、パフォーマンスへの影響はありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [入れ子になったプロファイルでは、パフォーマンスへの影響はありますか。](./traffic-manager-faqs.md#is-there-a-performance-impact-for-nested-profiles)
 
-* [Traffic Manager では、親プロファイルの入れ子になったエンドポイントの正常性をどのように計算するのですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Traffic Manager では、親プロファイルの入れ子になったエンドポイントの正常性をどのように計算するのですか。](./traffic-manager-faqs.md#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>次のステップ
 
 [Traffic Manager のプロファイル](traffic-manager-overview.md)の詳細を確認する
 
-[Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
+[Traffic Manager プロファイルの作成](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

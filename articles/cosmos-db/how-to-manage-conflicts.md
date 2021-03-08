@@ -3,18 +3,20 @@ title: Azure Cosmos DB でリージョン間の競合を管理する
 description: 最終書き込み者優先またはカスタムの競合解決ポリシーを作成して、Azure Cosmos DB での競合を管理する方法について説明します
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: ec9e6bc7daad05284893ce3148f9a80f500c5cbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019948"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339344"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 マルチリージョン書き込みを使用すると、複数のクライアントが同じ項目に書き込んだときに競合が発生する場合があります。 競合が発生した場合は、さまざまな競合解決ポリシーを使用してその競合を解決できます。 この記事では、競合解決ポリシーを管理する方法について説明します。
 
@@ -74,7 +76,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 # <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
 
-[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -86,7 +88,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection lwwCollection = new DocumentCollection();
@@ -134,10 +136,10 @@ udp_collection = self.try_create_document_collection(
 
 カスタム競合解決ストアド プロシージャは、以下に示す関数シグネチャを使用して実装する必要があります。 この関数名は、ストアド プロシージャをコンテナーに登録したときに使用された名前と一致する必要はありませんが、名前付けを簡略化します。 このストアド プロシージャに実装する必要があるパラメーターの説明を次に示します。
 
-- **incomingItem**: 競合が発生している、コミット時に挿入または更新される項目。 削除操作の場合は null 値になります。
-- **existingItem**: 現在コミットされている項目。 この値は、更新では null 以外の値、挿入または削除では null 値になります。
-- **isTombstone**: incomingItem が以前に削除した項目と競合しているかどうかを示すブール値。 true の場合は existingItem も null 値になります。
-- **conflictingItems**: ID またはその他の一意なインデックス プロパティが incomingItem と競合している、コンテナー内のすべての項目のコミットされたバージョンによる配列。
+- **incomingItem** : 競合が発生している、コミット時に挿入または更新される項目。 削除操作の場合は null 値になります。
+- **existingItem** : 現在コミットされている項目。 この値は、更新では null 以外の値、挿入または削除では null 値になります。
+- **isTombstone** : incomingItem が以前に削除した項目と競合しているかどうかを示すブール値。 true の場合は existingItem も null 値になります。
+- **conflictingItems** : ID またはその他の一意なインデックス プロパティが incomingItem と競合している、コンテナー内のすべての項目のコミットされたバージョンによる配列。
 
 > [!IMPORTANT]
 > ストアド プロシージャと同様、カスタム競合解決プロシージャは、同じパーティション キーを使用してすべてのデータにアクセスすることも、挿入、更新、または削除操作を実行して競合を解決することもできます。
@@ -262,7 +264,7 @@ await container.Scripts.CreateStoredProcedureAsync(
 
 # <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
 
-[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -274,7 +276,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection udpCollection = new DocumentCollection();
@@ -377,7 +379,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 # <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
 
-[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -389,7 +391,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 # <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection manualCollection = new DocumentCollection();
@@ -466,7 +468,7 @@ while (conflictFeed.HasMoreResults)
 
 # <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
 
-[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 FeedResponse<Conflict> response = client.readConflicts(this.manualCollectionUri, null)
@@ -477,7 +479,7 @@ for (Conflict conflict : response.getResults()) {
 ```
 # <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
+[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();
@@ -513,9 +515,9 @@ while conflict:
 Azure Cosmos DB の次の概念について学習しましょう。
 
 - [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
-- [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+- [アプリケーションで複数リージョン書き込みを構成する方法](how-to-multi-master.md)
 - [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
-- [パーティション分割とデータ分散](partition-data.md)
-- [Azure Cosmos DB のインデックス作成](indexing-policies.md)
+- [アプリケーションで複数リージョン書き込みを構成する方法](how-to-multi-master.md)。
+- [パーティション分割とデータ分散](partitioning-overview.md)
+- [Azure Cosmos DB のインデックス作成](index-policy.md)

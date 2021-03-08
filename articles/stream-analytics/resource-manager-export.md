@@ -2,17 +2,17 @@
 title: Azure Stream Analytics ジョブの Azure Resource Manager テンプレートをエクスポートする
 description: この記事では、Azure Stream Analytics ジョブの Azure Resource Manager テンプレートをエクスポートする方法について説明します。
 services: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aa17d83dcc14675db5ff6aa4597314baffbffdbb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043531"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015421"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics ジョブの Azure Resource Manager テンプレートをエクスポートする
 
@@ -28,7 +28,7 @@ Azure Resource Manager テンプレートをエクスポートすることによ
 
 ![Visual Studio Code で Stream Analytics ジョブを開く](./media/resource-manager-export/open-job-vs-code.png)
 
-Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細については、[Visual Studio Code のクイック スタート](quick-create-vs-code.md)を参照してください。
+Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細については、[Visual Studio Code のクイック スタート](quick-create-visual-studio-code.md)を参照してください。
 
 ## <a name="compile-the-script"></a>スクリプトをコンパイルする 
 
@@ -58,9 +58,9 @@ Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細�
 
 前のセクションで生成した Azure Resource Manager のテンプレートを使用して Azure Stream Analytics ジョブをデプロイする準備ができました。
 
-PowerShell ウィンドウで、次のコマンドを実行します。 *ResourceGroupName*、*TemplateFile*、および *TemplateParameterFile* は、必ず実際のリソース グループ名、およびジョブ ワークスペースの **[Deploy] フォルダー**内の *JobTemplate.json* と *JobTemplate.parameters.json* ファイルへの完全ファイル パスに置き換えてください。
+PowerShell ウィンドウで、次のコマンドを実行します。 *ResourceGroupName*、*TemplateFile*、および *TemplateParameterFile* は、必ず実際のリソース グループ名、およびジョブ ワークスペースの **[Deploy] フォルダー** 内の *JobTemplate.json* と *JobTemplate.parameters.json* ファイルへの完全ファイル パスに置き換えてください。
 
-PowerShell が構成されていない場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)の手順に従ってください。
+PowerShell が構成されていない場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)の手順に従ってください。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"

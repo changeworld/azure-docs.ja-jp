@@ -9,20 +9,21 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051298"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010359"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
 このチュートリアルでは、Azure Cosmos DB を使用してデータを保存し、Azure でホストされている ASP.NET MVC アプリケーションからアクセスする方法について説明します。 このチュートリアルでは、.NET SDK V3 を使用します。 次の図は、この記事のサンプルを使用してビルドする Web ページを示しています。
@@ -85,7 +86,7 @@ ms.locfileid: "89051298"
 
 これで、このソリューションに必要な ASP.NET Core MVC フレームワーク コードのほとんどを準備できました。次は Azure Cosmos DB に接続するために必要な NuGet パッケージを追加しましょう。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
 1. **[NuGet パッケージ マネージャー]** で、**Microsoft.Azure.Cosmos** を検索して選択します。 **[インストール]** を選択します。
 
@@ -93,7 +94,7 @@ ms.locfileid: "89051298"
 
    Visual Studio により、Azure Cosmos DB パッケージとその依存関係がダウンロードされ、インストールされます。
 
-   **パッケージ マネージャー コンソール**を使用して NuGet パッケージをインストールすることもできます。 そのためには、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。 プロンプトで、次のコマンドを入力します。
+   **パッケージ マネージャー コンソール** を使用して NuGet パッケージをインストールすることもできます。 そのためには、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。 プロンプトで、次のコマンドを入力します。
 
    ```ps
    Install-Package Microsoft.Azure.Cosmos
@@ -105,7 +106,7 @@ ms.locfileid: "89051298"
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a> モデルを追加する
 
-1. **ソリューション エクスプローラー**で、**Models** フォルダーを右クリックし、 **[追加]**  >  **[クラス]** を選択します。
+1. **ソリューション エクスプローラー** で、**Models** フォルダーを右クリックし、 **[追加]**  >  **[クラス]** を選択します。
 
 1. **[新しい項目の追加]** で、新しいクラスに *Item.cs* という名前を付けて、 **[追加]** を選択します。
 
@@ -127,7 +128,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 #### <a name="create-item-view"></a><a name="AddNewIndexView"></a>項目の作成ビュー
 
-1. **ソリューション エクスプローラー**で、**Views** フォルダーを右クリックし、 **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Item* という名前を付けます。
+1. **ソリューション エクスプローラー** で、**Views** フォルダーを右クリックし、 **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Item* という名前を付けます。
 
 1. 空の **Item** フォルダーを右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
@@ -147,7 +148,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 #### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>項目の削除ビュー
 
-1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
 
@@ -163,7 +164,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 #### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>項目の詳細を取得するビューを追加する
 
-1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の値を指定します。
 
@@ -178,7 +179,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>項目を編集するためのビューを追加する
 
-1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
 
@@ -196,7 +197,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 最後に、次の手順ですべての項目を取得するビューを追加します。
 
-1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
 
@@ -214,19 +215,19 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>サービスを宣言して初期化する
 
-最初に、Azure Cosmos DB に接続して使用するためのロジックを含むクラスを追加します。 このチュートリアルでは、このロジックを `CosmosDBService` というクラス、および `ICosmosDBService` というインターフェイス内にカプセル化します。 このサービスによって、CRUD 操作が実行されます。 また、不完全な項目の一覧表示、項目の作成、編集、削除などのフィード読み取り操作も実行されます。
+最初に、Azure Cosmos DB に接続して使用するためのロジックを含むクラスを追加します。 このチュートリアルでは、このロジックを `CosmosDbService` というクラス、および `ICosmosDbService` というインターフェイス内にカプセル化します。 このサービスによって、CRUD 操作が実行されます。 また、不完全な項目の一覧表示、項目の作成、編集、削除などのフィード読み取り操作も実行されます。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Services* という名前を付けます。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Services* という名前を付けます。
 
-1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *CosmosDBService* という名前を付け、 **[追加]** を選択します。
+1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *CosmosDbService* という名前を付け、 **[追加]** を選択します。
 
-1. *CosmosDBService.cs* の内容を次のコードに置き換えます。
+1. *CosmosDbService.cs* の内容を次のコードに置き換えます。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *ICosmosDBService* という名前を付け、 **[追加]** を選択します。
+1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *ICosmosDbService* という名前を付け、 **[追加]** を選択します。
 
-1. 次のコードを *ICosmosDBService* クラスに追加します。
+1. 次のコードを *ICosmosDbService* クラスに追加します。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
@@ -238,7 +239,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
 
-   この手順のコードでは、構成に基づいて、[ASP.NET Core の依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)を通じて挿入されるシングルトン インスタンスとして、クライアントを初期化します。
+   この手順のコードでは、構成に基づいて、[ASP.NET Core の依存関係挿入](/aspnet/core/fundamentals/dependency-injection)を通じて挿入されるシングルトン インスタンスとして、クライアントを初期化します。
 
    さらに、既定の MVC コントローラーを `Item` に変更します。同じファイルの `Configure` メソッドで次のようにルートを編集してください。
 
@@ -258,7 +259,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>コントローラーを追加する
 
-1. **ソリューション エクスプローラー**で、**Controllers** フォルダーを右クリックし、 **[追加]**  >  **[コントローラー]** を選択します。
+1. **ソリューション エクスプローラー** で、**Controllers** フォルダーを右クリックし、 **[追加]**  >  **[コントローラー]** を選択します。
 
 1. **[スキャフォールディングの追加]** で **[MVC コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
@@ -290,7 +291,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
     :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="[Index] ビューのスクリーンショット":::
   
-1. 一覧の**項目**の横にある **[Edit]** を選択します。 **[Edit]** ビューが表示され、対象オブジェクトのプロパティを更新することができます。**Completed** フラグもこのビューで更新できます。 **[Completed]** を選択して **[Save]** を選択した場合、アプリでは一覧の**項目**が完了として表示されます。
+1. 一覧の **項目** の横にある **[Edit]** を選択します。 **[Edit]** ビューが表示され、対象オブジェクトのプロパティを更新することができます。**Completed** フラグもこのビューで更新できます。 **[Completed]** を選択して **[Save]** を選択した場合、アプリでは一覧の **項目** が完了として表示されます。
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="[Completed] ボックスがオンになっている [Index] ビューのスクリーンショット":::
 
@@ -302,7 +303,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 以上で、Azure Cosmos DB と連携するアプリケーションが完成しました。今度は、この Web アプリを Azure App Service にデプロイします。  
 
-1. このアプリケーションを発行するために、**ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[発行]** を選択します。
+1. このアプリケーションを発行するために、**ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. **[発行先を選択]** で、 **[App Service]** を選択します。
 
@@ -316,7 +317,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 別の方法として、新しいプロファイルを作成することもできます。
 
-1. 前の手順と同様に、**ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
+1. 前の手順と同様に、**ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
   
 1. **[発行先を選択]** で、 **[App Service]** を選択します。
 
@@ -333,11 +334,11 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 このチュートリアルでは、ASP.NET Core MVC Web アプリケーションを構築する方法について説明しました。 このアプリケーションから Azure Cosmos DB に格納されているデータにアクセスできます。 これで、次のリソースに進めるようになりました。
 
 * [Azure Cosmos DB でのパーティション分割](./partitioning-overview.md)
-* [SQL クエリの使用を開始する](./how-to-sql-query.md)
+* [SQL クエリの使用を開始する](./sql-query-getting-started.md)
 * [現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法](./how-to-model-partition-example.md)
 
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: https://docs.microsoft.com/aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
-[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
+[Preventing Cross-Site Request Forgery]: /aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
+[Basic CRUD Operations in ASP.NET MVC]: /aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 [GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app

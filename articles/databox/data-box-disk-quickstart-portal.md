@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fcc7c6ff74e17db2066d97597849c985f5a961e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 23615daf4a07e02b01bbd5a9cdf57ec9a81a2b76
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514070"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347411"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "76514070"
 
 デプロイと追跡に関する詳しい手順については、「[チュートリアル: Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」を参照してください。 
 
-Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F&preserve-view=true)を作成してください。
 
 ::: zone-end
 
@@ -52,11 +52,11 @@ Azure Portal [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredatab
 
 > [!div class="checklist"]
 >
-> - **前提条件を確認する**: ディスクとケーブル、オペレーティング システム、その他ソフトウェアの数を確認します。
-> - **接続してロックを解除する**: デバイスを接続し、データのコピー先となるディスクのロックを解除します。
-> - **データをディスクにコピーして検証する**: ディスク上のあらかじめ作成されたフォルダーにデータをコピーします。
-> - **ディスクを返送する**: データのアップロード先となるストレージ アカウントがある Azure データセンターにディスクを返送します。
-> - **Azure 内のデータを検証する**: コピー元のデータ サーバーからデータを削除する前に、ストレージ アカウントにデータがアップロードされたことを確認します。
+> - **前提条件を確認する** : ディスクとケーブル、オペレーティング システム、その他ソフトウェアの数を確認します。
+> - **接続してロックを解除する** : デバイスを接続し、データのコピー先となるディスクのロックを解除します。
+> - **データをディスクにコピーして検証する** : ディスク上のあらかじめ作成されたフォルダーにデータをコピーします。
+> - **ディスクを返送する** : データのアップロード先となるストレージ アカウントがある Azure データセンターにディスクを返送します。
+> - **Azure 内のデータを検証する** : コピー元のデータ サーバーからデータを削除する前に、ストレージ アカウントにデータがアップロードされたことを確認します。
 
 ::: zone-end
 
@@ -64,6 +64,8 @@ Azure Portal [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredatab
 ::: zone target="docs"
 
 ## <a name="order"></a>Order
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 この手順には約 5 分かかります。
 
@@ -73,6 +75,74 @@ Azure Portal [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredatab
 4. 注文の詳細と発送情報を入力します。 ご利用のリージョンでこのサービスが提供されている場合、通知メール アドレスを指定し、概要を確認したうえで注文を作成します。
 
 注文が作成されると、ディスクの発送準備が行われます。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Data Box Disk ジョブを作成するには、以下の Azure CLI コマンドを使用します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. [az group create](/cli/azure/group#az_group_create) コマンドを実行してリソース グループを作成するか、既存のリソース グループを使用します。
+
+   ```azurecli
+   az group create --name databox-rg --location westus
+   ```
+
+1. [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用してストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) コマンドを実行して、DataBoxDisk という SKU の Data Box ジョブを作成します。
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxdisk-job \
+       --location westus --sku DataBoxDisk --contact-name "Jim Gan" --phone=4085555555 \
+       –-city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA \
+       --storage-account databoxtestsa --expected-data-size 1
+   ```
+
+1. 次の例のように、[az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) を実行してジョブを更新します。連絡先の名前とメールは変更してください。
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) コマンドを実行して、ジョブに関する情報を取得します。
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) コマンドを使用して、リソース グループのすべての Data Box ジョブを表示します。
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) コマンドを実行してジョブをキャンセルします。
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) コマンドを実行してジョブを削除します。
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) コマンドを使用して、Data Box ジョブの資格情報を一覧表示します。
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+注文が作成されると、デバイスの発送準備が行われます。
+
+---
 
 ## <a name="unpack"></a>開梱
 
@@ -100,9 +170,9 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
 この工程にかかる時間は、実際のデータのサイズによって異なります。
 
-1. ドライブには、*PageBlob*、*BlockBlob*、*AzureFile*、*ManagedDisk*、*DataBoxDiskImport* の各フォルダーが格納されています。 ブロック BLOB としてインポートするデータは、*BlockBlob* フォルダーにドラッグ アンド ドロップでコピーします。 同様に、VHD/VHDX などのデータは、*PageBlob* フォルダーに、適切なデータは *AzureFile* にドラッグ アンド ドロップします。 マネージド ディスクとしてアップロードする VHD を *ManagedDisk* 以下のフォルダーにコピーします。
+1. ドライブには、 *PageBlob* 、 *BlockBlob* 、 *AzureFile* 、 *ManagedDisk* 、 *DataBoxDiskImport* の各フォルダーが格納されています。 ブロック BLOB としてインポートするデータは、 *BlockBlob* フォルダーにドラッグ アンド ドロップでコピーします。 同様に、VHD/VHDX などのデータは、 *PageBlob* フォルダーに、適切なデータは *AzureFile* にドラッグ アンド ドロップします。 マネージド ディスクとしてアップロードする VHD を *ManagedDisk* 以下のフォルダーにコピーします。
 
-    Azure Storage アカウントには、*BlockBlob* フォルダー下および *PageBlob* フォルダー下のサブフォルダーごとにコンテナーが 1 つ作成されます。 ファイル共有が *AzureFile* 以下のサブフォルダーに作成されます。
+    Azure Storage アカウントには、 *BlockBlob* フォルダー下および *PageBlob* フォルダー下のサブフォルダーごとにコンテナーが 1 つ作成されます。 ファイル共有が *AzureFile* 以下のサブフォルダーに作成されます。
 
     *BlockBlob* フォルダー下のファイルと *PageBlob* フォルダー下のファイルはすべて、Azure Storage アカウントの既定のコンテナー `$root` にコピーされます。 ファイルを *AzureFile* 内のフォルダーにコピーします。 *AzureFile* フォルダーに直接コピーされたファイルはすべて失敗し、ブロック BLOB としてアップロードされます。
 
@@ -142,7 +212,7 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
 
     注文をキャンセルするには、 **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。  
 
-- Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。
+- Azure portal で **完了済み** または **キャンセル済み** の状態になった注文は削除することができます。
 
     注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 

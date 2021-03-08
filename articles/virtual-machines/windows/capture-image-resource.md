@@ -9,29 +9,31 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 9b63ec5b8a5d0684a0e144de7dfe4114af9777e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236609"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881891"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
 ストレージ アカウントにマネージド ディスクまたはアンマネージド ディスクとして格納されている一般化された仮想マシン (VM) からマネージド イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 マネージド イメージの課金方法については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。 
 
-1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 個の同時実行 VM デプロイごとに 1 つのレプリカで構成された[共有イメージ ギャラリー](shared-image-galleries.md) イメージを使用します。
+1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 個の同時実行 VM デプロイごとに 1 つのレプリカで構成された[共有イメージ ギャラリー](../shared-image-galleries.md) イメージを使用します。
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
 
 Sysprep はすべての個人アカウント情報とセキュリティ情報を削除して、マシンをイメージとして使用できるように準備します。 Sysprep については、[Sysprep の概要](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)を参照してください。
 
-コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳細については、「[サーバーの役割の Sysprep サポート](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)」と「[サポートされていないシナリオ](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)」を参照してください。 Sysprep では、実行前にドライブを完全に復号化する必要があります。 VM で暗号化を有効にしている場合は、Sysprep を実行する前に暗号化を無効にしてください。
+コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳細については、「[サーバーの役割の Sysprep サポート](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)」と「[サポートされていないシナリオ](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)」を参照してください。 
 
 > [!IMPORTANT]
-> VM で Sysprep を実行すると、その VM は*一般化されている*と見なされ、再起動できなくなります。 VM の一般化プロセスは元に戻せません。 元の VM の機能を保持する場合は、[VM のコピー](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)を作成し、そのコピーを一般化してください。 
+> VM で Sysprep を実行すると、その VM は *一般化されている* と見なされ、再起動できなくなります。 VM の一般化プロセスは元に戻せません。 元の VM の機能を保持する場合は、[VM のコピー](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)を作成し、そのコピーを一般化してください。 
 >
-> 初めて VHD を Azure に仮想ハード ディスク (VHD) にアップロードする前に Sysprep を実行する予定の場合は、[VM の準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ができていることを確認してください。  
+>Sysprep では、ドライブを完全に復号化する必要があります。 VM で暗号化を有効にしている場合は、Sysprep を実行する前に暗号化を無効にしてください。
+>
+> 初めて VHD を Azure に仮想ハード ディスク (VHD) にアップロードする前に Sysprep を実行する予定の場合は、[VM の準備](prepare-for-upload-vhd-image.md)ができていることを確認してください。  
 > 
 > 
 
@@ -81,7 +83,7 @@ Windows VM を一般化するには、次の手順に従います。
 
 6. イメージが作成された後にソース VM を削除する場合、 **[イメージの作成後、この仮想マシンを自動的に削除します]** を選択します。
 
-7. いずれかの[可用性ゾーン](../../availability-zones/az-overview.md)でイメージを使用する機能が必要な場合、 **[Zone resiliency (ゾーンの回復性)]** に **[オン]** を選択します。
+7. いずれかの [可用性ゾーン](../../availability-zones/az-overview.md)でイメージを使用する機能が必要な場合、 **[Zone resiliency (ゾーンの回復性)]** に **[オン]** を選択します。
 
 8. **[作成]** を選択してイメージを作成します。
 
@@ -248,4 +250,4 @@ OS ディスクのみのイメージを作成する場合は、OS ディスク�
 
     
 ## <a name="next-steps"></a>次のステップ
-- [管理イメージから VM を作成する](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
+- [管理イメージから VM を作成する](create-vm-generalized-managed.md)。 

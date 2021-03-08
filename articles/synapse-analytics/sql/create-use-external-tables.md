@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する
-description: このセクションでは、SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する方法を学習します。 外部テーブルは、SQL オンデマンドで外部データへのアクセスを制御する場合や、Power BI などのツールを SQL オンデマンドと組み合わせて使用する場合に便利です。
+title: サーバーレス SQL プールで外部テーブルを作成および使用する
+description: このセクションでは、サーバーレス SQL プールで外部テーブルを作成および使用する方法を学習します。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,17 +8,17 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5dcd4b7b76752ca5396fc68afc8d4c8e4e1edca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206514"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462302"
 ---
-# <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する
+# <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用して外部テーブルを作成および使用する
 
-このセクションでは、SQL オンデマンド (プレビュー) で[外部テーブル](develop-tables-external-tables.md)を作成および使用する方法を学習します。 外部テーブルは、SQL オンデマンドで外部データへのアクセスを制御する場合や、Power BI などのツールを SQL オンデマンドと組み合わせて使用する場合に便利です。 外部テーブルは、次の 2 種類のストレージにアクセスできます。
+このセクションでは、サーバーレス SQL プールで[外部テーブル](develop-tables-external-tables.md)を作成および使用する方法を学習します。 外部テーブルは、サーバーレス SQL プールで外部データへのアクセスを制御する場合や、Power BI などのツールをサーバーレス SQL プールと組み合わせて使用する場合に便利です。 外部テーブルは、次の 2 種類のストレージにアクセスできます。
 - パブリック ストレージ。ユーザーは、パブリック ストレージ ファイルにアクセスします。
 - 保護されたストレージ。ユーザーは、Synapse ワークスペースの SAS 資格情報、Azure AD ID、またはマネージド ID を使用して、ストレージ ファイルにアクセスします。
 
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>次のステップ
 
-クエリの結果をストレージに格納する方法については、[クエリ結果をストレージに格納する方法](../sql/create-external-table-as-select.md)に関するページを参照してください。
+クエリの結果をストレージに格納する方法については、[クエリ結果をストレージに格納する方法](../sql/create-external-table-as-select.md)に関する記事を参照してください。

@@ -10,15 +10,20 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 251dbf6897f7efe56d968122c2ccad7093d39e44
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-js
+ms.openlocfilehash: ff54d605fd81fa640314d99359f1aabacf7a469e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300053"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350383"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、またはマイクロソフトエンタープライズ契約の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 この単一ページのアプリは、Bing Web Search API から検索結果を取得、解析、および表示する方法を示しています。 このチュートリアルでは、定型の HTML と CSS を使用し、JavaScript コードに焦点を当てています。 HTML、CSS、および JS ファイルとクイック スタート手順は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) に掲載されています。
 
@@ -31,7 +36,7 @@ ms.locfileid: "89300053"
 > * サブスクリプション キーを管理する
 > * エラーを処理する
 
-このアプリを使用するには、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API が必要です。
+このアプリを使用するには、[Azure Cognitive Services アカウント](../cognitive-services-apis-create-account.md)と Bing Search API が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -81,7 +86,7 @@ npm install
 
 ## <a name="query-options"></a>クエリ オプション
 
-HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) のクエリ パラメーターにマップされるオプションが含まれています。 この表は、サンプル アプリを使用してユーザーが検索結果をフィルター処理する方法の内訳を示しています。
+HTML フォームには、[Bing Web Search API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) のクエリ パラメーターにマップされるオプションが含まれています。 この表は、サンプル アプリを使用してユーザーが検索結果をフィルター処理する方法の内訳を示しています。
 
 | パラメーター | 説明 |
 |-----------|-------------|
@@ -94,7 +99,7 @@ HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/re
 | `offset` | 隠しフィールド。 要求における最初の検索結果のオフセット。ページングに使用されます。 新しい要求ごとに `0` にリセットされます。 |
 
 > [!NOTE]
-> Bing Web Search API には、検索結果を絞り込むための追加のクエリ パラメーターが用意されています。 このサンプルでは、ごく一部のみを使用しています。 使用できるパラメーターの詳細な一覧については、[Bing Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)を参照してください。
+> Bing Web Search API には、検索結果を絞り込むための追加のクエリ パラメーターが用意されています。 このサンプルでは、ごく一部のみを使用しています。 使用できるパラメーターの詳細な一覧については、[Bing Web Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)を参照してください。
 
 `bingSearchOptions()` 関数は、Bing Search API で必要な形式にこれらのオプションを変換します。
 
@@ -133,7 +138,7 @@ function bingSearchOptions(form) {
 
 **[レベル上げ]** チェックボックスがオンの場合、`answerCount` パラメーターがクエリに追加されます。 `answerCount` は `promote` パラメーターを使用する際に必要です。 このスニペットでは、使用できるすべての結果の種類を返す `9` に値が設定されています。
 > [!NOTE]
-> 結果の種類のレベルを上げても、検索結果に含まれることは*保証*されません。 レベル上げの効果は、その種類の結果の順位を、通常の順位よりも上げるというものです。 検索結果を特定の種類だけに制限するには、`responseFilter` クエリ パラメーターを使用するか、Bing Image Search や Bing News Search など、より具体的なエンドポイントを呼び出します。
+> 結果の種類のレベルを上げても、検索結果に含まれることは *保証* されません。 レベル上げの効果は、その種類の結果の順位を、通常の順位よりも上げるというものです。 検索結果を特定の種類だけに制限するには、`responseFilter` クエリ パラメーターを使用するか、Bing Image Search や Bing News Search など、より具体的なエンドポイントを呼び出します。
 
 `textDecoration` および `textFormat` クエリ パラメーターをスクリプトにハードコーディングして、検索用語が検索結果内で太字で表示されるようにします。 これらのパラメーターは必須ではありません。
 
@@ -284,7 +289,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 要求が成功しても、検索自体が成功したとは*限りません*。 検索操作でエラーが発生した場合、Bing Web Search API は 200 以外の HTTP 状態コードを返し、JSON 応答にエラー情報を含めます。 要求のレートが制限されている場合、API は空の応答を返します。
+> HTTP 要求が成功しても、検索自体が成功したとは *限りません*。 検索操作でエラーが発生した場合、Bing Web Search API は 200 以外の HTTP 状態コードを返し、JSON 応答にエラー情報を含めます。 要求のレートが制限されている場合、API は空の応答を返します。
 
 先ほどの両方の関数内にあるコードの多くは、エラー処理専用のものです。 エラーは次の段階で発生する場合があります。
 
@@ -298,7 +303,7 @@ function handleBingResponse() {
 
 ## <a name="display-search-results"></a>検索結果を表示する
 
-Bing Web Search API から返される結果の[使用と表示の要件](useanddisplayrequirements.md)があります。 応答にはさまざまな結果の種類が含まれている可能性があるため、最上位レベルの `WebPages` コレクションを反復処理するだけでは不十分です。 その代わり、このサンプル アプリでは `RankingResponse` を使用して仕様に合わせて結果を並べ替えます。
+Bing Web Search API から返される結果の[使用と表示の要件](./use-display-requirements.md)があります。 応答にはさまざまな結果の種類が含まれている可能性があるため、最上位レベルの `WebPages` コレクションを反復処理するだけでは不十分です。 その代わり、このサンプル アプリでは `RankingResponse` を使用して仕様に合わせて結果を並べ替えます。
 
 > [!NOTE]
 > 1 つの結果の種類のみが必要な場合は、クエリ パラメーター `responseFilter` を使用します。また、Bing Image Search など、他の Bing Search エンドポイントのいずれかを使用することを検討します。

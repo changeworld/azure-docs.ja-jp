@@ -1,22 +1,18 @@
 ---
 title: 'データの変換: データのプロセスと変換 '
-description: Azure Data Factory で Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理する方法について説明します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+description: Azure Data Factory で Hadoop、 Azure Machine Learning Studio (クラシック)、または Azure Data Lake Analytics を使用して、データを変換または処理する方法について説明します。
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c9818bfd2a9519cd14d34ecc810179d66aa57e52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522365"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363986"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Azure Data Factory バージョン 1 でデータを変換する
 > [!div class="op_single_selector"]
@@ -24,7 +20,7 @@ ms.locfileid: "86522365"
 > * [Pig](data-factory-pig-activity.md)  
 > * [MapReduce](data-factory-map-reduce.md)  
 > * [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md)
-> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+> * [Azure Machine Learning Studio (クラシック)](data-factory-azure-ml-batch-execution-activity.md) 
 > * [ストアド プロシージャ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
 > * [.NET カスタム](data-factory-use-custom-activities.md)
@@ -57,15 +53,15 @@ Data Factory パイプラインの HDInsight Streaming アクティビティは�
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark アクティビティ
 Data Factory パイプラインの HDInsight Spark アクティビティでは、独自の HDInsight クラスターで Spark プログラムを実行します。 詳細については、「[Data Factory から Spark プログラムを起動する](data-factory-spark.md)」を参照してください。 
 
-## <a name="machine-learning-activities"></a>Machine Learning アクティビティ
-Azure Data Factory を使用すると、公開された Azure Machine Learning Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで [バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity) を使用すると、Machine Learning Web サービスを呼び出して、データの予測を一括で行うことができます。
+## <a name="azure-machine-learning-studio-classic-activities"></a>Azure Machine Learning スタジオ (クラシック) のアクティビティ
+Azure Data Factory を使用すると、公開された Azure Machine Learning Studio (classic) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内で[バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity)を使用すると、スタジオ (クラシック) Web サービスを呼び出して、データの予測を一括で行うことができます。
 
-時間の経過と共に、Machine Learning スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの Machine Learning モデルでスコア付け Web サービスを更新する必要があります。 [更新リソース アクティビティ](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity) を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。  
+時間の経過と共に、スタジオ (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの機械学習モデルでスコア付け Web サービスを更新する必要があります。 [更新リソース アクティビティ](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity) を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。  
 
-これらの Machine Learning アクティビティの詳細については、 [Azure Machine Learning アクティビティの使用](data-factory-azure-ml-batch-execution-activity.md) に関する記事を参照してください。 
+これらのスタジオ (クラシック) アクティビティの詳細については、[Azure Machine Learning Studio (クラシック) アクティビティの使用](data-factory-azure-ml-batch-execution-activity.md)に関するページをご覧ください。 
 
 ## <a name="stored-procedure-activity"></a>ストアド プロシージャ アクティビティ
-SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプライン内で使用して、次のいずれかのデータ ストア内のストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure SQL Data Warehouse、SQL Server データベース。 詳細については、記事「 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) 」を参照してください。  
+SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプライン内で使用して、次のいずれかのデータ ストア内のストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure Synapse Analytics、SQL Server データベース。 詳細については、記事「 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) 」を参照してください。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
 Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。 詳細については、 [Data Analytics U-SQL アクティビティ](data-factory-usql-activity.md) に関する記事を参照してください。 
@@ -92,8 +88,8 @@ Azure Data Factory では、次のデータ変換アクティビティと、ア�
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Machine Learning アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
-| [ストアド プロシージャ](data-factory-stored-proc-activity.md) |Azure SQL、Azure SQL Data Warehouse、または SQL Server |
+| [Azure Machine Learning スタジオ (クラシック) のアクティビティ: バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [ストアド プロシージャ](data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics、または SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] または Azure Batch |
 

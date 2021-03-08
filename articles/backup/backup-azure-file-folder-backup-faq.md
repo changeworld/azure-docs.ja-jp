@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェント – FAQ
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874624"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917360"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>よく寄せられる質問 - Microsoft Azure Recovery Services (MARS) エージェント
 
@@ -32,7 +32,7 @@ Azure portal で、お使いのコンテナーの **[プロパティ]** に移�
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>パスフレーズに許可されるのは、どのような文字ですか。
 
-パスフレーズでは、ASCII 文字セットで [ASCII 値が 127 以下](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)の文字を使用する必要があります。
+パスフレーズでは、ASCII 文字セットで [ASCII 値が 127 以下](/office/vba/language/reference/user-interface-help/character-set-0127)の文字を使用する必要があります。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>どのようなドライブからファイルとフォルダーをバックアップできますか。
 
@@ -71,6 +71,10 @@ Azure portal で、お使いのコンテナーの **[プロパティ]** に移�
 ### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>MARS エージェントのインストールと構成に管理者のアクセス許可は必要ですか。
 
 必要です。MARS エージェントのインストールと MARS コンソールを使用したバックアップの構成は、保護されるサーバー上のローカル管理者が行う必要があります。
+
+### <a name="what-is-the-impact-on-mars-agent-backups-of-transferring-the-vault-subscription-to-a-different-azure-ad-directory"></a>コンテナーのサブスクリプションを別の Azure AD ディレクトリに転送した場合の MARS エージェントのバックアップには、どのような影響がありますか?
+
+Azure AD ディレクトリの変更は、MARS エージェントのバックアップに影響しません。 
 
 ## <a name="manage-backups"></a>バックアップの管理
 
@@ -122,7 +126,7 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 1. 管理者特権のコマンド プロンプトで次のコマンドを実行して、Backup エンジンを停止します。
 
     ```Net stop obengine```
-2. システム状態のバックアップを構成している場合は、[ディスクの管理] を開き、`"CBSSBVol_<ID>"` という形式の名前を持つディスクをマウント解除します。
+2. システム状態のバックアップが構成されている場合は、[ディスクの管理] を開き、`"CBSSBVol_<ID>"` という形式の名前を持つディスクをマウント解除します。
 3. 既定では、スクラッチ フォルダーは `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` にあります。
 4. 十分な容量がある別のドライブに `\Scratch`フォルダー全体をコピーします。 コンテンツがコピーされ、移動されていないことを確認します。
 5. 新しく移動されたスクラッチ フォルダーのパスを使って、次のレジストリ エントリを更新します。
@@ -199,7 +203,7 @@ Azure Backup エージェントでは、バックアップしたデータを復�
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>バックアップジョブが失敗したか、長時間実行されていません。 保有期間を過ぎています。 引き続き復元できますか?
 
-安全性対策として、Azure Backup では、保有期間が過ぎていても、最後の回復ポイントが保持されます。 バックアップが再開され、新しい回復ポイントが使用できるようになると、指定した保有期間に従って古い回復ポイントが削除されます。
+安全策として、Azure Backup では、保有期間が過ぎている場合でも最新の回復ポイントが保持されます。 バックアップが再開され、新しい回復ポイントが使用できるようになると、指定した保有期間に従って古い回復ポイントが削除されます。
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>進行中の復元ジョブをキャンセルした場合、どうなりますか。
 

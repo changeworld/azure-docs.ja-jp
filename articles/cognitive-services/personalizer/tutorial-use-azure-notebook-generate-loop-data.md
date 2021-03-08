@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509911"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
@@ -34,10 +34,10 @@ Personalizer が時間の経過と共に学習できるよう、この "_シス�
 
 |コーヒー - アクションの特徴|temperature の種類|原産地|焙煎の種類|オーガニック|
 |--|--|--|--|--|
-|カプチーノ|ホット|ケニア|ダーク|オーガニック|
+|カプチーノ|ホット|ケニア|深煎り|オーガニック|
 |コールド ブリュー|アイス|ブラジル|浅煎り|オーガニック|
 |アイス モカ|アイス|エチオピア|浅煎り|オーガニックでない|
-|ラテ|ホット|ブラジル|ダーク|オーガニックでない|
+|ラテ|ホット|ブラジル|深煎り|オーガニックでない|
 
 Personalizer ループの**目的**は、できるだけ多くの場合にユーザーと最も相性の良いコーヒーを見つけることです。
 

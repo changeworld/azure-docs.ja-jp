@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b260e51321e14a6ea1d1ee75f88ca7564b83d492
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552563"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル: Azure Active Directory と N2F - Expense reports の統合
 
@@ -27,7 +27,7 @@ N2F - Expense reports と Azure AD の統合には、次の利点があります
 * ユーザーが自分の Azure AD アカウントで N2F - Expense reports に自動的にサインイン (シングル サインオン) されるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ N2F - Expense reports と Azure AD の統合を構成するには、次のもの
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* N2F - Expense reports では、**SP** と **IDP** によって開始される SSO がサポートされます
+* N2F - Expense reports では、 **SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-n2f---expense-reports-from-the-gallery"></a>ギャラリーからの N2F - Expense reports の追加
 
@@ -61,13 +61,13 @@ Azure AD への N2F - Expense reports の統合を構成するには、マネー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**N2F - Expense reports**」と入力し、結果ウィンドウで **N2F - Expense reports** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **N2F - Expense reports** 」と入力し、結果ウィンドウで **N2F - Expense reports** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の N2F - Expense reports](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、N2F - Expense reports で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、N2F - Expense reports で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと N2F - Expense reports 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 N2F - Expense reports で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,11 +99,11 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
 4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
-    ![[N2F - Expense reports のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+    ![[SAML ベースのサインオン] ページを示すスクリーンショット。[基本的な SAML 構成] が表示されています。](common/preintegrated.png)
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[N2F - Expense reports のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![[統合] ページを示すスクリーンショット。ここでは、Azure AD シングル サインオンを追加できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://www.n2f.com/app/`」と入力します。
 
@@ -127,23 +127,23 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
 2. **[Settings]\(設定\)** をクリックし、ドロップダウンから **[Advance Settings]\(詳細設定\)** を選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure1.png)
+    ![スクリーンショットでは、[Advance Settings]\(詳細設定\) が選択されています。](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. **[Account & Settings]\(アカウントと設定\)** を選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure2.png)
+    ![スクリーンショットでは、[Account settings]\(アカウント設定\) が選択されています。](./media/n2f-expensereports-tutorial/configure2.png)
 
 4. **[Authentication]\(認証\)** を選択し、 **[+ Add an authentication method]\(認証方法の追加\)** タブを選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure3.png)
+    ![スクリーンショットは、認証方法を追加できる [Account settings]\(アカウント設定\) の [Authentication]\(認証\) を示しています。](./media/n2f-expensereports-tutorial/configure3.png)
 
 5. 認証方法として **[SAML Microsoft Office 365]** を選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure4.png)
+    ![スクリーンショットは、[SAML Microsoft Office 365] が選択されている [Authentication method]\(認証方法\) を示しています。](./media/n2f-expensereports-tutorial/configure4.png)
 
 6. **[Authentication method]\(認証方法\)** セクションで、次の手順に従います。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure5.png)
+    ![スクリーンショットは、説明した値を入力できる [Authentication method]\(認証方法\) を示しています。](./media/n2f-expensereports-tutorial/configure5.png)
 
     a. **[エンティティ ID]** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
@@ -167,9 +167,9 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -212,25 +212,25 @@ Azure AD ユーザーが N2F - Expense reports にログインできるように
 
 2. **[Settings]\(設定\)** をクリックし、ドロップダウンから **[Advance Settings]\(詳細設定\)** を選択します。
 
-    ![N2F - Expense でのユーザーの追加](./media/n2f-expensereports-tutorial/configure1.png)
+    ![スクリーンショットでは、[Advance Settings]\(詳細設定\) が選択されています。](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. ナビゲーション パネルで **[Users]\(ユーザー\)** タブをクリックします。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/user1.png)
+    ![スクリーンショットは、[Users]\(ユーザー\) を示しています。](./media/n2f-expensereports-tutorial/user1.png)
 
 4. **[+ New user]\(+ 新規ユーザー\)** タブを選択します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/user2.png)
+    ![スクリーンショットは、[New user]\(新規ユーザー\) オプションを示しています。](./media/n2f-expensereports-tutorial/user2.png)
 
 5. **[User]\(ユーザー\)** セクションで、次の手順を実行します。
 
-    ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/user3.png)
+    ![スクリーンショットは、説明した値を入力できるセクションを示しています。](./media/n2f-expensereports-tutorial/user3.png)
 
-    a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
+    a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
 
-    b. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
+    b. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta** )。
 
-    c. **[Name]\(名前\)** ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
+    c. **[Name]\(名前\)** ボックスに、ユーザーの名前 ( **BrittaSimon** など) を入力します。
 
     d. 組織の要件に応じて、 **[Role]\(ロール\)、[Direct manager (N+1)]\(直属の上司\)** および **[Division]\(部門\)** を選択します。
 
@@ -243,13 +243,12 @@ Azure AD ユーザーが N2F - Expense reports にログインできるように
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで N2F - Expense reports のタイルをクリックすると、SSO を設定した N2F - Expense reports に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで N2F - Expense reports のタイルをクリックすると、SSO を設定した N2F - Expense reports に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -9,20 +9,20 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: c69dc63af6bacb4aaf1beda1a0846a98b06ec209
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689254"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "91371968"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
-Azure Enterprise Agreement を使用するユーザーの場合は、Azure portal とエンタープライズ (EA) ポータルで付与されたアクセス許可の組み合わせによって、Azure Cost Management のデータへのアクセス レベルが定義されます。 他の種類の Azure アカウントを使用するユーザーの場合、Cost Management のデータに対するユーザーのアクセス レベルの定義は、Azure のロールベースのアクセス制御を使用して、もっと簡単に行うことができます。 この記事では、Cost Management のデータにアクセス許可を割り当てる方法について説明します。 アクセス許可の組み合わせが割り当てられると、ユーザーにはそのアクセス スコープと、Azure portal で選択したスコープに基づく Cost Management のデータが表示されます。
+Azure Enterprise Agreement を使用するユーザーの場合は、Azure portal とエンタープライズ (EA) ポータルで付与されたアクセス許可の組み合わせによって、Azure Cost Management のデータへのアクセス レベルが定義されます。 他の種類の Azure アカウントを使用するユーザーの場合、Cost Management のデータに対するユーザーのアクセス レベルの定義は、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、もっと簡単に行うことができます。 この記事では、Cost Management のデータにアクセス許可を割り当てる方法について説明します。 アクセス許可の組み合わせが割り当てられると、ユーザーにはそのアクセス スコープと、Azure portal で選択したスコープに基づく Cost Management のデータが表示されます。
 
 ユーザーが選択したスコープは、データの統合とコスト情報へのアクセスの制御のために、Cost Management 全体を通して使用されます。 スコープを使用する場合、ユーザーはスコープの複数選択を行いません。 代わりに、子スコープがロール アップするよりも大きなスコープを選択してから、表示したい内容をフィルターで絞り込みます。 一部のユーザーは子スコープがロール アップする親スコープにアクセスすべきではないため、データの統合について理解しておくことが重要です。
 
-Azure のロールベースのアクセス制御を使用してコストと料金を表示するためにアクセスを割り当てる方法については、[Cost Management のアクセス制御](https://www.youtube.com/watch?v=_uQzQ9puPyM)に関するビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
+Azure のロールベースのアクセス制御 (Azure RBAC) を使用してコストと料金を表示するためにアクセスを割り当てる方法については、[Cost Management のアクセス制御](https://www.youtube.com/watch?v=_uQzQ9puPyM)に関するビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
 >[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
@@ -37,11 +37,11 @@ Azure EA サブスクリプションのコスト データを表示するには�
 | **スコープ** | **定義場所** | **データの表示に必要なアクセス許可** | **前提条件となる EA 設定** | **データの統合先** |
 | --- | --- | --- | --- | --- |
 | 課金アカウント<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | エンタープライズ管理者 | なし | マイクロソフト エンタープライズ契約のすべてのサブスクリプション |
-| 部署 | [https://ea.azure.com](https://ea.azure.com/) | 部門管理者 | **DA ビューの請求額**の有効化 | 部署にリンクされている、登録アカウントに属しているすべてのサブスクリプション |
-| 登録アカウント<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | アカウント所有者 | **AO ビューの請求額**の有効化 | 登録アカウントのすべてのサブスクリプション |
-| 管理グループ | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | 管理グループ下のすべてのサブスクリプション |
-| サブスクリプション | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | サブスクリプションに含まれているすべてのリソース/リソース グループ |
-| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | リソース グループに含まれるすべてのリソース |
+| 部署 | [https://ea.azure.com](https://ea.azure.com/) | 部門管理者 | **DA ビューの請求額** の有効化 | 部署にリンクされている、登録アカウントに属しているすべてのサブスクリプション |
+| 登録アカウント<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | アカウント所有者 | **AO ビューの請求額** の有効化 | 登録アカウントのすべてのサブスクリプション |
+| 管理グループ | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | 管理グループ下のすべてのサブスクリプション |
+| サブスクリプション | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | サブスクリプションに含まれているすべてのリソース/リソース グループ |
+| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | リソース グループに含まれるすべてのリソース |
 
 <sup>1</sup> 請求先アカウントも、"マイクロソフト エンタープライズ契約" または "登録" と呼ばれます。
 
@@ -71,11 +71,11 @@ Azure portal でオプションを有効にするには、次の手順に従い�
 1. **[設定]** の **[ポリシー]** メニュー項目を選択して、その設定を構成します。  
     ![請求金額の表示オプションを表示する課金スコープのポリシー](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
 
-ビューの請求額オプションを有効にすると、Azure portal で、ほとんどのスコープについてロールベースのアクセス制御 (RBAC) のアクセス許可の構成も必要になります。
+ビューの請求額オプションを有効にすると、Azure portal で、ほとんどのスコープについて Azure のロールベースのアクセス制御 (Azure RBAC) のアクセス許可の構成も必要になります。
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>EA ポータルでのコストへのアクセスを有効にする
 
-部署のスコープの場合、EA ポータルで **[DA ビューの請求額]** オプションを**有効化する**必要があります。 このオプションは、Azure portal または EA Portal で構成します。 それ以外のすべてのスコープでは、EA ポータルで **AO ビューの請求額**オプションを**有効化する**必要があります。
+部署のスコープの場合、EA ポータルで **[DA ビューの請求額]** オプションを **有効化する** 必要があります。 このオプションは、Azure portal または EA Portal で構成します。 それ以外のすべてのスコープでは、EA ポータルで **AO ビューの請求額** オプションを **有効化する** 必要があります。
 
 EA Portal でオプションを有効にするには、次の手順に従います。
 
@@ -84,7 +84,7 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 3. アクセスを許可するコスト管理のスコープで、請求額オプションを **[DA ビューの請求額]** と **[AO ビューの請求額]** のどちらかに設定します。  
     ![DA ビューと AO ビューの請求額オプションを示す [登録] タブ](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-ビューの請求額オプションを有効にすると、Azure portal で、ほとんどのスコープについてロールベースのアクセス制御 (RBAC) のアクセス許可の構成も必要になります。
+ビューの請求額オプションを有効にすると、Azure portal で、ほとんどのスコープについて Azure のロールベースのアクセス制御 (Azure RBAC) のアクセス許可の構成も必要になります。
 
 ## <a name="enterprise-administrator-role"></a>エンタープライズ管理者のロール
 
@@ -128,7 +128,7 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 2. 左側のウィンドウで、 **[管理]** を選択します。
 3. **[登録]** タブで、管理する登録を選択します。
 4. **[アカウント]** タブを選択し、 **[アカウントの追加]** を選択します。
-5. [アカウントの追加] ボックスで、アカウントが関連付けられている**部署**を選択するか、未割り当てのままにしておきます。
+5. [アカウントの追加] ボックスで、アカウントが関連付けられている **部署** を選択するか、未割り当てのままにしておきます。
 6. 認証の種類を選択し、アカウント名を入力します。
 7. ユーザーの電子メール アドレスを入力し、必要に応じてコスト センターを入力します。
 8. **[追加]** を選択してアカウントを作成します。  
@@ -182,9 +182,9 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 
 ## <a name="cross-tenant-authentication-issues"></a>テナント間の認証の問題
 
-現在、Azure Cost Management では、テナント間の認証のサポートが制限されています。 テナント間で認証しようとした場合、状況によっては、コスト分析で**アクセス拒否**エラーが表示される場合があります。 この問題は、別のテナントのサブスクリプションにロールベースのアクセス制御 (RBAC) を構成した後でコストのデータを表示しようとした場合に発生する可能性があります。
+現在、Azure Cost Management では、テナント間の認証のサポートが制限されています。 テナント間で認証しようとした場合、状況によっては、コスト分析で **アクセス拒否** エラーが表示される場合があります。 この問題は、別のテナントのサブスクリプションに Azure のロールベースのアクセス制御 (Azure RBAC) を構成した後でコストのデータを表示しようとした場合に発生する可能性があります。
 
-"*回避策は次のとおりです*": テナント間の RBAC を構成した後、1 時間待機します。 その後、コスト分析でコストを表示するか、両方のテナントのユーザーに Cost Management へのアクセス権を付与します。  
+"*回避策は次のとおりです*": テナント間の Azure RBAC を構成した後、1 時間待機します。 その後、コスト分析でコストを表示するか、両方のテナントのユーザーに Cost Management へのアクセス権を付与します。  
 
 
 ## <a name="next-steps"></a>次のステップ

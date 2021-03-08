@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して OData ソースからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 90cc4e3f9915db424cec89cfc764771b5be785e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845767"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389724"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,7 +54,8 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 |:--- |:--- |:--- |
 | type | **type** プロパティは **OData** に設定する必要があります。 |はい |
 | url | OData サービスのルート URL。 |はい |
-| authenticationType | OData ソースに接続するために使用される認証の種類。 使用可能な値は、 **[匿名]** 、 **[基本]** 、 **[Windows]** 、および **[AadServicePrincipal]** です。 ユーザー ベースの OAuth はサポートされていません。 | はい |
+| authenticationType | OData ソースに接続するために使用される認証の種類。 使用可能な値は、 **[匿名]** 、 **[基本]** 、 **[Windows]** 、および **[AadServicePrincipal]** です。 ユーザー ベースの OAuth はサポートされていません。 `authHeader` プロパティで認証ヘッダーを追加で構成することもできます。| はい |
+| authHeaders | 追加の認証用 HTTP 要求ヘッダー。<br/> たとえば、API キー認証を使うには、認証の種類として "匿名" を選択し、ヘッダーに API キーを指定します。 | いいえ |
 | userName | 基本認証または Windows 認証を使用する場合は、**userName** を指定します。 | いいえ |
 | password | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
 | servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | いいえ |
@@ -69,7 +65,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 | servicePrincipalEmbeddedCertPassword | 証明書がパスワードで保護されている場合は、証明書のパスワードを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。  | いいえ|
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | いいえ |
 | aadResourceId | 認可を要求する AAD リソースを指定します。| いいえ |
-| azureCloudType | サービス プリンシパル認証の場合は、ご自分の AAD アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| azureCloudType | サービス プリンシパル認証の場合は、AAD アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例 1: 匿名認証を使用する**
@@ -193,6 +189,31 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
     "connectVia": {
         "referenceName": "<name of Integration Runtime>",
         "type": "IntegrationRuntimeReference"
+    }
+}
+```
+
+**例 6:API キー認証を使用する**
+
+```json
+{
+    "name": "ODataLinkedService",
+    "properties": {
+        "type": "OData",
+        "typeProperties": {
+            "url": "<endpoint of OData source>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "APIKey": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
     }
 }
 ```

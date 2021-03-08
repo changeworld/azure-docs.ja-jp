@@ -2,24 +2,24 @@
 title: Azure Portal を使用してリソースをデプロイする
 description: Azure Portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/22/2020
+ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255264"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028677"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure Portal でリソースをデプロイする
 
-[Azure Portal](https://portal.azure.com) と [Azure Resource Manager (ARM) のテンプレート](overview.md) を使用して、Azure にリソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure Portal (Azure Portal を使用した Azure リソースの管理)](../management/manage-resources-portal.md)」を参照してください。
+[Azure Portal](https://portal.azure.com) と [Azure Resource Manager テンプレート (ARM テンプレート)](overview.md) を使用して、Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../management/manage-resources-portal.md)」を参照してください。
 
 Azure Portal を使用して Azure リソースをデプロイするには、通常、次の 2 つの手順が必要です。
 
 - リソース グループを作成します。
 - リソースをリソース グループにデプロイします。
 
-さらに、ARM テンプレートをデプロイして Azure リソースを作成することもできます。
+また、カスタマイズされた ARM テンプレートを作成して、Azure リソースをデプロイすることもできます。
 
 このトピックでは、両方の方法を説明します。
 
@@ -61,7 +61,7 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
 
    ![リソース グループの作成](./media/deploy-portal/select-existing-group.png)
 
-   また、リソースをデプロイするときにリソース グループを作成することもできます。 **[新規作成]** を選択して、リソース グループに名前を付けます。
+   リソースをデプロイするときにリソース グループを作成することができます。 **[新規作成]** を選択して、リソース グループに名前を付けます。
 
 1. デプロイが開始されます。 デプロイには数分かかることがあります。 一部のリソースは他のリソースよりも時間がかかります。 デプロイが完了すると、通知が表示されます。 **[リソースに移動]** を選択して開きます
 
@@ -71,6 +71,8 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
 
    ![リソースの追加](./media/deploy-portal/add-resource.png)
 
+表示されませんでしたが、選択したリソースをデプロイするときに、ポータルで ARM テンプレートが使用されました。 デプロイ履歴からテンプレートを見つけることができます。 詳細については、「[デプロイ後にテンプレートをエクスポートする](export-template-portal.md#export-template-after-deployment)」を参照してください。
+
 ## <a name="deploy-resources-from-custom-template"></a>カスタム テンプレートからリソースをデプロイする
 
 デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレート作成の詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
@@ -78,16 +80,16 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
 > [!NOTE]
 > ポータル インターフェイスは、[Key Vault からのシークレット](key-vault-parameter.md)の参照をサポートしません。 代わりに、[PowerShell](deploy-powershell.md) または [Azure CLI](deploy-cli.md) を使用して、テンプレートをローカルにデプロイするか、外部 URI からデプロイします。
 
-1. カスタマイズされたテンプレートをポータルからデプロイするには、 **[リソースの作成]** を選択し、**テンプレート**を探します。 次に **[テンプレートのデプロイ]** を選択します。
+1. カスタマイズされたテンプレートをポータルからデプロイするには、 **[リソースの作成]** を選択し、**テンプレート** を探します。 次に **[テンプレートのデプロイ]** を選択します。
 
    ![テンプレートのデプロイの検索](./media/deploy-portal/search-template.png)
 
 1. **［作成］** を選択します
 1. テンプレートを作成するためのいくつかのオプションが表示されます。
 
-    - **エディターで独自のテンプレートを作成する**:ポータル テンプレート エディターを使用してテンプレートを作成します。  エディターには、リソース テンプレート スキーマを追加する機能があります。
-    - **一般的なテンプレート**:Linux 仮想マシン、Windows 仮想マシン、Web アプリケーション、および Azure SQL Database のデータベースを作成するための 4 つの一般的なテンプレートがあります。
-    - **GitHub クイックスタート テンプレートを読み込む**: 既存の[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)を使用します。
+    - **エディターで独自のテンプレートを作成する**:ポータル テンプレート エディターで独自のテンプレートを作成します。
+    - **一般的なテンプレート**:一般的なソリューションから選択します。
+    - **GitHub クイックスタート テンプレートを読み込む**:[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)から選択します。
 
    ![オプションの表示](./media/deploy-portal/see-options.png)
 
@@ -100,11 +102,11 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
     - **テンプレートの選択**: テンプレートをデプロイします。
     - **テンプレートの編集**: デプロイする前にクイックスタート テンプレートを編集します。
 
-1. **[テンプレートの編集]** を選択してポータル テンプレート エディターを探索します。 テンプレートがエディターに読み込まれます。 **storageAccountType** と **location** という 2 つのパラメーターがあることに注目してください。
+1. **[テンプレートの編集]** を選択してポータル テンプレート エディターを探索します。 テンプレートがエディターに読み込まれます。 `storageAccountType` と `location` という 2 つのパラメーターがあることに注目してください。
 
    ![テンプレートの作成](./media/deploy-portal/show-json.png)
 
-1. テンプレートに軽微な変更を加えます。 たとえば、**storageAccountName** 変数を次のように更新します。
+1. テンプレートに軽微な変更を加えます。 たとえば、`storageAccountName` 変数を次のように更新します。
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"

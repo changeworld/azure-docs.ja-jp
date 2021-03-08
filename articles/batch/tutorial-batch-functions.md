@@ -1,21 +1,29 @@
 ---
-title: Azure Functions を使用して Batch ジョブをトリガーする
+title: チュートリアル - Azure Functions を使用して Batch ジョブをトリガーする
 description: チュートリアル - Storage Blob に追加されたときに、スキャン済みのドキュメントに OCR を適用する
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930096"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106384"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>チュートリアル:Azure Functions を使用して Batch ジョブをトリガーする
 
-このチュートリアルでは、Azure Functions を使用して Batch ジョブをトリガーする方法を学習します。 Azure Storage Blob コンテナーに追加されたドキュメントに Azure Batch を介して光学式文字認識 (OCR) を適用する例を見ていきます。 OCR 処理を効率化するために、BLOB コンテナーにファイルが追加されるたびに Batch OCR ジョブを実行する Azure 関数を構成します。
+このチュートリアルでは、[Azure Functions](../azure-functions/functions-overview.md) を使用して Batch ジョブをトリガーする方法について説明します。 Azure Storage Blob コンテナーに追加されたドキュメントに Azure Batch を介して光学式文字認識 (OCR) を適用する例を見ていきます。 OCR 処理を効率化するために、BLOB コンテナーにファイルが追加されるたびに Batch OCR ジョブを実行する Azure 関数を構成します。 学習内容は次のとおりです。
+
+> [!div class="checklist"]
+> * Batch Explorer を使用して、プールおよびジョブを作成する
+> * Storage Explorer を使用して、BLOB コンテナーと Shared Access Signature (SAS) を作成する
+> * BLOB によってトリガーされる Azure 関数を作成する
+> * Storage に入力ファイルをアップロードする
+> * タスクの実行を監視する
+> * 出力ファイルを取得する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +52,7 @@ ms.locfileid: "88930096"
     1. **[OK]** を選択します。
 ### <a name="create-a-job"></a>ジョブの作成
 
-1. 左側のバーにある **[Jobs]\(ジョブ\)** 、検索フォームの上にある **[Add]\(追加\)** ボタンの順に選択して、プール上にジョブを作成します。 
+1. 左側のバーにある **[Jobs]\(ジョブ\)**、検索フォームの上にある **[Add]\(追加\)** ボタンの順に選択して、プール上にジョブを作成します。 
     1. ID と表示名を選択します。 この例では、`ocr-job` を使用します。
     1. プールを `ocr-pool` またはご自分のプールに対して選択した名前に設定します。
     1. **[OK]** を選択します。
@@ -97,9 +105,13 @@ Storage Explorer からご使用のローカル マシンに出力ファイル�
 > [!TIP]
 > ダウンロードしたファイルは、PDF リーダーで開くと、検索できます。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+ジョブがスケジュールされていない場合でも、ノードの実行中はプールに対して料金が発生します。 プールは不要になったら、削除してください。 アカウント ビューで、**[プール]** およびプールの名前を選択します。 次に、 **[削除]** を選択します。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、出力ファイルはストレージ アカウントに残ります。 Batch アカウントとストレージ アカウントも、不要になったら削除できます。
+
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルで学習した内容は次のとおりです。 
+このチュートリアルでは、次の作業を行う方法を学びました。
 
 > [!div class="checklist"]
 > * Batch Explorer を使用して、プールおよびジョブを作成する
@@ -109,6 +121,10 @@ Storage Explorer からご使用のローカル マシンに出力ファイル�
 > * タスクの実行を監視する
 > * 出力ファイルを取得する
 
-* .NET API を使用して Batch ワークロードのスケジュール設定と処理を行う他の例については、[GitHub のサンプル](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)を参照してください。 
 
-* Batch ワークロードの実行に使用できる Azure Functions の他のトリガーについては、[Azure Functions のドキュメント](../azure-functions/functions-triggers-bindings.md)を参照してください。
+Batch Explorer で利用できるレンダリング アプリケーションを **[ギャラリー]** セクションで探して次に進みます。 アプリケーションごとにいくつかのテンプレートが用意され、今後も拡充されていく予定です。 たとえば Blender については、単一の画像を複数のタイルに分割することで 1 つの画像を構成する各部分を並列にレンダリングできるテンプレートが存在します。
+
+.NET API を使用して Batch ワークロードのスケジュール設定と処理を行う他の例については、GitHub のサンプルを参照してください。
+
+> [!div class="nextstepaction"]
+> [Batch C# のサンプル](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

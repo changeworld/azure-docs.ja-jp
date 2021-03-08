@@ -3,12 +3,12 @@ title: Azure Site Recovery でのフェールオーバーとフェールバッ�
 description: Azure Site Recovery でのフェールオーバーとフェールバックについて説明します。
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089534"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070746"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>オンプレミスのディザスター リカバリーのフェールオーバーとフェールバックについて
 
@@ -45,10 +45,10 @@ RDP または SSH を使用してフェールオーバー後に作成された A
 
 **[フェールオーバー]** | **場所** | **アクション**
 --- | --- | ---
-**Azure VM (Windows)** | フェールオーバー前のオンプレミスのマシン上 | **インターネット経由でのアクセス**:RDP を有効にします。 TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、 **[Windows ファイアウォール]**  >  **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> **サイト間 VPN 経由でのアクセス**:マシンで RDP を有効にします。 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** で、**ドメインとプライベート** ネットワークで RDP の使用が許可されていることを確認します。<br/><br/>  オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細については、こちらを参照してください](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを開始する際は、実行待ちの Windows Update が VM にないことを確認してください。 フェールオーバーの実行時に Windows Update が開始された場合、更新が完了するまで VM にログオンできなくなります。
-**Windows で実行中の Azure VM** | フェールオーバー後の Azure VM 上 |  VM の[パブリック IP アドレスを追加](https://aka.ms/addpublicip)します。<br/><br/> フェールオーバーされる VM (およびその接続先となる Azure サブネット) は、そのネットワーク セキュリティ グループの規則で、RDP ポートへの受信接続を許可する必要があります。<br/><br/> **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
+**Windows で実行中の Azure VM** | フェールオーバー前のオンプレミスのマシン上 | **インターネット経由でのアクセス**:RDP を有効にします。 TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、 **[Windows ファイアウォール]**  >  **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> **サイト間 VPN 経由でのアクセス**:マシンで RDP を有効にします。 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** で、**ドメインとプライベート** ネットワークで RDP の使用が許可されていることを確認します。<br/><br/>  オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細については、こちらを参照してください](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを開始する際は、実行待ちの Windows Update が VM にないことを確認してください。 フェールオーバーの実行時に Windows Update が開始された場合、更新が完了するまで VM にログオンできなくなります。
+**Windows で実行中の Azure VM** | フェールオーバー後の Azure VM 上 |  VM の[パブリック IP アドレスを追加](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)します。<br/><br/> フェールオーバーされる VM (およびその接続先となる Azure サブネット) は、そのネットワーク セキュリティ グループの規則で、RDP ポートへの受信接続を許可する必要があります。<br/><br/> **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
 **Linux で実行中の Azure VM** | フェールオーバー前のオンプレミスのマシン上 | VM 上の Secure Shell サービスがシステム起動時に自動的に開始されるよう設定されていることを確認します。<br/><br/> ファイアウォール規則で SSH 接続が許可されていることを確認します。
-**Linux で実行中の Azure VM** | フェールオーバー後の Azure VM 上 | フェールオーバーされた VM (および接続先の Azure サブネット) のネットワーク セキュリティ グループの規則で、SSH ポートへの着信接続を許可する必要があります。<br/><br/> VM の[パブリック IP アドレスを追加](https://aka.ms/addpublicip)します。<br/><br/> VM のスクリーンショットを得るために、 **[ブート診断]** をオンにします。<br/><br/>
+**Linux で実行中の Azure VM** | フェールオーバー後の Azure VM 上 | フェールオーバーされた VM (および接続先の Azure サブネット) のネットワーク セキュリティ グループの規則で、SSH ポートへの着信接続を許可する必要があります。<br/><br/> VM の[パブリック IP アドレスを追加](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)します。<br/><br/> VM のスクリーンショットを得るために、 **[ブート診断]** をオンにします。<br/><br/>
 
 ## <a name="types-of-failover"></a>フェールオーバーの種類
 
@@ -99,7 +99,7 @@ Azure へのフェールオーバー後、レプリケートされた Azure VM �
 フェールバックは次のように機能します。
 
 - フェールバックするには、VM に少なくとも 1 つの復旧ポイントが必要です。 復旧計画では、計画内のすべての VM に少なくとも 1 つの復旧ポイントが必要です。
-- フェールバックには**最新の**復旧ポイントを使用することをお勧めします (これはクラッシュ整合ポイントです)。
+- フェールバックには **最新の** 復旧ポイントを使用することをお勧めします (これはクラッシュ整合ポイントです)。
     - アプリ整合性復旧ポイントのオプションがあります。 この場合、1 つの VM によって、利用可能な最新のアプリ整合性復旧ポイントに復旧されます。 レプリケーション グループを含む復旧計画の場合、それぞれのレプリケーション グループが、その共通の使用可能な復旧ポイントに復旧されます。
     - アプリ整合性の復旧ポイントは時間差を伴うことがあり、データの損失につながる場合があります。
 - Azure からオンプレミスのサイトへのフェールオーバー中に、Site Recovery によって Azure VM がシャットダウンされます。 フェールオーバーをコミットすると、Azure でフェールバックされた Azure VM が Site Recovery によって削除されます。
@@ -164,4 +164,3 @@ Azure VM をオンプレミスに再保護するときに、元の場所にフ�
 - [復旧計画の VM](site-recovery-failover.md) をフェールオーバーする。
 - VMware の再保護とフェールバックを[準備](vmware-azure-failback.md)する。
 - [Hyper-V VM](hyper-v-azure-failback.md) をフェールバックする。
-

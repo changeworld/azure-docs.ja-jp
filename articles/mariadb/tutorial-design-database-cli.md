@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:Azure Database for MariaDB を設計する - Azure CLI
 description: このチュートリアルでは、コマンド ラインから Azure CLI を使用して、Azure Database for MariaDB サーバーとデータベースを作成および管理する方法について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f08f9065b2a7361294a2f6257c85be772d0f7119
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e40a0a63069b09ddcc3e7014e62b2f1cb9806bfd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496085"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664487"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MariaDB を設計する
 
@@ -30,11 +30,9 @@ Azure Database for MariaDB は、Microsoft クラウドにおける、MariaDB �
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-このチュートリアルのコード ブロックを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに [Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+- この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。 
 
 複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
 ```azurecli-interactive
@@ -42,7 +40,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
-[az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) コマンドで [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[az group create](/cli/azure/group#az-group-create) コマンドで [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、`westus` の場所に `myresourcegroup` という名前のリソース グループを作成します。
 
@@ -177,7 +175,7 @@ SELECT * FROM inventory;
 - 復元ポイント: サーバーが変更される前の日時を選択します。 ソース データベースの最も古いバックアップと同じか、それよりも前の値にする必要があります。
 - 対象サーバー: 復元先の新しいサーバー名を指定します。
 - ソース サーバー: 復元するサーバーの名前を指定します。
-- 場所:リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
+- 場所: リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -185,9 +183,9 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 `az mariadb server restore` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選びます。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、ローカルなタイムゾーン (例: `2017-04-13T05:59:00-08:00`) または UTC Zulu 形式 (例: `2017-04-13T13:59:00Z`) を使うことができます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |

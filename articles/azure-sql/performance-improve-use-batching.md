@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343831"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792601"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>バッチ処理を使用して Azure SQL Database アプリケーションと Azure SQL Managed Instance アプリケーションのパフォーマンスを強化する方法
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Azure SQL Database または Azure SQL Managed Instance を使用する利点の
 ### <a name="note-about-timing-results-in-this-article"></a>この記事に記載されている時間測定の結果について
 
 > [!NOTE]
-> 結果はベンチマークではなく、**相対的なパフォーマンス**を示すことを意図したものです。 計時結果は、10 回以上のテスト ランの平均値に基づいています。 空のテーブルへの挿入操作を計測対象としています。 これらのテストは、V12 未満で計測しました。V12 データベースで新しい [DTU サービス レベル](database/service-tiers-dtu.md)または[仮想コア サービス レベル](database/service-tiers-vcore.md)を使って計測した場合のスループットとは必ずしも対応しません。 それでもバッチ処理手法の相対的なメリットに大きな違いはないと考えられます。
+> 結果はベンチマークではなく、 **相対的なパフォーマンス** を示すことを意図したものです。 計時結果は、10 回以上のテスト ランの平均値に基づいています。 空のテーブルへの挿入操作を計測対象としています。 これらのテストは、V12 未満で計測しました。V12 データベースで新しい [DTU サービス レベル](database/service-tiers-dtu.md)または[仮想コア サービス レベル](database/service-tiers-vcore.md)を使って計測した場合のスループットとは必ずしも対応しません。 それでもバッチ処理手法の相対的なメリットに大きな違いはないと考えられます。
 
 ### <a name="transactions"></a>トランザクション
 
@@ -93,11 +93,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-実際には、両方の例にトランザクションが使われています。 1 つ目の例では、個々の呼び出しがそれぞれ暗黙的なトランザクションとなっています。 2 つ目の例では、トランザクションを明示的に指定して、その中にすべての呼び出しを投入しています。 [write-ahead トランザクション ログ](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)のドキュメントによれば、トランザクションがコミットされたときにログ レコードがディスクにフラッシュされます。 したがって、より多くの呼び出しをトランザクションに含めることで、その分、トランザクションがコミットされるまでの間、トランザクション ログへの書き込みを先送りすることができます。 実質的に、サーバーのトランザクション ログに対する書き込みに関して、バッチ処理を有効にしたことになります。
+実際には、両方の例にトランザクションが使われています。 1 つ目の例では、個々の呼び出しがそれぞれ暗黙的なトランザクションとなっています。 2 つ目の例では、トランザクションを明示的に指定して、その中にすべての呼び出しを投入しています。 [write-ahead トランザクション ログ](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)のドキュメントによれば、トランザクションがコミットされたときにログ レコードがディスクにフラッシュされます。 したがって、より多くの呼び出しをトランザクションに含めることで、その分、トランザクションがコミットされるまでの間、トランザクション ログへの書き込みを先送りすることができます。 実質的に、サーバーのトランザクション ログに対する書き込みに関して、バッチ処理を有効にしたことになります。
 
 以下の表は、いくつかのアドホック テストの結果です。 同じ連続挿入の実行結果をトランザクションを使った場合と使わなかった場合とで比較しています。 総合的な評価を行うために、テストは 2 種類行いました。1 つ目のテストは、ノート PC からリモートで Microsoft Azure 内のデータベースに対して実行しています。 2 つ目のテストは、同じ Microsoft Azure データセンター (米国西部) に存在するクラウド サービスとデータベースから実行しています。 以下の表は、トランザクションを使った場合と使わなかった場合の連続挿入にかかる時間をミリ秒単位で示しています。
 
-**オンプレミスから Azure へ**:
+**オンプレミスから Azure へ** :
 
 | 操作 | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 前掲のテスト結果によれば、単一の操作をトランザクションに投入した場合、実際にはパフォーマンスが低下しています。 しかし、1 つのトランザクションに含める操作の数を増やすにつれ、パフォーマンスの向上が顕著に見られるようになりました。 すべての操作を同じ Microsoft Azure データセンター内で実行したときにも、パフォーマンスの違いが顕著に表れています。 Microsoft Azure データセンターの外部から Azure SQL Database または Azure SQL Managed を使用した場合に生じる待機時間の増加から、トランザクションを使用することで得られるパフォーマンスの向上が見えにくくなっています。
 
-トランザクションを使うことによってパフォーマンスは向上しますが、それでも [トランザクションと接続のベスト プラクティス](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))には従ってください。 トランザクションはできるだけ短く保ち、作業が完了したらデータベース接続を閉じるようにしてください。 前の例のように using ステートメントを使うことで、後続のコード ブロックの完了時に接続が確実にクローズされます。
+トランザクションを使うことによってパフォーマンスは向上しますが、それでも [トランザクションと接続のベスト プラクティス](/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))には従ってください。 トランザクションはできるだけ短く保ち、作業が完了したらデータベース接続を閉じるようにしてください。 前の例のように using ステートメントを使うことで、後続のコード ブロックの完了時に接続が確実にクローズされます。
 
 先ほどの例からわかるように、ローカル トランザクションは、2 つの行で任意の ADO.NET コードに追加することができます。 挿入、更新、削除の操作を連続して行うコードは、トランザクションを導入することで手軽にパフォーマンスを高めることができます。 しかし処理速度を最大限に高めるために、クライアント側のバッチ処理 (テーブル値パラメーターなど) を活かしたコードの改善を検討してください。
 
@@ -128,7 +128,7 @@ ADO.NET におけるトランザクションの詳細については、 [ADO.NET
 
 ### <a name="table-valued-parameters"></a>テーブル値パラメーター
 
-テーブル値パラメーターは、Transact-SQL のステートメント、ストアド プロシージャ、関数の中で、ユーザー定義テーブル型をパラメーターとして使用する際に使用します。 これはクライアント側のバッチ処理手法で、テーブル値パラメーターに複数行のデータを含めて送信することができます。 テーブル値パラメーターを使用するにはまず、テーブル型を定義します。 次の Transact-SQL ステートメントは、 **MyTableType**という名前のテーブル型を作成しています。
+テーブル値パラメーターは、Transact-SQL のステートメント、ストアド プロシージャ、関数の中で、ユーザー定義テーブル型をパラメーターとして使用する際に使用します。 これはクライアント側のバッチ処理手法で、テーブル値パラメーターに複数行のデータを含めて送信することができます。 テーブル値パラメーターを使用するにはまず、テーブル型を定義します。 次の Transact-SQL ステートメントは、 **MyTableType** という名前のテーブル型を作成しています。
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -289,11 +289,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 ### <a name="dataadapter"></a>DataAdapter
 
-**DataAdapter** クラスを使用すると、**DataSet** オブジェクトに変更を加えたうえで、その変更を各種の操作 (INSERT、UPDATE、DELETE) として送信することができます。 この方法で **DataAdapter** を使用する場合、それぞれの操作について個別に呼び出しが行われることに注意してください。 パフォーマンスを強化するためには、 **UpdateBatchSize** プロパティを使用して、一回のバッチで処理する操作の数を指定します。 詳細については、 [DataAdapter を使用したバッチ操作の実行](/dotnet/framework/data/adonet/performing-batch-operations-using-dataadapters)に関するページを参照してください。
+**DataAdapter** クラスを使用すると、 **DataSet** オブジェクトに変更を加えたうえで、その変更を各種の操作 (INSERT、UPDATE、DELETE) として送信することができます。 この方法で **DataAdapter** を使用する場合、それぞれの操作について個別に呼び出しが行われることに注意してください。 パフォーマンスを強化するためには、 **UpdateBatchSize** プロパティを使用して、一回のバッチで処理する操作の数を指定します。 詳細については、 [DataAdapter を使用したバッチ操作の実行](/dotnet/framework/data/adonet/performing-batch-operations-using-dataadapters)に関するページを参照してください。
 
-### <a name="entity-framework"></a>Entity framework
+### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework 6](https://github.com/dotnet/ef6) がバッチ処理対応になりました。
+[Entity Framework Core](/ef/efcore-and-ef6/#saving-data) ではバッチ処理がサポートされます。
 
 ### <a name="xml"></a>XML
 
@@ -380,7 +380,7 @@ Azure SQL Database アプリケーションと Azure SQL Managed Instance アプ
 
 たとえば、個々のユーザーのナビゲーション履歴を追跡する Web アプリケーションがあるとします。 ページ要求があるたびに、アプリケーションがデータベースを呼び出し、ユーザーのページ ビューを記録します。 しかし、ユーザーのナビゲーション アクティビティをバッファリングし、そのデータをまとめてデータベースに送れば、パフォーマンスとスケーラビリティを高めることができます。 データベースの更新は、経過時間やバッファー サイズ、またはその両方によってトリガーすることができます。 たとえば、20 秒経過したときや、バッファーに格納された項目数が 1,000 個に達したときにバッチが処理されるようなルールを指定することができます。
 
-以下のコード例は、監視クラスによって生成され、バッファーに格納されたイベントを [Reactive Extensions (Rx)](https://docs.microsoft.com/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) を使って処理しています。 バッファーがいっぱいになるか指定した時間が経過したら、テーブル値パラメーターを使って、ユーザー データのバッチをデータベースに送信します。
+以下のコード例は、監視クラスによって生成され、バッファーに格納されたイベントを [Reactive Extensions (Rx)](/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) を使って処理しています。 バッファーがいっぱいになるか指定した時間が経過したら、テーブル値パラメーターを使って、ユーザー データのバッチをデータベースに送信します。
 
 このユーザー ナビゲーションの詳細をモデル化したものが次の NavHistoryData クラスです。 ユーザー ID、アクセス URL、アクセス時刻など基本的な情報は、このクラスによって保持されます。
 

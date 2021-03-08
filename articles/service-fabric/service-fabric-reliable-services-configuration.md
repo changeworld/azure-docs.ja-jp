@@ -7,11 +7,11 @@ ms.date: 10/02/2017
 ms.author: sumukhs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021971"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023586"
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
 Reliable Services の構成設定には 2 つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう 1 つは特定の Reliable Services に固有の設定です。
@@ -28,7 +28,7 @@ Reliable Services のグローバル構成は、クラスターのクラスタ�
 | SharedLogPath |完全修飾パス名 |"" |クラスター内のすべてのノードの Reliable Services のうち、サービス固有の構成で SharedLogPath が指定されていないすべてのサービスによって使用される共有ログ ファイルの完全修飾パスを指定します。 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
 | SharedLogSizeInMB |メガバイト |8192 |共有ログ用に静的に割り当てるディスク領域の MB 数を指定します。 2048 以上の値を指定する必要があります。 |
 
-次の例は、Azure ARM またはオンプレミスの JSON テンプレートで、ステートフル サービスの信頼性の高いコレクションを戻すために作成される共有トランザクション ログを変更する方法を示しています。
+Azure ARM またはオンプレミスの JSON テンプレートでは、次の例は、ステートフル サービスの信頼性の高いコレクションを戻すために作成される共有トランザクション ログを変更する方法を示しています。
 
 ```json
 "fabricSettings": [{

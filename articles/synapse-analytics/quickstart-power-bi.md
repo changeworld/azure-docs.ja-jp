@@ -5,27 +5,27 @@ services: synapse-analytics
 author: jocaplan
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
-ms.date: 04/29/2020
+ms.subservice: business-intelligence
+ms.date: 10/27/2020
 ms.author: jocaplan
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f9ae7b74c17bb330c2c7aa99903c62d4701f0a52
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.reviewer: jrasnick
+ms.openlocfilehash: 9c63e5e24495f373f288d2789780a6c671a7cc24
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274188"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218401"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>クイック スタート:Power BI ワークスペースを Synapse ワークスペースにリンクする
 
-このクイックスタートでは、Power BI ワークスペースを Synapse Analytics ワークスペースに接続して、Synapse Studio (プレビュー) から新しい Power BI レポートとデータセットを作成する方法について説明します。
+このクイックスタートでは、Power BI ワークスペースを Azure Synapse Analytics ワークスペースに接続して、Synapse Studio から新しい Power BI レポートとデータセットを作成する方法について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、[開始する前に無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Azure Synapse ワークスペースと、関連するストレージ アカウントを作成します](quickstart-create-workspace.md)
-- [Power BI Professional または Premium ワークスペース](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)
+- [Power BI Professional または Premium ワークスペース](/power-bi/service-create-the-new-workspaces)
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>Power BI ワークスペースを Synapse ワークスペースにリンクする
 

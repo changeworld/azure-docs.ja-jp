@@ -3,24 +3,24 @@ title: Windows Virtual Desktop ホスト プール サービスの更新プロ�
 description: 運用環境に更新プログラムを展開する前にサービスの更新プログラムを監視する検証ホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8eac40ad958a10b8c853304ee2be8b2dc27af1a2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008714"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563247"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>チュートリアル:サービスの更新プログラムを検証するためのホスト プールを作成する
 
 >[!IMPORTANT]
 >このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[この記事](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)を参照してください。
 
-ホスト プールは、Windows Virtual Desktop テナント環境内にある 1 つまたは複数の同一の仮想マシンをコレクションとしてまとめたものです。 ホスト プールを運用環境にデプロイする前に、検証ホスト プールを作成することを強くお勧めします。 更新プログラムは最初に検証ホスト プールに適用されるので、運用環境に展開する前にサービスの更新プログラムを監視できます。 検証ホスト プールがない場合、運用環境でユーザーにダウンタイムをもたらす可能性のあるエラーを招く変更を検出できないことがあります。
+ホスト プールは、Windows Virtual Desktop 環境内にある 1 つまたは複数の同一の仮想マシンをまとめたものです。 サービスの更新プログラムを先に適用する検証ホスト プールを作成することを強くお勧めします。 サービスの更新プログラムを監視したうえで、標準の (検証用ではない) 環境に適用することができます。 検証ホスト プールがない場合、標準環境でユーザーにダウンタイムをもたらす可能性のあるエラーを招く変更を検出できないことがあります。
 
-アプリで最新の更新プログラムを確実に処理できるようにするには、検証ホスト プールを運用環境のホスト プールとできるだけ類似したものにする必要があります。 ユーザーは、運用環境のホスト プールに接続する場合と同じくらい頻繁に、検証ホスト プールに接続する必要があります。 ホスト プールでのテストを自動化している場合は、検証ホスト プールでの自動テストも含める必要があります。
+アプリで最新の更新プログラムを確実に処理できるようにするには、検証ホスト プールを非検証環境のホスト プールとできるだけ類似したものにする必要があります。 ユーザーは、標準環境のホスト プールに接続する場合と同じくらい頻繁に、検証ホスト プールに接続する必要があります。 ホスト プールでのテストを自動化している場合は、検証ホスト プールでの自動テストも含める必要があります。
 
 [診断機能](diagnostics-role-service.md)または [Windows Virtual Desktop のトラブルシューティングの記事](troubleshoot-set-up-overview.md)を使用して、検証ホスト プールでの問題をデバッグすることができます。
 
@@ -66,6 +66,20 @@ Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | 
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>Azure portal を使用して検証環境を有効にする
+
+また、Azure portal を使用して、検証環境を有効にすることもできます。
+
+Azure portal を使用して検証ホスト プールを構成するには、次のようにします。
+
+1. Azure Portal ( <https://portal.azure.com> ) にサインインします。
+2. **[Windows Virtual Desktop]** を検索して選択します。
+3. Windows Virtual Desktop のページで、 **[ホスト プール]** を選択します。
+4. 編集するホスト プールの名前を選択します。
+5. **[プロパティ]** を選択します。
+6. 検証環境を有効にするには、検証環境フィールドで **[はい]** を選択します。
+7. **[保存]** を選択します。 これにより、新しい設定が適用されます。
 
 ## <a name="update-schedule"></a>更新スケジュール
 

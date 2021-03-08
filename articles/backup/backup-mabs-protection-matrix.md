@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 description: この記事では、Azure Backup Server によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示したサポート マトリックスを示します。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70d8b8cd26a40b0c7ec8b538bcb702d281f829e6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 2c7caad1d377070d4d4ac8436c1d8c08e786dc44
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826839"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986838"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 
@@ -57,7 +57,7 @@ MABS v3 UR1 には次のマトリックスを使用します。
 
 | **[ワークロード]** | **Version**                               | **Azure Backup Server のインストール**                      | **サポートされる Azure Backup Server** | **保護と回復**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Hyper-V または VMware ゲストとして実行されている Linux | 物理サーバー、オンプレミス Hyper-V 仮想マシン、VMWare での Windows VM | V3 UR1                             | Hyper-V は、Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 で実行されている必要があります。 保護:仮想マシン全体   <br><br>   回復: 仮想マシン全体   <br><br>    ファイル整合性のあるスナップショットのみがサポートされます。    <br><br>   サポートされる Linux のディストリビューションとバージョンの完全なリストについては、[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)に関するページを参照してください。 |
+| Linux        | [Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) または [VMware](backup-azure-backup-server-vmware.md) のゲストとして実行されている Linux | 物理サーバー、オンプレミス Hyper-V 仮想マシン、VMWare での Windows VM | V3 UR1                             | Hyper-V は、Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 で実行されている必要があります。 保護:仮想マシン全体   <br><br>   回復: 仮想マシン全体   <br><br>    ファイル整合性のあるスナップショットのみがサポートされます。    <br><br>   サポートされる Linux のディストリビューションとバージョンの完全なリストについては、[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)に関する記事を参照してください。 |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
 
@@ -65,11 +65,17 @@ MABS v3 UR1 には次のマトリックスを使用します。
 
 パブリック ピアリングを使用して、次のドメインまたはアドレスへのアクセスを確保します。
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP アドレス
+  * 20.190.128.0/18
+  * 40.126.0.0/18
+
 
 Microsoft ピアリングの使用時には、サービス、リージョン、関連するコミュニティについて以下の値を選択します。
 

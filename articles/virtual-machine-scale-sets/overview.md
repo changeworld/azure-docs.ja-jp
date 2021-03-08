@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 76d3bc1e1736e648316bcd81bf8897d1d2f272a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648668"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672585"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>仮想マシン スケール セットとは
 Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 仮想マシン スケール セットを使用すると、コンピューティング、ビッグ データ、コンテナー ワークロードなどの分野で大規模なサービスを構築できます。
@@ -57,13 +57,13 @@ Azure Virtual Machine Scale Sets は、多数の VM で実行されるアプリ�
 
 ## <a name="how-to-monitor-your-scale-sets"></a>スケール セットを監視する方法
 
-シンプルなオンボーディング プロセスを備え、スケール セット内の VM から CPU、メモリ、ディスク、ネットワークの重要なパフォーマンス カウンターを自動的に収集する [Azure Monitor for VMs](../azure-monitor/insights/vminsights-overview.md) を使用します。 他にもさまざまな監視機能や定義済みの視覚化機能が備わっているため、スケール セットの可用性とパフォーマンスを重点的に監視することができます。
+シンプルなオンボーディング プロセスを備え、スケール セット内の VM から CPU、メモリ、ディスク、ネットワークの重要なパフォーマンス カウンターを自動的に収集する [Azure Monitor for VMs](../azure-monitor/vm/vminsights-overview.md) を使用します。 他にもさまざまな監視機能や定義済みの視覚化機能が備わっているため、スケール セットの可用性とパフォーマンスを重点的に監視することができます。
 
 ページ ビュー、アプリケーションの要求、例外など、アプリケーションに関する詳細情報を収集するには、Application Insights を使った[仮想マシン スケール セット アプリケーション](../azure-monitor/app/azure-vm-vmss-apps.md)の監視を有効します。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](../azure-monitor/app/monitor-web-app-availability.md)を構成します。
 
-## <a name="singapore-data-residency"></a>シンガポールのデータ所在地
+## <a name="data-residency"></a>データの保存場所
 
-Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
+Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azure.microsoft.com/global-infrastructure/data-residency/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 まずは、Azure Portal で最初の仮想マシン スケール セットを作成します。

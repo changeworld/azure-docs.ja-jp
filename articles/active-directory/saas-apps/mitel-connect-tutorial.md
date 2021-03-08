@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552608"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>チュートリアル:Azure Active Directory と Mitel MiCloud Connect または CloudLink Platform の統合
 
@@ -25,7 +25,7 @@ ms.locfileid: "88552608"
 * Azure AD で、エンタープライズ資格情報を使用して、MiCloud Connect アプリまたは CloudLink アプリにアクセスできるユーザーを制御できます。
 * お使いのアカウントで、ユーザーが自身の Azure AD アカウントを使用して MiCloud Connect または CloudLink に自動的にサインイン (シングル サインオン) するように設定できます。
 
-SaaS アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)に関するページを参照してください。
+SaaS アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオン](../manage-apps/what-is-single-sign-on.md)に関するページを参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してから、Azure AD と Mitel MiCloud Connect または CloudLink Platform の統合を開始してください。
 
@@ -41,7 +41,7 @@ MiCloud Connect と Azure AD の統合を構成するには、次のものが必
 このチュートリアルでは、Azure AD のシングル サインオン (SSO) を構成してテストします。
 
 * Mitel Connect では、**SP** によって開始される SSO がサポートされます
-* Mitel Connect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Mitel Connect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-mitel-connect-from-the-gallery"></a>ギャラリーからの Mitel Connect の追加
 
@@ -112,7 +112,7 @@ MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal 
 
 4. Azure portal で、 **[基本的な SAML 構成]** セクションの **[編集]** アイコンを選択します。
    
-    ![image](common/edit-urls.png)
+    ![[SAML でのシングル サインオンの設定] ページを示すスクリーンショット。[編集] アイコンが選択されています。](common/edit-urls.png)
 
     [基本的な SAML 構成] ダイアログ ボックスが開きます。
 
@@ -120,7 +120,7 @@ MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal 
 
 6. Mitel アカウント ポータル内の **[Reply URL (Assertion Consumer Service URL)]\(応答 URL (Assertion Consumer Service URL)\)** フィールドから URL をコピーし、Azure portal の **[応答 URL (Assertion Consumer Service URL)]** フィールドに貼り付けます。
 
-   ![image](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
+   ![Azure portal の [基本的な SAML 構成] および Mitel アカウント ポータルの [ID プロバイダーの設定] セクションを示すスクリーンショット。それらの関係が線で示されています。](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
 
 7. **[サインオン URL]** ボックスに、次のいずれかの URL を入力します。
 
@@ -132,13 +132,13 @@ MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal 
 
 8. Azure portal 内の **[基本的な SAML 構成]** ダイアログ ボックスで、 **[保存]** を選択します。
 
-9. Azure portal 内の **[SAML ベースのサインオン]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** を選択して**署名証明書**をダウンロードし、コンピューターに保存します。
+9. Azure portal 内の **[SAML ベースのサインオン]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** を選択して **署名証明書** をダウンロードし、コンピューターに保存します。
 
-    ![image](./media/mitel-connect-tutorial/azure-signing-certificate.png)
+    ![[SAML 署名証明書] ウィンドウを示すスクリーンショット。ここでは、証明書をダウンロードできます。](./media/mitel-connect-tutorial/azure-signing-certificate.png)
 
 10. テキスト エディターで署名証明書ファイルを開き、ファイル内のデータをすべてコピーして、Mitel アカウント ポータルの **[Signing Certificate]\(署名証明書\)** フィールドに貼り付けます。 
 
-      ![image](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
+      ![[署名証明書] フィールドを示すスクリーンショット。](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
 
 11. Azure portal の **[SAML ベースのサインオン]** ページの **[Setup Mitel Connect]\(Mitel Connect の設定\)** セクションで、次の手順を実行します。
 
@@ -146,7 +146,7 @@ MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal 
 
      1. **[Azure AD 識別子]** フィールドから URL をコピーして、Mitel アカウント ポータルの **[Entity ID]\(エンティティ ID\)** フィールドに貼り付けます。
          
-         ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
+         ![Azure portal と Mitel アカウント ポータルの [SAML ベースのサインオン] ページ間の関係を示すスクリーンショット。](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
 12. Mitel アカウント ポータル内の **[Connect Single Sign-On Settings]\(Connect シングル サインオンの設定\)** ダイアログ ボックスで、 **[Save]\(保存\)** を選択します。
 
@@ -204,7 +204,7 @@ MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal 
 
 このセクションでは、お使いの MiCloud Connect アカウントで Britta Simon というユーザーを作成します。 シングル サインオンを使用する前に、ユーザーを作成し、アクティブにする必要があります。
 
-Mitel アカウント ポータルでのユーザーの追加の詳細については、Mitel Knowledge Base で「[Adding a User (ユーザーの追加)](https://oneview.mitel.com/s/article/Adding-a-User-092815)」を参照してください。
+Mitel アカウント ポータルでのユーザーの追加の詳細については、Mitel Knowledge Base で「[Adding a User (ユーザーの追加)](https://shoretelcommunity.force.com/s/article/Adding-Users-092815)」を参照してください。
 
 次の詳細情報を使用して、MiCloud Connect アカウントにユーザーを作成します。
 
@@ -221,7 +221,7 @@ Mitel アカウント ポータルでのユーザーの追加の詳細につい�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルの [Mitel Connect] タイルを選択すると自動的にリダイレクトされ、 **[サインオン URL]** フィールドで既定値として構成した MiCloud Connect アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルの [Mitel Connect] タイルを選択すると自動的にリダイレクトされ、 **[サインオン URL]** フィールドで既定値として構成した MiCloud Connect アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="configure-and-test-azure-ad-sso-with-cloudlink-platform"></a>CloudLink Platform に対する Azure AD SSO の構成とテスト
 
@@ -241,7 +241,7 @@ CloudLink プラットフォームで Azure AD シングル サインオンを�
     
        **[SAML ベースのサインオン]** ページが開き、 **[基本的な SAML 構成]** セクションが表示されます。
 
-       ![image](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
+       ![[SAML ベースのサインオン] ページを示すスクリーンショット。[基本的な SAML 構成] が表示されています。](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
 
 2. CloudLink アカウント ポータルで **[Azure AD Single Sign On]\(Azure AD シングル サインオン\)** 構成パネルにアクセスするには、次のようにします。
 
@@ -251,49 +251,49 @@ CloudLink プラットフォームで Azure AD シングル サインオンを�
 
     1. **[3rd party]\(サード パーティ\)** タブを選択します。サポートされるサード パーティ アプリケーションの一覧が表示されます。 **[Azure AD Single Sign On]\(Azure AD シングル サインオン\)** に関連付けられている **[Add]\(追加\)** ボタンを選択し、 **[Done]\(完了\)** を選択します。
 
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
+       ![[統合] ページを示すスクリーンショット。ここでは、Azure AD シングル サインオンを追加できます。](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
-       顧客アカウントの **Azure AD シングル サインオン**が有効になり、 **[Account Information]\(アカウント情報\)** ページの **[Integrations]\(統合\)** セクションに追加されます。   
+       顧客アカウントの **Azure AD シングル サインオン** が有効になり、 **[Account Information]\(アカウント情報\)** ページの **[Integrations]\(統合\)** セクションに追加されます。   
 
    1. **[Complete Setup]\(セットアップの完了\)** を選択します。
     
-      ![image](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
+      ![Azure AD シングル サインオンの [セットアップの完了] オプションを示すスクリーンショット。](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
       
       **[Azure AD Single Sign On]\(Azure AD シングル サインオン\)** 構成パネルが開きます。
       
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
+       ![Azure AD シングル サインオンの構成を示すスクリーンショット。](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
        
        Mitel では、 **[Optional Mitel credentials]\(オプションの Mitel 資格情報\)** セクションの **[Enable Mitel Credentials (Optional)]\(Mitel の資格情報を有効にする (オプション)\)** チェック ボックスをオフにすることを勧めします。 このチェック ボックスをオンにするのは、シングル サインオン オプションに加え、Mitel 資格情報を使用して、ユーザーが CloudLink アプリケーションにサインインできるようにする場合のみです。
 
 3. Azure portal の **[SAML ベースのサインオン]** ページで、 **[基本的な SAML 構成]** セクションの **[編集]** アイコンを選択します。 **[基本的な SAML 構成]** パネルが開きます。
 
-    ![image](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
+    ![[基本的な SAML 構成] ウィンドウを示すスクリーンショット。[編集] アイコンが選択されています。](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
  
  4. CloudLink アカウント ポータル内の **[Mitel Identifier (Entity ID)]\(Mitel 識別子 (エンティティ ID)\)** フィールドから URL をコピーし、Azure portal の **[識別子 (エンティティ ID)]** フィールドに貼り付けます。
 
  5. CloudLink アカウント ポータル内の **[Reply URL (Assertion Consumer Service URL)]\(応答 URL (Assertion Consumer Service URL)\)** フィールドから URL をコピーし、Azure portal の **[応答 URL (Assertion Consumer Service URL)]** フィールドに貼り付けます。  
     
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
+    ![CloudLink アカウント ポータルと Azure portal のページ間の関係を示すスクリーンショット。](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
 
  6. **[サインオン URL]** テキスト ボックスに、CloudLink アカウント ポータルを既定の Mitel アプリケーションとして使用するための URL である「`https://accounts.mitel.io`」を入力します。
      
-     ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
+     ![[サインオン URL] テキスト ボックスを示すスクリーンショット。](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
   
      > [!NOTE]
      > 既定の Mitel アプリケーションとは、ユーザーがアクセス パネルの [Mitel Connect] タイルを選択したときに開くアプリケーションです。 また、ユーザーが Azure AD からテスト セットアップを構成するときにアクセス先となるアプリケーションでもあります。
 
 7. **[基本的な SAML 構成]** ダイアログ ボックスで **[保存]** を選択します。
 
-8. Azure portal 内の **[SAML ベースのサインオン]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** を選択して**署名証明書**をダウンロードします。 お使いのコンピューターに証明書ファイルを保存します。
+8. Azure portal 内の **[SAML ベースのサインオン]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** を選択して **署名証明書** をダウンロードします。 お使いのコンピューターに証明書ファイルを保存します。
   
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
+    ![[SAML 署名証明書] セクションを示すスクリーンショット。ここでは、Base64 の証明書をダウンロードできます。](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
 
 9. テキスト エディターで署名証明書ファイルを開き、ファイル内のデータをすべてコピーして、CloudLink アカウント ポータルの **[Signing Certificate]\(署名証明書\)** フィールドに貼り付けます。  
 
     > [!NOTE]
     > 複数の証明書がある場合は、それらを 1 つずつ貼り付けることをお勧めします。 
        
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
+    ![手順のステップ 2 を示すスクリーンショット。ここでは、Azure AD 統合から値を入力します。](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
 
 10. Azure portal の **[SAML ベースのサインオン]** ページの **[Set up Mitel Connect]\(Mitel Connect の設定\)** セクションで、次の手順を実行します。
 
@@ -301,7 +301,7 @@ CloudLink プラットフォームで Azure AD シングル サインオンを�
 
      1. **[Azure AD 識別子]** フィールドから URL をコピーして、CloudLink アカウント ポータルの **[IDP Identifier (Entity ID)]\(IDP 識別子 (エンティティ ID)\)** フィールドに貼り付けます。
      
-        ![image](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
+        ![Mintel Connect で説明されている値のソースを示すスクリーンショット。](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
 
 11. CloudLink アカウント ポータルの **[Azure AD Single Sign On]\(Azure AD シングル サインオン\)** パネルで、 **[Save]\(保存\)** を選択します。
 
@@ -369,18 +369,18 @@ CloudLink アカウント ポータルでユーザーを追加する方法の詳
 * 電子メール: BrittaSimon@contoso.com
 
 > [!NOTE]
-> ユーザーの CloudLink メール アドレスは、Azure portal の**ユーザー プリンシパル名**と同じにする必要があります。
+> ユーザーの CloudLink メール アドレスは、Azure portal の **ユーザー プリンシパル名** と同じにする必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD SSO の構成をテストします。
 
-アクセス パネルの [Mitel Connect] タイルを選択すると自動的にリダイレクトされ、 **[サインオン URL]** フィールドで既定値として構成した CloudLink アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルの [Mitel Connect] タイルを選択すると自動的にリダイレクトされ、 **[サインオン URL]** フィールドで既定値として構成した CloudLink アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

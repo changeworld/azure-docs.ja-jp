@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用して Azure IoT Hub Device Provisioning Service をセットアップする
+title: クイックスタート - Azure CLI を使用して Azure IoT Hub Device Provisioning Service をセットアップする
 description: クイックスタート - Azure CLI を使用して Azure IoT Hub Device Provisioning Service (DPS) をセットアップする
 author: wesmc7777
 ms.author: wesmc
@@ -8,24 +8,24 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 313dfe930dec5233f96b89fdebf978a41fdcdf80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 611068fa020321be88be6e1d6da663266029c658
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497666"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660187"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>クイック スタート:Azure CLI で IoT Hub Device Provisioning Service をセットアップする
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイックスタートでは、Azure CLI を使用して IoT ハブと IoT Hub Device Provisioning Service を作成し、2 つのサービスをリンクする方法について詳しく説明します。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
 > このクイックスタートで作成する IoT ハブとプロビジョニング サービスは、どちらも DNS エンドポイントとして公開されます。 これらのリソースに使用される名前を変更する場合は、機密性の高い情報を含めないようにしてください。
 >
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
@@ -84,7 +84,11 @@ echo $hubConnectionString
 ```
 
 > [!NOTE]
-> この 2 つのコマンドは、Bash で実行されているホストに対して有効です。 ローカルの Windows/CMD シェルまたは PowerShell ホストを使用している場合は、その環境での正しい構文を使用するようにコマンドを変更する必要があります。
+> この 2 つのコマンドは、Bash で実行されているホストに対して有効です。
+> 
+> ローカルの Windows (CMD) シェルまたは PowerShell ホストを使用している場合は、その環境での正しい構文を使用するようにコマンドを変更してください。
+>
+> Azure Cloud Shell を使用している場合は、シェル ウィンドウの左側にある環境ドロップダウンで **[Bash]** が選択されていることを確認します。
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>IoT ハブとプロビジョニング サービスのリンク
@@ -133,7 +137,7 @@ az iot hub delete --name my-sample-hub --resource-group my-sample-resource-group
 az group delete --name my-sample-resource-group
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクしました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
 

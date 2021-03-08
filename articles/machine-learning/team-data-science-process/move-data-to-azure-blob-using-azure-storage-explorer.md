@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bfc63c6f5aca92fb7fda9e3ecf63ce4c332b12ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53cb8cdd1c5f9824b07b16b8b6c70648603b9f38
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720913"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788911"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure BLOB Storage 間でデータを移動する
-Azure Storage Explorer は、Windows、MacOS、Linux で Azure Storage のデータを操作できる Microsoft の無料ツールです。 このトピックでは、Azure Storage Explorer を使用して Azure BLOB ストレージからデータをアップロードおよびダウンロードする方法について説明します。 このツールは、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)のページからダウンロードできます。
+Azure Storage Explorer は、Windows、MacOS、Linux で Azure Storage のデータを操作できる Microsoft の無料ツールです。 このトピックでは、Azure ストレージ エクスプローラーを使用して Azure BLOB Storage からデータをアップロードおよびダウンロードする方法について説明します。 このツールは、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)のページからダウンロードできます。
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
 > [!NOTE]
-> [Azure のデータ サイエンス用仮想マシン](virtual-machines.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、Azure Storage Explorer は既に VM にインストールされています。
+> [Azure のデータ サイエンス用仮想マシン](../data-science-virtual-machine/overview.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、Azure Storage Explorer は既に VM にインストールされています。
 > 
 > [!NOTE]
-> Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関する記事および [Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)に関するページをご覧ください。   
+> Azure BLOB Storage の概要については、[Azure BLOB の基礎](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関する記事および [Azure BLOB サービス](/rest/api/storageservices/Blob-Service-Concepts)に関するページをご覧ください。   
 > 
 > 
 
@@ -35,8 +35,8 @@ Azure Storage Explorer は、Windows、MacOS、Linux で Azure Storage のデー
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。 データのアップロードまたはダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。 
 
 * Azure サブスクリプションを設定するには、 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
-* ストレージ アカウントの作成と、アカウントとキー情報の取得の手順については、[Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)のページを参照してください。 ストレージ アカウントのアクセス キーをメモしておきます。Azure Storage Explorer ツールでアカウントに接続する際に、このキーが必要になります。
-* Azure Storage Explorer ツールは、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)のページからダウンロードできます。 インストール時に既定値をそのまま使用します。
+* ストレージ アカウントの作成と、アカウントとキー情報の取得の手順については、[Azure ストレージ アカウントについて](../../storage/common/storage-account-create.md)のページを参照してください。 ストレージ アカウントのアクセス キーをメモしておきます。Azure Storage Explorer ツールでアカウントに接続する際に、このキーが必要になります。
+* Azure ストレージ エクスプローラー ツールは、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)のページからダウンロードできます。 インストール時に既定値をそのまま使用します。
 
 <a id="explorer"></a>
 
@@ -46,12 +46,11 @@ Azure Storage Explorer は、Windows、MacOS、Linux で Azure Storage のデー
 1. Microsoft Azure Storage Explorer を起動します。
 2. **アカウントにサインイン...** ウィザードを起動するには、 **[Azure アカウントの設定]** アイコンをクリックし、 **[アカウントの追加]** をクリックして、資格情報を入力します。 
 ![Azure のストレージ アカウントの追加](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
-3. **Azure Storage へ接続**ウィザードを起動するには、 **[Azure Storage へ接続]** アイコンをクリックします。 ![Azure Storage へ接続アイコンをクリックする](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
-4. **Azure Storage へ接続**ウィザードで Azure ストレージ アカウントのアクセス キーを入力し、 **[次へ]** をクリックします。 ![Azure ストレージ アカウントのアクセス キーを入力する](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+3. **Azure Storage へ接続** ウィザードを起動するには、 **[Azure Storage へ接続]** アイコンをクリックします。 ![Azure Storage へ接続アイコンをクリックする](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. **Azure Storage へ接続** ウィザードで Azure ストレージ アカウントのアクセス キーを入力し、 **[次へ]** をクリックします。 ![Azure ストレージ アカウントのアクセス キーを入力する](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
 5. **[アカウント名]** ボックスにストレージ アカウント名を入力し、 **[次へ]** をクリックします。 ![外部ストレージの接続](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
 6. 追加されたストレージ アカウントが表示されます。 ストレージ アカウントに BLOB コンテナーを作成するには、そのアカウントの **[BLOB コンテナー]** ノードを右クリックして **[BLOB コンテナーの作成]** を選択し、名前を入力します。
 7. コンテナーにデータをアップロードするには、対象のコンテナーを選択し、 **[アップロード]** ボタンをクリックします。
 ![ストレージ アカウント](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
 8. **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つ以上のファイルをファイル システムから選択します。 **[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. データをダウンロードするには、対応するコンテナー内の BLOB を選択し、 **[ダウンロード]** をクリックします。 ![ファイルのダウンロード](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
-

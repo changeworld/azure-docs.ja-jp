@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371754"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027521"
 ---
 デバイス トンネルを正常に確立するには、次の要件を満たす必要があります。
 
@@ -22,13 +22,13 @@ ms.locfileid: "79371754"
 * 構成できるデバイス トンネルは、デバイスごとに 1 つのみ。
 
 1. [ポイント対サイト VPN クライアント](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)に関する記事を使用して、Windows 10 クライアントにクライアント証明書をインストールします。 この証明書は、ローカル コンピューターのストアに格納されている必要があります。
-1. [この手順](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)を使用して、VPN プロファイルを作成し、ローカル システム アカウントのコンテキストでデバイス トンネルを構成します。
+1. [この手順](/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)を使用して、VPN プロファイルを作成し、ローカル システム アカウントのコンテキストでデバイス トンネルを構成します。
 
 ### <a name="configuration-example-for-device-tunnel"></a>デバイス トンネルの構成例
 
 仮想ネットワーク ゲートウェイを構成し、Windows 10 クライアントのローカル コンピューター ストアにクライアント証明書をインストールしたら、次の例を使用してクライアント デバイス トンネルを構成します。
 
-1. 次のテキストをコピーし、***devicecert.ps1*** として保存します。
+1. 次のテキストをコピーし、***devicecert.ps1** _ として保存します。
 
    ```
    Param(
@@ -80,7 +80,7 @@ ms.locfileid: "79371754"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 次のテキストをコピーし、***VPNProfile.xml*** として **devicecert.ps1** と同じフォルダーに保存します。 お使いの環境に合わせて次のテキストを編集します。
+1. 次のテキストをコピーし、_*_VPNProfile.xml_*_ として _*devicecert.ps1** と同じフォルダーに保存します。 お使いの環境に合わせて次のテキストを編集します。
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -115,7 +115,7 @@ ms.locfileid: "79371754"
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) から **PsExec** をダウンロードして、**C:\PSTools** にファイルを抽出します。
+1. [Sysinternals](/sysinternals/downloads/psexec) から **PsExec** をダウンロードして、**C:\PSTools** にファイルを抽出します。
 1. 管理者コマンド プロンプトから、次を実行して PowerShell を起動します。
 
    ```
@@ -123,18 +123,18 @@ ms.locfileid: "79371754"
    PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
+   ![64 ビット バージョンの PowerShell を起動するコマンドを使用したコマンド プロンプト ウィンドウを示すスクリーンショット。](./media/vpn-gateway-vwan-always-on-device/powershell.png)
 1. PowerShell で、**devicecert.ps1** と **VPNProfile.xml** が配置されているフォルダーに切り替えて、次のコマンドを実行します。
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![MachineCertTest](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
+   ![devicesert スクリプトを使用して MachineCertTest を実行した PowerShell ウィンドウを示すスクリーンショット。](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
 1. **rasphone** を実行します。
 
-   ![rasphone](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
+   ![rasphone が選択された [実行] ダイアログボックスを示すスクリーンショット。](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
 1. **MachineCertTest** エントリを探して、 **[接続]** をクリックします。
 
-   ![接続する](./media/vpn-gateway-vwan-always-on-device/connect.png)
+   ![MachineCertTest が選択され、[接続] ボタンが表示された [ネットワーク接続] ダイアログボックスを示すスクリーンショット。](./media/vpn-gateway-vwan-always-on-device/connect.png)
 1. 接続に成功したら、コンピューターを再起動します。 トンネルが自動的に接続されます。

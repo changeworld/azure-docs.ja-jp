@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 7ac634944c9df479617af4c9171faf0f99df4b1b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876650"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139309"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Python)
 
@@ -33,6 +33,8 @@ ms.locfileid: "87876650"
 * **FileUpload.py** は、Python デバイス SDK を使用してファイルをストレージにアップロードします。
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -107,7 +109,7 @@ ms.locfileid: "87876650"
             return (False, ex)
     ```
 
-    この関数は、渡された*blob_info* 構造体を解析して、[azure.storage.blob.BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python) を初期化するために使用する URL を作成します。 次に、このクライアントを使用して、ファイルが Azure BLOB ストレージにアップロードされます。
+    この関数は、渡された*blob_info* 構造体を解析して、[azure.storage.blob.BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python) を初期化するために使用する URL を作成します。 次に、このクライアントを使用して、ファイルが Azure BLOB ストレージにアップロードされます。
 
 1. 次のコードを追加して、クライアントを接続し、ファイルをアップロードします。
 
@@ -207,6 +209,6 @@ ms.locfileid: "87876650"
 
 Azure Blob Storage の詳細については、次のリンク先を参照してください。
 
-* [Azure Blob Storage のドキュメント](https://docs.microsoft.com/azure/storage/blobs/)
+* [Azure Blob Storage のドキュメント](../storage/blobs/index.yml)
 
-* [Python API 用 Azure Blob Storage のドキュメント](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Python API 用 Azure Blob Storage のドキュメント](/python/api/overview/azure/storage-blob-readme?view=azure-python)

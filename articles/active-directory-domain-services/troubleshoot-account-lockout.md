@@ -2,20 +2,20 @@
 title: Azure AD Domain Services のアカウント ロックアウト問題を解決する | Microsoft Docs
 description: Azure Active Directory Domain Services でユーザー アカウントのロックアウトを引き起こす一般的な問題を解決する方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 4a5ae321a4a97df5b5fa91bb239589c76c6601fc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039757"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618775"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインでアカウントがロックアウトされる問題を解決する
 
@@ -54,7 +54,7 @@ ms.locfileid: "86039757"
 
 ## <a name="troubleshoot-account-lockouts-with-security-audits"></a>セキュリティ監査によるアカウント ロックアウトのトラブルシューティング
 
-アカウント ロックアウトがいつ発生し、どこでロックアウトが発生するかトラブルシューティングするには、[Azure AD DS 向けセキュリティ監査を有効にします][security-audit-events]。 監査イベントのキャプチャは、この機能を有効にした時点からに限られます。 理想的には、トラブルシューティングするアカウント ロックアウト問題が発生する*前に*セキュリティ監査を有効にしてください。 ユーザー アカウントでロックアウト問題が繰り返される場合、それが次に発生するときのための準備としてセキュリティ監査を有効にできます。
+アカウント ロックアウトがいつ発生し、どこでロックアウトが発生するかトラブルシューティングするには、[Azure AD DS 向けセキュリティ監査を有効にします][security-audit-events]。 監査イベントのキャプチャは、この機能を有効にした時点からに限られます。 理想的には、トラブルシューティングするアカウント ロックアウト問題が発生する *前に* セキュリティ監査を有効にしてください。 ユーザー アカウントでロックアウト問題が繰り返される場合、それが次に発生するときのための準備としてセキュリティ監査を有効にできます。
 
 セキュリティ監査を有効にすると、次のサンプル クエリから、*アカウント ロックアウト イベント* コード *4740* をレビューする方法が示されます。
 

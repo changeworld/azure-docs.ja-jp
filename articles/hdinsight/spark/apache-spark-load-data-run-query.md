@@ -1,19 +1,16 @@
 ---
 title: チュートリアル:Apache Spark を使用してデータの読み込みとクエリを実行する - Azure HDInsight
 description: チュートリアル - Azure HDInsight で Spark クラスターにデータを読み込み、対話型のクエリを実行する方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3c8a08a14b23492c4bf032dd2b722c59bdf80ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77198890"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930094"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行
 
@@ -49,7 +46,7 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
 ![対話型の Spark SQL クエリのデータのスナップショット](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "対話型の Spark SQL クエリのデータのスナップショット")
 
-1. 次のコードを Jupyter ノートブックの空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 このコードにより、このシナリオに必要な種類がインポートされます。
+1. 次のコードを Jupyter Notebook の空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 このコードにより、このシナリオに必要な種類がインポートされます。
 
     ```python
     from pyspark.sql import *

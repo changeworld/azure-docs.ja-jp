@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (旧称 SQL DW) のチート シート
-description: Azure Synapse Analytics (旧称 SQL DW) ソリューションをすばやく構築するためのリンクとベスト プラクティスを見つけてください。
+title: 専用 SQL プール (以前の SQL DW) のチート シート
+description: Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) をすばやく構築するためのリンクとベスト プラクティスをご覧いただけます。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136101"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120225"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) のチート シート
+# <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) のチート シート
 
-このチート シートは、Azure Synapse ソリューションを構築するための役立つヒントとベスト プラクティスを提供します。
+このチート シートでは、専用 SQL プール (以前の SQL DW) ソリューションを構築するうえで役立つヒントとベスト プラクティスを紹介します。
 
-次の図は、データ ウェアハウスを設計するプロセスを示しています。
+次の図は、専用 SQL プール (以前の SQL DW) を使用してデータ ウェアハウスを設計するプロセスを示しています。
 
 ![概要](./media/cheat-sheet/picture-flow.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "88136101"
 
 ## <a name="data-migration"></a>データ移行
 
-まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (プレビュー) を使用して、データをステージング テーブルに読み込みます。 次の構成を使用します。
+まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を使用して、データをステージング テーブルに読み込みます。 次の構成を使用します。
 
 | デザイン | 推奨 |
 |:--- |:--- |
@@ -46,7 +46,7 @@ ms.locfileid: "88136101"
 | パーティション分割 | なし |
 | リソース クラス | largerc または xlargerc |
 
-[データ移行](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/)、[データ読み込み](design-elt-data-loading.md)、および[抽出、読み込み、および変換 (ELT) プロセス](design-elt-data-loading.md)の詳細を参照してください。
+[データ移行](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice)、[データ読み込み](design-elt-data-loading.md)、および[抽出、読み込み、および変換 (ELT) プロセス](design-elt-data-loading.md)の詳細を参照してください。
 
 ## <a name="distributed-or-replicated-tables"></a>分散テーブルまたはレプリケート テーブル
 
@@ -64,8 +64,8 @@ ms.locfileid: "88136101"
 * 共通ハッシュ キーが同じデータ形式であることを確認します。
 * 分散には varchar 形式を使わないようにします。
 * 頻繁に結合操作が行われるファクト テーブルに対する共通ハッシュ キーを持つディメンション テーブルは、ハッシュが分散される可能性があります。
-* データの偏りを分析するには、 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* を使います。
-* クエリの背後で行われているデータ移動を分析し、ブロードキャストおよびシャッフル操作にかかる時間を監視するには、 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* を使います。 これはディストリビューション方法の検討に役立ちます。
+* データの偏りを分析するには、 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* を使います。
+* クエリの背後で行われているデータ移動を分析し、ブロードキャストおよびシャッフル操作にかかる時間を監視するには、 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* を使います。 これはディストリビューション方法の検討に役立ちます。
 
 詳しくは、[レプリケート テーブル](design-guidance-for-replicated-tables.md)および[分散テーブル](sql-data-warehouse-tables-distribute.md)に関するページをご覧ください。
 
@@ -109,7 +109,7 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 ## <a name="maintain-statistics"></a>統計を管理する
 
-データに*大幅な*変更が発生したときに統計を更新することが重要です。 "*大幅な*" 変更が発生したかどうかを判断するには、「[統計の更新](sql-data-warehouse-tables-statistics.md#update-statistics)」をご覧ください。 更新された統計により、クエリ プランが最適化されます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
+データに *大幅な* 変更が発生したときに統計を更新することが重要です。 "*大幅な*" 変更が発生したかどうかを判断するには、「[統計の更新](sql-data-warehouse-tables-statistics.md#update-statistics)」をご覧ください。 更新された統計により、クエリ プランが最適化されます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
 
 更新の頻度を定義することもできます。 たとえば、毎日新しい値が追加される可能性がある日付列を更新する場合があります。 結合に含まれる列、WHERE 句で使われている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。
 
@@ -121,13 +121,13 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 クエリに時間がかかりすぎる場合は、ユーザーが大きいリソース クラスで実行していないことを確認します。 大きいリソース クラスは、多くのコンカレンシー スロットを消費します。 それにより、他のクエリが待機する可能性があります。
 
-最後に、Gen2 の [SQL プール](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
+最後に、Gen2 の[専用 SQL プール (以前の SQL DW)](sql-data-warehouse-overview-what-is.md) を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
 
 詳しくは、[リソース クラスとコンカレンシー](resource-classes-for-workload-management.md)の操作方法に関するページをご覧ください。
 
 ## <a name="lower-your-cost"></a>コストの削減
 
-Azure Synapse の重要な機能は、[コンピューティング リソースを管理する](sql-data-warehouse-manage-compute-overview.md)能力です。 使用していない SQL プールは一時停止できます。それにより、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure Portal](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
+Azure Synapse の重要な機能は、[コンピューティング リソースを管理する](sql-data-warehouse-manage-compute-overview.md)能力です。 使用していない専用 SQL プール (以前の SQL DW) は一時停止できます。それにより、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure portal](quickstart-scale-compute-portal.md)、[PowerShell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
 
 Azure Functions では自動スケールを利用できます。
 
@@ -137,8 +137,8 @@ Azure Functions では自動スケールを利用できます。
 
 SQL Database と Azure Analysis Services はハブとスポークのアーキテクチャにすることを検討するようお勧めします。 このソリューションは、異なるユーザー グループ間のワークロードを分離しながら、SQL Database と Azure Analysis Services の高度なセキュリティ機能も使用できます。 また、無制限のコンカレンシーをユーザーに提供することもできます。
 
-詳細については、[Azure Synapse を利用する一般的なアーキテクチャ](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)に関するページを参照してください。
+詳細については、[Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を利用する一般的なアーキテクチャ](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse)に関するページを参照してください。
 
-SQL プールから SQL データベースにスポークを 1 回のクリックでデプロイします。
+専用 SQL プール (以前の SQL DW) から SQL データベースにスポークを 1 回のクリックでデプロイします。
 
 [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

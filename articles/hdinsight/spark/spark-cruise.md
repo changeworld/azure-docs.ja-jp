@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight で SparkCruise を使用して Apache Spark クエリを高速化する
 description: SparkCruise 最適化プラットフォームを使用して Apache Spark クエリの効率を向上させる方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f07ea3007d2e72c179abe38cca56178b564bc231
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649059"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928284"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight での SparkCruise
 
@@ -22,7 +19,7 @@ ms.locfileid: "88649059"
 
 Apache Spark などの分析プラットフォームで実行するクエリは、より小さいサブクエリを含むクエリ プランに分解されます。 これらのサブクエリは、複数のクエリのクエリ プランで繰り返し表示される場合があります。 それらは発生するたびに、再実行されて結果が返されます。 しかし、同じクエリを再実行すると効率が悪くなり、不要な計算コストが発生する可能性があります。
 
-*SparkCruise* は、よく使われる計算を再利用して、クエリ全体の実行時間とデータ転送コストを削減することができるワークロード最適化プラットフォームです。 このプラットフォームでは、"*具体化されたビュー*" の概念が使用されています。これは、事前に計算された形式で結果が格納されるクエリです。 クエリ自体が後で再び表示されたときに、結果を最初から再計算するのではなく、これらの結果を再利用できます。
+*SparkCruise* は、よく使われる計算を再利用して、クエリ全体の実行時間とデータ転送コストを削減することができるワークロード最適化プラットフォームです。 このプラットフォームでは、"*マテリアライズドビュー*" の概念が使用されています。これは、事前に計算された形式で結果が格納されるクエリです。 クエリ自体が後で再び表示されたときに、結果を最初から再計算するのではなく、これらの結果を再利用できます。
 
 ## <a name="setup-and-installation"></a>セットアップとインストール
 

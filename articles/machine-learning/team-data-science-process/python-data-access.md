@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 497b8f5598cf7aa7720f47863d465f5e29789b07
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852363"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321954"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -71,7 +71,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
 
 セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio (クラシック) で **[設定]** の下の **[ユーザー]** ページに表示されます。
 
-![Security][security]
+![Azure Machine Learning Studio の [ユーザー] ページの設定のスクリーンショット。][security]
 
 役割が **[所有者]** に設定されていない場合は、所有者として再度招待をリクエストするか、ワークスペースの所有者にコード スニペットを提供するよう依頼する必要があります。
 
@@ -85,14 +85,14 @@ Python クライアント ライブラリで使用するために Azure Machine 
 
 開発者がワークスペース ID と認証トークンを取得したら、ロールに関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
 
-認証トークンは、**[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
+認証トークンは、 **[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
 
 ### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
 1. Machine Learning Studio (クラシック) で、左側のナビゲーション バーの **[データセット]** をクリックします。
 2. アクセスするデータ セットを選択します。 **[マイ データ セット]** リストか **[サンプル]** リストからどのデータ セットでも選択できます。
 3. 下のツールバーから、 **[データ アクセス コードの生成]** をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
    
-    ![データセット][datasets]
+    ![データセットのスクリーンショット。データ アクセス コードを生成します。][datasets]
 4. 表示されるウィンドウからコード スニペットを選択し、クリップボードにコピーします。
    
     ![[データ アクセス コードの生成] ボタン][dataset-access-code]
@@ -364,6 +364,5 @@ print(ws.datasets['existing dataset'].name)    # IndexError
 
 
 <!-- Module References -->
-[convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
+[convert-to-csv]: /azure/machine-learning/studio-module-reference/convert-to-csv
+[split]: /azure/machine-learning/studio-module-reference/split-data

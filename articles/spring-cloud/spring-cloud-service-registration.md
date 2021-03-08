@@ -4,19 +4,25 @@ description: Spring Cloud Service Registry を使用してサービスの検出�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/05/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c3e26b157630df6004292c93a0a0a47307d5949a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1e60799878cc30b729344c03df36a4c5e4f4a199
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071018"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90904213"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Spring Cloud サービスを検出して登録する
 
 サービスの検出は、マイクロサービスベースのアーキテクチャの重要な要件です。  各クライアントを手動で構成するのは時間がかかり、人為的なエラーが発生する可能性があります。  Azure Spring Cloud Service Registry では、この問題が解決されます。  構成が済むと、Service Registry サーバーによって、アプリケーションのマイクロサービスに対するサービスの登録と検出が制御されるようになります。 Service Registry サーバーでは、デプロイされたマイクロサービスの登録が管理され、クライアント側の負荷分散が有効にされ、DNS に依存せずにクライアントからサービス プロバイダーが切り離されます。
+
+::: zone pivot="programming-language-csharp"
+Steeltoe アプリのサービス登録を設定する方法については、[Azure Spring Cloud にデプロイするための Java Spring アプリケーションの準備](spring-cloud-tutorial-prepare-app-deployment.md)に関するページを参照してください。
+::: zone-end
+::: zone pivot="programming-language-java"
 
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>Spring Cloud Service Registry を使用してアプリケーションを登録する
 
@@ -56,3 +62,4 @@ ms.locfileid: "87071018"
 Spring Cloud Service Registry サーバーのエンドポイントが、アプリケーションに環境変数として挿入されます。  マイクロサービスが Service Registry サーバーに自己を登録し、他の依存するマイクロサービスを検出できるようになります。
 
 変更がサーバーからすべてのマイクロサービスに反映されるまでに数分かかる場合があることに注意してください。
+::: zone-end

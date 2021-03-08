@@ -18,6 +18,9 @@
           href: get-started-cli.md
 - name: 概念
   items:
+    - name: 構成
+      href: configuration.md
+      displayName: Routing
     - name: Azure Functions での API サポート
       href: apis.md
     - name: ルート
@@ -26,7 +29,7 @@
       href: authentication-authorization.md
     - name: ユーザー情報にアクセスする
       href: user-information.md
-    - name: 運用前環境でプル要求を確認する
+    - name: 運用前環境で pull request を確認する
       href: review-publish-pull-requests.md
     - name: カスタム ドメイン
       href: custom-domain.md
@@ -42,6 +45,8 @@
       href: application-settings.md
     - name: フロントエンド フレームワークとライブラリの構成
       href: front-end-frameworks.md
+    - name: デプロイ トークンのリセット
+      href: deployment-token-management.md
 - name: チュートリアル
   items:
     - name: 静的サイト ジェネレーターからの発行
@@ -56,6 +61,8 @@
           href: publish-jekyll.md
     - name: フレームワークからのデプロイ
       items:
+        - name: Blazor
+          href: deploy-blazor.md
         - name: Next.js
           href: deploy-nextjs.md
         - name: Nuxt.js
@@ -64,9 +71,13 @@
   items:
     - name: Microsoft Learn でスキルを身に付ける
       items:
-        - name: Angular、React、Svelte、または Vue JavaScript アプリと API を公開する
+        - name: Angular、React、Svelte、Vue JavaScript アプリを発行する
           href: /learn/modules/publish-app-service-static-web-app-api
+        - name: API を発行する
+          href: /learn/modules/publish-static-web-app-api-preview-url
         - name: Gatsby を使用して静的な Web アプリを作成および発行する
           href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+        - name: Blazor を使用して静的な Web アプリを作成および発行する
+          href: /learn/modules/publish-app-service-static-web-app-api-dotnet
     - name: Quotas (クォータ)
       href: quotas.md

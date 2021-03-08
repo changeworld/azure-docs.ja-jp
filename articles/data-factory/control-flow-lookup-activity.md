@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory でのルックアップ アクティビティ
 description: ルックアップ アクティビティを使用して外部ソースから値を検索する方法を説明します。 この出力は、後続のアクティビティによってさらに参照できます。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 10/14/2020
+ms.openlocfilehash: 5f46e2871aa0017f0a4b33df04a8ae9058c59e17
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795883"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385474"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 
@@ -29,7 +24,9 @@ ms.locfileid: "88795883"
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-次のデータ ソースがルックアップ アクティビティでサポートされています。 ルックアップ アクティビティによって返すことができる行の最大数は 5,000、サイズは最大 2 MB です。 現時点では、タイムアウト前のルックアップ アクティビティの最長期間は 1 時間です。
+次のデータ ソースがルックアップ アクティビティでサポートされています。 
+
+検索アクティビティでは、最大 5,000 行を返すことができます。結果セットにそれを超えるレコードが含まれている場合は、最初の 5,000 行が返されます。 検索アクティビティの出力でサポートされる最大サイズは約 4 MB で、サイズがこの制限を超えるとアクティビティは失敗します。 現時点では、タイムアウト前のルックアップ アクティビティの最長期間は 24 時間です。
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -63,14 +60,14 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 > [!NOTE]
 > 
 > * **ByteArray** 型のソース列はサポートされていません。
-> * データセット定義内の**構造体**はサポートされていません。 テキスト形式のファイルの場合は、ヘッダー行を使用して列名を指定できます。
+> * データセット定義内の **構造体** はサポートされていません。 テキスト形式のファイルの場合は、ヘッダー行を使用して列名を指定できます。
 > * ルックアップ ソースが JSON ファイルの場合、JSON オブジェクトを整形するための `jsonPathDefinition` 設定はサポートされていません。 オブジェクト全体が取得されます。
 
 ## <a name="use-the-lookup-activity-result"></a>ルックアップ アクティビティの結果の使用
 
 ルックアップ結果は、アクティビティ実行結果の `output` セクションに返されます。
 
-* **`firstRowOnly` が `true` (既定値) に設定されているときは**、出力形式は次のコードに示すとおりです。 ルックアップ結果は固定の `firstRow` キーの下にあります。 後続のアクティビティで結果を使用するには、パターン `@{activity('LookupActivity').output.firstRow.table` を使用します。
+* **`firstRowOnly` が `true` (既定値) に設定されているときは**、出力形式は次のコードに示すとおりです。 ルックアップ結果は固定の `firstRow` キーの下にあります。 後続のアクティビティで結果を使用するには、パターン `@{activity('LookupActivity').output.firstRow.table}` を使用します。
 
     ```json
     {
@@ -105,7 +102,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 
 ## <a name="example"></a>例
 
-この例では、パイプラインに 2 つのアクティビティ、**ルックアップ**と**コピー**が含まれています。 コピー アクティビティは、お使いの Azure SQL Database インスタンスの SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
+この例では、パイプラインに 2 つのアクティビティ、**ルックアップ** と **コピー** が含まれています。 コピー アクティビティは、お使いの Azure SQL Database インスタンスの SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
 
 この例では、最初の行のみのルックアップを示します。 すべての行のルックアップについて、および ForEach アクティビティで結果をチェーンするには、「[Azure Data Factory を使って複数のテーブルを一括コピーする](tutorial-bulk-copy.md)」のサンプルを参照してください。
 
@@ -265,7 +262,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 }
 ```
 
-### <a name="source-dataset-for-copy-activity"></a>コピー アクティビティの**ソース** データセット
+### <a name="source-dataset-for-copy-activity"></a>コピー アクティビティの **ソース** データセット
 
 **ソース** データセットは、SQL テーブルの名前であるルックアップ アクティビティの出力を使用します。 コピー アクティビティは、SQL テーブルから Azure Blob Storage 内の場所にデータをコピーします。 場所は **sink** データセットによって指定されます。 
 
@@ -302,7 +299,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 }
 ```
 
-### <a name="sink-dataset-for-copy-activity"></a>コピー アクティビティの**シンク** データセット
+### <a name="sink-dataset-for-copy-activity"></a>コピー アクティビティの **シンク** データセット
 
 コピー アクティビティは、SQL テーブルから、Azure Storage の **csv** フォルダー内の **filebylookup.csv** ファイルにデータをコピーします。 このファイルは、**AzureBlobStorageLinkedService** プロパティで指定されています。 
 

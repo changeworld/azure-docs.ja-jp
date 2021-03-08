@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c6f7355b4505324c562ae39b05155a2902da2790
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523453"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009434"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データのカタログを作成する方法
 
@@ -19,7 +19,7 @@ ms.locfileid: "86523453"
 
 **Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 これはユーザーがデータ ソースを検出、理解、使用するために役立つサービスであり、組織が既存のデータ ソース (ビッグ データなど) から、より多くの価値を引き出すために利用することもできます。
 
-**Azure Data Catalog** では、Azure BLOG ストレージの BLOB とディレクトリに加え、Hadoop HDFS のファイルとディレクトリの登録がサポートされています。 これらのデータ ソースの半構造化という性質によって高い柔軟性が得られます。 ただし、**Azure Data Catalog** へのデータ ソースの登録による効果を最大限に引き出すためには、データ ソースを構造化する方法をユーザーが検討する必要があります。
+**Azure Data Catalog** では、Azure Storage の BLOB とディレクトリに加え、Hadoop HDFS のファイルとディレクトリの登録がサポートされています。 これらのデータ ソースの半構造化という性質によって高い柔軟性が得られます。 ただし、**Azure Data Catalog** へのデータ ソースの登録による効果を最大限に引き出すためには、データ ソースを構造化する方法をユーザーが検討する必要があります。
 
 ## <a name="directories-as-logical-data-sets"></a>論理データ セットとしてのディレクトリ
 

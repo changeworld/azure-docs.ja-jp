@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511965"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629684"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure ファイル共有 - Azure ファイル共有からファイルを削除できない
 
@@ -34,7 +34,7 @@ Azure ファイル共有からのファイルの削除に失敗すると、次�
 
 ## <a name="cause"></a>原因
 
-エラー 1816 は、ファイル共有がマウントされているコンピューター上のファイルに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。 詳しくは、[Azure Storage のパフォーマンスとスケーラビリティのチェック リスト](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)に関するページをご覧ください。
+エラー 1816 は、ファイル共有がマウントされているコンピューター上のファイルに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。 詳しくは、[Azure Storage のパフォーマンスとスケーラビリティのチェック リスト](../blobs/storage-performance-checklist.md)に関するページをご覧ください。
 
 ## <a name="resolution"></a>解決策
 
@@ -44,7 +44,7 @@ Azure ファイル共有からのファイルの削除に失敗すると、次�
 
 ### <a name="install-the-latest-azure-powershell-module"></a>最新の Azure PowerShell モジュールをインストールします
 
-* [Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>Azure に接続します:
 

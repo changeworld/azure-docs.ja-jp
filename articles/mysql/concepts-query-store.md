@@ -1,17 +1,17 @@
 ---
 title: クエリ ストア - Azure Database for MySQL
 description: Azure Database for MySQL のクエリ ストア機能について説明します。これは、時間の経過と共にパフォーマンスを追跡するのに役立ちます。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: b47ab44c5a5f8faad85b60032a6781475235a170
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402262"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201027"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MySQL のパフォーマンスの監視
 
@@ -36,12 +36,12 @@ Azure Database for MySQL のクエリ ストア機能を使用すると、クエ
 1. Azure portal にサインインし、ご利用の Azure Database for MySQL サーバーを選択します。
 1. メニューの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
 1. query_store_capture_mode パラメーターを検索します。
-1. 値を ALL に設定し、**保存**します。
+1. 値を ALL に設定し、**保存** します。
 
 クエリ ストアでの待機統計を有効にするには、次の手順に従います。
 
 1. query_store_wait_sampling_capture_mode パラメーターを検索します。
-1. 値を ALL に設定し、**保存**します。
+1. 値を ALL に設定し、**保存** します。
 
 mysql データベース内にデータの最初のバッチが保持されるまで最大 20 分かかります。
 
@@ -69,7 +69,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 ## <a name="finding-wait-queries"></a>待機クエリの検索
 
 > [!NOTE]
-> 待機統計は、ワークロード時間のピーク時に有効にしたり、機密性の高いワークロードに対して無期限に有効にしたりしないでください。 <br>CPU 使用率が高い状態で実行されているワークロードや、低い仮想コアで構成されているサーバーで実行されているワークロードの場合は、待機統計を有効にするときに注意が必要です。 無期限には有効にしないでください。 
+> 待機統計は、ワークロード時間のピーク時に有効にしたり、機密性の高いワークロードに対して無期限に有効にしたりしないでください。 <br>CPU 使用率が高い状態で実行されているワークロードや、低い仮想コアで構成されているサーバーで実行されているワークロードの場合は、待機統計を有効にするときに注意が必要です。 無期限には有効にしないでください。
 
 待機イベントの種類では、類似性によってさまざまな待機イベントがバケットに結合されます。 クエリ ストアでは、待機イベントの種類、特定の待機イベント名、対象のクエリが提供されます。 この待機情報をクエリのランタイム統計に関連付けられることは、クエリのパフォーマンス特性に何が寄与しているかをより深く理解できることを意味します。
 
@@ -79,7 +79,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 |---|---|
 |ロック待機が長い | 影響を受けているクエリのクエリ テキストを確認し、ターゲット エンティティを識別します。 同じエンティティを変更する他のクエリのクエリ ストアで、頻繁に実行されているクエリ、実行時間が長いクエリ、あるいはその両方を探します。 これらのクエリを特定した後で、コンカレンシーを向上させるためにアプリケーション ロジックを変更するか、より制限の低い分離レベルを使用します。 |
 |バッファー IO 待機が長い | クエリ ストア内で物理読み取り回数が多いクエリを検索します。 それらと IO 待機が長いクエリが一致する場合は、スキャンではなくシークを実行するために、基になるエンティティへのインデックスの導入を検討します。 これにより、クエリの IO オーバーヘッドが最小限に抑えられます。 ポータル上でサーバーの **[パフォーマンスの推奨事項]** を調べて、このサーバーに対してクエリを最適化するインデックスの推奨事項があるかどうかを確認します。 |
-|メモリ待機が多い | クエリ ストア内で、メモリを最も消費しているクエリを探します。 おそらくこれらのクエリによって、影響を受けているクエリの進行がさらに遅れています。 ポータル上でサーバーの **[パフォーマンスの推奨事項]** を調べて、これらのクエリを最適化するインデックスの推奨事項があるかどうかを確認します。|
+|メモリ待機が多い | クエリ ストア内で、メモリを最も消費しているクエリを探します。 おそらくこれらのクエリによって、影響を受けているクエリの進行がさらに遅れています。 ポータル上でサーバーの **[パフォーマンスの推奨事項]** を調べて、これらのクエリを最適化するインデックスの推奨事項があるかどうかを確認します。 |
 
 ## <a name="configuration-options"></a>構成オプション
 
@@ -104,11 +104,11 @@ SELECT * FROM mysql.query_store_wait_stats;
 > [!NOTE]
 > 現時点では、**query_store_capture_mode** がこの構成よりも優先されます。そのため、待機統計を機能させるには、**query_store_capture_mode** と **query_store_wait_sampling_capture_mode** の両方を ALL に設定して有効にする必要があります。 待機統計では、有効になっている performance_schema と、クエリ ストアによってキャプチャされた query_text を利用するため、**query_store_capture_mode** がオフになっている場合、待機統計もオフになります。
 
-パラメーターの別の値を取得または設定するには、 [Azure portal](howto-server-parameters.md)  または  [Azure CLI](howto-configure-server-parameters-using-cli.md)  を使用します。
+パラメーターに対して別の値を取得または設定するには [Azure portal](howto-server-parameters.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用します。
 
 ## <a name="views-and-functions"></a>ビューと関数
 
-次のビューと関数を使用してクエリ ストアを表示および管理します。 [select privilege public ロール](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)に属するユーザーは、これらのビューを使用してクエリ ストア内のデータを表示できます。 これらのビューは、**mysql** データベース内でのみ使用できます。
+次のビューと関数を使用してクエリ ストアを表示および管理します。 [select privilege public ロール](howto-create-users.md#to-create-more-admin-users-in-azure-database-for-mysql)に属するユーザーは、これらのビューを使用してクエリ ストア内のデータを表示できます。 これらのビューは、**mysql** データベース内でのみ使用できます。
 
 クエリは、リテラルと定数を削除した後、その構造を調べることで正規化されます。 2 つのクエリがリテラル値を除いて同一の場合、それらは同じハッシュを持ちます。
 

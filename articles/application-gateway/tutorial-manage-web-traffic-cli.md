@@ -8,31 +8,30 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90d3de9dff2d3af99c720868d3342d39f8fb47e8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 89ba84be61469ff07eff55bb9cd114fe124b3ec2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502761"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566607"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイで Web トラフィックを管理する
 
-アプリケーション ゲートウェイは、管理対象サーバーへの Web トラフィックの管理とセキュリティ保護のために使用します。 バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する[アプリケーション ゲートウェイ](overview.md)を Azure CLI で作成することができます。 この例では、スケール セットに 2 つの仮想マシン インスタンスが含まれています。 スケール セットは、アプリケーション ゲートウェイの既定のバックエンド プールに追加されます。
+アプリケーション ゲートウェイは、管理対象サーバーへの Web トラフィックの管理とセキュリティ保護のために使用します。 バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)を使用する[アプリケーション ゲートウェイ](overview.md)を Azure CLI で作成することができます。 この例では、スケール セットに 2 つの仮想マシン インスタンスが含まれています。 スケール セットは、アプリケーション ゲートウェイの既定のバックエンド プールに追加されます。
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * アプリケーション ゲートウェイの作成
-> * 既定のバックエンド プールでの仮想マシン スケール セットの作成
+* ネットワークのセットアップ
+* アプリケーション ゲートウェイの作成
+* 既定のバックエンド プールでの仮想マシン スケール セットの作成
 
 好みに応じて、[Azure PowerShell](tutorial-manage-web-traffic-powershell.md) を使ってこの手順を実行することもできます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -70,7 +69,7 @@ az network public-ip create \
   --sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
+## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイを作成する
 
 [az network application-gateway create](/cli/azure/network/application-gateway) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPAddress* に割り当てます。 
 
@@ -156,4 +155,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>次のステップ
 
-[Web アプリケーション ファイアウォールによる Web トラフィックの制限](./tutorial-restrict-web-traffic-cli.md)
+[Web アプリケーション ファイアウォールによる Web トラフィックの制限](../web-application-firewall/ag/tutorial-restrict-web-traffic-cli.md)

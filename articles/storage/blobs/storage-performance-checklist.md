@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85701f3d073b8f743ddf48910822f152420c4fc0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001384"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544753"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト
 
@@ -59,14 +59,14 @@ Azure Storage には、容量、トランザクション レート、および�
 
 運用中のアプリケーションがいずれかのスケーラビリティ ターゲットに近づいたり超過したりすると、トランザクション待機時間や調整が増加することがあります。 Azure Storage によってアプリケーションが調整されると、サービスが 503 (サーバー ビジー) または 500 (操作タイムアウト) のエラー コードを返し始めます。 スケーラビリティ ターゲットの制限内にとどまることでこれらのエラーを回避することは、アプリケーションのパフォーマンスを強化するうえで重要な部分です。
 
-Queue サービスのスケーラビリティ ターゲットの詳細については、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)に関するページを参照してください。
+Queue サービスのスケーラビリティ ターゲットの詳細については、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../queues/scalability-targets.md#scale-targets-for-queue-storage)に関するページを参照してください。
 
 ### <a name="maximum-number-of-storage-accounts"></a>ストレージ アカウントの最大数
 
 特定のサブスクリプション/リージョンの組み合わせで許可されているストレージ アカウントの最大数に近づいている場合は、シナリオを評価して、次の条件のいずれかが当てはまるかどうかを確認します。
 
 - ストレージ アカウントを使用して、アンマネージド ディスクを格納し、それらのディスクを仮想マシン (VM) に追加していますか? このシナリオでは、マネージド ディスクを使用することをお勧めします。 マネージド ディスクは自動的に拡張されます。個々のストレージ アカウントを作成して管理する必要はありません。 詳細については、「[Azure マネージド ディスクの概要](../../virtual-machines/managed-disks-overview.md)」を参照してください。
-- データを分離するために、顧客ごとに 1 つのストレージ アカウントを使用していますか? このシナリオでは、ストレージ アカウント全体ではなく、お客様ごとに BLOB コンテナーを使用することをお勧めします。 Azure Storage では、Azure ロールをコンテナーごとに割り当てることができるようになりました。 詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](../common/storage-auth-aad-rbac-portal.md)」を参照してください。
+- データを分離するために、顧客ごとに 1 つのストレージ アカウントを使用していますか? このシナリオでは、ストレージ アカウント全体ではなく、お客様ごとに BLOB コンテナーを使用することをお勧めします。 Azure Storage では、Azure ロールをコンテナーごとに割り当てることができるようになりました。 詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-portal.md)」を参照してください。
 - 複数のストレージ アカウントを使用したシャード化により、イングレス、エグレス、1 秒あたりの I/O 操作 (IOPS)、または容量を増やしていますか? このシナリオでは、ワークロードに必要なストレージ アカウントの数を減らすために、可能であればストレージ アカウントの制限を引き上げることをお勧めします。 [Azure サポート](https://azure.microsoft.com/support/options/)に連絡して、ストレージ アカウントの制限の引き上げをご依頼ください。 詳細については、「[ストレージ アカウントの制限引き上げを発表](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)」を参照してください。
 
 ### <a name="capacity-and-transaction-targets"></a>容量とトランザクションのターゲット
@@ -195,7 +195,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 他のプログラミング言語については、ドキュメントを参照して接続数の上限の設定方法を確認してください。  
 
-詳細については、ブログ記事「[Web Services:Concurrent Connections (Web サービス: コンカレント接続数)](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)」を参照してください。  
+詳細については、ブログ記事「[Web Services:Concurrent Connections (Web サービス: コンカレント接続数)](/archive/blogs/darrenj/web-services-concurrent-connections)」を参照してください。  
 
 ### <a name="increase-minimum-number-of-threads"></a>スレッドの最小数を増やす
 
@@ -213,7 +213,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="client-libraries-and-tools"></a>クライアント ライブラリとツール
 
-パフォーマンスを最大限に引き出すためには必ず、Microsoft から提供される最新のクライアント ライブラリとツールを使用してください。 Azure Storage のクライアント ライブラリは、さまざまな言語に対応しています。 また、Azure Storage は PowerShell と Azure CLI をサポートします。 Microsoft はパフォーマンスに留意してこれらのクライアント ライブラリとツールを積極的に開発し、最新のサービス バージョンに遅れることなく対応して、数多くのパフォーマンスの実証済みプラクティスを内部で確実に処理できるように取り組んでいます。 詳細については、[Azure Storage のリファレンス ドキュメント](/azure/storage/#reference)を参照してください。
+パフォーマンスを最大限に引き出すためには必ず、Microsoft から提供される最新のクライアント ライブラリとツールを使用してください。 Azure Storage のクライアント ライブラリは、さまざまな言語に対応しています。 また、Azure Storage は PowerShell と Azure CLI をサポートします。 Microsoft はパフォーマンスに留意してこれらのクライアント ライブラリとツールを積極的に開発し、最新のサービス バージョンに遅れることなく対応して、数多くのパフォーマンスの実証済みプラクティスを内部で確実に処理できるように取り組んでいます。
 
 ## <a name="handle-service-errors"></a>サービス エラーの処理
 
@@ -243,11 +243,11 @@ Azure Storage には、ストレージ アカウント内、ストレージ ア�
 
 ### <a name="use-azcopy"></a>AzCopy を使用する
 
-AzCopy コマンドライン ユーティリティは、ストレージ アカウントとの間で BLOB を一括転送するための簡単で効率的なオプションです。 AzCopy はこのシナリオに合わせて最適化されており、高い転送速度を実現できます。 AzCopy バージョン 10 は、`Put Block From URL` 操作を使用して、ストレージ アカウント間で BLOB データをコピーします。 詳細については、[AzCopy v10 を使用した Azure Storage へのデータのコピーまたは移動](/azure/storage/common/storage-use-azcopy-v10)に関する記事を参照してください。  
+AzCopy コマンドライン ユーティリティは、ストレージ アカウントとの間で BLOB を一括転送するための簡単で効率的なオプションです。 AzCopy はこのシナリオに合わせて最適化されており、高い転送速度を実現できます。 AzCopy バージョン 10 は、`Put Block From URL` 操作を使用して、ストレージ アカウント間で BLOB データをコピーします。 詳細については、[AzCopy v10 を使用した Azure Storage へのデータのコピーまたは移動](../common/storage-use-azcopy-v10.md)に関する記事を参照してください。  
 
 ### <a name="use-azure-data-box"></a>Azure Data Box を使用する
 
-大量のデータを Blob ストレージにインポートする場合は、オフライン転送に Azure Data Box ファミリを使用することを検討してください。 Microsoft が提供する Data Box デバイスは、時間、ネットワークの可用性、またはコストに制限がある場合に、大量のデータを Azure に移動するのに適した選択です。 詳細については、[Azure DataBox のドキュメント](/azure/databox/)をご覧ください。
+大量のデータを Blob ストレージにインポートする場合は、オフライン転送に Azure Data Box ファミリを使用することを検討してください。 Microsoft が提供する Data Box デバイスは、時間、ネットワークの可用性、またはコストに制限がある場合に、大量のデータを Azure に移動するのに適した選択です。 詳細については、[Azure DataBox のドキュメント](../../databox/index.yml)をご覧ください。
 
 ## <a name="content-distribution"></a>コンテンツ配信
 

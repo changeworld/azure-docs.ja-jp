@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: ae139dd65242be9456f3498c494e1a7c5a29402f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d37465223000399aa42895626c48426ddadc0c72
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695696"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592709"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Managed Instance のアラートを作成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "84695696"
 * Azure Runbook を呼び出す
 * 外部の ITSM と互換性のあるチケット システムを呼び出す
 
-アラート ルールの構成とアラート ルールに関する情報の取得には、[Azure portal、PowerShell、Azure CLI](../../azure-monitor/platform/alerts-classic-portal.md) のほか、[Azure Monitor REST API](/rest/api/monitor/alertrules) を使用できます。 
+アラート ルールの構成とアラート ルールに関する情報の取得には、[Azure portal、PowerShell、Azure CLI](../../azure-monitor/alerts/alerts-classic-portal.md) のほか、[Azure Monitor REST API](/rest/api/monitor/alertrules) を使用できます。 
 
 ## <a name="alerting-metrics-available-for-managed-instance"></a>マネージド インスタンスで使用可能なアラート メトリック
 
@@ -113,7 +113,7 @@ ms.locfileid: "84695696"
 ## <a name="verifying-alerts"></a>アラートの確認
 
 > [!NOTE]
-> わずらわしいアラートを表示しないようにする場合は、[アクション ルールを使用したアラートの非表示](../../azure-monitor/platform/alerts-action-rules.md#suppression-of-alerts)に関する記述を参照してください。
+> わずらわしいアラートを表示しないようにする場合は、[アクション ルールを使用したアラートの非表示](../../azure-monitor/alerts/alerts-action-rules.md#suppression-of-alerts)に関する記述を参照してください。
 
 アラート ルールを設定するときに、アラート トリガーとその頻度に問題がないことを確認します。 使用済みのストレージ スペースに関するアラートを設定するためにこのページに示されている例では、アラート オプションが電子メールの場合、次のような電子メールを受信する可能性があります。
 
@@ -142,8 +142,8 @@ ms.locfileid: "84695696"
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Monitor アラート システムの詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/platform/alerts-overview.md)」を参照してください
-* メトリック アラートの詳細については、「[Azure Monitor でのメトリック アラートのしくみを理解する](../../azure-monitor/platform/alerts-metric-overview.md)」を参照してください
-* アラートでの Webhook の詳細については、[クラシック メトリック アラートを使用する Webhook の呼び出し](../../azure-monitor/platform/alerts-webhooks.md)に関するページを参照してください
-* PowerShell を使用したアラートの構成と管理の詳細については、[アクション ルール](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)に関するページを参照してください
-* API を使用したアラートの構成と管理の詳細については、「[Azure Monitor REST API リファレンス](https://docs.microsoft.com/rest/api/monitor/)」を参照してください 
+* Azure Monitor アラート システムの詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/alerts/alerts-overview.md)」を参照してください
+* メトリック アラートの詳細については、「[Azure Monitor でのメトリック アラートのしくみを理解する](../../azure-monitor/alerts/alerts-metric-overview.md)」を参照してください
+* アラートでの Webhook の詳細については、[クラシック メトリック アラートを使用する Webhook の呼び出し](../../azure-monitor/alerts/alerts-webhooks.md)に関するページを参照してください
+* PowerShell を使用したアラートの構成と管理の詳細については、[アクション ルール](/powershell/module/az.monitor/add-azmetricalertrulev2)に関するページを参照してください
+* API を使用したアラートの構成と管理の詳細については、「[Azure Monitor REST API リファレンス](/rest/api/monitor/)」を参照してください

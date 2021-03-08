@@ -1,18 +1,18 @@
 ---
 title: テンプレート関数
-description: 値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。
+description: 値の取得、文字列および数値の処理、デプロイ情報の取得のために、Azure Resource Manager テンプレート (ARM テンプレート) で使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/12/2020
+ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331408"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931709"
 ---
 # <a name="arm-template-functions"></a>ARM テンプレート関数
 
-この記事では、Azure Resource Manager (ARM) テンプレートで使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](template-expressions.md)に関するセクションを参照してください。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](template-expressions.md)に関するセクションを参照してください。
 
 独自の関数を作成するには、[ユーザー定義関数](template-syntax.md#functions)に関するページをご覧ください。
 
@@ -104,9 +104,11 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 * [and](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
+* [false](template-functions-logical.md#false)
 * [if](template-functions-logical.md#if)
 * [not](template-functions-logical.md#not)
 * [or](template-functions-logical.md#or)
+* [true](template-functions-logical.md#true)
 
 <a id="add" aria-hidden="true"></a>
 <a id="copyindex" aria-hidden="true"></a>
@@ -141,10 +143,12 @@ Resource Manager には、テンプレートで比較を行うための関数が
 Resource Manager には、オブジェクトを操作する関数が複数用意されています。
 
 * [contains](template-functions-object.md#contains)
+* [createObject](template-functions-object.md#createobject)
 * [empty](template-functions-object.md#empty)
 * [intersection](template-functions-object.md#intersection)
 * [json](template-functions-object.md#json)
 * [length](template-functions-object.md#length)
+* [null](template-functions-object.md#null)
 * [union](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -167,6 +171,7 @@ Resource Manager には、オブジェクトを操作する関数が複数用意
 * [listKeys](template-functions-resource.md#listkeys)
 * [listSecrets](template-functions-resource.md#list)
 * [list*](template-functions-resource.md#list)
+* [pickZones](template-functions-resource.md#pickzones)
 * [providers](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) - リソース グループへのデプロイでのみ使用できます。
@@ -245,7 +250,7 @@ Resource Manager には、オブジェクトを操作する関数が複数用意
 
 ## <a name="next-steps"></a>次のステップ
 
-* ARM テンプレートのセクションについては、[ARM テンプレートの作成](template-syntax.md)に関する記事をご覧ください。
-* 複数のテンプレートをマージするには、 [Azure リソース マネージャーでのリンクされたテンプレートの使用](linked-templates.md)
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
-* 作成したテンプレートをデプロイする方法については、[ARM のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関する記事をご覧ください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* 複数のテンプレートをマージする方法については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。
+* ある種類のリソースを作成するときに、指定した回数だけ反復する方法については、「[ARM テンプレートでのリソースの反復](copy-resources.md)」を参照してください。
+* 作成したテンプレートをデプロイする方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics の出力エラー ポリシー
 description: Azure Stream Analytics で利用できる出力エラー処理ポリシーについて説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19d762a55127af34e84185b11518aa6584acb5bd
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75431625"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012412"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure Stream Analytics の出力エラー ポリシー
 この記事では、Azure Stream Analytics で構成できる出力データ エラー処理ポリシーについて説明します。
@@ -34,4 +33,4 @@ Azure Stream Analytics により、データ変換エラーを起こした出力
 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Stream Analytics のトラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)
+[Azure Stream Analytics のトラブルシューティング ガイド](./stream-analytics-troubleshoot-query.md)

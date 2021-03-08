@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4cb07d9d19d85cd8dff9a52eeeb7e173b60f4d6d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020883"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080772"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT] 
 > この記事で説明する S1、S2、S3 パフォーマンス レベルは提供が中止されるため、新しい Azure Cosmos DB アカウントで使用できなくなります。
@@ -82,7 +83,7 @@ S3 コレクションを使用している場合、2500 RU/秒の単一パーテ
 
 ## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>20 GB を超えるストレージが必要な場合はどうすればよいですか?
 
-S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 20 GB のストレージを使用)、Azure Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](sql-api-partition-data.md)に関するページをご覧ください。 
+S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 20 GB のストレージを使用)、Azure Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partitioning-overview.md)に関するページをご覧ください。 
 
 <a name="change-before"></a>
 
@@ -116,12 +117,12 @@ S1、S2、S3 パフォーマンス レベルから単一パーティション �
     await client.ReplaceOfferAsync(offer);
 ```
 
-他の例やマイクロソフトのプランの各種メソッドの詳細については、 [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) を参照してください。
+他の例やマイクロソフトのプランの各種メソッドの詳細については、 [MSDN](/dotnet/api/microsoft.azure.documents.client.documentclient) を参照してください。
 
-* [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
-* [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
-* [**ReplaceOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
-* [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
+* [**ReadOfferAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync)
+* [**ReadOffersFeedAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.readoffersfeedasync)
+* [**ReplaceOfferAsync**](/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync)
+* [**CreateOfferQuery**](/previous-versions/azure/dn975114(v=azure.100))
 
 <a name="ea-customer"></a>
 
@@ -132,6 +133,6 @@ EA をご使用の場合は、現在の契約が終了するまで価格は保�
 ## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
 
-1.  [Cosmos DB でのデータのパーティション分割](sql-api-partition-data.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
+1.  [Cosmos DB でのデータのパーティション分割](partitioning-overview.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。
 2.  [Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)。 スループットのプロビジョニングとストレージの使用のコストについて説明しています。
 3.  [要求ユニット](request-units.md)。 読み取り、書き込み、クエリなどのさまざまな種類の操作におけるスループットの使用量について説明しています。

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
 ms.openlocfilehash: 66bb500d419d1f5537afafd7a2df543ded8cc7ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87057779"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Resource Graph エクスプローラーで Advisor データを照会する (Azure Resource Graph)

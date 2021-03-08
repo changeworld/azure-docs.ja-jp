@@ -5,35 +5,41 @@ description: .NET クライアント ライブラリを使用して Azure Storag
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/06/2019
+ms.date: 11/12/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8fa1e258b07ab98040cbbc5217be789e0bb1b783
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020135"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579336"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET を使用してストレージ アカウントの種類と SKU 名を取得する
 
-この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して、BLOB の Azure Storage アカウントの種類と SKU 名を取得する方法について説明します。
-
-アカウント情報は、バージョン 2018-03-28 以降のサービス バージョンで使用できます。
+この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して、BLOB の Azure Storage アカウントの種類と SKU 名を取得する方法について説明します。
 
 ## <a name="about-account-type-and-sku-name"></a>アカウントの種類と SKU 名の概要
 
 **アカウントの種類**:有効なアカウントの種類には、`BlobStorage`、`BlockBlobStorage`、`FileStorage`、`Storage`、および `StorageV2` があります。 「[Azure ストレージ アカウントの概要](storage-account-overview.md)」には、さまざまなストレージ アカウントの説明などの詳細情報が記載されています。
 
-**SKU 名**:有効な SKU 名 には、`Premium_LRS`、`Premium_ZRS`、`Standard_GRS`、`Standard_GZRS`、`Standard_LRS`、`Standard_RAGRS`、`Standard_RAGZRS`、および `Standard_ZRS` があります。 SKU 名は、[SkuName クラス](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)の大文字と小文字が区別される文字列フィールドです。
+**SKU 名**:有効な SKU 名 には、`Premium_LRS`、`Premium_ZRS`、`Standard_GRS`、`Standard_GZRS`、`Standard_LRS`、`Standard_RAGRS`、`Standard_RAGZRS`、および `Standard_ZRS` があります。 SKU 名は、[SkuName クラス](/dotnet/api/microsoft.azure.management.storage.models.skuname)の大文字と小文字が区別される文字列フィールドです。
 
 ## <a name="retrieve-account-information"></a>アカウント情報を取得する
 
-BLOB に関連付けられているストレージ アカウントの種類と SKU 名を取得するには、[GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) または [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet) メソッドを呼び出します。
-
 次のコード例では、読み取り専用のアカウントプロパティを取得して表示します。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+BLOB に関連付けられているストレージ アカウントの種類と SKU 名を取得するには、[GetAccountInfo](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfo) メソッド、または [GetAccountInfoAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfoasync) メソッドを呼び出します。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Account.cs" id="Snippet_GetAccountInfo":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+BLOB に関連付けられているストレージ アカウントの種類と SKU 名を取得するには、[GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) または [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) メソッドを呼び出します。
 
 ```csharp
 private static async Task GetAccountInfoAsync(CloudBlob blob)
@@ -58,6 +64,8 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
     }
 }
 ```
+
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

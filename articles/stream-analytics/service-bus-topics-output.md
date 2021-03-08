@@ -1,22 +1,21 @@
 ---
 title: Azure Stream Analytics からの Service Bus トピック出力
 description: この記事では、Azure Stream Analytics の出力としての Service Bus トピックについて説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 71a41a3a8d137fdf9d4f41c975e7be6c148078e1
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.date: 09/23/2020
+ms.openlocfilehash: 584d73acf36d22f59fbbcb6dff8b2f53cbc7437d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875479"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014180"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Service Bus トピック出力
 
-Service Bus キューには、送信者から受信者への一対一の通信方法が用意されています。 [Service Bus のトピック](https://msdn.microsoft.com/library/azure/hh367516.aspx)では、一対多の形式の通信を行うことができます。
+Service Bus キューには、送信者から受信者への一対一の通信方法が用意されています。 [Service Bus のトピック](/previous-versions/azure/hh367516(v=azure.100))では、一対多の形式の通信を行うことができます。
 
 次の表に、Service Bus トピックの出力を作成するためのプロパティの名前とその説明を示します。
 
@@ -47,9 +46,25 @@ Service Bus キューには、送信者から受信者への一対一の通信�
 
 ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 "*キー*" は列名で、"*値*" はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。
 
+次の例では、`DeviceId` フィールドと `DeviceStatus` フィールドがメタデータに追加されています。
+
+1. 次のクエリを使用します。
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. 出力のプロパティ列として `DeviceId,DeviceStatus` を構成します。
+
+   :::image type="content" source="media/service-bus-topics-output/property-columns.png" alt-text="プロパティ列":::
+
+次に示すのは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) を利用して EventHub で検査される出力メッセージ プロパティの図です。
+
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="イベント カスタム プロパティ":::
+
 ## <a name="system-properties"></a>システム プロパティ
 
-クエリ列を、[システム プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)として送信 Service Bus キューまたはトピック メッセージに添付できます。 これらの列はペイロードに含まれず、代わりに対応する BrokeredMessage [システム プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) には、クエリ列の値が設定されます。
+クエリ列を、[システム プロパティ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)として送信 Service Bus キューまたはトピック メッセージに添付できます。 これらの列はペイロードに含まれず、代わりに対応する BrokeredMessage [システム プロパティ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) には、クエリ列の値が設定されます。
 システムプロパティ (`MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`) はサポートされています。
 
 これらの列の文字列値は、対応するシステム プロパティ値の型として解析され、解析エラーはデータ エラーとして扱われます。
@@ -76,4 +91,4 @@ Service Bus キューには、送信者から受信者への一対一の通信�
 * [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
 * [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
 * [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)

@@ -1,19 +1,16 @@
 ---
 title: Python UDF と Apache Hive と Apache Pig - Azure HDInsight
 description: HDInsight (Azure の Apache Hadoop テクノロジ スタック) 上の Apache Hive と Apache Pig から Python ユーザー定義関数 (UDF) を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 593b809813f949cd1d0bcc17e1d1b7255ea19130
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874760"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944276"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 
@@ -31,7 +28,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 * **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage で安全な転送が有効になっている場合、URI は wasbs:// になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 * **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 `BlobStorage` を使用している場合は、「[ストレージの構成](#storage-configuration)」を参照してください。
-* 省略可能。  PowerShell を使用する予定の場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)がインストールされている必要があります。
+* 省略可能。  PowerShell を使用する予定の場合は、[AZ モジュール](/powershell/azure/new-azureps-module-az)がインストールされている必要があります。
 
 > [!NOTE]  
 > この記事で使用されたストレージ アカウントは[安全な転送](../../storage/common/storage-require-secure-transfer.md)が有効になっている Azure Storage なので、`wasbs` がこの記事全体で使用されています。
@@ -46,7 +43,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 > * ローカル開発環境に Python スクリプトを作成します。
 > * `scp` コマンドまたは提供された PowerShell スクリプトを使って、HDInsight にスクリプトをアップロードします。
 >
-> [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) を使って HDInsight を処理する場合は、以下のことが必要です。
+> [Azure Cloud Shell (bash)](../../cloud-shell/overview.md) を使って HDInsight を処理する場合は、以下のことが必要です。
 >
 > * クラウド シェル環境内でスクリプトを作成します。
 > * `scp` を使って、クラウド シェルから HDInsight にファイルをアップロードします。
@@ -343,7 +340,7 @@ def create_structure(input):
 
 Pig Latin の例では、入力の一貫したスキーマがないため、`LINE` 入力は chararray と定義されています。 この Python スクリプトでは、出力用に、データを一貫したスキーマに変換します。
 
-1. `@outputSchema` ステートメントは、Pig に返されるデータの形式を定義します。 この場合、Pig のデータ型である、 **data bag**になります。 この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
+1. `@outputSchema` ステートメントは、Pig に返されるデータの形式を定義します。 この場合、Pig のデータ型である、 **data bag** になります。 この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
 
    * date - ログ エントリが作成された日付
    * time - ログ エントリが作成された時刻
@@ -423,7 +420,7 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
     #from pig_util import outputSchema
     ```
 
-    この行は、Jython ではなく C Python を使用するように Python スクリプトを変更します。 変更を加えた後は、**Ctrl キーを押しながら X キー**を押してエディターを終了します。 **Y** キーを押し、**Enter** キーを押して変更を保存します。
+    この行は、Jython ではなく C Python を使用するように Python スクリプトを変更します。 変更を加えた後は、**Ctrl キーを押しながら X キー** を押してエディターを終了します。 **Y** キーを押し、**Enter** キーを押して変更を保存します。
 
 6. `pig` コマンドを使用してシェルを再起動します。 `grunt>` プロンプトが出たら、次のステートメントを使って C Python インタープリターを使用する Python スクリプトを実行します。
 
@@ -594,7 +591,7 @@ Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An e
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 
-既定で提供されない Python モジュールを読み込む必要がある場合は、[モジュールを Azure HDInsight にデプロイする方法](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)に関するブログ記事をご覧ください。
+既定で提供されない Python モジュールを読み込む必要がある場合は、[モジュールを Azure HDInsight にデプロイする方法](/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight)に関するブログ記事をご覧ください。
 
 Pig と Hive を使用する他の方法と、MapReduce の使用方法については、次のドキュメントをご覧ください。
 

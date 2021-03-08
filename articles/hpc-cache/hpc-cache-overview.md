@@ -4,15 +4,15 @@ description: ハイパフォーマンス コンピューティングのための
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 07/16/2020
+ms.date: 11/23/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053679"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519338"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Cache とは
 
@@ -65,11 +65,7 @@ Azure HPC Cache を使用できる場所については、[リージョン別の
 * US Gov アリゾナ
 * US Gov バージニア州
 
-## <a name="service-availability"></a>サービスの提供状況
-
-Azure HPC Cache で使用する各サブスクリプションへのアクセスを依頼する必要があります。 この制限は、サービス品質を保証するのに役立ちます。
-
-アクセスを依頼するには、[こちらのフォーム](https://aka.ms/onboard-hpc-cache)に入力してください。 サブスクリプションがアクセス一覧に追加された後に、キャッシュを作成できます。
+Azure HPC Cache は 1 つのリージョンに属します。 それを他のリージョンに置かれている BLOB コンテナーに接続すれば、他のリージョンに格納されているデータにアクセスすることができます。 このキャッシュは、顧客データを永続的には格納しません。
 
 ## <a name="next-steps"></a>次のステップ
 

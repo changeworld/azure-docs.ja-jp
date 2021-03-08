@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache Ambari のディレクトリに関するアラート
 description: HDInsight での Apache Ambari のディレクトリに関するアラートについて、考えられる理由と解決策の説明および分析。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 7fd287377a82caeaecea264f0165d12ced57f5cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47d1f9797a44d7dc918677c21ffc7a124808525d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722675"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943292"
 ---
 # <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari のディレクトリに関するアラート
 
@@ -31,7 +28,7 @@ Apache Ambari から次のようなエラーが表示されます。
 
 Ambari アラートで言及されているディレクトリが、影響を受けるワーカー ノードにありません。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 欠落しているディレクトリを、影響を受けるワーカー ノードに手動で作成します。
 
@@ -54,10 +51,4 @@ Ambari アラートで言及されているディレクトリが、影響を受�
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
-
-* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
-
-* [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
-
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

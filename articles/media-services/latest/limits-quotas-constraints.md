@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: b1836b1d0dc69a2a0b186a54974895eb0d8cd91a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d6ca7a444f2a3d4babe220548edb10bd37784be7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265492"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678111"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services のクォータと制限
@@ -32,7 +32,7 @@ ms.locfileid: "89265492"
 
 | リソース | 既定の制限 |
 | --- | --- |
-| 1 つのサブスクリプション内の [Media Services アカウント](media-services-account-concept.md) | 25 (固定) |
+| 1 つのサブスクリプション内の [Media Services アカウント](media-services-account-concept.md) | 100 (固定) |
 
 ## <a name="asset-limits"></a>アセットの制限
 
@@ -90,7 +90,7 @@ ms.locfileid: "89265492"
 
 | リソース | 既定の制限 |
 | --- | --- |
-| Media Services アカウントあたりの[ストリーミング エンドポイント](streaming-endpoint-concept.md) (停止済みまたは実行中)|2 |
+| Media Services アカウントあたりの[ストリーミング エンドポイント](streaming-endpoint-concept.md) (停止済みまたは実行中) | 2 |
 | Premium ストリーミング ユニット | 10 |
 | [動的マニフェスト フィルター](filters-dynamic-manifest-overview.md)|100|
 | [ストリーミング ポリシー](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
@@ -102,14 +102,14 @@ ms.locfileid: "89265492"
 
 ## <a name="protection-limits"></a>保護の制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
-| [コンテンツ キー ポリシー](content-key-policy-concept.md)ごとのオプション |30 | 
+| リソース | 既定の制限 |
+| --- | --- |
+| [コンテンツ キー ポリシー](content-key-policy-concept.md)ごとのオプション |30 |
 | アカウントあたりの Media Services キー配信サービスでの各 DRM 型の月毎のライセンス|1,000,000|
 
 ## <a name="support-ticket"></a>サポート チケット
 
-固定されていないリソースについては、[サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開いてクォータの増加を依頼できます。 要求には、目的のクォータの変更、ユース ケース シナリオ、および必要なリージョンに関する詳細情報を含めてください。 <br/>上限を高くするために追加の Azure Media Services アカウントを作成することは**しないでください**。
+固定されていないリソースについては、[サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開いてクォータの増加を依頼できます。 要求には、目的のクォータの変更、ユース ケース シナリオ、および必要なリージョンに関する詳細情報を含めてください。 <br/>上限を高くするために追加の Azure Media Services アカウントを作成することは **しないでください** 。
 
 ## <a name="next-steps"></a>次のステップ
 

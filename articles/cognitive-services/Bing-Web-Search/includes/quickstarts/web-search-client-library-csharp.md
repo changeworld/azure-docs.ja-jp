@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3f8f7c41e4d18909ec4f483a0e37d83b4d05e79d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931091"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386580"
 ---
 Bing Web Search クライアント ライブラリを使用すると、C# アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、クライアントをインスタンス化し、要求を送信して、応答を出力する方法を学習します。
 
@@ -36,7 +36,7 @@ Bing Web Search クライアント ライブラリを使用すると、C# アプ
 > [!TIP]
 > 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) から取得してください。
 
-最初の手順で、新しいコンソール プロジェクトを作成します。 コンソール プロジェクトの設定で支援が必要な場合は、「[Hello World -- 最初のプログラム (C# プログラミング ガイド)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)」を参照してください。 アプリケーションで Bing Web Search SDK を使用するには、NuGet パッケージ マネージャーを使用して `Microsoft.Azure.CognitiveServices.Search.WebSearch` をインストールする必要があります。
+最初の手順で、新しいコンソール プロジェクトを作成します。 コンソール プロジェクトの設定で支援が必要な場合は、「[Hello World -- 最初のプログラム (C# プログラミング ガイド)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)」を参照してください。 アプリケーションで Bing Web Search SDK を使用するには、NuGet パッケージ マネージャーを使用して `Microsoft.Azure.CognitiveServices.Search.WebSearch` をインストールする必要があります。
 
 [Web Search SDK パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)によって、以下のものもインストールされます。
 
@@ -54,6 +54,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch.Models;
 using System.Linq;
+using System.Threading.Tasks;
 ```
 
 ## <a name="create-project-scaffolding"></a>プロジェクトのスキャフォールディングの作成
@@ -79,7 +80,7 @@ namespace WebSearchSDK
 このコードは、検索クエリを構築します。
 
 ```csharp
-public static async void WebResults(WebSearchClient client)
+public static async Task WebResults(WebSearchClient client)
 {
     try
     {
@@ -206,11 +207,11 @@ else
 このアプリケーションの main メソッドには、クライアントをインスタンス化し、`subscriptionKey` を検証して、`WebResults` を呼び出すコードが含まれています。 続行する前に、ご自分の Azure アカウントの有効なサブスクリプション キーを入力してください。
 
 ```csharp
-static void Main(string[] args)
+static async Task Main(string[] args)
 {
     var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-    WebResults(client);
+    await WebResults(client);
 
     Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
@@ -236,7 +237,7 @@ dotnet run
 1. このコードをコンソール プロジェクトに追加します。
 
     ```csharp
-    public static async void WebResultsWithCountAndOffset(WebSearchClient client)
+    public static async Task WebResultsWithCountAndOffset(WebSearchClient client)
     {
         try
         {
@@ -273,13 +274,13 @@ dotnet run
 2. `WebResultsWithCountAndOffset` を `main` に追加します。
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -295,7 +296,7 @@ dotnet run
 1. このコードをコンソール プロジェクトに追加します。
 
     ```csharp
-    public static async void WebSearchWithResponseFilter(WebSearchClient client)
+    public static async Task WebSearchWithResponseFilter(WebSearchClient client)
     {
         try
         {
@@ -334,15 +335,15 @@ dotnet run
 2. `WebResultsWithCountAndOffset` を `main` に追加します。
 
     ```csharp
-    static void Main(string[] args)
+    static Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
         // Search with news filter...
-        WebSearchWithResponseFilter(client);
+        await WebSearchWithResponseFilter(client);
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -358,7 +359,7 @@ dotnet run
 1. このコードをコンソール プロジェクトに追加します。
 
     ```csharp
-    public static async void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
+    public static async Task WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
     {
         try
         {
@@ -396,17 +397,17 @@ dotnet run
 2. `WebResultsWithCountAndOffset` を `main` に追加します。
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-        WebResults(client);
+        await WebResults(client);
         // Search with count and offset...
-        WebResultsWithCountAndOffset(client);  
+        await WebResultsWithCountAndOffset(client);  
         // Search with news filter...
-        WebSearchWithResponseFilter(client);
+        await WebSearchWithResponseFilter(client);
         // Search with answer count, promote, and safe search
-        WebSearchWithAnswerCountPromoteAndSafeSearch(client);
+        await WebSearchWithAnswerCountPromoteAndSafeSearch(client);
 
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
@@ -423,4 +424,3 @@ dotnet run
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
-                                    

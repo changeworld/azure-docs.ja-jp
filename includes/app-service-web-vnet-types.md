@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: c31a5aaa9866a4ce97cd3cd59a8e363834f70587
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312835"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97812790"
 ---
 * Isolated を除くすべての価格プランをサポートするマルチテナント システム
 * VNet にデプロイされ、Isolated 価格プランのアプリをサポートする App Service Environment。
@@ -23,7 +23,7 @@ VNet 統合により、アプリから VNet 内のリソースにアクセスで
 
 以下は、VNet 統合機能の特徴です。
 
-* Standard、Premium、PremiumV2、または Elastic Premium の価格プランが必要である。
+* Standard、Premium、PremiumV2、PremiumV3、または Elastic Premium の価格プランが必要である。
 * TCP と UDP をサポートする。
 * Azure App Service アプリや関数アプリで動作する。
 
@@ -38,5 +38,5 @@ VNet 統合により、アプリから VNet 内のリソースにアクセスで
 使用されているバージョンに関係なく、VNet 統合によってアプリに VNet 内のリソースへのアクセスが付与されますが、VNet からアプリへの受信プライベート アクセスは付与されません。 プライベート サイト アクセスとは、Azure VNet 内など、プライベート ネットワークのみからアプリにアクセスできるようにすることです。 Vnet 統合は、アプリから VNet への送信呼び出しを行うためにのみ存在します。
 
 <!--Links-->
-[ASEintro]: https://docs.microsoft.com/azure/app-service/environment/intro
-[Networkingfeatures]: https://docs.microsoft.com/azure/app-service/networking-features
+[ASEintro]: ../articles/app-service/environment/intro.md
+[Networkingfeatures]: ../articles/app-service/networking-features.md

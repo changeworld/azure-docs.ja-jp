@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して Azure SQL Edge (プレビュー) とデータを同期する
-description: Azure SQL Edge (プレビュー) と Azure Blob Storage の間でデータを同期する方法について説明します。
+title: Azure Data Factory を使用して Azure SQL Edge とデータを同期する
+description: Azure SQL Edge と Azure Blob Storage の間でデータを同期する方法について説明します
 keywords: SQL Edge,SQL Edge のデータの同期, SQL Edge データ ファクトリ
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: b83201ae864d1f1eb9124af5268360bb1748f6c8
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255434"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507610"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して SQL Edge と Azure Blob Storage のデータを同期する
 
@@ -59,8 +59,11 @@ SQL Edge インスタンスで次のコマンドを実行します。
     CREATE PROCEDURE usp_write_watermark @timestamp datetime, @TableName varchar(50)  
     AS  
     BEGIN
+    
     UPDATE [dbo].[watermarktable]
-    SET [WatermarkValue] = @timestamp WHERE [TableName] = @TableName
+    SET [WatermarkValue] = @timestamp
+    WHERE [TableName] = @TableName
+
     END
     Go
 ```
@@ -75,7 +78,7 @@ SQL Edge インスタンスで次のコマンドを実行します。
 
 ### <a name="create-a-data-factory-pipeline"></a>Data Factory パイプラインを作成する
 
-1. Azure Data Factory UI の **[Let's get started]\(始めましょう\) ページ**で、 **[パイプラインを作成]** を選択します。
+1. Azure Data Factory UI の **[Let's get started]\(始めましょう\) ページ** で、 **[パイプラインを作成]** を選択します。
 
     ![Data Factory パイプラインを作成する](media/tutorial-sync-data-factory/data-factory-get-started.png)
 
@@ -97,7 +100,7 @@ SQL Edge インスタンスで次のコマンドを実行します。
 
     2. **[サーバー名]** に SQL Edge サーバーの詳細を入力します。
 
-    3. 一覧から目的の**データベース名**を選択します。
+    3. 一覧から目的の **データベース名** を選択します。
 
     4. **[ユーザー名]** と **[パスワード]** を入力します。
 
@@ -179,15 +182,15 @@ SQL Edge インスタンスで次のコマンドを実行します。
 
     1. **[ファイル パス]** に「*asdedatasync/incrementalcopy*」と入力します。この場合、*asdedatasync* は BLOB コンテナー名であり、*incrementalcopy* はフォルダー名です。 このコンテナーが存在しない場合は、コンテナーを作成するか、既存のコンテナーの名前を使用してください。 出力フォルダー *incrementalcopy* が存在しない場合は、Azure Data Factory によって自動的に作成されます。 **[ファイル パス]** の **[参照]** ボタンを使用して、BLOB コンテナー内のフォルダーに移動することもできます。
 
-    2. **[ファイル パス]** の**ファイル**部分で **[動的なコンテンツの追加 [Alt+P]]** を選択し、表示されたウィンドウで「 **@CONCAT('Incremental-', pipeline().RunId, '.txt')** 」と入力します。 **[完了]** を選択します。 ファイル名は、この式によって動的に生成されます。 各パイプラインの実行には、一意の ID があります。 コピー アクティビティは、実行 ID を使用して、ファイル名を生成します。
+    2. **[ファイル パス]** の **ファイル** 部分で **[動的なコンテンツの追加 [Alt+P]]** を選択し、表示されたウィンドウで「 **@CONCAT('Incremental-', pipeline().RunId, '.txt')** 」と入力します。 **[完了]** を選択します。 ファイル名は、この式によって動的に生成されます。 各パイプラインの実行には、一意の ID があります。 コピー アクティビティは、実行 ID を使用して、ファイル名を生成します。
 
 28. 上部のパイプライン タブを選択するか、左側のツリー ビューでパイプラインの名前を選択し、パイプライン エディターに切り替えます。
 
 29. **[アクティビティ]** ペインで **[全般]** を展開し、 **[アクティビティ]** ペインからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグします。 コピー アクティビティの緑 (成功) の出力をストアド プロシージャ アクティビティに接続します。
 
-30. パイプライン デザイナーで**ストアド プロシージャ アクティビティ**を選択し、その名前を **SPtoUpdateWatermarkActivity** に変更します。
+30. パイプライン デザイナーで **ストアド プロシージャ アクティビティ** を選択し、その名前を **SPtoUpdateWatermarkActivity** に変更します。
 
-31. **[SQL アカウント]** タブに切り替えて、 **[リンクされたサービス]** で **[QLDBEdgeLinkedService]** を選択します。
+31. **[SQL アカウント]** タブに切り替えて、 **[リンクされたサービス]** で *_[QLDBEdgeLinkedService]_* を選択します。
 
 32. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。
 

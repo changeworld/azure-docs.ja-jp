@@ -3,19 +3,19 @@ title: ワークスペースとプロジェクトとは - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: この記事では、ワークスペースとプロジェクトの違い、およびカスタム翻訳ツール サービスのプロジェクトのカテゴリとラベルについて説明します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 41586b2ec96d30fd583cbc9a746493ed9206548b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0abda0307e3cdbd0e73e131bee072172375198eb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510744"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898055"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Custom Translator ワークスペースとは
 
@@ -25,7 +25,7 @@ ms.locfileid: "88510744"
 
 ## <a name="what-is-a-custom-translator-project"></a>Custom Translator プロジェクトとは
 
-プロジェクトは、モデル、ドキュメント、およびテストのラッパーです。 各プロジェクトには、正しい言語ペアを持ち、そのワークスペースにアップロードされたすべてのドキュメントが自動的に追加されます。 たとえば、英語からスペイン語へのプロジェクトとスペイン語から英語へのプロジェクトの両方がある場合、同じドキュメントが両方のプロジェクトに含まれます。 各プロジェクトには CategoryID が関連付けられており、翻訳のために [V3 API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) のクエリを実行するときに使用されます。 CategoryID は、Custom Translator を使用して構築したカスタマイズ済みシステムから翻訳を取得するために使用されるパラメーターです。
+プロジェクトは、モデル、ドキュメント、およびテストのラッパーです。 各プロジェクトには、正しい言語ペアを持ち、そのワークスペースにアップロードされたすべてのドキュメントが自動的に追加されます。 たとえば、英語からスペイン語へのプロジェクトとスペイン語から英語へのプロジェクトの両方がある場合、同じドキュメントが両方のプロジェクトに含まれます。 各プロジェクトには CategoryID が関連付けられており、翻訳のために [V3 API](../reference/v3-0-translate.md?tabs=curl) のクエリを実行するときに使用されます。 CategoryID は、Custom Translator を使用して構築したカスタマイズ済みシステムから翻訳を取得するために使用されるパラメーターです。
 
 ## <a name="project-categories"></a>プロジェクトのカテゴリ
 
@@ -39,7 +39,7 @@ ms.locfileid: "88510744"
 
 Custom Translator を使用すると、プロジェクトにプロジェクト ラベルを割り当てることができます。 プロジェクト ラベルで、言語ペアとカテゴリが同じ複数のプロジェクトを区別します。 必要な場合を除き、プロジェクト ラベルを使用しないことをお勧めします。
 
-プロジェクト ラベルは CategoryID の一部として使用されます。 プロジェクト ラベルを設定しない場合、またはプロジェクト全体で同様に設定されている場合、同じカテゴリで言語ペアが*異なる*プロジェクトは同じ CategoryID を共有することになります。 このアプローチは、Text Translator API を使用するときに、各プロジェクトに固有の CategoryID について心配することなく、自分も顧客も言語間を切り替えることができるので便利です。
+プロジェクト ラベルは CategoryID の一部として使用されます。 プロジェクト ラベルを設定しない場合、またはプロジェクト全体で同様に設定されている場合、同じカテゴリで言語ペアが *異なる* プロジェクトは同じ CategoryID を共有することになります。 このアプローチは、Text Translator API を使用するときに、各プロジェクトに固有の CategoryID について心配することなく、自分も顧客も言語間を切り替えることができるので便利です。
 
 たとえば、テクノロジ ドメインで英語からフランス語へ、フランス語から英語への翻訳を有効にしたい場合は、英語用 -\> フランス語用とフランス語 -\> 英語用の 2 つのプロジェクトを作成します。 両方に同じカテゴリ (テクノロジ) を指定し、プロジェクト ラベルは空白のままにします。 両方のプロジェクトの CategoryID が一致するので、CategoryID を変更することなく、英語とフランス語の両方の翻訳に対して API のクエリを実行することができます。
 

@@ -1,19 +1,17 @@
 ---
-title: Application Insights および Log Analytics によって使用される IP アドレス | Microsoft Docs
+title: Azure Monitor で使用される IP アドレス
 description: Application Insights で必要なサーバー ファイアウォール例外
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
-ms.date: 06/18/2020
-ms.openlocfilehash: 79b9442cb31ab326d3b556da9b2e3ef066f9bd41
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 01/27/2020
+ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584120"
 ---
-# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
-[Azure Application Insights](./app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
+# <a name="ip-addresses-used-by-azure-monitor"></a>Azure Monitor で使用される IP アドレス
+[Azure Monitor](../overview.md) ではたくさんの IP アドレスが使用されます。 Azure Monitor は Log Analytics と Application Insights に加え、中心的なプラットフォーム メトリクスとログで構成されています。 監視しているアプリまたはインフラストラクチャがファイアウォールの背後でホストされているとき、場合によっては、これらのアドレスを知っている必要があります。
 
 > [!NOTE]
 > これらは静的アドレスですが、しばしば変更の必要が生じることがあります。 Application Insights のトラフィックは、受信ファイアウォール規則を必要とする可用性の監視と webhook を除き、すべて送信トラフィックです。
@@ -29,7 +27,7 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
 | 目的 | URL | IP | Port |
 | --- | --- | --- | --- |
-| テレメトリ |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64 <br/>13.86.218.255  | 443 |
+| テレメトリ |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64 <br/>13.86.218.255 <br/>20.37.74.240 <br/>65.52.250.236 <br/>13.69.229.240 <br/>52.236.186.210<br/>52.167.107.65<br/>40.71.12.237<br/>40.78.229.32<br/>40.78.229.33<br/>51.105.67.161<br/>40.124.64.192<br/>20.44.12.194<br/>20.189.172.0<br/>13.69.106.208<br/>40.78.253.199<br/>40.78.253.198<br/>40.78.243.19 | 443 |
 | ライブ メトリック ストリーム | live.applicationinsights.azure.com<br/>rt.applicationinsights.microsoft.com<br/>rt.services.visualstudio.com|23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207<br/>157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113| 443 |
 
 ## <a name="status-monitor"></a>Status Monitor
@@ -49,9 +47,13 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 ## <a name="availability-tests"></a>可用性テスト
 これは [可用性 Web テスト](./monitor-web-app-availability.md) の実行元のアドレスの一覧です。 アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
 
+
+> [!NOTE]
+> パブリック Azure の可用性テスト エージェントとの直接の受信通信を許可できないプライベート仮想ネットワーク内にあるリソースの場合、唯一のオプションは、[独自のカスタム可用性テストを作成してホストする](availability-azure-functions.md)ことです。
+
 ### <a name="service-tag"></a>サービス タグ
 
-Azure ネットワーク セキュリティ グループを使用している場合は、単に **受信ポートの規則** を追加して Application Insights 可用性テストからのトラフィックを許可します。そのためには、**サービスタグ** を **ソース**として選択し、**ApplicationInsightsAvailability** を **ソースサービスタグ** として選択します。
+Azure ネットワーク セキュリティ グループを使用している場合は、単に **受信ポートの規則** を追加して Application Insights 可用性テストからのトラフィックを許可します。そのためには、**サービスタグ** を **ソース** として選択し、**ApplicationInsightsAvailability** を **ソースサービスタグ** として選択します。
 
 >[!div class="mx-imgBorder"]
 >![[設定] で [受信セキュリティ規則] を選択してから、タブの最上部にある [追加] を選択します](./media/ip-addresses/add-inbound-security-rule.png)
@@ -172,14 +174,33 @@ East US
 20.42.35.112/28
 20.42.35.128/28
 
-Azure US Government (Not needed if you are an Azure Public cloud customer)
-
-20.140.48.160/27
-20.140.56.160/27
-20.140.64.160/27
-20.140.72.160/27
-52.127.49.96/27
 ```  
+
+#### <a name="azure-government"></a>Azure Government
+
+Azure パブリック クラウドのお客様の場合は必要ありません。
+
+```
+USGov Virginia
+52.227.229.80/31
+
+
+USGov Arizona
+52.244.35.112/31
+
+
+USGov Texas
+52.243.157.80/31
+
+
+USDoD Central
+52.182.23.96/31
+
+
+USDoD East
+52.181.33.96/31
+
+```
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights および Log Analytics API
 
@@ -222,9 +243,33 @@ Azure US Government (Not needed if you are an Azure Public cloud customer)
 
 ## <a name="action-group-webhooks"></a>アクション グループ Webhook
 
-| 目的 | IP | Port
-| --- | --- | --- |
-| アラート | 13.72.19.232 <br/>13.106.57.181<br/>13.106.54.3<br/>13.106.54.19<br/>13.106.38.142<br/>13.106.38.148<br/>13.106.57.196<br/>13.106.57.197<br/>52.244.68.117<br/>52.244.65.137<br/>52.183.31.0<br/>52.184.145.166<br/>51.4.138.199<br/>51.5.148.86<br/>51.5.149.19 | 443 |
+アクション グループによって使用される IP アドレスの一覧は、[Get-AzNetworkServiceTag PowerShell コマンド](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)で問い合わせることができます。
+
+### <a name="action-groups-service-tag"></a>アクション グループ サービス タグ
+ソース IP アドレスの変更管理は、非常に時間がかかることがあります。 **サービス タグ** を使用すると、構成を更新する必要がなくなります。 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 Microsoft は IP アドレスを管理し、アドレスが変更されたとき、サービス タグを自動更新します。アクション グループのネットワーク セキュリティ規則を更新する必要がありません。
+
+1. [Azure サービス] の下の Azure portal で、"*ネットワーク セキュリティ グループ*" を検索します。
+2. **[追加]** をクリックして、ネットワーク セキュリティ グループを作成します。
+
+   1. リソース グループ名を追加し、"*インスタンスの詳細*" を入力します。
+   1. **[確認および作成]** をクリックして、 *[作成]* をクリックします。
+   
+   :::image type="content" source="../alerts/media/action-groups/action-group-create-security-group.png" alt-text="ネットワーク セキュリティ グループの作成方法の例。"border="true":::
+
+3. [リソース グループ] にアクセスし、作成した "*ネットワーク セキュリティ グループ*" をクリックします。
+
+    1. *[受信セキュリティ規則]* を選択します。
+    1. **[追加]** をクリックします。
+    
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
+
+4. 新しいウィンドウが右ペインに表示されます。
+    1.  ソースを選択します。"**サービス タグ**"
+    1.  [ソース サービス タグ]:**ActionGroup**
+    1.  **[追加]** をクリックします。
+    
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
+
 
 ## <a name="profiler"></a>プロファイラー
 
@@ -241,7 +286,7 @@ Azure US Government (Not needed if you are an Azure Public cloud customer)
 
 | 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
-| エージェント | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
-| ポータル | ppe.gateway.azureserviceprofiler.net | 動的 | 443
+| エージェント | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
+| ポータル | gateway.azureserviceprofiler.net | 動的 | 443
 | ストレージ | *.core.windows.net | 動的 | 443
 

@@ -1,16 +1,18 @@
 ---
 title: クイック スタート:Node.js 用 REST API シリーズを使用した QnA Maker
 description: このクイックスタートでは、Node.js 用 QnA Maker の REST API の使用を開始する方法について説明します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。  QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, devx-track-javascript
+ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 645f9ffb1d907eb576f5414b593ef57679d26daa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245589"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351148"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>クイック スタート:Node.js 用 QnA Maker REST API シリーズ
 
@@ -25,7 +27,7 @@ Node.js の QnA Maker REST API シリーズを使用して、次の操作を行�
 * ナレッジ ベースのダウンロード
 * 操作の状態の取得
 
-[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Node.js サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[リファレンス ドキュメント](/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Node.js サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -39,9 +41,9 @@ Node.js の QnA Maker REST API シリーズを使用して、次の操作を行�
 
 ### <a name="create-a-qna-maker-azure-resource"></a>QnA Maker Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に QnA Maker のリソースを作成します。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](../../cognitive-services-apis-create-account.md) または [Azure CLI](../../cognitive-services-apis-create-account-cli.md) を使用して、ローカル コンピューター上に QnA Maker のリソースを作成します。
 
-自分のリソースからキーを取得した後、`QNAMAKER_RESOURCE_KEY` および `QNAMAKER_AUTHORING_ENDPOINT` という名前で、そのリソースの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。 Azure portal 上のリソースの**クイックスタート** ページに表示されているキーとエンドポイントの値を使用します。
+自分のリソースからキーを取得した後、`QNAMAKER_RESOURCE_KEY` および `QNAMAKER_AUTHORING_ENDPOINT` という名前で、そのリソースの[環境変数を作成](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)します。 Azure portal 上のリソースの **クイックスタート** ページに表示されているキーとエンドポイントの値を使用します。
 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
@@ -76,11 +78,15 @@ npm install requestretry request --save
 
 ## <a name="add-the-dependencies"></a>依存関係を追加する
 
-`rest-apis.js` という名前のファイルを作成し、HTTP 要求を行うために次の _requires_ ステートメントを追加します。
+`rest-apis.js` という名前のファイルを作成し、次の依存関係を追加します。
 
-```javascript
-const request = require("requestretry");
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="dependencies":::
+
+## <a name="add-utility-functions"></a>ユーティリティ関数を追加する
+
+次のユーティリティ関数を追加します。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="utility":::
 
 ## <a name="add-azure-resource-information"></a>Azure リソース情報の追加
 
@@ -88,10 +94,10 @@ const request = require("requestretry");
 
 次の環境値を設定します。
 
-* `QNAMAKER_RESOURCE_KEY` - この**キー**は 32 文字の文字列で、Azure portal の **クイックスタート** ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
-* `QNAMAKER_AUTHORING_ENDPOINT` - `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成エンドポイントには、実際の**リソース名**が含まれます。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
+* `QNAMAKER_RESOURCE_KEY` - この **キー** は 32 文字の文字列で、Azure portal の **クイックスタート** ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
+* `QNAMAKER_AUTHORING_ENDPOINT` - `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成エンドポイントには、実際の **リソース名** が含まれます。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="authorization":::
 
 ## <a name="create-a-knowledge-base"></a>ナレッジ ベースの作成
 
@@ -101,48 +107,51 @@ const request = require("requestretry");
 * **ファイル** - アクセス許可を必要としないローカル ファイル。
 * **URL** - 公開されている URL。
 
-[REST API を使用してナレッジ ベースを作成します](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。
+[REST API を使用してナレッジ ベースを作成します](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=createKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>ナレッジ ベースの置換
 
-[REST API を使用してナレッジ ベースを置き換えます](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)。
+[REST API を使用してナレッジ ベースを置き換えます](/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=replaceKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
 ## <a name="publish-a-knowledge-base"></a>ナレッジ ベースの公開
 
 ナレッジ ベースを公開します。 このプロセスによって、HTTP クエリ予測エンドポイントからナレッジ ベースを使用できるようになります。
 
-[REST API を使用してナレッジ ベースを公開します](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)。
+[REST API を使用してナレッジ ベースを公開します](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)。
 
-
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=publish)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>ナレッジ ベースのダウンロード
 
-[REST API を使用してナレッジ ベースをダウンロードします](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)。
+[REST API を使用してナレッジ ベースをダウンロードします](/rest/api/cognitiveservices/qnamaker/knowledgebase/download)。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=download)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
 ## <a name="delete-a-knowledge-base"></a>ナレッジ ベースを削除する
 
 ナレッジ ベースの使用を終了したら、それを削除します。
 
-[REST API を使用してナレッジ ベースを削除します](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)。
+[REST API を使用してナレッジ ベースを削除します](/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)。
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=deleteKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
 ## <a name="get-status-of-an-operation"></a>操作の状態の取得
 
 作成プロセスなどの長時間実行されるプロセスでは、操作 ID が返されます。操作 ID は、別の REST API 呼び出しで確認する必要があります。 この関数は、作成応答の本文を受け取ります。 重要なキーは `operationState` で、ポーリングを続行する必要があるかどうかを決定します。
 
-[REST API を使用して、ナレッジ ベースの操作を監視します](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)。
+[REST API を使用して、ナレッジ ベースの操作を監視します](/rest/api/cognitiveservices/qnamaker/operations/getdetails)。
 
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=operationDetails)]
+## <a name="add-main-method"></a>main メソッドを追加する
 
+次の `main` メソッドを追加します。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="main":::
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -162,7 +171,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
->[チュートリアル:KB を作成して回答する](../tutorials/create-publish-query-in-portal.md)
+>[チュートリアル:KB を作成して回答する](./create-publish-knowledge-base.md)
 
 * [QnA Maker API とは](../Overview/overview.md)
 * [ナレッジ ベースを編集する](../how-to/edit-knowledge-base.md)

@@ -3,12 +3,12 @@ title: Azure DevTest Labs 仮想マシンでブラウザー接続を有効にす
 description: DevTest Labs が Azure Bastion と統合されました。これにより、ラボの所有者は、すべてのラボ仮想マシンへのブラウザーを使用したアクセスを有効にできます。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 6d9d631c79c22f1f713cfc4ee7cdd766a4ad8f06
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870495"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341174"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs 仮想マシンでブラウザー接続を有効にする 
 DevTest Labs は [Azure Bastion](../bastion/index.yml) と統合されたことにより、ブラウザーを使用して仮想マシンに接続できます。 最初に、ラボ仮想マシンでブラウザー接続を有効にする必要があります。
@@ -20,8 +20,8 @@ DevTest Labs は [Azure Bastion](../bastion/index.yml) と統合されたこと�
 
 ## <a name="prerequisites"></a>前提条件 
 - 既存のラボの仮想ネットワークに Bastion ホストをデプロイするか、 **(または)** Bastion が構成されている仮想ネットワークにラボを接続します。
-仮想ネットワークで Bastion ホストをデプロイする方法については、「[Azure Bastion ホストを作成する](../bastion/bastion-create-host-portal.md)」を参照してください。 Bastion ホストを作成するときに、ラボの仮想ネットワークを選択します。 
-- ラボ ユーザーは、Bastion ホスト、および Bastion が構成されている仮想ネットワークで**閲覧者**ロールを持っている必要があります。 
+仮想ネットワークで Bastion ホストをデプロイする方法については、「[Azure Bastion ホストを作成する](../bastion/tutorial-create-host-portal.md)」を参照してください。 Bastion ホストを作成するときに、ラボの仮想ネットワークを選択します。 
+- ラボ ユーザーは、Bastion ホスト、および Bastion が構成されている仮想ネットワークで **閲覧者** ロールを持っている必要があります。 
 
 ## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Bastion 仮想ネットワークに 2 番目のサブネットを作成する
 最初に、Bastion 仮想ネットワークに 2 番目のサブネットを作成する必要があります。これは、AzureBastionSubnet の中に Bastion 以外のリソースを作成することが許可されていないためです。 次の図に示すように、Bastion 仮想ネットワーク内に別のサブネットを作成します。
@@ -42,7 +42,7 @@ DevTest Labs は [Azure Bastion](../bastion/index.yml) と統合されたこと�
 1. 左側のメニューの **[設定]** セクションで、 **[構成とポリシー]** を選択します。 
 1. **[仮想ネットワーク]** を選択します。
 1. ツールバーの **[追加]** を選択します。 
-1. Bastion ホストがデプロイされている**仮想ネットワーク**を選択します。 
+1. Bastion ホストがデプロイされている **仮想ネットワーク** を選択します。 
 1. VM 用のサブネットを選択します。これは **AzureBastionSubnet** ではなく、以前作成した別のものです。 一覧の下部にサブネットが表示されない場合は、ページを閉じて再度開きます。 
 
     ![サブネットで VM の作成を有効にする](./media/connect-virtual-machine-through-browser/enable-vm-creation-subnet.png)

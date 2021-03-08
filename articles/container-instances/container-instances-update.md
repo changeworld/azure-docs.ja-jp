@@ -3,12 +3,12 @@ title: コンテナー グループの更新
 description: Azure Container Instances のコンテナー グループに含まれる実行中のコンテナーを更新する方法について説明します。
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: fb31eeda83532c408a303e879439006bcd7d4e45
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928722"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200650"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーを更新する
 
@@ -78,7 +78,7 @@ Windows Server Core などの大規模なコンテナー イメージに基づ�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、**コンテナー グループ**についてたびたび言及しました。 Azure Container Instances の各コンテナーはコンテナー グループにデプロイされます。コンテナー グループには複数のコンテナーを格納できます。
+この記事では、**コンテナー グループ** についてたびたび言及しました。 Azure Container Instances の各コンテナーはコンテナー グループにデプロイされます。コンテナー グループには複数のコンテナーを格納できます。
 
 [Azure Container Instances のコンテナー グループ](./container-instances-container-groups.md)
 
@@ -89,6 +89,6 @@ Windows Server Core などの大規模なコンテナー イメージに基づ�
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
+[az-container-create]: /cli/azure/container#az-container-create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-container-export]: /cli/azure/container#az-container-export

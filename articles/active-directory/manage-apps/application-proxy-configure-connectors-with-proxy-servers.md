@@ -1,9 +1,9 @@
 ---
-title: Azure AD で既存のオンプレミス プロキシ サーバーと連携する| Microsoft Docs
-description: 既存のオンプレミス プロキシ サーバーと連携する方法について説明します。
+title: 既存のオンプレミス プロキシ サーバーおよび Azure Active Directory と連携する
+description: Azure Active Directory で既存のオンプレミス プロキシ サーバーと連携する方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 09a257c4b80fd796ac4e1e8203f00857d2d95eaf
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077511"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259119"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -111,18 +111,19 @@ ms.locfileid: "88077511"
 
 次の URL へのアクセスを許可します。
 
-| URL | 用途 |
-| --- | --- |
-| \*.msappproxy.net<br>\*.servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | コネクタでは、これらの URL を使用して証明書が検証されます。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
+| URL | Port |  用途 |
+| --- | --- | --- |
+| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | コネクタでは、証明書の検証にこれらの URL が使用されます。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
+| ctldl.windowsupdate.com | 80/HTTP | 登録プロセスの間、この URL がコネクタで使用されます。 |
 
-ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
+ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。
 
 FQDN による接続を許可することはできず、代わりに IP 範囲を指定する必要がある場合は、これらのオプションを使用します。
 
 * すべてのアクセス先に対するコネクタの送信アクセスを許可する。
-* [Azure データセンターの全 IP アドレス範囲](https://www.microsoft.com//download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。 IP アドレスのサブセットのみを使用すると、構成が分断される可能性があります。
+* Azure データセンターの全 IP アドレス範囲に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。 IP アドレスのサブセットのみを使用すると、構成が分断される可能性があります。 Azure データ センターの最新 IP 範囲をダウンロードするには、[https://download.microsoft.com](https://download.microsoft.com) に移動して、"Azure IP 範囲とサービス タグ" を検索します。 必ず関連するクラウドを選択してください。 たとえば、パブリック クラウドの IP 範囲は、"Azure IP 範囲とサービス タグ – パブリック クラウド" で見つかります。 米国政府のクラウドは、"Azure IP 範囲とサービス タグ - 米国政府のクラウド" で検索すると見つかります。
 
 #### <a name="proxy-authentication"></a>プロキシの認証
 
@@ -167,6 +168,9 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 
 任意の監視ツールを使用することができます。 ここでは、Microsoft Message Analyzer を使用しています。
 
+> [!NOTE]
+> [Microsoft Message Analyzer (MMA) は廃止](/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f)され、2019 年 11 月 25 日に microsoft.com サイトからダウンロード パッケージが削除されました。  現時点では、開発における Microsoft Message Analyzer の Microsoft 代替製品はありません。  同様の機能については、Wireshark などのサード パーティ製のネットワーク プロトコル アナライザー ツールを使用することを検討してください。
+
 以下に示すのは Message Analyzer の例ですが、原則はどの分析ツールでも同じです。
 
 ### <a name="take-a-capture-of-connector-traffic"></a>コネクタ トラフィックのキャプチャを実行する
@@ -207,4 +211,4 @@ SYN パケットは、TCP 接続を確立するために最初に送信される
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
-* コネクタの接続に問題がある場合は、[Azure Active Directory に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)に質問を投稿するか、サポート チームに対するチケットを作成してください。
+* コネクタの接続に問題がある場合は、[Azure Active Directory に関する Microsoft Q&A 質問ページ](/answers/topics/azure-active-directory.html)に質問を投稿するか、サポート チームに対するチケットを作成してください。

@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: e87be0db65cf12a265566e0c05815722ce3cc609
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229397"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578877"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
@@ -43,7 +43,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 * **arm-templates** フォルダー。多数の Azure Resource Manager テンプレートが含まれます。 この記事でテンプレートについて説明します。
 * **client-application** フォルダー。[ffmpeg による Azure Batch .NET ファイル処理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)サンプルのコピーです。 これはこの記事では必要ありません。
-* **hpc-application** フォルダー。Windows 64 ビット バージョンの [ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) です。
+* **hpc-application** フォルダー。Windows 64 ビット バージョンの [ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) です。
 * **pipelines** フォルダー。 これには、構築プロセスを示す YAML ファイルが含まれています。 これはこの記事で説明します。
 
 このセクションでは、バージョン管理と Resource Manager テンプレートの設計に習熟していることを前提としています。 これらの概念になじみがない場合は、以下のページで詳細を確認してください。
@@ -291,7 +291,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 インフラストラクチャとソフトウェアはコードとして定義でき、同じリポジトリに一緒に配置できます。
 
-このソリューションでは、アプリケーション パッケージとして ffmpeg を使用します。 ffmpeg パッケージは[ここで](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip)ダウンロードできます。
+このソリューションでは、アプリケーション パッケージとして ffmpeg を使用します。 ffmpeg パッケージは[ここで](https://www.videohelp.com/software?d=ffmpeg-3.3.4-win64-static.zip)ダウンロードできます。
 
 ![Git リポジトリの構造の例](media/batch-ci-cd/git-repository.jpg)
 
@@ -315,9 +315,9 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 ## <a name="preparing-the-hpc-application"></a>HPC アプリケーションを準備する
 
-この例では、特に **hpc-application**フォルダーについて説明します。 **hpc-application** フォルダーは、Azure Batch アカウント内から実行される ffmpeg ソフトウェアです。
+この例では、特に **hpc-application** フォルダーについて説明します。 **hpc-application** フォルダーは、Azure Batch アカウント内から実行される ffmpeg ソフトウェアです。
 
-1. Azure DevOps 組織の Azure Pipelines の [ビルド] セクションに移動します。 **新しいパイプライン**を作成します。
+1. Azure DevOps 組織の Azure Pipelines の [ビルド] セクションに移動します。 **新しいパイプライン** を作成します。
 
     ![新しいビルド パイプラインを作成する](media/batch-ci-cd/new-build-pipeline.jpg)
 
@@ -367,7 +367,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 インフラストラクチャのデプロイには多くの手順が関係します。 [リンクされたテンプレート](../azure-resource-manager/templates/linked-templates.md)を使用しているため、それらのテンプレートにパブリック エンドポイント (HTTP または HTTPS) からアクセスできる必要があります。 このためには、GitHub 上のリポジトリ、Azure Blob Storage アカウント、または別の保存場所を使用できます。 アップロードされたテンプレート成果物は、プライベート モードで保持されるが、なんらかの形式の Shared Access Signature (SAS) トークンを使用してアクセスできるため、安全性が保たれます。 次の例では、Azure Storage BLOB のテンプレートを含むインフラストラクチャをデプロイする方法を説明します。
 
-1. **新しいリリース定義**を作成し、空の定義を選択します。 次に、新しく作成された環境の名前を、パイプラインに関連するものに変更する必要があります。
+1. **新しいリリース定義** を作成し、空の定義を選択します。 次に、新しく作成された環境の名前を、パイプラインに関連するものに変更する必要があります。
 
     ![初期のリリース パイプライン](media/batch-ci-cd/Release-0.jpg)
 

@@ -1,19 +1,16 @@
 ---
 title: Storm を使用して Event Hubs のイベントを処理する - Azure HDInsight
 description: Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Azure Event Hubs のデータを処理する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb1c2d8daa74d1224ad07ef7a2fb5a74f4773338
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4393c6797f5a164a063b55f8994d7d37d278f3c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000313"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929198"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
@@ -107,7 +104,7 @@ topologyBuilder.SetJavaBolt(
 
 * [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-* Java JDK 1.8 以降がインストールされている開発環境。 JDK は [Oracle](https://aka.ms/azure-jdks) からダウンロードできます。
+* Java JDK 1.8 以降がインストールされている開発環境。 JDK は [Oracle](/azure/developer/java/fundamentals/java-jdk-long-term-support) からダウンロードできます。
 
   * **JAVA_HOME** 環境変数は、Java があるディレクトリを指している必要があります。
   * **%JAVA_HOME%/bin** ディレクトリはパス内にある必要があります。
@@ -169,7 +166,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 ## <a name="deploy-the-topologies"></a>トポロジのデプロイ
 
-1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
+1. **ソリューション エクスプローラー** で **EventHubReader** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
     ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
@@ -181,7 +178,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
     ![Storm トポロジ ビューアーのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
-4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
+4. **ソリューション エクスプローラー** で **EventHubWriter** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
 5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 

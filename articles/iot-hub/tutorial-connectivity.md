@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub へのデバイス接続を確認する
-description: IoT Hub ツールを使用して、開発時に IoT ハブへのデバイスの接続に関する問題を解決します。
+title: チュートリアル - Azure IoT Hub へのデバイス接続を確認する
+description: チュートリアル - IoT Hub ツールを使用して、開発時に IoT ハブへのデバイスの接続に関する問題を解決します。
 services: iot-hub
 author: wesmc7777
 manager: philmea
@@ -11,17 +11,17 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-- devx-track-javascript
+- devx-track-js
 - devx-track-azurecli
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: f6ac83a0fc32b426a914b76d27c2920ff8ce6731
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 253ec23a421415c11e4b47670dca870ebc463256
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500250"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538700"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
@@ -36,15 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > * クラウドからデバイスへの接続を確認する
 > * デバイス ツインの同期を確認する
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルで実行する CLI スクリプトでは、[Microsoft Azure IoT Extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) を使用します。 この拡張機能をインストールするには、次の CLI コマンドを実行します。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -74,15 +66,15 @@ node --version
 
 ポータルにサインインし、IoT ハブに移動します。 次に、**IoT デバイス** ツールに移動します。
 
-![IoT デバイス ツール](media/tutorial-connectivity/iot-devices-tool.png)
+:::image type="content" source="media/tutorial-connectivity/iot-devices-tool.png" alt-text="IoT デバイス ツール":::
 
-新しいデバイスを登録するには、 **[+ 追加]** をクリックし、 **[デバイス ID]** を **MyTestDevice** に設定して **[保存]** をクリックします。
+新しいデバイスを登録するには、 **[+ 新規]** をクリックし、 **[デバイス ID]** を **MyTestDevice** に設定して、 **[保存]** をクリックします。
 
-![新しいデバイスを追加する](media/tutorial-connectivity/add-device.png)
+:::image type="content" source="media/tutorial-connectivity/add-device.png" alt-text="新しいデバイスを追加する":::
 
-**MyTestDevice** の接続文字列を取得するには、デバイスの一覧でその接続文字列をクリックし、 **[接続文字列 - 主キー]** の値をコピーします。 接続文字列には、デバイスの*共有アクセス キー*が含まれています。
+**MyTestDevice** の接続文字列を取得するには、デバイスの一覧でこのデバイスをクリックし、 **[プライマリ接続文字列]** の値をコピーします。 接続文字列には、デバイスの *共有アクセス キー* が含まれています。
 
-![デバイス接続文字列を取得する](media/tutorial-connectivity/copy-connection-string.png)
+:::image type="content" source="media/tutorial-connectivity/copy-connection-string.png" alt-text="デバイスの接続文字列を取得する}":::
 
 IoT ハブにテレメトリを送信する **MyTestDevice** をシミュレートするには、前にダウンロードした Node.js のシミュレートされたデバイス アプリケーションを実行します。
 
@@ -184,7 +176,7 @@ SAS トークンを使用してハブに接続しようとすると、ターミ�
 まず、次のコマンドを使用して、シミュレートされたデバイスの現在の接続文字列を取得します。
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
+az iot hub device-identity connection-string show --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
 メッセージを送信するシミュレートされたデバイスを実行するには、ダウンロードしたコードの **iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
@@ -226,7 +218,7 @@ az iot hub invoke-device-method --device-id MyTestDevice --method-name TestMetho
 
 ![シミュレートされたデバイスでダイレクト メソッド呼び出しを受信する](media/tutorial-connectivity/receive-method-call.png)
 
-シミュレートされたデバイスがダイレクト メソッド呼び出しを正常に受信すると、ハブに受信確認を返します。
+シミュレートされたデバイスは、ダイレクト メソッド呼び出しを正常に受信すると、ハブに受信確認を返します。
 
 ![ダイレクト メソッドの受信確認を受信する](media/tutorial-connectivity/method-acknowledgement.png)
 
@@ -273,4 +265,4 @@ IoT ハブが必要でなくなった場合は、ポータルを使用して IoT
 このチュートリアルでは、デバイス キーを確認し、デバイスからクラウドへの接続を確認し、クラウドからデバイスへの接続を確認し、デバイスのツイン同期を確認する方法を確認しました。 IoT ハブを監視する方法の詳細については、IoT Hub の監視方法に関する記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [診断を使用した監視](iot-hub-monitor-resource-health.md)
+> [IoT Hub の監視](monitor-iot-hub.md)

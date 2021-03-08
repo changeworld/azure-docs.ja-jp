@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 48f00d964a87790b8d8c9b1d8eceaed26d15199e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033616"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531969"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Storage Explorer を使用して Azure Blob Storage リソースを管理する
 
 ## <a name="overview"></a>概要
 
-[Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。
+[Azure Blob Storage](./storage/blobs/storage-quickstart-blobs-dotnet.md) は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。
 BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、Storage Explorer を使用して BLOB コンテナーおよび BLOB を操作する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -105,7 +105,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 
 ## <a name="get-the-sas-for-a-blob-container"></a>BLOB コンテナーの SAS を取得する
 
-[shared access signature (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。
+[shared access signature (SAS)](./storage/common/storage-sas-overview.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。
 つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。
 
 次の手順では、BLOB コンテナーの SAS を作成する方法を説明します。

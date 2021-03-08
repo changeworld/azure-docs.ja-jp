@@ -5,12 +5,12 @@ description: トラブルシューティングやメンテナンスのタスク�
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfac73c66969148927897de7ed6da0c56aa276a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208042"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173819"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する
 
@@ -20,15 +20,15 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、Windows Server ノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して Windows コンテナーと共に AKS クラスターを作成する][aks-windows-cli]方法に関する記事を参照してください。 トラブルシューティングを行う Windows Server ノードに対して、Windows 管理者のユーザー名とパスワードが必要です。 [Microsoft リモート デスクトップ][rdp-mac]などの RDP クライアントも必要です。
+この記事は、Windows Server ノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して Windows コンテナーと共に AKS クラスターを作成する][aks-windows-cli]方法に関する記事を参照してください。 トラブルシューティングを行う Windows Server ノードに対して、Windows 管理者のユーザー名とパスワードが必要です。 これらがわからない場合は、「[Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする](../virtual-machines/troubleshooting/reset-rdp.md)」に従ってリセットできます。 [Microsoft リモート デスクトップ][rdp-mac]などの RDP クライアントも必要です。
 
-また、Azure CLI バージョン 2.0.61 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.61 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>クラスターと同じサブネットに仮想マシンをデプロイする
 
 AKS クラスターの Windows Server ノードには、外部からアクセスできる IP アドレスはありません。 RDP 接続を作成するには、Windows Server ノードと同じサブネットに、パブリックにアクセス可能な IP アドレスを持つ仮想マシンをデプロイします。
 
-次の例では、リソース グループ *myResourceGroup*に *myVM* という名前の仮想マシンを作成します。
+次の例では、リソース グループ *myResourceGroup* に *myVM* という名前の仮想マシンを作成します。
 
 最初に、Windows Server ノード プールで使用されるサブネットを取得します。 サブネット ID を取得するには、サブネットの名前が必要です。 サブネットの名前を取得するには、vnet の名前が必要です。 クラスターでネットワークの一覧のクエリを実行して、vnet の名前を取得します。 クラスターのクエリを実行するには、その名前が必要です。 Azure Cloud Shell で次を実行することで、これらをすべて取得できます。
 
@@ -118,7 +118,7 @@ aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67
 
 ![RDP クライアントを使用した仮想マシンへの接続のイメージ](media/rdp/vm-rdp.png)
 
-仮想マシンに接続したら、仮想マシン内から、RDP クライアントを使用してトラブルシューティングを行う Windows Server ノードの*内部 IP アドレス*に接続します。
+仮想マシンに接続したら、仮想マシン内から、RDP クライアントを使用してトラブルシューティングを行う Windows Server ノードの *内部 IP アドレス* に接続します。
 
 ![RDP クライアントを使用した Windows Server ノードへの接続のイメージ](media/rdp/node-rdp.png)
 
@@ -158,10 +158,10 @@ az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --n
 
 <!-- INTERNAL LINKS -->
 [aks-windows-cli]: windows-container-cli.md
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-vm-delete]: /cli/azure/vm#az-vm-delete
-[azure-monitor-containers]: ../azure-monitor/insights/container-insights-overview.md
+[azure-monitor-containers]: ../azure-monitor/containers/container-insights-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [ssh-steps]: ssh.md
 [view-master-logs]: view-master-logs.md

@@ -4,24 +4,24 @@ description: BLOB データにアクセスできるように、アーカイブ �
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/08/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035146"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165673"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>アーカイブ層から BLOB データをリハイドレートする
 
 BLOB はアーカイブ アクセス層に含まれていますが、オフラインと見なされ、読み取りや変更はできません。 BLOB のメタデータはオンラインのままで使用可能であり、BLOB とそのプロパティの一覧を表示することができます。 BLOB データの読み取りと変更が可能なのは、ホットやクールなどのオンライン層のみになります。 アーカイブ アクセス層に格納されているデータを取得してアクセスするには、2 つのオプションがあります。
 
-1. [アーカイブ済み BLOB をオンライン層にリハイドレートする](#rehydrate-an-archived-blob-to-an-online-tier) - [[BLOB 層の設定]](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) 操作を使用して階層を変更することにより、アーカイブ BLOB をホットまたはクールにリハイドレートします。
-2. [アーカイブ済み BLOB をオンライン層にコピーする](#copy-an-archived-blob-to-an-online-tier) - [[BLOB のコピー]](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作を使用して、アーカイブ BLOB の新しいコピーを作成します。 別の BLOB 名と、移動先の層としてホットまたはクールを指定します。
+1. [アーカイブ済み BLOB をオンライン層にリハイドレートする](#rehydrate-an-archived-blob-to-an-online-tier) - [[BLOB 層の設定]](/rest/api/storageservices/set-blob-tier) 操作を使用して階層を変更することにより、アーカイブ BLOB をホットまたはクールにリハイドレートします。
+2. [アーカイブ済み BLOB をオンライン層にコピーする](#copy-an-archived-blob-to-an-online-tier) - [[BLOB のコピー]](/rest/api/storageservices/copy-blob) 操作を使用して、アーカイブ BLOB の新しいコピーを作成します。 別の BLOB 名と、移動先の層としてホットまたはクールを指定します。
 
  アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
 
@@ -29,9 +29,13 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>リハイドレートの進行状況を監視する
+
+リハイドレート中に、BLOB のプロパティの取得操作を使用して **アーカイブ ステータス** 属性をチェックし、層変更がいつ完了したかを確認します。 ステータスは、変更先の層に応じて "rehydrate-pending-to-hot" または "rehydrate-pending-to-cool" になります。 完了すると、アーカイブ ステータス プロパティが削除され、BLOB の **アクセス層** プロパティに新しい階層としてホット層またはクール層が反映されます。
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>アーカイブ済み BLOB をオンライン層にコピーする
 
-アーカイブ BLOB をリハイドレートしたくない場合は、[[BLOB のコピー]](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作の実行を選択できます。 オンラインのホット層またはクール層で、使用する新しい BLOB が作成されている間、元の BLOB はアーカイブ内で未変更のままとなります。 [BLOB のコピー] 操作では、オプションの *x-ms-rehydrate-priority* プロパティを Standard または High に設定して、BLOB コピーを作成する優先順位を指定することもできます。
+アーカイブ BLOB をリハイドレートしたくない場合は、[[BLOB のコピー]](/rest/api/storageservices/copy-blob) 操作の実行を選択できます。 オンラインのホット層またはクール層で、使用する新しい BLOB が作成されている間、元の BLOB はアーカイブ内で未変更のままとなります。 **[BLOB のコピー]** 操作では、オプションの *x-ms-rehydrate-priority* プロパティを Standard または High に設定して、BLOB コピーを作成する優先順位を指定することもできます。
 
 アーカイブからの BLOB のコピーは、選択されたリハイドレートの優先度によっては数時間かかることがあります。 **[BLOB のコピー]** 操作では、バックグラウンドでアーカイブ ソース BLOB が読み取られ、選択された移動先の層に新しいオンライン BLOB が作成されます。 BLOB を一覧表示すると新しい BLOB が表示される場合がありますが、ソース アーカイブ BLOB からの読み取りが完了し、データが新しいオンライン コピー先 BLOB に書き込まれるまでは、データを使用することができません。 新しい BLOB は独立したコピーであり、変更や削除を行ってもソース アーカイブ BLOB には影響しません。
 
@@ -71,7 +75,7 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 
 1. **[BLOB のプロパティ]** で、 **[層の変更]** を選択します。
 
-1. **ホット**または**クール**なアクセス層を選択します。 
+1. **ホット** または **クール** なアクセス層を選択します。 
 
 1. **Standarｄ** または **High** のリハイドレート優先度を選択します。
 

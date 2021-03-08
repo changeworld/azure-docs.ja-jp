@@ -1,22 +1,18 @@
 ---
 title: ServiceNow からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ServiceNow からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4e7ebc422a9fd8503c5a3b004e1d06cb5ebfb987
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415353"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378453"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Data Factory を使用して ServiceNow からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -120,12 +116,11 @@ ServiceNow からデータをコピーするには、コピー アクティビ�
 
 クエリで ServiceNow のスキーマと列を指定するときは、次のことに注意してください。また、**コピーのパフォーマンスの影響について、「[パフォーマンスに関するヒント](#performance-tips)」を参照してください**。
 
-- **スキーマ:** ServiceNow のクエリでは、スキーマを `Actual` または `Display` として指定します。これは、[ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) を呼び出す際に、`sysparm_display_value` パラメーター (true または false) として確認できます。 
+- **スキーマ:** ServiceNow のクエリでは、スキーマを `Actual` または `Display` として指定します。これは、[ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) を呼び出す際に、`sysparm_display_value` パラメーター (true または false) として確認できます。 
 - **列:** `Actual` スキーマの下の実際の値の列名は `[column name]_value` で、`Display` スキーマの下の表示値は `[column name]_display_value` です。 列名は、クエリで使用されているスキーマにマップされる必要があります。
 
 **サンプル クエリ:** 
-`SELECT col_value FROM Actual.alm_asset`または  
-`SELECT col_display_value FROM Display.alm_asset`
+`SELECT col_value FROM Actual.alm_asset`または `SELECT col_display_value FROM Display.alm_asset`
 
 **例:**
 

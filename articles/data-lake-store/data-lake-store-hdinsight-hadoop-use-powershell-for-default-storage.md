@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5e899f28cf5b3c11ae5f935d7bc273c566214225
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075032"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606778"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Azure Data Lake Storage Gen1 を既定のストレージとして使用する HDInsight クラスターを作成する
 
@@ -27,7 +27,7 @@ HDInsight で Data Lake Storage Gen1 を使用するための重要な考慮事�
 
 * 既定のストレージとしての Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.5 および 3.6 で使用できます。
 
-* 既定のストレージとしての Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight Premium クラスターでは*使用できません*。
+* 既定のストレージとしての Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight Premium クラスターでは *使用できません*。
 
 PowerShell を使用して Data Lake Storage Gen1 を操作できるように HDInsight を構成するには、次の 5 つのセクションで示す手順に従います。
 
@@ -46,7 +46,7 @@ PowerShell を使用して Data Lake Storage Gen1 を操作できるように HD
     >Azure AD 管理者である場合にのみ、サービス プリンシパルを作成することができます。 Data Lake Storage Gen1 で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 「[証明書を使用したサービス プリンシパルの作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)」で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
     >
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する
+## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Azure Data Lake Storage Gen1 アカウントを作成する
 
 Data Lake Storage Gen1 アカウントを作成するには、次の操作を行います。
 
@@ -67,7 +67,7 @@ Data Lake Storage Gen1 アカウントを作成するには、次の操作を行
     ```
 
     > [!NOTE]
-    > Data Lake Storage Gen1 リソース プロバイダーの登録時に `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Storage Gen1 のホワイトリストに登録されていない可能性があります。 Data Lake Storage Gen1 で Azure サブスクリプションを有効にするには、[Azure portal で Azure Data Lake Storage Gen1 の概要](data-lake-store-get-started-portal.md)に関するページを参照してください。
+    > Data Lake Storage Gen1 リソース プロバイダーの登録時に `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Storage Gen1 で承認されていない可能性があります。 Data Lake Storage Gen1 で Azure サブスクリプションを有効にするには、[Azure portal で Azure Data Lake Storage Gen1 の概要](data-lake-store-get-started-portal.md)に関するページを参照してください。
     >
 
 2. Data Lake Storage Gen1 アカウントは、Azure リソース グループに関連付けられます。 まず、リソース グループを作成します。
@@ -207,8 +207,8 @@ Azure Data Lake Storage Gen1 の Active Directory 認証を設定するには、
     # Set these variables
 
     $location = "East US 2"
-    $storageAccountName = $dataLakeStorageGen1Name                         # Data Lake Storage Gen1 account name
-        $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
+    $storageAccountName = $dataLakeStorageGen1Name    # Data Lake Storage Gen1 account name
+        $storageRootPath = "<Storage root path you specified earlier>"     # e.g. /clusters/hdiadlcluster
         $clusterName = "<unique cluster name>"
     $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
     $httpCredentials = Get-Credential
@@ -282,8 +282,8 @@ hdfs dfs -ls adl:///
 `hdfs dfs -put` コマンドを使用して Data Lake Storage Gen1 にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
 
 ## <a name="see-also"></a>関連項目
-* [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure portal: Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
+[makecert]: /windows-hardware/drivers/devtest/makecert
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

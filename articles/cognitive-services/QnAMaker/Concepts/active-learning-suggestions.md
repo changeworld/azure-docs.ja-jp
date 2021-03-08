@@ -1,14 +1,16 @@
 ---
 title: アクティブ ラーニングの提案 - QnA Maker
 description: アクティブ ラーニングの提案を使用すると、質問と回答のペアに対して、ユーザーの送信内容に基づく代わりの質問を提案することで、ナレッジ ベースの品質を改善できます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 11/09/2020
+ms.openlocfilehash: e1a8043912c984be46f85bd384a7049da27028b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804220"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353240"
 ---
 # <a name="active-learning-suggestions"></a>アクティブ ラーニングの提案
 
@@ -35,10 +37,18 @@ QnA Maker ポータルで質問が提案されたら、それらの提案をレ�
 
 ## <a name="turn-on-active-learning"></a>アクティブ ラーニングを有効にする
 
-アクティブ ラーニングは、既定では**無効**になっています。
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
+アクティブ ラーニングは、既定では **無効** になっています。
 アクティブ ラーニングを使用するには:
 * QnA Maker でナレッジ ベース用の代わりの質問を収集できるように、[アクティブ ラーニングを有効にする](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions)必要があります。
 * 提案された代わりの質問を表示するには、[編集] ページの [[表示] オプションを使用](../How-To/improve-knowledge-base.md#view-suggested-questions)します。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+QnA Maker マネージド (プレビュー) のアクティブ ラーニングは、既定では **有効** になっています。 提案された代わりの質問を表示するには、[編集] ページの [[表示] オプションを使用](../How-To/improve-knowledge-base.md#view-suggested-questions)します。
+
+---
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>QnA Maker の暗黙的フィードバックの動作方法
 
@@ -127,7 +137,7 @@ QnA Maker では、どの回答が最適な回答であったかについて明�
 * 許容できるスコアの範囲を決定するなどのビジネス ロジック。
 * ユーザーのフィードバックとビジネス ロジックの両方の組み合わせ。
 
-[Train API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train) を使用して、ユーザーが選択した後、正しい回答を QnA Maker に送信します。
+[Train API](/rest/api/cognitiveservices/qnamaker4.0/runtime/train) を使用して、ユーザーが選択した後、正しい回答を QnA Maker に送信します。
 
 ## <a name="next-step"></a>次のステップ
 

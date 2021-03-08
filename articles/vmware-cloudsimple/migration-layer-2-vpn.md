@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - オンプレミスのレイヤー 2 ネットワークをプライベート クラウドに拡張する
 description: CloudSimple プライベート クラウドの NSX-T とオンプレミスのスタンドアロン NSX Edge クライアントの間にレイヤー 2 VPN を設定する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651029"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899373"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>レイヤー 2 拡張済みネットワークを使用したワークロードの移行
 
@@ -118,7 +118,7 @@ VMware NSX-T 2.3 リリース時点:
 
 3. Edge VM の管理 IP アドレスへの SSH セッションを開きます。 ユーザー名 **admin** とパスワード **CloudSimple 123!** を使用して ```get logical-router``` コマンドを実行します。
 
-    ![論理ルーターの出力を取得する](media/l2vpn-fetch03.png)
+    ![開いている SSH セッションを示すスクリーンショット。](media/l2vpn-fetch03.png)
 
 4. "DR-Provider-LR" というエントリが表示されない場合は、次の手順を実行します。
 
@@ -132,7 +132,7 @@ VMware NSX-T 2.3 リリース時点:
 
 7. Edge VM の SSH セッションで `get logical-router` コマンドを再実行します。 "DR-Provider-LR" 論理ルーターの UUID が表示されます。 UUID をメモします。これは、L2VPN を構成するときに必要になります。
 
-    ![論理ルーターの出力を取得する](media/l2vpn-fetch06.png)
+    ![論理ルーターの UUID を示すスクリーンショット。](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN に必要な論理スイッチ ID をフェッチする
 
@@ -430,7 +430,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 2. 抽出したすべてのファイルが含まれているフォルダーにアクセスします。 すべての vmdk (大きいアプライアンス サイズ用の NSX-l2t-client-large.mf と NSX-l2t-client-large.ovf、または特大のアプライアンス サイズ用の NSX-l2t-client-Xlarge.mf と NSX-l2t-client-Xlarge.ovf) を選択します。 **[次へ]** をクリックします。
 
-    ![テンプレートの選択](media/l2vpn-deploy-client02.png) ![テンプレートの選択](media/l2vpn-deploy-client03.png)
+    ![テンプレートの選択](media/l2vpn-deploy-client02.png) ![選択された vmdks ファイルを表示するスクリーンショット。](media/l2vpn-deploy-client03.png)
 
 3. NSX-T スタンドアロン クライアントの名前を入力し、 **[次へ]** をクリックします。
 

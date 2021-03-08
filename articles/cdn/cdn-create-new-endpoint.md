@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 45edf57ed41f8cf7be839edade5038a0787424a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996227"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367293"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>クイック スタート:Azure CDN プロファイルとエンドポイントの作成
 
@@ -68,7 +68,7 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
     
    ![CDN エンドポイント](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   エンドポイントが伝達されるまでの所要時間は、プロファイルの作成時に選択した価格レベルによって異なります。 通常、**Standard Akamai** で 1 分以内、**Standard Microsoft** で 10 分、**Standard Verizon** と **Premium Verizon** で最大 90 分となります。
+   エンドポイントが伝達されるまでの所要時間は、プロファイルの作成時に選択した価格レベルによって異なります。 通常、**Standard Akamai** では 1 分以内、**Standard Microsoft** では 10 分、**Standard Verizon** と **Premium Verizon** では最大 30 分となります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -81,7 +81,7 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:サーバーの静的コンテンツへの CDN を Web アプリから使用する](cdn-add-to-web-app.md)
+> [チュートリアル: サーバーの静的コンテンツへの CDN を Web アプリから使用する](cdn-add-to-web-app.md)
 
 > [!div class="nextstepaction"]
 > [チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)

@@ -3,20 +3,22 @@ title: Hive Warehouse Connector - Livy を使用した Apache Zeppelin - Azure H
 description: Azure HDInsight 上で Hive Warehouse Connector と Apache Zeppelin を統合する方法について説明します。
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6ee1c70ec02af2a24f7867a6e6b06593361612b2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083119"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941159"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Apache Zeppelin と Hive Warehouse Connector を統合する
 
 HDInsight Spark クラスターには、異なるインタープリターを持つ Apache Zeppelin Notebook が含まれています。 この記事では、Hive Warehouse Connector を使用して Spark から Hive テーブルにアクセスする Livy インタープリターに絞って説明します。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="prerequisite"></a>前提条件
 
@@ -82,8 +84,8 @@ Livy インタープリターを使用して Zeppelin から Hive テーブル�
     | livy.spark.sql.hive.llap | true |
     | livy.spark.yarn.security.credentials.hiveserver2.enabled | true |
     | livy.superusers | livy、zeppelin |
-    | livy.spark.jars | `file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar`<br>VERSION を、前述の「[作業の開始](#getting-started)」で取得した値に置き換えます。 |
-    | livy.spark.submit.pyFiles | `file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip`<br>VERSION を、前述の「[作業の開始](#getting-started)」で取得した値に置き換えます。 |
+    | livy.spark.jars | `file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar`.<br>VERSION を、前述の「[作業の開始](#getting-started)」で取得した値に置き換えます。 |
+    | livy.spark.submit.pyFiles | `file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip`.<br>VERSION を、前述の「[作業の開始](#getting-started)」で取得した値に置き換えます。 |
     | livy.spark.sql.hive.hiveserver2.jdbc.url | 対話型クエリ クラスターの HiveServer2 対話型 JDBC URL に設定します。 |
     | spark.security.credentials.hiveserver2.enabled | true |
 

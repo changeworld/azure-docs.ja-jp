@@ -1,16 +1,16 @@
 ---
 title: Azure Functions の Event Grid のローカル デバッグ
-description: Event Grid イベントによってトリガーされる Azure 関数をローカルでデバッグする方法について説明します
+description: Event Grid イベントによってトリガーされる Azure Functions をローカルでデバッグする方法について説明します
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242748"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833063"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions の Event Grid トリガーのローカル デバッグ
 
@@ -39,7 +39,7 @@ Visual Studio で関数アプリを開き、ソリューション エクスプ�
 ![ブレークポイントの設定](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
 
-次に、**F5 キーを押して**デバッグ セッションを開始します。
+次に、**F5 キーを押して** デバッグ セッションを開始します。
 
 ## <a name="allow-azure-to-call-your-local-function"></a>Azure でローカル関数を呼び出せるようにする
 
@@ -52,7 +52,7 @@ ngrok http -host-header=localhost 7071
 ```
 ユーティリティがセットアップされると、次のスクリーンショットのようなコマンド ウィンドウが表示されます。
 
-![ngrok を起動する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+!["ngrok" ユーティリティを起動した後のコマンド プロンプトを示すスクリーンショット。](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
 *ngrok* が実行されたときに生成される **HTTPS** URL をコピーします。 この値は、Event Grid イベント エンドポイントを構成するときに使用されます。
 
@@ -62,7 +62,7 @@ Azure portal を開き、ストレージ アカウントに移動し、 **[イ�
 
 ![ストレージ アカウント イベントを追加する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-*[イベント]* ウィンドウで、 **[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、 *[エンドポイントの種類]* ドロップダウンを選択し、 **[webhook]** を選択します。
+*[イベント]* ウィンドウで、 **[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、 *[エンドポイントの種類]* ドロップダウンを選択し、 **[Web Hook]** を選択します。
 
 ![サブスクリプションの種類を選択する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
@@ -87,7 +87,7 @@ Azure portal を開き、ストレージ アカウントに移動し、 **[イ�
 
 [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を開いて、ストレージ アカウントに接続します。 
 
-- **BLOB コンテナー**を展開します 
+- **BLOB コンテナー** を展開します 
 - 右クリックし、 **[BLOB コンテナーの作成]** を選択します。
 - コンテナーに **test** という名前を付けます
 - *test* コンテナーを選択します

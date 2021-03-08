@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: d7433da99fa1aa607b8c85ce6c8f44adcc6c6f89
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f155868483a0b00ed5ecb6f02ad3ee5440e6e45a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375131"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625282"
 ---
 このクイックスタートでは、Bing Image Search クライアント ライブラリを使用して最初の画像検索を行います。このクライアント ライブラリは、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Java アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "87375131"
 
 ## <a name="prerequisites"></a>前提条件
 
-最新バージョンの [Java Development Kit](https://aka.ms/azure-jdks) (JDK)
+最新バージョンの [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK)
 
 Maven、Gradle、または別の依存関係管理システムを使用して Bing Image Search クライアント ライブラリの依存関係をインストールします。 Maven POM ファイルには、次の宣言が必要です。
 
@@ -92,12 +92,12 @@ else {
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Image Search の単一ページ アプリのチュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Bing Image Search の単一ページ アプリのチュートリアル](../../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Bing Image Search とは](../../overview.md)  
 * [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Azure Cognitive Services SDK の Java サンプル](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure Cognitive Services のドキュメント](../../../index.yml)
+* [Bing Image Search API リファレンス](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

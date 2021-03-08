@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b3974c5e2a46ede6ef3f92d74759f58ed55b8497
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 23ae1a2c1371cda9435ea76f02cebc79c141c904
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553446"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>チュートリアル: Azure Active Directory と Proxyclick の統合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553446"
 * ユーザーが自分の Azure AD アカウントを使用して自動的に Proxyclick にサインイン (シングル サインオン) するよう指定できます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -92,7 +92,7 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 
@@ -155,7 +155,7 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     1. **[SAML Request Method]\(SAML 要求メソッド\)** 一覧で、 **[HTTP Redirect]\(HTTP リダイレクト\)** を選択します。
 
-    1. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
+    1. **[Issuer]/(発行者/)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
     1. **[SAML 2.0 Endpoint URL]\(SAML 2.0 エンドポイント URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
@@ -245,13 +245,12 @@ Azure AD ユーザーが Proxyclick にサインインできるようにする�
 
 ここで、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストする必要があります。
 
-アクセス パネル上で [Proxyclick] タイルを選択すると、SSO を設定した Proxyclick インスタンスに自動的にサインインするはずです。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+アクセス パネル上で [Proxyclick] タイルを選択すると、SSO を設定した Proxyclick インスタンスに自動的にサインインするはずです。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -3,21 +3,21 @@ title: Azure Maps Drawing Conversion のエラーと警告
 description: Azure Maps Conversion サービスの使用中に発生する可能性がある変換エラーと警告について説明します。 エラーと警告の解決方法に関する推奨事項と、いくつかの例を確認してください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681970"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906218"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Drawing Conversion のエラーと警告
 
-[Azure Maps Conversion サービス](https://docs.microsoft.com/rest/api/maps/conversion)を使用すると、アップロードした Drawing パッケージをマップ データに変換できます。 Drawing パッケージは、[Drawing パッケージの要件](drawing-requirements.md)に従っている必要があります。 1 つ以上の要件が満たされていない場合、Conversion サービスからエラーまたは警告が返されます。 この記事では、変換のエラーと警告コードと、その解決方法の推奨事項を示します。 また、Conversion サービスからこれらのコードが返される可能性がある図面の例もいくつか示します。
+[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用すると、アップロードした Drawing パッケージをマップ データに変換できます。 Drawing パッケージは、[Drawing パッケージの要件](drawing-requirements.md)に従っている必要があります。 1 つ以上の要件が満たされていない場合、Conversion サービスからエラーまたは警告が返されます。 この記事では、変換のエラーと警告コードと、その解決方法の推奨事項を示します。 また、Conversion サービスからこれらのコードが返される可能性がある図面の例もいくつか示します。
 
 変換の警告が発生しても、Conversion サービスは成功します。 ただし、すべての警告を確認して解決することをお勧めします。 警告は、変換の一部が無視されたか、自動的に修正されたことを意味します。 警告を解決しないと、後のプロセスでエラーが発生する可能性があります。
 
@@ -35,9 +35,9 @@ Conversion サービスでは、無効なエンティティからマップ地物
 
 * 以下の 2 つの画像は、自己交差する多角形の例を示しています。
 
-     ![自己交差する多角形の例](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![自己交差する多角形の例 1](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![自己交差する多角形の例](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![自己交差する多角形の例 2](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * 閉じていないポリラインを示す画像を次に示します。 レイヤーが閉じたジオメトリのみをサポートしているとします。
 
@@ -330,7 +330,7 @@ DWG ファイルにサポートされているエンティティの種類のみ�
 **invalidUserData** エラーを修正するには、次のことを確認します。
 
 * アップロードされたパッケージに正しい `udid` を指定しています。
-* Drawing パッケージのアップロードに使用した Azure Maps アカウントで Azure Maps Creator を有効にしています。
+* Drawing パッケージのアップロードに使用した Azure Maps アカウントで Azure Maps Creator (プレビュー) が有効になっている。
 * Conversion サービスに対する API 要求には、Drawing パッケージのアップロードに使用した Azure Maps アカウントのサブスクリプション キーが含まれています。
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -506,4 +506,4 @@ JSON の形式または構文エラーのため、_manifest.json_file を読み�
 > [Azure Maps Drawing Error Visualizer を使用する方法](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [屋内マップ用の Creator](creator-indoor-maps.md)
+> [室内マッピング用の Creator (プレビュー)](creator-indoor-maps.md)

@@ -1,6 +1,6 @@
 ---
 title: リソース クラスからワークロード グループへの変換
-description: Azure SQL Data Warehouse のリソース クラスに似たワークロード グループを作成する方法について説明します。
+description: 専用 SQL プールのリソース クラスに似たワークロード グループを作成する方法について説明します。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 1207f4856882d8aa0e6d1e41712071536bfecf29
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192310"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728558"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>リソース クラスからワークロード グループへの変換
 
@@ -56,7 +56,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>分類子を作成する
 
-以前は、リソース クラスへのクエリのマッピングは、[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) を使用して行われていました。  同じ機能を実現し、ワークロード グループに要求をマップするには、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文を使用します。  sp_addrolemember を使用した場合、ログインに基づいてリソースを要求にマッピングすることのみが可能でした。  分類子はログインの他に、
+以前は、リソース クラスへのクエリのマッピングは、[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) を使用して行われていました。  同じ機能を実現し、ワークロード グループに要求をマップするには、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文を使用します。  sp_addrolemember を使用した場合、ログインに基づいてリソースを要求にマッピングすることのみが可能でした。  分類子はログインの他に、
     - label
     - session
     - time のような追加オプションを提供します。次の例では、`factloads` に設定された[オプション ラベル](sql-data-warehouse-develop-label.md)も持つ `AdfLogin` ログインからのクエリを、上記で作成されたワークロード グループ `wgDataLoads` に割り当てます。
@@ -90,5 +90,5 @@ SELECT request_id, [label], classifier_name, group_name, command
 
 - [ワークロードの分離](sql-data-warehouse-workload-isolation.md)
 - [ワークロード グループを作成する方法](quickstart-configure-workload-isolation-tsql.md)
-- [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
-- [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql??view=azure-sqldw-latest&preserve-view=true)
+- [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)

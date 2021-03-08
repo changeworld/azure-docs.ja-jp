@@ -3,18 +3,20 @@ title: Azure Cosmos DB の地理空間データと GeoJSON 位置データ
 description: Azure Cosmos DB と SQL API を使用して空間オブジェクトを作成する方法について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: a2e4e14927932575c9da42392329eea279f922fe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420092"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336165"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB の地理空間データと GeoJSON 位置データ
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB の地理空間機能を紹介します。 現在、地理空間データの保存とアクセスは、Azure Cosmos DB SQL API アカウントのみでサポートされます。 地理空間インデックスに関するドキュメントを読むと、次の質問に答えられるようになります。
 
@@ -36,7 +38,7 @@ ms.locfileid: "87420092"
 
 空間データは、物体の空間における位置と形状を表現します。 ほとんどのアプリケーションにおける空間データは、地球上の物体、および地理空間データに対応します。 空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。
 
-Azure Cosmos DB の SQL API では、**geometry** データ型と **geography** データ型の 2 つの空間データ型がサポートされています。
+Azure Cosmos DB の SQL API では、 **geometry** データ型と **geography** データ型の 2 つの空間データ型がサポートされています。
 
 - **geometry** 型では、ユークリッド (平面) 座標系でデータを表します。
 - **geography** 型は、球体地球座標系のデータを表します。
@@ -210,7 +212,7 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-緯度情報と経度情報がなくても、物理的な住所や所在地名 (都市、国や地域など) があれば、Bing マップ REST サービスなどのジオコーディング サービスを使って実際の座標を検索することができます。 Bing マップのジオコーディングの詳細については、 [こちら](https://msdn.microsoft.com/library/ff701713.aspx)を参照してください。
+緯度情報と経度情報がなくても、物理的な住所や所在地名 (都市、国や地域など) があれば、Bing マップ REST サービスなどのジオコーディング サービスを使って実際の座標を検索することができます。 Bing マップのジオコーディングの詳細については、 [こちら](/bingmaps/rest-services/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

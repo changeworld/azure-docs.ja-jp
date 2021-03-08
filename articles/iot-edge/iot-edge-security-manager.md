@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548698"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043002"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge セキュリティ マネージャー
 
@@ -75,7 +75,7 @@ IoT Edge セキュリティ デーモンは、セキュリティ強化のため�
 
 #### <a name="cloud-interface"></a>クラウド インターフェイス
 
-クラウド インターフェイスにより、IoT Edge セキュリティ デーモンは、セキュリティ更新のようなデバイス セキュリティに対するクラウド補完などのクラウド サービスにアクセスできます。  たとえば、IoT Edge セキュリティ デーモンは、現在、このインターフェイスを使用してデバイス ID ライフサイクル管理のために Azure IoT Hub の [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) にアクセスします。  
+クラウド インターフェイスにより、IoT Edge セキュリティ デーモンは、セキュリティ更新のようなデバイス セキュリティに対するクラウド補完などのクラウド サービスにアクセスできます。  たとえば、IoT Edge セキュリティ デーモンは、現在、このインターフェイスを使用してデバイス ID ライフサイクル管理のために Azure IoT Hub の [Device Provisioning Service](../iot-dps/index.yml) にアクセスします。  
 
 #### <a name="management-api"></a>管理 API
 

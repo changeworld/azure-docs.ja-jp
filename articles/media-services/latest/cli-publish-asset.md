@@ -1,5 +1,5 @@
 ---
-title: Azure CLI のサンプル スクリプト - 資産の公開 | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - 資産の公開
 description: この記事では、Azure CLI スクリプトを使用して資産を発行します。
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3b3c358a84dd74595c476f029a1c8f28bc3c901f
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4ba5efe66e033966705072bfdf96422731fab082
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295871"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091874"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI の例: 資産の公開
 
@@ -31,8 +31,6 @@ ms.locfileid: "89295871"
 ## <a name="prerequisites"></a>前提条件 
 
 [Media Services アカウントを作成する](./create-account-howto.md)
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>サンプル スクリプト
 

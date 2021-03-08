@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89225154"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Content Delivery Network の Azure Web アプリケーション ファイアウォール

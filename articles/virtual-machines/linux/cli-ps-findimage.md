@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8954ad03bd5f539e9dcfbb4249f4e7cc1cf0bc7f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374084"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685125"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける
 
@@ -19,9 +19,49 @@ ms.locfileid: "87374084"
 
 また、[Azure Marketplace](https://azuremarketplace.microsoft.com/) のストアフロント、[Azure portal](https://portal.azure.com)、または [Azure PowerShell](../windows/cli-ps-findimage.md) を使用して、使用できるイメージとオファーを参照することもできます。 
 
-[Azure CLI](/cli/azure/install-azure-cli) の最新版をインストールしていることと、Azure アカウントにログインしていること (`az login`) を確認してください。
+Azure アカウントにログイン (`az login`) していることを確認します。
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+
+## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>購入プラン パラメーターを使用して VHD からデプロイする
+
+有料の Azure Marketplace イメージを使用して作成された既存の VHD がある場合は、その VHD から新しい VM を作成するときに、購入プランの情報を指定することが必要になる場合があります。 
+
+元の VM、または同じ Marketplace イメージを使用して作成した他の VM がある場合は、[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) を使用して、その VM からプラン名、発行元、および製品情報を取得できます。 この例では、*myResourceGroup* リソース グループの *myVM* という名前の VM を取得し、購入プラン情報を表示します。
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+元の VM が削除される前にプラン情報を取得しなかった場合は、[サポート リクエスト](https://ms.portal.azure.com/#create/Microsoft.Support)を提出できます。 VM 名、サブスクリプション ID、および削除操作のタイム スタンプが必要になります。
+
+プラン情報を取得したら、`--attach-os-disk` パラメーターを使用して VHD を指定することで、新しい VM を作成できます。
+
+```azurecli-interactive
+az vm create \
+   --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
+## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>購入プラン パラメーターを使用して新しい VM をデプロイする
+
+イメージに関する情報が既にある場合は、`az vm create` コマンドを使用してデプロイできます。 この例では、次のように RabbitMQ Certified by Bitnami イメージを使用して VM をデプロイします。
+
+```azurecli
+az group create --name myResourceGroupVM --location westus
+
+az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
+```
+
+イメージの使用条件への同意に関するメッセージが表示された場合は、この記事で後述する「[使用条件への同意](#accept-the-terms)」セクションを参照してください。
 
 ## <a name="list-popular-images"></a>よく使われるイメージを一覧表示する
 
@@ -33,7 +73,7 @@ az vm image list --output table
 
 この出力にはイメージ URN (*Urn* 列の値) が含まれます。 よく使われる Marketplace イメージのいずれかを使用して VM を作成する場合は、代わりに、*UrnAlias* (*UbuntuLTS* などの短縮形) を指定することもできます。
 
-```
+```output
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
@@ -60,7 +100,7 @@ az vm image list --offer Debian --all --output table
 
 出力の一部を次に示します。 
 
-```
+```output
 Offer              Publisher    Sku                  Urn                                                    Version
 -----------------  -----------  -------------------  -----------------------------------------------------  --------------
 Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
@@ -110,7 +150,7 @@ az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 
 
 出力の一部を次に示します。
 
-```
+```output
 Offer    Publisher    Sku                Urn                                              Version
 -------  -----------  -----------------  -----------------------------------------------  -------------
 Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
@@ -158,7 +198,7 @@ az vm image list-publishers --location westus --output table
 
 出力の一部を次に示します。
 
-```
+```output
 Location    Name
 ----------  ----------------------------------------------------
 westus      128technology
@@ -194,7 +234,7 @@ az vm image list-offers --location westus --publisher Canonical --output table
 
 出力:
 
-```
+```output
 Location    Name
 ----------  -------------------------
 westus      Ubuntu15.04Snappy
@@ -211,7 +251,7 @@ az vm image list-skus --location westus --publisher Canonical --offer UbuntuServ
 
 出力:
 
-```
+```output
 Location    Name
 ----------  -----------------
 westus      12.04.3-LTS
@@ -242,7 +282,7 @@ az vm image list --location westus --publisher Canonical --offer UbuntuServer --
 
 出力の一部を次に示します。
 
-```
+```output
 Offer         Publisher    Sku        Urn                                               Version
 ------------  -----------  ---------  ------------------------------------------------  ---------------
 UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
@@ -286,7 +326,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 
 出力:
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS/Versions/18.04.201901220",
@@ -307,7 +347,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 ```
 出力:
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/bitnami/ArtifactTypes/VMImage/Offers/rabbitmq/Skus/rabbitmq/Versions/3.7.1901151016",
@@ -325,7 +365,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 }
 ```
 
-### <a name="accept-the-terms"></a>使用条件への同意
+## <a name="accept-the-terms"></a>使用条件への同意
 
 ライセンス条項を表示し、それらに同意するには、[az vm image accept-terms](/cli/azure/vm/image?) コマンドを使用します。 使用条件に同意すると、サブスクリプション内で、プログラムによるデプロイが有効になります。 使用条件に同意する必要があるのは、イメージのサブスクリプションごとに 1 回だけです。 次に例を示します。
 
@@ -335,7 +375,7 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 
 出力では、ライセンス条項への `licenseTextLink` が示され、`accepted` の値が `true` であることが示されます。
 
-```
+```output
 {
   "accepted": true,
   "additionalProperties": {},
@@ -350,16 +390,6 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
   "signature": "XXXXXXLAZIK7ZL2YRV5JYQXONPV76NQJW3FKMKDZYCRGXZYVDGX6BVY45JO3BXVMNA2COBOEYG2NO76ONORU7ITTRHGZDYNJNXXXXXX",
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
-```
-
-### <a name="deploy-using-purchase-plan-parameters"></a>購入プラン パラメーターを使用したデプロイ
-
-イメージの使用条件に同意したら、サブスクリプション内で VM をデプロイできます。 `az vm create` コマンドを使用してイメージをデプロイするには、イメージの URN に加えて、購入プランのパラメーターを指定します。 たとえば、RabbitMQ Certified by Bitnami イメージを使用して VM をデプロイするには、次のコマンドを実行します。
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
 ```
 
 ## <a name="next-steps"></a>次のステップ

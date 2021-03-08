@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978041"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
 
@@ -170,7 +170,7 @@ ms.locfileid: "84887428"
 
    9. 必要に応じて、要求が拒否されたときに返される応答コードの種類をカスタマイズします。 **[有効]** を選択し、 **[応答コード]** リストから応答コードを選択します。 **[ヘッダー名]** は、自動的に **[場所]** に設定されます。 **[保存]** を選択して新しい応答コードを実装します。 特定の応答コードについては、 **[ヘッダー値]** ボックスにエラー ページの URL も入力する必要があります。 既定では、**403** 応答コード (許可されていません) が選択されています。 
 
-3. **[HTTP Large]\(HTTP ラージ\)** で **[ルール エンジン]** を選択します。 ルール エンジンを使用して、機能を適用するパスを定義したり、トークン認証機能や、追加のトークン認証関連機能を有効にしたりします。 詳細については、[ルール エンジンのリファレンス](cdn-rules-engine-reference.md)を参照してください。
+3. **[HTTP Large]\(HTTP ラージ\)** で **[ルール エンジン]** を選択します。 ルール エンジンを使用して、機能を適用するパスを定義したり、トークン認証機能や、追加のトークン認証関連機能を有効にしたりします。 詳細については、[ルール エンジンのリファレンス](./cdn-verizon-premium-rules-engine-reference.md)を参照してください。
 
    1. 既存のルールを選択するか、新しいルールを作成して、トークン認証を適用する資産またはパスを定義します。 
    2. ルールでトークン認証を有効にするには、 **[機能]** リストから **[[Token Auth]\(トークン認証\)](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** を選択し、 **[有効]** を選択します。 ルールを更新する場合は **[更新]** を、ルールを作成する場合は **[追加]** を選択します。

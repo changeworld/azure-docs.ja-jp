@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用して Azure Security Center にオンボードする
-description: このドキュメントでは、PowerShell コマンドレットを使用して Azure Security Center にオンボードする手順について説明します。
+description: このドキュメントでは、PowerShell コマンドレットを使用して Azure Security Center を有効にする手順について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/02/2018
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4979ff0010c1f959e8f8fc16f56da61971faf1e9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080753"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757070"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell を使用した Azure Security Center へのオンボードの自動化
 
@@ -29,9 +29,9 @@ PowerShell を使用して Azure Security Center にオンボードすると、A
 
 この記事では、変更して環境内サブスクリプション全体に Security Center をロールアウトするために使用できる、PowerShell スクリプトのサンプルを提供します。 
 
-この例では、Security Center を ID: d07c0080-170c-4c24-861d-9c817742786c のサブスクリプションで有効にし、Security Center の Standard 階層を実装して、高レベルの保護を提供する推奨設定を適用します。これにより脅威からの高度な保護と検出機能が提供されます。
+この例では、Security Center を ID: d07c0080-170c-4c24-861d-9c817742786c のサブスクリプションで有効にし、Azure Defender を有効にして、高レベルの保護を提供する推奨設定を適用します。これにより高度な脅威防止および検出機能が提供されます。
 
-1. [Security Center の Standard レベルの保護](https://azure.microsoft.com/pricing/details/security-center/)を設定します。 
+1. [Azure Defender](azure-defender.md) を有効にする。 
  
 2. サブスクリプションに関連付けられている VM 上で Log Analytics エージェントが収集するデータの送信先である Log Analytics ワークスペースを設定します。この例では、既存のユーザーが定義したワークスペースです (myWorkspace)。
 
@@ -61,7 +61,7 @@ Security Center のコマンドレットを実行する前に、これらの手�
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. 省略可能:サブスクリプションのカバレッジ レベル (価格レベル) を設定します (定義されない場合、価格レベルは無料に設定されます)。
+1. 省略可能:サブスクリプションのカバレッジレベル (Azure Defender のオン/オフ) を設定します。 未定義の場合、Defender はオフになります。
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
@@ -89,7 +89,7 @@ Security Center のコマンドレットを実行する前に、これらの手�
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
 
-    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
 
 PowerShell を使用した Azure Security Center のオンボードが正常に行われました。
 
@@ -101,7 +101,7 @@ PowerShell を使用した Azure Security Center のオンボードが正常に�
 ## <a name="see-also"></a>関連項目
 PowerShell を使用して Security Center へのオンボードを自動化する方法の詳細については、次の記事を参照してください。
 
-* [Az.Security](https://docs.microsoft.com/powershell/module/az.security)
+* [Az.Security](/powershell/module/az.security)
 
 Security Center の詳細については、次の記事を参照してください。
 

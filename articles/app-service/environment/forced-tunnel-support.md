@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6dc002b0ed9e68ea15eaa58c226249837c7df32d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85830861"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510500"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
@@ -73,7 +73,7 @@ ASE から外に出て行く送信トラフィックを、Azure SQL と Azure St
 
 2. Azure SQL/Azure Storage と ASE サブネットとの間でサービス エンドポイントを有効にします。  この手順を完了すると、強制トンネリングを使用して VNet を構成できます。
 
-すべてのトラフィックをオンプレミスにルーティングするように既に構成されている仮想ネットワークに ASE を作成するには、Resource Manager テンプレートを使用して ASE を作成する必要があります。  ポータルを使用して既存のサブネットに ASE を作成することはできません。  送信トラフィックをオンプレミスにルーティングするように既に構成されている VNet に ASE をデプロイする場合は、Resource Manager テンプレートを使用して ASE を作成する必要があります。Resource Manager テンプレートを使用すると、既存のサブネットを指定することができます。 テンプレートを使用して ASE をデプロイする方法の詳細については、[テンプレートを使用した App Service Environment の作成][template]に関するページを参照してください。
+テンプレートを使用して ASE をデプロイする方法の詳細については、[テンプレートを使用した App Service Environment の作成][template]に関するページを参照してください。
 
 サービス エンドポイントを設けることで、マルチテナント サービスへのアクセスを、一連の Azure 仮想ネットワークとサブネットに制限することができます。 サービス エンドポイントについて詳しくは、「[仮想ネットワーク サービス エンドポイント][serviceendpoints]」のドキュメントをご覧ください。 
 
@@ -95,7 +95,7 @@ ASE から外に出て行く送信トラフィックを、Azure Storage に向�
 
 3. ご利用の App Service Environment からインターネットに向かうすべての送信トラフィックに使用されるアドレスを取得します。 トラフィックをオンプレミスでルーティングする場合、それらのアドレスはご利用の NAT またはゲートウェイの IP となります。 NVA を経由するよう App Service Environment の送信トラフィックをルーティングする場合は、その NVA のパブリック IP がエグレス アドレスになります。
 
-4. _既存の App Service 環境でエグレス アドレスを設定するには:_ resources.azure.com にアクセスして Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に**読み取り/書き込み**の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールします。 **userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
+4. _既存の App Service 環境でエグレス アドレスを設定するには:_ resources.azure.com にアクセスして Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に **読み取り/書き込み** の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールします。 **userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
 
     ```json
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
@@ -131,7 +131,7 @@ _エグレス アドレスを持つ ASE を作成するには_:[テンプレー�
 
 このように変更することで、Azure Storage には ASE から直接トラフィックが送信され、また、Azure SQL には、ASE の VIP とは異なるアドレスからアクセスできるようになります。
 
-   ![SQL ホワイトリストを使った強制トンネリング][3]
+   ![SQL 許可リストを使った強制トンネリング][3]
 
 ## <a name="preventing-issues"></a>問題の回避 ##
 

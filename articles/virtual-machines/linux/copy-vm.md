@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.custom: legacy
-ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: legacy, devx-track-azurecli
+ms.openlocfilehash: 7f9ac0ab9eacb90bde70c85ea06bc19a18aa0c05
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654414"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201146"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Azure CLI と Managed Disks を使用して Linux VM のコピーを作成する
 
 この記事では、Azure CLI を使用して、Linux を実行している Azure 仮想マシン (VM) のコピーを作成する方法について説明します。 VM イメージを大規模にコピー、作成、保存、共有する方法については、「[共有イメージ ギャラリー](../shared-images-cli.md)」を参照してください。
 
-さらに、[VHD から VM をアップロードして作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)こともできます。
+さらに、[VHD から VM をアップロードして作成する](upload-vhd.md)こともできます。
 
 ## <a name="prerequisites"></a>前提条件
 

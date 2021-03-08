@@ -3,19 +3,19 @@ title: マッピングのために Azure AD に属性を同期する
 description: オンプレミスの Active Directory から Azure AD に属性を同期する方法を説明します。 SaaS アプリへのユーザー プロビジョニングを構成する際は、ディレクトリの拡張機能を使用して、既定では同期されないソース属性を追加します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 05/13/2019
 ms.author: kenwith
-ms.openlocfilehash: 00c4dec329456409bc8d5b77dca72f25daf9f5c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d035b85850f8ac455a85fd93e4d081bbd386e1
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781075"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256087"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する
 
@@ -41,11 +41,11 @@ Azure AD から SaaS アプリにユーザー アカウントをプロビジョ�
    > [!NOTE]
    > **[使用可能な属性]** での検索は、大文字と小文字が区別されます。
 
-   ![Azure Active Directory Connect ウィザードの [ディレクトリ拡張機能] 選択ページ](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
+   ![[ディレクトリ拡張機能] 選択ページを示すスクリーンショット](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
 
 5. Azure AD Connect ウィザードを終了し、完全同期サイクルの実行を許可します。 サイクルが完了したら、スキーマが拡張され、オンプレミスの AD と Azure AD の間で新しい値が同期されます。
  
-6. これで、Azure portal で[ユーザー属性マッピングを編集する](customize-application-attributes.md)際に、追加した属性が **[ソース属性]** の一覧に `<attributename> (extension_<appID>_<attributename>)` の形式で含まれるようになります。 属性を選択し、プロビジョニングのためにターゲット アプリケーションにマップします。
+6. これで、Azure portal で [ユーザー属性マッピングを編集する](customize-application-attributes.md)際に、追加した属性が **[ソース属性]** の一覧に `<attributename> (extension_<appID>_<attributename>)` の形式で含まれるようになります。 属性を選択し、プロビジョニングのためにターゲット アプリケーションにマップします。
 
    ![Azure Active Directory Connect ウィザードの [ディレクトリ拡張機能] 選択ページ](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 

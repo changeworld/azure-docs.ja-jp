@@ -3,12 +3,12 @@ title: クォータ エラー
 description: Azure Resource Manager でのリソースのデプロイ時のリソース クォータ エラーを解決する方法について説明します。
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007794"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90530422"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>リソース クォータのエラーを解決する
 
@@ -95,7 +95,7 @@ Virtual Machines                             0 10000 Count
 
 1. **[サブスクリプション]** を選択します。
 
-   ![サブスクリプション](./media/error-resource-quota/subscriptions.png)
+   ![画面のサブスクリプションには、[サブスクリプション] が選択された Azure portal メニューが示されています。](./media/error-resource-quota/subscriptions.png)
 
 2. クォータの追加が必要なサブスクリプションを選択します。
 

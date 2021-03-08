@@ -1,14 +1,14 @@
 ---
-title: Australian Government ISM PROTECTED ブループリント サンプルの概要
-description: Australian Government ISM PROTECTED ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の ISM PROTECTED コントロールを評価するのに役立ちます。
-ms.date: 08/03/2020
+title: Australian Government ISM PROTECTED ブループリント サンプルのコントロール
+description: Australian Government ISM PROTECTED ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
+ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: df143a871db3d871fe6354eab23b7ca6dc012b78
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760432"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679999"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Australian Government ISM PROTECTED ブループリント サンプルのコントロール マッピング
 
@@ -17,8 +17,7 @@ ms.locfileid: "87760432"
 以下のマッピングは、**ISM PROTECTED** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:Audit Australian Government ISM PROTECTED controls and deploy specific VM Extensions to support audit requirements]\([プレビュー]: Australian Government ISM PROTECTED コントロールの監査と監査要件をサポートするための特定の VM 拡張機能のデプロイ\)** ビルトイン ポリシー イニシアチブ。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。
-> 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ism-protected/control-mapping.md)に関するページを参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ism-protected/control-mapping.md)に関するページを参照してください。
 
 
 ## <a name="location-constraints"></a>場所の制約
@@ -145,74 +144,74 @@ ms.locfileid: "87760432"
 ### <a name="1144-security-vulnerabilities-in-applications-and-drivers-assessed-as-extreme-risk-are-patched-updated-or-mitigated-within-48-hours-of-the-security-vulnerabilities-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1144 アプリケーションおよびドライバーについて、きわめて高リスクと評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 48 時間以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
-- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
 - マシンで脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - コンテナーのセキュリティ構成の脆弱性を修復する必要がある
-- SQL サーバーの脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
+- SQL Server の脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
 
 ### <a name="0940-security-vulnerabilities-in-applications-and-drivers-assessed-as-high-risk-are-patched-updated-or-mitigated-within-two-weeks-of-the-security-vulnerability-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>0940 アプリケーションおよびドライバーについて、高リスクと評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 2 週間以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
-- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - コンテナーのセキュリティ構成の脆弱性を修復する必要がある
-- SQL サーバーの脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
+- SQL Server の脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
 
 ### <a name="1472-security-vulnerabilities-in-applications-and-drivers-assessed-as-moderate-or-low-risk-are-patched-updated-or-mitigated-within-one-month-of-the-security-vulnerability-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1472 アプリケーションおよびドライバーについて、リスクが中または低と評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 1 か月以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
-- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - コンテナーのセキュリティ構成の脆弱性を修復する必要がある
-- SQL サーバーの脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
+- SQL Server の脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
 
 ### <a name="1494-security-vulnerabilities-in-operating-systems-and-firmware-assessed-as-extreme-risk-are-patched-updated-or-mitigated-within-48-hours-of-the-security-vulnerabilities-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1494 オペレーティング システムおよびファームウェアについて、きわめて高リスクと評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 48 時間以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
-- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - コンテナーのセキュリティ構成の脆弱性を修復する必要がある
-- SQL サーバーの脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
+- SQL Server の脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
 
 ### <a name="1495-security-vulnerabilities-in-operating-systems-and-firmware-assessed-as-high-risk-are-patched-updated-or-mitigated-within-two-weeks-of-the-security-vulnerability-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1495 オペレーティング システムおよびファームウェアについて、高リスクと評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 2 週間以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
-- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - コンテナーのセキュリティ構成の脆弱性を修復する必要がある
-- SQL サーバーの脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
+- SQL Server の脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
 
 ### <a name="1496-security-vulnerabilities-in-operating-systems-and-firmware-assessed-as-moderate-or-low-risk-are-patched-updated-or-mitigated-within-one-month-of-the-security-vulnerability-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1496 オペレーティング システムおよびファームウェアについて、リスクが中または低と評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 1 か月以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
-- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - コンテナーのセキュリティ構成の脆弱性を修復する必要がある
-- SQL サーバーの脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
+- SQL Server の脆弱性評価の設定には、スキャン レポートを受信するためのメール アドレスが含まれている必要がある
 
 ## <a name="guidelines-for-system-management---data-backup-and-restoration"></a>システム管理のためのガイドライン - データ バックアップと復元
 
@@ -235,17 +234,17 @@ ms.locfileid: "87760432"
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 データベースに関して、次のイベントがログに記録される (特に重要な情報へのアクセス、新しいユーザー (特に特権ユーザー) の追加、コメントを含むクエリ、複数の埋め込みクエリを含んだクエリ、クエリまたはデータベースのアラートまたはエラー、権限昇格の試み、成功または失敗したアクセスの試行、データベース構造に対する変更、ユーザー ロールまたはデータベース権限に対する変更、データベース管理者アクション、データベースのログオンとログオフ、データの変更、実行可能コマンドの使用)
 
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
 - 診断設定の監査
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
+- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
 
 ## <a name="guidelines-for-system-monitoring---vulnerability-management"></a>システム監視のガイドライン - 脆弱性の管理
 
 ### <a name="0911-vulnerability-assessments-and-penetration-tests-are-conducted-by-suitably-skilled-personnel-before-a-system-is-deployed-after-a-significant-change-to-a-system-and-at-least-annually-or-as-specified-by-the-system-owner"></a>0911 システムのデプロイ前、システムに対する大きな変更の後、年 1 回以上、またはシステム所有者から指示されたときに、適切なスキルを備えた担当者が脆弱性の評価と侵入テストを実施する
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
-- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -350,6 +349,10 @@ ms.locfileid: "87760432"
 ## <a name="next-steps"></a>次のステップ
 
 ブループリントとその使用方法に関するその他の記事:
+
+> [!div class="nextstepaction"]
+> [ISM PROTECTED ブループリント - 概要](./index.md)
+> [ISM PROTECTED ブループリント - デプロイ手順](./deploy.md)
 
 - [ブループリントのライフサイクル](../../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../../concepts/parameters.md)の使用方法を理解する。

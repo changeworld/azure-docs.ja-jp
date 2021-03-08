@@ -3,15 +3,15 @@ title: Azure DevTest Labs のアクティビティ ログ | Microsoft Docs
 description: この記事では、Azure DevTest Labs でアクティビティ ログを表示する手順について説明します。
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 24b5eb25f1c8c9044ad6e77545381a43a11714f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51bdfc6c3857a3e59d75094b4c847c80c58de045
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094633"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582775"
 ---
 # <a name="view-activity-logs-for-labs-in-azure-devtest-labs"></a>Azure DevTest Labs でアクティビティ ログを表示する 
-1 つまたは複数のラボを作成したら、いつ、どのように、誰によってラボがアクセス、変更、および管理されるのかを監視するのが一般的です。 Azure DevTest Labs では Azure Monitor (具体的には**アクティビティ ログ**) を使用して、このようなラボに対する操作に関する情報が提供されます。 
+1 つまたは複数のラボを作成したら、いつ、どのように、誰によってラボがアクセス、変更、および管理されるのかを監視するのが一般的です。 Azure DevTest Labs では Azure Monitor (具体的には **アクティビティ ログ**) を使用して、このようなラボに対する操作に関する情報が提供されます。 
 
 この記事では、Azure DevTest Labs でラボに関するアクティビティ ログを表示する方法について説明します。
 
@@ -41,10 +41,10 @@ ms.locfileid: "87094633"
 
     :::image type="content" source="./media/activity-logs/change-details.png" alt-text="VM の停止イベント - 変更の詳細":::             
 
-アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)」を参照してください。
+アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- アクティビティ ログの**アラート**設定の詳細については、「[アラートを作成する](create-alerts.md)」を参照してください。
-- アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)」を参照してください。
+- アクティビティ ログの **アラート** 設定の詳細については、「[アラートを作成する](create-alerts.md)」を参照してください。
+- アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)」を参照してください。
 

@@ -2,23 +2,23 @@
 title: Anomaly Detector の環境変数
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/30/2020
-ms.author: aahi
-ms.openlocfilehash: 4a44df3f2108421c73c161d8f2df37330b9c2d14
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.author: mbullwin
+ms.openlocfilehash: 5148114da7fcc654b1f0af431440ce74c7bc8d31
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980219"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371837"
 ---
 ### <a name="create-an-environment-variable"></a>環境変数を作成する
 
 >[!NOTE]
-> 2019 年 7 月 1 日より後に作成された非試用版リソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。 
+> 2019 年 7 月 1 日より後に作成された非試用版リソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../../cognitive-services-custom-subdomains.md)」を参照してください。 
 
 作成したリソースのキーとエンドポイントを使用して、認証用に 2 つの環境変数を作成します。
 

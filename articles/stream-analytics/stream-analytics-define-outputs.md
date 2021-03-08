@@ -1,35 +1,35 @@
 ---
 title: Azure Stream Analytics からの出力
 description: この記事では、Azure Stream Analytics で使用できるデータ出力のオプションについて説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: contperf-fy21q1
+ms.date: 12/9/2020
+ms.openlocfilehash: 3ce4f673657561e196520466b569d0cf83d75a8a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068985"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019348"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力
 
-Azure Stream Analytics ジョブは、入力、クエリ、および出力で構成されます。 変換されたデータを送信できる出力の種類はいくつかあります。 この記事では、サポートされている Stream Analytics の出力の一覧を示します。 Stream Analytics のクエリを自分で作成するときは、[INTO 句](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)を使用して出力の名前を指定します。 ジョブごとに 1 つの出力を使用できます。または、必要に応じて、クエリ内に複数の INTO 句を追加することによって、ストリーミング ジョブごとに複数の出力を使用できます。
+Azure Stream Analytics ジョブは、入力、クエリ、および出力で構成されます。 変換されたデータを送信できる出力の種類はいくつかあります。 この記事では、サポートされている Stream Analytics の出力の一覧を示します。 Stream Analytics のクエリを自分で作成するときは、[INTO 句](/stream-analytics-query/into-azure-stream-analytics)を使用して出力の名前を指定します。 ジョブごとに 1 つの出力を使用できます。または、必要に応じて、クエリ内に複数の INTO 句を追加することによって、ストリーミング ジョブごとに複数の出力を使用できます。
 
-Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure portal](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用できます。
+Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure portal](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations)、[REST API](/rest/api/streamanalytics/)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用できます。
 
 一部の出力の種類は[パーティション分割](#partitioning)に対応します。また、スループットを最適化するために[出力のバッチ サイズ](#output-batch-size)が異なります。 次の表は、出力の種類ごとにサポートされている機能を示しています。
 
 | 出力の種類 | パーティション分割 | セキュリティ | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|はい|Azure Active Directory ユーザー </br> MSI|
-|[Azure SQL Database](sql-database-output.md)|はい。有効にする必要があります。|SQL ユーザー認証 </br> MSI (プレビュー)|
-|[Azure Synapse Analytics (プレビュー)](azure-synapse-analytics-output.md)|いいえ|SQL ユーザー認証|
-|[Blob Storage と Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|はい|MSI </br> アクセス キー|
-|[Azure Event Hubs](event-hubs-output.md)|はい|アクセス キー|
-|[Power BI](power-bi-output.md)|いいえ|Azure Active Directory ユーザー </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|はい|Azure Active Directory ユーザー </br> 、マネージド ID|
+|[Azure SQL Database](sql-database-output.md)|はい、省略可能です。|SQL ユーザー認証、 </br> マネージド ID (プレビュー)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|はい|SQL ユーザー認証、 </br> マネージド ID (プレビュー)|
+|[Blob Storage と Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|はい|アクセス キー、 </br> マネージド ID (プレビュー)|
+|[Azure Event Hubs](event-hubs-output.md)|はい。出力構成でパーティション キー列を設定する必要があります。|アクセス キー、 </br> マネージド ID (プレビュー)|
+|[Power BI](power-bi-output.md)|いいえ|Azure Active Directory ユーザー、 </br> マネージド ID|
 |[Azure Table Storage](table-storage-output.md)|はい|アカウント キー|
 |[Azure Service Bus キュー](service-bus-queues-output.md)|はい|アクセス キー|
 |[Azure Service Bus トピック](service-bus-topics-output.md)|はい|アクセス キー|
@@ -40,7 +40,7 @@ Stream Analytics ジョブの出力を作成、編集、テストするには、
 
 Stream Analytics では、Power BI を除くすべての出力用のパーティションがサポートされています。 パーティション キーと出力ライターの数の詳細については、関心がある特定の出力の種類に関する記事を参照してください。 前のセクションですべての出力に関する記事がリンクされています。  
 
-出力ライターの数は、クエリ内の `INTO <partition count>` ([INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関するページを参照してください) 句を使用して制御することができます。これは、目的のジョブ トポロジを実現するのに役立ちます。 出力アダプターがパーティション分割されていない場合は、ある入力パーティションにデータがないと、到着遅延時間までの遅延が発生します。 このような場合は、出力が 1 つのライターにマージされるため、ご使用のパイプラインにボトルネックが発生する可能性があります。 到着遅延ポリシーの詳細については、[Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)に関する記事を参照してください。
+また、パーティションの高度なチューニングとして、出力ライターの数は、クエリ内の `INTO <partition count>` ([INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関するページを参照してください) 句を使用して制御することができます。これは、目的のジョブ トポロジを実現するのに役立ちます。 出力アダプターがパーティション分割されていない場合は、ある入力パーティションにデータがないと、到着遅延時間までの遅延が発生します。 このような場合は、出力が 1 つのライターにマージされるため、ご使用のパイプラインにボトルネックが発生する可能性があります。 到着遅延ポリシーの詳細については、[Azure Stream Analytics のイベントの順序に関する考慮事項](./stream-analytics-time-handling.md)に関する記事を参照してください。
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
@@ -90,5 +90,5 @@ Azure Resource Manager テンプレートのデプロイまたは REST API を�
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

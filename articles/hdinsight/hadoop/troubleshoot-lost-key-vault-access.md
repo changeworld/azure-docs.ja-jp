@@ -1,18 +1,15 @@
 ---
 title: ディスク暗号化を使用する Azure HDInsight クラスターにおいて Key Vault のアクセスが失われる
-description: Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: Azure HDInsight クラスターと対話するときの Key Vault アクセスの問題のトラブルシューティング手順と可能な解決策。
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce2929ca84746de1ab8b51882f3004c3699f17ca
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461533"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943116"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>シナリオ:ディスク暗号化を使用する Azure HDInsight クラスターにおいて Key Vault のアクセスが失われる
 
@@ -26,9 +23,9 @@ Resource Health Center (RHC) のアラート `The HDInsight cluster is unable to
 
 アラートでは、クラスター ノードから KV にアクセスでき、それによってネットワーク接続、KV 正常性、ユーザー割り当てマネージド ID のアクセス ポリシーが保証される状態を確保します。 このアラートでは単に、構造ノードの再起動時にブローカーがシャットダウンされる兆候を警告しており、ノードが再起動されるまでクラスターは引き続き機能します。
 
-**ディスク暗号化の Key Vault ステータス**からのアラートに関する詳細情報を検索するには、Apache Ambari UI に移動します。 このアラートには、検証エラーの理由に関する詳細が含まれます。
+**ディスク暗号化の Key Vault ステータス** からのアラートに関する詳細情報を検索するには、Apache Ambari UI に移動します。 このアラートには、検証エラーの理由に関する詳細が含まれます。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 ### <a name="kvaad-outage"></a>KV/AAD の停止
 
@@ -36,7 +33,7 @@ Resource Health Center (RHC) のアラート `The HDInsight cluster is unable to
 
 ### <a name="kv-accidental-deletion"></a>KV の誤削除
 
-* 削除されたキーを KV 上にリストアして、自動復元する。 詳細については、「[削除されたキーの復元](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey)」を参照してください。
+* 削除されたキーを KV 上にリストアして、自動復元する。 詳細については、「[削除されたキーの復元](/rest/api/keyvault/recoverdeletedkey)」を参照してください。
 * KV チームに連絡を取って、誤削除から復元してもらう。
 
 ### <a name="kv-access-policy-changed"></a>KV アクセス ポリシーが変更された
@@ -88,4 +85,4 @@ BYOK クラスター ノードから KV へのアクセスを許可するよう�
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

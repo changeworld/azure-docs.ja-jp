@@ -3,17 +3,17 @@ title: JavaScript を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 JavaScript/Node.js のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/19/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 466a1318dbe0a9299eebb9259ef8e0fe9bbbc0e7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: d21c92d6595d2db3f9fb01ee5ddc3669a0564bab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433086"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359749"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>v12 JavaScript クライアント ライブラリを使用した Azure Storage サンプル
 
@@ -428,4 +428,5 @@ Azure Storage ライブラリのインストール方法と概要については
 * .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
 * Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
 * Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
+* C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
 * その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
-ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72757141"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905139"
 ---
-# <a name="create-human-reviews-rest"></a>人によるレビューの作成 (REST)
+# <a name="create-human-reviews-api-console"></a>人によるレビューの作成 (API コンソール)
 
 [レビュー](./review-api.md#reviews)により、人であるモデレーターがアクセス可能なコンテンツが格納されて表示されます。 ユーザーがレビューを完了すると、結果が指定のコールバック エンドポイントに送信されます。 このガイドでは、レビュー REST API を API コンソール経由で使用してレビューを設定する方法について説明します。 API の構造を理解すれば、これらの呼び出しを REST と互換性のあるプラットフォームに簡単に移植することができます。
 

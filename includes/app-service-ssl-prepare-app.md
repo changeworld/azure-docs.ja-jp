@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8b3c1992a1cff18390f9d1332103e0650af418e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "78301006"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347729"
 ---
 ## <a name="prepare-your-web-app"></a>Web アプリの準備
 
-カスタム セキュリティ バインディングを作成するか、お使いの App Service アプリのクライアント証明書を有効にするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard**、**Premium**、または **Isolated** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
+カスタム TLS/SSL バインディングを作成したり、App Service アプリのクライアント証明書を有効にしたりするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard**、**Premium**、または **Isolated** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -31,7 +31,7 @@ ms.locfileid: "78301006"
 
 **[App Services]** ページで、Web アプリの名前を選択します。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-ssl-prepare-app/select-app.png)
+![リストの最初のアプリが強調表示された、実行中のすべての Web アプリのリストを示す、Azure portal の [App Services] ページのスクリーンショット。](./media/app-service-ssl-prepare-app/select-app.png)
 
 Web アプリの管理ページが表示されます。  
 
@@ -49,7 +49,7 @@ Web アプリが **F1** レベルまたは **D1** レベルに含まれていな
 
 ### <a name="scale-up-your-app-service-plan"></a>App Service プランのスケール アップ
 
-非 Free レベルのいずれかを選びます (**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、 **[See additional options]\(その他のオプションを参照する\)** をクリックします。
+非 Free レベルのいずれかを選びます (**B1**、**B2**、**B3**、または **運用** カテゴリのいずれかのレベル)。 その他のオプションについては、 **[See additional options]\(その他のオプションを参照する\)** をクリックします。
 
 **[Apply]** をクリックします。
 

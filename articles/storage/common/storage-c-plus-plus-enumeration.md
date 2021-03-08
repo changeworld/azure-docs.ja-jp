@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514460"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784100"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
 
@@ -59,8 +59,8 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 
 セグメント化された一覧取得操作に対する応答は次のとおりです。
 
-* *_segment*: 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。
-* *continuation_token*: 結果の次のページを取得するために、次の呼び出しに渡されます。 返される結果がそれ以上無い場合、継続トークンは null になります。
+* *_segment* : 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。
+* *continuation_token* : 結果の次のページを取得するために、次の呼び出しに渡されます。 返される結果がそれ以上無い場合、継続トークンは null になります。
 
 たとえば、コンテナー内のすべての BLOB を一覧表示する一般的な呼び出しは、次のコード スニペットのようになります。 コードは、「 [サンプル](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)」にあります。
 
@@ -153,7 +153,7 @@ do
 
 C# または Oracle Java SDK を使用しているのであれば、列挙型プログラミング モデルをご存知でしょう。このモデルでは、データを必要な場合に一定のオフセットでのみフェッチする、限定的な一覧取得が利用できます。 C++ でも、反復子ベースのテンプレートにより同様の方法が提供されます。
 
-たとえば、**list_blobs** を使用した一般的な限定的一覧取得 API は次のようになります。
+たとえば、 **list_blobs** を使用した一般的な限定的一覧取得 API は次のようになります。
 
 ```cpp
 list_blob_item_iterator list_blobs() const;
@@ -198,7 +198,7 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 
 * [C++ から BLOB ストレージを使用する方法](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [C++ から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [C++ から Queue ストレージを使用する方法](../storage-c-plus-plus-how-to-use-queues.md)
+* [C++ から Queue ストレージを使用する方法](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [C++ 用 Azure Storage クライアント ライブラリのドキュメント](https://azure.github.io/azure-storage-cpp/)
-* [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure のストレージ チーム ブログ](/archive/blogs/windowsazurestorage/)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)

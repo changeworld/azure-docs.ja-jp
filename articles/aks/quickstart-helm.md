@@ -4,14 +4,14 @@ description: AKS と Azure Container Registry で Helm を使用して、クラ�
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 01/12/2021
 ms.author: zarhoads
-ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 5656051ecd6e3fd39b051d2d0288e9762c83d9ad
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407117"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249926"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>クイック スタート:Helm を使用して Azure Kubernetes Service (AKS) で開発する
 
@@ -22,7 +22,7 @@ ms.locfileid: "87407117"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
-* [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI がインストールされていること](/cli/azure/install-azure-cli)。
 * [Helm v3 がインストールされていること][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry を作成する
@@ -144,7 +144,7 @@ helm create webfrontend
 replicaCount: 1
 
 image:
-  repository: *myhelmacr.azurecr.io*/webfrontend
+  repository: myhelmacr.azurecr.io/webfrontend
   pullPolicy: IfNotPresent
 ...
 service:

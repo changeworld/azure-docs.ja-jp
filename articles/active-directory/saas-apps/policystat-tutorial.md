@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 212bd1bc0b15ad985fc8037e99876d78132b2c22
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547938"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル:Azure Active Directory と PolicyStat の統合
 
@@ -27,7 +27,7 @@ PolicyStat と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に PolicyStat にサインイン (シングル サインオン) するよう指定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -44,9 +44,9 @@ PolicyStat と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* PolicyStat では、**SP** によって開始される SSO がサポートされます
+* PolicyStat では、 **SP** によって開始される SSO がサポートされます
 
-* PolicyStat では、**Just In Time** ユーザー プロビジョニングがサポートされています。
+* PolicyStat では、 **Just In Time** ユーザー プロビジョニングがサポートされています。
 
 ## <a name="adding-policystat-from-the-gallery"></a>ギャラリーから PolicyStat を追加する
 
@@ -66,13 +66,13 @@ Azure AD への PolicyStat の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**PolicyStat**」と入力し、結果ウィンドウで **PolicyStat** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **PolicyStat** 」と入力し、結果ウィンドウで **PolicyStat** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の PolicyStat](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、PolicyStat で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、PolicyStat で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと PolicyStat 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 PolicyStat で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -112,13 +112,13 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[PolicyStat クライアント サポート チーム](http://www.policystat.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
 5. PolicyStat アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] アイコンが選択されている [ユーザー属性] ダイアログを示すスクリーンショット。](common/edit-attribute.png)
 
 6. その他に、PolicyStat アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -128,9 +128,9 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
     
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] および [保存] アクションが強調表示されている [ユーザーの要求] セクションを示すスクリーンショット。](common/new-save-attribute.png)
 
-    ![image](./media/policystat-tutorial/attribute01.png)
+    ![[ユーザー要求の管理] ダイアログを示すスクリーンショット。[名前]、[変換]、および [パラメーター] のテキスト ボックスが強調表示され、[保存] ボタンが選択されています。](./media/policystat-tutorial/attribute01.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -164,7 +164,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 3. **[Your IDP Metadata]** をクリックし、 **[Your IDP Metadata]** セクションで次の手順に従います。
    
-    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808636.png "[Single Sign-On Configuration]")
+    ![[Your IDP Metadata]\(IDP メタデータ) アクションが選択されていることを示すスクリーンショット。](./media/policystat-tutorial/ic808636.png "[Single Sign-On Configuration]")
    
     a. ダウンロードしたメタデータ ファイルの内容をコピーし、 **[Your Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** テキスト ボックスに貼り付けます。
 
@@ -172,7 +172,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 4. **[Configure Attributes]** をクリックし、 **[Configure Attributes]** セクションで次の手順に従います。
    
-    a. **[Username Attribute]** ボックスに、「**uid**」と入力します。
+    a. **[Username Attribute]** ボックスに、「 **uid** 」と入力します。
 
     b. **[First Name Attribute]\(名前 (名) 属性\)** テキスト ボックスに、Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** の名前 (名) 属性の要求名を入力します。
 
@@ -224,12 +224,12 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [PolicyStat] タイルをクリックすると、SSO を設定した PolicyStat に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [PolicyStat] タイルをクリックすると、SSO を設定した PolicyStat に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

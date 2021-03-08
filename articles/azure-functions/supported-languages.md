@@ -3,12 +3,12 @@ title: Azure Functions でサポートされている言語
 description: サポートされている言語 (GA) とプレビュー段階の言語、および Functions の開発を他の言語に拡張する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: da3100521faae61e9803aaa82dbf91045a7ecbc9
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994903"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108553"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
 
@@ -27,9 +27,9 @@ ms.locfileid: "83994903"
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-## <a name="custom-handlers-preview"></a>カスタム ハンドラー (プレビュー) 
+## <a name="custom-handlers"></a>カスタム ハンドラー
 
-カスタム ハンドラーは、Azure Functions ホストからイベントを受信する軽量の Web サーバーです。 HTTP プリミティブをサポートするすべての言語で、カスタム ハンドラーを実装できます。 つまり、カスタム ハンドラーを使用して、正式にサポートされていない言語の関数を作成できることを意味します。 詳細については、「[Azure Functions のカスタム ハンドラー (プレビュー)](functions-custom-handlers.md)」を参照してください。
+カスタム ハンドラーは、Azure Functions ホストからイベントを受信する軽量の Web サーバーです。 HTTP プリミティブをサポートするすべての言語で、カスタム ハンドラーを実装できます。 つまり、カスタム ハンドラーを使用して、正式にサポートされていない言語で関数を作成できることを意味します。 詳細については、「[Azure Functions のカスタム ハンドラー](functions-custom-handlers.md)」を参照してください。
 
 ## <a name="language-extensibility"></a>言語拡張
 

@@ -4,28 +4,28 @@ description: Azure SQL Database と Azure SQL Managed Instance 用の Azure セ�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d2513d822c182d4820728123b187e995da3179fe
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231029"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806208"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance 用の Azure セキュリティ ベースライン
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL Database 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
@@ -155,7 +155,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 **ガイダンス**: Azure Policy を使用してお使いの Azure SQL データベースのネットワーク セキュリティ構成を定義して実装します。 "Microsoft.Sql" 名前空間を使用してカスタム ポリシー定義を定義するか、サーバーのネットワーク保護のために設計されたいずれかの組み込みのポリシー定義を使用できます。 サーバーに適用できる組み込みのネットワーク セキュリティ ポリシーの例を次に示します。"SQL Database では仮想ネットワーク サービス エンドポイントを使用する必要がある"。
 
-Azure Resource Management テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化するには、Azure Blueprints を使用します。 ブループリントを新しいサブスクリプションと環境に容易に適用し、バージョン管理によって制御と管理を微調整します。
+Azure Blueprints を使用して、Azure Resource Management テンプレート、Azure のロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化し、大規模な Azure デプロイを簡略化します。 ブループリントを新しいサブスクリプションと環境に容易に適用し、バージョン管理によって制御と管理を微調整します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -199,7 +199,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
-**ガイダンス**: 異常なアクティビティを監視し、それに関するアラートを生成するには、Azure Security Center の Advanced Threat Protection for Azure SQL Database を使用します。 SQL データベース用に Advanced Data Security を有効にします。 Advanced Data Security には、機密データを検出して分類したり、データベースの潜在的な脆弱性を明らかにして軽減したり、データベースへの脅威を示す可能性のある異常なアクティビティを検出したりするための機能が含まれています。
+**ガイダンス**: 異常なアクティビティを監視し、それに関するアラートを生成するには、Azure Security Center の Advanced Threat Protection for Azure SQL Database を使用します。 ご使用の SQL Database に対して Azure Defender for SQL を有効にします。 Azure Defender for SQL には、データベースの潜在的な脆弱性を検出し、軽減する機能や、データベースに対する脅威を示す異常な行動を検出する機能が含まれています。
 
 Advanced Threat Protection および Azure SQL Database に関するアラートの概要:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-Azure SQL Database 向け Advanced Data Security を有効にする方法:
+Azure SQL Database に対して Azure Defender for SQL を有効にする方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Azure Security Center でアラートを管理する方法:
 
@@ -329,11 +329,11 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: Azure Active Directory (AAD) には、明示的に割り当てる必要があるためにクエリ可能である組み込みロールがあります。 アドホック クエリを実行して、管理グループのメンバーであるアカウントを検出するには、AAD PowerShell モジュールを使用します。
+**ガイダンス**: Azure Active Directory (Azure AD) には、明示的に割り当てる必要があるためにクエリ可能である組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
 PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法:
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory (AAD) Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
+**ガイダンス**: Azure Active Directory (Azure AD) 多要素認証 (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
 Azure で MFA を有効にする方法:
 
@@ -401,7 +401,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 特権アクセス ワークステーションについて:
 
-https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 Azure で MFA を有効にする方法:
 
@@ -445,13 +445,13 @@ Azure でネームド ロケーションを構成する方法: https://docs.micr
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: お使いのサーバーの Azure Active Directory (AAD) 管理者を作成します。
+**ガイダンス**: お使いのサーバーの Azure Active Directory (Azure AD) 管理者を作成します。
 
 Azure SQL による Azure Active Directory 認証を構成して管理する方法:
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-AAD インスタンスを作成して構成する方法:
+Azure AD インスタンスを作成して構成する方法:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**: Azure Active Directory (AAD) では、古いアカウントの検出に役立つログが提供されます。 さらに、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理します。 ユーザーのアクセスを定期的にレビューして、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
+**ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 さらに、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理します。 ユーザーのアクセスを定期的にレビューして、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
 Azure ID アクセス レビューの使用方法:
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 非アクティブ化されたアカウントへのアクセス試行を監視する
 
-**ガイダンス**: Azure SQL による Azure Active Directory (AAD) 認証を構成し、Azure Active Directory ユーザー アカウントの診断設定を作成して、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内に目的のアラートを構成します。
+**ガイダンス**: Azure SQL による Azure Active Directory (Azure AD) 認証を構成し、Azure Active Directory ユーザー アカウントの診断設定を作成して、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内に目的のアラートを構成します。
 
 Azure SQL による Azure Active Directory 認証を構成して管理する方法:
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**: ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory (AAD) Identity Protection とリスク検出を使用します。 また、さらに調査するためにデータを Azure Sentinel に取り込むこともできます。
+**ガイダンス**: ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory (Azure AD) Identity Protection とリスク検出を使用します。 また、さらに調査するためにデータを Azure Sentinel に取り込むこともできます。
 
 Azure AD の危険なサインインを表示する方法:
 
@@ -517,7 +517,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure SQL Database インスタンスへのアクセスを認証および制御するために Azure Active Directory (AAD) を使用します。
+**ガイダンス**:Azure SQL Database インスタンスへのアクセスを認証および制御するために Azure Active Directory (Azure AD) を使用します。
 
 認証のために Azure SQL Database と Azure Active Directory を統合する方法:
 
@@ -651,19 +651,19 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
-**ガイダンス**: Azure SQL Database 向け Advanced Data Security を有効にし、お使いのサーバーに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。
+**ガイダンス**: Azure SQL Database 向け Azure Defender for SQL を有効にし、お使いのサーバーに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。
 
 Azure SQL Database で脆弱性評価を実行する方法
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-Advanced Data Security を有効にする方法:
+Azure Defender for SQL を有効にする方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Azure Security Center の脆弱性評価の推奨事項を実装する方法:
 
@@ -715,7 +715,7 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
@@ -869,7 +869,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -993,7 +993,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: Azure サービスに Azure Active Directory (AAD) で自動的に管理される ID を提供するには、マネージド ID を使用します。 マネージド ID を使用すると、コード内に資格情報を記述することなく、AAD 認証をサポートする任意のサービス (Azure Key Vault を含む) に対して認証できます。
+**ガイダンス**: マネージド ID を使用して、Azure Active Directory (Azure AD) で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コード内に資格情報を記述することなく、Azure AD 認証をサポートする任意のサービス (Azure Key Vault を含む) に対して認証できます。
 
 チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする:
 
@@ -1019,7 +1019,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -1051,7 +1051,7 @@ Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware 
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -1115,7 +1115,7 @@ https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azu
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1165,7 +1165,7 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Sentinel にストリーミングできます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 連続エクスポートを構成する方法:
 
@@ -1193,7 +1193,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
@@ -1209,5 +1209,5 @@ Microsoft が管理しているクラウド インフラストラクチャ、サ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../../security/benchmarks/security-baselines-overview.md)の詳細について学習する

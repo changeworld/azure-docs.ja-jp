@@ -7,33 +7,33 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: a5ce99927ce4cd2b04b5dd5cb865299b4be84ecb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35d5d196eccb222bf17e0a129fe4e4041b1f6053
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519798"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600736"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---hyperscale-citus-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for PostgreSQL - Hyperscale (Citus) コンピューティング リソースを前払いする
 
 Azure Database for PostgreSQL - Hyperscale (Citus) ではコンピューティング リソースを前払いすることで、従量課金制よりコストを節約できるようになりました。 Hyperscale (Citus) の予約容量を使用すると、Hyperscale (Citus) サーバー グループを 1 年分または 3 年分前払いすることでコンピューティング コストを大幅に引き下げることができます。 Hyperscale (Citus) の予約容量を購入するには、Azure リージョン、予約期間、請求頻度を指定する必要があります。
 
 > [!IMPORTANT]
-> この記事では、Azure Database for PostgreSQL - Hyperscale (Citus) の予約容量について説明します。 Azure Database for PostgreSQL – Single Server の予約容量の詳細については、「[Azure Database for PostgreSQL の前払い - 予約容量を持つ Single Server 計算リソース](/azure/postgresql/concept-reserved-pricing)」を参照してください。
+> この記事では、Azure Database for PostgreSQL - Hyperscale (Citus) の予約容量について説明します。 Azure Database for PostgreSQL – Single Server の予約容量の詳細については、「[Azure Database for PostgreSQL の前払い - 予約容量を持つ Single Server 計算リソース](./concept-reserved-pricing.md)」を参照してください。
 
 特定の Hyperscale (Citus) サーバー グループに予約を割り当てる必要はありません。 既に実行している Hyperscale (Citus) サーバー グループまたは新しくデプロイされたものには、予約価格の特典が自動的に適用されます。 予約を購入すると、コンピューティング コストを 1 年間または 3 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する Hyperscale (Citus) のコンピューティング料金は従量課金制で課金されなくなります。 
 
 予約には、Hyperscale (Citus) サーバー グループに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Hyperscale (Citus) サーバー グループに適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Database for PostgreSQL - Hyperscale (Citus) の予約容量オファー](https://azure.microsoft.com/pricing/details/postgresql/hyperscale-citus/)に関するページを参照してください。
 
-Hyperscale (Citus) の予約容量は [Azure portal](https://portal.azure.com/) で購入できます。 予約の支払いは、[前払いまたは月払い](https://docs.microsoft.com/azure/cost-management-billing/reservations/monthly-payments-reservations)で行います。 予約容量を購入するには:
+Hyperscale (Citus) の予約容量は [Azure portal](https://portal.azure.com/) で購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 
 * 少なくとも 1 つのマイクロソフトエンタープライズ契約 (EA) または従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
 * マイクロソフトエンタープライズ契約の場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションのマイクロソフトエンタープライズ契約管理者である必要があります。
 * クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Hyperscale (Citus) の予約容量を購入できます。
 
 マイクロソフトエンタープライズ契約のお客様と従量課金制のお客様が予約を購入した場合の課金方法については、以下を参照してください。
-- [マイクロソフトエンタープライズ契約に適用される Azure の予約の使用状況について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-- [従量課金制サブスクリプションに適用される Azure の予約の使用状況について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [マイクロソフトエンタープライズ契約に適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+- [従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
 ## <a name="determine-the-right-server-group-size-before-purchase"></a>購入する前に適切なサーバー グループのサイズを決定する
 
@@ -51,7 +51,7 @@ Hyperscale (Citus) の予約容量は [Azure portal](https://portal.azure.com/) 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[すべてのサービス]**  >  **[予約]** を選択します。
 1. **[追加]** を選択します。 **[購入予約]** ペインで **[Azure Database for PostgreSQL]** を選択して PostgreSQL データベースの新しい予約を購入します。
-1. 購入する **Hyperscale (Citus) のコンピューティング**の種類を選択し、 **[選択]** をクリックします。
+1. 購入する **Hyperscale (Citus) のコンピューティング** の種類を選択し、 **[選択]** をクリックします。
 1. **[Products]\(製品\)** タブで、選択したコンピューティングの種類の数量を確認します。
 1. **[Buy + Review]\(購入と確認\)** タブに進み、購入を完了します。
 
@@ -59,7 +59,7 @@ Hyperscale (Citus) の予約容量は [Azure portal](https://portal.azure.com/) 
 
 | フィールド        | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| サブスクリプション | Azure Database for PostgreSQL の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、Azure Database for PostgreSQL の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号: MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 マイクロソフトエンタープライズ契約サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過分として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。                                                                                  |
+| サブスクリプション | Azure Database for PostgreSQL の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、Azure Database for PostgreSQL の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号: MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 Enterprise Agreement サブスクリプションの場合、登録の Azure 前払い (旧称: 年額コミットメント) の残高から料金が差し引かれるか、超過分として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。                                                                                  |
 | Scope        | 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 **[共有]** を選択した場合、仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている Hyperscale (Citus) サーバー グループに適用されます。 マイクロソフトエンタープライズ契約のお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。 **[1 つのサブスクリプション]** を選択した場合、仮想コアの予約割引はこのサブスクリプションの Hyperscale (Citus) サーバー グループに適用されます。 **[1 つのリソース グループ]** を選択した場合、予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内の Hyperscale (Citus) サーバー グループに適用されます。 |
 | リージョン       | Azure Database for PostgreSQL - Hyperscale (Citus) 予約容量の予約の対象となる Azure リージョン。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 期間         | 1 年間または 3 年間。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -69,7 +69,7 @@ Hyperscale (Citus) の予約容量は [Azure portal](https://portal.azure.com/) 
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 ## <a name="vcore-size-flexibility"></a>仮想コアのサイズの柔軟性
 
@@ -85,9 +85,9 @@ Hyperscale (Citus) の予約容量は [Azure portal](https://portal.azure.com/) 
 
 Azure の予約の詳細については、次の記事を参照してください。
 
-* [Azure の予約とは](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-* [Azure の予約の管理](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [Azure の予約割引を理解する](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [従量課金制サブスクリプションの予約使用量について](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
-* [マイクロソフトエンタープライズ契約の予約の使用状況について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [パートナー センターのクラウド ソリューション プロバイダー プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Azure の予約の管理](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Azure の予約割引を理解する](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [従量課金制サブスクリプションの予約使用量について](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)
+* [マイクロソフトエンタープライズ契約の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [パートナー センターのクラウド ソリューション プロバイダー プログラムでの Azure の予約](/partner-center/azure-reservations)

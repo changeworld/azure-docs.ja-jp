@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: a6348b967e814a49c766388540a594987af2231e
-  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+  ms.openlocfilehash: b5660f58368bd866035b4cf772f8bd8564ed3b9c
+  ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/02/2020
-  ms.locfileid: "89296940"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100596846"
 landingContent:
 - title: Load Balancer について
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: Load Balancer とは
       url: load-balancer-overview.md
-    - text: Load Balancer の概念
+    - text: Load Balancer のアルゴリズム
       url: concepts.md
     - text: Load Balancer のコンポーネント
       url: components.md
@@ -42,8 +42,6 @@ landingContent:
       url: quickstart-load-balancer-standard-internal-portal.md
   - linkListType: tutorial
     links:
-    - text: VM へのインターネット トラフィックの負荷分散を行う
-      url: tutorial-load-balancer-standard-manage-portal.md
     - text: Standard Load Balancer を使用して可用性ゾーン間で VM の負荷を分散する
       url: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - text: Azure Load Balancer でポート転送を構成する
@@ -61,7 +59,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Load Balancer の負荷分散とアウトバウンドの規則を構成する (Azure CLI)
-      url: configure-load-balancer-outbound-cli.md
+      url: ./quickstart-load-balancer-standard-public-cli.md#create-outbound-rule-configuration
     - text: IPv6 を使用してインターネットに接続するロード バランサーを作成する (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: 分散モードを構成する
@@ -79,9 +77,9 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: ゾーン冗長フロントエンドを使用して Load Balancer を作成する
-      url: load-balancer-get-started-internet-az-portal.md
+      url: ./quickstart-load-balancer-standard-public-portal.md
     - text: ゾーンのフロントエンドを使用して Load Balancer を作成する
-      url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+      url: ./quickstart-load-balancer-standard-public-portal.md
     - text: 複数の IP 構成での負荷分散
       url: load-balancer-multiple-ip.md
 - title: トラブルシューティング
@@ -96,15 +94,23 @@ landingContent:
       url: load-balancer-common-deployment-errors.md
     - text: 送信接続に関する一般的な問題の解決
       url: troubleshoot-outbound-connection.md
+    - text: 正常性プローブの状態の問題
+      url: load-balancer-troubleshoot-health-probe-status.md
+    - text: バックエンド プール (VM) のトラフィック
+      url: load-balancer-troubleshoot-backend-traffic.md
+  - linkListType: video
+    links:
+    - text: Azure Load Balancer を使用して高可用性アプリを構築および監視する
+      url: https://techcommunity.microsoft.com/t5/video-hub/build-amp-monitor-highly-available-apps-w-azure-load-balancer/m-p/1703353
 - title: リファレンス
   linkLists:
   - linkListType: reference
     links:
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
+      url: /powershell/module/az.network/?view=azps-2.5.0#load_balancer
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest
+      url: /cli/azure/network/lb?view=azure-cli-latest
     - text: ARM テンプレート
-      url: https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates
+      url: /azure/templates/microsoft.network/loadbalancers#quickstart-templates
     - text: よく寄せられる Load Balancer の質問
       url: load-balancer-faqs.md

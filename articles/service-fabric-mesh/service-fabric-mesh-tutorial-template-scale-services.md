@@ -1,19 +1,24 @@
 ---
 title: チュートリアル - Azure Service Fabric Mesh で実行されているアプリをスケーリングする
 description: このチュートリアルでは、Service Fabric Mesh で実行されているアプリケーション内でサービスをスケーリングする方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 02dc5d43a23c572d441da2bbb7386885bf66ece7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351815"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625385"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>チュートリアル:Service Fabric Mesh で実行しているアプリケーションをスケーリングする
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 このチュートリアルは、シリーズの第 2 部です。 [前に Service Fabric Mesh にデプロイ](service-fabric-mesh-tutorial-template-deploy-app.md)されていたアプリケーションのサービス インスタンスの数を手動でスケーリングする方法について説明します。 最終的には、フロントエンド サービスで 3 つのインスタンスが、またデータ サービスで 2 つのインスタンスが実行されている状態になります。
 

@@ -3,26 +3,24 @@ title: V3 に移行する - Translator
 titleSuffix: Azure Cognitive Services
 description: この記事では、Azure Cognitive Services Translator を V2 から V3 に移行する手順について説明します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: lajanuar
+ms.openlocfilehash: 13c4d39284fad293c945f8b7e31076dccee84fda
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523980"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896835"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 から V3 への移行
 
 > [!NOTE]
-> V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で独占的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。
-> 
-> Microsoft Translator Hub は、2019 年 5 月 17 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
+> V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で独占的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。 V2 は 2021 年 5 月 24 日に廃止される予定です。 
 
 Microsoft Translator チームは Translator のバージョン 3 (V3) をリリースしました。 このリリースには、新しい機能、非推奨になったメソッド、Microsoft Translator Service との間でデータを送受信するための新しい形式が含まれています。 このドキュメントでは、V3 を使用するためにアプリケーションを変更する方法に関する情報を提供します。 
 
@@ -37,7 +35,7 @@ Microsoft Translator チームは Translator のバージョン 3 (V3) をリリ
 * 音訳 - 音訳メソッドが API に追加されました。 このメソッドでは、ある文字体系 (アラビア語 など) で書かれた言葉や文章が別の文字体系 (ラテン語 など) に変換されます。
 * 言語 - 新しい "languages" メソッドは、"translate"、"dictionary"、"transliterate" メソッドで使用するために、言語情報を JSON 形式で届けます。
 * 翻訳の新機能 - 別のメソッドとして V2 API に存在した一部の機能に対応する目的で、新しい機能が "translate" メソッドに追加されました。 それには、たとえば、TranslateArray があります。
-* 読み上げメソッド - テキスト読み上げ機能は、Microsoft Translator でサポートから外れました。 テキスト読み上げ機能は、[Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) で利用できます。
+* 読み上げメソッド - テキスト読み上げ機能は、Microsoft Translator でサポートから外れました。 テキスト読み上げ機能は、[Microsoft Speech Service](../speech-service/text-to-speech.md) で利用できます。
 
 V2 メソッドと V3 メソッドについてまとめた次のリストで、V3 メソッドと、V2 に備わっていた機能を提供する API を確認できます。
 
@@ -47,8 +45,8 @@ V2 メソッドと V3 メソッドについてまとめた次のリストで、V
 | `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
-| `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `GetLanguagesForSpeak`      | [Microsoft Speech Service](../speech-service/language-support.md#text-to-speech)         |
+| `Speak`     | [Microsoft Speech Service](../speech-service/text-to-speech.md)          |
 | `Detect`     | [Detect](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
 | `AddTranslation`     | この機能は現在サポートされていません       |
@@ -118,8 +116,8 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 
 | Version | エンドポイント | GDPR のプロセッサ準拠 | Translator Hub の使用 | カスタム トランスレーター (プレビュー) の使用 |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Translator バージョン 2|    api.microsofttranslator.com|    いいえ    |○    |いいえ|
-|Translator バージョン 3|    api.cognitive.microsofttranslator.com|    はい|    ×|    はい|
+|Translator バージョン 2|    api.microsofttranslator.com|    いいえ    |はい    |いいえ|
+|Translator バージョン 3|    api.cognitive.microsofttranslator.com|    はい|    いいえ|    はい|
 
 **Translator バージョン 3**
 * 一般提供されており完全にサポートされます。

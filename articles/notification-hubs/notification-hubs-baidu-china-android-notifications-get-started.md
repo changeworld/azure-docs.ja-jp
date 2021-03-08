@@ -15,12 +15,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
-ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 098fb0ed967dcacac24ce3abfd4843f9fe14ff49
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003968"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727177"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 
@@ -57,7 +57,7 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
 &emsp;&emsp;&emsp;&emsp;![Azure Notification Hubs - Baidu (シークレット)](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
 
-これで、通知ハブが Baidu と連携するように構成されました。 また、アプリを登録してプッシュ通知を送受信するための**接続文字列**も得られました。
+これで、通知ハブが Baidu と連携するように構成されました。 また、アプリを登録してプッシュ通知を送受信するための **接続文字列** も得られました。
 
 [接続情報へのアクセス] ウィンドウの `DefaultListenSharedAccessSignature` と `DefaultFullSharedAccessSignature` を書き留めておいてください。
 
@@ -134,7 +134,7 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
     !! <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME" />
-    !!<permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME"android:protectionLevel="normal" />
+    !!<permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME" android:protectionLevel="normal" />
 
     ```
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: guide
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324397"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791768"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>構成と管理に関するコンテンツ参照 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "84324397"
 
 - [手動チューニング](performance-guidance.md)
 - [DMV を使用したパフォーマンスの監視](monitoring-with-dmvs.md)
-- [クエリ ストアを使用したパフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [クエリ ストアを使用したパフォーマンスの監視](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - お客様のワークロードのパフォーマンスが Azure SQL Database によって最適化されるよう、[自動チューニングを有効にする](automatic-tuning-enable.md)。
 - [自動チューニングの電子メール通知を有効](automatic-tuning-email-notifications-configure.md)にして、チューニング推奨事項に関する情報を取得する。
 - [パフォーマンスに関する推奨事項を適用](database-advisor-find-recommendations-portal.md)してお客様のデータベースを最適化する。
@@ -84,7 +84,7 @@ ms.locfileid: "84324397"
 - [SQL データ同期](sql-data-sync-data-sql-server-sql-database.md)
 - [データ同期エージェント](sql-data-sync-agent-overview.md)
 - [スキーマ変更のレプリケート](sql-data-sync-update-sync-schema.md)
-- [OMS で監視する](sql-data-sync-monitor-sync.md)
+- [OMS で監視する](./monitor-tune-overview.md)
 - [データ同期のベスト プラクティス](sql-data-sync-best-practices.md)
 - [データ同期のトラブルシューティング](sql-data-sync-troubleshoot.md)
 

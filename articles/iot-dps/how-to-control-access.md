@@ -8,17 +8,17 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 5190ff2575f80a7c1c8c4fc9b386441497de23fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020322"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954326"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
-この記事では、IoT Device Provisioning Service をセキュリティで保護するためのオプションについて説明します。 プロビジョニング サービスでは、*アクセス許可*を使用して、各エンドポイントへのアクセス権を付与します。 アクセス許可により、機能に応じてサービス インスタンスへのアクセスを制限します。
+この記事では、IoT Device Provisioning Service をセキュリティで保護するためのオプションについて説明します。 プロビジョニング サービスでは、*アクセス許可* を使用して、各エンドポイントへのアクセス権を付与します。 アクセス許可により、機能に応じてサービス インスタンスへのアクセスを制限します。
 
 この記事では、次の内容について説明します。
 
@@ -192,4 +192,4 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 [lnk-sdks]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-management-portal]: https://portal.azure.com
 [lnk-azure-resource-manager]: ../azure-resource-manager/management/overview.md
-[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iot-dps/
+[lnk-resource-provider-apis]: /rest/api/iot-dps/

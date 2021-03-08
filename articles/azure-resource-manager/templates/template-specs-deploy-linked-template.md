@@ -2,13 +2,13 @@
 title: リンクされたテンプレートとしてテンプレート スペックをデプロイする
 description: リンクされたデプロイに既存のテンプレート スペックをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 11/17/2020
+ms.openlocfilehash: b30a99a469ec010dcc2e128bbeb446b493631608
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918385"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518874"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>チュートリアル:リンクされたテンプレートとしてテンプレート スペックをデプロイする (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "88918385"
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> テンプレート スペックは現在プレビューの段階です。 使用するには、[プレビューにサインアップする](https://aka.ms/templateSpecOnboarding)必要があります。
+> テンプレート スペックは現在プレビューの段階です。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-a-template-spec"></a>テンプレート スペックを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "88918385"
 
 ## <a name="create-the-main-template"></a>メイン テンプレートを作成する
 
-ARM テンプレートにテンプレート スペックをデプロイするには、メイン テンプレートに[デプロイ リソース](/azure/templates/microsoft.resources/deployments)を追加します。 `templateLink` プロパティにテンプレート スペックのリソース ID を指定します。**azuredeploy. json**という名前の次の JSON を使用して、テンプレートを作成します。 このチュートリアルでは、パス **c:\Templates\deployTS\azuredeploy.json** に保存したことを想定していますが、任意のパスを使用できます。
+ARM テンプレートにテンプレート スペックをデプロイするには、メイン テンプレートに[デプロイ リソース](/azure/templates/microsoft.resources/deployments)を追加します。 `templateLink` プロパティにテンプレート スペックのリソース ID を指定します。**azuredeploy. json** という名前の次の JSON を使用して、テンプレートを作成します。 このチュートリアルでは、パス **c:\Templates\deployTS\azuredeploy.json** に保存したことを想定していますが、任意のパスを使用できます。
 
 ```json
 {
@@ -120,17 +120,17 @@ ARM テンプレートにテンプレート スペックをデプロイするに
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Versions.Id
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+id = $(az ts show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
 ```
 
 > [!NOTE]
-> テンプレート スペック ID の取得および Windows PowerShell の変数への割り当てに関する既知の問題があります。
+> Windows PowerShell におけるテンプレート スペック ID の取得と変数への割り当てには既知の問題があります。
 
 ---
 
@@ -160,7 +160,10 @@ New-AzResourceGroup `
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
-  -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
+  -TemplateFile "c:\Templates\deployTS\azuredeploy.json" `
+  -tsResourceGroup templateSpecRg `
+  -tsName storageSpec `
+  -tsVersion 1.0
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -172,8 +175,8 @@ az group create \
 
 az deployment group create \
   --resource-group webRG \
-  --template-file "c:\Templates\deployTS\azuredeploy.json"
-
+  --template-file "c:\Templates\deployTS\azuredeploy.json" \
+  --parameters tsResourceGroup=templateSpecRG tsName=storageSpec tsVersion=1.0
 ```
 
 ---

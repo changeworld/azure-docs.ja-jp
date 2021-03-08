@@ -4,16 +4,16 @@ description: Azure Storage のサンプル コードとアプリケーション�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9e3cd6be0da7c6d9401945293283de874c7cd866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322229"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359766"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>v12 Java クライアント ライブラリを使用した Azure Storage サンプル
 
@@ -453,4 +453,5 @@ Azure Storage ライブラリのインストール方法と概要については
 * .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
 * Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
 * JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
+* C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
 * その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 76c45e586ea7101015cb878d198cab73ed32498e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018248"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696365"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>チュートリアル用にソフトウェアをインストールしてリソースを設定する
 
@@ -23,14 +23,15 @@ ms.locfileid: "89018248"
 ## <a name="prerequisites"></a>前提条件
 
 1. Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-2. [Python 3.6.8](https://www.python.org/downloads/release/python-368/) をインストールします。
-      * Windows x86-x64 実行可能ファイルのインストーラーを使用します。
-      * `python.exe` を PATH 環境変数 downloads/ に追加します)。 ダウンロードは、「Tools For Visual Studio 2019」にあります。
-3. [Microsoft ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567) をインストールします。
-4. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) をインストールします。
-5. Azure Data Studio を開き、ノートブック用に Python を構成します。 詳しくは、「[ノートブック用の Python の構成](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks)」を参照してください。この手順には数分かかることがあります。
-6. [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020) の最新バージョンをインストールします。 次のスクリプトでは、AZ PowerShell が最新バージョン (3.5.0、2020 年 2 月) である必要があります。
-7. チュートリアルで使用される [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) と [AMD または ARM Docker イメージ ファイル](https://www.docker.com/blog/multi-arch-images/)をダウンロードします。
+2. Visual Studio 2019 と以下のものをインストールします 
+      * Azure IoT Edge Tools
+      * .NET Core クロスプラットフォーム開発
+      * コンテナー開発ツール
+3. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) をインストールします。
+4. Azure Data Studio を開き、ノートブック用に Python を構成します。 詳細については、[ノートブック用の Python の構成](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks)に関するセクションを参照してください。 この手順が完了するまで数分かかる場合があります。
+5. [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020) の最新バージョンをインストールします。 次のスクリプトでは、AZ PowerShell が最新バージョン (3.5.0、2020 年 2 月) である必要があります。
+6. [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) をインストールして、IoT Edge ソリューションをデバッグ、実行、およびテストする環境を設定します。
+7. Docker をインストールする。
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>PowerShell スクリプトを使用した Azure リソースのデプロイ
 
@@ -154,26 +155,7 @@ ms.locfileid: "89018248"
    }
    ```
 
-10. ARM/AMD Docker イメージをコンテナー レジストリにプッシュします。
-
-    ```powershell
-    $containerRegistryCredentials = Get-AzContainerRegistryCredential -ResourceGroupName $ResourceGroup -Name $containerRegistryName
-    
-    $amddockerimageFile = Read-Host "Please Enter the location to the amd docker tar file:"
-    $armdockerimageFile = Read-Host "Please Enter the location to the arm docker tar file:"
-    $amddockertag = $containerRegistry.LoginServer + "/silicaprediction" + ":amd64"
-    $armdockertag = $containerRegistry.LoginServer + "/silicaprediction" + ":arm64"
-    
-    docker login $containerRegistry.LoginServer --username $containerRegistryCredentials.Username --password $containerRegistryCredentials.Password
-    
-    docker import $amddockerimageFile $amddockertag
-    docker push $amddockertag
-    
-    docker import $armdockerimageFile $armdockertag
-    docker push $armdockertag
-    ```
-
-11. リソース グループ内にネットワーク セキュリティ グループを作成します。
+10. リソース グループ内にネットワーク セキュリティ グループを作成します。
 
     ```powershell
     $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroup -Name $NetworkSecGroup 
@@ -193,7 +175,7 @@ ms.locfileid: "89018248"
     }
     ```
 
-12. SQL Edge 対応の Azure 仮想マシンを作成します。 この VM は Edge デバイスとして機能します。
+11. SQL Edge 対応の Azure 仮想マシンを作成します。 この VM は Edge デバイスとして機能します。
 
     ```powershell
     $AzVM = Get-AzVM -ResourceGroupName $ResourceGroup -Name $EdgeDeviceId
@@ -226,7 +208,7 @@ ms.locfileid: "89018248"
     }
     ```
 
-13. リソース グループ内に IoT ハブを作成します。
+12. リソース グループ内に IoT ハブを作成します。
 
     ```powershell
     $iotHub = Get-AzIotHub -ResourceGroupName $ResourceGroup -Name $IoTHubName
@@ -241,7 +223,7 @@ ms.locfileid: "89018248"
     }
     ```
 
-14. Edge デバイスを IoT ハブに追加します。 この手順では、デバイスのデジタル アイデンティティのみが作成されます。
+13. Edge デバイスを IoT ハブに追加します。 この手順では、デバイスのデジタル アイデンティティのみが作成されます。
 
     ```powershell
     $deviceIdentity = Get-AzIotHubDevice -ResourceGroupName $ResourceGroup -IotHubName $IoTHubName -DeviceId $EdgeDeviceId
@@ -257,7 +239,7 @@ ms.locfileid: "89018248"
     $deviceIdentity = Get-AzIotHubDevice -ResourceGroupName $ResourceGroup -IotHubName $IoTHubName -DeviceId $EdgeDeviceId
     ```
 
-15. デバイスのプライマリ接続文字列を取得します。 これは、後から VM で必要になります。 次のコマンドでは、デプロイのために Azure CLI が使用されます。
+14. デバイスのプライマリ接続文字列を取得します。 これは、後から VM で必要になります。 次のコマンドでは、デプロイのために Azure CLI が使用されます。
 
     ```powershell
     $deviceConnectionString = az iot hub device-identity show-connection-string --device-id $EdgeDeviceId --hub-name $IoTHubName --resource-group $ResourceGroup --subscription $SubscriptionName
@@ -265,18 +247,19 @@ ms.locfileid: "89018248"
     $connString
     ```
 
-16. Edge デバイス上の IoT Edge 構成ファイルの接続文字列を更新します。 次のコマンドでは、デプロイのために Azure CLI が使用されます。
+15. Edge デバイス上の IoT Edge 構成ファイルの接続文字列を更新します。 次のコマンドでは、デプロイのために Azure CLI が使用されます。
 
     ```powershell
     $script = "/etc/iotedge/configedge.sh '" + $connString + "'"
     az vm run-command invoke -g $ResourceGroup -n $EdgeDeviceId  --command-id RunShellScript --script $script
     ```
 
-17. リソース グループ内に Azure Machine Learning ワークスペースを作成します。
+16. リソース グループ内に Azure Machine Learning ワークスペースを作成します。
 
     ```powershell
     az ml workspace create -w $MyWorkSpace -g $ResourceGroup
     ```
+
 
 ## <a name="next-steps"></a>次の手順
 

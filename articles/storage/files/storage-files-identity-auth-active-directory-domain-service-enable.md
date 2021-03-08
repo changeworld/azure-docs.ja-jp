@@ -4,25 +4,25 @@ description: Azure Active Directory Domain Services を使用して Azure Files 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
-ms.custom: contperfq1
-ms.openlocfilehash: f87d8c32902cfcde3207909da16fae17cc6ff68f
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: d75b60c715a758684e6f3a4b331c0b12d17eaf21
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294171"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705111"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
-[Azure Files](storage-files-introduction.md)  では、オンプレミスの Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類のドメイン サービスを介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。[「しくみ」セクション](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)を参照して、認証用の適切なドメイン サービスを選択することを強くお勧めします。 選択するドメイン サービスによって設定は異なります。 この記事では、Azure ファイル共有での認証用に Azure AD DS を有効にして構成する方法に重点を置いて説明します。
+[Azure Files](storage-files-introduction.md)  では、オンプレミスの Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類のドメイン サービスを介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。[「しくみ」セクション](./storage-files-active-directory-overview.md#how-it-works)を参照して、認証用の適切なドメイン サービスを選択することを強くお勧めします。 設定は、選択するドメイン サービスによって異なります。 この記事では、Azure ファイル共有での認証用に Azure AD DS を有効にして構成する方法に重点を置いて説明します。
 
 Azure ファイル共有を初めて使用する場合は、次の一連の記事を読む前に、[計画ガイド](storage-files-planning.md)に目を通すことをお勧めします。
 
 > [!NOTE]
-> Azure Files では、Azure AD DS と RC4-HMAC 暗号化を使用した Kerberos 認証がサポートされています。 AES Kerberos 暗号化はまだサポートされていません。
+> Azure Files では、Azure AD DS と RC4-HMAC のみを使用した Kerberos 認証がサポートされています。 AES Kerberos 暗号化はまだサポートされていません。
 > Azure Files では、Azure AD と完全に同期する Azure AD DS の認証がサポートされています。 Azure AD DS で範囲指定された同期を有効にし、Azure AD から限定された ID のセットのみを同期する場合、認証と承認はサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
@@ -33,13 +33,13 @@ Azure ファイル共有への SMB 経由の Azure AD を有効にする前に�
 
     SMB を使用した Azure AD 認証には、新規または既存のテナントを使用できます。 アクセスするテナントとファイル共有は、同じサブスクリプションに関連付けられている必要があります。
 
-    新しく Azure AD テナントを作成するには、[Azure AD テナントと Azure AD サブスクリプションを追加](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription)できます。 既存の Azure AD テナントがあるが、Azure ファイル共有で使用するために新しいテナントを作成する場合は、[Azure Active Directory テナントの作成](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant)に関する記事を参照してください。
+    新しく Azure AD テナントを作成するには、[Azure AD テナントと Azure AD サブスクリプションを追加](/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription)できます。 既存の Azure AD テナントがあるが、Azure ファイル共有で使用するために新しいテナントを作成する場合は、[Azure Active Directory テナントの作成](/rest/api/datacatalog/create-an-azure-active-directory-tenant)に関する記事を参照してください。
 
 1.  **Azure AD テナントで Azure AD Domain Services を有効にします。**
 
     Azure AD 資格情報を使用した認証をサポートするには、Azure AD テナントの Azure AD Domain Services を有効にする必要があります。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/tutorial-create-instance.md)に関する記事に書かれている手順を実行します。
 
-    通常、Azure AD DS のデプロイが完了するまでには 15 分ほどかかります。 次の手順に進む前に、Azure AD DS の正常性状態が**実行中**と表示されており、パスワード ハッシュ同期が有効になっていることを確認します。
+    通常、Azure AD DS のデプロイが完了するまでには 15 分ほどかかります。 次の手順に進む前に、Azure AD DS の正常性状態が **実行中** と表示されており、パスワード ハッシュ同期が有効になっていることを確認します。
 
 1.  **Azure AD DS を使用している Azure VM ドメインに参加します。**
 
@@ -59,7 +59,7 @@ Azure ファイル共有への SMB 経由の Azure AD を有効にする前に�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Azure AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
+Azure AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョン、Gov リージョン、および中国リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
 
 ## <a name="overview-of-the-workflow"></a>ワークフローの概要
 
@@ -97,9 +97,9 @@ SMB を使用した Azure AD DS 認証を有効にするには、Azure AD テナ
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Azure PowerShell を使用して SMB 経由で Azure AD DS 認証を有効にするには、最新の Az モジュール (2.4 以降) または Az.Storage モジュール (1.5 以降) をインストールします。 PowerShell のインストールの詳細については、[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関する記事を参照してください。
+Azure PowerShell を使用して SMB 経由で Azure AD DS 認証を有効にするには、最新の Az モジュール (2.4 以降) または Az.Storage モジュール (1.5 以降) をインストールします。 PowerShell のインストールの詳細については、[PowerShellGet を使用した Windows への Azure PowerShell のインストール](/powershell/azure/install-Az-ps)に関する記事を参照してください。
 
-新しいストレージ アカウントを作成するには、[New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0) を呼び出し、**EnableAzureActiveDirectoryDomainServicesForFile** パラメーターを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。 (以前のプレビュー モジュールを使用していた場合、機能を有効にするためのパラメーターは **EnableAzureFilesAadIntegrationForSMB** です。)
+新しいストレージ アカウントを作成するには、[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0) を呼び出し、**EnableAzureActiveDirectoryDomainServicesForFile** パラメーターを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。 (以前のプレビュー モジュールを使用していた場合、機能を有効にするためのパラメーターは **EnableAzureFilesAadIntegrationForSMB** です。)
 
 ```powershell
 # Create a new storage account
@@ -123,9 +123,9 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して SMB 経由の Azure AD 認証を有効にするには、最新バージョンの CLI (バージョン2.0.70 以降) をインストールします。 Azure CLI のインストール方法については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+Azure CLI を使用して SMB 経由の Azure AD 認証を有効にするには、最新バージョンの CLI (バージョン2.0.70 以降) をインストールします。 Azure CLI のインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
-新しいストレージ アカウントを作成するには、[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を呼び出し、`--enable-files-aadds` プロパティを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。 (以前のプレビュー モジュールを使用していた場合、機能を有効にするためのパラメーターは **file-aad** です)。
+新しいストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を呼び出し、`--enable-files-aadds` プロパティを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。 (以前のプレビュー モジュールを使用していた場合、機能を有効にするためのパラメーターは **file-aad** です)。
 
 ```azurecli-interactive
 # Create a new storage account

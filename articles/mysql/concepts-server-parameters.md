@@ -1,17 +1,17 @@
 ---
 title: サーバー パラメーター - Azure Database for MySQL
 description: このトピックでは、Azure Database for MySQL でのサーバー パラメーターの構成に関するガイドラインを示します。
-author: ajlam
-ms.author: andrela
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.date: 1/26/2021
+ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258542"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720955"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
 
@@ -54,6 +54,12 @@ MySQL では、従来からすべてのクライアント接続にスレッド�
 
 > [!IMPORTANT]
 > 運用環境で有効にする前に、スレッド プールをテストしてください。 
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+Azure Database for MySQL の場合、バイナリ ログは常に有効になっています (つまり、`log_bin` が ON に設定されています)。 トリガーを使用したい場合、"*SUPER 特権を持っておらず、バイナリ ログが有効になっています (より安全度の低い `log_bin_trust_function_creators` 変数を使用することもできます)* " のようなエラーが表示されます。 
+
+バイナリ ログ形式は常に **行** であり、サーバーへのすべての接続では **常に** 行ベースのバイナリ ログが使用されます。 行ベースのバイナリ ログでは、セキュリティ上の問題が存在せず、バイナリ ログを中断できないため、[`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) を安全に **TRUE** に設定できます。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -102,7 +108,7 @@ MySQL では、従来からすべてのクライアント接続にスレッド�
 
 MySQL では、テーブルの作成時に指定した構成に基づいて、InnoDB テーブルが異なるテーブルスペースに格納されます。 [システム テーブルスペース](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html)は、InnoDB データ辞書のストレージ領域です。 [file-per-table テーブルスペース](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html)は、1 つの InnoDB テーブルに対するデータとインデックスを含み、固有のデータ ファイル内のファイル システムに格納されています。 この動作は、`innodb_file_per_table` サーバー パラメーターによって制御されています。 `innodb_file_per_table` を `OFF` に設定すると、InnoDB ではシステム テーブルスペースにテーブルが作成されます。 それ以外の場合、InnoDB では file-per-table テーブルスペースにテーブルが作成されます。
 
-Azure Database for MySQL は 1 つのデータ ファイル内で、最大 **1 TB** までサポートされています。 データベースのサイズが 1 TB を超える場合は、[innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) テーブルスペースにテーブルを作成する必要があります。 1 つのテーブル サイズが 1 TB を超える場合は、パーティション テーブルを使用する必要があります。
+Azure Database for MySQL は、1 つのデータ ファイルで、最大 **4 TB** までサポートします。 データベースのサイズが 4 TB を超える場合は、[innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) テーブルスペースにテーブルを作成する必要があります。 1 つのテーブル サイズが 4 TB を超える場合は、パーティション テーブルを使用する必要があります。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -211,10 +217,10 @@ Lower_case_table_name は既定で 1 に設定されます。MySQL 5.6 および
 
 "Row size too large (> 8126) (行のサイズが大きすぎます (> 8126))" などのエラーが表示された場合は、**innodb_strict_mode** パラメーターをオフにすることができます。 サーバー パラメーター **innodb_strict_mode** をサーバー レベルでグローバルに変更することはできません。行データのサイズが 8 kb を超える場合、エラーが表示されずにデータが切り捨てられ、データが失われる可能性があるためです。 ページ サイズの制限に合うようにスキーマを変更することをお勧めします。 
 
-このパラメーターは、`init_connect` を使用してセッション レベルで設定できます。 セッション レベルで **innodb_strict_mode** を設定するには、「[設定パラメーターが一覧に含まれていない](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)」を参照してください。
+このパラメーターは、`init_connect` を使用してセッション レベルで設定できます。 セッション レベルで **innodb_strict_mode** を設定するには、「[設定パラメーターが一覧に含まれていない](./howto-server-parameters.md#setting-parameters-not-listed)」を参照してください。
 
 > [!NOTE]
-> 読み取りレプリカ サーバーがある場合は、マスター サーバーのセッション レベルで **innodb_strict_mode** をオフに設定すると、レプリケーションが中断されます。 読み取りレプリカがある場合は、このパラメーターをオフに設定されたままにすることをお勧めします。
+> 読み取りレプリカ サーバーがある場合は、ソース サーバーのセッション レベルで **innodb_strict_mode** をオフに設定すると、レプリケーションが中断されます。 読み取りレプリカがある場合は、このパラメーターをオフに設定されたままにすることをお勧めします。
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
@@ -255,6 +261,18 @@ Lower_case_table_name は既定で 1 に設定されます。MySQL 5.6 および
 |メモリ最適化|8|16777216|1024|536870912|
 |メモリ最適化|16|16777216|1024|1073741824|
 |メモリ最適化|32|16777216|1024|1073741824|
+
+### <a name="innodb-buffer-pool-warmup"></a>InnoDB バッファー プールのウォームアップ
+Azure Database for MySQL サーバーを再起動した後、テーブルに対してクエリを実行すると、ディスクに存在するデータ ページが読み込まれます。 これにより、クエリを最初に実行したときの待機時間が長くなり、パフォーマンスが低下します。 これは、待機時間の影響を受けやすいワークロードでは許容できない場合があります。 InnoDB バッファー プールのウォームアップを利用すると、DML または SELECT の操作が対応する行にアクセスするのを待機するのではなく、再起動の前にバッファー プール内にあったディスク ページを再読み込みするため、ウォームアップ期間を短縮できます。
+
+Azure Database for MySQL サーバーを再起動した後のウォームアップ期間を短縮できます。これは、[InnoDB バッファー プール サーバー パラメーター](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html)を構成すると得られるパフォーマンス上の利点です。 InnoDB は、サーバーのシャットダウン時に各バッファー プールで最近使用されたページを一定の割合で保存し、サーバーの起動時にこれらのページを復元します。
+
+また、パフォーマンスの向上は、サーバーの起動時間が長くなるという代償を伴うことに注意してください。 このパラメーターを有効にすると、サーバーにプロビジョニングされている IOPS に応じて、サーバーの起動と再起動にかかる時間が長くなることが予想されます。 その間はサーバーを利用できないため、再起動時間をテストし監視して、起動/再起動のパフォーマンスが許容可能なものであることを確認することをお勧めします。 プロビジョニングされた IOPS が 1000 未満の場合 (つまり、プロビジョニングされたストレージが 335 GB 未満の場合) は、このパラメーターを使用しないことをお勧めします。
+
+サーバーのシャットダウン時にバッファー プールの状態を保存するには、サーバー パラメーター `innodb_buffer_pool_dump_at_shutdown` を `ON` に設定します。 同様に、サーバー起動時にバッファー プールの状態を復元するには、サーバー パラメーター `innodb_buffer_pool_load_at_startup` を `ON` に設定します。 サーバー パラメーター `innodb_buffer_pool_dump_pct` の値を下げて微調整すると、起動/再起動時間への影響を制御できます。既定では、このパラメーターは `25` に設定されています。
+
+> [!Note]
+> InnoDB バッファー プールのウォームアップ パラメーターは、最大 16 TB のストレージを持つ汎用ストレージ サーバーでのみサポートされています。 Azure Database for MySQL のストレージ オプションの詳細については、[こちら](./concepts-pricing-tiers.md#storage)を参照してください。
 
 ### <a name="time_zone"></a>time_zone
 

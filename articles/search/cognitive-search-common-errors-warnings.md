@@ -3,17 +3,17 @@ title: インデクサーのエラーと警告
 titleSuffix: Azure Cognitive Search
 description: この記事では、Azure Cognitive Search で AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
 manager: nitinme
-author: amotley
-ms.author: abmotley
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/23/2020
+ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935553"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895941"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -59,9 +59,9 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 
 | 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
-| BLOB がサイズ制限を超えています | ドキュメントは `'150441598'` バイトです。これは、現在のサービス レベルのドキュメント抽出の最大サイズである `'134217728'` バイトを超えています。 | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| BLOB にサポートされていないコンテンツ タイプがあります | ドキュメントにサポートされていないコンテンツ タイプ `'image/png'` があります | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| BLOB は暗号化されています | ドキュメントを処理できませんでした。暗号化されているか、パスワードで保護されている可能性があります。 | [BLOB の設定](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)で BLOB をスキップできます。 |
+| BLOB がサイズ制限を超えています | ドキュメントは `'150441598'` バイトです。これは、現在のサービス レベルのドキュメント抽出の最大サイズである `'134217728'` バイトを超えています。 | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| BLOB にサポートされていないコンテンツ タイプがあります | ドキュメントにサポートされていないコンテンツ タイプ `'image/png'` があります | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| BLOB は暗号化されています | ドキュメントを処理できませんでした。暗号化されているか、パスワードで保護されている可能性があります。 | [BLOB の設定](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex)で BLOB をスキップできます。 |
 | 一時的な問題 | "BLOB の処理エラー:要求が中止されました:要求は取り消されました。" "処理中にドキュメントがタイムアウトしました。" | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 
 <a name="could-not-parse-document"></a>
@@ -175,7 +175,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>エラー:テーブルに複合主キーが含まれているため、統合された変更追跡ポリシーを使用できません
 
-これは、SQL テーブルに適用されます。通常、これは、キーが複合キーとして定義されている場合、またはテーブルで一意のクラスター化インデックスが定義されている場合 (Azure Search インデックスではなく SQL インデックスの場合と同様) に発生します。 主な理由は、[一意のクラスター化インデックス](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)の場合、キー属性が複合主キーになるように変更されるためです。 この場合、SQL テーブルに一意のクラスター化インデックスが含まれていないこと、またはキー フィールドが、重複したキーが含まれていないことが保証されているフィールドにマップされていることを確認してください。
+これは、SQL テーブルに適用されます。通常、これは、キーが複合キーとして定義されている場合、またはテーブルで一意のクラスター化インデックスが定義されている場合 (Azure Search インデックスではなく SQL インデックスの場合と同様) に発生します。 主な理由は、[一意のクラスター化インデックス](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)の場合、キー属性が複合主キーになるように変更されるためです。 この場合、SQL テーブルに一意のクラスター化インデックスが含まれていないこと、またはキー フィールドが、重複したキーが含まれていないことが保証されているフィールドにマップされていることを確認してください。
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 
@@ -348,4 +348,8 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>警告:Cosmos DB コレクション "X" には、Lazy インデックス作成ポリシーがあります。 一部のデータが失われるおそれがあります
 
-[Lazy](/azure/cosmos-db/index-policy#indexing-mode) インデックス作成ポリシーを持つコレクションには、一貫性のあるクエリを実行できません。そのため、インデクサーにはデータがありません。 この警告を回避するには、インデックス作成ポリシーを Consistent に変更します。
+[Lazy](../cosmos-db/index-policy.md#indexing-mode) インデックス作成ポリシーを持つコレクションには、一貫性のあるクエリを実行できません。そのため、インデクサーにはデータがありません。 この警告を回避するには、インデックス作成ポリシーを Consistent に変更します。
+
+## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>警告:The document contains very long words (longer than 64 characters).(ドキュメントに非常に長い単語が含まれています (64 文字を超えています)。) These words may result in truncated and/or unreliable model predictions. (これらの単語は切り捨てられたり、モデルの予測の信頼性が低下したりする可能性があります。)
+
+この警告は Text Analytics サービスから渡されます。  ドキュメントに長い URL が含まれている (多くの場合、キー フレーズや影響力のあるセンチメントなどではない) などの場合、この警告を無視しても安全です。  単語が 64 文字を超えると、64 文字に切り捨てられるため、モデルの予測に影響を与える可能性があります。

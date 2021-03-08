@@ -6,26 +6,28 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 47b476cbc6997ca5ec63968bdc269e2273662100
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 59fa68d12f1d8be598810399fc5623c2af983979
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427079"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462252"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Synapse SQL でクエリ ラベルを使用する
+
 この記事には、Synapse SQL でクエリ ラベルを使用する際の重要なヒントが含まれています。
 
 > [!NOTE]
-> SQL オンデマンド (プレビュー) では、ラベル付けクエリはサポートされていません。
+> サーバーレス SQL プールでは、ラベル付けクエリはサポートされていません。
 
 ## <a name="what-are-query-labels"></a>クエリ ラベルとは
-SQL プールでは、クエリ ラベルと呼ばれる概念がサポートされています。 難解な領域に入る前に、1 つの例を説明しましょう。
+
+専用 SQL プールでは、クエリ ラベルと呼ばれる概念がサポートされています。 難解な領域に入る前に、1 つの例を説明しましょう。
 
 ```sql
 SELECT *
@@ -34,7 +36,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-この最後の行は、クエリに、 'My Query Label' という文字列をタグ付けします。 このタグは、ラベルが DMV を介してクエリできるので特に便利です。 ラベルのクエリの実行では、問題のあるクエリを検索するためのメカニズムが提供され、ELT 実行の進行状況を識別するのに役立ちます。
+この最後の行は、クエリに、 'My Query Label' という文字列をタグ付けします。 このタグが便利なのは、DMV を介してラベルをクエリできるためです。 ラベルのクエリの実行では、問題のあるクエリを検索するためのメカニズムが提供され、ELT 実行の進行状況を識別するのに役立ちます。
 
 適切な名前付け規則が最も役立ちます。 たとえば、ラベルを PROJECT、PROCEDURE、STATEMENT、または COMMENT で始めると、ソース管理内のすべてのコード間でクエリを一意に識別する上で役立ちます。
 

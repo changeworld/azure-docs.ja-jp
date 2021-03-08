@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 979ed8c759676911a11cc62d7a00ad53361e19e0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684768"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132416"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API を使用してエンタープライズ加入契約の請求書を確認する
 
@@ -37,9 +37,9 @@ Authorization: Bearer
 |要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
-|*Authorization:*|必須。 有効な `Bearer` [API キー](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
+|*Authorization:*|必須。 有効な `Bearer` [API キー](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
 
-この例は、現在の請求期間の詳細を返す同期呼び出しを示しています。 パフォーマンスの理由から、同期呼び出しでは先月の情報が返されます。  また、[API を非同期に](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)呼び出すと、36 か月分のデータを返すこともできます。
+この例は、現在の請求期間の詳細を返す同期呼び出しを示しています。 パフォーマンスの理由から、同期呼び出しでは先月の情報が返されます。  また、[API を非同期に](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)呼び出すと、36 か月分のデータを返すこともできます。
 
 
 ## <a name="response"></a>Response  
@@ -90,9 +90,9 @@ Authorization: Bearer
 |要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
-|*Authorization:*|必須。 有効な `Bearer` [API キー](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
+|*Authorization:*|必須。 有効な `Bearer` [API キー](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
 
-この例は、現在の請求期間の詳細を返す同期呼び出しを示しています。 パフォーマンスの理由から、同期呼び出しでは先月の情報が返されます。  また、[API を非同期に](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)呼び出すと、36 か月分のデータを返すこともできます。
+この例は、現在の請求期間の詳細を返す同期呼び出しを示しています。 パフォーマンスの理由から、同期呼び出しでは先月の情報が返されます。  また、[API を非同期に](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)呼び出すと、36 か月分のデータを返すこともできます。
 
 ### <a name="response"></a>Response  
 
@@ -134,7 +134,7 @@ Authorization: Bearer
 登録アカウントについて集計された使用状況の詳細を取得します。
 
 ```http
-GET GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
+GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
 Content-Type: application/json   
 Authorization: Bearer
 ```
@@ -146,9 +146,9 @@ Authorization: Bearer
 |要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
-|*Authorization:*|必須。 有効な `Bearer` [API キー](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
+|*Authorization:*|必須。 有効な `Bearer` [API キー](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
 
-この例は、現在の請求期間の詳細を返す同期呼び出しを示しています。 パフォーマンスの理由から、同期呼び出しでは先月の情報が返されます。  また、[API を非同期に](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)呼び出すと、36 か月分のデータを返すこともできます。
+この例は、現在の請求期間の詳細を返す同期呼び出しを示しています。 パフォーマンスの理由から、同期呼び出しでは先月の情報が返されます。  また、[API を非同期に](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)呼び出すと、36 か月分のデータを返すこともできます。
 
 ### <a name="response"></a>Response  
 
@@ -183,6 +183,6 @@ Authorization: Bearer
 この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[登録アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-- 「[Enterprise Reporting の概要](https://docs.microsoft.com/azure/billing/billing-enterprise-api)」を参照してください。
-- [Enterprise Billing REST API](https://docs.microsoft.com/rest/api/billing/) について調べます。   
-- [Azure Rest API の開始](https://docs.microsoft.com/rest/api/azure/)   
+- 「[Enterprise Reporting の概要](./enterprise-api.md)」を参照してください。
+- [Enterprise Billing REST API](/rest/api/billing/) について調べます。   
+- [Azure Rest API の開始](/rest/api/azure/)

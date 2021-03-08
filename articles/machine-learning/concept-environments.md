@@ -1,25 +1,24 @@
 ---
 title: Azure Machine Learning 環境について
 titleSuffix: Azure Machine Learning
-description: この記事では、さまざまなコンピューティング先での再現可能、監査可能、移植可能な機械学習の依存関係定義を有効にする、機械学習環境の利点について説明します。
+description: さまざまなコンピューティング先での再現可能、監査可能、移植可能な機械学習の依存関係定義を有効にする機械学習環境について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
-ms.date: 07/08/2020
-ms.openlocfilehash: cc4c39cf26f3ab8d1037222f967789bfbeca05ba
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.date: 11/16/2020
+ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166775"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695386"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning 環境は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、環境変数、およびソフトウェア設定を指定します。 また、実行時間 (Python、Spark、または Docker) も指定します。 環境は、Machine Learning ワークスペース内で管理およびバージョン管理されるエンティティであり、さまざまなコンピューティング先で再現、監査、移植が可能な機械学習ワークフローを実現します。
+Azure Machine Learning 環境は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、環境変数、およびソフトウェア設定を指定します。 また、ランタイム (Python、Spark、または Docker) も指定します。 環境は、Machine Learning ワークスペース内で管理およびバージョン管理されるエンティティであり、さまざまなコンピューティング先で再現、監査、移植が可能な機械学習ワークフローを実現します。
 
 ローカル コンピューティングで `Environment` オブジェクトを使用して、次のことを行うことができます。
 * トレーニング スクリプトを開発します。
@@ -35,7 +34,7 @@ Azure Machine Learning 環境は、機械学習トレーニングが行われる
 
 ## <a name="types-of-environments"></a>環境の種類
 
-環境は、*キュレーション*、*ユーザー管理*、*システム管理*の 3 つのカテゴリに大別できます。
+環境は、*キュレーション*、*ユーザー管理*、*システム管理* の 3 つのカテゴリに大別できます。
 
 キュレートされた環境は Azure Machine Learning から提供され、既定でお使いのワークスペースで利用できます。 これらには、現状のまま使用する目的で、Python のパッケージと設定のコレクションが含まれていて、さまざまな機械学習フレームワークの使用を開始する助けとなります。 これらの事前に作成された環境を利用すると、デプロイ時間の短縮も可能です。 完全な一覧については、[キュレーションされた環境に関する記事](resource-curated-environments.md)を参照してください。
 
@@ -68,7 +67,7 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
 
 ### <a name="submitting-a-run-using-an-environment"></a>環境を使用して実行を送信する
 
-環境を使用して初めてリモート実行を送信するときには、Azure Machine Learning service によって、ワークスペースに関連付けられている Azure Container Registry (ACR) で [ACR ビルド タスク](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)が呼び出されます。 ビルドされた Docker イメージは、ワークスペースの ACR にキャッシュされます。 キュレーションされた環境は、グローバル ACR にキャッシュされた Docker イメージによって支援されます。 イメージは、実行の開始時に、コンピューティング先によって関連する ACR から取得されます。
+環境を使用して初めてリモート実行を送信するときには、Azure Machine Learning service によって、ワークスペースに関連付けられている Azure Container Registry (ACR) で [ACR ビルド タスク](../container-registry/container-registry-tasks-overview.md)が呼び出されます。 ビルドされた Docker イメージは、ワークスペースの ACR にキャッシュされます。 キュレーションされた環境は、グローバル ACR にキャッシュされた Docker イメージによって支援されます。 イメージは、実行の開始時に、コンピューティング先によって関連する ACR から取得されます。
 
 ローカルでの実行の場合、環境の定義に基づいて、Docker または Conda 環境が作成されます。 スクリプトはその後、ターゲット コンピューティング (ローカルのランタイム環境またはローカルの Docker エンジン) で実行されます。
 
@@ -79,13 +78,13 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
  1. 基本イメージのダウンロードと、Docker 手順の実行
  2. 環境定義で指定されている Conda の依存関係に従った Conda 環境の構築
 
-[ユーザーが管理する依存関係](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py)が指定された場合、2 番目の手順は省略されます。 この場合、ユーザーがすべての Python パッケージをインストールする必要があります。それには、Python パッケージを基本イメージに含めるか、最初の手順でカスタム Docker 手順を指定します。 また、ユーザーは Python 実行可能ファイルの正しい場所を指定する必要もあります。 [カスタム Docker 基本イメージ](how-to-deploy-custom-docker-image.md)を使用することも可能です。
+[ユーザーが管理する依存関係](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)が指定された場合、2 番目の手順は省略されます。 この場合、ユーザーがすべての Python パッケージをインストールする必要があります。それには、Python パッケージを基本イメージに含めるか、最初の手順でカスタム Docker 手順を指定します。 また、ユーザーは Python 実行可能ファイルの正しい場所を指定する必要もあります。 [カスタム Docker 基本イメージ](how-to-deploy-custom-docker-image.md)を使用することも可能です。
 
 ### <a name="image-caching-and-reuse"></a>イメージのキャッシュと再利用
 
 別の実行に同じ環境定義を使用する場合、Azure Machine Learning service では、ワークスペースの ACR にキャッシュされているイメージが再利用されます。 
 
-キャッシュされているイメージの詳細を表示するには、[Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-) メソッドを使用します。
+キャッシュされているイメージの詳細を表示するには、[Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) メソッドを使用します。
 
 キャッシュされたイメージを再利用するか、新しいイメージを作成するかを決定するため、サービスでは、環境定義から[ハッシュ値](https://en.wikipedia.org/wiki/Hash_table)が計算されて、それが既存の環境のハッシュと比較されます。 ハッシュは以下のものが基になっています。
  
@@ -108,10 +107,10 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
 パッケージを更新するには、バージョン番号を指定してイメージのリビルドを強制します (```numpy==1.18.1``` など)。 以前の動作シナリオが破壊される可能性がある、新しい依存関係 (入れ子になった依存関係など) がインストールされます。 
 
 > [!WARNING]
->  [Environment.build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) メソッドでは、キャッシュされたイメージがリビルドされます。それによる副作用として、固定されていないパッケージが更新され、そのキャッシュされたイメージに対応するすべての環境定義の再現性が損なわれる可能性があります。
+>  [Environment.build](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) メソッドでは、キャッシュされたイメージがリビルドされます。それによる副作用として、固定されていないパッケージが更新され、そのキャッシュされたイメージに対応するすべての環境定義の再現性が損なわれる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Machine Learning で[環境を作成および使用する](how-to-use-environments.md)方法を確認します。
-* [環境クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)については、Python SDK 参照ドキュメントを参照してください。
+* [環境クラス](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)については、Python SDK 参照ドキュメントを参照してください。
 * [環境](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)については、R SDK 参照ドキュメントを参照してください。

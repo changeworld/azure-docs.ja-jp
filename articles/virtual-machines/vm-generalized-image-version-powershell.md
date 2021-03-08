@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 68a0db9113c705134084fb5291eb267b7a31fba0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b198c094ffd5f2113603fc9d8d2fb1c4e5cd6fe1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525808"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881959"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>一般化されたイメージを使用して VM を作成する 
 
@@ -59,6 +59,7 @@ New-AzVM `
    -Location $location `
    -Name $vmName `
    -Image $imageDefinition.Id
+   -Credential $cred
 ```
 
 
@@ -145,7 +146,7 @@ New-AzVM `
 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Image Builder (プレビュー)](./windows/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./windows/image-builder-gallery-update-image-version.md)に使用することさえできます。 
+[Azure Image Builder (プレビュー)](./image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./windows/image-builder-gallery-update-image-version.md)に使用することさえできます。 
 
 共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 
@@ -154,4 +155,4 @@ New-AzVM `
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-共有イメージ ギャラリーの詳細については、[概要](./windows/shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](./windows/troubleshooting-shared-images.md)」を参照してください。
+共有イメージ ギャラリーの詳細については、[概要](./shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](troubleshooting-shared-images.md)」を参照してください。

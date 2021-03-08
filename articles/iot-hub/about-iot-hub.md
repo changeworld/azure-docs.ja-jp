@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428970"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501143"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -30,7 +30,7 @@ IoT Hub の機能を使うと、製造で使われる産業機器の管理、医
 
 ## <a name="scale-your-solution"></a>ソリューションをスケール調整する
 
-IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT Hub のスケーリングについて詳しくは、[IoT Hub のスケーリング](iot-hub-scaling.md?branch=release-iotbasic)に関するページを参照してください。 IoT Hub で提供される複数階層のサービスと、スケーラビリティ ニーズへの最適な対応について詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/iot-hub/)を参照してください。
+IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT ハブのスケーリングについて詳しくは、[IoT Hub のスケーリング](iot-hub-scaling.md?branch=release-iotbasic)に関するページを参照してください。 IoT Hub で提供される複数階層のサービスと、スケーラビリティ ニーズへの最適な対応について詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/iot-hub/)を参照してください。
 
 ## <a name="secure-your-communications"></a>通信のセキュリティ保護
 
@@ -40,7 +40,7 @@ IoT Hub が提供するセキュリティで保護された通信チャネルを
 
 * ユーザーは、デバイスのアクセスを完全に制御でき、デバイスごとのレベルで接続を制御できます。
 
-* [IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) は、デバイスの初期起動時に、正しい IoT Hub に対してデバイスを自動的にプロビジョニングします。
+* [IoT Hub Device Provisioning Service](../iot-dps/index.yml) は、デバイスの初期起動時に、正しい IoT ハブに対してデバイスを自動的にプロビジョニングします。
 
 * 複数の認証の種類により、さまざまなデバイス機能がサポートされています。
 
@@ -64,13 +64,13 @@ IoT Hub が提供するセキュリティで保護された通信チャネルを
 
 IoT Hub を他の Azure サービスと統合して、完全なエンド ツー エンドのソリューションを構築できます。 たとえば、次のようなサービスを使います。
 
-* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) を使うと、信頼性が高く、スケーラブルかつ安全な方法で重要なイベントに迅速に対応できます。
+* [Azure Event Grid](../event-grid/index.yml) を使うと、信頼性が高く、スケーラブルかつ安全な方法で重要なイベントに迅速に対応できます。
 
-* [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) は、ビジネス プロセスを自動化します。
+* [Azure Logic Apps](../logic-apps/index.yml) は、ビジネス プロセスを自動化します。
 
 * [Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md) は、機械学習と AI モデルをソリューションに追加します。
 
-* [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) は、デバイスからのデータ ストリーミングに対してリアルタイムの分析計算を実行します。
+* [Azure Stream Analytics](../stream-analytics/index.yml) は、デバイスからのデータ ストリーミングに対してリアルタイムの分析計算を実行します。
 
 ## <a name="configure-and-control-your-devices"></a>デバイスの構成と制御
 
@@ -88,9 +88,10 @@ IoT Hub を他の Azure サービスと統合して、完全なエンド ツー 
 
 ## <a name="connect-your-devices"></a>デバイスの接続
 
-[Azure IoT device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) のライブラリを使うと、デバイス上で実行して IoT Hub と対話するアプリケーションを作成できます。 複数の Linux ディストリビューション、Windows、リアルタイム オペレーティング システムなどのプラットフォームがサポートされています。 以下の言語がサポートされています。
+[Azure IoT device SDK](./iot-hub-devguide-sdks.md) のライブラリを使うと、デバイス上で実行して IoT Hub と対話するアプリケーションを作成できます。 複数の Linux ディストリビューション、Windows、リアルタイム オペレーティング システムなどのプラットフォームがサポートされています。 以下の言語がサポートされています。
 
 * C
+* 埋め込み C
 * C#
 * Java
 * Python
@@ -108,23 +109,29 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 ソリューションがサポートされているどのプロトコルも使用できない場合は、カスタム プロトコルをサポートするように IoT Hub を拡張できます。
 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) を使って、エッジでプロトコル変換を実行するためのフィールド ゲートウェイを作成します。
+* [Azure IoT Edge](../iot-edge/index.yml) を使って、エッジでプロトコル変換を実行するためのフィールド ゲートウェイを作成します。
 
 * [Azure IoT プロトコル ゲートウェイ](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)をカスタマイズして、クラウドでのプロトコル変換を実行します。
 
 ## <a name="quotas-and-limits"></a>クォータと制限
 
-各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT Hub の数は 50 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 詳細については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 クォータ制限の詳細については、次のいずれかの記事を参照してください。
+各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT ハブの数は 50 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 詳細については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 クォータ制限の詳細については、次のいずれかの記事を参照してください。
 
 * [Azure サブスクリプション サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub のスロットリング](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>Azure Stack Hub 上の IoT Hub (プレビュー)
+
+Azure Stack Hub (プレビュー) 上の IoT Hub を使用すると、ハイブリッド IoT ソリューションを作成できます。 IoT Hub は、IoT アプリケーションとそれが管理するデバイスの間の双方向通信に対する中央メッセージ ハブとして機能する管理サービスです。 Azure Stack Hub 上の IoT Hub を使って IoT ソリューションを構築し、IoT デバイスと対象のオンプレミス ソリューションとの間に、信頼性が高く、セキュリティで保護された通信を提供できます。
+
+Azure Stack Hub 上の IoT Hub は、パブリック プレビューの間は無料で利用できます。 詳細については、「[Azure Stack Hub 上の IoT Hub の概要](/azure-stack/operator/iot-hub-rp-overview)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 エンド ツー エンドの IoT ソリューションを試すには、IoT Hub のクイック スタートをご覧ください。
 
-* [クイック スタート: デバイスから IoT Hub への利用統計情報の送信](quickstart-send-telemetry-node.md)
+* [Quickstart: デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)
 
 Azure IoT を使用して IoT ソリューションを構築してデプロイする方法の詳細については、以下のページを参照してください。
 

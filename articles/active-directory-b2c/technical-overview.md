@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dab865b2b023f59e6776349b4045107bdb3a29
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921675"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095495"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -29,7 +29,7 @@ Azure AD B2C テナントで使用する主なリソースは次のとおりで�
 
 * **ディレクトリ** - "*ディレクトリ*" は、Azure AD B2C によってユーザーの資格情報とプロファイル データ、およびアプリケーションの登録が格納される場所です。
 * **アプリケーションの登録** - ID を管理できるようにするには、Azure AD B2C に Web アプリケーション、モバイル アプリケーション、およびネイティブ アプリケーションを登録します。 また、Azure AD B2C で保護する API も登録します。
-* **ユーザー フロー**と**カスタム ポリシー** - アプリケーションに対する組み込み (ユーザー フロー) と完全にカスタマイズ可能 (カスタム ポリシー) な ID エクスペリエンスです。
+* **ユーザー フロー** と **カスタム ポリシー** - アプリケーションに対する組み込み (ユーザー フロー) と完全にカスタマイズ可能 (カスタム ポリシー) な ID エクスペリエンスです。
   * サインアップ、サインイン、プロファイル編集などの一般的な ID タスクを簡単に構成して有効にするには、"*ユーザー フロー*" を使用します。
   * 一般的な ID タスクだけでなく、組織、顧客、従業員、パートナー、市民に固有の複雑な ID ワークフローのサポートの作成にもユーザー エクスペリエンスを有効にするには、"*カスタム ポリシー*" を使用します。
 * **ID プロバイダー** - 以下に対するフェデレーション設定:
@@ -79,7 +79,7 @@ Azure AD B2C でのユーザー アカウントの種類について詳しくは
 
 ![ソーシャル アカウント (Facebook) でのモバイル サインインの例](media/technical-overview/external-idp.png)
 
-Azure AD B2C で ID プロバイダーを追加する方法については、「[チュートリアル: Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する](tutorial-add-identity-providers.md)」をご覧ください。
+Azure AD B2C で ID プロバイダーを追加する方法については、[Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する方法](add-identity-provider.md)に関するページを参照してください。
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>ID エクスペリエンス: ユーザー フローまたはカスタム ポリシー
 
@@ -101,7 +101,7 @@ Azure AD B2C には、これらの ID エクスペリエンスを提供するた
 
 * サインインに使用するアカウントの種類 (Facebook などのソーシャル アカウント、またはメール アドレスとパスワードをサインインに使用するローカル アカウント)
 * コンシューマーから収集される属性 (名、郵便番号、居住地の国/地域など)
-* Azure Multi-Factor Authentication (MFA)
+* Azure AD Multi-Factor Authentication (MFA)
 * ユーザー インターフェイスのカスタマイズ
 * ユーザーがユーザー フローを完了した後でアプリケーションが受け取るトークン内の要求のセット
 * セッションの管理
@@ -134,7 +134,7 @@ Identity Experience Framework を使用すると、手順を自由に組み合�
 
 ## <a name="protocols-and-tokens"></a>プロトコルとトークン
 
-- アプリケーションのユーザー体験に関して、Azure AD B2C では、[OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md)、[SAML プロトコル](connect-with-saml-service-providers.md)がサポートされています。 アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。 Azure AD B2C に対する要求の結果として、[ID トークンやアクセス トークン](tokens-overview.md)、SAML トークンなどのセキュリティ トークンが作成されます。 このセキュリティ トークンでは、アプリケーションにおけるユーザーの ID が定義されています。
+- アプリケーションのユーザー体験に関して、Azure AD B2C では、[OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md)、[SAML プロトコル](saml-service-provider.md)がサポートされています。 アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。 Azure AD B2C に対する要求の結果として、[ID トークンやアクセス トークン](tokens-overview.md)、SAML トークンなどのセキュリティ トークンが作成されます。 このセキュリティ トークンでは、アプリケーションにおけるユーザーの ID が定義されています。
 
 - 外部 ID の場合、Azure AD B2C では、OAuth 1.0、OAuth 2.0、OpenID Connect、SAML ID プロバイダーとのフェデレーションがサポートされています。
 
@@ -162,7 +162,7 @@ Azure AD B2C では、ユーザーに表示されるページがブランドの�
 
 ![ブランドでカスタマイズされたサインアップおよびサインイン ページのスクリーンショット](media/technical-overview/seamless-ux.png)
 
-UI のカスタマイズについては、「[Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて](customize-ui-overview.md)」をご覧ください。
+UI のカスタマイズについては、「[Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて](customize-ui-with-html.md)」をご覧ください。
 
 ## <a name="localization"></a>ローカリゼーション
 
@@ -170,7 +170,7 @@ Azure AD B2C の言語のカスタマイズを使用すると、顧客のニー�
 
 ![さまざまな言語の UI テキストが表示されている 3 つのサインアップおよびサインイン ページ](media/technical-overview/localization.png)
 
-ローカライズのしくみについては、「[Azure Active Directory B2C での言語のカスタマイズ](user-flow-language-customization.md)」をご覧ください。
+ローカライズのしくみについては、「[Azure Active Directory B2C での言語のカスタマイズ](language-customization.md)」をご覧ください。
 
 ## <a name="add-your-own-business-logic"></a>独自のビジネス ロジックの追加
 
@@ -197,7 +197,7 @@ Azure AD B2C で RESTful API 統合に対してカスタム ポリシーを使�
 
 ## <a name="protect-customer-identities"></a>顧客の ID を保護する
 
-Azure AD B2C は、[Microsoft Azure トラスト センター](https://www.microsoft.com/trustcenter/cloudservices/azure)で説明されているセキュリティ、プライバシー、その他のコミットメントに準拠しています。
+Azure AD B2C は、[Microsoft Azure セキュリティ センター](https://www.microsoft.com/trustcenter/cloudservices/azure)で説明されているセキュリティ、プライバシー、その他のコミットメントに準拠しています。
 
 セッションは暗号化されたデータとしてモデル化され、解読キーは Azure AD B2C のセキュリティ トークン サービスのみが認識しています。 強力な暗号化アルゴリズムである AES-192 が使用されます。 すべての通信パスは、機密性と整合性のために TLS で保護されます。 セキュリティ トークン サービスでは、TLS に拡張検証 (EV) 証明書が使用されます。 一般に、セキュリティ トークン サービスにより、信頼されていない入力を提供しないことでクロスサイト スクリプティング (XSS) 攻撃が軽減されます。
 
@@ -215,13 +215,13 @@ Azure AD B2C テナントでは、従業員やパートナーに使用される�
 * Identity Experience Framework での信頼フレームワーク ポリシーの作成と管理 (カスタム ポリシー)
 * Identity Experience Framework でのフェデレーションのシークレットと暗号化の管理 (カスタム ポリシー)
 
-Azure AD B2C 管理ロールのサポートなど、Azure AD のロールについて詳しくは、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」をご覧ください。
+Azure AD B2C 管理ロールのサポートなど、Azure AD のロールについて詳しくは、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/roles/permissions-reference.md)」をご覧ください。
 
 ### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
 
 Azure AD B2C の多要素認証 (MFA) を利用すれば、データやアプリケーションへのアクセスを保護し、ユーザーには簡単なサインイン プロセスを提供できます。 第 2 の認証方式を要求することでセキュリティが追加され、簡単に使用できるさまざまな認証方法を提供することによって強力な認証が実現されます。 ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。
 
-ユーザー フローで MFA を有効にする方法については、「[Azure Active Directory B2C の多要素認証 | Microsoft Docs](custom-policy-multi-factor-authentication.md)」をご覧ください。
+ユーザー フローで MFA を有効にする方法については、「[Azure Active Directory B2C の多要素認証 | Microsoft Docs](multi-factor-authentication.md)」をご覧ください。
 
 ### <a name="smart-account-lockout"></a>スマート アカウント ロックアウト
 
@@ -235,7 +235,7 @@ Azure AD B2C の多要素認証 (MFA) を利用すれば、データやアプリ
 
 サインアップ時またはパスワードのリセット時に、ユーザーは、複雑さのルールを満たすパスワードを指定する必要があります。 既定では、Azure AD B2C によって強力なパスワード ポリシーが適用されます。 また、Azure AD B2C では、顧客が使用するパスワードの複雑さの要件を指定するための構成オプションも提供されます。
 
-パスワードの複雑さの要件は、[ユーザー フロー](user-flow-password-complexity.md)と[カスタム ポリシー](custom-policy-password-complexity.md)の両方で構成できます。
+パスワードの複雑さの要件は、[ユーザー フロー](password-complexity.md)と[カスタム ポリシー](password-complexity.md)の両方で構成できます。
 
 ## <a name="auditing-and-logs"></a>監査とログ
 

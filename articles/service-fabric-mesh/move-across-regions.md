@@ -6,14 +6,19 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260146"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626089"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh アプリケーションを別の Azure リージョンに移動する
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 この記事では、Service Fabric Mesh アプリケーションおよびそのリソースを別の Azure リージョンに移動する方法について説明します。 さまざまな理由により、リソースを別のリージョンに移動する場合があります。 たとえば、障害への対応、特定のリージョンでのみ利用可能な機能やサービスの取得、内部ポリシーとガバナンスの要件の達成、容量計画の要求への対応などです。
 
@@ -44,7 +49,7 @@ ms.locfileid: "86260146"
 
 1. デプロイが完了したら、アプリケーション エンドポイントをテストして、アプリケーションの機能を確認します。
 
-2. アプリケーションの状態を確認することもできます。そのためには [Azure Service Fabric Mesh CLI](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli) を使用して、アプリケーションの状態 ([az mesh app show](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) を確認し、アプリケーション ログと ([az mesh code-package-log](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) コマンドをレビューします。
+2. アプリケーションの状態を確認することもできます。そのためには [Azure Service Fabric Mesh CLI](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli) を使用して、アプリケーションの状態 ([az mesh app show](/cli/azure/ext/mesh/mesh/app#ext-mesh-az-mesh-app-show)) を確認し、アプリケーション ログと ([az mesh code-package-log](/cli/azure/ext/mesh/mesh/code-package-log)) コマンドをレビューします。
 
 ## <a name="commit"></a>Commit
 

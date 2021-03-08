@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652850"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095357"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>メインフレーム ストレージを Azure に移動する
 
@@ -57,7 +57,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 <tr><td>Azure Files
 </td>
 <td>
-格納されているファイルにどこからでもアクセスできる <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> インターフェイス、SMB インターフェイス、クライアント ライブラリを備えています。
+格納されているファイルにどこからでもアクセスできる <a href="/rest/api/storageservices/file-service-rest-api">REST</a> インターフェイス、SMB インターフェイス、クライアント ライブラリを備えています。
 </td>
 <td><ul>
 <li>アプリケーションでネイティブ ファイル システム API を使用して、Azure で稼働している他のアプリケーションとの間でデータを共有している場合に、アプリケーションをクラウドにリフト アンド シフトする。</li>
@@ -67,7 +67,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 </tr>
 <tr><td>Azure BLOB
 </td>
-<td>大規模な非構造化データをブロック BLOB に格納してアクセスできる <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> インターフェイスとクライアント ライブラリを備えています。 エンタープライズ ビッグ データ分析ソリューション用の <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> もサポートされています。
+<td>大規模な非構造化データをブロック BLOB に格納してアクセスできる <a href="/rest/api/storageservices/blob-service-rest-api">REST</a> インターフェイスとクライアント ライブラリを備えています。 エンタープライズ ビッグ データ分析ソリューション用の <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> もサポートされています。
 </td>
 <td><ul>
 <li>アプリケーションでストリーミングとランダム アクセスのシナリオに対応する。</li>
@@ -77,7 +77,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 </tr>
 <tr><td>Azure ディスク
 </td>
-<td>アタッチされた仮想ハード ディスクにデータを永続的に格納し、アクセスできる <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> インターフェイスとクライアント ライブラリを備えています。
+<td>アタッチされた仮想ハード ディスクにデータを永続的に格納し、アクセスできる <a href="/rest/api/compute/disks">REST</a> インターフェイスとクライアント ライブラリを備えています。
 </td>
 <td><ul>
 <li>永続ディスクに対しネイティブ ファイル システム API を使用してデータの読み取りと書き込みを行うアプリケーションをリフト アンド シフトする。</li>
@@ -127,4 +127,4 @@ BLOB ストレージは、Azure 上で最大のストレージ容量を提供し
 ### <a name="more-migration-resources"></a>その他の移行リソース
 
 - [Azure 仮想データ センターのリフト アンド シフト ガイド](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

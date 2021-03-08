@@ -2,18 +2,17 @@
 title: チュートリアル - Azure portal を使用した新しいポリシーの割り当て
 description: このチュートリアルでは、Azure portal を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 4ba301b066137dbdb85ccea0a02ffcac88128e6b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 10/07/2020
+ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213234"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826599"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>チュートリアル:準拠していないリソースを識別するためのポリシー割り当てを作成する
 
-Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
-このチュートリアルでは、Azure Arc 対応サーバー (プレビュー) マシンを特定し、それらの Azure Arc 対応マシンの中から Log Analytics エージェントがインストールされていないマシンを特定するポリシーの割り当てを一連の手順に沿って作成します。
+Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 Azure Policy では、ゲスト構成ポリシーを使用した、Arc 対応サーバーの状態の監査がサポートされています。 ゲスト構成ポリシーでは、構成は適用されず、マシン内の設定の監査のみが行われます。 このチュートリアルでは、ポリシーの作成と割り当て、およびどの Arc 対応サーバーで Log Analytics エージェントがインストールされていないかの特定のプロセスの手順を説明します。
 
 この手順を終えると、Windows 用または Linux 用の Log Analytics エージェントがインストールされていないマシンが正しく特定されます。 これらはポリシーの割り当てに "_準拠していません_"。
 
@@ -23,7 +22,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
-このチュートリアルでは、ポリシーの割り当てを作成し、"_Managed Disks を使用していない VM の監査_" ポリシー定義を割り当てます。
+このチュートリアルでは、ポリシー割り当て作成し、" _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" ポリシー定義を割り当てます。
 
 1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
@@ -31,11 +30,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure Policy ページの左側にある **[割り当て]** を選択します。 割り当ては、特定のスコープ内で実行するように割り当てられたポリシーです。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="ポリシーの概要ページから [割り当て] ページを選択する" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
 
 1. **[ポリシー - 割り当て]** ページの上部で **[ポリシーの割り当て]** を選択します。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="[割り当て] ページでポリシー定義を割り当てる" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
 
 1. **[ポリシーの割り当て]** ページで、 **[スコープ]** を選択します。その際、省略記号をクリックし、管理グループまたはサブスクリプションを選択します。 任意でリソース グループを選択します。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 次に、**[スコープ]** ページの下部にある **[選択]** をクリックします。
 
@@ -51,9 +50,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](../../../governance/policy/samples/index.md)に関する記事をご覧ください。
 
-1. Windows ベースのマシンで Arc 対応サーバー (プレビュー) エージェントを有効にしている場合、ポリシー定義の一覧から、" _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある_" という定義を見つけます。 Linux ベースのマシンの場合、対応するポリシー定義 " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" を見つけます。 そのポリシーをクリックし、**[選択]** をクリックします。
+1. Windows ベースのマシンで Arc 対応サーバー エージェントを有効にしている場合、ポリシー定義の一覧から、" _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールされる必要がある_" という定義を見つけます。 Linux ベースのマシンの場合、対応するポリシー定義 " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" を見つけます。 そのポリシーをクリックし、**[選択]** をクリックします。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="適切なポリシー定義を見つける" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
 
 1. **[割り当て名]** には選択したポリシー名が自動的に入力されますが、この名前は変更できます。 この例では、選択内容に応じて " _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある_" または " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" のままにします。 必要に応じて、**説明**を追加することもできます。 説明では、このポリシーの割り当ての詳細を示します。
    **[割り当て担当者]** には、ログイン ユーザーに基づいて自動的にデータが入力されます。 このフィールドは任意です。カスタム値を入力できます。
@@ -68,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ページの左側にある **[コンプライアンス]** を選択します。 次に、作成したポリシーの割り当て " **\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある**" または " **\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある**" を探します。
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="ポリシーのコンプライアンスのページのコンプライアンスの詳細" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
 
 この新しい割り当てに準拠していない既存のリソースがある場合、 **[準拠していないリソース]** の下に表示されます。
 
@@ -92,12 +91,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ポリシーの割り当てを右クリックし、 **[割り当ての削除]** を選択します。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="コンプライアンスのページから割り当てを削除する" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、ポリシー定義をスコープに割り当て、コンプライアンス レポートを評価しました。
-ポリシー定義では、スコープ内のすべてのリソースが準拠していることが検証されて、準拠していないリソースが識別されます。 いつでも Azure Monitor for VMs を使用して Azure Arc 対応サーバー (プレビュー) マシンを監視することができます。
+このチュートリアルでは、ポリシー定義をスコープに割り当て、コンプライアンス レポートを評価しました。 ポリシー定義では、スコープ内のすべてのリソースが準拠していることが検証されて、準拠していないリソースが識別されます。 これで、Azure Monitor for VMs を使用して Azure Arc 対応サーバー マシンを監視することができるようになりました。
 
 ご利用のマシンから、パフォーマンスと実行中のプロセス、およびその依存関係を監視および確認する方法については、引き続き次のチュートリアルに進んでください。
 

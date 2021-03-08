@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: IoT プラグ アンド プレイ プレビュー更新版のドキュメント
+title: IoT プラグ アンド プレイのドキュメント
 summary: IoT プラグ アンド プレイを使用すると、デバイス モデルを定義することができます。デバイス モデルを使用すると、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。
 metadata:
-  title: IoT プラグ アンド プレイ プレビューのアーキテクチャ
-  description: IoT プラグ アンド プレイ プレビューにより、ソリューション ビルダーは手動で構成することなくデバイスをソリューションに統合できます。 この記事では、これを実現する主要なアーキテクチャ要素について説明します。
+  title: IoT プラグ アンド プレイのアーキテクチャ
+  description: IoT プラグ アンド プレイにより、ソリューション ビルダーは手動で構成することなくデバイスをソリューションに統合できます。 この記事では、この作業を実現する主要なアーキテクチャ要素について説明します。
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: 75aa276fb41ebe717caa5c2f0dbdab5f9709237e
+  ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337366"
+  ms.lasthandoff: 11/23/2020
+  ms.locfileid: "95495238"
 landingContent:
 - title: IoT プラグ アンド プレイ
   linkLists:
@@ -24,38 +24,30 @@ landingContent:
     links:
     - text: IoT プラグ アンド プレイとは
       url: overview-iot-plug-and-play.md
-    - text: プレビュー更新版の更新内容 (2020)
-      url: overview-iot-plug-and-play-preview-updates.md
+    - text: 現在のリリースの内容
+      url: overview-iot-plug-and-play-current-release.md
 - title: デバイスを構築する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: IoT Hub にサンプル デバイスを接続する (C)
-      url: quickstart-connect-device-c.md
-    - text: IoT Hub にサンプル デバイスを接続する (C#)
-      url: quickstart-connect-device-csharp.md
-    - text: IoT Hub にサンプル デバイスを接続する (Java)
-      url: quickstart-connect-device-java.md
-    - text: IoT Hub にサンプル デバイスを接続する (Node.js)
-      url: quickstart-connect-device-node.md
-    - text: IoT Hub にサンプル デバイスを接続する (Python)
-      url: quickstart-connect-device-python.md
+    - text: IoT Hub にサンプル デバイスを接続する
+      url: quickstart-connect-device.md
   - linkListType: concept
     links:
     - text: 開発者ガイド
-      url: concepts-developer-guide.md
-    - text: IoT プラグ アンド プレイの規則
-      url: concepts-convention.md
+      url: concepts-developer-guide-device.md
     - text: コンポーネント
       url: concepts-components.md
+    - text: IoT プラグ アンド プレイの規則
+      url: concepts-convention.md
+    - text: IoT プラグ アンド プレイ ブリッジ
+      url: concepts-iot-pnp-bridge.md
 - title: ソリューションを構築する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: ソリューションからデバイスを操作する (node.js)
-      url: quickstart-service-node.md
-    - text: ソリューションからデバイスを操作する (Python)
-      url: quickstart-service-python.md
+    - text: ソリューションからのデバイスの操作
+      url: quickstart-service.md
   - linkListType: concept
     links:
     - text: アーキテクチャ

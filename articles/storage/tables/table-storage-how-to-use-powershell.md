@@ -8,17 +8,17 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e643a7ce5ccf4aa5107df1e505d90a0767517350
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070413"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306899"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Table Storage は NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納および照会できます。 このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。 テーブルは、エンティティのコレクションです。 エンティティは、プロパティのセットです。 各エンティティには、最大 252 個のプロパティを含めることができます。これらはすべて名前と値のペアです。 この記事では、Azure Table Storage サービスの概念について理解しているユーザーを対象としています。 詳しくは、「[テーブル サービス データ モデルについて](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」および「[.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)」をご覧ください。
+Azure Table Storage は NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納および照会できます。 このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。 テーブルは、エンティティのコレクションです。 エンティティは、プロパティのセットです。 各エンティティには、最大 252 個のプロパティを含めることができます。これらはすべて名前と値のペアです。 この記事では、Azure Table Storage サービスの概念について理解しているユーザーを対象としています。 詳しくは、「[テーブル サービス データ モデルについて](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」および「[.NET を使用して Azure Table Storage を使用する](../../cosmos-db/tutorial-develop-table-dotnet.md)」をご覧ください。
 
 このハウツー記事では、Azure Table Storage の一般的な操作について取り上げます。 学習内容は次のとおりです。 
 

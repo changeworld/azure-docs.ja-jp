@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da68e21aa279ea2503a21ce35eee52f8e49d1434
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0e99f7466bd3b7ed5517157ca3fa45e7c3241217
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049096"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599752"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件付きアクセス:セキュリティ情報登録のセキュリティ保護
 
-Azure Multi-Factor Authentication とセルフサービス パスワード リセット の登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 このプレビュー機能は、[統合登録プレビュー](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用することができます。 この機能は、信頼できるネットワークの場所などの条件を使用して、Azure Multi-Factor Authentication およびセルフサービス パスワード リセット (SSPR) への登録へのアクセスを制限したい組織で有効にすることができます。 使用可能な条件の詳細については、「[条件付きアクセス: 条件](concept-conditional-access-conditions.md)」を参照してください。
+Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 このプレビュー機能は、[統合登録プレビュー](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用することができます。 この機能は、信頼できるネットワークの場所などの条件を使用して、Azure AD Multi-Factor Authentication およびセルフサービス パスワード リセット (SSPR) への登録へのアクセスを制限したい組織で有効にすることができます。 使用可能な条件の詳細については、「[条件付きアクセス: 条件](concept-conditional-access-conditions.md)」を参照してください。
 
 ## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>信頼できる場所からの登録を要求するポリシーを作成する
 
@@ -34,6 +34,8 @@ Azure Multi-Factor Authentication とセルフサービス パスワード リ�
    > [!WARNING]
    > [[統合された登録]](../authentication/howto-registration-mfa-sspr-combined.md) に対してユーザーを有効にする必要があります。
 
+   1. **[除外]** で、 **[ユーザーとグループ]** を選択し、組織の緊急アクセス用または非常用アカウントを選択します。 
+   1. **[Done]** を選択します。
 1. **[クラウド アプリまたはアクション]** から **[ユーザー アクション]** を選択し、 **[セキュリティ情報の登録]** をオンにします。
 1. **[条件]**  >  **[場所]** で
    1. **[はい]** を構成します。
@@ -61,7 +63,7 @@ Azure Multi-Factor Authentication とセルフサービス パスワード リ�
 
 > [!WARNING]
 > ポリシー内で条件としてデバイスの状態を使用すると、ディレクトリのゲスト ユーザーに影響を与える可能性があります。 [レポート専用モード](concept-conditional-access-report-only.md)は、ポリシーの決定の影響を判断するのに役立ちます。
-> "ユーザー アクション" を範囲とする CA ポリシーにはレポート専用モードは該当しないことにご留意ください。
+> "ユーザー アクション" を範囲とする条件付きアクセス ポリシーにはレポート専用モードは適用されないことに注意してください。
 
 ## <a name="next-steps"></a>次のステップ
 

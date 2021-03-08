@@ -4,19 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 5a2811b9bfda663892296c6194b401a610d2bbbe
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 18e3f4a7564eb59052cd7deff32fe022dc89a017
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376737"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](../../../../get-started.md)
+> * [Azure Speech リソースを作成する](../../../../overview.md#try-the-speech-service-for-free)
 > * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]

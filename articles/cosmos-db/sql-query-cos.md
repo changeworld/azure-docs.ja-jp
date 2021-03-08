@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の COS
 description: Azure Cosmos DB の Cosine (COS) SQL システム関数で指定されたラジアン単位の角度の三角関数コサインを返す方法について説明します
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 40d277ff38691e2cb74bd4d5d78a666c304acfcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f11307d4f24bab06973e33b4640e26b1c445336
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78304023"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339042"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  式で指定されたラジアン単位の角度の三角関数コサインを返します。  
   
 ## <a name="syntax"></a>構文

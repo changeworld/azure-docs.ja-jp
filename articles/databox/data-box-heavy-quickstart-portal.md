@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920791"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347424"
 ---
 ::: zone target = "docs"
 
@@ -60,6 +60,8 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ## <a name="order"></a>Order
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 この手順には約 5 分かかります。
 
 1. Azure portal で新しい Azure Data Box リソースを作成します。
@@ -68,6 +70,77 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 4. 注文の詳細と発送情報を入力します。 ご利用のリージョンでこのサービスが提供されている場合、通知メール アドレスを指定し、概要を確認したうえで注文を作成します。
 
 注文が作成されると、デバイスの発送準備が行われます。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Data Box Heavy ジョブを作成するには、以下の Azure CLI コマンドを使用します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. [az group create](/cli/azure/group#az_group_create) コマンドを実行してリソース グループを作成するか、既存のリソース グループを使用します。
+
+   ```azurecli
+   az group create --name databox-rg --location westus 
+   ```
+
+1. [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用してストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) コマンドを実行して Data Box ジョブを作成します。 **--sku** の値には `DataBoxHeavy` を指定します。
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxheavy-job \
+       --location westus --sku DataBoxHeavy --contact-name "Jim Gan" --phone 4085555555 \
+       --city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA --storage-account databoxtestsa \
+       --staging-storage-account databoxtestsa --resource-group-for-managed-disk rg-for-md
+   ```
+
+   > [!NOTE]
+   > ご利用のサブスクリプションが Data Box Heavy をサポートしていることを確認してください。
+
+1. 次の例のように、[az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) を実行してジョブを更新します。連絡先の名前とメールは変更してください。
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) コマンドを実行して、ジョブに関する情報を取得します。
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) コマンドを使用して、リソース グループのすべての Data Box ジョブを表示します。
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) コマンドを実行してジョブをキャンセルします。
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) コマンドを実行してジョブを削除します。
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) コマンドを使用して、Data Box ジョブの資格情報を一覧表示します。
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+注文が作成されると、デバイスの発送準備が行われます。
+
+---
 
 ::: zone-end
 
@@ -104,7 +177,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
 
 この手順の所要時間は 5 分から 7 分程度です。
 
-1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。 デバイスの両方のノードで同じパスワードが使用されます。
+1. デバイスのパスワードを取得するには、 [Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。 デバイスの両方のノードで同じパスワードが使用されます。
 2. Data Box Heavy に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。
 3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
 4. 既定では、インターフェイス (MGMT を除く) のネットワーク設定は DHCP で構成されます。 必要に応じて、これらのインターフェイスを静的インターフェイスとして構成し、IP アドレスを指定することができます。
@@ -124,7 +197,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
  
 1. 両方の 40 Gbps データ インターフェイスを並列で使用して、両方のデバイス ノードにデータをコピーします。
 
-    - Windows ホストを使用する場合は、[Robocopy](https://technet.microsoft.com/library/ee851678.aspx) などの SMB 互換のファイル コピー ツールを使用します。
+    - Windows ホストを使用する場合は、[Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)) などの SMB 互換のファイル コピー ツールを使用します。
     - NFS のホストの場合、`cp` コマンドまたは `rsync` を使用してデータをコピーします。
 2. `\\<IP address of your device>\ShareName` というパスを使用して、デバイス上の共有に接続します。 共有アクセス資格情報を取得するには、Data Box Heavy のローカル Web UI にある **[接続とコピー]** ページに移動します。
 3. 共有とフォルダーの名前、そしてデータが、[Azure Storage と Data Box Heavy サービスの制限](data-box-heavy-limits.md)に記載されているガイドラインに従っていることを確認します。
@@ -134,7 +207,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
 この工程にかかる時間は、実際のデータのサイズによって異なります。
 
 1. データのコピーがエラーなしで完了した後、ローカル Web UI の **[発送準備]** ページに移動し、発送準備を開始します。
-2. 両方のノードで**発送準備**が正常に完了したら、ローカル Web UI でデバイスの電源を切ります。
+2. 両方のノードで **発送準備** が正常に完了したら、ローカル Web UI でデバイスの電源を切ります。
 
 ## <a name="ship-to-azure"></a>Azure への発送
 
@@ -161,7 +234,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
 
 - Data Box Heavy の注文は、注文が処理される前であれば、Azure portal からキャンセルできます。 注文が処理された後は、キャンセルできません。 注文は、完了ステージに到達するまで続行されます。 注文をキャンセルするには、 **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。
 
-- Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。 注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
+- Azure portal で **完了済み** または **キャンセル済み** の状態になった注文は削除することができます。 注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

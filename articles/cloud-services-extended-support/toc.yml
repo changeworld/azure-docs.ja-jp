@@ -1,0 +1,107 @@
+- name: Cloud Services (延長サポート) のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Cloud Services (延長サポート) について
+      href: overview.md
+    - name: デプロイの前提条件
+      href: deploy-prerequisite.md
+    - name: 構成ファイルとパッケージ化
+      href: cloud-services-model-and-package.md
+- name: チュートリアル
+  items:
+    - name: クラウド サービスのデプロイ - ポータル
+      href: deploy-portal.md
+    - name: クラウド サービスのデプロイ - PowerShell
+      href: deploy-powershell.md
+    - name: クラウド サービスのデプロイ - テンプレート
+      href: deploy-template.md
+    - name: クラウド サービスのデプロイ - SDK
+      href: deploy-sdk.md
+    - name: クラウド サービスのデプロイ - Visual Studio
+      href: /visualstudio/azure/cloud-services-extended-support?context=%2fazure%2fcloud-services-extended-support%2fcontext%2fcontext
+  expanded: true
+- name: 概念
+  items:
+    - name: 拡張機能
+      href: extensions.md
+    - name: 使用可能な VVM のサイズ
+      href: available-sizes.md
+    - name: ゲスト OS の修正プログラム
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?context=/azure/cloud-services-extended-support/context/context
+    - name: ゲスト OS の提供終了
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?context=/azure/cloud-services-extended-support/context/context
+    - name: ゲスト OS のリリース ニュース
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?context=/azure/cloud-services-extended-support/context/context
+    - name: XML スキーマ
+      items:
+        - name: Csdef XML スキーマ
+          href: schema-csdef-file.md
+        - name: LoadBalancerProbe スキーマ
+          href: schema-csdef-loadbalancerprobe.md
+        - name: WebRole スキーマ
+          href: schema-csdef-webrole.md
+        - name: WorkerRole スキーマ
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules スキーマ
+          href: schema-csdef-networktrafficrules.md
+        - name: Cscfg XML スキーマ
+          href: schema-cscfg-file.md
+        - name: Role スキーマ
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration スキーマ
+          href: schema-cscfg-networkconfiguration.md
+    - name: よく寄せられる質問
+      href: faq.md
+- name: 操作方法
+  items:
+    - name: リモート デスクトップ拡張機能を適用する
+      href: enable-rdp.md
+    - name: WAD 拡張機能を適用する
+      href: enable-wad.md
+    - name: アラートを有効にする
+      href: enable-alerts.md
+    - name: スケーリングを構成する
+      href: configure-scaling.md
+    - name: 証明書
+      href: certificates-and-key-vault.md
+- name: サンプル
+  items:
+    - name: サンプル テンプレート
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
+    - name: 新しいクラウド サービスを作成します。
+      href: sample-create-cloud-service.md
+    - name: クラウド サービスの詳細を取得する
+      href: sample-get-cloud-service.md
+    - name: クラウド サービスをリセットする
+      href: sample-reset-cloud-service.md
+- name: 関連項目
+  items:
+    - name: サンプル デプロイ ファイル
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
+    - name: Az.CloudService モジュール
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: PowerShell コマンドレット
+      href: /powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice
+    - name: ARM テンプレート リファレンス
+      href: /azure/templates/microsoft.compute/cloudservices
+    - name: REST
+      href: /rest/api/compute/cloudservices
+    - name: .NET
+      href: /dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet-preview
+    - name: SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: ラーニング パス
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-cloud-services.html
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='

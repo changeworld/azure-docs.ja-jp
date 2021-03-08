@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:最初の Bing Custom Search インスタンスの作成
+title: 'クイック スタート: 初めての Bing Custom Search インスタンスを作成する'
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、自分で定義したドメインや Web ページを検索できるカスタム Bing インスタンスを作成します。
 services: cognitive-services
@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 726a60d611abc392bc1a4629c5088ca4c6b703d9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238847"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338335"
 ---
-# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>クイック スタート:最初の Bing Custom Search インスタンスの作成
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>クイック スタート: 初めての Bing Custom Search インスタンスを作成する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 Bing Custom Search を使用するには、Web のビューまたはスライスを定義するカスタム検索のインスタンスを作成する必要があります。 このインスタンスには、検索するパブリック ドメイン、Web サイト、Web ページが、必要なランク付けの調整と共に含まれます。 
 
@@ -25,7 +30,7 @@ Bing Custom Search を使用するには、Web のビューまたはスライス
 
 ![Bing Custom Search ポータルの画像](media/blockedCustomSrch.png)
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
@@ -46,10 +51,10 @@ Bing Custom Search インスタンスを作成するには:
 
 5. **[発行]** をクリックすると、変更内容が運用環境に発行され、インスタンスのエンドポイントが更新されます。
 
-6.  **[エンドポイント]** の下の **[実稼働]** タブをクリックし、自分の**カスタム構成 ID** をコピーします。 Custom Search API を呼び出すには、この ID が必要となります。実際の呼び出しの `customconfig=` クエリ パラメーターにこの ID を追加します。
+6.  **[エンドポイント]** の下の **[実稼働]** タブをクリックし、自分の **カスタム構成 ID** をコピーします。 Custom Search API を呼び出すには、この ID が必要となります。実際の呼び出しの `customconfig=` クエリ パラメーターにこの ID を追加します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [クイック スタート: Bing Custom Search エンドポイントを呼び出す](./call-endpoint-csharp.md)

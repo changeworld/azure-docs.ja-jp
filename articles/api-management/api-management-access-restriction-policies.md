@@ -4,35 +4,31 @@ description: Azure API Management で使用できるアクセス制限ポリシ�
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: d6e5012d64f7370c4d81c24324522824bc88584d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b18a73d0357b5dd90b329ba55c6601e60df5bbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255117"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367573"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> アクセス制限ポリシー
 
--   [HTTP ヘッダーを確認する](api-management-access-restriction-policies.md#CheckHTTPHeader) - HTTP ヘッダーの存在と値の両方、またはそのどちらかを適用します。
--   [呼び出しレートをサブスクリプション別に制限する](api-management-access-restriction-policies.md#LimitCallRate) - 呼び出しレートをサブスクリプションに基づいて制限することで、API の使用量の急増を防ぎます。
+-   [HTTP ヘッダーを確認する](#CheckHTTPHeader) - HTTP ヘッダーの存在と値の両方、またはそのどちらかを適用します。
+-   [呼び出しレートをサブスクリプション別に制限する](#LimitCallRate) - 呼び出しレートをサブスクリプションに基づいて制限することで、API の使用量の急増を防ぎます。
 -   [呼び出しレートをキー別に制限する](#LimitCallRateByKey) - 呼び出しレートをキーに基づいて制限することで、API の使用量の急増を防ぎます。
--   [呼び出し元 IP を制限する](api-management-access-restriction-policies.md#RestrictCallerIPs) - 特定の IP アドレスとアドレス範囲の両方、またはそのどちらかからの呼び出しをフィルター処理 (許可/拒否) します。
--   [使用量のクォータをサブスクリプション別に設定する](api-management-access-restriction-policies.md#SetUsageQuota) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用できます。
+-   [呼び出し元 IP を制限する](#RestrictCallerIPs) - 特定の IP アドレスとアドレス範囲の両方、またはそのどちらかからの呼び出しをフィルター処理 (許可/拒否) します。
+-   [使用量のクォータをサブスクリプション別に設定する](#SetUsageQuota) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用できます。
 -   [使用量のクォータをキー別に設定する](#SetUsageQuotaByKey) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用できます。
--   [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。
+-   [JWT を検証する](#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。
 
 > [!TIP]
 > さまざまな目的に応じて異なるスコープでアクセス制限ポリシーを使用できます。 たとえば、API 全体を AAD 認証を使用して保護するには、`validate-jwt` ポリシーを API レベルに適用します。または、これを API 操作レベルに適用して、`claims` を使用してきめ細かい制御を行うこともできます。
@@ -84,7 +80,7 @@ ms.locfileid: "86255117"
 
 ## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> 呼び出しレートをサブスクリプション別に制限する
 
-`rate-limit` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、サブスクリプションごとに API 使用量の急増を防ぎます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。
+`rate-limit` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、サブスクリプションごとに API 使用量の急増を防ぎます。 この呼び出しレートを超えると、呼び出し元は `429 Too Many Requests` 応答状態コードを受信します。
 
 > [!IMPORTANT]
 > このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。
@@ -94,23 +90,33 @@ ms.locfileid: "86255117"
 > [!CAUTION]
 > スロットリングのアーキテクチャは分散型の性質のため、レートの制限は完全に正確ではありません。 許可される要求の構成された数と実際の数の差異は、要求のボリュームとレート、バックエンドの待ち時間、その他の要因によって異なります。
 
+> [!NOTE]
+> レート上限とクォータの違いについては、[レート上限とクォータ](./api-management-sample-flexible-throttling.md#rate-limits-and-quotas)に関するページを参照してください。
+
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
     <api name="API name" id="API id" calls="number" renewal-period="seconds" />
-        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" 
+        retry-after-header-name="header name" 
+        retry-after-variable-name="policy expression variable name"
+        remaining-calls-header-name="header name"  
+        remaining-calls-variable-name="policy expression variable name"
+        total-calls-header-name="header name"/>
     </api>
 </rate-limit>
 ```
 
 ### <a name="example"></a>例
 
+次の例では、サブスクリプションあたりのレート上限が 90 秒ごとに 20 回です。 ポリシーを実行するたびに、その期間内に許可されている残りの呼び出しが変数 `remainingCallsPerSubscription` に格納されます。
+
 ```xml
 <policies>
     <inbound>
         <base />
-        <rate-limit calls="20" renewal-period="90" />
+        <rate-limit calls="20" renewal-period="90" remaining-calls-variable-name="remainingCallsPerSubscription"/>
     </inbound>
     <outbound>
         <base />
@@ -124,7 +130,7 @@ ms.locfileid: "86255117"
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | rate-limit | ルート要素。                                                                                                                                                                                                                                                                                            | はい      |
 | api        | 製品内の API に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。                    | いいえ       |
-| operation  | API 内の操作に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しレート制限は別々に適用されます。 操作は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。 | いいえ       |
+| 操作  | API 内の操作に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しレート制限は別々に適用されます。 操作は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。 | いいえ       |
 
 ### <a name="attributes"></a>属性
 
@@ -132,7 +138,12 @@ ms.locfileid: "86255117"
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | レート制限の適用対象になる API の名前。                                                | はい      | 該当なし     |
 | calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
-| renewal-period | クォータのリセット間隔 (秒単位)。                                              | はい      | 該当なし     |
+| renewal-period | レートのリセット間隔 (秒単位)。                                              | はい      | 該当なし     |
+| retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
+| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | N/A  |
+| remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
+| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
 ### <a name="usage"></a>使用法
 
@@ -145,14 +156,17 @@ ms.locfileid: "86255117"
 ## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a> 呼び出しレートをキー別に制限する
 
 > [!IMPORTANT]
-> この機能は、API Management の**従量課金**レベルでは使用できません。
+> この機能は、API Management の **従量課金** レベルでは使用できません。
 
-`rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。
+`rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 この呼び出しレートを超えると、呼び出し元は `429 Too Many Requests` 応答状態コードを受信します。
 
 このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](./api-management-sample-flexible-throttling.md)」を参照してください。
 
 > [!CAUTION]
 > スロットリングのアーキテクチャは分散型の性質のため、レートの制限は完全に正確ではありません。 許可される要求の構成された数と実際の数の差異は、要求のボリュームとレート、バックエンドの待ち時間、その他の要因によって異なります。
+
+> [!NOTE]
+> レート上限とクォータの違いについては、[レート上限とクォータ](./api-management-sample-flexible-throttling.md#rate-limits-and-quotas)に関するページを参照してください。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -160,13 +174,16 @@ ms.locfileid: "86255117"
 <rate-limit-by-key calls="number"
                    renewal-period="seconds"
                    increment-condition="condition"
-                   counter-key="key value" />
+                   counter-key="key value" 
+                   retry-after-header-name="header name" retry-after-variable-name="policy expression variable name"
+                   remaining-calls-header-name="header name"  remaining-calls-variable-name="policy expression variable name"
+                   total-calls-header-name="header name"/> 
 
 ```
 
 ### <a name="example"></a>例
 
-次のサンプルでは、レート制限のキーに呼び出し元 IP を設定しています。
+次の例では、60 秒ごとに 10 回のレート制限のキーに呼び出し元 IP を設定しています。 ポリシーを実行するたびに、その期間内に許可されている残りの呼び出しが変数 `remainingCallsPerIP` に格納されます。
 
 ```xml
 <policies>
@@ -175,7 +192,8 @@ ms.locfileid: "86255117"
         <rate-limit-by-key  calls="10"
               renewal-period="60"
               increment-condition="@(context.Response.StatusCode == 200)"
-              counter-key="@(context.Request.IpAddress)"/>
+              counter-key="@(context.Request.IpAddress)"
+              remaining-calls-variable-name="remainingCallsPerIP"/>
     </inbound>
     <outbound>
         <base />
@@ -195,8 +213,13 @@ ms.locfileid: "86255117"
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
 | counter-key         | レート制限ポリシーに使用するキー。                                                             | はい      | 該当なし     |
-| increment-condition | クォータに対して要求の件数をカウントするかどうかを指定するブール式です (`true`)。        | いいえ       | 該当なし     |
-| renewal-period      | クォータのリセット間隔 (秒単位)。                                              | はい      | 該当なし     |
+| increment-condition | レートに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)。        | いいえ       | 該当なし     |
+| renewal-period      | レートのリセット間隔 (秒単位)。                                              | はい      | 該当なし     |
+| retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
+| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | なし  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
+| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
 ### <a name="usage"></a>使用法
 
@@ -243,7 +266,7 @@ ms.locfileid: "86255117"
 | 名前                                      | 説明                                                                                 | 必須                                           | Default |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | address-range from="address" to="address" | アクセスを許可または拒否する IP アドレスの範囲。                                        | `address-range` 要素を使用する場合は必須です。 | 該当なし     |
-| ip-filter action="allow &#124; forbid"    | 指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。 | はい                                                | 該当なし     |
+| ip-filter action="allow &#124; forbid"    | 指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。 | はい                                                | なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -259,7 +282,10 @@ ms.locfileid: "86255117"
 > [!IMPORTANT]
 > このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。
 >
-> このポリシー内のポリシー属性では、[ポリシー式](api-management-policy-expressions.md)は使用できません。
+> [ポリシー式](api-management-policy-expressions.md)は、このポリシーのポリシー属性に使用できません。
+
+> [!NOTE]
+> レート上限とクォータの違いについては、[レート上限とクォータ](./api-management-sample-flexible-throttling.md#rate-limits-and-quotas)に関するページを参照してください。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -291,7 +317,7 @@ ms.locfileid: "86255117"
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | ルート要素。                                                                                                                                                                                                                                                                                | はい      |
 | api       | 製品内の API に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しクォータは別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。                    | いいえ       |
-| operation | API 内の操作に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しクォータは別々に適用されます。 操作は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。 | いいえ       |
+| 操作 | API 内の操作に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しクォータは別々に適用されます。 操作は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。 | いいえ       |
 
 ### <a name="attributes"></a>属性
 
@@ -312,11 +338,14 @@ ms.locfileid: "86255117"
 ## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a> 使用量のクォータをキー別に設定する
 
 > [!IMPORTANT]
-> この機能は、API Management の**従量課金**レベルでは使用できません。
+> この機能は、API Management の **従量課金** レベルでは使用できません。
 
-`quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 複数のポリシーによって同じキー値が増分される場合は、要求ごとに 1 回だけ増分されます。 この呼び出し制限に達すると、呼び出し元は `403 Forbidden` 応答状態コードを受信します。
+`quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 複数のポリシーによって同じキー値が増分される場合は、要求ごとに 1 回だけ増分されます。 この呼び出しレートを超えると、呼び出し元は `403 Forbidden` 応答状態コードを受信します。
 
 このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](./api-management-sample-flexible-throttling.md)」を参照してください。
+
+> [!NOTE]
+> レート上限とクォータの違いについては、[レート上限とクォータ](./api-management-sample-flexible-throttling.md#rate-limits-and-quotas)に関するページを参照してください。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -372,12 +401,12 @@ ms.locfileid: "86255117"
 
 ## <a name="validate-jwt"></a><a name="ValidateJWT"></a> JWT を検証する
 
-`validate-jwt` ポリシーは、指定した HTTP ヘッダーまたは指定したクエリ パラメーターのどちらかから抽出した JWT が存在し、有効であることを必須にします。
+`validate-jwt` ポリシーは、指定した HTTP ヘッダーまたは指定したクエリ パラメーターのどちらかから抽出した JSON Web トークン (JWT) が存在し、有効であることを必須にします。
 
 > [!IMPORTANT]
 > `validate-jwt` ポリシーは、`require-expiration-time` 属性を指定し `false` に設定した場合を除いて、`exp` 登録クレームが JWT トークンに含まれていることを必須にします。
-> `validate-jwt` ポリシーでは HS256 署名アルゴリズムと RS256 署名アルゴリズムがサポートされています。 HS256 の場合、キーをポリシー内に base64 エンコード形式でインライン指定する必要があります。 RS256 の場合、キーは Open ID 構成エンドポイントを介して指定する必要があります。
-> `validate-jwt` ポリシーでは、暗号化アルゴリズム A128CBC-HS256、A192CBC-HS384、A256CBC-HS512 を使用して対称キーで暗号化されたトークンがサポートされます。
+> `validate-jwt` ポリシーでは HS256 署名アルゴリズムと RS256 署名アルゴリズムがサポートされています。 HS256 の場合、キーをポリシー内に base64 エンコード形式でインライン指定する必要があります。 RS256 の場合、キーは Open ID 構成エンドポイント経由で提供されるか、公開キーまたは公開キーのモジュラスとエクスポーネントのペアを含むアップロードされた証明書の ID を提示することによって提供されます。
+> `validate-jwt` ポリシーでは、暗号化アルゴリズムA128CBC-HS256、A192CBC-HS384、A256CBC-HS512 を使用して対称キーで暗号化されたトークンがサポートされます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -428,6 +457,22 @@ ms.locfileid: "86255117"
 <validate-jwt header-name="Authorization" require-scheme="Bearer">
     <issuer-signing-keys>
         <key>{{jwt-signing-key}}</key>  <!-- signing key specified as a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
+    </audiences>
+    <issuers>
+        <issuer>http://contoso.com/</issuer>
+    </issuers>
+</validate-jwt>
+```
+
+#### <a name="token-validation-with-rsa-certificate"></a>RSA 証明書を使用したトークン検証
+
+```xml
+<validate-jwt header-name="Authorization" require-scheme="Bearer">
+    <issuer-signing-keys>
+        <key certificate-id="my-rsa-cert" />  <!-- signing key specified as certificate ID, enclosed in double-quotes -->
     </issuer-signing-keys>
     <audiences>
         <audience>@(context.Request.OriginalUrl.Host)</audience>  <!-- audience is set to API Management host name -->
@@ -507,8 +552,8 @@ ms.locfileid: "86255117"
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | ルート要素。                                                                                                                                                                                                                                                                                                                                         | はい      |
 | audiences           | トークン上に存在する可能性がある、許容される対象ユーザー クレームの一覧を記載します。 対象ユーザー値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。 少なくとも 1 つの対象ユーザーを指定する必要があります。                                                                     | いいえ       |
-| issuer-signing-keys | 署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。               | いいえ       |
-| decryption-keys     | トークンの暗号化を解除するために使用される Base64 でエンコードされたキーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功するまで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。                                                 | いいえ       |
+| issuer-signing-keys | 署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが処理される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。 <br/><br/>または、次のものを使用して発行者の署名キーを指定します。<br/><br/> - `<key certificate-id="mycertificate" />` という形式の `certificate-id` を使用して、API Management に[アップロードされた](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add)証明書エンティティの識別子を指定します<br/>- `<key n="<modulus>" e="<exponent>" />` という形式の RSA のモジュラス `n` とエクスポーネント `e` のペアを使用して、base64url エンコード形式で RSA パラメーターを指定します               | いいえ       |
+| decryption-keys     | トークンの暗号化を解除するために使用される Base64 でエンコードされたキーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが処理される (この場合検証は失敗します) かいずれかのキーの検証が成功するまで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。<br/><br/>または、次のものを使用して復号化キーを指定します。<br/><br/> - `<key certificate-id="mycertificate" />` という形式の `certificate-id` を使用して、API Management に[アップロードされた](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity#Add)証明書エンティティの識別子を指定します                                                 | いいえ       |
 | issuers             | トークンを発行した、許容されるプリンシパルの一覧。 発行者の値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。                                                                                                                                         | いいえ       |
 | openid-config       | 署名キーと発行者を取得可能な準拠している Open ID 構成エンドポイントを指定するために使用する要素。                                                                                                                                                                                                                        | いいえ       |
 | required-claims     | トークン上に存在すると予測される、有効とみなすクレームの一覧を記載します。 `match` 属性を `all` に設定した場合、検証が成功するにはポリシー内のクレーム値がすべてトークン内に存在する必要があります。 `match` 属性を `any` に設定した場合、検証が成功するには少なくとも 1 つのクレームがトークン内に存在する必要があります。 | いいえ       |
@@ -524,11 +569,11 @@ ms.locfileid: "86255117"
 | query-parameter-name            | トークンを保持するクエリ パラメーターの名前。                                                                                                                                                                                                                                                                                                                                                                                                     | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
 | token-value                     | JWT トークンを含む文字列を返す式                                                                                                                                                                                                                                                                                                                                                                                                     | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
 | id                              | `key` 要素の `id` 属性を使用すると、署名検証用の適切なキーを確認するためにトークン内の `kid` クレーム (存在する場合) と照合する文字列を指定できます。                                                                                                                                                                                                                                           | いいえ                                                                               | 該当なし                                                                               |
-| match                           | `claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> - `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> - `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも 1 つトークン内に存在する必要があります。                                                       | いいえ                                                                               | すべて                                                                               |
-| require-expiration-time         | Boolean です。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                               | いいえ                                                                               | true                                                                              |
+| match                           | `claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> - `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> - `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも 1 つトークン内に存在する必要があります。                                                       | No                                                                               | all                                                                               |
+| require-expiration-time         | ブール型。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                               | いいえ                                                                               | true                                                                              |
 | require-scheme                  | トークンの名前。例: "Bearer"。 この属性が設定されている場合、ポリシーは指定したスキームが承認ヘッダーの値に存在していることを確認します。                                                                                                                                                                                                                                                                                    | いいえ                                                                               | 該当なし                                                                               |
-| require-signed-tokens           | Boolean です。 トークンに署名が必要かどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                                           | いいえ                                                                               | true                                                                              |
-| separator                       | 文字列 をオンにします。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。                                                                                                                                                                                                                                                                                                                                          | いいえ                                                                               | 該当なし                                                                               |
+| require-signed-tokens           | ブール型。 トークンに署名が必要かどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                                           | いいえ                                                                               | true                                                                              |
+| separator                       | 文字列。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。                                                                                                                                                                                                                                                                                                                                          | いいえ                                                                               | 該当なし                                                                               |
 | url                             | Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 応答は、URL で定義されている仕様に従っている必要があります:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。 | はい                                                                              | 該当なし                                                                               |
 | output-token-variable-name      | 文字列 をオンにします。 成功したトークンの検証において、[`Jwt`](api-management-policy-expressions.md) 型のオブジェクトとしてトークン値を受け取るコンテキスト変数の名前                                                                                                                                                                                                                                                                                     | いいえ                                                                               | 該当なし                                                                               |
 
@@ -546,4 +591,4 @@ ms.locfileid: "86255117"
 -   [API Management のポリシー](api-management-howto-policies.md)
 -   [API を変換する](transform-api.md)
 -   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
--   [ポリシーのサンプル](policy-samples.md)
+-   [ポリシーのサンプル](./policy-reference.md)

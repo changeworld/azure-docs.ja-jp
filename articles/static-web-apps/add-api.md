@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691498"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650688"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps プレビューに API を追加する
 
@@ -32,7 +32,7 @@ Azure Functions との統合を使用して、Azure Static Web Apps にサーバ
 
 次の手順では、新しいリポジトリを作成し、お使いのコンピューターにファイルを複製する方法を示します。
 
-1. GitHub にログインしていることを確認し、 https://github.com/staticwebdev/vanilla-basic/generate に移動して新しいリポジトリを作成します。
+1. GitHub にログインしていることを確認し、[https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate) に移動して新しいリポジトリを作成します。
 1. _[リポジトリ名]_ ボックスに、「**my-vanilla-api**」と入力します。
 1. **[Create repository from template]\(テンプレートからリポジトリを作成する\)** をクリックします。
 
@@ -59,7 +59,7 @@ Azure Functions との統合を使用して、Azure Static Web Apps にサーバ
 1. プロジェクト ワークスペースのディレクトリとして **api** フォルダーを選択します
 1. **[選択]** を選択します
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Visual Studio Code を使用して新しい Azure Functions を作成する":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="スクリーンショットには、A P I フォルダーと [選択] ボタンが示されています。":::
 
 1. プロンプトで、次の情報を入力します。
 
@@ -145,13 +145,13 @@ Visual Studio Code を [Azure Functions Core Tools](../azure-functions/functions
 
     Core Tools では、実行中のアプリケーションの出力が _[TERMINAL]\(ターミナル\)_ パネルに表示されます。 出力の一部として、HTTP によってトリガーされる関数の URL エンドポイントがローカルで実行されていることを確認できます。
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Visual Studio Code を使用して新しい Azure Functions を作成する":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="スクリーンショットには、U R L が表示されている [TERMINAL]\(ターミナル\) タブが示されています。":::
 
 1. Core Tools が実行されている状態で、次の URL に移動して、API が正しく実行されていることを確認します。`http://localhost:7071/api/message`
 
    ブラウザーの応答は、次の例のようになります。
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Visual Studio Code を使用して新しい Azure Functions を作成する":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Alt text スクリーンショットには、ブラウザー上のテキスト応答が示されています。":::
 
 1. デバッグ セッションを停止するには、**Shift + F5** キーを押します。
 
@@ -199,7 +199,7 @@ Azure にデプロイすると、API への要求は、`api` ルートに送信�
 
     これで、Web ページに API メッセージが表示されます。
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Visual Studio Code を使用して新しい Azure Functions を作成する":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="スクリーンショットには、ブラウザー上の A P I メッセージが示されています。":::
 
    > [!NOTE]
    > 他の HTTP サーバーまたはプロキシを使用して、`index.html` ファイルを処理できます。 `file:///` から `index.html` にアクセスすることはできません。
@@ -234,10 +234,12 @@ Visual Studio Code を使用して、変更をコミットし、リモート Git
 1. **[GitHub でサインイン]** ボタンをクリックし、GitHub で認証します
 1. 希望する "_組織_" を選択します
 1. **[リポジトリ]** ドロップダウンから _my-vanilla-api_ を選択します
-1. _[ブランチ]_ ドロップダウンから **[master]** を選択します
-1. **[次へ: ビルド >]** ボタンをクリックして、ビルド構成を編集します。
+1. _[ブランチ]_ ドロップダウンから **[main]** を選択します
+1. _[Build Presets]\(ビルド プリセット\)_ ドロップダウンから、ビルド構成に対して任意のフレームワークを選択します。
 
-次に、ビルドの詳細を以下のように追加します。
+ > これらのフィールドは、アプリの種類の既定のプロジェクト構造を反映します。 アプリに合わせて値を変更します。
+
+次に、次のビルドの詳細を追加します。
 
 1. _[App location]\(アプリの場所\)_ に「 **/** 」と入力します。
 1. _[Api location]\(Api の場所\)_ ボックスに「**api**」と入力します。

@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 description: この記事では、Azure Stream Analytics ジョブからの Blob Storage 出力のためのカスタム DateTime パス パターンおよびカスタム フィールドまたは属性機能について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869815"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014038"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -25,7 +24,13 @@ Azure Stream Analytics は、カスタム フィールドまたは属性およ�
 
 ### <a name="partition-key-options"></a>パーティション キーのオプション
 
-入力データをパーティション分割するために使用されるパーティション キー (または列名) には、ハイフン、アンダースコア、およびスペースを含む英数字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用できません。 パーティション キーは NVARCHAR(MAX) である必要があります。
+入力データをパーティション分割するために使用されるパーティション キーまたは列名には、[BLOB 名](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)に使用できる任意の文字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用することはできませんが、任意の文字を使用して、ファイルの階層を作成することはできます。 たとえば、次のクエリを使用して列を作成し、この列で他の 2 つの列のデータを結合して、一意のパーティション キーを作成することができます。
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+パーティション キーは NVARCHAR(MAX)、BIGINT、FLOAT、または BIT (互換性レベル 1.2 以上) にする必要があります。 DateTime、Array、および Records 型はサポートされていませんが、文字列に変換された場合には、パーティション キーとして使用することができます。 詳細については、[Azure Stream Analytics のデータ型](/stream-analytics-query/data-types-azure-stream-analytics)に関するページをご覧ください。
 
 ### <a name="example"></a>例
 
@@ -62,6 +67,8 @@ REST API を使用すると、その要求に使用される JSON ファイル�
 2. パーティション キーは大文字と小文字が区別されないため、"John" や "john" などのパーティション キーは同等です。 また、式もパーティション キーとして使用できません。 たとえば、 **{columnA + columnB}** は機能しません。  
 
 3. 入力ストリームが 8000 未満のパーティション キーのカーディナリティを含むレコードで構成されている場合、レコードは既存の BLOB に追加され、新しい BLOB は必要な場合にのみ作成されます。 カーディナリティが 8000 を超える場合、既存の BLOB に書き込まれる保証はなく、同じパーティション キーを含む任意数のレコードに対して新しい BLOB は作成されません。
+
+4. BLOB 出力が[不変として構成されている](../storage/blobs/storage-blob-immutable-storage.md)場合、データが送信されるたびに Stream Analytics によって新しい BLOB が作成されます。
 
 ## <a name="custom-datetime-path-patterns"></a>カスタム DateTime パス パターン
 

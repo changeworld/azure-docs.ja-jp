@@ -1,44 +1,40 @@
 ---
-title: ロジック アプリを呼び出し、トリガーし、入れ子にする
-description: Azure Logic Apps でロジック アプリ ワークフローの呼び出し、トリガー、または入れ子を行う HTTPS エンドポイントを設定する
+title: Request トリガーを使用し、ロジック アプリを呼び出し、トリガーし、入れ子にする
+description: Azure Logic Apps でロジック アプリ ワークフローを呼び出し、トリガーし、または入れ子にする HTTPS エンドポイントを設定する
 services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 11/19/2020
+ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078669"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981206"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTPS エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います
 
-ロジック アプリが他のサービスからの受信要求を受信できるようにロジック アプリを URL 経由で呼び出し可能にするには、同期 HTTPS エンドポイントをそのロジック アプリ上のトリガーとしてネイティブに公開できます。 この機能を設定するときに、ロジック アプリを他のロジック アプリの内部で入れ子にすることもできます。それにより、呼び出し可能なエンドポイントのパターンを作成できます。
-
-呼び出し可能なエンドポイントを設定するには、次のいずれかのトリガーの種類を使用できます。それにより、ロジック アプリが受信要求を受信できるようになります。
+ロジック アプリを URL 経由で呼び出せて、他のサービスから入ってくる要求を受信できるようにするため、ロジック アプリで要求ベースのトリガーを使用し、同期 HTTPS エンドポイントをネイティブで公開できます。 この機能があれば、他のロジック アプリから自分のロジック アプリを呼び出し、呼び出し可能エンドポイントのパターンを作成できます。 入ってくる呼び出しを処理するための呼び出し可能エンドポイントを設定するには、次のいずれかのトリガー タイプを使用できます。
 
 * [Request](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
-* [ApiConnectionWebhook の種類](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)を持ち、受信 HTTPS 要求を受信できるマネージド コネクタ トリガー
+* [ApiConnectionWebhook 型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり、受信 HTTPS 要求を受信できるマネージド コネクタ トリガー
 
-> [!NOTE]
-> これらの例では要求トリガーを使用しますが、前の一覧にある HTTPS 要求ベースの任意のトリガーを使用できます。 すべての原則がこれらの他のトリガーの種類にも同様に適用されます。
+この記事では、Request トリガーを使用してロジック アプリで呼び出し可能エンドポイントを作成し、別のロジック アプリからそのエンドポイントを呼び出す方法について説明します。 原則はすべて、入ってくる要求を受け取るための他のトリガー タイプに同じように適用されます。
 
-ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」および[クイックスタート: 初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
+
+[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL))、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml)、Azure API Management によるロジック アプリの公開、または受信呼び出しを発信する IP アドレスの制限などの、ロジック アプリへの受信呼び出しのセキュリティ、認可、および暗号化の詳細については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへの受信呼び出しへのアクセス」](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* 呼び出し可能なエンドポイントを作成するトリガーを使用するロジック アプリ。 空のロジック アプリか、または現在のトリガーを置き換える既存のロジック アプリから始めることができます。 この例では、空のロジック アプリから始めます。
+* 呼び出し可能なエンドポイントを作成するトリガーを使用するロジック アプリ。 空のロジック アプリか、現在のトリガーを置き換える既存のロジック アプリから始めることができます。 この例では、空のロジック アプリから始めます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」および[クイックスタート: 初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 ## <a name="create-a-callable-endpoint"></a>呼び出し可能なエンドポイントを作成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで、空のロジック アプリを作成して開きます。
-
-   この例では要求トリガーを使用しますが、受信 HTTPS 要求を受信できる任意のトリガーを使用できます。 すべての原則がこれらのトリガーにも同様に適用されます。 要求トリガーの詳細については、「[Azure Logic Apps で受信 HTTPS 要求を受信して応答する](../connectors/connectors-native-reqres.md)」を参照してください。
 
 1. 検索ボックスで、 **[組み込み]** を選択します。 検索ボックスに、フィルターとして「`request`」と入力します。 トリガーの一覧から、 **[HTTP 要求の受信時]** を選択します。
 
@@ -108,7 +104,7 @@ ms.locfileid: "87078669"
 
    * **[HTTP POST の URL]** ボックスの右で **[URL のコピー]** (ファイル コピー アイコン) を選択します。
 
-   * 次の POST 呼び出しを行います。
+   * この呼び出しは、要求トリガーが想定するメソッドを使用して行います。 この例では、`POST` メソッドを使用します。
 
      `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
@@ -128,7 +124,7 @@ ms.locfileid: "87078669"
 
 ## <a name="select-expected-request-method"></a>待機する要求メソッドの選択
 
-既定では、要求トリガーは POST 要求を待機します。 待機する別のメソッドを指定できますが、指定できるメソッドは 1 つだけです。
+既定では、要求トリガーは `POST` 要求を待機します。 呼び出し元が使用する必要のある別のメソッドを指定できますが、指定できるメソッドは 1 つだけです。
 
 1. 要求トリガーで、 **[新しいパラメーターの追加]** 一覧を開き、 **[メソッド]** を選択します。それにより、トリガーにこのプロパティが追加されます。
 
@@ -266,7 +262,7 @@ ms.locfileid: "87078669"
 
 ## <a name="call-logic-app-through-endpoint-url"></a>エンドポイント URL 経由でロジック アプリを呼び出す
 
-エンドポイントを作成したら、そのエンドポイントの完全な URL に HTTPS `POST` 要求を送信することによってロジック アプリをトリガーできます。 ロジック アプリでは、直接アクセス エンドポイントの組み込みがサポートされています。
+エンドポイントを作成したら、そのエンドポイントの完全な URL に HTTPS 要求を送信することによってロジック アプリをトリガーできます。 ロジック アプリでは、直接アクセス エンドポイントの組み込みがサポートされています。
 
 <a name="generated-tokens"></a>
 
@@ -306,7 +302,7 @@ ms.locfileid: "87078669"
 
 ## <a name="create-nested-logic-apps"></a>入れ子になったロジック アプリを作成する
 
-要求を受信できる他のロジック アプリを追加することで、ロジック アプリでワークフローを入れ子にできます。 これらのロジック アプリを含めるには、次の手順に従います。
+要求を受信できる他のロジック アプリを追加することで、ロジック アプリにワークフローを入れ子にできます。 これらのロジック アプリを含めるには、次の手順に従います。
 
 1. 別のロジック アプリを呼び出すステップで、 **[新しいステップ]**  >  **[アクションの追加]** の順に選択します。
 
@@ -343,7 +339,7 @@ ms.locfileid: "87078669"
 
 ## <a name="respond-to-requests"></a>要求に応答する
 
-ロジック アプリをトリガーする特定の要求に、呼び出し元にコンテンツを返すことによって応答したい場合があります。 応答の状態コード、ヘッダー、および本文を構築するには、応答アクションを使用します。 このアクションは、ワークフローの最後のみでなく、ロジック アプリの任意の場所に使用できます。 ロジック アプリに応答アクションが含まれていない場合、エンドポイントは **202 Accepted** 状態で*直ちに*応答します。
+ロジック アプリをトリガーする特定の要求に、呼び出し元にコンテンツを返すことによって応答したい場合があります。 応答の状態コード、ヘッダー、および本文を構築するには、応答アクションを使用します。 このアクションは、ワークフローの最後のみでなく、ロジック アプリの任意の場所に使用できます。 ロジック アプリに応答アクションが含まれていない場合、エンドポイントは **202 Accepted** 状態で *直ちに* 応答します。
 
 元の呼び出し元が応答を正常に取得するには、トリガーされたロジック アプリが入れ子になったロジック アプリとして呼び出されていない限り、応答のためにすべての必要な手順が[要求タイムアウト制限](./logic-apps-limits-and-config.md)内に完了する必要があります。 この制限内に応答が返されない場合、受信要求はタイムアウトし、**408 Client timeout** 応答を受信します。
 
@@ -396,6 +392,8 @@ ms.locfileid: "87078669"
 > * 共有アクセス キーが URL に表示されます。
 > * Azure Logic Apps の顧客にまたがる共有ドメインのために、セキュリティ コンテンツ ポリシーを管理できません。
 
+[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL))、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml)、Azure API Management によるロジック アプリの公開、または受信呼び出しを発信する IP アドレスの制限などの、ロジック アプリへの受信呼び出しのセキュリティ、認可、および暗号化の詳細については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへの受信呼び出しへのアクセス」](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
+
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>Q:呼び出し可能なエンドポイントをさらに構成することは可能でしょうか。
 
 **A**: はい。HTTPS エンドポイントは、[Azure API Management](../api-management/api-management-key-concepts.md) を通してより高度な構成をサポートしています。 このサービスでは、次のような、ロジック アプリを含むすべての API の一貫した管理、カスタム ドメイン名の設定、他の認証方法の使用などの機能も提供します。
@@ -408,3 +406,4 @@ ms.locfileid: "87078669"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する](../connectors/connectors-native-reqres.md)
+* [Azure Logic Apps におけるアクセスとデータのセキュリティ保護 - 要求ベースのトリガーへの受信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

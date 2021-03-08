@@ -1,26 +1,26 @@
 ---
 title: R スクリプトの実行:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で R スクリプトの実行モジュールを使用し、R コードを実行する方法について説明します。
+description: Azure Machine Learning デザイナーで R スクリプトの実行モジュールを使用し、カスタム R コードを実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.date: 12/17/2020
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337842"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119019"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
-この記事では、R スクリプトの実行モジュールを使用して、Azure Machine Learning デザイナー (プレビュー) のパイプラインで R コードを実行する方法について説明します。
+この記事では、R スクリプトの実行モジュールを使用して、Azure Machine Learning デザイナー パイプラインで R コードを実行する方法について説明します。
 
-R を使用すると、既存のモジュールが現在サポートしていないタスクを実行できます。次に例を示します。 
+R を使用すると、既存のモジュールではサポートされていない次のようなタスクを実行できます。 
 - カスタム データ変換を作成する
 - 独自のメトリックを使用して予測を評価する
 - デザイナーでスタンドアロン モジュールとして実装されていないアルゴリズムを使用してモデルをビルドする
@@ -49,7 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 追加の R パッケージをインストールするには、`install.packages()` メソッドを使用します。 パッケージは、R スクリプトの実行モジュールごとにインストールされます。 それらは他の R スクリプトの実行モジュール間で共有されません。
 
 > [!NOTE]
+> スクリプト バンドルから R パッケージをインストールすることは推奨されて **いません**。 スクリプト エディターで直接、パッケージをインストールすることをお勧めします。
 > `install.packages("zoo",repos = "http://cran.us.r-project.org")` などのパッケージをインストールするときは、CRAN リポジトリを指定します。
+
+> [!WARNING]
+> R スクリプトの実行モジュールでは、JAVA を必要とする `qdap` パッケージや、C++ を必要とする `drc` パッケージなど、ネイティブ コンパイルを必要とするパッケージのインストールはサポートしていません。 これは、このモジュールが、管理者以外のアクセス許可でプレインストールされた環境で実行されるためです。
+> デザイナー モジュールは Ubuntu で実行されるため、Windows で事前構築されているパッケージまたは Windows 用のパッケージはインストールしないでください。 パッケージが Windows で事前構築されているかを確認するには、[CRAN](https://cran.r-project.org/) に移動し、自分のパッケージを検索し、自分の OS に合わせてバイナリ ファイルを 1 つダウンロードし、**DESCRIPTION** ファイルの **Built:** 部分を確認します。 たとえば次のようになります。:::image type="content" source="media/module/r-package-description.png" alt-text="R パッケージの説明" lightbox="media/module/r-package-page.png":::
 
 このサンプルは、Zoo のインストール方法を示しています。
 ```R
@@ -78,25 +83,27 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
  > パッケージをインストールする前に、パッケージが既に存在するかどうかを確認して、インストールを繰り返さないようにします。 インストールを繰り返すと、Web サービス要求がタイムアウトする可能性があります。     
 
+## <a name="access-to-registered-dataset"></a>登録済みデータセットへのアクセス
+
+ワークスペースに[登録されているデータセット](../how-to-create-register-datasets.md)にアクセスするには、次のサンプル コードを参照してください。
+
+```R
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="uploading-files"></a>ファイルのアップロード
 R スクリプトの実行モジュールでは、Azure Machine Learning R SDK を使用したファイルのアップロードがサポートされています。
 
 次の例は、R スクリプトの実行でイメージ ファイルをアップロードする方法を示しています。
 ```R
-
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main,
-# which is the entry point for this module.
-
-# Note that functions dependent on the X11 library,
-# such as "View," are not supported because the X11 library
-# is not preinstalled.
-
-# The entry point function MUST have two input arguments.
-# If the input port is not connected, the corresponding
-# dataframe argument will be null.
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
 
@@ -119,31 +126,15 @@ azureml_main <- function(dataframe1, dataframe2){
 > [!div class="mx-imgBorder"]
 > ![アップロードされたイメージのプレビュー](media/module/upload-image-in-r-script.png)
 
-## <a name="access-to-registered-dataset"></a>登録済みデータセットへのアクセス
-
-ワークスペースに[登録されているデータセットにアクセス](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script)するには、次のサンプル コードを参照してください。
-
-```R
-        azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-  run = get_current_run()
-  ws = run$experiment$workspace
-  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
-  dataframe2 <- dataset$to_pandas_dataframe()
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
 ## <a name="how-to-configure-execute-r-script"></a>R スクリプトの実行を構成する方法
 
-R スクリプトの実行モジュールには、出発点として利用できるサンプル コードが含まれています。 R スクリプトの実行モジュールを構成するには、一連の入力と、実行するコードを指定します。
+R スクリプトの実行モジュールには、出発点として利用できるサンプル コードが含まれています。
 
 ![R モジュールの入力の図](media/module/execute-r-script.png)
 
 デザイナーに保存されたデータセットは、このモジュールで読み込まれると自動的に R データ フレームに変換されます。
 
-1.  **R スクリプトの実行**モジュールをパイプラインに追加します。  
+1.  **R スクリプトの実行** モジュールをパイプラインに追加します。  
 
 1. スクリプトに必要なすべての入力を接続します。 入力は、任意指定であり、データと追加の R コードを含めることができます。
 
@@ -194,9 +185,12 @@ R スクリプトの実行モジュールには、出発点として利用でき
     > [!NOTE]
     > 既存の R コードは、デザイナー パイプラインで実行するために、多少の変更が必要な場合があります。 たとえば、CSV 形式で指定した入力データは、コードで使用する前に、データセットに明示的に変換する必要があります。 また、R 言語で使用されるデータ型および列型は、デザイナーで使用されるデータ型および列型とはいくつかの点で異なります。
 
-    スクリプトが 16 KB を超える場合は、**スクリプト バンドル** ポートを使用すると、 *[CommandLine exceeds the limit of 16597 characters]\(コマンド ラインの文字数が上限の 16597 字を超えています\)* のようなエラーを回避できます。 
+1. スクリプトが 16 KB を超える場合は、**スクリプト バンドル** ポートを使用すると、 *[CommandLine exceeds the limit of 16597 characters] (CommandLine が上限の 16,597 文字を超えています)* などのエラーを回避できます。 
     
-    スクリプトとその他のカスタム リソースを zip ファイルにバンドルし、その zip ファイルを**ファイル データセット**として Studio にアップロードします。 次に、デザイナー作成ページの左側のモジュール ペインにある *[My datasets]\(マイ データセット\)* リストから、データセット モジュールをドラッグします。 データセット モジュールを **R スクリプトの実行**モジュールの**スクリプト バンドル** ポートに接続します。
+    1. スクリプトとその他のカスタム リソースを zip ファイルにバンドルます。
+    1. この zip ファイルを **[ファイル データセット]** として Studio にアップロードします。 
+    1. [デザイナー作成] ページの左側のモジュール ペインにある *[データセット]* の一覧から、データセット モジュールをドラッグします。 
+    1. データセット モジュールを **R スクリプトの実行** モジュールの **スクリプト バンドル** ポートに接続します。
     
     スクリプト バンドルでスクリプトを使用するサンプル コードを次に示します。
 
@@ -219,7 +213,7 @@ R スクリプトの実行モジュールには、出発点として利用でき
 
 ## <a name="results"></a>結果
 
-R スクリプトの実行モジュールからは複数の出力を返すことができますが、それらは R データ フレームとして提供する必要があります。 データ フレームは、他のモジュールとの互換性のために、自動的にデザイナーのデータセットに変換されます。
+R スクリプトの実行モジュールからは複数の出力を返すことができますが、それらは R データ フレームとして提供する必要があります。 デザイナーでは、他のモジュールとの互換性を保つために、データ フレームがデータセットに自動的に変換されます。
 
 R からの標準メッセージとエラーはモジュールのログに返されます。
 
@@ -236,9 +230,9 @@ R スクリプトの実行モジュールは、入力として任意の R スク
 
 1. R コードを含む .zip ファイルをワークスペースにアップロードするには、 **[データセット]** 資産ページに移動します。 **[データセットの作成]** を選択し、 **[ローカル ファイルから]** と **[ファイル]** のデータセットの種類オプションを選択します。  
 
-1. 左側のモジュール ツリーで、 **[データセット]** カテゴリの **[マイ データセット]** リストに ZIP ファイルがあることを確認します。
+1. 左側のモジュール ツリーで、 **[データセット]** カテゴリの **[My Datasets]\(マイ データセット\)** に ZIP ファイルが表示されていることを確認します。
 
-1.  そのデータセットを**スクリプト バンドル**入力ポートに接続します。
+1.  そのデータセットを **スクリプト バンドル** 入力ポートに接続します。
 
 1. .zip ファイル内のすべてのファイルは、パイプラインの実行時に使用できます。 
 
@@ -289,7 +283,7 @@ azureml_main <- function(dataframe1, dataframe2){
 1. CSV 形式でデータ ファイルを作成し、「**mydatafile.csv**」という名前を付けます。
 1. .zip ファイルを作成し、CSV ファイルをアーカイブに追加します。
 1. ZIP ファイルを Azure Machine Learning ワークスペースにアップロードします。 
-1. 結果として得られるデータセットを、**R スクリプトの実行**モジュールの **ScriptBundle** 入力に接続します。
+1. 結果として得られるデータセットを、**R スクリプトの実行** モジュールの **ScriptBundle** 入力に接続します。
 1. ZIP ファイルから CSV データを読み取るには、次のコードを使用します。
 
 ```R
@@ -322,7 +316,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 内部のシリアル化メカニズムを使用することで、R スクリプトの実行モジュールのインスタンス間で R オブジェクトを渡すことができます。 この例は、2 つの R スクリプトの実行モジュール間で `A` という名前の R オブジェクトを移動することを想定しています。
 
-1. **R スクリプトの実行**モジュールをパイプラインに追加します。 次に **[R Script]\(R スクリプト\)** テキスト ボックスに次のコードを入力し、モジュールの出力データ テーブルの列としてシリアル化されたオブジェクト `A` を作成します。  
+1. **R スクリプトの実行** モジュールをパイプラインに追加します。 次に **[R Script]\(R スクリプト\)** テキスト ボックスに次のコードを入力し、モジュールの出力データ テーブルの列としてシリアル化されたオブジェクト `A` を作成します。  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -338,7 +332,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
     シリアル化関数からはデータが R `Raw` 形式で出力されますが、これはデザイナーではサポートされていないため、整数型への明示的な変換が行われます。
 
-1. **R スクリプトの実行**モジュールの 2 番目のインスタンスを追加し、それを前のモジュールの出力ポートに接続します。
+1. **R スクリプトの実行** モジュールの 2 番目のインスタンスを追加し、それを前のモジュールの出力ポートに接続します。
 
 1. **[R Script]\(R スクリプト\)** テキスト ボックスに次のコードを入力して、入力データ テーブルからオブジェクト `A` を抽出します。 
 
@@ -502,4 +496,4 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

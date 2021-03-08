@@ -1,14 +1,14 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-ms.date: 06/17/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044194"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220730"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -16,10 +16,11 @@ Azure Policy は、組織の標準を適用し、コンプライアンスを大�
 
 Azure Policy の一般的なユースケースには、リソースの整合性、規制コンプライアンス、セキュリティ、コスト、管理のガバナンスの実装が含まれています。 これらの一般的なユース ケース用のポリシー定義は、使用を開始できるようにビルトインとして Azure 環境に既に用意されています。
 
+Azure Policy のデータとオブジェクトはすべて、暗号化された状態で保存されます。 詳細については、「[保存時の Azure データの暗号化](../../security/fundamentals/encryption-atrest.md)」を参照してください。
+
 ## <a name="overview"></a>概要
 
-Azure Policy では、Azure 内のリソースのプロパティをビジネス ルールと比較して、それらのリソースを評価します。 [JSON 形式](./concepts/definition-structure.md)で記述されるこれらのビジネス ルールは、[ポリシー定義](#policy-definition)と呼ばれます。 管理を容易にするために、複数のビジネス ルールをグループ化して、[ポリシー イニシアチブ](#initiative-definition) (_policySet_ とも呼ばれます) を作成できます。 ビジネス ルールを作成すると、ポリシーの定義またはイニシアチブは、Azure でサポートされているリソース ([管理グループ](../management-groups/overview.md)、サブスクリプション、[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)、個々のリソースなど) の任意のスコープに[割り当て](#assignments)られます。 割り当ては、その割り当ての[スコープ](../../azure-resource-manager/management/overview.md#understand-scope)内におけるすべてのリソースに適用されます。
-サブスコープは必要に応じて除外できます。
+Azure Policy では、Azure 内のリソースのプロパティをビジネス ルールと比較して、それらのリソースを評価します。 [JSON 形式](./concepts/definition-structure.md)で記述されるこれらのビジネス ルールは、[ポリシー定義](#policy-definition)と呼ばれます。 管理を容易にするために、複数のビジネス ルールをグループ化して、[ポリシー イニシアチブ](#initiative-definition) (_policySet_ とも呼ばれます) を作成できます。 ビジネス ルールを作成すると、ポリシーの定義またはイニシアチブは、Azure でサポートされているリソース ([管理グループ](../management-groups/overview.md)、サブスクリプション、[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)、個々のリソースなど) の任意のスコープに[割り当て](#assignments)られます。 割り当ては、その割り当ての [Resource Manager スコープ](../../azure-resource-manager/management/overview.md#understand-scope)内のすべてのリソースに適用されます。 サブスコープは必要に応じて除外できます。 詳細については、[Azure Policy のスコープ](./concepts/scope.md)に関するページを参照してください。
 
 Azure Policy では、リソースが準拠しているかどうかを特定するために評価で使用されるロジックの作成に、[JSON 形式](./concepts/definition-structure.md)を使用します。 定義には、メタデータとポリシー規則が含まれています。 定義される規則では、目的とするシナリオに正確に合わせて関数、パラメーター、論理演算子、条件、プロパティの[別名](./concepts/definition-structure.md#aliases)を使用できます。 ポリシー規則によって、割り当てのスコープ内のどのリソースが評価されるかが決定されます。
 
@@ -44,7 +45,7 @@ Azure Policy では、リソースが準拠しているかどうかを特定す�
 - 変更後にリソースを変更する
 - 準拠している関連リソースをデプロイする
 
-Azure Policy では、[効果](./concepts/effects.md)を適用して、これらの各ビジネス対応を実現できます。 効果は、[ポリシー定義](./concepts/definition-structure.md)の**ポリシー規則**の部分で設定されます。
+Azure Policy では、[効果](./concepts/effects.md)を適用して、これらの各ビジネス対応を実現できます。 効果は、[ポリシー定義](./concepts/definition-structure.md)の **ポリシー規則** の部分で設定されます。
 
 ### <a name="remediate-non-compliant-resources"></a>準拠していないリソースを修復する
 
@@ -58,31 +59,31 @@ Azure Policy では、[効果](./concepts/effects.md)を適用して、これら
 
 ## <a name="getting-started"></a>作業の開始
 
-### <a name="azure-policy-and-rbac"></a>Azure Policy と RBAC
+### <a name="azure-policy-and-azure-rbac"></a>Azure Policy と Azure RBAC
 
-Azure Policy とロールベースのアクセス制御 (RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
+Azure Policy と Azure ロールベースのアクセス制御 (Azure RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
 
-RBAC の焦点は、さまざまなスコープでのユーザー[操作](../../role-based-access-control/resource-provider-operations.md)の管理にあります。 アクションの制御が必要な場合は、RBAC が使用に適したツールになります。 あるユーザーがアクションを実行するためのアクセス権を持っていても、結果としてリソースが準拠していない場合、その作成や更新は Azure Policy によってブロックされます。
+Azure RBAC の焦点は、さまざまなスコープでのユーザー[操作](../../role-based-access-control/resource-provider-operations.md)の管理にあります。 アクションの制御が必要な場合は、Azure RBAC が使用に適したツールになります。 あるユーザーがアクションを実行するためのアクセス権を持っていても、結果としてリソースが準拠していない場合、その作成や更新は Azure Policy によってブロックされます。
 
-RBAC と Azure Policy を組み合わせることによって、Azure で完全なスコープの制御を実現できます。
+Azure RBAC と Azure Policy を組み合わせることによって、Azure で完全なスコープの制御を実現できます。
 
-### <a name="rbac-permissions-in-azure-policy"></a>Azure Policy における RBAC アクセス許可
+### <a name="azure-rbac-permissions-in-azure-policy"></a>Azure Policy における Azure RBAC アクセス許可
 
 Azure Policy は、次の 2 つのリソース プロバイダーにおいて、いくつかのアクセス許可 (操作) を有しています。
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者**ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者**は完全な権限を持っています。 **共同作成者**と**閲覧者**はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者**はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。
+Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者** は完全な権限を持っています。 **共同作成者** と **閲覧者** はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者** はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。 **deployIfNotExists** や **modify** 割り当てのマネージド ID に対して必要なアクセス許可を与えるには、**ユーザー アクセス管理者** が必要です。
 
 いずれの組み込みロールにも必要なアクセス許可がない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成してください。
 
 > [!NOTE]
-> **deployIfNotExists** ポリシー割り当てのマネージド ID には、テンプレートに含まれているリソースを作成または更新するのに十分なアクセス許可が必要です。 詳細については、[修復用のポリシー定義の構成](./how-to/remediate-resources.md#configure-policy-definition)に関するページを参照してください。
+> **deployIfNotExists** ポリシー割り当てまたは **modify** ポリシー割り当てのマネージド ID には、対象となるリソースを作成したり更新したりするための十分なアクセス許可が必要です。 詳細については、[修復用のポリシー定義の構成](./how-to/remediate-resources.md#configure-policy-definition)に関するページを参照してください。
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy の対象となるリソース
 
-Azure Policy では Azure 内のすべてのリソースを評価します。 [ゲスト構成](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md)、[Azure Key Vault](../../key-vault/general/overview.md) などの特定のリソース プロバイダーについては、設定とオブジェクトを管理するための緊密な統合があります。 詳細については、[リソース プロバイダーのモード](./concepts/definition-structure.md)に関するページを参照してください。
+Azure Policy は、Arc 対応リソースを含め、サブスクリプションレベルまたはそれ以下のレベルにあるすべての Azure リソースを評価します。 [ゲスト構成](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md)、[Azure Key Vault](../../key-vault/general/overview.md) などの特定のリソース プロバイダーについては、設定とオブジェクトを管理するための緊密な統合があります。 詳細については、[リソース プロバイダーのモード](./concepts/definition-structure.md)に関するページを参照してください。
 
 ### <a name="recommendations-for-managing-policies"></a>ポリシー管理に関する推奨事項
 
@@ -113,7 +114,6 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 - **許可されている場所** (拒否):新しいリソースに使用できる場所を制限します。 その効果は、geo コンプライアンス要件を強制するために使用されます。
 - **許可されている仮想マシン SKU** (拒否):展開できる仮想マシンの SKU の設定を指定します。
 - **リソースへのタグの追加** (変更):展開要求によって指定されていない場合に、必要なタグとその既定値を適用します。
-- **タグとその既定値の追加** (追加):必要なタグとその値をリソースに適用します。
 - **許可されていないリソースの種類** (拒否):リストのリソースの種類が展開されないようにします。
 
 これらのポリシー定義 (組み込み定義とカスタム定義の両方) を実装するには、割り当てを行う必要があります。 こうしたポリシーを割り当てるには、Azure Portal、PowerShell、または Azure CLI を使用します。

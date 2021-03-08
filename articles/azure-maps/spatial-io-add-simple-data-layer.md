@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 90f3cb0ae44be176d3ae248988d098039c140c3e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282808"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896159"
 ---
 # <a name="add-a-simple-data-layer"></a>シンプルなデータ レイヤーの追加
 
@@ -57,7 +57,7 @@ map.layers.add(layer);
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="シンプルなデータ レイヤーの使用" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> <a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>シンプルなデータ レイヤーの使用</a>」を参照してください。
+<iframe height="500" style="width: 100%;" scrolling="no" title="シンプルなデータ レイヤーの使用" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> <a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>シンプルなデータ レイヤーの使用</a>」を参照してください。
 </iframe>
 
 シンプルなデータ レイヤーの真の力は、次のような場合に発揮されます。
@@ -70,7 +70,7 @@ map.layers.add(layer);
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="シンプルなデータ レイヤー オプション" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> <a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>シンプルなデータ レイヤー オプション</a>」を参照してください。
+<iframe height="700" style="width: 100%;" scrolling="no" title="シンプルなデータ レイヤー オプション" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> <a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>シンプルなデータ レイヤー オプション</a>」を参照してください。
 </iframe>
 
 
@@ -176,10 +176,10 @@ Azure Maps と GitHub スタイルのプロパティは、サポートされて�
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+> [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+> [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 

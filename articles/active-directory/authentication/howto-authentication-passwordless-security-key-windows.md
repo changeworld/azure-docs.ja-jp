@@ -1,39 +1,36 @@
 ---
 title: Windows のパスワードレス セキュリティ キー サインイン - Azure Active Directory
-description: FIDO2 セキュリティ キーを使用して Azure Active Directory へのパスワードレス セキュリティ キー サインインを有効にする方法について説明します (プレビュー)
+description: FIDO2 セキュリティ キーを使用して Azure Active Directory へのパスワードレス セキュリティ キー サインインを有効にする方法について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/30/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 02/22/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 190e9c857f1ec9d19eb89493dc4b4a9fb68fac87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717967"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653509"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory を使用して Windows 10 デバイスへのパスワードレス セキュリティ キー サインインを有効にする (プレビュー)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory"></a>Azure Active Directory を使用して Windows 10 デバイスへのパスワードレス セキュリティ キー サインインを有効にする 
 
 このドキュメントでは、FIDO2 セキュリティ キーに基づくパスワードレス認証を、Windows 10 デバイスとの間で有効にする方法について説明します。 この記事を最後まで読むと、FIDO2 セキュリティ キーを使用して、お使いの Azure AD アカウントで Azure AD とHybrid Azure AD 参加済み Windows 10 デバイスの両方にサインインできるようになります。
-
-> [!NOTE]
-> FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="requirements"></a>必要条件
 
 | デバイスの種類 | Azure AD 参加済み | ハイブリッド Azure AD 参加済み |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [統合されたセキュリティ情報の登録 (プレビュー)](concept-registration-mfa-sspr-combined.md) | X | X |
+| [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
+| [統合されたセキュリティ情報の登録](concept-registration-mfa-sspr-combined.md) | X | X |
 | 互換性のある [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| WebAuthN には、Windows 10 バージョン 1809 以降が必要です | X | X |
-| [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)には、Windows 10 バージョン 1903 以降が必要です | X |   |
+| WebAuthN には、Windows 10 バージョン 1903 以降が必要です | X | X |
+| [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)には、Windows 10 バージョン 1909 以降が必要です | X |   |
 | [Hybrid Azure AD 参加済みデバイス](../devices/concept-azure-ad-join-hybrid.md)には、Windows 10 バージョン 2004 以降が必要です |   | X |
 | 完全にパッチが適用された Windows Server 2016/2019 ドメイン コントローラー。 |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) バージョン 1.4.32.0 以降 |   | X |
@@ -54,9 +51,9 @@ ms.locfileid: "88717967"
 - 複数の Azure AD アカウントが含まれるセキュリティ キーで Windows 10 デバイスにサインインするか、ロックを解除します。 このシナリオでは、セキュリティ キーに最後に追加されたアカウントが利用されます。 WebAuthN の場合、ユーザーは自分が使用するアカウントを選択できます。
 - Windows 10 バージョン 1809 を実行しているデバイスのロックを解除します。 最適なエクスペリエンスを得るには、Windows 10 バージョン 1903 以降を使用してください。
 
-## <a name="prepare-devices-for-preview"></a>プレビュー用にデバイスを準備する
+## <a name="prepare-devices"></a>デバイスを準備する
 
-機能のプレビュー中に使用している Azure AD 参加済みデバイスでは、Windows 10 バージョン 1809 以降が動作している必要があります。 Windows 10 バージョン 1903 以降で操作することをお勧めします。
+Azure AD 参加済みデバイスでは、Windows 10 バージョン 1909 以降が実行されている必要があります。
 
 Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004 以降が実行されている必要があります。
 
@@ -70,9 +67,9 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
 - [グループ ポリシーを使用して有効にする (Hybrid Azure AD 参加済みデバイスのみ)](#enable-with-group-policy)
 
 > [!IMPORTANT]
-> **Hybrid Azure AD 参加済みデバイス**を使用している組織は、Windows 10 FIDO2 セキュリティ キーの認証が機能する前に、「[オンプレミスのリソースに対する FIDO2 認証を有効にする](howto-authentication-passwordless-security-key-on-premises.md)」に記載されている手順**も**完了する必要があります。
+> **Hybrid Azure AD 参加済みデバイス** を使用している組織は、Windows 10 FIDO2 セキュリティ キーの認証が機能する前に、「[オンプレミスのリソースに対する FIDO2 認証を有効にする](howto-authentication-passwordless-security-key-on-premises.md)」に記載されている手順 **も** 完了する必要があります。
 >
-> **Azure AD 参加済みデバイス**を使用している組織は、FIDO2 セキュリティ キーを使用してデバイスがオンプレミスのリソースに対して認証される前に、この操作を行う必要があります。
+> **Azure AD 参加済みデバイス** を使用している組織は、FIDO2 セキュリティ キーを使用してデバイスがオンプレミスのリソースに対して認証される前に、この操作を行う必要があります。
 
 ### <a name="enable-with-intune"></a>Intune を使用して有効にする
 
@@ -125,16 +122,16 @@ Intune で管理されていないデバイスの場合は、プロビジョニ�
 1. 作成したプロビジョニング パッケージを適用するには、「[プロビジョニング パッケージの適用](/windows/configuration/provisioning-packages/provisioning-apply-package)」を参照してください。
 
 > [!NOTE]
-> Windows 10 バージョン 1809 を実行しているデバイスでは、共有 PC モード (*EnableSharedPCMode*) も有効にする必要があります。 この機能を有効にする方法の詳細については、「[Windows 10 での共有またはゲスト PC の設定](/windows/configuration/set-up-shared-or-guest-pc)」を参照してください。
+> Windows 10 バージョン 1903 を実行しているデバイスでは、共有 PC モード (*EnableSharedPCMode*) も有効にする必要があります。 この機能を有効にする方法の詳細については、「[Windows 10 での共有またはゲスト PC の設定](/windows/configuration/set-up-shared-or-guest-pc)」を参照してください。
 
 ### <a name="enable-with-group-policy"></a>グループ ポリシーを使用して有効にする
 
-**Hybrid Azure AD 参加済みデバイス**では、組織は次のグループ ポリシー設定を構成して、FIDO セキュリティ キー サインインを有効にすることができます。 この設定は、 **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[システム]**  >  **[ログオン]**  >  **[Turn on security key sign-in]\(セキュリティ キー サインインを有効にする\)** で見つけることができます。
+**Hybrid Azure AD 参加済みデバイス** では、組織は次のグループ ポリシー設定を構成して、FIDO セキュリティ キー サインインを有効にすることができます。 この設定は、 **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[システム]**  >  **[ログオン]**  >  **[Turn on security key sign-in]\(セキュリティ キー サインインを有効にする\)** で見つけることができます。
 
 - このポリシーを **[有効]** に設定すると、ユーザーはセキュリティ キーを使用してサインインできるようになります。
 - このポリシーを **[無効]** または **[未構成]** に設定すると、ユーザーはセキュリティ キーを使用してサインインできなくなります。
 
-このグループ ポリシー設定には、`credentialprovider.admx` グループ ポリシー テンプレートの更新バージョンが必要です。 この新しいテンプレートは、Windows Server の次のバージョンと Windows 10 20H1 で使用できます。 この設定は、これらの新しいバージョンの Windows が動作しているデバイスで管理するか、サポート トピックのガイダンス「[Windows でグループ ポリシー管理用テンプレート用のセントラル ストアを作成および管理する方法](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)」に従って一元管理することもできます。
+このグループ ポリシー設定には、`CredentialProviders.admx` グループ ポリシー テンプレートの更新バージョンが必要です。 この新しいテンプレートは、Windows Server の次のバージョンと Windows 10 20H1 で使用できます。 この設定は、これらの新しいバージョンの Windows が動作しているデバイスで管理するか、サポート トピックのガイダンス「[Windows でグループ ポリシー管理用テンプレート用のセントラル ストアを作成および管理する方法](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)」に従って一元管理することもできます。
 
 ## <a name="sign-in-with-fido2-security-key"></a>FIDO2 セキュリティ キーを使用してサインインする
 
@@ -150,13 +147,13 @@ Intune で管理されていないデバイスの場合は、プロビジョニ�
 
 ## <a name="troubleshooting-and-feedback"></a>トラブルシューティングとフィードバック
 
-この機能のプレビュー中に、フィードバックを共有したい場合、または問題が発生した場合は、次の手順を使用して Windows フィードバック ハブ アプリ経由で共有してください。
+この機能についてフィードバックを共有したい場合、または問題が発生した場合は、次の手順を使用して Windows フィードバック Hub アプリ経由で共有してください。
 
-1. **フィードバック ハブ**を起動し、サインインしていることを確認します。
+1. **フィードバック ハブ** を起動し、サインインしていることを確認します。
 1. 次の分類でフィードバックを送信します。
    - カテゴリ:セキュリティとプライバシー
    - サブカテゴリ: FIDO
-1. ログをキャプチャするには、 **[Recreate my Problem]\(問題の再現\)** オプションを使用します
+1. ログをキャプチャするには、 **[Recreate my Problem]\(問題の再現\)** オプションを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -164,4 +161,4 @@ Intune で管理されていないデバイスの場合は、プロビジョニ�
 
 [デバイス登録の詳細](../devices/overview.md)
 
-[Azure Multi-factor Authentication の詳細](../authentication/howto-mfa-getstarted.md)
+[Azure AD Multi-factor Authentication の詳細](../authentication/howto-mfa-getstarted.md)

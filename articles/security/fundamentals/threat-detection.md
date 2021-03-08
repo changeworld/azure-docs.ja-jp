@@ -1,10 +1,10 @@
 ---
-title: Azure の高度な脅威検出 | Microsoft Docs
-description: Azure AD Identity Protection サービスなど、Azure 向けの高度な組み込みの脅威検出機能について説明します。
+title: Azure の脅威の防止 | Microsoft Docs
+description: Azure AD Identity Protection サービスなど、Azure 向けの組み込みの脅威防止機能について学習します。
 services: security
 documentationcenter: na
-author: UnifyCloud
-manager: barbkess
+author: TerryLanfear
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: TomSh
-ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 02/03/2021
+ms.author: terrylan
+ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541024"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101037"
 ---
-# <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
+# <a name="azure-threat-protection"></a>Azure 脅威防止
 
-Azure では、Azure Active Directory (Azure AD)、Azure Monitor ログ、Azure Security Center などのサービスを通じて、高度な脅威検出を行う組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
+Azure では、Azure Active Directory (Azure AD)、Azure Monitor ログ、Azure Security Center などのサービスを通じて、脅威を防止する組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
 
 Azure では、アプリのデプロイ要件を満たすセキュリティを構成およびカスタマイズするための幅広いオプションを提供します。 この記事では、これらの要件を満たす方法について説明します。
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) は、[Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) エディションの機能であり、リスク検出と組織の ID に影響する可能性がある潜在的な脆弱性に関する概要を提供します。 Identity Protection では、[Azure AD 異常アクティビティ レポート](../../active-directory/active-directory-reporting-azure-portal.md)を通じて利用できる既存の Azure AD 異常検出機能を使用して、リアルタイムの異常を検出できる新しい種類のリスク検出を導入します。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) は、[Azure Active Directory Premium P2](../../active-directory/fundamentals/active-directory-whatis.md) エディションの機能であり、リスク検出と組織の ID に影響する可能性がある潜在的な脆弱性に関する概要を提供します。 Identity Protection では、[Azure AD 異常アクティビティ レポート](../../active-directory/reports-monitoring/overview-reports.md)を通じて利用できる既存の Azure AD 異常検出機能を使用して、リアルタイムの異常を検出できる新しい種類のリスク検出を導入します。
 
 ![Azure AD Identity Protection の図](./media/threat-detection/azure-threat-detection-fig1.png)
 
@@ -38,7 +38,7 @@ Identity Protection ではアダプティブな機械学習アルゴリズムと
 
 Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 リスク検出を基にして、Identity Protection では各ユーザーのユーザー リスク レベルを計算します。これにより、リスク ベースのポリシーを構成して組織の ID を自動的に保護することができます。
 
-これらのリスクに基づくポリシーと、Azure Active Directory および [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md) によって提供される他の[条件付きアクセス コントロール](../../active-directory/active-directory-conditional-access-azure-portal.md)により、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは提供できます。
+これらのリスクに基づくポリシーと、Azure Active Directory および [EMS](../../active-directory/conditional-access/overview.md) によって提供される他の[条件付きアクセス コントロール](../../active-directory/conditional-access/overview.md)により、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは提供できます。
 
 ### <a name="identity-protection-capabilities"></a>Identity Protection の機能
 
@@ -46,31 +46,31 @@ Azure Active Directory Identity Protection は単なる監視とレポート作�
 
 Azure の Identity Protection によってユーザーのアカウントや ID を保護できる方法の例には次のようなものがあります。
 
-[リスク検出とリスクの高いアカウントの検出](../../active-directory/identity-protection/overview.md)
+[リスク検出とリスクの高いアカウントの検出](../../active-directory/identity-protection/overview-identity-protection.md)
 -   機械学習とヒューリスティック ルールを使用して 6 種類のリスク検出を検出します。
 -   ユーザー リスク レベルを計算します。
 -   脆弱性を目立たせることにより全体的なセキュリティ対策を向上させるためのカスタム推奨事項を提供します。
 
-[リスク検出の調査](../../active-directory/identity-protection/overview.md)
+[リスク検出の調査](../../active-directory/identity-protection/overview-identity-protection.md)
 -   リスク検出の通知を送信します。
 -   関連情報とコンテキスト情報を使用してリスク検出を調査します。
 -   調査を追跡するための基本的なワークフローを提供します。
 -   パスワード リセットなどの修復アクションへの簡単なアクセスを提供します。
 
-[リスクに基づく条件付きアクセス ポリシー](../../active-directory/identity-protection/overview.md)
+[リスクに基づく条件付きアクセス ポリシー](../../active-directory/identity-protection/overview-identity-protection.md)
 -   サインインのブロックまたは多要素認証チャレンジの要求によりリスクの高いサインインを抑制します。
 -   リスクの高いユーザー アカウントをブロックまたはセキュリティで保護します。
 -   多要素認証への登録をユーザーに要求します。
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-組織内のアクセスは、[Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) を使用して管理、制御、監視することができます。 その機能には、Azure AD をはじめとする Microsoft Online Services (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
+組織内のアクセスは、[Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) を使用して管理、制御、監視することができます。 この機能には、Azure AD とその他の Microsoft オンライン サービス (Microsoft 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 ![Azure AD Privileged Identity Management の図](./media/threat-detection/azure-threat-detection-fig2.png)
 
 PIM は以下のことに役立ちます。
 
--   Azure AD 管理者に関するアラートとレポートを受け取り、Office 365 や Intune などの Microsoft Online Services にジャスト イン タイム (JIT) で管理アクセスを行う。
+-   Azure AD 管理者に関するアラートとレポートを受け取り、Microsoft 365 や Intune などの Microsoft オンライン サービスにジャスト イン タイム (JIT) で管理アクセスを行う。
 
 -   管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する。
 
@@ -80,50 +80,31 @@ PIM は以下のことに役立ちます。
 
 [Azure Monitor ログ](../../azure-monitor/index.yml)は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft クラウドベースの IT 管理ソリューションです。 Azure Monitor ログはクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 新しいセキュリティ機能は自動的に配信されるため、継続的なメンテナンスやアップグレードのコストが節約されます。
 
-Azure Monitor ログは、価値のある独自のサービスに加え、[System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) などの System Center のコンポーネントと連携して、セキュリティ管理のための既存の投資をクラウドに拡張できます。 System Center と Azure Monitor ログを連携させることで、本格的なハイブリッド管理を実現できます。
+Azure Monitor ログは、価値のある独自のサービスに加え、[System Center Operations Manager](/archive/blogs/cbernier/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started) などの System Center のコンポーネントと連携して、セキュリティ管理のための既存の投資をクラウドに拡張できます。 System Center と Azure Monitor ログを連携させることで、本格的なハイブリッド管理を実現できます。
 
 ### <a name="holistic-security-and-compliance-posture"></a>包括的なセキュリティおよびコンプライアンスの体制
 
-[Log Analytics の [セキュリティおよび監査] ダッシュボード](../../security-center/security-center-intro.md)では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [セキュリティおよび監査] ダッシュボードは、Azure Monitor ログにおけるすべてのセキュリティ関連機能のホーム画面です。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
+[Azure Security Center](../../security-center/security-center-introduction.md) では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
 
 Azure Monitor ログのダッシュボードは、あらゆる環境における包括的なセキュリティ体制をすばやく簡単に理解するのに役立ちます。これはすべて、ソフトウェアの更新プログラムの評価、マルウェア対策の評価、構成基準などを含む IT オペレーションのコンテキストの中で行われます。 セキュリティ ログ データに容易にアクセスできるため、セキュリティとコンプライアンスを目的とする監査プロセスが合理化されます。
 
-![Log Analytics の [セキュリティおよび監査] ダッシュボード](./media/threat-detection/azure-threat-detection-fig3.jpg)
-
-Log Analytics の [セキュリティおよび監査] ダッシュボードは、次の 4 つの主要カテゴリで構成されています。
-
--   **セキュリティ ドメイン**: 時間の経過に伴うセキュリティ レコードを詳しく調査できます。また、マルウェアの評価へのアクセス、評価の更新、ネットワーク セキュリティ、ID、アクセス情報の表示、セキュリティ イベントが発生したコンピューターの表示を行うことができ、Azure Security Center のダッシュボードにも簡単にアクセスできます。
-
--   **注目に値する問題**: アクティブな問題の数と問題の重要度をすばやく特定できます。
-
--   **検出 (プレビュー)** : リソースに対して攻撃が発生したときにセキュリティ アラートを表示することで、攻撃パターンを特定できます。
-
--   **脅威インテリジェンス**: 悪意のあるアウトバウンド IP トラフィックを持つサーバーの総数、悪意のある脅威の種類、IP の場所のマップを表示することで、攻撃パターンを特定できます。
-
--   **一般的なセキュリティ クエリ**: 環境を監視するために使用できる最も一般的なセキュリティ クエリが一覧表示されます。 任意のクエリを選択すると、[検索] ウィンドウが開き、そのクエリの結果が表示されます。
-
 ### <a name="insight-and-analytics"></a>分析情報と分析
-[Azure Monitor ログ](../../log-analytics/log-analytics-queries.md)の核となる機能は、Azure でホストされているリポジトリです。
+[Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)の核となる機能は、Azure でホストされているリポジトリです。
 
 ![分析情報と分析の図](./media/threat-detection/azure-threat-detection-fig4.png)
 
 データ ソースを構成し、ソリューションをサブスクリプションに追加することによって、接続されているソースからリポジトリにデータを収集します。
 
-![Azure Monitor ログ ダッシュ ボード](./media/threat-detection/azure-threat-detection-fig5.png)
-
 データ ソースとソリューションは、独自のプロパティのセットを持つレコードの種類をそれぞれ別々に作成しますが、リポジトリに対するクエリでまとめて分析することもできます。 同じツールとメソッドを使用することで、さまざまなソースによって収集された各種のデータを使用することができます。
 
-
 Azure Monitor ログとのやり取りのほとんどは、任意のブラウザーで実行する Azure portal を通じて行います。ここから構成設定や複数のツールにアクセスして収集したデータの分析や操作ができる機能が提供されます。 ポータルでは、以下を使用できます。
-* [ログ検索](../../log-analytics/log-analytics-queries.md)。収集されたデータを分析するためのクエリを構築します。
-* [ダッシュボード](../../azure-monitor/learn/tutorial-logs-dashboards.md)。最も重要な検索のグラフィカル表示でカスタマイズできます。
-* [ソリューション](../../monitoring/monitoring-solutions.md)。追加の機能と分析ツールが提供されます。
-
-![分析ツール](./media/threat-detection/azure-threat-detection-fig6.png)
+* [ログ検索](../../azure-monitor/logs/log-query-overview.md)。収集されたデータを分析するためのクエリを構築します。
+* [ダッシュボード](../../azure-monitor/visualize/tutorial-logs-dashboards.md)。最も重要な検索のグラフィカル表示でカスタマイズできます。
+* [ソリューション](../../azure-monitor/insights/solutions.md)。追加の機能と分析ツールが提供されます。
 
 ソリューションにより、Azure Monitor ログに機能が追加されます。 これらは主にクラウドで実行し、Log Analytics リポジトリで収集されたデータの分析を提供します。 また、ソリューションでは、新しいレコードの種類を収集対象として定義することもできます。それらは Log Analytics ダッシュボード内でソリューションによって提供される追加のユーザー インターフェイスを使用するか、ログ検索を使用して分析できます。
 
-[セキュリティおよび監査] ダッシュボードはこのような種類のソリューションの一例です。
+Security Center はこうした種類のソリューションの一例です。
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automation and Control: セキュリティ構成の誤差に関するアラート
 
@@ -135,27 +116,31 @@ Azure でホストされる DSC リソースを作成して管理し、クラウ
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 このサービス内では、Azure サブスクリプションと[リソース グループ](../../azure-resource-manager/management/manage-resources-portal.md)の両方に対してポリシーを定義することで、より詳細な定義が可能になります。
+Azure Security Center を使用することで、ハイブリッド クラウド環境を保護することができます。 接続されたリソースの継続的なセキュリティ評価を行うことで、検出された脆弱性に関する詳細なセキュリティに関する推奨事項を提供することができます。
 
-![Azure Security Center の図](./media/threat-detection/azure-threat-detection-fig8.png)
+Security Center の推奨事項は、[Azure セキュリティ ベンチマーク](../benchmarks/introduction.md)に基づいており、これは、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Microsoft 製の Azure 固有の一連のガイドラインです。 このベンチマークは、クラウド中心のセキュリティに重点を置いた、[Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) および[米国国立標準技術研究所 (NIST)](https://www.nist.gov/) の管理に基づいて構築されており、広く評価されています。
+
+Security Center の統合クラウド ワークロード保護プラットフォーム (CWPP) である **Azure Defender** は、Azure およびハイブリッド リソースおよびワークロードの高度でインテリジェントな保護を実現します。 Azure Defender を有効にすると、さまざまな追加のセキュリティ機能をご利用いただけます (「[Azure Defender の概要](../../security-center/azure-defender.md)」を参照してください)。 Security Center の Azure Defender ダッシュボードにより、環境の CWP 機能を可視化し、制御できます。
+
+:::image type="content" source="../../security-center/media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender ダッシュボードの例" lightbox="../../security-center/media/azure-defender/sample-defender-dashboard.png":::
 
 マイクロソフトのセキュリティ研究員は、絶えず脅威に目を光らせています。 クラウドやオンプレミスにおけるマイクロソフトのグローバル プレゼンスから得た広範なテレメトリにアクセスすることが彼らには許されています。 この広範かつ多様なデータセットのコレクションによって、マイクロソフトは、そのオンプレミスの消費者向け/企業向け製品からオンライン サービスに至るまで、攻撃の新しいパターンや傾向を把握することができます。
 
 このため、Security Center は、攻撃者が新たにより高度な攻撃を仕掛けてくるたびに検出アルゴリズムを迅速に更新することができます。 この方法は、刻々と進化する脅威の環境に後れを取らないように対処するのに役立ちます。
 
-![Security Center の脅威検出](./media/threat-detection/azure-threat-detection-fig9.jpg)
+:::image type="content" source="../../security-center/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center のセキュリティ アラートの一覧":::
 
-Security Center の脅威検出は、Azure のリソースやネットワーク、接続されているパートナー ソリューションからセキュリティ情報を自動的に収集することによって機能します。 これは、複数のソースからの情報を関連付けることで情報を分析して脅威を識別します。
+Azure Defender は、リソースやネットワーク、接続されているパートナー ソリューションからセキュリティ情報を自動的に収集します。 これは、複数のソースからの情報を関連付けることで情報を分析して脅威を識別します。
 
-Security Center では、セキュリティの警告に優先順位が、脅威に対処するための推奨事項と共に割り当てられます。
+Azure Defender のアラートは、脅威に対処するための推奨事項とともに、Security Center で優先されます。
 
-Security Center には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。 ビッグ データおよび[機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)における革新的テクノロジを使用して、クラウド ファブリック全体でイベントが評価されます。 高度な分析では、手作業に頼った手法や攻撃の進化を予測する手法では特定できない脅威も検出できます。 こうしたセキュリティ分析の種類については次のセクションで説明します。
+Security Center には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。 ビッグ データおよび[機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)における革新的なテクノロジを使用して、クラウド全体でイベントが評価されます。 高度な分析では、手作業に頼った手法では特定できない脅威も検出でき、攻撃の進化を予測することができます。 こうしたセキュリティ分析の種類については次のセクションで説明します。
 
 ### <a name="threat-intelligence"></a>脅威インテリジェンス
 
 Microsoft は、膨大なグローバル脅威インテリジェンスにアクセスできます。
 
-Azure、Office 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft Digital Crimes Unit (DCU)、および Microsoft セキュリティ レスポンス センター (MSRC) などの複数のソースから製品利用統計情報が送られてきます。
+Azure、Microsoft 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft Digital Crimes Unit (DCU)、および Microsoft セキュリティ レスポンス センター (MSRC) などの複数のソースから製品利用統計情報が送られてきます。
 
 ![脅威インテリジェンスの検索結果](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
@@ -190,7 +175,7 @@ Azure、Office 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com�
 
 -   **悪質な PowerShell スクリプト**: 攻撃者が標的の仮想マシン上で悪質なコードを実行するために、さまざまな目的で PowerShell を使用することがあります。 疑わしい活動の兆候がないか、PowerShell のアクティビティは Security Center によって調査されます。
 
--   **送信方向の攻撃**:攻撃の踏み台として利用するために、クラウド リソースを攻撃者が標的にすることは少なくありません。 たとえば、侵入した仮想マシンを利用して、他の仮想マシンにブルート フォース攻撃を仕掛けたり、スパムを送信したり、開放ポートやインターネット上の他のデバイスをスキャンしたりする場合があります。 Security Center では、ネットワーク トラフィックに機械学習を適用することで、正常な範囲を逸脱した送信ネットワーク通信を検出することができます。 スパムが検出された場合、Security Center では、普通ではない電子メール トラフィックと Office 365 から得られたインテリジェンスとの相関を明らかにすることで、不正目的のメールであるか、正当な電子メール キャンペーンによるものであるかも判断します。
+-   **送信方向の攻撃**:攻撃の踏み台として利用するために、クラウド リソースを攻撃者が標的にすることは少なくありません。 たとえば、侵入した仮想マシンを利用して、他の仮想マシンにブルート フォース攻撃を仕掛けたり、スパムを送信したり、開放ポートやインターネット上の他のデバイスをスキャンしたりする場合があります。 Security Center では、ネットワーク トラフィックに機械学習を適用することで、正常な範囲を逸脱した送信ネットワーク通信を検出することができます。 スパムが検出された場合、Security Center では、普通ではない電子メール トラフィックと Microsoft 365 から得られたインテリジェンスとの相関を明らかにすることで、不正目的のメールであるか、正当な電子メール キャンペーンによるものであるかも判断します。
 
 ### <a name="anomaly-detection"></a>異常検出
 
@@ -212,7 +197,7 @@ Azure Security Center は、世界中のセキュリティ リサーチ チー�
 
 こうしたさまざまな取り組みの結果、新しく改善された検出が可能となり、その恩恵はすぐに得ることができるようになりました。 ユーザーが措置を講じる必要はありません。
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>高度な脅威検出: 他の Azure サービス
+## <a name="threat-protection-features-other-azure-services"></a>脅威防止機能:他の Azure サービス
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>仮想マシン:Microsoft マルウェア対策
 
@@ -268,7 +253,7 @@ SQL Database の脅威検出機能では、次の検出手法のいずれかが�
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway の Web アプリケーション ファイアウォール
 
-[Web アプリケーション ファイアウォール (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) は、[Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) の機能で、標準の[アプリケーション配信コントロール](https://kemptechnologies.com/in/application-delivery-controllers)機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、[Open Web Application Security Project (OWASP) の上位 10 件の一般的 Web 脆弱性](https://owasp.org/www-project-top-ten/)の大部分に対する保護を提供することで、これを実現します。
+[Web アプリケーション ファイアウォール (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) は、[Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md) の機能で、標準の[アプリケーション配信コントロール](https://kemptechnologies.com/in/application-delivery-controllers)機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、[Open Web Application Security Project (OWASP) の上位 10 件の一般的 Web 脆弱性](https://owasp.org/www-project-top-ten/)の大部分に対する保護を提供することで、これを実現します。
 
 ![Application Gateway の Web アプリケーション ファイアウォールの図](./media/threat-detection/azure-threat-detection-fig13.png)
 
@@ -336,7 +321,7 @@ API に基づいた機械学習では、次のことができます。
 
 ### <a name="cloud-app-security"></a>Cloud App Security
 
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) は、Microsoft Cloud のセキュリティ スタックの重要なコンポーネントです。 これは、企業がクラウド アプリケーションの可能性を最大限に活用できるように行動するのに役立つ包括的なソリューションです。 アクティビティのさらなる詳細を把握することで制御は維持されます。 また、重要なデータの保護をクラウド アプリケーション全体で強化するうえでも役立ちます。
+[Cloud App Security](/cloud-app-security/what-is-cloud-app-security) は、Microsoft Cloud のセキュリティ スタックの重要なコンポーネントです。 これは、企業がクラウド アプリケーションの可能性を最大限に活用できるように行動するのに役立つ包括的なソリューションです。 アクティビティのさらなる詳細を把握することで制御は維持されます。 また、重要なデータの保護をクラウド アプリケーション全体で強化するうえでも役立ちます。
 
 企業は、shadow IT の発見、リスクの評価、ポリシーの適用、アクティビティの調査、および驚異の停止に役立つツールを使用して、重要なデータの制御を維持しながらもより安全にクラウドに移行できるようにします。
 
@@ -363,7 +348,7 @@ Cloud App Security は、次の作業によってクラウドの詳細を把握�
 
 Cloud App Security は、これらのソースからデータを収集することでデータに対する高度な分析を実行します。 Cloud App Security は、異常なアクティビティに迅速に通知し、クラウド環境をさらに詳しく把握できるようにします。 Cloud App Security にポリシーを構成することができ、これを使用して、クラウド環境内のすべてを保護することができます。
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Azure Marketplace を介したサード パーティ製の高度な脅威検出機能
+## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>Azure Marketplace から入手できるサードパーティ製の脅威防止機能
 
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 
@@ -383,6 +368,6 @@ Azure Marketplace で使用可能な Web アプリケーション ファイア�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [今日の脅威への対応](../../security-center/security-center-alerts-overview.md#respond-threats):Azure リソースをターゲットとするアクティブな脅威を特定し、迅速に対応するうえで必要な分析情報を取得するのに役立ちます。
+- [今日の脅威への対応](../../security-center/security-center-managing-and-responding-alerts.md):Azure リソースをターゲットとするアクティブな脅威を特定し、迅速に対応するうえで必要な分析情報を取得するのに役立ちます。
 
 - [Azure SQL Database の脅威の検出](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): ご利用のデータベースに対する潜在的な脅威の問題に対処するのに役立ちます。

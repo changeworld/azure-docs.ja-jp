@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: c446d5d6c0d4acee00668368160d8859cdd637bb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7aec0a7ff2e8dfdfca93971e01f8ed13af34acc6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544878"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517856"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synchronet-click"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SynchroNet CLICK の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544878"
 * ユーザーが自分の Azure AD アカウントを使用して SynchroNet CLICK に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,8 +42,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SynchroNet CLICK では、**SP** Initiated SSO がサポートされます。
-* SynchroNet CLICK を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* SynchroNet CLICK では、 **SP** Initiated SSO がサポートされます。
+* SynchroNet CLICK を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-synchronet-click-from-the-gallery"></a>ギャラリーからの SynchroNet CLICK の追加
 
@@ -53,7 +53,7 @@ Azure AD への SynchroNet CLICK の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SynchroNet CLICK**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **SynchroNet CLICK** 」と入力します。
 1. 結果のパネルから **[SynchroNet CLICK]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -84,7 +84,7 @@ SynchroNet CLICK で Azure AD SSO を構成してテストするには、次の�
 
     **[サインオン URL]** ボックスに、URL として「`https://click.synchronet.com`」を入力します。
 
-1. SynchroNet CLICK アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**emailaddress** は **user.mail** にマップされています。 SynchroNet CLICK アプリケーションでは、**emailaddress** が **user.userprincipalname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. SynchroNet CLICK アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **emailaddress** は **user.mail** にマップされています。 SynchroNet CLICK アプリケーションでは、 **emailaddress** が **user.userprincipalname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -124,7 +124,7 @@ SynchroNet CLICK で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-synchronet-click-sso"></a>SynchroNet CLICK の SSO の構成
 
-**SynchroNet CLICK** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [SynchroNet CLICK サポート チーム](mailto:tickets@synchronet.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SynchroNet CLICK** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [SynchroNet CLICK サポート チーム](mailto:tickets@synchronet.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-synchronet-click-test-user"></a>SynchroNet CLICK のテスト ユーザーの作成
 
@@ -134,18 +134,18 @@ SynchroNet CLICK で Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SynchroNet CLICK] タイルをクリックすると、SSO を設定した SynchroNet CLICK に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SynchroNet CLICK] タイルをクリックすると、SSO を設定した SynchroNet CLICK に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で SynchroNet CLICK を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって SynchroNet CLICK を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって SynchroNet CLICK を保護する方法](/cloud-app-security/proxy-intro-aad)

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f2f01e2b58c997db08ad4427de7eef1ee3760c4a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007260"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016813"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用 PowerShell モジュールを設定する
 
@@ -40,6 +40,13 @@ Install-Module -Name Az.DesktopVirtualization
 ```powershell
 Connect-AzAccount
 ```
+
+>[!IMPORTANT]
+>US Gov ポータルに接続する場合は、代わりに次のコマンドレットを実行します。
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
 
 Azure アカウントにサインインするには、Connect コマンドレットを実行するときに生成されるコードが必要です。 サインインするには、<https://microsoft.com/devicelogin> に移動し、コードを入力してから、Azure 管理者の資格情報を使用してサインインします。
 

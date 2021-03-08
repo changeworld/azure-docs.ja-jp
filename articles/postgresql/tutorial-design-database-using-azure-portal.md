@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Azure Database for PostgreSQL - Single Server を設計する - Azure portal
 description: このチュートリアルでは、Azure portal を使用して最初の Azure Database for PostgreSQL - 単一サーバーを設計する方法を説明します。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: d7ddb286285de9be089c0a5176e33b7108021c77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 179d4124e28abfffa83b16cfdb418d8e860192d8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75459952"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337134"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを設計する
 
@@ -33,20 +33,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の作成
 
-Azure Database for PostgreSQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-unit-and-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成されます。
+Azure Database for PostgreSQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-pricing-tiers.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成されます。
 
 Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 2. **[新規]** ページで **[データベース]** を選択し、 **[データベース]** ページで **[Azure Database for PostgreSQL]** を選択します。
-   ![Azure Database for PostgreSQL - データベースの作成](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/1-create-database.png" alt-text="Azure Database for PostgreSQL - データベースの作成":::
 
 3. **[単一サーバー]** デプロイ オプションを選択します。
 
-   ![Azure Database for PostgreSQL - 単一サーバー デプロイ オプションを選択する](./media/tutorial-design-database-using-azure-portal/select-deployment-option.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/select-deployment-option.png" alt-text="Azure Database for PostgreSQL の [単一サーバー] デプロイ オプションを選択します":::
 
 4. **[基本]** フォームに以下の情報を入力します。
 
-    ![サーバーの作成](./media/tutorial-design-database-using-azure-portal/create-basics.png)
+    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/create-basics.png" alt-text="サーバーの作成":::
 
     設定|推奨値|説明
     ---|---|---
@@ -64,16 +64,16 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
    > 低負荷なコンピューティングと I/O がワークロードに適している場合は、Basic 価格レベルの使用を検討してください。 Basic 価格レベルで作成されたサーバーは後で General Purpose またはメモリ最適化にスケーリングできないことに注意してください。 詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。
    > 
 
-    ![[価格レベル] ウィンドウ](./media/quickstart-create-database-portal/2-pricing-tier.png)
+    :::image type="content" source="./media/quickstart-create-database-portal/2-pricing-tier.png" alt-text="[価格レベル] ペイン":::
 
     > [!TIP]
-    > **自動拡張**が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
+    > **自動拡張** が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
 
 5. **[確認および作成]** を選択して、選択内容を確認します。 **[作成]** を選択して、サーバーをプロビジョニングします。 この操作には数分かかることがあります。
 
 6. ツール バーの **[通知]** アイコン (ベル) を選択して、デプロイ プロセスを監視します。 デプロイが完了したら、 **[ダッシュボードにピン留めする]** を選択できます。これにより、このサーバーのタイルが、サーバーの **[概要]** ページへのショートカットとして、Azure Portal ダッシュボードに作成されます。 **[リソースに移動]** を選択すると、サーバーの **[概要]** ページが開きます。
 
-    ![[通知] ウィンドウ](./media/quickstart-create-database-portal/3-notifications.png)
+    :::image type="content" source="./media/quickstart-create-database-portal/3-notifications.png" alt-text="[通知] ペイン":::
    
    既定では、**postgres** データベースがサーバーに作成されます。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) は既定のデータベースで、ユーザー、ユーティリティ、サード パーティ製のアプリケーションが使用するためのものです。 (その他の既定のデータベースは **azure_maintenance** です。 その機能は、管理されたサービス プロセスをユーザーのアクションから分離することです。 このデータベースにはアクセスできません。)
 
@@ -84,13 +84,13 @@ Azure Database for PostgreSQL サービスは、サーバーレベルでファ�
 
 1. デプロイが完了したら、左側のメニューの **[すべてのリソース]** をクリックし、サーバー名「**mydemoserver**」を入力して、ご利用の新しく作成したサーバーを検索します。 検索結果に示されたサーバー名をクリックします。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
 
-   ![Azure Database for PostgreSQL - サーバーの検索](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure Database for PostgreSQL - サーバーの検索":::
 
 2. サーバーのページで、 **[接続のセキュリティ]** を選択します。 
 
 3. **[規則名]** の下のテキスト ボックス内をクリックし、接続を許可する IP の範囲を指定する新しいファイアウォール規則を追加します。 IP 範囲を入力します。 **[保存]** をクリックします。
 
-   ![Azure Database for PostgreSQL - ファイアウォール規則の作成](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/5-firewall-2.png" alt-text="Azure Database for PostgreSQL - ファイアウォール規則の作成":::
 
 4. **[保存]** をクリックしてから **[X]** をクリックして、 **[接続のセキュリティ]** ページを閉じます。
 
@@ -104,13 +104,13 @@ Azure Database for PostgreSQL サーバーを作成したときに、既定の *
 
 1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したばかりのサーバーを検索します。
 
-   ![Azure Database for PostgreSQL - サーバーの検索](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure Database for PostgreSQL - サーバーの検索":::
 
 2. サーバー名 **[mydemoserver]** をクリックします。
 
 3. サーバーの **[概要]** ページを選択します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
 
-   ![Azure Database for PostgreSQL - サーバー管理者ログイン](./media/tutorial-design-database-using-azure-portal/6-server-name.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/6-server-name.png" alt-text="Azure Database for PostgreSQL - サーバー管理者ログイン":::
 
 
 ## <a name="connect-to-postgresql-database-using-psql"></a>psql を使用した PostgreSQL データベースへの接続
@@ -190,27 +190,32 @@ SELECT * FROM inventory;
 
 1. サーバーの Azure Database for PostgreSQL の **[概要]** ページで、ツール バーの **[復元]** をクリックします。 **[復元]** ページが開きます。
 
-   ![Azure portal - [復元] フォームのオプション](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png" alt-text="サーバーの Azure Database for PostgreSQL の **[概要]** ページのスクリーンショット。[復元] ボタンが強調表示されている。":::
 
 2. **[復元]** フォームに必要な情報を入力します。
 
-   ![Azure portal - [復元] フォームのオプション](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png" alt-text="Azure portal - [復元] フォームのオプション":::
 
    - **復元ポイント**:サーバーが変更される前の日時を選択します。
    - **対象サーバー**:復元先の新しいサーバー名を指定します。
    - **[場所]** :リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
    - **価格レベル**:サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
-3. **[OK]** をクリックして、テーブルが削除される前の[状態にサーバーを復元](./howto-restore-server-portal.md)します。 異なる時点にサーバーを復元すると、[価格レベル](./concepts-pricing-tiers.md)のリテンション期間内であれば、指定した時点の元サーバーと同じサーバー内に、新しいサーバーが複製されます。
+3. **[OK]** をクリックして、テーブルが削除される前の [状態にサーバーを復元](./howto-restore-server-portal.md)します。 異なる時点にサーバーを復元すると、[価格レベル](./concepts-pricing-tiers.md)のリテンション期間内であれば、指定した時点の元サーバーと同じサーバー内に、新しいサーバーが複製されます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの *[概要]* ページで、 *[削除]* ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の *[削除]* ボタンをクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Portal とその他のユーティリティを使用して、次のことを行う方法を説明しました。
 > [!div class="checklist"]
 > * Azure Database for PostgreSQL サーバーの作成
 > * サーバーのファイアウォールの構成
-> * [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティを使用したデータベースの作成
+> * **psql** ユーティリティを使用したデータベースの作成
 > * サンプル データを読み込む
 > * クエリ データ
 > * データの更新
 > * データの復元
 
-次は、Azure CLI を使って同様のタスクを行う方法について見てみましょう。[Azure CLI を使用して最初の Azure Database for PostgreSQL を設計する方法](tutorial-design-database-using-azure-cli.md)に関するチュートリアルを参照してください。
+> [!div class="nextstepaction"]
+>[Azure CLI を使用して最初の Azure Database for PostgreSQL を設計する](tutorial-design-database-using-azure-cli.md)

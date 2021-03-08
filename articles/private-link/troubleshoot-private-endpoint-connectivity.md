@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538536"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807554"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure プライベート エンドポイント接続に関する問題のトラブルシューティング
 
@@ -56,7 +56,7 @@ Azure プライベート エンドポイントは、プライベート リンク
     
        ![仮想ネットワークと DNS の構成](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-1. [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用して、データが流れているかどうか確認します。
+1. [Azure Monitor](../azure-monitor/overview.md) を使用して、データが流れているかどうか確認します。
 
     a. プライベート エンドポイント リソースで **[監視]** を選択します。
      - **[受信データ]** または **[送信データ]** を選択します。 
@@ -64,7 +64,7 @@ Azure プライベート エンドポイントは、プライベート リンク
     
        ![プライベート エンドポイント テレメトリの検証](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
-1.  Azure Network Watcher の **VM の接続のトラブルシューティング**を使用します。
+1.  Azure Network Watcher の **VM の接続のトラブルシューティング** を使用します。
 
     a. クライアント VM を選択します。
 
@@ -93,19 +93,35 @@ Azure プライベート エンドポイントは、プライベート リンク
        - プライベート DNS ゾーン レコードが存在することを確認します。 存在しなければ、作成してください。
      - カスタム DNS を使用する場合:
        - カスタム DNS 設定を確認し、DNS 構成が正しいことを検証します。
-       ガイダンスについては、[プライベート エンドポイントの概要: DNS の構成](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)に関する記事を参照してください。
+       ガイダンスについては、[プライベート エンドポイントの概要: DNS の構成](./private-endpoint-overview.md#dns-configuration)に関する記事を参照してください。
 
     b. ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルートが原因で接続が失敗する場合:
      - NSG アウトバウンド規則を確認し、トラフィックを許可するための適切なアウトバウンド規則を作成します。
     
        ![NSG アウトバウンド規則](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
+1. ソース仮想マシンでは、NIC の有効なルートで、プライベート エンドポイント IP のネクスト ホップへのルートが InterfaceEndpoints として設定されている必要があります。 
+
+    a. ソース VM のプライベート エンドポイント ルートを確認できない場合は、次の点を調べてください 
+     - ソース VM とプライベート エンドポイントが同じ VNET に属している。 「はい」の場合は、サポートに問い合わせる必要があります。 
+     - ソース VM とプライベート エンドポイントは異なる VNET に属している。この場合は、VNET 間の IP 接続を調べます。 IP 接続が確立していてもルートを確認できない場合は、サポートにお問い合わせください。 
+
 1. 接続の結果が正しいと確認された場合、接続の問題は、アプリケーション層でのシークレット、トークン、パスワードなどの他の側面に関連している可能性があります。
-   - この場合、プライベート エンドポイントに関連付けられているプライベート リンク リソースの構成を確認してください。 詳細については、[Azure Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)を参照してください。
+   - この場合、プライベート エンドポイントに関連付けられているプライベート リンク リソースの構成を確認してください。 詳細については、[Azure Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)を参照してください
+   
+1. 常に、サポート チケットを提出する前に絞り込むことをお勧めします。 
+
+    a. ソースがオンプレミスであり Azure のプライベート エンドポイントに接続し、問題が発生している場合は、次の接続を試してください 
+      - オンプレミスから仮想マシンへの接続。オンプレミスから Virtual Network への IP 接続が確立されているかどうかを調べます。 
+      - Virtual Network 内の仮想マシンからプライベート エンドポイントへの接続。
+      
+    b. ソースが Azure であり、プライベート エンドポイントが別の Virtual Network 内にある場合は、次の接続を試してください 
+      - 別のソースからプライベート エンドポイントへの接続。 このようにすることで、仮想マシン固有のすべての問題を切り離せます。 
+      - プライベート エンドポイントと同じ Virtual Network の一部である任意の仮想マシンへの接続。  
 
 1. 問題が解決されず、接続の問題が依然として存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 
- * [更新されたサブネットにプライベート エンドポイントを作成する (Azure portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
+ * [更新されたサブネットにプライベート エンドポイントを作成する (Azure portal)](./create-private-endpoint-portal.md)
  * [Azure Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)

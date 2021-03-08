@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 864b5e519875029149e93df248aa5953f62ec51e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206522"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322957"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine の既知の問題とトラブルシューティング
 
@@ -30,7 +30,7 @@ ms.locfileid: "78206522"
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Ubuntu DSVM でディスクの暗号化が失敗する
 
-Azure Disk Encryption (ADE) は、現在 Ubuntu DSVM ではサポートされていません。 回避策として、[Azure Managed Disks のサーバー側暗号化](../../virtual-machines/windows/disk-encryption.md)を構成することを検討してください。
+Azure Disk Encryption (ADE) は、現在 Ubuntu DSVM ではサポートされていません。 回避策として、[Azure Managed Disks のサーバー側暗号化](../../virtual-machines/disk-encryption.md)を構成することを検討してください。
 
 ## <a name="tool-appears-disabled"></a>ツールが無効に見える
 
@@ -46,4 +46,3 @@ Hyper-V が最初は Windows で正しく動作しないのは、想定されて
 最後の画面は、次のようになります。
 
    ![Hyper-V の有効化](./media/workaround/hyperv-enable-dsvm.png)
-

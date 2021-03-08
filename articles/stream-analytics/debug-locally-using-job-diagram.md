@@ -3,16 +3,15 @@ title: Visual Studio のジョブ ダイアグラムを使用して Azure Stream
 description: この記事では、Azure Stream Analytics Tools for Visual Studio のジョブ ダイアグラムを使用して、クエリをローカルでデバッグする方法について説明します。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045401"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019450"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする
 
@@ -87,7 +86,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
   
 #### <a name="output-sinks-live-output"></a>出力シンク (ライブ出力)
 
-![ジョブ ダイアグラムのローカル出力シンク](./media/debug-locally-using-job-diagram/live-output.png)
+![ローカルの出力シンクを示すジョブ ダイアグラム。](./media/debug-locally-using-job-diagram/live-output.png)
 
 |メトリック|説明|
 |-|-|
@@ -119,7 +118,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 * 認証モデルの制限により、Power BI と Azure Data Lake Storage Gen1 の出力シンクはサポートされていません。
 
-* クラウド入力オプションのみが[日時ポリシー](stream-analytics-out-of-order-and-late-events.md)をサポートしており、ローカル入力オプションではサポートされていません。
+* クラウド入力オプションのみが[日時ポリシー](./stream-analytics-time-handling.md)をサポートしており、ローカル入力オプションではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

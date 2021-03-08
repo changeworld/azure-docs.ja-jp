@@ -2,17 +2,17 @@
 title: 再分割を使用して Azure Stream Analytics ジョブを最適化する
 description: この記事では、パーティション再分割を使用して、並列化できない Azure Stream Analytics ジョブを最適化する方法について説明します。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75732384"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014197"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>パーティション再分割を使用して Azure Stream Analytics での処理を最適化する
 

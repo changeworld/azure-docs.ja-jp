@@ -3,24 +3,26 @@ title: Azure VM のサイズ - HPC | Microsoft Docs
 description: Azure のハイ パフォーマンス コンピューティング仮想マシンで使用できるさまざまなサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: hpc
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/01/2020
+ms.date: 12/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 8870c83506b1d962b94cd4d671bd3acd3e96c17c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 0ccd7a2ff1d4948858e62e224f1376379b4335ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905365"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669152"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
-Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC ワークロードに対するリーダー クラスのパフォーマンス、MPI スケーラビリティ、およびコスト効率を提供するように設計されています。
+Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC ワークロードに対して、リーダー クラスのパフォーマンス、スケーラビリティ、およびコスト効率が実現されるように設計されています。
 
-[HBv2 シリーズ](hbv2-series.md) VM は 200 Gb/秒の Mellanox HDR InfiniBand を、HB および HC シリーズ VM は、どちらも 100 Gb/秒の Mellanox EDR InfiniBand を備えています。 これらの VM の種類は、最適化された一貫性のある RDMA パフォーマンスを確保するために、ノンブロッキング ファット ツリー構造で接続されています。 HBv2 VM では、アダプティブ ルーティングと動的接続トランスポート (DCT、標準 RC トランスポートと UD トランスポートに加えて) をサポートしています。 これらの機能により、アプリケーションのパフォーマンス、スケーラビリティ、および整合性が向上するため、それらを使用することを強くお勧めします。
+[HBv2 シリーズ](hbv2-series.md) VM は、流体力学、有限要素解析、貯留層シミュレーションなどの、メモリ帯域幅に基づいたアプリケーション向けに最適化されています。 HBv2 VM は 120 個の AMD EPYC 7742 プロセッサ コア、CPU コアあたり 4 GB の RAM を備え、同時マルチスレッドはありません。 各 HBv2 VM では、最大 340 GB/秒のメモリ帯域幅が提供され、最大 4 テラフロップの FP64 コンピューティングが提供されます。
+
+HBv2 VM は 200 Gb/秒の Mellanox HDR InfiniBand を、HB および HC シリーズ VM は、どちらも 100 Gb/秒の Mellanox EDR InfiniBand を備えています。 これらの VM の種類は、最適化された一貫性のある RDMA パフォーマンスを確保するために、ノンブロッキング ファット ツリー構造で接続されています。 HBv2 VM では、アダプティブ ルーティングと動的接続トランスポート (DCT、標準 RC トランスポートと UD トランスポートに加えて) をサポートしています。 これらの機能により、アプリケーションのパフォーマンス、スケーラビリティ、および整合性が向上するため、それらを使用することを強くお勧めします。
 
 [HB シリーズ](hb-series.md) VM は、流体力学、陽解法有限要素解析、気象モデリングなどの、メモリ帯域幅に基づいたアプリケーション向けに最適化されています。 HB VM は 60 個の AMD EPYC 7551 プロセッサ コア、CPU コアあたり 4 GB の RAM を搭載し、ハイパースレッディングはありません。 AMD EPYC プラットフォームは、260 GB/秒を超えるメモリ帯域幅を提供します。
 
@@ -29,22 +31,26 @@ Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC �
 [H シリーズ](h-series.md) VM は、高い CPU 周波数またはコアあたり大容量メモリの要件に基づいたアプリケーション向けに最適化されています。 H シリーズ VM は 8 または 16 個の Intel Xeon E5 2667 v3 プロセッサ コア、CPU コアあたり 7 または 14 GB の RAM を搭載し、ハイパースレッディングはありません。 H シリーズは、一貫した RDMA パフォーマンスを得るために、非ブロッキングのファット ツリー構成内に 56 Gb/秒の Mellanox FDR InfiniBand を搭載しています。 H シリーズ VM は、Intel MPI 5.x と MS-MPI をサポートしています。
 
 > [!NOTE]
-> A8 - A11 VM は、2021 年 3 月で廃止される予定です。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。
+> HBv2、HB、および HC シリーズの VM はすべて、物理サーバーに排他的にアクセスできます。 物理サーバーごとに 1 つの VM のみが存在します。また、これらの VM サイズについては、他の VM との共有マルチテナントは存在しません。
+
+> [!NOTE]
+> [A8 – A11 VM](./sizes-previous-gen.md#a-series---compute-intensive-instances) は、2021 年 3 月に廃止される予定です。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。
 
 ## <a name="rdma-capable-instances"></a>RDMA 対応のインスタンス
 
-ほとんどの HPC VM サイズ (HBv2、HB、HC、H16r、H16mr、A8 および A9) には、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 'r' で指定された、選択された [N シリーズ](./nc-series.md) サイズ (ND40rs_v2、ND24rs、NC24rs_v3、NC24rs_v2、NC24r) も RDMA に対応します。 このインターフェイスは、標準の Azure ネットワーク インターフェイスに加えて、他の VM サイズでも利用可能です。
+ほとんどの HPC VM サイズ (HBv2、HB、HC、H16r、H16mr、A8 および A9) には、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 'r' で指定された、選択された [N シリーズ](./nc-series.md) サイズ (ND40rs_v2、ND24rs、NC24rs_v3、NC24rs_v2、NC24r) も RDMA に対応します。 このインターフェイスは、標準の Azure イーサネット ネットワーク インターフェイスに加えて、他の VM サイズでも利用可能です。
 
-このインターフェイスにより、RDMA 対応インスタンスは InfiniBand (IB) ネットワークを介して通信することができ、HBv2 では HDR のレートで、HB、HC、NDv2 では EDR のレートで、H16r、H16mr、および RDMA 対応 N シリーズの他の仮想マシンでは FDR のレートで、A8 と A9 の VM では QDR のレートで動作します。 これらの RDMA 機能により、特定の Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。 速度の詳細については、このページの表の詳細情報を参照してください。
+このインターフェイスにより、RDMA 対応インスタンスは InfiniBand (IB) ネットワークを介して通信することができ、HBv2 では HDR のレートで、HB、HC、NDv2 では EDR のレートで、H16r、H16mr、および RDMA 対応 N シリーズの他の仮想マシンでは FDR のレートで、A8 と A9 の VM では QDR のレートで動作します。 これらの RDMA 機能により、特定の Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。
 
 > [!NOTE]
-> Azure HPC では、InfiniBand に対して SR-IOV 対応であるかどうかに応じて、2 つのクラスの VM があります。 現在のところ、InfiniBand の SR-IOV 対応の VM は、HBv2、HB、HC、NCv3、および NDv2。 現在、残りの InfiniBand 対応 VM は SR-IOV 対応ではありません。
-> RDMA over IB は、RDMA 対応のすべての VM でサポートされています。
+> Azure HPC では、InfiniBand に対して SR-IOV 対応であるかどうかに応じて、2 つのクラスの VM があります。 現時点では、Azure の新しい世代、RDMA 対応、または InfiniBand 対応の VM は、H16r、H16mr、NC24r、A8、A9 を除き、ほぼすべてが SR-IOV 対応です。
+> RDMA は、InfiniBand (IB) ネットワーク経由でのみ有効で、RDMA 対応のすべての VM でサポートされています。
 > IP over IB は、SR-IOV 対応の VM のみでサポートされています。
+> RDMA は、イーサネット ネットワーク経由では有効になっていません。
 
 - **オペレーティング システム** - Linux は HPC VM で適切にサポートされており、CentOS、RHEL、Ubuntu、SUSE などのディストリビューションが一般的に使用されています。 Windows のサポートに関しては、すべての HPC シリーズ VM で Windows Server 2016 およびそれ以降のバージョンがサポートされています。 また、Windows Server 2012 R2、Windows Server 2012 は、SR-IOV に対応していない VM (H16r、H16mr、A8、および A9) でもサポートされています。 [Windows Server 2012 R2 は、HBv2 および 64 個を超える (仮想または物理) コアを持つその他の VM ではサポートされていない](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)ことに注意してください。 Marketplace でサポートされている VM イメージの一覧と、それらを適切に構成する方法については、「[VM イメージ](./workloads/hpc/configure.md)」を参照してください。
 
-- **InfiniBand および RDMA ドライバー** - InfiniBand が有効になっている VM では、RDMA を有効にするための適切なドライバーが必要です。 Linux では、SR-IOV 対応と SR-IOV 非対応のどちらの VM についても、Marketplace の CentOS-HPC VM イメージは、適切なドライバーを使用して事前構成されています。 Ubuntu VM イメージは、[こちら](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)の手順に従って、適切なドライバーを使用して構成できます。 すぐに使用できる VM Linux OS イメージの詳細については、[Linux OS 用の VM の構成と最適化](./workloads/hpc/configure.md)に関するページを参照してください。
+- **InfiniBand とドライバー** - InfiniBand が有効になっている VM では、RDMA を有効にするための適切なドライバーが必要です。 Linux では、SR-IOV 対応と SR-IOV 非対応のどちらの VM についても、Marketplace の CentOS-HPC VM イメージは、適切なドライバーを使用して事前構成されています。 Ubuntu VM イメージは、[こちら](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)の手順に従って、適切なドライバーを使用して構成できます。 すぐに使用できる VM Linux OS イメージの詳細については、[Linux OS 用の VM の構成と最適化](./workloads/hpc/configure.md)に関するページを参照してください。
 
    Linux の場合、SR-IOV が有効になっている H シリーズと N シリーズの VM で、[InfiniBandDriverLinux VM 拡張機能](./extensions/hpc-compute-infiniband-linux.md) を使用して、Mellanox OFED ドライバーをインストールし、InfiniBand を有効にすることができます。 RDMA 対応 VM で InfiniBand を有効にする方法の詳細については、[HPC ワークロード](./workloads/hpc/enable-infiniband.md)に関するページを参照してください。
 
@@ -52,7 +58,7 @@ Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC �
 
    VM に VM 拡張機能を追加するには、[Azure PowerShell](/powershell/azure/) コマンドレットを使用できます。 詳しくは、[仮想マシン拡張機能とその機能](./extensions/overview.md)に関する記事をご覧ください。 [クラシック デプロイ モデル](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)にデプロイされている VM にも拡張機能を使用できます。
 
-- **MPI** - Azure の SR-IOV 対応 VM サイズ (HBv2、HB、HC、NCv3、NDv2) では、ほぼすべてのフレーバーの MPI を Mellanox OFED と一緒に使用できます。 SR-IOV に対応していない VM の場合、サポートされている MPI 実装では、VM 間の通信に Microsoft Network Direct (ND) インターフェイスが使用されます。 そのため、Microsoft MPI (MS MPI) 2012 R2 以降と Intel MPI 5.x バージョンのみがサポートされています。 Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure RDMA ドライバーと互換性がある場合とない場合があります。 Azure 上の HPC VM での MPI の設定の詳細については、[HPC 用の MPI のセットアップ](./workloads/hpc/setup-mpi.md)に関するページを参照してください。
+- **MPI** - Azure の SR-IOV 対応 VM サイズでは、ほぼすべてのフレーバーの MPI を Mellanox OFED と一緒に使用できます。 SR-IOV に対応していない VM の場合、サポートされている MPI 実装では、VM 間の通信に Microsoft Network Direct (ND) インターフェイスが使用されます。 そのため、Microsoft MPI (MS MPI) 2012 R2 以降と Intel MPI 5.x バージョンのみがサポートされています。 Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure RDMA ドライバーと互換性がある場合とない場合があります。 Azure 上の HPC VM での MPI の設定の詳細については、[HPC 用の MPI のセットアップ](./workloads/hpc/setup-mpi.md)に関するページを参照してください。
 
 - **RDMA ネットワーク アドレス空間** - Azure の RDMA ネットワークでは、アドレス空間 172.16.0.0/16 は予約済みです。 Azure 仮想ネットワークにデプロイ済みのインスタンスで MPI アプリケーションを実行する場合、仮想ネットワークのアドレス空間が RDMA ネットワークと重複しないようにしてください。
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: 30eaa9b9f8700877607af047e5e64eca65471545
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: dc89631208c6a72c4b48d49260f584149d6c4260
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759599"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679937"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure Storage Explorer のサポート ライフサイクルとポリシー
 
@@ -23,7 +23,7 @@ ms.locfileid: "87759599"
 
 Azure Storage Explorer は、1 年に 4 ～ 6 回リリースされます。 また、このスケジュールと関係なく、重大な問題の修正プログラムがリリースされる場合もあります。
 
-Storage Explorer によって更新プログラムが 1 時間ごとにチェックされ、利用可能になるとダウンロードされます。 ただし、インストール処理を開始するには、ユーザーの同意が必要となります。 ユーザーが別の時刻に更新するように選択した場合は、更新プログラムを手動で確認できます。 Windows および Linux では、ユーザーは **[ヘルプ]** メニューから **[更新プログラムのチェック]** を選択して、更新プログラムを確認できます。 macOS では、**アプリ メニュー**に **[Check for Updates]** があります。 ユーザーは、[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のダウンロード ページに直接アクセスして、最新のリリースをダウンロードしてインストールすることもできます。
+Storage Explorer によって更新プログラムが 1 時間ごとにチェックされ、利用可能になるとダウンロードされます。 ただし、インストール処理を開始するには、ユーザーの同意が必要となります。 ユーザーが別の時刻に更新するように選択した場合は、更新プログラムを手動で確認できます。 Windows および Linux では、ユーザーは **[ヘルプ]** メニューから **[更新プログラムのチェック]** を選択して、更新プログラムを確認できます。 macOS では、**アプリ メニュー** に **[Check for Updates]** があります。 ユーザーは、[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のダウンロード ページに直接アクセスして、最新のリリースをダウンロードしてインストールすることもできます。
 
 常に最新バージョンの Storage Explorer を使用することを強くお勧めします。 最新バージョンの Storage Explorer に更新できない問題が発生した場合は、[GitHub](https://github.com/microsoft/AzureStorageExplorer) に問題を報告してください。
 
@@ -41,6 +41,10 @@ Storage Explorer は、[モダン ライフサイクル ポリシー](https://su
 
 | Storage Explorer のバージョン  | リリース日       | サポート終了日 |
 |:-------------------------:|:------------------:|:-------------------:|
+| v1.17.0                   | 2020 年 12 月 15 日  | 2021 年 12 月 15 日   |
+| v1.16.0                   | 2020 年 11 月 10 日  | 2021 年 11 月 10 日   |
+| v1.15.1                   | 2020 年 9 月 2 日  | 2021 年 9 月 2 日   |
+| v1.15.0                   | 2020 年 8 月 27 日    | 2021 年 8 月 27 日     |
 | v1.14.2                   | 2020 年 7 月 16 日      | 2021 年 7 月 16 日       |
 | v1.14.1                   | 2020 年 7 月 14 日      | 2021 年 7 月 14 日       |
 | v1.14.0                   | 2020 年 6 月 24 日      | 2021 年 7 月 14 日       |

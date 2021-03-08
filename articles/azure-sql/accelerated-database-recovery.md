@@ -7,21 +7,30 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=4
 ms.devlang: ''
 ms.topic: conceptual
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: carlrab
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd1b33b2f6b1b0e0bf94639b3991b6507a89f5a9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344698"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400796"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL の高速データベース復旧パターン 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**高速データベース復旧 (ADR)** は、SQL Server データベース エンジンの復旧プロセスを再設計することで、特に実行時間の長いトランザクションがある場合にはデータベースの可用性を大幅に向上させる、SQL Server データベース エンジンの機能です。 ADR は、現時点では Azure SQL Database、Azure SQL Managed Instance、Azure VM 上の SQL Server、おおび Azure Synapse Analytics のデータベース (現在はプレビュー段階) で使用できます。 ADR の主な利点:
+**高速データベース復旧 (ADR)** は、SQL Server データベース エンジンの復旧プロセスを再設計することで、特に実行時間の長いトランザクションがある場合にはデータベースの可用性を大幅に向上させる、SQL Server データベース エンジンの機能です。 
+
+ADR は、現時点では、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics のデータベース、および SQL Server 2019 以降の Azure VM の SQL Server で使用できます。 
+
+> [!NOTE] 
+> Azure SQL Database と Azure SQL Managed Instance では、ADR が既定で有効になっており、いずれかの製品での ADR の無効化はサポートされていません。 
+
+## <a name="overview"></a>概要
+
+ADR の主な利点:
 
 - **高速かつ一貫性のあるデータベース復旧**
 
@@ -76,7 +85,7 @@ ADR 復旧プロセスには、現行の復旧プロセスと同じく 3 つの�
 
   プロセスは以前と同じままで、sLog を再構築し、バージョン管理されない操作のログ レコードがコピーされるという処理が追加されています。
   
-- **再実行**フェーズ
+- **再実行** フェーズ
 
   2 つのフェーズ (P) に分けられます
   - フェーズ 1

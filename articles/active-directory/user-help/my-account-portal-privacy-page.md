@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 5104783aff5684471819ecf04e965670fff2798b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5d17c6cb038bf5550f76a8aef7ac2d41244cfda1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798144"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096567"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>組織でのプライバシー関連データの使用方法を表示します。
 
 **マイ アカウント** ポータルの **[Settings & Privacy] (設定とプライバシー)** ページでは、所属する組織で自分のデータがどのように使用されているかを確認できます。
 
+>[!Note]
+> 個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-your-privacy-related-info"></a>プライバシー関連情報を表示する
 
-1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。 個人用 Microsoft アカウントでサインインしている場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 2. 左側のナビゲーション ウィンドウから **[Settings & Privacy] (設定とプライバシー)** を選択するか、 **[Settings & Privacy] (設定とプライバシー)** ブロックから **[View Settings and Privacy] (設定とプライバシーの表示)** リンクを選択します。
 

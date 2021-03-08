@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の ATN2
 description: Azure Cosmos DB の ATN2 SQL システム関数から y/x のアーク タンジェントの主値 (ラジアンで表される) が返される方法について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 696e14e75998ead04c99fab2b84fc4c742d5f54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6db42713ec6f0eac64e0f1123825c21a4206fa99
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302663"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341945"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  ラジアン単位で表される y/x のアーク タンジェントの主値を返します。  
   
 ## <a name="syntax"></a>構文

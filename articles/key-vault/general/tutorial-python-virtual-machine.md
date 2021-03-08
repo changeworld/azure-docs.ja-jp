@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Python で仮想マシンを使用して Azure Key Vault を使用する | Microsoft Docs
-description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように ASP.NET Core アプリケーションを構成します。
+description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように仮想マシン Python アプリケーションを構成します。
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c0f98f8c77e4a9cd4271511e0169f07da1c52baa
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: mvc, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875951"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203540"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>チュートリアル:Python で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -81,7 +81,7 @@ az vm create \
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
 
-Azure CLI の [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) コマンドを使用して、仮想マシンに対するシステム割り当ての ID を作成します。
+Azure CLI の [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) コマンドを使用して、仮想マシンに対するシステム割り当ての ID を作成します。
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"
@@ -166,4 +166,4 @@ az group delete -g myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+[Azure Key Vault REST API](/rest/api/keyvault/)

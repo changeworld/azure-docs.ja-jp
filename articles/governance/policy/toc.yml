@@ -17,6 +17,12 @@
     - name: ポリシーの割り当て - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: ポリシーの割り当て - .NET
+      displayName: 'assign, compliance'
+      href: ./assign-policy-dotnet.md
+    - name: ポリシーの割り当て - JavaScript
+      displayName: 'assign, compliance'
+      href: ./assign-policy-javascript.md
     - name: ポリシーの割り当て - Python
       displayName: 'assign, compliance'
       href: ./assign-policy-python.md
@@ -26,6 +32,9 @@
     - name: ポリシーの割り当て - ARM テンプレート
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: ポリシーの割り当て - Terraform
+      displayName: 'assign, compliance, hcl, provider'
+      href: ./assign-policy-terraform.md
 - name: チュートリアル
   items:
     - name: Azure Policy の作成と管理
@@ -37,6 +46,12 @@
     - name: タグ ガバナンスを管理する
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: GitHub を使用してコードとしての Azure Policy を実装する
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./tutorials/policy-as-code-github.md
+    - name: '次のことを学びます:Azure Policy を使用してリソースを制御および監査する'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
 - name: サンプル
   items:
     - name: インデックス
@@ -70,10 +85,18 @@
       items:
         - name: Azure セキュリティ ベンチマーク
           href: ./samples/azure-security-benchmark.md
+        - name: Azure セキュリティ ベンチマーク v1
+          href: ./samples/azure-security-benchmarkv1.md
         - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
           href: ./samples/cis-azure-1-1-0.md
+        - name: CMMC レベル 3
+          href: ./samples/cmmc-l3.md
         - name: HIPAA HITRUST 9.2
           href: ./samples/hipaa-hitrust-9-2.md
+        - name: 'ISO 27001:2013'
+          href: ./samples/iso-27001.md
+        - name: ニュージーランドの ISM
+          href: ./samples/new-zealand-ism.md
         - name: NIST SP 800-53 R4
           href: ./samples/nist-sp-800-53-r4.md
         - name: NIST SP 800-171 R2
@@ -86,12 +109,18 @@
     - name: 効果を理解する
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: スコープ
+      displayName: 'location, notScope, exemption, waiver, save'
+      href: ./concepts/scope.md
     - name: イニシアチブ構造
       displayName: 'parameters, groups, domains, policies'
       href: ./concepts/initiative-definition-structure.md
     - name: 割り当ての構造
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: 除外の構造
+      displayName: 'waiver, mitigated, compliance'
+      href: ./concepts/exemption-structure.md
     - name: 新しいポリシーの影響の評価
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
@@ -101,17 +130,17 @@
     - name: 規制コンプライアンス
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
-    - name: コードとしてのポリシー ワークフローの設計
+    - name: コードとしての Azure Policy ワークフローを設計する
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Kubernetes の統合
       items:
-        - name: Kubernetes 用の Azure Policy (プレビュー)
+        - name: Kubernetes 用の Azure Policy
           displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
           href: ./concepts/policy-for-kubernetes.md
-        - name: Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
+        - name: Azure Policy を使用した AKS のセキュリティ保護
           displayName: 'aks, psp, rego, opa'
-          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../aks/use-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: ゲスト構成を使用した VM の監査
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
@@ -130,6 +159,9 @@
     - name: 配列プロパティのポリシーの作成
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: Azure Policy リソースをエクスポートする
+      displayName: 'github, json, definition'
+      href: ./how-to/export-resources.md
     - name: ゲスト構成
       items:
         - name: Windows でのゲスト構成ポリシーの作成
@@ -170,7 +202,15 @@
           href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: Azure Monitor for VMs の有効化 (プレビュー)
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
+          href: ../../azure-monitor/vm/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
+    - name: Azure Storage の統合
+      items:
+        - name: Azure Policy を使用した TLS の監査
+          href: ../../storage/common/transport-layer-security-configure-minimum-version.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json#use-azure-policy-to-enforce-the-minimum-tls-version
+    - name: Azure Web Application Firewall の統合
+      items:
+        - name: WAF と Azure Policy の統合
+          href: ../../web-application-firewall/shared/waf-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: トラブルシューティング
   items:
     - name: 一般的な問題
@@ -184,9 +224,9 @@
     - name: Azure PowerShell
       items:
         - name: ポリシー
-          href: /powershell/module/az.resources/#policies
+          href: /powershell/module/az.resources#policy
         - name: ポリシーの分析情報
-          href: /powershell/module/az.policyinsights#policy_insights
+          href: /powershell/module/az.policyinsights
         - name: ゲスト構成
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
     - name: Azure SDK for .NET
@@ -225,6 +265,8 @@
           href: /rest/api/resources/policyassignments
         - name: ポリシーの定義
           href: /rest/api/resources/policydefinitions
+        - name: ポリシーの除外
+          href: /rest/api/resources/policyexemptions
         - name: イニシアティブの定義
           href: /rest/api/resources/policysetdefinitions
         - name: ポリシー追跡対象リソース
@@ -241,6 +283,16 @@
           href: /azure/templates/microsoft.authorization/policydefinitions
         - name: イニシアティブの定義
           href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Terraform のリソース
+      items:
+        - name: 割り当て
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_assignment.html'
+        - name: 定義
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_definition.html'
+        - name: イニシアチブ (定義の設定)
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_set_definition.html'
+        - name: Remediation
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_remediation.html'
 - name: リソース
   items:
     - name: GitHub - Azure Policy サンプル
@@ -257,6 +309,8 @@
           href: 'https://www.azadvertizer.net/'
         - name: Azure のガバナンス ビジュアライザー
           href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+        - name: Azure Monitor 用の Azure Policy スクリプト
+          href: 'https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts'
     - name: フィードバックとサポート
       items:
         - name: Azure Policy 用の Microsoft Q&A
@@ -269,18 +323,6 @@
       items:
         - name: ガバナンスに関する YouTube チャンネル
           href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-        - name: 動画 - Ignite 2019
-          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
-        - name: ゲスト構成のビデオ
-          items:
-            - name: 作業の開始
-              href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
-            - name: イニシアチブについて
-              href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
-            - name: ポリシーの割り当て
-              href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
-            - name: 修復タスク
-              href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール

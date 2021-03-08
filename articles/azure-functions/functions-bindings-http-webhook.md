@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5236a3be9f8908d886274764dfc0c0da5b3565bc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462107"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104480"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Functions の HTTP トリガーとバインドの概要
 
@@ -38,7 +38,7 @@ Azure Functions は、HTTP 要求から呼び出して、サーバーレス API 
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http
-[拡張機能の更新]: ./install-update-binding-extensions-manual.md
+[拡張機能の更新]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x

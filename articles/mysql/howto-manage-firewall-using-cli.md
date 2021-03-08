@@ -1,19 +1,19 @@
 ---
 title: ファイアウォール規則の管理 - Azure CLI - Azure Database for MySQL
 description: この記事では、Azure CLI コマンド ラインを使って Azure Database for MySQL ファイアウォール規則を作成し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eaddd8b2979b30251301ad041ea4b872c23d680b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503057"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541336"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MySQL ファイアウォールの概要については、「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -21,7 +21,7 @@ ms.locfileid: "87503057"
 仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティで保護することもできます。 [Azure CLI を使用した仮想ネットワーク サービス エンドポイントと規則の作成と管理](howto-manage-vnet-using-cli.md)の詳細を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
-* [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* [Azure CLI のインストール](/cli/azure/install-azure-cli)。
 * [Azure Database for MySQL サーバーとデータベース](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 ## <a name="firewall-rule-commands"></a>ファイアウォール規則のコマンド:

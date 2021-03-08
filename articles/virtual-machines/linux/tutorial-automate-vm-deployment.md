@@ -5,21 +5,18 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: f1d439569f15d7680d54b35e7ec1c52ca7843af7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: ebff49db895468549a7abd420e7b74292b742eab
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828967"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108638"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>チュートリアル - Azure での Linux 仮想マシンの初回の起動時に cloud-init を使用してカスタマイズする方法
 
@@ -39,17 +36,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
-Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 次の表は、Azure プラットフォーム イメージでの最新の cloud-init の可用性の概要を示しています。
-
-| Publisher | プラン | SKU | Version | cloud-init 対応 |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |latest |はい | 
-|Canonical |UbuntuServer |16.04 LTS |latest |はい | 
-|Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
-|CoreOS |CoreOS |Stable |latest |はい |
-|OpenLogic 7.6 |CentOS |7-CI |latest |preview |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい |
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 ディストリビューションごとの cloud-init のサポートに関する詳しい情報については、[Azure での VM に対する cloud-init のサポート](using-cloud-init.md)に関する記事を参照してください。
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init 構成ファイルを作成する
@@ -147,7 +134,7 @@ Azure Key Vault では、証明書やパスワードなどの暗号化キーと�
 - VM を作成して証明書を挿入する
 
 ### <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
-最初に、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用して Key Vault を作成し、VM をデプロイするときに使用できるようにします。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の *mykeyvault* は一意の Key Vault 名で置き換えてください。
+最初に、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用して Key Vault を作成し、VM をデプロイするときに使用できるようにします。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の `mykeyvault` は一意の Key Vault 名で置き換えてください。
 
 ```azurecli-interactive
 keyvault_name=mykeyvault

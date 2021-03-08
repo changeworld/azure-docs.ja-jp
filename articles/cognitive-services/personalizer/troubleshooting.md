@@ -1,14 +1,16 @@
 ---
 title: トラブルシューティング - Personalizer
 description: この記事では、Personalizer についてよく寄せられる質問とその回答を示します。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: troubleshooting
 ms.date: 02/26/2020
-ms.openlocfilehash: 55b9068dbd7bfbb3ea3972c3381fda6d9cde5076
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b5f7ed1f2ded8f6ec0320d417b59bab016d75028
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126110"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777277"
 ---
 # <a name="personalizer-troubleshooting"></a>Personalizer のトラブルシューティング
 

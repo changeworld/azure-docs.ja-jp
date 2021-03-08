@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6d7a895f3b565fdd4ec4659045034d0200355a60
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2cf1872bcdd7b1bda74046198f5fc32be1069913
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021869"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594503"
 ---
 # <a name="rendering-modes"></a>レンダリング モード
 
@@ -31,7 +31,7 @@ MSAA はすべての GPU に対してジオメトリの完全なセットで動�
 
 ![TileBasedComposition の MSAA](./media/service-render-mode-quality.png)
 
-さらに、このモードでは、各パーツを透明な素材に切り替えたり、[HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md) を介して**透過**モードに切り替えたりすることができます。
+さらに、このモードでは、各パーツを透明な素材に切り替えたり、[HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md) を介して **透過** モードに切り替えたりすることができます。
 
 ### <a name="depthbasedcomposition-mode"></a>'DepthBasedComposition' モード
 
@@ -43,7 +43,7 @@ MSAA アーティファクトを次の図に示します。![DepthBasedCompositi
 
 両方のパーツが同じ GPU 上でレンダリングされるため、彫刻とカーテンの間でアンチエイリアシングが適切に機能します。 一方、カーテンと壁の間のエッジでは、これら 2 つのパーツが異なる GPU から合成されているため、いくつかのエイリアスが表示されます。
 
-このモードの最大の制限として、ジオメトリ パーツを透明な素材に動的に切り替えることも、[HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md) に対して**透過**モードの動作を行うこともできません。 ただし、その他の状態のオーバーライド機能 (アウトライン、色の濃淡など) は機能します。 また、変換時に透過的とマークされた素材は、このモードで正常に機能します。
+このモードの最大の制限として、ジオメトリ パーツを透明な素材に動的に切り替えることも、[HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md) に対して **透過** モードの動作を行うこともできません。 ただし、その他の状態のオーバーライド機能 (アウトライン、色の濃淡など) は機能します。 また、変換時に透過的とマークされた素材は、このモードで正常に機能します。
 
 ### <a name="performance"></a>パフォーマンス
 
@@ -51,26 +51,33 @@ MSAA アーティファクトを次の図に示します。![DepthBasedCompositi
 
 ## <a name="setting-the-render-mode"></a>レンダリング モードの設定
 
-Remote Rendering サーバーで使用されるレンダリング モードは、`AzureSession.ConnectToRuntime` の間に `ConnectToRuntimeParams` を介して指定されます。
+Remote Rendering サーバーで使用されるレンダリング モードは、`RenderingSession.ConnectAsync` の間に `RendererInitOptions` を介して指定されます。
 
 ```cs
-async void ExampleConnect(AzureSession session)
+async void ExampleConnect(RenderingSession session)
 {
-    ConnectToRuntimeParams parameters = new ConnectToRuntimeParams();
+    RendererInitOptions parameters = new RendererInitOptions();
 
     // Connect with one rendering mode
-    parameters.mode = ServiceRenderMode.TileBasedComposition;
-    await session.ConnectToRuntime(parameters).AsTask();
+    parameters.RenderMode = ServiceRenderMode.TileBasedComposition;
+    await session.ConnectAsync(parameters);
 
-    session.DisconnectFromRuntime();
+    session.Disconnect();
 
     // Wait until session.IsConnected == false
 
     // Reconnect with a different rendering mode
-    parameters.mode = ServiceRenderMode.DepthBasedComposition;
-    await session.ConnectToRuntime(parameters).AsTask();
+    parameters.RenderMode = ServiceRenderMode.DepthBasedComposition;
+    await session.ConnectAsync(parameters);
 }
 ```
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# RenderingSession.ConnectAsync()](/dotnet/api/microsoft.azure.remoterendering.renderingsession.connectasync)
+* [C# RendererInitOptions 構造体](/dotnet/api/microsoft.azure.remoterendering.rendererinitoptions)
+* [C++ RenderingSession::ConnectToConnectAsyncRuntime()](/cpp/api/remote-rendering/renderingsession#connectasync)
+* [C++ RendererInitOptions 構造体](/cpp/api/remote-rendering/rendererinitoptions)
 
 ## <a name="next-steps"></a>次のステップ
 

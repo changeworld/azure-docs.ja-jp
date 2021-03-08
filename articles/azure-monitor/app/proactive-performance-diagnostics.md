@@ -4,12 +4,12 @@ description: Application Insights は、アプリのテレメトリの高度な�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a055a323001e0291d3cb5c1716e640b3c8b21dbf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321311"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573735"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -70,12 +70,12 @@ Application Insights は、アプリケーションのパフォーマンスの�
 * *独自の異常検出ルールを作成できますか。または既存のルールをカスタマイズできますか。*
 
   * 現時点ではできません。ただし、次のことができます。
-    * メトリックがしきい値を超えたときに通知する[アラートを設定](../platform/alerts-log.md)する。
+    * メトリックがしきい値を超えたときに通知する[アラートを設定](../alerts/alerts-log.md)する。
     * 自分で分析できるように、[データベース](./code-sample-export-sql-stream-analytics.md)または [Power BI](./export-power-bi.md) に[テレメトリをエクスポート](./export-telemetry.md)する。
 * *どのくらいの頻度で分析は実行されますか。*
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。
-* *これにより、[メトリック アラート](../platform/alerts-log.md)が置き換えられるのですか。*
+* *これにより、[メトリック アラート](../alerts/alerts-log.md)が置き換えられるのですか。*
   * いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
 
 
@@ -99,7 +99,7 @@ Web サイト ユーザーにとって最大の不満の 1 つは、自らの経
 
 ブラウザーのメトリック ブレードを開きます。 ブラウザーのページ読み込み時間のセグメント表示で、どこで時間がかかっているかがわかります。 
 
-* **[要求送信時間]** の値が大きい場合は、サーバーの応答に時間がかかっているか、または要求が大量のデータを伴う POST 要求です。 応答時間を調べるには、 [パフォーマンス メトリック](./web-monitor-performance.md#metrics) を確認します。
+* **[要求送信時間]** の値が大きい場合は、サーバーの応答に時間がかかっているか、または要求が大量のデータを伴う POST 要求です。 応答時間を調べるには、 [パフォーマンス メトリック](./performance-counters.md) を確認します。
 * [依存関係の追跡](./asp-net-dependencies.md) をセットアップして、パフォーマンス低下の原因が外部のサービスによるものか、内部のデータベースによるものかを確認します。
 * **[受信応答時間]** が大部分を占めている場合は、ページと、JavaScript、CSS、イメージなどのページの依存部分 (ただし、非同期で読み込まれるデータではない) が長くなっています。 [可用性テスト](./monitor-web-app-availability.md)をセットアップし、依存部分を読み込むオプションを必ず設定します。 いくつかの結果を取得したら、結果の詳細を開き展開して、各種ファイルの読み込み時間を表示します。
 * **[クライアントの処理時間]** の値が大きい場合は、スクリプトの実行に時間がかかっています。 理由が明らかでない場合は、何らかのタイミング コードを追加することを検討し、trackMetric 呼び出しで時間を送信してください。
@@ -175,11 +175,10 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 * [Profiler](profiler.md) 
 * [スナップショット デバッガー](./snapshot-debugger.md)
-* [Analytics](../log-query/get-started-portal.md)
-* [Analytics Smart Diagnostics](../log-query/log-query-overview.md)
+* [Analytics](../logs/log-analytics-tutorial.md)
+* [Analytics Smart Diagnostics](../logs/log-query-overview.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
-* [手動で構成するメトリックのアラート](../platform/alerts-log.md)
+* [手動で構成するメトリックのアラート](../alerts/alerts-log.md)
 * [可用性 Web テスト](./monitor-web-app-availability.md)
-

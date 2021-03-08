@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 021680a81cc5f97bb92c3a9e14036e1a88dae278
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 08966549d2c4d2bf701ee0dbfc5ed24f202396fc
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279510"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891378"
 ---
 # <a name="core-io-operations"></a>コア IO 操作
 
@@ -131,19 +131,14 @@ var xmlString = writer.toString();
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
-> [!div class="nextstepaction"]
-> [CsvReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
+[CsvReader](/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
 
-> [!div class="nextstepaction"]
-> [CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
+[CsvWriter](/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
 
-> [!div class="nextstepaction"]
-> [SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
+[SimpleXmlReader](/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
 
-> [!div class="nextstepaction"]
-> [SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
+[SimpleXmlWriter](/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
 
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 
-> [!div class="nextstepaction"]
-> [サポートされるデータ形式の詳細](spatial-io-supported-data-format-details.md)
+[サポートされるデータ形式の詳細](spatial-io-supported-data-format-details.md)

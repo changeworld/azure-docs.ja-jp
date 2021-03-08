@@ -1,32 +1,30 @@
 ---
 title: インスツルメント化されたクエリにラベルを使用する
-description: ソリューション開発のために Synapse SQL プールでラベルを使用してクエリをインストルメント化するためのヒント。
+description: Azure Synapse Analytics の専用 SQL プールでのラベルを使用したクエリのインストルメント化に関するヒント。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d4459547300f5dfc7b7c22d1e531b928a13aa66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 7958caf71658dcdcbf31bac84697931e9049452f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213433"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462749"
 ---
-# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Synapse SQL プールでのラベルを使用したクエリのインストルメント化
+# <a name="using-labels-to-instrument-queries-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでラベルを使用してクエリをインストルメント化します
 
-この記事に含まれているのは、SQL プールでラベルを使用してクエリをインストルメント化するソリューションを開発するためのヒントです。
-
-ソリューション開発のための Azure SQL Data Warehouse でのラベルを使用してクエリのインストルメント化に関するヒント。
+この記事に含まれているのは、専用 SQL プールでラベルを使用してクエリをインストルメント化するソリューションを開発するためのヒントです。
 
 ## <a name="what-are-labels"></a>ラベルとは?
 
-SQL プールでは、クエリ ラベルと呼ばれる概念がサポートされています。 難解な領域に入る前に、1 つの例を説明しましょう。
+専用 SQL プールでは、クエリ ラベルと呼ばれる概念がサポートされています。 難解な領域に入る前に、1 つの例を説明しましょう。
 
 ```sql
 SELECT *

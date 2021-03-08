@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - vSphere クライアントへのアクセス
 description: プライベート クラウドの vCenter にアクセスする方法について説明します。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/30/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e62042a84f7ac2615762e3d9b036e4340bd8c73
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022666"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899118"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>プライベート クラウドの vCenter ポータルへのアクセス
 

@@ -1,20 +1,25 @@
 ---
-title: デプロイされた Web サービスを更新する
-author: gvashishtha
+title: " Web サービスを更新する"
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning に既にデプロイされている Web サービスを更新する方法について説明します。 モデル、環境、入力スクリプトなどの設定を更新できます。
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.reviewer: larryfr
 ms.author: gopalv
-ms.openlocfilehash: 0c2811b6bed3d02a9689f3b9e49a4c3888dff6c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+author: gvashishtha
+ms.date: 07/31/2020
+ms.custom: deploy
+ms.openlocfilehash: f955ee3f8bc150982c19107271fe7e7bdb1368cb
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935570"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824561"
 ---
 # <a name="update-a-deployed-web-service"></a>デプロイされた Web サービスを更新する
 
-この記事では、Azure Machine Learning と共にデプロイされた Web サービスをデプロイする方法を示します。
+この記事では、Azure Machine Learning と共にデプロイされた Web サービスを更新する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -22,11 +27,11 @@ ms.locfileid: "88935570"
 
 ## <a name="update-web-service"></a>Web サービスを更新する
 
-Web サービスを更新するには、`update` メソッドを使用します。 推論の構成で指定できる新しいモデル、新しいエントリ スクリプト、または新しい依存関係を使用するように Web サービスを更新することができます。 詳細については、[Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-) のドキュメントを参照してください。
+Web サービスを更新するには、`update` メソッドを使用します。 推論の構成で指定できる新しいモデル、新しいエントリ スクリプト、または新しい依存関係を使用するように Web サービスを更新することができます。 詳細については、[Webservice.update](/python/api/azureml-core/azureml.core.webservice.webservice.webservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-) のドキュメントを参照してください。
 
-[AKS Service の Update メソッド](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#update-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)を参照してください。
+[AKS Service の Update メソッド](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)を参照してください。
 
-[ACI Service の Update メソッド](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#update-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)を参照してください。
+[ACI Service の Update メソッド](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)を参照してください。
 
 > [!IMPORTANT]
 > 新しいバージョンのモデルを作成するときは、それを使用したい各サービスを手動で更新する必要があります。
@@ -79,13 +84,13 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 > [!TIP]
 > この例では、JSON ドキュメントを使用して、登録コマンドから更新コマンドにモデル情報を渡します。
 >
-> 新しいエントリ スクリプトまたは環境を使用するようにサービスを更新するには、[推論構成ファイル](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema)を作成し、それを `ic` パラメーターで指定します。
+> 新しいエントリ スクリプトまたは環境を使用するようにサービスを更新するには、[推論構成ファイル](./reference-azure-machine-learning-cli.md#inference-configuration-schema)を作成し、それを `ic` パラメーターで指定します。
 
-詳細については、[az ml service update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) のドキュメントを参照してください。
+詳細については、[az ml service update](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [失敗したデプロイをトラブルシューティングする](how-to-troubleshoot-deployment.md)
+* [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
 * [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)

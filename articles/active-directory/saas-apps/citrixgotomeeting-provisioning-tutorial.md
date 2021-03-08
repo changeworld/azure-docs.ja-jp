@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 23af7ff9e4740b88d3d1f8cffb3d79a46c8d0d61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff377b0f93968eb6743187e4e659f4e888e5010e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544453"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358901"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル: GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,7 +35,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、GoToMeeting アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを GoToMeeting アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>ユーザーを GoToMeeting に割り当てる際の重要なヒント
 
@@ -60,7 +60,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
-    ![プロビジョニング](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Azure portal の GoToMeeting の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、管理ユーザー名、パスワード、および [テスト接続] が強調表示されています。](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. [管理者資格情報] セクションで、次の手順を実行します。
    
@@ -90,6 +90,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [シングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
-
-
+* [シングル サインオンの構成](./citrix-gotomeeting-tutorial.md)

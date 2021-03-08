@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/29/2020
-ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 02/15/2021
+ms.openlocfilehash: 7dd58a7d4a94b832e52930f8ac6507cdd8f7a20e
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448547"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534823"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
@@ -176,13 +176,13 @@ aggregate(groupBy(movie),
 データ フロー スクリプトでこのコードを使用して、3 つの列の ```sha1``` ハッシュを生成する ```DWhash``` という名前の新しい派生列を作成します。
 
 ```
-derive(DWhash = sha1(Name,ProductNumber,Color))
+derive(DWhash = sha1(Name,ProductNumber,Color)) ~> DWHash
 ```
 
 また、次のスクリプトを使用すると、各列に名前を付けなくても、ストリームに存在するすべての列を使用して行ハッシュを生成できます。
 
 ```
-derive(DWhash = sha1(columns()))
+derive(DWhash = sha1(columns())) ~> DWHash
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg の同等のもの
@@ -191,7 +191,7 @@ derive(DWhash = sha1(columns()))
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
-Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+Aggregate1 derive(string_agg = toString(string_agg)) ~> StringAgg
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新、upsert、挿入、削除の数をカウントする
@@ -210,6 +210,65 @@ aggregate(updates = countIf(isUpdate(), 1),
 ```
 aggregate(groupBy(mycols = sha2(256,columns())),
     each(match(true()), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="check-for-nulls-in-all-columns"></a>すべての列に Null があるかどうかを確認する
+これは、データ フローに貼り付けて、NULL 値があるかどうかすべての列をまとめて確認することができるスニペットです。 この手法は、スキーマの誤差を利用してすべての行のすべての列を調べ、条件分割を使用して、Null 値を持つ行と Null 値を持たない行とを分離します。 
+
+```
+split(contains(array(columns()),isNull(#item)),
+    disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
+```
+
+### <a name="automap-schema-drift-with-a-select"></a>Select を使用したスキーマの誤差の自動マッピング
+不明または動的な入力列のセットから既存のデータベース スキーマを読み込む必要がある場合は、シンク変換で右側の列をマップする必要があります。 これは既存のテーブルを読み込む場合にのみ必要です。 このスニペットをシンクの前に追加して、列を自動マップする Select を作成します。 シンク マッピングは自動マップのままにしておきます。
+
+```
+select(mapColumn(
+        each(match(true()))
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> automap
+```
+
+### <a name="persist-column-data-types"></a>列のデータ型を保持する
+このスクリプトを派生列の定義内に追加し、シンクを使用して、データ フローの列名とデータ型を永続ストアに格納します。
+
+```
+derive(each(match(type=='string'), $$ = 'string'),
+    each(match(type=='integer'), $$ = 'integer'),
+    each(match(type=='short'), $$ = 'short'),
+    each(match(type=='complex'), $$ = 'complex'),
+    each(match(type=='array'), $$ = 'array'),
+    each(match(type=='float'), $$ = 'float'),
+    each(match(type=='date'), $$ = 'date'),
+    each(match(type=='timestamp'), $$ = 'timestamp'),
+    each(match(type=='boolean'), $$ = 'boolean'),
+    each(match(type=='long'), $$ = 'long'),
+    each(match(type=='double'), $$ = 'double')) ~> DerivedColumn1
+```
+
+### <a name="fill-down"></a>フィル ダウン
+ここでは、NULL 値をシーケンス内の NULL 以外の前の値に置換する場合に、データセットで一般的な "フィル ダウン" 問題を実装する方法について説明します。 この操作では、データセット全体に対して "dummy" カテゴリ値を使って合成ウィンドウを作成する必要があるため、パフォーマンスに悪影響がある可能性があることに注意してください。 また、NULL 以外の前の値を見つけるには、値で並べ替えて適切なデータ シーケンスを作成する必要があります。 次のスニペットでは、"dummy" として合成カテゴリが作成され、代理キーで並べ替えが行われます。 この代理キーを削除して、独自のデータ固有の並べ替えキーを使用できます。 このコード スニペットでは、```source1``` というソース変換が既に追加済みであることを前提としています。
+
+```
+source1 derive(dummy = 1) ~> DerivedColumn
+DerivedColumn keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey
+SurrogateKey window(over(dummy),
+    asc(sk, true),
+    Rating2 = coalesce(Rating, last(Rating, true()))) ~> Window1
+```
+
+### <a name="moving-average"></a>移動平均
+移動平均は、ウィンドウ変換を使用してデータ フロー内に非常に簡単に実装できます。 以下の例では、Microsoft の株価の 15 日間の移動平均を作成します。
+
+```
+window(over(stocksymbol),
+    asc(Date, true),
+    startRowOffset: -7L,
+    endRowOffset: 7L,
+    FifteenDayMovingAvg = round(avg(Close),2)) ~> Window1
 ```
 
 ## <a name="next-steps"></a>次のステップ

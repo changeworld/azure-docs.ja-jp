@@ -1,25 +1,29 @@
 ---
 title: テンプレート関数 - オブジェクト
-description: Azure Resource Manager テンプレートでオブジェクトを操作するために使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でオブジェクトを操作するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/18/2020
+ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676796"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920460"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM テンプレート用のオブジェクト関数
 
-Resource Manager には、Azure Resource Manager (ARM) テンプレートでオブジェクトを操作する関数が複数用意されています。
+Resource Manager には、Azure Resource Manager テンプレート (ARM テンプレート) でオブジェクトを操作する関数が複数用意されています。
 
 * [contains](#contains)
+* [createObject](#createobject)
 * [empty](#empty)
 * [intersection](#intersection)
 * [json](#json)
 * [length](#length)
+* [null](#null)
 * [union](#union)
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="contains"></a>contains
 
@@ -42,54 +46,85 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json)では、contains をさまざまな型で使用する方法を示します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "stringToTest": {
-            "type": "string",
-            "defaultValue": "OneTwoThree"
-        },
-        "objectToTest": {
-            "type": "object",
-            "defaultValue": {"one": "a", "two": "b", "three": "c"}
-        },
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": ["one", "two", "three"]
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringToTest": {
+      "type": "string",
+      "defaultValue": "OneTwoThree"
     },
-    "resources": [
-    ],
-    "outputs": {
-        "stringTrue": {
-            "type": "bool",
-            "value": "[contains(parameters('stringToTest'), 'e')]"
-        },
-        "stringFalse": {
-            "type": "bool",
-            "value": "[contains(parameters('stringToTest'), 'z')]"
-        },
-        "objectTrue": {
-            "type": "bool",
-            "value": "[contains(parameters('objectToTest'), 'one')]"
-        },
-        "objectFalse": {
-            "type": "bool",
-            "value": "[contains(parameters('objectToTest'), 'a')]"
-        },
-        "arrayTrue": {
-            "type": "bool",
-            "value": "[contains(parameters('arrayToTest'), 'three')]"
-        },
-        "arrayFalse": {
-            "type": "bool",
-            "value": "[contains(parameters('arrayToTest'), 'four')]"
-        }
+    "objectToTest": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b",
+        "three": "c"
+      }
+    },
+    "arrayToTest": {
+      "type": "array",
+      "defaultValue": [ "one", "two", "three" ]
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "stringTrue": {
+      "type": "bool",
+      "value": "[contains(parameters('stringToTest'), 'e')]"
+    },
+    "stringFalse": {
+      "type": "bool",
+      "value": "[contains(parameters('stringToTest'), 'z')]"
+    },
+    "objectTrue": {
+      "type": "bool",
+      "value": "[contains(parameters('objectToTest'), 'one')]"
+    },
+    "objectFalse": {
+      "type": "bool",
+      "value": "[contains(parameters('objectToTest'), 'a')]"
+    },
+    "arrayTrue": {
+      "type": "bool",
+      "value": "[contains(parameters('arrayToTest'), 'three')]"
+    },
+    "arrayFalse": {
+      "type": "bool",
+      "value": "[contains(parameters('arrayToTest'), 'four')]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param stringToTest string = 'OneTwoThree'
+param objectToTest object = {
+  'one': 'a'
+  'two': 'b'
+  'three': 'c'
+}
+param arrayToTest array = [
+  'one'
+  'two'
+  'three'
+]
+
+output stringTrue bool = contains(stringToTest, 'e')
+output stringFalse bool = contains(stringToTest, 'z')
+output objectTrue bool = contains(objectToTest, 'one')
+output objectFalse bool = contains(objectToTest, 'a')
+output arrayTrue bool = contains(arrayToTest, 'three')
+output arrayFalse bool = contains(arrayToTest, 'four')
+```
+
+---
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -101,6 +136,80 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 | objectFalse | Bool | False |
 | arrayTrue | Bool | True |
 | arrayFalse | Bool | False |
+
+## <a name="createobject"></a>createObject
+
+`createObject(key1, value1, key2, value2, ...)`
+
+キーと値からオブジェクトを作成します。 `createObject` 関数は、Bicep ではサポートされていません。  `{}` を使用してオブジェクトを構築します。
+
+### <a name="parameters"></a>パラメーター
+
+| パラメーター | 必須 | Type | [説明] |
+|:--- |:--- |:--- |:--- |
+| key1 |いいえ |string |キーの名前です。 |
+| value1 |いいえ |int、boolean、string、object、または array |キーの値。 |
+| 追加のキー |いいえ |string |キーの追加の名前。 |
+| 追加の値 |いいえ |int、boolean、string、object、または array |キーの追加の値。 |
+
+この関数では、偶数個のパラメーターを指定する必要があります。 各キーには、一致する値が必要です。
+
+### <a name="return-value"></a>戻り値
+
+各キーと値のペアを持つオブジェクト。
+
+### <a name="example"></a>例
+
+次の例では、さまざまな種類の値からオブジェクトが作成されます。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+  ],
+  "outputs": {
+    "newObject": {
+      "type": "object",
+      "value": "[createObject('intProp', 1, 'stringProp', 'abc', 'boolProp', true(), 'arrayProp', createArray('a', 'b', 'c'), 'objectProp', createObject('key1', 'value1'))]"
+    }
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output newObject object = {
+  'intProp': 1
+  'stringProp': 'abc'
+  'boolProp': true
+  'arrayProp': [
+    'a'
+    'b'
+    'c'
+  ]
+  'objectProp': {
+    'key1': 'value1'
+  }
+}
+```
+
+---
+
+既定値を使用した場合の前の例の出力は、次の値を持っている `newObject` という名前のオブジェクトです。
+
+```json
+{
+  "intProp": 1,
+  "stringProp": "abc",
+  "boolProp": true,
+  "arrayProp": ["a", "b", "c"],
+  "objectProp": {"key1": "value1"}
+}
+```
 
 ## <a name="empty"></a>empty
 
@@ -122,42 +231,58 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json)では、配列、オブジェクト、および文字列が空かどうかを確認します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "testArray": {
-            "type": "array",
-            "defaultValue": []
-        },
-        "testObject": {
-            "type": "object",
-            "defaultValue": {}
-        },
-        "testString": {
-            "type": "string",
-            "defaultValue": ""
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "testArray": {
+      "type": "array",
+      "defaultValue": []
     },
-    "resources": [
-    ],
-    "outputs": {
-        "arrayEmpty": {
-            "type": "bool",
-            "value": "[empty(parameters('testArray'))]"
-        },
-        "objectEmpty": {
-            "type": "bool",
-            "value": "[empty(parameters('testObject'))]"
-        },
-        "stringEmpty": {
-            "type": "bool",
-            "value": "[empty(parameters('testString'))]"
-        }
+    "testObject": {
+      "type": "object",
+      "defaultValue": {}
+    },
+    "testString": {
+      "type": "string",
+      "defaultValue": ""
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "arrayEmpty": {
+      "type": "bool",
+      "value": "[empty(parameters('testArray'))]"
+    },
+    "objectEmpty": {
+      "type": "bool",
+      "value": "[empty(parameters('testObject'))]"
+    },
+    "stringEmpty": {
+      "type": "bool",
+      "value": "[empty(parameters('testString'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param testArray array = []
+param testObject object = {}
+param testString string = ''
+
+output arrayEmpty bool = empty(testArray)
+output objectEmpty bool = empty(testObject)
+output stringEmpty bool = empty(testString)
+```
+
+---
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -189,42 +314,81 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json)では、intersection を配列およびオブジェクトと共に使用する方法を示します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstObject": {
-            "type": "object",
-            "defaultValue": {"one": "a", "two": "b", "three": "c"}
-        },
-        "secondObject": {
-            "type": "object",
-            "defaultValue": {"one": "a", "two": "z", "three": "c"}
-        },
-        "firstArray": {
-            "type": "array",
-            "defaultValue": ["one", "two", "three"]
-        },
-        "secondArray": {
-            "type": "array",
-            "defaultValue": ["two", "three"]
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "firstObject": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b",
+        "three": "c"
+      }
     },
-    "resources": [
-    ],
-    "outputs": {
-        "objectOutput": {
-            "type": "object",
-            "value": "[intersection(parameters('firstObject'), parameters('secondObject'))]"
-        },
-        "arrayOutput": {
-            "type": "array",
-            "value": "[intersection(parameters('firstArray'), parameters('secondArray'))]"
-        }
+    "secondObject": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "z",
+        "three": "c"
+      }
+    },
+    "firstArray": {
+      "type": "array",
+      "defaultValue": [ "one", "two", "three" ]
+    },
+    "secondArray": {
+      "type": "array",
+      "defaultValue": [ "two", "three" ]
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "objectOutput": {
+      "type": "object",
+      "value": "[intersection(parameters('firstObject'), parameters('secondObject'))]"
+    },
+    "arrayOutput": {
+      "type": "array",
+      "value": "[intersection(parameters('firstArray'), parameters('secondArray'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param firstObject object = {
+  'one': 'a'
+  'two': 'b'
+  'three': 'c'
+}
+param secondObject object = {
+  'one': 'a'
+  'two': 'z'
+  'three': 'c'
+}
+param firstArray array = [
+  'one'
+  'two'
+  'three'
+]
+param secondArray array = [
+  'two'
+  'three'
+]
+
+output objectOutput object = intersection(firstObject, secondObject)
+output arrayOutput array = intersection(firstArray, secondArray)
+```
+
+---
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -233,74 +397,138 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
 
+<a id="json"></a>
+
 ## <a name="json"></a>json
 
 `json(arg1)`
 
-JSON オブジェクトを返します。
+有効な JSON 文字列を JSON データ型に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |string |JSON に変換する値。 |
+| arg1 |はい |string |JSON に変換する値。 文字列は、適切に書式設定された JSON 文字列である必要があります。 |
 
 ### <a name="return-value"></a>戻り値
 
-**null** が指定された場合は、指定された文字列の JSON オブジェクト、または空のオブジェクト。
+指定された文字列の JSON データ型。**null** が指定された場合は空のオブジェクト。
 
 ### <a name="remarks"></a>解説
 
 JSON オブジェクトにパラメーター値または変数を含める必要がある場合、 [concat](template-functions-string.md#concat)関数を使用し、関数に渡す文字列を作成します。
 
+[null()](#null) を使用して null 値を取得することもできます。
+
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)では、json 関数を使用する方法を示します。 オブジェクトを表す文字列を渡すか、値が不要な場合は **null** を使用することができます。
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)では、json 関数を使用する方法を示します。 空のオブジェクトに **null** を渡すことができることに注意してください。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "jsonObject1": {
-            "type": "string",
-            "defaultValue": "null"
-        },
-        "jsonObject2": {
-            "type": "string",
-            "defaultValue": "{\"a\": \"b\"}"
-        },
-        "testValue": {
-            "type": "string",
-            "defaultValue": "demo value"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "jsonEmptyObject": {
+      "type": "string",
+      "defaultValue": "null"
     },
-    "resources": [
-    ],
-    "outputs": {
-        "jsonOutput1": {
-            "type": "bool",
-            "value": "[empty(json(parameters('jsonObject1')))]"
-        },
-        "jsonOutput2": {
-            "type": "object",
-            "value": "[json(parameters('jsonObject2'))]"
-        },
-        "paramOutput": {
-            "type": "object",
-            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
-        }
+    "jsonObject": {
+      "type": "string",
+      "defaultValue": "{\"a\": \"b\"}"
+    },
+    "jsonString": {
+      "type": "string",
+      "defaultValue": "\"test\""
+    },
+    "jsonBoolean": {
+      "type": "string",
+      "defaultValue": "true"
+    },
+    "jsonInt": {
+      "type": "string",
+      "defaultValue": "3"
+    },
+    "jsonArray": {
+      "type": "string",
+      "defaultValue": "[[1,2,3 ]"
+    },
+    "concatValue": {
+      "type": "string",
+      "defaultValue": "demo value"
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "emptyObjectOutput": {
+      "type": "bool",
+      "value": "[empty(json(parameters('jsonEmptyObject')))]"
+    },
+    "objectOutput": {
+      "type": "object",
+      "value": "[json(parameters('jsonObject'))]"
+    },
+    "stringOutput": {
+      "type": "string",
+      "value": "[json(parameters('jsonString'))]"
+    },
+    "booleanOutput": {
+      "type": "bool",
+      "value": "[json(parameters('jsonBoolean'))]"
+    },
+    "intOutput": {
+      "type": "int",
+      "value": "[json(parameters('jsonInt'))]"
+    },
+    "arrayOutput": {
+      "type": "array",
+      "value": "[json(parameters('jsonArray'))]"
+    },
+    "concatObjectOutput": {
+      "type": "object",
+      "value": "[json(concat('{\"a\": \"', parameters('concatValue'), '\"}'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param jsonEmptyObject string = 'null'
+param jsonObject string = '{\'a\': \'b\'}'
+param jsonString string = '\'test\''
+param jsonBoolean string = 'true'
+param jsonInt string = '3'
+param jsonArray string = '[[1,2,3]]'
+param concatValue string = 'demo value'
+
+output emptyObjectOutput bool = empty(json(jsonEmptyObject))
+output objectOutput object = json(jsonObject)
+output stringOutput string =json(jsonString)
+output booleanOutput bool = json(jsonBoolean)
+output intOutput int = json(jsonInt)
+output arrayOutput array = json(jsonArray)
+output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
+```
+
+---
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
 | 名前 | Type | 値 |
 | ---- | ---- | ----- |
-| jsonOutput1 | Boolean | True |
-| jsonOutput2 | Object | {"a": "b"} |
-| paramOutput | Object | {「a」:「値のデモ」}
+| emptyObjectOutput | Boolean | True |
+| objectOutput | Object | {"a": "b"} |
+| stringOutput | String | テスト |
+| booleanOutput | Boolean | True |
+| intOutput | Integer | 3 |
+| arrayOutput | Array | [ 1, 2, 3 ] |
+| concatObjectOutput | Object | { "a": "demo value" } |
 
 ## <a name="length"></a>length
 
@@ -322,53 +550,81 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json)では、length を配列および文字列と共に使用する方法を示します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": [
-                "one",
-                "two",
-                "three"
-            ]
-        },
-        "stringToTest": {
-            "type": "string",
-            "defaultValue": "One Two Three"
-        },
-        "objectToTest": {
-            "type": "object",
-            "defaultValue": {
-                "propA": "one",
-                "propB": "two",
-                "propC": "three",
-                "propD": {
-                    "propD-1": "sub",
-                    "propD-2": "sub"
-                }
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "arrayToTest": {
+      "type": "array",
+      "defaultValue": [
+        "one",
+        "two",
+        "three"
+      ]
     },
-    "resources": [],
-    "outputs": {
-        "arrayLength": {
-            "type": "int",
-            "value": "[length(parameters('arrayToTest'))]"
-        },
-        "stringLength": {
-            "type": "int",
-            "value": "[length(parameters('stringToTest'))]"
-        },
-        "objectLength": {
-            "type": "int",
-            "value": "[length(parameters('objectToTest'))]"
+    "stringToTest": {
+      "type": "string",
+      "defaultValue": "One Two Three"
+    },
+    "objectToTest": {
+      "type": "object",
+      "defaultValue": {
+        "propA": "one",
+        "propB": "two",
+        "propC": "three",
+        "propD": {
+          "propD-1": "sub",
+          "propD-2": "sub"
         }
+      }
     }
+  },
+  "resources": [],
+  "outputs": {
+    "arrayLength": {
+      "type": "int",
+      "value": "[length(parameters('arrayToTest'))]"
+    },
+    "stringLength": {
+      "type": "int",
+      "value": "[length(parameters('stringToTest'))]"
+    },
+    "objectLength": {
+      "type": "int",
+      "value": "[length(parameters('objectToTest'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param arrayToTest array = [
+  'one'
+  'two'
+  'three'
+]
+param stringToTest string = 'One Two Three'
+param objectToTest object = {
+  'propA': 'one'
+  'propB': 'two'
+  'propC': 'three'
+  'propD': {
+      'propD-1': 'sub'
+      'propD-2': 'sub'
+  }
+}
+
+output arrayLength int = length(arrayToTest)
+output stringLength int = length(stringToTest)
+output objectLength int = length(objectToTest)
+```
+
+---
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -377,6 +633,54 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
 | objectLength | int | 4 |
+
+## <a name="null"></a>null
+
+`null()`
+
+null を返します。 `null` 関数は、Bicep では使用できません。 代わりに、`null` キーワードを使用します。
+
+### <a name="parameters"></a>パラメーター
+
+null 関数では、パラメーターは受け入れられません。
+
+### <a name="return-value"></a>戻り値
+
+常に null である値。
+
+### <a name="example"></a>例
+
+次の例では、null 関数を使用しています。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "emptyOutput": {
+      "type": "bool",
+      "value": "[empty(null())]"
+    }
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output emptyOutput bool = empty(null)
+```
+
+---
+
+前の例からの出力は次のようになります。
+
+| 名前 | Type | 値 |
+| ---- | ---- | ----- |
+| emptyOutput | Bool | True |
 
 ## <a name="union"></a>union
 
@@ -400,42 +704,84 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json)では、union を配列およびオブジェクトと共に使用する方法を示します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstObject": {
-            "type": "object",
-            "defaultValue": {"one": "a", "two": "b", "three": "c1"}
-        },
-        "secondObject": {
-            "type": "object",
-            "defaultValue": {"three": "c2", "four": "d", "five": "e"}
-        },
-        "firstArray": {
-            "type": "array",
-            "defaultValue": ["one", "two", "three"]
-        },
-        "secondArray": {
-            "type": "array",
-            "defaultValue": ["three", "four"]
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "firstObject": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b",
+        "three": "c1"
+      }
     },
-    "resources": [
-    ],
-    "outputs": {
-        "objectOutput": {
-            "type": "object",
-            "value": "[union(parameters('firstObject'), parameters('secondObject'))]"
-        },
-        "arrayOutput": {
-            "type": "array",
-            "value": "[union(parameters('firstArray'), parameters('secondArray'))]"
-        }
+    "secondObject": {
+      "type": "object",
+      "defaultValue": {
+        "three": "c2",
+        "four": "d",
+        "five": "e"
+      }
+    },
+    "firstArray": {
+      "type": "array",
+      "defaultValue": [ "one", "two", "three" ]
+    },
+    "secondArray": {
+      "type": "array",
+      "defaultValue": [ "three", "four" ]
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "objectOutput": {
+      "type": "object",
+      "value": "[union(parameters('firstObject'), parameters('secondObject'))]"
+    },
+    "arrayOutput": {
+      "type": "array",
+      "value": "[union(parameters('firstArray'), parameters('secondArray'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param firstObject object = {
+  'one': 'a'
+  'two': 'b'
+  'three': 'c1'
+}
+
+param secondObject object = {
+  'three': 'c2'
+  'four': 'd'
+  'five': 'e'
+}
+
+param firstArray array = [
+  'one'
+  'two'
+  'three'
+]
+
+param secondArray array = [
+  'three'
+  'four'
+]
+
+output objectOutput object = union(firstObject, secondObject)
+output arrayOutput array = union(firstArray, secondArray)
+```
+
+---
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -446,4 +792,4 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

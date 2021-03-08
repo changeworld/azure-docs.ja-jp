@@ -1,6 +1,6 @@
 ---
 title: Azure Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する - ストレージ
-description: Lsv2 シリーズの仮想マシン上でソリューションのパフォーマンスを最適化する方法を紹介します。
+description: Lsv2 シリーズの仮想マシン上でソリューションのパフォーマンスを最適化する方法をLinux を例にして紹介します。
 services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654771"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307103"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Lsv2 シリーズ Linux 仮想マシン上でパフォーマンスを最適化する
 

@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 7983a80da8a5ca9d900e44515b5e078cc9d70d79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760951"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684188"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
-Azure Private Link サービスは、Azure Private Link を使用する独自のサービスに対する参照です。 [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) の背後で実行されている自分のサービスで Private Link アクセスを有効にすると、自分のサービスのコンシューマーがそのサービスに対して独自の VNet からプライベートにアクセスできるようになります。 顧客は、自分の VNet 内にプライベート エンドポイントを作成し、それをこのサービスにマッピングすることができます。 この記事では、サービス プロバイダー側に関連する概念について説明します。 
+Azure Private Link サービスは、Azure Private Link を使用する独自のサービスに対する参照です。 [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md) の背後で実行されている自分のサービスで Private Link アクセスを有効にすると、自分のサービスのコンシューマーがそのサービスに対して独自の VNet からプライベートにアクセスできるようになります。 顧客は、自分の VNet 内にプライベート エンドポイントを作成し、それをこのサービスにマッピングすることができます。 この記事では、サービス プロバイダー側に関連する概念について説明します。 
 
 :::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Private Link サービスのワークフロー" border="true":::
 
@@ -57,7 +57,7 @@ Private Link サービスでは、次のプロパティを指定します。
 |---------|---------|
 |プロビジョニングの状態 (provisioningState)  |Private Link サービスの現在のプロビジョニング状態を一覧表示する読み取り専用プロパティ。 適用可能なプロビジョニングの状態は次のとおりです: "Deleting (削除中)、Failed (失敗)、Succeeded (成功)、Updating (更新中)"。 プロビジョニングの状態が "Succeeded (成功)" の場合、Private Link サービスは正常にプロビジョニングされています。        |
 |別名 (alias)     | 別名は、対象のサービスのグローバルに一意の読み取り専用文字列です。 これは、対象のサービスの顧客データをマスクすると同時に、容易に共有できるサービス名を作成するのに役立ちます。 Private Link サービスを作成すると、対象のサービスの別名が Azure によって生成されます。この別名は、顧客と共有することができます。 顧客は、この別名を使用して、対象のサービスへの接続を要求できます。          |
-|可視性 (visibility)     | 可視性は、自分の Private Link サービスの公開設定を制御するプロパティです。 サービス プロバイダーは、自分のサービスの公開対象を、ロールベースのアクセス制御 (RBAC) アクセス許可を持つサブスクリプション、制限されたサブスクリプションのセット、またはすべての Azure サブスクリプションに制限できます。          |
+|可視性 (visibility)     | 可視性は、自分の Private Link サービスの公開設定を制御するプロパティです。 サービス プロバイダーは、自社のサービスの公開対象を、Azure ロールベースのアクセス制御 (Azure RBAC) アクセス許可を持つサブスクリプション、制限されたサブスクリプションのセット、またはすべての Azure サブスクリプションに制限できます。          |
 |自動承認 (autoApproval)    |   自動承認は、Private Link サービスへの自動アクセスを制御するものです。 自動承認リストに指定されているサブスクリプションは、それらのサブスクリプションのプライベート エンドポイントから接続が要求されると、自動的に承認されます。          |
 |Load Balancer のフロントエンド IP 構成 (loadBalancerFrontendIpConfigurations)    |    Private Link サービスは、Standard Load Balancer のフロントエンド IP アドレスに関連付けられています。 サービス宛てのすべてのトラフィックは、SLB のフロントエンドに到達します。 対象のアプリケーションが実行されている適切なバックエンド プールにこのトラフィックが転送されるように、SLB 規則を構成できます。 ロード バランサーのフロントエンド IP 構成は、NAT IP 構成とは異なります。      |
 |NAT IP 構成 (ipConfigurations)    |    このプロパティは、Private Link サービスの NAT (ネットワーク アドレス変換) IP 構成を参照します。 NAT IP は、サービス プロバイダーの仮想ネットワーク内の任意のサブネットから選択できます。 Private Link サービスは、Private Link トラフィックで宛先側のネットワーク アドレス変換を実行します。 これにより、ソース (コンシューマー側) と宛先 (サービス プロバイダー) のアドレス空間の間に IP の競合がないことが保証されます。 宛先側 (サービス プロバイダー側) では、NAT IP アドレスは、対象のサービスで受信されたすべてのパケットのソース IP および対象のサービスで送信されたすべてのパケットの宛先 IP として表示されます。       |
@@ -76,14 +76,14 @@ Private Link サービスでは、次のプロパティを指定します。
  
 - 単一の Private Link サービスに対して、異なる VNet、サブスクリプション、または Active Directory テナントに属する複数のプライベート エンドポイントからアクセスできます。 接続は、接続ワークフローを介して確立されます。 
  
-- 異なるフロントエンド IP 構成を使用して、同じ Standard Load Balancer 上に複数の Private Link サービスを作成できます。 Standard Load Balancer ごと、およびサブスクリプションごとに作成できる Private Link サービスの数には制限があります。 詳細については、 [Azure の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)に関する記事を参照してください。
+- 異なるフロントエンド IP 構成を使用して、同じ Standard Load Balancer 上に複数の Private Link サービスを作成できます。 Standard Load Balancer ごと、およびサブスクリプションごとに作成できる Private Link サービスの数には制限があります。 詳細については、 [Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事を参照してください。
  
 - Private Link サービスには、複数の NAT IP 構成をリンクすることができます。 複数の NAT IP 構成を選択すると、サービス プロバイダーをスケーリングするのに役立ちます。 現在、サービス プロバイダーは、Private Link サービスごとに最大 8 つの NAT IP アドレスを割り当てることができます。 各 NAT IP アドレスを使用して TCP 接続により多くのポートを割り当てることにより、スケールアウトすることができます。Private Link サービスに複数の NAT IP アドレスを追加した後で NAT IP アドレスを削除することはできません。 これは、NAT IP アドレスの削除時にアクティブな接続が影響を受けないようにするためです。
 
 
 ## <a name="alias"></a>エイリアス
 
-**別名**は、対象のサービスのグローバルに一意の名前です。 これは、対象のサービスの顧客データをマスクすると同時に、容易に共有できるサービス名を作成するのに役立ちます。 Private Link サービスを作成すると、対象のサービスの別名が Azure によって生成されます。この別名は、顧客と共有することができます。 顧客は、この別名を使用して、対象のサービスへの接続を要求できます。
+**別名** は、対象のサービスのグローバルに一意の名前です。 これは、対象のサービスの顧客データをマスクすると同時に、容易に共有できるサービス名を作成するのに役立ちます。 Private Link サービスを作成すると、対象のサービスの別名が Azure によって生成されます。この別名は、顧客と共有することができます。 顧客は、この別名を使用して、対象のサービスへの接続を要求できます。
 
 別名は、3 つの部分から構成されます: *<プレフィックス>* .*GUID*. *<サフィックス>*
 
@@ -95,7 +95,7 @@ Private Link サービスでは、次のプロパティを指定します。
 
 ## <a name="control-service-exposure"></a>サービスの公開を制御する
 
-Private Link サービスには、"可視性" 設定を使用して対象のサービスの公開を制御するオプションが用意されています。 所有するさまざまな VNet (RBAC アクセス許可のみ) から使用するためにサービスをプライベートにしたり、信頼するサブスクリプションの限られたセットのみに公開を制限したりできます。また、サービスをパブリックにして、すべての Azure サブスクリプションが Private Link サービス上で接続を要求できるようにすることもできます。 可視性の設定により、コンシューマーが対象のサービスに接続できるかどうかが決まります。 
+Private Link サービスには、"可視性" 設定を使用して対象のサービスの公開を制御するオプションが用意されています。 所有するさまざまな VNet (Azure RBAC アクセス許可のみ) からの使用に向けて、サービスをプライベートに設定したり、信頼するサブスクリプションの限られたセットのみに公開を制限したりできます。また、サービスをパブリックに設定して、すべての Azure サブスクリプションが Private Link サービス上で接続を要求できるようにすることもできます。 可視性の設定により、コンシューマーが対象のサービスに接続できるかどうかが決まります。 
 
 ## <a name="control-service-access"></a>サービス アクセスを制御する
 
@@ -126,7 +126,7 @@ Private Link サービスの公開対象 (可視性設定により制御) のコ
 Private Link サービスを使用する場合の既知の制限事項は次のとおりです。
 - Standard Load Balancer でのみサポートされる 
 - IPv4 トラフィックのみがサポートされる
-- TCP トラフィックのみがサポートされる
+- TCP および UDP トラフィックのみがサポートされる
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure PowerShell を使用してプライベート リンク サービスを作成する](create-private-link-service-powershell.md)

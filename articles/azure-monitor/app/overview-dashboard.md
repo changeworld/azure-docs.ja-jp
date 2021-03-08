@@ -3,12 +3,12 @@ title: Azure Application Insights の概要ダッシュボード | Microsoft Doc
 description: Azure の Application Insights と概要ダッシュボードの機能を使用してアプリケーションを監視します。
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322535"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504102"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード
 
@@ -26,7 +26,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 ![時間の範囲](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-全体的なパフォーマンスが大幅に向上しました。 **検索**や **Analytics** のような人気のある機能に 1 回のクリックでアクセスできます。 既定の動的に更新される各 KPI タイルでは、Application Insights の対応する機能について把握できます。 失敗した要求の詳細については、 **[調査]** ヘッダーの下の **[失敗]** を選択します。
+全体的なパフォーマンスが大幅に向上しました。 **検索** や **Analytics** のような人気のある機能に 1 回のクリックでアクセスできます。 既定の動的に更新される各 KPI タイルでは、Application Insights の対応する機能について把握できます。 失敗した要求の詳細については、 **[調査]** ヘッダーの下の **[失敗]** を選択します。
 
 ![エラー](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
@@ -36,7 +36,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 既定のダッシュボードにアクセスするには、左上隅の _[アプリケーション ダッシュボード]_ を選びます。
 
-![ダッシュボード ビュー](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![スクリーンショットには、強調表示された [アプリケーション ダッシュボード] ボタンが示されています。](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 初めてダッシュボードにアクセスした場合は、既定のビューが表示されます。
 
@@ -53,7 +53,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-**[タイル設定の構成]** を選択し、31 日を超えるカスタムの時間範囲を設定した場合、既定のデータ保有期間が 90 日であっても、ダッシュボードには 31 日を超えるデータは表示されません。 現時点では、この動作の回避策はありません。
+現在、ダッシュボードに表示されるデータには、30 日間のデータ制限があります。30 日 を超える時間フィルターを選択した場合、または **[Configure tile settings]\(タイル設定の構成\)** を選択し、30 日を超えるカスタムの時間範囲を設定した場合は、既定のデータ保有期間が 90 日であっても、ダッシュボードには 30 日を超えるデータは表示されません。 現時点では、この動作の回避策はありません。
 
 ## <a name="next-steps"></a>次のステップ
 

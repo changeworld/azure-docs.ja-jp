@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708843"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347066"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL Managed Instance プール (プレビュー) とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,9 +59,9 @@ ms.locfileid: "84708843"
 
 ## <a name="architecture"></a>Architecture
 
-インスタンス プールは、通常の ("*単一の*") マネージド インスタンスと同様のアーキテクチャを備えています。  [Azure 仮想ネットワーク内のデプロイ](../../virtual-network/virtual-network-for-azure-services.md) をサポートするため、およびお客様に分離とセキュリティを提供するため、インスタンス プールは [仮想クラスター](connectivity-architecture-overview.md#high-level-connectivity-architecture)にも依存しています。 仮想クラスターは、お客様の仮想ネットワーク サブネット内にデプロイされている分離された仮想マシンの専用セットを表します。
+インスタンス プールは、通常の ("*単一の*") マネージド インスタンスと同様のアーキテクチャを備えています。 [Azure 仮想ネットワーク内のデプロイ](../../virtual-network/virtual-network-for-azure-services.md)をサポートし、お客様に分離とセキュリティを提供するため、インスタンス プールでは[仮想クラスター](connectivity-architecture-overview.md#high-level-connectivity-architecture)にも依存しています。 仮想クラスターは、お客様の仮想ネットワーク サブネット内にデプロイされている分離された仮想マシンの専用セットを表します。
 
-2 つのデプロイ モデルの主な違いは次のとおりです。インスタンス プールは同じ仮想マシン ノード上で複数の SQL Server プロセスをデプロイでき、[Windows ジョブ オブジェクト](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)を使用して管理されるリソースであるのに対し、単一インスタンスは仮想マシン ノード上に常に 1 つだけです。
+2 つのデプロイ モデルの主な違いは次のとおりです。インスタンス プールは同じ仮想マシン ノード上で複数の SQL Server プロセスをデプロイでき、[Windows ジョブ オブジェクト](/windows/desktop/ProcThread/job-objects)を使用して管理されるリソースであるのに対し、単一インスタンスは仮想マシン ノード上に常に 1 つだけです。
 
 次の図は、1 つのインスタンス プールと、同じサブネット内にデプロイされた 2 つの個別のインスタンスを示し、両方のデプロイ モデルの主要なアーキテクチャの詳細を示しています。
 
@@ -78,15 +78,20 @@ ms.locfileid: "84708843"
 - [インスタンス レベルの制限](resource-limits.md#service-tier-characteristics)はすべて、プール内に作成されたインスタンスに適用されます
 - インスタンスレベルの制限に加えて、次の 2 つの制限も "*インスタンス プール レベルで*" 適用されます。
   - プールあたりの合計ストレージ サイズ (8 TB)。
-  - プールあたりのデータベースの合計数 (100)。
+  - プールあたりのユーザー データベースの合計数。 この制限は、プールの仮想コア値によって異なります。
+    - 8 個の仮想コアのプールでは、最大 200 個のデータベースがサポートされます。
+    - 16 個の仮想コアのプールでは、最大 400 個のデータベースがサポートされます。
+    - 24 個以上の仮想コアのプールでは、最大 500 個のデータベースがサポートされます。
+- AAD 管理者は、インスタンス プール内にデプロイされたインスタンスに対して設定できないため、AAD 認証は使用できません。
 
 すべてのインスタンスのストレージの割り当てとデータベースの数の合計は、インスタンス プールによってさらされる制限以下にする必要があります。
 
 - インスタンス プールでは、8、16、24、32、40、64、および 80 の仮想コアがサポートされています。
 - プール内のマネージド インスタンスでは、2、4、8、16、24、32、40、64、80 の仮想コアがサポートされています。
 - プール内のマネージド インスタンスでは、次の場合を除き、32 GB から 8 TB のストレージ サイズがサポートされます。
-  - 2 vCore インスタンスでは、32 GB から 640 GB のサイズがサポートされます
-  - 4 vCore インスタンスでは、32 GB から 2 TB のサイズがサポートされます
+  - 2 つの仮想コア インスタンスでは、32 GB から 640 GB のサイズがサポートされます。
+  - 4 つの仮想コア インスタンスでは、32 GB から 2 TB のサイズがサポートされます。
+- プール内のマネージド インスタンスには、インスタンスあたり最大 100 個のユーザー データベースの制限があります。ただし、インスタンスあたり最大 50 個のユーザー データベースをサポートする、2 つの仮想コア インスタンスは除きます。
 
 [サービス レベルのプロパティ](resource-limits.md#service-tier-characteristics)は、インスタンス プール リソースに関連付けられているため、プール内のすべてのインスタンスは、プールのサービス レベルと同じサービス レベルである必要があります。 現時点では、General Purpose サービス レベルのみを使用できます (現在のプレビューの制限事項については、次のセクションを参照してください)。
 

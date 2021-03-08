@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132331"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
@@ -79,7 +79,7 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 1. 分離されたネットワークを作成します。 既定では、Azure に作成するすべての仮想ネットワークは、その他のネットワークから分離されます。 このネットワークの IP アドレス範囲は、運用ネットワークと同じものを使用することをお勧めします。 このネットワーク上でサイト間接続を有効化しないでください。
 1. 分離されたネットワークに DNS の IP アドレスを指定します。 DNS 仮想マシンに取得させる IP アドレスを使用します。 Azure にレプリケートする場合は、フェールオーバーで使用される仮想マシンの IP アドレスを指定します。 IP アドレスを入力するには、レプリケートされる仮想マシンの **[コンピューティングとネットワーク]** 設定で、 **[ターゲット IP]** 設定を選択します。
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure テスト ネットワーク":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure ネットワーク":::
 
    > [!TIP]
    > Site Recovery は、仮想マシンの **[コンピューティングとネットワーク]** 設定で指定されているのと同じ IP アドレスを使用して、同じ名前のサブネットに、テスト仮想マシンの作成を試みます。 テスト フェールオーバー用に指定された Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト仮想マシンが作成されます。
@@ -118,21 +118,21 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
 - **GenerationID** 値の変更:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="生成 ID の変更":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure ネットワーク":::
 
 - **の InvocationID** 値の変更:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="呼び出し ID の変更":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure ネットワーク":::
 
 - `SYSVOL` フォルダーと `NETLOGON` 共有は使用できません。
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL フォルダーの共有":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure ネットワーク":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL フォルダー":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure ネットワーク":::
 
 - DFSR データベースが削除
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR データベースが削除":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure ネットワーク":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>テスト フェールオーバーの間のドメイン コントローラーの問題のトラブルシューティング
 

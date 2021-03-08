@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d9e5269468f7cd4571e7ae686af7f1ef159b4ef3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b986aa2bfce203be85adbcde8e2966c167bf7ca1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681704"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151770"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>予約購入と払戻のトランザクションの表示
 
@@ -39,11 +39,11 @@ ms.locfileid: "88681704"
 
 [![予約トランザクションを示す例](./media/view-purchase-refunds/power-bi-reservation-transactions.png)](./media/view-purchase-refunds/power-bi-reservation-transactions.png#lightbox)
 
-詳細については、[Enterprise Agreement 用の Azure Cost Management Power BI アプリ](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app)に関するページを参照してください。
+詳細については、[Enterprise Agreement 用の Azure Cost Management Power BI アプリ](../costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)に関するページを参照してください。
 
 ## <a name="use-apis-to-get-reservation-transactions"></a>API を使用して予約トランザクションを取得する
 
-マイクロソフト エンタープライズ契約 (EA) と Microsoft 顧客契約のユーザーは、[予約トランザクション - List API](https://docs.microsoft.com/rest/api/consumption/reservationtransactions/list) を使用して、予約トランザクション データを取得できます。
+マイクロソフト エンタープライズ契約 (EA) と Microsoft 顧客契約のユーザーは、[予約トランザクション - List API](/rest/api/consumption/reservationtransactions/list) を使用して、予約トランザクション データを取得できます。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

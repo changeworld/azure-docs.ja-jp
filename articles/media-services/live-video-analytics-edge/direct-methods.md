@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge でダイレクト メソッドを使用
 description: Live Video Analytics on IoT Edge では、いくつかのダイレクト メソッドが公開されています。 ダイレクト メソッドは、このトピックで説明する規則に基づいています。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091829"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656242"
 ---
 # <a name="direct-methods"></a>ダイレクト メソッド
 
@@ -140,12 +140,12 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 
 #### <a name="status-codes"></a>状態コード
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|エンティティが見つかりました|  200 |該当なし
-|一般的なユーザー エラー    |400 番台  ||
-|エンティティが見つかりません   |404        ||
-|一般的なサーバー エラー| 500 番台       ||
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| エンティティが見つかりました | 200 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| エンティティが見つかりません | 404 |  |
+| 一般的なサーバー エラー | 500 番台 |  |
 
 ### <a name="graphtopologyset"></a>GraphTopologySet
 
@@ -227,13 +227,13 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 
 #### <a name="status-codes"></a>状態コード
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|エンティティが削除されました|    200|    該当なし|
-|エンティティが見つかりません|  204|    該当なし|
-|一般的なユーザー エラー|   400 番台   ||
-|グラフ トポロジは、1 つまたは複数のグラフ インスタンスによって参照されています| 409 |GraphTopologyInUse|
-|一般的なサーバー エラー| 500 番台   ||
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| エンティティが削除されました | 200 | 該当なし |
+| エンティティが見つかりません | 204 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| グラフ トポロジは、1 つまたは複数のグラフ インスタンスによって参照されています | 409 | GraphTopologyInUse |
+| 一般的なサーバー エラー | 500 番台 |  |
 
 ### <a name="graphtopologylist"></a>GraphTopologyList
 
@@ -278,18 +278,18 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 
 #### <a name="filter-support"></a>フィルターのサポート
 
-|操作      |フィールド   |オペレーター|
+|操作 |フィールド    |オペレーター|
 |---|---|---|
 |$orderby|name  |asc|
 
 
 #### <a name="status-codes"></a>状態コード
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|Success|   200 |該当なし|
-|一般的なユーザー エラー|   400 番台   ||
-|一般的なサーバー エラー| 500 番台   ||
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| Success | 200 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| 一般的なサーバー エラー | 500 番台 |  |
 
 ### <a name="graphinstanceget"></a>GraphInstanceGet
 
@@ -323,12 +323,12 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 
 #### <a name="status-codes"></a>状態コード
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|エンティティが見つかりました   |200|   該当なし|
-|一般的なユーザー エラー|   400 番台   ||
-|エンティティが見つかりません|  404 ||
-|一般的なサーバー エラー| 500 番台   ||
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| エンティティが見つかりました | 200 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| エンティティが見つかりません | 404 |  |
+| 一般的なサーバー エラー | 500 番台 |  |
 
 ### <a name="graphinstanceset"></a>GraphInstanceSet
 
@@ -373,15 +373,15 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 
 #### <a name="status-codes"></a>状態コード
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|既存のエンティティが更新されました    |200    |該当なし|
-|新しいエンティティが作成されました|    201 |該当なし|
-|一般的なユーザー エラー|   400 番台   ||
-|グラフ検証エラー    |400|   GraphValidationError|
-|モジュール検証エラー|  400 |ModuleValidationError|
-|リソース検証エラー |409    |ResourceValidationError|
-|一般的なサーバー エラー  |500 番台||    
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| 既存のエンティティが更新されました | 200 | 該当なし |
+| 新しいエンティティが作成されました | 201 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| グラフ検証エラー | 400 | GraphValidationError |
+| モジュール検証エラー | 400 | ModuleValidationError |
+| リソース検証エラー | 409 | ResourceValidationError |
+| 一般的なサーバー エラー | 500 番台 |  |  |
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 
@@ -414,13 +414,13 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 
 #### <a name="status-codes"></a>状態コード
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|グラフが正常に削除されました|    200|    該当なし|
-|グラフが見つかりません|   204|    該当なし|
-|一般的なユーザー エラー    |400 番台  ||
-|グラフが "停止" 状態ではありません    |409    |OperationNotAllowedInState|
-|一般的なサーバー エラー| 500 番台   ||
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| グラフが正常に削除されました | 200 | 該当なし |
+| グラフが見つかりません | 204 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| グラフが "停止" 状態ではありません | 409 | OperationNotAllowedInState |
+| 一般的なサーバー エラー | 500 番台 |  |
 
 ### <a name="graphinstancelist"></a>GraphInstanceList
 
@@ -472,11 +472,11 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 
 #### <a name="status-codes"></a>状態コード
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|Success    |200    |該当なし|
-|一般的なユーザー エラー|   400 番台   ||
-|一般的なサーバー エラー| 500 番台   ||
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| Success | 200 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| 一般的なサーバー エラー | 500 番台 |  |
 
 ### <a name="graphinstanceactivate"></a>GraphInstanceActivate
 
@@ -516,15 +516,15 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 
 #### <a name="status-codes"></a>状態コード
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|グラフが正常にアクティブ化されました   |200    |該当なし|
-|新しいエンティティが作成されました |201|   該当なし|
-|一般的なユーザー エラー    |400 番台  ||
-|モジュール検証エラー   |400|   ModuleValidationError|
-|リソース検証エラー|    409|    ResourceValidationError|
-|グラフが非アクティブ化中状態です |409    |OperationNotAllowedInState|
-|一般的なサーバー エラー| 500 番台   ||
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| グラフが正常にアクティブ化されました | 200 | 該当なし |
+| 新しいエンティティが作成されました | 201 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| モジュール検証エラー | 400 | ModuleValidationError |
+| リソース検証エラー | 409 | ResourceValidationError |
+| グラフが非アクティブ化中状態です | 409 | OperationNotAllowedInState |
+| 一般的なサーバー エラー | 500 番台 |  |
 
 ### <a name="graphinstancedeactivate"></a>GraphInstanceDeactivate
 
@@ -565,13 +565,13 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 }
 ```
 
-|条件  |status code    |詳細エラー コード|
-|---|---|---|
-|グラフが正常にアクティブ化されました   |200|   該当なし|
-|新しいエンティティが作成されました |201|   該当なし|
-|一般的なユーザー エラー    |400 番台  ||
-|グラフがアクティブ化中状態です   |409|   OperationNotAllowedInState|
-|一般的なサーバー エラー  |500 番台  ||
+| 条件 | status code | 詳細エラー コード |
+|--|--|--|
+| グラフが正常にアクティブ化されました | 200 | 該当なし |
+| 新しいエンティティが作成されました | 201 | 該当なし |
+| 一般的なユーザー エラー | 400 番台 |  |
+| グラフがアクティブ化中状態です | 409 | OperationNotAllowedInState |
+| 一般的なサーバー エラー | 500 番台 |  |
 
 ## <a name="next-steps"></a>次のステップ
 

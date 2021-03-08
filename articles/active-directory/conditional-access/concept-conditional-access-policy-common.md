@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bdaaed72b85bc3c0196a8897be311efa5fb714e2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024385"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366345"
 ---
 # <a name="common-conditional-access-policies"></a>一般的な条件付きアクセス ポリシー
 
@@ -28,7 +28,7 @@ ms.locfileid: "86024385"
 
 緊急アクセス アカウントとそれが重要である理由の詳細については、以下の記事を参照してください。 
 
-* [Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
+* [Azure AD で緊急アクセス用アカウントを管理する](../roles/security-emergency-access.md)
 * [Azure Active Directory で回復性があるアクセス制御管理戦略を作成する](../authentication/concept-resilient-controls.md)
 
 ## <a name="typical-policies-deployed-by-organizations"></a>組織によってデプロイされる一般的なポリシー
@@ -42,7 +42,7 @@ ms.locfileid: "86024385"
 
 ## <a name="additional-policies"></a>追加のポリシー
 
-* [サインオン リスクベースの条件付きアクセス (Azure AD Premium P2 が必要)](howto-conditional-access-policy-risk.md)
+* [サインイン リスクベースの条件付きアクセス (Azure AD Premium P2 が必要)](howto-conditional-access-policy-risk.md)
 * [ユーザー リスクベースの条件付きアクセス (Azure AD Premium P2 が必要)](howto-conditional-access-policy-risk-user.md)
 * [信頼できる場所を MFA 登録で必須にする](howto-conditional-access-policy-registration.md)
 * [場所ごとにアクセスをブロックする](howto-conditional-access-policy-location.md)

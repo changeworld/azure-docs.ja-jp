@@ -9,12 +9,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004342"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024165"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 と Azure Functions および Cognitive Services を使用して言語翻訳ツールを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "89004342"
 
 このチュートリアルを完了するには、最初に次のタスクを行います。
 
-* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)」の手順に従って、DevKit を準備します。
+* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](./iot-hub-arduino-iot-devkit-az3166-get-started.md)」の手順に従って、DevKit を準備します。
 
 ## <a name="create-azure-cognitive-service"></a>Azure Cognitive Service を作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "89004342"
 
 ## <a name="open-sample-project"></a>サンプル プロジェクトを開く
 
-1. IoT DevKit がお使いのコンピューターに接続されて**いない**ことを確認します。 まず VS Code を起動し、DevKit をコンピューターに接続します。
+1. IoT DevKit がお使いのコンピューターに接続されて **いない** ことを確認します。 まず VS Code を起動し、DevKit をコンピューターに接続します。
 
 1. `F1` をクリックしてコマンド パレットを開き、 **[Azure IoT Device Workbench:Open Examples...]\(Azure IoT Device Workbench: 例を開く...\)** を入力して選択します。次に、 **[IoT DevKit]** をボードとして選択します。
 
@@ -83,11 +83,11 @@ ms.locfileid: "89004342"
 
 ## <a name="build-and-upload-device-code"></a>デバイス コードをビルドしてアップロードする
 
-1. 次のようにして、DevKit を**構成モード**に切り替えます。
+1. 次のようにして、DevKit を **構成モード** に切り替えます。
    * **A** ボタンを押しながら、
    * **[リセット]** ボタンを押して離します。
 
-   画面に、DevKit の ID と**構成**が表示されます。
+   画面に、DevKit の ID と **構成** が表示されます。
 
    ![DevKit 構成モード](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
@@ -152,4 +152,4 @@ Azure Functions と Cognitive Services を使用して IoT DevKit を翻訳ツ�
 他のチュートリアルに進んで、次の方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [IoT DevKit AZ3166 を Azure IoT リモート監視ソリューション アクセラレータに接続する](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [IoT DevKit AZ3166 を Azure IoT リモート監視ソリューション アクセラレータに接続する](./iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)

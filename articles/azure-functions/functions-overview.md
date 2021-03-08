@@ -1,94 +1,67 @@
 ---
 title: Azure Functions の概要
-description: Azure Functions を使用して非同期ワークロードを最適化する方法を簡単に説明します。
-author: mattchenderson
+description: 堅牢なサーバーレス アプリの作成に Azure Functions を活用する方法について説明します。
+author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
-ms.date: 01/16/2020
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 11/20/2020
+ms.author: cshoe
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77621000"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862406"
 ---
-# <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要
+# <a name="introduction-to-azure-functions"></a>Azure Functions の概要
 
-Azure Functions を使用すると、アプリケーションのインフラストラクチャについて気にすることなく、小さなコード ("Functions") を実行することができます。 Azure Functions では、アプリケーションを大規模に実行し続けるために必要な最新のサーバーがすべて、クラウド インフラストラクチャによって提供されます。
+Azure Functions は、記述するコードと管理するインフラストラクチャを減らし、コストを節約できるサーバーレス ソリューションです。 クラウド インフラストラクチャによって、アプリケーションの実行を維持するために必要な最新のリソースがすべて提供されるので、サーバーのデプロイや管理について心配する必要はありません。
 
-Functions は特殊なイベントによって "トリガー" されます。 [サポートされるトリガー](./functions-triggers-bindings.md)としては、データの変更に対する応答や、メッセージへの応答、スケジュールに基づく実行、HTTP 要求の結果などがあります。
+ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。<br /><br />
 
-数あるサービスを対象としたコードを直接記述することもできますが、バインドを使用すれば、他のサービスとの統合を効率化することができます。 バインディングにより、[Azure やサードパーティのさまざまなサービスに対して宣言型の手法でアクセス](./functions-triggers-bindings.md)することができます。
+> [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
 
-## <a name="features"></a>特徴
+通常、システムは、一連の重大なイベントに対処できるように構築されます。 Web API の構築、データベースの変更への対応、IoT データ ストリームの処理、メッセージ キューの管理など、その目的が何であれ、どのアプリケーションにも、そうしたイベントが発生したときに、なんらかのコードを実行する手段が必要です。
 
-Azure Functions のいくつかの重要な機能を次に示します。
+このニーズを満たすために、Azure Functions は、2 つの有効な方法で "コンピューティングをオンデマンドで" 提供します。
 
-- **サーバーレス アプリケーション**: Functions を使用すると、Microsoft Azure 上で[サーバーレス](https://azure.microsoft.com/solutions/serverless/)のアプリケーションを開発できます。
+まず、Azure Functions では、利用しやすいコード ブロックの中にシステムのロジックを実装することができます。 これらのコード ブロックを "関数" といいます。 重大なイベントに対応しなければならないときは、各種の関数をいつでも実行できます。
 
-- **言語の選択**:　[C#、Java、JavaScript、Python、PowerShell](supported-languages.md) のいずれかの言語を自由に選んで Functions を記述できます。
+2 つ目は、要求の増大に伴って、Azure Functions は、必要な分のリソースと関数インスタンスを、必要な間だけ使用して需要を満たします。 要求が少なくなれば、余分なリソースとアプリケーション インスタンスは自動的に解放されます。
 
-- **従量課金制の価格モデル**: コードの実行に要した時間に対してのみ課金されます。 [価格に関するセクション](#pricing)にある従量課金ホスティング プラン オプションを確認してください。  
+これらのコンピューティング リソースは一体どこから来るのでしょうか。 Azure Functions は、アプリケーションの需要を満たすうえで[必要な分だけのコンピューティング リソース](./functions-scale.md)を提供します。
 
-- **独自の依存関係を使用**: Functions では NuGet と NPM がサポートされるので、お気に入りのライブラリを使用できます。
+オンデマンドでコンピューティング リソースを提供することは、Azure Functions の[サーバーレス コンピューティング](https://azure.microsoft.com/solutions/serverless/)の本質と言えます。
 
-- **セキュリティの統合**: Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる Functions を保護できます。
+## <a name="scenarios"></a>シナリオ
 
-- **簡単な手順で統合**: Azure サービスや SaaS (サービスとしてのソフトウェア) プランと簡単に統合できます。
+多くの場合、関数は、[さまざまなクラウド サービスと連携](./functions-triggers-bindings.md)して多機能な実装を実現します。
 
-- **柔軟な開発**: 継続的インテグレーションを設定し、[GitHub](../app-service/scripts/cli-continuous-deployment-github.md) や [Azure DevOps Services](../app-service/scripts/cli-continuous-deployment-vsts.md) などの[サポート対象開発ツール](../app-service/deploy-local-git.md)を使ってコードをデプロイすることができます。
+以下に示したのは、Azure Functions の代表的なシナリオの例です。"_すべてのシナリオを網羅したものではありません_"。
 
-- **ステートフルなサーバーレス アーキテクチャ**: [Durable Functions](durable/durable-functions-overview.md) を使用してサーバーレス アプリケーションをオーケストレーションできます。
+| 目的 | 手段 |
+| --- | --- |
+| **Web API をビルドする** | [HTTP トリガー](./functions-bindings-http-webhook.md)を使用して Web アプリケーションのエンドポイントを実装します |
+| **ファイルのアップロードを処理する** | [Blob Storage](./functions-bindings-storage-blob.md) のファイルがアップロードされたり変更されたりしたときにコードを実行します |
+| **サーバーレス ワークフローを作成する** | [Durable Functions](./durable/durable-functions-overview.md) を使用して一連の関数のチェーンを作成します。 |
+| **データベースの変更に対処する** | [Cosmos DB](./functions-bindings-cosmosdb-v2.md) でドキュメントが作成または更新されたときにカスタム ロジックを実行します |
+| **スケジュールされたタスクを実行する** | [設定した時刻](./functions-bindings-timer.md)にコードを実行します |
+| **信頼性の高いメッセージ キュー システムを作成する** | [Queue Storage](./functions-bindings-storage-queue.md)、[Service Bus](./functions-bindings-service-bus.md)、[Event Hubs](./functions-bindings-event-hubs.md) のいずれかを使用してメッセージ キューを処理します |
+| **IoT データ ストリームを分析する** | [IoT デバイスからデータ](./functions-bindings-event-iot.md)を収集して処理します |
+| **データをリアルタイムで処理する** | [Functions と SignalR](./functions-bindings-signalr-service.md) を使用して、その時点のデータに対応します |
 
-- **オープンソース**: Functions ランタイムはオープン ソースであり、[GitHub で入手](https://github.com/azure/azure-webjobs-sdk-script)できます。
+実際に関数を作成するときは、次のオプションとリソースを利用できます。
 
-## <a name="what-can-i-do-with-functions"></a>Functions でできること
+- **優先する言語の使用**: [C#、Java、JavaScript、PowerShell、Python](./supported-languages.md) で関数を作成します。それ以外の言語については、[カスタム ハンドラー](./functions-custom-handlers.md)を使用します (実質上、言語の制限はありません)。
 
-Functions は、一括データの処理、システムの統合、モノのインターネット (IoT) の操作、単純な API とマイクロサービスの構築に適した優れたソリューションです。
+- **デプロイの自動化**: ツールベースのアプローチから外部パイプラインの使用まで、[無数のデプロイ オプション](./functions-deployment-technologies.md)が利用できます。
 
-主なシナリオに対応した一連のテンプレートが用意されています。その例を次に示します。
+- **関数のトラブルシューティング**: [監視ツール](./functions-monitoring.md)と [テスト戦略](./functions-test-a-function.md)を使用して、アプリの分析情報を入手します。
 
-- **HTTP**: [HTTP 要求](functions-create-first-azure-function.md)に基づいてコードを実行します。
-
-- **Timer**: [あらかじめ定義した時刻に実行](./functions-create-scheduled-function.md)するようコードをスケジュールします。
-
-- **Azure Cosmos DB**: [Azure Cosmos DB の新規ドキュメントと変更ドキュメント](./functions-create-cosmos-db-triggered-function.md)を処理します。
-
-- **Blob Storage**: [Azure Storage Blob の新規ドキュメントと変更ドキュメント](./functions-create-storage-blob-triggered-function.md)を処理します。
-
-- **Queue storage**: [Azure Storage キュー メッセージ](./functions-create-storage-queue-triggered-function.md)に応答します。
-
-- **Event Grid**: [サブスクリプションとフィルターを介して Azure Event Grid イベント](../event-grid/resize-images-on-storage-blob-upload-event.md)に応答します。
-
-- **イベント ハブ**: [大量の Azure Event Hubs イベント](./functions-bindings-event-hubs.md)に応答します。
-
-- **Service Bus キュー**: [Service Bus キュー メッセージに応答](./functions-bindings-service-bus.md)することで、別の Azure サービスやオンプレミス サービスに接続します。
-
-- **Service Bus トピック**: [Service Bus トピック メッセージ](./functions-bindings-service-bus.md)に応答することで、別の Azure サービスやオンプレミス サービスに接続します。
-
-## <a name="how-much-does-functions-cost"></a><a name="pricing"></a>Azure Functions の価格
-
-Azure Functions には、3 種類の価格プランがあります。 ニーズに最適なものを以下から選択します。
-
-- **従量課金プラン**: Azure には、必要なコンピューティング リソースがすべて用意されています。 リソースの管理について考慮する必要がなく、コードを実行した時間に応じた料金のみを支払います。
-
-- **Premium プラン**: 常にオンライン状態で即時に応答する準備が整った、事前ウォーミングされたインスタンスをいくつか自分で指定します。 Functions が実行されると、追加で必要となるコンピューティング リソースが Azure から提供されます。 常時実行される事前ウォーミングされたインスタンスに加え、Azure によってアプリがスケールインまたはスケールアウトされたときに追加で使用されるインスタンスが支払いの対象となります。
-
-- **App Service プラン**: Functions を Web アプリと同様に実行できます。 App Service を他のアプリケーションに使用している場合、追加コストを負担することなく、同じプランで Functions を実行できます。
-
-ホスティング プランの詳細については、[Azure Functions のホスティング プランの比較](functions-scale.md)に関するページをご覧ください。 価格の詳細については、 [Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。
+- **柔軟な価格オプション**: [従量課金](./pricing.md)プランでは、関数が実行されている間だけ支払いが発生します。これに対し、[Premium](./pricing.md) プランと [App Service](./pricing.md) プランでは、特別なニーズに対応するための機能が提供されます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [初めての Azure Functions の作成](functions-create-first-function-vs-code.md)  
-  [Visual Studio Code](functions-create-first-function-vs-code.md)、[コマンドライン](functions-create-first-azure-function-azure-cli.md)、または [Azure portal](functions-create-first-azure-function.md) で始めましょう。
-
-- [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-  Azure Functions ランタイムに関する詳細な技術情報と、Functions のコーディングやトリガーおよびバインドの定義に関するリファレンスを提供します。
-
-- [Azure Functions のスケーリング方法](functions-scale.md)  
-  Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。
-
-- [Azure App Service とは](../app-service/overview.md)  
-  Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service を活用しています。
+> [!div class="nextstepaction"]
+> [レッスン、サンプル、対話型チュートリアルで始める](./functions-get-started.md)

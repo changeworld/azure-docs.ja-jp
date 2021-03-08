@@ -4,13 +4,13 @@ description: この記事では、データの損失をデータ回復によっ�
 author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
-ms.author: v-umha
-ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.author: v-ummehabiba
+ms.openlocfilehash: 9ece624546cab1b8b6fab8c19f4401bd050f6267
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683888"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179886"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>FarmBeats のディザスター リカバリー
 
@@ -45,18 +45,18 @@ FarmBeats デプロイの前述の各データ ストアに対して、フェー
 回復された Cosmos DB のアクセスキーをコピーし、新しい FarmBeats Datahub Key Vault を更新します。
 
 
-  ![ディザスター リカバリー](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
+  ![アクセス キーのコピーを取得する場所が強調表示されているスクリーンショット。](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > 回復された Cosmos DB の URL をコピーし、新しい FarmBeats Datahub App Service 構成で更新します。 これで、新しい FarmBeats デプロイで Cosmos DB アカウントを削除することができます。
 
-  ![ディザスター リカバリー](./media/disaster-recovery-for-farmbeats/configuration.png)
+  ![復元された Cosmos DB の URL をコピーする場所を示すスクリーンショット。](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>ストレージ アカウントを構成する
 
 回復されたストレージ アカウントのアクセスキーをコピーし、新しい FarmBeats Datahub Key Vault 内で更新します。
 
-![ディザスター リカバリー](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
+![復元されたストレージ アカウントのアクセス キーをコピーする場所を示すスクリーンショット。](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > 新しい FarmBeats Batch VM 構成ファイルでストレージ アカウント名を確実に更新します。

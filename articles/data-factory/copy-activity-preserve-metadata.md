@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory のコピー アクティビティを使用してメタデータと ACL を保持する
 description: Azure Data Factory のコピー アクティビティを使用して、コピー中にメタデータと ACL を保持する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 396a598d143e85687f9dfbf765b3c18736627e41
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891761"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387718"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティを使用してメタデータと ACL を保持する
 
@@ -26,7 +21,7 @@ ms.locfileid: "82891761"
 
 ## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Lake 移行用にメタデータを保持する
 
-[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) など、ある Data Lake から別の Data Lake にデータを移行するときに、データと共にファイルのメタデータを保持することもできます。
+[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md) などのデータ レイク間でデータを移行する場合は、データと共にファイルのメタデータを保持することもできます。
 
 コピー アクティビティでは、データのコピー中に次の属性を保持できます。
 
@@ -35,7 +30,7 @@ ms.locfileid: "82891761"
 
 **メタデータの違いに対処する:** Amazon S3 と Azure Storage では、顧客が指定したメタデータのキーにさまざまな文字セットが許可されています。 コピー アクティビティを使用してメタデータを保持することを選択すると、ADF によって無効な文字が自動的に '_' に置き換えられます。
 
-バイナリ形式を使用して Amazon S3/Azure Data Lake Storage Gen2/Azure Blob から Azure Data Lake Storage Gen2/Azure Blob にファイルをそのままコピーすると、アクティビティ作成のための **[コピー アクティビティ]**  >  **[設定]** タブまたは [データのコピー] ツールの **[設定]** ページに、 **[保持]** オプションが表示されます。
+バイナリ形式を使用して Amazon S3/Azure Data Lake Storage Gen2/Azure Blob/Azure File Storage から Azure Data Lake Storage Gen2/Azure Blob/Azure File Storage にファイルをそのままコピーする場合は、アクティビティ作成のための **[コピー アクティビティ]**  >  **[設定]** タブに、または [データのコピー] ツールの **[設定]** ページに、 **[保持]** オプションが表示されます。
 
 ![コピー アクティビティでのメタデータの保持](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 

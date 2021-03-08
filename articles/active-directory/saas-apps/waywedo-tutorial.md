@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 310a42d25ce7fb7970777e8f36abbbee562ab01d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523878"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608937"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>チュートリアル:Way We Do と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523878"
 * ユーザーが自分の Azure AD アカウントを使用して Way We Do に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -95,7 +95,7 @@ Way We Do で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="configure-way-we-do-sso"></a>Way We Do SSO の構成
 
-1. Way We Do 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護された Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Way We Do 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **マイアプリによるセキュリティで保護された Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -105,11 +105,11 @@ Way We Do で Azure AD SSO を構成してテストするには、次の構成�
 
 1. Way We Do を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Way We Do 企業サイトにサインインして、次の手順を実行します。
 
-1. Way We Do の任意のページで右上隅にある**人アイコン**をクリックし、ドロップダウン メニューで **[Account]\(アカウント\)** をクリックします。
+1. Way We Do の任意のページで右上隅にある **人アイコン** をクリックし、ドロップダウン メニューで **[Account]\(アカウント\)** をクリックします。
 
     ![Way We Do アカウント](./media/waywedo-tutorial/tutorial_waywedo_account.png)
 
-1. **メニュー アイコン**をクリックしてプッシュ ナビゲーション メニューを開き、 **[Single Sign On]\(シングル サイン オン\)** をクリックします。
+1. **メニュー アイコン** をクリックしてプッシュ ナビゲーション メニューを開き、 **[Single Sign On]\(シングル サイン オン\)** をクリックします。
 
     ![Way We Do シングル](./media/waywedo-tutorial/tutorial_waywedo_single.png)
 
@@ -117,26 +117,26 @@ Way We Do で Azure AD SSO を構成してテストするには、次の構成�
 
     ![Way We Do 保存](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. **[Turn on single sign-on]\(シングル サイン オンの有効化\)** トグルをクリックして、 **[Yes]\(はい\)** に切り替えて、シングル サインオンを有効にします。
+    1. **[Turn on single sign-on]\(シングル サイン オンの有効化\)** トグルをクリックして、**[Yes]\(はい\)** に切り替えて、シングル サインオンを有効にします。
 
-    b. **[Single sign-on name]\(シングル サイン オン名\)** テキストボックスに、自分の名前を入力します。
+    1. **[Single sign-on name]\(シングル サイン オン名\)** テキストボックスに、自分の名前を入力します。
 
-    c. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    1. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    d. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    1. **[SAML SSO URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    e. **[Certificate]\(証明書\)** の横にある**選択**ボタンをクリックして、証明書をアップロードします。
+    1. **[Certificate]\(証明書\)** の横にある **選択** ボタンをクリックして、証明書をアップロードします。
 
-    f. **オプション設定** -
-    
-    * Enable Passwords (パスワードを有効にする) - このオプションを有効にすると、ユーザーがシングル サインオンのみを使用できるように通常のパスワードが Way We Do に対して機能します。
+    1. **オプション設定** -
 
-    * Enable Auto-provisioning (自動プロビジョニングを有効にする) - このオプションを有効にすると、サインオンに使用されている電子メール アドレスが Way We Do 内のユーザー リストと自動的に比較されます。 電子メール アドレスが Way We Do 内のアクティブ ユーザーと一致しない場合は、サインインするユーザーに対して新しいユーザー アカウントが自動的に追加され、不足している情報があれば要求されます。
+        * Enable Passwords (パスワードを有効にする) - このオプションを有効にすると、ユーザーがシングル サインオンのみを使用できるように通常のパスワードが Way We Do に対して機能します。
 
-      > [!NOTE]
-      > シングル サインオンを介して追加されたユーザーは、一般ユーザーとして追加され、システムでのロールは割り当てられません。 管理者は編集者または管理者としてセキュリティ ロールにアクセスし、それを変更することができると共に、1 つまたは複数の Org Chart ロールを割り当てることもできます。
+        * Enable Auto-provisioning (自動プロビジョニングを有効にする) - このオプションを有効にすると、サインオンに使用されている電子メール アドレスが Way We Do 内のユーザー リストと自動的に比較されます。 電子メール アドレスが Way We Do 内のアクティブ ユーザーと一致しない場合は、サインインするユーザーに対して新しいユーザー アカウントが自動的に追加され、不足している情報があれば要求されます。
 
-    g. **[Save]\(保存\)** をクリックして設定を保持します。
+          > [!NOTE]
+          > シングル サインオンを介して追加されたユーザーは、一般ユーザーとして追加され、システムでのロールは割り当てられません。 管理者は編集者または管理者としてセキュリティ ロールにアクセスし、それを変更することができると共に、1 つまたは複数の Org Chart ロールを割り当てることもできます。
+
+    1. **[Save]\(保存\)** をクリックして設定を保持します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -177,12 +177,12 @@ Way We Do で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Way We Do] タイルを選択すると、SSO を設定した Way We Do に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Way We Do] タイルを選択すると、SSO を設定した Way We Do に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

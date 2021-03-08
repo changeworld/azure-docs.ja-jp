@@ -4,12 +4,12 @@ description: このチュートリアルでは、Kestrel を使用して ASP.NET
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441529"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91326237"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
@@ -354,7 +354,7 @@ if ($cert -eq $null)
 
 すべてのファイルを保存した後、F5 キーを押してアプリケーションをローカルで実行します。  アプリケーションのデプロイ後、Web ブラウザーで https:\//localhost:443 が開かれます。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
 
-![投票アプリケーション][image2]
+![URL https://localhost/ のブラウザー ウィンドウで実行されている Service Fabric Voting Sample アプリのスクリーンショット。][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>クラスター ノードに証明書をインストールする
 
@@ -371,7 +371,7 @@ if ($cert -eq $null)
 > [!Warning]
 > アプリケーションの開発およびテスト用には自己署名証明書で十分です。 運用アプリケーションの場合は、自己署名証明書ではなく、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>Azure Load Balancer のポート 443 を開く
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>Azure ロード バランサーと仮想ネットワークでポート 443 を開く
 
 ロード バランサーのポート 443 がまだ開かれていない場合は開きます。
 
@@ -396,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
+関連付けられている仮想ネットワークに対して同じ操作を行います。
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
 ## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
 
 すべてのファイルを保存します。"デバッグ" から "リリース" に切り替えた後、F6 キーを押してリビルドします。  ソリューション エクスプローラーで、 **[Voting]** を右クリックし、 **[発行]** を選択します。 [クラスターへのアプリケーションのデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページで作成したクラスターの接続エンドポイントを選択するか、別のクラスターを選択します。  **[発行]** をクリックして、リモート クラスターにアプリケーションを発行します。
 
 アプリケーションがデプロイされたら、Web ブラウザーを開き、`https://mycluster.region.cloudapp.azure.com:443` に移動します (クラスターの接続エンドポイントで URL を更新します)。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
 
-![投票アプリケーション][image3]
+![URL https://mycluster.region.cloudapp.azure.com:443 のブラウザー ウィンドウで実行されている Service Fabric Voting Sample アプリのスクリーンショット。][image3]
 
 ## <a name="next-steps"></a>次のステップ
 

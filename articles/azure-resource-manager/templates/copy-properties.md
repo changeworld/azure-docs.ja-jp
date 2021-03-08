@@ -1,18 +1,20 @@
 ---
 title: プロパティの複数のインスタンスを定義する
-description: Azure Resource Manager テンプレートで copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: 446a303104e6b538129cd22d1f1fbbba6282b2ee
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678462"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905929"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM テンプレートでのプロパティの反復処理
 
-この記事では、Azure Resource Manager (ARM) テンプレートでプロパティの複数のインスタンスを作成する方法について説明します。 テンプレート内のリソースの properties セクションに **copy** 要素を追加することにより、デプロイ時にプロパティの項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) でプロパティの複数のインスタンスを作成する方法について説明します。 テンプレート内のリソースの properties セクションに `copy` 要素を追加することにより、デプロイ時にプロパティの項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+
+`copy` をプロパティに適用する場合でも、最上位リソースでのみ `copy` を使用できます。 子リソースを最上位リソースに変更する方法の詳細については、「[子リソースの反復処理](copy-resources.md#iteration-for-a-child-resource)」を参照してください。
 
 [リソース](copy-resources.md)、[変数](copy-variables.md)、および [出力](copy-outputs.md)でもコピーを使用できます。
 
@@ -30,11 +32,11 @@ ms.locfileid: "84678462"
 ]
 ```
 
-**name**には、作成するリソース プロパティの名前を指定します。
+`name`には、作成するリソース プロパティの名前を指定します。
 
-**count** プロパティは、プロパティに対して必要な反復の数を指定します。
+`count` プロパティは、プロパティに対して必要な反復の数を指定します。
 
-**input** プロパティは、繰り返すプロパティを指定します。 **input** プロパティの値から構築された要素の配列を作成します。
+`input` プロパティは、繰り返すプロパティを指定します。 `input` プロパティの値から構築された要素の配列を作成します。
 
 ## <a name="copy-limits"></a>コピー制限
 
@@ -51,7 +53,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 
 ## <a name="property-iteration"></a>プロパティの反復処理
 
-次の例は、仮想マシンで dataDisks プロパティに `copy` を適用する方法を示しています。
+次の例は、仮想マシンで `dataDisks` プロパティに `copy` を適用する方法を示しています。
 
 ```json
 {
@@ -95,7 +97,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 }
 ```
 
-プロパティの反復処理内で `copyIndex` を使用する場合、反復処理の名前を指定する必要があります。 プロパティの反復処理では、オフセット引数もサポートされています。 オフセットは、copyIndex('dataDisks', 1) など、反復処理の名前の後に指定する必要があります。
+プロパティの反復処理内で `copyIndex` を使用する場合、反復処理の名前を指定する必要があります。 プロパティの反復処理では、オフセット引数もサポートされています。 オフセットは、`copyIndex('dataDisks', 1)` など、反復処理の名前の後に指定する必要があります。
 
 Resource Manager はデプロイ中に `copy` 配列を展開します。 配列の名前がプロパティの名前になります。 入力値がオブジェクトのプロパティになります。 デプロイされたテンプレートは次のようになります。
 
@@ -186,7 +188,7 @@ Resource Manager はデプロイ中に `copy` 配列を展開します。 配列
 }
 ```
 
-copy 要素は配列であるため、リソースの複数のプロパティを指定できます。
+`copy` 要素は配列であるため、リソースの複数のプロパティを指定できます。
 
 ```json
 {
@@ -258,11 +260,10 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルを実行するには、[チュートリアル: ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)に関するページを参照してください。
+* チュートリアルについては、「[チュートリアル:ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
 * copy 要素のその他の使用方法については、以下を参照してください。
   * [ARM テンプレートでのリソースの反復処理](copy-resources.md)
   * [ARM テンプレートでの変数の反復処理](copy-variables.md)
   * [ARM テンプレートでの出力の反復処理](copy-outputs.md)
-* テンプレートのセクションの詳細については、[ARM テンプレートの作成](template-syntax.md)に関する記事を参照してください。
-* テンプレートをデプロイする方法については、[ARM テンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関する記事を参照してください。
-
+* テンプレートのセクションの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* テンプレートをデプロイする方法の詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

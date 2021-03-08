@@ -1,19 +1,18 @@
 ---
 title: チュートリアル - Visual Studio で Azure Stream Analytics ジョブ用の C# ユーザー定義関数を作成する (プレビュー)
 description: このチュートリアルでは、Visual Studio で Stream Analytics ジョブ用の C# ユーザー定義関数を作成する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: b1a361b2c1b1010c6593defa37ef92a3c36b0693
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015613"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020470"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>チュートリアル:Azure Stream Analytics ジョブの C# ユーザー定義関数を記述する (プレビュー)
 
@@ -31,12 +30,12 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 始める前に、以下の前提条件が完了していることを確認してください。
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-* [Visual Studio の Stream Analytics ツール](stream-analytics-tools-for-visual-studio-install.md)と、**Azure 開発**ワークロードまたは**データの保存と処理**ワークロードをインストールします。
+* [Visual Studio の Stream Analytics ツール](stream-analytics-tools-for-visual-studio-install.md)と、**Azure 開発** ワークロードまたは **データの保存と処理** ワークロードをインストールします。
 * IoT Edge ジョブを構築している場合は、既存の [Stream Analytics Edge 開発ガイド](stream-analytics-tools-for-visual-studio-edge-jobs.md)を参照してください。
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>Azure ストレージ アカウントでコンテナーを作成する
 
-作成したコンテナーは、コンパイルされた C# パッケージを格納するために使用されます。 Edge ジョブを作成した場合、このストレージ アカウントは IoT Edge デバイスへのパッケージのデプロイにも使用されます。 Stream Analytics ジョブごとに専用のコンテナーを使用します。 複数の Stream Analytics Edge ジョブで同じコンテナーを再利用することはサポートされていません。 既存のコンテナーを含むストレージ アカウントが既にある場合は、それを使用できます。 ない場合は、[新しいコンテナーを作成する](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)必要があります。 
+作成したコンテナーは、コンパイルされた C# パッケージを格納するために使用されます。 Edge ジョブを作成した場合、このストレージ アカウントは IoT Edge デバイスへのパッケージのデプロイにも使用されます。 Stream Analytics ジョブごとに専用のコンテナーを使用します。 複数の Stream Analytics Edge ジョブで同じコンテナーを再利用することはサポートされていません。 既存のコンテナーを含むストレージ アカウントが既にある場合は、それを使用できます。 ない場合は、[新しいコンテナーを作成する](../storage/blobs/storage-quickstart-blobs-portal.md)必要があります。 
 
 ## <a name="create-a-stream-analytics-project-in-visual-studio"></a>Visual Studio で Stream Analytics プロジェクトを作成する
 
@@ -46,13 +45,13 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 3. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、 **[Azure Stream Analytics Edge アプリケーション]** または **[Azure Stream Analytics アプリケーション]** を選択します。
 
-4.  プロジェクトの**名前**、**場所**、および**ソリューション名**を入力し、 **[OK]** を選択します。
+4.  プロジェクトの **名前**、**場所**、および **ソリューション名** を入力し、 **[OK]** を選択します。
 
     ![Visual Studio で Azure Stream Analytics Edge プロジェクトを作成する](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
 ## <a name="configure-assembly-package-path"></a>アセンブリ パッケージのパスを構成する
 
-1. Visual Studio を開き、**ソリューション エクスプローラー**に移動します。
+1. Visual Studio を開き、**ソリューション エクスプローラー** に移動します。
 
 2. ジョブ構成ファイル `EdgeJobConfig.json` をダブルクリックします。
 
@@ -71,7 +70,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 ## <a name="write-a-c-udf-with-codebehind"></a>分離コードを使用して C# の UDF を作成する
 分離コード ファイルは、1 つの ASA クエリ スクリプトに関連付けられている C# ファイルです。 Visual Studio Tools は、自動的に分離コード ファイルを圧縮して、送信時に Azure ストレージ アカウントにアップロードします。 すべてのクラスを *public* として定義し、すべてのオブジェクトを *static public* として定義する必要があります。
 
-1. **ソリューション エクスプローラー**で **Script.asql** を展開し、**Script.asaql.cs** 分離コード ファイルを探します。
+1. **ソリューション エクスプローラー** で **Script.asql** を展開し、**Script.asaql.cs** 分離コード ファイルを探します。
 
 2. コードを次のサンプルに置き換えます。
 
@@ -97,7 +96,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 ## <a name="implement-the-udf"></a>UDF を実装する
 
-1. **ソリューション エクスプローラー**で、**Script.asaql** ファイルを開きます。
+1. **ソリューション エクスプローラー** で、**Script.asaql** ファイルを開きます。
 
 2. 既存のクエリを次のクエリに置き換えます。
 
@@ -111,7 +110,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 1. [温度シミュレーター サンプル データ ファイル](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json)をダウンロードします。
 
-2. **ソリューション エクスプローラー**で、 **[入力]** を展開し、**Input.json** を右クリックして、 **[ローカル入力の追加]** を選択します。
+2. **ソリューション エクスプローラー** で、 **[入力]** を展開し、**Input.json** を右クリックして、 **[ローカル入力の追加]** を選択します。
 
    ![Visual Studio で Stream Analytics ジョブにローカル入力を追加する](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
@@ -144,7 +143,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 ![Visual Studio から Azure に Stream Analytics Edge ジョブを送信する](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 
 ## <a name="deploy-to-iot-edge-devices"></a>IoT Edge デバイスにデプロイする
-Stream Analytics Edge ジョブを作成することを選択した場合に、これを IoT Edge モジュールとしてデプロイできるようになりました。 [IoT Edge クイック スタート](https://docs.microsoft.com/azure/iot-edge/quickstart)に従って、IoT ハブを作成し、IoT Edge デバイスを登録し、デバイスに IoT Edge ランタイムをインストールして開始します。 次に「[ジョブのデプロイ](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)」チュートリアルに従って、Stream Analytics ジョブを IoT Edge モジュールとしてデプロイします。 
+Stream Analytics Edge ジョブを作成することを選択した場合に、これを IoT Edge モジュールとしてデプロイできるようになりました。 [IoT Edge クイック スタート](../iot-edge/quickstart.md)に従って、IoT ハブを作成し、IoT Edge デバイスを登録し、デバイスに IoT Edge ランタイムをインストールして開始します。 次に「[ジョブのデプロイ](../iot-edge/tutorial-deploy-stream-analytics.md#deploy-the-job)」チュートリアルに従って、Stream Analytics ジョブを IoT Edge モジュールとしてデプロイします。 
 
 ## <a name="next-steps"></a>次のステップ
 

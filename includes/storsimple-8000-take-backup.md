@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e923fdf560692c645c8a69e7e26d13f69d6920c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181227"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376019"
 ---
 ### <a name="to-take-a-backup"></a>バックアップを作成するには
 
@@ -19,13 +19,13 @@ ms.locfileid: "67181227"
 
 2. **[バックアップ ポリシー]** ブレードで、 **[+ ポリシーの追加]** をクリックします。
 
-    ![バックアップ ポリシーの追加](./media/storsimple-8000-take-backup/step8takebu2.png)
+    ![バックアップ ポリシーの追加 2](./media/storsimple-8000-take-backup/step8takebu2.png)
 
 3. **[バックアップ ポリシーの作成]** ブレードで、バックアップ ポリシーに 3 ～ 150 文字の名前を指定します。
 
 4. バックアップするボリュームを選択します。 複数のボリュームを選択した場合、ボリュームはグループ化され、クラッシュ整合バックアップが作成されます。
 
-    ![バックアップ ポリシーの追加](./media/storsimple-8000-take-backup/step8takebu4.png)
+    ![バックアップ ポリシーの追加 3](./media/storsimple-8000-take-backup/step8takebu4.png)
 
 5. **[最初のスケジュールの追加]** ブレードで、次の操作を行います。
 
@@ -35,11 +35,11 @@ ms.locfileid: "67181227"
     4. バックアップ ポリシーの開始日時を選択します。
     5. **[OK]** をクリックしてバックアップ ポリシーを作成します。
 
-        ![バックアップ ポリシーの追加](./media/storsimple-8000-take-backup/step8takebu5.png) 
+        ![バックアップ ポリシーの追加 4](./media/storsimple-8000-take-backup/step8takebu5.png) 
 
 6. **[作成]** をクリックすると、バックアップ ポリシーの作成が開始されます。 バックアップ ポリシーが正常に作成されると、通知が表示されます。 バックアップ ポリシーの一覧も更新されます。
       
-      ![バックアップ ポリシーの追加](./media/storsimple-8000-take-backup/step8takebu9.png)
+      ![バックアップ ポリシーの追加 5](./media/storsimple-8000-take-backup/step8takebu9.png)
       
       これで、スケジュールに従ってボリューム データをバックアップするバックアップ ポリシーが作成されました。
 

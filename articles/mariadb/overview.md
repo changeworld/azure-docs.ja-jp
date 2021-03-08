@@ -1,29 +1,29 @@
 ---
 title: 概要 - Azure Database for MariaDB
 description: MySQL Community Edition をベースとした、Microsoft クラウドのリレーショナル データベース サービス、Azure Database for MariaDB サービスについて説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
-ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c365dee2b3ac32a62b38d0b3273f2f13e402936
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79535563"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662019"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 
 Azure Database for MariaDB は、Microsoft Cloud のリレーショナル データベース サービスです。 Azure Database for MariaDB は、[MariaDB コミュニティ エディション](https://mariadb.org/download/) (GPLv2 ライセンスで入手可能) のデータベース エンジン バージョン 10.2 および 10.3 を基にしています。
 
-Azure Database for MariaDB では次のものが提供されます。
+Azure Database for MariaDB では、次のことを実現できます。
 
 - 追加コストなしの組み込みの高可用性。
 - 包括的な従量課金制の料金を使用した、予測可能なパフォーマンス。
-- 必要に応じて数秒以内にスケーリング。
-- 保存中や移動中の機密データのキュリティ保護。
+- 必要に応じて、数秒以内でスケーリング。
+- 保存中および転送中の機密データのセキュリティ保護。
 - 自動バックアップと最大 35 日間のポイントインタイム リストア。
 - エンタープライズグレードのセキュリティとコンプライアンス。
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
 
-Azure Database for MariaDB サービスには、複数のサービス レベル (Basic、汎用、およびメモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
+Azure Database for MariaDB サービスには、複数のサービス レベル (Basic、汎用、およびメモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[価格レベル](concepts-pricing-tiers.md)に関するページを参照してください。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
@@ -64,7 +64,7 @@ Azure Database for MariaDB についての質問や提案は、(テクニカル 
 - ご利用のアカウントに関する問題を解決するには、Azure portal で[サポート要求をオープン](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)します。
 - フィードバックを提供したり、新しい機能を要求したりするには、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/915439-azure-database-for-mariadb)でエントリを作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Database for MariaDB の概要を読み終えたら、次の作業に進むことができます。
 - コストの比較と計算については、[価格](https://azure.microsoft.com/pricing/details/mariadb/)のページを参照してください。 

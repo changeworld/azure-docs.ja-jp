@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: ae721d2a8df981ecf9ab8e8b04d0e0d287d523cd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750711"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584627"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -20,7 +20,7 @@ ms.locfileid: "88750711"
 
 Azure Functions の診断と監視には、[Application Insights](../../azure-monitor/app/app-insights-overview.md) を使用する方法が推奨されています。 Durable Functions にもそれが当てはまります。 Application Insights を関数アプリで活用する方法の概要については、「[Azure Functions を監視する](../functions-monitoring.md)」を参照してください。
 
-また、Azure Functions Durable 拡張機能では "*追跡イベント*" が生成されます。このイベントを使って、オーケストレーションの実行をエンドツーエンドでトレースできます。 これらの追跡イベントは、Azure portal で [Application Insights 分析](../../azure-monitor/log-query/log-query-overview.md)ツールを使って検出および照会できます。
+また、Azure Functions Durable 拡張機能では "*追跡イベント*" が生成されます。このイベントを使って、オーケストレーションの実行をエンドツーエンドでトレースできます。 これらの追跡イベントは、Azure portal で [Application Insights 分析](../../azure-monitor/logs/log-query-overview.md)ツールを使って検出および照会できます。
 
 ### <a name="tracking-data"></a>データの追跡
 
@@ -28,9 +28,9 @@ Azure Functions の診断と監視には、[Application Insights](../../azure-mo
 
 * **hubName**: オーケストレーションが実行されているタスク ハブの名前。
 * **appName**: Function App の名前。 このフィールドは、複数の関数アプリで同じ Application Insights インスタンスを共有しているときなどに使用できます。
-* **slotName**: 現在の関数アプリが実行されている[デプロイ スロット](../functions-deployment-slots.md)。 このフィールドは、デプロイ スロットを使用してご自分のオーケストレーションのバージョン管理を行うときに便利です。
+* **slotName**: 現在の関数アプリが実行されている [デプロイ スロット](../functions-deployment-slots.md)。 このフィールドは、デプロイ スロットを使用してご自分のオーケストレーションのバージョン管理を行うときに便利です。
 * **functionName**: オーケストレーターまたはアクティビティ関数の名前。
-* **functionType**: 関数の種類 (**オーケストレーター**や**アクティビティ**など)。
+* **functionType**: 関数の種類 (**オーケストレーター** や **アクティビティ** など)。
 * **instanceId**: オーケストレーション インスタンスの一意の ID。
 * **state**: インスタンスのライフサイクルの実行状態。 有効な値は、次のとおりです。
   * **Scheduled**: 関数は実行をスケジュールされたが、まだ実行を開始していません。
@@ -99,7 +99,7 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 ```
 
 > [!NOTE]
-> 既定では、データの出力頻度が高くなりすぎないよう、Azure Functions ランタイムによって Application Insights テレメトリがサンプリングされます。 そのため、短時間に多数のライフサイクル イベントが発生すると追跡情報が失われることがあります。 この動作を構成する方法については、[Azure Functions の監視に関する記事](../functions-monitoring.md#configure-sampling)で説明しています。
+> 既定では、データの出力頻度が高くなりすぎないよう、Azure Functions ランタイムによって Application Insights テレメトリがサンプリングされます。 そのため、短時間に多数のライフサイクル イベントが発生すると追跡情報が失われることがあります。 この動作を構成する方法については、[Azure Functions の監視に関する記事](../configure-monitoring.md#configure-sampling)で説明しています。
 
 ### <a name="single-instance-query"></a>シングル インスタンス クエリ
 
@@ -435,7 +435,7 @@ GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 クライアントは次の応答を取得します:
 
-```http
+```json
 {
   "runtimeStatus": "Running",
   "input": null,
@@ -453,8 +453,8 @@ GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 Azure Functions ではデバッグ関数コードが直接サポートされており、それと同じ機能が Durable Functions でも利用できます。Azure 内で実行するか、ローカルで実行するかは関係ありません。 ただしデバッグの際は、いくつかの動作に注意してください。
 
-* **再生**: オーケストレーター関数は、新しい入力を受信すると、定期的に[再生](durable-functions-orchestrations.md#reliability)されます。 この動作は、オーケストレーター関数の実行が*論理上*は 1 回でも、複数回、同じブレークポイントに到達する可能性があることを意味します。特に、関数コードの最初の方に設定されている場合、その可能性が強くなります。
-* **待機**: オーケストレーター関数内で `await` に到達した場合は常に、Durable Task Framework ディスパッチャーに制御が戻されます。 特定の `await` に到達したのが初めてである場合、関連するタスクが再開されることは*ありません*。 タスクが再開されない以上、await をステップ *オーバー* (Visual Studio では F10) することは不可能です。 ステップ オーバーが機能するのは、タスクが再生されているときだけです。
+* **再生**: オーケストレーター関数は、新しい入力を受信すると、定期的に [再生](durable-functions-orchestrations.md#reliability)されます。 この動作は、オーケストレーター関数の実行が *論理上* は 1 回でも、複数回、同じブレークポイントに到達する可能性があることを意味します。特に、関数コードの最初の方に設定されている場合、その可能性が強くなります。
+* **待機**: オーケストレーター関数内で `await` に到達した場合は常に、Durable Task Framework ディスパッチャーに制御が戻されます。 特定の `await` に到達したのが初めてである場合、関連するタスクが再開されることは *ありません*。 タスクが再開されない以上、await をステップ *オーバー* (Visual Studio では F10) することは不可能です。 ステップ オーバーが機能するのは、タスクが再生されているときだけです。
 * **メッセージングのタイムアウト**: Durable Functions は、オーケストレーター関数、アクティビティ関数、およびエンティティ関数の実行を開始するために、内部的にキュー メッセージを使用します。 マルチ VM 環境では、長時間デバッグにブレークインすると、別の VM によってメッセージが取り出され、二重実行となる可能性があります。 この動作は、キューによってトリガーされる通常の関数でも起こりますが、あえてこのコンテキストで指摘したのは、キューが実装の要となる動作であるためです。
 * **停止と開始**: Durable Functions のメッセージは、デバッグ セッション間で保持されます。 持続的関数の実行中にデバッグを停止し、ローカル ホスト プロセスを終了すると、その関数は今後のデバッグ セッションで自動的に再実行される可能性があります。 この動作は、予期していない場合、混乱を招くことがあります。 この動作を回避する 1 つの方法は、デバッグ セッション間に[内部ストレージ キュー](durable-functions-perf-and-scale.md#internal-queue-triggers)のすべてのメッセージを消去することです。
 

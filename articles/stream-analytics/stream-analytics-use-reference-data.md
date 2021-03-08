@@ -3,20 +3,19 @@ title: Azure Stream Analytics での参照に参照データを使用する
 description: この記事では、Azure Stream Analytics ジョブのクエリ デザインで参照データを使用してデータを参照または関連付ける方法について説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/11/2020
-ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 12/18/2020
+ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196436"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560221"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 
-参照データ (別名、ルックアップ テーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、データ ストリームのルックアップや増大を行うために使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 
+参照データ (別名、ルックアップ テーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、データ ストリームのルックアップや増大を行うために使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 
 
 ## <a name="example"></a>例  
 自動車が料金所を通過したときに生成されるイベントのリアルタイム ストリームを作成できます。 料金所では、ライセンス プレートをリアルタイムでキャプチャし、登録の詳細がある静的なデータセットと結合して、有効期限が切れたライセンス プレートを識別できます。  
@@ -24,20 +23,20 @@ ms.locfileid: "84196436"
 ```SQL  
 SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
 FROM Input1 I1 TIMESTAMP BY EntryTime  
-JOIN Registration R  
+JOIN Registration R   
 ON I1.LicensePlate = R.LicensePlate  
 WHERE R.Expired = '1'
 ```  
 
-Stream Analytics は、参照データの格納レイヤーとして Azure BLOB ストレージおよび Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
+Stream Analytics は、参照データの格納レイヤーとして Azure Blob Storage および Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
 
-## <a name="azure-blob-storage"></a>Azure BLOB ストレージ
+## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
+参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より **新しい** 日付/時刻を使用してシーケンスの末尾に追加することがサポートされている **だけ** です。 詳細については、[Blob Storage からの参照データの Azure Stream Analytics ジョブでの使用](data-protection.md)に関するページを参照してください。
 
 ### <a name="configure-blob-reference-data"></a>BLOB 参照データを構成する
 
-参照データを構成するには、まず、タイプが **参照データ**の入力を作成する必要があります。 次の表では、参照データ入力とその説明を作成するときに指定する必要がある各プロパティについて説明します。
+参照データを構成するには、まず、タイプが **参照データ** の入力を作成する必要があります。 次の表では、参照データ入力とその説明を作成するときに指定する必要がある各プロパティについて説明します。
 
 |**プロパティ名**  |**説明**  |
 |---------|---------|
@@ -78,8 +77,8 @@ Azure Stream Analytics は、更新された参照データ BLOB を、1 分間�
 2. 参照データを更新するための推奨方法は次のとおりです。
     * パス パターンで {date}/{time} を使用する
     * ジョブ入力に定義されているコンテナーとパス パターンを使用して、新しい BLOB を追加する
-    * シーケンスの最後の BLOB で指定されている日付/時刻よりも**後の**値を使用する
-3. 参照データの BLOB の並び替えは、BLOB の "最終変更" 時刻では行われ**ません**。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
+    * シーケンスの最後の BLOB で指定されている日付/時刻よりも **後の** 値を使用する
+3. 参照データの BLOB の並び替えは、BLOB の "最終変更" 時刻では行われ **ません**。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
 3. 多数の BLOB を列挙する必要がないように、今後処理を行う予定がない非常に古い BLOB は削除することを検討してください。 ASA では、再起動のような一部のシナリオで少量の再処理が必要になる可能性がある点に注意してください。
 
 ## <a name="azure-sql-database"></a>Azure SQL データベース
@@ -94,9 +93,9 @@ Stream Analytics には、Azure SQL Database に対するクエリの実行に�
 
 ### <a name="configure-sql-database-reference"></a>SQL Database 参照を構成する
 
-SQL Database 参照データを構成するには、まず**参照データ**入力を作成する必要があります。 次の表は、参照データ入力の作成中に指定する必要がある各プロパティとその説明を示しています。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
+SQL Database 参照データを構成するには、まず **参照データ** 入力を作成する必要があります。 次の表は、参照データ入力の作成中に指定する必要がある各プロパティとその説明を示しています。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
 
-参照データ入力として [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) を使用できます。 [SQL Managed Instance でパブリック エンドポイントを構成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
+参照データ入力として [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) を使用できます。 [SQL Managed Instance でパブリック エンドポイントを構成](../azure-sql/managed-instance/public-endpoint-configure.md)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
 
 |**プロパティ名**|**説明**  |
 |---------|---------|
@@ -111,13 +110,13 @@ SQL Database 参照データを構成するには、まず**参照データ**入
 
 ## <a name="size-limitation"></a>サイズ制限
 
-最適なパフォーマンスを得るには、300 MB 未満の参照データセットを使用することをお勧めします。 300 MB を超える参照データの使用は、6 SU 以上のジョブでサポートされています。 この機能はプレビュー段階であり、運用環境では使用できません。 非常に大きな参照データを使用すると、ジョブのパフォーマンスに影響を与える可能性があります。 クエリが複雑になり、時間帯集計、一時的な結合、一時的な分析関数などのステートフル処理が含まれるようになると、サポートされる参照データの最大サイズは減少することが予期されます。 Azure Stream Analytics が参照データを読み込むことができないときに、複雑な操作が実行された場合、ジョブはメモリ不足になり、操作は失敗します。 このような場合は、SU % の使用状況メトリックは 100% になります。    
+最適なパフォーマンスを得るには、300 MB 未満の参照データセットを使用することをお勧めします。 5 GB 以下の参照データセットは、6 個以上の SU があるジョブでサポートされます。 非常に大きな参照データを使用すると、ジョブのエンド ツー エンドの待ち時間に影響を与える可能性があります。 クエリが複雑になり、時間帯集計、一時的な結合、一時的な分析関数などのステートフル処理が含まれるようになると、サポートされる参照データの最大サイズは減少することが予期されます。 Azure Stream Analytics が参照データを読み込むことができないときに、複雑な操作が実行された場合、ジョブはメモリ不足になり、操作は失敗します。 このような場合は、SU % の使用状況メトリックは 100% になります。    
 
 |**ストリーミング ユニットの数**  |**推奨サイズ**  |
 |---------|---------|
 |1   |50 MB 以下   |
 |3   |150 MB 以下   |
-|6 以上   |300 MB 以下。 300 MB を超える参照データの使用はプレビューでサポートされており、ジョブのパフォーマンスに影響を与える可能性があります。    |
+|6 以上   |5 GB 以下    |
 
 参照データの圧縮はサポートされていません。
 
@@ -138,6 +137,18 @@ FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
 
+## <a name="iot-edge-jobs"></a>IoT Edge ジョブ
+
+Stream Analytics エッジ ジョブの場合、ローカル参照データのみがサポートされます。 ジョブが IoT Edge デバイスに展開されると、ユーザー定義のファイル パスから参照データが読み込まれます。 デバイス上で参照データ ファイルを準備します。 Windows コンテナーの場合は、ローカル ドライブ上に参照データ ファイルを配置し、ローカル ドライブを Docker コンテナーと共有します。 Linux コンテナーの場合は、Docker ボリュームを作成し、ボリュームにデータ ファイルを設定します。
+
+IoT Edge の更新プログラム上の参照データは、デプロイによってトリガーされます。 トリガーされると、実行中のジョブを停止することなく、更新されたデータが Stream Analytics モジュールによって取得されます。
+
+参照データを更新する方法は 2 つあります。
+
+* Azure portal から Stream Analytics ジョブ内の参照データ パスを更新します。
+
+* IoT Edge デプロイを更新します。
+
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
@@ -146,6 +157,6 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

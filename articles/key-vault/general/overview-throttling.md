@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427711"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289684"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault のスロットル ガイダンス
 
@@ -47,15 +47,15 @@ Key Vault は、最初は [Azure Key Vault サービスの制限](service-limits
 
 追加の容量が承認された場合は、容量が増加したため、次の点に注意してください。
 1. データ整合性モデルが変更になります。 追加のスループット容量でコンテナーが許可されると、Key Vault サービスのデータの整合性が保証されます (基になる Azure Storage サービスが維持できなくなるため、より高い量の RPS を満たすために必要です)。  簡単に言うと、
-  1. **許可リストを使用しない場合**:Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに即座に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
-  1. **許可リストを使用する場合**:Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに 60 秒以内に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
+  1. **許可リストを使用しない場合** :Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに即座に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
+  1. **許可リストを使用する場合** :Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに 60 秒以内に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
 1. クライアント コードは 429 に対する再試行に関して、バックオフ ポリシーを遵守する必要があります。 429 応答コードを受信したときには、Key Vault サービスを呼び出すクライアント コードは Key Vault 要求をすぐに再試行することはできません。  ここで公開されている Azure Key Vault スロットル ガイダンスでは、429 HTTP 応答コードを受け取った場合にエクスポネンシャル バックオフを適用することをお勧めしています。
 
 業務上の正当な理由でスロットル制限の引き上げを希望される場合は、Microsoft にお問い合わせください。
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>サービス制限に対応してアプリをスロットルする方法
 
-サービスがスロットルされているときに実践すべき**ベスト プラクティス**を次に示します。
+サービスがスロットルされているときに実践すべき **ベスト プラクティス** を次に示します。
 - 要求あたりの操作の数を減らす。
 - 要求の頻度を減らす。
 - すぐに再試行しない。 
@@ -75,7 +75,7 @@ SecretClientOptions options = new SecretClientOptions()
             Mode = RetryMode.Exponential
          }
     };
-    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
+    var client = new SecretClient(new Uri("https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
                                  
     //Retrieve Secret
     secret = client.GetSecret(secretName);
@@ -98,5 +98,4 @@ HTTP エラー コード 429 が発生したら、次のように指数関数的
 
 ## <a name="see-also"></a>関連項目
 
-Microsoft Cloud のスロットルに関するさらに詳しい情報については、「[Throttling Pattern (スロットル パターン)](https://docs.microsoft.com/azure/architecture/patterns/throttling)」を参照してください。
-
+Microsoft Cloud のスロットルに関するさらに詳しい情報については、「[Throttling Pattern (スロットル パターン)](/azure/architecture/patterns/throttling)」を参照してください。

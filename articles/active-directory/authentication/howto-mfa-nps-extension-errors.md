@@ -1,27 +1,27 @@
 ---
-title: Azure MFA NPS 拡張機能のトラブルシューティング - Azure Active Directory
-description: Azure Multi-Factor Authentication の NPS 拡張機能の問題を解決するためのヘルプを得る
+title: Azure AD MFA NPS 拡張機能のトラブルシューティング - Azure Active Directory
+description: Azure AD Multi-Factor Authentication の NPS 拡張機能の問題を解決するためのヘルプを得る
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fa3a2366f007ff1481e7c84f049e606586392037
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716726"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742954"
 ---
-# <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
+# <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
-Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 NPS 拡張機能のログは、NPS 拡張機能がインストールされているサーバーで **[カスタム ビュー]**  >  **[サーバー ロール]**  >  **[Network Policy and Access Services]\(ネットワーク ポリシーと Access Services\)** を選択すると表示されるイベント ビューアーで確認できます。
+Azure AD Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 NPS 拡張機能のログは、NPS 拡張機能がインストールされているサーバーで **[カスタム ビュー]**  >  **[サーバー ロール]**  >  **[Network Policy and Access Services]\(ネットワーク ポリシーと Access Services\)** を選択すると表示されるイベント ビューアーで確認できます。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>一般的なエラーのトラブルシューティング手順
 
@@ -30,12 +30,12 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | **CONTACT_SUPPORT** | [サポートに連絡](#contact-microsoft-support)し、ログを収集した手順について説明してください。 テナント ID、ユーザー プリンシパル名 (UPN) など、エラーが発生する前の状況について、できるだけ多くの情報をお知らせください。 |
 | **CLIENT_CERT_INSTALL_ERROR** | テナントへのクライアント証明書のインストールまたは関連付けに問題がある可能性があります。 [MFA NPS 拡張機能のトラブルシューティング](howto-mfa-nps-extension.md#troubleshooting)の手順に従って、クライアント証明書に関する問題を調査します。 |
 | **ESTS_TOKEN_ERROR** | [MFA NPS 拡張機能のトラブルシューティング](howto-mfa-nps-extension.md#troubleshooting)の手順に従って、クライアント証明書および ADAL トークンに関する問題を調査します。 |
-| **HTTPS_COMMUNICATION_ERROR** | NPS サーバーが、Azure MFA から応答を受信できません。 ファイアウォールが https://adnotifications.windowsazure.com との間で送受信されるトラフィックに対して双方向に開いていることを確認します。 |
+| **HTTPS_COMMUNICATION_ERROR** | NPS サーバーが、Azure AD MFA から応答を受信できません。 ファイアウォールが https://adnotifications.windowsazure.com との間で送受信されるトラフィックに対して双方向に開いていることを確認します。 |
 | **HTTP_CONNECT_ERROR** | NPS 拡張機能を実行しているサーバーで、`https://adnotifications.windowsazure.com` と `https://login.microsoftonline.com/` に到達できることを確認します。 このサイトが読み込まれない場合は、そのサーバーで接続のトラブルシューティングを行います。 |
-| **Azure MFA の NPS 拡張機能:** <br> Azure MFA の NPS 拡張機能は、AccessAccept 状態での Radius 要求のセカンダリ認証のみ実行します。 ユーザー username から受け取った要求に対する応答の状態は AccessReject で、要求を無視します。 | このエラーは通常、AD の認証の失敗または NPS サーバーが Azure AD から応答を受信できないことを反映します。 ファイアウォールがポート 80 と 443 を使用して、`https://adnotifications.windowsazure.com` および `https://login.microsoftonline.com`の間で送受信されるトラフィックに対して双方向に開いていることを確認します。 また、[Network Access Permissions]\(ネットワーク アクセス許可) の [DIAL-IN]\(ダイヤル IN) タブで、[control access through NPS Network Policy]\(NPS ネットワーク ポリシーでアクセスを制御する) に設定されていることを確認することも重要です。 また、ユーザーにライセンスが割り当てられていない場合にも、このエラーがトリガーされる可能性があります。 |
+| **Azure AD MFA の NPS 拡張機能:** <br> Azure AD MFA の NPS 拡張機能は、AccessAccept 状態での Radius 要求のセカンダリ認証のみ実行します。 ユーザー username から受け取った要求に対する応答の状態は AccessReject で、要求を無視します。 | このエラーは通常、AD の認証の失敗または NPS サーバーが Azure AD から応答を受信できないことを反映します。 ファイアウォールがポート 80 と 443 を使用して、`https://adnotifications.windowsazure.com` および `https://login.microsoftonline.com`の間で送受信されるトラフィックに対して双方向に開いていることを確認します。 また、[Network Access Permissions]\(ネットワーク アクセス許可) の [DIAL-IN]\(ダイヤル IN) タブで、[control access through NPS Network Policy]\(NPS ネットワーク ポリシーでアクセスを制御する) に設定されていることを確認することも重要です。 また、ユーザーにライセンスが割り当てられていない場合にも、このエラーがトリガーされる可能性があります。 |
 | **REGISTRY_CONFIG_ERROR** | レジストリにアプリケーションに対するキーが見つかりません。原因としては、[PowerShell スクリプト](howto-mfa-nps-extension.md#install-the-nps-extension)がインストール後に実行されていないことが考えられます。 見つからないキーは、エラー メッセージに示されています。 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa に、そのキーがあることを確認してください。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 要求に、必須の Radius userName\Identifier 属性がありません。NPS が RADIUS 要求を受信していることを確認します | このエラーは、通常、インストールに問題があることを示します。 NPS 拡張機能は、RADIUS 要求を受信できる NPS サーバーにインストールする必要があります。 RDG、RRAS などのサービスの依存関係としてインストールされた NPS サーバーは、RADIUS 要求を受信しません。 このようにインストールされ、エラーが発生した場合、NPS 拡張機能は、認証要求から詳細情報を読み取ることができないため動作しません。 |
-| **REQUEST_MISSING_CODE** | NPS サーバーと NAS サーバーの間のパスワード暗号化プロトコルが 2 つ目として使用している認証方法に対応していることを確認します。 **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。 **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。 |
+| **REQUEST_MISSING_CODE** | NPS サーバーと NAS サーバーの間のパスワード暗号化プロトコルが 2 つ目として使用している認証方法に対応していることを確認します。 **PAP** は、クラウドでの Azure AD MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。 **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。 |
 | **USERNAME_CANONICALIZATION_ERROR** | ユーザーがオンプレミスの Active Directory インスタンスに存在すること、また、ディレクトリへのアクセス許可が NPS サービスに付与されていることを確認します。 フォレスト間の信頼を使用している場合、詳細については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
 
 ### <a name="alternate-login-id-errors"></a>代替ログイン ID エラー
@@ -54,8 +54,8 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | **AuthenticationMethodNotConfigured** | 指定した認証方法が、ユーザーに対して構成されていません | 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーに認証方法を追加または確認してもらいます。 |
 | **AuthenticationMethodNotSupported** | 指定した認証方法がサポートされていません。 | このエラーを含むすべてのログを収集し、[サポートに連絡](#contact-microsoft-support)します。 サポートに連絡するとき、ユーザー名と、エラーをトリガーしたセカンダリ検証方法をお伝えください。 |
 | **BecAccessDenied** | MSODS Bec 呼び出しによってアクセス拒否が返されました。テナントでユーザー名が定義されていない可能性があります | ユーザーは、オンプレミスの Active Directory に存在しますが、AD Connect で Azure AD に同期されていません。 または、テナント用のユーザーがありません。 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーを Azure AD に追加し、そのユーザーに認証方法を追加してもらいます。 |
-| **InvalidFormat** または**StrongAuthenticationServiceInvalidParameter** | 電話番号の形式を認識できません | ユーザーに確認の電話番号を修正してもらいます。 |
-| **InvalidSession** | 指定したセッションが無効か、有効期限が切れている可能性があります | セッション完了までの時間が 3 分を超えました。 認証要求を開始してから 3 分以内にユーザーが確認コードを入力していること、またはアプリの通知に応答していることを確認します。 問題が解決しない場合は、クライアント、NAS サーバー、NPS サーバー、および Azure MFA のエンドポイント間でネットワーク待ち時間が発生していないことを確認します。  |
+| **InvalidFormat** または **StrongAuthenticationServiceInvalidParameter** | 電話番号の形式を認識できません | ユーザーに確認の電話番号を修正してもらいます。 |
+| **InvalidSession** | 指定したセッションが無効か、有効期限が切れている可能性があります | セッション完了までの時間が 3 分を超えました。 認証要求を開始してから 3 分以内にユーザーが確認コードを入力していること、またはアプリの通知に応答していることを確認します。 問題が解決しない場合は、クライアント、NAS サーバー、NPS サーバー、および Azure AD MFA のエンドポイント間でネットワーク待ち時間が発生していないことを確認します。  |
 | **NoDefaultAuthenticationMethodIsConfigured** | 既定の認証方法が、ユーザーに対して構成されていません | 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーに認証方法を追加または確認してもらいます。 ユーザーが既定の認証方法を選択し、その方法を自身のアカウントに対して構成していることを確認します。 |
 | **OathCodePinIncorrect** | 入力したコードと PIN が誤っています。 | このエラーは、NPS 拡張機能では発生しません。 このエラーが発生した場合、トラブルシューティング方法については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
 | **ProofDataNotFound** | プルーフ データが、指定した認証方法に対して構成されていません。 | 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーに別の認証方法を試してもらうか、新しい認証方法を追加してもらいます。 認証方法が適切に設定されていることを確認した後も、このエラーが引き続き発生する場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
@@ -99,7 +99,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 ### <a name="health-check-script"></a>正常性チェック スクリプト
 
-[Azure MFA NPS 拡張機能の正常性チェック スクリプト](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)では、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックが実行されます。 スクリプトを実行し、オプション 3 を選択します。
+[Azure AD MFA NPS 拡張機能の正常性チェック スクリプト](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)では、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックが実行されます。 スクリプトを実行し、オプション 3 を選択します。
 
 ### <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 

@@ -3,12 +3,12 @@ title: Azure Event Grid への Durable Functions の発行 (プレビュー)
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081748"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175959"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
@@ -26,7 +26,7 @@ ms.locfileid: "87081748"
 
 * [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) を Durable Functions プロジェクトにインストールします。
 * [Azure ストレージ エミュレーター](../../storage/common/storage-use-emulator.md) (Windows のみ) をインストールするか、既存の Azure Storage アカウントを使用します。
-* [Azure CLI](/cli/azure/?view=azure-cli-latest) をインストールするか、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します
+* [Azure CLI](/cli/azure/) をインストールするか、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します
 
 ## <a name="create-a-custom-event-grid-topic"></a>カスタムの Event Grid トピックの作成
 
@@ -237,7 +237,7 @@ Azure portal を使用して、ご使用の Durable Functions アプリによっ
 次の一覧では、ライフサイクル イベントのスキーマについて説明します。
 
 * **`id`** :Event Grid イベントの一意識別子。
-* **`subject`** :イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
+* **`subject`** :イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
 * **`data`** :Durable Functions 固有のパラメーター。
   * **`hubName`** :[TaskHub](durable-functions-task-hubs.md) の名前。
   * **`functionName`** :オーケストレーター関数の名前。

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e54e0ed1a3292cee400774d02f61514f54370151
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5640c1e254c4738ab53881544a09808b4894a462
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208537"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676971"
 ---
 # <a name="what-is-workload-management"></a>ワークロード管理とは
 
@@ -42,9 +42,9 @@ ms.locfileid: "85208537"
 
 たとえば、アドホック ユーザー ロールのメンバーシップを smallrc に付与すると、そのユーザーはシステム上のメモリの 100% を消費できました。  リソース クラスでは、リソースを予約して重要なワークロードで使用できるようにするための方法がありません。
 
-Azure Synapse の Synapse SQL プールのワークロード管理は、次の 3 つの大まかな概念で構成されています。[ワークロードの分類](sql-data-warehouse-workload-classification.md)、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)、そして[ワークロードの分離](sql-data-warehouse-workload-isolation.md)です。  これらの機能により、ワークロードによるシステム リソースの活用方法をより細かく制御できます。
+Azure Synapse の専用 SQL プールのワークロード管理は、次の 3 つの大まかな概念で構成されています。[ワークロードの分類](sql-data-warehouse-workload-classification.md)、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)、そして[ワークロードの分離](sql-data-warehouse-workload-isolation.md)です。  これらの機能により、ワークロードによるシステム リソースの活用方法をより細かく制御できます。
 
-ワークロードの分類は、ワークロード グループに要求を割り当て、重要度のレベルを設定するという概念です。  従来、この割り当ては、[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) を使用してロールのメンバーシップを介して行われていました。  このアクションを、[CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して実行できるようになりました。  分類機能では、ラベル、セッション、要求を分類する時間などの豊富なオプションのセットが提供されます。
+ワークロードの分類は、ワークロード グループに要求を割り当て、重要度のレベルを設定するという概念です。  従来、この割り当ては、[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) を使用してロールのメンバーシップを介して行われていました。  このアクションを、[CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して実行できるようになりました。  分類機能では、ラベル、セッション、要求を分類する時間などの豊富なオプションのセットが提供されます。
 
 ワークロードの重要度は、要求がリソースにアクセスする順序に影響します。  ビジー状態のシステムでは、重要度の高い要求がリソースに最初にアクセスします。  重要度によって、ロックへの順次アクセスも保証されます。
 

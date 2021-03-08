@@ -1,17 +1,17 @@
 ---
 title: バックアップと復元 - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal を使用して Azure Database for MariaDB のサーバーを復元する方法について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 06da58b5c82af39abbaa1cbc15a217c25d7808f9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115912"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664819"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバーのバックアップと復元を行う方法
 
@@ -41,7 +41,7 @@ Azure Portal でサーバーを作成するときに、 **[価格レベル]** �
 
 2. Azure Database for MariaDB サーバーを選択します。 この操作で、 **[概要]** ページが開きます。
 
-3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間**を 7 ～ 35 日の間で希望の値に変更します。
+3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間** を 7 ～ 35 日の間で希望の値に変更します。
 次のスクリーンショットでは 35 日に変更されています。
 ![長くしたバックアップのリテンション期間](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
@@ -103,13 +103,13 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
    
    :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="バックアップを選択する。":::
 
-6. サーバーでは、**仮想コア**の数、**バックアップ保有期間**、**バックアップ冗長オプション**、**エンジン バージョン**、および**管理者資格情報**が規定値に設定されます。 **[続行]** をクリックします。 
+6. サーバーでは、**仮想コア** の数、**バックアップ保有期間**、**バックアップ冗長オプション**、**エンジン バージョン**、および **管理者資格情報** が規定値に設定されます。 **[続行]** をクリックします。 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="バックアップを続行する。":::
 
-7. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。
+7. 必要に応じて、フォームの残りの部分を入力します。 任意の **場所** を選択できます。
 
-    場所を選択したら、 **[サーバーの構成]** を選択して、**コンピューティング世代** (選択したリージョンで利用可能な場合)、**仮想コア**の数、**バックアップ保有期間**、および**バックアップ冗長オプション**を更新できます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+    場所を選択したら、 **[サーバーの構成]** を選択して、**コンピューティング世代** (選択したリージョンで利用可能な場合)、**仮想コア** の数、**バックアップ保有期間**、および **バックアップ冗長オプション** を更新できます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と **ストレージ** のサイズはいずれも変更できません。
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="フォームに入力する。"::: 
 

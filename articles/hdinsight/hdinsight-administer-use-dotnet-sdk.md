@@ -1,25 +1,22 @@
 ---
 title: .NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する - Azure
 description: HDInsight .NET SDK を使用して、HDInsight で Apache Hadoop クラスターの管理タスクを実行する方法について説明します。
-ms.reviewer: jasonh
-author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: dd0d7a3a05c108f0d7e95719356079633a0e2276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 86e279fef9561397343b3e6cb55ac335a5b39542
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016089"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942839"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)を使用して、HDInsight クラスターを管理する方法について説明します。
+[HDInsight.NET SDK](/dotnet/api/overview/azure/hdinsight)を使用して、HDInsight クラスターを管理する方法について説明します。
 
 **前提条件**
 
@@ -268,7 +265,7 @@ foreach (var key in results.Configuration.Keys)
 
 ## <a name="see-also"></a>参照
 
-* [HDInsight .NET SDK リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [HDInsight .NET SDK リファレンス ドキュメント](/dotnet/api/overview/azure/hdinsight)
 * [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]

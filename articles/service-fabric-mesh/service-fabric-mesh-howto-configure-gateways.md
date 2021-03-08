@@ -1,19 +1,24 @@
 ---
 title: 要求をルーティングするようにゲートウェイを構成する
 description: Service Fabric Mesh で実行されているアプリケーションに対する受信トラフィックを処理するゲートウェイを構成する方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40bba03c35568c013e383c08f0a13f765c1cc8bd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461951"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625856"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>要求をルーティングするようにゲートウェイ リソースを構成する
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 新しいデプロイは、Service Fabric Mesh API では許可されません。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
 
 ゲートウェイ リソースは、アプリケーションが収納されているネットワークに受信トラフィックをルーティングするために使用されます。 要求の構造に基づいて特定のサービスまたはエンドポイントに要求が送られる規則を指定するように構成します。 Mesh でのネットワークとゲートウェイについて詳しくは、「[Introduction to networking in Service Fabric Mesh (Service Fabric Mesh でのネットワークの概要)](service-fabric-mesh-networks-and-gateways.md)」をご覧ください。 
 

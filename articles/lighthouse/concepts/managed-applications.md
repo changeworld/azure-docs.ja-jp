@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse と Azure Managed Applications
-description: Azure Lighthouse と Azure Managed Applications がさまざまなシナリオの実現にどのように役立つか、およびこれらを組み合わせて使用する方法について説明します。
-ms.date: 08/12/2020
+description: Azure Lighthouse と Azure Managed Applications を組み合わせて使用する方法について説明します。
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163426"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693976"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications
 
@@ -19,11 +19,21 @@ Azure Managed Applications と Azure Lighthouse はどちらも、サービス �
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications の比較
 
+次の表は、Azure Lighthouse または Azure Managed Applications の使用の選択に影響を与える可能性がある、いくつかの大まかな違いを示しています。 次に示すように、これらを組み合わせて使用するソリューションを設計することもできます。
+
+|考慮事項  |Azure Lighthouse  |Azure Managed Applications  |
+|---------|---------|---------|
+|一般的なユーザー     |複数のテナントを管理するサービス プロバイダーまたは企業         |独立系ソフトウェア ベンダー (ISV)         |
+|テナント間アクセスの範囲     |サブスクリプションまたはリソース グループ         |リソース グループ (1 つのアプリケーションに範囲指定)         |
+|Azure Marketplace で購入可能     |いいえ (オファーは Azure Marketplace に発行できますが、お客様には別途請求されます)        |はい         |
+|IP 保護     |はい (IP はサービス プロバイダーのテナントに残せます)        |はい (仕様では、リソース グループはお客様にロックされています)         |
+|拒否割り当て     |いいえ         |はい        |
+
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
 [Azure Lighthouse](../overview.md) により、サービス プロバイダーはお客様のサブスクリプション (またはリソース グループ) でさまざまな管理タスクを直接実行できます。 このアクセスは、サービス プロバイダーが独自のテナントにサインインして、お客様のテナントに属するリソースにアクセスできる、論理プロジェクションによって達成されます。 お客様は、サービス プロバイダーに委任するサブスクリプションまたはリソース グループを決定でき、これらのリソースへのフル アクセスはお客様が保持します。 また、サービス プロバイダーのアクセス権をいつでも削除することができます。
 
-Azure Lighthouse を使用するために、お客様は [ARM テンプレートを展開する](../how-to/onboard-customer.md)か、[Azure Marketplace のマネージド サービス オファー](managed-services-offers.md)を使用して [Azure の委任されたリソース管理](azure-delegated-resource-management.md)にオンボードされます。 [パートナー ID をリンクする](../../cost-management-billing/manage/link-partner-id.md)ことで、顧客エンゲージメントへの影響を追跡できます。
+Azure Lighthouse を使用するために、お客様は [ARM テンプレートを展開する](../how-to/onboard-customer.md)か、[Azure Marketplace のマネージド サービス オファー](managed-services-offers.md)を使用して [Azure の委任されたリソース管理](azure-delegated-resource-management.md)にオンボードされます。 [パートナー ID をリンクする](../how-to/partner-earned-credit.md)ことで、顧客エンゲージメントへの影響を追跡できます。
 
 Azure Lighthouse は通常、サービス プロバイダーがお客様の管理タスクを継続的に実行するときに使用されます。
 
@@ -35,7 +45,7 @@ Azure Lighthouse は通常、サービス プロバイダーがお客様の管�
 
 マネージド アプリケーションは、[カスタマイズされた Azure portal エクスペリエンス](../../azure-resource-manager/managed-applications/concepts-view-definition.md)と、[カスタム プロバイダー](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md)との統合をサポートします。 これらのオプションは、カスタマイズされた統合されたエクスペリエンスを提供するために使用でき、お客様が一部の管理タスクを自分で簡単に実行できるようになります。
 
-マネージド アプリケーションは、特定のお客様専用のプライベート オファーとして、または複数のお客様が購入できるパブリック オファーとして、[Azure Marketplace に公開](../../azure-resource-manager/managed-applications/publish-marketplace-app.md)することができます。 また、[マネージド アプリケーションをサービス カタログに公開する](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)ことによって、組織内のユーザーに提供することもできます。 ARM テンプレートを使用して、サービス カタログと Marketplace の両方のインスタンスをデプロイできます。このテンプレートには、[お客様の使用状況の属性](../../marketplace/azure-partner-customer-usage-attribution.md)を追跡するための、コマーシャル マーケットプレース パートナーの一意識別子を含めることができます。
+マネージド アプリケーションは、特定のお客様専用のプライベート オファーとして、または複数のお客様が購入できるパブリック オファーとして、[Azure Marketplace に公開](../../marketplace/create-new-azure-apps-offer.md)することができます。 また、[マネージド アプリケーションをサービス カタログに公開する](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)ことによって、組織内のユーザーに提供することもできます。 ARM テンプレートを使用して、サービス カタログと Marketplace の両方のインスタンスをデプロイできます。このテンプレートには、[お客様の使用状況の属性](../../marketplace/azure-partner-customer-usage-attribution.md)を追跡するための、コマーシャル マーケットプレース パートナーの一意識別子を含めることができます。
 
 通常、Azure Managed Applications は、サービス プロバイダーによって完全に管理されるターンキー ソリューションによって満たすことができる、具体的なお客様のニーズのために使用されます。
 
@@ -51,3 +61,4 @@ Azure Lighthouse と Azure Managed Applications は異なるアクセス メカ�
 
 - [Azure Managed Applications](../../azure-resource-manager/managed-applications/overview.md) の詳細について説明します。
 - [サブスクリプションを Azure Lighthouse にオンボードする](../how-to/onboard-customer.md)方法について学習します。
+- [Azure Lighthouse を使用した ISV シナリオ](isv-scenarios.md)について説明します。

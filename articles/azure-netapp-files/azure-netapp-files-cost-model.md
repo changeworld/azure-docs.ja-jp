@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9c4eebae6909c9ef0969bc85bcb9a985db2a7c02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325608"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp Files のコスト モデル 
 
-Azure NetApp Files のコスト モデルを理解すると、サービスから経費を管理するのに役立ちます。
+Azure NetApp Files のコスト モデルを理解すると、サービスから経費を管理するのに役立ちます。 
+
+リージョン間レプリケーションに固有のコスト モデルについては、「[リージョン間レプリケーションのコスト モデル](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)」を参照してください。
 
 ## <a name="calculation-of-capacity-consumption"></a>容量消費の計算
 
@@ -61,6 +63,7 @@ Azure NetApp Files は、プロビジョニングされたストレージ容量�
 * 初回の 4 TiB (最小容量) 購入後の増減単位は 1 TiB
 * 最小請求単位は 1 時間
 * プールのプロビジョニング サイズをプールの合計使用容量よりも小さくすることはできません。
+* 手動 QoS が使用されている容量プールの場合、プール サイズを小さくできるのは、サイズとサービス レベルによって、全ボリュームの実際の割り当てスループットよりも大きいスループットが提供される場合のみです。
 
 ## <a name="behavior-of-maximum-size-pool-overage"></a>プールの最大サイズ超過時の動作   
 
@@ -94,3 +97,4 @@ Azure NetApp Files のスナップショットの容量消費は、親ボリュ�
 * [Azure NetApp Files 価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
+* [リージョン間レプリケーションのコスト モデル](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)

@@ -1,0 +1,73 @@
+### YamlMime:Landing
+title: Azure SQL への移行
+summary: 'クラウド内の SQL Server データベース エンジン製品の Azure SQL ファミリへの移行に関するドキュメントを紹介します。Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。 '
+metadata:
+  title: Azure SQL への移行
+  description: Azure SQL は、クラウド内の SQL Server データベース エンジン製品のファミリで、Azure SQL Database のフルマネージド データベース、Azure SQL Managed Instance のフルマネージド インスタンス、または Azure の仮想マシンにインストールされた SQL Server です。ここでは、移行に役立つドキュメントを紹介します。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: service
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: sstein
+  ms.date: 11/06/2020
+  ms.openlocfilehash: ad10f236ed042d0935e01d056ef1a56de1054835
+  ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/30/2020
+  ms.locfileid: "96327442"
+landingContent:
+- title: Azure SQL データベース
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 概要
+      url: database/sql-server-to-sql-database-overview.md
+    - text: SQL Server から
+      url: database/sql-server-to-sql-database-guide.md
+    - text: DB2 から
+      url: database/db2-to-sql-database-guide.md
+- title: Azure SQL Managed Instance
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 概要
+      url: managed-instance/sql-server-to-managed-instance-overview.md
+    - text: SQL Server から
+      url: managed-instance/sql-server-to-managed-instance-guide.md
+    - text: DB2 から
+      url: managed-instance/db2-to-managed-instance-guide.md
+- title: Azure VM 上の SQL Server
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 概要
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+    - text: SQL Server から
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+    - text: DB2 から
+      url: virtual-machines/db2-to-sql-on-azure-vm-guide.md
+- title: 移行ツール
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Migrate
+      url: ../../migrate/migrate-services-overview.md
+    - text: Azure Database Migration Service (DMS)
+      url: ../../dms/dms-overview.md
+    - text: Data Migration Assistant (DMA)
+      url: /sql/dma/dma-migrateonpremsqltosqldb
+    - text: トランザクション レプリケーション
+      url: /sql/relational-databases/replication/transactional/transactional-replication
+    - text: インポートとエクスポート サービス / BACPAC
+      url: ../database/database-import.md
+    - text: 一括コピー
+      url: /sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server
+    - text: Azure Data Factory
+      url: ../../data-factory/connector-azure-sql-database.md
+    - text: SQL データ同期
+      url: ../database/sql-data-sync-data-sql-server-sql-database.md

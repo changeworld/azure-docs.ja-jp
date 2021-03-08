@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 3724a7d515197c1f969bb051fc201b82bee64c42
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391708"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813498"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
 
@@ -41,7 +41,7 @@ ms.locfileid: "85391708"
 
 - Custom Vision Service が Azure で一般提供されました。
 - 特に高度な処理が必要になるデータセットや詳細に設定された分類でのパフォーマンスを高めるための新しい機械学習バックエンドを備えた、高度なトレーニング機能が追加されました。 高度なトレーニングにより、トレーニングのコンピューティング時間予算を指定でき、Custom Vision によって、経験に基づいて最適なトレーニングと拡張設定が特定されます。 クイック イテレーションについては、引き続き既存の高速トレーニングを使用することができます。
-- 3\.0 API が導入されました。 2019 年 10 月 1 日の 3.0 より前の API の廃止予定を発表しました。 作業の開始方法の例については、[.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、[Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、[Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、[Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)、または [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) のドキュメントのクイックスタートを参照してください。
+- 3\.0 API が導入されました。 2019 年 10 月 1 日の 3.0 より前の API の廃止予定を発表しました。 作業の開始方法の例については、ドキュメントの[クイックスタート](./quickstarts/image-classification.md)を参照してください。
 - "既定のイテレーション" が 3.0 API の発行/発行取り消しで置き換えられました。
 - 新しいモデルのエクスポート ターゲットが追加されました。 Raspberry Pi 3 の ARM をサポートするために、Dockerfile のエクスポートがアップグレードされました。 [Vision AI Dev Kit](https://visionaidevkit.com/) にエクスポートのサポートが追加されました。
 - S0 レベルのプロジェクトあたりのタグの制限を 500 に増やしました。 S0 レベルのプロジェクトあたりのイメージの制限を 100,000 に増やしました。

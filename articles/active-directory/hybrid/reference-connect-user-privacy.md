@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279569"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997700"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>ユーザー プライバシーと Azure AD Connect 
 
@@ -37,9 +37,9 @@ ms.locfileid: "89279569"
 Azure AD Connect チームは、実装と保守がはるかに簡単な 2 番目のオプションをお勧めします。
 
 Azure AD Connect 同期サーバーは、次のユーザーのプライバシーに関するデータを格納します。
-1.  個人に関するデータ (**Azure AD Connect データベース**に格納されます)
+1.  個人に関するデータ (**Azure AD Connect データベース** に格納されます)
 2.  **Windows イベント ログ** ファイル内のデータ (個人に関する情報が含まれる可能性のあります)
-3.  **Azure AD Connect のインストール ログ ファイル**内のデータ (個人に関するデータが含まれる可能性があります)
+3.  **Azure AD Connect のインストール ログ ファイル** 内のデータ (個人に関するデータが含まれる可能性があります)
 
 Azure AD Connect のお客様は、ユーザー データを削除するときに次のガイドラインに従ってください。
 1.  Azure AD Connect のインストール ログ ファイルが置かれているフォルダーの内容を、定期的に (少なくとも 48 時間おきに) 削除する

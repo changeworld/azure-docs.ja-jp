@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203097"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178842"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -46,7 +46,7 @@ ms.locfileid: "85203097"
 | PolicyId | はい | ポリシーの一意識別子。 この識別子には、プレフィックスとして *B2C_1A_* を付ける必要があります。 |
 | PublicPolicyUri | はい | ポリシーの URI。テナント ID とポリシー ID の組み合わせです。 |
 | DeploymentMode | いいえ | 指定できる値: `Production` または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
-| UserJourneyRecorderEndpoint | いいえ | **DeploymentMode** が `Development` に設定されているときに使用されるエンドポイント。 値は `urn:journeyrecorder:applicationinsights` である必要があります。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
+| UserJourneyRecorderEndpoint | いいえ | ログ記録に使用されるエンドポイント。 属性が存在する場合は、値を `urn:journeyrecorder:applicationinsights` に設定する必要があります。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
 
 
 次の例は、**TrustFrameworkPolicy** 要素を指定する方法を示しています。
@@ -62,27 +62,15 @@ ms.locfileid: "85203097"
    PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
-## <a name="inheritance-model"></a>継承モデル
+**TrustFrameworkPolicy** 要素には、次の要素が含まれます。
 
-これらのタイプのポリシー ファイルは、通常、ユーザー体験で使用されます。
-
-- **Base ファイル**。ほとんどの定義が含まれています。 ポリシーのトラブルシューティングおよび長期間の保守に役立つように、このファイルへの変更は最小限に抑えることをお勧めします。
-- **Extensions** ファイル。テナントの固有の構成変更を保持しています このポリシー ファイルは、Base ファイルから派生したものです。 このファイルを使用して、新しい機能を追加するか、既存の機能をオーバーライドします。 たとえば、このファイルを使用して、新しい ID プロバイダーとフェデレーションします。
-- **証明書利用者 (RP)** ファイル。証明書利用者アプリケーション (Web、モバイル、またはデスクトップ アプリケーションなど) から直接呼び出される、単一タスクに焦点を置いています。 サインアップやサインイン、パスワードのリセット、プロファイルの編集などの各自のタスクには、それぞれ独自の RP ポリシー ファイルが必要です。 このポリシー ファイルは、Extensions ファイルから派生したものです。
-
-証明書利用者アプリケーションは、RP ポリシー ファイルを呼び出して、特定のタスクを実行します。 たとえば、サインインフローを開始する場合です。 Azure AD B2C の Identity Experience Framework はまず Base ファイルから、次に Extensions ファイルから、最後に RP ポリシー ファイルからすべての要素を追加して、有効な現在のポリシーを組み立てます。 要素の種類と名前が同じ場合は RP ファイルの要素によって Extensions の要素がオーバーライドされ、Extensions によって Base がオーバーライドされます。 次の図は、ポリシー ファイルと証明書利用者アプリケーションの関係を示しています。
-
-![信頼フレームワーク ポリシーの継承モデルを示している図](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
-
-継承モデルは次のとおりです。
-
-- 親ポリシーと子ポリシーは同じスキーマです。
-- どのレベルの子ポリシーでも、親ポリシーから継承することができ、新しい要素を追加することによって拡張することができます。
-- レベルの数に制限はありません。
-
-詳細については、「[カスタム ポリシーの概要](custom-policy-get-started.md)」を参照してください。
-
-## <a name="base-policy"></a>Base ポリシー
+| 要素 | 発生回数 | 説明 |
+| ------- | ----------- | ----------- |
+| BasePolicy| 0:1| 基本ポリシーの識別子。 |
+| [BuildingBlocks](buildingblocks.md) | 0:1 | ポリシーの構成要素。 |
+| [ClaimsProviders](claimsproviders.md) | 0:1 | クレーム プロバイダーのコレクション。 |
+| [UserJourneys](userjourneys.md) | 0:1 | ユーザー体験のコレクション。 |
+| [RelyingParty](relyingparty.md) | 0:1 | 証明書利用者ポリシーの定義。 |
 
 別のポリシーからポリシーを継承するには、ポリシー ファイルの **TrustFrameworkPolicy** 要素の下で **BasePolicy** 要素を宣言する必要があります。 **BasePolicy** 要素は、このポリシーの派生元である base ポリシーへの参照です。
 
@@ -114,46 +102,3 @@ ms.locfileid: "85203097"
 </TrustFrameworkPolicy>
 ```
 
-## <a name="policy-execution"></a>ポリシー実行
-
-Web、モバイル、またはデスクトップ アプリケーションなどの証明書利用者アプリケーションは、[証明書利用者 (RP) ポリシー](relyingparty.md)を呼び出します。 RP ポリシー ファイルは、サインイン、パスワードのリセット、プロファイルの編集などの特定のタスクを実行します。 RP ポリシーは、発行されるトークンの一部として、証明書利用者アプリケーションが受け取る要求の一覧を構成します。 複数のアプリケーションで同じポリシーを使用できます。 すべてのアプリケーションは、要求を含む同じトークンを受け取り、ユーザーは同じユーザー体験をします。 1 つのアプリケーションで複数のポリシーを使用できます。
-
-RP ポリシー ファイル内で、**DefaultUserJourney** 要素を指定します。この要素は [UserJourney](userjourneys.md) をポイントします。 ユーザー体験は通常、Base または Extensions ポリシーで定義されます。
-
-B2C_1A_signup_signin ポリシー:
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn">
-  ...
-```
-
-B2C_1A_TrustFrameWorkBase または B2C_1A_TrustFrameworkExtensionPolicy:
-
-```xml
-<UserJourneys>
-  <UserJourney Id="SignUpOrSignIn">
-  ...
-```
-
-ユーザー体験は、ユーザーが体験する内容のビジネス ロジックを定義します。 各ユーザー体験は、認証と情報収集に関してひと続きのアクションを順番に実行する、一連のオーケストレーション ステップです。
-
-[スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 メール アドレスの変更、ソーシャル アカウントのリンクとリンク解除など、別のシナリオでさらに多くのユーザー体験を追加することができます。
-
-オーケストレーション ステップで、[技術プロファイル](technicalprofiles.md)を呼び出すことができます。 技術プロファイルは、さまざまな種類の利用者と通信するためのメカニズムが組み込まれたフレームワークを提供します。 たとえば、技術プロファイルでは、特に次のアクションを実行できます。
-
-- ユーザー エクスペリエンスをレンダリングする。
-- ユーザーが、ソーシャルまたはエンタープライズ アカウント (Facebook、Microsoft アカウント、Google、Salesforce、または他の ID プロバイダーなど) を使用してサインインできるようにする。
-- MFA の電話による確認を設定する。
-- Azure AD B2C ID ストアとの間でデータの読み書きを行う。
-- カスタムの Restful API サービスを呼び出す。
-
-![ポリシー実行フローを示している図](./media/trustframeworkpolicy/custom-policy-execution.png)
-
- **TrustFrameworkPolicy** 要素には、次の要素が含まれます。
-
-- 上記の BasePolicy
-- [BuildingBlocks](buildingblocks.md)
-- [ClaimsProviders](claimsproviders.md)
-- [UserJourneys](userjourneys.md)
-- [RelyingParty](relyingparty.md)

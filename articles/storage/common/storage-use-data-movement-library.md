@@ -1,7 +1,7 @@
 ---
 title: .NET 用データ移動ライブラリを使用してデータを転送する
 titleSuffix: Azure Storage
-description: データ移動ライブラリを使用して、BLOB およびファイル間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
+description: データ移動ライブラリを使用して、BLOB およびファイル間でデータを移動またはコピーします。 ローカル ファイルから Azure Storage にデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
 author: tamram
 ms.service: storage
@@ -12,11 +12,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001878"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023416"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>データ移動ライブラリを使用してデータを転送する
 
@@ -192,7 +192,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 このコードにより、ローカル ファイルへのパス、新規または既存のコンテナーの名前、および新しい BLOB の名前を入力するように求められます。 `TransferManager.UploadAsync` メソッドは、この情報を使用してアップロードを実行します。
 
-`F5` キーを押してアプリケーションを実行します。 アップロードが行われたことを確認するには、[Microsoft Azure ストレージ エクスプ ローラー](https://storageexplorer.com/)でストレージ アカウントを表示します。
+`F5` キーを押してアプリケーションを実行します。 アップロードが行われたことを確認するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com/)でストレージ アカウントを表示します。
 
 ## <a name="set-the-number-of-parallel-operations"></a>並列操作数の設定
 

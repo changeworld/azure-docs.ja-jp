@@ -2,23 +2,32 @@
 title: Azure Application Insights Java SDK で Micrometer を使用する方法
 description: Application Insights Spring Boot アプリケーションと非 Spring Boot アプリケーションで Micrometer を使用するステップ バイ ステップ ガイドです。
 ms.topic: conceptual
-author: lgayhardt
+author: MS-jgol
 ms.custom: devx-track-java
-ms.author: lagayhar
+ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df3ed451776f30e8b7c13b95618f1a7f0c7688db
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322569"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937533"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK で Micrometer を使用する方法
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Azure Application Insights Java SDK で Micrometer を使用する方法 (非推奨)
+
+> [!IMPORTANT]
+> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 Micrometer テレメトリは、Application Insights Java 3.0 エージェントで自動的に収集されます。[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
+
+> [!NOTE]
+> Application Insights Java SDK では Spring Webflux がサポートされていません。代わりに [Application Insights Java 3.0 エージェント](./java-in-process-agent.md)を使用してください。 
+>
+> Webflux と Micrometer の両方が、インストルメンテーションを必要としない [Application Insights Java 3.0 エージェント](./java-on-premises.md)でサポートされています。 
+
 Micrometer のアプリケーション監視では、JVM ベースのアプリケーション コードのメトリックが測定され、好みの監視システムにデータをエクスポートできます。 この記事では、Spring Boot アプリケーションと非 Spring Boot アプリケーションの両方に対して Application Insights で Micrometer を使用する方法を説明します。
 
 ## <a name="using-spring-boot-15x"></a>Spring Boot 1.5x の使用
 次の依存関係を pom.xml ファイルまたは build.gradle ファイルに追加します。 
-* [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 以降
+* [Application Insights spring-boot-starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 以降
 * Micrometer Azure Registry 1.1.0 以降
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 以降 (これは、Spring フレームワーク内の自動構成コードをバックポートします)。
 * [Application Insights リソース](./create-new-resource.md)
@@ -51,7 +60,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. アプリケーションをビルドして実行します
-2. 集計前のメトリックが Azure Monitor に自動収集されます。 Application Insights Spring Boot スターターを微調整する方法の詳細については、[GitHub の readme](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md) をご覧ください。
+2. 集計前のメトリックが Azure Monitor に自動収集されます。 Application Insights Spring Boot スターターを微調整する方法の詳細については、[GitHub の readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md) をご覧ください。
 
 ## <a name="using-spring-2x"></a>Spring 2.x の使用
 
@@ -83,17 +92,17 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 *    Tomcat、JVM、Logback メトリック、Log4J メトリック、アップタイム メトリック、プロセッサ メトリック、FileDescriptorMetrics 用に自動構成されるメトリック。
 *    たとえば、Netflix Hystrix がクラス パス上に存在する場合は、それらのメトリックも取得されます。 
 *    それぞれの Bean を追加することで、次のメトリックを使用できます。 
-        - CacheMetrics (CaffeineCache、EhCache2、GuavaCache、HazelcastCache、JCache)     
+        - CacheMetrics (CaffeineCache、EhCache2、GuavaCache、HazelcastCache、JCache)
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
         - OkHttp3 メトリック 
         - Kafka メトリック 
 
- 
+
 
 自動メトリック収集をオフにする方法: 
- 
+
 - JVM メトリック: 
     - management.metrics.binders.jvm.enabled=false 
 - Logback メトリック: 
@@ -130,7 +139,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
             <artifactId>micrometer-registry-azure-monitor</artifactId>
             <version>1.1.0</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>applicationinsights-web-auto</artifactId>
@@ -143,17 +152,17 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-    
+
        <!-- The key from the portal: -->
        <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-    
+
        <!-- HTTP request component (not required for bare API) -->
        <TelemetryModules>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
        </TelemetryModules>
-    
+
        <!-- Events correlation (not required for bare API) -->
        <!-- These initializers add context data to each event -->
        <TelemetryInitializers>
@@ -163,7 +172,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
        </TelemetryInitializers>
-    
+
     </ApplicationInsights>
     ```
 
@@ -172,17 +181,17 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     ```Java
         @WebServlet("/hello")
         public class TimedDemo extends HttpServlet {
-    
+
           private static final long serialVersionUID = -4751096228274971485L;
-    
+
           @Override
           @Timed(value = "hello.world")
           protected void doGet(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
-    
+
             response.getWriter().println("Hello World!");
             MeterRegistry registry = (MeterRegistry) getServletContext().getAttribute("AzureMonitorMeterRegistry");
-    
+
         //create new Timer metric
             Timer sampleTimer = registry.timer("timer");
             Stream<Integer> infiniteStream = Stream.iterate(0, i -> i+1);
@@ -201,9 +210,9 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
           public void destroy() {
             System.out.println("Servlet " + this.getServletName() + " has stopped");
           }
-    
+
         }
-    
+
     ```
 
 4. 構成クラスのサンプル:
@@ -211,10 +220,10 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     ```Java
          @WebListener
          public class MeterRegistryConfiguration implements ServletContextListener {
-     
+
            @Override
            public void contextInitialized(ServletContextEvent servletContextEvent) {
-     
+
          // Create AzureMonitorMeterRegistry
            private final AzureMonitorConfig config = new AzureMonitorConfig() {
              @Override
@@ -224,23 +233,23 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
             @Override
                public Duration step() {
                  return Duration.ofSeconds(60);}
-     
+
              @Override
              public boolean enabled() {
                  return false;
              }
          };
-     
+
       MeterRegistry azureMeterRegistry = AzureMonitorMeterRegistry.builder(config);
-     
+
              //set the config to be used elsewhere
              servletContextEvent.getServletContext().setAttribute("AzureMonitorMeterRegistry", azureMeterRegistry);
-     
+
            }
-     
+
            @Override
            public void contextDestroyed(ServletContextEvent servletContextEvent) {
-     
+
            }
          }
     ```
@@ -272,5 +281,4 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 ## <a name="next-steps"></a>次のステップ
 
 * Micrometer の詳細については、公式の [Micrometer ドキュメント](https://micrometer.io/docs)を参照してください。
-* Azure での Spring については、公式の [Azure の Spring ドキュメント](/java/azure/spring-framework/?view=azure-java-stable)を参照してください。
-
+* Azure での Spring については、公式の [Azure の Spring ドキュメント](/java/azure/spring-framework/)を参照してください。

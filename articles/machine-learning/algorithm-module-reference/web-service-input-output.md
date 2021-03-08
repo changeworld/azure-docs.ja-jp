@@ -1,6 +1,6 @@
 ---
 title: Web サービスの入出力:モジュール リファレンス
-description: Azure Machine Learning デザイナー (プレビュー) の Web サービス モジュールについて説明します
+description: Azure Machine Learning デザイナーの Web サービス モジュールを使用して入力と出力を管理する方法について説明します。
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: ded976fc9090535f3c683b5c6351646a55265205
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475ad3de8e0a7636a14949d4fcd8a5ec2812ad5e
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751101"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421126"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>[Web Service Input]\(Web サービスの入力\) モジュールと [Web Service Output]\(Web サービスの出力\) モジュール
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) の Web サービスの入力モジュールと Web サービスの出力モジュールについて説明します。
+この記事では、Azure Machine Learning デザイナーの Web サービスの入力モジュールと Web サービスの出力モジュールについて説明します。
 
 Web サービスの入力モジュールは、**DataFrameDirectory** タイプでのみ入力ポートに接続できます。 Web サービスの出力モジュールは、**DataFrameDirectory** タイプでのみ出力ポートに接続できます。 2 つのモジュールは、モジュール ツリーの **[Web サービス]** カテゴリ下で見つけることができます。 
 
@@ -26,7 +26,7 @@ Web サービスの入力モジュールでは、ユーザー データがパイ
 
 ## <a name="how-to-use-web-service-input-and-output"></a>Web サービスの入出力を使用する方法
 
-トレーニング パイプラインから[リアルタイム推論パイプラインを作成する](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline)と、Web サービスの入力モジュールと Web サービスの出力モジュールが自動的に追加され、ユーザー データがパイプラインに入る場所とデータが返される場所が示されます。 
+トレーニング パイプラインから[リアルタイム推論パイプラインを作成する](../tutorial-designer-automobile-price-deploy.md#create-a-real-time-inference-pipeline)と、Web サービスの入力モジュールと Web サービスの出力モジュールが自動的に追加され、ユーザー データがパイプラインに入る場所とデータが返される場所が示されます。 
 
 > [!NOTE]
 > リアルタイム推論パイプラインの自動生成は、ルールベースのベストエフォート プロセスです。 正確性の保証はありません。 
@@ -45,9 +45,9 @@ Web サービスの入力モジュールでは、ユーザー データがパイ
 パイプラインを送信して、実行が正常に完了すると、リアルタイム エンドポイントをデプロイできます。
    
 > [!NOTE]
->  上の例では、**データの手動入力**は Web サービスの入力のためのデータ スキーマを提供しており、リアルタイム エンドポイントをデプロイするために必要です。 一般に、データ スキーマを提供するには、**Web サービスの入力**が接続されているポートにモジュールまたはデータセットを常に接続する必要があります。
+>  上の例では、**データの手動入力** は Web サービスの入力のためのデータ スキーマを提供しており、リアルタイム エンドポイントをデプロイするために必要です。 一般に、データ スキーマを提供するには、**Web サービスの入力** が接続されているポートにモジュールまたはデータセットを常に接続する必要があります。
    
 ## <a name="next-steps"></a>次のステップ
-[リアルタイム エンドポイントのデプロイ](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint)について学習します。
+[リアルタイム エンドポイントのデプロイ](../tutorial-designer-automobile-price-deploy.md#deploy-the-real-time-endpoint)について学習します。
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

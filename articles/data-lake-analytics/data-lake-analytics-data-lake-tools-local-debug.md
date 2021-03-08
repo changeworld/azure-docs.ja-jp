@@ -1,19 +1,16 @@
 ---
 title: ローカルで Azure Data Lake Analytics コードをデバッグする
 description: Azure Data Lake Tools for Visual Studio を使用してローカル ワークステーション上で U-SQL ジョブをデバッグする方法について説明します。
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 7176e2f64faa8e5b43574084a9cbd947dbd576d3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1c7218deac9efba6df6c1284f2578a744e768284
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125638"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221028"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>ローカルで Azure Data Lake Analytics コードをデバッグする
 

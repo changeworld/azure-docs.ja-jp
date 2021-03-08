@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache Kafka に関する FAQ
 description: 管理された Hadoop クラウド サービスである Azure HDInsight での Apache Kafka についての一般的な質問の回答を表示します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 851d7ceb44d2466ed31e26c1442fde9acea9fd22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436905"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939104"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka に関してよく寄せられる質問
 
@@ -42,7 +39,7 @@ HDInsight Kafka クラスターには、次のリソースが含まれていま�
 
 ## <a name="can-i-change-cluster-configurations"></a>クラスター構成を変更できますか?
 
-はい、Ambari ポータルを使用します。 ポータルの各コンポーネントには、**構成**セクションがあり、コンポーネントの構成を変更するために使用できます。 一部の変更では、ブローカーの再起動が必要な場合があります。
+はい、Ambari ポータルを使用します。 ポータルの各コンポーネントには、**構成** セクションがあり、コンポーネントの構成を変更するために使用できます。 一部の変更では、ブローカーの再起動が必要な場合があります。
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>HDInsight で Apache Kafka に対してサポートされる認証の種類はどれですか?
 
@@ -68,7 +65,7 @@ Kafka メッセージで使用できる領域を増やすには、ノードの�
 
 ## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kafka クラスターを Databricks で動作させることはできますか? 
 
-はい。 Kafka クラスターは、同じ VNet 内にある限り、Databricks で動作できます。 Databricks で Kafka クラスターを使用するには、HDInsight Kafka クラスターが含まれる VNet を作成し、Databricks ワークスペースを作成して VNet インジェクションを使用するときにその VNet を指定します。 詳細については、「[Azure Virtual Network に Azure Databricks をデプロイする (VNet インジェクション)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)」を参照してください。 Databricks ワークスペースの作成時に、Kafka クラスターのブートストラップ ブローカー名を指定する必要があります。 Kafka ブローカー名の取得方法の詳細については、「[Apache Zookeeper およびブローカーのホスト情報を取得する](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo)」を参照してください。
+はい。 Kafka クラスターは、同じ VNet 内にある限り、Databricks で動作できます。 Databricks で Kafka クラスターを使用するには、HDInsight Kafka クラスターが含まれる VNet を作成し、Databricks ワークスペースを作成して VNet インジェクションを使用するときにその VNet を指定します。 詳細については、「[Azure Virtual Network に Azure Databricks をデプロイする (VNet インジェクション)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)」を参照してください。 Databricks ワークスペースの作成時に、Kafka クラスターのブートストラップ ブローカー名を指定する必要があります。 Kafka ブローカー名の取得方法の詳細については、「[Apache Zookeeper およびブローカーのホスト情報を取得する](./apache-kafka-get-started.md#getkafkainfo)」を参照してください。
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>最大限のデータの持続性を達成するにはどうすればよいですか?
 

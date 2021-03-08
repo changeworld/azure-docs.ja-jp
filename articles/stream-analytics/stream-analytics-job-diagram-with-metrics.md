@@ -3,16 +3,15 @@ title: Azure Stream Analytics でのデータ主導型デバッグ
 description: この記事では、Azure Portal のジョブ ダイアグラムとメトリックを使って、Azure Stream Analytics ジョブのトラブルシューティングを行う方法について説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d20454515088ccca87665d9b3b27c0d82c3cdf9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044483"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020402"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>ジョブ ダイアグラムを使用したデータ主導型デバッグ
 
@@ -75,15 +74,15 @@ Azure Event Hubs の入力をパーティション単位で確認するには、
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>データの読み取りを追跡しているかどうか。
 
-*   **Input Events Backlogged (Total)** では、Event Hubs と Azure IoT Hub の入力用に読み取る必要がある追加のメッセージの数がわかります。 この数値が 0 より大きい場合は、データの取得後すぐに、ジョブがデータを処理できないことを意味します。 この場合、必要に応じて、ストリーミング ユニット数を増やしたり、ジョブを並列処理できるようにしたりします。 この処理の詳細については、[クエリの並列化に関するページ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)を参照してください。 
+*   **Input Events Backlogged (Total)** では、Event Hubs と Azure IoT Hub の入力用に読み取る必要がある追加のメッセージの数がわかります。 この数値が 0 より大きい場合は、データの取得後すぐに、ジョブがデータを処理できないことを意味します。 この場合、必要に応じて、ストリーミング ユニット数を増やしたり、ジョブを並列処理できるようにしたりします。 この処理の詳細については、[クエリの並列化に関するページ](./stream-analytics-parallelization.md)を参照してください。 
 
 
 ## <a name="get-help"></a>ヘルプの参照
-さらにサポートが必要な場合は、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。 
+さらにサポートが必要な場合は、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 * [Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
-* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics クエリ言語リファレンス](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics 管理 REST API リファレンス](/rest/api/streamanalytics/)

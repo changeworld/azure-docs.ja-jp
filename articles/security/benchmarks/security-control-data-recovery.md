@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 835e4f681d514bb6b92caa5ee076e3794ed59236
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408590"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698820"
 ---
 # <a name="security-control-data-recovery"></a>セキュリティ コントロールデータの復旧
 
@@ -26,7 +26,7 @@ ms.locfileid: "81408590"
 
 Azure Backup を有効にし、バックアップ ソース (Azure VM、SQL Server、またはファイル共有)、および必要な頻度と保持期間を構成します。
 
-- [Azure Backup を有効にする方法](https://docs.microsoft.com/azure/backup/)
+- [Azure Backup を有効にする方法](../../backup/index.yml)
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
@@ -36,9 +36,9 @@ Azure Backup を有効にし、バックアップ ソース (Azure VM、SQL Serv
 
 Azure Backup を有効にし、ターゲット VM および必要な頻度と保持期間を設定します。 Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
 
-- [Azure Backup を有効にする方法](https://docs.microsoft.com/azure/backup/)
+- [Azure Backup を有効にする方法](../../backup/index.yml)
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
@@ -48,9 +48,9 @@ Azure Backup を有効にし、ターゲット VM および必要な頻度と保
 
 Azure Backup 内でコンテンツのデータ復元を定期的に実行できるようにします。 バックアップされたカスタマー マネージド キーの復元をテストします。
 
-- [Azure 仮想マシンのバックアップからファイルを復旧する方法](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)
+- [Azure 仮想マシンのバックアップからファイルを復旧する方法](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
 
@@ -58,15 +58,15 @@ Azure Backup 内でコンテンツのデータ復元を定期的に実行でき�
 |--|--|--|
 | 9.4 | 10.4 | Customer |
 
-オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 ロールベースのアクセス制御を使用して、バックアップとカスタマー マネージド キーを保護します。  
+オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 Azure ロールベースのアクセス制御を使用して、バックアップとカスタマー マネージド キーを保護します。  
 
 Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。  Azure Storage を使用してバックアップを格納した場合、BLOB または BLOB のスナップショットが削除されたときに、論理的な削除機能でデータを保存および復旧することができます。 
 
-- [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Azure RBAC について](../../role-based-access-control/overview.md)
 
-- [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault で論理的な削除と消去保護を有効にする方法](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Azure Storage Blob の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Storage Blob の論理的な削除](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 
 ## <a name="next-steps"></a>次のステップ

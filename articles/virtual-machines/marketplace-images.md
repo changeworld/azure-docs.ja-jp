@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224955"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903753"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>イメージ作成時、Azure Marketplace 購入プラン情報を提供する
 
@@ -24,15 +24,13 @@ Marketplace イメージの検索と使用の詳細については、[Azure Mark
 
 
 ## <a name="get-the-source-vm-information"></a>ソース VM 情報を取得する
-元の VM がまだある場合、Get-AzVM を使用し、それからプラン、パブリッシャー、SKU を取得できます。 この例では、*myResourceGroup* リソース グループの *myVM* という名前の VM を取得し、購入プラン情報を表示します。
+元の VM がまだある場合は、Get-AzVM を使用して、その VM からプラン名、発行元、および製品情報を取得できます。 この例では、*myResourceGroup* リソース グループの *myVM* という名前の VM を取得し、その VM の購入プラン情報を表示します。
 
 ```azurepowershell-interactive
 $vm = Get-azvm `
    -ResourceGroupName myResourceGroup `
    -Name myVM
-$vm.Plan.Publisher
-$vm.Plan.Name
-$vm.Plan.Product
+$vm.Plan
 ```
 
 ## <a name="create-the-image-definition"></a>イメージ定義を作成する

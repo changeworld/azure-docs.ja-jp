@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a920abacb0df030f7d38aed11e04a693cfa352a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545405"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BlueJeans for Azure AD の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545405"
 * ユーザーが自分の Azure AD アカウントを使用して BlueJeans for Azure AD に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * BlueJeans for Azure AD では、**SP** Initiated SSO がサポートされます
 
-* BlueJeans for Azure AD では、[**自動化された**ユーザー プロビジョニング](bluejeans-provisioning-tutorial.md)がサポートされます
+* BlueJeans for Azure AD では、[**自動化された** ユーザー プロビジョニング](bluejeans-provisioning-tutorial.md)がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -150,7 +150,7 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
 2. **[管理] \> [グループ設定] \> [セキュリティ]** の順にクリックします。
 
-    ![管理者](./media/bluejeans-tutorial/ic785868.png "[Admin]")
+    ![このスクリーンショットは、[Admin]\(管理\) タブが選択され、[Group Setting]\(グループ設定\) と [Security]\(セキュリティ\) が選択された状態のブラウザー ウィンドウの一部を示しています。](./media/bluejeans-tutorial/ic785868.png "[Admin]")
 
 3. **[セキュリティ]** セクションで、次の手順を実行します。
 
@@ -166,11 +166,11 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
     a. **[ファイルの選択]** を選択して、Azure portal からダウンロードした base 64 でエンコードされた証明書をアップロードします。
 
-    b. **[ログイン URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[ログイン URL]** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    c. **[Password Change URL]\(パスワード変更 URL\)** テキスト ボックスに、Azure portal からコピーした**パスワードの変更 URL** の値を貼り付けます。
+    c. **[Password Change URL]\(パスワード変更 URL\)** テキスト ボックスに、Azure portal からコピーした **パスワードの変更 URL** の値を貼り付けます。
 
-    d. **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d. **[ログアウト URL]** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
 5. 次の手順を実行します。
 
@@ -192,14 +192,14 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
 2. **[管理] \> [ユーザーの管理] \> [ユーザーの追加]** の順にクリックします。
 
-    ![管理者](./media/bluejeans-tutorial/ic785877.png "[Admin]")
+    ![このスクリーンショットは、[Admin]\(管理\) タブが選択され、[Manage Users]\(ユーザーの管理\) と [Add Users]\(ユーザーの追加\) が選択された状態のブラウザー ウィンドウの一部を示しています。](./media/bluejeans-tutorial/ic785877.png "[Admin]")
 
     > [!IMPORTANT]
     > **[ユーザーの追加]** タブは、 **[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。
 
 3. **[ユーザーの追加]** セクションで、次の手順を実行します。
 
-    ![ユーザーの追加](./media/bluejeans-tutorial/ic785886.png "ユーザーの追加")
+    ![このスクリーンショットは、[Add user]\(ユーザーの追加\) セクションを示しています。ここで、この手順で説明されている情報を入力します。](./media/bluejeans-tutorial/ic785886.png "ユーザーの追加")
 
     a. **[名]** ボックスに、ユーザーの名を入力します (例: **B**)。
 
@@ -211,7 +211,7 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
     e. **[会社]** テキスト ボックスに会社名を入力します。
 
-    f. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレスを入力します (例: `b.simon\@contoso.com`)。
+    f. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレスを入力します (例: `b.simon@contoso.com`)。
 
     g. **[Create a BlueJeans for Azure AD Meeting I.D]\(BlueJeans for Azure AD 会議 I.D の作成\)** ボックスに、会議の ID を入力します。
 
@@ -219,7 +219,7 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
     i. **[続行]** をクリックします。
 
-    ![ユーザーの追加](./media/bluejeans-tutorial/ic785887.png "ユーザーの追加")
+    ![このスクリーンショットは、[ユーザーの追加] ボタンが選択された状態のユーザーの追加セクションを示しています。ここで、設定と機能を確認できます。](./media/bluejeans-tutorial/ic785887.png "ユーザーの追加")
 
     J. **[ユーザーの追加]** をクリックします。
 
@@ -230,14 +230,14 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [BlueJeans for Azure AD] タイルをクリックすると、SSO を設定した BlueJeans for Azure AD に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [BlueJeans for Azure AD] タイルをクリックすると、SSO を設定した BlueJeans for Azure AD に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で BlueJeans for Azure AD を試す](https://aad.portal.azure.com/)

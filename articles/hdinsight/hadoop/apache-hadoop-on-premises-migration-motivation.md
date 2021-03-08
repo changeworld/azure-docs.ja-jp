@@ -1,19 +1,17 @@
 ---
 title: メリット:Azure HDInsight へのオンプレミスの Apache Hadoop の 移行
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することの動機と利点について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072785"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943245"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -39,11 +37,11 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 - **ハードウェアと構成の管理** - HDInsight クラスターでは物理的なハードウェアやインフラストラクチャへの心配は不要です。 クラスターの構成さえ指定すれば、設定は Azure が行います。
 
-- **簡単に拡張できる** - HDInsight ではワークロードの [スケール](../hdinsight-administer-use-portal-linux.md)を増減できます。 データの再配布およびワークロードの再均衡化処理は、データ処理ジョブを中断することなく Azure が行います。
+- **簡単に拡張できる** - HDInsight ではワークロードの [スケール](../hdinsight-administer-use-portal-linux.md)を増減できます。 データの再配布およびワークロードの再均衡化処理は、データ処理ジョブを中断することなく Azure が行います。
 
-- **グローバルに利用可能** - HDInsight は、他のあらゆるビッグ データ分析サービスよりも多くの[リージョン](https://azure.microsoft.com/regions/services/)で提供されています。 Azure HDInsight は、Azure Government、Azure China、Azure Germany でも提供されており、独自の法令が施行されている地域における企業のニーズに応えます。
+- **グローバルに利用可能** - HDInsight は、他のあらゆるビッグ データ分析サービスよりも多くの [リージョン](https://azure.microsoft.com/regions/services/)で提供されています。 Azure HDInsight は、Azure Government、Azure China、Azure Germany でも提供されており、独自の法令が施行されている地域における企業のニーズに応えます。
 
-- **セキュリティとコンプライアンス** - HDInsight を使用すると、 [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)、 [暗号化](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、 [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な [コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。
+- **セキュリティとコンプライアンス** - HDInsight を使用すると、[Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)、[暗号化](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、[Azure Active Directory](../domain-joined/hdinsight-security-overview.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な[コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。
 
 - **バージョン管理を簡略化** - Azure HDInsight は Hadoop エコシステム コンポーネントのバージョンを管理し、最新の状態に保持します。 ソフトウェアの更新は、オンプレミスの展開では一般的に複雑なプロセスです。
 
@@ -51,9 +49,9 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 - **生産性** - お好みの開発環境で Hadoop および Spark 向けのさまざまなツールを使用できます。
 
-- **カスタム ツールまたはサードパーティ製のアプリケーションによる拡張機能** - HDInsight クラスターは、インストールされているコンポーネントを使用して拡張したり、Azure Marketplace から[ワンクリック](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 展開を使用することによって他のビッグ データ ソリューションと統合したりできます。
+- **カスタム ツールまたはサードパーティ製のアプリケーションによる拡張機能** - HDInsight クラスターは、インストールされているコンポーネントを使用して拡張したり、Azure Marketplace から [ワンクリック](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) デプロイを使用することによって他のビッグ データ ソリューションと統合したりできます。
 
-- **管理と監視が容易に** - Azure HDInsight は  [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md) と統合することによって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。
+- **管理と監視が容易に** - Azure HDInsight は [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)と統合することによって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。
 
 - **他の Azure サービスとの統合** - HDInsight は、好評を博している以下の Azure サービスと簡単に統合できます。
 
@@ -185,7 +183,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |クラウドのみのユーザー?|                 はい||
 |MFA が必要ですか?|                       いいえ|| 
 |データの承認要件ですか?|  はい||
-|ロール ベースのアクセス制御?|        はい||
+|ロールベースのアクセス制御ですか?|        はい||
 |監査が必要ですか?|                  はい||
 |保存データの暗号化ですか?|          はい||
 |転送中のデータの暗号化ですか?|       はい||

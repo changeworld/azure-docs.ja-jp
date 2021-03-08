@@ -9,12 +9,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 02/24/2020
-  ms.openlocfilehash: ed3c4f1794407ccdb841ea3c6ca35ff4d8e1a808
-  ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+  ms.openlocfilehash: 194b89058b68b73ff651e9fef85717fcc578d66a
+  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88192462"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92777778"
 landingContent:
 - title: Azure CDN について
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure CDN と Blob service を使用して、Web サイト用のコンテンツ配信ネットワークを作成する
-      url: https://docs.microsoft.com/learn/modules/create-cdn-static-resources-blob-storage/
+      url: /learn/modules/create-cdn-static-resources-blob-storage/
 - title: 監視
   linkLists:
   - linkListType: how-to-guide

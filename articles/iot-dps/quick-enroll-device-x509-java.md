@@ -1,5 +1,5 @@
 ---
-title: Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
+title: クイック スタート - Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
 description: このクイック スタートでは、グループ登録と個別登録の両方を使用します。 このクイックスタートでは、Java を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します。
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 1d1b4e2573519fbd033121763d3e7fe6b071f075
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8591220eb80d9c60ed7873be546007449ab46f89
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327023"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463034"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート:Java を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -26,7 +26,7 @@ ms.locfileid: "87327023"
 
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks)。 このクイックスタートの中で、後から [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) をインストールします。 Windows と Linux のどちらでも使用できます。 このクイックスタートでは Windows を使用します。
+- [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。 このクイックスタートの中で、後から [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) をインストールします。 Windows と Linux のどちらでも使用できます。 このクイックスタートでは Windows を使用します。
 - [Maven 3](https://maven.apache.org/download.cgi)。
 - [Git](https://git-scm.com/download/).
 
@@ -41,7 +41,7 @@ ms.locfileid: "87327023"
 
 以降の手順では、X.509 デバイスのプロビジョニングの詳細をサンプル コードに追加する方法について説明します。 
 
-1. コマンド プロンプトを開きます。 [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
+1. コマンド プロンプトを開きます。 [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -52,11 +52,11 @@ ms.locfileid: "87327023"
     1. 次のように、ポータルからプロビジョニング サービスの `[Provisioning Connection String]` を追加します。
         1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスに移動します。 
         2. **[共有アクセス ポリシー]** を開き、*EnrollmentWrite* アクセス許可を持つポリシーを選択します。
-        3. **主キーの接続文字列**をコピーします。 
+        3. **主キーの接続文字列** をコピーします。 
 
             ![ポータルからプロビジョニング接続文字列を取得する](./media/quick-enroll-device-x509-java/provisioning-string.png)  
 
-        4. サンプル コード ファイル **_ServiceEnrollmentGroupSample.java_** の `[Provisioning Connection String]` を**主キーの接続文字列**に置き換えます。
+        4. サンプル コード ファイル **_ServiceEnrollmentGroupSample.java_** の `[Provisioning Connection String]` を **主キーの接続文字列** に置き換えます。
 
             ```Java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
@@ -163,9 +163,9 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="modifications-to-enroll-a-single-x509-device"></a>1 つの X.509 デバイスを登録する場合の変更
 
-1 つの X.509 デバイスを登録するには、「[Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK](quick-enroll-device-tpm-java.md#javasample)」(Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する) で使用した*個々の登録*のサンプル コードを次のように変更します。
+1 つの X.509 デバイスを登録するには、「[Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK](quick-enroll-device-tpm-java.md#javasample)」(Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する) で使用した *個々の登録* のサンプル コードを次のように変更します。
 
-1. X.509 クライアント証明書の*共通名*をクリップボードにコピーします。 [前のサンプル コード セクション](#javasample)で説明したように _X.509 証明書ジェネレーター_ を使用する場合は、証明書の _共通名_ を入力するか、既定の **microsoftriotcore** を使用します。 この**共通名**を *REGISTRATION_ID* 変数の値として使用します。 
+1. X.509 クライアント証明書の *共通名* をクリップボードにコピーします。 [前のサンプル コード セクション](#javasample)で説明したように _X.509 証明書ジェネレーター_ を使用する場合は、証明書の _共通名_ を入力するか、既定の **microsoftriotcore** を使用します。 この **共通名** を *REGISTRATION_ID* 変数の値として使用します。 
 
     ```Java
     // Use common name of your X.509 client certificate
@@ -195,7 +195,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     Attestation attestation = X509Attestation.createFromClientCertificates(PUBLIC_KEY_CERTIFICATE_STRING);
     ```
 
-4. 「[Build and run the sample code for individual enrollment](quick-enroll-device-tpm-java.md#runjavasample)」(個々の登録のサンプル コードをビルドして実行する) の手順に従って、*個々の登録*のサンプル ファイルを保存し、ビルドして実行します。
+4. 「[Build and run the sample code for individual enrollment](quick-enroll-device-tpm-java.md#runjavasample)」(個々の登録のサンプル コードをビルドして実行する) の手順に従って、*個々の登録* のサンプル ファイルを保存し、ビルドして実行します。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

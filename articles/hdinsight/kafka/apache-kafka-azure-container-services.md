@@ -1,19 +1,16 @@
 ---
 title: Azure Kubernetes Service で HDInsight 上の Kafka を使用する
 description: Azure Kubernetes Service (AKS) でホストされているコンテナー イメージから、HDInsight 上の Kafka を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: baf350e23025342cc74b4d063d9a1604e8ad2ffd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087424"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933031"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -26,7 +23,7 @@ Azure Kubernetes Service (AKS) で HDInsight クラスター上の [Apache Kafka
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure CLI](/cli/azure/install-azure-cli)
 * Azure サブスクリプション
 
 このドキュメントでは、読者が次の Azure サービスの作成と使用に慣れていることを前提としています。
@@ -58,14 +55,14 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 * [Azure Kubernetes Service (AKS) クラスターのデプロイ - CLI](../../aks/kubernetes-walkthrough.md)
 
 > [!IMPORTANT]  
-> AKS では、**追加の**リソース グループへのインストール時に仮想ネットワークが作成されます。 追加のリソース グループは、**MC_resourceGroup_AKSclusterName_location** という名前付け規則に従います。  
+> AKS では、**追加の** リソース グループへのインストール時に仮想ネットワークが作成されます。 追加のリソース グループは、**MC_resourceGroup_AKSclusterName_location** という名前付け規則に従います。  
 > このネットワークは、次のセクションで HDInsight 用に作成するネットワークにピアリングされます。
 
 ## <a name="configure-virtual-network-peering"></a>仮想ネットワーク ピアリングを構成する
 
 ### <a name="identify-preliminary-information"></a>準備情報の特定
 
-1. [Azure portal](https://portal.azure.com) で、AKS クラスター用の仮想ネットワークが含まれている追加の**リソース グループ**を探します。
+1. [Azure portal](https://portal.azure.com) で、AKS クラスター用の仮想ネットワークが含まれている追加の **リソース グループ** を探します。
 
 2. リソース グループで、 __[仮想ネットワーク]__ リソースを選択します。 後で使うので名前をメモしておきます。
 
@@ -93,7 +90,7 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
     |プロパティ |値 |
     |---|---|
     |\<this VN> からリモート仮想ネットワークへのピアリングの名前|このピアリング構成の一意の名前を入力します。|
-    |仮想ネットワーク|**AKS クラスター**用の仮想ネットワークを選択します。|
+    |仮想ネットワーク|**AKS クラスター** 用の仮想ネットワークを選択します。|
     |\<AKS VN> から \<this VN> へのピアリングの名前|一意の名前を入力します。|
 
     その他のフィールドはすべて既定値のままにし、 __[OK]__ を選択してピアリングを構成します。

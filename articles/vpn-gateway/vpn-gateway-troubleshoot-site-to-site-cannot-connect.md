@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037836"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658351"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング:Azure サイト間 VPN が動作を停止して接続できない
 
@@ -22,7 +22,7 @@ ms.locfileid: "86037836"
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
-問題を解決するには、まず、[Azure VPN ゲートウェイをリセット](vpn-gateway-resetgw-classic.md)し、オンプレミス VPN デバイスからのトンネルをリセットしてみてください。 問題が解決しない場合は、以降の手順に従って問題の原因を特定します。
+問題を解決するには、まず、[Azure VPN ゲートウェイをリセット](./reset-gateway.md)し、オンプレミス VPN デバイスからのトンネルをリセットしてみてください。 問題が解決しない場合は、以降の手順に従って問題の原因を特定します。
 
 ### <a name="prerequisite-step"></a>事前に必要な手順
 
@@ -88,7 +88,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>手順 6. サブネットが完全に一致することを確認する (Azure のポリシー ベースのゲートウェイ)
 
 -   Azure 仮想ネットワークとオンプレミスの定義で、仮想ネットワーク アドレス空間が完全に一致することを確認します。
--   **ローカル ネットワーク ゲートウェイ**とオンプレミス ネットワークのオンプレミス定義との間でサブネットが完全に一致することを確認します。
+-   **ローカル ネットワーク ゲートウェイ** とオンプレミス ネットワークのオンプレミス定義との間でサブネットが完全に一致することを確認します。
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>手順 7. Azure ゲートウェイの正常性プローブを確認する
 

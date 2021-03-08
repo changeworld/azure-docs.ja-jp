@@ -1,20 +1,21 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 description: このドキュメントでは、MongoDB から Cosmos DB にデータを移行する前提条件の概要について説明します。
-author: LuisBosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 09/01/2020
-ms.author: lbosq
-ms.openlocfilehash: be38b1cfa698907f44c6deee77bb9b8ca88b77b7
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 03/02/2021
+ms.author: chrande
+ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318218"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656960"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 (オンプレミスまたはクラウド内の) MongoDB から Azure Cosmos DB の MongoDB 用 API にデータを移行する前に、以下のことを行う必要があります。
 
@@ -36,7 +37,7 @@ ms.locfileid: "89318218"
 
 - **エラスティック容量**:特定のコレクションまたはデータベースの容量は、いつでも変更できます。 これにより、データベースをワークロードのスループット要件に柔軟に適応させることができます。
 
-- **自動シャーディング**:Azure Cosmos DB では、シャード (またはパーティション キー) のみを必要とする自動パーティション分割システムが提供されます。 [自動パーティション分割メカニズム](partition-data.md)は、すべての Azure Cosmos DB API 間で共有されます。これにより、水平分布を通じて、シームレスなデータおよびスループットのスケーリングが可能になります。
+- **自動シャーディング**:Azure Cosmos DB では、シャード (またはパーティション キー) のみを必要とする自動パーティション分割システムが提供されます。 [自動パーティション分割メカニズム](partitioning-overview.md)は、すべての Azure Cosmos DB API 間で共有されます。これにより、水平分布を通じて、シームレスなデータおよびスループットのスケーリングが可能になります。
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>Azure Cosmos DB の MongoDB 用 API の移行オプション
 
@@ -70,7 +71,7 @@ Azure Cosmos DB では、スループットは事前にプロビジョニング�
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-[診断設定](cosmosdb-monitor-resource-logs.md)を使用して、Azure Cosmos DB に対して実行されるクエリの頻度とパターンを理解することもできます。 診断ログの結果は、ストレージ アカウント、EventHub インスタンスまたは [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md) に送信できます。  
+[診断設定](cosmosdb-monitor-resource-logs.md)を使用して、Azure Cosmos DB に対して実行されるクエリの頻度とパターンを理解することもできます。 診断ログの結果は、ストレージ アカウント、EventHub インスタンスまたは [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) に送信できます。  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>パーティション キーの選択
 パーティション分割 (シャーディングともいう) は、データを移行する前に考慮すべき重要な点です。 Azure Cosmos DB では、フルマネージド パーティション分割を使用して、ストレージとスループットの要件を満たすためにデータベースの容量を増やします。 この機能では、ルーティング サーバーのホストや構成は必要ありません。   
@@ -79,7 +80,7 @@ Azure Cosmos DB では、スループットは事前にプロビジョニング�
 
 ## <a name="index-your-data"></a><a id="indexing"></a>データのインデックス作成
 
-Azure Cosmos DB の MongoDB サーバー バージョン 3.6 用 API では、`_id` フィールドのみ、インデックスが自動的に作成されます。 このフィールドは削除できません。 シャード キーごとに `_id` フィールドの一意性が自動的に適用されます。 その他のフィールドのインデックスを作成するには、MongoDB インデックス管理コマンドを適用します。 この既定のインデックス作成ポリシーは Azure Cosmos DB の SQL API とは異なり、既定ですべてのフィールドのインデックスが作成されます。
+MongoDB サーバー バージョン 3.6 以降を対象とする Azure Cosmos DB の API では、`_id` フィールドのみ、インデックスが自動的に作成されます。 このフィールドは削除できません。 シャード キーごとに `_id` フィールドの一意性が自動的に適用されます。 その他のフィールドのインデックスを作成するには、[MongoDB インデックス管理コマンド](mongodb-indexing.md)を適用します。 この既定のインデックス作成ポリシーは Azure Cosmos DB の SQL API とは異なり、既定ですべてのフィールドのインデックスが作成されます。
 
 Azure Cosmos DB によって提供されるインデックス作成機能には、複合インデックス、一意のインデックス、Time-to-Live (TTL) インデックスの追加が含まれます。 インデックス管理インターフェイスは、`createIndex()` コマンドにマップされます。 詳細については、[Azure Cosmos DB の MongoDB 用 API でのインデックス作成](mongodb-indexing.md)に関する記事を参照してください。
 
@@ -88,7 +89,7 @@ Azure Cosmos DB によって提供されるインデックス作成機能には�
 ## <a name="next-steps"></a>次のステップ
 * [Database Migration Service を使用してお使いの MongoDB データを Cosmos DB に移行する。](../dms/tutorial-mongodb-cosmos-db.md) 
 * [Azure Cosmos のコンテナーとデータベースにスループットをプロビジョニングする](set-throughput.md)
-* [Azure Cosmos DB でのパーティション分割](partition-data.md)
+* [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 * [Azure Cosmos DB でのグローバル分散](distribute-data-globally.md)
 * [Azure Cosmos DB のインデックス作成](index-overview.md)
 * [Azure Cosmos DB の要求ユニット](request-units.md)

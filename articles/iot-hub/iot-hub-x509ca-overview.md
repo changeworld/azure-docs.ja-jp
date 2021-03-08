@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 33c878b2af64a72212a8aac060e9ccac83b79a53
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326513"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150698"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA 証明書を使用したデバイス認証
 
@@ -27,6 +27,8 @@ ms.locfileid: "87326513"
 * X.509 CA 証明書を IoT Hub に登録する方法
 * X.509 CA 証明書を使用してデバイスに署名する方法
 * X.509 CA で署名されたデバイスを認証する方法
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>概要
 
@@ -88,4 +90,4 @@ IoT Hub へのデバイス接続が正常に行われると、認証プロセス
 
 IoT での [X.509 CA 認証の価値](iot-hub-x509ca-concept.md)について学習します。
 
-IoT Hub [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) を使ってみます。
+IoT Hub [Device Provisioning Service](../iot-dps/index.yml) を使ってみます。

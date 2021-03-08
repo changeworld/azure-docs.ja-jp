@@ -1,7 +1,7 @@
 ---
-title: 承認コードを使用して JavaScript シングルページ アプリ (SPA) でユーザーをサインインさせる | Azure
+title: 'クイックスタート: 承認コードを使用して JavaScript シングルページ アプリ (SPA) でユーザーをサインインさせる | Azure'
 titleSuffix: Microsoft identity platform
-description: アクセス トークンが必要な API を JavaScript アプリから Microsoft ID プラットフォームを使用して呼び出す方法について説明します。
+description: このクイックスタートでは、JavaScript シングルページ アプリケーション (SPA) で認証コード フローを使用して、個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法について説明します。
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
+ms.openlocfilehash: 1af1c990c284c91d8bb8344834991c69ed6f00c5
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115188"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103636"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>クイック スタート:承認コード フローを使用して JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
-このクイック スタートでは、JavaScript シングルページ アプリケーション (SPA) で認証コード フローを使用して、個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法を示すコード サンプルを実行します。 このコード サンプルでは、Web API (この場合は Microsoft Graph API) を呼び出すためのアクセス トークンを取得する方法も示しています。 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
+このクイックスタートでは、承認コード フローを使用して、JavaScript シングルページ アプリケーション (SPA) でユーザーをサインインし、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。 
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 このクイック スタートでは、承認コード フローで MSAL.js 2.0 を使用します。 暗黙的なフローで MSAL.js 1.0 を使用する同様のクイック スタートについては、[クイック スタート: JavaScript シングルページ アプリ内でのユーザーのサインイン](./quickstart-v2-javascript.md)に関するページを参照してください。
-
-[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,7 @@ ms.locfileid: "88115188"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1 (簡易): アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. [Azure portal](https://portal.azure.com) にサインインします。
-> 1. そのアカウントで複数のテナントにアクセスできる場合は、右上でアカウントを選択してから、ポータルのセッションを、使用したい Azure Active Directory (Azure AD) テナントに設定します。
-> 1. [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) を選択します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal の [アプリの登録]</a> に移動します。
 > 1. アプリケーションの名前を入力します。
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[登録]** を選択します。
@@ -51,21 +49,21 @@ ms.locfileid: "88115188"
 >
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 >
-> 1. [Azure portal](https://portal.azure.com) にサインインします。
-> 1. そのアカウントで複数のテナントにアクセスできる場合は、右上でアカウントを選択してから、ポータルのセッションを、使用したい Azure AD テナントに設定します。
-> 1. [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) を選択します。
-> 1. **[新規登録]** を選択します。
-> 1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+> 1. **Azure Active Directory** を検索して選択します。
+> 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+> 1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[登録]** を選択します。 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
-> 1. 登録済みのアプリケーションの左側のウィンドウで、 **[認証]** を選択します。
+> 1. **[管理]** で、 **[認証]** を選択します。
 > 1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。 表示されたウィンドウで **[シングルページ アプリケーション]** を選択します。
 > 1. **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。
 > 1. **[構成]** をクリックします。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、`redirectUri` を `http://localhost:3000/` として追加する必要があります。
+> このクイックスタートのコード サンプルを動作させるには、**リダイレクト URI** (`http://localhost:3000/`) を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >
@@ -111,10 +109,10 @@ ms.locfileid: "88115188"
 >
 > 以下の説明に従って、`msalConfig` セクションの値を変更します。
 >
-> - `Enter_the_Application_Id_Here` は、登録したアプリケーションの**アプリケーション (クライアント) ID** です。
-> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com/`」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
+> - `Enter_the_Application_Id_Here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
+> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com/`」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
 > - `Enter_the_Tenant_info_here` には、次のいずれかが設定されます。
->   - お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を**テナント ID** または**テナント名**に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
+>   - お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **テナント ID** または **テナント名** に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
 >   - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を `organizations` に置き換えます。
 >   - アプリケーションにおいて "*任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント*" をサポートする場合は、この値を `common` に置き換えます。 **このクイック スタートでは**、`common` を使用します。
 >   - "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を `consumers` に置き換えます。
@@ -202,4 +200,4 @@ npm install @azure/msal-browser
 このクイック スタートで使用されるアプリケーションの構築に関する詳細なステップ バイ ステップ ガイドについては、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [サインインして MS Graph を呼び出すチュートリアル >](./tutorial-v2-javascript-auth-code.md)
+> [サインインして MS Graph を呼び出すチュートリアル](./tutorial-v2-javascript-auth-code.md)

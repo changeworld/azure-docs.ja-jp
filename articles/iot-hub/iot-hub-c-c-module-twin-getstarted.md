@@ -11,12 +11,12 @@ ms.author: menchi
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3cd4277603b96dd1aa07682dd01a6d0e9c61bd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cc874b4df7052c76fa58388bc982b8ffe3acc23
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733457"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142917"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT Hub モジュール ID とモジュール ツイン (C) の概要
 
@@ -391,4 +391,4 @@ int main(void)
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 
 * [デバイス管理の概要](iot-hub-node-node-device-management-get-started.md)
-* [IoT Edge の概要](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Edge の概要](../iot-edge/quickstart-linux.md)

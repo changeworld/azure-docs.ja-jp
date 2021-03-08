@@ -10,20 +10,25 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: b68bc2eca25c35395d9a31f3a80e45d1595815bf
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 014705cf628aa2d2df43d0964ff843fae09595ac
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601974"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352776"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Autosuggest とは
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 アプリケーションから Bing Search API のいずれかにクエリを送信する場合、ユーザーの検索エクスペリエンスを向上させるために Bing Autosuggest API を使用することができます。 Bing Autosuggest API は、検索ボックス内の部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 検索ボックスに文字を入力すると、ドロップダウン リストに候補が表示されます。
 
 ## <a name="bing-autosuggest-api-features"></a>Bing Autosuggest API の機能
 
-| 機能                                                                                                                                                                                 | 説明                                                                                                                                                            |
+| 特徴量                                                                                                                                                                                 | 説明                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [検索用語をリアルタイムで提案する](concepts/get-suggestions.md) | Autosuggest API を使用して、入力時に検索語句の候補を表示することで、アプリのエクスペリエンスを向上させます。 |
 
@@ -31,7 +36,7 @@ ms.locfileid: "85601974"
 
 Bing Autosuggest API は RESTful Web サービスです。HTTP 要求を実行して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。
 
-1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
+1. Bing Search API が利用できる [Cognitive Services API アカウント](../cognitive-services-apis-create-account.md)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
 2. アプリケーションの検索ボックスにユーザーが新しい文字を入力するたびに、この API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
@@ -47,11 +52,11 @@ Bing Autosuggest API からの検索語の候補を含んだドロップダウ�
 
 実際に要求を送信してみるには、[最初のクエリを実行する](quickstarts/csharp.md)に関するページを参照してください。
 
-[Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) リファレンスを活用してください。 このリファレンスには、クエリ用語候補を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧と、応答オブジェクトの定義が記載されています。
+[Bing Autosuggest API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) リファレンスを活用してください。 このリファレンスには、クエリ用語候補を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧と、応答オブジェクトの定義が記載されています。
 
-その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。
+その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/overview.md)をご覧ください。
 
 
-[Bing Web Search API](../bing-web-search/search-the-web.md) を使用して Web を検索し、他の [Bing Search API](../bing-web-search/index.yml) を探す方法について説明します。
+[Bing Web Search API](../bing-web-search/overview.md) を使用して Web を検索し、他の [Bing Search API](../bing-web-search/index.yml) を探す方法について説明します。
 
-検索結果の使用に関するルールを逸脱しないよう、[Bing の使用上および表示上の要件](./useanddisplayrequirements.md)に関するページを必ず読んでください。
+検索結果の使用に関するルールを逸脱しないよう、[Bing の使用上および表示上の要件](../bing-web-search/use-display-requirements.md)に関するページを必ず読んでください。

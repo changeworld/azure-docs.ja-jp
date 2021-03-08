@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432664"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370578"
 ---
-# <a name="changelog"></a>変更ログ #
+# <a name="changelog"></a>変更ログ
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (公式更新プログラム 2020 年 9 月 21 日)
+
+### <a name="features-236"></a>機能 2.3.6
+
+azureHtml5JS tech (DASH) にオーディオのみのサポートを追加。ライブ トランスクリプトの遅延開始をサポート。ライブ トランスクリプトの言語変更をサポート
+
+### <a name="bug-fixes-236"></a>バグ修正 2.3.6
+
+Apple デバイスの HLS 再生で "playsinline" を使用中、"LIVE" ボタンをクリックすると、ビデオがリスタートする。AMP ポスター画像が例外を引き起こすことがある。HLS FairPlay の再生時、音量ボタンが表示されない [アクセシビリティ]。キーボードの使用時、ボタンにヒントが定義されていない [アクセシビリティ]。進捗バーの光輝比が 1.3:1 未満である [アクセシビリティ]。キーボードのフォーカスがビデオ品質ボタンに戻らないことがある [アクセシビリティ]。ビデオ画面にコントロールが表示されず、ナレーターがコントロールを見つけられない
+
+### <a name="changes-236"></a>変更 2.3.6
+
+呼び出し元のアプリケーションに意味のある KeyDelivery エラーを返す
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (公式更新プログラム 2020 年 6 月 1 日)
 
@@ -184,7 +198,7 @@ ms.locfileid: "87432664"
 
 ### <a name="changes"></a>[変更点] ###
 
-- [変更][ライブ キャプション] CEA キャプションの API 名を 608 から 708 に変更。 詳細については、[CEA708 キャプションの設定](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)に関するページを参照-->
+- [変更][ライブ キャプション] CEA キャプションの API 名を 608 から 708 に変更。 詳細については、[CEA708 キャプションの設定](/javascript/api/azuremediaplayer/cea708captionssettings)に関するページを参照-->
 
 ## <a name="220-official-release"></a>2.2.0 (公式リリース) ##
 
@@ -689,8 +703,8 @@ ms.locfileid: "87432664"
 - [バグ修正] [AzureHtml5JS] タイムスタンプに少しの狂いがあると、MPD の更新でライブ再生が凍結する
 - [バグ修正] [AzureHtml5JS] ライブ再生のいくつかの問題を軽減
 - [バグ修正] [AzureHtml5JS] ウィンドウ サイズのヒューリスティックがオンになっていて、なおかつ、より高解像度の画面に移動したときにバッファーをフラッシュ
-- [バグ修正] [AzureHtml5JS] Chrome で ended イベントが正しく表示されるように修正。 これは既知の問題に関連します。"*AzureHtml5JS を使用しているときに Chrome から正しくイベントが送信されません。基になるブラウザーに問題があります。* "
-- [バグ修正] [AzureHtml5JS] 次の問題に対処するために、Safari でこのテクノロジを無効化。"*AzureHtml5JS テクノロジを使用した OSX Yosemite に関する再生の問題。MSE の実装に関する問題があります。一時的な軽減策: これらのユーザー エージェントのためのテクノロジとして FlashSS、SilverlightSS を適用*"
+- [バグ修正] [AzureHtml5JS] Chrome で ended イベントが正しく表示されるように修正。 これは既知の問題に関連します。" *AzureHtml5JS を使用しているときに Chrome から正しくイベントが送信されません。基になるブラウザーに問題があります。* "
+- [バグ修正] [AzureHtml5JS] 次の問題に対処するために、Safari でこのテクノロジを無効化。" *AzureHtml5JS テクノロジを使用した OSX Yosemite に関する再生の問題。MSE の実装に関する問題があります。一時的な軽減策: これらのユーザー エージェントのためのテクノロジとして FlashSS、SilverlightSS を適用* "
 - [バグ修正] [FlashSS] エラーの発生後に loadstart が生成される
 
 ## <a name="020-beta"></a>0.2.0 (ベータ) ##
@@ -713,7 +727,7 @@ ms.locfileid: "87432664"
 - [バグ修正] 自動再生モードでの UI 読み込みエクスペリエンスを更新
 - [バグ修正] AMD ローダーの問題と define メソッドの競合
 - [バグ修正] WP 8.1 Cordova アプリの読み込みの問題
-- [バグ修正] 保護されたコンテンツ クエリ プラットフォーム (テクノロジ) によってサポートされる ProtectionType で、適切な再生テクノロジを選択。  "_Chrome (デスクトップ) と Safari 8 (OSX Yosemite) 上の PlayReady コンテンツが現在、Silverlight プレーヤーにフォールバックされない_" という既知の問題を修正しました。
+- [バグ修正] 保護されたコンテンツ クエリ プラットフォーム (テクノロジ) によってサポートされる ProtectionType で、適切な再生テクノロジを選択。  " _Chrome (デスクトップ) と Safari 8 (OSX Yosemite) 上の PlayReady コンテンツが現在、Silverlight プレーヤーにフォールバックされない_ " という既知の問題を修正しました。
 - [バグ修正] WinServer 2012 R2 でメディア ファンデーションが既定ではマシンにインストールされないために発生する例外がキャッチされない。  HTML ビデオ タグ API は実装されていないため、使おうとするとエラーがスローされます。 現在の軽減策は、エラーをスローする代わりに、そのエラーをキャッチして false を返すことです。
 - [バグ修正] 再生中の異常を防ぐため、シーク後または http エラー後は常に init セグメントを取得
 - [バグ修正] エラーが発生した場合、トラッキングによってシミュレートされる進行状況と時間の更新を無効化。

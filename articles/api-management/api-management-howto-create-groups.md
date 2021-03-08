@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851224"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092785"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
 
@@ -55,7 +55,7 @@ API Management には、次に示すシステム グループが用意されて�
 
     ![新しいグループを追加する](./media/api-management-howto-create-groups/groups001.png)
 
-グループが作成されると、それが **[グループ]** リストに追加されます。 <br/>グループの **[名前]** または **[説明]** を編集するには、そのグループの名前と **[設定]** をクリックします。<br/>グループを削除するには、そのグループの名前をクリックし、**[削除]** を押します。
+グループが作成されると、それが **[グループ]** リストに追加されます。 <br/>グループの **[名前]** または **[説明]** を編集するには、そのグループの名前と **[設定]** をクリックします。<br/>グループを削除するには、そのグループの名前をクリックし、 **[削除]** を押します。
 
 グループが作成されます。このグループは、成果物および開発者と関連付けることができます。
 
@@ -66,12 +66,12 @@ API Management には、次に示すシステム グループが用意されて�
 3. **[アクセス制御]** を押します。
 4. **[+ グループの追加]** をクリックします。
 
-    ![グループと成果物を関連付ける](./media/api-management-howto-create-groups/groups002.png)
+    ![[グループの追加] ボタンが強調表示されているスクリーンショット。](./media/api-management-howto-create-groups/groups002.png)
 5. 追加するグループを選択します。
 
-    ![グループと成果物を関連付ける](./media/api-management-howto-create-groups/groups003.png)
+    ![選択したグループが示され、[選択] ボタンが強調表示されているスクリーンショット。](./media/api-management-howto-create-groups/groups003.png)
 
-    成果物からグループを削除するには、**[削除]** をクリックします。
+    成果物からグループを削除するには、 **[削除]** をクリックします。
 
     ![グループを削除する](./media/api-management-howto-create-groups/groups004.png)
 
@@ -90,7 +90,7 @@ API Management には、次に示すシステム グループが用意されて�
     ![メンバーの追加](./media/api-management-howto-create-groups/groups005.png)
 3. **[+ 追加]** を押し、メンバーを選択します。
 
-    ![メンバーの追加](./media/api-management-howto-create-groups/groups006.png)
+    ![[追加] ボタン、選択したユーザー、および [選択] ボタンが強調表示されているスクリーンショット。](./media/api-management-howto-create-groups/groups006.png)
 4. **[選択]** を選択します。
 
 開発者とグループの間に関連付けを追加すると、 **[ユーザー]** タブにその関連付けが表示されるようになります。

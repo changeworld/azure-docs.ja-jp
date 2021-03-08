@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: c6f766dcf69b398aea0978f42f5094809a3e2f6c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 322ef3b8ca30396bd4772850ff651f7545a21257
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038783"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580748"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,7 +62,7 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 
 ダウンタイムに対するアプリケーションの許容度およびビジネス責任に応じて、次の回復オプションを検討することができます。
 
-[Get Recoverable Database](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) を使用して、geo レプリケートされた最新の復元ポイントを取得します。
+[Get Recoverable Database](/previous-versions/azure/reference/dn800985(v=azure.100)) (*LastAvailableBackupDate*) を使用して、geo レプリケートされた最新の復元ポイントを取得します。
 
 ## <a name="wait-for-service-recovery"></a>サービスの回復を待機する
 
@@ -109,7 +109,7 @@ geo リストアを使用して障害から復旧する場合は、通常のア�
 
 既存のアラート ルールの設定を更新し、復旧されたデータベースおよび異なるサーバーにマップされるようにする必要があります。
 
-データベースのアラート ルールの詳細については、「[アラート通知の受信](../../azure-monitor/platform/alerts-overview.md)」および「[サービス正常性を追跡する](../../service-health/service-notifications.md)」を参照してください。
+データベースのアラート ルールの詳細については、「[アラート通知の受信](../../azure-monitor/alerts/alerts-overview.md)」および「[サービス正常性を追跡する](../../service-health/service-notifications.md)」を参照してください。
 
 ### <a name="enable-auditing"></a>監査を有効にする
 

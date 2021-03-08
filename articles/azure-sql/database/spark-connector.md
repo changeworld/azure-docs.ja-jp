@@ -9,23 +9,26 @@ ms.devlang: ''
 ms.topic: conceptual
 author: denzilribeiro
 ms.author: denzilr
-ms.reviewer: carlrab
-ms.date: 09/25/2018
-ms.openlocfilehash: e7ce11a5fdba5c7d98cc331d581e827d34f7af42
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.reviewer: sstein
+ms.date: 09/02/2020
+ms.openlocfilehash: 2e01e74f5086f7f1eb7e85661fbd35f452d8dae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318847"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790204"
 ---
-# <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark コネクタを使用したリアルタイムのビッグ データ分析の高速化 
+# <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark コネクタを使用したリアルタイムのビッグ データ分析の高速化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+
+> [!NOTE]
+> 2020 年 9 月現在、このコネクタは積極的に保守されていません。 ただし、[SQL Server および Azure SQL 用の Apache Spark コネクタ](/sql/connect/spark/connector)が使用できるようになりました。Python および R のバインディング、データをバルク インサートするための使いやすいインターフェイス、その他多くの機能強化がサポートされています。 このページのコネクタではなく、新しいコネクタを評価して使用することを強くお勧めします。 古いコネクタに関する情報 (このページ) は、アーカイブ目的でのみ保持されます。
 
 Spark コネクタを使用すると、Azure SQL Database、Azure SQL Managed Instance、SQL Server のデータベースを Spark ジョブの入力データ ソースまたは出力データ シンクとして機能させることができます。 ビッグ データ分析の中でリアルタイム トランザクション データを利用でき、アドホック クエリの結果やレポートを保持できます。 組み込みの JDBC コネクタに比べて、このコネクタには、データベースにデータを一括挿入する機能があります。 行単位の挿入に比べ、パフォーマンスを 10 倍から 20 倍も向上させることができます。 Spark コネクタでは、Azure SQL Database と Azure SQL Managed Instance に接続するための Azure Active Directory (Azure AD) 認証がサポートされています。これにより、Azure AD アカウントを使用して、Azure Databricks からデータベースを接続できるようになります。 組み込みの JDBC コネクタと同様のインターフェイスを備えています。 この新しいコネクタを使用するための既存の Spark ジョブの移行は簡単に実行できます。
 
 ## <a name="download-and-build-a-spark-connector"></a>Spark コネクタのダウンロードと構築
 
-開始するには、GitHub の [azure-sqldb-spark リポジトリ](https://github.com/microsoft/sql-spark-connector)から Spark コネクタをダウンロードします。
+過去にこのページからリンクされていた古いコネクタの GitHub リポジトリは、積極的に保守されていません。 代わりに、[新しいコネクタ](https://github.com/microsoft/sql-spark-connector)を評価して使用することを強くお勧めします。
 
 ### <a name="official-supported-versions"></a>正式にサポートされているバージョン
 
@@ -48,7 +51,7 @@ Spark コネクタでは、SQL Server 用の Microsoft JDBC ドライバーを�
 
 次の図にデータ フローを示します。
 
-   ![アーキテクチャ](./media/spark-connector/architecture.png)
+   ![図は説明されたフローを示しています。マスター ノードはデータベースに直接接続されているとともに 3 つのワーカー ノードにも接続され、これらはデータベースに接続します。](./media/spark-connector/architecture.png)
 
 ### <a name="build-the-spark-connector"></a>Spark コネクタの構築
 
@@ -232,7 +235,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 
 Spark コネクタをまだダウンロードしていない場合は、[GitHub の azure-sqldb-spark リポジトリ](https://github.com/Azure/azure-sqldb-spark)からダウンロードし、リポジトリのその他のリソースを調べます。
 
-- [Azure Databricks ノートブックのサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
+- [Azure Databricks notebooks のサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [サンプル スクリプト (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-また、[Apache Spark SQL、DataFrames、データセット ガイド](https://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](https://docs.microsoft.com/azure/azure-databricks/)を確認することもできます。
+また、[Apache Spark SQL、DataFrames、データセット ガイド](https://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](/azure/azure-databricks/)を確認することもできます。

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204372"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998425"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -33,6 +33,8 @@ ms.locfileid: "85204372"
 | InputClaim | ドット表記に続く任意の文字列 | string | 要求値の挿入先となる JSON の JsonPath。 |
 | InputParameter | ドット表記に続く任意の文字列 | string | 定数文字列値の挿入先となる JSON の JsonPath。 |
 | OutputClaim | outputClaim | string | 生成された JSON 文字列。 |
+
+### <a name="example-1"></a>例 1
 
 次の例では、"email" と "otp" の要求値に基づいて JSON 文字列が生成され、さらに定数文字列が生成されます。
 
@@ -52,8 +54,6 @@ ms.locfileid: "85204372"
   </OutputClaims>
 </ClaimsTransformation>
 ```
-
-### <a name="example"></a>例
 
 次の要求変換では、SendGrid (サードパーティ電子メール プロバイダー) に送信される要求の本文となる JSON 文字列要求が出力されます。 JSON オブジェクトの構造は、InputClaims の InputParameters と TransformationClaimTypes というドット表記で ID により定義されます。 ドット表記の数値は配列を意味します。 値は、InputClaims の値と InputParameters の "Value" プロパティから取得されます。
 
@@ -87,6 +87,56 @@ ms.locfileid: "85204372"
   "from": {
     "email": "service@contoso.com"
   }
+}
+```
+
+### <a name="example-2"></a>例 2
+
+次の例では、要求値に基づいて JSON 文字列が生成され、さらに定数文字列が生成されます。
+
+```xml
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="customerEntity.email" />
+    <InputClaim ClaimTypeReferenceId="objectId" TransformationClaimType="customerEntity.userObjectId" />
+    <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="customerEntity.firstName" />
+    <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="customerEntity.lastName" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="customerEntity.role.name" DataType="string" Value="Administrator"/>
+    <InputParameter Id="customerEntity.role.id" DataType="long" Value="1"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+次の要求変換を使用すると、REST API に送信される要求の本文となる JSON 文字列要求が出力されます。 JSON オブジェクトの構造は、InputClaims の InputParameters と TransformationClaimTypes というドット表記で ID により定義されます。 値は、InputClaims の値と InputParameters の "Value" プロパティから取得されます。
+
+- 入力要求:
+  - **電子メール**、変換要求の種類 **customerEntity.email**: "john.s@contoso.com"
+  - **objectId**、変換要求の種類 **customerEntity.userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
+  - **objectId**、変換要求の種類 **customerEntity.firstName** "John"
+  - **objectId**、変換要求の種類 **customerEntity.lastName** "Smith"
+- 入力パラメーター:
+  - **customerEntity.role.name**:"Administrator"
+  - **customerEntity.role.id** 1
+- 出力要求：
+  - **requestBody**:JSON 値
+
+```json
+{
+   "customerEntity":{
+      "email":"john.s@contoso.com",
+      "userObjectId":"01234567-89ab-cdef-0123-456789abcdef",
+      "firstName":"John",
+      "lastName":"Smith",
+      "role":{
+         "name":"Administrator",
+         "id": 1
+      }
+   }
 }
 ```
 

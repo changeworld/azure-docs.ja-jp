@@ -1,17 +1,17 @@
 ---
 title: パフォーマンス チューニング - Spark と Azure Data Lake Storage Gen1
 description: Azure HDInsight での Spark と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイドラインについて説明します。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.author: twooley
+ms.openlocfilehash: 8a39e14b70827947687b7613b9ff86f18017ddfe
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856923"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722506"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の Spark と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 
@@ -22,8 +22,8 @@ Spark のパフォーマンスをチューニングするときは、クラス�
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
 * Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
-* **Data Lake Storage Gen1 で実行中の Spark クラスター**。 詳細については、[HDInsight Spark クラスターを使用した Data Lake Storage Gen1 のデータの分析](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)に関するページを参照してください。
-* **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン**。 一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)を参照してください。 
+* **Data Lake Storage Gen1 で実行中の Spark クラスター**。 詳細については、[HDInsight Spark クラスターを使用した Data Lake Storage Gen1 のデータの分析](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)に関するページを参照してください。
+* **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン**。 一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](./data-lake-store-performance-tuning-guidance.md)を参照してください。 
 
 ## <a name="parameters"></a>パラメーター
 
@@ -35,7 +35,7 @@ Spark ジョブを実行するときは、以下が Data Lake Storage Gen1 の�
 
 * **Executor-cores** - 各 Executor に割り当てられるコアの数。
 
-**Num-executors**Num-executors では並列で実行できるタスクの最大数を設定します。 並列で実行できるタスクの実際の数は、メモリと、クラスターで利用できる CPU リソースによって制限されます。
+**Num-executors** Num-executors では並列で実行できるタスクの最大数を設定します。 並列で実行できるタスクの実際の数は、メモリと、クラスターで利用できる CPU リソースによって制限されます。
 
 **Executor-memory** 各 Executor に割り当てられるメモリの量です。 各 Executor に必要なメモリは、ジョブによって異なります。 複雑な操作では、多くのメモリが必要です。 読み取りと書き込みのような単純な操作では、必要なメモリは少なくなります。 Ambari で各 Executor のメモリの量を表示できます。 Ambari で Spark に移動し、 **[Configs]\(構成)** タブを表示します。
 

@@ -3,12 +3,12 @@ title: 新機能 リリース ノート - Azure Event Grid
 description: 最新のリリース ノート、既知の問題、バグの修正、非推奨の機能、予定されている変更点など、Azure Event Grid の新着情報について説明します。
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 1edfa3e2bc4c8adae113b2215b7fb0483fba4c02
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172699"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350009"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure Event Grid の新機能
 
@@ -40,7 +40,7 @@ Azure Event Grid は随時改善されています。 常に最新の開発情�
 - このリリースには、品質向上のための追加のバグ修正が含まれています。
 - バージョン 5.3.1-preview と同様に、このリリースは 2020-04-01-Preview API バージョンに対応します。これには、次の新機能が含まれています。 
     - [ドメインおよびトピックにイベントを発行するときの IP フィルターのサポート](configure-firewall.md)
-    - [パートナー トピック](partner-topics-overview.md)
+    - [パートナー トピック](./partner-events-overview.md)
     - [Azure portal での追跡対象リソースとしてのシステム トピック](system-topics.md)
     - [マネージド サービス ID を使用したイベント配信](managed-service-identity.md) 
     - [Private Link サービスのサポート](configure-private-endpoints.md)
@@ -49,7 +49,7 @@ Azure Event Grid は随時改善されています。 常に最新の開発情�
 - このリリースには、品質向上のためのさまざまなバグ修正が含まれています。
 - バージョン 5.3.0-preview と同様に、このリリースは 2020-04-01-Preview API バージョンに対応します。これには、次の新機能が含まれます。 
     - [ドメインおよびトピックにイベントを発行するときの IP フィルターのサポート](configure-firewall.md)
-    - [パートナー トピック](partner-topics-overview.md)
+    - [パートナー トピック](./partner-events-overview.md)
     - [Azure portal での追跡対象リソースとしてのシステム トピック](system-topics.md)
     - [マネージド サービス ID を使用したイベント配信](managed-service-identity.md) 
     - [Private Link サービスのサポート](configure-private-endpoints.md)
@@ -59,7 +59,7 @@ Azure Event Grid は随時改善されています。 常に最新の開発情�
 - バージョン 5.2.0-preview と同様に、このリリースは 2020-04-01-Preview API バージョンに対応します。
 - 次の新機能に対するサポートが追加されました。 
     - [ドメインおよびトピックにイベントを発行するときの IP フィルターのサポート](configure-firewall.md)
-    - [パートナー トピック](partner-topics-overview.md)
+    - [パートナー トピック](./partner-events-overview.md)
     - [Azure portal での追跡対象リソースとしてのシステム トピック](system-topics.md)
     - [マネージド サービス ID を使用したイベント配信](managed-service-identity.md) 
     - [Private Link サービスのサポート](configure-private-endpoints.md)

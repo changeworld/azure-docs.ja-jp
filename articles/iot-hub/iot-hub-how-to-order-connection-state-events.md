@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488130"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147263"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -29,7 +29,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 * データベース内のコレクション。 「[コレクションの追加](../cosmos-db/create-sql-api-java.md#add-a-container)」の手順を参照してください。 コレクションを作成するときに、パーティション キーに `/id` を使用します。
 
-* Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](iot-hub-csharp-csharp-getstarted.md)」のチュートリアルをご覧ください。
+* Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](./quickstart-send-telemetry-dotnet.md)」のチュートリアルをご覧ください。
 
 ## <a name="create-a-stored-procedure"></a>ストアド プロシージャの作成
 
@@ -227,11 +227,11 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 5. **[新しいパラメーターの追加]** を選択します。 表示されたドロップダウンで、 **[パーティション キー]** と **[ストアド プロシージャのパラメーター]** の横のボックスをチェックし、画面の任意の場所をクリックします。これにより、パーティション キー値のフィールドとストアド プロシージャのパラメーターのフィールドが追加されます。
 
-   ![ロジック アプリのアクションを設定する](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![スクリーンショットには、[新しいパラメーターの追加] を選択した状態で、[ストアド プロシージャの実行] 項目が示されています。](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
 6. 次に示すように、パーティション キー値とパラメーターを入力します。 以下で示されているように、かっこと二重引用符を入力してください。 ここで使用できる有効な値を取得するために、 **[動的なコンテンツの追加]** をクリックしなければならない場合があります。
 
-   ![ロジック アプリのアクションを設定する](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![スクリーンショットには、パラメーターが入力された状態で [ストアド プロシージャの実行] 項目が示されています。](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
 7. **[For Each]** と表示されているウィンドウの上部の **[以前の手順から出力を選択]** で、 **[本文]** が選択されていることを確認します。
 
@@ -335,7 +335,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-[Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)に関する Azure CLI のページを参照してください。
+[Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)に関する Azure CLI のページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -361,7 +361,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 7. **[削除]** を選択します。
 
-Azure Cosmos DB アカウントを Azure portal から削除するには、アカウント名を右クリックし、 **[アカウントの削除]** をクリックします。 [Azure Cosmos DB アカウントを削除](https://docs.microsoft.com/azure/cosmos-db/manage-account)するための詳細な手順を参照してください。
+Azure Cosmos DB アカウントを Azure portal から削除するには、アカウント名を右クリックし、 **[アカウントの削除]** をクリックします。 [Azure Cosmos DB アカウントを削除](../cosmos-db/how-to-manage-database-account.md)するための詳細な手順を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

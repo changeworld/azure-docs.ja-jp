@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 11/05/2019
+ms.date: 01/19/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e90e750bf248bdcc8e50c6ddc6e9fa0273660195
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0914cf9515930e23e4134181ffe8332e36eacffe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136020"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612956"
 ---
 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。
 
@@ -28,12 +28,12 @@ Blob Storage は、次の用途に適しています。
 * バックアップと復元、ディザスター リカバリー、アーカイブのためのデータを格納する。
 * オンプレミス サービスまたは Azure ホステッド サービスで分析するデータを格納する。
 
-ユーザーまたはクライアント アプリケーションは、世界のどこからでも、HTTP/HTTPS 経由で Blob Storage 内のオブジェクトにアクセスできます。 [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage)、または Azure Storage クライアント ライブラリを使用して、Blob Storage 内のオブジェクトにアクセスできます。 各種言語に対応したクライアント ライブラリが用意されています。その例を次に示します。
+ユーザーまたはクライアント アプリケーションは、世界のどこからでも、HTTP/HTTPS 経由で Blob Storage 内のオブジェクトにアクセスできます。 [Azure Storage REST API](/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](/powershell/module/az.storage)、[Azure CLI](/cli/azure/storage)、または Azure Storage クライアント ライブラリを使用して、Blob Storage 内のオブジェクトにアクセスできます。 各種言語に対応したクライアント ライブラリが用意されています。その例を次に示します。
 
-* [.NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
-* [Java](https://docs.microsoft.com/java/api/overview/azure/storage)
-* [Node.js](https://azure.github.io/azure-storage-node) 
-* [Python](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-python)
+* [.NET](/dotnet/api/overview/azure/storage)
+* [Java](/java/api/overview/azure/storage)
+* [Node.js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)
+* [Python](../articles/storage/blobs/storage-quickstart-blobs-python.md)
 * [Go](https://github.com/azure/azure-storage-blob-go/)
 * [PHP](https://azure.github.io/azure-storage-php/)
 * [Ruby](https://azure.github.io/azure-storage-ruby)
@@ -47,4 +47,4 @@ Blob Storage では、Microsoft のクラウド向けのエンタープライズ
 * 強力な一貫性
 * ディザスター リカバリー機能
 
-Data Lake Storage Gen2 について詳しくは、「[Azure Data Lake Storage Gen2 の概要](../articles/storage/data-lake-storage/introduction.md)」をご覧ください。
+Data Lake Storage Gen2 について詳しくは、「[Azure Data Lake Storage Gen2 の概要](../articles/storage/blobs/data-lake-storage-introduction.md)」をご覧ください。

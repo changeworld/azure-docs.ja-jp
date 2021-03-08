@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8ba9edc129cc169ccc146c7bc314d8f5ffe573b9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038773"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357787"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Azure SQL Database エラスティック プールを使用したアプリケーションのディザスター リカバリー戦略
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Azure SQL Database には、壊滅的な状況が発生した場合にアプリ�
 
 このシナリオを実現するには、試用版のテナントを別のエラスティック プールに置くことによって、試用版のテナントと有料のテナントを分離する必要があります。 試用版の顧客は、テナントあたりの eDTU または仮想コアが低く、SLA が低レベルで、復旧時間が長くなります。 有料の顧客は、テナントあたりの eDTU または仮想コアが高いプールに配置され、SLA が高レベルになります。 最短の復旧時間を保証するために、有料の顧客のテナント データベースは geo レプリケートする必要があります。 この構成を次の図に示します。
 
-![図 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![管理データベース間と有料の顧客のプライマリ プールとセカンダリ プール間に geo レプリケーションが採用され、試用版の顧客のプールにはレプリケーションが採用されていない、プライマリ リージョンと DR リージョンを示す図。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 最初のシナリオと同様に、管理データベースはかなりアクティブに使用されるので、geo レプリケートされる Single Database を使用します (1)。 そうすることで、新しい顧客サブスクリプションやプロファイルの更新などの管理操作について、予測可能なパフォーマンスが保証されます。 管理データベースのプライマリが存在するリージョンがプライマリ リージョンになり、管理データベースのセカンダリが存在するリージョンが DR リージョンになります。
 
@@ -86,7 +86,7 @@ Azure SQL Database には、壊滅的な状況が発生した場合にアプリ�
 
 プライマリ リージョンで障害が発生した場合にアプリケーションをオンラインにするための復旧手順を、次の図に示します。
 
-![図 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![管理データベースへのフェールオーバー、有料の顧客のセカンダリ プール、および試用版の顧客用の作成と復元が含まれる、プライマリ リージョンでの障害を示す図。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * すぐに管理データベースを DR リージョンにフェールオーバーします (3)。
 * アプリケーションの接続文字列を、DR リージョンを示す文字列に変更します。 これで、新しいアカウントとテナント データベースがすべて DR リージョンに作成されるようになります。 既存の試用版の顧客は、一時的にデータを使用できなくなります。
@@ -99,7 +99,7 @@ Azure SQL Database には、壊滅的な状況が発生した場合にアプリ�
 
 DR リージョンでアプリケーションを復元した *後* で、Azure によってプライマリ リージョンが復旧される場合は、DR リージョンでアプリケーションを実行し続けることも、プライマリ リージョンにフェールバックすることもできます。 フェールオーバー処理が完了する "*前*" に、プライマリ リージョンが復旧される場合は、直ちにフェールバックすることを考慮する必要があります。 フェールバックの手順は、次の図のようになります。
 
-![図 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![プライマリ リージョンの復元後に実施するフェールバック手順を示す図。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * 未処理のすべての geo リストア要求を取り消します。
 * 管理データベースをフェールオーバーします (8)。 リージョンの復旧後、古いプライマリは自動的にセカンダリになります。 これが再びプライマリになります。  
@@ -128,7 +128,7 @@ DR リージョンでアプリケーションを復元した *後* で、Azure �
 
 障害時に最短の復旧時間を保証するために、有料の顧客のテナント データベースは、プライマリ データベースを 50% ずつという割合で、2 つのリージョンそれぞれに geo レプリケートします。 同様に、各リージョンにセカンダリ データベースを 50% ずつ配置します。 こうすることで、リージョンがオフラインになった場合、有料の顧客のデータベースの 50% だけが影響を受け、フェールオーバーされることになります。 他のデータベースは影響を受けず、そのまま残ります。 この構成を示したのが次の図です。
 
-![図 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![管理データベース間と有料の顧客のプライマリ プールとセカンダリ プール間に geo レプリケーションが採用され、試用版の顧客のプールにはレプリケーションが採用されていない、リージョン A と呼ばれるプライマリ リージョンとリージョン B と呼ばれるセカンダリ リージョンを示す図。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 前のシナリオと同様に、管理データベースはかなりアクティブに使用されるので、geo レプリケートされる Single Database として構成する必要があります (1)。 そうすることで、新しい顧客サブスクリプションやプロファイルの更新などの管理操作について、予測可能なパフォーマンスが保証されます。 リージョン A は管理データベースのプライマリ リージョンになり、リージョン B は管理データベースの復旧のために使用されます。
 
@@ -136,7 +136,7 @@ DR リージョンでアプリケーションを復元した *後* で、Azure �
 
 次の図は、リージョン A で障害が発生した場合に実行する復旧手順を示しています。
 
-![図 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![管理データベースへのフェールオーバー、有料の顧客のセカンダリ プール、およびリージョン B への試用版の顧客用の作成と復元が含まれる、プライマリ リージョンでの障害を示す図。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * すぐに管理データベースをリージョン B にフェールオーバーします (3)。
 * アプリケーションの接続文字列を、リージョン B 内の管理データベースを示す文字列に変更します。管理データベースに変更を施し、新しいアカウントとテナント データベースがリージョン B に作成されるようにすると共に、既存のテナント データベースもそこで見つかるようにします。 既存の試用版の顧客は、一時的にデータを使用できなくなります。
@@ -152,7 +152,7 @@ DR リージョンでアプリケーションを復元した *後* で、Azure �
 
 リージョン A が復旧するときに、試用版の顧客のためにリージョン B を使用するか、試用版の顧客のリージョン A のプールを使用してフェールバックするかを判断する必要があります。判断条件の 1 つは、復旧以降に変更された試用テナント データベースの割合です。 判断に関係なく 2 つのプール間で有料のテナントを再調整する必要があります。 次の図は、試用版のテナント データベースがリージョン A にフェールバックするときの処理を示しています。  
 
-![図 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![リージョン A の復元後に実施するフェールバック手順を示す図。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * 試用 DR プールへの未処理のすべての geo リストア要求を取り消します。
 * 管理データベースをフェールオーバーします (8)。 リージョンの復旧後、古いプライマリは自動的にセカンダリになっています。 これが再びプライマリになります。  

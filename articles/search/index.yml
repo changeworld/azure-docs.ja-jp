@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: HeidiSteen
   ms.author: heidist
-  ms.date: 02/25/2020
-  ms.openlocfilehash: faf8b4813699d177eb18997778c1d2e3bf9f5858
-  ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+  ms.date: 03/02/2021
+  ms.openlocfilehash: f514b33bb39db2732053102bd69cb853477f67f1
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/26/2020
-  ms.locfileid: "88924386"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101677819"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Azure Cognitive Search とは
       url: search-what-is-azure-search.md
+    - text: セマンティック検索とは
+      url: semantic-search-overview.md
     - text: AI エンリッチメントとは
       url: cognitive-search-concept-intro.md
     - text: インデクサーとは
@@ -107,7 +109,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 簡単なクエリを作成する
-      url: search-query-simple-examples.md
+      url: search-query-create.md
     - text: 完全な構文を使用する
       url: search-query-lucene-examples.md
   - linkListType: reference

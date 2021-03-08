@@ -1,7 +1,7 @@
 ---
 title: 言語サポート - Bing Web Search API
 titleSuffix: Azure Cognitive Services
-description: Bing News Search API でサポートされる自然言語、国、および地域の一覧。
+description: Bing Web Search API でサポートされる自然言語、国、地域の一覧。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6de01d2c12454f43a2802b4a7a979b5f74b46f0e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882686"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340273"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Search API の言語と地域のサポート
 
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
+
 Bing Web Search API では 30 を超える国または地域がサポートされ、その多くで複数の言語が使用されています。 クエリでの国または地域の指定は、国または地域の関心に基づいた検索結果の絞り込みに役立ちます。 結果には Bing へのリンクを含めることができ、これらのリンクにより、指定された国/地域または言語に従って Bing ユーザー エクスペリエンスをローカライズできます。
 
-`cc` クエリ パラメーターを使用して国または地域を指定できます。 国または地域を指定する場合、[`Accept-Language` ヘッダー](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)を使用して 1 つ以上の言語コードも指定する必要があります。 各市場でサポートされている言語の一覧を確認するには、「[市場](#markets)」の表をご利用ください。
+`cc` クエリ パラメーターを使用して国または地域を指定できます。 国または地域を指定する場合、[`Accept-Language` ヘッダー](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)を使用して 1 つ以上の言語コードも指定する必要があります。 各市場でサポートされている言語の一覧を確認するには、「[市場](#markets)」の表をご利用ください。
 
 または、`mkt` クエリ パラメーターと「**市場**」の表のコードを使用して市場を指定できます。 市場を指定すると、同時に国または地域と優先言語が指定されます。 `setLang` クエリ パラメーターを使用すれば、言語を明示的に設定できます。
 
@@ -34,7 +39,7 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 |オーストリア|AT|
 |ベルギー|BE|
 |ブラジル|BR|
-|カナダ|CA|
+|Canada|CA|
 |チリ|CL|
 |デンマーク|DK|
 |フィンランド|FI|
@@ -64,26 +69,26 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 |台湾|TW|
 |トルコ|TR|
 |イギリス|GB|
-|米国|US|
+|United States|US|
 
 ## <a name="markets"></a>市場
 
-|国/リージョン|言語|市場コード|
+|国/リージョン|Language|市場コード|
 |-------|--------|-----------|
 |アルゼンチン|スペイン語|es-AR|
 |オーストラリア|英語|en-AU|
 |オーストリア|ドイツ語|de-AT|
 |ベルギー|オランダ語|nl-BE|
 |ベルギー|フランス語|fr-BE|
-|ブラジル|ポルトガル語|pt-BR|
-|カナダ|英語|en-CA|
-|カナダ|フランス語|fr-CA|
+|ブラジル|Portuguese|pt-BR|
+|Canada|英語|en-CA|
+|Canada|フランス語|fr-CA|
 |チリ|スペイン語|es-CL|
 |デンマーク|デンマーク語|da-DK|
 |フィンランド|フィンランド語|fi-FI|
 |フランス|フランス語|fr-FR|
 |ドイツ|ドイツ語|de-DE|
-|香港特別行政区|繁体字中国語|zh-HK|
+|香港特別行政区|Traditional Chinese|zh-HK|
 |インド|英語|en-IN|
 |インドネシア|英語|en-ID|
 |イタリア|イタリア語|it-IT|
@@ -94,9 +99,9 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 |オランダ|オランダ語|nl-NL|
 |ニュージーランド|英語|en-NZ|
 |ノルウェー|ノルウェー語|no-NO|
-|中国|中国語|zh-CN|
+|中国|Chinese|zh-CN|
 |ポーランド|ポーランド語|pl-PL|
-|ポルトガル|ポルトガル語|pt-PT|
+|ポルトガル|Portuguese|pt-PT|
 |フィリピン|英語|en-PH|
 |ロシア|ロシア語|ru-RU|
 |サウジアラビア|アラビア語|ar-SA|
@@ -105,12 +110,12 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 |スウェーデン|スウェーデン語|sv-SE|
 |スイス|フランス語|fr-CH|
 |スイス|ドイツ語|de-CH|
-|台湾|繁体字中国語|zh-TW|
+|台湾|Traditional Chinese|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
-|米国|英語|en-US|
-|米国|スペイン語|es-US|
+|United States|英語|ja-JP|
+|United States|スペイン語|es-US|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Bing Image Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

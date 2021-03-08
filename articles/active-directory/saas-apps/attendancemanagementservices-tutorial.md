@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: df04cc41f2b5947bb0cf23715a857a3449627f23
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1f404d3613f9de8daadc4bb2ceb39282cf3b619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル: Azure Active Directory と Attendance Management Services の統合
 
@@ -27,7 +27,7 @@ Attendance Management Services と Azure AD の統合には、次の利点があ
 * ユーザーが自分の Azure AD アカウントで Attendance Management Services に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -108,7 +108,7 @@ Attendance Management Services で Azure AD シングル サインオンを構�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Attendance Management Services クライアント サポート チーム](https://www.obcnet.jp/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -126,19 +126,19 @@ Attendance Management Services で Azure AD シングル サインオンを構�
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Attendance Management Services 企業サイトにサインオンします。
 
-1. **[セキュリティ管理] セクション**の **[SAML 認証]** をクリックします。
+1. **[セキュリティ管理] セクション** の **[SAML 認証]** をクリックします。
 
-    ![Attendance Management Services の構成](./media/attendancemanagementservices-tutorial/user1.png)
+    ![このスクリーンショットは、非ラテン文字が使用されたページで [SAML 認証] が選択されている状態を示しています。](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. 次の手順に従います。
 
-    ![Attendance Management Services の構成](./media/attendancemanagementservices-tutorial/user2.png)
+    ![このスクリーンショットは、この手順で説明されているタスクを実行できるウィンドウを示しています。](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. **[SAML 認証を利用する]** を選択します。
 
-    b. **[Identifier]\(識別子\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    b. **[Identifier]\(識別子\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    c. **[Authentication endpoint URL]\(認証エンドポイント URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[Authentication endpoint URL]\(認証エンドポイント URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     d. **[ファイル選択]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
 
@@ -204,19 +204,19 @@ Azure AD ユーザーが Attendance Management Services にサインインでき
 
 1. 管理者として Attendance Management Services 企業サイトにサインインします。
 
-1. **[セキュリティ管理] セクション**の **[利用者管理]** をクリックします。
+1. **[セキュリティ管理] セクション** の **[利用者管理]** をクリックします。
 
-    ![従業員の追加](./media/attendancemanagementservices-tutorial/user5.png)
+    ![このスクリーンショットは、非ラテン文字が使用されたページで [利用者管理] が選択されている状態を示しています。](./media/attendancemanagementservices-tutorial/user5.png)
 
 1. **[新規登録]** をクリックします。
 
-    ![従業員の追加](./media/attendancemanagementservices-tutorial/user3.png)
+    ![このスクリーンショットは、プラス記号オプションの選択を示しています。](./media/attendancemanagementservices-tutorial/user3.png)
 
 1. **[OBCiD 情報]** セクションで、次の手順を実行します。
 
-    ![従業員の追加](./media/attendancemanagementservices-tutorial/user4.png)
+    ![このスクリーンショットは、説明されているタスクを実行できるウィンドウを示しています。](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. **[OBCiD]** ボックスに、ユーザーのメール アドレスを入力します (例: `BrittaSimon\@contoso.com`)。
+    a. **[OBCiD]** ボックスに、ユーザーのメール アドレスを入力します (例: `BrittaSimon@contoso.com`)。
 
     b. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 
@@ -226,12 +226,12 @@ Azure AD ユーザーが Attendance Management Services にサインインでき
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Attendance Management Services] タイルをクリックすると、SSO を設定した Attendance Management Services に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Attendance Management Services] タイルをクリックすると、SSO を設定した Attendance Management Services に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

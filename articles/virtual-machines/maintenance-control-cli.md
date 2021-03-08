@@ -5,18 +5,18 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/20/2020
+ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d94cd649df9da6b36ac484d4fc1e6acef7a21bb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675861"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026167"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>メンテナンス コントロールと Azure CLI を使用して更新を制御する
 
-メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストに更新プログラムを適用するタイミングをユーザーが決定できます。 このトピックでは、メンテナンス コントロール用の Azure CLI オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)に関する記事を参照してください。
+メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストのホスト インフラストラクチャにプラットフォームの更新プログラムを適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure CLI オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)に関する記事を参照してください。
 
 ## <a name="create-a-maintenance-configuration"></a>メンテナンス構成を作成する
 
@@ -28,22 +28,46 @@ az group create \
    --name myMaintenanceRG
 az maintenance configuration create \
    -g myMaintenanceRG \
-   --name myConfig \
-   --maintenanceScope host\
+   --resource-name myConfig \
+   --maintenance-scope host\
    --location eastus
 ```
 
 後で使用するために、出力から構成 ID をコピーします。
 
-`--maintenanceScope host` を使用すると、ホストに対する更新を制御するために、そのメンテナンス構成が確実に使用されます。
+`--maintenance-scope host` を使用して、そのメンテナンス構成が、ホスト インフラストラクチャに対する更新をコントロールするために確実に使用されているか確認します。
 
-同じ名前の構成を別の場所に作成しようとすると、エラーが発生します。 構成名は、サブスクリプションに対して一意である必要があります。
+同じ名前の構成を別の場所に作成しようとすると、エラーが発生します。 構成名は、リソース グループに対して一意である必要があります。
 
 `az maintenance configuration list` を使用すると、使用可能なメンテナンス構成に対してクエリを実行できます。
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>日程計画された期間でメンテナンス構成を作成する
+Azure でリソースに更新プログラムを適用する日程計画された期間を宣言することもできます。 この例では、毎月第 4 月曜日に 5 時間という日程計画で myConfig という名前のメンテナンス構成が作成されます。 日程計画された期間を作成すると、更新プログラムを手動で適用する必要がなくなります。
+
+```azurecli-interactive
+az maintenance configuration create \
+   -g myMaintenanceRG \
+   --resource-name myConfig \
+   --maintenance-scope host \
+   --location eastus \
+   --maintenance-window-duration "05:00" \
+   --maintenance-window-recur-every "Month Fourth Monday" \
+   --maintenance-window-start-date-time "2020-12-30 08:00" \
+   --maintenance-window-time-zone "Pacific Standard Time"
+```
+
+> [!IMPORTANT]
+> メンテナンスの **期間** は、"*2 時間*" 以上である必要があります。 メンテナンスの **繰り返し** は少なくとも 35 日間に 1 回に行われるように設定する必要があります。
+
+メンテナンスの繰り返しは、日、週、月単位で表すことができます。 いくつかの例を次に示します。
+- **daily**- maintenance-window-recur-every:"Day" **または** "3Days"
+- **weekly**- maintenance-window-recur-every:"3Weeks" **または** "Week Saturday,Sunday"
+- **monthly**- maintenance-window-recur-every:"Month day23,day24" **または** "Month Last Sunday" **または** "Month Fourth Monday"
+
 
 ## <a name="assign-the-configuration"></a>構成を割り当てる
 
@@ -251,7 +275,7 @@ az maintenance applyupdate get \
 az maintenance configuration delete \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
    -g myResourceGroup \
-   --name myConfig
+   --resource-name myConfig
 ```
 
 ## <a name="next-steps"></a>次のステップ

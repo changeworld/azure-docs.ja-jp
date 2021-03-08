@@ -4,7 +4,7 @@ description: アプリケーション プロキシの展開でのトラフィッ
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fda858b0811eb6308b8e5588eaeae9bff5a1730
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764589"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259391"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>アプリケーション プロキシ コネクタとアプリケーションの高可用性と負荷分散
 
@@ -39,7 +39,7 @@ ms.locfileid: "84764589"
 
 1. クライアント デバイスのユーザーが、アプリケーション プロキシ経由で公開されているオンプレミスのアプリケーションにアクセスを試みます。
 2. 要求は Azure Load Balancer を経由し、要求を実行するアプリケーション プロキシ サービス インスタンスが決定されます。 リージョンごとに、要求を受け入れることができるインスタンスが数十個あります。 この方法により、トラフィックをサービス インスタンス間に均等に分散させることができます。
-3. 要求は [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/) に送信されます。
+3. 要求は [Service Bus](../../service-bus-messaging/index.yml) に送信されます。
 4. Service Bus により、使用可能なコネクタにシグナルされます。 その後、コネクタによって Service Bus から要求が取得されます。
    - ステップ 2 で、要求は異なるアプリケーション プロキシ サービス インスタンスに送られるため、接続が異なるコネクタで処理される可能性がいっそう高くなります。 その結果、グループ内のコネクタはほぼ均等に使用されます。
 5. コネクタによって、アプリケーションのバックエンド サーバーに要求が渡されます。 その後、アプリケーションにより応答がコネクタに返送されます。
@@ -98,4 +98,4 @@ ms.locfileid: "84764589"
 - [シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)
 - [条件付きアクセスを有効にする](application-proxy-integrate-with-sharepoint-server.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)
-- [Azure AD アーキテクチャで高可用性がサポートされるしくみについて学習する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)
+- [Azure AD アーキテクチャで高可用性がサポートされるしくみについて学習する](../fundamentals/active-directory-architecture.md)

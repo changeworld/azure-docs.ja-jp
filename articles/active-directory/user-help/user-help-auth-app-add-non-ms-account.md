@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015972"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359202"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft 以外のアカウントを Microsoft Authenticator アプリに追加する
 
-2 要素検証のために Microsoft Authenticator アプリに、Google、Facebook、GitHub などの、Microsoft 以外のアカウントを追加します。 Microsoft Authenticator アプリは、2 要素認証を使用する任意のアプリ、および時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
+Google、Facebook、GitHub など、Microsoft 以外のアカウントを持っている場合は、2 要素検証のために Microsoft Authenticator アプリに追加できます。 Microsoft Authenticator アプリは、2 要素検証を使用する任意のアプリ、および時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
 
 >[!Important]
 >アカウントを追加する前に、Microsoft Authenticator アプリをダウンロードしてインストールする必要があります。 まだ完了していない場合は、「[アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」という記事の手順に従ってください。
@@ -36,7 +36,7 @@ ms.locfileid: "87015972"
     >[!Note]
     >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
-ここでは、Facebook、Google、GitHub、および Amazon のアカウントに関するプロセスについて説明しますが、このプロセスは、Instagram、Netflix、または Adobe などの他のアプリの場合も同じです。
+ここでは、Facebook、Google、GitHub、および Amazon のアカウントに関するプロセスについて説明しますが、このプロセスは、Instagram や Adobe などの他のアプリの場合も同じです。
 
 ## <a name="add-your-google-account"></a>Google アカウントを追加する
 
@@ -130,7 +130,7 @@ ms.locfileid: "87015972"
 
 1. ご利用のコンピューターの **[2 要素認証]** ページで、 **[Set up using an app]\(アプリを使用して設定\)** を選択します。
 
-2. アクセスできなくなった場合にアカウントを復元できるように回復用コードを保存してから、 **[次へ]** を選択します。 
+2. アクセスできなくなった場合にアカウントを復元できるように回復用コードを保存してから、 **[次へ]** を選択します。
 
     コードは、デバイスにダウンロードするか、印刷するか、パスワード マネージャー ツールにコピーすることで保存できます。
 

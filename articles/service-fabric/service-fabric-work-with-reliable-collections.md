@@ -3,12 +3,12 @@ title: Reliable Collection での作業
 description: Azure Service Fabric アプリケーション内で Reliable Collection を操作するためのベスト プラクティスについて説明します。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 908f24cc22c969a34a513ff3fd3ceaa788420620
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255797"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787877"
 ---
 # <a name="working-with-reliable-collections"></a>Reliable Collection での作業
 Service Fabric は、Reliable Collection を使用して .NET 開発者が利用できるステートフルなプログラミング モデルを提供します。 具体的には、Service Fabric は Reliable Dictionary と Reliable Queue のクラスを提供します。 これらのクラスを使用すると、状態がパーティション分割され (拡張性のため)、レプリケートされ (可用性のため)、パーティション内でトランザクションが行われます (ACID セマンティックのため)。 リライアブル ディクショナリ オブジェクトの一般的な使い方と、実際の動作を見てみましょう。
@@ -35,6 +35,7 @@ catch (TimeoutException)
 {
    // choose how to handle the situation where you couldn't get a lock on the file because it was 
    // already in use. You might delay and retry the operation
+   await Task.Delay(100);
 }
 ```
 
@@ -225,4 +226,4 @@ Reliable Collection は、内部で .NET の DataContractSerializer を使用し
 
 バージョン トレラントなデータ コントラクトを実装する方法については、「[バージョン トレラントなシリアル化コールバック](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)」を参照してください。
 
-複数のバージョンで相互運用できるデータ構造を提供する方法については、「[IExtensibleDataObject インターフェイス](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1)」を参照してください。
+複数のバージョンで相互運用できるデータ構造を提供する方法については、「[IExtensibleDataObject インターフェイス](/dotnet/api/system.runtime.serialization.iextensibledataobject)」を参照してください。

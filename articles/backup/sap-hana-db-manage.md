@@ -3,12 +3,12 @@ title: Azure VM 上のバックアップされた SAP HANA データベースを
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースを管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 54d3341a83873ad3cc50815f04a0b252bb44438e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703768"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>バックアップされた SAP HANA データベースを管理および監視する
 
@@ -41,7 +41,7 @@ Azure Backup では、手動でトリガーされたすべてのジョブが Azu
 
   ![バックアップ アラートの一覧](./media/sap-hana-db-manage/backup-alerts-list.png)
 
-* アラートをクリックすると、その詳細が表示されます。
+* アラートを選択すると、その詳細が表示されます。
 
   ![[アラートの詳細]](./media/sap-hana-db-manage/alert-details.png)
 
@@ -61,10 +61,12 @@ Azure Backup では、サポートされる管理操作が豊富なため、バ�
 
 バックアップは、ポリシー スケジュールに従って実行されます。 次のように、バックアップ オンデマンを実行できます。
 
-1. コンテナー メニューで **[バックアップ アイテム]** をクリックします。
-2. **[バックアップ項目]** で、SAP HANA データベースを実行している VM を選択してから、 **[今すぐバックアップ]** をクリックします。
-3. **[今すぐバックアップ]** で、実行するバックアップの種類を選択します。 次に、 **[OK]** をクリックします このバックアップ項目に関連付けられているポリシーに従って、このバックアップが保持されます。
+1. コンテナー メニューで **[バックアップ項目]** を選択します。
+2. **[バックアップ項目]** で、SAP HANA データベースを実行している VM を選択してから、 **[今すぐバックアップ]** を選択します。
+3. **[今すぐバックアップ]** で、実行するバックアップの種類を選択します。 **[OK]** をクリックします。 このバックアップ項目に関連付けられているポリシーに従って、このバックアップが保持されます。
 4. ポータルの通知を監視します。 コンテナー ダッシュボードの **[バックアップ ジョブ]**  >  **[進行中]** でジョブの進行状況を監視できます。 データベースのサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
+
+既定では、オンデマンドバックアップの保持期間は 45 日です。
 
 ### <a name="hana-native-client-integration"></a>HANA ネイティブ クライアントの統合
 
@@ -74,7 +76,7 @@ HANA ネイティブ クライアントから (**Backint** に) トリガーさ�
 
 ![最後に実行されたバックアップ](./media/sap-hana-db-manage/last-backups.png)
 
-**[バックアップ ジョブ]** ページから[これらのバックアップを監視する](#monitor-manual-backup-jobs-in-the-portal)こともできます。
+**[バックアップ ジョブ]** ページから [これらのバックアップを監視する](#monitor-manual-backup-jobs-in-the-portal)こともできます。
 
 これらのオンデマンドのバックアップは、復元のための復元ポイント一覧にも表示されます。
 
@@ -82,22 +84,41 @@ HANA ネイティブ クライアントから (**Backint** に) トリガーさ�
 
 #### <a name="restore"></a>復元
 
-同じマシンに復元するために (**Backint** を使用して) HANA ネイティブ クライアントからトリガーされた復元は、 **[バックアップ ジョブ]** ページから[監視](#monitor-manual-backup-jobs-in-the-portal)することができます。
+同じマシンに復元するために (**Backint** を使用して) HANA ネイティブ クライアントからトリガーされた復元は、 **[バックアップ ジョブ]** ページから [監視](#monitor-manual-backup-jobs-in-the-portal)することができます。
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Azure Backup が有効になっているデータベースで SAP HANA ネイティブ クライアント バックアップを実行する
+### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>Azure Backup が有効になっているデータベースでローカル ディスクへの SAP HANA ネイティブ クライアント バックアップを実行する
 
 Azure Backup でバックアップされているデータベースの (HANA Studio/Cockpit を使用した) ローカル バックアップを取得する場合は、次の操作を行います。
 
 1. データベースの完全バックアップまたはログ バックアップがすべて完了するまで待ちます。 SAP HANA Studio/Cockpit で状態を確認します。
-2. ログ バックアップを無効にし、関連するデータベースのファイル システムにバックアップ カタログを設定します。
-3. これを行うには、**systemdb** >  **[構成]**  >  **[データベースの選択]**  >  **[Filter (Log)]\(フィルター (ログ)\)** の順にダブルクリックします。
-4. **[enable_auto_log_backup]** を **[No]** に設定します。
-5. **[log_backup_using_backint]** を **[False]** に設定します。
-6. データベースのオンデマンド完全バックアップを作成します。
-7. 完全バックアップとカタログ バックアップが完了するまで待ちます。
-8. 前の設定を Azure のものに戻します。
-   * **[enable_auto_log_backup]** を **[Yes]** に設定します。
-   * **[log_backup_using_backint]** を **[True]** に設定します。
+2. 関連する DB で、以下を行います
+    1. backint パラメーターを設定解除します。 これを行うには、**systemdb** >  **[構成]**  >  **[データベースの選択]**  >  **[Filter (Log)]\(フィルター (ログ)\)** の順にダブルクリックします。
+        * enable_auto_log_backup:いいえ
+        * log_backup_using_backint:False
+        * catalog_backup_using_backint:False
+3. データベースのオンデマンド完全バックアップを作成します
+4. その後、手順を逆にします。 上記と同じ関連 DB について、以下を行います
+    1. backint パラメーターを再度有効にします
+        1. catalog_backup_using_backint:True
+        1. log_backup_using_backint:True
+        1. enable_auto_log_backup:はい
+
+### <a name="manage-or-clean-up-the-hana-catalog-for-a-database-with-azure-backup-enabled"></a>Azure Backup が有効になっているデータベースの HANA カタログを管理またはクリーンアップする
+
+バックアップ カタログを編集またはクリーンアップする場合は、次の手順を実行します。
+
+1. データベースの完全バックアップまたはログ バックアップがすべて完了するまで待ちます。 SAP HANA Studio/Cockpit で状態を確認します。
+2. 関連する DB で、以下を行います
+    1. backint パラメーターを設定解除します。 これを行うには、**systemdb** >  **[構成]**  >  **[データベースの選択]**  >  **[Filter (Log)]\(フィルター (ログ)\)** の順にダブルクリックします。
+        * enable_auto_log_backup:いいえ
+        * log_backup_using_backint:False
+        * catalog_backup_using_backint:False
+3. カタログを編集して古いエントリを削除します
+4. その後、手順を逆にします。 上記と同じ関連 DB について、以下を行います
+    1. backint パラメーターを再度有効にします
+        1. catalog_backup_using_backint:True
+        1. log_backup_using_backint:True
+        1. enable_auto_log_backup:はい
 
 ### <a name="change-policy"></a>ポリシーを変更する
 
@@ -112,7 +133,7 @@ SAP HANA バックアップ項目のための、基になるポリシーを変�
   ![[Azure VM の SAP HANA] を選択する](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * 変更対象の、基になるポリシーを含むバックアップ項目を選択します
-* 既存のバックアップ ポリシーをクリックします
+* 既存のバックアップ ポリシーを選択します。
 
   ![既存のバックアップ ポリシーを選択します](./media/sap-hana-db-manage/existing-backup-policy.png)
 
@@ -124,12 +145,10 @@ SAP HANA バックアップ項目のための、基になるポリシーを変�
 
   ![変更を保存します](./media/sap-hana-db-manage/save-changes.png)
 
-* ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。
+* ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する **保護の構成** ジョブをトリガーします。
 
 >[!NOTE]
 > 保持期間の変更は、新しい復旧ポイントだけでなく古い復旧ポイントすべてにもさかのぼって適用されます。
->
-> SAP HANA データベースには増分バックアップ ポリシーを使用できません。 増分バックアップは現在、これらのデータベースではサポートされていません。
 
 ### <a name="modify-policy"></a>ポリシーの変更
 
@@ -150,11 +169,11 @@ SAP HANA バックアップ項目のための、基になるポリシーを変�
 
    ![バックアップの頻度を選択する](./media/sap-hana-db-manage/choose-frequency.png)
 
-ポリシーの変更は、関連するすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。
+ポリシーの変更は、関連するすべてのバックアップ項目に影響し、対応する **保護の構成** ジョブをトリガーします。
 
 ### <a name="inconsistent-policy"></a>不整合なポリシー
 
-場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に**不整合な**ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する**保護の構成**ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
+場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に **不整合な** ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する **保護の構成** ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
 
 ![不整合なポリシー](./media/sap-hana-db-manage/inconsistent-policy.png)
 
@@ -215,6 +234,10 @@ SAP HANA データベースの保護を再開するには:
 ### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>SID を変更せずに SDC から MDC にアップグレードする
 
 [SDC から MDC へのアップグレード後に SID が変更されていない](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid) SAP HANA データベースのバックアップを続行する方法について学習してください。
+
+### <a name="upgrading-to-a-new-version-in-either-sdc-or-mdc"></a>SDC または MDC で新しいバージョンにアップグレードする
+
+[バージョンがアップグレードされた](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm) SAP HANA データベースのバックアップを続行する方法について学習してください。
 
 ### <a name="unregister-an-sap-hana-instance"></a>SAP HANA インスタンスを登録解除する
 

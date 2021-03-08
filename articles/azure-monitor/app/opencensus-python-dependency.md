@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: abfd5e104bd4854781a0d3c9d08544506279518a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a8f673295236d60ec6681bbfaee1201a4659674b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850085"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585708"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python を使用した依存関係の追跡
 
@@ -173,6 +173,6 @@ config_integration.trace_integrations(['sqlalchemy'])
 * [アプリケーション マップ](./app-map.md)
 * [可用性](./monitor-web-app-availability.md)
 * [Search](./diagnostic-search.md)
-* [Log (Analytics) のクエリ](../log-query/log-query-overview.md)
+* [Log (Analytics) のクエリ](../logs/log-query-overview.md)
 * [トランザクションの診断](./transaction-diagnostics.md)
 

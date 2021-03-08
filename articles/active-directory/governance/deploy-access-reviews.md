@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/14/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011346"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932437"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -37,7 +37,7 @@ ms.locfileid: "89011346"
 
 * リソースに対するユーザーのアクセス権の削除など、レビュー結果に基づく処理を自動化します
 
-  ![アクセス レビューの計画](./media/deploy-access-review/1-planning-review.png)
+  ![アクセス レビュー フローを示す図。](./media/deploy-access-review/1-planning-review.png)
 
 アクセス レビューは [Azure AD Identity Governance](identity-governance-overview.md) の機能です。 その他の機能には、[エンタイトルメント管理](entitlement-management-overview.md)、[Privileged Identity Management](../privileged-identity-management/pim-configure.md)、[Terms of Use](../conditional-access/terms-of-use.md) などがあります。 これらの機能によって、組織では次の 4 つの疑問を解決できます。
 
@@ -87,19 +87,19 @@ ms.locfileid: "89011346"
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な関係者が担当していることを確認](https://aka.ms/deploymentplans)し、またそのプロジェクトの役割が明確になっていることを確認します。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)し、またそのプロジェクトの役割が明確になっていることを確認します。
 
 アクセス レビューの場合は、組織内の次のチームの代表者を含めることが考えられます。
 
-* **IT 管理**は、IT インフラストラクチャ、クラウドへの投資、サービスとしてのソフトウェア (SaaS) アプリを管理します。 このチームは次のことを行います。
+* **IT 管理** は、IT インフラストラクチャ、クラウドへの投資、サービスとしてのソフトウェア (SaaS) アプリを管理します。 このチームは次のことを行います。
 
-   * Office 365 や Azure AD などのインフラストラクチャとアプリへの特権アクセスをレビューします。
+   * Microsoft 365 や Azure AD などのインフラストラクチャとアプリへの特権アクセスをレビューします。
 
    * 例外リストまたは IT パイロット プロジェクトの管理に使用するアクセス レビューをグループに対してスケジュールおよび実行し、最新のアクセス リストを管理します。
 
    * サービス プリンシパル経由の、プログラム (スクリプト) によるリソースへのアクセスが管理およびレビューされることを保証します。
 
-* **開発チーム**は、組織のアプリケーションを構築および管理します。 このチームは次のことを行います。
+* **開発チーム** は、組織のアプリケーションを構築および管理します。 このチームは次のことを行います。
 
    * 開発されたソリューションを構成する SaaS、PaaS、IaaS リソース内のコンポーネントにアクセスして管理できるユーザーを制御します。
 
@@ -107,13 +107,13 @@ ms.locfileid: "89011346"
 
    * 顧客に代わってホストしている運用環境のソフトウェアまたはソリューションにアクセスできる特権 ID を要求します。
 
-* **ビジネス ユニット**は、プロジェクトと独自のアプリケーションを管理します。 このチームは次のことを行います。 
+* **ビジネス ユニット** は、プロジェクトと独自のアプリケーションを管理します。 このチームは次のことを行います。 
 
    * 内部および外部ユーザー向けのグループやアプリケーションへのアクセスをレビューし、承認または拒否します。
 
    * 従業員による、またビジネス パートナーなどの外部 ID による継続的なアクセスを証明するためのレビューをスケジュールし、実行します。
 
-* **コーポレート ガバナンス**は、組織で内部ポリシーに従い、規制を遵守していることを保証します。 このチームは次のことを行います。
+* **コーポレート ガバナンス** は、組織で内部ポリシーに従い、規制を遵守していることを保証します。 このチームは次のことを行います。
 
    * 新しいアクセス レビューを要求またはスケジュールします。
 
@@ -180,9 +180,9 @@ ms.locfileid: "89011346"
 
 * [シングル サインオンのために Azure AD と統合されたアプリケーション](../manage-apps/what-is-application-management.md) (SaaS、基幹業務など)。
 
-* グループ [メンバーシップ](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD と同期されるか、Azure AD または Office 365 (Microsoft Teams を含む) で作成されるもの)。
+* グループ [メンバーシップ](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD と同期されるか、Azure AD または Microsoft 365 (Microsoft Teams を含む) で作成されるもの)。
 
-* リソース (グループ、アプリ、サイト) を 1 つのパッケージにグループ化してアクセスを管理する[アクセス パッケージ](/azure/active-directory/governance/entitlement-management-overview)。
+* リソース (グループ、アプリ、サイト) を 1 つのパッケージにグループ化してアクセスを管理する[アクセス パッケージ](./entitlement-management-overview.md)。
 
 * Privileged Identity Management で定義された [Azure AD ロールと Azure リソース ロール](../privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
@@ -198,7 +198,7 @@ ms.locfileid: "89011346"
 | アクセス パッケージ| グローバル管理者<p>アクセス パッケージの作成者| 全体管理者のみ |
 
 
-詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)」を参照してください。
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>リソースへのアクセスをレビューするのは誰か?
 
@@ -300,11 +300,11 @@ ms.locfileid: "89011346"
 
 [ライフサイクル] タブを開き、[アクセス レビュー] まで下にスクロールします。
 
- ![ポリシーを編集する](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![[ライフサイクル] タブの [ポリシーの編集] を示すスクリーンショット。](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>グループのアクセス レビューを計画する
 
-アクセス パッケージに加えて、グループ メンバーシップのレビューは、アクセスを管理する最も効果的な方法です。 リソースへのアクセスは[セキュリティ グループまたは Office 365 グループ](../fundamentals/active-directory-manage-groups.md)を介して割り当てること、および、ユーザーをそれらのグループに追加してアクセス権を付与することを推奨します。
+アクセス パッケージに加えて、グループ メンバーシップのレビューは、アクセスを管理する最も効果的な方法です。 リソースへのアクセスは[セキュリティ グループまたは Microsoft 365 グループ](../fundamentals/active-directory-manage-groups.md)を介して割り当てること、およびユーザーをそれらのグループに追加してアクセス権を付与することを推奨します。
 
 1 つのグループに、すべての適切なリソースへのアクセスを許可できます。 グループ アクセスは、個々のリソースに、またはアプリケーションと他のリソースをグループ化するアクセス パッケージに割り当てることができます。 この方法では、各アプリケーションへの個人のアクセスではなくグループへのアクセスをレビューできます。 
 
@@ -322,9 +322,9 @@ ms.locfileid: "89011346"
 
 メンバーシップのレビューは、アクセスが必要なユーザーを最もよく知る立場にあるグループの所有者が行うことを推奨します。 グループの所有権は、グループの種類によって異なります。
 
-Office 365 および Azure AD で作成されたグループには、明確に定義された 1 人以上の所有者がいます。 ほとんどの場合、これらの所有者は、どのユーザーにアクセス権を付与するのが適切であるかを知っているため、グループのレビュー担当者として最適です。 
+Microsoft 365 と Azure AD で作成されたグループには、明確に定義された 1 人以上の所有者がいます。 ほとんどの場合、これらの所有者は、どのユーザーにアクセス権を付与するのが適切であるかを知っているため、グループのレビュー担当者として最適です。 
 
-たとえば、Microsoft Teams では、基になる承認モデルとして Office 365 グループを使用して、SharePoint、Exchange、OneNote、またはその他の Office 365 サービスにあるリソースへのアクセスをユーザーに許可します。 チームの作成者は自動的に所有者になり、そのグループのメンバーシップを証明する責任を負います。 
+たとえば、Microsoft Teams では、基になる承認モデルとして Microsoft 365 グループを使用して、SharePoint、Exchange、OneNote、またはその他の Microsoft 365 サービスにあるリソースへのアクセスがユーザーに許可されます。 チームの作成者は自動的に所有者になり、そのグループのメンバーシップを証明する責任を負います。 
 
 Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリプトによって作成されたグループには、所有者が定義されていない場合があります。 Azure AD ポータルでグループの [所有者] セクションから、または Graph から所有者を定義することを推奨します。
 
@@ -333,9 +333,9 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 > [!NOTE]
 > グループの所有権と、メンバーシップの定期的なレビューの説明責任を明確にするために、グループの作成方法を定義するビジネス ポリシーを定義することを推奨します。 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>CA ポリシーの除外グループのメンバーシップのレビュー 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>条件付きアクセス ポリシーの除外グループのメンバーシップをレビューする 
 
-ネットワークを安全に保つために設計された条件付きアクセス (CA) ポリシーをすべてのユーザーに適用するのが適当でない場合があります。 たとえば、会社のネットワーク上にいる場合にのみユーザーのサインインを許可する CA ポリシーは、出張の多い営業チームには適当ではありません。 この場合、営業チームのメンバーをグループに入れて、そのグループを CA ポリシーから除外します。 
+ネットワークを安全な状態に維持するように設計された条件付きアクセス ポリシーをすべてのユーザーに適用すべきでない場合があります。 たとえば、ユーザーが企業ネットワーク上にいる場合にのみサインインできるようにする条件付きアクセス ポリシーを、出張の多い営業チームに適用することはできません。 その場合は、営業チームのメンバーを別のグループに配置し、そのグループを条件付きアクセス ポリシーから除外します。 
 
 除外するのが妥当でないメンバーが要件から除外される潜在的なリスクがあるため、このようなグループ メンバーシップを定期的にレビューしてください。
 
@@ -343,7 +343,7 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 
 ### <a name="review-external-users-group-memberships"></a>外部ユーザーのグループ メンバーシップのレビュー
 
-手動操作とそれに伴うミスの可能性を最小化するために、[動的グループ](../users-groups-roles/groups-create-rule.md)を使用し、ユーザーの属性に基づいてグループ メンバーシップを割り当てることを検討してください。 外部ユーザー用に 1 つ以上の動的グループを作成できます。 内部のスポンサーが、グループのメンバーシップのレビュー担当者を務めることができます。 
+手動操作とそれに伴うミスの可能性を最小化するために、[動的グループ](../enterprise-users/groups-create-rule.md)を使用し、ユーザーの属性に基づいてグループ メンバーシップを割り当てることを検討してください。 外部ユーザー用に 1 つ以上の動的グループを作成できます。 内部のスポンサーが、グループのメンバーシップのレビュー担当者を務めることができます。 
 
 注:アクセス レビューの結果としてグループから削除された外部ユーザーは、テナントから削除されません。 
 
@@ -389,7 +389,7 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Azure AD と Azure リソースのロールのレビューの計画
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) は、企業が Azure AD 内のリソースへの特権アクセスを管理する方法を簡略化します。 これにより、[Azure AD](../users-groups-roles/directory-assign-admin-roles.md) と [Azure リソース](../../role-based-access-control/built-in-roles.md)の両方で特権ロールのリストが大幅に縮小され、ディレクトリの全体的なセキュリティが向上します。
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) は、企業が Azure AD 内のリソースへの特権アクセスを管理する方法を簡略化します。 これにより、[Azure AD](../roles/permissions-reference.md) と [Azure リソース](../../role-based-access-control/built-in-roles.md)の両方で特権ロールのリストが大幅に縮小され、ディレクトリの全体的なセキュリティが向上します。
 
 アクセス レビューを利用すると、レビュー担当者は、ユーザーが引き続きロールに所属する必要があるかどうかを証明できます。 アクセス パッケージのアクセス レビューと同様に、Azure AD ロールおよび Azure リソースのレビューは PIM の管理者ユーザーの操作に統合されています。 次のロールの割り当てを定期的にレビューすることを推奨します。
 
@@ -403,7 +403,7 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 
 * セキュリティ管理者
 
-* すべての Office 365 および Dynamics のサービス管理ロール
+* すべての Microsoft 365 と Dynamics のサービス管理ロール
 
 ここで選択するロールには、永続的なロールと資格のあるロールが含まれます。 
 
@@ -446,7 +446,7 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 
 ロールの割り当てが古いことで生じるリスクを軽減するために、Azure AD の特権ロールのアクセスを定期的にレビューする必要があります。
 
-![azure ad ロールのレビュー](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Azure AD ロールの [レビューのメンバーシップ] リストを示すスクリーンショット。](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 以下のリンクの指示に従います。
 
@@ -518,4 +518,3 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 * [Azure AD エンタイトルメント管理とは](entitlement-management-overview.md)
 
 * [Azure AD Privileged Identity Management とは](../privileged-identity-management/pim-configure.md)
-

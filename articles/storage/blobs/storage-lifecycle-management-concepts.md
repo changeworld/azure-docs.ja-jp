@@ -1,29 +1,30 @@
 ---
-title: Azure Storage のライフサイクルの管理
-description: 古いデータをホット層からクール層およびアーカイブ層へ移行するためのライフサイクル ポリシー ルールの作成方法について説明します。
+title: Azure Blob Storage アクセス層の自動化によるコストの最適化
+description: ホット、クール、アーカイブの各階層間でデータを移動するための自動ルールを作成します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 10/29/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b1bf8fbfb6d2c141a2b18c3599631f6383883908
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell, references_regions
+ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074425"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96005284"
 ---
-# <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
+# <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob Storage アクセス層の自動化によるコストの最適化
 
-データ セットには一意のライフサイクルがあります。 ライフサイクルの早い段階で、一部のデータに頻繁にアクセスされます。 しかし、データが古くなるとアクセスの必要性が急激に低下します。 また、クラウド内で使用されず、格納された後もほとんどアクセスされないデータもあります。 データには、作成後数日または数か月で失効するものがあります。また、ライフサイクルにわたってアクティブに読み取られ、変更されるデータ セットもあります。 Azure Blob Storage のライフサイクル管理には、GPv2 および BLOB ストレージ アカウントのための豊富な、ルール ベースのポリシーが用意されています。 このポリシーを使用して、適切なアクセス層にデータを移行します。または、データのライフサイクルの終了時に期限切れにします。
+データ セットには一意のライフサイクルがあります。 ライフサイクルの早い段階で、一部のデータに頻繁にアクセスされます。 しかし、データが古くなるとアクセスの必要性が急激に低下します。 また、クラウド内で使用されず、格納された後もほとんどアクセスされないデータもあります。 データには、作成後数日または数か月で失効するものがあります。また、ライフサイクルにわたってアクティブに読み取られ、変更されるデータ セットもあります。 Azure Blob Storage のライフサイクル管理には、GPv2 アカウントと BLOB ストレージ アカウントに関する、豊富な内容のルールベースのポリシーが用意されています。 このポリシーを使用して、適切なアクセス層にデータを移行します。または、データのライフサイクルの終了時に期限切れにします。
 
 ライフサイクル管理ポリシーによって、以下を行えます。
 
-- パフォーマンスとコストを最適化するために、BLOB をよりクールなストレージ層に移行する (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ)
-- ライフサイクルの最後に BLOB を削除する
+- パフォーマンスを最適化するためにアクセスされた場合、BLOB をクールからホットに直ちに移行する 
+- コストを最適化するために、一定期間にわたってアクセスも変更もされていない場合、BLOB、BLOB のバージョン、BLOB のスナップショットをよりクールなストレージ層に移行する (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ)
+- ライフサイクルの最後に BLOB、BLOB のバージョン、BLOB のスナップショットを削除する
 - ストレージ アカウント レベルで 1 日に 1 回実行されるようにルールを定義する
 - コンテナーまたは BLOB のサブセットにルールを適用する (名前のプレフィックスまたは [ インデックス タグ](storage-manage-find-blobs.md)をフィルターとして使用)
 
@@ -31,11 +32,14 @@ ms.locfileid: "89074425"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
+>[!NOTE]
+>StorSimple で使用する場合など、データを読み取れるままにする必要がある場合は、BLOB をアーカイブ層に移動するポリシーを設定しないでください。
+
 ## <a name="availability-and-pricing"></a>可用性と料金
 
-ライフサイクル管理機能は、General Purpose v2 (GPv2) アカウント、Blob Storage アカウント、Premium Block Blob Storage アカウントのすべての Azure リージョンで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。  
+ライフサイクル管理機能は、General Purpose v2 (GPv2) アカウント、BLOB ストレージ アカウント、Premium ブロック BLOB ストレージ アカウント、Azure Data Lake Storage Gen2 アカウントのすべての Azure リージョンで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
-ライフサイクル管理機能は無料です。 お客様には、[Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 削除操作は無料です。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
+ライフサイクル管理機能は無料です。 お客様には、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 削除操作は無料です。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
 ## <a name="add-or-remove-a-policy"></a>ポリシーを追加または削除する
 
@@ -43,15 +47,15 @@ ms.locfileid: "89074425"
 
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [Azure CLI](/cli/azure/install-azure-cli)
+* [REST API](/rest/api/storagerp/managementpolicies)
 
 ポリシーは、全体として読み取ったり書き込んだりすることができます。 部分的な更新はサポートされません。 
 
 > [!NOTE]
-> ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 信頼できる Microsoft サービスに例外を指定することで、このような要求のブロックを解除できます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
+> ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 信頼できる Microsoft サービスに例外を指定することで、このような要求のブロックを解除できます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](../common/storage-network-security.md#exceptions)に関するページの「例外」セクションを参照してください。
 
-この記事では、ポータルと PowerShell の方法を使用してポリシーを管理する方法について説明します。  
+この記事では、ポータルと PowerShell の方法を使用してポリシーを管理する方法について説明します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -64,54 +68,68 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure portal で、自分のストレージ アカウントを検索して選択します。 
+1. Azure portal で、自分のストレージ アカウントを検索して選択します。 
 
-3. **[Blob service]** で、 **[ライフサイクル管理]** を選択してルールを表示または変更します。
+1. **[Blob service]** で、 **[ライフサイクル管理]** を選択してルールを表示または変更します。
 
-4. **[リスト ビュー]** タブを選択します。
+1. **[リスト ビュー]** タブを選択します。
 
-5. **[ルールの追加]** を選択し、 **[アクション セット]** フォームのフィールドに入力します。 次の例では、BLOB が 30 日間変更されない場合、BLOB はクール ストレージに移動されます。
+1. **[ルールの追加]** を選択し、 **[詳細]** フォームでルールに名前を付けることができます。 また、 **[規則のスコープ]** 、 **[BLOB の種類]** 、 **[BLOB のサブタイプ]** の各値を設定することもできます。 次の例では、BLOB をフィルター処理するスコープを設定します。 これにより、 **[フィルター セット]** タブが追加されます。
 
-   ![Azure portal の [ライフサイクル管理] の [アクション セット] ページ](media/storage-lifecycle-management-concepts/lifecycle-management-action-set.png)
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Azure portal の [ライフサイクル管理] の [ルールの追加] の [詳細] ページ":::
 
-6. **[フィルター セット]** を選択してオプションのフィルターを追加します。 次に、 **[参照]** を選択して、フィルターを適用するコンテナーとフォルダーを指定します。
+1. **[Base blobs]\(ベース BLOB\)** を選択して、ルールの条件を設定します。 次の例では、BLOB が 30 日間変更されない場合、BLOB はクール ストレージに移動されます。
 
-   ![Azure portal の [ライフサイクル管理] の [フィルター セット] ページ](media/storage-lifecycle-management-concepts/lifecycle-management-filter-set-browse.png)
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure portal の [ライフサイクル管理] の [Base blobs]\(ベース BLOB\) ページ":::
 
-8. **[確認 + 追加]** を選択して、ポリシー設定を確認します。
+   **[最終アクセス日時]** オプションは、次のリージョンにおいてプレビューで使用できます。
 
-9. **[追加]** を選択して新しいポリシーを追加します。
+    - フランス中部
+    - カナダ東部
+    - カナダ中部
+
+   > [!IMPORTANT]
+   > 最終アクセス時刻追跡プレビューは、非運用環境のみで使用されます。 運用環境のサービス レベル契約(SLA) は現在使用できません。
+   
+   **最終アクセス日時** オプションを使用するために、Azure portal の **ライフサイクル管理** ページで **アクセス追跡有効** を選択します。 **[最終アクセス日時]** オプションの詳細については、「[最終アクセス日付に基づいてデータを移動させる (プレビュー)](#move-data-based-on-last-accessed-date-preview)」を参照してください。
+
+1. **[詳細]** ページで **[フィルターを使用して BLOB を制限する]** を選択した場合は、 **[フィルター セット]** を選択して省略可能なフィルターを追加します。 次の例では、"log" で始まる *mylifecyclecontainer* コンテナー内の BLOB に対してフィルター処理を行います。
+
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Azure portal の [ライフサイクル管理] の [フィルター セット] ページ":::
+
+1. **[追加]** を選択して新しいポリシーを追加します。
 
 #### <a name="azure-portal-code-view"></a>Azure portal コード ビュー
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure portal で、自分のストレージ アカウントを検索して選択します。
+1. Azure portal で、自分のストレージ アカウントを検索して選択します。
 
-3. **[Blob service]** で、 **[Lifecycle management]\(ライフサイクル管理)** を選択してポリシーを表示または変更します。
+1. **[Blob service]** で、 **[Lifecycle Management]\(ライフサイクル管理\)** を選択してポリシーを表示または変更します。
 
-4. 次の JSON は、 **[コード ビュー]** タブに貼り付けることができるポリシーの例です。
+1. 次の JSON は、 **[コード ビュー]** タブに貼り付けることができるポリシーの例です。
 
    ```json
    {
      "rules": [
        {
-         "name": "ruleFoo",
          "enabled": true,
+         "name": "move-to-cool",
          "type": "Lifecycle",
          "definition": {
-           "filters": {
-             "blobTypes": [ "blockBlob" ],
-             "prefixMatch": [ "container1/foo" ]
-           },
            "actions": {
              "baseBlob": {
-               "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-               "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-               "delete": { "daysAfterModificationGreaterThan": 2555 }
-             },
-             "snapshot": {
-               "delete": { "daysAfterCreationGreaterThan": 90 }
+               "tierToCool": {
+                 "daysAfterModificationGreaterThan": 30
+               }
              }
+           },
+           "filters": {
+             "blobTypes": [
+               "blockBlob"
+             ],
+             "prefixMatch": [
+               "mylifecyclecontainer/log"
+             ]
            }
          }
        }
@@ -119,9 +137,9 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
    }
    ```
 
-5. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
-6. この JSON の例の詳細については、「[ポリシー](#policy)」セクションおよび「[ルール](#rules)」セクションを参照してください。
+1. この JSON の例の詳細については、「[ポリシー](#policy)」セクションおよび「[ルール](#rules)」セクションを参照してください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -150,7 +168,7 @@ $filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd
 $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
 
 #Set the policy
-$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
+Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
 # <a name="template"></a>[テンプレート](#tab/template)
@@ -229,7 +247,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 | パラメーター名 | パラメーターのタイプ | Notes | 必須 |
 |----------------|----------------|-------|----------|
-| `name`         | String |ルール名には最大 256 の英数字を含めることができます。 ルール名は大文字と小文字が区別されます。  名前は、ポリシー内で一意にする必要があります。 | True |
+| `name`         | String |ルール名には最大 256 の英数字を含めることができます。 ルール名は大文字と小文字が区別されます。 名前は、ポリシー内で一意にする必要があります。 | True |
 | `enabled`      | Boolean | ルールを一時的に無効にすることを許可する省略可能なブール値。 設定されていない場合、既定値は true です。 | False | 
 | `type`         | 列挙型の値 | 現在の有効な種類は `Lifecycle` です。 | True |
 | `definition`   | ライフサイクル ルールを定義するオブジェクト | 各定義は、フィルター セットとアクション セットで構成されます。 | True |
@@ -240,38 +258,50 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 ### <a name="sample-rule"></a>ルールのサンプル
 
-次のサンプル ルールは、`container1` 内に存在し、`foo` で始まるオブジェクトに対してアクションを実行するようにアカウントをフィルター処理します。  
+次のサンプル ルールは、`container1` 内に存在し、`foo` で始まるオブジェクトに対してアクションを実行するようにアカウントをフィルター処理します。
 
 >[!NOTE]
->- ライフサイクル管理では、ブロック BLOB の種類のみがサポートされます。<br>
+>- ライフサイクル管理では、ブロック BLOB と追加 BLOB の種類がサポートされます。<br>
 >- ライフサイクル管理は、$logs や $web などのシステム コンテナーには影響しません。
 
 - BLOB を最後に変更されたときから 30 日後にクール層に階層化する
 - BLOB を最後に変更されたときから 90 日後にアーカイブ層に階層化する
 - BLOB を最後に変更されたときから 2,555 日 (7 年) 後に削除する
-- BLOB のスナップショットを作成したときから 90 日後にスナップショットを削除する
+- 以前のバージョンの BLOB を作成から 90 日後に削除する
 
 ```json
 {
   "rules": [
     {
-      "name": "ruleFoo",
       "enabled": true,
+      "name": "rulefoo",
       "type": "Lifecycle",
       "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
         "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          "version": {
+            "delete": {
+              "daysAfterCreationGreaterThan": 90
+            }
           },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "baseBlob": {
+            "tierToCool": {
+              "daysAfterModificationGreaterThan": 30
+            },
+            "tierToArchive": {
+              "daysAfterModificationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterModificationGreaterThan": 2555
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "container1/foo"
+          ]
         }
       }
     }
@@ -287,34 +317,36 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 | フィルター名 | フィルターの種類 | Notes | 必須 |
 |-------------|-------------|-------|-------------|
-| blobTypes   | 定義済みの列挙型の値の配列。 | 現在のリリースでは `blockBlob` をサポートしています。 | はい |
-| prefixMatch | プレフィックスを照合する文字列の配列。 各ルールで最大 10 個のプレフィックスを定義できます。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、`https://myaccount.blob.core.windows.net/container1/foo/...` の下にあるすべての BLOB をルールに一致させたい場合、prefixMatch は `container1/foo` です。 | prefixMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。  | いいえ |
+| blobTypes   | 定義済みの列挙型の値の配列。 | 現在のリリースでは `blockBlob` および `appendBlob` をサポートしています。 `appendBlob` では削除のみがサポートされています。既定の層はサポートされていません。 | はい |
+| prefixMatch | プレフィックスを照合する文字列の配列。 各ルールで最大 10 個のプレフィックスを定義できます。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、`https://myaccount.blob.core.windows.net/container1/foo/...` の下にあるすべての BLOB をルールに一致させたい場合、prefixMatch は `container1/foo` です。 | prefixMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。 | いいえ |
 | blobIndexMatch | 照合する BLOB インデックス タグ キーと値条件で構成されるディクショナリ値の配列。 各ルールには、最大 10 個の BLOB インデックス タグ条件を定義できます。 たとえば、ルールとして `https://myaccount.blob.core.windows.net/` の下にあるすべての BLOB を `Project = Contoso` に一致させたい場合、blobIndexMatch は `{"name": "Project","op": "==","value": "Contoso"}` になります。 | blobIndexMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。 | いいえ |
 
 > [!NOTE]
-> BLOB インデックスはパブリック プレビュー中であり、**カナダ中部**、**カナダ東部**、**フランス中部**、および**フランス南部**リージョンで利用できます。 この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
+> BLOB インデックスはパブリック プレビュー中であり、**カナダ中部**、**カナダ東部**、**フランス中部**、および **フランス南部** リージョンで利用できます。 この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
 
 ### <a name="rule-actions"></a>ルールのアクション
 
 実行条件が満たされている場合、アクションはフィルター処理された BLOB に適用されます。
 
-ライフサイクル管理では、BLOB の階層化と削除、および BLOB スナップショットの削除がサポートされています。 BLOB または BLOB スナップショットの各ルールに対して 1 つ以上のアクションを定義します。
+ライフサイクル管理では、BLOB、以前の BLOB バージョン、および BLOB スナップショットの階層化と削除がサポートされています。 ベース BLOB、以前の BLOB バージョン、または BLOB スナップショットの各ルールに対して 1 つ以上のアクションを定義します。
 
-| アクション        | ベース BLOB                                   | スナップショット      |
-|---------------|---------------------------------------------|---------------|
-| tierToCool    | 現在ホット層にある BLOB をサポートします         | サポートされていません |
-| tierToArchive | 現在ホット層またはクール層にある BLOB をサポートします | サポートされていません |
-| delete        | サポートされています                                   | サポートされています     |
+| アクション                      | ベース BLOB                                  | スナップショット      | Version
+|-----------------------------|--------------------------------------------|---------------|---------------|
+| tierToCool                  | `blockBlob` でサポート                  | サポートされています     | サポートされています     |
+| enableAutoTierToHotFromCool | `blockBlob` でサポート                  | サポートされていません | サポートされていません |
+| tierToArchive               | `blockBlob` でサポート                  | サポートされています     | サポートされています     |
+| delete                      | `blockBlob` および `appendBlob` に対してサポートされています | サポートされています     | サポートされています     |
 
 >[!NOTE]
 >同じ BLOB に複数のアクションを定義した場合、ライフサイクル管理によって最も低コストのアクションが BLOB に適用されます。 たとえば、`delete` アクションは `tierToArchive` アクションよりも低コストです。 `tierToArchive` アクションは `tierToCool` アクションよりも低コストです。
 
-実行条件は、古さに基づいています。 ベース BLOB では、最終変更時刻を使用して古さが追跡されます。BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
+実行条件は、古さに基づいています。 ベース BLOB では、最終変更時刻を使用し、BLOB バージョンではバージョン作成時刻を使用し、BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
 
-| アクションの実行条件             | 条件値                          | 説明                             |
-|----------------------------------|------------------------------------------|-----------------------------------------|
-| daysAfterModificationGreaterThan | 古さを日数で示す整数値 | ベース BLOB のアクションの条件     |
-| daysAfterCreationGreaterThan     | 古さを日数で示す整数値 | BLOB スナップショットのアクションの条件 |
+| アクションの実行条件               | 条件値                          | 説明                                                                      |
+|------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
+| daysAfterModificationGreaterThan   | 古さを日数で示す整数値 | ベース BLOB のアクションの条件                                              |
+| daysAfterCreationGreaterThan       | 古さを日数で示す整数値 | BLOB バージョンおよび BLOB スナップショットのアクションの条件                         |
+| daysAfterLastAccessTimeGreaterThan | 古さを日数で示す整数値 | (プレビュー) 最終アクセス日時が有効になっているときのベース BLOB アクションの条件 |
 
 ## <a name="examples"></a>例
 
@@ -348,12 +380,77 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 }
 ```
 
+### <a name="move-data-based-on-last-accessed-date-preview"></a>最終アクセス日付に基づいてデータを移動させる (プレビュー)
+
+最終アクセス時刻追跡機能を有効にして、BLOB が最後に読み書きされた時間を記録できます。 BLOB データの階層化と保持を管理するためのフィルターとして、最終アクセス時刻を使用できます。
+
+**[最終アクセス日時]** オプションは、次のリージョンにおいてプレビューで使用できます。
+
+ - フランス中部
+ - カナダ東部
+ - カナダ中部
+
+> [!IMPORTANT]
+> 最終アクセス時刻追跡プレビューは、非運用環境のみで使用されます。 運用環境のサービス レベル契約(SLA) は現在使用できません。
+
+**最終アクセス日時** オプションを使用するために、Azure portal の **ライフサイクル管理** ページで **アクセス追跡有効** を選択します。
+
+#### <a name="how-last-access-time-tracking-works"></a>最終アクセス時刻追跡機能のしくみ
+
+最終アクセス時刻追跡機能が有効になっている場合、BLOB が読み取られるか書き込まれるときに `LastAccessTime` という名前の BLOB プロパティが更新されます。 [Get Blob](/rest/api/storageservices/get-blob) 操作はアクセス操作と見なされます。 [BLOB プロパティの取得](/rest/api/storageservices/get-blob-properties)、[BLOB メタデータの取得](/rest/api/storageservices/get-blob-metadata)、および [BLOB タグの取得](/rest/api/storageservices/get-blob-tags)は、アクセス操作ではないので、最終アクセス時刻を更新しません。
+
+読み取りアクセス待ち時間への影響を最小限に抑えるために、過去 24 時間の最初の読み取りのみが最終アクセス時刻を更新します。 同じ 24 時間内のその後の読み取りでは、最終アクセス時刻は更新されません。 読み取り間で BLOB が変更された場合、最終アクセス時刻は 2 つの値のうち新しい方になります。
+
+次の例では、BLOB は、30 日間アクセスされない場合に、クール ストレージに移動されます。 `enableAutoTierToHotFromCool` プロパティはブール値であり、BLOB がクールに階層化された後で再びアクセスされた場合に自動的にクールからホットに階層化するかどうかを示します。
+
+```json
+{
+  "enabled": true,
+  "name": "last-accessed-thirty-days-ago",
+  "type": "Lifecycle",
+  "definition": {
+    "actions": {
+      "baseBlob": {
+        "enableAutoTierToHotFromCool": true,
+        "tierToCool": {
+          "daysAfterLastAccessTimeGreaterThan": 30
+        }
+      }
+    },
+    "filters": {
+      "blobTypes": [
+        "blockBlob"
+      ],
+      "prefixMatch": [
+        "mylifecyclecontainer/log"
+      ]
+    }
+  }
+}
+```
+
+#### <a name="storage-account-support"></a>ストレージ アカウントのサポート
+
+最終アクセス時刻追跡機能は、次の種類のストレージ アカウントで使用できます。
+
+ - 汎用 v2 ストレージ アカウント
+ - ブロック BLOB ストレージ アカウント
+ - BLOB ストレージ アカウント
+
+ストレージ アカウントが汎用 v1 アカウントの場合は、Azure portal を使用して、汎用 v2 アカウントにアップグレードします。
+
+階層型名前空間が Azure Data Lake Storage Gen2 で使用可能になっているストレージ アカウントがサポートされるようになりました。
+
+#### <a name="pricing-and-billing"></a>価格と課金
+
+最終アクセス時刻のそれぞれの更新は、[その他の操作](https://azure.microsoft.com/pricing/details/storage/blobs/)と見なされます。
+
 ### <a name="archive-data-after-ingest"></a>取り込み後にデータをアーカイブする
 
 また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 次のライフサイクル ポリシーは、取り込み直後にデータをアーカイブするように構成されます。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB をアーカイブ層に移行します。 この移行は、最終変更時刻の 0 日後に BLOB を処理することによって実現されます。
 
 > [!NOTE] 
-> より効率的な方法として、BLOB をアーカイブ層に直接アップロードすることをお勧めします。 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) または [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) の x-ms-access-tier ヘッダーを REST バージョン 2018-11-09 以降または最新の BLOB ストレージ クライアント ライブラリと使用できます。 
+> より効率的な方法として、BLOB をアーカイブ層に直接アップロードすることをお勧めします。 [PutBlob](/rest/api/storageservices/put-blob) または [PutBlockList](/rest/api/storageservices/put-block-list) の x-ms-access-tier ヘッダーを REST バージョン 2018-11-09 以降または最新の BLOB ストレージ クライアント ライブラリと使用できます。 
 
 ```json
 {
@@ -441,26 +538,35 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 }
 ```
 
-### <a name="delete-old-snapshots"></a>古いスナップショットを削除する
+### <a name="manage-versions"></a>バージョンの管理
 
-保存期間中に定期的に変更およびアクセスされるデータの場合、データの古いバージョンを追跡するためにスナップショットが使用されることがよくあります。 スナップショットの古さに基づいて古いスナップショットを削除するポリシーを作成できます。 スナップショットの古さは、スナップショットの作成時刻を評価することによって決定されます。 このポリシー ルールでは、スナップショットの作成時点から 90 日以上前の、コンテナー `activedata` 内のブロック BLOB のスナップショットを削除します。
+有効期間全体にわたって定期的に変更およびアクセスされるデータの場合は、BLOB ストレージのバージョン管理を有効にすることで、オブジェクトの以前のバージョンを自動的に管理できます。 ポリシーを作成して、以前のバージョンを階層化または削除することができます。 バージョンの古さは、バージョンの作成時刻を評価することによって決定されます。 このポリシー ルールは、バージョンの作成後 90 日以上経過したコンテナー `activedata` 内の以前のバージョンをクール層に階層化し、365 日またはそれ以前のバージョンを削除します。
 
 ```json
 {
   "rules": [
     {
-      "name": "snapshotRule",
       "enabled": true,
+      "name": "versionrule",
       "type": "Lifecycle",
-    "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "activedata" ]
-        },
+      "definition": {
         "actions": {
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "version": {
+            "tierToCool": {
+              "daysAfterCreationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterCreationGreaterThan": 365
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "activedata"
+          ]
         }
       }
     }
@@ -470,20 +576,23 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 ## <a name="faq"></a>よく寄せられる質問
 
-**新しいポリシーを作成しましたが、アクションがすぐに実行されないのはなぜですか。**  
-ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 ポリシーを構成した後、アクションによっては、初回実行時に最大 24 時間かかる場合があります。  
+**新しいポリシーを作成しましたが、アクションがすぐに実行されないのはなぜですか。**
 
-**既存のポリシーを更新した場合、アクションの実行にはどのくらいの時間がかかりますか。**  
-更新されたポリシーは、有効になるまで最大 24 時間かかります。 ポリシーが有効になると、アクションが実行されるまでに最大で 24 時間かかることがあります。 このため、ポリシーのアクションが完了するまでに最大 48 時間かかる可能性があります。   
+ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 ポリシーを構成した後、アクションによっては、初回実行時に最大 24 時間かかる場合があります。
 
-**アーカイブ済み BLOB を手動でリハイドレートしました。これが一時的にアーカイブ層に戻されないようにするにはどうすればよいですか。**  
+**既存のポリシーを更新した場合、アクションの実行にはどのくらいの時間がかかりますか。**
+
+更新されたポリシーは、有効になるまで最大 24 時間かかります。 ポリシーが有効になると、アクションが実行されるまでに最大で 24 時間かかることがあります。 このため、ポリシーのアクションが完了するまでに最大 48 時間かかる可能性があります。
+
+**アーカイブ済み BLOB を手動でリハイドレートしました。これが一時的にアーカイブ層に戻されないようにするにはどうすればよいですか。**
+
 あるアクセス層から別のアクセス層に BLOB が移動されても、その BLOB の最終変更時刻は変わりません。 アーカイブ済み BLOB を手動でホット層にリハイドレートすると、その BLOB は、ライフサイクル管理エンジンによりアーカイブ層に戻されます。 この BLOB に影響を与えるルールを一時的に無効にして、再びアーカイブされないようにします。 BLOB が安全にアーカイブ層に移動されたら、ルールを再度有効にします。 BLOB を別の場所にコピーして、ホット層またはクール層から永続的に離れないようにすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
 誤って削除したデータを回復する方法を学習します。
 
-- [Azure Storage Blob の論理的な削除](../blobs/storage-blob-soft-delete.md)
+- [Azure Storage Blob の論理的な削除](./soft-delete-blob-overview.md)
 
 BLOB インデックスを使用してデータを管理および検索する方法について説明します。
 

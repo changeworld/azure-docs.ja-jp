@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
-ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965010"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90908036"
 ---
 # <a name="edit-metadata-module"></a>Edit Metadata (メタデータの編集) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) に含まれるモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーに含まれるモジュールについて説明します。
 
 Edit Metadata (メタデータの編集) モジュールを使用して、データセット内の列に関連付けられているメタデータを変更します。 Edit Metadata (メタデータの編集) モジュールの使用後、データセットの値とデータ型が変更されます。
 

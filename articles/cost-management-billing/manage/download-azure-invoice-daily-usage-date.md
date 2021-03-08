@@ -7,15 +7,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/28/2020
 ms.author: banders
-ms.openlocfilehash: a3930698bb2999ebaad4d78e0b545b83cc968ef2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e380aa1f4d50e6ced34254ceca9d899022142f6d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690036"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911292"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 
@@ -41,7 +41,7 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 
     ![Screenshot that shows the Billing & usage option](./media/download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. [ダウンロード] ボタンをクリックして、PDF 請求書のコピーをダウンロードし、 **[請求書のダウンロード]** を選択します。 "**使用できません**" というメッセージが表示される場合は、「[前回の請求期間の請求書が表示されない理由](#noinvoice)」を参照してください。
+3. [ダウンロード] ボタンをクリックして、PDF 請求書のコピーをダウンロードし、 **[請求書のダウンロード]** を選択します。 " **使用できません** " というメッセージが表示される場合は、「 [前回の請求期間の請求書が表示されない理由](#noinvoice)」を参照してください。
 
     ![Screenshot that shows billing periods, the download option, and total charges for each billing period](./media/download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
@@ -49,20 +49,20 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 
     ![請求書と使用状況のダウンロード ページを示すスクリーンショット](./media/download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
-請求書の詳細については、「[Microsoft Azure の課金内容の確認](../understand/review-individual-bill.md)」をご覧ください。 コスト管理に関するヘルプについては、[Azure の課金とコスト管理で想定外の料金を防ぐ](getting-started.md)方法に関するページを参照してください。
+請求書の詳細については、「[Microsoft Azure の課金内容の確認](../understand/review-individual-bill.md)」をご覧ください。 コスト管理のヘルプについては、「[想定外の料金を分析する](../understand/analyze-unexpected-charges.md)」を参照してください。
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求書のダウンロード
 
 請求書は、Microsoft の顧客契約の[課金プロファイル](../understand/mca-overview.md#billing-profiles)ごとに生成されます。 Azure portal から請求書をダウンロードするには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。
 
-1. "**コスト管理 + 請求**" を検索します。
+1. " **コスト管理 + 請求** " を検索します。
 2. 課金プロファイルを選択します。
 3. **[請求書]** を選択します。
 4. 請求書グリッドで、ダウンロードする請求書の行を探します。
 5. 行の末尾にある [ダウンロード] ボタンをクリックします。
 6. ダウンロードのコンテキスト メニューで、 **[請求書]** を選択します。
 
-最後の請求期間の請求書が表示されない場合は、**追加情報**に関するページを参照してください。 <!-- Fix this -->
+最後の請求期間の請求書が表示されない場合は、 **追加情報** に関するページを参照してください。 <!-- Fix this -->
 ### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> 前回の請求期間の請求書が表示されない理由
 
 請求書が表示されない理由はいくつか考えられます。
@@ -105,7 +105,7 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 
 Microsoft 顧客契約を結んでいる場合は、メールの請求書の取得をオプトインできます。 すべての課金プロファイルの所有者、共同作成者、閲覧者、および請求書管理者が、メールで請求書を取得します。 閲覧者は、メールの請求書の設定を更新できません。
 
-1. "**コスト管理 + 請求**" を検索します。
+1. " **コスト管理 + 請求** " を検索します。
 1. 課金プロファイルを選択します。
 1. **[設定]** で **[プロパティ]** を選択します。
 1. **[請求書を電子メールで送信]** で、 **[請求書を電子メールで送信の設定の更新]** を選択します。
@@ -135,10 +135,8 @@ Microsoft 顧客契約を結んでいる場合は、メールの請求書の取�
 EA のお客様として使用量データを表示およびダウンロードするには、料金表示ポリシーが有効になっているエンタープライズ管理者、アカウント所有者、または部門管理者である必要があります。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. "*コスト管理 + 請求*" を検索します。
-
-    ![Azure portal の検索を表示するスクリーンショット](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
-
+1. " *コスト管理 + 請求* " を検索します。
+1. 複数の課金アカウントにアクセスできる場合、ご自分の EA 課金アカウントの課金スコープを選択します。
 1. **[使用量 + 請求金額]** を選択します。
 1. ダウンロードしたい月で、 **[ダウンロード]** を選択します。
 
@@ -148,7 +146,7 @@ EA のお客様として使用量データを表示およびダウンロード�
 
 #### <a name="download-usage-for-billed-charges"></a>課金された料金の使用量のダウンロード
 
-1. "**コスト管理 + 請求**" を検索します。
+1. " **コスト管理 + 請求** " を検索します。
 2. 課金プロファイルを選択します。
 3. **[請求書]** を選択します。
 4. 請求書グリッドで、ダウンロードする使用量に対応する請求書の行を探します。
@@ -159,16 +157,12 @@ EA のお客様として使用量データを表示およびダウンロード�
 
 現在の請求期間の月度累計使用量 (料金がまだ課金されていないことを意味します) もダウンロードできます。
 
-1. "**コスト管理 + 請求**" を検索します。
+1. " **コスト管理 + 請求** " を検索します。
 2. 課金プロファイルを選択します。
 3. **[概要]** ブレードで **[Azure の利用状況と請求金額をダウンロードする]** をクリックします。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
-
-ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
 

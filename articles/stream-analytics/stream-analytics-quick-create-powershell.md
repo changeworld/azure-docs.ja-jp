@@ -1,18 +1,18 @@
 ---
 title: クイックスタート - Azure PowerShell を使用して Stream Analytics ジョブを作成する
 description: このクイック スタートでは、Azure PowerShell モジュールを使用して Azure Stream Analytics ジョブをデプロイおよび実行する方法を示します。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 997d74b1afc59e72b2c3fe7a7d47166d5efb8715
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 377abef31dbc4364f37161194923bbf74d272d80
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072980"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012293"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Stream Analytics ジョブを作成する
 
@@ -26,9 +26,9 @@ Azure PowerShell モジュールは、PowerShell コマンドレットまたは�
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* このクイック スタートには、Azure PowerShell モジュールが必要です。 ローカル マシンにインストールされているバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。
+* このクイック スタートには、Azure PowerShell モジュールが必要です。 ローカル マシンにインストールされているバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
-* 一部の IoT Hub アクションは Azure PowerShell でサポートされていないため、Azure CLI バージョン 2.0.70 以降および Azure CLI の IoT 拡張機能を使用して完了する必要があります。 [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)し、`az extension add --name azure-iot` を使用して IoT 拡張機能をインストールします。
+* 一部の IoT Hub アクションは Azure PowerShell でサポートされていないため、Azure CLI バージョン 2.0.70 以降および Azure CLI の IoT 拡張機能を使用して完了する必要があります。 [Azure CLI をインストール](/cli/azure/install-azure-cli)し、`az extension add --name azure-iot` を使用して IoT 拡張機能をインストールします。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -52,7 +52,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
@@ -68,9 +68,9 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 次の Azure CLI コード ブロックでは、ジョブに必要な入力データを準備するための多くのコマンドが実行されます。 コードを理解するためにセクションを確認してください。
 
-1. PowerShell ウィンドウで [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) コマンドを実行して、ご利用の Azure アカウントにサインインします。
+1. PowerShell ウィンドウで [az login](/cli/azure/authenticate-azure-cli) コマンドを実行して、ご利用の Azure アカウントにサインインします。
 
-    サインインに成功すると、Azure CLI からサブスクリプションの一覧が返されます。 このクイック スタートに使用しているサブスクリプションをコピーし、[az account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) コマンドを実行してそのサブスクリプションを選択します。 PowerShell を使用した前のセクションで選択したのと同じサブスクリプションを選択します。 `<your subscription name>` は、必ず実際のサブスクリプションの名前に置き換えてください。
+    サインインに成功すると、Azure CLI からサブスクリプションの一覧が返されます。 このクイック スタートに使用しているサブスクリプションをコピーし、[az account set](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription) コマンドを実行してそのサブスクリプションを選択します。 PowerShell を使用した前のセクションで選択したのと同じサブスクリプションを選択します。 `<your subscription name>` は、必ず実際のサブスクリプションの名前に置き換えてください。
 
     ```azurecli
     az login
@@ -84,7 +84,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    IoT ハブが作成されたら、[az iot hub show-connection-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) コマンドを使用して IoT ハブの接続文字列を取得します。 IoT ハブを Stream Analytics ジョブへの入力として追加するときに備えて、接続文字列全体をコピーして保存します。
+    IoT ハブが作成されたら、[az iot hub show-connection-string](/cli/azure/iot/hub) コマンドを使用して IoT ハブの接続文字列を取得します。 IoT ハブを Stream Analytics ジョブへの入力として追加するときに備えて、接続文字列全体をコピーして保存します。
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -112,11 +112,11 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 次の Azure PowerShell コード ブロックでは、コマンドを使用して、ジョブの出力に使用される BLOB ストレージを作成します。 コードを理解するためにセクションを確認してください。
 
-1. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) コマンドレットを使用して、標準の汎用ストレージ アカウントを作成します。  この例では、ローカル冗長ストレージ (LRS) と BLOB 暗号化 (既定で有効) を使用する、**myasaquickstartstorage** と呼ばれるストレージ アカウントを作成します。
+1. [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) コマンドレットを使用して、標準の汎用ストレージ アカウントを作成します。  この例では、ローカル冗長ストレージ (LRS) と BLOB 暗号化 (既定で有効) を使用する、**myasaquickstartstorage** と呼ばれるストレージ アカウントを作成します。
 
 2. 使用されるストレージ アカウントを定義するストレージ アカウント コンテキスト `$storageAccount.Context` を取得します。 ストレージ アカウントを操作するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。
 
-3. [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) を使用して、ストレージ コンテナーを作成します。
+3. [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) を使用して、ストレージ コンテナーを作成します。
 
 4. コードによって出力されたストレージ キーをコピーし、そのキーを保存します。これは、後でストリーミング ジョブの出力を作成するために使用します。
 
@@ -146,7 +146,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-[New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) コマンドレットを使用して、Stream Analytics ジョブを作成します。 このコマンドレットは、パラメーターとしてジョブ名、リソース グループ名、およびジョブ定義を受け取ります。 ジョブ名は、ジョブを識別する任意のフレンドリ名にすることができます。 これには英数字、ハイフン、アンダースコアのみを使用できます。長さは 3 文字以上 63 文字以下でなければなりません。 ジョブ定義は、ジョブの作成に必要なプロパティを含む JSON ファイルです。 ローカル マシンに `JobDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。
+[New-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) コマンドレットを使用して、Stream Analytics ジョブを作成します。 このコマンドレットは、パラメーターとしてジョブ名、リソース グループ名、およびジョブ定義を受け取ります。 ジョブ名は、ジョブを識別する任意のフレンドリ名にすることができます。 これには英数字、ハイフン、アンダースコアのみを使用できます。長さは 3 文字以上 63 文字以下でなければなりません。 ジョブ定義は、ジョブの作成に必要なプロパティを含む JSON ファイルです。 ローカル マシンに `JobDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。
 
 ```json
 {
@@ -176,7 +176,7 @@ New-AzStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>ジョブへの入力を構成する
 
-[New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) コマンドレットを使用して、ジョブへの入力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ入力名、リソース グループ名、およびジョブ入力定義を受け取ります。 ジョブ入力定義は、ジョブの入力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを入力として作成します。
+[New-AzStreamAnalyticsInput](/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) コマンドレットを使用して、ジョブへの入力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ入力名、リソース グループ名、およびジョブ入力定義を受け取ります。 ジョブ入力定義は、ジョブの入力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを入力として作成します。
 
 ローカル マシンに `JobInputDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。 `accesspolicykey` の値は必ず、前のセクションで保存した IoT ハブの接続文字列の `SharedAccessKey` 部分に置き換えてください。
 
@@ -223,7 +223,7 @@ New-AzStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>ジョブへの出力を構成する
 
-[New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) コマンドレットを使用して、ジョブへの出力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ出力名、リソース グループ名、およびジョブ出力定義を受け取ります。 ジョブ出力定義は、ジョブの出力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを出力として使用します。
+[New-AzStreamAnalyticsOutput](/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) コマンドレットを使用して、ジョブへの出力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ出力名、リソース グループ名、およびジョブ出力定義を受け取ります。 ジョブ出力定義は、ジョブの出力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを出力として使用します。
 
 ローカル マシンに `JobOutputDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。 `accountKey` の値は、ストレージ アカウントのアクセス キー ($storageAccountKey 値に格納されている値) に置き換えてください。
 
@@ -272,7 +272,7 @@ New-AzStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>変換クエリを定義する
 
-[New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) コマンドレットを使用して、ジョブの変換を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ変換名、リソース グループ名、およびジョブ変換定義を受け取ります。 ローカル マシンに `JobTransformationDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。 JSON ファイルには、変換クエリを定義するクエリ パラメーターが含まれています。
+[New-AzStreamAnalyticsTransformation](/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) コマンドレットを使用して、ジョブの変換を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ変換名、リソース グループ名、およびジョブ変換定義を受け取ります。 ローカル マシンに `JobTransformationDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。 JSON ファイルには、変換クエリを定義するクエリ パラメーターが含まれています。
 
 ```json
 {
@@ -310,7 +310,7 @@ New-AzStreamAnalyticsTransformation `
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics ジョブを開始して出力をチェックする
 
-[Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) コマンドレットを使用して、ジョブを開始します。 このコマンドレットは、パラメーターとして、ジョブ名、リソース グループ名、出力開始モード、および開始時刻を受け取ります。 `OutputStartMode` には、`JobStartTime`、`CustomTime`、または `LastOutputEventTime` の値が使用できます。 これらの値がそれぞれ何を意味しているかについては、PowerShell ドキュメントの[パラメーター](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)に関するセクションを参照してください。
+[Start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) コマンドレットを使用して、ジョブを開始します。 このコマンドレットは、パラメーターとして、ジョブ名、リソース グループ名、出力開始モード、および開始時刻を受け取ります。 `OutputStartMode` には、`JobStartTime`、`CustomTime`、または `LastOutputEventTime` の値が使用できます。 これらの値がそれぞれ何を意味しているかについては、PowerShell ドキュメントの[パラメーター](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)に関するセクションを参照してください。
 
 次のコマンドレットを実行すると、ジョブが開始されたときに出力として `True` が返されます。 変換されたデータが含まれた出力フォルダーがストレージ コンテナーに作成されます。
 

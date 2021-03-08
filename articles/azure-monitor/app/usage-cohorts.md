@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c35356951560b11a605334aba4c26dbc38086de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671088"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583549"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights コーホート
 
@@ -28,7 +28,7 @@ ms.locfileid: "77671088"
 > [!NOTE]
 > コーホートが作成されたら、ユーザー、セッション、イベント、ユーザー フローの各ツールからコーホートを利用できます。
 
-## <a name="example-engaged-users"></a>例:関心度の高いユーザー
+## <a name="example-engaged-users"></a>例: 関心度の高いユーザー
 
 チームでは、特定の月間に対象のアプリを 5 回以上使用したユーザーを関心度の高いユーザーとして定義しています。 このセクションでは、このような関心度の高いユーザーのコーホートを定義します。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77671088"
     * **期間**: 月の定義です。
     * **UsedAtLeastCustom**: 関心度が高いとしてカウントするために、ユーザーが期間内に何かを使用する必要がある回数。
 
-4. **UsedAtLeastCustom** を **5 日以上**に変更し、 **[期間]** を既定値の 28 日のままとします。
+4. **UsedAtLeastCustom** を **5 日以上** に変更し、 **[期間]** を既定値の 28 日のままとします。
 
     ![関心度の高いユーザー](./media/usage-cohorts/003.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "77671088"
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>このコーホートを使用して行えること
 
-ユーザー ツールを開きます。 **[表示]** ドロップダウン ボックスから、 **[Users who belong to]\(属するユーザー)** で作成したコーホートを選択します。
+ユーザー ツールを開きます。 **[表示]** ドロップダウン ボックスから、**[Users who belong to]\(属するユーザー)** で作成したコーホートを選択します。
 
 これで、ユーザー ツールはフィルター処理され、ユーザーに関するこのコーホートだけが表示されます。
 
@@ -71,7 +71,7 @@ ms.locfileid: "77671088"
 
 これらのフィルターは、クエリ ビルダーによって表現できないより高度な質問をサポートします。 たとえば、_過去 28 日間で関心が高かったユーザーがいるとします。それらの同じユーザーが過去 60 日間でどのような行動をしていたでしょうか。_
 
-## <a name="example-events-cohort"></a>例:イベントのコーホート
+## <a name="example-events-cohort"></a>例: イベントのコーホート
 
 イベントのコーホートを作成することもできます。 このセクションでは、イベントとページ ビューのコホートを定義します。 次に、他のツールからそれらを使用する方法を確認します。 このコホートは、チームによって _アクティブな使用_ と見なされるイベント セットや特定の新機能に関連するイベント セットを定義できます。
 
@@ -87,13 +87,13 @@ ms.locfileid: "77671088"
 
 5. コーホートを保存し、名前を付けます。
 
-## <a name="example-active-users-where-you-modify-a-query"></a>例:クエリを修正するアクティブ ユーザー
+## <a name="example-active-users-where-you-modify-a-query"></a>例: クエリを修正するアクティブ ユーザー
 
 前の 2 つのコーホートは、ドロップダウン ボックスを使用して定義されました。 ただし、全体的な柔軟性を高めるために分析クエリを使用してコーホートを定義することもできます。 方法を確認するために、英国のユーザーのコーホートを作成します。
 
 ![コーホート ツールの使い方を順を追って示すアニメーション画像](./media/usage-cohorts/cohorts0001.gif)
 
-1. コーホート ツールを開き、 **[テンプレート ギャラリー]** タブを選択して、 **[Blank Users cohort]\(空のユーザーのコーホート)** を選択します。
+1. コーホート ツールを開き、**[テンプレート ギャラリー]** タブを選択して、**[Blank Users cohort]\(空のユーザーのコーホート)** を選択します。
 
     ![空のユーザーのコーホート](./media/usage-cohorts/001.png)
 
@@ -131,7 +131,7 @@ _特定の国や地域からのユーザーのコーホートを定義しまし�
 
 ## <a name="learn-more"></a>詳細情報
 
-* [Analytics クエリ言語](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Analytics クエリ言語](../logs/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [ユーザー、セッション、イベント](usage-segmentation.md)
 * [ユーザー フロー](usage-flows.md)
 * [利用状況の概要](usage-overview.md)

@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces による Azure Kubernetes Service でのリモート デバッグのプロセスについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0487b80d23974a66bafe93ee1fbdf9b796d0ab53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213393"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975044"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Azure Dev Spaces でのコードのリモート デバッグのしくみ
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復処理してデバッグし、Azure Kubernetes Service (AKS) クラスターでチームと共同作業を行うための複数の方法が用意されています。 開発スペースでプロジェクトを実行すると、Azure Dev Spaces により AKS で実行中のアプリケーションをアタッチしてデバッグする手段が提供されます。
 

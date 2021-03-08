@@ -3,17 +3,17 @@ title: コストのアラートで使用量と支出を監視する
 description: この記事では、Azure Cost Management のコストのアラートが使用量と支出の監視にどのように役立つのかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 09/03/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: aeeb630cf15aedd62c085e2070e08fd223656094
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d1546ef92d923b9d72c4aca0ddf61d2b93646656
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683438"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602341"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>コストのアラートを使用して使用量と支出を監視する
 
@@ -21,21 +21,23 @@ ms.locfileid: "88683438"
 
 ## <a name="budget-alerts"></a>予算アラート
 
-予算アラートでは、使用量とコストに基づいて、[予算のアラート条件](tutorial-acm-create-budgets.md)で定義されている額に支出が達するか、それを超えると、通知されます。 Cost Management の予算は、Azure portal または [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) API を使用して作成します。
+予算アラートでは、使用量とコストに基づいて、[予算のアラート条件](tutorial-acm-create-budgets.md)で定義されている額に支出が達するか、それを超えると、通知されます。 Cost Management の予算は、Azure portal または [Azure Consumption](/rest/api/consumption) API を使用して作成します。
 
 Azure portal では、予算はコストによって定義されます。 Azure Consumption API を使用する場合は、コストまたは消費量を使用して予算を定義します。 予算アラートでは、コスト ベースと使用量ベースの両方の予算がサポートされています。 予算アラートは、予算アラート条件が満たされると常に自動的に生成されます。 Azure portal では、すべてのコストのアラートを表示できます。 アラートが生成されるたびに、コストのアラートに表示されます。 予算のアラート受信者一覧のユーザーに、アラート メールも送信されます。
 
+Budget API を使用して、別の言語で電子メール アラートを送信できます。 詳細については、「[予算のアラート メールでサポートされているロケール](manage-automation.md#supported-locales-for-budget-alert-emails)」を参照してください。
+
 ## <a name="credit-alerts"></a>クレジット アラート
 
-クレジット アラートでは、Azure クレジットの年額コミットメントが消費されると、通知されます。 年額コミットメントは、Enterprise Agreement を使用する組織用です。 クレジット アラートは、Azure クレジットの使用量が 90% および 100% になると自動的に生成されます。 アラートが生成されるたびに、コストのアラートに反映され、アカウントの所有者にメールが送信されます。
+Azure 前払い (旧称: 年額コミットメント) が消費されるとクレジット アラートによって通知されます。 Azure 前払いは、マイクロソフト エンタープライズ契約を使用する組織用です。 クレジット アラートは、Azure 前払いクレジットの使用量が 90% および 100% になると自動的に生成されます。 アラートが生成されるたびに、コストのアラートと、アカウント所有者に送信される電子メールに反映されます。
 
 ## <a name="department-spending-quota-alerts"></a>部署課金クォータ アラート
 
-部署課金クォータ アラートでは、部署の支出がクォータの固定しきい値に達すると、通知されます。 課金クォータは、EA ポータルで構成します。 しきい値に達するたびに、部署の所有者へのメールが生成され、コストのアラートに表示されます。 たとえば、クォータの 50% や 75% などです。
+部署課金クォータ アラートでは、部門の課金がクォータの固定しきい値に達すると通知されます。 課金クォータは EA ポータルで構成されます。 しきい値に達すると、部署の所有者に対して電子メールが生成され、コストのアラートに表示されます。 たとえば、クォータの 50% や 75% などです。
 
-## <a name="supported-alert-features-by-offer-categories"></a>オファー カテゴリ別にサポートされているアラート機能
+## <a name="supported-alert-features-by-offer-categories"></a>プランのカテゴリ別のサポートされているアラート機能
 
-アラート タイプのサポートは、所有している Azure アカウント (Microsoft がオファーする) の種類によって異なります。 次の表は、Microsoft の各種オファーでサポートされているアラート機能を示します。 Microsoft オファーの詳細な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」で確認できます。
+サポートされているアラートの種類は、使用している Azure アカウントの種類 (Microsoft プラン) によって異なります。 次の表は、Microsoft の各種オファーでサポートされているアラート機能を示します。 Microsoft オファーの詳細な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」で確認できます。
 
 | アラートの種類 | Enterprise Agreement | Microsoft 顧客契約 | Web ダイレクト/従量課金制 |
 |---|---|---|---|
@@ -47,24 +49,24 @@ Azure portal では、予算はコストによって定義されます。 Azure 
 
 ## <a name="view-cost-alerts"></a>コストのアラートを表示する
 
-コストのアラートを表示表示するには、Azure portal で目的のスコープを開き、メニューの **[予算]** を選択します。 別のスコープに切り替えるには、 **[スコープ]** ピルを使用します。 メニューの **[コストのアラート]** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
+コストのアラートを表示するには、Azure portal で目的のスコープを開き、メニューの **[予算]** を選択します。 別のスコープに切り替えるには、**[スコープ]** ピルを使用します。 メニューの **[コストのアラート]** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 ![Cost Management に表示されるアラートの例の画像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 
-アクティブなアラートと無視されたアラートの合計数が、コストのアラート ページに表示されます。
+コストのアラート ページに、アクティブなアラートと無視したアラートの合計数が表示されます。
 
-すべてのアラートに、アラートの種類が表示されます。 予算アラートには、生成された理由と、適用される予算の名前が表示されます。 各アラートには、生成された日付、状態、およびアラートが適用されるスコープ (サブスクリプションまたは管理グループ) が表示されます。
+すべてのアラートには、アラートの種類が表示されます。 予算アラートには、生成された理由と、適用される予算の名前が表示されます。 各アラートには、生成された日付、状態、およびアラートが適用されるスコープ (サブスクリプションまたは管理グループ) が表示されます。
 
-表示される可能性のある状態は、**アクティブ**と**無視**です。 アクティブ状態は、アラートがまだ関連していることを示します。 無視状態は、そのアラートはもう関係がなくなったと誰かがマークしたことを示します。
+表示される可能性のある状態は、**アクティブ** と **無視** です。 アクティブ状態は、アラートが引き続き関連性があることを示します。 無視状態は、他のユーザーがアラートをマークして、関連性がなくなったものとして設定したことを示します。
 
-詳細を表示するには、一覧からアラートを選択します。 [アラートの詳細] にアラートについての詳細が表示されます。 予算アラートには、予算へのリンクが含まれます。 予算アラートに推奨事項がある場合、推奨事項へのリンクも表示されます。 予算、クレジット、部署課金クォータの各アラートには、アラートのスコープについてコストを調べることができるコスト分析へのリンクがあります。 次の例では、アラートの詳細で部門の支出が示されています。
+詳細を表示するアラートを一覧から選択してください。 アラートの詳細には、アラートに関する詳細情報が表示されます。 予算アラートには、予算へのリンクが含まれます。 予算アラートに対する推奨事項がある場合は、推奨事項へのリンクも表示されます。 予算、クレジット、部署課金クォータの各アラートには、アラートのスコープについてコストを調べることができるコスト分析へのリンクがあります。 次の例では、アラートの詳細で部門の支出が示されています。
 
 ![アラートの詳細で部門の支出が示されている例の画像](./media/cost-mgt-alerts-monitor-usage-spending/dept-spending-selected-with-credits.png)
 
-無視したアラートの詳細を表示したとき、手動アクションが必要な場合は、再度アクティブにすることができます。 次に例を示します。
+無視したアラートの詳細を表示したとき、手動アクションが必要な場合は、再度アクティブにすることができます。 次のイメージは一例を示しています。
 
 ![無視と再アクティブ化のオプションが示されている例の画像](./media/cost-mgt-alerts-monitor-usage-spending/Dismiss-reactivate-options.png)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>こちらもご覧ください
 
 - 予算をまだ作成していない場合、または予算のアラート条件をまだ設定していない場合は、「[Azure の予算を作成して管理する](tutorial-acm-create-budgets.md)」チュートリアルを行ってください。

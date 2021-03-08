@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516002"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234207"
 ---
 # <a name="azure-for-network-engineers"></a>ネットワーク エンジニア向けの Azure
 従来のネットワーク エンジニアは、ルーター、スイッチ、ケーブル、ファイアウォールなどの物理的な資産を基盤とするインフラストラクチャの構築に取り組んできました。 論理層には、仮想 LAN (VLAN)、スパニング ツリー プロトコル (STP)、ルーティング プロトコル (RIP、OSPF、BGP) を構成していました。 ネットワークの管理には、管理ツールと CLI を使用していました。 クラウドでのネットワークは、ネットワーク エンドポイントが論理的であり、ルーティング プロトコルの使用が最小である場合とは異なります。 今後、Azure で資産を構成および管理するためには、Azure Resource Manager API、Azure CLI、および PowerShell を使用することになります。 Azure ネットワークの基本的なテナントを理解することで、クラウドでのネットワークの取り組みを開始します。 
@@ -67,7 +67,7 @@ IP アドレスをホストに割り当てる場合は、実際に IP をネッ�
 
 ## <a name="security"></a>セキュリティ
 
-仮想ネットワーク内のリソースが送受信するネットワーク トラフィックを、ネットワーク セキュリティ グループを使ってフィルター処理できます。 また、Azure Firewall や他のベンダーの ファイアウォールなどのネットワーク仮想アプライアンス (NVA) を使用することもできます。 サブネットからのトラフィックを Azure がルーティングする方法を制御できます。 また、仮想ネットワーク内のリソースを使用できる組織内のユーザーを制限することもできます。
+仮想ネットワーク内のリソースが送受信するネットワーク トラフィックを、ネットワーク セキュリティ グループを使ってフィルター処理できます。 また、Azure Firewall や他のベンダーのファイアウォールなどのネットワーク仮想アプライアンス (NVA) を使用することもできます。 サブネットからのトラフィックを Azure がルーティングする方法を制御できます。 また、仮想ネットワーク内のリソースを使用できる組織内のユーザーを制限することもできます。
 
 ネットワーク セキュリティ グループ (NSG) には、サブネット、NIC、またはその両方に対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) ルールが含まれています。 NSG は、サブネットかサブネットに接続された個々の NIC に関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL ルールはそのサブネット内のすべての VM に適用されます。 また、NSG を直接 NIC に関連付けることによって、個々の NIC に対するトラフィックを制限できます。
 
@@ -88,7 +88,6 @@ NSG には受信と送信の 2 つのルール セットがあります。 ル�
 [ネットワーク セキュリティ グループ][network-security]について確認します。
 
 <!--Link References-->
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[vnet-routing]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview
-[network-security]: https://docs.microsoft.com/azure/virtual-network/security-overview
-
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[vnet-routing]: ../virtual-network/virtual-networks-udr-overview.md
+[network-security]: ../virtual-network/network-security-groups-overview.md

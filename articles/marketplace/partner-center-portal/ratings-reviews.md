@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7b64ce907cd68d1d6850f90df49b347f3b0270d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304192"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461009"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>パートナー センターの評価とレビューの分析ダッシュボード
 
@@ -22,18 +22,18 @@ ms.locfileid: "87304192"
 - レビューは、Azure Marketplace または AppSource のオファーの製品表示ページにある [レビュー] タブに投稿されます。 顧客は、自分の名前を含めることも、匿名で投稿することもできます。  
 
 >[!NOTE]
-> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](./faq-terminology.md)」を参照してください。
+> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](../analytics-faq.md)」を参照してください。
 
 ## <a name="access-the-dashboard"></a>ダッシュボードにアクセスする
 
-パートナー センターの[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** セクションを展開し、 **[評価とレビュー]** を選択します。
+パートナー センターの [コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** セクションを展開し、 **[評価とレビュー]** を選択します。
 
 ダッシュボードには、以下のカスタム アクティビティがグラフィカルに表示されます。
 
 - 評価とレビュー  
 - レビュー コメント
 
-**Marketplace のネットショップ**のタブを使用して、Microsoft AppSource と Azure Marketplace でのオファーのメトリックを個別に表示します。 特定のオファーのメトリックを表示するには、ドロップダウン リストからそのオファーを選択します。
+**Marketplace の分析情報** のタブを使用して、Microsoft AppSource と Azure Marketplace でのオファーのメトリックを個別に表示します。 特定のオファーのメトリックを表示するには、ドロップダウン リストからそのオファーを選択します。
 
 ### <a name="ratings--reviews-summary"></a>評価とレビューの概要
 
@@ -48,16 +48,16 @@ ms.locfileid: "87304192"
 
 ### <a name="review-comments"></a>レビュー コメント
 
-レビューは、投稿された日時の順に表示されます。 既定のビューにはすべてのレビューが表示され、ドロップダウン メニューの**評価フィルター**を使用して、星評価でレビューをフィルター処理できます。 さらに、レビューに出現するキーワードで検索することもできます。  
+レビューは、投稿された日時の順に表示されます。 既定のビューにはすべてのレビューが表示され、ドロップダウン メニューの **評価フィルター** を使用して、星評価でレビューをフィルター処理できます。 さらに、レビューに出現するキーワードで検索することもできます。  
 
 ![パートナー センターのレビュー コメントの分析](./media/analyze-reviews.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 - パートナー センターのコマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析](./analytics.md)」を参照してください。
-- オファーのマーケットプレース アクティビティを要約した集計データのグラフ、傾向、値については、「[コマーシャル マーケットプレース分析の概要ダッシュボード](./summary-dashboard.md)」を参照してください。
-- グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](./orders-dashboard.md)」を参照してください。
-- 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
-- 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](./customer-dashboard.md)」を参照してください。
+- オファーのマーケットプレース アクティビティを要約した集計データのグラフ、傾向、値については、「[コマーシャル マーケットプレース分析の概要ダッシュボード](../summary-dashboard.md)」を参照してください。
+- グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](../orders-dashboard.md)」を参照してください。
+- 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](../usage-dashboard.md)」を参照してください。
+- 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](../customer-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./downloads-dashboard.md)」を参照してください。
-- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](./faq-terminology.md)」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](../analytics-faq.md)」を参照してください。

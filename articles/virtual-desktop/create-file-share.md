@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825445"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746814"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure Files および AD DS を使用してプロファイル コンテナーを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "88825445"
 
 1. Azure portal にサインインします。
 
-2. 検索バーで「**ストレージ アカウント**」を検索します。
+2. 検索バーで「 **ストレージ アカウント** 」を検索します。
 
 3. **[+追加]** を選択します。
 
@@ -58,7 +58,7 @@ ms.locfileid: "88825445"
 
 2. [概要] ページで **[ファイル共有]** を選択します。
 
-3. **[+ ファイル共有]** を選択し、**profiles** という名前の新しいファイル共有を作成したら、適切なクォータを入力するか、フィールドを空のまま (クォータなし) にしておきます。
+3. **[+ ファイル共有]** を選択し、 **profiles** という名前の新しいファイル共有を作成したら、適切なクォータを入力するか、フィールドを空のまま (クォータなし) にしておきます。
 
 4. **［作成］** を選択します
 
@@ -68,7 +68,7 @@ ms.locfileid: "88825445"
 
 1. ドメイン参加済みの VM に、リモート デスクトップ プロトコルを使って接続します。
 
-2. [Azure ファイル共有に Azure AD DS 認証を有効にする](../storage/files/storage-files-identity-ad-ds-enable.md)方法を説明したページの手順に従い、AzFilesHybrid モジュールをインストールして認証を有効にします。
+2. [Azure ファイル共有に AD DS 認証を有効にする](../storage/files/storage-files-identity-ad-ds-enable.md)方法を説明したページの手順に従い、AzFilesHybrid モジュールをインストールして認証を有効にします。
 
 3.  Azure portal を開き、ストレージ アカウントを開いて **[構成]** を選択したら、 **[Active Directory (AD)]** が **[有効]** に設定されていることを確認します。
 
@@ -86,7 +86,7 @@ Windows Virtual Desktop セッション ホストにサインインするユー�
 >[!NOTE]
 >アクセス許可を割り当てるアカウントまたはグループは、ドメイン内に作成したもので、かつ、Azure AD と同期している必要があります。 Azure AD に作成したアカウントは利用できません。
 
-ロールベースのアクセス制御 (RBAC) のアクセス許可を割り当てるには:
+Azure ロールベースのアクセス制御 (Azure RBAC) のアクセス許可を割り当てるには:
 
 1. Azure portal を開きます。
 
@@ -106,7 +106,7 @@ Windows Virtual Desktop セッション ホストにサインインするユー�
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>ユーザーに Azure ファイル共有に対するアクセス許可を割り当てる
 
-ユーザーに RBAC のアクセス許可を割り当てたら、次は NTFS アクセス許可を構成する必要があります。
+ユーザーに Azure RBAC のアクセス許可を割り当てたら、次は NTFS アクセス許可を構成する必要があります。
 
 作業を開始するには、Azure portal で次の 2 つを把握する必要があります。
 
@@ -154,7 +154,7 @@ NTFS のアクセス許可を構成するには:
 2. Azure ファイル共有をマウントし、ドライブ文字を割り当てるために、次のコマンドを実行します。
 
      ```cmd
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
 3. 次のコマンドを実行し、Azure ファイル共有へのアクセス許可を確認します。
@@ -208,7 +208,7 @@ NTFS のアクセス許可を構成するには:
 
     - **[VHDLocations]** (MULTI_SZ) を作成します。
 
-    - **[VHDLocations]** の値は、「[UNC パスを取得する](#get-the-unc-path)」で生成した UNC パスに設定します。
+    - **[VHDLocations]** の値は、「 [UNC パスを取得する](#get-the-unc-path)」で生成した UNC パスに設定します。
 
 6. VM を再起動します。
 

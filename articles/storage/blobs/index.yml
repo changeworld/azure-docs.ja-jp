@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 9db4921b6f0b8382b69dbac658536b5151bdd653
-  ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+  ms.openlocfilehash: 02df0a3fc7dedb5ced734efcd3cdd0eb48232c37
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82117252"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101701690"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -64,7 +64,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Databricks を使用したデータの分析
-      url: data-lake-storage-quickstart-create-databricks-account.md
+      url: ./data-lake-storage-use-databricks-spark.md
   - linkListType: concept
     links:
     - text: ビッグ データの処理
@@ -76,7 +76,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Azure Databricks を使用してデータの抽出、変換、読み込みを行う
-      url: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
       url: data-lake-storage-tutorial-extract-transform-load-hive.md
     - text: Event Grid を使用して Databricks テーブルにデータを挿入する
@@ -86,7 +86,7 @@ landingContent:
     - text: Azure HDInsight クラスターで使用する
       url: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Power BI で使用する
-      url: data-lake-storage-use-power-bi.md
+      url: /power-query/connectors/datalakestorage
 - title: アプリケーションを開発する
   linkLists:
   - linkListType: quickstart
@@ -126,8 +126,8 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Azure AD アカウントを使用して BLOB データにアクセスする
-      url: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - text: RBAC を使用したアクセス権の管理
+      url: authorize-data-operations-portal.md
+    - text: Azure RBAC を使用したアクセス権の管理
       url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: マネージド ID を使用して Blob Storage へのアクセスを承認する
       url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

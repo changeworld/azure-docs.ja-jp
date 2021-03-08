@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190277"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578242"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Azure Data Lake Storage Gen1 を使用して Event Hubs からデータをキャプチャする
 
@@ -42,11 +42,11 @@ Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs で受信した�
 
     a. **[データ エクスプローラー]** をクリックし、Data Lake Storage Gen1 アカウントのルートを選択して、 **[アクセス]** をクリックします。
 
-    ![Data Lake Storage Gen1 ルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Data Lake Storage Gen1 ルートにアクセス許可を割り当てる")
+    ![アカウントのルートと [アクセス] オプションが強調表示されている Data Explorer のスクリーンショット。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Data Lake Storage Gen1 ルートにアクセス許可を割り当てる")
 
     b. **[アクセス]** で **[追加]** 、 **[ユーザーまたはグループの選択]** の順にクリックし、`Microsoft.EventHubs` を検索します。 
 
-    ![Data Lake Storage Gen1 ルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage Gen1 ルートにアクセス許可を割り当てる")
+    ![[追加] オプション、[ユーザーまたはグループの選択] オプション、Microsoft Eventhubs オプションが強調表示されている [アクセス] ページのスクリーンショット。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage Gen1 ルートにアクセス許可を割り当てる")
     
     **[選択]** をクリックします。
 
@@ -55,7 +55,7 @@ Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs で受信した�
     > [!IMPORTANT]
     > Azure Event Hubs で受信したデータをキャプチャするための新しいフォルダー階層を作成する際、これは宛先フォルダーに確実にアクセスする簡単な方法です。  ただし、子ファイルとフォルダーが多数含まれる最上位フォルダーのすべての子にアクセス許可を追加すると、長い時間がかかる可能性があります。  ルート フォルダーに多数のファイルとフォルダーが含まれている場合、最終的な宛先フォルダーへのパスに `Microsoft.EventHubs` の **実行**権限を各フォルダーに個別に追加した方が速いことがあります。 
 
-    ![Data Lake Storage Gen1 ルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Storage Gen1 ルートにアクセス許可を割り当てる")
+    ![[アクセス許可の選択] オプションが強調表示されている [アクセス許可の割り当て] セクションのスクリーンショット。[アクセス許可の選択] セクションの横では、[実行] オプション、[追加先] オプション、[追加ユーザー] オプションが強調表示されています。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Storage Gen1 ルートにアクセス許可を割り当てる")
 
     **[OK]** をクリックします。
 
@@ -63,17 +63,17 @@ Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs で受信した�
 
     a. **[データ エクスプローラー]** をクリックし、Data Lake Storage Gen1 アカウントのフォルダーを選択して、 **[アクセス]** をクリックします。
 
-    ![Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる")
+    ![アカウントのフォルダーと [アクセス] オプションが強調表示されている Data Explorer のスクリーンショット。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる")
 
     b. **[アクセス]** で **[追加]** 、 **[ユーザーまたはグループの選択]** の順にクリックし、`Microsoft.EventHubs` を検索します。 
 
-    ![Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる")
+    ![[追加] オプション、[ユーザーまたはグループの選択] オプション、Microsoft Eventhubs オプションが強調表示されている Data Explorer の [アクセス] ページのスクリーンショット。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる")
     
     **[選択]** をクリックします。
 
     c. **[アクセス許可の割り当て]** で **[アクセス許可の選択]** をクリックします。 **[アクセス許可]** を **[読み取り、書き込み]** と **[実行]** に設定します。 **[追加先]** を **[このフォルダーとすべての子]** に設定します。 最後に、 **[追加ユーザー]** を **[アクセス許可エントリと既定のアクセス許可エントリ]** に設定します。
 
-    ![Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる")
+    ![[アクセス許可の選択] オプションが強調表示されている [アクセス許可の割り当て] セクションのスクリーンショット。[アクセス許可の選択] セクションの横では、[読み取り]、[書き込み]、[実行] の各オプション、[追加先] オプション、[追加ユーザー] オプションが強調表示されています。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Data Lake Storage Gen1 フォルダーにアクセス許可を割り当てる")
     
     **[OK]** をクリックします。 
 
@@ -83,11 +83,11 @@ Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs で受信した�
 
 1. Event Hubs 名前空間の **[概要]** ウィンドウで、 **+ [イベント ハブ]** をクリックします。
 
-    ![イベント ハブを作成する](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "イベント ハブの作成")
+    ![[イベント ハブ] オプションが強調表示されている [概要] ペインのスクリーンショット。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "イベント ハブの作成")
 
 1. 次の値を設定して、Data Lake Storage Gen1 にデータをキャプチャするよう Event Hubs を構成します。
 
-    ![イベント ハブを作成する](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "イベント ハブの作成")
+    ![[名前] テキスト ボックス、[キャプチャ] オプション、[キャプチャ プロバイダー] オプション、[Data Lake Store の選択] オプション、[Data Lake パス] オプションが強調表示されている [イベント ハブの作成] ダイアログ ボックスのスクリーンショット。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "イベント ハブの作成")
 
     a. イベント ハブの名前を指定します。
     

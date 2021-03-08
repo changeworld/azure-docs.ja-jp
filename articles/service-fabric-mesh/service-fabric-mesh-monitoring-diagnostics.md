@@ -5,15 +5,21 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
-ms.custom: mvc, devcenter
-ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 02de8ea5dd5c53192d2b8c7beba8bc36143beac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248409"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626996"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
+
 Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。 Service Fabric Mesh の監視と診断は、主に次の 3 種類の診断データに分類されます。
 
 - アプリケーション ログ - これらは、アプリケーションをインストルメント化した方法に基づいて、コンテナー化されたアプリケーションからのログと定義されます (例: Docker のログ)。
@@ -26,7 +32,7 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 デプロイされたコンテナーから、あるいはコンテナーごとに、Docker ログを表示できます。 Service Fabric Mesh アプリケーション モデルでは、各コンテナーは、アプリケーション内のコード パッケージです。 コード パッケージに関連付けられているログを表示するには、次のコマンドを使用します。
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
@@ -35,7 +41,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 
 この動作が、投票アプリケーションの VotingWeb.Code コンテナーからのログにどのように記録されるかを次に示します。
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
@@ -58,7 +64,7 @@ Mesh 環境は、コンテナーのパフォーマンスを示す、いくつか
 | RestartCount | コンテナーの再起動の回数 | 該当なし |
 
 > [!NOTE]
-> ServiceStatus と ServiceReplicaStatus の値は、Service Fabric の [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) と同じです。 
+> ServiceStatus と ServiceReplicaStatus の値は、Service Fabric の [HealthState](/dotnet/api/system.fabric.health.healthstate) と同じです。
 
 各メトリックは、異なるディメンションで使用可能であるため、異なるレベルでの集計を表示できます。 ディメンションの現在の一覧は次のとおりです。
 
@@ -74,7 +80,7 @@ Mesh 環境は、コンテナーのパフォーマンスを示す、いくつか
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor の CLI
 
-コマンドの完全な一覧が [Azure Monitor CLI のドキュメント](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)にありますが、いくつかの役立つ例を以下に示します 
+コマンドの完全な一覧が [Azure Monitor CLI のドキュメント](/cli/azure/monitor/metrics#az-monitor-metrics-list)にありますが、いくつかの役立つ例を以下に示します 
 
 それぞれの例で、リソース ID は次のパターンに従います
 
@@ -83,21 +89,21 @@ Mesh 環境は、コンテナーのパフォーマンスを示す、いくつか
 
 * アプリケーション内のコンテナーの CPU 使用率
 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
 * 各サービス レプリカのメモリ使用量
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
 * 1 時間の時間枠で各コンテナーを再起動します 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
 * "VotingWeb" という名前のサービス全体における、1 時間の時間枠での平均 CPU 使用率
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
@@ -118,4 +124,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>次のステップ
 * Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
-* Azure Monitor メトリック コマンドの詳細については、[Azure Monitor CLI のドキュメント](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)をご確認ください。
+* Azure Monitor メトリック コマンドの詳細については、[Azure Monitor CLI のドキュメント](/cli/azure/monitor/metrics#az-monitor-metrics-list)をご確認ください。

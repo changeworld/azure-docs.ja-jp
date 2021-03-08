@@ -1,17 +1,15 @@
 ---
 title: Reliable Services 通信の概要
 description: サービスのリッスン開始、エンドポイントの解決、サービス間の通信など、Reliable Service 通信モデルの概要について説明します。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b45ceaed9f0d3d64a0fc6890549542acc6b1c21
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018639"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912616"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services 通信 API の使用方法
 プラットフォームとしての Azure Service Fabric は、サービス間の通信にまったく依存しません。 UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。 サービスの通信方法の選択は、サービス開発者に委ねられています。 Reliable Services アプリケーション フレームワークには、組み込みの通信スタックと、カスタム通信コンポーネントの構築に使用できる API が用意されています。
@@ -88,7 +86,7 @@ public class MyStatefulService : StatefulService
 }
 ```
 
-どちらの場合も、リスナーのコレクションが返されます。 これにより、サービスでは、複数のリスナーを使用して、異なるプロトコルを使用している可能性のある複数のエンドポイントでリッスンすることができます。 たとえば、HTTP リスナーと別の WebSocket リスナーがあるとします。 各リスナーが名前を取得し、その結果としての *名前とアドレス*のペアのコレクションは、クライアントがサービス インスタンスまたはパーティションのリッスン アドレスを要求したときに JSON オブジェクトとして表されます。
+どちらの場合も、リスナーのコレクションが返されます。 これにより、サービスでは、複数のリスナーを使用して、異なるプロトコルを使用している可能性のある複数のエンドポイントでリッスンすることができます。 たとえば、HTTP リスナーと別の WebSocket リスナーがあるとします。 各リスナーが名前を取得し、その結果としての *名前とアドレス* のペアのコレクションは、クライアントがサービス インスタンスまたはパーティションのリッスン アドレスを要求したときに JSON オブジェクトとして表されます。
 
 ステートレス サービスでは、オーバーライドによって ServiceInstanceListeners のコレクションが返されます。 `ServiceInstanceListener` には、`ICommunicationListener(C#) / CommunicationListener(Java)` を作成して名前を付ける関数が含まれます。 ステートフル サービスでは、オーバーライドによって ServiceReplicaListeners のコレクションが返されます。 `ServiceReplicaListener` は、ステートレス サービスとは少し異なり、セカンダリ レプリカで `ICommunicationListener` を開くオプションを備えています。 これにより、サービスで複数の通信リスナーを使用できるだけでなく、セカンダリ レプリカで要求を受け入れるリスナーと、プライマリ レプリカでリッスンするだけのリスナーを指定することもできます。
 
@@ -197,7 +195,7 @@ Service Fabric は、クライアントや他のサービスがこのアドレ�
 Reliable Services API は、サービスと通信するクライアントを作成するために、以下のライブラリを提供します。
 
 ### <a name="service-endpoint-resolution"></a>サービス エンドポイントの解決
-サービスと通信するには、まず、通信するサービスのパーティションまたはインスタンスのエンドポイント アドレスを解決します。 `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` ユーティリティ クラスは、クライアントが実行時にサービスのエンドポイントを特定するのに役立つ基本プリミティブです。 Service Fabric の用語では、サービスのエンドポイントを特定するプロセスを *サービス エンドポイントの解決*と呼びます。
+サービスと通信するには、まず、通信するサービスのパーティションまたはインスタンスのエンドポイント アドレスを解決します。 `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` ユーティリティ クラスは、クライアントが実行時にサービスのエンドポイントを特定するのに役立つ基本プリミティブです。 Service Fabric の用語では、サービスのエンドポイントを特定するプロセスを *サービス エンドポイントの解決* と呼びます。
 
 クラスター内のサービスに接続するには、既定の設定を使用して、ServicePartitionResolver を作成できます。 これは、ほとんどの場合に推奨される使用法です。
 
@@ -290,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-クライアント ファクトリは、主に通信クライアントを作成する役割を担います。 HTTP クライアントなど、永続的な接続を維持しないクライアントの場合、ファクトリはクライアントを作成して返すだけで済みます。 一部のバイナリ プロトコルなど、永続的な接続を維持する他のプロトコルの場合、ファクトリはプロトコルを検証して接続を再作成する必要があるかどうかを確認する必要があります。  
+クライアント ファクトリは、主に通信クライアントを作成する役割を担います。 HTTP クライアントなど、永続的な接続を維持しないクライアントの場合、ファクトリはクライアントを作成して返すだけで済みます。 一部のバイナリ プロトコルなど、永続的な接続を維持する他のプロトコルの場合、接続を再作成する必要があるかどうかを決定するために、ファクトリによる検証も必要です (`ValidateClient(string endpoint, MyCommunicationClient client)`)。  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>
@@ -333,14 +331,14 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-最後に、例外ハンドラーは、例外が発生したときに実行するアクションを決定する役割を担います。 例外は、**再試行可能**と**再試行不可能**に分類されます。
+最後に、例外ハンドラーは、例外が発生したときに実行するアクションを決定する役割を担います。 例外は、**再試行可能** と **再試行不可能** に分類されます。
 
-* **再試行不可能な**例外は、呼び出し元に単に再スローされます。
-* **再試行可能**な例外は、さらに**一時的**と**非一時的**に分類されます。
+* **再試行不可能な** 例外は、呼び出し元に単に再スローされます。
+* **再試行可能** な例外は、さらに **一時的** と **非一時的** に分類されます。
   * **一時的な** 例外は、サービス エンドポイント アドレスを再度解決せずに再試行できる例外です。 一時的な例外には、一時的なネットワークの問題やサービスのエラー応答 (サービス エンドポイントのアドレスが存在しないことを示すエラー応答を除く) などがあります。
   * **非一時的な** 例外は、サービス エンドポイント アドレスを再度解決する必要がある例外です。 非一時的な例外には、サービス エンドポイントに到達できなかったことを示す (サービスが別のノードに移動したことを示す) 例外などがあります。
 
-`TryHandleException` は、特定の例外について判断を下します。 特定の例外についてどのような判断を下せばよいか**わからない**場合は、**false** を返します。 どのような判断を下せばよいか**わかっている**場合は、それに応じて結果を設定し、**true** を返します。
+`TryHandleException` は、特定の例外について判断を下します。 特定の例外についてどのような判断を下せばよいか **わからない** 場合は、**false** を返します。 どのような判断を下せばよいか **わかっている** 場合は、それに応じて結果を設定し、**true** を返します。
 
 ```csharp
 class MyExceptionHandler : IExceptionHandler

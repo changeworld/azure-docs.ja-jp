@@ -1,46 +1,44 @@
 ---
 title: 複数のコンテナーからのファイルのコピー
 description: Azure Data Factory を使用して複数のコンテナーからファイルをコピーするための、ソリューション テンプレート の使用方法について説明します。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec7af1e81e0b295491420597636c8443f4d36512
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629050"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376090"
 ---
-# <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Azure Data Factory を使用して複数のコンテナーからファイルをコピーする
+# <a name="copy-multiple-folders-with-azure-data-factory"></a>Azure Data Factory で複数のフォルダーをコピーする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-この記事では、ファイル ストア間で複数のコンテナーからファイルをコピーするために使用できる、ソリューション テンプレートについて説明します。 たとえば、AWS S3 から Azure Data Lake Store にデータ レイクを移行することもできます。 また、テンプレートを使用して、1 つの Azure BLOB ストレージ アカウントに含まれるすべてのファイルを、別の Azure Blob ストレージ アカウントにレプリケートすることもできます。
+この記事では、複数のコピー アクティビティを使用して、ファイルベースのストア間でコンテナーまたはフォルダーをコピーするソリューション テンプレートについて説明します。ここでは、各コピー アクティビティが 1 つのコンテナーまたはフォルダーをコピーすることが想定されています。 
 
 > [!NOTE]
 > 1 つのコンテナーからファイルをコピーする場合は、[データのコピー ツール](copy-data-tool.md)を使用して、単一のコピー アクティビティを含んだパイプラインを作成する方が効率的です。 この記事に示すテンプレートは、そのシンプルなシナリオで必要とするものより大きくなっています。
 
 ## <a name="about-this-solution-template"></a>このソリューション テンプレートについて
 
-このテンプレートでは、ソース ストレージ ストアからコンテナーを列挙します。 その後、それらのコンテナーをコピー先のストアにコピーします。
+このテンプレートは、ソース ストレージ ストア上の指定された親フォルダーからフォルダーを列挙します。 次に、各フォルダーをコピー先のストアにコピーします。
 
 このテンプレートには、3 つのアクティビティが含まれています。
-- **GetMetadata** は、ソース ストレージ ストアをスキャンし、コンテナーの一覧を取得します。
-- **ForEach** は、**GetMetadata** アクティビティからコンテナーの一覧を取得し、その一覧を反復処理して、各コンテナーを Copy アクティビティに渡します。
-- **Copy** は、各コンテナーをソース ストレージ ストアからコピー先ストアにコピーします。
+- **GetMetadata** はソース ストレージ ストアをスキャンし、指定された親フォルダーからサブフォルダーの一覧を取得します。
+- **ForEach** は、**GetMetadata** アクティビティからサブフォルダーの一覧を取得し、その一覧を反復処理して、各フォルダーを Copy アクティビティに渡します。
+- **Copy** は、各フォルダーをソース ストレージ ストアからコピー先ストアにコピーします。
 
 このテンプレートでは、次のパラメーターを定義します。
-- *SourceFileFolder* は、コンテナーの一覧を取得できるデータ ソース ストアのフォルダー パスです。 このパスは複数のコンテナー フォルダーを格納するルート ディレクトリです。 このパラメーターの既定値は `sourcefolder` です。
-- *SourceFileDirectory* は、データ ソース ストアのルート ディレクトリの下にあるサブフォルダーのパスです。 このパラメーターの既定値は `subfolder` です。
-- *DestinationFileFolder* は、コピー先ストア内でファイルがコピーされる場所のフォルダー パスです。 このパラメーターの既定値は `destinationfolder` です。
-- *DestinationFileDirectory* は、コピー先ストア内でファイルがコピーされる場所のサブフォルダー パスです。 このパラメーターの既定値は `subfolder` です。
+- *SourceFileFolder* は、データ ソース ストア *SourceFileFolder/SourceFileDirectory* の親フォルダー パスの一部で、ここでサブフォルダーの一覧を取得できます。 
+- *SourceFileDirectory* は、データ ソース ストア *SourceFileFolder/SourceFileDirectory* の親フォルダー パスの一部で、ここでサブフォルダーの一覧を取得できます。 
+- *DestinationFileFolder* は、親フォルダー パス *DestinationFileFolder/DestinationFileDirectory* の一部で、宛先ストアにファイルがコピーされる場所です。 
+- *DestinationFileDirectory* は、親フォルダー パス *DestinationFileFolder/DestinationFileDirectory* の一部で、宛先ストアにファイルがコピーされる場所です。 
+
+ルート フォルダーにある複数のコンテナーをストレージ ストア間でコピーする場合は、4 つのすべてのパラメーターを */* として入力できます。 これにより、ストレージ ストア間ですべてがレプリケートされます。
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 

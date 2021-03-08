@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: Zhchia
-ms.openlocfilehash: ab2fd7f78373f9fee349e59c374088f67f165339
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc67d649e3a7cd094eb2c3d633244077abcab308
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554202"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359927"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に OfficeSpace Software を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "88554202"
 
 ## <a name="assigning-users-to-officespace-software"></a>OfficeSpace Software へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、OfficeSpace Software へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを OfficeSpace Software に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,7 +58,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![OfficeSpace Software による SCIM の追加](media/officespace-software-provisioning-tutorial/scim.png)
 
-3.  **SCIM 認証トークン**をコピーします。 この値を、Azure portal で OfficeSpace Software アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+3.  **SCIM 認証トークン** をコピーします。 この値を、Azure portal で OfficeSpace Software アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 
     ![OfficeSpace Software でのトークンの作成](media/officespace-software-provisioning-tutorial/token.png)
 
@@ -80,7 +80,7 @@ Azure AD で自動ユーザー プロビジョニング用に OfficeSpace Softwa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**OfficeSpace Software**」と入力し、結果ウィンドウで **[OfficeSpace Software]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **OfficeSpace Software** 」と入力し、結果ウィンドウで **[OfficeSpace Software]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の OfficeSpace Software](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ Azure AD で自動ユーザー プロビジョニング用に OfficeSpace Softwa
 このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて OfficeSpace Software のユーザーやグループを作成、更新、無効化するよう、Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> OfficeSpace Software では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[OfficeSpace Software シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/officespace-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> OfficeSpace Software では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[OfficeSpace Software シングル サインオンのチュートリアル](./officespace-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-officespace-software-in-azure-ad"></a>Azure AD で OfficeSpace Software 用に自動ユーザー プロビジョニングを構成するには:
 
@@ -103,13 +103,13 @@ Azure AD で自動ユーザー プロビジョニング用に OfficeSpace Softwa
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナント URL]** に `https://<subdomain>.officespacesoftware.com/api/scim/v2/` の URL 形式を入力します。 たとえば、「 `https://contoso.officespacesoftware.com/api/scim/v2/` 」のように指定します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から OfficeSpace Software への接続を確保します。 接続できない場合は、使用中の OfficeSpace Software アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナント URL]** に `https://<subdomain>.officespacesoftware.com/api/scim/v2/` の URL 形式を入力します。 たとえば、「 `https://contoso.officespacesoftware.com/api/scim/v2/` 」のように指定します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から OfficeSpace Software への接続を確保します。 接続できない場合は、使用中の OfficeSpace Software アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -153,4 +153,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e8d58a74f9ce8489465934398014dd4af3309a9e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853109"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669822"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性
 
@@ -80,7 +80,7 @@ ms.locfileid: "88853109"
 * [SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ](./sap-high-availability-architecture-scenarios.md)
 * [ASCS クラスター構成にプローブ ポートを追加する](sap-high-availability-installation-wsfc-file-share.md)
 * [フェールオーバー クラスターへの (A)SCS インスタンスのインストール](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [Azure NetApp Files の SMB ボリュームを作成する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
+* [Azure NetApp Files の SMB ボリュームを作成する](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
 
 ## <a name="overview"></a>概要
@@ -113,9 +113,9 @@ Azure NetApp Files を使用するための準備として、次のステップ�
 4. Azure NetApp Files リソースは、委任されたサブネット内に存在する必要があります。 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の指示に従って、委任されたサブネットを作成します。  
 
    > [!IMPORTANT]
-   > SMB ボリュームを作成する前に Active Directory の接続を作成する必要があります。 [Active Directory コンポーネント要件](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)を確認します。  
+   > SMB ボリュームを作成する前に Active Directory の接続を作成する必要があります。 [Active Directory コンポーネント要件](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)を確認します。  
 
-5. 「[Active Directory 接続を作成する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)」の説明に従って、Active Directory 接続を作成します  
+5. 「[Active Directory 接続を作成する](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)」の説明に従って、Active Directory 接続を作成します  
 6. 「[SMB ボリュームを追加する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)」の指示に従って、SMB Azure NetApp Files の SMB ボリュームを作成します  
 7. Windows 仮想マシンに SMB ボリュームをマウントします。
 

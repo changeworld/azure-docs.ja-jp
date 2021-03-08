@@ -1,17 +1,17 @@
 ---
 title: パフォーマンスの推奨事項 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL のパフォーマンスの推奨事項機能について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1445ad3d6be020326c34d60c555c24c435548fd0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485255"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537647"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Azure Database for MySQL のパフォーマンスの推奨事項
 
@@ -21,7 +21,7 @@ ms.locfileid: "84485255"
 
 ## <a name="permissions"></a>アクセス許可
 
-パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者**または**共同作成者**の許可が必要です。
+パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者** または **共同作成者** の許可が必要です。
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 

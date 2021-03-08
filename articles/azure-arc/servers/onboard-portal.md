@@ -1,23 +1,22 @@
 ---
 title: Azure portal からハイブリッド マシンを Azure に接続する
-description: この記事では、Azure portal から Azure Arc 対応サーバー (プレビュー) を使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。
-ms.date: 08/07/2020
+description: この記事では、Azure portal から Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.custom: references_regions
-ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 97962f7fd9816e398f017555d7043cf65db00ed8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213508"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584964"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Azure portal からハイブリッド マシンを Azure に接続する
 
-手動で一連の手順を実行することで、ご自分の環境内の 1 つまたは少数の Windows マシンまたは Linux マシン用に Azure Arc 対応サーバー (プレビュー) を有効にすることができます。 または、提供されているテンプレート スクリプトを実行することで、自動化された方法を使用することもできます。 このスクリプトは、両方のエージェントのダウンロードとインストールを自動化するものです。
+手動で一連の手順を実行することで、環境内の 1 つまたは少数の Windows マシンまたは Linux マシン用に、Azure Arc 対応サーバーを有効にすることができます。 または、提供されているテンプレート スクリプトを実行することで、自動化された方法を使用することもできます。 このスクリプトは、両方のエージェントのダウンロードとインストールを自動化するものです。
 
 この方法では、エージェントをインストールおよび構成するために、マシンに対する管理者権限が必要です。 Linux ではルート アカウントを使用し、Windows ではローカルの Administrators グループのメンバーである必要があります。
 
-開始する前に、必ず[前提条件](agent-overview.md#prerequisites)を確認し、ご利用のサブスクリプションおよびリソースが要件を満たしていることを確認してください。
+開始する前に、必ず[前提条件](agent-overview.md#prerequisites)を確認し、ご利用のサブスクリプションおよびリソースが要件を満たしていることを確認してください。 サポートされているリージョン、および関連するその他の考慮事項については、 [サポート対象の Azure リージョン](overview.md#supported-regions) に関する記事を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -25,32 +24,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ダウンロードとインストールを自動化し、Azure Arc との接続を確立するスクリプトは、Azure portal から入手できます。 そのプロセスを完了するには、次の手順を実行します。
 
-1. お使いのブラウザーで [Azure portal](https://aka.ms/hybridmachineportal) に移動します。
+1. お使いのブラウザーで [Azure portal](https://portal.azure.com) に移動します。
 
-1. **[マシン - Azure Arc]** ページで、左上にある **[追加]** か、中央のペインの下部にある **[Create machine - Azure Arc]\(マシンの作成 - Azure Arc\)** オプションを選択します。
+1. **[サーバー - Azure Arc]** ページで、左上の **[追加]** を選択します。
 
-1. **[メソッドの選択]** ページで、 **[Add machines using interactive script]\(対話型スクリプト タイルを使用してマシンを追加\)** タイルを選択し、 **[スクリプトの生成]** を選択します。
+1. **[メソッドを選択してください]** ページで、 **[Add servers using interactive script]\(対話型スクリプトを使用してサーバーを追加する\)** タイルを選択し、 **[スクリプトの生成]** を選択します。
 
-1. **[スクリプトの生成]** ページで、Azure 内でマシンを管理するサブスクリプションとリソース グループを選択します。 マシンのメタデータが格納される Azure の場所を選択します。
+1. **[スクリプトの生成]** ページで、Azure 内でマシンを管理するサブスクリプションとリソース グループを選択します。 マシンのメタデータが格納される Azure の場所を選択します。 この場所は、リソース グループの場所と同じ場合も異なる場合もあります。
 
-    >[!NOTE]
-    >Azure Arc 対応サーバー (プレビュー) では、次のリージョンのみがサポートされます。
-    >- EastUS
-    >- WestUS2
-    >- 西ヨーロッパ
-    >- SoutheastAsia
-    >
-    >リージョンを選択時のその他の考慮事項については、概要記事の[こちら](overview.md#supported-regions)を参照してください。
+1. **[Prerequisites]\(前提条件\)** ページで情報を確認し、 **[次: リソースの詳細]** を選択します。
 
-1. **[スクリプトの生成]** ページの **[オペレーティング システム]** ボックスの一覧で、スクリプトを実行するオペレーティング システムを選択します。
+1. **[リソースの詳細]** ページで、以下を設定します。
 
-1. マシンがインターネットに接続するためにプロキシ サーバー経由で通信している場合は、 **[Next: Proxy Server]\(次へ: プロキシ サーバー\)** を選択します。
+    1. **[リソース グループ]** ドロップダウンの一覧で、マシンを管理するリソース グループを選択します。
+    1. **[リージョン]** ドロップダウンの一覧で、サーバーのメタデータを格納する Azure リージョンを選択します。
+    1. **[オペレーティング システム]** ドロップダウンの一覧で、スクリプトを実行するように構成されているオペレーティング システムを選択します。
+    1. マシンがプロキシ サーバー経由でインターネットに接続して通信を行っている場合は、プロキシ サーバーの IP アドレス、またはマシンでプロキシ サーバーとの通信に使用されている名前とポート番号を指定します。 `http://<proxyURL>:<proxyport>` の形式で値を入力します。
+    1. **タグ** を選択します。
 
-1. **[プロキシ サーバー]** タブで、プロキシ サーバーの IP アドレスか、マシンがプロキシ サーバーとの通信に使用する名前およびポート番号を指定します。 `http://<proxyURL>:<proxyport>` の形式で値を入力します。
+1. **[タグ]** ページで、提案されている既定の **物理的な場所のタグ** を確認し、値を入力するか、**カスタム タグ** を 1 つ以上指定して標準をサポートします。
 
-1. **[確認と生成]** を選択します。
+1. **[Next:Download and run script]\(次: スクリプトをダウンロードして実行する\)** を選択します。
 
-1. **[確認と生成]** タブで概要情報を確認し、 **[ダウンロード]** を選択します。 引き続き変更が必要な場合は、 **[前へ]** を選択します。
+1. **[Download and run script]\(次: スクリプトをダウンロードして実行する\)** ページで概要情報を確認し、 **[ダウンロード]** を選択します。 引き続き変更が必要な場合は、 **[前へ]** を選択します。
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>Windows でエージェントをインストールして検証する
 
@@ -78,7 +74,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
     ```
 
-    セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは *%Programfiles%\AzureConnectedMachineAgentAgent\logs* です。
+    セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは *%ProgramData%\AzureConnectedMachineAgent\log* です。
 
 2. マシンがプロキシ サーバー経由で通信する必要がある場合は、プロキシ サーバー環境変数を設定するために、次のコマンドを実行します。
 
@@ -111,15 +107,15 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 1. スクリプトをコピーしたフォルダーまたは共有に移動し、`./OnboardingScript.ps1` スクリプトを実行することでそのスクリプトをサーバー上で実行します。
 
-セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは *%Programfiles%\AzureConnectedMachineAgentAgent\logs* です。
+セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは *%ProgramData%\AzureConnectedMachineAgent\log* です。
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Linux でエージェントをインストールして検証する
 
 Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 この[シェル スクリプト バンドル `Install_linux_azcmagent.sh`](https://aka.ms/azcmagent) により、次のアクションが実行されます。
 
-- packages.microsoft.com からエージェント パッケージをダウンロードするようにホスト マシンを構成します。
-- ハイブリッド リソース プロバイダー パッケージをインストールします。
-- Azure Arc を使用してマシンを登録します
+* packages.microsoft.com からエージェント パッケージをダウンロードするようにホスト マシンを構成します。
+
+* ハイブリッド リソース プロバイダー パッケージをインストールします。
 
 必要に応じて、`--proxy "{proxy-url}:{proxy-port}"` パラメーターを含めることで、プロキシ情報を使用してエージェントを構成できます。
 
@@ -135,24 +131,41 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-プロキシ サーバー経由で通信するようにエージェントを構成するための `--proxy` パラメーターを含めてエージェントをダウンロードし、インストールするには、次のコマンドを実行します。
+1. プロキシ サーバー経由で通信するようにエージェントを構成するための `--proxy` パラメーターを含めてエージェントをダウンロードし、インストールするには、次のコマンドを実行します。
 
-```bash
-# Download the installation package.
-wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
+    ```bash
+    # Download the installation package.
+    wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
-bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
-```
+    # Install the connected machine agent.
+    bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+    ```
+
+2. エージェントをインストールしたら、次のコマンドを実行して、Azure Arc サービスと通信するようにエージェントを構成する必要があります。
+
+    ```bash
+    azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --cloud "cloudName"
+    if [ $? = 0 ]; then echo "\033[33mTo view your onboarded server(s), navigate to https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.HybridCompute%2Fmachines\033[m"; fi
+    ```
+
+### <a name="install-with-the-scripted-method"></a>スクリプト化された手法を使用してインストールする
+
+1. ルート アクセス権を持つアカウントを使用してサーバーにログインします。
+
+1. スクリプトをコピーしたフォルダーまたは共有に移動し、`./OnboardingScript.sh` スクリプトを実行することでそのスクリプトをサーバー上で実行します。
+
+セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは、*var/opt/azcmagent/log* です。
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc との接続を検証する
 
-エージェントをインストールし、Azure Arc 対応サーバー (プレビュー) に接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
+エージェントをインストールし、それを Azure Arc 対応サーバーに接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されたことを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
 
 ![成功したサーバー接続](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
+* トラブルシューティング情報は、[Connected Machine エージェントの問題解決ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-- [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook やソリューション (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-intro.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
+
+* [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-introduction.md) などの他の Azure サービスを使用する場合に必要になります。

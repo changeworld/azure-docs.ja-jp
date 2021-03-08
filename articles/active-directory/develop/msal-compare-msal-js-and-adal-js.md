@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120900"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580848"
 ---
-# <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS と ADAL JS の相違点
+# <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js と ADAL.js の相違点
 
-Azure AD エンティティを認証し、Azure AD からのトークンを要求する場合、Microsoft Authentication Library for JavaScript (MSAL.js) と Azure AD Authentication Library for JavaScript (ADAL.js) の両方が使用されます。 これまで、ほとんどの開発者は、開発者用の Azure AD (v1.0) で、ADAL を使用してトークンを要求することで、Azure AD ID (職場と学校のアカウント) を認証していました。 現在では、MSAL.js を使用して、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、および Azure AD B2C 経由のソーシャル アカウントとローカル アカウント) を Microsoft ID プラットフォーム (v2.0) を介して認証することができます。
+Azure AD エンティティを認証し、Azure AD からのトークンを要求する場合、Microsoft Authentication Library for JavaScript (MSAL.js) と Azure AD Authentication Library for JavaScript (ADAL.js) の両方が使用されます。 これまで、ほとんどの開発者は、開発者用の Azure AD (v1.0) で、ADAL を使用してトークンを要求することで、Azure AD ID (職場と学校のアカウント) を認証していました。 現在では、MSAL.js を使用して、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、および Azure AD B2C 経由のソーシャルおよびローカル アカウント) を Microsoft ID プラットフォームを介して認証できます。
 
 この記事では、Microsoft Authentication Library for JavaScript (MSAL.js) と Azure AD Authentication Library for JavaScript (ADAL.js) のいずれかを選択する方法について説明し、2 つのライブラリを比較します。
 
@@ -48,7 +48,7 @@ v1.0 エンドポイント (および ADAL.js) を既に使い慣れている場
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD アカウント (任意の組織用) でサインインできるようになります。
 
-v2.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD 組織アカウントや Microsoft の個人用アカウント (MSA) でサインインできるようになります。 サインインを Azure AD アカウント (ADAL.js の場合と同じ動作) だけに制限するには、`https://login.microsoftonline.com/organizations` を使用する必要があります。 詳細については、[MSAL.js を使用した初期化](msal-js-initializing-client-applications.md)に関するページの `authority` config オプションを参照してください。
+v2.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD 組織アカウントや Microsoft の個人用アカウント (MSA) でサインインできるようになります。 サインインを Azure AD アカウントのみに制限するには (ADAL.js の場合と同じ動作)、`https://login.microsoftonline.com/organizations` を使用します。 詳細については、[MSAL.js を使用した初期化](msal-js-initializing-client-applications.md)に関するページの `authority` config オプションを参照してください。
 
 ### <a name="scopes-for-acquiring-tokens"></a>トークンを取得するためのスコープ
 * トークンを取得するための認証要求におけるリソース パラメーターに代わるスコープ

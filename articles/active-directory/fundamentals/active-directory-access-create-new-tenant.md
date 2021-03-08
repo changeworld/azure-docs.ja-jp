@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6341aeb6db89d43ef887a3ae50c4439e3867e6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318609"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437242"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
@@ -33,25 +33,29 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
 1. 組織の [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. Azure portal メニューから **[リソースの作成]** を選択します。  
+1. Azure portal メニューから **[Azure Active Directory]** を選択します。  
 
-    ![Azure Active Directory の [リソースの作成] ページ](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    <kbd>![Azure Active Directory - [概要] ページ - テナントの作成](media/active-directory-access-create-new-tenant/azure-ad-portal.png)</kbd>  
 
-1. **[ID]** を選択してから、 **[Azure Active Directory]** を選択します。
+1. **[Create a tenant]\(テナントの作成\)** を選択します。
 
-    **[ディレクトリの作成]** ページが表示されます。
+1. [基本] タブで、作成するテナントの種類を選択します ( **[Azure Active Directory]** または **[Azure Active Directory (B2C)]** )。
 
-    ![Azure Active Directory の作成ページ](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
+1. **Next:Configuration\(次へ: 構成\)** を選択して 構成 タブに移動します。
 
-1.  **[ディレクトリの作成]** ページで、次の情報を入力します。
+    <kbd>![Azure Active Directory - [Create a tenant]\(テナントの作成\) ページ - [構成] タブ](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)</kbd>
+
+1.  [構成] タブで、次の情報を入力します。
     
-    - **[組織名]** ボックスに「_Contoso_」と入力します。
+    - **[組織名]** ボックスに「_Contoso Organization_」と入力します。
 
-    - **[初期ドメイン名]** ボックスに「_Contoso_」と入力します。
+    - **[初期ドメイン名]** ボックスに「_Contosoorg_」と入力します。
 
     - **[国またはリージョン]** ボックスは _[米国]_ オプションのままにします。
 
-1. **［作成］** を選択します
+1. **確認と作成** を選択します。 入力した情報を確認し、誤りがなければ **[作成]** を選択します。
+
+    <kbd>![Azure Active Directory - テナントの確認と作成のためのページ](media/active-directory-access-create-new-tenant/azure-ad-review.png)</kbd>
 
 新しいテナントは、ドメイン contoso.onmicrosoft.com で作成されます。
 
@@ -59,11 +63,11 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 このアプリケーションを引き続き使用しない場合は、次の手順を使用してテナントを削除することができます。
 
 - Azure portal で **[ディレクトリ + サブスクリプション]** フィルターを使用して、削除するディレクトリにサインインしていることを確認し、必要に応じてターゲット ディレクトリに切り替えます。
-- **[Azure Active Directory]** を選択し、 **[Contoso - 概要]** ページで **[ディレクトリの削除]** を選択します。
+- **[Azure Active Directory]** を選択し、**[Contoso - 概要]** ページで **[ディレクトリの削除]** を選択します。
 
     テナントとその関連情報は削除されます。
 
-    ![概要ページ。[ディレクトリの削除] ボタンが強調表示されている](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    <kbd>![概要ページ。[ディレクトリの削除] ボタンが強調表示されている](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>次のステップ
 - 追加のドメイン名を変更または追加する方法については、[Azure Active Directory にカスタム ドメイン名を追加する方法](add-custom-domain.md)に関するページを参照してください。

@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 08/04/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 55d072492a1d90c6964935f2a79f73aacdceff21
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f36d842e14c91850bfeba47e9fef61d4747c33a9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826774"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630568"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 
-Azure IoT Connector for FHIR* は、Azure API for FHIR のオプション機能の 1 つであり、Internet of Medical Things (IoMT) デバイスからデータを取り込むことができます。 プレビュー段階では、Azure IoT Connector for FHIR 機能を無料で利用できます。 このクイック スタートでは、次の方法について説明します。
+Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソース)* は、Azure API for FHIR のオプション機能であり、Internet of Medical Things (IoMT) デバイスからデータを取り込むことができます。 プレビュー段階では、Azure IoT Connector for FHIR 機能を無料で利用できます。 このクイック スタートでは、次の方法について説明します。
 - Azure portal を使用して Azure IoT Connector for FHIR をデプロイし、構成する
 - シミュレートされたデバイスを使用してデータを Azure IoT Connector for FHIR に送信する
 - Azure API for FHIR で、Azure IoT Connector for FHIR によって作成されたリソースを表示する
@@ -61,7 +61,7 @@ Azure IoT Connector for FHIR* は、Azure API for FHIR のオプション機能�
 
 ## <a name="configure-azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (プレビュー) を構成する
 
-Azure IoT Connector for FHIR には、デバイス メッセージを FHIR ベースの Observation リソースに変換する 2 つのマッピング テンプレート (**デバイス マッピング**および **FHIR マッピング**) が必要です。 これらのマッピングがアップロードされるまで、Azure IoT Connector for FHIR は完全には動作しません。
+Azure IoT Connector for FHIR には、デバイス メッセージを FHIR ベースの Observation リソースに変換する 2 つのマッピング テンプレート (**デバイス マッピング** および **FHIR マッピング**) が必要です。 これらのマッピングがアップロードされるまで、Azure IoT Connector for FHIR は完全には動作しません。
 
 [![マッピングが見つからない IoT コネクタ](media/quickstart-iot-fhir-portal/portal-iot-connector-missing-mappings.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-missing-mappings.jpg#lightbox)
 
@@ -163,13 +163,16 @@ IoMT デバイスでは、メッセージを Azure IoT Connector for FHIR に接
 
 Azure では、IoT デバイスを接続し、管理するための幅広い IoT 製品スイートを提供しています。 Azure IoT Hub を使用して PaaS に基づいた独自のソリューションを作成することも、Azure IoT Central を使用して IoT アプリ プラットフォームの管理から始めることもできます。 このチュートリアルでは、Azure IoT Central を活用します。これには、開始するのに役立つ、各業界にフォーカスしたソリューション テンプレートが用意されています。
 
-[患者の継続的なモニタリング アプリ テンプレート](https://docs.microsoft.com/azure/iot-central/healthcare/tutorial-continuous-patient-monitoring#create-an-application-template)をデプロイします。 このテンプレートには、開始するのに役立つリアルタイム データを生成する 2 つのシミュレートされたデバイス (**Smart Vitals Patch** と **Smart Knee Brace**) が含まれています。
+[患者の継続的なモニタリング アプリ テンプレート](../iot-central/healthcare/tutorial-continuous-patient-monitoring.md#create-an-application-template)をデプロイします。 このテンプレートには、開始するのに役立つリアルタイム データを生成する 2 つのシミュレートされたデバイス (**Smart Vitals Patch** と **Smart Knee Brace**) が含まれています。
 
 > [!NOTE]
-> 実際のデバイスの準備ができたらいつでも、同じ IoT Central アプリケーションを使用して、[ご利用のデバイスをオンボード](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template)し、デバイス シミュレーターを交換することができます。 デバイス データの FHIR への送信も自動的に開始されます。 
+> 実際のデバイスの準備ができたらいつでも、同じ IoT Central アプリケーションを使用して、[ご利用のデバイスをオンボード](../iot-central/core/howto-set-up-template.md)し、デバイス シミュレーターを交換することができます。 デバイス データの FHIR への送信も自動的に開始されます。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>IoT データを Azure IoT Connector for FHIR (プレビュー) に接続する
-IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#set-up-data-export)必要があります。 [継続的データ エクスポート] ページで、次の設定を行います。
+> [!WARNING]
+> このガイドに含まれるデバイス マッピング テンプレートは、IoT Central 内でデータ エクスポート (レガシ) と共に使用するように設計されています。
+
+IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](../iot-central/core/howto-export-data-legacy.md)必要があります。 [継続的データ エクスポート] ページで、次の設定を行います。
 - エクスポート先として *[Azure Event Hubs]* を選択します。
 - **[Event Hubs 名前空間]** フィールドでは、値 *[接続文字列を使用します]* を選択します。
 - **[接続文字列]** フィールドでは、前の手順で取得した Azure IoT Connector for FHIR の接続文字列を指定します。
@@ -204,6 +207,4 @@ Azure IoT Connector for FHIR 内のさまざまなデータ フロー ステー�
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR のマッピング テンプレート](iot-mapping-templates.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。
-
-FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。

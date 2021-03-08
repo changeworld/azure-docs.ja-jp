@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 84cbdfbf4d34e1779fc119e4b6a92a3bbec88bdc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0ad73d7086a2066517c24a8b10a7f54503535942
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925132"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490297"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>チュートリアル:C# 用の Bing Visual Search SDK で画像をトリミングする
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、またはマイクロソフトエンタープライズ契約の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing Visual Search SDK を使用すると、類似したオンライン画像を検索する前に画像をトリミングすることができます。 このアプリケーションでは、複数の人が含まれる画像から 1 人をトリミングした後、オンラインで見つかった似た画像を含む検索結果を返します。
 
@@ -114,4 +119,4 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 > [Visual Search のシングルページ Web アプリを作成する](tutorial-bing-visual-search-single-page-app.md)
 
 ## <a name="see-also"></a>関連項目
-> [Bing Visual Search API とは](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)
+> [Bing Visual Search API とは](./overview.md)

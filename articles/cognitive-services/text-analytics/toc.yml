@@ -9,27 +9,30 @@
       href: text-analytics-user-scenarios.md
     - name: 新機能
       href: whats-new.md
+- name: AI の責任ある使用
+  items:
+    - name: 透明性に関するメモ
+      items:
+        - name: Text Analytics の場合
+          href: /legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context
+          displayName: 'Transparency note for Text Analytics, Text Analytics Transparency, Responsible AI, Responsible use of AI'
+        - name: 正常性の場合
+          href: /legal/cognitive-services/text-analytics/transparency-note-health?context=/azure/cognitive-services/text-analytics/context/context
+          displayName: 'Transparency note for Text Analytics for Health, Text Analytics Transparency for Health, Responsible AI, Responsible use of AI, Text Analytics Health'
+        - name: 個人を特定できる情報の場合
+          href: /legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
+          displayName: 'Transparency note for Text Analytics PII, Transparency note for Text Analytics Personally Identifiable Information, Text Analytics Transparency for PII, Responsible AI, Responsible use of AI, Text Analytics PII'
+        - name: 感情分析の場合
+          href: /legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
+          displayName: 'Transparency note for Text Analytics Sentiment Analysis, Text Analytics Transparency for Sentiment Analysis, Responsible AI, Responsible use of AI, Text Analytics Sentiment Analysis, Sentiment Analysis Transparency Note'
+    - name: 統合と責任ある使用
+      href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
+      displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
 - name: クイックスタート
   expanded: true
   items:
-    - name: クライアント ライブラリ
-      items:
-        - name: クライアント ライブラリを使用したテキストの分析
-          href: quickstarts/text-analytics-sdk.md
-    - name: REST API
-      items:
-        - name: Java の使用
-          href: quickstarts/java.md
-        - name: Python の使用
-          href: quickstarts/python.md
-        - name: Node.js の使用
-          href: quickstarts/nodejs.md
-        - name: PHP の使用
-          href: quickstarts/php.md
-        - name: Go の使用
-          href: quickstarts/go.md
-        - name: Ruby の使用
-          href: quickstarts/ruby.md
+    - name: クライアント ライブラリと REST API を使用する
+      href: quickstarts/client-libraries-rest-api.md
 - name: チュートリアル
   items:
     - name: Power BI を統合して顧客からのフィードバックを分析する
@@ -38,10 +41,10 @@
       href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
     - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
       maintainContext: true
-      href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+      href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services
     - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
       maintainContext: true
-      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
+      href: ../translator/tutorial-build-flask-app-translation-synthesis.md
     - name: Power Automate を使用して Excel に情報を抽出する
       href: tutorials/extract-excel-information.md
 - name: 概念
@@ -62,7 +65,7 @@
       href: How-tos/text-analytics-how-to-call-api.md
     - name: 言語検出
       href: How-tos/text-analytics-how-to-language-detection.md
-    - name: センチメント分析
+    - name: 感情分析とオピニオン マイニング
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
     - name: キー フレーズの抽出
       href: How-tos/text-analytics-how-to-keyword-extraction.md
@@ -77,49 +80,56 @@
         - name: コンテナーを構成する
           href: text-analytics-resource-container-config.md
         - name: Container Instances の使用
-          href: how-tos/text-analytics-how-to-use-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: Kubernetes サービス (AKS) の使用
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
     - name: API のバージョン 3 への移行
       href: migration-guide.md
 - name: リファレンス
   items:
     - name: CLI リファレンス
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
     - name: PowerShell リファレンス
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
     - name: Text Analytics API
       items:
+        - name: v3.1.preview.3
+          href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/'
         - name: v3.0
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0'
-        - name: v2
+        - name: v2 (廃止)
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1'
     - name: SDK
       items:
         - name: v3.0
           items:
             - name: .NET
-              href: 'https://aka.ms/azsdk-net-textanalytics-ref-docs'
+              href: /dotnet/api/azure.ai.textanalytics
             - name: Python
-              href: 'https://aka.ms/azsdk-python-textanalytics-ref-docs'
+              href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics
             - name: Java
-              href: 'https://aka.ms/azsdk-java-textanalytics-ref-docs'
+              href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable
             - name: Node.js
-              href: 'https://aka.ms/azsdk-js-textanalytics-ref-docs'
-        - name: v2
+              href: /javascript/api/overview/azure/ai-text-analytics-readme
+        - name: v2 (廃止)
           items:
             - name: .NET
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet'
+              href: /dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
             - name: Python
-              href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python'
+              href: /python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
             - name: Java
-              href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable'
+              href: /java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
             - name: Node.js
-              href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/?view=azure-node-latest'
+              href: /javascript/api/@azure/cognitiveservices-textanalytics/?view=azure-node-latest
             - name: Go
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: リソース
   items:
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: 外部とコミュニティのコンテンツ
       href: text-analytics-resource-external-community.md
     - name: よく寄せられる質問
@@ -130,9 +140,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: 試してみる
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: フィードバックの送信
-      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

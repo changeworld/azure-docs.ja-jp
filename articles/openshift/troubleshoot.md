@@ -3,15 +3,15 @@ title: Azure Red Hat OpenShift のトラブルシューティング
 description: Azure Red Hat OpenShift に関する一般的な問題をトラブルシューティングして解決します
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af66abff3507279dd1954fd83627900578229866
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76274926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100632953"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift のトラブルシューティング
 
@@ -30,7 +30,7 @@ ms.locfileid: "76274926"
 
 ## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>クラスターを作成した場合に登録済みのリソース プロバイダーが見つからないというエラーが発生する
 
-クラスターの作成時に `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` というエラーが発生する場合、プレビューに参加していたことを示します。この場合、[Azure 仮想マシン予約インスタンスを購入して](https://aka.ms/openshift/buy)、一般公開製品を使用する必要があります。 予約すると、フル マネージド Azure サービスを前払いすることでコストを削減できます。 予約および予約によってどのようにコストが削減されるかに関する詳細については、「[*Azure の予約とは*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)」を参照してください。
+クラスターの作成時に `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` というエラーが発生する場合、プレビューに参加していたことを示します。この場合、[Azure 仮想マシン予約インスタンスを購入して](https://aka.ms/openshift/buy)、一般公開製品を使用する必要があります。 予約すると、フル マネージド Azure サービスを前払いすることでコストを削減できます。 予約および予約によってどのようにコストが削減されるかに関する詳細については、「[*Azure の予約とは*](../cost-management-billing/reservations/save-compute-costs-reservations.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

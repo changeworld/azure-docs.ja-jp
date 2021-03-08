@@ -2,16 +2,16 @@
 title: エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 description: レプリケーション サイクルの失敗に関するヘルプを表示する
 author: anvar-ms
-ms.manager: bsiva
 ms.author: anvar
+ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871184"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071376"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 
@@ -29,11 +29,16 @@ ms.locfileid: "88871184"
 仮想マシンのレプリケーションの状態を監視するには、次の手順に従います。
 
   1. Azure portal で Azure Migrate の [サーバー] ページにアクセスします。
-  2. [サーバー移行] タイルの [サーバーをレプリケートしています] をクリックして、[マシンのレプリケート] ページに移動します。
-  3. レプリケートしているサーバーの一覧と、状態、正常性、最終同期時刻などの追加情報が表示されます。[正常性] 列には、VM の現在のレプリケーションの正常性が示されます。 [正常性] 列の 'クリティカル' または '警告' 値は、通常、その VM で以前のレプリケーション サイクルが失敗したことを示します。 詳細を表示するには、VM を右クリックし、[エラーの詳細] を選択します。 [エラーの詳細] ページには、エラーの情報と、トラブルシューティングの方法に関する追加情報が表示されます。 また、VM のイベント ページに移動するために使用できる [最近のイベント] リンクも表示されます。
-  4. [最近のイベント] をクリックして、VM の以前のレプリケーション サイクル エラーを確認します。 イベントページで、その VM の "レプリケーション サイクルが失敗しました" または "ディスクのレプリケーション サイクルが失敗しました" という種類の最新のイベントを探します。
-  5. イベントをクリックすると、エラーの考えられる原因と推奨される修復手順がわかります。 表示された情報を使用して、エラーのトラブルシューティングと修復を行います。
-    
+  ![画像 1](./media/troubleshoot-changed-block-tracking-replication/image0.png)
+  1. [サーバー移行] タイルの [サーバーをレプリケートしています] をクリックして、[マシンのレプリケート] ページに移動します。
+  ![画像 2](./media/troubleshoot-changed-block-tracking-replication/image1.png)
+  1. レプリケートしているサーバーの一覧と、状態、正常性、最終同期時刻などの追加情報が表示されます。[正常性] 列には、VM の現在のレプリケーションの正常性が示されます。 [正常性] 列の 'クリティカル' または '警告' 値は、通常、その VM で以前のレプリケーション サイクルが失敗したことを示します。 詳細を表示するには、VM を右クリックし、[エラーの詳細] を選択します。 [エラーの詳細] ページには、エラーの情報と、トラブルシューティングの方法に関する追加情報が表示されます。 また、VM のイベント ページに移動するために使用できる [最近のイベント] リンクも表示されます。
+  ![画像 3](./media/troubleshoot-changed-block-tracking-replication/image2.png)
+  1. [最近のイベント] をクリックして、VM の以前のレプリケーション サイクル エラーを確認します。 イベントページで、その VM の "レプリケーション サイクルが失敗しました" または "ディスクのレプリケーション サイクルが失敗しました" という種類の最新のイベントを探します。
+  ![画像 4](./media/troubleshoot-changed-block-tracking-replication/image3.png)
+  1. イベントをクリックすると、エラーの考えられる原因と推奨される修復手順がわかります。 表示された情報を使用して、エラーのトラブルシューティングと修復を行います。
+ ![画像 5](./media/troubleshoot-changed-block-tracking-replication/image4.png)
+
 ## <a name="common-replication-errors"></a>一般的なレプリケーション エラー
 
 ここでは、いくつかの一般的なエラーとそのトラブルシューティング方法について説明します。
@@ -90,7 +95,7 @@ Azure にデータをレプリケートしようとしているコンポーネ�
     
     **パフォーマンス ベンチマーク テストを実行する手順:**
     
-      1. azcopy を[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2138966)します
+      1. azcopy を[ダウンロード](../storage/common/storage-use-azcopy-v10.md)します
         
       2. リソース グループでアプライアンス ストレージ アカウントを探します。 ストレージ アカウントは、migrategwsa\*\*\*\*\*\*\*\*\*\* のような名前です。 これは、上記のコマンドのパラメーター [account] の値です。
         
@@ -170,7 +175,7 @@ Azure にデータをレプリケートしようとしているコンポーネ�
     
     **パフォーマンス ベンチマーク テストを実行する手順:**
     
-      1. azcopy を[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2138966)します
+      1. azcopy を[ダウンロード](../storage/common/storage-use-azcopy-v10.md)します
         
       2. リソース グループでアプライアンス ストレージ アカウントを探します。 ストレージ アカウントは、migratelsa\*\*\*\*\*\*\*\*\*\* のような名前です。 これは、上記のコマンドのパラメーター [account] の値です。
         
@@ -293,6 +298,24 @@ _エラー メッセージ:An internal error occurred. [Error message] (内部�
 
 これは、NFC ホスト バッファーのメモリが不足している場合に発生します。 この問題を解決するには、空きリソースがある別のホストに VM (コンピューティング vMotion) を移動する必要があります。
 
+## <a name="replication-cycle-failed"></a>レプリケーション サイクルが失敗した
+
+**エラー ID:** 181008
+
+**エラー メッセージ:** VM:"VMName"。 エラー:[No disksnapshots were found for the snapshot replication with snapshot Id :'SnapshotID'.]\(スナップショット ID が "SnapshotID" のスナップショット レプリケーションで、ディスク スナップショットが見つかりません。\)
+
+**考えられる原因:**
+
+次のような原因が考えられます。
+1. ストレージ vMotion が原因で、含まれている 1 つ以上のディスクのパスが変更されています。
+2. 含まれている 1 つ以上のディスクが VM に接続されていません。
+      
+**推奨事項:**
+
+推奨事項を次に示します
+1. ストレージ vMotion を使用して、含まれているディスクを元のパスに復元し、その後ストレージ vMotion を無効にします。
+2. ストレージ vMotion が有効になっている場合は無効にし、仮想マシンのレプリケーションを停止し、その後、仮想マシンをもう一度レプリケートします。 問題が解決しない場合は、サポートにお問い合わせください。
+
 ## <a name="next-steps"></a>次の手順
 
-VM レプリケーションを続行し、[テスト移行](https://go.microsoft.com/fwlink/?linkid=2139333)を実行します。
+VM レプリケーションを続行し、[テスト移行](./tutorial-migrate-vmware.md#run-a-test-migration)を実行します。

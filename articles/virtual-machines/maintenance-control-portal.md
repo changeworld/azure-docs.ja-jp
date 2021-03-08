@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4232f4cd39c3f6dd6efa0bf78959798ea842e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676048"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397285"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>メンテナンス コントロールと Azure portal を使用して更新を制御する
 
@@ -76,7 +76,7 @@ ms.locfileid: "84676048"
 
 **[仮想マシン]** または専用ホストのプロパティを使用して特定のホストを確認することもできます。 
 
-![ホストの [メンテナンス] を確認する方法を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
+![[メンテナンスの状態] が強調表示されているスクリーンショット。](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
 
 ## <a name="apply-updates"></a>更新プログラムの適用
 
@@ -94,7 +94,7 @@ ms.locfileid: "84676048"
 
 構成を削除するには、構成の詳細を開き、 **[削除]** をクリックします。
 
-![ホストの [メンテナンス] を確認する方法を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
+![構成を削除する方法を示すスクリーンショット。](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -3,12 +3,12 @@ title: Azure Batch の監視
 description: Azure Batch の Azure 監視サービス、メトリック、診断ログ、その他の監視機能について説明します。
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b926f9c6d173cd0b8d886047eae490e4a151988f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144933"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595427"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
@@ -18,15 +18,15 @@ Azure リソースの監視に使用できる Azure のコンポーネントと�
 
 ## <a name="subscription-level-monitoring"></a>サブスクリプション レベルの監視
 
-Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/platform/activity-log.md#view-the-activity-log)の運用イベント データが収集されます。
+Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/essentials/activity-log.md#view-the-activity-log)の運用イベント データが収集されます。
 
 具体的に Batch アカウントでは、アクティビティ ログによってアカウントの作成と削除やキー管理に関連するイベントが収集されます。
 
-アクティビティ ログからイベントを取得する 1 つの方法として、Azure Portal を使用できます。 **[すべてのサービス]**  >  **[アクティビティ ログ]** をクリックします。 または Azure CLI、PowerShell コマンドレットか Azure Monitor REST API を使用して、イベントのクエリを実行します。 アクティビティ ログをエクスポートしたり、[アクティビティ ログ アラート](../azure-monitor/platform/alerts-activity-log.md)を構成したりすることもできます。
+アクティビティ ログからイベントを取得する 1 つの方法として、Azure Portal を使用できます。 **[すべてのサービス]**  >  **[アクティビティ ログ]** をクリックします。 または Azure CLI、PowerShell コマンドレットか Azure Monitor REST API を使用して、イベントのクエリを実行します。 アクティビティ ログをエクスポートしたり、[アクティビティ ログ アラート](../azure-monitor/alerts/alerts-activity-log.md)を構成したりすることもできます。
 
 ## <a name="batch-account-level-monitoring"></a>Batch アカウント レベルの監視
 
-[Azure Monitor](../azure-monitor/overview.md) の機能を使用して各 Batch アカウントを監視します。 Azure Monitor は、Batch アカウントのレベルをスコープとして、プール、ジョブ、タスクなどのリソースの[メトリック](../azure-monitor/platform/data-platform-metrics.md)と、必要に応じて[診断ログ](../azure-monitor/platform/platform-logs-overview.md)を収集します。 このデータを手動またはプログラムによって収集および利用して、Batch アカウント内のアクティビティを監視し、問題を診断します。 詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」をご覧ください。
+[Azure Monitor](../azure-monitor/overview.md) の機能を使用して各 Batch アカウントを監視します。 Azure Monitor は、Batch アカウントのレベルをスコープとして、プール、ジョブ、タスクなどのリソースの[メトリック](../azure-monitor/essentials/data-platform-metrics.md)と、必要に応じて[診断ログ](../azure-monitor/essentials/platform-logs-overview.md)を収集します。 このデータを手動またはプログラムによって収集および利用して、Batch アカウント内のアクティビティを監視し、問題を診断します。 詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」をご覧ください。
  
 > [!NOTE]
 > メトリックは、既定では追加の構成なしで Batch アカウントで利用でき、30 日間のローリング履歴があります。 Batch アカウントの診断ログを有効化する必要があり、診断ログ データの格納または処理には追加のコストが生じる可能性があります。 

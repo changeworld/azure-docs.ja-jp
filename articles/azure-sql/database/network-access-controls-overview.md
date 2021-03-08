@@ -1,7 +1,7 @@
 ---
 title: ネットワーク アクセス制御
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) のネットワーク アクセスを管理および制御する方法の概要。
+description: Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスを管理および制御する方法の概要。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085465"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460009"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御
 
@@ -42,7 +42,7 @@ Azure SQL Database と Azure Synapse Analytics の論理 Azure SQL Server を [A
 
 ## <a name="allow-azure-services"></a>Azure サービスを許可する
 
-[Azure portal で](single-database-create-quickstart.md)論理 SQL サーバーを作成するときは、この設定をオフのままにします。
+[Azure portal で](single-database-create-quickstart.md)論理 SQL サーバーを新しく作成するときには、この設定は既定で **オフ** になります。 この設定は、パブリック サービス エンドポイントを使用した接続が許可されている場合に表示されます。
 
 この設定は、次のように、論理 SQL サーバーを作成した後にファイアウォール ウィンドウで変更することもできます。
   
@@ -56,12 +56,12 @@ Azure SQL Database と Azure Synapse Analytics の論理 Azure SQL Server を [A
 
 ### <a name="import-export-service"></a>Import Export Service
 
-**[Azure サービスへのアクセスを許可]** を **[オフ]** に設定すると、インポートまたはエクスポート サービスは機能しません。 ただし、[Azure VM から sqlpackage.exe を手動で実行するか、DACFx API を使用してコード内で直接エクスポートを実行することにより](https://docs.microsoft.com/azure/sql-database/import-export-from-vm)、この問題を回避することができます。
+**[Azure サービスへのアクセスを許可]** を **[オフ]** に設定すると、インポートまたはエクスポート サービスは機能しません。 ただし、[Azure VM から sqlpackage.exe を手動で実行するか、DACFx API を使用してコード内で直接エクスポートを実行することにより](./database-import-export-azure-services-off.md)、この問題を回避することができます。
 
 ### <a name="data-sync"></a>データ同期
 
-**[Azure サービスにサーバーへのアクセスを許可する]** を **[オフ]** に設定してデータ同期機能を使用するには、**ハブ** データベースをホストしているリージョンの **SQL サービス タグ**から [IP アドレスを追加する](firewall-create-server-level-portal-quickstart.md)、個々のファイアウォール規則エントリを作成する必要があります。
-これらのサーバーレベルのファイアウォール規則を、**ハブ**と**メンバー**の両方のデータベース (異なるリージョンに存在する可能性がある) をホストするサーバーに追加します。
+**[Azure サービスにサーバーへのアクセスを許可する]** を **[オフ]** に設定してデータ同期機能を使用するには、**ハブ** データベースをホストしているリージョンの **SQL サービス タグ** から [IP アドレスを追加する](firewall-create-server-level-portal-quickstart.md)、個々のファイアウォール規則エントリを作成する必要があります。
+これらのサーバーレベルのファイアウォール規則を、**ハブ** と **メンバー** の両方のデータベース (異なるリージョンに存在する可能性がある) をホストするサーバーに追加します。
 
 次の PowerShell スクリプトを使用して、米国西部リージョンの SQL サービス タグに対応する IP アドレスを生成します。
 
@@ -121,7 +121,7 @@ IP ベースのファイアウォールは、Azure の論理 SQL サーバーの
 
 **仮想ネットワーク:** ご自分の Azure サブスクリプションに仮想ネットワークを関連付けることができます
 
-**サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
+**サブネット:** 仮想ネットワークには **サブネット** が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
 **仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、SQL Database という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。
 
@@ -140,7 +140,7 @@ Azure SQL Database のファイアウォールでは、SQL Database への通信
 
 ## <a name="private-link"></a>Private Link
 
-プライベート リンクを使用すると、**プライベート エンドポイント**経由でサーバーに接続できます。 プライベート エンドポイントは、特定の[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)およびサブネット内のプライベート IP アドレスです。
+プライベート リンクを使用すると、**プライベート エンドポイント** 経由でサーバーに接続できます。 プライベート エンドポイントは、特定の[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)およびサブネット内のプライベート IP アドレスです。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -148,9 +148,9 @@ Azure SQL Database のファイアウォールでは、SQL Database への通信
 
 - サーバーレベルの仮想ネットワーク ファイアウォール規則の作成のクイックスタートについては、[Azure SQL Database 用の仮想ネットワーク サービス エンドポイントと規則](vnet-service-endpoint-rule-overview.md)に関するページを参照してください。
 
-- オープンソースまたはサードパーティ製のアプリケーションから SQL Database のデータベースに接続する方法のヘルプについては、[SQL Database のクライアント クイックスタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページを参照してください。
+- オープンソースまたはサードパーティ製のアプリケーションから SQL Database のデータベースに接続する方法のヘルプについては、[SQL Database のクライアント クイックスタート コード サンプル](/previous-versions/azure/ee336282(v=azure.100))に関するページを参照してください。
 
-- 他に開くことが必要な可能性のあるポートの詳細については、**SQL Database の外部と内部**に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)に関する記事で確認してください。
+- 他に開くことが必要な可能性のあるポートの詳細については、**SQL Database の外部と内部** に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)に関する記事で確認してください。
 
 - Azure SQL Database 接続の概要については、「[Azure SQL の接続アーキテクチャ](connectivity-architecture.md)」を参照してください
 
@@ -159,4 +159,3 @@ Azure SQL Database のファイアウォールでは、SQL Database への通信
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png
 [2]: media/quickstart-create-single-database/manage-server-firewall.png
- 

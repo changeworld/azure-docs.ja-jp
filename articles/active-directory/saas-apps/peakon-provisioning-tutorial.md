@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: b16ca0c396e2c406677af351cf6b1de2a3499353
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c04bbd5459690262b484582e807569b965a0439b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543672"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349890"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>チュートリアル:Peakon を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -56,11 +56,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 2.  **[Integrations]\(統合\)** を選択します。
     
-    ![Peakon-employee-provision](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
+    ![[Configuration]\(構成\) オプションのスクリーンショット。[Integrations]\(統合\) オプションが選択されています。](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
 
 3.  **[Employee Provisioning]\(従業員のプロビジョニング\)** を有効にします。
 
-    ![Peakon-employee-provision](media/Peakon-provisioning-tutorial/peakon05.png)
+    ![[Employee Provisioning]\(従業員のプロビジョニング\) セクションのスクリーンショット。[有効にする] オプションが選択されています。](media/Peakon-provisioning-tutorial/peakon05.png)
 
 4.  **[SCIM 2.0 URL]** および **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** の値をコピーします。 これらの値を、Azure portal の Peakon アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
 
@@ -105,11 +105,11 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Peakon
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **[SCIM 2.0 URL]** および **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Peakon に接続できることを確認します。 接続できない場合は、使用中の Peakon アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

@@ -5,16 +5,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/03/2019
-author: luisbosquez
-ms.author: lbosq
-ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: christopheranderson
+ms.author: chrande
+ms.openlocfilehash: 0442d21aebe1cf577c50d14a5aeff40bd1f6cd9c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390858"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600532"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin サーバーの応答ヘッダー
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 この記事では、要求の実行時に Cosmos DB Gremlin サーバーから呼び出し元に返されるヘッダーについて説明します。 これらのヘッダーは、要求パフォーマンスのトラブルシューティング、Cosmos DB サービスとネイティブに統合されるアプリケーションの構築、カスタマー サポートの簡素化に役立ちます。
 
 これらのヘッダーへの依存関係があると、アプリケーションの移植性が他の Gremlin の実装に限定されることに注意してください。 その代わり、Cosmos DB Gremlin との統合はより緊密になります。 これらのヘッダーは TinkerPop 標準ではありません。
@@ -29,18 +31,17 @@ ms.locfileid: "85390858"
 | **x-ms-total-server-time-ms** | double | 130.512 | Success and Failure | Cosmos DB Gremlin サーバーでトラバーサル全体の実行にかかった合計時間 (ミリ秒単位)。 このヘッダーは、すべての部分的な応答に含まれます。 これは、要求の開始以降に累積された実行時間を表します。 最後の応答は、総実行時間を示します。 このヘッダーは、遅延の原因としてクライアントとサーバーを区別する際に役立ちます。 クライアントでのトラバーサルの実行時間をこのヘッダーの値と比較できます。 |
 | **x-ms-status-code** | long | 200 | Success and Failure | ヘッダーは、要求が完了または終了した内部的な理由を示します。 アプリケーションはこのヘッダーの値を確認して是正措置を講じるよう求められます。 |
 | **x-ms-substatus-code** | long | 1003 | 失敗のみ | Cosmos DB は、一元化されたストレージ レイヤーをベースに構築されているマルチモデル データベースです。 このヘッダーには、高可用性スタックの下位レイヤーでエラーが発生した場合のエラーの理由に関する追加の分析情報が含まれます。 アプリケーションは、このヘッダーを格納し、Cosmos DB のカスタマー サポートに問い合わせる際にそれを使用するよう求められます。 このヘッダーの値は、Cosmos DB エンジニアによる迅速なトラブルシューティングに役立ちます。 |
-| **x-ms-retry-after-ms** | string (TimeSpan) | "00:00:03.9500000" | 失敗のみ | このヘッダーは、.NET の [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) 型の文字列表現です。 この値は、プロビジョニングされたスループットの消費によって失敗した要求のみに含まれます。 アプリケーションは、指示された期間の経過後にトラバーサルを再送信する必要があります。 |
+| **x-ms-retry-after-ms** | string (TimeSpan) | "00:00:03.9500000" | 失敗のみ | このヘッダーは、.NET の [TimeSpan](/dotnet/api/system.timespan) 型の文字列表現です。 この値は、プロビジョニングされたスループットの消費によって失敗した要求のみに含まれます。 アプリケーションは、指示された期間の経過後にトラバーサルを再送信する必要があります。 |
 | **x-ms-activity-id** | string (Guid) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Success and Failure | ヘッダーには、要求の一意のサーバー側識別子が格納されます。 各要求には、追跡目的でサーバーから一意識別子が割り当てられます。 アプリケーションは、ユーザーがカスタマー サポートに問い合わせる要求についてサーバーから返されたアクティビティ識別子をログに記録する必要があります。 Cosmos DB のサポート担当者は、Cosmos DB サービスのテレメトリ内にあるこれらの識別子によって特定の要求を見つけることができます。 |
 
 ## <a name="status-codes"></a>状態コード
 
-サーバーから返される最も一般的な状態コードを以下に示します。
+サーバーから返される、`x-ms-status-code` 状態属性に関する最も一般的なコードを下に示します。
 
 | Status | 説明 |
 | --- | --- |
 | **401** | エラー メッセージ `"Unauthorized: Invalid credentials provided"` は、認証用パスワードが Cosmos DB アカウント キーと一致しない場合に返されます。 Azure portal でお使いの Cosmos DB Gremlin アカウントに移動し、キーが正しいことを確認してください。|
 | **404** | 同じエッジまたは頂点の削除と更新を同時に実行しようとする同時実行操作があります。 `"Owner resource does not exist"` というエラー メッセージは、指定されたデータベースまたはコレクションの `/dbs/<database name>/colls/<collection or graph name>` 形式の接続パラメーターに誤りがあることを示しています。|
-| **408** | `"Server timeout"` は、トラバーサルの所要時間が **30 秒**を超えたため、サーバーによって取り消されたことを示します。 トラバーサルの各ホップで頂点またはエッジをフィルター処理して検索範囲を絞り込むことで、トラバーサルを迅速に実行できるよう最適化します。|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` 通常、これは、識別子を持つ頂点または辺がグラフに既に存在する場合に発生します。| 
 | **412** | 状態コードには、エラー メッセージ `"PreconditionFailedException": One of the specified pre-condition is not met` が併記されます。 このエラーは、エッジまたは頂点の読み取りと、変更後のストアへの書き戻しの間のオプティミスティック同時実行制御違反を示しています。 このエラーが発生する最も一般的な状況は、プロパティの変更 (たとえば `g.V('identifier').property('name','value')`) です。 Gremlin エンジンは頂点を読み取って変更し、書き戻します。 同じ頂点またはエッジを書き込もうとしている別のトラバーサルが並列実行されている場合は、そのいずれかでこのエラーが発生します。 アプリケーションはサーバーにトラバーサルを再度送信する必要があります。| 
 | **429** | 要求が調整されたので、**x-ms-retry-after-ms** の値の経過後に再試行する必要があります| 
@@ -51,6 +52,7 @@ ms.locfileid: "85390858"
 | **1004** | この状態コードは、グラフ要求の形式が正しくないことを示します。 要求が間違った形式になるのは、逆シリアル化に失敗した場合、値ではない型が値の型として逆シリアル化されている場合、またはサポートされていない Gremlin 操作が要求された場合です。 アプリケーションは要求を再試行しないでください。これが成功することはありません。 | 
 | **1007** | 通常、この状態コードはエラー メッセージ `"Could not process request. Underlying connection has been closed."` と共に返されます。 この状況は、サーバーによって閉じられている接続をクライアント ドライバーが使用しようとした場合に発生する可能性があります。 アプリケーションは、別の接続でトラバーサルを再試行する必要があります。
 | **1008** | Cosmos DB Gremlin サーバーは、接続を終了してクラスター内のトラフィックを再調整できます。 クライアント ドライバーは、この状況に対処し、サーバーへの要求の送信にライブ接続のみを使用する必要があります。 場合によっては、接続が閉じられたことをクライアント ドライバーで検出できないことがあります。 アプリケーションでエラー `"Connection is too busy. Please retry after sometime or open more connections."` が発生した場合は、別の接続でトラバーサルを再試行してください。
+| **1009** | 割り当てられた時間内に操作が完了せず、サーバーによって取り消されました。 トラバーサルの各ホップで頂点またはエッジをフィルター処理して検索範囲を絞り込むことで、トラバーサルを迅速に実行できるよう最適化してください。 要求のタイムアウトの既定値は **60 秒** です。 |
 
 ## <a name="samples"></a>サンプル
 
@@ -106,7 +108,7 @@ try {
 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Cosmos DB の HTTP 状態コード](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
 * [Azure Cosmos DB の一般的な REST 応答ヘッダー](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [TinkerPop Graph Driver Provider の要件]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

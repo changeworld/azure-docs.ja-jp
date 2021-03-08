@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1de363e66a4d5780258b75d777a95318f36333fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 0bcbe35fc6d9f104325bec8a3404ad57a6376cf2
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000500"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518126"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム:機密データ | 軽減策 
 | 製品/サービス | [アーティクル] |
@@ -88,7 +88,7 @@ ms.locfileid: "89000500"
   <system.webServer>
    <httpProtocol>
     <customHeaders>
-        <add name="Cache-Control" value="no-cache" />
+        <add name="Cache-Control" value="no-store" />
         <add name="Pragma" value="no-cache" />
         <add name="Expires" value="-1" />
     </customHeaders>
@@ -132,7 +132,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](/previous-versions/msp-n-p/ff647398(v=pandp.10))、[保護された構成プロバイダーの指定](/previous-versions/68ze1hb2(v=vs.140))、[Azure Key Vault を使用してアプリケーション シークレットを保護する](/azure/architecture/multitenant-identity/web-api) |
 | **手順** | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイメント タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
 
 ## <a name="explicitly-disable-the-autocomplete-html-attribute-in-sensitive-forms-and-inputs"></a><a id="autocomplete-input"></a>機密性の高いフォームおよび入力の autocomplete HTML 属性を明示的に無効にする
@@ -143,7 +143,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN: autocomplete 属性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](https://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **参照**              | [MSDN: autocomplete 属性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](/previous-versions/windows/internet-explorer/ie-developer/)、[HTML サニタイズの脆弱性](/security-updates/SecurityBulletins/2010/ms10-071)、[オートコンプリートをまた有効にするのですか](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **手順** | autocomplete 属性は、フォームがオートコンプリートをオンまたはオフにするかどうかを指定します。 オートコンプリートがオンのとき、ブラウザーは前にユーザーが入力した値に基づいて値を自動的に完成させます。 たとえば、新しい名前とパスワードがフォームに入力されて、フォームが送信されるとき、ブラウザーはパスワードを保存する必要があるかどうかを尋ねます。その後、フォームが表示されるとき、名前とパスワードは自動的に入力されるか、または名前が入力されると完成されます。 ローカルにアクセスできる攻撃者は、ブラウザーのキャッシュからクリア テキストのパスワードを入手する可能性があります。 既定ではオートコンプリートは有効なので、明示的に無効にする必要があります。 |
 
 ### <a name="example"></a>例
@@ -173,7 +173,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2016 |
-| **参照**              | [動的なデータ マスキング](https://msdn.microsoft.com/library/mt130841) |
+| **参照**              | [動的なデータ マスキング](/sql/relational-databases/security/dynamic-data-masking) |
 | **手順** | 動的データ マスクの目的は、アクセスすべきではないユーザーがデータを閲覧することを防ぎ、デリケートなデータの公開を制限することにあります。 動的データ マスクは、ユーザーが直接データベースに接続し、徹底的なクエリを実行して、デリケートなデータの漏えいを防ぐことを目的としてはいません。 動的データ マスクは SQL Server の他のセキュリティ機能 (監査、暗号化、行レベルのセキュリティなど) を補完するものであり、この機能をそれらと併用して、データベースの機密データの保護を強化することを強くお勧めします。 この機能は SQL Server 2016 以降と Azure SQL Database によってのみサポートされることに注意してください。 |
 
 ## <a name="ensure-that-passwords-are-stored-in-salted-hash-format"></a><a id="salted-hash"></a>パスワードを salt ハッシュ形式で保存する
@@ -195,7 +195,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | SQL バージョン - すべて |
-| **参照**              | [SQL Server での機微なデータの暗号化](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[方法: SQL Server でのデータの列の暗号化](https://msdn.microsoft.com/library/ms179331)、[証明書による暗号化](https://msdn.microsoft.com/library/ms188061) |
+| **参照**              | [SQL Server での機微なデータの暗号化](/previous-versions/sql/sql-server-2008-r2/ff848751(v=sql.105))、[方法: SQL Server でのデータの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)、[証明書による暗号化](/sql/t-sql/functions/encryptbycert-transact-sql) |
 | **手順** | クレジット カード番号などの機密データは、データベースで暗号化する必要があります。 データは、列レベルの暗号化を使って、または暗号化関数を使ってアプリケーション機能により、暗号化できます。 |
 
 ## <a name="ensure-that-database-level-encryption-tde-is-enabled"></a><a id="tde-enabled"></a>データベース レベルの暗号化 (TDE) を有効にする
@@ -206,7 +206,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [SQL Server の透過的なデータ暗号化 (TDE) について](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **参照**              | [SQL Server の透過的なデータ暗号化 (TDE) について](/previous-versions/sql/sql-server-2008-r2/bb934049(v=sql.105)) |
 | **手順** | SQL Server の Transparent Data Encryption (TDE) 機能は、データベースの機密データを暗号化し、証明書でデータを暗号化するために使われるキーを保護するのに役立ちます。 これにより、キーを持たないユーザーはデータを使うことができません。 TDE では、"静止した" データ、つまりデータとログ ファイルが保護されます。 この暗号化は、法律、規制、およびさまざまな業界で確立されているガイドラインの多くに準拠できるようになっています。 |
 
 ## <a name="ensure-that-database-backups-are-encrypted"></a><a id="backup"></a>データベースのバックアップを暗号化する
@@ -217,7 +217,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2014 |
-| **参照**              | [SQL データベース バックアップの暗号化](https://msdn.microsoft.com/library/dn449489) |
+| **参照**              | [SQL データベース バックアップの暗号化](/sql/relational-databases/backup-restore/backup-encryption) |
 | **手順** | SQL Server には、バックアップの作成中にデータを暗号化する機能があります。 バックアップを作成するときに暗号化アルゴリズムと暗号化機能 (証明書または非対称キー) を指定することで、暗号化されたバックアップ ファイルを作成できます。 |
 
 ## <a name="ensure-that-sensitive-data-relevant-to-web-api-is-not-stored-in-browsers-storage"></a><a id="api-browser"></a>Web API に関連する機密データがブラウザーの記憶域に保存されないようにする
@@ -263,7 +263,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure Disk Encryption を使用して仮想マシンに使用されるディスクを暗号化する](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
+| **参照**              | [Azure Disk Encryption を使用して仮想マシンに使用されるディスクを暗号化する](../../storage/blobs/security-recommendations.md#data-protection) |
 | **手順** | <p>Azure Disk Encryption は、現在プレビュー段階の新しい機能です。 この機能を使用すると、IaaS Virtual Machine に使用される OS ディスクとデータ ディスクを暗号化できます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 DM-Crypt は Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。 Azure Disk Encryption ソリューションでは、次の 3 つのユーザー暗号化シナリオがサポートされています。</p><ul><li>ユーザーが暗号化した VHD ファイルおよびユーザーが提供した暗号化キーから作成した新しい IaaS VM で暗号化を有効にして、キーを Azure Key Vault に保存します。</li><li>Azure Marketplace から作成された新しい IaaS VM での暗号化を有効にします。</li><li>Azure で既に実行されている既存の IaaS VM での暗号化を有効にします。</li></ul>| 
 
 ## <a name="encrypt-secrets-in-service-fabric-applications"></a><a id="fabric-apps"></a>Service Fabric アプリケーションでシークレットを暗号化する
@@ -274,7 +274,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
-| **参照**              | [Service Fabric アプリケーションでのシークレットの管理](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **参照**              | [Service Fabric アプリケーションでのシークレットの管理](../../service-fabric/service-fabric-application-secret-management.md) |
 | **手順** | シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。 Azure Key Vault を使って、Service Fabric アプリケーションのキーやシークレットを管理します。 |
 
 ## <a name="perform-security-modeling-and-use-business-unitsteams-where-required"></a><a id="modeling-teams"></a>セキュリティ モデリングを実行し、必要に応じて部署/チームを使う
@@ -329,7 +329,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - BLOB |
-| **参照**              | [Azure Storage Service Encryption for Data at Rest (プレビュー)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **参照**              | [Azure Storage Service Encryption for Data at Rest (プレビュー)](../../storage/common/storage-service-encryption.md) |
 | **手順** | <p>Azure Storage Service Encryption (SSE) for Data at Rest は、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たすのに役立ちます。 この機能を使用すると、Azure Storage はストレージに保存する前にデータを自動的に暗号化し、取得する前に復号化します。 暗号化、復号化、キーの管理は、ユーザーにはまったく意識されずに行われます。 SSE は、ブロック BLOB、ページ BLOB、および追加 BLOB にのみ適用されます。 テーブル、キュー、ファイルなど、他の種類のデータは暗号化されません。</p><p>暗号化と復号化のワークフロー:</p><ul><li>ユーザーがストレージ アカウントで暗号化を有効にします</li><li>ユーザーが Blob Storage に新しいデータを書き込むと (PUT Blob、PUT Block、PUT Page など)、使用可能なものの中で最も強力なブロック暗号化の 1 つである 256 ビット AES 暗号化を使って、すべての書き込みが暗号化されます</li><li>ユーザーがデータにアクセスすると (GET Blob など)、データは自動的に復号化されてユーザーに返されます</li><li>暗号化が無効になっている場合は、新しい書き込みは暗号化されず、既存の暗号化されたデータはユーザーが書き込み直すまで暗号化された状態のままになります。 暗号化が有効になっている間、Blob Storage への書き込みは暗号化されます。 ユーザーがストレージ アカウントの暗号化の有効/無効を切り替えても、データの状態は変わりません</li><li>すべての暗号化キーは、Microsoft によって保管、暗号化、管理されます</li></ul><p>現時点では暗号化に使われるキーは Microsoft が管理していることに注意してください。 Microsoft は、社内ポリシーの定義に従って、キーを生成し、キーの安全な保存と定期的な循環を管理しています。 将来的には、ユーザーが独自の暗号化キーを管理し、Microsoft が管理するキーからユーザーが管理するキーに移行する機能を追加する予定です。</p>| 
 
 ## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>クライアント側暗号化を使って、Azure Storage に機密データを保存する
@@ -340,7 +340,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[Azure 暗号化拡張機能で Azure Blob Storage にデータを安全に保存する](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **参照**              | [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../../storage/common/storage-client-side-encryption.md)、[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)、[Azure 暗号化拡張機能で Azure Blob Storage にデータを安全に保存する](/archive/blogs/partnercatalystteam/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions) |
 | **手順** | <p>.NET Nuget パッケージ用 Azure Storage クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。 また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。 ここでは、クライアント側暗号化のしくみを簡単に説明します。</p><ul><li>Azure ストレージ クライアント SDK は、1 回使用の対称キーであるコンテンツ暗号化キー (CEK) を生成します</li><li>ユーザー データは、この CEK を使用して暗号化されます</li><li>CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。 Storage クライアント自体が KEK にアクセスすることはありません。 クライアントは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。 ユーザーは、必要に応じてキー ラップ/ラップ解除にカスタム プロバイダーを使うことができます</li><li>暗号化されたデータは、Azure Storage サービスにアップロードされます。 細かなレベルの実装の詳細については、「参照」セクションのリンクを参照してください。</li></ul>|
 
 ## <a name="encrypt-sensitive-or-pii-data-written-to-phones-local-storage"></a><a id="pii-phones"></a>携帯電話のローカル ストレージに書き込まれた機密データまたは PII データを暗号化する
@@ -351,7 +351,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、Xamarin  |
 | **属性**              | 該当なし  |
-| **参照**              | [Microsoft Intune ポリシーを使用してデバイスの設定と機能を管理する](https://docs.microsoft.com/mem/intune/configuration/)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
+| **参照**              | [Microsoft Intune ポリシーを使用してデバイスの設定と機能を管理する](/mem/intune/configuration/)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
 | **手順** | <p>アプリケーションがユーザーの PII (メール アドレス、電話番号、名、姓、個人設定など) のような機密情報をモバイル デバイスのファイル システムに書き込む場合、ローカル ファイル システムに書き込む前に暗号化する必要があります。 アプリケーションがエンタープライズ アプリケーションの場合は、Windows Intune を使ってアプリケーションを発行する可能性を調査します。</p>|
 
 ### <a name="example"></a>例
@@ -431,7 +431,7 @@ clientCredentialType を Certificate または Windows に設定してくださ�
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | セキュリティ モード - トランスポート、セキュリティ モード - メッセージ |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF セキュリティの基礎 CoDe マガジン](https://www.codemag.com/article/0611051) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF セキュリティの基礎 CoDe マガジン](https://www.codemag.com/article/0611051) |
 | **手順** | トランスポートまたはメッセージのセキュリティが定義されていません。 トランスポートまたはメッセージのセキュリティなしでメッセージを送信するアプリケーションは、メッセージの機密性または整合性を保証できません。 WCF セキュリティのバインドが None に設定されている場合、トランスポートとメッセージのセキュリティはどちらも無効になります。 |
 
 ### <a name="example"></a>例

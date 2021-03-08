@@ -3,23 +3,21 @@ title: チュートリアル:Azure IoT Central で水質のモニタリング �
 description: チュートリアル:Azure IoT Central アプリケーション テンプレートを使用して水質のモニタリング アプリケーションを作成する方法について説明します。
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a928b1223b91faae6d4aca68b81cc16c827933b3
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82024474"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820068"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central で水質のモニタリング アプリケーションを作成する
 
-
-
-このチュートリアルでは、Azure IoT Central で水質のモニタリング アプリケーションを作成する手順を説明します。 Azure IoT Central の**水質のモニタリング** アプリケーション テンプレートからアプリケーションを作成します。
+このチュートリアルでは、Azure IoT Central で水質のモニタリング アプリケーションを作成する手順を説明します。 Azure IoT Central の **水質のモニタリング** アプリケーション テンプレートからアプリケーションを作成します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -38,7 +36,7 @@ ms.locfileid: "82024474"
 
 ## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Azure IoT Central で水質のモニタリング アプリケーションを作成する
 
-このセクションでは、Azure IoT Central の**水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションを作成します。
+このセクションでは、Azure IoT Central の **水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションを作成します。
 
 1. [Azure IoT Central ホームページ](https://aka.ms/iotcentral)に移動します。
 
@@ -66,7 +64,7 @@ ms.locfileid: "82024474"
 
     ![Azure IoT Central の [新規アプリケーション] の課金情報](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
-これで、Azure IoT Central の**水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションが作成されました。
+これで、Azure IoT Central の **水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションが作成されました。
 
 新しいアプリケーションには、次の構成済みコンポーネントが用意されています。
 
@@ -138,7 +136,7 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 1. デバイス テンプレート メニューから **[カスタマイズ]** を選択します。
 1. テレメトリの種類 **[Temperature]\(温度\)** に移動します。
 1. **[Display name]\(表示名\)** の値を **[Reported temperature]\(報告された温度\)** に変更します。
-1. 測定単位を変更するか、**最小値**と**最大値**を設定します
+1. 測定単位を変更するか、**最小値** と **最大値** を設定します
 1. **[保存]** を選択します。
 
 #### <a name="add-a-cloud-property"></a>クラウド プロパティを追加する
@@ -180,7 +178,7 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 1. **[デバイスのプロパティ]** タブと **[Device Dashboard]\(デバイス ダッシュボード\)** タブを調べます。
 
 > [!NOTE]
-> すべてのタブが**デバイス テンプレート ビュー**から構成されています。
+> すべてのタブが **デバイス テンプレート ビュー** から構成されています。
 
 ### <a name="add-new-devices"></a>新しいデバイスを追加する
 
@@ -188,7 +186,7 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 
 ## <a name="explore-and-configure-rules"></a>ルールを探索して構成する
 
-Azure IoT Central では、デバイス テレメトリを自動的に監視するルールを作成できます。 これらのルールは、いずれかの条件が満たされたときにアクションをトリガーします。 実行できる 1 つのアクションとして、電子メール通知の送信があります。 それ以外には、Microsoft Flow アクションや、他のサービスにデータを送信する Webhook アクションなどが可能です。
+Azure IoT Central では、デバイス テレメトリを自動的に監視するルールを作成できます。 これらのルールは、いずれかの条件が満たされたときにアクションをトリガーします。 実行できる 1 つのアクションとして、電子メール通知の送信があります。 それ以外には、Power Automate アクションや、他のサービスにデータを送信する Webhook アクションなどが可能です。
 
 作成した水質のモニタリング アプリケーションには、2 つの事前構成済みのルールがあります。
 
@@ -256,4 +254,7 @@ Azure IoT Central のジョブを使用すると、デバイスに対する、�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [水質のモニタリングの概念](./concepts-waterqualitymonitoring-architecture.md)について。
+* 項目ごとに詳しい情報を確認できます。 
+
+> [!div class="nextstepaction"]
+> [水質のモニタリングの概念](./concepts-waterqualitymonitoring-architecture.md)

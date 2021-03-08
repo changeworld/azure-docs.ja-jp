@@ -1,38 +1,41 @@
 ---
 title: クイック スタート:LUIS ポータルで新しいアプリを作成する
 description: このクイックスタートでは、アプリの基本パーツ、意図、エンティティを作成すると共に、LUIS ポータルからサンプル発話を使ってテストを行います。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/19/2020
-ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 11/30/2020
+ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697278"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436676"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
-このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 まず、アプリ、**意図**、および**エンティティ**の基本パーツを作成します。 次いで、インタラクティブ テスト パネルにユーザーの発話例を入力し、予測される意図を取得して、アプリをテストします。
+このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 まず、アプリ、**意図**、および **エンティティ** の基本パーツを作成します。 次いで、インタラクティブ テスト パネルにユーザーの発話例を入力し、予測される意図を取得して、アプリをテストします。
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>アプリを作成する
 
-1. コンテキスト ツールバーの **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、再び **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択します。
+アプリケーションを作成するには、 **[+ 新しいアプリ]** を選択します。 
 
-    > [!div class="mx-imgBorder"]
-    > [![LUIS ポータルのアプリ新規作成のスクリーンショット](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+表示されたウィンドウで、次の情報を入力します。
 
-1. ポップアップ ウィンドウで、以下の設定を使用してアプリを構成した後、 **[完了]** を選択します。
+|名前  |説明  |
+|---------|---------|
+|名前     | アプリの名前。 たとえば、"home automation"。 必須。        |
+|カルチャ     | アプリによって認識され、話される言語。 必須。   |
+|説明 | アプリの説明。 省略可能。
+|予測リソース | クエリを受け取る予測リソース。 省略可能。 |
 
-   |設定名| 値 | 目的|
-   |--|--|--|
-   |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
-   |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>required|
-   |説明 (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
-   |予測リソース (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
+**[完了]** を選択します。
 
-   ![新規アプリの設定入力のスクリーンショット](./media/get-started-portal-build-app/create-new-app-settings.png)
+>[!NOTE]
+>カルチャは、アプリケーションを作成した後に変更できません。
+
 
 ## <a name="create-intents"></a>意図の作成
 
@@ -50,7 +53,7 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **［作成］** を選択します
+1. アプリが作成されたら、 **[ビルド]** セクションの **[意図]** ページが表示されていることを確認します。 **［作成］** を選択します
 
    [![新しい意図を作成するために [作成] が選択されているスクリーンショット](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -58,14 +61,9 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 ## <a name="add-an-example-utterance"></a>発話の例を追加する
 
-意図を作成したら、発話の例を追加します。 発話の例は、ユーザーがチャット ボットや他のクライアント アプリケーションに入力するテキストです。 ユーザーのテキストの意図を、LUIS 意図にマッピングします。
+意図を作成したら、発話の例を追加します。 発話の例は、ユーザーがチャット ボットや他のクライアント アプリケーションに入力するテキストです。 ユーザーのテキストの意図を、LUIS 意図にマッピングします。 このアプリケーション例の `FindForm` 意図では、発話の例にフォーム番号を含めます。 ユーザーの要求を実行するためにクライアント アプリケーションはフォーム番号が必要なので、発話にそれを含めることは重要です。
 
-このアプリケーション例の `FindForm` 意図では、発話の例にフォーム番号を含めます。 ユーザーの要求を実行するためにクライアント アプリケーションはフォーム番号が必要なので、発話にそれを含めることは重要です。
-
-> [!div class="mx-imgBorder"]
-> [![FindForm 意図に発話の例を入力しているスクリーンショット](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
-
-`FindForm` 意図に次の 15 の発話の例を追加します。
+`FindForm` の **[意図]** ページで、 **[発話の例]** の下に次の発話例を追加します。 
 
 |#|発話の例|
 |--|--|

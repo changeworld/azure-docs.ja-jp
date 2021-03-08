@@ -3,7 +3,7 @@ title: Azure AD アプリケーション プロキシは:バージョンのリ�
 description: この記事では、Azure AD アプリケーション プロキシのすべてのリリースを一覧表示し、新機能と修正された問題について説明します
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a4b029a1397a2522dfaa6eba9c0206dd5a031875
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210862"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258135"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
 この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。 
@@ -38,7 +38,7 @@ Azure AD アプリケーション プロキシ コネクタのダウンロード
 2020 年 7 月 22 日: ダウンロード対象としてリリース済み。このバージョンは、ダウンロードページからのみインストールできます。 このバージョンの自動アップグレード リリースは、後でリリースされる予定です。
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
--   Azure Government クラウド環境のサポートが強化されました。 Azure Government クラウドのコネクタを正しくインストールする手順については、[前提条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)と[インストール手順](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)を確認してください。
+-   Azure Government クラウド環境のサポートが強化されました。 Azure Government クラウドのコネクタを正しくインストールする手順については、[前提条件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls)と[インストール手順](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)を確認してください。
 - リモート デスクトップ サービス Web クライアントとアプリケーション プロキシの連携がサポートされます。 詳細については、「[Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](application-proxy-integrate-with-remote-desktop-services.md)」を参照してください。
 - Websocket 拡張機能のネゴシエーションが改善されました。 
 

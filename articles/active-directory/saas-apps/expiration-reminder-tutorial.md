@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f576205246ed90b8e8da91b7dd3074aa2d58d9d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a8e6d92545756e185697b1fb827d7b5f25dcfdd2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547173"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>チュートリアル:Azure Active Directory と Expiration Reminder の統合
 
@@ -27,7 +27,7 @@ Expiration Reminder と Azure AD の統合には、次の利点があります�
 * ユーザーが自分の Azure AD アカウントを使用して Expiration Reminder に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure AD と Expiration Reminder の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Expiration Reminder では、**SP** で始動する SSO がサポートされています
+* Expiration Reminder では、 **SP** で始動する SSO がサポートされています
 
 ## <a name="adding-expiration-reminder-from-the-gallery"></a>ギャラリーから Expiration Reminder を追加する
 
@@ -61,13 +61,13 @@ Azure AD への Expiration Reminder の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Expiration Reminder**」と入力し、結果ウィンドウから **[Expiration Reminder]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Expiration Reminder** 」と入力し、結果ウィンドウから **[Expiration Reminder]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リストの Expiration Reminder](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Expiration Reminder で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Expiration Reminder で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Expiration Reminder 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Expiration Reminder で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -103,7 +103,7 @@ Expiration Reminder で Azure AD シングル サインオンを構成するに�
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://app.expirationreminder.net/account/sso`」と入力します。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -119,7 +119,7 @@ Expiration Reminder で Azure AD シングル サインオンを構成するに�
 
 ### <a name="configure-expiration-reminder-single-sign-on"></a>Expiration Reminder シングル サインオンを構成する
 
-**Expiration Reminder** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [Expiration Reminder サポート チーム](mailto:support@expirationreminder.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Expiration Reminder** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [Expiration Reminder サポート チーム](mailto:support@expirationreminder.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -137,9 +137,9 @@ Expiration Reminder で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -174,18 +174,18 @@ Expiration Reminder で Azure AD シングル サインオンを構成するに�
 
 ### <a name="create-expiration-reminder-test-user"></a>Expiration Reminder テスト ユーザーを作成する
 
-このセクションでは、Expiration Reminder で Britta Simon というユーザーを作成します。  [Expiration Reminder サポート チーム](mailto:support@expirationreminder.net)との共同作業で Expiration Reminder プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Expiration Reminder で Britta Simon というユーザーを作成します。 [Expiration Reminder サポート チーム](mailto:support@expirationreminder.net)と連携して、Expiration Reminder プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Expiration Reminder] タイルをクリックすると、SSO を設定した Expiration Reminder に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Expiration Reminder] タイルをクリックすると、SSO を設定した Expiration Reminder に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -2,21 +2,21 @@
 title: Azure AD DS でネットワーク セキュリティ グループのアラートを解決する | Microsoft Docs
 description: Azure Active Directory Domain Services のネットワーク セキュリティ グループ構成アラートをトラブルシューティングして解決する方法について説明します
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 12/16/2020
+ms.author: justinha
+ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040454"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693926"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services でのネットワーク構成アラート
 
@@ -40,19 +40,21 @@ ms.locfileid: "86040454"
 
 | Priority | 名前 | Port | Protocol | source | 到着地 | アクション |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Any | Allow |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Allow |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Any | Allow |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Deny<sup>1</sup> |
 | 65000    | AllVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
 | 65001    | AllowAzureLoadBalancerInBound | Any | Any | AzureLoadBalancer | Any | Allow |
 | 65500    | DenyAllInBound | Any | Any | Any | Any | 拒否 |
+
+
+<sup>1</sup>デバッグでは省略可。 高度なトラブルシューティングに必要な場合に許可。
 
 > [!NOTE]
 > [Secure LDAP を構成][configure-ldaps]する場合は、さらに、受信トラフィックを許可する追加の規則を持つことができます。 正しい LDAPS 通信にはこの追加規則が必要です。
 
 ### <a name="outbound-security-rules"></a>送信セキュリティ規則
 
-| Priority | 名前 | Port | Protocol | source | 到着地 | アクション |
+| Priority | 名前 | Port | Protocol | source | 宛先 | アクション |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
 | 65001    | AllowAzureLoadBalancerOutBound | Any | Any |  Any | インターネット | Allow |
@@ -65,7 +67,7 @@ ms.locfileid: "86040454"
 
 既存のセキュリティ規則を確認し、既定のポートが開いていることを確実にするには、次の手順を実行します。
 
-1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
+1. Azure portal で、**ネットワーク セキュリティ グループ** を検索して選択します。
 1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択します。
 1. **[概要]** ページに、既存の受信および送信のセキュリティ規則が表示されます。
 
@@ -77,7 +79,7 @@ ms.locfileid: "86040454"
 
 不足しているセキュリティ規則を追加するには、次の手順を実行します。
 
-1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
+1. Azure portal で、**ネットワーク セキュリティ グループ** を検索して選択します。
 1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択します。
 1. 左側のパネルの **[設定]** で、追加する必要がある規則に応じて、 *[受信セキュリティ規則]* または *[送信セキュリティ規則]* をクリックします。
 1. **[追加]** を選択し、ポート、プロトコル、方向などに基づいて必要な規則を作成します。準備ができたら **[OK]** を選択します。

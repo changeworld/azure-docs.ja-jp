@@ -1,19 +1,16 @@
 ---
 title: HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 description: HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する方法を説明します。 Kafka Connect Azure IoT Hub プロジェクトは、Kafka にソース コネクタとシンク コネクタを提供します。 ソース コネクタは IoT Hub からデータを読み取ることができ、シンク コネクタは IoT Hub に書き込みます。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: ea7aa7758b5ccf7be02fa8d450ce710dcbef86a4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087386"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932869"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 
@@ -37,7 +34,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* Azure IoT Hub とデバイス この記事では、[Raspberry Pi オンライン シミュレーターの Azure IoT Hub への接続](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)を検討するようお勧めします。
+* Azure IoT Hub とデバイス この記事では、[Raspberry Pi オンライン シミュレーターの Azure IoT Hub への接続](../../iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)を検討するようお勧めします。
 
 * [Scala ビルド ツール](https://www.scala-sbt.org/)
 
@@ -162,7 +159,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
         > [!IMPORTANT]  
         > ポータルからのエンドポイント値には、この例では必要のない余分なテキストが含まれていることがあります。 このパターン `sb://<randomnamespace>.servicebus.windows.net/` に一致するテキストを抽出します。
 
-   * __[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
+   * __[Azure CLI](/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
 
        ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -184,7 +181,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
         2. __[主キー]__ の値をコピーします。
         3. __[接続文字列 -- 主キー]__ の値をコピーします。
 
-    * __[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
+    * __[Azure CLI](/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
 
         1. 主キーの値を取得するには、次のコマンドを使用します。
 

@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209487"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917802"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance への SQL Server インスタンスの移行
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-この記事では、SQL Server 2005 以降のバージョンのインスタンスを [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) に移行する方法について説明します。 単一データベースまたはエラスティック プールへの移行については、[SQL Database への移行](../database/migrate-to-database-from-sql-server.md)に関する記事を参照してください。 他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
+この記事では、SQL Server 2005 以降のバージョンのインスタンスを [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) に移行する方法について説明します。 単一データベースまたはエラスティック プールへの移行については、「[移行の概要:SQL Server から SQL Database](../migration-guides/database/sql-server-to-sql-database-overview.md)」を参照してください。 他のプラットフォームからの移行、およびツールとオプションに関するガイダンスについては、「[Azure SQL への移行](../migration-guides/index.yml)」を参照してください。
 
 > [!NOTE]
 > Azure SQL Managed Instance をすぐに開始して試す場合は、このページではなく[クイックスタート ガイド](quickstart-content-reference-guide.md)に関するページをご覧ください。
@@ -45,7 +45,7 @@ ms.locfileid: "88209487"
 
 まず、SQL Managed Instance がアプリケーションのデータベース要件と互換性があるかどうかを判定します。 SQL Managed Instance は、SQL Server を使用する既存のアプリケーションの大部分について簡単なリフト アンド シフト移行を提供するように設計されています。 ただし、まだサポートされていない機能が必要で、回避策を実装するコストが高すぎる場合があります。
 
-[Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) を使用して、Azure SQL Database のデータベース機能に影響を与える可能性のある互換性の問題を検出します。 障害となっている問題が報告されている場合、[Azure VM 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) などの代替オプションを考慮することが必要な場合があります。 次に例をいくつか示します。
+[Data Migration Assistant](/sql/dma/dma-overview) を使用して、Azure SQL Database のデータベース機能に影響を与える可能性のある互換性の問題を検出します。 障害となっている問題が報告されている場合、[Azure VM 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) などの代替オプションを考慮することが必要な場合があります。 次に例をいくつか示します。
 
 - オペレーティング システムやファイル システムへの直接アクセスが必要な場合、たとえばサードパーティ製のエージェントやカスタム エージェントを SQL Server と同じ仮想マシンにインストールする場合。
 - FileStream/FileTable、PolyBase、クロス インスタンス トランザクションなど、まだサポートされていない機能に対する厳密な依存関係がある場合。
@@ -69,8 +69,8 @@ SQL Managed Instance では、重要なシナリオであっても 99.99% の可
 SQL Server インスタンスで測定する必要のあるパラメーターの一部を次に示します。
 
 - [SQL Server インスタンスでの CPU 使用率を監視](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)し、平均とピークの CPU 使用率を記録します。
-- [SQL Server インスタンスでのメモリ使用量を監視](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage)し、バッファー プール、プラン キャッシュ、列ストア プール、[インメモリ OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017) などのさまざまなコンポーネントで使用されるメモリの量を明らかにします。さらに、ページの予測保持期間メモリ パフォーマンス カウンターの平均値とピーク値を調べる必要があります。
-- [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) ビューまたは[パフォーマンス カウンター](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)を使って、ソース SQL Server インスタンスでのディスク IO 使用率を監視ます。
+- [SQL Server インスタンスでのメモリ使用量を監視](/sql/relational-databases/performance-monitor/monitor-memory-usage)し、バッファー プール、プラン キャッシュ、列ストア プール、[インメモリ OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017) などのさまざまなコンポーネントで使用されるメモリの量を明らかにします。さらに、ページの予測保持期間メモリ パフォーマンス カウンターの平均値とピーク値を調べる必要があります。
+- [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) ビューまたは[パフォーマンス カウンター](/sql/relational-databases/performance-monitor/monitor-disk-usage)を使って、ソース SQL Server インスタンスでのディスク IO 使用率を監視ます。
 - SQL Server 2016 以降のバージョンから移行する場合は、動的管理ビューまたはクエリ ストアを調べることで、ワークロードとクエリのパフォーマンスまたは SQL Server インスタンスを監視します。 ワークロードで最も重要なクエリの平均継続時間と CPU 使用率を特定し、マネージド インスタンスで実行されているクエリと比較します。
 
 > [!Note]
@@ -116,7 +116,7 @@ SQL Managed Instance では、次のデータベース移行オプションが�
 
 [Azure Database Migration Service](../../dms/dms-overview.md) は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージドのサービスです。 このサービスは、既存のサード パーティ製データベースと SQL Server データベースを Azure に移行するために必要なタスクを効率化します。 パブリック プレビューでのデプロイ オプションには、Azure SQL Database 内のデータベースおよび Azure 仮想マシン内の SQL Server データベースが含まれます。 Database Migration Service は、エンタープライズ ワークロードの移行に推奨される方法です。
 
-オンプレミスの SQL Server で SQL Server Integration Services (SSIS) を使用する場合、Database Migration Service はまだ SSIS パッケージを格納する SSIS カタログ (SSISDB) の移行をサポートしていませんが、Azure Data Factory でマネージド インスタンスに新しい SSISDB を作成する Azure-SSIS 統合ランタイム (IR) をプロビジョニングし、そこにパッケージを再デプロイすることができます。 [Azure Data Factory での Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
+オンプレミスの SQL Server で SQL Server Integration Services (SSIS) を使用する場合、Database Migration Service はまだ SSIS パッケージを格納する SSIS カタログ (SSISDB) の移行をサポートしていませんが、Azure Data Factory でマネージド インスタンスに新しい SSISDB を作成する Azure-SSIS 統合ランタイム (IR) をプロビジョニングし、そこにパッケージを再デプロイすることができます。 [Azure Data Factory での Azure-SSIS IR の作成](../../data-factory/create-azure-ssis-integration-runtime.md)に関するページを参照してください。
 
 このシナリオおよび Database Migration Service での構成手順の詳細については、[Database Migration Service を使用したオンプレミス データベースのマネージド インスタンスへの移行](../../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。  
 
@@ -126,15 +126,15 @@ SQL Managed Instance では、次のデータベース移行オプションが�
 
 次の図は、プロセスの概要を示しています。
 
-![移行フロー](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![SQL Server、Azure Storage に向かう "BACKUP / Upload to URL" というラベルの矢印、Azure Storage から SQL の Managed Instance に向かう "RESTORE from URL" というラベルの 2 つ目の矢印を示す図。](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 次の表は、実行しているソース SQL Server のバージョンに応じて使用できる方法に関する詳細情報を示しています。
 
 |手順|SQL エンジンとバージョン|バックアップ/復元方法|
 |---|---|---|
 |Azure Storage へのバックアップの格納|2012 SP1 CU2 より前|Azure Storage に .bak ファイルを直接アップロードする|
-||2012 SP1 CU2 - 2016|非推奨の [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) 構文を使用して直接バックアップする|
-||2016 以上|[WITH SAS CREDENTIAL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) を使用して直接バックアップする|
+||2012 SP1 CU2 - 2016|非推奨の [WITH CREDENTIAL](/sql/t-sql/statements/restore-statements-transact-sql) 構文を使用して直接バックアップする|
+||2016 以上|[WITH SAS CREDENTIAL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) を使用して直接バックアップする|
 |Azure Storage からマネージド インスタンスに復元する|[SAS 資格情報での URL からの復元](restore-sample-database-quickstart.md)|
 
 > [!IMPORTANT]
@@ -164,7 +164,7 @@ SAS 資格情報を使用してデータベース バックアップをマネー
 - さまざまなインスタンス、データベース、tempdb の設定、および構成を調べて、マネージド インスタンスでの設定を、ソース SQL Server インスタンスの設定と一致させます。 最初のパフォーマンス比較を実行する前に互換性レベルや暗号化などの設定が変更されていないことを確認するか、または有効にした新機能によってクエリが影響を受けるリスクを受け入れるます。 移行に伴うリスクを軽減するには、パフォーマンスの監視後にのみ、データベース互換性レベルを変更します。
 - 優れたパフォーマンスを実現するためのファイルのサイズの事前割り当てなど、[General Purpose に対するストレージのベスト プラクティスのガイドライン](https://techcommunity.microsoft.com)を実装します。
 - [マネージド インスタンスと SQL Server でのパフォーマンスの違いを引き起こす可能性のある重要な環境の違い](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)について学習し、パフォーマンスに影響する可能性のあるリスクを明らかにします。
-- マネージド インスタンスでクエリ ストアと自動チューニングが有効になっていることを確認します。 これらの機能を使用すると、ワークロードのパフォーマンスを測定し、可能性があるパフォーマンスの問題を自動的に修正できます。 「[新しい SQL Server にアップグレードするときにパフォーマンスの安定性を維持する](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)」の説明に従って、データベースの互換性レベルの変更前と変更後のワークロードのパフォーマンスに関する情報を取得するための最適なツールとしてクエリ ストアを使用する方法を学習します。
+- マネージド インスタンスでクエリ ストアと自動チューニングが有効になっていることを確認します。 これらの機能を使用すると、ワークロードのパフォーマンスを測定し、可能性があるパフォーマンスの問題を自動的に修正できます。 「[新しい SQL Server にアップグレードするときにパフォーマンスの安定性を維持する](/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)」の説明に従って、データベースの互換性レベルの変更前と変更後のワークロードのパフォーマンスに関する情報を取得するための最適なツールとしてクエリ ストアを使用する方法を学習します。
 オンプレミスの環境と可能な限り一致するように環境を準備した後は、ワークロードの実行を開始してパフォーマンスを測定できます。 測定プロセスには、[ソース SQL Server インスタンスでワークロード測定のベースライン パフォーマンスを作成する](#create-a-performance-baseline)ときに測定したものと同じパラメーターを含める必要があります。
 結果として、パフォーマンス パラメーターをベースラインと比較し、重要な違いを特定する必要があります。
 
@@ -194,16 +194,16 @@ SQL Managed Instance には、監視とトラブルシューティングのた�
 
 フル マネージド プラットフォームに移行して、ワークロードのパフォーマンスが SQL Server のワークロードのパフォーマンスに匹敵することを確認した後、サービスの一部として自動的に提供されるものを利用します。
 
-移行の間にマネージド インスタンスで何も変更しない場合でも、インスタンスを運用するときに新しい機能を有効にして、最新のデータベース エンジンの機能強化を利用する機会があります。 一部の変更は[データベースの互換性レベルを変更した](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)後でのみ有効になります。
+移行の間にマネージド インスタンスで何も変更しない場合でも、インスタンスを運用するときに新しい機能を有効にして、最新のデータベース エンジンの機能強化を利用する機会があります。 一部の変更は[データベースの互換性レベルを変更した](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)後でのみ有効になります。
 
-たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 SQL マネージド インスタンスでは、[特定の時点への復旧 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](../database/high-availability-sla.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
+たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 SQL Managed Instance では、[特定の時点への復旧 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](../database/high-availability-sla.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
 
-セキュリティを強化するには、[Azure Active Directory 認証](../database/security-overview.md)、[監査](auditing-configure.md)、[脅威の検出](../database/advanced-data-security.md)、[行レベル セキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)の使用を検討します。
+セキュリティを強化するには、[Azure Active Directory 認証](../database/security-overview.md)、[監査](auditing-configure.md)、[脅威の検出](../database/azure-defender-for-sql.md)、[行レベル セキュリティ](/sql/relational-databases/security/row-level-security)、[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)の使用を検討します。
 
-高度な管理とセキュリティの機能に加えて、マネージド インスタンスでは[ワークロードの監視とチューニング](../database/monitor-tune-overview.md)に役立つ高度なツールのセットが提供されます。 [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) では、マネージド インスタンスの大規模なセットを監視し、多数のインスタンスとデータベースの監視を一元化することができます。 マネージド インスタンスの[自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)では、SQL プランの実行統計のパフォーマンスが継続的に監視されて、識別されたパフォーマンスの問題が自動的に修正されます。
+高度な管理とセキュリティの機能に加えて、マネージド インスタンスでは[ワークロードの監視とチューニング](../database/monitor-tune-overview.md)に役立つ高度なツールのセットが提供されます。 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) では、マネージド インスタンスの大規模なセットを監視し、多数のインスタンスとデータベースの監視を一元化することができます。 マネージド インスタンスの[自動チューニング](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)では、SQL プランの実行統計のパフォーマンスが継続的に監視されて、識別されたパフォーマンスの問題が自動的に修正されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 - マネージド インスタンスについては、「[Azure SQL Managed Instance とは](sql-managed-instance-paas-overview.md)」をご覧ください。
 - バックアップからの復元を含むチュートリアルについては、[マネージド インスタンスの作成](instance-create-quickstart.md)に関するページを参照してください。
-- Database Migration Service を使用した移行を示すチュートリアルについては、[Database Migration Service を使用したオンプレミス データベースの Azure SQL Managed Instance への移行](../../dms/tutorial-sql-server-to-managed-instance.md)に関するページをご覧ください。  
+- Database Migration Service を使用した移行を示すチュートリアルについては、[Database Migration Service を使用したオンプレミス データベースの Azure SQL Managed Instance への移行](../../dms/tutorial-sql-server-to-managed-instance.md)に関するページをご覧ください。

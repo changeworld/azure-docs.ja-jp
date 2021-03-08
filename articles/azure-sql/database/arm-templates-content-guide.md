@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
-ms.topic: sample
+ms.topic: guide
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 5202145af6f60f34bdce57aa94f4fec92a8b227f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983640"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677257"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 用 Azure Resource Manager テンプレート
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,8 +39,8 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 | [Azure Web アプリと SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | このサンプルでは、無料の Azure Web アプリと Azure SQL Database のデータベースを "Basic" サービス レベルで作成します。|
 | [Azure Web アプリおよび Redis Cache と SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | このテンプレートでは、同じリソース グループ内に Web アプリ、Redis Cache、データベースを作成し、Web アプリ内にデータベースと Redis Cache 用の 2 つの接続文字列を作成します。|
 | [ADF V2 を使用した Blob Storage からのデータのインポート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | この Azure Resource Manager テンプレートでは、Azure Blob Storage から SQL Database にデータをコピーする Azure Data Factory V2 のインスタンスを作成します。|
-| [HDInsight クラスターとデータベース](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | このテンプレートを使用すると、HDInsight クラスターと論理 SQL サーバー、データベース、2 つのテーブルを作成できます。 このテンプレートは、[HDInsight の Hadoop での Sqoop の使用](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)に関する記事で使用されています。 |
-| [スケジュールに従って SQL ストアド プロシージャを実行する Azure ロジック アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | このテンプレートを使用すると、スケジュールに従って SQL ストアド プロシージャを実行するロジック アプリを作成できます。 プロシージャの引数は、テンプレートの body セクションに配置できます。|
+| [HDInsight クラスターとデータベース](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | このテンプレートを使用すると、HDInsight クラスターと論理 SQL サーバー、データベース、2 つのテーブルを作成できます。 このテンプレートは、[HDInsight の Hadoop での Sqoop の使用](../../hdinsight/hadoop/hdinsight-use-sqoop.md)に関する記事で使用されています。 |
+| [スケジュールに従って SQL ストアド プロシージャを実行する Azure Logic Apps](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | このテンプレートを使用すると、スケジュールに従って SQL ストアド プロシージャを実行する Logic Apps を作成できます。 プロシージャの引数は、テンプレートの body セクションに配置できます。|
 
 ## <a name="azure-sql-managed-instance"></a>[Azure SQL Managed Instance](#tab/managed-instance)
 
@@ -54,4 +54,3 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 | [SQL Managed Instance と仮想マシン](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | このデプロイでは、`ManagedInstance` と `Management` という 2 つのサブネットを持つ Azure 仮想ネットワークが作成されます。 SQL Managed Instance は、`ManagedInstance` サブネットにデプロイされます。 最新バージョンの SQL Server Management Studio (SSMS) を持つ仮想マシンは、`Management` サブネットにデプロイされます。 |
 
 ---
-

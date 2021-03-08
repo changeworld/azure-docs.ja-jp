@@ -8,73 +8,100 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/13/2017
+ms.date: 10/07/2020
 ms.author: mathoma
-ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: bc0d5b0cdf616904ee7ed61fdc681ba60bff8f75
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480290"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131901"
 ---
-# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Always On 可用性グループの概要。
-
+# <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、Azure Virtual Machines での SQL Server 可用性グループについて説明します。 
+この記事では、Azure 仮想マシン (VM) 上の SQL Server の Always On 可用性グループについて説明します。 
 
-Azure Virtual Machines での Always On 可用性グループは、オンプレミスの Always On 可用性グループに似ています。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。 
+## <a name="overview"></a>概要
 
-次の図は、Azure Virtual Machines での完全な SQL Server 可用性グループの一部を示したものです。
+Azure 仮想マシン上の Always On 可用性グループは、[オンプレミスの Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)に似ています。 ただし、仮想マシンは Azure でホストされているため、VM の冗長性や Azure ネットワーク上でのトラフィックのルーティングなど、追加の考慮事項もいくつかあります。 
+
+次の図は、Azure VM 上の SQL Server の可用性グループを示しています。
 
 ![可用性グループ](./media/availability-group-overview/00-EndstateSampleNoELB.png)
 
-Azure Virtual Machines での可用性グループの重要な違いは、仮想マシン (VM) には[ロード バランサー](../../../load-balancer/load-balancer-overview.md)が必要なことです。 ロード バランサーは、可用性グループ リスナーの IP アドレスを保持しています。 複数の可用性グループがある場合は、グループごとにリスナーが必要です。 1 つのロード バランサーで複数のリスナーをサポートできます。
 
-さらに、Azure IaaS VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを使用することをお勧めします。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。 
+## <a name="vm-redundancy"></a>VM の冗長性 
 
-冗長性と高可用性を向上させるには、SQL Server VM を同じ[可用性セット](availability-group-manually-configure-prerequisites-tutorial.md#create-availability-sets)に配置するか、異なる[可用性ゾーン](/azure/availability-zones/az-overview)に配置する必要があります。 
+冗長性と高可用性を向上させるには、SQL Server VM を同じ[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)に配置するか、異なる[可用性ゾーン](../../../availability-zones/az-overview.md)に配置する必要があります。
 
-|  | Windows Server のバージョン | SQL Server のバージョン | SQL Server のエディション | WSFC クォーラムの構成 | マルチリージョンの DR | マルチサブネットのサポート | 既存の AD のサポート | マルチゾーン同一リージョンの DR | Dist-AG サポート (AD ドメインなし) | Dist-AG サポート (クラスターなし) |  
-| :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[SQL VM CLI](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | Ent | クラウド監視 | いいえ | はい | はい | はい | いいえ | いいえ |
-| **[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | Ent | クラウド監視 | いいえ | はい | はい | はい | いいえ | いいえ |
-| **[マニュアル](availability-group-manually-configure-prerequisites-tutorial.md)** | All | All | All | All | はい | はい | はい | はい | はい | はい |
+一連の VM を同じ可用性セットに配置すると、機器の障害が原因で発生するデータセンター内での停止から保護され (可用性セット内の VM はリソースを共有しません)、更新からも保護されます (可用性セット内の VM は同時に更新されることはありません)。 可用性ゾーンは、データセンター全体の障害から保護します。各ゾーンは、リージョン内の一連のデータセンターを表します。  リソースがさまざまな可用性ゾーンに配置されるようにすることで、データセンターレベルの停止によってすべての VM がオフラインになることはなくなります。
 
-**SQL Server AlwaysOn クラスター (プレビュー)** テンプレートが Azure Marketplace から削除され、入手できなくなりました。 
-
-Azure Virtual Machines に SQL Server 可用性グループを作成する準備ができたら、次のチュートリアルをご覧ください。
-
-## <a name="manually-with-azure-cli"></a>Azure CLI を使用して手動で行う
-
-可用性グループの構成とデプロイには、Azure CLI を使用することをお勧めします。これは、最も簡単で最も高速にデプロイできるからです。 Azure CLI を使用すると、Windows フェールオーバー クラスターの作成、クラスターへの SQL Server VM の結合、およびリスナーと内部ロード バランサーの作成のすべてを 30 分以内に達成することができます。 このオプションでは、可用性グループの手動作成がまだ必要ですが、その他の必要な構成手順はすべて自動化されています。 
-
-詳細については、「[Use Azure SQL VM CLI to configure Always On availability group for SQL Server on an Azure VM (Azure SQL VM CLI を使用して Azure VM 上で SQL Server のための Always On 可用性グループを構成する)](availability-group-az-cli-configure.md)」を参照してください。 
-
-## <a name="automatically-with-azure-quickstart-templates"></a>Azure クイック スタート テンプレートを使用して自動的に行う
-
-Azure クイック スタート テンプレートは、SQL VM リソース プロバイダーを使用して Windows フェールオーバー クラスターをデプロイし、SQL Server VM をそれに結合し、リスナーを作成し、内部ロード バランサーを構成します。 このオプションを使用する場合でも、可用性グループと内部ロード バランサー (ILB) を手動で作成する必要があります。 ただし、ILB の構成など、その他の必要なすべての構成手順は自動化および簡略化されます。 
-
-詳細については、「[Use Azure Quickstart Template to configure Always On availability group for SQL Server on an Azure VM (Azure クイック スタート テンプレートを使用して Azure VM 上で SQL Server のための Always On 可用性グループを構成する)](availability-group-quickstart-template-configure.md)」を参照してください。
+Azure VM を作成するときは、可用性セットと可用性ゾーンのどちらを構成するかを選択する必要があります。  Azure VM は両方に参加することはできません。
 
 
-## <a name="automatically-with-an-azure-portal-template"></a>Azure portal テンプレートを使用して自動的に行う
+## <a name="connectivity"></a>接続状況 
 
-[Azure VM での AlwaysOn 可用性グループの自動構成 - Resource Manager](availability-group-azure-marketplace-template-configure.md)
+従来のオンプレミスのデプロイでは、クライアントは仮想ネットワーク名 (VNN) を使用して可用性グループ リスナーに接続し、そのリスナーは可用性グループ内の適切な SQL Server レプリカにトラフィックをルーティングします。 ただし、Azure ネットワーク上でトラフィックをルーティングするには追加の要件があります。 
+
+Azure VM 上の SQL Server を使用する場合、可用性グループ リスナーにトラフィックをルーティングするよう[ロード バランサー](availability-group-vnn-azure-load-balancer-configure.md)を構成します。また、SQL Server 2019 CU8 以降を使用している場合は、従来の VNN 可用性グループ リスナーに代わる[分散ネットワーク名 (DNN) リスナー](availability-group-distributed-network-name-dnn-listener-configure.md)を構成することもできます。 
 
 
-## <a name="manually-in-the-azure-portal"></a>Azure portal で手動で行う
+### <a name="vnn-listener"></a>VNN リスナー 
 
-テンプレートを使わずに、自分で仮想マシンを作成することもできます。 最初に、前提条件を満たした後、可用性グループを作成します。 次のトピックを参照してください。 
+クライアントから Azure ネットワーク上の従来の仮想ネットワーク名 (VNN) 可用性グループ リスナーにトラフィックをルーティングするには、[Azure ロード バランサー](../../../load-balancer/load-balancer-overview.md)を使用します。 
 
-- [Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](availability-group-manually-configure-prerequisites-tutorial.md)
+このロード バランサーは、VNN リスナーの IP アドレスを保持しています。 複数の可用性グループがある場合は、グループごとに VNN リスナーが必要です。 1 つのロード バランサーで複数のリスナーをサポートできます。
 
-- [Always On 可用性グループを作成して可用性と障害復旧を向上させる](availability-group-manually-configure-tutorial.md)
+作業を開始するには、[ロード バランサーの構成](availability-group-vnn-azure-load-balancer-configure.md)に関する記事を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+### <a name="dnn-listener"></a>DNN リスナー
 
-[異なるリージョンの Azure Virtual Machines に SQL Server AlwaysOn 可用性グループを構成する](availability-group-manually-configure-multiple-regions.md)
+SQL Server 2019 CU8 では、分散ネットワーク名 (DNN) リスナーのサポートが導入されています。 DNN リスナーは、従来の可用性グループ リスナーに代わるものであり、Azure Load Balancer が Azure ネットワーク上でトラフィックをルーティングする必要性を排除します。 
+
+DNN リスナーは、デプロイの簡略化、メンテナンスとコストの削減、障害発生時のフェールオーバー時間の短縮を実現するため、Azure で推奨される HADR 接続ソリューションとなります。 
+
+DNN リスナーを既存の VNN リスナーの代わりに使用するか、または既存の VNN リスナーと組み合わせて使用します。後者の場合、可用性グループには 2 つの異なる接続ポイントとして、VNN リスナー名 (既定値以外の場合はポートも) を使用したものと、DNN リスナー名とポートを使用したものが存在します。 これは、ロード バランサーのフェールオーバーの待ち時間を回避したいものの、分散型可用性グループ、Service Broker、filestream など、VNN リスナーに依存する SQL Server 機能を引き続き利用したいユーザーに役立つ場合があります。 詳細については、[DNN リスナーと SQL Server 機能の相互運用性](availability-group-dnn-interoperability.md)に関する記事を参照してください。
+
+作業を開始するには、[DNN リスナーの構成](availability-group-distributed-network-name-dnn-listener-configure.md)に関する記事を参照してください。
+
+
+## <a name="deployment"></a>デプロイ 
+
+Azure VM 上の SQL Server に可用性グループをデプロイするためのオプションは複数あり、その一部は他のものよりも自動化されています。 
+
+次の表は、使用可能なオプションの比較を示しています。
+
+| | Azure portal | Azure CLI / PowerShell | クイック スタート テンプレート | マニュアル |
+|---------|---------|---------|---------|---------|
+|**SQL Server のバージョン** |2016 以降 |2016 以降|2016 以降|2012 以降|
+|**SQL Server のエディション** |Enterprise |Enterprise |Enterprise |Enterprise、Standard|
+|**Windows Server のバージョン**| 2016 以降 | 2016 以降 | 2016 以降 | All|
+|**クラスターを自動作成**|はい|はい | はい |いいえ|
+|**可用性グループを自動作成** |はい |いいえ|いいえ|いいえ|
+|**リスナーとロード バランサーを別々に作成** |いいえ|いいえ|いいえ|はい|
+|**この方法を使用して DNN リスナーを作成可能**|いいえ|いいえ|いいえ|はい|
+|**WSFC クォーラムの構成**|クラウド監視|クラウド監視|クラウド監視|All|
+|**複数のリージョンを使用した DR** |いいえ|いいえ|いいえ|はい|
+|**マルチサブネットのサポート** |はい|はい|はい|はい|
+|**既存の AD のサポート**|はい|はい|はい|はい|
+|**同一リージョン内の複数のゾーンを使用した DR**|はい|はい|はい|はい|
+|**AD なしの分散型 AG**|いいえ|いいえ|いいえ|はい|
+|**クラスターなしの分散型 AG** |いいえ|いいえ|いいえ|はい|
+
+詳細については、[Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)、[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)、および[手動](availability-group-manually-configure-prerequisites-tutorial.md)に関するページを参照してください。
+
+## <a name="considerations"></a>考慮事項 
+
+Azure IaaS VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを推奨しています。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。 
+
+## <a name="next-steps"></a>次の手順
+
+[HADR のベスト プラクティス](hadr-cluster-best-practices.md)を確認し、[Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI または PowerShell](./availability-group-az-commandline-configure.md)、[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用するか、または[手動](availability-group-manually-configure-prerequisites-tutorial.md)で可用性グループのデプロイを開始します。
+
+また、[クラスターレス可用性グループ](availability-group-clusterless-workgroup-configure.md)または可用性グループを[複数のリージョン](availability-group-manually-configure-multiple-regions.md)にデプロイすることもできます。

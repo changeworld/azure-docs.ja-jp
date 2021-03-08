@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590457"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508273"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure Dedicated HSM サービスのトラブルシューティング
 
@@ -29,7 +29,7 @@ Azure Dedicated HSM サービスには、明確に区別される 2 つの側面
 
 ## <a name="hsm-registration"></a>HSM の登録
 
-Dedicated HSM は無償提供されません。ハードウェア リソースをクラウドで提供するものである以上、保護を必要とする貴重なリソースであるためです。 そのため Microsoft では、メール (HSMrequest@microsoft.com) を用いたホワイトリスト登録プロセスを採用しています。 
+Dedicated HSM は無償提供されません。ハードウェア リソースをクラウドで提供するものである以上、保護を必要とする貴重なリソースであるためです。 そのため Microsoft では、メール (HSMrequest@microsoft.com) を用いた許可リスト登録プロセスを採用しています。 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Dedicated HSM へのアクセス
 
@@ -69,9 +69,9 @@ HSM がスタンプあたり 2 つ、またリージョンあたり 4 つを超�
 特定のスタンプまたはリージョンがいっぱいになると (つまり、空いている HSM がほぼすべてプロビジョニングされると)、デプロイに失敗する可能性があります。 お客様が利用できる HSM は各スタンプにつき 11 個、つまりリージョンあたり 22 個となります。 また、各スタンプには、スペアが 3 つ、テスト デバイスが 1 つ存在します。 上限に達したと思われる場合、個別のスタンプの容量については、HSMrequest@microsoft.com にメールでお問い合わせください。
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>プロビジョニング時に HSM を表示する方法
-Dedicated HSM はホワイトリストに登録されたサービスであるため、Azure portal では "非表示の型" と見なされます。 HSM リソースを表示するには、下に示すように [非表示の型の表示] チェック ボックスをオンにする必要があります。 HSM の後ろには常に NIC リソースが表示されるため、SSH を使用して HSM に接続する際は、あらかじめここで IP アドレスを調べることができます。
+Dedicated HSM は許可リストに登録されたサービスであるため、Azure portal では "非表示の型" と見なされます。 HSM リソースを表示するには、下に示すように [非表示の型の表示] チェック ボックスをオンにする必要があります。 HSM の後ろには常に NIC リソースが表示されるため、SSH を使用して HSM に接続する際は、あらかじめここで IP アドレスを調べることができます。
 
-![サブネットの委任](./media/troubleshoot/hsm-provisioned.png)
+![[非表示の型の表示] チェック ボックスが強調表示されているスクリーンショット](./media/troubleshoot/hsm-provisioned.png)
 
 ## <a name="networking-resources"></a>ネットワーク リソース
 
@@ -85,7 +85,7 @@ Dedicated HSM では、ユーザーのプライベート IP アドレス空間�
 
 Dedicated HSM 用に支給されるサンプル テンプレートでは、HSM の IP が特定のサブネット範囲から自動的に取得されることを想定しています。 HSM の IP アドレスを明示的に指定する場合は、ARM テンプレートの "NetworkInterfaces" 属性を使用してください。 
 
-![サブネットの委任](./media/troubleshoot/private-ip-address.png)
+![Dedicated HSM 用のサンプル テンプレートを示すスクリーンショット。](./media/troubleshoot/private-ip-address.png)
 
 ## <a name="hsm-initialization"></a>HSM の初期化
 

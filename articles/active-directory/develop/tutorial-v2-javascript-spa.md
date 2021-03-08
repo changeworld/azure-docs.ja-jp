@@ -1,7 +1,7 @@
 ---
-title: JavaScript シングルページ アプリのチュートリアル | Azure
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用する JavaScript シングルページ アプリを作成する | Azure
 titleSuffix: Microsoft identity platform
-description: このチュートリアルでは、JavaScript シングルページ アプリ (SPA) で、Microsoft ID プラットフォームによって発行されるアクセス トークンを必要とする API を呼び出す方法について説明します。
+description: このチュートリアルでは、Microsoft ID プラットフォームを使用してユーザーのサインインを処理する JavaScript シングルページ アプリ (SPA) を作成し、アクセス トークンを取得して、そのユーザーに代わって Microsoft Graph API を呼び出します。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -11,53 +11,49 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: dab4ac22a8b0da927f05376755463885ce32c343
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118197"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103007"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>チュートリアル:ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
-このガイドでは、JavaScript のシングルページ アプリケーション (SPA) で次のことを行う方法について説明します。
-- 個人用アカウントと職場または学校アカウントへのサインイン
-- アクセス トークンの取得
-- *Microsoft ID プラットフォーム エンドポイント*のアクセス トークンを必要とする Microsoft Graph API などの API の呼び出し
+このチュートリアルでは、ユーザーのサインインを行い、暗黙的なフローを使用して Microsoft Graph を呼び出す JavaScript シングルページ アプリケーション (SPA) を構築します。 構築する SPA では、JavaScript v1.0 用の Microsoft Authentication Library (MSAL) を使用します。
+
+このチュートリアルの内容:
+
+> [!div class="checklist"]
+> * `npm` を使用して JavaScript プロジェクトを作成する
+> * Azure portal でアプリケーションを登録する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Microsoft Graph API を呼び出すコードを追加する
+> * アプリケーションをテストする
 
 >[!TIP]
 > このチュートリアルでは MSAL.js v1.x を使用します。これは、シングルページ アプリケーションに対して暗黙的な許可フローを使用するように制限されています。 すべての新しいアプリケーションでは代わりに、[PKCE および CORS がサポートされる MSAL.js 2.x と承認コード フロー](tutorial-v2-javascript-auth-code.md)を使用することをお勧めします。
+
+## <a name="prerequisites"></a>前提条件
+
+* ローカル Web サーバーを実行するための [Node.js](https://nodejs.org/en/download/)。
+* プロジェクト ファイルを編集するためのエディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
+* 最新の Web ブラウザー このチュートリアルで作成するアプリでは、[ES6](http://www.ecma-international.org/ecma-262/6.0/) 規則が使用されているため、**Internet Explorer** は **サポートされていません**。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
 ![このチュートリアルで生成されたサンプル アプリの動作の紹介](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-### <a name="more-information"></a>詳細情報
+このガイドで作成したサンプル アプリケーションにより、JavaScript SPA で、Microsoft Graph API、または Microsoft ID プラットフォームのトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 このトークンは、**MS Graph API** からユーザーのプロファイルとメールを取得する際に使用します。
 
-このガイドで作成したサンプル アプリケーションにより、JavaScript SPA で、Microsoft Graph API、または Microsoft ID プラットフォーム エンドポイントのトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 このトークンは、**MS Graph API** からユーザーのプロファイルとメールを取得する際に使用します。 トークンの取得と更新は、**Microsoft Authentication Library (MSAL) for JavaScript** で処理されます。
-
-### <a name="libraries"></a>ライブラリ
-
-このガイドでは、次のライブラリを使用します。
-
-|ライブラリ|説明|
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript 用 Microsoft Authentication Library|
+トークンの取得と更新は、[Microsoft Authentication Library (MSAL) for JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js) で処理されます。
 
 ## <a name="set-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 
 > 代わりにこのサンプルのプロジェクトをダウンロードすることもできます。 [プロジェクト ファイルのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
 >
 > コード サンプルを実行する前に構成する場合は、[構成手順](#register-your-application)に進んでください。
-
-## <a name="prerequisites"></a>前提条件
-
-* このチュートリアルを実行するには、[Node.js](https://nodejs.org/en/download/)、[.NET Core](https://www.microsoft.com/net/core)、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と統合された IIS Express などのローカル Web サーバーが必要です。
-
-* このガイドの手順は、Node.js で構築された Web サーバーに基づいています。 統合開発環境 (IDE) としては [Visual Studio Code](https://code.visualstudio.com/download) の使用をお勧めします。
-
-* 最新の Web ブラウザー この JavaScript サンプルでは [ES6](http://www.ecma-international.org/ecma-262/6.0/) の規約を使用しているため、**Internet Explorer** はサポート**されません**。
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
@@ -76,7 +72,7 @@ ms.locfileid: "88118197"
    npm install morgan --save
    ```
 
-1. `index.js` という名前の .js ファイルを作成し、次のコードを追加します。
+1. `server.js` という名前の .js ファイルを作成し、次のコードを追加します。
 
    ```JavaScript
    const express = require('express');
@@ -269,21 +265,22 @@ ms.locfileid: "88118197"
 
 認証に進む前に、アプリケーションを **Azure Active Directory** に登録します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. お使いのアカウントで複数のテナントにアクセスできる場合は、右上でそのアカウントを選択した後、使用する Azure AD テナントにポータル セッションを設定します。
-1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
-1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 1. **[リダイレクト URI]** セクションで、ドロップダウン リストから **Web** プラットフォームを選択し、お使いの Web サーバーに基づいたアプリケーション URL に値を設定します。
 1. **[登録]** を選択します。
 1. 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
-1. このクイック スタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 登録済みのアプリケーションの左側のウィンドウで、 **[認証]** を選択します。
-1. **[詳細設定]** の **[暗黙的な許可]** で、 **[ID トークン]** チェック ボックスと **[アクセス トークン]** チェック ボックスをオンにします。 このアプリではユーザーのサインインを実行して API を呼び出す必要があるため、ID トークンとアクセス トークンが必要です。
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[ID トークン]** と **[アクセス トークン]** を選択します。 このアプリではユーザーのサインインを実行して API を呼び出す必要があるため、ID トークンとアクセス トークンが必要です。
 1. **[保存]** を選択します。
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Node.js でリダイレクト URL を設定する
 >
-> Node.js の場合は、Web サーバーのポートを *index.js* ファイルで設定できます。 このチュートリアルでは、ポート 3000 を使用しますが、使用可能なその他の任意のポートを使用できます。
+> Node.js の場合は、Web サーバーのポートを *server.js* ファイルで設定できます。 このチュートリアルでは、ポート 3000 を使用しますが、使用可能なその他の任意のポートを使用できます。
 >
 > アプリケーション登録情報の中にリダイレクト URL を設定するには、 **[アプリケーションの登録]** ウィンドウに切り替え、以下のいずれかを行います。
 >
@@ -322,10 +319,10 @@ ms.locfileid: "88118197"
 ```
 
  各値の説明:
- - *\<Enter_the_Application_Id_Here>* は、登録したアプリケーションの**アプリケーション (クライアント) ID** です。
- - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
+ - *\<Enter_the_Application_Id_Here>* は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
+ - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
  - *\<Enter_the_Tenant_info_here>* には、次のオプションのいずれかを設定します。
-   - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を**テナント ID** または**テナント名** (例: *contoso.microsoft.com*) に置き換えます。
+   - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を **テナント ID** または **テナント名** (例: *contoso.microsoft.com*) に置き換えます。
    - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。
    - アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。
 
@@ -410,19 +407,19 @@ ms.locfileid: "88118197"
 
 ### <a name="more-information"></a>詳細情報
 
-ユーザーが初めて **[Sign In]** ボタンを選択すると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドによって、"*Microsoft ID プラットフォーム エンドポイント*" のポップアップ ウィンドウが開き、ユーザーの資格情報が要求されて検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされます。 トークンが受信されて `msal.js` によって処理されると、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン*と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 何らかの目的のためにこのトークンが提供する任意のデータを使用する予定がある場合、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、このトークンがバックグラウンド サーバーで確実に検証される必要があります。
+ユーザーが初めて **[Sign In]** ボタンを選択すると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドによって、"*Microsoft ID プラットフォーム エンドポイント*" のポップアップ ウィンドウが開き、ユーザーの資格情報が要求されて検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされます。 トークンが受信されて `msal.js` によって処理されると、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン* と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 なんらかの目的で、このトークンによって提供されるデータを使用する予定がある場合は、このトークンがアプリケーションの有効なユーザーに対して発行されたことを保証するために、バックエンド サーバーによってトークンが検証されていることを確認します。
 
-このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される*アクセス トークン*を取得します。 ID トークンを検証するサンプルが必要な場合は、GitHub で[この](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 サンプル")サンプル アプリケーションを参照してください。 このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
+このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される *アクセス トークン* を取得します。 ID トークンを検証するサンプルが必要な場合は、GitHub で[この](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 サンプル")サンプル アプリケーションを参照してください。 このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-最初のサインインの後、リソースにアクセスするためのトークンを要求するたびにユーザーに再認証を求めるのは、あまり好ましくありません。 そこで、ほとんどの場合は、*acquireTokenSilent* を使用してトークンを取得することをお勧めします。 ただし、ユーザーに Microsoft ID プラットフォーム エンドポイントとのやり取りを強制しなければならない場合があります。 たとえば、次のようになります。
+最初のサインインの後、リソースにアクセスするためのトークンを要求するたびにユーザーに再認証を求めるのは、あまり好ましくありません。 そこで、ほとんどの場合は、*acquireTokenSilent* を使用してトークンを取得することをお勧めします。 ただし、ユーザーに Microsoft ID プラットフォームとのやり取りを強制する場合があります。 たとえば、次のようになります。
 
 - パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある。
 - アプリケーションがリソースへのアクセスを要求し、ユーザーの同意が必要である。
 - 2 要素認証が必須である。
 
-*acquireTokenPopup* を呼び出すとポップアップ ウィンドウが開きます (または *acquireTokenRedirect* によって Microsoft ID プラットフォーム エンドポイントにユーザーがリダイレクトされます)。 ユーザーはそのウィンドウ内で、自分の資格情報の確認、必要なリソースへの同意、2 要素認証の完了のいずれかの方法で操作を行う必要があります。
+*acquireTokenPopup* を呼び出すとポップアップ ウィンドウが開きます (または *acquireTokenRedirect* によって Microsoft ID プラットフォームにユーザーがリダイレクトされます)。 ユーザーはそのウィンドウ内で、自分の資格情報の確認、必要なリソースへの同意、2 要素認証の完了のいずれかの方法で操作を行う必要があります。
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
@@ -474,7 +471,7 @@ ms.locfileid: "88118197"
 
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>保護された API に対する REST 呼び出しの実行についての詳細
 
-このガイドで作成するサンプル アプリケーションでは、`callMSGraph()` メソッドを使用して、トークンが必要な保護されたリソースに対して HTTP `GET` 要求を実行します。 その後、この要求からその内容が呼び出し元に返されます。 このメソッドは、取得したトークンを *HTTP Authorization ヘッダー*に追加します。 このガイドで作成したサンプル アプリケーションのリソースは、ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
+このガイドで作成するサンプル アプリケーションでは、`callMSGraph()` メソッドを使用して、トークンが必要な保護されたリソースに対して HTTP `GET` 要求を実行します。 その後、この要求からその内容が呼び出し元に返されます。 このメソッドは、取得したトークンを *HTTP Authorization ヘッダー* に追加します。 このガイドで作成したサンプル アプリケーションのリソースは、ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
 
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -486,9 +483,7 @@ ms.locfileid: "88118197"
    ```
 1. ブラウザーに「 **http://localhost:3000** 」または「 **http://localhost:{port}** 」と入力します。*port* には、実際の Web サーバーのリッスン ポートを指定してください。 *index.html* ファイルの内容と **[サインイン]** ボタンが表示されるはずです。
 
-## <a name="test-your-application"></a>アプリケーションのテスト
-
-ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォーム エンドポイントにサインインするように求められます。
+ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォームにサインインするように求められます。
 
 ![JavaScript SPA アカウント サインイン ウィンドウ](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
@@ -512,3 +507,10 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 > スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>次のステップ
+
+Microsoft ID プラットフォームにおけるシングルページ アプリケーション (SPA) 開発の詳細を、複数のパートから成る一連のシナリオで参照してください。
+
+> [!div class="nextstepaction"]
+> [シナリオ:シングルページ アプリ](scenario-spa-overview.md)

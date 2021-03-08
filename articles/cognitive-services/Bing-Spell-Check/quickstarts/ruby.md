@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:REST API と Ruby を使用してスペルをチェックする - Bing Spell Check
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートで、Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
+description: Bing Spell Check REST API と Ruby を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: fae466124244f5d2b04ad6e59681011b9c5ba974
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 46b62b5721eca622fcf2795a395653071bb88c95
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993526"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352645"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>クイック スタート:Bing Spell Check REST API と Ruby を使用してスペルをチェックする
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイック スタートを使用して、Bing Spell Check の REST API を Ruby から呼び出してみましょう。 このシンプルなアプリケーションは、API に要求を送信して、一連の修正候補を返します。 
 
@@ -144,4 +149,4 @@ ms.locfileid: "83993526"
 > [単一ページの Web アプリの作成](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
-- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

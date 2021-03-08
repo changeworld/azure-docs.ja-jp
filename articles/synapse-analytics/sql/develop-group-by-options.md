@@ -6,30 +6,31 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c2e1ddbfb87df40a0e3683e7bca7539c26191a7b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426775"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671314"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL の GROUP BY オプション
+
 Synapse SQL によって、さまざまな GROUP BY オプションを実装してソリューションを開発できます。 
 
-## <a name="what-does-group-by-do"></a>GROUP BY で行われる操作
+## <a name="what-group-by-does"></a>GROUP BY の役割
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 句は、行のサマリー セットにデータを集計します。
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest&preserve-view=true) T-SQL 句は、行のサマリー セットにデータを集計します。
 
-SQL オンデマンドでは、あらゆる種類の GROUP BY オプションがサポートされています。 SQL プールでは、限られた数の GROUP BY オプションがサポートされています。
+サーバーレス SQL プールでは、あらゆる種類の GROUP BY オプションをサポートしています。 専用 SQL プールでは、限られた数の GROUP BY オプションをサポートしています。
 
-## <a name="group-by-options-supported-in-sql-pool"></a>SQL プールでサポートされている GROUP BY オプション
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>専用 SQL プールでサポートされている GROUP BY オプション
 
-GROUP BY には、SQL プールではサポートされないオプションがいくつかあります。 これらのオプションには、次の回避策があります。
+GROUP BY には、専用 SQL プールではサポートされないオプションがいくつかあります。 これらのオプションには、次の回避策があります。
 
 * GROUP BY with ROLLUP
 * GROUPING SETS
@@ -124,7 +125,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-次の図に、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) の結果を示しています。
+次の図に、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) の結果を示しています。
 
 ![Cube によるグループ化](./media/develop-group-by-options/develop-group-by-cube.png)
 

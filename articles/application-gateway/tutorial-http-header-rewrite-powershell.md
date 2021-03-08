@@ -7,34 +7,32 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806436"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396857"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>アプリケーション ゲートウェイを作成して HTTP ヘッダーを書き換える
 
-[自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](rewrite-http-headers.md)を構成できます
+[自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](./application-gateway-autoscaling-zone-redundant.md) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](rewrite-http-headers.md)を構成できます
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
->
-> * 自動スケーリングする仮想ネットワークを作成する
-> * 予約済みパブリック IP を作成する
-> * アプリケーション ゲートウェイのインフラストラクチャをセットアップする
-> * http ヘッダーの書き換えルールの構成を指定する
-> * 自動スケールを指定する
-> * アプリケーション ゲートウェイの作成
-> * アプリケーション ゲートウェイのテスト
+* 自動スケーリングする仮想ネットワークを作成する
+* 予約済みパブリック IP を作成する
+* アプリケーション ゲートウェイのインフラストラクチャをセットアップする
+* http ヘッダーの書き換えルールの構成を指定する
+* 自動スケールを指定する
+* アプリケーション ゲートウェイの作成
+* アプリケーション ゲートウェイのテスト
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
+この記事では、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -109,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 http ヘッダーの書き換えに必要な新しいオブジェクトを構成します。
 
-- **RequestHeaderConfiguration**: このオブジェクトは、書き換えようとしている要求ヘッダー フィールドと、元のヘッダーを書き換える必要がある新しい値を指定するために使用されます。
-- **ResponseHeaderConfiguration**: このオブジェクトは、書き換えようとしている応答ヘッダー フィールドと、元のヘッダーを書き換える必要がある新しい値を指定するために使用されます。
-- **ActionSet**: このオブジェクトには、上で指定した要求ヘッダーと応答ヘッダーの構成が格納されます。 
-- **RewriteRule**: このオブジェクトには、上で指定したすべての *ActionSet* が格納されます。 
-- **RewriteRuleSet**: このオブジェクトは、すべての *RewriteRule* を含み、基本またはパス ベースの要求ルーティング規則にアタッチする必要があります。
+- **RequestHeaderConfiguration** : このオブジェクトは、書き換えようとしている要求ヘッダー フィールドと、元のヘッダーを書き換える必要がある新しい値を指定するために使用されます。
+- **ResponseHeaderConfiguration** : このオブジェクトは、書き換えようとしている応答ヘッダー フィールドと、元のヘッダーを書き換える必要がある新しい値を指定するために使用されます。
+- **ActionSet** : このオブジェクトには、上で指定した要求ヘッダーと応答ヘッダーの構成が格納されます。 
+- **RewriteRule** : このオブジェクトには、上で指定したすべての *ActionSet* が格納されます。 
+- **RewriteRuleSet** : このオブジェクトは、すべての *RewriteRule* を含み、基本またはパス ベースの要求ルーティング規則にアタッチする必要があります。
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -136,13 +134,13 @@ $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType bas
 
 これで、アプリケーション ゲートウェイに自動スケーリングの構成を指定できます。 次の 2 種類の自動スケール構成がサポートされています。
 
-* **固定容量モード**。 このモードでは、アプリケーション ゲートウェイは自動スケールせず、固定されたスケール ユニットの容量で動作します。
+* **固定容量モード** 。 このモードでは、アプリケーション ゲートウェイは自動スケールせず、固定されたスケール ユニットの容量で動作します。
 
    ```azurepowershell
    $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
 
-* **自動スケール モード**。 このモードでは、アプリケーション ゲートウェイは、アプリケーションのトラフィック パターンに基づいて、自動スケールします。
+* **自動スケール モード** 。 このモードでは、アプリケーション ゲートウェイは、アプリケーションのトラフィック パターンに基づいて、自動スケールします。
 
    ```azurepowershell
    $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2

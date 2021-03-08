@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor で Surface Hub を監視する | Microsoft Docs
 description: Surface Hub ソリューションを使用して、Surface Hub の正常性を追跡し、Surface Hub がどのように使用されているかを理解します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d81af064b18ca8113599b460f2b9524c7288439
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711078"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Azure Monitor で Surface Hub を監視して正常性を追跡する
 
@@ -26,7 +25,7 @@ ms.locfileid: "77662503"
 
 * 監視する台数のデバイスをサポートする [Log Analytics サブスクリプション](https://azure.microsoft.com/pricing/details/log-analytics/) レベル。 Log Analytics の価格は、登録されるデバイスの台数とデータの処理量によって決まります。 Surface Hub の展開を計画する際は、この点を考慮してください。
 
-次に、既存の Log Analytics ワークスペースを追加するか、新しいワークスペースを作成します。 いずれの方法の使用に関する詳細も、「[Create a Log Analytics workspace in the Azure portal](../learn/quick-create-workspace.md)」(Azure portal で Log Analytics ワークスペースを作成する) に記載されています。 Log Analytics ワークスペースを構成した後、Surface Hub デバイスを登録するには 2 つの方法があります。
+次に、既存の Log Analytics ワークスペースを追加するか、新しいワークスペースを作成します。 いずれの方法の使用に関する詳細も、「[Create a Log Analytics workspace in the Azure portal](../logs/quick-create-workspace.md)」(Azure portal で Log Analytics ワークスペースを作成する) に記載されています。 Log Analytics ワークスペースを構成した後、Surface Hub デバイスを登録するには 2 つの方法があります。
 
 * Intune を通して自動で
 * Surface Hub デバイスの **[設定]** を通して手動で
@@ -60,7 +59,7 @@ Surface Hub を管理する Log Analytics ワークスペースのワークス�
 3. **[This device (このデバイス)]** をクリックし、 **[監視]** の下の **[Log Analytics 設定の構成]** をクリックします。
 4. **[監視を有効にする]** を選択します。
 5. [Log Analytics の設定] ダイアログで、Log Analytics の **[ワークスペース ID]** と **[ワークスペース キー]** を入力します。  
-   ![設定](./media/surface-hubs/settings.png)
+   ![Microsoft Operations Manager Suite 設定のスクリーンショット。[監視を有効にする] が選択されています。[ワークスペース ID] と [ワークスペース キー] にテキスト ボックスがあります。](./media/surface-hubs/settings.png)
 6. **[OK]** をクリックして、構成を完了します。
 
 デバイスに構成が正常に適用されたかどうかを示す確認メッセージが表示されます。 成功した場合は、エージェントが Azure Monitor に正常に接続されたことを示すメッセージが表示されます。 その後、デバイスでは Azure Monitor へのデータ送信が開始されます。Azure Monitor でデータを表示し、対応することができます。
@@ -74,8 +73,8 @@ Surface Hub のタイルをクリックすると、デバイスの正常性が�
 
    ![Surface Hub ダッシュボード](./media/surface-hubs/surface-hub-dashboard.png)
 
-既存またはカスタムのログ検索に基づく[アラート](../platform/alerts-overview.md)を作成できます。 Azure Monitor によって Surface Hub から収集されたデータを使用して、ユーザーがデバイスに対して定義した条件に該当する問題とアラートを検索できます。
+既存またはカスタムのログ検索に基づく[アラート](../alerts/alerts-overview.md)を作成できます。 Azure Monitor によって Surface Hub から収集されたデータを使用して、ユーザーがデバイスに対して定義した条件に該当する問題とアラートを検索できます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、Surface Hub の詳細なデータを表示します。
-* Surface Hub で問題が発生した場合に通知する[アラート](../platform/alerts-overview.md)を作成します。
+* [Azure Monitor でログ クエリ](../logs/log-query-overview.md)を使用して、Surface Hub の詳細なデータを表示します。
+* Surface Hub で問題が発生した場合に通知する[アラート](../alerts/alerts-overview.md)を作成します。

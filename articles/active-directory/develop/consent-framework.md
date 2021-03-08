@@ -9,26 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141552"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366090"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意フレームワーク
 
-Azure Active Directory (Azure AD) の同意フレームワークを使用すると、マルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションを簡単に開発できます。 こうしたアプリケーションには、登録されている Azure AD テナントとは異なるテナントのユーザー アカウントを使ってサインインできます。 また、独自の Web API に加えて、Microsoft Graph API (Azure AD、Intune、および Office 365 のサービスへのアクセスに使用する API) をはじめとする Microsoft サービスの API など、各種の Web API にもアクセスが必要になることがあります。
+Azure Active Directory (Azure AD) の同意フレームワークを使用すると、マルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションを簡単に開発できます。 こうしたアプリケーションには、登録されている Azure AD テナントとは異なるテナントのユーザー アカウントを使ってサインインできます。 また、独自の Web API に加えて、Microsoft Graph API (Azure AD、Intune、および Microsoft 365 のサービスへのアクセスに使用する API) をはじめとする Microsoft サービスの API など、各種の Web API にもアクセスが必要になることがあります。
 
-このフレームワークの根底には、ディレクトリのデータにアクセスする可能性があるためにディレクトリへの登録を要求しているアプリケーションに対して同意を与えるユーザーまたは管理者が存在します。 たとえば、Web クライアント アプリケーションで Office 365 ユーザーの予定表情報を読み取る必要があるときは、まずそのユーザーがクライアント アプリケーションに同意を与える必要があります。 同意が与えられると、クライアント アプリケーションがユーザーに代わって Microsoft Graph API を呼び出し、必要に応じて予定表情報を利用できるようになります。 [Microsoft Graph API](https://developer.microsoft.com/graph) は、Office 365 のデータ (Exchange の予定表とメッセージ、SharePoint のサイトとリスト、OneDrive のドキュメント、OneNote のノートブック、Planner のタスク、Excel のブック)、Azure AD のユーザーとグループなど、Microsoft クラウド サービスのさまざまなデータ オブジェクトにアクセスするための API です。
+このフレームワークの根底には、ディレクトリのデータにアクセスする可能性があるためにディレクトリへの登録を要求しているアプリケーションに対して同意を与えるユーザーまたは管理者が存在します。 たとえば、Web クライアント アプリケーションで Microsoft 365 ユーザーの予定表情報を読み取る必要があるときは、まずそのユーザーがクライアント アプリケーションに同意を与える必要があります。 同意が与えられると、クライアント アプリケーションがユーザーに代わって Microsoft Graph API を呼び出し、必要に応じて予定表情報を利用できるようになります。 [Microsoft Graph API](https://developer.microsoft.com/graph) は、Microsoft 365 のデータ (Exchange の予定表とメッセージ、SharePoint のサイトとリスト、OneDrive のドキュメント、OneNote のノートブック、Planner のタスク、Excel のブック)、Azure AD のユーザーとグループなど、Microsoft クラウド サービスのさまざまなデータ オブジェクトにアクセスするための API です。
 
 Azure AD の同意フレームワークは、OAuth 2.0 と、public クライアントまたは confidential クライアントを使用した OAuth 2.0 のさまざまなフロー (Authorization Code Grant や Client Credentials Grant など) を基盤としています。 Azure AD では OAuth 2.0 を採用することによって、スマートフォン、タブレット、サーバーなどにインストールされるアプリケーションから Web アプリケーションに至るまで、多種多様なクライアント アプリケーションの作成と、そのアプリケーションが必要なリソースにアクセスすることを可能にしています。
 
-OAuth 2.0 の認可付与を採用している同意フレームワークの使い方の詳細については、[OAuth 2.0 と Azure AD を使用した Web アプリケーションへのアクセスの承認](v2-oauth2-auth-code-flow.md)に関するページと、「[Azure AD の認証シナリオ](./authentication-vs-authorization.md)」を参照してください。 Microsoft Graph を使って Office 365 に対するアクセスの承認を得る方法の詳細については、[Microsoft Graph によるアプリ認証](/graph/)に関するページを参照してください。
+OAuth 2.0 の認可付与を採用している同意フレームワークの使い方の詳細については、[OAuth 2.0 と Azure AD を使用した Web アプリケーションへのアクセスの承認](v2-oauth2-auth-code-flow.md)に関するページと、「[Azure AD の認証シナリオ](./authentication-vs-authorization.md)」を参照してください。 Microsoft Graph を使って Microsoft 365 に対するアクセスの承認を得る方法の詳細については、[Microsoft Graph によるアプリ認証](/graph/)に関するページを参照してください。
 
 ## <a name="consent-experience---an-example"></a>同意エクスペリエンス - 例
 
@@ -50,7 +49,7 @@ OAuth 2.0 の認可付与を採用している同意フレームワークの使�
 
 1. ユーザーが同意すると、アプリケーションに認証コードが返されます。アクセス トークンと更新トークンを取得するときには、この認証コードが必要になります。 このフローの詳細については、[OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)に関するページを参照してください。
 
-1. 管理者であれば、テナント内のユーザー全員に代わってアプリケーションの委任されたアクセス許可に同意することもできます。 管理者が同意すると、そのテナントのユーザーには同意ダイアログが表示されなくなります。この同意は、管理者ロールが与えられたユーザーが [Azure portal](https://portal.azure.com) で行うことができます。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+1. 管理者であれば、テナント内のユーザー全員に代わってアプリケーションの委任されたアクセス許可に同意することもできます。 管理者が同意すると、そのテナントのユーザーには同意ダイアログが表示されなくなります。この同意は、管理者ロールが与えられたユーザーが [Azure portal](https://portal.azure.com) で行うことができます。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../roles/permissions-reference.md)」を参照してください。
 
     **委任されたアプリケーションのアクセス許可に同意する**
 
@@ -64,5 +63,4 @@ OAuth 2.0 の認可付与を採用している同意フレームワークの使�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アプリをマルチテナント アプリに変換する方法](howto-convert-app-to-be-multi-tenant.md)に関する記事をご覧ください。
-* 詳細については、[認証コードの付与フロー中に、OAuth 2.0 プロトコル層で同意がどのようにサポートされるか、学習してください。](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
+[アプリをマルチテナント アプリに変換する方法](howto-convert-app-to-be-multi-tenant.md)に関する記事をご覧ください。

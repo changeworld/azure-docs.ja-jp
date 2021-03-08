@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: de98e25cf5703a43282e551a0eda20d7767c6ce8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985791"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103630"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Azure CLI を使用して Azure Data Lake Storage Gen1 の使用を開始する
 
@@ -26,7 +26,7 @@ ms.locfileid: "85985791"
 
 Azure CLI を使用して Azure Data Lake Storage Gen1 アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、ご自分のアカウントの削除などの基本操作を行う方法について説明します。Data Lake Storage Gen1 の詳細については、[Data Lake Storage Gen1 の概要](data-lake-store-overview.md)に関する記事をご覧ください。
 
-Azure CLI は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 詳細については、[Azure CLI の概要](https://docs.microsoft.com/cli/azure)に関するページを参照してください。 コマンドと構文の完全な一覧については、[Azure Data Lake Storage Gen1 CLI リファレンス](https://docs.microsoft.com/cli/azure/dls)を参照することもできます。
+Azure CLI は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 詳細については、[Azure CLI の概要](/cli/azure)に関するページを参照してください。 コマンドと構文の完全な一覧については、[Azure Data Lake Storage Gen1 CLI リファレンス](/cli/azure/dls)を参照することもできます。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -34,11 +34,11 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **Azure CLI** - 手順については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* **Azure CLI** - 手順については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="authentication"></a>認証
 
-この記事では、Data Lake Storage Gen1 に対してエンド ユーザーとしてログインする比較的単純な認証方法を使用します。 その後、Data Lake Storage Gen1 アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Storage Gen1 には他の認証方法も存在します (**エンド ユーザー認証**と**サービス間認証**)。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
+この記事では、Data Lake Storage Gen1 に対してエンド ユーザーとしてログインする比較的単純な認証方法を使用します。 その後、Data Lake Storage Gen1 アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Storage Gen1 には他の認証方法も存在します (**エンド ユーザー認証**と**サービス間認証**)。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](./data-lake-store-service-to-service-authenticate-using-active-directory.md)に関するページを参照してください。
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン

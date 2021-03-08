@@ -5,15 +5,14 @@ author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.reviewer: mamccrea
-ms.custom: mvc, devx-track-javascript
-ms.date: 06/16/2020
-ms.openlocfilehash: 6540b35925a92ebd6a8bcced427b5457785603db
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: mvc, devx-track-js
+ms.date: 12/15/2020
+ms.openlocfilehash: 70015ef24039694789ce96a6c4853221fe2377c3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056909"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020385"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics での JavaScript ユーザー定義関数
  
@@ -34,7 +33,7 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 * 入力/出力におけるカスタム イベントフォーマットのシリアル化または逆シリアル化の実行
 * カスタム集計の作成
 
-関数定義において禁止されているわけではありませんが、**Date.GetDate()** や **Math.random()** などの関数の使用は避ける必要があります。 これらの関数では呼び出すたびに同じ結果が**返らず**、Azure Stream Analytics サービスは関数呼び出しや戻り値のジャーナルを保持しません。 関数が同じイベントで異なる結果を返す場合、ユーザーや Stream Analytics サービスによってジョブが再起動された際の再現性は保証されません。
+関数定義において禁止されているわけではありませんが、**Date.GetDate()** や **Math.random()** などの関数の使用は避ける必要があります。 これらの関数では呼び出すたびに同じ結果が **返らず**、Azure Stream Analytics サービスは関数呼び出しや戻り値のジャーナルを保持しません。 関数が同じイベントで異なる結果を返す場合、ユーザーや Stream Analytics サービスによってジョブが再起動された際の再現性は保証されません。
 
 ## <a name="add-a-javascript-user-defined-function-to-your-job"></a>JavaScript のユーザー定義関数をジョブに追加する
 
@@ -55,7 +54,7 @@ Stream Analytics ジョブに JavaScript のユーザー定義関数を作成す
 
 ## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript UDF のテストとトラブルシューティング 
 
-JavaScript UDF ロジックは、任意のブラウザーでテストおよびデバッグできます。 これらのユーザー定義関数のロジックのデバッグとテストは、現在、Stream Analytics ポータルではサポートされていません。 関数が想定どおりに動作したら、前述のように Stream Analytics ジョブに追加してから、クエリから直接呼び出すことができます。 JavaScript UDF を使ったクエリのロジックは、[Visual Studio 用 Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)を使用してテストすることができます。
+JavaScript UDF ロジックは、任意のブラウザーでテストおよびデバッグできます。 これらのユーザー定義関数のロジックのデバッグとテストは、現在、Stream Analytics ポータルではサポートされていません。 関数が想定どおりに動作したら、前述のように Stream Analytics ジョブに追加してから、クエリから直接呼び出すことができます。 JavaScript UDF を使ったクエリのロジックは、[Visual Studio 用 Stream Analytics ツール](./stream-analytics-tools-for-visual-studio-install.md)を使用してテストすることができます。
 
 JavaScript ランタイム エラーは致命的とみなされ、アクティビティ ログに表示されます。 Azure Portal からログを取得するには、ジョブに移動し、 **[アクティビティ ログ]** を選択します。
 
@@ -186,7 +185,44 @@ FROM
     input A
 ```
 
+### <a name="tolocalestring"></a>toLocaleString()
+JavaScript の **toLocaleString** メソッドを使用すると、このメソッドが呼び出された日時データを表す、言語に依存する文字列を返すことができます。
+Azure Stream Analtyics でシステム タイムスタンプとして受け入れられるのは UTC 日時のみですが、このメソッドを使用して、システム タイムスタンプを別のロケールとタイムゾーンに変換できます。
+このメソッドは、Internet Explorer に用意されているものと同じ実装動作に従います。
+
+**JavaScript ユーザー定義関数の定義:**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+**サンプル クエリ: datetime を入力値として渡す**
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+このクエリの出力は、options が指定された **de-DE** の入力 datetime になります。
+```
+Samstag, 28. Dezember 2019
+```
+
+## <a name="user-logging"></a>ユーザーのログ記録
+ログ記録メカニズムを使用すると、ジョブの実行中にカスタム情報をキャプチャできます。 ログ データを使用して、カスタム コードの正確性をリアルタイムでデバッグまたは評価することができます。 このメカニズムは、Console.Log() メソッドを通じて使用できます。
+
+```javascript
+console.log('my error message');
+```
+
+ログ メッセージにアクセスするには、[診断ログ](data-errors.md)を使用します。
 ## <a name="next-steps"></a>次のステップ
 
-* [Machine Learning UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
-* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
+* [Machine Learning UDF](./machine-learning-udf.md)
+* [C# UDF](./stream-analytics-edge-csharp-udf-methods.md)

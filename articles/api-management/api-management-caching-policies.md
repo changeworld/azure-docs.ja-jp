@@ -11,17 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: f0aeef7bc67f5c59bb80d5ff24a97be737447a81
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4db42d8fa8c676b20b236577ce6646b909df7c3a
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510183"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638888"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
+
+> [!IMPORTANT]
+> 組み込みのキャッシュは揮発性であり、同じ API Management サービスの同じリージョン内のすべてのユニットによって共有されます。
 
 ## <a name="caching-policies"></a><a name="CachingPolicies"></a> キャッシュ ポリシー
 
@@ -283,7 +286,7 @@ ms.locfileid: "88510183"
 - **ポリシー セクション:** inbound、outbound、backend、on-error
 - **ポリシー スコープ:** すべてのスコープ
 
-### <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> キャッシュから値を削除
+## <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> キャッシュから値を削除
 `cache-remove-value` は、キーで指定された、キャッシュされている項目を削除します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。
 
 #### <a name="policy-statement"></a>ポリシー ステートメント
@@ -328,4 +331,4 @@ ms.locfileid: "88510183"
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
-+ [ポリシーのサンプル](policy-samples.md)
++ [ポリシーのサンプル](./policy-reference.md)

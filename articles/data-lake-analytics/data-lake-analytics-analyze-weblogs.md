@@ -1,18 +1,16 @@
 ---
 title: Azure Data Lake Analytics を使用する Web サイト ログの分析
 description: Azure Data Lake Analytics を利用して Web サイトのログを分析し、U-SQL の関数とクエリを実行する方法について説明します。
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 5ad837c51fafd7df2b019c78ae4adaf4967f2df7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132638"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015300"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用する Web サイト ログの分析
 Data Lake Analytics を使用して Web サイトのログを分析する方法について、特に、Web サイトへのアクセスを試みたときにエラーが発生した参照元の特定に重点を置いて説明します。
@@ -42,8 +40,8 @@ U-SQL スクリプトをビルドしてテストするには、Azure に接続�
 
 ### <a name="to-browse-your-data-lake-analytics-accounts"></a>Data Lake Analytics アカウントを参照するには
 
-1. Visual Studio で、**Ctrl + Alt + S** キーを押して、**サーバー エクスプローラー**を開きます。
-2. **サーバー エクスプローラー**で、 **[Azure]** 、 **[Data Lake Analytics]** の順に展開します。 Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。 Studio で Data Lake Analytics アカウントを作成することはできません。 アカウントを作成する場合は、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)」をご覧ください。
+1. Visual Studio で、**Ctrl + Alt + S** キーを押して、**サーバー エクスプローラー** を開きます。
+2. **サーバー エクスプローラー** で、 **[Azure]** 、 **[Data Lake Analytics]** の順に展開します。 Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。 Studio で Data Lake Analytics アカウントを作成することはできません。 アカウントを作成する場合は、「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)」をご覧ください。
 
 ## <a name="develop-u-sql-application"></a>U-SQL アプリケーションの作成
 U SQL アプリケーションの大部分は、U-SQL スクリプトです。 U-SQL の詳細については、 [U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
@@ -159,9 +157,9 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。 U
 
 6. 最初の U-SQL スクリプトに戻り、 **[送信]** ボタンの横に、Analytics アカウントを指定します。
 
-7. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、 **[Build Script (スクリプトのビルド)]** をクリックします。 [出力] ウィンドウで結果を確認します。
+7. **ソリューション エクスプローラー** で **Script.usql** を右クリックし、 **[Build Script (スクリプトのビルド)]** をクリックします。 [出力] ウィンドウで結果を確認します。
 
-8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、 **[Submit Script (スクリプトの送信)]** をクリックします。
+8. **ソリューション エクスプローラー** で **Script.usql** を右クリックし、 **[Submit Script (スクリプトの送信)]** をクリックします。
 
 9. **[Analytics Account (Analytics アカウント)]** にジョブを実行するアカウントが設定されていることを確認し、 **[送信]** をクリックします。 送信が完了すると、Data Lake Tools for Visual Studio の [結果] ウィンドウに送信結果とジョブのリンクが示されます。
 
@@ -171,11 +169,11 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。 U
 
     ![Data Lake Analytics による Web サイトのログ (weblogs) の分析](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
 
-11. 次に、 **Script1.usql**の手順 7 ～ 10 を繰り返します。
+11. 次に、 **Script1.usql** の手順 7 ～ 10 を繰り返します。
 
 ### <a name="to-see-the-job-output"></a>ジョブの出力を表示するには
 
-1. **サーバー エクスプローラー**で、 **[Azure]** 、 **[Data Lake Analytics]** 、使用する Data Lake Analytics アカウント、 **[ストレージ アカウント]** の順に展開し、既定の Data Lake Storage アカウントを右クリックして **[エクスプローラー]** をクリックします。
+1. **サーバー エクスプローラー** で、 **[Azure]** 、 **[Data Lake Analytics]** 、使用する Data Lake Analytics アカウント、 **[ストレージ アカウント]** の順に展開し、既定の Data Lake Storage アカウントを右クリックして **[エクスプローラー]** をクリックします。
 2. **[サンプル]** をダブルクリックしてフォルダーを開き、 **[出力]** をダブルクリックします。
 3. **UnsuccessfulResponses.log** をダブルクリックします。
 4. ジョブのグラフ ビューで出力ファイルをダブルクリックして、出力ファイルに直接移動することもできます。
@@ -185,4 +183,4 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。 U
 
 * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 * [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
-* [.NET SDK で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
+* [.NET SDK で Data Lake Analytics の使用を開始する](./data-lake-analytics-get-started-cli.md)

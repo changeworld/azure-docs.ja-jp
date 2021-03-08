@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 1b04a0c4d2865cf72d9fbccb51f0f083872ea799
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b55dc6a400f936ac23b233e4c84a6b1aebf45cb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037884"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784699"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>Service Fabric アプリケーションのアップグレード
 
@@ -37,18 +37,18 @@ ms.locfileid: "87037884"
 
 | command | メモ |
 |---|---|
-| [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | Service Fabric クラスター内のすべてのアプリケーションまたは特定のアプリケーションを取得します。  |
-| [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | Service Fabric アプリケーションのアップグレードの状態を取得します。 |
-| [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) | Service Fabric クラスターに登録された Service Fabric アプリケーションの種類を取得します。 |
-| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Service Fabric アプリケーションの種類を登録解除します。  |
-| [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Service Fabric アプリケーション パッケージをイメージ ストアにコピーします。  |
-| [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) | Service Fabric アプリケーションの種類を登録します。 |
-| [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) | Service Fabric アプリケーションを、指定されたアプリケーションの種類のバージョンにアップグレードします。 |
-| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Service Fabric アプリケーション パッケージをイメージ ストアから削除します。|
+| [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) | Service Fabric クラスター内のすべてのアプリケーションまたは特定のアプリケーションを取得します。  |
+| [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade) | Service Fabric アプリケーションのアップグレードの状態を取得します。 |
+| [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype) | Service Fabric クラスターに登録された Service Fabric アプリケーションの種類を取得します。 |
+| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype) | Service Fabric アプリケーションの種類を登録解除します。  |
+| [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) | Service Fabric アプリケーション パッケージをイメージ ストアにコピーします。  |
+| [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) | Service Fabric アプリケーションの種類を登録します。 |
+| [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) | Service Fabric アプリケーションを、指定されたアプリケーションの種類のバージョンにアップグレードします。 |
+| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage) | Service Fabric アプリケーション パッケージをイメージ ストアから削除します。|
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Service Fabric PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/service-fabric/overview?view=azureservicefabricps)を参照してください。
+Service Fabric PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/service-fabric/overview)を参照してください。
 
 その他の Azure Service Fabric 用 PowerShell サンプルは、[Azure PowerShell サンプル](../service-fabric-powershell-samples.md)のページにあります。

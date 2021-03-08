@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics からの Azure Data Lake Storage Gen 1 出力
 description: この記事では、Azure Stream Analytics の出力オプションとしての Azure Data Lake Storage Gen 1 について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 98dfd51783ad3bc0b89f441f89436d3c3d928104
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 629a154c89ad301a3e200b1d6cd04c62057d9959
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875491"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016543"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Azure Data Lake Storage Gen 1 出力
 
@@ -36,7 +35,7 @@ Stream Analytics からの Azure Data Lake Storage 出力は、Azure China 21Via
 | エンコード | CSV または JSON 形式を使用する場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。|
 | 区切り記号 | CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV データをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。|
 | Format | JSON のシリアル化のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[改行区切り]** を選択した場合、JSON は一度に 1 オブジェクトずつ読み取られます。 コンテンツ全体は、それ自体では有効な JSON になりません。  **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。|
-| 認証モード | [マネージド ID](stream-analytics-managed-identities-adls.md) またはユーザー トークンを使用して、Data Lake Storage アカウントへのアクセスを承認できます。 アクセス権を付与した後は、ユーザー アカウントのパスワードを変更するか、このジョブの Data Lake Storage 出力を削除するか、または Stream Analytics ジョブを削除することによってアクセスを取り消すことができます。 |
+| 認証モード | [マネージド ID](stream-analytics-managed-identities-adls.md) (プレビュー) またはユーザー トークンを使用して、Data Lake Storage アカウントへのアクセスを認可できます。 アクセス権を付与した後は、ユーザー アカウントのパスワードを変更するか、このジョブの Data Lake Storage 出力を削除するか、または Stream Analytics ジョブを削除することによってアクセスを取り消すことができます。 |
 
 ## <a name="partitioning"></a>パーティション分割
 
@@ -44,13 +43,9 @@ Stream Analytics からの Azure Data Lake Storage 出力は、Azure China 21Via
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
-メッセージの最大サイズについては、[Data Lake Storage の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits)に関する記事を参照してください。 バッチ サイズを最適化するには、書き込み操作あたり最大 4 MB を使用します。
+メッセージの最大サイズについては、[Data Lake Storage の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits)に関する記事を参照してください。 バッチ サイズを最適化するには、書き込み操作あたり最大 4 MB を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
+* [マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する (プレビュー)](stream-analytics-managed-identities-adls.md)
 * [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
-* [クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-cli.md)
-* [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
-* [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
-* [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)

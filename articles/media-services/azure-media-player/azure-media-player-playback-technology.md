@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 56fd644e43b704eced4f5a97b82e4b07ab1b4db9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424087"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916339"
 ---
 # <a name="playback-technology-tech"></a>再生テクノロジ ("テクノロジ") #
 
@@ -44,8 +44,8 @@ Azure Media Services のストリーミング コンテンツでテクノロジ�
 
 | Browser        | OS                                                       | 想定されるテクノロジ (クリア)  | 想定されるテクノロジ (AES)  | 想定されるテクノロジ (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
-| EdgeIE 11      | Windows 10、Windows 8.1、Windows Phone 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11IE 9-101  | Windows 7、Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| EdgeIE 11      | Windows 10、Windows 8.1、Windows Phone 10<sup>1</sup>               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
+| IE 11          | Windows 7、Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | サポート対象外                |
 | Edge           | Xbox One<sup>1</sup> (2015 年 11 月の更新)                   | azureHtml5JS           | azureHtml5JS         | サポート対象外                |
 | Chrome 37 以降     | Windows 10、Windows 8.1、macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
@@ -58,7 +58,7 @@ Azure Media Services のストリーミング コンテンツでテクノロジ�
 | Chrome 37 以降     | Android 4.4.4 以降<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Chrome 37 以降     | Android 4.02                                             | html5                  | html5 (トークンなし)<sup>3</sup>    | サポート対象外                |
 | Firefox 42 以降    | Android 5.0 以降<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | サポート対象外                |
-| IE 8           | Windows                                                  | サポート対象外          | サポート対象外        | サポート対象外                |
+| IE 8、IE 9、IE 10  | Windows                                                  | サポート対象外          | サポート対象外        | サポート対象外                |
 
 <sup>1</sup> 構成がサポートされていないか、テストされていません。完了の参照として表示されます。
 

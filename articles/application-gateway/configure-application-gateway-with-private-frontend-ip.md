@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808126"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90562487"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>内部ロード バランサー (ILB) エンドポイントでアプリケーション ゲートウェイを構成する
 
@@ -110,7 +110,7 @@ Azure portal (<https://portal.azure.com>) にサインインする
 ### <a name="install-iis"></a>IIS のインストール
 
 1. Cloud Shell を開き、**PowerShell**に設定されていることを確認します。
-    ![private-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+    ![スクリーンショットには、PowerShell を使用する、開いている Azure Cloud Shell コンソール ウィンドウが示されています。](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。
 
    ```azurepowershell
@@ -144,13 +144,13 @@ Azure portal (<https://portal.azure.com>) にサインインする
 2. **[バックエンド プール]** を選択します。 **[appGatewayBackendPool]** を選択します。
 3. **ターゲットタイプ**で **[仮想マシン]** を選択し、**ターゲット**で myVM に関連付けられた vNIC を選択します。
 4. 繰り返して MyVM2 を追加します。
-   ![private-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+   ![スクリーンショットには、ターゲットの種類とターゲットが強調表示された [バックエンド プールの編集] ペインが示されています。](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 5. **[保存]** を選択します。
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
 1. ポータルの**Frontend IP Configurations**ページをクリックして、割り当てられたフロントエンド IP を確認します。
-    ![private-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+    ![スクリーンショットには、プライベートの種類が強調表示された [フロントエンド IP 構成] ペインが示されています。](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. プライベート IP アドレスをコピーし、同じ VNet またはこのVNet に接続しているオンプレミスの VM のブラウザーアドレスバーに貼り付けて、Application Gateway にアクセスしてみます。
 
 ## <a name="next-steps"></a>次のステップ

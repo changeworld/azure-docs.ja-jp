@@ -1,19 +1,16 @@
 ---
 title: 'チュートリアル:Apache Kafka Streams API の使用 - Azure HDInsight '
 description: チュートリアル - HDInsight 上の Kafka で Apache Kafka Streams API を使用する方法を説明します。 この API を使用して、Kafka でトピック間のストリーム処理を実行できます。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 0174c40a0fada0f78cc8d52f5c45b991c3851da0
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5a1548cdf1d05a1f9d42f5c64b7fdc18f514518e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85850562"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939194"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Kafka Streams API を使用する
 
@@ -39,7 +36,7 @@ Kafka Streams の詳細については、Apache.org の「[Intro to Streams](htt
 
 * [Apache Kafka Consumer および Producer API](apache-kafka-producer-consumer-api.md) に関するドキュメントの手順を完了します。 このドキュメントの手順では、このチュートリアルで作成したアプリケーションとトピックの例を使用します。
 
-* [Java Developer Kit (JDK) バージョン 8](https://aka.ms/azure-jdks) または同等の JDK (OpenJDK など)。
+* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) または同等の JDK (OpenJDK など)。
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 

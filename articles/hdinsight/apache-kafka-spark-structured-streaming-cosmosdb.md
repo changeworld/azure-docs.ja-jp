@@ -1,19 +1,16 @@
 ---
 title: Cosmos DB を使用した Apache Spark と Apache Kafka - Azure HDInsight
 description: Apache Spark 構造化ストリーミングを使って Apache Kafka からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリームします。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e14784459a3c7733af274197507b76341d68477e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203473"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946895"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する
 
@@ -78,7 +75,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     ![HDInsight のカスタム デプロイ値](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-1. **使用条件**を読み、 **[上記の使用条件に同意する]** をオンにします。
+1. **使用条件** を読み、 **[上記の使用条件に同意する]** をオンにします。
 
 1. 最後に、 **[購入]** を選択します。 クラスター、仮想ネットワーク、および Cosmos DB アカウントを作成するまで、最大で 45 分間かかる場合があります。
 
@@ -86,7 +83,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 このドキュメントで使用するプロジェクトでは、データを Cosmos DB に格納します。 コードを実行する前に、お使いの Cosmos DB インスタンス内に、まず _データベース_ と _コレクション_ を作成する必要があります。 ドキュメントのエンドポイントと、Cosmos DB に対する要求の認証に使用される _キー_ も取得する必要があります。
 
-これを実行する方法の 1 つとして、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用します。 次のスクリプトでは、`kafkadata` という名前のデータベースと `kafkacollection` という名前のコレクションを作成します。 その後、プライマリ キーが返されます。
+これを実行する方法の 1 つとして、[Azure CLI](/cli/azure/) を使用します。 次のスクリプトでは、`kafkadata` という名前のデータベースと `kafkacollection` という名前のコレクションを作成します。 その後、プライマリ キーが返されます。
 
 ```azurecli
 #!/bin/bash
@@ -97,7 +94,7 @@ resourceGroupName='myresourcegroup'
 name='mycosmosaccount'
 
 # WARNING: If you change the databaseName or collectionName
-#          then you must update the values in the Jupyter notebook
+#          then you must update the values in the Jupyter Notebook
 databaseName='kafkadata'
 collectionName='kafkacollection'
 

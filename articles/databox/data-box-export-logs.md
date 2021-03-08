@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494487"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337510"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>お使いの Azure Data Box と Azure Data Box Heavy のエクスポート注文の追跡とイベント ログ記録
 
@@ -25,7 +25,7 @@ Data Box または Data Box Heavy のエクスポート注文は、注文、設�
 
 | Data Box のエクスポート注文の段階       | 追跡と監査のためのツール                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| 注文の作成               | [RBAC を使用して注文へのアクセス制御を設定する](#set-up-access-control-on-the-order) <br> [注文の詳細ログを有効にする](#enable-verbose-log-in-the-order)                                                    |
+| 注文の作成               | [Azure RBAC を使用して注文へのアクセス制御を設定する](#set-up-access-control-on-the-order) <br> [注文の詳細ログを有効にする](#enable-verbose-log-in-the-order)                                                    |
 | 処理された注文            | 以下を通じて[注文を追跡する](#track-the-order) <ul><li> Azure portal </li><li> 運送業者の Web サイト </li><li>メール通知</ul> |
 | デバイスを設定する              | [アクティビティ ログ](#query-activity-logs-during-setup)に記録されたデバイスの資格情報へのアクセス              |
 | デバイスからのデータのコピー        | [ログのコピーの確認](#copy-log) <br> データのコピー前の[詳細ログの確認](#verbose-log)            |
@@ -46,15 +46,15 @@ Azure Data Box サービスに対して定義できる 2 つのロールは次�
 - 注文レベルでロールを割り当てます。 その特定の Data Box の注文のみを操作し、その他は何も操作しないように、ユーザーはロールによって定義されているアクセス許可のみを持ちます。
 - リソース グループ レベルのロールを割り当てます。ユーザーはリソース グループ内のすべての Data Box の注文へのアクセス権を持ちます。
 
-推奨される RBAC の使用の詳細については、「[Azure RBAC のベスト プラクティス](../role-based-access-control/best-practices.md)」を参照してください。
+推奨される Azure RBAC の使用方法の詳細については、「[Azure RBAC のベスト プラクティス](../role-based-access-control/best-practices.md)」を参照してください。
 
 ## <a name="enable-verbose-log-in-the-order"></a>注文の詳細ログを有効にする
 
 Data Box のエクスポート注文を設定する場合、詳細ログの収集を有効にするかどうかのオプションがあります。 詳細ログを有効にする注文画面は次のとおりです。
 
-![Select export option (エクスポート オプションの選択)](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![Select export option (エクスポート オプションの選択)](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-**[Include verbose log]\(詳細ログを含める\)** オプションを選択すると、お使いの Azure Storage アカウントからデータをコピーするときに詳細ログ ファイルが生成されます。 このログには、正常にエクスポートされたすべてのファイルが一覧表示されます。      
+**[Include verbose log]\(詳細ログを含める\)** オプションを選択すると、お使いの Azure Storage アカウントからデータをコピーするときに詳細ログ ファイルが生成されます。 このログには、正常にエクスポートされたすべてのファイルが一覧表示されます。
 
 エクスポート注文の詳細については、[Data Box のエクスポート注文の作成](data-box-deploy-export-ordered.md)に関するページを参照してください。
 
@@ -81,13 +81,13 @@ Data Box のエクスポート注文を設定する場合、詳細ログの収�
 
 ## <a name="view-logs-during-data-copy"></a>データ コピー時のログの参照
 
-お使いの Data Box からデータをコピーする前に、Data Box にコピーされたデータの*コピー ログ*と*詳細ログ*をダウンロードして確認できます。 これらのログは、Azure のお使いのストレージ アカウントからお使いの Data Box にデータがコピーされたときに生成されます。 
+お使いの Data Box からデータをコピーする前に、Data Box にコピーされたデータの *コピー ログ* と *詳細ログ* をダウンロードして確認できます。 これらのログは、Azure のお使いのストレージ アカウントからお使いの Data Box にデータがコピーされたときに生成されます。 
 
 ### <a name="copy-log"></a>コピー ログ
 
 お使いの Data Box からデータをコピーする前に、 **[Connect and copy]** \(接続してコピー\) ページからコピー ログをダウンロードします。
 
-次に示すのは、エラーが発生せず、Azure から Data Box デバイスへのデータ コピー中にすべてのファイルがコピーされた場合の*コピー ログ*のサンプル出力です。
+次に示すのは、エラーが発生せず、Azure から Data Box デバイスへのデータ コピー中にすべてのファイルがコピーされた場合の *コピー ログ* のサンプル出力です。
 
 ```output
 <CopyLog Summary="Summary">
@@ -97,7 +97,7 @@ Data Box のエクスポート注文を設定する場合、詳細ログの収�
 </CopyLog>
 ``` 
     
-次に示すのは、*コピー ログ*内にエラーがあり、一部のファイルを Azure からコピーできなかった場合のサンプル出力です。
+次に示すのは、*コピー ログ* 内にエラーがあり、一部のファイルを Azure からコピーできなかった場合のサンプル出力です。
 
 ```output
 <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -129,7 +129,7 @@ Data Box のエクスポート注文を設定する場合、詳細ログの収�
 
 ### <a name="verbose-log"></a>詳細ログ
 
-*詳細ログ*には、Azure Storage アカウントから正常にエクスポートされたすべてのファイルが一覧表示されます。 このログには、ファイル サイズとチェックサムの計算も含まれています。
+*詳細ログ* には、Azure Storage アカウントから正常にエクスポートされたすべてのファイルが一覧表示されます。 このログには、ファイル サイズとチェックサムの計算も含まれています。
 
 詳細ログの情報の書式は、次のとおりです。
 

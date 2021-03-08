@@ -1,33 +1,33 @@
 ---
-title: クイック スタート:REST API を使用して Java で検索インデックスを作成する
+title: 'クイックスタート: Java で検索インデックスを作成する'
 titleSuffix: Azure Cognitive Search
-description: この Java クイックスタートでは、Azure Cognitive Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
+description: この Java クイックスタートでは、Java 用 Azure Cognitive Search クライアント ライブラリを使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 03/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: e9a2ff5d46557ddf8f5f62b456e8a3d54bf90c55
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f833c0539d4aa28033cd6f76c1ca7cec7f11f6b5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290347"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124569"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>クイック スタート:REST API を使用して Java で Azure Cognitive Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java"></a>クイックスタート: Java で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
-> * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
+> * [JavaScript](search-get-started-javascript.md)
+> * [C#](search-get-started-dotnet.md)
 > * [ポータル](search-get-started-portal.md)
-> * [PowerShell](./search-get-started-powershell.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
-[IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)、[Azure Cognitive Search REST API](/rest/api/searchservice/) を使用して検索インデックスの作成、読み込み、クエリを実行する Java コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成するための具体的な手順を紹介します。 代わりに、[完全なアプリケーションをダウンロードして実行する](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)こともできます。
+[IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/)、[Azure Cognitive Search REST API](/rest/api/searchservice/) を使用して検索インデックスの作成、読み込み、クエリを実行する Java コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成するための具体的な手順を紹介します。 代わりに、[完全なアプリケーションをダウンロードして実行する](hhttps://github.com/Azure-Samples/azure-search-java-samples)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-+ [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
++ [Java 11 SDK](/java/azure/jdk/)
 
 + [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
@@ -49,11 +49,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-2. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-   クエリ キーも作成します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
-
-![サービス名、管理キー、クエリ キーの取得](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="サービス名、管理キー、クエリ キーの取得" border="false":::
 
 サービスに送信される要求ごとに API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -67,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Maven]** を選択します。
 1. **[Project SDK]\(プロジェクト SDK\)** ボックスの一覧で、Java 11 SDK を選択します。
 
-    ![Maven プロジェクトを作成する](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Maven プロジェクトを作成する" border="false":::
 
 1. **[GroupId]** と **[ArtifactId]** で、「`AzureSearchQuickstart`」と入力します。
 1. 他の既定値をそのまま使用して、プロジェクトを開きます。
@@ -78,7 +76,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Settings]\(設定\)** ウィンドウで、 **[Build, Execution, Deployment]\(ビルド、実行、デプロイ\)**  >  **[Build Tools]\(構築ツール\)**  >  **[Maven]**  >  **[Importing]\(インポート\)** の順に選択します。
 1. **[Import Maven projects automatically]\(Maven プロジェクトを自動的にインポートする\)** チェック ボックスをオンにし、 **[OK]** をクリックしてウィンドウを閉じます。 Maven のプラグインとその他の依存関係は、次の手順で pom.xml ファイルを更新すると自動的に同期されるようになります。
 
-    ![IntelliJ の設定の Maven インポート オプション](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="IntelliJ の設定の Maven インポート オプション" border="false":::
 
 1. pom.xml ファイルを開き、その内容を次の Maven の構成の詳細に置き換えます。 これには、[Exec Maven プラグイン](https://www.mojohaus.org/exec-maven-plugin/)と [JSON インターフェイス API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) への参照が含まれています。
 
@@ -88,21 +86,72 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
-    
         <groupId>AzureSearchQuickstart</groupId>
         <artifactId>AzureSearchQuickstart</artifactId>
+        <packaging>jar</packaging>
         <version>1.0-SNAPSHOT</version>
+        <properties>
+            <jackson.version>2.12.1</jackson.version>
+            <auto-value.version>1.6.2</auto-value.version>
+            <junit.version>5.4.2</junit.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
+        <name>azuresearch-console</name>
+        <url>http://maven.apache.org</url>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value-annotations</artifactId>
+                <version>${auto-value.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value</artifactId>
+                <version>${auto-value.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-search-documents</artifactId>
+                <version>11.1.3</version>
+            </dependency>
+        </dependencies>
+    
         <build>
-            <sourceDirectory>src</sourceDirectory>
             <plugins>
+                <!--put generated source files to generated-sources-->
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
+                    <version>3.8.0</version>
                     <configuration>
                         <source>11</source>
                         <target>11</target>
                     </configuration>
                 </plugin>
+                <!-- For JUnit -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
+                </plugin>
+                <!-- Add exec plugin to run demo program -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
@@ -115,32 +164,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
                         </execution>
                     </executions>
                     <configuration>
-                        <mainClass>main.java.app.App</mainClass>
+                        <mainClass>com.microsoft.azure.search.samples.demo.App</mainClass>
                         <cleanupDaemonThreads>false</cleanupDaemonThreads>
                     </configuration>
                 </plugin>
             </plugins>
         </build>
-        <dependencies>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.json</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-        </dependencies>   
     </project>
     ```
 
+<!-- STOPPED HERE -- SENT EMAIL TO TONG XU ASKING FOR INFO -->
 ### <a name="set-up-the-project-structure"></a>プロジェクト構造を設定する
 
 1. **[File]\(ファイル\)**  >  **[Project Structure]\(プロジェクト構造\)** を選択します。
 1. **[Modules]\(モジュール\)** を選択し、ソース ツリーを展開して `src` >  `main` フォルダーのコンテンツにアクセスします。
-1. `src` >  `main` > `java` フォルダーに、`app` および `service` フォルダーを追加します。 これを行うには、`java` フォルダーを選択し、Alt + Insert キーを押して、フォルダー名を入力します。
+1. `src` >  `main` > `java` フォルダーに、`com`、`microsoft`、`azure`、`search`、`samples`、`demo` の各フォルダーを追加します。 これを行うには、`java` フォルダーを選択し、Alt + Insert キーを押して、フォルダー名を入力します。
 1. `src` >  `main` >`resources` フォルダーに、`app` および `service` フォルダーを追加します。
 
     完了すると、プロジェクト ツリーは次の図のようになります。
 
-    ![プロジェクトのディレクトリ構造](media/search-get-started-java/java-quickstart-basic-code-tree.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="プロジェクトのディレクトリ構造" border="false":::
 
 1. **[OK]** をクリックしてウィンドウを閉じます。
 
@@ -148,7 +191,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Project]\(プロジェクト\)** ウィンドウで、ソース ツリーを展開して `src` >  `main` >`resources` > `app` フォルダーにアクセスし、`config.properties` ファイルを追加します。 これを行うには、`app` フォルダーを選択し、Alt + Insert キーを押して、 **[File]\(ファイル\)** を選択し、ファイル名を入力します。
 
-1. 新しいファイルに次の設定をコピーし、`<YOUR-SEARCH-SERVICE-NAME>`、`<YOUR-ADMIN-KEY>`、および `<YOUR-QUERY-KEY>` を実際のサービス名とキーに置き換えます。 ご使用のサービス エンドポイントが `https://mydemo.search.windows.net` の場合、サービス名は "mydemo" になります。
+1. 新しいファイルに次の設定をコピーし、`<YOUR-SEARCH-SERVICE-NAME>`、`<YOUR-ADMIN-KEY>`、および `<YOUR-QUERY-KEY>` を実際のサービス名とキーに置き換えます。 お使いのサービス エンドポイントが `https://mydemo.search.windows.net` の場合、サービス名は `"mydemo"` になります。
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -373,10 +416,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. プロジェクトの構造が次のようになっていることを確認します。
 
-    ![プロジェクトのディレクトリ構造とクラス](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="プロジェクトのディレクトリ構造とクラス" border="false":::
 
 1. **[Maven]** ツール ウィンドウを開き、次の Maven 目標を実行します: `verify exec:java`
-![Maven 目標 verify exec:java を実行する](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+:::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Maven 目標 verify exec:java を実行する" border="false":::
 
 処理が完了すると、ビルド成功のメッセージに続いてゼロ (0) 終了コードが表示されることを確認します。
 
@@ -511,7 +554,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }
     ```
 
-    インデックス名は "hotels-quickstart" になります。 このインデックス フィールドの属性によって、インデックス付きデータをアプリケーションで検索する方法が決まります。 たとえば、フルテキスト検索に含める必要があるすべてのフィールドに、`IsSearchable` 属性を割り当てる必要があります。 属性の詳細については、「[フィールド コレクションとフィールド属性](search-what-is-an-index.md#fields-collection)」を参照してください。
+    インデックス名は "hotels-quickstart" になります。 このインデックス フィールドの属性によって、インデックス付きデータをアプリケーションで検索する方法が決まります。 たとえば、フルテキスト検索に含める必要があるすべてのフィールドに、`IsSearchable` 属性を割り当てる必要があります。 属性の詳細については、[インデックスの作成 (REST)](/rest/api/searchservice/create-index) に関するページを参照してください。
     
     このインデックスの `Description` フィールドでは、省略可能な `analyzer` プロパティを使用して既定の Lucene 言語アナライザーをオーバーライドします。 `Description_fr` フィールドでは、フランス語のテキストを格納するため、フランス語の Lucene アナライザー `fr.lucene` を使用しています。 `Description` では、オプションの Microsoft 言語アナライザー en.lucene を使用しています。 アナライザーの詳細については、[Azure Cognitive Search でのテキスト処理のためのアナライザー](search-analyzers.md)に関するページを参照してください。
 

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076034"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092904"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud のディザスター リカバリー
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 この記事では、Azure Spring Cloud アプリケーションをダウンタイムの発生から保護するために使用できるいくつかの戦略について説明します。  リージョンまたはデータセンターでは、地域的な災害によってダウンタイムが発生する可能性がありますが、慎重に計画することで顧客への影響を軽減できます。
 
@@ -48,7 +50,7 @@ Azure Spring Cloud アプリケーションは、特定のリージョンで実�
 
 2. サービスのカスタム ドメインを設定します。[カスタム ドメインに関する資料](spring-cloud-tutorial-custom-domain.md)に従って、これら 2 つの既存のサービス インスタンスのカスタム ドメインを設定します。 設定が正常に完了すると、両方のサービス インスタンスがカスタム ドメインの bcdr-test.contoso.com にバインドされます。
 
-3. Traffic Manager と 2 つのエンドポイントを作成します。[Azure portal を使用して Traffic Manager プロファイルを作成します](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile)。
+3. Traffic Manager と 2 つのエンドポイントを作成します。[Azure portal を使用して Traffic Manager プロファイルを作成します](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 
 Traffic Manager プロファイルは次のとおりです。
 * Traffic Manager の DNS 名: `http://asc-bcdr.trafficmanager.net`
@@ -62,3 +64,7 @@ Traffic Manager プロファイルは次のとおりです。
 4. DNS ゾーンに CNAME レコードを作成します: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net 
 
 5. これで、環境は完全に設定されました。 お客様は、bcdr-test.contoso.com を介してアプリにアクセスすることができます。
+
+## <a name="next-steps"></a>次の手順
+
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)

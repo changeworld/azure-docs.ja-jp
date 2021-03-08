@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c330d8000825b2e0ccbdab8c5c1cdefa4d3d45c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 419f25ee3df471bc2fc4526254f5677b8bd71856
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543374"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342741"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>チュートリアル:SAP Cloud Platform Identity Authentication を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -63,7 +63,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![SAP Cloud Platform Identity Authentication の SCIM の追加](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/configurationauth.png)
 
-4. アカウントをアクティブ化して **SAP Cloud Platform Identity Authentication サービス**のパスワードを設定するための電子メールを受け取ります。
+4. アカウントをアクティブ化して **SAP Cloud Platform Identity Authentication サービス** のパスワードを設定するための電子メールを受け取ります。
 
 4.  **[User ID]\(ユーザー ID\)** および **[Password]\(パスワード\)** をコピーします。 これらの値は、Azure portal の SAP Cloud Platform Identity Authentication アプリケーションの [プロビジョニング] タブにある [管理ユーザー名] フィールドと [管理パスワード] フィールドにそれぞれ入力されます。
 
@@ -94,7 +94,7 @@ Azure AD で自動ユーザー プロビジョニング用に SAP Cloud Platform
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて SAP Cloud Platform Identity Authentication のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 > [!TIP]
-> [SAP Cloud Platform Identity Authentication シングル サインオン チュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial)に関する記事にある説明に従い、SAP Cloud Platform Identity Authentication の SAML ベースのシングル サインオンを有効にすることもできます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> [SAP Cloud Platform Identity Authentication シングル サインオン チュートリアル](./sap-hana-cloud-platform-identity-authentication-tutorial.md)に関する記事にある説明に従い、SAP Cloud Platform Identity Authentication の SAML ベースのシングル サインオンを有効にすることもできます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>Azure AD で SAP Cloud Platform Identity Authentication の自動ユーザー プロビジョニングを構成するには、次の手順を実行します。
 
@@ -108,11 +108,11 @@ Azure AD で自動ユーザー プロビジョニング用に SAP Cloud Platform
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<tenantID>.accounts.ondemand.com/service/scim `」と入力します。 以前に取得した **[ユーザー ID]** および **[パスワード]** の値を、 **[管理ユーザー名]** および **[管理パスワード]** にそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD が SAP Cloud Platform Identity Authentication に接続できることを確認します。 接続できない場合は、使用中の SAP Cloud Platform Identity Authentication アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
 
@@ -162,4 +162,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

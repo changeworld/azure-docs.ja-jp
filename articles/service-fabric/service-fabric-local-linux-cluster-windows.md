@@ -1,35 +1,34 @@
 ---
 title: Windows で Azure Service Fabric Linux クラスターを設定する
-description: この記事では、Windows 開発用マシンで実行される Service Fabric Linux クラスターを設定する方法について説明します。 これは、クロス プラットフォーム開発で特に便利です。
-author: suhuruli
+description: この記事では、Windows 開発用マシンで実行される Service Fabric Linux クラスターを設定する方法について説明します。 このアプローチは、クロスプラットフォームの開発に役立ちます。
 ms.topic: conceptual
-ms.date: 11/20/2017
-ms.author: suhuruli
-ms.openlocfilehash: 91d055a480748ef012120aac4d329d474491e2c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 10/16/2020
+ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258583"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087079"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows 開発用マシンで Linux Service Fabric クラスターを設定する
 
-このドキュメントでは、Windows 開発用マシンでローカル Service Fabric を設定する方法について説明します。 ローカル Linux クラスターを設定すると、Linux クラスターを対象としているが、Windows マシンで開発されたアプリケーションをすばやくテストするときに便利です。
+このドキュメントでは、Windows 開発用マシン上でローカル Linux Service Fabric クラスターを設定する方法について説明します。 ローカル Linux クラスターを設定すると、Linux クラスターを対象としているが、Windows マシンで開発されたアプリケーションをすばやくテストするときに便利です。
 
 ## <a name="prerequisites"></a>前提条件
-Linux ベースの Service Fabric クラスターは、Windows ではネイティブに実行されません。 ローカル Service Fabric クラスターを実行するために、事前構成済みの Docker コンテナー イメージが用意されています。 作業を開始する前に、以下を行う必要があります。
+Linux ベースの Service Fabric クラスターは Windows 上では実行されませんが、クロスプラットフォームでのプロトタイプ作成を可能にするために、Linux Service Fabric ワンボックス クラスター Docker コンテナーを用意してあります。これは Docker for Windows を介してデプロイすることができます。
+
+作業を開始する前に、以下を行う必要があります。
 
 * 少なくとも 4 GB の RAM
-* 最新バージョンの [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* Docker は Linux モードで実行されている必要があります
+* [Docker for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows) の最新バージョン
+* Docker は Linux コンテナー モードで実行する必要があります
 
 >[!TIP]
-> * Docker の公式[ドキュメント](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)に記載されている手順に従って Windows に Docker をインストールしてください。 
-> * インストールが完了したら、[ここ](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine)に記載されている手順に従って、Docker が正しくインストールされているかどうかを確認します。
-
+> ご利用の Windows コンピューターに Docker をインストールには、[Docker のドキュメント](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)の手順に従ってください。 インストールの完了後、[インストールを確認](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine)します。
+>
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>ローカル コンテナーを作成し、Service Fabric をセットアップする
-ローカル Docker コンテナーをセットアップし、そこでサービス ファブリック クラスターを実行するには、PowerShell で次の手順を実行します。
+ローカル Docker コンテナーを設定し、そこで Service Fabric クラスターを実行するには、次の手順を行います。
 
 
 1. ホスト上の Docker デーモン構成を以下を使用して更新し、Docker デーモンを再起動します。 
@@ -40,33 +39,47 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    Docker アイコン、[設定]、[デーモン]、[詳細設定] の順に選択し、そこで更新することをお勧めします。 次に、Docker デーモンを再起動し、変更を反映させます。 
+    更新するには、次の順に移動することをお勧めします。 
 
-2. 新しいディレクトリに、Service Fabric イメージを構築する `Dockerfile` というファイルを作成します。
+    * [Docker] アイコン > [設定] > [Docker エンジン]
+    * 上にリストされた新しいフィールドを追加する
+    * 適用して再起動 - Docker デーモンを再起動し、変更を反映させます。
 
-    ```Dockerfile
-    FROM mcr.microsoft.com/service-fabric/onebox:latest
-    WORKDIR /home/ClusterDeployer
-    RUN ./setup.sh
-    #Generate the local
-    RUN locale-gen en_US.UTF-8
-    #Set environment variables
-    ENV LANG=en_US.UTF-8
-    ENV LANGUAGE=en_US:en
-    ENV LC_ALL=en_US.UTF-8
-    EXPOSE 19080 19000 80 443
-    #Start SSH before running the cluster
-    CMD /etc/init.d/ssh start && ./run.sh
+2. PowerShell を介してクラスターを起動します。<br/>
+    <b>Ubuntu 18.04 LTS:</b>
+    ```powershell
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
+    <b>Ubuntu 16.04 LTS:</b>
+    ```powershell
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、Docker Hub の [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) ページを参照してください。
+
+
+
+3. 省略可能: 拡張 Service Fabric イメージをビルドします。
+
+    新しいディレクトリに、`Dockerfile` という名前のファイルを作成して、カスタマイズしたイメージをビルドします。
+
     >[!NOTE]
-    >実際のコンテナーには、このファイルを応用して他のプログラムや依存関係を追加することができます。
+    >Dockerfile を使用して上記のイメージを調整すれば、さらにプログラムまたは依存関係をコンテナーに追加することができます。
     >たとえば、「`RUN apt-get install nodejs -y`」を追加すれば、ゲスト実行可能ファイルとして `nodejs` アプリケーションに対応することができます。
+    ```Dockerfile
+    FROM mcr.microsoft.com/service-fabric/onebox:u18
+    RUN apt-get install nodejs -y
+    EXPOSE 19080 19000 80 443
+    WORKDIR /home/ClusterDeployer
+    CMD ["./ClusterDeployer.sh"]
+    ```
     
     >[!TIP]
     > 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) のページをご覧ください。
 
-3. 再利用可能なイメージを `Dockerfile` から構築するには、ターミナルを開き、`cd` で `Dockerfile` の格納場所に移動して次のコマンドを実行します。
+    再利用可能なイメージを `Dockerfile` から構築するには、ターミナルを開き、`cd` で `Dockerfile` の格納場所に移動して次を実行します。
 
     ```powershell 
     docker build -t mysfcluster .
@@ -75,10 +88,10 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
     >[!NOTE]
     >この操作にはしばらく時間がかかりますが、実行するのは 1 回でかまいません。
 
-4. これで、Service Fabric のローカル コピーを、必要なときにいつでも、次のコマンドを実行することですぐに起動することができます。
+    これで、Service Fabric のローカル コピーを、必要なときにいつでも、次を実行することですぐに起動することができます。
 
     ```powershell 
-    docker run --name sftestcluster -d -v //var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
     ```
 
     >[!TIP]
@@ -86,21 +99,22 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
     >
     >アプリケーションが特定のポートでリッスンしている場合は、追加の `-p` タグを使用してポートを指定する必要があります。 たとえば、アプリケーションがポート 8080 でリッスンしている場合は、次の `-p` タグを追加します。
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
+    >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-5. 少しするとクラスターが起動され、次のコマンドを使ってログを確認したり、ダッシュボードに切り替えてクラスターの正常性を確認したりすることができます (`http://localhost:19080`)。
+
+4. 少しするとクラスターが起動され、次のコマンドを使ってログを確認したり、ダッシュボードに切り替えてクラスターの正常性を確認したりすることができます (`http://localhost:19080`)。
 
     ```powershell 
     docker logs sftestcluster
     ```
 
-6. 手順 5. が正常に完了したら、Windows から ``http://localhost:19080`` にアクセスします。Service Fabric Explorer が表示されます。 この時点で、Windows 開発者用マシンから任意のツールを使用してこのクラスターに接続し、Linux Service Fabric クラスターを対象としたアプリケーションを配置します。 
+5. 手順 4 で確認したとおりにクラスターが正常にデプロイされたら、Windows コンピューターから ``http://localhost:19080`` にアクセスして、Service Fabric Explorer ダッシュボードを見つけることができます。 この時点で、Windows 開発者用マシンからツールを使用してこのクラスターに接続し、Linux Service Fabric クラスターを対象としたアプリケーションを配置します。 
 
     > [!NOTE]
     > Eclipse プラグインは、現在、Windows でサポートされていません。 
 
-7. 完了したら、コンテナーを停止し、次のコマンドを使用してコンテナーをクリーンアップします。
+6. 完了したら、コンテナーを停止し、次のコマンドを使用してコンテナーをクリーンアップします。
 
     ```powershell 
     docker rm -f sftestcluster
@@ -110,11 +124,14 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
  
  Mac 用のコンテナーで実行されているローカル クラスターの既知の制限は、次のとおりです。 
  
- * DNS サービスが実行されず、サポートされていない [Issue #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS サービスは実行されません。現在、コンテナー内ではサポートされていません。 [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * コンテナーベースのアプリを実行するには、Linux ホスト上で SF を実行する必要があります。 入れ子になったコンテナー アプリは現在サポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
+* [Yeoman を使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-create-your-first-linux-application-with-java.md)
 * [Eclipse](./service-fabric-get-started-eclipse.md) の概要
 * その他の [Java サンプル](https://github.com/Azure-Samples/service-fabric-java-getting-started)を確認する
+* [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 
 <!-- Image references -->

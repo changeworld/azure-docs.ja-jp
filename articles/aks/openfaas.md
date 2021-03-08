@@ -5,13 +5,13 @@ author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
-ms.custom: mvc
-ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 319107127b79383fc3b49f0eeb856a0e6c5b09f8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631463"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747759"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 
@@ -91,7 +91,8 @@ alertmanager-config  1     20s
 NOTES:
 To verify that openfaas has started, run:
 
-  kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
+```console
+kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
 OpenFaaS ゲートウェイにアクセスするためのパブリック IP アドレスが作成されます。 この IP アドレスを取得するには、[kubectl get service][kubectl-get] コマンドを使います。 IP アドレスがサービスに割り当てられるまでに、少し時間がかかる場合があります。
@@ -131,9 +132,9 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 OpenFaaS が稼働したら、OpenFaas ポータルを使用して関数を作成します。
 
-**[Deploy New Function]\(新しい関数のデプロイ\)** をクリックし、**Figlet** を検索します。 Figlet 関数を選択し、 **[Deploy]\(デプロイ)** をクリックします。
+**[Deploy New Function]\(新しい関数のデプロイ\)** をクリックし、 **Figlet** を検索します。 Figlet 関数を選択し、 **[Deploy]\(デプロイ)** をクリックします。
 
-![Figlet](media/container-service-serverless/figlet.png)
+![検索行に figlet というテキストが表示された [Deploy A New Function]\(新しい関数のデプロイ\) ダイアログ ボックスを示すスクリーンショット。](media/container-service-serverless/figlet.png)
 
 curl を使用して関数を呼び出します。 次の例にある IP アドレスを、OpenFaas ゲートウェイのものに置き換えます。
 

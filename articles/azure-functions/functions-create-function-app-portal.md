@@ -1,46 +1,83 @@
 ---
-title: Azure Portal から Function App を作成する
-description: ポータルから Azure の新しい関数アプリを作成します。
+title: Azure Portal で初めての関数を作成する
+description: Azure Portal を使用して、サーバーレス実行のための最初の Azure Function を作成する方法について説明します。
 ms.topic: how-to
-ms.date: 08/29/2019
-ms.custom: mvc
-ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 03/26/2020
+ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
+ms.openlocfilehash: 8d394a6f71fc5d31bd72a67a876a24a500a7cf01
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732185"
 ---
-# <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から Function App を作成する
+# <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
-このトピックでは、Azure Functions を使用して Azure portal で関数アプリを作成する方法について示します。 Function App は、個々の関数の実行をホストするコンテナーです。 
+Azure Functions を使用すると、最初に仮想マシン (VM) を作成したり、Web アプリケーションを発行したりしなくても、サーバーレス環境でコードを実行できます。 この記事では、Azure Functions を使用して Azure portal で "hello world" の HTTP トリガー関数を作成する方法について説明します。
+
+[!INCLUDE [functions-in-portal-editing-note](../../includes/functions-in-portal-editing-note.md)] 
+
+代わりに、[関数をローカルで開発](functions-develop-local.md)し、Azure の関数アプリに公開することをお勧めします。  
+次のいずれかのリンクを使用して、選択したローカル開発環境と言語で作業を開始します。
+
+| Visual Studio Code | ターミナル/コマンド プロンプト | Visual Studio |
+| --- | --- | --- |
+|  &bull;&nbsp;[C# で作業を開始する](./create-first-function-vs-code-csharp.md)<br/>&bull;&nbsp;[Java で作業を開始する](./create-first-function-vs-code-java.md)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./create-first-function-vs-code-node.md)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./create-first-function-vs-code-powershell.md)<br/>&bull;&nbsp;[Python で作業を開始する](./create-first-function-vs-code-python.md) |&bull;&nbsp;[C# で作業を開始する](./create-first-function-cli-csharp.md)<br/>&bull;&nbsp;[Java で作業を開始する](./create-first-function-cli-java.md)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./create-first-function-cli-node.md)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./create-first-function-cli-powershell.md)<br/>&bull;&nbsp;[Python で作業を開始する](./create-first-function-cli-python.md) | [C# で作業を開始する](functions-create-your-first-function-visual-studio.md) |
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+Azure アカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-[!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
+関数の実行をホストするための Function App が存在する必要があります。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
-Function App を作成したら、1 つ以上の言語で個々の関数を作成できます。 関数を作成するには、[ポータルを使用](functions-create-first-azure-function.md#create-function) するか、[継続的なデプロイ](functions-continuous-deployment.md) を使用するか、[FTP でアップロード](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp) します。
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="service-plans"></a>サービス プラン
+次に、新しい Function App で関数を作成します。
 
-Azure Functions には、次の 3 つの異なるサービス プランが用意されています。従量課金プラン、Premium プラン、専用 (App Service) プランです。 関数アプリの作成時にサービス プランを選択する必要があり、後で変更することはできません。 詳細については、[Azure Functions のホスティング プランの選択](functions-scale.md) に関するページをご覧ください。
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>HTTP トリガー関数の作成
 
-専用 (App Service) プランで JavaScript 関数を実行する予定がある場合は、コアのより少ないプランを選択してください。 詳細については、「[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-vcpu-app-service-plans)」を参照してください。
+1. **[関数]** ウィンドウの左側のメニューで、 **[関数]** を選択し、上部のメニューから **[追加]** を選択します。 
+ 
+1. **[新規関数]** ウィンドウで **[Http トリガー]** を選択します。
 
-<a name="storage-account-requirements"></a>
+    ![HTTP トリガー関数の選択](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
+1. **[新規関数]** ウィンドウで、 **[新規関数]** の既定の名前を受け入れるか、新しい名前を入力します。 
 
-関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 内部的には、Functions はトリガーの管理や関数実行のログなどの操作に Storage を使用します。 BLOB 専用のストレージ アカウント、Azure Premium Storage、ZRS レプリケーションを使用する汎用ストレージ アカウントなど、一部のストレージ アカウントでは、キューとテーブルがサポートされません。 こうしたアカウントは、Function App の作成時に [ストレージ アカウント] ブレードから除外されます。
+1. **[承認レベル]** ドロップダウン リストから **[匿名]** を選択し、 **[関数の作成]** を選択します。
 
->[!NOTE]
->従量課金ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
+    Azure によって HTTP トリガー関数が作成されます。 ここで、HTTP 要求を送信することで、新しい関数を実行できます。
 
-ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#core-storage-services)」を参照してください。 
+## <a name="test-the-function"></a>関数をテストする
+
+1. 新しい HTTP トリガー関数で、左側のメニューから **[Code + Test]\(コード + テスト\)** を選択し、上部のメニューから **[関数の URL の取得]** を選択します。
+
+    ![[関数の URL の取得] の選択](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+
+1. **[関数の URL の取得]** ダイアログ ボックスで、ドロップダウン リストから **[既定]** を選択し、 **[クリップボードにコピー]** アイコンを選択します。 
+
+    ![Azure Portal からの関数 URL のコピー](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
+
+1. 関数 URL をブラウザーのアドレス バーに貼り付けます。 この URL の末尾にクエリ文字列の値 `?name=<your_name>` を追加し、Enter キーを押して要求を実行します。 
+
+    次の例は、ブラウザーでの応答を示しています。
+
+    ![ブラウザーでの関数の応答。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+
+    要求 URL に [アクセス キー](functions-bindings-http-webhook-trigger.md#authorization-keys) (`?code=...`) が含まれていた場合は、関数を作成するときに **[匿名]** アクセス レベルではなく **[関数]** を選択することを示します。 この場合は、代わりに `&name=<your_name>` を追加する必要があります。
+
+1. 関数が実行されると、ログにトレース情報が書き込まれます。 トレース出力を表示するには、ポータルの **[Code + Test]\(コード + テスト\)** ページに戻り、ページの下部にある **[ログ]** 矢印を展開します。
+
+   ![Azure Portal の関数ログ ビューアー。](./media/functions-create-first-azure-function/function-view-logs.png)
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure portal を使用すると関数を簡単に作成したり試したりできますが、[ローカル開発](functions-develop-local.md) をお勧めします。 ポータルで Function App を作成した後、さらに関数を追加する必要があります。 
-
-> [!div class="nextstepaction"]
-> [HTTP によってトリガーされる関数の追加](functions-create-first-azure-function.md#create-function)
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

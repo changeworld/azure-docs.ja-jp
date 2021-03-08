@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 07e33279452b8296688c358c9ffdab1bfb2e1321
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543964"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693160"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -31,11 +32,11 @@ ms.locfileid: "87543964"
 | **IoT クラウド ゲートウェイ** | <ul><li>[最小権限のトークンを使用してクラウド ゲートウェイに接続する](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[送信専用のアクセス許可 SAS キーを使用してデバイス トークンを生成する](#sendonly-sas)</li><li>[Event Hub への直接アクセスを提供するアクセス トークンは使用しない](#access-tokens-hub)</li><li>[必要最小限のアクセス許可が付与されている SAS キーを使用して Event Hub に接続する](#sas-minimum-permissions)</li></ul> |
 | **Azure Document DB** | <ul><li>[可能な限りリソース トークンを使用して Azure Cosmos DB に接続する](#resource-docdb)</li></ul> |
-| **Azure の信頼の境界** | <ul><li>[RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する](#grained-rbac)</li></ul> |
-| **Service Fabric の信頼の境界** | <ul><li>[RBAC を使用してクラスター操作へのクライアントのアクセスを制限する](#cluster-rbac)</li></ul> |
+| **Azure の信頼の境界** | <ul><li>[Azure RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する](#grained-rbac)</li></ul> |
+| **Service Fabric の信頼の境界** | <ul><li>[Azure RBAC を使用してクラスター操作へのクライアントのアクセスを制限する](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[必要に応じて、セキュリティのモデリングを実行し、フィールド レベルのセキュリティを使用する](#modeling-field)</li></ul> |
 | **Dynamics CRM ポータル** | <ul><li>[ポータルのセキュリティ モデルとその他の CRM が異なることを念頭に置きながら、ポータル アカウントのセキュリティ モデルを実行する](#portal-security)</li></ul> |
-| **Azure ストレージ** | <ul><li>[Azure Table Storage のエンティティの範囲で詳細なアクセス許可を付与する](#permission-entities)</li><li>[Azure Resource Manager を使用して、Azure ストレージ アカウントに対するロールベースのアクセス制御 (RBAC) を有効にする](#rbac-azure-manager)</li></ul> |
+| **Azure ストレージ** | <ul><li>[Azure Table Storage のエンティティの範囲で詳細なアクセス許可を付与する](#permission-entities)</li><li>[Azure Resource Manager を使用して、Azure ストレージ アカウントへの Azure のロールベースのアクセス制御 (Azure RBAC) を有効にする](#rbac-azure-manager)</li></ul> |
 | **モバイル クライアント** | <ul><li>[暗黙的な脱獄または root 化検出を実装する](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[WCF での脆弱なクラス参照](#weak-class-wcf)</li><li>[WCF - 承認コントロールを実装する](#wcf-authz)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API で適切な承認メカニズムを実装する](#authz-aspnet)</li></ul> |
@@ -146,7 +147,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [SQL 権限の階層](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine)、[SQL セキュリティ保護可能なリソース](https://docs.microsoft.com/sql/relational-databases/security/securables) |
+| **参照**              | [SQL 権限の階層](/sql/relational-databases/security/permissions-hierarchy-database-engine)、[SQL セキュリティ保護可能なリソース](/sql/relational-databases/security/securables) |
 | **手順** | 最小権限のアカウントを使用してデータベースに接続します。 アプリケーションのログインはデータベース内に制限し、選択したストアド プロシージャのみを実行します。 アプリケーションのログインには、直接テーブル アクセスは含まれません。 |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>テナントがお互いのデータにアクセスできないように行レベル セキュリティの RLS を実装する
@@ -157,7 +158,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、SQL バージョン - MsSQL2016 |
-| **参照**              | [SQL Server の行レベルのセキュリティ (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
+| **参照**              | [SQL Server の行レベルのセキュリティ (RLS)](/sql/relational-databases/security/row-level-security) |
 | **手順** | <p>行レベルのセキュリティを使用すると、クエリを実行しているユーザーの特性 (たとえば、グループ メンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。</p><p>Row-Level Security (RLS) は、アプリケーションでセキュリティの設計やコーディングを簡略化します。 RLS を使用すると、データ行のアクセスに対して制限を実装できます。 たとえば、ワーカーが自分の部署に関連するデータ行にのみアクセスできるようにしたり、顧客のデータ アクセスをその顧客の会社のデータにのみ制限したりできます。</p><p>アクセスの制限のロジックは、別のアプリケーション層のデータから離れてではなく、データベース層にあります。 任意の層からデータへのアクセスが試行されるたびに、データベース システムにはアクセス制限が適用されます。 これによりセキュリティ システムの侵入口が減り、そのシステムの信頼性と堅牢性が向上します。</p><p>|
 
 そのまま使用できるデータベース機能としての RLS は、SQL Server 2016 以降、Azure SQL Database、および SQL Managed Instance にのみ適用できます。 そのまま使用できる RLS 機能が実装されていない場合、データ アクセスはビューとプロシージャの使用に制限されます
@@ -170,7 +171,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [SQL 権限の階層](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine)、[SQL セキュリティ保護可能なリソース](https://docs.microsoft.com/sql/relational-databases/security/securables) |
+| **参照**              | [SQL 権限の階層](/sql/relational-databases/security/permissions-hierarchy-database-engine)、[SQL セキュリティ保護可能なリソース](/sql/relational-databases/security/securables) |
 | **手順** | SysAdmin 固定サーバー ロールには限られたメンバーのみを割り当て、アプリケーションで使用されるアカウントは追加しないようにします。  ロールのユーザーの一覧を確認し、不要なアカウントはすべて削除してください|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>最小権限のトークンを使用してクラウド ゲートウェイに接続する
@@ -181,7 +182,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | [IoT Hub Access Control](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#Security) |
+| **参照**              | [IoT Hub Access Control](../../iot-hub/iot-hub-devguide.md) |
 | **手順** | クラウド ゲートウェイ (IoT Hub) に接続するさまざまなへのコンポーネントに、最小権限のアクセス許可を付与します。 代表的な例として、デバイスの管理/プロビジョニング コンポーネントでは registryread/write が、イベント プロセッサ (ASA) では Service Connect が使用されています。 個別のデバイスは、デバイスの資格情報を使用してを接続されます|
 
 ## <a name="use-a-send-only-permissions-sas-key-for-generating-device-tokens"></a><a id="sendonly-sas"></a>送信専用のアクセス許可 SAS キーを使用してデバイス トークンを生成する
@@ -192,7 +193,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](../../event-hubs/authenticate-shared-access-signature.md) |
 | **手順** | SAS キーは、個別のデバイス トークンを生成するときに使用します。 特定の発行元に対してデバイス トークンを生成中は、送信専用のアクセス許可 SAS キーを使用してください|
 
 ## <a name="do-not-use-access-tokens-that-provide-direct-access-to-the-event-hub"></a><a id="access-tokens-hub"></a>Event Hub への直接アクセスを提供するアクセス トークンは使用しない
@@ -203,8 +204,8 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **手順** | イベント ハブへの直接アクセスを許可するトークンはデバイスに付与しないでください。 発行元へのアクセスのみを提供する最小権限のトークンをデバイスに対して使用すると、そのデバイスを特定し、それが悪意のあるデバイスまたは侵害されたデバイスであることがわかったときに、ブラックリストに登録できます。|
+| **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](../../event-hubs/authenticate-shared-access-signature.md) |
+| **手順** | イベント ハブへの直接アクセスを許可するトークンはデバイスに付与しないでください。 発行元へのアクセスのみを提供する最小特権のトークンをデバイスに対して使用すると、そのデバイスを特定し、それが悪意のあるデバイスまたは侵害されたデバイスであることがわかったときに禁止できます。|
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>必要最小限のアクセス許可が付与されている SAS キーを使用して Event Hub に接続する
 
@@ -214,7 +215,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](../../event-hubs/authenticate-shared-access-signature.md) |
 | **手順** | Event Hub に接続するさまざまなバックエンド アプリケーションに、最小権限のアクセス許可を付与します。 バックエンド アプリケーションごとに個別の SAS キーを生成し、必要なアクセス許可 (送信、受信、または管理) のみをそのキーに提供してください。|
 
 ## <a name="use-resource-tokens-to-connect-to-cosmos-db-whenever-possible"></a><a id="resource-docdb"></a>可能な限り、リソース トークンを使用して Cosmos DB に接続する
@@ -228,7 +229,7 @@ WHERE userID=:id < - session var
 | **参照**              | 該当なし  |
 | **手順** | リソース トークンは、Azure Cosmos DB アクセス許可のリソースに関連付けられていて、データベースのユーザーと、ユーザーが持つ特定の Azure Cosmos DB アプリケーションのリソース (コレクション、ドキュメントなど) へのアクセス許可の間のリレーションシップをキャプチャします。 クライアントにマスター キーや読み取り専用キーを知らせたくない場合、たとえば、クライアントがモバイル クライアント、デスクトップ クライアントなどのエンド ユーザー アプリケーションの場合は、常にリソース トークンを使用して Azure Cosmos DB にアクセスします。マスター キーや読み取り専用キーは、こうしたキーを安全に格納できるバックエンド アプリケーションから使用してください。|
 
-## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する
+## <a name="enable-fine-grained-access-management-to-azure-subscription-using-azure-rbac"></a><a id="grained-rbac"></a>Azure RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -236,10 +237,10 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
-| **手順** | Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。|
+| **参照**              | [Azure でのロールの割り当てを追加または削除して、Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)  |
+| **手順** | Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 Azure RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。|
 
-## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>RBAC を使用してクラスター操作へのクライアントのアクセスを制限する
+## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>Service Fabric RBAC を使用してクラスター操作へのクライアントのアクセスを制限する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -247,7 +248,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
-| **参照**              | [ロール ベースのアクセス制御 (Service Fabric クライアント用)](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security-roles/) |
+| **参照**              | [Service Fabric のロールベースのアクセス制御 (Service Fabric クライアント用)](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **手順** | <p>Azure Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。</p><p>管理者には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) があります。 ユーザーには、既定で管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみがあります。</p><p>クラスターの作成時に、2 つのクライアント ロール (管理者とクライアント) を指定し、それぞれに個別の証明書を設定します。</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>必要に応じて、セキュリティのモデリングを実行し、フィールド レベルのセキュリティを使用する
@@ -280,10 +281,10 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - テーブル |
-| **参照**              | [SAS を使用して Azure ストレージ アカウントのオブジェクトへのアクセスを委任する方法](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
+| **参照**              | [SAS を使用して Azure ストレージ アカウントのオブジェクトへのアクセスを委任する方法](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **手順** | ビジネス シナリオによっては、さまざまな関係者に対応した機密データ (さまざまな国/地域に関連する機密データなど) を、Azure Table Storage に格納しなければならないことがあります。 このような場合は、パーティションと行キー範囲を指定することで SAS 署名を構成し、ユーザーが、国/地域固有のデータにアクセスできるようにします。| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Azure Resource Manager を使用して、Azure ストレージ アカウントに対するロールベースのアクセス制御 (RBAC) を有効にする
+## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Azure Resource Manager を使用して、Azure ストレージ アカウントへの Azure のロールベースのアクセス制御 (Azure RBAC) を有効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -291,7 +292,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
+| **参照**              | [Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ストレージ アカウントをセキュリティで保護する方法](../../storage/blobs/security-recommendations.md) |
 | **手順** | <p>新しいストレージ アカウントを作成するときに、クラシックまたは Azure Resource Manager のデプロイ モデルを選択します。 Azure にリソースを作成するクラシック モデルでは、サブスクリプション (つまりストレージ アカウント) に対するオールオアナッシング形式のアクセス権のみを許可します。</p><p>Azure Resource Manager モデルでは、Azure Active Directory を使用して、リソース グループにストレージ アカウントを追加し、特定のストレージ アカウントの管理プレーンに対するアクセス権を制御します。 たとえば、ストレージ アカウント キーへのアクセス権を特定のユーザーに付与し、他のユーザーはそのストレージ アカウントに関する情報を読み取ることはできても、ストレージ アカウント キーにはアクセスでないようにすることができます。</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>暗黙的な脱獄または root 化検出を実装する
@@ -313,7 +314,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **手順** | <p>脆弱なクラス参照が使用されているため、攻撃者が未承認コードを実行できる可能性があります。 プログラムが参照するのは、一意に識別されていないユーザー定義のクラスです。 この厳密に識別されていないクラスが .NET によって読み込まれると、CLR 型ローダーは、指定した順序で次の場所にあるクラスを検索します。</p><ol><li>アセンブリの種類がわかっている場合、ローダーは構成ファイルのリダイレクト場所、GAC、構成ファイルを使用している現在のアセンブリ、およびアプリケーション ベース ディレクトリを検索します</li><li>アセンブリがわからない場合、ローダーは現在のアセンブリ、mscorlib、および TypeResolve イベント ハンドラーによって返される場所を検索します</li><li>この CLR 検索順序は、Type Forwarding メカニズム、AppDomain.TypeResolve イベントなどのフックで変更できます</li></ol><p>攻撃者が、同じ名前のクラスを別に作成して、CLR が最初に読み込む代替場所に配置することにより CLR 検索順序を悪用すると、攻撃者によって提供されたコードが CLR によって意図せずに実行されます</p>|
 
 ### <a name="example"></a>例
@@ -350,7 +351,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **手順** | <p>このサービスでは、承認コントロールが使用されません。 クライアントが特定の WCF サービスを呼び出すと、WCF は、呼び出し元に、サーバーでサービス メソッドを実行する権限が付与されていることを確認するさまざまな承認スキームを提供します。 承認コントロールが WCF サービスに対して有効でない場合は、認証されたユーザーが、権限の昇格を実行できます。</p>|
 
 ### <a name="example"></a>例
