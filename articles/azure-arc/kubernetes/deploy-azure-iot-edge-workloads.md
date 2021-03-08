@@ -1,21 +1,21 @@
 ---
-title: Azure IoT Edge ワークロードをデプロイする (プレビュー)
+title: Azure IoT Edge ワークロードをデプロイする
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge ワークロードをデプロイする
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: c352455b69360df0b26f5aac38fc40ccb30fb9de
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e77446170e5a6adac995394d66640fd183f453b8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650415"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121730"
 ---
-# <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge ワークロードをデプロイする (プレビュー)
+# <a name="deploy-azure-iot-edge-workloads"></a>Azure IoT Edge ワークロードをデプロイする
 
 ## <a name="overview"></a>概要
 
@@ -77,4 +77,4 @@ az k8s-configuration delete -g AzureArcTest --cluster-name AzureArcIotEdge --nam
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Policy を使用してクラスター構成を管理する](./use-azure-policy.md)
+[Azure Policy を使用してクラスター構成を管理する](./use-azure-policy.md)方法について学びます。

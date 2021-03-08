@@ -1,25 +1,25 @@
 ---
 title: 機械学習パイプラインで Apache Spark を使用する (プレビュー)
 titleSuffix: Azure Machine Learning
-description: データ操作に Spark を使用するには、Synapse ワークスペースを Azure 機械学習パイプラインにリンクします。
+description: データ操作に Apache Spark を使用するには、Azure Synapse Analytics ワークスペースを Azure 機械学習パイプラインにリンクします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/25/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a912bc5abcdadf3f8eca46f805c433d3a1058c68
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660675"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203693"
 ---
-# <a name="how-to-use-apache-spark-in-your-machine-learning-pipeline-with-azure-synapse-preview"></a>機械学習パイプライン内の Apache Spark を Azure Synapse と一緒に使用する方法 (プレビュー)
+# <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)
 
-この記事では、Synapse によってサポートされる Apache Spark プールを、Azure Machine Learning パイプラインのデータ準備手順のコンピューティング先として使用する方法について説明します。 データの準備やトレーニングなどの特定の手順に適したコンピューティング リソースを 1 つのパイプラインで使用する方法について説明します。 Spark ステップ用のデータの準備方法と、次の手順に渡す方法について説明します。 
+この記事では、Azure Synapse Analytics によって実行される Apache Spark プールを、Azure Machine Learning パイプラインのデータ準備ステップのコンピューティング先として使用する方法について説明します。 データの準備やトレーニングなどの特定の手順に適したコンピューティング リソースを 1 つのパイプラインで使用する方法について説明します。 Spark ステップ用のデータの準備方法と、次の手順に渡す方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,27 +27,27 @@ ms.locfileid: "101660675"
 
 * [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)を使用します。
 
-* Synapse ワークスペースと Apache Spark プールを作成します (「[クイックスタート: Synapse Studio を使用してサーバーレス Apache Spark プールを作成する](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)」を参照してください)。 
+* Azure Synapse Analytics ワークスペースと Apache Spark プールを作成します (「[クイックスタート: Synapse Studio を使用してサーバーレス Apache Spark プールを作成する](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)」を参照してください)。 
 
-## <a name="link-your-machine-learning-workspace-and-synapse-workspace"></a>機械学習ワークスペースと Synapse ワークスペースをリンクする 
+## <a name="link-your-azure-machine-learning-workspace-and-azure-synapse-analytics-workspace"></a>Azure Machine Learning ワークスペースと Azure Synapse Analytics ワークスペースをリンクする 
 
-Apache Spark プールは、Synapse ワークスペースで作成して管理します。 Spark プールを Azure Machine Learning ワークスペースと統合するには、Synapse ワークスペースにリンクする必要があります。 
+Apache Spark プールは、Azure Synapse Analytics ワークスペースで作成して管理します。 Apache Spark プールを Azure Machine Learning ワークスペースと統合するには、Azure Synapse Analytics ワークスペースにリンクする必要があります。 
 
-**[リンクされたサービス]** ページを使用して、Azure Machine Learning スタジオ UI 経由で Synapse Spark プールをアタッチできます。 この操作は **[コンピューティング]** ページで **[コンピューティングをアタッチする]** オプションを使用して行うこともできます。
+**[リンクされたサービス]** ページを使用して、Azure Machine Learning スタジオ UI 経由で Apache Spark プールをアタッチできます。 この操作は **[コンピューティング]** ページで **[コンピューティングをアタッチする]** オプションを使用して行うこともできます。
 
-また、SDK (下記を参照) または ARM テンプレート (次の「[ARM テンプレートの例](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)」を参照) を使用して Synapse Spark プールをアタッチすることもできます。 
+また、SDK (下記を参照) または ARM テンプレート (次の「[ARM テンプレートの例](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)」を参照) を使用して Apache Spark プールをアタッチすることもできます。 
 
-コマンド ラインを使用して、ARM テンプレートに従い、リンクされたサービスを追加し、次のコードを使用して Synapse プールをアタッチできます。
+コマンド ラインを使用して、ARM テンプレートに従い、リンクされたサービスを追加し、次のコードを使用して Apache Spark プールをアタッチできます。
 
 ```bash
 az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"
 ```
 
 > [!Important]
-> Synapse ワークスペースに正常にリンクするには、Synapse ワークスペース リソースに所有者ロールがある必要があります。 Azure portal でご自身のアクセス権を確認してください。
+> Azure Synapse Analytics ワークスペースに正常にリンクするには、Azure Synapse Analytics ワークスペース リソースに所有者ロールがある必要があります。 Azure portal でご自身のアクセス権を確認してください。
 > リンクされたサービスには、ユーザーによって作成されるときにシステム割り当て ID (SAI) が付与されます。 このリンク サービス SAI に Synapse Studio からの "Synapse Apache Spark 管理者" ロールを割り当てて、これが Spark ジョブを送信できるようにする必要があります (「[Synapse Studio で Synapse RBAC ロールの割り当てを管理する方法](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)」を参照してください)。 また、Azure Machine Learning ワークスペースのユーザーに、リソース管理の Azure portal からの "共同作成者" ロールを付与する必要があります。
 
-## <a name="create-or-retrieve-the-link-between-your-synapse-workspace-and-your-azure-machine-learning-workspace"></a>Synapse ワークスペースと Azure Machine Learning ワークスペースの間のリンクを作成または取得する
+## <a name="create-or-retrieve-the-link-between-your-azure-synapse-analytics-workspace-and-your-azure-machine-learning-workspace"></a>Azure Synapse Analytics ワークスペースと Azure Machine Learning ワークスペースの間のリンクを作成または取得する
 
 次のようなコードを使用して、ワークスペース内のリンクされたサービスを取得できます。
 
@@ -65,9 +65,9 @@ linked_service = LinkedService.get(ws, 'synapselink1')
 
 まず、`Workspace.from_config()` により、`config.json` 内の構成を使用して Azure Machine Learning ワークスペースにアクセスします (「[チュートリアル: 個人の開発環境で Azure Machine Learning の使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)」を参照してください)。 次に、このコードによって、ワークスペースで使用可能なリンクされたサービスがすべて出力されます。 最後に、`LinkedService.get()` によって、`'synapselink1'` という名前のリンクされたサービスが取得されます。 
 
-## <a name="attach-your-synapse-spark-pool-as-a-compute-target-for-azure-machine-learning"></a>Azure Machine Learning のコンピューティング先として Synapse spark プールをアタッチする
+## <a name="attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning"></a>Azure Machine Learning のコンピューティング先として Apache Spark プールをアタッチする
 
-Synapse spark プールを使用して機械学習パイプラインのステップを実行するには、次のコードに示すように、パイプライン手順の `ComputeTarget` としてこれをアタッチする必要があります。
+Apache Spark プールを使用して機械学習パイプラインのステップを実行するには、次のコードに示すように、パイプライン ステップの `ComputeTarget` としてこれをアタッチする必要があります。
 
 ```python
 from azureml.core.compute import SynapseCompute, ComputeTarget
@@ -85,13 +85,11 @@ synapse_compute=ComputeTarget.attach(
 synapse_compute.wait_for_completion()
 ```
 
-最初のステップは、`SynapseCompute` を構成することです。 `linked_service` 引数は、前の手順で作成または取得した `LinkedService` オブジェクトです。 `type` 引数は `SynapseSpark` である必要があります。 `SynapseCompute.attach_configuration()` の `pool_name` 引数は、Synapse ワークスペースの既存のプールの引数と一致している必要があります。 Synapse ワークスペースで Apache spark プールを作成する方法の詳細については、「[クイックスタート: Synapse Studio を使用してサーバーレス Apache Spark プールを作成する](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)」を参照してください。 `attach_config` の型は `ComputeTargetAttachConfiguration` です。
+最初のステップは、`SynapseCompute` を構成することです。 `linked_service` 引数は、前の手順で作成または取得した `LinkedService` オブジェクトです。 `type` 引数は `SynapseSpark` である必要があります。 `SynapseCompute.attach_configuration()` の `pool_name` 引数は、Azure Synapse Analytics ワークスペースの既存のプールのそれと一致している必要があります。 Azure Synapse Analytics ワークスペースで Apache Spark プールを作成する方法の詳細については、「[クイックスタート: Synapse Studio を使用してサーバーレス Apache Spark プールを作成する](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)」を参照してください。 `attach_config` の型は `ComputeTargetAttachConfiguration` です。
 
 構成が作成されたら、`Workspace`、`ComputeTargetAttachConfiguration`、および機械学習ワークスペース内のコンピューティングの参照に使用する名前を渡して、機械学習 `ComputeTarget` を作成します。 `ComputeTarget.attach()` の呼び出しは非同期であるため、このサンプルは、呼び出しが完了するまでブロック状態になります。
 
-## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>リンクされた Apache spark プールを使用する `SynapseSparkStep` を作成する
-
-サンプル ノートブックの [Synapse spark プールの Spark ジョブ](https://github.com/azure/machinelearningnotebooks)では、単純な機械学習パイプラインが定義されています。 最初に、このノートブックでは、前の手順で定義された `synapse_compute` を利用したデータ準備手順が定義されます。 次に、このノートブックでは、トレーニングに適したコンピューティング先によって実行されるトレーニング ステップが定義されます。 このサンプル ノートブックでは、タイタニック号の生存者データベースを使用してデータの入力と出力を例示しますが、実際にデータを消去したり、予測モデルを作成したりすることはありません。 このサンプルには実際のトレーニングがないため、トレーニング ステップでは安価な CPU ベースのコンピューティング リソースを使用します。
+## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>リンクされた Apache Spark プールを使用する `SynapseSparkStep` を作成する
 
 データは `DatasetConsumptionConfig` オブジェクトを使用して機械学習パイプラインに送られます。このオブジェクトは表形式のデータまたはファイルのセットを保持できます。 データは多くの場合、ワークスペースのデータストア内にある BLOB ストレージ内のファイルから取得されます。 次のコードは、機械学習パイプラインの入力を作成するための一般的なコードを示しています。
 
@@ -123,7 +121,7 @@ step1_output = HDFSOutputDatasetConfig(destination=(datastore,"test")).register_
 
 この場合、データは `test` という名前のファイルの `datastore` に格納され、機械学習ワークスペース内では `registered_dataset` という名前の `Dataset` として使用できます。
 
-データに加えて、パイプライン ステップには、ステップごとの Python の依存関係がある場合があります。 個々の `SynapseSparkStep` オブジェクトでは、正確な Synapse 構成を指定することもできます。 これを次のコードに示します。これは `azureml-core` パッケージのバージョンが `1.20.0` 以上である必要があることを示します。 (前述のように、`FileDataset` を入力として使用するには、`azureml-core` の要件が必要です。)
+データに加えて、パイプライン ステップには、ステップごとの Python の依存関係がある場合があります。 個々の `SynapseSparkStep` オブジェクトでは、正確な Azure Synapse Apache Spark 構成を指定することもできます。 これを次のコードに示します。これは `azureml-core` パッケージのバージョンが `1.20.0` 以上である必要があることを示します。 (前述のように、`FileDataset` を入力として使用するには、`azureml-core` の要件が必要です。)
 
 ```python
 from azureml.core.environment import Environment
@@ -153,7 +151,7 @@ step_1 = SynapseSparkStep(name = 'synapse-spark',
 
 `SynapseSparkStep` では、ローカル コンピューターからサブディレクトリ `./code` が zip され、アップロードされます。 このディレクトリはコンピューティング サーバー上に再作成され、このステップによって、そのディレクトリからファイル `dataprep.py` が実行されます。 そのステップの `inputs` および `outputs` は、前に説明した `step1_input1`、`step1_input2`、および `step1_output` オブジェクトです。 `dataprep.py` スクリプト内でこれらの値にアクセスする最も簡単な方法は、これらを `arguments` という名前に関連付けることです。
 
-`SynapseSparkStep` コンストラクターに対する次の引数セットにより、Apache spark が制御されます。 `compute_target` は、以前にコンピューティング先としてアタッチされた `'link1-spark01'` です。 その他のパラメーターでは、使用するメモリとコアが指定されます。
+`SynapseSparkStep` コンストラクターに対する次の引数セットにより、Apache Spark が制御されます。 `compute_target` は、以前にコンピューティング先としてアタッチされた `'link1-spark01'` です。 その他のパラメーターでは、使用するメモリとコアが指定されます。
 
 サンプル ノートブックでは、`dataprep.py` に対して次のコードを使用します。
 
@@ -191,7 +189,7 @@ sdf.coalesce(1).write\
 .csv(args.output_dir)
 ```
 
-この "データ準備" スクリプトでは実際のデータ変換が行われませんが、データの取得、spark データフレームへの変換、および基本的な spark 操作の実行方法が示されます。 次の図に示すように、子実行を開き、 **[出力 + ログ]** タブを選択し、`logs/azureml/driver/stdout` ファイルを開くことによって、Azure Machine Learning Studio で出力を確認できます。
+この "データ準備" スクリプトでは実際のデータ変換が行われませんが、データの取得、spark データフレームへの変換、および基本的な Apache Spark 操作の実行方法が示されます。 次の図に示すように、子実行を開き、 **[出力 + ログ]** タブを選択し、`logs/azureml/driver/stdout` ファイルを開くことによって、Azure Machine Learning Studio で出力を確認できます。
 
 :::image type="content" source="media/how-to-use-synapsesparkstep/synapsesparkstep-stdout.png" alt-text="子実行の stdout タブが表示されている Studio のスクリーンショット":::
 
@@ -228,14 +226,14 @@ step_2 = PythonScriptStep(script_name="train.py",
 
 すべてのステップを定義したら、パイプラインを作成して実行できます。 
 
-```
+```python
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[step_1, step_2])
 pipeline_run = pipeline.submit('synapse-pipeline', regenerate_outputs=True)
 ```
 
-上記のコードでは、Synapse (`step_1`) で実行されるデータ準備ステップと、トレーニング ステップ (`step_2`) で構成されるパイプラインが作成されます。 Azure では、ステップ間のデータの依存関係を調べることによって実行グラフが計算されます。 この場合、`step2_input` が必ず `step1_output` を必要とするという単純な依存関係のみが存在します。
+上記のコードでは、Azure Synapse Analytics (`step_1`) で実行される Apache Spark プール上のデータ準備ステップと、トレーニング ステップ (`step_2`) で構成されるパイプラインが作成されます。 Azure では、ステップ間のデータの依存関係を調べることによって実行グラフが計算されます。 この場合、`step2_input` が必ず `step1_output` を必要とするという単純な依存関係のみが存在します。
 
 `pipeline.submit` の呼び出しにより、必要に応じて `synapse-pipeline` という実験が作成され、その中で実行が非同期的に開始されます。 パイプライン内の個々のステップは、このメイン実行の子実行として実行され、Studio の[実験] ページで監視および確認できます。
 

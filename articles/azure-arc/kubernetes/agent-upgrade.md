@@ -2,18 +2,18 @@
 title: Azure Arc 対応 Kubernetes エージェントをアップグレードする
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes エージェントのアップグレードを制御する
 keywords: Kubernetes、Arc、Azure、K8、コンテナー、エージェント、アップグレード
-ms.openlocfilehash: 3a5355269db4ccfc91612f661b464556b22c1d35
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660498"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121917"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Azure Arc 対応 Kubernetes エージェントをアップグレードする
 
@@ -84,6 +84,6 @@ Azure Arc 対応 Kubernetes エージェントの 1 つのマイナー バージ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Arc にクラスターを接続する](./connect-cluster.md)
-* [Arc 対応 Kubernetes クラスターで構成を作成する](./use-gitops-connected-cluster.md)
-* [Azure Policy を使用して構成を大規模に適用する](./use-azure-policy.md)
+* クイックスタートを利用して、[Kubernetes クラスターを Azure Arc に接続](./connect-cluster.md)します。
+* Kubernetes クラスターが既に Azure Arc に接続されていますか? [Arc 対応 Kubernetes クラスターの構成を作成する](./use-gitops-connected-cluster.md)。
+* [Azure Policy を使用して構成を大規模に適用する](./use-azure-policy.md)方法について学ぶ。

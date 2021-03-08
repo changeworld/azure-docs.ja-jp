@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 23bc476c0d4fd90e19428d52b1468d090ffe2a1b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: b02572f8f6f6531afba9e24af1d2eab53f5cb6ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820791"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742111"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database にオフラインで移行する
 
@@ -33,10 +33,6 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 > - Azure Database Migration Service を使用して移行プロジェクトを作成する。
 > - 移行を実行する。
 > - 移行を監視する。
-
-[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
-
-この記事では、SQL Server から Azure SQL Database のデータベースへのオフライン移行について説明します。 オンライン移行については、「[DMS を使用して SQL Server を Azure SQL Database にオンラインで移行する](tutorial-sql-server-azure-sql-online.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +59,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
     >
     >オンプレミス ネットワークと Azure の間にサイト間接続がない場合、またはサイト間接続の帯域幅が制限されている場合は、Azure Database Migration Service をハイブリッド モード (プレビュー) で使用することを検討してください。 ハイブリッド モードでは、オンプレミスの移行 worker と、クラウドで実行されている Azure Database Migration Service のインスタンスを利用します。 ハイブリッド モードで Azure Database Migration Service のインスタンスを作成するには、[Azure portal を使用してハイブリッド モードで Azure Database Migration Service のインスタンスを作成する方法](./quickstart-create-data-migration-service-hybrid-portal.md)に関する記事を参照してください。
 
-- 仮想ネットワークのネットワーク セキュリティ グループの送信セキュリティ規則によって、Azure Database Migration Service に必要な次の通信ポートがブロックされないようにします: 443、53、9354、445、12000。 Azure 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
+- 仮想ネットワークのネットワーク セキュリティ グループの送信セキュリティ規則によって、ServiceBus、Storage、AzureMonitor の ServiceTag の送信ポート 443 がブロックされていないことを確認します。 Azure 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
 - [データベース エンジン アクセスのために Windows ファイアウォール](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 - Azure Database Migration Service でソース SQL Server にアクセスできるように Windows ファイアウォールを開放します。既定では TCP ポート 1433 が使用されます。 使用している既定のインスタンスが他のポートでリッスンしている場合は、それをファイアウォールに追加してください。
 - 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
@@ -275,7 +271,5 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
 ### <a name="additional-resources"></a>その他のリソース
 
-- [Azure Data Migration Service を使用した SQL 移行](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587)に関するハンズオン ラボ。
-- Azure SQL Database へのオンライン移行を実行する際の既知の問題と制限事項については、[Azure SQL Database のオンライン移行に伴う既知の問題と回避策](known-issues-azure-sql-online.md)に関する記事を参照してください。
 - Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](./dms-overview.md)」を参照してください。
 - Azure SQL Database については、「[Azure SQL Database サービスとは](../azure-sql/database/sql-database-paas-overview.md)」を参照してください。

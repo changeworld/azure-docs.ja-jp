@@ -2,19 +2,19 @@
 title: Azure Arc 対応 Kubernetes の概要
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 42a04bb349b2acbd68c7088bc0348deda1ee09e1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652270"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121594"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes とは
 
@@ -66,4 +66,6 @@ Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポー�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Arc にクラスターを接続する](./quickstart-connect-cluster.md)
+クラスターを Azure Arc に接続する方法について学習します。
+> [!div class="nextstepaction"]
+> [Azure Arc にクラスターを接続する](./quickstart-connect-cluster.md)

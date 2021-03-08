@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: c686902ed23e0f1a94bc9548d0a876ecbbce8f31
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5fedb9d09e61540d0ee8a1fe21fbd25f31390f5d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377875"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742451"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -43,8 +43,8 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
 | --- | --- | --- |
 | **オーストラリア政府** |オーストラリア中部、オーストラリア中部 2 |キャンベラ、キャンベラ2 |
-| **ヨーロッパ** | フランス中部、フランス南部、ドイツ北部、ドイツ中西部、北ヨーロッパ、ノルウェー東部、ノルウェー西部、スイス北部、スイス西部、英国西部、英国南部、西ヨーロッパ |アムステルダム、アムステルダム 2、ベルリン、コペンハーゲン、ダブリン、フランクフルト、ジュネーブ、ロンドン、ロンドン 2、マルセイユ、ミラノ、ミュンヘン、ニューポート (ウェールズ)、オスロ、パリ、スタバンゲル、ストックホルム、チューリッヒ |
-| **北米** |米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー、ラスベガス、ロサンゼルス、ロサンゼルス 2、マイアミ、ミネアポリス、モントリオール、ニューヨーク、フィーニックス、ケベック シティー、ケレタロ (メキシコ)、クインシー、サンアントニオ、シアトル、シリコン バレー、シリコン バレー 2、トロント、バンクーバー、ワシントン DC、ワシントン DC 2 |
+| **ヨーロッパ** | フランス中部、フランス南部、ドイツ北部、ドイツ中西部、北ヨーロッパ、ノルウェー東部、ノルウェー西部、スイス北部、スイス西部、英国西部、英国南部、西ヨーロッパ |アムステルダム、アムステルダム 2、ベルリン、コペンハーゲン、ダブリン、フランクフルト、フランクフルト 2、ジュネーブ、ロンドン、ロンドン 2、マドリード、マルセイユ、ミラノ、ミュンヘン、ニューポート (ウェールズ)、オスロ、パリ、スタバンゲル、ストックホルム、チューリッヒ |
+| **北米** |米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー、ラスベガス、ロサンゼルス、ロサンゼルス 2、マイアミ、ミネアポリス、モントリオール、ニューヨーク、フィーニックス、ケベック シティー、ケレタロ (メキシコ)、クインシー、サンアントニオ、シアトル、シリコン バレー、シリコン バレー 2、トロント、トロント 2、バンクーバー、ワシントン DC、ワシントン DC 2 |
 | **アジア** | 東アジア、東南アジア | バンコク、香港特別行政区、香港特別行政区 2、ジャカルタ、クアラルンプール、シンガポール、シンガポール 2、台北 |
 | **インド** | インド西部、インド中部、インド南部 |チェンナイ、チェンナイ 2、ムンバイ、ムンバイ 2 |
 | **日本** | 西日本、東日本 |大阪、東京、東京 2 |
@@ -52,7 +52,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **韓国** | 韓国中部、韓国南部 |釜山、ソウル|
 | **アラブ首長国連邦** | アラブ首長国連邦中部、アラブ首長国連邦北部 | ドバイ、ドバイ 2 |
 | **南アフリカ** | 南アフリカ西部、南アフリカ北部 |ケープタウン、ヨハネスブルグ |
-| **南アメリカ** | ブラジル南部 |ボゴタ、サンパウロ |
+| **南アメリカ** | ブラジル南部 |ボゴタ、リオデジャネイロ、サンパウロ |
 
 
 ## <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>各国のクラウドのリージョンと地理的境界
@@ -105,7 +105,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **du datamena** |サポートされています |サポートされています | ドバイ 2 |
 | **eir** |サポートされています |サポートされています |ダブリン|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |サポートされています |サポートされています |シンガポール、シンガポール 2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、アトランタ、ベルリン、キャンベラ 2、シカゴ、ダラス、ドバイ 2、ダブリン、フランクフルト、ジュネーブ、香港特別行政区、ロンドン、ロンドン 2、ロサンゼルス、ロサンゼルス 2、メルボルン、マイアミ、ミラノ、ニューヨーク、大阪、パリ、サンパウロ、シアトル、ソウル、シリコン バレー、シンガポール、ストックホルム、シドニー、東京、トロント、ワシントン DC、チューリッヒ |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、アトランタ、ベルリン、ボゴタ、キャンベラ 2、シカゴ、ダラス、ドバイ 2、ダブリン、フランクフルト、フランクフルト 2、ジュネーブ、香港特別行政区、ロンドン、ロンドン 2、ロサンゼルス、ロサンゼルス 2、メルボルン、マイアミ、ミラノ、ニューヨーク、大阪、パリ、リオデジャネイロ、サンパウロ、シアトル、ソウル、シリコン バレー、シンガポール、ストックホルム、シドニー、東京、トロント、ワシントン DC、チューリッヒ |
 | **Etisalat UAE** |サポートされています |サポートされています |ドバイ|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、ダブリン、フランクフルト、ロンドン |
 | **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |サポートされています |サポートされています |台北|
@@ -133,7 +133,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、ニューポート (ウェールズ)、サンパウロ、シアトル、シリコン バレー、シンガポール、ワシントン DC |
 | **LG CNS** |サポートされています |サポートされています |釜山、ソウル |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |アムステルダム、アトランタ、オークランド、シカゴ、ダラス、デンバー、ドバイ 2、ダブリン、フランクフルト、ジュネーブ、香港特別行政区、香港特別行政区 2、ラスベガス、ロンドン、ロンドン 2、ロサンゼルス、メルボルン、マイアミ、ミネアポリス、モントリオール、ニューヨーク、大阪、オスロ、パース、ケベック シティ、サンアントニオ、シアトル、シリコン バレー、シンガポール、シンガポール 2、スタバンゲル、ストックホルム、シドニー、シドニー 2、東京、東京 2、トロント、バンクーバー、ワシントン DC、ワシントン DC2、チューリッヒ |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |アムステルダム、アトランタ、オークランド、チェンナイ、シカゴ、ダラス、デンバー、ドバイ 2、ダブリン、フランクフルト、ジュネーブ、香港、香港 2、ラスベガス、ロンドン、ロンドン 2、ロサンゼルス、メルボルン、マイアミ、ミネアポリス、モントリオール、ニューヨーク、大阪、オスロ、パリ、パース、ケベック シティ、サンアントニオ、シアトル、シリコン バレー、シンガポール、シンガポール 2、スタバンゲル、ストックホルム、シドニー、シドニー 2、東京、東京 2、トロント、バンクーバー、ワシントン DC、ワシントン DC2、チューリッヒ |
 | **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |サポートされています |サポートされています |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |サポートされています |サポートされています |ダラス、ロサンゼルス、マイアミ、サンパウロ、ワシントン DC |
 | **[Next Generation Data](https://vantage-dc-cardiff.co.uk/)** |サポートされています |サポートされています |ニューポート (ウェールズ) |
@@ -149,6 +149,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | サポートされています | サポートされています | ドバイ 2 |
 | **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |サポートされています |サポートされています |シカゴ、ラスベガス、シリコン バレー、ワシントン DC |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |サポートされています |サポートされています |シカゴ、香港特別行政区、香港特別行政区 2、ロンドン、シンガポール 2 |
+| **[REANNZ](https://www.reannz.co.nz/products-and-services/cloud-connect/)** | サポートされています | サポートされています | オークランド |
 | **[Retelit](https://www.retelit.it/EN/Home.aspx)** | サポートされています | サポートされています | ミラノ | 
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |サポートされています |サポートされています |ソウル |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | サポートされています |サポートされています | ロンドン 2、ワシントン DC |

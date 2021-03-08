@@ -2,22 +2,20 @@
 title: Azure Policy を使用してクラスター構成を大規模に適用する
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure Policy を使用してクラスター構成を大規模に適用する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 05a6665a985ef8b229ee58082dc9b2c10cdcece3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652149"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121458"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Azure Policy を使用してクラスター構成を大規模に適用する
-
-## <a name="overview"></a>概要
 
 Azure Policy を使用すると、Azure Arc 対応 Kubernetes クラスター (`Microsoft.Kubernetes/connectedclusters`) に構成 (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`) を大規模に適用できます。
 
@@ -69,4 +67,4 @@ Azure Policy を使用するには、既存のポリシー定義を選択して�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Arc 対応 Kubernetes クラスターを使用して Azure Monitor for Containers を設定する](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)
+[Azure Arc 対応 Kubernetes クラスターを使用して Azure Monitor for Containers を設定する](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)。
