@@ -8,17 +8,17 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: e812fa47d35889a9cf8c671a4df6034812272a6a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 57e9d0c584600a8fac90499d72cfac1620052603
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670623"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694922"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>ライブラリのインストール エラーのトラブルシューティング 
 サード パーティまたはローカル環境でビルドされたコードをアプリケーションで使用できるようにするには、いずれかのサーバーレス Apache Spark プールにライブラリをインストールできます。 requirements.txt ファイルにリストされているパッケージは、プールの開始時に PyPi からダウンロードされます。 この要件ファイルは、その Spark プールから Spark インスタンスが作成されるたびに使用されます。 Spark プールにインストールされたライブラリは、同じプールを使用するすべてのセッションで使用できるようになります。 
 
-場合によっては、インストールしようとしているライブラリが Apache Spark プールに表示されないことがあります。 このケースは、提供された requirements.txt または指定されたライブラリにエラーがある場合によく発生します。 ライブラリのインストール プロセスにエラーがあると、Apache Spark プールは、Synapse 基本ランタイムに指定されたライブラリに戻ります。
+場合によっては、ライブラリが Apache Spark プールに表示されないことがあります。 このケースは、提供された requirements.txt または指定されたライブラリにエラーがある場合によく発生します。 ライブラリのインストール プロセスでエラーが発生すると、Apache Spark プールは、Synapse 基本ランタイムに指定されたライブラリに戻ります。
 
 このドキュメントの目的は、一般的な問題について説明し、ライブラリのインストール エラーのデバッグに役立ててもらうことです。
 
@@ -28,6 +28,19 @@ Apache Spark プールでライブラリを更新した場合、プールを再�
 **[Force new settings]\(新しい設定を強制\)** オプションを選択すると、強制的に変更を適用できます。 この設定により、選択した Spark プールの現在のセッションがすべて終了します。 セッションが終了したら、プールが再起動するまで待機する必要があります。 
 
 ![Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python ライブラリを追加する")
+
+## <a name="track-installation-progress"></a>インストールの進行状況の追跡
+システム予約 Spark ジョブは、新しい一連のライブラリを使用してプールが更新されるたびに開始されます。 この Spark ジョブは、ライブラリのインストールの状態を監視するために役立ちます。 ライブラリの競合またはその他の問題が原因でインストールが失敗した場合、Spark プールは以前の、または既定の状態に戻ります。 
+
+さらに、ユーザーはインストール ログを調査することで、依存関係の競合を特定したり、プールの更新中にインストールされたライブラリを確認したりすることもできます。
+
+これらのログを表示するには:
+1. **[監視]** タブで、Spark アプリケーションの一覧に移動します。 
+2. プールの更新に対応するシステム Spark アプリケーション ジョブを選択します。 これらのシステム ジョブは、*SystemReservedJob-LibraryManagement* というタイトルの下で実行されています。
+   ![システム予約済みライブラリ ジョブが強調表示されているスクリーンショット。](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job.png "システム ライブラリ ジョブの表示")
+3. **driver** および **stdout** ログを表示するように切り替えます。 
+4. この結果の中に、パッケージのインストールに関連するログが表示されます。
+    ![システム予約済みライブラリ ジョブの結果が強調表示されているスクリーンショット。](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job-results.png "システム ライブラリ ジョブの進行状況の表示")
 
 ## <a name="validate-your-permissions"></a>アクセス許可を検証する
 ライブラリをインストールおよび更新するには、Azure Synapse Analytics ワークスペースにリンクされているプライマリ Azure Data Lake Storage Gen2 ストレージ アカウントに対して、**ストレージ BLOB データ共同作成者** または **ストレージ BLOB データ所有者** のアクセス許可を持っている必要があります。
@@ -58,22 +71,14 @@ df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STOR
 
 また、パイプラインを実行している場合は、ワークスペース MSI にもストレージ BLOB データ所有者またはストレージ BLOB データ共同作成者のアクセス許可が必要です。 ワークスペース ID にこのアクセス許可を付与する方法については、次を参照してください: [ワークスペースのマネージド ID にアクセス許可を付与する](../security/how-to-grant-workspace-managed-identity-permissions.md)。
 
-## <a name="check-the-requirements-file"></a>要件ファイルを確認する
-***requirements.txt*** ファイル (pip freeze コマンドからの出力) を使用して、仮想環境をアップグレードできます。 このファイルは、[pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) のリファレンス ドキュメントで説明されている形式に従います。
+## <a name="check-the-environment-configuration-file"></a>環境構成ファイルの確認
+環境構成ファイルを使用して、Conda 環境をアップグレードすることができます。 Python プール管理に使用できるこのファイル形式の一覧は、[こちら](./apache-spark-manage-python-packages.md)に掲載されています。
 
 次の制限事項に注意してください。
-   -  PyPi パッケージ名は、正確なバージョンと共にリストされている必要があります。 
    -  要件ファイルの内容には、余分な空白行または文字を含めないでください。 
-   -  [Synapse ランタイム](apache-spark-version-support.md)には、すべてのサーバーレス Apache Spark プールにプレインストールされているライブラリのセットが含まれています。 基本ランタイムにプレインストールされているパッケージをダウングレードすることはできません。 パッケージは追加またはアップグレードのみ可能です。
+   -  [Synapse ランタイム](apache-spark-version-support.md)には、すべてのサーバーレス Apache Spark プールにプレインストールされているライブラリのセットが含まれています。 基本ランタイムにプレインストールされているパッケージを削除またはアンインストールすることはできません。
    -  PySpark、Python、Scala/Java、.NET、または Spark のバージョンの変更はサポートされていません。
-
-次のスニペットは、要件ファイルの必要な形式を示しています。
-
-```
-absl-py==0.7.0
-adal==1.2.1
-alabaster==0.7.10
-```
+   -  Python セッション スコープ ライブラリは、YML 拡張子を持つファイルのみを受け入れます。
 
 ## <a name="validate-wheel-files"></a>Wheel ファイルを検証する
 Synapse サーバーレス Apache Spark プールは、Linux ディストリビューションに基づいています。 PyPI から Wheel ファイルを直接ダウンロードしてインストールする場合は、必ず、Linux 上で構築されており、Spark プールと同じ Python バージョンで実行されるバージョンを選択するようにしてください。
@@ -95,6 +100,9 @@ Synapse サーバーレス Apache Spark プールは、Linux ディストリビ�
     ```
    
  3. ``pip install -r <provide your req.txt file>`` を使用して、指定したパッケージで仮想環境を更新します。 インストールでエラーが発生した場合は、Synapse 基本ランタイムにプレインストールされているものと、指定された要件ファイルに指定されているものとの間に競合が存在する可能性があります。 サーバーレス Apache Spark プール上に更新されたライブラリを取得するには、これらの依存関係の競合を解決する必要があります。
+
+>[!IMPORTANT]
+>pip と conda を一緒に使用すると、問題が発生するおそれがあります。 pip と conda を組み合わせる場合は、次の[推奨されるベスト プラクティス](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment)に従うことをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 - 既定のライブラリを確認します: [Apache Spark バージョンのサポート](apache-spark-version-support.md)

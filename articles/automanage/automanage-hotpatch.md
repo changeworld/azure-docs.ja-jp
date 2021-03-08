@@ -8,14 +8,14 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: bdd5a379afb9603c8966320d85c778632948cfd0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660459"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687568"
 ---
-# <a name="hotpatch-for-windows-server-azure-edition-preview"></a>Windows Server Azure Edition を対象にしたホットパッチ (プレビュー)
+# <a name="hotpatch-for-new-virtual-machines-preview"></a>新しい仮想マシンのホットパッチ (プレビュー)
 
 ホット パッチの適用は、新しい Windows Server Azure Edition の仮想マシン (VM) に更新プログラムをインストールするための新しい方法であり、インストール後に再起動を必要としません。 この記事では、Windows Server Azure Edition の VM を対象にしたホットパッチについて説明します。これの利点は次のとおりです。
 * 再起動の回数が減り、ワークロードへの影響が少ない
@@ -26,7 +26,7 @@ ms.locfileid: "101660459"
 
 ホットパッチは、まず Windows Update の最新の累積的な更新プログラムが適用されたベースラインを確立することによって機能します。 ホットパッチは、そのベースラインに基づいて定期的 (たとえば、毎月第 2 火曜日) にリリースされます。 ホットパッチには、再起動を必要としない更新プログラムが含まれます。 ベースラインは、定期的 (最初は 3 か月ごと) に新たな最新の累積的な更新プログラムを適用して更新されます。
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch Sample Schedule.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="ホットパッチのサンプル スケジュール。":::
 
 ベースラインには、**計画ベースライン** と **計画外ベースライン** の 2 種類があります。
 *  **計画ベースライン** は定期的にリリースされ、その間にホットパッチのリリースがあります。  計画ベースラインは、それと同等の、その月の "_最新の累積的な更新プログラム_" の更新プログラムをすべて含み、再起動が必要です。
@@ -154,7 +154,7 @@ VM のパッチの状態を表示するには、Azure portal で VM の **[ゲ�
 この画面には、VM のホットパッチの状態が表示されます。 また、VM にインストールされていない利用可能なパッチがあるかどうかを確認することもできます。 上記の「パッチのインストール」セクションで説明したように、すべての [セキュリティ] および [重要] 更新プログラムは、[VM ゲストの自動パッチ適用](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching)を使用して VM に自動的にインストールされます。追加の操作は必要ありません。 その他の更新プログラムに分類されるパッチは、自動的にインストールされません。 その代わりに、[更新プログラムのコンプライアンス] タブにある利用可能なパッチの一覧に表示されます。[更新履歴] で VM への更新プログラムの展開の履歴を表示することもできます。 過去 30 日間の更新履歴がパッチのインストール詳細と共に表示されます。
 
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch Management.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="ホットパッチの管理。":::
 
 VM ゲストの自動パッチ適用を使用すると、VM は利用可能な更新プログラムの有無について定期的かつ自動的に評価されます。 このような定期的な評価によって、利用可能なパッチの検出が確実に行われます。 上記の [更新プログラム] 画面で、前回の評価がいつだったかを含め、評価の結果を確認できます。 [今すぐ評価] オプションを使用して、いつでも VM のオンデマンドパッチ評価をトリガーし、評価完了後に結果を確認することもできます。
 
@@ -197,7 +197,7 @@ VM ゲストの自動パッチ適用を使用すると、VM は利用可能な�
 
 ### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>ホットパッチに登録した VM でも再起動は必要ですか?
 
-* ホットパッチ プログラムに含まれていない更新プログラムをインストールする場合は、依然として再起動が必要です。また、ベースライン (Windows Update の最新の累積的な更新プログラム) がインストールされた後に、定期的に必要になります。 この再起動によって、VM は、累積更新プログラムに含まれているすべてのパッチと同期した状態に維持されます。 ベースライン (再起動が必要) は、3 か月の周期で始まり、経時的に 6 か月以上にまで延長されます。
+* ホットパッチ プログラムに含まれていない更新プログラムをインストールする場合は、依然として再起動が必要です。また、ベースライン (Windows Update の最新の累積的な更新プログラム) がインストールされた後に、定期的に必要になります。 この再起動によって、VM は、累積更新プログラムに含まれているすべてのパッチと同期した状態に維持されます。 ベースライン (再起動が必要) は、3 か月の周期で始まり、経時的に延長されます。
 
 ### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>ホットパッチの更新プログラムがインストールされるときにアプリケーションへの影響はありますか?
 

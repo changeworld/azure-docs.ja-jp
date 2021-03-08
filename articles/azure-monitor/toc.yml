@@ -129,7 +129,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -1078,7 +1078,7 @@
           href: insights/container-insights-reports.md
         - name: ライブ データを表示する
           items:
-            - name: ライブ データ (プレビュー) の概要
+            - name: Live Data の概要
               href: containers/container-insights-livedata-overview.md
             - name: セットアップ
               href: containers/container-insights-livedata-setup.md

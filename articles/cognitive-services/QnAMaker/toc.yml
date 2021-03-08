@@ -8,10 +8,12 @@
       href: whats-new.md
 - name: クイックスタート
   items:
-    - name: QnA Maker ポータルでナレッジ ベースを作成してクエリを実行する
-      href: Quickstarts/create-publish-knowledge-base.md
-    - name: クライアント ライブラリまたは REST API を使用してナレッジ ベースを作成し、クエリを実行する
-      href: Quickstarts/quickstart-sdk.md
+    - name: ナレッジベースの作成とクエリ実行
+      items:
+        - name: QnA Maker ポータル
+          href: Quickstarts/create-publish-knowledge-base.md
+        - name: クライアント ライブラリまたは REST API
+          href: Quickstarts/quickstart-sdk.md
     - name: REST API を使用してナレッジ ベースにクエリを実行する
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: チュートリアル
@@ -48,6 +50,8 @@
     - name: Azure のリソースを管理する
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Azure リソースのためのネットワークの分離
+      href: How-To/network-isolation.md
     - name: QnA Maker のリソース アクセスを管理する
       href: How-To/manage-qna-maker-app.md
     - name: ナレッジ ベースの管理
@@ -108,7 +112,7 @@
     - name: Batch のテスト形式
       href: reference-tsv-format-batch-testing.md
     - name: 暗号化
-      href: qna-maker-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: REST API リファレンス
       items:
         - name: QnA Maker 4.0

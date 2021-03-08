@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: カスタム セキュリティ イニシアチブとポリシーを作成する
           href: custom-security-policies.md
-    - name: サーバー用 Azure Defender を使用してコンピューターを保護する
+    - name: サーバー用 Defender を使用してコンピューターを保護する
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: サーバー用 Azure Defender の概要
@@ -146,7 +146,7 @@
         - name: コンピューターの安全なアプリケーションの一覧を定義する
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: ファイルの整合性の監視によるファイルとレジストリの変更の追跡
+        - name: ファイルとレジストリの変更を追跡する
           items:
             - name: ファイルの整合性の監視の概要
               displayName: 'fim, change'
@@ -154,8 +154,8 @@
             - name: ファイルの整合性の監視を使用してベースラインを比較する
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: アダプティブ ネットワークのセキュリティ強化により、ネットワークのセキュリティ体制を向上させる
-          displayName: anh
+        - name: ネットワークのセキュリティ体制を向上させる
+          displayName: 'anh, adaptive network hardening'
           href: security-center-adaptive-network-hardening.md
         - name: Docker ホストのセキュリティを強化する
           displayName: containers
@@ -209,7 +209,7 @@
         - name: Key Vault 用 Azure Defender の概要
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
-        - name: Azure Defender の Key Vault アラートに対応する
+        - name: Key Vault 用 Defender のアラートに対応する
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
     - name: リソース管理操作の監視
@@ -217,7 +217,7 @@
         - name: Resource Manager 用 Azure Defender の概要
           displayName: ARM
           href: defender-for-resource-manager-introduction.md
-        - name: Azure Defender for Resource Manager アラートに対応する
+        - name: Resource Manager 用 Defender のアラートに対応する
           displayName: arm
           href: defender-for-resource-manager-usage.md
     - name: Azure リソースからの DNS クエリの監視
@@ -278,7 +278,7 @@
         - name: アラートへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
-- name: リファレンス
+- name: 関連項目
   items:
     - name: アーカイブされたリリース ノート (6 か月以上前)
       displayName: 'changelog, news'

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654019"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688010"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for VMs に関してよく寄せられる質問
 
@@ -80,7 +80,7 @@ Automanage は、選択した新規および既存の VM をクリックして�
 
 **Azure Policy を使用して Automanage を適用できますか?**
 
-はい、ユーザーが定義したスコープ内のすべての VM に Automanage を自動的に適用する組み込みのポリシーがあります。 また、Automanage アカウントと共に構成プロファイル (DevTest または Production) も指定します。 Azure Policy による Automanage の有効化の詳細については、[こちら](virtual-machines-policy-enable.md)を参照してください。
+はい、ユーザーが定義したスコープ内のすべての VM に Automanage を自動的に適用する組み込みのポリシーがあります。 また、Automanage アカウントと共に環境構成 (DevTest または運用) も指定します。 Azure Policy による Automanage の有効化の詳細については、[こちら](virtual-machines-policy-enable.md)を参照してください。
 
 
 **Automanage アカウントとは何ですか?**
@@ -93,9 +93,9 @@ Automanage アカウントは、自動化された操作が行われるセキュ
 VM が既存の Log Analytics ワークスペースにリンクされている場合は、そのワークスペースを再利用して次のソリューションを適用します。Change Tracking、インベントリ、Update Management。 そのワークスペースに接続されているすべての VM で、これらのソリューションが有効になります。
 
 
-**自分の VM の構成プロファイルを変更できますか?**
+**自分の VM の環境を変更することはできますか?**
 
-現時点では、その VM の Automanage を無効にしてから、必要な構成プロファイルと設定を使用して Automanage を再度有効にする必要があります。
+現時点では、その VM の Automanage を無効にしてから、必要な環境と基本設定を使用して Automanage を再度有効にする必要があります。
 
 
 **Update Management などのサービス用に VM が既に構成されている場合、Automanage によってそれが再構成されますか?**

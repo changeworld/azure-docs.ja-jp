@@ -39,6 +39,8 @@
           href: tutorial-cross-region-portal.md
         - name: リージョン間ロード バランサーの作成 - PowerShell
           href: tutorial-cross-region-powershell.md
+        - name: リージョン間ロード バランサーの作成 - Azure CLI
+          href: tutorial-cross-region-cli.md
 - name: サンプル
   items:
     - name: Azure CLI
