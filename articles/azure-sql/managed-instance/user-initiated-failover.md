@@ -9,15 +9,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/26/2021
-ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 02/27/2021
+ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806088"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691146"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance でユーザーによって開始される手動フェールオーバー
+[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 この記事では、SQL Managed Instance の General Purpose (GP) および Business Critical (BC) サービス レベルでプライマリ ノードを手動でフェールオーバーする方法と、BC サービス レベルのみでセカンダリ読み取り専用レプリカ ノードを手動でフェールオーバーする方法について説明します。
 
@@ -33,7 +34,7 @@ ms.locfileid: "98806088"
 - クエリのパフォーマンスが低下した場合、手動フェールオーバーがパフォーマンスの問題の軽減に役立つ場合があります。
 
 > [!NOTE]
-> 運用環境にデプロイする前にアプリケーションがフェールオーバー回復性を備えていることを確認するのは、運用環境でのアプリケーションの障害のリスクを軽減するのに役立ち、顧客に対するアプリケーションの可用性に寄与します。
+> 運用環境にデプロイする前にアプリケーションがフェールオーバー回復性を備えていることを確認するのは、運用環境でのアプリケーションの障害のリスクを軽減するのに役立ち、顧客に対するアプリケーションの可用性に寄与します。 アプリケーションのクラウド対応状況をテストする方法については、「[SQL Managed Instance によるフェールオーバー回復性のためのアプリ クラウドの準備のテスト](https://youtu.be/FACWYLgYDL8)」という動画をご覧ください。
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance で手動フェールオーバーを開始する
 
@@ -42,7 +43,7 @@ ms.locfileid: "98806088"
 フェールオーバーを開始するユーザーには、次のいずれかの Azure ロールが必要です。
 
 - サブスクリプションの所有者ロール、または
-- マネージド インスタンス共同作成者ロール、または
+- [Managed Instance 共同作成者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロール、または
 - 次のアクセス許可を持つカスタム ロール:
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -150,8 +151,9 @@ SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_in
 > - BC インスタンスの場合、フェールオーバー要求が受け入れられるには、レプリカのクォーラムが存在している必要があります。
 > - BC インスタンスの場合、フェールオーバーを開始する読み取り可能セカンダリ レプリカを指定することはできません。
 > - フェールオーバーは、新しいデータベースの最初の完全バックアップが自動バックアップ システムによって完了されるまで許可されません。
+> - データベースの復元が進行中のとき、フェールオーバーは許可されません。
 
 ## <a name="next-steps"></a>次のステップ
-
+- アプリケーションのクラウド対応状況をテストする方法については、「[SQL Managed Instance によるフェールオーバー回復性のためのアプリ クラウドの準備のテスト](https://youtu.be/FACWYLgYDL8)」という動画をご覧ください。
 - マネージド インスタンスの高可用性の詳細については、[Azure SQL Managed Instance での高可用性](../database/high-availability-sla.md)に関する記事を参照してください。
 - 概要については、「[Azure SQL Managed Instance とは](sql-managed-instance-paas-overview.md)」を参照してください。

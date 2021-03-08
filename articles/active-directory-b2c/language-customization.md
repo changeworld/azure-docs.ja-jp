@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2aab537c2235fe3e008fa619c96a3098cfa7a27
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 418f0797343a64728c4e48084b09bd0e426cec62
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361215"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686412"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
 
@@ -115,6 +115,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
       "Value": "<ExtensionAttributeValue>"
     }
     [...]
+  ]
 }
 ```
 
@@ -129,22 +130,24 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 ```json
 {
   "LocalizedStrings": [...],
-  "LocalizedCollections": [{
+  "LocalizedCollections": [
+    {
       "ElementType":"ClaimType",
       "ElementId":"<UserAttribute>",
       "TargetCollection":"Restriction",
       "Override": true,
       "Items":[
-           {
-                "Name":"<Response1>",
-                "Value":"<Value1>"
-           },
-           {
-                "Name":"<Response2>",
-                "Value":"<Value2>"
-           }
-     ]
-  }]
+        {
+          "Name":"<Response1>",
+          "Value":"<Value1>"
+        },
+        {
+          "Name":"<Response2>",
+          "Value":"<Value2>"
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -181,7 +184,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>カスタム言語の追加
 
-現在 Microsoft が翻訳を提供していない言語を追加することもできます。 ユーザー フロー内のすべての文字列に対して翻訳を提供する必要があります。 言語およびロケールのコードは、ISO 639-1 標準にものに限られます。 ロケール コードの形式は、"ISO_639-1_code"-"CountryCode" (例: en GB) である必要があります。 ロケール ID の形式の詳細については、 https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a を参照してください。
+現在 Microsoft が翻訳を提供していない言語を追加することもできます。 ユーザー フロー内のすべての文字列に対して翻訳を提供する必要があります。 言語およびロケールのコードは、ISO 639-1 標準にものに限られます。 ロケール コードの形式は、"ISO_639-1_code"-"CountryCode" (例: `en-GB`) である必要があります。 ロケール ID の形式の詳細については、 https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a を参照してください。
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 2. カスタム言語を追加するユーザー フローをクリックし、 **[言語]** をクリックします。
