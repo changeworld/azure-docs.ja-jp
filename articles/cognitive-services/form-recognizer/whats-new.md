@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 7539e896d810a2f0fbf3c07f389f25e2d3c31fe1
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703390"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
@@ -85,13 +85,13 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 ### <a name="new-features"></a>新機能
 
-* **v2.0 リファレンスが使用可能** [v2.0 API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)と、[.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)、[Python](/python/api/overview/azure/?view=azure-python)、[Java](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)、および [JavaScript](/javascript/api/overview/azure/?view=azure-node-latest) 用のアップデートされた SDK を参照できます。
+* **v2.0 リファレンスが使用可能** [v2.0 API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)と、[.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme)、[Python](/python/api/overview/azure/)、[Java](/java/api/overview/azure/ai-formrecognizer-readme)、および [JavaScript](/javascript/api/overview/azure/) 用のアップデートされた SDK を参照できます。
 * **テーブルの機能強化と抽出の機能強化** には、精度の向上とテーブル抽出の機能強化が含まれています。特に、"_ラベルのないカスタム トレーニング_" でテーブルのヘッダーと構造を学習する機能が追加されています。 
 
 * **通貨のサポート** - グローバル通貨記号の検出と抽出。
 * **Azure Gov** - Form Recognizer が、Azure Gov でも使用できるようになりました。
 * **強化されたセキュリティ機能**: 
-   * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./form-recognizer-encryption-of-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。  
+   * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./encrypt-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。  
    * **プライベート エンドポイント** – 仮想ネットワーク (VNet) を使用して、[Private Link を介してデータに安全にアクセスできるようになります。](../../private-link/private-link-overview.md)
 
 
@@ -110,10 +110,10 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 ### <a name="new-features"></a>新機能
 * **Form Recognizer API v2.0 パブリック プレビューの SDK サポート** - 今月、サービス サポートが拡張され、Form Recognizer v2.0 (プレビュー) リリースのプレビュー SDK が含まれるようになりました。 以下のリンクを使用して、任意の言語で作業を開始してください。 
-   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)
-   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)
-   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme?view=azure-python-preview)
-   * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme?view=azure-node-preview)
+   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
+   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
+   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
+   * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
 
   新しい SDK では、Form Recognizer 用の v2.0 REST API のすべての機能がサポートされています。 たとえば、モデルをラベルの有無にかかわらずトレーニングしたり、フォームからテキスト、キーと値のペア、およびテーブルを抽出したり、事前構築済みの領収書サービスを使用してレシートからデータを抽出したり、レイアウト サービスを使用してドキュメントからテキストやテーブルを抽出したりすることができます。 SDK に関するフィードバックは、[SDK フィードバック フォーム](https://aka.ms/FR_SDK_v1_feedback)を通じて共有できます。
  
@@ -123,7 +123,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 ### <a name="security-improvements"></a>セキュリティの強化
 
-* FormRecognizer でカスタマー マネージド キーが利用できるようになりました。 詳細については、[Form Recognizer による保存データの暗号化](./form-recognizer-encryption-of-data-at-rest.md)に関するページを参照してください。
+* FormRecognizer でカスタマー マネージド キーが利用できるようになりました。 詳細については、[Form Recognizer による保存データの暗号化](./encrypt-data-at-rest.md)に関するページを参照してください。
 * Azure Active Directory を使用した Azure リソースへのアクセスにマネージド ID を使用します。 詳細については、[マネージド ID に対するアクセスの承認](../authentication.md#authorize-access-to-managed-identities)に関するページを参照してください。
 
 ## <a name="march-2020"></a>2020 年 3 月 
@@ -148,7 +148,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
   次の図に、テーブルが認識されて抽出される方法の例を示します。
 
   > [!div class="mx-imgBorder"]
-  > ![サンプル ラベル付けツールを使用したテーブルの視覚化](./media/whats-new/formre-table-viz.png)
+  > ![サンプル ラベル付けツールを使用したテーブルの視覚化](./media/whats-new/table-viz.png)
 
     抽出されたテーブルは、`"pageResults"` の JSON 出力で使用できます。
 
@@ -209,7 +209,7 @@ TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用さ
 
 ## <a name="next-steps"></a>次のステップ
 
-選択した言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クイックスタート](quickstarts/client-library.md)を完了します。
+選択した開発言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

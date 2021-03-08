@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用して Azure でのロールの割り当てを追加または削除する - Azure RBAC
+title: Azure CLI を使用して Azure ロールを割り当てる - Azure RBAC
 description: Azure CLI と Azure のロールベースのアクセス制御 (RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 author: rolyon
@@ -10,31 +10,31 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: e1aa4945391e159f99c82fecff99c238ae0e7e93
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: ee356f32b6799c6182ec1c9e061a35271a4bbc23
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964407"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556970"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure でのロールの割り当てを追加または削除する
+# <a name="assign-azure-roles-using-azure-cli"></a>Azure CLI を使用して Azure ロールを割り当てる
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] この記事では、Azure CLI を使用してロールを割り当てる方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-ロールの割り当てを追加または削除するには、以下が必要です。
+ロールを割り当てるには、以下が必要です。
 
-- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
+- `Microsoft.Authorization/roleAssignments/write` アクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
 - [Azure Cloud Shell の Bash](../cloud-shell/overview.md) または [Azure CLI](/cli/azure)
 
-## <a name="steps-to-add-a-role-assignment"></a>ロールの割り当てを追加する手順
+## <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 
-Azure RBAC でアクセス権を付与するには、ロールの割り当てを追加します。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。 ロールの割り当てを追加するには、次の手順のようにします。
+ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
 
 ### <a name="step-1-determine-who-needs-access"></a>手順 1: アクセスが必要なユーザーを決定する
 
-ロールを、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てることができます。 ロールの割り当てを追加するには、オブジェクトの一意の ID の指定が必要になることがあります。 ID の形式は `11111111-1111-1111-1111-111111111111` です。 この ID は、Azure portal または Azure CLI を使用して取得できます。
+ロールを、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てることができます。 ロールを割り当てるには、オブジェクトの一意の ID の指定が必要になることがあります。 ID の形式は `11111111-1111-1111-1111-111111111111` です。 この ID は、Azure portal または Azure CLI を使用して取得できます。
 
 **User**
 
@@ -75,7 +75,7 @@ az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
 az identity list
 ```
     
-### <a name="step-2-find-the-appropriate-role"></a>手順 2:適切なロールを見つける
+### <a name="step-2-select-the-appropriate-role"></a>手順 2:適切なロールを選択する
 
 アクセス許可はロールでまとめてグループ化されます。 複数の [Azure 組み込みロール](built-in-roles.md)の一覧から選択することも、独自のカスタム ロールを使用することもできます。 必要最小限の特権を持つアクセス権を付与するのがベスト プラクティスなので、より広範なロールを割り当てることは避けてください。
 
@@ -129,9 +129,9 @@ az account list --query "[].{name:name, id:id}" --output tsv
 az account management-group list --query "[].{name:name, id:id}" --output tsv
 ```
     
-### <a name="step-4-add-role-assignment"></a>手順 4:ロールの割り当ての追加
+### <a name="step-4-assign-role"></a>手順 4:ロールを割り当てる
 
-ロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) コマンドを使用します。 コマンドは、スコープに応じて、通常、次のいずれかの形式になります。
+ロールを割り当てるには、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) コマンドを使用します。 コマンドは、スコープに応じて、通常、次のいずれかの形式になります。
 
 **リソースのスコープ**
 
@@ -181,9 +181,9 @@ az role assignment create --assignee "{assignee}" \
 }
 ```
     
-## <a name="add-role-assignment-examples"></a>ロールの割り当ての追加の例
+## <a name="assign-role-examples"></a>ロールの割り当ての例
 
-#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>ストレージ アカウント リソース スコープ内のすべての BLOB コンテナーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-all-blob-containers-in-a-storage-account-resource-scope"></a>ストレージ アカウント リソース スコープ内のすべての BLOB コンテナーにロールを割り当てる
 
 [ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールを、*storage12345* という名前のストレージ アカウントに対するリソース スコープで、オブジェクト ID が *55555555-5555-5555-5555-555555555555* のサービス プリンシパルに割り当てます。
 
@@ -193,7 +193,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345"
 ```
 
-#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>特定の BLOB コンテナー リソース スコープにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-specific-blob-container-resource-scope"></a>特定の BLOB コンテナー リソース スコープにロールを割り当てる
 
 [ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールを、*blob-container-01* という名前の BLOB コンテナーに対するリソース スコープで、オブジェクト ID が *55555555-5555-5555-5555-555555555555* のサービス プリンシパルに割り当てます。
 
@@ -203,7 +203,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345/blobServices/default/containers/blob-container-01"
 ```
 
-#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>特定の仮想ネットワーク リソース スコープ内のグループにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>特定の仮想ネットワーク リソース スコープ内のグループにロールを割り当てる
 
 [仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを、*pharma-sales-project-network* という名前の仮想ネットワークに対するリソース スコープで、ID が 22222222-2222-2222-2222-222222222222 の *Ann Mack Team* グループに割り当てます。
 
@@ -213,7 +213,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>リソース グループ スコープでユーザーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>リソース グループ スコープでユーザーにロールを割り当てる
 
 [仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを、*pharma-sales* リソース グループ スコープで、*patlong\@contoso.com* ユーザーに割り当てます。
 
@@ -223,7 +223,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>リソース グループ スコープで一意のロール ID を使用してユーザーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>リソース グループ スコープで一意のロール ID を使用してユーザーにロールを割り当てる
 
 ロール名が変更されるときがあります。たとえば次のような場合です。
 
@@ -240,7 +240,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>リソース グループ スコープですべての BLOB コンテナーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-all-blob-containers-at-a-resource-group-scope"></a>リソース グループ スコープですべての BLOB コンテナーにロールを割り当てる
 
 [ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ロールを、*Example-Storage-rg* リソース グループ スコープで、オブジェクト ID が *55555555-5555-5555-5555-555555555555* のサービス プリンシパルに割り当てます。
 
@@ -258,7 +258,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg"
 ```
 
-#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>リソース グループをスコープとするアプリケーションのロールの割り当てを追加する
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>リソース グループ スコープでアプリケーションにロールを割り当てる
 
 [仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを、*pharma-sales* リソース グループ スコープで、サービス プリンシパル オブジェクト ID が 44444444-4444-4444-4444-444444444444 のアプリケーションに割り当てます。
 
@@ -268,11 +268,11 @@ az role assignment create --assignee "44444444-4444-4444-4444-444444444444" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope"></a>リソース グループ スコープで新しいサービス プリンシパルにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-new-service-principal-at-a-resource-group-scope"></a>リソース グループ スコープで新しいサービス プリンシパルにロールを割り当てる
 
 新しいサービス プリンシパルを作成し、そのサービス プリンシパルにロールをすぐに割り当てようとすると、場合によってはそのロールの割り当てが失敗することがあります。 たとえば、スクリプトを使用して新しいマネージド ID を作成し、そのサービス プリンシパルにロールを割り当てようとすると、ロールの割り当てが失敗する可能性があります。 このエラーの原因は、レプリケーションの遅延である可能性があります。 サービス プリンシパルは 1 つのリージョンに作成されます。ただし、ロールの割り当ては、サービス プリンシパルがまだレプリケートされていない別のリージョンで発生する可能性があります。 このシナリオに対処するには、ロールの割り当てを作成するときに、プリンシパルの種類を指定する必要があります。
 
-ロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用し、`--assignee-object-id` の値を指定してから、`--assignee-principal-type` を `ServicePrincipal` に設定します。
+ロールを割り当てるには、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用し、`--assignee-object-id` の値を指定してから、`--assignee-principal-type` を `ServicePrincipal` に設定します。
 
 ```azurecli
 az role assignment create --assignee-object-id "{assigneeObjectId}" \
@@ -291,7 +291,7 @@ az role assignment create --assignee-object-id "33333333-3333-3333-3333-33333333
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>サブスクリプション スコープでユーザーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>サブスクリプション スコープでユーザーにロールを割り当てる
 
 [閲覧者](built-in-roles.md#reader)ロールを、サブスクリプション スコープで、*annm\@example.com* ユーザーに割り当てます。
 
@@ -301,7 +301,7 @@ az role assignment create --assignee "annm@example.com" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-a-group-at-a-subscription-scope"></a>サブスクリプション スコープでグループにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-group-at-a-subscription-scope"></a>サブスクリプション スコープでグループにロールを割り当てる
 
 [閲覧者](built-in-roles.md#reader)ロールを、サブスクリプション スコープで、ID が 22222222-2222-2222-2222-222222222222 の *Ann Mack Team* グループに割り当てます。
 
@@ -311,7 +311,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-all-blob-containers-at-a-subscription-scope"></a>サブスクリプション スコープですべての BLOB コンテナーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-all-blob-containers-at-a-subscription-scope"></a>サブスクリプション スコープですべての BLOB コンテナーにロールを割り当てる
 
 [ストレージ BLOB データ閲覧者](built-in-roles.md#storage-blob-data-reader)ロールを、サブスクリプション スコープで、*alain\@example.com* ユーザーに割り当てます。
 
@@ -321,40 +321,12 @@ az role assignment create --assignee "alain@example.com" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>管理グループ スコープでユーザーにロールの割り当てを追加する
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>管理グループ スコープでユーザーにロールを割り当てる
 
 [課金データ閲覧者](built-in-roles.md#billing-reader)ロールを、管理グループ スコープで、*alain\@example.com* ユーザーに割り当てます。
 
 ```azurecli
 az role assignment create --assignee "alain@example.com" \
---role "Billing Reader" \
---scope "/providers/Microsoft.Management/managementGroups/marketing-group"
-```
-
-## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
-
-Azure RBAC でアクセス権を削除するには、[az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete) を使用してロールの割り当てを削除します。
-
-次の例では、*pharma-sales* リソース グループの *patlong\@contoso.com* ユーザーから、"[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)" ロールの割り当てを削除します。
-
-```azurecli
-az role assignment delete --assignee "patlong@contoso.com" \
---role "Virtual Machine Contributor" \
---resource-group "pharma-sales"
-```
-
-[閲覧者](built-in-roles.md#reader)ロールを、サブスクリプション スコープで、ID が 22222222-2222-2222-2222-222222222222 の *Ann Mack Team* グループから削除します。
-
-```azurecli
-az role assignment delete --assignee "22222222-2222-2222-2222-222222222222" \
---role "Reader" \
---subscription "00000000-0000-0000-0000-000000000000"
-```
-
-[課金データ閲覧者](built-in-roles.md#billing-reader)ロールを、管理グループ スコープで、*alain\@example.com* ユーザーから削除します。
-
-```azurecli
-az role assignment delete --assignee "alain@example.com" \
 --role "Billing Reader" \
 --scope "/providers/Microsoft.Management/managementGroups/marketing-group"
 ```

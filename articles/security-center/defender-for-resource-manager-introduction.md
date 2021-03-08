@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9591dae058a19cea73d88513b7c4ff4ab8f88045
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797746"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590468"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の概要
 
@@ -48,7 +48,7 @@ Azure Defender for Resource Manager によって提供されるアラートの�
 
 Azure Defender for Resource Manager からのセキュリティ アラートの基になっているのは、Azure Resource Manager の操作を監視することによって検出された脅威です。 Azure Defender では、Azure Resource Manager の内部ログ ソースに加え、Azure のアクティビティ ログが使用されます。アクティビティ ログは Azure のプラットフォーム ログであり、サブスクリプションレベルのイベントについての分析情報が得られます。
 
-詳細については、「[Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)」を参照してください。
+詳細については、「[Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)」を参照してください。
 
 Azure Defender for Resource Manager からのセキュリティ アラートを調査するには、次の手順に従います。
 

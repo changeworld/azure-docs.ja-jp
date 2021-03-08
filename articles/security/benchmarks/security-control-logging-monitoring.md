@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8492e986b378ea19f8c3c4cb7f94fcb0f155b427
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d30d8cdfe6ee93f54dfd560987ac8b6a78517fd8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487849"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718694"
 ---
 # <a name="security-control-logging-and-monitoring"></a>セキュリティ コントロールログ記録と監視
 
@@ -42,9 +42,9 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -56,9 +56,9 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 監査ログ、セキュリティ ログ、および診断ログにアクセスするため、Azure リソースに対する診断設定を有効にします。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure でのログ記録とログのさまざまな種類について](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2.4:オペレーティング システムからセキュリティ ログを収集する
 
@@ -68,7 +68,7 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 コンピューティング リソースが Microsoft に所有されている場合、その監視は Microsoft が担当します。 コンピューティング リソースがお客様の組織に所有されている場合、その監視はお客様が担当します。 OS は Azure Security Center を使用して監視できます。 Security Center によってオペレーティング システムから収集されるデータには、OS の種類とバージョン、OS (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 Log Analytics エージェントは、クラッシュ ダンプ ファイルも収集します。
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Security Center のデータ収集について](../../security-center/security-center-enable-data-collection.md)
 
@@ -80,9 +80,9 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 ## <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
@@ -96,9 +96,9 @@ Azure Monitor 内で、組織のコンプライアンス規則に従って Log A
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-- [Log Analytics ワークスペースについて](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics ワークスペースについて](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/logs/get-started-queries.md)
 
 ## <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
@@ -114,7 +114,7 @@ Log Analytics ワークスペースと共に Azure Security Center を使用し�
 
 - [Azure Security Center でアラートを管理する方法](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/alerts/tutorial-response.md)
 
 ## <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
@@ -148,9 +148,9 @@ Azure Virtual Machines および Cloud Services についてのマルウェア�
 
 - [Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/logs/get-started-queries.md)
 
-- [Azure Monitor の Syslog データ ソース](../../azure-monitor/platform/data-sources-syslog.md)
+- [Azure Monitor の Syslog データ ソース](../../azure-monitor/agents/data-sources-syslog.md)
 
 
 ## <a name="next-steps"></a>次のステップ

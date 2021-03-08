@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cf749f3aef10a0c67814722577f79906f447ffdb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b344e2a845a9da8333860599bd4ff9041108202f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532783"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588256"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの監査ログ
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでのデータ�
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
 
-コンピューティングやストレージのスケーリングなどの操作に Azure リソースレベルのログが必要な場合は、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)に関する記事を参照してください。
+コンピューティングやストレージのスケーリングなどの操作に Azure リソースレベルのログが必要な場合は、[Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)に関する記事を参照してください。
 
 ## <a name="usage-considerations"></a>使用に関する考慮事項
 既定では、pgAudit ログ ステートメントは、Postgres の標準ログ記録機能を使用して、通常のログ ステートメントと共に出力されます。 Azure Database for PostgreSQL - フレキシブル サーバーでは、Azure Monitor ログ ストアに送信されるすべてのログを、Log Analytics で後で分析できるように構成することもできます。 Azure Monitor のリソース ログを有効にすると、選択した内容に応じて、ログが (JSON 形式で) Azure Storage、Event Hubs、または Azure Monitor ログに自動的に送信されます。
@@ -57,9 +57,9 @@ pgAudit では、セッションまたはオブジェクトの監査ログを構
 すぐに始めるには、`pgaudit.log` を `WRITE` に設定し、サーバー ログを開いて出力を確認します。 
 
 ## <a name="viewing-audit-logs"></a>監査ログの表示
-ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関する記事を参照してください。
+ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)に関する記事を参照してください。
 
-Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
+Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../../azure-monitor/logs/log-query-overview.md)の概要に関する記事を参照してください。
 
 このクエリを使用して作業を開始できます。 クエリに基づいてアラートを構成できます。
 

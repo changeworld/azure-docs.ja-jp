@@ -1,22 +1,19 @@
 ---
 title: Azure SSIS Integration Runtime に対する AAD の有効化
 description: この記事では、Azure-SSIS 統合ランタイムを作成するために、Azure Data Factory のマネージド ID を使用して Azure Active Directory 認証を有効にする方法について説明します。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: powershell
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 30f5b5990e189cb6942c15b65b6a417ce49f0c2b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cd3f590e1869b28f0ac08ce98da32a98160e4e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637804"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392733"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
@@ -102,7 +99,7 @@ SQL Database は、Azure AD ユーザーを使用したデータベースの作�
 
 2. **[サーバーに接続]** ダイアログで、 **[サーバー名]** フィールドにサーバー名を入力します。
 
-3. **[認証]** フィールドで、 **[Active Directory - MFA サポートで汎用]** を選択します (他の 2 つの Active Directory 認証の種類を使用することもできます。「 [SQL による Azure AD 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照)。
+3. **[認証]** フィールドで、 **[Active Directory - MFA サポートで汎用]** を選択します (他の 2 つの Active Directory 認証の種類を使用することもできます。「[SQL による Azure AD 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照)。
 
 4. **[ユーザー名]** フィールドに、サーバー管理者として設定した Azure AD アカウントの名前 (testuser@xxxonline.com など) を入力します。
 
@@ -128,7 +125,7 @@ SQL Database は、Azure AD ユーザーを使用したデータベースの作�
 
    このコマンドは正常に完了し、包含ユーザーにデータベース (SSISDB) を作成する権限が与えられます。
 
-10. SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、まず、 **マスター** データベースにアクセス許可を付与する手順が正常に完了したことを確認してください。 次に、 **SSISDB** データベースを右クリックし、 **[新しいクエリ]** を選択します。
+10. SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、まず、**マスター** データベースにアクセス許可を付与する手順が正常に完了したことを確認してください。 次に、**SSISDB** データベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 11. クエリ ウィンドウで、次の T-SQL コマンドを入力し、ツールバーの **[実行]** を選択します。
 
@@ -176,7 +173,7 @@ SQL Managed Instance では、ADF のマネージド ID を使用してデータ
     
     このコマンドは正常に完了し、ADF のマネージド ID にデータベース (SSISDB) を作成する権限が与えられます。
 
-6.  SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、まず、 **マスター** データベースにアクセス許可を付与する手順が正常に完了したことを確認してください。 次に、 **SSISDB** データベースを右クリックし、 **[新しいクエリ]** を選択します。
+6.  SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、まず、**マスター** データベースにアクセス許可を付与する手順が正常に完了したことを確認してください。 次に、**SSISDB** データベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 7.  クエリ ウィンドウで、次の T-SQL コマンドを入力し、ツールバーの **[実行]** を選択します。
 

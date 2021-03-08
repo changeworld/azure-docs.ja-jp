@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 09/17/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 200e7f191cb19588fa79ba685c91a75dabd0156a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4f3ecb6c9aa4ec200cd1a53b82d7c81a2c8d4dcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348205"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546790"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>クイックスタート: GPU 搭載の Azure Stack Edge Pro を使い始める 
 
@@ -64,16 +64,16 @@ ms.locfileid: "91348205"
 10. **証明書の構成**: デバイス名と DNS ドメインの両方または一方を変更した場合は、証明書を生成するか、証明書を追加してデバイスをアクティブ化する必要があります。 
 
     - 非運用環境のワークロードをテストするには、[[証明書の生成] オプション](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates)を使用します。 
-    - 署名チェーンを含む独自の証明書を持ち込む場合は、適切な形式の[証明書を追加](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)します。 必ず、最初に署名チェーンをアップロードします。 [証明書の作成](azure-stack-edge-j-series-create-certificates-tool.md)および[ローカル UI を使用した証明書のアップロード](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)に関する記事を参照してください。
+    - 署名チェーンを含む独自の証明書を持ち込む場合は、適切な形式の[証明書を追加](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)します。 必ず、最初に署名チェーンをアップロードします。 [証明書の作成](azure-stack-edge-gpu-create-certificates-tool.md)および[ローカル UI を使用した証明書のアップロード](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)に関する記事を参照してください。
 
 11. **アクティブ化**:アクティブ化キーを取得するには 
 
     1. Azure portal で **Azure Stack Edge リソース > [概要] > [Device setup]\(デバイスのセットアップ\) > [アクティブ化] > [キーの生成]** に移動します。 キーをコピーします。 
     1. ローカル Web UI で、 **[作業の開始] > [アクティブ化]** に移動し、アクティブ化キーを指定します。 キーを適用してからデバイスがアクティブ化されるまで数分かかります。 メッセージが表示されたら `<device-serial-number>`.json ファイルをダウンロードし、将来の復旧に必要なデバイス キーを安全に保管します。 
 
-12. **コンピューティングの構成**: Azure portal で、 **[概要] > [デバイス]** に移動します。 デバイスが**オンライン**であることを確認します。 左側のペインで、 **[Edge コンピューティング] > [作業の開始] > [Edge コンピューティングの構成] > [コンピューティング]** に移動します。 既存または新規の IoT Hub サービスを指定し、コンピューティングが構成されるまで約 20 分待ちます。 詳細については、「[チュートリアル: Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)」を参照してください
+12. **コンピューティングの構成**: Azure portal で、 **[概要] > [デバイス]** に移動します。 デバイスが **オンライン** であることを確認します。 左側のペインで、 **[Edge コンピューティング] > [作業の開始] > [Edge コンピューティングの構成] > [コンピューティング]** に移動します。 既存または新規の IoT Hub サービスを指定し、コンピューティングが構成されるまで約 20 分待ちます。 詳細については、「[チュートリアル: Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)」を参照してください
 
-これで、[IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md) を使用して、[`kubectl` を使用して](azure-stack-edge-gpu-create-kubernetes-cluster.md)、または [Azure Arc 対応 Kubernetes を使用して](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)、デバイスにコンピューティング ワークロードを展開できるようになりました。 セットアップの間に問題が発生する場合は、[デバイスの問題のトラブルシューティング]()、[注文の問題の](azure-stack-edge-gpu-troubleshoot.md)、[証明書の問題](azure-stack-edge-j-series-certificate-troubleshooting.md)、または Kubernetes の問題に関する記事を参照してください。 
+これで、[IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md) を使用して、[`kubectl` を使用して](azure-stack-edge-gpu-create-kubernetes-cluster.md)、または [Azure Arc 対応 Kubernetes を使用して](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)、デバイスにコンピューティング ワークロードを展開できるようになりました。 セットアップの間に問題が発生する場合は、[デバイスの問題のトラブルシューティング]()、[注文の問題の](azure-stack-edge-gpu-troubleshoot.md)、[証明書の問題](azure-stack-edge-gpu-certificate-troubleshooting.md)、または Kubernetes の問題に関する記事を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 

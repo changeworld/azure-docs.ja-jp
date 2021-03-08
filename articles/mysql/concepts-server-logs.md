@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 0b00db8e89afda8682ddedccfec7e5a6147b7125
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: efabb3de69e96ec1a8955b2691af20a36fbabfe4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534978"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595948"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL での低速クエリ ログ
 Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
@@ -53,7 +53,7 @@ Azure Monitor 診断ログを使用すると、低速クエリ ログを Azure M
 > 上記のログ保持期間は、Azure Monitor 診断ログを使用してパイプ処理されたログには適用されません。 出力先のデータ シンク (Azure Storage など) の保持期間を変更することが できます。
 
 ## <a name="diagnostic-logs"></a>診断ログ
-Azure Database for MySQL は、Azure Monitor の診断ログと統合されます。 MySQL サーバーで低速クエリ ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage に対して、それらが出力されるように選択できます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)の操作方法のセクションを参照してください。
+Azure Database for MySQL は、Azure Monitor の診断ログと統合されます。 MySQL サーバーで低速クエリ ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage に対して、それらが出力されるように選択できます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/essentials/platform-logs-overview.md)の操作方法のセクションを参照してください。
 
 次の表は、各ログの内容を説明しています。 出力方法に応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
 

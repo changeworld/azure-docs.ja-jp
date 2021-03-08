@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c250868c9d470ee85f765f693aff3e21320fc45e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346190"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584743"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -136,7 +136,7 @@ JSON 本文の例は、次のようになります。
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>C# のボットで QnA Maker を使用する
 
-Bot Framework では、[getAnswer API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?preserve-view=true&view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) を使用して QnA Maker のプロパティへのアクセスを提供します。
+Bot Framework では、[getAnswer API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) を使用して QnA Maker のプロパティへのアクセスを提供します。
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -291,3 +291,5 @@ GenerateAnswer への応答には、一致した質問と回答のペアの対�
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースに関する分析結果の取得](../how-to/get-analytics-knowledge-base.md)
+> [!div class="nextstepaction"]
+> [信頼度スコア](../Concepts/confidence-score.md)

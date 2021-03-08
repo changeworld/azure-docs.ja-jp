@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874908"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518081"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "98874908"
 
 ## <a name="create-a-security-group-for-permissions"></a>アクセス許可のためのセキュリティ グループの作成
 
-認証を設定するには、セキュリティ グループを作成し、カタログのマネージド ID を追加します。
+認証を設定するには、セキュリティ グループを作成し、Purview のマネージド ID を追加します。
 
 1. [Azure portal](https://portal.azure.com) で、**Azure Active Directory** を検索します。
 1. 「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」に従って、Azure Active Directory で新しいセキュリティ グループを作成します。
@@ -35,11 +35,11 @@ ms.locfileid: "98874908"
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="セキュリティ グループの種類":::
 
-1. カタログのマネージド ID をこのセキュリティ グループに追加します。 **[メンバー]** を選択してから **[+ メンバーの追加]** を選択します。
+1. Purview のマネージド ID をこのセキュリティ グループに追加します。 **[メンバー]** を選択してから **[+ メンバーの追加]** を選択します。
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-group-member.png" alt-text="カタログのマネージド インスタンスをグループに追加します。":::
 
-1. カタログを検索して選択します。
+1. Purview のマネージド ID を検索し、それを選択します。
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-catalog-to-group-by-search.png" alt-text="カタログを検索して追加する":::
 
@@ -61,14 +61,14 @@ ms.locfileid: "98874908"
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="サービス プリンシパルが読み取り専用 Power BI Admin API のアクセス許可を取得できるようにする方法を示す画像":::
 
     > [!Caution]
-    > 作成したセキュリティ グループ (データ カタログのマネージド ID をメンバーとして持つ) に読み取り専用 Power BI Admin API の使用を許可するときは、このテナント内のすべての Power BI 成果物のメタデータ (ダッシュボードやレポートの名前、所有者、説明など) へのアクセスも許可します。 メタデータが Azure Purview に取り込まれると、Purview のアクセス許可 (Power BI のアクセス許可ではない) によって、そのメタデータを表示できるユーザーが決まります。
+    > 作成したセキュリティ グループ (Purview のマネージド ID をメンバーとして持つ) に読み取り専用 Power BI Admin API の使用を許可するときは、このテナント内のすべての Power BI 成果物のメタデータ (ダッシュボードやレポートの名前、所有者、説明など) へのアクセスも許可します。 メタデータが Azure Purview に取り込まれると、Purview のアクセス許可 (Power BI のアクセス許可ではない) によって、そのメタデータを表示できるユーザーが決まります。
 
     > [!Note]
     > 開発者向け設定からセキュリティ グループを削除することはできますが、以前に抽出されたメタデータは Purview アカウントから削除されません。 これは、必要に応じて個別に削除することができます。
 
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>Power BI の登録とスキャンの設定
 
-Power BI テナントの Admin API に接続するためのカタログのアクセス許可が付与されたので、カタログ ポータルからスキャンを設定できるようになりました。
+Power BI テナントの Admin API に接続するための Purview のマネージド ID のアクセス許可が付与されたので、Azure Purview Studio からスキャンを設定できるようになりました。
 
 まず、Purview URL に特別な機能フラグを追加します 
 
@@ -84,7 +84,7 @@ Power BI テナントの Admin API に接続するためのカタログのアク
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="選択可能なデータ ソースの一覧を示す画像":::
 
-1. Power BI インスタンスにフレンドリ名を付けます。
+3. Power BI インスタンスにフレンドリ名を付けます。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Power BI データ ソースのフレンドリ名を示す画像":::
 
@@ -94,17 +94,21 @@ Power BI テナントの Admin API に接続するためのカタログのアク
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="登録された Power BI データ ソース":::
 
-1. スキャンに名前を付けます。 サポートされている認証方法は **[マネージド ID]** のみであることに留意してください。
+    > [!Note]
+    > Power BI の場合、データ ソースの登録とスキャンは 1 つのインスタンスに対してのみ許可されています。
+
+
+4. スキャンに名前を付けます。 サポートされている認証方法は **[マネージド ID]** のみであることに留意してください。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Power BI スキャンの設定を示す画像":::
 
     スキャンの名前の長さは 3 から 63 文字で、文字、数字、アンダースコア、およびハイフンのみを使用できます。  スペースは使用できません。
 
-1. スキャン トリガーを設定します。 オプションとしては、 **[1 度]** 、 **[7 日ごと]** 、 **[30 日ごと]** があります。
+5. スキャン トリガーを設定します。 オプションとしては、 **[1 度]** 、 **[7 日ごと]** 、 **[30 日ごと]** があります。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/scan-trigger.png" alt-text="スキャン トリガーの画像":::
 
-1. **[Review new scan]\(新しいスキャンを確認\)** で **[保存および実行]** を選択してスキャンを開始します。
+6. **[Review new scan]\(新しいスキャンを確認\)** で **[保存および実行]** を選択してスキャンを開始します。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="Power BI の保存および実行画面の画像":::
 

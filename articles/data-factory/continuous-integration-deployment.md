@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory における継続的インテグレーションとデリバリー
 description: 継続的インテグレーションとデリバリーを使用して Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動する方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
-manager: jroth
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680304"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383604"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 

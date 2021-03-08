@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Enterprise レベルのキャッシュを作成する
+title: 'クイックスタート: Redis Enterprise キャッシュを作成する'
 description: このクイックスタートでは、Azure Cache for Redis の Enterprise レベルのインスタンスを作成する方法について学習します
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/28/2020
-ms.openlocfilehash: 95f6e2cf7803ff0b152f33c08f170725b5a0e94e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 02/08/2021
+ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795667"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365006"
 ---
-# <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>クイック スタート:Enterprise レベルのキャッシュを作成する (プレビュー)
+# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>クイックスタート: Redis Enterprise キャッシュを作成する (プレビュー)
 
 Azure Cache for Redis の Enterprise レベルは、Azure 上で完全に統合されたマネージド [Redis Enterprise](https://redislabs.com/redis-enterprise/) を提供します。 このレベルは、現在、プレビューとして提供されています。 このプレビューには、次の 2 つの新しいレベルがあります。
 * Enterprise。データは、仮想マシンの揮発性メモリ (DRAM) を使用して格納されます
@@ -22,7 +22,7 @@ Azure Cache for Redis の Enterprise レベルは、Azure 上で完全に統合�
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、Azure サブスクリプションが必要です。 アカウントがない場合は、[アカウントを作成](https://azure.microsoft.com/)してください。 詳細については、「[Enterprise レベルの要件](cache-overview.md#enterprise-tier-requirements)」を参照してください。
+開始する前に、Azure サブスクリプションが必要です。 アカウントがない場合は、[アカウントを作成](https://azure.microsoft.com/)してください。 詳細については、「[Enterprise レベルの要件](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements)」を参照してください。
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 1. キャッシュを作成するには、プレビュー招待内のリンクを使用して Azure portal にサインインし、 **[リソースの作成]** を選択します。

@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cdad5a0ec158f216a63ae7e1e2abc10d2841b3bc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131782"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593727"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
@@ -168,7 +168,7 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 ![特定のサンプル ビューをドリルダウンする](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics:強力なクエリ言語
-より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。  [Analytics](../log-query/log-query-overview.md) は、パフォーマンスと使用状況を把握したり、診断を行ったりするための強力なツールです。
+より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。  [Analytics](../logs/log-query-overview.md) は、パフォーマンスと使用状況を把握したり、診断を行ったりするための強力なツールです。
 
 ![Example of Analytics](./media/java-get-started/0025.png)
 
@@ -292,7 +292,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 * [Unix パフォーマンス カウンターを監視する](java-collectd.md)
 * [Web ページに監視機能](javascript.md)を追加して、ページの読み込み時間、AJAX 呼び出し、ブラウザーの例外を監視する
 * [カスタム テレメトリ](./api-custom-events-metrics.md)を書き込んで、ブラウザーまたはサーバーでの使用状況を追跡する
-* [Analytics](../log-query/log-query-overview.md) を使用して、アプリからのテレメトリに対して強力なクエリを実行する
+* [Analytics](../logs/log-query-overview.md) を使用して、アプリからのテレメトリに対して強力なクエリを実行する
 * 詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。
 
 <!--Link references-->
@@ -302,5 +302,5 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [availability]: ./monitor-web-app-availability.md
 [diagnostic]: ./diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [usage]: javascript.md

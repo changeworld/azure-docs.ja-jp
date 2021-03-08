@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: e5fa4bde316f4b1677f78c65e913a6303a9f4735
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 8b647d5e97439db4805a7346a02db3f845dc9e37
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019144"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523891"
 ---
 # <a name="about-high-availability"></a>高可用性について
 
@@ -149,6 +149,6 @@ cyberx-management-deploy-ssh-key <Primary ip>
 
 3. センサーを更新します。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [オンプレミス管理コンソールをアクティブにしてセットアップする](how-to-activate-and-set-up-your-on-premises-management-console.md)

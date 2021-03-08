@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: fc4830e89d71c387afc1c7bc7fbc81608dfeb592
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 2ae65cc8799fd507952120129ecef83655a465b7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109299"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751093"
 ---
 <a name="HOLTop"></a>
 
@@ -68,7 +68,7 @@ pip install pillow
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](../../../../key-vault/general/overview.md) が考えられます。
 
 > [!div class="nextstepaction"]
-> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=set-up-client)
+> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=set-up-client)
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -76,9 +76,9 @@ pip install pillow
 
 |名前|説明|
 |---|---|
-|[ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| このクラスは、画像分析、テキスト検出、サムネイル生成など、すべての画像操作を直接処理します。|
-| [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | このクラスは、すべての Computer Vision の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 **ComputerVisionClientOperationsMixin** が実装されています。|
-|[VisualFeatureTypes](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python)| この列挙型は、標準の分析操作で実行できるさまざまな種類の画像分析を定義します。 必要に応じて、**VisualFeatureTypes** の値のセットを指定します。 |
+|[ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin)| このクラスは、画像分析、テキスト検出、サムネイル生成など、すべての画像操作を直接処理します。|
+| [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient) | このクラスは、すべての Computer Vision の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 **ComputerVisionClientOperationsMixin** が実装されています。|
+|[VisualFeatureTypes](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| この列挙型は、標準の分析操作で実行できるさまざまな種類の画像分析を定義します。 必要に応じて、**VisualFeatureTypes** の値のセットを指定します。 |
 
 ## <a name="code-examples"></a>コード例
 
@@ -90,12 +90,12 @@ pip install pillow
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) オブジェクトを作成し、それをエンドポイントと共に使用して、[ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) オブジェクトを作成します。
+ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials) オブジェクトを作成し、それをエンドポイントと共に使用して、[ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient) オブジェクトを作成します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
 > [!div class="nextstepaction"]
-> [クライアントを認証しました](?success=authenticate-client#analyze-an-image) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
+> [クライアントを認証しました](?success=authenticate-client#analyze-an-image) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=authenticate-client)
 
 ## <a name="analyze-an-image"></a>イメージを分析する
 
@@ -104,7 +104,7 @@ pip install pillow
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_remoteimage)]
 
 > [!TIP]
-> ローカルの画像を分析することもできます。 [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python) のメソッドを参照してください (**analyze_image_in_stream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上のサンプル コードを参照してください。
+> ローカルの画像を分析することもできます。 [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin) のメソッドを参照してください (**analyze_image_in_stream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上のサンプル コードを参照してください。
 
 ### <a name="get-image-description"></a>画像の説明の取得
 
@@ -173,7 +173,7 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
 > [!div class="nextstepaction"]
-> [画像を分析しました](?success=analyze-image#read-printed-and-handwritten-text) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+> [画像を分析しました](?success=analyze-image#read-printed-and-handwritten-text) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=analyze-image)
 
 ## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
 
@@ -186,7 +186,7 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
 > [!TIP]
-> また、ローカルの画像からテキストを読み取ることもできます。 [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python) のメソッドを参照してください (**read_in_stream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上のサンプル コードを参照してください。
+> また、ローカルの画像からテキストを読み取ることもできます。 [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin) のメソッドを参照してください (**read_in_stream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上のサンプル コードを参照してください。
 
 ### <a name="get-read-results"></a>読み取りの結果を取得する
 
@@ -195,7 +195,7 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
 > [!div class="nextstepaction"]
-> [テキストを読み取りました](?success=read-printed-handwritten-text#run-the-application) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+> [テキストを読み取りました](?success=read-printed-handwritten-text#run-the-application) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=read-printed-handwritten-text)
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -206,7 +206,7 @@ python quickstart-file.py
 ```
 
 > [!div class="nextstepaction"]
-> [アプリケーションを実行しました](?success=run-the-application#clean-up-resources) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+> [アプリケーションを実行しました](?success=run-the-application#clean-up-resources) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=run-the-application)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -216,7 +216,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [リソースをクリーンアップしました](?success=clean-up-resources#next-steps) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
+> [リソースをクリーンアップしました](?success=clean-up-resources#next-steps) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=clean-up-resources)
 
 ## <a name="next-steps"></a>次のステップ
 

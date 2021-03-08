@@ -4,12 +4,12 @@ description: ライブ Web アプリケーションのアプリケーション �
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: f00eea37c43fba10e0a89498dd81366630852db7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ac6b6f2b47df0bce9ae164c83df54adfdf00b184
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91371382"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575709"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は [Azure Monitor](../overview.md) の機能であり、開発者や DevOps プロフェッショナル向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中のアプリケーションを監視することができます。 パフォーマンスの異常を自動的に検出し、組み込まれている強力な分析ツールを使用して、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java、Python などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -38,10 +38,10 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 * **ページ ビューと読み込みのパフォーマンス**: ユーザーのブラウザーから報告されます。
 * Web ページからの **AJAX 呼び出し**: レート、応答時間、およびエラー率。
 * **ユーザー数とセッション数**。
-* Windows または Linux サーバー コンピューターの CPU、メモリ、ネットワーク使用率などの**パフォーマンス カウンター**。 
-* Docker または Azure の**ホスト診断**。 
-* アプリの**診断トレース ログ**: これにより、トレース イベントを要求に関連付けることができます。
-* 販売された品目や勝利したゲームなどのビジネス イベントを追跡するためにクライアントまたはサーバーのコード内に書き込んだ**カスタム イベントとメトリック**。
+* Windows または Linux サーバー コンピューターの CPU、メモリ、ネットワーク使用率などの **パフォーマンス カウンター**。 
+* Docker または Azure の **ホスト診断**。 
+* アプリの **診断トレース ログ**: これにより、トレース イベントを要求に関連付けることができます。
+* 販売された品目や勝利したゲームなどのビジネス イベントを追跡するためにクライアントまたはサーバーのコード内に書き込んだ **カスタム イベントとメトリック**。
 
 ## <a name="where-do-i-see-my-telemetry"></a>テレメトリの確認場所
 
@@ -49,15 +49,15 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 
 |  |  |
 | --- | --- |
-| [**スマート検出と手動のアラート**](./proactive-diagnostics.md)<br/>アプリのテレメトリの通常パターンに合わせて自動アラートを設定し、通常とは異なるパターンがある場合にアラートをトリガーします。 カスタムまたは標準のメトリックスの特定レベルで[アラートを設定](../platform/alerts-log.md)することもできます。 |![アラートのサンプル](./media/app-insights-overview/alerts-tn.png) |
+| [**スマート検出と手動のアラート**](./proactive-diagnostics.md)<br/>アプリのテレメトリの通常パターンに合わせて自動アラートを設定し、通常とは異なるパターンがある場合にアラートをトリガーします。 カスタムまたは標準のメトリックスの特定レベルで[アラートを設定](../alerts/alerts-log.md)することもできます。 |![アラートのサンプル](./media/app-insights-overview/alerts-tn.png) |
 | [**アプリケーション マップ**](./app-map.md)<br/>アプリのコンポーネントを、主要なメトリックとアラートと共に表示します。 |![アプリケーション マップ](./media/app-insights-overview/appmap-tn.png)  |
 | [**プロファイラー**](./profiler.md)<br/>サンプリングされた要求の実行プロファイルを検査します。 |![サンプリングされた要求の実行プロファイルを示すキャプチャ画面。](./media/app-insights-overview/profiler.png) |
 | [**利用状況分析**](./usage-overview.md)<br/>ユーザーのセグメント化とリテンションを分析します。|![リテンション期間ツール](./media/app-insights-overview/retention.png) |
 | [**インスタンスのデータの診断検索**](./diagnostic-search.md)<br/>要求、例外、依存関係の呼び出し、ログ トレースおよびページ ビューなどのイベントを検索およびフィルター処理します。  |![テレメトリの検索](./media/app-insights-overview/search-tn.png) |
-| [**集計データのメトリックス エクスプ ローラー**](../platform/metrics-charts.md)<br/>要求、失敗、および例外の比率、応答時間、ページの読み込み時間などの集計データを調査、フィルター処理、およびセグメント分割します。 |![メトリック](./media/app-insights-overview/metrics-tn.png) |
+| [**集計データのメトリックス エクスプ ローラー**](../essentials/metrics-charts.md)<br/>要求、失敗、および例外の比率、応答時間、ページの読み込み時間などの集計データを調査、フィルター処理、およびセグメント分割します。 |![メトリック](./media/app-insights-overview/metrics-tn.png) |
 | [**ダッシュボード**](./overview-dashboard.md)<br/>複数のリソースからのデータをマッシュアップし、他のユーザーと共有します。 複数コンポーネントのアプリケーションと、チーム ルームでの継続的な表示に最適です。 |![ダッシュボードのサンプル](./media/app-insights-overview/dashboard-tn.png) |
 | [**ライブ メトリック ストリーム**](./live-stream.md)<br/>新しいビルドをデプロイする場合、このほぼリアルタイムのパフォーマンス インジケーターを監視し、すべてが期待どおりに動作することを確認します。 |![ライブ メトリックのサンプル](./media/app-insights-overview/live-metrics-tn.png) |
-| [**分析**](../log-query/log-query-overview.md)<br/>この強力なクエリ言語を使用して、アプリのパフォーマンスと使用状況に関する難しい質問に回答します。 |![分析のサンプル](./media/app-insights-overview/analytics-tn.png) |
+| [**分析**](../logs/log-query-overview.md)<br/>この強力なクエリ言語を使用して、アプリのパフォーマンスと使用状況に関する難しい質問に回答します。 |![分析のサンプル](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](./visual-studio.md)<br/>パフォーマンス データをコードで確認します。 スタック トレースからコードに移動します。|![Visual Studio の [例外の詳細] とスタック トレースからコードに移動する例のスクリーンショット。](./media/app-insights-overview/visual-studio-tn.png) |
 | [**スナップショット デバッガー**](./snapshot-debugger.md)<br/>ライブの操作からサンプリングされたスナップショットをパラメーター値でデバッグします。|![Visual studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](./export-power-bi.md)<br/>使用状況のメトリックをその他のビジネス インテリジェンスと統合します。| ![Power BI](./media/app-insights-overview/power-bi.png)|
@@ -105,7 +105,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [Python](./opencensus-python.md)
   * [その他のプラットフォーム](./platforms.md)
 * ページ ビュー、AJAX、その他のクライアント側テレメトリ用に **[Web ページをインストルメント化](./javascript.md)** します。
-* Visual Studio App Center と統合することで、 **[モバイル アプリの使用状況を分析](../learn/mobile-center-quickstart.md)** します。
+* Visual Studio App Center と統合することで、 **[モバイル アプリの使用状況を分析](../app/mobile-center-quickstart.md)** します。
 * **[可用性テスト](./monitor-web-app-availability.md)** - Microsoft のサーバーから定期的に Web サイトに ping を実行します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -137,12 +137,12 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 
 <!--Link references-->
 
-[android]: ../learn/mobile-center-quickstart.md
+[android]: ../app/mobile-center-quickstart.md
 [azure]: ../../insights-perf-analytics.md
 [client]: ./javascript.md
 [desktop]: ./windows-desktop.md
 [greenbrown]: ./asp-net.md
-[ios]: ../learn/mobile-center-quickstart.md
+[ios]: ../app/mobile-center-quickstart.md
 [java]: ./java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: ./platforms.md

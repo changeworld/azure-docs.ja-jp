@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 036a1d3f8cad4ba9cda03a9001cfec1bb7de86b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715039"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -51,7 +51,7 @@ Azure の Microsoft マルウェア対策は、アプリケーションやテナ
 仮想マシンを保護するマルウェア対策ソフトウェアの詳細については、以下を参照してください。
 
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../../virtual-machines/extensions/trend.md)
+* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](/previous-versions/azure/virtual-machines/extensions/trend)
 * [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../../virtual-machines/extensions/symantec.md)
 * [Azure Marketplace のセキュリティ ソリューション](https://azure.microsoft.com/marketplace/?term=security)
 

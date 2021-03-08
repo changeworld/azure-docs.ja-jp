@@ -1,24 +1,19 @@
 ---
 title: Azure Data Factory パイプラインでカスタム アクティビティを使用する
 description: カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。
-services: data-factory
-documentationcenter: ''
-ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606948"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393022"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory バージョン 1 パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -167,7 +162,7 @@ public IDictionary<string, string> Execute(
 
 8. **IDotNetActivity** インターフェイスの **Execute** メソッドを **MyDotNetActivity** クラスに実装 (追加) し、次のサンプル コードをメソッドにコピーします。
 
-    次のサンプルでは、データ スライスに関連付けられている各 BLOB で検索語句 ("Microsoft") の出現回数をカウントします。
+    次のサンプルでは、データ スライスに関連付けられている各 BLOB での検索語句 ("Microsoft") の出現回数がカウントされます。
 
     ```csharp
     /// <summary>
@@ -247,7 +242,7 @@ public IDictionary<string, string> Execute(
                                      null);
 
             // Calculate method returns the number of occurrences of
-            // the search term (“Microsoft”) in each blob associated
+            // the search term ("Microsoft") in each blob associated
             // with the data slice. definition of the method is shown in the next step.
 
             output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
@@ -434,7 +429,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
    3. **[データ分析]** ブレードの **[Data Factory]** をクリックします。
 
       ![新しい Azure Data Factory メニュー](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. **[新しい Data Factory]** ブレードで、[名前] フィールドに「**CustomActivityFactory**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **データ ファクトリ名 "CustomActivityFactory" は使用できません** が表示された場合は、データ ファクトリの名前を変更し (**yournameCustomActivityFactory** など)、作成し直してください。
+2. **[新しい Data Factory]** ブレードで、[名前] フィールドに「**CustomActivityFactory**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **"データ ファクトリ名 "CustomActivityFactory" は使用できません"** が表示された場合は、データ ファクトリの名前を変更し (**yournameCustomActivityFactory** など)、作成し直してください。
 
     ![新しい Azure Data Factory ブレード](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. **[リソース グループ名]** をクリックし、既存のリソース グループを選択するか、リソース グループを作成します。
@@ -568,7 +563,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    入力フォルダー内のすべてのファイルは、前述の開始時刻であるスライスの一部です。 このスライスを処理すると、カスタム アクティビティは各ファイルをスキャンし、出力ファイルに、検索語句 (“Microsoft”) の出現回数が記述された 1 行を生成します。 入力フォルダーに 3 つのファイルが存在する場合、1 時間単位のスライスごとの出力ファイル (2016-11-16-00.txt、2016-11-16:01:00:00.txt など) には 3 行が存在します。
+    入力フォルダー内のすべてのファイルは、前述の開始時刻であるスライスの一部です。 このスライスが処理されると、カスタム アクティビティによって各ファイルがスキャンされ、検索語句 ("Microsoft") の出現回数を含む 1 行が出力ファイル内に生成されます。 入力フォルダーに 3 つのファイルが存在する場合、1 時間単位のスライスごとの出力ファイル (2016-11-16-00.txt、2016-11-16:01:00:00.txt など) には 3 行が存在します。
 3. **OutputDataset** をデプロイするには、コマンド バーの **[デプロイ]** をクリックします。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>カスタム アクティビティを使用するパイプラインの作成と実行

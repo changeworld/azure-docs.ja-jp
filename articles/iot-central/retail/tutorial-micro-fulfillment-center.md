@@ -7,16 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 4bb50b513a9b09db4a8d59d32816b702bff250f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125971"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390472"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>チュートリアル:マイクロフルフィルメント センター アプリケーション テンプレートを展開して調べる
 
-このチュートリアルでは、Azure IoT Central のマイクロフルフィルメント センター アプリケーション テンプレートを使用して、小売業ソリューションを構築します。 テンプレートのデプロイ方法、テンプレートに含まれている内容、および次に実行できることについて説明します。
+このチュートリアルでは、Azure IoT Central のマイクロフルフィルメント センター アプリケーション テンプレートを使用して、小売業ソリューションを構築します。
+
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * アプリケーション テンプレートをデプロイする方法
+> * アプリケーション テンプレートを使用する方法
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアル シリーズを完了するには、Azure サブスクリプションが必要です。 必要に応じて、7 日間無料の試用版を使用することもできます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。
@@ -40,7 +46,7 @@ ms.locfileid: "92125971"
 
     ![Azure IoT Central の [IoT アプリケーションをビルドする] ページのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png)
     
-1. 必要に応じて、わかりやすい**アプリケーション名**を選びます。 アプリケーション テンプレートは、Northwind Traders という架空の会社に基づいています。 
+1. 必要に応じて、わかりやすい **アプリケーション名** を選びます。 アプリケーション テンプレートは、Northwind Traders という架空の会社に基づいています。 
 
     >[!NOTE]
     >わかりやすいアプリケーション名を使用する場合でも、アプリケーションの URL には一意の値を使用する必要があります。
@@ -55,7 +61,7 @@ ms.locfileid: "92125971"
 
 ## <a name="walk-through-the-application"></a>アプリケーションを調べる 
 
-アプリケーション テンプレートのデプロイが正常に完了したら、**Northwind Traders マイクロフルフィルメント センター ダッシュボード**が表示されます。 Northwind Traders は、この Azure IoT Central アプリケーションでマイクロフルフィルメント センターを管理している架空の小売業者です。 このオペレーター ダッシュボードには、このテンプレートのデバイスに関する情報とテレメトリ、および実行可能な一連のコマンド、ジョブ、アクションが表示されます。 ダッシュボードは、論理的に 2 つのセクションに分かれています。 左側ではフルフィルメント建造物内の環境条件を監視でき、右側では施設内の搬送ロボットの正常性を監視することができます。  
+アプリケーション テンプレートのデプロイが正常に完了したら、**Northwind Traders マイクロフルフィルメント センター ダッシュボード** が表示されます。 Northwind Traders は、この Azure IoT Central アプリケーションでマイクロフルフィルメント センターを管理している架空の小売業者です。 このオペレーター ダッシュボードには、このテンプレートのデバイスに関する情報とテレメトリ、および実行可能な一連のコマンド、ジョブ、アクションが表示されます。 ダッシュボードは、論理的に 2 つのセクションに分かれています。 左側ではフルフィルメント建造物内の環境条件を監視でき、右側では施設内の搬送ロボットの正常性を監視することができます。  
 
 ダッシュボードからは、次のことができます。
    * デバイス テレメトリ (ピック数、処理された注文の数など) やプロパティ (建造物のシステムの状態など) を確認する。  
@@ -92,8 +98,7 @@ ms.locfileid: "92125971"
 
 ## <a name="next-steps"></a>次のステップ
 
-項目ごとに詳しい情報を確認できます。
+各項目の詳細情報
+
 > [!div class="nextstepaction"]
 > [マイクロフルフィルメント センターのソリューション アーキテクチャ](./architecture-micro-fulfillment-center.md)
-* [Azure IoT Central 小売りテンプレート](./overview-iot-central-retail.md)について詳細を確認する。
-* [Azure IoT Central](../core/overview-iot-central.md) についての詳細

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 55263d3c742d18cf03303f96f08fb9aa370c7af8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371611"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592071"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure Managed Applications のビュー定義アーティファクト
 
@@ -137,7 +137,7 @@ ms.locfileid: "91371611"
 
 `"kind": "Metrics"`
 
-メトリック ビューを使用すると、[Azure Monitor のメトリック](../../azure-monitor/platform/data-platform-metrics.md)でマネージド アプリケーション リソースからデータを収集して集計することができます。
+メトリック ビューを使用すると、[Azure Monitor のメトリック](../../azure-monitor/essentials/data-platform-metrics.md)でマネージド アプリケーション リソースからデータを収集して集計することができます。
 
 ```json
 {
@@ -176,7 +176,7 @@ ms.locfileid: "91371611"
 |---------|---------|---------|
 |displayName|はい|グラフの表示タイトル。|
 |chartType|いいえ|このグラフに使用する視覚エフェクト。 既定では、折れ線グラフが使用されます。 サポートされるグラフの種類: `Bar, Line, Area, Scatter`。|
-|metrics|はい|このグラフにプロットするメトリックの配列。 Azure portal でサポートされるメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md)」を参照してください。|
+|metrics|はい|このグラフにプロットするメトリックの配列。 Azure portal でサポートされるメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/essentials/metrics-supported.md)」を参照してください。|
 
 ### <a name="metric"></a>メトリック
 
@@ -194,7 +194,7 @@ ms.locfileid: "91371611"
 
 `"kind": "CustomResources"`
 
-この種類のビューは複数定義することができます。 各ビューは、**mainTemplate.json** で定義したカスタム プロバイダーからの**一意の**カスタム リソースの種類を表します。 カスタム プロバイダーの概要については、「[Azure Custom Providers プレビューの概要](../custom-providers/overview.md)」を参照してください。
+この種類のビューは複数定義することができます。 各ビューは、**mainTemplate.json** で定義したカスタム プロバイダーからの **一意の** カスタム リソースの種類を表します。 カスタム プロバイダーの概要については、「[Azure Custom Providers プレビューの概要](../custom-providers/overview.md)」を参照してください。
 
 このビューでは、カスタム リソースの種類に対して GET、PUT、DELETE、POST 操作を実行できます。 POST 操作は、グローバルなカスタム アクションとすることも、カスタム リソースの種類に関連するカスタム アクションとすることもできます。
 
@@ -226,9 +226,9 @@ ms.locfileid: "91371611"
 
 |プロパティ|必須|説明|
 |---------|---------|---------|
-|displayName|はい|ビューの表示タイトル。 タイトルは **viewDefinition.json**内の各 CustomResources ビューに対して**一意**である必要があります。|
+|displayName|はい|ビューの表示タイトル。 タイトルは **viewDefinition.json** 内の各 CustomResources ビューに対して **一意** である必要があります。|
 |version|いいえ|ビューのレンダリングに使用されるプラットフォームのバージョン。|
-|resourceType|はい|カスタム リソースの種類。 カスタム プロバイダーの**一意の**カスタム リソースの種類とする必要があります。|
+|resourceType|はい|カスタム リソースの種類。 カスタム プロバイダーの **一意の** カスタム リソースの種類とする必要があります。|
 |icon|いいえ|ビューのアイコン。 例のアイコンの一覧は、[JSON スキーマ](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)で定義されています。|
 |createUIDefinition|いいえ|カスタム リソースの作成コマンド用の UI 定義作成スキーマ。 UI 定義の作成の概要については、[CreateUiDefinition の基本概念](create-uidefinition-overview.md)に関する記事を参照してください。|
 |commands|いいえ|CustomResources ビューの追加のツールバーのボタンの配列。「[commands](#commands)」を参照してください。|
@@ -282,7 +282,7 @@ ms.locfileid: "91371611"
 
 |プロパティ|必須|説明|
 |---------|---------|---------|
-|displayName|はい|ビューの表示タイトル。 タイトルは **viewDefinition.json** 内の各 Associations ビューに対して**一意**である必要があります。|
+|displayName|はい|ビューの表示タイトル。 タイトルは **viewDefinition.json** 内の各 Associations ビューに対して **一意** である必要があります。|
 |version|いいえ|ビューのレンダリングに使用されるプラットフォームのバージョン。|
 |targetResourceType|はい|ターゲット リソースの種類。 これは、リソースのオンボードに表示されるリソースの種類です。|
 |createUIDefinition|いいえ|関連付けリソース作成コマンド用の UI 定義スキーマを作成します。 UI 定義の作成の概要については、[CreateUiDefinition の基本概念](create-uidefinition-overview.md)に関する記事を参照してください。|

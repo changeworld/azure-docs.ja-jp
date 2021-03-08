@@ -1,6 +1,5 @@
 ---
-title: Azure Media Services イベントを Azure Log Analytics に格納する
-titleSuffix: Azure Media Services
+title: Media Services イベントを Azure Log Analytics に格納する
 description: Azure Media Services イベントを Azure Log Analytics に格納する方法を学習します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +11,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016997"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571864"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>チュートリアル:Azure Media Services イベントを Azure Log Analytics に格納する
 
@@ -43,21 +42,21 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 > * [Azure サブスクリプション](how-to-set-azure-subscription.md)
 > * [Media Services](create-account-howto.md) アカウントとリソース グループ。
 > * お使いの OS 用の [FFmpeg](https://ffmpeg.org/download.html) のインストール。
-> * [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) ワークスペース
+> * [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) ワークスペース
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>ロジック アプリで Media Services イベントをサブスクライブする
 
-1. [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) ワークスペースをまだ作成していない場合は、Azure portal で作成します。 ワークスペース ID とキーの 1 つが必要になるので、ブラウザー ウィンドウを開いたままにしておきます。 次に、別のタブまたはウィンドウでポータルを開きます。
+1. [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) ワークスペースをまだ作成していない場合は、Azure portal で作成します。 ワークスペース ID とキーの 1 つが必要になるので、ブラウザー ウィンドウを開いたままにしておきます。 次に、別のタブまたはウィンドウでポータルを開きます。
 
 1. Azure Media Services アカウントに移動して、 **[イベント]** を選択します。 これにより、Azure Media Services イベントをサブスクライブするためのすべての方法が表示されます。
     > [!div class="mx-imgBorder"]
     > ![Azure Media Services ポータル](media/tutorial-events-log-analytics/select-events-01a.png)
 
-1. ロジック アプリを作成するには、**Logic Apps アイコン**を選択します。 これにより開くロジック アプリ デザイナーでは、イベントをキャプチャして Log Analytics にプッシュするフローを作成できます。 
+1. ロジック アプリを作成するには、**Logic Apps アイコン** を選択します。 これにより開くロジック アプリ デザイナーでは、イベントをキャプチャして Log Analytics にプッシュするフローを作成できます。 
     > [!div class="mx-imgBorder"]
     > ![ロジック アプリの作成](media/tutorial-events-log-analytics/select-logic-app-02.png)
 
-1. **[+] アイコン**を選択し、使用するテナントを選択して、[サインイン] を選択します。 Microsoft のサインイン プロンプトが表示されます。
+1. **[+] アイコン** を選択し、使用するテナントを選択して、[サインイン] を選択します。 Microsoft のサインイン プロンプトが表示されます。
     > [!div class="mx-imgBorder"]
     > ![Azure Event Grid に接続する](media/tutorial-events-log-analytics/select-event-add-grid-03.png)
 テナントを選択する![](media/tutorial-events-log-analytics/select-tenant-03a.png)
@@ -116,7 +115,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **［作成］** を選択します 次に、JSON 要求の本文とカスタム ログの名前を作成します。
 
-1. **[JSON Request body]\(JSON 要求本文\)** フィールドを選択します。  **動的なコンテンツを追加する**ためのリンクが表示されます。
+1. **[JSON Request body]\(JSON 要求本文\)** フィールドを選択します。  **動的なコンテンツを追加する** ためのリンクが表示されます。
 
 1. **[動的なコンテンツの追加]** を選択し、 **[トピック]** を選択します。
 
@@ -180,7 +179,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[取り込み URL]** をクリップボードにコピーします。
 
-1. 一覧で**ライブ イベント**を選択して、プロデューサー ビューを表示します。
+1. 一覧で **ライブ イベント** を選択して、プロデューサー ビューを表示します。
 
 ### <a name="stream-with-ffmpeg-cli"></a>FFmpeg CLI を使用したストリーミング
 
@@ -231,4 +230,4 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="next-steps"></a>次のステップ
 
-さまざまなクエリを作成して保存することができます。 これらを [Azure ダッシュボード](../../azure-monitor/learn/tutorial-logs-dashboards.md)に追加できます。
+さまざまなクエリを作成して保存することができます。 これらを [Azure ダッシュボード](../../azure-monitor/visualize/tutorial-logs-dashboards.md)に追加できます。

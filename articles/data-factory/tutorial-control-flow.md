@@ -1,22 +1,19 @@
 ---
 title: Azure Data Factory パイプラインでの分岐
 description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
-services: data-factory
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: ab7d17ee61d733483b6d3573e9bd69b1628c7940
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496944"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386018"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -610,7 +607,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +750,7 @@ Press any key to exit...
 このチュートリアルでは、次のタスクを実行しました。
 
 > [!div class="checklist"]
-> _ データ ファクトリを作成する
+> * Data Factory の作成
 > * Azure Storage のリンクされたサービスを作成する
 > * Azure BLOB データセットを作成します。
 > * コピー アクティビティと Web アクティビティを含むパイプラインを作成します。

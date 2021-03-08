@@ -48,7 +48,7 @@ Azure AD Multi-Factor Authentication では、次のような追加の検証形�
 
 * Microsoft Authenticator アプリ
 * OATH ハードウェア トークン
-* sms
+* SMS
 * 音声通話
 
 ## <a name="how-to-enable-and-use-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication を有効にして使用する方法

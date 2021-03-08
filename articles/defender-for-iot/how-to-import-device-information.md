@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0a443ba7b41615fc62882bd8de6bf077c6b5a137
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 53c342005d2c33e2ee18057fe0e667ebdec5166c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836851"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522242"
 ---
 # <a name="import-device-information-to-a-sensor"></a>デバイス情報をセンサーにインポートする
 
@@ -67,7 +67,7 @@ Azure Defender for IoT センサーでは、ミラー化されたトラフィッ
 
 IP アドレス、OS、パッチ レベルをインポートするには:
 
-1. [[ヘルプ センター]](https://cyberx-labs.zendesk.com/hc/en-us) から [assets_info_2.2.8 and up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして、次のように情報を入力します。
+1. [[ヘルプ センター]](https://cyberx-labs.zendesk.com/hc/en-us) から [devices_info_2.2.8 and up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして、次のように情報を入力します。
 
    - **IP アドレス**:デバイスの IP アドレスを入力します。
 
@@ -85,7 +85,7 @@ IP アドレス、OS、パッチ レベルをインポートするには:
 
 認可の状態をインポートするには:
 
-1. Defender for IoT ヘルプ センターから、[authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして保存します。 このファイルを CSV として保存したことを確認します。
+1. Defender for IoT ヘルプ センターから、[authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして保存します。 このファイルを CSV として保存したことを確認します。
 
 2. 以下のように情報を入力します。
 
@@ -154,7 +154,7 @@ IP アドレス、OS、パッチ レベルをインポートするには:
 
 IP アドレス、OS、パッチ レベルをインポートするには:
 
-1. [[ヘルプ センター]](https://cyberx-labs.zendesk.com/hc/en-us) から [assets_info_2.2.8 and up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして、次のように情報を入力します。
+1. [[ヘルプ センター]](https://cyberx-labs.zendesk.com/hc/en-us) から [devices_info_2.2.8 and up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして、次のように情報を入力します。
 
    - **IP アドレス**:デバイスの IP アドレス。
 
@@ -172,7 +172,7 @@ IP アドレス、OS、パッチ レベルをインポートするには:
 
 認可の状態をインポートするには:
 
-1. Defender for IoT ヘルプ センターから、[authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして保存します。 このファイルを CSV として保存したことを確認します。
+1. Defender for IoT ヘルプ センターから、[authorized_devices - examples.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) ファイルをダウンロードして保存します。 このファイルを CSV として保存したことを確認します。
 
 2. 以下のように情報を入力します。
 
@@ -188,7 +188,7 @@ IP アドレス、OS、パッチ レベルをインポートするには:
 
 情報をインポートすると、この一覧に記載されていないすべてのデバイスについて、認可されていないデバイスに関するアラートが表示されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [監視するトラフィックを制御する](how-to-control-what-traffic-is-monitored.md)
 

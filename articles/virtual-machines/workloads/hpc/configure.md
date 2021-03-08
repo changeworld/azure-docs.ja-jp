@@ -3,17 +3,17 @@ title: InfiniBand 対応の H シリーズおよび N シリーズの Microsoft 
 description: InfiniBand 対応の H シリーズおよび N シリーズの HPC 用 VM の構成と最適化について説明します。
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 10/23/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b1686b08608e4f1c49cd918e86e8149f0fe2a21c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 94334e54865b3a3b603cbd0b3943899a375d894e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963370"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675669"
 ---
 # <a name="configure-and-optimize-vms"></a>VM の構成と最適化
 

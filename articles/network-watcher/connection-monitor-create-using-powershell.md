@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 99bcef2ba702235279c1327a2a5e51a8c6ab806d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7f175d82b650871437a506ea4513f0ae28360f68
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018481"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833033"
 ---
 # <a name="create-a-connection-monitor-by-using-powershell"></a>PowerShell を使用して接続モニターを作成する
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 接続モニター (クラシック) に新しい接続モニターを追加することもできなくなります。 2021 年 7 月 1 日より前に作成されたテストおよび接続モニターは引き続き使用することができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から](migrate-to-connection-monitor-from-network-performance-monitor.md)、または[接続モニター (クラシック) から](migrate-to-connection-monitor-from-connection-monitor-classic.md) Azure Network Watcher の新しい接続モニターにテストを移行します。
+
 
 Azure Network Watcher の接続モニター機能を使用して、リソース間の通信を監視する方法について説明します。
 

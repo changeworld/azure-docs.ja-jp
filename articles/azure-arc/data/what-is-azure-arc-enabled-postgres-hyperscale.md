@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8edf540c3f67a3a8bee075569f0a2588cae18a62
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607509"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390013"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale とは
 
@@ -48,13 +48,13 @@ Azure Arc 対応 PostgreSQL Hyperscale は、Azure Arc 対応データ サービ
 これは、Azure Arc 対応データ サービスで使用できる Postgres データベース エンジンのハイパースケール フォーム ファクターです。 これもまた、ハイパースケール エクスペリエンスを可能にする Citus 拡張機能を備えています。 このフォーム ファクターでは、システムをホストするインフラストラクチャを顧客が提供し、それらのシステムを運用します。
 
 ## <a name="next-steps"></a>次のステップ
-- **作成**
-   > **試用をご希望ですか。利用できる Kubernetes クラスターがありませんか。サンドボックスを提供します。**  
-   > Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
+- **実際に使ってみてください。** Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。 
 
-   - **作成:**
-      - [クライアント ツールをインストールする](install-client-tools.md)
-      - [Azure Arc データ コントローラーを作成する](create-data-controller.md) (先にクライアント ツールをインストールしておく必要があります)
-      - [Azure Arc に Azure Database for PostgreSQL Hyperscale サーバー グループを作成する](create-postgresql-hyperscale-server-group.md) (先に Azure Arc データ コントローラーを作成しておく必要があります)
-- [**Azure Arc 対応データ サービスについて確認する**](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
-- [**Azure Arc について確認する**](https://aka.ms/azurearc)
+- **独自のものを作成します。** 独自の Kubernetes クラスターを作成するには、こちらの手順に従います。 
+   1. [クライアント ツールをインストールする](install-client-tools.md)
+   2. [Azure Arc データ コントローラーを作成する](create-data-controller.md)
+   3. [Azure Arc で Azure Database for PostgreSQL Hyperscale サーバー グループを作成する](create-postgresql-hyperscale-server-group.md) 
+
+- **Learn**
+   - [Azure Arc 対応データ サービスについて確認する](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
+   - [Azure Arc について確認する](https://aka.ms/azurearc)

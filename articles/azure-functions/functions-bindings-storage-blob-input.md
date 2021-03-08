@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6ac3a492c5544a4a782871ff50cda9a248fe50f4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 678b6f02245e463870fc5b2c4bfc8b5ffa50de60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882383"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381693"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
 
@@ -349,7 +349,7 @@ public static void Run(
 |**direction** | 該当なし | `in` に設定する必要があります。 例外は、[使用方法](#usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。|
 |**path** |**BlobPath** | BLOB へのパス。 |
-|**connection** |**接続**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** |**接続**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。<br><br>[バージョン 5.x またはそれ以降の拡張機能](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)を使用している場合は、接続文字列の代わりに、接続を定義する構成セクションへの参照を指定できます。 「[接続](./functions-reference.md#connections)」を参照してください。|
 |**dataType**| 該当なし | 動的に型指定される言語の場合は、基になるデータ型を指定します。 設定可能な値は、`string`、`binary`、または `stream` です。 詳細については、[トリガーとバインドの概念](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions)に関する記事を参照してください。 |
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 

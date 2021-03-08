@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e085c5c2dbb608692ff7e766744743d3f640387b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: ef0f308c3ea2986301b0247111ef96bb133b57f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633207"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571924"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid 用の Azure セキュリティ ベースライン
 
@@ -163,9 +163,9 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Event Grid に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -209,7 +209,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 **ガイダンス**:Azure Monitor で、組織のコンプライアンス規則に従って、Azure Event Grid リソースに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用外
 
@@ -227,9 +227,9 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -249,7 +249,7 @@ Azure Event Grid メトリックとアクティビティ ログ操作に関す�
 
 - [Event Grid 診断ログ スキーマの詳細](diagnostic-logs.md)
 
-- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-log.md)
+- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-log.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -513,7 +513,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure Event Grid リソースの運用インスタンスやその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用外
 

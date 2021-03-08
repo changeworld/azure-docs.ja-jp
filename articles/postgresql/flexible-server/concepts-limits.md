@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 0221022c342735744d59f956d6047b4abf23b5cf
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937663"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516517"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの制限
 
@@ -66,6 +66,13 @@ PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリ�
 
 - データベース エンジンのメジャー バージョン間での自動移行は現在サポートされていません。 次のメジャー バージョンにアップグレードする場合は、新しいエンジンのバージョンで作成されたサーバーに[ダンプを復元](../howto-migrate-using-dump-and-restore.md)します。
 
+### <a name="storage"></a>ストレージ
+
+- ストレージのサイズは、一度構成すると縮小できません。
+- 現時点では、ストレージの自動拡張機能は使用できません。 使用状況を監視し、ストレージのサイズを大きくしてください。 
+- ストレージの使用率が 95% に達した場合、または使用可能な容量が 5 GiB 未満の場合は、ディスクがいっぱいという状況に関連するエラーを回避するために、サーバーが **読み取り専用モード** に自動で切り替わります。 
+- ストレージ サイズの増加などの処置を事前に行えるように、`storage used` または `storage percent` が特定のしきい値を超えた場合のアラート ルールを設定することをお勧めします。 たとえば、ストレージの使用率の割合が 80% を超えた場合のアラートを設定できます。
+  
 ### <a name="networking"></a>ネットワーキング
 
 - VNET との間での移動は、現在はサポートされていません。

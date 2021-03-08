@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 48c525004b095c1e0f498f86a5395d0002be26f1
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845255"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523143"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Defender for IoT の CLI コマンドを操作する
 
@@ -290,6 +290,6 @@ cyberx-xsense-certificate-import
 
 - DNS サーバーと対応する IP アドレスを使用して、(証明書に表示されているように) アプライアンス ドメインを IT で確認します。 
     
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [Defender for IoT API センサーと管理コンソール API](references-work-with-defender-for-iot-apis.md)

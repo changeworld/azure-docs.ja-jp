@@ -1,19 +1,15 @@
 ---
 title: Apache Ranger での Apache Hive ポリシー - Azure HDInsight
 description: Enterprise セキュリティ パッケージを使用して Azure HDInsight サービスに Hive 用の Apache Ranger ポリシーを構成する方法について説明します。
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544938"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705706"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 
@@ -61,7 +57,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
     |ユーザーの選択|hiveuser1|
     |アクセス許可|select|
 
-    ![HDInsight ESP Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)。
+    ![HDInsight ESP Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
     > [!NOTE]  
     > [Select User] にドメイン ユーザーが設定されていない場合は、Ranger が AAD と同期するまでしばらく待ってください。

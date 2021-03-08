@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: dada52dcf66db2f0d0e40f3dbf6d1a16560c2754
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8915d780e79fa219428c54bad5458ab5966df6c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515030"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688503"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Replicon の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Replicon では、 **SP** によって開始される SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Replicon では、**SP** によって開始される SSO がサポートされます。
 
 ## <a name="adding-replicon-from-the-gallery"></a>ギャラリーからの Replicon の追加
 
@@ -50,7 +50,7 @@ Azure AD への Replicon の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Replicon** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Replicon**」と入力します。
 1. 結果ウィンドウで **[Replicon]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -109,7 +109,7 @@ Replicon で Azure AD SSO を構成してテストするには、次の構成要
 
     a. **[EnableSAML Authentication2]** ダイアログを表示するには、URL の企業キーの後に次のパスを追加します。`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * 完全な URL のスキーマを次に示します。`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * 完全な URL のスキーマを次に示します。`https://na2.replicon.com/<YourCompanyKey>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. **+** をクリックして、 **[v20Configuration]** セクションを展開します。
 

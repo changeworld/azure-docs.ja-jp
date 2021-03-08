@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 04faaa05cf51f740958238ece0a9a211c43fca41
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a4512a8f75d59f617058a50846d7578a90b9d062
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935448"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675815"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>チュートリアル:IntelliJ で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "98935448"
 ## <a name="prerequisites"></a>前提条件
 
 - [IntelliJ IDEA コミュニティ バージョン](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)。
-- Azure ツールキット プラグイン 3.27.0-2019.2 - [IntelliJ プラグイン リポジトリ](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)からインストール
+- Azure ツールキット プラグイン 3.27.0-2019.2 - [IntelliJ プラグイン リポジトリ](/java/azure/intellij/azure-toolkit-for-intellij-installation)からインストール
 - [JDK (バージョン 1.8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
 - Scala プラグイン - [IntelliJ プラグイン リポジトリ](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea)からインストール。
 - 次の前提条件は、Windows ユーザーのみを対象としています。
@@ -145,7 +145,7 @@ Scala アプリケーションを作成した後、これをリモートから�
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
     |ジョブの構成|既定のキーと値を変更できます。 詳細については、[Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) に関するページを参照してください。|
     |コマンド ライン引数|必要に応じて、main クラスの引数をスペースで区切って入力できます。|
-    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細については、[Apache Spark 構成]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) および[リソースをクラスターにアップロードする方法](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。|
+    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細については、[Apache Spark 構成]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) および[リソースをクラスターにアップロードする方法](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md)に関するページをご覧ください。|
     |ジョブ アップロード ストレージ|展開して追加のオプションを表示します。|
     |ストレージ型|ドロップダウンリストから **[Use Azure Blob to upload]\(Azure BLOB を使用してアップロード\)** または **[Use cluster default storage account to upload]\(クラスターの既定のストレージ アカウントを使用してアップロード\)** を選択します。|
     |ストレージ アカウント|ストレージ アカウントを入力します。|

@@ -259,7 +259,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-次のコードは、[ShareFileClient.uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile) メソッドを呼び出して、ローカル ファイルを Azure File ストレージにアップロードします。 次のメソッド例は、指定したファイルが正常にアップロードされたかどうかを示す `Boolean` 値を返します。
+次のコードは、[ShareFileClient.uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile) メソッドを呼び出して、ローカル ファイルを Azure File Storage にアップロードします。 次のメソッド例は、指定したファイルが正常にアップロードされたかどうかを示す `Boolean` 値を返します。
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
 

@@ -1,22 +1,19 @@
 ---
 title: ファイル ベースのストレージ間でファイルを移動する
 description: Azure Data Factory を使用してファイル ベースのストレージ間でファイルを移動するための、ソリューション テンプレートの使用方法について説明します。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522722"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361946"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Azure Data Factory でファイルを移動する
 
@@ -48,11 +45,11 @@ ADF コピー アクティビティには、ストレージとストア間でバ
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
-1. **ファイルの移動**テンプレートに移動します。 ファイル移動元のソース ファイル ストアに対する既存の接続を選択するか、**新しい**接続を作成します。 **DataSource_Folder** と **DataSource_File** では、ソース ファイル ストアの同じ接続が参照されていることに注意してください。
+1. **ファイルの移動** テンプレートに移動します。 ファイル移動元のソース ファイル ストアに対する既存の接続を選択するか、**新しい** 接続を作成します。 **DataSource_Folder** と **DataSource_File** では、ソース ファイル ストアの同じ接続が参照されていることに注意してください。
 
     ![ソースへの新しい接続を作成する](media/solution-template-move-files/move-files1.png)
 
-2. ファイル移動先の移動先ファイル ストアに対する既存の接続を選択するか、**新しい**接続を作成します。
+2. ファイル移動先の移動先ファイル ストアに対する既存の接続を選択するか、**新しい** 接続を作成します。
 
     ![コピー先への新しい接続を作成する](media/solution-template-move-files/move-files2.png)
 

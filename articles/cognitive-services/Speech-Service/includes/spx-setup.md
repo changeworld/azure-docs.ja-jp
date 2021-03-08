@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 1eae40437e06bfb150e202db1f3bb4125baeaa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540479"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515010"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -19,18 +19,16 @@ ms.locfileid: "98540479"
 Windows に Speech CLI をインストールするには、次の手順に従います。
 
 1. Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 これを初めてインストールする場合、再起動が必要になる場合があります。
-2. Speech CLI [ZIP アーカイブ](https://aka.ms/speech/spx-zips.zip)をダウンロードして、抽出します。
-3. `spx-zips` を抽出したディレクトリに移動します。 このフォルダーには、さまざまなプラットフォームの Speech CLI 用のプログラム ファイルが含まれています。 
-4. ご利用のプラットフォーム用のファイルを抽出します (.NET Framework 4.7 の場合は `spx-net471`、x64 CPU での .NET Core 3.0 の場合は `spx-netcore-win-x64`)。 このディレクトリから `spx` を実行することにご注意ください。
+1. [.NET Core 3.1](/dotnet/core/install/linux) をインストールします。
+2. 次のコマンドを入力して、NuGet を使用して Speech CLI をインストールします。
 
-### <a name="run-the-speech-cli"></a>Speech CLI を実行する
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
 
-1. コマンド プロンプトまたは PowerShell を開き、Speech CLI を抽出したディレクトリに移動します。  
-2. 「`spx`」と入力して、Speech CLI のヘルプ コマンドを表示します。
+「`spx`」と入力して、Speech CLI のヘルプを表示します。
 
 > [!NOTE]
-> Powershell では、コマンドの検索時にローカル ディレクトリがチェックされません。 Powershell で、ディレクトリを `spx` の場所に変更し、`.\spx` と入力してツールを呼び出します。
-> このディレクトリをパスに追加すると、Powershell と Windows コマンド プロンプトが `.\` プレフィックスを含めずにディレクトリから `spx` を検索します。
+> NuGet の代わりに、Speech CLI の [zip アーカイブ](https://aka.ms/speech/spx-zips.zip)をダウンロードして抽出し、`spx-zips` ディレクトリからお使いのプラットフォームを検索して抽出し、`spx` パスをシステムの **PATH** 変数に追加することができます。
+
 
 ### <a name="font-limitations"></a>フォントの制限事項
 
@@ -41,17 +39,28 @@ Windows の Speech CLI では、ローカル コンピューター上のコマ�
 
 #### <a name="linux-install"></a>[Linux のインストール](#tab/linuxinstall)
 
+Speech CLI を使用する x64 アーキテクチャでは、次の Linux ディストリビューションがサポートされています。
+
+* CentOS 7/8
+* Debian 9/10 
+* Red Hat Enterprise Linux (RHEL) 7/8
+* Ubuntu 16.04/18.04/20.04
+
+> [!NOTE]
+> 追加のアーキテクチャが Speech SDK (Speech CLI ではない) によってサポートされています。 詳細については、「[Speech SDK について](../speech-sdk.md)」を参照してください。
+
 Linux の x64 CPU で Speech CLI をインストールするには、次の手順に従います。
 
-1. [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) をインストールします。
-2. Speech CLI [ZIP アーカイブ](https://aka.ms/speech/spx-zips.zip)をダウンロードして、抽出します。
-3. ダウンロードから抽出したルートディレクトリ `spx-zips` にアクセスし、`spx-netcore-30-linux-x64` を新しい `~/spx` ディレクトリに抽出します。
-4. ターミナルで、次のコマンドを入力します。
-   1. `cd ~/spx`
-   2. `sudo chmod +r+x spx`
-   3. `PATH=~/spx:$PATH`
+1. [.NET Core 3.1](/dotnet/core/install/linux) をインストールします。
+2. 次のコマンドを入力して、NuGet を使用して Speech CLI をインストールします。
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
 
 「`spx`」と入力して、Speech CLI のヘルプを表示します。
+
+> [!NOTE]
+> NuGet の代わりに、[zip アーカイブ](https://aka.ms/speech/spx-zips.zip)でバイナリをダウンロードし、`spx-netcore-30-linux-x64.zip` を新しい `~/spx` ディレクトリに抽出し、バイナリに `sudo chmod +r+x spx` を入力して、PATH システム変数に `~/spx` パスを追加することもできます。
+
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker のインストール (Windows、Linux、macOS)](#tab/dockerinstall)
 
@@ -108,7 +117,7 @@ sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 たとえば、Windows では、次のコマンドによってキーが設定されます。
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
 ```
 
 コマンド ライン ツールとのより拡張された操作については、entrypoint パラメーターを追加することで、対話型の bash シェルでコンテナーを開始できます。
@@ -161,8 +170,8 @@ Speech CLI の使用を開始するには、Speech サブスクリプション �
 サブスクリプション キーとリージョン識別子 (たとえば、 `eastus`、`westus`) を入手したら、次のコマンドを実行します。
 
 ```console
-spx config @key --set SUBSCRIPTION-KEY
-spx config @region --set REGION
+spx config --set @key SUBSCRIPTION-KEY
+spx config --set @region REGION
 ```
 
 これで、今後の SPX 要求のためのサブスクリプション認証が格納されるようになりました。 これらの格納されている値のいずれかを削除する必要がある場合は、`spx config @region --clear` または `spx config @key --clear` を実行します。

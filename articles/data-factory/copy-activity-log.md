@@ -1,22 +1,17 @@
 ---
 title: コピー アクティビティのセッション ログ
 description: Azure Data Factory でコピー アクティビティのセッション ログを有効にする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: e56a840da07a2f6e966867699506f0122a0e7956
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593648"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385270"
 ---
 #  <a name="session-log-in-copy-activity"></a>コピー アクティビティのセッション ログ
 
@@ -72,7 +67,7 @@ ms.locfileid: "94593648"
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
 enableCopyActivityLog | true に設定すると、コピーされたファイル、スキップされたファイル、またはスキップされた行をログに記録できます。  | True<br/>False (既定値) | いいえ
-logLevel | "Info" により、コピーされたファイル、スキップされたファイル、スキップされた行がすべてログに記録されます。 "Warning" により、スキップされたファイルおよびスキップされた行のみがログに記録されます。  | Info<br/>警告 (既定値) | いいえ
+logLevel | "Info" により、コピーされたファイル、スキップされたファイル、スキップされた行がすべてログに記録されます。 "Warning" により、スキップされたファイルおよびスキップされた行のみがログに記録されます。  | ［情報］<br/>警告 (既定値) | いいえ
 enableReliableLogging | true の場合、リライアブル モードのコピー アクティビティにより、各ファイルがコピー先にコピーされると直ちにログがフラッシュされます。  コピー アクティビティでリライアブル ログ モードを有効にして大量のファイルをコピーする場合は、ファイルをコピーするたびに二重書き込み操作が必要になるため、コピー スループットが影響を受けることが予想されます。 1 つの要求は、コピー先ストアに対する要求であり、もう 1 つの要求はログ ストレージ ストアに対する要求です。  ベスト エフォート モードのコピー アクティビティでは、一定期間内のレコードのバッチを使用してログがフラッシュされます。この場合、コピー スループットは影響を受けにくくなります。 コピー アクティビティが失敗したときにログ イベントの最後のバッチがログ ファイルにフラッシュされていない可能性があるため、このモードではログ記録の完全性と適時性は保証されません。 この時点で、コピー先にコピーされたいくつかのファイルはログに記録されません。  | True<br/>False (既定値) | いいえ
 logLocationSettings | セッション ログを格納する場所を指定するために使用できるプロパティのグループ。 | | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
@@ -101,6 +96,9 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
         }
 
 ```
+
+> [!NOTE]
+> `enableCopyActivityLog` プロパティが `Enabled` に設定されている場合、ログ ファイル名はシステムによって生成されます。
 
 ### <a name="the-schema-of-the-log-file"></a>ログ ファイルのスキーマ
 
@@ -158,7 +156,7 @@ select OperationItem from SessionLogDemo where OperationName='FileSkip'
 select TIMESTAMP, OperationItem, Message from SessionLogDemo where OperationName='FileSkip'
 ```
 
--   "Blob ファイルが存在しない" という同じ理由でスキップされたファイルのリストを表示する。 
+-   "Blob ファイルが存在しない" と同じ理由でスキップされたファイルのリストを表示する。 
 ```sql
 select TIMESTAMP, OperationItem, Message from SessionLogDemo where OperationName='FileSkip' and Message like '%UserErrorSourceBlobNotExist%'
 ```

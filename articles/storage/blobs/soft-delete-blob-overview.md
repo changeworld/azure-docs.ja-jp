@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127483"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390359"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
@@ -27,6 +27,10 @@ BLOB の論理的な削除では、お客様のデータが誤って変更また
 ## <a name="about-soft-delete-for-blobs"></a>BLOB の論理的な削除について
 
 ストレージ アカウントで BLOB の論理的な削除が有効になっている場合は、オブジェクトが削除された後も、指定したデータ保持期間中は復旧することができます。 この保護の範囲は、上書きされたために消去されたすべての BLOB データ (ブロック BLOB、追加 BLOB、ページ BLOB) に及びます。
+
+次の図は、BLOB の論理的な削除が有効になっている場合に、削除された BLOB を復元する方法を示しています。
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="論理的に削除された BLOB を復元する方法を示す図":::
 
 BLOB の論理的な削除は有効になっているが、BLOB のバージョン管理が有効になっていない場合、既存の BLOB またはスナップショット内のデータが削除されると、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 指定された保持期間が経過すると、オブジェクトは完全に削除されます。
 
@@ -79,7 +83,7 @@ BLOB の論理的な削除は、新規と既存の両方の汎用 v2、汎用 v1
 > [!NOTE]  
 > 論理的に削除された BLOB が上書きされると、書き込み操作前の BLOB の状態の論理的に削除されたスナップショットが、自動的に生成されます。 新しい BLOB は、上書きされた BLOB の階層を継承します。
 
-コンテナーまたはアカウントの削除の場合、または BLOB メタデータおよび BLOB プロパティが上書きされる場合、論理的な削除ではデータは保存されません。 削除からストレージ アカウントを保護するには、Azure Resource Manager を使ってロックを設定できます。 詳しくは、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」をご覧ください。
+コンテナーまたはアカウントの削除の場合、または BLOB メタデータおよび BLOB プロパティが上書きされる場合、論理的な削除ではデータは保存されません。 削除からストレージ アカウントを保護するには、Azure Resource Manager を使ってロックを設定できます。 詳しくは、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」をご覧ください。  コンテナーが誤って削除されないようにするには、ストレージ アカウントに対してコンテナーの論理的な削除を構成します。 詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」を参照してください。
 
 次の表では、論理的な削除を有効にしたときに想定される動作の詳細を示します。
 

@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 76dc7693b1773038d610f9ed42eddad2c81e3eaf
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b84c38b28b51f867160272883465242fc81ff2bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126636"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588060"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 
@@ -42,13 +42,13 @@ ms.locfileid: "93126636"
 
 - サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートに関するより深い分析情報を取得したいですか。
 
-- こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](../../azure-monitor/platform/workbooks-overview.md)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
+- こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](../../azure-monitor/visualize/workbooks-overview.md)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
 
 
 
 この記事の内容は次のとおりです。
 
-- [Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/platform/workbooks-overview.md)方法に精通していることを前提としています。
+- [Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/visualize/workbooks-overview.md)方法に精通していることを前提としています。
 
 - Monitor ブックを使用して、条件付きアクセス ポリシーの影響を把握したり、サインイン エラーをトラブルシューティングしたり、レガシ認証を識別したりする方法について説明します。
  
@@ -60,9 +60,9 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 - プレミアム (P1 または P2) ライセンスがある Azure Active Directory テナント。 Premium ライセンスの取得方法については、[こちら](../fundamentals/active-directory-get-started-premium.md)をご覧ください。
 
-- [Log Analytics ワークスペース。](../../azure-monitor/learn/quick-create-workspace.md)
+- [Log Analytics ワークスペース。](../../azure-monitor/logs/quick-create-workspace.md)
 
-- Log Analytics ワークスペースへの[アクセス](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)
+- Log Analytics ワークスペースへの[アクセス](../../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)
 - Azure Active Directory の次のロール (Azure Active Directory ポータルで Log Analytics にアクセスする場合)
     - セキュリティ管理者
     - セキュリティ閲覧者
@@ -70,7 +70,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
     - 全体管理者
 
 ## <a name="roles"></a>ロール
-ブックを管理するには、次のいずれかのロールが割り当てられ、さらに[基の Log Analytics ワークスペースにアクセスできる](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)必要があります。
+ブックを管理するには、次のいずれかのロールが割り当てられ、さらに[基の Log Analytics ワークスペースにアクセスできる](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions)必要があります。
 -   全体管理者
 -   セキュリティ管理者
 -   セキュリティ閲覧者
@@ -298,4 +298,4 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/platform/workbooks-overview.md)
+[Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/visualize/workbooks-overview.md)

@@ -4,12 +4,12 @@ description: Web サイトを再デプロイせずにそのパフォーマンス
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 79e14c171adde89c43c5ea82a60db39133157293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186305"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576433"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
@@ -93,7 +93,7 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 
 - applicationInsights.config ファイルがターゲット アプリ ディレクトリ内に存在し、お客様の ikey を含んでいることを確認します。
 
-- データがないと思われる場合は、[Analytics](../log-query/log-analytics-tutorial.md) でクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
+- データがないと思われる場合は、[Analytics](../logs/log-analytics-tutorial.md) でクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -241,7 +241,7 @@ Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\Po
 * 指定されたアプリの監視を停止し、インストルメンテーションを解除します。 実行時に Status Monitoring ツールまたは Start-ApplicationInsightsApplication を使用してインストルメント化されたアプリに対してのみ正しく動作します。 (`SdkState==EnabledAfterDeployment`)
 * ApplicationInsightsApplication が返されます。
 
-`Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`
+`Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`:IIS に存在する Web アプリの名前。
 * `-InstrumentationKey` (省略可能)。アプリのテレメトリの送信先となるリソースを変更する場合に使用します。
@@ -320,9 +320,9 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 テレメトリの表示:
 
-* パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します
+* パフォーマンスと使用状況を監視するための[メトリックを探索](../essentials/metrics-charts.md)します
 * 問題を診断するために[イベントとログを検索][diagnostic]します
-* より高度なクエリのために [Analytics](../log-query/log-query-overview.md) を使用します
+* より高度なクエリのために [Analytics](../logs/log-query-overview.md) を使用します
 
 テレメトリの追加:
 

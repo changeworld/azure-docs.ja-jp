@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 05d6607c091361ecee3fcd5527025b6f9fb59051
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a7f82ec5a4ef918b1bc7ab0fd6813199c0a1d772
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573209"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366394"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>チュートリアル:IoT Edge デバイスの階層を作成する (プレビュー)
 
@@ -190,12 +190,6 @@ Linux デバイスでデモ証明書を作成するには、生成スクリプ�
 両方のデバイスで以下の手順に従って IoT Edge をインストールします。
 
 1. デバイスのオペレーティング システムに対応するリポジトリ構成をインストールします。
-
-   * **Ubuntu Server 16.04**:
-
-     ```bash
-     curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-     ```
 
    * **Ubuntu Server 18.04**:
 

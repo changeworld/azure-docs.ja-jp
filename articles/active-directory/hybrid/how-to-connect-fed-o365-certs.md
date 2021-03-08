@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661443"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686871"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) と Active Directory Federation Services (AD F
 * サード パーティの ID プロバイダーを使用している。
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>トークン署名証明書に使用する AD FS の既定の構成
-通常、トークン署名証明書とトークン暗号化解除証明書は自己署名証明書であり、有効期間は 1 年です。 AD FS には **AutoCertificateRollover**と呼ばれる自動更新プロセスが既定で含まれています。 AD FS 2.0 以降を使用している場合、Microsoft 365 と Azure AD により、証明書は期限切れになる前に自動的に更新されます。
+通常、トークン署名証明書とトークン暗号化解除証明書は自己署名証明書であり、有効期間は 1 年です。 AD FS には **AutoCertificateRollover** と呼ばれる自動更新プロセスが既定で含まれています。 AD FS 2.0 以降を使用している場合、Microsoft 365 と Azure AD により、証明書は期限切れになる前に自動的に更新されます。
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Microsoft 365 管理センターからの更新の通知またはメール
 > [!NOTE]
@@ -157,7 +157,7 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
    >
 3. コマンドの出力に表示されたすべての証明書を確認します。 新しい証明書が AD FS によって生成されている場合は、出力に 2 つの証明書が表示されます。1 つは **IsPrimary** 値が **True** で **NotAfter** の日付が 5 日以内、もう 1 つは **IsPrimary** 値が **False** で **NotAfter** の日付が約 1 年後です。
 4. 証明書が 1 つしか表示されず、その **NotAfter** の日付が 5 日以内の場合は、新しい証明書を生成する必要があります。
-5. 新しい証明書を生成するには、PowerShell コマンド プロンプトで次のコマンドを実行します: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
+5. 新しい証明書を生成するには、PowerShell コマンド プロンプトで次のコマンドを実行します: `PS C:\Update-ADFSCertificate –CertificateType token-signing`。
 6. 次のコマンドを再実行して更新を確認します。PS C:\>Get-ADFSCertificate –CertificateType token-signing
 
 これで、2 つの証明書が表示されます。1 つは **NotAfter** の日付が約 1 年後で、**IsPrimary** の値が **False** です。

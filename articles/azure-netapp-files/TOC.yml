@@ -29,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Linux のパフォーマンス ベンチマーク
           href: performance-benchmarks-linux.md
+        - name: NFSv4.1 での Kerberos のパフォーマンスに対する影響
+          href: performance-impact-kerberos.md
         - name: Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス
           href: performance-oracle-single-volumes.md
         - name: SMB のパフォーマンスに関する FAQ
@@ -63,6 +65,8 @@
       href: azure-netapp-files-faqs.md
     - name: Azure アプリケーション整合性スナップショット ツールとは
       href: azacsnap-introduction.md
+    - name: ボリュームのハード クォータを変更する意味
+      href: volume-hard-quota-guidelines.md
 - name: 操作方法ガイド
   items:
     - name: Azure NetApp Files に登録する
@@ -75,6 +79,8 @@
       href: manage-manual-qos-capacity-pool.md
     - name: サブネットを Azure NetApp Files に委任する
       href: azure-netapp-files-delegate-subnet.md
+    - name: Active Directory 接続の作成と管理
+      href: create-active-directory-connections.md
     - name: NFS ボリュームの作成と管理
       items:
         - name: NFS ボリュームを作成する
@@ -123,7 +129,7 @@
           href: troubleshoot-capacity-pools.md
         - name: リージョン間レプリケーションのトラブルシューティング
           href: troubleshoot-cross-region-replication.md
-        - name: デュアルプロトコル ボリュームのトラブルシューティング
+        - name: SMB またはデュアルプロトコル ボリュームのトラブルシューティング
           href: troubleshoot-dual-protocol-volumes.md
         - name: NFSv4.1 Kerberos ボリュームのトラブルシューティング
           href: troubleshoot-nfsv41-kerberos-volumes.md

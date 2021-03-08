@@ -3,16 +3,16 @@ title: Azure Service Bus を使用したメッセージ交換
 description: Azure Logic Apps で Azure Service Bus を使用してメッセージを送受信する自動化されたタスクとワークフローを作成する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019713"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367420"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -169,7 +169,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>ロジック アプリの更新の有効化が遅延する
 
-Service Bus トリガーのポーリング間隔が短い場合 (10 秒など)、ロジック アプリの更新が最大 10 分間有効にならないことがあります。 この問題を回避するには、ロジック アプリを更新する前に、ポーリング間隔を 30 秒や 1 分などの大きな値に一時的に増やすことができます。 更新を行った後、ポーリング間隔を元の値にリセットできます。 
+Service Bus トリガーのポーリング間隔が短い場合 (10 秒など)、ロジック アプリの更新が最大 10 分間有効にならないことがあります。 この問題を回避するために、ロジック アプリを無効にし、変更を加えてから、ロジック アプリを再度有効することができます。
 
 <a name="connector-reference"></a>
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 10/11/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572189"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980492"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM を移動するためのサポート
 
@@ -134,6 +134,8 @@ OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細
 Standard SSD | サポートされています |
 第 2 世代 (UEFI ブート) | サポートされています
 ブート診断ストレージ アカウント | サポートされていません | ターゲット リージョンに VM を移動した後で再度有効にします。
+Azure Disk Encryption が有効になっている VM | サポートされています | [詳細情報](tutorial-move-region-encrypted-virtual-machines.md)
+カスタマー マネージド キーによるサーバー側暗号化を使用する VM | サポートされています | [詳細情報](tutorial-move-region-encrypted-virtual-machines.md)
 
 ### <a name="limits-and-data-change-rates"></a>制限とデータ変化率
 
@@ -154,7 +156,7 @@ Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 |
 --- | --- | ---
 NIC | サポートされています | ターゲット リージョンで既存のリソースを指定するか、準備プロセス中に新しいリソースを作成します。 
 内部ロード バランサー | サポートされています | ターゲット リージョンで既存のリソースを指定するか、準備プロセス中に新しいリソースを作成します。  
-パブリック ロード バランサー | 現在、サポートされていません | ターゲット リージョンで既存のリソースを指定するか、準備プロセス中に新しいリソースを作成します。  
+パブリック ロード バランサー | サポートされています | ターゲット リージョンで既存のリソースを指定するか、準備プロセス中に新しいリソースを作成します。  
 パブリック IP アドレス | サポートされています | ターゲット リージョンで既存のリソースを指定するか、準備プロセス中に新しいリソースを作成します。<br/><br/> パブリック IP アドレスはリージョン固有であり、移動後のターゲット リージョンには保持されません。 ターゲットの場所でネットワーク設定 (負荷分散規則を含む) を変更する場合は、この点に注意してください。
 ネットワーク セキュリティ グループ | サポートされています | ターゲット リージョンで既存のリソースを指定するか、準備プロセス中に新しいリソースを作成します。  
 予約済みの (静的) IP アドレス | サポートされています | 現在、これは構成できません。 既定値はソース値です。 <br/><br/> ソース VM で NIC が静的 IP を使用していて、ターゲット サブネットで同じ IP アドレスを使用できる場合、そのアドレスはターゲット VM に割り当てられます。<br/><br/> ターゲット サブネットで同じ IP アドレスを使用できない場合、VM 移動の開始は失敗します。

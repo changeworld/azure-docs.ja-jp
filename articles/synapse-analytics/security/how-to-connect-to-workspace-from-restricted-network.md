@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: de7c5dba5a4868b7a8fdb390f974134cfaef7395
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218367"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384522"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>制限されたネットワークからのワークスペース リソースへの接続
 
@@ -74,7 +74,7 @@ Azure Synapse Analytics Studio にアクセスするには、Azure portal から
 
 Azure Synapse Analytics Studio ワークスペース リソース内のリソースにアクセスするには、次のものを作成する必要があります。
 
-- **Dev** 型の **ターゲット サブリソース** を持つ少なくとも 1 つのプライベート リンク エンドポイント。
+- **ターゲット サブリソース** の型が **Dev** である少なくとも 1 つのプライベート リンク エンドポイント。
 - アクセスするワークスペースのリソースに応じて、その他の 2 つの **Sql** または **SqlOnDemand** の型の省略可能なプライベート リンク エンドポイント。
 
 これらの作成は、前の手順でエンドポイントを作成する方法と似ています。  
@@ -146,7 +146,8 @@ Azure Synapse Analytics Studio ワークスペースのストレージ エクス
 
 * **[名前]** には、別のプライベート エンドポイント専用の名前文字列を入力します。 
   * **web** は、Azure Synapse Analytics Studio にアクセスするためのプライベート エンドポイント用です。
-  * "***YourWorkSpaceName**_" は、SQL プールで SQL クエリを実行するためのプライベート エンドポイント用で、Azure Synapse Analytics Studio ワークスペース内の他のすべてにアクセスするためのプライベート エンドポイント用でもあります _ "*** YourWorkSpaceName*-ondemand**" は、組み込みプールで SQL クエリを実行するためのプライベート エンドポイント用です。
+  * "***YourWorkSpaceName***" は、SQL プールで SQL クエリを実行するためのプライベート エンドポイント用で、Azure Synapse Analytics Studio ワークスペース内の他のすべてにアクセスするためのプライベート エンドポイント用でもあります。
+  * "***YourWorkSpaceName*-ondemand**" は、組み込みプールで SQL クエリを実行するためのプライベート エンドポイント用です。
 * **[種類]** では、DNS レコードの種類 **[A]** のみを選択します。 
 * **[IP アドレス]** には、各プライベート エンドポイントの対応する IP アドレスを入力します。 プライベート エンドポイントの概要の **[ネットワーク インターフェイス]** で IP アドレスを取得できます。
 

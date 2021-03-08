@@ -3,14 +3,14 @@ title: Azure Automation でモジュールを管理する
 description: この記事では、PowerShell モジュールを使用して、Runbook と DSC 構成の DSC リソースでコマンドレットを有効にする方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/22/2020
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458151"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548775"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -25,14 +25,26 @@ Azure Automation では、複数の PowerShell モジュールを使用して、
 
 Automation アカウントを作成すると、Azure Automation は既定で一部のモジュールをインポートします。 「[既定のモジュール](#default-modules)」を参照してください。
 
+## <a name="sandboxes"></a>サンドボックス
+
 Automation が Runbook と DSC コンパイル ジョブを実行すると、モジュールがサンドボックスに読み込まれ、そこで Runbook を実行し、DSC 構成をコンパイルできるようになります。 また、Automation は、DSC リソースを自動的に DSC プル サーバー上のモジュールに配置します。 マシンは、DSC 構成を適用するときに、そのリソースをプルできます。
 
 >[!NOTE]
 >Runbook と DSC 構成に必須のモジュールだけをインポートするようにしてください。 ルート Az モジュールをインポートすることはお勧めしません。 これには、他に不要と思われるモジュールが多く含まれており、それらはパフォーマンスの問題を引き起こす可能性があります。 代わりに、Az.Compute などのモジュールを個々にインポートしてください。
 
+クラウド サンドボックスでは、最大 48 のシステム呼び出しがサポートされ、他のすべての呼び出しはセキュリティ上の理由で制限されます。 資格情報の管理や一部のネットワークなどのその他の機能は、クラウド サンドボックスではサポートされません。
+
+含まれるモジュールとコマンドレットの数が多いため、サポートされていない呼び出しを行うコマンドレットを事前に把握することは困難です。 一般的に、コマンドレットのうち、昇格されたアクセス権を必要とするもの、パラメーターとして資格情報を必要とするもの、ネットワークに関連するものには問題が見られます。 AIPService PowerShell モジュールの [Connect-AipService](/powershell/module/aipservice/connect-aipservice) や DNSClient モジュールの [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname) など、フルスタックのネットワーク操作を実行するコマンドレットは、サンドボックスではサポートされません。
+
+これらは、サンドボックスに関する既知の制限事項です。 推奨される対処法は、[Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) をデプロイすること、または [Azure Functions](../../azure-functions/functions-overview.md) を使用することです。
+
 ## <a name="default-modules"></a>既定のモジュール
 
-次の表に、Automation アカウントを作成したときに Azure Automation が既定でインポートするモジュールを示します。 Automation を使用してこれらのモジュールの新しいバージョンをインポートできます。 ただし、新しいバージョンを削除した場合でも、Automation アカウントから元のバージョンを削除することはできません。 これらの既定のモジュールにいくつかの AzureRM モジュールが含まれていることに注意してください。 
+次の表に、Automation アカウントを作成したときに Azure Automation が既定でインポートするモジュールを示します。 Automation を使用してこれらのモジュールの新しいバージョンをインポートできます。 ただし、新しいバージョンを削除した場合でも、Automation アカウントから元のバージョンを削除することはできません。 これらの既定のモジュールにいくつかの AzureRM モジュールが含まれていることに注意してください。
+
+既定のモジュールは、グローバル モジュールとも呼ばれます。 Azure portal で、アカウントの作成時にインポートされたモジュールを表示すると、**グローバル モジュール** プロパティが **true** になります。
+
+![Azure portal のグローバル モジュール プロパティのスクリーンショット](../media/modules/automation-global-modules.png)
 
 Automation によって、新規または既存の Automation アカウントに、ルート Az モジュールが自動的にインポートされることはありません。 これらのモジュールの操作の詳細については、「[Az モジュールへの移行](#migrate-to-az-modules)」を参照してください。
 
@@ -159,7 +171,7 @@ PowerShell モジュールの作成の詳細については、「[PowerShell ス
 
 PowerShell のサイド バイ サイドのモジュール バージョン管理では、PowerShell 内で複数のバージョンのモジュールを使用できます。 これは特定のバージョンの PowerShell モジュールに対してのみテストされて動作する古いスクリプトがあるが、他のスクリプトについては同じ PowerShell モジュールの新しいバージョンが必要な場合に便利です。
 
-複数のバージョンが含まれるように PowerShell モジュールを構築するには、モジュール フォルダーを作成し、このモジュール フォルダー内に、使用可能にするモジュールのバージョンごとのフォルダーを作成します。 次の例では、 *TestModule* というモジュール内に、1.0.0 と 2.0.0 の 2 つのバージョンがあります。
+複数のバージョンが含まれるように PowerShell モジュールを構築するには、モジュール フォルダーを作成し、このモジュール フォルダー内に、使用可能にするモジュールのバージョンごとのフォルダーを作成します。 次の例では、*TestModule* というモジュール内に、1.0.0 と 2.0.0 の 2 つのバージョンがあります。
 
 ```dos
 TestModule

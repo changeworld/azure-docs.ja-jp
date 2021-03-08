@@ -15,16 +15,16 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 3e4d75c59d0e3c97b0900dd72a27d4afbf4015c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492320"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595841"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC の変更のアクティビティ ログを表示する
 
-監査やトラブルシューティングなどの目的で、Azure のロールベースのアクセス制御 (Azure RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義が変更されると、常に [Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に変更が記録されます。 アクティビティ ログを表示して、過去 90 日間の Azure RBAC のすべての変更を確認できます。
+監査やトラブルシューティングなどの目的で、Azure のロールベースのアクセス制御 (Azure RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義が変更されると、常に [Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)に変更が記録されます。 アクティビティ ログを表示して、過去 90 日間の Azure RBAC のすべての変更を確認できます。
 
 ## <a name="operations-that-are-logged"></a>ログに記録される操作
 
@@ -122,7 +122,7 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)は、Azure のすべてのリソースに対する Azure RBAC の変更の収集および分析に使用できる別のツールです。 Azure Monitor ログには、次のような利点があります。
+[Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)は、Azure のすべてのリソースに対する Azure RBAC の変更の収集および分析に使用できる別のツールです。 Azure Monitor ログには、次のような利点があります。
 
 - 複雑なクエリとロジックを記述する
 - アラート、Power BI、およびその他のツールと統合する
@@ -131,15 +131,15 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 作業を開始する基本的な手順を次に示します。
 
-1. [Log Analytics ワークスペースを作成します](../azure-monitor/learn/quick-create-workspace.md)。
+1. [Log Analytics ワークスペースを作成します](../azure-monitor/logs/quick-create-workspace.md)。
 
-1. ワークスペースの [Activity Log Analytics ソリューションを構成します](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution)。
+1. ワークスペースの [Activity Log Analytics ソリューションを構成します](../azure-monitor/essentials/activity-log.md#activity-log-analytics-monitoring-solution)。
 
-1. [アクティビティ ログを表示します](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution)。 Activity Log Analytics ソリューションの [概要] ページに簡単に移動する方法は、 **[ログ]** オプションをクリックすることです。
+1. [アクティビティ ログを表示します](../azure-monitor/essentials/activity-log.md#activity-log-analytics-monitoring-solution)。 Activity Log Analytics ソリューションの [概要] ページに簡単に移動する方法は、 **[ログ]** オプションをクリックすることです。
 
    ![ポータルの Azure Monitor ログのオプション](./media/change-history-report/azure-log-analytics-option.png)
 
-1. 必要に応じて、[Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) を使用して、ログのクエリと表示を行うことができます。 詳細については、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」を参照してください。
+1. 必要に応じて、[Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) を使用して、ログのクエリと表示を行うことができます。 詳細については、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/logs/get-started-queries.md)」を参照してください。
 
 ターゲットのリソース プロバイダー別に編成された新しいロール割り当てを返すクエリを、次に示します。
 
@@ -163,4 +163,4 @@ AzureActivity
 
 ## <a name="next-steps"></a>次のステップ
 * [アクティビティ ログでのイベントの表示](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../azure-monitor/platform/platform-logs-overview.md)
+* [Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../azure-monitor/essentials/platform-logs-overview.md)

@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1a28ca967404bf6a5329f8d590a8f1f4f8715407
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888574"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657028"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 <!----
 > [!WARNING]
@@ -36,13 +34,13 @@ Azure Communication Services の **グループ チャットのヒーロー サ�
 
 ## <a name="overview"></a>概要
 
-このサンプルには、クライアント側アプリケーションとサーバー側アプリケーションの両方があります。 **クライアント側アプリケーション** は、Microsoft の Fluent UI フレームワークを使用する React/Redux Web アプリケーションです。 このアプリケーションは、クライアント側アプリケーションが Azure に接続するのを助ける ASP.NET Core の **サーバー側アプリケーション** に要求を送信します。 
+このサンプルには、クライアント側アプリケーションとサーバー側アプリケーションの両方があります。 **クライアント側アプリケーション** は、Microsoft の Fluent UI フレームワークを使用する React/Redux Web アプリケーションです。 このアプリケーションは、クライアント側アプリケーションが Azure に接続するのを助ける ASP.NET Core の **サーバー側アプリケーション** に要求を送信します。
 
 サンプルは次のようになります。
 
 :::image type="content" source="./media/chat/landing-page.png" alt-text="サンプル アプリケーションのランディング ページを示すスクリーンショット。":::
 
-[Start a Chat]\(チャットを開始\) ボタンを押すと、Web アプリケーションは、サーバー側アプリケーションからユーザー アクセス トークンをフェッチします。 このトークンは、クライアント アプリを Azure Communication Services に接続するために使用されます。 トークンが取得されると、チャットで自分を表す名前と絵文字を指定するように求められます。 
+[Start a Chat]\(チャットを開始\) ボタンを押すと、Web アプリケーションは、サーバー側アプリケーションからユーザー アクセス トークンをフェッチします。 このトークンは、クライアント アプリを Azure Communication Services に接続するために使用されます。 トークンが取得されると、チャットで自分を表す名前と絵文字を指定するように求められます。
 
 :::image type="content" source="./media/chat/pre-chat.png" alt-text="アプリケーションのチャット前の画面を示すスクリーンショット。":::
 
@@ -54,7 +52,7 @@ Azure Communication Services の **グループ チャットのヒーロー サ�
 
 - **メイン チャット領域**: これは、ユーザーがメッセージを送受信できるコア チャット エクスペリエンスです。 メッセージを送信するには、入力領域を使用して Enter キーを押します (または、[送信] ボタンを使用します)。 受信されたチャット メッセージは、適切な名前と絵文字を使って送信者によって分類されます。 チャット領域には、次の 2 種類の通知が表示されます。1) ユーザーが入力中の入力通知と、2) メッセージの送信済みと既読の通知。
 - **ヘッダー**:ここには、チャット スレッドのタイトルと、参加者と設定のサイド バーを切り替えるためのコントロール、およびチャット セッションを終了するための退出ボタンがユーザーに表示されます。
-- **サイド バー**: ヘッダーでコントロールを使用して切り替えると、ここに参加者と設定情報が表示されます。 参加者のサイド バーには、チャットの参加者の一覧と、チャット セッションに参加者を招待するためのリンクが含まれています。 設定のサイド バーでは、チャット スレッドのタイトルを構成できます。 
+- **サイド バー**: ヘッダーでコントロールを使用して切り替えると、ここに参加者と設定情報が表示されます。 参加者のサイド バーには、チャットの参加者の一覧と、チャット セッションに参加者を招待するためのリンクが含まれています。 設定のサイド バーでは、チャット スレッドのタイトルを構成できます。
 
 以下で、サンプルを設定するための前提条件と手順について詳しく説明します。
 
@@ -100,17 +98,18 @@ chat.csproj で Visual Studio を開き、デバッグ モードで実行しま�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Communication Services サブスクリプションをクリーンアップして解除したい場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
+Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[GitHub からサンプルをダウンロードする](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 詳細については、次の記事を参照してください。
 
 - [チャットの概念](../concepts/chat/concepts.md)について学習する
 - [チャット クライアント ライブラリ](../concepts/chat/sdk-features.md)について理解する
+- [Contoso Med App](https://github.com/Azure-Samples/communication-services-contoso-med-app) サンプルを確認する
 
 ## <a name="additional-reading"></a>その他の情報
 

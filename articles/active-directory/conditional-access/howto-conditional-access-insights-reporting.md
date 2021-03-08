@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049419"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574183"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>条件付きアクセスに関する分析情報とレポート
 
@@ -43,7 +43,7 @@ ms.locfileid: "89049419"
 
 Azure AD ログを Azure Monitor ログと統合していない場合は、ブックを読み込む前に以下の手順を実行する必要があります。  
 
-1. [Azure Monitor で Log Analytics ワークスペースを作成する](../../azure-monitor/learn/quick-create-workspace.md)。
+1. [Azure Monitor で Log Analytics ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)。
 1. [Azure AD ログを Azure Monitor ログと統合する](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。
 
 ## <a name="how-it-works"></a>しくみ 

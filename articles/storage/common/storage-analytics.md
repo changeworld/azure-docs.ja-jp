@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737683"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
 Azure Storage Analytics では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。 このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。
 
-Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。 これは、[Azure portal](https://portal.azure.com) から有効にできます。 詳細については、「[Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)」をご覧ください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 各サービスに対して Storage Analytics を有効にするには、[Set Blob Service Properties](/rest/api/storageservices/set-blob-service-properties)、[Set Queue Service Properties](/rest/api/storageservices/set-queue-service-properties)、[Set Table Service Properties](/rest/api/storageservices/set-table-service-properties)、[Set File Service Properties](/rest/api/storageservices/Get-File-Service-Properties) の各操作を使用します。
+Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。 これは、[Azure portal](https://portal.azure.com) から有効にできます。 詳細については、「[Azure portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)」をご覧ください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 各サービスに対して Storage Analytics を有効にするには、[Set Blob Service Properties](/rest/api/storageservices/set-blob-service-properties)、[Set Queue Service Properties](/rest/api/storageservices/set-queue-service-properties)、[Set Table Service Properties](/rest/api/storageservices/set-table-service-properties)、[Set File Service Properties](/rest/api/storageservices/Get-File-Service-Properties) の各操作を使用します。
 
 集計データは、既知の BLOB (ログの場合) と既知のテーブル (メトリックの場合) に格納されます。集計データには、Blob service と Table service の API を使用してアクセスできます。
 
@@ -46,6 +46,6 @@ Storage Analytics によって実行される次の操作には料金が発生�
 Storage Analytics のデータで課金対象の要求を調べるときには、「[Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 」の表が参考になります。 手元のログ データとメトリック データをステータス メッセージと照らし合わせながら、特定の要求が課金対象であったかどうかを確認できます。 この表は、ストレージ サービスまたは特定の API 操作の可用性を調べるときにも利用できます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
+* [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
 * [Storage Analytics のメトリック](storage-analytics-metrics.md)
 * [Storage Analytics のログ記録](storage-analytics-logging.md)

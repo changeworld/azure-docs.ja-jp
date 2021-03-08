@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight SDK for Go
 description: Azure HDInsight SDK for Go および Apache Hadoop クラスターを使用するための参考資料
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
-ms.openlocfilehash: 6fdd7b9e5fda92bd75e54ea5b4aad6a3ba6ecbea
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 09564bd149488d956586c8a0e349cd79eec358a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748756"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582753"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go (プレビュー)
 
@@ -149,7 +146,7 @@ func main() {
 > [!NOTE]  
 > 次に示すように、最初にリソース グループとストレージ アカウントを作成する必要があります。 これらが既に作成済みの場合、この手順はスキップできます。
 
-##### <a name="creating-a-resource-group"></a>リソース グループの作成
+##### <a name="creating-a-resource-group"></a>リソース グループを作成する
 
 [Azure Cloud Shell](https://shell.azure.com/bash) を使用して次を実行することで、リソース グループを作成できます
 
@@ -365,7 +362,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>OMS 監視の有効化
 
 > [!NOTE]  
-> OMS の監視を有効にするには、既存の Log Analytics ワークスペースが必要です。 まだ作成していない場合、その方法については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
+> OMS の監視を有効にするには、既存の Log Analytics ワークスペースが必要です。 まだ作成していない場合、その方法については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
 
 ご自身のクラスターで OMS 監視を有効にするには:
 

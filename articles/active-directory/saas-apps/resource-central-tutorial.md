@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/06/2020
+ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 2430de60b3de5812090496fa66e36b3d7515c6b1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: dbc148fcbcd9c3be86a29df1e08755611a347b07
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327374"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586521"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Resource Central の統合
 
@@ -41,7 +41,7 @@ ms.locfileid: "96327374"
 
 * Resource Central では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-## <a name="adding-resource-central-from-the-gallery"></a>ギャラリーからの Resource Central の追加
+## <a name="add-resource-central-from-the-gallery"></a>ギャラリーからの Resource Central の追加
 
 Azure AD への Resource Central の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Resource Central を追加する必要があります。
 
@@ -52,7 +52,6 @@ Azure AD への Resource Central の統合を構成するには、ギャラリ�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Resource Central**」と入力します。
 1. 結果のパネルから **[Resource Central]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-resource-central"></a>Resource Central の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Resource Central に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと Resource Central の関連ユーザーとの間にリンク関係を確立する必要があります。
@@ -62,8 +61,8 @@ Resource Central に対して Azure AD SSO を構成してテストするには�
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Resource Central の SSO の構成](#configure-resource-central-sso)** - アプリケーション側でシングル サインオン設定を構成します。
     1. **[Resource Central のテスト ユーザーの作成](#create-resource-central-test-user)** - Resource Central で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[Resource Central の SSO の構成](#configure-resource-central-sso)** - アプリケーション側でシングル サインオン設定を構成します。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -76,24 +75,25 @@ Resource Central に対して Azure AD SSO を構成してテストするには�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** で、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<DOMAIN_NAME>/ResourceCentral`
+   1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<DOMAIN_NAME>/ResourceCentral`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<DOMAIN_NAME>/ResourceCentral`
+   1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<DOMAIN_NAME>/ResourceCentral`
 
-    c. **[応答 URL]** ボックスに、`https://<DOMAIN_NAME>/ResourceCentral/ExAuth/Saml2Authentication/Acs` のパターンを使用して URL を入力します
+   1. **[応答 URL]** ボックスに、`https://<DOMAIN_NAME>/ResourceCentral/ExAuth/Saml2Authentication/Acs` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Resource Central クライアント サポート チーム](mailto:st@aod.vn)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらの値はリテラル値ではありません。 これらの値は、実際のサインオン URL、識別子、応答 URL の値で更新してください。 これらの値を取得するには、[Resource Central クライアント サポート チーム](mailto:st@aod.vn)に問い合わせてください。  Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** で、 **[証明書 (Base64)]** を見つけて **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-1. **[Resource Central のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Resource Central のセットアップ]** で、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -102,7 +102,7 @@ Resource Central に対して Azure AD SSO を構成してテストするには�
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[ユーザー名]** フィールドに「`username@companydomain.extension`」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
@@ -113,30 +113,72 @@ Resource Central に対して Azure AD SSO を構成してテストするには�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Resource Central]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
-
-## <a name="configure-resource-central-sso"></a>Resource Central の SSO の構成
-
-**Resource Central** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Resource Central サポート チーム](mailto:rc@aod.vn)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ペインで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ペインの **[ユーザー]** の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールを割り当てる必要がある場合は、 **[ロールの選択]** からそれを選択できます。 このアプリに対してロールが設定されていない場合は、 **[既定のアクセス]** ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ペインで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-resource-central-test-user"></a>Resource Central のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Resource Central に作成します。 Resource Central では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Resource Central にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、**B.Simon** というユーザーを **Resource Central** に作成します。
+
+1. Resource Central で、 **[Security]\(セキュリティ\)**  >  **[Persons]\(ユーザー\)**  >  **[New]\(新規\)** の順に選択します。
+  
+    :::image type="content" source="./media/resource-central/new-person.png" alt-text="[新規] ボタンが強調表示された、Resource Central の [Persons]\(ユーザー\) ペインを示すスクリーンショット。":::
+
+1. **[Person Details]\(ユーザーの詳細\)** で、 **[Display name]\(表示名\)** に、ユーザー「**B. Simon**」と入力します。 **[SMTP Address]\(SMTP アドレス\)** には、ユーザーの Azure AD ユーザー名を入力します。 (例: `B.Simon@contoso.com`)。
+
+    :::image type="content" source="./media/resource-central/person.png" alt-text="Resource Central の [Person Details] \(ユーザーの詳細 \) ペインを示すスクリーンショット。":::
+
+## <a name="configure-resource-central-sso"></a>Resource Central の SSO の構成
+
+このセクションでは、**Resource Central System Administrator** でシングル サインオンを構成します。
+
+1. Resource Central System Administrator で、 **[External Authentication]\(外部認証\)** を選択します。
+1.  **[Enable Configuration]\(構成を有効にする\)** で、 **[Yes]\(\はい\)** を選択します。
+
+    ![Resource Central の [External Authentication]\(外部認証\) ペインで選択された [Enable Configuration]\(構成を有効にする\) オプションを示すスクリーンショット。](./media/resource-central/enable.png)
+
+1. **[Authentication Protocol]\(認証プロトコル\)** で **[SAML2]** を選択します。 
+
+   :::image type="content" source="./media/resource-central/protocol.png" alt-text="Resource Central の [Authentication Protocol]\(認証プロトコル\) で選択された [SAML2] を示すスクリーンショット。":::
+
+1. **[SAML2 Configuration]\(SAML2 構成\)** で、次のフィールドの値を入力します。
+
+    1. **[Identifier (Entity ID)]\(識別子 (エンティティ ID)\)** 、 **[Login URL]\(ログイン URL\)** 、 **[Logout URL]\(ログアウト URL\)** 、および **[Azure AD Identifier]\(Azure AD 識別子\)** に、適切な URL を入力します。
+
+       :::image type="content" source="./media/resource-central/auth.png" alt-text="Resource Central の [SAML2 Configuration]\(SAML2 構成\) ペインのスクリーンショット。":::
+
+        **[Set up Resource Central]\(Resource Central のセットアップ\)** ペインから URL をコピーします。
+
+        :::image type="content" source="./media/resource-central/setup.png" alt-text="Resource Central の [Set up Resource Central]\(Resource Central のセットアップ\) ペインのスクリーンショット。":::
+
+   1. **[Return URL]\(戻り先 URL\)** には「`https://<DOMAIN_NAME>/ResourceCentral/ExAuth/Saml2Authentication/CallbackHandler`」と入力します。
+  
+1. **[Certificate]\(証明書\)** については、証明書をアップロードし、パスワードを入力します。
+
+   ![Resource Central の [Certificate]\(証明書\) セクションのスクリーンショット。](./media/resource-central/cert.png)
+   
+1. **[保存]** を選択します。
+
+1. **Azure portal** に戻ります。 **[SAML 署名証明書]** で、証明書をアップロードし、パスワードを入力します。
+
+   ![Azure portal の [証明書のインポート] ペインのスクリーンショット。](./media/resource-central/cert2.png).
+
+1. **[追加]** を選択します。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+このセクションでは、Azure AD のシングル サインオン構成をテストします。 シングル サインオンをテストするには、3 つのオプションがあります。
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Resource Central のサインオン URL にリダイレクトされます。 
+* Azure portal で、 **[このアプリケーションをテストします]** を選択します。 リンクを選択すると、Resource Central のサインオン URL にリダイレクトされます。ここでログインを開始できます。
 
-* Resource Central のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Resource Central のサインオン URL に直接移動し、ログインを開始します。
 
-* Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Resource Central] タイルをクリックすると、Resource Central サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+   :::image type="content" source="./media/resource-central/test.png" alt-text="Resource Central シングル サインオンのテスト Web ページのスクリーンショット。":::
 
+* Microsoft のマイ アプリ ポータルを使用します。 マイ アプリ ポータルで、 **[Resource Central]** タイルを選択すると、Resource Central サインオン URL にリダイレクトされます。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-Resource Central を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Azure AD によるシングル サインオンを Resource Central にセットアップしたら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

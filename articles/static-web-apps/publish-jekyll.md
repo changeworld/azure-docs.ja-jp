@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 8c6764ad5b63aa2fde07326ab986404ea4312316
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862026"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585179"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>チュートリアル:Jekyll サイトを Azure Static Web Apps プレビューに公開する
 
@@ -79,8 +79,11 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 1. ローカル リポジトリを GitHub にプッシュします。
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
+
+   > [!NOTE]
+   > Git ブランチは、`main` とは異なる名前になっている可能性があります。 このコマンドの `main` を正しい値で置き換えてください。
 
 ## <a name="deploy-your-web-app"></a>Web アプリのデプロイ
 
@@ -116,7 +119,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 1. _[リポジトリ]_ として **jekyll-static-app** を選択します。
 
-1. _[ブランチ]_ では、**master** を選択します。
+1. _[ブランチ]_ では、**main** を選択します。
 
     :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
 
@@ -134,7 +137,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
-1. **[Review + Create]\(確認および作成\)** ボタンをクリックして、詳細がすべて正しいことを確認します。
+1. **[確認および作成]** ボタンをクリックして、詳細がすべて正しいことを確認します。
 
 1. **[作成]** をクリックして、Azure Static Web Apps の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
 
@@ -146,7 +149,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 1. Jekyll アプリをテキスト エディターで開き、 _.github/workflows/azure-pages-<ワークフロー名>.yml_ ファイルを開きます。
 
-1. 行 `- uses: actions/checkout@v2` の後に次の構成ブロックを追加します。
+1. 行 `- name: Build And Deploy` の前に次の構成ブロックを追加します。
 
     ```yml
     - name: Set up Ruby

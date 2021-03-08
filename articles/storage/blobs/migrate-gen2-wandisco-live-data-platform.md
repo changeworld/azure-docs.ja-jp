@@ -5,16 +5,16 @@ author: normesta
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: b-pauls
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95914441"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508931"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>WANdisco LiveData Platform for Azure (プレビュー) を使用して、厳しい移行要件を満たす
 
@@ -34,7 +34,9 @@ ms.locfileid: "95914441"
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>WANdisco LiveData Platform for Azure の主な特徴
 
-[WANdisco LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) では、ワイドエリア ネットワーク対応の独自のコンセンサス エンジンを使用して、データの整合性を確保し、大規模なデータのレプリケーションを実行しますが、その間、アプリケーションでレプリケーション中のデータを引き続き変更できます。  
+[WANdisco LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) では、ワイドエリア ネットワーク対応の独自のコンセンサス エンジンを使用して、データの整合性を確保し、大規模なデータのレプリケーションを実行しますが、その間、アプリケーションでレプリケーション中のデータを引き続き変更できます。 <br><br>
+
+>[!VIDEO https://www.youtube.com/embed/KRrmcYPxEho] 
 
 プラットフォームの主な特徴は次のとおりです。
 
@@ -86,7 +88,9 @@ Azure CLI や Azure portal などの標準の Azure ツールを使用して移�
 最初の移行の後、LiveData Plane for Azure を使用してオンプレミスの Hadoop クラスターと Azure ストレージの間でデータの整合性を維持してください。
 
 1. Azure portal から開始して、オンプレミスと Azure で LiveData Plane for Azure をプロビジョニングします。 アプリケーションの変更は必要ありません。
+
 2. 整合性を維持するデータの場所を対象とするレプリケーション ルールを構成します (例: `/user/contoso/sales/region/WA`)。
+
 3. 必要に応じて、Hadoop と互換性のあるファイル システムとしていずれかの場所のデータにアクセスして変更するアプリケーションを実行します。
 
 LiveData Plane for Azure によって、クラスターの操作やアプリケーションのパフォーマンスに大きなオーバーヘッドを課すことなく、データの整合性が維持されます。 すべての変更が一貫してレプリケートされる間に、データの変更または取り込みを行います。

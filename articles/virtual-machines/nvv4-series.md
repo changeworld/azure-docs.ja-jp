@@ -1,19 +1,18 @@
 ---
 title: NVv4 シリーズ
 description: NVv4 シリーズ VM の仕様。
-services: virtual-machines
-ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 67780c725466707f347e9009a77099786cc64939
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ba7d2997c4ebb2981c1135255fe6e9cb53fbdcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133295"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032468"
 ---
 # <a name="nvv4-series"></a>NVv4 シリーズ 
 
@@ -27,7 +26,8 @@ NVv4 シリーズ仮想マシンは [AMD Radeon Instinct MI25](https://www.amd.c
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
-高速ネットワーク:サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |

@@ -4,15 +4,15 @@ description: Azure Bastion セキュリティ ベースラインは、Azure セ�
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b8f0cfdf3ca6e3b0bb0b455a5690d6a2727786ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723933"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586754"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Azure Bastion 用の Azure セキュリティ ベースライン
 
@@ -69,7 +69,11 @@ Azure Bastion サービスの正常な動作を実現するには、次のポー
 
 **ガイダンス**:Azure Bastion は、Azure の既定の ID およびアクセス管理サービスである Azure Active Directory (Azure AD) と統合されています。 ユーザーは、Azure AD Authentication を使用して Azure portal にアクセスし、Azure Bastion サービスを管理 (Bastion リソースを作成、更新、削除) できます。
 
-Azure Bastion を使用した仮想マシンへの接続は、SSH キーか、ユーザー名とパスワードの組み合わせで行います。Azure AD の資格情報の使用は現在サポートされていません。
+Azure Bastion を使用した仮想マシンへの接続は、SSH キーか、ユーザー名とパスワードの組み合わせで行います。Azure AD の資格情報の使用は現在サポートされていません。 
+
+SSH キーを Azure Key Vault シークレットとして格納し、これらのシークレットで、Azure Bastion を使用して仮想マシンに接続できます。 これらのシークレットへのユーザー アクセスを制御するには、個々のユーザーまたは Azure AD グループに [Key Vault アクセス ポリシーを割り当てます](../key-vault/general/assign-access-policy-portal.md)。 この方法を使用して仮想マシンに接続するには、ユーザーに次のアクセス許可が必要です。
+- 選択した Azure Key Vault に格納されているシークレットに対する **取得** アクセス権
+- 選択した Azure Key Vault に格納されているシークレットに対する **リスト** アクセス権
 
 SSH キーまたはユーザー名とパスワードによる方法に加え、ユーザーが Azure Bastion を使用して仮想マシンに接続するときは、次のロールの割り当てが必要です。
 - 対象の仮想マシンに対する閲覧者ロール
@@ -106,7 +110,8 @@ SSH キーまたはユーザー名とパスワードによる方法に加え、�
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4:すべての Azure Active Directory ベースのアクセスに強力な認証制御を使用する
 
-**ガイダンス**:Azure Bastion は、サービスのアクセスと管理のために Azure Active Directory (Azure AD) と統合されています。 Azure AD テナント用に Azure Multi-Factor Authentication を構成してください。 Azure AD では、多要素認証 (MFA) と強力なパスワードレスの方法によって、強力な認証制御がサポートされています。  
+**ガイダンス**:Azure Bastion は、サービスのアクセスと管理のために Azure Active Directory (Azure AD) と統合されています。 Azure AD テナント用に Azure Active Directory Multi-Factor Authentication を構成します。 Azure AD では、多要素認証 (MFA) と強力なパスワードレスの方法によって、強力な認証制御がサポートされています。
+  
 - 多要素認証:Azure AD MFA を有効にして、MFA のセットアップに対する Azure Security Center ID とアクセス管理の推奨事項に従います。 MFA は、サインインの条件とリスク要因に基づいて、すべてのユーザー、選択されたユーザー、またはユーザー単位のレベルで適用できます。 
 
 - パスワードレスの認証:次の 3 つのパスワードレス認証オプションを利用できます: Windows Hello for Business、Microsoft Authenticator アプリ、スマート カードなどのオンプレミスの認証方法。 
@@ -371,9 +376,9 @@ Azure Bastion リソースをデプロイした仮想ネットワークに適用
 
 **ガイダンス**:自動的に利用できるアクティビティ ログには、読み取り操作 (GET) を除く、Azure Bastion リソースに対するすべての書き込み操作 (PUT、POST、DELETE) が含まれています。 アクティビティ ログを使用すると、トラブルシューティング時にエラーを見つけたり、組織内のユーザーがリソースをどのように変更したかを監視したりできます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Bastion で Azure リソース ログを有効にする](diagnostic-logs.md)
 
@@ -391,7 +396,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -405,9 +410,9 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 Azure Monitor で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定できます。
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 - [Azure Bastion ログを有効にして使用する](diagnostic-logs.md)
 

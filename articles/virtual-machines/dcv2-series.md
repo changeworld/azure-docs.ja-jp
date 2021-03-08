@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 1cbd4c92ec4c124cfd384f45a4cd6f47fdc60be6
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 84987b12657a37264d3a1ca67fdc423ed8085662
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180168"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557909"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 
@@ -21,13 +21,15 @@ DCsv2 シリーズは、パブリック クラウドで処理中のデータお�
 
 使用例としては、機密のマルチパーティ データ共有、不正行為の検出、マネー ロンダリング対策、ブロックチェーン、機密の利用状況分析、インテリジェンス分析、機密の機械学習などがあります。
 
-[Premium Storage](premium-storage-performance.md): サポート対象*<br>
-[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
-[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
-[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
-[VM 世代サポート](generation-2.md): 第 2 世代<br>
+[Premium Storage](premium-storage-performance.md): サポートされています *<br>
+[Premium Storage Caching](premium-storage-performance.md):サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md):サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md):サポートされていません<br>
+[VM 世代サポート](generation-2.md):世代 2<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("* 4 vCPU 以上が必要*") <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 
-*Standard_DC8_v2 を除く
+*Standard_DC8_v2 を除く <br>
 
 | サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) | EPC メモリ (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

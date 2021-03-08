@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
-ms.openlocfilehash: 0f932eed2f1d58e8470a24ea595e21712deb7f03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021900"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716586"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>カスタム コマンドによる保存データの暗号化
 
 データがクラウドに保存されるとき、カスタム コマンドはそのデータを自動的に暗号化します。 カスタム コマンド サービスによる暗号化はデータを保護すると同時に、組織のセキュリティおよびコンプライアンス コミットメントを満たすために役立ちます。
 
 > [!NOTE]
-> カスタム コマンド サービスでは、アプリケーションに関連付けられている LUIS リソースの暗号化が自動的には有効になりません。 必要な場合は、[ここ](./../LUIS/luis-encryption-of-data-at-rest.md)から LUIS リソースの暗号化を有効にする必要があります。
+> カスタム コマンド サービスでは、アプリケーションに関連付けられている LUIS リソースの暗号化が自動的には有効になりません。 必要な場合は、[ここ](../luis/encrypt-data-at-rest.md)から LUIS リソースの暗号化を有効にする必要があります。
 
 ## <a name="about-cognitive-services-encryption"></a>Cognitive Services の暗号化について
 データは、[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) に準拠する [256 ビット AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 暗号化を使用して暗号化および暗号化解除されます。 暗号化と暗号化解除は透過的であり、暗号化とアクセスはユーザーによって管理されます。 データは既定でセキュリティ保護され、暗号化を利用するためにコードまたはアプリケーションを変更する必要はありません。

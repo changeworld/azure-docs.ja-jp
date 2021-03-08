@@ -1,18 +1,18 @@
 ---
-title: チュートリアル - Azure に vSphere クラスターをデプロイする
-description: Azure VMware Solution を使用して Azure に vSphere クラスターをデプロイする方法について説明します
+title: チュートリアル - Azure VMware Solution のプライベート クラウドを作成してデプロイする
+description: Azure VMware Solution のプライベート クラウドを作成してデプロイする方法を説明します
 ms.topic: tutorial
-ms.date: 11/19/2020
-ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 02/22/2021
+ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725426"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>チュートリアル:Azure に Azure VMware Solution のプライベート クラウドをデプロイする
+# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution のプライベート クラウドを作成する
 
-Azure VMware Solution を使用すると、Azure に vSphere クラスターをデプロイできます。 初期デプロイ時の最小ホスト数は 3 つです。 追加のホストは、クラスターあたり最大 16 個まで一度に 1 つずつ追加できます。 
+このチュートリアルでは、Azure VMware Solution のプライベート クラウドを作成してデプロイする方法を説明します。 初期デプロイ時の最小ホスト数は 3 つです。 追加のホストは、クラスターあたり最大 16 個まで一度に 1 つずつ追加できます。 
 
 Azure VMware Solution では、最初はオンプレミスの vCenter でプライベート クラウドを管理することができないため、追加の構成と接続が必要です。 このチュートリアルでは、これらの手順と、関連する前提条件について説明します。
 
@@ -25,13 +25,10 @@ Azure VMware Solution では、最初はオンプレミスの vCenter でプラ�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- プライベート クラウドを作成するための適切な管理者権限とアクセス許可。
+- プライベート クラウドを作成するための適切な管理者権限とアクセス許可。 サブスクリプションで、少なくとも共同作成者レベルである必要があります。
+- [計画](production-ready-deployment-steps.md)の記事で収集した情報に従って、Azure VMware Solution をデプロイします。
 - 適切なネットワークが構成されていることを確認するには、[ネットワークのチェックリストに関するチュートリアル](tutorial-network-checklist.md)をご確認ください。
-
-## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
-
+- [ホストの要求と Microsoft.AVS リソース プロバイダーの有効化](enable-azure-vmware-solution.md)に関する記事の説明に基づいて、ホストがプロビジョニングされ、Microsoft.AVS リソース プロバイダーが登録されていること。
 
 ## <a name="create-a-private-cloud"></a>プライベート クラウドを作成する
 
@@ -74,25 +71,6 @@ az group create --name myResourceGroup --location eastus
 ```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
-
-## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを削除する
-
-Azure VMware Solution のプライベート クラウドが不要になった場合は、削除できます。 Azure VMware Solution のプライベート クラウドには、分離されたネットワーク ドメイン、専用サーバー ホスト上の 1 つ以上のプロビジョニング済み vSphere クラスター、およびいくつかの仮想マシンが含まれます。 プライベート クラウドを削除すると、すべての仮想マシン、そのデータ、およびクラスターが削除されます。 専用のベアメタル ホストは安全にワイプされ、空きプールに返されます。 顧客用にプロビジョニングされたネットワーク ドメインは削除されます。  
-
-> [!CAUTION]
-> プライベート クラウドを削除する操作は、元に戻すことができません。 プライベート クラウドを削除すると、実行中のすべてのワークロードとコンポーネントが中止され、パブリック IP アドレスを含むすべてのプライベート クラウド データと構成設定が破棄されるので、データを復旧することはできなくなります。
-
-### <a name="prerequisites"></a>前提条件
-
-プライベート クラウドを削除した場合、仮想マシンとそのデータを復旧する方法はありません。 後で仮想マシンのデータが必要になる場合、管理者はまず、プライベート クラウドを削除する前に、すべてのデータをバックアップする必要があります。
-
-### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを削除する手順
-
-1. Azure portal で [Azure VMware Solutions] ページにアクセスします。
-
-2. 削除するプライベート クラウドを選択します。
- 
-3. プライベート クラウドの名前を入力し、 **[はい]** を選択します。 数時間で、削除プロセスが完了します。  
 
 ## <a name="azure-vmware-commands"></a>Azure VMware コマンド
 

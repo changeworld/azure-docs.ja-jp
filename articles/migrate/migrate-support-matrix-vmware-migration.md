@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968451"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703871"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -166,7 +166,7 @@ VM | VM 上で実行される Mobility Service は、レプリケーション管
 オペレーティング システムのディスク サイズ | 最大 2,048 GB。 
 オペレーティング システムのディスク数 | 1 
 データ ディスク数 | 64 以下。 
-データ ディスク サイズ | 最大 8,095 GB
+データ ディスク サイズ | 最大 32 TB
 ネットワーク アダプター | 複数のアダプターがサポートされます。
 共有 VHD | サポートされていません。 
 FC ディスク | サポートされていません。 

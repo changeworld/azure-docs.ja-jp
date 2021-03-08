@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133568"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575468"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>更新された Azure 課金アカウントの使用を開始する
 
@@ -42,7 +42,7 @@ ms.locfileid: "98133568"
 
 課金プロファイルでのロールには、請求書と支払方法を表示および管理するアクセス許可があります。 これらのロールは、組織内の会計チームのメンバーなど、請求書の支払いを行うユーザーに割り当てる必要があります。 詳細については、[請求先アカウントのロールとタスク](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)に関するページを参照してください。
 
-お使いのアカウントが更新されると、[請求書を表示](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice)するアクセス許可を他のユーザーに付与している各サブスクリプションでは、所有者、共同作成者、閲覧者、または課金データ閲覧者の Azure ロールを持つユーザーに、それぞれの課金プロファイルの閲覧者ロールが付与されます。
+お使いのアカウントが更新されると、[請求書を表示](download-azure-invoice.md#allow-others-to-download-your-subscription-invoice)するアクセス許可を他のユーザーに付与している各サブスクリプションでは、所有者、共同作成者、閲覧者、または課金データ閲覧者の Azure ロールを持つユーザーに、それぞれの課金プロファイルの閲覧者ロールが付与されます。
 
 ## <a name="invoice-sections"></a>請求書セクション
 

@@ -6,17 +6,23 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 11/20/2020
-ms.openlocfilehash: 7458b027add8be86d9491c674c2f1a0bc9fbc68c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 2/5/2021
+ms.openlocfilehash: d98f2f80bf22627eb34855234e22e314c241c852
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550767"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988316"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure Purview でサポートされている分類
 
 この記事では、Azure Purview (プレビュー) でサポートおよび定義されているシステム分類の一覧を示します。
+
+
+- **[Distinct match threshold]\(個別の一致のしきい値\)** : スキャナーがデータ パターンを実行する前に、列に含まれている必要がある個別のデータ値の合計数です。 Microsoft のシステム分類ルールでは、分類の対象とする各列に、少なくとも 8 つの個別の値が必要です。 システムでは、この値を使用して、スキャナーが正確に分類するのに十分なデータが列に含まれていることを確認する必要があります。 たとえば、すべて値 1 が含まれている複数の行を含む列は分類されません。 1 つの行に値が含まれ、残りの行に null 値が含まれている列の場合も分類されません。 複数のパターンを指定すると、この値がそれぞれに適用されます。
+
+- **[Minimum match threshold]\(最小の一致のしきい値\)** : これは、分類を適用するためにスキャナーによって検出される必要がある列の、データ値の最小一致率です。 システム分類の値は 60% に設定されています。
+
 
 ## <a name="defined-system-classifications"></a>定義済みのシステム分類
 
@@ -274,7 +280,7 @@ Driver's License#
 Driver's Licenses#
 ```
 
-## <a name="australia-medical-account-number"></a>オーストラリアの医療口座番号
+## <a name="australian-medicare-number"></a>オーストラリア メディケア番号
 
 ### <a name="format"></a>Format
 
@@ -291,7 +297,7 @@ Driver's Licenses#
 
 ### <a name="keywords"></a>キーワード
 
-#### <a name="keyword_australia_medical_account_number"></a>Keyword_Australia_Medical_Account_Number
+#### <a name="keyword_australia_medicare_number"></a>Keyword_Australia_Medicare_Number
 
 ```
 bank account details

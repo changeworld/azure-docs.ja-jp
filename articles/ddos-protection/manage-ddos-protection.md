@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813940"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535240"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>クイックスタート: Azure DDoS Protection Standard の作成と構成
 
@@ -77,7 +77,7 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>すべての仮想ネットワークの DDoS 保護を有効にする
 
-この[ポリシー](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan)により、定義されているスコープ内で、DDoS Protection Standard が有効にされていない仮想ネットワークが検出された後、必要に応じて、VNet を保護するための関連付けを作成する修復タスクが作成されます。 このポリシーをデプロイする方法の詳細な手順については、 https://aka.ms/ddosvnetpolicy-techcommunity を参照してください。
+この[ポリシー](https://aka.ms/ddosvnetpolicy)により、定義されているスコープ内で、DDoS Protection Standard が有効にされていない仮想ネットワークが検出された後、必要に応じて、VNet を保護するための関連付けを作成する修復タスクが作成されます。 このポリシーをデプロイする方法の詳細な手順については、 https://aka.ms/ddosvnetpolicy-techcommunity を参照してください。
 
 ## <a name="validate-and-test"></a>検証とテスト
 
@@ -88,6 +88,11 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 3. 一覧から DDoS 保護プランを選択します。
 
 _MyVnet_ 仮想ネットワークが一覧表示されます。 
+
+### <a name="view-protected-resources"></a>保護されたリソースを表示する
+**[保護されたリソース]** で、保護された仮想ネットワークとパブリック IP アドレスを表示したり、DDoS 保護プランに仮想ネットワークをさらに追加したりすることができます。
+
+![保護されたリソースを表示する](./media/manage-ddos-protection/ddos-protected-resources.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

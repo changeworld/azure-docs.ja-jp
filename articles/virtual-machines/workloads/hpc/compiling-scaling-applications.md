@@ -3,17 +3,17 @@ title: HPC アプリケーションのスケール - Azure Virtual Machines | Mi
 description: Azure VM 上で HPC アプリケーションをスケールする方法について説明します。
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7e05d64420cd920242a887b206fd38cd4a655509
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d560b261e058d01040616f3c59ede60e5986c672
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967008"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666981"
 ---
 # <a name="scaling-hpc-applications"></a>HPC アプリケーションのスケール
 
@@ -33,7 +33,7 @@ Clang は、前処理、解析、最適化、コード生成、アセンブリ�
 
 ### <a name="flang"></a>FLANG
 
-FLANG コンパイラは、AOCC スイートに最近追加された (2018 年 4 月に追加された) ものであり、現在は開発者がダウンロードしてテストするためのプレリリース段階です。 AMD では Fortran 2008 に基づいて GitHub バージョンの FLANG (https://github.com/flang-compiler/flang) ) が拡張されます。 FLANG コンパイラは、すべての Clang コンパイラ オプションとその他の FLANG 固有のコンパイラ オプションをサポートしています。
+FLANG コンパイラは、AOCC スイートに最近追加された (2018 年 4 月に追加された) ものであり、現在は開発者がダウンロードしてテストするためのプレリリース段階です。 AMD では Fortran 2008 に基づいて GitHub バージョンの FLANG (https://github.com/flang-compiler/flang)) が拡張されます。 FLANG コンパイラは、すべての Clang コンパイラ オプションとその他の FLANG 固有のコンパイラ オプションをサポートしています。
 
 ### <a name="dragonegg"></a>DragonEgg
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: e9904e9157a560e2a4853a1a9cd37977defe73ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930891"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522955"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>セキュリティ エージェントのトラブルシューティング ガイド (Linux)
 
@@ -108,10 +108,4 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>次の手順
 
-- Defender for IoT サービスの[概要](overview.md)を確認します
-- Defender for IoT の[アーキテクチャ](architecture.md)を確認します
-- Defender for IoT [サービス](quickstart-onboard-iot-hub.md)を有効にします
-- Defender for IoT サービスの [FAQ](resources-frequently-asked-questions.md) を確認します
-- [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します
-- [レコメンデーション](concept-recommendations.md)について理解します
-- セキュリティの[アラート](concept-security-alerts.md)について理解します
+[Defender for IoT サービスの概要を確認する](overview.md) [Defender for IoT のアーキテクチャを確認する](architecture.md) [Defender for IoT サービスを有効にする](quickstart-onboard-iot-hub.md) [Defender for IoT サービスの FAQ を確認する](resources-frequently-asked-questions.md) [未加工のセキュリティ データにアクセスする方法を学習する](how-to-security-data-access.md) [推奨事項について理解する](concept-recommendations.md) [セキュリティ アラートについて理解する](concept-security-alerts.md)

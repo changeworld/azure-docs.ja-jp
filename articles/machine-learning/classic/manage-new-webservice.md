@@ -3,18 +3,18 @@ title: ML Studio (classic):Web サービスを管理する - Azure
 description: Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 37f10cc8eb3d606d99eb5b3f821a486e9e4ea2fe
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8b04119f4a9ff702356f942cec5bebed1e23926b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322340"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515939"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (クラシック) Web サービス ポータルを使用して Web サービスを管理する
 
@@ -32,7 +32,7 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 * エンドポイントを追加、削除する (クラシック Web サービスのみ)。
 
 >[!NOTE]
->クラシック Web サービスは、 [Machine Learning Studio (クラシック)](https://studio.azureml.net) の **[Web サービス]** タブでも管理できます。
+>クラシック Web サービスは、[Machine Learning Studio (クラシック)](https://studio.azureml.net) の **[Web サービス]** タブでも管理できます。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>新しいリソース マネージャー ベースの Web サービスを管理するためのアクセス許可
 

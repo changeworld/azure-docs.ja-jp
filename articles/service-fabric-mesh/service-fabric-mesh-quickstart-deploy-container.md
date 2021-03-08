@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: c81b53b68c689f4b890d2ff628f38b734aea63dc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f34034394d2492dba64214c612a239b92f4b9c46
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499885"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625720"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>クイック スタート: Hello World を Service Fabric Mesh にデプロイする
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 [Service Fabric mesh](service-fabric-mesh-overview.md) では、仮想マシンをプロビジョニングする必要がなくなり、Azure でのマイクロサービス アプリケーションの作成と管理が容易になります。 このクイック スタートでは、Azure で Hello World アプリケーションを作成してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 わずか数分でこのビューがブラウザーに表示されます。
 

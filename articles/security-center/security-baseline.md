@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 330b466360cc5687f78db81fbb4545e1c3409098
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202251"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729880"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Security Center 用の Azure セキュリティ ベースライン
 
@@ -30,7 +30,7 @@ ms.locfileid: "98202251"
 
 - [ネットワーク セキュリティ グループを使用したネットワーク トラフィックのフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Log Analytics エージェントを使用するためのファイアウォールの要件](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Log Analytics エージェントを使用するためのファイアウォールの要件](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Azure Private Link について](../private-link/private-link-overview.md) 
 
@@ -46,7 +46,7 @@ ms.locfileid: "98202251"
 
 - [Azure Security Center でのデータ収集](security-center-enable-data-collection.md)
 
-- [Log Analytics エージェントを使用するためのファイアウォールの要件](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Log Analytics エージェントを使用するためのファイアウォールの要件](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -70,7 +70,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [Azure Security Center でのデータ収集](security-center-enable-data-collection.md)
 
-- [Log Analytics エージェントを使用するためのファイアウォールの要件](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Log Analytics エージェントを使用するためのファイアウォールの要件](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md) 
 
@@ -86,9 +86,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、リソース構成を監視し、Azure Security Center に関連するネットワーク リソースの変更を検出します。 Azure Monitor でアラートを作成して、重要なリソースへの変更が発生したときに通知を受け取ります。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -112,9 +112,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -126,11 +126,11 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**: Azure Monitor のアクティビティ ログは自動的に使用可能になります。これらのログには、実行された操作、操作を開始したユーザー、いつ発生したかなど、Azure Security Center などのリソースに対するすべての書き込み操作が含まれます。 ログの統合と保持向上のために、Azure アクティビティ ログを Log Analytics ワークスペースに送信します。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [アクティビティ ログを Log Analytics ワークスペースに送信する](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace)
+- [アクティビティ ログを Log Analytics ワークスペースに送信する](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -140,9 +140,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期およびアーカイブ ストレージには Azure Storage アカウントを使用します。 
 
-- [Log Analytics でデータ保持期間を変更する](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -156,9 +156,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -174,11 +174,11 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [Azure Security Center でアラートを管理する方法](security-center-managing-and-responding-alerts.md) 
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel で脅威への自動対応を設定します](../sentinel/tutorial-respond-threats-playbook.md)
 
-- [Azure Monitor でのログ アラート](../azure-monitor/platform/alerts-unified-log.md)
+- [Azure Monitor でのログ アラート](../azure-monitor/alerts/alerts-unified-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -368,7 +368,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。 
 
-- [Log Analytics に安全にデータを送信する](../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)
+- [Log Analytics に安全にデータを送信する](../azure-monitor/logs/data-security.md#sending-data-securely-using-tls-12)
 
 - [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -394,7 +394,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**: Azure Security Center により、構成済みの Log Analytics ワークスペースを使用して、生成されるデータ、アラート、推奨事項が格納されます。 Security Center データ収集用に構成したワークスペースのカスタマー マネージド キー (CMK) を構成します。 CMK により、ワークスペースに保存または送信されたすべてのデータを、自分が作成して所有する Azure Key Vault キーで暗号化できます。 
 
-- [Azure Monitor のカスタマー マネージド キー](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure Monitor のカスタマー マネージド キー](../azure-monitor/logs/customer-managed-keys.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -404,7 +404,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**: Azure Monitor を使用して、Azure Security Center に関連する重要な Azure リソースに変更が加えられたときにアラートを作成します。 これらの変更には、アラートや推奨事項の無効化、データ ストアの更新や削除など、Security Center に関連する構成を変更するすべてのアクションが含まれる場合があります。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -596,7 +596,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Security Center により、構成済みの Log Analytics ワークスペースを使用して、生成されるデータ、アラート、推奨事項が格納されます。 Security Center データ収集用に構成したワークスペースのカスタマー マネージド キー (CMK) を構成します。 CMK により、ワークスペースに保存または送信されたすべてのデータを、自分が作成して所有する Azure Key Vault キーで暗号化できます。 
 
-- [Azure Monitor のカスタマー マネージド キー](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure Monitor のカスタマー マネージド キー](../azure-monitor/logs/customer-managed-keys.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -656,7 +656,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Resource Manager でサポートされるテンプレート ファイルを使用して、定期的に復元を実行できることを確実にします。 バックアップされたカスタマー マネージド キーの復元をテストします。
 
-- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](../azure-monitor/samples/resource-manager-workspace.md)
+- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](../azure-monitor/logs/resource-manager-workspace.md)
 
 - [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

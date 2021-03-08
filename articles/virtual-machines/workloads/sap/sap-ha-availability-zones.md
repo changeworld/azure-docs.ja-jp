@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 842c56ef1fb6f68c3d8b82e2633d9a604db9fde2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871317"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671632"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
 Azure 可用性セットでのさまざまな SAP アーキテクチャ レイヤーのデプロイに加えて、最近導入された [Azure Availability Zones](../../../availability-zones/az-overview.md) を SAP ワークロードのデプロイに使用することもできます。 Azure 可用性ゾーンは次のように定義されます。"リージョン内の一意の物理的な場所。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。" Azure Availability Zones は、すべてのリージョンで使用できるわけではありません。 Availability Zones が提供される Azure リージョンについては、[Azure リージョン マップ](https://azure.microsoft.com/global-infrastructure/geographies/)を確認してください。 このマップでは、Availability Zones が提供されているか、または提供予定と発表されているリージョンが示されます。 

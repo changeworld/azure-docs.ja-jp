@@ -3,7 +3,7 @@ title: Azure Active Directory の自動ユーザー プロビジョニングの�
 description: 自動ユーザー プロビジョニングの計画と実行に関するガイダンス
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 689276d44a175f3c314b0fcf681fd6a995b8dde2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9f2b5bf1195682b200b5840459194506e29bcdc6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832626"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645090"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -322,7 +322,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 * [Azure AD の更新情報](https://azure.microsoft.com/updates/?product=active-directory)
 
-* [Stack overflow の Azure AD フォーラム](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Microsoft Q&A Azure AD フォーラム](/answers/topics/azure-active-directory.html)
 
 ## <a name="next-steps"></a>次のステップ
 * [自動ユーザー プロビジョニングの構成](../app-provisioning/configure-automatic-user-provisioning-portal.md)

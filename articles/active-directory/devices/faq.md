@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165146"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365822"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -299,6 +299,11 @@ Windows 10 2004 更新プログラムでは、UPN の変更がサポートされ
 - Windows 10 Azure AD 登録済みデバイスの場合、 **[設定]**  >  **[アカウント]**  >  **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、 **[切断]** を選択します。 デバイスの登録は、Windows 10 のユーザー プロファイルごとに行います。
 - iOS および Android の場合は、Microsoft Authenticator アプリケーションの **[設定]**  >  **[デバイスの登録]** で、 **[デバイスの登録を解除する]** を選択します。
 - macOS の場合は、Microsoft Intune ポータル サイト アプリケーションを使用して、管理対象からデバイスを登録解除して、登録を削除することができます。 
+
+Windows 10 デバイスの場合、このプロセスは、[Workplace Join (WPJ) 削除ツール](https://download.microsoft.com/download/8/e/f/8ef13ae0-6aa8-48a2-8697-5b1711134730/WPJCleanUp.zip)を使用して自動化できます。
+
+> [!NOTE]
+> このツールでは、デバイス上のすべての SSO アカウントが削除されます。 この操作の後、すべてのアプリケーションは SSO 状態を失い、デバイスは管理ツール (MDM) から登録解除され、クラウドから登録解除されます。 次回アプリケーションでサインインが試みられたときに、アカウントを再度追加するように求められます。
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Q:ユーザーが会社の Windows 10 デバイスに職場アカウント (Azure AD 登録済み) を追加できないようにするにはどうすればよいですか?

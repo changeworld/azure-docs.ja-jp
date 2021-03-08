@@ -1,23 +1,18 @@
 ---
 title: SQL Server ストアド プロシージャ アクティビティ
 description: SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure Synapse Analytics でストアド プロシージャを呼び出す方法について説明します。
-services: data-factory
-documentationcenter: ''
-ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: f702633f6311d4ae4a79452e9b1c9176125c56f9
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508403"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368763"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="変換アクティビティ"]

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: c2165ea6273ad90cfb95242dfe72538c0a5ef64c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 806904943f4e4a20734d595f835dc9450afdded5
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350060"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547280"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB での Gremlin API の概要
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

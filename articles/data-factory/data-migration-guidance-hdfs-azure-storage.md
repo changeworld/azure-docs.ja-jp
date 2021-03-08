@@ -1,22 +1,18 @@
 ---
 title: オンプレミスの Hadoop クラスターから Azure Storage にデータを移行する
 description: Azure Data Factory を使用してオンプレミスの Hadoop クラスターから Azure Storage にデータを移行する方法について説明します。
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 3e691244c4c03635eb87a7905eff6756da5c04f9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9959a37d9b68d756437a3b4f0d75a2d63385758e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638127"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367794"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory を使用してオンプレミスの Hadoop クラスターから Azure Storage にデータを移行する 
 
@@ -26,8 +22,8 @@ Azure Data Factory には、オンプレミスの HDFS から Azure Blob Storage
 
 Data Factory には、オンプレミスの HDFS から Azure にデータを移行するための 2 つの基本的な方法が用意されています。 ご自分のシナリオに基づいて方法を選択できます。 
 
-- **Data Factory DistCp モード**  (推奨):Data Factory では、 [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (分散コピー) を使用して、ファイルをそのまま Azure Blob Storage ( [ステージング コピー](./copy-activity-performance.md#staged-copy)を含む) または Azure Data Lake Store Gen2 にコピーできます。 DistCp と統合された Data Factory を使用すると、既存の強力なクラスターを利用して最適なコピー スループットを実現できます。 また、Data Factory の柔軟なスケジュール設定と、統合された監視エクスペリエンスの利点も得られます。 ご使用の Data Factory の構成によっては、コピー アクティビティにより DistCp コマンドが自動的に作成され、Hadoop クラスターに送信され、コピー状態が監視されます。 オンプレミスの Hadoop クラスターから Azure にデータを移行するには、Data Factory DistCp モードをお勧めします。
-- **Data Factory ネイティブ統合ランタイム モード** :DistCp は、すべてのシナリオで使えるオプションではありません。 たとえば、Azure Virtual Network 環境では、DistCp ツールは、Azure Storage 仮想ネットワーク エンドポイントとの Azure ExpressRoute プライベート ピアリングがサポートされていません。 また、クラスターに大きな負荷をかけると、既存の ETL ジョブのパフォーマンスに影響する可能性があるため、既存の Hadoop クラスターをデータ移行のためのエンジンとして使用したくない場合もあります。 代わりに、Data Factory 統合ランタイムのネイティブ機能を、オンプレミスの HDFS から Azure にデータをコピーするエンジンとして使用できます。
+- **Data Factory DistCp モード**  (推奨):Data Factory では、[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (分散コピー) を使用して、ファイルをそのまま Azure Blob Storage ([ステージング コピー](./copy-activity-performance.md#staged-copy)を含む) または Azure Data Lake Store Gen2 にコピーできます。 DistCp と統合された Data Factory を使用すると、既存の強力なクラスターを利用して最適なコピー スループットを実現できます。 また、Data Factory の柔軟なスケジュール設定と、統合された監視エクスペリエンスの利点も得られます。 ご使用の Data Factory の構成によっては、コピー アクティビティにより DistCp コマンドが自動的に作成され、Hadoop クラスターに送信され、コピー状態が監視されます。 オンプレミスの Hadoop クラスターから Azure にデータを移行するには、Data Factory DistCp モードをお勧めします。
+- **Data Factory ネイティブ統合ランタイム モード**:DistCp は、すべてのシナリオで使えるオプションではありません。 たとえば、Azure Virtual Network 環境では、DistCp ツールは、Azure Storage 仮想ネットワーク エンドポイントとの Azure ExpressRoute プライベート ピアリングがサポートされていません。 また、クラスターに大きな負荷をかけると、既存の ETL ジョブのパフォーマンスに影響する可能性があるため、既存の Hadoop クラスターをデータ移行のためのエンジンとして使用したくない場合もあります。 代わりに、Data Factory 統合ランタイムのネイティブ機能を、オンプレミスの HDFS から Azure にデータをコピーするエンジンとして使用できます。
 
 この記事では、両方の方法について次の情報を提供します。
 > [!div class="checklist"]

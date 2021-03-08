@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 2757d696f5922263abf87399d6491e46b5e5513c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8f1b5eabe235d107b48dc7b2db5b6d4b1188a3fa
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033870"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833968"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する
 
@@ -71,6 +71,10 @@ ms.locfileid: "97033870"
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="[生データ] ビュー":::
 
 このビューでは、表示する列を選択したり、確認対象の時間の範囲を設定したりできます。 **[Unmodeled data]\(モデル化されていないデータ\)** 列には、デバイス テンプレート内のプロパティまたはテレメトリ定義と一致しないデバイス データが表示されます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

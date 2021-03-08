@@ -3,12 +3,12 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210122"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104809"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -142,11 +142,15 @@ _[構成]_ で始まる定義を割り当てるとき、 _[前提条件を展開
 
 ゲスト構成に使用できる監査ポリシー定義には、**Microsoft.HybridCompute/machines** リソースの種類が含まれます。 ポリシー割り当てのスコープ内にある[サーバー向け Azure Arc](../../../azure-arc/servers/overview.md) にオンボードされているすべてのマシンが自動的に追加されます。
 
+## <a name="troubleshooting-guest-configuration"></a>ゲスト構成のトラブルシューティング
+
+ゲスト構成のトラブルシューティングの詳細については、[Azure Policy のトラブルシューティング](../troubleshoot/general.md)に関する記事を参照してください。
+
 ### <a name="multiple-assignments"></a>複数の割り当て
 
 ポリシー割り当てで異なるパラメーターが使用されている場合でも、現在、ゲスト構成ポリシー定義では、同じゲスト割り当てはマシンごとに一度の割り当てのみがサポートされています。
 
-## <a name="client-log-files"></a>クライアントのログ ファイル
+### <a name="client-log-files"></a>クライアントのログ ファイル
 
 ゲスト構成拡張機能は、ログ ファイルを次の場所に書き込みます。
 
@@ -180,6 +184,15 @@ linesToIncludeAfterMatch=10
 logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
+
+### <a name="client-files"></a>クライアント ファイル
+
+ゲスト構成のクライアントは、コンテンツ パッケージをマシンにダウンロードし、その内容を抽出します。
+どのコンテンツがダウンロードされ、保管されたか確認するには、下に示すフォルダーの場所を参照します。
+
+Windows: `c:\programdata\guestconfig\configurations`
+
+Linux: `/var/lib/guestconfig/configurations`
 
 ## <a name="guest-configuration-samples"></a>ゲスト構成のサンプル
 

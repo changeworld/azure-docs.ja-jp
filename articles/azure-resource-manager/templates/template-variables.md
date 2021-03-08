@@ -1,28 +1,82 @@
 ---
 title: テンプレートにおける変数
-description: Azure Resource Manager テンプレート (ARM テンプレート) で変数を定義する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) と Bicep ファイルで変数を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/12/2021
+ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874436"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364462"
 ---
-# <a name="variables-in-arm-template"></a>ARM テンプレートでの変数
+# <a name="variables-in-arm-templates"></a>ARM テンプレートにおける変数
 
-この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で変数を定義および使用する方法について説明します。 変数を使用してテンプレートを簡略化します。 テンプレート全体で複雑な式を繰り返すのではなく、複雑な式を含む変数を定義します。 次に、テンプレート全体で、必要に応じてその変数を参照します。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) または Bicep ファイルで変数を定義および使用する方法について説明します。 変数を使用してテンプレートを簡略化します。 テンプレート全体で複雑な式を繰り返すのではなく、複雑な式を含む変数を定義します。 次に、テンプレート全体で、必要に応じてその変数を使用します。
 
 Resource Manager は、デプロイ操作を開始する前に変数を解決します。 テンプレートで変数が使用されている場合、Resource Manager はそれを解決済みの値に置き換えます。
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="define-variable"></a>変数を定義する
 
-変数を定義する際は、[データ型](template-syntax.md#data-types)に解決される値またはテンプレート式を指定します。 変数を構築する際には、パラメーターまたは別の変数からの値を使用できます。
+変数を定義するときは、その変数の[データ型](template-syntax.md#data-types)は指定しません。 代わりに、値またはテンプレート式を指定します。 変数の型は解決済みの値から推定されます。 次の例では、変数を文字列に設定します。
 
-変数宣言では[テンプレート関数](template-functions.md)を使用できますが、[reference](template-functions-resource.md#reference) 関数、または [list](template-functions-resource.md#list) 関数のいずれかは使用できません。 これらの関数は、リソースのランタイム状態を取得します。これらの関数は、変数が解決されるときに、デプロイ前に実行することはできません。
+# <a name="json"></a>[JSON](#tab/json)
 
-変数を定義する例を以下に示します。 これにより、ストレージ アカウント名の文字列値が作成されます。 テンプレート関数をいくつか使用してパラメーター値を取得し、連結して一意の文字列にします。
+```json
+"variables": {
+  "stringVar": "example value"
+},
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var stringVar = 'example value'
+```
+
+---
+
+変数を構築する際には、パラメーターまたは別の変数からの値を使用できます。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+"parameters": {
+  "inputValue": {
+    "defaultValue": "deployment parameter",
+    "type": "string"
+  }
+},
+"variables": {
+  "stringVar": "myVariable",
+  "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+  "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]"
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param inputValue string = 'deployment parameter'
+
+var stringVar = 'myVariable'
+var concatToVar =  '${stringVar}-addtovar'
+var concatToParam = '${inputValue}-addtoparam'
+```
+
+---
+
+[テンプレート関数](template-functions.md)を使用すると、変数の値を作成できます。
+
+JSON テンプレートでは、変数宣言で [reference](template-functions-resource.md#reference) 関数も、いずれの [list](template-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイム状態を取得します。これらの関数は、変数が解決されるときに、デプロイ前に実行することはできません。
+
+reference 関数と list 関数は、Bicep ファイルで変数を宣言するときに有効です。
+
+次の例では、ストレージ アカウント名に文字列値を作成します。 テンプレート関数をいくつか使用してパラメーター値を取得し、連結して一意の文字列にします。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -30,9 +84,21 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 },
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+```
+
+---
+
 ## <a name="use-variable"></a>変数を使用する
 
-テンプレートでは、[variables](template-functions-deployment.md#variables) 関数を使用してパラメーターの値を参照します。 次の例は、リソース プロパティに変数を使用する方法を示しています。
+次の例は、リソース プロパティに変数を使用する方法を示しています。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+JSON テンプレートでは、[variables](template-functions-deployment.md#variables) 関数を使用して、変数の値を参照します。
 
 ```json
 "resources": [
@@ -44,19 +110,48 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 ]
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep ファイルでは、変数名を指定することによって変数の値を参照します。
+
+```bicep
+resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+```
+
+---
+
 ## <a name="example-template"></a>テンプレートの例
 
-次のテンプレートでは、リソースはデプロイされません。 変数を宣言するいくつかの方法を示すのみです。
+次のテンプレートでは、リソースはデプロイされません。 さまざまな型の変数を宣言するいくつかの方法を示します。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep では現在、ループはサポートされていません。
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+
+---
+
 ## <a name="configuration-variables"></a>構成変数
 
-環境を構成するための関連する値を保持する変数を定義できます。 変数は、値を持つオブジェクトとして定義します。 次の例は、**test** と **prod** という 2 つの環境の値を保持するオブジェクトを示しています。デプロイ中にこれらの値のいずれかを渡します。
+環境を構成するための関連する値を保持する変数を定義できます。 変数は、値を持つオブジェクトとして定義します。 次の例は、**test** と **prod** という 2 つの環境の値を保持するオブジェクトを示しています。デプロイ中に、これらの値のいずれかを渡します。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
 
-## <a name="next-steps"></a>次の手順
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+
+---
+
+## <a name="next-steps"></a>次のステップ
 
 * 変数に使用できるプロパティの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」をご覧ください。
 * 変数の作成に関する推奨事項については、[ベスト プラクティス - 変数](template-best-practices.md#variables)に関する記事をご覧ください。

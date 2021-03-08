@@ -1,24 +1,19 @@
 ---
 title: Azure Data Lake Storage Gen1 との間でデータをコピーする
 description: Azure Data Factory を使って Data Lake Store に、または Data Lake Store からデータをコピーする方法を説明します
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 25b1ff3c-b2fd-48e5-b759-bb2112122e30
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 16cef1fb35efcbe12a4054304e3f354c03b37227
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bdfceff562ae2501a9d95774f7134669e929b7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637651"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379405"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -52,9 +47,9 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 ## <a name="get-started"></a>はじめに
 さまざまなツール/API を使用して、Azure Data Lake Store との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-データをコピーするためのパイプラインを作成する最も簡単な方法は、 **コピー ウィザード** を使うことです。 コピー ウィザードを使ったパイプラインの作成に関するチュートリアルについては、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
+データをコピーするためのパイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 コピー ウィザードを使ったパイプラインの作成に関するチュートリアルについては、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
-また、次のツールを使用してパイプラインを作成することもできます。 **Visual Studio** 、 **Azure PowerShell** 、 **Azure Resource Manager テンプレート** 、 **.NET API** 、 **REST API** 。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -68,7 +63,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 次のセクションでは、Data Lake Store に固有の Data Factory エンティティの定義に使われる JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-リンクされたサービスは、データ ストアをデータ ファクトリにリンクします。 Data Lake Store のデータをデータ ファクトリにリンクするには、 **AzureDataLakeStore** 型のリンクされたサービスを作成します。 次の表では、Data Lake Store のリンクされたサービスに固有の JSON 要素について説明します。 サービス プリンシパル認証とユーザー資格情報認証のどちらかを選ぶことができます。
+リンクされたサービスは、データ ストアをデータ ファクトリにリンクします。 Data Lake Store のデータをデータ ファクトリにリンクするには、**AzureDataLakeStore** 型のリンクされたサービスを作成します。 次の表では、Data Lake Store のリンクされたサービスに固有の JSON 要素について説明します。 サービス プリンシパル認証とユーザー資格情報認証のどちらかを選ぶことができます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -85,8 +80,8 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 > [!IMPORTANT]
 > Azure Data Lake Store でサービス プリンシパルに適切なアクセス許可を付与してください。
->- **Data Lake Store をソースとして使用するには** 、少なくともデータの **読み取り + 実行** アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または **読み取り** アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御に関する要件はありません。
->- **Data Lake Store をシンクとして使用するには** 、少なくともデータの **書き込み + 実行** アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーの権限を付与する (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも **閲覧者** ロールを付与します。 この IAM ロールを付与しないようにする場合は、コピー アクティビティで Data Lake Store の場所を使用して [executionLocation を指定](data-factory-data-movement-activities.md#global)します。
+>- **Data Lake Store をソースとして使用するには**、少なくともデータの **読み取り + 実行** アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または **読み取り** アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御に関する要件はありません。
+>- **Data Lake Store をシンクとして使用するには**、少なくともデータの **書き込み + 実行** アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーの権限を付与する (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも **閲覧者** ロールを付与します。 この IAM ロールを付与しないようにする場合は、コピー アクティビティで Data Lake Store の場所を使用して [executionLocation を指定](data-factory-data-movement-activities.md#global)します。
 >- **コピー ウィザードを使用してパイプラインを作成する** 場合は、アカウントのアクセスの制御 (IAM) で少なくとも **閲覧者** ロールを付与します。 また、Data Lake Store ルート ("/") とその子に対する少なくとも **読み取り + 実行** アクセス許可を付与します。 付与しないと、"指定された資格情報が無効です" というメッセージが表示されることがあります。
 
 次のプロパティを指定して、サービス プリンシパル認証を使います。
@@ -125,8 +120,8 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 > [!IMPORTANT]
 > Azure Data Lake Store でユーザーに適切なアクセス許可を付与してください。
->- **Data Lake Store をソースとして使用するには** 、少なくともデータの **読み取り + 実行** アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または **読み取り** アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御に関する要件はありません。
->- **Data Lake Store をシンクとして使用するには** 、少なくともデータの **書き込み + 実行** アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーの権限を付与する (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも **閲覧者** ロールを付与します。 この IAM ロールを付与しないようにする場合は、コピー アクティビティで Data Lake Store の場所を使用して [executionLocation を指定](data-factory-data-movement-activities.md#global)します。
+>- **Data Lake Store をソースとして使用するには**、少なくともデータの **読み取り + 実行** アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または **読み取り** アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御に関する要件はありません。
+>- **Data Lake Store をシンクとして使用するには**、少なくともデータの **書き込み + 実行** アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーの権限を付与する (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも **閲覧者** ロールを付与します。 この IAM ロールを付与しないようにする場合は、コピー アクティビティで Data Lake Store の場所を使用して [executionLocation を指定](data-factory-data-movement-activities.md#global)します。
 >- **コピー ウィザードを使用してパイプラインを作成する** 場合は、アカウントのアクセスの制御 (IAM) で少なくとも **閲覧者** ロールを付与します。 また、Data Lake Store ルート ("/") とその子に対する少なくとも **読み取り + 実行** アクセス許可を付与します。 付与しないと、"指定された資格情報が無効です" というメッセージが表示されることがあります。
 
 **例:ユーザー資格情報認証**
@@ -155,12 +150,12 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 | ユーザー タイプ | 有効期限 |
 |:--- |:--- |
-| Azure Active Directory で管理されて " *いない* " ユーザー アカウント (@hotmail.com、@live.com など) |12 時間 |
+| Azure Active Directory で管理されて "*いない*" ユーザー アカウント (@hotmail.com、@live.com など) |12 時間 |
 | Azure Active Directory で管理されているユーザー アカウント |スライスの最後の実行から 14 日後 <br/><br/>OAuth ベースのリンクされたサービスに基づくスライスが 14 日ごとに少なくとも 1 回実行される場合は 90 日 |
 
 トークンの有効期限の前にパスワードを変更すると、トークンは即座に期限切れになります。 このセクションで前に示したメッセージが表示されます。
 
-トークンの有効期限が切れたら、 **[承認する]** ボタンを使ってアカウントを再承認し、リンクされたサービスを再デプロイできます。 次のコードを使って、 **sessionId** および **authorization** プロパティの値をプログラムで生成することもできます。
+トークンの有効期限が切れたら、 **[承認する]** ボタンを使ってアカウントを再承認し、リンクされたサービスを再デプロイできます。 次のコードを使って、**sessionId** および **authorization** プロパティの値をプログラムで生成することもできます。
 
 
 ```csharp
@@ -233,7 +228,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     ```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
-Data Lake Store の入力データを表すデータセットを指定するには、データセットの **type** プロパティを **AzureDataLakeStore** に設定します。 また、データセットの **linkedServiceName** プロパティは、Data Lake Store のリンクされたサービスの名前に設定します。 データセットの定義に利用できる JSON のセクションとプロパティの完全な一覧については、「[Azure Data Factory のデータセット](data-factory-create-datasets.md)」を参照してください。 **構造** 、 **可用性** 、 **ポリシー** など、JSON でのデータセットのセクションは、データセットのすべての型 (Azure SQL データベース、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。
+Data Lake Store の入力データを表すデータセットを指定するには、データセットの **type** プロパティを **AzureDataLakeStore** に設定します。 また、データセットの **linkedServiceName** プロパティは、Data Lake Store のリンクされたサービスの名前に設定します。 データセットの定義に利用できる JSON のセクションとプロパティの完全な一覧については、「[Azure Data Factory のデータセット](data-factory-create-datasets.md)」を参照してください。 **構造**、**可用性**、**ポリシー** など、JSON でのデータセットのセクションは、データセットのすべての型 (Azure SQL データベース、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。
 
 **AzureDataLakeStore** 型の **typeProperties** セクションには、次のプロパティが含まれます。
 
@@ -242,8 +237,8 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 | **folderPath** |Data Lake Store のコンテナーとフォルダーのパスです。 |はい |
 | **fileName** |Azure Data Lake Store 内のファイルの名前です。 **fileName** プロパティは省略可能で、大文字と小文字を区別します。 <br/><br/>**fileName** を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>**fileName** が指定されていない場合、コピーには入力データセットの **folderPath** のすべてのファイルが含まれます。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は `Data._Guid_.txt` という形式になります。 次に例を示します。Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |いいえ |
 | **partitionedBy** |**PartitionedBy** プロパティは省略可能です。 これを使用し、時系列データに動的なパスとファイル名を指定できます。 たとえば、1 時間ごとのデータに対して **folderPath** をパラメーター化できます。 詳細と例については、「partitionedBy プロパティ」を参照してください。 |いいえ |
-| **format** | 次の種類の形式がサポートされます: **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** 。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」の「[テキスト形式](data-factory-supported-file-and-compression-formats.md#text-format)」、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」、「[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)」、「[ORC 形式](data-factory-supported-file-and-compression-formats.md#orc-format)」、「[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)」の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で `format` セクションをスキップします。 |いいえ |
-| **compression** | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、および **ZipDeflate** です。 サポートされるレベルは、 **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| **format** | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」の「[テキスト形式](data-factory-supported-file-and-compression-formats.md#text-format)」、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」、「[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)」、「[ORC 形式](data-factory-supported-file-and-compression-formats.md#orc-format)」、「[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)」の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で `format` セクションをスキップします。 |いいえ |
+| **compression** | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory でサポートされるファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 ### <a name="the-partitionedby-property"></a>partitionedBy プロパティ
 **partitionedBy** プロパティ、Data Factory 関数、およびシステム変数を使用して、時系列データに動的な **folderPath** および **fileName** プロパティを指定できます。 詳細については、「[Azure Data Factory - 関数およびシステム変数](data-factory-functions-variables.md)」を参照してください。

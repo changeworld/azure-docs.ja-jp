@@ -1,22 +1,18 @@
 ---
 title: Snowflake のデータをコピーして変換する
 description: Data Factory を使用して、Snowflake のデータをコピーして変換する方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 816c9ae25034382763e18ea61055a2a18ccc03d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902087"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388840"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake のデータをコピーして変換する
 
@@ -150,7 +146,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
 | type                         | コピー アクティビティのソースの type プロパティは **SnowflakeSource** に設定する必要があります。 | はい      |
 | query          | Snowflake からデータを読み取る SQL クエリを指定します。 スキーマ、テーブル、および列の名前に小文字が含まれている場合は、クエリでオブジェクト識別子を引用符で囲みます (例: `select * from "schema"."myTable"`)。<br>ストアド プロシージャの実行はサポートされていません。 | いいえ       |
 | exportSettings | Snowflake からデータを取得するために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときに Data Factory によって渡されます。 | いいえ       |
-| * **`exportSettings` の下:** _ |  |  |
+| ***`exportSettings` の下:*** |  |  |
 | type | エクスポート コマンドの type を **SnowflakeExportCopyCommand** に設定します。 | はい |
 | additionalCopyOptions | 追加のコピー オプション。キーと値のペアのディクショナリとして指定されます。 例 :MAX_FILE_SIZE、OVERWRITE。 詳細については、「[Snowflake コピー オプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)」を参照してください。 | いいえ |
 | additionalFormatOptions | キーと値のペアのディクショナリとして COPY コマンドに指定される、追加のファイル形式オプション。 例 :DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 詳細については、「[Snowflake 形式の種類のオプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)」を参照してください。 | いいえ |
@@ -280,7 +276,7 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 | type              | コピー アクティビティの sink の type プロパティは、**SnowflakeSink** に設定します。 | はい                                           |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Snowflake に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
 | importSettings | Snowflake にデータを書き込むために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときに Data Factory によって渡されます。 | いいえ |
-| **_`importSettings` の下:_* _ |                                                              |  |
+| ***`importSettings` の下:*** |                                                              |  |
 | type | インポート コマンドの type を **SnowflakeImportCopyCommand** に設定します。 | はい |
 | additionalCopyOptions | 追加のコピー オプション。キーと値のペアのディクショナリとして指定されます。 例 :ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 詳細については、「[Snowflake コピー オプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)」を参照してください。 | いいえ |
 | additionalFormatOptions | キーと値のペアのディクショナリとして COPY コマンドに指定される、追加のファイル形式オプション。 例 :DATE_FORMAT、TIME_FORMAT、TIMESTAMP_FORMAT。 詳細については、「[Snowflake 形式の種類のオプション](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)」を参照してください。 | いいえ |

@@ -1,5 +1,5 @@
 ---
-title: マルチ DRM コンテンツ保護システム - Azure Media Services v3
+title: マルチ DRM コンテンツ保護システム
 description: この記事では、Azure Media Services を使用してマルチ DRM コンテンツ保護システムを設計する方法を詳しく説明します。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298200"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092443"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計
 
@@ -66,8 +66,8 @@ Over-the-Top (OTT) 用またはオンライン ストリーミング ソリュ�
 * Widevine はすべての Android デバイス、Chrome、その他の一部のデバイスにネイティブ実装されます。 また、Widevine は DASH を介して Firefox や Opera ブラウザーでもサポートされます。
 * FairPlay は、iOS、macOS、tvOS で使用できます。
 
-
 ## <a name="a-reference-design"></a>参照設計
+
 このセクションでは、実装に使われるテクノロジに依存しない参照設計を示します。
 
 DRM サブシステムに含まれる可能性のあるコンポーネントは次のとおりです。

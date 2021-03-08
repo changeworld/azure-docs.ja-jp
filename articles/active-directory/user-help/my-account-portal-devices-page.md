@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82b59e887eb35a972812dd82dbca5ca6bc5179b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798212"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096210"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>接続されているデバイスを [デバイス] ページから管理する
 
@@ -27,7 +27,12 @@ ms.locfileid: "88798212"
 - 手放した、なくした、あるいは盗まれたデバイスがあれば、それを無効にします。
 
 >[!Important]
->この記事は、職場または学校アカウントに接続されているデバイス情報を更新しようとしているユーザーを対象としています。 従業員およびその他の用途のデバイス管理情報を探している管理者の場合は、[デバイス ID のドキュメント](../devices/index.yml)を参照してください。
+>この記事は、職場または学校アカウントに接続されているデバイス情報を更新しようとしているユーザーを対象としています。 個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>従業員およびその他の用途のデバイス管理情報を探している管理者の場合は、[デバイス ID のドキュメント](../devices/index.yml)を参照してください。
 
 ## <a name="view-your-connected-devices"></a>接続されているデバイスを表示する
 
@@ -62,7 +67,7 @@ ms.locfileid: "88798212"
 
     ![[デバイス] ページの BitLocker キー オプション](media/my-account-portal/my-account-portal-devices-bitlocker.png)
 
-2. ロックアウトされたデバイスの **[Bitlocker キーを表示する]** を選択し、鍵を掛けられたデバイスの BitLocker キーを書き留めます。
+2. ロックアウトされたデバイスの **[BitLocker キーを表示する]** を選択し、鍵を掛けられたデバイスの BitLocker キーを書き留めます。
 
 ## <a name="next-steps"></a>次のステップ
 

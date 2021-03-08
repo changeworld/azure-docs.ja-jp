@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232303"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582657"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -445,13 +445,13 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-MSAL.NET では、次を使用する必要があります。
+MSAL.NET では、次のように使用します。
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-通常、必要なパラメーターは 1 つだけです (`scopes`)。 Windows 管理者によるポリシーの設定方法に応じて、Windows マシン上のアプリケーションではサインインしているユーザーの検索が許可されない場合があります。 その場合は、2 番目のメソッドである `.WithUsername()` を使用して、サインインしているユーザーのユーザー名を UPN 形式で渡します (例: `joe@contoso.com`)。 .NET Core では、ユーザー名を受け取るオーバーロードだけを使用できます。これは、.NET Core プラットフォームで OS に対してユーザー名を問い合わせることができないためです。
+通常、必要なパラメーターは 1 つだけです (`scopes`)。 Windows 管理者によるポリシーの設定方法に応じて、Windows マシン上のアプリケーションではサインインしているユーザーの検索が許可されない場合があります。 その場合は、2 番目のメソッドである `.WithUsername()` を使用して、サインインしているユーザーのユーザー名を UPN 形式で渡します (例: `joe@contoso.com`)。
 
 次のサンプルは、最新のケース (および取得可能な例外の種類の説明とその軽減策) を示しています。
 
@@ -922,7 +922,7 @@ if not result:
 
 ### <a name="device-code-flow"></a>デバイス コード フロー
 
-Web コントロールのないコマンドライン ツールを記述する際に前述のフローを使用できない (しない) 場合は、デバイス コード フローを使用する必要があります。
+Web コントロールのないコマンドライン ツールを記述するときに前述のフローを使用できない (しない) 場合は、デバイス コード フローを使用します。
 
 Azure AD による対話型認証には Web ブラウザーが必要です。 詳細については、[Web ブラウザーの使用](https://aka.ms/msal-net-uses-web-browser)に関する記事を参照してください。 Web ブラウザーを提供しないデバイスまたはオペレーティング システム上でユーザーを認証する場合、ユーザーはデバイス コード フローによって別のデバイス (コンピューターや携帯電話など) を使用して対話形式でサインインできます。 デバイス コード フローを使用すると、アプリケーションでは、これらのデバイスまたはオペレーティング システム用に設計された 2 ステップ プロセスを通じてトークンを取得します。 このようなアプリケーションには、IoT やコマンドライン ツール (CLI) で実行されるアプリケーションがあります。 考え方は次のとおりです。
 
@@ -1181,7 +1181,7 @@ ADAL.NET 3.x、ADAL.NET 5.x、および MSAL.NET の間で SSO 状態を共有�
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>トークン キャッシュの単純なシリアル化 (MSAL のみ)
 
-次の例では、デスクトップ アプリケーション用のトークン キャッシュについて、カスタムのシリアル化の単純な実装を示します。 ここでは、ユーザーのトークン キャッシュは、アプリケーションと同じフォルダー内のファイルに格納されているか、アプリが[パッケージ化されたデスクトップ アプリケーション](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)である場合はユーザー別にアプリ フォルダーごとに存在します。 完全なコードについては、「[active-directory-dotnet-desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)」のサンプルを参照してください。
+次の例では、デスクトップ アプリケーション用のトークン キャッシュについて、カスタムのシリアル化の単純な実装を示します。 ここでは、ユーザーのトークン キャッシュは、アプリケーションと同じフォルダー内のファイルに格納されているか、アプリが[パッケージ化されたデスクトップ アプリケーション](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)である場合はユーザー別にアプリ フォルダーごとに存在します。 完全なコードについては、「[active-directory-dotnet-desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)」のサンプルを参照してください。
 
 アプリケーションをビルドした後、``TokenCacheHelper.EnableSerialization()`` を呼び出し、アプリケーションに `UserTokenCache` を渡すことで、シリアル化を有効にします。
 

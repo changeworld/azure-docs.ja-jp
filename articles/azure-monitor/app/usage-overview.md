@@ -3,12 +3,12 @@ title: Azure Application Insights による利用状況分析 | Microsoft docs
 description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0888b6743a10c9934ab85a6f2b3b637b857f643a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233850"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583403"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -38,7 +38,7 @@ Application Insights をアプリのサーバー コードと Web ページの�
 
     Web サイトを監視するためのより高度な構成については、[JavaScript SDK の参照記事](./javascript.md)を参照してください。
 
-3. **モバイル アプリ コード:** [このガイド](../learn/mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
+3. **モバイル アプリ コード:** [このガイド](../app/mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
 
 4. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ブレードで結果を確認します。
 
@@ -179,6 +179,6 @@ Web アプリ初期化子 (Global.asax.cs など) 内:
    - [ファネル](usage-funnels.md)
    - [保持](usage-retention.md)
    - [ユーザー フロー](usage-flows.md)
-   - [ブック](../platform/workbooks-overview.md)
+   - [ブック](../visualize/workbooks-overview.md)
    - [ユーザー コンテキストの追加](usage-send-user-context.md)
 

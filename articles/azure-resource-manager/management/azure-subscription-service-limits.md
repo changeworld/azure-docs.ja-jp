@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 5d003392eeeca56bbfb0033db22e6bde4ae5e136
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964195"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520692"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -170,11 +170,15 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 ### <a name="application-insights"></a>Application Insights
 
-[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-app-insights.md)]
+[!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
 ## <a name="azure-policy-limits"></a>Azure Policy の制限
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
+
+## <a name="azure-quantum-limits"></a>Azure Quantum の制限
+
+[!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
 
 ## <a name="azure-role-based-access-control-limits"></a>Azure のロールベースのアクセス制御の制限
 
@@ -360,6 +364,9 @@ SQL Database の制限については、[単一データベースの SQL Databas
 
 Azure Synapse Analytics の制限については、[Azure Synaplse リソースの制限](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)に関する記事を参照してください。
 
+## <a name="azure-files-and-azure-file-sync"></a>Azure Files と Azure File Sync
+Azure Files と Azure File Sync の制限については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../../storage/files/storage-files-scale-targets.md)」を参照してください。
+
 ## <a name="storage-limits"></a>ストレージの制限
 
 <!--like # storage accts -->
@@ -371,19 +378,9 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-### <a name="azure-blob-storage-limits"></a>Azure BLOB ストレージの制限
+### <a name="azure-blob-storage-limits"></a>Azure Blob Storage の制限
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Azure Files の制限
-
-ストレージ アカウントの制限について詳しくは、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../../storage/files/storage-files-scale-targets.md)」をご覧ください。
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-### <a name="azure-file-sync-limits"></a>Azure File Sync の制限
-
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-queue-storage-limits"></a>Azure Queue Storage の制限
 
@@ -402,7 +399,7 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 #### <a name="disk-encryption-sets"></a>ディスク暗号化セット
 
-リージョンごと、サブスクリプションごとに、50 のディスク暗号化セットという制限があります。 詳細については、[Linux](../../virtual-machines/disk-encryption.md#restrictions) または [Windows](../../virtual-machines/disk-encryption.md#restrictions) 仮想マシンの暗号化ドキュメントを参照してください。 クォータを増やす必要がある場合は、Azure サポートにお問い合わせください。
+リージョンごと、サブスクリプションごとに、1000 のディスク暗号化セットという制限があります。 詳細については、[Linux](../../virtual-machines/disk-encryption.md#restrictions) または [Windows](../../virtual-machines/disk-encryption.md#restrictions) 仮想マシンの暗号化ドキュメントを参照してください。 クォータを増やす必要がある場合は、Azure サポートにお問い合わせください。
 
 ### <a name="managed-virtual-machine-disks"></a>管理対象の仮想マシン ディスク
 

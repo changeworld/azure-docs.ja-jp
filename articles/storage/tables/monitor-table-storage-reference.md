@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: b9920956a8983a1c71c1f91cd1c19a6e84be6aee
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ad56b6af9a9071812ad6fa581954010df3b6b5d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780299"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574838"
 ---
 # <a name="azure-table-storage-monitoring-data-reference"></a>Azure Table ストレージ監視データのリファレンス
 
@@ -36,7 +36,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="table-storage"></a>テーブル ストレージ
 
-この表は、[Table ストレージのメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)を示しています。
+この表は、[Table ストレージのメトリック](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountstableservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |
@@ -80,4 +80,4 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 ## <a name="see-also"></a>関連項目
 
 - Azure Storage の監視の詳細については、「[Azure Table ストレージの監視](monitor-table-storage.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。

@@ -2,17 +2,17 @@
 title: Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する
 description: Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する方法。
 author: MikeDodaro
-ms.author: brendanm
+ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e44e7c5d04695d5bd65d2eedc5474889a707c8bd
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0227fcebd6d5a136e3306573b7b5aa0d6e39ba1f
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882146"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122801"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する (プレビュー)
 
@@ -42,9 +42,9 @@ cd spring-cloud-circuitbreaker-demo && mvn clean package -DskipTests
 2. エンドポイントを使用してアプリケーションを作成します
 
 ```azurecli
-az spring-cloud app create --name resilience4j --is-public \
+az spring-cloud app create --name resilience4j --assign-endpoint \
     -s ${asc-service-name} -g ${asc-resource-group}
-az spring-cloud app create --name reactive-resilience4j --is-public \
+az spring-cloud app create --name reactive-resilience4j --assign-endpoint \
     -s ${asc-service-name} -g ${asc-resource-group}
 ```
 

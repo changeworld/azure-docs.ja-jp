@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 775dc2133473354a1e534275fb0d813f299217d1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296252"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593820"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>チュートリアル:新しい Application Gateway インスタンスを使用して新しい AKS クラスターのイングレス コントローラー アドオン (プレビュー) を有効にする
 
@@ -80,7 +80,7 @@ az group create --name myResourceGroup --location canadacentral
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
-`az aks create` コマンドの追加パラメーターを構成する場合は、[これらのリファレンス](/cli/azure/aks?view=azure-cli-latest#az-aks-create)を参照してください。 
+`az aks create` コマンドの追加パラメーターを構成する場合は、[これらのリファレンス](/cli/azure/aks#az-aks-create)を参照してください。 
 
 > [!NOTE]
 > 作成した AKS クラスターは、作成したリソース グループ (*myResourceGroup*) に表示されます。 しかし、自動的に作成された Application Gateway インスタンスは、エージェント プールがある、ノード リソース グループに配置されます。 ノード リソース グループの名前は、既定では *MC_resource-group-name_cluster-name_location* になりますが、変更することはできます。 

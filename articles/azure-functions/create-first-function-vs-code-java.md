@@ -3,16 +3,27 @@ title: Visual Studio Code を使用して Java 関数を作成する - Azure Fun
 description: Visual Studio Code の Azure Functions 拡張機能を使用して Java 関数を作成し、ローカル プロジェクトを Azure Functions のサーバーレス ホスティングに発行する方法について説明します。
 ms.topic: quickstart
 ms.date: 11/03/2020
-ms.openlocfilehash: daaa578b2842a6314706b3578f4c9e44d46aa6ce
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./create-first-function-vs-code-java-uiex
+ms.openlocfilehash: 10ac677fb65428e8b8855c43b319bbebe7bbbb71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424830"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701434"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に Java 関数を作成する
 
-[!INCLUDE [functions-language-selector-quickstart-vs-code](../../includes/functions-language-selector-quickstart-vs-code.md)]
+> [!div class="op_single_selector" title1="関数の言語を選択します。 "]
+> - [Java](create-first-function-vs-code-java.md)
+> - [Python](create-first-function-vs-code-python.md)
+> - [C#](create-first-function-vs-code-csharp.md)
+> - [JavaScript](create-first-function-vs-code-node.md)
+> - [PowerShell](create-first-function-vs-code-powershell.md)
+> - [TypeScript](create-first-function-vs-code-typescript.md)
+> - [その他 (Go/Rust)](create-first-function-vs-code-other.md)
 
 この記事では、HTTP 要求に応答する Java 関数を、Visual Studio Code を使用して作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。
 
@@ -86,7 +97,7 @@ ms.locfileid: "93424830"
 
 ## <a name="next-steps"></a>次のステップ
 
-Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、出力バインディングを追加してその関数を拡張します。 このバインディングでは、HTTP 要求の文字列が Azure Queue Storage キュー内のメッセージに書き込まれます。 
+[Visual Studio Code](functions-develop-vs-code.md?tabs=java) を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、Azure Storage に接続することによってその関数を拡張します。 他の Azure サービスへの接続について詳しくは、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md?tabs=java)」を参照してください。 
 
 > [!div class="nextstepaction"]
 > [Azure Storage キューに接続する](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-java)

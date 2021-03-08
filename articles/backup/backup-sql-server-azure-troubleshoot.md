@@ -3,12 +3,12 @@ title: SQL Server のデータベース バックアップに関するトラブ�
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733945"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557744"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -202,22 +202,29 @@ VM 内で実行されているすべての SQL インスタンスが正常であ
 |---|---|---|
 コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 このエラーは通常、ポリシーの変更や自動保護などの大規模な操作がある場合に発生します。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決するためにできることはあまりありません。 実際、Azure Backup サービスによって、問題のあるすべての項目に対して内部的に操作が再試行されます。<br> 次に例を示します。ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。
 
+### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+AzureBackup ワークロード拡張機能操作に失敗しました。 | VM がシャットダウンされています。または、インターネット接続の問題により、VM から Azure Backup サービスに接続できません。| <li> VM が稼働中であり、インターネットに接続されていることを確実にします。<li> [SQL Server VM で拡張を再登録します](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm)。
+
+
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| - NSG を使用して接続を制限する場合は、*AzureBackup* サービス タグを使用して、Azure Backup サービスへの発信アクセスを許可する必要があります。Azure AD (*AzureActiveDirectory*) サービスと Azure Storage(*Storage*) サービスも同様です。 アクセス権を付与するには、次の[手順](./backup-sql-server-database-azure-vms.md#nsg-tags)に従います。<br>- DNS が Azure エンドポイントを解決することを確認します。<br>- VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。<br>- 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール、ウイルス対策、およびプロキシが存在しないことを確認します。
+VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| <li> NSG を使用して接続を制限する場合は、*AzureBackup* サービス タグを使用して、Azure Backup サービスへの発信アクセスを許可する必要があります。Azure AD (*AzureActiveDirectory*) サービスと Azure Storage(*Storage*) サービスも同様です。 アクセス権を付与するには、次の[手順](./backup-sql-server-database-azure-vms.md#nsg-tags)に従います。 <li> DNS が Azure エンドポイントを解決することを確保します。 <li> VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。 <li> 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール、ウイルス対策、およびプロキシが存在しないことを確認します。
 
 ## <a name="re-registration-failures"></a>再登録エラー
 
 再登録操作をトリガーする前に、次の兆候が 1 つ以上ないか確認してください。
 
-- VM ですべての操作 (バックアップ、復元、バックアップの構成など) が次のいずれかのエラー コードで失敗している。**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
+- VM ですべての操作 (バックアップ、復元、バックアップの構成など) が次のいずれかのエラー コードで失敗している。 **[WorkloadExtensionNotReachable](#workloadextensionnotreachable)** 、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
 - バックアップ項目の **[バックアップ状態]** 領域に **[到達できません]** が表示されている場合は、同じ状態になる可能性のある他のすべての原因を除外します。
 
   - VM でバックアップ関連の操作を実行する権限がない。
   - VM のシャットダウン。そのため、バックアップが実行できない。
-  - ネットワークの問題。
+  - [ネットワークの問題](#usererrorvminternetconnectivityissue)
 
    ![VM の再登録](./media/backup-azure-sql-database/re-register-vm.png)
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bd919d2896b187d32ad5347e6b8729ccb8555de
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: a00ea22ee0d9125588f2bb97505d7a4c0ba9a1ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612915"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749947"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ Computer Vision クライアント ライブラリは次に使用できます。
 * タグ、テキストの説明、顔、成人向けコンテンツなどについて、画像を分析します。
 * Read API を使用して、印刷されたテキストと手書きのテキストを読み取ります。
 
-[リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [サンプル](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/client/computervision) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [サンプル](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +106,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
 > [!div class="nextstepaction"]
-> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=set-up-client)
+> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=set-up-client)
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -114,9 +114,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 |名前|説明|
 |---|---|
-| [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | このクラスは、すべての Computer Vision の機能に必要です。 サブスクリプション情報を使用してインスタンス化し、そのインスタンスを使用して、画像に対するほとんどの操作を実行することができます。|
-|[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| このクラスには、**ComputerVisionClient** の追加的なメソッドが含まれています。|
-|[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)| この列挙型は、標準の分析操作で実行できるさまざまな種類の画像分析を定義します。 必要に応じて、VisualFeatureTypes の値のセットを指定します。 |
+| [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | このクラスは、すべての Computer Vision の機能に必要です。 サブスクリプション情報を使用してインスタンス化し、そのインスタンスを使用して、画像に対するほとんどの操作を実行することができます。|
+|[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions)| このクラスには、**ComputerVisionClient** の追加的なメソッドが含まれています。|
+|[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| この列挙型は、標準の分析操作で実行できるさまざまな種類の画像分析を定義します。 必要に応じて、VisualFeatureTypes の値のセットを指定します。 |
 
 ## <a name="code-examples"></a>コード例
 
@@ -131,19 +131,19 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 > [!NOTE]
 > このクイックスタートでは、`COMPUTER_VISION_SUBSCRIPTION_KEY` および `COMPUTER_VISION_ENDPOINT` という名前の、Computer Vision キーとエンドポイントのそれぞれの [環境変数を作成](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) してあることを前提としています。
 
-新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを指定して **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** オブジェクトを作成し、それを自分のエンドポイントと共に使用して **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** オブジェクトを作成します。
+新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを指定して **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials)** オブジェクトを作成し、それを自分のエンドポイントと共に使用して **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient)** オブジェクトを作成します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
 > [!div class="nextstepaction"]
-> [クライアントを認証しました](?success=authenticate-client#analyze-an-image) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
+> [クライアントを認証しました](?success=authenticate-client#analyze-an-image) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=authenticate-client)
 
 ## <a name="analyze-an-image"></a>イメージを分析する
 
 次のコードでは、`AnalyzeImageUrl` メソッドを定義しています。このメソッドは、クライアント オブジェクトを使用して、リモート画像を分析し、結果を出力します。 このメソッドでは、テキストの説明、分類、タグの一覧、検出された顔、成人向けコンテンツ フラグ、メインの色、および画像の種類が返されます。
 
 > [!TIP]
-> ローカルの画像を分析することもできます。 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) のメソッドを参照してください (**AnalyzeImageInStreamAsync** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上のサンプル コードを参照してください。
+> ローカルの画像を分析することもできます。 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) のメソッドを参照してください (**AnalyzeImageInStreamAsync** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上のサンプル コードを参照してください。
 
 ### <a name="set-up-test-image"></a>テスト画像の設定
 
@@ -153,7 +153,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 ### <a name="specify-visual-features"></a>視覚的特徴を指定する
 
-画像分析用の新しいメソッドを定義します。 以下のコードは、分析で抽出する視覚的特徴を指定するものです。このコードを追加します。 完全な一覧については、 **[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** 列挙型を参照してください。
+画像分析用の新しいメソッドを定義します。 以下のコードは、分析で抽出する視覚的特徴を指定するものです。このコードを追加します。 完全な一覧については、 **[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)** 列挙型を参照してください。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
@@ -238,14 +238,14 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_type)]
 
 > [!div class="nextstepaction"]
-> [画像を分析しました](?success=analyze-image#read-printed-and-handwritten-text) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+> [画像を分析しました](?success=analyze-image#read-printed-and-handwritten-text) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=analyze-image)
 
 ## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
 
 Computer Vision は、画像に映っているテキストを読み取って、文字ストリームに変換することができます。 テキスト認識の詳細については、「[光学式文字認識 (OCR)](../../concept-recognizing-text.md#read-api)」概念ドキュメントを参照してください。このセクションのコードでは、最新の [Read 3.0 用 Computer Vision SDK リリース](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1)を使用し、クライアント オブジェクトを使用して画像内のテキストを検出して抽出する `BatchReadFileUrl` メソッドを定義しています。
 
 > [!TIP]
-> ローカルの画像からテキストを抽出することもできます。 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) のメソッドを参照してください (**ReadInStreamAsync** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上のサンプル コードを参照してください。
+> ローカルの画像からテキストを抽出することもできます。 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) のメソッドを参照してください (**ReadInStreamAsync** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上のサンプル コードを参照してください。
 
 ### <a name="set-up-test-image"></a>テスト画像の設定
 
@@ -255,9 +255,21 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 
 ### <a name="call-the-read-api"></a>Read API を呼び出す
 
-次のメソッドを追加します。これは、指定された画像に対して **ReadAsync** メソッドを呼び出します。 これによって操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。 次に、**ReadAsync** の呼び出しから返された操作 ID を取得し、これを使用して操作の結果についてサービスをポーリングします。 最後に、抽出されたテキストをコンソールに出力します。
+テキストを読み取るための新しいメソッドを定義します。 以下のコードは、指定された画像に対して **ReadAsync** メソッドを呼び出すものです。このコードを追加します。 これによって操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_1)]
+
+### <a name="get-read-results"></a>読み取りの結果を取得する
+
+次に、**ReadAsync** の呼び出しから返された操作 ID を取得し、これを使用して操作の結果をサービスに照会します。 次のコードは、結果が返されるまで操作をチェックします。 次に、抽出されたテキスト データをコンソールに出力します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_2)]
+
+### <a name="display-read-results"></a>読み取りの結果を表示する
+
+取得したテキスト データを解析して表示する次のコードを追加すれば、メソッドの定義は完了です。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_3)]
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -285,7 +297,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
->[Computer Vision API リファレンス (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
+>[Computer Vision API リファレンス (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision)
 
 * [Computer Vision とは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) にあります。

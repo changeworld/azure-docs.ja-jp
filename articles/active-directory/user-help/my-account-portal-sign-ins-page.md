@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/03/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1062c8dfe416af2d39063bf71f39d52e151e28d3
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834151"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096074"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>[自分のサインイン] ページから最近のサインイン アクティビティを表示および検索する
 
@@ -25,6 +25,12 @@ ms.locfileid: "94834151"
 - だれかがパスワードを推測しようとしているような痕跡。
 - 普段の利用場所とは異なるところから攻撃者が自分のアカウントへのサインインに成功したこと。
 - 攻撃者がアクセスしようとしたアプリ。
+
+>[!Note]
+> 個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="view-your-recent-sign-in-activity"></a>最近のサインイン アクティビティを表示する
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3210829b3281aa862cdf0dbdc9c915249a55e423
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: de038fe087e479ef1e9212c21197fbe1844d5e3b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518007"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670368"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
 
@@ -73,7 +73,7 @@ VM から直接、利用可能な更新プログラムのステータスを迅�
 この VM で Update Management が有効になっているかを確認する検証が行われます。
 この検証では、Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、ソリューションがワークスペースにあるかどうかの確認が行われます。
 
-[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) ワークスペースは、Update Management のような機能およびサービスによって生成されるデータを収集するために使用されます。
+[Log Analytics](../../azure-monitor/logs/log-query-overview.md) ワークスペースは、Update Management のような機能およびサービスによって生成されるデータを収集するために使用されます。
 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 更新を必要とする VM で追加のアクションを実行する場合、Azure Automation を使用すると、VM に対して Runbook を実行して、更新プログラムをダウンロードして適用するなどの操作を行うことができます。
 
@@ -83,7 +83,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 オンボード中に次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
 
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) ワークスペース
+* [Log Analytics](../../azure-monitor/logs/log-query-overview.md) ワークスペース
 * [Automation アカウント](../../automation/index.yml)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) が VM で有効になっている
 
@@ -112,7 +112,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 | 名前 |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
 | 更新するグループ |Azure マシンの場合、サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 </br></br>Azure 以外のマシンの場合、既存の保存された検索を選択して、デプロイに含める Azure 以外のマシンのグループを選択します。 </br></br>詳しくは、[動的グループ](../../automation/update-management/configure-groups.md)に関するページをご覧ください。|
-| 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
+| 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../../azure-monitor/logs/computer-groups.md)に関するページを参照してください |
 |更新プログラムの分類|必要な更新プログラムの分類すべてを選択します|
 |更新プログラムの包含/除外|**[包含/除外]** ページが開きます。 含めるまたは除外する更新プログラムは別のタブに表示されます。 包含を処理する方法について詳しくは、「[更新プログラムのデプロイをスケジュールする](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment)」を参照してください。 |
 |スケジュール設定|開始する時刻を選択し、繰り返しの設定として、[1 回] または [定期的] のいずれかを選択します|
@@ -201,4 +201,4 @@ VM の起動時と停止時には、イベントがアクティビティ ログ�
 次のチュートリアルに進み、VM の監視について学習してください。
 
 > [!div class="nextstepaction"]
-> [仮想マシンの監視](tutorial-monitor.md)
+> [仮想マシンの監視](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)

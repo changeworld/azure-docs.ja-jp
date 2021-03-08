@@ -9,69 +9,36 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 50f203357d29d450f5b34593952f611f025b14ff
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556633"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724177"
 ---
-1. [Azure portal](https://ms.portal.azure.com/) で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** を選択します。
+* [[プラットフォームの構成]](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) 設定の手順 4 で適切なプラットフォームを選択したら、ユーザー インターフェイスの右側のサイド パネルで **[リダイレクト URI]** と **[アクセス トークン]** を構成します。
 
-   [![Azure Active Directory での新しいアプリケーションの登録](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-    アプリを登録すると、ここにそのアプリが表示されます。
-
-1. アプリケーションの名前を指定し、 **[この組織のディレクトリ内のアカウントのみ]** を選択して、この API にアクセスできる **[サポートされているアカウントの種類]** を指定します。 [パブリック クライアント アプリ](../articles/active-directory/develop/msal-client-application-configuration.md#redirect-uri)を作成している場合は、有効なリダイレクト URI を追加して **登録** します。
-
-   [![Azure Active Directory にアプリケーションを作成する](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
-
-1. 表示されているアプリの **[概要]** ブレードに、Azure Active Directory アプリの重要な情報が表示されます。 **[所有しているアプリ]** からアプリを選択し、 **[概要]** を選択します。
-
-   [![アプリケーション ID をコピーする](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
-
-   使用する **[アプリケーション (クライアント) ID]** を、クライアント アプリケーション内にコピーします。
-
-1. **[認証]** ブレードで、重要な認証構成設定を指定します。
-
-    1. **[+ プラットフォームを追加]** を選択して、 **[リダイレクト URI]** を追加し、 **[アクセス トークン]** を構成します。
-
-    1. **[はい]** または **[いいえ]** を選択して、アプリが **パブリック クライアント** であるかどうかを指定します。
-
-    1. サポートされているアカウントとテナントを確認します。
-
-    [![暗黙的な許可を構成する](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
-
-1. 適切なプラットフォームを選択したら、ユーザー インターフェイスの右側のサイド パネルで **[リダイレクト URI]** と **[アクセス トークン]** を構成します。
-
-    1. **[リダイレクト URI]** は、認証要求で指定されたアドレスと一致する必要があります。
+    * **[リダイレクト URI]** は、認証要求で指定されたアドレスと一致する必要があります。
 
         * ローカル開発環境でホストされているアプリでは、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。 **[パブリック クライアント]** は必ず **[はい]** に設定してください。
         * Azure App Service でホストされているシングルページ アプリでは、 **[Web]** を選択します。
 
-    1. **[ログアウト URL]** が適切かどうかを確認します。
+    * **[ログアウト URL]** が適切かどうかを確認します。
 
-    1. **[アクセス トークン]** または **[ID トークン]** をオンにすることによって、暗黙的な許可のフローを有効にします。
+    * **[アクセス トークン]** または **[ID トークン]** をオンにすることによって、暗黙的な許可のフローを有効にします。
 
     [![リダイレクト URI を作成する](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
     **[構成]** 、 **[保存]** の順にクリックします。
 
-1. **[証明書とシークレット]** を選択し、 **[新しいクライアント シークレット]** を選択して、クライアント アプリがその ID を証明する際に使用できるアプリケーション パスワードを作成します。
-
-   [![新しいクライアント シークレットを生成する](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
-
-   クライアント シークレット パスワードが表示されます。 普段使用しているテキスト エディターにキーをコピーします。
-
-   > [!NOTE]
-   > 代わりに証明書をインポートすることもできます。 セキュリティを強化するには、証明書をお勧めします。 証明書を使用する場合は、 **[証明書のアップロード]** を選択してください。
-
-1. お使いの Azure Active Directory アプリを Azure Time Series Insights に関連付けます。 **[API のアクセス許可]**  >  **[アクセス許可の追加]**  >  **[所属する組織で使用している API]** を選択します。
+* お使いの Azure Active Directory アプリを Azure Time Series Insights に関連付けます。 **[API のアクセス許可]**  >  **[アクセス許可の追加]**  >  **[所属する組織で使用している API]** を選択します。
 
     [![API をお使いの Azure Active Directory アプリに関連付ける](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 
    検索バーに「`Azure Time Series Insights`」と入力した後、`Azure Time Series Insights` を選択します。
 
-1. 次に、お使いのアプリで必要な API のアクセス許可の種類を指定します。 既定では、 **[委任されたアクセス許可]** が強調表示されます。 アクセス許可の種類を選択した後、 **[アクセス許可の追加]** を選択します。
+* 次に、お使いのアプリで必要な API のアクセス許可の種類を指定します。 既定では、 **[委任されたアクセス許可]** が強調表示されます。 アクセス許可の種類を選択した後、 **[アクセス許可の追加]** を選択します。
 
     [![お使いのアプリで必要な API のアクセス許可の種類を指定する](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
+
+* アプリケーションから環境の API をそのまま呼び出す場合は、[資格情報を追加します](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials)。 資格情報により、アプリケーションはそれ自体として認証され、実行時にユーザーによる操作は必要ありません。

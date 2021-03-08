@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 05/29/2019
+ms.date: 02/23/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe9cc44542e97880b076d871dde82f5a02a58957
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec466fc420e435159e2882d7b39ef6d03eeea7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928974"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733484"
 ---
 # <a name="use-the-headpose-attribute"></a>HeadPose 属性を使用する
 
@@ -29,7 +29,7 @@ ms.locfileid: "88928974"
 
 ### <a name="explore-the-sample-code"></a>サンプル コードの検証
 
-HeadPose 属性を使用すれば、顔矩形を回転するようプログラミングできます。 顔を検出する際に、この属性を指定する場合 (「[How to detect faces](HowtoDetectFacesinImage.md)」 (顔の検出方法)参照)、クエリは後で実行きます。 [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF)アプリの次のメソッドから、 **DetectedFace**オブジェクトの一覧を取得し **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** オブジェクトの一覧を返します。 ここで**Face**はカスタム クラスであり、更新された四角形の座標など顔データを保存します。 新しい値は、**上部**、**左**、**幅**、および**高さ**用に計算し新しいフィールドの**FaceAngle**は回転を指定します。
+HeadPose 属性を使用すれば、顔矩形を回転するようプログラミングできます。 顔を検出する際に、この属性を指定する場合 (「[How to detect faces](HowtoDetectFacesinImage.md)」 (顔の検出方法)参照)、クエリは後で実行きます。 [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF)アプリの次のメソッドから、 **DetectedFace** オブジェクトの一覧を取得し **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** オブジェクトの一覧を返します。 ここで **Face** はカスタム クラスであり、更新された四角形の座標など顔データを保存します。 新しい値は、**上部**、**左**、**幅**、および **高さ** 用に計算し新しいフィールドの **FaceAngle** は回転を指定します。
 
 ```csharp
 /// <summary>
@@ -109,7 +109,7 @@ public static IEnumerable<Face> CalculateFaceRectangleForRendering(IList<Detecte
 
 ### <a name="display-the-updated-rectangle"></a>更新された四角形の表示
 
-ここでは、返された使える**Face**オブジェクトをディスプレイで使用できます。 [FaceDetectionPage.xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml)の次の行は、新しい四角形をこのデータからレンダリングする方法を示します。
+ここでは、返された使える **Face** オブジェクトをディスプレイで使用できます。 [FaceDetectionPage.xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml)の次の行は、新しい四角形をこのデータからレンダリングする方法を示します。
 
 ```xaml
  <DataTemplate>

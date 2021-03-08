@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 9a347d57de540ed31c862f618be7c8a98b685348
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763433"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546926"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>テンプレートを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -29,7 +29,7 @@ ms.locfileid: "97763433"
 
 テンプレートを使用するデプロイの大まかなワークフローは次のとおりです。
 
-1. **前提条件を構成する** - 前提条件には、デバイス、クライアント、および VM に関する 3 種類があります。
+1. **前提条件を構成する** - 前提条件には、デバイス、クライアント、VM に関する 3 種類があります。
 
     1. **デバイスに関する前提条件**
 
@@ -47,7 +47,7 @@ ms.locfileid: "97763433"
         1. すべての VM リソースを含めるデバイスの場所にリソース グループを作成します。
         1. VM イメージの作成に使用される VHD をアップロードするためのストレージ アカウントを作成します。
         1. ローカル ストレージ アカウントの URI を、デバイスにアクセスするクライアント上で DNS または hosts ファイルに追加します。
-        1. デバイスにアクセスするローカル クライアントだけでなく、デバイスにも BLOB ストレージ証明書をインストールします。 必要に応じて、Storage Explorer に BLOB ストレージ証明書をインストールします。
+        1. デバイスと、デバイスにアクセスするローカル クライアントに BLOB ストレージ証明書をインストールします。 必要に応じて、Storage Explorer に BLOB ストレージ証明書をインストールします。
         1. VHD を作成し、先ほど作成したストレージ アカウントにアップロードします。
 
 2. **テンプレートから VM を作成する**
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-前の手順で作成したリソース グループを使用して、新しいストレージ アカウントを作成します。 これは、VM の仮想ディスク イメージのアップロードに使用される **ローカル ストレージ アカウント** です。
+前の手順で作成したリソース グループを使用して、新しいストレージ アカウントを作成します。 このアカウントは、VM の仮想ディスク イメージのアップロードに使用される **ローカル ストレージ アカウント** です。
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -149,7 +149,7 @@ BLOB ストレージへの接続に使用するクライアント用に、hosts 
 
 ### <a name="optional-install-certificates"></a>(省略可能) 証明書をインストールする
 
-*http* を使用して Storage Explorer 経由で接続する場合は、この手順をスキップします。 *https* を使用している場合は、Storage Explorer に適切な証明書をインストールする必要があります。 この場合は、BLOB エンドポイント証明書をインストールします。 詳細については、[証明書を管理する](azure-stack-edge-j-series-manage-certificates.md)方法に関するページで、証明書を作成およびアップロードする方法を参照してください。 
+*http* を使用して Storage Explorer 経由で接続する場合は、この手順をスキップします。 *https* を使用している場合は、Storage Explorer に適切な証明書をインストールする必要があります。 この場合は、BLOB エンドポイント証明書をインストールします。 詳細については、[証明書を管理する](azure-stack-edge-gpu-manage-certificates.md)方法に関するページで、証明書を作成およびアップロードする方法を参照してください。 
 
 ### <a name="create-and-upload-a-vhd"></a>VHD を作成してアップロードする
 
@@ -237,7 +237,7 @@ VM のイメージを作成するには、`CreateImage.parameters.json` パラ�
     }
 ```
 
-`CreateImage.parameters.json` ファイルを編集し、Azure Stack Edge Pro デバイスに次のものを含めます。
+`CreateImage.parameters.json` ファイルを編集し、Azure Stack Edge Pro デバイスに次の値を含めます。
 
 1. アップロードする VHD に対応する OS の種類を指定します。 OS の種類は、Windows または Linux にすることができます。
 
@@ -250,16 +250,17 @@ VM のイメージを作成するには、`CreateImage.parameters.json` パラ�
 
 2. イメージの URI を、前の手順でアップロードしたイメージの URI に変更します。
 
-    ```json
-    "imageUri": {
-        "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-    ```
-    Storage Explorer で *http* を使用している場合は、これを *http* URI に変更します。
+   ```json
+   "imageUri": {
+       "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
+       },
+   ```
+
+   Storage Explorer で *http* を使用している場合は、URI を *http* URI に変更します。
 
 3. 一意のイメージ名を指定します。 このイメージは、後の手順で VM を作成するために使用されます。 
 
-    この記事で使用される json のサンプルを次に示します。
+   この記事で使用される json のサンプルを次に示します。
 
     ```json
     {
@@ -278,6 +279,7 @@ VM のイメージを作成するには、`CreateImage.parameters.json` パラ�
       }
     }
     ```
+
 5. パラメーター ファイルを保存します。
 
 
@@ -588,4 +590,4 @@ Linux VM に接続するには、これらの手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Resource Manager コマンドレット](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager コマンドレット](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

@@ -42,6 +42,8 @@
       href: authentication.md
     - name: セキュリティ ベースライン
       href: security-baseline.md
+    - name: Azure Policy によるセキュリティ制御
+      href: ./security-controls-policy.md
 - name: コンテナー サポート
   items:
     - name: コンテナー サポート
@@ -49,7 +51,7 @@
     - name: コンテナー イメージ タグとリリース ノート
       href: ./containers/container-image-tags.md
     - name: コンテナーに関する FAQ
-      href: ./containers/container-faq.md
+      href: ./containers/container-faq.yml
     - name: コンテナーのレシピ
       items:
         - name: コンテナーの再利用

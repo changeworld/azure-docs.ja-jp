@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 37bd7d91dfe9e4b9e620f89e7504331d8f631a6a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4851d06ffedaacb441d28cae24d7d32bfe1c611c
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602119"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576263"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -253,12 +253,16 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
- 
-このチュートリアルで使用したインスタンスは、次に取り組む "[*サンプル クライアント アプリを使用した基本事項の確認に関するチュートリアル*](tutorial-command-line-app.md)" で再利用できます。 次のチュートリアルに進む場合は、ここで設定した Azure Digital Twins インスタンスを残しておくことができます。
+
+このチュートリアルを終えたら、次に行う作業に応じて、削除するリソースを選択できます。
+
+* **次のチュートリアルに進む場合** は、このチュートリアルで使用したインスタンスを次のチュートリアルで再利用できます。 ここでセットアップした Azure Digital Twins リソースは維持したまま、このセクションの残りはスキップしてください。
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最後に、ローカル コンピューター上に作成したプロジェクト フォルダーを削除します。
+さらに、プロジェクト フォルダーもローカル コンピューターから削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,6 +1,6 @@
 ---
 title: 'クイックスタート: ユニバーサル Windows プラットフォーム デスクトップ アプリでユーザーのサインインと Microsoft Graph の呼び出しを行う | Azure'
-description: このクイックスタートでは、Windows デスクトップ .NET (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を呼び出す方法について説明します
+description: このクイックスタートでは、Windows デスクトップ .NET (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォームによって保護されている API を呼び出す方法について説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1cac8ab4ccf23047bd5eb2d15c174a2009f2864a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 81a5f28f0bf2f7f7ea005a4d9fe8d42337f6d0b9
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178298"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103398"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
 
@@ -36,7 +36,7 @@ ms.locfileid: "98178298"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
@@ -45,7 +45,7 @@ ms.locfileid: "98178298"
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -59,7 +59,7 @@ ms.locfileid: "98178298"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのサンプル コードを動作させるには、応答 URL として **https://login.microsoftonline.com/common/oauth2/nativeclient** を追加する必要があります。
+> このクイックスタートのコード サンプルを動作させるには、**リダイレクト URI** (`https://login.microsoftonline.com/common/oauth2/nativeclient`) を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -145,7 +145,7 @@ MSAL には、トークンの取得に使用する 2 つのメソッド `Acquire
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-ユーザーは Microsoft ID プラットフォーム エンドポイントの操作を強制される場合があります。その場合、各自の資格情報の検証または同意を行うポップアップ ウィンドウが表示されます。 次に例をいくつか示します。
+ユーザーは Microsoft ID プラットフォームの操作を強制される場合があります。その場合、各自の資格情報の検証または同意を行うポップアップ ウィンドウが表示されます。 次に例をいくつか示します。
 
 - ユーザーが初めてアプリケーションにサインインした場合
 - パスワードの有効期限が切れているため、ユーザーが資格情報を再入力する必要がある場合

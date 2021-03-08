@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: a20c495553dfe9a16c34a2972575d21cc95eef44
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537137"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507538"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 
@@ -79,6 +79,6 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 
 - [ISV にとっての Business Applications](https://partner.microsoft.com/solutions/business-applications/isv-overview) (オンライン記事)
 - [Business Applications ISV 向けの新しいプログラムの概要](https://aka.ms/BizAppsISVProgram) (PDF)
-- [ビジネス アプリケーション ISV コネクト プログラムの FAQ](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf) (PDF)
+- [ビジネス アプリケーション ISV コネクト プログラムの FAQ](https://assetsprod.microsoft.com/faq-using-partner-center-isv-connect.pdf) (PDF)
 - [Business Applications ISV 向けの今後のプログラム](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) (ブログ投稿)
 - [ISV コネクト プログラムのポリシー](https://aka.ms/bizappsisvpolicies) (PDF)

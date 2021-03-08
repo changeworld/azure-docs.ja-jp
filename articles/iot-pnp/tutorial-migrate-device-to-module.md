@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95500273"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831208"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>チュートリアル:IoT プラグ アンド プレイ モジュールを接続する (C#)
 
@@ -20,7 +20,12 @@ ms.locfileid: "95500273"
 
 IoT ハブに接続するときにモデル ID を発行し、そのモデル ID によって識別される Digital Twins Definition Language (DTDL) モデルに記述されているプロパティとメソッドを実装するデバイスである場合は、IoT プラグ アンド プレイ デバイスです。 デバイスで DTDL とモデル ID がどのように使用されるかの詳細については、[IoT プラグ アンド プレイの開発者ガイド](./concepts-developer-guide-device.md)を参照してください。 モジュールでは、モデル ID と DTDL モデルを同じ方法で使用します。
 
-このチュートリアルでは、IoT プラグ アンド プレイ モジュールを実装する方法を示すために、サーモスタットの C# デバイス サンプルを汎用モジュールに変換する方法を示します。
+このチュートリアルでは、IoT プラグ アンド プレイ モジュールの実装をデモンストレーションするために、次の方法を紹介します。
+
+> [!div class="checklist"]
+> * モジュールを含むデバイスを IoT ハブに追加する
+> * サーモスタットの C# デバイス サンプルを汎用モジュールに変換する
+> * サービス SDK を使用してモジュールを操作する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -232,6 +237,10 @@ Azure IoT エクスプローラー ツールを使用して、以下を参照で
 * IoT Edge デバイスからのテレメトリ。
 * IoT プラグ アンド プレイ通知をトリガーする、IoT Edge モジュール ツイン プロパティの更新。
 * IoT プラグ アンド プレイ コマンドに対する IoT Edge モジュールの反応。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

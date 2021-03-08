@@ -2,13 +2,13 @@
 title: Azure VMware Solution の予約インスタンスを使用してコストを節約する
 description: Azure VMware Solution の予約インスタンスを購入する方法について説明します。
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: 74344889cd107350e5026c4a0369382fb9c7ef51
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/03/2021
+ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600864"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550977"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware Solution でコストを節約する
 
@@ -132,3 +132,12 @@ CSP マネージド予約の詳細については、「[パートナー セン�
 一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 CSP は、一定の制限付きで、顧客に代わって購入する予約の取り消し、交換、または返金を行うことができます。 詳細については、「[顧客の Microsoft Azure の予約を管理、取り消し、交換、または返金する](/partner-center/azure-reservations-manage)」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+Azure VMware Solution の予約インスタンスの購入について確認したので、次の事項の学習に進むことができます。
+
+- [Azure VMware Solution 評価の作成](../migrate/how-to-create-azure-vmware-solution-assessment.md)。
+- [Azure VMware Solution 用の DHCP の管理](manage-dhcp.md)。
+- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+ 

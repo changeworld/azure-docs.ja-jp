@@ -4,12 +4,12 @@ description: Azure Deployment Manager を使用して多くのリージョンに
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b950fdc36fe3fbea1ce9436bdd7f7372c64c055
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 63553b0bbca031faa44e0d88480fcc08950a3e2c
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333207"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627501"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (パブリック プレビュー)
 
@@ -21,19 +21,19 @@ Azure Deployment Manager はプレビュー段階です。 [フィードバッ�
 
 Deployment Manager を使用するには、次の 4 つのファイルを作成する必要があります。
 
-* トポロジ テンプレート
-* ロールアウト テンプレート
-* トポロジのパラメーター ファイル
-* ロールアウトのパラメーター ファイル
+* トポロジ テンプレート。
+* ロールアウト テンプレート。
+* トポロジのパラメーター ファイル。
+* ロールアウトのパラメーター ファイル。
 
 トポロジ テンプレートをデプロイしてから、ロールアウト テンプレートをデプロイします。
 
 その他のリソース:
 
-- [Azure Deployment Manager REST API リファレンス](/rest/api/deploymentmanager/)
-- [チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)」の手順に従います。
-- [チュートリアル:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
-- [Azure Deployment Manager サンプル](https://github.com/Azure-Samples/adm-quickstart)。
+* [Azure Deployment Manager REST API リファレンス](/rest/api/deploymentmanager/)。
+* [チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)」の手順に従います。
+* [チュートリアル:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
+* [Azure Deployment Manager サンプル](https://github.com/Azure-Samples/adm-quickstart)。
 
 ## <a name="identity-and-access"></a>ID とアクセス
 
@@ -49,10 +49,10 @@ ID は、ロールアウトと同じ場所に存在する必要があります�
 
 トポロジ テンプレートには、次のリソースが含まれています。
 
-* 成果物ソース - Resource Manager テンプレートおよびパラメーターの格納場所
-* サービス トポロジ - 成果物ソースへのポイント
-  * サービス - 場所と Azure サブスクリプション ID を指定します
-    * サービス ユニット - リソース グループ、デプロイ モード、およびテンプレートとパラメーター ファイルへのパスを指定します
+* 成果物ソース - Resource Manager テンプレートおよびパラメーターの格納場所。
+* サービス トポロジ - 成果物ソースへのポイント。
+  * サービス - 場所と Azure サブスクリプション ID を指定します。
+    * サービス ユニット - リソース グループ、デプロイ モード、およびテンプレートとパラメーター ファイルへのパスを指定します。
 
 各レベルでの動作については、指定した値を確認すると役立ちます。
 
@@ -87,7 +87,7 @@ ID は、ロールアウトと同じ場所に存在する必要があります�
 
 ### <a name="service-topology"></a>サービス トポロジ
 
-次の例は、サービス トポロジ リソースの一般的な形式を示します。 テンプレートおよびパラメーター ファイルを保持する成果物ソースのリソース ID を提供します。 サービス トポロジにはすべてのサービス リソースが含まれます。 成果物ソースが使用可能であることを確認ために、サービス トポロジが成果物ソースに応じて異なります。
+次の例は、サービス トポロジ リソースの一般的な形式を示します。 テンプレートおよびパラメーター ファイルを保持する成果物ソースのリソース ID を提供します。 サービス トポロジにはすべてのサービス リソースが含まれます。 サービス トポロジは成果物ソースに応じて異なるため、成果物ソースが使用可能であることを確認します。
 
 ```json
 {
@@ -175,11 +175,11 @@ ID は、ロールアウトと同じ場所に存在する必要があります�
 
 ロールアウト テンプレートには、サービスのデプロイ時に行う手順を記述します。 使用するサービス トポロジを指定し、サービス ユニットのデプロイの順序を定義します。 デプロイ用バイナリを格納するための成果物ソースが含まれています。 ロールアウト テンプレートでは、次の階層を定義します。
 
-* 成果物ソース
-* 手順
-* ロールアウト
-  * 手順グループ
-    * デプロイ操作
+* 成果物ソース。
+* 手順。
+* ロールアウト。
+  * 手順グループ。
+    * デプロイ操作。
 
 次の図は、ロールアウト テンプレートの階層を示します。
 
@@ -193,9 +193,9 @@ ID は、ロールアウトと同じ場所に存在する必要があります�
 
 ### <a name="steps"></a>手順
 
-デプロイ操作の前または後に実行する手順を定義できます。 現在は、`wait` 手順と "healthCheck" 手順だけを利用できます。
+デプロイ操作の前または後に実行する手順を定義できます。 現在は、`wait` 手順と `healthCheck` 手順だけを利用できます。
 
-待機手順は、続行する前にデプロイを一時停止します。 次のサービス ユニットをデプロイする前に、サービスが期待どおりに実行されていることを確認できます。 次の例は、待機手順の一般的な形式を示します。
+`wait` 手順は、続行する前にデプロイを一時停止します。 次のサービス ユニットをデプロイする前に、サービスが期待どおりに実行されていることを確認できます。 次の例は、`wait` 手順の一般的な形式を示します。
 
 ```json
 {
@@ -214,13 +214,13 @@ ID は、ロールアウトと同じ場所に存在する必要があります�
 
 duration プロパティは、[ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用します。 前述の例では、1 分間の待機を指定します。
 
-正常性チェックの手順の詳細については、「[Azure Deployment Manager に正常性統合ロールアウトを導入する](./deployment-manager-health-check.md)」と「[Tutorial:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
+正常性チェックの詳細については、「[Azure Deployment Manager に正常性統合ロールアウトを導入する](./deployment-manager-health-check.md)」と「[Tutorial:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
 
 詳細については、[steps テンプレート リファレンス](/azure/templates/Microsoft.DeploymentManager/steps)を参照してください。
 
 ### <a name="rollouts"></a>ロールアウト
 
-成果物ソースが使用可能であることを確認するために、ロールアウトが成果物ソースに応じて異なります。 ロールアウトは、デプロイされるサービス ユニットごとの手順グループを定義します。 デプロイの前または後に行うアクションを定義できます。 たとえば、サービス ユニットがデプロイされた後にデプロイが待機することを指定できます。 手順グループの順序を定義できます。
+ロールアウトは成果物ソースに応じて異なるため、成果物ソースが使用可能であることを確認します。 ロールアウトは、デプロイされるサービス ユニットごとの手順グループを定義します。 デプロイの前または後に行うアクションを定義できます。 たとえば、サービス ユニットがデプロイされた後にデプロイが待機することを指定できます。 手順グループの順序を定義できます。
 
 ID オブジェクトは、デプロイ アクションを実行する[ユーザー割り当てマネージド ID](#identity-and-access) を指定します。
 
@@ -270,7 +270,7 @@ ID オブジェクトは、デプロイ アクションを実行する[ユーザ
 
 バージョン管理されたデプロイでは、成果物へのパスを新しいバージョンごとに変更します。 デプロイを初めて実行するときに、パスは `https://<base-uri-blob-container>/binaries/1.0.0.0` であるとします。 2 回目は、`https://<base-uri-blob-container>/binaries/1.0.0.1` になります。 Deployment Manager は、`$containerRoot` 変数を使用すると、現在のデプロイに関する正しいルート パスの取得が簡略化されます。 この値はバージョンごとに変更され、デプロイ前にはわかりません。
 
-テンプレート用のパラメーター ファイルで `$containerRoot` 変数を使用して、Azure リソースをデプロイします。 デプロイ時に、この変数は、ロールアウトからの実際の値に置き換えられます。
+Azure リソースをデプロイするテンプレート用のパラメーター ファイルで `$containerRoot` 変数を使用します。 デプロイ時に、この変数は、ロールアウトからの実際の値に置き換えられます。
 
 たとえば、ロールアウト中に、バイナリの成果物の成果物ソースを作成します。
 
@@ -296,7 +296,7 @@ ID オブジェクトは、デプロイ アクションを実行する[ユーザ
 
 `artifactRoot` および `sasUri` プロパティを通知します。 成果物のルートは、`binaries/1.0.0.0` のような値に設定できます。 SAS URI は、アクセス用の SAS トークンを含むストレージ コンテナーの URI です。 Deployment Manager は、`$containerRoot` 変数の値を自動的に構築します。 `<container>/<artifactRoot>` の形式でこれらの値を組み合わせます。
 
-テンプレートおよびパラメーター ファイルは、バージョン管理されたバイナリを取得するための正しいパスを認識している必要があります。 たとえば、Web アプリのファイルをデプロイするには、$containerRoot 変数で次のパラメータ ファイルを作成します。 パスには 2 つの円記号 (`\\`) を使用する必要があります。最初の円記号はエスケープ文字であるためです。
+テンプレートおよびパラメーター ファイルは、バージョン管理されたバイナリを取得するための正しいパスを認識している必要があります。 たとえば、Web アプリのファイルをデプロイするには、`$containerRoot` 変数で次のパラメータ ファイルを作成します。 パスには 2 つの円記号 (`\\`) を使用する必要があります。最初の円記号はエスケープ文字であるためです。
 
 ```json
 {
@@ -330,7 +330,7 @@ ID オブジェクトは、デプロイ アクションを実行する[ユーザ
 }
 ```
 
-新しいフォルダーを作成し、ロールアウト中にそのルートを渡すことによって、バージョン管理されたデプロイを管理します。 パスは、リソースをデプロイするテンプレートにまで至ります。
+新しいフォルダーを作成し、ロールアウト中にそのルート パスを渡すことによって、バージョン管理されたデプロイを管理します。 パスは、リソースをデプロイするテンプレートにまで至ります。
 
 ## <a name="next-steps"></a>次のステップ
 

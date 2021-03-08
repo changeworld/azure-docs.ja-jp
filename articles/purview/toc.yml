@@ -77,6 +77,8 @@ items:
                 href: manage-data-sources.md
               - name: Purview コネクタの概要
                 href: purview-connector-overview.md
+              - name: Azure Multiple Source
+                href: register-scan-azure-multiple-sources.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
                 displayName: Register and scan azure blob storage
@@ -102,15 +104,27 @@ items:
                 href: register-scan-azure-synapse-analytics.md
               - name: オンプレミスの SQL サーバー
                 href: register-scan-on-premises-sql-server.md
+              - name: Oracle
+                href: register-scan-oracle-source.md
               - name: Power BI のテナント - ポータル
                 href: register-scan-power-bi-tenant.md
+              - name: SAP ECC
+                href: register-scan-sapecc-source.md
+              - name: SAP S/4HANA
+                href: register-scan-saps4hana-source.md
+              - name: Teradata
+                href: register-scan-teradata-source.md
+              - name: Amazon S3
+                href: register-scan-amazon-s3.md
       - name: ビジネス用語集
         items:
           - name: 用語集の用語の作成、インポート、エクスポート
             href: how-to-create-import-export-glossary.md
           - name: 用語テンプレートの管理
             href: how-to-manage-term-templates.md
-          - name: 用語集の用語を割り当てるために、アセットを一括編集する
+      - name: 一括編集
+        items:
+          - name: 資産を一括編集して注釈と連絡先にタグを付ける
             href: how-to-bulk-edit-assets.md
       - name: 分類
         items:
@@ -152,7 +166,13 @@ items:
             href: sensitivity-insights.md
           - name: ファイル名拡張子の分析情報を表示する
             href: file-extension-insights.md
+      - name: セキュリティとネットワーク
+        items:
+          - name: プライベート エンドポイントを管理する
+            href: catalog-private-link.md
   - name: リファレンス
     items:
       - name: サポートされている分類
         href: supported-classifications.md
+      - name: ABAP 関数のデプロイ ガイド
+        href: abap-functions-deployment-guide.md

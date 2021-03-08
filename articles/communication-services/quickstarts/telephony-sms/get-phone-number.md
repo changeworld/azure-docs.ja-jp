@@ -9,16 +9,15 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 3c7f171a2b4957b687831ec2777ecc40b5913a15
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a4a569a11561671febf31b037c499b6f32b44d48
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938649"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657572"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して電話番号を取得する
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure portal を使用して電話番号を購入することで、Azure Communication Services の使用を開始します。
@@ -40,15 +39,15 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Communication Services リソースの電話のページを示すスクリーンショット。":::
 
-**[Get]\(取得\)** ボタンをクリックしてウィザードを起動します。 **[Phone numbers]\(電話番号\)** ブレードのウィザードでは、自分のシナリオに最適な電話番号を選択するのに役立つ一連の質問が表示されます。 
+**[Get]\(取得\)** ボタンをクリックしてウィザードを起動します。 **[Phone numbers]\(電話番号\)** ブレードのウィザードでは、自分のシナリオに最適な電話番号を選択するのに役立つ一連の質問が表示されます。
 
-まず、電話番号をプロビジョニングする **[Country/region]\(国/地域\)** を選択する必要があります。 国または地域を選択したら、自分のニーズに最も適した **[Use case]\(ユース ケース\)** を選択する必要があります。 
+まず、電話番号をプロビジョニングする **[Country/region]\(国/地域\)** を選択する必要があります。 国または地域を選択したら、自分のニーズに最も適した **[Use case]\(ユース ケース\)** を選択する必要があります。
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="[Get phone numbers]\(電話番号の取得\) ビューを示すスクリーンショット。":::
 
 ### <a name="select-your-phone-number-features"></a>電話番号の機能を選択する
 
-電話番号を構成する手順は、2 つに分けられます。 
+電話番号を構成する手順は、2 つに分けられます。
 
 1. [番号の種類](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)の選択
 2. [番号の機能](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)の選択

@@ -6,14 +6,17 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a387261b392ea6718941f5eabe889e0c1a41fd5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438819"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750608"
 ---
 このクイックスタートでは、Android 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
+
+> [!NOTE]
+> このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.8 を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,9 +35,11 @@ Android Studio で、[Start a new Android Studio project]\(新しい Android Stu
 
 [Phone and Tablet]\(電話およびタブレット\) で、[Empty Activity]\(空のアクティビティ\) プロジェクト テンプレートを選択します。
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Android Studio で [Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\) ボタンが選択された状態を示すスクリーンショット。" 以上を選択します。
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="プロジェクト テンプレート画面で [Empty Activity]\(空のアクティビティ\) オプションが選択された状態を示すスクリーンショット。":::
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Android Studio で [Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\) ボタンが選択された状態を示すスクリーンショット。":::
+最小クライアント ライブラリである"API 26:Android 8.0 (Oreo)" 以上を選択します。
+
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="プロジェクト テンプレート画面 2 で [Empty Activity]\(空のアクティビティ\) オプションが選択された状態を示すスクリーンショット。":::
 
 
 ### <a name="install-the-package"></a>パッケージをインストールする
@@ -76,7 +81,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 ```
@@ -178,11 +183,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azure.android.communication.common.CommunicationUser;
-import com.azure.android.communication.common.CommunicationUserCredential;
-import com.azure.communication.calling.CallAgent;
-import com.azure.communication.calling.CallClient;
-import com.azure.communication.calling.StartCallOptions;
+import com.azure.android.communication.common.CommunicationUserIdentifier;
+import com.azure.android.communication.common.CommunicationTokenCredential;
+import com.azure.android.communication.calling.CallAgent;
+import com.azure.android.communication.calling.CallClient;
+import com.azure.android.communication.calling.StartCallOptions;
 
 
 import java.util.ArrayList;
@@ -260,8 +265,9 @@ Azure Communication Services 通話クライアント ライブラリが備え�
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。|
-| CallAgent | CallAgent は、通話を開始および管理するために使用されます。 |
+| CallAgent | CallAgent は、通話を開始および管理するために使用します。 |
 | CommunicationUserCredential | CommunicationUserCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。|
+| CommunicationIdentifier | CommunicationIdentifier は、呼び出しの一部となる可能性があるさまざまな種類の参加者として使用されます。|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>ユーザー アクセス トークンからエージェントを作成する
 
@@ -276,7 +282,7 @@ private void createAgent() {
     String userToken = "<User_Access_Token>";
 
     try {
-        CommunicationUserCredential credential = new CommunicationUserCredential(userToken);
+        CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
         callAgent = new CallClient().createCallAgent(getApplicationContext(), credential).get();
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to create call agent.", Toast.LENGTH_SHORT).show();
@@ -301,7 +307,7 @@ private void startCall() {
 
     callAgent.call(
         getApplicationContext(),
-        new CommunicationUser[] {new CommunicationUser(calleeId)},
+        new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);
 }
 ```
@@ -311,7 +317,7 @@ private void startCall() {
 
 ツール バーの [Run App]\(アプリの実行\) ボタン (Shift + F10) を使用してアプリを起動できるようになりました。 `8:echo123` を呼び出して電話を発信できることを確認してください。 事前に録音したメッセージが再生された後、そのメッセージがもう一度繰り返されます。
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Android Studio で [Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\) ボタンが選択された状態を示すスクリーンショット。":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="完成したアプリケーションを示すスクリーンショット。":::
 
 ## <a name="sample-code"></a>サンプル コード
 

@@ -2,15 +2,16 @@
 title: Automation アカウントから Azure Automation Update Management を有効にする
 description: この記事では、Automation アカウントから Update Management を有効にする方法について説明します。
 services: automation
+ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 089d5d70d8ad8060455e5c1bee45e0bee4a12fae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380540"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575839"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Automation アカウントから Update Management を有効にする
 
@@ -22,8 +23,9 @@ ms.locfileid: "94380540"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* マシンを管理する [Automation アカウント](../index.yml)。
-* Arc 対応サーバーで登録された [Azure 仮想マシン](../../virtual-machines/windows/quick-create-portal.md) (VM) またはサーバー。 Azure 以外の VM やサーバーの場合、Windows または Linux 向けの [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)をインストールしておく必要があり、Update Management が有効になっている Automation アカウントにリンクされているワークスペースに報告させる必要があります。 最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [*Linux* または *Windows* Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーに割り当てることにより、Windows または Linux 用の Log Analytics エージェントをインストールすることが推奨されます。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
+* マシンを管理する [Automation アカウント](../automation-security-overview.md)。
+* Arc 対応サーバーで登録された [Azure 仮想マシン](../../virtual-machines/windows/quick-create-portal.md) (VM) またはサーバー。 Azure 以外の VM やサーバーの場合、Windows または Linux 向けの [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)をインストールしておく必要があり、Update Management が有効になっている Automation アカウントにリンクされているワークスペースに報告させる必要があります。 最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [*Linux* または *Windows* Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーに割り当てることにより、Windows または Linux 用の Log Analytics エージェントをインストールすることが推奨されます。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
+
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -53,7 +55,7 @@ Azure の外部でホストされているマシンまたはサーバー (Azure 
 
 1. Automation アカウントから、 **[更新プログラムの管理]** で **[更新プログラムの管理]** を選択します。
 
-2. **[Azure 以外のマシンを追加する]** を選択します。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、マシンが Update Management へのレポートを開始できるように、[Windows 用の Log Analytics エージェントをインストールして構成する方法](../../azure-monitor/platform/log-analytics-agent.md)が示されます。 Operations Manager によって現在管理されているマシンを有効にする場合、新しいエージェントは必要ありません。 ワークスペース情報は、既存のエージェントに入力されます。
+2. **[Azure 以外のマシンを追加する]** を選択します。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、マシンが Update Management へのレポートを開始できるように、[Windows 用の Log Analytics エージェントをインストールして構成する方法](../../azure-monitor/agents/log-analytics-agent.md)が示されます。 Operations Manager によって現在管理されているマシンを有効にする場合、新しいエージェントは必要ありません。 ワークスペース情報は、既存のエージェントに入力されます。
 
 ## <a name="enable-machines-in-the-workspace"></a>ワークスペースでのマシンの有効化
 

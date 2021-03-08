@@ -3,18 +3,18 @@ title: ML Studio (classic):オンプレミスの SQL Server - Azure
 description: SQL Server データベースのデータを使用して Azure Machine Learning Studio (クラシック) で高度な分析を実行します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8cdf1029371e0e11c38616e7800652ca9debbba7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325702"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517401"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server データベースを使用して Azure Machine Learning Studio (クラシック) で分析を実行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "93325702"
 
 多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning Studio (クラシック) では、現在、SQL Server データベースからのデータの読み取りと、そのデータを使用したモデルのトレーニングとスコア付けがサポートされています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio (クラシック) の **データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのために SQL Server データベースから直接読み取ることができます。
 
-この記事では、SQL Server データを Azure Machine Learning Studio (クラシック) で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 " *など* " の Studio (クラシック) の概念を理解していることが前提となっています。
+この記事では、SQL Server データを Azure Machine Learning Studio (クラシック) で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 "*など*" の Studio (クラシック) の概念を理解していることが前提となっています。
 
 > [!NOTE]
 > この機能は、無料のワークスペースでは使用できません。 Machine Learning の価格とレベルの詳細については、 [Azure Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)に関するページを参照してください。
@@ -100,7 +100,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
     * **ゲートウェイ名** と **インスタンス名** がゲートウェイの名前に設定されている。
     * **[登録]** が **[登録済み]** に設定されている。
     * **[状態]** が **[開始]** に設定されている。
-    * 下部のステータス バーに、緑色のチェック マークと共に " **Data Management Gateway クラウド サービスに接続済み** " と表示されている。
+    * 下部のステータス バーに、緑色のチェック マークと共に "**Data Management Gateway クラウド サービスに接続済み**" と表示されている。
 
       ![Data Management Gateway マネージャー](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
@@ -144,6 +144,6 @@ Studio (クラシック) で各ワークスペースに対して複数のゲー�
    ![データのインポート モジュールのプロパティ](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. **[実行]** をクリックして、実験を実行します。
 
-実験の実行が終了した後、 **データのインポート** モジュールの出力ポートをクリックし、 **[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
+実験の実行が終了した後、**データのインポート** モジュールの出力ポートをクリックし、 **[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
 
 実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。 **データのインポート** モジュールで構成されている SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。 オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](excel-add-in-for-web-services.md) を使用することをお勧めします。 現時点では、 **データのエクスポート** による SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。

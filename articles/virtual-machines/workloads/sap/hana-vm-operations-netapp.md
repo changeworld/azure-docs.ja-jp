@@ -8,20 +8,19 @@ manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure, ANF, HANA, Azure NetApp Files, スナップショット
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: de8af71928ad6a83d4930e4e6e0b8dd257148111
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570084"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666611"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム
 
@@ -62,7 +61,13 @@ Azure NetApp ボリュームのスループットは、「[Azure NetApp Files �
 
 次の表は、バックアップを格納するには大規模な "Standard" ボリュームを作成するのが理にかなっていること、そして 12 TB を超える "Ultra" ボリュームを作成すると 1 つの LIF の物理的な帯域幅の容量を超えてしまうため、理にかなっていないことを示しています。 
 
-LIF と 1 つの Linux セッションの最大スループットは、1.2 から 1.4 GB/秒です。 
+LIF と 1 つの Linux セッションの最大スループットは、1.2 から 1.4 GB/秒です。 /hana/data のスループットを向上させる必要がある場合は、SAP HANA データ ボリュームのパーティション分割を使用して、データの再読み込み時または HANA セーブポイントの I/O アクティビティを、複数の NFS 共有に配置されている複数の HANA データ ファイル間でストライピングできます。 HANA データ ボリュームのストライピングの詳細については、これらの記事をご覧ください。
+
+- [HANA 管理者ガイド](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [SAP HANA に関するブログ - データ ボリュームのパーティション分割](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP ノート #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP ノート #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
 
 | サイズ  | スループット (Standard) | スループット (Premium) | スループット (Ultra) |
 | --- | --- | --- | --- |

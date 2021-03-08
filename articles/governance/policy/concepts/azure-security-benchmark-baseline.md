@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201452"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573066"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Azure Policy セキュリティ ベースライン
 
@@ -31,9 +31,9 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 **ガイダンス**:Azure Policy では、アクティビティ ログ (自動的に有効になります) を使用して、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が記録されます。
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../../azure-monitor/platform/diagnostic-settings.md)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure でのログ記録とログのさまざまな種類について](../../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure でのログ記録とログのさまざまな種類について](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -89,7 +89,7 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 **ガイダンス**: Azure Monitor とアクティビティ ログを使用して、Azure Policy が変更された場合のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure Security Center の監視**: 現在は使用できません

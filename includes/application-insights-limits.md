@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: application-insights
-author: mrbullwinkle
+author: lgayhardt
 ms.service: application-insights
 ms.topic: include
 ms.date: 08/06/2019
-ms.author: mbullwin
+ms.author: lagayhar
 ms.custom: include file
-ms.openlocfilehash: 76176c72ad77341d7db1c8f4158a90836b74a91c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c4f6b876a4aa80c7e51f2bb3ca88234203d0daa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726183"
 ---
 アプリケーションごと (インストルメンテーション キーごと) のメトリックとイベントの数には制限があります。 制限は、選択する[料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
 
@@ -21,7 +21,8 @@ ms.locfileid: "96011347"
 | --- | --- | --- |
 | 1 日あたりの合計データ量 | 100 GB | 上限を設定することでデータを削減できます。 さらにデータが必要な場合は、ポータルで上限を最大 1,000 GB まで引き上げることができます。 1,000 GB を超える容量については、AIDataCap@microsoft.com までメールでご連絡ください。
 | Throttling | 32,000 イベント/秒 | 制限は 1 分以上にわたって測定されます。
-| データの保持 | [30 日から 730 日](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | このリソースは、[Search](../articles/azure-monitor/app/diagnostic-search.md)、[Analytics](../articles/azure-monitor/log-query/log-query-overview.md)、および[メトリックス エクスプローラー](../articles/azure-monitor/platform/metrics-charts.md)用です。
+| データ保持 (ログ) | [30 日から 730 日](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | このリソースは[ログ](../articles/azure-monitor/logs/log-query-overview.md)用です。
+| データ保持 (メトリック) | 90 日間| このリソースは[メトリックス エクスプローラー](../articles/azure-monitor/essentials/metrics-charts.md)用です。
 | [可用性の複数手順のテスト](../articles/azure-monitor/app/availability-multistep.md)の詳細な結果の保持 | 90 日間 | このリソースは、各手順の詳細な結果を提供します。
 | テレメトリ項目の最大サイズ | 64 KB |
 | バッチあたりの最大テレメトリ項目数 | 64 K |

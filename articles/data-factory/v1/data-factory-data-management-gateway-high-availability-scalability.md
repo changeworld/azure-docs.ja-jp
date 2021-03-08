@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory のデータ管理ゲートウェイによる高可用性
 description: この記事では、ノードを追加することでデータ管理ゲートウェイをスケールアウトしたり、1 つのノードで実行できる同時実行ジョブ数を増やすことでスケールアップしたりできる方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003618"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391730"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 > [!NOTE]
@@ -98,7 +93,7 @@ ms.locfileid: "96003618"
         > TLS/SSL 証明書を使用するための要件一覧については、「[TLS/SSL 証明書の要件](#tlsssl-certificate-requirements)」セクションをご覧ください。 
     5. ゲートウェイが正常にインストールされたら、[構成マネージャーの起動] をクリックします。
     
-        ![手動セットアップ - 構成マネージャーの起動](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
+        ![手動セットアップ - 構成マネージャーの起動](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
     6. ノード (オンプレミス Windows コンピューター) の Data Management Gateway 構成マネージャーを確認します。接続状態、**ゲートウェイ名**、および **ノード名** が表示されます。  
 
         ![Data Management Gateway - インストール成功](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
@@ -200,7 +195,7 @@ Role | ディスパッチャーとワーカーという 2 つのタイプの役�
 
 次の表は、**ゲートウェイ ノード** の状態を示しています。 
 
-Status  | コメント/シナリオ
+Status    | コメント/シナリオ
 :------- | :------------------
 オンライン | ノードはデータ ファクトリ サービスに接続されています。
 オフライン | ノードはオフラインです。
@@ -246,11 +241,11 @@ Azure Portal では、パイプライン監視のエクスペリエンスによ�
 - ノードのバージョンが論理ゲートウェイのバージョンよりも低い場合、論理ゲートウェイにゲートウェイ ノードを登録することはできません。 低いバージョンのノード(ダウングレード) を登録できるように、ポータルから論理ゲートウェイのすべてのノードを削除します。 論理ゲートウェイのすべてのノードを削除した場合は、その論理ゲートウェイに新しいノードを手動でインストールして登録してください。 この場合、高速セットアップはサポートされません。
 - まだクラウドの資格情報を使用している既存の論理ゲートウェイに、高速セットアップを使用してノードをインストールすることはできません。 ゲートウェイ構成マネージャーで資格情報が格納された場所は、[設定] タブで確認できます。
 - ノード間の暗号化が有効になっている既存の論理ゲートウェイに、高速セットアップを使用してノードをインストールすることはできません。 暗号化モードの設定には手動での証明書の追加を伴うため、高速でのインストールは選択できません。 
-- オンプレミス環境からのファイル コピーの場合、ローカルホストまたはローカル ドライブは、すべてのノードからアクセス可能ではなくなるため、\\localhost または C:\files は使用できなくなります。 代わりに、\\ServerName\files をファイルの場所の指定に使用します。
+- オンプレミス環境からのファイル コピーの場合、ローカルホストまたはローカル ドライブは、すべてのノードからアクセス可能ではなくなるため、\\localhost または C:\files は使用できなくなります。 代わりに、\\ServerName\files を使用してファイルの場所を指定します。
 
 
 ## <a name="rolling-back-from-the-preview"></a>プレビューからのロールバック 
-プレビューからロールバックするには、1 つ以外のすべてのノードを削除します。 どのノードを削除するかは関係ありませんが、必ず論理ゲートウェイ内に少なくとも 1 つのノードを保持します。 コンピューター上のゲートウェイをアンインストールするか、または Azure Portal を使用して、ノードを削除することができます。 Azure Portal の **[データ ファクトリ]** ページで、サービスのリンクをクリックして、 **[リンクされたサービス]** ページを起動します。 ゲートウェイを選択して、 **[ゲートウェイ]** ページを起動します。 [ゲートウェイ] ページで、ゲートウェイに関連付けられているノードを確認できます。 このページで、ゲートウェイからノードを削除できます。
+プレビューからロールバックするには、1 つ以外のすべてのノードを削除します。 どのノードを削除するかは関係ありませんが、論理ゲートウェイに少なくとも 1 つのノードがあることを確認してください。 コンピューター上のゲートウェイをアンインストールするか、または Azure Portal を使用して、ノードを削除することができます。 Azure Portal の **[データ ファクトリ]** ページで、サービスのリンクをクリックして、 **[リンクされたサービス]** ページを起動します。 ゲートウェイを選択して、 **[ゲートウェイ]** ページを起動します。 [ゲートウェイ] ページで、ゲートウェイに関連付けられているノードを確認できます。 このページで、ゲートウェイからノードを削除できます。
  
 削除した後、同じ Azure Portal ページの **プレビュー機能** をクリックして、プレビュー機能を無効にします。 ゲートウェイはリセットされ、1 つのノード GA (一般提供) ゲートウェイになりました。
 

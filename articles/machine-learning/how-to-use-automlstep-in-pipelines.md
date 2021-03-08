@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: 1b9d515c197b56f7e0520539b23be60504059675
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 14e3991c7a9c24ea8fa2a619dc7100af2cd8617c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131255"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362762"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 
@@ -108,32 +108,15 @@ compute_target = ws.compute_targets[compute_name]
 
 ### <a name="configure-the-training-run"></a>トレーニングの実行を構成する
 
-次のステップでは、リモート トレーニングの実行に、トレーニング ステップで必要なすべての依存関係があることを確認します。 依存関係とランタイム コンテキストは、`RunConfiguration` オブジェクトを作成して構成することによって設定されます。 
+AutoMLStep を使用すると、その依存関係がジョブの送信時に自動的に構成されます。 ランタイム コンテキストを設定するには、`RunConfiguration` オブジェクトを作成して構成します。 ここでは、コンピューティング先を設定します。
 
 ```python
 from azureml.core.runconfig import RunConfiguration
-from azureml.core.conda_dependencies import CondaDependencies
-from azureml.core import Environment 
 
 aml_run_config = RunConfiguration()
 # Use just-specified compute target ("cpu-cluster")
 aml_run_config.target = compute_target
-
-USE_CURATED_ENV = True
-if USE_CURATED_ENV :
-    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
-    aml_run_config.environment = curated_environment
-else:
-    aml_run_config.environment.python.user_managed_dependencies = False
-    
-    # Add some packages relied on by data prep step
-    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
-        conda_packages=['pandas','scikit-learn'], 
-        pip_packages=['azureml-sdk[automl]', 'azureml-dataprep[fuse,pandas]'], 
-        pin_sdk_version=False)
 ```
-
-上記のコードは、依存関係を処理するための 2 つのオプションを示しています。 表示されているとおり、`USE_CURATED_ENV = True` の場合、その構成はキュレートされた環境に基づいています。 キュレートされた環境は、共通の相互依存ライブラリを使用して "あらかじめベイク" されており、オンラインになるまでにかかる時間が大幅に短縮されます。 キュレートされた環境には、[Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner) にあらかじめビルドされた Docker イメージが用意されています。 `USE_CURATED_ENV` を `False` に変更した場合にたどるパスは、依存関係を明示的に設定するためのパターンを示します。 このシナリオでは、新しいカスタム Docker イメージが作成され、リソース グループ内の Azure Container Registry に登録されます (「[Azure のプライベート Docker コンテナー レジストリの概要](../container-registry/container-registry-intro.md)」を参照してください)。 このイメージのビルドと登録には数分かかることがあります。 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>自動機械学習用にデータを準備する
 

@@ -4,12 +4,12 @@ description: この記事では、Azure Site Recovery に関してよく寄せ�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109557"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820198"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -188,7 +188,7 @@ Microsoft のパートナーである Riverbed は、Azure Site Recovery の使�
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Azure にレプリケートする場合、どの種類のストレージ アカウントまたはマネージド ディスクが必要ですか。
 
-LRS または GRS ストレージが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。 Azure Portal に Site Recovery をデプロイする場合、VMware VM、Hyper-V VM、および物理サーバーのレプリケーションで Premium Storage がサポートされます。 マネージド ディスクでは、LRS のみをサポートしています。
+ストレージ アカウントをターゲット ストレージとして使用することは、Azure Site Recovery ではサポートされていません。 マネージド ディスクは、マシンのターゲット ストレージとして使用することをお勧めします。 マネージド ディスクでは、データ回復性のために LRS 型のみがサポートされています。
 
 ### <a name="how-often-can-i-replicate-data"></a>どのくらいの頻度でデータをレプリケートできますか。
 * **Hyper-V:** Hyper-V VM は 30 秒 (Premium Storage を除く)、5 分、または 15 分ごとにレプリケートできます。
@@ -344,6 +344,14 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 * [VMware 仮想マシン用](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Hyper-V 仮想マシン用](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>[移行の完了]、[コミット]、[レプリケーションの無効化] の違いは何ですか。
+
+ソースの場所からターゲットの場所へのマシンのフェールオーバーが完了したら、3 つのオプションを選択できます。 3 つの目的はそれぞれ異なります。
+
+1.  **[移行の完了]** は、ソースの場所にはもう戻らないことを意味します。 ターゲット リージョンへの移行はこれで完了です。 [移行の完了] をクリックすると、内部的には [コミット]、[レプリケーションの無効化] の順にトリガーされます。 
+2.  **[コミット]** は、これがレプリケーション プロセスの終了ではないことを意味します。 レプリケーション項目はすべての構成と共に保持されるため、後で **[再保護]** を実行して、マシンのレプリケーションをソース リージョンに戻すことができます。 
+3.  **[レプリケーションの無効化]** を選択すると、レプリケーションが無効になり、関連するすべての構成が削除されます。 ターゲット リージョンの既存のマシンには影響しません。
 
 ## <a name="automation"></a>オートメーション
 

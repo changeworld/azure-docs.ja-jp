@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 9f69f89f565b2d98e408b06e300ff781c13680ef
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 8be5ac75e2da3eaeae300fd36e152a24c9777e64
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693670"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593741"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>新しい Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "97693670"
 
 [Azure Cloud Shell](https://shell.azure.com/) には、必要なすべてのツールが既に含まれています。 別の環境を使用する場合は、次のコマンドライン ツールがインストールされていることを確認してください。
 
-* `az` - Azure CLI: [インストール手順](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` - Azure CLI: [インストール手順](/cli/azure/install-azure-cli)
 * `kubectl` - Kubernetes コマンド ライン ツール: [インストール手順](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` - Kubernetes パッケージ マネージャー: [インストール手順](https://github.com/helm/helm/releases/latest)
 * `jq` - コマンド ライン JSON プロセッサ: [インストール手順](https://stedolan.github.io/jq/download/)

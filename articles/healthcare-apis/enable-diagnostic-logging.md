@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
-ms.date: 11/01/2019
-ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/03/2021
+ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905176"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581964"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Azure API for FHIR で診断ログを有効にする
 
-この記事では、Azure API for FHIR で診断ログを有効にし、それらのログのサンプル クエリを確認できるようにする方法について説明します。 診断ログへのアクセスは、規制要件 (HIPAA など) への準拠が必須であるすべての医療サービスにとって不可欠です。 診断ログを有効にする Azure API for FHIR の機能は、Azure portal の [**診断設定**](../azure-monitor/platform/diagnostic-settings.md)です。 
+この記事では、Azure API for FHIR で診断ログを有効にし、それらのログのサンプル クエリを確認できるようにする方法について説明します。 診断ログへのアクセスは、規制要件 (HIPAA など) への準拠が必須であるすべての医療サービスにとって不可欠です。 診断ログを有効にする Azure API for FHIR の機能は、Azure portal の [**診断設定**](../azure-monitor/essentials/diagnostic-settings.md)です。 
 
 ## <a name="enable-audit-logs"></a>監査ログを有効にする
 1. Azure API for FHIR で診断ログを有効にするには、Azure portal でお使いの Azure API for FHIR サービスを選択します 
@@ -35,9 +35,9 @@ ms.locfileid: "95905176"
     2. サード パーティのサービスやカスタム分析ソリューションで取り込むために、**イベント ハブにストリーム配信** します。 この手順を構成する前に、イベント ハブの名前空間とイベント ハブのポリシーを作成する必要があります。
     3. Azure Monitor の **Log Analytics ワークスペースにストリーム配信** します。 このオプションを選択する前に、Log Analytics ワークスペースを作成する必要があります。
 
-6. **AuditLogs** と、キャプチャするすべてのメトリックを選択します。 Azure IoT Connector for FHIR を使用している場合は、メトリックの **[エラー]、[トラフィック]、[待機時間]** を必ず選択してください。 
+6. **AuditLogs** または **AllMetrics**、あるいはその両方を選択します。 メトリックには、サービス名、可用性、データ サイズ、合計待機時間、合計要求数、合計エラー数、およびタイムスタンプが含まれます。
 
-   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHIR 診断設定。AuditLogs または AllMetrics、あるいはその両方を選択します。" lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
 7. **[保存]** を選びます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "95905176"
 > [!Note] 
 > 最初のログが Log Analytics に表示されるまでには、最大で 15 分かかることがあります。  
  
-診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)を参照してください。
+診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](../azure-monitor/essentials/platform-logs-overview.md)を参照してください。
 
 ## <a name="audit-log-details"></a>監査ログの詳細
 現時点では、Azure API for FHIR サービスは、監査ログで次のフィールドを返します。 

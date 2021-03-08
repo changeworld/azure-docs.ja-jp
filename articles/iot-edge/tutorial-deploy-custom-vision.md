@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8e64233ce1d59512e38ce6c366eba889392c4623
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621282"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736493"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル:Custom Vision Service を使用してエッジで画像の分類を実行する
 
@@ -40,7 +40,7 @@ Azure IoT Edge では、ワークロードをクラウドからエッジに移�
 ## <a name="prerequisites"></a>前提条件
 
 >[!TIP]
->このチュートリアルは、[Raspberry Pi 3 での Custom Vision と Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) サンプル プロジェクトの簡易バージョンです。 このチュートリアルは、クラウド VM 上で実行するように設計されており、静的な画像を使用して画像分類器のトレーニングとテストを行います。これは、IoT Edge 上で Custom Vision の評価を始めたばかりのユーザーに役立ちます。 このサンプル プロジェクトでは、物理ハードウェアを使用し、画像分類器のトレーニングとテストを行うためのライブ カメラ フィードを設定します。これは、より詳細な実際のシナリオを試す場合に便利です。
+>このチュートリアルは、[Raspberry Pi 3 での Custom Vision と Azure IoT Edge](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi) サンプル プロジェクトの簡易バージョンです。 このチュートリアルは、クラウド VM 上で実行するように設計されており、静的な画像を使用して画像分類器のトレーニングとテストを行います。これは、IoT Edge 上で Custom Vision の評価を始めたばかりのユーザーに役立ちます。 このサンプル プロジェクトでは、物理ハードウェアを使用し、画像分類器のトレーニングとテストを行うためのライブ カメラ フィードを設定します。これは、より詳細な実際のシナリオを試す場合に便利です。
 
 このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。
 
@@ -72,7 +72,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 4. 以下の値を設定して、プロジェクトを作成します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | 名前 | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
    | 説明 | オプションのプロジェクトの説明。 |
@@ -146,7 +146,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | **CustomVisionSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |

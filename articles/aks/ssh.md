@@ -4,12 +4,12 @@ description: トラブルシューティングやメンテナンスのタスク�
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: c044b552cd0c28a7073364c48b9572045a290331
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662863"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034457"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -168,7 +168,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 1. コンテナーへのターミナル セッションに戻り、コピーした `id_rsa` SSH 秘密キーに対するアクセス許可を、ユーザーに対して読み取り専用になるように更新します。
 
     ```console
-    chmod 0600 id_rsa
+    chmod 0400 id_rsa
     ```
 
 1. AKS ノードへの SSH 接続を作成します。 前に説明したように、AKS ノードの既定のユーザー名は *azureuser* です。 SSH キーが最初に信頼されるときに接続続行のプロンプトを受け入れます。 次に、AKS ノードの bash プロンプトが提供されます。
@@ -211,7 +211,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 [az-vm-user-update]: /cli/azure/vm/user#az-vm-user-update
 [az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
-[view-master-logs]: view-master-logs.md
+[view-master-logs]: ./view-control-plane-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/11/2017
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7cbcdb4b947e4b45a5473dc0f9f0252b5ad1d5c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8160859bb782ee8ffc4fef5ee03b61b6f54be1bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442050"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548663"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
@@ -26,7 +25,7 @@ ms.locfileid: "92442050"
 
 API には次の機能が用意されています。
 
-1. " *任意の* " 電子メール アドレスで外部ユーザーを招待できます。
+1. "*任意の*" 電子メール アドレスで外部ユーザーを招待できます。
 
     ```
     "invitedUserDisplayName": "Sam"
@@ -67,6 +66,16 @@ API には次の機能が用意されています。
     "invitedUserType": "Member"
     ```
 
+## <a name="determine-if-a-user-was-already-invited-to-your-directory"></a>ユーザーが既にディレクトリに招待されたかどうかを判断する
+
+招待 API を使用して、ユーザーがリソース テナントに既に存在するかどうかを判断できます。 これは、招待 API を使用してユーザーを招待するアプリを開発している場合に便利です。 既にリソース ディレクトリに存在する場合、ユーザーは招待を受信しません。したがって、最初にクエリを実行して、メールが UPN またはその他のサインイン プロパティとして既に存在するかどうかを確認できます。
+
+1. ユーザーのメール ドメインが、リソース テナントの確認済みドメインに含まれていないことを確認します。
+2. リソース テナントで、次のユーザーの取得クエリを使用します。ここで、{0} は、招待するメール アドレスです。
+
+   ```
+   “userPrincipalName eq '{0}' or mail eq '{0}' or proxyAddresses/any(x:x eq 'SMTP:{0}') or signInNames/any(x:x eq '{0}') or otherMails/any(x:x eq '{0}')"
+   ```
 
 ## <a name="authorization-model"></a>承認モデル
 
@@ -80,7 +89,7 @@ API は、以下の承認モードで実行できます。
 
 アプリのみのコンテキストで招待を成功させるには、アプリに User.Invite.All スコープが必要です。
 
-詳しくは、 https://developer.microsoft.com/graph/docs/authorization/permission_scopes をご覧ください
+詳しくは、https://developer.microsoft.com/graph/docs/authorization/permission_scopes をご覧ください
 
 
 ## <a name="powershell"></a>PowerShell
@@ -100,12 +109,12 @@ New-AzureADMSInvitation
 
 ### <a name="invitation-status"></a>招待の状態
 
-外部ユーザーに招待を送信した後、 **Get-AzureADUser** コマンドレットを使用して、招待が受け取られたかどうかを確認できます。 外部ユーザーに招待が送信されると、Get-AzureADUser の次のプロパティが入力されます。
+外部ユーザーに招待を送信した後、**Get-AzureADUser** コマンドレットを使用して、招待が受け取られたかどうかを確認できます。 外部ユーザーに招待が送信されると、Get-AzureADUser の次のプロパティが入力されます。
 
 * **UserState** は、招待が **PendingAcceptance** であるか **Accepted** であるかを示します。
-* **UserStateChangedOn** は、 **UserState** プロパティに対する最新の変更のタイムスタンプを示します。
+* **UserStateChangedOn** は、**UserState** プロパティに対する最新の変更のタイムスタンプを示します。
 
-**Filter** オプションを使用して、 **UserState** で結果をフィルター処理できます。 次の例では、保留中の招待を持っているユーザーのみを表示するように結果をフィルター処理する方法を示しています。 表示するプロパティを指定するための **Format-List** オプションも示しています。 
+**Filter** オプションを使用して、**UserState** で結果をフィルター処理できます。 次の例では、保留中の招待を持っているユーザーのみを表示するように結果をフィルター処理する方法を示しています。 表示するプロパティを指定するための **Format-List** オプションも示しています。 
  
 
 ```powershell
@@ -115,7 +124,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > AzureAD PowerShell モジュールまたは AzureADPreview PowerShell モジュールが最新バージョンであることを確認してください。 
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 招待 API のリファレンスは、[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation) で確認できます。
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2af9608006eac37ccdfe76d66e619d5a64cad9f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a935b34c4fcebe9128d8af0316658072e20ddfbe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596217"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>クイック スタート:ログ、メトリック、およびトレースを使用した Azure Spring Cloud アプリの監視
 
@@ -32,7 +32,7 @@ Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問�
 
 ## <a name="logs"></a>ログ
 
-Azure Spring Cloud でログを表示するには、次の 2 つの方法があります。アプリ インスタンスごとのリアルタイム ログの **ログ ストリーミング** 、または高度なクエリ機能を使用して集計されたログの **ログ分析** 。
+Azure Spring Cloud でログを表示するには、次の 2 つの方法があります。アプリ インスタンスごとのリアルタイム ログの **ログ ストリーミング**、または高度なクエリ機能を使用して集計されたログの **ログ分析**。
 
 ### <a name="log-streaming"></a>ログ ストリーミング
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. クエリを編集し、表示を警告とエラーのログに制限する Where 句を削除します。
 
-1. その後、[`Run`] を選択すると、ログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](../azure-monitor/log-query/get-started-queries.md)を参照してください。
+1. その後、[`Run`] を選択すると、ログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](../azure-monitor/logs/get-started-queries.md)を参照してください。
 
    [ ![Log Analytics クエリ - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -79,7 +79,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
    [ ![メトリック エントリ - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
     
-1. ツール バーで **[Add filter]\(フィルターの追加\)** をクリックし、`App=solar-system-weather` を選択して、 **solar-system-weather** アプリのみの CPU 使用率を表示します。
+1. ツール バーで **[Add filter]\(フィルターの追加\)** をクリックし、`App=solar-system-weather` を選択して、**solar-system-weather** アプリのみの CPU 使用率を表示します。
 
    [ ![メトリックでフィルターを使用する - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
 
@@ -119,7 +119,7 @@ Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問�
 
 ## <a name="logs"></a>ログ
 
-Azure Spring Cloud でログを表示するには、次の 2 つの方法があります。アプリ インスタンスごとのリアルタイム ログの **ログ ストリーミング** 、または高度なクエリ機能を使用して集計されたログの **ログ分析** 。
+Azure Spring Cloud でログを表示するには、次の 2 つの方法があります。アプリ インスタンスごとのリアルタイム ログの **ログ ストリーミング**、または高度なクエリ機能を使用して集計されたログの **ログ分析**。
 
 ### <a name="log-streaming"></a>ログ ストリーミング
 
@@ -165,7 +165,7 @@ Azure Toolkit for IntelliJ を使用してログを取得するには:
 
    [ ![Logs Analytics のエントリ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. そうすると、フィルター処理されたログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](../azure-monitor/log-query/get-started-queries.md)を参照してください。
+1. そうすると、フィルター処理されたログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](../azure-monitor/logs/get-started-queries.md)を参照してください。
 
    [ ![Logs Analytics のクエリ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 
@@ -175,7 +175,7 @@ Azure Toolkit for IntelliJ を使用してログを取得するには:
 
    [ ![メトリックのエントリ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png#lightbox)
     
-1. 上のツール バーの **[Add filter]\(フィルターの追加\)** をクリックし、`App=Gateway` を選択して、 **ゲートウェイ** アプリのみの CPU 使用率を表示します。
+1. 上のツール バーの **[Add filter]\(フィルターの追加\)** をクリックし、`App=Gateway` を選択して、**ゲートウェイ** アプリのみの CPU 使用率を表示します。
 
    [ ![メトリックでフィルターを使用する](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png#lightbox)
 

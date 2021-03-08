@@ -4,12 +4,12 @@ description: この記事では、最新の azure-messaging-eventhubs パッケ�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f543fae8087a7dd3a18da7b44bc2896d7607f3d2
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 640f6c4dcb223e55e10f7cb5d7daaa44dbd41578
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728966"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172025"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する (azure-messaging-eventhubs)
 このクイックスタートでは、**azure-messaging-eventhubs** Java パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。
@@ -25,7 +25,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 
 - **Microsoft Azure サブスクリプション**。 Azure Event Hubs を含む Azure サービスを使用するには、サブスクリプションが必要です。  既存の Microsoft Azure アカウントをお持ちでない場合は、[アカウントを作成する](https://azure.microsoft.com)際に、[無料試用版](https://azure.microsoft.com/free/)にサインアップするか、MSDN サブスクライバー特典を利用できます。
 - Java 開発環境。 このクイックスタートでは [Eclipse](https://www.eclipse.org/) を使用します。 Java Development Kit (JDK) バージョン 8 以上が必要です。 
-- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**Event Hubs 名前空間用の接続文字列**を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で必要になります。
+- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**Event Hubs 名前空間用の接続文字列** を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で必要になります。
 
 ## <a name="send-events"></a>送信イベント 
 このセクションでは、イベント ハブにイベントを送信する Java アプリケーションの作成方法を説明します。 
@@ -151,7 +151,7 @@ Azure ストレージ アカウントを作成するには、次の手順に従�
 2. [BLOB コンテナーを作成する](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [ストレージ アカウントへの接続文字列を取得する](../storage/common/storage-configure-connection-string.md)
 
-    **接続文字列**と**コンテナー名**を書き留めておきます。 これらは、受信コードで使用します。 
+    **接続文字列** と **コンテナー名** を書き留めておきます。 これらは、受信コードで使用します。 
 
 ### <a name="add-event-hubs-libraries-to-your-java-project"></a>Java プロジェクトに Event Hubs ライブラリを追加する
 pom.xml ファイルに次の依存関係を追加します。 
@@ -169,7 +169,7 @@ pom.xml ファイルに次の依存関係を追加します。
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-eventhubs-checkpointstore-blob</artifactId>
-        <version>1.1.1</version>
+        <version>1.5.0</version>
     </dependency>
 </dependencies>
 ```
@@ -317,9 +317,9 @@ pom.xml ファイルに次の依存関係を追加します。
 3. プログラムをビルドし、エラーがないことを確認します。 
 
 ## <a name="run-the-applications"></a>アプリケーションの実行
-1. まず、**受信側**アプリケーションを実行します。
-1. つぎに、**送信側**アプリケーションを実行します。 
-1. **受信者**アプリケーション ウィンドウで、送信側アプリケーションによって発行されたイベントが表示されていることを確認します。
+1. まず、**受信側** アプリケーションを実行します。
+1. つぎに、**送信側** アプリケーションを実行します。 
+1. **受信者** アプリケーション ウィンドウで、送信側アプリケーションによって発行されたイベントが表示されていることを確認します。
 1. アプリケーションを停止するには、受信側アプリケーション ウィンドウで **Enter** キーを押します。 
 
 ## <a name="next-steps"></a>次のステップ

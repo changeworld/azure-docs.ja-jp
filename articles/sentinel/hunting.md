@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: ca483d993290e4d66ba257d4cb5de7fc3c952405
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b88185a09e69b1c7bd6c6c58b8e22190b4a2e394
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660833"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576751"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel で脅威を検出する
 
@@ -66,7 +66,7 @@ Azure Sentinel 検出機能では、次の機能を利用できます。
 
 ## <a name="query-language"></a>クエリ言語 
 
-Azure Sentinel の検出機能は Kusto クエリ言語に基づきます。 クエリ言語とサポートされている演算子の詳細については、[クエリ言語リファレンス](../azure-monitor/log-query/get-started-queries.md)に関するページを参照してください。
+Azure Sentinel の検出機能は Kusto クエリ言語に基づきます。 クエリ言語とサポートされている演算子の詳細については、[クエリ言語リファレンス](../azure-monitor/logs/get-started-queries.md)に関するページを参照してください。
 
 ## <a name="public-hunting-query-github-repository"></a>パブリック検出クエリの GitHub リポジトリ
 

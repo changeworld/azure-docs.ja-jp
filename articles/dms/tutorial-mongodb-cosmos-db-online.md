@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
-ms.date: 09/25/2019
-ms.openlocfilehash: fed568d67c688a8c2adab979eb68eaf384a72172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 02/03/2021
+ms.openlocfilehash: 84eed7d48dfe0230ea023d171e2b640bdf50dbe3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539280"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715668"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオンラインで移行する
 
@@ -36,7 +36,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 > * Azure Cosmos DB 内のデータを検証する。 
 > * 準備が整ったら、移行を完了する。 
 
-このチュートリアルでは、Azure Database Migration Service を使用して、Azure 仮想マシンでホストされている MongoDB 内のデータセットを、Azure Cosmos DB の MongoDB 用 API に最小限のダウンタイムで移行します。 MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](../virtual-machines/windows/install-mongodb.md)」をご覧ください。
+このチュートリアルでは、Azure Database Migration Service を使用して、Azure 仮想マシンでホストされている MongoDB 内のデータセットを、Azure Cosmos DB の MongoDB 用 API に最小限のダウンタイムで移行します。 MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](/previous-versions/azure/virtual-machines/windows/install-mongodb)」をご覧ください。
 
 > [!NOTE]
 > Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
@@ -68,6 +68,18 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 * 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、次の各通信ポートがブロックされていないことを確認します。53、443、445、9354、および 10000 から 20000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
 * Azure Database Migration Service がソース MongoDB サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 27017 が使用されています。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
+
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>Azure Cosmos DB のサーバー側の再試行を構成して効率的に移行する
+
+MongoDB から Azure Cosmos DB に移行するお客様は、リソース ガバナンス機能を活用できます。これにより、プロビジョニング済み RU/秒のスループットを完全に利用できるようになります。 Azure Cosmos DB では、データ移行サービスの特定の要求がコンテナーにプロビジョニングされている RU/秒を超え、その要求を再試行する必要がある場合に、移行の過程でその要求を調整することができます。 データ移行サービスは再試行を実行できますが、データ移行サービスと Azure Cosmos DB と間のネットワーク ホップに関係するラウンドトリップ時間が、その要求の全体的な応答時間に影響します。 調整された要求の応答時間を改善することにより、移行に必要な合計時間を短縮できます。 Azure Cosmos DB の "*サーバー側の再試行*" 機能を使用すると、サービスで調整エラー コードをインターセプトし、はるかに短いラウンドトリップ時間で再試行することができるため、要求の応答時間が大幅に短縮されます。
+
+サーバー側の再試行機能は、Azure Cosmos DB ポータルの *[機能]* ブレードで確認できます
+
+![MongoDB のサーバー側の再試行機能のスクリーンショット。](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-feature.png)
+
+*[無効]* になっている場合は、次のように有効にすることをお勧めします
+
+![MongoDB のサーバー側の再試行機能を有効にする画面のスクリーンショット。](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 

@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42d388aed618a5a92212152166573719c9e973c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704171"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371024"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -52,6 +52,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure SQL データベース|[Azure SQL Database と Azure Synapse Analytics に対する Transparent Data Encryption での Bring Your Own Key のサポート](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current)。|
 |Azure Storage|[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](../../storage/common/customer-managed-keys-configure-key-vault.md)。|
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../../data-lake-store/data-lake-store-encryption.md)。|
+|Azure Synapse Analytics|[Azure Key Vault でのユーザーが管理するキーを使用したデータ暗号化](../../synapse-analytics/security/workspaces-encryption.md)|
 |Azure Databricks|[高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービス](/azure/databricks/scenarios/what-is-azure-databricks)|
 |Azure API Management|[MSI を使用してキー コンテナーからカスタムドメイン用の証明書をデプロイする](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
 |Azure Data Factory|[データ ファクトリからキー コンテナー内のデータ ストア資格情報を取得する](https://go.microsoft.com/fwlink/?linkid=2109491)|

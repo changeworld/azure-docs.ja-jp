@@ -2,18 +2,16 @@
 title: SAP ソリューション向け Azure Monitor のプロバイダー | Microsoft Docs
 description: この記事では、SAP ソリューション プロバイダー向け Azure Monitor に関してよく寄せられる質問に対する回答を示します
 author: rdeltcheva
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.reviewer: cynthn
-ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1282d1916d669f1026707e15cc8d5437d885087f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968606"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668998"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP ソリューション向け Azure Monitor のプロバイダー (プレビュー)
 
@@ -68,10 +66,38 @@ SAP モニター リソースのデプロイ時にお客様がプロバイダー
    高可用性クラスター プロバイダーを構成するには、次の情報が必要です。
    
    - **[名前]**。 このプロバイダーの名前です。 この Azure Monitor for SAP Solutions インスタンスで一意である必要があります。
-   - **Prometheus エンドポイント**。 通常は、http\://\<servername or ip address\>:9664/metrics です。
+   - **Prometheus エンドポイント**。 http\://\<servername or ip address\>:9664/metrics。
    - **SID**。 SAP システムでは、SAP SID を使用します。 その他のシステム (たとえば、NFS クラスターなど) では、そのクラスターを表す 3 文字の名前を使用します。 この SID は、監視されている他のクラスターとは異なっている必要があります。   
    - **クラスター名**。 クラスターの作成時に使用されたクラスター名です。 クラスター名は、クラスター プロパティ `cluster-name` で確認できます。
    - **Hostname**。 VM の Linux ホスト名です。  
+
+
+## <a name="provider-type-os-linux"></a>プロバイダーの種類: OS (Linux)
+お客様は、プロバイダーの種類 OS (Linux) のプロバイダーを 1 つ以上構成して、BareMetal または VM ノードからのデータ収集を有効にすることができます。 OS (Linux) プロバイダーは、 [Node_Exporter](https://github.com/prometheus/node_exporter)  エンドポイントを使用して BareMetal または VM ノードに接続し、ノードから利用統計情報をプルして、顧客のサブスクリプションの Log Analytics ワークスペースにプッシュします。 OS (Linux) プロバイダーでは、ノードからのほとんどのメトリックに対して 60 秒ごとにデータを収集します。 
+
+パブリック プレビューでは、SAP HANA プロバイダーを使用して次のデータを確認できます。 
+   - CPU 使用率、プロセス別の CPU 使用率 
+   - ディスク使用率、I/O 読み取りと書き込み 
+   - メモリ配分、メモリ使用量、スワップ メモリ使用量 
+   - ネットワーク使用状況、ネットワークの受信および送信トラフィックの詳細。 
+
+OS (Linux) プロバイダーを構成するには、次の 2 つの主要な手順が必要です。
+1. 各 BareMetal または VM ノードに [Node_Exporter](https://github.com/prometheus/node_exporter) をインストールします。
+   [Node_exporter](https://github.com/prometheus/node_exporter) をインストールするためのオプションは 2 つあります。 
+      - Ansible による Automation インストールでは、OS (Linux) プロバイダーをインストールする各 BareMetal または VM ノードで [Node_Exporter](https://github.com/prometheus/node_exporter) を使用する。  
+      -  [手動でインストール](https://prometheus.io/docs/guides/node-exporter/)する。
+
+2. 環境内の各 BareMetal または VM ノード インスタンスに対して OS (Linux) プロバイダーを構成します。 
+   OS (Linux) プロバイダーを構成するには、次の情報が必要です。 
+      - 名前。 このプロバイダーの名前です。 この Azure Monitor for SAP Solutions インスタンスで一意である必要があります。 
+      - Node Exporter エンドポイント。 通常は、 http://<servername or ip address>:9100/metrics です。 
+
+> [!NOTE]
+> 9100 は Node_Exporter エンドポイント用に公開されているポートです。
+
+> [!Warning]
+> ノードが再起動した後に Node Exporter が引き続き実行されていることを確認します。 
+
 
 ## <a name="provider-type-microsoft-sql-server"></a>プロバイダーの種類: Microsoft SQL Server
 

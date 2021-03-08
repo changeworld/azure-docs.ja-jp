@@ -3,15 +3,15 @@ title: Azure Monitor for containers でのレポート
 description: Azure Monitor for containers によって収集されたデータを分析するために使用できるレポートについて説明します。
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 3cc2f8fb9bfaa278ce06b4a8cd6d379397b7129a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907424"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582314"
 ---
 # <a name="reports-in-azure-monitor-for-containers"></a>Azure Monitor for containers でのレポート
-Azure Monitor for containers でのレポートは、推奨されるすぐに使用できる [Azure ブック](../platform/workbooks-overview.md)です。 この記事では、使用できるさまざまなレポートと、それらにアクセスする方法について説明します。
+Azure Monitor for containers でのレポートは、推奨されるすぐに使用できる [Azure ブック](../visualize/workbooks-overview.md)です。 この記事では、使用できるさまざまなレポートと、それらにアクセスする方法について説明します。
 
 ## <a name="viewing-reports"></a>レポートの閲覧
 Azure portal の **[Azure Monitor]** メニューから、 **[コンテナー]** を選択します。 **[監視]** セクションで **[分析情報]** を選択し、特定のクラスターを選択してから、 **[レポート (プレビュー)]** ページを選択します。 
@@ -19,7 +19,7 @@ Azure portal の **[Azure Monitor]** メニューから、 **[コンテナー]**
 [![[レポート] ページ](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 
 ## <a name="create-a-custom-workbook"></a>カスタム ブックを作成する
-これらのブックのいずれかに基づいてカスタム ブックを作成するには、 **[ブックの表示]** ドロップダウンを選択してから、ドロップダウンの下部にある **[AKS ギャラリーに移動する]** を選択します。 ブックの詳細およびブック テンプレートの使用については、「[Azure Monitor ブック](../platform/workbooks-overview.md)」を参照してください。
+これらのブックのいずれかに基づいてカスタム ブックを作成するには、 **[ブックの表示]** ドロップダウンを選択してから、ドロップダウンの下部にある **[AKS ギャラリーに移動する]** を選択します。 ブックの詳細およびブック テンプレートの使用については、「[Azure Monitor ブック](../visualize/workbooks-overview.md)」を参照してください。
 
 [![AKS ギャラリー](media/container-insights-reports/aks-gallery.png)](media/container-insights-reports/aks-gallery.png#lightbox)
 
@@ -78,4 +78,4 @@ Azure portal の **[Azure Monitor]** メニューから、 **[コンテナー]**
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Monitor でのブックの詳細については、「[Azure Monitor ブック](../platform/workbooks-overview.md)」を参照してください。
+- Azure Monitor でのブックの詳細については、「[Azure Monitor ブック](../visualize/workbooks-overview.md)」を参照してください。

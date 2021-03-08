@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 4539c32a367bb0974212d989176a96b530da21a4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900775"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652340"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
 
@@ -88,7 +88,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 1. ローカル リポジトリを GitHub にプッシュします。
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Web アプリのデプロイ
@@ -123,7 +123,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[リポジトリ]_ として **hugo-static-app** を選択します。
 
-1. _[ブランチ]_ では、**master** を選択します。
+1. _[ブランチ]_ では、**main** を選択します。
 
    :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
 

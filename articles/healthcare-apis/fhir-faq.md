@@ -2,18 +2,18 @@
 title: Azure の FHIR サービスについての FAQ - Azure API for FHIR
 description: FHIR API におけるデータの保存場所やバージョン サポートなど、Azure API for FHIR についてよく寄せられる質問とその回答を示します。
 services: healthcare-apis
-author: matjazl
+author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 08/03/2020
-ms.author: matjazl
-ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 1/21/2021
+ms.author: cavoeg
+ms.openlocfilehash: d83bc653ae8c3ff5a9553de568bc6f2355f18760
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452940"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104622"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -106,9 +106,18 @@ Azure API for FHIR で、[コンパートメント検索](https://www.hl7.org/fh
 
 最終更新日での並べ替えをサポートしています (_sort=_lastUpdated)。 サポートされているその他の検索パラメーターの詳細については、[サポートされている機能のページ](./fhir-features-supported.md#search)を確認してください。
 
+### <a name="does-the-azure-api-for-fhir-support-everything"></a>Azure API for FHIR で $everything はサポートされていますか? 
+
+いいえ。 現時点では、$everything はサポートされていません。 ただし、2 つの API 呼び出しで実現できます。 たとえば、Patient$everything を取得するには、最初に /Patient/[ID] を使用して患者レコードを取得し、2 回目の呼び出しで /Patient/[ID]/* を使用してすべての患者データを取得します。
+
+詳細については、こちらの[コミュニティの投稿](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)を参照してください。 
+
 ### <a name="how-does-export-work"></a>$export はどのように動作しますか?
 
 $export は、FHIR 仕様 (https://hl7.org/fhir/uv/bulkdata/export/index.html ) に含まれています。 FHIR サービスが管理対象 ID とストレージ アカウントで構成されていて、管理対象 ID がそのストレージ アカウントにアクセスできる場合、FHIR API で $export を呼び出すだけで、すべての FHIR リソースがストレージ アカウントにエクスポートされます。 詳細については、[$export の記事](./export-data.md)を確認してください。
+
+### <a name="is-de-identified-export-available-at-patient-and-group-level-as-well"></a>匿名化エクスポートは、患者レベルとグループ レベルで同様に使用できますか?
+匿名化エクスポートは、現在、フル システム エクスポート (/$export) でのみサポートされており、患者のエクスポート (/Patient/$export) ではサポートされていません。 患者レベルでも使用できるようにする作業を行っています。
 
 ## <a name="using-azure-api-for-fhir"></a>Azure API for FHIR の使用
 

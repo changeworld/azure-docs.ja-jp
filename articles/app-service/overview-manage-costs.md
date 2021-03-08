@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736223"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593986"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service のコストを計画および管理する
 
@@ -38,7 +38,7 @@ App Service で使用する機能に応じて、コストが発生する次の�
 - **App Service プラン**  App Service アプリをホストするために必要です。
 - **Isolated レベル**  App Service 環境には、[Virtual Network](../virtual-network/index.yml) が必要です。
 - **バックアップ**  バックアップを作成するには、[ストレージ アカウント](../storage/index.yml)が必要です。
-- **診断ログ**  ログ オプションとして [ストレージ アカウント](../storage/index.yml)を選択するか、[Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) と統合します。
+- **診断ログ**  ログ オプションとして [ストレージ アカウント](../storage/index.yml)を選択するか、[Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) と統合します。
 - **App Service 証明書**  Azure で購入する証明書は、[Azure Key Vault](../key-vault/index.yml) で保持する必要があります。
 
 App Service のその他のコスト リソースは次のとおりです (詳細については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください)。
@@ -114,7 +114,7 @@ App Service プランでは、複数のアプリをホストできます。 デ�
 > [!NOTE]
 > **Premium V3** では、Windows コンテナーと Linux コンテナーの両方がサポートされます。 
 
-希望する価格レベルを選択したら、アイドル状態のインスタンスを最小限に抑える必要があります。 スケールアウト配置では、使用率が低いコンピューティング インスタンスで無駄なコストが発生する可能性があります。 **Standard** レベル以上で利用可能な [自動スケールを構成する](../azure-monitor/platform/autoscale-get-started.md)必要があります。 スケールアウト スケジュールおよびメトリックベースのスケールアウト ルールを作成すると、いつでも、料金は実際に必要なインスタンスに対してのみ発生します。
+希望する価格レベルを選択したら、アイドル状態のインスタンスを最小限に抑える必要があります。 スケールアウト配置では、使用率が低いコンピューティング インスタンスで無駄なコストが発生する可能性があります。 **Standard** レベル以上で利用可能な [自動スケールを構成する](../azure-monitor/autoscale/autoscale-get-started.md)必要があります。 スケールアウト スケジュールおよびメトリックベースのスケールアウト ルールを作成すると、いつでも、料金は実際に必要なインスタンスに対してのみ発生します。
 
 ### <a name="azure-reservations"></a>Azure の予約
 
@@ -125,7 +125,7 @@ App Service プランでは、複数のアプリをホストできます。 デ�
 
 予約インスタンスの価格は、最大で予約したインスタンス数まで、サブスクリプション内の適用可能なインスタンスに適用されます。 予約インスタンスは請求に関するものであり、特定のコンピューティング インスタンスに関連付けられません。 予約期間中はいつでも、実行したインスタンス数が予約数よりも少ない場合でも、予約インスタンスの料金を支払うことになります。 予約期間中はいつでも、実行したインスタンス数が予約数よりも多い場合、追加インスタンスに対して通常の発生料金を支払うことになります。
 
-**Isolated** レベル (App Service 環境) でも、割引価格の 1 年間および 3 年間の予約がサポートされます。 詳細については、「[Azure App Service Isolated スタンプに予約割引を適用する方法](../cost-management-billing/reservations/reservation-discount-app-service-isolated-stamp.md)」を参照してください。
+**Isolated** レベル (App Service 環境) でも、割引価格の 1 年間および 3 年間の予約がサポートされます。 詳細については、[Azure App Service に予約割引を適用する方法](../cost-management-billing/reservations/reservation-discount-app-service.md)に関する記事を参照してください。
 
 ## <a name="monitor-costs"></a>コストを監視する
 

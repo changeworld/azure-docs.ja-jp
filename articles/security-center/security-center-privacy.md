@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5b5c78ffec736f29a481aa95426ff663199613b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342231"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595651"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
 この記事では、Azure Security Center でユーザー データを管理する方法について説明します。 ユーザー データの管理には、データへのアクセス、削除、またはエクスポート機能が含まれます。
@@ -27,7 +27,7 @@ ms.locfileid: "92342231"
 
 閲覧者、所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Azure Security Center のユーザーは、ツール内の顧客データにアクセスできます。 アカウント管理者ロールの詳細については、「[Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md)」を参照して閲覧者、所有者、共同作成者ロールを参照してください。 「[Azure サブスクリプション管理者](../cost-management-billing/manage/add-change-subscription-administrator.md)」に関する記事を参照してください。
 
-## <a name="searching-for-and-identifying-personal-data"></a>個人データの検索と識別
+## <a name="searching-for-and-identifying-personal-data"></a>個人データの検索および特定
 Security Center のユーザーは、Azure portal から自分の個人データを表示できます。 Security Center では、メール アドレスや電話番号などのセキュリティ連絡先の詳細情報のみを保存します。 詳細については、「[Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md)」を参照してください。
 
 Azure portal で、ユーザーは、Security Center の Just In Time VM アクセス機能を使用して、許可されている IP 構成を表示できます。 詳細については、「[Just-In-Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。
@@ -97,4 +97,4 @@ Security Center のユーザーは、自分の[セキュリティ連絡先デー
 [アラート データ](security-center-managing-and-responding-alerts.md)は、セキュリティ データと見なされ、2 年間保持されます。
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
-セキュリティ連絡先、Just In Time、およびアラートの更新の監査ログは、[Azure の活動ログ](../azure-monitor/platform/platform-logs-overview.md)で管理されます。
+セキュリティ連絡先、Just In Time、およびアラートの更新の監査ログは、[Azure の活動ログ](../azure-monitor/essentials/platform-logs-overview.md)で管理されます。

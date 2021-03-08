@@ -6,16 +6,16 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d8905fbdcfc03f2683698cca57ab6c066e77863
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b3348e5a999b507aa0d286528970beb0e03f26cd
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205933"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594374"
 ---
 # <a name="cut-planes"></a>切断面
 
-*切断面*は、仮想的な平面の片方のピクセルをクリップし、[メッシュの内部](../../concepts/meshes.md)を表示する視覚機能です。
+*切断面* は、仮想的な平面の片方のピクセルをクリップし、[メッシュの内部](../../concepts/meshes.md)を表示する視覚機能です。
 下の図は、効果を示しています。 左側には元のメッシュ、右側にはメッシュの内側が表示されています。
 
 ![切断面](./media/cutplane-1.png)
@@ -25,9 +25,9 @@ ms.locfileid: "92205933"
 *CutPlaneComponent* を作成して、シーンに切断面を追加します。 平面の位置と向きは、コンポーネントの所有者[エンティティ](../../concepts/entities.md)によって決まります。
 
 ```cs
-void CreateCutPlane(AzureSession session, Entity ownerEntity)
+void CreateCutPlane(RenderingSession session, Entity ownerEntity)
 {
-    CutPlaneComponent cutPlane = (CutPlaneComponent)session.Actions.CreateComponent(ObjectType.CutPlaneComponent, ownerEntity);
+    CutPlaneComponent cutPlane = (CutPlaneComponent)session.Connection.CreateComponent(ObjectType.CutPlaneComponent, ownerEntity);
     cutPlane.Normal = Axis.X; // normal points along the positive x-axis of the owner object's orientation
     cutPlane.FadeColor = new Color4Ub(255, 0, 0, 128); // fade to 50% red
     cutPlane.FadeLength = 0.05f; // gradient width: 5cm
@@ -35,9 +35,9 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 ```
 
 ```cpp
-void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEntity)
+void CreateCutPlane(ApiHandle<RenderingSession> session, ApiHandle<Entity> ownerEntity)
 {
-    ApiHandle<CutPlaneComponent> cutPlane = session->Actions()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
+    ApiHandle<CutPlaneComponent> cutPlane = session->Connection()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
     cutPlane->SetNormal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
     Color4Ub fadeColor;
     fadeColor.channels = { 255, 0, 0, 128 }; // fade to 50% red
@@ -66,7 +66,7 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 ![選択的切断面](./media/selective-cut-planes.png)
 
-フィルター処理は、切断面側のビット マスクとジオメトリに設定されている 2 番目のビット マスク間の**論理ビット マスク比較**を通じて行われます。 マスク間の論理 `AND` 演算の結果がゼロでない場合、切断面はジオメトリに影響します。
+フィルター処理は、切断面側のビット マスクとジオメトリに設定されている 2 番目のビット マスク間の **論理ビット マスク比較** を通じて行われます。 マスク間の論理 `AND` 演算の結果がゼロでない場合、切断面はジオメトリに影響します。
 
 * 切断面コンポーネントのビット マスクは、その `ObjectFilterMask` プロパティを介して設定されます
 * ジオメトリのサブ階層のビット マスクは、[HierarchicalStateOverrideComponent](override-hierarchical-state.md#features) を介して設定されます。
@@ -85,7 +85,7 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 ## <a name="limitations"></a>制限事項
 
-* Azure Remote Rendering では、**最大 8 個のアクティブな切断面**がサポートされています。 さらに多くの切断面のコンポーネントを作成することもできますが、より多くを同時に有効にしようとすると、アクティブ化が無視されます。 シーンに影響を与えるコンポーネントを切り替えたい場合は、最初に他のプレーンを無効にします。
+* Azure Remote Rendering では、**最大 8 個のアクティブな切断面** がサポートされています。 さらに多くの切断面のコンポーネントを作成することもできますが、より多くを同時に有効にしようとすると、アクティブ化が無視されます。 シーンに影響を与えるコンポーネントを切り替えたい場合は、最初に他のプレーンを無効にします。
 * 切断面は純粋に単なる視覚機能であり、[空間クエリ](spatial-queries.md)の結果には影響しません。 切り開かれたメッシュにレイ キャストする場合は、射線の開始点を、切断面上に配置するように調整します。 このようにすることで、射線を表示されている部分にのみ当てることができます。
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項

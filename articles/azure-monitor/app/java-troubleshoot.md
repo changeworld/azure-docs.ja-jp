@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: df1f58418452ecafacddd013ab815ebca5cb8a35
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133244"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097553"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK 用 Application Insights のトラブルシューティングおよび Q&A
 
@@ -170,7 +170,7 @@ java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 
 はい、お使いのサーバーがパブリック インターネットを介して Application Insights ポータルにテレメトリを送信できるなら、可能です。
 
-ファイアウォールでは、dc.services.visualstudio.com と f5.services.visualstudio.com への発信トラフィック用に TCP ポート 80 と 443 を開く必要がある場合があります。
+SDK からポータルにデータを送信できるように、[サーバーのファイアウォールで送信ポートを開く](./ip-addresses.md#outgoing-ports)必要がある場合があります。
 
 ## <a name="data-retention"></a>データの保持
 **ポータルでのデータ保持期間はどのくらいですか?セキュリティで保護されていますか?**

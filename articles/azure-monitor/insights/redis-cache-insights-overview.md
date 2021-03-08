@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: fee454073c50b9542e140576ef0629a39b8f4294
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210377"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573461"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Azure Monitor for Azure Cache for Redis を調べる
 
@@ -186,6 +186,6 @@ Azure Redis Cache の **[概要]** ブックには、複数のパフォーマン
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
+* [メトリック アラート](../alerts/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
-* ブックがサポートするシナリオ、レポートの作成方法とカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
+* ブックがサポートするシナリオ、レポートの作成方法とカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../visualize/workbooks-overview.md)」で学習してください。

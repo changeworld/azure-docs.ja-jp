@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 9/01/2020
-  ms.openlocfilehash: f8b134c1cce93468d68d8d920b412d2c5751b104
-  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.openlocfilehash: 406bcedade350a1971d77a2955bb6a2b0da51b67
+  ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/23/2021
-  ms.locfileid: "98737067"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102201738"
 landingContent:
 - title: Face サービスについて
   linkLists:
@@ -92,8 +92,8 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Face API v1.0
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236
+    - text: REST API
+      url: /rest/api/face/
     - text: .NET SDK
       url: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
     - text: Python SDK
@@ -107,7 +107,7 @@ landingContent:
     - text: Azure PowerShell
       url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: /cli/azure/cognitiveservices?view=azure-cli-latest
+      url: /cli/azure/cognitiveservices
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

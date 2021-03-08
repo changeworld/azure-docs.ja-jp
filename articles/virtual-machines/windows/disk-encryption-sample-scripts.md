@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption のサンプル スクリプト
+title: Windows VM 用の Azure Disk Encryption のサンプル スクリプト
 description: この記事は、Windows VM 用の Microsoft Azure Disk Encryption に関する付録です。
 author: msmbaldwin
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 255e284cf8d54a9be59f09f5613cb2728417d234
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f113a1e559798328a2ef81336e8afff02732bb90
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912040"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804956"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption のサンプル スクリプト 
 

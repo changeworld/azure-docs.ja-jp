@@ -1,23 +1,18 @@
 ---
 title: ODBC データ ストアからデータを移動する
 description: Azure Data Factory を使用して ODBC データ ストアからデータを移動する方法を説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c68b1f4d76a1899ce473c57f3a6d5de1eab71c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e847592127d19eba3370255385f5b969b87e886e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636869"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380102"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -47,9 +42,9 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 ## <a name="getting-started"></a>作業の開始
 さまざまなツールや API を使用して、ODBC データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、 **コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。 **Visual Studio** 、 **Azure PowerShell** 、 **Azure Resource Manager テンプレート** 、 **.NET API** 、 **REST API** 。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -66,7 +61,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります: **OnPremisesOdbc** |はい |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesOdbc** |はい |
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 <br/><br/>`"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、ゲートウェイ マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 |はい |
 | 資格情報 (credential) |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ |
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
@@ -205,7 +200,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 このサンプルでは、ODBC データベースで「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
 
-”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+"external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```json
 {
@@ -293,7 +288,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 **ODBC ソース (RelationalSource) と BLOB シンク (BlobSink) を使用するパイプラインでのコピー アクティビティ**
 
-パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、 **source** 型が **RelationalSource** に設定され、 **sink** 型が **BlobSink** に設定されています。 **query** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
+パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **query** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
 ```json
 {
@@ -355,16 +350,16 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
 
 ## <a name="troubleshoot-connectivity-issues"></a>接続の問題のトラブルシューティング
-接続の問題をトラブルシューティングするには、 **Data Management Gateway** 構成マネージャーの **[診断]** タブを使用します。
+接続の問題をトラブルシューティングするには、**Data Management Gateway** 構成マネージャーの **[診断]** タブを使用します。
 
-1. **Data Management Gateway 構成マネージャー** を起動します。 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" を直接実行することも、次の図に示すように、 **Gateway** を検索して **Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
+1. **Data Management Gateway 構成マネージャー** を起動します。 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" を直接実行することも、次の図に示すように、**Gateway** を検索して **Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
 
     ![Search gateway](./media/data-factory-odbc-connector/search-gateway.png)
 2. **[診断]** タブに切り替えます。
 
     ![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
 3. データ ストアの **種類** (リンクされたサービス) を選択します。
-4. **認証方法** を指定し、 **資格情報** を入力します。または、データ ストアへの接続に使用する **接続文字列** を入力します。
+4. **認証方法** を指定し、**資格情報** を入力します。または、データ ストアへの接続に使用する **接続文字列** を入力します。
 5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング

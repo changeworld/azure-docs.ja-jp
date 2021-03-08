@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 61e1e729ab0aeac1f7b8e5ee6787da38c5fef108
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020147"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805232"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -45,7 +45,7 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 
 [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. **[リソース グループ]** で、 **[新規作成]** を選択します。 このグループに **akvrotation** という名前を付けます。
+1. **[リソース グループ]** で、 **[新規作成]** を選択します。 グループに名前を付けます。このチュートリアルでは、**akvrotation** を使用します。
 1. **[SQL の管理者ログイン]** で、SQL 管理者のログイン名を入力します。 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **[作成]**
@@ -94,7 +94,7 @@ akvrotation-sql2/master  akvrotation      eastus      Microsoft.Sql/servers/data
 1. **[シークレット名]** に、パスワードが格納されるシークレットの名前を入力します。
 1. **[Repo Url]\(リポジトリの URL\)** に、関数コードがある GitHub の場所 ( **https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp.git** ) を入力します。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
-1. **［作成］** を選択します
+1. **[作成]** を選択します。
 
 :::image type="content" source="../media/rotate-3.png" alt-text="[確認および作成] を選択します。":::
   
@@ -213,7 +213,7 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 シークレットのローテーションが完了したことを確認するために、 **[Key Vault]**  >  **[シークレット]** に移動します。
 
-:::image type="content" source="../media/rotate-8.png" alt-text="[シークレット] に移動する":::
+:::image type="content" source="../media/rotate-8.png" alt-text="[Key Vault] > [シークレット] にアクセスする方法を示すスクリーンショット。":::
 
 **sqlPassword** シークレットを開き、元のバージョンとローテーション後のバージョンを確認します。
 

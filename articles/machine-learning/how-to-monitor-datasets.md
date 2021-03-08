@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: 1bf7856e807b04e35d28a3e262ae89ea9c298f3c
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: b62ed4c0b661ebc725bd4cd3737249d91e48c43e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763593"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656841"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 
@@ -363,7 +363,7 @@ Azure Machine Learning Studio で、グラフ内のバーをクリックする�
           service_principal_id=app_id,
           service_principal_password=client_secret
           )
-   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group="xxx")
    compute = ws.compute_targets.get("xxx")
    ```
 

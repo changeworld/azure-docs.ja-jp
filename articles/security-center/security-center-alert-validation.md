@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560103"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099524"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -36,11 +36,6 @@ ms.locfileid: "97560103"
 
 - Azure Defender の価値と機能を評価する
 - セキュリティ アラートに対して行った構成 (SIEM 統合、ワークフローの自動化、電子メール通知など) を検証する
-
-> [!NOTE]
-> この手順には、 **[セキュリティ アラート]** ページの上部にあるバナーから使用できる新しいアラート エクスペリエンス (プレビュー) が必要です。
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー":::
 
 アラートのサンプルを作成するには:
 
@@ -102,5 +97,4 @@ Kubernetes のノードとクラスターの防御の詳細については、「
 
 * [Azure Security Center による Azure Key Vault 脅威検出](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md) - Security Center で、アラートの管理とセキュリティ インシデントへの対応を行う方法について説明しています。
-* 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 - Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center のセキュリティ アラートの概要](./security-center-alerts-overview.md) - さまざまな種類のセキュリティ アラートについて説明しています。

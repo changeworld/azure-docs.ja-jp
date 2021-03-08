@@ -100,8 +100,10 @@
           href: cache-private-link.md
         - name: ゾーン冗長性を有効にする
           href: cache-how-to-zone-redundancy.md
-        - name: geo レプリケーションの設定
+        - name: OSS の geo レプリケーションを設定する
           href: cache-how-to-geo-replication.md
+        - name: エンタープライズ アクティブ geo レプリケーションを設定する
+          href: cache-how-to-active-geo-replication.md
         - name: 予約容量で保存する
           href: cache-reserved-pricing.md
         - name: Azure Cache for Redis への移行

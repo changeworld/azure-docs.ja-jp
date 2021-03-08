@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c2543f74b90205a36d3f5b4481beca35c779f77e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131129"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546025"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Form Recognizer の事前構築済みの名刺モデル 
 
@@ -35,7 +35,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 |:-----|:----|:----|:----|
 | ContactNames | オブジェクトの配列 | 名刺から抽出された連絡先の名前 | [{ "FirstName":"John", "LastName":"Doe" }] |
 | FirstName | string | 連絡先の名 | "John" | 
-| LastName | string | 連絡先の姓 |   "Doe" | 
+| LastName | string | 連絡先の姓 |     "Doe" | 
 | CompanyNames | 文字列の配列 | 名刺から抽出された会社名 | ["Contoso"] | 
 | Departments | 文字列の配列 | 連絡先の部署または組織 | ["R&D"] | 
 | JobTitles | 文字列の配列 | リストされている連絡先の役職 | ["Software Engineer"] | 
@@ -45,7 +45,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 | MobilePhones | 電話番号の配列 | 名刺から抽出された携帯電話番号 | ["+19876543210"] |
 | Fax | 電話番号の配列 | 名刺から抽出された Fax 電話番号 | ["+19876543211"] |
 | WorkPhones | 電話番号の配列 | 名刺から抽出された勤務先電話番号 | ["+19876543231"] |
-| OtherPhones    | 電話番号の配列 | 名刺から抽出されたその他の電話番号 | ["+19876543233"] |
+| OtherPhones     | 電話番号の配列 | 名刺から抽出されたその他の電話番号 | ["+19876543233"] |
 
 
 また、Business Card API では、名刺から認識されたすべてのテキストを返すこともできます。 この OCR 出力は JSON 応答に含まれています。  
@@ -76,7 +76,11 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 
 ### <a name="sample-json-output"></a>サンプル JSON 出力
 
-成功した JSON 応答の例を次に示します。"readResults" ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 "documentResults" ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切な連絡先情報が存在する場所です。
+名刺の分析結果の取得操作への応答は、抽出されたすべての情報が含まれる名刺の構造化表現になります。  [サンプルの名刺ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-english.jpg)と、その構造化された出力である[サンプルの名刺出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)を参照してください。
+
+成功した JSON 応答の例を次に示します。
+* `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 
+* `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切な連絡先情報が存在する場所です。
 
 ```json
 {

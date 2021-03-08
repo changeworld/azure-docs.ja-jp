@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d5517afe7407da7428d4a83f3d2de67836280c7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f80990854fd0c584d8e6582fdf35108e67d9202b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741900"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625130"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>オンプレミスでの Azure AD パスワード保護に関するよく寄せられる質問
 
@@ -150,6 +150,146 @@ Azure AD パスワード保護 DC エージェント サービスは、既存の
 **Q:パスワードが Azure AD パスワード保護によって拒否された場合、ユーザーには従来の Windows エラー メッセージが表示されます。このエラー メッセージをカスタマイズして、実際に発生したことをユーザーに知らせることはできますか?**
 
 いいえ。 ドメイン コントローラーによってパスワードが拒否されたときにユーザーに表示されるエラー メッセージは、ドメイン コントローラーではなく、クライアント コンピューターによって制御されています。 この動作は、パスワードが既定の Active Directory パスワード ポリシーによって拒否されたか、または Azure AD パスワード保護などのパスワード フィルター ベースのソリューションによって拒否されたかにかかわらず、発生します。
+
+## <a name="password-testing-procedures"></a>パスワードのテスト手順
+
+ソフトウェアの適切な動作を検証するため、および[パスワード評価アルゴリズム](concept-password-ban-bad.md#how-are-passwords-evaluated)について理解を深めるために、さまざまなパスワードの基本的なテストを実行することが望ましい場合があります。 このセクションでは、反復可能な結果を生成することを目的とした、このようなテストの方法について概説します。
+
+このような手順に従う必要があるのはなぜでしょうか? オンプレミスの Active Directory 環境には、パスワードの制御された反復可能なテストを行うことが困難になる要因がいくつかあります。
+
+* パスワード ポリシーが Azure で構成および永続化され、ポリシーのコピーが、ポーリング メカニズムを使用して、オンプレミスの DC エージェントによって定期的に同期されます。 このポーリング サイクルに固有の待機時間が原因で混乱が発生する可能性があります。 たとえば、Azure でポリシーを構成しても、それを DC エージェントに同期することを忘れた場合、テストで期待どおりの結果が得られないことがあります。 ポーリング間隔は、1 時間に 1 回になるように現在ハードコーディングされていますが、ポリシーの変更間に 1 時間待機することは、対話型のテスト シナリオでは理想的ではありません。
+* 新しいパスワード ポリシーがドメイン コントローラーに同期された後、それが他のドメイン コントローラーにレプリケートされるまで、さらに待機時間が発生します。 最新バージョンのポリシーをまだ受け取っていないドメイン コントローラーに対してパスワードの変更をテストした場合、これらの遅延が原因で、予期しない結果が発生する可能性があります。
+* ユーザー インターフェイスを使用してパスワードの変更をテストした場合、結果の信頼性を確保することが難しくなります。 たとえば、ユーザー インターフェイスに無効なパスワードを誤入力することは容易に起こります。これは特に、ほとんどのパスワード ユーザー インターフェイスでユーザー入力が非表示になっているためです (たとえば、Windows の Ctrl + Alt + Delete -> [パスワードの変更] UI など)。
+* ドメインに参加しているクライアントからパスワードの変更をテストするときに、どのドメイン コントローラーを使用するかを厳密に制御することはできません。 Windows クライアント OS は、Active Directory サイトとサブネットの割り当て、環境固有のネットワーク構成などの要因に基づいてドメイン コントローラーを選択します。
+
+これらの問題を回避するために、下の手順は、ドメイン コントローラーにログインしているときのパスワード リセットのコマンドライン テストに基づいています。
+
+> [!WARNING]
+> これらの手順はテスト環境でのみ使用する必要があります。これは、DC エージェント サービスが停止している間、受信するすべてのパスワードの変更とリセットが検証されずに受け入れられてしまうため、およびドメイン コントローラーへのログインに固有のリスクが増加するのを避けるためです。
+
+次の手順は、DC エージェントが少なくとも 1 つのドメイン コントローラーにインストールされていること、少なくとも 1 つのプロキシがインストールされていること、およびプロキシとフォレストの両方が登録されていることを前提としています。
+
+1. DC エージェント ソフトウェアがインストールされ、再起動されたドメイン コントローラーに、ドメイン管理者の資格情報 (または、テスト ユーザー アカウントを作成し、パスワードをリセットするための十分な特権を持つその他の資格情報) を使用してログオンします。
+1. イベント ビューアーを開いて、[DC エージェント管理イベント ログ](howto-password-ban-bad-on-premises-monitor.md#dc-agent-admin-event-log)に移動します。
+1. 昇格した [コマンド プロンプト] ウィンドウを開きます。
+1. パスワード テストを実行するためのテスト アカウントを作成します。
+
+   ユーザー アカウントを作成する方法は多数ありますが、反復的なテスト サイクル中にこれを簡単に行う方法として、コマンドライン オプションが提供されています。
+
+   ```text
+   net.exe user <testuseraccountname> /add <password>
+   ```
+
+   下の説明のために、"ContosoUser" という名前のテスト アカウントを作成したと仮定します。次に例を示します。
+
+   ```text
+   net.exe user ContosoUser /add <password>
+   ```
+
+1. Web ブラウザーを開き (ドメイン コントローラーではなく、別のデバイスを使用する必要がある場合があります)、[Azure portal](https://portal.azure.com) にサインインし、[Azure Active Directory] > [セキュリティ] > [認証方法] > [パスワード保護] を参照します。
+1. 実行するテストに対して、必要に応じて Azure AD パスワード保護ポリシーを変更します。  たとえば、強制または監査のモードを構成する場合や、カスタムの禁止パスワード リストの禁止語句のリストを変更する場合があります。
+1. DC エージェント サービスを停止および再起動して、新しいポリシーを同期します。
+
+   この手順は、さまざまな方法で実行できます。 1 つの方法は、[Azure AD パスワード保護 DC エージェント サービス] を右クリックし、[再起動] を選択することで、サービス管理の管理コンソールを使用することです。 もう 1 つの方法では、次のようにコマンド プロンプト ウィンドウから実行できます。
+
+   ```text
+   net stop AzureADPasswordProtectionDCAgent && net start AzureADPasswordProtectionDCAgent
+   ```
+    
+1. イベント ビューアーを確認して、新しいポリシーがダウンロードされていることを確認します。
+
+   DC エージェント サービスが停止して開始されるたびに、連続して発行された 2 つの 30006 イベントが表示されます。 1 番目の 30006 イベントには、sysvol 共有のディスクにキャッシュされたポリシーが反映されます。 2 番目の 30006 イベント (存在する場合) では、テナント ポリシーの日付が更新されており、その場合、Azure からダウンロードされたポリシーが反映されます。 テナント ポリシーの日付値は、ポリシーが Azure からダウンロードされたおおよそのタイムスタンプを示すように現在コーディングされています。
+   
+   2 番目の 30006 イベントが表示されない場合は、続行する前に問題をトラブルシューティングする必要があります。
+   
+   30006 イベントは、この例のようになります。
+ 
+   ```text
+   The service is now enforcing the following Azure password policy.
+
+   Enabled: 1
+   AuditOnly: 0
+   Global policy date: ‎2018‎-‎05‎-‎15T00:00:00.000000000Z
+   Tenant policy date: ‎2018‎-‎06‎-‎10T20:15:24.432457600Z
+   Enforce tenant policy: 1
+   ```
+
+   たとえば、強制と監査のモードを切り替えると、AuditOnly フラグが変更されます (AuditOnly=0 が設定されている上のポリシーは強制モードです)。カスタムの禁止パスワード リストに対する変更は、上の 30006 イベントには直接的には反映されません (また、セキュリティ上の理由から、他のどこにもログされません)。 このような変更の後に Azure からポリシーを正常にダウンロードした場合は、変更されたカスタムの禁止パスワード リストも含まれます。
+
+1. テスト ユーザー アカウントの新しいパスワードのリセットを試行することで、テストを実行します。
+
+   この手順は、コマンド プロンプト ウィンドウから次のように実行できます。
+
+   ```text
+   net.exe user ContosoUser <password>
+   ```
+
+   コマンドを実行した後、イベント ビューアーを確認することで、コマンドの結果に関する詳細情報を得ることができます。 パスワード検証結果イベントについては、「[DC エージェント管理イベント ログ](howto-password-ban-bad-on-premises-monitor.md#dc-agent-admin-event-log)」というトピックを参照してください。net.exe コマンドからの対話型出力に加えて、このようなイベントを使用して、テストの結果を検証します。
+
+   例を試してみましょう。Microsoft グローバル リストで禁止されているパスワードを設定しようとしています (このリストは[ドキュメント化されていません](concept-password-ban-bad.md#global-banned-password-list)が、ここでは既知の禁止語句に対してテストすることができます)。 この例では、ポリシーを強制モードに構成し、カスタムの禁止パスワード リストに 0 個の語句を追加したことを前提としています。
+
+   ```text
+   net.exe user ContosoUser PassWord
+   The password does not meet the password policy requirements. Check the minimum password length, password complexity and password history requirements.
+
+   More help is available by typing NET HELPMSG 2245.
+   ```
+
+   ドキュメントによると、このテストはパスワード リセット操作であったため、ContosoUser ユーザーに対して 10017 および 30005 イベントが表示されます。
+
+   10017 イベントは、この例のようになります。
+
+   ```text
+   The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   30005 イベントは、この例のようになります。
+
+   ```text
+   The reset password for the specified user was rejected because it matched at least one of the tokens present in the Microsoft global banned password list of the current Azure password policy.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   以上です。別の例を試してみましょう。 今回は、ポリシーが監査モードのときに、カスタムの禁止リストによって禁止されているパスワードを設定してみます。 この例は、次の手順を実行したことを前提としています。ポリシーを監査モードに構成し、カスタムの禁止パスワード リストに "lachrymose" という語句を追加し、上記のように、DC エージェント サービスを停止して開始することで、結果の新しいポリシーをドメイン コントローラーに同期しました。
+
+   次に、禁止パスワードのバリエーションを設定します。
+
+   ```text
+   net.exe user ContosoUser LaChRymoSE!1
+   The command completed successfully.
+   ```
+
+   今回は、ポリシーが監査モードであるために成功したということを覚えておいてください。 ContosoUser ユーザーに対して 10025 および 30007 イベントが表示されます。
+
+   10025 イベントは、この例のようになります。
+   
+   ```text
+   The reset password for the specified user would normally have been rejected because it did not comply with the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted. Please see the correlated event log message for more details.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   30007 イベントは、この例のようになります。
+
+   ```text
+   The reset password for the specified user would normally have been rejected because it matches at least one of the tokens present in the per-tenant banned password list of the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+1. 前のステップで説明した手順を使用して、引き続き任意のさまざまなパスワードをテストし、イベント ビューアーで結果を確認します。 Azure portal でポリシーを変更する必要がある場合は、前に説明したように、新しいポリシーを DC エージェントに同期することを忘れないでください。
+
+Azure AD パスワード保護のパスワード検証動作の制御されたテストを実行できるようにする手順について説明しました。 ドメイン コントローラーでコマンド ラインからユーザー パスワードを直接リセットすることは、このようなテストを実行するための特殊な手段のように思われるかもしれませんが、前述のように、この目的は反復可能な結果を生成することです。 さまざまなパスワードをテストする際には、[パスワード評価アルゴリズム](concept-password-ban-bad.md#how-are-passwords-evaluated)を念頭に置いてください。これは、予期しない結果を説明するのに役立つ場合があるためです。
+
+> [!WARNING]
+> すべてのテストが完了したら、テストのために作成したユーザー アカウントを忘れずに削除してください。
 
 ## <a name="additional-content"></a>その他のコンテンツ
 

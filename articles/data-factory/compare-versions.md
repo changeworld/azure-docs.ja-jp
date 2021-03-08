@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory と Data Factory バージョン 1 の比較
 description: この記事では、Azure Data Factory と Azure Data Factory バージョン 1 を比較します。
-services: data-factory
-documentationcenter: ''
 author: kromerm
-manager: anandsub
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
-ms.author: makromer
-ms.openlocfilehash: c6a46f6c8a57b681f66bb98fced17bf0e2464fcd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dc5a4c92ee4ac0acd4a69ef94fec0981e328d829
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638246"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393719"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
 
@@ -118,13 +114,13 @@ V1 では、IDotNetActivity インターフェイスの Execute メソッドを�
 ## <a name="sdks"></a>SDK
  現在のバージョンの Data Factory では、パイプラインの作成、管理、および監視に使用できる、より豊富な SDK セットが用意されています。
 
-- **.NET SDK** :.NET SDK は現在のバージョンで更新されています。
+- **.NET SDK**:.NET SDK は現在のバージョンで更新されています。
 
-- **PowerShell** :PowerShell コマンドレットは現在のバージョンで更新されています。 現在のバージョンのコマンドレットには、名前に **DataFactoryV2** が付いています (たとえば、Get-AzDataFactoryV2)。 
+- **PowerShell**:PowerShell コマンドレットは現在のバージョンで更新されています。 現在のバージョンのコマンドレットには、名前に **DataFactoryV2** が付いています (たとえば、Get-AzDataFactoryV2)。 
 
-- **Python SDK** :この SDK は、現在のバージョンで新しく導入されました。
+- **Python SDK**:この SDK は、現在のバージョンで新しく導入されました。
 
-- **REST API** :REST API は現在のバージョンで更新されています。 
+- **REST API**:REST API は現在のバージョンで更新されています。 
 
 現在のバージョンで更新された SDK は、V1 クライアントと下位互換性がありません。 
 

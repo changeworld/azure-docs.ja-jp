@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: 75c6841b7fed354843b955a971f02946be349a02
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548887"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102242"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender for IoT のベースラインとカスタム チェック
 
@@ -35,9 +35,13 @@ ms.locfileid: "96548887"
 ## <a name="setting-baseline-properties"></a>ベースライン プロパティの設定
 
 1. IoT Hub で、変更するデバイスを見つけて選択します。
+
 1. デバイスをクリックした後、**azureiotsecurity** モジュールをクリックします。
+
 1. **[モジュール ID ツイン]** をクリックします。
+
 1. **ベースラインのカスタム チェック** ファイルをデバイスにアップロードします。
+
 1. ベースライン プロパティをセキュリティ モジュールに追加し、 **[保存]** をクリックします。
 
 ### <a name="baseline-custom-check-file-example"></a>ベースラインのカスタム チェック ファイルの例

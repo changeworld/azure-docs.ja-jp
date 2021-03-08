@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078835"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586054"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -85,18 +85,18 @@ Azure のリソースであれ、サードパーティ システムのリソー�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Automation では、そのマシンの操作を監視するために [Azure Monitor](../azure-monitor/overview.md) が使用されます。 これらの操作には、Log Analytics ワークスペースと [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)が必要です。
+Azure Automation では、そのマシンの操作を監視するために [Azure Monitor](../azure-monitor/overview.md) が使用されます。 これらの操作には、Log Analytics ワークスペースと [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)が必要です。
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows 用の Log Analytics エージェント
 
-[Windows 用の Log Analytics エージェント](../azure-monitor/platform/agent-windows.md)は、Azure Monitor と連携して、Windows VM と物理コンピューターを管理します。 マシンは、Azure 内で実行されていても、Azure 以外の環境 (ローカル データセンターなど) で実行されていてもかまいません。
+[Windows 用の Log Analytics エージェント](../azure-monitor/agents/agent-windows.md)は、Azure Monitor と連携して、Windows VM と物理コンピューターを管理します。 マシンは、Azure 内で実行されていても、Azure 以外の環境 (ローカル データセンターなど) で実行されていてもかまいません。
 
 >[!NOTE]
 >Windows 用の Log Analytics エージェントは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていました。
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェント
 
-[Linux 用 Log Analytics エージェント](../azure-monitor/platform/agent-linux.md)は、Windows 用のエージェントと同様に機能しますが、Linux コンピューターを Azure Monitor に接続します。 エージェントをインストールすると、Hybrid Runbook Worker などでルート アクセス許可が要求されるコマンドを実行できる、**nxautomation** というユーザー アカウントもインストールされます。 **nxautomation** アカウントは、パスワードを必要としないシステム アカウントです。
+[Linux 用 Log Analytics エージェント](../azure-monitor/agents/agent-linux.md)は、Windows 用のエージェントと同様に機能しますが、Linux コンピューターを Azure Monitor に接続します。 エージェントをインストールすると、Hybrid Runbook Worker などでルート アクセス許可が要求されるコマンドを実行できる、**nxautomation** というユーザー アカウントもインストールされます。 **nxautomation** アカウントは、パスワードを必要としないシステム アカウントです。
 
 [Linux Hybrid Runbook Worker のインストール](automation-linux-hrw-install.md)中は、対応する sudo アクセス許可を持った **nxautomation** アカウントが存在していなければなりません。 そのアカウントが存在しない、または適切なアクセス許可がアカウントにない状態でワーカーをインストールしようとすると、インストールは失敗します。
 
@@ -112,7 +112,7 @@ Log Analytics エージェントと **nxautomation** アカウント向けに提
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 
-Runbook には、資格情報を通じて Azure に対する認証を行うためのアクセス許可が必要です。 「[Azure Automation の実行アカウントを管理する](manage-runas-account.md)」を参照してください。
+Runbook には、資格情報を通じて Azure に対する認証を行うためのアクセス許可が必要です。 [Azure Automation の認証の概要](automation-security-overview.md)に関するページを参照してください。
 
 ## <a name="modules"></a>モジュール
 
@@ -139,6 +139,7 @@ Azure Automation では、同じ Automation アカウントから複数のジョ
 
 | Status | 説明 |
 |:--- |:--- |
+| アクティブ化中 |ジョブをアクティブ化しています。 |
 | 完了 |ジョブは正常に完了しました。 |
 | 失敗 |グラフィック Runbook または PowerShell ワークフロー Runbook のコンパイルが失敗しました。 PowerShell Runbook を開始できなかったか、ジョブで例外が発生しました。 「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。|
 | 失敗、リソースを待機中 |ジョブは [fair share](#fair-share) の限界に 3 回到達し、毎回、同じチェックポイントから、または Runbook の先頭から起動したために、失敗しました。 |

@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: c97975d6920cd0f04a7d2d4e73c00104a2b13235
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dd000ca36bb0ad586b973b2bcdc638d8992b1a73
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685614"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668641"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP HANA スケールアウト システムの高可用性 
 
@@ -91,7 +90,7 @@ ms.locfileid: "98685614"
   * [SAP HANA のスケールアウトとシステム レプリケーションのための Red Hat Enterprise Linux ソリューション](https://access.redhat.com/solutions/4386601)
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
 * [Azure NetApp Files のドキュメント][anf-azure-doc] 
-
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>概要
 
@@ -1172,4 +1171,5 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)
 * Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。

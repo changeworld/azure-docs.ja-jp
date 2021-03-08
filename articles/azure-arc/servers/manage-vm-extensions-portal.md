@@ -1,14 +1,14 @@
 ---
 title: Azure portal から VM 拡張機能を有効にする
 description: この記事では、Azure portal からハイブリッド クラウド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 11/06/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359087"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587655"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure portal から Azure VM 拡張機能を有効にする
 
@@ -33,12 +33,24 @@ Azure portal を使用して、Arc for server で管理されているマシン�
 
     ![Log Analytics VM 拡張機能をインストールする](./media/manage-vm-extensions/mma-extension-config.png)
 
-    インストールを完了するには、ワークスペース ID と主キーを指定する必要があります。 この情報の検索方法に慣れていない場合は、「[ワークスペース ID とキーを取得する](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)」を参照してください。
+    インストールを完了するには、ワークスペース ID と主キーを指定する必要があります。 この情報の検索方法に慣れていない場合は、「[ワークスペース ID とキーを取得する](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)」を参照してください。
 
 4. 表示される必要な情報を確認したら、 **[作成]** を選択します。 デプロイの概要が表示され、デプロイの状態を確認できます。
 
 >[!NOTE]
 >複数の拡張機能をまとめてバッチ処理することができますが、順番にインストールされます。 最初の拡張機能のインストールが完了すると、次の拡張機能のインストールが試行されます。
+
+## <a name="list-extensions-installed"></a>インストールされている拡張機能を一覧表示する
+
+Arc 対応サーバー上の VM 拡張機能の一覧を Azure portal から取得できます。 それらを表示するには、次の手順を実行します。
+
+1. お使いのブラウザーで [Azure portal](https://portal.azure.com) に移動します。
+
+2. ポータルで **[サーバー - Azure Arc]** に移動し、一覧からハイブリッド マシンを選択します。
+
+3. **[拡張機能]** を選択すると、インストールされている拡張機能の一覧が返されます。
+
+    ![選択されたマシンにデプロイされた VM 拡張機能を一覧表示する](./media/manage-vm-extensions/list-vm-extensions.png)
 
 ## <a name="uninstall-extension"></a>拡張機能をアンインストールする
 

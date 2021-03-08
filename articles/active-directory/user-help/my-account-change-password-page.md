@@ -9,21 +9,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e1cfae18265dc00cda9fb66f7b9b5dbbdf6d64d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798195"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092385"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>[パスワードの変更] ページで、職場または学校のアカウントのパスワードを変更します。
 
 パスワードを覚えており、ロックアウトされていない場合は、 **[マイ アカウント]** ポータルの **[パスワードの変更]** ページを使用して、職場または学校アカウントの既存のパスワードを更新することができます。 パスワードを覚えていない場合、アカウントからロックアウトされている場合、または組織からパスワードを受け取ったことがない場合は、ご自分のセキュリティ情報とモバイル デバイスを使用してパスワードをリセットすることができます。
 
 >[!Important]
->この記事は、既存の職場または学校アカウントの既知のパスワードを更新しようとしているユーザーを対象としています。 Xbox、Hotmail、Outlook.com などの個人アカウントを回復しようとしているユーザーの場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事の提案事項をお試しください。 従業員または他のユーザーのセルフサービス パスワード リセットをテストする方法の詳細情報が必要な管理者の場合は、[セルフサービス パスワード リセット](../authentication/tutorial-enable-sspr.md)に関する記事を参照してください。
+>この記事は、既存の職場または学校アカウントの既知のパスワードを更新しようとしているユーザーを対象としています。 Xbox、Hotmail、Outlook.com などの個人アカウントを回復しようとしているユーザーの場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の記事の提案事項をお試しください。 個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>従業員または他のユーザーのセルフサービス パスワード リセットをテストする方法の詳細情報が必要な管理者の場合は、[セルフサービス パスワード リセット](../authentication/tutorial-enable-sspr.md)に関する記事を参照してください。
 
 ## <a name="update-a-password-from-the-change-password-page"></a>[パスワードの変更] ページからパスワードを更新する
 

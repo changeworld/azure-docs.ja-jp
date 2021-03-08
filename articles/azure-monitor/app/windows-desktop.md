@@ -4,16 +4,16 @@ description: Application Insights を使用して、Windows デスクトップ �
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15331494b40021f10c162fba75abf6fe88d2d419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827869"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583311"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 
-Application Insights は、オンプレミスや Azure、その他各種クラウドでホストされているすべてのアプリケーションが活用ができます。 唯一の制約は、Application Insights サービスとの[通信を許可](./ip-addresses.md)する必要があることです。 ユニバーサル Windows プラットフォーム (UWP) アプリケーションの監視には、[Visual Studio App Center](../learn/mobile-center-quickstart.md) をお勧めします。
+Application Insights は、オンプレミスや Azure、その他各種クラウドでホストされているすべてのアプリケーションが活用ができます。 唯一の制約は、Application Insights サービスとの[通信を許可](./ip-addresses.md)する必要があることです。 ユニバーサル Windows プラットフォーム (UWP) アプリケーションの監視には、[Visual Studio App Center](../app/mobile-center-quickstart.md) をお勧めします。
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>従来の Windows アプリケーションから Application Insights にテレメトリを送信するには
 1. [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](./create-new-resource.md)。 
@@ -27,7 +27,7 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
    
     `<InstrumentationKey>`*自分のキー*`</InstrumentationKey>` 
    
-    ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy**に設定されていることを確認します。
+    ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy** に設定されていることを確認します。
 5. [API を使用して](./api-custom-events-metrics.md) テレメトリを送信します。
 6. アプリケーションを実行し、Azure portal で作成したリソースのテレメトリを表示します。
 
@@ -177,6 +177,6 @@ namespace WindowsFormsApp2
 ## <a name="next-steps"></a>次のステップ
 * [ダッシュボードを作成する](./overview-dashboard.md)
 * [診断検索](./diagnostic-search.md)
-* [メトリックを探索する](../platform/metrics-charts.md)
-* [Analytics クエリを作成する](../log-query/log-query-overview.md)
+* [メトリックを探索する](../essentials/metrics-charts.md)
+* [Analytics クエリを作成する](../logs/log-query-overview.md)
 

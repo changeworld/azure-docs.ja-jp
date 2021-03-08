@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 8de395e34b43a4edad2affa591adb8ab34ff9e66
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921699"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737542"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -28,9 +28,9 @@ ms.locfileid: "96921699"
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Linux に blobfuse をインストールする
-blobfuse バイナリは、Linux の Ubuntu および RHEL ディストリビューション用の [Microsoft ソフトウェア リポジトリ](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で入手できます。 このようなディストリビューションに blobfuse をインストールするには、一覧からいずれかのリポジトリを構成します。 使用しているディストリビューション用のバイナリがない場合は、[Azure Storage のインストール手順](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)に従ってソース コードからバイナリをビルドすることもできます。
+blobfuse バイナリは、Ubuntu、Debian、SUSE、CentoOS、Oracle Linux、RHEL ディストリビューション用の [Linux 用の Microsoft ソフトウェア リポジトリ](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で使用できます。 このようなディストリビューションに blobfuse をインストールするには、一覧からいずれかのリポジトリを構成します。 使用しているディストリビューション用のバイナリがない場合は、[Azure Storage のインストール手順](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)に従ってソース コードからバイナリをビルドすることもできます。
 
-blobfuse では、Ubuntu 14.04、16.04、18.04、および 20.04 へのインストールをサポートしています。 次のコマンドを実行して、これらのバージョンのいずれかがデプロイされていることを確認します。
+blobfuse がインストールをサポートしているバージョンは次のとおりです。Ubuntu のバージョン: 16.04、18.04、および 20.04。RHEL のバージョン: 7.5、7.8、8.0、8.1、8.2。CentOS のバージョン: 7.0、8.0。Debian のバージョン: 9.0、10.0。SUSE のバージョン: 15。OracleLinux: 8.1。 次のコマンドを実行して、これらのバージョンのいずれかがデプロイされていることを確認します。
 ```
 lsb_release -a
 ```
@@ -38,16 +38,16 @@ lsb_release -a
 ### <a name="configure-the-microsoft-package-repository"></a>Microsoft パッケージ リポジトリを構成する
 [Microsoft 製品用の Linux パッケージ リポジトリ](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)を構成します。
 
-例として、Enterprise Linux 6 ディストリビューション上では、次のようになります。
+例として、Enterprise Linux 8 ディストリビューション上では、次のようになります。
 ```bash
-sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
+sudo rpm -Uvh https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
 ```
 
 同様に、`.../rhel/7/...` の URL を Enterprise Linux 7 ディストリビューションを指すように変更します。
 
-Ubuntu 14.04 ディストリビューション上での別の例を次に示します。
+Ubuntu 20.04 ディストリビューション上での別の例を次に示します。
 ```bash
-wget https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```

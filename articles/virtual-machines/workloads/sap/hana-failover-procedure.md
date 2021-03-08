@@ -6,20 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1daba0819e0164602ae78ece87421834f36fb09a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2a33340524556f5da1703cae3532f053fbe8ba13
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967824"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670986"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>ディザスター リカバリーのフェールオーバー手順
 
@@ -53,7 +52,7 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 1. 実行しているHANA L インスタンスのディザスター リカバリー ユニットで、HANA の非運用インスタンスをシャットダウンします。 休止中の HANA 運用インスタンスはプレインストールされています。
 1. SAP HANA プロセスが実行されていないことを確認します。 この確認には、次のコマンドを使用します。
 
-      `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`
+      `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`.
 
       出力では、**hdbdaemon** プロセスが停止状態であり、実行中または開始済み状態の他の HANA プロセスが存在しないことが示されます。
 1. ディザスター リカバリー サイトをどのスナップショット名やどの SAP HANA バックアップ ID に復元するかを確認します。 実際のディザスター リカバリーの場合、通常、このスナップショットは最新のスナップショットです。 失われたデータを復旧する必要がある場合は、古いスナップショットを選択します。

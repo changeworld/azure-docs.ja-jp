@@ -4,16 +4,16 @@ description: チュートリアル - 患者の継続的なモニタリング ソ
 author: philmea
 ms.author: philmea
 ms.date: 12/11/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: dad6327acd24fe7642bf1033b1527ef3e40b772e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 093e069fa7a3eab06c61f796421a3253d9b92cb1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590105"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727500"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>患者の継続的なモニタリングのアーキテクチャ
 
@@ -45,7 +45,7 @@ Azure IoT Central は HIPAA に準拠し、HITRUST&reg; 認定を受けていま
 
 ### <a name="provider-dashboard"></a>プロバイダー ダッシュボード
 
-Azure API for FHIR データを使用して患者分析情報ダッシュボードを作成するか、医療チームが使う電子医療記録に直接データを統合します。 医療チームはダッシュボードを使用して、患者を補助したり、早い段階で悪化の徴候を発見したりすることができます。 詳細については、「[Power BI プロバイダー ダッシュボードを構築する](howto-health-data-triage.md)」のチュートリアルを参照してください。
+Azure API for FHIR データを使用して患者分析情報ダッシュボードを作成するか、医療チームが使う電子医療記録に直接データを統合します。 医療チームはダッシュボードを使用して、患者を補助したり、早い段階で悪化の徴候を発見したりすることができます。 詳細については、「[Power BI プロバイダー ダッシュボードを構築する](tutorial-health-data-triage.md)」のチュートリアルを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -26,11 +26,7 @@
       href: tutorial-register-applications.md
     - name: 3 - ユーザー フローの作成
       href: tutorial-create-user-flows.md
-    - name: ID プロバイダーの追加
-      href: tutorial-add-identity-providers.md
-    - name: UI のカスタマイズ
-      href: tutorial-customize-ui.md
-    - name: ユーザーを認証する
+    - name: 4 - ユーザーの認証
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -41,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: API アクセスの許可
+    - name: 5 - API アクセスの許可
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -105,9 +101,14 @@
           href: tutorial-register-applications.md
         - name: シングルページ アプリケーション (SPA) を登録する
           href: tutorial-register-spa.md
-        - name: SAML サービス プロバイダーを登録する
-          href: connect-with-saml-service-providers.md
-          displayName: 'SP, RP, service provider, connect'
+        - name: SAML アプリケーション
+          items:
+            - name: SAML アプリケーションを構成する
+              href: saml-service-provider.md
+              displayName: 'SP, service provider'
+            - name: SAML アプリケーションのオプションを構成する
+              href: saml-service-provider-options.md
+              displayName: 'SP, service provider'
         - name: Microsoft Graph アプリケーションを登録する
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
@@ -125,10 +126,14 @@
           href: add-sign-up-and-sign-in-policy.md
         - name: サインイン ポリシー
           href: add-sign-in-policy.md
-        - name: パスワードのリセット ポリシー
-          href: add-password-reset-policy.md
-        - name: パスワードの変更ポリシー
-          href: add-password-change-policy.md
+        - name: パスワード リセットのポリシー
+          items:
+            - name: セルフサービス パスワード リセット
+              href: add-password-reset-policy.md
+            - name: セルフサービスのパスワード変更
+              href: add-password-change-policy.md
+            - name: パスワードの強制的なリセット
+              href: force-password-reset.md
         - name: プロファイルの編集ポリシー
           href: add-profile-editing-policy.md
         - name: リソース所有者のパスワード資格情報ポリシー
@@ -150,6 +155,8 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
+        - name: Apple (プレビュー)
+          href: identity-provider-apple-id.md
         - name: Azure AD (シングルテナント)
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD (マルチテナント)
@@ -158,8 +165,14 @@
           href: identity-provider-azure-ad-b2c.md
         - name: Facebook
           href: identity-provider-facebook.md
-        - name: 汎用の ID プロバイダー
+        - name: 汎用 OpenId Connect
           href: identity-provider-generic-openid-connect.md
+        - name: 汎用 SAML ID プロバイダー
+          items:
+            - name: SAML ID プロバイダーを構成する
+              href: identity-provider-generic-saml.md
+            - name: SAML ID プロバイダーのオプションを構成する
+              href: identity-provider-generic-saml-options.md
         - name: GitHub
           href: identity-provider-github.md
         - name: Google
@@ -217,11 +230,11 @@
           href: configure-tokens.md
     - name: カスタム属性を定義する
       href: user-flow-custom-attributes.md
-    - name: Identity Protection と条件付きアクセス
+    - name: リスクベースの認証
       items:
-        - name: Identity Protection と条件付きアクセスを設定する
-          href: conditional-access-identity-protection-setup.md
-        - name: 条件付きアクセスの追加
+        - name: Identity Protection を使用してリスクを調査する
+          href: identity-protection-investigate-risk.md
+        - name: 条件付きアクセスを構成する
           href: conditional-access-user-flow.md
     - name: 年齢制限を構成する
       href: basic-age-gating.md
@@ -266,9 +279,6 @@
             - name: ポリシー検証
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
-        - name: Usage analytics
-          href: analytics-with-application-insights.md
-          displayName: 'application insights, app insights'
         - name: リファレンス
           items:
             - name: TrustFrameworkPolicy
@@ -321,8 +331,6 @@
                   items:
                     - name: 検証技術プロファイルとは
                       href: validation-technical-profile.md
-                    - name: Application Insights
-                      href: application-insights-technical-profile.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
                     - name: Azure AD の Multi-Factor Authentication
@@ -332,9 +340,6 @@
                       href: aad-sspr-technical-profile.md
                     - name: 要求の変換
                       href: claims-transformation-technical-profile.md
-                    - name: 条件付きアクセス
-                      href: conditional-access-technical-profile.md
-                      displayName: ca
                     - name: ID トークン ヒント
                       href: id-token-hint.md
                     - name: JWT トークン発行者
@@ -391,6 +396,8 @@
           href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
+        - name: Microsoft Dynamics 365 Fraud Protection
+          href: partner-dynamics-365-fraud-protection.md
         - name: N8 Identity
           href: partner-n8identity.md
         - name: Nevis
@@ -422,9 +429,6 @@
           displayName: 'migrate, b2clogin, owin'
     - name: オートメーション
       items:
-        - name: Azure Monitor
-          href: azure-monitor.md
-          displayName: 'log, logs, logging, usage, events'
         - name: Microsoft Graph API
           href: microsoft-graph-operations.md
           displayName: 'account, accounts, msgraph, ms graph, graph'
@@ -434,14 +438,26 @@
         - name: PowerShell を使用したポリシーの管理
           href: manage-custom-policies-powershell.md
           displayName: 'scripting, scripts, psh, custom policy'
-    - name: 監査ログ
-      href: view-audit-logs.md
     - name: ユーザーの管理 - Azure portal
       href: manage-users-portal.md
       displayName: 'create users, add users, delete users'
     - name: API Management API のセキュリティ保護
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: ログと監視
+      items:
+        - name: 監査ログ
+          href: view-audit-logs.md
+          displayName: 'log, logs, logging, usage, events, reports, reporting'
+        - name: Azure Monitor
+          href: azure-monitor.md
+          displayName: 'log, logs, logging, usage, events, reports, reporting, dashboard'
+        - name: Usage analytics
+          href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights, reports, reporting'
+        - name: 電話ベースの MFA をセキュリティで保護する
+          href: phone-based-mfa.md
+          displayName: 'multi-factor authentication, Azure Monitor, Log Analytics, reports, reporting, dashboard'
     - name: コンプライアンス
       items:
         - name: ユーザー アクセス
@@ -477,6 +493,18 @@
       href: page-layout.md
     - name: 利用可能なリージョンとデータの保存場所
       href: data-residency.md
+    - name: 回復性のための構築
+      items:
+        - name: 回復性に関する Azure AD B2C の概要
+          href: ../active-directory/fundamentals/resilience-b2c.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: エンド ユーザー エクスペリエンス
+          href: ../active-directory/fundamentals/resilient-end-user-experience.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: 外部プロセスとのインターフェイス
+          href: ../active-directory/fundamentals/resilient-external-processes.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Azure AD B2C 開発者のベスト プラクティス
+          href: ../active-directory/fundamentals/resilience-b2c-developer-best-practices.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: 監視と分析
+          href: ../active-directory/fundamentals/resilience-with-monitoring-alerting.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
     - name: 脅威管理
       href: threat-management.md
       displayName: security
@@ -503,7 +531,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: サポート
-      href: support-options.md
+      href: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
       displayName: technical
     - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'
+      href: azure-ad-external-identities-videos.md

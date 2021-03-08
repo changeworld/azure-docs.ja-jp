@@ -1,19 +1,18 @@
 ---
 title: NCas T4 v3 シリーズ
 description: NCas T4 v3 シリーズ VM の仕様。
-services: virtual-machines
-ms.subservice: sizes
-author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: hpc
+author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 41ab057bdbf31667e45a73b2c5ded4993e716a66
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 0ead1c5772cb4a2e231867ef1e77bfa646cbb29e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131561"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042744"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
 
@@ -22,12 +21,13 @@ NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.
 <br>
 
 [ACU](acu.md):230-260<br>
-[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
-高速ネットワーク:サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 Nvidia NVLink Interconnect:サポートされていません<br>
 <br>
 

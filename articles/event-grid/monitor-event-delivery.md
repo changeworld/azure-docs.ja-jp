@@ -3,12 +3,12 @@ title: Azure Event Grid メトリックの表示とアラートの設定
 description: この記事では、Azure Portal を使用して Azure Event Grid のトピックとサブスクリプションのメトリックを表示し、それらのアラートを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8f8d7e15475ce74dc1af55dc7f6116d5d8b79cc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008958"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577398"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
 この記事では、ポータルを使用して Event Grid のトピックとサブスクリプションのメトリックを表示し、それらのアラートを作成する方法について説明します。 
@@ -37,7 +37,7 @@ ms.locfileid: "96008958"
 
 カスタム トピックを発行済みの場合は、そのトピックのメトリックを表示できます。 
 
-1. [Azure Portal](https://portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. トピックの検索バーに「**Event Grid トピック**」と入力し、ドロップ ダウン リストから **[Event Grid トピック]** を選択します。 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid トピック を検索して選択する":::
@@ -52,7 +52,7 @@ ms.locfileid: "96008958"
 
 :::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="トピック - メトリック ページ":::
 
-メトリックについて詳しくは、「[Azure Monitor のメトリック](../azure-monitor/platform/data-platform-metrics.md)」をご覧ください。
+メトリックについて詳しくは、「[Azure Monitor のメトリック](../azure-monitor/essentials/data-platform-metrics.md)」をご覧ください。
 
 たとえば、**発行されたイベント** メトリックのメトリック グラフを確認します。
 
@@ -76,7 +76,7 @@ ms.locfileid: "96008958"
 
 ## <a name="view-system-topic-metrics"></a>システム トピックのメトリックを表示する
 
-1. [Azure Portal](https://portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. トピックの検索バーに「**Event Grid システム トピック**」と入力し、ドロップ ダウン リストから **[Event Grid システム トピック]** を選択します。 
 
     :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid システム トピックを検索して選択する":::
@@ -91,7 +91,7 @@ ms.locfileid: "96008958"
 
 :::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="システム トピック - メトリック ページ":::
 
-メトリックについて詳しくは、「[Azure Monitor のメトリック](../azure-monitor/platform/data-platform-metrics.md)」をご覧ください。
+メトリックについて詳しくは、「[Azure Monitor のメトリック](../azure-monitor/essentials/data-platform-metrics.md)」をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ

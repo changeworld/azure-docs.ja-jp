@@ -3,12 +3,12 @@ title: FedRAMP Moderate ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む FedRAMP Moderate ブループリント サンプルのデプロイ手順。
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: a0e391b20ec662d2bb7bc5b22a7f33c056a9378e
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 9fa92bebf6ef5829796c45e0e83070a85395caf8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034834"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594683"
 ---
 # <a name="deploy-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate ブループリント サンプルをデプロイする
 
@@ -94,7 +94,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
 |\[プレビュー\]:FedRAMP (中) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|VM で構成する必要がある Log Analytics ワークスペース ID|これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。|
-|\[プレビュー\]:FedRAMP (中) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
+|\[プレビュー\]:FedRAMP (中) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
 |\[プレビュー\]:FedRAMP (中) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Windows VM Administrators グループから除外する必要があるユーザーの一覧|ローカルの Administrators グループで除外する必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:FedRAMP (中) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Windows VM Administrators グループに含める必要があるユーザーの一覧|ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e6fcf5980cf64b5fc088dfa295ef6221ffda6de9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499936"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592479"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Cognitive Search 用のログ データを収集して分析する
 
@@ -25,7 +25,7 @@ ms.locfileid: "96499936"
 
 | リソース | 使用目的 |
 |----------|----------|
-| [Log Analytics ワークスペースに送信する](../azure-monitor/learn/tutorial-resource-logs.md) | イベントとメトリックは Log Analytics ワークスペースに送信され、ポータルでそのクエリを実行して、詳細な情報を取得できます。 概要については、[Azure Monitor ログの使用](../azure-monitor/log-query/log-analytics-tutorial.md)に関するページを参照してください |
+| [Log Analytics ワークスペースに送信する](../azure-monitor/essentials/tutorial-resource-logs.md) | イベントとメトリックは Log Analytics ワークスペースに送信され、ポータルでそのクエリを実行して、詳細な情報を取得できます。 概要については、[Azure Monitor ログの使用](../azure-monitor/logs/log-analytics-tutorial.md)に関するページを参照してください |
 | [Blob Storage でアーカイブする](../storage/blobs/storage-blobs-overview.md) | イベントとメトリックは BLOB コンテナーにアーカイブされて、JSON ファイルに格納されます。 ログは非常に細かい単位 (時間/分ごと) で収集でき、特定のインシデントの調査には便利ですが、自由な調査には役立ちません。 未加工のログ ファイルを表示するには JSON エディターを使用し、ログ データを集計および視覚化するには Power BI を使用します。|
 | [イベント ハブへのストリーム](../event-hubs/index.yml) | イベントとメトリックは、Azure Event Hubs サービスにストリーム配信されます。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
 
@@ -33,7 +33,7 @@ ms.locfileid: "96499936"
 
 事前にリソースを作成して、診断ログを構成するときに 1 つ以上選択できるようにしておきます。
 
-+ [Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)
++ [Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)
 
 + [ストレージ アカウントの作成](../storage/common/storage-account-create.md)
 

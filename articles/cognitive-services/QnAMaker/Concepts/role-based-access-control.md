@@ -1,16 +1,16 @@
 ---
 title: 他の人と共同作業を行う - QnA Maker
-description: ''
+description: Azure ロールベースのアクセス制御を使用して、他の作成者や編集者と共同作業を行う方法について説明します。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: ecf81152605d77e1036c9fbf5d3308af2b1fb988
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5d5a580e2b7be4699933b43687dcf164bf8f4a4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346157"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700084"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>他の作成者や編集者との共同作業
 
@@ -23,6 +23,9 @@ QnA Maker リソースに設定された Azure ロールベースのアクセス
 この Azure RBAC の特徴は次のとおりです。
 * Azure Active Directory (AAD) は、所有者および共同作成者のキーベースの認証と完全に下位互換性があります。 お客様は、要求でキーベースの認証または Azure RBAC ベースの認証を使用できます。
 * 制御はナレッジ ベース レベルではなくリソース レベルであるため、リソース内のすべてのナレッジ ベースに作成者と編集者をすばやく追加できます。
+
+> [!NOTE]
+> 必ずリソース用のカスタム サブドメインを追加してください。 [カスタム サブドメイン](../../cognitive-services-custom-subdomains.md)は既定で存在しているはずですが、存在しない場合は追加してください。
 
 ## <a name="access-is-provided-by-a-defined-role"></a>アクセスは定義済みのロールによって提供される
 
@@ -46,7 +49,7 @@ QnA Maker リソースに設定された Azure ロールベースのアクセス
 
 ## <a name="authenticate-by-qna-maker-portal"></a>QnA Maker ポータルによる認証
 
-QnA Maker ポータルを使用して作成および共同作業を行う場合、[コラボレーター用のリソースに適切なロールを追加する](../index.yml)と、QnA Maker ポータルによってすべてのアクセス許可が管理されます。
+QnA Maker ポータルを使用して作成および共同作業を行う場合、コラボレーター用のリソースに適切なロールを追加すると、QnA Maker ポータルによってすべてのアクセス許可が管理されます。
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>QnA Maker API および SDK による認証
 
@@ -54,4 +57,4 @@ REST または SDK を介して API を使用して作成および共同作業�
 
 ## <a name="next-step"></a>次のステップ
 
-* [言語](../index.yml)および[クライアント アプリケーション](../index.yml)用のナレッジ ベースを設計する
+* 言語およびクライアント アプリケーション用のナレッジ ベースを設計する

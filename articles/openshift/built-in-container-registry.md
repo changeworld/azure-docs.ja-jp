@@ -3,19 +3,19 @@ title: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジスト�
 description: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
 author: jiangma
 ms.author: jiangma
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: dda050b8d824f0ff0ac1c84d2f008387de55aedf
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492422"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636382"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
 
-Azure Red Hat OpenShift には [OpenShift Container Registry (OCR)](https://docs.openshift.com/aro/4/registry/architecture-component-imageregistry.html) と呼ばれる統合されたコンテナー イメージ レジストリが用意されています。これにより、必要に応じて新しいイメージ リポジトリを自動的にプロビジョニングする機能が追加されます。 これにより、結果のイメージをプッシュするためのアプリケーション ビルドの組み込みの場所がユーザーに提供されます。
+Azure Red Hat OpenShift には [OpenShift Container Registry (OCR)](https://docs.openshift.com/container-platform/4.6/registry/architecture-component-imageregistry.html) と呼ばれる統合されたコンテナー イメージ レジストリが用意されています。これにより、必要に応じて新しいイメージ リポジトリを自動的にプロビジョニングする機能が追加されます。 これにより、結果のイメージをプッシュするためのアプリケーション ビルドの組み込みの場所がユーザーに提供されます。
 
 この記事では、Azure Red Hat OpenShift (ARO) 4 クラスター用の組み込みのコンテナー イメージ レジストリを構成します。 学習内容は次のとおりです。
 

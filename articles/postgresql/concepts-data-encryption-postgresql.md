@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 730d12558e413d96909914d06187d0d5f89ec661
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: d9624fd899649f4e54c5bd509ed5961b862632dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567519"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581580"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -117,7 +117,7 @@ Key Vault に対する十分なアクセス権を持つユーザーが、次の�
 * [Azure Resource Health](../service-health/resource-health-overview.md):カスタマー キーにアクセスできなくなったアクセス不可のデータベースでは、データベースへの最初の接続が拒否された後、"アクセス不可" と表示されます。
 * [アクティビティ ログ](../service-health/alerts-activity-log-service-notifications-portal.md):カスタマーマネージド Key Vault 内のカスタマー キーへのアクセスに失敗すると、アクティビティ ログにエントリが追加されます。 これらのイベントに対してアラートを作成した場合は、できるだけ早くアクセスを再開できます。
 
-* [アクション グループ](../azure-monitor/platform/action-groups.md):必要に応じて通知とアラートを送信するように、これらのグループを定義します。
+* [アクション グループ](../azure-monitor/alerts/action-groups.md):必要に応じて通知とアラートを送信するように、これらのグループを定義します。
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Key Vault 内の顧客のマネージド キーを使用して復元およびレプリケートする
 

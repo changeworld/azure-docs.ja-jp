@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: 0c083f4576e123ea14d837ed3915c56d18d84623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8451067ae86e95269c0c2f22554e1654ac64c1e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207565"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593779"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>VM にインストールされているソフトウェアを検出する
 
@@ -48,7 +48,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 1. Automation アカウントに移動し、 **[構成管理]** で、 **[インベントリ]** または **[Change tracking]** を選択します。
 
-2. [Log Analytics](../azure-monitor/log-query/log-query-overview.md) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
+2. [Log Analytics](../azure-monitor/logs/log-query-overview.md) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -80,7 +80,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 機能に対して Azure 以外のマシンを有効にするには、次のようにします。
 
-1. お使いのオペレーティング システムに応じて、[Windows 用の Log Analytics エージェント](../azure-monitor/platform/agent-windows.md)または [Linux 用の Log Analytics エージェント](automation-linux-hrw-install.md)をインストールします。 
+1. お使いのオペレーティング システムに応じて、[Windows 用の Log Analytics エージェント](../azure-monitor/agents/agent-windows.md)または [Linux 用の Log Analytics エージェント](automation-linux-hrw-install.md)をインストールします。 
 
 2. Automation アカウントに移動し、 **[構成管理]** の下の **[インベントリ]** または **[Change Tracking]** に移動します。 
 
@@ -122,7 +122,7 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Azure Monitor ログでのログ ファイルの実行と検索については、[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
+Azure Monitor ログでのログ ファイルの実行と検索については、[Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
 
 ## <a name="see-the-software-inventory-for-a-single-machine"></a>1 台のマシンのソフトウェア インベントリを表示する
 

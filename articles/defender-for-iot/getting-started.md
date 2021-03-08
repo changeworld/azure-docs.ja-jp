@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/26/2020
 ms.author: shhazam
-ms.openlocfilehash: 82fcf7f129d5caba471d6d72da83a317b26c638c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 06cf8b5f35bdebed0ebaa9e6949261d7c0d516f2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807882"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522565"
 ---
 # <a name="get-started-with-defender-for-iot"></a>Defender for IoT での作業を開始する
 
@@ -126,9 +126,8 @@ Azure Defender for IoT ポータルから ISO パッケージをダウンロー�
 ## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7.Azure Sentinel にアラート情報を設定する (省略可能)
 
 Azure Sentinel を構成して Azure Sentinel にアラート情報を送信します。 「[Defender for IoT からのデータを Azure Sentinel に接続する](how-to-configure-with-sentinel.md)」を参照してください。
+## <a name="next-steps"></a>次のステップ
 
-## <a name="see-also"></a>関連項目
+[Azure Defender for IoT へようこそ](overview.md)
 
-- [Azure Defender for IoT へようこそ](overview.md)
-
-- [Azure Defender for IoT のアーキテクチャ](architecture.md)
+[Azure Defender for IoT のアーキテクチャ](architecture.md)

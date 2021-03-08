@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 6cf082aa33d2063982d85cf0c2fdd68d61072217
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 74e09b4798a648b6a881fb05f1128831ad5f4aff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216940"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586438"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
@@ -69,7 +69,7 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
@@ -90,13 +90,13 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
    - **プロパティ:** ネットワーク インターフェイスの MAC アドレスやネットワーク インターフェイスが存在するサブスクリプションなど、ネットワーク インターフェイスに関する重要な設定が表示されます (ネットワーク インターフェイスが仮想マシン接続されていない場合は空白です)。
    - **有効なセキュリティ規則:** セキュリティ規則が一覧表示されるのは、ネットワーク インターフェイスが実行中の仮想マシンにアタッチされ、NSG がネットワーク インターフェイスまたはその接続先サブネット (あるいは両方) に関連付けられている場合です。 表示内容の詳細については、「[有効なセキュリティ規則を表示する](#view-effective-security-rules)」を参照してください。 NSG の詳細については、[ネットワーク セキュリティ グループ](./network-security-groups-overview.md)に関するページをご覧ください。
    - **有効なルート:** 実行中の仮想マシンにネットワーク インターフェイスがアタッチされている場合には、ルートが一覧表示されます。 ルートは、Azure の既定のルート、ユーザー定義ルート、およびネットワーク インターフェイスの割り当て先サブネットのために存在する場合がある BGP ルートの組み合わせです。 表示される内容の詳細については、「[有効なルートを表示する](#view-effective-routes)」を参照してください。 Azure の既定のルートとユーザー定義ルートの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)に関する記事をご覧ください。
-Azure Resource Manager の一般的な設定:Azure Resource Manager の一般的な設定については、[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)、[Access Control (IAM)](../role-based-access-control/overview.md)、[タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ロック](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、および [Automation スクリプト](../azure-resource-manager/templates/export-template-portal.md)に関する各記事を参照してください。
+Azure Resource Manager の一般的な設定:Azure Resource Manager の一般的な設定については、[アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)、[Access Control (IAM)](../role-based-access-control/overview.md)、[タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ロック](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、および [Automation スクリプト](../azure-resource-manager/templates/export-template-portal.md)に関する各記事を参照してください。
 
 <a name="view-settings-commands"></a>**コマンド**
 
 IPv6 アドレスがネットワーク インターフェイスに割り当てられている場合、PowerShell の出力では、アドレスが割り当てられているという事実が返されますが、割り当てられたアドレスは返されません。 同様に、CLI では、アドレスが割り当てられているという事実が返されますが、そのアドレスの出力では *null* が返されます。
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic list](/cli/azure/network/nic) ではサブスクリプションのネットワーク インターフェイスを表示します。[az network nic show](/cli/azure/network/nic) ではネットワーク インターフェイスの設定を表示します。|
 |PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) では、サブスクリプションのネットワーク インターフェイスまたはネットワーク インターフェイスの設定を表示します|
@@ -117,7 +117,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -138,7 +138,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -158,7 +158,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -172,7 +172,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -204,7 +204,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788232"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544835"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -22,20 +22,21 @@ ms.locfileid: "98788232"
 
 Azure Firewall には次の機能が含まれています。
 
-- [組み込みの高可用性](#built-in-high-availability)
-- [可用性ゾーン](#availability-zones)
-- [クラウドによる無制限のスケーラビリティ](#unrestricted-cloud-scalability)
-- [アプリケーションの FQDN のフィルタリング規則](#application-fqdn-filtering-rules)
-- [ネットワーク トラフィックのフィルタリング規則](#network-traffic-filtering-rules)
-- [FQDN タグ](#fqdn-tags)
-- [サービス タグ](#service-tags)
-- [脅威インテリジェンス](#threat-intelligence)
-- [送信 SNAT サポート](#outbound-snat-support)
-- [受信 DNAT サポート](#inbound-dnat-support)
-- [複数のパブリック IP アドレス](#multiple-public-ip-addresses)
-- [Azure Monitor ログ記録](#azure-monitor-logging)
-- [強制トンネル処理](#forced-tunneling)
-- [認定](#certifications)
+- 組み込みの高可用性
+- 可用性ゾーン
+- クラウドによる無制限のスケーラビリティ
+- アプリケーションの FQDN のフィルタリング規則
+- ネットワーク トラフィックのフィルタリング規則
+- FQDN のタグ
+- サービス タグ
+- 脅威インテリジェンス
+- 送信 SNAT サポート
+- 受信 DNAT のサポート
+- 複数のパブリック IP アドレス
+- Azure Monitor ログ記録
+- 強制トンネリング
+- Web カテゴリ (プレビュー)
+- 認定資格
 
 ## <a name="built-in-high-availability"></a>組み込みの高可用性
 
@@ -97,7 +98,7 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 これにより、次のシナリオが実現します。
 
 - **DNAT** - 複数の標準ポート インスタンスをバックエンド サーバーに変換できます。 たとえば、2 つのパブリック IP アドレスがある場合、両方の IP アドレス用の TCP ポート 3389 (RDP) を変換できます。
-- **SNAT** -送信 SNAT 接続に追加のポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用することを検討してください。
+- **SNAT** - 送信 SNAT 接続にさらにポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用することを検討してください。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
@@ -110,6 +111,24 @@ Azure Firewall ブックにより、Azure Firewall のデータ分析のため�
 ## <a name="forced-tunneling"></a>強制トンネリング
 
 インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングするように、Azure Firewall を構成することができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
+
+## <a name="web-categories-preview"></a>Web カテゴリ (プレビュー)
+
+Web カテゴリでは、管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトなどの Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。 Web カテゴリは Azure Firewall Standard に含まれていますが、Azure Firewall Premium プレビューではさらに細かく調整されています。 Standard SKU の FQDN に基づくカテゴリと一致する Web カテゴリの機能とは異なり、Premium SKU では HTTP と HTTPS の両方のトラフィックの URL 全体に従ってカテゴリと一致します。 Azure Firewall Premium プレビューの詳細については、[Azure Firewall Premium プレビューの機能](premium-features.md)に関するページを参照してください。
+
+たとえば、Azure Firewall が `www.google.com/news` の HTTPS 要求をインターセプトする場合、次のような分類が必要です。 
+
+- Firewall Standard - FQDN 部分のみが検証されるため、`www.google.com` は *検索エンジン* として分類されます。 
+
+- Firewall Premium - 完全な URL が検証されるため、`www.google.com/news` は *ニュース* として分類されます。
+
+カテゴリは、 **[責任]** 、 **[高帯域幅]** 、 **[ビジネス利用]** 、 **[生産性の低下]** 、 **[一般的なネット サーフィン]** 、および **[未分類]** の下の重要度に基づいて整理されています。
+
+### <a name="category-exceptions"></a>カテゴリの例外
+
+Web カテゴリのルールに例外を作成できます。 ルール コレクション グループ内で、優先順位の高い個別の許可または拒否ルール コレクションを作成します。 たとえば、優先順位が 100 で `www.linkedin.com` を許可するルール コレクションと、優先順位が 200 で **ソーシャル ネットワーキング** を拒否するルール コレクションを構成できます。 これにより、定義済みの **ソーシャル ネットワーキング** Web カテゴリに例外が作成されます。
+
+
 
 ## <a name="certifications"></a>認定
 

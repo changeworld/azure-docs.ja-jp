@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 3d28cf1a89ff455cfbed26aad234607ec8cd7e63
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490569"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592694"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance での監視とパフォーマンス チューニング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -99,11 +99,11 @@ Intelligent Insights リソース ログを含む複数の宛先のいずれか�
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペース
 
-[Azure Monitor の Log Analytics ワークスペース](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)にメトリックおよびリソース ログをストリーム配信できます。 ここでストリーム配信されたデータは、[SQL Analytics](../../azure-monitor/insights/azure-sql.md) で使用できます。これは、パフォーマンス レポート、アラート、軽減策の推奨事項を含むデータベースのインテリジェントな監視機能を提供する、クラウドのみの監視ソリューションです。 Log Analytics ワークスペースにストリーム配信されたデータは、収集された他の監視データと組み合わせて分析できます。また、アラートや視覚化などの他の Azure Monitor 機能を利用することもできます。
+[Azure Monitor の Log Analytics ワークスペース](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)にメトリックおよびリソース ログをストリーム配信できます。 ここでストリーム配信されたデータは、[SQL Analytics](../../azure-monitor/insights/azure-sql.md) で使用できます。これは、パフォーマンス レポート、アラート、軽減策の推奨事項を含むデータベースのインテリジェントな監視機能を提供する、クラウドのみの監視ソリューションです。 Log Analytics ワークスペースにストリーム配信されたデータは、収集された他の監視データと組み合わせて分析できます。また、アラートや視覚化などの他の Azure Monitor 機能を利用することもできます。
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-メトリックとリソース ログは、[Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) にストリーム配信できます。 診断テレメトリをイベント ハブにストリーム配信して、次の機能を提供します。
+メトリックとリソース ログは、[Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) にストリーム配信できます。 診断テレメトリをイベント ハブにストリーム配信して、次の機能を提供します。
 
 - **サード パーティ製のロギングおよびテレメトリ システムにログをストリーミングする**
 
@@ -117,7 +117,7 @@ Intelligent Insights リソース ログを含む複数の宛先のいずれか�
 
 ### <a name="azure-storage"></a>Azure Storage
 
-メトリックとリソース ログを [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) にストリーム配信します。 Azure ストレージを使用して、前述の 2 つのストリーミング オプションの何分の 1 かのわずかなコストで、膨大な量の診断テレメトリをアーカイブできます。
+メトリックとリソース ログを [Azure Storage](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) にストリーム配信します。 Azure ストレージを使用して、前述の 2 つのストリーミング オプションの何分の 1 かのわずかなコストで、膨大な量の診断テレメトリをアーカイブできます。
 
 ## <a name="use-extended-events"></a>拡張イベントを使用する 
 

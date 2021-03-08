@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879984"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202690"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
 
@@ -39,7 +39,7 @@ Linux サーバー上で Samba を実行しておらず、フォルダーを Win
 * 仮想マシンまたは物理サーバーとして、Windows Server 2019 インスタンスを作成します。 Windows Server 2012 R2 が最小要件です。 また、Windows Server フェールオーバー クラスターもサポートされています。
 * 直接接続ストレージ (DAS) をプロビジョニングまたは追加します。 ネットワーク接続ストレージ (NAS) はサポートされていません。
 
-  Azure File Syncs の[クラウドを使った階層化](storage-sync-cloud-tiering.md)機能を使用する場合、プロビジョニングするストレージの容量は、現在 Linux Samba サーバー上で使用している量より少なくてもかまいません。 ただし、後のフェーズで、大きい Linux Samba サーバー領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
+  Azure File Syncs の[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)機能を使用する場合、プロビジョニングするストレージの容量は、現在 Linux Samba サーバー上で使用している量より少なくてもかまいません。 ただし、後のフェーズで、大きい Linux Samba サーバー領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
 
   1. ディスクに収まるファイルのセットを移動します。
   2. ファイル同期とクラウドを使った階層化が連携するようにします。
@@ -98,7 +98,7 @@ Windows Server ターゲット フォルダーへの最初のローカル コピ
 
 次の Robocopy コマンドを実行すると、Linux Samba サーバーのストレージから Windows Server ターゲット フォルダーにファイルがコピーされます。 Windows Server によって、それが Azure ファイル共有に同期されます。 
 
-Linux Samba サーバー上でファイルが占める量より少ないストレージを Windows Server インスタンスにプロビジョニングした場合は、クラウドを使った階層化を構成済みです。 ローカルの Windows Server ボリュームがいっぱいになると、[クラウドを使った階層化](storage-sync-cloud-tiering.md)により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、Linux Samba サーバーからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリュームの空き領域が 99% のポリシーに達するようにディスク領域が解放されます。
+Linux Samba サーバー上でファイルが占める量より少ないストレージを Windows Server インスタンスにプロビジョニングした場合は、クラウドを使った階層化を構成済みです。 ローカルの Windows Server ボリュームがいっぱいになると、[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、Linux Samba サーバーからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリュームの空き領域が 99% のポリシーに達するようにディスク領域が解放されます。
 
 Robocopy によるファイルの移動が速すぎて、クラウドへの同期とローカルでの階層化が追いつかず、ローカル ディスク領域の不足が引き起こされる可能性があります。 そうなると、Robocopy は失敗します。 問題が回避される順序で共有を処理することをお勧めします。 たとえば、すべての共有に対して Robocopy ジョブを同時に開始しないことを検討してください。 または、Windows Server インスタンス上の現在の空き領域に合った共有を移動することを検討してください。 Robocopy ジョブが失敗した場合、次のミラー/パージ オプションを使用すれば、いつでもコマンドを再実行できます。
 

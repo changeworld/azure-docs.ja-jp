@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: eb74137e515bff7a432367e75b4208490b1243c0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681389"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672754"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Synapse Analytics ワークスペースで Azure Monitor を使用する
 
@@ -28,7 +28,7 @@ Azure Monitor では、ほとんどの Azure サービスに対して、基礎�
 
 Monitor を使用すると、Azure ワークロードのパフォーマンスと正常性を可視化できます。 最も重要な種類の Monitor データは、パフォーマンス カウンターとも呼ばれるメトリックです。 メトリックは、ほとんどの Azure リソースによって出力されます。 Monitor には、監視およびトラブルシューティングのために、これらのメトリックを構成して使用する方法が複数用意されています。
 
-これらのメトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](../../azure-monitor/platform/data-platform.md)」に記載された手順に従います。
+これらのメトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](../../azure-monitor/data-platform.md)」に記載された手順に従います。
 
 ### <a name="workspace-level-metrics"></a>ワークスペースレベルのメトリック
 
@@ -121,11 +121,11 @@ Azure Synapse Analytics ワークスペースによって出力されるログ�
 | SynapseSqlPoolWaits         | 待機        | Azure Synapse 専用 SQL プール内の SQL 要求またはクエリの実行中に発生した待ち状態に関する情報。これには、ロックや転送キューの待機が含まれます。
 
 これらのログの詳細については、次の情報を参照してください。
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="apache-spark-pool-log"></a>Apache Spark プールのログ
 
@@ -171,7 +171,7 @@ Azure Monitor 診断設定を使用すると、診断ログを複数の異なる
 1. 設定に名前を付け、 **[Log Analytics への送信]** を選択して、 **[Log Analytics ワークスペース]** からワークスペースを選択します。
 
     > [!NOTE]
-    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Log Analytics の既知の制限](../../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
+    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Log Analytics の既知の制限](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
 
 1. **[保存]** を選択します。
 

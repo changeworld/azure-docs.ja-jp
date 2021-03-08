@@ -4,12 +4,12 @@ description: Azure App Services のアプリケーション パフォーマン�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186373"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573994"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -75,7 +75,8 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-次のバージョンの ASP.NET Core がサポートされます。ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0、ASP.NET Core 3.1
+> [!IMPORTANT]
+> 次のバージョンの ASP.NET Core がサポートされます。ASP.NET Core 2.1 および 3.1。 バージョン 2.0、2.2、3.0 は廃止され、サポートされなくなりました。 自動インストルメンテーションを機能させるには、[サポートされているバージョン](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)の .NET Core にアップグレードしてください。
 
 現時点では、ASP.NET Core の完全なフレームワーク、自己完結型のデプロイ、および Linux ベースのアプリケーションをターゲットにすることは、エージェント/拡張機能ベースの監視では **サポートされていません**。 (コードによる[手動インストルメンテーション](./asp-net-core.md)は、上記のすべてのシナリオで機能します)。
 
@@ -90,7 +91,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
      ![Web アプリをインストルメント化する](./media/azure-web-apps/create-resource-01.png)
 
-2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。 ASP.NET Core では、ASP.NET Core 2.1、2.2、3.0 および 3.1 の場合、 **[Recommended collection (推奨収集)]** または **[Disabled (無効)]** が提供されます。
+2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。 ASP.NET Core では、ASP.NET Core 2.1 および 3.1 の場合、 **[Recommended collection (推奨収集)]** または **[Disabled (無効)]** が提供されます。
 
     ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -420,6 +421,12 @@ Azure App Services Web アプリで ASP.NET または ASP.NET Core に対する�
 
 コード不要の監視を使用している場合は、接続文字列のみが必要です。 ただし、手動のインストルメンテーションを実行する場合は、SDK の以前のバージョンとの下位互換性を維持するためにインストルメンテーション キーを設定することをお勧めします。
 
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Application Insights の標準メトリックと Azure App Service メトリックの違い
+
+Application Insights では、アプリケーションに対して行われた要求のテレメトリを収集します。 WebApps/IIS でエラーが発生し、要求がユーザー アプリケーションに到達しなかった場合、Application Insights にはそれに関するテレメトリがありません。
+
+Application Insights によって計算された `serverresponsetime` の期間は、必ずしも Web Apps によって監視されているサーバーの応答時間と一致しません。 これは、Application Insights では、要求がユーザー アプリケーションに実際に到達した場合の期間のみがカウントされるためです。 IIS で要求が停止しているか、キューに入れられた場合、その待機時間は Web Apps のメトリックに含まれますが、Application Insights のメトリックには含まれません。
+
 ## <a name="release-notes"></a>リリース ノート
 
 最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./web-app-extension-release-notes.md)。
@@ -427,8 +434,8 @@ Azure App Services Web アプリで ASP.NET または ASP.NET Core に対する�
 ## <a name="next-steps"></a>次のステップ
 * [実行中のアプリに対してプロファイラーを実行](./profiler.md)します。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
-* [Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) が Application Insights に送信されるように設定します。
-* [サービスの正常性メトリックを監視](../platform/data-platform.md)して、サービスの可用性と応答性を確認します。
-* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../platform/alerts-overview.md)ます。
+* [Azure Diagnostics](../agents/diagnostics-extension-to-application-insights.md) が Application Insights に送信されるように設定します。
+* [サービスの正常性メトリックを監視](../data-platform.md)して、サービスの可用性と応答性を確認します。
+* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../alerts/alerts-overview.md)ます。
 * [JavaScript のアプリや Web ページに Application Insights](javascript.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](monitor-web-app-availability.md) して、サイトがダウンした場合にアラートを送信するようにします。

@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223127"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584538"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio を使用して Apache Spark アプリケーションを監視する
 
@@ -155,6 +155,26 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 6. エラー情報を確認します。
 
    ![失敗したジョブ情報](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="compare-apache-spark-applications"></a>Apache Spark アプリケーションの比較
+**[Compare applications]\(アプリケーションの比較\)** ボタンをクリックし、パフォーマンスを比較するアプリケーションを選択すると、ユーザーは 2 つのアプリケーションの違いを直感的に確認できます。
+
+![アプリケーションの比較](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+1. マウスを使用してアプリケーションをポイントすると、 **[Compare applications]\(アプリケーションの比較\)** アイコンが表示されます。
+
+2. **[Compare applications]\(アプリケーションの比較\)** アイコンをクリックすると、[Compare applications]\(アプリケーションの比較\) ページがポップアップ表示されます。
+
+3. **[アプリケーションの選択]** ボタンをクリックして **[Choose application]\(比較対象アプリケーションの選択\)** ページを開きます。
+
+4. 比較対象のアプリケーションを選択する場合、ユーザーはアプリケーションの URL を入力するか、繰り返しの一覧から選択する必要があります。 次に、 **[OK]** ボタンをクリックします。 
+
+   ![比較対象アプリケーションの選択](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
+
+5. 比較結果が [compare applications]\(アプリケーションの比較\) ページに表示されます。
+
+   ![比較結果](./media/how-to-monitor-spark-applications/comparison-result.png)
+
 
 ## <a name="next-steps"></a>次のステップ
 

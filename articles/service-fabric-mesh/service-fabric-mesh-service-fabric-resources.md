@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 650755cf2692b613b2998e8ef7b706e09022b178
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91354872"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626911"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric リソース モデルの概要
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 Service Fabric リソース モデルには、Service Fabric Mesh アプリケーションを構成するリソースを定義する簡単な方法が示されています。 個々のリソースは任意の Service Fabric 環境にデプロイできます。  Service Fabric リソース モデルは、Azure Resource Manager モデルとも互換性があります。 現在、このモデルでは次の種類のリソースがサポートされています。
 

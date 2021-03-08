@@ -1,5 +1,6 @@
 ---
-title: ユーザーをサインインさせる Web アプリの構成 - Microsoft ID プラットフォーム | Azure
+title: ユーザーをサインインさせる Web アプリを構成する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーをサインインさせる Web アプリを構築する方法について説明します (コードの構成)
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443655"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582249"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>ユーザーをサインインさせる Web アプリ:コード構成
 
@@ -63,13 +64,13 @@ Web アプリ (および Web API) を保護するために使用されるライ�
 
 ## <a name="configuration-files"></a>構成ファイル
 
-Microsoft ID プラットフォームを使用してユーザーをサインインさせる Web アプリケーションは、構成ファイルを使用して構成します。 入力する必要がある設定は次のとおりです。
+Microsoft ID プラットフォームを使用してユーザーをサインインさせる Web アプリケーションは、構成ファイルを使用して構成します。 構成で指定する必要がある値を次に示します。
 
 - クラウド インスタンス (`Instance`) (たとえば、アプリを国内のクラウドで実行する場合など)
 - 対象ユーザーのテナント ID (`TenantId`)
 - Azure portal からコピーした、アプリケーションのクライアント ID (`ClientId`)
 
-場合によっては、アプリケーションを `Authority` によってパラメーター化できます。これは、`Instance` と `TenantId` を連結したものです。
+`Authority` への参照が表示される場合もあります。 `Authority` 値は、`Instance` と `TenantId` の値を連結したものです。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -132,7 +133,7 @@ ASP.NET Core では、別のファイル ([properties\launchSettings.json](https
 }
 ```
 
-Azure portal では、アプリケーションの **[認証]** ページで登録する必要がある応答 URI は、これらの URL と一致している必要があります。 前記の 2 つの構成ファイルについては、それは `https://localhost:44321/signin-oidc` です。 これは `applicationUrl` が `http://localhost:3110` ですが、`sslPort` が (44321) と指定されているためです。 `CallbackPath` は、`appsettings.json` で定義されているように `/signin-oidc` となります。
+Azure portal では、アプリケーションの **[認証]** ページで登録するリダイレクト URI は、これらの URL と一致している必要があります。 前記の 2 つの構成ファイルについては、それは `https://localhost:44321/signin-oidc` です。 これは `applicationUrl` が `http://localhost:3110` ですが、`sslPort` が (44321) と指定されているためです。 `CallbackPath` は、`appsettings.json` で定義されているように `/signin-oidc` となります。
 
 同様に、サインアウト URI は `https://localhost:44321/signout-oidc` に設定されます。
 
@@ -160,7 +161,7 @@ ASP.NET では、アプリケーションは [Web.Config](https://github.com/Azu
   </appSettings>
 ```
 
-Azure portal では、アプリケーションの **[認証]** ページで登録する必要がある応答 URI は、これらの URL と一致している必要があります。 つまり、`https://localhost:44326/` である必要があります。
+Azure portal では、アプリケーションの **[認証]** ページで登録する応答 URI は、これらの URL と一致している必要があります。 つまり、`https://localhost:44326/` である必要があります。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -174,7 +175,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-Azure portal では、アプリケーションの **[認証]** ページで登録する必要がある応答 URI は、アプリケーションが定義する `redirectUri` インスタンスと一致している必要があります。 つまり、`http://localhost:8080/msal4jsample/secure/aad` および `http://localhost:8080/msal4jsample/graph/me` である必要があります。
+Azure portal では、アプリケーションの **[認証]** ページで登録する応答 URI は、アプリケーションで定義される `redirectUri` インスタンスと一致している必要があります。 つまり、`http://localhost:8080/msal4jsample/secure/aad` および `http://localhost:8080/msal4jsample/graph/me` である必要があります。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -202,7 +203,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>初期化コード
 
-初期化コードは、プラットフォームによって異なります。 ASP.NET Core と ASP.NET の場合、ユーザーのサインインは OpenID Connect ミドルウェアに委任されます。 ASP.NET または ASP.NET Core テンプレートでは、Azure Active Directory (Azure AD) v1.0 エンドポイント用の Web アプリケーションが生成されます。 Microsoft ID プラットフォーム (v2.0) エンドポイントに適合させるには、いくつかの構成が必要です。 Java の場合は、アプリケーションとの連携で Spring によって処理されます。
+初期化コードは、プラットフォームによって異なります。 ASP.NET Core と ASP.NET の場合、ユーザーのサインインは OpenID Connect ミドルウェアに委任されます。 ASP.NET または ASP.NET Core テンプレートでは、Azure Active Directory (Azure AD) v1.0 エンドポイント用の Web アプリケーションが生成されます。 それを Microsoft ID プラットフォームに適合させるには、少し構成が必要です。 Java の場合は、アプリケーションとの連携で Spring によって処理されます。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -262,7 +263,7 @@ Microsoft ID プラットフォーム (旧称 Azure AD v2.0) を使用して認�
 - `AddMicrosoftIdentityWebAppAuthentication` 拡張メソッドは、**Microsoft.Identity.Web** に定義されています。 それでは次のことが行われます。
   - 認証サービスが追加されます。
   - 構成ファイルを読み取るためのオプションが構成されます (ここでは、"AzureAD" セクションから)。
-  - 機関が Microsoft ID プラットフォーム エンドポイントになるように OpenID Connect オプションが構成されます。
+  - 機関が Microsoft ID プラットフォームになるように OpenID Connect オプションが構成されます。
   - トークンの発行者が検証されます。
   - 名前に対応する要求が、ID トークンの `preferred_username` 要求からマップされるようにします。
 
@@ -291,7 +292,7 @@ ASP.NET Web アプリおよび Web API での認証に関連したコードは�
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/.
      ClientId = clientId,

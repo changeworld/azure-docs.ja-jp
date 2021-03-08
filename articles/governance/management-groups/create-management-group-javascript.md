@@ -1,15 +1,15 @@
 ---
 title: 'クイック スタート: JavaScript 使用した管理グループの作成'
 description: このクイックスタートでは、JavaScript を使用して、リソースをリソース階層で整理する管理グループを作成します。
-ms.date: 11/18/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: c1b800f150cebacf8d17785feb1bded5189f1574
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 99a2ed406d4837f6fc346e68b3b400003feed38c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886602"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099151"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>クイック スタート: JavaScript 使用した管理グループの作成
 
@@ -29,7 +29,7 @@ ms.locfileid: "94886602"
 
 ## <a name="application-setup"></a>アプリケーションのセットアップ
 
-JavaScript で Azure Resource Graph にクエリを実行するには、環境をセットアップする必要があります。 [Windows 10 上での Bash](/windows/wsl/install-win10) など、JavaScript を利用できる場所であればどこでもこのセットアップは機能します。
+JavaScript で管理グループを管理できるようにするには、環境を設定する必要があります。 [Windows 10 上での Bash](/windows/wsl/install-win10) など、JavaScript を利用できる場所であればどこでもこのセットアップは機能します。
 
 1. 次のコマンドを実行し、新しい Node.js プロジェクトをセットアップします。
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831926"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560465"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -69,6 +69,8 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
     - [AKS クラスターでノードの数を手動でスケールする](../aks/scale-cluster.md)
     - [AKS でクラスター オートスケーラーを設定する](../aks/cluster-autoscaler.md)
+
+- __YAML 構成を使用してクラスターを直接更新しないでください__。 Azure Kubernetes Services では YAML 構成による更新がサポートされていますが、Azure Machine Learning のデプロイでは変更が上書きされます。 上書きされない YAML フィールドは、"__要求の制限__" と "__CPU とメモリ__" の 2 つだけです。
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service のバージョン
 
@@ -208,7 +210,7 @@ az ml computetarget create aks -n myaks
 
 **推定所要時間:** 約 5 分です。
 
-Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.17 以前である場合は、それを使用してイメージをデプロイできます。
+Azure サブスクリプションに AKS クラスターが既にある場合は、ワークスペースで使用できます。
 
 > [!TIP]
 > 既存の AKS クラスターは、Azure Machine Learning ワークスペースと異なる Azure リージョンに存在してもかまいません。
@@ -381,7 +383,6 @@ Azure Machine Learning スタジオで、 __[コンピューティング]__ 、 
 ---
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-
 ### <a name="update-the-cluster"></a>クラスターの更新
 
 Azure Kubernetes Service クラスターにインストールされている Azure Machine Learning コンポーネントの更新プログラムは、手動で適用する必要があります。 

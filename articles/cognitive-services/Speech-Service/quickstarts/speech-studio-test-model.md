@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 09/04/2020
+ms.date: 02/12/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 572b3b3459e1d837130f3c987d45ee45629f37ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 93a0c171497faa9e87457a03da0b78003feaa533
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485078"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362269"
 ---
 # <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Speech Studio でオーディオ ファイルを使用してモデルをテストする
 
@@ -23,7 +23,7 @@ ms.locfileid: "96485078"
 
 ## <a name="prerequisites"></a>前提条件
 
-Speech ポータルを使用する前に、[次の手順に従って、Azure アカウントを作成し、Speech サービスにサブスクライブします](../custom-speech-overview.md#set-up-your-azure-account)。 この統合されたサブスクリプションにより、音声テキスト変換、テキスト読み上げ、音声翻訳、および Custom Speech ポータルにアクセスできるようになります。
+Speech Studio を使用する前に、[これらの手順に従って Azure アカウントを作成し、Speech サービスにサブスクライブします](../custom-speech-overview.md#set-up-your-azure-account)。 この統合されたサブスクリプションにより、音声テキスト変換、テキスト読み上げ、音声翻訳、Speech Studio にアクセスできるようになります。
 
 ## <a name="download-an-audio-file"></a>オーディオ ファイルをダウンロードする
 
@@ -32,7 +32,7 @@ Speech ポータルを使用する前に、[次の手順に従って、Azure ア
 1. リンクを右クリックし、 **[リンクの保存]** を選択して、 **[このリンクからサンプルの wav ファイル](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)** をダウンロードします。 **[保存]** をクリックして、`whatstheweatherlike.wav` ファイルをダウンロードします。
 2. zip ツールでファイル エクスプローラーまたはターミナルウィンドウを使用して、ダウンロードした `whatstheweatherlike.wav` ファイルを含む `whatstheweatherlike.zip` という名前の zip ファイルを作成します。 Windows では、Windows エクスプローラーを開き、`Downloads` フォルダーに移動して `whatstheweatherliike.wav` を右クリックし、 **[送信先]** をクリックして、 **[圧縮 (zip 形式) フォルダー]** をクリックし、Enter キーを押して既定のファイル名をそのまま使用することができます。
 
-## <a name="create-a-project-in-the-custom-speech-portal"></a>Custom Speech ポータルでプロジェクトを作成する
+## <a name="create-a-project-in-the-speech-studio"></a>Speech Studio でプロジェクトを作成する
 
 1 つのオーディオ ファイルの zip を含むプロジェクトを作成するには、次の手順に従います。
 

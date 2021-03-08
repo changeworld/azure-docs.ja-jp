@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 4a0f43d93e848ee98560811d921e6b1168f35828
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178587"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103806"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する
 
@@ -38,7 +38,7 @@ ms.locfileid: "98178587"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
@@ -47,19 +47,20 @@ ms.locfileid: "98178587"
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 > 1. アプリケーションの **名前** を入力します (例: `ASPNET-Quickstart`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
 > 1. **[リダイレクト URI]** に `https://localhost:44368/` を追加し、 **[登録]** を選択します。
 > 1. **[管理]** で、 **[認証]** を選択します。
-> 1. **[暗黙の付与]** サブセクションで、 **[ID トークン]** を選択します。
+> 1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[ID トークン]** を選択します。
 > 1. **[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイック スタートのサンプル コードを動作させるには、応答 URL として `https://localhost:44368/` を追加する必要があります。
+> このクイックスタートのコード サンプルを動作させるには、**リダイレクト URI** (`https://localhost:44368/`) を追加します。
+
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -169,7 +170,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID |
 > | `Authority`    | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は `https://login.microsoftonline.com/{tenant}/v2.0`。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |
-> | `RedirectUri`  | Microsoft ID プラットフォーム エンドポイントに対する認証後にユーザーが送られる URL |
+> | `RedirectUri`  | Microsoft ID プラットフォームに対する認証後にユーザーが送られる URL |
 > | `PostLogoutRedirectUri`     | サインオフ後にユーザーが送られる URL |
 > | `Scope`     | 要求されているスコープのスペース区切りリスト |
 > | `ResponseType`     | 認証からの応答に ID トークンが含まれていることを要求します |
@@ -178,7 +179,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> `ValidateIssuer = false` の設定は、このクイック スタートを単純にするためのものです。 実際のアプリケーションでは、発行者を検証する必要があります。
+> `ValidateIssuer = false` の設定は、このクイック スタートを単純にするためのものです。 実際のアプリケーションでは、発行者を検証します。
 > その方法については、サンプルを参照してください。
 
 ### <a name="initiate-an-authentication-challenge"></a>認証チャレンジを開始する

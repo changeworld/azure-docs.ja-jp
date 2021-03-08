@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory 内で Azure SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
 description: Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: fb622bdb1d7aa485c421122cdfbd2493a32cf5db
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: c268dba51ecf2c2b246c54574ecf3838533b017e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555664"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710211"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
 
@@ -27,7 +22,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 - [Azure SQL Managed Instance によってホストされている SSIS カタログ (SSISDB) を使用して Azure-SSIS IR をプロビジョニングする](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [Azure SQL Managed Instance エージェント ジョブによって SSIS パッケージを実行する](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [Azure SQL Managed Instance エージェント ジョブによって SSISDB ログをクリーンアップする](#clean-up-ssisdb-logs)
-- [Azure SQL Managed Instance による Azure-SSIS IR フェールオーバー](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [Azure SQL Managed Instance による Azure-SSIS IR フェールオーバー](configure-bcdr-azure-ssis-integration-runtime.md)
 - [データベース ワークロードの宛先として Azure SQL Managed Instance を使用して、ADF の SSIS にオンプレミスの SSIS ワークロードを移行する](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure SQL Managed Instance によってホストされている SSISDB を使用して Azure-SSIS IR をプロビジョニングする

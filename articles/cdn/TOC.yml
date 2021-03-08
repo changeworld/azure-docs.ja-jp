@@ -94,7 +94,7 @@
           items:
             - name: Azure Web コンテンツ
               href: cdn-manage-expiration-of-cloud-service-content.md
-            - name: Azure BLOB ストレージ
+            - name: Azure Blob Storage
               href: cdn-manage-expiration-of-blob-content.md
         - name: 認証トークン
           href: cdn-token-auth.md

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366362"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364581"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件付きアクセス:ユーザーとグループ
 
@@ -41,6 +41,9 @@ ms.locfileid: "92366362"
       - 管理者は、割り当てを決定するために使用される特定の Azure AD ディレクトリ ロールを選択できます。 たとえば組織で、全体管理者ロールを割り当てられるユーザーに対してより制限の厳しいポリシーを作成する場合があります。
    - ユーザーとグループ
       - 特定のユーザーのセットを対象にできます。 たとえば組織で人事部アプリがクラウド アプリとして選択されている場合は、人事部のすべてのメンバーを含むグループを選択できます。 Azure AD 内の任意の種類のグループを指定できます。これには、動的なグループや、割り当て済みのセキュリティ グループおよび配布グループが含まれます。 ポリシーは、入れ子になったユーザーおよびグループに適用されます。
+
+> [!IMPORTANT]
+> 条件付きアクセス ポリシーに含めるユーザーとグループを選択する際には、条件付きアクセス ポリシーに直接追加できるユーザーの数に制限があります。 条件付きアクセス ポリシーに直接追加する必要があるユーザーの数が多い場合は、それらのユーザーを 1 つのグループに配置し、そのグループを条件付きアクセス ポリシーに割り当てることをお勧めします。
 
 > [!WARNING]
 > ユーザーまたはグループが 2048 を超えるグループのメンバーである場合、そのアクセスはブロックされる可能性があります。 この制限は、直接と入れ子の両方のグループ メンバーシップに適用されます。

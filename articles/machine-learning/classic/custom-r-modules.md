@@ -3,18 +3,18 @@ title: ML Studio (classic):カスタム R モジュールの作成とデプロ�
 description: ML Studio (クラシック) でカスタム R モジュールを作成してデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: ec6a3304ffe035e7ac206e96f7666e3ba1877d9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d44f2cfa72bd53b01da073fca31ca698eb42720d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322780"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520478"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio (classic) 用のカスタム R モジュールを定義する
 
@@ -32,7 +32,7 @@ ms.locfileid: "93322780"
 * モジュールによって公開される R 関数を実装した **ソース ファイル**
 * カスタム モジュール インターフェイスを記述した **XML 定義ファイル**
 
-カスタム モジュールからアクセスできる機能を提供する追加の補助ファイルも .zip ファイルに含まれる場合があります。 このオプションについては、クイックスタートの例を紹介した後、リファレンス セクション「 **XML 定義ファイルの要素** 」の「 **引数** 」で説明します。
+カスタム モジュールからアクセスできる機能を提供する追加の補助ファイルも .zip ファイルに含まれる場合があります。 このオプションについては、クイックスタートの例を紹介した後、リファレンス セクション「**XML 定義ファイルの要素**」の「**引数**」で説明します。
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>クイックスタートの例: カスタム R モジュールの定義、パッケージ化、登録
 この例では、カスタム R モジュールに必要なファイルを作成し、それらのファイルを zip ファイルにパッケージ化して、Machine Learning ワークスペースにモジュールを登録する方法を示します。 この例の zip パッケージとサンプル ファイルは、 [ここ](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)からダウンロードできます。
@@ -55,7 +55,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE)
 ```
 
 ### <a name="the-xml-definition-file"></a>XML 定義ファイル
-この `CustomAddRows` 関数を Azure Machine Learning Studio (クラシック) モジュールとして公開するには、 **Custom Add Rows** モジュールの外観や動作を指定するために XML 定義ファイルを作成する必要があります。 
+この `CustomAddRows` 関数を Azure Machine Learning Studio (クラシック) モジュールとして公開するには、**Custom Add Rows** モジュールの外観や動作を指定するために XML 定義ファイルを作成する必要があります。 
 
 ```xml
 <!-- Defined a module using an R Script -->
@@ -91,12 +91,12 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE)
 </Module>
 ```
 
-XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、 *dataset1* 、 *dataset2* 、および *swap* ) と正確に一致する必要があることに注意します。 同様に、 **Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名 (この例では *CustomAddRows* ) と正確に一致する必要があります。 
+XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名 (この例では *CustomAddRows*) と正確に一致する必要があります。 
 
-これに対して、 **Output** 要素の **id** 属性は、R スクリプトのどの変数にも対応していません。 複数の出力が必要な場合は、XML ファイルで *Outputs* 要素が宣言されている順序と " **同じ順序** " で結果が配置されたリストを R 関数から返します。
+これに対して、**Output** 要素の **id** 属性は、R スクリプトのどの変数にも対応していません。 複数の出力が必要な場合は、XML ファイルで *Outputs* 要素が宣言されている順序と " **同じ順序** " で結果が配置されたリストを R 関数から返します。
 
 ### <a name="package-and-register-the-module"></a>モジュールのパッケージ化と登録
-この 2 つのファイルを *CustomAddRows.R* および *CustomAddRows.xml* として保存し、 *CustomAddRows.zip* ファイルに zip 圧縮します。
+この 2 つのファイルを *CustomAddRows.R* および *CustomAddRows.xml* として保存し、*CustomAddRows.zip* ファイルに zip 圧縮します。
 
 Machine Learning ワークスペースでそれらを登録するには、Azure Machine Learning Studio (クラシック) でそのワークスペースに移動し、一番下にある **[+ 新規]** ボタンをクリックし、 **[モジュール] -> [zip パッケージから]** を選択して新しい **Custom Add Rows** モジュールをアップロードします。
 
@@ -140,7 +140,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 カスタム モジュールの入力ポートと出力ポートは、XML 定義ファイルの **Ports** セクションの子要素で指定します。 これらの要素の順序によって、ユーザーに表示されるレイアウト (UX) が決まります。 XML ファイルの **Ports** 要素内に示される最初の子 **input** または **output** は、Machine Learning の UX で一番左の入力ポートになります。
 各入力ポートと出力ポートは、Machine Learning の UI でポートの上にマウス カーソルが置かれたときに表示されるテキストを指定する、オプションの **Description** 子要素を持つことができます。
 
-**ポートの規則** :
+**ポートの規則**:
 
 * **入力ポートと出力ポート** の最大数はそれぞれ 8 個です。
 
@@ -156,7 +156,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 ```
 
 各 **DataTable** 入力ポートに関連付けられた **id** 属性には一意の値が必要です。この値は、R 関数の対応する名前付きパラメーターと一致する必要があります。
-実験で入力として渡されないオプションの **DataTable** ポートは、R 関数に渡される値として **NULL** を使用します。入力が接続されていない場合、オプションの Zip ポートは無視されます。 **DataTable** 型と **Zip** 型 のどちらについても、 **IsOptional** 属性は省略可能です。この属性は、既定で *false* に設定されます。
+実験で入力として渡されないオプションの **DataTable** ポートは、R 関数に渡される値として **NULL** を使用します。入力が接続されていない場合、オプションの Zip ポートは無視されます。 **DataTable** 型と **Zip** 型 のどちらについても、**IsOptional** 属性は省略可能です。この属性は、既定で *false* に設定されます。
 
 **Zip:** カスタム モジュールでは、zip ファイルを入力として受け取ることができます。 この入力は、関数の R 作業ディレクトリにアンパックされます。
 
@@ -174,11 +174,11 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 * **Input** 要素の **id** 属性の値は、64 文字以内で指定する必要があります。
 * **Input** 要素の **name** 属性の値は、64 文字以内で指定する必要があります。
 * **Description** 要素の内容は、128 文字以内で指定する必要があります。
-* **Input** 要素の **type** 属性の値には、 *Zip* または *DataTable* を指定する必要があります。
-* **Input** 要素の **IsOptional** 属性の値は省略可能です (指定されていない場合、既定で *false* に設定されます)。ただし、この値を指定する場合は、 *true* または *false* を指定する必要があります。
+* **Input** 要素の **type** 属性の値には、*Zip* または *DataTable* を指定する必要があります。
+* **Input** 要素の **IsOptional** 属性の値は省略可能です (指定されていない場合、既定で *false* に設定されます)。ただし、この値を指定する場合は、*true* または *false* を指定する必要があります。
 
 ### <a name="output-elements"></a>Output 要素
-**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです ( *Learners* と *Transforms* がサポートされる予定です)。 *DataTable* 出力は、次のように定義します。
+**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
 
 ```xml
 <Output id="dataset" name="Dataset" type="DataTable">
@@ -186,9 +186,9 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 </Output>
 ```
 
-カスタム R モジュールの出力では、 **id** 属性の値は R スクリプトの何かと対応する必要はありませんが、一意でなければなりません。 モジュールの出力が 1 つの場合、R 関数の戻り値は *data.frame* である必要があります。 サポート対象のデータ型の複数のオブジェクトを出力するために、適切な出力ポートを XML 定義ファイルで指定する必要があります。また、オブジェクトをリストとして返す必要があります。 返されたリストに配置されたオブジェクトの順序を反映して、左から右に、出力オブジェクトが出力ポートに割り当てられます。
+カスタム R モジュールの出力では、**id** 属性の値は R スクリプトの何かと対応する必要はありませんが、一意でなければなりません。 モジュールの出力が 1 つの場合、R 関数の戻り値は *data.frame* である必要があります。 サポート対象のデータ型の複数のオブジェクトを出力するために、適切な出力ポートを XML 定義ファイルで指定する必要があります。また、オブジェクトをリストとして返す必要があります。 返されたリストに配置されたオブジェクトの順序を反映して、左から右に、出力オブジェクトが出力ポートに割り当てられます。
 
-たとえば、新しい結合データセット ( *dataset* ) に加え、元の 2 つのデータセット ( *dataset1* と *dataset2* ) を ( *dataset* 、 *dataset1* 、 *dataset2* の順に左から右に) 出力するように **Custom Add Rows** モジュールを変更する場合、CustomAddRows.xml ファイルで出力ポートを次のように定義します。
+たとえば、新しい結合データセット (*dataset*) に加え、元の 2 つのデータセット (*dataset1* と *dataset2*) を (*dataset*、*dataset1*、*dataset2* の順に左から右に) 出力するように **Custom Add Rows** モジュールを変更する場合、CustomAddRows.xml ファイルで出力ポートを次のように定義します。
 
 ```xml
 <Ports> 
@@ -221,7 +221,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 } 
 ```
 
-**視覚化出力** : R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization* 型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、 **type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
+**視覚化出力** : R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization* 型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
 
 ```xml
 <Output id="deviceOutput" name="View Port" type="Visualization">
@@ -234,15 +234,15 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 * **Output** 要素の **id** 属性の値には、有効な R 変数名を指定する必要があります。
 * **Output** 要素の **id** 属性の値は、32 文字以内で指定する必要があります。
 * **Output** 要素の **name** 属性の値は、64 文字以内で指定する必要があります。
-* **Output** 要素の **type** 属性の値には、 *Visualization* を指定する必要があります。
+* **Output** 要素の **type** 属性の値には、*Visualization* を指定する必要があります。
 
 ### <a name="arguments"></a>引数
-**Arguments** 要素内で定義されたモジュール パラメーターを使用して、R 関数に追加データを渡すことができます。 これらのパラメーターは、モジュールを選択したときに、Machine Learning の UI の一番右にあるプロパティ ウィンドウに表示されます。 引数はサポートされているどの型でもかまいません。また、必要に応じてカスタム列挙型を作成することもできます。 **Ports** 要素と同様に、 **Arguments** 要素では、パラメーター名の上にマウスを置いたときに表示されるテキストを指定するオプションの **Description** 要素を使用できます。
-モジュールの省略可能なプロパティ (defaultValue、minValue、maxValue など) を、 **Properties** 要素の属性として引数に追加できます。 **Properties** 要素の有効なプロパティは引数の型によって異なります。これについては、サポートされる引数の型と合わせて次のセクションで説明します。 **isOptional** プロパティが **"true"** に設定されている引数は、ユーザーが値を入力する必要はありません。 引数に値が指定されていない場合、エントリ ポイント関数に引数は渡されません。 エントリ ポイント関数のオプション引数は、関数によって明示的に処理する必要があります (エントリ ポイント関数定義で既定値 NULL を割り当てるなど)。 ユーザーが値を指定した場合、オプション引数は、その他の引数の制約 (最小または最大) のみを適用します。
+**Arguments** 要素内で定義されたモジュール パラメーターを使用して、R 関数に追加データを渡すことができます。 これらのパラメーターは、モジュールを選択したときに、Machine Learning の UI の一番右にあるプロパティ ウィンドウに表示されます。 引数はサポートされているどの型でもかまいません。また、必要に応じてカスタム列挙型を作成することもできます。 **Ports** 要素と同様に、**Arguments** 要素では、パラメーター名の上にマウスを置いたときに表示されるテキストを指定するオプションの **Description** 要素を使用できます。
+モジュールの省略可能なプロパティ (defaultValue、minValue、maxValue など) を、**Properties** 要素の属性として引数に追加できます。 **Properties** 要素の有効なプロパティは引数の型によって異なります。これについては、サポートされる引数の型と合わせて次のセクションで説明します。 **isOptional** プロパティが **"true"** に設定されている引数は、ユーザーが値を入力する必要はありません。 引数に値が指定されていない場合、エントリ ポイント関数に引数は渡されません。 エントリ ポイント関数のオプション引数は、関数によって明示的に処理する必要があります (エントリ ポイント関数定義で既定値 NULL を割り当てるなど)。 ユーザーが値を指定した場合、オプション引数は、その他の引数の制約 (最小または最大) のみを適用します。
 入力および出力と同様、各パラメーターで一意の ID 値をそれらに関連付けることが重要になります。 このクイックスタートの例では、関連付けられている ID とパラメーターは *swap* です。
 
 ### <a name="arg-element"></a>Arg 要素
-モジュール パラメーターは、XML 定義ファイルの **Arguments** セクションの **Arg** 子要素を使用して定義します。 **Ports** セクションの子要素と同様に、 **Arguments** セクションでのパラメーターの順序によって UX で発生するレイアウトが定義されます。 UI では、パラメーターは XML ファイルで定義されている順序で上から下に表示されます。 パラメーターについて Machine Learning によってサポートされるタイプを次に示します。 
+モジュール パラメーターは、XML 定義ファイルの **Arguments** セクションの **Arg** 子要素を使用して定義します。 **Ports** セクションの子要素と同様に、**Arguments** セクションでのパラメーターの順序によって UX で発生するレイアウトが定義されます。 UI では、パラメーターは XML ファイルで定義されている順序で上から下に表示されます。 パラメーターについて Machine Learning によってサポートされるタイプを次に示します。 
 
 **int** - 整数 (32 ビット) 型パラメーター。
 
@@ -253,7 +253,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 </Arg>
 ```
 
-* *省略可能なプロパティ* : **min** 、 **max** 、 **default** 、 **isOptional**
+* *省略可能なプロパティ*: **min**、**max**、**default**、**isOptional**
 
 **double** - 倍精度浮動小数点型パラメーター。
 
@@ -264,7 +264,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 </Arg>
 ```
 
-* *省略可能なプロパティ* : **min** 、 **max** 、 **default** 、 **isOptional**
+* *省略可能なプロパティ*: **min**、**max**、**default**、**isOptional**
 
 **bool** - UX のチェック ボックスで表されるブール型パラメーター。
 
@@ -275,9 +275,9 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 </Arg>
 ```
 
-* *省略可能なプロパティ* : **default** - 設定されていない場合は false
+* *省略可能なプロパティ*: **default** - 設定されていない場合は false
 
-**string** - 標準的な文字列。
+**string**- 標準的な文字列。
 
 ```xml
 <Arg id="stringValue1" name="My string Param" type="string">
@@ -286,9 +286,9 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 </Arg>    
 ```
 
-* *省略可能なプロパティ* : **default** 、 **isOptional**
+* *省略可能なプロパティ*: **default**、**isOptional**
 
-**ColumnPicker** - 列選択パラメーター。 この型は、列の選択として UX に表示されます。 ここでは、 **Properties** 要素を使用して、列が選択されたポートの ID を指定しています。この場合、ターゲット ポートの型は *DataTable* である必要があります。 列選択の結果は、選択された列名を含む文字列のリストとして R 関数に渡されます。 
+**ColumnPicker** - 列選択パラメーター。 この型は、列の選択として UX に表示されます。 ここでは、**Properties** 要素を使用して、列が選択されたポートの ID を指定しています。この場合、ターゲット ポートの型は *DataTable* である必要があります。 列選択の結果は、選択された列名を含む文字列のリストとして R 関数に渡されます。 
 
 ```xml
 <Arg id="colset" name="Column set" type="ColumnPicker">      
@@ -297,8 +297,8 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 </Arg>
 ```
 
-* *必須プロパティ* : **portId** - *DataTable* 型の Input 要素の ID と一致します。
-* *省略可能なプロパティ* :
+* *必須プロパティ*: **portId** - *DataTable* 型の Input 要素の ID と一致します。
+* *省略可能なプロパティ*:
   
   * **allowedTypes** - 選択できる列の型をフィルター処理します。 有効な値は、次のとおりです。 
     
@@ -334,7 +334,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
     * AllScore
     * All
 
-**DropDown** : ユーザーが指定した列挙型 (ドロップダウン) リスト。 ドロップダウン項目は、 **Properties** 要素内で **Item** 要素を使用して指定します。 各 **Item** の **id** は、一意で有効な R 変数である必要があります。 **Item** の **name** は、表示されるテキストであり、R 関数に渡される値でもあります。
+**DropDown**: ユーザーが指定した列挙型 (ドロップダウン) リスト。 ドロップダウン項目は、**Properties** 要素内で **Item** 要素を使用して指定します。 各 **Item** の **id** は、一意で有効な R 変数である必要があります。 **Item** の **name** は、表示されるテキストであり、R 関数に渡される値でもあります。
 
 ```xml
 <Arg id="color" name="Color" type="DropDown">
@@ -347,8 +347,8 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 </Arg>    
 ```
 
-* *省略可能なプロパティ* :
-  * **default** - 既定のプロパティの値は、 **Item** 要素のいずれかの ID 値と一致する必要があります。
+* *省略可能なプロパティ*:
+  * **default** - 既定のプロパティの値は、**Item** 要素のいずれかの ID 値と一致する必要があります。
 
 ### <a name="auxiliary-files"></a>補助ファイル
 カスタム モジュールの ZIP ファイル内に配置されたファイルはすべて、実行時に使用できるようなります。 ディレクトリ構造がある場合は保持されます。 つまり、ファイル ソーシングは、ローカルと Azure Machine Learning Studio (クラシック) の実行で同じ動作を行います。 

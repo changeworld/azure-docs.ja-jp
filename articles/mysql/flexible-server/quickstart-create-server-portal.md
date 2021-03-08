@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 864152d1f1d0074305cbba448946bc05888b4f3b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566760"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521970"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>クイックスタート: Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを作成する
 
@@ -85,17 +85,35 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="connect-to-the-server-by-using-mysqlexe"></a>mysql.exe を使用してサーバーに接続する
 
-プライベート アクセス (VNet 統合) を使用してフレキシブル サーバーを作成した場合は、サーバーと同じ仮想ネットワーク内のリソースからサーバーに接続する必要があります。 仮想マシンを作成し、フレキシブル サーバーと共に作成された仮想ネットワークに追加できます。
+プライベート アクセス (VNet 統合) を使用してフレキシブル サーバーを作成した場合は、サーバーと同じ仮想ネットワーク内のリソースからサーバーに接続する必要があります。 仮想マシンを作成し、フレキシブル サーバーと共に作成された仮想ネットワークに追加できます。 詳細については、[プライベート アクセス](how-to-manage-virtual-network-portal.md)の構成に関するドキュメントを参照してください。
 
-パブリック アクセス (使用できる IP アドレス) を使用してフレキシブル サーバーを作成した場合は、サーバー上のファイアウォール規則のリストにローカル IP アドレスを追加できます。
+パブリック アクセス (使用できる IP アドレス) を使用してフレキシブル サーバーを作成した場合は、サーバー上のファイアウォール規則のリストにローカル IP アドレスを追加できます。 詳細な手順については、[ファイアウォール規則の作成または管理](how-to-manage-firewall-portal.md)に関するドキュメントを参照してください。
 
 ローカル環境からサーバーに接続するには、[mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) または [MySQL Workbench](./connect-workbench.md) のどちらかを使用できます。 
 
-mysql.exe を使用している場合は、次のコマンドを使用して接続します。 実際のサーバー名、ユーザー名、パスワードをコマンドで使用します。 
-
 ```bash
- mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+
+**パブリック アクセス** を使用してフレキシブル サーバーをプロビジョニングした場合、以下に示したように、[Azure Cloud Shell](https://shell.azure.com/bash) から、プレインストールされた mysql クライアントを使用してフレキシブル サーバーに接続することもできます。
+
+Azure Cloud Shell を使用してフレキシブル サーバーに接続するためには、Azure Cloud Shell からフレキシブル サーバーへのネットワーク アクセスを許可する必要があります。 そのためには、Azure portal で MySQL フレキシブル サーバーの **[ネットワーク]** ブレードに移動し、 **[ファイアウォール]** セクションの [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) というチェック ボックスをオンにし、[保存] をクリックして設定を保存します。
+
+> [!NOTE]
+> **[Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\)** チェック ボックスは、開発やテストの用途でのみオンにしてください。 すべての Azure サービス (または資産) に割り当てられた IP アドレスからの接続を許可するようにファイアウォールが構成されます。たとえば、他のユーザーのサブスクリプションからの接続も許可されます。
+
+**[Try it]\(試してみる\)** をクリックして Azure Cloud Shell を起動し、次のコマンドを使用してフレキシブル サーバーに接続します。 実際のサーバー名、ユーザー名、パスワードをコマンドで使用します。 
+
+```azurecli-interactive
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+```
+
+上のコマンドの実行後、フレキシブル サーバーに接続しているときに次のエラー メッセージが表示された場合、ファイアウォール規則の設定に不備があります。前述の [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) の設定が済んでいないか、オプションが保存されていません。 ファイアウォールの設定を再試行して、もう一度やり直してください。
+
+ERROR 2002 (HY000):Can't connect to MySQL server on <servername> (115) (エラー 2002 (HY000): &lt;servername&gt; 上の MySQL サーバーに接続できません (115))
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 これで、リソース グループに Azure Database for MySQL フレキシブル サーバーが作成されました。 これらのリソースが今後不要である思われる場合は、リソース グループを削除してリソースを削除することも、単にこの MySQL サーバーを削除することもできます。 リソース グループを削除するには、次の手順のようにします。
 

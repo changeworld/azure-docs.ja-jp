@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central を使用した政府機関ソリューションの構築
+title: Azure IoT Central 政府機関ソリューションとは
 description: Azure IoT Central アプリケーション テンプレートを使用してスマート シティ ソリューションを構築する方法について説明します。
 author: miriambrus
 ms.author: miriamb
@@ -7,14 +7,14 @@ ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a903622f698107f7f1a593946f083fca1573d53e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590819"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834342"
 ---
-# <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した政府機関ソリューションの構築
+# <a name="what-are-the-iot-central-government-solutions"></a>IoT Central 政府機関ソリューションとは
 
 Azure IoT Central アプリケーション テンプレートを使用してスマート シティ ソリューションを構築します。 まず、**水質のモニタリング**、**水消費量のモニタリング**、**接続された廃棄物管理** を使用します。
 
@@ -71,8 +71,6 @@ Azure IoT Central アプリケーション テンプレートを使用してス�
 
 ## <a name="next-steps"></a>次のステップ
 
-* IoT Central で政府アプリケーション テンプレートを無料でお試しください[アプリを作成する](https://apps.azureiotcentral.com/build/government)
 * [水質のモニタリングの概念](./concepts-waterqualitymonitoring-architecture.md)について
 * [水消費量のモニタリングの概念](./concepts-waterconsumptionmonitoring-architecture.md)について
 * [接続された廃棄物管理の概念](./concepts-connectedwastemanagement-architecture.md)について  
-* IoT Central の詳細については、[IoT Central の概要](../core/overview-iot-central.md)を参照してください

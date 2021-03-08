@@ -21,7 +21,7 @@
       href: tutorial-configure-ldaps.md
     - name: パスワード ハッシュ同期の構成
       href: tutorial-configure-password-hash-sync.md
-    - name: レプリカ セットの作成 (プレビュー)
+    - name: レプリカ セットを作成する
       href: tutorial-create-replica-set.md
     - name: カスタイマイズされたマネージド ドメインの作成
       href: tutorial-create-instance-advanced.md
@@ -43,7 +43,7 @@
       href: administration-concepts.md
     - name: 一般的なデプロイ シナリオ
       href: scenarios.md
-    - name: レプリカ セット (プレビュー)
+    - name: レプリカ セット
       href: concepts-replica-sets.md
     - name: フォレストと信頼
       items:

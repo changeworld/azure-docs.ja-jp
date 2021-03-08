@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: f7d81d14ca561e6d4d897994088b2fc01b2c7701
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465735"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548643"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R および Azure Stack Edge Mini R のセキュリティとデータ保護
 
-[!INCLUDE [applies-to-r-skus](../../includes/azure-stack-edge-applies-to-r-sku.md)]
+[!INCLUDE [applies-to-pro-r-and-mini-r--skus](../../includes/azure-stack-edge-applies-to-pro-r-mini-r-sku.md)]
 
 セキュリティは、新しいテクノロジを導入している場合、特にそのテクノロジが機密データや独自のデータに対して使用される場合の大きな関心事です。 Azure Stack Edge Pro R と Azure Stack Edge Mini R は、承認されたエンティティのみがデータを表示、変更、または削除できるようにするために役立ちます。
 
@@ -77,7 +77,7 @@ Azure サブスクリプションで作成した Azure Stack サービスに参�
 
 ### <a name="establish-trust-with-the-device-via-certificates"></a>証明書を使用してデバイスとの信頼関係を確立する
 
-Azure Stack Edge のラグド デバイスを使用すると、独自の証明書を持ち込み、すべてのパブリック エンドポイントに使用するためにインストールできます。 詳細については、[証明書のアップロード](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)に関するページを参照してください。 デバイスにインストールできるすべての証明書の一覧については、[デバイスでの証明書の管理](azure-stack-edge-j-series-manage-certificates.md)に関するページを参照してください。
+Azure Stack Edge のラグド デバイスを使用すると、独自の証明書を持ち込み、すべてのパブリック エンドポイントに使用するためにインストールできます。 詳細については、[証明書のアップロード](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)に関するページを参照してください。 デバイスにインストールできるすべての証明書の一覧については、[デバイスでの証明書の管理](azure-stack-edge-gpu-manage-certificates.md)に関するページを参照してください。
 
 - デバイス上でコンピューティングを構成すると、IoT デバイスと IoT Edge デバイスが作成されます。 これらのデバイスには、対称のアクセス キーが自動的に割り当てられます。 セキュリティのベスト プラクティスとして、これらのキーは IoT Hub サービスを通じて定期的にローテーションされます。
 

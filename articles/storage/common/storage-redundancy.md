@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573361"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556441"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -71,8 +71,8 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 | ストレージ アカウントの種類 | サポートされているリージョン | サポートされているサービス |
 |--|--|--|
 | 汎用 v2<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br />  西ヨーロッパ<br /> フランス中部<br /> 東日本<br /> 南アフリカ北部<br /> 英国南部<br /> 米国中部<br /> 米国東部<br /> 米国東部 2<br /> 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
-| BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> 東日本<br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2| Premium ブロック BLOB のみ |
-| FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> 東日本<br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2 | Premium ファイル共有のみ |
+| BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2| Premium ブロック BLOB のみ |
+| FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2 | Premium ファイル共有のみ |
 
 <sup>1</sup> アーカイブ層は、ZRS アカウントでは現在サポートされていません。<br />
 <sup>2</sup> 仮想マシン用の Azure マネージド ディスクを含むストレージ アカウントは、常に LRS を使用します。 Azure のアンマネージド ディスクでは、LRS も使用する必要があります。 GRS を使用する Azure アンマネージド ディスクのストレージ アカウントを作成することはできますが、非同期 geo レプリケーションの整合性に関する潜在的な問題のため、推奨されません。 マネージドとアンマネージド ディスクのどちらも ZRS または GZRS をサポートしていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。
@@ -186,13 +186,21 @@ RA-GRS または RA-GZRS を有効にした後はセカンダリ リージョン
 
 <sup>1</sup>プライマリ リージョンが使用できなくなった場合に書き込みの可用性を復元するには、アカウントのフェールオーバーが必要です。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](storage-disaster-recovery-guidance.md)」を参照してください。
 
+### <a name="supported-azure-storage-services"></a>サポートされている Azure Storage サービス
+
+次の表は、Azure Storage サービスごとにサポートされる冗長性オプションを示しています。
+
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| BLOB ストレージ<br />ストレージ<br />Table ストレージ<br />Azure Files<br />Azure Managed Disks | BLOB ストレージ<br />ストレージ<br />Table ストレージ<br />Azure Files | BLOB ストレージ<br />ストレージ<br />Table ストレージ<br />Azure Files<br /> | BLOB ストレージ<br />ストレージ<br />Table ストレージ<br />Azure Files<br /> |
+
 ### <a name="supported-storage-account-types"></a>サポートされるストレージ アカウントの種類
 
 次の表は、ストレージ アカウントの種類ごとにサポートされる冗長性オプションを示しています。 ストレージ アカウントの種類については、「[ストレージ アカウントの概要](storage-account-overview.md)」を参照してください。
 
 | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|
-| 汎用 v2<br /> 汎用 v1<br /> ブロック BLOB ストレージ<br /> BLOB ストレージ<br /> File Storage | 汎用 v2<br /> ブロック BLOB ストレージ<br /> File Storage | 汎用 v2<br /> 汎用 v1<br /> BLOB ストレージ | 汎用 v2 |
+| 汎用 v2<br /> 汎用 v1<br /> BlockBlobStorage<br /> BlobStorage<br /> FileStorage | 汎用 v2<br /> BlockBlobStorage<br /> FileStorage | 汎用 v2<br /> 汎用 v1<br /> BlobStorage | 汎用 v2 |
 
 ストレージ アカウントの冗長オプションに従って、すべてのストレージ アカウントのすべてのデータがコピーされます。 ブロック BLOB、追加 BLOB、ページ BLOB、キュー、テーブル、ファイルなどのオブジェクトがコピーされます。 すべての層 (アーカイブ層を含む) のデータがコピーされます。 BLOB 層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
 

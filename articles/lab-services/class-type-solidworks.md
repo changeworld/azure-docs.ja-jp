@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3a7e8c47977f0518a3a3e9f8a6fd2e57454e1c42
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999265"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626106"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>SOLIDWORKS を使用するエンジニアリング クラス用にラボを設定する
 
@@ -57,7 +57,7 @@ SOLIDWORKS のネットワーク ライセンスを使用するには、ライ�
 > **小規模 GPU (視覚化)** 仮想マシン サイズは、高パフォーマンスのグラフィックス エクスペリエンスを実現するように構成されています。  この仮想マシン サイズの詳細については、[GPU を使用したラボの設定方法](./how-to-setup-lab-gpu.md)に関する記事を参照してください。
 
 > [!WARNING]
-> ラボを作成する **前** に、ライセンス サーバーの仮想ネットワークにラボ アカウントの [仮想ネットワークをピアリングする](https://www.mathworks.com/support/requirements/matlab-system-requirements.html)ことを忘れないでください。
+> ラボを作成する **前** に、ライセンス サーバーの仮想ネットワークにラボ アカウントの [仮想ネットワークをピアリングする](./how-to-connect-peer-virtual-network.md)ことを忘れないでください。
 
 ## <a name="template-virtual-machine-configuration"></a>テンプレート仮想マシンの構成
 

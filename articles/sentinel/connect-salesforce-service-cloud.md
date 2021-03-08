@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1efd91d92bac1bc1f39d82aaa0cc71daa0275f8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878920"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570530"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Salesforce Service Cloud を Azure Sentinel に接続する
 
@@ -35,7 +35,7 @@ ms.locfileid: "98878920"
 
 - Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
-- ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)を参照してください。
+- ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)を参照してください。
 
 - 関数アプリを作成するには、Azure Functions に対する読み取りと書き込みのアクセス許可が必要です。 [Azure Functions](../azure-functions/index.yml) の詳細を確認してください。
 

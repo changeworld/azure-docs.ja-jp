@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 08/30/2019
-  ms.openlocfilehash: 05898a0e0cd0dc5d97edca483d89f45960c26071
-  ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+  ms.date: 02/24/2021
+  ms.openlocfilehash: dfc3513dd98a6dc1feecd1f66efe34bc61c6a5d5
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98046312"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101741380"
 landingContent:
 - title: Azure Firewall について
   linkLists:
@@ -33,6 +33,20 @@ landingContent:
     links:
     - text: 新機能
       url: https://azure.microsoft.com/updates/?category=networking&query=Firewall
+- title: Azure Firewall Premium プレビューの詳細
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Firewall Premium プレビューの機能
+      url: premium-features.md
+  - linkListType: concept
+    links:
+    - text: Azure Firewall Premium プレビューの証明書
+      url: premium-certificates.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Firewall Premium プレビューをデプロイして構成する
+      url: premium-deploy.md
 - title: Azure ファイアウォールのデプロイ
   linkLists:
   - linkListType: tutorial

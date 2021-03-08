@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9dc6849c1b2ad5daa6142e894e36f351663ff9bd
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625433"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523993"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>デバイス インベントリのセンサー検出を調査する
 
@@ -32,18 +32,18 @@ ms.locfileid: "98625433"
 
 | パラメーター | [説明] |
 |--|--|
-| 名前 | センサーで検出されたデバイスの名前。 |
-| Type | デバイスの種類。 |
+| 名前 | センサーによって検出された、またはユーザーが入力したデバイスの名前。 |
+| Type | センサーによって決定された、またはユーザーが入力したデバイスの種類。 |
 | ベンダー | MAC アドレスで定義されている、デバイスの製造元の名前。 |
-| オペレーティング システム | デバイスの OS。 |
-| ファームウェア | デバイスのファームウェア。 |
-| IP アドレス | デバイスの IP アドレス。 |
+| オペレーティング システム | デバイスの OS (検出された場合)。 |
+| Firmware version | デバイスのファームウェア (検出された場合)。 |
+| IP アドレス | 定義されているデバイスの IP アドレス。 |
 | VLAN | デバイスの VLAN。 センサーに VLAN を検出するように指示する方法の詳細については、[VLAN 名の定義](how-to-manage-the-on-premises-management-console.md#define-vlan-names)に関するページを参照してください。(how-to-define-management-console-network-settings.md#define-vlan-names)。 |
 | MAC アドレス | デバイスの MAC アドレス。 |
 | プロトコル | デバイスで使用するプロトコル。 |
 | 未確認アラート | このデバイスに関連する未確認のアラートの数。 |
 | 認可済みである | ユーザーによって定義された認可の状態:<br />- **True**:デバイスは認可されています。<br />- **False**:デバイスは認可されていません。 |
-| スキャナーとして認識されている | ユーザーによってスキャン デバイスとして定義されています。 |
+| スキャナーとして認識されている | ユーザーによってネットワーク スキャン デバイスとして定義されています。 |
 | プログラミング デバイスである | ユーザーによって認可されたプログラミング デバイスとして定義されています。 <br />- **True**:デバイスは、エンジニアリング ステーションに関連する PLC、RTU、およびコントローラーのプログラミング アクティビティを実行します。 <br />- **False**:デバイスはプログラミング デバイスではありません。 |
 | グループ | このデバイスが参加するグループ。 |
 | 最終アクティビティ | デバイスで最後に実行されたアクティビティ。 |
@@ -111,7 +111,7 @@ ms.locfileid: "98625433"
 
 ## <a name="learn-windows-registry-details"></a>Windows レジストリの詳細を知る
 
-OT デバイスについて知るだけでなく、Microsoft Windows ワークステーションやサーバーなどの IT デバイスを見つけることができます。 これらのデバイスも、デバイス インベントリに表示されます。 デバイスについて把握した後、次のような詳細な Windows 情報を使用してデバイス インベントリを強化できます。
+OT デバイスについて知るだけでなく、Microsoft Windows ワークステーションやサーバーを見つけることができます。 これらのデバイスも、デバイス インベントリに表示されます。 デバイスについて把握した後、次のような詳細な Windows 情報を使用してデバイス インベントリを強化できます。
 
 - インストールされている Windows のバージョン
 
@@ -217,13 +217,13 @@ OT デバイスについて知るだけでなく、Microsoft Windows ワーク�
 
 ## <a name="export-device-inventory-information"></a>デバイスのインベントリ情報をエクスポートする
 
-デバイス インベントリ情報を Excel ファイルにエクスポートできます。 インポートされた情報により、現在の情報が上書きされます。
+デバイス インベントリ情報を Excel ファイルにエクスポートできます。
 
 CSV ファイルをエクスポートするには、次の操作を行います。
 
 - デバイス インベントリの右上のメニューで、:::image type="icon" source="media/how-to-work-with-asset-inventory-information/csv-excel-export-icon.png" border="false"::: を選択します。 CSV レポートが生成され、ダウンロードされます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [デバイス インベントリのすべてのエンタープライズ センサー検出を調査する](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 

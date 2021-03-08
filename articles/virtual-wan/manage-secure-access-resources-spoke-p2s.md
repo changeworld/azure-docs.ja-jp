@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051532"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048262"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>ユーザー VPN クライアント用のスポーク VNet にあるリソースへのセキュリティで保護されたアクセスを管理する
 
@@ -50,8 +50,6 @@ ms.locfileid: "98051532"
 * **Radius ベースの認証:** Radius サーバーの IP、Radius サーバーのシークレット、および証明書の情報を取得します。
 
 * **Azure 証明書:** この構成では、証明書が必要です。 証明書を生成または取得する必要があります。 クライアント証明書はクライアントごとに必要です。 また、ルート証明書情報 (公開キー) をアップロードする必要があります。 必要な証明書の詳細については、[証明書の生成とエクスポート](../vpn-gateway/vpn-gateway-certificates-point-to-site.md)に関するページを参照してください。
-
-次の例は、Azure 証明書の認証を示しています。
 
 [!INCLUDE [Define parameters](../../includes/virtual-wan-p2s-configuration-include.md)]
 

@@ -3,22 +3,19 @@ title: GatsbyJS と Azure DevOps Starter を使用して PWA 用の CI/CD パイ
 description: GatsbyJS と簡略化された Azure DevOps Starter の作成エクスペリエンスを使用して NodeJS のプログレッシブ Web アプリ (PWA) を作成する方法について説明します。
 ms.prod: devops
 ms.technology: devops-cicd
-services: vsts
 documentationcenter: vs-devops-build
-author: arob98
-manager: angrobe
+author: mijacobs
+ms.author: mijacobs
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
-ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6d8a10dffa3801fe343b3b479265fac5612b021
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856213"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556563"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Azure DevOps Starter を使用して Azure Pipelines に Node.js 用の CI/CD パイプラインを作成する
 
@@ -73,7 +70,7 @@ DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作
 
     ![Azure DevOps ダッシュボード](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. お使いの Azure DevOps プロジェクトから、チーム メンバーを招待して共同作業を行ったり、かんばんボードを確立して作業の追跡を開始したりできます。 詳細については、[このページ](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)を参照してください。
+1. お使いの Azure DevOps プロジェクトから、チーム メンバーを招待して共同作業を行ったり、かんばんボードを確立して作業の追跡を開始したりできます。 詳細については、[このページ](/azure/devops/user-guide/what-is-azure-devops)を参照してください。
 
 ![Azure DevOps の概要](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -81,7 +78,7 @@ DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作
 
 DevOps Starter によって、Azure Repos または GitHub に Git リポジトリが作成されます。 この例では、Azure リポジトリが作成されます。 次の手順では、リポジトリをクローンして変更を行います。
 
-1. お使いの **DevOps プロジェクト**から **[リポジトリ]** を選択し、 **[クローン]** をクリックします。  Git リポジトリをデスクトップにクローンするメカニズムにはさまざまあります。  実際の開発エクスペリエンスに合ったものを選択してください。  
+1. お使いの **DevOps プロジェクト** から **[リポジトリ]** を選択し、 **[クローン]** をクリックします。  Git リポジトリをデスクトップにクローンするメカニズムにはさまざまあります。  実際の開発エクスペリエンスに合ったものを選択してください。  
 
     ![リポジトリを複製する](_img/azure-devops-project-nodejs/clone-the-repo.png)
 
@@ -182,17 +179,17 @@ DevOps Starter によって、Azure Repos または GitHub に Git リポジト�
     git push
     ```
     
-1. `git push` が完了するとすぐにビルドが開始されます。 **Azure DevOps ダッシュボード**で、進捗状況を確認できます。
+1. `git push` が完了するとすぐにビルドが開始されます。 **Azure DevOps ダッシュボード** で、進捗状況を確認できます。
 
 3. 数分後に、ビルドおよびリリース パイプラインが完了し、PWA がコンテナーにデプロイされます。 上記のダッシュボードから **[アプリケーション エンドポイント]** リンクをクリックすると、ブログ用の Gatsby スターター プロジェクトが表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-作成した Azure App Service と関連するその他のリソースは、必要なくなったら削除してかまいません。 DevOps Starter ダッシュボードで**削除**機能を使用します。
+作成した Azure App Service と関連するその他のリソースは、必要なくなったら削除してかまいません。 DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
 CI/CD プロセスを構成すると、ビルドおよびリリース パイプラインが自動的に作成されます。 これらのビルドおよびリリース パイプラインを、チームのニーズを満たすように変更できます。 CI/CD パイプラインの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [CD プロセスをカスタマイズする](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD プロセスをカスタマイズする](/azure/devops/pipelines/release/define-multistage-release-process)

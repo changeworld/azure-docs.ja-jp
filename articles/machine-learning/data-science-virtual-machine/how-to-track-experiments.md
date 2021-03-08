@@ -3,18 +3,17 @@ title: 実験の追跡とモデルのデプロイ
 titleSuffix: Azure Data Science Virtual Machine
 description: Azure Machine Learning や MLFlow を使用して Data Science Virtual Machine から実験を追跡し、ログに記録する方法について説明します。
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3795d531c5c4c543587ab817c05cd1cfeea6be06
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307446"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518540"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning で実験を追跡してモデルをデプロイする
 
@@ -30,7 +29,7 @@ ms.locfileid: "93307446"
 
 ## <a name="create-a-new-notebook"></a>新しいノートブックを作成する
 
-Azure Machine Learning および MLFlow SDK は Data Science VM にプレインストールされており、* *azureml_py36_\** _ conda 環境でアクセスできます。 Jupyterlab でランチャーをクリックし、次のカーネルを選択します。
+Azure Machine Learning および MLFlow SDK は Data Science VM にプレインストールされており、**azureml_py36_\*** conda 環境でアクセスできます。 JupyterLab でランチャーをクリックし、次のカーネルを選択します。
 
 ![カーネルの選択](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +136,7 @@ with mlflow.start_run():
 
 __[新しい推論クラスター]__ ウィンドウで、次の項目の詳細を入力します。
 
-_ コンピューティング名
+* コンピューティング名
 * Kubernetes Service - [新規作成] を選択します
 * リージョンを選択します
 * VM サイズを選択します (このチュートリアルでは、既定の Standard_D3_v2 で十分です)
@@ -159,7 +158,7 @@ _ コンピューティング名
 
 コードなしのデプロイとは、特定のスコアリング スクリプトを指定しなくても、モデル成果物から直接デプロイできることを意味します。
 
-糖尿病モデルをデプロイするには、 [Azure Machine Learning Studio](https://ml.azure.com) の左側のメニューに移動し、 __[モデル]__ を選択します。 次に、登録されている diabetes_model をクリックします。
+糖尿病モデルをデプロイするには、[Azure Machine Learning Studio](https://ml.azure.com) の左側のメニューに移動し、 __[モデル]__ を選択します。 次に、登録されている diabetes_model をクリックします。
 
 ![モデルの選択](./media/how-to-track-experiments/mlflow-experiments-3.png)
 

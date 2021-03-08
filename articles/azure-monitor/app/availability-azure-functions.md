@@ -3,12 +3,12 @@ title: Azure Functions を使用してカスタム可用性テストを作成し
 description: このドキュメントでは、TimerTrigger 関数で指定された構成に従って定期的に実行される Azure 関数を TrackAvailability() で作成する方法について説明します。 このテストの結果は、Application Insights リソースに送信されます。そこでは、可用性の結果データに対してクエリを実行し、アラートを生成することができます。 カスタマイズされたテストを使用すると、ポータル UI を使用してできるものより複雑な可用性テストを記述したり、Azure VNET 内のアプリを監視したり、エンドポイントのアドレスを変更したり、リージョンで利用できない場合に可用性テストを作成したりすることができます。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945653"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589932"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Functions を使用してカスタム可用性テストを作成して実行する
 
@@ -175,7 +175,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ## <a name="query-in-logs-analytics"></a>ログ (Analytics) でのクエリ
 
-ログ (Analytics) を使用して、可用性の結果、依存関係、その他を見ることができます。 ログの詳細については、[ログ クエリの概要](../log-query/log-query-overview.md)に関するページを参照してください。
+ログ (Analytics) を使用して、可用性の結果、依存関係、その他を見ることができます。 ログの詳細については、[ログ クエリの概要](../logs/log-query-overview.md)に関するページを参照してください。
 
 >[!div class="mx-imgBorder"]
 >![可用性の結果](media/availability-azure-functions/availabilityresults.png)

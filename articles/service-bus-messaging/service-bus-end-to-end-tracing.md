@@ -2,14 +2,14 @@
 title: Azure Service Bus のエンドツーエンド トレースと診断 | Microsoft Docs
 description: Service Bus のクライアント診断とエンドツーエンド トレース (クライアントから、処理に関連するすべてのサービスまで) の概要。
 ms.topic: article
-ms.date: 01/17/2021
+ms.date: 02/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: edfd789f8803acf9fc8d76202805dec0187d220e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601261"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539215"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -135,12 +135,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 この例では、リスナーが、Service Bus の各操作の期間、結果、一意識別子、開始時刻を記録します。
 
 ### <a name="events"></a>events
-どの操作でも、次の 2 つのイベントが送信されます:"Start" と "Stop"。 おそらく、ユーザーにとって関心があるのは 'Stop' イベントのみです。 これにより、操作の結果、および開始時刻と所要時間が Activity プロパティとして提供されます。
-
-イベントのペイロードがリスナーに操作のコンテキストを提供すると、リスナーが API 入力パラメーターと戻り値をレプリケートします。 'Stop' イベントのペイロードは、'Start' イベントのペイロードのプロパティをすべて含んでいるため、'Start' イベントは完全に無視することができます。
-
-各 'Stop'イベントには、非同期操作の完了に関する `TaskStatus` を含む `Status` プロパティがあります。これも、わかりやすくするために次の表では省略しています。
-
 すべてのイベントには、公開されているテレメトリ仕様 (https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md ) に準拠する次のプロパティがあります。
 
 - `message_bus.destination` – キュー/トピック/サブスクリプションのパス

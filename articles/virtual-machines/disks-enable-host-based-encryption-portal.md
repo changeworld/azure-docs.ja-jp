@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: fd74872bc1c46f3dddda1b6d15f14f26dc2187cb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ba7d6d8deb2034f8b2a853cf74635687561c41ea
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499375"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573604"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Azure portal を使用して、ホストでの暗号化を使用したエンドツーエンドの暗号化を有効にする
 
@@ -37,7 +37,7 @@ ms.locfileid: "96499375"
 
 ## <a name="prerequisites"></a>前提条件
 
-VM または仮想マシン スケール セットに対してホストでの暗号化を使用できるようにするには、サブスクリプションで機能が有効になっている必要があります。 encryptionAtHost@microsoft に電子メールを送信する。 ご自分のサブスクリプション ID と共に .com に電子メールを送信して、ご自分のサブスクリプションに対してこの機能を有効にします。
+VM または仮想マシン スケール セットに対してホストでの暗号化を使用できるようにするには、サブスクリプションで機能が有効になっている必要があります。 サブスクリプション ID と共に encryptionAtHost@microsoft.com にメールを送信して、サブスクリプションに対して機能を有効にします。
 
 [提供されているリンク](https://aka.ms/diskencryptionupdates)を使用して Azure portal にサインインします。
 

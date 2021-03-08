@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 9befe33f70341f218c3339a13dcc1d31dc452d34
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e85a6ad4619897a6c655874b43e6a6b1a7723d3a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132322"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584644"
 ---
 > [!IMPORTANT]
 > この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。
@@ -112,7 +112,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 `FormRecognizerClient` には、以下を目的とした操作が用意されています。
 
- - カスタム フォームを認識するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。  これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。 [カスタム フォームを分析する](#analyze-forms-with-a-custom-model)例を参照してください。
+ - 対象のカスタム フォームを分析するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。  これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。 [カスタム フォームを分析する](#analyze-forms-with-a-custom-model)例を参照してください。
  - モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。  フォームのコンテンツは、`FormPage` オブジェクトのコレクションとして返されます。 [レイアウトを分析する](#analyze-layout)例を参照してください。
  - Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、米国の領収書から一般的なフィールドを認識する。 これらのフィールドとメタデータは、`RecognizedForm` オブジェクトのコレクションとして返されます。 [領収書を分析する](#analyze-receipts)例を参照してください。
 
@@ -120,8 +120,8 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 `FormTrainingClient` には、以下を目的とした操作が用意されています。
 
-- カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を認識する。  モデルによって認識されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。
-- 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を認識するように、カスタム モデルをトレーニングする。  モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。
+- カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を分析する。  モデルによって分析されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。
+- 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を分析するように、カスタム モデルをトレーニングする。  モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。
 - アカウントに作成されたモデルを管理する。
 - Form Recognizer リソース間でカスタム モデルをコピーする。
 
@@ -191,14 +191,14 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 ## <a name="analyze-layout"></a>レイアウトを分析する
 
-Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。 返される値は **FormPage** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 
+Form Recognizer を使用すると、ドキュメント内の表、行、および単語を分析できます。モデルをトレーニングする必要はありません。 返される値は **FormPage** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 レイアウトの抽出の詳細については、[レイアウトの概念ガイド](../../concept-layout.md)を参照してください。
 
-指定された URL にあるファイルの内容を認識するには、`StartRecognizeContentFromUri` メソッドを使用します。
+指定された URL にあるファイルの内容を分析するには、`StartRecognizeContentFromUri` メソッドを使用します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
 
 > [!TIP]
-> また、ローカルのファイルから内容を取得することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください (**StartRecognizeContent** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
+> また、ローカルのファイルから内容を取得することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (**StartRecognizeContent** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
 
 このタスクの残りの部分では、コンテンツ情報をコンソールに出力します。
 
@@ -239,89 +239,6 @@ Table 0 has 2 rows and 6 columns.
     Cell (1, 5) contains text: 'PT'.
 ```
 
-## <a name="analyze-receipts"></a>領収書を分析する
-
-このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。
-
-URL から領収書を認識するには、`StartRecognizeReceiptsFromUri` メソッドを使用します。 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
-
-> [!TIP]
-> ローカルにある領収書の画像を認識することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください (**StartRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
-
-返される値は `RecognizedReceipt` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードでは、指定された URI にある領収書を処理し、主要なフィールドと値をコンソールに出力します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
-
-### <a name="output"></a>出力 
-
-```console
-Form Page 1 has 18 lines.
-    Line 0 has 1 word, and text: 'Contoso'.
-    Line 1 has 1 word, and text: 'Address:'.
-    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
-    Line 3 has 4 words, and text: '1 Redmond way Suite'.
-    Line 4 has 3 words, and text: '1020 Enterprise Way'.
-    Line 5 has 3 words, and text: '6000 Redmond, WA'.
-    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
-    Line 7 has 1 word, and text: '99243'.
-    Line 8 has 2 words, and text: 'Invoice Number'.
-    Line 9 has 2 words, and text: 'Invoice Date'.
-    Line 10 has 3 words, and text: 'Invoice Due Date'.
-    Line 11 has 1 word, and text: 'Charges'.
-    Line 12 has 2 words, and text: 'VAT ID'.
-    Line 13 has 1 word, and text: '34278587'.
-    Line 14 has 1 word, and text: '6/18/2017'.
-    Line 15 has 1 word, and text: '6/24/2017'.
-    Line 16 has 1 word, and text: '$56,651.49'.
-    Line 17 has 1 word, and text: 'PT'.
-Table 0 has 2 rows and 6 columns.
-    Cell (0, 0) contains text: 'Invoice Number'.
-    Cell (0, 1) contains text: 'Invoice Date'.
-    Cell (0, 2) contains text: 'Invoice Due Date'.
-    Cell (0, 3) contains text: 'Charges'.
-    Cell (0, 5) contains text: 'VAT ID'.
-    Cell (1, 0) contains text: '34278587'.
-    Cell (1, 1) contains text: '6/18/2017'.
-    Cell (1, 2) contains text: '6/24/2017'.
-    Cell (1, 3) contains text: '$56,651.49'.
-    Cell (1, 5) contains text: 'PT'.
-Merchant Name: 'Contoso Contoso', with confidence 0.516
-Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
-Item:
-    Name: '8GB RAM (Black)', with confidence 0.916
-    Total Price: '999', with confidence 0.559
-Item:
-    Name: 'SurfacePen', with confidence 0.858
-    Total Price: '99.99', with confidence 0.386
-Total: '1203.39', with confidence '0.774'
-```
-
-## <a name="analyze-business-cards"></a>名刺を分析する
-
-#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
-
-#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
-
-
-このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを認識して抽出する方法を示します。
-
-URL から名刺を認識するには、`StartRecognizeBusinessCardsFromUriAsync` メソッドを使用します。 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
-
-> [!TIP]
-> ローカルにある領収書の画像を認識することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください (**StartRecognizeBusinessCards** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
-
-返される値は `RecognizedForm` オブジェクトのコレクションで、ドキュメント内の名刺ごとに 1 つです。 次のコードでは、指定された URI にある名刺を処理し、主要なフィールドと値をコンソールに出力します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
-
----
 
 ## <a name="analyze-invoices"></a>請求書を分析する
 
@@ -332,14 +249,14 @@ URL から名刺を認識するには、`StartRecognizeBusinessCardsFromUriAsync
 
 #### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
-このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを認識して抽出する方法を示します。
+このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。
 
-URL から請求書を認識するには、`StartRecognizeInvoicesFromUriAsync` メソッドを使用します。 
+URL から請求書を分析するには、`StartRecognizeInvoicesFromUriAsync` メソッドを使用します。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> ローカルにある請求書の画像を認識することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください (**StartRecognizeInvoices** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
+> ローカルの請求書画像を分析することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください (**StartRecognizeInvoices** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
 
 返される値は `RecognizedForm` オブジェクトのコレクションで、送信されたドキュメント内の請求書ごとに 1 つです。 次のコードでは、指定された URI にある請求書を処理し、主要なフィールドと値をコンソールに出力します。
 
@@ -357,13 +274,13 @@ URL から請求書を認識するには、`StartRecognizeInvoicesFromUriAsync` 
 
 ### <a name="train-a-model-without-labels"></a>ラベルなしでモデルをトレーニングする
 
-カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を認識できるようにします。 次のメソッドは、指定された一連のドキュメントでモデルをトレーニングし、モデルの状態をコンソールに出力します。 
+カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を分析できるようにします。 次のメソッドは、指定された一連のドキュメントでモデルをトレーニングし、モデルの状態をコンソールに出力します。 
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train)]
 
 
-返される `CustomFormModel` オブジェクトには、モデルが認識できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
+返される `CustomFormModel` オブジェクトには、モデルが分析できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_response)]
@@ -493,7 +410,7 @@ Submodel Form Type: form-63c013e3-1cab-43eb-84b0-f4b20cb9214c
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
 > [!TIP]
-> ローカルのファイルを分析することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください (**StartRecognizeCustomForms** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
+> ローカルのファイルを分析することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (**StartRecognizeCustomForms** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
 
 返される値は `RecognizedForm` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードは、分析結果をコンソールに出力します。 認識された各フィールドと対応する値が、信頼度スコアと共に出力されます。
 
@@ -560,6 +477,90 @@ Field 'Azure.AI.FormRecognizer.Models.FieldValue:
     Confidence: '0.114
    ...
 ```
+
+## <a name="analyze-receipts"></a>領収書を分析する
+
+このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。
+
+URL からレシートを分析するには、`StartRecognizeReceiptsFromUri` メソッドを使用します。 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
+
+> [!TIP]
+> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください (**StartRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
+
+返される値は `RecognizedReceipt` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードでは、指定された URI にある領収書を処理し、主要なフィールドと値をコンソールに出力します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
+
+### <a name="output"></a>出力 
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
+    Line 7 has 1 word, and text: '99243'.
+    Line 8 has 2 words, and text: 'Invoice Number'.
+    Line 9 has 2 words, and text: 'Invoice Date'.
+    Line 10 has 3 words, and text: 'Invoice Due Date'.
+    Line 11 has 1 word, and text: 'Charges'.
+    Line 12 has 2 words, and text: 'VAT ID'.
+    Line 13 has 1 word, and text: '34278587'.
+    Line 14 has 1 word, and text: '6/18/2017'.
+    Line 15 has 1 word, and text: '6/24/2017'.
+    Line 16 has 1 word, and text: '$56,651.49'.
+    Line 17 has 1 word, and text: 'PT'.
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    Cell (0, 5) contains text: 'VAT ID'.
+    Cell (1, 0) contains text: '34278587'.
+    Cell (1, 1) contains text: '6/18/2017'.
+    Cell (1, 2) contains text: '6/24/2017'.
+    Cell (1, 3) contains text: '$56,651.49'.
+    Cell (1, 5) contains text: 'PT'.
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+```
+
+## <a name="analyze-business-cards"></a>名刺を分析する
+
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
+
+
+このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。
+
+URL から名刺を分析するには、`StartRecognizeBusinessCardsFromUriAsync` メソッドを使用します。 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
+
+> [!TIP]
+> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください (**StartRecognizeBusinessCards** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
+
+返される値は `RecognizedForm` オブジェクトのコレクションで、ドキュメント内の名刺ごとに 1 つです。 次のコードでは、指定された URI にある名刺を処理し、主要なフィールドと値をコンソールに出力します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
+
+---
 
 ## <a name="manage-custom-models"></a>カスタム モデルを管理する
 
