@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2021
+ms.date: 02/25/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4d4cf7a0dc73070f4f48ed87f60a2458bc925b13
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220906"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707355"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
@@ -31,7 +31,7 @@ Azure NetApp Files レプリケーション機能を使用すると、リージ�
 
 ## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>サポートされているリージョン間レプリケーション ペア
 
-Azure NetApp Files ボリューム レプリケーションは、さまざまな [Azure リージョン ペア](/azure/best-practices-availability-paired-regions#azure-regional-pairs)と非ペアの間でサポートされています。 Azure NetApp Files ボリューム レプリケーションは現在、次のリージョン間で使用できます。  
+Azure NetApp Files ボリューム レプリケーションは、さまざまな [Azure リージョン ペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)と非ペアの間でサポートされています。 Azure NetApp Files ボリューム レプリケーションは現在、次のリージョン間で使用できます。  
 
 ### <a name="azure-regional-pairs"></a>Azure リージョン ペア
 
@@ -52,6 +52,7 @@ Azure NetApp Files ボリューム レプリケーションは、さまざまな
 *   米国中南部および米国東部
 *   米国中南部および米国東部 2
 *   米国東部および米国東部 2
+*   米国東部 2 および米国西部 2
 *   オーストラリア東部および東南アジア 
 *   ドイツ中西部および英国南部
 
@@ -125,5 +126,3 @@ Azure NetApp Files のリージョン間レプリケーションでは、レプ�
 * [ボリューム レプリケーション メトリック](azure-netapp-files-metrics.md#replication)
 * [ボリューム レプリケーションまたはボリュームを削除する](cross-region-replication-delete.md)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)
-
-

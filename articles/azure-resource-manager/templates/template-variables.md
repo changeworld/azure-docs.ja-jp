@@ -2,13 +2,13 @@
 title: テンプレートにおける変数
 description: Azure Resource Manager テンプレート (ARM テンプレート) と Bicep ファイルで変数を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364462"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700339"
 ---
 # <a name="variables-in-arm-templates"></a>ARM テンプレートにおける変数
 
@@ -70,10 +70,6 @@ var concatToParam = '${inputValue}-addtoparam'
 
 [テンプレート関数](template-functions.md)を使用すると、変数の値を作成できます。
 
-JSON テンプレートでは、変数宣言で [reference](template-functions-resource.md#reference) 関数も、いずれの [list](template-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイム状態を取得します。これらの関数は、変数が解決されるときに、デプロイ前に実行することはできません。
-
-reference 関数と list 関数は、Bicep ファイルで変数を宣言するときに有効です。
-
 次の例では、ストレージ アカウント名に文字列値を作成します。 テンプレート関数をいくつか使用してパラメーター値を取得し、連結して一意の文字列にします。
 
 # <a name="json"></a>[JSON](#tab/json)
@@ -92,6 +88,10 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 
 ---
 
+JSON テンプレートでは、変数宣言で [reference](template-functions-resource.md#reference) 関数も、いずれの [list](template-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイム状態を取得します。これらの関数は、変数が解決されるときに、デプロイ前に実行することはできません。
+
+Bicep ファイルでは、変数を宣言するときに、参照関数とリスト関数が有効です。
+
 ## <a name="use-variable"></a>変数を使用する
 
 次の例は、リソース プロパティに変数を使用する方法を示しています。
@@ -101,6 +101,9 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 JSON テンプレートでは、[variables](template-functions-deployment.md#variables) 関数を使用して、変数の値を参照します。
 
 ```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
@@ -115,6 +118,8 @@ JSON テンプレートでは、[variables](template-functions-deployment.md#var
 Bicep ファイルでは、変数名を指定することによって変数の値を参照します。
 
 ```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
 resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName
 ```

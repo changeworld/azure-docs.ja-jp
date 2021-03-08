@@ -1,19 +1,19 @@
 ---
-title: メトリックのためのコンテナーの Azure Monitor の更新方法 | Microsoft Docs
-description: この記事では、集計したメトリックの探索とアラートをサポートするカスタム メトリック機能を有効にするために、コンテナーの Azure Monitor を更新する方法について説明します。
+title: メトリックの Container insights を更新する方法 | Microsoft Docs
+description: この記事では、集計したメトリックの探索とアラートをサポートするカスタム メトリック機能を有効にするように Container insights を更新する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37c19cd074e9ce1985d5d0e82137d8603913d4bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600859"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708273"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
+# <a name="how-to-update-container-insights-to-enable-metrics"></a>メトリックを有効にするように Container insights を更新する方法
 
-コンテナー向けの Azure Monitor により、Azure Kubernetes Services (AKS) および Azure Arc 対応の Kubernetes クラスター ノードおよびポッドからのメトリックの収集と、Azure Monitor メトリック ストアへのそれらの書き込みのサポートが導入されます。 この変更は、パフォーマンス グラフでの集計計算 (Avg、Count、Max、Min、Sum) を表示するときの適時性の改善、Azure portal ダッシュボードでのパフォーマンス グラフのピン留めのサポート、およびメトリック アラートのサポートを実現するためのものです。
+Container insights により、Azure Kubernetes Services (AKS) および Azure Arc 対応の Kubernetes クラスター ノードおよびポッドからのメトリックの収集と、Azure Monitor メトリック ストアへのそれらの書き込みのサポートが導入されます。 この変更は、パフォーマンス グラフでの集計計算 (Avg、Count、Max、Min、Sum) を表示するときの適時性の改善、Azure portal ダッシュボードでのパフォーマンス グラフのピン留めのサポート、およびメトリック アラートのサポートを実現するためのものです。
 
 >[!NOTE]
 >現在、この機能は Azure Red Hat OpenShift クラスターをサポートしていません。
@@ -47,7 +47,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Azure portal からクラスターをアップグレードする
 
-コンテナーの Azure Monitor によって監視される既存の AKS クラスターの場合、クラスターを選択して Azure Monitor のマルチクラスター ビューから、または左側のウィンドウで **[Insights]** を選択することでクラスターから直接その正常性を表示すると、ポータルの上部にバナーが表示されます。
+Container insights によって監視される既存の AKS クラスターの場合、クラスターを選択して Azure Monitor のマルチクラスター ビューから、または左側のペインで **[Insights]** を選択することでクラスターから直接その正常性を表示すると、ポータルの上部にバナーが表示されます。
 
 ![Azure portal の AKS クラスター バナーのアップグレード](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 

@@ -1,19 +1,18 @@
 ---
-title: Azure Monitor for VMs のブックを使用した対話型レポートの作成
-description: Azure Monitor for VMs 用の定義済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポートの作成を簡単にします。
-ms.subservice: ''
+title: VM Insights のブックを使用して対話型レポートを作成する
+description: VM Insights 用の定義済みおよびカスタムのパラメーター化されたブックを使用して、複雑なレポートの作成を簡単にします。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bebe9424df24792f7450620657c5e2da5f08196a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604206"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046518"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Azure Monitor for VMs のブックを使用した対話型レポートの作成
+# <a name="create-interactive-reports-vm-insights-with-workbooks"></a>VM Insights のブックを使用して対話型レポートを作成する
 
 ブックでは、テキスト、 [ログ クエリ](/azure/data-explorer/kusto/query/)、メトリック、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
 
@@ -24,7 +23,7 @@ Workbooks は次のようなシナリオで便利です。
 * VM のサイズ変更実験の結果を、チームの他のメンバーと共有します。 実験の目標をテキストで説明した後に、その実験の評価に使用される使用状況メトリックと 分析クエリ、および各メトリックが目標を上回ったかまたは下回ったかどうかを明確に提示します。
 * 停止が VM の使用に及ぼす影響を報告し、データ、テキスト説明、および次の手順についての話し合いを組み合わせて将来の停止を防止します。
 
-次の表に、Azure Monitor for VMs に含まれるブックをまとめます。これらを利用して、作業を始めることができます。
+次の表に、VM Insights に含まれるブックをまとめます。これらを利用して、作業を始めることができます。
 
 | Workbooks | 説明 | Scope |
 |----------|-------------|-------|
@@ -96,7 +95,7 @@ Workbooks は次のようなシナリオで便利です。
 
 ブックを起動した仮想マシンのコンテキストからのクエリだけに限定されているわけではありません。 複数の仮想マシンや Log Analytics ワークスペースでクエリを実行できます (ただし、これらのリソースへのアクセス許可が必要です)。
 
-他の Log Analytics ワークスペースまたは特定の Application Insights アプリからのデータを含めるには、**ワークスペース** 識別子を使います。 リソース間のクエリの詳細については、[公式のガイダンス](../log-query/cross-workspace-query.md)をご覧ください。
+他の Log Analytics ワークスペースまたは特定の Application Insights アプリからのデータを含めるには、**ワークスペース** 識別子を使います。 リソース間のクエリの詳細については、[公式のガイダンス](../logs/cross-workspace-query.md)をご覧ください。
 
 ### <a name="advanced-analytic-query-settings"></a>分析クエリの詳細設定
 
@@ -137,7 +136,7 @@ VMConnection
 
 ## <a name="adding-metrics-sections"></a>メトリック セクションを追加する
 
-メトリック セクションでは、Azure Monitor のメトリック データを対話型レポートに組み込むためのフル アクセスが提供されます。 Azure Monitor for VMs では、作成済みのブックにはメトリック データではなく、分析クエリ データが通常含まれます。  メトリック データでのブックの作成を選択でき、両方の機能の利点をすべて 1 か所で最大限に活用できます。 また、アクセス可能なサブスクリプションのリソースからメトリック データを取得することもできます。
+メトリック セクションでは、Azure Monitor のメトリック データを対話型レポートに組み込むためのフル アクセスが提供されます。 VM Insights では、通常、作成済みのブックにはメトリック データではなく、分析クエリ データが含まれます。  メトリック データでのブックの作成を選択でき、両方の機能の利点をすべて 1 か所で最大限に活用できます。 また、アクセス可能なサブスクリプションのリソースからメトリック データを取得することもできます。
 
 仮想マシンのデータをブックに取り込んで、CPU のパフォーマンスをグリッドで表示している例を次に示します。
 
@@ -244,4 +243,4 @@ Perf
 
 - 制限および全体的な VM のパフォーマンスを識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。
 
-- 検出されたアプリケーションの依存関係の詳細については、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関するページを参照してください。
+- 検出されたアプリケーションの依存関係については、[VM Insights のマップの表示](vminsights-maps.md)に関する記事をご覧ください。

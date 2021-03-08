@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: b01a856c71375af507e2bf29297e64a6ce9412e5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100544835"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741431"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -118,15 +118,27 @@ Web カテゴリでは、管理者は、ギャンブルの Web サイトやソ�
 
 たとえば、Azure Firewall が `www.google.com/news` の HTTPS 要求をインターセプトする場合、次のような分類が必要です。 
 
-- Firewall Standard - FQDN 部分のみが検証されるため、`www.google.com` は *検索エンジン* として分類されます。 
+- Firewall Standard - FQDN 部分のみが検証されるため、`www.google.com` は "*検索エンジン*" として分類されます。 
 
-- Firewall Premium - 完全な URL が検証されるため、`www.google.com/news` は *ニュース* として分類されます。
+- Firewall Premium - URL 全体が検証されるため、`www.google.com/news` は "*ニュース*" として分類されます。
 
-カテゴリは、 **[責任]** 、 **[高帯域幅]** 、 **[ビジネス利用]** 、 **[生産性の低下]** 、 **[一般的なネット サーフィン]** 、および **[未分類]** の下の重要度に基づいて整理されています。
+カテゴリは、 **[責任]** 、 **[高帯域幅]** 、 **[ビジネス利用]** 、 **[生産性の低下]** 、 **[一般的なネット サーフィン]** 、 **[未分類]** の下で重要度に基づいて整理されています。
+
+### <a name="categorization-change"></a>分類の変更
+
+次の場合に、分類の変更を要求できます。
+
+ - FQDN または URL が別のカテゴリの下にある必要があると思われる 
+ 
+or 
+
+- 分類されていない FQDN または URL に対して推奨されるカテゴリがある
+
+[https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) で要求を送信してください。
 
 ### <a name="category-exceptions"></a>カテゴリの例外
 
-Web カテゴリのルールに例外を作成できます。 ルール コレクション グループ内で、優先順位の高い個別の許可または拒否ルール コレクションを作成します。 たとえば、優先順位が 100 で `www.linkedin.com` を許可するルール コレクションと、優先順位が 200 で **ソーシャル ネットワーキング** を拒否するルール コレクションを構成できます。 これにより、定義済みの **ソーシャル ネットワーキング** Web カテゴリに例外が作成されます。
+Web カテゴリの規則の例外を作成できます。 規則コレクション グループ内で、より優先度の高い個別の許可または拒否の規則コレクションを作成します。 たとえば、優先度が 100 で `www.linkedin.com` を許可する規則コレクションと、優先順位が 200 で **ソーシャル ネットワーキング** を拒否する規則コレクションを構成できます。 これにより、定義済みの **ソーシャル ネットワーキング** Web カテゴリに例外が作成されます。
 
 
 

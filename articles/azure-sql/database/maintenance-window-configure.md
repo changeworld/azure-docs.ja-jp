@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/02/2021
-ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/04/2021
+ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048601"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183201"
 ---
 # <a name="configure-maintenance-window-preview"></a>メンテナンス期間の構成 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,8 @@ ms.locfileid: "102048601"
 
 別のメンテナンス期間に変更する機能は、すべてのサービス レベルまたはすべてのリージョンで使用できるわけではありません。 可用性の詳細については、[メンテナンス期間の可用性](maintenance-window.md#availability)に関するページを参照してください。
 
+> [!Important]
+> メンテナンス期間の構成は、Azure SQL リソースのサービス レベルの変更と同様に、時間のかかる非同期操作です。 操作の終了時に発生する短いフェールオーバーを除いて、操作中にリソースを使用できます。これは、長時間のトランザクションが中断された場合でも、通常は最大 8 秒です。 フェールオーバーの影響を最小限に抑えるには、ピーク時以外に操作を実行する必要があります。
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>データベースの作成時にメンテナンス期間を構成する 
 
@@ -176,7 +178,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>SQL Database とエラスティック プールのメンテナンス期間を検出する
 
-次の例では、[az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration?view=azure-cli-latest&preserve-view=true#ext_maintenance_az_maintenance_public_configuration_list) コマンドを使用して、*eastus2* リージョンに使用できるメンテナンス期間を返します。 データベースおよびエラスティック プールの場合は、`maintenanceScope` を `SQLDB` に設定します。
+次の例では、[az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) コマンドを使用して、*eastus2* リージョンに使用できるメンテナンス期間を返します。 データベースおよびエラスティック プールの場合は、`maintenanceScope` を `SQLDB` に設定します。
 
    ```azurecli
    location="eastus2"
@@ -186,7 +188,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ### <a name="discover-sql-managed-instance-maintenance-windows"></a>SQL Managed Instance のメンテナンス期間を検出する
 
-次の例では、[az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration?view=azure-cli-latest&preserve-view=true#ext_maintenance_az_maintenance_public_configuration_list) コマンドを使用して、*eastus2* リージョンに使用できるメンテナンス期間を返します。 マネージド インスタンスの場合は、`maintenanceScope` を `SQLManagedInstance` に設定します。
+次の例では、[az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) コマンドを使用して、*eastus2* リージョンに使用できるメンテナンス期間を返します。 マネージド インスタンスの場合は、`maintenanceScope` を `SQLManagedInstance` に設定します。
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"

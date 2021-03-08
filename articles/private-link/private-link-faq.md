@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582011"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709411"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)
 
@@ -47,7 +47,7 @@ ms.locfileid: "99582011"
 不正解です。 プライベート エンドポイント専用のサブネットは必要ありません。 対象のサービスがデプロイされている VNet 内にある任意のサブネットのプライベート エンドポイント IP を選択できます。  
  
 ### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>プライベート エンドポイントから Azure Active Directory テナントをまたいで Private Link サービスに接続できますか? 
-正解です。 プライベート エンドポイントでは、Azure Active Directory テナントをまたいで Private Link サービスまたは Azure PaaS に接続できます。 テナントをまたいで接続するプライベート エンドポイントには、手動による要求の承認が必要です。 
+はい。 プライベート エンドポイントでは、Azure Active Directory テナントをまたいで Private Link サービスまたは Azure PaaS に接続できます。 テナントをまたいで接続するプライベート エンドポイントには、手動による要求の承認が必要です。 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>プライベート エンドポイントは、Azure リージョンをまたいで Azure PaaS リソースに接続できますか。
 正解です。 プライベート エンドポイントは、Azure リージョンをまたいで Azure PaaS リソースに接続できます。
@@ -65,6 +65,12 @@ Private Link サービスは、次のいくつかの方法でスケーリング�
 - バックエンド VM を Standard Load Balancer の背後にあるプールに追加する 
 - IP を Private Link サービスに追加する。 Private Link サービスあたり最大 8 個の IP が許可されます。  
 - 新しい Private Link サービスを Standard Load Balancer に追加する。 ロード バランサーあたり最大 8 個の Private Link サービスが許可されます。   
+
+### <a name="what-is-natnetwork-address-translation-ip-configuration-used-in-private-link-service-how-can-i-scale-in-terms-of-available-ports-and-connections"></a>Private Link サービスで使用される NAT (ネットワーク アドレス変換) IP 構成とは何ですか。 使用可能なポートと接続をスケーリングするにはどうすればよいですか。 
+
+NAT IP 構成を使用して、宛先側 (サービス プロバイダー側) の Private Link トラフィックにソース NAT を指定することにより、ソース (コンシューマー側) と宛先 (サービス プロバイダー) のアドレス空間の間で IP の競合が生じなくなります。 NAT IP アドレスは、対象のサービスで受信されたすべてのパケットのソース IP および対象のサービスで送信されたすべてのパケットの宛先 IP として表示されます。  NAT IP は、サービス プロバイダーの仮想ネットワーク内の任意のサブネットから選択できます。 
+
+各 NAT IP により、Standard Load Balancer の背後にある VM ごとに 64,000 個の TCP 接続 (64,000 個のポート) を使用できるようになります。 接続をスケールして追加するには、新しい NAT IP を追加するか、Standard Load Balancer の背後に VM を追加します。 こうすることでポートの可用性がスケールされ、より多くの接続が可能になります。 接続は、NAT IP と Standard Load Balancer の背後にある VM に分散されます。
 
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>自分のサービスを複数のプライベート エンドポイントに接続することはできますか。
 正解です。 1 つの Private Link サービスで複数のプライベート エンドポイントから接続を受信できます。 ただし、1 つのプライベート エンドポイントで接続できるのは 1 つの Private Link サービスのみです。  

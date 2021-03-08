@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b0dd584aee4a7647a3028ea20b517c0d74a330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603534"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734742"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>ITSMC ダッシュボード内の [コネクタの状態] のエラー
 
@@ -56,7 +56,9 @@ IT Service Management Connector (ITSMC) ダッシュボードに表示される�
 
 ## <a name="invalid-refresh-token"></a>更新トークンが無効である
 
-**Error**: "AccessToken and RefreshToken invalid. (AccessToken および RefreshToken が無効です。) User needs to authenticate again. (ユーザーはもう一度認証を受ける必要があります。)"
+**エラー**: 
+  * "AccessToken and RefreshToken invalid. (AccessToken および RefreshToken が無効です。) User needs to authenticate again. (ユーザーはもう一度認証を受ける必要があります。)"
+  * "Could not sync templates configuration for Event,Alert,Incident. (イベント、アラート、インシデントのテンプレート構成を同期できませんでした。) See Exception Message for more details. (詳細については、例外メッセージを参照してください。)"
 
 **原因**:更新トークンの有効期限が切れている。
 

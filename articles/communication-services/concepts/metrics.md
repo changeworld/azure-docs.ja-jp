@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: edbf29b103a84240299f4a9f389a8c7a90012821
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0a80e289a6fbb8dfe9b725eaa1ef9e114d2896fd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572066"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691384"
 ---
 # <a name="metrics-overview"></a>メトリックの概要
 
@@ -87,6 +87,8 @@ SMS API 要求のメトリックには、次の操作が利用できます。
 | DeleteIdentity       | ID を削除します。 |
 | CreateToken          | アクセス トークンを作成します。 |
 | RevokeToken          | 指定された時刻より前に、ID 用に作成されたすべてのアクセス トークンを取り消します。 |
+
+:::image type="content" source="./media/acs-auth-metrics.png" alt-text="認証要求のメトリック。":::
 
 ## <a name="next-steps"></a>次の手順
 

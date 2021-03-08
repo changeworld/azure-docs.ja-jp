@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: b3ff1b344852d57f0effbd978c06aa617682ea4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720319"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182589"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -144,7 +144,7 @@ CNAME レコードと TXT レコードを追加した後の DNS レコード ペ
 
 1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-    ![[カスタム ドメイン] メニューを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. アプリの **[カスタム ドメイン]** ページで、完全修飾カスタム DNS 名 (`www.contoso.com`) を一覧に追加します。
 
@@ -185,7 +185,7 @@ A レコードをマップするには、アプリの外部 IP アドレスが�
 
 1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-   ![[カスタム ドメイン] メニューを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+   ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. **[カスタム ドメイン]** ページで、アプリの IP アドレスをコピーします。
 
@@ -277,7 +277,7 @@ CNAME が追加されると、DNS レコード ページは次の例のように
 
 1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-    ![[カスタム ドメイン] メニューを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. **[カスタム ドメインの追加]** を選択します。
 
@@ -308,10 +308,7 @@ CNAME が追加されると、DNS レコード ページは次の例のように
 
 ## <a name="resolve-404-not-found"></a>404 "Not Found" (見つかりません) を解決する
 
-カスタム ドメインの URL 参照時に HTTP 404 (Not Found) エラーが発生した場合は、<a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> を使用して、ご利用のドメインがアプリの IP アドレスに解決されることを確認します。 解決されない場合は、次のいずれかの理由が考えられます。
-
-- 構成されているカスタム ドメインに A レコードまたは CNAME レコードがない。
-- クライアントのブラウザーが、ドメインの古い IP アドレスをキャッシュしている。 キャッシュをクリアして、DNS 解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
+カスタム ドメインの URL 参照時に HTTP 404 (Not Found) エラーが発生した場合は、<a href="https://www.nslookup.io/" target="_blank">nslookup.io</a> を使用して、ご利用のドメインがアプリの IP アドレスに解決されることを確認します。 されない場合は、A および CNAME レコードが同じサイトを使用して正しく構成されていることを確認します。 IP が正しく解決されても 404 が表示されている場合は、お使いのブラウザーにドメインの古い IP アドレスがキャッシュされている可能性があります。 キャッシュをクリアして、DNS 解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
 
 ## <a name="migrate-an-active-domain"></a>アクティブなドメインの移行
 

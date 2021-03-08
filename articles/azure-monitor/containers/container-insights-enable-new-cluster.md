@@ -1,19 +1,19 @@
 ---
 title: 新しい Azure Kubernetes Service (AKS) クラスターを監視する | Microsoft Docs
-description: Azure Monitor for containers サブスクリプションによって、新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
+description: Container insights のサブスクリプションによって、新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b6c4f8a05b8e7a350ebd5afd677e8bb2ee6e9b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604387"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717572"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
-この記事では、サブスクリプションへのデプロイを準備している、[Azure Kubernetes Service](../../aks/index.yml) でホストされているマネージド Kubernetes クラスターを監視するように Azure Monitor for containers を設定する方法について説明します。
+この記事では、サブスクリプションへのデプロイを準備している、[Azure Kubernetes Service](../../aks/index.yml) でホストされているマネージド Kubernetes クラスターを監視するように Container insights を設定する方法について説明します。
 
 サポートされている次のいずれかの方法を使用して、AKS クラスターの監視を有効にすることができます。
 
@@ -34,14 +34,14 @@ Azure CLI で作成した新しい AKS クラスターの監視を有効にす�
 >[!NOTE]
 >Terraform を使用することを選択する場合、Terraform Azure RM プロバイダー バージョン 1.17.0 以降が実行されている必要があります。
 
-コンテナーの Azure Monitor をワークスペースに追加する場合は、[azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) を参照し、[**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) を含め、**oms_agent** を指定してプロファイルを完成させます。 
+Container insights をワークスペースに追加するには、[azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) を参照し、[**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) を含め、**oms_agent** を指定してプロファイルを完成させます。 
 
 監視を有効にし、すべての構成タスクが正常に完了すると、次の 2 つの方法のいずれかを使用して、クラスターのパフォーマンスを監視することができます。
 
 * 左側のウィンドウで **[正常性]** を選択し、AKS クラスターで直接監視します。
 * 選択したクラスターの AKS クラスター ページで、 **[Monitor Container insights]\(コンテナーの分析情報の監視\)** タイルを選択します。 Azure Monitor の左側のウィンドウにある **[正常性]** を選択します。 
 
-  ![AKS でコンテナーに Azure Monitor を選択するためのオプション](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+  ![AKS で Container insights を選択するためのオプション](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
 監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
 
@@ -117,5 +117,5 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 
 * ソリューションのオンボードを試みた際に問題が発生した場合は、[トラブルシューティング ガイド](container-insights-troubleshoot.md)を確認してください。
 
-* AKS クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、コンテナーの Azure Monitor を[使用する方法](container-insights-analyze.md)について学習します。
+* AKS クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、Container insights を[使用する方法](container-insights-analyze.md)について学習します。
 

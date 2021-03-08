@@ -10,12 +10,12 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 7833656b9b9be45aa3a0f0a8aa45cd70f925ce73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c79ea68e648cd3d78f94eb2272b6f32e3c4806f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379673"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749942"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
@@ -23,7 +23,7 @@ ms.locfileid: "100379673"
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。 
 - [Xcode](https://developer.apple.com/xcode/) と [Cocoapods](https://cocoapods.org/) をインストールします。Xcode は、このクイックスタート用の iOS アプリケーションの作成に、Cocoapods は依存関係のインストールに使用します。
 - Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
-- **2 人** の ACS ユーザーを作成し、それに対して[ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモ** してください。 このクイックスタートでは、最初の参加者でスレッドを作成した後、そのスレッドに 2 人目の参加者を追加します。
+- **2 人** の ACS ユーザーを作成し、それに対して [ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモ** してください。 このクイックスタートでは、最初の参加者でスレッドを作成した後、そのスレッドに 2 人目の参加者を追加します。
 
 ## <a name="setting-up"></a>設定
 
@@ -53,9 +53,11 @@ pod 'AzureCommunicationChat', '~> 1.0.0-beta.8'
 
 依存関係をインストール (`pod install`) すると、Xcode ワークスペースも作成されます。
 
+**ポッドのインストールを実行した後、新しく作成した `.xcworkspace` を選択して、Xcode でプロジェクトを再度開きます。**
+
 ### <a name="setup-the-placeholders"></a>プレースホルダーを設定する
 
-Xcode でワークスペース ファイル `ChatQuickstart.xcworkspace` を開き、`ViewController.swift` を開きます。
+Xcode でワークスペース `ChatQuickstart.xcworkspace` を開いてから、`ViewController.swift` を開きます。
 
 このクイックスタートでは、`viewController` にコードを追加し、その出力を Xcode コンソールで表示します。 このクイックスタートでは、iOS の UI 作成については取り上げません。 
 
@@ -121,12 +123,16 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
 `<ACS_RESOURCE_ENDPOINT>` は、ACS リソースのエンドポイントに置き換えます。
 `<ACCESS_TOKEN>` は、有効な ACS アクセストークンに置き換えます。
 
+このクイックスタートでは、チャット アプリケーションのトークンを管理するためのサービス レベルの作成については説明しませんが、サービス レベルの使用をお勧めします。 詳細については、[チャットのアーキテクチャ](../../../concepts/chat/concepts.md)に関するドキュメントを参照してください
+
+詳細については、[ユーザー アクセス トークン](../../access-tokens.md)に関するページを参照してください。
+
 ## <a name="object-model"></a>オブジェクト モデル 
 JavaScript 用 Azure Communication Services チャット クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
 
 | 名前                                   | 説明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | このクラスはチャットの機能に必要です。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
+| ChatClient | このクラスは、チャット機能に必要となります。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
 | ChatThreadClient | このクラスはチャット スレッド機能に必要です。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信、受信、更新、削除、ユーザーの追加、削除、取得、入力通知の送信、開封確認、チャット イベントのサブスクライブを行います。 |
 
 ## <a name="start-a-chat-thread"></a>チャット スレッドを開始する

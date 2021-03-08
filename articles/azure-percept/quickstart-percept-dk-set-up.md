@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49bf89d38edef6a9186cbdb5bb89a763339385b4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041690"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175823"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK を設定し、最初の AI モデルをデプロイする
 
@@ -25,7 +25,7 @@ Azure Percept DK と Azure Percept Studio の使用を開始するには、Azure
 - Azure Percept DK。
 - Wi-Fi 機能および Web ブラウザーを備えた Windows、Linux、OS X ベースのホスト コンピューター。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Azure アカウントには、サブスクリプションの "所有者" または "共同作成者" ロールが必要です。 Azure ロールの定義についての詳細情報
+- Azure アカウントには、サブスクリプションの "所有者" または "共同作成者" ロールが必要です。 [Azure ロールの定義](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)について詳細を確認してください。
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
 
@@ -182,7 +182,7 @@ Azure アカウントがサブスクリプションの "所有者" または "�
 
 ## <a name="view-your-device-in-the-azure-percept-studio-and-deploy-common-prebuilt-sample-apps"></a>Azure Percept Studio でデバイスを表示し、一般的な事前構築済みサンプル アプリをデプロイする
 
-1. Azure Percept の [概要] ページからデバイスの一覧を表示します。 Azure Percept の [概要] ページは、初歩および高度の両方の AI エッジ モデルとソリューション開発のための、多くのさまざまなワークフローにアクセスするための開始点となります
+1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) の [概要] ページからデバイスの一覧を表示します。 Azure Percept の [概要] ページは、初歩および高度の両方の AI エッジ モデルとソリューション開発のための、多くのさまざまなワークフローにアクセスするための開始点となります
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="デバイス一覧を表示します。":::
     

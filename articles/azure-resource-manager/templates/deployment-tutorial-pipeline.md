@@ -1,15 +1,15 @@
 ---
 title: Azure Pipelines を使用した継続的インテグレーション
 description: Azure Resource Manager テンプレート (ARM テンプレート) を継続的にビルド、テスト、およびデプロイする方法について説明します。
-ms.date: 02/16/2021
+ms.date: 03/02/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3ff98c1c033c6da4b6bdf40c3b8ecb3347601741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722820"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション
 
@@ -83,8 +83,8 @@ _CreateWebApp_ フォルダーは、テンプレートが格納されている�
 
 テンプレートを作成する代わりに、テンプレートをダウンロードして _CreateWebApp_ フォルダーに保存してもかまいません。
 
-* メイン テンプレート: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
-* リンク済みテンプレート: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
+* メイン テンプレート: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* リンク済みテンプレート: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 パイプラインでは、フォルダー名とファイル名の両方をそのまま使用します。 これらの名前を変更する場合は、パイプラインで使用する名前を更新する必要があります。
 
@@ -106,7 +106,7 @@ _CreateWebApp_ フォルダーは、テンプレートが格納されている�
     LF に関する警告が表示されることがあります。 この警告は無視できます。 **main** はメイン ブランチです。  通常は、更新ごとにブランチを作成します。 チュートリアルを簡単にするために、メイン ブランチを直接使用します。
 
 1. ブラウザーから GitHub リポジトリに移動します。 URL は `https://github.com/[YourAccountName]/[YourGitHubRepository]` です。 _CreateWebApp_ フォルダーがあって、その中に 2 つのファイルが格納されています。
-1. _linkedStorageAccount.json_ を選択してテンプレートを開きます。
+1. _azuredeploy.json_ を選択してテンプレートを開きます。
 1. **[Raw]\(未加工\)** ボタンを選択します。 URL は `https://raw.githubusercontent.com` で始まります。
 1. URL のコピーを作成します。 後でこのチュートリアルの中でパイプラインを構成する際に、この値を指定する必要があります。
 
@@ -174,10 +174,10 @@ _CreateWebApp_ フォルダーは、テンプレートが格納されている�
     * **アクション**:**Create Or Update Resource Group** アクションは、2 つのアクションを行います。1. 新しいリソース グループ名が提供されている場合は、リソース グループを作成します。2. 指定されたテンプレートをデプロイします。
     * **[リソース グループ]** :新しいリソース グループの名前を入力します。 たとえば、**AzureRmPipeline-rg** です。
     * **[場所]** :リソース グループの場所を選択します (**米国中部** など)。
-    * **テンプレートの場所**: **[Linked artifact]\(リンクされた成果物\)** を選択します。この場合、タスクは接続されているリポジトリから直接テンプレート ファイルを探します。
-    * **テンプレート**:「_CreateWebApp/azuredeploy.json_」と入力します。 フォルダー名とファイル名を変更した場合は、この値を変更する必要があります。
-    * **テンプレート パラメーター**: このフィールドは空のままにします。 **[テンプレート パラメーターのオーバーライド]** にパラメーターの値を指定します。
-    * **[テンプレート パラメーターのオーバーライド]** : 「 `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` 」と入力します。 プロジェクト名とリンク済みテンプレートの URL を置き換えます。 リンク済みテンプレートの URL は、「[GitHub リポジトリを作成する](#create-a-github-repository)」の最後に書き留めた値です。 これは `https://raw.githubusercontent.com` で始まります。
+    * **テンプレートの場所**: **ファイルの URL** を選択します。この URL を使用してテンプレート ファイルが検索されます。 メイン テンプレートで _relativePath_ が使用され、_relativePath_ は URI ベースのデプロイでのみサポートされるため、ここでは URL を使用する必要があります。
+    * **テンプレート リンク**: 「[GitHub リポジトリを準備する](#prepare-a-github-repository)」セクションの最後にある URL を入力します。 これは `https://raw.githubusercontent.com` で始まります。
+    * **テンプレート パラメーターのリンク**: このフィールドは空のままにします。 **[テンプレート パラメーターのオーバーライド]** にパラメーターの値を指定します。
+    * **[テンプレート パラメーターのオーバーライド]** : 「 `-projectName [EnterAProjectName]` 」と入力します。
     * **デプロイ モード**: **[増分]** を選択します。
     * **デプロイ名**: 「**DeployPipelineTemplate**」と入力します。 **[デプロイ名]** は、 **[Advanced]\(詳細\)** を選択すると表示されます。
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 0581e659eca0a59719db0dd0e48cf3628b64dd2a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664304"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098198"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept の概要
 
@@ -22,21 +22,21 @@ Azure Percept は、IoT と AI をエッジで使用してビジネス変革を�
 
 - ソリューションを強化するための適切なシリコンの特定と選択。
 - ハードウェア、ソフトウェア、モデル、データの全体的なセキュリティを確保すること。
-- シームレスに動作するソリューションを構築および管理する能力。
+- シームレスに動作するソリューションを、規模に応じて構築し、管理する能力。
 
 ## <a name="components-of-azure-percept"></a>Azure Percept のコンポーネント
 
 Azure Percept の主要なコンポーネントは次のとおりです。
 
-- AI ハードウェア リファレンス設計および認定プログラム。
+1. AI ハードウェア リファレンス設計および認定プログラム。
 
     - Azure AI および IoT サービスと簡単に統合できるエッジ AI ハードウェアを開発するためのパターンとベストプラクティスをハードウェア開発者のエコシステムに提供します。
 
-- Azure Percept DK (開発キット)。
+2. Azure Percept DK (開発キット)。
 
-    - さまざまなプロトタイプ作成シナリオをサポートするのに十分な柔軟性を備えた開発キットです。
+    - デバイス ビルダー、ソリューション ビルダー、およびお客様のさまざまなプロトタイプ作成シナリオをサポートするために十分な柔軟性を備えた開発キットです。
 
-- エッジ AI モデルとソリューション開発を加速させるためのサービスとワークフロー。
+3. エッジ AI モデルとソリューション開発を加速させるためのサービスとワークフロー。
 
     - Azure Percept Studio からアクセスできる開発ワークフローと事前構築されたモデルです。
     - モデル開発サービス。

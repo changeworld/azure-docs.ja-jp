@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3f9ec395e8ccf6d5162717b2e38b0650ccc84812
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6e4a776bd9aaf3900d05a6191b8ff4dcbb11fd52
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091814"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731665"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -156,7 +156,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |active-timer-count|はい|active-timer-count|Count|Average|現在アクティブなタイマーの数|Deployment、AppName、Pod|
 |alloc-rate|はい|alloc-rate|バイト|Average|マネージド ヒープで割り当てられたバイト数|Deployment、AppName、Pod|
-|AppCpuUsage|はい|アプリの CPU 使用率 (プレビュー)|Percent|Average|アプリの最近の CPU 使用率|Deployment、AppName、Pod|
+|AppCpuUsage|はい|アプリの CPU 使用率 |Percent|Average|アプリの最近の CPU 使用率|Deployment、AppName、Pod|
 |assembly-count|はい|assembly-count|Count|Average|読み込まれたアセンブリ数|Deployment、AppName、Pod|
 |cpu-usage|はい|cpu-usage|Percent|Average|プロセスによって CPU が使用された時間 (%)|Deployment、AppName、Pod|
 |current-requests|はい|current-requests|Count|Average|プロセスの有効期間中の処理中の要求の合計数|Deployment、AppName、Pod|
@@ -2167,9 +2167,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|QueryVolume|はい|クエリ数|Count|合計|DNS ゾーンで処理されたクエリの数|ディメンションなし|
+|QueryVolume|いいえ|クエリ数|Count|合計|DNS ゾーンで処理されたクエリの数|ディメンションなし|
 |RecordSetCapacityUtilization|いいえ|レコード セットの容量使用率|Percent|最大値|DNS ゾーンで使用されるレコード セットの容量の割合|ディメンションなし|
-|RecordSetCount|はい|レコード セット数|Count|最大値|DNS ゾーンのレコード セットの数|ディメンションなし|
+|RecordSetCount|いいえ|レコード セット数|Count|最大値|DNS ゾーンのレコード セットの数|ディメンションなし|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
@@ -2799,7 +2799,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |SuccessE2ELatency|はい|Success E2E Latency (成功 E2E 待機時間)|ミリ秒|Average|ストレージ サービスまたは指定された API 操作に対して行われた成功した要求の平均エンド ツー エンド待機時間 (ミリ秒単位)。 この値には、要求の読み取り、応答の送信、および応答の受信確認を受け取るために Azure Storage 内で必要な処理時間が含まれます。|GeoType、ApiName、Authentication|
 |SuccessServerLatency|はい|Success Server Latency (成功サーバー待機時間)|ミリ秒|Average|Azure Storage による成功した要求の平均処理時間。 この値には、SuccessE2ELatency で指定されているネットワーク待機時間は含まれません。|GeoType、ApiName、Authentication|
 |トランザクション|はい|トランザクション|Count|合計|ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 別の種類の応答の数には ResponseType ディメンションを使います。|ResponseType、GeoType、ApiName、Authentication|
-|UsedCapacity|いいえ|Used capacity (使用済み容量)|バイト|Average|ストレージ アカウントによって使用されているストレージの量。 Standard ストレージ アカウントについては、Blob、Table、File、および Queue で使用される容量の合計です。 Premium ストレージ アカウントと BLOB ストレージ アカウントについては、BlobCapacity または FileCapacity と同じです。|ディメンションなし|
+|UsedCapacity|はい|Used capacity (使用済み容量)|バイト|Average|ストレージ アカウントによって使用されているストレージの量。 Standard ストレージ アカウントについては、Blob、Table、File、および Queue で使用される容量の合計です。 Premium ストレージ アカウントと BLOB ストレージ アカウントについては、BlobCapacity または FileCapacity と同じです。|ディメンションなし|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
@@ -3137,11 +3137,11 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |AverageResponseTime|はい|平均応答時間 (非推奨)|Seconds|Average|アプリが要求に応答するのに要した平均時間 (秒単位)。|インスタンス|
 |BytesReceived|はい|受信データ|バイト|合計|アプリで消費された受信帯域幅の量 (MiB)。|インスタンス|
 |BytesSent|はい|送信データ|バイト|合計|アプリで消費された送信帯域幅の量 (MiB)。|インスタンス|
-|CpuTime|はい|CPU 時間|Seconds|合計|アプリで消費された CPU の量 (秒)。 このメトリックの詳細については、 https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (「CPU 時間と CPU の割合」) を参照してください|インスタンス|
+|CpuTime|はい|CPU 時間|Seconds|合計|アプリで消費された CPU の量 (秒)。 このメトリックの詳細については、 https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (「CPU 時間と CPU の割合」) を参照してください Azure Functions には適用されません。|インスタンス|
 |CurrentAssemblies|はい|現在のアセンブリ|Count|Average|このアプリケーション内のすべての AppDomain で読み込まれたアセンブリの現在の数。|インスタンス|
 |FileSystemUsage|はい|ファイル システムの使用量|バイト|Average|アプリによって使用されたファイル システム クォータの割合。|ディメンションなし|
-|FunctionExecutionCount|はい|関数の実行回数|Count|合計|関数の実行回数|インスタンス|
-|FunctionExecutionUnits|はい|関数の実行単位|Count|合計|関数の実行単位|インスタンス|
+|FunctionExecutionCount|はい|関数の実行回数|Count|合計|関数の実行回数。 Azure Functions にのみ存在します。|インスタンス|
+|FunctionExecutionUnits|はい|関数の実行単位|Count|合計|関数の実行単位。 Azure Functions にのみ存在します。|インスタンス|
 |Gen0Collections|はい|Gen 0 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 0 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|インスタンス|
 |Gen1Collections|はい|Gen 1 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 1 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|インスタンス|
 |Gen2Collections|はい|Gen 2 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 2 オブジェクトがガベージ コレクションされた回数。|インスタンス|

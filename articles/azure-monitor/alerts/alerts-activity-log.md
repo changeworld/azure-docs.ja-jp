@@ -2,14 +2,13 @@
 title: Azure Monitor でアクティビティ ログ アラートを作成、表示、管理する
 description: Azure portal、Azure Resource Manager テンプレート、および Azure PowerShell を使用してアクティビティ ログ アラートを作成します。
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 83023cca6b034ee0e9acddfa081f09eb47b9fb1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 26ca755f6675fa19c3b122c3528e05d1e8d76845
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604775"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045532"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -26,7 +25,9 @@ ms.locfileid: "100604775"
 
 - スコープ内のサブスクリプションが、アラートが作成されているサブスクリプションと同じである。
 - 条件は、アラートが構成されているレベル/状態/呼び出し元/リソース グループ/リソース ID/リソースの種類/イベント カテゴリでなければならない。
-- アラート構成 JSON に、"anyOf" 条件や入れ子になった条件がない。 基本的に、1 つの "allOf" 条件のみ (追加の "allOf" 条件または "anyOf" 条件はない) が許可されます。
+- "allOf" 条件は 1 つだけ許可されます。
+- "AnyOf" を使用すると、複数のフィールドに対して複数の条件を許可できます (たとえば、"status" フィールドまたは "subStatus" フィールドのいずれかが特定の値と等しい場合など)。 "AnyOf" の使用は、現時点では ARM テンプレート デプロイを使用したアラート ルールの作成に限定されていることに注意してください。
+- "ContainsAny" を使用して、同じフィールドの複数の値を許可できます (たとえば、"operation" が "delete" または "modify" に等しいかどうか)。 "ContainsAny" の使用は、現時点では ARM テンプレート デプロイを使用したアラート ルールの作成に限定されていることに注意してください。
 - カテゴリが "管理" の場合、アラートに上記の条件を 1 つ以上指定する必要があります。 アクティビティ ログ内にイベントが作成されるたびにアクティブ化するアラートを作成することはできません。
 - アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することはできません。
 
@@ -92,7 +93,7 @@ Azure portal を使用して、アクティビティ ログ アラート ルー�
     - **説明**:新しいアラート ルールの説明。
     - **リソース グループにアラートを保存します**:この新しいルールを保存するリソース グループを選択します。
 
-5. **[アクション グループ]** のドロップダウン メニューから、この新しいアラート ルールに割り当てるアクション グループを指定します。 または、[新しいアクション グループを作成](../platform/action-groups.md)して、新しいルールに割り当てます。 新しいグループを作成するには、 **[+ 新しいグループ]** を選択します。
+5. **[アクション グループ]** のドロップダウン メニューから、この新しいアラート ルールに割り当てるアクション グループを指定します。 または、[新しいアクション グループを作成](./action-groups.md)して、新しいルールに割り当てます。 新しいグループを作成するには、 **[+ 新しいグループ]** を選択します。
 
 6. ルールを作成後に有効にするには、 **[ルールの作成時に有効にする]** オプションの **[はい]** を選択します。
 7. **[アラート ルールの作成]** を選択します。
@@ -287,6 +288,5 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 - [アクティビティ ログの Webhook スキーマ](./activity-log-alerts-webhook.md)について学習します。
 - [アクティビティ ログの概要](./activity-log-alerts.md)をお読みください。
-- [アクション グループ](../platform/action-groups.md)について学習します。  
+- [アクション グループ](./action-groups.md)について学習します。  
 - [サービス正常性の通知](../../service-health/service-notifications.md)について学習します。
-

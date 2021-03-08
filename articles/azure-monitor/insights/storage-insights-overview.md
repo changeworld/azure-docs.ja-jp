@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor for Storage で Azure Storage サービスを監視する | Microsoft Docs
 description: この記事では、ストレージ管理者が Azure Storage アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Storage の機能について説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 13c884d9f140fbd962bfa32ef2d853339aec325a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0baaca8df8865061b51f1629da14c3b18a527047
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587351"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708069"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Azure Monitor for Storage でストレージ サービスを監視する
 
@@ -85,7 +84,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 ## <a name="view-from-a-storage-account"></a>ストレージ アカウントから表示する
 
-ストレージ アカウントから直接 Azure Monitor for VMs にアクセスするには:
+ストレージ アカウントから VM インサイトに直接アクセスするには、次のようにします。
 
 1. Azure portal で [ストレージ アカウント] を選択します。
 

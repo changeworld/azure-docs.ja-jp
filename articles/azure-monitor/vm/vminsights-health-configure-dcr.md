@@ -1,31 +1,31 @@
 ---
-title: データ収集ルールを使用して Azure Monitor for VMs のゲストの正常性 (プレビュー) での監視を構成する
-description: Azure Monitor for VMs のゲストの正常性における既定の監視を、Resource Manager テンプレートを使用して大規模に変更する方法について説明します。
+title: データ収集ルールを使用して VM 分析情報のゲストの正常性での監視を構成する (プレビュー)
+description: VM 分析情報のゲストの正常性における既定の監視を、Resource Manager テンプレートを使用して大規模に変更する方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2001fece40267ca2e3256e699d2dc253ceb10f0c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731223"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>データ収集ルールを使用して Azure Monitor for VMs のゲストの正常性 (プレビュー) での監視を構成する
-[Azure Monitor for VMs のゲストの正常性](vminsights-health-overview.md)を使用すると、定期的にサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、データ収集ルールを使用して、複数の仮想マシンにわたって既定の監視を変更する方法について説明します。
+# <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>データ収集ルールを使用して VM 分析情報のゲストの正常性での監視を構成する (プレビュー)
+[VM 分析情報のゲストの正常性](vminsights-health-overview.md)を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、データ収集ルールを使用して、複数の仮想マシンにわたって既定の監視を変更する方法について説明します。
 
 
 ## <a name="monitors"></a>モニター
-仮想マシンの正常性状態は、そのモニターそれぞれからの[正常性のロールアップ](vminsights-health-overview.md#health-rollup-policy)によって決まります。 次の表に示すように、Azure Monitor for VMs のゲストの正常性には、2 種類のモニターがあります。
+仮想マシンの正常性状態は、そのモニターそれぞれからの[正常性のロールアップ](vminsights-health-overview.md#health-rollup-policy)によって決まります。 次の表に示すように、VM 分析情報のゲストの正常性には、2 種類のモニターがあります。
 
 | モニター | 説明 |
 |:---|:---|
 | ユニット モニター | リソースまたはアプリケーションの一部の側面を測定します。 パフォーマンス カウンターを調べて、リソースのパフォーマンスまたはその可用性を判断することなどが含まれます。 |
 | 集計モニター | 複数のモニターをグループ化して、1 つの集計された正常性状態を示します。 集計モニターには、1 つ以上のユニット モニターとその他の集計モニターを含めることができます。 |
 
-Azure Monitor for VMs のゲストの正常性とその構成で使用されるモニターのセットを、直接変更することはできません。 [オーバーライド](#overrides)を作成すると、それを通して既定の構成の動作を変更できます。 オーバーライドは、データ収集ルールで定義されます。 必要な監視構成を実現するために、それぞれが複数のオーバーライドを含むデータ収集ルールを複数作成することができます。
+VM 分析情報のゲストの正常性とその構成で使用されるモニターのセットを直接変更することはできません。 [オーバーライド](#overrides)を作成すると、それを通して既定の構成の動作を変更できます。 オーバーライドは、データ収集ルールで定義されます。 必要な監視構成を実現するために、それぞれが複数のオーバーライドを含むデータ収集ルールを複数作成することができます。
 
 ## <a name="monitor-properties"></a>モニターのプロパティ
 次の表では、各モニターに対して構成できるプロパティについて説明します。

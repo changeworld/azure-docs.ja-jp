@@ -4,19 +4,18 @@ description: 他の Azure 以外のシステムに Azure メトリック アラ�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 04/03/2017
-ms.subservice: alerts
-ms.openlocfilehash: 93b8a9935e1a26df5aa76ca45c890036589a48ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: 7ab719560320882a3a6569bff5df7d2e2cf0b747
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603579"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037559"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Monitor でクラシック メトリック アラートを使用して Webhook を呼び出す
 
 > [!WARNING]
-> この記事では、古いクラシック メトリック アラートの使用方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../platform/alerts-overview.md)がサポートされています。 パブリック クラウド ユーザーに対するクラシック アラートは[廃止](../platform/monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。
+> この記事では、古いクラシック メトリック アラートの使用方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 パブリック クラウド ユーザー向けの従来のアラートは [廃止](./monitoring-classic-retirement.md)されていますが、**2021 年 5 月 31 日** までは引き続き制限付きで使用できます。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
 >
 
 webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 SMS メッセージを送信するサービスへのアラートのルーティング、バグの記録、チャットやメッセージング サービスを使用したチームへの通知など、さまざまなアクションに対してアラートで webhook を使用できます。 
@@ -30,7 +29,7 @@ webhook URI を追加または更新するには、[Azure Portal](https://portal
 
 ![[アラート ルールの追加] ウィンドウ](./media/alerts-webhooks/Alertwebhook.png)
 
-また、[Azure PowerShell コマンドレット](../samples/powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](../samples/cli-samples.md#work-with-alerts)、または [Azure Monitor REST API](/rest/api/monitor/alertrules) を使用して、webhook URI にポストするアラートを構成することもできます。
+また、[Azure PowerShell コマンドレット](../powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](../cli-samples.md#work-with-alerts)、または [Azure Monitor REST API](/rest/api/monitor/alertrules) を使用して、webhook URI にポストするアラートを構成することもできます。
 
 ## <a name="authenticate-the-webhook"></a>webhook の認証
 webhook は、トークンベースの承認を使用して認証できます。 webhook URI は、トークン ID を使用して保存されます。 例: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

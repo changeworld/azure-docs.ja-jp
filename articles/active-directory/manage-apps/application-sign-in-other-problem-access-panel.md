@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5d314331059a96388f23cd43667fca20a689f167
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258848"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687626"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング
 
@@ -141,14 +141,15 @@ Web ベースのポータルであるマイ アプリを使用すると、Azure 
 7.  **[グループ]** を選択すると、ユーザーがメンバーになっているグループが表示されます。
 
 ### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>ユーザーに 999 個を超えるアプリ ロールの割り当てがあるかどうかを確認する
-ユーザーに割り当てられているアプリ ロールの割り当てが 999 個を超える場合、マイ アプリで自分のアプリの一部が表示されないことがあります。
+ユーザーに 999 個を超えるアプリ ロールの割り当てがある場合、それらのアプリの一部がマイ アプリに表示されないことがあります。
 
 これは、ユーザーが割り当てられているアプリを特定するために、マイ アプリでは現在、最大 999 個のアプリ ロールの割り当てが読み取られるためです。 ユーザーが 999 個を超えるアプリに割り当てられている場合、マイ アプリ ポータルに表示されるアプリを制御することはできません。
 
-ユーザーに付与されているアプリ ロールの割り当ての数を確認するには、次の手順に従います。
+ユーザーに 999 個を超えるアプリ ロールの割り当てがあるかどうかを確認するには、以下の手順に従います。
 1. [**Microsoft.Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell モジュールをインストールします。
-2. `Connect-MgGraph -Scopes "Directory.Read.All"` を実行し、**全体管理者** として認証します。
-3. `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` を実行して、ユーザーが現在付与されているアプリ ロールの割り当て数を確認します。
+2. `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"` を実行します。
+3. `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count` を実行して、ユーザーが現在付与されているアプリ ロールの割り当て数を確認します。
+4. 結果が 999 の場合、そのユーザーには 999 個を超えるアプリ ロールの割り当てがある可能性があります。
 
 ### <a name="check-a-users-assigned-licenses"></a>ユーザーに割り当てられているライセンスを確認する
 ユーザーに割り当てられているライセンスを確認するには、次の手順に従います。

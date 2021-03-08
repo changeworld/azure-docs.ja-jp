@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709089"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -372,6 +372,7 @@ SSH セッションへの接続に成功すると、ウィンドウ下部に "SS
 - [アプリが表示されない - 既定のアプリが表示される](#app-doesnt-appear)
 - [アプリが表示されない - "サービスを利用できません" というメッセージ](#service-unavailable)
 - [setup.py または requirements.txt が見つからない](#could-not-find-setuppy-or-requirementstxt)
+- [スタートアップ時の ModuleNotFoundError](#modulenotfounderror-when-app-starts)
 - [SSH セッションで、入力したパスワードが表示されない](#other-issues)
 - [SSH セッションで、コマンドが途切れたように表示される](#other-issues)
 - [Django アプリに静的資産が表示されない](#other-issues)
@@ -404,6 +405,10 @@ SSH セッションへの接続に成功すると、ウィンドウ下部に "SS
 - **ログ ストリームに "Could not find setup.py or requirements.txt; Not running pip install." (setup.py または requirements.txt が見つかりませんでした; pip install が実行されていません。) と表示される。** Oryx のビルド プロセスで、*requirements.txt* ファイルの検出が失敗しました。
 
     - [SSH](#open-ssh-session-in-browser) を介して Web アプリのコンテナーに接続し、*requirements.txt* が正しい名前になっていることと *site/wwwroot* の直下に存在することを確認します。 存在しない場合は、ファイルが自分のリポジトリに存在していて、自分のデプロイに含まれている場所を作ります。 別のフォルダーに存在する場合は、それをルートに移動させてください。
+
+#### <a name="modulenotfounderror-when-app-starts"></a>アプリ起動時の ModuleNotFoundError
+
+`ModuleNotFoundError: No module named 'example'` のようなエラーが表示される場合、これは Python の起動時に 1 つ以上のモジュールが見つからなかったことを意味します。 これは、コードを使用して仮想環境をデプロイする場合によく発生します。 仮想環境は移植可能ではないため、アプリケーション コードを使用して仮想環境をデプロイしないでください。 代わりに、Oryx を使用して仮想環境を作成し、アプリ設定 `SCM_DO_BUILD_DURING_DEPLOYMENT` を作成し、それを `1` に設定して、Web アプリにパッケージをインストールします。 こうすることで、App Service にデプロイするたびに、Oryx によってパッケージが強制的にインストールされます。 詳細については、[仮想環境の移植性に関するこの記事](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html)を参照してください。
 
 #### <a name="other-issues"></a>その他の問題
 

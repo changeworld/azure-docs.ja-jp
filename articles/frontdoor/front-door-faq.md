@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: e28c995a0fb574f2e7319f8ee540f49d1bbed4dd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656905"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741856"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -97,9 +97,9 @@ Front Door のルートには順序はなく、特定のルートは最適な一
     > [!WARNING]
     > Front Door のバックエンド IP 空間は後で変更される可能性があります。ただし Microsoft はその前に、[Azure IP 範囲およびサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合が確実に行われるようにします。 変更または更新について知るために、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をサブスクライブすることをお勧めします。
 
--    API バージョン `2020-01-01` 以降を使用して、Front Door で GET 操作を実行します。 API 呼び出しで、`frontdoorID` フィールドを探します。 Front Door からバックエンドに送信された受信ヘッダー "**X-Azure-FDID**" を、フィールド `frontdoorID` の値でフィルター処理します。 `Front Door ID` の値は、Front Door ポータル ページの [概要] セクションでも確認できます。 
+- Front Door ポータル ページの [概要] セクションで、`Front Door ID` の値を探します。 その後、その値を使って、Front Door からバックエンドに送信された受信ヘッダー "**X-Azure FDID**" をフィルター処理することで、独自の Front Door インスタンスのみが許可されていることを確認できます (上記の IP 範囲は、他のお客様の他の Front Door インスタンスと共有されているため)。
 
-- バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。
+- バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。 Azure App Service のような一部のサービスでは、アプリケーションやホストを変更することなく、この[ヘッダーベースのフィルター処理](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview)機能が提供されることに注意してください。
 
   [Microsoft インターネット インフォメーション サービス (IIS)](https://www.iis.net/) の例を次に示します。
 

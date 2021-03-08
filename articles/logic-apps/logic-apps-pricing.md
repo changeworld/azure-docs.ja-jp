@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699030"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Azure Logic Apps の価格および課金モデル
 
@@ -94,7 +94,9 @@ ms.locfileid: "100372010"
 
 ## <a name="integration-accounts"></a>統合アカウント
 
-[統合アカウント](../logic-apps/logic-apps-pricing.md#integration-accounts)は、[EDI](logic-apps-enterprise-integration-b2b.md) および [XML 処理](logic-apps-enterprise-integration-xml.md)の機能を使用する B2B 統合ソリューションを探索、構築、テストできるよう、作成してロジック アプリにリンクする独立したリソースです。 Azure Logic Apps では、以下の統合アカウント レベルが提供されます。
+[統合アカウント](../logic-apps/logic-apps-pricing.md#integration-accounts)は、[EDI](logic-apps-enterprise-integration-b2b.md) および [XML 処理](logic-apps-enterprise-integration-xml.md)の機能を使用する B2B 統合ソリューションを探索、構築、テストできるよう、作成してロジック アプリにリンクする独立したリソースです。
+
+Azure Logic Apps では、ロジック アプリが使用量ベースであるか ISE ベースであるかに基づいて、[価格](https://azure.microsoft.com/pricing/details/logic-apps/)と[課金モデル](logic-apps-pricing.md#integration-accounts)によって異なる統合アカウント レベルまたは階層が提供されています。
 
 | レベル | 説明 |
 |------|-------------|

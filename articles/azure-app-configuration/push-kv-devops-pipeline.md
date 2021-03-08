@@ -5,14 +5,14 @@ services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979608"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718184"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -80,7 +80,7 @@ App Configuration Push タスクによって、次のパラメーターが使用
 
 - **Azure サブスクリプション**:利用可能な Azure サービス接続を含むドロップダウン。 利用可能な Azure サービス接続の一覧を最新の情報に更新するには、テキストボックスの右側にある **[Azure サブスクリプションの更新]** ボタンを押します。
 - **App Configuration の名前**: 選択したサブスクリプションで利用可能な Configuration ストアが読み込まれるドロップダウン。 利用可能な Configuration ストアの一覧を最新の情報に更新するには、テキストボックスの右側にある **[App Configuration 名の更新]** ボタンを押します。
-- **構成ファイルのパス**: 構成ファイルへのパス。 ビルド成果物を参照して、構成ファイルを選択することができます (テキストボックスの右側にある `...` ボタン)。
+- **構成ファイルのパス**: 構成ファイルへのパス。 ビルド成果物を参照して、構成ファイルを選択することができます (テキストボックスの右側にある `...` ボタン)。 サポートされているファイル形式は、yaml、json、properties です。
 - **区切り記号**: .json および .yml ファイルをフラット化するために使用する区切り記号。
 - **深さ**: .json および .yml ファイルをフラット化する深さ。
 - **プレフィックス**: App Configuration ストアにプッシュされる各キーの先頭に追加される文字列。

@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor for containers でメトリックをリアルタイムで表示する | Microsoft Docs
-description: この記事では、Azure Monitor for containers でメトリックを kubectl を使用せずにリアルタイムで表示する方法について説明します。
+title: Container insights を使用してメトリックをリアルタイムで表示する | Microsoft Docs
+description: この記事では、Container insights で kubectl を使用せずにメトリックをリアルタイムで表示する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601219"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731852"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>メトリックをリアルタイムで表示する方法
 
-Azure Monitor for containers のライブ データ (プレビュー) 機能を使用すると、クラスター内のノードとポッドの状態に関するメトリックをリアルタイムで視覚化することができます。 `kubectl top nodes`、`kubectl get pods –all-namespaces`、`kubectl get nodes` コマンドへの直接アクセスがエミュレートされ、この分析情報に含まれるパフォーマンス グラフのデータの呼び出し、解析、視覚化が行われます。
+Container insights のライブ データ (プレビュー) 機能を使用すると、クラスター内のノードとポッドの状態に関するメトリックをリアルタイムで視覚化することができます。 `kubectl top nodes`、`kubectl get pods –all-namespaces`、`kubectl get nodes` コマンドへの直接アクセスがエミュレートされ、この分析情報に含まれるパフォーマンス グラフのデータの呼び出し、解析、視覚化が行われます。
 
 この記事では、この機能の使用方法について詳しく説明します。
 
@@ -26,7 +26,7 @@ Azure Monitor for containers のライブ データ (プレビュー) 機能を�
 
 Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスします。認証モデルの詳細については、[こちら](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)を参照してください。
 
-この機能は、メトリック エンドポイント (`/api/v1/nodes`、`/apis/metrics.k8s.io/v1beta1/nodes`、`/api/v1/pods` など) に対してポーリング操作を実行します。これは、既定では 5 秒ごとに実行されます。 このデータはブラウザーにキャッシュされ、Azure Monitor for containers で **[ライブに移動 (プレビュー)]** を選択すると **[クラスター]** タブに表示される 4 つのパフォーマンス グラフにグラフ化されます。 後続の各ポーリングは、5 分間のローリング視覚化ウィンドウにグラフ化されます。
+この機能は、メトリック エンドポイント (`/api/v1/nodes`、`/apis/metrics.k8s.io/v1beta1/nodes`、`/api/v1/pods` など) に対してポーリング操作を実行します。これは、既定では 5 秒ごとに実行されます。 このデータはブラウザーにキャッシュされ、Container insights で **[ライブに移動 (プレビュー)]** を選択すると **[クラスター]** タブに表示される 4 つのパフォーマンス グラフにグラフ化されます。 後続の各ポーリングは、5 分間のローリング視覚化ウィンドウにグラフ化されます。
 
 ![クラスター ビューでの [ライブに移動] オプション](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 

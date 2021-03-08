@@ -1,6 +1,6 @@
 ---
-title: Azure Arc で Azure Database for PostgreSQL Hyperscale サーバー グループを作成する
-description: Azure Arc で Azure Database for PostgreSQL Hyperscale サーバー グループを作成する
+title: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
+description: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 4ff45eea8e07a282d8529c745344c11706bc27bb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 046f9d80c034e1ac1f2e7ffe144b4f389861b043
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387990"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687942"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -25,14 +25,14 @@ ms.locfileid: "100387990"
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="getting-started"></a>作業の開始
-次のトピックについて既によく理解している場合は、この段落をスキップしてください。
+下記のトピックについて既によく理解している場合は、この段落をスキップしてください。
 作成に進む前に、次のような重要なトピックを参照してください。
 - [Azure Arc 対応データ サービスの概要](overview.md)
 - [接続モードと要件](connectivity.md)
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)
 - [Kubernetes リソース モデル](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 
-お客様自身で完全な環境をプロビジョニングせずに使ってみたい場合は、Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
+お客様自身で完全な環境をプロビジョニングせずに試してみることを希望する場合は、Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
 
 
 ## <a name="login-to-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーにログインする
@@ -55,51 +55,95 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 ```
 
 ## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>OpenShift ユーザー専用の暫定的および一時的な手順
+この手順を実装してから、次の手順に進んでください。 既定以外のプロジェクトで PostgreSQL Hyperscale サーバー グループを Red Hat OpenShift にデプロイするには、クラスターに対して次のコマンドを実行して、セキュリティ制約を更新する必要があります。 このコマンドでは、PostgreSQL Hyperscale サーバー グループを実行するサービス アカウントに必要な特権が付与されます。 arc-data-scc というセキュリティ コンテキスト制約 (SCC) は、Azure Arc データ コントローラーのデプロイ時に追加したものです。
 
-この手順を実装してから、次の手順に進んでください。 既定以外のプロジェクトで PostgreSQL Hyperscale サーバー グループを Red Hat OpenShift にデプロイするには、クラスターに対して次のコマンドを実行して、セキュリティ制約を更新する必要があります。 このコマンドでは、PostgreSQL Hyperscale サーバー グループを実行するサービス アカウントに必要な特権が付与されます。 **_arc-data-scc_** というセキュリティ コンテキスト制約 (SCC) は、Azure Arc データ コントローラーのデプロイ時に追加したものです。
-
-```console
+```Console
 oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
-_**Server-group-name** は、次の手順で作成するサーバー グループの名前です。_
-   
-OpenShift の SCC の詳細については、[OpenShift のドキュメント](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)を参照してください。
-この時点で、次の手順を実装できます。
+**Server-group-name は、次の手順で作成するサーバー グループの名前です。**
 
-## <a name="create-an-azure-database-for-postgresql-hyperscale-server-group"></a>Azure Database for PostgreSQL Hyperscale サーバー グループを作成する
+OpenShift の SCC の詳細については、[OpenShift のドキュメント](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)を参照してください。 この時点で、次の手順を実装できます。
 
-Azure Arc で Azure Database for PostgreSQL Hyperscale サーバー グループを作成するには、次のコマンドを使用します。
+
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
+
+Arc データ コントローラーで Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成するには、いくつかのパラメーターを渡す `azdata arc postgres server create` コマンドを使用します。
+
+作成時に設定できるすべてのパラメーターの詳細については、コマンドの出力を確認してください。
+```console
+azdata arc postgres server create --help
+```
+
+検討する必要がある主なパラメーターは以下のとおりです。
+- デプロイしようとしている **サーバー グループの名前**。 `--name` または `-n` の後に名前を指定します。この名前は 11 文字以下にする必要があります。
+
+- デプロイしようとしている **PostgreSQL エンジンのバージョン**: 既定ではバージョン 12 です。 バージョン 12 をデプロイするには、このパラメーターを省略するか、パラメーターとして `--engine-version 12` または `-ev 12` のいずれかを渡します。 バージョン 11 をデプロイするには、`--engine-version 11` または `-ev 11` を指定します。
+
+- スケールアウトによるパフォーマンスの向上を目的としてデプロイしようとしている **ワーカー ノードの数**。 ここに進む前に、[Postgres Hyperscale の概念](concepts-distributed-postgres-hyperscale.md)に関するページを参照してください。 デプロイするワーカー ノードの数を指定するには、パラメーター `--workers` または `-w` を使用し、その後に 2 以上の整数を指定します。 たとえば、2 つのワーカー ノードを含むサーバー グループをデプロイする場合は、`--workers 2` または `-w 2` を指定します。 これで 3 つのポッドが作成されます。1 つはコーディネーター ノード/インスタンス用、2 つはワーカー ノード/インスタンス用です (各ワーカーに 1 つ)。
+
+- サーバー グループで使おうとしている **ストレージ クラス**。 ストレージ クラスはデプロイ後に変更することはできないため、サーバー グループをデプロイする時点で設定することが重要です。 もしデプロイ後にストレージ クラスを変更するとすれば、データの抽出、サーバー グループの削除、新しいサーバー グループの作成、データのインポートが必要になります。 データ、ログ、バックアップ用に使用するストレージ クラスを指定することもできます。 既定では、ストレージ クラスを指定しない場合、データ コントローラーのストレージ クラスが使用されます。
+    - データ用のストレージ クラスを設定するには、パラメーター `--storage-class-data` または `-scd` を指定し、その後にストレージ クラスの名前を指定します。
+    - ログ用のストレージ クラスを設定するには、パラメーター `--storage-class-logs` または `-scl` を指定し、その後にストレージ クラスの名前を指定します。
+    - バックアップ用のストレージ クラスを設定するには: Azure Arc 対応 PostgreSQL Hyperscale のこのプレビューでは、実行しようとしているバックアップ/復元操作の種類に応じて、ストレージ クラスを設定する方法が 2 つあります。 Microsoft は、このエクスペリエンスの簡素化に取り組んでいます。 ストレージ クラスまたはボリューム要求マウントのいずれかを指定します。 ボリューム要求マウントは、(同じ名前空間内の) 既存の永続的ボリューム要求と、コロンで区切られたボリュームの種類 (およびボリュームの種類に応じたオプションのメタデータ) のペアです。 永続的ボリュームは、PostgreSQL サーバー グループの各ポッドにマウントされます。
+        - 実行する予定があるのはデータベースの完全復元だけである場合は、パラメーター `--storage-class-backups` または `-scb` を設定し、その後にストレージ クラスの名前を指定します。
+        - データベースの完全復元とポイントインタイム リストアの両方を行う予定の場合は、パラメーター `--volume-claim-mounts` または `-vcm` を設定し、その後にボリューム要求の名前とボリュームの種類を指定します。
+
+作成コマンドを実行すると、既定の `postgres` 管理ユーザーのパスワードを入力するよう求められ ます。 そのユーザーの名前は、このプレビューでは変更できません。 作成コマンドを実行する前に `AZDATA_PASSWORD` セッション環境変数を設定すると、対話型プロンプトをスキップすることができます。
+
+### <a name="examples"></a>例
+
+**データ コントローラーと同じストレージ クラスを使用する 2 つのワーカー ノードが含まれる、postgres01 という名前の Postgres バージョン 12 のサーバー グループをデプロイするには、次のコマンドを実行します。**
+```console
+azdata arc postgres server create -n postgres01 --workers 2
+```
+
+**データとログのためのデータ コントローラーと同じストレージ クラスを使用する 2 つのワーカー ノードが含まれる、postgres01 という名前の Postgres バージョン 12 のサーバーグループをデプロイするには、以下の手順を実行します。**
+
+ この例は、お使いのサーバー グループが Azure Kubernetes Service (AKS) クラスターでホストされていることを前提としています。 この例では、ストレージ クラス名として azurefile-premium を使用します。 次の例を実際の環境に合わせて調整してもかまいません。 この構成には、**accessModes として ReadWriteMany が必要** であることに注意してください。  
+
+まず、以下のバックアップ PVC の説明を含む YAML ファイルを作成し、たとえば CreateBackupPVC.yml という名前を付けます。
+```console
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-pvc
+  namespace: arc
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: azurefile-premium
+```
+
+次に、YAML ファイルに格納されている定義を使用して PVC を作成します。
 
 ```console
-azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+kubectl create -f e:\CreateBackupPVC.yml -n arc
+``` 
 
-#Example
-#azdata arc postgres server create -n postgres01 --workers 2
+次に、サーバー グループを作成します。
+
+```console
+azdata arc postgres server create -n postgres01 --workers 2 -vcm backup-pvc:backup
 ```
 
 > [!IMPORTANT]
-> - バックアップに使用するストレージ クラス ( _--storage-class-backups -scb_) は、データ コントローラーのデータ ストレージ クラスに既定で設定されます (設定されていない場合)。
-> - サーバー グループを個別のサーバー グループに復元するには (ポイントインタイム リストアなど)、ReadWriteMany アクセス モードで PVC を使用するようにサーバー グループを構成する必要があります。 この操作は、サーバー グループの作成時に行う必要があります。 作成後にそれを変更することはできません。 詳細については、以下を参照してください。
->    - [バックアップと復元の準備ができているサーバー グループを作成する](backup-restore-postgresql-hyperscale.md#create-a-server-group-that-is-ready-for-backups-and-restores)
->    - [Azure Arc 対応 PostgreSQL Hyperscale の制限事項](limitations-postgresql-hyperscale.md)
+> - [バックアップ/復元に関連する現在の制限事項](limitations-postgresql-hyperscale.md#backup-and-restore)をお読みください。
 
 
-> [!NOTE]
-> - **他のコマンドライン パラメーターも使用できます。`azdata arc postgres server create --help` を実行して、オプションの完全なリストを確認してください。**
->
-> - --volume-size-* パラメーターで使用できる単位は、Kubernetes リソースの数量 (後に SI サフィックス (T、G、M、K、M) または 2 のべき乗の同等物 (Ti、Gi、Mi、Ki) のいずれかが続く整数) です。
-> - 名前は、12 文字以下の長さで入力し、DNS 名前付け規則に準拠している必要があります。
-> - _postgres_ という標準管理ユーザーのパスワードを入力するように求められます。  create コマンドを実行する前に、`AZDATA_PASSWORD` セッション環境変数を設定すると、対話型プロンプトをスキップできます。
-> - 同じターミナル セッションで AZDATA_USERNAME および AZDATA_PASSWORD セッション環境変数を使用してデータ コントローラーをデプロイした場合は、PostgreSQL Hyperscale サーバー グループをデプロイするために AZDATA_PASSWORD の値も使用されます。 別のパスワードを使用する場合は、(1) AZDATA_PASSWORD の値を更新します。または、(2) AZDATA_PASSWORD 環境変数またはその値を削除すると、サーバー グループを作成するときに対話形式でパスワードの入力を求められます。
-> - PostgreSQL Hyperscale データベース エンジンの既定の管理者ユーザーの名前は _postgres_ であり、この時点では変更できません。
+> [!NOTE]  
+> - 同じターミナル セッションで `AZDATA_USERNAME` および `AZDATA_PASSWORD` セッション環境変数を使用してデータ コントローラーをデプロイした場合は、PostgreSQL Hyperscale サーバー グループをデプロイするために `AZDATA_PASSWORD` の値も使用されます。 別のパスワードを使用する場合は、(1) `AZDATA_PASSWORD` の値を更新するか、(2) `AZDATA_PASSWORD` 環境変数を削除するか、(3) その値を削除すると、サーバー グループを作成するときに対話形式でパスワードの入力を求められます。
 > - PostgreSQL Hyperscale サーバー グループを作成しても、リソースはすぐに Azure に登録されません。 [リソース インベントリ](upload-metrics-and-logs-to-azure-monitor.md)または[利用状況データ](view-billing-data-in-azure.md)を Azure にアップロードするプロセスの一環として、Azure でリソースが作成され、そのリソースを Azure portal で確認できるようになります。
 
 
 
-## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>Arc のセットアップ時に作成された Azure Database for PostgreSQL サーバー グループを一覧表示する
+## <a name="list-the-postgresql-hyperscale-server-groups-deployed-in-your-arc-data-controller"></a>Arc データ コントローラーにデプロイされている PostgreSQL Hyperscale サーバー グループを一覧表示する
 
-Azure Arc で PostgreSQL Hyperscale サーバー グループを表示するには、次のコマンドを使用します。
+Arc データ コントローラーにデプロイされている PostgreSQL Hyperscale サーバー グループを一覧表示するには、次のコマンドを実行します。
 
 ```console
 azdata arc postgres server list
@@ -112,9 +156,9 @@ Name        State     Workers
 postgres01  Ready     2
 ```
 
-## <a name="get-the-endpoints-to-connect-to-your-azure-database-for-postgresql-server-groups"></a>Azure Database for PostgreSQL サーバー グループに接続するエンドポイントを取得する
+## <a name="get-the-endpoints-to-connect-to-your-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループに接続するためのエンドポイントを取得する
 
-PostgreSQL インスタンスのエンドポイントを表示するには、次のコマンドを実行します。
+PostgreSQL サーバー グループのエンドポイントを表示するには、次のコマンドを実行します。
 
 ```console
 azdata arc postgres endpoint list -n <server group name>
@@ -137,9 +181,7 @@ azdata arc postgres endpoint list -n <server group name>
 ]
 ```
 
-PostgreSQL インスタンスのエンドポイントを使用すると、お気に入りのツールから PostgreSQL Hyperscale サーバー グループに接続できます ([Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、[pgcli](https://www.pgcli.com/) psql、pgAdmin など)。
-
-Azure VM を使用してテストしている場合は、次の手順に従います。
+PostgreSQL インスタンスのエンドポイントを使用すると、[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、[pgcli](https://www.pgcli.com/) psql、pgAdmin などのお気に入りのツールから、PostgreSQL Hyperscale サーバー グループに接続できます。そうするときには、分散テーブルを作成済みの場合はクエリが適切なワーカー ノード/インスタンスにルーティングされるよう処理するコーディネーター ノード/インスタンスに接続します。 詳細については、[Azure Arc 対応 PostgreSQL Hyperscale の概念](concepts-distributed-postgres-hyperscale.md)に関するページを参照してください。
 
 ## <a name="special-note-about-azure-virtual-machine-deployments"></a>Azure 仮想マシンのデプロイに関する特別な注意事項
 
@@ -192,7 +234,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
 ## <a name="next-steps"></a>次のステップ
 
-- 複数の PostgreSQL Hyperscale ノードにデータを分散し、Azure Database for PostgreSQL Hyperscale のすべての利点を活用するために、Azure Database for PostgreSQL Hyperscale の概念と使い方に関するガイドを参照してください。 :
+- 複数の PostgreSQL Hyperscale ノードにわたってデータを分散させ、パフォーマンス向上の可能性があるという利点を得るため、Azure Database for PostgreSQL Hyperscale の概念と使い方に関するガイドを参照してください。
     * [ノードとテーブル](../../postgresql/concepts-hyperscale-nodes.md)
     * [アプリケーションの種類の決定](../../postgresql/concepts-hyperscale-app-type.md)
     * [ディストリビューション列の選択](../../postgresql/concepts-hyperscale-choose-distribution-column.md)
@@ -203,7 +245,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
     > \*上記のドキュメントの「**Azure portal にサインインする**」と「**Azure Database for PostgreSQL - Hyperscale (Citus) を作成する**」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
-- [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
+- [Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)
 - [永続ボリューム要求の拡張](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes リソース モデル](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

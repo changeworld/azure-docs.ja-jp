@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: de85c4f8cdcd9781345ee1488549aab23e38ec5c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678145"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098028"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する
 
@@ -24,30 +24,11 @@ ms.locfileid: "101678145"
 
 - Azure Percept DK (開発キット)
 - Azure Percept Audio
-- スピーカーまたはヘッドホン (省略可)
+- 3\.5 mm オーディオ ジャックに接続できるスピーカーまたはヘッドホン (オプション)
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)
 - [Azure Percept DK セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md): 開発キットを Wi-Fi ネットワークに接続し、IoT ハブを作成して、開発キットを IoT ハブに接続済みであること
+- [Azure Percept Audio の設定](./quickstart-percept-audio-setup.md)
 
-## <a name="device-setup"></a>デバイスのセットアップ
-
-1. (省略可) Audio SoM にヘッドホン ジャック ("Line Out") を介してスピーカーまたはヘッドホンを接続します。 これによって音声アシスタントの音声応答を聴くことができます。 スピーカーやヘッドホンを接続していなくても、応答はテキストとしてデモ ウィンドウに表示されます。
-
-1. 同梱されている USB-A to micro B ケーブルを使用して、開発キットのキャリア ボードに Audio SoM を接続します。
-
-1. 開発キットの電源をオンにします。
-
-    - Audio SoM の LED L01 が緑色 (点灯) に変わり、デバイスの電源が投入されたことがわかります。
-    - LED L02 が緑色 (点滅) に変わり、Audio SoM が認証中であることがわかります。
-
-1. 認証プロセスが完了するまで待機します。これには最大 3 分かかることがあります。
-
-1. 次のいずれかが確認できたら、次のセクションに進みます。
-
-    - LED L01 がオフになり、L02 が白色に変わった。 認証は完了しましたが、キーワードを使用した開発キットの構成はまだ済んでいません。
-    - 3 つの LED がすべて青色に変わった。 認証が完了し、キーワードを使用した開発キットの構成も済んでいます。
-
-    > [!NOTE]
-    > 開発キットが認証されない場合は、サポートにお問い合わせください。
 
 ## <a name="create-a-voice-assistant-using-an-available-template"></a>提供されているテンプレートを使用して音声アシスタントを作成する
 
@@ -119,6 +100,7 @@ Automotive (自動車) デモには、対話的に操作可能な仮想シート
 * "Set temperature to X degrees. (温度を X 度に設定して)" (X は 75 など、目的の温度です。)
 * "Increase/decrease the temperature by Y degrees. (温度を Y 度上げて、温度を Y 度下げて)"
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="Automotive (自動車) デモ ウィンドウのスクリーンショット。":::
 
 ### <a name="inventory-demo-commands"></a>Inventory (在庫) デモのコマンド
@@ -131,19 +113,30 @@ Inventory (在庫) デモには、仮想在庫アプリと共に、対話的に�
 * "Count Y boxes. (Y 色の箱を数えて)" (Y は黄など、箱の色です。)
 * "Ship everything in stock. (在庫に残っているものをすべて出荷して)"
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="Inventory (在庫) デモ ウィンドウのスクリーンショット。":::
 
 ## <a name="configure-your-keyword"></a>キーワードを構成する
 
-キーワードを変更するには、デモ ウィンドウの **[Custom Keyword]\(カスタム キーワード\)** の横にある **[change]\(変更\)** をクリックします。 対象となるいずれかのキーワードを選択し、 **[Save]\(保存\)** をクリックします。 あらかじめ作成されている一連のキーワードと自分で作成したカスタム キーワードの中から選択できます。
+音声アシスタント アプリケーション用にキーワードをカスタマイズできます。
 
-:::image type="content" source="./media/tutorial-no-code-speech/change-keyword.png" alt-text="使用可能な一連のキーワードのスクリーンショット。":::
+1. デモ ウィンドウの **[カスタム キーワード]** の横にある **[変更]** をクリックします。
+
+1. 使用可能なキーワードの 1 つを選択します。 一連のサンプル キーワードと、自分で作成したカスタム キーワードの中から選択できます。
+
+1. **[保存]** をクリックします。
 
 ### <a name="create-a-custom-keyword"></a>カスタム キーワードを作成する
 
-カスタム キーワードを作成するには、デモ ウィンドウの上部近くにある **[+ Create Custom Keyword]\(+ カスタム キーワードの作成\)** をクリックします。 目的のキーワード (1 つの単語または短いフレーズ) を入力し、 **[Speech resource]\(音声リソース\)** (デモ ウィンドウの **[Custom Command]\(カスタム コマンド\)** の横に一覧表示され、アプリケーションのプレフィックスが含まれます) を選択して、 **[Save]\(保存\)** をクリックします。 カスタム キーワードのトレーニングは、ほんの数秒で完了します。
+音声アプリケーション用に独自のキーワードを作成できます。 カスタム キーワードのトレーニングは、わずか数分で完了します。
 
-:::image type="content" source="./media/tutorial-no-code-speech/custom-keyword.png" alt-text="カスタム キーワードの作成ウィンドウのスクリーンショット。":::
+1. デモ ウィンドウの上部の近くの **[カスタム キーワードの作成]** をクリックします。 
+
+1. 目的のキーワードを入力します。1 つの単語または短い語句を指定できます。
+
+1. **[音声リソース]** (これは、デモ ウィンドウの **[カスタム コマンド]** の横に一覧表示され、アプリケーションのプレフィックスを含みます) を選択します。
+
+1. **[保存]** をクリックします。 
 
 ## <a name="create-a-custom-command"></a>カスタム コマンドを作成する
 
@@ -185,13 +178,13 @@ Inventory (在庫) デモには、仮想在庫アプリと共に、対話的に�
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>音声アシスタントは作成されましたが、コマンドに応答しません
 
-Audio SoM の LED ライトを確認してください。
+インターポーザー ボードの LED ライトを確認してください。
 
 * 青色の 3 つのライトが点灯状態である場合、音声アシスタントの準備が完了し、キーワードを待機していることを示します。
 * 中心の LED (L02) が白色である場合、開発キットの初期化は完了していますが、キーワードを使用した構成が必要です。
-* 緑色のライトの任意の組み合わせは、Audio SoM の初期化がまだ完了していないことを示します。 初期化は、完了までに数分かかる場合があります。
+* 中央の LED (L02) が白色で点滅している場合、Audio SoM はまだ初期化を完了していません。 初期化は、完了までに数分かかる場合があります。
 
-Audio SoM LED インジケーターの詳細については、LED に関する記事を参照してください。
+LED インジケーターの詳細については、[LED に関する記事](./audio-button-led-behavior.md)を参照してください。
 
 ### <a name="voice-assistant-does-not-respond-to-a-custom-keyword-created-in-speech-studio"></a>Speech Studio で作成したカスタムキーワードに音声アシスタントが応答しません
 
@@ -207,22 +200,20 @@ Audio SoM LED インジケーターの詳細については、LED に関する�
 
 1. 音声モジュールのバージョンを確認します。 更新プログラムが利用可能な場合は、バージョン番号の横に **[Update]\(更新\)** ボタンが表示されます。
 
-    :::image type="content" source="./media/tutorial-no-code-speech/devkit.png" alt-text="開発キットの音声設定ウィンドウのスクリーンショット。":::
-
 1. **[Update]\(更新\)** をクリックして、音声モジュールの更新プログラムをデプロイします。 通常、更新プロセスは、完了までに 2 分から 3 分かかります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 音声アシスタント アプリケーションの作業が完了したら、次の手順に従って、このチュートリアルでデプロイした音声リソースをクリーンアップしてください。
 
-1. [Azure portal](https://ms.portal.azure.com/#home) の左側のメニュー パネルから **[リソース グループ]** を選択するか、検索バーにそのように入力します。
+1. [Azure portal](https://portal.azure.com) の左側のメニュー パネルから **[リソース グループ]** を選択するか、検索バーにそのように入力します。
 
     :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="左側のメニュー パネルとリソース グループが表示されている Azure portal ホームページのスクリーンショット。":::
 
 1. リソース グループを選択します。
 
 1. アプリケーションのプレフィックスが含まれている 6 つのリソースをすべて選択し、上部のメニュー パネルにある **[削除]** アイコンをクリックします。
-
+\
     :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="削除対象として選択された音声リソースのスクリーンショット。":::
 
 1. 削除を確定するには、確認ボックスに「**yes**」と入力し、正しいリソースが選択されていることを確認して、 **[削除]** をクリックします。

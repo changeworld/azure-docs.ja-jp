@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 54d4f1fe983cf20b734351754bb8eba191894dbc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678126"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097909"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Azure Percept Studio でコードなしのビジョン ソリューションを作成する
 
@@ -23,6 +23,7 @@ Azure Percept Studio では、コーディングを必要とせずに、カス�
 - [Custom Vision](https://www.customvision.ai/) でトレーニング画像にラベルを付ける
 - カスタム物体検出または分類モデルをトレーニングする
 - 自分のモデルを開発キットにデプロイする
+- 再トレーニングを設定してモデルを改善する
 
 このチュートリアルは、AI の実務経験が少ないまたはない開発者や、Azure Percept の使用を開始したばかりの方に適しています。
 
@@ -30,15 +31,13 @@ Azure Percept Studio では、コーディングを必要とせずに、カス�
 
 - Azure Percept DK (開発キット)
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)
-- Out-Of-Box Experience (OOBE): 自分の開発キットを Wi-Fi ネットワークに接続し、IoT ハブを作成して、開発キットを IoT ハブに接続済みであること
+- Azure Percept DK セットアップ エクスペリエンス: 開発キットを Wi-Fi ネットワークに接続し、IoT ハブを作成して、開発キットを IoT ハブに接続済みであること
 
 ## <a name="create-a-vision-prototype"></a>ビジョン プロトタイプの作成
 
 1. ブラウザーを起動し、[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) に移動します。
 
-1. 概要ページで **[Demos & tutorials]\(デモとチュートリアル\)** タブをクリックします。
-
-    :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Azure Percept Studio の概要画面。" lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
+1. [概要] ページで **[デモ & チュートリアル** ] タブをクリックします。  :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Azure Percept Studio の概要画面。" lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
 
 1. **[Vision tutorials and demos]\(ビジョンのチュートリアルとデモ\)** で **[Create a vision prototype]\(ビジョン プロトタイプの作成\)** をクリックします。
 
@@ -142,11 +141,23 @@ Azure Percept Studio では、コーディングを必要とせずに、カス�
 
 :::image type="content" source="./media/tutorial-nocode-vision/vision-project-inline.png" alt-text="ビジョン プロジェクトのページ。" lightbox="./media/tutorial-nocode-vision/vision-project.png":::
 
+## <a name="improve-your-model-by-setting-up-retraining"></a>再トレーニングを設定してモデルを改善する
+
+モデルのトレーニングとデバイスへのデプロイが完了したら、再トレーニングのパラメーターを設定して、より多くのトレーニング データをキャプチャすることで、モデルのパフォーマンスを向上させることができます。 この機能は、確率範囲に基づいて画像をキャプチャできるようにして、トレーニング済みのモデルのパフォーマンスを向上させるために使用されます。 たとえば、確率が低い場合にのみトレーニング画像をキャプチャするようにデバイスを設定できます。 画像の追加とトレーニング データのバランスに関する[その他のガイダンス](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)を次に示します。
+
+1. 再トレーニングを設定するには、 **[プロジェクト]** に戻り、 **[プロジェクトの概要]** に戻ります。
+1. **[画像キャプチャ]** タブで、 **[自動画像キャプチャ]** と **[再トレーニングの設定]** を選択します。
+1. **[自動画像キャプチャ]** チェック ボックスをオンにすることで、自動画像キャプチャを設定して一度に大量の画像を収集します。
+1. **[Capture rate]\(キャプチャ レート\)** で希望する画像化レートを、 **[ターゲット]** で収集したい画像の総数を選択します。
+1. **[再トレーニングの設定]** セクションで、トレーニング データをさらにキャプチャするイテレーションを選択し、次に確率範囲を選択します。 確率レートを満たす画像のみがプロジェクトにアップロードされます。
+
+    :::image type="content" source="./media/tutorial-nocode-vision/vision-image-capture.png" alt-text="画像のキャプチャ。":::
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで新しい Azure リソースを作成したものの、今後自分のビジョン ソリューションを開発したり使用したりするつもりがない場合は、次の手順に従ってリソースを削除してください。
 
-1. [Azure ポータル](https://ms.portal.azure.com/#home)にアクセスします。
+1. [Azure ポータル](https://ms.portal.azure.com/)にアクセスします。
 1. **[すべてのリソース]** をクリックします。
 1. このチュートリアルで作成したリソースの横にあるチェック ボックスをオンにします。 リソースの種類は **[Cognitive Services]** として表示されます。
 1. 画面の上部近くにある **[削除]** アイコンをクリックします。

@@ -8,38 +8,42 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: eb59bb43d493609ae408a402eaea2dcc9c6fab29
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 71217e6379c02191311f5d93cb439d9da20080bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706964"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM テンプレートを使用してクラウド サービス (延長サポート) をデプロイする
 
-このチュートリアルでは、[ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)を使ってクラウド サービス (延長サポート) のデプロイを作成する方法を説明します。 
+このチュートリアルでは、[ARM テンプレート](../azure-resource-manager/templates/overview.md)を使ってクラウド サービス (延長サポート) のデプロイを作成する方法を説明します。 
 
 > [!IMPORTANT]
 > Cloud Services (延長サポート) は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 
 ## <a name="before-you-begin"></a>始める前に
-1. クラウド サービス (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認し、関連するリソースを作成します。 
 
-2. [Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) または [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell) を使用して、新しいリソース グループを作成します。 既存のリソース グループを使用する場合は、この手順は省略可能です。 
+1. クラウド サービス (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認し、関連するリソースを作成します。
+
+2. [Azure portal](/azure/azure-resource-manager/management/manage-resource-groups-portal) または [PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell) を使用して、新しいリソース グループを作成します。 既存のリソース グループを使用する場合は、この手順は省略可能です。
  
-3. [Azure portal](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) または [PowerShell](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell) を使用して、新しいストレージ アカウントを作成します。 既存のストレージ アカウントを使用する場合は、この手順は省略可能です。 
+3. [Azure portal](/azure/storage/common/storage-account-create?tabs=azure-portal) または [PowerShell](/azure/storage/common/storage-account-create?tabs=azure-powershell) を使用して、新しいストレージ アカウントを作成します。 既存のストレージ アカウントを使用する場合は、この手順は省略可能です。
 
-4. [Azure portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob)、[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json)、または [PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container) を使用して、サービス定義 (.csdef) ファイルとサービス構成 (.cscfg) ファイルをストレージ アカウントにアップロードします。 両方のファイルについて、SAS URI を取得します。この URI は、このチュートリアルで後ほど ARM テンプレートに追加します。 
+4. [Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob)、[AzCopy](/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json)、または [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container) を使用して、サービス定義 (.csdef) ファイルとサービス構成 (.cscfg) ファイルをストレージ アカウントにアップロードします。 両方のファイルについて、SAS URI を取得します。この URI は、このチュートリアルで後ほど ARM テンプレートに追加します。
 
-5. (省略可能) キー コンテナーを作成し、証明書をアップロードします。 
-    -  クラウド サービスに証明書を関連付けると、サービスとの間にセキュリティで保護された通信を実現できます。 証明書を使用するためには、サービス構成 (.cscfg) ファイル内でその証明書の拇印を指定したうえで、キー コンテナーにアップロードする必要があります。 キー コンテナーは、[Azure portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal) または [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell) を使用して作成できます。 
-    - 関連付けるキー コンテナーは、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。   
-    - また、クラウド サービス (延長サポート) リソースがキー コンテナーから証明書を取得できるようにするために、関連付けるキー コンテナーで適切なアクセス許可を有効にする必要があります。 詳細については、[証明書とキー コンテナー](certificates-and-key-vault.md)に関するページを参照してください。
+5. (省略可能) キー コンテナーを作成し、証明書をアップロードします。
+
+    -  クラウド サービスに証明書を関連付けると、サービスとの間にセキュリティで保護された通信を実現できます。 証明書を使用するためには、サービス構成 (.cscfg) ファイル内でその証明書の拇印を指定したうえで、キー コンテナーにアップロードする必要があります。 キー コンテナーは、[Azure portal](/azure/key-vault/general/quick-create-portal) または [PowerShell](/azure/key-vault/general/quick-create-powershell) を使用して作成できます。
+    - 関連付けるキー コンテナーは、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。
+    - また、Cloud Services (延長サポート) リソースが Key Vault から証明書を取得できるようにするために、関連付けるキー コンテナーで適切なアクセス許可を有効にする必要があります。 詳細については、[証明書とキー コンテナー](certificates-and-key-vault.md)に関するページを参照してください。
     - 以下の手順に示した ARM テンプレートの OsProfile セクションで、キー コンテナーを参照する必要があります。
 
-## <a name="deploy-a-cloud-service-extended-support"></a>クラウド サービス (延長サポート) をデプロイする 
+## <a name="deploy-a-cloud-service-extended-support"></a>クラウド サービス (延長サポート) をデプロイする
+
 1. 仮想ネットワークを作成します。 仮想ネットワークの名前は、サービス構成 (.cscfg) ファイル内の参照と一致している必要があります。 既存の仮想ネットワークを使用する場合は、ARM テンプレートからこのセクションを削除してください。
 
     ```json
@@ -68,7 +72,7 @@ ms.locfileid: "100548779"
     ] 
     ```
     
-     新しい仮想ネットワークを作成する場合には、`dependsOn` セクションに以下を追加します。こうすることによって、クラウド サービスの作成前にプラットフォームにより仮想ネットワークが作成されます。 
+     新しい仮想ネットワークを作成する場合には、`dependsOn` セクションに以下を追加します。こうすることによって、クラウド サービスの作成前にプラットフォームにより仮想ネットワークが作成されます。
 
     ```json
     "dependsOn": [ 
@@ -100,7 +104,7 @@ ms.locfileid: "100548779"
     ] 
     ```
      
-     新しい IP アドレスを作成する場合には、`dependsOn` セクションに以下を追加します。こうすることによって、クラウド サービスの作成前にプラットフォームにより IP アドレスが作成されます。 
+     新しい IP アドレスを作成する場合には、`dependsOn` セクションに以下を追加します。こうすることによって、クラウド サービスの作成前にプラットフォームにより IP アドレスが作成されます。
     
     ```json
     "dependsOn": [ 
@@ -108,7 +112,7 @@ ms.locfileid: "100548779"
           ] 
     ```
  
-3. ネットワーク プロファイル オブジェクトを作成し、ロード バランサーのフロントエンドにパブリック IP アドレスを関連付けます。 ロード バランサーは、プラットフォームによって自動的に作成されます。  
+3. ネットワーク プロファイル オブジェクトを作成し、ロード バランサーのフロントエンドにパブリック IP アドレスを関連付けます。 ロード バランサーは、プラットフォームによって自動的に作成されます。
 
     ```json
     "networkProfile": { 
@@ -154,71 +158,70 @@ ms.locfileid: "100548779"
     ```
   
     > [!NOTE]
-    > sourceVault は、キー コンテナーの ARM リソース ID です。 この情報は、キー コンテナーのプロパティ セクション内のリソース ID のところにあります。 
+    > SourceVault は、キー コンテナーの ARM リソース ID です。 この情報は、キー コンテナーのプロパティ セクション内のリソース ID のところにあります。
     > - certificateUrl は、キー コンテナー内の証明書に移動し、 **[シークレット識別子]** というラベルの箇所を見ると確認できます。  
    >  - certificateUrl は、 https://{keyvault-endpoin}/secrets/{secretname}/{secret-id} の形式です。
 
-5. ロール プロファイルを作成します。 ロールの数、ロールの名前、各ロールのインスタンス数、およびサイズが、サービス構成 (.cscfg)、サービス定義 (.csdef)、および ARM テンプレートのロール プロファイル セクションのいずれにおいても同じになっていることを確認します。 
+5. ロール プロファイルを作成します。 ロールの数、ロールの名前、各ロールのインスタンス数、およびサイズが、サービス構成 (.cscfg)、サービス定義 (.csdef)、および ARM テンプレートのロール プロファイル セクションのいずれにおいても同じになっていることを確認します。
     
     ```json
-    "roleProfile": { 
-          "roles": { 
-          "value": [ 
-            { 
-              "name": "WebRole1", 
-              "sku": { 
-                "name": "Standard_D1_v2", 
-                "capacity": "1" 
-              } 
-            }, 
-            { 
-              "name": "WorkerRole1", 
-              "sku": { 
-                "name": "Standard_D1_v2", 
-                "capacity": "1" 
-              } 
+    "roleProfile": {
+      "roles": {
+        "value": [
+          {
+            "name": "WebRole1",
+            "sku": {
+              "name": "Standard_D1_v2",
+              "capacity": "1"
+            }
+          },
+          {
+            "name": "WorkerRole1",
+            "sku": {
+              "name": "Standard_D1_v2",
+              "capacity": "1"
             } 
-        }
+          } 
+        ]
+      }
     }   
     ```
 
-6. (省略可能) クラウド サービスに拡張機能を追加する拡張機能プロファイルを作成します。 この例では、リモート デスクトップ拡張機能と Microsoft Azure Diagnostics 拡張機能を追加します。 
+6. (省略可能) クラウド サービスに拡張機能を追加する拡張機能プロファイルを作成します。 この例では、リモート デスクトップ拡張機能と Microsoft Azure Diagnostics 拡張機能を追加します。
     
     ```json
         "extensionProfile": {
-              "extensions": [
-                {
-                  "name": "RDPExtension",
-                  "properties": {
-                    "autoUpgradeMinorVersion": true,
-                    "publisher": "Microsoft.Windows.Azure.Extensions",
-                    "type": "RDP",
-                    "typeHandlerVersion": "1.2.1",
-                    "settings": "<PublicConfig>\r\n <UserName>[Insert Username]</UserName>\r\n <Expiration>1/21/2022 12:00:00 AM</Expiration>\r\n</PublicConfig>",
-                    "protectedSettings": "<PrivateConfig>\r\n <Password>[Insert Password]</Password>\r\n</PrivateConfig>"
-                  }
-                },
-                {
-                  "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1",
-                  "properties": {
-                    "autoUpgradeMinorVersion": true,
-                    "publisher": "Microsoft.Azure.Diagnostics",
-                    "type": "PaaSDiagnostics",
-                    "typeHandlerVersion": "1.5",
-                    "settings": "[parameters('wadPublicConfig_WebRole1')]",
-                    "protectedSettings": "[parameters('wadPrivateConfig_WebRole1')]",
-                    "rolesAppliedTo": [
-                      "WebRole1"
-              ]
+          "extensions": [
+            {
+              "name": "RDPExtension",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Windows.Azure.Extensions",
+                "type": "RDP",
+                "typeHandlerVersion": "1.2.1",
+                "settings": "<PublicConfig>\r\n <UserName>[Insert Username]</UserName>\r\n <Expiration>1/21/2022 12:00:00 AM</Expiration>\r\n</PublicConfig>",
+                "protectedSettings": "<PrivateConfig>\r\n <Password>[Insert Password]</Password>\r\n</PrivateConfig>"
+              }
+            },
+            {
+              "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Diagnostics",
+                "type": "PaaSDiagnostics",
+                "typeHandlerVersion": "1.5",
+                "settings": "[parameters('wadPublicConfig_WebRole1')]",
+                "protectedSettings": "[parameters('wadPrivateConfig_WebRole1')]",
+                "rolesAppliedTo": [
+                  "WebRole1"
+                ]
+              }
             }
-          }
-        ]
-      }
+          ]
+        }
+    ```
 
-  
-    ```    
-
-7. テンプレート全体を確認します。 
+7. テンプレート全体を確認します。
 
     ```json
     {
@@ -266,12 +269,12 @@ ms.locfileid: "100548779"
           "metadata": {
              "description": "Public configuration of Windows Azure Diagnostics extension"
           }
-         },
+        },
         "wadPrivateConfig_WebRole1": {
           "type": "securestring",
           "metadata": {
             "description": "Private configuration of Windows Azure Diagnostics extension"
-         }
+          }
         },
         "vnetName": {
           "type": "string",
@@ -411,7 +414,7 @@ ms.locfileid: "100548779"
                 }
               ]
             },
-        "extensionProfile": {
+            "extensionProfile": {
               "extensions": [
                 {
                   "name": "RDPExtension",
@@ -445,14 +448,15 @@ ms.locfileid: "100548779"
       ]
     }
     ```
- 
+
 8. テンプレートとパラメーター ファイル (テンプレート ファイルでパラメーターを定義) をデプロイして、クラウド サービス (延長サポート) デプロイを作成します。 必要に応じて、こちらの[サンプル テンプレート](https://github.com/Azure-Samples/cloud-services-extended-support)を参照してください。
 
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg"  -TemplateFile "file path to your template file” -TemplateParameterFile "file path to your parameter file"
+    New-AzResourceGroupDeployment -ResourceGroupName "ContosOrg" -TemplateFile "file path to your template file" -TemplateParameterFile "file path to your parameter file"
     ```
- 
+
 ## <a name="next-steps"></a>次のステップ 
+
 - Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
 - [Cloud Services (延長サポート) のサンプル リポジトリ](https://github.com/Azure-Samples/cloud-services-extended-support)を確認します。

@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor for containers の Deployments (プレビュー) の表示 | Microsoft Docs
-description: この記事では、Azure Monitor for containers で kubectl を使用しない、Kubernetes Deployments のリアル タイム表示について説明します。
+title: Container insights の Deployments (プレビュー) の表示 | Microsoft Docs
+description: この記事では、Container insights で kubectl を使用しない、Kubernetes Deployments のリアル タイム表示について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2f1eac82ce67818c7bf86ce3ca8924155d8ee2aa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601246"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713917"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>リアルタイムで Deployments (プレビュー) を表示する方法
 
-Azure Monitor for containers の Deployments (プレビュー) の表示機能では、`kubeclt get deployments` と `kubectl describe deployment {your deployment}` コマンドを公開することにより、Kubernetes Deployment オブジェクトへの直接アクセスがリアルタイムでエミュレートされます。
+Container insights の Deployments (プレビュー) の表示機能では、`kubeclt get deployments` と `kubectl describe deployment {your deployment}` コマンドを公開することにより、Kubernetes Deployment オブジェクトへの直接アクセスがリアルタイムでエミュレートされます。
 
 >[!NOTE]
 >[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効にされた AKS クラスターは、この機能でサポートされていません。 この機能では、ブラウザーからプロキシ サーバーを介した Kubernetes API への直接アクセスを利用します。 このプロキシから Kubernetes API をブロックするようにネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。
@@ -56,7 +56,7 @@ Deployments (プレビュー) 機能では、デプロイ エンドポイント 
 
 デプロイに関する詳細のレビュー中は、コンテナーのログとイベントをリアルタイムで確認できます。 **[Show live console]\(ライブ コンソールの表示\)** を選択すると、Live Data (プレビュー) コンソール ウィンドウがデプロイ データ グリッドの下に表示されます。そこでは、連続したストリームでライブ ログ データを表示できます。 フェッチ状態インジケーターのウィンドウの一番右に緑色のチェック マークが表示される場合は、データを取得できること、およびコンソールへのストリーミングが開始されることを意味します。
 
-名前空間またはクラスター レベルのイベントでフィルター処理することもできます。 コンソールでデータをリアルタイムで表示する方法の詳細については、[Azure Monitor for containers を使用した Live Data (プレビュー) の表示](container-insights-livedata-overview.md)に関するページを参照してください。
+名前空間またはクラスター レベルのイベントでフィルター処理することもできます。 コンソールにデータをリアルタイムで表示する方法について詳しくは、[Container insights を使用したライブ データ (プレビュー) の表示](container-insights-livedata-overview.md)に関するページを参照してください。
 
 ![コンソールでの Deployments ビューのライブ データ](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Monitor for containers でのレポート
-description: Azure Monitor for containers によって収集されたデータを分析するために使用できるレポートについて説明します。
+title: Container Insights のレポート
+description: Container Insights によって収集されたデータを分析するために使用できるレポートについて説明します。
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582314"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704278"
 ---
-# <a name="reports-in-azure-monitor-for-containers"></a>Azure Monitor for containers でのレポート
-Azure Monitor for containers でのレポートは、推奨されるすぐに使用できる [Azure ブック](../visualize/workbooks-overview.md)です。 この記事では、使用できるさまざまなレポートと、それらにアクセスする方法について説明します。
+# <a name="reports-in-container-insights"></a>Container Insights のレポート
+Container Insights のレポートは、推奨されるすぐに使える [Azure ブック](../visualize/workbooks-overview.md)です。 この記事では、使用できるさまざまなレポートと、それらにアクセスする方法について説明します。
 
 ## <a name="viewing-reports"></a>レポートの閲覧
 Azure portal の **[Azure Monitor]** メニューから、 **[コンテナー]** を選択します。 **[監視]** セクションで **[分析情報]** を選択し、特定のクラスターを選択してから、 **[レポート (プレビュー)]** ページを選択します。 

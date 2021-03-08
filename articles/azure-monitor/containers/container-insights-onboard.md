@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor for containers を有効にする | Microsoft Docs
-description: この記事では、コンテナーのパフォーマンス、および明らかになっているパフォーマンスに関する問題を把握できるように、Azure Monitor for containers を有効にして構成する方法について説明します。
+title: コンテナー分析情報を有効にする | Microsoft Docs
+description: この記事では、コンテナーのパフォーマンスと特定されたパフォーマンスに関する問題を把握できるように、コンテナー分析情報を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603882"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708358"
 ---
-# <a name="enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする
+# <a name="enable-container-insights"></a>コンテナー分析情報を有効にする
 
-この記事では、Kubernetes 環境にデプロイされ、以下の上でホストされているワークロードのパフォーマンスを監視することを目的として、Azure Monitor for containers を設定するために使用できるオプションの概要について説明します。
+この記事では、Kubernetes 環境にデプロイされ、以下でホストされているワークロードのパフォーマンスを監視することを目的として、コンテナー分析情報を設定するために使用できるオプションの概要について説明します。
 
 - [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3.x、4.x  
@@ -23,7 +23,7 @@ ms.locfileid: "100603882"
 - Azure ([AKS エンジン](https://github.com/Azure/aks-engine)を使用)
 - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) またはオンプレミス (AKS エンジンを使用)。
 
-次のいずれかのサポートされている方法を使用して、Kubernetes の新しいデプロイまたは 1 つ以上の既存のデプロイに対して、Azure Monitor for containers を有効にできます。
+次のいずれかのサポートされている方法を使用して、Kubernetes の新しいデプロイまたは 1 つ以上の既存のデプロイに対して、コンテナー分析情報を有効にできます。
 
 - Azure ポータル
 - Azure PowerShell
@@ -44,37 +44,37 @@ ms.locfileid: "100603882"
 
 - Log Analytics ワークスペースがあります。
 
-   Azure Monitor for containers では、[リージョンごとに使用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)の一覧で示されているリージョンの Log Analytics ワークスペースがサポートされます。
+   コンテナー分析情報では、[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)の一覧で示されているリージョンの Log Analytics ワークスペースがサポートされます。
 
    新しい AKS クラスターに対する監視を有効にするときにワークスペースを作成すること、またはオンボード エクスペリエンスを使用して AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースを作成することができます。 
    
    自分でワークスペースを作成する場合は、次を使用して作成できます。 
-   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
-   - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
-   - [Azure ポータル](../learn/quick-create-workspace.md) 
+   - [Azure Resource Manager](../logs/resource-manager-workspace.md)
+   - [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+   - [Azure ポータル](../logs/quick-create-workspace.md) 
    
-   既定のワークスペースに使用する、サポートされているマッピング ペアの一覧については、[Azure Monitor for containers のリージョンのマッピング](container-insights-region-mapping.md)に関するページを参照してください。
+   既定のワークスペースに使用する、サポートされているマッピング ペアの一覧については、[コンテナー分析情報のリージョンのマッピング](container-insights-region-mapping.md)に関するページを参照してください。
 
-- コンテナーの監視を有効にする *Log Analytics 共同作成者ロール* のメンバーです。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../platform/manage-access.md)」を参照してください。
+- コンテナーの監視を有効にする *Log Analytics 共同作成者ロール* のメンバーです。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../logs/manage-access.md)」を参照してください。
 
 - AKS クラスター リソースに対する ["*所有者*" グループ](../../role-based-access-control/built-in-roles.md#owner)のメンバーです。
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-- 監視データを表示するには、Log Analytics ワークスペースでの [*Log Analytics 閲覧者*](../platform/manage-access.md#manage-access-using-azure-permissions)ロールが、Azure Monitor for containers で構成されている必要があります。
+- 監視データを表示するには、コンテナー分析情報で構成された Log Analytics ワークスペースの "[*Log Analytics 閲覧者*](../logs/manage-access.md#manage-access-using-azure-permissions)" ロールを持っている必要があります。
 
 - 既定では、Prometheus のメトリックは収集されません。 メトリックを収集するための[エージェントを構成する](container-insights-prometheus-integration.md)前に、[Prometheus のドキュメント](https://prometheus.io/)を確認して、スクレイピングできるデータおよびサポートされているメソッドを理解しておくことが重要です。
 
 ## <a name="supported-configurations"></a>サポートされている構成
 
-Azure Monitor for containers では、以下の構成が公式にサポートされています。
+コンテナー分析情報では、次の構成が正式にサポートされています。
 
 - 環境:Azure Red Hat OpenShift、オンプレミスの Kubernetes、Azure および Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)に関するページを参照してください。
 - Kubernetes のバージョンとサポート ポリシーは、[Azure Kubernetes Service (AKS) でサポートされている](../../aks/supported-kubernetes-versions.md)ものと同じです。 
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
 
-次の表は、コンテナー化されたエージェントが Azure Monitor for containers と通信するために必要なプロキシおよびファイアウォールの構成情報をまとめたものです。 エージェントからのすべてのネットワーク トラフィックは、Azure Monitor に送信されます。
+次の表は、コンテナー化されたエージェントがコンテナー分析情報と通信するために必要なプロキシおよびファイアウォールの構成情報をまとめたものです。 エージェントからのすべてのネットワーク トラフィックは、Azure Monitor に送信されます。
 
 |エージェントのリソース|Port |
 |--------------|------|
@@ -102,7 +102,7 @@ Azure Monitor for containers では、以下の構成が公式にサポートさ
 
 ## <a name="components"></a>コンポーネント
 
-パフォーマンスを監視する能力は、Azure Monitor for containers用に特別に開発された、Linux 用のコンテナー化 Log Analytics エージェントに依存します。 この特殊なエージェントは、クラスター内のすべてのノードからパフォーマンスとイベント データを収集します。エージェントは自動的にデプロイされ、デプロイ時に指定した Log Analytics ワークスペースに登録されます。 
+パフォーマンスを監視する能力は、コンテナー分析情報用に特別に開発された、Linux 用のコンテナー化 Log Analytics エージェントに依存します。 この特殊なエージェントは、クラスター内のすべてのノードからパフォーマンスとイベント データを収集します。エージェントは自動的にデプロイされ、デプロイ時に指定した Log Analytics ワークスペースに登録されます。 
 
 このエージェントのバージョンは microsoft/oms:ciprod04202018 以降であり、*mmddyyyy* という形式の日付で表されます。
 
@@ -116,7 +116,7 @@ Azure Monitor for containers では、以下の構成が公式にサポートさ
 >
 > テンプレートはクラスターと同じリソース グループ内に展開する必要があります。
 
-Azure Monitor for containers を有効にするには、次の表で説明されている方法のいずれかを使用します。
+コンテナー分析情報を有効にするには、次の表で説明されている方法のいずれかを使用します。
 
 | デプロイの状態 | Method | 説明 |
 |------------------|--------|-------------|
@@ -136,4 +136,4 @@ Azure Monitor for containers を有効にするには、次の表で説明され
 
 ## <a name="next-steps"></a>次のステップ
 
-監視を有効にしたので、Azure Kubernetes Service (AKS)、Azure Stack、または他の環境でホストされている Kubernetes クラスターのパフォーマンスの分析を開始できます。 コンテナー用 Azure Monitor を使用する方法については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)に関するページをご覧ください。
+監視を有効にしたので、Azure Kubernetes Service (AKS)、Azure Stack、または他の環境でホストされている Kubernetes クラスターのパフォーマンスの分析を開始できます。 コンテナー分析情報を使用する方法については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)に関するページをご覧ください。

@@ -1,26 +1,26 @@
 ---
-title: Azure Monitor for VMs のゲストの正常性 (プレビュー)
-description: 仮想マシンの正常性を表示したり、仮想マシンが異常になったときにアラートを受信したりする方法を含む、Azure Monitor for VMs の正常性機能の概要。
+title: VM insights のゲストの正常性 (プレビュー)
+description: 仮想マシンの正常性を表示したり、仮想マシンが異常になったときにアラートを受信したりする方法を含む、VM insights の正常性機能の概要。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 96bed9f3b04e54e2e9a5234d78f9a2660126742e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600762"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707457"
 ---
-# <a name="azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー)
-Azure Monitor for VMs のゲストの正常性を使用すると、ゲスト オペレーティング システムから一定間隔でサンプリングされる一連のパフォーマンス測定値に基づいて、仮想マシンの正常性を表示できます。 サブスクリプションまたはリソース グループ内のすべての仮想マシンの正常性を迅速に確認したり、特定の仮想マシンの詳細な正常性をドリルダウンしたり、仮想マシンが異常になったときにプロアクティブに通知を受け取ったりすることができます。 
+# <a name="vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー)
+VM insights のゲストの正常性を使用すると、ゲスト オペレーティング システムから一定間隔でサンプリングされる一連のパフォーマンス測定値に基づいて、仮想マシンの正常性を表示できます。 サブスクリプションまたはリソース グループ内のすべての仮想マシンの正常性を迅速に確認したり、特定の仮想マシンの詳細な正常性をドリルダウンしたり、仮想マシンが異常になったときにプロアクティブに通知を受け取ったりすることができます。 
 
 ## <a name="enable-virtual-machine-health"></a>仮想マシンの正常性を有効にする
-ゲストの正常性機能を有効にし、仮想マシンをオンボードする方法の詳細については、「[Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする](vminsights-health-enable.md)」を参照してください。
+ゲストの正常性機能を有効にし、仮想マシンをオンボードする方法の詳細については、「[VM insights のゲストの正常性 (プレビュー) を有効にする](vminsights-health-enable.md)」を参照してください。
 
 ## <a name="pricing"></a>価格
-ゲストの正常性機能には直接のコストは発生しませんが、Log Analytics ワークスペースの正常性状態データのインジェストとストレージにはコストが発生します。 すべてのデータは、*HealthStateChangeEvent* テーブルに格納されます。 価格モデルとコストの詳細については、「[Azure Monitor ログで使用量とコストを管理する](../platform/manage-cost-storage.md)」を参照してください。
+ゲストの正常性機能には直接のコストは発生しませんが、Log Analytics ワークスペースの正常性状態データのインジェストとストレージにはコストが発生します。 すべてのデータは、*HealthStateChangeEvent* テーブルに格納されます。 価格モデルとコストの詳細については、「[Azure Monitor ログで使用量とコストを管理する](../logs/manage-cost-storage.md)」を参照してください。
 
 ## <a name="view-virtual-machine-health"></a>仮想マシンの正常性を表示する
 **[作業の開始]** ページの **[ゲスト VM の正常性]** 列では、特定のサブスクリプションまたはリソース グループ内の各仮想マシンの正常性を簡単に確認できます。 各仮想マシンの現在の正常性が表示される同時に、各グループのアイコンによってそのグループ内の現在それぞれの状態にある仮想マシンの数が表示されます。
@@ -95,7 +95,7 @@ Azure Monitor for VMs のゲストの正常性を使用すると、ゲスト オ
 [![モニター詳細の [履歴]](media/vminsights-health-overview/monitor-details-history.png)](media/vminsights-health-overview/monitor-details-history.png#lightbox)
 
 ### <a name="configuration"></a>構成
-選択した VM のモニターの構成を表示および変更します。 詳細については、[Azure Monitor for VMs のゲストの正常性 (プレビュー) での監視の構成](vminsights-health-enable.md)に関する記事を参照してください。
+選択した VM のモニターの構成を表示および変更します。 詳細については、「[VM insights のゲストの正常性 (プレビュー) で監視を構成する](vminsights-health-enable.md)」を参照してください。
 
 [![モニター詳細の [構成]](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 
@@ -104,6 +104,6 @@ Azure Monitor for VMs のゲストの正常性を使用すると、ゲスト オ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor for VMs のゲストの正常性を有効にして、エージェントをオンボードします。](vminsights-health-enable.md)
+- [VM insights とオンボード エージェントでゲストの正常性を有効にします。](vminsights-health-enable.md)
 - [Azure portal を使用してモニターを構成します。](vminsights-health-configure.md)
 - [データ収集ルールを使用してモニターを構成します。](vminsights-health-configure-dcr.md)

@@ -4,35 +4,25 @@ description: 自主的移行ツールを使用してクラシック アラート
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
-ms.subservice: alerts
-ms.openlocfilehash: 28ccdde85f2873839fbe977c3c991177ac8bb3bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2020
+ms.openlocfilehash: fa487bec49ab9faa0f7c3dce752a30e4440fb873
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600666"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037678"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>自主的移行ツールを使用してクラシック アラート ルールを移行する
 
-[以前発表した](../platform/monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートがパブリック クラウド ユーザーで廃止されましたが、新しいアラートがまだサポートされていないリソースについては、引き続き制限付きで使用できます。 クラシック アラート ルールを使用しているお客様と、移行を自分でトリガーしたいと考えているお客様を対象に、Azure portal では移行ツールが用意されていました。 この記事では、その移行ツールを使用する方法について説明します。このツールは、その他の発表が保留されているアラートにも使用されます。
+[以前発表した](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートがパブリック クラウド ユーザーで廃止されましたが、**2021 年 5 月 31 日** までは、引き続き制限付きで使用できます。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
 
-## <a name="benefits-of-new-alerts"></a>新しいアラートの利点
-
-クラシック アラートは、Azure Monitor の統合された新しいアラート機能で置き換えられます。 この新しいアラート プラットフォームには以下の利点があります。
-
-- [より多くの Azure サービス](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)に対するさまざまな多次元メトリックに関するアラートを出すことができます。
-- 新しいメトリックのアラートでは[マルチリソースのアラート ルール](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)がサポートされており、これにより多数のルールを管理するためのオーバーヘッドが大幅に削減されます。
-- 統合された通知メカニズムでは次のものがサポートされています。
-  - [アクション グループ](../platform/action-groups.md)。これは新しい種類のアラートすべて (メトリック、ログ、アクティビティ ログ) で機能するモジュール式の通知メカニズムです。
-  - SMS、音声、ITSM Connector などの新しい通知メカニズム。
-- [統合されたアラート エクスペリエンス](../platform/alerts-overview.md)では、さまざまなシグナル (メトリック、ログ、アクティビティ ログ) に関するアラートがすべて、1 か所にまとめられます。
+Azure portal には、クラシック アラート ルールを使用しているお客様と移行を自分でトリガーしたいと思っているお客様を対象に、移行ツールが用意されています。 この記事では、移行ツールの使用方法について説明します。
 
 ## <a name="before-you-migrate"></a>移行の前に
 
 移行プロセスで、クラシック アラート ルールを新たな同等のアラート ルールに変換して、アクション グループを作成します。 準備中には、次の点に注意してください。
 
-- 新しいアラート ルールを作成および管理するための通知ペイロード形式と API は両方とも、クラシック アラート ルールの場合とは異なります。より多くの機能がサポートされているからです。 [移行のための準備を行う方法について](alerts-prepare-migration.md)。
+- 新しいアラート ルールを作成および管理するための通知ペイロード形式と API は両方とも、クラシック アラート ルールとは異なります。より多くの機能がサポートされているからです。 [移行のための準備を行う方法について](alerts-prepare-migration.md)。
 
 - 一部のクラシック アラート ルールは、ツールを使用して移行できません。 [移行することができないルールと、それらの対処方法について](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)。
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388619"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738193"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -138,7 +138,9 @@ ms.locfileid: "100388619"
 
 **A**: オーディオ データを使用したモデルのトレーニングには、時間がかかる可能性があります。 データの量によっては、カスタム モデルの作成に数日かかる場合があります。 1 週間以内に完了できない場合、サービスはトレーニング操作を中止し、モデルを失敗として報告することがあります。
 
-結果を最も早く得るには、トレーニングに専用のハードウェアを使用できる[リージョン](custom-speech-overview.md#set-up-your-azure-account)のいずれかを使用します。 一般には、このようなハードウェアが導入されているリージョンでは、1 日あたり約 10 時間のオーディオ データを処理しています。 他のリージョンでは、1 日当たり 1 時間程度のオーディオ データしか処理できません。 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) を使用して、完全にトレーニングされたモデルを別のリージョンにコピーできます。 テキストだけでトレーニングを行う方がはるかに高速で、通常は数分で完了します。
+トレーニングに専用のハードウェアを使用できる[リージョン](custom-speech-overview.md#set-up-your-azure-account)のいずれかを使用します。 これらのリージョンでは、音声サービスのトレーニングのために最大 20 時間分の音声が使用されます。 他のリージョンでは、最大 8 時間のみが使用されます。
+
+一般に、専用ハードウェアが導入されているリージョンでは、1 日あたり約 10 時間のオーディオ データが処理されています。 他のリージョンでは、1 日当たり 1 時間程度のオーディオ データしか処理できません。 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) を使用して、完全にトレーニングされたモデルを別のリージョンにコピーできます。 テキストだけでトレーニングを行う方がはるかに高速で、通常は数分で完了します。
 
 一部の基本モデルは、オーディオ データを使用してカスタマイズすることができません。 それらでは、サービスはトレーニングのために文字起こしのテキストのみを使用し、オーディオ データは無視します。 このとき、トレーニングがはるかに高速に完了し、テキストだけのトレーニングと同じ結果になります。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。
 

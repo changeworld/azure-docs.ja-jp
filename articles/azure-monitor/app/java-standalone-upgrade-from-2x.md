@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: d815c919c2b2d63b093c4290a661cbf508c56012
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704431"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK からのアップグレード
 
@@ -220,3 +220,16 @@ Application Insights 2.x エージェントを使用していた場合は、2.x 
 以前の 2.x SDK では、依存関係テレメトリに要求テレメトリからの操作名も設定されていました。
 Application Insights Java 3.0 では、依存関係テレメトリに操作名が設定されなくなりました。
 依存関係テレメトリの親である要求の操作名を表示するには、ログ (Kusto) クエリを記述して、依存関係テーブルから要求テーブルに結合します。
+
+## <a name="2x-sdk-logging-appenders"></a>2.x SDK ロギング アペンダー
+
+3\.0 エージェントでは、ロギング アペンダーを構成する必要なく、[ログが自動収集](./java-standalone-config#auto-collected-logging)されます。
+2\. x SDK ロギング アペンダーを使用している場合は、3.0 エージェントによって抑制されるため、これらを削除できます。
+
+## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot スターター
+
+3\.0 Spring Boot スターターはありません。
+3\.0 エージェントの設定と構成は、Spring Boot を使用しているかどうかにかかわらず、同じ[簡単な手順](./java-in-process-agent.md#quickstart)に従います。
+
+2\.x SDK Spring Boot スターターからアップグレードする場合、クラウド ロールの既定名は `spring.application.name` にならないことに注意してください。
+Json 構成または環境変数を使用して3.0 でクラウド ロール名を設定する方法については、[3.0 構成ドキュメント](./java-standalone-config.md#cloud-role-name)を参照してください。

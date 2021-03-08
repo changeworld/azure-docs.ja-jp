@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor for containers によるデプロイと HPA のメトリック | Microsoft Docs
-description: この記事では、Azure Monitor for containers を使用して収集されるデプロイと HPA (水平ポッド オートスケーラー) のメトリックについて説明します。
+title: Container insights によるデプロイと HPA メトリック | Microsoft Docs
+description: この記事では、Container insights を使用して収集されるデプロイと HPA (水平ポッド オートスケーラー) のメトリックについて説明します。
 ms.topic: conceptual
 ms.date: 08/09/2020
-ms.openlocfilehash: ee1f0d4849a8382a898aaca84956ff78166e138f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c8bb100b756ea92d73e1c3a698f119b4f8157930
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604402"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717708"
 ---
-# <a name="deployment--hpa-metrics-with-azure-monitor-for-containers"></a>Azure Monitor for containers によるデプロイと HPA のメトリック
+# <a name="deployment--hpa-metrics-with-container-insights"></a>Container insights によるデプロイと HPA メトリック
 
-エージェント バージョン *ciprod08072020* 以降、コンテナー統合エージェント用の Azure Monitor では、HPA と デプロイのメトリックを収集するようになりました。
+エージェント バージョン *ciprod08072020* 以降、Container insights が統合されたエージェントでは、デプロイと HPA のメトリックを収集するようになりました。
 
 ## <a name="deployment-metrics"></a>デプロイのメトリック
 
-Azure Monitor for containers では、次のメトリックが 60 秒間隔で収集されて、**InsightMetrics** テーブルに格納されることで、デプロイの監視が自動的に開始されます。
+Container insights により、次のメトリックが 60 秒間隔で収集されて、**InsightMetrics** テーブルに格納されることで、デプロイの監視が自動的に開始されます。
 
 |メトリックの名前 |メトリック ディメンション (タグ) |説明 |
 |------------|------------------------|------------|
@@ -24,7 +24,7 @@ Azure Monitor for containers では、次のメトリックが 60 秒間隔で�
 
 ## <a name="hpa-metrics"></a>HPA のメトリック
 
-Azure Monitor for containers では、次のメトリックが 60 秒間隔で収集されて、**InsightMetrics** テーブルに格納されることで、HPA の監視が自動的に開始されます。
+Container insights により、次のメトリックが 60 秒間隔で収集され **InsightMetrics** テーブルに格納されることで、HPA の監視が自動的に開始されます。
 
 |メトリックの名前 |メトリック ディメンション (タグ) |説明 |
 |------------|------------------------|------------|
@@ -32,7 +32,7 @@ Azure Monitor for containers では、次のメトリックが 60 秒間隔で�
 
 ## <a name="deployment--hpa-charts"></a>デプロイと HPA のグラフ 
 
-Azure Monitor for containers には、すべてのクラスターに対するブックとして、前の表で示したメトリックの事前構成済みのグラフが含まれています。 左側のペインで **[ブック]** を選択して AKS クラスターから直接、または [分析情報] の **[ブックの表示]** ドロップダウン リストから、デプロイと HPA のブック **Deployments & HPA** を見つけることができます。
+Container insights には、すべてのクラスターに対するブックとして、前の表で示したメトリックの事前構成済みのグラフが含まれています。 左側のペインで **[ブック]** を選択して AKS クラスターから直接、または [分析情報] の **[ブックの表示]** ドロップダウン リストから、デプロイと HPA のブック **Deployments & HPA** を見つけることができます。
 
 ## <a name="next-steps"></a>次の手順
 

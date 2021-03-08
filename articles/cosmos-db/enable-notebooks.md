@@ -5,15 +5,15 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 02/22/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: fd7f663ee5b6ceb49e6f1a393fc30919d5b245e9
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 02e8ad5f2b5326f947ba0bca6456ce9d9d3c27d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692778"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Azure Cosmos DB アカウントのノートブックを有効にする (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,12 +27,12 @@ Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると�
 2021 年 2 月 10 日以降、[サポートされているリージョン](#supported-regions)のいずれかで作成された新しい Azure Cosmos アカウントで、自動的にノードブックが有効になります。 ノートブックを有効にするために必要な追加の構成はありません。 次の手順を使用して新しいアカウントを作成します。
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. **[リソースの作成]**  >  **[データベース]**  >  **[Azure Cosmos DB]** を選択します。
-1. アカウントの基本設定を入力します。 
- 
+1. アカウントの基本設定を入力します。
+
    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Azure Cosmos DB の新しいアカウント ページ":::
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[ネットワーク]** オプションと **[タグ]** オプションはスキップできます。 
-1. アカウントの設定を確認し、 **[作成]** を選択します。 アカウントの作成には数分かかります。 ポータル ページに "**デプロイが完了しました**" と表示されるまで待ちます。 
+1. アカウントの設定を確認し、 **[作成]** を選択します。 アカウントの作成には数分かかります。 ポータル ページに "**デプロイが完了しました**" と表示されるまで待ちます。
 
    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Azure portal の [通知] ペイン":::
 
@@ -60,12 +60,12 @@ Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると�
 
 ノートブックを使用できることを確認するには、[サンプル ノートブック] でいずれかのノートブックを選択します。 これにより、ノートブックのコピーがご利用のワークスペースに保存され、それを開きます。
 
-この例では、**GettingStarted.ipynb** を使用します。 
+この例では、**GettingStarted.ipynb** を使用します。
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="GettingStarted.ipynb ノートブックの表示":::
 
 ノートブックを実行するには
-1. Python コードが含まれている最初のコード セルを選択します。 
+1. Python コードが含まれている最初のコード セルを選択します。
 1. **[実行]** を選択して、セルを実行します。 **Shift + Enter** キーを使用して、コードを実行することもできます。
 1. リソース ウィンドウを更新して、作成されたデータベースとコンテナーを表示します。
 
@@ -112,8 +112,7 @@ Azure Cosmos DB 用の組み込みノートブックは、現在、29 の Azure 
 
 * [Azure Cosmos DB Jupyter Notebooks](cosmosdb-jupyter-notebooks.md) の長所について学習する
 * [ノートブックのサンプル ギャラリーを参照する](https://cosmos.azure.com/gallery.html)
+* [Azure Cosmos DB ノートブック ギャラリーにノートブックを公開する](publish-notebook-gallery.md)
 * [Python ノートブックの機能とコマンドを使用する](use-python-notebook-features-and-commands.md)
 * [C# ノートブックの機能とコマンドを使用する](use-csharp-notebook-features-and-commands.md)
 * [GitHub リポジトリからノートブックをインポートする](import-github-notebooks.md)
-
-

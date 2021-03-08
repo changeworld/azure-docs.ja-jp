@@ -1,24 +1,24 @@
 ---
 title: Azure Kubernetes Service クラスターの監視を停止する方法 | Microsoft Docs
-description: この記事では、コンテナー用の Azure Monitor で Azure AKS クラスターの監視を中断する方法について説明します。
+description: この記事では、Container insights で Azure AKS クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 476934d84d8ffc63336ec620432db3507b2cbb34
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: eab34f27d1e33b166971203082cce99fb2b0e106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601215"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723539"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Container insights による Azure Kubernetes Service (AKS) の監視を停止する方法
 
 AKS クラスターの監視を有効にした後、監視する必要がなくなったと判断した場合は、クラスターの監視を停止できます。 この記事では、Azure CLI を使用して、または提供されている Azure Resource Manager テンプレートで、これを行う方法を示します。  
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-コンテナーに対して Azure Monitor を無効にするには、[az aks disable-addons](/cli/azure/aks#az-aks-disable-addons) コマンドを使用します。 このコマンドでは、クラスター ノードからエージェントが削除されます。ソリューションや、既に収集されて Azure Monitor リソースに格納されているデータは削除されません。  
+Container insights を無効にするには、[az aks disable-addons](/cli/azure/aks#az-aks-disable-addons) コマンドを使用します。 このコマンドでは、クラスター ノードからエージェントが削除されます。ソリューションや、既に収集されて Azure Monitor リソースに格納されているデータは削除されません。  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -165,4 +165,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>次のステップ
 
-クラスターの監視をサポートするためだけにワークスペースが作成され、不要になった場合、手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、「[Azure Portal で Azure Log Analytics ワークスペースを削除する](../platform/delete-workspace.md)」を参照してください。 上記の手順 4 でコピーした、**ワークスペース リソース ID** は、この後の手順で必要になります。
+クラスターの監視をサポートするためだけにワークスペースが作成され、不要になった場合、手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、「[Azure Portal で Azure Log Analytics ワークスペースを削除する](../logs/delete-workspace.md)」を参照してください。 上記の手順 4 でコピーした、**ワークスペース リソース ID** は、この後の手順で必要になります。

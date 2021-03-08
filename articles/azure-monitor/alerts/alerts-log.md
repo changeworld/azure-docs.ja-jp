@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579e86df23a0b6369f7ff5b6113c4972e054d5cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2cff0773883f7de5788bca5e4e3f680818e2bd77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604751"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734878"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
 ## <a name="overview"></a>概要
 
-ログ アラートによって、ユーザーは [Log Analytics](../log-query/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](../platform/action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](../platform/alerts-unified-log.md)。
+ログ アラートによって、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションをトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](./alerts-unified-log.md)。
 
 この記事では、Azure Monitor を使用してログ アラートを作成および管理する方法について説明します。 アラート ルールは、次の 3 つのコンポーネントによって定義されます。
 - ターゲット:監視する特定の Azure リソース。
@@ -27,7 +27,7 @@ ms.locfileid: "100604751"
 Azure Resource Manager テンプレートを使用してログ アラート ルールを作成することもできます。これについては、[別の記事](../alerts/alerts-log-create-templates.md)で説明されています。
 
 > [!NOTE]
-> [Log Analytics ワークスペース](../log-query/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](../platform/alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](../platform/alerts-metric-logs.md)に関するページを参照してください。
+> [Log Analytics ワークスペース](../logs/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](./alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](./alerts-metric-logs.md)に関するページを参照してください。
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Microsoft Azure portal でログ アラート ルールを作成する
 
@@ -35,13 +35,13 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
 1. アラートを作成するリソースにアクセスします。 可能な場合は、サブスクリプションまたはリソース グループの範囲を選択して、複数のリソースにアラート ルールを設定することを検討してください。 複数のリソースに対してアラートを生成すると、コストが削減され、複数のアラート ルールを管理する必要がなくなります。
 1. **[モニター]** で、 **[ログ]** を選択します。
-1. 問題を示している可能性のあるログ データのクエリを実行します。 検出できることや、[独自のクエリを記述する方法の概要](../log-query/log-analytics-tutorial.md)を理解するには、[アラートのクエリ例に関するトピック](../log-query/example-queries.md)を使用してください。 また、[最適化されたアラート クエリを作成する方法について確認してください](alerts-log-query.md)。
+1. 問題を示している可能性のあるログ データのクエリを実行します。 検出できることや、[独自のクエリを記述する方法の概要](../logs/log-analytics-tutorial.md)を理解するには、[アラートのクエリ例に関するトピック](../logs/example-queries.md)を使用してください。 また、[最適化されたアラート クエリを作成する方法について確認してください](alerts-log-query.md)。
 1. [+ 新しいアラート ルール] ボタンを押して、アラート作成フローを開始します。
 
     ![Log Analytics - アラートの設定](media/alerts-log/AlertsAnalyticsCreate.png)
 
 > [!NOTE]
-> リソース グループまたはサブスクリプション スコープを使用して複数のリソース上で実行されるログのリソース アクセス モードを使用する場合は、大規模なアラートを作成することをお勧めします。 大規模にアラートを行うと、ルール管理のオーバーヘッドを軽減できます。 リソースをターゲットにできるようにするには、リソース ID 列を結果に含めてください。 [ディメンション別にアラートを分割する方法の詳細について参照してください](../platform/alerts-unified-log.md#split-by-alert-dimensions)。
+> リソース グループまたはサブスクリプション スコープを使用して複数のリソース上で実行されるログのリソース アクセス モードを使用する場合は、大規模なアラートを作成することをお勧めします。 大規模にアラートを行うと、ルール管理のオーバーヘッドを軽減できます。 リソースをターゲットにできるようにするには、リソース ID 列を結果に含めてください。 [ディメンション別にアラートを分割する方法の詳細について参照してください](./alerts-unified-log.md#split-by-alert-dimensions)。
 
 ### <a name="log-alert-for-log-analytics-and-application-insights"></a>Log Analytics と Application Insights のログ アラート
 
@@ -51,9 +51,9 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
     ![アラート ルールの構成](media/alerts-log/AlertsPreviewAlertLog.png)
 
-1. [ **[期間]**](../platform/alerts-unified-log.md#query-time-range) オプションを使用して、指定された条件を評価する時間の範囲を選びます。
+1. [ **[期間]**](./alerts-unified-log.md#query-time-range) オプションを使用して、指定された条件を評価する時間の範囲を選びます。
 
-1. ログ アラートは、次の 2 種類の [**測定**](../platform/alerts-unified-log.md#measure)を基に作成できます。
+1. ログ アラートは、次の 2 種類の [**測定**](./alerts-unified-log.md#measure)を基に作成できます。
     1. **結果の数** - クエリによって返されるレコードの数。
     1. **メトリック測定** - 選択された式と、[bin()](/azure/kusto/query/binfunction) の選択でグループ化された summarize を使用して計算された "*集計値*"。 次に例を示します。
 
@@ -65,29 +65,29 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
     | summarize AggregatedValue = count() by Computer, bin(TimeGenerated, 15m)
     ```
 
-1. メトリック測定のアラート ロジックでは、必要に応じて、 **[集計]** オプションを使用して、アラートを [ディメンション](../platform/alerts-unified-log.md#split-by-alert-dimensions)別に分割する方法を指定できます。 行グループ式は一意かつ並べ替えられている必要があります。
+1. メトリック測定のアラート ロジックでは、必要に応じて、 **[集計]** オプションを使用して、アラートを [ディメンション](./alerts-unified-log.md#split-by-alert-dimensions)別に分割する方法を指定できます。 行グループ式は一意かつ並べ替えられている必要があります。
 
     > [!NOTE]
     > [bin()](/azure/kusto/query/binfunction) では不均一な期間が返される可能性があるため、実行時、アラート サービスでは適切な時間を使用して [bin()](/azure/kusto/query/binfunction) 関数が [bin_at()](/azure/kusto/query/binatfunction) に変換され、固定小数点を持つ結果が得られるようにします。
 
     > [!NOTE]
-    > アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](../platform/api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-05-01-preview` 以上の API バージョンでのみサポートされています。
+    > アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-05-01-preview` 以上の API バージョンでのみサポートされています。
 
     ![[集計] オプション](media/alerts-log/aggregate-on.png)
 
-1. 次に、プレビュー データに基づいて、[ **[演算子]** 、 **[しきい値]**](../platform/alerts-unified-log.md#threshold-and-operator)、[ **[頻度]**](../platform/alerts-unified-log.md#frequency) を設定します。
+1. 次に、プレビュー データに基づいて、[ **[演算子]** 、 **[しきい値]**](./alerts-unified-log.md#threshold-and-operator)、[ **[頻度]**](./alerts-unified-log.md#frequency) を設定します。
 
-1. 必要に応じて、 **[合計] または [連続する違反]** を使用して、[アラートをトリガーする違反の数](../platform/alerts-unified-log.md#number-of-violations-to-trigger-alert)を設定することもできます。
+1. 必要に応じて、 **[合計] または [連続する違反]** を使用して、[アラートをトリガーする違反の数](./alerts-unified-log.md#number-of-violations-to-trigger-alert)を設定することもできます。
 
 1. **[Done]** を選択します。 
 
 1. **[アラート ルール名]** 、 **[説明]** を定義し、アラートの **[重大度]** を選択します。 これらの詳細は、すべてのアラート アクションで使用されます。 さらに、 **[ルールの作成時に有効にする]** を選択して、作成に関するアラート ルールをアクティブにしないようにできます。
 
-1. アラートが発生した後に、ルールのアクションを非表示にする場合は、[ **[アラートを表示しない]**](../platform/alerts-unified-log.md#state-and-resolving-alerts) オプションを使用します。 ルールは引き続き実行され、アラートも作成されますが、ノイズを防ぐためにアクションはトリガーされません。 有効にするには、ミュート アクションの値がアラートの頻度よりも大きい必要があります。
+1. アラートが発生した後に、ルールのアクションを非表示にする場合は、[ **[アラートを表示しない]**](./alerts-unified-log.md#state-and-resolving-alerts) オプションを使用します。 ルールは引き続き実行され、アラートも作成されますが、ノイズを防ぐためにアクションはトリガーされません。 有効にするには、ミュート アクションの値がアラートの頻度よりも大きい必要があります。
 
     ![ログ アラートのアラートを表示しない](media/alerts-log/AlertsPreviewSuppress.png)
 
-1. アラートの条件が満たされた場合に、アラート ルールで 1 つまたは複数の [**アクション グループ**](../platform/action-groups.md#webhook)をトリガーするかどうかを指定します。
+1. アラートの条件が満たされた場合に、アラート ルールで 1 つまたは複数の [**アクション グループ**](./action-groups.md#webhook)をトリガーするかどうかを指定します。
 
     > [!NOTE]
     > 実行できるアクションの制限については、[Azure サブスクリプション サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md)に関するページを参照してください。  
@@ -148,11 +148,11 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
 1. **[条件]** タブから開始します。
 
-    1. [ **[測定]**](../platform/alerts-unified-log.md#measure)、[ **[集計の種類]**](../platform/alerts-unified-log.md#aggregation-type)、および [ **[集計の粒度]**](../platform/alerts-unified-log.md#aggregation-granularity) が正しいことを確認します。 
+    1. [ **[測定]**](./alerts-unified-log.md#measure)、[ **[集計の種類]**](./alerts-unified-log.md#aggregation-type)、および [ **[集計の粒度]**](./alerts-unified-log.md#aggregation-granularity) が正しいことを確認します。 
         1. 既定のルールでは、過去 5 分間の結果の数がカウントされます。
         1. 集計されたクエリ結果が検出されると、それを取得するため、ルールは数秒以内に自動的に更新されます。
 
-    1. 必要に応じて、[ディメンション別にアラートを分割する](../platform/alerts-unified-log.md#split-by-alert-dimensions)ことを選択します。 
+    1. 必要に応じて、[ディメンション別にアラートを分割する](./alerts-unified-log.md#split-by-alert-dimensions)ことを選択します。 
        - **リソース ID 列** が検出されると、自動的に選択され、発生したアラートのコンテキストがレコードのリソースに変更されます。 
        - **リソース ID 列** を選択解除して、サブスクリプションまたはリソース グループでアラートを発生させることができます。 クエリ結果が複数のリソースに基づいている場合は、選択解除すると役立ちます。 たとえば、リソース グループの仮想マシンの 80% で CPU 使用率が高くなっているかどうかを確認するクエリなどが該当します。
        - ディメンション テーブルを使用することで、任意の数値またはテキストの列の型に対して、追加で最大 6 つの分割を選択することもできます。
@@ -164,19 +164,19 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
         ![プレビューのグラフ](media/alerts-log/preview-chart.png)
 
-    1. 次に、プレビュー データに基づいて、 **[アラート ロジック]** 、[ **[演算子]** 、 **[しきい値]**](../platform/alerts-unified-log.md#threshold-and-operator)、[ **[頻度]**](../platform/alerts-unified-log.md#frequency) を設定します。
+    1. 次に、プレビュー データに基づいて、 **[アラート ロジック]** 、[ **[演算子]** 、 **[しきい値]**](./alerts-unified-log.md#threshold-and-operator)、[ **[頻度]**](./alerts-unified-log.md#frequency) を設定します。
 
         ![しきい値とアラート ロジックが含まれるプレビューのグラフ](media/alerts-log/chart-and-alert-logic.png)
 
-    1. 必要に応じて、 **[詳細オプション]** セクションにある [ **[アラートをトリガーする違反の数]**](../platform/alerts-unified-log.md#number-of-violations-to-trigger-alert) を設定することもできます。
+    1. 必要に応じて、 **[詳細オプション]** セクションにある [ **[アラートをトリガーする違反の数]**](./alerts-unified-log.md#number-of-violations-to-trigger-alert) を設定することもできます。
     
         ![[詳細オプション]](media/alerts-log/advanced-options.png)
 
-1. **[アクション]** タブで、必要な [[アクション グループ]](../platform/action-groups.md) を選択または作成します。
+1. **[アクション]** タブで、必要な [[アクション グループ]](./action-groups.md) を選択または作成します。
 
     ![[アクション] タブ](media/alerts-log/actions-tab.png)
 
-1. **[詳細]** タブで、 **[アラート ルールの詳細]** と **[プロジェクトの詳細]** を定義します。 必要に応じて、 **[今すぐ実行を開始]** しないか、アラート ルールが発生した後の期間に [ **[アクションのミュート]**](../platform/alerts-unified-log.md#state-and-resolving-alerts) を行うかどうかを設定できます。
+1. **[詳細]** タブで、 **[アラート ルールの詳細]** と **[プロジェクトの詳細]** を定義します。 必要に応じて、 **[今すぐ実行を開始]** しないか、アラート ルールが発生した後の期間に [ **[アクションのミュート]**](./alerts-unified-log.md#state-and-resolving-alerts) を行うかどうかを設定できます。
 
     > [!NOTE]
     > ログ アラート ルールは現在ステートレスであり、ミュートが定義されていない限り、アラートが作成されるたびにアクションが発生します。
@@ -199,7 +199,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 1. アラートの管理には、発生したすべてのアラートが表示されます。 [アラートの管理の詳細について参照してください。](alerts-managing-alert-instances.md)
 
     > [!NOTE]
-    > 現在、ログ アラート ルールは[ステートレスで、解決しません。](../platform/alerts-unified-log.md#state-and-resolving-alerts)
+    > 現在、ログ アラート ルールは[ステートレスで、解決しません。](./alerts-unified-log.md#state-and-resolving-alerts)
 
 1. ルールを編集するには、上部のバーにある **[アラート ルールの管理]** ボタンを選択します。
 
@@ -221,13 +221,13 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 - [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) :ログ アラートのアクション パラメーターを指定するオブジェクトを作成または更新するための PowerShell コマンドレット。 [New-AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) および [Set-AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) コマンドレットによって入力として使用されます。
 - [New-AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) :ログ アラートのアクション グループ パラメーターを指定するオブジェクトを作成または更新するための PowerShell コマンドレット。 [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) コマンドレットによって入力として使用されます。
 - [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) :ログ アラートのトリガー条件パラメーターを指定するオブジェクトを作成または更新するための PowerShell コマンドレット。 [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) コマンドレットによって入力として使用されます。
-- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) :[メトリック測定タイプのログ アラート](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)のメトリック トリガー条件パラメーターを指定するオブジェクトを作成または更新するための PowerShell コマンドレット。 [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) コマンドレットによって入力として使用されます。
+- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) :[メトリック測定タイプのログ アラート](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)のメトリック トリガー条件パラメーターを指定するオブジェクトを作成または更新するための PowerShell コマンドレット。 [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) コマンドレットによって入力として使用されます。
 - [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) :既存のログ アラート ルールまたは特定のログ アラート ルールを一覧表示するための PowerShell コマンドレット
 - [Update-AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) :ログ アラート ルールを有効または無効にするための PowerShell コマンドレット
 - [Remove-AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule):既存のログ アラート ルールを削除するための PowerShell コマンドレット
 
 > [!NOTE]
-> ScheduledQueryRules PowerShell コマンドレットで管理できるのは、現在の [Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) を使用して作成されたルールのみです。 従来の [Log Analytics Alert API](../platform/api-alerts.md) を使用して作成されたログ アラート ルールは、[Scheduled Query Rules API に切り替えた後にのみ](../alerts/alerts-log-api-switch.md)、PowerShell を使用してのみ管理できます。
+> ScheduledQueryRules PowerShell コマンドレットで管理できるのは、現在の [Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) を使用して作成されたルールのみです。 従来の [Log Analytics Alert API](./api-alerts.md) を使用して作成されたログ アラート ルールは、[Scheduled Query Rules API に切り替えた後にのみ](../alerts/alerts-log-api-switch.md)、PowerShell を使用してのみ管理できます。
 
 PowerShell を使用してログ アラート ルールを作成する手順の例を次に示します。
 
@@ -247,6 +247,25 @@ $alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsAction
 New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
 ```
 
+PowerShell とリソース間のクエリを使用してログ アラート ルールを作成する手順の例を次に示します。
+
+```powershell
+$authorized = @ ("/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicewsCrossExample", "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceAppInsights")
+
+$source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews" -AuthorizedResource $authorized
+
+$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes 15 -TimeWindowInMinutes 30
+
+$metricTrigger = New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator "GreaterThan" -Threshold 2 -MetricTriggerType "Consecutive" -MetricColumn "_ResourceId"
+
+$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "LessThan" -Threshold 5 -MetricTrigger $metricTrigger
+
+$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG" -EmailSubject "Custom email subject" -CustomWebhookPayload "{ `"alert`":`"#alertrulename`", `"IncludeSearchResults`":true }"
+
+$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity "3" -Trigger $triggerCondition
+New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name" 
+```
+
 PowerShell を使用して、[テンプレートとパラメーター](./alerts-log-create-templates.md) ファイルを使用してログ アラートを作成することもできます。
 
 ```powershell
@@ -261,7 +280,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ## <a name="managing-log-alerts-using-cli"></a>CLI を使用したログ アラートの管理
 
 > [!NOTE]
-> Azure CLI サポートは、scheduledQueryRules API バージョン `2020-05-01-preview` 以降でのみ使用できます。 以前の API バージョンでは、次に示すように、テンプレートと共に Azure Resource Manager CLI を使用できます。 従来の [Log Analytics Alert API](../platform/api-alerts.md) を使用する場合は、CLI を使用するよう切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。
+> Azure CLI サポートは、scheduledQueryRules API バージョン `2020-05-01-preview` 以降でのみ使用できます。 以前の API バージョンでは、次に示すように、テンプレートと共に Azure Resource Manager CLI を使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、CLI を使用するよう切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。
 
 前のセクションでは、Azure portal を使用してログ アラート ルールを作成、表示、および管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用することです。 この記事では、Cloud Shell を使用します。
 
@@ -323,7 +342,7 @@ az deployment group create \
 
 ## <a name="next-steps"></a>次の手順
 
-* [ログ アラート](../platform/alerts-unified-log.md)について確認します。
+* [ログ アラート](./alerts-unified-log.md)について確認します。
 * [Azure Resource Manager テンプレート](./alerts-log-create-templates.md)を使用してログ アラートを作成します。
 * [ログ アラートの Webhook アクション](./alerts-log-webhook.md)を理解します。
-* [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します
+* [ログ クエリ](../logs/log-query-overview.md)についてさらに学習します

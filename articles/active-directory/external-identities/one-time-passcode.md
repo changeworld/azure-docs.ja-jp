@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f37c7e2f21c76fcc902b0922399081b9be949e99
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365533"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688469"
 ---
 # <a name="email-one-time-passcode-authentication"></a>電子メール ワンタイム パスコード認証
 
@@ -26,7 +26,8 @@ ms.locfileid: "100365533"
 ![電子メール ワンタイム パスコードの概要図](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> **2021 年 10 月以降**、電子メール ワンタイム パスコード機能は、既存のすべてのテナントで有効になり、新しいテナントでは既定で有効になります。 この機能が自動的に有効にならないようにしたい場合は、これを無効にできます。 以下の「[電子メール ワンタイム パスコードを無効にする](#disable-email-one-time-passcode)」をご覧ください。
+> - **2021 年 10 月以降**、電子メール ワンタイム パスコード機能は、既存のすべてのテナントで有効になり、新しいテナントでは既定で有効になります。 この機能が自動的に有効にならないようにしたい場合は、これを無効にできます。 以下の「[電子メール ワンタイム パスコードを無効にする](#disable-email-one-time-passcode)」をご覧ください。
+> - 電子メール ワンタイム パスコード設定は、Azure portal で、 **[外部コラボレーションの設定]** から **[すべての ID プロバイダー]** に移動されました。
 
 > [!NOTE]
 > ワンタイム パスコードのユーザーは、テナントのコンテキストを含むリンクを使用してサインインする必要があります (たとえば、`https://myapps.microsoft.com/?tenantid=<tenant id>` や `https://portal.azure.com/<tenant id>`、または検証済みのドメインの場合は `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`)。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com` や `https://portal.azure.com` を使用すると、エラーが発生します。
@@ -83,27 +84,50 @@ ms.locfileid: "100365533"
 
 2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
 
-3. **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
+3. **[外部 ID]**  >  **[すべての ID プロバイダー]** を選択します。
 
-4. **[ゲストの電子メール ワンタイム パスコード]** の下で、 **[ゲストの電子メール ワンタイム パスコードを無効にする]** を選択します。
+4. **[電子メール ワンタイム パスコード]** を選択してから、 **[ゲストの電子メール ワンタイム パスコードを無効にする]** を選択します。
 
    > [!NOTE]
-   > 電子メール ワンタイム パスコード オプションではなく、次のトグルが表示されている場合は、この機能のプレビューを以前に有効、無効、またはオプトインしたことがあることを意味します。 **[いいえ]** を選択すると、この機能が無効になります。
+   > 電子メール ワンタイム パスコード設定は、Azure portal で、 **[外部コラボレーションの設定]** から **[すべての ID プロバイダー]** に移動されました。
+   > 電子メール ワンタイム パスコード オプションではなくトグルが表示されている場合は、以前にこの機能のプレビューを有効、無効、またはオプトインしたことを意味します。 **[いいえ]** を選択すると、この機能が無効になります。
    >
-   >![オプトインされた電子メール ワンタイム パスコードを有効にする](media/delegate-invitations/enable-email-otp-opted-in.png)
+   >![無効になっている電子メール ワンタイム パスコードのトグル](media/one-time-passcode/enable-email-otp-disabled.png)
 
 5. **[保存]** を選択します。
 
 ## <a name="note-for-public-preview-customers"></a>パブリック プレビューの顧客向けのメモ
 
-以前に電子メール ワンタイム パスコードのパブリック プレビューにオプトインしたことがある場合は、2021 年 10 月という機能の自動有効化の期日が適用されないため、関連するビジネス プロセスは影響を受けません。 また、Azure portal の **[ゲストの電子メール ワンタイム パスコード]** プロパティの下に、 **[2021 年 10 月にゲストの電子メール ワンタイム パスコードを自動的に有効にする]** オプションも表示されません。 代わりに、次の **[はい]** または **[いいえ]** のトグルが表示されます。
+以前に電子メール ワンタイム パスコードのパブリック プレビューにオプトインしたことがある場合は、2021 年 10 月という機能の自動有効化の期日が適用されないため、関連するビジネス プロセスは影響を受けません。 また、Azure portal の **[ゲストの電子メール ワンタイム パスコード]** プロパティの下に、 **[2021 年 10 月以降、ゲストの電子メール ワンタイム パスコードを自動的に有効にする]** オプションが表示されません。 代わりに、次の **[はい]** または **[いいえ]** のトグルが表示されます。
 
-![オプトインされた電子メール ワンタイム パスコードを有効にする](media/delegate-invitations/enable-email-otp-opted-in.png)
+![オプトインされている電子メール ワンタイム パスコード](media/one-time-passcode/enable-email-otp-opted-in.png)
 
 ただし、この機能からオプトアウト し、2021 年 10 月にそれが自動的に有効になることを希望する場合は、Microsoft Graph API の [email authentication method configuration リソースの種類](/graph/api/resources/emailauthenticationmethodconfiguration)を使用して、既定の設定に戻すことができます。 既定の設定に戻すと、 **[ゲストの電子メール ワンタイム パスコード]** の下で次のオプションが使用可能になります。
 
-- **[2021 年 10 月にゲストの電子メール ワンタイム パスコードを自動的に有効にする]** 。 (既定値) お使いのテナントで電子メール ワンタイム パスコード機能がまだ有効になっていない場合、2021 年 10 月に自動的に有効になります。 その時点でこの機能が有効になることを希望する場合、これ以上の操作は必要ありません。 この機能を既に有効または無効にしている場合、このオプションは使用できません。
+![オプトインされた電子メール ワンタイム パスコードを有効にする](media/one-time-passcode/email-otp-options.png)
+
+- **[2021 年 10 月以降、ゲストの電子メール ワンタイム パスコードを自動的に有効にする。]** (既定値) お使いのテナントで電子メール ワンタイム パスコード機能がまだ有効になっていない場合、2021 年 10 月以降、自動的に有効になります。 その時点でこの機能が有効になることを希望する場合、これ以上の操作は必要ありません。 この機能を既に有効または無効にしている場合、このオプションは使用できません。
 
 - **[ゲストの電子メール ワンタイム パスコードを今すぐ有効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を有効にします。
 
 - **[ゲストの電子メール ワンタイム パスコードを無効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を無効にし、2021 年 10 月にこの機能が有効にならないようにします。
+
+## <a name="note-for-azure-us-government-customers"></a>Azure US Government のお客様のための注意事項
+
+Azure US Government クラウドでは、電子メール ワンタイムパスコード機能は既定で無効になっています。  
+
+ ![無効になっている電子メール ワンタイム パスコード](media/one-time-passcode/enable-email-otp-disabled.png)
+
+Azure US Government クラウドで電子メール ワンタイム パスコード機能を有効にするには:
+
+1. Azure AD の全体管理者として [Azure portal](https://portal.azure.com) にサインインします。
+2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
+3. **[組織の関係]**  > **[設定]** を選択します。
+
+   > [!NOTE]
+   > - **[組織の関係]** が表示されない場合は、上部の検索バーで "外部 ID" を検索します。
+
+4. **[電子メール ワンタイム パスコード]** を選択してから、 **[はい]** を選択します。
+5. **[保存]** を選択します。
+
+現在の制限事項の詳細については、「[Azure US Government クラウド](current-limitations.md#azure-us-government-clouds)」を参照してください。

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: c8d0ea43410b8d191d3d0b08c2f232bd72c80b20
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669624"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693528"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Azure Purview でデータに自動的にラベルを付ける
 
@@ -102,7 +102,10 @@ Azure Purview で MIP の秘密度ラベルを拡張することにより、組�
 
 **秘密度ラベルを Purview に拡張するには:**
 
-Microsoft 365 で、 **[Information Protection]** ページに移動します。 **[Azure Purview の資産へのラベル付けを拡張する]** で、 **[有効にする]** ボタンを選択し、表示される確認ダイアログで **[はい]** を選択します。
+次の手順では、秘密度ラベルを Azure Purview で使用できるようにします。Azure Purview では、SQL 列、Azure Blob Storage 内のファイルなどの資産に秘密度ラベルを適用できます。
+
+1. Microsoft 365 で、 **[Information Protection]** ページに移動します。 
+1. **[Azure Purview の資産へのラベル付けを拡張する]** で、 **[有効にする]** ボタンを選択し、表示される確認ダイアログで **[はい]** を選択します。
 
 例:
 

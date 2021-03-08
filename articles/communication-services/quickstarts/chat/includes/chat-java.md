@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 6a075ae721d767faf25e4774dd545d36eedfaef4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b402dec76f88bfdb0bc4758f94cc6e8e279d8040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379672"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750757"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -84,6 +84,8 @@ Java 用 Azure Communication Services チャット クライアント ライブ�
 ## <a name="create-a-chat-client"></a>チャット クライアントを作成する
 チャット クライアントを作成するには、Communications Service エンドポイントと、前提条件の手順で生成されたアクセス トークンを使用します。 ユーザーのアクセス トークンを使用することで、Azure Communication Services に対して直接認証を行うクライアント アプリケーションを作成できます。 サーバーでこれらのトークンを生成した後、それらをクライアント デバイスに渡します。 チャット クライアントにトークンを渡すには、Common クライアント ライブラリの CommunicationTokenCredential クラスを使用する必要があります。 
 
+詳細については、[チャットのアーキテクチャ](../../../concepts/chat/concepts.md)に関するドキュメントを参照してください
+
 import ステートメントを追加する場合は、com.azure.communication.chat.implementation 名前空間ではなく、com.azure.communication.chat および com.azure.communication.chat.models 名前空間からのインポートのみを追加してください。 Maven を使用して生成された App.java ファイルで、次のコードを使用して開始できます。
 
 ```Java
@@ -139,11 +141,11 @@ public class App
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(firstUser)
+    .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
     
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(secondUser)
+    .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -205,13 +207,15 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` は、`chatMessage.getType()` で識別できるさまざまな種類のメッセージを返します。 次の種類があります。
 
-- `Text`:スレッド参加者によって送信された通常のチャット メッセージ。
+- `text`:スレッド参加者によって送信された通常のチャット メッセージ。
 
-- `ThreadActivity/TopicUpdate`:トピックが更新されたことを示すシステム メッセージ。
+- `html`: スレッド参加者によって送信された HTML チャット メッセージ。
 
-- `ThreadActivity/AddMember`:1 人以上のメンバーがチャット スレッドに追加されたことを示すシステム メッセージ。
+- `topicUpdated`:トピックが更新されたことを示すシステム メッセージ。
 
-- `ThreadActivity/DeleteMember`:メンバーがチャット スレッドから削除されたことを示すシステム メッセージ。
+- `participantAdded`:1 人以上の参加者がチャット スレッドに追加されたことを示すシステム メッセージ。
+
+- `participantRemoved`:参加者がチャット スレッドから削除されたことを示すシステム メッセージ。
 
 詳細については、「[メッセージの種類](../../../concepts/chat/concepts.md#message-types)」を参照してください。
 
@@ -222,7 +226,7 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 threadId で識別されるスレッドに参加者を追加するには、`addParticipants` メソッドを使用します。
 
 - チャット スレッドに追加する参加者をリストアップするには、`listParticipants` を使用します。
-- `user` (必須) は、[ユーザー アクセス トークン](../../access-tokens.md)に関するクイックスタートで CommunicationIdentityClient によって作成された CommunicationUserIdentifier です。
+- `communicationIdentifier` (必須) は、[ユーザー アクセス トークン](../../access-tokens.md)に関するクイックスタートで CommunicationIdentityClient によって作成された CommunicationIdentifier です。
 - `display_name` (省略可) は、スレッド参加者の表示名です。
 - `share_history_time` (省略可) は、参加者との間でチャット履歴が共有される際の起点となる時刻です。 チャット スレッドの始めから履歴を共有する場合は、スレッドの作成日時と同じかそれ以前の任意の日付にこのプロパティを設定してください。 参加者が追加された時点よりも前の履歴は共有しない場合は、現在の日付に設定します。 部分的に履歴を共有するには、必要な日付に設定します。
 
@@ -230,11 +234,11 @@ threadId で識別されるスレッドに参加者を追加するには、`addP
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(user1)
+    .setCommunicationIdentifier(identity1)
     .setDisplayName("Display Name 1");
 
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(user2)
+    .setCommunicationIdentifier(identity2)
     .setDisplayName("Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -245,14 +249,14 @@ AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsO
 chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
-## <a name="remove-user-from-a-chat-thread"></a>チャット スレッドからユーザーを削除する
+## <a name="remove-participant-from-a-chat-thread"></a>チャット スレッドから参加者を削除する
 
-スレッドへのユーザーの追加と同様、チャット スレッドからユーザーを削除することもできます。 そのためには、追加した参加者のユーザー ID を追跡する必要があります。
+スレッドへの参加者の追加と同様、チャット スレッドから参加者を削除することもできます。 そのためには、追加した参加者の ID を追跡する必要があります。
 
-`removeParticipant` を使用します。ここで `user` は作成した CommunicationUserIdentifier です。
+`removeParticipant` を使用します。ここで `identifier` は作成した CommunicationIdentifier です。
 
 ```Java
-chatThreadClient.removeParticipant(user);
+chatThreadClient.removeParticipant(identity);
 ```
 
 ## <a name="run-the-code"></a>コードの実行

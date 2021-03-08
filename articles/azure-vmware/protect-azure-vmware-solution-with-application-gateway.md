@@ -3,12 +3,12 @@ title: Azure Application Gateway を使用して Azure VMware Solution 上の We
 description: Azure VMware Solution で実行されている Web アプリを安全に公開するために Azure Application Gateway を構成します。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384199"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733586"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 
@@ -35,7 +35,7 @@ ms.locfileid: "100384199"
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware Solution の Web アプリケーションを使用して Application Gateway を検証するために使用されるテスト シナリオを示す図。" border="false":::
 
-Application Gateway インスタンスは、専用サブネットのハブにデプロイされます。 これは Azure パブリック IP アドレスを保持します。 仮想ネットワークに対して Standard の DDoS 保護をアクティブ化することをお勧めします。 Web サーバーは、NSX T0 および T1 ゲートウェイの背後にある Azure VMware Solution プライベート クラウドでホストされています。 Azure VMware Solution では、[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) を使用して、ハブとオンプレミスのシステムとの通信が可能になります。
+Application Gateway インスタンスは、専用サブネットのハブにデプロイされます。 これは Azure パブリック IP アドレスを保持します。 仮想ネットワーク用に [Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md) をアクティブ化することをお勧めします。 Web サーバーは、NSX T0 および T1 ゲートウェイの背後にある Azure VMware Solution プライベート クラウドでホストされています。 Azure VMware Solution では、[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) を使用して、ハブとオンプレミスのシステムとの通信が可能になります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -193,3 +193,4 @@ Application Gateway を使用した Azure VMware ソリューションで実行�
 - [さまざまなシナリオ向けの Azure Application Gateway の構成](../application-gateway/configuration-overview.md)。
 - [Azure VMware Solution ワークロードを分散するための Traffic Manager のデプロイ](deploy-traffic-manager-balance-workloads.md)。
 - [Azure NetApp Files と Azure VMware Solution ベースのワークロードの統合](netapp-files-with-azure-vmware-solution.md)。
+- [仮想ネットワーク内の Azure リソースの保護](../ddos-protection/ddos-protection-overview.md)

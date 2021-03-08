@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 5070b64c3900aa4ee1cf51519c7b64362ac37413
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5de909d0d57ae212fa562eb31551e2271d307d47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596671"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694259"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -361,6 +361,11 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 | Microsoft.Network/networkSecurityGroups/write                 |   ネットワーク セキュリティ グループの作成または更新                             |
 | Microsoft.Network/networkSecurityGroups/delete                |   ネットワーク セキュリティ グループの削除                                       |
 | Microsoft.Network/networkSecurityGroups/join/action           |   サブネットまたはネットワーク インターフェイスへのネットワーク セキュリティ グループの関連付け 
+
+
+>[!NOTE]
+> ネットワーク セキュリティ グループに対して `write` 操作を実行するには、`Microsoft.Network/networkSecurityGroups/write` アクセス許可に加えて、リソース グループに対する `read` 以上のアクセス許可がサブスクリプション アカウントに必要です。
+
 
 ### <a name="network-security-group-rule"></a>ネットワーク セキュリティ グループの規則
 

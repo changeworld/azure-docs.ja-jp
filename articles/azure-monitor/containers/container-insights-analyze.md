@@ -1,26 +1,26 @@
 ---
-title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
-description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
+title: Container insights を使用した Kubernetes の監視 | Microsoft Docs
+description: この記事では、Container insights を使用して Kubernetes クラスターのパフォーマンスの表示と分析を行う方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 9bb21f7a651d773806a96bb19044abf3bc7dda5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604447"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711350"
 ---
-# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
+# <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Container insights を使用して Kubernetes クラスターのパフォーマンスを監視する
 
-Azure Monitor for containers を使用している場合、パフォーマンスのグラフと正常性状態を使用して、2 つの観点から Azure Kubernetes Service (AKS)、Azure Stack などの環境でホストされる Kubernetes クラスターのワークロードを監視できます。 クラスターから直接監視するか、Azure Monitor からサブスクリプション内のすべてのクラスターを表示することができます。 Azure Container Instances の表示は、特定の AKS クラスターを監視するときにも可能です。
+Container insights では、パフォーマンス グラフと正常性状態を使用して、Azure Kubernetes Service (AKS) や Azure Stack などの環境でホストされる Kubernetes クラスターのワークロードを 2 つの観点から監視できます。 クラスターから直接監視するか、Azure Monitor からサブスクリプション内のすべてのクラスターを表示することができます。 Azure Container Instances の表示は、特定の AKS クラスターを監視するときにも可能です。
 
 この記事は、2 つの観点と、検出された問題をすばやく評価、調査、解決するうえで Azure Monitor がどのように役立つかを理解するのに役立ちます。
 
-Azure Monitor for containers を有効にする方法については、[Azure Monitor for containers のオンボード](container-insights-onboard.md)に関する記事を参照してください。
+Container insights を有効にする方法の詳細については、「[Container insights のオンボード](container-insights-onboard.md)」を参照してください。
 
 Azure Monitor には、ご使用のサブスクリプション内のリソース グループにデプロイされ、Linux および Windows Server 2019 を実行しているすべての監視対象 Kubernetes クラスターの正常性状態が表示される複数クラスター ビューが用意されています。 ここでは、ソリューションによって監視されない、すべての環境にわたって検出されたクラスターが表示されます。 すぐにクラスターの正常性を把握することができ、ここからは、ノードとコントローラーのパフォーマンス ページにドリルダウンしたり、クラスターのパフォーマンス グラフを表示したりできます。 検出され、監視対象外として識別された AKS クラスターについては、いつでも監視を有効にできます。
 
-Azure Monitor for containers を使用して Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点については、[こちら](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)から概要についての記事を参照してください。
+Linux クラスターと比較した場合の Container insights を使用した Windows Server クラスターの監視の主な相違点については、[こちら](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)の概要に関する記事を参照してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -37,7 +37,7 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 * **Azure** - Azure Kubernetes Service でホストされている AKS および AKS エンジン クラスター
 * **Azure Stack (プレビュー)** - Azure Stack でホストされている AKS エンジン クラスター
 * **Azure 以外 (プレビュー)** - オンプレミスでホストされている Kubernetes クラスター
-* **すべて** - Azure、Azure Stack でホストされ、Azure Monitor for containers にオンボードされているオンプレミスの環境でホストされるすべての Kubernetes クラスターを表示します。
+* **すべて** - Azure、Azure Stack、および Container insights にオンボードされたオンプレミスの環境でホストされているすべての Kubernetes クラスターを表示します。
 
 特定の環境からクラスターを表示するには、ページの左上隅にある **[環境]** ピルから選択します。
 
@@ -59,7 +59,7 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 * **見つかりませんでした**:ワークスペース、リソース グループ、またはこのソリューションのワークスペースを含むサブスクリプションのいずれかが削除されています。
 * **権限がありません**:ユーザーはワークスペース内のデータを読み取るために必要なアクセス許可を持っていません。
 * **Error**: ワークスペースからデータを読み取るときにエラーが発生しました。
-* **間違った構成**:Azure Monitor for containers が、指定されたワークスペースで正しく構成されていませんでした。
+* **間違った構成**: 指定されたワークスペースで Container insights が正しく構成されませんでした。
 * **データがありません**:過去 30 分間にデータがワークスペースにレポートされていません。
 
 クラスター全体の状態は、1 つの例外を除き、3 つの状態のうち "*最悪のもの*" として計算されます。 3 つの状態のいずれかが不明の場合は、クラスター全体の状態も **[不明]** と表示されます。
@@ -88,7 +88,7 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 
 ## <a name="view-performance-directly-from-a-cluster"></a>クラスターから直接、パフォーマンスを確認する
 
-Azure Monitor for containers へは、左側のパネルの **[Insights]\(分析情報\)**  >  **[クラスター]** を選択するか、複数クラスター ビューからクラスターを選択したときに、AKS クラスターから直接アクセスできます。 実際のクラスターに関する情報は 4 つの観点にまとめられます。
+左側のペインで **[Insights]\(分析情報\)**  >  **[クラスター]** を選択するか、マルチクラスター ビューからクラスターを選択すると、AKS クラスターから Container insights に直接アクセスできます。 実際のクラスターに関する情報は 4 つの観点にまとめられます。
 
 - クラスター
 - Nodes
@@ -109,13 +109,13 @@ Azure Monitor for containers へは、左側のパネルの **[Insights]\(分析
 - **ノード数**:Kubernetes からのノードの数と状態。 表示されるクラスター ノードの状態は、[合計]、[準備完了]、[準備ができていません] です。 グラフの上のセレクターで個別にまたは組み合わせてフィルター処理できます。
 - **アクティブなポッド数**:Kubernetes からのポッドの数と状態。 表示されるポッドの状態は、[合計]、[保留中]、[実行中]、[不明]、[成功]、または [失敗] です。 グラフの上のセレクターで個別にまたは組み合わせてフィルター処理できます。
 
-左と右方向キーを使用すると、グラフ上の各データ ポイントに順番に移動します。 上と下方向キーを使用すると、パーセンタイル ラインに順番に移動します。 いずれかのグラフの右上隅にあるピン アイコンを選択すると、最後に表示した Azure ダッシュボードに選択したグラフがピン留めされます。 ダッシュ ボードで、グラフのサイズおよび位置を変更できます。 ダッシュボードからグラフを選択すると、Azure Monitor for containers にリダイレクトされ、適切なスコープとビューが読み込まれます。
+左と右方向キーを使用すると、グラフ上の各データ ポイントに順番に移動します。 上と下方向キーを使用すると、パーセンタイル ラインに順番に移動します。 いずれかのグラフの右上隅にあるピン アイコンを選択すると、最後に表示した Azure ダッシュボードに選択したグラフがピン留めされます。 ダッシュ ボードで、グラフのサイズおよび位置を変更できます。 ダッシュボードからグラフを選択すると、Container insights にリダイレクトされ、適切なスコープとビューが読み込まれます。
 
-Azure Monitor for containers では Azure Monitor の[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)もサポートされており、独自のプロット グラフの作成、傾向の関連付けと調査、ダッシュボードへのピン留めを行うことができます。 メトリックス エクスプローラーでは、[メトリックベースの警告ルール](../alerts/alerts-metric.md)の基準として、実際のメトリックを視覚化するために設定した条件を使用することもできます。
+Container insights では Azure Monitor の[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)もサポートされており、独自のプロット グラフの作成、傾向の関連付けと調査、およびダッシュボードへのピン留めを行うことができます。 メトリックス エクスプローラーでは、[メトリックベースの警告ルール](../alerts/alerts-metric.md)の基準として、実際のメトリックを視覚化するために設定した条件を使用することもできます。
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>メトリックス エクスプローラーでコンテナーのメトリックを表示する
 
-メトリックス エクスプローラーでは、Azure Monitor for containers からのノードとポッドの使用率のメトリックを集計して表示できます。 次の表は、メトリックのグラフを使用してコンテナーのメトリックを視覚化する方法の理解に役立つ詳細情報をまとめたものです。
+メトリックス エクスプローラーで、Container insights からのノードとポッドの使用率のメトリックを集計して表示できます。 次の表は、メトリックのグラフを使用してコンテナーのメトリックを視覚化する方法の理解に役立つ詳細情報をまとめたものです。
 
 |名前空間 | メトリック | 説明 |
 |----------|--------|-------------|
@@ -297,12 +297,12 @@ Azure ネットワーク ポリシー マネージャーには、お客様のネ
 
 ## <a name="workbooks"></a>Workbooks
 
-Workbooks では、テキスト、ログ クエリ、メトリック、パラメーターが、クラスターのパフォーマンスを分析できる内容豊富な対話型レポートに組み合わされます。 Azure Monitor for Containers に使用できる Workbooks の詳細については、[Azure Monitor for Containers の Workbooks](../insights/container-insights-reports.md) に関する記事を参照してください。
+Workbooks では、テキスト、ログ クエリ、メトリック、パラメーターが、クラスターのパフォーマンスを分析できる内容豊富な対話型レポートに組み合わされます。 Container insights で使用できるブックの説明については、「[Container insights のブック](../insights/container-insights-reports.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor for containers を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合にアラートを作成し、実際の DevOps や運用プロセスと手順をサポートする方法について学習します。
+- [Container insights を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページで、実際の DevOps や運用プロセスと手順をサポートするための CPU とメモリの使用率が高い場合のアラートの作成方法を確認します。
 
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、実際のクラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 

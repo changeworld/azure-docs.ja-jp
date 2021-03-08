@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aac4278c6ce03c43418e99978cd039e24dc01194
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448533"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719272"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスでの Kubernetes ワークロード管理
 
@@ -54,6 +54,17 @@ Azure Stack Edge Pro デバイスにアプリケーションをデプロイす�
 - **Azure Arc 対応 Kubernetes のデプロイ**: Azure Arc 対応 Kubernetes は、Kubernetes クラスターにアプリケーションをデプロイできるようにするためのハイブリッド管理ツールです。 `azure-arc namespace` を使用して、Azure Stack Edge Pro デバイス上の Kubernetes クラスターに接続します。 この名前空間にデプロイされたエージェントが、Azure への接続を担当します。 GitOps ベースの構成管理を使用して、デプロイ構成を適用します。 
     
     また、Azure Arc 対応 Kubernetes を使用すると、コンテナーに対して Azure Monitor を使用して、クラスターを表示および監視することもできます。 詳細については、[Azure Arc 対応 Kubernetes の概要](../azure-arc/kubernetes/overview.md)に関するページを参照してください。
+    
+    2021 年 3 月以降、Azure Arc 対応 Kubernetes がユーザーに一般提供され、標準の使用料金が適用されます。 プレビュー版のお客様は、特典として、Azure Stack Edge デバイスに対して Azure Arc 対応 Kubernetes を無料でご利用いただけます。 プレビュー オファーを利用するには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成します。
+
+    1. **[問題の種類]** で **[課金]** を選択します。
+    2. **[サブスクリプション]** でご使用のサブスクリプションを選択します。
+    3. **[サービス]** で、 **[使用中のサービス]** を選択してから、 **[Azure Stack Edge]** を選択します。
+    4. **[リソース]** で、お使いのリソースを選択します。
+    5. **[Summary]\(要約\)** に、問題の説明を入力します。
+    6. **[問題の種類]** で、 **[Unexpected Charges]\(予期しない請求\)** を選択します。
+    7. **[問題のサブタイプ]** で、 **[Help me understand charges on my free trial]\(無料試用版への請求について説明してほしい\)** を選択します。
+
 
 ## <a name="choose-the-deployment-type"></a>デプロイの種類の選択
 

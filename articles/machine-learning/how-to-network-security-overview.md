@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980577"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691826"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 
@@ -71,7 +71,7 @@ ms.locfileid: "99980577"
 1. [Private Link が有効なワークスペース](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)を作成し、VNet とワークスペース間の通信を有効にします。
 1. [サービス エンドポイント](../key-vault/general/overview-vnet-service-endpoints.md)または[プライベート エンドポイント](../key-vault/general/private-link-service.md)を使用して、Azure Key Vault を仮想ネットワークに追加します。 Key Vault を ["信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する"](how-to-secure-workspace-vnet.md#secure-azure-key-vault) に設定します。
 1. [サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)を使用して、Azure ストレージ アカウントを仮想ネットワークに追加します。
-1. [プライベート エンドポイントを使用するように Azure Container Registry を構成](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)し、[Azure Container Instances でサブネットの委任を有効にします](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
+1. [プライベート エンドポイントを使用するように Azure Container Registry を構成します](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
 
 ![ワークスペースと関連するリソースが、VNet 内のサービス エンドポイントまたはプライベート エンドポイントを介して相互に通信する方法を示すアーキテクチャ図](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

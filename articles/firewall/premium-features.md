@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: e823e1efc66592e9f48b7ff5e53a176a4e8cb514
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549499"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715566"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium プレビューの機能
 
@@ -35,8 +35,8 @@ Azure Firewall Premium プレビューでは、ファイアウォール ポリ�
 Azure Firewall Premium プレビューには次の機能が含まれています。
 
 - **TLS 検査** - アウトバウンド トラフィックを復号化し、データを処理し、その後にデータを暗号化して宛先に送信します。
-- **IDPS** - ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワーク アクティビティを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、必要に応じてそのブロックを試みることができます。
-- **URL フィルタリング** - Azure Firewall の FQDN フィルタリング機能を拡張して URL 全体が考慮対象になるようにします。 たとえば、`www.contoso.com` の代わりに `www.contoso.com/a/c` となります。
+- **IDPS** - ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワーク アクティビティを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、任意でそのブロックを試みることができます。
+- **URL フィルタリング** - Azure Firewall の FQDN フィルタリング機能を拡張して URL 全体が考慮対象になるようにします。 たとえば、`www.contoso.com` の代わりに `www.contoso.com/a/c` とします。
 - **Web カテゴリ** - 管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトといった Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。
 
 ## <a name="features"></a>機能
@@ -80,7 +80,20 @@ Web カテゴリでは、管理者は、ギャンブルの Web サイトやソ�
 
 #### <a name="category-exceptions"></a>カテゴリの例外
 
-Web カテゴリの規則の例外を作成できます。 規則コレクション グループ内で、より優先度の高い個別の許可または拒否の規則コレクションを作成します。 たとえば、優先度が 100 で `www.linkedin.com` を許可する規則コレクションと、優先順位が 200 で **ソーシャル ネットワーキング** を拒否する規則コレクションを構成できます。 これにより、定義済みの **ソーシャル ネットワーキング** Web カテゴリの例外が作成されます。 
+Web カテゴリの規則の例外を作成できます。 規則コレクション グループ内で、より優先度の高い個別の許可または拒否の規則コレクションを作成します。 たとえば、優先度が 100 で `www.linkedin.com` を許可する規則コレクションと、優先順位が 200 で **ソーシャル ネットワーキング** を拒否する規則コレクションを構成できます。 これにより、定義済みの **ソーシャル ネットワーキング** Web カテゴリの例外が作成されます。
+
+#### <a name="categorization-change"></a>分類の変更
+
+次の場合に、分類の変更を要求できます。
+
+ - FQDN または URL が別のカテゴリの下にある必要があると思われる 
+ 
+or 
+
+- 分類されていない FQDN または URL に対して推奨されるカテゴリがある
+
+[https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) で要求を送信してください。
+ 
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -98,6 +111,7 @@ Azure Firewall Premium プレビューには、次の既知の問題がありま
 |HTTP (TLS 検査なし) での IDPS によるアラートの送信元 IP アドレスが間違っている。|プレーンテキスト HTTP トラフィックが使用されていて、IDPS によって新しいアラートが発行され、宛先がパブリック IP アドレスであるときに、表示される送信元の IP アドレスが間違っています (元の IP アドレスの代わりに内部 IP アドレスが表示されます)。|修正プログラムが一般提供される予定です。|
 |証明書伝達|CA 証明書がファイアウォールに適用された後、証明書が有効になるまでに 5 分から 10 分かかることがあります。|修正プログラムが一般提供される予定です。|
 |IDPS バイパス|IDPS バイパスは TLS 終了のトラフィックでは機能せず、送信元 IP アドレスと送信元 IP グループはサポートされません。|修正プログラムが一般提供される予定です。|
+|TLS 1.3 のサポート|TLS 1.3 は部分的にサポートされています。 クライアントからファイアウォールへの TLS トンネルは TLS 1.2 に基づいており、ファイアウォールから外部 Web サーバーへは TLS 1.3 に基づいています。|更新を調査中です。|
 
 
 

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717827"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
@@ -48,8 +48,10 @@ ms.locfileid: "100589740"
 | .NET Core と .NET Framework | サポート対象 (V2.13.1 以降)| [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| [GetMetric](get-metric.md) を介してサポート対象 (V 2.7.2 以降) |
 | Java                         | サポートされていません       | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
 | Node.js                      | サポートされていません       | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
-| Python                       | サポートされていません       | サポートされています                                 | [OpenCensus.stats](opencensus-python.md#metrics) を介してサポート対象 |  
+| Python                       | サポートされていません       | サポートされています                                 | [OpenCensus.stats](opencensus-python.md#metrics) を介して部分的にサポート対象 |  
 
+> [!NOTE]
+>  OpenCensus を使用した Python のメトリックの実装は、GetMetric とは異なります。 詳細については、[Python のメトリックに関するドキュメント](./opencensus-python.md#metrics)をご覧ください。
 
 ### <a name="codeless-supported-pre-aggregated-metrics-table"></a>コード不要でサポートされる事前集計されたメトリック テーブル
 

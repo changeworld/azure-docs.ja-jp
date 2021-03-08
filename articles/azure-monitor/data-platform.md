@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: bccd1f001cca67a5be3d14c50e6a6db96cb6584c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600854"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731699"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor データ プラットフォーム
 
@@ -28,7 +28,7 @@ ms.locfileid: "100600854"
 ## <a name="observability-data-in-azure-monitor"></a>Azure Monitor でのデータの可観測性
 メトリック、ログ、および分散トレースは、一般に可観測性の 3 つの柱と呼ばれています。 これらは、監視対象のシステムに十分な可観測性を提供するために監視ツールで収集して分析する必要がある異なる種類のデータです。 可観測性は、複数の柱のデータを相互に関連付けることと、監視対象のリソース全体のデータを集計することによって実現できます。 Azure Monitor には複数のソースからのデータがまとめて格納されるため、一般的なツールを使用してデータを相互に関連付けて分析できます。 また、他のサービスのデータに対するホスティングに加え、複数の Azure サブスクリプションとテナント間のデータの関連付けも行われます。
 
-Azure リソースによって、大量の監視データが生成されます。 Azure Monitor では、このデータと他のソースからの監視データが、メトリックまたはログ プラットフォームのいずれかに統合されます。 それぞれが特定の監視シナリオ向けに最適化され、それぞれが Azure Monitor の異なる機能をサポートしています。 データ分析、視覚化、アラートなどの機能では、必要なシナリオを最も効率的かつコスト効率の高い方法で実装できるように、それらの違いを理解しておく必要があります。 [Application Insights](app/app-insights-overview.md) や [Azure Monitor for VM](vm/vminsights-overview.md) などの Azure Monitor での分析には、この 2 種類のデータの違いを理解しなくても特定の監視シナリオに対応できる分析ツールがあります。 
+Azure リソースによって、大量の監視データが生成されます。 Azure Monitor では、このデータと他のソースからの監視データが、メトリックまたはログ プラットフォームのいずれかに統合されます。 それぞれが特定の監視シナリオ向けに最適化され、それぞれが Azure Monitor の異なる機能をサポートしています。 データ分析、視覚化、アラートなどの機能では、必要なシナリオを最も効率的かつコスト効率の高い方法で実装できるように、それらの違いを理解しておく必要があります。 [Application Insights](app/app-insights-overview.md) や [VM insights](vm/vminsights-overview.md) などの Azure Monitor での分析には、この 2 種類のデータの違いを理解しなくても特定の監視シナリオに対応できる分析ツールがあります。 
 
 
 ### <a name="metrics"></a>メトリック

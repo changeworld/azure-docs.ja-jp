@@ -1,20 +1,20 @@
 ---
-title: Azure Policy を使用して Azure Monitor for VMs を有効にする
-description: Azure Policy を使用して、複数の Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
+title: Azure Policy を使用して VM insights を有効にする
+description: Azure Policy を使用して、複数の Azure 仮想マシンまたは仮想マシン スケール セットで VM insights を有効にする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 4da0610de1f71cd422ec684ea633a4474c078862
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604298"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707542"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs を有効にする
-この記事では、Azure Policy を使用して、Azure 仮想マシンまたは Azure Arc (プレビュー) に接続されたハイブリッド仮想マシンで Azure Monitor for VMs を有効にする方法について説明します。 Azure Policy を使用すると、Azure 環境全体にわたって Azure Monitor for VMs に必要なエージェントをインストールし、各仮想マシンが作成されたら VM に対する監視を自動的に有効にするポリシー定義を割り当てることができます。 Azure Monitor for VMs には、環境内の準拠していない VM を検出して修復できる機能が用意されています。 この機能は、Azure Policy を直接操作する代わりに使用します。
+# <a name="enable-vm-insights-by-using-azure-policy"></a>Azure Policy を使用して VM insights を有効にする
+この記事では、Azure Policy を使用して、Azure 仮想マシンまたは Azure Arc (プレビュー) に接続されたハイブリッド仮想マシンで VM insights を有効にする方法について説明します。 Azure Policy を使用すると、Azure 環境全体にわたって VM insights に必要なエージェントをインストールし、各仮想マシンが作成されたら VM に対する監視を自動的に有効にするポリシー定義を割り当てることができます。 VM insights には、環境内の準拠していない VM を検出して修復できる機能が用意されています。 この機能は、Azure Policy を直接操作する代わりに使用します。
 
 Azure Policy に精通していない場合は、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」にある簡単な概要を参照してください。
 
@@ -22,15 +22,15 @@ Azure Policy に精通していない場合は、「[Azure Policy を使用し�
 > Azure 仮想マシン スケール セットで Azure Policy を使用するか、または Azure 仮想マシンを有効にするために Azure Policy を直接操作するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md#azure-monitor-for-vms)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-- [Log Analytics ワークスペースを作成して構成](../insights/vminsights-configure-workspace.md)します。
-- 「[サポートされるオペレーティング システム](../insights/vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
+- [Log Analytics ワークスペースを作成して構成](./vminsights-configure-workspace.md)します。
+- 「[サポートされるオペレーティング システム](./vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
 
 
-## <a name="azure-monitor-for-vms-initiative"></a>Azure Monitor for VMs のイニシアティブ
-Azure Monitor for VMs には、Azure 仮想マシンに Log Analytics エージェントと依存関係エージェントをインストールするための組み込みのポリシー定義が用意されています。 **[Azure Monitor for VMs の有効化]** イニシアティブには、これらの各ポリシー定義が含まれています。 このイニシアティブを管理グループ、サブスクリプション、またはリソース グループに割り当てて、そのスコープ内のすべての Windows または Linux Azure 仮想マシンにエージェントを自動的にインストールします。
+## <a name="vm-insights-initiative"></a>VM insights のイニシアティブ
+VM insights には、Azure 仮想マシンに Log Analytics エージェントと依存関係エージェントをインストールするための組み込みのポリシー定義が用意されています。 イニシアティブ **[Enable VM insights]\(VM insights を有効にする\)** には、これらの各ポリシー定義が含まれています。 このイニシアティブを管理グループ、サブスクリプション、またはリソース グループに割り当てて、そのスコープ内のすべての Windows または Linux Azure 仮想マシンにエージェントを自動的にインストールします。
 
 ## <a name="open-policy-coverage-feature"></a>ポリシー カバレッジ機能を開く
-**[Azure Monitor for VMs のポリシー カバレッジ]** にアクセスするには、Azure portal で **[Azure Monitor]** メニューの **[仮想マシン]** に移動します。 **[その他のオンボード オプション]** を選択してから、 **[ポリシーを使用して有効にする]** の **[有効化]** を選択します。
+**[VM insights ポリシー対象範囲]** にアクセスするには、Azure portal で **[Azure Monitor]** メニューの **[仮想マシン]** に移動します。 **[その他のオンボード オプション]** を選択してから、 **[ポリシーを使用して有効にする]** の **[有効化]** を選択します。
 
 [![Azure Monitor from VMs の [はじめに] タブ](./media/vminsights-enable-policy/get-started-page.png)](./media/vminsights-enable-policy/get-started-page.png#lightbox)
 
@@ -39,7 +39,7 @@ Azure Monitor for VMs には、Azure 仮想マシンに Log Analytics エージ�
 
 [![割り当てを作成する](media/vminsights-enable-policy/create-assignment.png)](media/vminsights-enable-policy/create-assignment.png#lightbox)
 
-これは、Azure Policy でイニシアティブを割り当てるのと同じページですが、選択したスコープと **[Azure Monitor for VMs の有効化]** イニシアティブの定義がハードコードされている点が異なります。 必要に応じて、 **[割り当て名]** を変更したり、 **[説明]** を追加したりできます。 スコープに対する除外を指定する場合は、 **[除外]** を選択します。 たとえば、スコープが管理グループである場合は、その管理グループ内のあるサブスクリプションを割り当てから除外するように指定できます。
+これは、Azure Policy でイニシアティブを割り当てるのと同じページですが、選択したスコープと **[Enable VM insights]\(VM insights を有効にする\)** イニシアティブの定義がハードコードされている点が異なります。 必要に応じて、 **[割り当て名]** を変更したり、 **[説明]** を追加したりできます。 スコープに対する除外を指定する場合は、 **[除外]** を選択します。 たとえば、スコープが管理グループである場合は、その管理グループ内のあるサブスクリプションを割り当てから除外するように指定できます。
 
 [![イニシアティブを割り当てる](media/vminsights-enable-policy/assign-initiative.png)](media/vminsights-enable-policy/assign-initiative.png#lightbox)
 
@@ -53,9 +53,9 @@ Azure Monitor for VMs には、Azure 仮想マシンに Log Analytics エージ�
 **[作成]** をクリックして作成する前に割り当ての詳細を確認するには、 **[確認と作成]** をクリックします。 既存の仮想マシンを有効にするには複数の修復タスクが必要になる可能性が高いため、この時点では修復タスクを作成しないでください。 後の「[コンプライアンスの結果を修復する](#remediate-compliance-results)」を参照してください。
 
 ## <a name="review-compliance"></a>コンプライアンスを確認する
-割り当てが作成されたら、管理グループやサブスクリプションにまたがる **[Azure Monitor for VMs の有効化]** イニシアティブの対象範囲を確認して管理できます。 これにより、各管理グループまたはサブスクリプションに存在する仮想マシンの数や、それらのコンプライアンス状態が示されます。
+割り当てが作成されたら、管理グループやサブスクリプションにまたがる **[Enable VM insights]\(VM insights を有効にする\)** イニシアティブの対象範囲を確認して管理できます。 これにより、各管理グループまたはサブスクリプションに存在する仮想マシンの数や、それらのコンプライアンス状態が示されます。
 
-[![[Azure Monitor for VMs のポリシー カバレッジ] ページ](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
+[![VM insights のポリシーの管理ページ](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
 
 
 次の表は、このビューにある情報の説明を示しています。
@@ -105,11 +105,11 @@ Azure Monitor for VMs には、Azure 仮想マシンに Log Analytics エージ�
 [![モニターのポリシーの修復ウィンドウのスクリーンショット | 仮想マシン。](media/vminsights-enable-policy/remediation.png)](media/vminsights-enable-policy/remediation.png#lightbox)
 
 
-修復タスクが完了すると、VM はエージェントがインストールされた準拠した状態になり、Azure Monitor for VM が有効になります。 
+修復タスクが完了すると、VM はエージェントがインストールされた準拠した状態になり、VM insights が有効になります。 
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。 
+これで、仮想マシンに対する監視が有効になったので、この情報を VM insights での分析に使用できます。 
 
-- 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 
-- VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。 
+- 検出されたアプリケーションの依存関係を表示するには、[VM insights マップの表示](vminsights-maps.md)に関する記事を参照してください。 
+- VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。

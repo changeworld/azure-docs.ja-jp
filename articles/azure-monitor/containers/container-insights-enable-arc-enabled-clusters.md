@@ -1,28 +1,28 @@
 ---
-title: Azure Arc 対応 Kubernetes クラスターに Azure Monitor for containers を構成する | Microsoft Docs
-description: この記事では、Azure Monitor for containers を使用して Azure Arc 対応 Kubernetes クラスターの監視を構成する方法を説明します。
+title: Container insights を使用して Azure Arc 対応 Kubernetes クラスターを構成する | Microsoft Docs
+description: この記事では、Container insights を使用して Azure Arc 対応 Kubernetes クラスターの監視を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604399"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711299"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc 対応 Kubernetes クラスターの監視を有効にする
 
-Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エンジン クラスター用の監視エクスペリエンスを提供するものです。 この記事では、Azure の外部でホストしている Azure Arc 対応 Kubernetes クラスターの監視を有効にし、Azure と同等の監視エクスペリエンスを実現する方法について説明します。
+Container insights によって、Azure Kubernetes Service (AKS) と AKS エンジン クラスターに対する充実した監視エクスペリエンスが提供されます。 この記事では、Azure の外部でホストしている Azure Arc 対応 Kubernetes クラスターの監視を有効にし、Azure と同等の監視エクスペリエンスを実現する方法について説明します。
 
-PowerShell または Bash スクリプトを使用して、1 つ以上の既存の Kubernetes のデプロイに対してコンテナー用の Azure Monitor 有効にできます。
+PowerShell または Bash スクリプトを使用して、1 つ以上の既存の Kubernetes のデプロイに対して Container insights を有効にできます。
 
 ## <a name="supported-configurations"></a>サポートされている構成
 
-Azure Monitor for containers では、次の機能を除き、[概要](container-insights-overview.md)記事で説明されているとおり Azure Arc 対応 Kubernetes (プレビュー) の監視をサポートしています。
+Container insights では、次の機能を除き、[概要](container-insights-overview.md)に関する記事で説明されている、Azure Arc 対応 Kubernetes の監視 (プレビュー) がサポートされています。
 
 - ライブ データ (プレビュー)
 
-Azure Monitor for containers では、以下が公式にサポートされています。
+Container insights では、以下が正式にサポートされています。
 
 - Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。
 
@@ -36,15 +36,15 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 - Log Analytics ワークスペース。
 
-    Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。
+    Container insights では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
-- Azure Monitor for containers の機能を有効にしてアクセスするには、少なくとも、Azure サブスクリプションの Azure *共同作成者* ロールのメンバー、および Azure Monitor for containers で構成されている Log Analytics ワークスペースの [*Log Analytics 共同作成者*](../platform/manage-access.md#manage-access-using-azure-permissions)のメンバーである必要があります。
+- Container insights を有効にしてその機能にアクセスするには、少なくとも Azure サブスクリプションの Azure "*共同作成者*" ロールのメンバー、および Container insights を使用して構成されている Log Analytics ワークスペースの "[*Log Analytics 共同作成者*](../logs/manage-access.md#manage-access-using-azure-permissions)" ロールのメンバーである必要があります。
 
 - Azure Arc クラスター リソースの [[共同作成者]](../../role-based-access-control/built-in-roles.md#contributor) ロールのメンバーである必要があります。
 
-- 監視データを表示するには、Azure Monitor for containers で構成されている Log Analytics ワークスペースの [*Log Analytics 閲覧者*](../platform/manage-access.md#manage-access-using-azure-permissions) ロールのアクセス権限を持つメンバーであることを確認します。
+- 監視データを表示するには、Container insights を使用して構成されている Log Analytics ワークスペースの "[*Log Analytics 閲覧者*](../logs/manage-access.md#manage-access-using-azure-permissions)" ロールのアクセス許可を持つメンバーである必要があります。
 
-- [HELM クライアント](https://helm.sh/docs/using_helm/)。これは、特定の Kubernetes クラスターに Azure Monitor for containers のチャートをオンボードするために使用します。
+- [HELM クライアント](https://helm.sh/docs/using_helm/)。特定の Kubernetes クラスターに Container insights のグラフをオンボードするために使用されます。
 
 - コンテナー化されたバージョンの Linux 用 Log Analytics エージェントが Azure Monitor と通信するためには、プロキシとファイアウォールに関する次の構成情報が必要です。
 
@@ -247,7 +247,7 @@ bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $
 
 ## <a name="configure-proxy-endpoint"></a>プロキシ エンドポイントを構成する
 
-Azure Monitor for containers のコンテナー化されたエージェントを使用して、プロキシ サーバー経由で通信できるようにプロキシ エンドポイントを構成できます。 コンテナー化されたエージェントと Azure Monitor 間の通信には HTTP または HTTPS プロキシ サーバーを使用でき、匿名と基本認証 (ユーザー名/パスワード) の両方がサポートされます。
+Container insights のコンテナー化されたエージェントを使用して、プロキシ サーバー経由で通信できるようにプロキシ エンドポイントを構成できます。 コンテナー化されたエージェントと Azure Monitor 間の通信には HTTP または HTTPS プロキシ サーバーを使用でき、匿名と基本認証 (ユーザー名/パスワード) の両方がサポートされます。
 
 プロキシ構成の値には次の構文があります。`[protocol://][user:password@]proxyhost[:port]`
 
@@ -284,10 +284,10 @@ export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 
 ## <a name="next-steps"></a>次のステップ
 
-- Arc 対応 Kubernetes クラスターとそこで実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたので、Azure Monitor for containers の[使い方](container-insights-analyze.md)について学習します。
+- Arc 対応 Kubernetes クラスターとそこで実行されるワークロードの正常性とリソース使用率を収集するための監視を有効にしたので、Container insights の[使い方](container-insights-analyze.md)を確認します。
 
 - 既定では、コンテナー化されたエージェントによって、kube-system を除くすべての名前空間で実行されているすべてのコンテナーの stdout および stderr コンテナー ログが収集されます。 特定の名前空間に固有のコンテナー ログ収集を構成するには、「[コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する](container-insights-agent-config.md)」を参照して、ConfigMap 構成ファイルに必要なデータ収集設定を構成します。
 
 - クラスターから Prometheus メトリックをスクレイピングして分析するには、「[Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する](container-insights-prometheus-integration.md)」を参照してください。
 
-- Azure Monitor for containers で Arc 対応 Kubernetes クラスターの監視を停止する方法については、「[お使いのハイブリッド クラスターの監視を停止する方法](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes)」を参照してください。
+- Container insights を使用した Arc 対応 Kubernetes クラスターの監視を停止する方法については、「[お使いのハイブリッド クラスターの監視を停止する方法](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes)」を参照してください。

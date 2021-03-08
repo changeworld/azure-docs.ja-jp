@@ -4,14 +4,14 @@ description: Azure Data Factory でのセキュリティとアクセス制御に
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2021
+ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: 0dac0dcb272b602be8b921bce0ffc68c05cb9cbd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375172"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706149"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティング
 
@@ -107,7 +107,7 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
 
 プライベート リンクが有効になっているため、セルフホステッド VM 上で IR の認証キーを登録できません。 次のエラー メッセージが表示されます。
 
-"Failed to get service token from ADF service with key *************** and time cost is:0.1250079 seconds, the error code is:InvalidGatewayKey, activityId is:XXXXXXX and detailed error message is Client IP address is not valid private ip Cause Data factory couldn’t access the public network thereby not able to reach out to the cloud to make the successful connection." (キー *************** を使用して ADF サービスからサービス トークンを取得できませんでした。時間コスト:0.1250079 秒、エラー コード:InvalidGatewayKey、アクティビティ ID:XXXXXXX、詳細なエラー メッセージ: クライアント IP アドレスは有効なプライベート IP ではありません。原因: Data Factory のパブリック ネットワーク IP にアクセスできなかったため、クラウドにアクセスして正常に接続を確立できませんでした。)
+"Failed to get service token from ADF service with key *************** and time cost is: 0.1250079 second, the error code is: InvalidGatewayKey, activityId is: XXXXXXX and detailed error message is Client IP address is not valid private ip Cause Data factory couldn’t access the public network thereby not able to reach out to the cloud to make the successful connection." (キー *************** を使用して ADF サービスからサービス トークンを取得できませんでした。時間コスト: 0.1250079 秒、エラー コード: InvalidGatewayKey、アクティビティ ID: XXXXXXX、詳細なエラー メッセージ: クライアント IP アドレスは有効なプライベート IP ではありません。原因: Data Factory のパブリック ネットワーク IP にアクセスできなかったため、クラウドにアクセスして正常に接続を確立できませんでした。)
 
 #### <a name="cause"></a>原因
 
@@ -142,7 +142,6 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
 
 1. 統合ランタイムで、IR 認証キーをもう一度追加します。
 
-
 **解決策 2**
 
 この問題を解決するには、[Azure Data Factory 用の Azure Private Link](./data-factory-private-link.md) にアクセスします。
@@ -150,6 +149,45 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
 次のスクリーンショットに示すように、ユーザー インターフェイスでパブリック ネットワーク アクセスを有効にします。
 
 ![[ネットワーク] ペイン上の [パブリック ネットワーク アクセスを許可する] に対する [有効] コントロールのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+
+### <a name="adf-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>ADF プライベート DNS ゾーンで、"見つかりません" エラーが発生している Azure Resource Manager の DNS 解決が上書きされます
+
+#### <a name="cause"></a>原因
+Azure Resource Manager と ADF は両方とも同じプライベート ゾーンを使用しています。これにより、顧客のプライベート DNS で潜在的な競合が発生し、Azure Resource Manager レコードが見つからないことがあります。
+
+#### <a name="solution"></a>解決策
+1. Azure portal でプライベート DNS ゾーン **privatelink.azure.com** を検索します。
+![プライベート DNS ゾーンの検索のスクリーンショット。](media/security-access-control-troubleshoot-guide/private-dns-zones.png)
+2. A レコード **adf** があるかどうかを確認します。
+![A レコードのスクリーンショット。](media/security-access-control-troubleshoot-guide/a-record.png)
+3.  **仮想ネットワークのリンク** にアクセスし、すべてのレコードを削除します。
+![仮想ネットワークのリンクのスクリーンショット。](media/security-access-control-troubleshoot-guide/virtual-network-link.png)
+4.  Azure portal でお使いのデータ ファクトリに移動し、Azure Data Factory ポータル用のプライベート エンドポイントを再作成します。
+![プライベート エンドポイントの再作成のスクリーンショット。](media/security-access-control-troubleshoot-guide/create-private-endpoint.png)
+5.  プライベート DNS ゾーンに戻り、新しいプライベート DNS ゾーン **privatelink.adf.azure.com** があるかどうかを確認します。
+![新しい DNS レコードのスクリーンショット。](media/security-access-control-troubleshoot-guide/check-dns-record.png)
+
+### <a name="connection-error-in-public-endpoint"></a>パブリック エンドポイントでの接続エラー
+
+#### <a name="symptoms"></a>現象
+
+Azure Blob Storage アカウントのパブリック アクセスを使用してデータをコピーすると、パイプラインは次のエラーでランダムに失敗します。
+
+例: Azure Blob Storage シンクで Azure IR (マネージド VNet ではなくパブリック) が使用され、Azure SQL Database ソースでマネージド VNet IR が使用されました。 または、ソース/シンクでは、ストレージ パブリック アクセスでのみマネージド VNet IR が使用されます。
+
+`
+<LogProperties><Text>Invoke callback url with req:
+"ErrorCode=UserErrorFailedToCreateAzureBlobContainer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Unable to create Azure Blob container. Endpoint: XXXXXXX/, Container Name: test.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.WindowsAzure.Storage.StorageException,Message=Unable to connect to the remote server,Source=Microsoft.WindowsAzure.Storage,''Type=System.Net.WebException,Message=Unable to connect to the remote server,Source=System,''Type=System.Net.Sockets.SocketException,Message=A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond public ip:443,Source=System,'","Details":null}}</Text></LogProperties>.
+`
+
+#### <a name="cause"></a>原因
+
+ADF では引き続きマネージド VNet IR を使用できますが、[マネージド仮想ネットワークとマネージド プライベート エンドポイント](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)に関する記事に説明されているように、マネージド VNet 内の Azure Blob Storage へのパブリック エンドポイントにはテスト結果に基づく信頼性がなく、ADF マネージド仮想ネットワークからパブリック エンドポイントを経由する Azure Blob Storage と Azure Data Lake Gen2 へ接続はサポートされていないため、このようなエラーが発生することがあります。
+
+#### <a name="solution"></a>解決策
+
+- マネージド VNet IR を使用する場合は、ソース側と同じようにシンク側でもプライベート エンドポイントを有効にします。
+- パブリック エンドポイントを引き続き使用する場合は、ソースとシンクに対してマネージド VNet IR を使用するのではなく、パブリック IR のみに切り替えることができます。 パブリック IR に切り替えた場合でも、マネージド VNet IR がまだ存在する場合は、ADF でマネージド VNet IR が引き続き使用される可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

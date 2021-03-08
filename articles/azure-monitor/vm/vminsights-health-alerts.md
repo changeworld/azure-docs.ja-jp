@@ -1,25 +1,25 @@
 ---
-title: Azure Monitor for VMs のゲストの正常性アラート (プレビュー)
-description: Azure Monitor for VMs のゲストの正常性によって作成されるアラートについて、それを有効にする方法と通知を構成する方法を含めて説明します。
+title: VM insights のゲストの正常性アラート (プレビュー)
+description: VM insights のゲストの正常性によって作成されるアラートについて、それを有効にする方法と通知を構成する方法を含めて説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 30025f387768aaf1e4d642292c21d5b15ccc7451
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604618"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707508"
 ---
-# <a name="azure-monitor-for-vms-guest-health-alerts-preview"></a>Azure Monitor for VMs のゲストの正常性アラート (プレビュー)
-Azure Monitor for VMs のゲストの正常性を使用すると、定期的にサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 アラートは、仮想マシンまたはモニターが異常な状態に変化するときに作成されます。 [Azure Monitor のアラート ルールによって作成されるもの](../platform/alerts-overview.md)を含むこれらのアラートを表示して管理し、新しいアラートが作成されたときに事前に通知されるように選択できます。
+# <a name="vm-insights-guest-health-alerts-preview"></a>VM insights のゲストの正常性アラート (プレビュー)
+VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 アラートは、仮想マシンまたはモニターが異常な状態に変化するときに作成されます。 [Azure Monitor のアラート ルールによって作成されるもの](../alerts/alerts-overview.md)を含むこれらのアラートを表示して管理し、新しいアラートが作成されたときに事前に通知されるように選択できます。
 
 ## <a name="configure-alerts"></a>アラートを構成する
-この機能がプレビュー段階の間は、Azure Monitor for VMs のゲストの正常性に対して明示的なアラート ルールを作成することはできません。 既定では、アラートはモニターごとではなく、各仮想マシンに対して作成されます。  これは、モニターが仮想マシンの現在の状態に影響を与えない状態に変化した場合、仮想マシンの状態が変化しなかったためにアラートが作成されないことを意味します。 
+この機能がプレビュー段階の間は、VM insights のゲストの正常性に対して明示的なアラート ルールを作成することはできません。 既定では、アラートはモニターごとではなく、各仮想マシンに対して作成されます。  これは、モニターが仮想マシンの現在の状態に影響を与えない状態に変化した場合、仮想マシンの状態が変化しなかったためにアラートが作成されないことを意味します。 
 
-特定の仮想マシンまたは仮想マシン上の特定のモニターに対するアラートは、Azure portal の仮想マシンの構成にある **[アラートの状態]** 設定から無効にできます。 Azure portal でモニターを構成することの詳細については、「[Azure Monitor for VMs のゲストの正常性 (プレビュー) で監視を構成する](vminsights-health-configure.md)」を参照してください。 一連の仮想マシンにわたってモニターを構成することの詳細については、「[データ収集ルール (プレビュー) を使用して Azure Monitor for VMs のゲストの正常性の監視を構成する](vminsights-health-configure-dcr.md)」を参照してください。
+特定の仮想マシンまたは仮想マシン上の特定のモニターに対するアラートは、Azure portal の仮想マシンの構成にある **[アラートの状態]** 設定から無効にできます。 Azure portal でモニターを構成することの詳細については、「[VM insights のゲストの正常性 (プレビュー) で監視を構成する](vminsights-health-configure.md)」を参照してください。 一連の仮想マシンにわたってモニターを構成することの詳細については、「[データ収集ルールを使用して VM insights のゲストの正常性 (プレビュー) での監視を構成する](vminsights-health-configure-dcr.md)」を参照してください。
 
 ## <a name="alert-severity"></a>アラートの重大度
 ゲストの正常性によって作成されるアラートの重要度は、アラートをトリガーしている仮想マシンまたはモニターの重要度に直接マッピングされています。
@@ -31,12 +31,12 @@ Azure Monitor for VMs のゲストの正常性を使用すると、定期的に�
 | Healthy  | Sev4 |
 
 ## <a name="alert-lifecycle"></a>アラートのライフサイクル
-[Azure のアラート](../platform/alerts-overview.md)は、各仮想マシンが **警告** または **クリティカル** の状態に変化するときはいつでも作成されます。 アラートは、Azure portal の、 **[Azure Monitor]** メニューまたは仮想マシンのメニューの **[アラート]** から表示します。
+[Azure のアラート](../alerts/alerts-overview.md)は、各仮想マシンが **警告** または **クリティカル** の状態に変化するときはいつでも作成されます。 アラートは、Azure portal の、 **[Azure Monitor]** メニューまたは仮想マシンのメニューの **[アラート]** から表示します。
 
 仮想マシンの状態が変化したときにアラートが既に **発生** 状態になっている場合、2 番目のアラートは作成されませんが、同じアラートの重要度は仮想マシンの状態に合わせて変更されます。 たとえば、**警告** アラートが既に **発生** 状態にあったときに、仮想マシンが **クリティカル** 状態に変化した場合、そのアラートの重要度は **Sev1** に変更されます。 **Sev1** アラートが既に **発生** 状態にあったときに、仮想マシンが **警告** 状態に変化した場合、そのアラートの重要度は **Sev2** に変更されます。 仮想マシンが **正常** 状態に戻った場合、重要度が **Sev4** に変更されてアラートは解除されます。
 
 ## <a name="viewing-alerts"></a>アラートの表示
-Azure Monitor for VMs のゲストの正常性によって作成されたアラートを、その他の [Azure portal のアラート](../platform/alerts-overview.md#alerts-experience)と共に表示します。 **[Azure Monitor]** メニューから **[アラート]** を選択して、すべての監視対象リソースのアラートを表示するか、仮想マシンのメニューから **[アラート]** を選択して、その仮想マシンについてのみアラートを表示することができます。
+[Azure portal](../platform/alerts-overview.md#alerts-experience) で、VM insights のゲストの正常性によって作成されたアラートを他の アラートと共に表示します。 **[Azure Monitor]** メニューから **[アラート]** を選択して、すべての監視対象リソースのアラートを表示するか、仮想マシンのメニューから **[アラート]** を選択して、その仮想マシンについてのみアラートを表示することができます。
 
 ## <a name="alert-properties"></a>[アラートのプロパティ]
 
@@ -106,6 +106,6 @@ Azure portal の **[モニター]** メニューで、 **[アラート]** を選
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor for VMs のゲストの正常性を有効にして、エージェントをオンボードします。](vminsights-health-enable.md)
+- [VM insights とオンボード エージェントでゲストの正常性を有効にします。](vminsights-health-enable.md)
 - [Azure portal を使用してモニターを構成します。](vminsights-health-configure.md)
 - [データ収集ルールを使用してモニターを構成します。](vminsights-health-configure-dcr.md)

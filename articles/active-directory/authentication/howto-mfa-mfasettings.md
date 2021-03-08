@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9566560aaebaaa7ba3fc6d963a30637e33118077
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8f2bd316c733f4680a266d609e1cc95a4879016d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651061"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198525"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -57,7 +57,7 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 ## <a name="block-and-unblock-users"></a>ユーザーのブロックおよびブロック解除
 
-ユーザーのデバイスが紛失するか、盗難にあった場合は、関連付けられているアカウントに対する Azure AD Multi-Factor Authentication の試行をブロックできます。 ブロックされているユーザーに対する Azure AD Multi-Factor Authentication の試行は自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。
+ユーザーのデバイスが紛失するか、盗難にあった場合は、関連付けられているアカウントに対する Azure AD Multi-Factor Authentication の試行をブロックできます。 ブロックされているユーザーに対する Azure AD Multi-Factor Authentication の試行は自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 その方法を説明するために、[テナントでユーザーをブロックおよびブロック解除する方法](https://www.youtube.com/watch?v=WdeE1On4S1o)に関するビデオを公開しています。
 
 ### <a name="block-a-user"></a>ユーザーのブロック
 

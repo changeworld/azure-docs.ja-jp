@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: c888a6882f2a408801492de914c57e3e9a6eeaed
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3ec582a429008fc073f68cbc9795e264d6814ccb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730016"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL の接続アーキテクチャ
 この記事では、Azure Database for MySQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for MySQL インスタンスに転送されるかについて説明します。
@@ -63,7 +63,7 @@ Azure Database for MySQL への接続は、受信接続をクラスター内の�
 | インド中部 | 104.211.96.159     | | |
 | インド南部 | 104.211.224.146  | | |
 | インド西部 | 104.211.160.80    | | |
-| 東日本 | 40.79.192.23 | 13.78.61.196 | |
+| 東日本 | 40.79.192.23、40.79.184.8 | 13.78.61.196 | |
 | 西日本 | 191.238.68.11、40.74.96.6、40.74.96.7     | 104.214.148.156 | |
 | 韓国中部 | 52.231.17.13   | 52.231.32.42 | |
 | 韓国南部 | 52.231.145.3     | 52.231.200.86 | |

@@ -12,16 +12,16 @@ ms.date: 02/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, テキスト翻訳, 機械翻訳, 翻訳サービス
-ms.openlocfilehash: 12f6d22f263747a8c43b2d98e6ade1de78aea1ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556254"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727976"
 ---
 # <a name="what-is-the-translator-service"></a>Translator サービスとは
 
-Translator はクラウドベースの機械翻訳サービスであり、インテリジェント アプリを構築するたに使用されるコグニティブ API の [Azure Cognitive Services](../../index.yml?panel=ai&pivot=products) ファミリに含まれています。 Translator は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 これにより、[70 を超える言語](./language-support.md)での多言語ユーザー エクスペリエンスを追加できます。 また、これは、任意のオペレーティング システムを備えた任意のハードウェア プラットフォームでテキスト翻訳に使用できます。
+Translator はクラウドベースの機械翻訳サービスであり、インテリジェント アプリを構築するたに使用されるコグニティブ API の [Azure Cognitive Services](../../index.yml?panel=ai&pivot=products) ファミリに含まれています。 Translator は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 これにより、[90 の言語と方言](./language-support.md)で多言語ユーザー エクスペリエンスを追加できます。 また、これは、任意のオペレーティング システムを備えた任意のハードウェア プラットフォームでテキスト翻訳に使用できます。
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator について
 

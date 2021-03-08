@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585145"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735779"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
@@ -37,7 +37,7 @@ Microsoft Azure では、次のことを行うことができます。
 
 - ビジネスを保護する。
 
-## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>お客様の責任を果たすためのセキュリティの技術的な機能
+## <a name="security-technical-capabilities-to-fulfill-your-responsibility"></a>お客様の責任を果たすためのセキュリティの技術的な機能
 
 Microsoft Azure には、お客様がセキュリティ、プライバシー、およびコンプライアンスのニーズを満たす上で役立つサービスが用意されています。 次の図は、業界標準に基づいて、セキュリティで保護されたコンプライアンス準拠のアプリケーション インフラストラクチャを構築するために利用できるさまざまな Azure サービスの理解に役立ちます。
 
@@ -184,7 +184,7 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 大規模なデータ セットは、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) などの専用高速 WAN リンクを利用して移動できます。 ExpressRoute を使用する場合、[SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらにセキュリティを強化できます。
 
-Azure Portal で Azure Storage を操作する場合、すべてのトランザクションは HTTPS 経由で行われます。 HTTPS 経由の [Storage REST API](/rest/api/storageservices/) も、[Azure Storage](https://azure.microsoft.com/services/storage/) と [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) の操作に使用できます。
+Azure portal で Azure Storage を操作する場合、すべてのトランザクションは HTTPS 経由で行われます。 HTTPS 経由の [Storage REST API](/rest/api/storageservices/) も、[Azure Storage](https://azure.microsoft.com/services/storage/) と [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) の操作に使用できます。
 
 転送中のデータを保護しない場合、[man-in-the-middle 攻撃](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14))、[盗聴](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))、セッション ハイジャックに対して脆弱になります。 このような攻撃は、機密データへのアクセスを取得するための最初の手順として実行される場合があります。
 
@@ -278,6 +278,8 @@ Azure ネットワークは、Azure Virtual Network 上のネットワーク ト
 
 Azure は [ExpressRoute](../../expressroute/expressroute-introduction.md) を使用してオンプレミス ネットワークおよび Azure Virtual Network への専用の WAN リンクの接続をサポートします。 Azure とユーザー サイト間のリンクは、パブリック インターネットを経由しない専用接続を使用します。 Azure アプリケーションが複数のデータセンターで実行されている場合は、[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用して、アプリケーションのインスタンスにユーザーからの要求をインテリジェントにルーティングできます。 また、サービスがインターネットからアクセス可能な場合、Azure 内で実行されていないサービスへトラフィックをルーティングすることもできます。
 
+Azure では、[Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview) により、Azure Virtual Network から PaaS リソース (Azure Storage や SQL Database など) へのプライベートで安全な接続もサポートされています。 PaaS リソースは、仮想ネットワーク内の[プライベート エンドポイント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)にマップされます。 仮想ネットワーク内のプライベート エンドポイントと PaaS リソースとの間のリンクには、Microsoft のバックボーン ネットワークが使用され、パブリック インターネットを経由することはありません。 パブリック インターネットにサービスを公開する必要はありません。 Azure Private Link を使用して、仮想ネットワーク内にある Azure でホストされた顧客所有のサービスやパートナー サービスにアクセスすることもできます。  さらに、Azure Private Link を使用すると、仮想ネットワーク内に独自の[プライベート リンク サービス](https://docs.microsoft.com/azure/private-link/private-link-service-overview)を作成し、顧客の仮想ネットワーク内でプライベートに顧客に配信することができます。 Azure Private Link を使用した設定と消費は、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。
+
 ## <a name="virtual-machine-security"></a>仮想マシンのセキュリティ
 
 [Azure Virtual Machines](../../virtual-machines/index.yml) を使用すると、さまざまなコンピューティング ソリューションを俊敏にデプロイできます。 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP、Azure BizTalk Services に対応しており、ほぼすべてのオペレーティング システムですべてのワークロード、すべての言語をデプロイできます。
@@ -304,7 +306,7 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 - クラウド採用プロセスの初期段階で、意思決定者による議論が必要なトピックを明らかにする。
 
-- 規制や組織独自のプライバシー、個人を特定できる情報 (PII)、およびデータ セキュリティに関するビジネス上の徹底的な議論を促進する。
+- 規制や組織独自のプライバシー、個人情報、およびデータ セキュリティに関するビジネス上の徹底的な議論を促進する。
 
 - クラウド プロジェクトに影響を及ぼす可能性のある潜在的な問題を組織が特定するのに役立つ。
 
@@ -316,7 +318,7 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 ![セキュリティの検証 (検出)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 
-Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
+Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、サイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワークを基盤としています。
 
 ### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
@@ -383,7 +385,7 @@ Security Center は、Azure リソース、ネットワーク、パートナー 
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされる .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスと統合され、さまざまな開発ツールへの接続ポイントを備えています。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされる .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまな開発ツールへの接続ポイントを備えています。
 
 以下を監視します。
 

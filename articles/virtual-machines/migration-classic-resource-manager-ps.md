@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ffea1e35cd457fc1fa350b1b234360d111fc911
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c750e34e8081cf5a8b3d41cc8c52584a4353a336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669275"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695160"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 
@@ -165,7 +165,7 @@ RegistrationState が `Registered` であることを確認してから続行し
     $validate.ValidationMessages
     ```
 
-    次のコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、Prepare の手順に進むことができます。
+    次のコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証メッセージに種類がエラーのメッセージが含まれていない場合は、Prepare の手順に進むことができます。
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
@@ -189,7 +189,7 @@ RegistrationState が `Registered` であることを確認してから続行し
     $validate.ValidationMessages
     ```
 
-    次のコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、次の Prepare の手順に進むことができます。
+    次のコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証メッセージにエラーが含まれていない場合は、次の Prepare の手順に進むことができます。
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `

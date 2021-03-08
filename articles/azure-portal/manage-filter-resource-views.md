@@ -3,12 +3,12 @@ title: Azure リソース情報の表示とフィルター処理
 description: 情報をフィルター処理し、さまざまなビューを使用して、Azure リソースをより深く理解します。
 ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: d1bd00a9e7f8c9c18484378f7c21d3bacdac2d3f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745895"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738635"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure リソース情報の表示とフィルター処理
 
@@ -49,6 +49,18 @@ Azure portal を使用すると、Azure サブスクリプション全体でリ�
 1. **[ビューの管理]** 、 **[すべてのビューを参照]** の順に選択します。
 
 1. **[すべてのリソース] の保存済みビュー** ペインで、ビューを選択して **[削除]** アイコン ![ビューの削除アイコン](media/manage-filter-resource-views/icon-delete.png) を選択します。
+
+## <a name="export-information-from-a-view"></a>ビューから情報をエクスポートする
+
+ビューからリソース情報をエクスポートできます。 CSV 形式で情報をエクスポートするには:
+
+1. **[CSV にエクスポート]** を選択します。
+
+    :::image type="content" source="media/manage-filter-resource-views/export-csv.png" alt-text="CSV 形式へのエクスポートのスクリーンショット":::
+
+1. ファイルをローカルに保存してから、Excel または CSV 形式がサポートされている別のアプリケーションで開きます。 
+
+ポータル内を移動すると、個々のリソース グループなど、情報をエクスポートできる領域が他にもあることがわかります。
 
 ## <a name="summarize-resources-with-visuals"></a>ビジュアルを使用してリソースを集計する
 

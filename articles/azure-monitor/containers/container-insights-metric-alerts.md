@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor for containers からのメトリック アラート
-description: この記事では、Azure Monitor for containers から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
+title: Container insights からのメトリック アラート
+description: この記事では、Container insights から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 59c8d7b58809c981130d2ce92406fb5b1ce146ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728894"
 ---
-# <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Azure Monitor for containers からの推奨メトリック アラート (プレビュー)
+# <a name="recommended-metric-alerts-preview-from-container-insights"></a>Container insights からの推奨メトリック アラート (プレビュー)
 
-システム リソースのピーク需要が発生している場合、およびシステム リソースがほぼ容量の限度に近い状態で実行されている場合、システム リソースの問題に関するアラートを生成するには、Azure Monitor for containers を使用して、Azure Monitor ログに格納されているパフォーマンス データに基づいてログ アラートを作成します。 Azure Monitor for containers に、ご利用の AKS および Azure Arc 対応 Kubernetes クラスターの事前構成済みメトリック アラート ルールが含まれるようになりました。これは、現在パブリック プレビューの段階です。
+需要がピークに達してほぼ容量の限度に近い状態で実行されているシステム リソースの問題についてアラートを生成するには、Container insights を使用して、Azure Monitor ログに格納されているパフォーマンス データに基づいてログ アラートを作成します。 Container insights に、AKS および Azure Arc 対応 Kubernetes クラスターの事前構成済みメトリック アラート ルールが含まれるようになりました。これは、現在パブリック プレビューの段階です。
 
 この記事では、エクスペリエンスを確認し、これらのアラート ルールの構成と管理に関するガイダンスを提供します。
 
-Azure Monitor のアラートに詳しくない場合は、事前に「[Microsoft Azure のアラートの概要](../platform/alerts-overview.md)」を参照してください。 メトリック アラートの詳細については、「[Azure Monitor でのメトリック アラートの機能](../alerts/alerts-metric-overview.md)」をご覧ください。
+Azure Monitor のアラートに詳しくない場合は、事前に「[Microsoft Azure のアラートの概要](../alerts/alerts-overview.md)」を参照してください。 メトリック アラートの詳細については、「[Azure Monitor でのメトリック アラートの機能](../alerts/alerts-metric-overview.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,13 +31,13 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
     * コマンド `kubectl describe <omsagent-pod-name> --namespace=kube-system`を実行します。 返された状態の、出力の *Containers* セクションにある omsagent の **Image** の下の値をメモします。 
     * **[ノード]** タブでクラスター ノードを選択し、右側の **プロパティ** ウィンドウにある **[エージェント イメージ タグ]** の下の値をメモします。
 
-    AKS の場合、表示される値はバージョン **ciprod05262020** 以降である必要があります。 Azure Arc 対応 Kubernetes クラスターの場合、表示される値はバージョン **ciprod09252020** 以降である必要があります。 クラスターで古いバージョンを使用している場合は、「[コンテナーに対する Azure Monitor エージェントをアップグレードする方法](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster)」の手順を参照して、最新バージョンを取得します。
+    AKS の場合、表示される値はバージョン **ciprod05262020** 以降である必要があります。 Azure Arc 対応 Kubernetes クラスターの場合、表示される値はバージョン **ciprod09252020** 以降である必要があります。 クラスターで古いバージョンを使用している場合は、[Container insights エージェントをアップグレードする方法](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster)に関する記事で、最新バージョンを取得する手順を参照してください。
 
     エージェントのリリースに関する詳細については、[エージェントのリリース履歴](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。 メトリックが収集されていることを確認するには、Azure Monitor のメトリックス エクスプローラーを使用して、**分析情報** が一覧表示されている **[メトリック名前空間]** から確認できます。 収集されている場合は、先に進んで、アラートの設定を開始できます。 収集されたメトリックが表示されない場合は、クラスターのサービス プリンシパルまたは MSI に必要なアクセス許可がありません。 SPN または MSI が **監視メトリック パブリッシャー** ロールのメンバーであることを確認するには、「[Azure CLI を使用してクラスターごとにアップグレードする](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli)」セクションの手順に従って、ロールの割り当てを確認して設定します。
 
 ## <a name="alert-rules-overview"></a>アラート ルールの概要
 
-重要な問題についてアラートを生成するために、Azure Monitor for containers には、AKS および Azure Arc 対応 Kubernetes クラスターに関する次のメトリック アラートが含まれています。
+重要な問題についてアラートを生成するために、Container insights には、AKS および Azure Arc 対応 Kubernetes クラスターに関する次のメトリック アラートが含まれています。
 
 |名前| [説明] |既定のしきい値 |
 |----|-------------|------------------|
@@ -108,15 +108,15 @@ Azure portal から Azure Monitor のメトリック アラートを有効にす
 
 ### <a name="from-the-azure-portal"></a>Azure portal から
 
-このセクションでは、Azure portal から Azure Monitor for containers のメトリック アラート (プレビュー) を有効にする手順について説明します。
+このセクションでは、Azure portal から Container insights のメトリック アラート (プレビュー) を有効にする手順について説明します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. Azure Monitor for containers のメトリック アラート (プレビュー) には、Azure portal の左側のウィンドウから **[分析情報]** を選択して AKS クラスターから直接アクセスできます。
+2. Container insights のメトリック アラート (プレビュー) には、Azure portal の左側のペインから **[分析情報]** を選択して AKS クラスターから直接アクセスできます。
 
 3. コマンド バーで、 **[推奨アラート]** を選択します。
 
-    ![Azure Monitor for containers の [推奨アラート] オプション](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
+    ![Container insights の推奨アラート オプション](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
 4. ページの右側に **[推奨アラート]** プロパティ ペインが自動的に表示されます。 既定では、一覧内のすべてのアラート ルールは無効です。 **[有効]** を選択すると、アラート ルールが作成され、ルール名が更新されて、アラート リソースへのリンクが含まれるようになります。
 
@@ -198,7 +198,7 @@ Azure Resource Manager テンプレートとパラメーター ファイルを�
 
 ## <a name="edit-alert-rules"></a>アラート ルールを編集する
 
-Azure Monitor for containers のアラート ルールを表示および管理して、そのしきい値を編集したり、ご利用の AKS クラスターの[アクション グループ](../alerts/action-groups.md)を構成したりすることができます。 これらのアクションは、Azure portal および Azure CLI から実行できますが、Azure Monitor for containers で AKS クラスターから直接実行することもできます。
+Container insights のアラート ルールを表示および管理して、そのしきい値を編集したり、AKS クラスターの[アクション グループ](../alerts/action-groups.md)を構成したりすることができます。 これらのアクションは、Azure portal および Azure CLI から実行できますが、Container insights で AKS クラスターから直接実行することもできます。
 
 1. コマンド バーで、 **[推奨アラート]** を選択します。
 

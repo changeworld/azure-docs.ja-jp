@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bbb42a4955ff0b4fbbac58830ec5c8aecf04915d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753449"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686735"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API を呼び出す Web API: API を呼び出す
 
@@ -29,9 +29,15 @@ ms.locfileid: "98753449"
 
 *Microsoft.Identity.Web* を使用する場合、3 つの使用シナリオがあります。
 
-- [オプション 1: Microsoft Graph SDK を使用して Microsoft Graph を呼び出す](#option-1-call-microsoft-graph-with-the-sdk)
-- [オプション 2: ヘルパー クラスを使用してダウンストリーム Web API を呼び出す](#option-2-call-a-downstream-web-api-with-the-helper-class)
-- [オプション 3:ヘルパー クラスを使用せずにダウンストリーム Web API を呼び出す](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Web API を呼び出す Web API: API を呼び出す](#a-web-api-that-calls-web-apis-call-an-api)
+  - [コントローラー コード](#controller-code)
+- [ASP.NET Core](#aspnet-core)
+      - [オプション 1: SDK を使用して Microsoft Graph を呼び出す](#option-1-call-microsoft-graph-with-the-sdk)
+      - [オプション 2: ヘルパー クラスを使用してダウンストリーム Web API を呼び出す](#option-2-call-a-downstream-web-api-with-the-helper-class)
+      - [オプション 3:ヘルパー クラスを使用せずにダウンストリーム Web API を呼び出す](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Java](#java)
+- [Python](#python)
+  - [次の手順](#next-steps)
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>オプション 1: SDK を使用して Microsoft Graph を呼び出す
 
@@ -159,7 +165,7 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-このフローを MSAL Python でデモンストレーションするサンプルはまだ用意されていません。
+このフローを MSAL Python でデモンストレーションするサンプルは、[ms-identity-python-on-behalf-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) で入手できます。
 
 ---
 

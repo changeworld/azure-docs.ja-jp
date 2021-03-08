@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor ログ レコード内の標準列 | Microsoft Docs
 description: Azure Monitor ログ内の複数のデータ型に共通する列について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/09/2020
-ms.openlocfilehash: e8d89de079a50159bbed9c38487effb0c89448c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601094"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030768"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor ログ内の標準列
 Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのどちらかに一連のレコードとして格納され](../logs/data-platform-logs.md)、各レコードが固有の列のセットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準列があります。 この記事では、これらの列について説明し、それらの列をクエリで使用する方法の例を示します。
@@ -20,6 +19,10 @@ Application Insights のワークスペース ベースのアプリケーショ�
 
 > [!NOTE]
 > 標準列のいくつかは Log Analytics のスキーマ ビューや IntelliSense には表示されず、出力で列を明示的に指定しない限り、クエリの結果にも表示されません。
+> 
+
+## <a name="tenantid"></a>TenantId
+**TenantId** 列には、Log Analytics ワークスペースのワークスペース ID が保持されます。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated と timestamp
 **TimeGenerated** (Log Analytics ワークスペース) および **timestamp** (Application Insights アプリケーション) 列には、そのレコードがデータ ソースによって作成された日付と時刻が含まれています。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../logs/data-ingestion-time.md)」を参照してください。
@@ -49,6 +52,10 @@ exceptions
 
 ## <a name="_timereceived"></a>\_TimeReceived
 **\_TimeReceived** 列には、そのレコードが Azure クラウド内の Azure Monitor インジェスト ポイントによって受信された日付と時刻が含まれています。 データ ソースとクラウドとの間における待ち時間の問題の特定に役立てることができます。 たとえば、エージェントから送信されているデータの遅延を引き起こしているネットワークの問題が考えられます。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../logs/data-ingestion-time.md)」を参照してください。
+
+> [!NOTE]
+> **\_TimeReceived** 列は、使用されるたびに計算されます。 このプロセスは、リソースを集中的に消費します。 それを使用して大量のレコードをフィルター処理しないでください。 この関数を繰り返し使用すると、クエリの実行時間が長くなる可能性があります。
+
 
 次のクエリは、エージェントからのイベント レコードについて、1 時間ごとの平均待ち時間を返します。 これには、エージェントからクラウドまでの時間と、レコードがログ クエリで利用できるようになるまでの合計時間が含まれます。
 
@@ -238,6 +245,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor ログ データの格納](../log-query/log-query-overview.md)方法の詳細を確認する。
-- [ログ クエリの作成](../log-query/get-started-queries.md)に関するレッスンを参照する。
+- [Azure Monitor ログ データの格納](./log-query-overview.md)方法の詳細を確認する。
+- [ログ クエリの作成](./get-started-queries.md)に関するレッスンを参照する。
 - [ログ クエリでのテーブルの結合](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)に関するレッスンを参照する。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: fe98ef297c6bed5ef3d982ed09db361244f75216
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5d6ea75936383388a57a7822f054e0ea7297471e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675697"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695517"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -1057,47 +1057,17 @@ SAP 用の新しい VM 拡張機能では、VM の監視データと構成デー
    az login
    ```
 
-1. 記事「[Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する][qs-configure-cli-windows-vm]」に記載されている手順に従って、VM に対してシステム割り当てマネージド ID を有効にします。 ユーザー割り当てマネージド ID は、SAP 用 VM 拡張機能ではサポートされていません。 ただし、システム割り当て ID とユーザー割り当て ID の両方を有効にすることができます。
-
-   例:
+1. Azure CLI AEM Extension をインストールします。 必ずバージョン 0.2.0 以上を使用してください。
+  
    ```azurecli
-   az vm identity assign -g <resource-group-name> -n <vm name>
+   az extension add --name aem
    ```
-
-1. 「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる][howto-assign-access-cli]」の説明に従って、VM のリソース グループ、またはすべてのネットワーク インターフェイス、マネージド ディスク、および VM 自体に、マネージド ID アクセスを割り当てます
-
-    例:
-
-    ```azurecli
-    # Azure CLI on Linux
-    spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
-    rgId=$(az group show -g <resource-group-name> --query id --out tsv)
-    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
-
-    # Azure CLI on Windows/PowerShell
-    $spID=az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines
-    $rgId=az group show -g <resource-group-name> --query id --out tsv
-    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
-    ```
-
-1. 次の Azure CLI コマンドを実行して、Azure Extension for SAP をインストールします。
-    現時点では、この拡張機能は AzureCloud でのみサポートされています。 Azure China 21Vianet、Azure Government、またはその他の特殊な環境はまだサポートされていません。
-
-    ```azurecli
-    # Azure CLI on Linux
-    ## For Linux machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
-
-    ## For Windows machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
-
-    # Azure CLI on Windows/PowerShell
-    ## For Linux machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
-
-    ## For Windows machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
-    ```
+  
+1. 次のように、新しい拡張機能をインストールします。
+  
+   ```azurecli
+   az vm aem set -g <resource-group-name> -n <vm name> --install-new-extension
+   ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>確認とトラブルシューティング
 

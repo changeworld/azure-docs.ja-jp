@@ -4,12 +4,12 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713373"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -119,6 +119,18 @@ SQL や SAP HANA などの Azure ワークロード バックアップ ソリュ
 アクティブなアラートを無効化または解決するには、非アクティブ化するアラートに対応するリスト アイテムを選択できます。 これにより、アラートに関する詳細情報を表示する画面が開き、上部に **[非アクティブ化]** ボタンが表示されます。 このボタンを選択すると、アラートの状態が **非アクティブ** に変わります。 また、アラートに対応するリスト アイテムを右クリックし、 **[非アクティブ化]** を選択して、アラートを非アクティブにすることもできます。
 
 ![RS コンテナーのアラートの非アクティブ化](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure Backup の Azure Monitor アラート (プレビュー)
+
+Azure Backup は、Azure Monitor を介してアラートを提供し、ユーザーがバックアップなどのさまざまな Azure サービス間で一貫したアラート管理エクスペリエンスを得られるようにします。 Azure Monitor アラートを使用すると、Azure Backup でサポートされている通知チャネル (電子メール、ITSM、Webhook、ロジック アプリなど) にアラートをルーティングできます。
+
+現時点では、この機能は、Azure Database for PostgreSQL サーバー、Azure Blob、Azure Managed Disks で使用できます。 アラートは次のシナリオに対して生成され、Backup コンテナーに移動して **[アラート]** メニュー項目をクリックすることでアクセスできます。
+
+- バックアップ データを削除する
+- バックアップ エラー (バックアップ エラーに関するアラートを取得するには、プレビュー ポータルで **EnableAzureBackupJobFailureAlertsToAzureMonitor** という名前の AFEC フラグを登録する必要があります)
+- 復元エラー (復元エラーに関するアラートを取得するには、プレビュー ポータルで **EnableAzureBackupJobFailureAlertsToAzureMonitor** という名前の AFEC フラグを登録する必要があります)
+
+Azure Monitor アラートについて詳しくは、「[Azure のアラートの概要](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

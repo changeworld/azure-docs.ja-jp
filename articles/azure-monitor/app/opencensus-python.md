@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584029"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704414"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -221,6 +221,15 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 
 ### <a name="metrics"></a>メトリック
 
+OpenCensus.stats では 4 つの集計メソッドがサポートされますが、Azure Monitor に対するサポートは部分的に提供されます。
+
+- **Count:** 測定ポイントのカウント数。 値は累積的であり、増加のみ可能です。再起動時に 0 にリセットできます。 
+- **Sum:** 測定ポイントの合計。 値は累積的であり、増加のみ可能です。再起動時に 0 にリセットできます。 
+- **LastValue:** 最後に記録された値を保持し、他のすべてを削除します。
+- **Distribution:** 測定ポイントのヒストグラム分布です。 このメソッドは、**Azure エクスポーターではサポートされていません**。
+
+### <a name="count-aggregation-example"></a>カウント集計の例
+
 1. まず、いくつかのローカル メトリック データを生成しましょう。 ユーザーが **Enter** キーを選択した回数を追跡する単純なメトリックを作成します。
 
     ```python
@@ -320,7 +329,7 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
         main()
     ```
 
-1. エクスポーターによって、一定の間隔でメトリック データが Azure Monitor に送信されます。 既定値は 15 秒ごとです。 1 つのメトリックを追跡しているので、このメトリック データは、それに含まれる値およびタイムスタンプに関係なく、間隔ごとに送信されます。 データは `customMetrics` で確認できます。
+1. エクスポーターによって、一定の間隔でメトリック データが Azure Monitor に送信されます。 既定値は 15 秒ごとです。 1 つのメトリックを追跡しているので、このメトリック データは、それに含まれる値およびタイムスタンプに関係なく、間隔ごとに送信されます。 値は累積的であり、増加のみ可能です。再起動時に 0 にリセットできます。 `customMetrics` でデータを見つけることができますが、`customMetrics` プロパティの valueCount、valueSum、valueMin、valueMax、および valueStdDev は有効に使用されていません。
 
 #### <a name="performance-counters"></a>パフォーマンス カウンター
 

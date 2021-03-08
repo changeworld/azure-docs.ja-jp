@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: eedb3dfeafbd378cfff7afb04fcc2b9aa6e791d6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e9cbb7daf61397064bd79f30d851d96fdf63f5a0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678740"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203234"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのセマンティック検索
 
@@ -27,7 +27,7 @@ ms.locfileid: "101678740"
 
 パブリック プレビュー機能の内容:
 
-+ 検索クエリ用語のコンテキスト、つまりセマンティックな意味に基づいて関連するドキュメントを取得する、セマンティック ランク付けアルゴリズム
++ 検索クエリ用語のコンテキスト、つまりセマンティックな意味に基づいて結果をスコア付けする、セマンティック ランク付けモデル
 + 関連する一節を強調表示する、セマンティック キャプション
 + クエリに対するセマンティック回答 (結果からも作成)
 + クエリ用語が検索エンジンに到達する前に入力ミスを修正する、スペル チェック
@@ -44,7 +44,9 @@ ms.locfileid: "101678740"
 
 ## <a name="availability-and-pricing"></a>可用性と料金
 
-セマンティック ランク付けは、米国中北部、米国西部、米国西部 2、米国東部 2、北ヨーロッパ、西ヨーロッパのいずれかのリージョンにある、Standard レベル (S1、S2、S3) で作成された検索サービスの[サインアップ登録](https://aka.ms/SemanticSearchPreviewSignup)を通じて利用できます。 スペル修正は同じリージョンで利用できますが、レベルの制限はありません。 レベルとリージョンの条件を満たす既存のサービスがある場合、必要なのはサインアップのみです。
+セマンティック ランク付けは、米国中北部、米国西部、米国西部 2、米国東部 2、北ヨーロッパ、西ヨーロッパのいずれかのリージョンにある、Standard レベル (S1、S2、S3) で作成された検索サービスの[サインアップ登録](https://aka.ms/SemanticSearchPreviewSignup)を通じて利用できます。 上記のリージョンにおける S1 以上の既存の検索サービスは、プレビューの対象になります (新しいサービスを作成する必要はありません)。
+
+スペル修正は同じリージョンで利用できますが、レベルの制限およびサインアップの要件はありません。 
 
 3 月 2 日のプレビューの開始から 4 月 1 日までは、スペル修正とセマンティック ランク付けが無料で提供されます。 4 月 2 日以降は、この機能を実行するための計算コストが課金対象のイベントになります。 予想されるコストは、250,000 件のクエリで月額約 500 米国ドルです。 詳細なコスト情報については、[「Cognitive Search の価格」ページ](https://azure.microsoft.com/pricing/details/search/)および[コストの見積もりと管理](search-sku-manage-costs.md)に関するページを参照してください。
 

@@ -1,20 +1,20 @@
 ---
 title: Azure portal で 1 つの仮想マシンまたは仮想マシン スケール セットで Azure Monitor を有効にする
-description: Azure portal を使用して、1 つの Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
+description: Azure portal を使用して、1 つの Azure 仮想マシンまたは仮想マシン スケール セットで VM insights を有効にする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ba075930aa3541d0453b678c7d654635ae20da58
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47dde48e916361620a832d26e6249c4147d0f8b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733739"
 ---
 # <a name="enable-azure-monitor-for-single-virtual-machine-or-virtual-machine-scale-set-in-the-azure-portal"></a>Azure portal で 1 つの仮想マシンまたは仮想マシン スケール セットで Azure Monitor を有効にする
-この記事では、Azure portal を使用して、仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。 この手順は、次に対して使用できます。
+この記事では、Azure portal を使用して、仮想マシンまたは仮想マシン スケール セットで VM insights を有効にする方法について説明します。 この手順は、次に対して使用できます。
 
 - Azure 仮想マシン
 - Azure 仮想マシン スケール セット
@@ -22,19 +22,19 @@ ms.locfileid: "100604286"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Log Analytics ワークスペースを作成して構成](../insights/vminsights-configure-workspace.md)します。 あるいは、このプロセス中に新しいワークスペースを作成できます。
-- 「[サポートされるオペレーティング システム](../insights/vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
+- [Log Analytics ワークスペースを作成して構成](./vminsights-configure-workspace.md)します。 あるいは、このプロセス中に新しいワークスペースを作成できます。
+- 「[サポートされるオペレーティング システム](./vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
 
-## <a name="enable-azure-monitor-for-vms"></a>Azure Monitor for VMs の有効化
+## <a name="enable-vm-insights"></a>VM insights を有効にする
 
 Azure portal から、 **[仮想マシン]** 、 **[仮想マシン スケール セット]** 、または **[サーバー - Azure Arc]** を選択し、一覧からリソースを選択します。 メニューの **[監視]** セクションで、 **[Insights]\(分析情報\)** 、次に **[Enable]\(有効にする\)** を選択します。 次の例は Azure 仮想マシンを示していますが、このメニューは Azure 仮想マシン スケール セットまたは Azure Arc の場合も同様です。
 
-![VM に対して Azure Monitor for VMs を有効にする](media/vminsights-enable-portal/enable-vminsights-vm-portal.png)
+![VM の VM insights を有効にする](media/vminsights-enable-portal/enable-vminsights-vm-portal.png)
 
-仮想マシンがまだ Log Analytics ワークスペースに接続されていない場合は、ワークスペースを選択するよう求められます。 以前に[ワークスペースを作成](../../azure-monitor/learn/quick-create-workspace.md)していない場合は、サブスクリプションで仮想マシンまたは仮想マシン スケール セットがデプロイされる場所の既定値を選択できます。 このワークスペースは、まだ存在しない場合、作成されて構成されます。 既存のワークスペースを選択した場合、そのワークスペースは Azure Monitor for VMs 用に構成されます (まだ構成されていない場合)。
+仮想マシンがまだ Log Analytics ワークスペースに接続されていない場合は、ワークスペースを選択するよう求められます。 以前に[ワークスペースを作成](../logs/quick-create-workspace.md)していない場合は、サブスクリプションで仮想マシンまたは仮想マシン スケール セットがデプロイされる場所の既定値を選択できます。 このワークスペースは、まだ存在しない場合、作成されて構成されます。 既存のワークスペースを選択した場合、そのワークスペースは VM insights 用に構成されます (まだ構成されていない場合)。
 
 > [!NOTE]
-> 以前に Azure Monitor for VMs 用に構成されていないワークスペースを選択した場合、このワークスペースには *VMInsights* 管理パックが追加されます。 これは、Azure Monitor for VMs が有効になっているかどうかにかかわらず、既にそのワークスペースに接続されているすべてのエージェントに適用されます。 パフォーマンス データはこれらの仮想マシンから収集され、*InsightsMetrics* テーブルに格納されます。
+> 以前に VM insights 用に構成されていないワークスペースを選択した場合、このワークスペースには *VMInsights* 管理パックが追加されます。 これは、VM insights が有効になっているかどうかにかかわらず、既にそのワークスペースに接続されているすべてのエージェントに適用されます。 パフォーマンス データはこれらの仮想マシンから収集され、*InsightsMetrics* テーブルに格納されます。
 
 ![ワークスペースを選択](media/vminsights-enable-portal/select-workspace.png)
 
@@ -43,11 +43,11 @@ Azure portal から、 **[仮想マシン]** 、 **[仮想マシン スケール
 >[!NOTE]
 >仮想マシン スケール セットに手動アップグレード モデルを使用する場合は、インスタンスをアップグレードして設定を完了します。 **[インスタンス]** ページの **[設定]** セクションからアップグレードを開始できます。
 
-![Azure Monitor for VMs の監視デプロイ プロセスを有効にする](media/vminsights-enable-portal/onboard-vminsights-vm-portal-status.png)
+![VM insights の監視のデプロイ処理を有効にする](media/vminsights-enable-portal/onboard-vminsights-vm-portal-status.png)
 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-* 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの使用](vminsights-maps.md)に関するページを参照してください。 
+* 検出されたアプリケーションの依存関係を表示するには、[VM insights マップの使用](vminsights-maps.md)に関する記事をご覧ください。 
 * ボトルネック、全体的な使用率、VM のパフォーマンスを識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。

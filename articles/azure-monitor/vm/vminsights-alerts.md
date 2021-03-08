@@ -1,36 +1,35 @@
 ---
-title: Azure Monitor for VMs からのアラート
-description: Azure Monitor for VMs によって収集されるパフォーマンス データから、アラート ルールを作成する方法について説明します。
-ms.subservice: ''
+title: VM Insights からのアラート
+description: VM Insights によって収集されるパフォーマンス データからアラート ルールを作成する方法について説明します。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 4ae5b12f22b0cbcef7577c2eb9d4f3e3ae737590
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603670"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046807"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Azure Monitor for VMs からのアラートを作成する方法
-[Azure Monitor のアラート](../platform/alerts-overview.md)では、監視データの興味深いデータやパターンを事前に通知します。 Azure Monitor for VMs には事前に構成されたアラート ルールは含まれませんが、収集されるデータに基づいて独自のものを作成することができます。 この記事では、サンプル クエリのセットを含む、アラート ルールの作成に関するガイダンスを提供します。
+# <a name="how-to-create-alerts-from-vm-insights"></a>VM Insights からアラートを作成する方法
+[Azure Monitor のアラート](../alerts/alerts-overview.md)では、監視データの興味深いデータやパターンを事前に通知します。 VM Insights には事前に構成されたアラート ルールは含まれませんが、収集されるデータに基づいて独自のものを作成することができます。 この記事では、サンプル クエリのセットを含む、アラート ルールの作成に関するガイダンスを提供します。
 
 > [!IMPORTANT]
-> この記事で説明するアラートは、Azure Monitor for VMs によって収集されたデータからのログ クエリに基づいています。 これは、現在パブリック プレビュー中の機能である [Azure Monitor for VM ゲストの正常性](vminsights-health-overview.md)によって作成されたアラートとは異なります。 この機能は近日中に一般公開され、アラートに関するガイダンスが統合されます。
+> この記事で説明するアラートは、VM Insights によって収集されたデータからのログ クエリに基づいています。 これは、現在パブリック プレビュー中の機能である [Azure Monitor for VM ゲストの正常性](vminsights-health-overview.md)によって作成されたアラートとは異なります。 この機能は近日中に一般公開され、アラートに関するガイダンスが統合されます。
 
 
 ## <a name="alert-rule-types"></a>アラート ルールの種類
-Azure Monitor には、アラートの作成に使用されるデータに基づく[さまざまな種類のアラート ルール](../platform/alerts-overview.md#what-you-can-alert-on)があります。 Azure Monitor for VMs によって収集されるすべてのデータは、[ログ アラート](../alerts/alerts-log.md)をサポートする Azure Monitor Logs に格納されます。 現在、Azure Monitor for VMs から収集されるパフォーマンス データで[メトリック アラート](../alerts/alerts-log.md)を使用することはできません。これは、データが Azure Monitor メトリックに収集されないためです。 メトリック アラートのデータを収集するには、Windows VM 用の[診断拡張機能](../agents/diagnostics-extension-overview.md)、または Linux VM 用の [Telegraf エージェント](../platform/collect-custom-metrics-linux-telegraf.md)をインストールして、パフォーマンス データをメトリックに収集します。
+Azure Monitor には、アラートの作成に使用されるデータに基づく[さまざまな種類のアラート ルール](../alerts/alerts-overview.md#what-you-can-alert-on)があります。 VM Insights によって収集されるすべてのデータは、[ログ アラート](../alerts/alerts-log.md)をサポートする Azure Monitor Logs に格納されます。 現在、VM Insights から収集されるパフォーマンス データで[メトリック アラート](../alerts/alerts-log.md)を使用することはできません。これは、データが Azure Monitor メトリックに収集されないためです。 メトリック アラートのデータを収集するには、Windows VM 用の[診断拡張機能](../agents/diagnostics-extension-overview.md)、または Linux VM 用の [Telegraf エージェント](../essentials/collect-custom-metrics-linux-telegraf.md)をインストールして、パフォーマンス データをメトリックに収集します。
 
 Azure Monitor には、次の 2 種類のログ アラートがあります。
 
 - [結果の数アラート](../alerts/alerts-unified-log.md#count-of-the-results-table-rows)。少なくとも指定された数のレコードがクエリから返された場合に、単一のアラートが作成されます。 これらは、[Log Analytics エージェント](../agents/log-analytics-agent.md)によって収集される Windows および Syslog イベントなどの数値以外のデータの場合、あるいは複数のコンピューター間のパフォーマンスの傾向を分析する場合に適しています。
-- [メトリック測定アラート](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)。値がアラート ルールで定義されているしきい値を超える、クエリ内のレコードごとに個別のアラートが作成されます。 これらのアラート ルールは、Azure Monitor for VMs によって収集されるパフォーマンス データに適しています。これは、コンピューターごとに個別のアラートを作成できるためです。
+- [メトリック測定アラート](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)。値がアラート ルールで定義されているしきい値を超える、クエリ内のレコードごとに個別のアラートが作成されます。 これらのアラート ルールは、VM Insights によって収集されるパフォーマンス データに適しています。これは、コンピューターごとに個別のアラートを作成できるためです。
 
 
 ## <a name="alert-rule-walkthrough"></a>アラート ルールのチュートリアル
-このセクションでは、Azure Monitor for VMs からのパフォーマンス データを使用する、メトリック測定アラート ルールの作成について見ていきます。 さまざまなログ クエリでこの基本プロセスを使用して、さまざまなパフォーマンス カウンターに対してアラートを生成することができます。
+このセクションでは、VM Insights からのパフォーマンス データを使用する、メトリック測定アラート ルールの作成について見ていきます。 さまざまなログ クエリでこの基本プロセスを使用して、さまざまなパフォーマンス カウンターに対してアラートを生成することができます。
 
 まず、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](../alerts/alerts-log.md)」の手順に従って、新しいアラート ルールを作成します。 **[リソース]** については、サブスクリプションで Azure Monitor VMs によって使用される Log Analytics ワークスペースを選択します。 ログ アラート ルールのターゲット リソースは常に Log Analytics ワークスペースであるため、ログ クエリには特定の仮想マシンまたは仮想マシン スケール セットのフィルターを含める必要があります。 
 
@@ -44,7 +43,7 @@ Azure Monitor には、次の 2 種類のログ アラートがあります。
 ![メトリック測定のアラート ルール](media/vminsights-alerts/metric-measurement-alert.png)
 
 ## <a name="sample-alert-queries"></a>アラート クエリのサンプル
-次のクエリは、Azure Monitor for VMs によって収集されるパフォーマンス データを使用するメトリック測定のアラート ルールで利用できます。 それぞれコンピューター別にデータがまとめられるため、値がしきい値を超えるコンピューターごとにアラートが作成されます。
+次のクエリは、VM Insights によって収集されるパフォーマンス データを使用するメトリック測定のアラート ルールで利用できます。 それぞれコンピューター別にデータがまとめられるため、値がしきい値を超えるコンピューターごとにアラートが作成されます。
 
 ### <a name="cpu-utilization"></a>CPU 使用率
 
@@ -200,5 +199,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor のアラート](../platform/alerts-overview.md)について、さらに詳しく学習します。
-- [Azure Monitor for VMs からのデータを使用するログ クエリ](vminsights-log-search.md)について、さらに詳しく学習します。
+- [Azure Monitor のアラート](../alerts/alerts-overview.md)について、さらに詳しく学習します。
+- [VM Insights からのデータを使用するログ クエリ](vminsights-log-search.md)について、さらに詳しく学習します。

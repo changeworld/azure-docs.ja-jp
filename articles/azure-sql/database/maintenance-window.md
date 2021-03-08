@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/02/2021
-ms.openlocfilehash: 4006cedf5f24ab2fc08e41b58f8acf90c404f668
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678656"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692812"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "101678656"
 
 Azure では、Azure SQL Database と SQL Managed Instance のリソースに対して定期的に計画メンテナンス更新を実行します。多くの場合ここでは、基盤となるハードウェア、ソフトウェア (基となるオペレーティング システム (OS) を含む)、SQL エンジンに対する更新が行われます。 メンテナンスの更新中、リソースは完全に利用可能で、アクセスできますが、メンテナンス更新プログラムを適用するために Azure が少しの間 (平均で 8 秒間) インスタンスをオフラインにするため、メンテナンス更新プログラムによってはフェールオーバーが必要になることがあります。  計画的なメンテナンスの更新は、平均で 35 日に 1 回 (つまり、顧客は、Azure SQL Database または SQL マネージド インスタンスごとに 1 か月あたり約 1 件の計画メンテナンス イベントを期待できます)、および顧客が選択したメンテナンス期間スロット中に限り実行されます。   
 
-このメンテナンス期間は、既定の期間中に計画メンテナンス イベントによって生じる可能性のある接続の中断の影響を受けるビジネス ワークロードに向けて定められます。  
+このメンテナンス期間は、計画メンテナンス イベントによって生じる可能性のある断続的な接続の問題に対して回復性がないビジネス ワークロードを対象としています。
 
 メンテナンス期間は、Azure portal、PowerShell、CLI、または Azure API を使用して構成できます。 作成時に構成することも、既存の SQL データベースと SQL マネージド インスタンスに対して構成することもできます。
 
@@ -37,15 +37,15 @@ Azure では、Azure SQL Database と SQL Managed Instance のリソースに対
 既定では、すべての Azure SQL Database とマネージド インスタンス データベースは、営業時間のピーク時の中断を回避するため、毎日現地時刻で午後 5 時から午前 8 時にのみ更新されます。 ローカル時間は、リソースをホストする [Azure リージョン](https://azure.microsoft.com/global-infrastructure/geographies/)によって決まります。 次の 2 つの追加メンテナンス ウィンドウ スロットから選択することにより、メンテナンスの更新をデータベースに適した時間に調整できます。
 
 * **既定** 期間、月曜日から日曜日の現地時刻で午後 5 時から午前 8 時 
-* 平日期間、月曜日から木曜日の現地時刻で午後 10 時から午前 6 時: **顧客によるオプトインが必要** 
-* 週末期間、金曜日から日曜日の現地時刻で午後 10 時から午前 6 時: **顧客によるオプトインが必要**  
+* 平日期間、月曜日から木曜日の現地時刻で午後 10 時から午前 6 時
+* 週末期間、金曜日から日曜日の現地時刻で午後 10 時から午前 6 時
 
 メンテナンス期間の選択が完了すると、すべての計画メンテナンス更新は、選択した期間中のみ実行されます。   
 
 > [!Note]
 > 計画メンテナンス更新だけでなく、まれに、計画外メンテナンス イベントによって使用できなくなることがあります。 
 
-### <a name="cost"></a>コスト
+### <a name="cost-and-eligibility"></a>コストと資格
 
 サブスクリプション [プランの種類](https://azure.microsoft.com/support/legal/offer-details/)が従量課金制、クラウド ソリューション プロバイダー (CSP)、Microsoft Enterprise、または Microsoft 顧客契約の場合、メンテナンス期間の選択は無料です。
 

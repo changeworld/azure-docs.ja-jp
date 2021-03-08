@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83c9b0ece933ad71810c50e89ae296aa218ec75
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689319"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド同期を選択して使用する方法に関するガイダンスを示します。
@@ -26,7 +26,7 @@ Azure AD Connect クラウド同期を使用するには、次のものが必要
 
 - エージェント サービスを実行する Azure AD Connect Cloud Sync gMSA (グループ管理サービス アカウント) を作成するためのドメイン管理者またはエンタープライズ管理者の資格情報。 
 - ゲスト ユーザーではない、Azure AD テナントのハイブリッド ID 管理者アカウント。
-- Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー  このサーバーは、[Active Directory 管理層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。
+- Windows 2016 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー。  このサーバーは、[Active Directory 管理層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。
 - オンプレミスのファイアウォールの構成
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
@@ -35,7 +35,7 @@ Azure AD Connect クラウド同期を使用するには、次のものが必要
 ### <a name="prerequisites-for-gmsa"></a>gMSA の前提条件:
 1.  gMSA ドメインのフォレスト内の Active Directory スキーマを Windows Server 2012 に更新する必要があります。
 2.  ドメイン コントローラー上の [PowerShell RSAT モジュール](/windows-server/remote/remote-server-administration-tools)
-3.  ドメイン内の少なくとも 1 つのドメイン コントローラーで Windows Server 2012 が実行されている必要があります。
+3.  ドメイン内の少なくとも 1 つのドメイン コントローラーで Windows Server 201 が実行されている必要があります。
 4.  エージェントをインストールするドメイン参加済みサーバーは、Windows Server 2012 以降である必要があります。
 
 ### <a name="custom-gmsa-account"></a>カスタムの gMSA アカウント
@@ -65,7 +65,7 @@ gMSA アカウントを使用するように既存のエージェントをアッ
 
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
-1. 4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを搭載した、Windows Server 2012 R2 以降が実行されているドメイン参加済みホスト サーバーを特定します。
+1. 4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを搭載した、Windows Server 2016 以降が実行されているドメイン参加済みホスト サーバーを特定します。
 
 2. ローカル サーバーの PowerShell 実行ポリシーを、Undefined または RemoteSigned に設定する必要があります。
 

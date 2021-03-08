@@ -1,17 +1,16 @@
 ---
 title: Azure Diagnostics 拡張機能の概要
 description: Azure Diagnostics は、Cloud Services、Virtual Machines、および Service Fabric でのデバッグ、パフォーマンス測定、監視、トラフィック分析に使用できます。
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: f3cde32178449169b07f57d4abbc346d8ca89df4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603303"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726225"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Diagnostics 拡張機能の概要
 Azure Diagnostics 拡張機能は、仮想マシンを含む Azure コンピューティング リソースのゲスト オペレーティング システムから監視データを収集する、[Azure Monitor のエージェント](../agents/agents-overview.md)です。 この記事では、Azure Diagnostics 拡張機能の概要と、サポートされている特定の機能、およびインストールと構成のオプションについて説明します。 
@@ -33,8 +32,8 @@ Azure Monitor の Log Analytics エージェントは、仮想マシンのゲス
 考慮すべき主な違いは次のとおりです。
 
 - Azure Diagnostics 拡張機能は、Azure の仮想マシンでのみ使用できます。 Log Analytics エージェントは、Azure、他のクラウド、およびオンプレミスの仮想マシンで使用できます。
-- Azure Diagnostics 拡張機能では、Azure Storage、[Azure Monitor メトリック](../platform/data-platform-metrics.md) (Windows のみ)、および Event Hubs にデータが送信されます。 Log Analytics エージェントでは、[Azure Monitor ログ](../platform/data-platform-logs.md)にデータが収集されます。
-- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-core-solutions)、[Azure Monitor for VMs](../insights/vminsights-overview.md)、および [Azure Security Center](../../security-center/index.yml) などのその他のサービスに必要です。
+- Azure Diagnostics 拡張機能では、Azure Storage、[Azure Monitor メトリック](../essentials/data-platform-metrics.md) (Windows のみ)、および Event Hubs にデータが送信されます。 Log Analytics エージェントでは、[Azure Monitor ログ](../logs/data-platform-logs.md)にデータが収集されます。
+- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-core-solutions)、[VM insights](../vm/vminsights-overview.md)、および [Azure Security Center](../../security-center/index.yml) などのその他のサービスに必要です。
 
 ## <a name="costs"></a>コスト
 Azure Diagnostic 拡張機能には料金はかかりませんが、取り込まれたデータの料金が発生する場合があります。 データの収集先については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
@@ -74,7 +73,7 @@ Azure Diagnostic 拡張機能では、Windows 向けと Linux 向けのどちら
 
 | 宛先 | 説明 |
 |:---|:---|
-| Azure Monitor メトリック | パフォーマンス データを Azure Monitor メトリックに収集します。 [Azure Monitor メトリック ストアへのゲスト OS メトリックの送信](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)に関する記事を参照してください。  |
+| Azure Monitor メトリック | パフォーマンス データを Azure Monitor メトリックに収集します。 [Azure Monitor メトリック ストアへのゲスト OS メトリックの送信](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)に関する記事を参照してください。  |
 | Event Hubs | Azure の外部でデータを送信するには、Azure Event Hubs を使用します。 [Event Hubs への Azure Diagnostics データのストリーミング](diagnostics-extension-stream-event-hubs.md)に関する記事を参照してください。 |
 | Azure Storage BLOB | テーブルに加えて Azure Storage の BLOB にもデータを書き込みます。 |
 | Application Insights | ご利用の VM で実行されているアプリケーションから Application Insights にデータを収集して、他のアプリケーション監視と統合します。 [診断データの Application Insights への送信](diagnostics-extension-to-application-insights.md)に関する記事を参照してください。 |
@@ -89,7 +88,7 @@ LAD では Azure Storage 内のテーブルにデータが書き込まれます�
 |:---|:---|
 | Event Hubs | Azure の外部でデータを送信するには、Azure Event Hubs を使用します。 |
 | Azure Storage BLOB | テーブルに加えて Azure Storage の BLOB にもデータを書き込みます。 |
-| Azure Monitor メトリック | LAD に加えて、Telegraf エージェントもインストールします。 「[Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](../platform/collect-custom-metrics-linux-telegraf.md)」を参照してください。
+| Azure Monitor メトリック | LAD に加えて、Telegraf エージェントもインストールします。 「[Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](../essentials/collect-custom-metrics-linux-telegraf.md)」を参照してください。
 
 
 ## <a name="installation-and-configuration"></a>インストールと構成

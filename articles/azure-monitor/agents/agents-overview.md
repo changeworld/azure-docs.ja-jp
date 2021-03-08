@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: d46fef97824b9dbe72539177a14b4a778058c625
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: af18356ef42f8796b972626da4567aac68a6de5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600492"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719986"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -21,7 +21,7 @@ ms.locfileid: "100600492"
 > [!NOTE]
 > Azure Monitor と Log Analytics が最近統合されたため、現在 Azure Monitor には複数のエージェントがあります。 機能に重複がある場合もありますが、それぞれに固有の機能があります。 要件によっては、マシンに 1 つ以上のエージェントが必要になる場合があります。 
 
-特定のマシンに対して、1 つのエージェントでは完全に満たすことができない特定の要件セットがある場合があります。 たとえば、Azure Diagnostics 拡張機能を必要とするメトリック アラートを使用する必要があるときに、Log Analytics エージェントと依存関係エージェントを必要とする Azure Monitor for VM の機能も利用したい場合があります。 このような場合、複数のエージェントを使用できます。これは、それぞれの機能を必要とする顧客を対象にした一般的なシナリオです。
+特定のマシンに対して、1 つのエージェントでは完全に満たすことができない特定の要件セットがある場合があります。 たとえば、Azure Diagnostics 拡張機能を必要とするメトリック アラート以外に、Log Analytics エージェントと依存関係エージェントを必要とする VM insights の機能も利用したほうがよい場合があります。 このような場合、複数のエージェントを使用できます。これは、それぞれの機能を必要とする顧客を対象にした一般的なシナリオです。
 
 ## <a name="summary-of-agents"></a>エージェントの概要
 
@@ -38,7 +38,7 @@ ms.locfileid: "100600492"
 | **エージェントの要件**  | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | イベント ログ<br>パフォーマンス | イベント ログ<br>ETW イベント<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>.NET アプリ ログ<br>クラッシュ ダンプ<br>エージェント診断ログ | イベント ログ<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>分析情報とソリューション<br>その他のサービス | プロセスの依存関係<br>ネットワーク接続のメトリック |
 | **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック | Azure Storage<br>Azure Monitor メトリック<br>イベント ハブ | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
-| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | メトリックス エクスプローラー | VM に対する Azure Monitor<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM に対する Azure Monitor<br>サービス マップ |
+| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM insights<br>サービス マップ |
 
 ### <a name="linux-agents"></a>Linux エージェント
 
@@ -48,19 +48,19 @@ ms.locfileid: "100600492"
 | **エージェントの要件**  | なし | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | syslog<br>パフォーマンス | syslog<br>パフォーマンス | パフォーマンス | syslog<br>パフォーマンス| プロセスの依存関係<br>ネットワーク接続のメトリック |
 | **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
-| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | | メトリックス エクスプローラー | VM に対する Azure Monitor<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM に対する Azure Monitor<br>サービス マップ |
+| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM insights<br>サービス マップ |
 
 
 ## <a name="azure-monitor-agent-preview"></a>Azure Monitor エージェント (プレビュー)
 
-[Azure Monitor エージェント](azure-monitor-agent-overview.md)は、現在プレビューの段階にあり、Windows と Linux の両方のマシンで、Log Analytics エージェントおよび Telegraf エージェントを置き換えます。 Azure Monitor ログと Azure Monitor のメトリックの両方にデータを送信し、[データ収集ルール (DCR)](data-collection-rule-overview.md) を使用します。このルールは、各エージェントのデータ コレクションと変換先をよりスケーラブルに構成する方法を提供します。
+[Azure Monitor エージェント](azure-monitor-agent-overview.md)は、現在プレビューの段階にあり、Windows と Linux の両方のマシンで、Log Analytics エージェントおよび Telegraf エージェントを置き換えます。 Azure Monitor ログと Azure Monitor のメトリックの両方にデータを送信し、[データ収集ルール (DCR)](data-collection-rule-overview.md) を使用します。これにより、各エージェントのデータ コレクションと変換先をよりスケーラブルに構成する方法が提供されます。
 
 次のことを行う必要がある場合は、Azure Monitor エージェントを使用します。
 
 - Azure、その他のクラウド、またはオンプレミスの任意のマシンからゲスト ログとメトリックを収集する。 (Azure の外部のマシンには [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)が必要です。) 
 - Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリックにデータを送信する。 
 - アーカイブのためにデータを Azure Storage に送信する。
-- [Azure Event Hubs](../platform/diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
+- [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
 - [Azure Security Center](../../security-center/security-center-introduction.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用のマシンのセキュリティを管理する。 (プレビューでは使用できません。)
 
 Azure Monitor エージェントの制限事項は次のとおりです。
@@ -69,7 +69,7 @@ Azure Monitor エージェントの制限事項は次のとおりです。
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
 
-[Log Analytics エージェント](../platform/log-analytics-agent.md)は、Azure、他のクラウド プロバイダー、オンプレミス マシンの仮想マシンのゲスト オペレーティング システムとワークロードから、監視データを収集します。 データは、Log Analytics ワークスペースに送信されます。 Log Analytics エージェントは、System Center Operations Manager によって使用されるものと同じであり、エージェント コンピューターをマルチホーム化して管理グループおよび Azure Monitor との通信を同時に行います。 このエージェントは、Azure Monitor および Azure の他のサービスの特定の分析情報にも必要です。
+[Log Analytics エージェント](./log-analytics-agent.md)は、Azure、他のクラウド プロバイダー、オンプレミス マシンの仮想マシンのゲスト オペレーティング システムとワークロードから、監視データを収集します。 データは、Log Analytics ワークスペースに送信されます。 Log Analytics エージェントは、System Center Operations Manager によって使用されるものと同じであり、エージェント コンピューターをマルチホーム化して管理グループおよび Azure Monitor との通信を同時に行います。 このエージェントは、Azure Monitor および Azure の他のサービスの特定の分析情報にも必要です。
 
 > [!NOTE]
 > Windows 用 Log Analytics エージェントは、多くの場合、Microsoft Monitoring Agent (MMA) と呼ばれます。 Linux 用 Log Analytics エージェントは、多くの場合、OMS エージェントと呼ばれます。
@@ -77,8 +77,8 @@ Azure Monitor エージェントの制限事項は次のとおりです。
 Log Analytics エージェントは、次のような場合に使用します。
 
 * Azure の外部でホストされている Azure 仮想マシンまたはハイブリッド マシンから、ログとパフォーマンス データを収集する。
-* データを Log Analytics ワークスペースに送信して、[ログ クエリ](../log-query/log-query-overview.md)など、[Azure Monitor ログ](../platform/data-platform-logs.md)でサポートされている機能を活用する。
-* マシンを大規模に監視でき、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる [Azure Monitor for VMs](../insights/vminsights-overview.md) を使用する。  
+* データを Log Analytics ワークスペースに送信して、[ログ クエリ](../logs/log-query-overview.md)など、[Azure Monitor ログ](../logs/data-platform-logs.md)でサポートされている機能を活用する。
+* マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる、[VM insights](../vm/vminsights-overview.md) を使用する。  
 * [Azure Security Center](../../security-center/security-center-introduction.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用のマシンのセキュリティを管理する。
 * [Azure Automation Update Management](../../automation/update-management/overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking と Inventory](../../automation/change-tracking/overview.md) を使用して、Azure および非 Azure マシンを包括的に管理する。
 * さまざまな[ソリューション](../monitor-reference.md#insights-and-core-solutions)を使用して、特定のサービスまたはアプリケーションを監視する。
@@ -91,13 +91,13 @@ Log Analytics エージェントの制限事項は次のとおりです。
 
 ## <a name="azure-diagnostics-extension"></a>Azure Diagnostics 拡張機能
 
-[Azure Diagnostics 拡張機能](../platform/diagnostics-extension-overview.md)によって、Azure 仮想マシンおよびその他のコンピューティング リソースのゲスト オペレーティング システムとワークロードから監視データが収集されます。 データは主に Azure Storage に収集されますが、データ シンクを定義して、Azure Monitor メトリックや Azure Event Hubs などの他の送信先にデータを送信することもできます。
+[Azure Diagnostics 拡張機能](./diagnostics-extension-overview.md)によって、Azure 仮想マシンおよびその他のコンピューティング リソースのゲスト オペレーティング システムとワークロードから監視データが収集されます。 データは主に Azure Storage に収集されますが、データ シンクを定義して、Azure Monitor メトリックや Azure Event Hubs などの他の送信先にデータを送信することもできます。
 
 Azure Diagnostics 拡張機能は、次のような場合に使用します。
 
 - アーカイブのため、または [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などのツールで分析したりするために Azure Storage にデータを送信する。
-- [Azure Monitor メトリック](../platform/data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](./../platform/alerts-metric-overview.md)や[自動スケーリング](../platform/autoscale-overview.md) (Windows のみ) などの機能を活用したりする。
-- [Azure Event Hubs](../platform/diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
+- [Azure Monitor メトリック](../essentials/data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](../alerts/alerts-metric-overview.md)や[自動スケーリング](../autoscale/autoscale-overview.md) (Windows のみ) などの機能を活用したりする。
+- [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
 - [ブート診断](../../virtual-machines/troubleshooting/boot-diagnostics.md)を収集して VM ブートの問題を調査する。
 
 Azure Diagnostics 拡張機能の制限事項は次のとおりです。
@@ -107,11 +107,11 @@ Azure Diagnostics 拡張機能の制限事項は次のとおりです。
 
 ## <a name="telegraf-agent"></a>Telegraf エージェント
 
-[InfluxData Telegraf エージェント](../platform/collect-custom-metrics-linux-telegraf.md)は、Linux コンピューターから Azure Monitor メトリックにパフォーマンス データを収集するために使用されます。
+[InfluxData Telegraf エージェント](../essentials/collect-custom-metrics-linux-telegraf.md)は、Linux コンピューターから Azure Monitor メトリックにパフォーマンス データを収集するために使用されます。
 
 Telegraf エージェントは、次のような場合に使用します。
 
-* [Azure Monitor メトリック](../platform/data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](./../platform/alerts-metric-overview.md)や[自動スケーリング](../platform/autoscale-overview.md) (Linux のみ) などの機能を活用したりする。
+* [Azure Monitor メトリック](../essentials/data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](../alerts/alerts-metric-overview.md)や[自動スケーリング](../autoscale/autoscale-overview.md) (Linux のみ) などの機能を活用したりする。
 
 ## <a name="dependency-agent"></a>依存関係エージェント
 
@@ -119,7 +119,7 @@ Telegraf エージェントは、次のような場合に使用します。
 
 依存関係エージェントは、次のような場合に使用します。
 
-* マップ機能の [Azure Monitor for VMs](../insights/vminsights-overview.md) または [Service Map](../insights/service-map.md) ソリューションを使用する。
+* マップ機能の [VM insights](../vm/vminsights-overview.md) または [Service Map](../vm/service-map.md) ソリューションを使用する。
 
 依存関係エージェントを使用する場合は、次の点を考慮してください。
 
@@ -224,6 +224,6 @@ Telegraf エージェントは、次のような場合に使用します。
 
 各エージェントの詳細については、以下を参照してください。
 
-- [Log Analytics エージェントの概要](../platform/log-analytics-agent.md)
-- [Azure Diagnostics 拡張機能の概要](../platform/diagnostics-extension-overview.md)
-- [Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Log Analytics エージェントの概要](./log-analytics-agent.md)
+- [Azure Diagnostics 拡張機能の概要](./diagnostics-extension-overview.md)
+- [Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](../essentials/collect-custom-metrics-linux-telegraf.md)

@@ -3,12 +3,12 @@ title: Azure Functions の専用ホスティング
 description: 専用の App Service ホスティング プランで Azure Functions を実行する利点について説明します。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591059"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704567"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Azure Functions の専用ホスティング プラン
 
@@ -41,7 +41,7 @@ App Service プランを使用し、VM インスタンスを追加して、手�
 
 ## <a name="app-service-environments"></a>App Service Environment
 
-[App Service Environment](../app-service/environment/intro.md) (ASE) で実行すると、関数を完全に分離し、App Service プランより多い数のインスタンスを利用できます。 開始するには、「」を参照してください。
+App Service Environment (ASE) で実行すると、関数を完全に分離し、App Service プランより多い数のインスタンスを利用できます。 開始するには、「[App Service 環境の概要](../app-service/environment/intro.md)」を参照してください。
 
 関数アプリを仮想ネットワークで実行するだけであれば、[Premium プラン](functions-premium-plan.md)を使用してそれを行うことができます。 詳細については、[Azure Functions のプライベート サイト アクセスの設定](functions-create-private-site-access.md)に関するページを参照してください。 
 

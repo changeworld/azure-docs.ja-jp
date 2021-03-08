@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor for containers の監視コスト | Microsoft Docs
-description: この記事では、Azure Monitor for containers によって収集されるメトリックとインベントリ データの監視コストについて説明します。これにより、お客様が使用量と関連コストを管理できるようになります。
+title: Container insights の監視コスト | Microsoft Docs
+description: この記事では、Container insights によって収集されるメトリックとインベントリ データの監視コストについて説明します。これにより、お客様が使用量と関連コストを管理できるようになります。
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 0a3118e1dd839eced5e1f15d28feff4bbb58014f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604403"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728911"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Azure Monitor for containers の監視コストについて
+# <a name="understand-monitoring-costs-for-container-insights"></a>Container insights の監視コストについて
 
-この記事では、次の内容を理解するための、Azure Monitor for containers に関する価格のガイダンスを提供します。
+この記事では、次の内容を理解するための、Container insights に関する価格のガイダンスを提供します。
 
 * この分析情報を有効にする前に事前にコストを見積もる方法
 
-* 1 つまたは複数のコンテナーに対して Azure Monitor for containers を有効にした後に、コストを測定する方法
+* 1 つまたは複数のコンテナーに対して Container insights を有効にした後に、コストを測定する方法
 
 * データの収集を制御してコストを削減する方法
 
@@ -27,7 +27,7 @@ Azure Monitor の価格モデルは、主に、Log Analytics ワークスペー�
 >[!NOTE]
 >すべてのサイズと価格は、見積もり用のサンプル用です。 Azure Monitor Log Analytics の価格モデルと Azure リージョンに基づく最新の価格については、Azure Monitor の[価格](https://azure.microsoft.com/pricing/details/monitor/)ページを参照してください。
 
-次に、Azure Monitor for container を使用して Kubernetes クラスターから収集されるデータの種類について説明します。このデータは、コストに影響を与え、使用状況に応じてカスタマイズできます。
+次に、Container insights を使用して Kubernetes クラスターから収集されるデータの種類について説明します。このデータは、コストに影響を与え、使用状況に応じてカスタマイズできます。
 
 - クラスター内のすべての Kubernetes 名前空間で監視されているすべてのコンテナーの stdout、stderr コンテナーのログ
 
@@ -37,11 +37,11 @@ Azure Monitor の価格モデルは、主に、Log Analytics ワークスペー�
 
 - Prometheus メトリックのアクティブなスクレイピング
 
-- *kube-apiserver* および *kube-controller-manager* マスター コンポーネントによって生成されるログ データを分析できる、AKS クラスター内の Kubernetes マスター ノード ログの [診断ログの収集](../../aks/view-master-logs.md)。
+- *kube-apiserver* および *kube-controller-manager* マスター コンポーネントによって生成されるログ データを分析できる、AKS クラスター内の Kubernetes マスター ノード ログの [診断ログの収集](../../aks/view-control-plane-logs.md)。
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Kubernetes クラスターから収集されるもの
 
-Azure Monitor for containers には、Log Analytics ワークスペースにログ データとして書き込まれる、一連の収集された定義済みのメトリックとインベントリ項目が含まれます。 以下に示すすべてのメトリックは、既定で 1 分ごとに収集されます。
+Container insights には、Log Analytics ワークスペースにログ データとして書き込まれる、一連の収集された定義済みのメトリックとインベントリ項目が含まれます。 以下に示すすべてのメトリックは、既定で 1 分ごとに収集されます。
 
 ### <a name="node-metrics-collected"></a>収集されるノード メトリック
 
@@ -194,10 +194,10 @@ Azure Monitor for containers には、Log Analytics ワークスペースにロ�
 
 - スクレイピングの頻度が最適に設定されていることを確認します (既定値は 60 秒)。 頻度は 15 秒に上げることができますが、スクレイピングしているメトリックがその頻度で公開されていることを確認する必要があります。 そうしないと、多くの重複したメトリックがスクレイピングされ、その間隔で Log Analytics ワークスペースに送信されますが、データ インジェストとリテンションのコストが加算される半面、その価値は下がります。 
 
-- Azure Monitor for containers では、メトリック名ごとの除外リストとインクルージョン リストがサポートされています。 たとえば、クラスターの **kubedns** メトリックをスクレイピングする場合、既定ではスクレイピング対象が数百にも上る可能性がありますが、ほとんどの場合、必要なのはサブセットのみです。 スクレイピングするメトリックの一覧を指定したことを確認するか、データの取り込み量を節約するために、少数を除いて除外することもできます。 スクレイピングを有効にし、Log Analytics の請求額の負担になるだけの、これらの多くのメトリックを使用しないようにすることは簡単です。
+- Container insights では、メトリック名ごとの除外リストとインクルージョン リストがサポートされています。 たとえば、クラスターの **kubedns** メトリックをスクレイピングする場合、既定ではスクレイピング対象が数百にも上る可能性がありますが、ほとんどの場合、必要なのはサブセットのみです。 スクレイピングするメトリックの一覧を指定したことを確認するか、データの取り込み量を節約するために、少数を除いて除外することもできます。 スクレイピングを有効にし、Log Analytics の請求額の負担になるだけの、これらの多くのメトリックを使用しないようにすることは簡単です。
 
 - ポッドの注釈を使用してスクラップするときは、使用しない名前空間からポッド メトリックのスクレイピングを除外するように、名前空間でフィルター処理する必要があります (たとえば、**dev-test** 名前空間)。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Monitor for containers で収集されたデータから最近の使用パターンに基づいてどのようなコストが発生する可能性があるかを理解する方法の詳細については、[使用量の管理とコストの見積もり](../platform/manage-cost-storage.md)に関する記事を参照してください。
+Container insights で収集されたデータから最近の使用パターンに基づいてどのようなコストが発生する可能性があるかを理解する方法の詳細については、[使用量の管理とコストの見積もり](../logs/manage-cost-storage.md)に関する記事を参照してください。

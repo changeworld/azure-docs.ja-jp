@@ -1,25 +1,24 @@
 ---
-title: VM 用 Azure Monitor からログを照会する方法
-description: Azure Monitor for VMs ソリューションは、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
-ms.subservice: ''
+title: VM insights からログをクエリする方法
+description: VM insights ソリューションでは、メトリックとログ データが収集されます。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 28ee7f3d327c09f5837c7dc9e2f39c0f2ca4d888
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604278"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046535"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM 用 Azure Monitor からログを照会する方法
+# <a name="how-to-query-logs-from-vm-insights"></a>VM insights からログをクエリする方法
 
-VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics ワークスペースにこれらを転送します。  このデータは、Azure Monitor で[クエリ](../log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
+VM insights では、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報の収集と、Azure Monitor 内の Log Analytics ワークスペースへの転送が行われます。  このデータは、Azure Monitor で[クエリ](../logs/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 ## <a name="map-records"></a>Map レコード
 
-プロセスまたはコンピューターが起動するとき、または VM 用 Azure Monitor の Map 機能に搭載されている場合に生成されるレコードのほかに、個々のコンピューターとプロセスごとに、1 時間に 1 つのレコードが生成されます。 これらのレコードは、次の表に示したプロパティを持ちます。 ServiceMapComputer_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のマシン リソースのフィールドにマップされます。 ServiceMapProcess_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のプロセス リソースのフィールドにマップされます。 ResourceName_s フィールドは、対応する Resource Manager リソースの名前フィールドと一致します。 
+プロセスまたはコンピューターが起動されたとき、あるいは VM insights Map 機能にオンボードされたときに生成されるレコードに加え、一意のコンピューターとプロセスごとに 1 時間あたり 1 つのレコードが生成されます。 これらのレコードは、次の表に示したプロパティを持ちます。 ServiceMapComputer_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のマシン リソースのフィールドにマップされます。 ServiceMapProcess_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のプロセス リソースのフィールドにマップされます。 ResourceName_s フィールドは、対応する Resource Manager リソースの名前フィールドと一致します。 
 
 個々のプロセスとコンピューターの識別に使用できる、内部生成されたプロパティがあります。
 
@@ -473,6 +472,6 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Monitor でログ クエリを初めて作成する場合は、Azure portal で [Log Analytics の使用方法](../log-query/log-analytics-tutorial.md)に関するページを参照してログ クエリを作成してください。
+* Azure Monitor でログ クエリを初めて作成する場合は、Azure portal で [Log Analytics の使用方法](../logs/log-analytics-tutorial.md)に関するページを参照してログ クエリを作成してください。
 
-* [検索クエリの記述方法](../log-query/get-started-queries.md)を参照してください。
+* [検索クエリの記述方法](../logs/get-started-queries.md)を参照してください。

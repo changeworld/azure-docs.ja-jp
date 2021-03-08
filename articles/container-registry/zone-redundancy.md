@@ -2,13 +2,14 @@
 title: 高可用性のためのゾーン冗長レジストリ
 description: Azure Container Registry でのゾーン冗長の有効化について説明します。 Azure 可用性ゾーンでコンテナー レジストリまたはレプリケーションを作成します。 ゾーン冗長は、Premium サービス レベルの機能です。
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696280"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738108"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>回復性と高可用性のために Azure Container Registry でゾーン冗長を有効にする
 
@@ -20,7 +21,7 @@ ms.locfileid: "98696280"
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* 現在は、次のリージョンでサポートされています: 米国東部、米国東部 2、米国西部 2。
+* 現在は、米国東部、米国東部 2、米国西部 2、北ヨーロッパ、西ヨーロッパ、東日本の各リージョンでサポートされています。
 * 可用性ゾーンへのリージョンの変換は、現在はサポートされていません。 リージョンで可用性ゾーンのサポートを有効にするには、可用性ゾーンのサポートを有効にして、必要なリージョンにレジストリを作成するか、可用性ゾーンのサポートを有効にしてレプリケートされたリージョンを追加する必要があります。
 * リージョンでゾーン冗長を無効にすることはできません。
 * [ACR タスク](container-registry-tasks-overview.md)では、可用性ゾーンはまだサポートされていません。

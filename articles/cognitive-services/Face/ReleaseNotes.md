@@ -10,16 +10,23 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 49d8eeaa8d1160659a456f147a6a5e27f923af33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a66f65d48a14853ec1da08f5d83b777f4fdac846
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733467"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183319"
 ---
 # <a name="whats-new-in-face-service"></a>Face サービスの新機能
 
 Azure Face サービスは、継続的に更新されます。 この記事で、機能の強化、修正、ドキュメントの更新についての最新情報を入手してください。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+* 新しい Face API 検出モデル: 新しい検出 03 モデルは、現在使用できる最も正確な検出モデルです。 新しいお客様の場合は、このモデルを使用することをお勧めします。 検出 03 では、画像内で見つかった小さい顔のリコールと精度が向上しています (64x64 ピクセル)。 さらに改善された点としては、偽陽性が全体的に削減されたことと、回転した顔の向きの検出が向上したことがあります。 検出 03 と新しい認識 04 を組み合わせることにより、認識の精度も向上します。 詳細については、「[顔検出モデルを指定する](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)」を参照してください。
+* フェイス マスク属性: フェイス マスク属性は、最新の検出 03 モデルで使用できます。また、フェイス マスクによって、意図されたとおりに鼻と口の両方がカバーされるように装着されているかどうかを検出する追加の `"noseAndMouthCovered"` 属性を使用できます。 最新のマスク検出機能を使用するには、ユーザーが API 要求で検出モデルを指定する必要があります。_detectionModel_ パラメーターに `detection_03` を設定してモデルのバージョンを割り当てます。 詳細については、「[顔検出モデルを指定する](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)」を参照してください。
+* 新しい Face API 認識モデル: 新しい認識 04 モデルは、現在使用できる最も正確な認識モデルです。 新しいお客様の場合は、検証と識別にこのモデルを使用することをお勧めします。 これにより、認識 03 の精度が向上し、フェイス マスク (サージカル マスク、N95 マスク、布マスク) を装着した登録されているユーザーの認識が向上します。 最新の検出 03 モデルを使用して、登録されているユーザーがフェイス カバーを装着しているかどうかを検出し、最新の認識 04 モデルを使用してそれが誰であるかを認識する、安全でシームレスなユーザー エクスペリエンスを構築できるようになりました。 詳細については、「[顔認識モデルを指定する](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)」を参照してください。
+
 
 ## <a name="january-2021"></a>2021 年 1 月
 * Face API を使用するときの待機時間を軽減する: Face チームは、サービス使用時の待機時間の潜在的な原因と、考えられる軽減戦略について詳しく説明されている、新しい記事を公開しました。 「[Face サービスを使用するときの待機時間を軽減する](./face-api-how-to-topics/how-to-mitigate-latency.md)」を参照してください。

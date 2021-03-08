@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955456"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733416"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU でコンピューティングを管理する
 
@@ -21,11 +21,6 @@ ms.locfileid: "98955456"
 
 この記事では、Azure Stack Edge Pro GPU デバイス上の IoT Edge サービスを介してコンピューティングを管理する方法について説明します。 コンピューティングの管理は、Azure portal またはローカル Web UI から行うことができます。 Azure portal を使用してモジュール、トリガー、IoT Edge 構成を管理し、ローカル Web UI を使用してコンピューティング ネットワーク設定を管理します。
 
-この記事では、次のことについて説明します。
-
-> [!div class="checklist"]
-> * トリガーの管理
-> * IoT Edge 構成の管理
 
 
 ## <a name="manage-triggers"></a>トリガーの管理
@@ -130,6 +125,22 @@ IoT デバイスと IoT Edge デバイスのキーをローテーションした
     ![確認を求められたら [はい] を選択](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 
 3. 同期が完了したら、ダイアログを閉じます。
+
+## <a name="change-external-service-ips-for-containers"></a>コンテナーの外部サービス IP を変更する
+
+Kubernetes 外部サービス IP は、Kubernetes クラスターの外部に公開されるサービスにアクセスするために使用されます。 デバイスがアクティブ化された後、ローカル UI にアクセスすることにより、デバイスのコンテナー化されたワークロード用の外部サービス IP を設定または変更できます。
+
+
+1. デバイスのローカル UI で、 **[コンピューティング]** に移動します。
+1. ネットワークがコンピューティング用に構成されているポートを選択します。 開かれたブレードで、Kubernetes 外部サービス IP を指定 (新規) または変更 (既存の場合) します。 これらの IP は、Kubernetes クラスターの外部に公開する必要があるすべてのサービスに使用されます。 
+    - デバイス上で実行され、IoT Edge モジュールによって使用される `edgehub` サービス用に、少なくとも 1 つのサービス IP が必要です。 
+    - デプロイする追加の IoT Edge モジュールまたはコンテナーごとに、IP が必要になります。 
+    - これらは、静的な連続する IP です。
+
+    ![Kubernetes サービス IP を変更する](media/azure-stack-edge-j-series-manage-compute/change-service-ips-1.png)
+
+1. **[適用]** を選択します。 IP を適用した後で、デバイスを再起動する必要はありません。 新しい IP はすぐに有効になります。
+
 
 ## <a name="next-steps"></a>次のステップ
 

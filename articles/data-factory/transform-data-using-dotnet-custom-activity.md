@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: ec1e7c77c44cf1969e472a6e7288d1af5d6640e1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 64588d5968df635c3bb017bd1ff1d10951968f32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724950"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 
@@ -35,6 +35,9 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 * [Azure Batch の基本](../batch/batch-technical-overview.md) 」をご覧ください。
 * Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレットをご覧ください。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md) をご覧ください。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account)に関する記事をご覧ください。
 * Azure Batch プールの作成方法については、[New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) コマンドレットをご覧ください。
+
+> [!IMPORTANT]
+> 新しい Azure Batch プールを作成するときは、'CloudServiceConfiguration' ではなく 'VirtualMachineConfiguration' を使用する必要があります。 詳細については、[Azure Batch プールの移行](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)に関するガイダンスを参照してください。 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch のリンクされたサービス
 
@@ -298,7 +301,7 @@ Activity Error section:
 ダウンストリームのアクティビティで stdout.txt の内容を使用する場合は、式 "\@activity('MyCustomActivity').output.outputs[0]" で stdout.txt ファイルへのパスを取得できます。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、`"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` パスに格納されています。 必要に応じて、パスを個別にクリーンアップする必要があります。
+> - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、`https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/` パスに格納されています。 必要に応じて、パスを個別にクリーンアップする必要があります。
 > - セルフホステッド統合ランタイムを使用しているリンクされたサービスでは、顧客が定義したプライベート ネットワーク環境内に資格情報を保持できるように、セルフホステッド統合ランタイムによってキーやパスワードなどの機密情報が暗号化されます。 この場合、カスタム アプリケーション コードから一部の機密フィールドを参照したときにフィールドが見つからない可能性があります。 必要に応じて、リンクされたサービスの参照を使用するのではなく、extendedProperties で SecureString を使用してください。
 
 ## <a name="pass-outputs-to-another-activity"></a>別のアクティビティに出力を渡す

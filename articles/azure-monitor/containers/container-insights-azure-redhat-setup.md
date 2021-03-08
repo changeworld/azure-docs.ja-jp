@@ -1,16 +1,16 @@
 ---
-title: Azure Monitor for containers を使用して Azure Red Hat OpenShift v3.x を構成する | Microsoft Docs
+title: コンテナー分析情報を使用して Azure Red Hat OpenShift v3.x を構成する | Microsoft Docs
 description: この記事では、Azure Red Hat OpenShift バージョン 3 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604414"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708375"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v3 を構成する
+# <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>コンテナー分析情報を使用して Azure Red Hat OpenShift v3 を構成する
 
 >[!IMPORTANT]
 > Azure Red Hat OpenShift 3.11 は、2022 年 6 月に廃止されます。
@@ -21,33 +21,33 @@ ms.locfileid: "100604414"
 > このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](../../openshift/tutorial-create-cluster.md)します。
 > ご質問がある場合は、[お問い合わせください](mailto:aro-feedback@microsoft.com)。
 
-Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エンジン クラスター用の監視エクスペリエンスを提供するものです。 この記事では、[Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3 およびバージョン 3 のサポートされている最新バージョンでホストされている Kubernetes クラスターの監視を有効にし、類似した監視エクスペリエンスを実現する方法について説明します。
+コンテナー分析情報は、Azure Kubernetes Service (AKS) と AKS エンジン クラスターに対する充実した監視エクスペリエンスを提供します。 この記事では、[Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3 およびバージョン 3 のサポートされている最新バージョンでホストされている Kubernetes クラスターの監視を有効にし、類似した監視エクスペリエンスを実現する方法について説明します。
 
 >[!NOTE]
 >現時点では、Azure Red Hat OpenShift のサポートはパブリック プレビューの機能です。
 >
 
-次のサポートされている方法を使用して、新規または 1 つ以上の既存の Azure Red Hat OpenShift のデプロイに対して Azure Monitor for containers を有効にできます。
+次のサポートされている方法を使用して、新規または 1 つ以上の既存の Azure Red Hat OpenShift のデプロイに対してコンテナー分析情報を有効にできます。
 
 - Azure portal または Azure Resource Manager テンプレートを使用した既存のクラスター向け。
 - Azure Resource Manager テンプレートを使用している新しいクラスター向け、または [Azure CLI](/cli/azure/openshift#az-openshift-create) を使用して新しいクラスターを作成する場合。
 
 ## <a name="supported-and-unsupported-features"></a>サポートされている機能とサポートされていない機能
 
-Azure Monitor for containers では、次の機能を除き、[概要](container-insights-overview.md)記事で説明されている通り Azure Red Hat OpenShift の監視をサポートしています。
+コンテナー分析情報では、次の機能を除き、[概要](container-insights-overview.md)に関する記事で説明されている通り Azure Red Hat OpenShift の監視をサポートしています。
 
 - ライブ データ (プレビュー)
 - クラスターノードとポッドから[メトリックを収集](container-insights-update-metrics.md)し、Azure Monitor メトリック データベースに格納する
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Log Analytics ワークスペース。](../platform/design-logs-deployment.md)
+- [Log Analytics ワークスペース。](../logs/design-logs-deployment.md)
 
-    Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。
+    コンテナー分析情報では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
-- Azure Monitor for containers の機能を有効にしてアクセスするには、少なくとも、Azure サブスクリプションの Azure *共同作成者* ロールのメンバー、および Azure Monitor for containers で構成されている Log Analytics ワークスペースの [*Log Analytics 共同作成者*](../platform/manage-access.md#manage-access-using-azure-permissions)のメンバーである必要があります。
+- コンテナー分析情報の機能を有効にしてアクセスするには、少なくとも、Azure サブスクリプションの Azure "*共同作成者*" ロールのメンバー、およびコンテナー分析情報で構成されている Log Analytics ワークスペースの "[*Log Analytics 共同作成者*](../logs/manage-access.md#manage-access-using-azure-permissions)" ロールのメンバーである必要があります。
 
-- 監視データを表示するには、Azure Monitor for containers で構成されている Log Analytics ワークスペースの [*Log Analytics 閲覧者*](../platform/manage-access.md#manage-access-using-azure-permissions) ロールのアクセス権限を持つメンバーであることを確認します。
+- 監視データを表示するには、コンテナー分析情報で構成されている Log Analytics ワークスペースの "[*Log Analytics 閲覧者*](../logs/manage-access.md#manage-access-using-azure-permissions)" ロールのアクセス権限を持つメンバーであることを確認します。
 
 ## <a name="identify-your-log-analytics-workspace-id"></a>Log Analytics ワークスペース ID を識別する
 
@@ -176,13 +176,13 @@ Azure にデプロイされた Azure Red Hat OpenShift クラスターの監視�
 
 4. 監視対象外のクラスターの一覧でクラスターを検索し、 **[有効にする]** をクリックします。 一覧の結果を確認するには、 **[クラスターの種類]** 列から **ARO** を探します。
 
-5. **[コンテナーの Azure Monitor へのオンボード]** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストから選択します。  
+5. **[Onboarding to Container insights]\(コンテナー分析情報のオンボード\)** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストからそれを選択します。  
     このリストでは、サブスクリプションでクラスターがデプロイされている既定のワークスペースと場所が事前に選択されています。
 
     ![監視対象外のクラスターの監視を有効にする](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../learn/quick-create-workspace.md)」の手順に従います。 必ず、RedHat OpenShift クラスターがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。
+    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../logs/quick-create-workspace.md)」の手順に従います。 必ず、RedHat OpenShift クラスターがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。
 
 監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
 
@@ -246,10 +246,10 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 ## <a name="next-steps"></a>次のステップ
 
-- RedHat OpenShift クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、Azure Monitor for containers を[使用する方法](container-insights-analyze.md)について学習します。
+- RedHat OpenShift クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、コンテナー分析情報を[使用する方法](container-insights-analyze.md)について学習します。
 
 - 既定では、コンテナー化されたエージェントによって、kube-system を除くすべての名前空間で実行されているすべてのコンテナーの stdout および stderr コンテナー ログが収集されます。 特定の名前空間に固有のコンテナー ログ収集を構成するには、「[コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する](container-insights-agent-config.md)」を参照して、ConfigMap 構成ファイルに必要なデータ収集設定を構成します。
 
 - クラスターから Prometheus メトリックをスクレイピングして分析するには、「[Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する](container-insights-prometheus-integration.md)」を参照してください。
 
-- Azure Monitor for containers でクラスターの監視を停止する方法については、「[お使いの Azure Red Hat OpenShift クラスターの監視を停止する方法](./container-insights-optout-openshift-v3.md)」を参照してください。
+- コンテナー分析情報によるクラスターの監視を停止する方法については、「[お使いの Azure Red Hat OpenShift クラスターの監視を停止する方法](./container-insights-optout-openshift-v3.md)」を参照してください。

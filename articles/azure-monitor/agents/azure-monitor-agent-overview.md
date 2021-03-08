@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 5c4cfe47fce07a09eeb48e2da76d3b10c1d204af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600488"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711537"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -19,9 +19,9 @@ Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オ�
 ## <a name="relationship-to-other-agents"></a>他のエージェントとの関係
 Azure Monitor エージェントでは、Azure Monitor によって現在使用されている次のエージェントが置き換えられ、仮想マシンからゲスト データが収集されます。
 
-- [Log Analytics エージェント](../platform/log-analytics-agent.md) - データが Log Analytics ワークスペースに送信され、Azure Monitor for VMs および監視ソリューションがサポートされます。
-- [Diagnostics 拡張機能](../platform/diagnostics-extension-overview.md) - Azure Monitor メトリック (Windows のみ)、Azure Event Hubs、および Azure Storage にデータが送信されます。
-- [Telegraf エージェント](../platform/collect-custom-metrics-linux-telegraf.md) - Azure Monitor メトリックにデータが送信されます (Linux のみ)。
+- [Log Analytics エージェント](./log-analytics-agent.md) - データが Log Analytics ワークスペースに送信され、VM insights ソリューションと監視ソリューションがサポートされます。
+- [Diagnostics 拡張機能](./diagnostics-extension-overview.md) - Azure Monitor メトリック (Windows のみ)、Azure Event Hubs、および Azure Storage にデータが送信されます。
+- [Telegraf エージェント](../essentials/collect-custom-metrics-linux-telegraf.md) - Azure Monitor メトリックにデータが送信されます (Linux のみ)。
 
 Azure Monitor エージェントでは、この機能が 1 つのエージェントに統合されるだけでなく、既存のエージェントに勝る次の利点があります。
 
@@ -52,7 +52,7 @@ Azure Monitor エージェントは、[Azure Monitor 用の一般提供されて
 ## <a name="current-limitations"></a>現在の制限
 Azure Monitor エージェントのパブリック プレビュー中は、次の制限事項が適用されます。
 
-- Azure Monitor エージェントでは、Azure Monitor for VMs や Azure Security Center などのソリューションと分析情報がサポートされません。 現在サポートされているシナリオは、構成したデータ収集ルールを使用してデータを収集することだけです。 
+- Azure Monitor エージェントでは、VM insights や Azure Security Center などのソリューションと分析情報はサポートされません。 現在サポートされているシナリオは、構成したデータ収集ルールを使用してデータを収集することだけです。 
 - データ収集ルールは、収集先として使用する Log Analytics ワークスペースと同じリージョンに作成する必要があります。
 - 現在、Azure 仮想マシン、仮想マシン スケール セット、Azure Arc 対応サーバーがサポートされています。 Azure Kubernetes Service と他のコンピューティング リソースの種類は、現在サポートされていません。
 - 仮想マシンは、次の HTTPS エンドポイントにアクセスできる必要があります。
@@ -64,7 +64,7 @@ Azure Monitor エージェントのパブリック プレビュー中は、次�
 ## <a name="coexistence-with-other-agents"></a>他のエージェントとの共存
 Azure Monitor エージェントは、既存のエージェントと共存させることができるため、評価または移行中にそれらの既存の機能を使用し続けることができます。 これは、既存のソリューションのサポートにおけるパブリック プレビューの制限のため、特に重要です。 ただし、重複データの収集では注意する必要があります。これにより、クエリ結果にずれが生じ、データ インジェストと保持に追加料金が発生する可能性があるためです。
 
-たとえば、Azure Monitor for VMs では、Log Analytics エージェントを使用して、パフォーマンス データが Log Analytics ワークスペースに送信されます。 また、エージェントから Windows イベントと Syslog イベントを収集するようにワークスペースを構成している場合もあります。 Azure Monitor エージェントをインストールし、これらの同じイベントとパフォーマンス データに対してデータ収集ルールを作成した場合、データが重複することになります。
+たとえば、VM insights では、Log Analytics エージェントを使用して、パフォーマンス データが Log Analytics ワークスペースに送信されます。 また、エージェントから Windows イベントと Syslog イベントを収集するようにワークスペースを構成している場合もあります。 Azure Monitor エージェントをインストールし、これらの同じイベントとパフォーマンス データに対してデータ収集ルールを作成した場合、データが重複することになります。
 
 
 ## <a name="costs"></a>コスト

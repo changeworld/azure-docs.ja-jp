@@ -4,19 +4,18 @@ description: Resource Manager テンプレートを使用してクラシック �
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.subservice: alerts
-ms.openlocfilehash: 418dde8311c2555f8df5929dd96ce72611422ee9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: c4e444ebe217b6202d8ea140bd1edf3ccf5708d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603619"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031346"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
 
 > [!WARNING]
-> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../platform/alerts-overview.md)がサポートされています。 パブリック クラウド ユーザーに対する従来のアラートは[廃止](../platform/monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 パブリック クラウド ユーザー向けの従来のアラートは [廃止](./monitoring-classic-retirement.md)されていますが、**2021 年 5 月 31 日** までは引き続き制限付きで使用できます。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
 >
 
 この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して Azure クラシック メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
@@ -399,6 +398,6 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [アラートの詳細を確認します](../platform/alerts-overview.md)
-* [診断の設定を追加](../samples/resource-manager-diagnostic-settings.md) します
+* [アラートの詳細を確認します](./alerts-overview.md)
+* [診断の設定を追加](../essentials/resource-manager-diagnostic-settings.md) します
 * JSON の構文とプロパティについては、[Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) テンプレート リファレンスをご覧ください。

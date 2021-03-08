@@ -1,29 +1,28 @@
 ---
-title: Azure Monitor for VMs マップを Operations Manager と統合する | Microsoft Docs
-description: Azure Monitor for VMs は、Windows システムおよび Linux システム上のアプリケーション コンポーネントを自動的に検出して、サービス間の通信をマップします。 この記事では、マップ機能を使用して、Operations Manager で分散アプリケーション ダイアグラムを自動的に作成する方法について説明します。
-ms.subservice: ''
+title: VM insights のマップを Operations Manager と統合する | Microsoft Docs
+description: VM insights によって Windows および Linux のシステム上のアプリケーション コンポーネントが自動的に検出され、サービス間の通信がマップされます。 この記事では、マップ機能を使用して、Operations Manager で分散アプリケーション ダイアグラムを自動的に作成する方法について説明します。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 0722a1806cc94102f92045c78850d96ed9890d02
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3a7d0d49313cb524a5bf39add5c9a55862dcad47
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600409"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046892"
 ---
-# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能を統合する
+# <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>System Center Operations Manager と VM insights のマップ機能を統合する
 
-Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 このマップ機能と System Center Operations Manager との統合を利用すると、Azure Monitor for VMs の動的依存関係マップに基づいた分散アプリケーション ダイアグラムを Operation Manager で自動的に作成できます。 この記事では、この機能をサポートするように System Center Operations Manager 管理グループを構成する方法について説明します。
+VM insights では、Azure またはお客様の環境で実行している Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 このマップ機能と System Center Operations Manager との統合を利用すると、VM insights の動的依存関係マップに基づいた分散アプリケーション ダイアグラムを Operation Manager で自動的に作成できます。 この記事では、この機能をサポートするように System Center Operations Manager 管理グループを構成する方法について説明します。
 
 >[!NOTE]
->Service Map を既にデプロイ済みの場合は、VM の正常性とパフォーマンスを監視する追加機能が組み込まれた Azure Monitor for VMs でマップを表示できます。 Azure Monitor for VMs のマップ機能は、スタンドアロンの Service Map ソリューションに取って代わる予定です。 詳細については、[VM 用 Azure Monitor の概要](../vm/vminsights-overview.md)に関するページを参照してください。
+>Service Map を既にデプロイ済みの場合は、VM insights でマップを表示できます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 VM insights のマップ機能は、スタンドアロンの Service Map ソリューションに取って代わる予定です。 詳細については、「[VM insights の概要](../vm/vminsights-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * System Center Operations Manager の管理グループ (2012 R2 以降)。
-* Azure Monitor for VMs をサポートするように構成された Log Analytics ワークスペース。
+* VM insights をサポートするように構成された Log Analytics ワークスペース。
 * Operations Manager によって監視され、Log Analytics ワークスペースにデータを送信している 1 つ以上の Windows および Linux の仮想マシンまたは物理コンピューター。 Operations Manager の管理グループに報告する Linux サーバーは、Azure Monitor に直接接続するように構成する必要があります。 詳細については、「[Log Analytics エージェントを使用してログ データを収集する](../agents/log-analytics-agent.md)」の概要を確認してください。
 * Log Analytics ワークスペースに関連付けられている Azure サブスクリプションにアクセスできるサービス プリンシパル。 詳細については、「[サービス プリンシパルの作成](#create-a-service-principal)」を参照してください。
 
@@ -43,7 +42,7 @@ Service Map 管理パックをインストールすると、Operations Manager �
 >[!NOTE]
 >[Operations Management Suite はサービスのコレクション](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)で、Log Analytics が含まれていました。現在は、[Azure Monitor](../overview.md) の一部になっています。
 
-Azure Monitor for VMs マップの統合を構成するには、次の操作を行います。
+VM insights のマップの統合を構成するには、次の操作を行います。
 
 1. 構成ウィザードを開くには、 **[サービス マップの概要]** ウィンドウの **[ワークスペースの追加]** をクリックします。  
 
@@ -66,7 +65,7 @@ Azure Monitor for VMs マップの統合を構成するには、次の操作を�
     この統合によりサーバーの分散アプリケーション ダイアグラムを作成するには、サーバーが次の条件を満たす必要があります。
 
    * Operations Manager によって監視されている
-   * Azure Monitor for VMs を使用して構成されている Log Analytics ワークスペースに報告するように構成されている
+   * VM insights を使用して構成されている Log Analytics ワークスペースに報告するように構成されている
    * Service Map サーバー グループに登録されている
 
      ![Operations Manager 構成グループ](media/service-map-scom/scom-config-group.png)
@@ -92,7 +91,7 @@ Service Map フォルダーには 4 つのノードがあります。
   >[!NOTE]
   >これらのアラートは、Operations Manager と同期された Log Analytics アラートではなく、Service Map 管理パックで定義されているワークフローに基づいて管理グループに生成されます。
 
-* **サーバー**:Azure Monitor for VMs のマップ機能と同期するように構成されている監視対象サーバーの一覧が表示されます。
+* **サーバー**: VM insights のマップ機能と同期するように構成されている監視対象サーバーの一覧が表示されます。
 
     ![Operations Manager の [監視] の [サーバー] ウィンドウ](media/service-map-scom/scom-monitoring-servers.png)
 
@@ -117,7 +116,7 @@ Service Map フォルダーには 4 つのノードがあります。
 
 ## <a name="configure-rules-and-overrides"></a>規則とオーバーライドの構成
 
-*Microsoft.SystemCenter.ServiceMapImport.Rule* という規則が Azure Monitor for VMs のマップ機能から定期的に情報を取得します。 同期間隔を変更するには、規則をオーバーライドして、パラメーター **IntervalMinutes** の値を変更できます。
+*Microsoft.SystemCenter.ServiceMapImport.Rule* という規則が VM insights のマップ機能から定期的に情報を取得します。 同期間隔を変更するには、規則をオーバーライドして、パラメーター **IntervalMinutes** の値を変更できます。
 
 ![Operations Manager の [Overrides properties (プロパティのオーバーライド)] ウィンドウ](media/service-map-scom/scom-overrides.png)
 
@@ -132,7 +131,7 @@ Service Map フォルダーには 4 つのノードがあります。
 
 * 1 つの Log Analytics ワークスペースにのみ接続することができます。
 * **[作成]** ウィンドウでサーバーを Service Map サーバー グループに手動で追加できますが、そのサーバーのマップは、即座には同期されません。 これらは、次の同期サイクル中に Azure Monitor for VMs のマップ機能から同期されます。
-* 管理パックによって作成された分散アプリケーション ダイアグラムに変更を加えた場合、それらの変更は、Azure Monitor for VMs との次回の同期の際に上書きされる可能性が高いです。
+* 管理パックによって作成された分散アプリケーション ダイアグラムに変更を加える場合は、VM insights による次回同期の際に、これらの変更が上書きされる可能性があります。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
@@ -144,5 +143,5 @@ Service Map フォルダーには 4 つのノードがあります。
 
 ### <a name="suggestions"></a>検索候補
 
-Azure Monitor for VMs マップ機能との統合、またはこのドキュメントについてフィードバックがある場合は、 [User Voice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)を是非ご利用ください。このページでは、機能を提案したり、既存の提案に投票したりすることができます。
+VM insights のマップ機能との統合、またはこのドキュメントについてフィードバックがある場合は、 [User Voice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)を是非ご利用ください。このページでは、機能を提案したり、既存の提案に投票したりすることができます。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008572"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123192"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする (プレビュー)
 
@@ -85,7 +85,7 @@ Azure IoT Edge for Linux on Windows でサポートされているプロビジ�
 
 少数のデバイスで始めるには、手動プロビジョニングが簡単です。 Device Provisioning Service は、多数のデバイスをプロビジョニングする場合に役立ちます。
 
-DPS による方法のいずれかを使用してデバイスをプロビジョニングする場合は、上でリンクされている該当する記事の手順に従って、DPS のインスタンスを作成し、DPS のインスタンスを IoT Hub にリンクして、DPS の登録を作成します。 単一のデバイス用に "*個別登録*" を作成することも、デバイスのグループ用に "*グループ登録*" を作成することもできます。 登録の種類の詳細については、[Azure IoT Hub Device Provisioning Service の概念](https://docs.microsoft.com/azure/iot-dps/concepts-service#enrollment)に関するページを参照してください。
+DPS による方法のいずれかを使用してデバイスをプロビジョニングする場合は、上でリンクされている該当する記事の手順に従って、DPS のインスタンスを作成し、DPS のインスタンスを IoT Hub にリンクして、DPS の登録を作成します。 単一のデバイス用に "*個別登録*" を作成することも、デバイスのグループ用に "*グループ登録*" を作成することもできます。 登録の種類の詳細については、[Azure IoT Hub Device Provisioning Service の概念](../iot-dps/concepts-service.md#enrollment)に関するページを参照してください。
 
 ## <a name="create-a-new-deployment"></a>新しいデプロイを作成する
 
@@ -97,7 +97,7 @@ Windows Admin Center 開始ページにある接続の一覧に、Windows Admin 
 
 Windows Admin Center を使用して、ローカル デバイスまたはリモート マネージド デバイス上に、Azure IoT Edge for Linux on Windows をインストールして管理できます。 このガイドでは、Azure IoT Edge for Linux on Windows のデプロイのターゲット デバイスとしてローカル ホストを使用します。
 
-ローカル デバイスではなくリモート ターゲット デバイスにデプロイしようとして、目的のターゲット デバイスが一覧に表示されない場合は、[指示に従ってデバイスを追加します](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters)。
+ローカル デバイスではなくリモート ターゲット デバイスにデプロイしようとして、目的のターゲット デバイスが一覧に表示されない場合は、[指示に従ってデバイスを追加します](/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters)。
 
    ![ターゲット デバイスの一覧が表示されている Windows Admin Center の最初のダッシュボード](./media/how-to-install-iot-edge-on-windows/windows-admin-center-initial-dashboard.png)
 
@@ -136,7 +136,7 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
 まだ行っていない場合は、IoT Edge for Linux on Windows をターゲット デバイスにインストールします。
 
 > [!NOTE]
-> PowerShell を使用する次のプロセスでは、Azure IoT Edge for Linux on Windows のローカル ホストのデプロイを作成する方法を説明します。 PowerShell を使用してリモート ターゲット デバイスへのデプロイを作成するには、[リモート PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_remote) を使用してリモート デバイスへの接続を確立し、そのデバイスでこれらのコマンドをリモートで実行できます。
+> PowerShell を使用する次のプロセスでは、Azure IoT Edge for Linux on Windows のローカル ホストのデプロイを作成する方法を説明します。 PowerShell を使用してリモート ターゲット デバイスへのデプロイを作成するには、[リモート PowerShell](/powershell/module/microsoft.powershell.core/about/about_remote) を使用してリモート デバイスへの接続を確立し、そのデバイスでこれらのコマンドをリモートで実行できます。
 
 1. 管理者特権の PowerShell セッションで、次の各コマンドを実行し、IoT Edge for Linux on Windows をダウンロードします。
 
@@ -173,9 +173,8 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
    Deploy-Eflow
    ```
 
-   <!-- Most likely temporary until cmdlet is fully documented -->
    > [!NOTE]
-   > パラメーターを指定せずにこのコマンドを実行したり、必要に応じてパラメーターを使用してデプロイをカスタマイズしたりできます。 パラメーターとその意味を確認するには、PowerShell モジュール AzureEFLOW.psm1 を調べてください (C:\Program Files\WindowsPowerShell\Modules\AzureEFLOW の下を参照)。
+   > パラメーターを指定せずにこのコマンドを実行したり、必要に応じてパラメーターを使用してデプロイをカスタマイズしたりできます。 [IoT Edge for Linux on Windows の PowerShell スクリプト リファレンス](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow)を参照して、その意味を確認できます。
 
 1. ライセンス条項に同意するには、「Y」と入力します。
 
@@ -319,7 +318,10 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
 
 IoT Edge for Linux on Windows が IoT Edge デバイスに正常にインストールされ、構成されたことを確認します。
 
+# <a name="windows-admin-center"></a>[Windows Admin Center](#tab/windowsadmincenter)
+
 1. Windows Admin Center で接続されているデバイスの一覧から IoT Edge デバイスを選択して、それに接続します。
+
 1. デバイスの概要ページに、デバイスに関するいくつかの情報が表示されます。
 
     1. **[IoT Edge Module List]\(IoT Edge モジュール一覧\)** セクションに、デバイスで実行中のモジュールが表示されます。 IoT Edge サービスが初めて開始されたときは、**edgeAgent** モジュールだけが実行中であると表示されるはずです。 edgeAgent モジュールが既定で実行され、デバイスにデプロイする追加モジュールのインストールと起動を支援します。
@@ -338,6 +340,36 @@ IoT Edge for Linux on Windows が IoT Edge デバイスに正常にインスト�
        ```bash
        sudo iotedge check
        ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+1. PowerShell セッションで次のコマンドを使用して、お使いの IoT Edge for Linux on Windows 仮想マシンにログインします。
+
+   ```azurepowershell-interactive
+   Ssh-EflowVm
+   ```
+
+1. ログインすると、次の Linux コマンドを使用して、実行中の IoT Edge モジュールの一覧を確認できます。
+
+   ```bash
+   iotedge list
+   ```
+
+1. IoT Edge サービスのトラブルシューティングを行う必要がある場合は、次の Linux コマンドを使用します。
+
+    1. サービスのトラブルシューティングが必要な場合は、サービス ログを取得します。
+
+       ```bash
+       journalctl -u iotedge
+       ```
+
+    2. `check` ツールを使用して、デバイスの構成と接続の状態を確認します。
+
+       ```bash
+       sudo iotedge check
+       ```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,20 +3,20 @@ title: Azure Policy を使用した AKS の監視アドオンの有効化
 description: Azure カスタム ポリシーを使用して AKS の監視アドオンを有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 302fdbbbcadf211339952f4b1bd97dcbb4ab1a85
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2163527cc83e70913e9a6e11bf2e22f9ed9c6690
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713900"
 ---
 # <a name="enable-aks-monitoring-addon-using-azure-policy"></a>Azure Policy を使用した AKS の監視アドオンの有効化
 この記事では、Azure カスタム ポリシーを使用して AKS の監視アドオンを有効にする方法について説明します。 監視アドオン カスタム ポリシーは、サブスクリプションまたはリソース グループのスコープで割り当てることができます。 Azure Log Analytics ワークスペースと AKS クラスターが異なるサブスクリプションに存在する場合、ポリシーの割り当てに使用されるマネージド ID は、両方のサブスクリプションで、または少なくとも Log Analytics ワークスペースのリソース上で、必要なロールのアクセス許可を持っている必要があります。 同様に、ポリシーのスコープがリソース グループの場合は、選択したリソース グループのスコープ内に Log Analytics ワークスペースがない場合、そのマネージド ID にはワークスペースに対する必要なロールのアクセス許可が必要です。
 
 監視アドオンには、Azure Policy によって使用されるマネージド ID に対して次のロールが必要です。
 
- - [azure-kubernetes-service-contributor-role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
- - [log-analytics-contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
+ - [azure-kubernetes-service-contributor-role](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role)
+ - [log-analytics-contributor](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="create-and-assign-policy-definition-using-azure-portal"></a>Azure portal を使用してポリシー定義を作成し割り当てる
 
@@ -79,6 +79,5 @@ ms.locfileid: "99808065"
 
 - [Azure Policy](../../governance/policy/overview.md) の詳細を確認します。
 - [修復のセキュリティの仕組み](../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works)を確認します。
-- [Azure Monitor for Containers](../insights/container-insights-overview.md) の詳細を確認します。
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールします。
-
+- [Container insights](./container-insights-overview.md) について詳しく学習します。
+- [Azure CLI](/cli/azure/install-azure-cli) をインストールします。

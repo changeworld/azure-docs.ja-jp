@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 5bf1877edaa6c13cb0c645eb2d1c7ec2dc53ad00
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/26/2021
+ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719374"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -55,19 +55,19 @@ Azure Repos と GitHub の両方で Git リポジトリをデータ ファクト
 
 ### <a name="configuration-method-1-home-page"></a>構成方法 1:ホーム ページ
 
-Azure Data Factory のホームページで、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
+Azure Data Factory のホームページで、 **[Set up code repository]\(コード リポジトリの設定\)** を選択します。
 
 ![ホーム ページからコード リポジトリを構成する](media/author-visually/configure-repo.png)
 
 ### <a name="configuration-method-2-authoring-canvas"></a>構成方法 2:作成キャンバス
 
-Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロップダウン メニューを選択し、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
+Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロップダウン メニューを選択し、 **[Set up code repository]\(コード リポジトリの設定\)** を選択します。
 
 ![コード リポジトリ設定を作成から構成する](media/author-visually/configure-repo-2.png)
 
 ### <a name="configuration-method-3-management-hub"></a>構成方法 3:管理ハブ
 
-ADF UX で管理ハブに移動します。 **[ソース管理]** セクションで **[Git 構成]** を選択します。 接続されているリポジトリがない場合は、 **[Set up Code Repository]\(コード リポジトリの設定\)** をクリックします。
+ADF UX で管理ハブに移動します。 **[ソース管理]** セクションで **[Git 構成]** を選択します。 接続されているリポジトリがない場合は、 **[構成]** をクリックします。
 
 ![コード リポジトリ設定を管理ハブから構成する](media/author-visually/configure-repo-3.png)
 

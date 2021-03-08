@@ -2,14 +2,14 @@
 title: Azure portal でアカウントを作成する
 description: Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/23/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368508"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703666"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -101,7 +101,7 @@ Batch アカウントに適用される [リソース クォータ](batch-quota-
 
 ユーザー サブスクリプション モードで Batch アカウントを作成するときは、プール割り当てモードとして **[ユーザー サブスクリプション]** を指定し、作成したキー コンテナーを選択し、Azure Batch にキー コンテナーへのアクセス権を付与するチェック ボックスをオンにします。
 
-キー コンテナーへのアクセス権を手動で付与する場合は、キー コンテナーの **[アクセス ポリシー]** セクションに移動し、 **[アクセス ポリシーの追加]** を選択します。 **[プリンシパルの選択]** の横にあるリンクを選択し、**Microsoft Azure Batch** (アプリケーション ID **ddbf3205-c6bd-46ae-8127-60eb93363864**) を検索します。 そのプリンシパルを選択し、ドロップ ダウン メニューを使用して **[シークレットのアクセス許可]** を構成します。 Azure Batch には、少なくとも **[取得]** 、 **[一覧]** 、 **[設定]** 、および **[削除]** のアクセス許可を付与する必要があります。
+キー コンテナーへのアクセス権を手動で付与する場合は、キー コンテナーの **[アクセス ポリシー]** セクションに移動し、 **[アクセス ポリシーの追加]** を選択します。 **[プリンシパルの選択]** の横にあるリンクを選択し、**Microsoft Azure Batch** (アプリケーション ID **ddbf3205-c6bd-46ae-8127-60eb93363864**) を検索します。 そのプリンシパルを選択し、ドロップ ダウン メニューを使用して **[シークレットのアクセス許可]** を構成します。 Azure Batch には、少なくとも **[取得]** 、 **[一覧]** 、 **[設定]** 、および **[削除]** のアクセス許可を付与する必要があります。 [論理的な削除が有効になっているキー コンテナ―](../key-vault/general/soft-delete-overview.md)の場合は、Azure Batch にも **回復** 権限を付与する必要があります。
 
 :::image type="content" source="media/batch-account-create-portal/secret-permissions.png" alt-text="Azure Batch に対する [シークレットのアクセス許可] の選択のスクリーンショット":::
 

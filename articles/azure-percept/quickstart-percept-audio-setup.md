@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 575107859f56df742ab41a299269c250511022b3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 588ebde85b6012ddbfb88ca8305fc735b7a0ba41
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664301"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097994"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept Audio の設定
 
@@ -24,25 +24,21 @@ Azure Percept Audio は、Azure Percept DK ですぐに使用できます。 特
 - Azure Percept Audio
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)
 - [Azure Percept DK セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md): 開発キットを Wi-Fi ネットワークに接続し、IoT ハブを作成して、開発キットを IoT ハブに接続済みであること
+- 3\.5 mm オーディオ ジャックに接続できるスピーカーまたはヘッドホン (オプション)
 
 ## <a name="connecting-your-devices"></a>デバイスを接続する
 
-1. 同梱されている USB Micro Type-B to USB Type-A ケーブルを使用して、Azure Percept Audio デバイスを Azure Percept DK キャリア ボードに接続します。 ケーブルの Micro Type-B 側を Audio SoM に、Type-A 側を Percept DK キャリア ボードに接続します。
+1. 同梱されている Micro USB to USB Type-A ケーブルを使用して、Azure Percept Audio デバイスを Azure Percept DK キャリア ボードに接続します。 ケーブルの Micro USB 側をインターポーザー (開発者) ボードに、Type-A 側を Percept DK キャリア ボードに接続します。
+1. (省略可能) "Line Out" というラベルの付いたオーディオ ジャックを介して、スピーカーまたはヘッドホンを Azure Percept Audio に接続します。 これによって音声アシスタントの音声応答を聴くことができます。 スピーカーやヘッドホンを接続していなくても、応答はテキストとしてデモ ウィンドウに表示されます。 
 
-1. 開発キットの電源をオンにします。
-
-    - Audio SoM の LED L01 が緑色 (点灯) に変わり、デバイスの電源が投入されたことがわかります。
-    - LED L02 が緑色 (点滅) に変わり、Audio SoM が認証中であることがわかります。
+1. 開発キットの電源をオンにします。 インターポーザー ボードの LED L02 が白の点滅に変わり、デバイスの電源が入っており、Audio SoM で認証が行われていることを示します。
 
 1. 認証プロセスが完了するまで待機します。これには最大 3 分かかることがあります。
 
 1. 次のいずれかが表示されたら、プロトタイプ作成を開始できます。
 
-    - LED L01 がオフになり、L02 が白色に変わった。 認証は完了しましたが、キーワードを使用した開発キットの構成はまだ済んでいません。
+    - LED L02 が白の点灯に変わります。 認証は完了しましたが、キーワードを使用した開発キットの構成はまだ済んでいません。
     - 3 つの LED がすべて青色に変わった。 認証が完了し、キーワードを使用した開発キットの構成も済んでいます。
-
-    > [!NOTE]
-    > 開発キットが認証されない場合は、サポートにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

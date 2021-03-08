@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: c37693bc6c9ce1cc5fed6c06ecb7fe628c315176
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573573"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708256"
 ---
 # <a name="deploy-azure-monitor"></a>Azure Monitor をデプロイする
 Azure Monitor ですべての Azure リソースを監視できるようにするには、Azure Monitor コンポーネントの構成と、Azure Monitor で収集される監視データを生成するための Azure リソースの構成を、組み合わせて行います。 この記事では、一般的な構成を使用して Azure Monitor を完全に実装して Azure サブスクリプション内のすべてのリソースを監視するために必要なさまざまなステップについて説明します。 各ステップの基本的な説明は、詳細な構成要件に関する他のドキュメントへのリンクで提供されます。
@@ -22,7 +22,7 @@ Azure Monitor ですべての Azure リソースを監視できるようにす�
 ## <a name="configuration-goals"></a>構成の目標
 Azure Monitor の完全な実装の目標は、すべてのクラウド リソースとアプリケーションから使用可能なすべてのデータを収集し、そのデータに基づいてできるだけ多くの Azure Monitor の機能を有効にすることです。
 
-Azure Monitor によって収集されたデータは、[Azure Monitor Metrics](essentials/data-platform-metrics.md) または [Azure Monitor Logs](logs/data-platform-logs.md) に送信されます。 それぞれで、異なる種類のデータが格納され、異なる種類の分析とアラートが有効にされます。 両者の比較については「[Azure Monitor のメトリックとログを比較する](/data-platform.md)」を参照し、さまざまなアラートの種類の説明については「[Microsoft Azure のアラートの概要](alerts/alerts-overview.md)」を参照してください。 
+Azure Monitor によって収集されたデータは、[Azure Monitor Metrics](essentials/data-platform-metrics.md) または [Azure Monitor Logs](logs/data-platform-logs.md) に送信されます。 それぞれで、異なる種類のデータが格納され、異なる種類の分析とアラートが有効にされます。 両者の比較については「[Azure Monitor のメトリックとログを比較する](data-platform.md)」を参照し、さまざまなアラートの種類の説明については「[Microsoft Azure のアラートの概要](alerts/alerts-overview.md)」を参照してください。 
 
 一部のデータは、さまざまな機能を使用して利用するために、Metrics と Logs の両方に送信できます。 このような場合は、それぞれを個別に構成する必要があります。 たとえば、メトリック データは、メトリックス エクスプローラーとメトリック アラートがサポートされている Metrics に、Azure リソースによって自動的に送信されます。 Log Analytics を使用して他のログ データと共にパフォーマンス傾向を分析できる Logs に同じメトリック データを送信するように、各リソースの診断設定を作成する必要があります。 以下のセクションでは、データが送信される場所を示し、可能なすべての場所にデータを送信するために必要な各ステップについて説明します。
 
@@ -84,32 +84,32 @@ Azure Monitor で利用可能な分析情報とソリューションの一覧に
 
 仮想マシンでは、他の Azure リソースと同様のデータが生成されますが、ゲスト オペレーティング システムからデータを収集するにはエージェントが必要です。 Azure Monitor によって使用されるエージェントの比較については、「[Azure Monitor エージェントの概要](agents/agents-overview.md)」を参照してください。 
 
-[Azure Monitor for VMs](vm/vminsights-overview.md) を使用すると、Log Analytics エージェントと Dependency Agent を使用して仮想マシンのゲスト オペレーティング システムからデータが収集されるため、この分析情報の実装の一部としてこれらのエージェントをデプロイできます。 これにより、Azure Security Center など、Log Analytics エージェントを使用する他のサービスに対してそれが有効になります。
+[VM 分析情報](vm/vminsights-overview.md)を使用すると、Log Analytics エージェントと Dependency Agent を使用して仮想マシンのゲスト オペレーティング システムからデータが収集されるため、この分析情報の実装の一部としてこれらのエージェントをデプロイできます。 これにより、Azure Security Center など、Log Analytics エージェントを使用する他のサービスに対してそれが有効になります。
 
 
 [ ![Azure VM をデプロイする](media/deploy/deploy-azure-vm.png) ](media/deploy/deploy-azure-vm.png#lightbox)
 
 
-### <a name="configure-workspace-for-azure-monitor-for-vms"></a>Azure Monitor for VMs 用にワークスペースを構成する
-Azure Monitor for VMs を使用するには、他の Azure リソースからデータを収集するために作成されるものと通常は同じ Log Analytics ワークスペースが必要です。 仮想マシンを有効にする前に、Azure Monitor for VMs に必要なソリューションをワークスペースに追加する必要があります。
+### <a name="configure-workspace-for-vm-insights"></a>VM 分析情報用にワークスペースを構成する
+VM 分析情報を使用するには、他の Azure リソースからデータを収集するために作成されるものと通常は同じ Log Analytics ワークスペースが必要です。 仮想マシンを有効にする前に、VM 分析情報に必要なソリューションをワークスペースに追加する必要があります。
 
-Azure Monitor for VMs 用の Log Analytics ワークスペースの構成の詳細については、「[Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する](vm/vminsights-configure-workspace.md)」を参照してください。
+VM 分析情報用の Log Analytics ワークスペースの構成の詳細については、「[VM 分析情報用に Log Analytics ワークスペースを構成する](vm/vminsights-configure-workspace.md)」を参照してください。
 
-### <a name="enable-azure-monitor-for-vms-on-each-virtual-machine"></a>各仮想マシンで Azure Monitor for VMs を有効にする
-ワークスペースを構成したら、Log Analytics エージェントと Dependency Agent をインストールすることにより、各仮想マシンを有効にすることができます。 これらのエージェントをインストールするには複数の方法があり、Azure Policy を使用すると各仮想マシンを作成時に自動的に構成できます。 Azure Monitor for VMs によって収集されるパフォーマンス データとプロセスの詳細は、Azure Monitor Logs に格納されます。
+### <a name="enable-vm-insights-on-each-virtual-machine"></a>各仮想マシンで VM 分析情報を有効にする
+ワークスペースを構成したら、Log Analytics エージェントと Dependency Agent をインストールすることにより、各仮想マシンを有効にすることができます。 これらのエージェントをインストールするには複数の方法があり、Azure Policy を使用すると各仮想マシンを作成時に自動的に構成できます。 VM 分析情報によって収集されるパフォーマンス データとプロセスの詳細は、Azure Monitor ログに格納されます。
 
-仮想マシンにエージェントをデプロイし、監視用に有効にするオプションについては、「[Azure Monitor for VMs の有効化の概要](vm/vminsights-enable-overview.md)」を参照してください。
+仮想マシンにエージェントをデプロイし、監視用に有効にするオプションについては、「[VM 分析情報の有効化の概要](vm/vminsights-enable-overview.md)」を参照してください。
 
 ### <a name="configure-workspace-to-collect-events"></a>イベントを収集するようにワークスペースを構成する
-Azure Monitor for VMs により、各仮想マシンのゲスト オペレーティング システムから、パフォーマンス データと、プロセスの詳細および依存関係が収集されます。 Log Analytics エージェントでも、Windows のイベント ログや Linux の syslog など、ゲストからログを収集できます。 接続されている Log Analytics ワークスペースから、これらのログの構成が取得されます。 ワークスペースを構成する必要があるのは 1 回だけであり、エージェントが接続するたびに、構成の変更がダウンロードされます。 
+VM 分析情報により、各仮想マシンのゲスト オペレーティング システムから、パフォーマンス データと、プロセスの詳細および依存関係が収集されます。 Log Analytics エージェントでも、Windows のイベント ログや Linux の syslog など、ゲストからログを収集できます。 接続されている Log Analytics ワークスペースから、これらのログの構成が取得されます。 ワークスペースを構成する必要があるのは 1 回だけであり、エージェントが接続するたびに、構成の変更がダウンロードされます。 
 
 エージェントの仮想マシンから追加データを収集するように Log Analytics ワークスペースを構成する詳細については、「[Azure Monitor のエージェント データ ソース](agents/agent-data-sources.md)」を参照してください。
 
 > [!NOTE]
-> また、パフォーマンス カウンターを収集するようにワークスペースを構成することもできますが、ほとんどの場合、Azure Monitor for VMs によって収集されるパフォーマンス データと重複している可能性があります。 ワークスペースによって収集されたパフォーマンス データが *Perf* テーブルに格納されるのに対し、Azure Monitor for VMs によって収集されたパフォーマンス データは *InsightsMetrics* テーブルに格納されます。 Azure Monitor for VMs によってまだ収集されていないカウンターが必要な場合にのみ、ワークスペースでパフォーマンスの収集を構成します。
+> また、パフォーマンス カウンターを収集するようにワークスペースを構成することもできますが、VM 分析情報によって収集されるパフォーマンス データと重複している可能性が高いです。 ワークスペースによって収集されたパフォーマンス データが *Perf* テーブルに格納されるのに対し、VM 分析情報によって収集されたパフォーマンス データは *InsightsMetrics* テーブルに格納されます。 VM 分析情報によってまだ収集されていないカウンターが必要な場合にのみ、ワークスペースでパフォーマンスの収集を構成します。
 
 ### <a name="diagnostic-extension-and-telegraf-agent"></a>診断拡張機能と Telegraf エージェント
-Azure Monitor for VMs によって使用される Log Analytics エージェントでは、パフォーマンス データが Log Analytics ワークスペースに送信されますが、Azure Monitor Metrics には送信されません。 このデータを Metrics に送信すると、メトリックス エクスプローラーで分析し、メトリック アラートで使用することができます。 これを行うには、Windows では診断拡張機能が、Linux では Telegraf エージェントが必要です。
+VM 分析情報によって使用される Log Analytics エージェントでは、パフォーマンス データが Log Analytics ワークスペースに送信されますが、Azure Monitor メトリックには送信されません。 このデータを Metrics に送信すると、メトリックス エクスプローラーで分析し、メトリック アラートで使用することができます。 これを行うには、Windows では診断拡張機能が、Linux では Telegraf エージェントが必要です。
 
 これらのエージェントのインストールと構成の詳細については、「[Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](agents/diagnostics-extension-windows-install.md)」および「[Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](essentials/collect-custom-metrics-linux-telegraf.md)」を参照してください。
 

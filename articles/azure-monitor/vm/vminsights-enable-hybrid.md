@@ -1,28 +1,28 @@
 ---
 title: ハイブリッド環境で Azure Monitor を有効にする
-description: この記事では、1 つまたは複数の仮想マシンを含むハイブリッド クラウド環境において、Azure Monitor for VMs を有効にする方法について説明します。
+description: この記事では、1 つ以上の仮想マシンを含むハイブリッド クラウド環境において、VM 分析情報を有効にする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d56b1ed7b4923b054ad6864b713fc2a26d95f7e2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731274"
 ---
-# <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>ハイブリッド仮想マシンで Azure Monitor for VMs を有効にする
-この記事では、Azure の外部 (オンプレミスやその他のクラウド環境を含む) の仮想マシンで Azure Monitor for VMs を有効にする方法について説明します。
+# <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>ハイブリッド仮想マシンで VM 分析情報を有効にする
+この記事では、Azure の外部 (オンプレミスやその他のクラウド環境を含む) の仮想マシンで VM 分析情報を有効にする方法について説明します。
 
 > [!IMPORTANT]
-> ハイブリッド VM を有効にするための推奨される方法では、Azure VM と同様のプロセスを使用して VM で Azure Monitor for VMs を有効にてきるように、まず [Azure Arc for servers](../../azure-arc/servers/overview.md) を有効にします。 この記事では、Azure Arc を使用しないことを選択した場合にハイブリッド VM をオンボードする方法について説明します。
+> ハイブリッド VM を有効にするための推奨される方法では、Azure VM と同様のプロセスを使用して VM で VM 分析情報を有効にできるように、まず [Azure Arc for servers](../../azure-arc/servers/overview.md) を有効にします。 この記事では、Azure Arc を使用しないことを選択した場合にハイブリッド VM をオンボードする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Log Analytics ワークスペースを作成して構成](../insights/vminsights-configure-workspace.md)します。
-- 「[サポートされるオペレーティング システム](../insights/vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
+- [Log Analytics ワークスペースを作成して構成](./vminsights-configure-workspace.md)します。
+- 「[サポートされるオペレーティング システム](./vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
 
 
 ## <a name="overview"></a>概要
@@ -31,13 +31,13 @@ Azure の外部の仮想マシンには、Azure VM で使用されるものと�
 Log Analytics エージェントのデプロイの詳細については、「[Windows コンピューターを Azure Monitor に接続する](../agents/agent-windows.md)」または「[Linux コンピューターを Azure Monitor に接続する](../agents/agent-linux.md)」を参照してください。 この記事では、依存関係エージェントに関する詳細を提供します。 
 
 ## <a name="firewall-requirements"></a>ファイアウォールの要件
-Log Analytics エージェントのファイアウォールの要件は、「[Log Analytics エージェントの概要](../agents/log-analytics-agent.md#network-requirements)」で提供されています。 Azure Monitor for VMs マップの Dependency Agent でデータ自体が送信されることはないため、ファイアウォールやポートを変更する必要はありません。 マップ データは、Log Analytics エージェントによって常に Azure Monitor サービスに直接、または、ご利用の IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合には、[Operations Management Suite ゲートウェイ](../../azure-monitor/agents/gateway.md)を経由して送信されます。
+Log Analytics エージェントのファイアウォールの要件は、「[Log Analytics エージェントの概要](../agents/log-analytics-agent.md#network-requirements)」で提供されています。 VM 分析情報マップの Dependency Agent でデータ自体が送信されることはないため、ファイアウォールやポートを変更する必要はありません。 マップ データは、Log Analytics エージェントによって常に Azure Monitor サービスに直接、または、ご利用の IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合には、[Operations Management Suite ゲートウェイ](../../azure-monitor/agents/gateway.md)を経由して送信されます。
 
 
 ## <a name="dependency-agent"></a>依存関係エージェント
 
 >[!NOTE]
->このセクションで説明する次の情報は、[Service Map ソリューション](../insights/service-map.md)にも適用できます。  
+>このセクションで説明する次の情報は、[Service Map ソリューション](./service-map.md)にも適用できます。  
 
 Dependency Agent は、以下の場所からダウンロードできます。
 
@@ -177,8 +177,8 @@ C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log ファイル (Windo
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。
+これで、仮想マシンに対する監視が有効になったので、この情報を VM 分析情報での分析に使用できます。
 
-- 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。
+- 検出されたアプリケーションの依存関係を表示するには、[VM 分析情報のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。
 
 - VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。

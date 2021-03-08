@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージング ユニットを自動的に更�
 description: この記事では、Service Bus 名前空間のメッセージング ユニットを自動的に更新する方法について説明します。
 ms.topic: how-to
 ms.date: 09/15/2020
-ms.openlocfilehash: 932c7bb1235cb54aefe67253e38e1683187f4d2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581631"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720598"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus 名前空間のメッセージング ユニットを自動的に更新する 
 自動スケールを使用すると、適切な量のリソースを実行して、アプリケーションに対する負荷を処理することができます。 リソースを追加して負荷の増加に対処したり、アイドル状態のリソースを削除して経費を節約したりできます。 Azure Monitor の自動スケーリング機能の詳細については、「[Microsoft Azure の自動スケーリングの概要](../azure-monitor/autoscale/autoscale-overview.md)」を参照してください。 
@@ -57,7 +57,7 @@ Service Bus Premium 名前空間の自動スケーリング機能を使用して
 既定の条件について、特定の曜日または日付範囲に自動スケーリングするようスケジュールを設定することはできません。 このスケーリング条件は、スケジュールが設定されているその他のスケーリング条件のいずれも一致しないときに実行されます。 
 
 ### <a name="scale-based-on-a-metric"></a>メトリックに基づいてスケーリングする
-次の手順では、CPU 使用率が 75% を超えた場合にメッセージング ユニットを自動的に増加させ (スケールアウト)、CPU 使用率が 25% 未満の場合にメッセージング ユニットを減少させる (スケールイン) 条件を追加する方法を示します。 増分は、1 から 2、2 から 4、および 4 から 8 になるように行われます。 同様に、減分は 8 から 4、4 から 2、および 2 から 1 になるように行われます。 
+次の手順では、CPU 使用率が 75% を超えた場合にメッセージング ユニットを自動的に増加させ (スケールアウト)、CPU 使用率が 25% 未満の場合にメッセージング ユニットを減少させる (スケールイン) 条件を追加する方法を示します。 増分は、1 から 2、2 から 4、4 から 8、および 8 から 16 になるように行われます。 同様に、減分は 16 から 8、8 から 4、4 から 2、および 2 から 1 になるように行われます。 
 
 1. **[Autoscale setting]\(自動スケーリング設定\)** ページで、 **[Choose how to scale your resource]\(リソースをスケールする方法を選択します\)** オプションに **[Custom auto scale]\(カスタム自動スケーリング\)** を選択します。 
 1. ページの **[Default]\(既定\)** セクションで、既定の条件として **[名前]** を指定します。 **鉛筆** アイコンをクリックしてテキストを編集します。 
@@ -74,7 +74,7 @@ Service Bus Premium 名前空間の自動スケーリング機能を使用して
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="既定 - CPU 使用率が 75% を超えた場合にスケールアウト":::       
 
         > [!NOTE]
-        > この例では、全体的な CPU 使用率が 75% を超えた場合、自動スケーリング機能によって名前空間のメッセージング ユニットが増加します。 増分は、1 から 2、2 から 4、および 4 から 8 になるように行われます。 
+        > この例では、全体的な CPU 使用率が 75% を超えた場合、自動スケーリング機能によって名前空間のメッセージング ユニットが増加します。 増分は、1 から 2、2 から 4、4 から 8、および 8 から 16 になるように行われます。 
 1. **[+ Add a rule]\(+ ルールの追加\)** を再度選択し、 **[スケール ルール]** ページで次の手順を実行します。
     1. **[メトリック名]** ドロップダウン リストからメトリックを選択します。 この例では **[CPU]** です。 
     1. 演算子としきい値を選択します。 この例では、これらは **[より小さい]** および **[Metric threshold to trigger scale action]\(スケール操作をトリガーするメトリックのしきい値\)** の **[25]** です。 
@@ -84,7 +84,7 @@ Service Bus Premium 名前空間の自動スケーリング機能を使用して
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="既定 - CPU 使用率が 25% 未満の場合にスケールイン":::       
 
         > [!NOTE]
-        > この例では、全体的な CPU 使用率が 25% 未満の場合、自動スケーリング機能によって名前空間のメッセージング ユニットが減少します。 減分は 8 から 4、4 から 2、および 2 から 1 になるように行われます。 
+        > この例では、全体的な CPU 使用率が 25% 未満の場合、自動スケーリング機能によって名前空間のメッセージング ユニットが減少します。 減分は、16 から 8、8 から 4、4 から 2、および 2 から 1 になるように行われます。 
 1. **[minimum]\(最小\)** 、 **[maximum]\(最大\)** 、 **[default]\(既定\)** のメッセージング ユニット数を設定します。
 
     :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="メトリックに基づく既定のルール":::

@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor for VMs を使用してアプリの依存関係を表示する
-description: マップは、Azure Monitor for VMs の機能です。 Windows および Linux システム上のアプリケーション コンポーネントが自動的に検出されて、サービス間の通信がマップされます。 この記事では、さまざまなシナリオでマップ機能を使用する方法について詳しく説明します。
+title: VM insights を使用してアプリの依存関係を表示する
+description: マップは、VM insights の機能の 1 つです。 Windows および Linux システム上のアプリケーション コンポーネントが自動的に検出されて、サービス間の通信がマップされます。 この記事では、さまざまなシナリオでマップ機能を使用する方法について詳しく説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: ea11a2dbff9c05400f24ecfa86c66395032b8ac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604266"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719646"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Azure Monitor for VMs のマップ機能を使用してアプリケーション コンポーネントを把握する
-Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 VM を確認する方法は 2 つあります。 VM から直接マップを表示するか、または Azure Monitor から、VM グループのコンポーネントを表すマップを表示します。 この記事は、これら 2 つの表示方法とマップ機能の使用方法を理解するうえで役立ちます。 
+# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>VM insights のマップ機能を使用してアプリケーション コンポーネントを把握する
+VM insights では、Azure またはお客様の環境で実行される Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 VM を確認する方法は 2 つあります。 VM から直接マップを表示するか、または Azure Monitor から、VM グループのコンポーネントを表すマップを表示します。 この記事は、これら 2 つの表示方法とマップ機能の使用方法を理解するうえで役立ちます。 
 
-Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有効化](../insights/vminsights-enable-overview.md)に関する記事をご覧ください。
+VM insights の構成の詳細については、[VM insights の有効化](./vminsights-enable-overview.md)に関するページをご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 [Azure portal](https://portal.azure.com) にサインインします。
@@ -49,7 +49,7 @@ VM を選択すると、右側の **[プロパティ]** ウィンドウに、そ
 - コンピューター別にアラートをグループ化する句を含めます (例: **by Computer interval 1 minute**)。
 - メトリックに基づいてアラートが生成されるようにします。
 
-Azure アラートとアラート ルールの作成の詳細については、「[Azure Monitor での統合アラート](../platform/alerts-overview.md)」をご覧ください。
+Azure アラートとアラート ルールの作成の詳細については、「[Azure Monitor での統合アラート](../alerts/alerts-overview.md)」をご覧ください。
 
 右上隅の **[凡例]** オプションは、マップ上の記号と役割を示します。 マップの詳細を確認したり、その周辺を移動したりするには、右下隅にあるズーム コントロールを使用します。 ズーム レベルを設定し、マップをページのサイズに合わせることができます。  
 
@@ -85,7 +85,7 @@ Azure アラートとアラート ルールの作成の詳細については、�
 
 ## <a name="view-a-map-from-a-vm"></a>VM からマップを表示する 
 
-VM から直接 Azure Monitor for VMs にアクセスするには:
+VM から VM insights に直接アクセスするには、次のようにします。
 
 1. Azure Portal で、 **[仮想マシン]** を選択します。 
 2. 一覧から VM を選択します。 **[監視]** セクションで、 **[分析情報]** を選択します。  
@@ -99,7 +99,7 @@ VM から直接 Azure Monitor for VMs にアクセスするには:
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>仮想マシン スケール セットからマップを表示する
 
-仮想マシン スケール セットから Azure Monitor for VMs に直接アクセスするには:
+仮想マシン スケール セットから VM insights に直接アクセスするには、次のようにします。
 
 1. Azure portal 上で、 **[仮想マシン スケール セット]** を選択します。
 2. 一覧から VM を選択します。 次に、 **[監視]** セクションで **[分析情報]** を選択します。  
@@ -128,11 +128,10 @@ Azure Monitor では、マップ機能で VM とその依存関係の全体像�
 
 ページの上部にある **ワークスペース** セレクターを使用して、ワークスペースを選択します。 複数の Log Analytics ワークスペースがある場合は、ソリューションが有効になっており、それに報告する VM があるワークスペースを選択します。 
 
-**グループ** セレクターでは、選択したワークスペースに関連するコンピューターのサブスクリプション、リソース グループ、[コンピューター グループ](../platform/computer-groups.md)、および仮想マシン スケール セットが返されます。 この選択が適用されるのは、マップ機能のみで、パフォーマンスや正常性には引き継がれません。
+**グループ** セレクターでは、選択したワークスペースに関連するコンピューターのサブスクリプション、リソース グループ、[コンピューター グループ](../logs/computer-groups.md)、および仮想マシン スケール セットが返されます。 この選択が適用されるのは、マップ機能のみで、パフォーマンスや正常性には引き継がれません。
 
 既定では、マップには過去 30 分間の情報が表示されます。 過去の依存関係を表示する場合は、過去の時間範囲 (最大 1 時間) のクエリを実行できます。 クエリを実行するには、**時間範囲** セレクターを使用します。 たとえば、インシデントの発生中、または変更が行われる前の状態を確認するために、クエリを実行することがあります。  
 
 ## <a name="next-steps"></a>次のステップ
 
-ボトルネックの特定、パフォーマンスの確認、VM の全体的な使用率の理解については、[Azure Monitor for VMs のパフォーマンス状態の表示](vminsights-performance.md)に関する記事をご覧ください。 
-
+ボトルネックの特定、パフォーマンスの確認、VM の全体的な使用率の理解については、[VM insights のパフォーマンス状態の表示](vminsights-performance.md)に関する記事をご覧ください。

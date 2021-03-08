@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 8de92e1f64389824e02882c02a860e9731a62b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df165b83a6635fbcf72c94a4d16cbdf16c337636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713594"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -40,9 +40,11 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 - サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはテーブルがサポートされるまでエクスポートされません。 
 - 存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace``` エラーで失敗します。
 - Log Analytics ワークスペースは、以下を除くすべてのリージョンに配置できます。
-  - スイス北部
-  - スイス西部
   - Azure Government リージョン
+  - 西日本
+  - ブラジル南東部
+  - ノルウェー東部
+  - アラブ首長国連邦北部
 - 1 つのワークスペースで 2 つのエクスポート ルールを作成できます。イベント ハブに対して 1 つのルール、ストレージ アカウントに対して 1 つのルールです。
 - エクスポート先のストレージ アカウントまたはイベント ハブは、Log Analytics ワークスペースと同じリージョンに配置されている必要があります。
 - エクスポートするテーブルの名前は、ストレージ アカウントでは 60 文字以内、イベント ハブでは 47 文字以内にする必要があります。 これよりも長い名前のテーブルはエクスポートされません。
@@ -72,6 +74,9 @@ Log Analytics のデータ エクスポートでは、時間ベースのアイ�
 
 ### <a name="event-hub"></a>イベント ハブ
 データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
+
+> [!IMPORTANT]
+> [名前空間あたりサポートされるイベント ハブの数は 10](../../event-hubs/event-hubs-quotas#common-limits-for-all-tiers) です。 10 を超えるテーブルをエクスポートする場合は、独自のイベント ハブ名を指定して、すべてのテーブルをそのイベント ハブにエクスポートします。 
 
 考慮事項:
 1. "Basic" イベント ハブ SKU では、下のほうのイベント サイズ[制限](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers)がサポートされます。ワークスペースの一部のログはそれを超過し、削除されることがありまする "Standard" または "Dedicated" イベント ハブをエクスポート先として使用することをお勧めします。

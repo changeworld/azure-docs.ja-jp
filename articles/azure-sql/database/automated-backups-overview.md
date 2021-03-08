@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108060"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690621"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
@@ -229,17 +229,15 @@ DTU ベースのサービス レベルから仮想コア ベースのサービ�
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>Azure portal を使用して PITR バックアップ保有期間を変更する
 
-Azure portal を使用してアクティブなデータベースの PITR バックアップ保持期間を変更するには、保持期間を変更するデータベースのサーバーまたはマネージド インスタンスに移動します。 
+Azure portal を使用してアクティブなデータベースの PITR バックアップ保持期間を変更するには、保持期間を変更するデータベースのサーバーまたはマネージド インスタンスに移動します。 左側のペインで **[バックアップ]** を選択してから、 **[保持ポリシー]** を選択します。PITR 保有期間を変更するデータベースを選択します。 次に、アクション バーから **[保有期間の構成]** を選択します。
+
+
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
-
-SQL Database の PITR バックアップ保有期間に対する変更は、ポータルのサーバー ページで行われます。 サーバーでデータベースの PITR 保有期間を変更するには、サーバーの概要ブレードに移動します。 左側のペインで **[バックアップの管理]** を選択し、変更の範囲内のデータベースを選択してから、画面の上部にある **[保有期間の構成]** を選択します。
 
 ![PITR 保有期間の変更 (サーバー レベル)](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
-
-SQL Managed Instance の PITR バックアップ保有期間の変更は、個々のデータベース レベルで実行されます。 Azure portal からインスタンス データベースの PITR バックアップ保有期間を変更するには、個々のデータベースの [概要] ブレードに移動します。 次に、画面の上部にある **[バックアップ保有期間の構成]** を選択します。
 
 ![PITR 保有期間の変更 (マネージド インスタンス)](./media/automated-backups-overview/configure-backup-retention-sqlmi.png)
 

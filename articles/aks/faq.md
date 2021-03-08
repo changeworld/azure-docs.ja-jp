@@ -3,12 +3,13 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.custom: references_regions
+ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739629"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -134,7 +135,7 @@ Windows Server によるノード プールのサポートには、Kubernetes �
 
 AKS では、[アップタイム SLA][uptime-sla] を使用したオプションのアドオン機能として SLA 保証が提供されます。 
 
-既定で提供される無料の SLA では、高可用性 API サーバー エンドポイントは保証されません (サービス レベル目標は 99.5%)。 アップグレード、異常なアンダーレイ ノード、プラットフォームのメンテナンスなどで、一時的な接続の問題が見られる可能性があります。ワークロードで APIServer の再起動が許容されない場合は、アップタイム SLA を使用することをお勧めします。
+既定で提供される Free SKU にはサービス レベル "*アグリーメント*" は関連付けられていませんが、サービス レベル "*目標*" は 99.5% です。 アップグレード、異常なアンダーレイ ノード、プラットフォームのメンテナンス、アプリケーションによる API サーバーへの過剰な要求などで、一時的な接続の問題が見られる可能性があります。ワークロードで API サーバーの再起動を許容できない場合は、アップタイム SLA を使用することをお勧めします。
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>自分の AKS エージェント ノードに Azure の予約割引を適用できますか?
 
@@ -202,7 +203,7 @@ Log Analytics エージェントは、Microsoft によって管理される拡�
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS によって、クラスターのリージョン外に格納される顧客データはありますか?
 
-顧客データを 1 つのリージョンに格納できるようにする機能は、現在のところ、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。
+現在、顧客データを 1 つのリージョンに格納できるようにする機能は、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>AKS イメージはルートとして実行する必要がありますか?
 

@@ -3,14 +3,14 @@ title: バックアップ センターの概要
 description: この記事では、Azure のバックアップ センターの概要を示します。
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 93f9e5dc064d264e0cc111d8ddb093639307c55b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592031"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725375"
 ---
-# <a name="overview-of-backup-center-preview"></a>バックアップ センター (プレビュー) の概要
+# <a name="overview-of-backup-center"></a>バックアップ センターの概要
 
 バックアップ センターは、企業が Azure でバックアップを大規模に管理、監視、操作、分析するための **1 つに統合された管理エクスペリエンス** を提供します。 このため、Azure のネイティブ管理エクスペリエンスと一貫性があります。
 
@@ -18,11 +18,11 @@ ms.locfileid: "100592031"
 
 * **バックアップを管理するための単一のウィンドウ** – バックアップ センターは、大規模かつ分散された Azure 環境で適切に機能するように設計されています。 バックアップ センターを使用して、複数の種類のワークロード、コンテナー、サブスクリプション、リージョン、[Azure Lighthouse](../lighthouse/overview.md) テナントに渡ってバックアップを効率的に管理できます。
 * **データソース集中管理** – バックアップ センターには、バックアップするデータソース (VM やデータベースなど) に集中するためのビューとフィルターが用意されています。 これにより、リソース所有者またはバックアップ管理者は、項目のバックアップ先のコンテナーにフォーカスしなくても、項目のバックアップを監視および操作できます。 この設計の主な特徴は、データソース サブスクリプション、データソース リソース グループ、データソース タグなど、データソース固有のプロパティによってビューをフィルター処理できることです。 たとえば、異なる部門に属する VM には異なるタグを割り当てるという慣例に従っている組織の場合、バックアップ センターを使用して、バックアップ対象の基になる VM のタグに基づいてバックアップ情報をフィルター処理できます。このとき、コンテナーのタグにフォーカスする必要はありません。
-* **結合されたエクスペリエンス** – バックアップ センターは、大規模な管理を可能にする既存の Azure サービスにネイティブに統合されています。 たとえば、バックアップ センターでは、バックアップの管理に役立つ [Azure Policy](../governance/policy/overview.md) エクスペリエンスが使用されます。 また、バックアップに関する詳細なレポートを表示できるようにするために、[Azure ブック](../azure-monitor/visualize/workbooks-overview.md)と [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)が活用されます。 このため、バックアップ センターで提供されるさまざまな機能を使用するために、新しい原則を学習する必要はありません。
+* **結合されたエクスペリエンス** – バックアップ センターは、大規模な管理を可能にする既存の Azure サービスにネイティブに統合されています。 たとえば、バックアップ センターでは、バックアップの管理に役立つ [Azure Policy](../governance/policy/overview.md) エクスペリエンスが使用されます。 また、バックアップに関する詳細なレポートを表示できるようにするために、[Azure ブック](../azure-monitor/visualize/workbooks-overview.md)と [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)が活用されます。 このため、バックアップ センターで提供されるさまざまな機能を使用するために、新しい原則を学習する必要はありません。 また、バックアップ センターでコミュニティ リソースを見つけることもできます。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、および Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
+* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、Azure Blob のバックアップ、Azure Managed Disks のバックアップ、および Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
 * サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 
 ## <a name="get-started"></a>作業開始

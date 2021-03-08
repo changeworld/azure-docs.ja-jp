@@ -7,25 +7,44 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391458"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686684"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>リリースノート - Azure Arc 対応データ サービス (プレビュー)
 
+この記事では、Azure Arc 対応データ サービスで最近リリースされた、または強化された機能と機能強化について説明します。 
+
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-capabilities-and-features"></a>新機能
+
+Azure データ CLI (`azdata`) バージョン番号: 20.3.1。 [https://aka.ms/azdata](https://aka.ms/azdata) でダウンロードします。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
+
+追加の更新プログラムには以下が含まれます。
+
+- Azure Arc 対応 SQL Managed Instance
+   - Always On 可用性グループによる高可用性
+
+- Azure Arc 対応 PostgreSQL Hyperscale Azure Data Studio: 
+   - 概要ページに、ノードごとのサーバー グループの状態が表示されるようになりました
+   - 新しいプロパティ ページを使用してサーバー グループに関する詳細を表示できるようになりました
+   - **[ノード パラメーター]** ページから Postgres エンジン パラメーターを構成します
+
+このリリースに関連する問題については、「[既知の問題 - Azure Arc 対応データ サービス (プレビュー)](known-issues.md)」を参照してください
 
 ## <a name="january-2021"></a>2021 年 1 月
 
 ### <a name="new-capabilities-and-features"></a>新機能
 
 Azure データ CLI (`azdata`) バージョン番号:20.3.0。 [https://aka.ms/azdata](https://aka.ms/azdata) でダウンロードします。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
-
 
 追加の更新プログラムには以下が含まれます。
 - 17 の新しい言語で使用できるローカライズされたポータル

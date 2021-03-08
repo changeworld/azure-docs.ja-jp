@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor for containers からのログ アラート | Microsoft Docs
-description: この記事では、Azure Monitor for containers からのメモリおよび CPU の使用率に対するカスタム ログ アラートを作成する方法について説明します。
+title: Container insights からのログ アラート | Microsoft Docs
+description: この記事では、Container insights からのメモリおよび CPU の使用率に対するカスタム ログ アラートを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: 4239567c60afda6ca165e097562cb888c731f15a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64d499d69194ac338d367ae094e42f4c8af23bef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600645"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711197"
 ---
-# <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログ アラートを作成する方法
+# <a name="how-to-create-log-alerts-from-container-insights"></a>Container insights からログ アラートを作成する方法
 
-Azure Monitor for containers は、マネージド Kubernetes クラスターまたは自己管理型 Kubernetes クラスターにデプロイされている、コンテナー ワークロードのパフォーマンスを監視します。 重要なことについてアラートを生成するため、この記事では、AKS クラスターを使用して次の状況でログベースのアラートを作成する方法について説明します。
+Container insights により、マネージド Kubernetes クラスターまたは自己管理型 Kubernetes クラスターにデプロイされているコンテナー ワークロードのパフォーマンスが監視されます。 重要なことについてアラートを生成するため、この記事では、AKS クラスターを使用して次の状況でログベースのアラートを作成する方法について説明します。
 
 - クラスター ノードで CPU またはメモリの使用率がしきい値を超えたとき
 - 対応するリソースに設定されている上限と比較して、コントローラー内のいずれかのコンテナーで CPU またはメモリの使用率がしきい値を超えたとき
@@ -20,9 +20,9 @@ Azure Monitor for containers は、マネージド Kubernetes クラスターま
 - *Failed*、*Pending*、*Unknown*、*Running*、*Succeeded* の各ポッドフェーズ数
 - クラスター ノードで空きディスク領域がしきい値を超えたとき
 
-クラスター ノードで CPU またはメモリの使用率が高いこと、またはクラスター ノードで空きディスク領域が少ないことを警告するには、メトリック アラートまたはメトリック測定アラートを作成するために提供されているクエリを使用します。 メトリック アラートはログ アラートよりも待ち時間が少ない一方で、ログ アラートは高度なクエリと、より洗練された機能に対応しています。 ログ アラートのクエリは、*now* 演算子を使用して 1 時間戻ることで、日時を現在と比較します。 (コンテナーに対する Azure Monitor では、すべての日付が協定世界時 (UTC) 形式で格納されます)。
+クラスター ノードで CPU またはメモリの使用率が高いこと、またはクラスター ノードで空きディスク領域が少ないことを警告するには、メトリック アラートまたはメトリック測定アラートを作成するために提供されているクエリを使用します。 メトリック アラートはログ アラートよりも待ち時間が少ない一方で、ログ アラートは高度なクエリと、より洗練された機能に対応しています。 ログ アラートのクエリは、*now* 演算子を使用して 1 時間戻ることで、日時を現在と比較します。 (Container insights により、すべての日付は協定世界時 (UTC) 形式で保存されます)。
 
-Azure Monitor のアラートに詳しくない場合は、事前に「[Microsoft Azure のアラートの概要](../platform/alerts-overview.md)」を参照してください。 ログ クエリを使用したアラートの詳細については、「[Azure Monitor でのログ アラート](../alerts/alerts-unified-log.md)」を参照してください。 メトリック アラートの詳細については、[Azure Monitor でのメトリック アラート](../alerts/alerts-metric-overview.md)に関するページを参照してください。
+Azure Monitor のアラートに詳しくない場合は、事前に「[Microsoft Azure のアラートの概要](../alerts/alerts-overview.md)」を参照してください。 ログ クエリを使用したアラートの詳細については、「[Azure Monitor でのログ アラート](../alerts/alerts-unified-log.md)」を参照してください。 メトリック アラートの詳細については、[Azure Monitor でのメトリック アラート](../alerts/alerts-metric-overview.md)に関するページを参照してください。
 
 ## <a name="resource-utilization-log-search-queries"></a>リソース使用率のログ検索クエリ
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>アラート ルールを作成する
 
-このセクションでは、Azure Monitor for containers からのパフォーマンス データを使用する、メトリック測定アラート ルールの作成について見ていきます。 さまざまなログ クエリでこの基本プロセスを使用して、さまざまなパフォーマンス カウンターに対してアラートを生成することができます。 最初は、前に示したログ検索クエリのいずれかを使用します。 ARM テンプレートを使用して作成するには、[Azure リソース テンプレートを使用したサンプル ログ アラートの作成](../alerts/alerts-log-create-templates.md)に関するページを参照してください。
+このセクションでは、Container insights からのパフォーマンス データを使用する、メトリック測定アラート ルールの作成について見ていきます。 さまざまなログ クエリでこの基本プロセスを使用して、さまざまなパフォーマンス カウンターに対してアラートを生成することができます。 最初は、前に示したログ検索クエリのいずれかを使用します。 ARM テンプレートを使用して作成するには、[Azure リソース テンプレートを使用したサンプル ログ アラートの作成](../alerts/alerts-log-create-templates.md)に関するページを参照してください。
 
 >[!NOTE]
 >コンテナー リソースの使用率に関するアラート ルールを作成する次の手順では、「[ログ アラートの API の基本設定を切り替える](../alerts/alerts-log-api-switch.md)」の説明に従って、新しいログ アラート API に切り替える必要があります。
@@ -283,7 +283,7 @@ InsightsMetrics
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. Azure portal で、 **[Log Analytics ワークスペース]** を検索して選択します。
-3. Log Analytics ワークスペースの一覧で、コンテナーの Azure Monitor をサポートしているワークスペースを選択します。 
+3. Log Analytics ワークスペースの一覧で、Container insights をサポートしているワークスペースを選択します。 
 4. 左側のウィンドウで、 **[ログ]** を選択し、Azure Monitor ログの ページを開きます。 このページを使用して、Azure ログ クエリを記述し、実行することができます。
 5. **[ログ]** ページで、前述の [クエリ](#resource-utilization-log-search-queries)の1つを **[検索クエリ]** のフィールドに貼り付け、 **[実行]** を選択して結果を検証します。 この手順を実行しない場合、 **[+ 新しいアラート]** オプションを選択することはできません。
 6. **[+ 新しいアラート]** を選択してログアラートを作成します。

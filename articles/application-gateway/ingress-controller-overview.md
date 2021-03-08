@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2564fd38056241fd48f58f5f6039bf64f92b6741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397350"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714410"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーとは
 Application Gateway イングレス コントローラー (AGIC) は Kubernetes アプリケーションであり、これにより、[Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) のお客様が、Azure のネイティブ [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 ロード バランサーを活用してクラウド ソフトウェアをインターネットに公開できるようにします。 AGIC では、ホストされている Kubernetes クラスターを監視し、Application Gateway を継続的に更新して、選択されたサービスがインターネットに公開されるようにします。
@@ -37,7 +37,7 @@ AGIC は、サービスおよびデプロイ/ポッドと共に、Kubernetes の
   - Web アプリケーション ファイアウォールを統合
 
 ## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Helm デプロイと AKS アドオンの違い
-AKS クラスター用の AGIC をデプロイする方法は 2 つあります。 最初の方法は、Helm を通すことです。2 つ目は、AKS をアドオンとして使用することです。 AGIC を AKS アドオンとしてデプロイすることの主な利点は、Helm を通したデプロイよりもはるかにシンプルであることです。 新しいセットアップでは、Azure CLI の 1 つの行で、新しいアプリケーション ゲートウェイと AKS クラスターを、アドオンとして有効にした AGIC と共にデプロイできます。 アドオンは、フル マネージド サービスでもあり、自動更新やサポートの強化などの追加のメリットが提供されます。 Helm を通してデプロイされた AGIC は AKS によってサポートされませんが、AKS アドオンとしてデプロイされた AGIC は AKS によってサポートされます。 
+AKS クラスター用の AGIC をデプロイする方法は 2 つあります。 最初の方法は、Helm を通すことです。2 つ目は、AKS をアドオンとして使用することです。 AGIC を AKS アドオンとしてデプロイすることの主な利点は、Helm を通したデプロイよりもはるかにシンプルであることです。 新しいセットアップでは、Azure CLI の 1 つの行で、新しいアプリケーション ゲートウェイと AKS クラスターを、アドオンとして有効にした AGIC と共にデプロイできます。 アドオンは、フル マネージド サービスでもあり、自動更新やサポートの強化などの追加のメリットが提供されます。 AGIC (Helm および AKS アドオン) をデプロイする方法は、どちらも Microsoft によって完全にサポートされています。 また、アドオンを使用すると、第一級のアドオンとしての AKS との統合を向上させることができます。
 
 AGIC アドオンは顧客の AKS クラスターにポッドとしてデプロイされますが、AGIC の Helm デプロイ バージョンとアドオン バージョンにはいくつかの違いがあります。 この 2 つのバージョンの違いを次に示します。 
   - AKS アドオンで Helm デプロイの値を変更することはできません。
@@ -50,27 +50,7 @@ AGIC アドオンは顧客の AKS クラスターにポッドとしてデプロ�
   - AGIC アドオンはマネージド サービスであるため、顧客の AGIC アドオンは自動的に最新バージョンに更新されます。これは、顧客が手動で更新する必要がある Helm を通してデプロイされた AGIC とは異なります。 
 
 > [!NOTE]
-> AGIC の AKS アドオンでのデプロイ方法は、現在プレビューの段階です。 まだプレビュー段階にある機能に対して運用環境のワークロードを実行することはお勧めしません。そのため、試してみる場合は、新しいクラスターをセットアップしてテストすることをお勧めします。 
-
-次の表に、AGIC の Helm デプロイ バージョンと AKS アドオン バージョンで現在サポートされているシナリオの分類を示します。 
-
-### <a name="aks-add-on-agic-single-aks-cluster"></a>AKS アドオンの AGIC (単一の AKS クラスター)
-|                  |1 つのアプリケーション ゲートウェイ |2 つ以上のアプリケーション ゲートウェイ |
-|------------------|---------|--------|
-|**1 つの AGIC**|はい、これはサポートされます |いいえ、これはバックログに入っています |
-|**2 つ以上の AGIC**|いいえ。クラスターごとにサポートされる AGIC は 1 つだけです |いいえ。クラスターごとにサポートされる AGIC は 1 つだけです |
-
-### <a name="helm-deployed-agic-single-aks-cluster"></a>Helm でデプロイされた AGIC (単一の AKS クラスター)
-|                  |1 つのアプリケーション ゲートウェイ |2 つ以上のアプリケーション ゲートウェイ |
-|------------------|---------|--------|
-|**1 つの AGIC**|はい、これはサポートされます |いいえ、これはバックログに入っています |
-|**2 つ以上の AGIC**|共有された ProhibitedTarget 機能を使用して別の名前空間を監視する必要があります |はい、これはサポートされます |
-
-### <a name="helm-deployed-agic-2-aks-clusters"></a>Helm でデプロイされた AGIC (2 つ以上の AKS クラスター)
-|                  |1 つのアプリケーション ゲートウェイ |2 つ以上のアプリケーション ゲートウェイ |
-|------------------|---------|--------|
-|**1 つの AGIC**|該当なし |該当なし |
-|**2 つ以上の AGIC**|共有された ProhibitedTarget 機能を使用する必要があります |該当なし |
+> お客様は、AKS クラスターあたり 1 つの AGIC アドオンのみをデプロイできます。現在、各 AGIC アドオンでは、1 つの Application Gateway のみをターゲットにすることができます。 クラスターあたり複数の AGIC を必要とする、または 1 つの Application Gateway をターゲットとした複数の AGIC を必要とするデプロイでは、Helm を通じてデプロイされた AGIC を引き続き使用してください。 
 
 ## <a name="next-steps"></a>次のステップ
 - [**AKS アドオンのグリーンフィールド デプロイ**](tutorial-ingress-controller-add-on-new.md):白紙状態のインフラストラクチャに、AGIC アドオン、AKS、Application Gateway をインストールする手順です。

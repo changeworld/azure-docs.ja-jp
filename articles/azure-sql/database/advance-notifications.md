@@ -1,6 +1,6 @@
 ---
 title: 計画メンテナンス イベントの事前通知 (プレビュー)
-description: Azure SQL Database または Azure SQL Managed Instance の計画メンテナンスの前に通知を受け取ります。
+description: Azure SQL Database の計画メンテナンスの前に通知を受け取ります。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -11,24 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: 3f63a8d2f75a58a771d837128c2b2498c28948ef
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07f6267a14a4604e1a43dd1a1a9930d63a419336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678603"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690891"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>計画メンテナンス イベントの事前通知 (プレビュー)
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 事前通知 (プレビュー) は、[メンテナンス期間 (プレビュー)](maintenance-window.md)用に構成されたデータベースで使用できます。 事前通知を使用すると、顧客は、計画されたイベントの 24 時間前までに通知が送信されるように構成できます。
 
 計画メンテナンスが開始される 24 時間前までにテキスト、電子メール、Azure プッシュ通知、およびボイスメールを受け取ることができるように、通知を構成することができます。 メンテナンスが開始されたとき、およびメンテナンスが終了したときに、追加の通知が送信されます。
 
+> [!Note]
+> メンテナンス期間を選択する機能は、Azure SQL マネージド インスタンスでは使用できますが、事前通知は、現在のところ、Azure SQL マネージド インスタンスでは使用できません。
 
 ## <a name="create-an-advance-notification"></a>事前通知の作成
 
-事前通知は、メンテナンス期間が構成されている Azure SQL データベースとマネージド インスタンスで利用できます。 
+事前通知は、メンテナンス期間が構成されている Azure SQL データベースで利用できます。 
 
 通知を有効にするには、次の手順を実行します。  
 

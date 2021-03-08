@@ -6,32 +6,32 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: c046ddbaf0fd1afbabaa87d1594f0161c71606c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2a97e5e54fea8d80160c1df7007d51871501ef8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600923"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714393"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 
-Azure Log Analytics エージェントによって、任意のクラウドの Windows および Linux 仮想マシン、オンプレミスのマシン、[System Center Operations Manager](/system-center/scom/) で監視しているマシンからテレメトリを収集し、Azure Monitor の Log Analytics ワークスペースに収集したデータを送信できます。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。 この記事では、エージェント、システムとネットワークの要件、およびデプロイ方法の詳細な概要について説明します。
+Azure Log Analytics エージェントによって、任意のクラウドの Windows および Linux 仮想マシン、オンプレミスのマシン、[System Center Operations Manager](/system-center/scom/) で監視しているマシンからテレメトリを収集し、Azure Monitor の Log Analytics ワークスペースに収集したデータを送信できます。 Log Analytics エージェントは、分析情報や、[VM insights](../vm/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。 この記事では、エージェント、システムとネットワークの要件、およびデプロイ方法の詳細な概要について説明します。
 
 > [!NOTE]
 > Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) または OMS Linux エージェントとも呼ばれます。
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Azure Diagnostics 拡張機能との比較
-Azure Monitor の[Azure Diagnostics 拡張機能](../platform/diagnostics-extension-overview.md)は、Azure 仮想マシンのゲスト オペレーティング システムから監視データを収集することにも使用できます。 ご自分の要件に応じて、いずれかまたは両方を選択できます。 Azure Monitor エージェントの詳細な比較については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。 
+Azure Monitor の[Azure Diagnostics 拡張機能](./diagnostics-extension-overview.md)は、Azure 仮想マシンのゲスト オペレーティング システムから監視データを収集することにも使用できます。 ご自分の要件に応じて、いずれかまたは両方を選択できます。 Azure Monitor エージェントの詳細な比較については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。 
 
 考慮すべき主な違いは次のとおりです。
 
 - Azure Diagnostics 拡張機能は、Azure の仮想マシンでのみ使用できます。 Log Analytics エージェントは、Azure、他のクラウド、およびオンプレミスの仮想マシンで使用できます。
-- Azure Diagnostics 拡張機能では、Azure Storage、[Azure Monitor メトリック](../platform/data-platform-metrics.md) (Windows のみ)、および Event Hubs にデータが送信されます。 Log Analytics エージェントでは、[Azure Monitor ログ](../platform/data-platform-logs.md)にデータが送信されます。
-- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-core-solutions)、[Azure Monitor for VMs](../insights/vminsights-overview.md)、および [Azure Security Center](../../security-center/index.yml) などのその他のサービスに必要です。
+- Azure Diagnostics 拡張機能では、Azure Storage、[Azure Monitor メトリック](../essentials/data-platform-metrics.md) (Windows のみ)、および Event Hubs にデータが送信されます。 Log Analytics エージェントでは、[Azure Monitor ログ](../logs/data-platform-logs.md)にデータが送信されます。
+- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-core-solutions)、[VM insights](../vm/vminsights-overview.md)、および [Azure Security Center](../../security-center/index.yml) などのその他のサービスに必要です。
 
 ## <a name="costs"></a>コスト
 
-Log Analytics エージェントには料金はかかりませんが、取り込まれたデータの料金が発生する場合があります。 Log Analytics ワークスペースで収集されたデータの価格設定の詳細については、[Azure Monitor ログで使用量とコストを管理する](../platform/manage-cost-storage.md) を確認してください。
+Log Analytics エージェントには料金はかかりませんが、取り込まれたデータの料金が発生する場合があります。 Log Analytics ワークスペースで収集されたデータの価格設定の詳細については、[Azure Monitor ログで使用量とコストを管理する](../logs/manage-cost-storage.md) を確認してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -77,10 +77,10 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 
 ### <a name="azure-virtual-machine"></a>Azure 仮想マシン
 
-- [Azure Monitor for VMs](../insights/vminsights-enable-overview.md) には、エージェントを大規模に有効にする複数の方法が用意されています。 これには、Log Analytics エージェントと Dependency Agent のインストールが含まれます。 
+- [VM insights](../vm/vminsights-enable-overview.md) には、エージェントを大規模に有効にする複数の方法が用意されています。 これには、Log Analytics エージェントと Dependency Agent のインストールが含まれます。 
 - [Azure Security Center では、Log Analytics エージェントをプロビジョニングできます](../../security-center/security-center-enable-data-collection.md)。セキュリティの脆弱性と脅威を監視するために有効にすれば、サポートされているすべての Azure VM と作成された新しいものを対象にできます。
 - [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能は、Azure portal、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使用してインストールできます。
-- 個別の Azure 仮想マシン用に、[Azure portal から手動で](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)インストールします。
+- 個別の Azure 仮想マシン用に、[Azure portal から手動で](../vm/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)インストールします。
 
 ### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>オンプレミスまたは別のクラウド内の Windows 仮想マシン
 
@@ -92,7 +92,7 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>オンプレミスまたは別のクラウド内の Linux 仮想マシン
 
 - [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)を使用し、Log Analytics VM 拡張機能をデプロイし、管理します。
-- GitHub でホストされているラッパー スクリプトを呼び出してエージェントを[手動でインストールします](../learn/quick-collect-linux-computer.md)。
+- GitHub でホストされているラッパー スクリプトを呼び出してエージェントを[手動でインストールします](../vm/quick-collect-linux-computer.md)。
 - 収集したデータを管理グループ直属の Windows コンピューターから転送する目的で、[System Center Operations Manager](./om-agents.md) と Azure Monitor を統合します。
 
 ## <a name="workspace-id-and-key"></a>ワークスペース ID とキー
@@ -103,7 +103,7 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
 
-Azure Monitor ログに転送中のデータのセキュリティを確保するには、エージェントを、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するように構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
+Azure Monitor ログに転送中のデータのセキュリティを確保するには、エージェントを、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するように構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../logs/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
 
 ## <a name="network-requirements"></a>ネットワークの要件
 
@@ -150,5 +150,5 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 ## <a name="next-steps"></a>次のステップ
 
 * [データ ソース](../agents/agent-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。 
-* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * Azure Monitor に機能を追加し、Log Analytics ワークスペース内にデータを収集する[監視ソリューション](../insights/solutions.md)について学習します。

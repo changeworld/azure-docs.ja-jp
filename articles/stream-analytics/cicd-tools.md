@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: 3ed3ff44b927fa230dedf16387c1daca889d7c66
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718422"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>CI/CD ツールを使用して Azure Stream Analytics ジョブのビルド、テスト、デプロイを自動化する
 
@@ -166,6 +166,9 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
   ]
 }
 ```
+
+> [!NOTE]
+> 現在、`ScriptType` 要素に使用できる値は `InputMock` のみです。これは、既定値でもあります。 それ以外の値に設定した場合は無視され、既定値 (`InputMock`) が使用されます。 
 
 ### <a name="run-a-unit-test"></a>単体テストを実行する
 

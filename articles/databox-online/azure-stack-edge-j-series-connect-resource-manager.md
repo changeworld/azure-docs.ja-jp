@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0b4a31200b99062a72a02ca62ac8f3bf1206f9c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546807"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722094"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの Azure Resource Manager に接続する
 
@@ -130,7 +130,7 @@ Azure Resource Manager API を呼び出す Windows クライアントで、デ�
 
 Windows クライアントが、次の前提条件を満たしている必要があります。
 
-1. PowerShell バージョン 5.0 を実行している。 PowerShell バージョン 5.0 以降が必要です。 お使いのシステムの PowerShell のバージョンを確認するには、次のコマンドレットを実行します。
+1. PowerShell バージョン 5.0 を実行している。 PowerShell バージョン 5.0 が必要です。 PowerShell Core はサポートされていません。 お使いのシステムの PowerShell のバージョンを確認するには、次のコマンドレットを実行します。
 
     ```powershell
     $PSVersionTable.PSVersion

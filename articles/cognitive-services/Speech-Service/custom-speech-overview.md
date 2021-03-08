@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: f2dca513b4413f1761ea1b21bf71f90bb27d3053
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388653"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716569"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
@@ -45,7 +45,9 @@ Custom Speech で何らかの操作を行うには、Azure アカウントと音
 [Speech Studio](https://speech.microsoft.com/customspeech) を使用してカスタム モデルを作成する前に、Azure アカウントと音声サービス サブスクリプションを用意する必要があります。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](overview.md#try-the-speech-service-for-free)。
 
 > [!NOTE]
-> **オーディオ データ** を使用してカスタム モデルをトレーニングする場合は、トレーニングに使用できる専用のハードウェアを備えた次のいずれかのリージョンを選択してください。 これにより、モデルのトレーニングにかかる時間が短縮されます。
+> 必ず Standard (S0) サブスクリプションを作成してください。 Free (F0) サブスクリプションはサポートされていません。
+
+**オーディオ データ** を使用してカスタム モデルをトレーニングする場合は、トレーニングに使用できる専用のハードウェアを備えた次のいずれかのリージョンを選択してください。 これにより、モデルのトレーニングにかかる時間が短縮され、トレーニングにより多くのオーディオを使用できるようになります。 これらのリージョンでは、音声サービスによって最大 20 時間のオーディオがトレーニングに使用されます。他のリージョンでは、最大 8 時間しか使用されません。
 
 * オーストラリア東部
 * カナダ中部
@@ -61,9 +63,6 @@ Custom Speech で何らかの操作を行うには、Azure アカウントと音
 * US Gov バージニア州
 * 西ヨーロッパ
 * 米国西部 2
-
-> [!NOTE]
-> 必ず Standard (S0) サブスクリプションを作成してください。 Free (F0) サブスクリプションはサポートされていません。
 
 Azure アカウントと音声サービス サブスクリプションを作成したら、[Speech Studio](https://speech.microsoft.com/customspeech) にサインインして、ご利用のサブスクリプションを接続する必要があります。
 

@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658471"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692268"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -73,6 +73,10 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 はい。[マネージド プライベート エンドポイント](analytical-store-private-endpoints.md)を構成して、分析ストアのネットワーク アクセスを Azure Synapse のマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。 また、他の Azure データ サービスの中で特に、トランザクション ストアへの書き込みアクセスも、このプライベート エンドポイントによって制限されます。
 
 Azure Synapse Analytics ワークスペース内で、トランザクション ストアと分析ストアの両方のプライベート エンドポイントを同じ Azure Cosmos DB アカウントに追加できます。 実行するのが分析クエリのみであれば、マップする必要があるのは、分析のプライベート エンドポイントのみです。
+
+### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB の分析ストアでカスタマー マネージド キーを使用することはできますか?
+
+同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 現在、Azure Cosmos DB の分析ストアでカスタマー マネージド キーを使用するためには、ご利用のアカウントに特別な構成が必要となります。 詳細については、[Azure Cosmos DB チーム](mailto:azurecosmosdbcmk@service.microsoft.com)にお問い合わせください。
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>トランザクション ストアに対する削除と更新の操作は分析ストアに反映されますか?
 

@@ -1,16 +1,15 @@
 ---
 title: Azure 監視 REST API のチュートリアル
 description: 要求を認証し、Azure Monitor REST API を使用して使用可能なメトリック定義およびメトリックの値を取得する方法を説明します。
-ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 41c2432c3c80be7d28e8f33372dea44ba108c5d3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a7cd6ff7c0c3b5d4bee859ef288f16673ebe0835
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601318"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033080"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
@@ -462,9 +461,9 @@ Invoke-RestMethod -Uri $request `
 >
 >
 
-**メソッド**: GET
+**メソッド**: `GET`
 
-**要求 URI**: `https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**要求 URI**: `https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}`
 
 たとえば、特定の時間範囲と 1 時間の時間グレインに対して RunsSucceeded メトリック データ ポイントを取得する場合、要求は次のようになります。
 
@@ -734,7 +733,6 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="next-steps"></a>次のステップ
 
 * [監視の概要](../overview.md)に関するページを確認します。
-* [Azure Monitor のサポートされるメトリック](../platform/metrics-supported.md)を表示します。
+* [Azure Monitor のサポートされるメトリック](./metrics-supported.md)を表示します。
 * [Microsoft Azure Monitor REST API リファレンス](/rest/api/monitor/)を確認します。
 * [Azure 管理ライブラリ](/previous-versions/azure/reference/mt417623(v=azure.100))を確認します。
-

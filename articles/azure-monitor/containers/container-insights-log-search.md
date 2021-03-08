@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor for containers からログを照会する方法 |Microsoft Docs
-description: Azure Monitor for containers は、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
+title: Container insights のログのクエリを実行する方法 | Microsoft Docs
+description: Container insights により、メトリックとログ データが収集されます。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 8f02d900ba931768c7f8acebc1b124aff777da18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604379"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711112"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログを照会する方法
+# <a name="how-to-query-logs-from-container-insights"></a>Container insights のログのクエリを実行する方法
 
-Azure Monitor for containers では、コンテナー ホストおよびコンテナーからパフォーマンスのメトリック、インベントリ データ、および正常性状態の情報が収集されます。 データは 3 分ごとに収集され、Azure Monitor の Log Analytics ワークスペースに転送されます。 このデータは、Azure Monitor で[クエリ](../log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
+Container insights により、コンテナー ホストおよびコンテナーからパフォーマンスのメトリック、インベントリ データ、および正常性状態の情報が収集されます。 データは 3 分ごとに収集され、Azure Monitor の Log Analytics ワークスペースに転送されます。 このデータは、Azure Monitor で[クエリ](../logs/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 ## <a name="container-records"></a>コンテナー レコード
 
-次の表で、Azure Monitor for containers で収集されるレコードの詳細について説明します。 列の説明の一覧については、[ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) と [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) のテーブルのリファレンスを参照してください。
+Container insights によって収集されるレコードの詳細を次の表に示します。 列の説明の一覧については、[ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) と [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) のテーブルのリファレンスを参照してください。
 
 | Data | データ ソース | データ型 | フィールド |
 |------|-------------|-----------|--------|
@@ -110,4 +110,4 @@ KubeMonAgentEvents | where Level != "Info"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。
+Container insights にはアラートの定義済みのセットは含まれていません。 [Container insights を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。

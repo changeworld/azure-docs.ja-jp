@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor の Wire Data ソリューション | Microsoft Docs
 description: ワイヤー データは、Log Analytics エージェントを使用してコンピューターのネットワークとパフォーマンスのデータを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 563104a82da3b6b2263fce46792cf4f627c8f6ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5981a5f136d613ffcedda86797d807d2eecfab0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713628"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -26,7 +25,7 @@ Log Analytics エージェントに加えて、ワイヤ データ ソリュー�
 > 
 >Wire Data ソリューションを使用している既存のお客様は、引き続き使用できます。 Service Map に移行するための移行タイムラインのガイダンスを公開する予定です。
 >
->新規のお客様は、[Service Map ソリューション](../vm/service-map.md)または [Azure Monitor for VMs](../vm/vminsights-overview.md) をインストールする必要があります。  Service Map データセットは、Wire Data に相当します。  Azure Monitor for VMs には、Service Map データセットと、分析用の追加のパフォーマンス データおよび機能が含まれています。 
+>新規のお客様は、[Service Map ソリューション](../vm/service-map.md)または [VM insights](../vm/vminsights-overview.md) をインストールする必要があります。  Service Map データセットは、Wire Data に相当します。  VM insights には、Service Map データセットと、分析用の追加のパフォーマンス データおよび機能が含まれています。 
 
 
 既定では、Azure Monitor は、Windows および Linux に組み込まれているカウンターと、指定したその他のパフォーマンス カウンターからの CPU、メモリ、ディスク、ネットワーク パフォーマンスのデータをログに記録します。 コンピューターで使用されているサブネットやアプリケーション レベルのプロトコルを始めとするネットワークなどのデータは、エージェントごとにリアルタイムで収集されます。  ワイヤ データは、TCP トランスポート層ではなく、アプリケーション レベルでネットワーク データを調べます。   このソリューションは個別の ACK および SYN を調べません。   ハンドシェイクが完了すると、ライブ接続と見なされ、接続済みとしてマークされます。 その接続は両側が合意している限りはライブ接続のままになり、ソケットが開いて、データを前後に渡すことができます。   いずれかの側が接続を閉じると、切断済みとしてマークされます。  したがって、正常に完了したパケットの帯域幅のみがカウントされ、再送信および失敗したパケットに関するレポートは行われません。

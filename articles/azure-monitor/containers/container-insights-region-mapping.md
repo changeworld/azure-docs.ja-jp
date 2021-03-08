@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor for containers のリージョン マッピング
-description: Azure Monitor for containers、Log Analytics ワークスペース、カスタム メトリックの間でサポートされるリージョン マッピングについて説明します。
+title: Container insights のリージョン マッピング
+description: Container insights、Log Analytics ワークスペース、カスタム メトリックの間でサポートされるリージョン マッピングについて説明します。
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9b77242de3e7845a97874b663266103bf00a8e66
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f9e910b1352109608becb82609e85e26d27d2cd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604134"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728877"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Azure Monitor for containers でサポートされるリージョン マッピング
+# <a name="region-mappings-supported-by-container-insights"></a>Container insights によってサポートされるリージョン マッピング
 
- Azure Monitor for containers を有効にした場合、Log Analytics ワークスペースと AKS クラスターをリンクし、Azure Monitor に送信されたカスタム メトリックを収集するために、特定のリージョンのみサポートされます。
+ Container insights を有効にした場合、Log Analytics ワークスペースと AKS クラスターのリンク、および Azure Monitor に送信されるカスタム メトリックの収集は、特定のリージョンでのみサポートされます。
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics ワークスペースでサポートされるマッピング
 
@@ -53,4 +53,4 @@ Azure Kubernetes Services (AKS) クラスター ノードおよびポッドか�
 
 ## <a name="next-steps"></a>次のステップ
 
-AKS クラスターの監視を開始するには、「[Azure Monitor for containers を有効にする方法](container-insights-onboard.md)」を参照し、監視を有効にするための要件と使用できる方法を把握してください。  
+AKS クラスターの監視を開始するには、[Container insights を有効にする方法](container-insights-onboard.md)に関するページを確認し、監視を有効にするための要件と使用できる方法を理解してください。  

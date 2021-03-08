@@ -4,16 +4,16 @@ description: Azure App Services のアプリケーション パフォーマン�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573994"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734725"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
-[Azure App Services](../../app-service/index.yml) 上で実行されているご利用の ASP.NET および ASP.NET Core ベースの Web アプリケーションで、これまでよりも簡単に監視を有効にすることができるようになりました。 以前は手動でサイト拡張機能をインストールする必要がありましたが、最新の拡張機能/エージェントが既定でアプリ サービス イメージに組み込まれました。 この記事では、Application Insights の監視を有効にする手順を説明し、大規模なデプロイ プロセスを自動化する準備となるガイダンスを提供します。
+[Azure App Services](../../app-service/index.yml) 上で実行されている ASP.NET、ASP.NET Core、Node.js ベースの Web アプリケーションで、これまでよりも簡単に監視を有効にすることができるようになりました。 以前は手動でサイト拡張機能をインストールする必要がありましたが、最新の拡張機能/エージェントが既定でアプリ サービス イメージに組み込まれました。 この記事では、Application Insights の監視を有効にする手順を説明し、大規模なデプロイ プロセスを自動化する準備となるガイダンスを提供します。
 
 > [!NOTE]
 > **[開発ツール]**  >  **[拡張機能]** を使用して Application Insights のサイト拡張機能を手動で追加することは、非推奨になりました。 この拡張機能のインストール方法は、新しい各バージョンの手動更新が必要でした。 拡張機能の最新の安定版リリースが、App Service イメージの一部として[プレインストール](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)されるようになりました。 これらのファイルは `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` にあり、安定版リリースごとに自動的に更新されます。 以下の監視を有効にするエージェント ベースの手順を実行すると、非推奨の拡張機能は自動的に削除されます。
@@ -97,7 +97,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-**[Settings]\(設定\)**  >  **[select Application Insights]\(Application Insights の選択\)**  >  **[Enable]\(有効化\)** の App Service の Web アプリで選択します。 Node.js エージェント ベースの監視は、現在プレビューの段階です。
+Windows エージェント ベースの監視はサポートされていません。Linux で有効にするには、[Node.js App Service のドキュメント](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights)を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -170,6 +170,7 @@ Application Insights を使用したテレメトリの収集を有効にする�
 |XDT_MicrosoftApplicationInsights_Mode |  既定モードのみ、最適なパフォーマンスを保証するため重要な機能が有効になります。 | `default` または `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | バイナリ再書き込みエンジン `InstrumentationEngine` がオンにされるかどうかを制御します。 この設定は、パフォーマンスに影響し、コールド スタート/起動時間に影響を与えます。 | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | SQL と Azure テーブル テキストが依存関係呼び出しと共にキャプチャされるかどうかを制御します。 パフォーマンスの警告: アプリケーションのコールド スタートアップ時間が影響を受けます。 この設定には `InstrumentationEngine` が必要です。 | `~1` |
+|XDT_MicrosoftApplicationInsights_PreemptSdk | ASP.NET Core アプリの場合のみ。 Application Insights SDK で相互運用を有効にします。 拡張機能を SDK とサイドバイサイドで読み込み、それを使用してテレメトリを送信します (Application Insights SDK を無効にします)。 |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Azure Resource Manager を使用した App Service のアプリケーション設定
 

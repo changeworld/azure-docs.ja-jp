@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ef27475509c59b3c0caf194fd85530f3fdd6c7c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0c9e2580d2a88fbbab755f0c3df2f923bdc45548
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367841"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688350"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>Privileged Identity Management に特権アクセス グループ (プレビュー) を持ち込む
 
@@ -44,6 +44,12 @@ Azure Active Directory (Azure AD) では、Azure AD 組み込みロールをク�
 
 > [!NOTE]
 > 特権アクセス グループは、いったん管理されると、これを管理から除外することはできません。 これにより、別のリソース管理者が Privileged Identity Management 設定を削除できなくなります。
+>
+
+> [!IMPORTANT]
+> Azure Active Directory から特権アクセス グループを削除した場合、[特権アクセス グループ (プレビュー)] ブレードからそのグループが削除されるまでに最大 24 時間かかることがあります。 
+>
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: 45cbd0fc2a3a6a059274f33e25b577fde1f4a4ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585528"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713441"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -22,15 +22,15 @@ ms.locfileid: "100585528"
 ### <a name="general"></a>全般 
 - [Azure Monitor の FAQ](faq.md) - Application Insights のデバイス情報に関するエントリを追加しました。
 ### <a name="agents"></a>エージェント  
-- [Azure Monitor Logs で分析する Windows イベント トレーシング (ETW) イベントの収集](platform/data-sources-event-tracing-windows.md) - 新しい記事。
-- [Azure Monitor のデータ収集ルール (プレビュー)](platform/data-collection-rule-overview.md) - PowerShell サンプルと CLI サンプルへのリンクを追加しました。
+- [Azure Monitor Logs で分析する Windows イベント トレーシング (ETW) イベントの収集](./agents/data-sources-event-tracing-windows.md) - 新しい記事。
+- [Azure Monitor のデータ収集ルール (プレビュー)](./agents/data-collection-rule-overview.md) - PowerShell サンプルと CLI サンプルへのリンクを追加しました。
 
 ### <a name="alerts"></a>警告  
-- [セキュア エクスポートを使用して Azure を ITSM ツールに接続するように Azure を構成する](platform/itsm-connector-secure-webhook-connections-azure-configuration.md) - 新しい記事。
-- [ITSMC ダッシュボード内の [コネクタの状態] のエラー](platform/itsmc-dashboard-errors.md) - 新しい記事。
-- [ITSMC ダッシュボードを使用してエラーを調査する](platform/itsmc-dashboard.md) - 新しい記事。
-- [Azure メトリック警告のトラブルシューティング](platform/alerts-troubleshoot-metric.md) - 動的しきい値のセクションを追加しました。
-- [IT Service Management Connector での問題のトラブルシューティング](platform/itsmc-troubleshoot-overview.md) - 新しい記事。
+- [セキュア エクスポートを使用して Azure を ITSM ツールに接続するように Azure を構成する](./alerts/itsm-connector-secure-webhook-connections-azure-configuration.md) - 新しい記事。
+- [ITSMC ダッシュボード内の [コネクタの状態] のエラー](./alerts/itsmc-dashboard-errors.md) - 新しい記事。
+- [ITSMC ダッシュボードを使用してエラーを調査する](./alerts/itsmc-dashboard.md) - 新しい記事。
+- [Azure メトリック警告のトラブルシューティング](./alerts/alerts-troubleshoot-metric.md) - 動的しきい値のセクションを追加しました。
+- [IT Service Management Connector での問題のトラブルシューティング](./alerts/itsmc-troubleshoot-overview.md) - 新しい記事。
 
 ### <a name="application-insights"></a>Application Insights
 - [Azure Application Insights におけるテレメトリの関連付け](app/correlation.md) - OpenCensus Python で、あるモジュールから別のモジュールを呼び出す際のトレースの関連付けに関する情報を追加しました。
@@ -47,25 +47,25 @@ ms.locfileid: "100585528"
 - [Azure Monitor for Azure Data Explorer (プレビュー)](insights/data-explorer.md) - 新しい記事。
 
 ### <a name="logs"></a>ログ    
-- [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - ユーザー割り当てマネージド ID を紹介します。
-- [Azure Monitor ログ専用クラスター](log-query/logs-dedicated-clusters.md) - 応答コードを更新しました。
-- [クロス サービス クエリ - Azure Monitor と Azure Data Explorer (プレビュー)](platform/azure-monitor-troubleshooting-logs.md) - 新しい記事。
+- [Azure Monitor のカスタマー マネージド キー](./logs/customer-managed-keys.md) - ユーザー割り当てマネージド ID を紹介します。
+- [Azure Monitor ログ専用クラスター](./logs/logs-dedicated-clusters.md) - 応答コードを更新しました。
+- [クロス サービス クエリ - Azure Monitor と Azure Data Explorer (プレビュー)](/azure/azure-monitor/platform/azure-data-explorer-monitor-cross-service-query) - 新しい記事。
 
 ### <a name="metrics"></a>メトリック
-- [Azure Monitor メトリックによるメトリックの集計と表示の説明](platform/metrics-aggregation-explained.md) - 新しい記事。
+- [Azure Monitor メトリックによるメトリックの集計と表示の説明](./essentials/metrics-aggregation-explained.md) - 新しい記事。
 
 ### <a name="platform-logs"></a>プラットフォーム ログ
-- [Azure Monitor リソース ログでサポートされているサービスとカテゴリ](platform/resource-logs-categories.md) - 新しい記事。
+- [Azure Monitor リソース ログでサポートされているサービスとカテゴリ](./essentials/resource-logs-categories.md) - 新しい記事。
 
 ### <a name="visualizations"></a>視覚化
-- [Azure Monitor ブックのデータ ソース](platform/workbooks-data-sources.md) - マージと変更分析を追加しました。
+- [Azure Monitor ブックのデータ ソース](./visualize/workbooks-data-sources.md) - マージと変更分析を追加しました。
 
 
 ## <a name="december-2020"></a>2020 年 12 月
 
 ### <a name="general"></a>全般
 - [Azure Monitor のカスタマー マネージド キー](logs/customer-managed-keys.md) - エラー メッセージを追加しました。
-- [Azure Monitor と統合するパートナー](/partners.md) - イベント ハブ統合に関するセクションを追加しました。
+- [Azure Monitor と統合するパートナー](partners.md) - イベント ハブ統合に関するセクションを追加しました。
 
 ### <a name="agents"></a>エージェント
 - [Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ](logs/azure-monitor-data-explorer-proxy.md) - 新しい記事。
@@ -96,7 +96,7 @@ ms.locfileid: "100585528"
 - [Azure Monitor Application Insights for Java のトラブルシューティング](app/java-standalone-troubleshoot.md) - 新しい記事。
 
 ### <a name="containers"></a>コンテナー
-- [Azure Monitor for containers でのレポート](insights/container-insights-reports.md) - 新しい記事。
+- [Container insights のレポート](insights/container-insights-reports.md) - 新しい記事。
 
 ### <a name="logs"></a>ログ
 - [Azure Monitor ログ専用クラスター](logs/logs-dedicated-clusters.md) - 自動化されたコマンド、リンクを解除して削除する方法、トラブルシューティングを追加しました。
@@ -168,16 +168,16 @@ ms.locfileid: "100585528"
 
 ### <a name="virtual-machines"></a>仮想マシン
 
-- [Azure Monitor for VMs の有効化の概要](vm/vminsights-enable-overview.md) - サポートされているリージョンを追加しました。
+- [VM insights の有効化の概要](vm/vminsights-enable-overview.md) - サポートされているリージョンを追加しました。
 
-Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新しい記事
+VM insights のゲストの正常性 (プレビュー) に関する新しい記事
 
-- [Azure Monitor for VMs のゲストの正常性 (プレビュー)](vm/vminsights-health-overview.md)
-- [Azure Monitor for VMs のゲストの正常性アラート (プレビュー)](vm/vminsights-health-alerts.md)
-- [Azure Monitor for VMs のゲストの正常性 (プレビュー) で監視を構成する](vm/vminsights-health-configure.md)
-- [データ収集ルールを使用して Azure Monitor for VMs のゲストの正常性 (プレビュー) での監視を構成する](vm/vminsights-health-configure-dcr.md)
-- [Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする](vm/vminsights-health-enable.md)
-- [Azure Monitor for VMs のゲストの正常性 (プレビュー) をトラブルシューティングする](vm/vminsights-health-troubleshoot.md)
+- [VM insights のゲストの正常性 (プレビュー)](vm/vminsights-health-overview.md)
+- [VM insights のゲストの正常性アラート (プレビュー)](vm/vminsights-health-alerts.md)
+- [VM insights のゲストの正常性 (プレビュー) での監視を構成する](vm/vminsights-health-configure.md)
+- [データ収集ルールを使用して VM insights のゲストの正常性 (プレビュー) での監視を構成する](vm/vminsights-health-configure-dcr.md)
+- [VM insights のゲストの正常性 (プレビュー) の有効化](vm/vminsights-health-enable.md)
+- [VM insights のゲストの正常性 (プレビュー) のトラブルシューティング](vm/vminsights-health-troubleshoot.md)
 
 
 
@@ -210,9 +210,9 @@ Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新
 - [Azure での自動スケーリングの使用](autoscale/autoscale-get-started.md) - 別のリージョンへの自動スケーリングの移動に関するセクションを追加しました。
 
 ### <a name="containers"></a>コンテナー
-- [Azure Monitor for containers で PV の監視を構成する](containers/container-insights-persistent-volumes.md) - 新しい記事。
-- [Azure Monitor for containers エージェントを管理する方法](containers/container-insights-manage-agent.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
-- [Azure Monitor for containers のメトリック アラート](containers/container-insights-metric-alerts.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
+- [Container insights で PV の監視を構成する](containers/container-insights-persistent-volumes.md) - 新しい記事。
+- [Container insights エージェントを管理する方法](containers/container-insights-manage-agent.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
+- [Container insights のメトリック アラート](containers/container-insights-metric-alerts.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
 
 ### <a name="insights-and-solutions"></a>分析情報とソリューション
 - [IT Service Management Connector - Azure Monitor のセキュア エクスポート](alerts/it-service-management-connector-secure-webhook-connections.md) - ServiceNow に関するセクションを追加しました。
@@ -234,7 +234,7 @@ Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新
 ### <a name="virtual-machines"></a>仮想マシン
 - [Azure Monitor for VMs での変更分析](vm/vminsights-change-analysis.md) - 新しい記事。
 - [Azure Monitor for VMs の有効化の概要](vm/vminsights-enable-overview.md) - サポートされているリージョンを追加しました。
-- [メトリックのために Azure Monitor for containers を更新する方法](containers/container-insights-update-metrics.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
+- [メトリックのために Container insights を更新する方法](containers/container-insights-update-metrics.md) - Azure Arc 対応 Kubernetes クラスターのサポートを追加しました。
 
 
 
@@ -265,8 +265,8 @@ Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新
 
 
 ### <a name="containers"></a>コンテナー
-- [Azure Monitor for containers を使用して Azure Arc 対応 Kubernetes クラスターを構成する](containers/container-insights-enable-arc-enabled-clusters.md) - サービス プリンシパルを使用して監視を有効にする場合のガイダンスを追加しました。
-- [Azure Monitor for containers によるデプロイと HPA メトリック](containers/container-insights-deployment-hpa-metrics.md) - 新しい記事。
+- [Container insights を使用して Azure Arc 対応 Kubernetes クラスターを構成する](containers/container-insights-enable-arc-enabled-clusters.md) - サービス プリンシパルを使用して監視を有効にする場合のガイダンスを追加しました。
+- [Container insights によるデプロイと HPA メトリック](containers/container-insights-deployment-hpa-metrics.md) - 新しい記事。
 
 ### <a name="insights-and-solutions"></a>分析情報とソリューション
 - [Azure Monitor for Azure Cache for Redis](insights/redis-cache-insights-overview.md) - プレビューの名称を削除しました。
@@ -319,7 +319,7 @@ Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新
 
 
 #### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>エージェントに関するコンテンツの再構成による新規および更新された記事
-- [Azure Monitor for VMs の有効化の概要](vm/vminsights-enable-overview.md)
+- [VM insights の有効化の概要](vm/vminsights-enable-overview.md)
 - [Linux コンピューターに Log Analytics エージェントをインストールする](agents/agent-linux.md)
 - [Windows コンピューターに Log Analytics エージェントをインストールする](agents/agent-windows.md)
 - [Log Analytics エージェントの概要](agents/log-analytics-agent.md)
@@ -344,7 +344,7 @@ Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新
 
 
 ### <a name="containers"></a>Containers
-- [Azure Monitor for containers によるデプロイと HPA メトリック](containers/container-insights-deployment-hpa-metrics.md) - 新しい記事。
+- [Container insights によるデプロイと HPA メトリック](containers/container-insights-deployment-hpa-metrics.md) - 新しい記事。
 
 ### <a name="insights"></a>洞察
 - [Azure Monitor の監視ソリューション](insights/solutions.md) - 新しい UI について更新しました。
@@ -372,7 +372,7 @@ Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="general"></a>全般
-- [Azure Monitor をデプロイする](deploy-scale.md) - Azure Monitor for VMs オンボード コンテンツの再構築。
+- [Azure Monitor をデプロイする](deploy-scale.md) - VM insights のオンボード コンテンツの再構築。
 - [Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](logs/private-link-security.md) - 制限に関してセクションを追加しました。
 
 ### <a name="alerts"></a>警告
@@ -389,8 +389,8 @@ Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新
 - [Azure Application Insights Profiler に関する問題のトラブルシューティング](app/profiler-troubleshooting.md) - ASP.NET Core アプリのプロファイラーを Azure App Service で実行するバグに関する注意を追加しました。 
 
 ### <a name="containers"></a>Containers
-- [Azure Monitor for containers からのログ アラート](containers/container-insights-log-alerts.md) - 新しい記事。
-- [Azure Monitor for containers からのメトリック アラート](containers/container-insights-metric-alerts.md) - 新しい記事。
+- [Container insights からのログ アラート](containers/container-insights-log-alerts.md) - 新しい記事。
+- [Container insights からのメトリック アラート](containers/container-insights-metric-alerts.md) - 新しい記事。
 
 ### <a name="logs"></a>ログ
 - [Azure Monitor のカスタマー マネージド キー](logs/customer-managed-keys.md) - エラー メッセージとクエリの CMK 構成のセクションを追加しました。
@@ -408,18 +408,18 @@ Azure Monitor for VMs のゲストの正常性 (プレビュー) に関する新
 
 ### <a name="virtual-machines"></a>仮想マシン
 
-Azure Monitor for VMs コンテンツの再構築による新規および更新された記事
+VM insights に関するコンテンツの再構成による新規および更新された記事
 
-- [Azure Monitor for VMs とは?](vm/vminsights-overview.md)
-- [Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する](vm/vminsights-configure-workspace.md)
+- [VM insights とは](vm/vminsights-overview.md)
+- [VM insights の Log Analytics ワークスペースを構成する](vm/vminsights-configure-workspace.md)
 - [Linux コンピューターを Azure Monitor に接続する](agents/agent-linux.md)
 - [ハイブリッド環境で Azure Monitor を有効にする](vm/vminsights-enable-hybrid.md)
 - [Azure portal で 1 つの仮想マシンまたは仮想マシン スケール セットで Azure Monitor を有効にする](vm/vminsights-enable-portal.md)
-- [Azure Policy を使用して Azure Monitor for VMs を有効にする](./vm/vminsights-enable-policy.md)
-- [Azure Monitor for VMs の有効化の概要](vm/vminsights-enable-overview.md)
-- [PowerShell を使用して Azure Monitor for VMs を有効にする](vm/vminsights-enable-powershell.md)
-- [Resource Manager テンプレートを使用して Azure Monitor for VMs を有効にする](vm/vminsights-enable-resource-manager.md)
-- [PowerShell またはテンプレートを使用して Azure Monitor for VMs を有効にする](./vm/vminsights-enable-powershell.md)
+- [Azure Policy を使用して VM insights を有効にする](./vm/vminsights-enable-policy.md)
+- [VM insights の有効化の概要](vm/vminsights-enable-overview.md)
+- [PowerShell を使用して VM insights を有効にする](vm/vminsights-enable-powershell.md)
+- [Resource Manager テンプレートを使用して VM insights を有効にする](vm/vminsights-enable-resource-manager.md)
+- [PowerShell またはテンプレートを使用して VM insights を有効にする](./vm/vminsights-enable-powershell.md)
 
 
 ### <a name="visualizations"></a>視覚化
@@ -453,9 +453,9 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 
 ### <a name="containers"></a>Containers
 - [お使いのハイブリッド Kubernetes クラスターの監視を停止する方法](containers/container-insights-optout-hybrid.md) - Arc 対応 Kubernetes に関するセクションを追加しました。
-- [Azure Arc 対応 Kubernetes クラスターに Azure Monitor for containers を構成する](containers/container-insights-enable-arc-enabled-clusters.md) - 新しい記事。
-- [Azure Monitor for containers を使用して Azure Red Hat OpenShift v4.x を構成する](containers/container-insights-azure-redhat4-setup.md) - 前提条件を更新しました。
-- [コンテナー用 Azure Monitor のライブ データ (プレビュー) の設定](containers/container-insights-livedata-setup.md) - Azure US Government で利用できない機能に関する注を削除しました。
+- [Azure Arc 対応 Kubernetes クラスターに Container insights を構成する](containers/container-insights-enable-arc-enabled-clusters.md) - 新しい記事。
+- [Container insights を使用して Azure Red Hat OpenShift v4.x を構成する](containers/container-insights-azure-redhat4-setup.md) - 前提条件を更新しました。
+- [Container insights のライブ データ (プレビュー) の設定](containers/container-insights-livedata-setup.md) - Azure US Government で利用できない機能に関する注を削除しました。
 
 ### <a name="insights"></a>洞察
 - [FAQ - Azure の Network Performance Monitor ソリューション](insights/network-performance-monitor-faq.md) - ExpressRoute モニターの FAQ を追加しました。
@@ -495,9 +495,9 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 - [Azure Monitor で Azure アクティビティ ログ イベントを表示する](./essentials/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>仮想マシン
-- [Azure portal で Azure Monitor for VMs を有効にする](./vm/vminsights-enable-portal.md) - Azure Arc を含めるように更新しました。
-- [Azure Monitor for VMs の有効化の概要](vm/vminsights-enable-overview.md) - Azure Arc を含めるように更新しました。
-- [Azure Monitor for VMs とは?](vm/vminsights-overview.md) - Azure Arc を含めるように更新しました。
+- [Azure portal 内で VM insights を有効にする](./vm/vminsights-enable-portal.md) - Azure Arc を含めるように更新しました。
+- [VM insights の有効化の概要](vm/vminsights-enable-overview.md) - Azure Arc を含めるように更新しました。
+- [VM insights とは](vm/vminsights-overview.md) - Azure Arc を含めるように更新しました。
 
 
 ### <a name="visualizations"></a>視覚化
@@ -523,8 +523,8 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 - [Azure Monitor 用の Resource Manager テンプレートのサンプル](/resource-manager-samples.md)
 - [アクション グループ用の Resource Manager テンプレートのサンプル](alerts/resource-manager-action-groups.md)
 - [エージェント用の Resource Manager テンプレートのサンプル](agents/resource-manager-agent.md)
-- [Azure Monitor for containers 用の Resource Manager テンプレートのサンプル](containers/resource-manager-container-insights.md)
-- [Azure Monitor for VMs 用の Resource Manager テンプレートのサンプル](vm/resource-manager-vminsights.md)
+- [Container insights 用の Resource Manager テンプレートのサンプル](containers/resource-manager-container-insights.md)
+- [VM insights 用の Resource Manager テンプレートのサンプル](vm/resource-manager-vminsights.md)
 - [診断設定用の Resource Manager テンプレートのサンプル](essentials/resource-manager-diagnostic-settings.md)
 - [Log Analytics ワークスペース用の Resource Manager テンプレートのサンプル](logs/resource-manager-workspace.md)
 - [ログ クエリ用の Resource Manager テンプレートのサンプル](logs/resource-manager-log-queries.md)
@@ -559,10 +559,10 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 
 
 ### <a name="containers"></a>Containers
-- [Azure Monitor for containers を有効にする方法](containers/container-insights-onboard.md) - ファイアウォール構成テーブルを更新しました。
-- [メトリック用に Azure Monitor for containers を更新する方法](containers/container-insights-update-metrics.md) - メトリックを収集するためにマネージド ID を使用する方法を更新しました。
-- [Azure Monitor for containers の監視コストについて](containers/container-insights-cost.md) - 新しい記事。
-- [Azure Monitor for containers のライブ データ (プレビュー) の設定](containers/container-insights-livedata-setup.md) - 新しいクラスターの役割のバインドのサポート。
+- [Container insights を有効にする方法](containers/container-insights-onboard.md) - ファイアウォール構成テーブルを更新しました。
+- [メトリック用に Container insights を更新する方法](containers/container-insights-update-metrics.md) - メトリックを収集するためにマネージド ID を使用する方法を更新しました。
+- [Container insights の監視コスト](containers/container-insights-cost.md) - 新しい記事。
+- [Container insights のライブ データ (プレビュー) の設定](containers/container-insights-livedata-setup.md) - 新しいクラスターの役割のバインドのサポート。
 
 ### <a name="insights"></a>洞察
 - [Azure Monitor for Azure Cache for Redis (プレビュー)](insights/redis-cache-insights-overview.md) - 新しい記事。
@@ -588,12 +588,12 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 
 
 ### <a name="virtual-machines"></a>仮想マシン
-- [Azure Monitor for VMs の有効化の概要](vm/vminsights-enable-overview.md) - サポートされている Ubuntu Server のバージョンに追加しました。 Log Analytics ワークスペースにサポートされるリージョンを追加しました。
-- [Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法](vm/vminsights-performance.md) - 使用できないメトリックについて制限事項セクションに追加しました。
+- [VM insights の有効化の概要](vm/vminsights-enable-overview.md) - サポートされている Ubuntu Server のバージョンに追加しました。 Log Analytics ワークスペースにサポートされるリージョンを追加しました。
+- [VM insights を使用してパフォーマンスをグラフ化する方法](vm/vminsights-performance.md) - 使用できないメトリックについての制限事項セクションを追加しました。
 
 ### <a name="visualizations"></a>視覚化
 - [Azure Monitor ブックと Azure Resource Manager テンプレート](visualize/workbooks-automate.md) - ブック テンプレートをデプロイするための Resource Manager を追加しました。
-- [Azure Monitor のブック グループ](platform/workbooks-groups.md) - 新しい記事。
+- [Azure Monitor のブック グループ](./visualize/workbooks-groups.md) - 新しい記事。
 - [Azure Monitor ブック - JSONPath を使用して JSON データを変換する](visualize/workbooks-jsonpath.md) - 新しい記事。
 
 
@@ -623,7 +623,7 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 
 ### <a name="containers"></a>Containers
 
-- [Azure Monitor for containers を使用して Azure Red Hat OpenShift v4.x を構成する](containers/container-insights-azure-redhat4-setup.md) - 新しい記事。
+- [Container insights を使用して Azure Red Hat OpenShift v4.x を構成する](containers/container-insights-azure-redhat4-setup.md) - 新しい記事。
 - [ServiceNow の同期に関する問題を手動で修正する方法](alerts/itsmc-resync-servicenow.md) - 新しい記事。
 - [お使いの Azure および Red Hat OpenShift v4 クラスターの監視を停止する方法](containers/container-insights-optout-openshift-v4.md) - 新しい記事。
 - [お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法](containers/container-insights-optout-openshift-v3.md) - 新しい記事。
@@ -671,8 +671,8 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 
 ### <a name="containers"></a>Containers
 
-- [Azure Monitor に関する FAQ](faq.md) - コンテナーに対する Azure Monitor について更新しました。
-- [Azure Monitor for containers で GPU の監視を構成する](containers/container-insights-gpu-monitoring.md) - 新しい記事。
+- [Azure Monitor に関する FAQ](faq.md) - Container insights について更新しました。
+- [Container insights で GPU の監視を構成する](containers/container-insights-gpu-monitoring.md) - 新しい記事。
 
 ### <a name="insights"></a>洞察
 
@@ -696,18 +696,18 @@ Azure Monitor for VMs コンテンツの再構築による新規および更新�
 ### <a name="virtual-machines"></a>仮想マシン
 
 - [Azure Monitor を使用して Azure 仮想マシンを監視する](vm/monitor-vm-azure.md) - 新しい記事。
-- [クイック スタート: Azure Monitor を使用して Azure 仮想マシンを監視する](vm/quick-monitor-azure-vm.md) - Azure Monitor for VMs を追加して更新しました。
-- [Azure Monitor for VMs からのアラートを作成する方法](vm/vminsights-alerts.md) - 新しい記事。
-- [Azure Monitor for VMs の有効化の概要](vm/vminsights-enable-overview.md) - エージェントのダウンロード リンクを更新しました。
+- [クイック スタート: Azure Monitor を使用して Azure 仮想マシンを監視する](vm/quick-monitor-azure-vm.md) - VM insights を追加して更新しました。
+- [VM insights からのアラート](vm/vminsights-alerts.md) - 新しい記事。
+- [VM insights の有効化の概要](vm/vminsights-enable-overview.md) - エージェントのダウンロード リンクを更新しました。
 
-Azure Monitor for VMs の一般提供に関する全般的な更新
+VM insights の一般提供に関する全般的な更新
 
-- [Azure Monitor for VMs とは?](vm/vminsights-overview.md)
-- [Azure Monitor for VMs についてよく寄せられる質問](vm/vminsights-ga-release-faq.md) 
-- [Azure Policy を使用して Azure Monitor for VMs を有効にする](./vm/vminsights-enable-policy.md) 
-- [Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法](vm/vminsights-performance.md)
-- [Azure Monitor for VMs からログを照会する方法](vm/vminsights-log-search.md)
-- [Azure Monitor for VMs を使用してアプリの依存関係を表示する](vm/vminsights-maps.md) 
+- [VM insights とは](vm/vminsights-overview.md)
+- [VM insights (GA) についてよく寄せられる質問](vm/vminsights-ga-release-faq.md) 
+- [Azure Policy を使用して VM insights を有効にする](./vm/vminsights-enable-policy.md) 
+- [VM insights を使用してパフォーマンスをグラフ化する方法](vm/vminsights-performance.md)
+- [VM insights からログを照会する方法](vm/vminsights-log-search.md)
+- [VM insights を使用してアプリの依存関係を表示する](vm/vminsights-maps.md) 
 
 ### <a name="visualizations"></a>視覚化
 
@@ -735,13 +735,13 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 ### <a name="insights-and-solutions"></a>分析情報とソリューション
 
-#### <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
+#### <a name="container-insights"></a>Container insights
 
-- [Azure Active Directory と Azure Kubernetes Service を統合する](../aks/azure-ad-integration-cli.md) - コンテナーの Azure Monitor をサポートするために Kubernetes RBAC 対応クラスターをサポートするクライアント アプリケーションを作成するためのメモを追加しました。
+- [Azure Active Directory と Azure Kubernetes Service を統合する](../aks/azure-ad-integration-cli.md) - Container insights をサポートするために Kubernetes RBAC 対応クラスターをサポートするクライアント アプリケーションの作成に関するメモを追加しました。
 
-#### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
+#### <a name="vm-insights"></a>VM insights
 
-- [Azure Monitor for VMs (GA) についてよく寄せられる質問](vm/vminsights-ga-release-faq.md) - パフォーマンス データの保存方法の変更。
+- [VM insights (GA) についてよく寄せられる質問](vm/vminsights-ga-release-faq.md) - パフォーマンス データの保存方法の変更。
 
 #### <a name="office-365"></a>Office 365
 
@@ -796,20 +796,20 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 ### <a name="insights-and-solutions"></a>分析情報とソリューション
 
-#### <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
+#### <a name="container-insights"></a>Container insights
 
-- [Azure Monitor for containers エージェントのデータ収集を構成する](containers/container-insights-agent-config.md) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
-- [Azure Monitor for containers におけるパフォーマンス アラートを作成する](./containers/container-insights-log-alerts.md) - ワークスペースコンテキストのアラートを使用して、ワークスペースに格納されているパフォーマンス データに関するアラートを作成する方法についての情報を修正し、手順を更新しました。
-- [Azure Monitor for containers での Kubernetes の監視](containers/container-insights-analyze.md) - Windows Kubernetes クラスターのサポートに関する概要記事と分析記事の両方を更新しました。
-- [Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する](containers/container-insights-azure-redhat-setup.md) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
-- [ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する](containers/container-insights-hybrid-setup.md) - Kubelet の cAdvisor を使用した secure port:10250 のサポート追加を反映するために更新しました。
-- [Azure Monitor for containers エージェントを管理する方法](containers/container-insights-manage-agent.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
-- [Azure Monitor for containers の Prometheus 統合を構成する](containers/container-insights-prometheus-integration.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
-- [メトリックのための Azure Monitor for containers の更新方法](containers/container-insights-update-metrics.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
+- [Container insights エージェントのデータ収集を構成する](containers/container-insights-agent-config.md) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
+- [Container insights におけるパフォーマンス アラートを作成する](./containers/container-insights-log-alerts.md) - ワークスペースコンテキストのアラートを使用して、ワークスペースに格納されているパフォーマンス データに関するアラートを作成する方法についての情報を修正し、手順を更新しました。
+- [Container insights での Kubernetes の監視](containers/container-insights-analyze.md) - Windows Kubernetes クラスターのサポートに関する概要記事と分析記事の両方を更新しました。
+- [Azure Red Hat OpenShift クラスターに Container insights を構成する](containers/container-insights-azure-redhat-setup.md) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
+- [ハイブリッド Kubernetes クラスターに Container insights を構成する](containers/container-insights-hybrid-setup.md) - Kubelet の cAdvisor を使用した secure port:10250 のサポート追加を反映するために更新しました。
+- [Container insights エージェントを管理する方法](containers/container-insights-manage-agent.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレイピングの動作と構成に関する詳細情報を更新しました。
+- [Container insights の Prometheus 統合を構成する](containers/container-insights-prometheus-integration.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレイピングの動作と構成に関する詳細情報を更新しました。
+- [メトリックのための Container insights の更新方法](containers/container-insights-update-metrics.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレイピングの動作と構成に関する詳細情報を更新しました。
 
-#### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
+#### <a name="vm-insights"></a>VM insights
 
-- [Azure Monitor for VMs (GA) についてよく寄せられる質問](vm/vminsights-ga-release-faq.md) - ワークスペースとエージェントの新バージョンへのアップグレードに関する情報を追加しました。
+- [VM insights (GA) についてよく寄せられる質問](vm/vminsights-ga-release-faq.md) - ワークスペースとエージェントの新バージョンへのアップグレードに関する情報を追加しました。
 
 #### <a name="office-365"></a>Office 365
 
@@ -860,10 +860,10 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 ### <a name="insights-and-solutions"></a>分析情報とソリューション
 
-- [Azure Monitor for containers についてよく寄せられる質問](./faq.md) - Image フィールドと Name フィールドに関する質問を追加しました。
+- [Container insights についてよく寄せられる質問](./faq.md) - Image フィールドと Name フィールドに関する質問を追加しました。
 - [Azure Monitor の Azure SQL Analytics ソリューション](insights/azure-sql.md) - 「データベース待機」の「マネージド インスタンスのサポート」を更新しました。
-- [Azure Monitor for containers エージェントのデータ収集を構成する](containers/container-insights-agent-config.md) - enrich_container_logs の設定を追加しました。
-- [ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する](containers/container-insights-hybrid-setup.md) - トラブルシューティング セクションを追加しました。
+- [Container insights エージェントのデータ収集を構成する](containers/container-insights-agent-config.md) - enrich_container_logs の設定を追加しました。
+- [ハイブリッド Kubernetes クラスターに Container insights を構成する](containers/container-insights-hybrid-setup.md) - トラブルシューティング セクションを追加しました。
 - [Azure Monitor で Active Directory のレプリケーション状態を監視する](insights/ad-replication-status.md) - .NET Framework の前提条件を更新しました。
 - [Azure の Network Performance Monitor ソリューション](insights/network-performance-monitor.md) - サポートされるリージョンを追加しました。
 - [Azure Monitor で Active Directory 環境を最適化する](insights/ad-assessment.md) - .NET Framework の前提条件を更新しました。

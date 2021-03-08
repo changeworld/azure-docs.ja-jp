@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 1b65191e97402f2fb352c56664dad085c448242c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650628"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>チュートリアル: Azure Active Directory と TalentLMS の統合
 
@@ -170,11 +170,11 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
 
     ![ユーザーの追加](./media/talentlms-tutorial/IC777299.png "ユーザーの追加")  
 
-    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
+    a. **[名]** テキストボックスに、`Britta` のようにユーザーの名を入力します。
 
-    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
+    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では `Simon`)。
  
-    c. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレスを入力します (たとえば、`brittasimon\@contoso.com`)。
+    c. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレスを入力します (たとえば、`brittasimon@contoso.com`)。
 
     d. **[ユーザーの追加]** をクリックします。
 

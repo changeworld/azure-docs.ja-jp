@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/29/2020
+ms.date: 02/24/2021
 ms.author: alkohli
-ms.openlocfilehash: 3497551616b96dc04e2dbdec28d0bf84a11afde0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 13de2b024bf4541c6234dd6bfba601597de59434
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954599"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716229"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスのデプロイ チェックリスト  
 
@@ -30,14 +30,14 @@ ms.locfileid: "98954599"
 |                                   | <li>ポート 1 用の少なくとも 1 本の 1 GbE RJ-45 ネットワーク ケーブル  </li><li> ポート 3、ポート 4、ポート 5、またはポート 6 用の少なくとも 1 本の 25 GbE SFP+ 銅線ケーブル</li>| これらのケーブルはお客様が調達する必要があります。<br>デバイス ネットワーク カードでサポートされているネットワーク ケーブル、スイッチ、トランシーバーの詳細な一覧については、[Cavium FastlinQ 41000 シリーズの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)および [Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)に関するドキュメントを参照してください。| 
 | 初回のデバイス接続      | <li>IPv4 設定を変更できるラップトップ。 このラップトップは、スイッチまたは USB イーサネット アダプターを介してポート 1 に接続します。  </li><!--<li> A minimum of 1 GbE switch must be used for the device once the initial setup is complete. The local web UI will not be accessible if the connected switch is not at least 1 Gbe.</li>-->|   |
 | デバイスへのサインイン                      | デバイス管理者のパスワード。8 から 16 文字で、大文字、小文字、数字、特殊文字のうち、3 種類を含みます。                                            | 既定のパスワードは *Password1* であり、最初のサインイン時に有効期限が切れます。                                                     |
-| ネットワークの設定                  | デバイスには、2 x 1 GbE、4 x 25 GbE ネットワーク ポートが付属しています。 <li>ポート 1 は、管理設定の構成にのみ使用されます。 1 つ以上のデータ ポートを接続して構成できます。 </li><li> 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2 からポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。</li><li> DHCP と静的 IPv4 構成がサポートされています。 | 静的 IPv4 構成には、IP、DNS サーバーと既定のゲートウェイが必要です。   |
+| ネットワーク設定                  | デバイスには、2 x 1-GbE、4 x 25-GbE ネットワーク ポートが付属しています。 <li>ポート 1 は、管理設定の構成にのみ使用されます。 1 つ以上のデータ ポートを接続して構成できます。 </li><li> 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2 からポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。</li><li> DHCP と静的 IPv4 構成がサポートされています。 | 静的 IPv4 構成には、IP、DNS サーバーと既定のゲートウェイが必要です。   |
 | ネットワーク設定を計算する     | <li>Kubernetes ノード用に 2 つの連続した静的空き IP と、IoT Edge サービス用に 1 つの静的 IP が必要です。</li><li>デプロイする追加のサービスまたはモジュールごとに、追加の IP が 1 つ必要です。</li>| 静的 IPv4 構成のみがサポートされています。|
-| (省略可能) Web プロキシ設定     | <li>Web プロキシ サーバーの IP または FQDN、ポート </li><li>Web プロキシのユーザー名、パスワード</li> | Web プロキシはコンピューティング設定ではサポートされていません。 |
+| (省略可能) Web プロキシ設定     | <li>Web プロキシ サーバーの IP または FQDN、ポート </li><li>Web プロキシのユーザー名、パスワード</li> |  |
 | ファイアウォールとポートの設定        | ファイアウォールを使用している場合は、[一覧にある URL パターンとポート](azure-stack-edge-system-requirements.md#networking-port-requirements)がデバイスの IP で許可されるようにします。 |  |
 | (推奨) 時間設定       | タイム ゾーン、プライマリ NTP サーバー、セカンダリ NTP サーバーを構成します。 | ローカル ネットワークでプライマリおよびセカンダリ NTP サーバーを構成します。<br>ローカル サーバーを使用できない場合は、パブリック NTP サーバーを構成できます。                                                    |
 | (省略可能) サーバー設定を更新する | <li>ローカル ネットワーク上の更新サーバーの IP アドレス、WSUS サーバーへのパスが必要です。 </li> | 既定では、パブリック Windows 更新サーバーが使用されます。|
 | デバイスの設定 | <li>デバイスの完全修飾ドメイン名 (FQDN) </li><li>DNS ドメイン</li> | |
-| (省略可能) 証明書  | 非運用環境のワークロードをテストするには、[[証明書の生成] オプション](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates)を使用します <br><br> 署名チェーンを含む独自の証明書を持ち込む場合は、適切な形式の[証明書を追加](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)します。| デバイス名または DNS ドメインを変更する場合にのみ、証明書を構成します。 |
+| (省略可能) 証明書  | 非運用環境のワークロードをテストするには、[[証明書の生成] オプション](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates)を使用します <br><br> 署名チェーンを含む独自の証明書を持ち込む場合は、適切な形式の[証明書を追加](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)します。| デバイス名または DNS ドメイン、あるいはその両方を変更する場合にのみ、証明書を構成します。 |
 | アクティベーション  | Azure Stack Edge Pro および Data Box Gateway リソースのアクティブ化キーが必要です。    | 生成されたキーは 3 日後に有効期限が切れます。 |
 
 <!--

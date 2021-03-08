@@ -1,33 +1,32 @@
 ---
-title: PowerShell を使用して Azure Monitor for VMs を有効にする
-description: Azure PowerShell を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
-ms.subservice: ''
+title: PowerShell を使用して VM insights を有効にする
+description: Azure PowerShell を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで VM insights を有効にする方法について説明します。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 83b17e021ce8003b5dbd279886edfdc199f58ce3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b51a49abda76a4d1433336cf73dc9a0dd6e40787
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604282"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031873"
 ---
-# <a name="enable-azure-monitor-for-vms-using-powershell"></a>PowerShell を使用して Azure Monitor for VMs を有効にする
-この記事では、PowerShell を使用して、Azure 仮想マシンで Azure Monitor for VMs を有効にする方法について説明します。 この手順は、次に対して使用できます。
+# <a name="enable-vm-insights-using-powershell"></a>PowerShell を使用して VM insights を有効にする
+この記事では、PowerShell を使用して、Azure 仮想マシン上で VM insights を有効にする方法について説明します。 この手順は、次に対して使用できます。
 
 - Azure 仮想マシン
 - Azure 仮想マシン スケール セット
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Log Analytics ワークスペースを作成して構成](../insights/vminsights-configure-workspace.md)します。
-- 「[サポートされるオペレーティング システム](../insights/vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
+- [Log Analytics ワークスペースを作成して構成](./vminsights-configure-workspace.md)します。
+- 「[サポートされるオペレーティング システム](./vminsights-enable-overview.md#supported-operating-systems)」を参照して、有効にする仮想マシンまたは仮想マシン スケール セットのオペレーティング システムがサポートされていることを確認してください。 
 
 
 ## <a name="powershell-script"></a>PowerShell スクリプト
 
-複数の VM または仮想マシン スケール セットで Azure Monitor for VMs を有効にするには、Azure PowerShell ギャラリーから入手できる PowerShell スクリプトの [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights) を使用します。 このスクリプトでは以下について反復処理が実行されます。
+複数の VM または仮想マシン スケール セットで VM insights を有効にするには、Azure PowerShell ギャラリーから入手できる PowerShell スクリプトの [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights) を使用します。 このスクリプトでは以下について反復処理が実行されます。
 
 - サブスクリプションに設定されているすべての仮想マシンと仮想マシン スケール セット。
 - *ResourceGroup* で指定されたスコープ付きリソース グループ。
@@ -139,7 +138,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-次の例では、フォルダー内で PowerShell コマンドを使用して Azure Monitor for VMs を有効化して、想定される出力を解釈する方法を示しています。
+次の例では、フォルダー内で PowerShell コマンドを使用して VM insights を有効化して、想定される出力を解釈する方法を示しています。
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -190,5 +189,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>次のステップ
 
-* 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの使用](vminsights-maps.md)に関するページを参照してください。 
+* 検出されたアプリケーションの依存関係を表示するには、[VM insights マップの使用](vminsights-maps.md)に関する記事をご覧ください。 
 * ボトルネック、全体的な使用率、VM のパフォーマンスを識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。

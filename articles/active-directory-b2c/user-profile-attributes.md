@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675748"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688554"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -39,7 +39,7 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 - 属性をユーザー フローで使用できるかどうか
 - 属性をカスタム ポリシーの [Azure AD 技術プロファイル](active-directory-technical-profile.md)で使用できるかどうか、およびどのセクション (&lt;InputClaims&gt;、&lt;OutputClaims&gt;、または &lt;PersistedClaims&gt;) で使用できるか
 
-|名前     |Type     |説明|Azure portal|ユーザー フロー|カスタム ポリシー|
+|名前     |種類     |説明|Azure portal|ユーザー フロー|カスタム ポリシー|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boolean|ユーザー アカウントが有効か無効か: アカウントが有効の場合は **true**、それ以外の場合は **false**。|はい|いいえ|Persisted、Output|
 |ageGroup        |String|ユーザーの年齢グループ。 指定できる値: null、Undefined、Minor、Adult、NotAdult。|はい|いいえ|Persisted、Output|
@@ -105,7 +105,7 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 
 Microsoft Graph API では、ローカル ID とフェデレーション ID の両方が、[objectIdentity][graph-objectIdentity] 型のユーザー `identities` 属性に格納されます。 `identities` コレクションは、ユーザー アカウントへのサインインに使用される一連の ID を表します。 このコレクションにより、ユーザーは、関連付けられた任意の ID を使用してユーザー アカウントにサインインできます。
 
-| 名前   | Type |説明|
+| 名前   | 種類 |説明|
 |:---------------|:--------|:----------|
 |signInType|string| お使いのディレクトリ内のユーザー サインインの種類を指定します。 ローカル アカウントの場合: `emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`、または他の任意の種類。 ソーシャル アカウントは `federated` に設定する必要があります。|
 |発行者|string|ID の発行者を指定します。 ローカル アカウント (**signInType** が `federated` でない) の場合、このプロパティは、ローカル B2C テナントの既定のドメイン名 (`contoso.onmicrosoft.com` など) になります。 ソーシャル ID (**signInType** が `federated`) の場合、値は発行者の名前 (`facebook.com` など) になります。|
@@ -137,7 +137,7 @@ Microsoft Graph API では、ローカル ID とフェデレーション ID の�
 
 ## <a name="password-profile-property"></a>パスワード プロファイル プロパティ
 
-ローカル ID の場合、**passwordProfile** 属性が必須であり、これにはユーザーのパスワードが含まれています。 `forceChangePasswordNextSignIn` 属性は `false` に設定する必要があります。
+ローカル ID の場合、**passwordProfile** 属性が必須であり、これにはユーザーのパスワードが含まれています。 `forceChangePasswordNextSignIn` 属性は、ユーザーが次回サインイン時にパスワードをリセットする必要があるかどうかを示します。 パスワードの強制リセットを処理するには、[パスワードの強制リセット フローを設定します](force-password-reset.md)。
 
 フェデレーション (ソーシャル) ID の場合、**passwordProfile** 属性は必須ではありません。
 

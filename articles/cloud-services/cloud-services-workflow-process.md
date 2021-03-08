@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: bda066dd50d2f95776981eafc01e3ddd04d33e54
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 606510940460db963a2aa63deb57b6dba77de3ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741062"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700135"
 ---
 # <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure クラシック VM のアーキテクチャのワークフロー 
 
@@ -80,7 +80,7 @@ ms.locfileid: "98741062"
 5. WindowsAzureGuestAgent によって、ゲスト OS (ファイアウォール、ACL、LocalStorage など) が設定され、新しい XML 構成ファイルが c:\Config にコピーされてから、WaHostBootstrapper プロセスが開始されます。
 6. 完全な IIS Web ロールの場合、WaHostBootstrapper によって IISConfigurator が開始され、Web ロールの既存の AppPool を IIS から削除するように指示されます。
 7. WaHostBootstrapper によって、**スタートアップ** タスクが E:\RoleModel.xml から読み取られて、スタートアップ タスクの実行が開始されます。 WaHostBootstrapper は、すべての簡易スタートアップ タスクが完了して、"成功" メッセージが返されるまで待機します。
-8. 完全な IIS Web ロールの場合、WaHostBootstrapper は、IIS AppPool を構成するよう IISConfigurator に指示し、サイトに `E:\Sitesroot\<index>` を示します。`<index>` は、サービスに対して定義されている `<Sites>` 要素の数に対する 0 から始まるインデックスです。
+8. 完全な IIS Web ロールの場合、WaHostBootstrapper によって、IIS AppPool を構成してサイトで `E:\Sitesroot\<index>` をポイントすることを指示する通知が IISConfigurator に送られます。`<index>` は、サービスに対して定義されている `<Sites>` 要素の 0 から始まるインデックスの番号です。
 9. WaHostBootstrapper によって、ロールの種類に応じたホスト プロセスが開始されます。
     1. **worker ロール**: WaWorkerHost.exe が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、WaHostBootstrapper によって Run() メソッドの実行が開始されるのと同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます (InputEndpoints が定義されている場合)。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
     2. **完全な IIS Web ロール**: aIISHost が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、Run() メソッドの実行が開始され、同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。

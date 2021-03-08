@@ -1,24 +1,24 @@
 ---
-title: Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする
-description: サブスクリプションで Azure Monitor for VMs のゲストの正常性を有効にする方法と、VM をオンボードする方法について説明します。
+title: VM insights のゲストの正常性 (プレビュー) を有効にする
+description: サブスクリプションで VM insights のゲストの正常性を有効にする方法と、VM をオンボードする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5a65a986e95f333b6179c71a46edc69ca61acdea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3747e9190010bd3c0b88dfdbe9da01009316c275
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733722"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする
-Azure Monitor for VMs のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
+# <a name="enable-vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー) を有効にする
+VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
 
 ## <a name="current-limitations"></a>現在の制限
-Azure Monitor for VMs のゲストの正常性には、パブリック プレビュー段階では次の制限があります。
+VM insights のゲストの正常性には、パブリック プレビュー段階では次の制限があります。
 
 - 現在、Azure 仮想マシンのみがサポートされています。 Azure Arc for servers は現在サポートされていません。
 
@@ -36,19 +36,25 @@ Azure Monitor for VMs のゲストの正常性には、パブリック プレビ
 - オーストラリア中部
 - オーストラリア東部
 - オーストラリア南東部
+- カナダ中部
 - インド中部
 - 米国中部
 - 東アジア
 - 米国東部
 - 米国東部 2
 - 米国東部 2 EUAP
+- フランス中部
 - ドイツ中西部
 - 東日本
+- 韓国中部
 - 米国中北部
 - 北ヨーロッパ
 - 米国中南部
+- 南アフリカ北部
 - 東南アジア
+- スイス北部
 - 英国南部
+- 英国西部
 - 米国中西部
 - 西ヨーロッパ
 - 米国西部
@@ -57,24 +63,36 @@ Azure Monitor for VMs のゲストの正常性には、パブリック プレビ
 
 Log Analytics ワークスペースは、次のいずれかのリージョンに配置されている必要があります。
 
+- オーストラリア中部
+- オーストラリア東部
+- オーストラリア南東部
+- カナダ中部
+- カナダ インド
 - 米国中部
+- 東アジア
 - 米国東部
 - 米国東部 2
 - 米国東部 2 EUAP
+- フランス中部
+- 東日本
+- 米国中北部
 - 北ヨーロッパ
+- 米国中南部
 - 東南アジア
+- スイス北部
 - 英国南部
 - 西ヨーロッパ リージョン
+- 米国西部
 - 米国西部 2
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Monitor for VMs に仮想マシンをオンボードする必要があります。
+- VM insights に仮想マシンをオンボードする必要があります。
 - オンボード手順を実行するユーザーには、仮想マシンとデータ収集ルールが配置されているサブスクリプションに対する共同作成者レベルの最小限のアクセス権が必要です。
 - 次のセクションで説明されているように、必要な Azure リソース プロバイダーを登録する必要があります。
 
 ## <a name="register-required-azure-resource-providers"></a>必要な Azure リソース プロバイダーを登録する
-Azure Monitor for VMs のゲストの正常性を有効にするには、次の Azure リソース プロバイダーを対象のサブスクリプションに登録する必要があります。 
+VM insights のゲストの正常性を有効にするには、次の Azure リソース プロバイダーを対象のサブスクリプションに登録する必要があります。 
 
 - Microsoft.WorkloadMonitor
 - Microsoft.Insights
@@ -90,7 +108,7 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 ## <a name="enable-a-virtual-machine-using-the-azure-portal"></a>Azure portal を使用して仮想マシンを有効にする
 Azure portal で仮想マシンのゲストの正常性を有効にすると、必要な構成がすべて自動的に実行されます。 これには、必要なデータ収集ルールの作成、仮想マシンへのゲストの正常性拡張機能のインストール、およびデータ収集ルールとの関連付けの作成が含まれます。
 
-Azure Monitor for VMs の **[作業の開始]** ビューで、仮想マシンのアップグレード メッセージの横にあるリンクをクリックし、 **[アップグレード]** ボタンをクリックします。 複数の仮想マシンを選択して、それらをまとめてアップグレードすることもできます。
+VM insights の **[作業の開始]** ビューで、仮想マシンのアップグレード メッセージの横にあるリンクをクリックし、 **[アップグレード]** ボタンをクリックします。 複数の仮想マシンを選択して、それらをまとめてアップグレードすることもできます。
 
 ![仮想マシンで正常性機能を有効にする](media/vminsights-health-enable/enable-agent.png)
 
@@ -107,10 +125,10 @@ Azure Resource Manager を使用して仮想マシンを有効にするには、
 > [!NOTE]
 > Azure portal を使用して仮想マシンを有効にすると、ここで説明されているデータ収集ルールが自動的に作成されます。 この場合、この手順を実行する必要はありません。
 
-Azure Monitor for VMs のゲストの正常性でのモニターの構成は、[データ収集ルール (DCR)](../agents/data-collection-rule-overview.md) に格納されます。 ゲストの正常性拡張機能を備えた各仮想マシンには、このルールとの関連付けが必要です。
+VM insights のゲストの正常性でのモニターの構成は、[データ収集ルール (DCR)](../agents/data-collection-rule-overview.md) に格納されます。 ゲストの正常性拡張機能を備えた各仮想マシンには、このルールとの関連付けが必要です。
 
 > [!NOTE]
-> 「[Azure Monitor for VMs のゲストの正常性 (プレビュー) で監視を構成する](vminsights-health-configure.md)」の説明に従って、追加のデータ収集ルールを作成して、モニターの既定の構成を変更することができます。
+> 「[VM insights のゲストの正常性 (プレビュー) での監視を構成する](vminsights-health-configure.md)」の説明に従って、追加のデータ収集ルールを作成して、モニターの既定の構成を変更することができます。
 
 このテンプレートには、次のパラメーターの値が必要です。
 
@@ -414,4 +432,4 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor for VMs によって有効化されたモニターをカスタマイズする](vminsights-health-configure.md)
+- [VM insights で有効化されるモニターをカスタマイズする](vminsights-health-configure.md)

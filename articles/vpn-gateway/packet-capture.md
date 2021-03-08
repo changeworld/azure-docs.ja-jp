@@ -2,17 +2,17 @@
 title: Azure VPN Gateway:パケット キャプチャを構成する
 description: VPN ゲートウェイで使用でき、問題の原因を絞り込むのに役立つパケット キャプチャ機能について説明します。
 services: vpn-gateway
-author: radwiv
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/2/2020
-ms.author: radwiv
-ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.date: 02/22/2021
+ms.author: alzam
+ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733808"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726616"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>VPN ゲートウェイのパケット キャプチャを構成する
 
@@ -27,6 +27,7 @@ VPN Gateway パケット キャプチャは、必要に応じて、ゲートウ�
 大量のトラフィック上の問題を特定するときに、5 タプルのフィルター (ソース サブネット、宛先サブネット、発信元ポート、接続先ポート、プロトコル) と TCP フラグ (SYN、ACK、FIN、URG、PSH、RST) を使用すると便利です。
 
 次の JSON と JSON スキーマの例では、各プロパティについて説明しています。 以下に、パケット キャプチャを実行するときに注意すべき制限事項をいくつか示します。
+
 - ここに示されているスキーマでは、フィルターは配列ですが、現在使用できるフィルターは一度に 1 つのみです。
 - ゲートウェイ全体のパケット キャプチャを同時に複数実行することはできません。
 - 1 つの接続で複数のパケット キャプチャを同時に実行することはできません。 異なる接続で複数のパケット キャプチャを同時に実行することはできます。
@@ -317,7 +318,13 @@ VPN Gateway パケット キャプチャは、必要に応じて、ゲートウ�
 }
 ```
 
-## <a name="set-up-packet-capture-by-using-powershell"></a>PowerShell を使用したパケット キャプチャの設定
+## <a name="packet-capture---portal"></a>パケット キャプチャ - ポータル
+
+Azure portal でパケット キャプチャを設定できます。
+
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="ポータルでのパケット キャプチャのスクリーンショット。" lightbox="./media/packet-capture/portal.jpg":::
+
+## <a name="packet-capture---powershell"></a>パケット キャプチャ - PowerShell
 
 次の例は、パケット キャプチャを開始および停止する PowerShell コマンドを示しています。 パラメーター オプションの詳細については、「[AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)」を参照してください。
 

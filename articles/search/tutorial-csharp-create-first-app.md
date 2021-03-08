@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/26/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791680"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695126"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して最初の検索アプリを作成する
 
@@ -49,9 +49,11 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、要求のクエリ文字列を収集して結果を返す検索ページの作成に集中できるように、ホストされている既存のサンプル インデックスを使用します。 インデックスには、架空のホテルのデータが含まれています。 基本的なページができた後は、以降のレッスンでページング、ファセット、および入力候補を提示する機能を追加し、ページを強化できます。
+このチュートリアルでは、[データのインポートに関するクイックスタート](search-get-started-portal.md)の手順を実行して独自の検索サービスにすばやく作成できる hotels-sample-index を使用します。 このインデックスには、すべての検索サービスで組み込みのデータ ソースとして使用できる架空のホテル データが含まれています。
 
-このチュートリアルのコードの完成版は、次のプロジェクトにあります。
+このチュートリアルの最初のレッスンでは基本的なクエリ構造および検索ページを作成し、以降のレッスンではページング、ファセット、入力候補を提示する機能を追加してそのページを強化します。
+
+このコードの完成版は、次のプロジェクトにあります。
 
 * [1-basic-search-page (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
@@ -59,7 +61,9 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 ## <a name="prerequisites"></a>前提条件
 
-Microsoft がホストするパブリック サンプル検索インデックスを使用しているため、このチュートリアルには検索サービスや Azure アカウントは必要ありません。
+* 検索サービスを[作成](search-create-service-portal.md)するか、[既存の検索サービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。
+
+* [検索インデックスの作成に関するクイックスタート](search-get-started-portal.md)の手順を使用して、hotels-sample-index を作成します。
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
@@ -103,12 +107,12 @@ Microsoft がホストするパブリック サンプル検索インデックス
 
 このサンプルでは、一般に公開されているホテルのデータを使用します。 このデータは、架空のホテル名と説明を含む 50 個の無作為なコレクションで、デモ データを提供するためにのみ作成されたものです。 このデータにアクセスするには、名前と API キーを指定します。
 
-1. **appsettings.json** を開き、既定の行を次の名前とキーに置き換えます。 ここに示す API キーはキーの例ではありません。API キーは、ホテルのデータにアクセスするために必要になる *正確な* キーです。 ファイルは次のようになります。
+1. **appsettings.json** を開き、既定の行を検索サービスの URL (`https://<service-name>.search.windows.net` 形式) と、検索サービスの[管理者またはクエリ API キー](search-security-api-keys.md)に置き換えます。 インデックスを作成または更新する必要がないため、このチュートリアルではクエリ キーを使用できます。
 
     ```csharp
     {
-        "SearchServiceName": "azs-playground",
-        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+        "SearchServiceName": "<YOUR-SEARCH-SERVICE-URI>",
+        "SearchServiceQueryApiKey": "<YOUR-SEARCH-SERVICE-API-KEY>"
     }
     ```
 

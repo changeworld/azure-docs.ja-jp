@@ -3,12 +3,12 @@ title: Azure VMware Solution での NSX ネットワークコンポーネント�
 description: Azure VMware Solution コンソールを使用して、NSX-T ネットワーク セグメントを構成する方法について説明します。
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: dbed29fb1063b78386f9ec1e2ee00d9c685a944e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416807"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716990"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Azure VMware Solution での NSX ネットワークコンポーネントの構成
 
@@ -36,13 +36,9 @@ Azure portal の Azure VMware Solution コンソールから、NSX-T セグメ�
 >[!NOTE]
 >DHCP の使用を計画している場合は、NSX-T セグメントを作成して構成する前に、[DHCP サーバーまたは DHCP リレーを構成](#create-a-dhcp-server-or-dhcp-relay-in-the-azure-portal)する必要があります。
 
-1. Azure VMware Solution プライベート クラウドで、 **[ワークロード ネットワーク]** の下にある **[セグメント]**  >  **[追加]** を選択します。
+1. Azure VMware Solution プライベート クラウドで、 **[ワークロード ネットワーク]** の下にある **[セグメント]**  >  **[追加]** を選択します。 新しい論理セグメントの詳細を指定し、 **[OK]** を選択します。
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/add-new-nsxt-segment.png" alt-text="新しいセグメントを追加する方法を示すスクリーンショット。":::
-
-1. 新しい論理セグメントの詳細を指定します。
-
-   :::image type="content" source="media/configure-nsx-network-components-azure-portal/create-new-segment-details.png" alt-text="新しいセグメントの詳細を示すスクリーンショット。":::
    
    - **[セグメント名]** - vCenter に表示される論理スイッチの名前。
    - **[サブネット ゲートウェイ]** - 論理スイッチのサブネットのゲートウェイ IP アドレスとサブネット マスク。 VM は論理スイッチに接続され、このスイッチに接続されているすべての VM は同じサブネットに属しています。  また、この論理セグメントに接続されているすべての VM は、同じセグメントの IP アドレスを持つ必要があります。
@@ -50,8 +46,6 @@ Azure portal の Azure VMware Solution コンソールから、NSX-T セグメ�
    - **[接続されているゲートウェイ]**  - *既定で選択され、読み取り専用です。*  Tier-1 ゲートウェイとセグメント情報の種類。 
       - **[T1]** - NSX-T Manager の Tier-1 ゲートウェイの名前。 Azure VMware Solution には、アクティブ/アクティブ モードでは NSX-T Tier-0 ゲートウェイが、アクティブ/スタンバイ モードでは既定の NSX-T Tier-1 ゲートウェイが用意されています。  Azure VMware Solution コンソールを使用して作成されたセグメントは、既定の Tier-1 ゲートウェイにのみ接続し、これらのセグメントのワークロードは East-West および North-South 接続を取得します。 NSX-T Manager を通じてのみ、より多くの Tier-1 ゲートウェイを作成できます。 NSX-T Manager コンソールから作成された Tier-1 ゲートウェイは、Azure VMware Solution コンソールには表示されません。 
       - **[種類]** -Azure VMware Solution でサポートされるオーバーレイ セグメント。
-
-1. **[OK]** を選択してセグメントを作成し、それを Tier-1 ゲートウェイに接続します。 
 
    このセグメントは、Azure VMware Solution コンソール、NSX-T Manager、および vCenter に表示されるようになりました。
 
@@ -157,24 +151,12 @@ DNS クエリをアップストリーム サーバーに送信するように、
 
 ### <a name="step-2-configure-dns-service"></a>手順 2. DNS サービスを構成する
 
-1. **[DNS サービス]** タブを選択し、 **[追加]** を選択して、次の情報を入力します。
+1. **[DNS サービス]** タブを選択し、 **[追加]** を選択します。 詳細を入力して、 **[OK]** を選択します。
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/nsxt-workload-networking-configure-dns-service.png" alt-text="DNS サービスに必要な情報を示すスクリーンショット。":::
 
-   1. DNS サービスの名前。
-
-   1. DNS サービスの IP アドレスを入力します。
-
-   1. [DNS ゾーン] タブで作成した既定の DNS ゾーンを選択します。
-
-   1. [DNS ゾーン] タブで追加した FQDN ゾーンを選択します。
-
-   1. **[ログ レベル]** を選択します。
-
    >[!TIP]
    >既定では **[Tier-1 ゲートウェイ]** が選択され、Azure VMware Solution をデプロイするときに作成されたゲートウェイが反映されます。
-
-1. **[OK]** を選択します。 
 
    DNS サービスが正常に追加されました。
 

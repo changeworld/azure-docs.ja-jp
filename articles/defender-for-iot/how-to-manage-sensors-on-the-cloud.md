@@ -1,20 +1,20 @@
 ---
-title: Defender for IoT ポータルでセンサーをオンボードして管理する
+title: Defender for IoT ポータルでセンサーとサブスクリプションをオンボードして管理する
 description: Defender for IoT ポータルでセンサーのオンボード、表示、管理を行う方法について説明します。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/27/2020
+ms.date: 2/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 63b3b450e289b40aa9acbfb0d5170e8eb57f9e58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526865"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733263"
 ---
-# <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Defender for IoT ポータルでセンサーをオンボードして管理する
+# <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Defender for IoT ポータルでセンサーとサブスクリプションをオンボードして管理する
 
 この記事では、[Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)でセンサーのオンボード、表示、管理を行う方法について説明します。
 
@@ -78,8 +78,8 @@ ms.locfileid: "100526865"
 
 編集するには、次の操作を行います。
 
-1. 編集するセンサーの省略記号 ( **[...]** ) を右クリックします。
-1. [編集] を選択します。
+1. 編集するセンサーの **省略記号** **[...]** を選択します。
+1. **[Edit]\(編集\)** を選択します。
 1. センサー ゾーンを更新するか、新しいゾーンを作成します。
 
 ### <a name="delete-a-sensor"></a>センサーを削除する
@@ -122,6 +122,24 @@ ms.locfileid: "100526865"
 8. **[アップロード]** を選択し、[センサーのオンボード] ページで保存したファイルを選択します。
 
 9. **[アクティブ化]** を選びます。
+
+## <a name="offboard-a-subscription"></a>サブスクリプションをオフボードする
+
+サブスクリプションは月単位で管理されます。 サブスクリプションをオフボードすると、そのサブスクリプションについては月末まで請求されます。 
+
+サブスクリプションをオフボードする前に、サブスクリプションに関連付けられているすべてのセンサーをアンインストールします。 センサーを削除する方法の詳細については、「[センサーを削除する](#delete-a-sensor)」を参照してください。 
+
+サブスクリプションをオフボードするには:
+
+1. **[価格]** ページに移動します。
+1. サブスクリプションを選択してから、**削除** アイコン :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false"::: を選択します。
+1. 確認のポップアップで、サブスクリプションに関連付けられているすべてのセンサーを削除したことを確認するチェック ボックスをオンにします。
+
+    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="チェック ボックスをオンにし、[オフボード] を選択してセンサーをオフボードする。":::
+
+1. **[オフボード]** ボタンを選択します。 
+
+オンプレミスの環境は影響を受けませんが、オンプレミスの環境からセンサーをアンインストールするか、センサーを別のサブスクリプションに割り当て直して、関連するデータがオンプレミスの管理コンソールに流れないようにする必要があります。 
 
 ## <a name="see-also"></a>関連項目
 

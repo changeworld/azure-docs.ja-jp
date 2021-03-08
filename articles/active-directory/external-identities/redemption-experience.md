@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: df867059a7d4020952f71ca8d663a644ee2428fd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649319"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199630"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -35,6 +34,7 @@ ms.locfileid: "101649319"
 ![共通のエンドポイントへのサインイン](media/redemption-experience/common-endpoint-flow-small.png)
 
 その後、ユーザーはテナント エンドポイントにリダイレクトされます。このエンドポイントでは、メール アドレスを使用してサインインするか、構成済みの ID プロバイダーを選択することができます。
+
 ## <a name="redemption-through-a-direct-link"></a>直接リンクによる利用
 
 招待メールまたはアプリケーションの共通 URL の代わりに、アプリまたはポータルへの直接リンクをゲストに提供することができます。 まず、[Azure portal](./b2b-quickstart-add-guest-users-portal.md) または [PowerShell](./b2b-quickstart-invite-powershell.md) を介して、ゲスト ユーザーをディレクトリに追加する必要があります。 その後、直接サインオン リンクを含む、[ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法](../manage-apps/end-user-experiences.md)のいずれかを使用できます。 ゲストには、招待メールではなく直接リンクを使用する際にも、初回の同意エクスペリエンスが示されます。
@@ -73,7 +73,7 @@ ms.locfileid: "101649319"
 
 3. 管理者が [Google フェデレーション](./google-federation.md)を有効にしている場合、Azure AD では、ユーザーのドメイン サフィックスが gmail.com か googlemail.com であるかどうかが確認され、ユーザーが Google にリダイレクトされます。
 
-4. 引き換えプロセスでは、ユーザーに個人用の [Microsoft アカウント (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) が既に与えられているかどうかが確認されます。
+4. 引き換えプロセスでは、Just-In-Time (JIT) 引き換えの場合、ユーザーに既存の個人用 [Microsoft アカウント (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) があるかどうかが確認されます (ただし、招待メール リンクの引き換えの場合は除外)。 ユーザーに既存の MSA がある場合は、既存の MSA でサインインします。
 
 5. ユーザーの **ホーム ディレクトリ** が確認されると、ユーザーはサインインするため、それに対応する ID プロバイダーの元に送られます。  
 

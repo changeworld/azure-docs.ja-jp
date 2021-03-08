@@ -1,20 +1,20 @@
 ---
-title: Azure Monitor for VMs のゲストの正常性 (プレビュー) で監視を構成する
-description: Azure portal を使用して Azure Monitor for VMs のゲストの正常性 (プレビュー) の既定の監視を変更する方法について説明します。
+title: VM insights のゲストの正常性 (プレビュー) で監視を構成する
+description: Azure portal を使用して VM insights のゲストの正常性 (プレビュー) の既定の監視を変更する方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8c15a44fc086c9c686e75879b3086436ea327560
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604607"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719595"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー) で監視を構成する
-Azure Monitor for VMs のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、Azure portal を使用して既定の監視を変更する方法について説明します。 また、[データ収集ルールを使用した監視の構成](vminsights-health-configure-dcr.md)に必要なモニターの基本的な概念についても説明します。
+# <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー) で監視を構成する
+VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、Azure portal を使用して既定の監視を変更する方法について説明します。 また、[データ収集ルールを使用した監視の構成](vminsights-health-configure-dcr.md)に必要なモニターの基本的な概念についても説明します。
 
 ## <a name="open-monitor-configuration"></a>モニター構成を開く
 Azure portal で、モニターを選択してから **[構成]** タブを選択して、モニター構成を開きます。

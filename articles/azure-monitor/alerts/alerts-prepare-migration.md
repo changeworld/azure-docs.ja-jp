@@ -4,22 +4,21 @@ description: 自主的な移行の準備のために、Webhook、ロジック �
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
-ms.subservice: alerts
-ms.openlocfilehash: 1d6fc8e4b9baecf02531fc1baa617b87a9d3255c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: ce61c3539a4ea29cbeb48c379ed143363500701e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600707"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038018"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>クラシック アラート ルールの移行のためにロジック アプリと Runbook を準備する
 
 > [!NOTE]
-> [以前発表した](../platform/monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートがパブリック クラウド ユーザーで廃止されましたが、新しいアラートがまだサポートされていないリソースについては、引き続き制限付きで使用できます。 これらのアラートの提供終了日はさらに延長されています。 間もなく新しい日付が発表されます。
+> [以前発表した](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートがパブリック クラウド ユーザーで廃止されましたが、**2021 年 5 月 31** 日までは、引き続き制限付きで使用できます。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
 >
 
-お使いのクラシック アラート ルールを新しいアラート ルールに自主的に移行する場合は、2 つのシステムの間に違いがいくつか存在することに注意してください。 この記事では、その相違点と、変更に備える方法について説明します。
+お使いのクラシック アラート ルールを新しいアラート ルールに自主的に移行する場合は、2 つのシステムの間に違いがいくつか存在します。 この記事では、その相違点と、変更に備える方法について説明します。
 
 ## <a name="api-changes"></a>API の変更
 
@@ -36,7 +35,7 @@ ms.locfileid: "100600707"
 
 ## <a name="notification-payload-changes"></a>通知ペイロードの変更
 
-通知ペイロードの形式は、[クラシック アラート ルール](../platform/alerts-webhooks.md)と[新しいメトリック アラート](alerts-metric-near-real-time.md#payload-schema)の間でわずかに異なります。 クラシック アラート ルールによってトリガーされる Webhook、ロジック アプリ、または Runbook のアクションがある場合は、新しいメトリック アラートのペイロード形式を受け入れるようにこれらの通知エンドポイントを更新する必要があります。
+通知ペイロードの形式は、[クラシック アラート ルール](alerts-webhooks.md)と[新しいメトリック アラート](alerts-metric-near-real-time.md#payload-schema)の間でわずかに異なります。 Webhook、ロジック アプリ、または Runbook アクションを含むクラシック アラート ルールがある場合は、新しいペイロード形式を受け入れるようにターゲットを更新する必要があります。
 
 次の表は、クラシック形式の Webhook ペイロード フィールドを新しい形式にマッピングするときに使用します。
 
@@ -153,13 +152,13 @@ else {
 
 ## <a name="partner-integration-via-webhooks"></a>Webhook を介したパートナー統合
 
-[クラシック アラートと統合しているパートナー](../platform/partners.md)の大半は、統合によって、新しいメトリック アラートを既にサポートしています。 新しいメトリック アラートで既に機能する既知の統合を次に示します。
+[クラシック アラートと統合しているパートナー](../partners.md)の大半は、統合によって、新しいメトリック アラートを既にサポートしています。 新しいメトリック アラートで既に機能する既知の統合を次に示します。
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-上記に含まれていないパートナー統合を使用している場合は、統合が新しいメトリック アラートで動作することを統合のプロバイダーにご確認ください。
+上記に含まれていないパートナー統合を使用している場合は、それらが新しいメトリック アラートで動作することをプロバイダーにご確認ください。
 
 ## <a name="next-steps"></a>次のステップ
 

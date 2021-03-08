@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights の Java エージェントの�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881138"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737059"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>トラブルシューティング ガイド:Azure Monitor Application Insights for Java
 
@@ -45,15 +45,23 @@ Java 3.0 Preview エージェントからアップグレードする場合は、
 
 特定のログ記録ステートメントがログ記録フレームワークで構成されているしきい値を満たしているかどうかを確認する最善の方法は、通常のアプリケーション ログ (ファイルやコンソールなど) に表示されているかどうかを確認することです。
 
+また、ロガーに例外が渡されると、Azure portal 内で `traces` テーブルではなく `exceptions` テーブルの下にログ メッセージ (および例外) が表示されることにも注意してください。
+
 詳細については、[自動収集されたログ記録の構成](./java-standalone-config.md#auto-collected-logging)に関するページをご覧ください。
 
 ## <a name="import-ssl-certificates"></a>SSL 証明書をインポートする
 
 このセクションは、Java エージェント使用時に、SSL 証明書に関連する例外をトラブルシューティングし、できる限り修正する場合に役立ちます。
 
-この問題のトラブルシューティングには、2 種類のパスがあります。
+この問題を解決するには、次の 2 つの異なるパスがあります。
+* 既定の Java キーストアを使用している場合
+* カスタム Java キーストアを使用している場合
 
-### <a name="if-using-a-default-java-keystore"></a>既定の Java キーストアを使用する場合:
+どちらのパスに従えばよいかわからない場合は、JVM の引数 `-Djavax.net.ssl.trustStore=...` があるかどうかを調べます。
+そのような JVM 引数が "_ない_" 場合は、おそらく既定の Java キーストアを使用しています。
+そのような JVM 引数が "_ある_" 場合は、おそらくカスタム キーストアを使用しており、その JVM 引数でカスタム キーストアが参照されています。
+
+### <a name="if-using-the-default-java-keystore"></a>既定の Java キーストアを使用している場合:
 
 通常、既定の Java キーストアには、すべての CA ルート証明書が既にあります。 ただし、インジェスト エンドポイントの証明書が別のルート証明書によって署名されているなど、いくつかの例外が発生する可能性があります。 この問題を解決するために、次の 3 つの手順をお勧めします。
 

@@ -3,16 +3,16 @@ title: バックアップ センターを使用して洞察を得る
 description: バックアップ センターを使用して、履歴の傾向を分析し、バックアップに関する詳細な洞察を得る方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719459"
 ---
-# <a name="obtain-insights-using-backup-center-preview"></a>バックアップ センター (プレビュー) を使用して分析情報を得る
+# <a name="obtain-insights-using-backup-center"></a>バックアップ センターを使用して洞察を得る
 
-履歴の傾向を分析し、バックアップに関する詳細な分析情報を得るために、バックアップ センターには、[Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用する[バックアップ レポート (プレビュー)](configure-reports.md)へのインターフェイスが用意されています。 バックアップ レポートには次の機能が用意されています。
+履歴の傾向を分析し、バックアップに関する詳細な洞察を得るために、バックアップ センターには、[Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用する[バックアップ レポート](configure-reports.md)へのインターフェイスが用意されています。 バックアップ レポートには次の機能が用意されています。
 
 - 使用されるクラウド ストレージの割り当てと予測。
 
@@ -24,7 +24,7 @@ ms.locfileid: "100592010"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-- 現在、バックアップ レポート (プレビュー) は Azure Database for PostgreSQL サーバーのバックアップには使用できません。
+- 現在、バックアップ レポートは Azure Database for PostgreSQL サーバーのバックアップには使用できません。
 
 - サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 
@@ -53,6 +53,8 @@ ms.locfileid: "100592010"
 1. **ポリシー** - このタブを使用して、関連する項目の数や、特定のポリシーでバックアップされた項目によって使用されたクラウド ストレージの合計など、アクティブなすべてのポリシーに関する情報を表示します。 [詳細情報](./configure-reports.md#policies)
 
 1. **最適化** - このタブを使用すると、バックアップに関するコストを最適化できる潜在的な機会を把握できます。 [詳細情報](./configure-reports.md#optimize)
+
+1. **ポリシー準拠** -このタブを使用すると、各バックアップ インスタンスに 1 日 1 回以上の成功したバックアップがあるかどうかを確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

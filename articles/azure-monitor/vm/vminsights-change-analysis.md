@@ -1,31 +1,31 @@
 ---
-title: Azure Monitor for VMs での変更分析
-description: Azure Monitor for VMs とアプリケーション変更分析統合を統合すると、仮想マシンに対して行われた変更のうち、パフォーマンスに影響を与えた可能性がある変更を表示できます。
+title: VM Insights での変更分析
+description: VM Insights とアプリケーション変更分析統合を統合すると、仮想マシンに対して行われた変更のうち、パフォーマンスに影響を与えた可能性がある変更を表示できます。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/23/2020
-ms.openlocfilehash: 59799a09436d5968a441f6f17655d3138a2d84d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 48f0f0e124040dc070bd5e31f956f75e759303d3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603662"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704006"
 ---
-# <a name="change-analysis-in-azure-monitor-for-vms"></a>Azure Monitor for VMs での変更分析
-Azure Monitor for VMs と[アプリケーション変更分析](../app/change-analysis.md)統合を統合すると、仮想マシンに対して行われた変更のうち、パフォーマンスに影響を与えた可能性がある変更を表示できます。
+# <a name="change-analysis-in-vm-insights"></a>VM Insights での変更分析
+VM Insights と[アプリケーション変更分析](../app/change-analysis.md)統合を統合すると、仮想マシンに対して行われた変更のうち、パフォーマンスに影響を与えた可能性がある変更を表示できます。
 
 ## <a name="overview"></a>概要
-VM の動作が遅く、最近の設定変更によるパフォーマンスへの影響があったかどうかを調査したいとします。 Azure Monitor for VMs を使用して VM のパフォーマンスを確認したところ、過去 1 時間でメモリ使用量が増加していることがわかりました。 変更分析を行うことで、この時期に行われた構成変更がこの増加の原因であるかどうかを判断することができます。
+VM の動作が遅く、最近の設定変更によるパフォーマンスへの影響があったかどうかを調査したいとします。 VM Insights を使用して VM のパフォーマンスを確認したところ、過去 1 時間でメモリ使用量が増加していることがわかりました。 変更分析を行うことで、この時期に行われた構成変更がこの増加の原因であるかどうかを判断することができます。
 
 アプリケーション変更分析サービスを使用することで、[Azure Resource Graph](../../governance/resource-graph/how-to/get-resource-changes.md) からの変更だけでなく、Azure Resource Manager からのネットワーク セキュリティ ルールなどの入れ子になったプロパティの変更を集約します。 
 
 ## <a name="enabling-change-analysis"></a>変更分析を有効にする
-Azure Monitor for VMs に変更分析をオンボードするには、*Microsoft.ChangeAnalysis* リソース プロバイダーを登録する必要があります。 このリソース プロバイダーは、Azure portal で Azure Monitor for VMs またはアプリケーション変更分析を初めて起動する際に自動的に登録されます。 アプリケーション変更分析は、リソースに対するパフォーマンスのオーバーヘッドが発生しない無料のサービスです。
+VM Insights に変更分析をオンボードするには、*Microsoft.ChangeAnalysis* リソース プロバイダーを登録する必要があります。 このリソース プロバイダーは、Azure portal で VM Insights またはアプリケーション変更分析を初めて起動する際に自動的に登録されます。 アプリケーション変更分析は、リソースに対するパフォーマンスのオーバーヘッドが発生しない無料のサービスです。
 
 ## <a name="view-change-analysis"></a>変更分析を表示する
-変更分析は、Azure Monitor for VMs の **[変更]** オプションを選択することで、 **[パフォーマンス]** または **[マップ]** タブからアクセスできます。 
+変更分析は、VM Insights の **[パフォーマンス]** または **[マップ]** タブで、 **[変更]** オプションを選択することでアクセスできます。 
 
 [![[Investigate changes]\(変更の調査\)](media/vminsights-change-analysis/investigate-changes-screenshot.png)](media/vminsights-change-analysis/investigate-changes-screenshot-zoom.png#lightbox)
 
