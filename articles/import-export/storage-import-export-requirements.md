@@ -59,8 +59,8 @@ Azure Import/Export サービスでは、次の一覧のストレージの種類
 
 |ジョブ  |ストレージ サービス |サポートされています  |サポートされていません  |
 |---------|---------|---------|---------|
-|[インポート]     |  Azure BLOB ストレージ <br><br> Azure File ストレージ       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
-|エクスポート     |   Azure BLOB ストレージ       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
+|[インポート]     |  Azure Blob Storage <br><br> Azure File Storage       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
+|エクスポート     |   Azure Blob Storage       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
 
 
 ## <a name="supported-hardware"></a>サポートされるハードウェア
