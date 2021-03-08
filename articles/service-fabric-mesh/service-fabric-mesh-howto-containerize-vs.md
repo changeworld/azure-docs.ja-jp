@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2fb6aa7d7c655a1ba4b44dabc33e32ce04ae458f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b9c5053a2a49c942cc89bd50c65e13f3a2f8d9d7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489277"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625882"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 新しいデプロイは、Service Fabric Mesh API では許可されません。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
 
 この記事では、既存の .NET アプリに Service Fabric Mesh のコンテナー オーケストレーションサポートを追加する方法について説明します。
 

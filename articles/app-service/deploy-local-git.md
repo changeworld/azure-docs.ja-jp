@@ -3,15 +3,15 @@ title: ローカル Git リポジトリからデプロイする
 description: Azure App Service へのローカル Git デプロイを有効にする方法を説明します。 ローカル コンピューターからコードをデプロイする最も簡単な方法の 1 つです。
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/16/2021
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 26fd8bc73fad3ea313641fc4b1e0f454ee2c0813
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 5dd6183bf88c167adb2f084c319cd90b94351dfb
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347780"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560489"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -24,122 +24,112 @@ ms.locfileid: "97347780"
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
 - [Git をインストールします](https://www.git-scm.com/downloads)。
-  
+
 - デプロイするコードを含むローカル Git リポジトリを用意します。 サンプル リポジトリをダウンロードするには、ご利用のローカル ターミナル ウィンドウで次のコマンドを実行します。
   
   ```bash
   git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
   ```
 
-[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-## <a name="deploy-with-kudu-build-server"></a>Kudu ビルド サーバーを使用してデプロイする
+## <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
 
-Kudu App Service ビルド サーバーを使用してアプリのローカル Git デプロイを有効にするには、Azure Cloud Shell を使用するのが最も簡単な方法です。 
+「[Azure App Service のデプロイ資格情報の構成](deploy-configure-credentials.md)」を参照してください。 ユーザースコープの資格情報またはアプリケーションスコープの資格情報のいずれかを使用できます。
 
-### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
+## <a name="create-a-git-enabled-app"></a>Git 対応アプリを作成する
 
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
+App Service アプリを既に所有していて、そのためのローカル Git デプロイを構成する場合は、代わりに「[既存のアプリを構成する](#configure-an-existing-app)」を参照してください。
 
-### <a name="get-the-deployment-url"></a>デプロイ URL を取得する
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-既存のアプリのローカル Git デプロイを有効にするための URL を取得するには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) を実行します。 \<app-name> と \<group-name> を、アプリの名前とその Azure リソース グループの名前に置き換えます。
+`--deployment-local-git` オプションを指定して [`az webapp create`](/cli/azure/webapp#az_webapp_create) を実行します。 次に例を示します。
+
+```azurecli-interactive
+az webapp create --resource-group <group-name> --plan <plan-name> --name <app-name> --runtime "<runtime-flag>" --deployment-local-git
+```
+
+出力には、`https://<deployment-username>@<app-name>.scm.azurewebsites.net/<app-name>.git` のような URL が含まれています。 次の手順で、この URL を使用して、ご利用になるアプリをデプロイします。
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+自分の Git リポジトリのルートから [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) を実行します。 次に例を示します。
+
+```azurepowershell-interactive
+New-AzWebApp -Name <app-name>
+```
+
+Git リポジトリであるディレクトリからこのコマンドレットを実行すると、自分の App Service アプリへの Git リモートが `azure` という名前で自動的に作成されます。
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+ポータルでは、最初にアプリを作成し、次にそのデプロイを構成する必要があります。 「[既存のアプリを構成する](#configure-an-existing-app)」を参照してください。
+
+-----
+
+## <a name="configure-an-existing-app"></a>既存のアプリを構成する
+
+まだアプリを作成していない場合は、代わりに「[Git 対応アプリを作成する](#create-a-git-enabled-app)」を参照してください。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+
+[`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) を実行します。 次に例を示します。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
-> [!NOTE]
-> Linux App Service プランを使用している場合は、--runtime python|3.7 パラメーターを追加する必要があります
 
+出力には、`https://<deployment-username>@<app-name>.scm.azurewebsites.net/<app-name>.git` のような URL が含まれています。 次の手順で、この URL を使用して、ご利用になるアプリをデプロイします。
 
-Git 対応アプリを新規に作成するには、Cloud Shell で `--deployment-local-git` パラメーターを指定して [`az webapp create`](/cli/azure/webapp#az-webapp-create) を実行します。 \<app-name>、\<group-name>、\<plan-name> を、ご利用になる新しい Git アプリの名前、その Azure リソース グループの名前、およびその Azure App Service プランの名前に置き換えます。
+> [!TIP]
+> この URL には、ユーザースコープのデプロイのユーザー名が含まれています。 必要に応じて、[アプリケーションスコープの資格情報を使用](deploy-configure-credentials.md#appscope)することができます。 
 
-```azurecli-interactive
-az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+自分のアプリの `scmType` を設定するには、[Set-AzResource](/powershell/module/az.resources/set-azresource) コマンドレットを実行します。
+
+```powershell-interactive
+$PropertiesObject = @{
+    scmType = "LocalGit";
+}
+
+Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName <group-name> `
+-ResourceType Microsoft.Web/sites/config -ResourceName <app-name>/web `
+-ApiVersion 2015-08-01 -Force
 ```
 
-どちらのコマンドからも次のような URL が返されます: `https://<deployment-username>@<app-name>.scm.azurewebsites.net/<app-name>.git` 次の手順で、この URL を使用して、ご利用になるアプリをデプロイします。
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-このアカウント レベルの URL を使用するのでなく、アプリ レベルの資格情報を使用してローカル Git を有効にすることもできます。 Azure App Service では、すべてのアプリに対してこれらの資格情報が自動的に作成されます。 
+1. [Azure portal](https://portal.azure.com) で、アプリの管理ページに移動します。
 
-Cloud Shell で次のコマンドを実行して、アプリの資格情報を取得します。 \<app-name> と \<group-name> をご利用のアプリの名前と Azure リソース グループの名前に置き換えます。
+1. 左側のメニューで、 **[デプロイ センター]**  >  **[設定]** の順に選択します。 **[ソース]** で **[ローカル Git]** を選択してから、 **[保存]** をクリックします。
 
-```azurecli-interactive
-az webapp deployment list-publishing-credentials --name <app-name> --resource-group <group-name> --query scmUri --output tsv
-```
+    ![Azure portal で App Service のローカル Git デプロイを有効にする方法を示しています](./media/deploy-local-git/enable-portal.png)
 
-次の手順では、返された URL を使用してアプリをデプロイします。
+1. [ローカル Git] セクションで、後で使用するために **Git Clone URI** をコピーします。 この URI に資格情報は含まれていません。
 
-### <a name="deploy-the-web-app"></a>Web アプリのデプロイ
+-----
 
-1. ローカル ターミナル ウィンドウを開き、ご利用のローカル Git リポジトリに Azure リモートを追加します。 次のコマンドでは、\<url> を、前の手順で取得したユーザー固有のデプロイ URL またはアプリ固有のデプロイ URL に置き換えます。
+## <a name="deploy-the-web-app"></a>Web アプリのデプロイ
+
+1. ローカル ターミナル ウィンドウで、ディレクトリを自分の Git リポジトリのルートに変更し、自分のアプリから取得した URL を使用して Git リモートを追加します。 選択した方法で URL を取得できない場合は、`https://<app-name>.scm.azurewebsites.net/<app-name>.git` を使用し、`<app-name>` にアプリの名前を指定します。
    
    ```bash
    git remote add azure <url>
    ```
+
+    > [!NOTE]
+    > [New-AzWebApp を使用して PowerShell で Git 対応アプリを作成した](#create-a-git-enabled-app)場合、既にリモートは自動的に作成されています。
    
 1. `git push azure master` を使用して Azure リモートにプッシュします。 
    
-1. **[Git Credential Manager]** ウィンドウで、ご利用の Azure サインインパスワードではなく、ご利用の [デプロイ ユーザー パスワード](#configure-a-deployment-user)を入力します。
+1. **[Git Credential Manager]\(Git 資格情報マネージャー\)** ウィンドウには、自分の Azure サインイン資格情報ではなく、自分の[ユーザースコープまたはアプリケーションスコープの資格情報](#configure-a-deployment-user)を入力します。
+
+    自分の Git リモート URL に既にユーザー名とパスワードが含まれている場合、プロンプトは表示されません。 
    
 1. 出力結果を確認します。 MSBuild (ASP.NET 向け)、`npm install` (Node.js 向け)、`pip install` (Python 向け) など、ランタイム固有のオートメーションが表示される場合があります。 
    
 1. Azure portal でご利用のアプリに移動して、コンテンツがデプロイされていることを確認します。
-
-## <a name="deploy-with-azure-pipelines-builds"></a>Azure Pipelines ビルドを使用してデプロイする
-
-必要なアクセス許可がご利用のアカウントにある場合は、ご利用になるアプリのローカル Git デプロイを有効にするように Azure Pipelines (プレビュー) を設定することができます。 
-
-- ご利用の Azure アカウントには、Azure Active Directory への書き込みを行うためのアクセス許可とサービスを作成するためのアクセス許可が必要です。 
-  
-- ご利用の Azure アカウントには、Azure サブスクリプションの **所有者** ロールが必要です。
-
-- ご自身が、使用する Azure DevOps プロジェクトの管理者である必要があります。
-
-Azure Pipelines (プレビュー) を使用してアプリのローカル Git デプロイを有効にするには:
-
-1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択します。 
-
-1. ご利用の Azure App Service アプリを選択し、左側のメニューで **[デプロイ センター]** を選択します。
-   
-1. **[デプロイ センター]** ページで、 **[ローカル Git]** を選択して、 **[続行]** を選択します。 
-   
-   ![[ローカル Git] を選択してから、[続行] を選択します](media/app-service-deploy-local-git/portal-enable.png)
-   
-1. **[ビルド プロバイダー]** ページで **[Azure Pipelines]** (プレビュー) を選択して、 **[続行]** を選択します。 
-   
-   ![[Azure Pipelines] (プレビュー) を選択してから、[続行] を選択します。](media/app-service-deploy-local-git/pipeline-builds.png)
-
-1. **[構成]** ページで、新しい Azure DevOps 組織を構成するか、または既存の組織を指定します。次に、 **[続行]** を選択します。
-   
-   > [!NOTE]
-   > 既存の Azure DevOps 組織が一覧に表示されていない場合は、それをお使いの Azure サブスクリプションにリンクしなければならない場合があります。 詳細については、「[Define your CD release pipeline](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)」(CD リリース パイプラインを定義する) を参照してください。
-   
-1. App Service プランの [価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、 **[ステージングへのデプロイ]** ページが表示される場合があります。 [デプロイ スロットを有効にする](deploy-staging-slots.md)かどうかを選択して、 **[続行]** を選択します。
-   
-1. **[概要]** ページで設定を確認して、 **[完了]** を選択します。
-   
-1. Azure Pipeline の準備ができたら、 **[デプロイ センター]** ページから、次の手順で使用する Git リポジトリの URL をコピーします。 
-   
-   ![Git リポジトリの URL をコピーする](media/app-service-deploy-local-git/vsts-repo-ready.png)
-
-1. ローカル ターミナル ウィンドウで、ご利用のローカル Git リポジトリに Azure リモートを追加します。 コマンドで、前の手順で取得した Git リポジトリの URL に \<url> を置き換えます。
-   
-   ```bash
-   git remote add azure <url>
-   ```
-   
-1. `git push azure master` を使用して Azure リモートにプッシュします。 
-   
-1. **[Git Credential Manager]** ページで、ご自分の visualstudio.com ユーザーを使用してサインインします。 他の認証方法については、[Azure DevOps Services 認証の概要](/vsts/git/auth-overview?view=vsts)に関する記事を参照してください。
-   
-1. デプロイが完了したら、`https://<azure_devops_account>.visualstudio.com/<project_name>/_build` でビルドの進行状況を、`https://<azure_devops_account>.visualstudio.com/<project_name>/_release` でデプロイの進行状況を確認します。
-   
-1. Azure portal でご利用のアプリに移動して、コンテンツがデプロイされていることを確認します。
-
-[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="troubleshoot-deployment"></a>デプロイのトラブルシューティング
 
@@ -149,14 +139,14 @@ Git を使用して Azure の App Service アプリに発行すると、次の�
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|アプリが稼働していません。|Azure portal でアプリを起動します。 Web アプリが停止しているとき、Git デプロイは利用できません。|
 |`Couldn't resolve host 'hostname'`|'azure' リモートのアドレス情報が正しくありません。|`git remote -v` コマンドを使用して、すべてのリモートおよび関連付けられている URL を一覧表示します。 "azure" リモートの URL が正しいことを確認します。 必要に応じて、このリモートを削除し、正しい URL を使用して再作成します。|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|`git push` の間にブランチを指定しなかったか、または `.gitconfig` に `push.default` 値を設定していません。|メイン ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
-|`src refspec [branchname] does not match any.`|"azure" リモートのメイン以外のブランチにプッシュしようとしました。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|`git push` の間にブランチを指定しなかったか、または `.gitconfig` に `push.default` 値を設定していません。|メイン ブランチを指定して、もう一度 `git push` を実行します: `git push azure main`。|
+|`src refspec [branchname] does not match any.`|"azure" リモートのメイン以外のブランチにプッシュしようとしました。|メイン ブランチを指定して、もう一度 `git push` を実行します: `git push azure main`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|このエラーは、HTTPS 経由で大規模な Git リポジトリをプッシュしようとした場合に発生する可能性があります。|ローカル コンピューター上の Git 構成を変更して `postBuffer` を増やします。 (例: `git config --global http.postBuffer 524288000`)。|
 |`Error - Changes committed to remote repository but your web app not updated.`|追加の必須モジュールを指定する _package.json_ ファイルを使用して Node.js アプリをデプロイしました。|失敗に関する詳細なコンテキストについては、このエラーの前の `npm ERR!` エラー メッセージを確認してください。 このエラーの既知の原因と、対応する `npm ERR!` メッセージを以下に示します。<br /><br />**形式が正しくない package.json ファイル**: `npm ERR! Couldn't read dependencies.`<br /><br />**Windows 用のバイナリ配布がないネイティブ モジュール**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Project Kudu に関するドキュメント](https://github.com/projectkudu/kudu/wiki)
+- [App Service ビルド サーバー (Project Kudu に関するドキュメント)](https://github.com/projectkudu/kudu/wiki)
 - [Azure App Service への継続的デプロイ](deploy-continuous-deployment.md)
 - [サンプル:Web アプリを作成してローカル Git リポジトリからコードをデプロイする (Azure CLI)](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
 - [サンプル:Web アプリを作成してローカル Git リポジトリからコードをデプロイする (PowerShell)](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

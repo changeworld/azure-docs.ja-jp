@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 8c9a7a09d3085b1ec67bf29f142c6e7b205561ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70bfd12b018e785e7b3b91e098c99fea1101c04
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87021751"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093099"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>Perimeter 81 アクティビティ ログを Azure Sentinel に接続する
 
@@ -54,7 +54,7 @@ Perimeter 81 アクティビティ ログでは、ログを統合して、Azure 
 
 接続が正常に確立されると、**CustomLogs** - **Perimeter81_CL** の下の **[ログ]** にデータが表示されます。
 
-ログが表示され始めるまで、20 分以上かかる場合があります。
+ログが表示され始めるまで、最大 20 分かかる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

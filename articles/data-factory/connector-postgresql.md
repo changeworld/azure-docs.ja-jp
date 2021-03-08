@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して PostgreSQL からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、PostgreSQL からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0d8783c4b07c8c87e57ccd9a5d65983825347c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416764"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384097"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -36,7 +31,7 @@ ms.locfileid: "81416764"
 
 PostgreSQL データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この PostgreSQL コネクタは PostgreSQL **バージョン 7.4 以降**をサポートします。
+具体的には、この PostgreSQL コネクタは PostgreSQL **バージョン 7.4 以降** をサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -94,13 +89,13 @@ PostgreSQL のリンクされたサービスでは、次のプロパティがサ
         "type": "PostgreSql",
         "typeProperties": {
             "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

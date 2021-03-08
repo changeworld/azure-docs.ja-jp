@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: d5d2f83ddb4f37e1379bb7d60a76ddc70d61f99a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785839"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705502"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -44,7 +44,7 @@ Standard Load Balancer を使用すると、アプリケーションをスケー
 
 Standard Load Balancer を使用して実現できる主なシナリオは、次のとおりです。
 
-- **[内部](./quickstart-load-balancer-standard-internal-portal.md)** および **[外部](./tutorial-load-balancer-standard-manage-portal.md)** トラフィックを Azure 仮想マシンに負荷分散する。
+- **[内部](./quickstart-load-balancer-standard-internal-portal.md)** および **[外部](./quickstart-load-balancer-standard-public-portal.md)** トラフィックを Azure 仮想マシンに負荷分散する。
 
 - ゾーンの **[内部で](./tutorial-load-balancer-standard-public-zonal-portal.md)** 、および複数のゾーンに **[わたって](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** リソースを分散することによって、可用性を向上させる。
 
@@ -56,7 +56,7 @@ Standard Load Balancer を使用して実現できる主なシナリオは、次
 
 - **[IPv6](../virtual-network/ipv6-overview.md)** の **[負荷分散](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** のサポートを有効にする。
 
-- Standard Load Balancer は [Azure Monitor](../azure-monitor/overview.md) を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理し、グループ化し、特定のディメンションに分割することができます。  サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。 [Azure Load Balancer の分析情報](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) には、これらのメトリックがわかりやすく可視化された事前構成済みのダッシュボードが用意されています。  リソースの正常性もサポートされます。 詳細については、 **[Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)** に関するページを参照してください。
+- Standard Load Balancer は [Azure Monitor](../azure-monitor/overview.md) を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理し、グループ化し、特定のディメンションに分割することができます。  サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。 [[Azure Load Balancer の分析情報]](./load-balancer-insights.md) には、これらのメトリックがわかりやすく可視化された事前構成済みのダッシュボードが用意されています。  リソースの正常性もサポートされます。 詳細については、 **[Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)** に関するページを参照してください。
 
 - **[複数のポート、複数の IP アドレス、またはその両方](./load-balancer-multivip-overview.md)** にサービスを負荷分散する。
 

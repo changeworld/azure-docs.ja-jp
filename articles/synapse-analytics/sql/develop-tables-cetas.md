@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ffb3a0948267ea40a5d0511de63a80ad23584d1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 23b74c06ebd45092b9efe36a870eeac7f6fb828a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454677"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677558"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL での CETAS
 
@@ -29,7 +29,7 @@ ms.locfileid: "96454677"
 
 ## <a name="cetas-in-dedicated-sql-pool"></a>専用 SQL プールでの CETAS
 
-専用 SQL プールの場合、CETAS の使用法と構文については、[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事をご覧ください。 また、専用 SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
+専用 SQL プールの場合、CETAS の使用法と構文については、[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true) に関する記事をご覧ください。 また、専用 SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
 
 ## <a name="cetas-in-serverless-sql-pool"></a>サーバーレス SQL プールでの CETAS
 
@@ -72,11 +72,11 @@ FILE_FORMAT = *external_file_format_name*
 
 WITH *<common_table_expression>*
 
-共通テーブル式 (CTE) と呼ばれる一時的な名前付き結果セットを指定します。 詳細については、「[WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
+共通テーブル式 (CTE) と呼ばれる一時的な名前付き結果セットを指定します。 詳細については、「[WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 SELECT <select_criteria>
 
-SELECT ステートメントの結果を新しいテーブルに追加します。 *select_criteria* は、新しいテーブルにコピーするデータを決定する SELECT ステートメントの本文です。 SELECT ステートメントについては、「[SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
+SELECT ステートメントの結果を新しいテーブルに追加します。 *select_criteria* は、新しいテーブルにコピーするデータを決定する SELECT ステートメントの本文です。 SELECT ステートメントについては、「[SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 > [!NOTE]
 > SELECT での ORDER BY 句は、CETAS ではサポートされていません。

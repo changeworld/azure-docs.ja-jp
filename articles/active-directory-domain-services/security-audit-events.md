@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574146"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする
 
@@ -40,7 +40,7 @@ Azure AD DS セキュリティ監査のターゲット リソースには、Azur
 |:---|:---|
 |Azure Storage| 主なニーズがセキュリティ監査イベントをアーカイブ用に格納することである場合は、このターゲットを使用してください。 その他のターゲットもアーカイブの目的で使用できますが、主なニーズがアーカイブ以上である機能を提供しています。 <br /><br />Azure AD DS セキュリティ監査イベントを有効にする前に、まず [Azure Storage アカウント](../storage/common/storage-account-create.md) を作成します。|
 |Azure Event Hubs| 主なニーズがデータ分析ソフトウェアやセキュリティ情報およびイベント管理 (SIEM) ソフトウェアなどの追加ソフトウェアとセキュリティ監査イベントを共有することである場合は、このターゲットを使用してください。<br /><br />Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal を使用してイベント ハブを作成してください](../event-hubs/event-hubs-create.md)|
-|Azure Log Analytics ワークスペース| 主なニーズが Azure portal でセキュリティ監査を直接分析して確認することである場合は、このターゲットを使用してください。<br /><br />Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal で Log Analytics ワークスペースを作成してください](../azure-monitor/learn/quick-create-workspace.md)。|
+|Azure Log Analytics ワークスペース| 主なニーズが Azure portal でセキュリティ監査を直接分析して確認することである場合は、このターゲットを使用してください。<br /><br />Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal で Log Analytics ワークスペースを作成してください](../azure-monitor/logs/quick-create-workspace.md)。|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Azure portal を使用してセキュリティ監査イベントを有効にする
 
@@ -100,7 +100,7 @@ Azure PowerShell を使用して Azure AD DS のセキュリティ監査イベ�
         > [!IMPORTANT]
         > イベント ハブ自体ではなく、イベント ハブ名前空間に承認規則を設定していることを確認します。
 
-    * **Azure Log Analytics ワークスペース** - [Azure PowerShell を使用して Log Analytics ワークスペースを作成します](../azure-monitor/platform/powershell-workspace-configuration.md)。
+    * **Azure Log Analytics ワークスペース** - [Azure PowerShell を使用して Log Analytics ワークスペースを作成します](../azure-monitor/logs/powershell-workspace-configuration.md)。
 
 1. [Get AzResource](/powershell/module/Az.Resources/Get-AzResource) コマンドレットを使用して、Azure AD DS 管理対象ドメインのリソース ID を取得します。 *$aadds.ResourceId* という名前の変数を作成して、値を保持します。
 
@@ -141,9 +141,9 @@ Azure PowerShell を使用して Azure AD DS のセキュリティ監査イベ�
 Log Analytic ワークスペースを使用すると、Azure Monitor と Kusto クエリ言語を使用して、セキュリティ監査イベントを表示および分析できます。 このクエリ言語は、読みやすい構文で強力な分析機能を提供する読み取り専用の用途向けに設計されています。 Kusto クエリ言語の使用を開始する方法の詳細については、次の記事を参照してください。
 
 * [Azure Monitor のドキュメント](../azure-monitor/index.yml)
-* [Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)
-* [Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)
-* [Log Analytics データのダッシュボードを作成して共有する](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/logs/log-analytics-tutorial.md)
+* [Azure Monitor でログ クエリの使用を開始する](../azure-monitor/logs/get-started-queries.md)
+* [Log Analytics データのダッシュボードを作成して共有する](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 次のサンプル クエリを使用すると、Azure AD DS からのセキュリティ監査イベントの分析を開始できます。
 

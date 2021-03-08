@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 715b0d16e33412003820044ffa99fee9e2431a7b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a4c38b7ad92ebc1e42db31ea0c6e478bcfab50b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090757"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750063"
 ---
 <a name="HOLTop"></a>
 
@@ -21,10 +21,6 @@ ms.locfileid: "99090757"
 # <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
 
 [v3 リファレンス ドキュメント](/python/api/azure-ai-textanalytics/azure.ai.textanalytics) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 パッケージ (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
-
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-[v2 リファレンス ドキュメント](/python/api/overview/azure/cognitiveservices/textanalytics) | [v2 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2 パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
@@ -62,15 +58,6 @@ pip install --upgrade azure-ai-textanalytics
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py) にあり、このクイックスタートのコード例が含まれています。 
 
 
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-```console
-pip install --upgrade azure-cognitiveservices-language-textanalytics
-```
-
-> [!TIP]
-> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py) にあり、このクイックスタートのコード例が含まれています。 
-
 ---
 
 ### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
@@ -103,12 +90,6 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 
 応答オブジェクトは、各ドキュメントの分析情報を格納するリストです。 
 
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-Text Analytics クライアントは、ご利用のキーを使用して Azure に対して認証を行う [TextAnalyticsClient](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient) オブジェクトです。 このクライアントには、テキストを単一の文字列として、またはバッチとして分析するためのメソッドがいくつか備わっています。 
-
-テキストは、`documents` (使用したメソッドに応じて `id`、`text`、`language` の各属性の組み合わせを保持する `dictionary` オブジェクト) のリストとして API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。 
-
 ---
 
 ## <a name="code-examples"></a>コード例
@@ -128,15 +109,6 @@ Text Analytics クライアントは、ご利用のキーを使用して Azure �
 
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-* [クライアントを認証する](#authenticate-the-client)
-* [感情分析](#sentiment-analysis)
-* [言語検出](#language-detection)
-* [名前付きエンティティの認識](#named-entity-recognition-ner) 
-* [エンティティ リンク設定](#entity-linking)
-* [キー フレーズ抽出](#key-phrase-extraction)
-
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [感情分析](#sentiment-analysis)
@@ -203,14 +175,6 @@ def authenticate_client():
    
 client = authenticate_client()
 ```
-
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-[!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
-
-上で作成した `key` と `endpoint` を使用して `TextAnalyticsClient` オブジェクトをインスタンス化する関数を作成します。 次に、新しいクライアントを作成します。 
-
-[!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
 
 --- 
 
@@ -421,21 +385,6 @@ Neutral=0.77
 Negative=0.02
 ```
 
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-クライアント オブジェクトを認証し、[sentiment()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 関数を呼び出します。 結果を反復処理し、各ドキュメントの ID とセンチメント スコアを出力します。 0 に近いスコアは否定的センチメント、1 に近いスコアは肯定的センチメントを示します。
-
-[!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
-
-### <a name="output"></a>出力
-
-```console
-Document ID: 1 , Sentiment Score: 0.87
-Document ID: 2 , Sentiment Score: 0.11
-Document ID: 3 , Sentiment Score: 0.44
-Document ID: 4 , Sentiment Score: 1.00
-```
-
 ---
 
 ## <a name="language-detection"></a>言語検出
@@ -492,20 +441,6 @@ language_detection_example(client)
 Language:  French
 ```
 
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-以前に作成したクライアントを使用して、[detect_language()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID と最初に返された言語を印刷します。
-
-[!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
-
-
-### <a name="output"></a>出力
-
-```console
-Document ID: 1 , Language: English
-Document ID: 2 , Language: Spanish
-Document ID: 3 , Language: Chinese_Simplified
-```
 
 ---
 
@@ -789,54 +724,6 @@ Linked Entities:
                 Confidence Score: 0.33
 ```
 
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-> [!NOTE]
-> バージョン 2.1 では、エンティティ リンク設定が NER の応答に含まれています。
-
-以前に作成したクライアントを使用して、[entities()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 関数を呼び出して結果を取得します。 続いて、結果を反復処理し、各ドキュメントの ID とそれに含まれているエンティティを印刷します。
-
-[!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
-
-### <a name="output"></a>出力
-
-```console
-Document ID: 1
-        Name: Microsoft,        Type: Organization,     Sub-Type: N/A
-        Offset: 0, Length: 9,   Score: 1.0
-
-        Name: Bill Gates,       Type: Person,   Sub-Type: N/A
-        Offset: 25, Length: 10, Score: 0.999847412109375
-
-        Name: Paul Allen,       Type: Person,   Sub-Type: N/A
-        Offset: 40, Length: 10, Score: 0.9988409876823425
-
-        Name: April 4,  Type: Other,    Sub-Type: N/A
-        Offset: 54, Length: 7,  Score: 0.8
-
-        Name: April 4, 1975,    Type: DateTime, Sub-Type: Date
-        Offset: 54, Length: 13, Score: 0.8
-
-        Name: BASIC,    Type: Other,    Sub-Type: N/A
-        Offset: 89, Length: 5,  Score: 0.8
-
-        Name: Altair 8800,      Type: Other,    Sub-Type: N/A
-        Offset: 116, Length: 11,        Score: 0.8
-
-Document ID: 2
-        Name: Microsoft,        Type: Organization,     Sub-Type: N/A
-        Offset: 21, Length: 9,  Score: 0.999755859375
-
-        Name: Redmond (Washington),     Type: Location, Sub-Type: N/A
-        Offset: 60, Length: 7,  Score: 0.9911284446716309
-
-        Name: 21 kilómetros,    Type: Quantity, Sub-Type: Dimension
-        Offset: 71, Length: 13, Score: 0.8
-
-        Name: Seattle,  Type: Location, Sub-Type: N/A
-        Offset: 88, Length: 7,  Score: 0.9998779296875
-```
-
 ---
 
 ### <a name="key-phrase-extraction"></a>キー フレーズの抽出
@@ -909,33 +796,6 @@ key_phrase_extraction_example(client)
          veterinarian
 ```
 
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-以前に作成したクライアントを使用して、[key_phrases()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 関数を呼び出して結果を取得します。 続いて、結果を反復処理し、各ドキュメントの ID とそれに含まれているキー フレーズを印刷します。
-
-[!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
-
-
-### <a name="output"></a>出力
-
-```console
-Document ID: 1
-         Key phrases:
-                幸せ
-Document ID: 2
-         Key phrases:
-                Stuttgart
-                Hotel
-                Fahrt
-                Fu
-Document ID: 3
-         Key phrases:
-                cat
-                veterinarian
-Document ID: 4
-         Key phrases:
-                fútbol
-```
 
 ---
 
@@ -998,14 +858,10 @@ Entity: Paul Allen
 ------------------------------------------
 ```
 
-また、分析操作を使用して、PII とキー フレーズ抽出を検出することもできます。 GitHub の[分析のサンプル](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/async_samples/sample_analyze_async.py)を参照してください。
+また、分析操作を使用して、PII とキー フレーズ抽出を検出することもできます。 GitHub の[分析のサンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples/async_samples)を参照してください。
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 この機能はバージョン 3.0 では使用できません。
-
-# <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-この機能はバージョン 2.1 では使用できません。
 
 ---

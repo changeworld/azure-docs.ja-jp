@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aabaad54dce52d57aaa4689f591351e290b0f9a3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371254"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093702"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal を使用して Azure Resource Manager リソース グループを管理する
 
@@ -105,7 +105,7 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳細については、[Azure portal を使用して Azure ロールを割り当てる方法](../../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

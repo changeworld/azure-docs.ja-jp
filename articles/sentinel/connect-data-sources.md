@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: aeb92dce41c12ada41175964835d9c89a634a6e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555928"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590270"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -151,7 +151,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | **データの種類** | **接続する方法** | **データ コネクタか?** | **コメント** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [AWS の接続](connect-aws.md) | &#10003; | |
-| AzureActivity | [Azure アクティビティの接続](connect-azure-activity.md)と[アクティビティ ログの概要](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
+| AzureActivity | [Azure アクティビティの接続](connect-azure-activity.md)と[アクティビティ ログの概要](../azure-monitor/essentials/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Azure AD の接続](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Azure AD の接続](connect-azure-active-directory.md)  | &#10003; | |
 | AzureFirewall |[Azure Diagnostics](../firewall/firewall-diagnostics.md) | &#10003; | |
@@ -164,9 +164,9 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | Microsoft Web アプリケーション ファイアウォール (WAF) - (AzureDiagnostics) |[Microsoft Web アプリケーション ファイアウォールの接続](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [Symantec の接続](connect-symantec.md) | &#10003; | |
 | ThreatIntelligenceIndicator  | [脅威インテリジェンスの接続](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor サービス マップ](../azure-monitor/insights/service-map.md)<br>[Azure Monitor VM の Insights のオンボード](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Azure Monitor VM の Insights を有効にする](../azure-monitor/insights/vminsights-enable-overview.md) <br> [シングル VM のオンボードでの使用](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [ポリシーによるオンボードの使用](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | VM Insights ブック  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor サービス マップ](../azure-monitor/vm/service-map.md)<br>[Azure Monitor VM の Insights のオンボード](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Azure Monitor VM の Insights を有効にする](../azure-monitor/vm/vminsights-enable-overview.md) <br> [シングル VM のオンボードでの使用](../azure-monitor/vm/vminsights-enable-portal.md)<br>  [ポリシーによるオンボードの使用](../azure-monitor/vm/vminsights-enable-policy.md)| &#10007; | VM Insights ブック  |
 | DnsEvents | [DNS の接続](connect-dns.md) | &#10003; | |
-| W3CIISLog | [IIS ログの接続](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
+| W3CIISLog | [IIS ログの接続](../azure-monitor/agents/data-sources-iis-logs.md)  | &#10007; | |
 | WireData | [ワイヤ データの接続](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Windows ファイアウォールの接続](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Azure AD Identity Protection への接続](connect-azure-ad-identity-protection.md)  | &#10003; | |
@@ -174,7 +174,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | ASC SecurityAlert  | Azure Security Center からの [Azure Defender アラート](connect-azure-security-center.md)の接続  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security の接続](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon (イベント) | [Sysmon の接続](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows イベントの接続](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon Parser の入手](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 既定では、Sysmon コレクションは仮想マシンにインストールされません。 Sysmon エージェントのインストール方法の詳細については、[Sysmon](/sysinternals/downloads/sysmon) に関する記事を参照してください。 |
+| Sysmon (イベント) | [Sysmon の接続](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows イベントの接続](../azure-monitor/agents/data-sources-windows-events.md) <br> [Sysmon Parser の入手](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 既定では、Sysmon コレクションは仮想マシンにインストールされません。 Sysmon エージェントのインストール方法の詳細については、[Sysmon](/sysinternals/downloads/sysmon) に関する記事を参照してください。 |
 | ConfigurationData  | [VM インベントリの自動化](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [VM の追跡の自動化](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [F5 BIG-IP の接続](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 547b455dc776b7304e413b3b6f1330e7cedcf2a2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d68f83bd042af6612b91807f2adeed54d24bfe01
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441999"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648622"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>外部 ID のために Facebook を ID プロバイダーとして追加する
 
-Facebook をセルフサービス サインアップのユーザー フロー (プレビュー) に追加して、ユーザーが自分の Facebook アカウントを使用してアプリケーションにサインインできるようにすることができます。 ユーザーが Facebook を使用してサインインできるようにするには、まず、テナントに対して[セルフサービス サインアップ](self-service-sign-up-user-flow.md)を有効にする必要があります。 Facebook を ID プロバイダーとして追加した後、アプリケーションに対するユーザー フローを設定し、サインイン オプションの 1 つとして Facebook を選択します。
+Facebook をセルフサービス サインアップのユーザー フローに追加して、ユーザーが自分の Facebook アカウントを使用してアプリケーションにサインインできるようにすることができます。 ユーザーが Facebook を使用してサインインできるようにするには、まず、テナントに対して[セルフサービス サインアップ](self-service-sign-up-user-flow.md)を有効にする必要があります。 Facebook を ID プロバイダーとして追加した後、アプリケーションに対するユーザー フローを設定し、サインイン オプションの 1 つとして Facebook を選択します。
+
+アプリケーションのサインイン オプションの 1 つとして Facebook を追加すると、ユーザーは **[サインイン]** ページで、Facebook へのサインインに使用するメール アドレスを入力するか、 **[サインイン オプション]** を選択してから **[Facebook アカウントでサインイン]** を選択できます。 どちらの場合も、認証のために Facebook のログイン ページにリダイレクトされます。
+
+![Facebook ユーザーのサインイン オプション](media/facebook-federation/sign-in-with-facebook-overview.png)
 
 > [!NOTE]
 > ユーザーは、セルフサービス サインアップおよびユーザー フローを使用したアプリ経由のサインアップに限り、Facebook アカウントを使用できます。 ユーザーは招待されても、Facebook アカウントを使用して招待を利用することはできません。

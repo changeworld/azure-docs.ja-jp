@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: a2348e0578b60c59fd7205037bd42d7bb1e84fae
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953701"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705400"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Media Services v2 と v3 の間の用語とエンティティの変更
 
@@ -43,7 +43,7 @@ Media Services V3 リソースに適用される名前付け規則をご確認�
 | **V2 エンティティ**<!-- row --> | **V3 エンティティ** | **ガイダンス** | **V3 からアクセス可能** | **V3 で更新** |
 |--|--|--|--|--|
 | `AccessPolicy`<!-- row --> | <!-- empty --> |  エンティティ `AccessPolicies` は V3 に存在しません。 | いいえ | いいえ |
-| `Asset`<!-- row --> | `Asset` | <!-- empty --> | はい | Yes |
+| `Asset`<!-- row --> | `Asset` | <!-- empty --> | はい | はい |
 | `AssetDeliveryPolicy`<!-- row --> | `StreamingPolicy` | <!-- empty --> | はい | いいえ |
 | `AssetFile`<!-- row --> | <!-- empty --> |エンティティ `AssetFiles` は V3 に存在しません。 ただし、アップロードしたファイル (ストレージ BLOB) は引き続きファイルと見なされます。<br/><br/> 代わりに Azure Storage API を使用して、コンテナー内の BLOB を列挙します。 ジョブを使用してファイルに変換を適用するには、2 つの方法があります。<br/><br/>ストレージに既にアップロードされたファイル:URI には、ストレージ アカウント内の資産に対して実行されるジョブの資産 ID が含まれます。<br/><br/>変換およびジョブ プロセス中にアップロードされるファイル:資産がストレージに作成され、SAS URL が返され、ファイルがストレージにアップロードされた後、変換がファイルに適用されます。 | いいえ | いいえ |
 | `Channel`<!-- row --> | `LiveEvent` | ライブイベントは、v2 API のチャネルを置き換えます。 ほとんどの機能を引き継いでおり、ライブ文字起こし、スタンバイ モード、RTMPS 取り込みのサポートなど、より多くの新機能を備えています。 <br/><br/>[シナリオ ベースのライブ ストリーミングでのライブ イベント](migrate-v-2-v-3-migration-scenario-based-live-streaming.md)に関する記事を参照してください。 | いいえ | いいえ |
@@ -73,7 +73,7 @@ Media Services V3 リソースに適用される名前付け規則をご確認�
 | **[エンコード]** <!--new row --> |||
 | エンコード ビットレート <!--new row --> | kbps で測定されるビットレート。例:128 (kbps)| 1 秒あたりのビット数。例:128000 (ビット/秒)|
 | エンコード DRM FairPlay <!--new row --> | Media Services V2 では、初期化ベクター (IV) を指定できます。 | Media Services V3 では、FairPlay IV を指定することはできません。|
-| Premium エンコーダー <!--new row --> | Premium エンコーダーと従来のインデクサー| [Premium Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset) と従来の [Media Analytics プロセッサ](https://docs.microsoft.com/azure/media-services/previous/legacy-components)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は V3 を使用してアクセスできません。 Standard エンコーダーへのオーディオ チャネル マッピングのサポートを追加しました。  [Media Services Encoding Swagger ドキュメントの Audio](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) を参照してください。  | [シナリオベースのエンコード](migrate-v-2-v-3-migration-scenario-based-encoding.md)に関する記事のエンコードのトピックを参照してください。 |
+| Premium エンコーダー <!--new row --> | Premium エンコーダーと従来のインデクサー| [Premium Encoder](../previous/media-services-encode-asset.md) と従来の [Media Analytics プロセッサ](../previous/legacy-components.md)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は V3 を使用してアクセスできません。 Standard エンコーダーへのオーディオ チャネル マッピングのサポートを追加しました。  [Media Services Encoding Swagger ドキュメントの Audio](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) を参照してください。  | [シナリオベースのエンコード](migrate-v-2-v-3-migration-scenario-based-encoding.md)に関する記事のエンコードのトピックを参照してください。 |
 | **変換およびジョブ** <!--new row -->|||
 | ジョブ ベースの処理用 HTTPS <!--new row --> |<!-- empty -->| ファイル ベースのジョブ処理では、入力として HTTPS URL を使用できます。 Azure にコンテンツをあらかじめ格納しておく必要がなく、資産を作成する必要もありません。 |
 | ジョブの ARM テンプレート <!--new row --> | ARM テンプレートは V2 には存在しませんでした。 | 変換を使用して、再利用可能な構成を構築し、Azure Resource Manager テンプレートを作成し、複数の顧客またはテナント間の処理の設定を分離することができます。 |

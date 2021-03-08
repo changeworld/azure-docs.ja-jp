@@ -3,12 +3,12 @@ title: プログラムによる Azure ダッシュボードの作成
 description: Azure portal のダッシュボードをテンプレートとして使用して、プログラムで Azure ダッシュボードを作成することができます。 JSON 参照を含めます。
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: e69d3f3cea0ff63f94e797047eb10b9583678b1b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bd56dc1c729c5aa7a77e79aa3af3366166fdcfea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745810"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095175"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -46,7 +46,7 @@ ms.locfileid: "96745810"
 
 ![ダッシュボードの共有](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-**共有** を選択すると、発行先のサブスクリプションとリソースグループを選択するように求められます。 選択するサブスクリプションとリソース グループに書き込みアクセス権がなければなりません。 詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
+**共有** を選択すると、発行先のサブスクリプションとリソースグループを選択するように求められます。 選択するサブスクリプションとリソース グループに書き込みアクセス権がなければなりません。 詳細については、[Azure portal を使用して Azure ロールを割り当てる方法](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 
 ![共有とアクセスに変更を加える](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

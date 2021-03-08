@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108740"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204016"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault のログ記録を有効にする方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "98108740"
 
 キーのログ記録を設定する最初の手順は、キー コンテナーを含むサブスクリプションに接続することです。 これは、アカウントに複数のサブスクリプションが関連付けられている場合に特に重要です。
 
-Azure CLI では、[az account list](/cli/azure/account?view=azure-cli-latest#az_account_list) コマンドを使用してすべてのサブスクリプションを表示してから、[az account set](/cli/azure/account?view=azure-cli-latest#az_account_set) を使用してその 1 つに接続できます。
+Azure CLI では、[az account list](/cli/azure/account#az_account_list) コマンドを使用してすべてのサブスクリプションを表示してから、[az account set](/cli/azure/account#az_account_set) を使用してその 1 つに接続できます。
 
 ```azurecli-interactive
 az account list
@@ -58,7 +58,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 ストレージ アカウント名を指定する必要もあります。 ストレージ アカウント名は、一意であり、長さが 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。  最後に、"Standard_LRS" SKU のストレージ アカウントを作成します。
 
-Azure CLI では、[az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) コマンドを使用します。
+Azure CLI では、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用します。
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -84,9 +84,9 @@ $sa.id
 
 ## <a name="obtain-your-key-vault-resource-id"></a>キー コンテナーのリソース ID を取得する
 
-[CLI のクイックスタート](quick-create-cli.md)と [PowerShell のクイックスタート](quick-create-powershell.md)では、一意の名前を持つキーを作成しました。  以下の手順では、再度その名前を使用します。  キー コンテナーの名前を覚えていない場合は、Azure CLI の [az keyvault list](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_list) コマンドまたは Azure PowerShell の [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) コマンドレットを使用して名前を一覧表示できます。
+[CLI のクイックスタート](quick-create-cli.md)と [PowerShell のクイックスタート](quick-create-powershell.md)では、一意の名前を持つキーを作成しました。  以下の手順では、再度その名前を使用します。  キー コンテナーの名前を覚えていない場合は、Azure CLI の [az keyvault list](/cli/azure/keyvault#az_keyvault_list) コマンドまたは Azure PowerShell の [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) コマンドレットを使用して名前を一覧表示できます。
 
-キー コンテナーの名前を使用して、それのリソース ID を見つけます。  Azure CLI では、[az keyvault show](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_show) コマンドを使用します。
+キー コンテナーの名前を使用して、それのリソース ID を見つけます。  Azure CLI では、[az keyvault show](/cli/azure/keyvault#az_keyvault_show) コマンドを使用します。
 
 ```azurecli-interactive
 az keyvault show --name "<your-unique-keyvault-name>"
@@ -102,7 +102,7 @@ Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 
 ## <a name="enable-logging-using-azure-powershell"></a>Azure PowerShell を使用してログ記録を有効にする
 
-Key Vault のログ記録を有効にするには、Azure CLI の [az monitor diagnostics-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest) コマンドまたは [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) コマンドレットを、ストレージ アカウント ID とキー コンテナーのリソース ID と共に使用します。
+Key Vault のログ記録を有効にするには、Azure CLI の [az monitor diagnostics-settings create](/cli/azure/monitor/diagnostic-settings) コマンドまたは [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) コマンドレットを、ストレージ アカウント ID とキー コンテナーのリソース ID と共に使用します。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
@@ -116,7 +116,7 @@ Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId 
 
 必要に応じてログのアイテム保持ポリシーを設定できます。そうすることで、指定した期間の後に古いログが自動的に削除されます。 たとえば、90 日より古いログを自動的に削除するアイテム保持ポリシーを設定できます。
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_update) command. 
+<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
 
 ```azurecli-interactive
 az monitor diagnostic-settings update 
@@ -143,7 +143,7 @@ Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enab
 
 Key Vault のログは、指定したストレージ アカウント内の "insights-logs-auditevent" コンテナーに格納されます。 ログを表示するには、BLOB をダウンロードする必要があります。
 
-最初に、コンテナー内のすべての BLOB を一覧表示します。  Azure CLI では、[az storage blob list](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_list) コマンドを使用します。
+最初に、コンテナー内のすべての BLOB を一覧表示します。  Azure CLI では、[az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) コマンドを使用します。
 
 ```azurecli-interactive
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
@@ -159,7 +159,7 @@ Azure CLI コマンドまたは Azure PowerShell コマンドレットいずれ�
 
 同じストレージ アカウントを使用して複数のリソースのログを収集することができるので、必要な BLOB のみにアクセスしたり、ダウンロードしたりする場合には、BLOB 名に完全なリソース ID を使用すると便利です。 その前に、すべての BLOB をダウンロードする方法を説明します。
 
-Azure CLI では、[az storage blob download](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_download) コマンドを使用して、それに BLOB の名前と、結果を保存するファイルへのパスを渡します。
+Azure CLI では、[az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) コマンドを使用して、それに BLOB の名前と、結果を保存するファイルへのパスを渡します。
 
 ```azurecli-interactive
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"

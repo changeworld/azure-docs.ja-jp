@@ -2,13 +2,13 @@
 title: Azure Service Bus メッセージングの概要 | Microsoft Docs
 description: この記事では、フル マネージド エンタープライズ統合メッセージ ブローカーである Azure Service Bus の概要を簡単に説明します。
 ms.topic: overview
-ms.date: 01/28/2021
-ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.date: 02/16/2021
+ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219164"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570461"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 Microsoft Azure Service Bus は、メッセージ キューとパブリッシュとサブスクライブ トピックを備えたフル マネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus は、アプリケーションとサービスを相互に分離するために使用され、次のような利点があります。
@@ -118,11 +118,10 @@ Service Bus のすべてのキューおよびトピック サブスクリプシ�
 トランザクションにより、複数の操作が 1 つの *実行スコープ* にグループ化されます。 Service Bus では、単一トランザクションのスコープ内の複数のメッセージング エンティティに対してグループ化操作を実行できます。 メッセージ エンティティは、キュー、トピック、またはサブスクリプションとすることができます。 詳しくは、「[Service Bus のトランザクション処理の概要](service-bus-transactions.md)」を参照してください。
 
 ### <a name="autodelete-on-idle"></a>アイドル状態時の自動削除
-
-アイドル状態時の自動削除機能を使用すると、アイドル間隔を指定できます。この間隔が経過すると、キューまたはトピックス サブスクリプションが自動的に削除されます。 最小時間は、5 分です。 詳細については、「[QueueDescription.AutoDeleteOnIdle プロパティ](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle)」を参照してください。
+アイドル状態時の自動削除機能を使用すると、アイドル間隔を指定できます。この間隔が経過すると、キューまたはトピックス サブスクリプションが自動的に削除されます。 最小時間は、5 分です。 
 
 ### <a name="duplicate-detection"></a>重複検出
-重複検出機能を使用すると、送信側は同じメッセージを再送信し、重複する可能性のあるものをブローカーが削除できます。 重複検出は、メッセージの `message-id` プロパティの追跡に基づいています。そのため、アプリケーションではメッセージを再送信するときに同じ値を使用するように注意する必要があります。その値は、アプリケーション固有のコンテキストから直接派生することがあります。 詳しくは、「[重複検出](duplicate-detection.md)」をご覧ください。
+重複検出機能を使用すると、送信側は同じメッセージを再送信し、重複する可能性のあるものをブローカーが削除できます。 詳しくは、「[重複検出](duplicate-detection.md)」をご覧ください。
 
 ### <a name="geo-disaster-recovery"></a>geo ディザスター リカバリー
 

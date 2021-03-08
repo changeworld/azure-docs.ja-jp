@@ -3,12 +3,12 @@ title: 可用性ゾーン間でプールを作成する
 description: 障害からの保護に役立つように、ゾーン ポリシーを使用して Batch プールを作成する方法について説明します。
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: 98109e1b74106bc636eaa715575e4b30ab29f9e2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 56e718bedf504b8e69598c2d99ab8b889a470b89
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056991"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725290"
 ---
 # <a name="create-an-azure-batch-pool-across-availability-zones"></a>可用性ゾーン間で Azure Batch プールを作成する
 
@@ -22,7 +22,7 @@ Batch では、可用性ゾーンのサポートで Azure とのパリティが�
 
 Batch プールが可用性ゾーンに対して割り当てられるようにするために、プールが作成される Azure リージョンでは、複数のゾーンで要求した VM SKU をサポートする必要があります。 これを検証するには、[リソース SKU リスト API](/rest/api/compute/resourceskus/list) を呼び出し、[resourceSku](/rest/api/compute/resourceskus/list#resourcesku) の **locationInfo** フィールドを確認します。 要求した VM SKU に対して、複数のゾーンがサポートされていることを確認します。
 
-[ユーザー サブスクリプション モードの Batch アカウント](accounts.md#batch-accounts)の場合、プールを作成するサブスクリプションに、要求した VM SKU に対するゾーン オファーの制限がないことを確認します。 これを確認するには、[リソース SKU リスト API](/rest/api/compute/resourceskus/list) を呼び出し、[ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions) を確認します。 ゾーン制限が存在する場合は、ゾーン制限を解除するために[サポート チケット](../azure-portal/supportability/sku-series-unavailable.md)を送信できます。
+[ユーザー サブスクリプション モードの Batch アカウント](accounts.md#batch-accounts)の場合、プールを作成するサブスクリプションに、要求した VM SKU に対するゾーン オファーの制限がないことを確認します。 これを確認するには、[リソース SKU リスト API](/rest/api/compute/resourceskus/list) を呼び出し、[ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions) を確認します。 ゾーン制限が存在する場合は、ゾーン制限を解除するために[サポート チケット](/troubleshoot/azure/general/region-access-request-process)を送信できます。
 
 また、ノード間通信が有効になっていて、[InfiniBand をサポートする VM SKU](../virtual-machines/workloads/hpc/enable-infiniband.md) を使用する場合は、ゾーン ポリシーを使用してプールを作成できないので注意してください。
 
@@ -83,4 +83,3 @@ client-request-id: 00000000-0000-0000-0000-000000000000
 - [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 - [Azure 仮想ネットワークのサブネットでのプールの作成](batch-virtual-network.md)について学習します。
 - [パブリック IP アドレスのない Azure Batch プールの作成](./batch-pool-no-public-ip-address.md)について学習します。
-

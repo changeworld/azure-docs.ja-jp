@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/10/2021
 ms.author: tisande
-ms.openlocfilehash: 79791bf2db888912d5c1f016f4bf357e76bddcba
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475102"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378810"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -290,7 +290,7 @@ WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true)
 ORDER BY c.firstName, c.lastName
 ```
 
-フィルターと `ORDER BY` 句が含まれるクエリを最適化するために複合インデックスを作成する場合は、次の考慮事項を確認します。
+次の考慮事項は、フィルターと `ORDER BY` 句が含まれるクエリを最適化するために複合インデックスを作成する場合に適用されます。
 
 * 1 つのプロパティに対するフィルターと、異なるプロパティを使用する別の `ORDER BY` 句が含まれるクエリに対して複合インデックスを定義しなかった場合でも、クエリは成功します。 しかし、複合インデックスを使用すると、特に `ORDER BY` 句内のプロパティのカーディナリティが高い場合、クエリの RU コストを削減できます。
 * クエリでプロパティをフィルター処理する場合は、最初に `ORDER BY` 句に含める必要があります。
@@ -309,8 +309,27 @@ ORDER BY c.firstName, c.lastName
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
 
+### <a name="queries-with-a-filter-and-an-aggregate"></a>フィルターと集計を使用したクエリ 
 
-## <a name="modifying-the-indexing-policy"></a>インデックス作成ポリシーの変更
+クエリが 1 つ以上のプロパティをフィルター処理し、集計システム関数を持つ場合は、フィルターおよび集計システム関数のプロパティの複合インデックスを作成すると便利な場合があります。 この最適化は、[SUM](sql-query-aggregate-sum.md) および [AVG](sql-query-aggregate-avg.md) システム関数に適用されます。
+
+次の考慮事項は、フィルターと集計システム関数が含まれるクエリを最適化するために複合インデックスを作成する場合に適用されます。
+
+* 複合インデックスは、集計を使用したクエリを実行するときは省略可能です。 しかし、多くの場合、クエリの RU コストは複合インデックスによって大きく削減できます。
+* クエリで複数のプロパティをフィルター処理する場合、等値フィルターを複合インデックスの最初のプロパティとする必要があります。
+* 範囲フィルターを複合インデックスごとに最大で 1 つ設定でき、それを集計システム関数のプロパティに指定する必要があります。
+* 集計システム関数のプロパティは、複合インデックス内で最後に定義する必要があります。
+* `order` (`ASC` または `DESC`) は関係ありません。
+
+| **複合インデックス**                      | **サンプル クエリ**                                  | **複合インデックスでサポートされているか** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `No` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
+| ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
+| ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
+
+## <a name="index-transformationmodifying-the-indexing-policy"></a><index-transformation>インデックス作成ポリシーの変更
 
 コンテナーのインデックス作成ポリシーは、[Azure portal またはサポートされている SDK のいずれかを使用して](how-to-manage-indexing-policy.md)いつでも更新できます。 インデックス作成ポリシーを更新すると、古いインデックスから新しいものへの変換がトリガーされ、オンラインでその場で実行されます (そのため、この操作中に記憶域が追加で消費されることはありません)。 古いインデックス作成ポリシーは、新しいポリシーに効率的に変換され、コンテナー上での書き込み可用性、読み取り可用性、またはプロビジョニングされたスループットが影響を受けることはありません。 インデックス変換は非同期操作であり、完了までにかかる時間は、プロビジョニングされたスループット、項目の数、およびそれらのサイズによって決まります。
 

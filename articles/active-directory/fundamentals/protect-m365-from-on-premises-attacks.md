@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e2e87196f9d4d38743847ee68983216b8790e0b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9913132ca6ff3ce2840b55aa771f7bd9be2404ea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257272"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650976"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -141,7 +141,7 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
     *   Azure portal へのアクセスをブロックします。 まれに必要となる例外を作成できます。  すべてのゲストと外部ユーザーを含む条件付きアクセス ポリシーを作成します。 その後、[アクセスをブロックするポリシーを実装します](../../role-based-access-control/conditional-access-azure-management.md)。 
 
-* **切断されたフォレスト:** [Azure AD クラウド プロビジョニング](../cloud-provisioning/what-is-cloud-provisioning.md)を使用します。 この方法により、切断されたフォレストに接続できるようになり、オンプレミスの侵害の影響を広げるおそれがあるフォレスト間の接続や信頼関係を確立する必要がなくなります。 
+* **切断されたフォレスト:** [Azure AD クラウド プロビジョニング](../cloud-sync/what-is-cloud-sync.md)を使用します。 この方法により、切断されたフォレストに接続できるようになり、オンプレミスの侵害の影響を広げるおそれがあるフォレスト間の接続や信頼関係を確立する必要がなくなります。 
  
 ### <a name="limitations-and-tradeoffs"></a>制限事項とトレードオフ
 

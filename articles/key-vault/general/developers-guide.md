@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 40ce5f55b4109fee0099110c17f02b33c3eff808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791426"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709905"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -41,7 +41,7 @@ Key Vault の管理は、他の Azure サービスと同様に、Azure Resource 
 
 | Azure CLI | PowerShell | REST API | リソース マネージャー | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[参照](/cli/azure/keyvault)<br>[クイックスタート](quick-create-cli.md)|[参照](/powershell/module/az.keyvault)<br>[クイックスタート](quick-create-powershell.md)|[リファレンス](/rest/api/keyvault/)|[リファレンス](/azure/templates/microsoft.keyvault/vaults)<br>[クイックスタート](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[参照](/dotnet/api/microsoft.azure.management.keyvault)|[リファレンス](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[リファレンス](/java/api/com.microsoft.azure.management.keyvault)|[リファレンス](/javascript/api/@azure/arm-keyvault)|
+|[参照](/cli/azure/keyvault)<br>[クイックスタート](quick-create-cli.md)|[リファレンス](/powershell/module/az.keyvault)<br>[クイックスタート](quick-create-powershell.md)|[リファレンス](/rest/api/keyvault/)|[リファレンス](/azure/templates/microsoft.keyvault/vaults)<br>[クイックスタート](./vault-create-template.md)|[リファレンス](/dotnet/api/microsoft.azure.management.keyvault)|[リファレンス](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[リファレンス](/java/api/com.microsoft.azure.management.keyvault)|[リファレンス](/javascript/api/@azure/arm-keyvault)|
 
 インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
@@ -89,19 +89,19 @@ Azure ID クライアント ライブラリの詳細については、以下を�
 
 | Azure CLI | PowerShell | REST API | リソース マネージャー | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[参照](/cli/azure/keyvault/key)<br>[クイックスタート](../keys/quick-create-cli.md)|[参照](/powershell/module/az.keyvault/)<br>[クイックスタート](../keys/quick-create-powershell.md)|[参照](/rest/api/keyvault/#key-operations)|[参照](/azure/templates/microsoft.keyvault/vaults/keys)<br>[クイックスタート](../keys/quick-create-template.md)|[リファレンス](/dotnet/api/azure.security.keyvault.keys)<br>[クイックスタート](../keys/quick-create-net.md)|[参照](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[クイックスタート](../keys/quick-create-python.md)|[参照](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[クイックスタート](../keys/quick-create-java.md)|[参照](/javascript/api/@azure/keyvault-keys/)<br>[クイックスタート](../keys/quick-create-node.md)|
+|[参照](/cli/azure/keyvault/key)<br>[クイックスタート](../keys/quick-create-cli.md)|[リファレンス](/powershell/module/az.keyvault/)<br>[クイックスタート](../keys/quick-create-powershell.md)|[リファレンス](/rest/api/keyvault/#key-operations)|[リファレンス](/azure/templates/microsoft.keyvault/vaults/keys)<br>[クイックスタート](../keys/quick-create-template.md)|[リファレンス](/dotnet/api/azure.security.keyvault.keys)<br>[クイックスタート](../keys/quick-create-net.md)|[リファレンス](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[クイックスタート](../keys/quick-create-python.md)|[リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[クイックスタート](../keys/quick-create-java.md)|[リファレンス](/javascript/api/@azure/keyvault-keys/)<br>[クイックスタート](../keys/quick-create-node.md)|
 
 **証明書の API と SDK**
 
 | Azure CLI | PowerShell | REST API | リソース マネージャー | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[参照](/cli/azure/keyvault/certificate)<br>[クイックスタート](../certificates/quick-create-cli.md)|[リファレンス](/powershell/module/az.keyvault)<br>[クイックスタート](../certificates/quick-create-powershell.md)|[参照](/rest/api/keyvault/#certificate-operations)|該当なし|[参照](/dotnet/api/azure.security.keyvault.certificates)<br>[クイックスタート](../certificates/quick-create-net.md)|[参照](/python/api/overview/azure/keyvault-certificates-readme)<br>[クイックスタート](../certificates/quick-create-python.md)|[参照](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[クイックスタート](../certificates/quick-create-java.md)|[参照](/javascript/api/@azure/keyvault-certificates/)<br>[クイックスタート](../certificates/quick-create-node.md)|
+|[参照](/cli/azure/keyvault/certificate)<br>[クイックスタート](../certificates/quick-create-cli.md)|[リファレンス](/powershell/module/az.keyvault)<br>[クイックスタート](../certificates/quick-create-powershell.md)|[参照](/rest/api/keyvault/#certificate-operations)|該当なし|[リファレンス](/dotnet/api/azure.security.keyvault.certificates)<br>[クイックスタート](../certificates/quick-create-net.md)|[リファレンス](/python/api/overview/azure/keyvault-certificates-readme)<br>[クイックスタート](../certificates/quick-create-python.md)|[リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[クイックスタート](../certificates/quick-create-java.md)|[リファレンス](/javascript/api/@azure/keyvault-certificates/)<br>[クイックスタート](../certificates/quick-create-node.md)|
 
 **シークレットの API と SDK**
 
 | Azure CLI | PowerShell | REST API | リソース マネージャー | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[参照](/cli/azure/keyvault/secret)<br>[クイックスタート](../secrets/quick-create-cli.md)|[参照](/powershell/module/az.keyvault/)<br>[クイックスタート](../secrets/quick-create-powershell.md)|[リファレンス](/rest/api/keyvault/#secret-operations)|[参照](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[クイックスタート](../secrets/quick-create-template.md)|[参照](/dotnet/api/azure.security.keyvault.secrets)<br>[クイックスタート](../secrets/quick-create-net.md)|[参照](/python/api/overview/azure/keyvault-secrets-readme)<br>[クイックスタート](../secrets/quick-create-python.md)|[参照](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[クイックスタート](../secrets/quick-create-java.md)|[参照](/javascript/api/@azure/keyvault-secrets/)<br>[クイックスタート](../secrets/quick-create-node.md)|
+|[参照](/cli/azure/keyvault/secret)<br>[クイックスタート](../secrets/quick-create-cli.md)|[リファレンス](/powershell/module/az.keyvault/)<br>[クイックスタート](../secrets/quick-create-powershell.md)|[リファレンス](/rest/api/keyvault/#secret-operations)|[リファレンス](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[クイックスタート](../secrets/quick-create-template.md)|[リファレンス](/dotnet/api/azure.security.keyvault.secrets)<br>[クイックスタート](../secrets/quick-create-net.md)|[リファレンス](/python/api/overview/azure/keyvault-secrets-readme)<br>[クイックスタート](../secrets/quick-create-python.md)|[リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[クイックスタート](../secrets/quick-create-java.md)|[リファレンス](/javascript/api/@azure/keyvault-secrets/)<br>[クイックスタート](../secrets/quick-create-node.md)|
 
 インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 

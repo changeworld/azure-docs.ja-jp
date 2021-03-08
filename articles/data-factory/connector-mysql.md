@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して MySQL からデータをコピーする
 description: MySQL データベースからシンクとしてサポートされているデータ ストアに データをコピーできる Azure Data Factory の MySQL コネクタについて説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 16f7a1481b15f280995bb71fa9e30ed3a129ab6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612636"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375257"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
 
@@ -99,13 +94,13 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
         "type": "MySql",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

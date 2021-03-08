@@ -1,24 +1,19 @@
 ---
 title: U-SQL スクリプトを使用したデータ変換 - Azure
 description: Azure Data Lake Analytics コンピューティング サービス - バージョン 1 で、U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。
-services: data-factory
-documentationcenter: ''
-ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5931cb28721e8658a771ceea1cd94624a0c09f7c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631463"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392920"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -28,7 +23,7 @@ ms.locfileid: "92631463"
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の U-SQL アクティビティ](../transform-data-using-data-lake-analytics.md)に関するページを参照してください。
 
-Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、 **Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ** について説明します。 
+Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ** について説明します。 
 
 Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成します。 Azure Data Lake Analytics の詳細については、 [Azure Data Lake Analytics の使用開始](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)に関するページをご覧ください。
 
@@ -121,7 +116,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 | Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など)。 |12 時間 |
 | Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から 14 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
-このエラーを回避または解決するには、 **トークンの有効期限が切れた** ときに、 **[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のようにコードを使用して、 **sessionId** と **authorization** のプロパティ値をプログラムで生成することもできます。
+このエラーを回避または解決するには、**トークンの有効期限が切れた** ときに、 **[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のようにコードを使用して、**sessionId** と **authorization** のプロパティ値をプログラムで生成することもできます。
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -317,7 +312,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-U-SQL スクリプトの **\@in** パラメーターと **\@out** パラメーターの値は、"parameters" セクションを使用して ADF によって動的に渡されます。 パイプライン定義の "parameters" セクションを参照してください。
+U-SQL スクリプトの **\@in** および **\@out** パラメーターの値は、"parameters" セクションを使用して ADF によって動的に渡されます。 パイプライン定義の "parameters" セクションを参照してください。
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism など) や優先度も指定できます。
 

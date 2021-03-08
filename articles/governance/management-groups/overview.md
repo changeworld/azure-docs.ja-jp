@@ -4,12 +4,12 @@ description: 管理グループ、そのアクセス許可のしくみ、その�
 ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e86501527ff68319fc8d2e942e7ffa977dcecbe6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9843b824c62e0f9919d7a71a717d9aad03dcbd9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736324"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590848"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure 管理グループとは
 
@@ -196,7 +196,7 @@ Marketing 管理グループに定義されたカスタム ロールがあると
 
 ## <a name="audit-management-groups-using-activity-logs"></a>アクティビティ ログを使用した監査管理グループ
 
-管理グループは、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)内でサポートされます。 他の Azure リソースと同じ一元的な場所で、管理グループに発生するすべてのイベントを検索できます。 たとえば、特定の管理グループに対して行われた、ロールの割り当てまたはポリシーの割り当ての変更を、すべて確認できます。
+管理グループは、[Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)内でサポートされます。 他の Azure リソースと同じ一元的な場所で、管理グループに発生するすべてのイベントを検索できます。 たとえば、特定の管理グループに対して行われた、ロールの割り当てまたはポリシーの割り当ての変更を、すべて確認できます。
 
 :::image type="content" source="./media/al-mg.png" alt-text="選択した管理グループに関連するアクティビティ ログと操作のスクリーンショット。" border="false":::
 

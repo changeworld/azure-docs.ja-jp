@@ -1,22 +1,18 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API からデータをコピーする
 description: Data Factory を使用して、サポートされるソース データ ストアのデータを Azure Cosmos DB の MongoDB 用 API にコピーしたり、Azure Cosmos DB のデータをサポートされるシンク ストアにコピーしたりする方法を説明します。
-services: data-factory, cosmosdb
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
-ms.service: multiple
-ms.workload: data-services
+ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 67e5fba562a398fe8f0e9639b3db2fd3d325b60f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f1e865daf9ba42126c0f8a341a54d87ac7f374a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635883"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393090"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB の MongoDB 用 API との間でデータを双方向にコピーする
 
@@ -79,7 +75,7 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは、 **CosmosDbMongoDbApiCollection** に設定する必要があります。 |はい |
+| type | データセットの **type** プロパティは、**CosmosDbMongoDbApiCollection** に設定する必要があります。 |はい |
 | collectionName |Azure Cosmos DB コレクションの名前。 |はい |
 
 **例**
@@ -117,12 +113,12 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 | filter | クエリ演算子を使用して選択フィルターを指定します。 コレクション内のすべてのドキュメントを返すには、このパラメーターを省略するか、空のドキュメント ({}) を渡します。 | いいえ |
 | cursorMethods.project | プロジェクションのドキュメントで返されるフィールドを指定します。 一致するドキュメント内のすべてのフィールドを返すには、このパラメーターを省略します。 | いいえ |
 | cursorMethods.sort | 一致するドキュメントがクエリによって返される順序を指定します。 「[cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)」を参照してください。 | いいえ |
-| cursorMethods.limit | サーバーが返すドキュメントの最大数を指定します。 「[cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)」を参照してください。  | いいえ | 
+| cursorMethods.limit |    サーバーが返すドキュメントの最大数を指定します。 「[cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)」を参照してください。  | いいえ | 
 | cursorMethods.skip | スキップするドキュメントの数と、MongoDB が結果を返すときの開始位置を指定します。 「[cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)」を参照してください。 | いいえ |
-| batchSize | MongoDB インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ<br/>(既定値は **100** ) |
+| batchSize | MongoDB インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ<br/>(既定値は **100**) |
 
 >[!TIP]
->ADF は、 **厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
+>ADF は、**厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
 
 **例**
 
@@ -169,8 +165,8 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは **CosmosDbMongoDbApiSink** に設定する必要があります。 |はい |
-| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、 **Insert** 、 **Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注** :元のドキュメントまたは列のマッピングで `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、 **upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
-| writeBatchSize | **writeBatchSize** プロパティにより、各バッチで書き込むドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。 |いいえ<br />(既定値は **10,000** ) |
+| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**:元のドキュメントまたは列のマッピングで `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBatchSize | **writeBatchSize** プロパティにより、各バッチで書き込むドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。 |いいえ<br />(既定値は **10,000**) |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。使用可能な値は timespan です。 | いいえ<br/>(既定値は **00:30:00** - 30 分) |
 
 >[!TIP]

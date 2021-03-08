@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
-ms.date: 01/08/2020
-ms.openlocfilehash: 4f3b201d35781d6d33eead0b0a21d38fbb897097
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 02/03/2021
+ms.openlocfilehash: b669870537ffb58d9ae7e8a5c65276d310ba6a7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966821"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722026"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
 
@@ -31,7 +31,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 > * 移行を実行する。
 > * 移行を監視する。
 
-このチュートリアルでは、Azure Database Migration Service を使用して、Azure 仮想マシンでホストされている MongoDB 内のデータセットを、Azure Cosmos DB の MongoDB 用 API に移行します。 MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](../virtual-machines/windows/install-mongodb.md)」をご覧ください。
+このチュートリアルでは、Azure Database Migration Service を使用して、Azure 仮想マシンでホストされている MongoDB 内のデータセットを、Azure Cosmos DB の MongoDB 用 API に移行します。 MongoDB ソースをまだセットアップしていない場合は、記事「[Azure の Windows VM に MongoDB をインストールして構成する](/previous-versions/azure/virtual-machines/windows/install-mongodb)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
 * スループットの見積もり、パーティション キーの選択、インデックス作成ポリシーなど、[移行前の手順を完了](../cosmos-db/mongodb-pre-migration.md)します。
 * [Azure Cosmos DB の MongoDB 用 API アカウントを作成します](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。 仮想ネットワークの作成方法の詳細については、「[Virtual Network のドキュメント](../virtual-network/index.yml)」を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
     > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加してください。
@@ -53,6 +53,18 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 * 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、次の各通信ポートがブロックされていないことを確認します。53、443、445、9354、および 10000 から 20000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
 * Azure Database Migration Service がソース MongoDB サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 27017 が使用されています。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
+
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>Azure Cosmos DB のサーバー側の再試行を構成して効率的に移行する
+
+MongoDB から Azure Cosmos DB に移行するお客様は、リソース ガバナンス機能を活用できます。これにより、プロビジョニング済み RU/秒のスループットを完全に利用できるようになります。 Azure Cosmos DB では、データ移行サービスの特定の要求がコンテナーにプロビジョニングされている RU/秒を超え、その要求を再試行する必要がある場合に、移行の過程でその要求を調整することができます。 データ移行サービスは再試行を実行できますが、データ移行サービスと Azure Cosmos DB と間のネットワーク ホップに関係するラウンドトリップ時間が、その要求の全体的な応答時間に影響します。 調整された要求の応答時間を改善することにより、移行に必要な合計時間を短縮できます。 Azure Cosmos DB の "*サーバー側の再試行*" 機能を使用すると、サービスで調整エラー コードをインターセプトし、はるかに短いラウンドトリップ時間で再試行することができるため、要求の応答時間が大幅に短縮されます。
+
+サーバー側の再試行機能は、Azure Cosmos DB ポータルの *[機能]* ブレードで確認できます
+
+![MongoDB の SSR 機能](media/tutorial-mongodb-to-cosmosdb/mongo-server-side-retry-feature.png)
+
+*[無効]* になっている場合は、次のように有効にすることをお勧めします
+
+![MongoDB の SSR を有効にする](media/tutorial-mongodb-to-cosmosdb/mongo-server-side-retry-enable.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 

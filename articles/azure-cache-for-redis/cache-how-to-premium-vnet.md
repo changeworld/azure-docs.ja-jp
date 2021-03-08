@@ -4,29 +4,24 @@ description: Premium レベルの Azure Cache for Redis インスタンスに対
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 9343bc424a0a38da173a56701528c4fd7549aabd
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.date: 02/08/2021
+ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734659"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375274"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートを構成する
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートの構成
 
-Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 Premium レベルの機能には、クラスタリング、永続化、および仮想ネットワークのサポートが含まれています。 仮想ネットワークとは、クラウド内のプライベート ネットワークです。 仮想ネットワークを使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、仮想ネットワーク内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワークのサポートを構成する方法について説明します。
+[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、セキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシーや、アクセスをさらに制限する他の機能も提供されます。 仮想ネットワークを使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、仮想ネットワーク内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワークのサポートを構成する方法について説明します。
 
 > [!NOTE]
 > Azure Cache for Redis では、クラシック デプロイ モデルと Azure Resource Manager 仮想ネットワークの両方がサポートされています。
 > 
 
-## <a name="why-virtual-network"></a>Virtual Network を使用する理由
-
-[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、Azure Cache for Redis インスタンスのセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。
-
-## <a name="virtual-network-support"></a>Virtual Network のサポート
+## <a name="set-up-virtual-network-support"></a>仮想ネットワーク サポートの設定
 
 Virtual Network (VNet) のサポートは、キャッシュの作成中に **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ペインで構成します。
 
@@ -178,7 +173,7 @@ Azure Cache for Redis のネットワーク接続要件には、仮想ネット�
 * 世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続 Azure Cache for Redis インスタンスと同じリージョン内にあるエンドポイントと、"*他の*" Azure リージョン内にあるストレージ エンドポイントが含まれます。 Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
 * *ocsp.digicert.com*、*crl4.digicert.com*、*ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl3.digicert.com*、*cacerts.digicert.com*、*oneocsp.microsoft.com*、*crl.microsoft.com* への送信ネットワーク接続。 この接続は、TLS/SSL 機能をサポートするために必要です。
 * 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
-* 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net*、*north-prod2.prod2.metrics.nsatc.net*、*azglobal-black.azglobal.metrics.nsatc.net*、*shoebox2-red.shoebox2.metrics.nsatc.net*、*east-prod2.prod2.metrics.nsatc.net*、および *azglobal-red.azglobal.metrics.nsatc.net*。
+* 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net*、*north-prod2.prod2.metrics.nsatc.net*、*azglobal-black.azglobal.metrics.nsatc.net*、*shoebox2-red.shoebox2.metrics.nsatc.net*、*east-prod2.prod2.metrics.nsatc.net*、*azglobal-red.azglobal.metrics.nsatc.net*、*shoebox3.prod.microsoftmetrics.com*、*shoebox3-red.prod.microsoftmetrics.com*、および *shoebox3-black.prod.microsoftmetrics.com*。
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-virtual-network"></a>仮想ネットワークで自分のキャッシュの動作を確認するにはどうすればよいですか?
 

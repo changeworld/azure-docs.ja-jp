@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd54459cef3d6f20180b4c7c41eefbdd42c6980c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b58d96adba690084580fe11b42253a1e77370379
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807922"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595599"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックスの Azure セキュリティ ベースライン
 
@@ -164,7 +164,7 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、カスタマー ロックボックスに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-* [ログ保持期間のパラメーターを設定する方法](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [ログ保持期間のパラメーターを設定する方法](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -186,7 +186,7 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 * [カスタマー ロックボックスの監査ログ](./customer-lockbox-overview.md#auditing-logs)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/learn/tutorial-response.md)
+* [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -461,9 +461,9 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 * [カスタマー ロックボックスで監査を有効にする方法](./customer-lockbox-overview.md)
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -519,7 +519,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Azure Resource Graph で検出できますが、Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
@@ -561,7 +561,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -699,7 +699,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**:適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -873,7 +873,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 * [Azure Security Center のセキュリティ連絡先を設定する方法](../../security-center/security-center-provide-security-contact-details.md)
 

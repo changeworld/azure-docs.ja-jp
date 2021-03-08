@@ -1,26 +1,23 @@
 ---
 title: PowerShell を使用して複数のテーブルを増分コピーする
 description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: anandsub
 ms.reviewer: douglasl, maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: 61a4119947b1412d3e874458e06748fd40a381b4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 02/18/2021
+ms.openlocfilehash: bd29c91efe419ec36b2adc337ecfd1ea7fd71f71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510262"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739319"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。    
 

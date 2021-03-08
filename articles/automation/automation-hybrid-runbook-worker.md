@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896954"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581271"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hybrid Runbook Worker の概要
 
@@ -25,7 +25,7 @@ Runbook Worker には、システムとユーザーの 2 種類があります�
 |**システム** |Windows および Linux マシンにユーザー指定の更新プログラムをインストールするために設計された Update Management 機能によって使用される、非表示の一連の Runbook がサポートされます。<br> この種類の Hybrid Runbook Worker は Hybrid Runbook Worker グループのメンバーではないため、Runbook Worker グループを対象とする Runbook は実行されません。 |
 |**User** |1 つまたは複数の Runbook Worker グループのメンバーである Windows および Linux マシン上で直接実行することを目的としたユーザー定義の Runbook がサポートされます。 |
 
-Hybrid Runbook Worker は、Windows または Linux のいずれかのオペレーティング システムで実行できます。このロールは、Azure Monitor [Log Analytics ワークスペース](../azure-monitor/platform/design-logs-deployment.md)へレポートする [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)に依存しています。 ワークスペースは、サポートされているオペレーティング システムのマシンを監視するだけでなく、Hybrid Runbook Worker のインストールに必要なコンポーネントをダウンロードするためのものでもあります。
+Hybrid Runbook Worker は、Windows または Linux のいずれかのオペレーティング システムで実行できます。このロールは、Azure Monitor [Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)へレポートする [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)に依存しています。 ワークスペースは、サポートされているオペレーティング システムのマシンを監視するだけでなく、Hybrid Runbook Worker のインストールに必要なコンポーネントをダウンロードするためのものでもあります。
 
 Azure Automation [Update Management](./update-management/overview.md) を有効にすると、Log Analytics ワークスペースに接続されたマシンはすべてシステム Hybrid Runbook Worker として自動的に構成されます。 ユーザー Windows Hybrid Runbook Worker として構成する場合は、「[Windows Hybrid Runbook Worker をデプロイする](automation-windows-hrw-install.md)」を参照してください。Linux の場合は、「[Linux Hybrid Runbook Worker を展開する](automation-linux-hrw-install.md)」を参照してください。
 
@@ -62,7 +62,7 @@ Azure Automation と、Log Analytics エージェントを実行しているマ�
 
 ### <a name="firewall-use"></a>ファイアウォールの使用
 
-ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、Hybrid Runbook Worker 用に構成されていることを確認してください。 [Automation Hybrid Runbook Worker 用の Log Analytics ゲートウェイの構成](../azure-monitor/platform/gateway.md)に関するページをご覧ください。
+ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、Hybrid Runbook Worker 用に構成されていることを確認してください。 [Automation Hybrid Runbook Worker 用の Log Analytics ゲートウェイの構成](../azure-monitor/agents/gateway.md)に関するページをご覧ください。
 
 ### <a name="service-tags"></a>サービス タグ
 

@@ -9,20 +9,27 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: e8d21e57f9a844b3cc0538f4805780829a1350f4
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428590"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585400"
 ---
 # <a name="trusted-storage-for-media-services"></a>Media Services 用の信頼されたストレージ
 
 Media Services アカウントを作成するときは、それをストレージ アカウントに関連付ける必要があります。 システム認証またはマネージド ID 認証を使用することで、Media Services からそのストレージ アカウントにアクセスできます。 Media Services により、Media Services アカウントとストレージ アカウントが同じサブスクリプションに含まれていることが検証され、また、関連付けを追加するユーザーが Azure Resource Manager RBAC を使用してストレージ アカウントにアクセスしていることが検証されます。
 
+>[!NOTE]
+>信頼されたストレージは API でのみ使用でき、現在、Azure portal では有効になっていません。
+
 ## <a name="trusted-storage-with-a-firewall"></a>ファイアウォールを使用した信頼されたストレージ
 
-ただし、ファイアウォールを使用してストレージ アカウントをセキュリティで保護し、信頼されたストレージを有効にする場合は、[マネージド ID](concept-managed-identities.md) 認証を選択することをお勧めします。 これにより、Media Services は、信頼されたストレージ アクセスによって、ファイアウォールまたは VNet 制限で構成されたストレージ アカウントにアクセスできるようになります。 これにより、Media Services は、信頼されたストレージ アクセスによって、ファイアウォールまたは VNet 制限で構成されたストレージ アカウントにアクセスできるようになります。
+ただし、ファイアウォールを使用してストレージ アカウントをセキュリティで保護し、信頼されたストレージを有効にする場合は、[マネージド ID](concept-managed-identities.md) 認証を選択することをお勧めします。 これにより、Media Services は、信頼されたストレージ アクセスによって、ファイアウォールまたは VNet 制限で構成されたストレージ アカウントにアクセスできるようになります。
+
+## <a name="tutorial"></a>チュートリアル
+
+信頼されたストレージを有効化する方法の詳細については、「[Media Services の信頼されたストレージ](tutorial-trusted-storage-rest.md)」のチュートリアルを参照してください。
 
 > [!NOTE]
 > Media Services でストレージ アカウントに対する読み取りと書きを行えるようにするには、AMS マネージド ID ストレージ BLOB データ共同作成者アクセスを許可する必要があります。  汎用的な共同作成者ロールを付与してもうまくいきません。データ プレーンに対する適切なアクセス許可を有効にすることができないからです。

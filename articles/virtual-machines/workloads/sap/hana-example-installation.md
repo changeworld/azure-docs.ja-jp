@@ -6,20 +6,19 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 994130ce2ecb4578a8d34f1f77b310bb558d3c7a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 59ea41254c16f32f19a67e7811177a4667a85e7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967909"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666708"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (Large Instances) に HANA をインストールする
 
@@ -76,11 +75,11 @@ rpm –qa | grep gtk2
 ```
 ./hdblcmgui 
 ```
-ここから一連の画面に従って進み、インストールのデータを指定します。 この例では、SAP HANA データベース サーバーと SAP HANA クライアント コンポーネントをインストールします。 したがって、 **[SAP HANA Database]\(SAP HANA データベース\)** を選択します。
+ここから一連の画面に従って進み、インストールのデータを指定します。 この例では、SAP HANA データベース サーバーと SAP HANA クライアント コンポーネントをインストールします。 したがって、**[SAP HANA Database]\(SAP HANA データベース\)** を選択します。
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([SAP HANA Database]\(SAP HANA データベース\) を選択)](./media/hana-installation/image18_hana_selection.PNG)
 
-次の画面で、 **[Install New System]\(新しいシステムのインストール\)** を選択します。
+次の画面で、**[Install New System]\(新しいシステムのインストール\)** を選択します。
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([Install New System]\(新しいシステムのインストール\) を選択)](./media/hana-installation/image19_select_new.PNG)
 
@@ -88,7 +87,7 @@ rpm –qa | grep gtk2
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット (追加コンポーネントの一覧)](./media/hana-installation/image20_select_components.PNG)
 
-ここでは、SAP HANA Client と SAP HANA Studio を選択します。 また、スケールアップ インスタンスもインストールします。 次に、 **[Single-Host System]\(シングルホスト システム\)** を選択します。 
+ここでは、SAP HANA Client と SAP HANA Studio を選択します。 また、スケールアップ インスタンスもインストールします。 次に、**[Single-Host System]\(シングルホスト システム\)** を選択します。 
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([Single-Host System]\(シングルホスト システム\) を選択)](./media/hana-installation/image21_single_host.PNG)
 

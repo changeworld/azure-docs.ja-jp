@@ -8,19 +8,19 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2020
-ms.openlocfilehash: 6e397242bd699adcba4737014ebbce72aadc8ec2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 02/11/2021
+ms.openlocfilehash: 15cc935457f76fb1d2fe4e8d699db831ebacc357
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669825"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181756"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL での Azure Active Directory のサービス プリンシパル
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure AD アプリケーション (サービスプリンシパル) の代わりに Azure SQL Database (SQL DB) および [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に Azure Active Directory (Azure AD) ユーザーを作成する機能のサポートは、現在、 **パブリック プレビュー** の段階です。
+Azure AD アプリケーション (サービスプリンシパル) の代わりに Azure SQL Database (SQL DB) および [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に Azure Active Directory (Azure AD) ユーザーを作成する機能のサポートは、現在、**パブリック プレビュー** の段階です。
 
 > [!NOTE]
 > この機能は、SQL Managed Instance では既にサポートされています。
@@ -52,7 +52,7 @@ Azure AD アプリケーションの代わりに T-SQL コマンド `CREATE USER
 
 Azure AD アプリケーションの代わりに SQL Database と Azure Synapse で Azure AD オブジェクトを作成できるようにするには、次の設定が必要となります。
 
-1. サーバー ID を割り当てます
+1. サーバー ID を割り当てます。 割り当てられたサーバー ID はマネージド システム ID (MSI) を表します。 現時点では、Azure SQL のサーバー ID ではユーザー マネージド ID (UMI) がサポートされていません。
     - 新しい Azure SQL 論理サーバーの場合は、次の PowerShell コマンドを実行します。
     
     ```powershell
@@ -72,7 +72,7 @@ Azure AD アプリケーションの代わりに SQL Database と Azure Synapse 
     - サーバー ID がサーバーに割り当てられているかどうかを確認するには、Get AzSqlServer コマンドを実行します。
 
     > [!NOTE]
-    > サーバー ID は CLI コマンドを使用して割り当てることもできます。 詳細については、「[az sql server create](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create&preserve-view=true)」および「[az sql server update](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update&preserve-view=true)」を参照してください。
+    > サーバー ID は CLI コマンドを使用して割り当てることもできます。 詳細については、「[az sql server create](/cli/azure/sql/server#az-sql-server-create)」および「[az sql server update](/cli/azure/sql/server#az-sql-server-update)」を参照してください。
 
 2. サーバーに対して作成したか、割り当てたサーバー ID に Azure AD の [**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)アクセス許可を付与します。
     - このアクセス許可を付与するには、次の記事に記載されている SQL Managed Instance で使用される説明に従ってください。[Azure AD 管理者 (SQL Managed Instance) をプロビジョニングする](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
@@ -83,7 +83,7 @@ Azure AD アプリケーションの代わりに SQL Database と Azure Synapse 
 >
 > サービス プリンシパルを使用して Azure AD 管理者を設定または設定解除する場合、アプリケーションには、Azure AD で [Directory.Read.All](/graph/permissions-reference#application-permissions-18) アプリケーション API アクセス許可も必要です。 [Azure AD 管理者を設定するために必要なアクセス許可](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)の詳細、および Azure AD アプリケーションの代わりに Azure AD ユーザーを作成するための詳細な手順については、「[チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](authentication-aad-service-principal-tutorial.md)」から)。
 >
-> **パブリック プレビュー** では、Azure AD 内のグループに **ディレクトリ閲覧者** ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、 **グローバル管理者** 、または **特権ロール管理者** のニーズがバイパスされ、 **ディレクトリ閲覧者** ロールが許可されます。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
+> **パブリック プレビュー** では、Azure AD 内のグループに **ディレクトリ閲覧者** ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、**グローバル管理者**、または **特権ロール管理者** のニーズがバイパスされ、**ディレクトリ閲覧者** ロールが許可されます。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>パブリック プレビューのトラブルシューティングと制限
 
@@ -94,7 +94,7 @@ Azure AD アプリケーションの代わりに SQL Database と Azure Synapse 
       - 上記のエラーが発生した場合は、「[Azure SQL 論理サーバーに ID を割り当てる](authentication-aad-service-principal-tutorial.md#assign-an-identity-to-the-azure-sql-logical-server)」および「[SQL 論理サーバーの ID にディレクトリ閲覧者のアクセス許可を割り当てる](authentication-aad-service-principal-tutorial.md#assign-directory-readers-permission-to-the-sql-logical-server-identity)」の手順に従ってください。
     > [!NOTE]
     > 上記のエラー メッセージは、Azure AD アプリケーションのサポートに不足しているセットアップ要件を明確に特定するように、機能 GA の前に変更されます。
-- SQL Managed Instance の Azure AD 管理者として Azure AD アプリケーションを設定することは、CLI コマンドで [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 以上の PowerShell コマンドを使用した場合のみサポートされます。 詳細については、「[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin?view=azure-cli-latest&preserve-view=true#az-sql-mi-ad-admin-create)」および「[Set-AzSqlInstanceActiveDirectoryAdministrato](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator)」コマンドを参照してください。 
+- SQL Managed Instance の Azure AD 管理者として Azure AD アプリケーションを設定することは、CLI コマンドで [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 以上の PowerShell コマンドを使用した場合のみサポートされます。 詳細については、「[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create)」および「[Set-AzSqlInstanceActiveDirectoryAdministrato](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator)」コマンドを参照してください。 
     - Azure portal を使用して SQL Managed Instance の Azure AD 管理者を設定する場合、考えられる回避策は Azure AD グループを作成することです。 その後、サービス プリンシパル (Azure AD アプリケーション) をこのグループに追加し、このグループを SQL Managed Instance の Azure AD 管理者として設定します。
     - SQL Database および Azure Synapse の Azure AD 管理者としてサービス プリンシパル (Azure AD アプリケーション) を設定する操作は、Azure portal、[PowerShell](authentication-aad-configure.md?tabs=azure-powershell#powershell-for-sql-database-and-azure-synapse)、および [CLI](authentication-aad-configure.md?tabs=azure-cli#powershell-for-sql-database-and-azure-synapse) コマンドを使用した場合にサポートされます。
 - 別のテナントで作成された SQL Database または SQL Managed Instance にアクセスする場合、別の Azure AD テナントのサービス プリンシパルの Azure AD アプリケーションを使用すると、失敗します。 このアプリケーションに割り当てるサービス プリンシパルは、SQL 論理サーバーまたは Managed Instance と同じテナントのサービス プリンシパルである必要があります。

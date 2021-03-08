@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/12/2021
-ms.openlocfilehash: 5a7ddcf25993ab4ce87bdc47c5e0ae32fa24b07f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7907c81e45680de49f6653891fb4204a59db1002
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98987191"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710551"
 ---
 # <a name="private-endpoints"></a>プライベート エンドポイント
 
 Azure プライベート エンドポイントは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 現在、QnA Maker では、Azure Search サービスへのプライベート エンドポイントの作成がサポートされています。 この機能は、QnA Maker マネージドで使用できます。 
 
-プライベート エンドポイントは、別サービスとして、[Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview) によって提供されます。 コストの詳細については、[価格ページ](https://azure.microsoft.com/pricing/details/private-link/)を参照してください。 
+プライベート エンドポイントは、別サービスとして、[Azure Private Link](../../private-link/private-link-overview.md) によって提供されます。 コストの詳細については、[価格ページ](https://azure.microsoft.com/pricing/details/private-link/)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 > [!div class="checklist"]

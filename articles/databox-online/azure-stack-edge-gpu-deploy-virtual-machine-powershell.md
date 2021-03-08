@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
-description: Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに仮想マシン (VM) を作成し、それを管理する方法について説明します。
+title: Azure PowerShell を使用して Azure Stack Edge デバイスに VM をデプロイする
+description: Azure PowerShell を使用して Azure Stack Edge デバイスに仮想マシンを作成および管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: d4a4a2e6e04f8f6247df663aba033d387e66c437
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802985"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546892"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
+# <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge デバイスに VM をデプロイする
 
-この記事では、Azure PowerShell を使用して、Azure Stack Edge Pro デバイスに VM を作成し、管理する方法について説明します。 この記事は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、および Azure Stack Edge Mini R デバイスに適用されます。
+この記事では、Azure PowerShell を使用して、Azure Stack Edge デバイスに VM を作成し、管理する方法について説明します。 この記事は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、および Azure Stack Edge Mini R デバイスに適用されます。
 
 ## <a name="vm-deployment-workflow"></a>VM デプロイのワークフロー
 
-次の図にデプロイのワークフローを示します。
+デプロイ ワークフローは次のようになります。
 
-![VM デプロイのワークフロー](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
+![VM デプロイ ワークフローの図。](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ Azure Resource Manager では、ユーザーが表示できる固定サブスク
     Get-AzureRmSubscription
     ```
     
-    サンプル出力を次に示します。
+    出力例を次に示します。
 
     ```powershell
     PS C:\windows\system32> Get-AzureRmSubscription
@@ -59,7 +59,7 @@ Azure Resource Manager では、ユーザーが表示できる固定サブスク
     PS C:\windows\system32>
     ```
         
-3.  デバイスで実行されている登録済みのリソース プロバイダーの一覧を取得します。 この一覧には、通常、Compute、Network、および Storage が含まれます。
+1. デバイスで実行されている登録済みのリソース プロバイダーの一覧を取得します。 この一覧には、通常、コンピューティング、ネットワーク、およびストレージが含まれます。
 
     ```powershell
     Get-AzureRMResourceProvider
@@ -68,7 +68,7 @@ Azure Resource Manager では、ユーザーが表示できる固定サブスク
     > [!NOTE]
     > リソース プロバイダーは事前登録されており、修正または変更することはできません。
     
-    サンプル出力を次に示します。
+    出力例を次に示します。
 
     ```powershell
     Get-AzureRmResourceProvider
@@ -109,7 +109,7 @@ Azure Resource Manager では、ユーザーが表示できる固定サブスク
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
 ```
 
-サンプル出力を次に示します。
+出力例を次に示します。
 
 ```powershell
 New-AzureRmResourceGroup -Name rg191113014333 -Location DBELocal 
@@ -118,16 +118,16 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-前の手順で作成したリソース グループを使用して、新しいストレージ アカウントを作成します。 このアカウントは、VM の仮想ディスク イメージのアップロードに使用される **ローカル ストレージ アカウント** です。
+前の手順で作成したリソース グループを使用して、新しいストレージ アカウントを作成します。 これは、VM の仮想ディスク イメージのアップロードに使用するローカル ストレージ アカウントです。
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
 ```
 
 > [!NOTE]
-> Azure Resource Manager を使用して作成できるのは、ローカル冗長ストレージ (Standard_LRS または Premium_LRS) などのローカル ストレージ アカウントのみです。 階層型ストレージ アカウントを作成する場合は、[Azure Stack Edge Pro でのストレージ アカウントの追加と接続](azure-stack-edge-j-series-deploy-add-storage-accounts.md)に関するページの手順を参照してください。
+> Azure Resource Manager を使用すると、ローカル冗長ストレージ (Standard または Premium) などのローカル ストレージ アカウントのみを作成できます。 階層化ストレージ アカウントを作成するには、「[チュートリアル: Azure Stack Edge Pro GPU でストレージ アカウントを使用してデータを転送する](azure-stack-edge-j-series-deploy-add-storage-accounts.md)」を参照してください。
 
-サンプル出力を次に示します。
+出力例を次に示します。
 
 ```powershell
 New-AzureRmStorageAccount -Name sa191113014333  -ResourceGroupName rg191113014333 -SkuName Standard_LRS -Location DBELocal
@@ -158,7 +158,7 @@ Context                : Microsoft.WindowsAzure.Commands.Common.Storage.LazyAzur
 ExtendedProperties     : {}
 ```
 
-ストレージ アカウント キーを取得するには、`Get-AzureRmStorageAccountKey` コマンドを実行します。 このコマンドのサンプル出力を次に示します。
+ストレージ アカウント キーを取得するには、`Get-AzureRmStorageAccountKey` コマンドを実行します。 このコマンドの出力例を次に示します。
 
 ```powershell
 PS C:\Users\Administrator> Get-AzureRmStorageAccountKey
@@ -175,20 +175,19 @@ key1 /IjVJN+sSf7FMKiiPLlDm8mc9P4wtcmhhbnCa7...
 key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 ```
 
-## <a name="add-blob-uri-to-hosts-file"></a>hosts ファイルに BLOB の URI を追加する
+## <a name="add-the-blob-uri-to-the-host-file"></a>BLOB URI をホスト ファイルに追加する
 
-「[エンドポイントの名前解決のためにホスト ファイルを変更する](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)」セクションで、BLOB ストレージへの接続に使用しているクライアントのホスト ファイルに、BLOB の URI を既に追加しました。 このエントリは、BLOB URI を追加するために使用されました。
+「[エンドポイントの名前解決のためにホスト ファイルを変更する](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)」セクションで、Azure Blob Storage への接続に使用しているクライアントのホスト ファイルに、BLOB の URI を既に追加しました。 このエントリは、BLOB URI を追加するために使用されました。
 
 \<Azure consistent network services VIP \> \<storage name\>.blob.\<appliance name\>.\<dnsdomain\>
 
-
 ## <a name="install-certificates"></a>証明書をインストールする
 
-*https* をお使いの場合は、デバイスに適切な証明書をインストールする必要があります。 この場合は、BLOB エンドポイント証明書をインストールします。 詳細については、[証明書を管理する](azure-stack-edge-j-series-manage-certificates.md)方法に関するページで、証明書を作成およびアップロードする方法を参照してください。
+*https* をお使いの場合は、デバイスに適切な証明書をインストールする必要があります。 この場合は、BLOB エンドポイント証明書をインストールします。 詳細については、「[Azure Stack Edge Pro GPU デバイスで証明書を使用する](azure-stack-edge-gpu-manage-certificates.md)」の証明書を作成およびアップロードする方法を参照してください。
 
 ## <a name="upload-a-vhd"></a>VHD のアップロード
 
-前の手順で作成したローカル ストレージ アカウントのページ BLOB に、使用するディスク イメージをコピーします。 [AzCopy](../storage/common/storage-use-azcopy-v10.md) などのツールを使用して、前の手順で作成したストレージ アカウントに VHD をアップロードできます。 
+前の手順で作成したローカル ストレージ アカウントのページ BLOB に、使用するディスク イメージをコピーします。 [AzCopy](../storage/common/storage-use-azcopy-v10.md) などのツールを使用して、ストレージ アカウントに VHD をアップロードできます。 
 
 <!--Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
@@ -197,11 +196,11 @@ AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storag
 ```
 
 > [!NOTE]
-> Set `BlobType` to page for creating a managed disk out of VHD. Set `BlobType` to block when writing to tiered storage accounts using AzCopy.
+> Set `BlobType` to `page` for creating a managed disk out of VHD. Set `BlobType` to `block` when you're writing to tiered storage accounts by using AzCopy.
 
-You can download the disk images from the marketplace. For detailed steps, go to [Get the virtual disk image from Azure marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
+You can download the disk images from Azure Marketplace. For detailed steps, see [Get the virtual disk image from Azure Marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
 
-A sample output using AzCopy 7.3 is shown below. For more information on this command, go to [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
+Here's a sample output using AzCopy 7.3. For more information on this command, see [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
 
 
 ```powershell
@@ -248,7 +247,8 @@ C:\AzCopy.exe  cp "$VHDPath\$VHDFile" "$endPoint$ContainerName$StorageAccountSAS
 ```powershell
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
-サンプル出力を次に示します。 
+出力例を次に示します。 
+
 <code>
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-サンプル出力を次に示します。 このコマンドレットの詳細については、「[New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
+出力例を次に示します。 このコマンドレットの詳細については、「[New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-サンプル出力を次に示します。 このコマンドレットの詳細については、「[New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
+出力例を次に示します。 このコマンドレットの詳細については、「[New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -317,15 +317,14 @@ Tags                 : {}
 VM を作成してデプロイする前に、1 つの仮想ネットワークを作成し、仮想ネットワーク インターフェイスを関連付ける必要があります。
 
 > [!IMPORTANT]
-> 仮想ネットワークと仮想ネットワーク インターフェイスを作成するときは、次の規則が適用されます。
-> - (リソース グループ間の場合も) 1 つの VNet のみを作成でき、これは、アドレス空間に関して論理ネットワークと正確に一致する必要があります。
-> - VNet で許可されるサブネットは 1 つだけです。 サブネットは、VNet と完全に同じアドレス空間である必要があります。
-> - VNIC の作成時には静的割り当て方法のみが許可され、ユーザーはプライベート IP アドレスを指定する必要があります。
+> 次の規則が適用されます。
+> - 仮想ネットワークは、リソース グループ全体でも 1 つしか作成できません。 仮想ネットワークのアドレス空間は、論理ネットワークとまったく同じである必要があります。
+> - 仮想ネットワークが所有できるサブネットは 1 つに限られています。 サブネットのアドレス空間は、仮想ネットワークとまったく同じである必要があります。
+> - 仮想ネットワーク インターフェイス カードを作成するときは、静的な割り当て方法のみを使用できます。 ユーザーは、プライベート IP アドレスを指定する必要があります。
 
- 
-**自動的に作成された Vnet のクエリを実行する**
+### <a name="query-the-automatically-created-virtual-network"></a>自動的に作成された仮想ネットワークのクエリを実行する
 
-デバイスのローカル UI からコンピューティングを有効にすると、Vnet `ASEVNET` が `ASERG` リソース グループの下に自動的に作成されます。 次のコマンドを使用して、既存の Vnet のクエリを実行します。
+デバイスのローカル UI からコンピューティングを有効にすると、`ASEVNET` という仮想ネットワークが `ASERG` リソース グループの下に自動的に作成されます。 次のコマンドを使用して、既存の仮想ネットワークのクエリを実行します。
 
 ```powershell
 $aRmVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG 
@@ -336,7 +335,9 @@ $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name <Subnet name> -AddressPref
 $aRmVN = New-AzureRmVirtualNetwork -ResourceGroupName <Resource group name> -Name <Vnet name> -Location DBELocal -AddressPrefix <Address prefix> -Subnet $subNetId
 ```-->
 
-**VNet のサブネット ID を使用して VNIC を作成する**
+### <a name="create-a-virtual-network-interface-card"></a>仮想ネットワーク インターフェイス カードの作成
+
+仮想ネットワークのサブネット ID を使用して仮想ネットワーク インターフェイス カードを作成するコマンドを次に示します。
 
 ```powershell
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <IP config Name> -SubnetId $aRmVN.Subnets[0].Id -PrivateIpAddress <Private IP>
@@ -405,7 +406,7 @@ Primary                     : True
 MacAddress                  : 00155D18E432                :
 ```
 
-必要に応じて、VM の VNIC を作成するときに、パブリック IP を渡すことができます。 このインスタンスでは、パブリック IP によってプライベート IP が返されます。 
+必要に応じて、VM の仮想ネットワーク インターフェイスを作成するときに、パブリック IP を渡すことができます。 このインスタンスでは、パブリック IP によってプライベート IP が返されます。 
 
 ```powershell
 New-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <ResourceGroupName> -AllocationMethod Static -Location DBELocal
@@ -413,8 +414,7 @@ $publicIP = (Get-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <Re
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <ConfigName> -PublicIpAddressId $publicIP -SubnetId $subNetId
 ```
 
-
-**VM を作成します**
+### <a name="create-a-vm"></a>VM の作成
 
 これで、VM イメージを使用して VM を作成し、先ほど作成した仮想ネットワークに接続できるようになりました。
 
@@ -458,15 +458,15 @@ Windows VM に接続するには、これらの手順に従います。
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
 
 
-<!--Connect to the VM using the private IP that you passed during the VM creation.
+<!--Connect to the VM by using the private IP that you passed during the VM creation.
 
 Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-When prompted, provide the password that you used when creating the VM.
+When you're prompted, provide the password that you used when creating the VM.
 
-If you need to provide the SSH key, use this command.
+If you need to provide the SSH key, use this command:
 
 ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
@@ -475,16 +475,16 @@ If you used a public IP address during VM creation, you can use that IP to conne
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
+The public IP in this case is the same as the private IP that you passed during the virtual network interface creation.-->
 
 
-## <a name="manage-vm"></a>VM を管理する
+## <a name="manage-the-vm"></a>VM の管理
 
-次のセクションでは、Azure Stack Edge Pro デバイス上に作成する VM に関する一般的ないくつかの操作について説明します。
+次のセクションでは、Azure Stack Edge Pro デバイス上に作成できる一般的ないくつかの操作について説明します。
 
 ### <a name="list-vms-running-on-the-device"></a>デバイスで実行されている VM を一覧表示する
 
-Azure Stack Edge Pro デバイスで実行されているすべての VM の一覧を取得するには、次のコマンドを実行します。
+Azure Stack Edge デバイスで実行されているすべての VM の一覧を取得するには、次のコマンドを実行します。
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -497,7 +497,6 @@ Azure Stack Edge Pro デバイスで実行されているすべての VM の一�
 
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
-
 このコマンドレットの詳細については、「[Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
 ### <a name="suspend-or-shut-down-the-vm"></a>VM を中断またはシャットダウンする
@@ -508,7 +507,6 @@ Azure Stack Edge Pro デバイスで実行されているすべての VM の一�
 ```powershell
 Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
-
 
 このコマンドレットの詳細については、「[Stop-AzureRmVM コマンドレット](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
@@ -531,8 +529,6 @@ Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
 このコマンドレットの詳細については、「[Remove-AzureRmVm コマンドレット](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

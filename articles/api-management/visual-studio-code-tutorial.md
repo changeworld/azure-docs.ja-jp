@@ -6,16 +6,16 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 6cf5c6f716912689b39264ed71f6a7c55f944ad2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97410072"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649548"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>チュートリアル:Visual Studio Code 用の API Management 拡張機能を使用して API をインポートおよび管理する
 
-このチュートリアルでは、Visual Studio Code 用の API Management 拡張機能 (プレビュー) を使用して、API Management の一般的な操作を行う方法について説明します。 使い慣れた Visual Studio Code 環境を使用して、API のインポート、更新、テスト、管理を行います。
+このチュートリアルでは、Visual Studio Code 用の API Management 拡張機能を使用して、API Management の一般的な操作を行う方法について説明します。 使い慣れた Visual Studio Code 環境を使用して、API のインポート、更新、テスト、管理を行います。
 
 学習内容は次のとおりです。
 
@@ -32,7 +32,7 @@ ms.locfileid: "97410072"
 
 ## <a name="prerequisites"></a>[前提条件]
 - [Azure API Management の用語](api-management-terminology.md)について理解していること
-- [Visual Studio Code](https://code.visualstudio.com/) と最新の [Visual Studio Code 用 Azure API Management 拡張機能 (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) がインストール済みであること
+- [Visual Studio Code](https://code.visualstudio.com/) と最新の [Visual Studio Code 用 Azure API Management 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) が確実にインストール済みであること
 - [API Management インスタンスの作成](vscode-create-service-instance.md)
 
 ## <a name="import-an-api"></a>API をインポートする

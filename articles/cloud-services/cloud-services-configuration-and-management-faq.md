@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742592"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578220"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services (クラシック) の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -240,9 +240,9 @@ Cloud Services のメモリ メトリックに基づく自動スケールは、�
 
 この問題を回避するには、Application Insights を使うことができます。 自動スケールは、メトリック ソースとして Application Insights をサポートし、"Memory" のようなゲスト メトリックに基づいてロール インスタンスの数をスケーリングできます。  クラウド サービスのプロジェクト パッケージ ファイル (*.cspkg) で Application Insights を構成し、サービスで Azure Diagnostics 拡張機能を有効にしてこの機能を実装する必要があります。
 
-Application Insights でカスタム メトリックを利用してクラウド サービスに自動スケールを構成する方法について詳しくは、「[Azure でのカスタム メトリックによる自動スケールの概要](../azure-monitor/platform/autoscale-custom-metric.md)」をご覧ください
+Application Insights でカスタム メトリックを利用してクラウド サービスに自動スケールを構成する方法について詳しくは、「[Azure でのカスタム メトリックによる自動スケールの概要](../azure-monitor/autoscale/autoscale-custom-metric.md)」をご覧ください
 
-クラウド サービスの Application Insights に Azure Diagnostics を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)」をご覧ください
+クラウド サービスの Application Insights に Azure Diagnostics を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)」をご覧ください
 
 Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md)」をご覧ください
 

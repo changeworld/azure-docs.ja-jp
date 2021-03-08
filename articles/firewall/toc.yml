@@ -32,6 +32,12 @@
   items:
     - name: Azure Firewall の機能
       href: features.md
+    - name: Azure Firewall Premium の機能
+      href: premium-features.md
+    - name: ポータルの Azure Firewall Premium
+      href: premium-portal.md
+    - name: Azure Firewall Premium の証明書
+      href: premium-certificates.md
     - name: FQDN のタグ
       href: fqdn-tags.md
     - name: インフラストラクチャ FQDN
@@ -91,6 +97,10 @@
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
     - name: Azure Firewall ブック
       href: firewall-workbook.md
+    - name: Firewall Premium のデプロイと構成
+      href: premium-deploy.md
+    - name: Azure Firewall Premium への移行
+      href: premium-migrate.md
 - name: リファレンス
   items:
     - name: Azure CLI

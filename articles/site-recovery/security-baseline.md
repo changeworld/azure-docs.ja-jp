@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bf91c0a6e533acb326fe815c3e3c1088c959a603
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197576"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576719"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 用の Azure セキュリティ ベースライン
 
@@ -66,9 +66,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、Site Recovery サービスに関連するネットワーク リソース構成の変更を監視します。 重要な Site Recovery のネットワーク リソースが変更されたときに通知を受け取るように、Azure Monitor でアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -86,7 +86,7 @@ Azure アクティビティ ログのデータを使用して、Azure リソー�
 
 Site Recovery ログを Azure Monitor に取り込んで、生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリと分析を行い、長期またはアーカイブでの保管にはストレージ アカウントを使用します。 また、Azure Sentinel またはサードパーティのセキュリティ インシデントおよびイベント管理 (SIEM) ソリューションに対してデータを有効にしてオンボードすることもできます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Monitor ログを使用した Site Recovery の監視](monitor-log-analytics.md)
 
@@ -104,7 +104,7 @@ Azure アクティビティ ログのデータを使用して、Azure リソー�
 
 Site Recovery ログを Azure Monitor に取り込んで、生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリと分析を行い、長期またはアーカイブでの保管にはストレージ アカウントを使用します。 Azure Sentinel またはサードパーティのセキュリティ インシデントおよびイベント管理 (SIEM) ソリューションに対してデータを有効にしてオンボードします。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Monitor ログを使用した Site Recovery の監視](monitor-log-analytics.md)
 
@@ -118,7 +118,7 @@ Site Recovery ログを Azure Monitor に取り込んで、生成されたセキ
 
 **ガイダンス**:組織のコンプライアンス規則に従って、Azure Monitor を使用して、Azure Recovery Services コンテナーに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。 
 
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -132,9 +132,9 @@ Log Analytics でクエリを実行して、用語の検索し、傾向の特定
 
 - [Site Recovery の監視](site-recovery-monitor-and-troubleshoot.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/platform/activity-log.md)
+- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -150,7 +150,7 @@ Log Analytics でクエリを実行して、用語の検索し、傾向の特定
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-log.md)
+- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -237,7 +237,7 @@ Azure AD のリスク検出機能を使用して、危険なユーザー動作�
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -413,7 +413,7 @@ Site Recovery では、データの保存時の暗号化がサポートされて
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
 **ガイダンス**:Azure Monitor と Azure アクティビティ ログを使用して、重要なリソースに変更が加えられたときにアラートを作成します。 これらのリソースとしては、Recovery Services コンテナーの運用インスタンス、Site Recovery サービスのリソースおよび関連リソースなどがあります。
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 

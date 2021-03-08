@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050529"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575690"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -306,11 +306,15 @@ Room0 の温度が 70 度から 76 度に変更されたので、今度は、両
 
 このクイックスタートの作業を終了するために、まず、実行中のコンソール アプリを終了してください。 この操作により、ブラウザーで ADT Explorer アプリへの接続が切断されます。 ブラウザーでライブ データを表示できなくなります。 ブラウザー タブは閉じてかまいません。
 
-Azure Digital Twins のチュートリアルを続行する場合、このクイックスタートのインスタンスをそれらの記事で再利用できるため、インスタンスを削除する必要はありません。
+次に行う作業に応じて、削除するリソースを選択できます。
+
+* **Azure Digital Twins のチュートリアルを続行する場合**、このクイックスタートのインスタンスをそれらの記事で再利用できるため、インスタンスを削除する必要はありません。
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダー (**Azure_Digital_Twins__ADT__explorer**) を削除します。 場合により、zip されているバージョンと解凍されたバージョンの両方を削除する必要があります。
+さらに、プロジェクト フォルダーもローカル コンピューターから削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 

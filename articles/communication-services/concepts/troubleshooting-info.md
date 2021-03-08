@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ef1c4d87be39b6af90ed07cba9249cca4cf8bd6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937544"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036029"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Communication Services でのトラブルシューティング
 
@@ -21,12 +21,7 @@ ms.locfileid: "96937544"
 
 ## <a name="getting-help"></a>ヘルプの表示
 
-開発者の皆さんは、ご質問の送信、機能のご提案、および Communication Services [GitHub リポジトリ](https://github.com/Azure/communication)の問題のレポートに関してぜひご協力ください。 他に次のフォーラムもあります。
-
-* [Microsoft Q&A](/answers/questions/topics/single/101418.html)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/azure+communication)
-
-Azure サブスクリプションの[サポート プラン](https://azure.microsoft.com/support/plans/)によっては、[Azure portal](https://azure.microsoft.com/support/create-ticket/) を通じてサポート チケットを直接送信することもできます。
+開発者の皆さんは、ご質問の送信、機能のご提案、および問題のレポートに関してぜひご協力ください。 これを支援するために、サポートのためのオプションを一覧にした[サポートとヘルプのオプションの専用ページ](../support.md)を用意しています。
 
 特定の種類の問題のトラブルシューティングを支援するために、次の情報をおたずねする場合があります。
 
@@ -107,7 +102,6 @@ Log.d(call.getCallId())
 ```
 ---
 
-
 ## <a name="access-your-sms-message-id"></a>SMS メッセージ ID にアクセスする
 
 SMS の問題については、応答オブジェクトからメッセージ ID を収集できます。
@@ -130,9 +124,6 @@ console.log(result); // your message ID will be in the result
 ---
 
 ## <a name="enable-and-access-call-logs"></a>呼び出しログを有効にしてアクセスする
-
-
-
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -166,7 +157,6 @@ Android Studio で、シミュレーターとデバイスの両方から [View]\
 
 ---
 
-
 ## <a name="calling-client-library-error-codes"></a>通話クライアント ライブラリのエラー コード
 
 Azure Communication Services の通話クライアント ライブラリでは、通話の問題のトラブルシューティングに役立つ次のエラー コードを使用します。 これらのエラー コードは、通話の終了後に `call.callEndReason` プロパティを通じて公開されます。
@@ -184,7 +174,6 @@ Azure Communication Services の通話クライアント ライブラリでは�
 | 490、491、496、487、498 | ローカル エンドポイント ネットワークの問題。 | ネットワークを確認します。 |
 | 500、503、504 | Communication Services インフラストラクチャ エラー。 | Azure portal からサポート リクエストを提出します。 |
 | 603 | Communication Services のリモート参加者によって、通話がグローバルに拒否されました。 | 想定されている動作です。 |
-
 
 ## <a name="related-information"></a>関連情報
 - [ログと診断](logging-and-diagnostics.md)

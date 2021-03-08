@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d366664981894933f9afb177e9147ccae6695872
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 7731aa2eb1a962d4674ed382911ba0058e1ebdaf
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222168"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647508"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する
 
@@ -104,9 +104,9 @@ AppSource の試用エクスペリエンスの詳細については、[こちら
 
 ## <a name="get-support"></a>サポートを受ける
 
-Azure AD との統合について、Microsoft は [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html) のコミュニティでサポートを提供しています。
+Azure AD との統合について、Microsoft は [Microsoft Q&A](/answers/topics/azure-active-directory.html) のコミュニティでサポートを提供しています。
 
-ご質問は最初に [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html) で挙げていただき、既知の問題を検索して過去に同じ質問が挙がっていないかどうか確認することを強くお勧めします。 自分の質問またはコメントに [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) タグが付けられていることを確認してください。
+ご質問は最初に [Microsoft Q&A](/answers/topics/azure-active-directory.html) で挙げていただき、既知の問題を検索して過去に同じ質問が挙がっていないかどうか確認することを強くお勧めします。 自分の質問またはコメントに [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) タグが付けられていることを確認してください。
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
 

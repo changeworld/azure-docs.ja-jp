@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3021e9155e229fcaf52166fd0e9dc908f9b7cfb6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555613"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650075"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -71,7 +71,7 @@ Azure App Service のために (それが提供されているリージョンで
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | 使用不可 | 使用できません | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Arc 対応 Kubernetes では、現在、[システムによって割り当てられた ID がサポートされています](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes)。 マネージド サービス ID 証明書は、すべての Azure Arc 対応 Kubernetes エージェントによって Azure との通信のために使用されています。
 
@@ -79,7 +79,7 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | プレビュー | 使用不可 | 使用できません | 使用不可 |
+| システム割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 サブスクリプションを新しいテナントに移動した場合は、次のドキュメントを参照してマネージド ID を再構成します。
@@ -103,21 +103,21 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用できません | 使用できません | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 ### <a name="azure-cognitive-services"></a>Azure Cognitive Services
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用できません | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 
 ### <a name="azure-communication-services"></a>Azure Communication Services
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用できません |
+| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
 
 
@@ -126,7 +126,7 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用できません | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Container Instances のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -140,7 +140,7 @@ Azure Container Instances のために (それが提供されているリージ�
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用できません |
+| ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Container Registry タスクのために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
 
@@ -151,7 +151,7 @@ Azure Container Registry タスクのために (それが提供されている�
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用できません | 使用できません | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -171,12 +171,12 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | 使用できません | 使用できません | 使用不可 |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用できません | 使用不可 |
+| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Digital Twins のために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
 
-- [Azure portal](~/articles/digital-twins/how-to-enable-managed-identities.md)
+- [Azure portal](../../digital-twins/how-to-enable-managed-identities-portal.md)
 
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
@@ -211,9 +211,9 @@ Azure Functions のために (それが提供されているリージョンで) 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用できません | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
-Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+Azure IoT Hub のために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
 
 - [Azure Portal](../../iot-hub/virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
@@ -355,6 +355,17 @@ Azure VM Image Builder のために (それが提供されているリージョ�
 Azure SignalR Service のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
 - [Azure Resource Manager テンプレート](../../azure-signalr/howto-use-managed-identity.md)
+
+### <a name="azure-resource-mover"></a>Azure Resource Mover
+
+マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | Azure Resource Mover サービスが提供されているリージョンで使用可能 | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+
+Azure Resource Mover を使用するには、次のドキュメントを参照してください。
+
+- [Azure Resource Mover](../../resource-mover/overview.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD 認証をサポートしている Azure サービス
 

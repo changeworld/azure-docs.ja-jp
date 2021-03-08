@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: da3386692d2d02015c0d3f59c88ae78a6c84b9ab
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d6ffeeb1470fbe51885c81f30ab8b96c4e27d707
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203101"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586973"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Monitor 用の Azure セキュリティ ベースライン
 
@@ -34,9 +34,9 @@ Azure Monitor は Azure のコア サービスの一部であり、Azure Monitor
 
 Log Analytics ゲートウェイを使用すると、インターネットに直接接続できないコンピューターに代わって Azure Monitor の Log Analytics ワークスペースにデータを送信することができるので、コンピューターをインターネットに接続する必要がなくなります。 
 
-- [Azure Monitor 用の Private Link を設定する方法](platform/private-link-security.md)
+- [Azure Monitor 用の Private Link を設定する方法](logs/private-link-security.md)
 
-- [インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する](platform/gateway.md)
+- [インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する](agents/gateway.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -48,9 +48,9 @@ Log Analytics ゲートウェイを使用すると、インターネットに直
 
 Private Link で Azure Monitor を使用すると、'プライベート エンドポイントによって処理されるデータ (入力/出力)' などのネットワーク ログにアクセスできます。
 
-- [Azure Monitor エージェントのネットワーク要件](platform/log-analytics-agent.md#network-requirements)
+- [Azure Monitor エージェントのネットワーク要件](agents/log-analytics-agent.md#network-requirements)
 
-- [インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する](platform/gateway.md)
+- [インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する](agents/gateway.md)
 
 - [ネットワーク セキュリティ グループのフローのログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -76,9 +76,9 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 **ガイダンス**: Azure Monitor は Azure のコア サービスの一部であり、サービスとして個別にデプロイすることはできません。 Azure Monitor エージェントなどの Azure Monitor コンポーネントや、Application Insights SDK は、リソースと共にデプロイできますが、そうすることでそれらのリソースのセキュリティ態勢に影響が生じる可能性があります。
 
-- [Azure Monitor エージェントのネットワーク要件](platform/log-analytics-agent.md#network-requirements)
+- [Azure Monitor エージェントのネットワーク要件](agents/log-analytics-agent.md#network-requirements)
 
-- [インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する](platform/gateway.md) 
+- [インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する](agents/gateway.md) 
 
 - [Application Insights の概要を参照する](./app/app-insights-overview.md#get-started)
 
@@ -92,9 +92,9 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、リソース構成を監視し、Azure Monitor に関連するネットワーク リソースの変更を検出します。 それらの重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](./platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](./essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -110,9 +110,9 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](essentials/diagnostic-settings.md)
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](learn/quick-collect-azurevm.md)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](vm/quick-collect-azurevm.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -126,9 +126,9 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 **ガイダンス**:Azure Monitor はアクティビティ ログを使用します。アクティビティ ログは自動的に有効になり、操作を開始したユーザー、操作の発生日時、操作の状態、その他の有用な監査情報など、Azure Monitor リソースに対して行われた操作をログに記録します。 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](essentials/diagnostic-settings.md)
 
-- [Azure でのログ記録とログのさまざまな種類について](platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -138,7 +138,7 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 ログの長期またはアーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -154,9 +154,9 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics クエリの使用方法](./log-query/log-analytics-tutorial.md)
+- [Log Analytics クエリの使用方法](./logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -170,7 +170,7 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -316,7 +316,7 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure Monitor でログ データとワークスペースへのアクセスを管理する](platform/manage-access.md)
+- [Azure Monitor でログ データとワークスペースへのアクセスを管理する](logs/manage-access.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -342,7 +342,7 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 Application Insights と Log Analytics の両方で、TLS 1.1 データと TLS 1.0 のデータの取り込みが引き続き許可されます。 クライアント側の構成により、データを TLS 1.2 に制限することもできます。
 
-- [TLS 1.2 を使用してデータを安全に送信する方法](platform/data-security.md#sending-data-securely-using-tls-12)
+- [TLS 1.2 を使用してデータを安全に送信する方法](logs/data-security.md#sending-data-securely-using-tls-12)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -363,7 +363,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Monitor へのアクセスを管理します。
 
-- [Azure Monitor でのロール、アクセス許可、セキュリティ](platform/roles-permissions-security.md)
+- [Azure Monitor でのロール、アクセス許可、セキュリティ](/roles-permissions-security.md)
 
 - [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
@@ -375,9 +375,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure Monitor により、Microsoft マネージド キー (MMK) を使用して、すべてのデータおよび保存されたクエリが保存時に暗号化されるようになります。 Azure Monitor には、Azure Key Vault に格納され、システムによって割り当てられたマネージド ID 認証を使用してアクセスされる、独自のキーを使用した暗号化のオプションも用意されています。 このカスタマー マネージド キー (CMK) は、ソフトウェアまたはハードウェアの HSM で保護できます。
 
-- [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md)
+- [Azure Monitor のカスタマー マネージド キー](logs/customer-managed-keys.md)
 
-- [Log Analytics データ セキュリティ](platform/data-security.md)
+- [Log Analytics データ セキュリティ](logs/data-security.md)
 
 - [Application Insights でのデータの収集、保持、保存](app/data-retention-privacy.md)
 
@@ -391,7 +391,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、Azure Monitor と関連リソースに変更が加えられたときのアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -423,7 +423,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
-- [Azure Monitor でのロール、アクセス許可、セキュリティ](platform/roles-permissions-security.md)
+- [Azure Monitor でのロール、アクセス許可、セキュリティ](/roles-permissions-security.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -479,7 +479,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: 定期的にインベントリを調整し、承認されていない Azure Monitor 関連リソースがサブスクリプションから適切なタイミングで削除されるようにします。  
 
-- [Azure Log Analytics ワークスペースの削除](platform/delete-workspace.md)
+- [Azure Log Analytics ワークスペースの削除](logs/delete-workspace.md)
 
 **Azure Security Center の監視**: はい
 
@@ -647,7 +647,7 @@ Log Analytics ワークスペースなどの、適用可能な Azure Monitor 関
 
 **ガイダンス**: Azure Resource Manager を使用して、Azure Monitor と関連リソースを JavaScript Object Notation (JSON) テンプレートにエクスポートします。これは、Azure Monitor と関連構成のバックアップとして使用できます。  バックアップ スクリプトを自動的に実行するには、Azure Automation を使用します。 
 
-- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](./samples/resource-manager-workspace.md)
+- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](./logs/resource-manager-workspace.md)
 
 - [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -661,7 +661,7 @@ Log Analytics ワークスペースなどの、適用可能な Azure Monitor 関
 
 **ガイダンス**: Azure Resource Manager を使用して、Azure Monitor と関連リソースを JavaScript Object Notation (JSON) テンプレートにエクスポートします。これは、Azure Monitor と関連構成のバックアップとして使用できます。  Azure Monitor 関連リソースがカスタマー マネージド キーを使用している場合は、Azure Key Vault 内のカスタマー マネージド キーをバックアップします。 
 
-- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](./samples/resource-manager-workspace.md)
+- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](./logs/resource-manager-workspace.md)
 
 - [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -675,7 +675,7 @@ Log Analytics ワークスペースなどの、適用可能な Azure Monitor 関
 
 **ガイダンス**: Azure Resource Manager でサポートされるテンプレート ファイルを使用して、定期的に復元を実行できることを確実にします。  バックアップされたカスタマー マネージド キーの復元をテストします。
 
-- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](./samples/resource-manager-workspace.md)
+- [Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する](./logs/resource-manager-workspace.md)
 
 - [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

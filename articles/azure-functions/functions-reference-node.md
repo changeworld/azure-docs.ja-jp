@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 71fe2d342f928c9d50a3fcf3f5367c21d7fba2ff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674135"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591041"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -20,7 +20,7 @@ Express.js、Node.js、または JavaScript の開発者が、Azure Functions �
 
 | 作業の開始 | 概念| ガイド付き学習 |
 | -- | -- | -- | 
-| <ul><li>[Visual Studio Code を使用した Node.js 関数](./create-first-function-vs-code-node.md)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./create-first-function-cli-node.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Visual Studio Code を使用した Node.js 関数](./create-first-function-vs-code-node.md)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./create-first-function-cli-node.md)</li><li>[Azure portal を使用した Node.js 関数](functions-create-function-app-portal.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 関数の基本
 
@@ -426,7 +426,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.req` (要求) オブジェクトには、次のプロパティがあります。
 
-| プロパティ      | [説明]                                                    |
+| プロパティ      | 説明                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 要求の本文を格納するオブジェクト。               |
 | _headers_     | 要求ヘッダーを格納するオブジェクト。                   |
@@ -441,7 +441,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.res` (応答) オブジェクトには、次のプロパティがあります。
 
-| プロパティ  | [説明]                                               |
+| プロパティ  | 説明                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
@@ -745,7 +745,7 @@ JavaScript 関数を使用するときは、以下のセクションに記載さ
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>シングル vCPU App Service プランを選択する
 
-App Service プランを使用する関数アプリを作成するときは、複数の vCPU を持つプランではなく、シングル vCPU プランを選択することをお勧めします。 今日では、関数を使用して、シングル vCPU VM で JavaScript 関数をより効率的に実行できるようになりました。そのため、大規模な VM を使用しても、期待以上にパフォーマンスが向上することはありません。 必要な場合は、シングル vCPU VM インスタンスを追加することで手動でスケールアウトするか、自動スケーリングを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json)」を参照してください。
+App Service プランを使用する関数アプリを作成するときは、複数の vCPU を持つプランではなく、シングル vCPU プランを選択することをお勧めします。 今日では、関数を使用して、シングル vCPU VM で JavaScript 関数をより効率的に実行できるようになりました。そのため、大規模な VM を使用しても、期待以上にパフォーマンスが向上することはありません。 必要な場合は、シングル vCPU VM インスタンスを追加することで手動でスケールアウトするか、自動スケーリングを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/autoscale/autoscale-get-started.md?toc=/azure/app-service/toc.json)」を参照してください。
 
 ### <a name="cold-start"></a>コールド スタート
 

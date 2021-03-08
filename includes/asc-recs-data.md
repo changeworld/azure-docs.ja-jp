@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 024aced08b1efdc840d3ceb23c524dbbcce9110c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: f2b5a152b36bee3c1731dd5a8c7bda2a31e620d1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797194"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574503"
 ---
 このカテゴリには **58 個** の推奨事項があります。
 
@@ -59,7 +59,7 @@ ms.locfileid: "98797194"
 |MySQL サーバーでは、公衆ネットワーク アクセスを無効にする必要がある |パブリック ネットワーク アクセス プロパティを無効にして、セキュリティを強化し、プライベート エンドポイントからのみ Azure Database for MySQL にアクセスできるようにします。 この構成は、Azure IP 範囲外のパブリック アドレス空間からのアクセスを厳密に無効にし、IP または仮想ネットワークベースのファイアウォール規則に一致するすべてのログインを拒否します。<br />(関連ポリシー:[MySQL サーバーでは、公衆ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fd9844e8a-1437-4aeb-a32c-0c992f056095)) |Medium |
 |PostgreSQL サーバーでは、公衆ネットワーク アクセスを無効にする必要がある |パブリック ネットワーク アクセス プロパティを無効にしてセキュリティを強化し、プライベート エンドポイントからのみ Azure Database for PostgreSQL にアクセスできるようにします。 この構成では、Azure IP 範囲外のパブリック アドレス空間からのアクセスが無効になり、IP または仮想ネットワークベースのファイアウォール規則に一致するすべてのログインが拒否されます。<br />(関連ポリシー:[PostgreSQL サーバーでは、公衆ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb52376f7-9612-48a1-81cd-1ffe4b61032c)) |中 |
 |SQL データベースの機密データを分類する必要がある |Azure SQL DB の「データの検出と分類」では、お使いのデータベース内の機密データの検出、分類、ラベル付け、および保護を行う機能を提供します。 いったんデータが分類されたら、Azure SQL DB の「監査」を使用して、機密データのアクセス監査とモニターを行うことができます。 Azure SQL DB はまた、機密性データへのアクセスパターンの変化に基づくインテリジェント アラートを作成する Advanced Threat Protection 機能も有しています。<br />(関連ポリシー:[SQL データベースの機密データを分類する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2fcc9835f2-9f6b-4cc8-ab4a-f8ef615eb349)) |高 |
-|SQL マネージド インスタンスでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある |独自キーを使用して Transparent Data Encryption (TDE) を実装すると、TDE 保護機能の透明性および制御が強化され、HSM で保護された外部サービスによるセキュリティが向上し、職務の分離が促進されます。 この推奨事項は、関連するコンプライアンス要件を持つ組織に適用されます。<br />(関連ポリシーはありません) |低 |
+|SQL マネージド インスタンスでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある |独自キーを使用して Transparent Data Encryption (TDE) を実装すると、TDE 保護機能の透明性および制御が強化され、HSM で保護された外部サービスによるセキュリティが向上し、職務の分離が促進されます。 この推奨事項は、関連するコンプライアンス要件を持つ組織に適用されます。<br />(関連ポリシー:[SQL マネージド インスタンスでは、保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f048248b0-55cd-46da-b1ff-39efd52db260)) |低 |
 |SQL サーバーでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある |独自キーを使用して Transparent Data Encryption (TDE) を実装すると、TDE 保護機能の透明性および制御が強化され、HSM で保護された外部サービスによるセキュリティが向上し、職務の分離が促進されます。 この推奨事項は、関連するコンプライアンス要件を持つ組織に適用されます。<br />(関連ポリシー:[SQL サーバーでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0d134df8-db83-46fb-ad72-fe0c9428c8dd)) |低 |
 |ストレージ アカウントではプライベート リンク接続を使用する必要がある |プライベート リンクは、ストレージ アカウントへのプライベート接続を提供することにより、セキュリティで保護された通信を強制します<br />(関連ポリシー:[ストレージ アカウントではプライベート リンク接続を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6edd7eda-6dd8-40f7-810d-67160c639cd9)) |Medium |
 |ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある |Azure Resource Manager の新機能を活用するには、クラシック デプロイ モデルから既存のデプロイを移行します。 Resource Manager を使用すると、次のようなセキュリティの拡張機能を有効にできます: 強化されたアクセス制御 (RBAC)、強化された監査、ARM ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレット用のキー コンテナーへのアクセス、Azure AD ベースの認証、セキュリティ管理を容易にするタグとリソース グループのサポート。 <a target='_blank' href='https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview'>詳細情報</a><br />(関連ポリシー:[ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f37e0d2fe-28a5-43d6-a273-67d37d1f5606)) |低 |
@@ -69,7 +69,7 @@ ms.locfileid: "98797194"
 |SQL データベースで Transparent Data Encryption を有効にする必要がある |Transparent Data Encryption を有効にすることで、保存データを保護し、コンプライアンス要件を満たします<br />(関連ポリシー:[SQL データベースで Transparent Data Encryption を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f17k78e20-9358-41c9-923c-fb736d382a12)) |低 |
 |VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある |仮想ネットワークが構成されていない VM Image Builder テンプレートを監査します。 仮想ネットワークが構成されていない場合は、代わりにパブリック IP が作成されて使用されるため、リソースがインターネットに直接公開され、攻撃対象となる可能性が高くなります。<br />(関連ポリシー:[VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Medium |
 |SQL データベースの脆弱性評価の結果を修復する必要がある |SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の誤り、過剰なアクセス許可、機密データの未保護など、ベスト プラクティスからの逸脱をすべて明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ態勢が大幅に向上する可能性があります。 <a href='https://aka.ms/SQL-Vulnerability-Assessment/'>詳細情報</a><br />(関連ポリシー:[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2ffeedbf84-6b99-488c-acc2-71c829aa5ffc)) |高 |
-|マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある |SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の誤り、過剰なアクセス許可、機密データの未保護など、ベスト プラクティスからの逸脱をすべて明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ態勢が大幅に向上する可能性があります。 <a href='https://aka.ms/explore-vulnerability-assessment-reports/'>詳細情報</a><br />(関連ポリシーはありません) |高 |
+|マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある |SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の誤り、過剰なアクセス許可、機密データの未保護など、ベスト プラクティスからの逸脱をすべて明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ態勢が大幅に向上する可能性があります。 <a href='https://aka.ms/explore-vulnerability-assessment-reports/'>詳細情報</a><br />(関連ポリシー:[マシン上の SQL サーバーの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f6ba6d016-e7c3-4842-b8f2-4992ebc0d72d)) |高 |
 |脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある |脆弱性評価は、潜在的なデータベースの脆弱性を検出、追跡、および修正するのに役立ちます。<br />(関連ポリシー:[SQL Managed Instance で脆弱性評価を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1b7aa243-30e4-4c9e-bca8-d0d3022b634a)) |高 |
 |脆弱性評価を SQL サーバー上で有効にする必要がある |脆弱性評価は、潜在的なデータベースの脆弱性を検出、追跡、および修正するのに役立ちます。<br />(関連ポリシー:[SQL サーバーで脆弱性評価を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fef2a8f2a-b3d9-49cd-a8a8-9a3aaaf647d9)) |高 |
 |Application Gateway に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある |受信トラフィックをさらに検査するために、公開されている Web アプリケーションの前に Azure Web Application Firewall (WAF) をデプロイします。 Web Application Firewall (WAF) を使用すると、SQL インジェクション、クロスサイト スクリプティング、ローカルおよびリモートのファイル実行などの一般的な悪用や脆弱性から Web アプリケーションが一元的に保護されます。 また、カスタム ルールを使用して、国、IP アドレス範囲、およびその他の HTTP(S) パラメーターによって Web アプリケーションへのアクセスを制限することもできます。<br />(関連ポリシー:[Application Gateway に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f564feb30-bf6a-4854-b4bb-0d2d2d1e6c66)) |低 |

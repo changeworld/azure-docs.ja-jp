@@ -4,12 +4,12 @@ description: Azure Application Insights を使用して IP アドレスと位置
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333309"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584080"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -30,7 +30,7 @@ ms.locfileid: "91333309"
 
 既定では IP アドレスを収集しません。 この動作をオーバーライドする柔軟性を引き続き提供しています。 ただし、コレクションがどのコンプライアンス要件にも地域の規制にも違反していないことを確認することをお勧めします。 
 
-Application Insights での個人データ処理の詳細については、[個人データのガイダンス](../platform/personal-data-mgmt.md)に関するページをご覧ください。
+Application Insights での個人データ処理の詳細については、[個人データのガイダンス](../logs/personal-data-mgmt.md)に関するページをご覧ください。
 
 ## <a name="storing-ip-address-data"></a>IP アドレス データの格納
 
@@ -241,10 +241,10 @@ requests
 
 新しく収集された IP アドレスは `customDimensions_client-ip` 列に表示されます。 既定の `client-ip` 列では、4 つすべてのオクテットがゼロになります。 
 
-localhost からテストし、`customDimensions_client-ip` の値が `::1` の場合、この値は想定される動作です。 `::1` は、IPv6 のループバック アドレスを表します。 これは、IPv4 での `127.0.01` と同じです。
+localhost からテストし、`customDimensions_client-ip` の値が `::1` の場合、この値は想定される動作です。 `::1` は、IPv6 のループバック アドレスを表します。 これは、IPv4 での `127.0.0.1` と同じです。
 
 ## <a name="next-steps"></a>次の手順
 
-* Application Insights での[個人データ収集](../platform/personal-data-mgmt.md)について、さらに学習します。
+* Application Insights での[個人データ収集](../logs/personal-data-mgmt.md)について、さらに学習します。
 
 * Application Insights の [IP アドレス収集](https://apmtips.com/posts/2016-07-05-client-ip-address/)のしくみについて、さらに学習します  (この記事は、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みの `ClientIpHeaderTelemetryInitializer` のメカニズムについてより詳しく説明されています)。

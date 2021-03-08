@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742150"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703509"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) での Azure Diagnostics の有効化
 
 > [!IMPORTANT]
 > [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
-Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-diagnostics.md) 」をご覧ください。
+Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-monitor/agents/diagnostics-extension-overview.md) 」をご覧ください。
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Worker ロールの診断を有効にする方法
 このチュートリアルでは、.NET EventSource クラスを使用してテレメトリ データを生成する Azure Worker ロールの実装方法について説明します。 Azure Diagnostics を使用してテレメトリ データを収集し、これを Azure ストレージ アカウントに格納します。 Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。 次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。
@@ -189,13 +189,13 @@ Visual Studio の **サーバー エクスプローラー** で、wadexample ス
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>構成ファイル スキーマ
-診断構成ファイルでは、診断エージェントの起動時に診断構成設定の初期化に使用される値を定義します。 有効な値と例については、「 [Azure 診断構成スキーマ](../azure-monitor/platform/diagnostics-extension-versions.md) 」をご覧ください。
+診断構成ファイルでは、診断エージェントの起動時に診断構成設定の初期化に使用される値を定義します。 有効な値と例については、「 [Azure 診断構成スキーマ](../azure-monitor/agents/diagnostics-extension-versions.md) 」をご覧ください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) 」をご覧ください。
+問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) 」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../azure-monitor/platform/diagnostics-extension-overview.md)をご覧ください。
+収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../azure-monitor/agents/diagnostics-extension-overview.md)をご覧ください。
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Automation の Start/Stop VMs during off-hours の概要
-description: この記事では、VM を日程に基づいて開始または停止し、Azure Monitor ログで VM を率先して監視する Start/Stop VMs during off-hours 機能について説明します。
+description: この記事では、VM を日程に基づいて開始または停止し、Azure Monitor ログでそれらを事前に監視する Start/Stop VMs during off-hours 機能について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055383"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732277"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
-Start/Stop VMs during off-hours 機能は、有効になっている Azure VM を開始または停止するものです。 ユーザー定義のスケジュールでマシンを開始または停止し、Azure Monitor ログを介して分析情報を取得し、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用してオプションのメールを送信することができます。 この機能は、ほとんどのシナリオにおいて、Azure Resource Manager とクラシック VM の両方で有効にできます。 
+Start/Stop VMs during off-hours 機能は、有効になっている Azure VM を開始または停止するものです。 ユーザー定義のスケジュールでマシンを開始または停止し、Azure Monitor ログを介して分析情報を取得し、[アクション グループ](../azure-monitor/alerts/action-groups.md)を使用してオプションのメールを送信することができます。 この機能は、ほとんどのシナリオにおいて、Azure Resource Manager とクラシック VM の両方で有効にできます。 
 
 この機能では、[Start-AzVm](/powershell/module/az.compute/start-azvm) コマンドレットを使用して VM を開始します。 VM を停止するためには、[Stop-AzVM](/powershell/module/az.compute/stop-azvm) を使用します。
 
@@ -39,9 +39,9 @@ Start/Stop VMs during off-hours 機能は、有効になっている Azure VM �
 
 - Start/Stop VMs during off hours 機能の Runbook は [Azure 実行アカウント](./automation-security-overview.md#run-as-accounts)と連動します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
 
-- リンクされた Automation アカウントと Log Analytics ワークスペースは、同じリソース グループに存在する必要があります。
+- Runbook ジョブ ログとジョブ ストリーム結果をクエリおよび分析目的でワークスペースに格納する [Azure Monitor Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)。 Automation アカウントは新規または既存の Log Analytics ワークスペースにリンクできます。いずれのリソースも同じリソース グループに属する必要があります。
 
-- Start/Stop VMs during off-hours 機能には、別の Automation アカウントを使用することをお勧めします。 多くの場合、Azure モジュールのバージョンがアップグレードされ、そのパラメーターが変更される可能性があります。 この機能は同じペースでアップグレードされないため、使用するコマンドレットの新しいバージョンでは動作しない可能性があります。 モジュールの更新は、運用環境の Automation アカウントにインポートする前に、テスト用の Automation アカウントでテストすることをお勧めします。
+Start/Stop VMs during off-hours 機能には、別の Automation アカウントを使用することをお勧めします。 多くの場合、Azure モジュールのバージョンがアップグレードされ、そのパラメーターが変更される可能性があります。 この機能は同じペースでアップグレードされないため、使用するコマンドレットの新しいバージョンでは動作しない可能性があります。 更新後のモジュールを運用 Automation アカウントにインポートする前に、テスト Automation アカウントにインポートして互換性問題がないことを確認することをお勧めします。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -148,7 +148,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 |Internal_ResourceGroupName | Automation アカウントのリソース グループ名。|
 
 >[!NOTE]
->変数 `External_WaitTimeForVMRetryInSeconds` の場合、既定値は 600 から 2100 に更新されています。 
+>変数 `External_WaitTimeForVMRetryInSeconds` の場合、既定値は 600 から 2100 に更新されています。
 
 すべてのシナリオで、変数 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、および `External_ExcludeVMNames` は、VM のターゲット設定に必要です。ただし、**AutoStop_CreateAlert_Parent**、**SequencedStartStop_Parent**、および **ScheduledStartStop_Parent** Runbook のコンマ区切りの VM リストは除きます。 つまり、開始および停止アクションを発生させるには、対象のリソース グループに VM が属している必要があります。 このロジックは Azure Policy に似ています。サブスクリプションまたはリソース グループを対象にすることができ、アクションは新しく作成された VM に継承されます。 この方法により、VM ごとに個別のスケジュールを保持したり、スケールで起動および停止を管理したりする必要がなくなります。
 
@@ -174,18 +174,14 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 
 クラウド サービスあたり 20 個を超える VM がある場合は、次のような推奨事項があります。
 
-* 親 Runbook の **ScheduledStartStop_Parent** で複数のスケジュールを作成し、スケジュールごとに 20 個の VM を指定します。 
-* スケジュール プロパティで `VMList` パラメーターを使用して、コンマ区切りリスト (空白なし) として VM 名を指定します。 
+* 親 Runbook の **ScheduledStartStop_Parent** で複数のスケジュールを作成し、スケジュールごとに 20 個の VM を指定します。
+* スケジュール プロパティで `VMList` パラメーターを使用して、コンマ区切りリスト (空白なし) として VM 名を指定します。
 
 そうしないと、この機能の Automation ジョブが 3 時間を超えて実行された場合、そのジョブは[フェア シェア](automation-runbook-execution.md#fair-share)制限に従って一時的にアンロードまたは停止されます。
 
 Azure CSP サブスクリプションでは、Azure Resource Manager モデルのみがサポートされます。 Azure Resource Manager 以外のサービスは、プログラムでは使用できません。 Start/Stop VMs during off-hours 機能の実行中は、クラシック リソースを管理するコマンドレットがあるため、エラーが発生することがあります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページをご覧ください。 CSP サブスクリプションを使用する場合、デプロイ後に [External_EnableClassicVMs](#variables) 変数を False に設定する必要があります。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="enable-the-feature"></a>機能を有効にする
-
-機能の使用を開始するには、[Start/Stop VMs during off-hours を有効にする](automation-solution-vm-management-enable.md)方法に関するページの手順に従います。
 
 ## <a name="view-the-feature"></a>機能を表示する
 
@@ -195,7 +191,7 @@ Azure CSP サブスクリプションでは、Azure Resource Manager モデル�
 
 * Automation アカウントにリンクされている Log Analytics ワークスペースに移動します。 ワークスペースを選択した後、左側のペインから **[ソリューション]** を選択します。 [ソリューション] ページで、一覧から **Start-Stop-VM[ワークスペース]** を選択します。  
 
-機能を選択すると、Start-Stop-VM[ワークスペース] ページが表示されます。 ここでは、**StartStopVM** タイルの情報など、重要な詳細を確認できます。 Log Analytics ワークスペースと同様、このタイルには、その機能に関して開始された Runbook ジョブの数と、正常に終了した Runbook ジョブの数、およびそのグラフが表示されます。
+機能を選択すると、**Start-Stop-VM[ワークスペース]** ページが表示されます。 ここでは、**StartStopVM** タイルの情報など、重要な詳細を確認できます。 Log Analytics ワークスペースと同様、このタイルには、その機能に関して開始された Runbook ジョブの数と、正常に終了した Runbook ジョブの数、およびそのグラフが表示されます。
 
 ![Automation Update Management ページ](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
@@ -203,37 +199,7 @@ Azure CSP サブスクリプションでは、Azure Resource Manager モデル�
 
 ## <a name="update-the-feature"></a>機能を更新する
 
-Start/Stop VMs during off-hours の以前のバージョンをデプロイしている場合は、更新済みリリースをデプロイする前に、まず以前のバージョンをご自身のアカウントから削除します。 次の手順に従って[機能を削除](#remove-the-feature)してから、[機能を有効に](automation-solution-vm-management-enable.md)してください。
-
-## <a name="remove-the-feature"></a>機能を削除する
-
-機能を使用する必要がなくなった場合、ソリューションを Automation アカウントから削除できます。 機能を削除すると、関連付けられている Runbook のみが削除されます。 機能の追加時に作成されたスケジュールや変数は削除されません。 
-
-Start/Stop VMs during off-hours を削除するには:
-
-1. Automation アカウントで、 **[関連リソース]** の下にある **[リンクされたワークスペース]** を選択します。
-
-2. **[ワークスペースに移動]** を選択します。
-
-3. **[全般]** の下にある **[ソリューション]** をクリックします。 
-
-4. [ソリューション] ページで、**Start-Stop-VM[ワークスペース]** を選択します。 
-
-5. VMManagementSolution[ワークスペース] ページで、メニューから **[削除]** を選択します。<br><br> ![VM 管理機能を削除する](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-6. [ソリューションの削除] ウィンドウで、機能を削除するかどうかを確定します。
-
-7. 情報が検証され、機能が削除されている間、メニューから **[通知]** を選択してその進行状況を追跡できます。 削除プロセスの後、[ソリューション] ページに戻ります。
-
-8. Automation アカウントと Log Analytics ワークスペースは、このプロセスの一部として削除されません。 Log Analytics ワークスペースを保持しない場合は、Azure portal から手動で削除する必要があります。
-
-    1. **[Log Analytics ワークスペース]** を探して選択します。
-
-    2. [Log Analytics ワークスペース] ページで、ワークスペースを選択します。
-
-    3. メニューで **[削除]** を選択します。
-
-    4. Azure Automation アカウント[機能コンポーネント](#components)を保持しない場合、各コンポーネントを手動で削除できます。
+Start/Stop VMs during off-hours の以前のバージョンをデプロイしている場合は、更新済みリリースをデプロイする前に、まず以前のバージョンをご自身のアカウントから削除します。 次の手順に従って[機能を削除](automation-solution-vm-management-remove.md#delete-the-feature)してから、[機能を有効に](automation-solution-vm-management-enable.md)してください。
 
 ## <a name="next-steps"></a>次のステップ
 

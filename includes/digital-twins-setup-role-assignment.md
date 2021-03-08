@@ -5,18 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: cbcaf4b4ad1b6c00f8c452582b986b6ee3b2806e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a905bb3b4effb0381facfbfaa37c8ea412b81287
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478875"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551872"
 ---
 Azure Digital Twins は、ロールベースのアクセス制御 (RBAC) に [Azure Active Directory (Azure AD)](../articles/active-directory/fundamentals/active-directory-whatis.md) を使用します。 つまり、ユーザーが Azure Digital Twins インスタンスへのデータ プレーン呼び出しを行うには、そのための適切なアクセス許可を持つロールをそのユーザーに割り当てておく必要があります。
 
-Azure Digital Twins の場合、このロールは _**"Azure Digital Twins Data Owner" (Azure Digital Twins データ所有者)**_ です。 ロールとセキュリティの詳細については、 [*概念: Azure Digital Twins ソリューションのセキュリティ*](../articles/digital-twins/concepts-security.md)に関するページを参照してください。
-
-[!INCLUDE [digital-twins-role-rename-note.md](digital-twins-role-rename-note.md)]
+Azure Digital Twins の場合、このロールは _**"Azure Digital Twins Data Owner" (Azure Digital Twins データ所有者)**_ です。 ロールとセキュリティの詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](../articles/digital-twins/concepts-security.md)に関するページを参照してください。
 
 このセクションでは、Azure サブスクリプションの Azure AD テナント内のユーザーの電子メールを使用して、Azure Digital Twins インスタンスでのそのユーザーのロールの割り当てを作成する方法について説明します。 組織内のロールによっては、このアクセス許可を自分で設定するか、または Azure Digital Twins インスタンスを管理するだれか他のユーザーの代わりに設定する可能性があります。
 

@@ -1,23 +1,18 @@
 ---
 title: Azure Blob Storage との間でデータをコピーする
 description: Azure Data Factory で BLOB データをコピーする方法について説明します。 サンプルを使用して、Azure Blob Storage と Azure SQL Database の間でデータをコピーする方法を示します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: bec8160f-5e07-47e4-8ee1-ebb14cfb805d
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa6e19fd9759d6e489d0945b5521a2e0ae3881e0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f1343f900e12bff09c0436ca52d8b091fe48a181
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462651"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393549"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -77,7 +72,7 @@ Azure Storage を Azure Data Factory にリンクするときに使用できる�
 
 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
-Data Factory は、Azure BLOB などの読み取りデータ ソースのスキーマに "structure" で型情報を提供する場合、次の CLS に準拠している .NET ベースの型値をサポートしています。Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan。 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
+Data Factory では、Azure BLOB などの schema-on-read データ ソースに対して "structure" で型情報を提供するために、次に示す CLS に準拠している .NET ベースの型の値がサポートされています。Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan。 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
 
 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。 **AzureBlob** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
@@ -187,7 +182,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左上隅にある **[リソースの作成]** 、 **[インテリジェンス + 分析]** 、 **[データ ファクトリ]** の順にクリックします。
 3. **[新しいデータ ファクトリ]** ウィンドウで、次の手順を実行します。  
-    1. **[名前]** に「**ADFBlobConnectorDF**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー `*Data factory name “ADFBlobConnectorDF” is not available` が発生した場合は、データ ファクトリの名前を変更して (yournameADFBlobConnectorDF など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
+    1. **[名前]** に「**ADFBlobConnectorDF**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー `*Data factory name "ADFBlobConnectorDF" is not available` が発生した場合は、データ ファクトリの名前を変更して (yournameADFBlobConnectorDF など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
     2. Azure **サブスクリプション** を選択します。
     3. リソース グループについては、 **[Use existing (既存のものを使用)]** を選択して、既存のリソース グループを選択するか、 **[新規作成]** を選択して、リソース グループの名前を入力します。
     4. データ ファクトリの **場所** を選択します。
@@ -508,7 +503,7 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 
 **Azure BLOB の入力データセット:**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory に通知されます。
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" の設定により、このテーブルがデータ ファクトリの外部にあり、データ ファクトリ内のアクティビティによって生成されたものではないことが Data Factory に通知されます。
 
 ```json
 {
@@ -548,7 +543,7 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 ```
 **Azure SQL の出力データセット:**
 
-このサンプルは Azure SQL Database の "MyTable" というテーブルにデータをコピーします。 BLOB CSV ファイルに含まれることが予想される列数で SQL データベースにテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルでは Azure SQL Database 内の "MyTable" というテーブルにデータがコピーされます。 BLOB CSV ファイルに含まれることが予想される列数で SQL データベースにテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```json
 {
@@ -656,9 +651,9 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 
 **Azure SQL の入力データセット:**
 
-このサンプルでは、Azure SQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
+このサンプルでは、Azure SQL に "MyTable" という名前のテーブルが作成されており、時系列データ用に "timestampcolumn" という名前の列が含まれているものと想定しています。
 
-"external": "true" の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+"external": "true" の設定により、このテーブルがデータ ファクトリの外部にあり、データ ファクトリ内のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```json
 {

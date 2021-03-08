@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 2a7d191af78da417d0ee2ade12b1576912643b6c
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: a2c149bfdf79102779abf7544fed9fb78796a50e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827463"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649966"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と New Relic by Account の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "97827463"
 * New Relic by Account にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に New Relic by Account にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,24 +39,22 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * New Relic by Account では、**SP** Initiated SSO がサポートされます
 
-* New Relic by Account を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-## <a name="adding-new-relic-by-account-from-the-gallery"></a>ギャラリーからの New Relic by Account の追加
+## <a name="add-new-relic-by-account-from-the-gallery"></a>ギャラリーからの New Relic by Account の追加
 
 Azure AD への New Relic by Account の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に New Relic by Account を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**New Relic by Account**」と入力します。
 1. 結果パネルから **[New Relic by Account]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-new-relic-by-account"></a>New Relic by Account の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-new-relic-by-account"></a>New Relic by Account に対する Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、New Relic by Account に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと New Relic by Account の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-New Relic by Account で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+New Relic by Account に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -71,18 +67,19 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **New Relic by Account** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **New Relic by Account** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
     `https://rpm.newrelic.com:443/accounts/{acc_id}/sso/saml/finalize` - 必ず `acc_id` を New Relic by Account の自分のアカウント ID に置き換えてください。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`rpm.newrelic.com` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに `rpm.newrelic.com` という URL を入力します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -91,12 +88,6 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 1. **[New Relic by Account のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
-
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -117,15 +108,9 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[New Relic by Account]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-new-relic-by-account-sso"></a>New Relic by Account SSO の構成
@@ -134,15 +119,15 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 
 2. 上部のメニューで **[アカウント設定]** をクリックします。
    
-    ![ウェルカム ページを示すスクリーンショット。[アカウント設定] が選択されています。](./media/new-relic-tutorial/ic797036.png "[Account Settings]")
+    ![ウェルカム ページを示すスクリーンショット。[アカウント設定] が選択されています。](./media/new-relic-tutorial/settings.png "[Account Settings]")
 
 3. **[セキュリティと認証]** タブをクリックし、 **[シングル サインオン]** タブをクリックします。
    
-    ![シングル サインオン](./media/new-relic-tutorial/ic797037.png "[Single Sign-On]")
+    ![シングル サインオン](./media/new-relic-tutorial/single-sign-on-tab.png "[Single Sign-On]")
 
 4. SAML ダイアログ ページで、次の手順に従います。
    
-    ![SAML](./media/new-relic-tutorial/ic797038.png "SAML")
+    ![SAML](./media/new-relic-tutorial/save.png "SAML")
    
     a. **[ファイルの選択]** をクリックして、ダウンロードした Azure Active Directory 証明書をアップロードします。
 
@@ -158,15 +143,15 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 
 2. 上部のメニューで **[アカウント設定]** をクリックします。
    
-    ![ウェルカム ページで [アカウント設定] が選択されていることを示すスクリーンショット。](./media/new-relic-tutorial/ic797040.png "[Account Settings]")
+    ![ウェルカム ページで [アカウント設定] が選択されていることを示すスクリーンショット。](./media/new-relic-tutorial/account.png "[Account Settings]")
 
 3. **[アカウント]** ペインの左側にある **[概要]** をクリックし、次に **[ユーザーの追加]** をクリックします。
    
-    ![[概要] ウィンドウを示すスクリーンショット。ここでは、[ユーザーの追加] を選択できます。](./media/new-relic-tutorial/ic797041.png "[Account Settings]")
+    ![[概要] ウィンドウを示すスクリーンショット。ここでは、[ユーザーの追加] を選択できます。](./media/new-relic-tutorial/add.png "[Account Settings]")
 
 4. **[アクティブ ユーザー]** ダイアログで、次の手順に従います。
    
-    ![アクティブ ユーザー](./media/new-relic-tutorial/ic797042.png "[アクティブ ユーザー]")
+    ![アクティブ ユーザー](./media/new-relic-tutorial/user.png "[アクティブ ユーザー]")
    
     a. **[電子メール]** テキストボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
 
@@ -179,18 +164,14 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [New Relic by Account] タイルをクリックすると、SSO を設定した New Relic by Account に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる New Relic by Account のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* New Relic by Account のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [New Relic by Account] タイルをクリックすると、New Relic by Account のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD で New Relic by Account を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+New Relic by Account を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

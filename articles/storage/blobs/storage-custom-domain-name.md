@@ -5,22 +5,20 @@ description: カスタム ドメインを Azure ストレージ アカウント�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 52fc7b9c1229421fd46b8110857a0a7a8a4f916a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996867"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520427"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
 カスタム ドメインは、BLOB サービス エンドポイントまたは[静的な Web サイト](storage-blob-static-website.md)のエンドポイントにマップできます。 
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動し、カスタム ドメインのルート ドメインを有効にするので、そのセクション内の HTTPS を有効にする手順を省略できます。 
@@ -61,8 +59,11 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 2. メニュー ウィンドウの **[設定]** で、 **[プロパティ]** を選択します。  
 
 3. **プライマリ BLOB サービス エンドポイント** または **プライマリ静的 Web サイト エンドポイント** の値をテキスト ファイルにコピーします。 
+  
+   > [!NOTE]
+   > Data Lake ストレージ エンドポイントはサポートされていません (例: `https://mystorageaccount.dfs.core.windows.net/`)。
 
-4. その文字列からプロトコル識別子 (*例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
+4. その文字列からプロトコル識別子 (例:`HTTPS`) と末尾のスラッシュを削除します。 次の表に例を示します。
 
    | エンドポイントの種類 |  endpoint | ホスト名 |
    |------------|-----------------|-------------------|
@@ -75,7 +76,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>手順 2:ドメイン プロバイダーで正規名 (CNAME) レコードを作成する
 
-ホスト名を指す CNAME レコードを作成します。 CNAME レコードは、ソース ドメイン名を宛先ドメイン名にマップする DNS レコードの一種です。
+ホスト名を指す CNAME レコードを作成します。 CNAME レコードは、ソース ドメイン名を宛先ドメイン名にマップするドメイン ネーム システム (DNS) レコードの一種です。
 
 1. ドメイン レジストラーの Web サイトにサインインし、DNS 設定を管理するためのページに移動します。
 
@@ -95,9 +96,14 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>手順 3:カスタム ドメインを Azure に登録する
 
+##### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[Blob service]** で、 **[カスタム ドメイン]** を選択します。  
+2. メニュー ウィンドウの **[Blob service]** で、 **[カスタム ドメイン]** を選択します。
+
+   > [!NOTE]
+   > このオプションは、階層型名前空間の機能が有効になっているアカウントでは表示されません。 これらのアカウントでは、PowerShell または Azure CLI のどちらかを使用してこの手順を実行します。
 
    ![カスタム ドメイン オプション](./media/storage-custom-domain-name/custom-domain-button.png "カスタム ドメイン")
 
@@ -111,18 +117,60 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
    CNAME レコードがドメイン ネーム サーバー (DNS) を介して反映された後、ユーザーが適切なアクセス許可を持っている場合は、カスタム ドメインを使用して BLOB データを表示できます。
 
+##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+次の PowerShell コマンドを実行します。
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name> -CustomDomainName <custom-domain-name> -UseSubDomain $false
+```
+
+- `<resource-group-name>` プレースホルダーは、リソース グループの名前に置き換えます。
+
+- `<storage-account-name>` プレースホルダーは、ストレージ アカウントの名前に置き換えます。
+
+- `<custom-domain-name>` プレースホルダーは、サブドメインを含むカスタム ドメインの名前に置き換えます。
+
+  たとえば、ドメインが *contoso.com* でサブドメイン エイリアスが *www* の場合、「`www.contoso.com`」と入力します。 サブドメインが *photos* の場合、「`photos.contoso.com`」と入力します。
+
+CNAME レコードがドメイン ネーム サーバー (DNS) を介して反映された後、ユーザーが適切なアクセス許可を持っている場合は、カスタム ドメインを使用して BLOB データを表示できます。
+
+##### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+次の PowerShell コマンドを実行します。
+
+```azurecli
+az storage account update \
+   --resource-group <resource-group-name> \ 
+   --name <storage-account-name> \
+   --custom-domain <custom-domain-name> \
+   --use-subdomain false
+  ```
+
+- `<resource-group-name>` プレースホルダーは、リソース グループの名前に置き換えます。
+
+- `<storage-account-name>` プレースホルダーは、ストレージ アカウントの名前に置き換えます。
+
+- `<custom-domain-name>` プレースホルダーは、サブドメインを含むカスタム ドメインの名前に置き換えます。
+
+  たとえば、ドメインが *contoso.com* でサブドメイン エイリアスが *www* の場合、「`www.contoso.com`」と入力します。 サブドメインが *photos* の場合、「`photos.contoso.com`」と入力します。
+
+CNAME レコードがドメイン ネーム サーバー (DNS) を介して反映された後、ユーザーが適切なアクセス許可を持っている場合は、カスタム ドメインを使用して BLOB データを表示できます。
+
+---
+
 #### <a name="step-4-test-your-custom-domain"></a>手順 4:カスタム ドメインのテスト
 
 カスタム ドメインが Blob service エンドポイントにマッピングされていることを確認するために、ストレージ アカウント内のパブリック コンテナーに BLOB を作成します。 次に、Web ブラウザーで、次の形式の URI を使って BLOB にアクセスします。`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-たとえば、*photos.contoso.com* カスタム サブドメインにある *myforms* コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
+たとえば、*photos.contoso.com* カスタム サブドメインにある `myforms` コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>ダウンタイムなしでカスタム ドメインをマップする
 
 > [!NOTE]
-> ユーザーがドメインを短時間使用できなくても構わない場合は、この記事の「[カスタム ドメインをマップする](#map-a-domain)」セクションの手順に従うことを検討してください。 これは、手順が少なくなっている、より簡単な方法です。  
+> ユーザーがドメインを短時間使用できなくても構わない場合は、この記事の「[カスタム ドメインをマップする](#map-a-domain)」セクションの手順を使用することを検討してください。 これは、手順が少なくなっている、より簡単な方法です。  
 
 ドメインが現在、ダウンタイムなしのサービス レベル アグリーメント (SLA) を締結しているアプリケーションをサポートしている場合は、次の手順に従って、DNS マッピングの実行中にユーザーがドメインにアクセスできるようにします。 
 
@@ -148,7 +196,10 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 3. **プライマリ BLOB サービス エンドポイント** または **プライマリ静的 Web サイト エンドポイント** の値をテキスト ファイルにコピーします。 
 
-4. その文字列からプロトコル識別子 (*例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
+   > [!NOTE]
+   > Data Lake ストレージ エンドポイントはサポートされていません (例: `https://mystorageaccount.dfs.core.windows.net/`)。
+
+4. その文字列からプロトコル識別子 (例:`HTTPS`) と末尾のスラッシュを削除します。 次の表に例を示します。
 
    | エンドポイントの種類 |  endpoint | ホスト名 |
    |------------|-----------------|-------------------|
@@ -157,7 +208,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
   
    この値は、後で使用するために取っておいてください。
 
-#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>手順 2:ドメイン プロバイダーで中間正規名 (CNAME) レコードを作成する
+#### <a name="step-2-create-an-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>手順 2:ドメイン プロバイダーで中間正規名 (CNAME) レコードを作成する
 
 ホスト名を指す一時的な CNAME レコードを作成します。 CNAME レコードは、ソース ドメイン名を宛先ドメイン名にマップする DNS レコードの一種です。
 
@@ -179,17 +230,18 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
      サブドメイン `asverify` をホスト名に追加します。 (例: `asverify.mystorageaccount.blob.core.windows.net`)。
 
-4. カスタム ドメインを登録するには、 **[保存]** ボタンを選択します。
-
-   正常に登録された場合は、portal からストレージ アカウントが正常に更新されたことが通知されます。 カスタム ドメインは Azure によって検証されていますが、ドメインへのトラフィックは、まだストレージ アカウントにルーティングされません。
-
 #### <a name="step-3-pre-register-your-custom-domain-with-azure"></a>手順 3:カスタム ドメインを Azure に事前登録する
 
 カスタム ドメインを Azure に事前登録すると、ドメインの DNS レコードを変更しなくても、カスタム ドメインを Azure に認識させることができます。 このようにすると、ドメインの DNS レコードを変更したときにダウンタイムなしで BLOB エンドポイントにマッピングされます。
 
+##### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[Blob service]** で、 **[カスタム ドメイン]** を選択します。  
+2. メニュー ウィンドウの **[Blob service]** で、 **[カスタム ドメイン]** を選択します。
+
+   > [!NOTE]
+   > このオプションは、階層型名前空間の機能が有効になっているアカウントでは表示されません。 これらのアカウントでは、PowerShell または Azure CLI のどちらかを使用してこの手順を実行します。
 
    ![カスタム ドメイン オプション](./media/storage-custom-domain-name/custom-domain-button.png "カスタム ドメイン")
 
@@ -203,7 +255,49 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 5. カスタム ドメインを登録するには、 **[保存]** ボタンを選択します。
   
-   CNAME レコードがドメイン ネーム サーバー (DNS) を介して反映された後、ユーザーが適切なアクセス許可を持っている場合は、カスタム ドメインを使用して BLOB データを表示できます。
+   正常に登録された場合は、portal からストレージ アカウントが正常に更新されたことが通知されます。 カスタム ドメインは Azure によって確認されていますが、ドメインへのトラフィックは、ドメイン プロバイダーで CNAME レコードを作成するまでは、まだストレージ アカウントへはルーティングされません。 これは、次のセクションで行います。
+
+##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+次の PowerShell コマンドを実行します。
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name> -CustomDomainName <custom-domain-name> -UseSubDomain $true
+```
+
+- `<resource-group-name>` プレースホルダーは、リソース グループの名前に置き換えます。
+
+- `<storage-account-name>` プレースホルダーは、ストレージ アカウントの名前に置き換えます。
+
+- `<custom-domain-name>` プレースホルダーは、サブドメインを含むカスタム ドメインの名前に置き換えます。
+
+  たとえば、ドメインが *contoso.com* でサブドメイン エイリアスが *www* の場合、「`www.contoso.com`」と入力します。 サブドメインが *photos* の場合、「`photos.contoso.com`」と入力します。
+
+ドメインへのトラフィックは、ドメイン プロバイダーで CNAME レコードを作成するまでは、まだストレージ アカウントへはルーティングされません。 これは、次のセクションで行います。
+
+##### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+次の PowerShell コマンドを実行します。
+
+```azurecli
+az storage account update \
+   --resource-group <resource-group-name> \ 
+   --name <storage-account-name> \
+   --custom-domain <custom-domain-name> \
+   --use-subdomain true
+  ```
+
+- `<resource-group-name>` プレースホルダーは、リソース グループの名前に置き換えます。
+
+- `<storage-account-name>` プレースホルダーは、ストレージ アカウントの名前に置き換えます。
+
+- `<custom-domain-name>` プレースホルダーは、サブドメインを含むカスタム ドメインの名前に置き換えます。
+
+  たとえば、ドメインが *contoso.com* でサブドメイン エイリアスが *www* の場合、「`www.contoso.com`」と入力します。 サブドメインが *photos* の場合、「`photos.contoso.com`」と入力します。
+
+ドメインへのトラフィックは、ドメイン プロバイダーで CNAME レコードを作成するまでは、まだストレージ アカウントへはルーティングされません。 これは、次のセクションで行います。
+
+---
 
 #### <a name="step-4-create-a-cname-record-with-your-domain-provider"></a>手順 4:ドメイン プロバイダーで CNAME レコードを作成する
 
@@ -227,15 +321,13 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 カスタム ドメインが Blob service エンドポイントにマッピングされていることを確認するために、ストレージ アカウント内のパブリック コンテナーに BLOB を作成します。 次に、Web ブラウザーで、次の形式の URI を使って BLOB にアクセスします。`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-たとえば、*photos.contoso.com* カスタム サブドメインにある *myforms* コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
+たとえば、*photos.contoso.com* カスタム サブドメインにある `myforms` コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>カスタム ドメインのマッピングを削除する
 
 カスタム ドメインのマッピングを削除するには、カスタム ドメインの登録を解除します。 次の手順のいずれかを使用します。
 
 #### <a name="portal"></a>[ポータル](#tab/azure-portal)
-
-カスタム ドメイン設定を削除するには、次の操作を行います。
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
@@ -247,28 +339,6 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 4. **[保存]** を選択します。
 
 カスタム ドメインが正常に削除されたら、ストレージ アカウントが正常に更新されたことを伝えるポータルの通知が表示されます。
-
-#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-カスタム ドメインの登録を削除するには、[az storage account update](/cli/azure/storage/account) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定します。
-
-* コマンド形式:
-
-  ```azurecli
-  az storage account update \
-      --name <storage-account-name> \
-      --resource-group <resource-group-name> \
-      --custom-domain ""
-  ```
-
-* コマンド例:
-
-  ```azurecli
-  az storage account update \
-      --name mystorageaccount \
-      --resource-group myresourcegroup \
-      --custom-domain ""
-  ```
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -293,6 +363,28 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
       -AccountName "mystorageaccount" `
       -CustomDomainName ""
   ```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+カスタム ドメインの登録を削除するには、[az storage account update](/cli/azure/storage/account) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定します。
+
+* コマンド形式:
+
+  ```azurecli
+  az storage account update \
+      --name <storage-account-name> \
+      --resource-group <resource-group-name> \
+      --custom-domain ""
+  ```
+
+* コマンド例:
+
+  ```azurecli
+  az storage account update \
+      --name mystorageaccount \
+      --resource-group myresourcegroup \
+      --custom-domain ""
+  ```
 ---
 
 <a id="enable-https"></a>
@@ -302,8 +394,6 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 この方法では、さらに多くの手順が必要になりますが、HTTPS アクセスが可能になります。 
 
 ユーザーが HTTPS を使用して BLOB または Web コンテンツにアクセスする必要がない場合は、この記事の「[HTTP のみが有効になっているカスタム ドメインをマップする](#enable-http)」セクションを参照してください。 
-
-カスタム ドメインをマップし、HTTPS アクセスを有効にするには、次の手順を実行します。
 
 1. BLOB または Web エンドポイントで [Azure CDN](../../cdn/cdn-overview.md) を有効にします。 
 

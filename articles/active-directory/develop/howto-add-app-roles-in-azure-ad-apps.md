@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: fce963bd9ffdc6f768d7b3de4a9e4870add06136
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013704"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104248"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>方法: アプリケーションにアプリ ロールを追加してトークンで受け取る
 
@@ -49,7 +49,7 @@ Azure portal を使用してアプリ ロールを宣言するには、2 つの�
 
 Azure portal のユーザー インターフェイスを使用してアプリ ロールを作成するには:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、アプリのロールを追加するアプリ登録を含む Azure Active Directory テナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]** を選択し、アプリ ロールを定義するアプリケーションを選択します。
@@ -74,7 +74,7 @@ Azure portal のユーザー インターフェイスを使用してアプリ �
 
 マニフェストを直接編集してロールを追加するには:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、アプリのロールを追加するアプリ登録を含む Azure Active Directory テナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]** を選択し、アプリ ロールを定義するアプリケーションを選択します。
@@ -136,7 +136,7 @@ Azure portal のユーザー インターフェイスを使用してアプリ �
 
 Azure portal を使用してユーザーとグループをロールに割り当てるには:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. **Azure Active Directory** の左側のナビゲーション メニューで **[エンタープライズ アプリケーション]** を選択します。
 1. **[すべてのアプリケーション]** を選択して、すべてのアプリケーションの一覧を表示します。 アプリケーションが一覧に表示されない場合は、 **[すべてのアプリケーション]** 一覧の上部にあるフィルターを使用して一覧を制限するか、一覧を下にスクロールしてアプリケーションを見つけます。
 1. ユーザーまたはグループをロールに割り当てるアプリケーションを選択します。
@@ -158,7 +158,7 @@ Azure portal を使用してユーザーとグループをロールに割り当�
 
 Azure portal を使用してアプリケーションにアプリ ロールを割り当てるには:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. **Azure Active Directory** の左側のナビゲーション メニューで **[アプリの登録]** を選択します。
 1. **[すべてのアプリケーション]** を選択して、すべてのアプリケーションの一覧を表示します。 アプリケーションが一覧に表示されない場合は、 **[すべてのアプリケーション]** 一覧の上部にあるフィルターを使用して一覧を制限するか、一覧を下にスクロールしてアプリケーションを見つけます。
 1. アプリ ロールを割り当てるアプリケーションを選択します。

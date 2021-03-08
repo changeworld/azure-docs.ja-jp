@@ -11,16 +11,14 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346709"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832234"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でストア内分析アプリケーションを作成する
-
-
 
 チュートリアルでは、Azure IoT Central のストア内分析アプリケーションを作成する方法をソリューション ビルダーに説明します。 サンプル アプリケーションは小売店用です。 これは、利用状況と環境条件を監視して適応するという一般的なビジネス ニーズに対するソリューションです。
 
@@ -276,7 +274,12 @@ Azure IoT Central アプリケーション内でセンサーを使用して状�
 
     数分以内に、指定したメール アカウントでメールの受信が開始します。 湿度レベルが条件の値を超えたことがセンサーで示されるたびに、アプリケーションによってメールが送信されます。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>次のステップ
+
 このチュートリアルでは、以下の内容を学習しました。
 
 * Azure IoT Central の **In-store analytics - checkout** テンプレートを使用して小売店アプリケーションを作成する

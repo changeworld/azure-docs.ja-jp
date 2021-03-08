@@ -4,16 +4,16 @@ description: 新しいデータ エクスポートを使用して Azure とカ�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/05/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226064"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522616"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
@@ -92,7 +92,7 @@ V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central 
 
 エクスポート先となる既存の Azure Storage アカウントがない場合は、次の手順に従います。
 
-1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob ストレージ アカウント](../../storage/blobs/storage-quickstart-blobs-portal.md)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/common/storage-account-create.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
+1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob Storage アカウント](../../storage/blobs/storage-quickstart-blobs-portal.md)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/common/storage-account-create.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
 
     |パフォーマンス レベル|アカウントの種類|
     |-|-|
@@ -166,6 +166,17 @@ V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central 
 
 1. エクスポートの設定が完了したら、 **[保存]** を選択します。 数分後に、エクスポート先にデータが表示されます。
 
+## <a name="monitor-your-export"></a>エクスポートの監視
+
+IoT Central でエクスポートの状態を確認するだけでなく、[Azure Monitor](../../azure-monitor/overview.md) を使用して、エクスポートしているデータの量やエクスポート エラーを確認することもできます。 エクスポートとデバイスの正常性のメトリックには、Azure portal 内のグラフ、REST API、または PowerShell や Azure CLI のクエリを使用してアクセスできます。 現時点では、Azure Monitor で次のデータ エクスポート メトリックを監視できます。
+
+- フィルター適用前のエクスポート対象受信メッセージの数。
+- フィルターを通過したメッセージの数。
+- 宛先に正常にエクスポートされたメッセージの数。
+- 発生したエラーの数。
+
+詳細については、「[IoT Central アプリケーションの全体的な正常性状態を監視する](howto-monitor-application-health.md)」を参照してください。
+
 ## <a name="destinations"></a>変換先
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob Storage の宛先
@@ -233,7 +244,6 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
     }
 }
 ```
-
 ### <a name="message-properties"></a>メッセージのプロパティ
 
 テレメトリ メッセージには、テレメトリ ペイロードに加え、メタデータのプロパティが含まれています。 前のスニペットは、`deviceId` や `enqueuedTime` など、システム メッセージの例を示しています。 システム メッセージ プロパティの詳細については、「[D2C IoT Hub メッセージのシステム プロパティ](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages)」を参照してください。

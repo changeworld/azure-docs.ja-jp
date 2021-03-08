@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ec07d36ad544f293064e877520bb4a7a4c9b269d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f404d3613f9de8daadc4bb2ceb39282cf3b619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457638"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル: Azure Active Directory と Attendance Management Services の統合
 
@@ -41,7 +41,7 @@ Attendance Management Services と Azure AD の統合を構成するには、次
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Attendance Management Services では、 **SP** によって開始される SSO がサポートされます
+* Attendance Management Services では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-attendance-management-services-from-the-gallery"></a>ギャラリーから Attendance Management Services を追加する
 
@@ -61,13 +61,13 @@ Azure AD への Attendance Management Services の統合を構成するには、
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Attendance Management Services** 」と入力して結果パネルから **[Attendance Management Services]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Attendance Management Services**」と入力して結果パネルから **[Attendance Management Services]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リストの Attendance Management Services](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Attendance Management Services で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Attendance Management Services で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Attendance Management Services の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Attendance Management Services で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -162,7 +162,7 @@ Attendance Management Services で Azure AD シングル サインオンを構�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -216,7 +216,7 @@ Azure AD ユーザーが Attendance Management Services にサインインでき
 
     ![このスクリーンショットは、説明されているタスクを実行できるウィンドウを示しています。](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. **[OBCiD]** ボックスに、ユーザーのメール アドレスを入力します (例: `BrittaSimon\@contoso.com`)。
+    a. **[OBCiD]** ボックスに、ユーザーのメール アドレスを入力します (例: `BrittaSimon@contoso.com`)。
 
     b. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 

@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine の生産性向上ツールについて説明します。
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
-ms.openlocfilehash: 97381a58cdb759dec30e75860505b3a260223d76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f0a54d99b7f2e84f7ac392de2fe9cb1c7c31a3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761194"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516449"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine の生産性向上ツール
 

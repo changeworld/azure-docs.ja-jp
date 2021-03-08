@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127636"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820264"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -132,7 +132,9 @@ Windows Server によるノード プールのサポートには、Kubernetes �
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか?
 
-AKS では、[アップタイム SLA][uptime-sla] を使用したオプションのアドオン機能として SLA 保証が提供されます。
+AKS では、[アップタイム SLA][uptime-sla] を使用したオプションのアドオン機能として SLA 保証が提供されます。 
+
+既定で提供される無料の SLA では、高可用性 API サーバー エンドポイントは保証されません (サービス レベル目標は 99.5%)。 アップグレード、異常なアンダーレイ ノード、プラットフォームのメンテナンスなどで、一時的な接続の問題が見られる可能性があります。ワークロードで APIServer の再起動が許容されない場合は、アップタイム SLA を使用することをお勧めします。
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>自分の AKS エージェント ノードに Azure の予約割引を適用できますか?
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0b2a6088effc735076d56ba83dd85135392147b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660782"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574999"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Azure Sentinel への脅威インテリジェンスのインポート
 
@@ -36,7 +36,7 @@ Azure Sentinel のようなセキュリティ情報イベント管理 (SIEM) ソ
 - 組み込みの **分析** ルール テンプレートを使用して、インポートした脅威インテリジェンスを利用したセキュリティのアラートとインシデントを生成します。
 - Azure Sentinel で、**脅威インテリジェンス ブック** を使用して、脅威インテリジェンスに関する重要な情報を視覚化します。
 
-また、脅威インテリジェンスによって、 **[ハンティング]** や **[ノートブック]** などの他の Azure Sentinel エクスペリエンスにも有用なコンテキストが提供されます。これらのエクスペリエンスについては、この記事では取り上げていませんが、Notebooks 内での CTI の使用について書かれた、[Sentinel での Jupyter Notebooks に関する Ian Hellen によるこちらの優れたブログ記事](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)で取り上げられています。
+また、脅威インテリジェンスによって、 **[ハンティング]** や **[ノートブック]** などの他の Azure Sentinel エクスペリエンスにも有用なコンテキストが提供されます。これらのエクスペリエンスについては、この記事では取り上げていませんが、Notebooks 内での CTI の使用について書かれた、[Azure Sentinel での Jupyter Notebooks に関する Ian Hellen によるこちらの優れたブログ記事](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)で取り上げられています。
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>脅威インテリジェンス用の Azure Sentinel データ コネクタ
 
@@ -419,7 +419,7 @@ Azure Sentinel で提供される脅威インテリジェンス ブックを見�
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="横棒グラフ":::
 
-ブックには、Azure Sentinel のあらゆる側面に関する分析情報を提供する、強力な対話型ダッシュボードが用意されています。 ブックでは多くのことができますが、提供されるテンプレートを最適な出発点として、使い慣れてきたらテンプレートをカスタマイズしたり、さまざまなデータ ソースを組み合わせた新しいダッシュボードを作成したりできます。これにより、独自の方法でデータを視覚化できるようになります。 Azure Sentinel ブックは Azure Monitor ブックに基づいているため、広範なドキュメントが既にあり、さらに多くのテンプレートを利用できます。 [Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/platform/workbooks-overview.md)の方法に関するこの記事から読み始めることをお勧めします。 
+ブックには、Azure Sentinel のあらゆる側面に関する分析情報を提供する、強力な対話型ダッシュボードが用意されています。 ブックでは多くのことができますが、提供されるテンプレートを最適な出発点として、使い慣れてきたらテンプレートをカスタマイズしたり、さまざまなデータ ソースを組み合わせた新しいダッシュボードを作成したりできます。これにより、独自の方法でデータを視覚化できるようになります。 Azure Sentinel ブックは Azure Monitor ブックに基づいているため、広範なドキュメントが既にあり、さらに多くのテンプレートを利用できます。 [Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/visualize/workbooks-overview.md)の方法に関するこの記事から読み始めることをお勧めします。 
 
 また、[GitHub 上に Azure Monitor ブック](https://github.com/microsoft/Application-Insights-Workbooks)の活発なコミュニティがあり、追加のテンプレートをダウンロードしたり、独自のテンプレートを投稿したりすることができます。
 

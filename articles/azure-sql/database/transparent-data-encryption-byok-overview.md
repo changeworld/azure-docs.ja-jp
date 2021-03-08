@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 74c0dbaaa511e2fd2f20a3c245a561a177dd2b9a
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223442"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691248"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -164,7 +164,7 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 - [Azure Resource Health](../../service-health/resource-health-overview.md)。 TDE 保護機能へのアクセスが失われたアクセス不可能なデータベースには、データベースへの最初の接続が拒否された後、"使用できません" と表示されます。
 - [アクティビティ ログ](../../service-health/alerts-activity-log-service-notifications-portal.md)。ユーザーが管理するキー コンテナーの TDE 保護機能へのアクセスに失敗すると、アクティビティ ログにエントリが追加されます。  これらのイベントに対してアラートを作成すると、できるだけ早くアクセスを再開できるようになります。
-- [アクション グループ](../../azure-monitor/platform/action-groups.md)は、設定 (メール/SMS/プッシュ/音声、ロジック アプリ、Webhook、ITSM、Automation Runbook など) に基づいて通知やアラートを送信できます。
+- [アクション グループ](../../azure-monitor/alerts/action-groups.md)は、設定 (メール/SMS/プッシュ/音声、ロジック アプリ、Webhook、ITSM、Automation Runbook など) に基づいて通知やアラートを送信できます。
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>カスタマー マネージド TDE を使用したデータベースのバックアップと復元
 
@@ -187,7 +187,7 @@ SQL Database のバックアップ回復の詳細については、[SQL Database
 
 サーバーに geo 冗長が構成されていない場合でも、同じキー マテリアルで、2 つの異なるリージョンの 2 つの異なるキー コンテナーを使用するようにサーバーを構成することを強くお勧めします。 他のリージョンのセカンダリ キー コンテナー内のキーは、TDE 保護機能としてマークすることはできず、許可もされません。 プライマリ キー コンテナーに影響する障害が発生したときに初めて、システムにより、セカンダリ キー コンテナー内に同じ拇印を持つ他のリンクされたキーに自動的に切り替えられます (存在する場合)。 ただし、アクセス権が取り消されたか、キーまたはキー コンテナーが削除されたため TDE プロテクターにアクセスできない場合、これはサーバーがキーにアクセスするのを制限するという顧客の意図を示している可能性があるため、この切り替えは発生しません。異なるリージョンの 2 つのキー コンテナーに同じキー マテリアルを提供するには、キー コンテナーの外側にキーを作成し、それらを両方のキー コンテナーにインポートします。 
 
-または、サーバーと同じリージョンに併置されているプライマリ キー コンテナーを使用してキーを生成し、別の Azure リージョンのキー コンテナーにキーを複製する方法もあります。 [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) コマンドレットを使用して、プライマリ キー コンテナーから暗号化された形式のキーを取得し、[Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) コマンドレットを使用して、キーを複製する 2 つ目のリージョンのキー コンテナーを指定します。 または、Azure portal を使用して、キーのバックアップと復元を行います。 キーのバックアップ/復元操作は、同じ Azure サブスクリプションおよび [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)内のキー コンテナー間でのみ許可されます。  
+または、サーバーと同じリージョンに併置されているプライマリ キー コンテナーを使用してキーを生成し、別の Azure リージョンのキー コンテナーにキーを複製する方法もあります。 [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) コマンドレットを使用して、プライマリ キー コンテナーから暗号化された形式のキーを取得し、[Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) コマンドレットを使用して、キーを複製する 2 つ目のリージョンのキー コンテナーを指定します。 または、Azure portal を使用して、キーのバックアップと復元を行います。 キーのバックアップ/復元操作は、同じ Azure サブスクリプションおよび [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)内のキー コンテナー間でのみ許可されます。  
 
 ![単一サーバーの HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

@@ -2,13 +2,13 @@
 title: Batch プールの構成を Cloud Services から Virtual Machines に移行する
 description: プールの構成を最新の推奨構成に更新する方法について説明します
 ms.topic: how-to
-ms.date: 1/6/2021
-ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 2/16/2021
+ms.openlocfilehash: 9cbcf3864526bd8f8132f3b0f729e2d728e07bb8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731501"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546042"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch プールの構成を Cloud Services から Virtual Machines に移行する
 
@@ -36,6 +36,19 @@ Batch プールは、[cloudServiceConfiguration](/rest/api/batchservice/pool/add
    > Virtual Machines や Virtual Machine Scale Sets と同様に、各ノードで使用される OS マネージド ディスクにはコストがかかります。これは、VM のコストに追加されます。 "cloudServiceConfiguration" ノードでは、ノードのローカル SSD に OS ディスクが作成されるため、OS ディスクのコストは発生しません。
 
 - プールとノードのスタートアップと削除の時間は、"cloudServiceConfiguration" プールと "virtualMachineConfiguration" プールの間で若干異なる場合があります。
+
+## <a name="azure-data-factory-custom-activity-pools"></a>Azure Data Factory カスタム アクティビティ プール
+
+Azure Batch プールを使用して、Data Factory カスタム アクティビティを実行することができます。 カスタム アクティビティを実行するために使用される "cloudServiceConfiguration" プールをすべて削除し、新しい "virtualMachineConfiguration" プールを作成する必要があります。
+
+- 実行が中断されないようにするには、削除/再作成の前にパイプラインを一時停止する必要があります。
+- 同じプール ID を使用して、リンクされたサービス構成の変更を回避できます。
+- 新しいプールが作成されたら、パイプラインを再開します。
+
+Azure Batch を使用した Data Factory カスタム アクティビティの実行の詳細については、次を参照してください。
+
+- [Azure Batch のリンクされたサービス](../data-factory/compute-linked-services.md#azure-batch-linked-service)
+- [Data Factory パイプラインのカスタム アクティビティ](../data-factory/transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="next-steps"></a>次のステップ
 

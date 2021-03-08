@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: 6ce169eee4f931d02071a326c65ba94cfe723ae1
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: dd000ca36bb0ad586b973b2bcdc638d8992b1a73
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259035"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668641"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP HANA スケールアウト システムの高可用性 
 
@@ -91,7 +90,7 @@ ms.locfileid: "99259035"
   * [SAP HANA のスケールアウトとシステム レプリケーションのための Red Hat Enterprise Linux ソリューション](https://access.redhat.com/solutions/4386601)
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
 * [Azure NetApp Files のドキュメント][anf-azure-doc] 
-* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>概要
 
@@ -1172,5 +1171,5 @@ Azure NetApp ボリュームは別のサブネットに展開されており、[
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
-* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)
 * Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。

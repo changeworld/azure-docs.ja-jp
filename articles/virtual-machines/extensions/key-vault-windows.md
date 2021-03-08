@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e1a9f5d08168841d7651a17e2de4995b7a7cf38b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820723"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093626"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -35,25 +35,31 @@ Key Vault VM 拡張機能は、Azure で使用するために、Windows Server 2
 - PKCS #12
 - PEM
 
-## <a name="prerequisities"></a>前提条件
+## <a name="prerequisites"></a>前提条件
+
   - 証明書を持つ Key Vault インスタンス。 [Key Vault の作成](../../key-vault/general/quick-create-portal.md)に関するページを参照してください
   - VM には [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) が割り当てられている必要があります
   - Key Vault アクセス ポリシーは、シークレットの `get` および `list` アクセス許可を使用して、VM/VMSS マネージド ID が証明書の秘密の部分を取得できるように設定する必要があります。 [Key Vault に対して認証を行う方法](../../key-vault/general/authentication.md)に関するページと「[Key Vault アクセス ポリシーを割り当てる](../../key-vault/general/assign-access-policy-cli.md)」を参照してください。
-  -  VMSS には、次の ID 設定が必要です。` 
+  -  Virtual Machine Scale Sets には、次の ID 設定が必要です。
+
+  ``` 
   "identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-  "[parameters('userAssignedIdentityResourceId')]": {}
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[parameters('userAssignedIdentityResourceId')]": {}
+    }
   }
-  }
-  `
+  ```
   
-- AKV 拡張機能には、次の設定が必要です。`
-                  "authenticationSettings": {
-                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
-                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
-                  }
-   `
+  - AKV 拡張機能には、次の設定が必要です。
+
+  ```
+  "authenticationSettings": {
+    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+  }
+  ```
+
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
 次の JSON は、Key Vault VM 拡張機能のスキーマを示しています。 この拡張機能では、保護された設定は必要ありません。そのすべての設定はパブリック情報と見なされます。 この拡張機能には、監視対象の証明書、ポーリング頻度、および宛先の証明書ストアの一覧が必要です。 具体的な内容は次のとおりです。  
@@ -164,7 +170,9 @@ Key Vault VM 拡張機能は、構成されている場合に拡張機能の順�
     ...
 }
 ```
-> [注] システム割り当て ID を作成し、その ID を使用して Key Vault アクセス ポリシーを更新する ARM テンプレートに対しては、この機能を使用することはできません。 それを行うと、すべての拡張機能が起動するまでコンテナーのアクセス ポリシーが更新されなくなり、デッドロックが発生することになります。 そうではなく、"*単一ユーザー割り当て MSI ID*" を使用し、その ID でコンテナーに事前 ACL を設定してからデプロイする必要があります。
+
+> [!Note] 
+> システム割り当て ID を作成し、その ID を使用して Key Vault アクセス ポリシーを更新する ARM テンプレートに対しては、この機能を使用することはできません。 それを行うと、すべての拡張機能が起動するまでコンテナーのアクセス ポリシーが更新されなくなり、デッドロックが発生することになります。 そうではなく、"*単一ユーザー割り当て MSI ID*" を使用し、その ID でコンテナーに事前 ACL を設定してからデプロイする必要があります。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell でのデプロイ
 > [!WARNING]
@@ -222,9 +230,9 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
     
     ```azurecli
        # Start the deployment
-         az vm extension set --name "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -233,9 +241,9 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 
    ```azurecli
         # Start the deployment
-        az vmss extension set --name "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

@@ -3,12 +3,12 @@ title: Azure Application Insights から SQL へのエクスポート | Microsof
 description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 25d28bb0fc35ef76231c085dc1d9d8a1234a264c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942428"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587747"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法について説明します。 
@@ -61,7 +61,7 @@ ms.locfileid: "98942428"
     ![イベントの種類の選択](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](./diagnostic-search.md)に表示されます。 
+1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../essentials/metrics-charts.md)に表示され、個々のイベントが[診断検索](./diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
 2. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、 **[参照]** 、ストレージ アカウント、 **[コンテナー]** の順に選択します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
@@ -252,7 +252,7 @@ FROM [dbo].[PageViewsTable]
 
 [diagnostic]: ./diagnostic-search.md
 [export]: ./export-telemetry.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
 

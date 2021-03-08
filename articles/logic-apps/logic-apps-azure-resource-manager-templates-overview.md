@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2e1536d4f2ea7d71691c611e9127109c154f3266
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009774"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807345"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -627,7 +627,7 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 }
 ```
 
-接続リソース定義では、テンプレートの最上位パラメーターの値を参照します。これは、パラメーター ファイルを使ってデプロイ時にこれらの値を指定できることを意味します。 接続で使用する Azure リソース グループと場所が、ロジック アプリと同じものであることを確認してください。
+接続リソース定義では、テンプレートの最上位パラメーターの値を参照します。つまり、パラメーター ファイルを使ってデプロイ時にこれらの値を指定できます。 接続で使用する Azure リソース グループと場所が、ロジック アプリと同じものであることを確認してください。
 
 Office 365 Outlook 接続のリソース定義と、対応するテンプレート パラメーターの例を次に示します。
 
@@ -746,12 +746,12 @@ Azure で作成する各接続には、一意の名前が付けられます。 �
                      }
                   }
                }
-            },
-            <other-logic-app-resource-information>,
-            "dependsOn": [
-               "[resourceId('Microsoft.Web/connections', parameters('office365_1_Connection_Name'))]"
-            ]
-         }
+            }
+         },
+         <other-logic-app-resource-information>,
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/connections', parameters('office365_1_Connection_Name'))]"
+         ]
          // End logic app resource definition
       },
       // Office 365 Outlook API connection resource definition

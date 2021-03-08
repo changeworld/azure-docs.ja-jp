@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fda4ec810d0b410dcd75ac9c6be69bd54b16d9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092651"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643866"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -201,7 +201,7 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 2. 次の同期サイクルで同期の試行を許可します。 このとき、同期が成功して、Bob の UserPrincipalName が予期したとおり bob@fabrikam.com に更新されます。
 
 #### <a name="related-articles"></a>関連記事
-* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](/azure/active-directory/hybrid/howto-troubleshoot-upn-changes)
+* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](./howto-troubleshoot-upn-changes.md)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>説明

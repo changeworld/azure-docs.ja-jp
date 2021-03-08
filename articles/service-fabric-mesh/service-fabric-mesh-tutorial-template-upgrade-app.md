@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 331830c50206d14f7894aa837b483656de4222f2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8a71e854f03bee75b757e0a0aa02e7aa2c24469b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747845"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626563"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>チュートリアル: Service Fabric Mesh で実行されている Service Fabric アプリケーションをアップグレードする
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 このチュートリアルは、シリーズの第 3 部です。 割り当てられている CPU リソースを増やすことによって、[以前に Service Fabric Mesh にデプロイ](service-fabric-mesh-tutorial-template-deploy-app.md)された Service Fabric アプリケーションをアップグレードする方法について学習します。  完了すると、Web フロントエンド サービスがより多くの CPU リソースで実行するようになります。
 
@@ -58,7 +63,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 
 以前は、アプリケーションは [mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ファイルと [mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルを利用してデプロイされました。
 
-[mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをローカルで開き、 *frontEndCpu* の値を 1 に設定します。
+[mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをローカルで開き、*frontEndCpu* の値を 1 に設定します。
 
 ```json
       "frontEndCpu":{
@@ -68,7 +73,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 
 変更内容をパラメーター ファイルに保存します。  
 
-*frontEndCpu* パラメーターは、 [mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)の *parameters* セクションで宣言されています。
+*frontEndCpu* パラメーターは、[mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)の *parameters* セクションで宣言されています。
 
 ```json
 "frontEndCpu": {
@@ -80,7 +85,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 }
 ```
 
-WebFrontEnd サービスの *codePackages->resources->requests->cpu* プロパティでは、 *frontEndCpu* パラメーターが参照されています。
+WebFrontEnd サービスの *codePackages->resources->requests->cpu* プロパティでは、*frontEndCpu* パラメーターが参照されています。
 
 ```json
     "services": [

@@ -2,24 +2,21 @@
 title: Event Grid ソースとしての Azure Cache for Redis
 description: Azure Event Grid の Azure Cache for Redis イベントに対して用意されているプロパティについて説明します
 ms.topic: conceptual
-ms.date: 12/21/2020
+ms.date: 02/11/2021
 author: curib
 ms.author: cauribeg
-ms.openlocfilehash: f446f3f469a7404e6e74ba67ee24bf32578fe9d8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 1a2995bc9ef40cd4eab320ce1bb4c5faf61e0e6e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056931"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371279"
 ---
 # <a name="azure-cache-for-redis-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Cache for Redis
 
-この記事では、Azure Cache for Redis のイベントのプロパティとスキーマについて説明します。  イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 
+この記事では、Azure Cache for Redis のイベントのプロパティとスキーマについて説明します。  イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 
 
-## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
-
-### <a name="list-of-events-for-azure-cache-for-redis-rest-apis"></a>Azure Cache for Redis REST API のイベントの一覧
-
+## <a name="available-event-types"></a>使用可能なイベントの種類
 これらのイベントは、クライアントで Azure Cache for Redis REST API を呼び出してエクスポート、インポート、またはスケーリングを行うとトリガーされます。 ファイルの部分置換イベントは Redis 更新プログラムによってトリガーされます。
 
  |イベント名 |説明|
@@ -29,12 +26,10 @@ ms.locfileid: "99056931"
  |**Microsoft.Cache.PatchingCompleted** |ファイルの部分置換が完了するとトリガーされます。 |
  |**Microsoft.Cache.ScalingCompleted** |スケーリングが完了するとトリガーされます。 |
 
-<a name="example-event"></a>
-### <a name="the-contents-of-an-event-response"></a>イベント応答の内容
+## <a name="example-event"></a>イベントの例
+イベントがトリガーされると、Event Grid サービスにより、そのイベントに関するデータがサブスクライブしているエンドポイントに送信されます。 このセクションには、各 Azure Cache for Redis イベントでそのデータがどのように見えるかの例が含まれています。
 
-イベントがトリガーされると、Event Grid サービスにより、そのイベントに関するデータがサブスクライブしているエンドポイントに送信されます。
-
-このセクションには、各 Azure Cache for Redis イベントでそのデータがどのように見えるかの例が含まれています。
+# <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 
 ### <a name="microsoftcachepatchingcompleted-event"></a>Microsoft.Cache.PatchingCompleted イベント
 
@@ -104,29 +99,126 @@ ms.locfileid: "99056931"
 "eventTime":"2020-12-09T21:50:19.9995668+00:00"}]
 ```
 
-### <a name="event-properties"></a>イベントのプロパティ
+# <a name="cloud-event-schema"></a>[クラウド イベント スキーマ](#tab/cloud-event-schema)
+
+
+### <a name="microsoftcachepatchingcompleted-event"></a>Microsoft.Cache.PatchingCompleted イベント
+
+```json
+[{
+    "id": "9b87886d-21a5-4af5-8e3e-10c4b8dac73b",
+    "type": "Microsoft.Cache.PatchingCompleted",
+    "source": "/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Cache/Redis/{cache_name}",
+    "data": {
+        "name": "PatchingCompleted",
+        "timestamp": "2020-12-09T21:50:19.9995668+00:00",
+        "status": "Succeeded"
+    },
+    "subject": "PatchingCompleted",
+    "time": "2020-12-09T21:50:19.9995668+00:00",
+    "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftcacheimportrdbcompleted-event"></a>Microsoft.Cache.ImportRDBCompleted イベント
+
+```json
+[{
+    "id": "9b87886d-21a5-4af5-8e3e-10c4b8dac73b",
+    "type": "Microsoft.Cache.ImportRDBCompleted",
+    "source": "/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Cache/Redis/{cache_name}",
+    "data": {
+        "name": "ImportRDBCompleted",
+        "timestamp": "2020-12-09T21:50:19.9995668+00:00",
+        "status": "Succeeded"
+    },
+    "subject": "ImportRDBCompleted",
+    "eventTime": "2020-12-09T21:50:19.9995668+00:00",
+    "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftcacheexportrdbcompleted-event"></a>Microsoft.Cache.ExportRDBCompleted イベント
+
+```json
+[{
+    "id": "9b87886d-21a5-4af5-8e3e-10c4b8dac73b",
+    "type": "Microsoft.Cache.ExportRDBCompleted",
+    "source": "/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Cache/Redis/{cache_name}",
+    "data": {
+        "name": "ExportRDBCompleted",
+        "timestamp": "2020-12-09T21:50:19.9995668+00:00",
+        "status": "Succeeded"
+    },
+    "subject": "ExportRDBCompleted",
+    "time": "2020-12-09T21:50:19.9995668+00:00",
+    "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftcachescalingcompleted"></a>Microsoft.Cache.ScalingCompleted
+
+```json
+[{
+    "id": "9b87886d-21a5-4af5-8e3e-10c4b8dac73b",
+    "type": "Microsoft.Cache.ScalingCompleted",
+    "source": "/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Cache/Redis/{cache_name}",
+    "data": {
+        "name": "ScalingCompleted",
+        "timestamp": "2020-12-09T21:50:19.9995668+00:00",
+        "status": "Succeeded"
+    },
+    "subject": "ScalingCompleted",
+    "time": "2020-12-09T21:50:19.9995668+00:00",
+    "specversion": "1.0"
+}]
+```
+
+---
+
+## <a name="event-properties"></a>イベントのプロパティ
+
+# <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
-| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | string | 発行元が定義したイベントの対象のパス。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
-| data | object | Azure Cache for Redis イベント データ。 |
-| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| `subject` | string | 発行元が定義したイベントの対象のパス。 |
+| `eventType` | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| `eventTime` | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| `id` | string | イベントの一意識別子。 |
+| `data` | object | Azure Cache for Redis イベント データ。 |
+| `dataVersion` | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| `metadataVersion` | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+
+
+# <a name="cloud-event-schema"></a>[クラウド イベント スキーマ](#tab/cloud-event-schema)
+
+
+イベントのトップレベルのデータを次に示します。
+
+| プロパティ | 種類 | [説明] |
+| -------- | ---- | ----------- |
+| `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| `subject` | string | 発行元が定義したイベントの対象のパス。 |
+| `type` | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| `time` | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| `id` | string | イベントの一意識別子。 |
+| `data` | object | Azure Cache for Redis イベント データ。 |
+| `specversion` | string | CloudEvents スキーマ仕様バージョン。 |
+
+---
+
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
-| timestamp | string | イベントが発生した時刻。 |
-| name | string | イベントの名前です。 |
-| status | string | イベントの状態。 失敗または成功。 |
-
+| `timestamp` | string | イベントが発生した時刻。 |
+| `name` | string | イベントの名前です。 |
+| `status` | string | イベントの状態。 失敗または成功。 |
 
 ## <a name="quickstarts"></a>クイックスタート
 

@@ -6,18 +6,18 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 8892723ec1a53c59e3e6183b5d53c2e61db4e5d0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575230"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714478"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>正常性チェックを使用して App Service インスタンスを監視する
 
 ![正常性チェックのエラー][2]
 
-この記事では、Azure portal の正常性チェックを使用して App Service インスタンスを監視します。 正常性チェックにより、問題のあるインスタンスが削除され、アプリケーションの可用性が向上します。 正常性チェックを使用するには、[App Service プラン](/azure/app-service/overview-hosting-plans)を 2 つ以上のインスタンスにスケーリングする必要があります。 正常性チェック パスによって、ご利用のアプリケーションの重要なコンポーネントが確認されます。 たとえば、ご利用のアプリケーションがデータベースとメッセージング システムに依存している場合、正常性チェックのエンドポイントはそれらのコンポーネントに接続する必要があります。 アプリケーションが重要なコンポーネントに接続できない場合は、アプリケーションが異常であることを示す 500 レベルの応答コードがパスから返されます。
+この記事では、Azure portal の正常性チェックを使用して App Service インスタンスを監視します。 正常性チェックにより、問題のあるインスタンスが削除され、アプリケーションの可用性が向上します。 正常性チェックを使用するには、[App Service プラン](./overview-hosting-plans.md)を 2 つ以上のインスタンスにスケーリングする必要があります。 正常性チェック パスによって、ご利用のアプリケーションの重要なコンポーネントが確認されます。 たとえば、ご利用のアプリケーションがデータベースとメッセージング システムに依存している場合、正常性チェックのエンドポイントはそれらのコンポーネントに接続する必要があります。 アプリケーションが重要なコンポーネントに接続できない場合は、アプリケーションが異常であることを示す 500 レベルの応答コードがパスから返されます。
 
 ## <a name="what-app-service-does-with-health-checks"></a>App Service で正常性チェックを使用した処理
 

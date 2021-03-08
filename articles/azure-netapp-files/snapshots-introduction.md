@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 526ef0af08833954aef4136716930cec0df40eea
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133516"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625249"
 ---
 # <a name="how-azure-netapp-files-snapshots-work"></a>Azure NetApp Files のスナップショットのしくみ
 
@@ -49,26 +49,26 @@ Azure NetApp Files のスナップショットは、特定の時点のファイ�
 
 ボリューム スナップショットでは、最新のスナップショット以降のブロックの変更のみが記録されるため、次のような主な利点があります。
 
-* スナップショットは "***ストレージ効率に優れています**"。   
-    スナップショットでは、ボリューム全体のデータ ブロックはコピーされないため、消費される記憶域スペースは最小限です。 順番に作成された 2 つのスナップショットの相違点は、2 つの間の時間間隔で追加または変更されたブロックのみです。 このブロック増分動作によって、関連するストレージ容量の消費を抑えることができます。 他の多くのスナップショットの実装では、アクティブなファイル システムと同等のストレージ ボリュームが消費されるため、ストレージ容量の要件が高くなります。 アプリケーションの毎日の "_ブロック レベル*" の変更率によっては、Azure NetApp Files スナップショットの消費容量は増減しますが、これは変更されたデータにのみ基づきます。 1 日あたりの平均スナップショット消費量の範囲は、多くのアプリケーション ボリュームで使用されるボリューム容量の 1% から 5% が下限で、SAP HANA データベース ボリュームなどのボリュームの 20 % から 30% が上限です。 必ず[ボリュームとスナップショットの使用量を監視して](azure-netapp-files-metrics.md#volumes)、作成され保持されているスナップショットの数と比較してスナップショットの容量消費を確認してください。   
+* スナップショットは "***ストレージ効率に優れています***"。   
+    スナップショットでは、ボリューム全体のデータ ブロックはコピーされないため、消費される記憶域スペースは最小限です。 順番に作成された 2 つのスナップショットの相違点は、2 つの間の時間間隔で追加または変更されたブロックのみです。 このブロック増分動作によって、関連するストレージ容量の消費を抑えることができます。 他の多くのスナップショットの実装では、アクティブなファイル システムと同等のストレージ ボリュームが消費されるため、ストレージ容量の要件が高くなります。 アプリケーションの毎日の "*ブロック レベル*" の変更率によっては、Azure NetApp Files スナップショットの消費容量は増減しますが、これは変更されたデータにのみ基づきます。 1 日あたりの平均スナップショット消費量の範囲は、多くのアプリケーション ボリュームで使用されるボリューム容量の 1% から 5% が下限で、SAP HANA データベース ボリュームなどのボリュームの 20 % から 30% が上限です。 必ず[ボリュームとスナップショットの使用量を監視して](azure-netapp-files-metrics.md#volumes)、作成され保持されているスナップショットの数と比較してスナップショットの容量消費を確認してください。   
 
-* スナップショットは "***すばやく作成、レプリケート、復元、複製**" できます。   
+* スナップショットは "***すばやく作成、レプリケート、復元、複製***" できます。   
     ボリュームのサイズとアクティビティのレベルに関係なく、スナップショットの作成、レプリケート、復元、複製には数秒しかかかりません。 ボリュームのスナップショットは[オンデマンド](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume)で作成できます。 また、[スナップショット ポリシー](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)を使用して、Azure NetApp Files でスナップショットを自動的に作成するタイミングと、ボリュームに対して保持するスナップショットの数を指定できます。  アプリケーション層でスナップショットを調整することで、アプリケーションの整合性を維持できます。たとえば、SAP HANA には [AzAcSnap ツール](azacsnap-introduction.md)を使用します。
 
-_ スナップショットは、ボリュームの "***パフォーマンス**" には影響しません。   
+* スナップショットは、ボリュームの "***パフォーマンス***" には影響しません。   
     基盤テクノロジの "書き込み時のリダイレクト" の性質により、Azure NetApp Files スナップショットを保存または保持してもパフォーマンスには影響しません。これは、大量のデータ アクティビティがあっても同様です。 また、スナップショットを削除しても、多くの場合、パフォーマンスにはほとんど影響しません。 
 
-_ スナップショットは頻繁に作成でき、多く保持できるため、"***スケーラビリティ**" が提供されます。   
+* スナップショットは頻繁に作成でき、多く保持できるため、"***スケーラビリティ***" が提供されます。   
     Azure NetApp Files ボリュームでは、最大 255 個のスナップショットがサポートされます。 少ない影響で多数のスナップショットを頻繁に作成して保存できるため、必要なバージョンのデータを正常に回復できる可能性が高くなります。
 
-_ スナップショットでは、"***ユーザーの可視性**" と "_*_ファイルの回復性_*_" が提供されます。   
+* スナップショットでは、"**ユーザーの可視性**" と "_ファイルの回復性_" が提供されます。   
 Azure NetApp Files スナップショット テクノロジはパフォーマンス、スケーラビリティ、安定性が高いため、ユーザー主導の回復のための最適なオンライン バックアップが提供されます。 スナップショットは、ファイル、ディレクトリ、またはボリュームの復元を目的として、ユーザーがアクセスできるようにすることができます。 追加のソリューションを使用すると、保持またはディザスター リカバリーの目的で、バックアップをオフライン ストレージにコピーすることや、[リージョン間でレプリケート](cross-region-replication-introduction.md)することができます。
 
 ## <a name="ways-to-create-snapshots"></a>スナップショットを作成する方法   
 
 いくつかの方法を使用して、スナップショットを作成および管理できます。
 
-_ 手動 (オンデマンド) 。次のものを使用:   
+* 手動 (オンデマンド)。次のものを使用:   
     * [Azure portal](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume)、[REST API](/rest/api/netapp/snapshots)、[Azure CLI](/cli/azure/netappfiles/snapshot)、または [PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot) ツール
     * スクリプト ([例](azure-netapp-files-solution-architectures.md#sap-tech-community-and-blog-posts)を参照)
 
@@ -161,7 +161,7 @@ Azure NetApp Files のスナップショットを個別の独立したボリュ�
 * [スナップショット ポリシーのトラブルシューティング](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files のスナップショット 101 ビデオ](https://www.youtube.com/watch?v=uxbTXhtXCkw)
-* [NetApp のスナップショット - NetApp のビデオ ライブラリ](https://tv.netapp.com/detail/video/2579133646001/snapshot)
+* [Azure NetApp Files のスナップショットの概要](https://anfcommunity.com/2021/01/31/azure-netapp-files-snapshot-overview/)
 
 
 

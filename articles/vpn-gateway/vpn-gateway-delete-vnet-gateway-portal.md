@@ -4,15 +4,15 @@ description: Azure portal を使用して仮想ネットワーク ゲートウ�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 10/16/2020
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 7d9ae31b5701707589d79fd5f3d7eb0802038eb9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 413fd8c7f03ef44abe4bece39ca717c533dea66b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148224"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376388"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>ポータルを使用して仮想ネットワーク ゲートウェイを削除する
 
@@ -45,17 +45,17 @@ ms.locfileid: "92148224"
 #### <a name="to-delete-the-local-network-gateway"></a>ローカル ネットワーク ゲートウェイを削除するには
 
 1. **[すべてのリソース]** で、各接続に関連付けられていたローカル ネットワーク ゲートウェイを見つけます。
-1. ローカル ネットワーク ゲートウェイの **[概要]** ブレードで、 **[削除]** をクリックします。
+1. ローカル ネットワーク ゲートウェイの **[概要]** ブレードで、**[削除]** をクリックします。
 
 #### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>ゲートウェイのパブリック IP アドレス リソースを削除するには
 
 1. **[すべてのリソース]** で、ゲートウェイに割り当て済みのパブリック IP アドレス リソースを検索します。 仮想ネットワーク ゲートウェイがアクティブ/アクティブであった場合は、2 つのパブリック IP アドレスが表示されます。
-1. パブリック IP アドレスの **[概要]** ページで **[削除]** をクリックしてから、 **[はい]** をクリックして確認します。
+1. パブリック IP アドレスの **[概要]** ページで **[削除]** をクリックしてから、**[はい]** をクリックして確認します。
 
 #### <a name="to-delete-the-gateway-subnet"></a>ゲートウェイ サブネットを削除するには
 
 1. **[すべてのリソース]** で、仮想ネットワークを検索します。 
-1. **[サブネット]** ブレードで、 **[GatewaySubnet]** 、 **[削除]** の順にクリックします。 
+1. **[サブネット]** ブレードで、**[GatewaySubnet]**、**[削除]** の順にクリックします。 
 1. 確認画面で **[はい]** をクリックして、ゲートウェイ サブネットを削除します。
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="deleterg"></a>リソース グループを削除して VPN ゲートウェイを削除する
@@ -64,4 +64,4 @@ ms.locfileid: "92148224"
 
 1. **[すべてのリソース]** でリソース グループを見つけ、クリックしてブレードを開きます。
 1. **[削除]** をクリックします。 [削除] ブレードに関連するリソースを表示します。 これらのリソースをすべて削除することを確認します。 削除しない場合は、この記事の上部にある「VPN ゲートウェイの削除」の手順を実行してください。
-1. 続行するには、削除するリソース グループの名前を入力し、 **[削除]** をクリックします。
+1. 続行するには、削除するリソース グループの名前を入力し、**[削除]** をクリックします。

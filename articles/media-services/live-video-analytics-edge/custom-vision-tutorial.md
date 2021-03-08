@@ -4,12 +4,12 @@ description: Azure Custom Vision を使用して、おもちゃのトラック�
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 0b5d011ac7832436edf1f5c898b1fe1e239d0aea
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e6b911ad555c4ce10a9576861e1c2e650e63cd94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055367"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698809"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル:Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
 
@@ -221,7 +221,7 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
         
    ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "CustomVisionWithHttpExtension",

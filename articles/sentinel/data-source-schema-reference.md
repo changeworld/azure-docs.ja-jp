@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 32ec711309190d4bb7c6c98a05b6a75cf88a8f5c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 0cc1a083e1400b5a3167376e374af6c7bf7ab7c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920490"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698350"
 ---
 # <a name="data-source-schema-reference"></a>データ ソース スキーマ リファレンス
 
@@ -34,9 +34,12 @@ ms.locfileid: "98920490"
 | **Network**                          | IIS ログ               | W3CIISLog              | [Azure Monitor W3CIISLog のリファレンス](/azure/azure-monitor/reference/tables/w3ciislog) |
 | **Network**                          | VMinsights             | VMConnection           | [Azure Monitor VMConnection のリファレンス](/azure/azure-monitor/reference/tables/vmconnection) |
 | **Network**                          | Wire Data ソリューション     | WireData               | [Azure Monitor WireData のリファレンス](/azure/azure-monitor/reference/tables/wiredata) |
-| **Network**                          | NSG フロー ログ          | AzureNetworkAnalytics  | [Traffic Analytics のスキーマとデータ集計](/azure/network-watcher/traffic-analytics-schema) |
+| **Network**                          | NSG フロー ログ          | AzureNetworkAnalytics  | [Traffic Analytics のスキーマとデータ集計](../network-watcher/traffic-analytics-schema.md) |
 | | | | |
 
+> [!NOTE]
+> 詳細については、「[Azure Monitor データ参照](/azure/azure-monitor/reference/)」全体をご覧ください。
+>
 ## <a name="3rd-party-vendor-data-sources"></a>サードパーティ ベンダーのデータ ソース
 
 次の表に、サポートされるサードパーティ ベンダーとそれらの Syslog、またはサポートされる各種ログ タイプの Common Event Format (CEF) マッピングのドキュメントを示します。カテゴリの種類ごとに CEF フィールド マッピングとサンプル ログが含まれます。

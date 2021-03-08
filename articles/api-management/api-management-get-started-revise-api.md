@@ -8,14 +8,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 3804bfb2a269c431b1a00947f5c7613566a78f49
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: acb121bb00df481c926ebed9594bf0fe1b9b17ed
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377507"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546637"
 ---
 # <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>チュートリアル:リビジョンを使用して互換性に影響しない API の変更を安全に行う
 API の準備が整って開発者に使用され始めると、その API の変更が必要になることがありますが、API の呼び出し元を混乱させないように注意する必要もあります。 また、行った変更内容を開発者に知らせると有効です。 
@@ -78,6 +78,8 @@ API の準備が整って開発者に使用され始めると、その API の�
 
 ## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>リビジョンを最新にして変更ログ エントリを追加する
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 1. ページの上部付近にあるメニューから **[リビジョン]** タブを選択します。
 1. **リビジョン 2** のコンテキスト メニュー (**...**) を開きます。
 1. **[これを最新とする]** を選択します。
@@ -86,6 +88,61 @@ API の準備が整って開発者に使用され始めると、その API の�
 
     :::image type="content" source="media/api-management-getstarted-revise-api/revisions-menu.png" alt-text="[リビジョン] ウィンドウのリビジョン メニュー":::
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+リリースを作成および更新するには、次の手順に従います。
+
+1. [az apim api list](/cli/azure/apim/api#az_apim_api_list) コマンドを実行して、API ID を表示します。
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+   次のコマンドで使用する API ID は `Name` 値です。 API リビジョンは `ApiRevision` 列にあります。
+
+1. リリース ノートと共にリリースを作成するには、[az apim api release create](/cli/azure/apim/api/release#az_apim_api_release_create) コマンドを実行します。
+
+   ```azurecli
+   az apim api release create --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --api-revision 2 --service-name apim-hello-world \
+       --notes 'Testing revisions. Added new "test" operation.'
+   ```
+
+   リリースしたリビジョンが最新のリビジョンになります。
+
+1. リリースを表示するには、[az apim api release list](/cli/azure/apim/api/release#az_apim_api_release_list) コマンドを使用します。
+
+   ```azurecli
+   az apim api release list --resource-group apim-hello-word-resource-group \
+       --api-id echo-api --service-name apim-hello-world --output table
+   ```
+
+   指定したメモは変更ログに表示されます。 これらは前のコマンドの出力で確認できます。
+
+1. リリースを作成するときに、`--notes` パラメーターは省略可能です。 メモは、[az apim api release update](/cli/azure/apim/api/release#az_apim_api_release_update) コマンドを使用して後で追加または変更できます。
+
+   ```azurecli
+   az apim api release update --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --release-id 00000000000000000000000000000000 \
+       --service-name apim-hello-world --notes "Revised notes."
+   ```
+
+   リリース ID の `Name` 列の値を使用します。
+
+リリースを削除するには、[az apim api release delete](/cli/azure/apim/api/release#az_apim_api_release_delete) コマンドを実行します。
+
+```azurecli
+az apim api release delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --release-id 00000000000000000000000000000000 
+    --service-name apim-hello-world
+```
+
+---
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>開発者ポータルを参照して、変更内容と変更ログを確認します。
 

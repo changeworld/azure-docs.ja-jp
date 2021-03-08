@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5bccc39144186b23cc7f9fedf02e5b9d84ea2ee4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d477c419bb677a6b8f24a3aae26c403e47cc96cb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063554"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583944"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET を使用して、構成オプションで機密クライアント アプリケーションをインスタンス化する
 
@@ -28,7 +28,7 @@ ms.locfileid: "98063554"
 
 - クライアント ID (GUID を表す文字列)
 - ID プロバイダーの URL (名前付きインスタンス) とアプリケーションのサインイン対象ユーザー。 これら 2 つのパラメーターは機関と総称されます。
-- 組織専用の基幹業務アプリケーション (および名前付きシングル テナント アプリケーション) を作成している場合はテナント ID。
+- 組織専用の基幹業務アプリケーション (および名前付きシングル テナント アプリケーション) を作成している場合は、テナント ID。
 - アプリケーション シークレット (クライアント シークレット文字列) または機密クライアント アプリの場合は (X509Certificate2 種類の) 証明書。
 - Web アプリ、および場合によってはパブリック クライアント アプリの場合 (特に、アプリでブローカーを使用する必要がある場合)、ID プロバイダーがセキュリティ トークンを使用してアプリケーションに連絡する redirectUri も設定します。
 
@@ -60,7 +60,7 @@ ASP.NET Core アプリケーションの構成は、*appsettings.json* ファイ
 
 MSAL.NET v3.x 以降では、構成ファイルから機密クライアント アプリケーションを構成できます。
 
-アプリケーションを構成してインスタンス化するクラスで、`ConfidentialClientApplicationOptions` オブジェクトを宣言する必要があります。  [Microsoft.Extensions.Configuration.Binder NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)の `IConfigurationRoot.Bind()` メソッドを使って、ソース (appconfig.json ファイルを含む) から読み取られた構成を、アプリケーション オプションのインスタンスにバインドします。
+アプリケーションを構成してインスタンス化するクラスで、`ConfidentialClientApplicationOptions` オブジェクトを宣言します。  [Microsoft.Extensions.Configuration.Binder NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)の `IConfigurationRoot.Bind()` メソッドを使って、ソース (appconfig.json ファイルを含む) から読み取られた構成を、アプリケーション オプションのインスタンスにバインドします。
 
 ```csharp
 using Microsoft.Identity.Client;

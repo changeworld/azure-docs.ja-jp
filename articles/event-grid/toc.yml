@@ -54,8 +54,12 @@
       href: ensure-tags-exists-on-new-virtual-machines.md
     - name: IoT Hub デバイスが切断されるときにメールを送信する
       href: publish-iot-hub-events-to-logic-apps.md
-    - name: Service Bus イベントへの応答
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Event Grid を介した Service Bus イベントの処理
+      items:
+        - name: Azure Logic Apps
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Azure Functions
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-function.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Event Hubs からのデータのストリーム配信
       href: event-grid-event-hubs-integration.md
     - name: Media Services イベントのルーティング
@@ -208,6 +212,10 @@
           href: diagnostic-logs.md
         - name: メトリック
           href: metrics.md
+    - name: ユース ケース
+      items:
+        - name: ドメインのユース ケース
+          href: event-domains-use-cases.md
 - name: 操作方法ガイド
   items:
     - name: システム トピックの作成、表示、管理
@@ -262,14 +270,18 @@
       items:
         - name: プライベート リンクを介してイベントを安全に公開する
           href: configure-private-endpoints.md
+        - name: マネージド ID を使用してイベントを配信する
+          href: managed-service-identity.md
+        - name: プライベート リンクを介してイベントを安全に配信する
+          href: consume-private-endpoints.md
         - name: IP ファイアウォールの構成
           href: configure-firewall.md
         - name: Azure Active Directory による Webhook のセキュリティ保護
           href: secure-webhook-delivery.md
-        - name: イベント配信、マネージド ID、およびプライベート リンク
-          href: managed-service-identity.md
     - name: トラブルシューティング
       items:
+        - name: Event Grid の問題のトラブルシューティング
+          href: troubleshoot-issues.md
         - name: Traffic Manager で診断ログを有効にする
           href: enable-diagnostic-logs-topic.md
         - name: エラーをトラブルシューティングする

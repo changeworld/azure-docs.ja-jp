@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory の Web アクティビティ
 description: Data Factory によってサポートされている制御フロー アクティビティの 1 つである Web アクティビティを使用して、パイプラインから REST エンドポイントを呼び出す方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387719"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361521"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

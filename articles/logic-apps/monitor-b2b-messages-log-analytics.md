@@ -6,23 +6,23 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765c15897bd5d435503d3bef07e76a93b148971c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536270"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596857"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor ログを設定し、Azure Logic Apps で B2B メッセージの診断データを収集する
 
-統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が AS2、X12、および EDIFACT などのプロトコルを使用してメッセージを交換できるようになります。 この通信が期待どおりに動作することを確認するには、統合アカウントの [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)を設定します。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 Azure Monitor ログを使用すると、トリガー イベント、実行イベント、アクション イベントなどのランタイム データやイベントに関するデータを、[Log Analytics ワークスペース](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に記録して格納することができます。 メッセージの場合、ログは次のような情報も収集します。
+統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が AS2、X12、および EDIFACT などのプロトコルを使用してメッセージを交換できるようになります。 この通信が期待どおりに動作することを確認するには、統合アカウントの [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)を設定します。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 Azure Monitor ログを使用すると、トリガー イベント、実行イベント、アクション イベントなどのランタイム データやイベントに関するデータを、[Log Analytics ワークスペース](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)に記録して格納することができます。 メッセージの場合、ログは次のような情報も収集します。
 
 * メッセージの数と状態
 * 受信確認の状態
 * メッセージと受信確認の相関関係
 * エラーの詳細な説明
 
-Azure Monitor を使用すると、この情報の検索と確認に役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。 Azure Storage や Azure Event Hubs などの[他の Azure サービスでこの診断データを使用する](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)こともできます。
+Azure Monitor を使用すると、この情報の検索と確認に役立つ[ログ クエリ](../azure-monitor/logs/log-query-overview.md)を作成できます。 Azure Storage や Azure Event Hubs などの[他の Azure サービスでこの診断データを使用する](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)こともできます。
 
 統合アカウントのログ記録を設定するには、Azure portal で [Logic Apps B2B ソリューションをインストール](#install-b2b-solution)します。 このソリューションは、B2B メッセージ イベントの集約情報を提供します。 次に、この情報に対してログの記録とクエリの作成を有効にするために、[Azure Monitor ログ](#set-up-resource-logs)を設定します。
 
@@ -32,7 +32,7 @@ Azure Monitor を使用すると、この情報の検索と確認に役立つ[�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Log Analytics ワークスペース。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
+* Log Analytics ワークスペース。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/logs/quick-create-workspace.md)に関するページを参照してください。
 
 * Azure Monitor ログ記録が設定され、その情報を Log Analytics ワークスペースに送信するロジック アプリ。 [ロジック アプリの Azure Monitor ログを設定する方法](../logic-apps/monitor-logic-apps.md)を確認してください。
 
@@ -163,7 +163,7 @@ Azure Monitor ログがロジック アプリの B2B メッセージを追跡で
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/logs/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->

@@ -1,26 +1,22 @@
 ---
 title: PowerShell を使用してデータを一括コピーする
 description: Azure Data Factory とコピー アクティビティを使用して、ソース データ ストアからコピー先データ ストアにデータを一括コピーします。
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/22/2018
-ms.openlocfilehash: bf40353a8f29200ab2a33859473dbc504c29bf7d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 02/18/2021
+ms.openlocfilehash: fc539ababf4cb240fbe78de0d87b1f127807f604
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510436"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740431"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>PowerShell を使用し、Azure Data Factory を使用して複数のテーブルを一括コピーする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 このチュートリアルでは、**Azure SQL Database から Azure Synapse Analytics に多数のテーブルをコピーする方法** について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
 

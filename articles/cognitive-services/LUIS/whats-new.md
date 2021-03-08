@@ -4,13 +4,13 @@ description: この記事では、Azure Cognitive Services Language Understandin
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/21/2021
-ms.openlocfilehash: 5fdde81d31eae4c50b86a5553742f9b599f32505
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/16/2021
+ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693597"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706743"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -20,7 +20,7 @@ ms.locfileid: "98693597"
 
 ### <a name="january-2021"></a>2021 年 1 月
 
-* V3 Prediction API で、[Bing Spellcheck API](luis-how-to-publish-app.md#spelling-correction) がサポートされるようになりました。
+* V3 Prediction API で、[Bing Spellcheck API](luis-tutorial-bing-spellcheck.md) がサポートされるようになりました。
 * リージョン ポータル (au.luis.ai と eu.luis.ai) は、単一のポータルと URL に統合されています。 これらのポータルのいずれかを使用していた場合は、luis.ai に自動的にリダイレクトされます。
 
 ### <a name="december-2020"></a>2020 年 12 月
@@ -56,7 +56,7 @@ ms.locfileid: "98693597"
 * 開発者向けの新しいリソース
     * [継続的インテグレーション ツール](developer-reference-resource.md#continuous-integration-tools)
     * ワークショップ - [LUIS を使用した "_自然言語理解_" (NLU)](developer-reference-resource.md#workshops) のためのベスト プラクティスを学習
-* [カスタマー マネージド キー](luis-encryption-of-data-at-rest.md) - 独自のキーを使用して LUIS で使用するデータをすべて暗号化
+* [カスタマー マネージド キー](./encrypt-data-at-rest.md) - 独自のキーを使用して LUIS で使用するデータをすべて暗号化
 * [AI Show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (ビデオ) - LUIS の新機能を参照
 
 

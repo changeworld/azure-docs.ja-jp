@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 8dcc6dd355e0c89aa4120a6cc7f331159d56c1bc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 0b6096f980234c09bf1c2da2b4621b8ed66b495d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742184"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578168"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-classic-using-powershell"></a>PowerShell を使用した Azure Cloud Services (クラシック) での診断の有効化
 
@@ -134,5 +134,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>次の手順
 * Azure Diagnostics と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「 [Azure Cloud Services および Virtual Machines の診断機能](cloud-services-dotnet-diagnostics.md)」を参照してください。
-* [診断構成スキーマ](../azure-monitor/platform/diagnostics-extension-schema-windows.md) に関するページでは、診断拡張機能の各種 xml 構成オプションについて説明しています。
+* [診断構成スキーマ](../azure-monitor/agents/diagnostics-extension-schema-windows.md) に関するページでは、診断拡張機能の各種 xml 構成オプションについて説明しています。
 * Virtual Machines の診断拡張機能を有効にする方法については、「 [Create a Windows Virtual machine with monitoring and diagnostics using Azure Resource Manager Template (Azure リソース マネージャー テンプレートを使用した監視および診断機能を備えた Windows 仮想マシンの作成)](../virtual-machines/extensions/diagnostics-template.md)

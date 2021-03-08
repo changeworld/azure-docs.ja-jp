@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 5e97a35a272684a99e1ca21cbec9c8f3edef253c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097424"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576669"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -77,7 +77,7 @@ ms.locfileid: "99097424"
 
   既定では、仮想ネットワークからのアクセスに限定された Azure サービス リソースは、オンプレミスのネットワークからはアクセスできません。 オンプレミスからのトラフィックを許可する場合は、オンプレミスまたは ExpressRoute からのパブリック IP アドレス (通常は NAT) を許可する必要もあります。 これらの IP アドレスは、Azure サービス リソースの IP ファイアウォール構成を使用して追加できます。
 
-  ExpressRoute:パブリック ピアリングまたは Microsoft ピアリングのためにオンプレミスから [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使用している場合、使用している NAT IP アドレスを識別する必要があります。 パブリック ピアリングの場合、既定で、Azure サービスのトラフィックが Microsoft Azure のネットワーク バックボーンに入ったときに適用される 2 つの NAT IP アドレスが各 ExpressRoute 回線に使用されます。 Microsoft ピアリングの場合、NAT IP アドレスは、ユーザーが指定するか、サービス プロバイダーが指定します。  サービス リソースへのアクセスを許可するには、リソースの IP ファイアウォール設定でこれらのパブリック IP アドレスを許可する必要があります。 パブリック ピアリングの ExpressRoute 回線の IP アドレスを確認するには、Azure Portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。 ExpressRoute のパブリック ピアリングおよび Microsoft ピアリングの NAT の詳細については、[ExpressRoute の NAT 要件](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)に関するページを参照してください。
+  ExpressRoute:パブリック ピアリングまたは Microsoft ピアリングのためにオンプレミスから [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使用している場合、使用している NAT IP アドレスを識別する必要があります。 パブリック ピアリングの場合、既定で、Azure サービスのトラフィックが Microsoft Azure のネットワーク バックボーンに入ったときに適用される 2 つの NAT IP アドレスが各 ExpressRoute 回線に使用されます。 Microsoft ピアリングの場合、NAT IP アドレスは、ユーザーが指定するか、サービス プロバイダーが指定します。  サービス リソースへのアクセスを許可するには、リソースの IP ファイアウォール設定でこれらのパブリック IP アドレスを許可する必要があります。 パブリック ピアリングの ExpressRoute 回線の IP アドレスを確認するには、Azure Portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。 ExpressRoute のパブリック ピアリングおよび Microsoft ピアリングの NAT の詳細については、[ExpressRoute の NAT 要件](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)に関するページを参照してください。
 
 ![Azure サービスへのアクセスを仮想ネットワークに限定する](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "99097424"
 
 組み込みロールの詳細については、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 特定のアクセス許可をカスタム ロールに割り当てる方法の詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
-仮想ネットワークと Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 仮想ネットワークと Azure サービス リソースのサブスクリプションが異なる場合、リソースは同じ Active Directory (AD) テナントの下に置かれている必要があります。 
+仮想ネットワークと Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 Azure Storage や Azure Key Vault など、(すべてではなく) 特定の Azure サービスでも、異なる Active Directory (AD) テナントにまたがるサービス エンドポイントがサポートされています。つまり、仮想ネットワークと Azure サービス リソースを異なる Active Directory (AD) テナントに配置できます。 詳細については、個々のサービスのドキュメントを参照してください。  
 
 ## <a name="pricing-and-limits"></a>料金と制限
 

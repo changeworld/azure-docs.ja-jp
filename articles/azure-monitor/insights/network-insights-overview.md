@@ -1,21 +1,20 @@
 ---
 title: Azure Monitor for Networks
 description: デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できる、Azure Monitor for Networks の概要。
-ms.subservice: ''
 ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734158"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717470"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor for Networks
 
-Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの[正常性](../../service-health/resource-health-checks-resource-types.md)と[メトリック](../platform/metrics-supported.md)を構成なしで包括的に把握できます。 また、[接続モニター](../../network-watcher/connection-monitor-overview.md)、[ネットワーク セキュリティ グループ (NSG) のフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 さらには、他のネットワーク[診断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)機能を提供します。
+Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの[正常性](../../service-health/resource-health-checks-resource-types.md)と[メトリック](../essentials/metrics-supported.md)を構成なしで包括的に把握できます。 また、[接続モニター](../../network-watcher/connection-monitor-overview.md)、[ネットワーク セキュリティ グループ (NSG) のフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 さらには、他のネットワーク[診断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)機能を提供します。
 
 Azure Monitor for Networks は、監視の主要コンポーネントを中心に構成されています。
 - [ネットワークの正常性とメトリック](#networkhealth)
@@ -149,4 +148,4 @@ Azure Monitor for Networks では **[自動]** 時間グレインが使用され
 ## <a name="next-steps"></a>次の手順
 
 - ネットワークの監視に関する詳細情報:[Azure Network Watcher とは](../../network-watcher/network-watcher-monitoring-overview.md)
-- ブックでサポートされるように設計されているシナリオ、レポートの作成方法、および既存のレポートのカスタマイズ方法などについて説明します。[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)
+- ブックでサポートされるように設計されているシナリオ、レポートの作成方法、および既存のレポートのカスタマイズ方法などについて説明します。[Azure Monitor ブックを使用した対話型レポートの作成](../visualize/workbooks-overview.md)

@@ -7,15 +7,14 @@ author: lobrien
 ms.author: laobri
 ms.custom: subject-armqs
 ms.date: 06/10/2020
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 8f83cdb09b94fb7eda1f8f700390be8b2c2147e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7feacec9f0e78749f17359a9080411b6d9696136
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90883146"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518217"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Ubuntu Data Science Virtual Machine を作成する
 
@@ -31,7 +30,7 @@ ms.locfileid: "90883146"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/services/machine-learning/) を作成してください。
 
-* ご使用の**ローカル環境**からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli) が必要です。
+* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 

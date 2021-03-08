@@ -1,22 +1,18 @@
 ---
 title: Purview を使用した ADF でのデータの検出と探索
 description: Purview を使用した Azure Data Factory でのデータの検出と探索の方法について説明します
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: 1a8ed80daa4406f32909a6622b8649f37ec48063
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 031e7ceee739ffd666ad367bd6778865a297a25d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064380"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386273"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Purview を使用した ADF でのデータの検出と探索
 
@@ -47,7 +43,7 @@ Azure Purview によって登録およびスキャンされたデータを検出
 ### <a name="actions-that-you-can-perform-over-datasets-with-data-factory-resources"></a>Data Factory リソースを使用してデータセットに対して実行できるアクション 
 Azure Purview によって検索したデータに対して、リンクされたサービス、データセット、またはデータフローを直接作成できます。
 
-:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="データセットに対する実行のスクリーンショット。":::
+:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="Azure Purview によって検索したデータに対して、リンクされたサービス、データセット、またはデータフローを直接作成できることを示すスクリーンショット。":::
 
 ##  <a name="nextsteps"></a>次のステップ 
 

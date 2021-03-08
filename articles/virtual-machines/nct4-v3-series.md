@@ -1,19 +1,18 @@
 ---
 title: NCas T4 v3 シリーズ
 description: NCas T4 v3 シリーズ VM の仕様。
-services: virtual-machines
-ms.subservice: sizes
-author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: hpc
+author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: ac1147435bee60db0f3028289a83026e1f9c1c15
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 0ead1c5772cb4a2e231867ef1e77bfa646cbb29e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091682"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042744"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
 
@@ -22,7 +21,7 @@ NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.
 <br>
 
 [ACU](acu.md):230-260<br>
-[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>

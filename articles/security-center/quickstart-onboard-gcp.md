@@ -3,16 +3,16 @@ title: Azure Security Center への GCP アカウントの接続
 description: Azure Security Center から GCP リソースを監視します。
 author: memildin
 ms.author: memildin
-ms.date: 01/24/2021
+ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757612"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008385"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続
 
@@ -44,6 +44,15 @@ GCP アカウントを Security Center にオンボードすると、GCP Securit
 
 ## <a name="connect-your-gcp-account"></a>GCP アカウントを接続する
 
+Security Center から監視する組織ごとにコネクタを作成します。
+
+GCP アカウントを特定の Azure サブスクリプションに接続するときは、[Google Cloud リソース階層](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#resource-hierarchy-detail)と次のガイドラインを考慮してください。
+
+- GCP アカウントは、"*組織*" レベルで ASC に接続できます
+- 複数の組織を 1 つの Azure サブスクリプションに接続できます
+- 複数の組織を複数の Azure サブスクリプションに接続できます
+- 組織を接続すると、その組織内のすべての "*プロジェクト*" が Security Center に追加されます
+
 GCP クラウド コネクタを作成するには、次の手順に従います。 
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>手順 1. Security Health Analytics を使用して GCP Security Command Center を設定する
@@ -61,7 +70,7 @@ Security Health Analytics を初めて有効にしたときは、データが使
 
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>手順 2. GCP Security Command Center API を有効にする
 
-1. Google の **Cloud Console API ライブラリ** から、Azure Security Center に接続するプロジェクトを選択します。
+1. Google の **Cloud Console API ライブラリ** から、Azure Security Center に接続する組織内の各プロジェクトを選択します。
 1. API ライブラリで、**Security Command Center API** を見つけて選択します。
 1. API のページで、 **[有効にする]** を選択します。
 
@@ -70,7 +79,11 @@ Security Command Center API の詳細については、[こちら](https://cloud
 
 ### <a name="step-3-create-a-dedicated-service-account-for-the-security-configuration-integration"></a>手順 3. セキュリティ構成統合用の専用サービス アカウントを作成する
 
-1. **GCP コンソール** で、Security Center に接続するプロジェクトを選択します。
+1. **GCP コンソール** で、必要なサービス アカウントを作成する組織のプロジェクトを選択します。 
+
+    > [!NOTE]
+    > このサービス アカウントは、組織レベルで追加されると、Security Command Center によって組織内の他のすべての有効なプロジェクトから収集されたデータへのアクセスに使用されます。 
+
 1. **ナビゲーション メニュー** の **[IAM と管理]** のオプションで、 **[サービス アカウント]** を選択します。
 1. **[サービス アカウントを作成]** を選択します。
 1. アカウント名を入力し、 **[作成]** を選択します。
@@ -81,7 +94,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
     1. 組織レベルに切り替えます。
     1. **[追加]** を選択します。
     1. **[新しいメンバー]** フィールドに、先ほどコピーした **[メール] の値** を貼り付けます。
-    1. 役割として **[Security Center Admin Viewer]\(Security Center 管理者ビューアー\)** を指定し、[保存] を選択します。
+    1. ロールとして **[Security Center Admin Viewer]\(Security Center 管理閲覧者\)** を指定し、 **[保存]** を選択します。
         :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="関連する GCP のアクセス許可の設定":::
 
 
@@ -94,7 +107,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
 1. 後で使用するために、この JSON ファイルを保存します。
 
 
-### <a name="step-5-connect-gcp-to-security-center"></a>手順 5. GCP を Security Center に接続する 
+### <a name="step-5-connect-gcp-to-security-center"></a>手順 5. GCP を Security Center に接続する
 1. Security Center のメニューから、 **[クラウド コネクタ]** を選択します。
 1. [add GCP account]\(GCP アカウントの追加\) を選択します。
 1. オンボード ページで次の操作を行い、 **[次へ]** を選択します。
@@ -121,8 +134,22 @@ Security Command Center API の詳細については、[こちら](https://cloud
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="GCP オプションを示す資産インベントリ ページのリソースの種類のフィルター"::: 
 
 
+## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続に関する FAQ
+
+### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>複数の GCP 組織を Security Center に接続できますか?
+はい。 Security Center の GCP コネクタは、"*組織*" レベルで Google Cloud リソースを接続します。 
+
+Security Center から監視する GCP 組織ごとにコネクタを作成します。 組織を接続すると、その組織内のすべてのプロジェクトが Security Center に追加されます。
+
+Google Cloud リソース階層については、[Google のオンライン ドキュメント](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)をご覧ください。
+
+
+### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>GCP リソースを Security Center に接続するための API はありますか?
+はい。 REST API を使用して Security Center クラウド コネクタを作成、編集、または削除するには、[Connectors API](/rest/api/securitycenter/connectors) の詳細をご覧ください。
+
 ## <a name="next-steps"></a>次の手順
 
 GCP アカウントの接続は、Azure Security Center で利用できるマルチクラウド エクスペリエンスの一部です。 関連情報については、次のページを参照してください。
 
 - [Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)
+- [Google Cloud リソース階層](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) -- Google Cloud リソース階層については、Google のオンライン ドキュメントをご覧ください

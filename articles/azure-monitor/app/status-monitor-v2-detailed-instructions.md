@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318982"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587375"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
@@ -32,7 +32,7 @@ PowerShell でコンピューターに対して変更を行うには、管理者
 - リファレンス: 「[About Execution Policies (実行ポリシーの概要)](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)」と「[Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)」
 - コマンド: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`。
 - 省略可能なパラメーター:
-    - `-Force` 確認プロンプトをバイパスします。
+    - `-Force`. 確認プロンプトをバイパスします。
 
 **エラーの例**
 
@@ -81,8 +81,8 @@ SerializationVersion           1.1.0.1
     - リファレンス: [Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
     - コマンド: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`。
     - 省略可能なパラメーター:
-        - `-Proxy` 要求用のプロキシ サーバーを指定します。
-        - `-Force` 確認プロンプトをバイパスします。
+        - `-Proxy`. 要求用のプロキシ サーバーを指定します。
+        - `-Force`. 確認プロンプトをバイパスします。
     
     NuGet が設定されていない場合、次のプロンプトを受け取ります。
 
@@ -101,7 +101,7 @@ SerializationVersion           1.1.0.1
     - リファレンス: [Set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6)。
     - コマンド: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`。
     - 省略可能なパラメーター:
-        - `-Proxy` 要求用のプロキシ サーバーを指定します。
+        - `-Proxy`. 要求用のプロキシ サーバーを指定します。
 
     PowerShell ギャラリーが信頼されていない場合は、次のプロンプトを受け取ります。
 
@@ -121,8 +121,8 @@ SerializationVersion           1.1.0.1
     - リファレンス: 「[PowerShellGet のインストール](/powershell/scripting/gallery/installing-psget)」。
     - コマンド: `Install-Module -Name PowerShellGet`。
     - 省略可能なパラメーター:
-        - `-Proxy` 要求用のプロキシ サーバーを指定します。
-        - `-Force` "インストール済み" の警告をバイパスして、最新バージョンをインストールします。
+        - `-Proxy`. 要求用のプロキシ サーバーを指定します。
+        - `-Force`. "インストール済み" の警告をバイパスして、最新バージョンをインストールします。
 
     最新バージョンの PowerShellGet を使っていない場合、次のエラーを受け取ります。
 
@@ -147,10 +147,10 @@ SerializationVersion           1.1.0.1
     - リファレンス: [Install-Module](/powershell/module/powershellget/install-module?view=powershell-6)。
     - コマンド: `Install-Module -Name Az.ApplicationMonitor`。
     - 省略可能なパラメーター:
-        - `-Proxy` 要求用のプロキシ サーバーを指定します。
-        - `-AllowPrerelease` アルファ リリースとベータ リリースのインストールを許可します。
-        - `-AcceptLicense` "ライセンス条項に同意する" のプロンプトをバイパスします
-        - `-Force` "信頼されていないリポジトリ" の警告をバイパスします。
+        - `-Proxy`. 要求用のプロキシ サーバーを指定します。
+        - `-AllowPrerelease`. アルファ リリースとベータ リリースのインストールを許可します。
+        - `-AcceptLicense`. "ライセンス条項に同意する" のプロンプトをバイパスします
+        - `-Force`. "信頼されていないリポジトリ" の警告をバイパスします。
 
 ## <a name="download-and-install-the-module-manually-offline-option"></a>モジュールを手動でダウンロードしてインストールする (オフライン オプション)
 
@@ -231,9 +231,9 @@ Application Insights SDK では、アプリのテレメトリを Microsoft に�
 
  テレメトリの表示:
 
-- パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+- パフォーマンスと使用状況を監視するための[メトリックを探索](../essentials/metrics-charts.md)します。
 - 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
-- より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
+- より高度なクエリのために[分析を使用](../logs/log-query-overview.md)します。
 - [ダッシュボードを作成](./overview-dashboard.md)します。
 
  テレメトリの追加:

@@ -1,22 +1,18 @@
 ---
 title: Azure portal および PowerShell を使用したパイプラインの監視と管理
 description: Azure Portal および Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495856"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576392"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -32,7 +28,7 @@ ms.locfileid: "96495856"
 > 監視と管理アプリケーションによって、ご使用のデータ パイプラインの管理および管理や、問題のトラブルシューティングがより適切にサポートされます。 このアプリケーションの使用法の詳細については、[新しい監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。 
 
 > [!IMPORTANT]
-> Azure Data Factory バージョン 1 は、新しい [Azure Monitor アラート インフラストラクチャ](../../azure-monitor/platform/alerts-metric.md) を使用するようになりました。 以前のアラート インフラストラクチャは非推奨です。 その結果、バージョン 1 データ ファクトリ用に構成された既存のアラートは機能しなくなります。 v1 データ ファクトリの既存のアラートは自動的に移行されません。 これらのアラートは、新しいアラート インフラストラクチャ上に再作成する必要があります。 Azure Portal にログインして **[モニター]** を選択し、バージョン 1 のデータ ファクトリ用にメトリックに対する新しいアラートを作成します (失敗した実行、成功した実行など)。
+> Azure Data Factory バージョン 1 は、新しい [Azure Monitor アラート インフラストラクチャ](../../azure-monitor/alerts/alerts-metric.md) を使用するようになりました。 以前のアラート インフラストラクチャは非推奨です。 その結果、バージョン 1 データ ファクトリ用に構成された既存のアラートは機能しなくなります。 v1 データ ファクトリの既存のアラートは自動的に移行されません。 これらのアラートは、新しいアラート インフラストラクチャ上に再作成する必要があります。 Azure Portal にログインして **[モニター]** を選択し、バージョン 1 のデータ ファクトリ用にメトリックに対する新しいアラートを作成します (失敗した実行、成功した実行など)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -47,7 +43,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 ### <a name="navigate-to-your-data-factory"></a>Data Factory に移動する
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで、 **[データ ファクトリ]** をクリックします。 表示されない場合は、 **[その他のサービス >]** をクリックし、 **[インテリジェンス + 分析]** カテゴリの下にある **[データ ファクトリ]** をクリックします。
+2. 左側のメニューで、**[データ ファクトリ]** をクリックします。 表示されない場合は、**[その他のサービス >]** をクリックし、**[インテリジェンス + 分析]** カテゴリの下にある **[データ ファクトリ]** をクリックします。
 
    ![[すべて参照] > [データ ファクトリ]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. **[データ ファクトリ]** ブレードで、目的のデータ ファクトリを選択します。
@@ -152,7 +148,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 ![アクティビティ実行の詳細](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-スライスが **Ready** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、 **[準備のできていないアップストリーム スライス]** の一覧に表示されます。 この機能は、スライスが **Waiting** 状態のときに、スライスが待機しているアップストリーム依存関係を理解するのに便利です。
+スライスが **Ready** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備のできていないアップストリーム スライス]** の一覧に表示されます。 この機能は、スライスが **Waiting** 状態のときに、スライスが待機しているアップストリーム依存関係を理解するのに便利です。
 
 ![準備のできていないアップストリーム スライス](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
@@ -161,7 +157,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 ![状態ダイアグラム](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-データ ファクトリでのデータセット状態遷移フローは次のとおりです。Waiting -> In-Progress/In-Progress (Validating) -> Ready/Failed。
+データ ファクトリのデータセット状態遷移フローは、Waiting -> In-Progress/In-Progress (Validating) -> Ready/Failed となります。
 
 スライスは **Waiting** 状態で始まり、前提条件が満たされるまで待機してから実行されます。 アクティビティの実行が始まると、スライスは **In-Progress** 状態になります。 アクティビティの実行結果は成功か失敗のどちらかになります。 実行結果に応じて、スライスは **Ready** または **Failed** とマークされます。
 
@@ -205,7 +201,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 パイプラインでアクティビティの実行が失敗した場合、パイプラインによって生成されるデータセットは障害のためにエラー状態になります。 次の方法を使用して、Azure Data Factory のエラーをデバッグおよびトラブルシューティングできます。
 
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Azure Portal を使用してエラーをデバッグする
-1. **[テーブル]** ブレードで、 **[状態]** が **[Failed]** になっている問題のあるスライスをクリックします。
+1. **[テーブル]** ブレードで、**[状態]** が **[Failed]** になっている問題のあるスライスをクリックします。
 
    ![問題のあるスライスを表示している [テーブル] ブレード](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
 2. **[データ スライス]** ブレードで、失敗したアクティビティの実行をクリックします。
@@ -301,7 +297,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 ```
 ## <a name="create-alerts-in-the-azure-portal"></a>Azure Portal でアラートを作成する
 
-1.  Azure Portal にログインし、 **[モニター]、[アラート]** の順に選択して [アラート] ページを開きます。
+1.  Azure Portal にログインし、**[モニター]、[アラート]** の順に選択して [アラート] ページを開きます。
 
     ![[アラート] ページを開きます。](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
 

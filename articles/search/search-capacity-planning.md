@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d848c1ed1ab9d4cb24dec9423d93ec62ab45633b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702787"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537223"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの容量の見積もりと管理を行う
 
@@ -207,6 +207,14 @@ SU、価格、および容量の詳細については、Azure Web サイトを�
 Azure Cognitive Search のサービス レベル アグリーメント (SLA) は、クエリ操作と、ドキュメントの追加、更新、削除から成るインデックスの更新とを対象としています。
 
 Basic レベルでは、1 つのパーティションと 3 つのレプリカが上限です。 インデックス作成とクエリのスループットに対する需要の変動にすばやく反応する柔軟性が必要な場合は、Standard レベルのいずれかを検討してください。  ストレージ要件がクエリ スループットよりもはるかに速く増大している場合は、Storage Optimized レベルの 1 つを検討します。
+
+## <a name="about-queries-per-second-qps"></a>1 秒あたりのクエリ数 (QPS) について
+
+クエリのパフォーマンスには多くの要因があるため、Microsoft では予想される QPS 数を公開していません。 QPS の見積もりは、お使いのアプリケーションで有効なサービス レベル、構成、インデックス、クエリ構成を使用して、お客様ごとに個別に作成する必要があります。 インデックスのサイズと複雑さ、クエリのサイズと複雑さ、およびトラフィックの量が QPS を決定する主な要因です。 このような要因が不明な場合は、意義のある見積もりを用意する方法はありません。
+
+見積もりは、専用リソース (Basic および Standard レベル) 上で実行されるサービスに基づいて計算される場合、予測可能性がより高くなります。 より多くのパラメーターを制御できるため、さらに厳密に QPS を見積もることができます。 見積もりを行う方法のガイダンスについては、[Azure Cognitive Search のパフォーマンスと最適化](search-performance-optimization.md)に関する記事を参照してください。
+
+ストレージ最適化レベル (L1 および L2) では、Standard レベルよりもクエリ スループットが低く、待機時間が長くなります。
 
 ## <a name="next-steps"></a>次の手順
 

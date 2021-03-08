@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616656"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588596"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
@@ -57,7 +57,7 @@ Azure Digital Twins を使用すると、サービス インスタンスのロ�
 
 新しい設定は、10 分ほどで有効になります。 その後、インスタンスの **[診断設定]** ページ上の構成されたターゲットにログが表示されます。 
 
-診断設定とそれらの設定オプションの詳細については、「[*プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する*](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+診断設定とそれらの設定オプションの詳細については、「[*プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する*](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 ## <a name="log-categories"></a>ログのカテゴリ
 
@@ -255,10 +255,10 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
     - *[クエリ]* タブには、エディターに読み込むことができるクエリの例が含まれています。
     - *[フィルター]* タブでは、クエリによって返されるデータのフィルター処理されたビューをカスタマイズできます。
 
-ログ クエリとその記述方法の詳細については、[*Azure Monitor のログ クエリの概要*](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
+ログ クエリとその記述方法の詳細については、[*Azure Monitor のログ クエリの概要*](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 診断の構成に関する詳細については、"[*Azure リソースからのログ データの収集と使用*](../azure-monitor/platform/platform-logs-overview.md)" に関するページを参照してください。
+* 診断の構成に関する詳細については、"[*Azure リソースからのログ データの収集と使用*](../azure-monitor/essentials/platform-logs-overview.md)" に関するページを参照してください。
 * Azure Digital Twins のメトリックについては、[*トラブルシューティング: Azure Monitor でメトリックを表示する方法*](troubleshoot-metrics.md)に関するページを参照してください。
 * メトリックのアラートを有効にする方法については、[*トラブルシューティング:アラートの設定*](troubleshoot-alerts.md)に関するページを参照してください。

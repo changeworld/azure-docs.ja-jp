@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 0b84e26962b00ee5b9d4c34cab7efbcc9aa0bf01
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745886"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582802"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -46,7 +46,7 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
         
         * **[Stream to an event hub (イベント ハブへのストリーム)]** オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合は、ほとんどの場合、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Monitor サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Azure Monitor ログの使用についての詳細は、「[Azure Monitor のログ検索で収集されたデータの表示または分析](../azure-monitor/log-query/log-analytics-tutorial.md)」をご覧ください。
+        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Monitor サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Azure Monitor ログの使用についての詳細は、「[Azure Monitor のログ検索で収集されたデータの表示または分析](../azure-monitor/logs/log-analytics-tutorial.md)」をご覧ください。
      
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
    * データを保持する日数を指定します。 リテンション期間は、Azure ストレージ アカウントを使用してログ データをアーカイブする場合のみ適用されます。
@@ -167,7 +167,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 ```
 
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
-| 名前 | 型 | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -180,12 +180,12 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
-| 名前 | 型 | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | StreamName |String |操作が実行されたパス |
 
 ## <a name="samples-to-process-the-log-data"></a>ログ データ処理のサンプル
-Azure Data Lake Storage Gen1 から Azure Monitor ログにログを送信すると (Azure Monitor ログの使用の詳細については、「[Azure Monitor ログ検索で収集されたデータの表示または分析](../azure-monitor/log-query/log-analytics-tutorial.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
+Azure Data Lake Storage Gen1 から Azure Monitor ログにログを送信すると (Azure Monitor ログの使用の詳細については、「[Azure Monitor ログ検索で収集されたデータの表示または分析](../azure-monitor/logs/log-analytics-tutorial.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
 
 ```
 search *

@@ -3,18 +3,18 @@ title: 'ML Studio (classic): トレーニング データをインポートす�
 description: さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にデータをインポートする方法。 サポートされているデータ型とデータ形式に関する説明
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: db5f3cc4b9530c4aeac40786756b36cc0ac98728
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302774"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520376"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする
 
@@ -73,12 +73,12 @@ Studio (クラシック) にインポートする前に、比較的クリーン�
 * DateTime
 * TimeSpan
 
-Studio は ***データ テーブル** _ と呼ばれる内部データ型を使用し、モジュール間でデータを渡します。 [データセットへの変換][convert-to-dataset]モジュールを使用して、データ テーブル形式にデータを明示的に変換できます。
+Studio は ***データ テーブル*** と呼ばれる内部データ型を使用し、モジュール間でデータを渡します。 [データセットへの変換][convert-to-dataset]モジュールを使用して、データ テーブル形式にデータを明示的に変換できます。
 
 データ テーブル以外の形式を受け取るどのモジュールでも、次のモジュールに渡す前に、サイレント モードでデータをデータ テーブルに変換します。
 
 必要に応じて、その他の変換モジュールを使用して CSV、TSV、ARFF、SVMLight 形式にデータ テーブル形式をもう一度変換できます。
-これらの関数を実行するモジュールについては、モジュール パレットの _ *[Data Format Conversions]* * セクションを確認してください。
+これらの関数を実行するモジュールについては、モジュール パレットの **[Data Format Conversions]** セクションを確認してください。
 
 ## <a name="data-capacities"></a>データ容量
 

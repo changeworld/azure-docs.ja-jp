@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory を使用して Google Cloud Storage からデータをコピーする
 description: Azure Data Factory を使用して、Google Cloud Storage からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
-services: data-factory
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 258b4cbb187290c293caf10d14dbb624cb7d6b89
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 4d8ddb89055d318aaea9ada7f38f908223ff5a57
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347270"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388449"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google Cloud Storage からデータをコピーする
 
@@ -147,14 +143,14 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 | プロパティ                 | 説明                                                  | 必須                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | `storeSettings` の **type** プロパティは **GoogleCloudStorageReadSettings** に設定する必要があります。 | はい                                                         |
-| "**_コピーするファイルを特定する:_*"_ |  |  |
-| オプション 1: 静的パス<br> | データセットに指定されている所定のバケットまたはフォルダー/ファイル パスからコピーします。 バケットまたはフォルダーからすべてのファイルをコピーする場合は、さらに `_` として `wildcardFileName` を指定します。 |  |
+| ***コピーするファイルを特定する:*** |  |  |
+| オプション 1: 静的パス<br> | データセットに指定されている所定のバケットまたはフォルダー/ファイル パスからコピーします。 バケットまたはフォルダーからすべてのファイルをコピーする場合は、さらに `*` として `wildcardFileName` を指定します。 |  |
 | オプション 2: GCS プレフィックス<br>- prefix | ソース GCS ファイルをフィルター処理するために、データセットで構成されている、指定されたバケットにある GCS キー名のプレフィックス。 名前が `bucket_in_dataset/this_prefix` で始まる GCS キーが選択されます。 ワイルドカード フィルターより優れたパフォーマンスを提供する GCS サービス側のフィルターを利用します。 | いいえ |
 | オプション 3: ワイルドカード<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するためにデータセットで構成されている、特定のバケットの下のワイルドカード文字を含むフォルダーのパス。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 フォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
 | オプション 3: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定のバケットおよびフォルダー パス (またはワイルドカード フォルダー パス) の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 ファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。  「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
 | オプション 3: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスであるファイルを 1 行につき 1 つずつ指定します。<br/>このオプションを使用している場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
-| ***追加の設定:** _ |  | |
-| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 _ *recursive** が **true** に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>使用可能な値: **true** (既定値) および **false**。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
+| ***追加の設定:*** |  | |
+| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 **recursive** が **true** に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>使用可能な値: **true** (既定値) および **false**。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
 | deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、バイナリ ファイルのコピー シナリオでのみ有効です。 既定値: false。 |いいえ |
 | modifiedDatetimeStart    | ファイルは、属性 (最終変更日時) に基づいてフィルター処理されます。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する **NULL** にすることができます。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が **NULL** の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が **NULL** の場合は、最終変更日時属性が datetime 値未満であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                                          |

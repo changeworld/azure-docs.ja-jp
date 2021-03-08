@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: b4a4fa8a207320a5867b6cdf1dc347bbb2f453af
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e5872b6ab97a47c09081cf9c26fb7f140b110c3f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733450"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -279,5 +279,5 @@ HTTP ステータスが `200 OK` の場合、応答の本文には要求され�
 ## <a name="next-steps"></a>次のステップ
 
 - [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
-- [長い形式の音声の非同期合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [長い形式の音声の非同期合成](./long-audio-api.md)
 - [カスタム音声の概要](how-to-custom-voice.md)

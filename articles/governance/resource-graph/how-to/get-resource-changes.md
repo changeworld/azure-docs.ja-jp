@@ -3,12 +3,12 @@ title: リソースの変更の取得
 description: リソースがいつ変更されたかを見つけ、変更されたプロパティの一覧を取得し、それらの差分を評価する方法について説明します。
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917423"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594648"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -25,7 +25,7 @@ ms.locfileid: "98917423"
 - CMDB (Configuration Management Database) を最新状態に保つ。 スケジュールされた頻度ですべてのリソースとそれらの全プロパティ セットを更新する代わりに、変更されたものだけを取得します。
 - リソースがコンプライアンス状態を変更したときに他のどのプロパティが変更された可能性があるかを把握する。 これらの追加プロパティの評価により、Azure Policy 定義による管理が必要な可能性がある他のプロパティの分析情報を得ることができます。
 
-この記事では、Resource Graph の SDK を介してこの情報を収集する方法について説明します。 Azure portal でこの情報を表示するには、Azure Policy の[変更履歴](../../policy/how-to/determine-non-compliance.md#change-history)またはAzure アクティビティ ログの[変更履歴](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)を参照してください。 インフラストラクチャ レイヤーからアプリケーションのデプロイまで、アプリケーションに対する変更の詳細については、[Azure Monitor でのアプリケーション変更分析の使用 (プレビュー)](../../../azure-monitor/app/change-analysis.md)に関するページをご覧ください。
+この記事では、Resource Graph の SDK を介してこの情報を収集する方法について説明します。 Azure portal でこの情報を表示するには、Azure Policy の[変更履歴](../../policy/how-to/determine-non-compliance.md#change-history)またはAzure アクティビティ ログの[変更履歴](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)を参照してください。 インフラストラクチャ レイヤーからアプリケーションのデプロイまで、アプリケーションに対する変更の詳細については、[Azure Monitor でのアプリケーション変更分析の使用 (プレビュー)](../../../azure-monitor/app/change-analysis.md)に関するページをご覧ください。
 
 > [!NOTE]
 > Resource Graph の変更の詳細は、Resource Manager プロパティが対象です。 仮想マシン内で変更を追跡するには、Azure Automation の[変更の追跡](../../../automation/change-tracking/overview.md)または Azure Policy の [VM のゲスト構成](../../policy/concepts/guest-configuration.md)を参照してください。

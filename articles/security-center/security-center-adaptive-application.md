@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/06/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916135"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834393"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -44,7 +44,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 - 組織で禁止されている特定のソフトウェアが使用されないようにする
 - 機密データにアクセスするアプリの監視を強化する
 
-
+現時点では、利用できる強制オプションはありません。 適応型アプリケーション制御では、安全なものとして定義したもの以外のアプリケーションが実行されると、セキュリティ アラートが表示されることを想定しています。
 
 ## <a name="availability"></a>可用性
 
@@ -235,7 +235,12 @@ REST API から使用できる関数をいくつか以下に示します。
    > Put 要求で JSON を使用する前に、recommendationStatus、configurationStatus、issues、location、sourceSystem の各プロパティを削除してください。
 
 
+## <a name="faq---adaptive-application-controls"></a>FAQ - 適応型アプリケーション制御
 
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>アプリケーション制御を強制するためのオプションはありますか。
+現時点では、利用できる強制オプションはありません。 適応型アプリケーション制御では、安全なものとして定義したもの以外のアプリケーションが実行されると、**セキュリティ アラート** が表示されることを想定しています。 これらにはさまざまな利点があり (「[適応型アプリケーション制御の利点とは](#what-are-the-benefits-of-adaptive-application-controls)」)、このページに示すように高度なカスタマイズが可能です。
+
+ 
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure と Azure 以外のマシンで実行されるアプリケーションの許可リストを定義するために、Azure Security Center で適応型アプリケーション制御を使用する方法を学習しました。 Security Center の他のいくつかのクラウド ワークロード保護機能の詳細については、次のページを参照してください。

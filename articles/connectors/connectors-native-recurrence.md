@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 9565ad1efc5ae3dc03b94c78ce8ce52e8dd48c65
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3749a7080bf17c020b48ae3ebc3cff3aa998eeef
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019195"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382295"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Azure Logic Apps で繰り返しトリガーを使用して繰り返しタスクおよびワークフローを作成、スケジュール設定、および実行する
 
@@ -59,12 +59,12 @@ ms.locfileid: "98019195"
    ||||||
 
    > [!IMPORTANT]
-   > 繰り返しで詳細スケジュール オプションを指定しない場合、将来の繰り返しは前回の実行時刻に基づきます。
-   > これらの繰り返しの開始時刻は、ストレージ呼び出し中の待機時間などの要因によってずれる可能性があります。 ロジック アプリによって繰り返しが見逃されないようにするには (特に頻度が数日以上の場合)、次のいずれかのオプションを使用します。
+   > 繰り返しに特定の[開始日時](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)が指定されていない場合は、トリガーの繰り返し設定にかかわらず、ロジック アプリを保存またはデプロイすると、直ちに最初の繰り返しが実行されます。 この動作を回避するには、最初の繰り返しを実行する開始日時を指定してください。
+   >
+   > 将来の繰り返しを実行する特定時刻など、その他の詳細なスケジュール オプションが繰り返しに指定されていない場合、それらの繰り返しは前回の実行時刻に基づいて行われます。 その結果、ストレージ呼び出し中の待機時間などの要因によって、それらの繰り返しの開始時刻がずれる可能性があります。 
+   > ロジック アプリで繰り返しが行われないことがないようにするには (特に頻度が日単位以上の場合)、次のいずれかのオプションを試してください。
    > 
-   > * 繰り返しの開始時刻を指定します。
-   > 
-   > * **[設定時刻 (時間)]** と **[設定時刻 (分)]** という名前のプロパティを使用して、繰り返しを実行する時間と分を指定します。
+   > * **[設定時刻 (時間)]** と **[設定時刻 (分)]** という名前のプロパティ ( **[日]** と **[週]** の頻度でのみ使用可能) を使用して、繰り返しの開始日時と後続の繰り返しを実行する特定の時刻を指定します。
    > 
    > * 繰り返しトリガーではなく、[スライディング ウィンドウ トリガー](../connectors/connectors-native-sliding-window.md)を使用します。
 
@@ -72,7 +72,7 @@ ms.locfileid: "98019195"
 
    ![詳細スケジュール オプション](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | プロパティ | JSON での名前 | 必須 | Type | 説明 |
+   | プロパティ | JSON での名前 | 必須 | 種類 | 説明 |
    |----------|-----------|----------|------|-------------|
    | **タイム ゾーン** | `timeZone` | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |
    | **[開始時刻]** | `startTime` | いいえ | String | 開始日と時刻を指定します。これには、最大で 49 年先の時刻を指定でき、また [UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 <p><p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2020 年 9 月 18 日午後 2:00 にする場合は、"2020-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2020-09-18T14:00:00Z」と指定します。 <p><p>**重要:** タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 タイム ゾーンの値を選択した場合は、**開始時刻** の値の末尾に "Z" を追加する必要はありません。 行った場合、"Z" は UTC 時刻形式を示すため、Logic Apps ではタイム ゾーンの値が無視されます。 <p><p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |

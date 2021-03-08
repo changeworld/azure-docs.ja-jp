@@ -100,7 +100,7 @@
       href: iot-hub-scaling.md
     - name: 高可用性とディザスター リカバリー
       href: iot-hub-ha-dr.md
-    - name: IoT Hub を別のリージョンに複製する方法
+    - name: IoT ハブを別のリージョンに複製する方法
       href: iot-hub-how-to-clone.md
     - name: IoT Hub IP アドレスについて
       href: iot-hub-understand-ip-address.md
@@ -323,7 +323,7 @@
               href: iot-hub-configure-file-upload-cli.md
         - name: X.509 証明書によるハブのセキュリティ保護
           href: iot-hub-security-x509-get-started.md
-        - name: IoT Hub のアップグレード
+        - name: IoT ハブのアップグレード
           href: iot-hub-upgrade.md
         - name: IP フィルター処理を構成する
           href: iot-hub-ip-filtering.md
@@ -349,6 +349,16 @@
           href: iot-hub-azure-service-health-integration.md
         - name: Event Grid からのデバイス接続状態イベントの順序付け
           href: iot-hub-how-to-order-connection-state-events.md
+    - name: 更新プログラムの展開
+      items:
+        - name: デバイス更新アカウントの作成
+          href: ../iot-hub-device-update/create-device-update-account.md
+        - name: 更新プログラムのインポート
+          href: ../iot-hub-device-update/import-update.md
+        - name: 更新グループの作成
+          href: ../iot-hub-device-update/create-update-group.md
+        - name: 更新プログラムの展開
+          href: ../iot-hub-device-update/deploy-update.md
     - name: 実在のデバイスの使用
       items:
         - name: オンライン シミュレーターの使用
@@ -497,10 +507,10 @@
           href: /microsoft-iot-central/
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT ソリューション アクセラレータ
-          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
           href: ../iot-pnp/index.yml
+        - name: IoT ソリューション アクセラレータ
+          href: ../iot-accelerators/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

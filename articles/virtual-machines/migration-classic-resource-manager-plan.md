@@ -1,22 +1,23 @@
 ---
 title: クラシックから Azure Resource Manager への移行の計画
-description: この記事では、Linux でクラシックから Azure Resource Manager への IaaS リソースの移行を計画する方法について説明します。
-services: virtual-machines-linux
+description: この記事では、クラシックから Azure Resource Manager への IaaS リソースの移行を計画する方法について説明します。
+services: virtual-machines
 author: tanmaygore
 manager: vashan
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 271a20c5c9b6e157343246afb79f40894fe8a097
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 30a02a79e5e6e063c3d21e6626ed1a75c0f61133
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904635"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676095"
 ---
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Linux でのクラシックから Azure Resource Manager への IaaS リソースの移行計画
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 
 > [!IMPORTANT]
 > 現在、IaaS VM の約 90% で [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) が使用されています。 2020 年 2 月 28 日の時点で、クラシック VM は非推奨とされており、2023 年 3 月 1 日に完全に廃止されます。 この非推奨についての[詳細]( https://aka.ms/classicvmretirement)および[それが与える影響](classic-vm-deprecation.md#how-does-this-affect-me)について確認してください。

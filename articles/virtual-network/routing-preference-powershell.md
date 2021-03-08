@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 92c8c4504384c3130df0d9b72ef7df21353bb3d5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 5fac791247dbb785e087ac21f3fd5532064c6c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530563"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667884"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-powershell"></a>Azure PowerShell を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
@@ -32,10 +32,6 @@ ms.locfileid: "96530563"
 * Azure Firewall
 
 既定では、パブリック IP アドレスに対するルーティング優先設定は、すべての Azure サービスについて Microsoft グローバル ネットワークに設定され、任意の Azure サービスと関連付けることができます。
-
-> [!IMPORTANT]
-> 現在、ルーティング優先設定はパブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、ここで[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 

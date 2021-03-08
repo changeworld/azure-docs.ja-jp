@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0408341eff483de71d76a24a933ece4cbdc2b947
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913730"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535282"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 
@@ -35,7 +35,7 @@ Azure [Load Balancer](../load-balancer/load-balancer-overview.md) は、受信�
 1. 検索ボックスに「**ロード バランサー**」と入力します。 検索結果の **[マーケットプレース]** で、 **[ロード バランサー]** を選択します。
 1. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。
 
-    | 設定                 | [値]   |
+    | 設定                 | 値   |
     | ---| ---|
     | サブスクリプション  | サブスクリプションを選択します。    |    
     | Resource group | **[新規作成]** を選択し、テキスト ボックスに「*myVMSSResourceGroup*」と入力します。|
@@ -57,7 +57,7 @@ Azure [Load Balancer](../load-balancer/load-balancer-overview.md) は、受信�
 Windows Server イメージまたは Linux イメージ (RHEL、CentOS、Ubuntu、SLES など) を含むスケール セットをデプロイできます。
 
 1. 検索ボックスに「**スケール セット**」と入力します。 結果の **[マーケットプレース]** で、 **[仮想マシン スケール セット]** を選択します。 **[仮想マシン スケール セット]** ページで **[作成]** を選択すると、 **[仮想マシン スケール セットの作成]** ページが開きます。 
-1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myVMSSResourceGroup*」と入力し、 **[OK]** を選択します。 
+1. **[基本]** タブの **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認し、リソース グループ リストから *[myVMSSResourceGroup]* を選択します。 
 1. スケール セットの名前として「*myScaleSet*」と入力します。
 1. **[リージョン]** で、自分の地域に近いリージョンを選択します。
 1. **[イメージ]** のマーケットプレース イメージを選択します。 この例では、 *[Ubuntu Server 18.04 LTS]* を選択しました。

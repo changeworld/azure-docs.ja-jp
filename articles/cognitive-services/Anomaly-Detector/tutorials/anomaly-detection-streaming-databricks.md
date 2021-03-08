@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f42d294dec4dd2c92fe08498a7bce3c1eabae4b3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368714"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519135"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -95,7 +95,7 @@ ms.locfileid: "94368714"
     以下を除くすべての値は、既定値のままにします。
 
    * クラスターの名前を入力します。
-   * この記事では、 **5.2** ランタイムを使用してクラスターを作成します。 **5.3** ランタイムを選択しないでください。
+   * この記事では、**5.2** ランタイムを使用してクラスターを作成します。 **5.3** ランタイムを選択しないでください。
    * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにしてください。 クラスターが使用されていない場合は、クラスターを終了するまでの時間 (分単位) を指定します。
 
      **[クラスターの作成]** を選択します。
@@ -155,7 +155,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 2. **[+ リソースの作成]** を選択します。
 
-3. Azure Marketplace で、 **[AI + Machine Learning]\(AI + 機械学習\)**  >  **[See all]\(すべて表示\)**  >  **[Cognitive Services - More]\(Cognitive Services - 詳細\)**  >  **[Anomaly Detector]** を選択します。 または、 [このリンク](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)を使用して、 **[Create]\(作成\)** ダイアログ ボックスに直接アクセスすることもできます。
+3. Azure Marketplace で、 **[AI + Machine Learning]\(AI + 機械学習\)**  >  **[See all]\(すべて表示\)**  >  **[Cognitive Services - More]\(Cognitive Services - 詳細\)**  >  **[Anomaly Detector]** を選択します。 または、[このリンク](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)を使用して、 **[Create]\(作成\)** ダイアログ ボックスに直接アクセスすることもできます。
 
     ![Anomaly Detector リソースを作成する](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Anomaly Detector リソースを作成する")
 
@@ -191,7 +191,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Databricks でノートブックを作成する](../media/tutorials/databricks-create-notebook.png "Databricks でノートブックを作成する")
 
-2. **[Create Notebook]\(ノートブックの作成\)** ダイアログ ボックスに、名前として「 **SendTweetsToEventHub** 」と入力し、言語として **[Scala]** を選択し、前に作成した Spark クラスターを選択します。
+2. **[Create Notebook]\(ノートブックの作成\)** ダイアログ ボックスに、名前として「**SendTweetsToEventHub**」と入力し、言語として **[Scala]** を選択し、前に作成した Spark クラスターを選択します。
 
     ![ノートブックの詳細](../media/tutorials/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
@@ -298,7 +298,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-ノートブックを実行するには、 **Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。 出力内の各イベントは、Event Hubs に取り込まれたタイムスタンプと "いいね!" の数の組み合わせです。
+ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。 出力内の各イベントは、Event Hubs に取り込まれたタイムスタンプと "いいね!" の数の組み合わせです。
 
 ```output
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
@@ -423,7 +423,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-ノートブックを実行するには、 **Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
+ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
 
 ```scala
 import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
@@ -497,7 +497,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ```
 
-ノートブックを実行するには、 **Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
+ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
 
 ```scala
 import org.apache.spark.sql.Row
@@ -586,7 +586,7 @@ groupTime                       average
 
 次に、集計された出力結果を Delta に取得します。 異常検出には長期間の履歴が必要であるため、検出するポイントに対する履歴データを保持するために Delta を使用します。
 "[Placeholder: table name]" を、作成される修飾された Delta テーブル名に置き換えます ("tweets" など)。 "[Placeholder: folder name for checkpoints]" を、このコードを実行するたびに固有となる文字列値に置き換えます ("etl-from-eventhub-20190605" など)。
-Azure Databricks の Delta Lake に関する詳細については、[Delta Lake ガイド](https://docs.azuredatabricks.net/delta/index.html)を参照してください
+Azure Databricks の Delta Lake に関する詳細については、[Delta Lake ガイド](/databricks/delta/)を参照してください
 
 
 ```scala

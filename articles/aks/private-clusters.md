@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2749e66375fbd808a9e87f252a813f1054ceff21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: f0c74c1b3715fd3f5c83c3a9231009e622b87927
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525570"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181229"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -66,7 +66,7 @@ az aks create \
 > [!NOTE]
 > Docker ブリッジ アドレス CIDR (172.17.0.1/16) がサブネット CIDR と競合する場合は、Docker ブリッジ アドレスを適切に変更します。
 
-## <a name="configure-private-dns-zone"></a>プライベート DNS ゾーンを構成する
+## <a name="configure-private-dns-zone"></a>プライベート DNS ゾーンを構成する 
 
 次のパラメーターを使用してプライベート DNS ゾーンを構成できます。
 
@@ -79,7 +79,7 @@ az aks create \
 * AKS プレビュー バージョン 0.4.71 以降
 * API バージョン 2020-11-01 以降
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
+### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する (プレビュー)
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
@@ -134,8 +134,8 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 * コントロール プレーンのメンテナンスの場合、[AKS IP](./limit-egress-traffic.md) が変更される可能性があります。 この場合は、カスタム DNS サーバー上で API サーバーのプライベート IP を指している A レコードを更新し、hostNetwork を使用するカスタム ポッドまたはデプロイを再起動する必要があります。
 
 <!-- LINKS - internal -->
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: ../private-link/private-link-service-overview.md#limitations

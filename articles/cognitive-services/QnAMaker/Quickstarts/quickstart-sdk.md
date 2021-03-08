@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: qnamaker-quickstart
-ms.openlocfilehash: de237c1bba699165e63fc0b2e4bfb58d25518bd9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5fd200fcd1d48b533e629fe4429f5bafb5fde817
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701290"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731018"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>クイック スタート:QnA Maker クライアント ライブラリ
 
@@ -56,7 +56,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
->[チュートリアル:バッチ ファイルを使用して対象のナレッジ ベースをテストする](../index.yml)
+>[チュートリアル:バッチ ファイルを使用して対象のナレッジ ベースをテストする](../how-to/test-knowledge-base.md#batch-test-with-tool)
 
 * [QnA Maker API とは](../Overview/overview.md)
 * [ナレッジ ベースを編集する](../how-to/edit-knowledge-base.md)

@@ -1,22 +1,24 @@
 ---
-title: IoT プラグ アンド プレイに必要な IoT リソースを設定する | Microsoft Docs
-description: IoT ハブと Device Provisioning Service インスタンスを作成し、IoT プラグ アンド プレイのクイック スタートとチュートリアルで使用します。
+title: クイックスタート - IoT プラグ アンド プレイに必要な IoT リソースを設定する | Microsoft Docs
+description: クイックスタート - IoT プラグ アンド プレイのクイックスタートとチュートリアルで使用する IoT ハブと Device Provisioning Service インスタンスを作成します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/11/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b2b17cffb8abd748315c437f46000995c4cb598a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96004264"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831911"
 ---
-# <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>IoT プラグ アンド プレイのクイックスタートとチュートリアル用に環境を設定する
+# <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>クイックスタート - IoT プラグ アンド プレイのクイックスタートとチュートリアル用に環境を設定する
 
 IoT プラグ アンド プレイのクイックスタートとチュートリアルのいずれかを完了する前に、Azure サブスクリプションで IoT ハブと Device Provisioning Service (DPS) を構成する必要があります。 また、サンプル アプリケーションと Azure IoT エクスプローラー ツールで使用されるモデル ファイルのローカル コピーも必要になります。
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -130,7 +132,7 @@ set IOTHUB_DEVICE_ID=my-pnp-device
 
 詳細については、「[Azure IoT エクスプローラーをインストールして使用する](howto-use-iot-explorer.md)」を参照してください。
 
-## <a name="remove-the-resources"></a>リソースを削除する
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 すべての IoT プラグ アンド プレイのクイックスタートとチュートリアルで、IoT ハブと DPS インスタンスを使用することができます。そのため、この記事の手順を行う必要があるのは 1 回だけです。 完了したら、次のコマンドを使用してサブスクリプションからそれらを削除できます。
 

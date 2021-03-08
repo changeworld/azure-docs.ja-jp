@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: dad02735228bb639981bf3f053a74f29d1944e5a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 02/08/2021
+ms.openlocfilehash: 1228234b6a2904c453ec92f3c09a7b3f55604953
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961483"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363765"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>SQL Server から Azure SQL Managed Instance へオンライン移行するためのカスタム ロール
 
@@ -32,7 +32,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 > [!NOTE]
 > SQL Managed Instance の新しいコードが Azure にデプロイされると、最後のカスタム ロールの要件は最終的に削除される可能性があります。
 
-**アプリ ID のカスタム ロール**。 このロールは、Azure Database Migration Service の *リソース* レベルまたは *リソース グループ* レベルでの移行に必要です (アプリ ID の詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」の記事を参照してください)。
+**アプリ ID のカスタム ロール**。 このロールは、Azure Database Migration Service をホストする *リソース* または *リソース グループ* レベルでの Azure Database Migration Service の移行に必要です (アプリ ID の詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」の記事を参照してください)。
 
 ```json
 {
@@ -63,7 +63,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 }
 ```
 
-**アプリ ID のカスタム ロール - サブスクリプション**。 このロールは、*サブスクリプション* レベルでの Azure Database Migration Service の移行に必要です。
+**アプリ ID のカスタム ロール - サブスクリプション**。 このロールは、SQL Managed Instance をホストする *サブスクリプション* レベルでの Azure Database Migration Service の移行に必要です。
 
 ```json
 {
@@ -87,8 +87,8 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 
 これらのカスタム ロールを作成した後は、ロールの割り当てをユーザーに追加し、アプリ ID を適切なリソースまたはリソース グループに追加する必要があります。
 
-* 移行に使用されるアプリ ID に対して、"DMS ロール - アプリ ID" ロールを、ストレージ アカウント、Azure Database Migration Service インスタンス、および SQL Managed Instance リソース レベルで付与する必要があります。
-* "DMS ロール - アプリ ID - サブ" ロールは、サブスクリプション レベルで APP ID に付与する必要があります (リソースまたはリソース グループでの付与は失敗します)。 この要件は、コードの更新がデプロイされるまでの一時的なものです。
+* 移行に使用されるアプリ ID に対して、"DMS ロール - アプリ ID" ロールを、ストレージ アカウント、Azure Database Migration Service インスタンス、および SQL Managed Instance リソース レベルで付与する必要があります。 これは、Azure Database Migration Service をホストするリソースまたはリソース グループ レベルで付与します。
+* "DMS ロール - アプリ ID - サブ" ロールは、SQL Managed Instance をホストするサブスクリプション レベルで APP ID に付与する必要があります (リソースまたはリソース グループでの付与は失敗します)。 この要件は、コードの更新がデプロイされるまでの一時的なものです。
 
 ## <a name="expanded-number-of-roles"></a>ロール数の拡大
 

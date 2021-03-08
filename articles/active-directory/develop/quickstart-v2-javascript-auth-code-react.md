@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 323c9e207e5a16ba3e5907862e7a1eba84cc02e6
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3df3d4a3e87f67678833f097a1e2aa3633a5991e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754189"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096430"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>クイックスタート: 認可コード フローを使用して React SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -26,6 +26,8 @@ ms.locfileid: "98754189"
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 このクイックスタートでは、認可コード フローで MSAL React を使用します。 暗黙的なフローで MSAL.js を使用する同様のクイックスタートについては、[クイックスタート: JavaScript シングルページ アプリ内でのユーザーのサインイン](./quickstart-v2-javascript.md)に関するページを参照してください。
+
+この機能[!INCLUDE [active-directory-develop-preview](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +42,7 @@ ms.locfileid: "98754189"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1 (簡易): アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力します。
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[登録]** を選択します。
@@ -50,7 +52,7 @@ ms.locfileid: "98754189"
 >
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -66,7 +68,7 @@ ms.locfileid: "98754189"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、`redirectUri` を `http://localhost:3000/` として追加する必要があります。
+> このクイックスタートのコード サンプルを動作させるには、**リダイレクト URI** (`http://localhost:3000/`) を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >
@@ -141,7 +143,7 @@ ms.locfileid: "98754189"
 >
 > 同じファイル内で下へスクロールし、`graphMeEndpoint` を更新します。 
 > - 文字列 `Enter_the_Graph_Endpoint_Herev1.0/me` を `https://graph.microsoft.com/v1.0/me` に置き換えます。
-> - `Enter_the_Graph_Endpoint_Herev1.0/me` は、API 呼び出しの対象となるエンドポイントです。 メイン (グローバル) Microsoft Graph API サービスの場合は、「`https://graph.microsoft.com/`」 (末尾のスラッシュを含める) と入力します。 詳細については、[ドキュメント](https://docs.microsoft.com/graph/deployments)を参照してください。
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` は、API 呼び出しの対象となるエンドポイントです。 メイン (グローバル) Microsoft Graph API サービスの場合は、「`https://graph.microsoft.com/`」 (末尾のスラッシュを含める) と入力します。 詳細については、[ドキュメント](/graph/deployments)を参照してください。
 >
 >
 >

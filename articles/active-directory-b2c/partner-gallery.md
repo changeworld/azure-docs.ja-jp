@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5012e90aae316897454ffc7933efc88d83afdf6e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a1ee632e3aaae7b858ab43b45f6e72aff8d1fb77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893383"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361768"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -74,6 +74,7 @@ Microsoft は、セキュリティに関して次の ISV と提携していま�
 | ISV パートナー | 説明と統合のチュートリアル |
 |:-------------------------|:--------------|
 | ![Arkose Labs ロゴのスクリーンショット](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) は、組織がボット攻撃、アカウント乗っ取り攻撃、および不正なアカウント開設を防ぐのに役立つ不正行為防止ソリューション プロバイダーです。 |
+| ![Microsoft Dynamics 365 ロゴのスクリーンショット](./media/partner-gallery/microsoft-dynamics365-logo.png) | [Microsoft Dynamics 365 Fraud Protection](./partner-dynamics-365-fraud-protection.md) は、組織がデバイス フィンガープリンティングによる不正なアカウント開設を防ぐのに役立つソリューションです。 |
 | ![Ping ロゴのスクリーンショット](./media/partner-gallery/ping-logo.png) | [Ping Identity](./partner-ping-identity.md) を使用すると、複数のクラウドにわたってオンプレミスのレガシ アプリケーションへの安全なハイブリッド アクセスが可能になります。 |
 | ![Strata ロゴのスクリーンショット](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) は、一貫性のあるアクセス ポリシーを適用し、ID の同期を維持し、レガシ ID システムから Azure AD B2C によって提供される標準ベースの認証とアクセス制御にアプリケーションを簡単に移行できるようにすることで、オンプレミスのアプリケーションへの、セキュリティで保護されたハイブリッド アクセスを提供します。 |
 | ![Zscaler ロゴのスクリーンショット](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) は、VPN のコスト、手間、セキュリティ上のリスクが生じることなく、非公開のアプリケーションおよび資産への、セキュリティで保護されたポリシーベースのアクセスを実現します。 |

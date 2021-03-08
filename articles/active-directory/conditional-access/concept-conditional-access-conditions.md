@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 02/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904037"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362422"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "95904037"
 
 ## <a name="user-risk"></a>ユーザー リスク 
 
-[Identity Protection](../identity-protection/overview-identity-protection.md) にアクセスできるお客様の場合、条件付きアクセス ポリシーの一部としてユーザー リスクを評価できます。 ユーザー リスクは、特定の ID またはアカウントに対する侵害の確率を表します。 ユーザー リスクの詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md#user-risk)」および「[方法: リスク ポリシーを構成して有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md)」を参照してください。
+[Identity Protection](../identity-protection/overview-identity-protection.md) にアクセスできるお客様の場合、条件付きアクセス ポリシーの一部としてユーザー リスクを評価できます。 ユーザー リスクは、特定の ID またはアカウントが侵害されているおそれがあることを表します。 ユーザー リスクの詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md#user-risk)」および「[方法: リスク ポリシーを構成して有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md)」を参照してください。
 
 ## <a name="device-platforms"></a>デバイス プラットフォーム
 

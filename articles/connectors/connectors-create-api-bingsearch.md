@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 306298e4338665ef52add7f46d6da8675c97c3e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999605"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716552"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Bing Search の結果を検索する
 
@@ -20,7 +20,7 @@ ms.locfileid: "95999605"
 
 たとえば、検索条件に基づいてニュース項目を検索し、その項目が Twitter のフィードにツイートとして投稿されるように指定できます。
 
-Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
+Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 コネクタ固有の技術情報については、[Bing Search コネクタ リファレンス](/connectors/bingsearch/)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 2. 検索ボックスに、フィルターとして「Bing search」と入力します。 トリガーの一覧から、目的のトリガーを選択します。
 
-   この例では、 **[Bing Search - On new news article]\(Bing Search - 新しいニュース記事\)** トリガーを使用します
+   この例では、**[Bing Search - On new news article]\(Bing Search - 新しいニュース記事\)** トリガーを使用します
 
    ![Bing Search トリガーを検索する](./media/connectors-create-api-bing-search/add-trigger.png)
 
@@ -151,7 +151,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | 接続名 | はい | <*connection-name*> | 作成する接続の名前 |
-   | API Version | はい | <*API-version*> | 既定では、Bing Search API バージョンは現在のバージョンに設定されています。 必要に応じて、以前のバージョンを選択できます。 |
+   | API バージョン | はい | <*API-version*> | 既定では、Bing Search API バージョンは現在のバージョンに設定されています。 必要に応じて、以前のバージョンを選択できます。 |
    | API キー | はい | <*API-key*> | 前に取得した Bing Search API キー。 キーがない場合は、ご自身の [API キーを今すぐ](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)取得します。 |  
    |||||  
 

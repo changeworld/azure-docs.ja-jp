@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797310"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624761"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -101,7 +101,7 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 
      ![拡張機能のインストール](media/install-extension.png)
 
-1. Azure DevOps パイプラインのサービス プリンシパルにサブスクリプションのアクセス許可が付与され、ターゲット ワークスペースのワークスペース管理者としても割り当てられていることを確認します。 
+1. Azure DevOps パイプラインのサービス プリンシパルにサブスクリプションのアクセス許可が付与され、ターゲットのワークスペースのワークスペース管理者としても割り当てられていることを確認します。 
 
 1. 新しいタスクを作成します。 **[Synapse ワークスペースのデプロイ]** を探して **[追加]** を選択します。
 
@@ -139,8 +139,8 @@ Synapse ワークスペースとの Git 統合を使用していて、変更を�
 
 ### <a name="use-the-synapse-workspace-deployment-task"></a>Synapse ワークスペース デプロイ タスクを使用する
 
-Synapse では、あらゆる種類のアーティファクトが、ADF の場合とは異なり、ARM リソースではありません。 ARM テンプレート デプロイ タスクを使用して Synapse アーティファクトをデプロイすることはできません
+Synapse には、ARM リソースではない複数のアーティファクトがあります。 これは、Azure Data Factory とは異なります。 Synapse アーティファクトをデプロイするために、ARM テンプレート デプロイ タスクを使用しても正しく機能しません。
  
 ### <a name="unexpected-token-error-in-release"></a>リリースにおける予期しないトークン エラー
 
-エスケープ処理されていないパラメーター値がパラメーター ファイルに含まれているとき、予期しないトークン エラーにより、リリース パイプラインでファイルを解析できないことがあります。 パラメーターまたは KeyVault をオーバーライドしてパラメーターを取得することをお勧めします。 回避策としてダブル エスケープすることもできます。
+エスケープ処理されていないパラメーター値がパラメーター ファイルに含まれる場合、リリース パイプラインでファイルを解析できず、"予期しないトークン" エラーが生成されます。 パラメーターをオーバーライドすること、または Azure KeyVault を使用してパラメーター値を取得することをお勧めします。 対処法としてダブル エスケープ文字を使用することもできます。

@@ -4,12 +4,12 @@ description: Azure CLI を使用して、Azure Blockchain Service 用のブロ�
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867a51b60afa56005bbb297b345f8a9260160ab8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722638"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Azure CLI を使用してブロックチェーン データ マネージャーを構成する
 
@@ -69,13 +69,13 @@ az resource create \
 
 ### <a name="create-instance-examples"></a>インスタンス作成の例
 
-**米国東部**リージョンにブロックチェーン マネージャー インスタンスを作成する JSON 構成の例です。
+**米国東部** リージョンにブロックチェーン マネージャー インスタンスを作成する JSON 構成の例です。
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-    }
+    "location": "eastus",
+    "properties": {
+    }
 }
 ```
 
@@ -133,15 +133,15 @@ az resource create \
 
 ### <a name="input-examples"></a>入力の例
 
-\<Blockchain member\> に接続されている*米国東部*リージョン内に入力リソースを作成する構成 JSON の例。
+\<Blockchain member\> に接続されている *米国東部* リージョン内に入力リソースを作成する構成 JSON の例。
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "inputType": "Ethereum",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
+    "location": "eastus",
+    "properties": {
+        "inputType": "Ethereum",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
         }
     }
 }
@@ -205,15 +205,15 @@ az resource create \
 
 ### <a name="output-examples"></a>出力の例
 
-\<event grid topic\> という名前の Event Grid トピックに接続されている*米国東部*リージョン内に出力リソースを作成する構成 JSON の例。
+\<event grid topic\> という名前の Event Grid トピックに接続されている *米国東部* リージョン内に出力リソースを作成する構成 JSON の例。
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "outputType": "EventGrid",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
+    "location": "eastus",
+    "properties": {
+        "outputType": "EventGrid",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
         }
     }
 }
@@ -282,13 +282,13 @@ az resource create \
 
 ### <a name="blockchain-application-examples"></a>ブロックチェーン アプリケーションの例
 
-コントラクトの ABI とバイトコードによって定義されたスマート コントラクトを監視するアプリケーション リソースを*米国東部*リージョン内に作成する構成 JSON の例。
+コントラクトの ABI とバイトコードによって定義されたスマート コントラクトを監視するアプリケーション リソースを *米国東部* リージョン内に作成する構成 JSON の例。
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "artifactType": "EthereumSmartContract",
+    "location": "eastus",
+    "properties": {
+        "artifactType": "EthereumSmartContract",
         "content": {
             "abiFileUrl": "<ABI URL>",
             "bytecodeFileUrl": "<Bytecode URL>",
@@ -306,7 +306,7 @@ az resource create \
 | location | アプリケーション リソースの作成先となるリージョン。 |
 | artifactType | アプリケーションの種類。 現時点では、**EthereumSmartContract** がサポートされています。 |
 | abiFileUrl | スマート コントラクトの ABI JSON ファイルの URL。 コントラクト ABI の取得と URL の作成の詳細については、[コントラクト ABI とバイトコードの取得](data-manager-portal.md#get-contract-abi-and-bytecode)に関するページと、[コントラクト ABI とバイトコード URL の作成](data-manager-portal.md#create-contract-abi-and-bytecode-url)に関するページを参照してください。 |
-| bytecodeFileUrl | スマート コントラクトのデプロイ済みバイトコード JSON ファイルの URL。 スマート コントラクトのデプロイ済みバイトコードの取得と URL の作成の詳細については、[コントラクト ABI とバイトコードの取得](data-manager-portal.md#get-contract-abi-and-bytecode)に関するページと、[コントラクト ABI とバイトコード URL の作成](data-manager-portal.md#create-contract-abi-and-bytecode-url)に関するページを参照してください。 注:ブロックチェーン データ マネージャーには、**デプロイ済みバイトコード**が必要です。 |
+| bytecodeFileUrl | スマート コントラクトのデプロイ済みバイトコード JSON ファイルの URL。 スマート コントラクトのデプロイ済みバイトコードの取得と URL の作成の詳細については、[コントラクト ABI とバイトコードの取得](data-manager-portal.md#get-contract-abi-and-bytecode)に関するページと、[コントラクト ABI とバイトコード URL の作成](data-manager-portal.md#create-contract-abi-and-bytecode-url)に関するページを参照してください。 注:ブロックチェーン データ マネージャーには、**デプロイ済みバイトコード** が必要です。 |
 | queryTargetTypes | パブリッシュされるメッセージの種類。 **ContractProperties** を指定すると、メッセージの種類 *ContractPropertiesMsg* が公開されます。 **ContractEvents** を指定すると、メッセージの種類 *DecodedContractEventsMsg* が公開されます。 注:メッセージの種類 *RawBlockAndTransactionMsg* および *RawTransactionContractCreationMsg* は常に公開されます。 |
 
 JSON 文字列によって定義されたスマート コントラクトを監視する *myApplication* という名前のアプリケーションを、*mywatcher* 用に作成します。

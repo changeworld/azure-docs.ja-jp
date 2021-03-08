@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 61ca4dc8cd7048df69c827e7ca657b9882900819
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218911"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596629"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -87,7 +87,7 @@ ms.locfileid: "98218911"
    - **[プロパティ]** :仮想ネットワークのリソース ID や、仮想ネットワークが存在する Azure サブスクリプションなど、仮想ネットワークに関する設定が表示されます。
    - **ダイアグラム**:このダイアグラムには、仮想ネットワークに接続されているすべてのデバイスを視覚的に表現したものが表示されます。 ダイアグラムには、デバイスに関する重要な情報が含まれます。 このビューでダイアグラム内のデバイスを管理するには、デバイスを選択します。
    - **Azure の一般的な設定**:Azure の一般的な設定の詳細については、次の情報を参照してください。
-     - [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)
+     - [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)
      - [アクセス制御 (IAM)](../role-based-access-control/overview.md)
      - [タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 02/04/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3035e0036e5d35729637e35ad8cb1412a0da959f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: dac50d8e35080a083e42891732512e012fae8fbd
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091034"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576449"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET を使用して Azure Storage 内でコンテナーを作成または削除する
 
@@ -38,10 +38,10 @@ Azure Storage 内の BLOB はコンテナーにまとめられます。 BLOB を
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-- [作成](/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
-- [CreateAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
-- [CreateIfNotExists](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
-- [CreateIfNotExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+- [CreateBlobContainer](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainer)
+- [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync)
+
+同じ名前のコンテナーが既に存在する場合、これらのメソッドは例外をスローします。
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -49,11 +49,12 @@ Azure Storage 内の BLOB はコンテナーにまとめられます。 BLOB を
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
 - [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
----
 
 同じ名前のコンテナーが既に存在する場合、**Create** および **CreateAsync** メソッドは例外をスローします。
 
 **CreateIfNotExists** および **CreateIfNotExistsAsync** メソッドは、コンテナーが作成されたかどうかを示すブール値を返します。 同じ名前のコンテナーが既に存在する場合、新しいコンテナーが作成されなかったことを示すために、これらのメソッドは **False** を返します。
+
+---
 
 コンテナーは、ストレージ アカウントの直下に作成されます。 コンテナーを別のコンテナーの下に入れ子にすることはできません。
 

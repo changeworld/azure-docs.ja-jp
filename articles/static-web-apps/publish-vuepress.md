@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: 72b1bd4d46b0b04364b25a8460361d6a008d42a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f0616df885a7f8fcd76337c810bc368aa02f3c8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250132"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650450"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>チュートリアル:VuePress サイトを Azure Static Web Apps プレビューに発行する
 
@@ -100,7 +100,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 1. ローカル リポジトリを GitHub にプッシュします。
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Web アプリのデプロイ
@@ -127,7 +127,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[SKU]_ で、 **[Free]** を選択します。
 
-   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="詳細情報の入力":::
 
 1. **[GitHub でサインイン]** ボタンをクリックします。
 
@@ -135,9 +135,9 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. **vuepress-static-app** を _[リポジトリ]_ として選択します。
 
-1. _[ブランチ]_ では、**master** を選択します。
+1. _[ブランチ]_ では、**main** を選択します。
 
-   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
 
 ### <a name="build"></a>Build
 
@@ -151,7 +151,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
 
-   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="ビルド設定":::
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
@@ -163,7 +163,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. リソース画面で、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。 GitHub アクションが完了するまで 1 - 2 分かかることがあります。
 
-   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="デプロイされたアプリケーション":::
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする
 

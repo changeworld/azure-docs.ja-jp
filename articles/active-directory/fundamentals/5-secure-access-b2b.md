@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4206ba7617032e34310682d1468e6b1b661b8c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725394"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648589"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションによって管理コラボレーションに移行する 
 
@@ -100,7 +100,7 @@ B2B Azure AD を有効にすると、既定では、直接リンクや電子メ�
 
 Azure AD のエンタイトルメント管理を使用する場合は、外部ユーザーが回答する質問を構成できます。 これらの質問はその後、承認者に示され、承認者の意思決定に役立ちます。 承認者が承認しているアクセスに関連する情報を得られるように、[アクセス パッケージ ポリシー](../governance/entitlement-management-access-package-approval-policy.md)ごとに異なる一連の質問を構成することができます。 たとえば、あるアクセス パッケージがベンダーへのアクセスを目的としている場合、要求元にベンダーの契約番号を要求できます。 供給元を対象とした別のアクセス パッケージでは、原産国を要求できます。
 
-セルフサービス ポータルを使用する場合は、[API コネクタ](../external-identities/api-connectors-overview.md)を使用して、サインアップ時にユーザーに関する追加の属性を収集できます。 その後、これらの属性を使用してアクセス権を割り当てることができます。 たとえば、サインアップ プロセス中に供給元 ID を収集する場合、その属性を使用して、その供給元のグループまたはアクセス パッケージに動的に割り当てることができます。 Azure portal でカスタム属性を作成し、セルフサービス サインアップのユーザー フローでそれらを使用できます。 また、[Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md) を使用してこれらの属性を読み書きすることもできます。 
+セルフサービス ポータルを使用する場合は、[API コネクタ](../external-identities/api-connectors-overview.md)を使用して、サインアップ時にユーザーに関する追加の属性を収集できます。 その後、これらの属性を使用してアクセス権を割り当てることができます。 たとえば、サインアップ プロセス中に供給元 ID を収集する場合、その属性を使用して、その供給元のグループまたはアクセス パッケージに動的に割り当てることができます。 Azure portal でカスタム属性を作成し、セルフサービス サインアップのユーザー フローでそれらを使用できます。 また、[Microsoft Graph API](../../active-directory-b2c/microsoft-graph-operations.md) を使用してこれらの属性を読み書きすることもできます。 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Azure AD ユーザーへの招待の引き換えに関するトラブルシューティング
 

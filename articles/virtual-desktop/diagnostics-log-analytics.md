@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018292"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576139"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 
@@ -39,23 +39,23 @@ Windows Virtual Desktop では、他の多くの Azure サービスと同様に�
 Azure Monitor を使用すると、Windows Virtual Desktop のデータを分析して、仮想マシン (VM) のパフォーマンス カウンターを確認できます。すべて、同じツール内で行われます。 この記事では、ご自身の Windows 仮想デスクトップ環境で診断を有効にする方法について説明します。
 
 >[!NOTE]
->Azure で VM を監視する方法については、「[Azure Monitor を使用して Azure 仮想マシンを監視する](../azure-monitor/insights/monitor-vm-azure.md)」を参照してください。 また、セッション ホストでのユーザー エクスペリエンスをより深く理解するために、必ず[パフォーマンス カウンターのしきい値を確認](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds)してください。
+>Azure で VM を監視する方法については、「[Azure Monitor を使用して Azure 仮想マシンを監視する](../azure-monitor/vm/monitor-vm-azure.md)」を参照してください。 また、セッション ホストでのユーザー エクスペリエンスをより深く理解するために、必ず[パフォーマンス カウンターのしきい値を確認](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds)してください。
 
 ## <a name="before-you-get-started"></a>開始する前に
 
 Log Analytics を使用するには、まず、ワークスペースを作成する必要があります。 これを行うには、次の 2 つの記事のいずれかの手順に従います。
 
-- Azure portal を使用する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
-- PowerShell を使用する場合は、「[PowerShell を使用して Log Analytics ワークスペースを作成する](../azure-monitor/platform/powershell-workspace-configuration.md)」を参照してください。
+- Azure portal を使用する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
+- PowerShell を使用する場合は、「[PowerShell を使用して Log Analytics ワークスペースを作成する](../azure-monitor/logs/powershell-workspace-configuration.md)」を参照してください。
 
-ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
+ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
 
 - ワークスペース ID
 - ワークスペースの主キー
 
 この情報は後のセットアップ プロセスで必要になります。
 
-お使いの Windows Virtual Desktop 環境を監視およびメンテナンスする担当者がデータにアクセスできるように、確実に Azure Monitor のアクセス許可を管理してください。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md)を参照してください。
+お使いの Windows Virtual Desktop 環境を監視およびメンテナンスする担当者がデータにアクセスできるように、確実に Azure Monitor のアクセス許可を管理してください。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/roles-permissions-security.md)を参照してください。
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>診断データをワークスペースにプッシュする
 
@@ -73,7 +73,7 @@ Log Analytics を使用するには、まず、ワークスペースを作成す
 
     [診断設定] ページに表示されるオプションは、編集しているオブジェクトの種類に応じて異なります。
 
-    たとえば、アプリ グループの診断を有効にすると、チェックポイント、エラー、および管理を構成するためのオプションが表示されます。 ワークスペースでは、これらのカテゴリによって、ユーザーがアプリの一覧にサブスクライブした時点を追跡するためのフィードが構成されます。 診断設定の詳細については、「[Azure でリソース ログとメトリックを収集するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+    たとえば、アプリ グループの診断を有効にすると、チェックポイント、エラー、および管理を構成するためのオプションが表示されます。 ワークスペースでは、これらのカテゴリによって、ユーザーがアプリの一覧にサブスクライブした時点を追跡するためのフィードが構成されます。 診断設定の詳細については、「[Azure でリソース ログとメトリックを収集するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
      >[!IMPORTANT]
      >監視する Azure Resource Manager オブジェクトごとに、診断を有効にすることを忘れないでください。 診断が有効になると、データはアクティビティで利用可能になります。 最初のセットアップ後は、数時間かかる場合があります。
@@ -83,7 +83,7 @@ Log Analytics を使用するには、まず、ワークスペースを作成す
 6. **[保存]** を選択します。
 
 >[!NOTE]
->Log Analytics には、データを [Event Hubs](../event-hubs/event-hubs-about.md) にストリーミングしたり、ストレージ アカウント内にアーカイブしたりするオプションが用意されています。 この機能の詳細については、「[イベント ハブへの Azure 監視データのストリーム配信](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」および「[Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)」を参照してください。
+>Log Analytics には、データを [Event Hubs](../event-hubs/event-hubs-about.md) にストリーミングしたり、ストレージ アカウント内にアーカイブしたりするオプションが用意されています。 この機能の詳細については、「[イベント ハブへの Azure 監視データのストリーム配信](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)」および「[Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)」を参照してください。
 
 ## <a name="how-to-access-log-analytics"></a>Log Analytics にアクセスする方法
 
@@ -134,9 +134,9 @@ Azure Monitor Log Analytics UI を使用したサンプル クエリへのアク
 1. **[Windows Virtual Desktop]** を選択して、使用可能なクエリを確認します。
 1. **[実行]** を選択して、選択したクエリを実行します。
 
-サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/log-query/example-queries.md)」を参照してください。
+サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/logs/example-queries.md)」を参照してください。
 
-次のクエリ一覧では、1 人のユーザーの接続情報または問題を確認できます。 これらのクエリは、[Log Analytics クエリ エディター](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
+次のクエリ一覧では、1 人のユーザーの接続情報または問題を確認できます。 これらのクエリは、[Log Analytics クエリ エディター](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
 
 
 1 人のユーザーのすべての接続を検索するには:

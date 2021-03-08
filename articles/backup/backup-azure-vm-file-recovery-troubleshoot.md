@@ -3,12 +3,12 @@ title: Azure VM ファイルの回復に関するトラブルシューティン�
 description: Azure VM バックアップからファイルとフォルダーを復旧する場合の問題のトラブルシューティングを行います。
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ee856b10c6a5fbea6f6f76b2082949ab9c1e0db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735879"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700305"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Azure VM バックアップのファイル回復に関する問題のトラブルシューティングを行う
 
@@ -88,7 +88,7 @@ SUSE Linux Enterprise Server 12 SP4 で項目レベルの回復 (ILR) 用の Pyt
 (記憶域プールを含む) Windows 2012 R2 および Windows 2016 でスクリプトを初めて実行するときに、記憶域プールが読み取り専用で VM にアタッチされていることがあります。
 
 >[!Tip]
-> [スクリプトを実行するための適切なコンピューター](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があることを確かめます。
+> [スクリプトを実行するための適切なコンピューター](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があることを確かめます。
 
 この問題を解決するには、手動で記憶域プールへの読み取り/書き込みアクセス権を割り当て、仮想ディスクをアタッチする必要があります。
 
@@ -108,7 +108,7 @@ SUSE Linux Enterprise Server 12 SP4 で項目レベルの回復 (ILR) 用の Pyt
 
 ファイルの回復を実行しているときに、バックアップ サービスによってボリュームが検出され、自動マウントが行われます。 しかし、バックアップ ディスクに未加工のパーティションがある場合、それらのディスクは自動マウントされず、回復用のデータ ディスクは表示されません。
 
-この問題を解決するには、[Azure 仮想マシンのバックアップからのファイルの復旧](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)に関する記事を参照してください。
+この問題を解決するには、[Azure 仮想マシンのバックアップからのファイルの復旧](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms)に関する記事を参照してください。
 
 #### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>OS でファイル システムを特定できなかったため、Linux ファイルの回復が失敗する
 
@@ -122,7 +122,7 @@ SUSE Linux Enterprise Server 12 SP4 で項目レベルの回復 (ILR) 用の Pyt
 
    ![ブロック デバイスを一覧表示するコマンドの結果を示すスクリーンショット。](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-1. ファイル システムと暗号化を確認します。 ボリュームが暗号化されている場合、ファイルの回復はサポートされません。 詳細については、「[Azure VM バックアップのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore)」を確認してください。
+1. ファイル システムと暗号化を確認します。 ボリュームが暗号化されている場合、ファイルの回復はサポートされません。 詳細については、「[Azure VM バックアップのサポート マトリックス](./backup-support-matrix-iaas.md#support-for-file-level-restore)」を確認してください。
 
 ### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>ディスクはアタッチされているが、ボリュームがマウントされない
 
@@ -139,7 +139,7 @@ Windows 用のファイル回復スクリプトを実行すると、"0 recovery 
 この問題を特定して解決するには、次の手順を行います。
 
 >[!Tip]
->[スクリプトを実行するための適切なコンピューター](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があることを確かめます。
+>[スクリプトを実行するための適切なコンピューター](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があることを確かめます。
 
 1. **cmd** ウィンドウで **diskmgmt** を実行して、 **[ディスクの管理]** を開きます。
 1. 追加のディスクがないか探します。 以下の例では、**Disk 2** が追加のディスクです。
@@ -159,9 +159,9 @@ Windows 用のファイル回復スクリプトを実行すると、"0 recovery 
 #### <a name="linux"></a>Linux
 
 >[!Tip]
->[スクリプトを実行するための適切なコンピューター](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があることを確かめます。
+>[スクリプトを実行するための適切なコンピューター](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があることを確かめます。
 
-保護された Linux VM で LVM または RAID アレイを使用する場合は、「[Azure 仮想マシンのバックアップからのファイルを回復する](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)」の手順に従ってください。
+保護された Linux VM で LVM または RAID アレイを使用する場合は、「[Azure 仮想マシンのバックアップからのファイルを回復する](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms)」の手順に従ってください。
 
 ### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>マウントされたボリュームからファイルをコピーできない
 

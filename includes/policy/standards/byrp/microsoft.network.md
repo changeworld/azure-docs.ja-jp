@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 159c7eae7dc69dbe4543ee16dc21d6767154b290
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a4f16067fa8837fa0f1062ba4cc8c2c1daf5d22b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096084"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091290"
 ---
 ## <a name="azure-security-benchmark"></a>Azure セキュリティ ベンチマーク
 
@@ -147,6 +147,20 @@ ms.locfileid: "99096084"
 |Network Services のセキュリティ |0837.09.n2Organizational.2 - 09.n |外部情報システム プロバイダーを使用した正式な契約には、セキュリティとプライバシーに関する特定の義務が含まれます。 |[Network Watcher を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Network Services のセキュリティ |0886.09n2Organizational.4 - 09.n |組織は、i) "すべて許可、例外で拒否"、または ii) すべてを拒否し、例外を許可する (推奨) のいずれかのポリシーを採用して、特定の情報システムが外部情報システムに接続することを許可し、正式な契約書またはその他のドキュメントに文書化します。 |[Network Watcher を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Network Services のセキュリティ |0888.09n2Organizational.6 - 09.n |外部またはアウトソーシング サービスのプロバイダーとのコントラクトには、サービス プロバイダーが保護を担当する、対象となる共有情報の明細が含まれています。 |[Network Watcher を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+
+## <a name="new-zealand-ism"></a>ニュージーランド ISM
+
+すべての Azure サービスで使用可能な Azure Policy 組み込みがこのコンプライアンス標準にどのように対応するのかを確認するには、[Azure Policy の規制コンプライアンス - ニュージーランド情報セキュリティ マニュアル](../../../../articles/governance/policy/samples/new-zealand-ism.md)に関する記事をご覧ください。
+このコンプライアンス標準の詳細については、[ニュージーランド情報セキュリティ マニュアル](https://www.nzism.gcsb.govt.nz/)を参照してください。
+
+|Domain |コントロール ID |コントロールのタイトル |ポリシー<br /><sub>(Azure portal)</sub> |ポリシーのバージョン<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|ネットワークのセキュリティ |NS-5 |18.3.19 サービス拒否 (DoS) 対応計画の内容 |[Azure DDoS Protection Standard を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
+|ネットワークのセキュリティ |NS-7 |18.4.10 悪意のあるコードへの対策 |[すべてのインターネット トラフィックはデプロイされた Azure Firewall を介してルーティングする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |[3.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
+|ネットワークのセキュリティ |NS-7 |18.4.10 悪意のあるコードへの対策 |[Application Gateway に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
+|ネットワークのセキュリティ |NS-7 |18.4.10 悪意のあるコードへの対策 |[Azure Front Door Service サービスに対して Web Application Firewall (WAF) を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
+|ネットワークのセキュリティ |NS-7 |18.4.10 悪意のあるコードへの対策 |[Web アプリケーション ファイアウォール (WAF) で Application Gateway に対して指定されたモードを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayMode_Audit.json) |
+|ネットワークのセキュリティ |NS-7 |18.4.10 悪意のあるコードへの対策 |[Web アプリケーション ファイアウォール (WAF) で Azure Front Door Service に対して指定されたモードを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F425bea59-a659-4cbb-8d31-34499bd030b8) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Mode_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

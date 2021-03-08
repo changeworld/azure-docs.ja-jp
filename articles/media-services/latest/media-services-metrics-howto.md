@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 91e74668224d1cdbbc462bf6c2c0a22c4f0a9837
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ab89c222648a66ad7451f9bb47e254c55b925630
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916577"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590758"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services のメトリックを監視する
 
@@ -69,8 +69,8 @@ az monitor metrics list --resource \
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Monitor のメトリック](../../azure-monitor/platform/data-platform.md)
-- [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)。
+- [Azure Monitor のメトリック](../../azure-monitor/data-platform.md)
+- [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-metric.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

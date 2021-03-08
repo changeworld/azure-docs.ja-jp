@@ -3,12 +3,12 @@ title: DoD 影響レベル 4 ブループリント サンプル
 description: ブループリント アーティファクト パラメーターの詳細を含む DoD 影響レベル 4 ブループリント サンプルのデプロイ手順です。
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 40f45d1194ae089010edf308c3b110bc97591613
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 389090b79c0aad343c1999ea17ed8c9332958544
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033763"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594806"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルをデプロイする
 
@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |Windows VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
 |\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|ローカルの Administrators グループに含めるメンバー|ローカルの Administrators グループで除外する必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|ローカルの Administrators グループで除外する必要があるメンバー|ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
-|\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
+|\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
 |\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|VM で構成する必要がある Log Analytics ワークスペース ID|これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。|
 |\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|Azure SQL データベースの長期的な geo 冗長バックアップを有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|

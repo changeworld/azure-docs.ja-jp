@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: jlian
-ms.openlocfilehash: 70cea7a388c07bee9caa2e25e4061a3d3bb2b460
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f326bafb311acedc48c5a349c78f1cd6bcebc87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633666"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661156"
 ---
 # <a name="iot-hub-classic-ip-filter-and-how-to-upgrade"></a>IoT Hub のクラシック IP フィルターとアップグレード方法 
 
@@ -88,7 +88,7 @@ IoT Hub のアップグレードされた IP フィルターは、 既定でセ�
 
 特定の IP アドレスの IoT Hub エンドポイントをブロックすると有用な特定のユース ケースには、次の 2 つがあります。
 
-* IoT Hub が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、IoT Hub を [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) と共に使用して、IoT Hub とオンプレミス インフラストラクチャとの間にプライベート接続を作成する場合が該当します。
+* IoT Hub が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、IoT Hub を [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) と共に使用して、IoT Hub とオンプレミス インフラストラクチャとの間にプライベート接続を作成する場合が該当します。
 
 * IoT Hub の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
 
@@ -141,7 +141,7 @@ IP フィルター規則を削除するには、その行のごみ箱アイコ�
 
 ### <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Azure CLI を使用した IP フィルターの取得および更新
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/) を使用して、IoT Hub の IP フィルターを取得および更新できます。
+[Azure CLI](/cli/azure/) を使用して、IoT Hub の IP フィルターを取得および更新できます。
 
 IoT Hub の現在の IP フィルターを取得するには、以下を実行します。
 
@@ -215,7 +215,7 @@ $iothubResource | Set-AzResource -Force
 
 ### <a name="update-ip-filter-rules-using-rest"></a>REST を使用した IP フィルター規則の更新
 
-Azure リソース プロバイダーの REST エンドポイントを使用することでも、IoT Hub の IP フィルターを取得および変更できます。 [createorupdate メソッド](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate)の `properties.ipFilterRules` を参照してください。
+Azure リソース プロバイダーの REST エンドポイントを使用することでも、IoT Hub の IP フィルターを取得および変更できます。 [createorupdate メソッド](/rest/api/iothub/iothubresource/createorupdate)の `properties.ipFilterRules` を参照してください。
 
 ### <a name="ip-filter-rule-evaluation"></a>IP フィルター規則の評価
 

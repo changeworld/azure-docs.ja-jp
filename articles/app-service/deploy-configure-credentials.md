@@ -2,28 +2,26 @@
 title: デプロイ資格情報の構成
 description: Azure App Service のデプロイ資格情報の種類と、それらを構成および使用する方法について説明します。
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: e5793d21f27128162095e2d86e13006c5b6e7b7c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 2a53ecb1b3411561da50f7dbf3be79f9d70b42bc
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007995"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560426"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
-[Azure App Service](./overview.md) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
+ローカル コンピューターからのアプリのデプロイをセキュリティで保護するために、[Azure App Service](./overview.md) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)に対して 2 種類の資格情報がサポートされています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
-## <a name="configure-user-level-credentials"></a><a name="userscope"></a>ユーザーレベルの資格情報を構成する
+## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>ユーザー スコープの資格情報を構成する
 
-ユーザー レベルの資格情報は、任意のアプリの[リソース ページ](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)で構成できます。 どのアプリで構成した場合でも、これらの資格情報は、Azure アカウント内のすべてのアプリのすべてのサブスクリプションに適用されます。 
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-### <a name="in-the-cloud-shell"></a>Cloud Shell で
-
-[Cloud Shell](https://shell.azure.com) でデプロイ ユーザーを構成するには、[az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) コマンドを実行します。 \<username> と \<password> を、デプロイ ユーザーのユーザー名とパスワードで置き換えます。 
+[az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) コマンドを実行します。 \<username> と \<password> を、デプロイ ユーザーのユーザー名とパスワードで置き換えます。 
 
 - ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。 
 - パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。 
@@ -32,21 +30,23 @@ ms.locfileid: "97007995"
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-JSON 出力には、パスワードが `null` として表示されます。 `'Conflict'. Details: 409` エラーが発生した場合は、ユーザー名を変更します。 `'Bad Request'. Details: 400` エラーが発生した場合は、より強力なパスワードを使用します。 
+JSON 出力には、パスワードが `null` として表示されます。
 
-### <a name="in-the-portal"></a>ポータルで
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Azure portal で、[デプロイ資格情報] ページにアクセスするには、少なくとも 1 つのアプリが必要です。 ユーザー レベルの資格情報を構成するには:
+Azure PowerShell を使用してユーザー スコープの資格情報を構成することはできません。 別の方法を使用するか、[アプリケーション スコープの資格情報の使用](#appscope)を検討してください。 
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[App Services]**  >  **\<any_app>**  >  **[デプロイ センター]**  >  **[FTP]**  >  **[ダッシュボード]** を選択します。
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+ユーザー スコープの資格情報は、任意のアプリの[リソース ページ](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)で構成できます。 どのアプリで構成した場合でも、これらの資格情報は、Azure アカウント内のすべてのサブスクリプションのすべてのアプリに適用されます。 
+
+[Azure portal](https://portal.azure.com) で、[デプロイ資格情報] ページにアクセスするには、少なくとも 1 つのアプリが必要です。 ユーザー スコープの資格情報を構成するには、次の手順を実行します。
+
+1. アプリの左側のメニューで、 **[管理者用センター]**  >  **[FTPS 資格情報]** または **[ローカル Git/FTPS 資格情報]** を選択します。
 
     ![Azure App Services のデプロイ センターから FTP ダッシュボードを選択する方法を示します。](./media/app-service-deployment-credentials/access-no-git.png)
 
-    あるいは、Git デプロイを既に構成している場合、 **[App Services]** 、 **[&lt;任意のアプリ>]** 、 **[デプロイ センター]** 、 **[FTP/資格情報]** を選択します。
-
-    ![構成済み Git デプロイのために Azure App Services のデプロイ センターから FTP ダッシュボードを選択する方法を示します。](./media/app-service-deployment-credentials/access-with-git.png)
-
-2. **[ユーザーの資格情報]** を選択し、ユーザー名とパスワードを構成してから、 **[資格情報の保存]** を選択します。
+2. **[ユーザー スコープ]** まで下にスクロールし、 **[ユーザー名]** と **[パスワード]** を構成してから、 **[保存]** を選択します。
 
 デプロイ資格情報を設定すると、*Git* デプロイのユーザー名がアプリの **[概要]** ページに表示されます。
 
@@ -55,24 +55,79 @@ Azure portal で、[デプロイ資格情報] ページにアクセスするに�
 Git デプロイが構成されている場合、ページに **Git/デプロイ ユーザー名** が表示されます。構成されていない場合、**FTP/デプロイ ユーザー名** が表示されます。
 
 > [!NOTE]
-> Azure では、ユーザー レベルのデプロイ パスワードを表示しません。 パスワードを忘れた場合は、このセクションの手順に従って、資格情報をリセットできます。
+> Azure では、ユーザー スコープのデプロイ パスワードは表示されません。 パスワードを忘れた場合は、このセクションの手順に従って、資格情報をリセットできます。
 >
 > 
 
-## <a name="use-user-level-credentials-with-ftpftps"></a>ユーザーレベルの資格情報と FTP/FTPS を使用する
+-----
 
-ユーザーレベルの資格情報を使用した FTP または FTPS エンドポイントの認証には、`<app-name>\<user-name>` という形式のユーザー名が必要です。
+## <a name="use-user-scope-credentials-with-ftpftps"></a>ユーザー スコープの資格情報と FTP/FTPS を使用する
 
-ユーザーレベルの資格情報は、特定のリソースではなく、ユーザーにリンクされているため、適切なアプリのエンドポイントに対してサインイン アクションを実行するには、ユーザー名はこの形式でなければなりません。
+ユーザー スコープの資格情報を使用した FTP または FTPS エンドポイントの認証には、`<app-name>\<user-name>` の形式のユーザー名が必要です
 
-## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>アプリ レベルの資格情報の設定とリセット
-アプリ レベルの資格情報を取得するには:
+ユーザー スコープの資格情報は、特定のリソースではなくユーザーにリンクされているため、適切なアプリのエンドポイントに対してサインイン アクションを実行するには、ユーザー名はこの形式でなければなりません。
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[App Services]** 、 **[&lt;任意のアプリ>]** 、 **[デプロイ センター]** 、 **[FTP/資格情報]** を選択します。
+## <a name="get-application-scope-credentials"></a><a name="appscope"></a>アプリケーション スコープの資格情報を取得する
 
-2. **[アプリの資格情報]** を選択し、 **[コピー]** リンクを選択し、ユーザー名またはパスワードをコピーします。
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-アプリレベルの資格情報をリセットするには、同じダイアログで **[資格情報のリセット]** を選択します。
+[az webapp deployment list-publishing-profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) コマンドを使用して、アプリケーション スコープの資格情報を取得します。 次に例を示します。
+
+```azurecli-interactive
+az webapp deployment list-publishing-profiles --resource-group <group-name> --name <app-name>
+```
+
+[ローカル Git デプロイ](deploy-local-git.md)の場合は、[az webapp deployment list-publishing-credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) コマンドを使用して、アプリケーション スコープの資格情報が既に埋め込まれているアプリの Git リモート URI を取得することもできます。 次に例を示します。
+
+```azurecli-interactive
+az webapp deployment list-publishing-credentials --resource-group <group-name> --name <app-name> --query scmUri
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) コマンドを使用して、アプリケーション スコープの資格情報を取得します。 次に例を示します。
+
+```azurepowershell-interactive
+Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
+```
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+1. アプリの左側のメニューで、 **[管理者用センター]**  >  **[FTPS 資格情報]** または **[ローカル Git/FTPS 資格情報]** を選択します。
+
+    ![Azure App Services のデプロイ センターから FTP ダッシュボードを選択する方法を示します。](./media/app-service-deployment-credentials/access-no-git.png)
+
+2. **[アプリケーション スコープ]** セクションで、 **[コピー]** リンクを選択してユーザー名またはパスワードをコピーします。
+
+-----
+
+## <a name="reset-application-scope-credentials"></a>アプリケーション スコープの資格情報をリセットする
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+
+[az resource invoke-action](/cli/azure/resource#az_resource_invoke_action) コマンドを使用して、アプリケーション スコープの資格情報をリセットします。
+
+```azurecli-interactive
+az resource invoke-action --action newpassword --resource-group <group-name> --name <app-name> --resource-type Microsoft.Web/sites
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) コマンドを使用して、アプリケーション スコープの資格情報をリセットします。
+
+```azurepowershell-interactive
+Invoke-AzResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.Web/sites -ResourceName <app-name> -Action newpassword
+```
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+1. アプリの左側のメニューで、 **[管理者用センター]**  >  **[FTPS 資格情報]** または **[ローカル Git/FTPS 資格情報]** を選択します。
+
+    ![Azure App Services のデプロイ センターから FTP ダッシュボードを選択する方法を示します。](./media/app-service-deployment-credentials/access-no-git.png)
+
+2. **[アプリケーション スコープ]** セクションで、 **[リセット]** を選択します。
+
+-----
 
 ## <a name="disable-basic-authentication"></a>基本認証を無効にする
 
@@ -82,7 +137,7 @@ Git デプロイが構成されている場合、ページに **Git/デプロイ
 
 サイトへの FTP アクセスを無効にするには、次の CLI コマンドを実行します。 プレースホルダーを目的のリソース グループとサイト名に置き換えます。 
 
-```bash
+```azurecli-interactive
 az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
@@ -92,7 +147,7 @@ FTP アクセスがブロックされていることを確認するには、File
 
 WebDeploy ポートと SCM サイトへの基本認証アクセスを無効にするには、次の CLI コマンドを実行します。 プレースホルダーを目的のリソース グループとサイト名に置き換えます。 
 
-```bash
+```azurecli-interactive
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 

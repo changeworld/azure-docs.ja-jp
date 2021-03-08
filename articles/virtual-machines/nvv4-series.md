@@ -1,19 +1,18 @@
 ---
 title: NVv4 シリーズ
 description: NVv4 シリーズ VM の仕様。
-services: virtual-machines
-ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: c751f67e9f442669ff3f6828de0a5b350d1706fa
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: ba7d2997c4ebb2981c1135255fe6e9cb53fbdcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097709"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032468"
 ---
 # <a name="nvv4-series"></a>NVv4 シリーズ 
 

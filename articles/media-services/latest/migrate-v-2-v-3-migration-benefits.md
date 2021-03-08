@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 70f64813546c66c0f9e3533e09de192315f75600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698843"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>ステップ 1 - Media Services API V3 に移行する利点を理解する
 
@@ -38,7 +38,7 @@ Media Services の V3 は大幅に改善されました。
 | Azure portal の更新 | Azure portal が更新され、V3 API エンティティの管理が含まれるようになりました。 これにより、お客様は portal を使用して、ライブ ストリーミングの開始、V3 変換ジョブの送信、コンテンツ保護ポリシーの管理、エンドポイントのストリーミング、API アクセスの取得、リンクされたストレージ アカウントの管理、監視タスクの実行を行うことができます。 |
 | **アカウントとストレージ** | |
 | Azure のロールベースのアクセス制御 (RBAC) | お客様は、独自のロールを定義し、Media Services ARM API 内の各エンティティへのアクセスを制御できるようになりました。 これは、AAD アカウントによるリソースへのアクセスを制御するのに役立ちます。 |
-| マネージド ID | マネージド ID を使用すると、開発者は、Azure AD で Azure リソースの ID を提供することにより、資格情報を管理する必要がなくなります。 マネージド ID の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)を参照してください。 |
+| マネージド ID | マネージド ID を使用すると、開発者は、Azure AD で Azure リソースの ID を提供することにより、資格情報を管理する必要がなくなります。 マネージド ID の詳細については、[こちら](../../active-directory/managed-identities-azure-resources/overview.md)を参照してください。 |
 | プライベート リンクのサポート | お客様は、VNet 上の PrivateEndpoint を介して、キー配信、LiveEvents、StreamingEndpoints の Media Services エンドポイントにアクセスします。 |
 | [カスタマー マネージド キー](concept-use-customer-managed-keys-byok.md) または Bring Your Own Key (BYOK) のサポート | お客様は、Azure Key Vault 内のキーを使用して Media Services アカウント内のデータを暗号化できます。 |
 | **アセット** | |

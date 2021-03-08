@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071700"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198542"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -48,7 +48,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 ### <a name="create-the-endpoint"></a>エンドポイントを作成する
 
-エンドポイント リソースを作成したら、Azure Digital Twins エンドポイントにそれらを使用できます。 次の例では、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) コマンドを使用してエンドポイントを作成する方法を示します。 コマンドのプレースホルダーは、独自のリソースの詳細に置き換えます。
+エンドポイント リソースを作成したら、Azure Digital Twins エンドポイントにそれらを使用できます。 次の例では、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create) コマンドを使用してエンドポイントを作成する方法を示します。 コマンドのプレースホルダーは、独自のリソースの詳細に置き換えます。
 
 Event Grid エンドポイントを作成するには:
 
@@ -119,7 +119,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
     
 #### <a name="create-the-dead-letter-endpoint"></a>配信不能エンドポイントを作成する
 
-配信不能処理が有効なエンドポイントを作成するには、次の配信不能パラメーターを、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) コマンドに追加します。
+配信不能処理が有効なエンドポイントを作成するには、次の配信不能パラメーターを、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create) コマンドに追加します。
 
 パラメーターの値は、[前のセクション](#set-up-storage-resources)で収集したストレージ アカウント名、コンテナー名、SAS トークンで構成された **配信不能 SAS URI** です。 このパラメーターにより、キーベースの認証を使用するエンドポイントが作成されます。
 
@@ -204,7 +204,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 1 つのルートで、複数の通知とイベントの種類を選択できるようにする必要があります。 
 
-イベント ルートを作成するには、Azure Digital Twins の [**EventRoutes** データ プレーン API](/rest/api/digital-twins/dataplane/eventroutes) または [**az dt route** CLI コマンド](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true)を使用できます。 このセクションの残りの部分では、作成プロセスについて説明します。
+イベント ルートを作成するには、Azure Digital Twins の [**EventRoutes** データ プレーン API](/rest/api/digital-twins/dataplane/eventroutes) または [**az dt route** CLI コマンド](/cli/azure/ext/azure-iot/dt/route)を使用できます。 このセクションの残りの部分では、作成プロセスについて説明します。
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>API と C# SDK を使用してルートを作成する
 
@@ -225,7 +225,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 ### <a name="create-routes-with-the-cli"></a>CLI を使用してルートを作成する
 
-Azure Digital Twins CLI の [az dt route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) コマンドを使用して、ルートを管理することもできます。 
+Azure Digital Twins CLI の [az dt route](/cli/azure/ext/azure-iot/dt/route) コマンドを使用して、ルートを管理することもできます。 
 
 CLI の使用および利用できるコマンドについて詳しくは、"[*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
 

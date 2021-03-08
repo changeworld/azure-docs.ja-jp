@@ -28,6 +28,8 @@
           href: dns-forwarding.md
     - name: Storage
       items:
+        - name: カスタマー マネージド キーを使用して PVC を暗号化する (プレビュー)
+          href: howto-encrypt-data-disks.md
         - name: Azure Files Storageclass を作成する
           href: howto-create-a-storageclass.md
         - name: 組み込みのコンテナー レジストリを使用する
@@ -55,7 +57,7 @@
             - name: Azure Monitor for containers for ARO 4 を構成する (プレビュー)
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: Azure Monitor for containers for ARO 4 を無効にする (プレビュー)
-              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+              href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: アプリケーションの開発と実行
       items:
         - name: Open Liberty/WebSphere Liberty アプリをデプロイする
@@ -80,10 +82,10 @@
             - name: Azure Red Hat OpenShift 3.11 における Azure Monitor for containers (プレビュー)
               items:
                 - name: Azure Red Hat OpenShift 3.11 で Azure Monitor for containers を構成する
-                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  href: ../azure-monitor/containers/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: Azure Red Hat OpenShift 3.11 で Azure Monitor for containers を無効にする
-                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
+                  href: ../azure-monitor/containers/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: Azure Red Hat OpenShift 3.11 で特権コンテナーを実行する
           href: howto-run-privileged-containers.md

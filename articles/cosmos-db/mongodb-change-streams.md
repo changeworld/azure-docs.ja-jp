@@ -5,15 +5,15 @@ author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 03/02/2021
 ms.author: rosouz
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9a4e35a235fe6ee6950bd1b4c35cbf9e72ac2893
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 941fe8929b75fdebf187186ca7078b0ae1dd261c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359236"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658522"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API での変更ストリーム
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "97359236"
 Azure Cosmos DB の MongoDB 用 API での[変更フィード](change-feed.md)のサポートは、変更ストリーム API を使用することで利用できます。 アプリケーションで変更ストリーム API を使用すると、単一のシャード内のコレクションまたは項目に対して行われた変更を取得できます。 その後、結果に基づいてさらにアクションを実行できます。 コレクション内の項目に対する変更は、変更時刻の順序でキャプチャされ、並べ替え順序はシャード キーごとに保証されます。
 
 > [!NOTE]
-> 変更ストリームを使用するには、Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 以降を使用してアカウントを作成します。 変更ストリームの例を以前のバージョンに対して実行すると、エラー `Unrecognized pipeline stage name: $changeStream` が表示されることがあります。
+> 変更ストリームを使用するには、サーバー バージョン 3.6 以降で Azure Cosmos DB の MongoDB 用 API アカウントを作成します。 変更ストリームの例を以前のバージョンに対して実行すると、"*Unrecognized pipeline stage name: $changeStream (認識できないパイプライン ステージ名: $changeStream)* " エラーが表示されることがあります。
 
 ## <a name="examples"></a>例
 

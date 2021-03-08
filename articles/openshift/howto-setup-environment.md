@@ -6,14 +6,14 @@ author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c189c0902e694dc49d81a48433e3269e9f2a438c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9654711a1399c2708ce8c9150b79eefa73387c03
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216880"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635028"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
 
@@ -45,7 +45,7 @@ az --version
 
 新しいインストールまたはアップグレードが必要な場合、[Azure CLI をインストールする手順はこちらにあります](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-別の方法として、[Azure Cloud Shell](../cloud-shell/overview.md) を使用することもできます。 Azure Cloud Shell の使用時、 [Azure Red Hat OpenShift クラスターの作成と管理](tutorial-create-cluster.md)のチュートリアル シリーズに従って進める予定の場合は、必ず **Bash** 環境を選択してください。
+別の方法として、[Azure Cloud Shell](../cloud-shell/overview.md) を使用することもできます。 Azure Cloud Shell の使用時、[Azure Red Hat OpenShift クラスターの作成と管理](tutorial-create-cluster.md)のチュートリアル シリーズに従って進める予定の場合は、必ず **Bash** 環境を選択してください。
 
 ## <a name="register-providers-and-features"></a>プロバイダーと機能の登録
 

@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756030"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104282"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>方法:アプリに省略可能な要求を提供する
 
@@ -138,7 +138,7 @@ v2 トークン形式の機能強化の一部は、セキュリティと信頼�
 
 UI またはアプリケーション マニフェストを使用して、アプリケーションの省略可能な要求を構成できます。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアクセスします。 
+1. <a href="https://portal.azure.com/" target="_blank">Azure ポータル</a>にアクセスします。 
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** の **[アプリの登録]** を選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
@@ -246,7 +246,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 **UI を使用したグループの省略可能な要求の構成：**
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** の **[アプリの登録]** を選択します。
@@ -259,7 +259,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 **アプリケーション マニフェストを使用したグループの省略可能な要求の構成：**
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
@@ -388,7 +388,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 **UI の構成：**
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 
 1. **Azure Active Directory** を検索して選択します。
@@ -411,7 +411,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 **マニフェストの構成：**
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から探して選択します。

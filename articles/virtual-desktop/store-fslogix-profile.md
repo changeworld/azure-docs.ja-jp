@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 189ff3bbfdb3b8533defcedb77e15fef433598b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023090"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526604"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 
@@ -28,11 +28,11 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 |使用事例|汎用|オンプレミスの NetApp からの Ultra パフォーマンスまたは移行|クロス プラットフォーム|
 |プラットフォーム サービス|はい。Azure ネイティブ ソリューションです。|はい。Azure ネイティブ ソリューションです。|いいえ。自己管理型です。|
 |リージョン別の提供状況|すべてのリージョン|[リージョンの選択](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|すべてのリージョン|
-|冗長性|ローカル冗長/ゾーン冗長/geo 冗長|ローカル冗長|ローカル冗長/ゾーン冗長/geo 冗長|
-|サービス レベルとパフォーマンス|Standard<br>Premium<br>共有あたり最大 100k IOPS と 5 GBps、約 3 ミリ秒の待ち時間|Standard<br>Premium<br>Ultra<br>ボリュームあたり最大 320k (16K) IOPS と 4.5 GBps、約 1 ミリ秒の待ち時間|Standard HDD: ディスクあたり最大 500 IOPS の上限<br>Standard SSD: ディスクあたり最大 4k IOPS の上限<br>Premium SSD: ディスクあたり最大 20k IOPS の上限<br>記憶域スペース ダイレクトには Premium ディスクをお勧めします|
-|容量|共有あたり 100 TiB|ボリュームあたり 100 TiB、サブスクリプションあたり最大 12.5 PiB|ディスクあたりの最大 32 TiB|
+|冗長性|ローカル冗長、ゾーン冗長、地域冗長、地域ゾーン冗長|ローカル冗長|ローカル冗長/ゾーン冗長/geo 冗長|
+|サービス レベルとパフォーマンス| Standard (トランザクション最適化)<br>Premium<br>共有あたり最大 100K IOPS と 10 GBps、約 3 ミリ秒の待ち時間|Standard<br>Premium<br>Ultra<br>ボリュームあたり最大 320k (16K) IOPS と 4.5 GBps、約 1 ミリ秒の待ち時間|Standard HDD: ディスクあたり最大 500 IOPS の上限<br>Standard SSD: ディスクあたり最大 4k IOPS の上限<br>Premium SSD: ディスクあたり最大 20k IOPS の上限<br>記憶域スペース ダイレクトには Premium ディスクをお勧めします|
+|容量|共有あたり 100 TiB、汎用目的アカウントあたり最大 5 PiB |ボリュームあたり 100 TiB、サブスクリプションあたり最大 12.5 PiB|ディスクあたりの最大 32 TiB|
 |必要なインフラストラクチャ|最小共有サイズ 1 GiB|最小容量プール 4 TiB、最小ボリュームサイズ 100 GiB|Azure IaaS (+ Cloud Witness) で 2 つの VM、またはディスクのコストなしで 3 つの VM|
-|プロトコル|SMB 2.1/3. および REST|NFSv3、NFSv4.1 (プレビュー)、SMB 3.x/2.x|NFSv3、NFSv4.1、SMB 3.1|
+|プロトコル|SMB 3.0 または 2.1、NFSv 4.1 (プレビュー)、REST|NFSv3、NFSv4.1 (プレビュー)、SMB 3.x/2.x|NFSv3、NFSv4.1、SMB 3.1|
 
 ## <a name="azure-management-details"></a>Azure 管理の詳細
 

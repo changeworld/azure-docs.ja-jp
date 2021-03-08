@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/04/2020
 ms.author: apimpm
 ms.service: api-management
-ms.openlocfilehash: 770a8191b1b07a7ebc779b84f443ae96d66d1c97
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96839695"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576528"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>API Management でのクライアント応答のタイムアウトとエラーのトラブルシューティング
 
@@ -24,7 +24,7 @@ API Management (APIM) サービスを介して API を呼び出すクライア�
 * 断続的な HTTP 500 エラー
 * タイムアウト エラー メッセージ
 
-これらの現象は、[Azure Monitor リソース ログ](../azure-monitor/platform/resource-logs.md)に `BackendConnectionFailure` のインスタンスとして現れます。
+これらの現象は、[Azure Monitor リソース ログ](../azure-monitor/essentials/resource-logs.md)に `BackendConnectionFailure` のインスタンスとして現れます。
 
 ## <a name="cause"></a>原因
 
@@ -40,7 +40,7 @@ API に対するクライアント要求が立て続けに行われると、ポ�
 
 SNAT ポート枯渇の問題に対処するには、まずバックエンド サービスのパフォーマンスを診断して最適化する必要があります。
 
-SNAT ポートの枯渇を軽減するための一般的な戦略については、*Azure Load Balancer* の[送信接続エラーのトラブルシューティング](../load-balancer/troubleshoot-outbound-connection.md)に関する記事で説明しています。 これらの戦略の中で、API Management には次が適用されます。
+SNAT ポートの枯渇を軽減するための一般的な戦略については、*Azure Load Balancer* の [送信接続エラーのトラブルシューティング](../load-balancer/troubleshoot-outbound-connection.md)に関する記事で説明しています。 これらの戦略の中で、API Management には次が適用されます。
 
 ### <a name="scale-your-apim-instance"></a>APIM インスタンスをスケーリングする
 
@@ -59,7 +59,7 @@ APIM インスタンスからバックエンド サービスの同じ宛先 IP �
 
 ### <a name="place-your-apim-and-backend-service-in-the-same-vnet"></a>APIM とバックエンド サービスを同じ VNet に配置する
 
-バックエンド API が、App Service などの、"*サービス エンドポイント*" をサポートする Azure サービスでホストされている場合は、APIM インスタンスとバックエンド サービスを同じ仮想ネットワークに配置し、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)または[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用して公開することにより、SNAT ポート枯渇の問題を回避できます。 共通の VNet を使用し、サービス エンドポイントを統合サブネットに配置すると、APIM インスタンスからこれらのサービスへの送信トラフィックがインターネットをバイパスするため、SNAT ポート制限が回避されます。 同様に、VNet とプライベート エンドポイントを使用する場合、その宛先には、送信 SNAT ポート問題が発生しません。
+バックエンド API が、App Service などの、"*サービス エンドポイント*" をサポートする Azure サービスでホストされている場合は、APIM インスタンスとバックエンド サービスを同じ仮想ネットワークに配置し、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)または [プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用して公開することにより、SNAT ポート枯渇の問題を回避できます。 共通の VNet を使用し、サービス エンドポイントを統合サブネットに配置すると、APIM インスタンスからこれらのサービスへの送信トラフィックがインターネットをバイパスするため、SNAT ポート制限が回避されます。 同様に、VNet とプライベート エンドポイントを使用する場合、その宛先には、送信 SNAT ポート問題が発生しません。
 
 詳細については、[仮想ネットワークで Azure API Management を使用する方法](api-management-using-with-vnet.md)と [App Service と Azure 仮想ネットワークの統合](../app-service/web-sites-integrate-with-vnet.md)に関する記事を参照してください。
 

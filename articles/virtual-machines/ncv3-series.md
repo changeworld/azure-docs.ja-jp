@@ -1,18 +1,18 @@
 ---
 title: NCv3 シリーズ - Azure Virtual Machines
 description: NCv3 シリーズ VM の仕様。
-ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: b8eeb06b75ba0e0bdaf19957699ad638c6937891
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 313ca9ddb893ad2d84fdb3f808bdee38dfc9e846
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094760"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119758"
 ---
 # <a name="ncv3-series"></a>NCv3 シリーズ
 

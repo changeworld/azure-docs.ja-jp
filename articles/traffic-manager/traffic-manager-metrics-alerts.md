@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: bd3588c207fe8828744a665539830d81805bd7b3
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b18e0329aeb4e95e021c3326b6b428c10edc0c6e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184273"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586418"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager のメトリックとアラート
 
@@ -26,7 +26,7 @@ Traffic Manager は、DNS ベースの負荷分散を提供します。これに
 Traffic Manager は、プロファイルごとに次のメトリックを提供します。これらは、Traffic Manager の使用状況およびそのプロファイルのエンドポイントの状態を理解するためにお客様が使用できます。  
 
 ### <a name="queries-by-endpoint-returned"></a>エンドポイント別の返されたクエリ数
-[このメトリック](../azure-monitor/platform/metrics-supported.md)を使用して、指定した期間にわたって Traffic Manager プロファイルが処理したクエリの数を表示します。 クエリの応答で Traffic Manager からエンドポイントが返された回数を把握できるようにエンドポイント レベルの粒度で同じ情報を表示することも可能です。
+[このメトリック](../azure-monitor/essentials/metrics-supported.md)を使用して、指定した期間にわたって Traffic Manager プロファイルが処理したクエリの数を表示します。 クエリの応答で Traffic Manager からエンドポイントが返された回数を把握できるようにエンドポイント レベルの粒度で同じ情報を表示することも可能です。
 
 次の例の図 1 は、Traffic Manager プロファイルによって返されたすべてのクエリの応答を示しています。 
 
@@ -42,7 +42,7 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
 *図 2: 返されたエンドポイント別に表示したクエリ数の分割ビュー*
 
 ## <a name="endpoint-status-by-endpoint"></a>エンドポイント別のエンドポイント状態
-[このメトリック](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)を使用して、プロファイルのエンドポイントの正常性状態を理解します。 これには次の 2 つの値があります。
+[このメトリック](../azure-monitor/essentials/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)を使用して、プロファイルのエンドポイントの正常性状態を理解します。 これには次の 2 つの値があります。
  - エンドポイントが動作中の場合、**1** を使用します。
  - エンドポイントが停止中の場合、**0** を使用します。
 
@@ -58,11 +58,11 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
 
 *図 4: エンドポイントの状態メトリックの分割ビュー*
 
-[Azure Monitor サービス](../azure-monitor/platform/metrics-supported.md)のポータル、[REST API](/rest/api/monitor/)、[Azure CLI](/cli/azure/monitor)、および [Azure PowerShell](/powershell/module/az.applicationinsights) から、または Traffic Manager のポータル操作のメトリック選択によってこれらのメトリックを使用できます。
+[Azure Monitor サービス](../azure-monitor/essentials/metrics-supported.md)のポータル、[REST API](/rest/api/monitor/)、[Azure CLI](/cli/azure/monitor)、および [Azure PowerShell](/powershell/module/az.applicationinsights) から、または Traffic Manager のポータル操作のメトリック選択によってこれらのメトリックを使用できます。
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Traffic Manager メトリックのアラート
-Traffic Manager からメトリックをプロセスおよび表示することに加えて、Azure Monitor ではお客様はこれらのメトリックに関連するアラートを構成して受信できます。 アラートを引き起こすためにこれらのメトリックで満たす必要がある条件、これらの条件を監視する頻度、アラートの送信方法を選択できます。 詳細については、[Azure Monitor アラートのドキュメント](../azure-monitor/platform/alerts-metric.md)をご覧ください。
+Traffic Manager からメトリックをプロセスおよび表示することに加えて、Azure Monitor ではお客様はこれらのメトリックに関連するアラートを構成して受信できます。 アラートを引き起こすためにこれらのメトリックで満たす必要がある条件、これらの条件を監視する頻度、アラートの送信方法を選択できます。 詳細については、[Azure Monitor アラートのドキュメント](../azure-monitor/alerts/alerts-metric.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Monitor サービス](../azure-monitor/platform/metrics-supported.md)を確認する
-- [Azure Monitor を使用してグラフを作成](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)する方法を確認する
+- [Azure Monitor サービス](../azure-monitor/essentials/metrics-supported.md)を確認する
+- [Azure Monitor を使用してグラフを作成](../azure-monitor/essentials/metrics-getting-started.md#create-your-first-metric-chart)する方法を確認する

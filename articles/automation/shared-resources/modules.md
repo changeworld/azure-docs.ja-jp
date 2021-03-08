@@ -3,14 +3,14 @@ title: Azure Automation でモジュールを管理する
 description: この記事では、PowerShell モジュールを使用して、Runbook と DSC 構成の DSC リソースでコマンドレットを有効にする方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936634"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548775"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -40,7 +40,11 @@ Automation が Runbook と DSC コンパイル ジョブを実行すると、モ
 
 ## <a name="default-modules"></a>既定のモジュール
 
-次の表に、Automation アカウントを作成したときに Azure Automation が既定でインポートするモジュールを示します。 Automation を使用してこれらのモジュールの新しいバージョンをインポートできます。 ただし、新しいバージョンを削除した場合でも、Automation アカウントから元のバージョンを削除することはできません。 これらの既定のモジュールにいくつかの AzureRM モジュールが含まれていることに注意してください。 
+次の表に、Automation アカウントを作成したときに Azure Automation が既定でインポートするモジュールを示します。 Automation を使用してこれらのモジュールの新しいバージョンをインポートできます。 ただし、新しいバージョンを削除した場合でも、Automation アカウントから元のバージョンを削除することはできません。 これらの既定のモジュールにいくつかの AzureRM モジュールが含まれていることに注意してください。
+
+既定のモジュールは、グローバル モジュールとも呼ばれます。 Azure portal で、アカウントの作成時にインポートされたモジュールを表示すると、**グローバル モジュール** プロパティが **true** になります。
+
+![Azure portal のグローバル モジュール プロパティのスクリーンショット](../media/modules/automation-global-modules.png)
 
 Automation によって、新規または既存の Automation アカウントに、ルート Az モジュールが自動的にインポートされることはありません。 これらのモジュールの操作の詳細については、「[Az モジュールへの移行](#migrate-to-az-modules)」を参照してください。
 

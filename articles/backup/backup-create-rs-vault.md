@@ -4,12 +4,12 @@ description: この記事では、バックアップと復旧ポイントを格�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4022838575ca53608a802a6be95e150778db6ac7
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 1a20cd2b1245febea5fd18a9f6fe6e7a7bb6f04b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525976"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716756"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する
 
@@ -71,7 +71,7 @@ VM を復元する場合は、VM またはそのディスクを復元できま�
 >- オプトイン後にセカンダリ リージョンでバックアップ項目が利用可能になるまでに、最大 48 時間かかることがあります。
 >- 現在、Azure VM の CRR は、Azure Resource Manger の Azure VM でのみサポートされています。 クラシック Azure VM はサポートされません。  追加の管理の種類が CRR をサポートすると、それらは自動的に **登録** されます。
 >- 初めて保護を開始した後は、現在、リージョンをまたがる復元を GRS または LRS に **戻すことはできません**。
->- 現在、[読み取りアクセス geo 冗長ストレージ (RA GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) のレプリケーションは 15 分ですが、セカンダリ リージョンの [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) は、プライマリ リージョンから最大 12 時間です。
+>- 現在、[読み取りアクセス geo 冗長ストレージ (RA GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) のレプリケーションは 15 分ですが、セカンダリ リージョンの [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) は、プライマリ リージョンから最大 12 時間です。
 
 ### <a name="configure-cross-region-restore"></a>リージョンをまたがる復元の構成
 

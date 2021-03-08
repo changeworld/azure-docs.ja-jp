@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: f1f2caa194972bb870dc58cfa0bd6ccb2f8db053
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539736"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099916"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
@@ -193,7 +193,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 > [!div class="mx-imgBorder"]
 > ![サイドバイサイド スタックは、出力に rdp-sxs として記載されている qwinsta でインストールされ、有効化されました。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-下に記載されているレジストリ エントリを調べ、その値が一致することを確認します。 レジストリ キーがないか、値が一致しない場合、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」にあるサイドバイサイド スタックの再インストール方法を実行してください。
+下に記載されているレジストリ エントリを調べ、その値が一致することを確認します。 レジストリ キーがないか、値が一致しない場合は、[サポートされているオペレーティング システム](troubleshoot-agent.md#error-operating-a-pro-vm-or-other-unsupported-os)を実行していることを確認してください。 これに該当する場合は、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」にあるサイドバイサイド スタックの再インストール方法を実行してください。
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -348,7 +348,7 @@ Azure ギャラリーから、最新バージョンの Windows 10 バージョ�
 - Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
 - Windows Virtual Desktop 環境でホスト プールを作成しているときに発生した問題のトラブルシューティングを行うには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
-- Windows Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、[Windows 仮想デスクトップ エージェントに関する一般的な問題のトラブルシューティング](troubleshoot-agent.md)に関するページを参照してください。
+- Windows Virtual Desktop エージェントまたはセッション接続に関連した問題をトラブルシューティングするには、「[Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
 - Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。

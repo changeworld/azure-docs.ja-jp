@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe6faf72f17dae23f6e8a6c7cc56f8577881281a
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6165499ef0dad61910f26bc9d740bd19a28c43c7
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615771"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106082"
 ---
 パートナーが提供するサービスの詳細については、このセクションのリンクを参照してください。 お客様のブランチ デバイス パートナーが次のセクションに記載されていない場合は、ブランチ デバイス プロバイダーにお問い合わせください。 パートナーは azurevirtualwan@microsoft.com にメールを送信して Microsoft に問い合わせることができます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "96615771"
 |[Nuage/Nokia](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[Nuage と Azure Virtual WAN のデプロイ ガイド](https://onestore.nokia.com/asset/210073)|
 |[Open Systems]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[Open Systems と Azure Virtual WAN のデプロイ ガイド](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |[Palo Alto Networks Azure Virtual WAN デプロイ ガイド](https://github.com/PaloAltoNetworks/microsoft_azure_virtual_wan)|
-|[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |
+|[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|[Azure Virtual WAN & SteelConnect EX](https://www.riverbed.com/partners/microsoft-azure-virtual-wan.html) |
 |[Silver-Peak]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[EdgeConnect と Microsoft Azure Virtual WAN の統合ガイド](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
 |[Velocloud-VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Azure Virtual WAN Velocloud デプロイ ガイド](https://kb.vmware.com/s/article/79000)|
 | [Versa](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) | [Versa SD-WAN と Microsoft Azure vWAN の構成 (登録済み顧客のみ利用可能)](https://docs.versa-networks.com/Versa_Director/Versa_Director_Configuration/Integrate_Director_and_Azure_Virtual_WAN) |

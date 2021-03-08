@@ -7,12 +7,12 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421381"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831265"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する
 
@@ -137,15 +137,14 @@ IoT プラグ アンド プレイ コンポーネント内を移動できるよ�
 * `DEVICE_TELEMETRY_MESSAGE` では、IoT ハブにテレメトリを送信対するためにデバイスによって使用されるトピックが定義されています。
 
 MQTT の詳細については、「[Azure IoT の MQTT サンプル](https://github.com/Azure-Samples/IoTMQTTSample/)」GitHub リポジトリを参照してください。
-  
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、IoT プラグ アンド プレイの規則に従うように MQTT デバイス クライアントを変更する方法を説明しました。 IoT プラグ アンド プレイの詳細については、次を参照してください。
-
-> [!div class="nextstepaction"]
-> [アーキテクチャ](concepts-architecture.md)
-
-IoT Hub による MQTT プロトコルのサポートの詳細については、以下を参照してください。
+このチュートリアルでは、IoT プラグ アンド プレイの規則に従うように MQTT デバイス クライアントを変更する方法を説明しました。 IoT Hub による MQTT プロトコルのサポートの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
 > [MQTT プロトコルを使用した IoT Hub との通信](../iot-hub/iot-hub-mqtt-support.md)

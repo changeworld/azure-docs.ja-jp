@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 13017424c1b9f0406ad60dc25f61f198f3655323
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6753b9e50ec8304c85f4079cf917339b6beac42f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750248"
 ---
 <a name="HOLTop"></a>
 
@@ -83,7 +83,7 @@ npm install async
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services-security.md)に関するページを参照してください。
 
 > [!div class="nextstepaction"]
-> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=set-up-client)
+> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=set-up-client)
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -116,7 +116,7 @@ npm install async
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
 
 > [!div class="nextstepaction"]
-> [クライアントを認証しました](?success=authenticate-client#analyze-an-image) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
+> [クライアントを認証しました](?success=authenticate-client#analyze-an-image) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=authenticate-client)
 
 ## <a name="analyze-an-image"></a>イメージを分析する
 
@@ -232,7 +232,7 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
 > [!div class="nextstepaction"]
-> [画像を分析しました](?success=analyze-image#read-printed-and-handwritten-text) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+> [画像を分析しました](?success=analyze-image#read-printed-and-handwritten-text) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=analyze-image)
 
 ## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
 
@@ -266,7 +266,7 @@ Read 呼び出しの状態値を表す次のフィールドを関数内に定義
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
 > [!div class="nextstepaction"]
-> [テキストを読み取りました](?success=read-printed-handwritten-text#run-the-application) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+> [テキストを読み取りました](?success=read-printed-handwritten-text#run-the-application) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=read-printed-handwritten-text)
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -277,7 +277,7 @@ node index.js
 ```
 
 > [!div class="nextstepaction"]
-> [アプリケーションを実行しました](?success=run-the-application#clean-up-resources) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+> [アプリケーションを実行しました](?success=run-the-application#clean-up-resources) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=run-the-application)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -287,7 +287,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [リソースをクリーンアップしました](?success=clean-up-resources#next-steps) [問題が発生しました](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
+> [リソースをクリーンアップしました](?success=clean-up-resources#next-steps) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=clean-up-resources)
 
 ## <a name="next-steps"></a>次のステップ
 

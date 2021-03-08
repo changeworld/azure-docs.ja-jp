@@ -10,15 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 61b3b3abace5c7a1cd846c1e3c1e7ac166efd5c7
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: eb420a8d5242cb6a122e7f7062e457b64f1fb5db
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475651"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682410"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 Azure Communication Services の **Group Calling Hero Sample** は、Communication Services の Calling Web クライアント ライブラリを使用して、グループ通話エクスペリエンスを構築する方法を示します。
 
 このサンプルのクイックスタートでは、サンプルがどのように動作するかを学習した後で、サンプルをローカル コンピューターで実行します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
@@ -29,7 +27,7 @@ Azure Communication Services の **Group Calling Hero Sample** は、Communicati
 
 ## <a name="overview"></a>概要
 
-このサンプルには、クライアント側アプリケーションとサーバー側アプリケーションの両方があります。 **クライアント側アプリケーション** は、Microsoft の Fluent UI フレームワークを使用する React/Redux Web アプリケーションです。 このアプリケーションは、クライアント側アプリケーションが Azure に接続するのを助ける ASP.NET Core の **サーバー側アプリケーション** に要求を送信します。 
+このサンプルには、クライアント側アプリケーションとサーバー側アプリケーションの両方があります。 **クライアント側アプリケーション** は、Microsoft の Fluent UI フレームワークを使用する React/Redux Web アプリケーションです。 このアプリケーションは、クライアント側アプリケーションが Azure に接続するのを助ける ASP.NET Core の **サーバー側アプリケーション** に要求を送信します。
 
 サンプルは次のようになります。
 
@@ -91,7 +89,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 ## <a name="next-steps"></a>次の手順
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[GitHub からサンプルをダウンロードする](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 詳細については、次の記事を参照してください。

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 77c4bf2153d8c80abc81b26f453a8b689fee367f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 56bacf1ae68081d5822fdb0e80762926d4eb581c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249875"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173734"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -308,12 +308,12 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[aks-monitor]: ../azure-monitor/insights/container-insights-onboard.md
+[aks-monitor]: ../azure-monitor/containers/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-browse]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-browse
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli
+[az-aks-browse]: /cli/azure/aks#az-aks-browse
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli

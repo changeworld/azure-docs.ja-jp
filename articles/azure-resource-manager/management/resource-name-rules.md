@@ -3,12 +3,12 @@ title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220855"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700475"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -397,6 +397,9 @@ ms.locfileid: "99220855"
 > | --- | --- | --- | --- |
 > | actionGroups | resource group | 1-260 | 次は使用できません:<br>`/&%\?` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 > | components | resource group | 1-260 | 次は使用できません:<br>`%&\?/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | scheduledQueryRules | resource group | 1-260 | 次は使用できません:<br>`*<>%{}&:\\?/#` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | metricAlerts | resource group | 1-260 | 次は使用できません:<br>`*#&+:<>?@%{}\/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | activityLogAlerts | resource group | 1-260 | 次は使用できません:<br>`<>*%{}&:\\?+/#` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 

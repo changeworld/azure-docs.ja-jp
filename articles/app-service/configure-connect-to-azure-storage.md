@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720241"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>App Service 内のコンテナーからネットワーク共有としての Azure Storage (プレビュー) にアクセスする
 
 ::: zone pivot="container-windows"
 
-このガイドでは、App Service で Azure Storage ファイルをネットワーク共有として Windows コンテナーに接続する方法について説明します。 [Azure Files Shares](../storage/files/storage-how-to-use-files-cli.md) および [Premium ファイル共有](../storage/files/storage-how-to-create-premium-fileshare.md)のみがサポートされています。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、複数のアプリへのアクセス、複数の転送方法などがあります。
+このガイドでは、App Service で Azure Storage ファイルをネットワーク共有として Windows コンテナーに接続する方法について説明します。 [Azure Files Shares](../storage/files/storage-how-to-use-files-cli.md) および [Premium ファイル共有](../storage/files/storage-how-to-create-file-share.md)のみがサポートされています。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、複数のアプリへのアクセス、複数の転送方法などがあります。
 
 > [!NOTE]
 >App Service の Azure Storage は **プレビュー段階** であり、**運用シナリオ** では **サポートされていません**。

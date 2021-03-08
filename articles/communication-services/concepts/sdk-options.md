@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f59ebfdb1942c7eb9be6c2cf09e1ed677c3f22e3
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 07f09dbb7fa8d7c88dce3c0af32e3fee21656da7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507678"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691299"
 ---
 # <a name="client-libraries-and-rest-apis"></a>クライアント ライブラリと REST API
 
@@ -28,7 +28,7 @@ Azure Communication Services の機能は、概念的に 6 つの領域に分け
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | [ファイル]            | Azure.ResourceManager.Communication | Communication Services のリソースをプロビジョニングおよび管理します             |
 | 共通                 | REST | [ファイル]               | Azure.Communication.Common          | 他のクライアント ライブラリの基本データ型を提供します |
-| 管理         | REST | [ファイル]               | Azure.Communication.Administration  | ユーザー、アクセス トークン、電話番号を管理し、標準に準拠した STUN および TURN サーバーを割り当てます |
+| ID         | REST | [ファイル]               | Azure.Communication.Identity  | ユーザーとアクセス トークンを管理する |
 | チャット                   | 独自の通知を含む REST | オープン (クローズド ソースの通知パッケージを使用)    | Azure.Communication.Chat            | アプリケーションにリアルタイムのテキスト ベースのチャットを追加します  |
 | SMS                    | REST | [ファイル]              | Azure.Communication.SMS             | SMS メッセージを送信および受信します |
 | 呼び出し                | 独自の転送 | クローズ |Azure.Communication.Calling         | 音声、ビデオ、画面共有、およびその他のリアルタイム データ通信機能を活用します          |
@@ -44,10 +44,12 @@ Azure Resource Manager、Administration、および SMS クライアント ラ�
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [GitHub 経由の Go](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
 | 共通         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | 該当なし      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
 | 管理 | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Administration)    | [PyPi](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
+| ID | [npm](https://www.npmjs.com/package/@azure/communication-identity)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.identity)    | [PyPi](https://pypi.org/project/azure-communication-identity/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-identity)   | -              | -              | -                            |
 | チャット           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
 | 呼び出し        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
-| リファレンス ドキュメント     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | [docs](https://docs.microsoft.com/objectivec/communication-services/calling/)      | [docs](https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android)            | -                              |
+| リファレンス ドキュメント     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | [docs](/objectivec/communication-services/calling/)      | [docs](/java/api/com.azure.communication.calling?view=communication-services-java-android)            | -                              |
+
 ## <a name="rest-apis"></a>REST API
 
 Communication Services API は、他の Azure REST API と共に [docs.microsoft.com](/rest/api/azure/) に記載されています。 このドキュメントでは、HTTP メッセージを構成する方法と、Postman を使用するためのガイダンスが提供されます。 このドキュメントは [GitHub](https://github.com/Azure/azure-rest-api-specs) の Swagger 形式でも提供されています。
@@ -77,6 +79,21 @@ Calling を除き、Communication Services パッケージは、以下に示す�
 - Mono 5.4
 - Xamarin iOS 10.14
 - Xamarin Mac 3.8
+
+## <a name="calling-client-library-timeouts"></a>通話クライアント ライブラリに関わるタイムアウト
+
+次のタイムアウトが Communication Services の通話クライアント ライブラリに適用されます。
+
+| アクション           | タイムアウトまでの秒数 |
+| -------------- | ---------- |
+| 参加者の再接続/削除 | 120 |
+| 通話に対する新しいモダリティの追加または削除 (ビデオまたはスクリーン共有の開始/停止) | 40 |
+| 通話転送操作に関わるタイムアウト | 60 |
+| 1:1 通話確立に関わるタイムアウト | 85 |
+| グループ通話確立に関わるタイムアウト | 85 |
+| PSTN 通話確立に関わるタイムアウト | 115 |
+| 1:1 通話のグループ通話への昇格に関わるタイムアウト | 115 |
+
 
 ## <a name="api-stability-expectations"></a>API の安定性に関する想定 
 

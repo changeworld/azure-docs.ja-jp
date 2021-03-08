@@ -3,12 +3,12 @@ title: Advisor によるアプリケーションの信頼性の向上
 description: Azure Advisor を使用すると、Bus Critical な Azure デプロイの信頼性を確認し、向上させることができます。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078036"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579971"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor を使用してアプリケーションの信頼性を向上させる
 
@@ -76,7 +76,7 @@ Azure Advisor では、Basic SKU を使用するすべての VPN ゲートウェ
 
 ## <a name="repair-invalid-log-alert-rules"></a>無効なログ アラート ルールを修復する
 
-Azure Advisor は、条件セクションに無効なクエリが指定されたログ アラート ルールを検出します。 Azure Monitor のログ アラート ルールでは、指定された頻度でクエリが実行され、その結果に基づいてアラートが発信されます。 クエリは、参照されるリソース、テーブル、またはコマンドの変更のために、時間の経過と共に無効になることがあります。 Advisor では、ルールが自動的に無効にならないようにすると共に、監視対象が確実にカバーされるよう、アラート クエリに対する修正が推奨されます。 詳細については、[アラート ルールのトラブルシューティング](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)に関する記事をご覧ください
+Azure Advisor は、条件セクションに無効なクエリが指定されたログ アラート ルールを検出します。 Azure Monitor のログ アラート ルールでは、指定された頻度でクエリが実行され、その結果に基づいてアラートが発信されます。 クエリは、参照されるリソース、テーブル、またはコマンドの変更のために、時間の経過と共に無効になることがあります。 Advisor では、ルールが自動的に無効にならないようにすると共に、監視対象が確実にカバーされるよう、アラート クエリに対する修正が推奨されます。 詳細については、[アラート ルールのトラブルシューティング](../azure-monitor/alerts/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)に関する記事をご覧ください
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Azure Cosmos DB コレクションで同期 (Consistent) インデックス モードを構成する
 
@@ -113,7 +113,7 @@ Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタ�
 [Azure Connected Machine エージェント](../azure-arc/servers/manage-agent.md)は、バグの修正、安定性の向上、および新機能を伴って定期的に更新されます。 最新バージョンのマシン エージェントで動作していないリソースを特定しました。この Advisor の推奨事項では、最適な Azure Arc エクスペリエンスを実現するために、エージェントを最新バージョンにアップグレードすることが推奨されています。
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Web サイトの整合性を確保するためにホスト名を上書きしないでください
-Advisor では、Application Gateway を構成する際、ホスト名を上書きしないようにすることが推奨されています。 Application Gateway のフロントエンドのドメインが、バックエンドへのアクセスに使用されるものと異なっていると、Cookie やリダイレクト URL が破損する可能性があります。 これはすべての状況に当てはまることではなく、一般にバックエンドの特定のカテゴリ (REST API など) はそれほど大きな影響を受けません。 バックエンドがこれに対応できることを確認するか、バックエンドに対してホスト名を上書きする必要がないように Application Gateway の構成を更新してください。 App Service と共に使用するときは、カスタム ドメイン名を Web アプリにアタッチし、*バックエンドに対して .azurewebsites.net ホスト名*を使用しないようにします。 [カスタム ドメインの詳細を確認](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)してください。
+Advisor では、Application Gateway を構成する際、ホスト名を上書きしないようにすることが推奨されています。 Application Gateway のフロントエンドのドメインが、バックエンドへのアクセスに使用されるものと異なっていると、Cookie やリダイレクト URL が破損する可能性があります。 これはすべての状況に当てはまることではなく、一般にバックエンドの特定のカテゴリ (REST API など) はそれほど大きな影響を受けません。 バックエンドがこれに対応できることを確認するか、バックエンドに対してホスト名を上書きする必要がないように Application Gateway の構成を更新してください。 App Service と共に使用するときは、カスタム ドメイン名を Web アプリにアタッチし、*バックエンドに対して .azurewebsites.net ホスト名* を使用しないようにします。 [カスタム ドメインの詳細を確認](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)してください。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 

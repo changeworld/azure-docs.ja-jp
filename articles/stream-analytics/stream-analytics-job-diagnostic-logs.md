@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 93d881419c4854b8e46608e150b55072267e0347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011120"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574419"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>リソース ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -24,9 +24,9 @@ Azure Stream Analytics ジョブは予期せず処理を停止することがあ
 
 Stream Analytics には 2 種類のログがあります。
 
-* [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md) (常に有効) では、ジョブで実行される操作の分析情報が得られます。
+* [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md) (常に有効) では、ジョブで実行される操作の分析情報が得られます。
 
-* [リソース ログ](../azure-monitor/platform/platform-logs-overview.md) (構成可能) では、ジョブで発生するあらゆるイベントに関してより豊富な分析情報が得られます。 リソース ログはジョブの作成時に開始され、ジョブが削除されると終了します。 ジョブの更新時とジョブの実行中のイベントがログの対象です。
+* [リソース ログ](../azure-monitor/essentials/platform-logs-overview.md) (構成可能) では、ジョブで発生するあらゆるイベントに関してより豊富な分析情報が得られます。 リソース ログはジョブの作成時に開始され、ジョブが削除されると終了します。 ジョブの更新時とジョブの実行中のイベントがログの対象です。
 
 > [!NOTE]
 > Azure Storage、Azure Event Hubs、Azure Monitor ログなどのサービスを使用して、問題となったデータを分析できます。 これらのサービスでは、価格モデルに基づいて料金が発生します。

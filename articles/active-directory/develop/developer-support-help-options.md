@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bce9479d063d091eb4fa68d2452d8a4218d45db9
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: c72a305a7000052be4f11c9c24a76db94de47ace
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219945"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650109"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -32,11 +32,11 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 
 ## <a name="search"></a>検索
 
-開発関連の質問がある場合、ドキュメント内、[GitHub のサンプル](https://github.com/azure-samples)、または [Microsoft Q&A](https://docs.microsoft.com/answers/products/) の質問への回答の中に、回答を見つけられることがあります。
+開発関連の質問がある場合、ドキュメント内、[GitHub のサンプル](https://github.com/azure-samples)、または [Microsoft Q&A](/answers/products/) の質問への回答の中に、回答を見つけられることがあります。
 
 ### <a name="scoped-search"></a>範囲指定の検索
 
-より迅速に結果を得るには、お好みの検索エンジンで次のクエリを使って、検索範囲を [Microsoft Q&A](https://docs.microsoft.com/answers/products/)、ドキュメント、およびコード サンプルに設定できます。
+より迅速に結果を得るには、お好みの検索エンジンで次のクエリを使って、検索範囲を [Microsoft Q&A](/answers/products/)、ドキュメント、およびコード サンプルに設定できます。
 
 ```
 {Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
@@ -53,24 +53,24 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Microsoft Q&A に質問を投稿する
 
-[Microsoft Q&A](https://docs.microsoft.com/answers/products/) は、開発関連の質問を投稿するのに適したチャネルです。 ここでは、開発者コミュニティのメンバーや Microsoft チームのメンバーから、問題の解決方法について直接意見を聞くことができます。
+[Microsoft Q&A](/answers/products/) は、開発関連の質問を投稿するのに適したチャネルです。 ここでは、開発者コミュニティのメンバーや Microsoft チームのメンバーから、問題の解決方法について直接意見を聞くことができます。
 
-検索によって質問に対する回答が見つけられない場合は、[Microsoft Q&A](https://docs.microsoft.com/answers/products/) に新しい質問を提出します。 質問するときは、コミュニティ ID を補助してより早く質問に回答してもらえるように、次のうちいずれか 1 つのタグを使用します。
+検索によって質問に対する回答が見つけられない場合は、[Microsoft Q&A](/answers/products/) に新しい質問を提出します。 質問するときは、コミュニティ ID を補助してより早く質問に回答してもらえるように、次のうちいずれか 1 つのタグを使用します。
 
 |コンポーネント/領域  | Tags |
 |---------|---------|
-| ADAL ライブラリ | [[adal]](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html) |
-| MSAL ライブラリ     | [[msal]](https://docs.microsoft.com/answers/topics/azure-ad-msal.html) |
-| OWIN ミドルウェア  | [[azure-active-directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[azure-ad-graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
-| その他認証や承認のトピックに関連する区分 | [[azure-active-directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| ADAL ライブラリ | [[adal]](/answers/topics/azure-ad-adal-deprecation.html) |
+| MSAL ライブラリ     | [[msal]](/answers/topics/azure-ad-msal.html) |
+| OWIN ミドルウェア  | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](/answers/topics/azure-ad-b2b.html) |
+| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](/answers/topics/azure-ad-b2c.html) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[azure-ad-graph]](/answers/topics/azure-ad-graph.html) |
+| その他認証や承認のトピックに関連する区分 | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
 
-[Microsoft Q&A](https://docs.microsoft.com/answers/products/) の次の投稿には、質問方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、質問に対するコミュニティ メンバーからの評価や回答がより早く返ってくる可能性が高まります。
+[Microsoft Q&A](/answers/products/) の次の投稿には、質問方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、質問に対するコミュニティ メンバーからの評価や回答がより早く返ってくる可能性が高まります。
 
-* [よい質問をする方法](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)
-* [最小限の例、完全な例、実証可能な例を作成する方法](https://docs.microsoft.com/answers/articles/24907/how-to-write-a-quality-answer.html)
+* [よい質問をする方法](/answers/articles/24951/how-to-write-a-quality-question.html)
+* [最小限の例、完全な例、実証可能な例を作成する方法](/answers/articles/24907/how-to-write-a-quality-answer.html)
 
 ## <a name="create-a-github-issue"></a>GitHub の issue を作成する
 

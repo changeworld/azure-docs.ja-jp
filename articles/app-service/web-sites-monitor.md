@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b201ebb5ad8ab9d98a76a29831fa12d6174e47cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125208"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586094"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](./overview.md) には、[Azure portal](https://portal.azure.com) の Web アプリ、モバイル、および API アプリに対する組み込みの監視機能が用意されています。
 
-Azure portal では、アプリや App Service プランの " *クォータ* " と " *メトリック* " を確認したり、" *アラート* " および " *自動スケーリング* " ルール ベースのメトリックを設定したりすることができます。
+Azure portal では、アプリや App Service プランの "*クォータ*" と "*メトリック*" を確認したり、"*アラート*" および "*自動スケーリング*" ルール ベースのメトリックを設定したりすることができます。
 
 ## <a name="understand-quotas"></a>クォータを理解する
 
@@ -27,7 +27,7 @@ App Service にホストされているアプリは、使用できるリソー�
 
 アプリが *Free* プランまたは *Shared* プランでホストされている場合、アプリで使用できるリソースの制限はクォータによって定義されます。
 
-アプリが *Basic* プラン、 *Standard* プラン、 *Premium* プランでホストされている場合、アプリで使用できるリソースの制限は、App Service プランの *サイズ* (S、M、L) と *インスタンス数* (1、2、3 など) によって設定されます。
+アプリが *Basic* プラン、*Standard* プラン、*Premium* プランでホストされている場合、アプリで使用できるリソースの制限は、App Service プランの *サイズ* (S、M、L) と *インスタンス数* (1、2、3 など) によって設定されます。
 
 Free アプリまたは Shared アプリのクォータは、次のようになります。
 
@@ -39,13 +39,13 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 | **帯域幅** | このアプリが 1 日に使用できる送信帯域幅の総量。 このクォータは、24 時間ごとに (UTC の午前 0 時に) リセットされます。 |
 | **ファイルシステム** | 使用可能なストレージの総量。 |
 
-*Basic* 、 *Standard* 、 *Premium* でホストされているアプリに適用できるクォータは、ファイルシステムのみです。
+*Basic*、*Standard*、*Premium* でホストされているアプリに適用できるクォータは、ファイルシステムのみです。
 
 さまざまな App Service SKU で利用できる特定のクォータ、制限、機能について詳しくは、[Azure サブスクリプション サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)に関するページをご覧ください。
 
 ### <a name="quota-enforcement"></a>クォータの適用
 
-アプリが *CPU (ショート)* 、 *CPU (1 日)* 、 *帯域幅* のクォータを超過すると、クォータがリセットされるまでアプリは停止されます。 この期間中は、すべての受信要求の結果が HTTP 403 エラーになります。
+アプリが *CPU (ショート)* 、*CPU (1 日)* 、*帯域幅* のクォータを超過すると、クォータがリセットされるまでアプリは停止されます。 この期間中は、すべての受信要求の結果が HTTP 403 エラーになります。
 
 ![403 エラー メッセージ][http403]
 
@@ -82,7 +82,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 | **現在のアセンブリ** | このアプリケーション内のすべての AppDomain で読み込まれたアセンブリの現在の数。 |
 | **受信データ** | アプリで消費された受信帯域幅の量 (MiB)。 |
 | **送信データ** | アプリで消費された送信帯域幅の量 (MiB)。 |
-| **ファイル システムの使用量** | アプリによって使用されたファイル システム クォータの割合。 |
+| **ファイル システムの使用量** | ストレージ共有別の使用量 (バイト単位)。 |
 | **Gen 0 ガベージ コレクション** | アプリ プロセスが開始されてからジェネレーション 0 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|
 | **Gen 1 ガベージ コレクション** | アプリ プロセスが開始されてからジェネレーション 1 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|
 | **Gen 2 ガベージ コレクション** | アプリ プロセスが開始されてからジェネレーション 2 オブジェクトがガベージ コレクションされた回数。|
@@ -114,7 +114,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 App Service プランについて利用できるメトリックには、次のものがあります。
 
 > [!NOTE]
-> App Service プランのメトリックは、 *Basic* 、 *Standard* および *Premium* レベルのプランでのみ利用できます。
+> App Service プランのメトリックは、*Basic*、*Standard* および *Premium* レベルのプランでのみ利用できます。
 > 
 
 | メトリック | 説明 |
@@ -131,12 +131,12 @@ App Service プランについて利用できるメトリックには、次の�
 
 CPU の使用状況を反映するメトリックには、次の 2 つがあります。
 
-**CPU 時間** :Free プランまたは Shared プランでホストされているアプリで役に立ちます。これらのプランのクォータの 1 つが、アプリによって使用される CPU 時間 (分数) で定義されているためです。
+**CPU 時間**:Free プランまたは Shared プランでホストされているアプリで役に立ちます。これらのプランのクォータの 1 つが、アプリによって使用される CPU 時間 (分数) で定義されているためです。
 
-**CPU の割合** :Basic、Standard、および Premium プランでホストされるアプリで使用します。これらはスケール アウトが可能だからです。CPU 使用率は、すべてのインスタンスにわたる使用率の有効な指標になります。
+**CPU の割合**:Basic、Standard、および Premium プランでホストされるアプリで使用します。これらはスケール アウトが可能だからです。CPU 使用率は、すべてのインスタンスにわたる使用率の有効な指標になります。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>メトリックの粒度と保持ポリシー
-アプリと App Service プランのメトリックは、サービスによってログに記録され、集計され、[これらの規則に従って保持されます](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
+アプリと App Service プランのメトリックは、サービスによってログに記録され、集計され、[これらの規則に従って保持されます](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics)。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure portal でのクォータとメトリックの監視
 アプリに影響するさまざまなクォータとメトリックの状態を確認するには、[Azure portal](https://portal.azure.com) にアクセスします。
@@ -153,14 +153,14 @@ CPU の使用状況を反映するメトリックには、次の 2 つがあり�
 
 これらのグラフのいずれかをクリックするとメトリック ビューが表示され、そこでカスタム グラフの作成や別のメトリックへのクエリ実行などのさまざまな操作を実行できます。 
 
-メトリックについて詳しくは、「[サービス メトリックの監視](../azure-monitor/platform/data-platform.md)」をご覧ください。
+メトリックについて詳しくは、「[サービス メトリックの監視](../azure-monitor/data-platform.md)」をご覧ください。
 
 ## <a name="alerts-and-autoscale"></a>アラートと自動スケーリング
-アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳細については、[アラート通知の受信](../azure-monitor/platform/alerts-classic-portal.md)に関するページをご覧ください。
+アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳細については、[アラート通知の受信](../azure-monitor/alerts/alerts-classic-portal.md)に関するページをご覧ください。
 
 Basic 以上の App Service プランでホストされている App Service アプリでは自動スケーリングがサポートされます。 自動スケーリングでは、App Service プランのメトリックを監視するルールを構成することができます。 ルールによって、必要に応じて追加リソースを提供するインスタンス数を増減できます。 また、アプリがオーバー プロビジョニングされたときのコスト削減にも役立ちます。
 
-自動スケーリングについて詳しくは、[スケールの方法](../azure-monitor/platform/autoscale-get-started.md)に関する記事と [Azure Monitor の自動スケーリングのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)に関する記事をご覧ください。
+自動スケーリングについて詳しくは、[スケールの方法](../azure-monitor/autoscale/autoscale-get-started.md)に関する記事と [Azure Monitor の自動スケーリングのベスト プラクティス](../azure-monitor/autoscale/autoscale-best-practices.md)に関する記事をご覧ください。
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

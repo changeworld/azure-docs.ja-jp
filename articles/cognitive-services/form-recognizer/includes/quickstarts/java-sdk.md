@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 3923f3d0a65412c23d5fc32d7a4cea8648686df4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4f48416153f5a378f9e4eff84802519250488301
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948184"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584664"
 ---
 > [!IMPORTANT]
 > この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。
@@ -155,7 +155,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 `FormRecognizerClient` には、以下を目的とした操作が用意されています。
 
-- カスタム フォームを認識するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。  これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。 [カスタム フォームを分析する](#analyze-forms-with-a-custom-model)例を参照してください。
+- 対象のカスタム フォームを分析するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。  これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。 [カスタム フォームを分析する](#analyze-forms-with-a-custom-model)例を参照してください。
 - モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。  フォームのコンテンツは、`FormPage` オブジェクトのコレクションとして返されます。 [レイアウトを分析する](#analyze-layout)例を参照してください。
 - Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、米国の領収書から一般的なフィールドを認識する。  これらのフィールドとメタデータは、`RecognizedForm` オブジェクトのコレクションとして返されます。 [領収書を分析する](#analyze-receipts)例を参照してください。
 
@@ -163,8 +163,8 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 `FormTrainingClient` には、以下を目的とした操作が用意されています。
 
-- カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を認識する。  モデルによって認識されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。
-- 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を認識するように、カスタム モデルをトレーニングする。  モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。
+- カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を分析する。  モデルによって分析されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。
+- 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を分析するように、カスタム モデルをトレーニングする。  モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。
 - アカウントに作成されたモデルを管理する。
 - Form Recognizer リソース間でカスタム モデルをコピーする。
 
@@ -202,9 +202,9 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 ## <a name="analyze-layout"></a>レイアウトを分析する
 
-Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。
+Form Recognizer を使用すると、ドキュメント内の表、行、および単語を分析できます。モデルをトレーニングする必要はありません。 レイアウトの抽出の詳細については、[レイアウトの概念ガイド](../../concept-layout.md)を参照してください。
 
-指定された URL にあるファイルの内容を認識するには、**beginRecognizeContentFromUrl** メソッドを使用します。
+指定された URL にあるファイルの内容を分析するには、**beginRecognizeContentFromUrl** メソッドを使用します。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
@@ -233,65 +233,6 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="analyze-receipts"></a>領収書を分析する
-
-このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。
-
-URI からの領収書を認識するには、**beginRecognizeReceiptsFromUrl** メソッドを使用します。 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
-
-> [!TIP]
-> ローカルにある領収書の画像を認識することもできます。 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (**beginRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上のサンプル コードを参照してください。
-
-返される値は **RecognizedReceipt** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコード ブロックは、領収書を反復処理し、その詳細をコンソールに出力します。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
-
-次のコード ブロックは、領収書で検出された個々の項目を反復処理し、その詳細をコンソールに出力します。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
-
-### <a name="output"></a>出力 
-
-```console
-Analyze receipt...
------------ Recognized Receipt page 0 -----------
-Merchant Name: Contoso Contoso, confidence: 0.62
-Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
-Transaction Date: 2020-06-10, confidence: 0.90
-Receipt Items:
-Name: Cappuccino, confidence: 0.96s
-Quantity: null, confidence: 0.957s]
-Total Price: 2.200000, confidence: 0.95
-Name: BACON & EGGS, confidence: 0.94s
-Quantity: null, confidence: 0.927s]
-Total Price: null, confidence: 0.93
-```
-
-## <a name="analyze-business-cards"></a>名刺を分析する
-
-#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
-
-#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
-
-このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを認識して抽出する方法を示します。
-
-URL から名刺を認識するには、`beginRecognizeBusinessCardsFromUrl` メソッドを使用します。 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
-
-> [!TIP]
-> ローカルにある名刺の画像を認識することもできます。 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (**beginRecognizeBusinessCards** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上のサンプル コードを参照してください。
-
-返される値は **RecognizedForm** オブジェクトのコレクションで、ドキュメント内の名刺ごとに 1 つです。 次のコードでは、指定された URI にある名刺を処理し、主要なフィールドと値をコンソールに出力します。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
-
----
 
 ## <a name="analyze-invoices"></a>請求書を分析する
 
@@ -302,16 +243,16 @@ URL から名刺を認識するには、`beginRecognizeBusinessCardsFromUrl` メ
 
 #### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
-このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを認識して抽出する方法を示します。
+このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。
 
-URL から名刺を認識するには、`beginRecognizeInvoicesFromUrl` メソッドを使用します。 
+URL から請求書を分析するには、`beginRecognizeInvoicesFromUrl` メソッドを使用します。 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> ローカルにある請求書を認識することもできます。 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (**beginRecognizeInvoices** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上のサンプル コードを参照してください。
+> ローカルの請求書を分析することもできます。 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) のメソッドを参照してください (**beginRecognizeInvoices** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上のサンプル コードを参照してください。
 
-返される値は **RecognizedForm** オブジェクトのコレクションで、ドキュメント内の請求書ごとに 1 つです。 次のコードでは、指定された URI にある名刺を処理し、主要なフィールドと値をコンソールに出力します。
+返される値は **RecognizedForm** オブジェクトのコレクションで、ドキュメント内の請求書ごとに 1 つです。 次のコードでは、指定された URI にある請求書を処理し、主要なフィールドと値をコンソールに出力します。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
 
@@ -326,14 +267,14 @@ URL から名刺を認識するには、`beginRecognizeInvoicesFromUrl` メソ�
 
 ### <a name="train-a-model-without-labels"></a>ラベルなしでモデルをトレーニングする
 
-カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を認識できるようにします。
+カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を分析できるようにします。
 
 次のメソッドは、指定された一連のドキュメントでモデルをトレーニングし、モデルの状態をコンソールに出力します。 
 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_call)]
 
-返される **CustomFormModel** オブジェクトには、モデルが認識できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
+返される **CustomFormModel** オブジェクトには、モデルが分析できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_print)]
 
@@ -428,6 +369,65 @@ Field 'field-5' has label 'Charges' with a confidence score of 1.00.
 Field 'field-6' has label 'VAT ID' with a confidence score of 1.00.
 ```
 
+## <a name="analyze-receipts"></a>領収書を分析する
+
+このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。
+
+URI からレシートを分析するには、**beginRecognizeReceiptsFromUrl** メソッドを使用します。 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
+
+> [!TIP]
+> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) のメソッドを参照してください (**beginRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上のサンプル コードを参照してください。
+
+返される値は **RecognizedReceipt** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコード ブロックは、領収書を反復処理し、その詳細をコンソールに出力します。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
+
+次のコード ブロックは、領収書で検出された個々の項目を反復処理し、その詳細をコンソールに出力します。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
+
+### <a name="output"></a>出力 
+
+```console
+Analyze receipt...
+----------- Recognized Receipt page 0 -----------
+Merchant Name: Contoso Contoso, confidence: 0.62
+Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
+Transaction Date: 2020-06-10, confidence: 0.90
+Receipt Items:
+Name: Cappuccino, confidence: 0.96s
+Quantity: null, confidence: 0.957s]
+Total Price: 2.200000, confidence: 0.95
+Name: BACON & EGGS, confidence: 0.94s
+Quantity: null, confidence: 0.927s]
+Total Price: null, confidence: 0.93
+```
+
+## <a name="analyze-business-cards"></a>名刺を分析する
+
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
+
+このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。
+
+URL から名刺を分析するには、`beginRecognizeBusinessCardsFromUrl` メソッドを使用します。 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
+
+> [!TIP]
+> ローカルにある名刺の画像を分析することもできます。 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) のメソッドを参照してください (**beginRecognizeBusinessCards** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上のサンプル コードを参照してください。
+
+返される値は **RecognizedForm** オブジェクトのコレクションで、ドキュメント内の名刺ごとに 1 つです。 次のコードでは、指定された URI にある名刺を処理し、主要なフィールドと値をコンソールに出力します。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+---
 
 ## <a name="manage-custom-models"></a>カスタム モデルを管理する
 

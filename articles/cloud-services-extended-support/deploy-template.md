@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: eb59bb43d493609ae408a402eaea2dcc9c6fab29
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881824"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548779"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM テンプレートを使用してクラウド サービス (延長サポート) をデプロイする
 
@@ -134,7 +134,7 @@ ms.locfileid: "98881824"
     ```
  
 
-4. ARM テンプレートの  `OsProfile` セクションに、キー コンテナーの参照を追加します。 キー コンテナーは、クラウド サービス (延長サポート) に関連付けられている証明書を格納するために使用します。 証明書をキー コンテナーに追加してから、サービス構成 (.cscfg) ファイル内でその証明書の拇印を参照します。 また、クラウド サービス (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで適切なアクセス許可を有効にする必要があります。 詳細については、[Cloud Services (延長サポート) で証明書を使用する方法](certificates-and-key-vault.md)に関するページを参照してください。
+4. ARM テンプレートの  `OsProfile` セクションに、キー コンテナーの参照を追加します。 キー コンテナーは、クラウド サービス (延長サポート) に関連付けられている証明書を格納するために使用します。 証明書をキー コンテナーに追加してから、サービス構成 (.cscfg) ファイル内でその証明書の拇印を参照します。 また、クラウド サービス (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで適切なアクセス許可を有効にする必要があります。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、[Cloud Services (延長サポート) で証明書を使用する方法](certificates-and-key-vault.md)に関するページを参照してください。
      
     ```json
     "osProfile": { 
@@ -441,14 +441,15 @@ ms.locfileid: "98881824"
             ]
           }
         }
-      }
+       }
+      ]
     }
     ```
  
-8. テンプレートをデプロイし、クラウド サービス (延長サポート) のデプロイを作成します。 
+8. テンプレートとパラメーター ファイル (テンプレート ファイルでパラメーターを定義) をデプロイして、クラウド サービス (延長サポート) デプロイを作成します。 必要に応じて、こちらの[サンプル テンプレート](https://github.com/Azure-Samples/cloud-services-extended-support)を参照してください。
 
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg -TemplateFile "file path to your template file”  
+    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg"  -TemplateFile "file path to your template file” -TemplateParameterFile "file path to your parameter file"
     ```
  
 ## <a name="next-steps"></a>次のステップ 

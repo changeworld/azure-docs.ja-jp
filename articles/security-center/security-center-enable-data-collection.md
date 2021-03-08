@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813617"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596168"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Azure Security Center からのエージェントと拡張機能の自動プロビジョニング
 
@@ -83,7 +83,7 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 
     - **[Connect Azure VMs to a different workspace]\(Azure VM を別のワークスペースに接続する\)** - ドロップダウン リストから、収集したデータを保存するワークスペースを選択します。 ドロップダウン リストには、自分の全サブスクリプション内のワークスペースがすべて含まれています。 このオプションを使用して、さまざまなサブスクリプションで稼働している仮想マシンからデータを収集し、自分が選択したワークスペースにすべて保存できます。  
 
-        Log Analytics ワークスペースが既にある場合は、同じワークスペースを使用することをお勧めします (ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です)。 このオプションは、組織内で一元化されたワークスペースを使用していて、それをセキュリティ データの収集に使用したい場合に役立ちます。 詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](../azure-monitor/platform/manage-access.md)」をご覧ください。
+        Log Analytics ワークスペースが既にある場合は、同じワークスペースを使用することをお勧めします (ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です)。 このオプションは、組織内で一元化されたワークスペースを使用していて、それをセキュリティ データの収集に使用したい場合に役立ちます。 詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](../azure-monitor/logs/manage-access.md)」をご覧ください。
 
         選択したワークスペースで Security または SecurityCenterFree ソリューションが既に有効になっている場合は、価格が自動的に設定されます。 それ以外の場合は、Security Center ソリューションをワークスペースにインストールします。
 
@@ -218,7 +218,7 @@ Log Analytics エージェントを手動でインストールするには:
    - [Windows 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-windows.md)
    - [Linux 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-linux.md)
 
-1. 既存の VM にエージェントをデプロイするには、[Azure 仮想マシンに関するデータの収集](../azure-monitor/learn/quick-collect-azurevm.md)に関する記事の手順に従います (「**イベントとパフォーマンス データを収集する**」のセクションは省略可能です)。
+1. 既存の VM にエージェントをデプロイするには、[Azure 仮想マシンに関するデータの収集](../azure-monitor/vm/quick-collect-azurevm.md)に関する記事の手順に従います (「**イベントとパフォーマンス データを収集する**」のセクションは省略可能です)。
 
 1. PowerShell を使用してエージェントをデプロイするには、仮想マシンのドキュメントの手順を使用します。
 

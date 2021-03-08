@@ -3,17 +3,16 @@ title: マッピング データ フローの和集合変換
 description: Azure Data Factory マッピング データ フローの新しい分岐変換
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: e10418c18e6f8e0089a893e9d33ee1081f3131f1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: e61c53cabc8f784ba9f0a3e78b5de01be134b0cd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823629"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367845"
 ---
 # <a name="union-transformation-in-mapping-data-flow"></a>マッピング データ フローの和集合変換
 

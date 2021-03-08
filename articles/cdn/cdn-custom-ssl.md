@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c4ad270b989e0e212c1d362ae4bfafc91fe07f3e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943530"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367505"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -158,7 +158,9 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
 5. **[追加]** を選択します。 
 
-    Azure CDN は、このキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。
+> [!NOTE]
+> Azure CDN は、このキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。 このサブスクリプションに作成されたすべての CDN インスタンスは、このキー コンテナー内の証明書にアクセスできます。 
+
  
 ### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>デプロイする Azure CDN の証明書を選択する
  
@@ -204,7 +206,7 @@ CNAME レコードは、次の形式にする必要があります。
 * "*名前*" はカスタム ドメイン名です。
 * "*値*" は CDN エンドポイントのホスト名です。
 
-| 名前            | 種類  | 値                 |
+| 名前            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

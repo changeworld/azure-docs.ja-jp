@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: 378a85ed77a6eedeb928dee541046db1909da553
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f5304e7634cfb7b4d5c3c05036c0606ba03295ae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491993"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589047"
 ---
 # <a name="dependency-analysis"></a>依存関係の分析
 
@@ -34,7 +34,7 @@ ms.locfileid: "99491993"
 **オプション** | **詳細** | **パブリック クラウド** | **Azure Government**
 ----  |---- | ---- 
 **エージェントレス** | vSphere API を使用して VMware VM のデータをポーリングします。<br/><br/> VM にエージェントをインストールする必要はありません。<br/><br/> このオプションは現在プレビュー段階であり、VMware VM のみが対象です。 | サポートされています。 | サポートされています。
-**エージェントベースの分析** | 依存関係の視覚化と分析を可能にするため、Azure Monitor の [Service Map ソリューション](../azure-monitor/insights/service-map.md)を使用します。<br/><br/> 分析するオンプレミスのマシンそれぞれに、エージェントをインストールする必要があります。 | サポートされています | サポートされていません。
+**エージェントベースの分析** | 依存関係の視覚化と分析を可能にするため、Azure Monitor の [Service Map ソリューション](../azure-monitor/vm/service-map.md)を使用します。<br/><br/> 分析するオンプレミスのマシンそれぞれに、エージェントをインストールする必要があります。 | サポートされています | サポートされていません。
 
 
 ## <a name="agentless-analysis"></a>エージェントレスの分析
@@ -58,7 +58,7 @@ ms.locfileid: "99491993"
 
 ## <a name="agent-based-analysis"></a>エージェントベースの分析
 
-エージェントベースの分析の場合、Server Assessment で Azure Monitor の [Service Map ソリューション](../azure-monitor/insights/service-map.md)を使用します。 分析するマシンそれぞれに、[Microsoft Monitoring Agent/Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)と [Dependency Agent](../azure-monitor/platform/agents-overview.md#dependency-agent) をインストールします。
+エージェントベースの分析の場合、Server Assessment で Azure Monitor の [Service Map ソリューション](../azure-monitor/vm/service-map.md)を使用します。 分析するマシンそれぞれに、[Microsoft Monitoring Agent/Log Analytics エージェント](../azure-monitor/agents/agents-overview.md#log-analytics-agent)と [Dependency Agent](../azure-monitor/agents/agents-overview.md#dependency-agent) をインストールします。
 
 ### <a name="dependency-data"></a>依存関係データ
 
@@ -78,7 +78,7 @@ ms.locfileid: "99491993"
 --- | --- | ---
 **サポート** | VMware VM のみが対象のプレビュー段階です。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。 | 一般提供 (GA) 中。
 **エージェント** | 分析対象のマシンにエージェントは必要ありません。 | 分析するオンプレミスのマシンそれぞれにエージェントが必要です。
-**Log Analytics** | 不要。 | Azure Migrate では、依存関係の分析のために [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)の [Service Map](../azure-monitor/insights/service-map.md) ソリューションを使用します。<br/><br/> Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けます。 ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 ワークスペースは、[Service Map がサポートされている](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。
+**Log Analytics** | 不要。 | Azure Migrate では、依存関係の分析のために [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)の [Service Map](../azure-monitor/vm/service-map.md) ソリューションを使用します。<br/><br/> Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けます。 ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 ワークスペースは、[Service Map がサポートされている](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。
 **処理** | TCP 接続データをキャプチャします。 検出後は、5 分間隔でデータが収集されます。 | マシンにインストールされている Service Map エージェントにより、TCP プロセスと、各プロセスの受信/送信接続に関するデータが収集されます。
 **データ** | ソース マシンのサーバー名、プロセス、アプリケーション名。<br/><br/> ターゲット マシンのサーバー名、プロセス、アプリケーション名、ポート。 | ソース マシンのサーバー名、プロセス、アプリケーション名。<br/><br/> ターゲット マシンのサーバー名、プロセス、アプリケーション名、ポート。<br/><br/> 接続数、待機時間、データ転送に関する情報が収集され、Log Analytics クエリで使用できます。 
 **視覚化** | 1 つのサーバーの依存関係マップを、1 時間から 30 日までの範囲で表示できます。 | 1 つのサーバーの依存関係マップ。<br/><br/> サーバーのグループの依存関係マップ。<br/><br/>  マップは 1 時間についてのみ表示できます。<br/><br/> マップ ビューからグループのサーバーを追加および削除します。

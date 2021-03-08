@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 905261058c2de0afae18cbc5572c64962bef8834
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181171"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580015"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
 
@@ -36,9 +36,9 @@ ms.locfileid: "96181171"
 
 理解するには、次の内容が必要です。
 
-* Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../../azure-monitor/learn/quick-create-workspace.md)を確認してください。
+* Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../../azure-monitor/logs/quick-create-workspace.md)を確認してください。
 * 最初に、[Azure AD アクティビティ ログを Log Analytics ワークスペースにルーティングする](howto-integrate-activity-logs-with-log-analytics.md)手順を完了する。
-*  Log Analytics ワークスペースへの[アクセス](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)
+*  Log Analytics ワークスペースへの[アクセス](../../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)
 * Azure Active Directory の次のロール (Azure Active Directory ポータルで Log Analytics にアクセスする場合)
     - セキュリティ管理者
     - セキュリティ閲覧者
@@ -96,7 +96,7 @@ AuditLogs
 
 3. アラートの名前と説明を入力して、重大度を選択します。 この例では、これを **[情報]** に設定できます。
 
-4. 信号が発生したときにアラートする **[アクション グループ]** を選択します。 電子メールまたはテキスト メッセージを使用してチームに通知することも、Webhook、Azure Functions、または Logic Apps を使用してアクションを自動化することもできます。 [Azure portal でのアラート グループの作成および管理](../../azure-monitor/platform/action-groups.md)の詳細を理解します。
+4. 信号が発生したときにアラートする **[アクション グループ]** を選択します。 電子メールまたはテキスト メッセージを使用してチームに通知することも、Webhook、Azure Functions、または Logic Apps を使用してアクションを自動化することもできます。 [Azure portal でのアラート グループの作成および管理](../../azure-monitor/alerts/action-groups.md)の詳細を理解します。
 
 5. アラートを構成し終えたら、 **[アラートの作成]** を選択して有効にします。 
 
@@ -110,6 +110,6 @@ AuditLogs
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor ログでクエリの使用を開始する](../../azure-monitor/log-query/get-started-queries.md)
-* [Create and manage alert groups in the Azure portal](../../azure-monitor/platform/action-groups.md)
+* [Azure Monitor ログでクエリの使用を開始する](../../azure-monitor/logs/get-started-queries.md)
+* [Create and manage alert groups in the Azure portal](../../azure-monitor/alerts/action-groups.md)
 * [Azure Active Directory ログ分析用のビューのインストールと使用](howto-install-use-log-analytics-views.md)

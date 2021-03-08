@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: jeedes
-ms.openlocfilehash: c750d42179771313a7281fb8fbf3c043a030feac
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: e9beb2c9e265982a9e10f3e6abee6bc3cba4a4a3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428743"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>チュートリアル: Azure Active Directory と Proofpoint on Demand の統合
 
@@ -137,8 +137,8 @@ Proofpoint on Demand に対して Azure AD SSO を構成してテストするに
 
 * Proofpoint on Demand のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Proofpoint on Demand] タイルをクリックすると、SSO を設定した Proofpoint on Demand に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Proofpoint on Demand] タイルをクリックすると、SSO を設定した Proofpoint on Demand に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Proofpoint on Demand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Proofpoint on Demand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

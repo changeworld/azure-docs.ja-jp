@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor の Azure SQL Analytics ソリューション | Microsoft Docs
 description: Azure SQL Analytics ソリューションは、Azure SQL Database の管理に役立ちます
-ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54ef88e65925ba9c7e9fe2e44ef0c76fbc9ceb04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397081"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717487"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -33,11 +32,11 @@ Azure SQL Analytics は、すべての Azure SQL Database を対象に、診断�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| [診断設定](../platform/diagnostic-settings.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
-| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
-| [Windows エージェント](../platform/agent-windows.md) | いいえ | Azure SQL Analytics では、Windows のダイレクト エージェントは使用されません。 |
-| [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | Azure SQL Analytics では、Linux のダイレクト エージェントは使用されません。 |
-| [System Center Operations Manager 管理グループ](../platform/om-agents.md) | いいえ | Operations Manager エージェントから Azure Monitor への直接の接続は、Azure SQL Analytics では使用されません。 |
+| [診断設定](../essentials/diagnostic-settings.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
+| [Azure Storage アカウント](../essentials/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
+| [Windows エージェント](../agents/agent-windows.md) | いいえ | Azure SQL Analytics では、Windows のダイレクト エージェントは使用されません。 |
+| [Linux エージェント](../vm/quick-collect-linux-computer.md) | いいえ | Azure SQL Analytics では、Linux のダイレクト エージェントは使用されません。 |
+| [System Center Operations Manager 管理グループ](../agents/om-agents.md) | いいえ | Operations Manager エージェントから Azure Monitor への直接の接続は、Azure SQL Analytics では使用されません。 |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics のオプション
 
@@ -170,13 +169,13 @@ Azure SQL Analytics を使用するには､少なくとも Azure で閲覧者�
 
 ## <a name="analyze-data-and-create-alerts"></a>データの分析とアラートの作成
 
-Azure SQL Analytics のデータ分析のカスタム クエリやカスタム レポート機能は [Log Analytics 言語](../log-query/get-started-queries.md)に依拠しています｡ [利用可能なメトリックおよびログ](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)でのカスタム クエリでは､データベース リソースから収集され､利用可能になっているデータの説明を検索してください｡
+Azure SQL Analytics のデータ分析のカスタム クエリやカスタム レポート機能は [Log Analytics 言語](../logs/get-started-queries.md)に依拠しています｡ [利用可能なメトリックおよびログ](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)でのカスタム クエリでは､データベース リソースから収集され､利用可能になっているデータの説明を検索してください｡
 
 Azure SQL Analytics の自動アラート機能は、条件が満たされたときにアラートをトリガーする Log Analytics クエリに依拠しています。 Azure SQL Analytics でアラートを設定できる Log Analytics クエリに関する、次のいくつかの例を検索してください。
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Azure SQL Database のアラートの作成
 
-Azure SQL Database リソースから送られるデータを使用して簡単に[アラートを作成](../platform/alerts-metric.md)できます。 ログ アラートで使用できる実用的な[ログ クエリ](../log-query/log-query-overview.md)をいくつか示します。
+Azure SQL Database リソースから送られるデータを使用して簡単に[アラートを作成](../alerts/alerts-metric.md)できます。 ログ アラートで使用できる実用的な[ログ クエリ](../logs/log-query-overview.md)をいくつか示します。
 
 #### <a name="high-cpu"></a>高 CPU 使用率
 
@@ -297,7 +296,7 @@ Azure SQL Analytics は無料で使用できますが、毎月割り当てられ
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Monitor で[ログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な Azure SQL データを表示します。
-- Azure SQL データを表示する[独自のダッシュ ボードを作成](../learn/tutorial-logs-dashboards.md)します。
-- Azure SQL の特定のイベントが発生した場合の[アラートを作成](../platform/alerts-overview.md)します。
+- Azure Monitor で[ログ クエリ](../logs/log-query-overview.md)を使用して、詳細な Azure SQL データを表示します。
+- Azure SQL データを表示する[独自のダッシュ ボードを作成](../visualize/tutorial-logs-dashboards.md)します。
+- Azure SQL の特定のイベントが発生した場合の[アラートを作成](../alerts/alerts-overview.md)します。
 

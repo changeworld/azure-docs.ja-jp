@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362401"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577760"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -47,7 +47,7 @@ Azure AD の監視では、次の場所にログをルーティングできま�
 * Splunk、Sumologic、QRadar などの既存の SIEM ツールと統合できる Azure イベント ハブ。
 
 > [!NOTE]
-最近になって、Log Analytics の代わりに Azure Monitor ログという用語が使われるようになりました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](../../azure-monitor/platform/data-platform.md)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](../../azure-monitor/terminology.md)に関するページをご覧ください。
+最近になって、Log Analytics の代わりに Azure Monitor ログという用語が使われるようになりました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](../../azure-monitor/data-platform.md)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](../../azure-monitor/terminology.md)に関するページをご覧ください。
 
 [レポート保持ポリシーの詳細を確認します](./reference-reports-data-retention.md)。
 
@@ -101,11 +101,11 @@ Azure AD の監視とレポートをデプロイするには、Azure AD テナ�
 
 |領域 |説明 |
 |-|-|
-|保持| **30 日を超えるログ保有期間** 。 ‎法的または業務上の要件により、Azure AD の監査ログとサインイン ログを 30 日よりも長く保存する必要があります。 |
-|Analytics| **ログが検索可能である必要がある** 。 ‎保存されたログを分析ツールを使用して検索できる必要があります。 |
-| Operational Insights| **さまざまなチームのための分析情報** 。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
-| セキュリティ分析情報| **さまざまなチームのための分析情報** 。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
-| SIEM システムでの統合      | **SIEM の統合** 。 ‎Azure AD のサインイン ログと監査ログを既存の SIEM システムに統合およびストリーム配信する必要があります。 |
+|保持| **30 日を超えるログ保有期間**。 ‎法的または業務上の要件により、Azure AD の監査ログとサインイン ログを 30 日よりも長く保存する必要があります。 |
+|Analytics| **ログが検索可能である必要がある**。 ‎保存されたログを分析ツールを使用して検索できる必要があります。 |
+| Operational Insights| **さまざまなチームのための分析情報**。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
+| セキュリティ分析情報| **さまざまなチームのための分析情報**。 さまざまなユーザーにアクセス権を付与し、アプリケーションの使用状況、サインイン エラー、セルフサービスの使用状況、傾向など、運用に関する分析情報を入手できるようにする必要があります。 |
+| SIEM システムでの統合      | **SIEM の統合**。 ‎Azure AD のサインイン ログと監査ログを既存の SIEM システムに統合およびストリーム配信する必要があります。 |
 
 ### <a name="choose-a-monitoring-solution-architecture"></a>監視ソリューションのアーキテクチャを選択する
 
@@ -121,7 +121,7 @@ Azure AD の監視では、Azure AD のアクティビティ ログを、ビジ�
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Azure Monitor ログへのログの送信
 
-[Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md)は、さまざまなソースからの監視データを統合します。 アプリケーションの操作とリソースの使用に関する分析情報が得られるクエリ言語と分析エンジンも提供されます。 Azure AD のアクティビティ ログを Azure Monitor ログに送信することで、収集したデータに対する迅速な取得、監視、およびアラートを行うことができます。 データの直接の送信先となる既存の SIEM ソリューションは存在しないが、クエリや分析が必要な場合は、この方法を使用します。 データが Azure Monitor ログに記録されたら、そのデータをイベント ハブに送信し、必要に応じてそこから SIEM に送信することができます。
+[Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)は、さまざまなソースからの監視データを統合します。 アプリケーションの操作とリソースの使用に関する分析情報が得られるクエリ言語と分析エンジンも提供されます。 Azure AD のアクティビティ ログを Azure Monitor ログに送信することで、収集したデータに対する迅速な取得、監視、およびアラートを行うことができます。 データの直接の送信先となる既存の SIEM ソリューションは存在しないが、クエリや分析が必要な場合は、この方法を使用します。 データが Azure Monitor ログに記録されたら、そのデータをイベント ハブに送信し、必要に応じてそこから SIEM に送信することができます。
 
 [Azure Monitor ログにデータを送信する](./howto-integrate-activity-logs-with-log-analytics.md)方法を学習してください。
 

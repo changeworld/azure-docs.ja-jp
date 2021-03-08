@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937675"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515650"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理の委任とロール
 
@@ -133,9 +133,6 @@ IT 管理者の Hana には、各部署に連絡先担当者がいます。マ�
 | [アプリケーション管理者](../roles/permissions-reference.md) | カタログ所有者 |  |  | :heavy_check_mark: |  |
 | [クラウド アプリケーション管理者](../roles/permissions-reference.md) | カタログ所有者 |  |  | :heavy_check_mark: |  |
 | User | カタログ所有者 | グループ所有者の場合のみ | グループ所有者の場合のみ | アプリ所有者の場合のみ |  |
-
-> [!NOTE]
-> ユーザーがセキュリティ グループまたは Microsoft 365 グループを追加する場合、そのグループをロール割り当て可能にすることはできません。 ユーザーがアクセス パッケージを作成するときにロール割り当て可能なグループを追加する場合、そのユーザーは、ロール割り当て可能なそのグループの所有者でもある必要があります。 詳細については、「[Azure Active Directory でロールを割り当て可能なグループを作成する](../roles/groups-create-eligible.md)」を参照してください。
 
 タスクの最小限の特権ロールを決定するには、「[Azure Active Directory における管理タスク別の管理者ロール](../roles/delegate-by-task.md#entitlement-management)」を参照することもできます。
 

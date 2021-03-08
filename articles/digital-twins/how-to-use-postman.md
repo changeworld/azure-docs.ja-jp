@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791743"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199664"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Postman を使用して Azure Digital Twins API に要求を送信する方法
 
@@ -21,7 +21,7 @@ ms.locfileid: "98791743"
 
 この記事では、Azure Digital Twins API を操作するために、次の手順に従って [Postman REST クライアント](https://www.getpostman.com/)を構成する方法について説明します。
 
-1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用して、Postman で API 要求を行うために使用するベアラー トークンを取得します。
+1. [Azure CLI](/cli/azure/install-azure-cli) を使用して、Postman で API 要求を行うために使用するベアラー トークンを取得します。
 1. Postman コレクションを設定し、ベアラー トークンを使用して認証するように Postman REST クライアントを構成します。
 1. 構成した Postman を使用して要求を作成し、Azure Digital Twins API に送信します。
 
@@ -41,9 +41,9 @@ Postman を使用して Azure Digital Twins API にアクセスするには、Az
 
 Postman と Azure Digital Twins インスタンスを設定したので、次は、Postman 要求で Azure Digital Twins API に対する認証に使用できるベアラー トークンを取得する必要があります。
 
-このトークンを取得するには、いくつかの方法があります。 この記事では、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用して Azure アカウントにサインインし、その方法でトークンを取得します。
+このトークンを取得するには、いくつかの方法があります。 この記事では、[Azure CLI](/cli/azure/install-azure-cli) を使用して Azure アカウントにサインインし、その方法でトークンを取得します。
 
-Azure CLI が[ローカルにインストールされている](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)場合は、お使いのコンピューターでコマンド プロンプトを起動して次のコマンドを実行できます。
+Azure CLI が[ローカルにインストールされている](/cli/azure/install-azure-cli)場合は、お使いのコンピューターでコマンド プロンプトを起動して次のコマンドを実行できます。
 そうでない場合は、ブラウザーで [Azure Cloud Shell](https://shell.azure.com) ウィンドウを開き、そこでコマンドを実行できます。
 
 1. まず、次のコマンドを実行して、適切な資格情報を使用して Azure にログインしていることを確認します。
@@ -52,7 +52,7 @@ Azure CLI が[ローカルにインストールされている](/cli/azure/insta
     az login
     ```
 
-1. 次に、[az account get-access-token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) コマンドを使用して、Azure Digital Twins サービスにアクセスできるベアラー トークンを取得します。
+1. 次に、[az account get-access-token](/cli/azure/account#az_account_get_access_token) コマンドを使用して、Azure Digital Twins サービスにアクセスできるベアラー トークンを取得します。
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0
@@ -140,7 +140,7 @@ Azure Digital Twins API のいずれかに対する Postman 要求を行うに�
 1. *[Header]\(ヘッダー\)* タブに表示されている要求のヘッダーが、リファレンス ドキュメントに記載されているものと一致していることを確認します。 この要求には複数のヘッダーが自動的に入力されています。 クエリ API の場合、ヘッダー オプションはどれも必要ないため、この手順は完了です。
 1. *[Body]\(本文\)* タブに表示されている要求の本文が、リファレンス ドキュメントに記載されているニーズに一致していることを確認します。 クエリ API には、クエリ テキストを指定する JSON 本文が必要です。 この要求の本文の例を次に示します。インスタンス内のすべてのデジタル ツインを照会しています。
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="新しい要求の詳細に [Body]\(本文\) タブが表示されています。それには、&quot;SELECT * FROM DIGITALTWINS&quot; というクエリを含む生の JSON 本文が含まれています。"lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="新しい要求の詳細に [Body]\(本文\) タブが表示されています。それには、&quot;SELECT * FROM DIGITALTWINS&quot; というクエリを含む生の JSON 本文が含まれています。" lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    Azure Digital Twins クエリの作成の詳細については、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
 

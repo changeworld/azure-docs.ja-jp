@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 2ae3c538c78be8af0fa4569592ac60547e7f5912
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 621d5a6a91a8c22c52e6febc7c2638571f5bf113
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481297"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595802"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
 
@@ -68,13 +68,13 @@ Azure portal を使用してリソース ログを有効にするには
    5. ログの種類 **PostgreSQLLogs** を選択します。
    7. 設定を保存します。
 
-Powershell、CLI、または REST API を使用してリソース ログを有効にするには、[診断の設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事をご覧ください。
+Powershell、CLI、または REST API を使用してリソース ログを有効にするには、[診断の設定](../azure-monitor/essentials/diagnostic-settings.md)に関する記事をご覧ください。
 
 ### <a name="access-resource-logs"></a>リソース ログへのアクセス
 
-ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関する記事を参照してください。
+ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)に関する記事を参照してください。
 
-Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
+Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/logs/log-query-overview.md)の概要に関する記事を参照してください。
 
 次に、作業を開始するために試すことのできるクエリを示します。 クエリに基づいてアラートを構成できます。
 
@@ -96,7 +96,7 @@ AzureDiagnostics
 
 ### <a name="log-format"></a>ログの形式
 
-次の表では、 **PostgreSQLLogs** タイプのフィールドについて説明します。 選択した出力エンドポイントに応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。 
+次の表では、**PostgreSQLLogs** タイプのフィールドについて説明します。 選択した出力エンドポイントに応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。 
 
 |**フィールド** | **説明** |
 |---|---|

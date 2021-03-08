@@ -3,12 +3,12 @@ title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 134089f4df8f80147182835ca8746322c1de7e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319254"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584162"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -16,7 +16,7 @@ ms.locfileid: "87319254"
 [可用性 Web テスト](./monitor-web-app-availability.md)を設定します。
 
 ### <a name="email-if-my-site-is-overloaded"></a>サイトが過負荷になっている場合の電子メール
-[サーバー応答時間](../platform/alerts-log.md) の **アラート**を設定します。 1 ～ 2 秒の間のしきい値で機能する必要があります。
+[サーバー応答時間](../alerts/alerts-log.md) の **アラート** を設定します。 1 ～ 2 秒の間のしきい値で機能する必要があります。
 
 ![サーバーの応答時間にアラートを設定する方法を示すスクリーンショット。](./media/how-do-i/030-server.png)
 
@@ -26,10 +26,10 @@ ms.locfileid: "87319254"
 
 ### <a name="email-on-exceptions"></a>例外での電子メール
 1. [例外の監視を設定します](./asp-net-exceptions.md)
-2. [アラートを設定](../platform/alerts-log.md) します
+2. [アラートを設定](../alerts/alerts-log.md) します
 
 ### <a name="email-on-an-event-in-my-app"></a>アプリのイベントでの電子メール
-特定のイベントが発生したときに電子メールを受け取りたいものとします。 Application Insights は直接この機能を提供しませんが、 [メトリックがしきい値を超えたときにアラートを送信](../platform/alerts-log.md)できます。
+特定のイベントが発生したときに電子メールを受け取りたいものとします。 Application Insights は直接この機能を提供しませんが、 [メトリックがしきい値を超えたときにアラートを送信](../alerts/alerts-log.md)できます。
 
 アラートは [カスタム メトリック](./api-custom-events-metrics.md#trackmetric)には設定できますが、カスタム イベントには設定できません。 イベントが発生したときにメトリックを増やすコードを記述します。
 
@@ -51,7 +51,7 @@ telemetry.TrackEvent("status", null, measurements);
 telemetry.TrackMetric("Alarm", 0.5);
 ```
 
-アラームを表示するには [メトリック エクスプローラー](../platform/metrics-charts.md) でグラフを作成します。
+アラームを表示するには [メトリック エクスプローラー](../essentials/metrics-charts.md) でグラフを作成します。
 
 ![メトリック エクスプローラーでアラームを表示するためのグラフを作成する方法を示すスクリーンショット。](./media/how-do-i/010-alarm.png)
 
@@ -71,11 +71,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 * 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを 2 つの状態として考え直すことができます。 たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
 
 ### <a name="set-up-alerts-automatically"></a>アラートの自動設定
-[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](../platform/alerts-log.md)
+[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](../alerts/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>PowerShell を使用した Application Insights の管理
 * [新しいリソースの作成に関するページ](./create-new-resource.md#creating-a-resource-automatically)
-* [新しいアラートの作成に関するページ](../platform/alerts-log.md)
+* [新しいアラートの作成に関するページ](../alerts/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>異なるバージョンのテレメトリを分離する
 
@@ -88,7 +88,7 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 ## <a name="visualize-data"></a>データの視覚化
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>複数のアプリケーションのメトリックを使用したダッシュボード
-* [Metric エクスプローラー](../platform/metrics-charts.md)でグラフをカスタマイズし、お気に入りとして保存します。 Azure ダッシュボードにピン留めします。
+* [Metric エクスプローラー](../essentials/metrics-charts.md)でグラフをカスタマイズし、お気に入りとして保存します。 Azure ダッシュボードにピン留めします。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>他のソースや Application Insights からのデータのあるダッシュボード
 * [テレメトリを Power BI にエクスポートします](./export-power-bi.md)。
@@ -165,6 +165,6 @@ ASP.NET Core アプリケーションの場合は、[ASP.NET Core の依存関�
 * **Unix サーバー** - [collectd をインストール](./java-collectd.md)します。
 
 ### <a name="to-display-more-performance-counters"></a>表示するパフォーマンス カウンターの数を増やすには
-* 最初に、 [新しいグラフを追加](../platform/metrics-charts.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
+* 最初に、 [新しいグラフを追加](../essentials/metrics-charts.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](./performance-counters.md)します。
 

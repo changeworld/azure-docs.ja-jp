@@ -213,7 +213,7 @@
               href: devtest-lab-upload-vhd-using-azcopy.md
             - name: PowerShell を使用して VHD ファイルをアップロードする
               href: devtest-lab-upload-vhd-using-powershell.md
-            - name: ストレージ エクスプローラーを使用して VHD ファイルをアップロードする
+            - name: Storage Explorer を使用して VHD ファイルをアップロードする
               href: devtest-lab-upload-vhd-using-storage-explorer.md
         - name: 数式を管理する
           href: devtest-lab-manage-formulas.md

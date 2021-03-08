@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 7d2a21a30cefbc6e83e48c29d81191323387b8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493856"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705545"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>クイックスタート: IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、X.509 のデバイスを作成してプロビジョニングする
 
@@ -22,7 +22,9 @@ ms.locfileid: "99493856"
 
 これらの手順では、[C# 用の Azure IoT サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp)のデバイス コードを使用して X.509 デバイスをプロビジョニングします。 この記事では、お使いの開発マシン上でデバイスのサンプル コードを実行し、Device Provisioning Service を使用して IoT ハブに接続します。
 
-自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
+## <a name="prerequisites"></a>前提条件
+
+自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
 - [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
@@ -48,8 +50,6 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     ```bash
     dotnet --info
     ```
-
-
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>自己署名 X.509 デバイス証明書を作成する
 

@@ -3,16 +3,21 @@ title: Azure Lab Services における各種クラスの例 | Microsoft Docs
 description: Azure Lab Services を使用してラボを設定できる、いくつかの種類のクラスを提供します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7ebc89c040be732c230f0c3f54f68fb91466eb68
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5a90fb128f5954f3eb713714ff22ff40a3beab36
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436404"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627435"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>クラスの種類の概要 - Azure Lab Services
 
 Azure Lab Services を使用すると、クラウド内にクラスルーム ラボ環境をすばやく設定することができます。 このセクションの記事では、Azure Lab Services を使用していくつかの種類のラボを設定する方法に関するガイダンスを提供します。
+
+## <a name="arcgis"></a>「ArcGIS」
+[ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-solutions/overview) は、地理情報システム (GIS) の一種です。  ArcGIS Desktop の [ArcMap](https://desktop.arcgis.com/en/arcmap/latest/map/main/what-is-arcmap-.htm) などのさまざまなアプリケーションを使用して、2D マップを作成、編集、分析するラボを設定できます。
+
+この種類のラボを設定する方法の詳細については、「[ArcMap\ArcGIS Desktop のラボを設定する](class-type-arcgis.md)」を参照してください。
 
 ## <a name="big-data-analytics"></a>ビッグ データ分析
 ビッグ データ分析クラスを教えるための GPU ラボを設定できます。 この種類のクラスでは、学生は大量のデータを処理し、機械と統計の学習のアルゴリズムを適用してデータの分析情報を導き出す方法について学習します。 学生の主な目的は、ビッグ データを格納、管理、および処理するためのツールを提供する Apache Hadoop のオープンソース ソフトウェア パッケージなどのデータ分析ツールを使用する方法について学習することです。 
@@ -41,6 +46,11 @@ Azure Lab Services を使用した自然言語処理 (NLP) でのディープ �
 
 この種類のラボを設定する方法の詳細については、「[MATLAB を教えるためのラボを設定する](class-type-matlab.md)」を参照してください。
 
+## <a name="networking-with-gns3"></a>GNS3 を使用したネットワーク
+学生が [GNS3](https://www.gns3.com/) ソフトウェアを使用して仮想および実際のネットワークをエミュレート、構成、テスト、トラブルシューティングできるようにすることに焦点を合わせたクラス用のラボを設定できます。 
+
+この種類のラボを設定する方法の詳細については、「[ネットワーク クラスの授業を行うためのラボを設定する](class-type-networking-gns3.md)」を参照してください。
+
 ## <a name="project-lead-the-way-pltw"></a>Project Lead the Way (PLTW)
 [Project Lead the Way (PLTW)](https://www.pltw.org/) は、コンピューター サイエンス、エンジニアリング、バイオメディカル サイエンスの PreK-12 カリキュラムを米国全域に提供する非営利団体です。  各 PLTW クラスでは、学生は実践的な学習体験の一環としてさまざまなソフトウェア アプリケーションを使用します。
 
@@ -62,6 +72,11 @@ Linux でのシェル スクリプトの作成を教えるためのラボを設�
 エンジニアリング系の学生が [SolidWorks](https://www.solidworks.com/) にアクセスできる GPU ラボを設定できます。  SolidWorks には、ソリッド オブジェクトをモデル化するための 3D CAD 環境が用意されています。  SolidWorks を使用すると、エンジニアは設計の作成、視覚化、シミュレーション、ドキュメント化を簡単に行うことができます。
 
 この種類のラボを設定する方法の詳細については、「[SolidWorks を使用するエンジニアリング クラス用にラボを設定する](class-type-solidworks.md)」を参照してください。
+
+## <a name="sql-database-and-management"></a>SQL データベースと管理
+構造化照会言語 (SQL) は、データベース内のコンテンツへの追加、アクセス、管理などの、リレーショナル データベース管理のための標準言語です。  [MySQL](https://www.mysql.com/) データベース サーバーと [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) サーバーの両方を使用して、データベースの概念を学習するラボを設定できます。
+
+この種類のラボを設定する方法の詳細については、「[リレーショナル データベースのデータベース管理を教えるためのラボを設定する](class-type-database-management.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。

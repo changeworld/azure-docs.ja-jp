@@ -3,17 +3,18 @@ title: Android マップにヒート マップ レイヤーを追加する | Mic
 description: ヒート マップを作成する方法について説明します。 Azure MapsAndroid SDK を使用してヒート マップ レイヤーをマップに追加する方法について説明します。 ヒート マップ レイヤーをカスタマイズする方法について説明します。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/01/2020
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4de59bd0b2a9dc9b11acf55a59b82724d2c7b862
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681366"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100187"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>ヒート マップ レイヤーを追加する (Android SDK)
 
@@ -34,7 +35,7 @@ ms.locfileid: "97681366"
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
 [クイックスタート: Android アプリの作成](quick-android-map.md)に関する記事の手順を必ず完了してください。 この記事のコード ブロックは、マップの `onReady` イベント ハンドラーに挿入できます。
 
@@ -43,6 +44,8 @@ ms.locfileid: "97681366"
 ポイントのデータ ソースをヒート マップとしてレンダリングするには、ご自分のデータ ソースを `HeatMapLayer` クラスのインスタンスに渡し、それをマップに追加します。
 
 次のコード サンプルでは、過去 1 週間の地震の GeoJSON フィードを読み込んで、ヒート マップとしてレンダリングします。 各データ ポイントは、すべてのズーム レベルで 10 ピクセルの半径でレンダリングされます。 ユーザー エクスペリエンスを向上させるため、ラベルがはっきりと見えるように、ヒート マップはラベル レイヤーの下にあります。 このサンプルのデータは、[USGS Earthquake Hazards Program (USGS 地震ハザード プログラム) ](https://earthquake.usgs.gov/)から引用しています。 このサンプルでは、[データ ソースの作成](create-data-source-android-sdk.md)に関するドキュメントで提供されているデータ インポート ユーティリティのコード ブロックを使用して、Web から GeoJSON データを読み込みます。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -80,6 +83,49 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
     });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a heat map layer.
+val layer = HeatMapLayer(
+    source,
+    heatmapRadius(10f),
+    heatmapOpacity(0.8f)
+)
+
+//Add the layer to the map, below the labels.
+map.layers.add(layer, "labels")
+
+//Import the geojson data and add it to the data source.
+Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+    this
+) { result: String? ->
+    //Parse the data as a GeoJSON Feature Collection.
+    val fc = FeatureCollection.fromJson(result!!)
+
+    //Add the feature collection to the data source.
+    source.add(fc)
+
+    //Optionally, update the maps camera to focus in on the data.
+    //Calculate the bounding box of all the data in the Feature Collection.
+    val bbox = MapMath.fromData(fc)
+
+    //Update the maps camera so it is focused on the data.
+    map.setCamera(
+        bounds(bbox),
+        padding(20)
+    )
+}
+```
+
+::: zone-end
+
 次のスクリーンショットは、上のコードを使用してヒート マップが読み込まれているマップを示しています。
 
 ![最近の地震のヒート マップ レイヤーが含まれたマップ](media/map-add-heat-map-layer-android/android-heat-map-layer.png)
@@ -110,6 +156,8 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 - `visible`:レイヤーを表示または非表示にします。
 
 次に示すのは、滑らかな色のグラデーションを作成するために線形補間式が使用されているヒート マップの例です。 データに定義されている `mag` プロパティは、各データ ポイントの重みまたは関連性を設定するために指数補間と共に使用されます。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -143,6 +191,44 @@ HeatMapLayer layer = new HeatMapLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(10f),
+
+    //A linear interpolation is used to create a smooth color gradient based on the heat map density.
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.BLACK)),
+            stop(0.25, color(Color.MAGENTA)),
+            stop(0.5, color(Color.RED)),
+            stop(0.75, color(Color.YELLOW)),
+            stop(1, color(Color.WHITE))
+        )
+    ),
+
+    //Using an exponential interpolation since earthquake magnitudes are on an exponential scale.
+    heatmapWeight(
+       interpolate(
+            exponential(2),
+            get("mag"),
+            stop(0,0),
+
+            //Any earthquake above a magnitude of 6 will have a weight of 1
+            stop(6, 1)
+       )
+    )
+)
+```
+
+::: zone-end
+
 次のスクリーンショットは、前のヒート マップ例と同じデータを使用して、上記のカスタム ヒート マップ レイヤーを示しています。
 
 ![最近の地震のカスタム ヒート マップ レイヤーが含まれたマップ](media/map-add-heat-map-layer-android/android-custom-heat-map-layer.png)
@@ -156,6 +242,8 @@ HeatMapLayer layer = new HeatMapLayer(source,
 `zoom` 式を使用すると、各データ ポイントによってマップの同じ物理領域がカバーされるように、各ズーム レベルの半径をスケーリングできます。 この式により、ヒート マップ レイヤーの外観は、より静的かつ一貫性の高いものになります。 マップの各ズーム レベルは、垂直方向および水平方向のピクセル数がすぐ下のズーム レベルの 2 倍になっています。
 
 ズーム レベルごとに半径が 2 倍になるようにスケーリングすると、すべてのズーム レベルで外観に一貫性のあるヒート マップが作成されます。 このスケーリングを適用するには、次の例に示すように、最小ズーム レベルに設定されたピクセル半径と、最大ズーム レベルでスケーリングされた半径が `2 * Math.pow(2, minZoom - maxZoom)` として計算された、基数 2 の `exponential interpolation` 式で `zoom` を使用します。 マップをズームして、ヒート マップがズーム レベルに応じてどのように変化するかを確認してください。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -174,6 +262,30 @@ HeatMapLayer layer = new HeatMapLayer(source,
   heatmapOpacity(0.75f)
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+  heatmapRadius(
+    interpolate(
+      exponential(2),
+      zoom(),
+
+      //For zoom level 1 set the radius to 2 pixels.
+      stop(1, 2f),
+
+      //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+      stop(19, Math.pow(2.0, 19 - 1.0) * 2f)
+    )
+  ),
+  heatmapOpacity(0.75f)
+)
+```
+
+::: zone-end
 
 次のビデオでは、上記のコードが実行されているマップを示します。これは、マップをズームしている間に半径を拡大縮小して、ズーム レベル全体で一貫性のあるヒート マップ レンダリングを作成します。
 

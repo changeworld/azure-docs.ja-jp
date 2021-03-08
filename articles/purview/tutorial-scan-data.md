@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: e373556d189e9fffc0626d19250e79c09962a004
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 16692ac75f0ab6df0c8ee1bebef393848ca066b8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062106"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676545"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) でデータをスキャンする
 
@@ -55,7 +55,7 @@ ms.locfileid: "99062106"
 
 自分の Windows マシンにスタート キット クライアント ソフトウェアを設定するには、次の手順に従います。
 
-1. [スタート キットをダウンロード](https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip)し、その内容を任意の場所に抽出します。
+1. [スタート キットをダウンロード](https://github.com/Azure/Purview-Samples/blob/master/PurviewStarterKitV4.zip)し、その内容を任意の場所に抽出します。
 
 
 1. ご使用のコンピューターで、Windows タスク バーの検索ボックスに「**PowerShell**」と入力します。 検索リストで **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
@@ -91,7 +91,9 @@ PowerShell スクリプトを実行してカタログをブートストラップ
    1. **[概要]** セクションを選択して、 **[サブスクリプション ID]** の GUID を保存します。
 
    > [!NOTE]
-   > 必ず、Azure Purview アカウントを作成したときと同じサブスクリプションを使用してください。 これは、許可リストに追加したのと同じサブスクリプションになります。
+   > - 必ず、Azure Purview アカウントを作成したときと同じサブスクリプションを使用してください。 これは、許可リストに追加したのと同じサブスクリプションになります。
+   > - スターター キットを実行した後、Azure Purview で系列が欠落することがあります。 これは、スターター キットによって作成されたデータ ファクトリに Purview のアクセス許可がないためです。 [**このドキュメント リンク**](how-to-link-azure-data-factory.md#view-existing-data-factory-connections)を選択して、Data Factory が正しく構成され、Purview で適切なロールが割り当てられていることを確認します
+
 
 * CatalogName: [Azure Purview アカウントの作成](create-catalog-portal.md)に関するページで作成した Azure Purview アカウントの名前。
 

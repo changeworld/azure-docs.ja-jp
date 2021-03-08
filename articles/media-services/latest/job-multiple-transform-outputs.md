@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0396415593f2d0f41abc55433bb8f19c4913ac26
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a40ce1fd7b3d9d946641c91f5876d8c73755b005
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954142"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092258"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>複数の変換出力があるジョブを作成する
 
@@ -68,6 +68,7 @@ private static async Task<Transform> GetOrCreateTransformAsync(
     return transform;
 }
 ```
+
 ## <a name="submit-a-job"></a>ジョブの送信
 
 HTTPS URL 入力と 2 つのジョブ出力を使用してジョブを作成します。

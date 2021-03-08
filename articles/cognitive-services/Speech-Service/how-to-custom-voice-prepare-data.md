@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 1cd90bc1906140e6e559c1557234458035e54042
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 22db0006e6abb38439a2db46584559dcd9ce3f3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722366"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>カスタム音声を作成するためのデータを準備する
 
@@ -27,9 +27,9 @@ ms.locfileid: "99524704"
 > ニューラル音声をトレーニングする場合は、ボイス タレントのプロファイルと共に、自分の音声データがカスタム音声モデルのトレーニングに使用されることをボイス タレントが承認している音声同意ファイルを、指定する必要があります。 録音スクリプトを準備するときは、以下の文を必ず含めてください。 
 
 > "I [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice." (私 [自分の姓名] は、私の音声の合成バージョンを作成して使用するために、私の音声が [会社名] によって使用されることを承知しています。)
-この文は、同意した人物と同じ人物によってトレーニング データが作成されたかどうかを確認するために使用されます。 詳細については、[ボイス タレントの確認](https://aka.ms/CNV-data-privacy)に関する記事を参照してください。
+この文は、同意した人物と同じ人物によってトレーニング データが作成されたかどうかを確認するために使用されます。 詳細については、[ボイス タレントの確認](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)に関する記事を参照してください。
 
-> カスタム ニューラル音声を利用するためのアクセスには制限があります。 [責任ある AI の要件](https://aka.ms/gating-overview)について理解し、[こちらのアクセスを適用](https://aka.ms/customneural)してください。 
+> カスタム ニューラル音声を利用するためのアクセスには制限があります。 [責任ある AI の要件](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)について理解し、[こちらのアクセスを適用](https://aka.ms/customneural)してください。 
 
 ## <a name="data-types"></a>データ型
 

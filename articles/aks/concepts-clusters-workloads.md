@@ -3,13 +3,13 @@ title: Azure Kubernetes Services (AKS) における Kubernetes の基本概念
 description: Kubernetes の基本のクラスターおよびワークロードについてと、クラスターおよびワークロードが Azure Kubernetes Service (AKS) の機能にどのように関連しているかを説明します。
 services: container-service
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 12/07/2020
+ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674928"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373234"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -31,7 +31,7 @@ Azure Kubernetes Service (AKS) は、アップグレードの調整など、デ�
 
 Kubernetes クラスターは、次の 2 つのコンポーネントに分割されています。
 
-- "*コントロール プレーン*" ノード。主要な Kubernetes サービスと、アプリケーション ワークロードのオーケストレーションを提供します。
+- "*コントロール プレーン*"。主要な Kubernetes サービスと、アプリケーション ワークロードのオーケストレーションを提供します。
 - "*ノード*"。アプリケーション ワークロードを実行します。
 
 ![Kubernetes のコントロール プレーンとノードのコンポーネント](media/concepts-clusters-workloads/control-plane-and-nodes.png)

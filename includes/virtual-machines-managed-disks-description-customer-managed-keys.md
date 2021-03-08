@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98792369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751117"
 ---
 ユーザー独自のキーを使用して、各マネージド ディスクのレベルで暗号化を管理できます。 カスタマー マネージド キーを使用したサーバー側でのマネージド ディスクの暗号化により、Azure Key Vault との統合されたエクスペリエンスが提供されます。 [ご使用の RSA キー](../articles/key-vault/keys/hsm-protected-keys.md)を Key Vault にインポートするか、Azure Key Vault で新しい RSA キーを生成することができます。 
 
@@ -43,3 +43,7 @@ Ultra Disk の場合: キーを無効にしたり削除したりしても、そ�
 1. データの読み取りまたは書き込みを行うために、マネージド ディスクは Azure Key Vault に要求を送信して、データの暗号化と暗号化解除を実行するためにデータ暗号化キーを暗号化 (ラップ) および暗号化解除 (ラップ解除) します。 
 
 カスタマー マネージド キーへのアクセスを取り消すには、[Azure Key Vault PowerShell](/powershell/module/azurerm.keyvault/) および [Azure Key Vault CLI](/cli/azure/keyvault) に関する記事をご覧ください。 アクセスを取り消すと、Azure Storage が暗号化キーにアクセスできなくなるため、ストレージ アカウント内の全データへのアクセスが事実上ブロックされます。
+
+#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>カスタマー マネージド キーの自動キー ローテーション (プレビュー)
+
+最新のキー バージョンへの自動キー ローテーションを有効にすることを選択できます。 ディスクから、ディスク暗号化セットを介してキーが参照されます。 ディスク暗号化セットの自動ローテーションを有効にすると、ディスク暗号化セットを参照するすべてのマネージド ディスク、スナップショット、およびイメージがシステムによって自動的に更新され、1 時間以内に新しいバージョンのキーが使用されます。 現在、この機能は、プレビュー段階では限られたリージョンで利用できます。 リージョン別の提供状況については、「[サポートされているリージョン](#supported-regions)」セクションを参照してください。

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6e312d354a25113a764bca5e9492909d22af9873
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896903"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007739"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -74,7 +74,7 @@ Update Management では、同期先として構成されたソースに基づ�
 
 |オペレーティング システム  |Notes  |
 |---------|---------|
-|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br>Windows Server 2012 R2 (Datacenter、Standard)<br>Windows Server 2012 |
+|Windows Server 2019 (Datacenter/Standard、Server Core を含む)<br><br>Windows Server 2016 (Datacenter/Standard、Server Core を除く)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価および修正プログラムの適用がサポートされます。 Windows Server 2008 R2 では、[Hybrid Runbook Worker](../automation-windows-hrw-install.md) がサポートされています。 |
 |CentOS 6 および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
 |Red Hat Enterprise 6 および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |

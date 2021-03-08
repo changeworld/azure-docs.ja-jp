@@ -2,16 +2,16 @@
 title: Azure Service Bus 保存データの暗号化用に独自のキーを構成する
 description: この記事では、Azure Service Bus の保存データを暗号化するための独自のキーを構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/10/2021
+ms.openlocfilehash: 5d14c8953819575d1c2688520838135efc7121e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928084"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378317"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
-Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。 Azure Storage に格納されているすべてのデータは、Microsoft マネージド キーを使用して暗号化されます。 独自のキー (別名: Bring Your Own Key (BYOK) またはカスタマー マネージド キー) を使用する場合、データは引き続き Microsoft マネージド キーを使用して暗号化されますが、さらに、Microsoft マネージド キーがカスタマー マネージド キーを使用して暗号化されます。 この機能を使用すると、Microsoft マネージド キーの暗号化に使用されるカスタマー マネージド キーを作成、ローテーション、無効化でき、さらに、それに対するアクセスを取り消すこともできます。 BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ プロセスです。
+Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。 Azure Storage に格納されているすべてのデータは、Microsoft マネージド キーを使用して暗号化されます。 独自のキー (Bring Your Own Key (BYOK) またはカスタマーマネージド キーとも呼ばれます) を使用する場合、データは引き続き Microsoft マネージド キーを使用して暗号化されますが、さらに Microsoft マネージド キーはカスタマー マネージド キーを使用して暗号化されます。 この機能を使用して、Microsoft マネージド キーの暗号化に使用されるカスタマー マネージド キーへの作成、ローテーション、無効化、およびアクセスの取り消しを実行できます。 BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ プロセスです。
 
 カスタマー マネージド キーには、サービス側の暗号化に関するいくつかの注意事項があります。 
 - この機能は [Azure Service Bus Premium](service-bus-premium-messaging.md) レベルでサポートされます。 これは、Standard レベルの Service Bus 名前空間に対して有効にすることはできません。
@@ -94,6 +94,17 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
 暗号化キーへのアクセスを取り消しても、Service Bus からデータが消去されることはありません。 ただし、Service Bus 名前空間からデータにアクセスすることはできません。 暗号化キーは、アクセス ポリシーを使用して、またはキーを削除することで取り消すことができます。 アクセス ポリシーと、キー コンテナーのセキュリティ保護の詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/secure-your-key-vault.md)」を参照してください。
 
 暗号化キーを取り消すと、暗号化されている名前空間で Service Bus サービスが機能しなくなります。 キーへのアクセスを有効にするか、削除済みのキーを復元すると、Service Bus サービスによってキーが選択され、暗号化された Service Bus 名前空間からデータにアクセスできるようになります。
+
+## <a name="caching-of-keys"></a>キーのキャッシュ
+Service Bus インスタンスでは、そのリストされた暗号化キーが 5 分ごとにポーリングされます。 それらは、次のポーリング (5 分後) までキャッシュされて使用されます。 少なくとも 1 つのキーが使用できる限り、キューとトピックにアクセスできます。 リストされたすべてのキーがポーリング時にアクセスできない場合は、すべてのキューとトピックが使用できなくなります。 
+
+詳細を次に示します。 
+
+- Service Bus サービスは、5 分ごとに名前空間のレコードに記載されているすべてのカスタマー マネージド キーをポーリングします。
+    - キーがローテーションされている場合、このレコードは新しいキーで更新されます。
+    - キーが取り消されている場合、そのキーはレコードから削除されます。
+    - すべてのキーが取り消されている場合は、名前空間の暗号化状態が **[取り消し済み]** に設定されます。 その Service Bus 名前空間からはデータにアクセスできません。 
+    
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>Resource Manager テンプレートを使用して暗号化を有効にする
 このセクションでは、**Azure Resource Manager テンプレート** を使用して次のタスクを実行する方法を示します。 

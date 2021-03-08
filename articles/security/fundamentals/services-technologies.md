@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498797"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585424"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
@@ -35,7 +35,7 @@ ms.locfileid: "96498797"
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](../../security-center/security-center-introduction.md)| ハイブリッド クラウド ワークロード全体でセキュリティ管理と高度な脅威保護を実現するクラウドのワークロードを保護するソリューションです。|
 |[Azure Key Vault](../../key-vault/general/overview.md)| パスワード、接続文字列およびアプリの動作に必要なその他の情報を格納するセキュリティで保護された機密データ ストアです。 |
-|[Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md)|アプリとリソースの操作の分析情報を提供する、製品利用統計情報およびその他のデータを収集する、クエリ言語および分析エンジンを提供する監視サービスです。 単独で使用することも、Security Center などのその他のサービスと共に使用することもできます。 |
+|[Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)|アプリとリソースの操作の分析情報を提供する、製品利用統計情報およびその他のデータを収集する、クエリ言語および分析エンジンを提供する監視サービスです。 単独で使用することも、Security Center などのその他のサービスと共に使用することもできます。 |
 |[Azure Dev/Test Lab](../../devtest-labs/devtest-lab-overview.md)|無駄を最小限に抑え、コストを管理しつつ、Azure で迅速に環境を作成するためのサポートを開発者とテスト担当者に提供するサービスです。  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->

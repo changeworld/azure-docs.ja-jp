@@ -3,12 +3,12 @@ title: PagerDuty で Azure サービス正常性アラートを送信する
 description: PagerDuty インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ae5141f33ebf4ec6e32029625af3a199a04d67b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091540"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594521"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>PagerDuty で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -69,7 +69,7 @@ ms.locfileid: "87091540"
 1. 完了したら **[保存]** を選択して、アクション グループを更新します。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/alerts/activity-log-alerts-webhook.md)」を参照してください。
 
 1. 次のような HTTP POST 要求を作成します。
 
@@ -86,6 +86,6 @@ ms.locfileid: "87091540"
 
 ## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
-- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/alerts/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](./service-notifications.md)について学習します。
-- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。
+- [アクション グループ](../azure-monitor/alerts/action-groups.md)について学習します。

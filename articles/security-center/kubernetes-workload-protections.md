@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/12/2020
+ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222185"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546263"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -35,11 +35,11 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|リリース状態:|一般提供 (GA)|
 |価格:|Free|
 |必要なロールとアクセス許可:|割り当てを編集するための **所有者** または **セキュリティ管理者**<br>推奨事項を表示するための **閲覧者**|
-|サポートされているクラスター:|Kubernetes v1.14 以降が必要です。<br>クラスター上の PodSecurityPolicy リソース (古い PSP モデル) はありません。<br>Windows ノードはサポートされていません。|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|環境要件:|Kubernetes v1.14 以降が必要です。<br>クラスター上の PodSecurityPolicy リソース (古い PSP モデル) はありません。<br>Windows ノードはサポートされていません。|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
 
@@ -52,6 +52,8 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 推奨設定を構成するために、**Kubernetes 用の Azure Policy アドオン** をインストールします。 
 
 - 「[拡張機能の自動プロビジョニングの有効化](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)」で説明されているように、このアドオンは自動的にデプロイできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
+
+    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Security Center の自動プロビジョニング ツールを使用して Kubernetes 用の Policy アドオンをインストールする":::
 
 - アドオンを手動でデプロイするには:
 

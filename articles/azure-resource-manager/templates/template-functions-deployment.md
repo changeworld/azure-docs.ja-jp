@@ -2,13 +2,13 @@
 title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレート (ARM テンプレート) で、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 03/02/2021
+ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722723"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数
 
@@ -508,7 +508,7 @@ output crossOutput string = crossParameter
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 ```bicep
-var storageName = concat('storage', uniqueString(resourceGroup().id))
+var storageName = 'storage${uniqueString(resourceGroup().id)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName

@@ -1,20 +1,20 @@
 ---
 title: カスタム ルールと通知を使用して Azure IoT Central を拡張する |Microsoft Docs
 description: ソリューション開発者は、デバイスがテレメトリの送信を停止したときに電子メール通知を送信するように IoT Central アプリケーションを構成します。 このソリューションでは、Azure Stream Analytics、Azure Functions、SendGrid を使用します。
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/02/2019
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220267"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557590"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する
 
@@ -97,22 +97,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | ランタイム スタック | .NET |
 | ストレージ | 新規作成 |
 
-### <a name="sendgrid-account"></a>SendGrid アカウント
+### <a name="sendgrid-account-and-api-keys"></a>SendGrid アカウントと API キー
 
-以下の設定を使用して、[Azure portal で SendGrid アカウントを作成](https://portal.azure.com/#create/Sendgrid.sendgrid)します。
+Sendgrid アカウントをお持ちでない場合は、開始する前に[無料アカウント](https://app.sendgrid.com/)を作成してください。
 
-| 設定 | 値 |
-| ------- | ----- |
-| Name    | SendGrid アカウント名を選択します |
-| Password | パスワードを作成します |
-| サブスクリプション | 該当するサブスクリプション |
-| Resource group | DetectStoppedDevices |
-| Pricing tier | F1 Free |
-| 連絡先情報 | 必須情報を入力します |
+1. 左側のメニューにある Sendgrid ダッシュボードの [設定] で、 **[API キー]** を選択します。
+1. **[API キーの作成]** をクリックします。
+1. 新しい API キーに **AzureFunctionAccess** という名前を指定します。
+1. **[Create & View]\(作成して表示\)** をクリックします。
 
-必要なすべてのリソースを作成すると、次のスクリーンショットのような **DetectStoppedDevices** リソース グループが表示されます。
+    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="SendGrid API キーの作成のスクリーン ショット。":::
 
-![停止したデータのリソース グループを検出](media/howto-create-custom-rules/resource-group.png)
+この後、API キーが付与されます。 後で使用できるようにこの文字列を保存します。
 
 ## <a name="create-an-event-hub"></a>イベント ハブの作成
 
@@ -121,59 +117,32 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Azure portal で Event Hubs 名前空間に移動し、 **[+ イベント ハブ]** を選択します。
 1. イベント ハブに **centralexport** という名前を付けて、 **[作成]** を選択します。
 
-次のスクリーンショットのような Event Hubs 名前空間が作成されます。
+次のスクリーンショットのような Event Hubs 名前空間が作成されます。 
 
-![Event Hubs 名前空間](media/howto-create-custom-rules/event-hubs-namespace.png)
+```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
-## <a name="get-sendgrid-api-key"></a>SendGrid API キーを取得する
+## Define the function
 
-関数アプリでは、メール メッセージを送信するために SendGrid API キーが必要です。 SendGrid API キーを作成するには、次の手順に従います。
+This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
 
-1. Azure portal で、SendGrid アカウントに移動します。 次に、 **[管理]** を選択して SendGrid アカウントにアクセスします。
-1. SendGrid アカウントで **[設定]** 、 **[API キー]** の順に選択します。 **[API キーの作成]** を選択します。
+1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
+1. Select **+** to create a new function.
+1. Select **HTTP Trigger**.
+1. Select **Add**.
 
-    ![SendGrid API キーを作成する](media/howto-create-custom-rules/sendgrid-api-keys.png)
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
 
-1. **[API キーの作成]** ページで、 **[フル アクセス]** のアクセス許可を持つ「**AzureFunctionAccess**」という名前のキーを作成します。
-1. API キーをメモしておいてください。これは関数アプリを構成するときに必要になります。
+## Edit code for HTTP Trigger
 
-## <a name="define-the-function"></a>関数を定義する
+The portal creates a default function called **HttpTrigger1**:
 
-このソリューションでは、Azure Functions アプリを使用して、Stream Analytics ジョブが停止したデバイスを検出したときにメール通知を送信します。 関数アプリを作成するには、次の手順に従います。
+```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
 
-1. Azure portal で、**DetectStoppedDevices** リソース グループ内の **[App Service]** インスタンスに移動します。
-1. **+** を選択して、新しい関数を作成します。
-1. **[開発環境を選択する]** ページで **[ポータル内]** を選択してから、 **[続行]** を選択します。
-1. **[関数の作成]** ページで、 **[Webhook + API]** を選択してから **[作成]** を選択します。
-
-ポータルで **HttpTrigger1** という既定の関数が作成されます。
-
-![既定の HTTP トリガー関数](media/howto-create-custom-rules/default-function.png)
-
-### <a name="configure-function-bindings"></a>関数バインドを構成する
-
-SendGrid を使用してメールを送信するには、次のように関数バインドを構成する必要があります。
-
-1. **[統合]** を選択し、出力 **[HTTP ($return)]** を選択して、 **[削除]** を選択します。
-1. **[+ 新しい出力]** を選択し、 **[SendGrid]** を選択して、 **[選択]** を選択します。 **[インストール]** を選択して SendGrid 拡張機能をインストールします。
-1. インストールが完了したら、 **[関数の戻り値を使用する]** を選択します。 メール通知を受信する有効な **[宛先アドレス]** を追加します。  メール送信者として使用する有効な **[差出人アドレス]** を追加します。
-1. **[SendGrid API キーのアプリ設定]** の横の **[新規]** を選択します。 キーとして「**SendGridAPIKey**」と入力し、値として前にメモした SendGrid API キーを入力します。 **[作成]** を選択します。
-1. **[保存]** を選択して、関数の SendGrid バインドを保存します。
-
-統合設定は次のスクリーンショットのようになります。
-
-![関数アプリの統合](media/howto-create-custom-rules/function-integrate.png)
-
-### <a name="add-the-function-code"></a>関数コードを追加する
-
-関数を実装するには、次のように、受信 HTTP 要求を解析してメールを送信するための C# コードを追加します。
-
-1. 関数アプリで **HttpTrigger1** 関数を選択し、C# コードを次のコードに置き換えます。
+1. Replace the C# code with the following code:
 
     ```csharp
     #r "Newtonsoft.Json"
-    #r "..\bin\SendGrid.dll"
-
+    #r "SendGrid"
     using System;
     using SendGrid.Helpers.Mail;
     using Microsoft.Azure.WebJobs.Host;
@@ -196,7 +165,7 @@ SendGrid を使用してメールを送信するには、次のように関数�
             content += $"<tr><td>{notification.deviceid}</td><td>{notification.time}</td></tr>";
         }
         content += "</table>";
-        message.AddContent("text/html", content);
+        message.AddContent("text/html", content);  
 
         return message;
     }
@@ -208,13 +177,50 @@ SendGrid を使用してメールを送信するには、次のように関数�
     }
     ```
 
-    新しいコードを保存するまで、エラー メッセージが表示される場合があります。
+    You may see an error message until you save the new code.
+1. Select **Save** to save the function.
 
-1. **[保存]** を選択して関数を保存します。
+## Add SendGrid Key
 
-### <a name="test-the-function-works"></a>関数の動作をテストする
+To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
 
-ポータルで関数をテストするには、まずコード エディターの下部にある **[ログ]** を選択します。 次に、コード エディターの右側にある **[テスト]** をクリックします。 **[要求本文]** として次の JSON を使用します。
+1. Select **Function Keys**.
+1. Choose **+ New Function Key**.
+1. Enter the *Name* and *Value* of the API Key you created before.
+1. Click **OK.**
+
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
+
+
+## Configure HttpTrigger function to use SendGrid
+
+To send emails with SendGrid, you need to configure the bindings for your function as follows:
+
+1. Select **Integrate**.
+1. Choose **Add Output** under **HTTP ($return)**.
+1. Select **Delete.**
+1. Choose **+ New Output**.
+1. For Binding Type, then choose **SendGrid**.
+1. For SendGrid API Key Setting Type, click New.
+1. Enter the *Name* and *Value* of your SendGrid API key.
+1. Add the following information:
+
+| Setting | Value |
+| ------- | ----- |
+| Message parameter name | Choose your name |
+| To address | Choose the name of your To Address |
+| From address | Choose the name of your From Address |
+| Message subject | Enter your subject header |
+| Message text | Enter the message from your integration |
+
+1. Select **OK**.
+
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
+
+
+### Test the function works
+
+To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -222,9 +228,9 @@ SendGrid を使用してメールを送信するには、次のように関数�
 
 **[ログ]** パネルに関数ログのメッセージが表示されます。
 
-![関数のログ出力](media/howto-create-custom-rules/function-app-logs.png)
+```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
-数分後に、 **[宛先]** メール アドレスに次の内容のメールが届きます。
+After a few minutes, the **To** email address receives an email with the following content:
 
 ```txt
 The following device(s) have stopped sending telemetry:
@@ -303,26 +309,26 @@ test-device-3    2019-05-02T14:24:28.919Z
 1. **[保存]** を選択します。
 1. Stream Analytics ジョブを開始するには、 **[概要]** 、 **[開始]** 、 **[今すぐ]** 、 **[開始]** の順に選択します。
 
-    ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
+    :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Stream Analytics のスクリーンショット。":::
 
-## <a name="configure-export-in-iot-central"></a>IoT Central でエクスポートを構成する
+## <a name="configure-export-in-iot-central"></a>IoT Central でエクスポートを構成する 
 
-[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、Contoso テンプレートから作成した IoT Central アプリケーションに移動します。 このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。 エクスポートを構成するには、次の手順に従います。
+[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、作成した IoT Central アプリケーションに移動します。
+
+このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。 エクスポートを構成するには、次の手順に従います。
 
 1. **[データのエクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
-1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
+1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。 
 
     | 設定 | 値 |
     | ------- | ----- |
     | 表示名 | Event Hubs へのエクスポート |
     | 有効 | On |
-    | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
-    | イベント ハブ | centralexport |
-    | 測定 | On |
-    | デバイス | Off |
-    | デバイス テンプレート | Off |
+    | エクスポートするデータの種類 | 製品利用統計情報 |
+    | エンリッチメント | エクスポートされたデータの編成方法についての必要なキーと値を入力します | 
+    | 宛先 | 新規作成し、データのエクスポート先の情報を入力します |
 
-![継続的データ エクスポート構成](media/howto-create-custom-rules/cde-configuration.png)
+    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="データのエクスポートのスクリーンショット。":::
 
 エクスポートの状態が **[実行中]** になるまで待ってから、続行します。
 

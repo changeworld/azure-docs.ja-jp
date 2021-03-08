@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201724"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368967"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -73,6 +73,7 @@ Active Directory 環境のセキュリティ保護の詳細については、[Ac
     - TLS/SSL 証明書を構成する必要があります。 詳細については、[AD FS の SSL/TLS プロトコルおよび暗号スイートの管理](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)および [AD FS での SSL 証明書の管理](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)に関する記事を参照してください。
     - 名前解決を構成する必要があります。 
 - 全体管理者が MFA を有効にしている場合、URL https://secure.aadcdn.microsoftonline-p.com は信頼済みサイトの一覧に *なければなりません*。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
+- 同期に Azure AD Connect Health を使用する予定の場合は、Azure AD Connect Health の前提条件も満たされていることを確認してください。 詳細については、「[Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)」を参照してください。
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect サーバーを強化する 
 Azure AD Connect サーバーを強化して、お客様の IT 環境に含まれるこの重要なコンポーネントに対する、セキュリティの攻撃面を縮小することをお勧めします。 これらの推奨事項に従うことで、組織に対するセキュリティ上のリスクを軽減することができます。

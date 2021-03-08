@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936840"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550761"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -89,6 +89,10 @@ Application Insights では、収集された依存関係データの "_アプ�
 + [PowerShell](functions-reference-powershell.md#logging)
 + [Python](functions-reference-python.md#logging)
 
+## <a name="analyze-data"></a>データを分析する
+
+既定では、関数アプリから収集されたデータは、Application Insights に格納されます。 [Azure portal](https://portal.azure.com) では、Application Insights によって、テレメトリ データの広範囲にわたるセットの視覚化が提供されます。 エラー ログ、クエリ イベント、メトリックの詳細を表示できます。 収集したデータを表示してクエリを実行する方法の基本的な例など、詳細については、「[Application Insights で Azure Functions のテレメトリを分析する](analyze-telemetry-data.md)」を参照してください。 
+
 ## <a name="streaming-logs"></a>ストリーミング ログ
 
 アプリケーションの開発中、Azure 内での実行時にログに書き込まれている内容をほぼリアルタイムで確認する必要が生じることがよくあります。
@@ -115,7 +119,7 @@ _この機能はプレビュー段階にあります。_
 
 [Azure Functions スケール コントローラー](./event-driven-scaling.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights にログを出力させることで、Function App のためにスケール コントローラーで下されている決定をより詳細に理解できます。 生成されたログを、別のサービスによる分析のために BLOB ストレージに格納することもできます。 
 
-この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前のアプリケーション設定を、ご利用のFunction App の設定に追加します。 詳細については、「[スケール コントローラー ログを構成する](configure-monitoring.md#configure-scale-controller-logs)」を参照してください。
+この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前のアプリケーション設定を、ご利用の関数アプリの設定に追加します。 詳細については、「[スケール コントローラー ログを構成する](configure-monitoring.md#configure-scale-controller-logs)」を参照してください。
 
 ## <a name="report-issues"></a>レポートに関する問題
 

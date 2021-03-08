@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055163"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585887"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Automation アカウントで変更履歴とインベントリを有効にする
 
@@ -53,7 +53,7 @@ Azure に存在しないマシンは手動で追加する必要があります�
 
 1. Automation アカウントから、 **[構成管理]** の **[インベントリ]** または **[Change tracking]\(変更履歴\)** を選択します。
 
-2. **[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、変更履歴とインベントリの操作に対するレポートをマシンが開始できるように、[Windows 用の Log Analytics エージェントをインストールして構成する方法](../../azure-monitor/platform/log-analytics-agent.md)が示されます。 Operations Manager によって現在管理されているマシンを有効にする場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
+2. **[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、変更履歴とインベントリの操作に対するレポートをマシンが開始できるように、[Windows 用の Log Analytics エージェントをインストールして構成する方法](../../azure-monitor/agents/log-analytics-agent.md)が示されます。 Operations Manager によって現在管理されているマシンを有効にする場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
 
 ## <a name="enable-machines-in-the-workspace"></a>ワークスペースでのマシンの有効化
 

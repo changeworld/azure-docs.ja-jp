@@ -3,12 +3,12 @@ title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
 ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 33c7da1d7484056eb1bb2fd4b00d892137ed2b64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 05e78d66c29e500842d14a6eeb563c4569ecf0bd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787370"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596489"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -357,7 +357,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>アクティビティ ログを使用した監査管理グループ
 
-管理グループは、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)内でサポートされます。 他の Azure リソースと同じ一元的な場所で、管理グループに発生するすべてのイベントのクエリを実行できます。 たとえば、特定の管理グループに対して行われた、ロールの割り当てまたはポリシーの割り当ての変更を、すべて確認できます。
+管理グループは、[Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)内でサポートされます。 他の Azure リソースと同じ一元的な場所で、管理グループに発生するすべてのイベントのクエリを実行できます。 たとえば、特定の管理グループに対して行われた、ロールの割り当てまたはポリシーの割り当ての変更を、すべて確認できます。
 
 :::image type="content" source="./media/al-mg.png" alt-text="選択した管理グループに関連するアクティビティ ログと操作のスクリーンショット。" border="false":::
 

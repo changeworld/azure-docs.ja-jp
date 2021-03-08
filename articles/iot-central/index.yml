@@ -1,143 +1,142 @@
-### YamlMime:Hub
-title: IoT Central ソリューションのドキュメント
-summary: Azure IoT Central サービスとソリューションのドキュメントを参照してください。
-brand: azure
+### YamlMime:Landing
+title: Azure IoT Central のドキュメント
+summary: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 Azure IoT Central を使用すると、IoT ソリューションの初期セットアップを容易に行えるほか、一般的な IoT プロジェクトにおける管理の負担、運用コスト、オーバーヘッドを抑えることができます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
 metadata:
-  title: Azure IoT Central のドキュメント ハブ
-  description: Azure IoT Central サービスとソリューションのドキュメントを参照してください。
+  title: Azure IoT Central のドキュメント
+  description: Azure IoT Central アプリケーションは、IoT ソリューションの作成を簡単にします。 Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
+  services: iot-central
   ms.service: iot-central
-  ms.topic: hub-page
-  author: philmea
-  ms.author: philmea
-  ms.date: 06/30/2020
-  ms.openlocfilehash: 59d95b8ce13161999c06993cbbf9194a66e38ed3
-  ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  ms.date: 09/02/2021
+  ms.custom: contperf-fy21q3
+  ms.openlocfilehash: c4aca59eab9e3597e5f9a03931f5854adab5fac6
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/25/2020
-  ms.locfileid: "96122501"
-highlightedContent:
-  items:
-  - title: IoT Central とは
-    itemType: overview
-    url: ./core/overview-iot-central.md
-  - title: アプリケーション テンプレートとは
-    itemType: concept
-    url: ./core/concepts-app-templates.md
-  - title: IoT Central デバイスの開発の概要
-    itemType: overview
-    url: ./core/overview-iot-central-developer.md
-  - title: 新しいアプリケーションを作成する
-    itemType: quickstart
-    url: ./core/quick-deploy-iot-central.md
-  - title: デバイスの種類を定義してデバイスを追加する
-    itemType: tutorial
-    url: ./core/howto-set-up-template.md
-  - title: デバイスを監視する
-    itemType: tutorial
-    url: ./core/tutorial-create-telemetry-rules.md
-conceptualContent:
-  items:
-  - title: デバイスを接続して開発する
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101712557"
+landingContent:
+- title: Azure IoT Central について
+  linkLists:
+  - linkListType: overview
     links:
-    - url: ./core/tutorial-connect-device.md
-      itemType: tutorial
-      text: デバイスの接続
-    - url: ./core/concepts-get-connected.md
-      itemType: concept
-      text: デバイスの接続性
-    - url: ./core/concepts-device-templates.md
-      itemType: concept
-      text: デバイス テンプレート
-    - url: ./core/troubleshoot-connection.md
-      itemType: how-to-guide
-      text: デバイス接続のトラブルシューティング
-    footerLink:
-      url: ./core/index.yml
-      text: 詳細情報
-  - title: 接続を維持する
+    - text: Azure IoT Central とは
+      url: core/overview-iot-central.md
+    - text: UI について
+      url: core/overview-iot-central-tour.md
+  - linkListType: quickstart
     links:
-    - url: ./core/tutorial-use-device-groups.md
-      itemType: how-to-guide
-      text: デバイス グループを使用する
-    - url: ./core/howto-manage-devices.md
-      itemType: how-to-guide
-      text: デバイスを管理する
-    - url: ./core/howto-run-a-job.md
-      itemType: concept
-      text: ジョブの実行方法
-    - url: ./core/howto-create-analytics.md
-      itemType: how-to-guide
-      text: デバイス データを分析する
-    footerLink:
-      url: ./core/index.yml
-      text: 詳細情報
-  - title: 変換
+    - text: 新しいアプリケーションを作成する
+      url: core/quick-deploy-iot-central.md
+  - linkListType: architecture
     links:
-    - url: ./core/tutorial-create-telemetry-rules.md
-      itemType: how-to-guide
-      text: テレメトリ ルールを作成する
-    - url: ./core/howto-export-data.md
-      itemType: how-to-guide
-      text: データをクラウドの宛先にエクスポートする
-    footerLink:
-      url: ./core/index.yml
-      text: 詳細情報
-productDirectory:
-  title: 業界アプリケーション テンプレートを使用して構築を開始する
-  summary: 構築する準備は整いましたか? ソリューション ビルダー用に構築された業界関連のアプリケーション テンプレートを確認してください。
-  items:
-  - title: 小売業向けの構築
-    imageSrc: ./retail/media/index/iot-central-retail.svg
+    - text: Azure IoT Central のアーキテクチャ
+      url: core/concepts-architecture.md
+    - text: アプリケーション テンプレート
+      url: core/concepts-app-templates.md
+  - linkListType: whats-new
     links:
-    - text: Azure IoT Central を使用した小売ソリューションの構築
-      url: ./retail/overview-iot-central-retail.md
-    - text: ストア内の分析アプリケーションを作成する
-      url: ./retail/tutorial-in-store-analytics-create-app.md
-    - text: スマート在庫管理アプリケーションを作成する
-      url: ./retail/tutorial-iot-central-smart-inventory-management.md
-    - text: コネクテッド ロジスティクス アプリケーションを作成する
-      url: ./retail/tutorial-iot-central-connected-logistics.md
-    - text: デジタル流通センター アプリケーションを作成する
-      url: ./retail/tutorial-iot-central-digital-distribution-center.md
-    - text: ビデオ分析アプリケーションを作成する
-      url: ./retail/tutorial-video-analytics-create-app-yolo-v3.md
-  - title: ヘルスケア業界向けの構築
-    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
-    links:
-    - url: ./healthcare/overview-iot-central-healthcare.md
-      text: IoT Central を使用してヘルスケア ソリューションを構築する
-    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
-      text: 患者の継続的なモニタリング アプリを作成する
-  - title: エネルギー産業向けの構築
-    imageSrc: ./energy/media/index/iot-central-energy.svg
-    links:
-    - url: ./energy/overview-iot-central-energy.md
-      text: IoT Central を使用してエネルギー ソリューションを構築する
-    - url: ./energy/tutorial-smart-meter-app.md
-      text: スマート メーター監視アプリを作成する
-    - url: ./energy/tutorial-solar-panel-app.md
-      text: ソーラー パネル監視アプリを作成する
-  - title: 政府機関向けの構築
-    imageSrc: ./government/media/index/iot-central-government.svg
-    links:
-    - url: ./government/overview-iot-central-government.md
-      text: IoT Central を使用して政府機関ソリューションを構築する
-    - url: ./government/tutorial-water-quality-monitoring.md
-      text: 水質監視アプリを作成する
-    - url: ./government/tutorial-water-consumption-monitoring.md
-      text: 水消費量監視アプリを作成する
-    - url: ./government/tutorial-connected-waste-management.md
-      text: 接続された廃棄物管理アプリを作成する
-additionalContent:
-  sections:
-  - items:
-    - title: IoT Central API
-      summary: IoT Central API を調べます。
-      url: /rest/api/iotcentral/
-    - title: Microsoft Learn の IoT Central
-      summary: 無料のサンドボックス環境で IoT Central を調べます。
-      url: /learn/browse/?products=azure-iot-central
-    - title: 最新の更新
-      summary: IoT Central の最新情報を参照してください。
+    - text: 最新の更新
       url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central
+- title: デバイスの開発と接続
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: デバイス開発者向けの概要
+      url: core/overview-iot-central-developer.md
+  - linkListType: tutorial
+    links:
+    - text: デバイスを作成して接続する
+      url: core/tutorial-connect-device.md
+  - linkListType: concept
+    links:
+    - text: デバイスの接続性
+      url: core/concepts-get-connected.md
+    - text: メッセージのペイロード
+      url: core/concepts-telemetry-properties-commands.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Sphere デバイスを接続する
+      url: core/howto-connect-sphere.md
+    - text: デバイス接続のトラブルシューティング
+      url: core/troubleshoot-connection.md
+- title: 統合されたソリューションの構築
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ソリューション ビルダーの概要
+      url: core/overview-iot-central-solution-builder.md
+  - linkListType: tutorial
+    links:
+    - text: 使用ルール
+      url: core/tutorial-create-telemetry-rules.md
+  - linkListType: how-to-guide
+    links:
+    - text: ダッシュボードを作成する
+      url: core/howto-create-personal-dashboards.md
+    - text: デバイス データを分析する
+      url: core/howto-create-analytics.md
+    - text: データをクラウドの宛先にエクスポートする
+      url: core/howto-export-data.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: /rest/api/iotcentral/
+- title: デバイスを管理する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: デバイス グループを使用する
+      url: core/tutorial-use-device-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: デバイスの追加、インポート、エクスポート
+      url: core/howto-manage-devices.md
+    - text: ジョブの実行
+      url: core/howto-run-a-job.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アプリケーションの管理
+      url: core/howto-administer.md
+    - text: ユーザーとロールを管理する
+      url: core/howto-manage-users-roles.md
+    - text: 課金状況の表示
+      url: core/howto-view-bill.md
+    - text: アプリケーション UI のカスタマイズ
+      url: core/howto-customize-ui.md
+  - linkListType: sample
+    links:
+    - text: ARM SDK のサンプル
+      url: /samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/
+- title: Microsoft Learn を使用したシナリオベースの学習
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 'ラーニング パス: Azure IoT Central を使用して IoT ソリューションを開発する'
+      url: /learn/paths/develop-iot-solutions-with-azure-iot-central/
+  - linkListType: learn
+    links:
+    - text: 'Learn モジュール: 最初の Azure IoT Central アプリを作成する'
+      url: /learn/modules/create-your-first-iot-central-app/
+    - text: 'Learn モジュール: Azure IoT Central でルールを設定し、利用統計情報に対してアクションを実行する'
+      url: /learn/modules/set-up-rules-take-actions-telemetry-data-azure-iot-central/
+    - text: 'Learn モジュール: REST API を使用して IoT Central アプリケーションを管理する'
+      url: /learn/modules/manage-iot-central-apps-with-rest-api/
+    - text: 'Learn モジュール: Azure IoT Central から Power BI アプリへの連続データ エクスポートを設定する'
+      url: /learn/modules/continuously-export-data-from-iot-central-power-bi/
+- title: 業界アプリケーション テンプレート
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 小売
+      url: retail/overview-iot-central-retail.md
+    - text: 医療
+      url: healthcare/overview-iot-central-healthcare.md
+    - text: 政府
+      url: government/overview-iot-central-government.md
+    - text: エネルギー
+      url: energy/overview-iot-central-energy.md

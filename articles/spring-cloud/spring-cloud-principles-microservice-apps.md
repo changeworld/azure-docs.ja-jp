@@ -1,5 +1,5 @@
 ---
-title: Azure Spring Cloud マイクロサービス アプリ用の Java と基本 OS
+title: Azure Spring Cloud マイクロサービス アプリ用の Java および基本 OS
 description: Azure Spring Cloud マイクロサービス アプリ用の Java および基本オペレーティング システムを正常に維持するための原則
 author: MikeDodaro
 ms.author: brendm
@@ -28,8 +28,8 @@ ms.locfileid: "92090677"
 * 基本オペレーティング システムからは、セキュリティ上の脆弱性が排除されている必要があります。
     * Debian 10 基本オペレーティング システムでは、147 の CVE が開かれています。
     * Ubuntu 18.04 基本オペレーティング システムでは、132 の CVE が開かれています。
-* ヘッドレス JRE を使用する必要があります。
-    * 現在、Azure Spring Cloud 上のアプリでは JDK を使用しています。 ヘッドレス JRE は、より小さいイメージです。
+* JRE-headless を使用する必要があります。
+    * 現在、Azure Spring Cloud 上のアプリでは JDK を使用しています。 JRE-headless は、より小さいイメージです。
 * Java の最新ビルドを使用する必要があります。
     * 現在、Azure Spring Cloud 上のアプリでは、Java 8 ビルド 242 を使用しています。 これは古いビルドです。
  

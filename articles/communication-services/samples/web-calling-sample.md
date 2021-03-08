@@ -9,42 +9,32 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763047"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658099"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+Web 通話サンプルは、Communication Services の Web 通話クライアント ライブラリが提供するさまざまな機能の詳細なチュートリアルとして機能する Web アプリケーションです。
+
+このサンプルは開発者向けに構築されたもので、これにより Communication Services を簡単に使い始めることができます。 そのユーザー インターフェイスは複数のセクションに分かれており、それぞれに [Show code]\(コードの表示\) ボタンが用意されています。これを使用すると、ブラウザーから自分の Communication Services アプリケーションに直接コードをコピーすることができます。
+
+## <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 
 > [!IMPORTANT]
 > [このサンプルは GitHub で入手できます](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)。
 
-Azure Communication Services の **Web 通話サンプル** では、Communication Services の通話クライアント ライブラリを使用して、JavaScript で通話エクスペリエンスを構築する方法を示します。
-
-このサンプルのクイックスタートでは、サンプルをローカル コンピューターで実行する前に、サンプルがどのように動作するかを学習します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
-
-## <a name="overview"></a>概要
-
-Web 通話サンプルは、Communication Services の Web 通話クライアント ライブラリが提供するさまざまな機能の詳細なチュートリアルとして機能する Web アプリケーションです。 
-
-このサンプルは開発者向けに構築されたもので、これにより Communication Services を簡単に使い始めることができます。 そのユーザー インターフェイスは複数のセクションに分かれており、それぞれに [Show code]\(コードの表示\) ボタンが用意されています。これを使用すると、ブラウザーから自分の Communication Services アプリケーションに直接コードをコピーすることができます。
-
-[Web 通話サンプル](https://github.com/Azure-Samples/communication-services-web-calling-tutorial)をマシンで実行していると、次のランディング ページが表示されます。
+/Project/readme.md に従ってプロジェクトを設定し、お使いのマシンでローカルに実行します。
+[Web 通話サンプル](https://github.com/Azure-Samples/communication-services-web-calling-tutorial)をマシンで実行すると、次のランディング ページが表示されます。
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Web 通話のチュートリアル 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web 通話のチュートリアル 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-
-## <a name="user-provisioning-and-sdk-initialization"></a>ユーザーのプロビジョニングと SDK の初期化 
-
-このデモの使用を開始するには、お使いの [Communication Services リソース](../quickstarts/create-communication-resource.md)の接続文字列を `config.json` に入力します。 これは、通話 SDK を初期化できるように[ユーザー アクセス トークン](../concepts/authentication.md)をプロビジョニングするために使用されます。
-
-ユーザー ID の入力には自分の個人識別子を入力します。 ここに何も指定しないと、ランダムなユーザー ID が生成されます。 
+## <a name="user-provisioning-and-sdk-initialization"></a>ユーザーのプロビジョニングと SDK の初期化
 
 [Provisioning user and initialize SDK]\(ユーザーのプロビジョニングと SDK の初期化\) をクリックすると、バックエンドのトークン プロビジョニング サービスによってプロビジョニングされたトークンを使用して SDK が初期化されます。 このバックエンド サービスは `/project/webpack.config.js` にあります。
 
@@ -60,7 +50,7 @@ SDK が初期化されると、次のように表示されます。
 
 Communication Services の Web 通話 SDK により、**1 対 1**、**1 対 N**、および **グループ** 通話が可能になります。
 
-1 対 1 または 1 対 N の発信通話では、コンマ区切り値を使用して、通話先となる Communication Services のユーザー ID を複数指定できます。 また、コンマ区切り値を使用して、通話先となる従来の (PSTN) 電話番号を指定することもできます。 
+1 対 1 または 1 対 N の発信通話では、コンマ区切り値を使用して、通話先となる Communication Services のユーザー ID を複数指定できます。 また、コンマ区切り値を使用して、通話先となる従来の (PSTN) 電話番号を指定することもできます。
 
 PSTN 電話番号に電話をかける際は、代替の発信者番号を指定してください。 発信通話を行うには、[Place call]\(通話\) ボタンをクリックします。
 
@@ -88,7 +78,7 @@ PSTN 電話番号に電話をかける際は、代替の発信者番号を指定
 
 ## <a name="next-steps"></a>次の手順
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[GitHub からサンプルをダウンロードする](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
 詳細については、次の記事を参照してください。

@@ -7,20 +7,22 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: dfd8526a035d4eef4d07539e541e37c88023b500
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/09/2021
+ms.openlocfilehash: 8ae9a89ddba2010603ae5a5f6b812e3aa1e1e3a6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063215"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097978"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーをスケジュールする方法
 
 インデクサーは通常、その作成直後に 1 回実行されます。 その後、Azure portal、[インデクサー実行 (REST)](/rest/api/searchservice/run-indexer)、または Azure SDK のいずれかを使用して、必要に応じてもう一度実行できます。 あるいは、スケジュールに従って実行するようにインデクサーを構成することもできます。 インデクサーのスケジュール設定が役立つ状況には、次のものがあります。
 
-* ソース データが時間の経過と共に変化し、検索インデクサーによって差分を自動的に処理したい。
-* ソース データが非常に大きく、時間の経過と共にインデクサーの処理を分散させたい。 大量のデータのインデックス作成の詳細については、[Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法](search-howto-large-index.md)に関する記事を参照してください。
+* ソース データが時間の経過と共に変化するため、検索インデクサーによって差分を自動的に処理したい。
+
+* ソース データが非常に大きく、時間の経過と共にインデクサーの処理を分散させたい。 インデクサー ジョブには、通常のデータ ソースの場合は 24 時間、スキルセットのあるインデクサーの場合は 2 時間の最大実行時間が課せられます。 この最大間隔内にインデックス作成を完了できない場合は、2 時間ごとに実行されるスケジュールを構成できます。 インデクサーは中断した箇所を自動的に取得できます。これは、インデックスが最後に終了した位置を示す内部の高基準値から分かります。 2 時間の繰り返しスケジュールでインデクサーを実行すると、1 つのジョブで許可されている間隔を超えて、大規模なデータ セット (膨大な数のドキュメント) を処理できます。 大量のデータのインデックスを作成する方法の詳細については、「[Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法](search-howto-large-index.md)」を参照してください。
+
 * 複数のデータ ソースから検索インデックスが生成されるので、競合を減らすために、異なるタイミングでインデクサーが実行されるようにしたい。
 
 視覚的には、スケジュールは次のようになることがあります。1 月 1 日に開始されて 50 分ごとに実行される。

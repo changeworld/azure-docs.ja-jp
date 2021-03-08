@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 04b68899b796088bd4b89509a413c7a1fe5369bb
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 9e4edbcfd9e4180e727cd885902d9f0150a967ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389401"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 証明書の変更  
 
@@ -24,7 +24,7 @@ Microsoft では、異なるルート証明機関 (CA) のセットからの TLS
 
 既存の Azure エンドポイントは、2020 年 8 月 13 日以降、段階的に移行されました。 新しく作成されるすべての Azure TLS/SSL エンドポイントには、新しいルート CA にチェーンする更新された証明書が含まれています。
 
-サービス固有の詳細:
+すべての Azure サービスがこの変更の影響を受けます。 ここでは、特定のサービスに関する追加の詳細を示します。
 
 - 2020 年 7 月 7 日に、[Azure Active Directory](../../active-directory/index.yml) (Azure AD) サービスでこの移行が開始されました。
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](../../iot-dps/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)をクリックしてください。

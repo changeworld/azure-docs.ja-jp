@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e47dfeab7466faf9a60b161b05d8b3bf39ebdb6a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: cf4e02f925e0c8c4024137589c0c9c4074c0aa11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203305"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596748"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps 用の Azure セキュリティ ベースライン
 
@@ -216,9 +216,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、対象の Azure Logic Apps インスタンスに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -242,7 +242,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](monitor-logic-apps-log-analytics.md)
 
@@ -258,7 +258,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](monitor-logic-apps-log-analytics.md)
 
@@ -284,7 +284,7 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 - [Azure Logic Apps で実行状態の監視、トリガー履歴の確認、アラートの設定を行う方法](monitor-logic-apps.md)
 
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: はい
 
@@ -300,9 +300,9 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 - [Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する方法](monitor-logic-apps-log-analytics.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Monitor の Log Analytics で Azure アクティビティ ログを収集して分析する方法](../azure-monitor/platform/activity-log.md)
+- [Azure Monitor の Log Analytics で Azure アクティビティ ログを収集して分析する方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
@@ -320,7 +320,7 @@ Azure Monitor で、組織のコンプライアンス規則に従って、Azure 
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -685,7 +685,7 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 **ガイダンス**: Azure Logic Apps およびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 

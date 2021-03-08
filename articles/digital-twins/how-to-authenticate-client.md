@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: eba3958ae5dd307b80b04371d3659a129d5acf89
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5a7cfec6acb4cd8735c039f5eab30bac4ccf55b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797859"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556145"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
@@ -117,5 +117,5 @@ Azure 関数で、次のようにマネージド ID の資格情報を使用で�
 以下を参照し、Azure Digital Twins でのセキュリティのしくみの詳細を確認します。
 * "[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)"
 
-または、認証が設定されたので、以下を参照し、インスタンスでのモデルの作成に進みます。
-* [*方法: カスタム モデルを管理する*](how-to-manage-model.md)"
+または、認証が設定されたので、インスタンスでのモデルの作成および管理に進みます。
+* [*方法: DTDL モデルの管理*](how-to-manage-model.md)に関する記事

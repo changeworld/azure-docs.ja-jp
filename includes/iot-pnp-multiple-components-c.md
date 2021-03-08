@@ -4,14 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 190e2144e92ffd77c098b4bf9205de03e55af7df
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 398f11c6e55cb62e0b29c148494cf3d590200b9d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511292"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834175"
 ---
 このチュートリアルでは、複数のコンポーネントを使用する IoT プラグ アンド プレイのサンプル デバイス アプリケーションをビルドし、それを IoT ハブに接続して、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法について説明します。 このサンプル アプリケーションは C で記述され、C 対応の Azure IoT device SDK に含められています。ソリューション ビルダーは、Azure IoT エクスプローラー ツールを使用すれば、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
+
+このチュートリアルでは、次の作業を行いました。
+
+> [!div class="checklist"]
+> * サンプル コードをダウンロードします。
+> * サンプル コードをビルドします。
+> * サンプル デバイス アプリケーションを実行して、IoT ハブに接続することを確認します。
+> * ソース コードを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -282,5 +290,3 @@ iothubResult = IoTHubDeviceClient_LL_SendEventAsync(deviceClientLL, messageHandl
 ```
 
 `main` 関数によって最終的にさまざまなコンポーネントが破棄され、ハブへの接続が閉じられます。
-
-[!INCLUDE [iot-pnp-clean-resources.md](iot-pnp-clean-resources.md)]

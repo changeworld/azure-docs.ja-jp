@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 89296b3d0ee4e4339553d22d2ae53ee470ecad31
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1ff047c44833a94ae9db0a410f501a1f23a369f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807582"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576239"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の Azure セキュリティ ベースライン
 
@@ -160,9 +160,9 @@ Azure Database for PostgreSQL インスタンスに関連付けられている�
 
 **ガイダンス**: ネットワーク リソース構成を監視し、Azure Database for PostgreSQL インスタンスに関連したネットワーク リソースの変更を検出するには、Azure アクティビティ ログを使用します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -202,7 +202,7 @@ Azure Database for PostgreSQL インスタンスに関連付けられている�
 
 - [Azure Database for PostgreSQL の監査ログの構成およびアクセス方法](concepts-audit.md)
 
-- [Azure アクティビティ ログ用に診断設定を構成する方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログ用に診断設定を構成する方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -220,9 +220,9 @@ Azure Database for PostgreSQL インスタンスに関連付けられている�
 
 **ガイダンス**: Azure Monitor 内で、Azure Database for PostgreSQL ログを保持するために使用される Log Analytics ワークスペースについて、組織のコンプライアンス規則に従って保有期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -234,9 +234,9 @@ Azure Database for PostgreSQL インスタンスに関連付けられている�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics に関する詳細](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics に関する詳細](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -254,7 +254,7 @@ Azure Database for PostgreSQL インスタンスに関連付けられている�
 
 - [Azure Database for PostgreSQL の監査ログの構成およびアクセス方法](concepts-audit.md)
 
-- [Azure アクティビティ ログ用に診断設定を構成する方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログ用に診断設定を構成する方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -386,7 +386,7 @@ Azure AD のリスク検出を使用して、危険なユーザーの行動に�
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -588,7 +588,7 @@ AskAzureDBforPostgreSQL@service.microsoft.com.
 
 **ガイダンス**: Azure Database for PostgreSQL の運用インスタンスやその他の重要なまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 

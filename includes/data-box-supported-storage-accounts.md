@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 12/23/2020
+ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 11958c54dd1f54e424b71eb00780f5309a1c0bab
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209553"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706039"
 ---
 Data Box デバイスでサポートされるストレージ アカウントとストレージの種類の一覧を次に示します。 全種類のストレージ アカウントを対象とする全機能の完全一覧については、「[ストレージ アカウントの種類](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。
 
@@ -45,6 +45,7 @@ Data Box デバイスでサポートされるストレージ アカウントと�
 > [!IMPORTANT]
 > - 汎用アカウントの場合、Data Box では、インポート注文に対しキュー、テーブル、およびディスクのストレージの種類をサポートしていません。 エクスポート注文の場合は、Data Box では、汎用アカウントに対しキュー、テーブル、ディスク、および Azure Data Lake Gen 2 のストレージの種類をサポートしていません。
 > - Data Box では、Blob Storage アカウントとブロック BLOB ストレージ アカウントの追加 BLOB がサポートされていません。
+> - Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポートは、Data Box ではサポートされていません。
 > - ページ BLOB にアップロードされるデータは、VHD など、512 バイトに揃えられている必要があります。
 > - 最大 80 TB をエクスポートできます。
 > - ファイル履歴と BLOB スナップショットはエクスポートされません。

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: ed9b67e9c3d21d11c6e413694190850c20d2c46c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 505c0de5a508bd97b10091451116ec3670a20493
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682938"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677556"
 ---
 # <a name="sql-authentication"></a>SQL 認証
 
@@ -92,18 +92,18 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 データベースを作成するユーザーは、`master` データベースの SQL Server ログインに基づくユーザーであるか、Azure Active Directory ユーザーに基づく包含データベース ユーザーである必要があります。
 
 1. 管理者アカウントを使用して、`master` データベースに接続します。
-2. [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して、SQL Server 認証ログインを作成します。 サンプル ステートメントは、次のとおりです。
+2. [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して、SQL Server 認証ログインを作成します。 サンプル ステートメントは、次のとおりです。
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
    ```
 
    > [!NOTE]
-   > ログイン ユーザーまたは包含データベース ユーザーを作成するときは、強力なパスワードを使用します。 詳細については、「 [Strong Passwords](/sql/relational-databases/security/strong-passwords?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
+   > ログイン ユーザーまたは包含データベース ユーザーを作成するときは、強力なパスワードを使用します。 詳細については、「 [Strong Passwords](/sql/relational-databases/security/strong-passwords?view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
-   パフォーマンスを向上させるため、ログイン (サーバー レベルのプリンシパル) はデータベース レベルで一時的にキャッシュされます。 認証キャッシュを更新する方法については、「 [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」をご覧ください。
+   パフォーマンスを向上させるため、ログイン (サーバー レベルのプリンシパル) はデータベース レベルで一時的にキャッシュされます。 認証キャッシュを更新する方法については、「 [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?view=azure-sqldw-latest&preserve-view=true)」をご覧ください。
 
-3. [CREATE USER](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用してデータベース ユーザーを作成します。 このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。サンプル ステートメントは、次のとおりです。
+3. [CREATE USER](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest&preserve-view=true) ステートメントを使用してデータベース ユーザーを作成します。 このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。サンプル ステートメントは、次のとおりです。
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -111,7 +111,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest&preserve-view=true) プロシージャを使用して、`master` の **dbmanager** データベース ロールに新しいユーザーを追加します (プロビジョニングされた SQL では [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントがサポートされないことに注意してください)。 サンプル ステートメントは、次のとおりです。
+4. [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest&preserve-view=true) プロシージャを使用して、`master` の **dbmanager** データベース ロールに新しいユーザーを追加します (プロビジョニングされた SQL では [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?view=azure-sqldw-latest&preserve-view=true) ステートメントがサポートされないことに注意してください)。 サンプル ステートメントは、次のとおりです。
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -127,7 +127,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ### <a name="login-managers"></a>ログイン マネージャー
 
-もう 1 つの管理者ロールは、ログイン マネージャー ロールです。 このロールのメンバーは、master データベースに新しいログインを作成することができます。 必要であれば、同じ手順を実行して (ログインとユーザーを作成し、ユーザーを **loginmanager** ロールに追加して)、ユーザーが master に新しいログインを作成できるようにすることができます。 通常、ログインは必要ありません。Microsoft は、ログインに基づくユーザーを使用する代わりに、データベースレベルで認証される包含データベース ユーザーを使用することを推奨しているからです。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
+もう 1 つの管理者ロールは、ログイン マネージャー ロールです。 このロールのメンバーは、master データベースに新しいログインを作成することができます。 必要であれば、同じ手順を実行して (ログインとユーザーを作成し、ユーザーを **loginmanager** ロールに追加して)、ユーザーが master に新しいログインを作成できるようにすることができます。 通常、ログインは必要ありません。Microsoft は、ログインに基づくユーザーを使用する代わりに、データベースレベルで認証される包含データベース ユーザーを使用することを推奨しているからです。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable?view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 ---
 
@@ -158,7 +158,7 @@ Azure SQL Database または Synapse Serverless で、`ALTER ROLE` ステート�
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-専用 SQL プールで、[EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用します。
+専用 SQL プールで、[EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用します。
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -167,11 +167,11 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 > [!NOTE]
 > サーバー ログインに基づくデータベース ユーザーを作成する 1 つの一般的な理由は、複数のデータベースへのアクセスを必要とするユーザーのためです。 包含データベース ユーザーは個別のエンティティであるため、各データベースは、それぞれが独自のユーザーとパスワードを保持します。 ユーザーは各データベースのパスワードをすべて記憶する必要があるため、オーバーヘッドが発生する可能性があり、多数のデータベースのパスワードを変更する必要が生じたときに対応できない可能性があります。 ただし、SQL Server ログインと高可用性 (アクティブ geo レプリケーションとフェールオーバー グループ) を使用するときは、各サーバーで SQL Server ログインを手動で設定する必要があります。 そうしないと、フェールオーバーの発生後にデータベース ユーザーはサーバー ログインにマップされなくなり、フェールオーバー後のデータベースにアクセスできなくなります。 
 
-geo レプリケーション用のログインの構成の詳細については、「[Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する](../../azure-sql/database/active-geo-replication-security-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+geo レプリケーション用のログインの構成の詳細については、「[Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する](../../azure-sql/database/active-geo-replication-security-configure.md)」を参照してください。
 
 ### <a name="configuring-the-database-level-firewall"></a>データベース レベルのファイアウォールの構成
 
-ベスト プラクティスとして、管理者以外のユーザーは、使用するデータベースにファイアウォール経由でのみアクセスできるようにすることをお勧めします。 サーバー レベルのファイアウォール経由で IP アドレスを承認し、すべてのデータベースへのアクセスを許可するのではなく、[sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して、データベース レベルのファイアウォールを構成してください。 データベース レベルのファイアウォールは、ポータルを使用して構成することはできません。
+ベスト プラクティスとして、管理者以外のユーザーは、使用するデータベースにファイアウォール経由でのみアクセスできるようにすることをお勧めします。 サーバー レベルのファイアウォール経由で IP アドレスを承認し、すべてのデータベースへのアクセスを許可するのではなく、[sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して、データベース レベルのファイアウォールを構成してください。 データベース レベルのファイアウォールは、ポータルを使用して構成することはできません。
 
 ### <a name="non-administrator-access-path"></a>Non-administrator access path
 
@@ -183,9 +183,9 @@ geo レプリケーション用のログインの構成の詳細については�
 
 効率的なアクセス管理では、個々のユーザーではなく、グループとロールに割り当てられたアクセス許可を使用します。
 
-- Azure Active Directory 認証を使用する場合は、Azure Active Directory ユーザーを Azure Active Directory グループに入れます。 そのグループ用に包含データベース ユーザーを作成します。 1 人または複数のデータベース ユーザーを[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)に追加し、データベース ロールに[アクセス許可](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を割り当てます。
+- Azure Active Directory 認証を使用する場合は、Azure Active Directory ユーザーを Azure Active Directory グループに入れます。 そのグループ用に包含データベース ユーザーを作成します。 1 人または複数のデータベース ユーザーを[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)に追加し、データベース ロールに[アクセス許可](/sql/relational-databases/security/permissions-database-engine?view=azure-sqldw-latest&preserve-view=true)を割り当てます。
 
-- SQL Server 認証を使用する場合は、データベースに包含データベース ユーザーを作成します。 1 人または複数のデータベース ユーザーを[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)に追加し、データベース ロールに[アクセス許可](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を割り当てます。
+- SQL Server 認証を使用する場合は、データベースに包含データベース ユーザーを作成します。 1 人または複数のデータベース ユーザーを[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)に追加し、データベース ロールに[アクセス許可](/sql/relational-databases/security/permissions-database-engine?view=azure-sqldw-latest&preserve-view=true)を割り当てます。
 
 データベース ロールは、**db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter**、**db_denydatareader** などの組み込みロールを指定できます。 **db_owner** は、少数のユーザーのみに完全なアクセス許可を付与する際によく使用されます。 他の固定データベース ロールは、開発段階の単純なデータベースをすばやく取得するには便利ですが、運用段階のほとんどのデータベースには推奨されません。 
 
@@ -212,7 +212,7 @@ SQL Database のログインとユーザーの管理では、以下の点を考�
 - `CREATE/ALTER/DROP LOGIN` ステートメントを実行する場合は、master データベースに接続する必要があります。 ただし、ログインの使用はお勧めできません。 代わりに、包含データベース ユーザーを使用してください。
 - ユーザー データベースに接続するには、接続文字列にそのデータベースの名前を指定する必要があります。
 - サーバーレベル プリンシパル ログインと、**master** データベースの **loginmanager** データベース ロールのメンバーにのみ、`CREATE LOGIN`、`ALTER LOGIN`、`DROP LOGIN` ステートメントを実行する権限があります。
-- ADO.NET アプリケーションで `CREATE/ALTER/DROP LOGIN` と `CREATE/ALTER/DROP DATABASE` ステートメントを実行する場合、パラメーター化コマンドは使用できません。 詳細については、「 [コマンドとパラメーター](/dotnet/framework/data/adonet/commands-and-parameters?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」をご覧ください。
+- ADO.NET アプリケーションで `CREATE/ALTER/DROP LOGIN` と `CREATE/ALTER/DROP DATABASE` ステートメントを実行する場合、パラメーター化コマンドは使用できません。 詳細については、「 [コマンドとパラメーター](/dotnet/framework/data/adonet/commands-and-parameters)」をご覧ください。
 - `CREATE/ALTER/DROP DATABASE` と `CREATE/ALTER/DROP LOGIN` ステートメントを実行する場合、これらの各ステートメントは、Transact-SQL バッチ内の唯一のステートメントである必要があります。 そうでない場合、エラーが発生します。 たとえば、以下の Transact-SQL は、データベースが存在するかどうかを確認します。 存在する場合は、 `DROP DATABASE` ステートメントが呼び出され、データベースが削除されます。 `DROP DATABASE` ステートメントはバッチ内の唯一のステートメントではないので、これを実行すると Transact-SQL はエラーになります。
 
   ```sql

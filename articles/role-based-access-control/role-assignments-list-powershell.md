@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 980e9f1ffd453a070dde72f8c7ca34c7ef08f948
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: bf5445f6ca04e56aab466e97967a58c3e4b735a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964356"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556944"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure でのロールの割り当てを一覧表示する
 
@@ -188,4 +188,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](role-assignments-powershell.md)
+- [Azure PowerShell を使用して Azure ロールを割り当てる](role-assignments-powershell.md)

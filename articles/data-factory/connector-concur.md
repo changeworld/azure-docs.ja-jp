@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Concur のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 974682aa9e9bebd6e2d17237decd8389174ff28d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030800"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383672"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 
@@ -53,7 +48,7 @@ Concur のリンクされたサービスでは、次のプロパティがサポ�
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Concur** | はい |
 | connectionProperties | Concur への接続方法を定義するプロパティのグループ。 | はい |
-| **_`connectionProperties` の下:_* _ | | |
+| ***`connectionProperties` の下:*** | | |
 | authenticationType | 使用できる値は `OAuth_2.0_Bearer` と `OAuth_2.0` です (レガシ)。 OAuth 2.0 認証オプションは、2017 年 2 月から非推奨となった古い Concur API で動作します。 | はい |
 | host | Concur サーバーのエンドポイント (例: `implementation.concursolutions.com`)。  | はい |
 | baseUrl | Concur の認可 URL のベース URL。 | `OAuth_2.0_Bearer` 認証の場合、はい |
@@ -65,7 +60,7 @@ Concur のリンクされたサービスでは、次のプロパティがサポ�
 | useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうか指定します。 既定値は、true です。  | いいえ |
 | usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
 
-_ *例:* *
+**例:**
 
 ```json
 { 

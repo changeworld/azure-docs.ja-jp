@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993748"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095845"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
 
-BLOB ストレージのバージョン管理を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。  BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
+BLOB ストレージのバージョン管理を有効にすると、BLOB が変更または削除されたときに、以前のバージョンを自動的に維持できます。 BLOB のバージョン管理が有効になっていると、データが誤って変更または削除された場合に、以前のバージョンの BLOB を復元して復旧できます。
 
 この記事では、Azure portal または Azure Resource Manager テンプレートを使用してストレージ アカウントの BLOB のバージョン管理を有効または無効にする方法について説明します。 BLOB のバージョン管理については、[BLOB のバージョン管理](versioning-overview.md)に関するページをご覧ください。
 
@@ -29,13 +29,39 @@ BLOB ストレージのバージョン管理を有効にし、以前のバージ
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Azure portal で BLOB のバージョン管理を有効にするには:
+Azure portal でストレージ アカウントの BLOB のバージョン管理を有効にするには、次のようにします。
 
 1. ポータルでストレージ アカウントに移動します。
 1. **[Blob service]** の下で **[データ保護]** を選択します。
 1. **[バージョン管理]** セクションで、 **[有効]** を選択します。
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="Azure portal で BLOB のバージョン管理を有効にする方法を示しているスクリーンショット":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用してストレージ アカウントの BLOB のバージョン管理を有効にするには、まず、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールのバージョン 2.3.0 以降をインストールします。 その後、次の例に示すように、[Update-AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) コマンドを呼び出して、バージョン管理を有効にします。 山かっこ内の値は、実際の値に置き換えてください。
+
+```powershell
+# Set resource group and account variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Enable versioning.
+Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -IsVersioningEnabled $true
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI を使用してストレージ アカウントの BLOB のバージョン管理を有効にするには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 その後、次の例に示すように、[az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) コマンドを呼び出して、バージョン管理を有効にします。 山かっこ内の値は、実際の値に置き換えてください。
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-versioning true
+```
 
 # <a name="template"></a>[テンプレート](#tab/template)
 

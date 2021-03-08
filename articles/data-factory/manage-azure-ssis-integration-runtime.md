@@ -1,22 +1,17 @@
 ---
 title: Azure-SSIS 統合ランタイムの再構成
 description: プロビジョニングが済んだ Azure-SSIS 統合ランタイムを Azure Data Factory で再構成する方法を説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: anandsub
-ms.openlocfilehash: 7545f593aea2aca8c0aa240d44bcef3b7a1ca7c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 724411dc12654aec1614230c943923062b334cd2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636274"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370684"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの再構成
 

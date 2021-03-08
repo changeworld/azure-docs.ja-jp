@@ -5,6 +5,8 @@
   items:
     - name: Azure Communication Services とは
       href: overview.md
+    - name: サポート オプションとヘルプ オプション
+      href: support.md
 - name: クイックスタート
   expanded: true
   items:
@@ -12,6 +14,8 @@
       href: quickstarts/create-communication-resource.md
     - name: アクセス トークンを作成して管理する
       href: quickstarts/access-tokens.md
+    - name: マネージド ID を使用する (.NET)
+      href: quickstarts/managed-identity.md
     - name: チャット
       items:
         - name: チャットをアプリに追加する
@@ -34,6 +38,8 @@
       items:
         - name: 音声通話をアプリに追加する
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: 音声通話をアプリに追加する (JavaScript)
+          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
         - name: 通話クライアント ライブラリを使用する
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: 通話アプリを Teams の会議に参加させる
@@ -58,8 +64,6 @@
 - name: 概念
   expanded: false
   items:
-    - name: Teams の相互運用性
-      href: concepts/teams-interop.md
     - name: チャット
       items:
         - name: チャット クライアント ライブラリの概要
@@ -72,8 +76,12 @@
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS に関する概念
           href: concepts/telephony-sms/concepts.md
-        - name: テレフォニーと SMS ソリューションの計画
+        - name: テレフォニーの概念
+          href: concepts/telephony-sms/telephony-concept.md
+        - name: 電話番号の種類
           href: concepts/telephony-sms/plan-solution.md
+        - name: SIP インターフェイスのインフラストラクチャ要件
+          href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: 音声およびビデオによる通話
       items:
         - name: 通話クライアント ライブラリの概要
@@ -86,6 +94,8 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: UI フレームワークの機能
           href: concepts/ui-framework/ui-sdk-features.md
+    - name: Teams の相互運用性
+      href: concepts/teams-interop.md
     - name: クライアントとサーバーのアーキテクチャ
       href: concepts/client-and-server-architecture.md
     - name: 通話のフロー

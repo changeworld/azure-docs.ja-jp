@@ -3,12 +3,12 @@ title: Resource Health アラートを作成するためのテンプレート
 description: Azure リソースが利用不可になったときに通知するアラートをプログラムで作成します。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537431"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588198"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -23,7 +23,7 @@ Azure Resource Health では、Azure リソースの現在および過去の正�
 このページの指示に従うには、事前にいくつかの項目を設定する必要があります。
 
 1. [Azure PowerShell モジュール](/powershell/azure/install-az-ps)をインストールする必要があります
-2. 通知を行うよう構成された[アクション グループを作成または再利用する](../azure-monitor/platform/action-groups.md)必要があります。
+2. 通知を行うよう構成された[アクション グループを作成または再利用する](../azure-monitor/alerts/action-groups.md)必要があります。
 
 ## <a name="instructions"></a>Instructions
 1. PowerShell を使用し、アカウントを使用して Azure にログインし、操作するサブスクリプションを選択します。
@@ -452,4 +452,4 @@ Resource Health に関する詳細情報を参照してください。
 
 Service Health アラートを作成します。
 -  [Service Health のアラートの構成](./alerts-activity-log-service-notifications-portal.md) 
--  [Azure アクティビティ ログのイベント スキーマ](../azure-monitor/platform/activity-log-schema.md)
+-  [Azure アクティビティ ログのイベント スキーマ](../azure-monitor/essentials/activity-log-schema.md)

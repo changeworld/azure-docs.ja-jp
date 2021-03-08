@@ -1,21 +1,21 @@
 ---
-title: Docker イメージのプッシュとプル
+title: コンテナー イメージのプッシュとプル
 description: Docker CLI を使用した、Azure のプライベート コンテナー レジストリに対する Docker イメージのプッシュとプル
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071631"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987764"
 ---
-# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
+# <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Docker CLI を使用した、Azure のコンテナー レジストリへの最初のイメージのプッシュ
 
-[Docker Hub](https://hub.docker.com/) で公開 Docker イメージを格納するように、Azure コンテナー レジストリではプライベート [Docker](https://hub.docker.com) コンテナー イメージを格納および管理します。 コンテナー レジストリに対する[ログイン](https://docs.docker.com/engine/reference/commandline/login/)、[プッシュ](https://docs.docker.com/engine/reference/commandline/push/)、[プル](https://docs.docker.com/engine/reference/commandline/pull/)などの操作には、[Docker コマンド ライン インターフェイス](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) を使用できます。
+[Docker Hub](https://hub.docker.com/) で公開 Docker コンテナー イメージを格納するように、Azure コンテナー レジストリではプライベート コンテナー イメージとその他の成果物を格納および管理します。 コンテナー レジストリに対する[ログイン](https://docs.docker.com/engine/reference/commandline/login/)、[プッシュ](https://docs.docker.com/engine/reference/commandline/push/)、[プル](https://docs.docker.com/engine/reference/commandline/pull/)などのコンテナー イメージ操作には、[Docker コマンド ライン インターフェイス](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) を使用できます。
 
-以下の手順では、公式の [Nginx イメージ](https://store.docker.com/images/nginx)を公開 Docker Hub レジストリからダウンロードし、プライベート Azure コンテナー レジストリにタグ付けしてレジストリにプッシュした後、レジストリからもう一度プルします。
+以下の手順では、公開 [Nginx イメージ](https://store.docker.com/images/nginx)をダウンロードし、プライベート Azure コンテナー レジストリにタグ付けしてレジストリにプッシュした後、レジストリからもう一度プルします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -24,9 +24,10 @@ ms.locfileid: "98071631"
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
 
-プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、次のように入力します。
+プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr#az-acr-login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、Azure CLI にログインし、レジストリに対して認証を行います。
 
 ```azurecli
+az login
 az acr login --name myregistry
 ```
 
@@ -43,12 +44,12 @@ docker login myregistry.azurecr.io
 > [!TIP]
 > `docker login` を使用する場合とレジストリにプッシュするために画像にタグ付けする場合は、常にレジストリの完全修飾名 (すべて小文字) を指定してください。 この記事の例では、完全修飾名は *myregistry.azurecr.io* です。
 
-## <a name="pull-the-official-nginx-image"></a>公式の Nginx イメージをプルする
+## <a name="pull-a-public-nginx-image"></a>公開 Nginx イメージをプルする
 
-まず、公開 Nginx イメージをローカル コンピューターにプルします。
+まず、公開 Nginx イメージをローカル コンピューターにプルします。 この例では、Microsoft Container Registry からイメージをプルします。
 
 ```
-docker pull nginx
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 ## <a name="run-the-container-locally"></a>コンテナーをローカルで実行する
@@ -56,7 +57,7 @@ docker pull nginx
 次の [docker run](https://docs.docker.com/engine/reference/run/) コマンドを実行して、Nginx コンテナーのローカル インスタンスを 対話形式でポート 8080 で起動します (`-it`)。 `--rm` 引数は、コンテナーが停止されたときに、それを削除するように指定します。
 
 ```
-docker run -it --rm -p 8080:80 nginx
+docker run -it --rm -p 8080:80 mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 `http://localhost:8080` に移動して、実行中のコンテナーの Nginx によって提供される既定の Web ページを表示します。 次のようなページが表示されます。
@@ -72,7 +73,7 @@ docker run -it --rm -p 8080:80 nginx
 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) でレジストリへの完全修飾パスを使用して、イメージのエイリアスを作成します。 この例では、レジストリのルートが煩雑にならないように、`samples` 名前空間を指定しています。
 
 ```
-docker tag nginx myregistry.azurecr.io/samples/nginx
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx
 ```
 
 名前空間を持つタグ付けの詳細については、「[Azure Container Registry のベスト プラクティス](container-registry-best-practices.md)」の「[リポジトリの名前空間](container-registry-best-practices.md#repository-namespaces)」セクションを参照してください。

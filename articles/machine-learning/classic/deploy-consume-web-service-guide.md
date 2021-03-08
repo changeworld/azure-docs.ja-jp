@@ -3,18 +3,18 @@ title: ML Studio (classic):デプロイと使用 - Azure
 description: Azure Machine Learning Studio (クラシック) を使用して、機械学習ワークフローおよびモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: dc71dc87ca972c52fabb91a6412eec702eee5460
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 57c5462cd6eccab1d9c42e674e10ea34db3612b7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307427"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520359"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (クラシック) Web サービス: デプロイと使用
 
@@ -67,7 +67,7 @@ C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
     プラン ID を取得するには、 [Azure Machine Learning Web サービス](https://services.azureml.net) ポータルにサインインし、プラン名をクリックします。
 
-この情報を、 *MachineLearningWorkspace* ノードと同じレベルで、 *Properties* ノードの子として JSON テンプレートに追加します。
+この情報を、*MachineLearningWorkspace* ノードと同じレベルで、*Properties* ノードの子として JSON テンプレートに追加します。
 
 次に例を示します。
 
@@ -104,4 +104,4 @@ Excel テンプレートをダウンロードできます。このテンプレ�
 
 ### <a name="from-a-rest-based-client"></a>REST ベースのクライアントから
 
-Azure Machine Learning Web サービスは、RESTful API です。 この API は、.NET、Python、R、Java など、さまざまなプラットフォームから使用できます。 [Microsoft Azure Machine Learning Web サービス ポータル](https://services.azureml.net)の Web サービスの **使用** に関するページには、開始するときに役立つサンプル コードが用意されています。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」をご覧ください。
+Azure Machine Learning Web サービスは、RESTful API です。 この API は、.NET、Python、R、Java など、さまざまなプラットフォームから使用できます。[Microsoft Azure Machine Learning Web サービス ポータル](https://services.azureml.net)の Web サービスの **使用** に関するページには、開始するときに役立つサンプル コードが用意されています。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」をご覧ください。

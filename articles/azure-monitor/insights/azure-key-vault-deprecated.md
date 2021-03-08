@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor における Azure Key Vault ソリューション | Microsoft Docs
 description: Azure Monitor の Azure Key Vault ソリューションを使用して、Azure Key Vault のログを調査することができます。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 71eb49c84b8ab92c9ba2ad8e05e8d74054bd4ee7
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 24869841a106a68234cfec600d9a98e519f8c6cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734198"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure Key Vault Analytics ソリューション
 
@@ -149,5 +148,5 @@ Azure Key Vault ソリューションによって分析されるのは、Azure D
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>次のステップ
-* Azure Monitor で[ログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な Azure Key Vault データを表示します。
+* Azure Monitor で[ログ クエリ](../logs/log-query-overview.md)を使用して、詳細な Azure Key Vault データを表示します。
 

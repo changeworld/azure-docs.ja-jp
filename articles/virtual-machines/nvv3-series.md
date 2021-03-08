@@ -2,18 +2,18 @@
 title: NVv3 シリーズ - Azure Virtual Machines
 description: NVv3 シリーズ VM の仕様。
 services: virtual-machines
-ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c1238a45a7175101253f43e6bbd199ff1c913650
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f04847930f078ef506d66784deab4767db0a282d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095658"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123974"
 ---
 # <a name="nvv3-series"></a>NVv3 シリーズ
 

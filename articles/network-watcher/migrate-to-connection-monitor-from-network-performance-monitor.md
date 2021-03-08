@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 59e266274d6b65182ad63513ecf9bf3b5ab95490
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 0bb46c17ece9a38d9f1e10c79a4b026efa0ece4c
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98164840"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833798"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Network Performance Monitor から接続モニターに移行する
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行します。
 
 Network Performance Monitor (NPM) から機能が向上した新しい接続モニターに、1 回のクリックで、ダウンタイムなしにテストを移行できます。 利点の詳細については、[接続モニター](./connection-monitor-overview.md)に関する記事を参照してください。
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359389"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096431"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
 
@@ -76,7 +76,7 @@ ms.locfileid: "97359389"
    | **Virtual Network** |SQL Server インスタンスが存在する仮想ネットワークを選択します。 |
    | **サブネット** |SQL Server インスタンスが存在するサブネットを選択します。 |
    | **IP アドレスの割り当て** |**静的** |
-   | **プライベート IP アドレス** |サブネット内の利用可能な IP アドレスを指定します。 この IP アドレスは、クラスターにリスナーを作成するときに使用します。 この記事で後ほど示す PowerShell スクリプトの `$ILBIP` 変数には、このアドレスを使用してください。 |
+   | **プライベート IP アドレス** |サブネット内の利用可能な IP アドレスを指定します。 この IP アドレスは、クラスターにリスナーを作成するときに使用します。 この記事で後ほど示す PowerShell スクリプトの `$ListenerILBIP` 変数には、このアドレスを使用してください。 |
    | **サブスクリプション** |複数のサブスクリプションを所有している場合、このフィールドが表示されます。 このリソースに関連付けられているサブスクリプションを選択します。 通常は、可用性グループのすべてのリソースについて同じサブスクリプションを選択してください。 |
    | **リソース グループ** |SQL Server インスタンスが存在するリソース グループを選択します。 |
    | **場所** |Azure において SQL Server インスタンスが存在する場所を選択します。 |

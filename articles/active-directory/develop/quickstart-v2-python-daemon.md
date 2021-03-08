@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 04c3497e41aba301d5cf16cd6cc723409d1f4175
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 734fad7d3f4fb7a2a816d9ad10fb6b15e2faf9e2
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754065"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820409"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
 このクイックスタートでは、Python アプリケーションでアプリの ID を使ってアクセス トークンを取得して、Microsoft Graph API を呼び出し、ディレクトリ内の[ユーザーの一覧](/graph/api/user-list)を表示する方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、ユーザーの ID ではなく、アプリケーション ID を使用して、無人のジョブまたは Windows サービスを実行する方法を示します。 
 
 > [!div renderon="docs"]
-> ![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+> ![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-python-daemon/python-console-daemon.svg)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "98754065"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+> 1. <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
@@ -52,7 +52,7 @@ ms.locfileid: "98754065"
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -65,17 +65,17 @@ ms.locfileid: "98754065"
 > 1. **[ユーザー]** ノードで、 **[User.Read.All]** を選択し、 **[アクセス許可の追加]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>クイックスタート アプリをダウンロードして構成する
+> ### <a name="download-and-configure-the-quickstart-app"></a>クイックスタート アプリをダウンロードして構成する
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイック スタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
+> このクイックスタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-netcore-daemon/green-check.png) アプリケーションはこれらの属性で構成されています。
 
-#### <a name="step-2-download-your-python-project"></a>手順 2:Python プロジェクトのダウンロード
+#### <a name="step-2-download-the-python-project"></a>手順 2:Python プロジェクトのダウンロード
 
 > [!div renderon="docs"]
 > [Python デーモン プロジェクトをダウンロードする](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
@@ -89,10 +89,10 @@ ms.locfileid: "98754065"
 
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-python-project"></a>手順 3:Python プロジェクトの構成
+> #### <a name="step-3-configure-the-python-project"></a>手順 3: Python プロジェクトの構成
 >
 > 1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
-> 1. サブフォルダー **1-Call-MsGraph-WithSecret"** に移動します。
+> 1. サブフォルダー **1-Call-MsGraph-WithSecret** に移動します。
 > 1. **parameters.json** を編集し、`authority`、`client_id`、および `secret` フィールドの値を次のスニペットに置き換えます。
 >
 >    ```json
@@ -119,7 +119,7 @@ ms.locfileid: "98754065"
 ##### <a name="global-tenant-administrator"></a>グローバル テナント管理者
 
 > [!div renderon="docs"]
-> グローバル テナント管理者の場合は、Azure Portal 上で [アプリケーションの登録 (プレビュー)] の **[API のアクセス許可]** ページに移動し、 **[{Tenant Name} に管理者の同意を与えます]** ({Tenant Name} はお使いのディレクトリの名前) を選択します。
+> グローバル テナント管理者の場合は、Azure portal で **[アプリの登録]** の **[API のアクセス許可]** ページに移動し、 **[{Tenant Name} に管理者の同意を与えます]** ({Tenant Name} はお使いのディレクトリの名前) を選択します。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > グローバル管理者の場合は、 **[API のアクセス許可]** ページに移動し、 **[Enter_the_Tenant_Name_Here に管理者の同意を与えます]** を選択します。
@@ -128,7 +128,7 @@ ms.locfileid: "98754065"
 
 ##### <a name="standard-user"></a>標準ユーザー
 
-テナントの標準ユーザーの場合は、お使いのアプリケーションに管理者の同意を与えるようグローバル管理者に依頼する必要があります。 これを行うには、次の URL を管理者に知らせます。
+テナントの標準ユーザーの場合は、お使いのアプリケーションに管理者の同意を与えるようグローバル管理者に依頼してください。 これを行うには、次の URL を管理者に知らせます。
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
@@ -145,7 +145,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
 
-このサンプルの依存関係を 1 回インストールする必要があります
+このサンプルの依存関係を 1 回インストールする必要があります。
 
 ```console
 pip install -r requirements.txt
@@ -160,7 +160,7 @@ python confidential_client_secret_sample.py parameters.json
 コンソール出力には、Azure AD ディレクトリ内のユーザーの一覧を表すいくつかの Json フラグメントが表示されます。
 
 > [!IMPORTANT]
-> このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、このサンプルと同じ GitHub リポジトリの 2 つ目のフォルダー **2-Call-MsGraph-WithCertificate** にある [これらの手順](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md)を参照してください
+> このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、このサンプルと同じ GitHub リポジトリの 2 つ目のフォルダー **2-Call-MsGraph-WithCertificate** にある[これらの手順](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md)を参照してください。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -196,7 +196,7 @@ app = msal.ConfidentialClientApplication(
 > | `config["client_id"]` | Azure portal に登録されているアプリケーションの "**アプリケーション (クライアント) ID**"。 この値は、Azure portal のアプリの **[概要]** ページで確認できます。 |
 > | `config["authority"]`    | ユーザーが認証するための STS エンドポイント。 通常、パブリック クラウド上では `https://login.microsoftonline.com/{tenant}` です。{tenant} はご自分のテナントの名前またはテナント ID です。|
 
-詳細については、[`ConfidentialClientApplication` 用の参照ドキュメント](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication)をご覧ください。
+詳細については、[`ConfidentialClientApplication` のリファレンス ドキュメント](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication)を参照してください。
 
 ### <a name="requesting-tokens"></a>トークンの要求
 
@@ -213,9 +213,9 @@ if not result:
 
 > |各値の説明:| 説明 |
 > |---------|---------|
-> | `config["scope"]` | 要求されるスコープが含まれています。 Confidential クライアントの場合は、`{Application ID URI}/.default` のような形式を使用して、要求されるスコープが Azure Portal 上で設定されるアプリ オブジェクト内に静的に定義されたものであることを示す必要があります (Microsoft Graph では、`{Application ID URI}` は `https://graph.microsoft.com` を指します)。 カスタム Web API の場合、`{Application ID URI}` は、Azure portal 上で [アプリケーションの登録 (プレビュー)] の **[API の公開]** セクションに定義されます。 |
+> | `config["scope"]` | 要求されるスコープが含まれています。 機密クライアントの場合は、`{Application ID URI}/.default` のような形式を使用して、要求されるスコープが Azure portal で設定されるアプリ オブジェクト内に静的に定義されたものであることを示す必要があります (Microsoft Graph では、`{Application ID URI}` は `https://graph.microsoft.com` を指します)。 カスタム Web API の場合、`{Application ID URI}` は、Azure portal で **[アプリの登録]** の **[API の公開]** セクションに定義されます。|
 
-詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client)をご覧ください。
+詳細については、[`AcquireTokenForClient` のリファレンス ドキュメント](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client)を参照してください。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

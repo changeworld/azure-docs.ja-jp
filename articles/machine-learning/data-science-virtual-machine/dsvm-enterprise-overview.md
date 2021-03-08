@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: エンタープライズ チーム環境でデータ サイエンス VM を展開するためのパターンについて説明します。
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 9126dbcfbfe9e3a94514ebf45685bdfc55dd0306
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 28dea7c28f47a9850486877571672cbd717e9f1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462992"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596776"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>データ サイエンス仮想マシンに基づくチーム分析と AI 環境 
 [Data Science Virtual Machine](overview.md) (DSVM) では、人工知能 (AI) およびデータ分析用にあらかじめ構築されているソフトウェアで、Azure プラットフォーム上にリッチな環境を提供します。
@@ -38,7 +37,7 @@ DSVM は、Azure インフラストラクチャ レベルで動作するため�
 このシリーズでは、前述の各トピックに対するガイダンスと指針を示します。 大規模なエンタープライズ構成で DSVM を展開する際の考慮事項と要件がすべて含まれているわけではありません。 企業で DSVM インスタンスを実装するときに使用できる、いくつかのその他の Azure リソースを次に示します。
 
 * [ネットワークのセキュリティ](../../security/fundamentals/network-overview.md)
-* [監視](../../azure-monitor/insights/monitor-vm-azure.md)と[管理](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [監視](../../azure-monitor/vm/monitor-vm-azure.md)と[管理](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [ログ記録と監査](../../security/fundamentals/log-audit.md)
 * [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)
 * [ポリシーの設定と適用](../../governance/policy/overview.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccc87b1b3103e799a5974542de602090df8e1e4b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6415aa55a67b37d9564398eb77dacb48cf16f0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378113"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio Code から Azure IoT Edge モジュールをデプロイする
 
@@ -61,7 +61,7 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
              "edgeAgent": {
                "type": "docker",
                "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                 "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                  "createOptions": "{}"
                }
              },
@@ -70,7 +70,7 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                 "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                  "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                }
              }
@@ -111,7 +111,7 @@ Visual Studio Code を使用してモジュールをデプロイするには、�
 
 Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで操作を実行できます。 これらの操作を動作させるには、Azure アカウントにサインインし、作業している IoT ハブを選択する必要があります。
 
-1. Visual Studio Code で**エクスプローラー** ビューを開きます。
+1. Visual Studio Code で **エクスプローラー** ビューを開きます。
 
 1. エクスプローラーの下部で、 **[Azure IoT Hub]** セクションを展開します。
 

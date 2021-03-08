@@ -31,6 +31,8 @@
       items:
         - name: Connected Machine エージェントの概要
           href: agent-overview.md
+        - name: 大規模なデプロイを計画する
+          href: plan-at-scale-deployment.md
         - name: Azure portal から Azure Arc へのマシンの接続
           href: onboard-portal.md
         - name: サービス プリンシパルを使用したマシンの大規模な接続
@@ -59,6 +61,8 @@
           href: managed-identity-authentication.md
         - name: エージェントの管理
           href: manage-agent.md
+        - name: リージョンをまたいだマシンの移行
+          href: manage-howto-migrate.md
     - name: シナリオ
       items:
         - name: Azure Sentinel にオンボードする

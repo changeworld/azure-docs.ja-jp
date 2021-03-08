@@ -1,22 +1,19 @@
 ---
 title: Azure portal を使用してデータを一括コピーする
 description: Azure Data Factory とコピー アクティビティを使用して、ソース データ ストアからコピー先データ ストアにデータを一括コピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/29/2021
-ms.openlocfilehash: cb5ea99223b803435ecd8716a7a57152266878a8
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 4807d1d5e97f7f95521df054d1a71f8925ac4ebb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223368"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367607"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -141,7 +138,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     g. **Create** をクリックしてください。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>ステージング Azure Storage のリンクされたサービスを作成する
-このチュートリアルでは、PolyBase でコピーのパフォーマンスを高めるために、中間ステージング領域として Azure BLOB ストレージを使用しています。
+このチュートリアルでは、PolyBase でコピーのパフォーマンスを高めるために、中間ステージング領域として Azure Blob Storage を使用しています。
 
 1. **[接続]** タブで、再度ツールバーの **[+ 新規]** をクリックします。 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure Blob Storage]** を選択し、 **[続行]** をクリックします。 

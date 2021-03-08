@@ -10,24 +10,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/01/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: cdd86984e5594d330f0080ee5f4cf0e9a8374652
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 8ffa7ef7b3539e3cefc4e2f8621d7c67cd3b56b0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223545"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672961"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>Azure PowerShell を使用して VM 用にルーティング優先設定を構成する
 
 この記事では、仮想マシン用にルーティング優先設定を構成する方法について説明します。 ルーティング優先設定オプションとして **[インターネット]** を選択すると、VM からインターネットへのトラフィックは ISP ネットワーク経由でルーティングされます。 既定のルーティングは、Microsoft グローバル ネットワーク経由です。
 
 この記事では、Azure PowerShell を使用して、ISP ネットワーク経由でトラフィックをルーティングするように設定されたパブリック IP を持つ仮想マシンを作成する方法について説明します。
-
-> [!IMPORTANT]
-> 現在、ルーティング優先設定はパブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 1. Cloud Shell を使用する場合は、手順 2 に進みます。 コマンド セッションを開き、`Connect-AzAccount` で Azure にサインインします。

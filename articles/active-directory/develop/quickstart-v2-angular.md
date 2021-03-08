@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 95747bb68a904212e7e075fc29b2497932d66e5f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225801"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103857"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する
 
@@ -35,9 +35,7 @@ ms.locfileid: "99225801"
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>オプション 1 (簡易): アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
-> 1. そのアカウントで複数のテナントにアクセスできる場合は、右上でアカウントを選択してから、ポータルのセッションを、使用したい Azure Active Directory (Azure AD) テナントに設定します。
-> 1. Azure portal の新しい [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) ペインを開きます。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. クイックスタート ペインに移動し、Angular クイックスタートを表示します。 指示に従って新しいアプリケーションをダウンロードし、自動構成します。
 >
@@ -45,15 +43,15 @@ ms.locfileid: "99225801"
 >
 > #### <a name="step-1-register-the-application"></a>手順 1:アプリケーションを登録する
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
-> 1. そのアカウントで複数のテナントにアクセスできる場合は、右上でアカウントを選択してから、ポータルのセッションを、使用したい Azure AD テナントに設定します。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. 手順に従って、Azure portal に[シングルページ アプリケーションを登録](./scenario-spa-app-registration.md)します。
 > 1. アプリの登録の **[認証]** ペインで新しいプラットフォームを追加し、リダイレクト URI (`http://localhost:4200/`) を登録します。
 > 1. このクイックスタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を使用します。 **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[ID トークン]** と **[アクセス トークン]** を選択します。 このアプリはユーザーのサインインを実行して API を呼び出すため、ID トークンとアクセス トークンが必要です。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、リダイレクト URI として **http://localhost:4200/** を追加し、****[暗黙の付与]** を有効にします。
+> このクイックスタートのコード サンプルを動作させるには、リダイレクト URI として **http://localhost:4200/** を追加し、 **[暗黙の付与]** を有効にする必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >

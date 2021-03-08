@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356550"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575693"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>メトリックを Azure Monitor にアップロードする
 
@@ -126,7 +126,7 @@ Azure Arc 対応 SQL マネージド インスタンスと Azure Arc 対応 Post
    >[!NOTE]
    >Azure Arc 対応データ インスタンスが最初のアップロード用に作成された後、少なくとも 30 分間待機します。
    >
-   >Azure Monitor では過去 30 分間のメトリックのみが受け入れられるため、メトリックに対して `export` の後に直ちに `upload` を実行してください。 [詳細については、こちらを参照してください](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)。
+   >Azure Monitor では過去 30 分間のメトリックのみが受け入れられるため、メトリックに対して `export` の後に直ちに `upload` を実行してください。 [詳細については、こちらを参照してください](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)。
 
 
 エクスポート中に "メトリックを取得できませんでした" というエラーが表示された場合は、次のコマンドを実行して、データ収集が `true` に設定されているかどうかを確認します。
@@ -199,7 +199,7 @@ Azure Arc 対応データ サービスに対する作成、読み取り、更新
 
 プレビュー期間中、この処理は夜間に行われます。 一般的なガイダンスは、使用状況を 1 日に 1 回だけアップロードすることです。 使用状況情報をエクスポートし、同じ 24 時間以内に複数回アップロードすると、リソースの使用状況ではなく Azure portal のリソース インベントリのみが更新されます。
 
-メトリックをアップロードする場合、Azure Monitor では過去 30 分間のデータのみが受け入れられます ([詳細を参照](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting))。 メトリックをアップロードするためのガイダンスは、エクスポート ファイルを作成した直後にメトリックをアップロードして、Azure portal でデータセット全体を表示できるようにすることです。 たとえば、午後 2:00 にメトリックをエクスポートし、午後 2:50 にアップロード コマンドを実行した場合などです。 Azure Monitor では過去 30 分間のデータのみが受け入れられるため、ポータルにデータが表示されない場合があります。 
+メトリックをアップロードする場合、Azure Monitor では過去 30 分間のデータのみが受け入れられます ([詳細を参照](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting))。 メトリックをアップロードするためのガイダンスは、エクスポート ファイルを作成した直後にメトリックをアップロードして、Azure portal でデータセット全体を表示できるようにすることです。 たとえば、午後 2:00 にメトリックをエクスポートし、午後 2:50 にアップロード コマンドを実行した場合などです。 Azure Monitor では過去 30 分間のデータのみが受け入れられるため、ポータルにデータが表示されない場合があります。 
 
 ## <a name="next-steps"></a>次の手順
 

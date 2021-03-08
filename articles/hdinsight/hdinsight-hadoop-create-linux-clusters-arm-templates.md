@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/07/2020
-ms.openlocfilehash: c36cee8ce7076093499a76ec0952ad37bd7511a7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43f9736ce902d4c195d6b07cfdf7011ba9ca0c2c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945869"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702744"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する
 
@@ -73,7 +73,7 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、以下の記事をお読みください。
 
 * HDInsight 関連のその他のテンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=hdinsight)」を参照してください。
-* .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリとテンプレートを使用したリソースのデプロイ](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+* .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリとテンプレートを使用したリソースのデプロイ](/previous-versions/azure/virtual-machines/windows/csharp-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 * アプリケーションのデプロイの詳細な例については、「 [Azure でマイクロサービスを予測どおりにデプロイする](../app-service/deploy-complex-application-predictably.md)」を参照してください。
 * ソリューションを別の環境にデプロイする方法については、「 [Microsoft Azure の開発環境とテスト環境](../devtest-labs/devtest-lab-overview.md)」を参照してください。
 * Azure Resource Manager のテンプレートのセクションについては、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)」を参照してください。

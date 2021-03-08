@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 119b00e67cf8337123028840ec6a7ecd29e97a05
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 8c375c3dc9f4c5fdb20270797eb55b3a20a6e214
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698282"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリックについて
 
@@ -99,7 +99,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >|----|----|----|------------|
 >| system.cpu.usage | system.cpu.usage | Percent | システム全体の最近の CPU 使用率 (非推奨のため、使用をお勧めしません)。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中にすべての CPU がアイドル状態であったことを意味します。一方、値 1.0 は、最近の観測期間中にすべての CPU が 100% の稼働状態であったことを意味します。|
 >| process.cpu.usage | アプリの CPU 使用率 (%) | Percent | Java 仮想マシン プロセスの最近の CPU 使用率 (非推奨のため、使用をお勧めしません)。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
->| AppCpuUsage | アプリの CPU 使用率 (プレビュー) | Percent | このアプリに割り当てられた CPU に対する JVM プロセスの最近の CPU 使用率 (0.0 と 1.0 の間の倍精度浮動小数点型の値)。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
+>| AppCpuUsage | アプリの CPU 使用率 | Percent | このアプリに割り当てられた CPU に対する JVM プロセスの最近の CPU 使用率 (0.0 と 1.0 の間の倍精度浮動小数点型の値)。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
 >| jvm.memory.committed | jvm.memory.committed | バイト | JVM で使用できることが保証されているメモリの量を表します。 JVM がシステムに対してメモリを解放する場合があり、保証されているメモリが初期値よりも少なくなる可能性があります。 保証されているメモリは、常に使用量以上になります。 |
 >| jvm.memory.used | jvm.memory.used | バイト | 現在使用されているメモリの量を表します (バイト単位)。 |
 >| jvm.memory.max | jvm.memory.max | バイト | メモリ管理に使用できるメモリの最大量を表します。 最大量が定義されている場合、使用されるメモリおよび保証されるメモリの量は常にそれ以下になります。 使用されているメモリ量が最大メモリ量以下であっても、保証されているメモリ量よりも使用されるメモリ量が大きくなるように使用されるメモリ量を増やそうとすると、メモリ割り当てが失敗する可能性があります (たとえば、システムの仮想メモリが不足している場合)。 |
@@ -173,7 +173,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 
 * [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](spring-cloud-quickstart-logs-metrics-tracing.md)に関するページ
 
-* [Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)
+* [Azure メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)
 
 * [診断設定でログとメトリックを分析する](./diagnostic-services.md)
 

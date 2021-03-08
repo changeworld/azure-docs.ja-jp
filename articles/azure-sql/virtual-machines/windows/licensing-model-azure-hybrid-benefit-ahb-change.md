@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5813331d5eafd953d776dd19d9cc885ff71b8be0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879832"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361555"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure で SQL 仮想マシンのライセンス モデルを変更する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -119,7 +119,6 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
    - SQL Server の Standard および Enterprise エディションでのみサポートされています。 Express、Web、Developer のライセンス変更はサポートされていません。 
    - Azure Resource Manager モデルを介してデプロイされた仮想マシンでのみサポートされます。 クラシック モデルを介してデプロイされた仮想マシンはサポートされていません。 
    - パブリック クラウドまたは Azure Government クラウドでのみ使用できます。 
-   - 1 つのネットワークインターフェイス (NIC) を持つ仮想マシンでのみサポートされます。 
 
 > [!Note]
 > Azure ハイブリッド特典の対象となるのは、ソフトウェア アシュアランスまたはサブスクリプション ライセンス付きの SQL Server コア ベース ライセンスのみです。 SQL Server に Server + CAL ライセンスを使用していて、ソフトウェア アシュアランスをお持ちの場合は、Azure SQL Server 仮想マシン イメージに対してライセンス持ち込みを使用することで、これらのサーバーのライセンス モビリティを利用できますが、Azure ハイブリッド特典の他の機能は利用できません。 
@@ -136,10 +135,6 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 リソース プロバイダーにサブスクリプションを登録してから、[SQL Server IaaS Agent 拡張機能にご利用の SQL Server VM を登録する](sql-agent-extension-manually-register-single-vm.md)必要があります。 
 
-
-**仮想マシン '\<vmname\>' に複数の NIC が関連付けられています**
-
-このエラーは、複数の NIC を持つ仮想マシンで発生します。 ライセンスモデルを変更する前に、いずれかの NIC を削除します。 ライセンスモデルを変更した後に NIC を VM に再び追加することはできますが、自動バックアップや修正プログラム適用などの Azure portal の操作はサポートされなくなります。 
 
 
 ## <a name="next-steps"></a>次のステップ

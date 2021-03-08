@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 773cf5cc6755a4f094eb676992364eea07a795ea
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4bc5732c1b2349f34297ecaacc7eb3176fdba611
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654662"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570482"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel とは
 
@@ -51,7 +51,7 @@ Azure Sentinel をオンボードするには、まず[セキュリティ ソー
 
 ## <a name="workbooks"></a>Workbooks
 
-Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら、Azure Sentinel と Azure Monitor ブックの統合を使用してデータを監視できます。これにより、多用途のカスタム ブックを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/platform/workbooks-overview.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
+Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら、Azure Sentinel と Azure Monitor ブックの統合を使用してデータを監視できます。これにより、多用途のカスタム ブックを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/visualize/workbooks-overview.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
 
 ![ダッシュボード](./media/tutorial-monitor-data/access-workbooks.png)
 

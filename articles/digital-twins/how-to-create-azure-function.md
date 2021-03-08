@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1178b0ab5af3642026fe78c7de788f354691b13a
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701164"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050003"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -65,7 +65,7 @@ SDK を使用するには、次のパッケージをプロジェクトに含め�
 * `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core`
+* `Azure.Core.Pipeline`
 
 **オプション 2: `dotnet` コマンドライン ツールを使用してパッケージを追加する:**
 
@@ -75,7 +75,7 @@ SDK を使用するには、次のパッケージをプロジェクトに含め�
 dotnet add package Azure.DigitalTwins.Core
 dotnet add package Azure.Identity
 dotnet add package System.Net.Http
-dotnet add package Azure.Core
+dotnet add package Azure.Core.Pipeline
 ```
 
 次に、Visual Studio のソリューション エクスプローラーで、サンプル コードが含まれる _Function1.cs_ ファイルを開きます。その関数に以下の `using` ステートメントを追加します。 
@@ -121,8 +121,6 @@ Azure CLI または Azure portal のいずれかを使用して、関数アプ�
 前の例の関数スケルトンでは、Azure Digital Twins で認証できるようにするために、ベアラー トークンを渡す必要があります。 このベアラー トークンが確実に渡されるようにするには、関数アプリの [マネージド サービス ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) を設定する必要があります。 これは、関数アプリごとに 1 回だけ実行する必要があります。
 
 システム マネージド ID を作成し、関数アプリの ID を Azure Digital Twins インスタンスの _**Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)**_ ロールに割り当てることができます。 これにより、インスタンスでデータ プレーン アクティビティを実行するアクセス許可が、関数アプリに与えられます。 次に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 コマンドを実行するには、[Azure Cloud Shell](https://shell.azure.com) を使用します。
 

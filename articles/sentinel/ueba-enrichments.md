@@ -51,7 +51,7 @@ ms.locfileid: "97901629"
 
 | エンリッチメント名 | 説明 | 値の例 |
 | --- | --- | --- | --- |
-| **ブラウザー**<br>*(Browser)* | アクションで使用されたブラウザー。 | Edge、Chrome |
+| **ブラウザー**<br>*(Browser)* | アクションで使用されたブラウザー。 | Microsoft Edge、Chrome |
 | **デバイス ファミリ**<br>*(DeviceFamily)* | アクションで使用されたデバイス ファミリ。 | Windows |
 | **Device type** (デバイスの種類)<br>*(DeviceType)* | アクションで使用されたクライアント デバイスの種類 | デスクトップ |
 | **ISP**<br>*(ISP)* | アクションで使用されたインターネット サービス プロバイダー。 |  |
@@ -59,7 +59,7 @@ ms.locfileid: "97901629"
 | **Threat intel indicator description** (脅威インテリジェンス インジケーターの説明)<br>*(ThreatIntelIndicatorDescription)* | アクションで使用された IP アドレスから解決された監視対象の脅威インジケーターの説明。 | Host is member of botnet: azorult (ホストはボットネット azorult のメンバーである) |
 | **Threat intel indicator type** (脅威インテリジェンス インジケーターの種類)<br>*(ThreatIntelIndicatorType)* | アクションで使用された IP アドレスから解決された脅威インジケーターの種類。 | Botnet、C2、CryptoMining、Darknet、Ddos、MaliciousUrl、Malware、Phishing、Proxy、PUA、Watchlist |
 | **User agent**<br>*(UserAgent)* | アクションで使用されたユーザー エージェント。 | Microsoft Azure Graph Client Library 1.0、<br>Swagger-Codegen/1.4.0.0/csharp、<br>EvoSTS |
-| **User agent family** (ユーザー エージェント ファミリ)<br>*(UserAgentFamily)* | アクションで使用されたユーザー エージェント ファミリ。 | Chrome、Edge、Firefox |
+| **User agent family** (ユーザー エージェント ファミリ)<br>*(UserAgentFamily)* | アクションで使用されたユーザー エージェント ファミリ。 | Chrome、Microsoft Edge、Firefox |
 |
 
 ## <a name="activity-insights-tables"></a>アクティビティ分析情報の表

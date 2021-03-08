@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
-ms.openlocfilehash: ab783d6cb20f1c2fe31e8556dc57999df20d5637
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: efbae71162bdd0c126287191f7ad35cf903db138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629812"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378079"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Azure IoT Edge for Linux をインストールまたはアンインストールする
 
@@ -32,7 +32,7 @@ Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デ�
 
 * Linux デバイス
 
-  X64、ARM32、または ARM64 の Linux デバイスを使用します。 Microsoft からは、Ubuntu Server 16.04、Ubuntu Server 18.04、および Raspberry Pi OS Stretch の各オペレーティング システム用のインストール パッケージが提供されています。
+  X64、ARM32、または ARM64 の Linux デバイスを使用します。 Microsoft からは、Ubuntu Server 18.04 および Raspberry Pi OS Stretch の各オペレーティング システム用のインストール パッケージが提供されています。
 
   運用シナリオ向けに現在サポートされているオペレーティング システムに関する最新の情報については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください
 
@@ -42,12 +42,6 @@ Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デ�
 * Microsoft インストール パッケージにアクセスするようにデバイスを準備します。
 
   デバイスのオペレーティング システムに対応するリポジトリ構成をインストールします。
-
-  * **Ubuntu Server 16.04**:
-
-    ```bash
-    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-    ```
 
   * **Ubuntu Server 18.04**:
 

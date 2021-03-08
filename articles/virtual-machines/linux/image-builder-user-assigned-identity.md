@@ -3,16 +3,17 @@ title: 仮想マシン イメージを作成し、ユーザー割り当てマネ
 description: ユーザー割り当てマネージド ID を使って Azure Storage に格納されているファイルにアクセスできる仮想マシン イメージを、Azure Image Builder を使って作成します。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: f5734d4b1871dd285fc83a72631f7d645e0b72ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: 9bcb7a94cdf1d5478db32a22ba6e612a90c53ed9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695381"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>イメージを作成し、ユーザー割り当てマネージド ID を使用して Azure Storage 内のファイルにアクセスする 
 
@@ -48,6 +49,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.Network | grep registrationState
 ```
 
 登録されていない場合、次のコマンドを実行します。
@@ -57,6 +59,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Network
 ```
 
 
@@ -109,7 +112,7 @@ imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
 
 # download preconfigured role definition example
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 # update the definition
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
@@ -147,7 +150,7 @@ az storage blob copy start \
     --destination-blob customizeScript.sh \
     --destination-container $scriptStorageAccContainer \
     --account-name $scriptStorageAcc \
-    --source-uri https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
+    --source-uri https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
 ```
 
 イメージ リソース グループにリソースを作成するためのアクセス許可を Image Builder に付与します。 `--assignee` の値はユーザー ID です。
@@ -167,7 +170,7 @@ az role assignment create \
 .json ファイルの例をダウンロードし、作成した変数を使用して構成します。
 
 ```console
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateMsi.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateMsi.json
 sed -i -e "s/<region>/$location/g" helloImageTemplateMsi.json

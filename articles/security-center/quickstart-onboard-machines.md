@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 8d0d4726763e36bd889c2f564d116d454b2f62b9
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: cc44c7121cfc03b78ff820f6c50a88f646d599e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740608"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579001"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
 
@@ -121,7 +121,7 @@ Windows マシンを追加するには、 **[エージェント管理]** ペー�
 
 完了すると、**コントロール パネル** に **Microsoft Monitoring Agent** が表示されます。 構成を検証して、エージェントが接続されていることを確認できます。
 
-エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)に関するページをご覧ください。
+エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard)に関するページをご覧ください。
 
 ::: zone-end
 

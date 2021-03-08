@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 39a675ff4947e7eca64298e1e68160cd6149f081
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 9366bb5b2bb5820245ec1b699bbf2ddda0dd9f9d
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226340"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103177"
 ---
 # <a name="single-page-application-app-registration"></a>シングルページ アプリケーション：アプリの登録
 
@@ -27,7 +27,7 @@ Microsoft ID プラットフォームにシングル ページ アプリケー�
 
 MSAL.js 1.0 ベースと MSAL.js 2.0 ベースの両方のアプリケーションで、次の手順を完了して最初のアプリ登録を作成します。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。

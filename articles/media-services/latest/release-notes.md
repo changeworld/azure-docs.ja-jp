@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2254762ec2cc9d99946afaef12f452fdfbfea9e2
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 14bc7b6f45b04f230252e85cd10b7246529cb751
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898241"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095153"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -441,5 +441,4 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 ## <a name="next-steps"></a>次のステップ
 
 - [概要](media-services-overview.md)
-- [Media Services v3 ドキュメントの更新](docs-release-notes.md)
 - [Media Services v2 リリース ノート](../previous/media-services-release-notes.md)

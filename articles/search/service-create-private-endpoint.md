@@ -3,17 +3,17 @@ title: 安全な接続のために、プライベート エンドポイントを
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search Service への安全な接続を行うために、仮想ネットワークにプライベート エンドポイントを設定します。
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 02/16/2021
+ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779942"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545532"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Cognitive Search への安全な接続を行うためのプライベート エンドポイントを作成する
 
@@ -21,8 +21,10 @@ ms.locfileid: "96779942"
 
 プライベート エンドポイントは、別サービスとして、[Azure Private Link](../private-link/private-link-overview.md) によって提供されます。 コストの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/private-link/)を参照してください。
 
-> [!Important]
-> Azure Cognitive Search に対するプライベート エンドポイントのサポートは、Azure portal または [管理 REST API バージョン 2020-03-13](/rest/api/searchmanagement/) を使用して構成できます。 サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。 ポータルの代わりに、[VS Code 拡張機能](https://aka.ms/vscode-search)を使用して、サービス内のさまざまなコンポーネントを操作することもできます。
+この記事で説明されているように、Azure portal にプライベートエンド ポイントを作成できます。 また、[Management REST API バージョン 2020-03-13](/rest/api/searchmanagement/)、[Azure PowerShell](/powershell/module/az.search)、または [Azure CLI](/cli/azure/search) を使用することもできます。
+
+> [!NOTE]
+> サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービス レベル情報を表示および管理することはできますが、セキュリティ上の理由から、インデックス、インデクサー、およびスキルセットの情報は非表示になります。 ポータルの代わりに、[VS Code 拡張機能](https://aka.ms/vscode-search)を使用して、サービス内のさまざまなコンポーネントを操作することもできます。
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>安全なアクセスのためにプライベート エンドポイントを使用する理由
 

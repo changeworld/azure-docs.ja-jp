@@ -6,14 +6,17 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5f604847faf01d1b267e6cbb73481d57ef397bd9
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 36ec27f3a0e69126a91b52bed26dc645ec89e46e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95554435"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656653"
 ---
 このクイックスタートでは、iOS 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
+
+> [!NOTE]
+> このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.8 を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,9 +44,9 @@ Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー �
    use_frameworks!
 
    target 'AzureCommunicationCallingSample' do
-     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.5'
-     pod 'AzureCommunication', '~> 1.0.0-beta.5'
-     pod 'AzureCore', '~> 1.0.0-beta.5'
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.8'
+     pod 'AzureCommunication', '~> 1.0.0-beta.8'
+     pod 'AzureCore', '~> 1.0.0-beta.8'
    end
    ```
 
@@ -119,19 +122,19 @@ Azure Communication Services 通話クライアント ライブラリが備え�
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| ACSCallClient | CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。|
-| ACSCallAgent | CallAgent は、通話を開始および管理するために使用します。 |
-| CommunicationUserCredential | CommunicationUserCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。| 
-| CommunicationIdentifier | CommunicationIdentifier はユーザーの ID を表すために使用され、次のいずれかになります: CommunicationUser/PhoneNumber/CallingApplication。 |
+| CallClient | CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。|
+| CallAgent | CallAgent は、通話を開始および管理するために使用します。 |
+| CommunicationTokenCredential | CommunicationTokenCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。| 
+| CommunicationUserIdentifier | CommunicationUserIdentifier はユーザーの ID を表すために使用され、次のいずれかになります: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication。 |
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
 ユーザー アクセス トークンを使用して `CallAgent` インスタンスを初期化します。これにより、電話をかけたり受けたりすることができるようになります。 **ContentView.swift** で `onAppear` コールバックに次のコードを追加します。
 
 ```swift
-var userCredential: CommunicationUserCredential?
+var userCredential: CommunicationTokenCredential?
 do {
-    userCredential = try CommunicationUserCredential(token: "<USER ACCESS TOKEN>")
+    userCredential = try CommunicationTokenCredential(token: "<USER ACCESS TOKEN>")
 } catch {
     print("ERROR: It was not possible to create user credential.")
     return
@@ -140,9 +143,10 @@ do {
 self.callClient = CallClient()
 
 // Creates the call agent
-self.callClient?.createCallAgent(userCredential) { (agent, error) in
+self.callClient?.createCallAgent(userCredential: userCredential) { (agent, error) in
     if error != nil {
         print("ERROR: It was not possible to create a call agent.")
+        return
     }
 
     if let agent = agent {
@@ -165,8 +169,8 @@ func startCall()
     AVAudioSession.sharedInstance().requestRecordPermission { (granted) in
         if granted {
             // start call logic
-            let callees:[CommunicationIdentifier] = [CommunicationUser(identifier: self.callee)]
-            self.call = self.callAgent?.call(callees, options: StartCallOptions())
+            let callees:[CommunicationIdentifier] = [CommunicationUserIdentifier(identifier: self.callee)]
+            self.call = self.callAgent?.call(participants: callees, options: StartCallOptions())
         }
     }
 }

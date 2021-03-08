@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492757"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560465"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -210,7 +210,7 @@ az ml computetarget create aks -n myaks
 
 **推定所要時間:** 約 5 分です。
 
-Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.17 以前である場合は、それを使用してイメージをデプロイできます。
+Azure サブスクリプションに AKS クラスターが既にある場合は、ワークスペースで使用できます。
 
 > [!TIP]
 > 既存の AKS クラスターは、Azure Machine Learning ワークスペースと異なる Azure リージョンに存在してもかまいません。

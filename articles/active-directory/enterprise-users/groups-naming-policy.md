@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894a90c50f968c892a76160a7375f11fe09390d6
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 00291907ddea75ba4507779d1226502dc8343aea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785001"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365703"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory での Microsoft 365 グループに対する名前付けポリシーの適用
 
@@ -78,8 +78,6 @@ ms.locfileid: "98785001"
 すべてのグループ ワークロードおよびエンドポイントで、選択した管理者をこれらのポリシーから除外できます。これにより、管理者は禁止単語や独自の名前付け規則を使用してグループを作成できます。 グループ名前付けポリシーから除外される管理者ロールを次に示します。
 
 - 全体管理者
-- Partner Tier 1 サポート
-- Partner Tier 2 サポート
 - ユーザー管理者
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal で名前付けポリシーを構成する

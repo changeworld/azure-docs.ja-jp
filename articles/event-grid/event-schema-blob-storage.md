@@ -2,13 +2,13 @@
 title: Event Grid ソースとしての Azure Blob Storage
 description: Blob Storage イベントに関して Azure Event Grid に用意されているプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 1a81b30fcb775f5e8bc99bda70307f7f1aed9796
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 02/11/2021
+ms.openlocfilehash: 893e86ecf220ceb327eed9c6f95be4c7ed1afb1c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452548"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363646"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
 
@@ -18,7 +18,7 @@ ms.locfileid: "96452548"
 >[!NOTE]
 > イベントの統合をサポートしているのは、**StorageV2 (汎用 v2)** 、**BlockBlobStorage**、および **BlobStorage** の種類のストレージ アカウントだけです。 **Storage (汎用 v1)** では、Event Grid との統合はサポート "*されていません*"。
 
-## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
+## <a name="available-event-types"></a>使用可能なイベントの種類
 
 ### <a name="list-of-events-for-blob-rest-apis"></a>BLOB REST API のイベント一覧
 
@@ -51,12 +51,10 @@ ms.locfileid: "96452548"
 > [!NOTE]
 > **Azure Data Lake Storage Gen2** の場合、ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされるようにするには、`FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、この API によって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](./how-to-filter-events.md)」をご覧ください。
 
-<a name="example-event"></a>
-### <a name="the-contents-of-an-event-response"></a>イベント応答の内容
+## <a name="example-event"></a>イベントの例
+イベントがトリガーされると、Event Grid サービスにより、そのイベントに関するデータがサブスクライブしているエンドポイントに送信されます。 このセクションには、各 BLOB ストレージ イベントでそのデータがどのように見えるかの例が含まれています。
 
-イベントがトリガーされると、Event Grid サービスにより、そのイベントに関するデータがサブスクライブしているエンドポイントに送信されます。
-
-このセクションには、各 BLOB ストレージ イベントでそのデータがどのように見えるかの例が含まれています。
+# <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 
 ### <a name="microsoftstorageblobcreated-event"></a>Microsoft.Storage.BlobCreated イベント
 
@@ -287,39 +285,278 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 }]
 ```
 
-### <a name="event-properties"></a>イベントのプロパティ
+# <a name="cloud-event-schema"></a>[クラウド イベント スキーマ](#tab/cloud-event-schema)
+
+### <a name="microsoftstorageblobcreated-event"></a>Microsoft.Storage.BlobCreated イベント
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/test-container/blobs/new-file.txt",
+  "type": "Microsoft.Storage.BlobCreated",
+  "time": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "PutBlockList",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "eTag": "\"0x8D4BCC2E4835CD0\"",
+    "contentType": "text/plain",
+    "contentLength": 524288,
+    "blobType": "BlockBlob",
+    "url": "https://my-storage-account.blob.core.windows.net/testcontainer/new-file.txt",
+    "sequencer": "00000000000004420000000000028963",
+    "storageDiagnostics": {
+      "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobCreated イベント (Data Lake Storage Gen2)
+
+BLOB ストレージ アカウントに階層型名前空間がある場合、これらの変更点を除き、データは前の例と同じようになります。
+
+* `data.api` キーは文字列 `CreateFile` または `FlushWithClose` に設定されます。
+* `contentOffset` キーはデータセットに含まれます。
+
+> [!NOTE]
+> アプリケーションが `PutBlockList` 操作を使用してアカウントに新しい BLOB をアップロードする場合、データにこれらの変更は含まれません。
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/new-file.txt",
+  "type": "Microsoft.Storage.BlobCreated",
+  "time": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "CreateFile",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "eTag": "\"0x8D4BCC2E4835CD0\"",
+    "contentType": "text/plain",
+    "contentLength": 0,
+    "contentOffset": 0,
+    "blobType": "BlockBlob",
+    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/new-file.txt",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftstorageblobdeleted-event"></a>Microsoft.Storage.BlobDeleted イベント
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/testcontainer/blobs/file-to-delete.txt",
+  "type": "Microsoft.Storage.BlobDeleted",
+  "time": "2017-11-07T20:09:22.5674003Z",
+  "id": "4c2359fe-001e-00ba-0e04-58586806d298",
+  "data": {
+    "api": "DeleteBlob",
+    "requestId": "4c2359fe-001e-00ba-0e04-585868000000",
+    "contentType": "text/plain",
+    "blobType": "BlockBlob",
+    "url": "https://my-storage-account.blob.core.windows.net/testcontainer/file-to-delete.txt",
+    "sequencer": "0000000000000281000000000002F5CA",
+    "storageDiagnostics": {
+      "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobDeleted イベント (Data Lake Storage Gen2)
+
+BLOB ストレージ アカウントに階層型名前空間がある場合、これらの変更点を除き、データは前の例と同じようになります。
+
+
+* `data.api` キーは文字列 `DeleteFile` に設定されます。
+* `url` キーはパス `dfs.core.windows.net` を含みます。
+
+> [!NOTE]
+> アプリケーションが `DeleteBlob` 操作を使用してアカウントから BLOB を削除する場合、データにこれらの変更は含まれません。
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/file-to-delete.txt",
+  "type": "Microsoft.Storage.BlobDeleted",
+  "time": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+    "data": {
+    "api": "DeleteFile",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "contentType": "text/plain",
+    "blobType": "BlockBlob",
+    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/file-to-delete.txt",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftstorageblobrenamed-event"></a>Microsoft.Storage.BlobRenamed イベント
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/my-renamed-file.txt",
+  "type": "Microsoft.Storage.BlobRenamed",
+  "time": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "RenameFile",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "destinationUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-renamed-file.txt",
+    "sourceUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-original-file.txt",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftstoragedirectorycreated-event"></a>Microsoft.Storage.DirectoryCreated イベント
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/my-new-directory",
+  "type": "Microsoft.Storage.DirectoryCreated",
+  "time": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "CreateDirectory",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-new-directory",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftstoragedirectoryrenamed-event"></a>Microsoft.Storage.DirectoryRenamed イベント
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/my-renamed-directory",
+  "type": "Microsoft.Storage.DirectoryRenamed",
+  "time": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "RenameDirectory",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "destinationUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-renamed-directory",
+    "sourceUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-original-directory",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftstoragedirectorydeleted-event"></a>Microsoft.Storage.DirectoryDeleted イベント
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/directory-to-delete",
+  "type": "Microsoft.Storage.DirectoryDeleted",
+  "time": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "DeleteDirectory",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/directory-to-delete",
+    "recursive": "true", 
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "specversion": "1.0"
+}]
+```
+
+---
+
+
+## <a name="event-properties"></a>イベントのプロパティ
+
+# <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
-| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | string | 発行元が定義したイベントの対象のパス。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
-| data | object | Blob Storage イベントのデータ。 |
-| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| `subject` | string | 発行元が定義したイベントの対象のパス。 |
+| `eventType` | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| `eventTime` | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| `id` | string | イベントの一意識別子。 |
+| `data` | object | Blob Storage イベントのデータ。 |
+| `dataVersion` | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| `metadataVersion` | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+
+# <a name="cloud-event-schema"></a>[クラウド イベント スキーマ](#tab/cloud-event-schema)
+
+イベントのトップレベルのデータを次に示します。
+
+| プロパティ | 種類 | [説明] |
+| -------- | ---- | ----------- |
+| `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| `subject` | string | 発行元が定義したイベントの対象のパス。 |
+| `type` | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| `time` | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| `id` | string | イベントの一意識別子。 |
+| `data` | object | Blob Storage イベントのデータ。 |
+| `specversion` | string | CloudEvents スキーマ仕様バージョン。 |
+
+---
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
-| api | string | イベントのトリガーとなった操作。 |
-| clientRequestId | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
-| requestId | string | ストレージ API 操作に対するサービスで生成された要求 ID です。 ログの "request-id-header" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、開始 API 呼び出しから "x-ms-request-id" ヘッダーで返されます。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
-| eTag | string | この値を使用することで、条件に応じて操作を実行することができます。 |
-| contentType | string | BLOB に関して指定されたコンテンツの種類。 |
-| contentLength | 整数 (integer) | BLOB のサイズ (単位: バイト)。 |
-| blobType | string | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
-| contentOffset | number | イベントをトリガーしたアプリケーションがファイルへの書き込みを完了した時点で実行される書き込み操作のバイト単位のオフセット。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。|
-| destinationUrl |string | 操作の完了後に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`destinationUrl` プロパティには新しいファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。|
-| sourceUrl |string | 操作が実行される前に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`sourceUrl` には、名前変更操作が行われる前の元のファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
-| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url の構造は `<storage-account-name>.blob.core.windows.net\<container-name>\<file-name>` です。 <br>クライアントが Data Lake Storage REST API を使用する場合、url の構造は `<storage-account-name>.dfs.core.windows.net/<file-system-name>/<file-name>` です。 |
-| recursive | string | すべての子ディレクトリに対して操作を実行する場合は `True`、それ以外の場合は `False`。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
-| sequencer | string | 特定の BLOB 名に対するイベントの論理シーケンスを表す非透過的な文字列値です。  ユーザーは、標準的な文字列比較を使って、同じ BLOB 名での 2 つのイベントの相対的な順序を理解できます。 |
-| storageDiagnostics | object | Azure Storage サービスによって追加されることがある診断データです。 含まれる場合、イベントのコンシューマーは無視する必要があります。 |
+| `api` | string | イベントのトリガーとなった操作。 |
+| `clientRequestId` | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
+| `requestId` | string | ストレージ API 操作に対するサービスで生成された要求 ID です。 ログの "request-id-header" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、開始 API 呼び出しから "x-ms-request-id" ヘッダーで返されます。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
+| `eTag` | string | この値を使用することで、条件に応じて操作を実行することができます。 |
+| `contentType` | string | BLOB に関して指定されたコンテンツの種類。 |
+| `contentLength` | 整数 (integer) | BLOB のサイズ (単位: バイト)。 |
+| `blobType` | string | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
+| `contentOffset` | number | イベントをトリガーしたアプリケーションがファイルへの書き込みを完了した時点で実行される書き込み操作のバイト単位のオフセット。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。|
+| `destinationUrl` |string | 操作の完了後に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`destinationUrl` プロパティには新しいファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。|
+| `sourceUrl` |string | 操作が実行される前に存在するファイルの url。 たとえば、ファイルの名前が変更された場合、`sourceUrl` には、名前変更操作が行われる前の元のファイル名の url が含まれています。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
+| `url` | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url の構造は `<storage-account-name>.blob.core.windows.net\<container-name>\<file-name>` です。 <br>クライアントが Data Lake Storage REST API を使用する場合、url の構造は `<storage-account-name>.dfs.core.windows.net/<file-system-name>/<file-name>` です。 |
+| `recursive` | string | すべての子ディレクトリに対して操作を実行する場合は `True`、それ以外の場合は `False`。 <br>階層型名前空間を持つ BLOB ストレージ アカウントでトリガーされるイベントに対してのみ表示されます。 |
+| `sequencer` | string | 特定の BLOB 名に対するイベントの論理シーケンスを表す非透過的な文字列値です。  ユーザーは、標準的な文字列比較を使って、同じ BLOB 名での 2 つのイベントの相対的な順序を理解できます。 |
+| `storageDiagnostics` | object | Azure Storage サービスによって追加されることがある診断データです。 含まれる場合、イベントのコンシューマーは無視する必要があります。 |
 
 ## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
 |タイトル  |説明  |

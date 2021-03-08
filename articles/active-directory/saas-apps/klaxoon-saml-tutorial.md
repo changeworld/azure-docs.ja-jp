@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 23d0c471404bba04c3098b464ac040c60d66b07c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 86a54e2450f9790bad590249f4dbad89fc3e2492
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900004"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649905"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-klaxoon-saml"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Klaxoon SAML の統合
 
@@ -131,11 +131,9 @@ Klaxoon SAML に対する Azure AD SSO を構成してテストするには、�
 
 * Klaxoon SAML のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Klaxoon SAML] タイルをクリックすると、Klaxoon SAML のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Klaxoon SAML] タイルをクリックすると、Klaxoon SAML のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Klaxoon SAML を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Klaxoon SAML を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

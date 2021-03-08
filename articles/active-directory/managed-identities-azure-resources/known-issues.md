@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 02/04/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2be66904898ecdf2006952f5e80c17dc78b81c06
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3f1be2e64435cb0bcdb369a398a9a65fc3714fb2
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825798"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008538"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -48,6 +48,10 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 アプリの登録には、次の 2 つのコンポーネントがあります。アプリケーション オブジェクトとサービス プリンシパル オブジェクト。 Azure リソースのマネージド ID にあるのは、これらのコンポーネントのうち、次の 1 つだけです:サービス プリンシパル オブジェクト。 
 
 マネージド ID では、アプリケーション オブジェクトがディレクトリにありません。これは、MS グラフに対するアプリのアクセス許可を付与するために一般的に使用されるものです。 代わりに、マネージド ID に対する MS グラフのアクセス許可をサービス プリンシパルに直接付与する必要があります。  
+
+### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>同じマネージド ID を複数のリージョンで使用できますか?
+
+簡単に言えば、はい、ユーザー割り当て済みマネージド ID は複数の Azure リージョンで使用できます。 詳しく回答すると、ユーザー割り当て済みマネージド ID はリージョン リソースとして作成されますが、Azure AD で作成される関連[サービス プリンシパル](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN) はグローバルに使用できます。 サービス プリンシパルはどの Azure リージョンからでも使用でき、その可用性は Azure AD の可用性に依存します。 たとえば、中南部リージョンでユーザー割り当て済みマネージド ID を作成し、そのリージョンが使用できなくなった場合、この問題はマネージド ID 自体の[コントロール プレーン アクティビティ](../../azure-resource-manager/management/control-plane-and-data-plane.md)のみに影響します。  マネージド ID を使用するように既に構成されているリソースによって実行されるアクティビティは影響を受けません。
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure リソースのマネージド ID は Azure Cloud Services で動作しますか?
 

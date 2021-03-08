@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights のクラシック リソースをワ�
 description: Azure Monitor Application Insights のクラシック リソースを新しいワークスペースベースのモデルにアップグレードするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945113"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584263"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>ワークスペースベースの Application Insights リソースに移行する
 
@@ -22,21 +22,21 @@ ms.locfileid: "98945113"
 
 ワークスペースベースの Application Insights を使用すると、次のような、Azure Monitor および Log Analytics の最新の機能をすべて活用できます。
 
-* [カスタマー マネージド キー (CMK)](../platform/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
-* [Azure Private Link](../platform/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
+* [カスタマー マネージド キー (CMK)](../logs/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
+* [Azure Private Link](../logs/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
 * [Profiler およびスナップショット デバッガー向けの Bring Your Own Storage (BYOS)](./profiler-bring-your-own-storage.md) では、保存時の暗号化ポリシー、有効期間管理ポリシー、および Application Insights Profiler およびスナップショット デバッガーに関連付けられているすべてのデータのネットワーク アクセスを完全に制御できます。 
-* [容量予約レベル](../platform/manage-cost-storage.md#pricing-model)を利用すると、従量課金制の料金と比較して 25% も節約できます。 
+* [容量予約レベル](../logs/manage-cost-storage.md#pricing-model)を利用すると、従量課金制の料金と比較して 25% も節約できます。 
 * Log Analytics ストリーミング インジェストにより、データ インジェストがより高速になります。
 
 ## <a name="migration-process"></a>移行プロセス
 
 ワークスペースベースのリソースに移行するときに、クラシック リソースのストレージから新しいワークスペースベースのストレージにデータが転送されることはありません。 その代わりに、移行を選ぶと、クラシック リソース データへのアクセスを保持しつつ、新しいデータの書き込み先が Log Analytics ワークスペースに変更されます。 
 
-クラシック リソース データは永続的に保持され、従来の Application Insights リソースにデータ保持設定が適用されます。 移行後に取り込まれるすべての新しいデータには、関連付けられている Log Analytics ワークスペースの[データ保持設定](../platform/manage-cost-storage.md#change-the-data-retention-period)が適用されます。Log Analytics ワークスペースでは、[データの種類別のデータ保持設定](../platform/manage-cost-storage.md#retention-by-data-type)もサポートされています。
+クラシック リソース データは永続的に保持され、従来の Application Insights リソースにデータ保持設定が適用されます。 移行後に取り込まれるすべての新しいデータには、関連付けられている Log Analytics ワークスペースの[データ保持設定](../logs/manage-cost-storage.md#change-the-data-retention-period)が適用されます。Log Analytics ワークスペースでは、[データの種類別のデータ保持設定](../logs/manage-cost-storage.md#retention-by-data-type)もサポートされています。
 移行プロセスは **永続的な処理であり、元に戻すことはできません**。 リソースをワークスペースベースの Application Insights に移行すると、そのリソースは常にワークスペースベースのリソースであり続けます。 ただし、移行の完了後、必要に応じて対象のワークスペースを変更できます。 
 
 > [!NOTE]
-> ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている [Log Analytics ワークスペースを通じて課金](../platform/manage-cost-storage.md)されます。 移行前にクラシック Application Insights リソース データに取り込まれたデータに対して 90 日を超える保持期間を選択した場合、データ保持の料金はその Application Insights リソースを通じて課金され続けます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( ./pricing.md#workspace-based-application-insights)してください。
+> ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている [Log Analytics ワークスペースを通じて課金](../logs/manage-cost-storage.md)されます。 移行前にクラシック Application Insights リソース データに取り込まれたデータに対して 90 日を超える保持期間を選択した場合、データ保持の料金はその Application Insights リソースを通じて課金され続けます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( ./pricing.md#workspace-based-application-insights)してください。
 
 既存のリソースを移行する必要がなく、代わりにワークスペースベースの Application Insights リソースを新しく作成する場合は、[ワークスペースベースのリソースの作成ガイド](create-workspace-resource.md)を使用してください。
 
@@ -44,12 +44,12 @@ ms.locfileid: "98945113"
 
 - アクセス制御モードとして **`use resource or workspace permissions`** 設定が指定されている Log Analytics ワークスペース。 
 
-    - ワークスペースベースの Application Insights リソースは、専用の **`workspace based permissions`** 設定が指定されているワークスペースとは互換性がありません。 Log Analytics ワークスペースのアクセス制御の詳細については、[Log Analytics のアクセス制御モードの構成ガイダンス](../platform/manage-access.md#configure-access-control-mode)を参照してください
+    - ワークスペースベースの Application Insights リソースは、専用の **`workspace based permissions`** 設定が指定されているワークスペースとは互換性がありません。 Log Analytics ワークスペースのアクセス制御の詳細については、[Log Analytics のアクセス制御モードの構成ガイダンス](../logs/manage-access.md#configure-access-control-mode)を参照してください
 
-    - 既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](../learn/quick-create-workspace.md)を参照してください。
+    - 既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](../logs/quick-create-workspace.md)を参照してください。
     
 - ワークスペースベースのリソースでは、連続エクスポートはサポートされていないため、無効にする必要があります。
-移行が完了したら、[診断設定](../platform/diagnostic-settings.md)を使用して、ストレージ アカウントへのデータのアーカイブまたは Azure Event Hubs へのストリーミングを構成できます。  
+移行が完了したら、[診断設定](../essentials/diagnostic-settings.md)を使用して、ストレージ アカウントへのデータのアーカイブまたは Azure Event Hubs へのストリーミングを構成できます。  
 
 - Log Analytics ワークスペースの **[全般]**  >  **[使用量と推定コスト]**  >  **[データ保持]** で、現在のデータ保持設定を確認してください。 この設定は、Application Insights リソースを移行した後、新たに取り込まれるデータが格納される期間に影響します。 現在、Application Insights データを既定の 90 日より長く格納していて、その長い保持期間を維持する場合は、ワークスペースのデータ保持設定を調整しなければならないことがあります。
 
@@ -209,7 +209,7 @@ Application Insights リソース ペイン内で **[プロパティ]**  >  **[�
 
 **エラー メッセージ:** *The selected workspace is configured with workspace-based access mode. (選択されたワークスペースは、ワークスペースベースのアクセス モードで構成されています。)Some APM features may be impacted. (一部の APM 機能に影響する可能性があります。)Select another workspace or allow resource-based access in the workspace settings. (別のワークスペースを選択するか、ワークスペースの設定でリソースベースのアクセスを許可してください。)You can override this error by using CLI. (CLI を使用すると、このエラーをオーバーライドできます。)* 
 
-ワークスペースベースの Application Insights リソースを正常に動作させるには、ターゲット Log Analytics ワークスペースのアクセス制御モードを **リソースまたはワークスペースのアクセス許可** 設定に変更する必要があります。 この設定は、 **[プロパティ]**  >  **[アクセス制御モード]** の Log Analytics ワークスペースの UI にあります。 詳細な手順については、[Log Analytics のアクセス制御モードの構成ガイダンス](../platform/manage-access.md#configure-access-control-mode)を参照してください。 アクセス制御モードとして、排他的な **[ワークスペースのアクセス許可が必要]** 設定が指定されている場合、ポータルの移行エクスペリエンスを使用した移行はブロックされたままになります。
+ワークスペースベースの Application Insights リソースを正常に動作させるには、ターゲット Log Analytics ワークスペースのアクセス制御モードを **リソースまたはワークスペースのアクセス許可** 設定に変更する必要があります。 この設定は、 **[プロパティ]**  >  **[アクセス制御モード]** の Log Analytics ワークスペースの UI にあります。 詳細な手順については、[Log Analytics のアクセス制御モードの構成ガイダンス](../logs/manage-access.md#configure-access-control-mode)を参照してください。 アクセス制御モードとして、排他的な **[ワークスペースのアクセス許可が必要]** 設定が指定されている場合、ポータルの移行エクスペリエンスを使用した移行はブロックされたままになります。
 
 現在のターゲット ワークスペースのセキュリティ上の理由により、アクセス制御モードを変更できない場合は、移行に使用する新しい Log Analytics ワークスペースを作成することをお勧めします。 
 
@@ -229,7 +229,7 @@ Application Insights リソース ペイン内で **[プロパティ]**  >  **[�
 
 - [無効にする] を選択すると、移行 UI に戻ることができます。 連続エクスポートの編集のページで、設定が保存されないことを示すメッセージが表示される場合、これは連続エクスポートの無効化と有効化には関係がないため、[OK] を選択してかまいません。
 
-- Application Insights リソースをワークスペースベースのものに正常に移行したら、診断設定を使用して、連続エクスポートによって提供されていた機能を置き換えることができます。 Application Insights リソース内で、 **[診断設定]**  >  **[診断設定を追加する]** の順に選択します。 すべてのテーブルまたはテーブルのサブセットを選択して、ストレージ アカウントにアーカイブしたり、Azure Event Hub にストリーミングしたりすることができます。 診断設定の詳細なガイダンスについては、[Azure Monitor の診断設定のガイダンス](../platform/diagnostic-settings.md)を参照してください。
+- Application Insights リソースをワークスペースベースのものに正常に移行したら、診断設定を使用して、連続エクスポートによって提供されていた機能を置き換えることができます。 Application Insights リソース内で、 **[診断設定]**  >  **[診断設定を追加する]** の順に選択します。 すべてのテーブルまたはテーブルのサブセットを選択して、ストレージ アカウントにアーカイブしたり、Azure Event Hub にストリーミングしたりすることができます。 診断設定の詳細なガイダンスについては、[Azure Monitor の診断設定のガイダンス](../essentials/diagnostic-settings.md)を参照してください。
 
 ### <a name="retention-settings"></a>保有期間の設定
 
@@ -241,5 +241,5 @@ Log Analytics の現在のデータ保持設定は、Log Analytics UI 内の **[
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリックを探索する](../platform/metrics-charts.md)
-* [Analytics クエリを作成する](../log-query/log-query-overview.md)
+* [メトリックを探索する](../essentials/metrics-charts.md)
+* [Analytics クエリを作成する](../logs/log-query-overview.md)

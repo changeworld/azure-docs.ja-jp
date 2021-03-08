@@ -6,19 +6,18 @@ documentationcenter: ''
 author: rdeltcheva
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259204"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671557"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性
 
@@ -91,7 +90,7 @@ ms.locfileid: "99259204"
     - [Microsoft Azure で使用するために Red Hat Enterprise Linux に SAP HANA をインストールする](https://access.redhat.com/solutions/3193782)
     - [HANA ファイル システムが NFS 共有にある場合 Pacemaker クラスターで SAP HANA スケールアップ システム レプリケーションを構成する](https://access.redhat.com/solutions/5156571)
 - [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション](https://www.netapp.com/us/media/tr-4746.pdf)
-- [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+- [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>概要
 
@@ -701,4 +700,4 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
-* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)

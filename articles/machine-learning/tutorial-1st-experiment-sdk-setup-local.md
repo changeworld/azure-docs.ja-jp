@@ -9,14 +9,15 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+adobe-target: true
+ms.openlocfilehash: 5d61f330c823aff755a25e637bb58c132aa58100
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250691"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369133"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>チュートリアル:個人の開発環境で Azure Machine Learning の使用を開始する (パート 1/4)
 
@@ -78,20 +79,29 @@ pip install azureml-core
 
 このチュートリアルでは、次の簡単なディレクトリ構造を設定することをお勧めします。
 
-```markdown
-tutorial
-└──.azureml
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-1.png" alt-text="ディレクトリ構造: 最上位の tutorial とサブディレクトリ .azureml":::
+
 
 - `tutorial`: プロジェクトの最上位ディレクトリ。
 - `.azureml`: Azure Machine Learning の構成ファイルを格納するための非表示のサブディレクトリ。
 
+たとえば、Bash ウィンドウでこれを作成するには、次のようにします。
+
+```bash
+mkdir tutorial
+cd tutorial
+mkdir .azureml
+```
+
 > [!TIP]
-> 非表示のサブディレクトリ .azureml はターミナル ウィンドウで作成できます。  または、次を使用します。
+> グラフィカル ウィンドウで構造を作成したり表示したりするには、まず、隠しファイルと隠しフォルダーを表示および作成できるようにする必要があります。
 >
-> * Mac の Finder ウィンドウで **Command + Shift + .** キーを使用して、 ドットで始まるディレクトリを表示および作成する機能を切り替えます。  
+> * Mac の Finder ウィンドウで **Command + Shift + .** キーを使用して、 隠しファイルと隠しフォルダーの表示を切り替えます。  
 > * Windows 10 エクスプローラーの場合、[非表示のファイルとフォルダーを表示する方法](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)に関するページを参照してください。 
 > * Linux グラフィカル インターフェイスでは、**Ctrl + H** キーを使用するか、 **[表示]** メニューで **非表示のファイルを表示する** チェック ボックスをオンにします。
+
+
+
 
 > [!div class="nextstepaction"]
 > [ディレクトリを作成しました](?success=create-dir#workspace) [問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-dir)
@@ -138,12 +148,7 @@ python ./01-create-workspace.py
 
 *01-create-workspace.py* が正常に実行されると、フォルダー構造は次のようになります。
 
-```markdown
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-2.png" alt-text="01-create-workspace.py の実行後、ファイル config.json が .azureml サブディレクトリに表示される":::
 
 ファイル `.azureml/config.json` には、Azure Machine Learning ワークスペースに接続するために必要なメタデータが含まれています。 つまり、サブスクリプション ID、リソース グループ、ワークスペース名が含まれています。 
 
@@ -196,13 +201,7 @@ python ./02-create-compute.py
 
 フォルダー構造は次のようになります。
 
-```bash
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-└──02-create-compute.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-3.png" alt-text="02-create-compute.py を tutorial ディレクトリに追加する":::
 
 > [!div class="nextstepaction"]
 > [コンピューティング クラスターを作成しました](?success=create-compute-cluster#next-steps)[問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)

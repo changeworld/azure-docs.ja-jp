@@ -4,12 +4,12 @@ description: この記事では、Azure Automation State Configuration、Azure A
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 0add7eed6abbe6c137d423ee4a7ef5f0f60072e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708885"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Azure Automation でのネットワーク構成の詳細
 
@@ -26,7 +26,7 @@ ms.locfileid: "98900069"
 
 ### <a name="network-planning-for-hybrid-runbook-worker"></a>Hybrid Runbook Worker のネットワーク計画
 
-システムまたはユーザー Hybrid Runbook Worker が Azure Automation に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 worker には、Azure Monitor Log Analytics ワークスペースに接続するために、[Log Analytics エージェントに必要なポートと URL](../azure-monitor/platform/agent-windows.md) へのアクセスも必要です。
+システムまたはユーザー Hybrid Runbook Worker が Azure Automation に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 worker には、Azure Monitor Log Analytics ワークスペースに接続するために、[Log Analytics エージェントに必要なポートと URL](../azure-monitor/agents/agent-windows.md) へのアクセスも必要です。
 
 特定のリージョンに対して定義された Automation アカウントがある場合は、そのリージョン データセンターへの Hybrid Runbook Worker の通信を制限できます。 必要な DNS レコードについては、[Azure Automation によって使用される DNS レコード](how-to/automation-region-dns-records.md)に関するページを参照してください。
 

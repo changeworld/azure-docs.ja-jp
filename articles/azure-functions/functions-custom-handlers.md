@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936993"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578528"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions のカスタム ハンドラー
 
@@ -121,9 +121,6 @@ ms.locfileid: "97936993"
   }
 }
 ```
-
-> [!NOTE]
-> `Custom` は、Linux Premium または App Service プランでは有効なランタイムとして認識されない可能性があります。 それがデプロイ ターゲットの場合は、`FUNCTIONS_WORKER_RUNTIME` を空の文字列に設定します。
 
 ### <a name="function-metadata"></a>関数のメタデータ
 

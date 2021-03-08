@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 654c883498e724d10104133f99ef1664f72fe09d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9f3ea595c3cfacc479deea7b7db7689785e3b520
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223484"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694956"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション、および Azure Active Directory テナント
 
@@ -55,7 +55,7 @@ ms.locfileid: "98223484"
     - **サブスクリプション**:サブスクリプション A を選択します。
     - **[リソース グループ]** : **[新規作成]** を選択し、「*myResourceGroupA*」と入力します
     - **[場所]** :*米国東部*
-4. ポータル上部の **[リソースの検索]** ボックスに「*myVnetA*」と入力します。 検索結果に **[myVnetA]** が表示されたら、それを選択します。 
+4. ポータル上部の **[リソースの検索]** ボックスに「*myVnetA*」と入力します。 検索結果に **[myVnetA]** が表示されたら、それを選択します。
 5. 左側にある縦長のオプション一覧から **[アクセス制御 (IAM)]** を選択します。
 6. **[myVnetA - アクセス制御 (IAM)]** で **[+ ロールの割り当ての追加]** を選択します。
 7. **[ロール]** ボックスで **[ネットワーク共同作成者]** を選択します。
@@ -99,7 +99,7 @@ ms.locfileid: "98223484"
 
 ## <a name="create-peering---azure-cli"></a><a name="cli"></a>ピアリングの作成 - Azure CLI
 
-このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。 
+このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。
 
 以下のスクリプトでは:
 
@@ -165,7 +165,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 8. UserA として Azure をログアウトし、UserB として Azure にログインします。
 9. myVnetB から myVnetA へのピアリングを作成します。 PC で、手順 6 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionB-Id>` を SubscriptionA の ID に置き換え、すべての A を B に、すべての B を A に変更します。変更したスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。
-10. myVnetB のピアリングの状態を表示します。 PC で、手順 7 のスクリプトの内容をテキスト エディターにコピーします。 リソース グループと仮想ネットワークの名前の A を B に変更したスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 ピアリングの状態は **接続済み** です。 myVnetB から myVnetA へのピアリングを作成した後、myVnetA のピアリングの状態は **接続済み** に変わります。 UserA を Azure に再びログインさせ、手順 7 を再度実行して、myVnetA のピアリング状態を確認します。 
+10. myVnetB のピアリングの状態を表示します。 PC で、手順 7 のスクリプトの内容をテキスト エディターにコピーします。 リソース グループと仮想ネットワークの名前の A を B に変更したスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 ピアリングの状態は **接続済み** です。 myVnetB から myVnetA へのピアリングを作成した後、myVnetA のピアリングの状態は **接続済み** に変わります。 UserA を Azure に再びログインさせ、手順 7 を再度実行して、myVnetA のピアリング状態を確認します。
 
     > [!NOTE]
     > 両方の仮想ネットワークでピアリングの状態が **接続済み** になるまで、ピアリングは確立されません。
@@ -181,7 +181,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。
 
-1. Azure PowerShell バージョン 1.0.0 以降を使用していることを確認します。 これは、`Get-Module -Name Az` を実行することで行えます。最新バージョンの PowerShell の [Az モジュール](/powershell/azure/install-az-ps)をインストールすることをお勧めします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 
+1. Azure PowerShell バージョン 1.0.0 以降を使用していることを確認します。 これは、`Get-Module -Name Az` を実行することで行えます。最新バージョンの PowerShell の [Az モジュール](/powershell/azure/install-az-ps)をインストールすることをお勧めします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 2. PowerShell セッションを開始します。
 3. PowerShell で、`Connect-AzAccount` コマンドを入力して UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 4. リソース グループと仮想ネットワーク A を作成します。PC で、次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionA の ID に置き換えます。 サブスクリプション ID がわからない場合は、`Get-AzSubscription` コマンドを入力して表示します。 返された出力の **id** の値がサブスクリプション ID です。 スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
@@ -276,7 +276,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
    }
    ```
 
-3. Azure に UserA としてログインし、[ポータル](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) または [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) を使用してテンプレートをデプロイします。 手順 2 で保存したサンプルの json テキストのファイル名を指定します。
+3. Azure に UserA としてログインし、[ポータル](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) または [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file) を使用してテンプレートをデプロイします。 手順 2 で保存したサンプルの json テキストのファイル名を指定します。
 4. 手順 2 のサンプル json をコンピューター上のファイルにコピーして、次から始まる行を変更します。
    - **name**:*myVnetA/myVnetAToMyVnetB* を *myVnetB/myVnetBToMyVnetA* に変更します。
    - **id**:`<subscription ID>` を UserB のサブスクリプション ID で置き換え、*myVnetB* を *myVnetA* に変更します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630855"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374985"
 ---
 # <a name="smb-multichannel-performance"></a>SMB マルチチャネルのパフォーマンス
 
@@ -110,7 +110,7 @@ Azure ストレージ アカウントで、SMB マルチチャネルを有効に
 
 - 平均的な IO サイズが大きい (約 16k 超) の単一の NIC では、読み取りと書き込みの両方が大幅に改善しました。
 - IO サイズが小さい場合は、SMB マルチチャネルが有効になっていると、パフォーマンスに与える影響はわずかで 10% ほどでした。 これは、複数のファイルに負荷を分散するか、機能を無効にすることで軽減できます。
-- パフォーマンスは、[単一ファイルの制限](storage-files-scale-targets.md#file-level-limits)に引き続き縛られます。
+- パフォーマンスは、[単一ファイルの制限](storage-files-scale-targets.md#file-scale-targets)に引き続き縛られます。
 
 ## <a name="optimizing-performance"></a>パフォーマンスの最適化
 

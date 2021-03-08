@@ -3,12 +3,12 @@ title: 監視とログ記録 - Azure
 description: この記事では、Live Video Analytics on IoT Edge での監視とログ記録の概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a77ca6cf9dc66d1efda5741266f1a2eecc2599c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878106"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507822"
 ---
 # <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -254,14 +254,14 @@ IoT Edge モジュールでの Live Video Analytics からメトリックを収�
       urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
 
     [[outputs.azure_monitor]]
-      namespace_prefix = ""
+      namespace_prefix = "lvaEdge"
       region = "westus"
       resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
     ```
     > [!IMPORTANT]
     > 必ず、.toml ファイル内の変数を置き換えてください。 変数は、中かっこ (`{}`) で示されます。
 
-1. 同じフォルダーに、次のコマンドを含む `.dockerfile` を作成します。
+1. 同じフォルダーに、次のコマンドを含む Dockerfile を作成します。
     ```
         FROM telegraf:1.15.3-alpine
         COPY telegraf.toml /etc/telegraf/telegraf.conf
@@ -305,12 +305,27 @@ IoT Edge モジュールでの Live Video Analytics からメトリックを収�
      `AZURE_CLIENT_SECRET`:使用するアプリ シークレットを指定します。  
      
      >[!TIP]
-     > サービス プリンシパルには、**監視メトリック パブリッシャー** ロールを指定できます。
+     > サービス プリンシパルには、**監視メトリック パブリッシャー** ロールを指定できます。 「 **[サービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-arc/data/upload-metrics-and-logs-to-azure-monitor?pivots=client-operating-system-macos-and-linux#create-service-principal)** 」の手順に従って、サービス プリンシパルを作成し、ロールを割り当てます。
 
 1. モジュールがデプロイされると、Azure Monitor で 1 つの名前空間の下にメトリックが表示されます。 メトリック名は、Prometheus によって出力されたものと一致します。 
 
    この場合は、Azure portal で IoT ハブに移動し、左側のペインで **[メトリック]** を選択します。 ここでメトリックが表示されます。
 
+Prometheus を [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial) と一緒に使用すると、CPUPercent、MemoryUsedPercent などのメトリックを生成して[監視](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)できます。Kusto クエリ言語を使用すると、次のようにクエリを記述し、IoT Edge のモジュールで使用される CPU 使用率を取得できます。
+```kusto
+let cpu_metrics = promMetrics_CL
+| where Name_s == "edgeAgent_used_cpu_percent"
+| extend dimensions = parse_json(Tags_s)
+| extend module_name = tostring(dimensions.module_name)
+| where module_name in ("lvaEdge","yolov3","tinyyolov3")
+| summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+cpu_metrics
+| summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+| extend module_name = "Total"
+| union cpu_metrics
+```
+
+[ ![Kusto クエリを使用したメトリックを示す図。](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>ログ記録
 
 他の IoT Edge モジュールと同様に、エッジ デバイスで[コンテナーのログを調べる](../../iot-edge/troubleshoot.md#check-container-logs-for-issues)こともできます。 ログに書き込まれる情報は、[次のモジュール ツイン](module-twin-configuration-schema.md) プロパティを使用して構成できます。

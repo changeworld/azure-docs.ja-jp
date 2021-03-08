@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 99da711038e1fcea3e14584fde09ccd1f79feffa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916715"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393311"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Azure Defender for App Service の概要
 
@@ -23,13 +23,13 @@ Azure App Service は、Web アプリや API の作成とホスティングに�
 
 ## <a name="availability"></a>可用性
 
-|側面|詳細|
-|----|:----|
-|リリース状態:|一般提供 (GA)|
-|価格:|[Azure Defender for App Service](azure-defender.md) は、[価格ページ](security-center-pricing.md)に記載されているように課金されます。<br>価格と設定のページには、**リソース数量** に対するインスタンスの数が記載されています。 この数は、このサブスクリプションのすべての App Service プランに含まれるコンピューティング インスタンスのうち、価格レベルのページを開いたときに実行されていたコンピューティング インスタンスの総数です。<br>カウントを検証するには、Azure portal で **App Service プラン** を開き、各プランで使用されるコンピューティング インスタンスの数を確認します。|
-|サポートされている App Service プラン:|![Yes](./media/icons/yes-icon.png) Basic、Standard、Premium、Isolated、または Linux<br>![No](./media/icons/no-icon.png) Free、Shared、または従量課金<br>[App Service プランの詳細情報](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
-|||
+| 側面                       | 詳細                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| リリース状態:               | 一般提供 (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 価格:                     | [Azure Defender for App Service](azure-defender.md) は、[価格ページ](security-center-pricing.md)に記載されているように課金されます。<br>課金は、すべてのプランのコンピューティング インスタンスの合計に基づいて行われます。|
+| サポートされている App Service プラン: | App Service プランは 1 つ (下記) を除いてすべてサポートされます。 [App Service プランの詳細情報](https://azure.microsoft.com/pricing/details/app-service/plans/)を確認してください。<br>従量課金プランの Azure Functions はサポートされません。 [Azure Functions ホスティングのオプションについて確認してください](../azure-functions/functions-scale.md)。                                                                                                                                                                                                                                                                   |
+| クラウド:                      | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)                                                                                                                                                                                                                                                                                                                                                                                 |
+|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Azure Defender for App Service の利点
 

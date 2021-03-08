@@ -3,15 +3,16 @@ title: Windows Virtual Desktop のホスト プール Azure portal - Azure
 description: Azure portal を使用して Windows Virtual Desktop のホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735183"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651461"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
@@ -67,6 +68,9 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
      > [!div class="mx-imgBorder"]
      > ![米国東部の場所が選択されている [場所] フィールドを示す Azure portal のスクリーンショット。 このフィールドの横には、"メタデータは米国東部に格納されます。" というテキストが表示されます。](media/portal-location-field.png)
+  
+   >[!NOTE]
+   > 米国外の[サポートされているリージョン](data-locations.md)にホスト プールを作成する場合は、リソース プロバイダーを再登録する必要があります。 再登録すると、場所を選択するためのドロップダウンに他のリージョンが表示されます。 再登録の方法については、[ホスト プールの作成](troubleshoot-set-up-issues.md#i-only-see-us-when-setting-the-location-for-my-service-objects)に関するトラブルシューティング記事をご覧ください。
 
 8. [Host pool type]\(ホスト プールの種類\) で、自分のホスト プールを **[個人用]** と **[Pooled]\(プール\)** のいずれにするかを選択します。
 

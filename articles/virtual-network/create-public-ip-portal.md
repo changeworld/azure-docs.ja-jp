@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7d0c83f1ae18d36557a7a5b0222aee2905e05cb7
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223008"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550237"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してパブリック IP アドレスを作成する
 
 この記事では、Azure portal を使用してパブリック IP アドレス リソースを作成する方法について説明します。 これを関連付けることができるリソース、Basic SKU と Standard SKU の違い、およびその他の関連情報については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。  この例では、IPv4 アドレスのみに焦点を当てます。IPv6 アドレスの詳細については、[Azure VNet の IPv6](./ipv6-overview.md) に関するページを参照してください。
 
-# <a name="standard-sku---using-zones"></a>[**Standard SKU - ゾーンの使用**](#tab/option-create-public-ip-standard-zones)
+# <a name="standard-sku"></a>[**Standard SKU**](#tab/option-create-public-ip-standard-zones)
 
 以下の手順では、**myStandardZRPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
 
@@ -44,9 +44,9 @@ ms.locfileid: "98223008"
     | サブスクリプション            | サブスクリプションを選択します。   |
     | Resource group          | **[新規作成]** を選択し、「myResourceGroup」と入力して、 **[OK]** を選択します。 |
     | 場所                | **[米国東部 2]** を選択します      |
-    | 可用性ゾーン       | **[ゾーン冗長]** を選択するか、特定のゾーンを選択します (下記の注を参照)。 |
+    | 可用性ゾーン       | **[ゾーン冗長]** 、ゾーンなし、または特定のゾーンを選択します (下記の注を参照)。 |
 
-これらは、[Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) が利用できるリージョンでのみ有効な選択であることに注意してください。  (これらのリージョンでは特定のゾーンも選択できますが、ゾーン障害に対する回復性はありません。)
+これらは、[Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) が利用できるリージョンでのみ有効な選択であることに注意してください。  (これらのリージョンでは特定のゾーンも選択できますが、ゾーン障害に対する回復性はありません。)可用性ゾーンの詳細については、[可用性ゾーンの概要](https://docs.microsoft.com/azure/availability-zones/az-overview)に関するページを参照してください。
 
 \* = 層は、[リージョン間ロード バランサー](../load-balancer/cross-region-overview.md)機能 (現在はプレビュー) に関連しています。
 

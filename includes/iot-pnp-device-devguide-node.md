@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: c5846c42fe55dab7328e89a6d7bc5987b0937416
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: dea63ba4939579f3f227d2eac05eb124ada1e4ec
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511367"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99616295"
 ---
 ## <a name="model-id-announcement"></a>モデル ID のアナウンス
 
@@ -24,6 +24,9 @@ await client.open();
 
 > [!TIP]
 > モジュールと IoT Edge には、`Client` ではなく `ModuleClient` を使用します。
+
+> [!TIP]
+> デバイスでモデル ID を設定できるのは、このときだけです。デバイスを接続した後に更新することはできません。
 
 ## <a name="dps-payload"></a>DPS ペイロード
 

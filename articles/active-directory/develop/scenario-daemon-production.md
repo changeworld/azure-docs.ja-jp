@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 04ee4ccc3b0553d6532869d6403000fdedd93b5f
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062713"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582843"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデーモン アプリ - 運用環境への移行
 
@@ -25,7 +25,7 @@ ms.locfileid: "99062713"
 
 ## <a name="deployment---multitenant-daemon-apps"></a>デプロイ - マルチテナント デーモン アプリ
 
-複数のテナントで実行できるデーモン アプリケーションを作成している ISV では、テナントによって確実に以下の管理を行う必要があります。
+複数のテナントで実行できるデーモン アプリケーションを作成している ISV では、テナントによって確実に以下の管理を行ってください。
 
 - アプリケーション用にサービス プリンシパルをプロビジョニングする。
 - アプリケーションへの同意を許可する。

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/22/2020
-ms.openlocfilehash: f198b59f106b7d2a29e35d77b54274328be6fa93
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c7fd0a310663b664d33027951ade885b83d458a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581603"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570958"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub の監視データのリファレンス
 
@@ -24,25 +24,48 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 
 次のサブセクションでは、IoT Hub プラットフォーム メトリックを一般カテゴリ別に分類し、Azure portal に表示される表示名で一覧表示しています。 各サブセクションに示すメトリックに関連する情報も提供します。
 
-また、Azure Monitor ドキュメントの「[Microsoft.Devices/IotHubs](../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)」には、すべての IoT Hub プラットフォーム メトリックがメトリック名で一覧表示された 1 つの表があります。 この表には、[サポートされる集計](#supported-aggregations)など、この記事に含まれている一部のメトリックの情報が提供されていないことに注意してください。
+また、Azure Monitor ドキュメントの「[Microsoft.Devices/IotHubs](../azure-monitor/essentials/metrics-supported.md#microsoftdevicesiothubs)」には、すべての IoT Hub プラットフォーム メトリックがメトリック名で一覧表示された 1 つの表があります。 この表には、[サポートされる集計](#supported-aggregations)など、この記事に含まれている一部のメトリックの情報が提供されていないことに注意してください。
 
-他の Azure サービスでサポートされているメトリックについては、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
+他の Azure サービスでサポートされているメトリックについては、「[Azure Monitor のサポートされるメトリック](../azure-monitor/essentials/metrics-supported.md)」を参照してください。
 
 **このセクションのトピック**
 
-- [サポートされる集計](#supported-aggregations)
-- [クラウドからデバイスへのコマンドのメトリック](#cloud-to-device-command-metrics)
-- [クラウドからデバイスへのダイレクト メソッドのメトリック](#cloud-to-device-direct-methods-metrics)
-- [クラウドからデバイスへのツイン操作のメトリック](#cloud-to-device-twin-operations-metrics)
-- [構成のメトリック](#configurations-metrics)
-- [1 日あたりのクォータのメトリック](#daily-quota-metrics)
-- [デバイス メトリック](#device-metrics)
-- [デバイス テレメトリのメトリック](#device-telemetry-metrics)
-- [デバイスからクラウドへのツイン操作のメトリック](#device-to-cloud-twin-operations-metrics)
-- [Event Grid のメトリック](#event-grid-metrics)
-- [ジョブのメトリック](#jobs-metrics)
-- [ルーティング メトリック](#routing-metrics)
-- [ツイン クエリのメトリック](#twin-query-metrics)
+- [Azure IoT Hub の監視データのリファレンス](#monitoring-azure-iot-hub-data-reference)
+  - [メトリック](#metrics)
+    - [サポートされる集計](#supported-aggregations)
+    - [クラウドからデバイスへのコマンドのメトリック](#cloud-to-device-command-metrics)
+    - [クラウドからデバイスへのダイレクト メソッドのメトリック](#cloud-to-device-direct-methods-metrics)
+    - [クラウドからデバイスへのツイン操作のメトリック](#cloud-to-device-twin-operations-metrics)
+    - [構成のメトリック](#configurations-metrics)
+    - [1 日あたりのクォータのメトリック](#daily-quota-metrics)
+    - [デバイス メトリック](#device-metrics)
+    - [デバイス テレメトリのメトリック](#device-telemetry-metrics)
+    - [デバイスからクラウドへのツイン操作のメトリック](#device-to-cloud-twin-operations-metrics)
+    - [Event Grid のメトリック](#event-grid-metrics)
+    - [ジョブのメトリック](#jobs-metrics)
+    - [ルーティング メトリック](#routing-metrics)
+    - [ツイン クエリのメトリック](#twin-query-metrics)
+  - [メトリック ディメンション](#metric-dimensions)
+  - [リソース ログ](#resource-logs)
+    - [接続](#connections)
+    - [デバイス テレメトリ](#device-telemetry)
+    - [クラウドからデバイスへのコマンド](#cloud-to-device-commands)
+    - [デバイス ID の操作](#device-identity-operations)
+    - [ファイルのアップロード操作](#file-upload-operations)
+    - [ルート](#routes)
+    - [デバイスからクラウドへのツイン操作](#device-to-cloud-twin-operations)
+    - [クラウドからデバイスへのツイン操作](#cloud-to-device-twin-operations)
+    - [ツイン クエリ](#twin-queries)
+    - [ジョブ操作](#jobs-operations)
+    - [ダイレクト メソッド](#direct-methods)
+    - [分散トレース (プレビュー)](#distributed-tracing-preview)
+      - [IoT Hub D2C (device-to-cloud) のログ](#iot-hub-d2c-device-to-cloud-logs)
+      - [IoT Hub のイングレス ログ](#iot-hub-ingress-logs)
+      - [IoT Hub のエグレス ログ](#iot-hub-egress-logs)
+    - [構成](#configurations)
+    - [デバイス ストリーム (プレビュー)](#device-streams-preview)
+  - [Azure Monitor ログ テーブル](#azure-monitor-logs-tables)
+  - [参照](#see-also)
 
 ### <a name="supported-aggregations"></a>サポートされる集計
 
@@ -226,31 +249,50 @@ Azure IoT Hub には、ルーティングと Event Grid の一部のメトリッ
 |**結果**| **success** または **failure**。|
 |**RoutingSource**| デバイス メッセージ<br>ツイン変更イベント<br>デバイス ライフサイクル イベント|
 
-メトリック ディメンションの詳細については、「[多次元メトリック](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
+メトリック ディメンションの詳細については、「[多次元メトリック](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
 
 ## <a name="resource-logs"></a>リソース ログ
 
-このセクションには、Azure IoT Hub 用に収集されるすべてのリソース ログ カテゴリの種類とスキーマの一覧が表示されています。 すべての IoT Hub ログのリソース プロバイダーと種類は、[Microsoft.Devices/IotHubs](../azure-monitor/platform/resource-logs-categories.md#microsoftdevicesiothubs) です。
+このセクションには、Azure IoT Hub 用に収集されるすべてのリソース ログ カテゴリの種類とスキーマの一覧が表示されています。 すべての IoT Hub ログのリソース プロバイダーと種類は、[Microsoft.Devices/IotHubs](../azure-monitor/essentials/resource-logs-categories.md#microsoftdevicesiothubs) です。
 
 **このセクションのトピック**
 
-- [接続](#connections)
-- [デバイス テレメトリ](#device-telemetry)
-- [クラウドからデバイスへのコマンド](#cloud-to-device-commands)
-- [デバイス ID の操作](#device-identity-operations)
-- [ファイルのアップロード操作](#file-upload-operations)
-- [ルート](#routes)
-- [デバイスからクラウドへのツイン操作](#device-to-cloud-twin-operations)
-- [クラウドからデバイスへのツイン操作](#cloud-to-device-twin-operations)
-- [ツイン クエリ](#twin-queries)
-- [ジョブ操作](#jobs-operations)
-- [ダイレクト メソッド](#direct-methods)
-- [分散トレース (プレビュー)](#distributed-tracing-preview)
-  - [IoT Hub D2C (device-to-cloud) のログ](#iot-hub-d2c-device-to-cloud-logs)
-  - [IoT Hub のイングレス ログ](#iot-hub-ingress-logs)
-  - [IoT Hub のエグレス ログ](#iot-hub-egress-logs)
-- [構成](#configurations)
-- [デバイス ストリーム (プレビュー)](#device-streams-preview)
+- [Azure IoT Hub の監視データのリファレンス](#monitoring-azure-iot-hub-data-reference)
+  - [メトリック](#metrics)
+    - [サポートされる集計](#supported-aggregations)
+    - [クラウドからデバイスへのコマンドのメトリック](#cloud-to-device-command-metrics)
+    - [クラウドからデバイスへのダイレクト メソッドのメトリック](#cloud-to-device-direct-methods-metrics)
+    - [クラウドからデバイスへのツイン操作のメトリック](#cloud-to-device-twin-operations-metrics)
+    - [構成のメトリック](#configurations-metrics)
+    - [1 日あたりのクォータのメトリック](#daily-quota-metrics)
+    - [デバイス メトリック](#device-metrics)
+    - [デバイス テレメトリのメトリック](#device-telemetry-metrics)
+    - [デバイスからクラウドへのツイン操作のメトリック](#device-to-cloud-twin-operations-metrics)
+    - [Event Grid のメトリック](#event-grid-metrics)
+    - [ジョブのメトリック](#jobs-metrics)
+    - [ルーティング メトリック](#routing-metrics)
+    - [ツイン クエリのメトリック](#twin-query-metrics)
+  - [メトリック ディメンション](#metric-dimensions)
+  - [リソース ログ](#resource-logs)
+    - [接続](#connections)
+    - [デバイス テレメトリ](#device-telemetry)
+    - [クラウドからデバイスへのコマンド](#cloud-to-device-commands)
+    - [デバイス ID の操作](#device-identity-operations)
+    - [ファイルのアップロード操作](#file-upload-operations)
+    - [ルート](#routes)
+    - [デバイスからクラウドへのツイン操作](#device-to-cloud-twin-operations)
+    - [クラウドからデバイスへのツイン操作](#cloud-to-device-twin-operations)
+    - [ツイン クエリ](#twin-queries)
+    - [ジョブ操作](#jobs-operations)
+    - [ダイレクト メソッド](#direct-methods)
+    - [分散トレース (プレビュー)](#distributed-tracing-preview)
+      - [IoT Hub D2C (device-to-cloud) のログ](#iot-hub-d2c-device-to-cloud-logs)
+      - [IoT Hub のイングレス ログ](#iot-hub-ingress-logs)
+      - [IoT Hub のエグレス ログ](#iot-hub-egress-logs)
+    - [構成](#configurations)
+    - [デバイス ストリーム (プレビュー)](#device-streams-preview)
+  - [Azure Monitor ログ テーブル](#azure-monitor-logs-tables)
+  - [参照](#see-also)
 
 ### <a name="connections"></a>接続
 
@@ -690,4 +732,4 @@ IoT Hub 構成ログでは、自動デバイス管理機能セットのイベン
 ## <a name="see-also"></a>参照
 
 * Azure IoT Hub の監視については、[Azure IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。
-* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 471ccd6176bd8821ce7e40fde6d961bd9bcf7f0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220838"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702149"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 単一サーバーでのメジャー バージョンのアップグレード
 
@@ -59,7 +59,7 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
  
    このアップグレードでは、Azure CLI のバージョン 2.16.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。 az version を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、az upgrade を実行します。
 
-2. サインインしたら、[az mysql server upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) コマンドを実行します。
+2. サインインしたら、[az mysql server upgrade](/cli/azure/mysql/server?preserve-view=true&view=azure-cli-latest#az_mysql_server_upgrade) コマンドを実行します。
 
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
@@ -89,7 +89,7 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
 
 1. [Azure portal](https://portal.azure.com/) で、既存の Azure Database for MySQL 5.6 を選択します。
 
-2. プライマリ サーバーから[読み取りレプリカ](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica)を作成します。
+2. プライマリ サーバーから[読み取りレプリカ](./concepts-read-replicas.md#create-a-replica)を作成します。
 
 3. [読み取りレプリカをバージョン 5.7 にアップグレード](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal)します。
 
@@ -105,7 +105,7 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
 
    `Slave_IO_Running` と `Slave_SQL_Running` の状態が "yes" で、`Seconds_Behind_Master` の値が "0" であれば、レプリケーションは正常に機能しています。 `Seconds_Behind_Master` は、レプリカの遅れの程度を示しています。 この値が "0" 以外である場合、レプリカで更新処理が実行されていることを意味します。 `Seconds_Behind_Master` が "0" であることを確認したら、安全にレプリケーションを停止できます。
 
-6. [レプリケーションを停止](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server)して、読み取りレプリカをプライマリに昇格します。
+6. [レプリケーションを停止](./howto-read-replicas-portal.md#stop-replication-to-a-replica-server)して、読み取りレプリカをプライマリに昇格します。
 
 7. サーバー 5.7 を実行している新しいプライマリ (以前のレプリカ) にアプリケーションをポイントします。 各サーバーには一意の接続文字列があります。 ソースではなく、(以前の) レプリカを指すようにアプリケーションを更新します。
 
@@ -121,15 +121,7 @@ Azure CLI を使用して Azure Database for MySQL 5.6 サーバーでメジャ�
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>これによってサーバーのダウンタイムは発生しますか? その場合、長さはどのくらいですか?
 
-はい、アップグレード プロセス中はサーバーを使用できなくなります。ですから、この操作は、計画メンテナンス期間中に実行することをお勧めします。 推定ダウンタイムは、データベースのサイズ、プロビジョニングされたストレージのサイズ (プロビジョニングされた IOPS)、およびデータベース上のテーブルの数によって異なります。 アップグレード時間は、サーバー上のテーブルの数に直接比例します。Basic SKU サーバーは、標準ストレージ プラットフォームにあるため、アップグレード時間が長くなることが予想されます。 サーバー環境のダウンタイムを推定するために、最初にサーバーの復元済みコピーにアップグレードを実行することをお勧めします。  
-
-### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>それはレプリカ サーバーではまだサポートされていないと記載されています。 具体的には何を意味するのでしょうか?
-
-現在、メジャーバージョンのアップグレードはレプリカ サーバーではサポートされていません。つまり、レプリケーションに使用されるサーバー (ソース サーバーまたはレプリカ サーバー) には実行しないでください。 レプリカ サーバーでのアップグレード機能のサポートが追加される前に、レプリケーションに使用されるサーバーのアップグレードをテストする場合は、次の手順を実行することをお勧めします。
-
-1. 計画メンテナンス中に、[レプリケーションを停止します。そして、レプリカ サーバーの名前とすべての構成情報 (ファイアウォール設定、サーバー パラメーター構成 (ソース サーバーとは異なる場合)) を取得した後にレプリカ サーバー](howto-read-replicas-portal.md) を削除します。
-2. ソース サーバーのアップグレードを実行します。
-3. 手順 1. で取得したものと同じ名前と構成設定を使用して、新しい読み取りレプリカ サーバーをプロビジョニングします。 新しいレプリカ サーバーは、ソース サーバーが v5.7 にアップグレードされた後に、自動的に v5.7 になります。
+はい、アップグレード プロセス中はサーバーを使用できなくなります。ですから、この操作は、計画メンテナンス期間中に実行することをお勧めします。 推定ダウンタイムは、データベースのサイズ、プロビジョニングされたストレージのサイズ (プロビジョニングされた IOPS)、およびデータベース上のテーブルの数によって異なります。 アップグレード時間は、サーバー上のテーブルの数に直接比例します。Basic SKU サーバーは、標準ストレージ プラットフォームにあるため、アップグレード時間が長くなることが予想されます。 サーバー環境のダウンタイムを推定するために、最初にサーバーの復元済みコピーにアップグレードを実行することをお勧めします。 [読み取りレプリカを使用して、MySQL 5.6 から MySQL 5.7 へのメジャー バージョンのアップグレードを最小限のダウンタイムで実行する](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)ことを検討してください。
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>2021 年 2 月 5 日までに MySQL v5.6 サーバーをアップグレードすることを選択しなかった場合はどうなりますか?
 

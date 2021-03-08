@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a18899ffc6b19be6226d9e0a3efd9a9519434601
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434641"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666224"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>cloud-init を使用した VM プロビジョニングのトラブルシューティング
 
@@ -58,7 +58,7 @@ VM が実行されているときは、プロビジョニングが失敗した�
 
 - [シリアル コンソール](../troubleshooting/serial-console-grub-single-user-mode.md)
 
-- [ブート診断を有効化](./tutorial-monitor.md#enable-boot-diagnostics)してから、VM を作成し、ブート中に[表示](./tutorial-monitor.md#view-boot-diagnostics)します。
+- [ブート診断を有効化](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics)してから、VM を作成し、ブート中に[表示](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics)します。
 
 - [AZ VM Repair を実行](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md)し、OS ディスクを接続してマウントします。これにより、これらのログを収集できます。
 ```bash
@@ -133,4 +133,4 @@ cloud-init のすべての障害で、致命的なプロビジョニング エ�
 
 ## <a name="next-steps"></a>次のステップ
 
-それでも、cloud-init で構成が実行されなかった理由を特定できない場合は、cloud-init の各ステージで何が行われたか、およびモジュールがいつ実行されたかを詳しく調べる必要があります。 詳しくは、[cloud-init 構成の詳細](./cloud-init-deep-dive.md)に関するページを参照してください。 
+それでも、cloud-init で構成が実行されなかった理由を特定できない場合は、cloud-init の各ステージで何が行われたか、およびモジュールがいつ実行されたかを詳しく調べる必要があります。 詳しくは、[cloud-init 構成の詳細](./cloud-init-deep-dive.md)に関するページを参照してください。

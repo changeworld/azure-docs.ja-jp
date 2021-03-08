@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef8b40be366afe24b960f7419d84cc2a9976b592
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842701"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625703"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh アプリケーションでのネットワークの概要
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API を介した新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
+
 この記事では、さまざまな種類のロード バランサー、お使いのアプリケーションのネットワークがゲートウェイによって他のネットワークに接続される方法、およびお使いのアプリケーション内のサービス間でトラフィックがルーティングされる方法について説明します。
 
 ## <a name="layer-4-vs-layer-7-load-balancers"></a>レイヤー 4 のロード バランサーとレイヤー 7 のロード バランサーの比較

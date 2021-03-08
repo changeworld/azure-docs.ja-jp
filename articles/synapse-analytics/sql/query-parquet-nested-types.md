@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6df8c3238ed6dfeb37fd10d0a7e97aa839e7bf26
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ef547bea9ba84665ec7187a5adf2f7a7d87e0a4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681079"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666334"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用して Parquet および JSON ファイルで入れ子にされた型に対してクエリを実行する
 
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>繰り返される列から要素にアクセスする
 
-次のクエリでは、justSimpleArray.parquet ファイルを読み取り、[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、配列やマップなど、繰り返される列内からスカラー要素を取得します。
+次のクエリでは、justSimpleArray.parquet ファイルを読み取り、[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用して、配列やマップなど、繰り返される列内からスカラー要素を取得します。
 
 ```sql
 SELECT
@@ -172,7 +172,7 @@ FROM
 
 ## <a name="access-sub-objects-from-complex-columns"></a>複合列からサブオブジェクトにアクセスする
 
-次のクエリでは、mapExample.parquet ファイルを読み取り、[JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、配列やマップなど、繰り返される列内から非スカラー要素を取得します。
+次のクエリでは、mapExample.parquet ファイルを読み取り、[JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用して、配列やマップなど、繰り返される列内から非スカラー要素を取得します。
 
 ```sql
 SELECT

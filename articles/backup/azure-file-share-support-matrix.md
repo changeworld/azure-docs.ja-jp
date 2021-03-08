@@ -4,16 +4,19 @@ description: Azure ファイル共有をバックアップする際のサポー�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 999cb4c764e9960c509d19faa61016b2522259ac
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819862"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370990"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure ファイル共有のバックアップのサポート マトリックス
 
 [Azure Backup サービス](./backup-overview.md)を使用して、Azure ファイル共有をバックアップできます。 この記事では、Azure Backup を使用して Azure ファイル共有をバックアップするときのサポート設定について説明します。
+
+> [!NOTE]
+> Azure Backup では現在、NFS 共有はサポートされていません。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 

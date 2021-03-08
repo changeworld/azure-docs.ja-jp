@@ -7,16 +7,16 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: aeeb810174ff5c21a81bcec8aa9265ff100edf91
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881097"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626327"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
-この記事では、Azure Migrate Server Migration ツールを使用して、マシンを物理サーバーとして Azure に移行する方法について説明します。 マシンを物理サーバーとして扱うことによって移行することは、さまざまなシナリオで役立ちます。
+この記事では、Azure Migrate: Server Migration ツールを使用して、マシンを物理サーバーとして Azure に移行する方法について説明します。サーバー移行ツール。 マシンを物理サーバーとして扱うことによって移行することは、さまざまなシナリオで役立ちます。
 
 - オンプレミスの物理サーバーを移行する。
 - Xen、KVM などのプラットフォームで仮想化された VM を移行する。
@@ -28,9 +28,9 @@ ms.locfileid: "98881097"
 これは、物理サーバーを評価して Azure に移行する方法を示すシリーズの 3 番目のチュートリアルです。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure Migrate:Server Migration で Azure を使用するための準備を行います。
+> * Azure Migrate: Server Migration で Azure を使用するための準備を行います。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
 > * 移行したいマシンの要件を確認し、マシンの検出と Azure への移行に使用される Azure Migrate レプリケーション アプライアンス用のマシンを準備します。
-> * Azure Migrate ハブに Azure Migrate Server Migration ツールを追加します。
+> * Azure Migrate:Server Migration ツールを Azure Migrate ハブに追加します。
 > * レプリケーション アプライアンスを設定します。
 > * 移行したいマシンにモビリティ サービスをインストールします。
 > * レプリケーションを有効にします。
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-azure"></a>Azure を準備する
 
-Server Migration を使用した移行に向けて Azure を準備します。
+Azure Migrate: Server Migration ツールを使用した移行のために Azure を準備します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
 
 **タスク** | **詳細**
 --- | ---
@@ -89,7 +89,7 @@ Azure 仮想ネットワーク (VNet) を[設定](../virtual-network/manage-virt
 マシンが Azure に移行するための要件を満たしていることを確認します。 
 
 > [!NOTE]
-> 物理マシンを移行するとき、Azure Migrate:Server Migration では、Azure Site Recovery サービスのエージェントベースのディザスター リカバリーと同じレプリケーション アーキテクチャが使用されており、一部のコンポーネントでは、同じコード ベースが共有されています。 一部のコンテンツは、Site Recovery のドキュメントにリンクされている場合があります。
+> 物理マシンを移行するとき、Azure Migrate: Server Migration では、Azure Site Recovery サービスのエージェントベースのディザスター リカバリーと同じレプリケーション アーキテクチャが使用されており、一部のコンポーネントでは、同じコード ベースが共有されています。 一部のコンテンツは、Site Recovery のドキュメントにリンクされている場合があります。
 
 1. 物理サーバーの要件を[確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)します。
 2. Azure にレプリケートするオンプレミスのマシンが、[Azure VM の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠していることを確認します。
@@ -99,7 +99,7 @@ Azure 仮想ネットワーク (VNet) を[設定](../virtual-network/manage-virt
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>レプリケーション アプライアンス用のマシンの準備
 
-Azure Migrate:Server Migration では、レプリケーション アプライアンスを使用してマシンを Azure にレプリケートします。 レプリケーション アプライアンスは、次のコンポーネントを実行します。
+Azure Migrate: Server Migration では、レプリケーション アプライアンスを使用してマシンを Azure にレプリケートします。 レプリケーション アプライアンスは、次のコンポーネントを実行します。
 
 - **構成サーバー**: 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
 - **プロセス サーバー**:プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、それをキャッシュ、圧縮、暗号化によって最適化して、Azure のキャッシュ ストレージ アカウントに送信します。 
@@ -116,7 +116,7 @@ Azure Migrate:Server Migration では、レプリケーション アプライア
 
 ## <a name="set-up-the-replication-appliance"></a>レプリケーション アプライアンスを設定する
 
-移行の最初の手順は、レプリケーション アプライアンスを設定することです。 物理サーバーの移行に使用するアプライアンスを設定するには、アプライアンスのインストーラー ファイルをダウンロードし、[準備しておいたマシン](#prepare-a-machine-for-the-replication-appliance)上でインストーラー ファイルを実行します。 インストール後、アプライアンスは Azure Migrate Server Migration に登録します。
+移行の最初の手順は、レプリケーション アプライアンスを設定することです。 物理サーバーの移行に使用するアプライアンスを設定するには、アプライアンスのインストーラー ファイルをダウンロードし、[準備しておいたマシン](#prepare-a-machine-for-the-replication-appliance)上でインストーラー ファイルを実行します。 アプライアンスをインストールしたら、Azure Migrate: Server Migration に登録します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
 
 
 ### <a name="download-the-replication-appliance-installer"></a>レプリケーション アプライアンス インストーラーのダウンロード
@@ -129,7 +129,7 @@ Azure Migrate:Server Migration では、レプリケーション アプライア
 4. **[ターゲット リージョン]** で、マシンの移行先にする Azure リージョンを選択します。
 5. **[移行先のリージョンが <リージョン名> であることを確認してください]** を選択します。
 6. **[リソースの作成]** をクリックします。 これで、Azure Site Recovery コンテナーがバックグラウンドで作成されます。
-    - Azure Migrate Server Migration を使用した移行を既に設定してある場合は、リソースが以前に設定されているため、ターゲット オプションを構成できません。    
+    - Azure Migrate: Server Migration を使用した移行を既に設定してある場合は、リソースが以前に設定されているため、ターゲット オプションを構成できません。    
     - このボタンのクリック後は、このプロジェクトのターゲット リージョンを変更することはできません。
     - 後続のすべての移行は、このリージョンに対して行われます。
 
@@ -145,7 +145,7 @@ Azure Migrate:Server Migration では、レプリケーション アプライア
 
     ![登録の終了処理](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-登録の終了処理後、検出されたマシンが Azure Migrate Server Migration に表示されるまでに、いくらか時間がかかることがあります。 VM が検出されると、 **[検出済みサーバー]** の数が増えます。
+登録の終了処理後、検出されたマシンが Azure Migrate: Server Migration に表示されるまでに、いくらか時間がかかることがあります。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。 VM が検出されると、 **[検出済みサーバー]** の数が増えます。
 
 ![検出済みサーバー](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 

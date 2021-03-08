@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 999bb83af6937d4a7b3d7ee8207e2fd689a23d35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1de2c1ff02c799d04f2ab2c81e83dda5001a531f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490822"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592728"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -58,17 +58,17 @@ Intelligent Insights ログのエクスポートをストリーミングする�
 
 - **[Log Analytics ワークスペース](#stream-into-sql-analytics)** :
 
-  [Log Analytics ワークスペース](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) にストリーミングされたデータは、[SQL Analytics](../../azure-monitor/insights/azure-sql.md) で使用できます。 SQL Analytics は、パフォーマンス レポート、アラート、軽減策の推奨事項を含むデータベースのインテリジェントな監視機能を提供する、クラウドのみの監視ソリューションです。 Log Analytics ワークスペースにストリーミングされたデータは、収集された他の監視データと組み合わせて分析できます。また、アラートや視覚化などの他の Azure Monitor 機能を利用することもできます。
+  [Log Analytics ワークスペース](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) にストリーミングされたデータは、[SQL Analytics](../../azure-monitor/insights/azure-sql.md) で使用できます。 SQL Analytics は、パフォーマンス レポート、アラート、軽減策の推奨事項を含むデータベースのインテリジェントな監視機能を提供する、クラウドのみの監視ソリューションです。 Log Analytics ワークスペースにストリーミングされたデータは、収集された他の監視データと組み合わせて分析できます。また、アラートや視覚化などの他の Azure Monitor 機能を利用することもできます。
 - **[Azure Event Hubs](#stream-into-event-hubs)** :
 
-  [Azure Event Hub](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) にストリーミングされるデータは、次の機能を提供します。
+  [Azure Event Hub](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) にストリーミングされるデータは、次の機能を提供します。
 
   - **サード パーティ製のロギングおよびテレメトリ ストリームにログをストリーミングする**:すべてのメトリックとリソース ログを 1 つのイベント ハブにストリーミングして、ログ データをサード パーティの SIEM またはログ分析ツールにパイプします。
   - **カスタムのテレメトリおよびログ プラットフォームを構築する**:高い拡張性の公開サブスクライブを特長とするイベント ハブを使用することで、メトリックとリソース ログをカスタム テレメトリ プラットフォームに柔軟に取り込むことができます。 詳細については、「[Azure Event Hubs でのグローバル スケール テレメトリ プラットフォームの設計とサイズ変更](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)」を参照してください。
   - **データを Power BI にストリーミングしてサービスの正常性を表示する**:Event Hubs、Stream Analytics、Power BI を使用して、診断データを Azure サービスの近リアルタイム洞察に転換します。 このソリューションの詳細については、「[Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード](../../stream-analytics/stream-analytics-power-bi-dashboard.md)」を参照してください。
 - **[Azure Storage](#stream-into-azure-storage)** :
 
-  [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) にストリーミングされたデータを使用すると、前述の 2 つのストリーミング オプションの何分の 1 かのわずかなコストで、膨大な量の診断テレメトリをアーカイブできます。
+  [Azure Storage](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) にストリーミングされたデータを使用すると、前述の 2 つのストリーミング オプションの何分の 1 かのわずかなコストで、膨大な量の診断テレメトリをアーカイブできます。
 
 これらの送信先のいずれかにストリーミングされたこの診断テレメトリを使用することで、リソース使用率とクエリ実行統計を測定し、パフォーマンスの監視を容易にできます。
 
@@ -89,7 +89,7 @@ Intelligent Insights ログのエクスポートをストリーミングする�
 
 ## <a name="configure-the-streaming-export-of-diagnostic-telemetry"></a>診断テレメトリのストリーミング エクスポートを構成する
 
-診断テレメトリのストリーム配信は、Azure portal の **[診断設定]** メニューを使用して有効にし、構成することができます。 さらに、PowerShell、Azure CLI、[REST API](/rest/api/monitor/diagnosticsettings)、[Resource Manager テンプレート](../../azure-monitor/samples/resource-manager-diagnostic-settings.md)を使用して、診断テレメトリのストリーム配信を構成することもできます。 診断テレメトリのストリーム先に次の宛先を設定できます。Azure Storage、Azure Event Hubs、Azure Monitor ログです。
+診断テレメトリのストリーム配信は、Azure portal の **[診断設定]** メニューを使用して有効にし、構成することができます。 さらに、PowerShell、Azure CLI、[REST API](/rest/api/monitor/diagnosticsettings)、[Resource Manager テンプレート](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md)を使用して、診断テレメトリのストリーム配信を構成することもできます。 診断テレメトリのストリーム先に次の宛先を設定できます。Azure Storage、Azure Event Hubs、Azure Monitor ログです。
 
 > [!IMPORTANT]
 > 診断テレメトリのストリーミング エクスポートは既定では有効になっていません。
@@ -335,7 +335,7 @@ Azure SQL Analytics を使用して一連のデータベースとデータベー
 2. ソリューションで Log Analytics ワークスペースを作成します。
 3. ワークスペースに診断テレメトリをストリーミングするようにデータベースを構成します。
 
-この診断テレメトリのストリーミング エクスポートを構成するには、Azure portal の [診断設定] タブに組み込まれている **[Log Analytics への送信]** オプションを使用します。 [PowerShell コマンドレット](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry)、[Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry)、[Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)、または [Resource Manager テンプレート](../../azure-monitor/samples/resource-manager-diagnostic-settings.md)から診断設定を使用して、Log Analytics ワークスペースへのストリーミングを有効にすることもできます。
+この診断テレメトリのストリーミング エクスポートを構成するには、Azure portal の [診断設定] タブに組み込まれている **[Log Analytics への送信]** オプションを使用します。 [PowerShell コマンドレット](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry)、[Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry)、[Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)、または [Resource Manager テンプレート](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md)から診断設定を使用して、Log Analytics ワークスペースへのストリーミングを有効にすることもできます。
 
 ### <a name="create-an-azure-sql-analytics-resource"></a>Azure SQL Analytics リソースを作成する
 
@@ -428,7 +428,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
-このセクションでは、単一データベース、プールされたデータベース、エラスティック プール、マネージド インスタンス、インスタンス データベースで使用できるテレメトリの監視について説明しています。 SQL Analytics 内の収集された監視テレメトリは、[Azure Monitor ログ クエリ](../../azure-monitor/log-query/get-started-queries.md) 言語を使用した独自のカスタム分析とアプリケーション開発に利用できます。
+このセクションでは、単一データベース、プールされたデータベース、エラスティック プール、マネージド インスタンス、インスタンス データベースで使用できるテレメトリの監視について説明しています。 SQL Analytics 内の収集された監視テレメトリは、[Azure Monitor ログ クエリ](../../azure-monitor/logs/get-started-queries.md) 言語を使用した独自のカスタム分析とアプリケーション開発に利用できます。
 
 ### <a name="basic-metrics"></a>基本メトリック
 
@@ -747,8 +747,8 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ログ記録を有効にする方法や、各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。
 
-- [Microsoft Azure のメトリックの概要](../../azure-monitor/platform/data-platform.md)
-- [Azure プラットフォーム ログの概要](../../azure-monitor/platform/platform-logs-overview.md)
+- [Microsoft Azure のメトリックの概要](../../azure-monitor/data-platform.md)
+- [Azure プラットフォーム ログの概要](../../azure-monitor/essentials/platform-logs-overview.md)
 
 Event Hubs の詳細については、次の資料を参照してください。
 

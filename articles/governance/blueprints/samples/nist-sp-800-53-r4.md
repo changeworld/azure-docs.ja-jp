@@ -3,12 +3,12 @@ title: NIST SP 800-53 R4 ブループリント サンプルの概要
 description: NIST SP 800-53 R4 のブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の NIST SP 800-53 R4 コントロールを評価するのに役立ちます。
 ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: b773013c61a8bed3c5c5f4e8b24878f10889f954
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cff59a53642bcaf0828d9d6a99052bca4d651f31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918130"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577135"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 ブループリント サンプル
 
@@ -102,7 +102,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
 |\[プレビュー\]:NIST SP 800-53 R4 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|VM で構成する必要がある Log Analytics ワークスペース ID|これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。|
-|\[プレビュー\]:NIST SP 800-53 R4 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
+|\[プレビュー\]:NIST SP 800-53 R4 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
 |\[プレビュー\]:NIST SP 800-53 R4 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Windows VM Administrators グループから除外する必要があるユーザーの一覧|ローカルの Administrators グループで除外する必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:NIST SP 800-53 R4 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Windows VM Administrators グループに含める必要があるユーザーの一覧|ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|

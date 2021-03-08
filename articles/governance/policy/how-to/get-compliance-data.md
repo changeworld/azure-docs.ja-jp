@@ -3,12 +3,12 @@ title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 112badce00ec56df0f80c7b51bb4789a414cdcbd
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920238"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577122"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -683,7 +683,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/activity-log.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../azure-monitor/log-query/log-query-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、新規および更新されたリソースの評価から非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
+サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/essentials/activity-log.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../azure-monitor/logs/log-query-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、新規および更新されたリソースの評価から非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="AzureActivity テーブルに Azure Policy アクションを表示している Azure Monitor ログのスクリーンショット。" border="false":::
 

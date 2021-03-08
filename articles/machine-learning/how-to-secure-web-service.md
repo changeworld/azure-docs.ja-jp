@@ -10,12 +10,12 @@ author: aashishb
 ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8399cfb4ceed9f50a5c9de0d3d16912a718bbfaa
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 68163f7ca8cc1b37bda4e1224330f966265554c2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070118"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980475"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -28,6 +28,8 @@ ms.locfileid: "98070118"
 > Azure Machine Learning SDK では、セキュリティで保護された通信に関連するプロパティに "SSL" の用語を使用します。 つまり、Web サービスでは *TLS* を使用しません。 SSL は、より一般的に認識されている用語に過ぎません。
 >
 > 具体的には、Azure Machine Learning によってデプロイされた Web サービスにより、AKS と ACI では TLS バージョン 1.2 がサポートされます。 ACI デプロイでは、以前のバージョンの TLS を使用している場合は、最新の TLS バージョンを取得するために再デプロイすることをお勧めします。
+>
+> Azure Machine Learning の TLS バージョン 1.3 - AKS 推論はサポートされていません。
 
 TLS と SSL の両方とも、"*デジタル証明書*" に依存しています。デジタル証明書は、暗号化の実行と ID の検証に役立ちます。 デジタル証明書のしくみの詳細については、ウィキペディアの「[public key infrastructure (公開キー基盤)](https://en.wikipedia.org/wiki/Public_key_infrastructure)」のトピックを参照してください。
 

@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 73bd2ac3159b674dd01c853bb540989fa10c8c28
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895021"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051363"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -235,7 +235,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
         az vmss extension set -n "KeyVaultForLinux" `
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
-        --vm-name "<vmName>" `
+        --vmss-name "<vmssName>" `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 次の制限/要件に注意してください。

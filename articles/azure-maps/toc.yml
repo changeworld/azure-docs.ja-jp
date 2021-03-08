@@ -160,10 +160,10 @@
               href: create-data-source-web-sdk.md
             - name: シンボル レイヤーを追加する
               href: map-add-pin.md
-            - name: ポップアップを追加する
-              href: map-add-popup.md
             - name: バブル レイヤーを追加する
               href: map-add-bubble-layer.md
+            - name: ポップアップを追加する
+              href: map-add-popup.md
             - name: HTML マーカーを追加する
               href: map-add-custom-html.md
             - name: 線レイヤーを追加する
@@ -244,20 +244,26 @@
           href: how-to-use-android-map-control-library.md
         - name: マップのスタイルを変更する
           href: set-android-map-styles.md
+        - name: マップにコントロールを追加する
+          href: map-add-controls-android.md
         - name: データ ソースを作成する
           href: create-data-source-android-sdk.md
         - name: シンボル レイヤーを追加する
           href: how-to-add-symbol-to-android-map.md
         - name: バブル レイヤーを追加する
           href: map-add-bubble-layer-android.md
-        - name: 図形を追加する
-          href: how-to-add-shapes-to-android-map.md
-        - name: ヒート マップ レイヤーを追加する
-          href: map-add-heat-map-layer-android.md
-        - name: 線レイヤーを追加する
-          href: android-map-add-line-layer.md
         - name: 機能情報を表示する
           href: display-feature-information-android.md
+        - name: 線レイヤーを追加する
+          href: android-map-add-line-layer.md
+        - name: 多角形レイヤーを追加する
+          href: how-to-add-shapes-to-android-map.md
+        - name: 多角形浮き出しレイヤーを追加する
+          href: map-extruded-polygon-android.md
+        - name: ヒート マップ レイヤーを追加する
+          href: map-add-heat-map-layer-android.md
+        - name: イメージ レイヤーを追加する
+          href: map-add-image-layer-android.md
         - name: タイル レイヤーを追加する
           href: how-to-add-tile-layer-android-map.md
         - name: トラフィック データを表示する

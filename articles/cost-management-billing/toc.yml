@@ -438,14 +438,6 @@
           href: manage/review-subscription-billing.md
         - name: リソース使用状況の確認
           href: manage/review-service-usage-api.md
-    - name: .NET のサンプル
-      items:
-        - name: Invoice API のコード サンプル
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: Usage API のコード サンプル
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: RateCard API のコード サンプル
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: Cloudyn
   items:
     - name: 概要

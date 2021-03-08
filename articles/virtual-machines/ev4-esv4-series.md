@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 7d0e3f8c55a2c8eff40c196719213390e96efb0a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 08df5e92f7dfd86aedd1c5fbf17f8bda1cfb8508
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089310"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558781"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 および Esv4 シリーズ
 
@@ -35,7 +35,7 @@ Ev4 シリーズのサイズは、Intel Xeon&reg; Platinum 8272CL (Cascade Lake)
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 
@@ -61,7 +61,7 @@ Esv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 

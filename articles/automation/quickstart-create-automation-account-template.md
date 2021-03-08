@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: d0582876a08b433a10106b97179ab603d4ec5762
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4d7d4b5af9b86fe5116dc29f6ed1a789cdbf2047
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050670"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581088"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する
 
@@ -80,11 +80,11 @@ JSON テンプレートでは、環境で標準構成として使用される可
 
 Azure Automation と Azure Monitor を初めて使用する場合は、次の構成の詳細を理解しておくことが重要です。 これは、新しい Automation アカウントにリンクされた Log Analytics ワークスペースを作成、構成、および使用するときに、エラーを回避するのに役立ちます。
 
-* [追加の詳細](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて十分に理解します。
+* [追加の詳細](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて十分に理解します。
 
 * [ワークスペース マッピング](how-to/region-mappings.md)を確認し、サポートされているリージョンを、インラインまたはパラメーター ファイルで指定します。 サブスクリプション内で Log Analytics ワークスペースと Automation アカウントをリンクすることは、特定のリージョンでのみサポートされています。
 
-* Azure Monitor ログを初めて使用し、ワークスペースをまだデプロイしていない場合は、[ワークスペースの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。 これは、アクセスの制御について学習し、組織に推奨される設計の実装戦略を理解するのに役立ちます。
+* Azure Monitor ログを初めて使用し、ワークスペースをまだデプロイしていない場合は、[ワークスペースの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。 これは、アクセスの制御について学習し、組織に推奨される設計の実装戦略を理解するのに役立ちます。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

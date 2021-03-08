@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881925"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378300"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -19,7 +19,7 @@ ms.locfileid: "98881925"
 [host.json](functions-host-json.md) ファイルと [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
 
 > [!NOTE]  
-> アプリケーション設定を使用して、host.json ファイル自体を変更することなく、host.json 設定値をオーバーライドできます。 これは、特定の環境の特定の host.json 設定を構成または変更する必要がある場合に便利です。 これにより、プロジェクトを再発行しなくても、host.json 設定を変更できます。 詳細については、[host.json のリファレンスに関する記事](functions-host-json.md#override-hostjson-values)をご覧ください。  
+> アプリケーション設定を使用して、host.json ファイル自体を変更することなく、host.json 設定値をオーバーライドできます。 これは、特定の環境の特定の host.json 設定を構成または変更する必要がある場合に便利です。 これにより、プロジェクトを再発行しなくても、host.json 設定を変更できます。 詳細については、[host.json のリファレンスに関する記事](functions-host-json.md#override-hostjson-values)をご覧ください。 関数アプリの設定に変更を加えるためには、関数アプリを再起動する必要があります。
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -46,7 +46,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 既定では、[Functions プロキシ](functions-proxies.md)は、ショートカットを使用して、同じ関数アプリ内の関数にプロキシから直接 API 呼び出しを送信します。 このショートカットは、新しい HTTP 要求を作成する代わりに使用されます。 この設定を使用すると、そのショートカット動作を無効にすることができます。
 
-|Key|[値]|説明|
+|Key|値|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接送信されません。 代わりに、要求は、関数アプリの HTTP フロントエンドに戻されます。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されます。 これが既定値です。 |
@@ -55,7 +55,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 この設定は、文字 `%2F` がバックエンド URL に挿入されたときにこれをルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
 
-|Key|[値]|説明|
+|Key|値|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュを含むルート パラメーターがデコードされます。 |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|すべてのルート パラメーターは変更されずに渡されます。これは既定の動作です。 |
@@ -213,7 +213,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 詳細については、Python 開発者リファレンスの「[カスタムの依存関係](functions-reference-python.md#remote-build-with-extra-index-url)」を参照してください。
 
-## <a name="scale_controller_logging_enable"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLE
+## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
 "_この設定は現在プレビューの段階です。_ "  
 
@@ -221,7 +221,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 |Key|値の例|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights:Verbose|
+|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights:Verbose|
 
 このキーの値は `<DESTINATION>:<VERBOSITY>` の形式で指定されます。これは次のように定義されます。
 
@@ -235,7 +235,7 @@ Windows 上で実行されているイベント ドリブン スケーリング 
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-Windows 上で実行されている Consumption または Premium プランにデプロイするときにのみ使用されます。 Linux に対してはサポートされません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。 
+Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。 
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
@@ -253,7 +253,7 @@ Windows 上のイベント ドリブン スケーリング プラン内の関数
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-Windows 上で実行されている Consumption または Premium プランで関数アプリによってのみ使用されます。 Linux に対してはサポートされません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
+Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
 
 デプロイ中、Azure Resource Manager を使用して関数アプリを作成するとき、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。   
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210020"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593131"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -113,6 +113,9 @@ IP ベースのアクセス制限機能は、アプリに到達するために�
 * 既知のエグレス IP アドレスを持つ外部の負荷分散サービスまたは他のネットワーク アプライアンス経由のトラフィックへのアクセスを制限します。 
 
 この機能を有効化する方法については、[アクセス制限の構成][iprestrictions]に関する記事を参照してください。
+
+> [!NOTE]
+> IP ベースのアクセス制限規則では、アプリが App Service Environment にある場合のみ、仮想ネットワーク アドレスの範囲が処理されます。 アプリがマルチテナント サービス内にある場合は、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用して、仮想ネットワーク内のサブネットを選択するためのトラフィックを制限する必要があります。
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>サービス エンドポインに基づくアクセス制限規則 
 

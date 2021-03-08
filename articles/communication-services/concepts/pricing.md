@@ -9,19 +9,16 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: bf255837a08a4810321f2f03cb97838e31a7cddc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126192"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657759"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
-Azure Communication Services の価格は、一般に従量課金制モデルに基づきます。
+Azure Communication Services の価格は、一般に従量課金制モデルに基づきます。 以降の例に出現する価格はあくまで例であり、最新の Azure の価格は反映されていない可能性があります。
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>音声またはビデオによる通話と画面共有
 
@@ -46,7 +43,30 @@ Alice が、仕事仲間の Bob と Charlie とグループ通話を行いまし
 - 2 人の参加者 x 60 分 x 参加者あたり $0.004/分 = $0.48 [ビデオとオーディオの両方が同じ料金で課金されます]
 - 1 人の参加者 x 43 分 x 参加者あたり $0.004/分 = $0.172 [ビデオとオーディオの両方が同じ料金で課金されます]
 
-**グループ通話の総コスト** : $0.48 + $0.172 = $0.652
+**グループ通話の総コスト**: $0.48 + $0.172 = $0.652
+
+### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>価格の例:スケジュールされている Microsoft Teams 会議に Communication Services JS クライアント ライブラリのユーザーが参加する
+
+Alice は医師として、患者である Bob を診察する予定です。 Alice は Teams デスクトップ アプリケーションから診察に参加します。 Bob には、医療機関の Web サイトを使用して参加するためのリンクが送信されます。このリンクを通じて、Communication Services JS クライアント ライブラリを使用した診察に接続することができます。 Bob は携帯電話から Web ブラウザー (iPhone と Safari) を使用して診察に参加します。 仮想診察の間はチャットが利用できます。
+
+- この通話は合計 30 分間続きます。
+- Alice と Bob は通話全体に参加します。 Alice は、通話が開始されてから 5 分後にビデオをオンにし、13 分間画面を共有します。 Bob は通話が終わるまでビデオをオンにします。
+- Alice は 5 件のメッセージを送信し、うち 3 件に Bob が返信します。
+
+
+**コストの計算**
+
+- 1 人の参加者 (Bob) x 30 分 x 参加者あたり $0.004/分 = $0.12 [ビデオとオーディオの両方が同じ料金で課金されます]
+- 1 人の参加者 (Alice) x 30 分 x 参加者あたり $0.000/分 = $0.0*
+- 1 人の参加者 (Bob) x 3 件のチャット メッセージ x $0.0008 = $0.0024
+- 1 人の参加者 (Alice) x 5 件のチャット メッセージ x $0.000  = $0.0*
+
+\* Alice の参加は、Teams のライセンスによってカバーされています。 Azure の請求書には、Teams ユーザーが Communication Services ユーザーと交わしたチャット メッセージと時間 (分) が表示されますが、これはあくまで参考のためです。Teams クライアント側から送信されたメッセージと時間 (分) は課金されません。
+
+**診察の総コスト**:
+- Communication Services JS クライアント ライブラリを使用して参加するユーザー: $0.12 + $0.0024 = $0.1224
+- Teams デスクトップ アプリケーションで参加するユーザー: $0 (Teams ライセンスに含まれています)
+
 
 ## <a name="chat"></a>チャット
 
@@ -56,27 +76,27 @@ Communication Services を使用すると、2 人以上のユーザー間でチ�
 
 送信されたチャット メッセージごとに $0.0008 が課金されます。
 
-### <a name="pricing-example-chat-between-two-users"></a>価格の例:2 人のユーザー間のチャット 
+### <a name="pricing-example-chat-between-two-users"></a>価格の例:2 人のユーザー間のチャット
 
-Geeta が、最新情報を共有するために Emily とチャット スレッドを開始し、5 件のメッセージを送信します。 チャットは 10 分間続き、その間に Geeta と Emily はさらに 15 件のメッセージをそれぞれ送信します。
+Geeta が、最新情報を共有するために Emily とチャット スレッドを開始し、5 件のメッセージを送信します。 チャットは 10 分間継続します。 その間に Geeta と Emily はさらに 15 件のメッセージをそれぞれ送信します。
 
-**コストの計算** 
+**コストの計算**
 - 送信されたメッセージの数 (5 + 15 + 15) x $0.0008 = $0.028
 
-### <a name="pricing-example-group-chat-with-multiple-users"></a>価格の例:複数のユーザーとのグループ チャット 
+### <a name="pricing-example-group-chat-with-multiple-users"></a>価格の例:複数のユーザーとのグループ チャット
 
-Charlie が、旅行を計画するために、友人の Casey と Jasmine とチャット スレッドを開始します。 彼らはしばらくチャットを行い、その間に Charlie、Casey、Jasmine はそれぞれ 20 件、30 件、18 件のメッセージを送信します。 友人の Rose も旅行への参加に興味があるかもしれないと気付いたので、彼女をチャット スレッドに追加し、すべてのメッセージ履歴を彼女と共有します。 
+Charlie が、旅行を計画するために、友人の Casey と Jasmine とチャット スレッドを開始します。 彼らはしばらくチャットを行い、その間に Charlie、Casey、Jasmine はそれぞれ 20 件、30 件、18 件のメッセージを送信します。 友人の Rose も旅行への参加に興味があるかもしれないと気付いたので、彼女をチャット スレッドに追加し、すべてのメッセージ履歴を彼女と共有します。
 
 Rose はメッセージを表示し、チャットを開始します。 その間に、Casey は電話を受け、後で会話に追いつくことにします。 Charlie、Jasmine、Rose は旅行日を決定し、それぞれ 30 件、25 件、35 件のメッセージを送信します。
 
-**コストの計算** 
+**コストの計算**
 
 - 送信されたメッセージの数 (20 + 30 + 18 + 30 + 25 + 35) x $0.0008 = $0.1264
 
 
 ## <a name="telephony-and-sms"></a>テレフォニーと SMS
 
-## <a name="price"></a>Price 
+## <a name="price"></a>Price
 
 テレフォニー サービスは分単位の価格となるのに対し、SMS はメッセージ単位の価格となります。 価格は、ご使用の番号の種類と場所、さらに通話と SMS メッセージの宛先によって決まります。
 

@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b39149eb7ac572ac3bd50bb6303f28d2340f387d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020623"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580858"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -27,9 +27,9 @@ Azure Arc 対応サーバーによる VM 拡張機能のサポートには、次
 
 - [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) を使用して、構成を一元的に保存し、DSC VM 拡張機能によって有効にされているハイブリッド接続マシンの望ましい状態を維持します。
 
-- Log Analytics エージェント VM 拡張機能によって有効にされる [Azure Monitor のログ](../../azure-monitor/platform/data-platform-logs.md)を使用して、分析用のログ データを収集します。 これは、さまざまな種類のソースのデータに対して複雑な分析を行うときに便利です。
+- Log Analytics エージェント VM 拡張機能によって有効にされる [Azure Monitor のログ](../../azure-monitor/logs/data-platform-logs.md)を使用して、分析用のログ データを収集します。 これは、さまざまな種類のソースのデータに対して複雑な分析を行うときに便利です。
 
-- [Azure Monitor for VMs](../../azure-monitor/insights/vminsights-overview.md) を使用して、Windows VM および Linux VM のパフォーマンスを分析し、それらのプロセスや、他のリソースおよび外部プロセスへの依存関係を監視します。 これは、Log Analytics エージェントと Dependency Agent の両方の VM 拡張機能を有効にすることで実現されます。
+- [Azure Monitor for VMs](../../azure-monitor/vm/vminsights-overview.md) を使用して、Windows VM および Linux VM のパフォーマンスを分析し、それらのプロセスや、他のリソースおよび外部プロセスへの依存関係を監視します。 これは、Log Analytics エージェントと Dependency Agent の両方の VM 拡張機能を有効にすることで実現されます。
 
 - スクリプトをダウンロードし、カスタム スクリプト拡張機能を使用してハイブリッド接続マシンで実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。
 
@@ -55,7 +55,7 @@ Azure Connected Machine エージェント パッケージと拡張機能エー�
 |Log Analytics エージェント |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Windows 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-windows.md)|
 |Azure Monitor for VMs (分析情報) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [Windows 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault 証明書の同期 | Microsoft.Azure.Key.Vault |KeyVaultForWindows | [Windows 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-windows.md) |
-|Azure Monitor エージェント |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[Azure Monitor エージェントをインストールする (プレビュー)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Azure Monitor エージェント |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[Azure Monitor エージェントをインストールする (プレビュー)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ### <a name="linux-extensions"></a>Linux の拡張機能
 
@@ -67,7 +67,7 @@ Azure Connected Machine エージェント パッケージと拡張機能エー�
 |Log Analytics エージェント |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[Linux 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor for VMs (分析情報) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[Linux 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Azure Key Vault 証明書の同期 | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [Linux 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-linux.md) |
-|Azure Monitor エージェント |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[Azure Monitor エージェントをインストールする (プレビュー)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Azure Monitor エージェント |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[Azure Monitor エージェントをインストールする (プレビュー)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>前提条件
 

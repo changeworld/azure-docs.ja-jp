@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986685"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381734"
 ---
-# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする
 
 Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 **規制コンプライアンス ダッシュボード** では、特定のコンプライアンス要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
 
@@ -92,7 +92,7 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
-## <a name="removing-a-standard-from-your-dashboard"></a>ダッシュボードから標準を削除する
+## <a name="remove-a-standard-from-your-dashboard"></a>ダッシュボードから標準を削除する
 
 提供されている規制基準に組織に関連していないものが含まれている場合、簡単なプロセスで UI からそれらを削除できます。 これにより、規制へのコンプライアンス ダッシュボードをさらにカスタマイズし、ユーザーに該当する標準にのみ焦点を当てることができます。
 
@@ -123,5 +123,5 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 関連資料については、次のページを参照してください。
 
 - [Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)
-- [Security Center の規制コンプライアンス ダッシュ ボード](security-center-compliance-dashboard.md)
+- [Security Center の規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md) - Security Center および外部のツールを使用して規制コンプライアンス データを追跡およびエクスポートする方法について説明します。
 - [セキュリティ ポリシーの操作](tutorial-security-policy.md)

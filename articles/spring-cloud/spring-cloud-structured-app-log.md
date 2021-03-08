@@ -4,15 +4,15 @@ description: この記事では、Azure Spring Cloud で構造化アプリケー
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.author: brendanm
+ms.date: 02/05/2021
+ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c5c35fe8a352a1bc3467e9512a7fcbc068375bfb
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 844530c6d1650b5fddd27b10c775c4364a3f5147
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056911"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124467"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure Spring Cloud の構造化アプリケーション ログ
 
@@ -238,4 +238,4 @@ AppPlatformLogsforSpring
 ```
 
 ## <a name="next-steps"></a>次の手順
-* ログ クエリの詳細については「[Azure Monitor でログ クエリの使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)」を参照してください
+* ログ クエリの詳細については「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/logs/get-started-queries.md)」を参照してください

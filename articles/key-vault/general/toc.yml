@@ -96,10 +96,12 @@
               href: assign-access-policy-powershell.md
             - name: ポータル
               href: assign-access-policy-portal.md
-        - name: キー、シークレット、証明書へのアクセスを管理するための Azure RBAC の使用 (プレビュー)
-          href: rbac-guide.md
-        - name: コンテナー アクセス ポリシーの Azure RBAC への移行ガイド
-          href: rbac-migration.md
+        - name: Azure RBAC アクセス許可モデル
+          items:
+            - name: キー、シークレット、証明書へのアクセスを管理するための Azure RBAC の使用
+              href: rbac-guide.md
+            - name: コンテナー アクセス ポリシーの Azure RBAC への移行ガイド
+              href: rbac-migration.md
         - name: アクセスに関する問題のトラブルシューティング
           href: troubleshooting-access-issues.md
     - name: 開発

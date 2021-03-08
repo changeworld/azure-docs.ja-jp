@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b7dc7a9f93d6d70abec57632ffc95aea8a6bc699
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82e15712fe1e7a5791b1374e4aa4cd446f8f5e90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804990"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574428"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Network Watcher 用の Azure セキュリティ ベースライン
 
@@ -118,9 +118,9 @@ Network Watcher を有効にする必要がある
 
 **ガイダンス**:Azure アクティビティ ログを使用して、Azure Network Watcher に加えられた変更を監視します。 変更が発生するとトリガーされるアラートを Azure Monitor 内に作成できます。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -142,7 +142,7 @@ Network Watcher を有効にする必要がある
 
 **ガイダンス**:Azure アクティビティ ログを使用して構成を監視し、Azure Network Watcher インスタンスに対する変更を検出します。 コントロール プレーン (Azure portal など) 以外では、Network Watcher 自体はネットワーク トラフィックに関連するログを生成しません。 Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Network Watcher を理解する](./network-watcher-monitoring-overview.md)
 
@@ -154,7 +154,7 @@ Network Watcher を有効にする必要がある
 
 **ガイダンス**: Azure アクティビティ ログを使用して構成を監視し、Azure Network Watcher インスタンスに対する変更を検出します。 コントロール プレーン (Azure portal など) 以外では、Network Watcher 自体は監査ログを生成しません。 Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Network Watcher を理解する](./network-watcher-monitoring-overview.md)
 
@@ -174,7 +174,7 @@ Network Watcher を有効にする必要がある
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、Azure Network Watcher に関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-* [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -184,7 +184,7 @@ Network Watcher を有効にする必要がある
 
 **ガイダンス**: Azure アクティビティ ログを使用して構成を監視し、Azure Network Watcher インスタンスに対する変更を検出します。 コントロール プレーン (Azure portal など) 以外では、Network Watcher 自体はネットワーク トラフィックに関連するログを生成しません。 Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Network Watcher を理解する](./network-watcher-monitoring-overview.md)
 
@@ -309,7 +309,7 @@ Network Watcher を有効にする必要がある
 
 * [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
+* [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -479,7 +479,7 @@ Network Watcher 機能を使用するには、Azure にログインするアカ�
 
 **ガイダンス**: Azure Network Watcher およびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 

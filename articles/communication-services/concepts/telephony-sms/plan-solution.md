@@ -1,7 +1,7 @@
 ---
-title: Azure Communication Services のテレフォニーと SMS ソリューションを計画する
+title: Azure Communication Services での電話番号の種類
 titleSuffix: An Azure Communication Services concept document
-description: 電話番号とテレフォニーの使用を効果的に計画する方法について説明します。
+description: SMS やテレフォニーに各種の電話番号を効率的に使用する方法について説明します。
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,30 +10,24 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b7d780ce6362e34c801b4da25332bff90f0b7515
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937238"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659275"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>テレフォニーと SMS ソリューションを計画する
+# <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure Communication Services では、公衆交換電話網 (PSTN) で、電話番号を使用して音声通話を行ったり携帯ショートメール (SMS) メッセージを送信したりすることができます。 このドキュメントでは、Communication Services を使用したテレフォニーと SMS ソリューションを計画している方のために、電話番号の種類、構成オプション、利用可能なリージョンについて見ていきます。
 
-
-
-
-
-## <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
- 
-Communication Services には、**ローカル** と **無料電話番号** の 2 種類の電話番号が用意されています。 
+## <a name="number-types-and-features"></a>番号の種類と機能
+Communication Services には、**ローカル** と **無料電話番号** の 2 種類の電話番号が用意されています。
 
 ### <a name="local-numbers"></a>ローカル番号
-ローカル (固定) 番号は、米国内のローカルの市外局番から成る 10 桁の電話番号です。 たとえば `+1 (206) XXX-XXXX` は、`206` を市外局番とするローカル番号です。 この市外局番は、シアトル市に割り当てられています。 一般に、これらの電話番号は個人や地元企業によって使用されます。 Azure Communication Services は、米国内のローカル番号を提供しています。 これらの番号を使用して電話をかけることはできますが、携帯ショートメール (SMS) メッセージを送信することはできません。 
+ローカル (固定) 番号は、米国内のローカルの市外局番から成る 10 桁の電話番号です。 たとえば `+1 (206) XXX-XXXX` は、`206` を市外局番とするローカル番号です。 この市外局番は、シアトル市に割り当てられています。 一般に、これらの電話番号は個人や地元企業によって使用されます。 Azure Communication Services は、米国内のローカル番号を提供しています。 これらの番号を使用して電話をかけることはできますが、携帯ショートメール (SMS) メッセージを送信することはできません。
 
 ### <a name="toll-free-numbers"></a>無料電話番号
 無料電話番号は、特殊な市外局番を含んだ 10 桁の電話番号です。あらゆる電話番号から無料で通話することができます。 たとえば `+1 (800) XXX-XXXX` は、北米地域の無料電話番号です。 通常、これらの電話番号は顧客サービスの目的で使用されます。 Azure Communication Services は、米国内の無料電話番号を提供しています。 これらの番号を使用して電話をかけたり、携帯ショートメール (SMS) メッセージを送信したりすることができます。 無料電話番号はアプリケーションにのみ割り当てることができ、人が使うことはできません。
@@ -42,9 +36,9 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 
 ご利用の電話番号がアプリケーションによって使用される場合 (サービスに必要な電話をかける、メッセージを送信するなど)、無料電話番号またはローカル (固定) 番号を選択することができます。 アプリケーションから SMS メッセージを送信したり電話をかけたりする場合は、無料電話番号を選択できます。
 
-ご利用の電話番号が人 (呼び出し元のアプリケーションのユーザーなど) によって使用される場合、ローカル (固定) 電話番号を使用する必要があります。 
+ご利用の電話番号が人 (呼び出し元のアプリケーションのユーザーなど) によって使用される場合、ローカル (固定) 電話番号を使用する必要があります。
 
-次の表は、これらの電話番号の種類をまとめたものです。 
+次の表は、これらの電話番号の種類をまとめたものです。
 
 | 電話番号の種類 | 例                              | 利用可能な国    | 電話番号の機能 |一般的なユース ケース                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
@@ -52,7 +46,7 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 | フリーダイヤル         | +1 (フリーダイヤルの市外 "*局番*") XXX XX XX | US                      | 通話 (発信)、SMS (受信または送信)| 音声自動応答 (IVR) システム (ボット) や SMS アプリケーションに電話番号を割り当てる                                        |
 
 
-## <a name="phone-number-features-in-azure-communication-services"></a>Azure Communication Services での電話番号の機能 
+### <a name="phone-number-features-in-azure-communication-services"></a>Azure Communication Services での電話番号の機能
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -60,7 +54,7 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 
 利用できる機能は、運用拠点となる国やユース ケース、選択した電話番号の種類によって異なります。 これらの機能は、規制要件のために、国によって異なります。 Azure Communication Services には、電話番号に関して次の機能が用意されています。
 
-- **一方向の送信 SMS** このオプションでは、携帯ショートメール (SMS) メッセージをユーザーに送信できます。 これは、通知や 2 要素認証のシナリオで活用できます。 
+- **一方向の送信 SMS** このオプションでは、携帯ショートメール (SMS) メッセージをユーザーに送信できます。 これは、通知や 2 要素認証のシナリオで活用できます。
 - **双方向の受信および送信 SMS** このオプションでは、電話番号を使用しているユーザーとの間でメッセージを送受信できます。 これは、顧客サービスのシナリオで活用できます。
 - **一方向の発信通話** このオプションでは、ユーザーに電話をかけたり、サービスからの発信通話に使用される発信者番号を構成したりできます。 これは、顧客サービスや音声通知のシナリオで活用できます。
 
@@ -77,7 +71,7 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 
 ## <a name="azure-subscriptions-eligibility"></a>対象となる Azure サブスクリプション
 
-電話番号を取得するには、有料の Azure サブスクリプションが必要です。 試用アカウントや Azure 無料クレジットで電話番号を取得することはできません。 
+電話番号を取得するには、有料の Azure サブスクリプションが必要です。 試用アカウントや Azure 無料クレジットで電話番号を取得することはできません。
 
 現在、電話番号の提供は、請求先住所が米国内になっている Azure サブスクリプションに制限されています。
 
@@ -92,5 +86,6 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 ### <a name="conceptual-documentation"></a>概念説明のドキュメント
 
 - [音声とビデオの概念](../voice-video-calling/about-call-types.md)
+- [テレフォニーの概念](./telephony-concept.md)
 - [通話フロー](../call-flows.md)
 - [料金](../pricing.md)

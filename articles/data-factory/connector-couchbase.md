@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Couchbase からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Couchbase からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: d78d533bc4a863a0a70b1dbb47bdfa85d539884f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8de7982e99e258f0a72bd507ac0d8de16a7227a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417438"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383655"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Couchbase からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -83,13 +78,13 @@ Couchbase のリンクされたサービスでは、次のプロパティがサ�
         "type": "Couchbase",
         "typeProperties": {
             "connectionString": "Server=<server>; Port=<port>;AuthMech=1;",
-            "credString": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "credString": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

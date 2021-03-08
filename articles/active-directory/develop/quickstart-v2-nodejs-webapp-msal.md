@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 7fc76259f30f96d95c63b7e9369ec5e9647d923e
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107448"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092173"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -26,9 +26,6 @@ ms.locfileid: "98107448"
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 このクイックスタートでは、承認コード フローで Node.js 用 Microsoft Authentication Library (MSAL Node) を使用します。
-
-> [!IMPORTANT]
-> MSAL Node [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +38,7 @@ ms.locfileid: "98107448"
 >
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 > 1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。

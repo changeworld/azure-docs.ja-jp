@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127878"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095003"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
@@ -30,11 +30,16 @@ ms.locfileid: "93127878"
 **マイ アプリ** ポータルにアクセスできない場合は、自分の組織のヘルプ デスクにアクセス許可について問い合わせてください。
 
 > [!IMPORTANT]
-> このコンテンツは、 **マイ アプリ** のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+> このコンテンツは、**マイ アプリ** のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+>
+> 個人用 Microsoft アカウントでのサインインでエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="supported-browsers"></a>サポートされているブラウザー
 
-次の Web ブラウザーのいずれかから、 **マイ アプリ** ポータルにアクセスできます。
+次の Web ブラウザーのいずれかから、**マイ アプリ** ポータルにアクセスできます。
 
 - Microsoft Edge (モバイル バージョンの Edge がサポートされる唯一のモバイル ブラウザーです)
 - Google Chrome
@@ -46,7 +51,7 @@ ms.locfileid: "93127878"
 
 ## <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>コンピューター上のマイ アプリ ポータルにアクセスして使用する
 
-組織のクラウドベースのアプリにアクセスして使用するアクセス許可がある場合、 **マイ アプリ** ポータルを通じてそれらに到達できます。
+組織のクラウドベースのアプリにアクセスして使用するアクセス許可がある場合、**マイ アプリ** ポータルを通じてそれらに到達できます。
 
 1. ご自分のコンピューター上でご自分の職場または学校アカウントにサインインします。
 
@@ -60,7 +65,7 @@ ms.locfileid: "93127878"
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能をダウンロードしてインストールする
 
-求められた場合は、 **マイ アプリによるセキュリティで保護されたサインイン拡張機能** をダウンロードしてインストールします。 この拡張機能は、デスクトップ ブラウザーを使用して、組織のクラウド アプリでシングル サインオンを使用する場合に役立ちます。 **マイ アプリ** ポータルにマウス カーソルを合わせ、 **[...]** を選択し、 **[アプリケーションの管理]** を選択するだけです。
+求められた場合は、**マイ アプリによるセキュリティで保護されたサインイン拡張機能** をダウンロードしてインストールします。 この拡張機能は、デスクトップ ブラウザーを使用して、組織のクラウド アプリでシングル サインオンを使用する場合に役立ちます。 **マイ アプリ** ポータルにマウス カーソルを合わせ、 **[...]** を選択し、 **[アプリケーションの管理]** を選択するだけです。
 
 既に組織によりシングル サインオンが設定されている場合は、拡張機能は自動的にインストールされ、このセクションをスキップできます。
 
@@ -75,11 +80,11 @@ ms.locfileid: "93127878"
 
 使用しているブラウザーに基づいて、拡張機能をダウンロードしてインストールします。
 
-- **Microsoft Edge** - Microsoft Store から、 [マイ アプリによるセキュリティで保護されたサインイン拡張](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl)機能に移動してから、 **[取得]** を選択して Microsoft Edge レガシ ブラウザー用の拡張機能を取得します。
+- **Microsoft Edge** - Microsoft Store から、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl)機能に移動してから、 **[取得]** を選択して Microsoft Edge レガシ ブラウザー用の拡張機能を取得します。
 
-- **Google Chrome** - Chrome Web ストアから、 [マイ アプリによるセキュリティで保護されたサインイン拡張](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)機能に移動して、 **[Chrome に追加]** を選択します。
+- **Google Chrome** - Chrome Web ストアから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)機能に移動して、 **[Chrome に追加]** を選択します。
 
-- **Mozilla Firefox** - **[Firefox アドオン]** ページから、 [マイ アプリによるセキュリティで保護されたサインイン拡張](https://addons.mozilla.org/firefox/addon/access-panel-extension/)機能に移動して、 **[Firefox に追加]** を選択します。
+- **Mozilla Firefox** - **[Firefox アドオン]** ページから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://addons.mozilla.org/firefox/addon/access-panel-extension/)機能に移動して、 **[Firefox に追加]** を選択します。
 
 アイコンは **アドレス** バーの右側に追加され、サインインして拡張機能をカスタマイズできます。
 
@@ -119,7 +124,7 @@ ms.locfileid: "93127878"
 
 1. 指定されたリストから追加するアプリを選択し、 **[追加]** を選択します。
 
-1. アプリは、 **アプリ** ページ上のリストに追加されます。
+1. アプリは、**アプリ** ページ上のリストに追加されます。
 
    アプリの中には、追加される前に管理者の承認が必要なものがあります。 その場合、アプリは、管理者が承認するまで、 **[アプリ]** ページに追加されません。
 
@@ -138,7 +143,7 @@ ms.locfileid: "93127878"
 - 自分のアプリを、組織が作成して提供しているさまざまなカテゴリに整理できます。 詳細については、[マイ アプリ ポータル内のコレクションへのアクセスと使用](my-applications-portal-workspaces.md)に関する記事を参照してください。
 - アプリケーションに付与されたアクセス許可を確認し、更新し、取り消します。 詳細については、「[マイ アプリ ポータルでのアプリケーションのアクセス許可の編集または取り消し](my-applications-portal-permissions-saved-accounts.md)」を参照してください。
 - アプリ アカウントを作成、更新、および削除します。 詳細については、[アプリケーションのアクセス許可の編集または取り消し](my-applications-portal-permissions-saved-accounts.md)に関するページを参照してください。
-- アカウント管理の **マイ アプリ** ポータルから、 [ **[マイ アカウント]**](my-account-portal-overview.md) にアクセスします。
+- アカウント管理の **マイ アプリ** ポータルから、[ **[マイ アカウント]**](my-account-portal-overview.md) にアクセスします。
   
   - 異常なサインイン アクティビティの確認
   - パスワードの管理

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660578"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807005"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>独自の機械学習 (ML) を Azure Sentinel に持ち込む
 
@@ -82,7 +82,7 @@ BYO ML パッケージには、セキュリティのための ML のフロント
 | ファイル名 | 説明 |
 | --------- | ----------- |
 | azure_sentinel_utilities.whl | Azure から BLOB を読み取り、Log Analytics に書き込むためのユーティリティが含まれています。 |
-| AnomalousRASampleData | ノートブックは、生成されたトレーニングとテストのサンプル データを使用して、Sentinel で異常なリソース アクセス モデルを使用する方法を示します。 |
+| AnomalousRASampleData | ノートブックは、生成されたトレーニングとテストのサンプル データを使用して、Azure Sentinel で異常なリソース アクセス モデルを使用する方法を示します。 |
 | AnomalousRATraining.ipynb | アルゴリズムをトレーニングし、モデルを作成して保存するためのノートブック。 |
 | AnomalousRAScoring.ipynb | モデルの実行をスケジュールして結果を視覚化し、スコアを Azure Sentinel に書き込むためのノートブック。 |
 |
@@ -99,7 +99,7 @@ BYO ML パッケージには、セキュリティのための ML のフロント
 
 ### <a name="auto-export-instruction"></a>自動エクスポート命令
 
-Sentinel で独自のデータに基づいてカスタム ML モデルを作成するには、データを Log Analytics から Blob Storage またはイベント ハブ リソースにエクスポートし、ML モデルが Databricks からアクセスできるようにする必要があります。 [Azure Sentinel にデータを取り込む](connect-data-sources.md)方法について説明します。
+Azure Sentinel で独自のデータに基づいてカスタム ML モデルを作成するには、データを Log Analytics から Blob Storage またはイベント ハブ リソースにエクスポートし、ML モデルが Databricks からアクセスできるようにする必要があります。 [Azure Sentinel にデータを取り込む](connect-data-sources.md)方法について説明します。
 
 この例では、Azure Blob Storage のファイル共有アクセス ログのトレーニング データが必要です。 データの形式については、ノートブックとライブラリに記載されています。
 
@@ -141,7 +141,7 @@ Log Analytics の自動エクスポートでサポートされていないカス
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Azure Sentinel 以外のデータとの関連付け
 
-Azure Sentinel の外部から Blob Storage またはイベント ハブにデータを取り込み、それを Sentinel データと関連付けて ML モデルを構築することもできます。 
+Azure Sentinel の外部から Blob Storage またはイベント ハブにデータを取り込み、それを Azure Sentinel データと関連付けて ML モデルを構築することもできます。 
  
 ### <a name="copy-and-install-the-related-packages"></a>関連パッケージをコピーしてインストールする
 

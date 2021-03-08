@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2887b12e7ce24e9c5a881a2b3edeebb258532a49
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: aae76d50811db87bdf4753ed456a6d8e6d95d6ab
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736492"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094630"
 ---
 # <a name="azure-security-baseline-for-azure-advisor"></a>Azure Advisor 用の Azure セキュリティ ベースライン
 
@@ -175,7 +175,7 @@ Azure AD では外部 ID をサポートしていることに注目してくだ�
 
 Azure ロールベースのアクセス制御 (Azure RBAC) とは../role-based-access-control/overview.md 
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -227,9 +227,9 @@ Azure ロールベースのアクセス制御 (Azure RBAC) とは../role-based-a
 
 アクティビティ ログを使用すると、トラブルシューティング時にエラーを見つけたり、組織内のユーザーがリソースをどのように変更したかを監視したりできます。
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -243,7 +243,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 さらに、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードします。 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -256,9 +256,9 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 **ガイダンス**:Azure Advisor ログを格納するために使用されるすべてのストレージ アカウントまたは Log Analytics ワークスペースに、組織のコンプライアンス規則に従ったログの保有期間が設定されていることを確認します。
 Azure Monitor で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定できます。 長期ストレージおよびアーカイブ ストレージには、Azure Storage、Data Lake、または Log Analytics ワークスペースのアカウントを使用します。
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md) 
+- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md) 
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center の監視**: 適用なし
 

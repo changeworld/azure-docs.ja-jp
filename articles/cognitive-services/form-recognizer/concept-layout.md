@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: d529e74614a4fd5ee49d7e6161c65f68e8e76fce
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845560"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585060"
 ---
 # <a name="form-recognizer-layout-service"></a>Form Recognizer レイアウト サービス
 
@@ -89,7 +89,7 @@ JSON 出力には次の 2 つの部分があります。
 ## <a name="next-steps"></a>次のステップ
 
 - [Form Recognizer のサンプル UI](https://fott-preview.azurewebsites.net/) を使用して、独自のレイアウト抽出を試してみてください
-- 選択した言語でのレイアウト抽出を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を行います。
+- 選択した開発言語でのレイアウト抽出を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を行います。
 
 ## <a name="see-also"></a>関連項目
 

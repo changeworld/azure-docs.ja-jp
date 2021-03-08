@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1bcde3f2b1f61fd241143e308a508d5f19e7b0c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 42aea886e38622c773ac1ca0ea2533d8aa1c47bb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717028"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azure Managed Applications の Azure セキュリティ ベースライン
 
@@ -161,7 +161,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1:高い特権を持つユーザーを保護および制限する
 
 **ガイダンス**:Azure Managed Applications では、Azure Active Directory (Azure AD) を ID およびアクセスのために使用します。 Azure AD で最も重要な組み込みロールは、全体管理者と特権ロール管理者です。それは、これら 2 つのロールが割り当てられたユーザーが、管理者ロールを委任できるからです。
-- 全体管理者:このロールが割り当てられたユーザーは、Azure AD のすべての管理機能に加え、Azure AD ID を使用するサービスにもアクセスできます。
+- グローバル管理者:このロールが割り当てられたユーザーは、Azure AD のすべての管理機能に加え、Azure AD ID を使用するサービスにもアクセスできます。
 - 特権ロール管理者:このロールが割り当てられたユーザーは、Azure AD と Azure AD Privileged Identity Management (PIM) 内でロールの割り当てを管理できます。 さらに、このロールは、PIM と管理単位のすべての側面を管理できます。
 
 注:特定の特権アクセス許可を割り当てられたカスタム ロールを使用する場合は、管理する必要のある他の重要なロールがある場合があります。 また、重要なビジネス資産の管理者アカウントに同様のコントロールを適用することもできます。
@@ -415,9 +415,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 **ガイダンス**:自動的に利用できるアクティビティ ログには、読み取り操作 (GET) を除く、マネージド アプリケーション リソースに対するすべての書き込み操作 (PUT、POST、DELETE) が含まれています。 アクティビティ ログを使用すると、トラブルシューティング時にエラーを見つけたり、組織内のユーザーがリソースをどのように変更したかを監視したりできます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -432,7 +432,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
@@ -445,9 +445,9 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 **ガイダンス**:お使いのマネージド アプリケーション リソースによって作成されたログを格納するために使用されるすべてのストレージ アカウントまたは Log Analytics ワークスペースに、組織のコンプライアンス規則に従ったログの保有期間が設定されていることを確認します。
 Azure Monitor で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定できます。 長期ストレージおよびアーカイブ ストレージには、Azure Storage、Data Lake、または Log Analytics ワークスペースのアカウントを使用します。
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](../../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics ワークスペースの保有期間を構成する方法](../../azure-monitor/logs/manage-cost-storage.md)
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center の監視**: はい
 

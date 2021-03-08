@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 02/09/2021
 ms.author: chmutali
-ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255986"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104333"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory のプロビジョニングと Workday の統合方法
 
@@ -448,6 +448,21 @@ Workday から次のデータ セットを取得し、それらをプロビジ�
 あるワーカーに割り当てられている *プロビジョニング グループ* を取得するとします。 この情報は、*アカウント プロビジョニング データ* セットの一部として入手できます。 このデータ セットを *Get_Workers* 応答の一部として取得するには、次の XPATH を使用します。 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
+
+## <a name="handling-different-hr-scenarios"></a>さまざまな HR シナリオの処理
+
+### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>国際的なジョブの割り当てとセカンダリ ジョブの詳細の取得
+
+既定で Workday コネクタによって取得されるのは、worker のプライマリ ジョブに関連付けられた属性です。 また、このコネクタでは、国際的なジョブの割り当てまたはセカンダリ ジョブに関連付けられた "*追加のジョブ データ*" を取得することもサポートされています。 
+
+国際的なジョブの割り当てに関連付けられた属性を取得するには、次の手順に従ってください。 
+
+1. Workday Web サービス API バージョン 30.0 以降を使用する Workday 接続 URL を設定します。 それに応じて、Workday プロビジョニング アプリで[適切な XPATH 値](workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)を設定します。 
+1. `Worker_Job_Data` ノードのセレクター `@wd:Primary_Job=0` を使用して、適切な属性を取得します。 
+   * **例 1:** `SecondaryBusinessTitle` を取得するには、XPATH `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Title/text()` を使用します
+   * **例 2:** `SecondaryBusinessLocation` を取得するには、XPATH `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Location_Reference/@wd:Descriptor` を使用します
+
+ 
 
 ## <a name="next-steps"></a>次の手順
 

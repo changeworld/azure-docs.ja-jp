@@ -10,8 +10,6 @@
   items:
     - name: セキュリティの技術的な機能
       href: technical-capabilities.md
-    - name: 組み込みのセキュリティ制御
-      href: security-controls.md
 - name: Azure プラットフォームとインフラストラクチャ
   items:
     - name: インフラストラクチャのセキュリティ

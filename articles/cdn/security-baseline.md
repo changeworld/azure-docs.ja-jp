@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 184f42b6da0133068e0a0218353e49c37e3c8c47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2625e4a4954dc74fd0037c6563d0a32734c90b01
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730257"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096263"
 ---
 # <a name="azure-security-baseline-for-content-delivery-network"></a>Content Delivery Network の Azure セキュリティ ベースライン
 
@@ -78,7 +78,7 @@ Azure RBAC を使用してリソースに割り当てる特権は、ロールで
 
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md) 
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -182,9 +182,9 @@ Content Delivery Network では、お客様のアクセスのために処理さ�
 
 CDN に対して Azure リソース ログを有効にします。Azure Security Center と Azure Policy を使用して、リソース ログとログ データの収集を有効にできます。 これらのログは、後でセキュリティ インシデントを調査し、フォレンジック演習を実行するために重要な場合があります。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md) 
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [Azure Security Center のデータ収集について](../security-center/security-center-enable-data-collection.md)
 

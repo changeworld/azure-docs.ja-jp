@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 833d96b8ca252cff5384cde114390aba8c2f51c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097692"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594397"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -109,7 +109,7 @@ B16 の特徴:
 
 **A**: **Credit** メトリックでは、VM で蓄積されたクレジットの数を確認できます。**ConsumedCredit** メトリックでは、蓄積した CPU クレジットをどれだけ消費したかを確認できます。    この 2 つのメトリックは、ポータルの [メトリック] ウィンドウのほか、プログラムを使って Azure Monitor API 経由で確認できるようにする予定です。
 
-Azure でメトリック データにアクセスする方法の詳細については、「[Microsoft Azure のメトリックの概要](../azure-monitor/platform/data-platform.md)」を参照してください。
+Azure でメトリック データにアクセスする方法の詳細については、「[Microsoft Azure のメトリックの概要](../azure-monitor/data-platform.md)」を参照してください。
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>Q:クレジットはどのように蓄積され、消費されますか?
 

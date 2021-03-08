@@ -15,17 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896364"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570835"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
 > [!NOTE]
 > このチュートリアルでは、接続モニター (クラシック) について取り上げます。 改良された新しい[接続モニター](connection-monitor-overview.md)で、強化された接続監視機能を体験してみましょう。
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、接続モニター (クラシック) に新しい接続モニターを追加することはできませんが、2021 年 7 月 1 日より前に作成された既存の接続モニターは引き続き使用することができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[接続モニター (クラシック) から Azure Network Watcher の新しい接続モニターにテストを移行](migrate-to-connection-monitor-from-connection-monitor-classic.md)します。
 
 仮想マシン (VM) と別の VM などのエンドポイント間の通信の成功は、組織にとってきわめて重要になることがあります。 場合によっては、通信を切断させる可能性がある構成の変更が導入されることがあります。 このチュートリアルでは、以下の内容を学習します。
 
@@ -134,7 +137,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 2. **[ターゲットの選択]** をクリックして、対象となるリソースを選択します。 **[サブスクリプション]** を選択し、**リソースの種類** を設定して、使用したい接続モニターをフィルターで絞り込みます。
 
     ![ターゲットが選択された状態のアラート画面](./media/connection-monitor/set-alert-rule.png)
-1. 対象となるリソースを選択したら、**[条件の追加]** を選択します。Network Watcher には、[アラートの作成に使用できるメトリック](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)があります。 **[使用可能なシグナル]** を ProbesFailedPercent と AverageRoundtripMs の各メトリックに設定します。
+1. 対象となるリソースを選択したら、**[条件の追加]** を選択します。Network Watcher には、[アラートの作成に使用できるメトリック](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)があります。 **[使用可能なシグナル]** を ProbesFailedPercent と AverageRoundtripMs の各メトリックに設定します。
 
     ![シグナルが選択された状態のアラート ページ](./media/connection-monitor/set-alert-signals.png)
 1. アラート ルール名、説明、重大度などのアラートの詳細を指定します。 アラートにアクション グループを追加して、アラートへの対応を自動化したりカスタマイズしたりすることもできます。

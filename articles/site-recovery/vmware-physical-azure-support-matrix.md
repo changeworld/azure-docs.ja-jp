@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 48eba42548287b54d99d1a2188786437f4b05a2b
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475473"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534680"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -141,19 +141,19 @@ Debian 9.1 | [9.37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.38-azure|
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.39](https://support.microsoft.com/help/4597409/) | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.34-azure |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.38](https://support.microsoft.com/help/4590304/) | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.28-azure |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.36](https://support.microsoft.com/help/4578241/)、[9.37](https://support.microsoft.com/help/4582666/)  | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.22-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.38-azure|
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.39](https://support.microsoft.com/help/4597409/) | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.34-azure |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.38](https://support.microsoft.com/help/4590304/) | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.28-azure |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.36](https://support.microsoft.com/help/4578241/)、[9.37](https://support.microsoft.com/help/4582666/)  | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.22-azure  |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 のサポートされるカーネルのバージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15、SP1、SP2 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 既定では、すべての [SUSE 15 および 15 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.29-azure
-SUSE Linux Enterprise Server 15、SP1、SP2 | [9.39](https://support.microsoft.com/help/4597409/)  | 既定では、すべての [SUSE 15 および 15 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.47-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.21-azure
-SUSE Linux Enterprise Server 15、SP1、SP2 | [9.38](https://support.microsoft.com/help/4590304/)  | 既定では、すべての [SUSE 15 および 15 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.44-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.18-azure
-SUSE Linux Enterprise Server 15 および 15 SP1 | [9.36](https://support.microsoft.com/help/4578241/)、[9.37](https://support.microsoft.com/help/4582666/)  | 既定では、すべての [SUSE 15 および 15 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.38-azure
+SUSE Linux Enterprise Server 15、SP1、SP2 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.29-azure
+SUSE Linux Enterprise Server 15、SP1、SP2 | [9.39](https://support.microsoft.com/help/4597409/)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.47-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.21-azure
+SUSE Linux Enterprise Server 15、SP1、SP2 | [9.38](https://support.microsoft.com/help/4590304/)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.44-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.18-azure
+SUSE Linux Enterprise Server 15 および 15 SP1 | [9.36](https://support.microsoft.com/help/4578241/)、[9.37](https://support.microsoft.com/help/4582666/)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.38-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux ファイル システム/ゲストのストレージ
 
@@ -180,7 +180,7 @@ BTRFS | \- BTRFS は[更新プログラム ロールアップ 34](https://suppor
 レプリケートされた VM のディスクの追加 | サポートされていません。<br/> VM のレプリケーションを無効にし、ディスクを追加してから、レプリケーションを再び有効にします。
 
 > [!NOTE]
-> ディスク ID に対する変更はサポートされていません。 たとえば、ディスクのパーティション分割が GPT から MBR、またはその逆に変更された場合は、ディスク ID が変更されます。 このようなシナリオでは、レプリケーションが中断され、新しいセットアップが必要になります。 
+> ディスク ID に対する変更はサポートされていません。 たとえば、ディスクのパーティション分割が GPT から MBR、またはその逆に変更された場合は、ディスク ID が変更されます。 このようなシナリオでは、レプリケーションが中断され、新しいセットアップが必要になります。 Linux マシンの場合、デバイス名の変更は、ディスク ID に影響を与えるため、サポートされていません。
 
 ## <a name="network"></a>ネットワーク
 
@@ -231,7 +231,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー iSCSI | 移行の場合 - はい<br/>ディザスター リカバリーの場合 - いいえ、iSCSI は接続されたディスクとして VM にフェールバックされます
 ゲスト/サーバー SMB 3.0 | いいえ
 ゲスト/サーバー RDM | はい<br/><br/> 物理サーバー = 該当なし
-ゲスト/サーバー ディスク > 1 TB | はい。ディスクは 1,024 MB 以上である必要があります。<br/><br/>マネージド ディスクにレプリケートする場合は最大 32 TB (9.40 バージョン以降)<br></br> ストレージ アカウントにレプリケートする場合は最大 4,095 GB
+ゲスト/サーバー ディスク > 1 TB | はい。ディスクは 1,024 MB 以上である必要があります。<br/><br/>マネージド ディスクにレプリケートする場合は最大 8,192 GB (9.26 バージョン以降)<br></br> ストレージ アカウントにレプリケートする場合は最大 4,095 GB
 4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | いいえ
 4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | いいえ
 ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB | はい
@@ -292,7 +292,7 @@ Azure にレプリケートされたオンプレミス VM は、この表にま�
 オペレーティング システムのディスク サイズ | 最大 2,048 GB。 | サポートされていない場合、確認は失敗します。
 オペレーティング システムのディスク数 | 1 </br> ブート パーティションとシステム パーティションが異なるディスク上にある場合はサポートされていません | サポートされていない場合、確認は失敗します。
 データ ディスク数 | 64 以下。 | サポートされていない場合、確認は失敗します。
-データ ディスク サイズ | マネージド ディスクにレプリケートする場合は最大 32 TB (9.40 バージョン以降)<br></br>ストレージ アカウントにレプリケートする場合は最大 4,095 GB| サポートされていない場合、確認は失敗します。
+データ ディスク サイズ | マネージド ディスクにレプリケートする場合は最大 8,192 GB (9.26 バージョン以降)<br></br>ストレージ アカウントにレプリケートする場合は最大 4,095 GB| サポートされていない場合、確認は失敗します。
 ネットワーク アダプター | 複数のアダプターがサポートされます。 |
 共有 VHD | サポートされていません。 | サポートされていない場合、確認は失敗します。
 FC ディスク | サポートされていません。 | サポートされていない場合、確認は失敗します。
@@ -328,6 +328,17 @@ VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/�
 - 前述の数値は、I/O のオーバーラップを 30% とした場合の平均値です。
 - Site Recovery は、オーバーラップ比に基づくより高いスループットと、より大きな書き込みサイズ、そして実ワークロード I/O 動作を扱うことができます。
 - これらの数値には、標準的なバックログとして約 5 分が想定されています。 つまりデータはアップロード後 5 分以内に処理されて復旧ポイントが作成されます。
+
+## <a name="storage-account-limits"></a>ストレージ アカウントの制限
+
+ディスクの平均チャーンが増加するにつれて、ストレージ アカウントでサポートできるディスクの数が減少します。 以下の表は、プロビジョニングする必要があるストレージ アカウントの数を決定するためのガイドとして使用できます。
+ 
+**ストレージ アカウントの種類**    |    **チャーン = ディスクあたり 4 MBps**    |    **チャーン = ディスクあたり 8 MBps**
+---    |    ---    |    ---
+V1 ストレージ アカウント    |    600 個のディスク    |    300 個のディスク
+V2 ストレージ アカウント    |    1500 個のディスク    |    750 個のディスク
+
+上記の制限がハイブリッドの DR シナリオにのみ適用されることに注意してください。
 
 ## <a name="vault-tasks"></a>資格情報コンテナーのタスク
 

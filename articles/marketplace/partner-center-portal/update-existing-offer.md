@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c28ab557f6aac94fa9acde78c7433b850ecba0be
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033359"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097257"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで既存のオファーを更新する
 
@@ -31,6 +31,10 @@ ms.locfileid: "97033359"
     - **未発行の変更**:セクションは更新済みで、完了しています。 必要なすべてのデータが指定されていて、更新にエラーは取り込まれていませんでした。
     - **不完全**:セクションに加えた更新により、修正する必要があるエラー、または多くの情報を指定する必要があるエラーが取り込まれました。
 2. 発行用に更新されたオファーを送信するには、 **[発行]** を選択します。 そうすると、オファーは標準の[検証と発行の手順](../review-publish-offer.md#validation-and-publishing-steps)を経ます。
+
+## <a name="changing-offer-type"></a>プランの種類の変更
+
+[!INCLUDE [change-offer-type](../includes/change-offer-type.md)]
 
 > [!IMPORTANT]
 > オファーのプレビューをレビューし、公開可能になったら、 **[Go-live]\(公開\)** を選択して、対象となるユーザー (パブリックまたはプライベート) に更新されたオファーを発行する必要があります。

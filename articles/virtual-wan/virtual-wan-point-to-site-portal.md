@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/09/2020
+ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 9d207e2ee0ddff49ab01094626b9af1c8505cb4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732490"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
 
@@ -50,7 +50,6 @@ ms.locfileid: "98919070"
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
-
 ## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a>P2S クライアント アドレス プールを選択する
 
 [!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
@@ -79,8 +78,6 @@ VPN クライアント プロファイル パッケージを生成してダウ�
 1. 仮想 WAN に移動します。
 1. **[概要]** ページで、マップ上の各ポイントはハブを表します。
 1. **[ハブと接続]** セクションでは、ハブの状態、サイト、リージョン、VPN 接続の状態、入出力バイト数を確認できます。
-
-
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 

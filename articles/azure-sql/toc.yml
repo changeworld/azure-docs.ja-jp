@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: マルチモデル機能
           href: multi-model-features.md
+        - name: 予定メンテナンス
+          items:
+            - name: メンテナンス期間
+              href: database/maintenance-window.md
+            - name: メンテナンス期間の構成
+              href: database/maintenance-window-configure.md
+            - name: メンテナンス期間に関する FAQ
+              href: database/maintenance-window-faq.yml
+            - name: 事前通知
+              href: database/advance-notifications.md
         - name: インメモリ OLTP
           href: in-memory-oltp-overview.md
         - name: テンポラル テーブル
@@ -143,8 +153,10 @@
       items:
         - name: クォータの増加を要求
           href: database/quota-increase-request.md
-        - name: ジョブの自動化
+        - name: エラスティック ジョブを使用したジョブの自動化
           href: database/job-automation-overview.md
+        - name: SQL Agent を使用したジョブの自動化
+          href: database/job-automation-managed-instances.md
         - name: ビジネス継続性
           items:
             - name: フェールオーバー グループの構成
@@ -325,6 +337,8 @@
               href: migration-guides/database/sql-server-to-sql-database-overview.md
             - name: Migrate
               href: migration-guides/database/sql-server-to-sql-database-guide.md
+            - name: 評価ルール
+              href: migration-guides/database/sql-server-to-sql-database-assessment-rules.md
     - name: 概念
       items:
         - name: 接続のアーキテクチャ
@@ -745,6 +759,8 @@
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: パフォーマンス ベースライン
               href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
+            - name: 評価ルール
+              href: migration-guides/managed-instance/sql-server-to-sql-managed-instance-assessment-rules.md
     - name: 概念
       items:
         - name: リソース制限
@@ -989,6 +1005,8 @@
           href: managed-instance/alerts-create.md
         - name: マネージド インスタンスでのフェールオーバーの手動開始
           href: managed-instance/user-initiated-failover.md
+        - name: ログ再生サービスを使用してデータベースを移行する
+          href: managed-instance/log-replay-service-migrate.md
     - name: サンプル
       items:
         - name: Azure CLI

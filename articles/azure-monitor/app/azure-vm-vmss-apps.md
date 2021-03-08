@@ -3,12 +3,12 @@ title: Azure VM のパフォーマンスを監視する - Azure Application Insi
 description: Azure VM および Azure 仮想マシン スケール セットに対するアプリケーション パフォーマンス監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 48441711c8c6209b25974108fd91d1023fd6e6be
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493738"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711483"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
@@ -16,7 +16,7 @@ ms.locfileid: "99493738"
 
 この記事では、Application Insights エージェントを使用した Application Insights 監視の有効化について説明した後、大規模なデプロイのプロセスを自動化するための事前ガイダンスを提供します。
 > [!IMPORTANT]
-> Azure VM と VMSS で実行されている **Java** ベースのアプリケーションは、 **[Application Insights Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** (一般公開) で監視されます。
+> Azure VM と VMSS で実行されている **Java** ベースのアプリケーションは、 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** (一般公開) で監視されます。
 
 > [!IMPORTANT]
 > **Azure VM と VMSS** で実行される ASP.NET アプリケーション用の Azure Application Insights エージェントは、現在パブリック プレビューの段階にあります。 **オンプレミス** で実行されている ASP.Net アプリケーションを監視するには、[オンプレミス サーバー用の Azure Application Insights エージェント](./status-monitor-v2-overview.md)を使用します。これは一般提供されていて完全にサポートされます。
@@ -42,7 +42,7 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
   * Application Insights エージェントでは、.NET SDK と同じ依存関係のシグナルを既定で自動的に収集します。 詳細については、「[依存関係の自動収集](./auto-collect-dependencies.md#net)」を参照してください。
         
 #### <a name="java"></a>Java
-  * Java の場合、 **[Application Insights Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** を使用することをお勧めします。 最も一般的なライブラリとフレームワーク、およびログと依存関係は、[自動収集](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#auto-collected-requests-dependencies-logs-and-metrics)され、[追加の構成](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)が多数あります。
+  * Java の場合、 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** を使用することをお勧めします。 最も一般的なライブラリとフレームワーク、およびログと依存関係は、[自動収集](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics)され、[追加の構成](./java-standalone-config.md)が多数あります。
 
 ### <a name="code-based-via-sdk"></a>コードベース (SDK を使用)
     
@@ -55,19 +55,19 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
     > .NET アプリの場合のみ - エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 このチェックアウトの詳細については、以下の「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 
 #### <a name="net-core"></a>.NET Core
-.NET Core アプリケーションを監視するには、[SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) を使用します。 
+.NET Core アプリケーションを監視するには、[SDK](./asp-net-core.md) を使用します。 
 
 #### <a name="java"></a>Java 
 
-Java アプリケーションに対して追加のカスタム テレメトリが必要な場合は、[使用可能なもの](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#send-custom-telemetry-from-your-application)の確認、[カスタム ディメンション](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#custom-dimensions)の追加、または[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-telemetry-processors)の使用のいずれかを行います。 
+Java アプリケーションに対して追加のカスタム テレメトリが必要な場合は、[使用可能なもの](./java-in-process-agent.md#send-custom-telemetry-from-your-application)の確認、[カスタム ディメンション](./java-standalone-config.md#custom-dimensions)の追加、または[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)の使用のいずれかを行います。 
 
 #### <a name="nodejs"></a>Node.js
 
-Node.js アプリケーションをインストルメント化するには、[SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs) を使用します。
+Node.js アプリケーションをインストルメント化するには、[SDK](./nodejs.md) を使用します。
 
 #### <a name="python"></a>Python
 
-Python アプリを監視するには、[SDK](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) を使用します。
+Python アプリを監視するには、[SDK](./opencensus-python.md) を使用します。
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>PowerShell を使用して、Azure 仮想マシン上で .NET アプリケーションの Application Insights エージェントを管理する
 

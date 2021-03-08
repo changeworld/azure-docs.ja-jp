@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879175"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575126"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する
 
@@ -106,7 +106,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 * Azure サブスクリプション。
 * Log Analytics ワークスペース。  
 
-サブスクリプションにワークスペースがない場合に作成する方法については、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
+サブスクリプションにワークスペースがない場合に作成する方法については、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン

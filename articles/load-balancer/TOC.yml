@@ -33,8 +33,14 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Load Balancer でのポート転送の構成
       href: tutorial-load-balancer-port-forwarding-portal.md
-    - name: リージョン間ロード バランサーの作成 - ポータル
-      href: tutorial-cross-region-portal.md
+    - name: リージョン間のロード バランサー
+      items:
+        - name: リージョン間ロード バランサーの作成 - ポータル
+          href: tutorial-cross-region-portal.md
+        - name: リージョン間ロード バランサーの作成 - PowerShell
+          href: tutorial-cross-region-powershell.md
+        - name: リージョン間ロード バランサーの作成 - Azure CLI
+          href: tutorial-cross-region-cli.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -89,6 +95,8 @@
       href: backend-pool-management.md
     - name: Standard Load Balancer と Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
+    - name: Azure Instance Metadata Service を使用した情報の取得
+      href: instance-metadata-service-load-balancer.md
 - name: 操作方法
   items:
     - name: ポータルの設定
@@ -144,6 +152,8 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: 送信専用のロード バランサーの構成
       href: egress-only.md
+    - name: Azure IMDS を使用したメタデータの取得
+      href: howto-load-balancer-imds.md
     - name: トラブルシューティング
       items:
         - name: Azure Load Balancer のトラブルシューティング
@@ -152,8 +162,6 @@
           href: load-balancer-troubleshoot-health-probe-status.md
         - name: バックエンド プール (VM) のトラフィック
           href: load-balancer-troubleshoot-backend-traffic.md
-        - name: 一般的なデプロイのエラー
-          href: load-balancer-common-deployment-errors.md
         - name: 送信接続に関する一般的な問題
           href: troubleshoot-outbound-connection.md
         - name: リソース正常性と受信の可用性に関する問題
@@ -181,6 +189,10 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
+    - name: Azure Instance Metadata Service (IMDS) の一般的なエラー コード
+      href: troubleshoot-load-balancer-imds.md
+    - name: 一般的なデプロイのエラー
+      href: load-balancer-common-deployment-errors.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

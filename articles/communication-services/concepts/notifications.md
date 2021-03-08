@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2b77708609f61eeb4ce33148f020027d646836b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813600"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660159"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services のチャットと通話のクライアント ライブラリにより、リアルタイムのメッセージング チャネルが作成されます。これは、効率的で信頼性の高い方法で、接続されたクライアントにシグナリング メッセージをプッシュすることを可能にします。 これにより、複雑な HTTP ポーリング ロジックを実装することなく、豊富なリアルタイム通信機能をアプリケーションに組み込むことができます。 ただしモバイル アプリケーションでは、このシグナリング チャネルは、アプリケーションがフォアグラウンドでアクティブになっているときにのみ接続されたままになります。 アプリケーションがバックグラウンドで実行されているときに、ユーザーが電話の着信またはチャット メッセージを受け取るようにするには、プッシュ通知を使用する必要があります。
 
@@ -34,7 +32,7 @@ Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Azure Notification Hubs 経由でプッシュ通知を配信する
 
-電話の着信を受け取ったときにユーザーのモバイル デバイスに自動的にプッシュ通知を送信するために、Azure Notification Hub をCommunication Services リソースに接続することができます。 これらのプッシュ通知を使用して、自分のアプリケーションをバックグラウンドから起動し、ユーザーが通話を受け入れたり拒否したりできるようにする UI を表示する必要があります。 
+電話の着信を受け取ったときにユーザーのモバイル デバイスに自動的にプッシュ通知を送信するために、Azure Notification Hub をCommunication Services リソースに接続することができます。 これらのプッシュ通知を使用して、自分のアプリケーションをバックグラウンドから起動し、ユーザーが通話を受け入れたり拒否したりできるようにする UI を表示する必要があります。
 
 :::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Communication Services が Azure Notification Hubs とどのように統合されるかを示す図。":::
 
@@ -43,13 +41,13 @@ Communication Services はパススルー サービスとして Azure Notificati
 > [!NOTE]
 > 現在、プッシュ通知の呼び出しのみがサポートされています。
 
-### <a name="notification-hub-provisioning"></a>通知ハブのプロビジョニング 
+### <a name="notification-hub-provisioning"></a>通知ハブのプロビジョニング
 
 Notification Hubs を使用してクライアント デバイスにプッシュ通知を配信するには、Communication Services リソースと同じサブスクリプション内に[通知ハブを作成](../../notification-hubs/create-notification-hub-portal.md)します。 使用するプラットフォーム通知システム用に Azure 通知ハブを構成する必要があります。 Notification Hubs からのプッシュ通知をクライアント アプリで取得するには、[Notification Hubs の使用](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)に関する記事を参照し、ページの上部にあるドロップダウン リストでターゲット クライアント プラットフォームを選択します。
 
 > [!NOTE]
-> 現在、APN および FCM プラットフォームがサポートされています。  
-APNs プラットフォームは、トークン認証モードで構成する必要があります。 現在、証明書認証モードはサポートされていません。 
+> 現在、APN および FCM プラットフォームがサポートされています。
+APNs プラットフォームは、トークン認証モードで構成する必要があります。 現在、証明書認証モードはサポートされていません。
 
 通知ハブを構成したら、Azure Resource Manager クライアントまたは Azure portal を使用してハブの接続文字列を指定することにより、Communication Services リソースにそれを関連付けることができます。 接続文字列には `Send` アクセス許可が含まれている必要があります。 ハブ専用の `Send` のみのアクセス許可が設定された別のアクセス ポリシーを作成することをお勧めします。 [Notification Hubs のセキュリティとアクセスのポリシー](../../notification-hubs/notification-hubs-push-notification-security.md)に関する詳細を確認してください
 
@@ -74,10 +72,10 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure portal 内のプッシュ通知の設定を示すスクリーンショット。":::
 
 > [!NOTE]
-> Azure Notification ハブの接続文字列が更新されている場合は、Communication Services リソースも更新する必要があります。  
+> Azure Notification ハブの接続文字列が更新されている場合は、Communication Services リソースも更新する必要があります。
 ハブのリンク方法に関する変更は、最大 ``10`` 分以内にデータ プレーン (つまり、通知の送信時) に反映されます。 これは、以前に送信された通知があった **場合**、ハブが初めてリンクされるときにも当てはまります。
 
-### <a name="device-registration"></a>デバイス登録 
+### <a name="device-registration"></a>デバイス登録
 
 Communication Services にデバイス ハンドルを登録する方法については、[音声通話のクイック スタート](../quickstarts/voice-video-calling/getting-started-with-calling.md)に関する記事を参照してください。
 
@@ -91,7 +89,7 @@ Communication Services にデバイス ハンドルを登録する方法につ�
 
 通知が欠落した可能性がある最初の場所 (Azure Notification Hubs が、Azure Communication Services からの通知を受け取らなかった) については、以下で説明します。 他の 2 つの場所については、「[Azure Notification Hubs での欠落した通知の診断](../../notification-hubs/notification-hubs-push-notification-fixer.md)」を参照してください。
 
-自分の Communication Services リソースから Azure Notification Hubs に通知が送信されているかどうかを確認する方法の 1 つは、リンクされている [Azure 通知ハブ メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)の `incoming messages` メトリックを調べることです。
+自分の Communication Services リソースから Azure Notification Hubs に通知が送信されているかどうかを確認する方法の 1 つは、リンクされている [Azure 通知ハブ メトリック](../../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)の `incoming messages` メトリックを調べることです。
 
 以下に、Azure 通知ハブが Communication Services リソースからの通知を受け取らない原因となる可能性がある一般的な構成ミスをいくつか示します。
 

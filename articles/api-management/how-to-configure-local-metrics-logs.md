@@ -1,6 +1,6 @@
 ---
 title: Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する | Microsoft Docs
-description: Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する方法について説明します
+description: Kubernetes クラスター上の Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する方法について説明します
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254505"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594164"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する
 
-この記事では、[セルフホステッド ゲートウェイ](./self-hosted-gateway-overview.md)にローカル メトリックとログを構成する方法の詳細について説明します。 クラウド メトリックとログを構成する方法については、[この記事](how-to-configure-cloud-metrics-logs.md)を参照してください。 
+この記事では、Kubernetes クラスターに展開された[セルフホステッド ゲートウェイ](./self-hosted-gateway-overview.md)に、ローカル メトリックとログを構成する方法について詳しく説明します。 クラウド メトリックとログを構成する方法については、[この記事](how-to-configure-cloud-metrics-logs.md)を参照してください。 
 
 ## <a name="metrics"></a>メトリック
 セルフホステッド ゲートウェイでは、メトリックの収集と集計のための統一プロトコルとなっている、[StatsD](https://github.com/statsd/statsd) がサポートされています。 このセクションでは、StatsD を Kubernetes にデプロイし、StatsD を使用してメトリックを出力するようにゲートウェイを構成し、[Prometheus](https://prometheus.io/) を使用してメトリックを監視する手順について説明します。 
@@ -65,7 +65,7 @@ spec:
     spec:
       containers:
       - name: sputnik-metrics-statsd
-        image: prom/statsd-exporter
+        image: mcr.microsoft.com/aks/hcp/prom/statsd-exporter
         ports:
         - name: tcp
           containerPort: 9102
@@ -80,7 +80,7 @@ spec:
           - mountPath: /tmp
             name: sputnik-metrics-config-files
       - name: sputnik-metrics-prometheus
-        image: prom/prometheus
+        image: mcr.microsoft.com/oss/prometheus/prometheus
         ports:
         - name: tcp
           containerPort: 9090
@@ -204,7 +204,7 @@ kubectl rollout restart deployment/<deployment-name>
 kubectl logs <pod-name>
 ```
 
-セルフホステッド ゲートウェイが Azure Kubernetes Service にデプロイされている場合は、[コンテナーに対する Azure Monitor](../azure-monitor/insights/container-insights-overview.md) を有効にして、ワークロードから `stdout` と `stderr` を収集し、Log Analytics でログを表示することができます。 
+セルフホステッド ゲートウェイが Azure Kubernetes Service にデプロイされている場合は、[コンテナーに対する Azure Monitor](../azure-monitor/containers/container-insights-overview.md) を有効にして、ワークロードから `stdout` と `stderr` を収集し、Log Analytics でログを表示することができます。 
 
 セルフホステッド ゲートウェイでは、`localsyslog`、`rfc5424`、`journal` などの多数のプロトコルもサポートされています。 次の表に、サポートされているすべてのオプションの概要を示します。 
 

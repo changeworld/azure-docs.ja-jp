@@ -1,22 +1,18 @@
 ---
 title: Azure のデータのコピー ツールを使用してオンプレミスのデータをコピーする
 description: Azure データ ファクトリを作成し、データのコピー ツールを使用して SQL Server データベースから Azure Blob Storage にデータをコピーします。
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: d9cf9729d8be77845572efd9ef6e2486ddceaaaf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 33dd1a1ca203ee57d3ef263bc5e8686841f03c1f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002836"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391254"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

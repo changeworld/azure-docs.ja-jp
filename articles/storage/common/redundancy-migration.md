@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 02/19/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938717"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714784"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -41,7 +41,7 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>元: LRS</b> | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1、2</sup> | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> まず GRS/RA-GRS に切り替えてから、ライブ マイグレーションを要求する<sup>1</sup> |
 | <b>元: GRS/RA-GRS</b> | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし | 手動の移行を実行する <br /><br /> OR <br /><br /> まず LRS に切り替えてから、ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する |
-| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1、3</sup> |
+| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | ライブ マイグレーションを要求する |
 | <b>元: GZRS/RA-GZRS</b> | 手動の移行を実行する | 手動の移行を実行する | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし |
 
 <sup>1</sup> 1 回限りのエグレス料金が発生します。<br />

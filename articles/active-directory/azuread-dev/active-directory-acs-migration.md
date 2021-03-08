@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197423"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687398"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -113,7 +113,7 @@ Access Control の詳細については、「[Access Control Service 2.0](/previ
 Access Control コンポーネントの廃止スケジュールを次に示します。
 
 - **2017 年 11 月**: Azure クラシック ポータルでの Azure AD 管理エクスペリエンスの [提供は終了します](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)。 この時点で、Access Control の名前空間の管理は、新しい専用の URL `https://manage.windowsazure.com?restoreClassic=true` で利用できるようになります。 この URl を使用すれば、既存の名前空間を表示したり、名前空間を有効または無効にしたり、名前空間を削除することができます。
-- **2018 年 4 月 2 日**: Azure クラシック ポータルは完全に廃止され、Access Control の名前空間管理はすべての URL で使用できなくなります。 これ以降、Access Control 名前空間を有効または無効にしたり、削除したり、列挙することはできなくなります。 ただし、Access Control 管理ポータルはその機能を完全に維持され、`https://\<namespace\>.accesscontrol.windows.net` に配置されます。 その他の Access Control コンポーネントもすべて、引き続き正常に動作します。
+- **2018 年 4 月 2 日**: Azure クラシック ポータルは完全に廃止され、Access Control の名前空間管理はすべての URL で使用できなくなります。 これ以降、Access Control 名前空間を有効または無効にしたり、削除したり、列挙することはできなくなります。 ただし、Access Control 管理ポータルはその機能を完全に維持され、`https://<namespace>.accesscontrol.windows.net` に配置されます。 その他の Access Control コンポーネントもすべて、引き続き正常に動作します。
 - **2018 年 11 月 7 日**: すべての Access Control コンポーネントが完全にシャットダウンされます。 これには、Access Control 管理ポータル、管理サービス、STS、およびトークン変換ルール エンジンが含まれます。 これ以降、(\<namespace\>.accesscontrol.windows.net にある) Access Control へ送信されるすべての要求は失敗するようになります。 この時点までに、すべての既存アプリケーションとサービスを他のテクノロジへと移行しておく必要があります。
 
 > [!NOTE]

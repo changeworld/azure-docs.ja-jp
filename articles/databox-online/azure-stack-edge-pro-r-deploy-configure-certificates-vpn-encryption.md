@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/19/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: fad3e5dcb0ecda82f3fb35cadf1719a62c99bd97
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abea192f209b968c6842e985620c067c93990687
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96464696"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548150"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-r"></a>チュートリアル:Azure Stack Edge Pro R 用の証明書を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "96464696"
 
 * [Azure Stack Edge Pro R の設置](azure-stack-edge-pro-r-deploy-install.md)に関する記事の説明に従って、物理デバイスが設置されていること。
 * 独自の証明書を持ち込む予定の場合:
-    - 署名チェーン証明書を含む適切な形式で証明書を準備しておく必要があります。 証明書の詳細については、「[証明書の管理](azure-stack-edge-j-series-manage-certificates.md)」を参照してください。
+    - 署名チェーン証明書を含む適切な形式で証明書を準備しておく必要があります。 証明書の詳細については、「[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)」を参照してください。
 
 
 

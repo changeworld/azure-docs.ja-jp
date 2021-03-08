@@ -1,33 +1,33 @@
 ---
 title: コンテンツ メタデータ プロパティ
 titleSuffix: Azure Cognitive Search
-description: BLOB のメタデータ プロパティを使用すると、検索インデックス内のフィールドにコンテンツを提供したり、実行時にインデックス作成動作を通知する情報を提供したりすることができます。 この記事では、Azure Cognitive Search でサポートされているメタデータ プロパティの一覧を示します。
+description: ドキュメントのメタデータ プロパティを使用すると、検索インデックス内のフィールドにコンテンツを提供したり、実行時にインデックス作成動作を通知する情報を提供したりすることができます。 この記事では、Azure Cognitive Search でサポートされているメタデータ プロパティの一覧を示します。
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 79443785dbd8619e22358631c9c36a3da4ef2e84
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/22/2021
+ms.openlocfilehash: cbb35f596a1d32816d1a73b462bf590d9dde0d52
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99477287"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668420"
 ---
-# <a name="content-metadata-properties-used-in-blob-indexing-in-azure-cognitive-search"></a>Azure Cognitive Search の BLOB インデックス作成で使用されるコンテンツ メタデータ プロパティ
+# <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Azure Cognitive Search で使用されるコンテンツ メタデータ プロパティ
 
-BLOB にはさまざまなコンテンツを含めることができ、それらのコンテンツの種類の多くには、BLOB のインデックス作成に役立つメタデータ プロパティがあります。 **`metadata_storage_name`** などの標準 BLOB プロパティの検索フィールドを作成するのと同じように、ドキュメント形式に固有のメタデータ プロパティのフィールドを作成できます。
+SharePoint Online と Azure Blob Storage にはさまざまなコンテンツを含めることができ、それらのコンテンツの種類の多くには、インデックス作成に役立つメタデータ プロパティがあります。 **`metadata_storage_name`** などの標準 BLOB プロパティの検索フィールドを作成するのと同じように、ドキュメント形式に固有のメタデータ プロパティのフィールドを作成できます。
 
 ## <a name="supported-document-formats"></a>サポートされるドキュメントの形式
 
-Cognitive Search では、次のドキュメント形式の BLOB のインデックス作成がサポートされています。
+Cognitive Search では、次のドキュメント形式の BLOB のインデックス作成と SharePoint Online ドキュメントのインデックス作成がサポートされています。
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="properties-by-document-format"></a>ドキュメント形式別のプロパティ
 
-以下の表は、各ドキュメント形式に関して実行される処理と、BLOB インデクサーによって抽出されるメタデータ プロパティをまとめたものです。
+以下の表は、各ドキュメント形式に関して実行される処理と、BLOB インデクサーおよび SharePoint Online インデクサーによって抽出されるメタデータ プロパティをまとめたものです。
 
 | ドキュメントの形式/コンテンツの種類 | 抽出されるメタデータ | 処理の詳細 |
 | --- | --- | --- |
@@ -62,3 +62,4 @@ Cognitive Search では、次のドキュメント形式の BLOB のインデッ
 * [Azure Cognitive Search のインデクサー](search-indexer-overview.md)
 * [AI を使用して BLOB を理解する](search-blob-ai-integration.md)
 * [BLOB のインデックス作成の概要](search-blob-storage-integration.md)
+* [SharePoint Online のインデックス作成](search-howto-index-sharepoint-online.md)

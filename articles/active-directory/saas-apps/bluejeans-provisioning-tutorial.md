@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 58cd69ebe97d9d0965d7e648b0ded012ac71cd0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053857"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646131"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>チュートリアル: BlueJeans を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -27,7 +27,7 @@ ms.locfileid: "99053857"
 > * BlueJeans でユーザーを作成する
 > * アクセスが不要になった BlueJeans のユーザーを削除する
 > * Azure AD と BlueJeans の間でのユーザー属性の同期を維持する
-> * BlueJeans に[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial)する (推奨)
+> * BlueJeans に[シングル サインオン](./bluejeans-tutorial.md)する (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -141,7 +141,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
 
 ## <a name="connector-limitations"></a>コネクタの制限事項

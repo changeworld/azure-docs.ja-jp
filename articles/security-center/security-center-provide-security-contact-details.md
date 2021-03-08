@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2020
+ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 72ded01b141aafb7fd3e4d761882a10eaf0c4b33
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d5c8ad0c4d9995a36b95ad2e67878f678887bfd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920411"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701979"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>セキュリティ アラートの電子メール通知を構成する 
 
@@ -26,8 +26,8 @@ ms.locfileid: "98920411"
 
 通知用電子メールに独自の設定を定義するには、Azure Security Center の **[電子メール通知]** 設定ページで以下を選択できます。
 
-- **通知する必要がある "_ユーザー_"** - 電子メールは、選択した個人、またはサブスクリプションに指定された Azure ロールを持つ任意のユーザーに送信できます。 
-- **通知する必要がある "_内容_"** - Security Center から通知を送信する必要がある重大度レベルを変更します。
+- **通知する必要がある "*ユーザー*"** - 電子メールは、選択した個人、またはサブスクリプションに指定された Azure ロールを持つ任意のユーザーに送信できます。 
+- **通知する必要がある "*内容*"** - Security Center から通知を送信する必要がある重大度レベルを変更します。
 
 アラート疲れを避けるため、Security Center では送信メールの量が制限されています。 各サブスクリプションについて、Security Center では以下のように送信が行われます。
 
@@ -48,8 +48,7 @@ ms.locfileid: "98920411"
 |||
 
 
-## <a name="customize-the-security-alerts-email-notifications"></a>セキュリティ アラートの電子メール通知をカスタマイズする<a name="email"></a>
-
+## <a name="customize-the-security-alerts-email-notifications-via-the-portal"></a>セキュリティ アラートの電子メール通知をポータルからカスタマイズする<a name="email"></a>
 個人または特定の Azure ロールを持つすべてのユーザーにメール通知を送信できます。
 
 1. Security Center の **[価格と設定]** 領域から、関連するサブスクリプションを選択し、 **[電子メール通知]** を選択します。
@@ -60,6 +59,28 @@ ms.locfileid: "98920411"
     - 特定の電子メール アドレスをコンマ区切りで入力します。 入力できる電子メール アドレスの数に制限はありません。
 
 1. セキュリティ連絡先の情報をサブスクリプションに適用するには、 **[保存]** を選択します。
+
+## <a name="customize-the-alerts-email-notifications-through-the-api"></a>API を通じてアラートのメール通知をカスタマイズする
+提供されている REST API を使用してメール通知を管理することもできます。 詳細については、[SecurityContacts API に関するドキュメント](/rest/api/securitycenter/securitycontacts)を参照してください。
+
+これは、セキュリティ連絡先の構成を作成する際の PUT 要求本文の例です。
+
+```json
+{
+    "properties": {
+        "emails": admin@contoso.com;admin2@contoso.com,
+        "notificationsByRole": {
+            "state": "On",
+            "roles": ["AccountAdmin", "Owner"]
+        },
+        "alertNotifications": {
+            "state": "On",
+            "minimalSeverity": "High"
+        },
+        "phone": ""
+    }
+}
+```
 
 
 ## <a name="see-also"></a>関連項目

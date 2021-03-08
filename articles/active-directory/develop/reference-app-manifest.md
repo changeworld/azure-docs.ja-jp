@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 47215070893c6fefd42554fdf4514e4aa8b45047
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491301"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103347"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -27,13 +27,13 @@ ms.locfileid: "99491301"
 Azure portal で、あるいは [REST API](/graph/api/resources/application) または [PowerShell](/powershell/module/azuread#applications) を使用してプログラムで、アプリの属性を構成できます。 ただし、一部のシナリオでは、アプリ マニフェストを編集してアプリの属性を構成する必要があります。 これらのシナリオは、次のとおりです。
 
 * アプリを Azure AD マルチテナントと個人用の Microsoft アカウントとして登録した場合、サポートされる Microsoft アカウントを UI で変更することはできません。 代わりに、アプリケーション マニフェスト エディターを使用して、サポートされるアカウントの種類を変更する必要があります。
-* アプリでサポートされるアクセス許可とロールを定義する必要がある場合は、アプリケーション マニフェストを変更する必要があります。
+* アプリでサポートされるアクセス許可とロールを定義するには、アプリケーション マニフェストを変更する必要があります。
 
 ## <a name="configure-the-app-manifest"></a>アプリ マニフェストを構成する
 
 アプリケーション マニフェストを構成するには:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアクセスします。 **Azure Active Directory** サービスを検索して選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure ポータル</a>にアクセスします。 **Azure Active Directory** サービスを検索して選択します。
 1. **[アプリの登録]** を選択します。
 1. 構成するアプリを選択します。
 1. アプリの **[概要]** ページで、 **[マニフェスト]** セクションを選択します。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを編集できます。 必要があれば、 **[ダウンロード]** を選択してローカルでマニフェストを編集します。その後、 **[アップロード]** を使用して、アプリケーションにマニフェストを再適用します。
@@ -173,6 +173,7 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
 - `"None"`
 - `"SecurityGroup"` (セキュリティ グループおよび Azure AD ロールの場合)
 - `"ApplicationGroup"` (このオプションには、アプリケーションに割り当てられているグループのみが含まれます)
+- `"DirectoryRole"` (ユーザーがメンバーになっている Azure AD ディレクトリ ロールを取得します)
 - `"All"` (これは、サインイン ユーザーがメンバーになっているすべてのセキュリティ グループ、配布グループ、および Azure AD ディレクトリ ロールが取得されます)。
 
 例:

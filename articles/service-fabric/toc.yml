@@ -108,7 +108,7 @@
   items:
     - name: Service Fabric のベスト プラクティスの概要
       href: service-fabric-best-practices-overview.md
-    - name: セキュリティ
+    - name: Security
       href: service-fabric-best-practices-security.md
     - name: ネットワーク
       href: service-fabric-best-practices-networking.md
@@ -138,9 +138,9 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: アーキテクチャ
+    - name: Architecture
       href: service-fabric-architecture.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -201,7 +201,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -330,7 +330,7 @@
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -406,6 +406,56 @@
           href: service-fabric-get-started-mac.md
         - name: Service Fabric CLI のセットアップ
           href: service-fabric-cli.md
+        - name: IDE での作業
+          items:
+            - name: Windows/VS 開発環境での作業
+              items:
+                - name: Visual Studio でのアプリケーションの管理
+                  href: service-fabric-manage-application-in-visual-studio.md
+                - name: Visual Studio でのセキュリティ保護された接続の構成
+                  href: service-fabric-visualstudio-configure-secure-connections.md
+                - name: VS での .NET サービスのデバッグ
+                  href: service-fabric-debugging-your-application.md
+                - name: Service Fabric と VS での Windows コンテナーのデバッグ
+                  href: service-fabric-how-to-debug-windows-containers.md
+                - name: 一般的なエラーと例外
+                  href: service-fabric-errors-and-exceptions.md
+                - name: ローカルでの監視と診断
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+                - name: Windows での Linux クラスターの設定
+                  href: service-fabric-local-linux-cluster-windows.md
+                - name: VS からリモート Linux クラスターに .NET Core アプリをデプロイする
+                  href: service-fabric-how-to-publish-linux-app-vs.md
+            - name: Linux/Eclipse 開発環境での作業
+              items:
+                - name: Java 開発用の Eclipse プラグインの使用
+                  href: service-fabric-get-started-eclipse.md
+                - name: Eclipse での Java サービスのデバッグ
+                  href: service-fabric-debugging-your-application-java.md
+                - name: ローカルでの監視と診断
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+            - name: VS Code 環境での作業
+              items:
+                - name: VS Code を使ってみる
+                  href: service-fabric-get-started-vs-code.md
+                - name: VS Code を使用した C# Service Fabric アプリケーションの開発
+                  href: service-fabric-develop-csharp-applications-with-vs-code.md
+                - name: VS Code を使用した Java Service Fabric アプリケーションの開発
+                  href: service-fabric-develop-java-applications-with-vs-code.md
+    - name: Service Fabric の管理対象クラスターの使用
+      items:
+        - name: 管理対象クラスター ノードの種類に仮想マシン スケール セット拡張機能を追加する
+          href: how-to-managed-cluster-vmss-extension.md
+        - name: 管理対象クラスターの構成
+          href: how-to-managed-cluster-configuration.md
+        - name: NSG ルールおよびその他のマネージド クラスター ネットワーク オプションを追加する
+          href: how-to-managed-cluster-networking.md
+        - name: ARM テンプレートを使用して管理対象クラスター アプリケーションをデプロイする
+          href: how-to-managed-cluster-app-deployment-template.md
+        - name: 管理対象クラスター ノードでのディスク暗号化の有効化
+          href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: マネージド クラスター ノードのマネージド ID を使用する
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 計画と準備
       items:
         - name: クラスター容量の計画
@@ -416,6 +466,142 @@
           href: service-fabric-disaster-recovery.md
         - name: アプリケーション容量の計画
           href: service-fabric-capacity-planning.md
+    - name: クラスターを作成および管理する
+      items:
+        - name: Azure 上のクラスター
+          items:
+            - name: 作成
+              items:
+                - name: クラスターのデプロイの計画
+                  href: service-fabric-cluster-azure-deployment-preparation.md
+                - name: Azure Portal での作成
+                  href: service-fabric-cluster-creation-via-portal.md
+                - name: Availability Zones への Azure Service Fabric クラスターのデプロイ
+                  href: service-fabric-cross-availability-zones.md
+                - name: ステートレス ノード タイプを使用した Azure Service Fabric クラスターのデプロイ
+                  href: service-fabric-stateless-node-types.md
+                - name: Azure Active Directory 認証を設定する
+                  href: service-fabric-cluster-creation-setup-aad.md
+                - name: カスタム クラスター テンプレートの作成
+                  href: service-fabric-cluster-creation-create-template.md
+                - name: Resource Manager を使用した作成
+                  href: service-fabric-cluster-creation-via-arm.md
+                - name: 証明書共通名を使用した作成
+                  href: service-fabric-create-cluster-using-cert-cn.md
+                - name: Linux クラスターの作成
+                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+            - name: スケール
+              items:
+                - name: 手動によるスケールアウト
+                  href: service-fabric-cluster-scale-in-out.md
+                - name: プログラムによるスケールアウト
+                  href: service-fabric-cluster-programmatic-scaling.md
+                - name: プライマリ ノード タイプのスケールアップ
+                  href: service-fabric-scale-up-primary-node-type.md
+                - name: ノード タイプの追加
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
+                - name: ノード タイプを削除する
+                  href: service-fabric-how-to-remove-node-type.md
+            - name: アップグレード
+              items:
+                - name: Service Fabric バージョンのアップグレード
+                  href: service-fabric-cluster-upgrade-version-azure.md
+                - name: クラスター構成のアップグレード
+                  href: service-fabric-cluster-config-upgrade-azure.md
+                - name: クラスター ノードへのパッチの適用 (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+                - name: ディスク暗号化の有効化 (Windows)
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: ディスク暗号化の有効化 (Linux)
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
+                - name: アクセス制御の設定
+                  href: service-fabric-cluster-security-roles.md
+                - name: ロード バランサーでポートを開く
+                  href: create-load-balancer-rule.md
+                - name: クラスター証明書を共通名に変更する
+                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+                - name: クラスター証明書を手動でロールオーバーする
+                  href: service-fabric-cluster-rollover-cert-cn.md
+                - name: クラスター証明書の管理
+                  href: service-fabric-cluster-security-update-certs-azure.md
+                - name: クラスター ノード VM へのリモート接続
+                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        - name: スタンドアロンのクラスター
+          items:
+            - name: 作成
+              items:
+                - name: オンプレミスでの作成
+                  href: service-fabric-cluster-creation-for-windows-server.md
+                - name: 証明書を使用したセキュリティ保護
+                  href: service-fabric-windows-cluster-x509-security.md
+                - name: Windows セキュリティを使用したセキュリティ保護
+                  href: service-fabric-windows-cluster-windows-security.md
+                - name: スタンドアロン パッケージの内容
+                  href: service-fabric-cluster-standalone-package-contents.md
+            - name: スケール
+              href: service-fabric-cluster-windows-server-add-remove-nodes.md
+            - name: アップグレード
+              items:
+                - name: Service Fabric バージョンのアップグレード
+                  href: service-fabric-cluster-upgrade-windows-server.md
+                - name: クラスター構成のアップグレード
+                  href: service-fabric-cluster-config-upgrade-windows-server.md
+                - name: 構成設定
+                  href: service-fabric-cluster-manifest.md
+                - name: アクセス制御の設定
+                  href: service-fabric-cluster-security-roles.md
+                - name: クラスター ノードへのパッチの適用 (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+        - name: Service Fabric Explorer を使用した視覚化
+          href: service-fabric-visualizing-your-cluster.md
+        - name: セキュリティ保護されたクラスターに接続する
+          href: service-fabric-connect-to-secure-cluster.md
+    - name: 監視と診断
+      items:
+        - name: 一般的なシナリオの診断
+          href: service-fabric-diagnostics-common-scenarios.md
+        - name: コード パッケージのエラーの診断
+          href: service-fabric-diagnostics-code-package-errors.md
+        - name: アプリケーションの監視
+          items:
+            - name: アプリケーションへのログ記録の追加
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: Application Insights での分析
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: EventFlow を使ったログの集計
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
+            - name: コンテナーの監視
+              href: service-fabric-diagnostics-oms-containers.md
+        - name: クラスターの監視
+          items:
+            - name: クラスター イベントを収集するよう Azure Monitor ログを構成する
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: Azure Monitor ログを使用してクラスターを監視する
+              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: EventStore API の照会
+              href: service-fabric-diagnostics-eventstore-query.md
+            - name: Windows クラスターの診断
+              href: service-fabric-diagnostics-event-aggregation-wad.md
+            - name: Linux クラスターの診断
+              href: service-fabric-diagnostics-oms-syslog.md
+        - name: インフラストラクチャの監視
+          items:
+            - name: Log Analytics エージェントによるパフォーマンス カウンターの収集
+              href: service-fabric-diagnostics-oms-agent.md
+            - name: WAD によるパフォーマンス カウンターの収集
+              href: service-fabric-diagnostics-perf-wad.md
+        - name: 正常性の監視
+          items:
+            - name: 正常性のレポートとチェック
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: システム正常性レポートを使用したトラブルシューティング
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: 正常性レポートを表示する
+              href: service-fabric-view-entities-aggregated-health.md
+        - name: リバース プロキシ イベントの診断
+          href: service-fabric-reverse-proxy-diagnostics.md
+        - name: ローカル クラスターのトラブルシューティング
+          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: 初めての作成
       items:
         - name: Windows コンテナー アプリケーション
@@ -434,7 +620,7 @@
           href: service-fabric-create-your-first-linux-application-with-java.md
         - name: Windows のゲスト実行可能アプリケーション
           href: quickstart-guest-app.md
-    - name: アプリケーションのビルド
+    - name: アプリケーションをビルドする
       items:
         - name: ゲスト実行可能サービスの構築
           items:
@@ -547,52 +733,6 @@
           href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Maven への対応を目的とした従来の Java アプリケーションの移行
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
-    - name: IDE での作業
-      items:
-        - name: Windows/VS 開発環境での作業
-          items:
-            - name: Visual Studio でのアプリケーションの管理
-              href: service-fabric-manage-application-in-visual-studio.md
-            - name: Visual Studio でのセキュリティ保護された接続の構成
-              href: service-fabric-visualstudio-configure-secure-connections.md
-            - name: VS での .NET サービスのデバッグ
-              href: service-fabric-debugging-your-application.md
-            - name: Service Fabric と VS での Windows コンテナーのデバッグ
-              href: service-fabric-how-to-debug-windows-containers.md
-            - name: 一般的なエラーと例外
-              href: service-fabric-errors-and-exceptions.md
-            - name: ローカルでの監視と診断
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
-            - name: Windows での Linux クラスターの設定
-              href: service-fabric-local-linux-cluster-windows.md
-            - name: VS からリモート Linux クラスターに .NET Core アプリをデプロイする
-              href: service-fabric-how-to-publish-linux-app-vs.md
-        - name: Linux/Eclipse 開発環境での作業
-          items:
-            - name: Java 開発用の Eclipse プラグインの使用
-              href: service-fabric-get-started-eclipse.md
-            - name: Eclipse での Java サービスのデバッグ
-              href: service-fabric-debugging-your-application-java.md
-            - name: ローカルでの監視と診断
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
-        - name: VS Code 環境での作業
-          items:
-            - name: VS Code を使ってみる
-              href: service-fabric-get-started-vs-code.md
-            - name: VS Code を使用した C# Service Fabric アプリケーションの開発
-              href: service-fabric-develop-csharp-applications-with-vs-code.md
-            - name: VS Code を使用した Java Service Fabric アプリケーションの開発
-              href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: Cloud Services から移行する
-      items:
-        - name: Cloud Services と Service Fabric を比較する
-          href: service-fabric-cloud-services-migration-differences.md
-        - name: Service Fabric への移行
-          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
-        - name: 推奨プラクティス
-          href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: アプリケーションを最新化する
-          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: アプリケーションのライフサイクルを管理する
       items:
         - name: アプリケーションをパッケージ化する
@@ -651,144 +791,6 @@
           href: service-fabric-reverseproxy-setup.md
         - name: セキュリティで保護された通信用のリバース プロキシの構成
           href: service-fabric-reverseproxy-configure-secure-communication.md
-    - name: クラスターを作成および管理する
-      items:
-        - name: Azure 上のクラスター
-          items:
-            - name: 作成
-              items:
-                - name: クラスターのデプロイの計画
-                  href: service-fabric-cluster-azure-deployment-preparation.md
-                - name: Azure Portal での作成
-                  href: service-fabric-cluster-creation-via-portal.md
-                - name: Availability Zones への Azure Service Fabric クラスターのデプロイ
-                  href: service-fabric-cross-availability-zones.md
-                - name: ステートレス ノード タイプを使用した Azure Service Fabric クラスターのデプロイ
-                  href: service-fabric-stateless-node-types.md
-                - name: Azure Active Directory 認証を設定する
-                  href: service-fabric-cluster-creation-setup-aad.md
-                - name: カスタム クラスター テンプレートの作成
-                  href: service-fabric-cluster-creation-create-template.md
-                - name: Resource Manager を使用した作成
-                  href: service-fabric-cluster-creation-via-arm.md
-                - name: 証明書共通名を使用した作成
-                  href: service-fabric-create-cluster-using-cert-cn.md
-                - name: Linux クラスターの作成
-                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
-            - name: スケール
-              items:
-                - name: 手動によるスケールアウト
-                  href: service-fabric-cluster-scale-in-out.md
-                - name: プログラムによるスケールアウト
-                  href: service-fabric-cluster-programmatic-scaling.md
-                - name: プライマリ ノード タイプのスケールアップ
-                  href: service-fabric-scale-up-primary-node-type.md
-                - name: ノード タイプの追加
-                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
-                - name: ノード タイプを削除する
-                  href: service-fabric-how-to-remove-node-type.md
-            - name: アップグレード
-              items:
-                - name: 管理対象クラスター ノードの種類に仮想マシン スケール セット拡張機能を追加する
-                  href: how-to-managed-cluster-vmss-extension.md
-                - name: Service Fabric バージョンのアップグレード
-                  href: service-fabric-cluster-upgrade-version-azure.md
-                - name: クラスター構成のアップグレード
-                  href: service-fabric-cluster-config-upgrade-azure.md
-                - name: クラスター ノードへのパッチの適用 (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-                - name: ディスク暗号化の有効化 (Windows)
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: ディスク暗号化の有効化 (Linux)
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
-                - name: アクセス制御の設定
-                  href: service-fabric-cluster-security-roles.md
-                - name: ロード バランサーでポートを開く
-                  href: create-load-balancer-rule.md
-                - name: クラスター証明書を共通名に変更する
-                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-                - name: クラスター証明書を手動でロールオーバーする
-                  href: service-fabric-cluster-rollover-cert-cn.md
-                - name: クラスター証明書の管理
-                  href: service-fabric-cluster-security-update-certs-azure.md
-                - name: クラスター ノード VM へのリモート接続
-                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-        - name: スタンドアロンのクラスター
-          items:
-            - name: 作成
-              items:
-                - name: オンプレミスでの作成
-                  href: service-fabric-cluster-creation-for-windows-server.md
-                - name: 証明書を使用したセキュリティ保護
-                  href: service-fabric-windows-cluster-x509-security.md
-                - name: Windows セキュリティを使用したセキュリティ保護
-                  href: service-fabric-windows-cluster-windows-security.md
-                - name: スタンドアロン パッケージの内容
-                  href: service-fabric-cluster-standalone-package-contents.md
-            - name: スケール
-              href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: アップグレード
-              items:
-                - name: Service Fabric バージョンのアップグレード
-                  href: service-fabric-cluster-upgrade-windows-server.md
-                - name: クラスター構成のアップグレード
-                  href: service-fabric-cluster-config-upgrade-windows-server.md
-                - name: 構成設定
-                  href: service-fabric-cluster-manifest.md
-                - name: アクセス制御の設定
-                  href: service-fabric-cluster-security-roles.md
-                - name: クラスター ノードへのパッチの適用 (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-        - name: Service Fabric Explorer を使用した視覚化
-          href: service-fabric-visualizing-your-cluster.md
-        - name: セキュリティ保護されたクラスターに接続する
-          href: service-fabric-connect-to-secure-cluster.md
-    - name: 監視と診断
-      items:
-        - name: 一般的なシナリオの診断
-          href: service-fabric-diagnostics-common-scenarios.md
-        - name: コード パッケージのエラーの診断
-          href: service-fabric-diagnostics-code-package-errors.md
-        - name: アプリケーションの監視
-          items:
-            - name: アプリケーションへのログ記録の追加
-              href: service-fabric-how-to-diagnostics-log.md
-            - name: Application Insights での分析
-              href: service-fabric-diagnostics-event-analysis-appinsights.md
-            - name: EventFlow を使ったログの集計
-              href: service-fabric-diagnostics-event-aggregation-eventflow.md
-            - name: コンテナーの監視
-              href: service-fabric-diagnostics-oms-containers.md
-        - name: クラスターの監視
-          items:
-            - name: クラスター イベントを収集するよう Azure Monitor ログを構成する
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: Azure Monitor ログを使用してクラスターを監視する
-              href: service-fabric-diagnostics-event-analysis-oms.md
-            - name: EventStore API の照会
-              href: service-fabric-diagnostics-eventstore-query.md
-            - name: Windows クラスターの診断
-              href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Linux クラスターの診断
-              href: service-fabric-diagnostics-oms-syslog.md
-        - name: インフラストラクチャの監視
-          items:
-            - name: Log Analytics エージェントによるパフォーマンス カウンターの収集
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: WAD によるパフォーマンス カウンターの収集
-              href: service-fabric-diagnostics-perf-wad.md
-        - name: 正常性の監視
-          items:
-            - name: 正常性のレポートとチェック
-              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-            - name: システム正常性レポートを使用したトラブルシューティング
-              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-            - name: 正常性レポートを表示する
-              href: service-fabric-view-entities-aggregated-health.md
-        - name: リバース プロキシ イベントの診断
-          href: service-fabric-reverse-proxy-diagnostics.md
-        - name: ローカル クラスターのトラブルシューティング
-          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Service Fabric アプリのマネージド ID を使用する
       items:
         - name: クラスターのセットアップ
@@ -797,8 +799,6 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: マネージド ID を使用して新しい Azure Service Fabric クラスターを構成する
               href: configure-new-azure-service-fabric-enable-managed-identity.md
-            - name: マネージド ID を使用して Service Fabric マネージド クラスターを構成する
-              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: アプリケーションのセットアップ
           items:
             - name: マネージド ID を持つアプリケーションのデプロイ方法
@@ -811,6 +811,16 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: 他の Azure リソースへのアクセス権を付与する
           href: how-to-grant-access-other-resources.md
+    - name: Cloud Services から移行する
+      items:
+        - name: Cloud Services と Service Fabric を比較する
+          href: service-fabric-cloud-services-migration-differences.md
+        - name: Service Fabric への移行
+          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
+        - name: 推奨プラクティス
+          href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: アプリケーションを最新化する
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
 - name: リファレンス
   items:
     - name: Azure PowerShell

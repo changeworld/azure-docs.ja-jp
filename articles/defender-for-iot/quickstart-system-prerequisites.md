@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 8ee3afcae69ca6c082452e590eb8370bcc122af4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7b609fec2a47dc0685b30dac12f43263127f70ef
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97844465"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523211"
 ---
 # <a name="system-prerequisites"></a>システムの前提条件
 この記事では、Azure Defender for IoT を実行するためのシステムの前提条件を示します。
@@ -31,7 +31,7 @@ Defender for IoT では、すべてのヨーロッパ リージョンのすべ�
 
 詳細については、[IoT Hub によりサポートされるリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)に関するページをご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
-- [必要なアプライアンスを特定する](how-to-identify-required-appliances.md)
-- [Azure Defender for IoT のネットワーク設定について](how-to-set-up-your-network.md)
+[必要なアプライアンスを特定する](how-to-identify-required-appliances.md)
+[Azure Defender for IoT のネットワーク設定について](how-to-set-up-your-network.md)

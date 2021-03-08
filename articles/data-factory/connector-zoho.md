@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Zoho からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Zoho のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e42638d484d2a71052c3a9410f73cbca9e038682
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531287"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366893"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Zoho からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

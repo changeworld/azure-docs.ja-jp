@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 589e881eb48daf7da9cd2a934b14acfcc76dc5f9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499834"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625418"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 このチュートリアルは、シリーズの第 1 部です。 テンプレートを使用して Azure Service Fabric Mesh アプリケーションをデプロイする方法について説明します。  アプリケーションは ASP.NET Web フロントエンド サービスと ASP.NET Core Web API バックエンド サービスで構成されており、これらは Docker Hub にあります。  2 つのコンテナー イメージを Docker Hub からプルして、独自のプライベート レジストリにプッシュします。 その後、アプリケーション用の Azure RM テンプレートを作成し、コンテナー レジストリから Service Fabric Mesh にアプリケーションをデプロイします。 完了すると、Service Fabric Mesh で実行される簡単な To Do List アプリケーションができあがります。
 

@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246470"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576060"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>チュートリアル:デザイナーで機械学習モデルをデプロイする
 
 
-[チュートリアルのパート 1](tutorial-designer-automobile-price-train-score.md) で作成した予測モデルを、他のユーザーが使用できるようデプロイしてみましょう。 パート 1 では、モデルをトレーニングしました。 ここでは、ユーザー入力に基づいて新しい予測を生成しましょう。 チュートリアルのこのパートでは、次のことを行います。
+[チュートリアルのパート 1](tutorial-designer-automobile-price-train-score.md) で作成した予測モデルを、他のユーザーが使用できるようデプロイしてみましょう。 パート 1 では、モデルをトレーニングしました。 ここでは、ユーザー入力に基づいて予測を生成しましょう。 チュートリアルのこのパートでは、次のことを行います。
 
 > [!div class="checklist"]
 > * リアルタイム推論パイプラインを作成する。
@@ -122,17 +122,19 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 > リアルタイム エンドポイント設定ボックスで、 **[コンピューティングの種類]** に **[Azure コンテナー インスタンス]** を選択すると、**Azure コンテナー インスタンス** (ACI) にデプロイすることもできます。
 > Azure コンテナー インスタンスは、テストまたは開発に使用されます。 必要な RAM が 48 GB 未満である CPU ベースの小規模なワークロードには、ACI を使用します。
 
-## <a name="view-the-real-time-endpoint"></a>リアルタイム エンドポイントを表示する
+## <a name="test-the-real-time-endpoint"></a>リアルタイム エンドポイントをテストする
 
 デプロイが完了したら、 **[エンドポイント]** ページに移動して、リアルタイム エンドポイントを表示できます。
 
 1. **[Endpoints]\(エンドポイント\)** ページで、デプロイ済みのエンドポイントを選択します。
 
-1. **[詳細]** タブでは、REST URI、状態、タグなどの詳細情報を確認できます。
+    **[詳細]** タブでは、REST URI、Swagger 定義、状態、タグなどの詳細情報を確認できます。
 
-1. **[Consume]\(使用\)** タブでは、セキュリティ キーを検索し、認証方法を設定できます。
+    **[Consume]\(使用\)** タブでは、サンプル使用コードやセキュリティ キーを検索し、認証方法を設定できます。
 
-1. **[デプロイ ログ]** タブで、リアルタイム エンドポイントの詳細なデプロイ ログを確認できます。 
+    **[デプロイ ログ]** タブで、リアルタイム エンドポイントの詳細なデプロイ ログを確認できます。
+
+1. エンドポイントをテストするには、 **[テスト]** タブに移動します。ここでは、テスト データを入力し、 **[テスト]** を選択して、エンドポイントの出力を確認します。
 
 Web サービスの使用方法の詳細については、[Web サービスとしてデプロイされたモデルの使用](how-to-consume-web-service.md)に関するページを参照してください
 

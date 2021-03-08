@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9f2fe29ede2bf0f92049d1ae82bae87326057a63
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090792"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594296"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -212,7 +212,7 @@ Xbox、Live、Outlook などの他のプログラムの Microsoft アカウン�
 
 #### <a name="monitor-azure-activity"></a>Azure のアクティビティを監視する
 
-Azure アクティビティ ログは、Azure でのサブスクリプション レベルのイベント履歴を提供します。 このログは、だれがどのリソースをいつ作成、更新、または削除したかについての情報を提供します。 詳しくは、「[Azure サブスクリプションの重要なアクションを監査して通知を受信する](../../azure-monitor/platform/alerts-activity-log.md)」をご覧ください。
+Azure アクティビティ ログは、Azure でのサブスクリプション レベルのイベント履歴を提供します。 このログは、だれがどのリソースをいつ作成、更新、または削除したかについての情報を提供します。 詳しくは、「[Azure サブスクリプションの重要なアクションを監査して通知を受信する](../../azure-monitor/alerts/alerts-activity-log.md)」をご覧ください。
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Azure AD を介して他のクラウド アプリへのアクセスを管理する組織における追加の手順
 
