@@ -1,5 +1,5 @@
 ---
-title: Azure Spring Cloud マイクロサービス アプリ用の Java と基本 OS
+title: Azure Spring Cloud マイクロサービス アプリ用の Java および基本 OS
 description: Azure Spring Cloud マイクロサービス アプリ用の Java および基本オペレーティング システムを正常に維持するための原則
 author: MikeDodaro
 ms.author: brendm
