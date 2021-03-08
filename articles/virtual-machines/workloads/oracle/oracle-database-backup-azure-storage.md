@@ -18,7 +18,7 @@ ms.locfileid: "101670010"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Azure Storage を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップおよび復旧する
 
-この記事では、Azure VM で実行されている Oracle データベースをバックアップおよび復元するためのメディアとしての Azure Storage の使用方法について説明します。 SMB プロトコルを使用して VM にマウントされた Azure File ストレージに、Oracle RMAN を使用してデータベースをバックアップします。 バックアップ メディアに Azure ストレージを使用すると、コスト効率とパフォーマンスが非常に高くなります。 ただし、非常に大規模なデータベースの場合は、Azure Backup の方が優れたソリューションとなります。
+この記事では、Azure VM で実行されている Oracle データベースをバックアップおよび復元するためのメディアとしての Azure Storage の使用方法について説明します。 SMB プロトコルを使用して VM にマウントされた Azure File Storage に、Oracle RMAN を使用してデータベースをバックアップします。 バックアップ メディアに Azure ストレージを使用すると、コスト効率とパフォーマンスが非常に高くなります。 ただし、非常に大規模なデータベースの場合は、Azure Backup の方が優れたソリューションとなります。
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -173,7 +173,7 @@ Azure Files にバックアップするには、これらの手順を実行し�
 
 ### <a name="set-up-azure-file-storage"></a>Azure File Storage を設定する
 
-この手順では、Oracle Recovery Manager (RMAN) を使用して Azure File ストレージに Oracle データベースをバックアップします。 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 これらはサーバー メッセージ ブロック (SMB) プロトコルまたはネットワーク ファイル システム (NFS) プロトコルのどちらかを使用してアクセスできます。 この手順では、SMB プロトコルを使用して VM にマウントするファイル共有の作成について説明します。 NFS を使用してマウントする方法の詳細については、[NFS 3.0 プロトコルを使用した Blob Storage のマウント](../../../storage/blobs/network-file-system-protocol-support-how-to.md)に関する記事を参照してください。
+この手順では、Oracle Recovery Manager (RMAN) を使用して Azure File Storage に Oracle データベースをバックアップします。 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 これらはサーバー メッセージ ブロック (SMB) プロトコルまたはネットワーク ファイル システム (NFS) プロトコルのどちらかを使用してアクセスできます。 この手順では、SMB プロトコルを使用して VM にマウントするファイル共有の作成について説明します。 NFS を使用してマウントする方法の詳細については、[NFS 3.0 プロトコルを使用した Blob Storage のマウント](../../../storage/blobs/network-file-system-protocol-support-how-to.md)に関する記事を参照してください。
 
 Azure Files をマウントする場合は、`cache=none` を使用してファイル共有データのキャッシュを無効にします。 また、共有に作成されたファイルが oracle ユーザーによって所有されるようにするには、`uid=oracle` オプションと `gid=oinstall` オプションも設定します。 
 
@@ -354,9 +354,9 @@ Azure Files をマウントする場合は、`cache=none` を使用してファ�
     RMAN> backup as compressed backupset database plus archivelog;
     ```
 
-これで、Oracle RMAN を使用してデータベースがオンラインでバックアップされました。バックアップは Azure File ストレージに配置されています。 この方法は、他の VM からアクセスできる Azure File ストレージにバックアップを格納しながら、RMAN の機能を利用するという利点を備えており、データベースを複製する必要がある場合に役立ちます。  
+これで、Oracle RMAN を使用してデータベースがオンラインでバックアップされました。バックアップは Azure File Storage に配置されています。 この方法は、他の VM からアクセスできる Azure File Storage にバックアップを格納しながら、RMAN の機能を利用するという利点を備えており、データベースを複製する必要がある場合に役立ちます。  
     
-データベース バックアップに RMAN と Azure File ストレージを使用することには多くの利点がありますが、バックアップと復元の時間はデータベースのサイズに関連しているため、非常に大規模なデータベースでは、これらの操作にかなりの時間がかかることがあります。  Azure Backup のアプリケーション整合性 VM バックアップを使用するもう 1 つ別のバックアップ メカニズムは、スナップショット テクノロジを使用してバックアップを実行します。これには、データベースのサイズに関係なく非常に高速なバックアップを実行できるという利点があります。 Recovery Services コンテナーとの統合により、他の VM や Azure リージョンからアクセスできる Azure クラウド ストレージ内で Oracle Database バックアップを安全に保管できます。 
+データベース バックアップに RMAN と Azure File Storage を使用することには多くの利点がありますが、バックアップと復元の時間はデータベースのサイズに関連しているため、非常に大規模なデータベースでは、これらの操作にかなりの時間がかかることがあります。  Azure Backup のアプリケーション整合性 VM バックアップを使用するもう 1 つ別のバックアップ メカニズムは、スナップショット テクノロジを使用してバックアップを実行します。これには、データベースのサイズに関係なく非常に高速なバックアップを実行できるという利点があります。 Recovery Services コンテナーとの統合により、他の VM や Azure リージョンからアクセスできる Azure クラウド ストレージ内で Oracle Database バックアップを安全に保管できます。 
 
 ### <a name="restore-and-recover-the-database"></a>データベースを復元して復旧する
 
