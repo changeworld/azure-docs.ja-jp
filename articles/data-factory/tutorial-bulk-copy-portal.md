@@ -138,7 +138,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     g. **Create** をクリックしてください。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>ステージング Azure Storage のリンクされたサービスを作成する
-このチュートリアルでは、PolyBase でコピーのパフォーマンスを高めるために、中間ステージング領域として Azure BLOB ストレージを使用しています。
+このチュートリアルでは、PolyBase でコピーのパフォーマンスを高めるために、中間ステージング領域として Azure Blob Storage を使用しています。
 
 1. **[接続]** タブで、再度ツールバーの **[+ 新規]** をクリックします。 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure Blob Storage]** を選択し、 **[続行]** をクリックします。 
