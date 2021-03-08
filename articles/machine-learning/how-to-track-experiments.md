@@ -1,7 +1,7 @@
 ---
 title: ML の実験とメトリックをログに記録する
 titleSuffix: Azure Machine Learning
-description: Azure ML の実験を監視し、実行のメトリックを監視することでモデルの作成プロセスを強化します。 run.log、Run.start_logging、または ScriptRunConfig を使用して、トレーニング スクリプトにログ記録を追加します。
+description: ML のトレーニング実行のログ記録を有効にすると、リアルタイムの実行メトリックを監視し、エラーと警告を診断するのに役立ちます。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 18c7e5b3a1401540d7a94186fda647d413d562c0
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723845"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625079"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML のトレーニングの実行でログ記録を有効にする
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="enable-logging-in-ml-training-runs"></a>ML のトレーニングの実行でログ記録を有効にする
+
 
 Azure Machine Learning Python SDK を使用すると、既定の Python ログ パッケージと SDK 固有の機能の両方を使用してリアルタイムの情報をログに記録できます。 ユーザーは、ポータルでローカルにログを記録し、ワークスペースにログを送信することができます。
 
@@ -37,26 +37,29 @@ Azure Machine Learning Python SDK を使用すると、既定の Python ログ �
 
 ## <a name="data-types"></a>データ型
 
-複数のデータ型 (スカラー値、リスト、テーブル、イメージ、ディレクトリなど) をログに記録できます。 詳細と、さまざまなデータ型の Python コード例については、[Run クラスの参照ページ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)を参照してください。
+複数のデータ型 (スカラー値、リスト、テーブル、イメージ、ディレクトリなど) をログに記録できます。 詳細と、さまざまなデータ型の Python コード例については、[Run クラスの参照ページ](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)を参照してください。
 
 ## <a name="interactive-logging-session"></a>対話型のログ セッション
 
-対話型のログ セッションは、通常、ノートブック環境で使用されます。 メソッド [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) を使用すると、対話型のログ セッションが開始されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。 メソッド [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) を使用すると、セッションが終了し、実行が完了としてマークされます。
+対話型のログ セッションは、通常、ノートブック環境で使用されます。 メソッド [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) を使用すると、対話型のログ セッションが開始されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。 メソッド [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) を使用すると、セッションが終了し、実行が完了としてマークされます。
 
-## <a name="scriptrunconfig-logs"></a>ScriptRunConfig のログ
+## <a name="scriptrun-logs"></a>ScriptRun ログ
 
-このセクションでは、ScriptConfig の実行内にログ コードを追加する方法について説明します。 [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) クラスを使用して、反復可能な実行のためにスクリプトと環境をカプセル化できます。 このオプションを使用して、監視用の視覚的な Jupyter Notebook ウィジェットを表示することもできます。
+このセクションでは、ScriptRunConfig を使用して構成したときに作成される実行の内部にログ記録のコードを追加する方法について説明します。 [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) クラスを使用して、反復可能な実行のためにスクリプトと環境をカプセル化できます。 このオプションを使用して、監視用の視覚的な Jupyter Notebook ウィジェットを表示することもできます。
 
-この例では、アルファ値に対してパラメーター スイープを実行し、[run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) メソッドを使用して結果をキャプチャします。
+この例では、アルファ値に対してパラメーター スイープを実行し、[run.log()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truelog-name--value--description----) メソッドを使用して結果をキャプチャします。
 
 1. ログ記録ロジック `train.py` を含むトレーニング スクリプトを作成します。
 
-   [!code-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
+   [!code-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
 
 
 1. ```train.py``` スクリプトを送信して、ユーザー管理の環境内で実行します。 スクリプト フォルダー全体がトレーニング用に送信されます。
 
-   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
+   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)]
+
+
+   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
     `show_output` パラメーターを使用すると詳細なログ記録が有効になり、これによってトレーニング プロセスからの詳細情報と、リモート リソースまたはコンピューティング先に関する情報を見ることができます。 次のコードを使用して、実験を送信するときに詳細ログ記録を有効にします。
 
@@ -83,7 +86,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 Azure Machine Learning では、トレーニング中に、自動機械学習の実行や、ジョブを実行する Docker コンテナーなど、他のソースからの情報をログに記録することもできます。 これらのログは文書化されていませんが、問題が発生して Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
 
-Azure Machine Learning デザイナー (プレビュー) におけるメトリックのログ記録の詳細については、[デザイナーでメトリックをログに記録する方法 (プレビュー)](how-to-track-designer-experiments.md) に関する記事を参照してください
+Azure Machine Learning デザイナーにおけるメトリックのログ記録の詳細については、[デザイナーでメトリックをログに記録する方法](how-to-track-designer-experiments.md)に関する記事を参照してください
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 
@@ -97,6 +100,6 @@ Azure Machine Learning デザイナー (プレビュー) におけるメトリ�
 
 Azure Machine Learning の使用方法の詳細については、これらの記事を参照してください。
 
-* [Azure Machine Learning デザイナー (プレビュー) でメトリックをログに記録する](how-to-track-designer-experiments.md)方法を確認します。
+* [Azure Machine Learning デザイナーでメトリックをログに記録する](how-to-track-designer-experiments.md)方法を確認します。
 
 * 最適なモデルを登録し、チュートリアルでデプロイする方法の例については、「[Azure Machine Learning で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」をご覧ください。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cd872d66088e165bfc8356ab6d96a0a6135a0e0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68946341"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538310"
 ---
 # <a name="detect-domain-specific-content"></a>ドメイン固有のコンテンツの検出
 
@@ -26,7 +26,7 @@ ms.locfileid: "68946341"
 
 ### <a name="scoped-analysis"></a>スコープされた分析
 
-選択したドメイン固有のモデルのみを使用してイメージを分析するには、[Models/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API を使用します。
+選択したドメイン固有のモデルのみを使用してイメージを分析するには、[Models/\<model\>/Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API を使用します。
 
 特定のイメージについて、**models/celebrities/analyze** API で返される JSON 応答の例を次に示します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "68946341"
 
 ### <a name="enhanced-categorization-analysis"></a>拡張カテゴリ化解析
 
-ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](concept-categorizing-images.md)の一部として行います。
+ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](concept-categorizing-images.md)の一部として行います。
 
 この場合、最初に 86 のカテゴリ分類の分類子が呼び出されます。 検出されたカテゴリのいずれかに、一致するドメイン固有のモデルがあった場合、イメージはそのモデルもパススルーし、結果が追加されます。
 
@@ -105,7 +105,7 @@ ms.locfileid: "68946341"
 | celebrities | 著名人の認識、`people_` カテゴリに分類された画像についてサポート |
 | landmarks | ランドマークの認識、`outdoor_` または `building_` カテゴリに分類された画像についてサポート |
 
-[Models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API を呼び出すと、各モデルを適用できるカテゴリと共に、この情報が返されます。
+[Models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20e) API を呼び出すと、各モデルを適用できるカテゴリと共に、この情報が返されます。
 
 ```json
 {

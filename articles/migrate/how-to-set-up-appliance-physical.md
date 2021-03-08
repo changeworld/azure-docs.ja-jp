@@ -1,15 +1,17 @@
 ---
 title: 物理サーバー用に Azure Migrate アプライアンスを設定する
 description: 物理サーバー評価用 Azure Migrate アプライアンスの設定方法を学習します。
-ms.service: azure-migrate
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 04/15/2020
-ms.openlocfilehash: 1b4e875a81c92f74cd7d2db96cf1c313157297eb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 73c3d529978c91946632ed599f02b8938830621e
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923563"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705321"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
@@ -38,7 +40,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
 3. **[1:Azure Migrate プロジェクト キーを生成します]** で、物理サーバーまたは仮想サーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。名前は 14 文字以内の英数字にする必要があります。
 1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [マシンの検出] ページを閉じないでください。
-1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー**が生成されます。
+1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
 ### <a name="download-the-installer-script"></a>インストーラー スクリプトをダウンロードする
@@ -59,7 +61,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  アプライアンスの最新バージョンとハッシュ値の[設定](./tutorial-assess-physical.md#verify-security)を確認します。
+3.  アプライアンスの最新バージョンと[ハッシュ値](tutorial-discover-physical.md#verify-security)の設定を確認します。
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
@@ -104,7 +106,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 1. アプライアンスに接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
 
    または、アプリのショートカットをクリックして、デスクトップからアプリを開くこともできます。
-2. **ライセンス条項**に同意し、サード パーティの情報を確認します。
+2. **ライセンス条項** に同意し、サード パーティの情報を確認します。
 1. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
     - **接続**:サーバーがインターネットにアクセスできることが、アプリによって確認されます。 サーバーでプロキシを使用する場合は、次の操作を行います。
         - **[プロキシの設定]** をクリックし、プロキシ アドレス (http://ProxyIPAddress または http://ProxyFQDN) の形式) とリッスン ポートを指定します。
@@ -116,13 +118,18 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **Azure Migrate プロジェクト キー**を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
-1. **[ログイン]** をクリックします。 新しいブラウザー タブで Azure ログイン プロンプトが開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
+1. ポータルからコピーした **Azure Migrate プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
+
+    ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)
+
+1. **[Copy code & Login]\(コードのコピーとログイン\)** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure ログイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
+1. 新しいタブで、デバイス コードを貼り付け、Azure のユーザー名とパスワードを使用してサインインします。
    
    PIN を使用したサインインはサポートされていません。
-3. 正常にログインしたら、Web アプリに戻ります。 
-4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](tutorial-prepare-physical.md)が付与されている場合、アプライアンスの登録が開始されます。
+3. ログインせずにログイン タブを誤って閉じた場合は、アプライアンス構成マネージャーのブラウザー タブを最新の情報に更新して、[ログイン] ボタンを再度有効にする必要があります。
+1. 正常にログインしたら、アプライアンス構成マネージャーで前のタブに戻ります。
+4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](./tutorial-discover-physical.md)が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
 
 
@@ -130,10 +137,20 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 次に、アプライアンスから検出対象の物理サーバーに接続し、検出を開始します。
 
-1. **ステップ 1:Windows および Linux の物理サーバーまたは仮想サーバーを検出するための資格情報を指定**し、**資格情報の追加** をクリックして資格情報のフレンドリ名を指定します。Windows または Linux サーバーの **ユーザー名**と**パスワード**を追加します。 **[Save]** をクリックします。
+1. **[ステップ 1:Provide credentials for discovery of Windows and Linux physical or virtual servers]\(Windows および Linux 物理サーバーまたは仮想サーバーを検出するための資格情報を指定する\)** で、 **[資格情報の追加]** をクリックします。
+1. Windows サーバーの場合、ソースの種類として **[Windows サーバー]** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[保存]** をクリックします。
+1. Linux サーバーでパスワードベースの認証を使用している場合は、ソースの種類として **[Linux Server (Password-based)]\(Linux サーバー (パスワードベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[保存]** をクリックします。
+1. Linux サーバーで SSH キーベースの認証を使用している場合は、ソースの種類として **[Linux Server (SSH key-based)]\(Linux サーバー (SSH キーベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名を追加します。SSH 秘密キー ファイルを参照して選択します。 **[Save]** をクリックします。
+
+    - Azure Migrate では、RSA、DSA、ECDSA、ed25519 の各アルゴリズムを使用して、ssh-keygen コマンドによって生成された SSH 秘密キーがサポートされています。
+    - 現在、Azure Migrate では、パスフレーズ ベースの SSH キーはサポートされていません。 パスフレーズなしで SSH キーを使用してください。
+    - 現在、Azure Migrate では、PuTTY によって生成された SSH 秘密キー ファイルはサポートされていません。
+    - Azure Migrate では、次に示すように、OpenSSH 形式の SSH 秘密キー ファイルがサポートされています。
+    
+    ![SSH 秘密キーのサポートされている形式](./media/tutorial-discover-physical/key-format.png)
 1. 複数の資格情報を一度に追加するには、 **[さらに追加]** をクリックして資格情報を保存して追加します。 物理サーバーの検出では、複数の資格情報がサポートされています。
 1. **[Step 2:Provide physical or virtual server details]\(ステップ 2:物理サーバーまたは仮想サーバーの詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** をクリックして、サーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** と、サーバーに接続するための資格情報のフレンドリ名を指定します。
-1. 一度に **1 つの項目を追加**するか、一括で**複数の項目を追加**することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、サーバーの詳細を指定することもできます。
+1. 一度に **1 つの項目を追加** するか、一括で **複数の項目を追加** することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、サーバーの詳細を指定することもできます。
 
     ![検出ソースを追加するための選択](./media/tutorial-assess-physical/add-discovery-source-physical.png)
 
@@ -144,7 +161,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 1. [保存] をクリックすると、アプライアンスによって追加されたサーバーへの接続が検証され、各サーバーの **[Validation status]\(検証状態\)** が表に表示されます。
     - サーバーの検証に失敗した場合は、表の [状態] 列にある **[Validation failed]\(検証に失敗しました\)** をクリックしてエラーを確認します。 問題を修正し、もう一度検証してください。
     - サーバーを削除するには、 **[削除]** をクリックします。
-1. 検出を開始する前に、サーバーへの接続はいつでも**再検証**できます。
+1. 検出を開始する前に、サーバーへの接続はいつでも **再検証** できます。
 1. 正常に検証されたサーバーの検出を開始するには **[Start discovery]\(検出の開始\)** をクリックします。 検出が正常に開始されたら、各サーバーに対する検出の状態を表で確認できます。
 
 

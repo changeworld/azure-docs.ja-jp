@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager とボリューム | Microsoft Docs
 description: StorSimple Snapshot Manager MMC スナップインを使用して、ボリュームを表示および管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
-ms.author: twooley
-ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 309fa85d0a4d877522a89dd8f1e6e71fb2074744
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022940"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>StorSimple Snapshot Manager を使用したボリュームの表示と管理
 ## <a name="overview"></a>概要
@@ -45,7 +45,7 @@ StorSimple Snapshot Manager の **[ボリューム]** ノード (**スコープ*
 > 
 
 ## <a name="mount-volumes"></a>ボリュームのマウント
-StorSimple ボリュームをマウントし、初期化してフォーマットするには、次の手順に従います。 この手順で使用する "ディスクの管理" は、ハード ディスクおよび対応するボリュームまたはパーティションを管理するためのシステム ユーティリティです。 ディスクの管理の詳細については、Microsoft TechNet Web サイトの「 [Disk Management (ディスクの管理)](https://technet.microsoft.com/library/cc770943.aspx) 」をご覧ください。
+StorSimple ボリュームをマウントし、初期化してフォーマットするには、次の手順に従います。 この手順で使用する "ディスクの管理" は、ハード ディスクおよび対応するボリュームまたはパーティションを管理するためのシステム ユーティリティです。 ディスクの管理の詳細については、Microsoft TechNet Web サイトの「 [Disk Management (ディスクの管理)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11)) 」をご覧ください。
 
 #### <a name="to-mount-volumes"></a>ボリュームをマウントするには
 1. ホスト コンピューターで、Microsoft iSCSI イニシエーターを開始します。
@@ -80,14 +80,14 @@ StorSimple ボリュームをマウントし、初期化してフォーマット
       * NTFS ファイル システムを選択します。
       * 64 KB アロケーション ユニット サイズを指定します。
       * クイック フォーマットを実行します。
-7. 複数パーティション ボリュームをフォーマットします。 手順については、「 [Implementing Disk Management (ディスク管理の実装)](https://msdn.microsoft.com/library/dd163556.aspx)」の「Partitions and Volumes (パーティションとボリューム)」をご覧ください。
+7. 複数パーティション ボリュームをフォーマットします。 手順については、「 [Implementing Disk Management (ディスク管理の実装)](/previous-versions/tn-archive/dd163556(v=technet.10))」の「Partitions and Volumes (パーティションとボリューム)」をご覧ください。
 
 ## <a name="view-information-about-your-volumes"></a>ボリュームに関する情報の表示
 ローカル ボリュームと Azure StorSimple ボリュームに関する情報を表示するには、次の手順に従います。
 
 #### <a name="to-view-volume-information"></a>ボリューム情報を表示するには
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
-2. **スコープ** ウィンドウで、 **[ボリューム]** ノードをクリックします。 **結果**ウィンドウに、すべての Azure StorSimple ボリュームを含む、ローカル ボリュームとマウントされたボリュームのリストが表示されます。 (**結果**ウィンドウ内の列は構成可能です。 **[ボリューム]** ノードを右クリックして **[表示]** を選択し、 **[列の追加と削除]** を選択します)。
+2. **スコープ** ウィンドウで、 **[ボリューム]** ノードをクリックします。 **結果** ウィンドウに、すべての Azure StorSimple ボリュームを含む、ローカル ボリュームとマウントされたボリュームのリストが表示されます。 (**結果** ウィンドウ内の列は構成可能です。 **[ボリューム]** ノードを右クリックして **[表示]** を選択し、 **[列の追加と削除]** を選択します)。
    
     ![列の構成](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
@@ -133,7 +133,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 ### <a name="prerequisites"></a>前提条件
 作業を開始する前に、次のことを行います。
 
-* StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。 詳細については、「 [オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)」をご覧ください。
+* StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。 詳細については、「 [オンプレミスの StorSimple デバイスのデプロイ](./storsimple-8000-deployment-walkthrough-u2.md)」をご覧ください。
 * StorSimple Snapshot Manager をインストールして構成します。 詳細については、 [Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
 
 #### <a name="to-configure-backup-of-a-basic-volume"></a>ベーシック ボリュームのバックアップを構成するには
@@ -141,7 +141,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 2. 「 [ボリュームのマウント](#mount-volumes)」の説明に従って、ボリュームをマウントし、初期化してフォーマットします。 
 3. デスクトップの [StorSimple Snapshot Manager] アイコンをクリックします。 [StorSimple Snapshot Manager] ウィンドウが表示されます。 
 4. **スコープ** ウィンドウで、 **[ボリューム]** ノードを右クリックし、 **[ボリュームの再スキャン]** を選択します。 スキャンが終了すると、 **結果** ウィンドウにボリュームのリストが表示されます。 
-5. **結果**ウィンドウでボリュームを右クリックし、 **[ボリューム グループの作成]** を選択します。 
+5. **結果** ウィンドウでボリュームを右クリックし、 **[ボリューム グループの作成]** を選択します。 
    
     ![[ボリューム グループの作成]](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Create_volume_group.png) 
 6. **[ボリューム グループの作成]** ダイアログ ボックスで、ボリューム グループの名前を入力し、ボリュームをこのグループに割り当てて、 **[OK]** をクリックします。
@@ -163,10 +163,10 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
 * StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。 詳細については、「 [オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」をご覧ください。
 * StorSimple Snapshot Manager をインストールして構成します。 詳細については、 [Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
-* StorSimple デバイスに 2 つのボリュームを構成します (この例では、使用できるボリュームは**ディスク 1** と**ディスク 2** です)。 
+* StorSimple デバイスに 2 つのボリュームを構成します (この例では、使用できるボリュームは **ディスク 1** と **ディスク 2** です)。 
 
 ### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>手順 1:ディスクの管理を使用してダイナミック ミラー ボリュームを作成する
-ディスクの管理は、ハード ディスクとハード ディスクに含まれるボリュームまたはパーティションを管理するためのシステム ユーティリティです。 ディスクの管理の詳細については、Microsoft TechNet Web サイトの「 [Disk Management (ディスクの管理)](https://technet.microsoft.com/library/cc770943.aspx) 」をご覧ください。
+ディスクの管理は、ハード ディスクとハード ディスクに含まれるボリュームまたはパーティションを管理するためのシステム ユーティリティです。 ディスクの管理の詳細については、Microsoft TechNet Web サイトの「 [Disk Management (ディスクの管理)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11)) 」をご覧ください。
 
 #### <a name="to-create-a-dynamic-mirrored-volume"></a>ダイナミック ミラー ボリュームを作成するには
 1. 次のいずれかの方法を使用して、ディスクの管理を起動します。 
@@ -174,7 +174,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
    * **[ファイル名を指定して実行]** ボックスを開き、「**Diskmgmt.msc**」と入力して、Enter キーを押します。
    * サーバー マネージャーを起動し、 **[Storage]** ノードを展開して、 **[ディスクの管理]** を選択します。 
    * **[管理ツール]** を起動し、 **[コンピューターの管理]** ノードを展開して、 **[ディスクの管理]** を選択します。 
-2. StorSimple デバイスに使用可能な 2 つのボリュームがあることを確認します (この例では、使用できるボリュームは**ディスク 1** と**ディスク 2** です)。 
+2. StorSimple デバイスに使用可能な 2 つのボリュームがあることを確認します (この例では、使用できるボリュームは **ディスク 1** と **ディスク 2** です)。 
 3. [ディスクの管理] ウィンドウの下部ウィンドウの右側の列で、 **[ディスク 1]** を右クリックし、 **[新しいミラー ボリューム]** を選択します。 
    
     ![[新しいミラー ボリューム]](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png) 
@@ -196,18 +196,18 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 #### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>ダイナミック ミラー ボリュームのバックアップを構成するには
 1. デスクトップの [StorSimple Snapshot Manager] アイコンをクリックします。 [StorSimple Snapshot Manager] ウィンドウが表示されます。 
 2. **スコープ** ウィンドウで、 **[ボリューム]** ノードを右クリックし、 **[ボリュームの再スキャン]** を選択します。 スキャンが終了すると、 **結果** ウィンドウにボリュームのリストが表示されます。 ダイナミック ミラー ボリュームは、1 つのボリュームとして表示されます。 
-3. **結果**ウィンドウでダイナミック ミラー ボリュームを右クリックし、 **[ボリューム グループの作成]** をクリックします。 
+3. **結果** ウィンドウでダイナミック ミラー ボリュームを右クリックし、 **[ボリューム グループの作成]** をクリックします。 
 4. **[ボリューム グループの作成]** ダイアログ ボックスで、ボリューム グループの名前を入力し、ダイナミック ミラー ボリュームをこのグループに割り当てて、 **[OK]** をクリックします。 
 5. **スコープ** ウィンドウで、 **[ボリューム グループ]** ノードを展開します。 **[ボリューム グループ]** ノードの下に新しいボリューム グループが表示されます。 
 6. ボリューム グループ名を右クリックします。 
    
    * 対話形式の (オンデマンド) バックアップ ジョブを開始するには、 **[バックアップの作成]** をクリックします。 
    * 自動バックアップをスケジュールするには、 **[バックアップ ポリシーの作成]** をクリックします。 **[全般]** ページで、リストからボリューム グループを選択します。 **[スケジュール]** ページで、スケジュールの詳細を入力します。 操作が終了したら、 **[OK]** をクリックします。 
-7. バックアップ ジョブの実行状態を監視できます。 **スコープ** ウィンドウで **[ジョブ]** ノードを展開し、 **[実行中]** をクリックします。**結果**ウィンドウにジョブの詳細が表示されます。 バックアップ ジョブが終了すると、詳細が **[過去 24 時間]** ジョブ リストに転送されます。 
+7. バックアップ ジョブの実行状態を監視できます。 **スコープ** ウィンドウで **[ジョブ]** ノードを展開し、 **[実行中]** をクリックします。**結果** ウィンドウにジョブの詳細が表示されます。 バックアップ ジョブが終了すると、詳細が **[過去 24 時間]** ジョブ リストに転送されます。 
 
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)方法を確認する。
 * [StorSimple Snapshot Manager を使用してボリューム グループを作成および管理する](storsimple-snapshot-manager-manage-volume-groups.md)方法を確認します。
 
 <!--Reference links-->
-[1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee338480(v=ws.10)

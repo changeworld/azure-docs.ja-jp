@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: victorh
-ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079117"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89536004"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する
 
@@ -82,8 +82,8 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 3. 新しい vWAN 名として、「**Vwan-01**」と入力します。
 4. **[信頼されたセキュリティ パートナーを有効にするために VPN ゲートウェイを含める]** チェック ボックスはオフのままにします。
 5. **[Next:Azure Firewall]** を選択します。
-6. 既定の **Azure Firewall** が**有効**になっている設定をそのまま使用し、 **[次へ: 信頼されたセキュリティ パートナー]** を選択します。
-7. 既定の**信頼されたセキュリティ パートナー**が**無効**になっている設定をそのまま使用し、 **[次へ: 確認と作成]** をクリックします。
+6. 既定の **Azure Firewall** が **有効** になっている設定をそのまま使用し、 **[次へ: 信頼されたセキュリティ パートナー]** を選択します。
+7. 既定の **信頼されたセキュリティ パートナー** が **無効** になっている設定をそのまま使用し、 **[次へ: 確認と作成]** をクリックします。
 8. **［作成］** を選択します デプロイには約 30 分かかります。
 
 これで、ファイアウォールのパブリック IP アドレスを取得できるようになりました。
@@ -109,30 +109,6 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 8. **［作成］** を選択します
 
 手順を繰り返して、 **[Spoke-02]** 仮想ネットワークを接続します: 接続名 - **hub-spoke-02**
-
-### <a name="configure-the-hub-and-spoke-routing"></a>ハブとスポークのルーティングを構成する
-
-Azure portal から Cloud Shell を開き、次の Azure PowerShell を実行して、必要なハブとスポークのルーティングを構成します。 ピアリングされたスポークおよびブランチ接続では、伝達を **NONE** に設定する必要があります。 こうすることで、スポーク間の Any-to-Any 通信を防ぎ、代わりに既定ルートを使用してトラフィックをファイアウォールにルーティングすることができます。
-
-```azurepowershell
-$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
-                  -HubName hub-01 -Name noneRouteTable
-$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-             -ParentResourceName hub-01
-
-$vnetConn = $vnetConns[0]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name `
-   -RoutingConfiguration $vnetConn.RoutingConfiguration
-
-$vnetConn = $vnetConns[1]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
-```
 
 ## <a name="deploy-the-servers"></a>サーバーをデプロイする
 
@@ -179,7 +155,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 3. **[規則コレクションの追加]** ページで、 **[名前]** に「**App-RC-01**」と入力します。
 4. **[規則コレクションの種類]** で、 **[アプリケーション]** を選択します。
 5. **[優先度]** に「**100**」と入力します。
-6. **[規則コレクション] アクション**が **[許可]** であることを確認します。
+6. **[規則コレクション] アクション** が **[許可]** であることを確認します。
 7. 規則の **[名前]** に、「**Allow-msft**」と入力します。
 8. **[Source type]\(送信元の種類\)** で、 **[IP アドレス]** を選択します。
 9. **[送信元]** に「 **\*** 」と入力します。

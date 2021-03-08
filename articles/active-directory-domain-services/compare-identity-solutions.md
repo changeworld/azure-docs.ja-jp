@@ -2,20 +2,20 @@
 title: Azure の Active Directory ベースのサービスを比較する | Microsoft Docs
 description: この概要では、Active Directory Domain Services、Azure Active Directory、Azure Active Directory Domain Services 向けのさまざまな ID サービスを比較します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: iainfou
-ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: justinha
+ms.openlocfilehash: 48ce982a6d6d7a3ed12d6e3b4711d111dec4d6f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489590"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174633"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較
 
@@ -26,7 +26,7 @@ Active Directory ベースのこの 3 つの ID ソリューションは、共�
 * **Active Directory Domain Services (AD DS)** - ID と認証、コンピューター オブジェクトの管理、グループ ポリシー、信頼などの主要な機能が提供されるエンタープライズ対応のライトウェイト ディレクトリ アクセス プロトコル (LDAP) サーバー。
     * AD DS は、オンプレミスの IT 環境を使用する多くの組織で中心的なコンポーネントであり、主要なユーザー アカウント認証機能とコンピューター管理機能が提供されます。
     * 詳細については、[Windows Server ドキュメントの Active Directory Domain Services の概要][overview-adds]に関するページを参照してください。
-* **Azure Active Directory (Azure AD)** - Office 365、Azure portal、SaaS アプリケーションなどのリソースに対して、ユーザー アカウント サービスと認証サービスが提供されるクラウドベースの ID およびモバイル デバイス管理。
+* **Azure Active Directory (Azure AD)** - Microsoft 365、Azure portal、SaaS アプリケーションなどのリソースに対して、ユーザー アカウント サービスと認証サービスが提供されるクラウドベースの ID およびモバイル デバイス管理。
     * Azure AD をオンプレミスの AD DS 環境と同期させて、クラウドでネイティブに機能する単一の ID をユーザーに提供できます。
     * Azure AD の詳細については、「[Azure Active Directory とは][whatis-azuread]」を参照してください。
 * **Azure Active Directory Domain Services (Azure AD DS)** - 完全に互換性のある従来の AD DS 機能のサブセット (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) を使用してマネージド ドメイン サービスが提供されます。
@@ -78,7 +78,7 @@ Azure AD DS では、機能のより小さいサブセットが従来の自己�
 | **Secure LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **LDAP の読み取り**                                     | **&#x2713;** | **&#x2713;** |
 | **LDAP の書き込み**                                    | **&#x2713;** (マネージド ドメイン内) | **&#x2713;** |
-| **地理的に分散したデプロイ**                   | **&#x2715;** | **&#x2713;** |
+| **地理的に分散したデプロイ**                   | **&#x2713;** | **&#x2713;** |
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS と Azure AD
 
@@ -114,6 +114,9 @@ Azure AD DS に参加しているデバイスでは、アプリケーション�
 | 管理                      | Intune などのモバイル デバイス管理 (MDM) ソフトウェア | グループ ポリシー                                                              |
 | ネットワーク                      | インターネット経由で動作                             | マネージド ドメインがデプロイされている仮想ネットワークに接続されているか、ピアリングされている必要があります |
 | 最適な対象                    | エンドユーザーのモバイルまたはデスクトップ デバイス                  | Azure にデプロイされるサーバー VM                                              |
+
+
+ADFS を使用したフェデレーション認証のために、オンプレミスの AD DS と Azure AD が構成されている場合、Azure DS で使用できる (現在の、または有効な) パスワード ハッシュはありません。 フェデレーション認証が実装される前に作成された Azure AD ユーザー アカウントには古いパスワード ハッシュがある可能性がありますが、これはオンプレミスのパスワードのハッシュと一致しないと考えられます。 そのため、Azure AD DS はユーザーの資格情報を検証できません。
 
 ## <a name="next-steps"></a>次のステップ
 

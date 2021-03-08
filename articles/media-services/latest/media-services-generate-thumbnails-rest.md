@@ -1,5 +1,5 @@
 ---
-title: REST で Azure Media Services Encoder Standard を使用してサムネイルを生成する方法
+title: REST で Media Encoder Standard を使用してサムネイルを生成する
 description: この記事では、REST で Media Encoder Standard を使用して、資産をエンコードするのと同時にサムネイルを生成する方法を説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: af320b94950d5999b6dd181b7a8e0eb198088e98
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f4456a65f422c23da73f36dd74680fbb598db186
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267634"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955836"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>REST で Encoder Standard を使用してサムネイルを生成する方法
 
@@ -210,7 +210,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 
 ### <a name="json-preset"></a>JSON プリセット
 
-スキーマの詳細については、[こちら](/azure/media-services/previous/media-services-mes-schema)の記事をご覧ください。
+スキーマの詳細については、[こちら](../previous/media-services-mes-schema.md)の記事をご覧ください。
 
 ```json
 {

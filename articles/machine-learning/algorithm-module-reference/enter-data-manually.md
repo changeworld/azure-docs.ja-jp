@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3bff9a91f06649487560faef3ab554b2a3d56af3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367518"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90908066"
 ---
 # <a name="enter-data-manually-module"></a>データの手動入力モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 値を入力して小さなデータセットを作成するには、**データの手動入力**モジュールを使用します。 データセットには、複数の列を含めることができます。
   

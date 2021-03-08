@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604398"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029349"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -60,17 +60,16 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 |   |   |   | 非永続的 | いいえ |
 | Azure AD 登録済み | フェデレーション/マネージド | 最新の Windows/ダウンレベルの Windows | 永続的/非永続的 | 適用外 |
 
-<sup>1</sup> **最新の Windows** デバイスは、Windows 10、Windows Server 2016、および Windows Server 2019 を表します。
-
+<sup>1</sup> **最新の Windows**  デバイスは、Windows 10、Windows Server 2016 バージョン 1803 以降、および Windows Server 2019 を表します。
 <sup>2</sup> **ダウンレベルの Windows** デバイスは、Windows 7、Windows 8.1、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 を表します。 Windows 7 のサポート情報については、「[Windows 7 のサポート終了が近づいています](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)」を参照してください。 Windows Server 2008 R2 のサポート情報については、「[Windows Server 2008 のサポート終了に備える](https://www.microsoft.com/cloud-platform/windows-server-2008)」を参照してください。
 
 <sup>3</sup> **フェデレーション** ID インフラストラクチャ環境は、AD FS やその他のサードパーティ IDP などの ID プロバイダーを備えた環境を表します。
 
-<sup>4</sup> **マネージド** ID インフラストラクチャ環境は、Azure AD が ID プロバイダーとしてデプロイされていて、[パスワード ハッシュ同期 (PHS)](../hybrid/whatis-phs.md) または[パススルー認証 (PTA)](../hybrid/how-to-connect-pta.md) のいずれかが、[シームレス シングル サインオン](../hybrid/how-to-connect-sso.md)と共に使用される環境を表します。
+<sup>4</sup> **マネージド** ID インフラストラクチャ環境は、Azure AD が ID プロバイダーとしてデプロイされていて、[パスワード ハッシュ同期 (PHS)](../hybrid/whatis-phs.md) または [パススルー認証 (PTA)](../hybrid/how-to-connect-pta.md) のいずれかが、[シームレス シングル サインオン](../hybrid/how-to-connect-sso.md)と共に使用される環境を表します。
 
-<sup>5</sup> **最新の Windows で非永続的機能をサポートする**には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。
+<sup>5</sup> **最新の Windows で非永続的機能をサポートする** には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。 このシナリオでは、Windows 10 1803、Windows Server 2019、または Windows Server (半期チャネル) バージョン 1803 以降が必要です。
 
-<sup>6</sup> **ダウンレベルの Windows で非永続的機能をサポートする**には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。
+<sup>6</sup> **ダウンレベルの Windows で非永続的機能をサポートする** には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。
 
 
 ## <a name="microsofts-guidance"></a>Microsoft のガイダンス
@@ -89,7 +88,7 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
    - ログオフ スクリプトの一部として **autoworkplacejoin /leave** コマンドを実装します。 このコマンドは、ユーザーのコンテキストでトリガーする必要があります。また、ユーザーが完全にログオフする前の、まだネットワーク接続がある間に実行する必要があります。
 - フェデレーション環境 (AD FS など) の最新の Windows の場合:
    - VM ブート シーケンスの一部として **dsregcmd /join** を実装します。
-   - VM のシャットダウン/再起動プロセスの一部として dsregcmd /leave を実行**しない**でください。
+   - VM のシャットダウン/再起動プロセスの一部として dsregcmd /leave を実行 **しない** でください。
 - [古いデバイスの管理](manage-stale-devices.md)のプロセスを定義して実装します。
    - 非永続的な Hybrid Azure AD 参加済みデバイスを識別する方法 (コンピューター表示名のプレフィックスなど) を用意したら、ディレクトリが多くの古いデバイスで占められないように、これらのデバイスのクリーンアップをより積極的に行う必要があります。
    - 最新の Windows とダウンロードレベルの Windows への非永続的 VDI のデプロイでは、**ApproximateLastLogonTimestamp** が 15 日より古いデバイスを削除する必要があります。

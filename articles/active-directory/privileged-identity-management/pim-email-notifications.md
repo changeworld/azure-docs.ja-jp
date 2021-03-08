@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232310"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394732"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
@@ -54,7 +54,7 @@ Azure AD ロールに対するこれらの電子メールをどのユーザー�
 | セキュリティ管理者</br>(アクティブ化/有資格) | いいえ | はい* | はい |
 | グローバル管理者</br>(アクティブ化/有資格) | いいえ | はい* | はい |
 
-\*[**通知**設定](pim-how-to-change-default-settings.md#notifications)が**有資格**に設定されている場合。
+\*[**通知** 設定](pim-how-to-change-default-settings.md#notifications)が **有資格** に設定されている場合。
 
 ユーザーが架空の Contoso 組織の Azure AD ロールをアクティブ化したときに送信される電子メールの例を次に示します。
 
@@ -79,10 +79,13 @@ Azure AD ロールに関する週間 Privileged Identity Management サマリー
 
 ## <a name="email-timing-for-activation-approvals"></a>アクティブ化承認の電子メールのタイミング
 
-ユーザーが各自のロールをアクティブにし、ロールの設定で承認が必要な場合、承認者は承認ごとに次の 3 通の電子メールを受け取ります。
+ユーザーが各自のロールをアクティブにし、ロールの設定で承認が必要な場合、承認者は承認ごとに次の 2 通の電子メールを受け取ります。
 
 - ユーザーのアクティブ化要求を承認または拒否する要求 (要求承認エンジンによって送信されます)
 - ユーザーの要求が承認された (要求承認エンジンによって送信されます)
+
+また、グローバル管理者と特権ロール管理者は、各承認で次の電子メールを受信します。
+
 - ユーザーのロールがアクティブ化された (Privileged Identity Management によって送信されます)
 
 要求承認エンジンによって送信される最初の 2 つの電子メールは、遅延する場合があります。 現在、電子メールの 90% は 3 分から 10 分かかりますが、1% のお客様については、最大で 15 分ほどになる可能性があります。

@@ -2,8 +2,12 @@
   href: cut-planes.md
 - name: デバッグ レンダリング
   href: debug-rendering.md
+- name: フレネル効果
+  href: fresnel-effect.md
 - name: 階層状態のオーバーライド
   href: override-hierarchical-state.md
+- name: Camera
+  href: camera.md
 - name: ステージ スペース
   href: stage-space.md
 - name: Late Stage Reprojection
@@ -16,6 +20,8 @@
   href: color-materials.md
 - name: アウトライン レンダリング
   href: outlines.md
+- name: シェル レンダリング
+  href: shell-effect.md
 - name: 片面レンダリング
   href: single-sided-rendering.md
 - name: 空間クエリ

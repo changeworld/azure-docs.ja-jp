@@ -2,18 +2,15 @@
 title: チュートリアル:HDInsight Apache Storm からストレージへ - Azure/Data Lake
 description: チュートリアル - Apache Storm を使用して、Azure HDInsight 用の HDFS と互換性のあるストレージに書き込む方法について説明します。
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73241214"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932547"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
 
@@ -32,7 +29,7 @@ Apache Storm を使用して、HDInsight 上の Apache Storm によって使用�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Developer Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) バージョン 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: d73a8d743a948cbd94a3af81fe2e77c45c0eeb67
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 9a003b5c42a6ef4c699a3768d15ae08f86d56e52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996279"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367294"
 ---
 ## <a name="create-a-new-cdn-profile"></a>新しい CDN プロファイルを作成する
 
@@ -31,11 +31,11 @@ CDN プロファイルは、CDN エンドポイントのコンテナーであり
    
     | 設定  | 値 |
     | -------- | ----- |
-    | **名前** | プロファイル名として「*cdn-profile-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 |
+    | **名前** | プロファイル名として「*cdn-profile-123*」と入力します。 |
     | **サブスクリプション** | ドロップダウン リストから Azure サブスクリプションを選択します。 |
     | **リソース グループ** | **[新規作成]** を選択してリソース グループ名に「*CDNQuickstart-rg*」と入力します。または、そのグループが既にある場合は、 **[Use existing]\(既存のものを使用\)** を選択して *[CDNQuickstart-rg]* を選択します。 | 
     | **リソース グループの場所** | ドロップダウン リストから最寄りの場所を選択します。 |
-    | **価格レベル** | ドロップダウン リストから **[Standard Akamai]** オプションを選択します。 (Akamai レベルのデプロイ時間は約 1 分です。 Microsoft レベルは約 10 分、Verizon レベルは約 90 分かかります。) |
+    | **価格レベル** | ドロップダウン リストから **[Standard Akamai]** オプションを選択します。 (Akamai レベルのデプロイ時間は約 1 分です。 Microsoft レベルは約 10 分、Verizon レベルは約 30 分かかります。) |
     | **今すぐ新しい CDN エンドポイントを作成する** | オフのままにします。 |  
    
     ![新しい CDN プロファイル](./media/cdn-create-profile/cdn-new-profile.png)

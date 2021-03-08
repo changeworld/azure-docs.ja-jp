@@ -3,15 +3,20 @@ title: Linux での Java Web アプリ パフォーマンスの監視 | Microsof
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 08d8deb4c7769c4f8a202050d7b5515439d691f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322603"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573850"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd:Application Insights の Linux パフォーマンス メトリック [非推奨]
 
+> [!IMPORTANT]
+> Java アプリケーションを監視する際に **推奨される方法** は、コードを変更せずに自動インストルメンテーションを使用することです。 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** のガイドラインに従ってください。
 
 [Application Insights](./app-insights-overview.md) で Linux システムのパフォーマンス メトリックを探索するには、[collectd](https://collectd.org/) を Application Insights のプラグインと共にインストールします。 このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
 
@@ -28,7 +33,7 @@ ms.locfileid: "87322603"
 Linux サーバー コンピューターで、次の操作を行います。
 
 1. [collectd](https://collectd.org/) のバージョン 5.4.0 またはそれ以降をインストールします。
-2. [Application Insights collectd ライター プラグイン](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)をダウンロードします。 バージョン番号をメモしておきます。
+2. [Application Insights collectd ライター プラグイン](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)をダウンロードします。 バージョン番号をメモしておきます。
 3. プラグイン JAR を `/usr/share/collectd/java`にコピーします。
 4. `/etc/collectd/collectd.conf`を編集します:
    * [Java プラグイン](https://collectd.org/wiki/index.php/Plugin:Java) が有効になっていることを確認します。
@@ -117,7 +122,7 @@ Application Insights の Write プラグインは特定の Read プラグイン�
 
 症状:収集されたログに、"AI: ...SyntaxError:Unexpected token N" を含むエラーが示されています。
 
-対処法:問題のある Write プラグインによって収集されるデータを除外します。 
+対処法: 問題のある Write プラグインによって収集されるデータを除外します。 
 
 <!--Link references-->
 
@@ -128,5 +133,5 @@ Application Insights の Write プラグインは特定の Read プラグイン�
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 

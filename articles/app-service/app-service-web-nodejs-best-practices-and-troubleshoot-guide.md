@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: bfbd93cc3d4e67c8a96a1413221fdd7190c4f0b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961892"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572631"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -121,13 +121,13 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 多くのアプリケーションは、通常の操作の一環として、発信接続を行う必要があります。 たとえば、要求を受信すると、node アプリケーションは別の場所の REST API に問い合わせて、要求を処理するための情報を取得しようとします。 http または https 呼び出しを行うときに、キープ アライブ エージェントを使用する場合があります。 これらの発信呼び出しを行うときに、キープ アライブ エージェントとして agentkeepalive モジュールを使用できます。
 
-agentkeepalive モジュールは、Azure の Web WebApp VM でソケットが再利用されることを保証します。 送信要求のたびに新しいソケットを作成すると、アプリケーションにオーバーヘッドが追加されます。 アプリケーションでソケットを再利用することで、アプリケーションが VM ごとに割り当てられている maxSockets を超えないことが保証されます。 Azure App Service では、agentKeepAlive maxSockets 値を VM あたり合計 160 ソケット (node.exe の 4 つのインスタンス \* インスタンス当たり 40 の maxSockets) に設定することが推奨されています。
+agentkeepalive モジュールは、Azure の Web WebApp VM でソケットが再利用されることを保証します。 送信要求のたびに新しいソケットを作成すると、アプリケーションにオーバーヘッドが追加されます。 アプリケーションでソケットを再利用することで、アプリケーションが VM ごとに割り当てられている maxSockets を超えないことが保証されます。 Azure App Service では、agentKeepAlive maxSockets 値を VM あたり合計 128 ソケット (node.exe の 4 つのインスタンス \* インスタンス当たり 32 の maxSockets) に設定することが推奨されています。
 
 [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 構成の例:
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000
@@ -140,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>node アプリケーションが消費する CPU が多すぎる
 
-高い CPU 消費率に関する Azure App Service からの推奨事項がポータルに表示されている可能性があります。 特定の[メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure Portal ダッシュボード](../azure-monitor/app/web-monitor-performance.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
+高い CPU 消費率に関する Azure App Service からの推奨事項がポータルに表示されている可能性があります。 特定の[メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure portal ダッシュボード](../azure-monitor/essentials/metrics-charts.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
 アプリケーションによる CPU の消費量が明らかに多すぎるが、理由を説明できない場合は、node アプリケーションをプロファイリングして調べることができます。
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>V8-Profiler を使用した Azure App Service の node アプリケーションのプロファイリング
@@ -213,7 +213,7 @@ http.createServer(function (req, res) {
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>node アプリケーションで消費されるメモリが多すぎる
 
-アプリケーションの消費メモリ量が多すぎる場合は、Portal にメモリ消費量が多いことに関する Azure App Service の通知が表示されます。 特定の[メトリック](web-sites-monitor.md)を監視するようにモニターを設定できます。 [Azure Portal ダッシュボード](../azure-monitor/app/web-monitor-performance.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
+アプリケーションの消費メモリ量が多すぎる場合は、Portal にメモリ消費量が多いことに関する Azure App Service の通知が表示されます。 特定の[メトリック](web-sites-monitor.md)を監視するようにモニターを設定できます。 [Azure portal ダッシュボード](../azure-monitor/essentials/metrics-charts.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>node.js のリーク検出とヒープの比較
 
@@ -245,9 +245,8 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 アプリケーションの起動時間が長くなる一般的な原因は、node\_modules 内に多数のファイルがあることです。 アプリケーションは起動時にこれらのファイルのほとんどを読み込もうとします。 既定では、ファイルは Azure App Service 上のネットワーク共有に存在するため、多くのファイルの読み込みには時間がかかります。
 このプロセスを高速化するための解決策は、次のようにいくつかあります。
 
-1. npm3 を使用してモジュールをインストールすることによって、依存関係構造がフラットであり、重複する依存関係がないことを確認してください。
-2. node\_modules の遅延読み込みを試し、起動時にすべてのモジュールを読み込まないようにします。 遅延読み込みを行うには、モジュール コードを初めて実行する前に、関数内でモジュールが実際に必要になったときに、require('module') を呼び出す必要があります。
-3. Azure App Service には、ローカル キャッシュと呼ばれる機能が用意されています。 この機能は、コンテンツをネットワーク共有から VM 上のローカル ディスクにコピーします。 ファイルはローカルにあるため、node\_modules の読み込み時間は短縮されます。
+1. node\_modules の遅延読み込みを試し、起動時にすべてのモジュールを読み込まないようにします。 遅延読み込みを行うには、モジュール コードを初めて実行する前に、関数内でモジュールが実際に必要になったときに、require('module') を呼び出す必要があります。
+2. Azure App Service には、ローカル キャッシュと呼ばれる機能が用意されています。 この機能は、コンテンツをネットワーク共有から VM 上のローカル ディスクにコピーします。 ファイルはローカルにあるため、node\_modules の読み込み時間は短縮されます。
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE の HTTP の状態と副状態
 

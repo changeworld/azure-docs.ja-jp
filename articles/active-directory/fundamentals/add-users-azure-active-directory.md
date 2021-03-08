@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321091"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996697"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
 
@@ -103,6 +103,6 @@ Azure Active Directory ポータルを使用して、既存のユーザーを削
 
 - [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
-- [動的グループとユーザーを操作する](../users-groups-roles/groups-create-rule.md)
+- [動的グループとユーザーを操作する](../enterprise-users/groups-create-rule.md)
 
-または、[別のディレクトリからのゲスト ユーザーの追加](../external-identities/what-is-b2b.md)や、[削除されたユーザーの復元](active-directory-users-restore.md)など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
+または、[別のディレクトリからのゲスト ユーザーの追加](../external-identities/what-is-b2b.md)や、[削除されたユーザーの復元](active-directory-users-restore.md)など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../enterprise-users/index.yml)」を参照してください。

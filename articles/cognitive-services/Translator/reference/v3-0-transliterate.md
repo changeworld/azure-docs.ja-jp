@@ -3,19 +3,19 @@ title: Translator Transliterate メソッド
 titleSuffix: Azure Cognitive Services
 description: Translator Transliterate メソッドを利用し、ある言語のテキストをあるスクリプトから別のスクリプトに変換します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 8b811c57eb163931c39a311418ac9f1513e9393a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: lajanuar
+ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592255"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895426"
 ---
 # <a name="translator-30-transliterate"></a>Translator 3.0:Transliterate
 
@@ -61,7 +61,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   <th>説明</th>
   <tr>
     <td>認証ヘッダー</td>
-    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -159,7 +159,7 @@ JSON 応答の例を次に示します。
   </tr>
 </table> 
 
-エラーが発生した場合、要求から JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合、要求から JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator のリファレンス ページ](./v3-0-reference.md#errors)で確認できます。 
 
 ## <a name="examples"></a>例
 

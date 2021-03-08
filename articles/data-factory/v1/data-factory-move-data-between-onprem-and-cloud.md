@@ -1,23 +1,18 @@
 ---
 title: データを移動する - Data Management Gateway
 description: オンプレミスとクラウドの間でデータを移動するためのデータ ゲートウェイを設定します。 Azure Data Factory で Data Management Gateway を使用してデータを移動します。
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
+ms.author: abnarain
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195994"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380289"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -46,11 +41,11 @@ ms.locfileid: "84195994"
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
-* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
-* **SQL Server**。 このチュートリアルでは、SQL Server データベースを**ソース** データ ストアとして使用します。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを **コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
+* **SQL Server**。 このチュートリアルでは、SQL Server データベースを **ソース** データ ストアとして使用します。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
-この手順では、Azure Portal を使用して **ADFTutorialOnPremDF**という名前の Azure Data Factory インスタンスを作成します。
+この手順では、Azure Portal を使用して **ADFTutorialOnPremDF** という名前の Azure Data Factory インスタンスを作成します。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. **[リソースの作成]** 、 **[インテリジェンス + 分析]** 、 **[データ ファクトリ]** の順にクリックします。
@@ -61,7 +56,7 @@ ms.locfileid: "84195994"
     ![スタート画面への追加](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー "**Data factory name "ADFTutorialOnPremDF" is not available (データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません)** " が発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialOnPremDF など) 作成し直してください。 このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
+   > Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **Data factory name "ADFTutorialOnPremDF" is not available (データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません)** が発生した場合は、データ ファクトリの名前を変更して (例: yournameADFTutorialOnPremDF) 作成し直してください。 このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
    >
    > データ ファクトリの名前は今後、**DNS** 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
    >
@@ -79,7 +74,7 @@ ms.locfileid: "84195994"
    ![Data Factory ホーム ページ](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png)
 
 ## <a name="create-gateway"></a>ゲートウェイの作成
-1. **[Data Factory]** ページで、 **[作成およびデプロイ]** タイルをクリックして、データ ファクトリ用の**エディター**を起動します。
+1. **[Data Factory]** ページで、 **[作成およびデプロイ]** タイルをクリックして、データ ファクトリ用の **エディター** を起動します。
 
     ![[作成とデプロイ] タイル](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
 2. Data Factory Editor のツール バーで **[...More (...詳細)]** をクリックし、 **[新しいデータ ゲートウェイ]** をクリックします。 または、ツリー ビューの **[データ ゲートウェイ]** を右クリックして、 **[新しいデータ ゲートウェイ]** をクリックします。
@@ -120,14 +115,14 @@ ms.locfileid: "84195994"
 6. コンピューターで **Data Management Gateway 構成マネージャー** アプリケーションを起動します。 **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。 また、実行可能ファイル **ConfigManager.exe** は、**C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** フォルダー内にあります
 
     ![Gateway Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
-7. "`adftutorialgateway is connected to the cloud service`" というメッセージが表示されていることを確認します。 下部のステータス バーに、**緑色のチェック マーク**と共に "**Connected to the cloud service (クラウド サービスに接続済み)** " と表示されます。
+7. "`adftutorialgateway is connected to the cloud service`" というメッセージが表示されていることを確認します。 下部のステータス バーに、**緑色のチェック マーク** と共に "**Connected to the cloud service (クラウド サービスに接続済み)** " と表示されます。
 
     **[ホーム]** タブで、次の操作を行うこともできます。
 
-   * [登録] ボタンで、Azure Portal からキーを使用してゲートウェイを**登録**する。
-   * ゲートウェイ コンピューターで実行されている Data Management Gateway ホスト サービスを**停止**する。
-   * 1 日の特定の時刻に更新がインストールされるように**スケジュールを設定**する。
-   * ゲートウェイの**最終更新日時**を確認する。
+   * [登録] ボタンで、Azure Portal からキーを使用してゲートウェイを **登録** する。
+   * ゲートウェイ コンピューターで実行されている Data Management Gateway ホスト サービスを **停止** する。
+   * 1 日の特定の時刻に更新がインストールされるように **スケジュールを設定** する。
+   * ゲートウェイの **最終更新日時** を確認する。
    * ゲートウェイへの更新プログラムをインストールできる時刻を指定します。
 8. **[設定]** タブに切り替えます。 **[証明書]** セクションに示されている証明書は、ポータルで指定したオンプレミス データ ストアの資格情報の暗号化/暗号化解除に使用されます。 独自の証明書を使用するには、 **[変更]** をクリックします (省略可能)。 既定では、ゲートウェイは Data Factory サービスによって自動生成される証明書を使用します。
 
@@ -148,17 +143,17 @@ ms.locfileid: "84195994"
    * **[ログの表示]** をクリックして、[イベント ビューアー] ウィンドウの Data Management Gateway のログを確認します。
    * **[ログを送信]** をクリックして過去 7 日間のログの zip ファイルを Microsoft にアップロードし、問題のトラブルシューティングを容易にします。
 10. ゲートウェイがデータベースに接続できるかどうかをテストするには、 **[診断]** タブの **[接続のテスト]** セクションで、データ ストアの種類として **[SqlServer]** を選択し、データベース サーバーの名前とデータベースの名前を入力します。さらに認証の種類を指定し、ユーザー名とパスワードを入力して、 **[テスト]** をクリックします。
-11. Web ブラウザーに切り替え、**Azure ポータル**の **[構成]** ページと **[新しいデータ ゲートウェイ]** ページで **[OK]** をクリックします。
+11. Web ブラウザーに切り替え、**Azure ポータル** の **[構成]** ページと **[新しいデータ ゲートウェイ]** ページで **[OK]** をクリックします。
 12. 左側のツリービューの **[データ ゲートウェイ]** に **[adftutorialgateway]** と表示されます。  クリックすると、関連する JSON が表示されます。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 この手順では、2 つのリンクされたサービスを作成します (**AzureStorageLinkedService**、**SqlServerLinkedService**)。 **SqlServerLinkedService** は SQL Server Database をリンクし、**AzureStorageLinkedService** リンク サービスは Azure BLOB ストアを Data Factory にリンクします。 このチュートリアルの後半で、SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
 #### <a name="add-a-linked-service-to-a-sql-server-database"></a>SQL Server Database にリンクされたサービスを追加する
-1. **Data Factory エディター**のツール バーにある **[新しいデータ ストア]** をクリックし、 **[SQL Server]** を選択します。
+1. **Data Factory エディター** のツール バーにある **[新しいデータ ストア]** をクリックし、 **[SQL Server]** を選択します。
 
    ![SQL Server のリンクされているサービス](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
-2. 右側の **JSON エディター**で、次の操作を実行します。
+2. 右側の **JSON エディター** で、次の操作を実行します。
 
    1. **[gatewayName]** に **[adftutorialgateway]** を指定します。    
    2. **[connectionString]** で、次の操作を実行します。    
@@ -171,13 +166,13 @@ ms.locfileid: "84195994"
       4. **[資格情報の設定]** ダイアログ ボックスで、認証の種類、ユーザー名、およびパスワードを指定し、 **[OK]** をクリックします。 接続が成功すると、暗号化された資格情報は JSON に格納され、ダイアログ ボックスが閉じられます。
       5. ダイアログ ボックスを起動した空のブラウザー タブが自動的に閉じられない場合は手動で閉じて、Azure Portal のタブに戻ります。
 
-         ゲートウェイ コンピューターで、これらの資格情報は、Data Factory サービスが所有する証明書を使用して**暗号化**されます。 Data Management Gateway に関連付けられている証明書を使用する場合は、「Set credentials securely (資格情報を安全に設定する)」を参照してください。    
+         ゲートウェイ コンピューターで、これらの資格情報は、Data Factory サービスが所有する証明書を使用して **暗号化** されます。 Data Management Gateway に関連付けられている証明書を使用する場合は、「Set credentials securely (資格情報を安全に設定する)」を参照してください。    
    3. コマンド バーの **[デプロイ]** をクリックして、SQL Server リンク サービスをデプロイします。 リンクされたサービスは、ツリー ビューに表示されます。
 
       ![ツリー ビューでの SQL Server のリンクされたサービス](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Azure ストレージ アカウント用のリンクされたサービスを追加する
-1. **Data Factory エディター**で、コマンド バーの **[新しいデータ ストア]** をクリックし、 **[Azure ストレージ]** をクリックします。
+1. **Data Factory エディター** で、コマンド バーの **[新しいデータ ストア]** をクリックし、 **[Azure ストレージ]** をクリックします。
 2. Azure ストレージ アカウントの名前を **[アカウント名]** に入力します。
 3. Azure ストレージ アカウントのキーを **[アカウント キー]** に入力します。
 4. **[デプロイ]** をクリックして **AzureStorageLinkedService** をデプロイします。
@@ -210,7 +205,7 @@ ms.locfileid: "84195994"
 
 ### <a name="create-input-dataset"></a>入力データセットの作成
 
-1. **Data Factory エディター**のコマンド バーで **[...More (...詳細)]** をクリックし、 **[新しいデータセット]** 、 **[SQL Server テーブル]** の順にクリックします。
+1. **Data Factory エディター** のコマンド バーで **[...More (...詳細)]** をクリックし、 **[新しいデータセット]** 、 **[SQL Server テーブル]** の順にクリックします。
 2. 右側のウィンドウの JSON を次のテキストに置き換えます。
 
     ```JSON   
@@ -236,7 +231,7 @@ ms.locfileid: "84195994"
             }
         }
     }     
-    ```     
+    ```       
    以下の点に注意してください。
 
    * **type** は **SqlServerTable** に設定されています。
@@ -249,7 +244,7 @@ ms.locfileid: "84195994"
 
 ### <a name="create-output-dataset"></a>出力データセットの作成
 
-1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、 **[Azure BLOB ストレージ]** をクリックします。
+1. **Data Factory エディター** で、コマンド バーの **[新しいデータセット]** をクリックし、 **[Azure BLOB ストレージ]** をクリックします。
 2. 右側のウィンドウの JSON を次のテキストに置き換えます。
 
     ```JSON   
@@ -279,7 +274,7 @@ ms.locfileid: "84195994"
    * **folderPath** を **adftutorial/outfromonpremdf** に設定します。outfromonpremdf は adftutorial コンテナー内のフォルダーです。 **adftutorial** コンテナーを作成します (既に存在していない場合)。
    * **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
-   **出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルの名前は次の形式になります。`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.)。
+   **出力テーブル** に **fileName** を指定しない場合、**folderPath** に生成されるファイルの名前は次の形式になります。`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.)。
 
    **folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、partitionedBy プロパティを使用します。 次の例では、folderPath に SliceStart (処理されるスライスの開始時刻) の年、月、日を使用し、fileName に SliceStart の時間を使用します。 たとえば、スライスが 2014-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2014/10/20 に設定され、fileName は 08.csv に設定されます。
 
@@ -300,7 +295,7 @@ ms.locfileid: "84195994"
 3. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。 ツリー ビューに両方のデータセットが表示されることを確認します。  
 
 ## <a name="create-pipeline"></a>パイプラインの作成
-この手順では、**EmpOnPremSQLTable** を入力として使用し、**OutputBlobTable** を出力として使用する**コピー アクティビティ**を 1 つ使用する**パイプライン**を作成します。
+この手順では、**EmpOnPremSQLTable** を入力として使用し、**OutputBlobTable** を出力として使用する **コピー アクティビティ** を 1 つ使用する **パイプライン** を作成します。
 
 1. Data Factory エディターで **[...More (...詳細)]** 、 **[新しいパイプライン]** の順にクリックします。
 2. 右側のウィンドウの JSON を次のテキストに置き換えます。    
@@ -357,8 +352,8 @@ ms.locfileid: "84195994"
    以下の点に注意してください。
 
    * activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
-   * アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
-   * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink** が指定されています。
+   * アクティビティの **入力** を **EmpOnPremSQLTable** に設定し、**出力** を **OutputBlobTable** に設定します。
+   * **typeProperties** セクションでは、**ソースの種類** として **SqlSource** が指定され、**シンクの種類** として **BlobSink** が指定されています。
    * **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ `select * from emp` を指定します。
 
    start と end の日時は、いずれも [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)である必要があります。 次に例を示します。2014-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
@@ -384,7 +379,7 @@ ms.locfileid: "84195994"
     パイプラインとデータセットは、拡大、縮小、100% に拡大、ウィンドウのサイズに合わせて大きさを変更、自動的に配置などの表示が可能です。また、系列情報を表示 (選択した項目の上位項目や下位項目を強調表示) することもできます。  オブジェクト (入力/出力データセットまたはパイプライン) をダブルクリックすると、そのオブジェクトのプロパティを表示できます。
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
-この手順では、Azure ポータルを使用して、Azure データ ファクトリの状況を監視します。 PowerShell コマンドレットを使用して、データセットとパイプラインを監視することもできます。 監視の詳細については、「 [パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。
+この手順では、Azure portal を使用して、Azure データ ファクトリの状況を監視します。 PowerShell コマンドレットを使用して、データセットとパイプラインを監視することもできます。 監視の詳細については、「 [パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。
 
 1. ダイアグラムで **EmpOnPremSQLTable** をダブルクリックします。  
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics を使用したジオフェンシングおよび地理空間集計
 description: この記事では、ジオフェンシングおよび地理空間集計のために Azure Stream Analytics を使用する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fc9442b01685deb710c49adf6be84af740a11805
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045265"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174990"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Azure Stream Analytics を使用したジオフェンシングおよび地理空間集計のシナリオ
 
@@ -125,4 +125,4 @@ GROUP BY RegionsRefDataInput.RegionName, hoppingwindow(minute, 1, 15)
 ## <a name="next-steps"></a>次のステップ
 
 * [Stream Analytics 地理空間関数の概要](stream-analytics-geospatial-functions.md)
-* [地理空間関数 (Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/geospatial-functions)
+* [地理空間関数 (Azure Stream Analytics)](/stream-analytics-query/geospatial-functions)

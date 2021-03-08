@@ -1,27 +1,31 @@
 ---
-title: Weather Services の概念 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Weather Services に適用される概念について説明します。
+title: Microsoft Azure Maps における Weather Service (プレビュー) の概念
+description: Microsoft Azure Maps Weather Service (プレビュー) に適用される概念について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132111"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904739"
 ---
-# <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
+# <a name="weather-services-preview-in-azure-maps"></a>Azure Maps の Weather Service (プレビュー)
 
-この記事では、[Azure Maps Weather Services](https://aka.ms/AzureMapsWeatherService) に適用される概念を紹介します。 Weather API の使用を開始する前に、この記事を読み通すことをお勧めします。 
+> [!IMPORTANT]
+> Azure Maps Weather Service は現在、パブリック プレビュー段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+この記事では、Azure Maps [Weather Service](/rest/api/maps/weather) に適用される概念を紹介します。 Weather API の使用を開始する前に、この記事を読み通すことをお勧めします。
 
 ## <a name="unit-types"></a>単位の種類
 
-気象サービス API の中には、データをメトリックとヤード単位のどちらで返すかをユーザーが指定できるものがあります。 これらの API で返される応答には、単位の変換に使用できる unitType (数値) が含まれます。 これらの値を解釈するには、次の表を参照してください。
+Weather Service (プレビュー) API の中には、データをメトリックとヤード単位のどちらで返すかをユーザーが指定できるものがあります。 これらの API で返される応答には、単位の変換に使用できる unitType (数値) が含まれます。 これらの値を解釈するには、次の表を参照してください。
 
 |unitType|説明         |
 |--------|--------------------|
@@ -52,7 +56,7 @@ ms.locfileid: "87132111"
 
 ## <a name="weather-icons"></a>天気アイコン
 
-Weather Service API の中には、応答で `iconCode` が返されるものがあります。 `iconCode` は、アイコンの定義に使用される数値です。 アプリケーションからこれらの画像に直接リンクしないでください。URL が変更される可能性があります。
+Weather Service (プレビュー) API の中には、応答で `iconCode` が返されるものがあります。 `iconCode` は、アイコンの定義に使用される数値です。 アプリケーションからこれらの画像に直接リンクしないでください。URL が変更される可能性があります。
 
 | アイコン番号 |アイコン| 日 | 夜間 | Text |
 |-------------|:----:|-----|-------|------|
@@ -100,7 +104,7 @@ Weather Service API の中には、応答で `iconCode` が返されるものが
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>レーダーと衛星画像のカラー スケール
 
-ユーザーは、[Get Map Tile v2 API](https://aka.ms/AzureMapsWeatherTiles) を使用して、最新のレーダー画像と赤外衛星画像を要求でき ます。 レーダー タイルと衛星タイルで使用される色を解釈するには、以下のガイドを参照してください。
+ユーザーは、[Get Map Tile v2 API](/rest/api/maps/renderv2/getmaptilepreview) を使用して、最新のレーダー画像と赤外衛星画像を要求でき ます。 レーダー タイルと衛星タイルで使用される色を解釈するには、以下のガイドを参照してください。
 
 ### <a name="radar-images"></a>レーダー画像
 
@@ -472,3 +476,169 @@ Weather Service API の中には、応答で `iconCode` が返されるものが
 |307.57  |#02555555     |
 |308     |#00525252     |
 |308     |#00525252     |
+
+## <a name="index-ids-and-index-groups-ids"></a>インデックス ID とインデックス グループ ID
+
+[Get Daily Indices API](/rest/api/maps/weather) を使用すると、ユーザーは返される結果を特定のインデックスの種類またはインデックス グループに限定できます。
+
+使用可能なインデックス ID とその名前、およびそれらの範囲のセットへのリンクを次の表に示します。 この表の後に、さまざまなインデックス グループを一覧した表を示します。
+
+  Index Name |  id  | 値の範囲
+  -------------------------- |---|-----
+  関節痛             |21 | [有益 - 重大なリスク](#beneficial-at-extreme-risk)
+  ぜんそく                     |23|  [有益 - 重大なリスク](#beneficial-at-extreme-risk)
+  ビーチとプール               |10| [悪い - 非常に良い 1](#poor-excellent-1)
+  サイクリング                  |4| [悪い - 非常に良い 1](#poor-excellent-1)
+  風邪                |25|  [有益 - 重大なリスク](#beneficial-at-extreme-risk)
+  コンポスト化                 |38| [悪い - 非常に良い 1](#poor-excellent-1)
+  建設               |14| [悪い - 非常に良い 1](#poor-excellent-1)
+  COPD                       |44|  [有益 - 重大なリスク](#beneficial-at-extreme-risk)
+  犬の散歩の快適さ        |43| [悪い - 非常に良い 1](#poor-excellent-1)
+  Driving (車)                    |40|  [悪い - 非常に良い 2](#poor-excellent-2)
+  ほこりとフケ              |18| [低 - 極めて高い 1](#low-extreme-1)
+  田畑の状態            |32| [悪い - 非常に良い 1](#poor-excellent-1)
+  魚釣り                    |13| [悪い - 非常に良い 1](#poor-excellent-1)
+  フライトの遅延              |-3|  [めったにない - とてもよくある 2](#very-unlikely-very-likely-2)
+  インフルエンザ                        |26|  [有益 - 重大なリスク](#beneficial-at-extreme-risk)
+  飛行機での旅行インデックス        |31| [非常に良い - 悪い](#excellent-poor)
+  燃費               |37| [悪い - 非常に良い 1](#poor-excellent-1)
+  ゴルフの天気               |5| [悪い - 非常に良い 1](#poor-excellent-1)
+  芝生              |33| [悪い - 非常に良い 1](#poor-excellent-1)
+  縮毛                 |42| [あまりない - 緊急](#unlikely-emergency)
+  心臓によいフィットネス      |16| [悪い - 非常に良い 1](#poor-excellent-1)
+  ハイキング                     |3| [悪い - 非常に良い 1](#poor-excellent-1)
+  自宅のエネルギー効率     |36| [悪い - 非常に良い 1](#poor-excellent-1)
+  検出                    | 20| [悪い - 非常に良い 1](#poor-excellent-1)
+  屋内活動            | -2| [悪い - 非常に良い 1](#poor-excellent-1)
+  ジョギング                    |2| [悪い - 非常に良い 1](#poor-excellent-1)
+  たこ揚げ                |9| [悪い - 非常に良い 1](#poor-excellent-1)
+  芝刈り                |28| [悪い - 非常に良い 1](#poor-excellent-1)
+  片頭痛          |27|  [有益 - 重大なリスク](#beneficial-at-extreme-risk)
+  朝のスクールバス         |35| [悪い - 非常に良い 1](#poor-excellent-1)
+  蚊の活動          |17|[低 - 極めて高い 1](#low-extreme-1)
+  屋外活動           |29| [悪い - 非常に良い 1](#poor-excellent-1)
+  屋外バーベキュー           |24| [悪い - 非常に良い 1](#poor-excellent-1)
+  屋外コンサート            |8| [悪い - 非常に良い 1](#poor-excellent-1)
+  実行中                    |1|  [悪い - 非常に良い 1](#poor-excellent-1)
+  テニス                     |6| [悪い - 非常に良い 1](#poor-excellent-1)
+  のどの渇き                     |41| [低 - 極めて高い 2](#low-extreme-2)
+  セーリング                    |11| [悪い - 非常に良い 1](#poor-excellent-1)
+  ショッピング                   |39| [悪い - 非常に良い 1](#poor-excellent-1)
+  副鼻腔炎性頭痛             |30|  [有益 - 重大なリスク](#beneficial-at-extreme-risk)
+  スケートボード              | 7| [悪い - 非常に良い 1](#poor-excellent-1)
+  スキーの天気                | 15| [悪い - 非常に良い 1](#poor-excellent-1)
+  雪の日数                  | 19| [めったにない - とてもよくある](#very-unlikely-very-likely)
+  土壌水分              | 34| [悪い - 非常に良い 1](#poor-excellent-1)
+  天体観測                 | 12| [悪い - 非常に良い 1](#poor-excellent-1)
+
+使用可能なインデックス グループ (indexGroupId) の一覧を次に示します。
+
+  id   | グループ名 | このグループ内のインデックス |
+  -------- | ------------------|------
+  1       |All | All
+  2       |うずきと痛み | 関節痛 (21) </br> 片頭痛 (27) </br> 副鼻腔炎性頭痛 (30)
+  3       |呼吸器系 | ぜんそく (23) </br> 風邪 (25) </br> インフルエンザ予測 (26)
+  4       |ガーデニング | 田畑の状態 (32) </br> 芝刈り (28) </br> 土壌水分 (34)</br>
+  5       |環境 | コンポスト化 (38) </br> 自宅のエネルギー効率 (36) </br> 燃費 (37)
+  6       |屋外生活 | 屋外バーベキュー (24) </br> 蚊の活動 (17)
+  7       |ビーチと海 | ビーチとプール (10) </br> 魚釣り (13) </br> セーリング (11)
+  8       |スポーツマン | 魚釣り (13) </br> ハンティング (20) </br> 屋外活動 (29)</br>
+  9       |農業 |  田畑の状態 (32) </br>  土壌水分 (34)
+  10      |健康 | 関節痛 (21) </br> ぜんそく (23) </br> 風邪 (25) </br> ほこりとフケ (18) </br> インフルエンザ (26) </br> 心臓によいフィットネス (16) </br> 片頭痛 (27)
+  11      |アウトドア | 屋外バーベキュー (24) </br> ビーチとプール (10) </br> サイクリング (4) </br> 屋外コンサート (8) </br>  田畑の状態 (32) </br> 魚釣り (13) </br> ゴルフの天気 (5) </br> ハイキング (3) </br> ハンティング (20) </br> ジョギング (2) </br> たこ揚げ (9) </br> 蚊の活動 (17)</br> 芝刈り (28) </br> 屋外活動 (29) </br> ランニング (1) </br> セーリング (11) </br> スケートボード (7) </br> スキーの天気 (15) </br>  土壌水分 (34)</br> 天体観測 (12) </br> テニス (6)
+  12      |スポーツ | サイクリング (4) </br> ゴルフの天気 (5) </br> ハイキング (3) </br>  ジョギング (2) </br> ランニング (1) </br> スケートボード (7) </br> スキーの天気 (15) </br>テニス (6)
+  13      |ホーム | 自宅のエネルギー効率 (36) </br> 燃費 (37) </br> 屋内活動 (-2)
+
+## <a name="daily-index-range-sets"></a>日次インデックスの範囲のセット
+
+[Get Daily Indices API](/rest/api/maps/weather) は、各インデックス ID に対する範囲の値とそれに関連付けられているカテゴリ名を返します。 範囲のセットはすべてのインデックスで同じではありません。 次の表は、「[インデックス ID とインデックス グループ ID](#index-ids-and-index-groups-ids)」に一覧で示されているサポートされているインデックスによって使用されるさまざまな範囲のセットを示しています。 どのインデックスがどの範囲のセットを使用しているかを調べるには、このドキュメントの「[インデックス ID とインデックス グループ ID](#index-ids-and-index-groups-ids)」を参照してください。
+
+### <a name="poor-excellent-1"></a>悪い - 非常に良い 1
+
+  | カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  悪い              |  0 |                2.99
+  普通              |  3  |               4.99
+  良い              |  5  |              6.99
+  とても良い         |  7  |               8.99
+  非常に良い         |  9  |               10
+
+### <a name="poor-excellent-2"></a>悪い - 非常に良い 2
+
+ | カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  悪い           |0              |  3
+  普通           |3.01           |  6
+  良い           |6.01           |  7.5
+  とても良い      |7.51           |  8.99
+  非常に良い      |9              |  10
+
+### <a name="excellent-poor"></a>非常に良い - 悪い
+
+ | カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  非常に良い      |     0.00        |    1.00
+  とても良い        |   1.01          |  3.00
+  良い             |   3.01          |  5.00
+  普通             |   5.01          |  7.00
+  悪い             |   7.01          |  10.00
+
+### <a name="low-extreme-1"></a>低 - 極めて高い 1
+
+   | カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  低                |  0         |        1.99
+  中           |  2         |        3.99
+  高               |  4         |        5.99
+  非常に高          |  6         |        7.99
+  エクストリーム            |  8         |        10
+
+### <a name="low-extreme-2"></a>低 - 極めて高い 2
+
+   | カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  低                |  0            |      2.99
+  中           |  3            |      4.99
+  高               |  5            |      6.99
+  非常に高          |  7            |      8.99
+  エクストリーム            |  9            |      10
+
+### <a name="very-unlikely-very-likely"></a>めったにない - とてもよくある
+
+ | カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  めったにない      | 0     |           1.99
+  あまりない           | 2     |           3.99
+  たまにある           | 4     |           5.99
+  よくある             | 6     |           7.99
+  高い        | 8     |           10
+
+### <a name="very-unlikely-very-likely-2"></a>めったにない - とてもよくある 2
+
+ | カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  めったにない      |  0.00     |         1.00
+  あまりない           |  1.01     |         3.00
+  たまにある           |  3.01     |         5.00
+  よくある             |  5.01     |         7.00
+  高い        |  7.01     |         10.00
+
+### <a name="unlikely-emergency"></a>あまりない - 緊急
+
+| カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  あまりない         |  0     |          2.99
+  Watch            |  3     |          4.99
+  アドバイザリ         |  5     |          6.99
+  警告          |  7     |          8.99
+  緊急        |  9     |          10
+
+### <a name="beneficial-at-extreme-risk"></a>有益 - 重大なリスク
+
+| カテゴリ名 | 範囲の開始 | 範囲の終了 |
+  ----------------|--------------|------------
+  有益        |    0        |        1.99
+  中立           |    2        |        3.99
+  リスクあり           |    4        |        5.99
+  高リスク      |    6        |        7.99
+  重大なリスク   |    8        |        10

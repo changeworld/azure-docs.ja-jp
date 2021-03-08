@@ -4,19 +4,19 @@ ms.service: databox
 ms.topic: include
 ms.date: 07/01/2020
 ms.author: alkohli
-ms.openlocfilehash: d099e33e7b35381f5404c9f8964d3ea90d4f3908
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a78bce9f6e714aa5564791f6bb63996554beabf1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959478"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375892"
 ---
 最後に、発送するデバイスを準備します。 このステップでは、デバイスのすべての共有がオフラインにされます。 いったんこのプロセスを始めると、共有にアクセスできなくなります。
 
 > [!IMPORTANT]
 > 発送準備は必須です。Azure の名前付け規則に準拠していないデータにはフラグが設定されます。 この手順により、データが規則に準拠していないためにデータのアップロードが失敗する可能性が回避されます。
 
-1. **[発送準備]** に移動し、 **[準備の開始]** をクリックします。 既定では、データのコピー中にチェックサムが計算されます。 発送準備によりチェックサムの計算が完了し、ファイルの一覧 ( *-BOM ファイル*) が作成されます。 チェックサムの計算は、データのサイズによっては数時間から数日間かかる場合があります。 
+1. **[発送準備]** に移動し、 **[準備の開始]** をクリックします。 既定では、データのコピー中にチェックサムが計算されます。 発送準備によりチェックサムの計算が完了し、ファイルの一覧 ( *-BOM ファイル* ) が作成されます。 チェックサムの計算は、データのサイズによっては数時間から数日間かかる場合があります。 
    
     ![発送の準備をする 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
@@ -24,15 +24,15 @@ ms.locfileid: "85959478"
         
     ![発送の準備をする 2](media/data-box-prepare-to-ship/prepare-to-ship2.png)
     
-2. 発送準備が開始され、デバイスの共有がオフラインになります。 <!--You see a reminder to download the shipping label once the device is ready.--> デバイスの準備が完了すると、デバイスの状態が "*発送する準備ができました*" に更新され、デバイスがロックされます。
+2. 発送準備が開始され、デバイスの共有がオフラインになります。 <!--You see a reminder to download the shipping label once the device is ready.--> デバイスの準備が完了すると、デバイスの状態が " *発送する準備ができました* " に更新され、デバイスがロックされます。
         
     ![発送の準備をする 3](media/data-box-prepare-to-ship/prepare-to-ship3.png)
 
     デバイスにコピーしたいデータが他にもある場合は、デバイスのロックを解除して、それらをコピーしてから、もう一度、発送準備を実行します。
 
-    この手順でエラーが発生した場合、状態が "*スキャンは完了しましたがエラーが発生しました*" に更新されます。 デバイスのロックを解除し、 **[接続とコピー]** ページにアクセスして、問題の一覧をダウンロードし、エラーを解決します。
+    この手順でエラーが発生した場合、状態が " *スキャンは完了しましたがエラーが発生しました* " に更新されます。 デバイスのロックを解除し、 **[接続とコピー]** ページにアクセスして、問題の一覧をダウンロードし、エラーを解決します。
 
-    ![発送の準備をする 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
+    ![発送の準備をする 4](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
     エラーが解決されたら、 **[発送準備]** を実行します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "85959478"
     1. 完了参照番号をメモしておきます。 所在する国によっては、この番号は別の操作で必要になる場合があります。
     2. このプロセスでコピーされたファイルのリスト (マニフェストとも呼ばれます) をダウンロードします。 後でこのリストを使用して、Azure にアップロードされたファイルを確認できます。 詳細については、「[Inspect BOM files during Prepare to ship (発送準備中に BOM ファイルを検査する)](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship)」をご覧ください。
         
-        ![発送の準備をする 1](media/data-box-prepare-to-ship/prepare-to-ship5.png)
+        ![発送の準備をする 5](media/data-box-prepare-to-ship/prepare-to-ship5.png)
     3. デバイスの発送手順を選択してダウンロードします。 発送手順は、所在する国によって異なります。
     4. 電子インクで配送先住所ラベルが表示されていない場合は、ここで返送ラベルをダウンロードできます。 
 

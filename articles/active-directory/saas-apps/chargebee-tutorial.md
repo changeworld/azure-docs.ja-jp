@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 22753b80931956af6ce448cfee974ae746fff6e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529483"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456221"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>チュートリアル:Chargebee と Azure Active Directory との統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88529483"
 * ユーザーが自分の Azure AD アカウントで Chargebee に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Chargebee では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Chargebee では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-chargebee-from-the-gallery"></a>ギャラリーからの Chargebee の追加
 
@@ -49,7 +49,7 @@ Azure AD への Chargebee の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Chargebee**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Chargebee** 」と入力します。
 1. 結果のパネルから **[Chargebee]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-chargebee"></a>Chargebee の Azure AD シングル サインオンの構成とテスト
@@ -132,15 +132,15 @@ Chargebee に対する Azure AD SSO を構成してテストするには、次�
 
 4. メニューの左側から **[設定]**  >  **[セキュリティ]**  >  **[管理]** の順にクリックします。
 
-    ![Chargebee の構成](./media/chargebee-tutorial/config01.png)
+    ![スクリーンショットは、[設定]、[セキュリティ]、および [管理] が選択されている Chargebee 企業サイトを示しています。](./media/chargebee-tutorial/config01.png)
 
 5. **[シングル サインオン]** ポップアップで、次の手順を実行します。
 
-    ![Chargebee の構成](./media/chargebee-tutorial/config02.png)
+    ![スクリーンショットは [シングル サインオン] ダイアログ ボックスを示しています。[SAML] が選択され、確認が必要なオプションが表示されています。](./media/chargebee-tutorial/config02.png)
 
     a. **[SAML]** を選択します。
 
-    b. **[ログイン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[ログイン URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. Base64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[SAML 証明書]** テキスト ボックスに貼り付けます。
 
@@ -156,23 +156,22 @@ Azure AD ユーザーが Chargebee にサインインできるようにするに
 
 2. メニューの左側の **[Customers]\(顧客\)** をクリックし、 **[Create a New Customer]\(新しい顧客の作成\)** に移動します。
 
-    ![Freedcamp の構成](./media/chargebee-tutorial/config03.png)
+    ![スクリーンショットは Chargebee サイトを示しています。[Customers]\(顧客\) および [Create a New Customer]\(新しい顧客の作成\) が選択されています。](./media/chargebee-tutorial/config03.png)
 
 3. **[New Customer]\(新しい顧客\)** ページで、以下に示した各フィールドの内容を入力し、 **[Create Customer]\(顧客の作成\)** をクリックしてユーザーを作成します。
 
-    ![Freedcamp の構成](./media/chargebee-tutorial/config04.png)
+    ![スクリーンショットは、顧客情報を入力できる [New Customer]\(新しい顧客\) ページを示しています。](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Chargebee] タイルをクリックすると、SSO を設定した Chargebee に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Chargebee] タイルをクリックすると、SSO を設定した Chargebee に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -1,15 +1,16 @@
 ---
 title: パターンの構文リファレンス - LUIS
 description: Language Understanding (LUIS) アプリでユーザーの発話から重要なデータを抽出するエンティティを作成します。 抽出されたデータは、クライアント アプリケーションによって使用されます。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684535"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542191"
 ---
 # <a name="pattern-syntax"></a>パターンの構文
 

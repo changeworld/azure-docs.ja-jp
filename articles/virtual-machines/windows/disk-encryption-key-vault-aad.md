@@ -1,19 +1,19 @@
 ---
 title: Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
-description: この記事では、IaaS VM 用に Microsoft Azure Disk Encryption を使用する場合の前提条件について説明します。
+description: この記事では、Azure AD を使用して Azure Disk Encryption 用のキー コンテナーを作成して構成する方法について説明します。
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: eb625624fa6faa4fdf3ef4fba3b49a0d2d5d7e09
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: fd239b52e647d7a0dfa3b60ee1dc31ea7005311b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284542"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805957"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 
@@ -61,7 +61,7 @@ Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVa
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. 返される**コンテナー名**、**リソース グループ名**、**リソース ID**、**コンテナーの URI**、および**オブジェクト ID** をメモします。これらの情報は、後でディスクを暗号化するときに使用します。 
+4. 返される **コンテナー名**、**リソース グループ名**、**リソース ID**、**コンテナーの URI**、および **オブジェクト ID** をメモします。これらの情報は、後でディスクを暗号化するときに使用します。 
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a>Azure CLI を使用してキー コンテナーを作成する
@@ -80,7 +80,7 @@ Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVa
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. 返される**コンテナー名** (名前)、**リソース グループ名**、**リソース ID** (ID)、**コンテナーの URI**、および**オブジェクト ID** をメモします。これらの情報は後で使用します。 
+4. 返される **コンテナー名** (名前)、**リソース グループ名**、**リソース ID** (ID)、**コンテナーの URI**、および **オブジェクト ID** をメモします。これらの情報は後で使用します。 
 
 ### <a name="create-a-key-vault-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してキー コンテナーを作成する
 

@@ -3,12 +3,12 @@ title: リソースのプロパティについて
 description: リソースのプロパティの確認方法について説明します。
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327750"
 ---
 # <a name="discover-resource-properties"></a>リソースのプロパティについて
 
@@ -74,7 +74,7 @@ Azure Resource Manager テンプレート リファレンスは、テンプレ�
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 検索ボックスに **"resource explorer"** と入力し、 **[リソース エクスプローラー]** を選択します。
 
-    ![Azure portal のリソース エクスプローラー](./media/view-resources/azure-portal-resource-explorer.png)
+    ![Azure portal でのリソース エクスプローラーの検索を示すスクリーンショット。](./media/view-resources/azure-portal-resource-explorer.png)
 
 1. 左側の **[サブスクリプション]** を展開し、Azure サブスクリプションを展開します。 ストレージ アカウントは、 **[プロバイダー]** または **[ResourceGroups]** にあります。
 

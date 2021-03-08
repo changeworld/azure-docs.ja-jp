@@ -3,25 +3,28 @@ title: Azure Cosmos DB サービス利用不可の例外をトラブルシュー
 description: Azure Cosmos DB サービス利用不可の例外を診断して修正する方法について説明します。
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 749592b778612c6903c9c15e336de3fb00978199
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: d19d30c03412ba7212211b30646acb50c3f55ece
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870869"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340025"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable-exceptions"></a>Azure Cosmos DB サービス利用不可の例外を診断してトラブルシューティングする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 SDK は、Azure Cosmos DB に接続することができませんでした。
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 次の一覧には、サービス利用不可の例外の既知の原因と解決策が含まれています。
 
 ### <a name="the-required-ports-are-being-blocked"></a>必要なポートがブロックされている
-[必要なすべてのポート](performance-tips-dotnet-sdk-v3-sql.md#networking)が有効になっていることを確認します。
+[必要なすべてのポート](sql-sdk-connection-modes.md#service-port-ranges)が有効になっていることを確認します。
 
 ### <a name="client-side-transient-connectivity-issues"></a>クライアント側の一時的な接続に関する問題
 サービス利用不可の例外は、タイムアウトの原因となっている一時的な接続の問題がある場合に発生する可能性があります。 一般的に、このシナリオに関連するスタック トレースには、`TransportException` エラーが含まれます。 次に例を示します。

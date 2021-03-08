@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 67e7765a1f46c2be5790c11687e06ea624702b9b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930283"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589572"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Application Insights を使用してライブ Azure Service Fabric アプリケーションをプロファイルする
 
@@ -29,7 +29,7 @@ Application Insights Profiler は、Azure Diagnostics に付属しています�
 
 1. プロファイラはWindows .NET Framework と .NET Core をサポートします。 .NET Framework を使用している場合は、[.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)以降を使用していることを確認してください。 配置されている OS が`Windows Server 2012 R2`以降であることを確認すれば十分です。 プロファイラーは、.NET Core 2.1 以降のアプリケーションをサポートします。
 
-1. デプロイ テンプレート ファイルで、[Azure Diagnostics](../platform/diagnostics-extension-overview.md) の拡張機能を探します。
+1. デプロイ テンプレート ファイルで、[Azure Diagnostics](../agents/diagnostics-extension-overview.md) の拡張機能を探します。
 
 1. `WadCfg` の子要素として次の `SinksConfig` セクションを追加します。 `ApplicationInsightsProfiler` プロパティ値は、自分の Application Insights のインストルメンテーション キーに置き換えます。  
 

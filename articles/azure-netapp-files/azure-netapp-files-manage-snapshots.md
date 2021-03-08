@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files を使用してスナップショットを管理する | Microsoft Docs
-description: Azure NetApp Files を使用してスナップショットを作成して管理する方法について説明します。
+description: Azure NetApp Files を使用して、スナップショットを作成、管理、使用する方法について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 85990aee5143c9ccc0362a00597a748763977204
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080217"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379116"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
-Azure NetApp Files では、オンデマンドのスナップショットの作成と、スナップショット ポリシーを使用した自動スナップショット作成のスケジュール設定がサポートされています。  スナップショットから新しいボリュームを復元することもできます。  
+Azure NetApp Files では、オンデマンドのスナップショットの作成と、スナップショット ポリシーを使用した自動スナップショット作成のスケジュール設定がサポートされています。 また、新しいボリュームにスナップショットを復元したり、クライアントを使用して 1 つのファイルを復元したり、スナップショットを使用して既存のボリュームを元に戻したりすることもできます。
+
+> [!NOTE] 
+> リージョン間レプリケーションでのスナップショット管理に関する考慮事項については、「[リージョン間レプリケーションを使用するための要件と考慮事項](cross-region-replication-requirements-considerations.md)」を参照してください。
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>ボリュームのオンデマンド スナップショットを作成する
 
@@ -49,7 +52,7 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
 
 ### <a name="register-the-feature"></a>機能を登録する
 
-**スナップショット ポリシー**機能は、現在プレビュー段階です。 この機能を初めて使用する場合は、まず機能を登録する必要があります。 
+**スナップショット ポリシー** 機能は、現在プレビュー段階です。 この機能を初めて使用する場合は、まず機能を登録する必要があります。 
 
 1. 機能を登録します。 
 
@@ -65,6 +68,7 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
+また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
 ### <a name="create-a-snapshot-policy"></a>スナップショット ポリシーを作成する 
 
@@ -107,6 +111,8 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
 
 作成したスナップショット ポリシーをボリュームで使用する場合は、ボリュームにポリシーを適用する必要があります。 
 
+リージョン間レプリケーションでは、スナップショット ポリシーをターゲット ボリュームに適用することはできません。  
+
 1.  **[ボリューム]** ページに移動し、スナップショット ポリシーを適用するボリュームを右クリックし、 **[編集]** を選択します。
 
     ![ボリュームの右クリックメニュー](../media/azure-netapp-files/volume-right-cick-menu.png) 
@@ -141,6 +147,17 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
 
     ![スナップショット ポリシーの削除の確認](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
 
+## <a name="edit-the-hide-snapshot-path-option"></a>[スナップショット パスを非表示にする] オプションを編集する
+[スナップショット パスを非表示にする] オプションを使用して、ボリュームのスナップショット パスを表示するかどうかを制御します。 [NFS](azure-netapp-files-create-volumes.md#create-an-nfs-volume) または [SMB](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) のボリュームの作成中に、スナップショット パスを非表示にするかどうかを指定することができます。 その後、必要に応じて、[スナップショット パスを非表示にする] オプションを編集できます。  
+
+> [!NOTE]
+> リージョン間レプリケーションの[ターゲット ボリューム](cross-region-replication-create-peering.md#create-the-data-replication-volume-the-destination-volume)に対しては、[スナップショット パスを非表示にする] オプションが既定で有効になっており、この設定を変更することはできません。 
+
+1. ボリュームの [スナップショット パスを非表示にする] オプションの設定を表示するには、ボリュームを選択します。 **[スナップショット パスを非表示にする]** フィールドに、オプションが有効になっているかどうかが表示されます。   
+    ![[スナップショット パスを非表示にする] フィールドを示すスクリーンショット。](../media/azure-netapp-files/hide-snapshot-path-field.png) 
+2. [スナップショット パスを非表示にする] オプションを編集するには、ボリュームのページで **[編集]** をクリックし、必要に応じて **[スナップショット パスを非表示にする]** オプションを変更します。   
+    ![ボリューム スナップショットの [編集] オプションを示しているスクリーンショット。](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>スナップショットから新しいボリュームを復元する
 
 現時点では、スナップショットから復元できるのは、新しいボリュームに限られています。 
@@ -164,7 +181,94 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
     新しいボリュームでは、スナップショットで使用されていたものと同じプロトコルが使用されます。   
     スナップショットから復元された新しいボリュームが [ボリューム] ブレードに表示されます。
 
+## <a name="restore-a-file-from-a-snapshot-using-a-client"></a>クライアントを使用してスナップショットからファイルを復元する
+
+[スナップショット全体をボリュームに復元する](#restore-a-snapshot-to-a-new-volume)ことを望まない場合は、ボリュームがマウントされているクライアントを使用してスナップショットからファイルを復元できます。  
+
+マウントされたボリュームには、クライアントからアクセス可能な `.snapshot` (NFS クライアントの場合) または`~snapshot` (SMB クライアントの場合) という名前のスナップショットディレクトリが含まれています。 スナップショット ディレクトリには、ボリュームのスナップショットに対応するサブディレクトリが含まれています。 各サブディレクトリには、スナップショットのファイルが含まれます。 ファイルを誤って削除または上書きした場合、ファイルをスナップショットのサブディレクトリから読み取り/書き込みディレクトリにコピーすることで、ファイルを親の読み取り/書き込みディレクトリに復元できます。 
+
+[[スナップショット パスを非表示にする] オプション](#edit-the-hide-snapshot-path-option)を使用することで、スナップショット ディレクトリへのアクセスを制御できます。 このオプションによって、ディレクトリをクライアントに対して非表示にするかどうかが制御されます。 したがって、スナップショット内のファイルとフォルダーへのアクセスも制御されます。  
+
+NFSv4.1 では `.snapshot` ディレクトリ (`ls -la`) は表示されません。 しかし、[スナップショット パスを非表示にする] オプションが設定されていないときは、クライアントのコマンド ラインから `cd <snapshot-path>` コマンドを使用して NFSv4.1 経由で `.snapshot` ディレクトリにアクセスできます。 
+
+### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Linux NFS クライアントを使用してファイルを復元する 
+
+1. `ls` Linux コマンドを使用して、`.snapshot` ディレクトリから復元するファイルを一覧表示します。 
+
+    次に例を示します。
+
+    `$ ls my.txt`   
+    `ls: my.txt: No such file or directory`   
+
+    `$ ls .snapshot`   
+    `daily.2020-05-14_0013/              hourly.2020-05-15_1106/`   
+    `daily.2020-05-15_0012/              hourly.2020-05-15_1206/`   
+    `hourly.2020-05-15_1006/             hourly.2020-05-15_1306/`   
+
+    `$ ls .snapshot/hourly.2020-05-15_1306/my.txt`   
+    `my.txt`
+
+2. `cp` コマンドを使用して、ファイルを親ディレクトリにコピーします。  
+
+    次に例を示します。 
+
+    `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
+
+    `$ ls my.txt`   
+    `my.txt`   
+
+### <a name="restore-a-file-by-using-a-windows-client"></a>Windows クライアントを使用してファイルを復元する 
+
+1. ボリュームの `~snapshot` ディレクトリが非表示になっている場合は、親ディレクトリの[非表示の項目を表示](https://support.microsoft.com/help/4028316/windows-view-hidden-files-and-folders-in-windows-10)して、`~snapshot` を表示します。
+
+    ![非表示の項目を表示](../media/azure-netapp-files/snapshot-show-hidden.png) 
+
+2. `~snapshot` 内のサブディレクトリに移動して、復元するファイルを見つけます。  ファイルを右クリックします。 **[コピー]** を選択します。  
+
+    ![ファイルをコピーして復元する](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
+
+3. 親ディレクトリに戻ります。 親ディレクトリを右クリックし、[`Paste`] を選択して、ファイルをディレクトリに貼り付けます。
+
+    ![ファイルを貼り付けて復元する](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
+
+4. 親ディレクトリを右クリックし、 **[プロパティ]** を選択します。 **[以前のバージョン]** タブをクリックしてスナップショットの一覧を表示し、 **[復元]** を選択してファイルを復元することもできます。  
+
+    ![[プロパティ] の [以前のバージョン]](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
+
+## <a name="revert-a-volume-using-snapshot-revert"></a>スナップショットの復元を使用してボリュームを元に戻す
+
+スナップショットの復元機能を使用すると、特定のスナップショットが作成されたときの状態にボリュームをすばやく戻すことができます。 ほとんどの場合、ボリュームを元に戻す方が、個々のファイルをスナップショットからアクティブなファイル システムに復元するよりもはるかに高速です。 また、スナップショットを新しいボリュームに復元する場合と比べて、スペース効率が高くなります。 
+
+[ボリュームを元に戻す] オプションは、ボリュームの [スナップショット] メニューにあります。 復元するスナップショットを選択すると、Azure NetApp Files によって、ボリュームが選択したスナップショットの作成時に含まれていたデータとタイムスタンプに戻されます。 
+
+> [!IMPORTANT]
+> 選択したスナップショットよりも後に作成されたアクティブなファイル システム データとスナップショットは失われます。 スナップショットの復元操作によって、ターゲット ボリューム内の "*すべて*" のデータが、選択したスナップショットのデータに置き換えられます。 スナップショットを選択するときは、スナップショットの内容と作成日に注意する必要があります。 スナップショットの復元操作を元に戻すことはできません。
+
+1. ボリュームの **[スナップショット]** メニューにアクセスします。  復元操作に使用するスナップショットを右クリックします。 **[ボリュームを元に戻す]** を選択します。 
+
+    ![スナップショットの右クリック メニューについて説明したスクリーンショット](../media/azure-netapp-files/snapshot-right-click-menu.png) 
+
+2. [ボリュームをスナップショットに戻す] ウィンドウで、ボリュームの名前を入力し、 **[元に戻す]** をクリックします。   
+
+    これで、選択したスナップショットの特定の時点にボリュームが復元されます。
+
+    ![[ボリュームをスナップショットに戻す] ウィンドウのスクリーンショット](../media/azure-netapp-files/snapshot-revert-volume.png) 
+
+## <a name="delete-snapshots"></a>スナップショットの削除  
+
+保持する必要がなくなったスナップショットは削除できます。 
+
+1. ボリュームの **[スナップショット]** メニューにアクセスします。 削除するスナップショットを右クリックします。 **[削除]** を選択します。
+
+    ![スナップショットの右クリック メニューについて説明したスクリーンショット](../media/azure-netapp-files/snapshot-right-click-menu.png) 
+
+2. [スナップショットの削除] ウィンドウで、 **[はい]** をクリックして、スナップショットを削除することを確定します。 
+
+    ![スナップショットの削除を確認するスクリーンショット](../media/azure-netapp-files/snapshot-confirm-delete.png)  
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)
+* [スナップショット ポリシーのトラブルシューティング](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
+* [Azure NetApp Files のスナップショット 101 ビデオ](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
+* [Azure アプリケーション整合性スナップショット ツールとは](azacsnap-introduction.md)

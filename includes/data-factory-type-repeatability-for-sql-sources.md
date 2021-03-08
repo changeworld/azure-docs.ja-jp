@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9447cec55c53861ca57d5416a91ffefd35fdd20b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181642"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91571962"
 ---
 ## <a name="repeatability-during-copy"></a>コピー中の再現性
 他のデータ ストアから Azure SQL/SQL Server にデータをコピーする場合、意図しない結果を回避するために、再現性の維持を考慮する必要があります。 
@@ -74,7 +74,7 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2"></a>メカニズム 2
 > [!IMPORTANT]
-> 現在、Azure SQL Data Warehouse では sliceIdentifierColumnName はサポートされていません。 
+> 現在、sliceIdentifierColumnName は Azure Synapse Analytics ではサポートされていません。 
 
 再現性を実現するためのもう 1 つのメカニズムは、対象のテーブルに専用の列 (**sliceIdentifierColumnName**) を用意する方法です。 この列は、Azure Data Factory がソースと対象の同期状態を保つために使用されます。 この手法は、対象の SQL テーブル スキーマを変更または定義する際に柔軟性がある場合に機能します。 
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/11/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9e3aaf0747e9b28526a43d9f734084f8a75662
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743696"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370548"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクセス レビューを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "84743696"
 
 ## <a name="prerequisites"></a>前提条件
 
-[特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+ アクセス レビューを作成するには、リソースの Azure ロールの[所有者](../../role-based-access-control/built-in-roles.md#owner)または[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)に割り当てられている必要があります。
 
 ## <a name="open-access-reviews"></a>アクセス レビューを開く
 
@@ -40,7 +40,7 @@ ms.locfileid: "84743696"
 
 1. 左側のメニューで、 **[Azure リソース]** を選択します。
 
-1. サブスクリプションや管理グループなど、管理するリソースを選択します。
+1. サブスクリプションなど、管理するリソースを選択します。
 
 1. [管理] の下の **[アクセス レビュー]** を選択します。
 

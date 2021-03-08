@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: d01f2235f65cefd893f0dd3291ad98a9ee391eab
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0994126c4e31d880a792904b0c086a56f6bd90fb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555939"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727728"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cornerstone OnDemand の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88555939"
 * Cornerstone OnDemand にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Cornerstone OnDemand に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,24 +42,24 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Cornerstone OnDemand では、**SP** によって開始される SSO がサポートされます
 * Cornerstone OnDemand では、[自動化されたユーザー プロビジョニング](cornerstone-ondemand-provisioning-tutorial.md)がサポートされます
-* Cornerstone OnDemand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+
 
 ## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>ギャラリーからの Cornerstone OnDemand の追加
 
 Azure AD への Cornerstone OnDemand の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cornerstone OnDemand を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Cornerstone OnDemand**」と入力します。
 1. 結果パネルで **[Cornerstone OnDemand]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>Cornerstone OnDemand の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-cornerstone-ondemand"></a>Cornerstone OnDemand の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Cornerstone OnDemand に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと Cornerstone OnDemand の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Cornerstone OnDemand で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Cornerstone OnDemand に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -74,17 +72,17 @@ Cornerstone OnDemand で Azure AD SSO を構成してテストするには、次
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Cornerstone OnDemand** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
+1. Azure portal の **Cornerstone OnDemand** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.csod.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.csod.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Cornerstone OnDemand クライアント サポート チーム](mailto:moreinfo@csod.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -116,24 +114,18 @@ Cornerstone OnDemand で Azure AD SSO を構成してテストするには、次
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーション一覧で **[Cornerstone OnDemand]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-cornerstone-ondemand-sso"></a>Cornerstone OnDemand SSO の構成
 
-**Cornerstone OnDemand** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Cornerstone OnDemand サポート チーム](mailto:moreinfo@csod.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Cornerstone OnDemand** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Cornerstone OnDemand サポート チーム](mailto:moreinfo@csod.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-cornerstone-ondemand-test-user"></a>Cornerstone OnDemand テスト ユーザーの作成
 
-このセクションの目的は、Cornerstone OnDemand で B.Simon というユーザーを作成することです。 Cornerstone OnDemand では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/cornerstone-ondemand-provisioning-tutorial)をご覧ください。
+このセクションの目的は、Cornerstone OnDemand で B.Simon というユーザーを作成することです。 Cornerstone OnDemand では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./cornerstone-ondemand-provisioning-tutorial.md)をご覧ください。
 
 **ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
@@ -144,18 +136,14 @@ Cornerstone OnDemand で Azure AD SSO を構成してテストするには、次
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [Cornerstone OnDemand] タイルをクリックすると、SSO を設定した Cornerstone OnDemand に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Cornerstone OnDemand のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Cornerstone OnDemand のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Microsoft マイ アプリを使用することができます。 マイアプリで [Cornerstone OnDemand] タイルをクリックすると、Cornerstone OnDemand のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で Cornerstone OnDemand を試す](https://aad.portal.azure.com)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+Cornerstone OnDemand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

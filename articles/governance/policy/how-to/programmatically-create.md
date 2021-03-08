@@ -3,12 +3,12 @@ title: プログラムによるポリシーの作成
 description: この記事では、Azure CLI、Azure PowerShell、および REST API を使用して、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047056"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033865"
 ---
 # <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 
@@ -88,14 +88,14 @@ ms.locfileid: "89047056"
    _ContosoRG_ を対象とするリソース グループの名前に置き換えます。
 
    `New-AzPolicyAssignment` の **Scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは、`Get-AzResourceGroup` の **ResourceId** プロパティが返す完全なリソース パスを使用します。 各コンテナーの **Scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。
-   `{rType}` は、そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
+   `{rType}` は、そのリソースの **リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
 
    - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - リソース グループ - `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - サブスクリプション - `/subscriptions/{subId}/`
+   - サブスクリプション - `/subscriptions/{subId}`
    - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Resource Manager PowerShell モジュールを使用したリソース ポリシーの管理の詳細については、「[Az.Resources](/powershell/module/az.resources/#policies)」をご覧ください。
+Resource Manager PowerShell モジュールを使用したリソース ポリシーの管理の詳細については、「[Az.Resources](/powershell/module/az.resources/#policy)」をご覧ください。
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>ARMClient を使用してポリシー定義を作成して割り当てる
 
@@ -203,7 +203,7 @@ Resource Manager PowerShell モジュールを使用したリソース ポリシ
    ```
 
    このコマンドは、_Audit Storage Accounts Open to Public Networks_ という名前のポリシー定義を作成します。
-   使用できるその他のパラメーターの詳細については、「[az policy definition create](/cli/azure/policy/definition#az-policy-definition-create)」を参照してください。
+   使用できるその他のパラメーターの詳細については、「[az policy definition create](/cli/azure/policy/definition#az_policy_definition_create)」を参照してください。
 
    場所のパラメーターを指定せずに呼び出す場合、`az policy definition creation` は、既定により、セッション コンテキストの選択されたサブスクリプションにポリシー定義を保存することになります。 定義を別の場所に保存するには、次のパラメーターを使用します。
 
@@ -216,7 +216,7 @@ Resource Manager PowerShell モジュールを使用したリソース ポリシ
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` の **scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは完全なリソース パスを使用します。 各コンテナーの **scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` は、そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
+   `az policy assignment create` の **scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは完全なリソース パスを使用します。 各コンテナーの **scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` は、そのリソースの **リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
 
    - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - リソース グループ - `/subscriptions/{subID}/resourceGroups/{rgName}`
@@ -242,7 +242,7 @@ Azure CLI を使用してリソース ポリシーを管理する方法の詳細
 この記事のコマンドとクエリの詳細については、次の記事をご覧ください。
 
 - [Azure REST API リソース](/rest/api/resources/)
-- [Azure PowerShell モジュール](/powershell/module/az.resources/#policies)
+- [Azure PowerShell モジュール](/powershell/module/az.resources/#policy)
 - [Azure CLI Policy コマンド](/cli/azure/policy)
 - [Azure Policy Insights Resource Provider REST API リファレンス](/rest/api/policy-insights)
 - [Azure 管理グループでリソースを整理する](../../management-groups/overview.md)

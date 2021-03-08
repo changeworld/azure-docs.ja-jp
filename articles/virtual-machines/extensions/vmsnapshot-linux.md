@@ -1,21 +1,22 @@
 ---
 title: Azure Backup 用の VM スナップショット Linux 拡張機能
-description: VM スナップショット拡張機能を使用して、Azure Backup から仮想マシンのアプリケーション整合性バックアップを作成します
+description: VM スナップショット Linux 拡張機能を使用して、Azure Backup から仮想マシンのアプリケーション整合性バックアップを作成します。
 services: backup, virtual-machines-linux
 documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: d0ad54c19749d670f9ab753e1e6d8eb130475ffc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bf653bb42351c9ab4811fde695c8f821fd42d7c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79415112"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966770"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Azure Backup 用の VM スナップショット Linux 拡張機能
 

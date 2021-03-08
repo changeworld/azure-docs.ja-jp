@@ -1,6 +1,5 @@
 ---
 title: Media Services v3 を使用してビデオを分析する
-titleSuffix: Azure Media Services
 description: Azure Media Services を使用してビデオを分析する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7bdc658ab5db9a3ffb27f3c155272f8928bbfb04
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c3ca3197e786bbfac20bec2370d2aa920ad2c4df
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265866"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891524"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>チュートリアル:Media Services v3 を使用してビデオを分析する
 
@@ -68,8 +67,8 @@ ms.locfileid: "89265866"
 
 サンプルを実行すると、次のアクションが行われます。
 
-1. ビデオを分析する**変換**と**ジョブ**を作成します。
-2. 入力**アセット**を作成し、そこにビデオをアップロードします。 アセットは、ジョブの入力として使用されます。
+1. ビデオを分析する **変換** と **ジョブ** を作成します。
+2. 入力 **アセット** を作成し、そこにビデオをアップロードします。 アセットは、ジョブの入力として使用されます。
 3. ジョブの出力を格納する出力アセットを作成します。
 4. ジョブを送信します。
 5. ジョブの状態を確認します。
@@ -86,7 +85,7 @@ ms.locfileid: "89265866"
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>入力アセットを作成し、ローカル ファイルをそれにアップロードする 
 
-**CreateInputAsset** 関数は、新しい入力[アセット](/rest/api/media/assets)を作成し、指定されたローカル ビデオ ファイルをそこにアップロードします。 このアセットは、エンコード ジョブへの入力として使われます。 Media Services v3 では、ジョブへの入力としては、アセットを使うか、または HTTPS URL 経由で Media Services アカウントから使用できるようにされたコンテンツを使うことができます。 HTTPS URL からのエンコード方法については、[こちら](job-input-from-http-how-to.md)の記事を参照してください。  
+**CreateInputAsset** 関数は、新しい入力 [アセット](/rest/api/media/assets)を作成し、指定されたローカル ビデオ ファイルをそこにアップロードします。 このアセットは、エンコード ジョブへの入力として使われます。 Media Services v3 では、ジョブへの入力としては、アセットを使うか、または HTTPS URL 経由で Media Services アカウントから使用できるようにされたコンテンツを使うことができます。 HTTPS URL からのエンコード方法については、[こちら](job-input-from-http-how-to.md)の記事を参照してください。  
 
 Media Services v3 では、Azure Storage API を使ってファイルをアップロードします。 次の .NET スニペットはその方法を示したものです。
 
@@ -108,7 +107,7 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>ビデオを分析する変換とジョブを作成する
 
-Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ**を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは**変換**と呼ばれます。 詳しくは、「[Transforms and jobs](./transforms-jobs-concept.md)」(変換とジョブ) をご覧ください。 このチュートリアルで説明されているサンプルでは、指定されたビデオを分析するレシピが定義されています。
+Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ** を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは **変換** と呼ばれます。 詳しくは、「[Transforms and jobs](./transforms-jobs-concept.md)」(変換とジョブ) をご覧ください。 このチュートリアルで説明されているサンプルでは、指定されたビデオを分析するレシピが定義されています。
 
 #### <a name="transform"></a>変換
 

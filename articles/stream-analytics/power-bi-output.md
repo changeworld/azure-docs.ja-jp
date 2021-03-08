@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics からの Power BI 出力
 description: この記事では、Azure Stream Analytics から Power BI にデータを出力する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0fc4e9a794429e7f1c1609fac287e67dabb3c878
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875505"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020062"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Power BI 出力
 
@@ -20,7 +19,7 @@ ms.locfileid: "88875505"
 
 Stream Analytics からの Power BI 出力は、現在、Azure China 21Vianet および Azure Germany (T-Systems International) リージョンでは利用できません。
 
-## <a name="ouput-configuration"></a>出力構成
+## <a name="output-configuration"></a>出力の構成
 
 次の表に、ご自分の Power BI 出力を構成するためのプロパティの名前とその説明を示します。
 
@@ -44,11 +43,14 @@ Power BI データセットとテーブル スキーマがまだ存在しない�
 
 Power BI では、先入れ先出し (FIFO) のアイテム保持ポリシーが使用されます。 200,000 行に到達するまでデータがテーブルに収集されます。
 
+> [!NOTE]
+> 複数の出力を使用して同じデータセットに書き込むことは、問題がいくつか発生する可能性があるため、お勧めしません。 各出力によって、Power BI データセットを個別に作成する試みが行われますが、これにより、同じ名前を持つ複数のデータセットが生成される可能性があります。 また、出力に一貫性のあるスキーマが含まれていない場合は、データセットによって書き込みごとにスキーマが変更されるため、スキーマ変更要求の過多につながります。 これらの問題が回避された場合でも、複数の出力は、マージされた 1 つの出力よりもパフォーマンスが低下します。
+
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Stream Analytics から Power BI にデータ型を変換する
 
 Azure Stream Analytics では、出力スキーマが変更されると、データ モデルが実行時に動的に更新されます。 列名の変更、列の型の変更、列の追加または削除は、すべて追跡されます。
 
-次の表は、Power BI データセットとテーブルが存在しない場合の、[Stream Analytics データ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)から Power BI の [Entity Data Model (EDM) 型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)へのデータ型の変換を示します。
+次の表は、Power BI データセットとテーブルが存在しない場合の、[Stream Analytics データ型](/stream-analytics-query/data-types-azure-stream-analytics)から Power BI の [Entity Data Model (EDM) 型](/dotnet/framework/data/adonet/entity-data-model)へのデータ型の変換を示します。
 
 Stream Analytics から | Power BI へ
 -----|-----
@@ -73,13 +75,9 @@ Datetime | String | String |  Datetime | String
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
-出力バッチ サイズについては、「[Power BI REST API の制限事項](https://msdn.microsoft.com/library/dn950053.aspx)」を参照してください。
+出力バッチ サイズについては、「[Power BI REST API の制限事項](/power-bi/developer/automation/api-rest-api-limitations)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
+* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する (プレビュー)](powerbi-output-managed-identity.md)
 * [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
-* [クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-cli.md)
-* [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
-* [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
-* [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)

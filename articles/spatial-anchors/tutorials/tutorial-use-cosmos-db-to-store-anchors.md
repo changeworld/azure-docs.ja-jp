@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:Azure Cosmos DB を使用してアンカーを共有する
 description: このチュートリアルでは、バックエンド サービスと Azure Cosmos DB を使用して、Unity で Azure Spatial Anchors 識別子を Android/iOS デバイス間で共有する方法について説明します。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8ff431c27dd53e82f9003b658c82ceb3efb5d320
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: ff888cd98cc79f3e2d508b01f092102eaa038c86
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810022"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494762"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>チュートリアル:Azure Cosmos DB バックエンドを使用してセッションやデバイス間で Azure Spatial Anchors を共有する
 
@@ -33,11 +33,11 @@ ms.locfileid: "87810022"
 
 ## <a name="make-minor-changes-to-the-sharingservice-files"></a>SharingService ファイルに軽微な変更を加える
 
-**ソリューション エクスプローラー**で、`SharingService\Startup.cs` を開きます。
+**ソリューション エクスプローラー** で、`SharingService\Startup.cs` を開きます。
 
 ファイルの先頭にある `#define INMEMORY_DEMO` を見つけ、その行をコメントアウトします。ファイルを保存します。
 
-**ソリューション エクスプローラー**で、`SharingService\appsettings.json` を開きます。
+**ソリューション エクスプローラー** で、`SharingService\appsettings.json` を開きます。
 
 `StorageConnectionString` プロパティを見つけて、その値を、[データベース アカウントの作成手順](#create-a-database-account)でコピーした `Connection String` 値と同じになるように設定します。 ファイルを保存します。
 

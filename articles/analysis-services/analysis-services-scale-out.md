@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーをスケールアウトによ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716930"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019437"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -42,11 +42,13 @@ ms.locfileid: "88716930"
 
 * 処理*と*スケールアウトの操作を両方とも自動化する場合に重要なことは、最初にプライマリ サーバーでデータを処理してから同期を実行し、その後でスケールアウト操作を実行することです。 この順序により、QPU とメモリのリソースに対する影響が最小限に抑えられます。
 
+* スケールアウト操作中、クエリ プール内のすべてのサーバー (プライマリ サーバーを含む) が一時的にオフラインになります。
+
 * クエリ プールにレプリカがない場合でも、同期は許可されます。 プライマリ サーバーでの処理操作からの新しいデータを使用してゼロから 1 つ以上のレプリカにスケールアウトする場合は、まずクエリ プールにレプリカがない状態で同期を実行してから、スケールアウトします。スケール アウトする前に同期することで、新しく追加されたレプリカの冗長ハイドレーションが回避されます。
 
-* モデル データベースをプライマリ サーバーから削除しても、クエリ プール内のレプリカから自動的には削除されません。 そのデータベースのファイルをレプリカの共有 BLOB ストレージの場所から削除してから、クエリ プール内のレプリカ上のモデル データベースを削除する、[Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell コマンドを使用して、同期操作を実行する必要があります。 model データベースがクエリ プール内のレプリカには存在していてプライマリ サーバーには存在していないかどうかを調べるには、 **[処理中のサーバーと照会中のプールを分けてください]** が **[はい]** に設定されていることを確認します。 次に、SSMS を使用し、`:rw` 修飾子を使ってプライマリ サーバーに接続して、データベースが存在するかどうかを確認します。 次に、`:rw` 修飾子を使わずに接続することでクエリ プール内のレプリカに接続して、同じデータベースがそこにも存在するかどうかを確認します。 データベースがクエリ プール内のレプリカには存在していて、プライマリ サーバーには存在していない場合は、同期操作を実行します。   
+* モデル データベースをプライマリ サーバーから削除しても、クエリ プール内のレプリカから自動的には削除されません。 そのデータベースのファイルをレプリカの共有 BLOB ストレージの場所から削除してから、クエリ プール内のレプリカ上のモデル データベースを削除する、[Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell コマンドを使用して、同期操作を実行する必要があります。 model データベースがクエリ プール内のレプリカには存在していてプライマリ サーバーには存在していないかどうかを調べるには、 **[処理中のサーバーと照会中のプールを分けてください]** が **[はい]** に設定されていることを確認します。 次に、SSMS を使用し、`:rw` 修飾子を使ってプライマリ サーバーに接続して、データベースが存在するかどうかを確認します。 次に、`:rw` 修飾子を使わずに接続することでクエリ プール内のレプリカに接続して、同じデータベースがそこにも存在するかどうかを確認します。 データベースがクエリ プール内のレプリカには存在していて、プライマリ サーバーには存在していない場合は、同期操作を実行します。   
 
-* プライマリ サーバー上のデータベースの名前を変更する場合は、データベースがすべてのレプリカに適切に同期されようにするために必要な追加の手順があります。 名前を変更した後、`-Database` パラメーターに古いデータベース名を指定して [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) コマンドを使用して同期を実行します。 この同期により、古い名前を持つデータベースとファイルがレプリカから削除されます。 その後、新しいデータベース名で `-Database` パラメーターを使用して、もう一度同期を実行します。 2 回目の同期により、新しい名前のデータベースが 2 つ目のファイル セットにコピーされ、レプリカがハイドレートされます。 これらの同期は、ポータルでモデルの同期コマンドを使用して実行することはできません。
+* プライマリ サーバー上のデータベースの名前を変更する場合は、データベースがすべてのレプリカに適切に同期されようにするために必要な追加の手順があります。 名前を変更した後、`-Database` パラメーターに古いデータベース名を指定して [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) コマンドを使用して同期を実行します。 この同期により、古い名前を持つデータベースとファイルがレプリカから削除されます。 その後、新しいデータベース名で `-Database` パラメーターを使用して、もう一度同期を実行します。 2 回目の同期により、新しい名前のデータベースが 2 つ目のファイル セットにコピーされ、レプリカがハイドレートされます。 これらの同期は、ポータルでモデルの同期コマンドを使用して実行することはできません。
 
 ### <a name="synchronization-mode"></a>同期化モード
 
@@ -114,7 +116,7 @@ SSMS を使用して、詳細プロパティで ReplicaSyncMode を設定しま�
 
 **[概要]** > 対象のモデル > **[Synchronize model]\(モデルの同期\)** の順に選択します。
 
-![スケールアウト スライダー](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![[同期] アイコン](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
 
@@ -148,11 +150,11 @@ SSMS を使用して、詳細プロパティで ReplicaSyncMode を設定しま�
 
 PowerShell を使用する前に、[最新の Azure PowerShell モジュールをインストールまたは更新します](/powershell/azure/install-az-ps)。 
 
-同期を実行するには、[Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) を使用します。
+同期を実行するには、[Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) を使用します。
 
-クエリ レプリカの数を設定するには、[Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) を使用します。 省略可能な `-ReadonlyReplicaCount` パラメーターを指定します。
+クエリ レプリカの数を設定するには、[Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) を使用します。 省略可能な `-ReadonlyReplicaCount` パラメーターを指定します。
 
-処理サーバーをクエリ プールから分離するには、[Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) を使用します。 省略可能な `-DefaultConnectionMode` パラメーターを `Readonly` を使用するように指定します。
+処理サーバーをクエリ プールから分離するには、[Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) を使用します。 省略可能な `-DefaultConnectionMode` パラメーターを `Readonly` を使用するように指定します。
 
 詳しくは、[Az.AnalysisServices モジュールでのサービス プリンシパルの使用](analysis-services-service-principal.md#azmodule)に関する記事をご覧ください。
 
@@ -181,4 +183,4 @@ SSMS、Visual Studio、および PowerShell、Azure 関数アプリ、AMO の接
 ## <a name="related-information"></a>関連情報
 
 [サーバー メトリックの監視](analysis-services-monitor.md)   
-[Azure Analysis Services を管理する](analysis-services-manage.md) 
+[Azure Analysis Services を管理する](analysis-services-manage.md)

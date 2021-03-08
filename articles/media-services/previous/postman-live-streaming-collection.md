@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 13a82aaa31734e98377d9f68c59c25c83a5d5f8a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c01883c75ad5d6633abeffcd29a7d3cf2485d6fc
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259134"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511724"
 ---
 # <a name="import-a-postman-collection-with-live-streaming-operations"></a>ライブ ストリーミング操作による Postman コレクションのインポート
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-この記事には、**ライブ ストリーミング** Azure Media Services REST API を呼び出すグループ化された HTTP 要求を含む **Postman** コレクションの定義が含まれています。 Media Services REST API の呼び出しで使用できるように **Postman**を構成する方法については、「[Media Services REST API 呼び出し用の Postman の構成](media-rest-apis-with-postman.md)」チュートリアルを参照してください。
+この記事には、**ライブ ストリーミング** Azure Media Services REST API を呼び出すグループ化された HTTP 要求を含む **Postman** コレクションの定義が含まれています。 Media Services REST API の呼び出しで使用できるように **Postman** を構成する方法については、「[Media Services REST API 呼び出し用の Postman の構成](media-rest-apis-with-postman.md)」チュートリアルを参照してください。
 
-```
+```json
 {
     "info": {
         "name": "Azure Media Live Streaming Quickstart",
         "_postman_id": "0dc5e4c6-4865-cbe9-250c-78e40b634256",
-        "description": "Quickstart collection to use Live Streaming and Encding on Azure Media Services\n",
+        "description": "Quickstart collection to use Live Streaming and Encoding on Azure Media Services\n",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [

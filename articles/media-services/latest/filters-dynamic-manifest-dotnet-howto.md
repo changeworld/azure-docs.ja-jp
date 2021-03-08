@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 .NET SDK を使用したフィルターの作成
-description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
+description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services v3 .NET SDK を使用して、この選択型ストリーミングを実現するための動的マニフェストを作成します。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2a392ab5301a51edff1df88596f2fe68d85ea63
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d007c104dc53683d49547db582e8de6981ab921f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266716"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093430"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用してフィルターを作成する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、アセットの既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツのアセットフィルターを定義することができます。 
+コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、アセットの既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツのアセットフィルターを定義することができます。
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
@@ -109,7 +109,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
       
 ## <a name="stream-using-filters"></a>フィルターを使用するストリーム
 
-フィルターを定義すると、クライアントからストリーミング URL で使用できるようになります。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。
+フィルターを定義すると、クライアントからストリーミング URL で使用できるようになります。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル (Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。
 
 次の表に、フィルターを含んだ URL の例をいくつか示します。
 

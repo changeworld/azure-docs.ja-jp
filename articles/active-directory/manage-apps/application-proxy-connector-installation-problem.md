@@ -1,37 +1,32 @@
 ---
-title: アプリケーション プロキシ エージェント コネクタのインストール時の問題 | Microsoft Docs
-description: アプリケーション プロキシ エージェント コネクタのインストール時に発生する可能性のある問題のトラブルシューティング方法
+title: アプリケーション プロキシ エージェント コネクタのインストール時の問題
+description: Azure Active Directory 用のアプリケーション プロキシ エージェント コネクタのインストール時に発生する可能性のある問題のトラブルシューティング方法。
 services: active-directory
-documentationcenter: ''
 author: kenwith
-manager: celestedg
-ms.assetid: ''
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/21/2018
+ms.date: 01/28/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f76f03883746b6f4b87bb817f8adde850ed28b3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764691"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253666"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
 
-Microsoft AAD アプリケーション プロキシ コネクタは、発信接続を使用して、クラウドで使用可能なエンドポイントから内部のドメインへの接続を確立する内部ドメイン コンポーネントです。
+Microsoft Azure Active Directory アプリケーション プロキシ コネクタは、発信接続を使用して、クラウドで使用可能なエンドポイントから内部のドメインへの接続を確立する、内部ドメイン コンポーネントです。
 
 ## <a name="general-problem-areas-with-connector-installation"></a>コネクタのインストールに関する一般的な問題領域
 
-コネクタのインストールに失敗する場合、根本原因は通常、次の領域のいずれかにあります。
+コネクタのインストールに失敗する場合、根本原因は通常、次の領域のいずれかにあります。 **トラブルシューティングの前段階として、コネクタを再起動してください。**
 
-1.  **接続** – インストールを正常に完了するには、新しいコネクタを登録し、将来の信頼プロパティを確立する必要があります。 これは、AAD アプリケーション プロキシ クラウド サービスに接続することによって行います。
+1.  **接続** – インストールを正常に完了するには、新しいコネクタを登録し、将来の信頼プロパティを確立する必要があります。 これは、Azure Active Directory アプリケーション プロキシ クラウド サービスに接続することによって行います。
 
 2.  **信頼の確立** – 新しいコネクタは、自己署名証明書を作成し、クラウド サービスに登録します。
 
@@ -42,9 +37,9 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>クラウド アプリケーション プロキシ サービスと Microsoft のログイン ページへの接続を確認する
 
-**目的:** コネクタ コンピューターが AAD アプリケーション プロキシの登録エンドポイントと Microsoft のログイン ページに接続できることを確認します。
+**目的:** コネクタ マシンがアプリケーション プロキシの登録エンドポイントと Microsoft のログイン ページに接続できることを確認します。
 
-1.  [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) またはその他のポート テスト ツールを使用して、コネクタ サーバー上でポートのテストを実行して、ポート 443 と 80 が開いているかどうかを確認します。
+1.  [telnet](/windows-server/administration/windows-commands/telnet) またはその他のポート テスト ツールを使用して、コネクタ サーバー上でポートのテストを実行して、ポート 443 と 80 が開いているかどうかを確認します。
 
 2.  これらのポートのいずれかが正常に実行されない場合は、ファイアウォールまたはバックエンド プロキシが、必要なドメインおよびポートにアクセスできることを確認します。「[オンプレミスの環境を準備する](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)」を参照してください。
 
@@ -67,7 +62,7 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 **クライアント証明書を確認するには:**
 
-現在のクライアント証明書のサムプリントを確認します。 証明書ストアは、%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml に見つかります
+現在のクライアント証明書のサムプリントを確認します。 証明書ストアは `%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml` にあります。
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -79,23 +74,17 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 </ConnectorTrustSettingsFile>
 ```
 
-考えられる **IsInUserStore** の値と意味は次のとおりです。
+ありえる **IsInUserStore** の値は、**true** と **false** です。 値が **true** の場合、自動的に更新された証明書は、ネットワーク サービスのユーザー証明書ストアの個人用コンテナーに格納されることを意味します。 値が **false** の場合、Register-AppProxyConnector コマンドによって開始されたインストールまたは登録の際にクライアント証明書が作成され、それがローカル マシンの証明書ストアの個人用コンテナーに格納されることを意味します。
 
-- **false** - クライアント証明書は、Register-AppProxyConnector コマンドによって開始されたインストールまたは登録時に作成されました。 これは、ローカル コンピューターの証明書ストアの個人用コンテナーに格納されます。 
-
-手順に従って、証明書を確認します
-
-1. **certlm.msc** を実行します
-2. 管理コンソールで、[個人用] コンテナーを展開し、[証明書] をクリックします
-3. **connectorregistrationca.msappproxy.net** によって発行された証明書を見つけます
-
-- **true** - 自動的に更新された証明書は、ネットワーク サービスのユーザー証明書ストアの個人用コンテナーに格納されます。 
-
-手順に従って、証明書を確認します
-
-1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) をダウンロードします
-2. パッケージから [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) を抽出し、管理者特権でのコマンド プロンプトから **psexec -i -u "nt authority\network service" cmd.exe** を実行します。
+値が **true** の場合は、以下の手順に従って証明書を検証します。
+1. [PsTools.zip](/sysinternals/downloads/pstools) をダウンロードします
+2. パッケージから [PsExec](/sysinternals/downloads/psexec) を抽出し、管理者特権でのコマンド プロンプトから **psexec -i -u "nt authority\network service" cmd.exe** を実行します。
 3. 新しく表示されたコマンド プロンプトで **certmgr.msc** を実行します
+4. 管理コンソールで、[個人用] コンテナーを展開し、[証明書] をクリックします
+5. **connectorregistrationca.msappproxy.net** によって発行された証明書を見つけます
+
+値が **false** の場合は、以下の手順に従って証明書を検証します。
+1. **certlm.msc** を実行します
 2. 管理コンソールで、[個人用] コンテナーを展開し、[証明書] をクリックします
 3. **connectorregistrationca.msappproxy.net** によって発行された証明書を見つけます
 
@@ -112,7 +101,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-Register-AppProxyConnector コマンドの詳細については、「[Azure AD アプリケーション プロキシ コネクタ用の無人インストール スクリプトを作成します](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)」を参照してください
+Register-AppProxyConnector コマンドの詳細については、「[Azure AD アプリケーション プロキシ コネクタ用の無人インストール スクリプトを作成します](./application-proxy-register-connector-powershell.md)」を参照してください
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>コネクタのインストールに管理者を使用していることを確認する
 

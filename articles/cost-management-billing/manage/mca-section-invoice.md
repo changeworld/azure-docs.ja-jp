@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9f5e69a609931f4f8ead62f4d5c5ba2a1064a6ea
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683013"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362775"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>課金アカウントをカスタマイズしてコストを整理する
 
@@ -53,19 +53,19 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 |---------|---------|
 |Jack は Azure にサインアップしており、単一の月次請求書を必要としています。 | 1 つの課金プロファイルと1 つの請求書セクション。 この構造は、Jack が Azure にサインアップすると自動的に設定され、追加の手順は必要ありません。 |
 
-![単純な課金シナリオの情報を示す図](./media/mca-section-invoice/organize-billing-scenario1.png)
+![単一の課金シナリオの情報を示す図。](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |シナリオ  |構造体  |
 |---------|---------|
 |Contoso は小規模な組織で、必要な月次請求書は 1 つだけですが、コストを部署 (マーケティングとエンジニアリング) 別にグループ化する必要があります。  | Contoso の 1 つの課金プロファイルと、マーケティング部とエンジニアリング部門それぞれに 1 つの請求書セクション。 |
 
-![単純な課金シナリオの情報を示す図](./media/mca-section-invoice/organize-billing-scenario2.png)
+![複数の課金シナリオの情報を示す図。](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |シナリオ  |構造体  |
 |---------|---------|
 |Fabrikam は中規模の組織で、エンジニアリングおよびマーケティング部門に別々の請求書を必要としています。 エンジニアリング部門では、環境 (生産と開発) 別にコストをグループ化する必要があります。  | マーケティング部門とエンジニアリング部門それぞれに 1 つの課金プロファイル。 エンジニアリング部門の生産環境と開発環境それぞれに 1 つの請求書セクション。 |
 
-![単純な課金シナリオの情報を示す図](./media/mca-section-invoice/organize-billing-scenario3.png)
+![運用環境と開発環境に対して個別に課金される、複数の課金シナリオの情報を示す図。](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>新しい請求書セクションを作成する
 
@@ -79,7 +79,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 3. 左側のペインで **[課金プロファイル]** を選択します。 一覧から課金プロファイルを選択します。 選択した課金プロファイルの請求書に、新しいセクションが表示されます。
 
-   [![課金プロファイルの一覧を示すスクリーン ショット](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![課金プロファイルの一覧を示すスクリーンショット。](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. 左側のペインで **[請求書セクション]** を選択し、ページの上部にある **[追加]** を選択します。
 
@@ -107,7 +107,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 3. 左側のペインで **[課金プロファイル]** を選択し、ページの上部にある **[追加]** を選択します。
 
-   [![課金プロファイルの一覧を示すスクリーン ショット](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![[追加] が選択されている課金プロファイルの一覧を示すスクリーンショット。](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -136,15 +136,15 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 2. **サブスクリプション**を検索します。
 
-   [![サブスクリプションについてのポータルでの検索を示すスクリーン ショット](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![Azure portal でのサブスクリプションの検索を示すスクリーンショット。](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. ページの最上部から **[追加]** を選びます。
 
-   ![サブスクリプション ビューの追加ボタンを示すスクリーン ショット](./media/mca-section-invoice/subscription-add.png)
+   ![新しいサブスクリプションのサブスクリプション ビュー内にある [追加] ボタンを示すスクリーンショット。](./media/mca-section-invoice/subscription-add.png)
 
 4. 複数の課金アカウントにアクセスできる場合は、Microsoft 顧客契約の課金アカウントを選択します。
 
-   ![サブスクリプション ビューの追加ボタンを示すスクリーン ショット](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![[サブスクリプションの作成] ペインを示すスクリーンショット。](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. サブスクリプションの使用に対して課金される課金プロファイルを選択します。 このサブスクリプションにおける Azure の使用とその他の購入に対する料金は、選択した課金プロファイルの請求書に請求されます。
 
@@ -166,7 +166,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 2. "**コスト管理 + 請求**" を検索します。
 
-   ![サブスクリプション用のポータルでの検索を示すスクリーン ショット](./media/mca-section-invoice/search-cmb.png)
+   ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/mca-section-invoice/search-cmb.png)
 
 3. サブスクリプションを新しい請求書セクションにリンクするには、画面の左側にある **[Azure サブスクリプション]** を選択します。 Azure Marketplace や AppSource リソースなどの他の製品の場合は、 **[当月サービス利用料金]** を選択します。
 

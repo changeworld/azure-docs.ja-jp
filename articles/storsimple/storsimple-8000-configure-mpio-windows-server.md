@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d44fada1eddf2d3f80bec085d8a5bf751197eb1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514328"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968810"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple デバイスのマルチパス IO の構成
 
 このチュートリアルでは、Windows Server 2012 R2 が実行され、StorSimple 物理デバイスに接続されているホストにマルチパス I/O (MPIO) 機能をインストールして、その機能を使用する手順を説明します。 この記事のガイダンスは、StorSimple 8000 シリーズ物理デバイスにのみ適用されます。 StorSimple Cloud Appliance では、MPIO は現在サポートされていません。
 
-Microsoft では、フォールト トレランスと可用性に優れた iSCSI ネットワークを構成するために、Windows Server でマルチパス I/O (MPIO) 機能をサポートしています。 MPIO では、アダプター、ケーブル、スイッチなどの冗長な物理パス コンポーネントを使用して、サーバーとストレージ デバイスの間に論理パスを作成します。 コンポーネントのエラーによって論理パスに障害が発生した場合は、マルチパス ロジックで I/O の代替パスが使用され、アプリケーションから引き続きデータにアクセスできるようにします。 さらに構成によっては、これらのすべてのパス間で負荷を分散することで、パフォーマンスを向上させることもできます。 詳細については、「[MPIO の概要](https://technet.microsoft.com/library/cc725907.aspx "MPIO の概要と機能")」を参照してください。
+Microsoft では、フォールト トレランスと可用性に優れた iSCSI ネットワークを構成するために、Windows Server でマルチパス I/O (MPIO) 機能をサポートしています。 MPIO では、アダプター、ケーブル、スイッチなどの冗長な物理パス コンポーネントを使用して、サーバーとストレージ デバイスの間に論理パスを作成します。 コンポーネントのエラーによって論理パスに障害が発生した場合は、マルチパス ロジックで I/O の代替パスが使用され、アプリケーションから引き続きデータにアクセスできるようにします。 さらに構成によっては、これらのすべてのパス間で負荷を分散することで、パフォーマンスを向上させることもできます。 詳細については、「[MPIO の概要](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725907(v=ws.11) "MPIO の概要と機能")」を参照してください。
 
 StorSimple ソリューションの可用性を高めるためには、StorSimple デバイスで MPIO を構成する必要があります。 Windows Server 2012 R2 を実行するホスト サーバーに MPIO をインストールすると、サーバーでリンク、ネットワーク、またはインターフェイスのフォールト トレランスが有効になります。
 
@@ -55,7 +55,7 @@ Windows Server ホストにこの機能をインストールするには、次�
 2. **[サーバー マネージャー]、[ダッシュボード]、[役割と機能の追加]** の順にクリックします。 **役割と機能の追加** ウィザードが起動します。
    
    ![役割と機能の追加ウィザード 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
-3. **役割と機能の追加**ウィザードで、次の手順を実行します。
+3. **役割と機能の追加** ウィザードで、次の手順を実行します。
    
    1. **[開始する前に]** ページで **[次へ]** をクリックします。
    2. **[インストールの種類の選択]** ページで、 **[役割ベースまたは機能ベースのインストール]** の既定の設定をそのまま使用します。 **[次へ]** をクリックします。
@@ -191,4 +191,3 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 ## <a name="next-steps"></a>次のステップ
 
 「[StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-8000-modify-device-config.md)」の詳細を確認する。
-

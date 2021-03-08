@@ -3,17 +3,19 @@ title: Azure Cosmos DB コネクタ用 Power BI チュートリアル
 description: この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、Cosmos DB および Power BI コネクタを使用してデータを視覚化する方法を説明します。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027777"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359865"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [Power BI](https://powerbi.microsoft.com/) は、ダッシュボードやレポートを作成して共有できるオンライン サービスです。 Power BI Desktop は、さまざまなデータ ソースからのデータを取得できるレポート作成ツールです。 Azure Cosmos DB は、Power BI Desktop で使用できるデータ ソースの 1 つです。 Power BI 用の Azure Cosmos DB コネクタを使用して、Power BI Desktop を Azure Cosmos DB アカウントに接続できます。  Azure Cosmos DB データを Power BI にインポートした後、それを変換したり、レポートを作成したり、そのレポートを Power BI に発行したりできます。   
 
@@ -30,9 +32,9 @@ ms.locfileid: "86027777"
 
 * [最新バージョンの Power BI Desktop をダウンロードします](https://powerbi.microsoft.com/desktop)。
 
-* GitHub から[サンプル火山データ](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)をダウンロードします。
+* GitHub から[サンプル火山データ](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json)をダウンロードします。
 
-* [Azure Cosmos データベース アカウントを作成し](https://azure.microsoft.com/documentation/articles/create-account/)、[Azure Cosmos DB データ移行ツール](import-data.md)を使用して火山データをインポートします。 データをインポートするときは、データ移行ツールのソースとインポート先に対して次の設定を考慮してください。
+* [Azure Cosmos データベース アカウントを作成し](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)、[Azure Cosmos DB データ移行ツール](import-data.md)を使用して火山データをインポートします。 データをインポートするときは、データ移行ツールのソースとインポート先に対して次の設定を考慮してください。
 
    * **ソース パラメーター** 
 
@@ -88,9 +90,9 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 6. 次のように、データを取得する Azure Cosmos DB アカウント エンドポイント URL を指定し、 **[OK]** をクリックします。 独自のアカウントを使用するには、Azure Portal の **[キー]** ブレードにある [URI] ボックスから URL を取得できます。 オプションで、データベース名とコレクション名を指定するか、またはナビゲーターを使用してデータベースとコレクションを選択することによってデータの取得元を識別できます。
    
-7. このエンドポイントに初めて接続している場合は、アカウント キーの入力を求められます。 独自のアカウントの場合は、Azure Portal の **[Read-only Keys]\(読み取り専用キー\)** ブレードにある **[主キー]** ボックスからキーを取得します。 適切なキーを入力し、 **[接続]** をクリックします。
+7. このエンドポイントに初めて接続している場合は、アカウント キーの入力を求められます。 独自のアカウントの場合は、Azure Portal の **[Read-only Keys]/(読み取り専用キー/)** ブレードにある **[主キー]** ボックスからキーを取得します。 適切なキーを入力し、 **[接続]** をクリックします。
    
-   レポートを作成する際は読み取り専用キーを使用することをお勧めします。 これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure Portal の **[キー]** ブレードから入手できます。 
+   レポートを作成する際は読み取り専用キーを使用することをお勧めします。 これにより、プライマリ キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure Portal の **[キー]** ブレードから入手できます。 
     
 8. アカウントが正常に接続されると、 **ナビゲーター** ウィンドウが表示されます。 **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
 
@@ -98,7 +100,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 10. 次に、取得するデータを含むコレクションを選択し、 **[volcano1]** を選択します (実際のコレクション名は異なる場合があります)。
     
-    プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record**として表されます。
+    プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record** として表されます。
     
     :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ナビゲーション ウィンドウ":::
 
@@ -135,7 +137,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 1. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 **[OK]** をクリックします。
    
-   DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
+   DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - カスタム列の追加":::
 
@@ -158,7 +160,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 Power BI Desktop レポート ビューは、データを視覚化するためにレポート作成を開始できる場所です。  **[レポート]** キャンバスにフィールドをドラッグ アンド ドロップすることにより、レポートを作成できます。
 
-:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop のレポート ビュー - 必要なフィールドをドラッグ アンド ドロップします":::
 
 レポート ビューには以下が表示されます。
 
@@ -197,7 +199,7 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 
 共有可能なダッシュ ボードを作成するには、PowerBI.com レポートで **[ライブ ページをピン留めする]** ボタンをクリックします。
 
-   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="PowerBI.com の新しいレポートとデータセットのスクリーンショット":::
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="レポートを PowerBI.com にピン留めする方法のスクリーンショット":::
 
 その後、「 [レポートからタイルをピン留め](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) 」の指示に従って、新しいダッシュボードを作成します。 
 
@@ -226,4 +228,3 @@ For a scheduled refresh, do the following.
 ## <a name="next-steps"></a>次のステップ
 * Power BI の詳細については、「 [Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
 * Azure Cosmos DB について詳しくは、[Azure Cosmos DB ドキュメントのランディング ページ](https://azure.microsoft.com/documentation/services/cosmos-db/)をご覧ください。
-

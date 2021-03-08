@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:REST API と Ruby を使用して画像に関する分析情報を取得する - Bing Visual Search
 titleSuffix: Azure Cognitive Services
-description: Bing Visual Search API に画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
+description: Bing Visual Search API および Ruby を使用して画像をアップロードし、その画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: d907e10484b1873974ec9707d0aec1a89ab9eb50
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870359"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499028"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>クイック スタート:Bing Visual Search REST API と Ruby を使用して画像に関する分析情報を取得する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイックスタートを使用して、Ruby プログラミング言語で Bing Visual Search API を呼び出してみましょう。 POST 要求で画像を API エンドポイントにアップロードします。 結果には、アップロードされた画像に類似した画像に関する URL と説明情報が含まれます。
 

@@ -7,20 +7,20 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 4adb3bb1408357d40e3869c2a0d251b11d015195
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b5de81f5eaf76c16c1ea8fc78075c4567c77aeee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689526"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531983"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>チュートリアル:Microsoft 顧客契約の請求書を確認する
 
 個々のトランザクションを分析することで、請求書の料金を確認できます。 Microsoft 顧客契約の請求先アカウントでは、課金プロファイルごとに毎月請求書が生成されます。 請求書には、前月からのすべての料金が含まれます。 Azure portal で請求書を表示し、料金を使用状況の詳細ファイルと比較できます。
 
-このチュートリアルは、Microsoft 顧客契約を結んでいる Azure カスタマーだけに適用されます。
+このチュートリアルは、Microsoft 顧客契約を結んでいる Azure のお客様だけに適用されます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -47,13 +47,15 @@ Azure のサブスクリプションを開始してから 30 日以上経過し�
 
 Azure portal の検索ボックスで「*コストの管理と請求*」と入力し、 **[コストの管理と請求]** を選択します。
 
-![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
+![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
 
-1 つの課金スコープのみにアクセスできる場合は、左側から **[プロパティ]** を選択します。 請求先アカウントの種類が **Microsoft 顧客契約**の場合、Microsoft 顧客契約の請求先アカウントにアクセスできます。
+1 つの課金スコープのみにアクセスできる場合は、左側から **[プロパティ]** を選択します。 請求先アカウントの種類が **Microsoft 顧客契約** の場合、Microsoft 顧客契約の請求先アカウントにアクセスできます。
 
 ![[プロパティ] ページで Microsoft 顧客契約を示すスクリーンショット](./media/review-customer-agreement-bill/billing-mca-property.png)
 
-アクセスできる課金スコープが複数ある場合は、課金アカウント列で種類を確認します。 任意のスコープの課金アカウントの種類が **Microsoft 顧客契約**である場合、Microsoft 顧客契約の課金アカウントにアクセスできます。
+アクセスできる課金スコープが複数ある場合は、課金アカウント列で種類を確認します。 任意のスコープの課金アカウントの種類が **Microsoft 顧客契約** である場合、Microsoft 顧客契約の課金アカウントにアクセスできます。
+
+課金スコープ ページで **[課金スコープ]** を選択し、課金アカウントを選択します。このアカウントが、サブスクリプション利用の支払いに使用されます。 課金アカウントの種類は、**Microsoft 顧客契約** である必要があります。
 
 ![課金アカウントの一覧ページで Microsoft 顧客契約を示すスクリーンショット](./media/review-customer-agreement-bill/billing-mca-in-the-list.png)
 
@@ -106,7 +108,7 @@ Microsoft 顧客契約の課金アカウントでは、請求が行われるま�
 
 料金セクションでは、月度累計と先月の請求金額が表示されます。
 
-![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
+![課金プロファイルの概要を示すスクリーンショット。](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
 
 月度累計請求金額は、当月の保留中の料金であり、当月の請求書が作成されるときに請求されます。 先月の請求書がまた生成されていない場合、先月の料金も保留中であり、次の請求書に表示されます。
 
@@ -122,7 +124,7 @@ Azure portal の検索ボックスで「*コストの管理と請求*」と入�
 
 ページの左側から **[すべてのトランザクション]** を選択します。
 
-*保留中*を検索します。 **Timespan** フィルターを使用して、当月または先月の保留中の料金を表示します。
+*保留中* を検索します。 **Timespan** フィルターを使用して、当月または先月の保留中の料金を表示します。
 
 ![保留中トランザクションの一覧を示したスクリーンショット](./media/review-customer-agreement-bill/mca-pending-transactions-list.png)
 
@@ -138,7 +140,7 @@ Azure portal の検索ボックスで「*コストの管理と請求*」と入�
 
 [Azure サブスクリプション] ページに、課金プロファイルのサブスクリプションごとに当月および先月の料金が表示されます。 月度累計請求金額は、当月の保留中の料金であり、当月の請求書が作成されるときに請求されます。 先月の請求書がまた生成されていない場合、先月の料金も保留中です。
 
-![課金プロファイルの Azure サブスクリプションの一覧を表示したスクリーンショット](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
+![月度累計請求金額と前月の料金が表示されているサブスクリプションを示すスクリーンショット。](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>Azure 利用料金を分析する
 
@@ -146,7 +148,7 @@ Azure の使用状況と料金の CSV ファイルを使用して、使用状況
 
 ### <a name="download-your-invoice-and-usage-details"></a>請求書および使用状況の詳細のダウンロード
 
-お持ちのアクセス権によっては、[コストの管理と請求] で課金アカウントまたは課金プロファイルを選択する必要があります。 左側のメニューの **[課金]** から **[請求書]** を選択します。 請求書グリッドで、ダウンロードする請求書の行を探します。 行の末尾にあるダウンロードの記号または省略記号 ([...]) をクリックします。 **[ダウンロード]** ボックスで、使用状況の詳細ファイルと請求書をダウンロードします。
+お持ちのアクセス権によっては、[コストの管理と請求] で課金アカウントまたは課金プロファイルを選択する必要があります。 左側のメニューの **[課金]** から **[請求書]** を選択します。 請求書グリッドで、ダウンロードする請求書の行を探します。 行の末尾にあるダウンロードの記号または省略記号 ([...]) を選択します。 **[ダウンロード]** ボックスで、使用状況の詳細ファイルと請求書をダウンロードします。
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>請求書セクションで詳細な使用状況を表示する
 
@@ -162,7 +164,7 @@ Azure の使用状況および料金のファイルをフィルター処理し�
 |利用料金 - Microsoft Azure プラン |productOrderName |
 |Compute |serviceFamily |
 
-CSV ファイル内の **invoiceSectionName** 列を **会計部門**にフィルター処理します。次に、CSV ファイル内の **productOrderName** 列を **Microsoft Azure プラン**でフィルター処理します。 次に、CSV ファイル内の **serviceFamily** 列を **Microsoft.Compute** でフィルター処理します。
+CSV ファイル内の **invoiceSectionName** 列を **会計部門** にフィルター処理します。次に、CSV ファイル内の **productOrderName** 列を **Microsoft Azure プラン** でフィルター処理します。 次に、CSV ファイル内の **serviceFamily** 列を **Microsoft.Compute** でフィルター処理します。
 
 ![請求書セクションでフィルター処理された使用状況および料金を示したスクリーンショット](./media/review-customer-agreement-bill/billing-usage-file-filtered-by-invoice-section.png)
 
@@ -172,7 +174,7 @@ Azure の使用状況および料金の CSV ファイルをフィルター処理
 
 次の画像には、Azure portal でのサブスクリプションの一覧が表示されています。
 
-![課金プロファイルの Azure サブスクリプションの一覧を表示したスクリーンショット](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
+![サブスクリプションが呼び出されている、Azure portal でのサブスクリプションの一覧を示すスクリーンショット。](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
 
 Azure の使用状況および料金の CSV ファイル内の **subscriptionName** 列を **WA_Subscription** にフィルター処理して、WA_Subscription の詳細な利用料金を表示します。
 

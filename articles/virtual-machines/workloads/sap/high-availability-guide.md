@@ -8,19 +8,19 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efd3f0f19325bdaccf98d10306c90488c78b3de7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6aedaf829df941a225cd0684318f28bb06ba89d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653768"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674599"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -634,7 +634,7 @@ Azure Resource Manager デプロイ モデルを使用した Azure での SQL Se
 
 ### <a name="deployment-scenario-using-architectural-template-1"></a>Architectural Template 1 を使用するデプロイ シナリオ
 
-図 8 は、**1 つ**の SAP システムに対する Azure での SAP NetWeaver 高可用性アーキテクチャの例です。 このシナリオは、次のようにセットアップされます。
+図 8 は、**1 つ** の SAP システムに対する Azure での SAP NetWeaver 高可用性アーキテクチャの例です。 このシナリオは、次のようにセットアップされます。
 
 - SAP ASCS/SCS インスタンス用に 1 つの専用クラスターが使用されます。
 - DBMS インスタンス用に 1 つの専用クラスターが使用されます。
@@ -646,9 +646,9 @@ _**図 8:** ASCS/SCS と DBMS に専用クラスターを使用する SAP 高可
 
 ### <a name="deployment-scenario-using-architectural-template-2"></a>Architectural Template 2 を使用するデプロイ シナリオ
 
-図 9 は、**1 つ**の SAP システムに対する Azure での SAP NetWeaver 高可用性アーキテクチャの例です。 このシナリオは、次のようにセットアップされます。
+図 9 は、**1 つ** の SAP システムに対する Azure での SAP NetWeaver 高可用性アーキテクチャの例です。 このシナリオは、次のようにセットアップされます。
 
-- SAP ASCS/SCS インスタンスと DBMS の**両方**に 1 つの専用クラスターが使用されます。
+- SAP ASCS/SCS インスタンスと DBMS の **両方** に 1 つの専用クラスターが使用されます。
 - SAP アプリケーション サーバー インスタンスが独自の専用 VM にデプロイされます。
 
 ![図 9:ASCS/SCS と DBMS に個別の専用クラスターを使用する SAP 高可用性 Architectural Template 2][sap-ha-guide-figure-2005]
@@ -657,9 +657,9 @@ _**図 9:** ASCS/SCS と DBMS に個別の専用クラスターを使用する S
 
 ### <a name="deployment-scenario-using-architectural-template-3"></a>Architectural Template 3 を使用するデプロイ シナリオ
 
-図 10 は、Azure での SAP NetWeaver 高可用性アーキテクチャの例を示します。このアーキテクチャは、&lt;SID1&gt; と &lt;SID2&gt; を持つ **2 つ**の SAP システムに対応しています。 このシナリオは、次のようにセットアップされます。
+図 10 は、Azure での SAP NetWeaver 高可用性アーキテクチャの例を示します。このアーキテクチャは、&lt;SID1&gt; と &lt;SID2&gt; を持つ **2 つ** の SAP システムに対応しています。 このシナリオは、次のようにセットアップされます。
 
-- 1 つの専用クラスターが、SAP ASCS/SCS SID1 インスタンス "*と*" SAP ASCS/SCS SID2 インスタンスの**両方**に使用されます (1 つのクラスター)。
+- 1 つの専用クラスターが、SAP ASCS/SCS SID1 インスタンス "*と*" SAP ASCS/SCS SID2 インスタンスの **両方** に使用されます (1 つのクラスター)。
 - 1 つの専用クラスターが DBMS SID1 に使用され、もう 1 つの専用クラスターが DBMS SID2 に使用されます (2 つのクラスター)。
 - SAP システム SID1 の SAP アプリケーション サーバー インスタンスには、独自の専用 VM があります。
 - SAP システム SID2 の SAP アプリケーション サーバー インスタンスには、独自の専用 VM があります。
@@ -703,7 +703,7 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 
   * **Azure ストレージ アカウント**
 
-  * 次のものの**可用性グループ**:
+  * 次のものの **可用性グループ**:
     * SAP アプリケーション サーバーの仮想マシン: <*SAPSystemSID*>-avset-di
     * SAP ASCS/SCS クラスターの仮想マシン: <*SAPSystemSID*>-avset-ascs
     * DBMS クラスターの仮想マシン: <*SAPSystemSID*>-avset-db
@@ -716,7 +716,7 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
     * <*SAPSystemSID*>-ascs-0 仮想マシンに対して開かれた外部リモート デスクトップ プロトコル (RDP) ポート
 
 > [!NOTE]
-> ネットワーク カードと Azure 内部ロード バランサーのすべての IP アドレスは、既定では**動的**です。 これらを、**静的**な IP アドレスに変更します。 この方法については、この記事の後の方で説明します。
+> ネットワーク カードと Azure 内部ロード バランサーのすべての IP アドレスは、既定では **動的** です。 これらを、**静的** な IP アドレスに変更します。 この方法については、この記事の後の方で説明します。
 >
 >
 
@@ -791,7 +791,7 @@ ASCS/SCS テンプレートは、複数の ASCS/SCS インスタンスをホス�
 
 ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image]に、次のパラメーターの値を入力します。
 
-  - **Resource Prefix (リソース プレフィックス)** 。  リソース プレフィックスを設定します。これは、デプロイ中に作成されるすべてのリソースのプレフィックスとして使われます。 リソースは 1 つの SAP システムのみに属するわけではないため、リソースのプレフィックスは 1 つの SAP システムの SID ではありません。  プレフィックスは、**3 ～ 6 文字**でなければなりません。
+  - **Resource Prefix (リソース プレフィックス)** 。  リソース プレフィックスを設定します。これは、デプロイ中に作成されるすべてのリソースのプレフィックスとして使われます。 リソースは 1 つの SAP システムのみに属するわけではないため、リソースのプレフィックスは 1 つの SAP システムの SID ではありません。  プレフィックスは、**3 ～ 6 文字** でなければなりません。
   - **Stack Type (スタックの種類)** 。 SAP システムのスタックの種類を選びます。 スタックの種類に応じて、Azure Load Balancer には、SAP システムごとに 1 つ (ABAP または Java のみ) または 2 つ (ABAP+ Java) のプライベート IP アドレスがあります。
   -  **OS Type (OS の種類)** 。 仮想マシンのオペレーティング システムを選びます。
   -  **SAP System Count (SAP システム数)** 。 このクラスターにインストールする SAP システムの数を選択します。
@@ -941,7 +941,7 @@ SAP Azure Resource Manager テンプレートでは、SAP ASCS/SCS インスタ�
 
 Azure 内部ロード バランサーの静的 IP アドレスを設定するには
 
-1. 初期デプロイでは、内部ロード バランサーの IP アドレスが**動的**に設定されます。 Azure Portal の **[IP アドレス]** ブレードの **[割り当て]** で **[静的]** を選択します。
+1. 初期デプロイでは、内部ロード バランサーの IP アドレスが **動的** に設定されます。 Azure Portal の **[IP アドレス]** ブレードの **[割り当て]** で **[静的]** を選択します。
 2. 内部ロード バランサー **pr1-lb-ascs** の IP アドレスを、SAP ASCS/SCS インスタンスの仮想ホスト名の IP アドレスに設定します。
 3. 内部ロード バランサー **pr1-lb-dbms** の IP アドレスを、DBMS インスタンスの仮想ホスト名の IP アドレスに設定します。
 
@@ -1135,13 +1135,13 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
    _**図 27:** 第 2 のクラスター ノード ホストの名前を入力する_
 
    > [!IMPORTANT]
-   > **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスがオンになって**いない**ことを確認してください。  
+   > **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスがオンになって **いない** ことを確認してください。  
    >
    >
 
    ![図 28:このチェック ボックスはオンにしない][sap-ha-guide-figure-3017]
 
-   _**図 28:** このチェック ボックスはオンに**しない**_
+   _**図 28:** このチェック ボックスはオンに **しない**_
 
    クォーラムとディスクに関する警告は無視して構いません。 「[SAP ASCS/SCS クラスター共有ディスクのための SIOS DataKeeper Cluster Edition のインストール][sap-ha-guide-8.12.3]」で説明されているように、クォーラムと共有ディスクは後で設定します。
 
@@ -1273,7 +1273,7 @@ Windows Server 2012 R2 では、Microsoft .NET Framework 3.5 は自動的に有�
 SIOS ソフトウェアをインストールする前に、ドメイン ユーザー **DataKeeperSvc** を作成します。
 
 > [!NOTE]
-> **DataKeeperSvc** ユーザーを、両方のクラスター ノードの**ローカルの Administrator** グループに追加します。
+> **DataKeeperSvc** ユーザーを、両方のクラスター ノードの **ローカルの Administrator** グループに追加します。
 >
 >
 

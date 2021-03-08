@@ -3,30 +3,22 @@ title: Azure IoT Hub Device Provisioning Service でデバイスを再プロビ�
 description: Device Provisioning Service (DPS) インスタンスを使用してデバイスを再プロビジョニングする方法と、何故これを実行する必要があるのかについて説明します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974906"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791898"
 ---
 # <a name="how-to-reprovision-devices"></a>デバイスを再プロビジョニングする方法
 
-IoT ソリューションのライフサイクル中に、デバイスを IoT ハブ間で移動することはよくあります。 この移動の理由として、次のようなシナリオが挙げられます。
+IoT ソリューションのライフサイクル中に、デバイスを IoT ハブ間で移動することはよくあります。 このトピックは、再プロビジョニング ポリシーを構成するソリューション オペレーターを支援するために記述されています。
 
-* **位置情報**: 別の場所との間でデバイスの移動があるときは、それぞれの場所により近い IoT ハブにそのデバイスを移行することにより、ネットワーク待ち時間が向上します。
-
-* **マルチテナント**: デバイスは、同じ IoT ソリューション内で使用されることもありますが、新しい顧客や顧客サイトに再割り当てまたはリースされることもあります。 この新しい顧客には、別の IoT ハブを使用してサービスが提供される可能性があります。
-
-* **ソリューションの変更**: デバイスは、新しい IoT ソリューションまたは更新された IoT ソリューションに移動される場合があります。 この再割り当てに伴って、デバイスは、他のバックエンド コンポーネントに接続されている新しい IoT ハブとの通信が必要になる可能性があります。 
-
-* **検疫**: ソリューションの変更と同様です。 正常に動作していないデバイス、セキュリティ侵害を受けたデバイス、または古いデバイスは、更新してコンプライアンスが確保された状態に戻す操作のみが可能な IoT ハブに再割り当てされることがあります。 デバイスが適切に機能するようになったら、そのメインのハブに再び移行されます。
-
-再プロビジョニングの詳細については、「[IoT ハブ デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)」を参照してください。
+再プロビジョニング シナリオの詳細については、「[IoT ハブ デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)」を参照してください。
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>登録割り当てポリシーを構成する
@@ -75,7 +67,7 @@ IoT ソリューションのライフサイクル中に、デバイスを IoT �
 
 4. **[保存]** をクリックして、変更に基づくデバイスの再プロビジョニングを有効にします。
 
-    ![登録割り当てポリシーを選択する](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![行った変更と [保存] ボタンが強調表示されているスクリーンショット。](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 

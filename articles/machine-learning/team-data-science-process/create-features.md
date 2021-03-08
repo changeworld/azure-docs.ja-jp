@@ -1,5 +1,5 @@
 ---
-title: データ サイエンスにおける特徴エンジニアリング - Team Data Science Process
+title: 機械学習における特徴エンジニアリング - Team Data Science Process
 description: 特徴エンジニアリングと、機械学習のデータ強化プロセスにおけるその役割について説明します。
 services: machine-learning
 author: marktab
@@ -10,22 +10,22 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: b20a6744644678879fedf44e960854f558eb0f03
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836823"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610439"
 ---
-# <a name="feature-engineering-in-data-science"></a>データ サイエンスにおける特徴エンジニアリング
+# <a name="feature-engineering-in-machine-learning"></a>機械学習における特徴エンジニアリング
 
-この記事では、特徴エンジニアリングと、機械学習のデータ強化におけるその役割について説明します。 [Azure Machine Learning Studio (classic)](../studio/what-is-ml-studio.md) の実験から引用された、わかりやす例から学びます。 
+この記事では、特徴エンジニアリングと、機械学習のデータ強化におけるその役割について説明します。 [Azure Machine Learning Studio (classic)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) の実験から引用された、わかりやす例から学びます。 
 
 * **特徴エンジニアリング**:生データから新しい特徴を作成して、学習アルゴリズムの予測能力を向上させるプロセス。 エンジニアリングされた特徴は、元の特徴セットでは簡単にはわからない追加情報を取得する必要があります。
 * **特徴選択**: トレーニング問題の次元を削減するために、特徴の主要なサブセットを選択するプロセス。
 
-通常、最初に**特徴エンジニアリング**が追加の特徴を生成するために適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**が実行されます。
+通常、最初に **特徴エンジニアリング** が追加の特徴を生成するために適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために **特徴選択** が実行されます。
 
 特徴エンジニアリングと選択は、Team Data Science Process (TDSP) の[モデリング ステージ](lifecycle-modeling.md)の一部です。 TDSP とデータ サイエンス ライフサイクルの詳細については、「[Team Data Science Process とは](overview.md)」を参照してください。
 
@@ -60,7 +60,7 @@ Azure Machine Learning Studio (classic) の[自転車レンタルの需要予測
 
 ### <a name="feature-engineering-using-studio-classic"></a>Studio (classic) を使用した特徴エンジニア リング
 
-Studio (classic) の実験では、これら 4 つのトレーニング データセットは、前処理された入力データセットからの 4 つの分岐を使用して形成されます。 一番左の分岐を除いて、これらの各分岐には [R スクリプトの実行](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/)モジュールが含まれており、ここで生成された特徴 (特徴セット B、C、D) が構築され、インポートされたデータセットに追加されます。
+Studio (classic) の実験では、これら 4 つのトレーニング データセットは、前処理された入力データセットからの 4 つの分岐を使用して形成されます。 一番左の分岐を除いて、これらの各分岐には [R スクリプトの実行](/azure/machine-learning/studio-module-reference/execute-r-script)モジュールが含まれており、ここで生成された特徴 (特徴セット B、C、D) が構築され、インポートされたデータセットに追加されます。
 
 次の図は、左の 2 番目の分岐にある特徴セット B の作成に使用される R スクリプトを示します。
 
@@ -80,9 +80,9 @@ Studio (classic) の実験では、これら 4 つのトレーニング デー�
 
 ### <a name="feature-hashing"></a>特徴ハッシュ
 
-このタスクを実現するには、"[特徴ハッシュ](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing)" と呼ばれる手法を適用して、任意のテキストの特徴を効率的にインデックスに変えます。 各テキストの特徴 (単語や語句) を特定のインデックスに関連付ける代わりに、このメソッドではハッシュ関数が特徴に適用され、そのハッシュ値が直接インデックスとして使用されます。
+このタスクを実現するには、"[特徴ハッシュ](/azure/machine-learning/studio-module-reference/feature-hashing)" と呼ばれる手法を適用して、任意のテキストの特徴を効率的にインデックスに変えます。 各テキストの特徴 (単語や語句) を特定のインデックスに関連付ける代わりに、このメソッドではハッシュ関数が特徴に適用され、そのハッシュ値が直接インデックスとして使用されます。
 
-Studio (classic) には、これらの単語や語句の特徴を便利に作成できる[特徴ハッシュ](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) モジュールがあります。 このモジュールを使用する例を次に示します。 入力データセットには、1 ～ 5 の書籍の評価と実際のレビュー内容の 2 つ列が含まれています。 このモジュールの目的は、特定の書籍レビュー内の対応する単語や語句の出現頻度を示す一連の新しい特徴を取得することです。 このモジュールを使用するには、次の手順を実行します。
+Studio (classic) には、これらの単語や語句の特徴を便利に作成できる[特徴ハッシュ](/azure/machine-learning/studio-module-reference/feature-hashing) モジュールがあります。 このモジュールを使用する例を次に示します。 入力データセットには、1 ～ 5 の書籍の評価と実際のレビュー内容の 2 つ列が含まれています。 このモジュールの目的は、特定の書籍レビュー内の対応する単語や語句の出現頻度を示す一連の新しい特徴を取得することです。 このモジュールを使用するには、次の手順を実行します。
 
 * まず、入力テキストが含まれている列を選択します (この例では "Col2")。
 * 次に、"Hashing bitsize" を 8 に設定します。これにより、2 ^8 = 256 の特徴が作成されます。 すべてのテキストの単語や語句は、256 のインデックスにハッシュされます。 "Hashing bitsize" パラメーターの範囲は 1 ～ 31 です。 単語や語句は、大きな数値を設定すれば、同じインデックスにハッシュされる可能性はほとんどありません。

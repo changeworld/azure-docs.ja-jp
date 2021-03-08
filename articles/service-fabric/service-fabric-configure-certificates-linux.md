@@ -4,12 +4,12 @@ description: Linux クラスター上の Service Fabric ランタイムを使用
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: a97c8b8315fe3be405aed9c6570004afb8fafd1d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70f9cc38d84681f68c10882889214648a4dd2624
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258668"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785568"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux クラスター上の証明書とセキュリティ
 
@@ -21,7 +21,7 @@ Service Fabric では通常、X.509 証明書が Linux クラスター ノード
 
 Linux クラスターの場合、Service Fabric が証明書として受け付けるのは、証明書と秘密キーの両方を格納した .pem ファイルか、証明書を格納した .crt ファイルと秘密キーを格納した .key ファイルのセットです。 すべてのファイルを PEM 形式にする必要があります。 
 
-[Resource Manager テンプレート](./service-fabric-cluster-creation-create-template.md)または [PowerShell](/powershell/module/az.servicefabric/?view=azps-2.6.0) コマンドを使って Azure Key Vault から証明書をインストールした場合、証明書は各ノードの */var/lib/sfcerts* ディレクトリに正しい形式でインストールされます。 その他の方法で証明書をインストールした場合は、クラスター ノード上で証明書が正しくインストールされていることを確認する必要があります。
+[Resource Manager テンプレート](./service-fabric-cluster-creation-create-template.md)または [PowerShell](/powershell/module/az.servicefabric/) コマンドを使って Azure Key Vault から証明書をインストールした場合、証明書は各ノードの */var/lib/sfcerts* ディレクトリに正しい形式でインストールされます。 その他の方法で証明書をインストールした場合は、クラスター ノード上で証明書が正しくインストールされていることを確認する必要があります。
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>アプリケーション マニフェストで参照される証明書
 

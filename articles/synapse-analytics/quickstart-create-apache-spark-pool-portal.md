@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Azure portal を使用して Apache Spark プールを作成する
-description: このガイドの手順に従って、Azure portal を使用して新しい Apache Spark プールを作成します。
+title: 'クイックスタート: Azure portal を使用してサーバーレス Apache Spark プールを作成する'
+description: このガイドの手順に従って、Azure portal を使用してサーバーレス Apache Spark プールを作成します。
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0930b7cb7b98874e20f070763a7ec50a6b4f3ef0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006077"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461605"
 ---
-# <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して新しい Apache Spark プールを作成する
+# <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して新しいサーバーレス Apache Spark プールを作成する
 
 Azure Synapse Analytics には、データの取り込み、変換、モデル化、分析、配布に役立つさまざまな分析エンジンが用意されています。 Apache Spark プールは、オープンソースのビッグ データ コンピューティング機能を提供します。 お使いの Synapse ワークスペースに Apache Spark プールを作成した後、データを読み込み、モデル化し、処理し、配布して、分析情報を迅速に得ることができます。
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
     > Apache Spark プールで使用できる名前には、特定の制限があることに注意してください。 名前は、文字または数字のみを含み、15 文字以下である必要があります。さらに、文字で始まり、予約語を含まず、ワークスペース内で一意である必要があります。
 
 3. **[次へ: 追加設定]** をクリックして、既定の設定を確認します。 既定の設定は変更しないでください。
-    ![Apache Spark プールの作成フロー - [additional settings]\(追加設定\) タブ。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
+    ![[Additional settings]\(追加設定\) タブが選択されている [Create Apache Spark pool]\(Apache Spark プールの作成\) ページのスクリーンショット。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
 
 4. **[次へ: タグ]** を選択します。 タグは追加しないでください。
     ![Apache Spark プールの作成フロー - [additional settings]\(追加設定\) タブ。](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
@@ -73,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
     ![Apache Spark プールの作成フロー - 設定確認のタブ。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)
 
 7. この時点で、リソースのプロビジョニング フローが開始されます。完了すると、その旨が表示されます。
-    ![Apache Spark プールの作成フロー - リソースのプロビジョニング。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
+    !["Your deployment is complete (デプロイが完了しました)" というメッセージが表示された [概要] ページのスクリーンショット。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
 
 8. プロビジョニングが完了した後にワークスペースに戻ると、新しく作成された Apache Spark プールの新しいエントリが表示されます。
     ![Apache Spark プールの作成フロー - リソースのプロビジョニング。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-07.png)
@@ -99,4 +99,4 @@ Apache Spark プールを削除する場合は、次の手順を実行します�
 ## <a name="next-steps"></a>次のステップ
 
 - 「[クイック スタート:Apache Spark ノートブックの作成](quickstart-apache-spark-notebook.md)に関するページを参照してください。
-- 「[クイック スタート:Azure portal を使用した Synapse SQL プールの作成](quickstart-create-sql-pool-portal.md)。
+- 「[クイック スタート:Azure portal を使用して専用 SQL プールを作成する](quickstart-create-sql-pool-portal.md)」を参照してください。

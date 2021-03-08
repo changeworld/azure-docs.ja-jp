@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスター用のサービス �
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871226"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389010"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の資格情報を更新またはローテーションする
 
@@ -22,7 +22,7 @@ ms.locfileid: "88871226"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.65 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+Azure CLI バージョン 2.0.65 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>AKS クラスター用の新しいサービス プリンシパルを更新または作成する
 
@@ -47,6 +47,9 @@ az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 ### <a name="reset-the-existing-service-principal-credential"></a>既存のサービス プリンシパルの資格情報をリセットする
 
 既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、*myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための *SP_ID* という名前の変数として設定されます。 これらのコマンドでは Bash 構文を使用します。
+
+> [!WARNING]
+> Azure Virtual Machine Scale Sets を使用する AKS クラスターでクラスターの資格情報をリセットすると、[ノード イメージのアップグレード][node-image-upgrade]が実行され、新しい資格情報でノードが更新されます。
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -104,7 +107,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret "$SP_SECRET"
+    --client-secret $SP_SECRET
 ```
 
 小規模および中規模のクラスターの場合は、AKS でサービス プリンシパルの資格情報の更新にかかる時間はそれほど長くありません。
@@ -138,3 +141,4 @@ az aks update-credentials \
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[node-image-upgrade]: ./node-image-upgrade.md

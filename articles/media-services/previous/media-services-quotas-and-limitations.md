@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 09/16/2020
 ms.author: juliako
-ms.openlocfilehash: bb217efabbbc50bf5d52b8ee02407ce1beb42756
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a2e80fa8eaec1dbf4137ba72662dfb178b6c9b1a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259559"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91329664"
 ---
 # <a name="quotas-and-limitations"></a>クォータと制限
 

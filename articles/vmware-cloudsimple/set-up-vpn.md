@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - オンプレミスとプライベート クラウド間の VPN を構成する
 description: オンプレミス ネットワークと CloudSimple プライベート クラウド間でサイト対サイトまたはポイント対サイト VPN 接続を構成する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087134"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899220"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドへの VPN 接続を構成する
 
@@ -49,7 +49,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 
 7. CloudSimple VPN ゲートウェイに接続します。
 
-次の例で、**Viscosity クライアント**を使用した接続のインポートを示します。
+次の例で、**Viscosity クライアント** を使用した接続のインポートを示します。
 
 #### <a name="import-connection-on-viscosity-client"></a>Viscosity クライアントの接続をインポートする
 
@@ -63,7 +63,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 
 4. 使用するプロトコル用の OpenVPN 構成ファイル (.ovpn) を選択し、 **[Open]\(開く\)** をクリックします。
 
-    ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![選択できる OpenVPN 構成ファイルが強調表示されているスクリーンショット。](media/import-p2s-vpn-config-choose-ovpn.png)
 
 これで、[Viscosity] メニューに接続が表示されます。
 
@@ -71,7 +71,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 
 Viscosity OpenVPN クライアントを使用して VPN に接続するには、メニューから接続を選択します。 メニュー アイコンが更新され、接続が確立されたことが示されます。
 
-![VPN](media/vis03.png)
+![CloudSimple VPN の接続状態を示すスクリーンショット。](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>複数のプライベート クラウドへの接続
 

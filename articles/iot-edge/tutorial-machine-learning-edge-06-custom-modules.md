@@ -9,17 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997933"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932338"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
-
-> [!NOTE]
-> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
 この記事では、リーフ IoT デバイスからメッセージを受信し、機械学習モデルを使用してデータを実行し、分析情報を IoT Hub に転送する 3 つの IoT Edge モジュールを作成します。
 
@@ -54,6 +51,19 @@ IoT Edge デバイスで 4 つのことを達成できるようにします。
 ![IoT Edge の 3 つのモジュールのアーキテクチャ図](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 この記事の手順は通常、クラウド開発者によって実行されます。
+
+チュートリアルのこのセクションで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+>
+> * カスタム コードから IoT Edge モジュールを作成する。
+> * カスタム モジュールから Docker イメージを生成する。
+> * カスタム モジュールをサポートするように IoT Hub ルーティングを再構成する。
+> * カスタム モジュールをビルド、発行、およびデプロイする。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
 ## <a name="create-a-new-iot-edge-solution"></a>新しい IoT Edge ソリューションを作成する
 
@@ -156,7 +166,7 @@ Router モジュールは、メッセージを確実に正しい順序で処理�
 
 1. Visual Studio Code で modules フォルダーを右クリックし、 **[Add IoT Edge Module] \(IoT Edge モジュールの追加\)** を選択します。
 
-1. モジュール テンプレートの **C# モジュール**を選択します。
+1. モジュール テンプレートの **C# モジュール** を選択します。
 
 1. モジュールの名前を **turbofanRouter** にします。
 
@@ -804,19 +814,15 @@ IoT Edge デバイス (このケースでは Linux VM) にログインすると�
    sudo docker exec -it avroFileWriter bash
    ```
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルはセットの一部であり、各記事は前の記事の作業が行われたことが前提になっています。 最後のチュートリアルを完了するまで、リソースのクリーンアップはしないでください。
+
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、分類器、ルーター、ファイル ライター (アップローダー) の 3 つのモジュールを含む IoT Edge ソリューションを Visual Studio Code で作成しました。 モジュールがエッジ デバイス上で互いに通信できるようにするためのルートを設定したほか、 エッジ デバイスの構成を変更し、また、モジュールのコンテナーに依存関係をインストールしバインド マウントを追加するために Dockerfile を更新しました。 
 
 次に、種類に応じてメッセージをルーティングしたり、ファイルのアップロードを処理したりするために、IoT Hub の構成を更新しました。 すべての準備が整ったので、モジュールを IoT Edge デバイスにデプロイし、モジュールが正しく実行されていることを確認しました。
-
-詳細なガイダンスについては、次に関する記事を参照してください。
-
-* [Learn how to deploy modules and establish routes in IoT Edge](module-composition.md) (IoT Edge にモジュールをデプロイしてルートを確立する方法)
-* [IoT Hub message routing query syntax](../iot-hub/iot-hub-devguide-routing-query-syntax.md) (IoT Hub メッセージ ルーティングのクエリ構文)
-* [IoT Hub message routing: now with routing on message body](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/) (IoT Hub メッセージ ルーティング: メッセージ本文でのルーティングが可能に)
-* [IoT Hub を使用したファイルのアップロード](../iot-hub/iot-hub-devguide-file-upload.md)
-* [Upload files from your device to the cloud with IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md) (IoT Hub を使用してデバイスからクラウドにファイルをアップロードする)
 
 次の記事に進んでデータの送信を開始し、ソリューションの実際の動作を確認してください。
 

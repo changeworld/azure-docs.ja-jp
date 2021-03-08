@@ -3,16 +3,17 @@ title: Windows デスクトップ アプリでの使用状況とパフォーマ�
 description: Application Insights を使用して、Windows デスクトップ アプリの使用状況とパフォーマンスを分析します。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 15331494b40021f10c162fba75abf6fe88d2d419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323419"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583311"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 
-Application Insights は、オンプレミスや Azure、その他各種クラウドでホストされているすべてのアプリケーションが活用ができます。 唯一の制約は、Application Insights サービスとの[通信を許可](./ip-addresses.md)する必要があることです。 ユニバーサル Windows プラットフォーム (UWP) アプリケーションの監視には、[Visual Studio App Center](../learn/mobile-center-quickstart.md) をお勧めします。
+Application Insights は、オンプレミスや Azure、その他各種クラウドでホストされているすべてのアプリケーションが活用ができます。 唯一の制約は、Application Insights サービスとの[通信を許可](./ip-addresses.md)する必要があることです。 ユニバーサル Windows プラットフォーム (UWP) アプリケーションの監視には、[Visual Studio App Center](../app/mobile-center-quickstart.md) をお勧めします。
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>従来の Windows アプリケーションから Application Insights にテレメトリを送信するには
 1. [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](./create-new-resource.md)。 
@@ -20,13 +21,13 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
 3. Visual Studio でアプリ プロジェクトの NuGet パッケージを編集し、Microsoft.ApplicationInsights.WindowsServer を追加します (または、標準テレメトリ コレクション モジュールを含まないベース API だけが必要な場合は、Microsoft.ApplicationInsights を選択します)。
 4. インストルメンテーション キーの設定はコードまたは ApplicationInsights.config で行います。コードの場合:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *自分のキー* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*自分のキー*`";`
    
     ApplicationInsights.config の場合 (いずれかの標準テレメトリ パッケージをインストールした場合):
    
     `<InstrumentationKey>`*自分のキー*`</InstrumentationKey>` 
    
-    ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy**に設定されていることを確認します。
+    ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy** に設定されていることを確認します。
 5. [API を使用して](./api-custom-events-metrics.md) テレメトリを送信します。
 6. アプリケーションを実行し、Azure portal で作成したリソースのテレメトリを表示します。
 
@@ -53,10 +54,8 @@ using Microsoft.ApplicationInsights;
             ...
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e)
         {
-            e.Cancel = true;
-
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -64,9 +63,10 @@ using Microsoft.ApplicationInsights;
                 // Allow time for flushing:
                 System.Threading.Thread.Sleep(1000);
             }
-            base.OnClosing(e);
+            base.OnFormClosing(e);
         }
-
+        
+        ...
 ```
 
 ## <a name="override-storage-of-computer-name"></a>コンピューター名のストレージを上書きする
@@ -177,6 +177,6 @@ namespace WindowsFormsApp2
 ## <a name="next-steps"></a>次のステップ
 * [ダッシュボードを作成する](./overview-dashboard.md)
 * [診断検索](./diagnostic-search.md)
-* [メトリックを探索する](../platform/metrics-charts.md)
-* [Analytics クエリを作成する](../log-query/log-query-overview.md)
+* [メトリックを探索する](../essentials/metrics-charts.md)
+* [Analytics クエリを作成する](../logs/log-query-overview.md)
 

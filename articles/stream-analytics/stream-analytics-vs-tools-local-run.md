@@ -3,16 +3,15 @@ title: Visual Studio で Azure Stream Analytics クエリをローカルでテ�
 description: この記事では、Visual Studio の Azure Stream Analytics ツールを使ってクエリをローカルでテストする方法について説明します。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b856826761f355e896cae48aa4a6fb62f5947e0b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045639"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019926"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Visual Studio で Stream Analytics クエリをローカルでテストする
 
@@ -30,7 +29,7 @@ Azure Stream Analytics プロジェクトで **[Script.asaql]** をダブルク�
 
 ローカルの静的データに対してクエリを検証するには、入力を右クリックして **[ローカル入力の追加]** を選択します。
    
-![ローカル入力の追加](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
+![[ローカル入力の追加] メニュー オプションが強調表示されているスクリーンショット。](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
 ポップアップ ウィンドウで、ローカル パスからサンプル データを選択し、 **[保存]** を選択します。
    
@@ -75,5 +74,4 @@ Event Hubs または IoT Hub からのデータ ストリーミングのみを�
 * [クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
 * [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)
 * [Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)](stream-analytics-live-data-local-testing.md)
-* [チュートリアル: Azure DevOps を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Stream Analytics ツールで継続的に統合および開発する](stream-analytics-tools-for-visual-studio-cicd.md)

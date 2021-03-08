@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: 71f5488b1f689e8892155b013730bcbb3c8e0e35
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606533"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90531927"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>マッピング データ フローの集計変換
 
@@ -29,17 +29,18 @@ ms.locfileid: "81606533"
 
 集計変換では、句ごとのグループ化は省略可能です。
 
-## <a name="aggregate-column"></a>列を集計する 
+## <a name="aggregate-columns"></a>列を集計する
 
-**[集計]** タブに移動して、集計式を作成します。 既存の列を集計で上書きするか、新しいフィールドを新しい名前で作成します。 集計式は、列名セレクターの右側のボックスに入力されます。 式を編集するには、テキスト ボックスをクリックして式ビルダーを開きます。 別の集計を追加するには、既存の式の上にカーソルを合わせ、プラス アイコンをクリックすると、新しい集計列または[列パターン](concepts-data-flow-column-pattern.md)が作成されます。
+**[集計]** タブに移動して、集計式を作成します。 既存の列を集計で上書きするか、新しいフィールドを新しい名前で作成します。 集計式は、列名セレクターの右側のボックスに入力されます。 式を編集するには、テキスト ボックスをクリックして式ビルダーを開きます。 集計列をさらに追加するには、列リストの上にある **[追加]** をクリックするか、既存の集計列の横にあるプラス記号のアイコンをクリックします。 **[列の追加]** または **[列パターンの追加]** のいずれかを選択します。 各集計式には、少なくとも 1 つの集計関数が含まれている必要があります。
 
-各集計式には、少なくとも 1 つの集計関数が含まれている必要があります。
-
-![集計変換の集計設定](media/data-flow/agg2.png "集計変換の集計設定")
-
+![集計の設定](media/data-flow/aggregate-columns.png "集計の設定")
 
 > [!NOTE]
 > デバッグ モードでは、式ビルダーで集計関数を使用したデータのプレビューを生成することはできません。 集計変換のデータのプレビューを表示するには、式ビルダーを終了し、[データ のプレビュー] タブで確認します。
+
+### <a name="column-patterns"></a>列パターン
+
+一連の列に同じ集計を適用するには、[列パターン](concepts-data-flow-column-pattern.md)を使用します。 入力スキーマからの列は既定では削除されるため、これは、その多くを保持する場合に役立ちます。 `first()` などのヒューリスティックを使用して、集計を通じて入力列を保持します。
 
 ## <a name="reconnect-rows-and-columns"></a>行と列の再接続
 
@@ -107,6 +108,6 @@ MoviesYear aggregate(groupBy(year),
     avgrating = avg(toInteger(Rating))) ~> AvgComedyRatingByYear
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ウィンドウ変換](data-flow-window.md)を使用してウィンドウベースの集計を定義する

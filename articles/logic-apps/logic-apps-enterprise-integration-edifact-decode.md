@@ -1,6 +1,6 @@
 ---
 title: EDIFACT メッセージをデコードする
-description: Azure Logic Apps と Enterprise Integration Pack の EDIFACT メッセージ デコーダーを使用して EDI の検証および受信確認の生成を行います
+description: Azure Logic Apps と Enterprise Integration Pack の EDIFACT メッセージ デコーダーを使用して、EDI の検証および受信確認の生成を行います
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106289"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000013"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをデコードする
 
@@ -84,13 +84,13 @@ Decode EDIFACT コネクタは次のタスクを実行します。
   * グループ内の他のトランザクション セット制御番号と照らし合わせて、トランザクション セット制御番号を確認する。
 * インターチェンジをトランザクション セットに分割するか、インターチェンジ全体を保持する。
   * インターチェンジをトランザクション セットとして分割 - エラー発生時にトランザクション セットを中断インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
-  X12 Decode アクションは、検証が失敗したこれらのトランザクション セットのみを `badMessages` に出力し、残りのトランザクション セットを `goodMessages` に出力します。
+  EDIFACT Decode アクションによって、検証が失敗したこれらのトランザクション セットのみが `badMessages` に出力され、残りのトランザクション セットが `goodMessages` に出力されます。
   * インターチェンジをトランザクション セットとして分割 - エラー発生時にインターチェンジを中断インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
-  インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、X12 Decode アクションはそのインターチェンジのすべてのトランザクション セットを `badMessages` に出力します。
+  インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、EDIFACT Decode アクションによって、そのインターチェンジのすべてのトランザクション セットが `badMessages` に出力されます。
   * インターチェンジの保存 - エラー発生時にトランザクション セットを中断インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
-  X12 Decode アクションは、検証が失敗したこれらのトランザクション セットのみを `badMessages` に出力し、残りのトランザクション セットを `goodMessages` に出力します。
+  EDIFACT Decode アクションによって、検証が失敗したこれらのトランザクション セットのみが `badMessages` に出力され、残りのトランザクション セットが `goodMessages` に出力されます。
   * インターチェンジの保存 - エラー発生時にインターチェンジを中断インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
-  インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、X12 Decode アクションはそのインターチェンジのすべてのトランザクション セットを `badMessages` に出力します。
+  インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、EDIFACT Decode アクションによって、そのインターチェンジのすべてのトランザクション セットが `badMessages` に出力されます。
 * 技術 (制御) 確認または機能確認を生成する (構成されている場合)
   * 技術確認または制御確認は、完全に受信したインターチェンジの構文チェックの結果を報告します。
   * 機能確認は、受信したインターチェンジまたはグループの承認または拒否を確認します。

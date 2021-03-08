@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 582ec01a7a843358bef749aec693a59f88a1d655
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640652"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420531"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect:既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
@@ -34,21 +34,21 @@ Azure AD 内のオブジェクトは、クラウド (Azure AD) とオンプレ�
 オンプレミスの AD にも存在するユーザーを Azure AD で管理していて、後になって Connect が必要になった場合、いくつか追加の懸念事項を考慮する必要があります。
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Azure AD の既存のユーザーとの同期
-Azure AD Connect をインストールして同期を開始すると、(Azure AD の) Azure AD 同期サービスによってすべての新しいオブジェクトがチェックされ、一致する既存のオブジェクトが検索されます。 このプロセスでは、**userPrincipalName**、**proxyAddresses**、**sourceAnchor**/**immutableID** の 3 つの属性が使用されます。 **userPrincipalName** と **proxyAddresses** の一致は、**あいまい一致**と呼ばれます。 **sourceAnchor** の一致は、**完全一致**と呼ばれます。 **proxyAddresses** 属性では、**SMTP:** 付きの値 (つまり、プライマリ電子メール アドレス) のみが評価に使用されます。
+Azure AD Connect をインストールして同期を開始すると、(Azure AD の) Azure AD 同期サービスによってすべての新しいオブジェクトがチェックされ、一致する既存のオブジェクトが検索されます。 このプロセスでは、 **userPrincipalName** 、 **proxyAddresses** 、 **sourceAnchor**/**immutableID** の 3 つの属性が使用されます。 **userPrincipalName** と **proxyAddresses** の一致は、 **あいまい一致** と呼ばれます。 **sourceAnchor** の一致は、 **完全一致** と呼ばれます。 **proxyAddresses** 属性では、 **SMTP:** 付きの値 (つまり、プライマリ電子メール アドレス) のみが評価に使用されます。
 
 一致は、Connect で生成された新しいオブジェクトについてのみ評価されます。 これらの属性のいずれかに一致するように既存のオブジェクトを変更すると、エラーが発生します。
 
-Connect で生成されたオブジェクトと属性値が同じであるオブジェクトが Azure AD によって検出され、それが Azure AD に既にあることが判明すると、Azure AD のオブジェクトは Connect によって引き継がれます。 以前クラウドで管理されていたオブジェクトには、オンプレミスで管理されていることを示すフラグが付きます。 オンプレミスの AD の値が設定された Azure AD の属性はすべて、オンプレミスの値で上書きされます。 オンプレミスで属性が **NULL** 値である場合は例外です。 このケースでは、Azure AD の値はそのままですが、オンプレミスで別の値に変更することはできます。
+Connect で生成されたオブジェクトと属性値が同じであるオブジェクトが Azure AD によって検出され、それが Azure AD に既にあることが判明すると、Azure AD のオブジェクトは Connect によって引き継がれます。 以前クラウドで管理されていたオブジェクトには、オンプレミスで管理されていることを示すフラグが付きます。 オンプレミスの AD の値が設定された Azure AD の属性はすべて、オンプレミスの値で上書きされます。
 
 > [!WARNING]
-> Azure AD のすべての属性はオンプレミスの値で上書きされるため、重要なデータは必ずオンプレミスで保持するようにしてください。 たとえば、電子メール アドレスを Office 365 でしか管理しておらず、オンプレミスの AD DS で更新していなかった場合、AD DS に存在しない Azure AD/Office 365 の値はすべて失われます。
+> Azure AD のすべての属性はオンプレミスの値で上書きされるため、重要なデータは必ずオンプレミスで保持するようにしてください。 たとえば、電子メール アドレスを Microsoft 365 でしか管理しておらず、オンプレミスの AD DS で更新していなかった場合、AD DS に存在しない Azure AD/Microsoft 365 の値はすべて失われます。
 
 > [!IMPORTANT]
 > (簡易設定で常に使用される) パスワード同期を使用する場合、Azure AD のパスワードはオンプレミスの AD のパスワードで上書きされます。 ユーザーが異なるパスワードの管理に慣れている場合、Connect をインストールした後に、オンプレミスのパスワードを使用する必要があることをユーザーに伝える必要があります。
 
 計画を立てる際には、前のセクションと警告の内容を考慮する必要があります。 オンプレミスの AD DS に反映していない変更が Azure AD に多数ある場合、Azure AD Connect でオブジェクトを同期する前に、更新された値を AD DS に設定する方法について計画しておく必要があります。
 
-あいまい一致でオブジェクトを一致させた場合、**sourceAnchor** が Azure AD のオブジェクトに追加され、後で完全一致が使用できるようになります。
+あいまい一致でオブジェクトを一致させた場合、 **sourceAnchor** が Azure AD のオブジェクトに追加され、後で完全一致が使用できるようになります。
 
 >[!IMPORTANT]
 > Microsoft は、Azure Active Directory で既存の管理アカウントとオンプレミス アカウントを同期しないことを強くお勧めします。

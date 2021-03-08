@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827454"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202098"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -282,7 +282,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 
 ## <a name="disks-and-images"></a>ディスクとイメージ
    
-Azure では、vhd ファイルは[ディスクまたはイメージ](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を表すことができます。 vhd ファイルのオペレーティング システムは、特定の VM に特化している場合はディスクと呼ばれます。 vhd ファイルのオペレーティング システムが、多くの VM の作成に使用されるように一般化されている場合は、イメージと呼ばれます。   
+Azure では、vhd ファイルは[ディスクまたはイメージ](../managed-disks-overview.md)を表すことができます。 vhd ファイルのオペレーティング システムは、特定の VM に特化している場合はディスクと呼ばれます。 vhd ファイルのオペレーティング システムが、多くの VM の作成に使用されるように一般化されている場合は、イメージと呼ばれます。   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>プラットフォーム イメージから新しい仮想マシンと新しいディスクを作成する
 
@@ -308,7 +308,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 },
 ```
 
-オペレーティング システム ディスクの構成設定は、osDisk 要素で割り当てられます。 この例では、キャッシュ モードが **ReadWrite** に設定された新しいマネージド ディスクを定義し、ディスクが[プラットフォーム イメージ](cli-ps-findimage.md)から作成されるようにします。
+オペレーティング システム ディスクの構成設定は、osDisk 要素で割り当てられます。 この例では、キャッシュ モードが **ReadWrite** に設定された新しいマネージド ディスクを定義し、ディスクが [プラットフォーム イメージ](cli-ps-findimage.md)から作成されるようにします。
 
 ```json
 "osDisk": { 
@@ -453,5 +453,5 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 
 - 「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](ps-template.md)」を使用して作成したテンプレートをデプロイします。
-- 作成した VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+- 作成した VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md)」をご覧ください。
 - テンプレート内のリソースの種類の JSON 構文とプロパティについては、[Azure Resource Manager テンプレート リファレンス](/azure/templates/)を参照してください。

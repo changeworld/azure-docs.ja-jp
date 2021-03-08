@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9df4c62a65fd133c6ea8dc84e33d7c7b02d94cbf
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180645"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494041"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -140,7 +140,7 @@ Application Insights は、関数アプリを監視するために推奨され�
 | 設定名                 | 説明                                                                               | 値の例                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Functions ランタイムが内部キューイングのために使用するストレージ アカウントへの接続文字列 | 「[ストレージ アカウント](#storage)」を参照       |
-| FUNCTIONS_EXTENSION_VERSION  | Azure Functions ランタイムのバージョン                                                | `~2`                                  |
+| FUNCTIONS_EXTENSION_VERSION  | Azure Functions ランタイムのバージョン                                                | `~3`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | このアプリ内の関数で使用される言語スタック                                   | `dotnet`、`node`、`java`、`python`、または `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | `node` 言語スタックを使用している場合にのみ必要、使用するバージョンを指定します              | `10.14.1`                             |
 
@@ -164,7 +164,7 @@ Application Insights は、関数アプリを監視するために推奨され�
             },
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             }
         ]
     }
@@ -175,7 +175,7 @@ Application Insights は、関数アプリを監視するために推奨され�
 
 ## <a name="deploy-on-consumption-plan"></a>従量課金プランでデプロイする
 
-従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールインします。 アイドル状態の VM に対して支払う必要はなく、事前に容量を予約する必要もありません。 詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md#consumption-plan)」を参照してください。
+従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールインします。 アイドル状態の VM に対して支払う必要はなく、事前に容量を予約する必要もありません。 詳細については、「[Azure Functions のスケールとホスティング](consumption-plan.md)」を参照してください。
 
 Azure Resource Manager テンプレートのサンプルについては、[従量課金プランの関数アプリ]に関するページをご覧ください。
 
@@ -212,9 +212,11 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
+従量課金プランで実行されている関数アプリに必要な設定は、Windows と Linux の間で異なります。 
+
 #### <a name="windows"></a>Windows
 
-Windows の場合、従量課金プランでは、サイト構成に `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` の 2 つの追加の設定が必要です。 このプロパティによって、関数アプリ コードと構成が格納されているストレージ アカウントとファイル パスが構成されます。
+Windows の場合、従量課金プランでは、サイト構成に追加の設定 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) が必要です。 このプロパティによって、関数アプリのコードと構成が格納されているストレージ アカウントが構成されます。
 
 ```json
 {
@@ -238,10 +240,6 @@ Windows の場合、従量課金プランでは、サイト構成に `WEBSITE_CO
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -251,7 +249,7 @@ Windows の場合、従量課金プランでは、サイト構成に `WEBSITE_CO
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -259,9 +257,12 @@ Windows の場合、従量課金プランでは、サイト構成に `WEBSITE_CO
 }
 ```
 
+> [!IMPORTANT]
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定は、サイトが最初に作成されるときに生成されるため、設定しないでください。  
+
 #### <a name="linux"></a>Linux
 
-Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定され、`reserved` プロパティが `true` に設定されている必要があります。
+Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定され、`reserved` プロパティが `true` に設定されている必要があります。 
 
 ```json
 {
@@ -290,7 +291,7 @@ Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定さ
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         },
@@ -299,10 +300,9 @@ Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定さ
 }
 ```
 
-
+[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) および [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) の設定は、Linux ではサポートされていません。
 
 <a name="premium"></a>
-
 ## <a name="deploy-on-premium-plan"></a>Premium プランでデプロイする
 
 Premium プランでは、従量課金プランと同じスケーリングが提供されますが、専用リソースと追加の機能が含まれています。 詳細については、「[Azure Functions の Premium プラン](./functions-premium-plan.md)」を参照してください。
@@ -334,7 +334,7 @@ Premium プランは、特殊なタイプの "serverfarm" リソースです。 
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
-Premium プランでの関数アプリは、`serverFarmId` プロパティが、前に作成されたプランのリソース ID に設定されている必要があります。 さらに、Premium プランでは、サイト構成に `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` の 2 つの追加の設定が必要です。 このプロパティによって、関数アプリ コードと構成が格納されているストレージ アカウントとファイル パスが構成されます。
+Premium プランでの関数アプリは、`serverFarmId` プロパティが、前に作成されたプランのリソース ID に設定されている必要があります。 さらに、Premium プランでは、サイト構成に追加の設定 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) が必要です。 このプロパティによって、関数アプリのコードと構成が格納されているストレージ アカウントが構成されます。
 
 ```json
 {
@@ -360,10 +360,6 @@ Premium プランでの関数アプリは、`serverFarmId` プロパティが、
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -373,14 +369,15 @@ Premium プランでの関数アプリは、`serverFarmId` プロパティが、
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
     }
 }
 ```
-
+> [!IMPORTANT]
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定は、サイトが最初に作成されるときに生成されるため、設定しないでください。  
 
 <a name="app-service-plan"></a>
 
@@ -462,7 +459,7 @@ App Service プランでの関数アプリは、`serverFarmId` プロパティ�
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -470,13 +467,13 @@ App Service プランでの関数アプリは、`serverFarmId` プロパティ�
 }
 ```
 
-Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティも含める必要があります。 コードをデプロイしているだけである場合、この値は、目的のランタイム スタックによって決定されます。
+Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティも含める必要があります。 単にコードをデプロイしている場合、この値は、目的のランタイム スタックによって決まります (```runtime|runtimeVersion``` の形式)。
 
 | スタック            | 値の例                                         |
 |------------------|-------------------------------------------------------|
-| Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
-| .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
+| Python           | `python|3.7`      |
+| JavaScript       | `node|12`          |
+| .NET             | `dotnet|3.1` |
 
 ```json
 {
@@ -507,16 +504,16 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ],
-            "linuxFxVersion": "DOCKER|microsoft/azure-functions-node8:2.0"
+            "linuxFxVersion": "node|12"
         }
     }
 }
 ```
 
-[カスタム コンテナー イメージをデプロイ](./functions-create-function-linux-custom-image.md)している場合は、それを `linuxFxVersion` で指定し、[Web App for Containers](../app-service/containers/index.yml) のように、イメージをプルできるようにする構成を含める必要があります。 また、アプリのコンテンツはコンテナー自体で提供されるため、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` を `false` に設定します。
+[カスタム コンテナー イメージをデプロイ](./functions-create-function-linux-custom-image.md)している場合は、それを `linuxFxVersion` で指定し、[Web App for Containers](../app-service/index.yml) のように、イメージをプルできるようにする構成を含める必要があります。 また、アプリのコンテンツはコンテナー自体で提供されるため、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` を `false` に設定します。
 
 ```json
 {
@@ -547,7 +544,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 },
                 {
                     "name": "DOCKER_REGISTRY_SERVER_URL",
@@ -574,7 +571,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 
 ## <a name="customizing-a-deployment"></a>デプロイのカスタマイズ
 
-関数アプリには、アプリ設定オプション、ソース管理オプションなど、デプロイで使用できる子リソースが多数含まれます。 **sourcecontrols** 子リソースを削除して、別の[デプロイ オプション](functions-continuous-deployment.md)を代わりに使用することもできます。
+関数アプリには、アプリ設定オプション、ソース管理オプションなど、デプロイで使用できる子リソースが多数含まれます。 **sourcecontrols** 子リソースを削除して、別の [デプロイ オプション](functions-continuous-deployment.md)を代わりに使用することもできます。
 
 > [!IMPORTANT]
 > Azure Resource Manager を使用して、アプリケーションを適切にデプロイするには、リソースが Azure でどのようにデプロイされているかを理解することが重要です。 次の例では、**siteConfig** を使用して最上位レベル構成が適用されます。 この構成は、情報を Functions ランタイムとデプロイ エンジンに提供するため、最上位レベルで設定することが重要です。 **sourcecontrols/web** 子リソースが適用される前に、最上位の情報が必要です。 これらの設定は、子レベルの **config/appSettings** リソースで構成できますが、場合によっては、関数アプリを、**config/appSettings** が適用される "*前*" にデプロイする必要があります。 たとえば、[Logic Apps](../logic-apps/index.yml) で関数を使用している場合、関数は他のリソースと依存関係にあります。
@@ -597,7 +594,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
         "appSettings": [
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             },
             {
                 "name": "Project",
@@ -619,7 +616,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
         "properties": {
           "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
           "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
-          "FUNCTIONS_EXTENSION_VERSION": "~2",
+          "FUNCTIONS_EXTENSION_VERSION": "~3",
           "FUNCTIONS_WORKER_RUNTIME": "dotnet",
           "Project": "src"
         }
@@ -695,7 +692,7 @@ Azure Functions を開発および構成する方法について学習します�
 
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure 関数アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
-* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
+* [初めての Azure 関数の作成](./functions-get-started.md)
 
 <!-- LINKS -->
 

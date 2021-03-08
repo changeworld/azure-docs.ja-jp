@@ -1,10 +1,10 @@
 ---
 title: リンクと URL の Azure AD アプリ プロキシの変換 | Microsoft Docs
-description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
+description: Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 44266f7a7485b44ba60a27aadd7422e8d1c3acf4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282927"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259408"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -47,14 +47,14 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 > [!NOTE]
 > 最後のオプションはテナント専用です。いかなる理由であっても、カスタム ドメインのアプリに同じ内部および外部 URL を含めることはできません。 この機能を有効にする前に、[Azure AD アプリケーション プロキシでカスタム ドメイン](application-proxy-configure-custom-domain.md)が機能するかどうかをご確認ください。 
 > 
-> または、リンク変換を構成したいアプリケーションが SharePoint の場合は、「[SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)」で、リンクをマッピングするための別の方法をご覧ください。 
+> または、リンク変換を構成したいアプリケーションが SharePoint の場合は、「[SharePoint 2013 の代替アクセス マッピングを構成する](/SharePoint/administration/configure-alternate-access-mappings)」で、リンクをマッピングするための別の方法をご覧ください。 
 
  
 ### <a name="option-1-microsoft-edge-integration"></a>オプション 1: Microsoft Edge 統合 
 
 Microsoft Edge を使用して、アプリケーションとコンテンツの保護を強化することができます。 このソリューションを使用するには、Microsoft Edge を使用してアプリケーションにアクセスすることをユーザーに要求または推奨する必要があります。 アプリケーション プロキシで公開されているすべての内部 URL は Edge によって認識され、対応する外部 URL にリダイレクトされます。 これにより、すべてのハードコードされた内部 URL が機能すること、またユーザーがブラウザーに移動して内部 URL を直接入力した場合に、ユーザーがリモートであってもその URL が機能することが保証されます。  
 
-このオプションの構成方法などの詳細については、「[iOS および Android 用の Edge と Microsoft Intune を使用して Web アクセスを管理する](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge)」ドキュメントをご覧ください。  
+このオプションの構成方法などの詳細については、「[iOS および Android 用の Edge と Microsoft Intune を使用して Web アクセスを管理する](/mem/intune/apps/manage-microsoft-edge)」ドキュメントをご覧ください。  
 
 ### <a name="option-2-myapps-browser-extension"></a>オプション 2:MyApps ブラウザー拡張機能 
 
@@ -62,7 +62,7 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 この機能を使用するには、ユーザーが拡張機能をダウンロードしてログインしている必要があります。 管理者またはユーザーに必要なその他の構成はありません。 
 
-このオプションの構成方法などの詳細については、[MyApps Browser 拡張機能](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension)のドキュメントを参照してください。
+このオプションの構成方法などの詳細については、[MyApps Browser 拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)のドキュメントを参照してください。
 
 ### <a name="option-3-link-translation-setting"></a>オプション 3:リンク変換設定 
 
@@ -83,31 +83,31 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 オンプレミスのアプリケーションの内部リンクには 2 つの一般的な種類があります。
 
-- `/claims/claims.html` のようなローカル ファイル構造の共有リソースをポイントする**相対内部リンク**。 これらのリンクは、アプリケーション プロキシ経由で公開されるアプリで自動的に動作し、リンク変換の有無にかかわらず機能し続けます。 
-- `http://expenses` のような他のオンプレミスのアプリまたは `http://expenses/logo.jpg` のような公開されたファイルへの**ハードコードされた内部リンク**。 リンク変換機能は、ハードコードされた内部リンクで機能し、リモート ユーザーが経由する必要がある外部 URL をポイントするように変更します。
+- `/claims/claims.html` のようなローカル ファイル構造の共有リソースをポイントする **相対内部リンク**。 これらのリンクは、アプリケーション プロキシ経由で公開されるアプリで自動的に動作し、リンク変換の有無にかかわらず機能し続けます。 
+- `http://expenses` のような他のオンプレミスのアプリまたは `http://expenses/logo.jpg` のような公開されたファイルへの **ハードコードされた内部リンク**。 リンク変換機能は、ハードコードされた内部リンクで機能し、リモート ユーザーが経由する必要がある外部 URL をポイントするように変更します。
 
-アプリケーション プロキシがリンク変換をサポートする HTML コード タグの完全な一覧には、以下のものが含まれます。
-* a
-* audio
-* base
-* ボタン
-* div
-* embed
-* form
-* frame
-* head
-* html
-* iframe
-* 画像
-* input
-* link
-* menuitem
-* meta
-* object
-* script
-* source
-* track
-* video
+アプリケーション プロキシがリンク変換をサポートする HTML コード タグの属性の完全な一覧には、以下のものが含まれます。
+* a (href)
+* audio (src)
+* base (href)
+* button (formaction)
+* div (data-background、style、data-src)
+* embed (src)
+* form (action)
+* frame (src)
+* head (profile)
+* html (manifest)
+* iframe (longdesc、src)
+* img (longdesc、src)
+* input (formaction、src、value)
+* link (href)
+* menuitem (icon)
+* meta (content)
+* object (archive、data、codebase)
+* script (src)
+* source (src)
+* track (src)
+* video (src、poster)
 
 さらに、CSS 内では URL 属性も変換されます。
 
@@ -152,4 +152,4 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシとともにカスタム ドメインを使用](application-proxy-configure-custom-domain.md)して、同じ内部および外部 URL を含める
 
-[SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)
+[SharePoint 2013 の代替アクセス マッピングを構成する](/SharePoint/administration/configure-alternate-access-mappings)

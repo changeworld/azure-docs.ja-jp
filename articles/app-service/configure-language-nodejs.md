@@ -1,17 +1,17 @@
 ---
 title: Node.js アプリの構成
 description: Azure App Service のネイティブ Windows インスタンス、または事前に作成した Linux コンテナーで Node.js アプリを構成する方法について学習します。 この記事では、最も一般的な構成タスクを紹介しています。
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e6daf176504427c96f8dce0a4e9a6b6d5e999a0a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080115"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696015"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Node.js アプリを構成する
 
@@ -84,6 +84,36 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > プロジェクトの `package.json` で Node.js バージョンを設定する必要があります。 デプロイ エンジンは、サポートされているすべての Node.js バージョンを含む別のコンテナーで実行します。
 
 ::: zone-end
+
+## <a name="get-port-number"></a>ポート番号を取得する
+
+Node.js アプリでは、受信要求を受信するために適切なポートがリッスンされる必要があります。
+
+::: zone pivot="platform-windows"  
+
+Windows の App Service では、[IISNode](https://github.com/Azure/iisnode) を使用して Node.js アプリがホストされるため、Node.js アプリでは `process.env.PORT` 変数で指定されたポートがリッスンされる必要があります。 次の例は、単純な簡易アプリで行う方法を示しています。
+
+::: zone-end
+
+::: zone pivot="platform-linux"  
+
+App Service では、Node.js コンテナーに環境変数 `PORT` が設定され、そのポート番号で受信要求がコンテナーに転送されます。 要求を受信するには、アプリで `process.env.PORT` を使用して、そのポートがリッスンされる必要があります。 次の例は、単純な簡易アプリで行う方法を示しています。
+
+::: zone-end
+
+```javascript
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+```
 
 ::: zone pivot="platform-linux"
 
@@ -237,7 +267,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-このセクションは、`npm install --production` の実行で終わります。 `Deployment` セクションの*末尾*に必要なツールの実行に必要なコード セクションを追加します。
+このセクションは、`npm install --production` の実行で終わります。 `Deployment` セクションの *末尾* に必要なツールの実行に必要なコード セクションを追加します。
 
 - [Bower](#bower)
 - [Gulp](#gulp)

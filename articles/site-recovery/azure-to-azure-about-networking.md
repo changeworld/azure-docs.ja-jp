@@ -2,18 +2,18 @@
 title: Azure Site Recovery を使用した Azure VM のディザスター リカバリーのネットワークについて
 description: Azure Site Recovery を使用した Azure VM のレプリケーション用のネットワークの概要について示します。
 services: site-recovery
-author: sujayt
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
-ms.author: sutalasi
-ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131384"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370442"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリーのネットワークについて
 
@@ -29,22 +29,24 @@ ms.locfileid: "86131384"
 
 次の図は、Azure VM で実行しているアプリケーションの一般的な Azure 環境を示しています。
 
-![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Azure VM で実行されるアプリケーションの一般的な Azure 環境を示す図。](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 オンプレミス ネットワークから Azure への接続に Azure ExpressRoute または VPN 接続を使用している場合、環境は次のようになります。
 
 ![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-通常、ネットワークは、ファイアウォールやネットワーク セキュリティ グループ (NSG) を使用して保護されます。 ファイアウォールでは、URL や IP ベースのホワイトリスト登録を使用して、ネットワーク接続を制御します。 NSG では、IP アドレスの範囲を使用するルールを指定して、ネットワーク接続を制御します。
+通常、ネットワークは、ファイアウォールやネットワーク セキュリティ グループ (NSG) を使用して保護されます。 ネットワーク接続を制御するには、サービス タグを使用する必要があります。 NSG では、送信接続を制御するために複数のサービス タグを許可する必要があります。
 
 >[!IMPORTANT]
 > 認証済みプロキシを使用してネットワーク接続を制御することは、Site Recoery ではサポートされておらず、レプリケーションを有効にすることはできません。
 
+>[!NOTE]
+>- IP アドレス ベースのフィルター処理を実行して、送信接続を制御することはできません。
+>- 送信接続を制御するために Azure Site Recovery IP アドレスを Azure ルーティング テーブルに追加しないでください。
 
 ## <a name="outbound-connectivity-for-urls"></a>URL に対する送信接続
 
 送信接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の Site Recovery の URL を許可してください。
-
 
 **URL** | **詳細**
 --- | ---
@@ -57,12 +59,12 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 
 ## <a name="outbound-connectivity-using-service-tags"></a>サービスタグを使用した送信接続
 
-NSG を使用して送信接続を制御している場合は、次のサービス タグを許可する必要があります。
+NSG を使用して送信接続を制御すると同時に、次のサービス タグを許可する必要があります。
 
 - ソース リージョンのストレージ アカウントの場合:
-    - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG ルールを作成します。
+    - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)に基づく NSG ルールを作成します。
     - VM からキャッシュ ストレージ アカウントにデータを書き込むことができるように、これらのアドレスを許可します。
-- AAD に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (AAD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG ルールを作成します。
+- AAD に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (AAD) サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags) ベースの NSG ルールを作成します。
 - EventsHub サービス タグ ベースの NSG ルールをターゲット リージョンに対して作成し、Site Recovery 監視へのアクセスを許可します。
 - 任意のリージョンでの Site Recovery サービスへのアクセスを許可するために、AzureSiteRecovery サービス タグ ベースの NSG ルールを作成します。
 - AzureKeyVault サービス タグ ベースの NSG ルールを作成します。 これは、ADE が有効になっている仮想マシンのレプリケーションを、ポータルを介して有効にする場合にのみ必要です。
@@ -80,11 +82,11 @@ NSG を使用して送信接続を制御している場合は、次のサービ�
 
 1. 次のスクリーンショットで示すように、NSG 上の "Storage.EastUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
 
-      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![Storage.EastUS のネットワーク セキュリティ グループの [送信セキュリティ規則の追加] を示すスクリーンショット。](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. 次のスクリーンショットで示すように、NSG 上の "AzureActiveDirectory" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
 
-      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![Azure AD のネットワーク セキュリティ グループの [送信セキュリティ規則の追加] を示すスクリーンショット。](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. 上記のセキュリティ規則と同様に、ターゲットの場所に対応する NSG 上の "EventHub.CentralUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、Site Recovery 監視にアクセスできるようになります。
 
@@ -121,9 +123,9 @@ NSG を使用して送信接続を制御している場合は、次のサービ�
 
 ### <a name="forced-tunneling"></a>強制トンネリング
 
-0\.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)でオーバーライドし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
+0.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)でオーバーライドし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure 仮想マシンをレプリケート](./azure-to-azure-quickstart.md)することで、ワークロードの保護を開始します。
 - Azure 仮想マシンのフェールオーバーの [IP アドレスの保持](site-recovery-retain-ip-azure-vm-failover.md)について詳しく学習します。
 - [ExpressRoute を使用した Azure 仮想マシン](azure-vm-disaster-recovery-with-expressroute.md)のディザスター リカバリーについて詳しく学習します。

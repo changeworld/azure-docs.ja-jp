@@ -3,7 +3,7 @@ title: StorSimple デバイスの更新 | Microsoft Docs
 description: StorSimple の更新プログラムの機能を使用して、通常またはメンテナンス モードの更新プログラムや修正プログラムをインストールする方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: twooley
-ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: faf06775b78c5a7c90cea000ac0a1eb768107ef4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170088"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956842"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの更新
 > [!NOTE]
-> StorSimple のクラシック ポータルは非推奨となる予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+> StorSimple のクラシック ポータルは非推奨となる予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](./index.yml) のページを参照してください。
 
 ## <a name="overview"></a>概要
 StorSimple の更新プログラムの機能を使用すると、StorSimple デバイスを簡単に最新の状態に保つことができます。 更新プログラムの種類に応じて、Azure クラシック ポータルまたは Windows PowerShell インターフェイスを使用して、デバイスに更新プログラムを適用できます。 このチュートリアルでは、更新プログラムの種類とそれぞれのインストール方法について説明します。
@@ -120,6 +120,5 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 デバイスを工場出荷時の設定にリセットした場合、すべての更新プログラムが失われます。 出荷時の設定にリセットしたデバイスを登録し、構成した後で、Azure クラシック ポータルまたは StorSimple 用 Windows PowerShell から更新プログラムを手動でインストールする必要があります。 出荷時の設定へのリセットの詳細については、「 [デバイスの出荷時設定へのリセット](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* [StorSimple 用 Windows PowerShell を使用した StorSimple デバイスの管理の詳細](storsimple-windows-powershell-administration.md)
-* [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)の詳細を確認する。
-
+* [StorSimple 用 Windows PowerShell を使用した StorSimple デバイスの管理の詳細](./storsimple-8000-windows-powershell-administration.md)
+* [StorSimple Manager サービスを使用した StorSimple デバイスの管理](./storsimple-8000-manager-service-administration.md)の詳細を確認する。

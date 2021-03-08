@@ -1,27 +1,32 @@
 ---
 title: Azure HDInsight での Hive クエリの最適化
-description: この記事では、HDInsight で Apache Hive クエリを最適化する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: この記事では、Azure HDInsight で Apache Hive クエリを最適化する方法について説明します。
 ms.service: hdinsight
-ms.topic: how-to
+ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/14/2020
-ms.openlocfilehash: 89c276ffe6059a61323755eaf928d525ab5ea416
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 10/28/2020
+ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085295"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945563"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
-Azure HDInsight には、Apache Hive クエリを実行できるいくつかのクラスター タイプと テクノロジがあります。 ワークロードのニーズに合わせてパフォーマンスを最適化するには、適切なクラスター タイプを選択します。
+この記事では、Apache Hive クエリのパフォーマンスを向上させるために使用できる、最も一般的なパフォーマンスの最適化について説明します。
 
-たとえば、`ad hoc` 対話型クエリ用に最適化するには **Interactive Query** クラスター タイプを選択します。 バッチ処理として使用される Hive クエリ用に最適化するには、Apache **Hadoop** クラスター タイプを選択します。 また、**Spark** や **HBase** といったクラスター タイプで Hive クエリを実行することもできます。 Hive クエリを実行するための各種 HDInsight クラスター タイプについて詳しくは、「[Azure HDInsight における Apache Hive と HiveQL](hadoop/hdinsight-use-hive.md)」をご覧ください。
+## <a name="cluster-type-selection"></a>クラスターの種類の選択
 
-クラスターの種類が Hadoop である HDInsight クラスターは、既定ではパフォーマンス用に最適化されていません。 この記事では、クエリに適用できる最も一般的な Hive パフォーマンスの最適化方法について説明します。
+Azure HDInsight では、いくつかの異なるクラスター タイプに対して、Apache Hive クエリを実行できます。 
+
+ワークロードのニーズに合わせてパフォーマンスを最適化するには、次のように適切なクラスター タイプを選択します。
+
+* `ad hoc` 対話型クエリ用に最適化するには、**Interactive Query** クラスター タイプを選択します。 
+* バッチ処理として使用される Hive クエリ用に最適化するには、Apache **Hadoop** クラスター タイプを選択します。 
+* **Spark** および **HBase** クラスター タイプでも、Hive クエリを実行でき、これらのワークロードを実行している場合は、適切な場合があります。 
+
+Hive クエリを実行するための各種 HDInsight クラスター タイプについて詳しくは、「[Azure HDInsight における Apache Hive と HiveQL](hadoop/hdinsight-use-hive.md)」をご覧ください。
 
 ## <a name="scale-out-worker-nodes"></a>ワーカー ノードのスケール アウト
 
@@ -89,7 +94,7 @@ STORED AS TEXTFILE;
 
 パーティション テーブルが作成されれば、静的パーティションまたは動的パーティションのいずれかを作成できるようになります。
 
-* **静的パーティション分割**とは、データを適切なディレクトリに既にシャード化していることを意味します。 静的パーティションでは、ディレクトリの場所に基づいて Hive パーティションを手動で追加します。 次のコード スニペットに例を示します。
+* **静的パーティション分割** とは、データを適切なディレクトリに既にシャード化していることを意味します。 静的パーティションでは、ディレクトリの場所に基づいて Hive パーティションを手動で追加します。 次のコード スニペットに例を示します。
   
    ```sql
    INSERT OVERWRITE TABLE lineitem_part
@@ -135,7 +140,7 @@ ORC (最適化行多桁式) 形式は、Hive データを格納する非常に�
 * 10,000 行ごとのインデックス作成 (これにより行のスキップが可能)。
 * 実行時の実行の大幅な削除。
 
-ORC 形式を有効にするにはまず、 *Stored as ORC*句でテーブルを作成します。
+ORC 形式を有効にするにはまず、 *Stored as ORC* 句でテーブルを作成します。
 
 ```sql
 CREATE TABLE lineitem_orc_part
@@ -197,7 +202,6 @@ set hive.vectorized.execution.enabled = true;
 
 この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、以下の記事をお読みください。
 
-* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
 * [Apache Hive の最適化](./optimize-hive-ambari.md)
 * [HDInsight の対話型クエリを使用したフライトの遅延データの分析](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [HDInsight での Apache Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data-linux.md)

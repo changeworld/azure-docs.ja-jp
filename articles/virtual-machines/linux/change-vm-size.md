@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 02/10/2017
 ms.author: daberry
 ms.openlocfilehash: a93b1dcfe803fdead0d741553c45894f1675372b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372265"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Azure CLI を使用して Linux 仮想マシンのサイズを変更する 

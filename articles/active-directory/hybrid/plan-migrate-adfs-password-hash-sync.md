@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e463644820866607eee1deac115dc1381f463a7
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276560"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861818"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 
@@ -115,18 +115,18 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 詳細と例については、次の記事をご覧ください。
 
 * [AD FS prompt=login パラメーターのサポート](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication)
 
 > [!NOTE]
 > **SupportsMfa** が **True** に設定されている場合は、第 2 要素チャレンジをユーザー認証フローに挿入するためにオンプレミス多要素認証ソリューションを使用しています。 このセットアップは、このドメインをフェデレーション認証からマネージド認証に変換した後の Azure AD 認証シナリオには機能しなくなります。 フェデレーションを無効にした後に、オンプレミスのフェデレーションとの関係を切断しますが、これにはオンプレミスの MFA アダプターが含まれます。 
 >
-> 代わりに、同じ機能を実行するために、Azure Multi-Factor Authentication クラウドベース サービスを使用します。 先に進む前に、多要素認証の要件を慎重に評価してください。 Azure Multi-Factor Authentication の使用方法、ライセンスの内容、およびユーザーの登録プロセスについて理解してから、ドメインの変換を行ってください。
+> 代わりに、同じ機能を実行するために、Azure AD Multi-Factor Authentication クラウドベース サービスを使用します。 先に進む前に、多要素認証の要件を慎重に評価してください。 Azure AD Multi-Factor Authentication の使用方法、ライセンスの内容、およびユーザーの登録プロセスについて理解してから、ドメインの変換を行ってください。
 
 #### <a name="back-up-federation-settings"></a>フェデレーション設定をバックアップする
 
 この記事で説明されているプロセス中に AD FS ファームの他の証明書利用者への変更は行われませんが、復元できるように AD FS ファームの現在の有効なバックアップを確保しておくことをお勧めします。 現在の有効なバックアップは、無料の Microsoft [AD FS Rapid Restore Tool](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool) を使用して作成できます。 このツールを使用して、AD FS をバックアップし、既存のファームを復元するか、新しいファームを作成できます。
 
-AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microsoft Office 365 ID プラットフォームの証明書利用者信頼と、追加したすべての関連カスタム要求規則をエクスポートする必要があります。 証明書利用者信頼と関連する要求規則は、次の PowerShell の例を使用してエクスポートできます。
+AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microsoft 365 ID プラットフォームの証明書利用者信頼と、追加したすべての関連カスタム要求規則をエクスポートする必要があります。 証明書利用者信頼と関連する要求規則は、次の PowerShell の例を使用してエクスポートできます。
 
 ``` PowerShell
 (Get-AdfsRelyingPartyTrust -Name "Microsoft Office 365 Identity Platform") | Export-CliXML "C:\temp\O365-RelyingPartyTrust.xml"
@@ -138,15 +138,15 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 ### <a name="current-ad-fs-use"></a>現在の AD FS の使用状況
 
-フェデレーション ID からマネージド ID に変換する前に、Azure AD、Office 365、およびその他のアプリケーション (証明書利用者信頼) で現在どのように AD FS を使用しているかを詳しく調べます。 具体的には、次の表に記載されているシナリオについて検討します。
+フェデレーション ID からマネージド ID に変換する前に、Azure AD、Microsoft 365、およびその他のアプリケーション (証明書利用者信頼) で現在どのように AD FS を使用しているかを詳しく調べます。 具体的には、次の表に記載されているシナリオについて検討します。
 
 | 状況 | THEN |
 |-|-|
-| 引き続き AD FS を (Azure AD と Office 365 以外の) 他のアプリケーションと一緒に使用する予定である。 | ドメインを変換した後、AD FS と Azure AD の両方を使用します。 ユーザー エクスペリエンスをよく検討してください。 一部のシナリオでは、ユーザーの認証が 2 回必要になる可能性があります。1 回は Azure AD に対するもので (これにより、ユーザーは Office 365 などの他のアプリケーションに対する SSO アクセスを取得します)、もう 1 回は証明書利用者信頼として AD FS にまだバインドされているすべてのアプリケーションに対するものです。 |
+| 引き続き AD FS を (Azure AD と Microsoft 365 以外の) 他のアプリケーションと一緒に使用する予定である。 | ドメインを変換した後、AD FS と Azure AD の両方を使用します。 ユーザー エクスペリエンスをよく検討してください。 一部のシナリオでは、ユーザーの認証が 2 回必要になる可能性があります。1 回は Azure AD に対するもので (これにより、ユーザーは Microsoft 365 などの他のアプリケーションに対する SSO アクセスを取得します)、もう 1 回は証明書利用者信頼として AD FS にまだバインドされているすべてのアプリケーションに対するものです。 |
 | AD FS インスタンスが大幅にカスタマイズされていて、onload.js ファイル内の特定のカスタマイズ設定に依存している (たとえば、ユーザー名にユーザー プリンシパル名 (UPN) ではなく **SamAccountName** 形式のみを使用するようにサインイン エクスペリエンスを変更している場合や、組織でサインイン エクスペリエンスを大幅にブランド化している場合)。 Azure AD で onload.js ファイルを複製できない。 | 続行する前に、Azure AD で現在のカスタマイズ要件を満たせることを確認する必要があります。 詳細情報とガイダンスについては、AD FS のブランド化と AD FS のカスタマイズに関するセクションを参照してください。|
-| AD FS を使用して、以前のバージョンの認証クライアントをブロックしている。| [条件付きアクセス制御](../conditional-access/concept-conditional-access-conditions.md)と [Exchange Online のクライアント アクセス規則](https://aka.ms/EXOCAR)の組み合わせを使用して、以前のバージョンの認証クライアントをブロックする AD FS 制御を置き換えることを検討します。 |
-| ユーザーに、AD FS への認証時にオンプレミスの多要素認証サーバー ソリューションに対する多要素認証を行うことを要求している。| マネージド ID ドメインでは、オンプレミスの多要素認証ソリューションを介して認証フローに多要素認証チャレンジを挿入することはできません。 ただし、ドメインの変換後は、Azure Multi-Factor Authentication サービスを使用して多要素認証を行うことができます。<br /><br /> 現在、ユーザーが Azure Multi-Factor Authentication を使用していない場合は、1 回限りのユーザー登録手順が必要になります。 計画した登録の準備を行い、ユーザーに連絡する必要があります。 |
-| 現在、Office 365 へのアクセスを制御するために、AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| ポリシーを同等の Azure AD [条件付きアクセス ポリシー](../conditional-access/overview.md)と [Exchange Online のクライアント アクセス規則](https://aka.ms/EXOCAR)に置き換えることを検討します。|
+| AD FS を使用して、以前のバージョンの認証クライアントをブロックしている。| [条件付きアクセス制御](../conditional-access/concept-conditional-access-conditions.md)と [Exchange Online のクライアント アクセス規則](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)の組み合わせを使用して、以前のバージョンの認証クライアントをブロックする AD FS 制御を置き換えることを検討します。 |
+| ユーザーに、AD FS への認証時にオンプレミスの多要素認証サーバー ソリューションに対する多要素認証を行うことを要求している。| マネージド ID ドメインでは、オンプレミスの多要素認証ソリューションを介して認証フローに多要素認証チャレンジを挿入することはできません。 ただし、ドメインの変換後は、Azure AD Multi-Factor Authentication サービスを使用して多要素認証を行うことができます。<br /><br /> 現在、ユーザーが Azure AD Multi-Factor Authentication を使用していない場合は、1 回限りのユーザー登録手順が必要になります。 計画した登録の準備を行い、ユーザーに連絡する必要があります。 |
+| 現在、Microsoft 365 へのアクセスを制御するために、AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| ポリシーを同等の Azure AD [条件付きアクセス ポリシー](../conditional-access/overview.md)と [Exchange Online のクライアント アクセス規則](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)に置き換えることを検討します。|
 
 ### <a name="common-ad-fs-customizations"></a>一般的な AD FS のカスタマイズ
 
@@ -160,7 +160,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 ネームド ロケーションを構成した後は、ネットワークの **[すべての信頼できる場所]** または **[MFA の信頼できる IP]** の値を含めるか除外するために構成されたすべての条件付きアクセス ポリシーを、新しいネームド ロケーションを反映するように更新する必要があります。
 
-条件付きアクセスでの**場所**の条件の詳細については、[Active Directory の条件付きアクセスの場所](../conditional-access/location-condition.md)に関するページを参照してください。
+条件付きアクセスでの **場所** の条件の詳細については、[Active Directory の条件付きアクセスの場所](../conditional-access/location-condition.md)に関するページを参照してください。
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
@@ -179,7 +179,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 同様のカスタマイズを行うことができますが、変換後は、サインイン ページの外観が多少変更されることが予想されます。 予想される変更について、事前にユーザーに連絡しておくとよいでしょう。
 
 > [!NOTE]
-> 組織のブランド化を利用できるのは、Azure Active Directory の Premium ライセンスまたは Basic ライセンスを購入した場合、あるいは Office 365 のライセンスを所有している場合だけです。
+> 組織のブランド化を利用できるのは、Azure Active Directory の Premium ライセンスまたは Basic ライセンスを購入した場合、あるいは Microsoft 365 のライセンスを所有している場合だけです。
 
 ## <a name="plan-deployment-and-support"></a>デプロイとサポートを計画する
 
@@ -194,7 +194,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 先進認証クライアント (Office 2016 と Office 2013、iOS、および Android アプリ) では、リソースへのアクセスを継続するための新しいアクセス トークンを取得するために、AD FS に戻るのではなく、有効な更新トークンが使用されます。 これらのクライアントに、ドメイン変換プロセスの結果としてパスワードの入力を求めるメッセージを表示する必要はありません。 クライアントは、追加の構成を行わなくても機能し続けます。
 
 > [!IMPORTANT]
-> すべてのユーザーがクラウド認証を使用して正常に認証されることを確認できるまで、AD FS 環境をシャットダウンしたり、Office 365 証明書利用者信頼を削除したりしないでください。
+> すべてのユーザーがクラウド認証を使用して正常に認証されることを確認できるまで、AD FS 環境をシャットダウンしたり、Microsoft 365 証明書利用者信頼を削除したりしないでください。
 
 ### <a name="plan-for-rollback"></a>ロールバックのための計画
 
@@ -211,7 +211,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 
 デプロイとサポートの計画で重要な部分は、今後の変更について、ユーザーに必ず事前に通知することです。 ユーザーは、何が起きるか、また何を行う必要があるかについて、事前に知っておく必要があります。 
 
-パスワード ハッシュ同期とシームレス SSO の両方がデプロイされた後、Azure AD を通じて認証される Office 365 およびその他のリソースにアクセスするためのユーザーのサインイン エクスペリエンスが変更されます。 ネットワークの外部のユーザーには、Azure AD サインイン ページのみが表示されます。 これらのユーザーは、外部に接続する Web アプリケーション プロキシ サーバーによって表示されるフォームベースのページにはリダイレクトされません。
+パスワード ハッシュ同期とシームレス SSO の両方がデプロイされた後、Azure AD を通じて認証される Microsoft 365 およびその他のリソースにアクセスするためのユーザーのサインイン エクスペリエンスが変更されます。 ネットワークの外部のユーザーには、Azure AD サインイン ページのみが表示されます。 これらのユーザーは、外部に接続する Web アプリケーション プロキシ サーバーによって表示されるフォームベースのページにはリダイレクトされません。
 
 連絡に関する戦略に次の要素を含めます。
 
@@ -252,7 +252,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 
 計画のためには、1 時間で約 20,000 人のユーザーが処理されると見積もる必要があります。
 
-パスワード ハッシュ同期が正しく動作していることを確認するには、Azure AD Connect ウィザードの**トラブルシューティング** タスクを完了します。
+パスワード ハッシュ同期が正しく動作していることを確認するには、Azure AD Connect ウィザードの **トラブルシューティング** タスクを完了します。
 
 1. [管理者として実行] オプションを使用して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
 2. `Set-ExecutionPolicy RemoteSigned` または `Set-ExecutionPolicy Unrestricted` を実行します。
@@ -281,7 +281,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 
 #### <a name="option-a-switch-from-federation-to-password-hash-synchronization-by-using-azure-ad-connect"></a>オプション A: Azure AD Connect を使用してフェデレーションからパスワード ハッシュ同期に移行する
 
-最初に Azure AD Connect を使用して AD FS 環境を構成した場合は、この方法を使用します。 最初に Azure AD Connect を使用して AD FS 環境を構成*しなかった*場合は、この方法を使用できません。
+最初に Azure AD Connect を使用して AD FS 環境を構成した場合は、この方法を使用します。 最初に Azure AD Connect を使用して AD FS 環境を構成 *しなかった* 場合は、この方法を使用できません。
 
 まず、サインイン方法を変更します。
 
@@ -290,7 +290,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 
    ![[追加のタスク] ページの [ユーザー サインインの変更] オプションのスクリーンショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image7.png)<br />
 3. **[Azure AD に接続]** ページで、全体管理者アカウントのユーザー名とパスワードを入力します。
-4. **[ユーザー サインイン]** ページで、 **[パスワードハッシュ同期] ボタン**を選択します。 **[ユーザー アカウントを変換しない]** チェック ボックスがオンになっていることを確認してください。 このオプションは非推奨になりました。 **[シングル サインオンを有効にする]** を選択してから、 **[次へ]** を選択します。
+4. **[ユーザー サインイン]** ページで、 **[パスワードハッシュ同期] ボタン** を選択します。 **[ユーザー アカウントを変換しない]** チェック ボックスがオンになっていることを確認してください。 このオプションは非推奨になりました。 **[シングル サインオンを有効にする]** を選択してから、 **[次へ]** を選択します。
 
    ![[シングル サインオンを有効にする] ページのスクリーンショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image8.png)<br />
 
@@ -302,7 +302,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
 
 5. **[シングル サインオンを有効にする]** ページで、ドメイン管理者アカウントの資格情報を入力し、 **[次へ]** を選択します。
 
-   ![[シングル サインオンを有効にする] ページのスクリーンショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
+   ![[シングル サインオンを有効にする] ページのスクリーンショット。このページでは、ドメイン管理者アカウントの資格情報を入力できます。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
 
    > [!NOTE]
    > シームレス SSO を有効にするには、ドメイン管理者アカウントの資格情報が必要です。 このプロセスでは、管理者特権のアクセス許可を必要とする、以下のアクションが実行されます。 ドメイン管理者アカウントの資格情報は、Azure AD Connect にも Azure AD にも格納されません。 ドメイン管理者アカウントの資格情報は、機能を有効にするためだけに使用されます。 プロセスが正常に終了したら、資格情報は破棄されます。
@@ -324,7 +324,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
    * **[シームレス シングル サインオン]** が **[有効]** に設定されている。
    * **[パスワード同期]** が **[有効]** に設定されている。<br /> 
 
-   ![[ユーザー サインイン] セクションの設定を示すスクリーンショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![Azure AD ポータルの [ユーザー サインイン] セクションの設定を示すスクリーンショット。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 「[テストと次のステップ](#testing-and-next-steps)」に進みます。
 
@@ -431,14 +431,14 @@ Azure AD PowerShell モジュールを使用して、変換を完了します。
 3. ユーザーはリダイレクトされ、アクセス パネルに正常にサインインされます。
 
    > [!NOTE]
-   > シームレス SSO は、ドメイン ヒント (myapps.microsoft.com/contoso.com など) をサポートする Office 365 サービスで機能します。 現在、Office 365 ポータル (portal.office.com) では、ドメイン ヒントがサポートされていません。 ユーザーは UPN を入力する必要があります。 UPN が入力された後、ユーザーの代わりにシームレス SSO によって Kerberos チケットが取得されます。 ユーザーは、パスワードを入力しなくてもサインインできます。
+   > シームレス SSO は、ドメイン ヒント (myapps.microsoft.com/contoso.com など) をサポートする Microsoft 365 サービスで機能します。 現在、Microsoft 365 ポータル (portal.office.com) では、ドメイン ヒントがサポートされていません。 ユーザーは UPN を入力する必要があります。 UPN が入力された後、ユーザーの代わりにシームレス SSO によって Kerberos チケットが取得されます。 ユーザーは、パスワードを入力しなくてもサインインできます。
 
    > [!TIP]
    > SSO のエクスペリエンスを向上させるために、[Windows 10 に Azure AD ハイブリッド結合](../devices/overview.md)をデプロイすることを検討してください。
 
 ### <a name="remove-the-relying-party-trust"></a>証明書利用者信頼を削除する
 
-すべてのユーザーとクライアントが Azure AD を通じて正常に認証されていることを確認したら、Office 365 の証明書利用者信頼を削除しても問題ありません。
+すべてのユーザーとクライアントが Azure AD を通じて正常に認証されていることを確認したら、Microsoft 365 の証明書利用者信頼を削除しても問題ありません。
 
 AD FS を他の目的で (つまり、他の証明書利用者信頼で) 使用していない場合は、この時点で AD FS の使用を停止しても問題ありません。
 

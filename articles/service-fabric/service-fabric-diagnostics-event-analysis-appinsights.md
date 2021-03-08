@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f4d77cc3b2f2182b02d47f047070b819daa5f3c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256562"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589016"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -32,9 +32,9 @@ Application Insights には、Service Fabric の使用時にすぐに利用で�
 
 前の図の右側のパネルでは、リスト内に要求およびイベントという 2 つの主要な種類のエントリがあります。 要求は、HTTP 要求を通じてアプリの API に対して行われた呼び出しです。イベントはカスタム イベントで、コード内の任意の場所に追加できるテレメトリとして機能します。 アプリケーションのインストルメント化については、「[カスタムのイベントとメトリックのための Application Insights API](../azure-monitor/app/api-custom-events-metrics.md)」で詳しく調べることができます。 要求をクリックすると、次の図に示すような詳細が表示されます。これには、Application Insights の Service Fabric NuGet パッケージで収集される Service Fabric 固有のデータが含まれます。 この情報はアプリケーションのトラブルシューティングと状態の確認に役立ち、このすべての情報を Application Insights 内で検索できます
 
-![Application Insights の要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![詳細を示すスクリーンショット。これには、Application Insights の Service Fabric NuGet パッケージで収集される Server Fabric に固有のデータが含まれています。](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
-Application Insights には、取得したすべてのデータに対してクエリを実行するための指定ビューがあります。 [概要] ページの上部にある [メトリックス エクスプローラー] をクリックして、Application Insights ポータルに移動します。 ここで、Kusto クエリ言語を使用して前述のカスタム イベント、要求、例外、パフォーマンス カウンター、その他のメトリックに対してクエリを実行できます。 次の例は、過去 1 時間のすべての要求を示しています。
+Application Insights には、取得したすべてのデータに対してクエリを実行するための指定ビューがあります。 [概要] ページの上部にある [メトリックス エクスプローラー] を選択して、Application Insights ポータルに移動します。 ここで、Kusto クエリ言語を使用して前述のカスタム イベント、要求、例外、パフォーマンス カウンター、その他のメトリックに対してクエリを実行できます。 次の例は、過去 1 時間のすべての要求を示しています。
 
 ![Application Insights の要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
@@ -57,21 +57,21 @@ EventFlow を使用してイベントを集計する場合は、必ず `Microsof
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-EventFlow と WAD は集計ソリューションとして使用することをお勧めします。これは診断と監視を行うモジュール性の高いアプローチが可能になるためです。つまり、EventFlow からの出力を変更する場合、実際のインストルメンテーションを変更する必要はなく、構成ファイルを簡単に変更するだけで済みます。 ただし、Application Insights の利用に投資し、別のプラットフォームに変更する可能性が低い場合は、Application Insights の新しい SDK を使用してイベントを集計し、それを Application Insights に送信することを検討してください。 つまり、データを Application Insights に送信するように EventFlow を設定する必要はなくなり、代わりに ApplicationInsight の Service Fabric NuGet パッケージをインストールすることになります。 パッケージの詳細は、[こちら](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)をご覧ください。
+EventFlow と WAD は集計ソリューションとして使用することをお勧めします。これは診断と監視を行うモジュール性の高いアプローチが可能になるためです。つまり、EventFlow からの出力を変更する場合、実際のインストルメンテーションを変更する必要はなく、構成ファイルを簡単に変更するだけで済みます。 Application Insights の利用に投資し、別のプラットフォームに変更する可能性が低い場合は、Application Insights の新しい SDK を使用してイベントを集計し、それを Application Insights に送信することを検討してください。 つまり、データを Application Insights に送信するように EventFlow を設定する必要はなくなり、代わりに ApplicationInsight の Service Fabric NuGet パッケージをインストールすることになります。 パッケージの詳細は、[こちら](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)をご覧ください。
 
 [Application Insights のマイクロサービスとコンテナーのサポート](https://azure.microsoft.com/blog/app-insights-microservices/)により、開発中の新機能 (現在はまだベータ版) が表示され、Application Insights を使用した、より豊かで、細かい設定が不要なモニタリング オプションを利用できます。 これには、依存関係の追跡 (クラスター内すべてのサービスやアプリケーションおよびそれらの間の通信の AppMap 構築に使用されます)、サービスからのトレースの関連付けの向上 (アプリケーションやサービスのワークフローの問題点を特定するのに役立ちます) が含まれます。
 
-.NET で開発中で、Service Fabric のプログラミング モデルの一部を使用する可能性があり、イベントとログ データを視覚化して分析するためのプラットフォームとして Application Insights を使用する場合は、Application Insights SDK ルートをたどる監視および診断ワークフローを作成することをお勧めします。 Application Insights を使用したログの収集と表示を開始するには、[こちら](../azure-monitor/app/asp-net-more.md)と[こちら](../azure-monitor/app/asp-net-trace-logs.md)をご覧ください。
+.NET で開発中で、Service Fabric のプログラミング モデルの一部を使用する可能性があり、イベントとログ データを視覚化して分析するためのプラットフォームとして Application Insights を使用する場合は、Application Insights SDK ルートをたどる監視および診断ワークフローを作成することをお勧めします。 ログを収集して表示するために Application Insights の使用を開始するには、[Application Insights に関するドキュメント](../azure-monitor/azure-monitor-app-hub.yml)と[トレース ログに関するドキュメント](../azure-monitor/app/asp-net-trace-logs.md)を参照してください。
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Azure portal で Application Insights のリソースを参照する
 
-イベントとログの出力として Application Insights を構成すると、数分後に Application Insights リソースに情報が表示されます。 Application Insights リソースに移動すると、Application Insights リソースのダッシュ ボードが表示されます。 Application Insights タスク バーの **[検索]** をクリックすると、受信した最新のトレースが表示され、それらのトレースをフィルター処理できます。
+イベントとログの出力として Application Insights を構成すると、数分後に Application Insights リソースに情報が表示されます。 Application Insights リソースに移動すると、Application Insights リソースのダッシュ ボードが表示されます。 Application Insights タスク バーの **[検索]** を選択すると、受信した最新のトレースが表示され、それらのトレースをフィルター処理できます。
 
-*メトリックス エクスプローラー*は、アプリケーションやサービス、クラスターが報告するメトリックに基づいたカスタム ダッシュボードを作成する便利なツールです。 収集するデータに基づいたグラフを自分でいくつか設定するには、「[Application Insights を使用したメトリックの探索](../azure-monitor/platform/metrics-charts.md)」を参照してください。
+*メトリックス エクスプローラー* は、アプリケーションやサービス、クラスターが報告するメトリックに基づいたカスタム ダッシュボードを作成する便利なツールです。 収集するデータに基づいたグラフを自分でいくつか設定するには、「[Application Insights を使用したメトリックの探索](../azure-monitor/essentials/metrics-charts.md)」を参照してください。
 
-**[Analytics]** をクリックすると、Application Insights Analytics ポータルに移動します。このポータルでは、より多くのオプションを使用し、より広い範囲でイベントとトレースを照会できます。 この詳細については、「[Application Insights の Analytics](../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
+**[Analytics]** をクリックすると、Application Insights Analytics ポータルに移動します。このポータルでは、より多くのオプションを使用し、より広い範囲でイベントとトレースを照会できます。 この詳細については、「[Application Insights の Analytics](../azure-monitor/logs/log-query-overview.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [AI のアラートを設定して](../azure-monitor/platform/alerts-log.md)、パフォーマンスまたは使用状況の変化について通知を受けます
+* [AI のアラートを設定して](../azure-monitor/alerts/alerts-log.md)、パフォーマンスまたは使用状況の変化について通知を受けます
 * [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、Application Insights に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します

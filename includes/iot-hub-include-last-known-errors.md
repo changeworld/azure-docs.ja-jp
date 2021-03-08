@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d03579f704879bd8d012bb0bb326659d1f778dee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54f4835a904b897370cf9f075ae3c005b1114992
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84793293"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555996"
 ---
-REST API の [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用すると、エンドポイントの正常性状態と、最後の既知のエラーが取得され、エンドポイントが正常でない理由を特定できます。 次の表に、最も一般的なエラーを示します。
+REST API の [Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用すると、エンドポイントの正常性状態と、最後の既知のエラーが取得され、エンドポイントが正常でない理由を特定できます。 次の表に、最も一般的なエラーを示します。
 
 |最後の既知のエラー|説明/発生する状況|考えられる軽減策|
 |-----|-----|-----|
-|一時的|一時的なエラーが発生したため、IoT Hub によって操作が再試行されます。|[診断ログ](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health#routes)のルートを確認します。|
-|InternalError|エンドポイントにメッセージを配信中にエラーが発生しました。|これは内部例外ですが、[診断ログ](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health#routes)のルートも確認します。|
+|一時的|一時的なエラーが発生したため、IoT Hub によって操作が再試行されます。|[ルート リソース ログ](../articles/iot-hub/monitor-iot-hub-reference.md#routes)を確認します。|
+|InternalError|エンドポイントにメッセージを配信中にエラーが発生しました。|これは内部例外ですが、[ルート リソース ログ](../articles/iot-hub/monitor-iot-hub-reference.md#routes)も確認します。|
 |権限がありません|IoT Hub には指定されたエンドポイントにメッセージを送信する権限がありません。|エンドポイントの接続文字列が最新のものであることを確認します。 変更されている場合は、IoT Hub の更新を検討してください。 エンドポイントでマネージド ID が使用されている場合は、IoT Hub プリンシパルがターゲットに対して必要な権限を持っていることを確認します。|
 |Throttled|エンドポイントへのメッセージの書き込み中に IoT Hub が調整されています。|影響を受けるエンドポイントのスロットル制限を確認します。 必要に応じてスケールアップするようにエンドポイントの構成を変更します。|
 |タイムアウト|操作がタイムアウトしました。|操作を再試行してください。|

@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor の VMware Monitoring ソリューション | Microsoft Docs
 description: VMware の監視ソリューションを利用して ESXi ホストのログ管理と監視を行う方法について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ade5a51e2251669daee6fbaca9aa4c50f7e9bfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322909"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704363"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション
 
@@ -33,7 +32,7 @@ Azure Monitor の VMware Monitoring ソリューションは、大規模な VMwa
 vSphere ESXi Host 5.5、6.0、6.5
 
 #### <a name="prepare-a-linux-server"></a>Linux サーバーの準備
-ESXi ホストからのすべての syslog データを受信する Linux オペレーティング システムの VM を作成します。 [Log Analytics Linux エージェント](../learn/quick-collect-linux-computer.md)は、すべての ESXi ホスト syslog データの収集ポイントです。 次の例に示すように、複数の ESXi ホストを使用して 1 台の Linux サーバーにログを転送できます。
+ESXi ホストからのすべての syslog データを受信する Linux オペレーティング システムの VM を作成します。 [Log Analytics Linux エージェント](../vm/quick-collect-linux-computer.md)は、すべての ESXi ホスト syslog データの収集ポイントです。 次の例に示すように、複数の ESXi ホストを使用して 1 台の Linux サーバーにログを転送できます。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -64,9 +63,9 @@ ESXi ホストからのすべての syslog データを受信する Linux オペ
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Azure portal で、`VMware_CL` のログ クエリを実行します。 Azure Monitor が syslog データを収集するときは、syslog 形式が維持されます。 ポータルでは、*Hostname* や *ProcessName*など、いくつかの特定のフィールドがキャプチャされます。  
+1. Azure portal で、`VMware_CL` のログ クエリを実行します。 Azure Monitor が syslog データを収集するときは、syslog 形式が維持されます。 ポータルでは、*Hostname* や *ProcessName* など、いくつかの特定のフィールドがキャプチャされます。  
 
-    ![type](./media/vmware/type.png)  
+    ![スクリーンショットには、タイムスタンプの結果と一緒に Type = VMware_CL のログ クエリが示されています。](./media/vmware/type.png)  
 
     上の図のようなログ検索結果が表示される場合は、VMware Monitoring ソリューション ダッシュボードを使うように設定されています。  
 
@@ -75,7 +74,7 @@ VMware Monitoring ソリューションは、有効にしている Linux 用 Log
 
 次の表は、データの収集手段と、データの収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | Linux 用 Log Analytics エージェント | SCOM エージェント | Azure Storage | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
+| プラットフォーム | Linux 用 Log Analytics エージェント | System Center Operations Manager エージェント | Azure Storage | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |3 分おき |
 
@@ -105,7 +104,7 @@ VMware Monitoring ソリューションは、有効にしている Linux 用 Log
 ## <a name="vmware-monitoring-solution-overview"></a>VMware の監視ソリューションの概要
 Log Analytics ワークスペースに VMware のタイルが表示されます。 このタイルでは、エラーの概要が示されます。 タイルをクリックすると、ダッシュボード ビューが表示されます。
 
-![タイル](./media/vmware/tile.png)
+![スクリーンショットには、9 件のエラーを表示した VMware タイルが示されています。](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>ダッシュボード ビューのナビゲーション
 **[VMware]** ダッシュボード ビューでは、ブレードが次のように分類されています。
@@ -122,7 +121,7 @@ Log Analytics ワークスペースに VMware のタイルが表示されます�
 
 いずれかのブレードをクリックすると、そのブレードに固有の詳細情報を表示する Log Analytics 検索ウィンドウが開きます。
 
-ここでログ クエリを編集して、特定の情報が見つかるように変更することができます。 ログ クエリの作成について詳しくは、[Azure Monitor でログ クエリを使ってデータを探す](../log-query/log-query-overview.md)方法に関する記事をご覧ください。
+ここでログ クエリを編集して、特定の情報が見つかるように変更することができます。 ログ クエリの作成について詳しくは、[Azure Monitor でログ クエリを使ってデータを探す](../logs/log-query-overview.md)方法に関する記事をご覧ください。
 
 #### <a name="find-esxi-host-events"></a>ESXi ホストのイベントの検索
 1 台の ESXi ホストで、そのプロセスに基づいて複数のログが生成されます。 VMware の監視ソリューションは、それらを一元化してイベント数を集計します。 この一元化されたビューを利用して、環境内のイベント数の多い ESXi ホストや、最も頻繁に発生しているイベントを把握できます。
@@ -133,30 +132,30 @@ Log Analytics ワークスペースに VMware のタイルが表示されます�
 
 ESXi ホスト名をクリックすると、その ESXi ホストからの情報が表示されます。 イベント タイプで結果を絞り込む場合は、検索クエリに `“ProcessName_s=EVENT TYPE”` を追加します。 検索フィルターで **ProcessName** を選択できます。 これにより、情報が絞り込まれます。
 
-![詳細表示](./media/vmware/eventhostdrilldown.png)
+![VMware Monitoring ダッシュボード ビューの [イベント数あたりの ESXi ホスト] および [イベントの種類ごとの明細] ブレードのスクリーンショット。](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>高い VM アクティビティの検索
 どの ESXi ホストでも、仮想マシンを作成および削除することができます。 ESXi ホストで作成される VM の数を把握することは、管理者にとって役立ちます。 これはまた、パフォーマンスと容量計画を理解するのにも役立ちます。 VM アクティビティ イベントの追跡は、環境を管理する際に非常に重要です。
 
-![詳細表示](./media/vmware/vmactivities1.png)
+![VMware Monitoring ダッシュボードの [仮想マシンのアクティビティ] ブレードのスクリーンショット。ESXi ホストによる VM の作成と削除のグラフが表示されます。](./media/vmware/vmactivities1.png)
 
 ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi ホスト名をクリックします。
 
-![詳細表示](./media/vmware/createvm.png)
+![ESXi ホストによって作成された各仮想マシンのデータ行を含むテーブルが表示されている、VMware Monitoring ダッシュボードのウィンドウのスクリーンショット。](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>一般的なログ クエリ
 このソリューションには、ESXi ホストの管理に役立つその他の便利なクエリ (高いストレージ使用量、ストレージの待機時間、パスの障害など) も含まれています。
 
-![Query](./media/vmware/queries.png)
+![スクリーンショットには、役立つ格納されたクエリである推奨される検索が示されています。](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>クエリの保存
-ログ クエリの保存は Azure Monitor の標準機能であり、便利なクエリを保存しておくのに役立ちます。 作成したクエリが便利であることがわかったら、 **[お気に入り]** をクリックして保存します。 保存したクエリは、後で [[マイ ダッシュボード]](../learn/tutorial-logs-dashboards.md) ページから簡単に再利用できます。このページでは、独自のカスタム ダッシュボードを作成できます。
+ログ クエリの保存は Azure Monitor の標準機能であり、便利なクエリを保存しておくのに役立ちます。 作成したクエリが便利であることがわかったら、 **[お気に入り]** をクリックして保存します。 保存したクエリは、後で [[マイ ダッシュボード]](../visualize/tutorial-logs-dashboards.md) ページから簡単に再利用できます。このページでは、独自のカスタム ダッシュボードを作成できます。
 
-![DockerDashboardView](./media/vmware/dockerdashboardview.png)
+![スクリーンショットには、[ログ検索] のラベルと、[元に戻す]、[エクスポート]、[アラート]、[保存]、[お気に入り]、および [履歴] のアイコンが表示されたカスタム ダッシュボードの一部が示されています。](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>クエリからのアラートの作成
-クエリを作成したら、そのクエリを使用して、特定のイベントが発生したときにアラートを受け取ることもできます。 アラートの作成方法については、「[Log Analytics のアラート](../platform/alerts-overview.md)」をご覧ください。 アラート クエリおよびその他のクエリの例については、ブログ記事「[Monitor VMware using Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics)」(Log Analytics を使用した VMware の監視) をご覧ください。
+クエリを作成したら、そのクエリを使用して、特定のイベントが発生したときにアラートを受け取ることもできます。 アラートの作成方法については、「[Log Analytics のアラート](../alerts/alerts-overview.md)」をご覧ください。 アラート クエリおよびその他のクエリの例については、ブログ記事「[Monitor VMware using Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics)」(Log Analytics を使用した VMware の監視) をご覧ください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>ESXi ホストの設定で必要なことは何ですか。 現在の環境にどのような影響がありますか。
@@ -197,7 +196,7 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
      d. このファイルがない場合や、ユーザーおよびグループ設定に問題がある場合は、[Linux サーバーを準備](#prepare-a-linux-server)して、修正措置を講じます。
 
 ## <a name="next-steps"></a>次のステップ
-* Log Analytics の[ログ クエリ](../log-query/log-query-overview.md)を使用して、VMware ホストの詳細データを表示します。
-* VMware ホストのデータを表示する[独自のダッシュ ボードを作成](../learn/tutorial-logs-dashboards.md)します。
-* VMware ホストの特定のイベントが発生した場合の[アラートを作成](../platform/alerts-overview.md)します。
+* Log Analytics の[ログ クエリ](../logs/log-query-overview.md)を使用して、VMware ホストの詳細データを表示します。
+* VMware ホストのデータを表示する[独自のダッシュ ボードを作成](../visualize/tutorial-logs-dashboards.md)します。
+* VMware ホストの特定のイベントが発生した場合の[アラートを作成](../alerts/alerts-overview.md)します。
 

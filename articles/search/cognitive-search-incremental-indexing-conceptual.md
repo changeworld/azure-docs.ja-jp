@@ -7,22 +7,23 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 02/09/2021
+ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935383"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390863"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Cognitive Search のインクリメンタル エンリッチメントとキャッシュ
 
 > [!IMPORTANT] 
-> インクリメンタル エンリッチメントは現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2019-05-06-Preview および 2020-06-30-Preview](search-api-preview.md) がこの機能を提供します。 現時点で、ポータルまたは .NET SDK はサポートされていません。
+> インクリメンタル エンリッチメントは現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 
+> [REST API プレビュー バージョン](search-api-preview.md)にはこの機能が用意されています。 現時点で、ポータルまたは .NET SDK はサポートされていません。
 
-*インクリメンタル エンリッチメント*は[スキルセット](cognitive-search-working-with-skillsets.md)を対象とする機能です。 Azure Storage を活用して、今後のインデクサーの実行時に再利用するために、エンリッチメント パイプラインによる処理出力を保存します。 可能な限り、インデクサーはキャッシュされているすべての有効な出力を再利用します。 
+*インクリメンタル エンリッチメント* は [スキルセット](cognitive-search-working-with-skillsets.md)を対象とする機能です。 Azure Storage を活用して、今後のインデクサーの実行時に再利用するために、エンリッチメント パイプラインによる処理出力を保存します。 可能な限り、インデクサーはキャッシュされているすべての有効な出力を再利用します。 
 
-インクリメンタル エンリッチメントにより、処理 (特に、OCR および画像処理) に対する金銭的投資を維持できるだけでなく、より効率的なシステムを実現できます。 構造とコンテンツがキャッシュされるときに、インデクサーは、どのスキルが変更されたかを判断し、変更されたスキルとそのダウンストリームの従属スキルのみを実行することができます。 
+インクリメンタル エンリッチメントにより、処理 (特に、OCR および画像処理) に対する金銭的投資を維持できるだけでなく、より効率的なシステムを実現できます。 
 
 増分キャッシュを使用するワークフローには、次の手順が含まれます。
 
@@ -94,7 +95,7 @@ ms.locfileid: "88935383"
 次の例は、このパラメーターを使用したスキルセットの更新要求を示しています。
 
 ```http
-PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://[search service].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>データ ソースの検証チェックをバイパスする
@@ -102,7 +103,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 ほとんどの場合、データ ソース定義を変更すると、キャッシュが無効になります。 ただし、接続文字列の変更やストレージ アカウントのキーのローテーションなど、変更によってキャッシュが無効にならないことがわかっているシナリオでは、データ ソースの更新時に `ignoreResetRequirement` パラメーターを追加します。 このパラメーターを `true` に設定すると、リセット条件 (結果的にすべてのオブジェクトが最初から再構築されて設定される条件) をトリガーすることなく、コミットを実行できます。
 
 ```http
-PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
+PUT https://[search service].search.windows.net/datasources/[data source name]?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>スキルセットの評価を強制的に実行する
@@ -110,6 +111,10 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 キャッシュの目的は不必要な処理を回避することにあります。ここで、インデクサーによって検出されない変更 (たとえば、カスタム スキルなどの外部コード内の変更) をスキルに加えるケースを考えてみましょう。
 
 この場合は、[スキルのリセット](/rest/api/searchservice/preview-api/reset-skills)を使用して、特定のスキル (そのスキルの出力に依存するダウンストリームのスキルも含まれます) を強制的に再処理することができます。 この API は、無効にして再処理用にマークする必要があるスキルのリストが含まれた POST 要求を受け取ります。 スキルのリセット後、インデクサーを実行してパイプラインを起動します。
+
+### <a name="reset-documents"></a>ドキュメントのリセット
+
+[インデクサーのリセット](/rest/api/searchservice/reset-indexer)を使用すると、検索コーパス内のすべてのドキュメントが再処理されます。 いくつかのドキュメントのみを再処理する必要があり、データ ソースを更新できないシナリオでは、[ドキュメントのリセット (プレビュー)](/rest/api/searchservice/preview-api/reset-documents) を使用して、特定のドキュメントを強制的に再処理します。 ドキュメントがリセットされると、インデクサーによってそのドキュメントのキャッシュが無効にされ、そのドキュメントはデータ ソースから読み取ることによって再処理されます。 詳細については、[インデクサー、スキル、ドキュメントの実行またはリセット](search-howto-run-reset-indexers.md)に関するページを参照してください。
 
 ## <a name="change-detection"></a>変更検出
 

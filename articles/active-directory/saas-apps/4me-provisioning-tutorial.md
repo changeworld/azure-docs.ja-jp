@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: beb580a02e1db80cf2d74f8167a98c9ead170810
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998670"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>チュートリアル:4me を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -90,13 +90,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. お使いの 4me アカウントの**テナント URL** と**シークレット トークン**を取得するために、手順 6 で説明されている操作を行います。
+5. お使いの 4me アカウントの **テナント URL** と **シークレット トークン** を取得するために、手順 6 で説明されている操作を行います。
 
 6. 4me 管理コンソールにサインインします。 **[設定]** に移動します。
 
@@ -122,15 +122,15 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to 4me]\(Azure Active Directory ユーザーを 4me に同期する\)** を選択します。
 
-    ![4me のユーザー マッピング](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="[マッピング] ページのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Users to FourMe]\(Azure Active Directory ユーザーを FourMe に同期する\) が強調表示されています。" border="false":::
     
 11. **[属性マッピング]** セクションで、Azure AD から 4me に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 4me のユーザー アカウントとの照合に使用されます。 選択した一致する属性に対する[フィルター処理を 4me がサポートしている](https://developer.4me.com/v1/scim/users/)ことを確認してください。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![4me のユーザー マッピング](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="[属性マッピング] ページのスクリーンショット。テーブルに、Azure Active Directory 属性とそれに対応する FourMe の属性、および該当する状態が表示されています。" border="false":::
     
 12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to 4me]\(Azure Active Directory グループを 4me に同期する\)** を選択します。
 
-    ![4me のユーザー マッピング](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="[マッピング] ページのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Groups to FourMe]\(Azure Active Directory グループを FourMe に同期する\) が強調表示されています。" border="false":::
     
 13. **[属性マッピング]** セクションで、Azure AD から 4me に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 4me のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 

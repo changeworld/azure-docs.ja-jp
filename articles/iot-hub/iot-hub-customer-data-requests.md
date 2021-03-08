@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df1d4f3a12c6e15e2954bb0e02454ef58b22cb73
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074708"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535792"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT Hub デバイスの顧客データ要求機能
 
@@ -30,23 +30,23 @@ Azure IoT Hub サービスのルーティング機能を使ってデバイスの
 
 Azure IoT Hub サービスの Azure Event Grid 統合機能を使う場合は、テナント管理者がそれらのイベントの各サブスクライバーに対してデータ要求を実行する必要があります。 詳しくは、「[Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](iot-hub-event-grid.md)」をご覧ください。
 
-Azure IoT Hub サービスの Azure Monitor 統合機能を使って診断ログを作成する場合は、テナント管理者が格納されているログに対してデータ要求を実行する必要があります。 詳しくは、「[Azure IoT Hub の正常性の監視](iot-hub-monitor-resource-health.md)」をご覧ください。
+Azure IoT Hub サービスの Azure Monitor 統合機能を使ってリソース ログを作成する場合は、テナント管理者が、格納されているログに対してデータ要求を実行する必要があります。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。
 
 ## <a name="deleting-customer-data"></a>顧客データの削除
 
 テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ブレードを使って、デバイスを削除することができます。それにより、そのデバイスに関連付けられているデータが削除されます。
 
-REST API を使ってデバイスの削除操作を実行することもできます。 詳しくは、[サービス - デバイスの削除](/rest/api/iothub/service/registrymanager/deletedevice)に関する記事をご覧ください。
+REST API を使ってデバイスの削除操作を実行することもできます。 詳しくは、[サービス - デバイスの削除](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice)に関する記事をご覧ください。
 
 ## <a name="exporting-customer-data"></a>顧客データのエクスポート
 
 テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ウィンドウ内でコピーと貼り付けを利用して、デバイスに関連付けられているデータをエクスポートできます。
 
-REST API を使ってデバイスのエクスポート操作を実行することもできます。 詳しくは、[サービス - デバイスの取得](/rest/api/iothub/service/registrymanager/getdevice)に関する記事をご覧ください。
+REST API を使ってデバイスのエクスポート操作を実行することもできます。 詳しくは、[サービス - デバイスの取得](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice)に関する記事をご覧ください。
 
 > [!NOTE]
 > Microsoft のエンタープライズ サービスを使うと、システム生成ログと呼ばれる情報がいくつか生成されます。 Azure IoT Hub システムによって生成されたログの一部は、テナント管理者がアクセスしたりエクスポートしたりすることはできません。 これらのログは、個々のデバイスに関連するサービスと診断データ内で実行された実際のアクションで構成されています。
 
 ## <a name="links-to-additional-documentation"></a>その他のドキュメントへのリンク
 
-Azure IoT Hub Service API の完全なドキュメントは、[IoT Hub Service API](https://docs.microsoft.com/rest/api/iothub/service/configuration) にあります。
+Azure IoT Hub Service API の完全なドキュメントは、[IoT Hub Service API](/rest/api/iothub/service/configuration) にあります。

@@ -13,12 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.custom: contperf-fy21q2
+  ms.openlocfilehash: f88271d7d212cf28356745a7a4e0f56e3350200d
+  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83592748"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100636251"
 landingContent:
 - title: Translator
   linkLists:
@@ -26,32 +27,24 @@ landingContent:
     links:
     - text: Translator
       url: translator-info-overview.md
+    - text: ドキュメント翻訳
+      url: document-translation/overview.md
     - text: Custom Translator
-      url: translator-info-overview.md
+      url: custom-translator/overview.md
     - text: 価格
       url: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
     - text: コンプライアンス
       url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
     - text: サブスクリプションの作成
-      url: translator-text-how-to-signup.md
+      url: ./translator-how-to-signup.md
     - text: よく寄せられる質問
       url: https://www.microsoft.com/translator/faq.aspx
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: テキストを翻訳する
-      url: quickstart-translate.md
-    - text: テキストを表記変換する
-      url: quickstart-transliterate.md
-    - text: 言語検出
-      url: quickstart-detect.md
-    - text: 辞書検索
-      url: quickstart-dictionary.md
-    - text: 文の長さを決定する
-      url: quickstart-sentences.md
-    - text: サポートされている言語を一覧表示する
-      url: quickstart-languages.md
+    - text: クイック スタート
+      url: quickstart-translator.md
   - linkListType: tutorial
     links:
     - text: WPF 翻訳アプリを作成する (C#)
@@ -66,7 +59,7 @@ landingContent:
       url: request-limits.md
     - text: 言語のサポート
       url: language-support.md
-- title: Custom Translator
+- title: カスタム変換
   linkLists:
   - linkListType: quickstart
     links:
@@ -106,3 +99,9 @@ landingContent:
       url: https://aka.ms/TranslatorGitHub
     - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context

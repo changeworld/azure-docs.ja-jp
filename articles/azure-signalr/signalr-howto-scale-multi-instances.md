@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: ecf4a35fc239a70e87550a97e71d7abd3d00ecfa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921989"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89439216"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>複数のインスタンスでの SignalR Service のスケーリング方法
 最新の SignalR Service SDK では、SignalR Service インスタンスの複数のエンドポイントがサポートされています。 この機能を使用して同時接続をスケーリングすることや、リージョンをまたがるメッセージングにこれを使用することができます。
@@ -27,7 +27,7 @@ SignalR Service 接続文字列のキー `Azure:SignalR:ConnectionString` また
 
 次の `dotnet` コマンドを使用して、複数のインスタンス接続文字列を追加できます。
 
-```batch
+```cmd
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-b:primary <ConnectionString2>
 dotnet user-secrets set Azure:SignalR:ConnectionString:backup:secondary <ConnectionString3>

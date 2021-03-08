@@ -1,5 +1,5 @@
 ---
-title: ファイルを含める
+title: インクルード ファイル
 description: インクルード ファイル
 services: storage
 author: roygara
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/2/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3af8ecb049717da789df96f7dcc4e46668938ff8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42f963f5eb79ef5b430f6fc9d2a0144c370353a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465162"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673851"
 ---
 サービス エンドポイントを使用して、ストレージ アカウントのパブリック エンドポイントへのアクセスを特定の仮想ネットワークに制限するには、まず、ストレージ アカウントと仮想ネットワークに関する情報を収集する必要があります。 この情報を収集するには、`<storage-account-resource-group>`、`<storage-account-name>`、`<vnet-resource-group-name>`、`<vnet-name>`、`<subnet-name>` を指定します。
 
@@ -84,7 +84,7 @@ fi
 
 ストレージ アカウントへのトラフィックを制限する最後のステップでは、ネットワーク ルールを作成し、ストレージ アカウントのネットワーク ルール セットに追加します。
 
-```bash
+```azurecli
 az storage account network-rule add \
         --resource-group $storageAccountResourceGroupName \
         --account-name $storageAccountName \

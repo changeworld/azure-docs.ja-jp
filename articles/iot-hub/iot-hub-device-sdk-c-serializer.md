@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767019"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152233"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 
@@ -28,7 +28,7 @@ ms.locfileid: "81767019"
 
 この記事で説明する内容は、すべて **シリアライザー** SDK サンプルに基づいています。 C 用 Azure IoT device SDK に含まれている **simplesample\_amqp** アプリケーションと **simplesample\_http** アプリケーションを確認すると、理解に役立ちます。
 
-[**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)に関するページで確認できます。
+[**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](/azure/iot-hub/iot-c-sdk-ref/)に関するページで確認できます。
 
 ## <a name="the-modeling-language"></a>モデリング言語
 
@@ -670,4 +670,4 @@ serializer_deinit();
 
 IoT Hub 用の開発の詳細については、「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 
-IoT Hub の機能の詳細については、「[Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)」を参照してください。
+IoT Hub の機能の詳細については、「[Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)」を参照してください。

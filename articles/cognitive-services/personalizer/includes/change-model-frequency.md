@@ -9,10 +9,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 08/25/2020
 ms.openlocfilehash: 4eacc1c4e863ad1a278a4974bb0f6c101aafe7e0
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89055392"
 ---
 ### <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する

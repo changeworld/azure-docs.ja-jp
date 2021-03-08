@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: a56b95fe4f6b7005e823ebe80fd2e74ed1cf7725
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: 439a75907ccdc6d2f1af4f2a3d9fc951bdd6307d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511346"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947790"
 ---
-この記事では、Custom Vision クライアント ライブラリと Go を使用して物体検出モデルを構築する際の足がかりとして役立つ情報とサンプル コードを紹介します。 作成後は、タグ付きのリージョンの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Go アプリケーションを構築するためのテンプレートとしてご利用ください。
+このガイドでは、Go 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
+
+> [!NOTE]
+> 物体検出モデルの構築と使用をコードを記述 "_することなく_" 行う場合は、[ブラウザーベースのガイダンス](../../get-started-build-detector.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -19,7 +22,7 @@ ms.locfileid: "88511346"
 
 ## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
-Go 用 Custom Vision Service クライアント ライブラリをインストールするには、PowerShell で次のコマンドを実行します。
+Go 用の Custom Vision で画像分析アプリを作成するには、Custom Vision のサービス クライアント ライブラリが必要です。 PowerShell で次のコマンドを実行します。
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -38,11 +41,11 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 目的のプロジェクト ディレクトリに、*sample.go* という新しいファイルを作成します。
 
-### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
+## <a name="create-the-custom-vision-project"></a>Custom Vision プロジェクトを作成する
 
 新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 また、Custom Vision Web サイトの [設定] ページからエンドポイント URL を取得します。
 
-プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) メソッドを参照してください ([検出機能の構築](../../get-started-build-detector.md)に関する Web ポータル ガイドで説明されています)。
+プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) メソッドを参照してください ([検出機能の構築](../../get-started-build-detector.md)に関する Web ポータル ガイドで説明されています)。
 
 ```go
 import(
@@ -88,7 +91,7 @@ func main() {
     project, _ := trainer.CreateProject(ctx, project_name, "", objectDetectDomain.ID, "")
 ```
 
-### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
+## <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
 プロジェクトに分類タグを作成するため、*sample.go* の最後に次のコードを追加します。
 
@@ -98,7 +101,7 @@ forkTag, _ := trainer.CreateTag(ctx, *project.ID, "fork", "A fork", string(train
 scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of scissors", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
+## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
 物体検出プロジェクトで画像にタグを付ける際は、タグ付けする各物体の領域を正規化座標を使用して指定する必要があります。
 
@@ -217,7 +220,7 @@ if (!*scissor_batch.IsBatchSuccessful) {
 }     
 ```
 
-### <a name="train-the-project-and-publish"></a>プロジェクトをトレーニングして公開する
+## <a name="train-and-publish-the-project"></a>プロジェクトをトレーニングして公開する
 
 このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
@@ -236,7 +239,7 @@ for {
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>予測エンドポイントで公開されたイテレーションを取得して使用する
+## <a name="use-the-prediction-endpoint"></a>予測エンドポイントを使用する
 
 画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
@@ -272,11 +275,17 @@ go run sample.go
 
 コンソールにアプリケーションの出力が表示されると思います。 **samples/vision/images/Test** 内のテスト画像にタグが適切に付けられていること、また検出の領域が正しいことを確認してください。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のトレーニングでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
+以上、物体検出処理の各ステップをコードで実行しました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のガイドでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](../../test-your-model.md)
+
+* Custom Vision とは
+* [SDK のリファレンス ドキュメント (トレーニング)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
+* [SDK のリファレンス ドキュメント (予測)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)

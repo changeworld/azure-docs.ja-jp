@@ -1,40 +1,40 @@
 ---
-title: Face サービスとは
+title: Azure Face サービスとは
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services Face サービスは、画像に含まれている人の顔の検出、認識、分析に使用されるアルゴリズムを備えています。
+description: Azure Face サービスは、画像に含まれている人の顔を検出、認識、分析するために使用する AI アルゴリズムを提供します。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 9/01/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: e1b5ca8cfb9a6bc0fec7d85f609c411f38d1bbbc
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.custom: cog-serv-seo-aug-2020
+keywords: 顔認識, 顔認識ソフトウェア, 顔分析, 顔照合, 顔認識アプリ, 画像による顔検索, 顔認識検索
+ms.openlocfilehash: 600ca48cc19ee8723b423e484ec96736a55ae7fc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280071"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532258"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
-<!--
-> [!IMPORTANT]
-> On June 11, 2020, Microsoft announced that it will not sell facial recognition technology to police departments in the United States until strong regulation, grounded in human rights, has been enacted. As such, customers may not use facial recognition features or features included in Azure Services, such as Face or Video Indexer, if a customer is, or is allowing use of such services by or for, a police department in the United States.
--->
-![法的情報 ](./media/overview/banner.png)
+
+> [!WARNING]
+> 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Video Indexer など) の使用を許可する場合、これらの機能を使用できません。
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Cognitive Services Face サービスは、画像に含まれている人の顔の検出、認識、分析するアルゴリズムを備えています。 人の顔の情報を処理する機能は、多種多様なソフトウェア シナリオで重要です。 シナリオの例として、セキュリティ、自然なユーザー インターフェイス、画像コンテンツの分析と管理、モバイル アプリ、ロボティクスなどがあります。
+Azure Face サービスは、画像に含まれている人の顔の検出、認識、分析する AI アルゴリズムを提供します。 顔認識ソフトウェアは、セキュリティ、自然なユーザー インターフェイス、画像コンテンツの分析と管理、モバイル アプリ、ロボティクスなど、多種多様なシナリオで重要です。
 
-Face サービスにはいくつかの異なる機能があり、そのそれぞれについて以降のセクションで説明します。
+Face サービスにはいくつかの異なる顔分析機能があり、そのそれぞれについて以降のセクションで説明します。
 
 ## <a name="face-detection"></a>顔検出
 
-Face サービスでは、画像に含まれている人の顔を検出し、その位置の四角形の座標を返します。 顔検出ではオプションとして、顔関連の属性を抽出できます。 たとえば、頭部姿勢、性別、年齢、感情、顔ひげ、眼鏡です。
+Face サービスでは、画像に含まれている人の顔を検出し、その位置の四角形の座標を返します。 顔検出では、オプションとして、頭部姿勢、性別、年齢、ひげ、眼鏡などの顔関連の属性を抽出できます。
 
 > [!NOTE]
-> 顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) でも利用できます。 顔のデータを使ってさらに操作を行いたい場合は、この記事で取り上げる Face サービスを使用してください。
+> 顔検出機能は [Computer Vision サービス](../computer-vision/overview.md)でもご利用いただけます。 ただし、顔のデータを使ってさらに操作を行いたい場合は、代わりにこのサービスを使用する必要があります。
 
 ![女性と男性の画像 (それぞれの顔の周囲に四角形が描かれ、年齢と性別が表示されている)](./Images/Face.detection.jpg)
 
@@ -46,7 +46,9 @@ Verify API は、検出された 2 つの顔に対する認証、または検出
 
 ## <a name="find-similar-faces"></a>似た顔の検索
 
-Find Similar API では、ターゲットの顔と候補となる一連の顔を比較して、ターゲットの顔によく似ている一連の顔を見つけます。 matchPerson と matchFace の 2 つの動作モードがサポートされています。 matchPerson モードでは、[Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) を使用して同一人物についてフィルター処理が行われた後、似た顔が返されます。 matchFace モードでは、同一人物フィルターは無視されます。 同一人物のものであるかどうかに関係なく、似ている顔の候補のリストが返されます。
+Find Similar API では、ターゲットの顔と候補となる一連の顔との間で顔照合を行い、ターゲットの顔によく似ている一連の顔が検索されます。 これは、画像による顔検索を行う場合に便利です。 
+
+**matchPerson** と **matchFace** の 2 つの動作モードがサポートされています。 **matchPerson** モードでは、[Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) を使用して同一人物についてフィルター処理が行われた後、似た顔が返されます。 **matchFace** モードでは、同一人物フィルターは無視されます。 同一人物のものであるかどうかに関係なく、似ている顔の候補のリストが返されます。
 
 ターゲットの顔の例を次に示します。
 
@@ -56,7 +58,7 @@ Find Similar API では、ターゲットの顔と候補となる一連の顔を
 
 ![笑っている人々の 5 つの画像。 画像 a と画像 b は同一人物を示しています。](./Images/FaceFindSimilar.Candidates.jpg)
 
-4 つの似た顔を検索する場合、matchPerson モードではターゲットの顔と同じ人を表す a と b が返されます。 matchFace モードでは、ターゲットと同一人物でなくても、また類似性が低くても厳密に 4 つの候補が返されるので、a、b、c、d が返されます。 詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Find Similar API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) リファレンス ドキュメントを参照してください。
+4 つの似た顔を検索する場合、**matchPerson** モードではターゲットの顔と同じ人を表す a と b が返されます。 **matchFace** モードでは、ターゲットと同一人物ではない、あるいは類似性が低くとも厳密に 4 つの候補が返されるので、a、b、c、d が返されます。 詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Find Similar API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) リファレンス ドキュメントを参照してください。
 
 ## <a name="face-grouping"></a>顔のグループ化
 
@@ -64,7 +66,7 @@ Group API では、未知の顔の集合が、類似性に基づいて複数の�
 
 ## <a name="person-identification"></a>人物の特定
 
-Identify API を使用して、人のデータベースと照らして、検出された顔を識別します。 この機能は、写真管理ソフトウェアにおける画像の自動タグ付けに役立つ可能性があります。 データベースは事前に作成しますが、その後に適宜編集できます。
+Identify API を使用して、人のデータベースと照らし合わせて、検出された顔を識別します (顔認識検索)。 この機能は、写真管理ソフトウェアにおける画像の自動タグ付けに役立つ可能性があります。 データベースは事前に作成しますが、その後に適宜編集できます。
 
 次の画像は、`"myfriends"` という名前のデータベースの例を示しています。 各グループは、最大で 100 万個の異なる person オブジェクトを含むことができます。 各 person オブジェクトには最大で 248 個の顔を登録できます。
 
@@ -74,9 +76,9 @@ Identify API を使用して、人のデータベースと照らして、検出�
 
 人物の特定の詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Identify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) リファレンス ドキュメントを参照してください。
 
-## <a name="containers"></a>Containers
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
 
-標準化された Docker コンテナーをデータの近くにインストールすることによって、[Face コンテナーを使用](face-how-to-install-containers.md)して顔を検出、認識、識別します。
+[Face コンテナー (プレビュー) を使用](face-how-to-install-containers.md)して、API 機能をオンプレミスにデプロイします。 この Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。
 
 ## <a name="sample-apps"></a>サンプル アプリ
 
@@ -91,6 +93,6 @@ Cognitive Services リソース全般に言えることですが、Face サー�
 
 ## <a name="next-steps"></a>次のステップ
 
-クイック スタートに従って、顔検出のシナリオをコードで実装します。
+クイックスタートに従って、顔認識アプリの基本コンポーネントを任意の言語でコーディングします。
 
-- [クイック スタート: .NET SDK と C# を使用して画像内の顔を検出する](quickstarts/csharp.md)。 その他の言語が使用可能です。
+- [クライアント ライブラリのクイックスタート](quickstarts/client-libraries.md)

@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3394754f2829018f7862b3775f8ab2cb2d07d005
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078754"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051362"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続が必要
-[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)を参照してください。 Standard Internal Load Balancer は送信接続を提供しないため、代わりに標準のPublic Load Balancer を作成するためのソリューションを提供します。
+[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。 Standard Internal Load Balancer は送信接続を提供しないため、代わりに標準のPublic Load Balancer を作成するためのソリューションを提供します。
 
 アップグレードには、次の 4 つの段階があります。
 
@@ -98,7 +98,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 * **以前の Basic Public Load Balancer のバックエンド プールから、新しく作成された Standard Public Load Balancer のバックエンド プールに既存の VM を移動する。**
     1. このクイック スタートのタスクを実行するには、[Azure portal](https://portal.azure.com) にサインインする必要があります。
  
-    1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧から**新しく作成された Standard Load Balancer** を選択します。
+    1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧から **新しく作成された Standard Load Balancer** を選択します。
    
     1. **[設定]** で、 **[バックエンド プール]** を選択します。
    
@@ -109,16 +109,16 @@ Azure Az モジュールがインストールされていて、それらをア�
     >パブリック IP を持つ VM の場合は、同じ IP アドレスが保証されていない標準 IP アドレスを最初に作成する必要があります。 基本 IP から VM の関連付けを解除し、新しく作成した標準 IP アドレスに関連付けます。 次に、手順に従って、Standard Load Balancer のバックエンド プールに VM を追加できます。 
 
 * **新しく作成された Standard Public Load Balancer のバックエンド プールに追加する新しい VM を作成する。**
-    * VM を作成して Standard Load Balancer に関連付ける方法の詳細については、[こちら](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)参照してください。
+    * VM を作成して Standard Load Balancer に関連付ける方法の詳細については、[こちら](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines)参照してください。
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>送信接続用のアウトバウンド規則を作成する
 
-[手順](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)に従ってアウトバウンド規則を作成します。それにより、次のことができます。
+[手順](./quickstart-load-balancer-standard-public-powershell.md#create-outbound-rule-configuration)に従ってアウトバウンド規則を作成します。それにより、次のことができます。
 * 送信 NAT をゼロから定義する。
 * 既存の送信 NAT の動作をスケーリングして調整する。
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>インターネットとの通信を避ける VM の NSG ルールを作成する
-インターネット トラフィックが VM に到達しないようにするには、VM のネットワーク インターフェイスに [NSG ルール](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) を作成します。
+インターネット トラフィックが VM に到達しないようにするには、VM のネットワーク インターフェイスに [NSG ルール](../virtual-network/manage-network-security-group.md) を作成します。
 
 ## <a name="common-questions"></a>一般的な質問
 
@@ -129,10 +129,6 @@ Azure Az モジュールがインストールされていて、それらをア�
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell スクリプトでは、Basic Load Balancer から新しく作成した Standard Load Balancer にトラフィックを切り替えることもできますか?
 
 いいえ。 Azure PowerShell スクリプトで移行されるのは構成のみです。 実際のトラフィックの移行は、お客様ご自身の責任において行っていただく必要があります。
-
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>このスクリプトの使用中に問題が発生しました。 どこに問い合わせればよいですか?
-  
-slbupgradesupport@microsoft.com 宛に電子メールを送信する方法と、Azure サポートでサポート ケースを開く方法があります (両方利用できます)。
 
 ## <a name="next-steps"></a>次のステップ
 

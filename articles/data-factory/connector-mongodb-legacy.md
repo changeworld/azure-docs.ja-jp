@@ -1,22 +1,18 @@
 ---
 title: レガシを使用して MongoDB からデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
+description: レガシ Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558178"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368848"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Azure Data Factory を使用して MongoDB のデータをコピーする (レガシ)
 
@@ -37,7 +33,7 @@ MongoDB データベースのデータを、サポートされているシンク
 具体的には、この MongoDB コネクタは以下をサポートします。
 
 - MongoDB **バージョン 2.4、2.6、3.0、3.2、3.4、3.6**。
-- **基本**または**匿名**認証を使用したデータのコピー。
+- **基本** または **匿名** 認証を使用したデータのコピー。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -171,7 +167,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 ## <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
 
-Azure Data Factory サービスは、MongoDB コレクション内の**最新のドキュメント 100 個**を使用してスキーマを推論します。 この 100 個のドキュメントにスキーマが完全には含まれていない場合は、コピー操作中に無視される列が生じる可能性があります。
+Azure Data Factory サービスは、MongoDB コレクション内の **最新のドキュメント 100 個** を使用してスキーマを推論します。 この 100 個のドキュメントにスキーマが完全には含まれていない場合は、コピー操作中に無視される列が生じる可能性があります。
 
 ## <a name="data-type-mapping-for-mongodb"></a>MongoDB のデータ型マッピング
 
@@ -200,7 +196,7 @@ MongoDB からデータをコピーするとき、次の MongoDB のデータ型
 Azure Data Factory では、ビルトインの ODBC ドライバーを使用して、MongoDB データベースへの接続や、MongoDB データベースからのデータのコピーを行います。 複数のドキュメントのさまざまな型が含まれた配列やオブジェクトなどの複合型については、ODBC ドライバーによって、対応する仮想テーブルへのデータの再正規化が行われます。 具体的には、テーブルにそのような列が含まれている場合に、ドライバーによって次の仮想テーブルが生成されます。
 
 * 実テーブルと同じデータ (複合型列を除く) を含む **ベース テーブル**。 ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
-* 複合型列ごとの**仮想テーブル**。入れ子になったデータが展開されます。 仮想テーブルの名前は、実テーブルの名前、区切り文字の "_"、配列またはオブジェクトの名前を使用して付けられます。
+* 複合型列ごとの **仮想テーブル**。入れ子になったデータが展開されます。 仮想テーブルの名前は、実テーブルの名前、区切り文字の "_"、配列またはオブジェクトの名前を使用して付けられます。
 
 仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
 

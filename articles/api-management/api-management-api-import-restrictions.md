@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513373"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932636"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 
@@ -42,6 +42,7 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 -   セキュリティ定義は無視されます。
 -   API 操作に対するインライン スキーマ定義はサポートされていません。 スキーマ定義は、API スコープで定義され、API 操作の要求または応答のスコープで参照できます。
 -   定義された URL パラメーターは URL テンプレートに含まれている必要があります。
+-   `server` オブジェクトは API 操作レベルでサポートされていません。
 -   API によって返される MIME 型を説明する `Produces` キーワードはサポートされていません。 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI バージョン 2
@@ -54,6 +55,10 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 -   `Examples` はサポートされていませんが、`example` はサポートされています。
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI のインポート、更新、およびエクスポートのメカニズム
+
+### <a name="general"></a><a name="open-import-export-general"> </a>全般
+
+-   API Management サービスからエクスポートされた API 定義は、API Management サービスでホストされている API を呼び出す必要がある API Management サービス外部のアプリケーションを主に対象としています。 エクスポートされた API 定義は、同じまたは別の API Management サービスに再度インポートするためのものではありません。 さまざまなサービスまたは環境にわたる API 定義の構成管理については、Git での API Management サービスの使用に関するドキュメントを参照してください。 
 
 ### <a name="add-new-api-via-openapi-import"></a>OpenAPI のインポートを使用して新しい API を追加する
 

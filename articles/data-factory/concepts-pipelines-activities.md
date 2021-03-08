@@ -1,20 +1,17 @@
 ---
 title: Azure Data Factory のパイプラインとアクティビティ
 description: Azure Data Factory のパイプラインとアクティビティについて。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 62df01a02feacb8311d14e0bae7ceccb44d47a5a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 870c812a68f765f987cfd3d1b953e0afeb3e9055
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497660"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364530"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 
@@ -30,7 +27,7 @@ ms.locfileid: "86497660"
 
 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、SQL Server から Azure Blob Storage にデータをコピーできます。 次に、データ フロー アクティビティまたは Databricks Notebook アクティビティを使用して、BLOB ストレージから、ビジネス インテリジェンス レポート ソリューションが構築された Azure Synapse Analytics プールにデータを処理して変換します。
 
-Data Factory では、[データ移動アクティビティ](copy-activity-overview.md)、[データ変換アクティビティ](transform-data.md)、[制御アクティビティ](control-flow-web-activity.md)の 3 種類のアクティビティ グループがあります。 アクティビティは 0 個以上の入力[データセット](concepts-datasets-linked-services.md)を受け取り、1 個以上の出力[データセット](concepts-datasets-linked-services.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
+Data Factory では、[データ移動アクティビティ](copy-activity-overview.md)、[データ変換アクティビティ](transform-data.md)、[制御アクティビティ](#control-flow-activities)の 3 種類のアクティビティ グループがあります。 アクティビティは 0 個以上の入力[データセット](concepts-datasets-linked-services.md)を受け取り、1 個以上の出力[データセット](concepts-datasets-linked-services.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
 
 ![データセット、アクティビティ、パイプラインの関係](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -56,8 +53,8 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop ストリーミング](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) | Azure VM
-[ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server
+[Azure Machine Learning スタジオ (クラシック) のアクティビティ: バッチ実行とリソースの更新](transform-data-using-machine-learning.md) | Azure VM
+[ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics、または SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
@@ -146,7 +143,7 @@ annotations | パイプラインに関連付けられているタグの一覧 | 
 name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 55</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません: "."、"+"、"?"、"/"、"<"、">"、"*"、"%"、" &"、":"、" \" | はい</li></ul>
 description | アクティビティの用途を説明するテキスト。 | はい
 type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-flow-activities)に関するセクションを参照してください。 | はい
-linkedServiceName | アクティビティで使用される、リンクされたサービスの名前。<br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 | HDInsight アクティビティ、Azure Machine Learning バッチ スコアリング アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ"
+linkedServiceName | アクティビティで使用される、リンクされたサービスの名前。<br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 | HDInsight アクティビティ、Azure Machine Learning スタジオ (クラシック) バッチ スコアリング アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ"
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に応じて異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ
 policy | アクティビティの実行時の動作に影響するポリシーです。 このプロパティには、タイムアウトと再試行の動作が含まれます。 指定されていない場合は、既定値が使用されます。 詳細については、「[アクティビティ ポリシー](#activity-policy)」のセクションを参照してください。 | いいえ
 dependsOn | このプロパティを使用して、アクティビティの依存関係と、後続のアクティビティが前のアクティビティにどのように依存するかを定義します。 詳細については、「[アクティビティの依存関係](#activity-dependency)」を参照してください | いいえ
@@ -268,7 +265,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ```
 
 ## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、**Copy** in the **アクティビティ**型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](copy-activity-overview.md)によって、Azure BLOB Storage から Azure SQL Database 内のデータベースにデータをコピーします。
+次のサンプル パイプラインでは、**Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](copy-activity-overview.md)によって、Azure BLOB Storage から Azure SQL Database 内のデータベースにデータをコピーします。
 
 ```json
 {
@@ -317,7 +314,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 このパイプラインの作成に関する完全なチュートリアルについては、「[Quickstart: create a data factory (クイック スタート: データ ファクトリを作成する)](quickstart-create-data-factory-powershell.md)」を参照してください。
 
 ## <a name="sample-transformation-pipeline"></a>変換パイプラインのサンプル
-次のサンプル パイプラインでは、**HDInsightHive** in the **アクティビティ**型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](transform-data-using-hadoop-hive.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
+次のサンプル パイプラインでは、**HDInsightHive** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](transform-data-using-hadoop-hive.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
 
 ```json
 {

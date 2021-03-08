@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 25068c57cd7a39aa1d4893b1526875be9a16a6b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 475886fc3dfa68ef7791ee49fe6c7b0cd0ad9683
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552826"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459766"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iris-intranet"></a>チュートリアル:Azure Active Directory と Iris Intranet の統合
 
@@ -27,7 +27,7 @@ Iris Intranet と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Iris Intranet に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,9 +41,9 @@ Iris Intranet と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Iris Intranet では、**SP** Initiated SSO がサポートされます
+* Iris Intranet では、 **SP** Initiated SSO がサポートされます
 
-* Iris Intranet では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
+* Iris Intranet では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 ## <a name="adding-iris-intranet-from-the-gallery"></a>ギャラリーからの Iris Intranet の追加
 
@@ -63,13 +63,13 @@ Azure AD への Iris Intranet の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Iris Intranet**」と入力し、結果パネルで **Iris Intranet** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Iris Intranet** 」と入力し、結果パネルで **Iris Intranet** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Iris Intranet](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Iris Intranet で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Iris Intranet で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Iris Intranet 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Iris Intranet で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -116,7 +116,7 @@ Iris Intranet で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="configure-iris-intranet-single-sign-on"></a>Iris Intranet シングル サインオンの構成
 
-**Iris Intranet** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Iris Intranet サポート チーム](mailto:support@triptic.nl)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Iris Intranet** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Iris Intranet サポート チーム](mailto:support@triptic.nl)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -134,7 +134,7 @@ Iris Intranet で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -176,13 +176,12 @@ Iris Intranet で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Iris Intranet] タイルをクリックすると、SSO を設定した Iris Intranet に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Iris Intranet] タイルをクリックすると、SSO を設定した Iris Intranet に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

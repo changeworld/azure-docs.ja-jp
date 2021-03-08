@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354804"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動スケーリングの概要
 自動スケーリングは Service Fabric の追加機能であり、サービスによって報告される負荷またはリソースの使用量に基づいて、サービスを動的にスケーリングする機能です。 自動スケーリングは優れた柔軟性を提供し、必要に応じてサービスのインスタンスまたはパーティションを追加でプロビジョニングできます。 自動スケーリングは、プロセス全体が自動化された透過的なものであり、サービスのポリシーを設定した後は、サービス レベルの手動でのスケーリング操作は必要ありません。 自動スケーリングは、サービスの作成時に有効にできます。または、サービスを更新することでいつでも有効にできます。
@@ -51,7 +51,7 @@ Service Fabric クラスター内の各サービスに対して、自動スケ�
 * "_最大インスタンス数_" は、スケーリングの上限を定義します。 パーティションのインスタンス数がこの制限に達すると、負荷に関係なくサービスはスケールアウトされなくなります。 この制限は、値 -1 を指定することで省略できます。その場合、サービスは可能な限りスケールアウトされます (上限はクラスターで使用可能なノードの数になります)。
 * "_最小インスタンス数_" は、スケーリングの下限を定義します。 パーティションのインスタンス数がこの制限に達すると、負荷に関係なくサービスはスケールインされなくなります。
 
-## <a name="setting-auto-scaling-policy"></a>自動スケーリング ポリシーの設定
+## <a name="setting-auto-scaling-policy-for-instance-based-scaling"></a>インスタンス ベースのスケーリングのための自動スケーリング ポリシーの設定
 
 ### <a name="using-application-manifest"></a>アプリケーション マニフェストの使用
 ``` xml
@@ -133,7 +133,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 > [!WARNING] 
 > AddRemoveIncrementalNamedPartitionScalingMechanism がステートフル サービスで使用される場合、Service Fabric によって、**通知や警告なしで**パーティションの追加または削除が行われます。 スケーリング メカニズムがトリガーされている場合、データの再分割は実行されません。 スケールアウト操作では、新しいパーティションは空になり、スケールイン操作では、**パーティションはその中に含まれるすべてのデータと共に削除されます**。
 
-## <a name="setting-auto-scaling-policy"></a>自動スケーリング ポリシーの設定
+## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>パーティション ベースのスケーリングのための自動スケーリング ポリシーの設定
 
 ### <a name="using-application-manifest"></a>アプリケーション マニフェストの使用
 ``` xml

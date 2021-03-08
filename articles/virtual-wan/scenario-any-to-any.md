@@ -6,30 +6,30 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553430"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525790"
 ---
 # <a name="scenario-any-to-any"></a>シナリオ:任意の環境間
 
-Virtual WAN で仮想ハブのルーティングを使用する場合、多くのシナリオを利用できます。 任意間シナリオでは、すべてのスポークが別のスポークに接続できます。 複数のハブが存在する場合、Standard Virtual WAN では、ハブツーハブ ルーティング (ハブ間ルーティングとも呼ばれます) が既定で有効になります。 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+Virtual WAN で仮想ハブのルーティングを使用する場合、多くのシナリオを利用できます。 任意間シナリオでは、すべてのスポークが別のスポークに接続できます。 複数のハブが存在する場合、Standard Virtual WAN では、ハブツーハブ ルーティング (ハブ間ルーティングとも呼ばれます) が既定で有効になります。 Azure portal や [Azure クイック スタート テンプレート](quickstart-any-to-any-template.md)など、さまざまな方法を使用して、この構成を作成できます。 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。 
 
 ## <a name="design"></a><a name="design"></a>設計
 
-Virtual WAN のシナリオで必要なルート テーブルの数を明らかにするには、接続マトリックスを作成できます。その各セルは、接続元 (行) が接続先 (列) と通信できるかどうかを表します。 このシナリオでの接続マトリックスは簡単ですが、他のシナリオとの一貫性を持たせるために追加してあります。
+Virtual WAN のシナリオで必要なルート テーブルの数を明らかにするには、接続マトリックスを作成できます。その各セルは、接続元 (行) が接続先 (列) と通信できるかどうかを表します。
 
 | ソース |   ターゲット |  *VNet* | *ブランチ* |
 | -------------- | -------- | ---------- | ---|
-| VNet     | &#8594;|      x     |     x    |
-| ブランチ   | &#8594;|    x     |     x    |
+| VNet     | &#8594;| 直接 | 直接 |
+| ブランチ   | &#8594;| 直接  | 直接 |
 
-前の表の各セルでは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。
+前の表の各マスは、Virtual WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先プレフィックス (フローの "ターゲット" 側、斜体の列ヘッダー) と通信するかどうかを示しています。 このシナリオでは、ファイアウォールもネットワーク仮想アプライアンスも存在しないため、通信は Virtual WAN を介して直接行われます (そのため、表では "直接" という単語が使用されています)。
 
 VNet とブランチ (VPN、ExpressRoute、およびユーザー VPN) 両方からのすべての接続には同じ接続要件があるため、1 つのルート テーブルが必要です。 その結果、すべての接続が関連付けられ、同じルート テーブル (既定のルート テーブル) に伝達されます。
 

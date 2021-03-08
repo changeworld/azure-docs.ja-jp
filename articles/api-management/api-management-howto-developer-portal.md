@@ -1,7 +1,7 @@
 ---
-title: Azure API Management 開発者ポータルの概要
+title: Azure API Management の開発者ポータルの概要
 titleSuffix: Azure API Management
-description: API Management の開発者ポータルについて説明します。 コンシューマーは、開発者ポータルで API を見つけることができます。
+description: API Management の開発者ポータルについて説明します。開発者ポータルは、API コンシューマーが API を確認することができるカスタマイズ可能な Web サイトです。
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -11,61 +11,46 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852159"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074799"
 ---
-# <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
+# <a name="overview-of-the-developer-portal"></a>開発者ポータルの概要
 
 開発者ポータルは、自動的に生成され、完全にカスタマイズ可能な、API のドキュメントが含まれる Web サイトです。 API コンシューマーはここで API を見つけ、使用方法を確認し、アクセスを要求し、試すことができます。
 
-この記事では、API Management の開発者ポータルのセルフホステッド バージョンとマネージド バージョンの違いについて説明します。 また、アーキテクチャについて説明し、よく寄せられる質問とその回答を紹介します。
+この記事では、API Management の開発者ポータルのセルフホステッド バージョンとマネージド バージョンの違いについて説明します。 また、よく寄せられる質問への回答も記載しています。
 
 ![API Management 開発者ポータル](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-> [!NOTE]
-> <a name="migrate-from-legacy"></a> 新しい開発者ポータルは、従来の開発者ポータルとは互換性がなく、自動移行はできません。 コンテンツ (ページ、テキスト、メディア ファイル) を手動で再作成し、新しいポータルの外観をカスタマイズする必要があります。 ガイダンスについては、[開発者ポータルのチュートリアル](api-management-howto-developer-portal-customize.md)を参照してください。
+## <a name="migration-from-the-legacy-portal"></a>従来のポータルから移行する
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>マネージド バージョンとセルフホステッド バージョン
+> [!IMPORTANT]
+> 従来の開発者ポータルは非推奨となり、セキュリティ更新プログラムのみを受け取るようになりました。 2023 年 10 月に廃止され、すべての API Management サービスから削除されるまでは、通常どおりに引き続き使用できます。
 
-開発者ポータルは 2 つの方法で構築できます。
+新しい開発者ポータルへの移行については、[専用のドキュメント記事](developer-portal-deprecated-migration.md)で説明されています。
 
-- **マネージド バージョン** - API Management インスタンスに組み込まれたポータルを編集およびカスタマイズします。URL `<your-api-management-instance-name>.developer.azure-api.net` からアクセスできます。 マネージド ポータルにアクセスしてカスタマイズする方法については、[こちらのドキュメント記事](api-management-howto-developer-portal-customize.md)を参照してください。
-- **セルフホステッド バージョン** - API Management インスタンスの外部にポータルをデプロイし、自らホスティングします。 このアプローチでは、ポータルのコードベースを編集し、提供されているコア機能を拡張することができます。たとえば、サードパーティ システムと統合するためのカスタムウィジェットを実装します。 このシナリオでは、あなたがポータルの管理者であり、ポータルを最新バージョンにアップグレードする責任があります。 詳細および手順については、[ポータルのソース コードを含む GitHub リポジトリ][1]と[ウィジェットの実装に関するチュートリアル][3]を参照してください。 [マネージド バージョンのチュートリアル](api-management-howto-developer-portal-customize.md)では、ポータルの管理パネルについて説明します。これは、セルフホステッド バージョンでも共通となります。
+## <a name="customization-and-styling"></a>カスタマイズとスタイル設定
 
-## <a name="portal-architectural-concepts"></a>ポータルのアーキテクチャの概念
+開発者ポータルは、ドラッグ アンド ドロップで操作できる組み込みのビジュアル エディターを使用して、カスタマイズおよびスタイル設定できます。 詳細については、[このチュートリアル](api-management-howto-developer-portal-customize.md)を参照してください。
 
-ポータルのコンポーネントは、*コード*と*コンテンツ*の 2 つのカテゴリに論理的に分類することができます。
+## <a name="extensibility"></a><a name="managed-vs-self-hosted"></a> 拡張性
 
-*コード*は [GitHub リポジトリ][1]で保持されており、次のものが含まれています。
+API Management サービスには、常に最新の組み込みの **マネージド** 開発者ポータルが含まれています。 Azure portal インターフェイスからアクセスできます。
 
-- ウィジェット - ビジュアル要素を表します。HTML、JavaScript、スタイル設定機能、設定、およびコンテンツ マッピングが結合されます。 例としては、画像、テキスト段落、フォーム、API 一覧などがあります。
-- スタイル定義 - ウィジェットのスタイル設定の方法を指定します。
-- エンジン - ポータル コンテンツから静的 Web ページを生成します。JavaScript で記述されています。
-- ビジュアル エディター - ブラウザー内でのカスタマイズおよび作成エクスペリエンスを可能にします。
+既定ではサポートされていないカスタム ロジックを使用して拡張する必要がある場合は、そのコードベースを変更できます。 ポータルのコードベースは、[GitHub リポジトリで入手できます][1]。 たとえば、サードパーティのサポート システムと統合する新しいウィジェットを実装できます。 新しい機能を実装する場合は、次のいずれかのオプションを選択できます。
 
-*コンテンツ*は、*ポータル コンテンツ*と *API Management コンテンツ*の 2 つのサブカテゴリに分類されます。
+- API Management サービスの外部で、実装後のポータルを **セルフホスト** します。 ポータルをセルフホストする場合、管理者が保守を行う必要があり、アップグレードの責任を負うことになります。 Azure サポートによる支援は、[リポジトリの Wiki セクション][2]に記載されているように、セルフホステッド ポータルの基本的なセットアップのみに限定されます。
+- **マネージド** ポータルのコードベースに新機能をマージするように、API Management チームに対してプル要求を開きます。
 
-*ポータル コンテンツ*はポータルに固有のものであり、次のものが含まれます。
-
-- ページ - たとえば、ランディング ページ、API チュートリアル、ブログ投稿など
-- メディア - 画像、アニメーション、およびその他のファイルベースのコンテンツ
-- レイアウト - URL に対して照合され、ページの表示方法を定義するテンプレート
-- スタイル - フォント、色、罫線などのスタイル定義の値
-- 設定 - お気に入りアイコン、Web サイト メタデータなどの構成
-
-*ポータル コンテンツ*は、メディアを除き、JSON ドキュメントとして表現されます。
-
-*API Management コンテンツ*には、API、操作、製品、サブスクリプションなどのエンティティが含まれています。
-
-ポータルは、[Paperbits フレームワーク](https://paperbits.io/)の適合されたフォークに基づいています。 元の Paperbits の機能が拡張され、API Management 固有のウィジェット (API の一覧、製品の一覧など)、およびコンテンツを保存および取得するための API Management サービスへのコネクタが提供されるようになりました。
+拡張性に関する詳細および手順については、[GitHub リポジトリ][1]と[ウィジェットの実装に関するチュートリアル][3]を参照してください。 [マネージド ポータルのカスタマイズのチュートリアル](api-management-howto-developer-portal-customize.md)に関するページでは、ポータルの管理パネルについて説明しています。これは、 **マネージド** バージョンと **セルフホステッド** バージョンで共通です。
 
 ## <a name="frequently-asked-questions"></a><a name="faq"></a>よく寄せられる質問
 
@@ -73,33 +58,23 @@ ms.locfileid: "87852159"
 
 ### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a> プレビュー バージョンのポータルから移行するにはどうすればよいですか。
 
-開発者ポータルのプレビュー バージョンを使用して、API Management サービスのプレビュー コンテンツのプロビジョニングを行いました。 ユーザー エクスペリエンスを向上させるために、一般公開バージョンでは既定のコンテンツが大幅に変更されています。 また、新しいウィジェットも含まれています。
+最初に開発者ポータルのプレビュー バージョンを起動した場合、API Management サービスの既定のコンテンツのプレビュー バージョンをプロビジョニングしました。 一般公開バージョンでは既定のコンテンツが大幅に変更されています。 たとえば、既定のコンテンツのプレビュー バージョンには、ログイン ページに OAuth ボタンが含まれておらず、API を表示するためにさまざまなウィジェットが使用されており、開発者ポータル ページの構築は限られた機能で行われます。 コンテンツに違いがある場合でも、ポータルのエンジン (基になるウィジェットを含む) は、開発者ポータルを発行するたびに自動的に更新されます。
 
-マネージド バージョンを使用している場合は、 **[操作]** メニュー セクションの **[コンテンツのリセット]** をクリックして、ポータルのコンテンツをリセットします。 この操作を確認すると、ポータルのすべてのコンテンツが削除され、新しい既定のコンテンツがプロビジョニングされます。 ポータルのエンジンは、API Management サービスで自動的に更新されています。
+以前のバージョンのコンテンツに基づいてポータルを大幅にカスタマイズした場合、それをそのまま使用し続け、手動でポータルのページに新しいウィジェットを置くことができます。 それ以外の場合は、ポータルのコンテンツを新しい既定のコンテンツに置き換えることをお勧めします。
+
+マネージド ポータルのコンテンツをリセットするには、 **[操作]** メニュー セクションの **[コンテンツのリセット]** を選択します。 この操作では、ポータルのすべてのコンテンツが削除され、新しい既定のコンテンツがプロビジョニングされます。 開発者ポータルのカスタマイズと変更内容がすべて失われます。 **この操作を元に戻すことはできません** 。
 
 ![ポータル コンテンツのリセット](media/api-management-howto-developer-portal/reset-content.png)
 
-セルフホステッド バージョンを使用している場合は、GitHub リポジトリの `scripts/cleanup.bat` と `scripts/generate.bat` を使用して、既存のコンテンツを削除し、新しいコンテンツをプロビジョニングします。 必ず事前に、ポータルのコードを GitHub リポジトリから最新リリースにアップグレードしてください。
+セルフホステッド バージョンを使用している場合は、GitHub リポジトリの `scripts.v2/cleanup.bat` と `scripts.v2/generate.bat` スクリプトを実行して、既存のコンテンツを削除し、新しいコンテンツをプロビジョニングします。 必ず事前に、ポータルのコードを GitHub リポジトリから最新リリースにアップグレードしてください。
 
-ポータルのコンテンツをリセットしたくない場合は、新しく利用可能となったウィジェットをページ全体で使用することを検討してください。 既存のウィジェットは、最新バージョンに自動的に更新されています。
-
-一般公開の発表後にポータルをプロビジョニングした場合は、新しい既定のコンテンツが既に取り入れられているはずです。 ユーザー側の操作は必要ありません。
-
-### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>ポータルには、レガシ ポータルのすべての機能が含まれていますか。
-
-この開発者ポータルでは、*アプリケーション* と *問題* はサポートされなくなりました。
-
-### <a name="has-the-legacy-portal-been-deprecated"></a>レガシ ポータルは非推奨となりましたか。
-
-以前の開発者ポータルと発行者ポータルは*レガシ*機能となりました。セキュリティ更新プログラムのみ受け取ることになります。 新しい機能は、新しい開発者ポータルにのみ実装されます。
-
-レガシ ポータルの廃止については、あらためて発表されます。 質問、懸念事項、またはコメントがある場合は、[専用の GitHub の問題](https://github.com/Azure/api-management-developer-portal/issues/121)に提起してください。
+2019 年 11 月の一般提供のお知らせの後にポータルに初めてアクセスした場合は、新しい既定のコンテンツが既に機能しているため、これ以上の操作は必要ありません。
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>必要な機能がポータルでサポートされていない
 
-[機能要求](https://aka.ms/apimwish) を開いたり、[不足している機能を自分で実装][3] したりすることができます。 機能を自分で実装する場合は、開発者ポータルをセルフホストするか、GitHub で PR を開いて、変更内容をマネージバージョンに含めることができます。
+[GitHub リポジトリ][1]で機能要求を開いたり、[不足している機能を自分で実装][3]したりすることができます。 詳細については、上記の「 **拡張性** 」セクションを参照してください。
 
-### <a name="how-can-i-automate-portal-deployments"></a>ポータルのデプロイを自動化するにはどうすればよいですか。
+### <a name="how-can-i-automate-portal-deployments"></a><a id="automate"></a>ポータルのデプロイを自動化するにはどうすればよいですか。
 
 マネージド バージョンとセルフホステッド バージョンのどちらを使用している場合でも、REST API を通じて開発者ポータルのコンテンツにプログラムでアクセスし、管理することができます。
 
@@ -107,7 +82,7 @@ API については、[GitHub リポジトリの wiki セクション][2]に記�
 
 ### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>マネージド バージョンからセルフホステッド バージョンにどうやって移行できますか。
 
-[GitHub 上の開発者ポータル リポジトリの Wiki セクション][2]にある詳細記事を参照してください。
+[GitHub の開発者ポータル リポジトリの Wiki セクション][2]にある詳細記事を参照してください。
 
 ### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>1 つの API Management サービスに複数の開発者ポータルを含めることはできますか。
 
@@ -127,7 +102,7 @@ API については、[GitHub リポジトリの wiki セクション][2]に記�
 
 API Management サービスが内部の VNet にある場合、開発者ポータルにはネットワーク内からしかアクセスできません。 管理エンドポイントのホスト名は、ポータルの管理インターフェイスにアクセスするために使用するコンピューターから、サービスの内部 VIP に解決される必要があります。 管理エンドポイントが DNS に登録されていることを確認してください。 設定に誤りがある場合は、次のエラーが表示されます: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`
 
-API Management サービスが内部 VNet にあり、インターネットから Application Gateway 経由でアクセスする場合は、開発者ポータルと API Management の管理エンドポイントへの接続を有効にしてください。
+API Management サービスが内部 VNet にあり、インターネットから Application Gateway 経由でアクセスする場合は、開発者ポータルと API Management の管理エンドポイントへの接続を有効にしてください。 Web アプリケーションのファイアウォール規則を無効にする必要がある場合があります。 詳細については、[このドキュメントの記事](api-management-howto-integrate-internal-vnet-appgateway.md)を参照してください。
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>カスタムの API Management ドメインを割り当てていますが、発行済みのポータルが正しく動作しません
 
@@ -135,7 +110,7 @@ API Management サービスが内部 VNet にあり、インターネットか�
 
 ### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>ID プロバイダーを追加しましたが、ポータルに表示されません
 
-(AAD、AAD B2C などの) ID プロバイダーを構成した後、変更を有効にするには[ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。
+(Azure AD、Azure AD B2C などの) ID プロバイダーを構成した後、変更を有効にするには[ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。 開発者ポータルのページに OAuth ボタン ウィジェットが含まれていることを確認してください。
 
 ### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>委任を設定しましたが、ポータルで使用されていません
 
@@ -151,16 +126,16 @@ API Management サービスが内部 VNet にあり、インターネットか�
 
 CORS ポリシーの状態は、Azure portal の API Management サービスの **[ポータルの概要]** セクションで確認できます。 警告ボックスは、ポリシーが存在しないか、構成が正しくないことを示します。
 
-![API Management 開発者ポータル](media/api-management-howto-developer-portal/cors-azure-portal.png)
+![CORS ポリシーの状態を確認できる場所を示すスクリーンショット。](media/api-management-howto-developer-portal/cors-azure-portal.png)
 
 **[CORS を有効にする]** ボタンをクリックして、CORS ポリシーを自動的に適用します。
 
 CORS は手動で有効にすることもできます。
 
-1. 生成されたポリシー コードを表示するには、 **[Manually apply it on the global level]\(手動でグローバル レベルに適用する\)** リンクをクリックします。
+1. 生成されたポリシー コードを表示するには、 **[手動でグローバル レベルに適用する]** リンクを選択します。
 2. Azure portal で API Management サービスの **[API]** セクションにある **[すべての API]** に移動します。
-3. **[受信処理]** セクションで **[</>]** アイコンをクリックします。
-4. XML ファイルの **[\<inbound\>]** セクションにポリシーを挿入します。 **\<origin\>** 値が、開発者ポータルのドメインと一致していることを確認します。
+3. **[受信処理]** セクションで **[</>]** アイコンを選択します。
+4. XML ファイルの **[<inbound>]** セクションにポリシーを挿入します。 **<origin>** 値が、開発者ポータルのドメインと一致していることを確認します。
 
 > [!NOTE]
 > 
@@ -170,9 +145,13 @@ CORS は手動で有効にすることもできます。
 >
 > 回避策として、クエリ パラメーターでサブスクリプション キーを渡すことができます。
 
+> [!NOTE]
+> 
+> 1 つの CORS ポリシーのみが実行されます。 複数の CORS ポリシーを指定した場合 (たとえば、API レベルとすべての API レベル)、対話型コンソールが期待どおりに動作しないことがあります。
+
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>開発者ポータルを編集するにはどのようなアクセス許可が必要ですか。
 
-管理モードでポータルを開いたときに `Oops. Something went wrong. Please try again later.` エラーが表示される場合、必要なアクセス許可 (RBAC) が不足している可能性があります。
+管理モードでポータルを開いたときに `Oops. Something went wrong. Please try again later.` エラーが表示される場合、必要なアクセス許可 (Azure RBAC) が不足している可能性があります。
 
 従来のポータルでは、ユーザー管理者によるポータルへのアクセスを許可するためには、サービス スコープのアクセス許可 `Microsoft.ApiManagement/service/getssotoken/action` (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) が必要でした。 新しいポータルでは、スコープ `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` のアクセス許可 `Microsoft.ApiManagement/service/users/token/action` が必要です。
 
@@ -194,7 +173,7 @@ $customRole.AssignableScopes.Add('/subscriptions/<subscription-id>')
 New-AzRoleDefinition -Role $customRole 
 ```
  
-作成したロールは、Azure portal の **[Access Control (IAM)]\(アクセス制御 (IAM)\)** セクションから任意のユーザーに付与できます。 このロールをユーザーに割り当てると、サービス スコープのアクセス許可が割り当てられます。 ユーザーは、サービスの*任意の*ユーザーに代わって SAS トークンを生成できるようになります。 最低限、このロールはサービスの管理者に割り当てる必要があります。 次の PowerShell コマンドは、不必要なアクセス許可をユーザーに付与することを避けるために、最も低いスコープでユーザー `user1` にロールを割り当てる方法を示しています。 
+作成したロールは、Azure portal の **[Access Control (IAM)]\(アクセス制御 (IAM)\)** セクションから任意のユーザーに付与できます。 このロールをユーザーに割り当てると、サービス スコープのアクセス許可が割り当てられます。 ユーザーは、サービスの *任意の* ユーザーに代わって SAS トークンを生成できるようになります。 最低限、このロールはサービスの管理者に割り当てる必要があります。 次の PowerShell コマンドは、不必要なアクセス許可をユーザーに付与することを避けるために、最も低いスコープでユーザー `user1` にロールを割り当てる方法を示しています。 
 
 ```powershell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 

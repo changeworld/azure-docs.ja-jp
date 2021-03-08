@@ -1,23 +1,25 @@
 ---
 title: Azure Cosmos DB の SQL JOIN クエリ
 description: Azure Cosmos DB で複数のテーブルを結合してデータのクエリを行う方法について説明します
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.author: mjbrown
-ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 01/07/2021
+ms.author: tisande
+ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74871144"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011396"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB での結合
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-リレーショナル データベースでは、テーブル間の結合は、正規化されたスキーマの設計の論理的必然です。 一方、SQL API では、スキーマがない項目の正規化されていないデータ モデルが使われます。これは論理的に*自己結合*と同義です。
+リレーショナル データベースでは、テーブル間の結合は、正規化されたスキーマの設計の論理的必然です。 一方、SQL API では、スキーマがない項目の正規化されていないデータ モデルが使われます。これは論理的に *自己結合* と同義です。
 
-内部結合の結果は、結合に含まれるセットの完全なクロス積になります。 N-way 結合の結果は、N 要素タプルのセットであり、タプル内の各値が結合に含まれている別名セットに関連付けられていて、他の句でその別名を参照してアクセスできます。
+結合の結果は、結合に含まれるセットの完全なクロス積になります。 N-way 結合の結果は、N 要素タプルのセットであり、タプル内の各値が結合に含まれている別名セットに関連付けられていて、他の句でその別名を参照してアクセスできます。
 
 ## <a name="syntax"></a>構文
 
@@ -251,6 +253,8 @@ JOIN 句の便利な点は、クロス積からタプルを生成できる点で
       }
     ]
 ```
+
+クエリに JOIN とフィルターがある場合は、クエリの一部を[サブクエリ](sql-query-subquery.md#optimize-join-expressions)として書き直して、パフォーマンスを向上させることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

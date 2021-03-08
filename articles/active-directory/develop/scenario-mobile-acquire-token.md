@@ -13,20 +13,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 6e6eda3d711710ea7450165ab02d7a260067bfcb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141280"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582555"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリ トークンを取得する
 
-保護された Web API をアプリから呼び出すには、アクセス トークンが必要です。 この記事では、Microsoft Authentication Library (MSAL) を使用してトークンを取得するためのプロセスについて説明します。
+保護された Web API をアプリから呼び出すには、アクセス トークンが必要です。 この記事では、Microsoft Authentication Library (MSAL) を使用してトークンを取得するプロセスについて説明します。
 
 ## <a name="define-a-scope"></a>スコープの定義
 
-トークンを要求する場合、スコープを定義する必要があります。 スコープでは、お使いのアプリでアクセスできるデータを決定します。
+トークンを要求するときは、スコープを定義します。 スコープでは、お使いのアプリでアクセスできるデータを決定します。
 
 スコープを定義する最も簡単な方法は、必要な Web API `App ID URI` をスコープ `.default` と組み合わせることです。 この定義により、アプリで、ポータルに設定されているすべてのスコープが必要であることを Microsoft ID プラットフォームに通知できます。
 
@@ -236,14 +236,14 @@ Android では、`PublicClientApplicationBuilder` を使用してアプリの作
     このオプションは、トークンの取得に失敗し、ユーザーが再度サインインできるようにする場合に役立ちます。 この場合、MSAL から ID プロバイダーに `prompt=login` が送信されます。 このオプションは、組織のガバナンスにより、ユーザーがアプリケーションの特定の部分にアクセスするたびにサインインすることが求められるセキュリティ重視のアプリケーションで使用できます。
 - `Never` は、.NET 4.5 と Windows ランタイム (WinRT) のみに使用できます。 この定数を使用すると、ユーザーの操作を求めず、非表示の埋め込み Web ビューに格納された Cookie を使用しようとします。 詳細については、「[Web ブラウザーを使用する (MSAL.NET)](./msal-net-web-browsers.md)」を参照してください。
 
-    このオプションが失敗した場合は、`AcquireTokenInteractive` によって、UI 操作が必要であることを通知する例外がスローされます。 このとき、別の `Prompt` パラメーターを使用する必要があります。
+    このオプションが失敗した場合は、`AcquireTokenInteractive` によって、UI 操作が必要であることを通知する例外がスローされます。 次に、別の `Prompt` パラメーターが使用されます。
 - `NoPrompt` を使用すると、ID プロバイダーにプロンプトが送信されません。
 
     このオプションは、Azure Active Directory (Azure AD) B2C のプロファイルの編集ポリシーに対してのみ有効です。 詳細については、[B2C の詳細](https://aka.ms/msal-net-b2c-specificities)に関するページを参照してください。
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-複数のリソースに対してユーザーの事前の同意を求める高度なシナリオでは、`WithExtraScopeToConsent` 修飾子を使用します。 この修飾子は、MSAL.NET または Microsoft ID プラットフォーム 2.0 で通常使用される増分同意を使用しない場合に使用できます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)」を参照してください。
+複数のリソースに対してユーザーの事前の同意を求める高度なシナリオでは、`WithExtraScopeToConsent` 修飾子を使用します。 この修飾子は、MSAL.NET または Microsoft ID プラットフォームで通常使用される増分同意を使用しない場合に使用できます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)」を参照してください。
 
 次にコード例を示します。
 
@@ -255,7 +255,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>その他の省略可能なパラメーター
 
-`AcquireTokenInteractive` のその他の省略可能なパラメーターの詳細については、[AcquireTokenInteractiveParameterBuilder の参照ドキュメント](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)をご覧ください。
+`AcquireTokenInteractive` のその他の省略可能なパラメーターの詳細については、[AcquireTokenInteractiveParameterBuilder の参照ドキュメント](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods)をご覧ください。
 
 ### <a name="acquire-tokens-via-the-protocol"></a>プロトコルを使用してトークンを取得する
 
@@ -294,5 +294,4 @@ client_id=<CLIENT_ID>
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Web API の呼び出し](scenario-mobile-call-api.md)
+このシナリオの次の記事である [Web API の呼び出し](scenario-mobile-call-api.md)に関する記事に進みます。

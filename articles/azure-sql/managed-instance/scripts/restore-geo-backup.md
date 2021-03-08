@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 0c6ca03f535201059f107d6b53bc423b92d1c1c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f04e4b5a44dccdc3aaeabe6b4144836b0be7354c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073372"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790782"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>PowerShell を使用して Azure SQL Managed Instance データベースを別の geo リージョンに復元する
 
@@ -75,7 +75,7 @@ Remove-AzResourceGroup -ResourceGroupName $TargetResourceGroupName
 
 | コマンド | Notes |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/New-AzResourceGroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | SQL Managed Instance データベースの geo 冗長バックアップを作成します。 |
 | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | geo バックアップから SQL Managed Instance にデータベースを作成します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |

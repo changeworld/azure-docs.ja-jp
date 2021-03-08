@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f38ef7db114705392bd1d3dc6f9a4562a809e20
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1a6ddde80ca554aea25d24694aff76e61e47d928
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023877"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672459"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で自分の Azure リソース ロールをアクティブ化する
 
@@ -42,7 +42,7 @@ Azure リソース ロールを引き受ける必要がある場合は、Privile
 
 1. **[Azure リソース ロール]** を選択して、適格な Azure リソース ロールの一覧を表示します。
 
-   ![[自分のロール - Azure リソース ロール] ページ](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
+    ![[自分のロール - Azure リソース ロール] ページ](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
 
 1. **[Azure リソース ロール]** の一覧で、アクティブにするロールを見つけます。
 
@@ -50,7 +50,7 @@ Azure リソース ロールを引き受ける必要がある場合は、Privile
 
 1. **[アクティブ化]** を選択して、[アクティブ化] ページを開きます。
 
-     ![開いた [アクティブ化] ウィンドウと、スコープ、開始時刻、期間、理由](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
+    ![開いた [アクティブ化] ウィンドウと、スコープ、開始時刻、期間、理由](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
 
 1. お使いのロールで多要素認証が必要な場合は、 **[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
 

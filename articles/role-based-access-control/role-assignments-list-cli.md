@@ -11,26 +11,26 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9087722b54a805a0c217c236263bdcb39e5456e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc64e314a8acb035736df0521987cb78a7297326
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986255"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556927"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure ロールの割り当てを一覧表示する
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] この記事では、Azure CLI を使用してロールの割り当てを一覧表示する方法を説明します。
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] この記事では、Azure CLI を使用してロールの割り当てを一覧表示する方法を説明します。
 
 > [!NOTE]
 > 組織で、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Cloud Shell の Bash](/azure/cloud-shell/overview) または [Azure CLI](/cli/azure)
+- [Azure Cloud Shell の Bash](../cloud-shell/overview.md) または [Azure CLI](/cli/azure)
 
 ## <a name="list-role-assignments-for-a-user"></a>ユーザーのロールの割り当ての表示
 
@@ -163,15 +163,15 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>マネージド ID のロールの割り当ての一覧表示
 
-1. システム割り当てまたはユーザー割り当てのマネージド ID のオブジェクト ID を取得します。
+1. システム割り当てまたはユーザー割り当てのマネージド ID のプリンシパル ID を取得します。
 
-    ユーザー割り当てのマネージド ID のオブジェクト ID を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) または [az identity list](/cli/azure/identity#az-identity-list) を使用します。
+    ユーザー割り当てのマネージド ID のプリンシパル ID を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) または [az identity list](/cli/azure/identity#az-identity-list) を使用します。
 
     ```azurecli
     az ad sp list --display-name "{name}" --query [].objectId --output tsv
     ```
 
-    システム割り当てのマネージド ID のオブジェクト ID を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) を使用します。
+    システム割り当てのマネージド ID のプリンシパル ID を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) を使用します。
 
     ```azurecli
     az ad sp list --display-name "{vmname}" --query [].objectId --output tsv
@@ -187,4 +187,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md)
+- [Azure CLI を使用して Azure ロールを割り当てる](role-assignments-cli.md)

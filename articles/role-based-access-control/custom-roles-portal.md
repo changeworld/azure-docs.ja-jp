@@ -6,18 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511723"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369228"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portal を使用して Azure カスタム ロールを作成または更新する
 
@@ -31,14 +29,12 @@ ms.locfileid: "86511723"
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>手順 1:必要なアクセス許可を決定する
 
-Azure には、カスタム ロールに含めることができる何千ものアクセス許可があります。 カスタム ロールに追加するアクセス許可を決定するには、次の 4 つの方法があります。
+Azure には、カスタム ロールに含めることができる何千ものアクセス許可があります。 カスタム ロールに追加するアクセス許可を決定するのに役立ついくつかの方法を示します。
 
-| Method | 説明 |
-| --- | --- |
-| 既存のロールを調べる | 既存のロールを調べて、どのアクセス許可が使用されているかを確認できます。 詳細については、[Azure の組み込みロール](built-in-roles.md)に関するページを参照してください。 |
-| キーワードを使用してアクセス許可を検索する | Azure portal を使用してカスタム ロールを作成する場合は、キーワードを使用してアクセス許可を検索できます。 たとえば、"*仮想マシン*" や "*請求*" のアクセス許可を検索できます。 この検索機能については、後ほど次で詳しく説明します。「[手順 4 :Permissions\(次へ: アクセス許可\)](#step-4-permissions) をクリックします。 |
-| すべてのアクセス許可をダウンロードする | Azure portal を使用してカスタム ロールを作成する場合は、すべてのアクセス許可を CSV ファイルとしてダウンロードし、このファイルを検索することができます。 **[アクセス許可の追加]** ペインで、 **[すべてのアクセス許可をダウンロードする]** ボタンをクリックして、すべてのアクセス許可をダウンロードします。 [アクセス許可の追加] ペインの詳細については、次を参照してください。「[手順 4:Permissions\(次へ: アクセス許可\)](#step-4-permissions) をクリックします。 |
-| ドキュメントのアクセス許可を確認する | 使用可能なアクセス許可は、「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」で確認できます。 |
+- 既存の[組み込みロール](built-in-roles.md)を確認します。
+- アクセス権を付与する Azure サービスを一覧表示します。
+- [Azure サービスにマップされるリソース プロバイダー](../azure-resource-manager/management/azure-services-resource-providers.md)を決定します。 検索方法については、次を参照してください: [ステップ 4: Permissions\(次へ: アクセス許可\)](#step-4-permissions) をクリックします。
+- [使用可能なアクセス許可](resource-provider-operations.md)を検索して、含めるアクセス許可を見つけます。 検索方法については、次を参照してください: [ステップ 4: Permissions\(次へ: アクセス許可\)](#step-4-permissions) をクリックします。
 
 ## <a name="step-2-choose-how-to-start"></a>手順 2:開始方法を選択する
 
@@ -331,7 +327,7 @@ Microsoft.CostManagement/exports/delete
 
 1. 削除するカスタム ロールの省略記号 ( **...** ) をクリックし、 **[削除]** をクリックします。
 
-    ![カスタム ロール メニュー](./media/custom-roles-portal/delete-menu.png)
+    ![削除対象として選択できるカスタム ロールの一覧を示しているスクリーンショット。](./media/custom-roles-portal/delete-menu.png)
 
     カスタム ロールが完全に削除されるまで、数分かかることがあります。
 
@@ -339,4 +335,4 @@ Microsoft.CostManagement/exports/delete
 
 - [チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)
 - [Azure カスタム ロール](custom-roles.md)
-- [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)
+- [Azure リソース プロバイダーの操作](resource-provider-operations.md)

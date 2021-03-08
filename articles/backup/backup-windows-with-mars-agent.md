@@ -3,12 +3,12 @@ title: MARS エージェントを使用して Windows マシンをバックア�
 description: Microsoft Azure Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップします。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182090"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702770"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server ファイルおよびフォルダーを Azure にバックアップする
 
@@ -38,7 +38,7 @@ Azure Backup では、夏時間 (DST) は自動的には考慮されません。
 
 バックアップ ポリシーを作成するには:
 
-1. MARS エージェントをダウンロードして登録した後、エージェント コンソールを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup**を検索すると見つかります。  
+1. MARS エージェントをダウンロードして登録した後、エージェント コンソールを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup** を検索すると見つかります。  
 
 1. **[アクション]** で、 **[バックアップのスケジュール]** を選択します。
 
@@ -104,7 +104,7 @@ Azure Backup では、夏時間 (DST) は自動的には考慮されません。
 1. ステージングの場所にバックアップ データを書き込みます。
 1. AzureOfflineBackupDiskPrep ツールを使用して、ステージングの場所から 1 つまたは複数の SATA ディスクにデータをコピーします。
 
-    このツールでは、Azure インポート ジョブが作成されます。 詳細については、「[Azure Import/Export サービスとは](../storage/common/storage-import-export-service.md)」を参照してください。
+    このツールでは、Azure インポート ジョブが作成されます。 詳細については、「[Azure Import/Export サービスとは](../import-export/storage-import-export-service.md)」を参照してください。
 1. SATA ディスクを Azure データセンターに送信します。
 
     Azure データセンターでは、ディスク データが Azure ストレージ アカウントにコピーされます。 Azure Backup によってストレージ アカウントからコンテナーにデータがコピーされ、増分バックアップがスケジュールされます。
@@ -125,7 +125,7 @@ Azure Backup のネットワーク調整では、ローカル オペレーティ
 1. **[調整]** タブで、 **[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** をオンにします。
 
     ![バックアップ操作のネットワーク帯域幅調整を設定する](./media/backup-configure-vault/throttling-dialog.png)
-1. 作業時間中と作業時間外に使用できる帯域幅を指定します。 帯域幅の値は 512 Kbps から開始し、最大は 1,023 MBps です。 **[OK]** をクリックします。
+1. 作業時間中と作業時間外に使用できる帯域幅を指定します。 帯域幅の値は 512 Kbps から開始し、最大は 1,023 Mbps です。 **[OK]** をクリックします。
 
 ## <a name="run-an-on-demand-backup"></a>オンデマンド バックアップを実行する
 

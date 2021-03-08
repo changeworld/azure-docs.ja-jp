@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Azure Database for MariaDB を設計する - Azure portal
 description: このチュートリアルでは、Azure portal を使用して、Azure Database for MariaDB サーバーとデータベースを作成および管理する方法について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9df151be99ba81af28f6b7b0cc012eae7db3ea1b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80063809"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664471"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for MariaDB データベースを設計する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Azure Database for MariaDB サーバーを作成する
 
-Azure Database for MariaDB サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](concepts-pricing-tiers.md)を使って作成します。 サーバーは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)内に作成されます。
+Azure Database for MariaDB サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](concepts-pricing-tiers.md)を使って作成します。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成されます。
 
 1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。
 
@@ -65,7 +65,7 @@ Azure Database for MariaDB サーバーは、定義済みの一連の[コンピ�
    ![Pricing tier](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > **自動拡張**が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
+   > **自動拡張** が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
 
 4. **[Review + create]\(レビュー + 作成\)** をクリックします。 ツール バーの **[通知]** ボタンをクリックすると、デプロイ プロセスを監視できます。 デプロイには、最大 20 分かかる場合があります。
 
@@ -179,7 +179,7 @@ SELECT * FROM inventory;
    - **[場所]** :リージョンはソース サーバーと同じ場所にします。変更することはできません。
    - **価格レベル**:ソース サーバーと同じ価格レベルにします。変更することはできません。
    
-3. **[OK]** を選択して、テーブルが削除される前の[時点にサーバーを復元](./howto-restore-server-portal.md)します。 サーバーを復元すると、選択した時点のサーバーのコピーが新たに作成されます。 
+3. **[OK]** を選択して、テーブルが削除される前の [時点にサーバーを復元](./howto-restore-server-portal.md)します。 サーバーを復元すると、選択した時点のサーバーのコピーが新たに作成されます。 
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Portal を使用して次のことを行う方法を説明しました。
@@ -194,4 +194,4 @@ SELECT * FROM inventory;
 > * データの復元
 
 > [!div class="nextstepaction"]
-> [Azure Database for MariaDB にアプリケーションを接続する方法](./howto-connection-string.md)
+> [Azure Database for MariaDB にアプリケーションを接続する方法](howto-connection-string.md)

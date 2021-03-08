@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 01/28/2021
 ms.author: victorh
-ms.openlocfilehash: 0d0522dd2f206e02ad8b63b13a9537c049232db2
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: c976ea236ae1d37cc0a543b10a9de55609035632
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245742"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986754"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して TLS ターミネーションでアプリケーション ゲートウェイを構成する
 
@@ -36,7 +36,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-このセクションでは、[New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 アプリケーション ゲートウェイのリスナーを作成するときに、証明書を Azure portal にアップロードします。
+このセクションでは、[New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 アプリケーション ゲートウェイのリスナーを作成するときに、証明書を Azure portal にアップロードします。
 
 ローカル コンピューターでは、管理者として Windows PowerShell ウィンドウを開きます。 次のコマンドを実行して、証明書を作成します。
 
@@ -56,7 +56,7 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-[Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートします。 パスワードの長さが 4 - 12 文字であることを確認してください。
+[Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートします。 パスワードの長さが 4 - 12 文字であることを確認してください。
 
 
 ```powershell
@@ -71,7 +71,7 @@ Export-PfxCertificate `
 
 1. Azure portal の左側のメニューにある **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 
-2. **[ネットワーク]** を選択し、**おすすめ**のリストで **[Application Gateway]** を選択します。
+2. **[ネットワーク]** を選択し、**おすすめ** のリストで **[Application Gateway]** を選択します。
 
 ### <a name="basics-tab"></a>[基本] タブ
 
@@ -106,7 +106,7 @@ Export-PfxCertificate `
    > [!NOTE]
    > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成は、この v2 SKU では現在有効になっていません。
 
-2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
+2. **[パブリック IP アドレス]** として **[新規追加]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
 
    ![新しいアプリケーション ゲートウェイの作成: フロントエンド](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
@@ -116,7 +116,7 @@ Export-PfxCertificate `
 
 バックエンド プールは、要求を処理するバックエンド サーバーに要求をルーティングするために使用されます。 バックエンド プールは、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、および Azure App Service などのマルチテナント バックエンドで構成できます。 この例では、アプリケーション ゲートウェイを使用して空のバックエンド プールを作成し、バックエンド ターゲットをバックエンド プールに追加します。
 
-1. **[バックエンド]** タブで、 **[+ バックエンド プールの追加]** を選択します。
+1. **[バックエンド]** タブで、 **[バックエンド プールの追加]** を選択します。
 
 2. 開いた **[バックエンド プールの追加]** ウィンドウで、次の値を入力して空のバックエンド プールを作成します。
 
@@ -133,7 +133,7 @@ Export-PfxCertificate `
 
 **[構成]** タブで、ルーティング規則を使用して作成したフロントエンドとバックエンド プールを接続します。
 
-1. **[ルーティング規則]** 列で **[規則を追加する]** を選択します。
+1. **[ルーティング規則]** 列で **[ルーティング規則の追加]** を選択します。
 
 2. 開いた **[ルーティング規則の追加]** ウィンドウで、 **[規則名]** に「*myRoutingRule*」と入力します。
 
@@ -144,11 +144,12 @@ Export-PfxCertificate `
     - **プロトコル**: **[HTTPS]** を選択します。
     - **ポート**:ポートに対して 443 が入力されていることを確認します。
 
-   **[HTTPS 証明書]** で以下の操作を行います。
+   **[HTTPS 設定]** で以下の操作を行います。
 
+   - **[証明書の選択]** - **[証明書のアップロード]** を選択します。
    - **[PFX 証明書ファイル]** - 前に作成した c:\appgwcert.pfx ファイルを参照して選択します。
    - **[証明書名]** - 証明書の名前として「*mycert1*」と入力します。
-   - **[パスワード]** - 自分のパスワードを入力します。
+   - **[パスワード]** - 証明書の作成に使用したパスワードを入力します。
   
         **[リスナー]** タブで他の設定の既定値をそのまま使用し、 **[バックエンド ターゲット]** タブを選択して、ルーティング規則の残りの部分を構成します。
 
@@ -156,7 +157,7 @@ Export-PfxCertificate `
 
 4. **[バックエンド ターゲット]** タブで、 **[バックエンド ターゲット]** の **[myBackendPool]** を選択します。
 
-5. **[HTTP 設定]** には **[新規作成]** を選択して新しい HTTP 設定を作成します。 HTTP 設定によって、ルーティング規則の動作が決まります。 開いた **[HTTP 設定の追加]** ウィンドウで、 **[HTTP 設定名]** として「*myHTTPSetting*」と入力します。 **[HTTP 設定の追加]** ウィンドウで他の設定の既定値をそのまま使用し、 **[追加]** を選択して **[ルーティング規則の追加]** ウィンドウに戻ります。 
+5. **[HTTP 設定]** には **[新規追加]** を選択して、新しい HTTP 設定を作成します。 HTTP 設定によって、ルーティング規則の動作が決まります。 開いた **[HTTP 設定の追加]** ウィンドウで、 **[HTTP 設定名]** として「*myHTTPSetting*」と入力します。 **[HTTP 設定の追加]** ウィンドウで他の設定の既定値をそのまま使用し、 **[追加]** を選択して **[ルーティング規則の追加]** ウィンドウに戻ります。 
 
    :::image type="content" source="./media/create-ssl-portal/application-gateway-create-httpsetting.png" alt-text="新しいアプリケーション ゲートウェイの作成: HTTP 設定":::
 
@@ -191,14 +192,14 @@ Export-PfxCertificate `
 
     - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
     - **[仮想マシン名]** : 仮想マシンの名前として「*myVM*」と入力します。
-    - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
+    - **[ユーザー名]** : 管理者ユーザーの名前を入力します。
     - **パスワード**:管理者アカウントのパスワードを入力します。
 1. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
 2. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 3. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。
 
    Application Gateway は、それが存在している仮想ネットワークの外部にあるインスタンスと通信できますが、IP 接続があることを確認する必要があります。
-1. **[管理]** タブで、 **[ブート診断]** を **[オフ]** に設定します。 他の既定値をそのまま使用し、 **[確認および作成]** を選択します。
+1. **[管理]** タブで、 **[ブート診断]** を **[Disable]\(無効\)** に設定します。 他の既定値をそのまま使用し、 **[確認および作成]** を選択します。
 2. **[確認および作成]** タブで、設定を確認し、検証エラーを修正してから、 **[作成]** を選択します。
 3. 続行する前に、デプロイが完了するまで待ちます。
 
@@ -206,11 +207,11 @@ Export-PfxCertificate `
 
 この例では、Azure がアプリケーション ゲートウェイを正常に作成したことを確認するためにのみ、仮想マシンに IIS をインストールします。
 
-1. [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)を開きます。 そのためには、Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
+1. [Azure PowerShell](../cloud-shell/quickstart-powershell.md)を開きます。 そのためには、Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
 
     ![カスタム拡張機能のインストール](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
+2. 環境の場所の設定を変更してから、次のコマンドを実行し、仮想マシンに IIS をインストールします。 
 
    ```azurepowershell-interactive
           Set-AzVMExtension `
@@ -221,7 +222,7 @@ Export-PfxCertificate `
             -ExtensionType CustomScriptExtension `
             -TypeHandlerVersion 1.4 `
             -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-            -Location EastUS
+            -Location <location>
    ```
 
 3. 2 番目の仮想マシンを作成し、お客様が先ほど完了した手順を使用して IIS をインストールします。 仮想マシンの名前と、**Set-AzVMExtension** コマンドレットの **VMName** 設定には、*myVM2* を使用します。
@@ -234,9 +235,11 @@ Export-PfxCertificate `
 
 3. **[myBackendPool]** を選択します。
 
-4. **[ターゲット]** の下のドロップダウン リストで **[仮想マシン]** を選択します。
+4. **[ターゲットの種類]** の下のドロップダウン リストで **[仮想マシン]** を選択します。
 
-5. **[仮想マシン]** と **[ネットワーク インターフェイス]** で、**myVM** 仮想マシンおよび **myVM2** 仮想マシンとそれらの関連するネットワーク インターフェイスをドロップダウン リストから選択します。
+5. **[ターゲット]** の下で、 **[myVM]** のドロップダウン リストからネットワーク インターフェイスを選択します。
+
+6. 繰り返して、**myVM2** のネットワーク インターフェイスを追加します。
 
     ![バックエンド サーバーの追加](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 

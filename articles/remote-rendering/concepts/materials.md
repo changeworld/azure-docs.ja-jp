@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c9de26d9a83319eee62cf6d30cf2c83f66446fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4406e3875bd2d56a33bcc9a94a24ad874fecf8da
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020254"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592179"
 ---
 # <a name="materials"></a>素材
 
@@ -82,6 +82,16 @@ void SetMaterialColorToGreen(ApiHandle<Material> material)
 }
 ```
 
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# Material クラス](/dotnet/api/microsoft.azure.remoterendering.material)
+* [C# ColorMaterial クラス](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# PbrMaterial クラス](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RenderingConnection.CreateMaterial()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
+* [C++ Material クラス](/cpp/api/remote-rendering/material)
+* [C++ ColorMaterial クラス](/cpp/api/remote-rendering/colormaterial)
+* [C++ PbrMaterial クラス](/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RenderingConnection::CreateMaterial()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -17,12 +17,12 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 027bbebaaab0694cfa0157464d47ef2c8e08fbff
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998222"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320571"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>チュートリアル:ユニバーサル Windows プラットフォーム アプリケーションを実行している特定のデバイスに通知を送信する
 
@@ -197,7 +197,7 @@ ms.locfileid: "88998222"
 1. `notifications` クラスを使用してカテゴリに基づいてサブスクライブするには、*App.xaml.cs* ファイルを開き、`InitNotificationsAsync` メソッドを更新します。
 
     ```csharp
-    // *** Remove or comment out these lines ***
+    // *** Remove or comment out these lines **_
     //var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
     //var hub = new NotificationHub("your hub name", "your listen connection string");
     //var result = await hub.RegisterNativeAsync(channel.Uri);
@@ -270,4 +270,4 @@ ms.locfileid: "88998222"
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)

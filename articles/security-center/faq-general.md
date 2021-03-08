@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783216"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341687"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
 
@@ -62,13 +62,12 @@ Azure Security Center で有効になっているセキュリティ ポリシー
 Azure Security Center は、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
 
 * 悪意のあるソフトウェアを識別して削除するためのマルウェア対策をプロビジョニングする
-* 仮想マシンへのトラフィックを制御するための[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)とルール
+* 仮想マシンへのトラフィックを制御するための[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)とルール
 * Web アプリケーションを対象とする攻撃から保護するための Web アプリケーション ファイアウォールをプロビジョニングする
 * 不足しているシステムの更新をデプロイする
 * 推奨基準と一致しない OS 構成に対処する
 
 ここにはセキュリティ ポリシーで有効な推奨事項のみが表示されています。
-
 
 
 ## <a name="what-triggers-a-security-alert"></a>セキュリティの警告をトリガーするものは何ですか。
@@ -78,10 +77,6 @@ Azure Security Center は、Azure のリソース、ネットワーク、パー�
 * Windows エラー報告を使用して検出された高度なマルウェア
 * 仮想マシンに対するブルート フォース攻撃
 * マルウェア対策や Web アプリケーション ファイアウォールなどのセキュリティ ソリューションの統合パートナーからのセキュリティの警告
-
-
-## <a name="why-did-secure-score-values-change"></a>セキュリティ スコア値が変わったのはなぜですか? <a name="secure-score-faq"></a>
-2019 年 2 月の時点で、Security Center では、推奨事項の重大度に合わせて一部の推奨事項のスコアを調整しました。 この調整により、全体的なセキュリティ スコア値が変わる可能性があります。  セキュリティ スコアに関する詳細については、[Azure Security Center の強化されたセキュリティ スコア](secure-score-security-controls.md)に関するページを参照してください。
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Microsoft Security Response Center と Azure Security Center によって検出され、警告される脅威の違いは何ですか。

@@ -6,15 +6,16 @@ documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 3b22105486aabe8d79848d7ac621b9543815d106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d1342cffc6bc8743c34cb4c028c0790de91dc50
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85366987"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965869"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup 用の VM スナップショットの Windows 拡張機能
 

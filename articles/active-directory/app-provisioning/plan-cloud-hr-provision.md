@@ -3,7 +3,7 @@ title: Azure Active Directory ユーザー プロビジョニングのための�
 description: この記事では、Workday や SuccessFactors などのクラウド人事システムを Azure Active Directory と統合するデプロイ プロセスについて説明します。 Azure AD とクラウド人事システムを統合することで、完全な ID ライフサイクル管理システムが実現します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235696"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256713"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -31,7 +31,7 @@ Azure AD では、この統合を利用して、クラウド人事アプリケ�
 - **クラウド人事アプリへの書き戻し:** メール アドレスやユーザー名の属性を Azure AD からクラウド人事アプリに書き戻します。
 
 > [!NOTE]
-> このデプロイ計画は、Azure AD のユーザー プロビジョニングを使用してクラウド人事アプリのワークフローをデプロイする方法を示します。 サービスとしてのソフトウェア (SaaS) アプリへ自動ユーザー プロビジョニングをデプロイする方法については、「[自動ユーザー プロビジョニングのデプロイを計画する](https://aka.ms/deploymentplans/provisioning)」を参照してください。
+> このデプロイ計画は、Azure AD のユーザー プロビジョニングを使用してクラウド人事アプリのワークフローをデプロイする方法を示します。 サービスとしてのソフトウェア (SaaS) アプリへ自動ユーザー プロビジョニングをデプロイする方法については、「[自動ユーザー プロビジョニングのデプロイを計画する](./plan-auto-user-provisioning.md)」を参照してください。
 
 ## <a name="enabled-hr-scenarios"></a>有効な人事シナリオ
 
@@ -50,7 +50,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 - クラウド人事アプリから Active Directory または Azure AD に直接、ユーザーをプロビジョニングする必要がある。
 - クラウド人事アプリから取得したデータを使用してユーザーをプロビジョニングする必要がある。
 - クラウド人事アプリで検出された変更情報のみに基づいて、ユーザーの入社、異動、退職を 1 つ以上の Active Directory フォレスト、ドメイン、または OU と同期する必要がある。
-- メールに Office 365 を使用している。
+- 電子メールに Microsoft 365 を使用する。
 
 ## <a name="learn"></a>学習する
 
@@ -61,14 +61,14 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 この記事では、次の用語を使用しています。
 
 - **ソース システム**:Azure AD のプロビジョニング元である、ユーザーのリポジトリ。 例として、Workday や SuccessFactors などのクラウド人事アプリがあります。
-- **ターゲット システム**:Azure AD のプロビジョニング先である、ユーザーのリポジトリ。 例として、Active Directory、Azure AD、Office 365、その他の SaaS アプリがあります。
+- **ターゲット システム**:Azure AD のプロビジョニング先である、ユーザーのリポジトリ。 例として、Active Directory、Azure AD、Microsoft 365、その他の SaaS アプリがあります。
 - **入社/異動/退職プロセス**:クラウド人事アプリを記録システムとして使用する新規雇用、異動、退職に対して使われる用語。 プロセスが完了するのは、サービスによって必要な属性がターゲット システムに正常にプロビジョニングされた時点です。
 
 ### <a name="key-benefits"></a>主な利点
 
 ここで説明する人事ベースの IT プロビジョニング機能は、次に挙げるような大きなメリットをビジネスにもたらします。
 
-- **生産性の向上:** ユーザー アカウントや Office 365 ライセンスの割り当てを自動化し、重要なグループへのアクセスを提供できるようになります。 割り当ての自動化により、新しい社員は各自の業務ツールにすぐにアクセスできるため、生産性が向上します。
+- **生産性の向上:** ユーザー アカウントや Microsoft 365 ライセンスの割り当てを自動化し、重要なグループへのアクセスを提供できるようになります。 割り当ての自動化により、新しい社員は各自の業務ツールにすぐにアクセスできるため、生産性が向上します。
 - **リスク管理:** クラウド人事アプリとデータをやり取りし、社員の状態またはグループ メンバーシップに基づいて変更を自動化することで、セキュリティを強化できます。 変更を自動化すると、ユーザーが異動または退職したときに、ユーザーの ID と重要なアプリへのアクセスが自動的に更新されるようになります。
 - **コンプライアンスとガバナンスへの対応:** Azure AD は、ソース システムとターゲット システムの両方のアプリによって実行されるユーザー プロビジョニング要求のネイティブ監査ログをサポートします。 監査によって、誰がアプリにアクセスできるかを 1 つの画面から追跡できます。
 - **コスト管理:** 自動プロビジョニングを使用すると、手動プロビジョニングに関連した非効率性や人的エラーを回避することでコストが削減されます。 従来の陳腐化したプラットフォームを使用して、長らく構築されてきた、カスタム開発のユーザー プロビジョニング ソリューションを不要にします。
@@ -81,8 +81,8 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure AD Connect プロビジョニング エージェントを構成するための [Azure AD ハイブリッド ID 管理者](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)。
-- Azure portal でプロビジョニング アプリを構成する[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)ロール
+- Azure AD Connect プロビジョニング エージェントを構成するための [Azure AD ハイブリッド ID 管理者](../roles/permissions-reference.md#hybrid-identity-administrator)。
+- Azure portal でプロビジョニング アプリを構成する[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)ロール
 - クラウド人事アプリのテストおよび運用インスタンス。
 - クラウド人事アプリの管理者権限。システム統合ユーザーを作成したり、テスト目的でテスト用社員データを変更したりするために必要です。
 - Active Directory へのユーザー プロビジョニングの場合、Azure AD Connect プロビジョニング エージェントをホストするために、.NET 4.7.1 以降のランタイムがインストールされた Windows Server 2012 以降を実行しているサーバーが必要です
@@ -110,15 +110,15 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 #### <a name="description-of-workflow"></a>ワークフローの説明
 
-次の主要な手順を図に示します。  
+次の主要な手順を図に示します。  
 
-1. **人事チーム**は、クラウド人事アプリのテナントでトランザクションを実行します。
-2. **Azure AD プロビジョニング サービス**は、スケジュールされたサイクルをクラウド人事アプリのテナントから実行し、Active Directory との同期のために処理する必要がある変更を識別します。
-3. **Azure AD プロビジョニング サービス**は、Active Directory アカウントの作成、更新、有効化、無効化の操作を含む要求ペイロードを使用して、Azure AD Connect プロビジョニング エージェントを呼び出します。
-4. **Azure AD Connect プロビジョニング エージェント**は、サービス アカウントを使用して Active Directory アカウントのデータを管理します。
-5. **Azure AD Connect** は、デルタ[同期](../hybrid/how-to-connect-sync-whatis.md)を実行して Active Directory 内の更新をプルします。
+1. **人事チーム** は、クラウド人事アプリのテナントでトランザクションを実行します。
+2. **Azure AD プロビジョニング サービス** は、スケジュールされたサイクルをクラウド人事アプリのテナントから実行し、Active Directory との同期のために処理する必要がある変更を識別します。
+3. **Azure AD プロビジョニング サービス** は、Active Directory アカウントの作成、更新、有効化、無効化の操作を含む要求ペイロードを使用して、Azure AD Connect プロビジョニング エージェントを呼び出します。
+4. **Azure AD Connect プロビジョニング エージェント** は、サービス アカウントを使用して Active Directory アカウントのデータを管理します。
+5. **Azure AD Connect** は、デルタ [同期](../hybrid/how-to-connect-sync-whatis.md)を実行して Active Directory 内の更新をプルします。
 6. **Active Directory** の更新は、Azure AD と同期されます。
-7. **Azure AD プロビジョニング サービス**は、Azure AD からクラウド人事アプリのテナントにメール属性とユーザー名を書き戻します。
+7. **Azure AD プロビジョニング サービス** は、Azure AD からクラウド人事アプリのテナントにメール属性とユーザー名を書き戻します。
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
@@ -126,7 +126,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](https://aka.ms/deploymentplans)します。 また、プロジェクトの利害関係者のロールを十分に把握していることを確認します。 利害関係者とそのプロジェクト入力と責務を文書化します。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)します。 また、プロジェクトの利害関係者のロールを十分に把握していることを確認します。 利害関係者とそのプロジェクト入力と責務を文書化します。
 
 既存の人事ビジネス プロセスや、社員の ID および職務データの処理要件について意見できる、人事部門の代表者を含めます。
 
@@ -245,7 +245,7 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 
 要件に応じて、Azure AD では、定数値の提供、または[属性マッピングの式の作成](../app-provisioning/functions-for-customizing-application-data.md)によって属性から属性への直接マッピングをサポートします。 この柔軟性により、ターゲット アプリの属性に設定される内容を完全に制御できます。 [Microsoft Graph API](../app-provisioning/export-import-provisioning-configuration.md) と Graph Explorer を使用すると、ユーザー プロビジョニングの属性マッピングとスキーマを JSON ファイルにエクスポートし、それを Azure AD にインポートし直すことができます。
 
-既定では、一意の社員 ID を表すクラウド人事アプリの属性が、*Active Directory の一意の属性にマップされる一致属性*として使用されます。 たとえば、Workday アプリのシナリオでは、**Workday** の **WorkerID** 属性が Active Directory の **employeeID** 属性にマップされます。
+既定では、一意の社員 ID を表すクラウド人事アプリの属性が、*Active Directory の一意の属性にマップされる一致属性* として使用されます。 たとえば、Workday アプリのシナリオでは、**Workday** の **WorkerID** 属性が Active Directory の **employeeID** 属性にマップされます。
 
 複数の一致属性を設定し、一致の優先順位を割り当てることができます。 一致の優先順位に従って評価が行われます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 
@@ -378,7 +378,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 [初期サイクル](../app-provisioning/how-provisioning-works.md#initial-cycle)が正常に完了すると、Azure AD プロビジョニング サービスは、次のいずれかのイベントが発生するまで、チュートリアルで定義された各アプリに固有の間隔で、連続の増分更新を無期限に実行し続けます。
 
-- サービスは手動で停止されます。 [Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) コマンドを使用して、新しい初回サイクルがトリガーされます。
+- サービスは手動で停止されます。 [Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](/graph/api/resources/synchronization-overview) コマンドを使用して、新しい初回サイクルがトリガーされます。
 - 属性マッピングまたはスコープ フィルターの変更によって、新しい初期サイクルがトリガーされます。
 - エラー率が高いため、プロビジョニング プロセスは検査に入ります。 4 週間を超えると、検査は自動的に無効になります。
 
@@ -404,9 +404,9 @@ Azure AD プロビジョニング サービスでは、レポートの生成、�
 
 - [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](application-provisioning-config-problem.md)
 - [アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する](user-provisioning-sync-attributes-for-mapping.md)
-- [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](application-provisioning-config-problem-storage-limit.md)
+- [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](./user-provisioning.md)
 - [Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](application-provisioning-config-problem-no-users-provisioned.md)
-- [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](../manage-apps/add-application-portal-assign-users.md)
 - [エージェントのトラブルシューティングのための Windows イベント ビューアーの設定](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [サービスのトラブルシューティングのための Azure portal 監査ログの設定](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [AD ユーザー アカウントの作成操作のログの概要](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
@@ -416,6 +416,6 @@ Azure AD プロビジョニング サービスでは、レポートの生成、�
 ### <a name="next-steps"></a>次のステップ
 
 - [属性マッピングの式の書き方](functions-for-customizing-application-data.md)
-- [Azure AD 同期 API の概要](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Azure AD 同期 API の概要](/graph/api/resources/synchronization-overview)
 - [スコープ外に出るユーザー アカウントの削除をスキップする](skip-out-of-scope-deletions.md)
 - [Azure AD Connect プロビジョニング エージェント: バージョンのリリース履歴](provisioning-agent-release-version-history.md)」を参照してください

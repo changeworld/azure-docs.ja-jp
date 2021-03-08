@@ -5,24 +5,24 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085091"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632801"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database と Azure Synapse の IP ファイアウォール規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-たとえば、Azure SQL Database または Azure Synapse Analytics 内に *mysqlserver* という名前の新しいサーバーを作成すると、サーバー レベルのファイアウォールによって、そのサーバー (*mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。 簡潔にするため、*SQL Database* という言葉を使用して、SQL Database と Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) の両方を言い表します。
+たとえば、Azure SQL Database または Azure Synapse Analytics 内に *mysqlserver* という名前の新しいサーバーを作成すると、サーバー レベルのファイアウォールによって、そのサーバー (*mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。 わかりやすいように、*SQL Database* という言葉で SQL Database と Azure Synapse Analytics の両方を言い表します。
 
 > [!IMPORTANT]
 > この記事は、*Azure SQL Managed Instance* には適用され "*ません*"。 ネットワーク構成については、「[Azure SQL Managed Instance にアプリケーションを接続する](../managed-instance/connect-application-instance.md)」を参照してください。
@@ -44,13 +44,16 @@ ms.locfileid: "86085091"
 - ポータルまたは PowerShell を使用するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
 - Transact-SQL を使用するには、サーバーレベル プリンシパル ログインまたは Azure Active Directory 管理者として "*マスター*" データベースに接続する必要があります。 (サーバー レベルの IP ファイアウォール規則は、Azure レベルのアクセス許可を持つユーザーが最初に作成する必要があります。)
 
+> [!NOTE]
+> Azure portal から新しい論理 SQL サーバーを作成するとき、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 設定は、既定では **[いいえ]** に設定されます。
+
 ### <a name="database-level-ip-firewall-rules"></a>データベース レベルの IP ファイアウォール規則
 
 データベース レベルの IP ファイアウォール規則により、クライアントは、特定の (セキュリティで保護された) データベースにアクセスできるようになります。 規則は、データベースごと (*master* データベースを含む) に作成し、個々のデータベースに格納されます。
   
 - master データベースとユーザー データベースのデータベース レベルの IP ファイアウォール規則は、Transact-SQL ステートメントを使うことによって、最初のサーバー レベルのファイアウォール規則を構成した後でのみ、作成および管理できます。
 - サーバー レベルの IP ファイアウォール規則の範囲外にあるデータベース レベルの IP ファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。
-- データベースに対し、最大 128 個のデータベース レベルの IP ファイアウォール規則を作成できます。 データベース レベルの IP ファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx)」を参照してください。
+- データベースに対し、最大 128 個のデータベース レベルの IP ファイアウォール規則を作成できます。 データベース レベルの IP ファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)」を参照してください。
 
 ### <a name="recommendations-for-how-to-set-firewall-rules"></a>ファイアウォール規則の設定方法に関する推奨事項
 
@@ -98,7 +101,9 @@ ms.locfileid: "86085091"
 
 ### <a name="connections-from-inside-azure"></a>Azure 内からの接続
 
-Azure 内でホストされているアプリケーションから SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 Azure からアプリケーションがサーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 これは、ファイアウォール ルールを設定し、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 接続が許可されていない場合、要求はサーバーに到達しません。
+Azure 内でホストされているアプリケーションから SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 Azure 接続を有効にするには、開始 IP アドレスと終了 IP アドレスが 0.0.0.0 に設定されているファイアウォール規則が必要です。
+
+Azure のアプリケーションがサーバーに接続しようとすると、ファイアウォールは、このファイアウォール規則の存在を確認することで、Azure 接続が許可されていることを確認します。 これは、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 [オン] に設定すると、**AllowAllWindowsIP** という名前の IP 0.0.0.0 から 0.0.0.0 の受信ファイアウォール規則が作成されます。 ポータルを使用していない場合は、PowerShell または Azure CLI を使用して、開始 IP アドレスと終了 IP アドレスが 0.0.0.0 に設定されたファイアウォール規則を作成します。 
 
 > [!IMPORTANT]
 > このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
@@ -107,18 +112,18 @@ Azure 内でホストされているアプリケーションから SQL Server �
 
 Azure SQL Server の IP ファイアウォール規則を作成して管理できるようにするには、次のいずれかの操作を行う必要があります。
 
-- [SQL Server 共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)ロール
-- [SQL セキュリティ管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)ロール
+- [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロール
+- [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)ロール
 - Azure SQL Server を含むリソースの所有者
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP ファイアウォール規則の作成および管理
 
-最初のサーバー レベルのファイアウォール設定は、[Azure portal](https://portal.azure.com/) を使用するか、プログラムで [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql)、[Azure CLI](https://docs.microsoft.com/cli/azure/sql/server/firewall-rule)、または Azure [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) を使用して作成します。 追加のサーバー レベルの IP ファイアウォール規則を作成して管理するには、これらの方法または Transact-SQL を使用します。
+最初のサーバー レベルのファイアウォール設定は、[Azure portal](https://portal.azure.com/) を使用するか、プログラムで [Azure PowerShell](/powershell/module/az.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule)、または Azure [REST API](/rest/api/sql/firewallrules/createorupdate) を使用して作成します。 追加のサーバー レベルの IP ファイアウォール規則を作成して管理するには、これらの方法または Transact-SQL を使用します。
 
 > [!IMPORTANT]
 > データベース レベルの IP ファイアウォール規則は、Transact-SQL でのみ作成と管理が可能です。
 
-パフォーマンスを向上させるため、サーバー レベルの IP ファイアウォール規則はデータベース レベルで一時的にキャッシュされます。 キャッシュを更新する方法については、「[DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx)」をご覧ください。
+パフォーマンスを向上させるため、サーバー レベルの IP ファイアウォール規則はデータベース レベルで一時的にキャッシュされます。 キャッシュを更新する方法については、「[DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql)」をご覧ください。
 
 > [!TIP]
 > [データベース監査](../../azure-sql/database/auditing-overview.md)を使用して、サーバー レベルおよびデータベース レベルのファイアウォールの変更を監査できます。
@@ -232,10 +237,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | API | Level | 説明 |
 | --- | --- | --- |
-| [ファイアウォール規則の一覧表示](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |サーバー |現在のサーバー レベルの IP ファイアウォール規則を表示する |
-| [ファイアウォール規則の作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |サーバー |サーバー レベルの IP ファイアウォール規則を作成または更新する |
-| [ファイアウォール規則の削除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |サーバー |サーバー レベルの IP ファイアウォール規則を削除する |
-| [ファイアウォール規則の取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | サーバー | サーバー レベルの IP ファイアウォール規則を取得する |
+| [ファイアウォール規則の一覧表示](/rest/api/sql/firewallrules/listbyserver) |サーバー |現在のサーバー レベルの IP ファイアウォール規則を表示する |
+| [ファイアウォール規則の作成または更新](/rest/api/sql/firewallrules/createorupdate) |サーバー |サーバー レベルの IP ファイアウォール規則を作成または更新する |
+| [ファイアウォール規則の削除](/rest/api/sql/firewallrules/delete) |サーバー |サーバー レベルの IP ファイアウォール規則を削除する |
+| [ファイアウォール規則の取得](/rest/api/sql/firewallrules/get) | サーバー | サーバー レベルの IP ファイアウォール規則を取得する |
 
 ## <a name="troubleshoot-the-database-firewall"></a>データベース ファイアウォールのトラブルシューティング
 
@@ -270,7 +275,7 @@ Azure SQL Database に期待どおりにアクセスできない場合は、次�
 ## <a name="next-steps"></a>次のステップ
 
 - 企業ネットワーク環境で、Azure データセンターで使用されるコンピューティング IP アドレス範囲 (SQL 範囲を含む) からの受信通信が許可されていることを確認します。 これらの IP アドレスを許可リストに追加することが必要な場合があります。 [Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください。  
-- サーバー レベルの IP ファイアウォール規則の作成に関するクイックスタートについては、[Azure SQL Database での単一データベースの作成](single-database-create-quickstart.md)に関するページを参照してください。
+- [Azure SQL Database での単一データベースの作成](single-database-create-quickstart.md)に関するクイックスタートを参照してください。
 - オープンソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法のヘルプについては、[Azure SQL Database のクライアント クイックスタート コード サンプル](connect-query-content-reference-guide.md#libraries)に関するページを参照してください。
 - 他に開くことが必要な可能性のあるポートについては、SQL Database の外部と内部に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)に関する記事で参照してください
 - Azure SQL Database のセキュリティの概要については、[データベースの保護](security-overview.md)に関する記事を参照してください。

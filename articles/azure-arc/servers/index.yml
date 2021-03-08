@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure Arc サーバー (プレビュー)
-summary: Azure Arc サーバー
+title: Azure Arc 対応サーバー
+summary: Azure Arc 対応サーバー
 metadata:
-  title: Azure Arc サーバー
+  title: Azure Arc 対応サーバー
   description: Azure でオンプレミスのマシンを管理する方法について説明します
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 02/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: 0d0caca2d51781d899765820d691f88b7ab6f2e9
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763815"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101686378"
 landingContent:
 - title: Azure Arc 対応サーバーを使用してマシンを Azure に接続する
   linkLists:
@@ -22,7 +22,11 @@ landingContent:
     links:
     - text: Azure Arc 対応サーバーとは
       url: overview.md
-  - linkListType: quickstart
+  - linkListType: architecture
+    links:
+    - text: 大規模なデプロイを計画する
+      url: plan-at-scale-deployment.md
+  - linkListType: get-started
     links:
     - text: Azure portal から Azure Arc へのマシンの接続
       url: onboard-portal.md
@@ -30,3 +34,21 @@ landingContent:
       url: onboard-service-principal.md
     - text: PowerShell DSC を使用してマシンを Azure に接続する
       url: onboard-dsc.md
+- title: 10 分間のクイック スタート
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Arc 対応サーバー エージェントをデプロイする
+      url: ./learn/quick-enable-hybrid-vm.md
+- title: 概念実証
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: ジャンプスタート
+      url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_servers/
+- title: 参照アーキテクチャ
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: ハイブリッド サーバーの構成を管理する
+      url: /azure/architecture/hybrid/azure-arc-hybrid-config

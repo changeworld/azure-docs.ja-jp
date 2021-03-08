@@ -1,7 +1,7 @@
 ---
 title: '回帰のチュートリアル: 自動化された ML'
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、自動機械学習を使用して機械学習モデルを生成する方法を学習します。 Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。
+description: 指定したトレーニング データと構成設定に基づいて回帰モデルを生成する自動機械学習実験を作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 884e97815a048d3e37dba57d362d71e72ef5e103
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: f4d26ba6bec8f3e63ba89ed9abae789704a0828b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120849"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184103"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 このチュートリアルでは、Azure Machine Learning の自動機械学習を使用して、ニューヨーク市のタクシー運賃を予測する回帰モデルを作成します。 このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。
 
@@ -39,7 +39,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * まだ Azure Machine Learning ワークスペースとノートブック仮想マシンがない場合は、[セットアップのチュートリアル](tutorial-1st-experiment-sdk-setup.md)を済ませておいてください。
 * セットアップのチュートリアルを完了したら、同じノートブック サーバーを使用して、*tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* ノートブックを開きます。
 
-独自の[ローカル環境](how-to-configure-environment.md#local)で実行したい場合は、このチュートリアルを [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。 `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` を実行して必要なパッケージを取得してください。
+独自の[ローカル環境](how-to-configure-environment.md#local)で実行したい場合は、このチュートリアルを [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。 必要なパッケージを取得するには、 
+* [完全な `automl` クライアントをインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
+* `pip install azureml-opendatasets azureml-widgets` を実行して必要なパッケージを取得してください。
 
 ## <a name="download-and-prepare-data"></a>データのダウンロードと準備
 
@@ -173,7 +175,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>ワークスペースの構成
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、認証の詳細情報が `ws` という名前のオブジェクトに読み込まれます。 `ws` は、このチュートリアルの残りのコード全体で使用されています。
+既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、認証の詳細情報が `ws` という名前のオブジェクトに読み込まれます。 `ws` は、このチュートリアルの残りのコード全体で使用されています。
 
 ```python
 from azureml.core.workspace import Workspace
@@ -208,7 +210,7 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 
 |プロパティ| このチュートリアルの値 |説明|
 |----|----|---|
-|**iteration_timeout_minutes**|2|各イテレーションの分単位での時間制限。 合計実行時間を短縮するには、この値を減らします。|
+|**iteration_timeout_minutes**|10|各イテレーションの分単位での時間制限。 各イテレーションにより多くの時間を必要とする大規模なデータセットの場合は、この値を大きくします。|
 |**experiment_timeout_hours**|0.3|すべてのイテレーションを組み合わせて、実験が終了するまでにかかる最大時間 (時間単位)。|
 |**enable_early_stopping**|True|短期間でスコアが向上していない場合に、早期終了を有効にするフラグ。|
 |**primary_metric**| spearman_correlation | 最適化したいメトリック。 このメトリックに基づいて、最適なモデルが選択されます。|
@@ -220,7 +222,7 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 import logging
 
 automl_settings = {
-    "iteration_timeout_minutes": 2,
+    "iteration_timeout_minutes": 10,
     "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
@@ -253,7 +255,7 @@ automl_config = AutoMLConfig(task='regression',
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, "taxi-experiment")
+experiment = Experiment(ws, "Tutorial-NYCTaxi")
 local_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -300,7 +302,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>結果を検索する
 
-[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用して、自動トレーニングの結果を探索します。 このウィジェットを使用すると、トレーニング精度のメトリックとメタデータと共に、各実行のすべてのイテレーションのグラフと表を確認できます。 さらに、ドロップダウン セレクターを使用して、主なメトリック以外にも、さまざまな精度メトリックを条件としてフィルター処理することができます。
+[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、自動トレーニングの結果を探索します。 このウィジェットを使用すると、トレーニング精度のメトリックとメタデータと共に、各実行のすべてのイテレーションのグラフと表を確認できます。 さらに、ドロップダウン セレクターを使用して、主なメトリック以外にも、さまざまな精度メトリックを条件としてフィルター処理することができます。
 
 ```python
 from azureml.widgets import RunDetails

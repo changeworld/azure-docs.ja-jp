@@ -2,7 +2,7 @@
 title: CentOS VM を Azure AD Domain Services に参加させる | Microsoft Docs
 description: CentOS Linux 仮想マシンを構成して Azure Active Directory Domain Services のマネージド ドメインに参加させる方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
-ms.openlocfilehash: 9eb6a43557da43e8f792bcc3858e7123f2b6c607
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: justinha
+ms.openlocfilehash: 76fc11384b55337f581a74239d4a40b90b284f32
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005159"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619659"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>CentOS Linux 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる
 

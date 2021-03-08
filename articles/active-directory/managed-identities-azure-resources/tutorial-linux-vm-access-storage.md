@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b61d3ed21d053fc7166b47c94a9ec61e355d199
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263163"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131272"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする 
 
@@ -33,9 +33,6 @@ ms.locfileid: "89263163"
 > * ストレージ アカウントに BLOB コンテナーを作成する
 > * Linux VM のマネージド ID に Azure Storage コンテナーへのアクセス権を付与します
 > * アクセス トークン取得し、それを使用して Azure Storage を呼び出す
-
-> [!NOTE]
-> Azure Storage の Azure Active Directory 認証は、パブリック プレビューの段階です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -79,7 +76,10 @@ ms.locfileid: "89263163"
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>VM に Azure Storage コンテナーへのアクセスを許可する 
 
-VM のマネージド ID を使用して、Azure Storage Blob のデータを取得できます。   
+VM のマネージド ID を使用して、Azure Storage Blob のデータを取得できます。
+
+>[!NOTE]
+> ストレージのレビューにアクセス許可を付与するために使用できるさまざまなロールの詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」を参照してください。
 
 1. 新たに作成したストレージ アカウントに戻ります。  
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
@@ -98,7 +98,7 @@ Azure Storage は Azure AD 認証をネイティブにサポートするため�
 次の手順を完了するには、前に作成した VM から行う必要があり、それに接続するには SSH クライアントが必要です。 Windows を使用している場合は、[Windows Subsystem for Linux](/windows/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](~/articles/virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
 
 1. Azure portal で **[Virtual Machines]** にナビゲートして Linux 仮想マシンに移動し、 **[概要]** ページの **[接続]** をクリックします。 VM に接続する文字列をコピーします。
-2. 任意の SSH クライアントを使用して、VM に**接続**します。 
+2. 任意の SSH クライアントを使用して、VM に **接続** します。 
 3. ターミナル ウィンドウで、CURL を使用して、ローカルのマネージド ID エンドポイントに対して Azure Storage のアクセス トークンを取得するよう要求します。
     
     ```bash

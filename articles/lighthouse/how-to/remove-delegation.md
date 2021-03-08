@@ -1,14 +1,14 @@
 ---
 title: 委任へのアクセスを削除する
 description: Azure Lighthouse のためにサービス プロバイダーに委任されたリソースへのアクセスを削除する方法について説明します。
-ms.date: 08/12/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167231"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555777"
 ---
 # <a name="remove-access-to-a-delegation"></a>委任へのアクセスを削除する
 
@@ -21,7 +21,7 @@ ms.locfileid: "88167231"
 
 ## <a name="customers"></a>顧客
 
-サブスクリプションに対して[所有者組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を持つ顧客のテナントのユーザーは、そのサブスクリプション (またはそのサブスクリプション内のリソース グループ) へのサービス プロバイダー アクセスを削除できます。 これを行うには、顧客のテナントのユーザーは、Azure portal の [[サービス プロバイダー]](view-manage-service-providers.md#add-or-remove-service-provider-offers) ページに移動し、 **[サービス プロバイダーのオファー]** 画面でオファーを見つけ、そのオファーの行のごみ箱アイコンを選択します。
+`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客のテナント内のユーザーは、そのサブスクリプション (またはそのサブスクリプション内のリソース グループ) へのサービス プロバイダー アクセスを削除できます。 これを行うには、ユーザーは、Azure portal の [[サービス プロバイダー]](view-manage-service-providers.md#add-or-remove-service-provider-offers) ページに移動し、 **[サービス プロバイダーのオファー]** 画面でオファーを見つけ、そのオファーの行のごみ箱アイコンを選択します。
 
 削除を確定すると、サービス プロバイダーのテナント内のユーザーは、以前に委任されたリソースにアクセスできなくなります。
 
@@ -29,7 +29,7 @@ ms.locfileid: "88167231"
 
 管理テナントのユーザーは、顧客のリソースについての[マネージド サービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)が付与されている場合、委任されたリソースへのアクセスを削除できます。 このロールがサービス プロバイダー ユーザーに割り当てられていない場合は、顧客のテナントのユーザーのみが委任を削除できます。
 
-以下の例は、[オンボード プロセス](onboard-customer.md)中にパラメーター ファイルに含めることができる**マネージド サービスの登録割り当ての削除ロール**を付与する割り当てを示しています。
+以下の例は、[オンボード プロセス](onboard-customer.md)中にパラメーター ファイルに含めることができる **マネージド サービスの登録割り当ての削除ロール** を付与する割り当てを示しています。
 
 ```json
     "authorizations": [ 
@@ -41,7 +41,7 @@ ms.locfileid: "88167231"
     ] 
 ```
 
-このロールは、Azure Marketplace に公開するための[マネージド サービス オファーを作成する](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)ときに、**承認**で選択することもできます。
+このロールは、Azure Marketplace に公開するための [マネージド サービス オファーを作成する](../../marketplace/plan-managed-service-offer.md)ときに、**承認** で選択することもできます。
 
 このアクセス許可を持つユーザーは、次のいずれかの方法で委任を削除できます。
 
@@ -99,3 +99,4 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 - [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)について学習してください。
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。
+- [以前の委任を更新する](update-delegation.md)方法について説明します。

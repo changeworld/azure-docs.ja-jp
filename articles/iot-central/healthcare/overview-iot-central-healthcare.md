@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central を使用したヘルスケア ソリューションの構築 | Microsoft Docs
+title: Azure IoT Central のヘルスケア ソリューションとは | Microsoft Docs
 description: Azure IoT Central アプリケーション テンプレートを使用してヘルスケア ソリューションを構築する方法について説明します。
 author: philmea
 ms.author: philmea
@@ -8,16 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 2aee5c56b267f9243b69a48dfd0f5f64196c5f23
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e8a72195f0fcacce2c994e8770157b05b65d70ee
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77021490"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833152"
 ---
-# <a name="building-healthcare-solutions-with-azure-iot-central"></a>Azure IoT Central を使用したヘルスケア ソリューションの構築 
-
-
+# <a name="what-are-the-iot-central-healthcare-solutions"></a>IoT Central のヘルスケア ソリューションとは
 
 Azure IoT Central でアプリケーション テンプレートを使用してヘルスケア ソリューションを構築する方法について説明します。
 

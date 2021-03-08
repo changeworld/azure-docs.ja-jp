@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6064bd2c62922abea44508b8bf6cdfa3e7ecbc92
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384942"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953306"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C:iOS アプリケーションを使用してサインインする
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 オープンな標準プロトコルを使用すると、開発者がサービスに統合するライブラリを選択する際の選択肢が増えます。 このチュートリアルも、他のチュートリアルと同じように、開発者が、Microsoft ID プラットフォームに接続するアプリケーションの記述を支援するために提供されています。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
 > [!WARNING]
-> Microsoft では、サード パーティ製のライブラリ用の修正プログラムは提供していません。また、これらのライブラリのレビューも実施していません。 このサンプルでは、Azure AD B2C を使用する基本的なシナリオでの互換性がテスト済みである、AppAuth と呼ばれるサード パーティ製のライブラリを使用しています。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。 詳細については、 [こちらの記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)を参照してください。
+> Microsoft では、サード パーティ製のライブラリ用の修正プログラムは提供していません。また、これらのライブラリのレビューも実施していません。 このサンプルでは、Azure AD B2C を使用する基本的なシナリオでの互換性がテスト済みである、AppAuth と呼ばれるサード パーティ製のライブラリを使用しています。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。 詳細については、 [こちらの記事](../active-directory/develop/reference-v2-libraries.md)を参照してください。
 >
 >
 
@@ -46,7 +46,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 Azure AD B2C では、すべてのユーザー エクスペリエンスが[ユーザー フロー](user-flow-overview.md)によって定義されます。 このアプリケーションには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 ユーザー フローを作成するときは、必ず次のようにします。
 
 * **[サインアップ属性]** で、属性 **[表示名]** を選択します。  他の属性を選択することもできます。
-* **[アプリケーション クレーム]** で、要求の**表示名**と**ユーザーのオブジェクト ID** を選択します。 他の要求を選択することもできます。
+* **[アプリケーション クレーム]** で、要求の **表示名** と **ユーザーのオブジェクト ID** を選択します。 他の要求を選択することもできます。
 * ユーザー フローの作成後、各ユーザー フローの **[名前]** をコピーしておきます。 ユーザー フローを保存するときに、ユーザー フロー名の先頭に `b2c_1_` が付加されます。  ユーザー フロー名は後で必要になります。
 
 ユーザー フローを作成したら、アプリを構築できます。

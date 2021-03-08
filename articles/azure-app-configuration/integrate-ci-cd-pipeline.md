@@ -2,18 +2,18 @@
 title: 継続的インテグレーションと継続的デリバリーのパイプラインを使用して Azure App Configuration を統合する
 description: Azure App Configuration を使用して継続的インテグレーションと継続的デリバリーを導入する方法について説明します
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.date: 01/30/2020
-ms.author: lcozzens
-ms.openlocfilehash: f0d1e57c7e212fefc6e17a8170e3b4537b190f60
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 04/19/2020
+ms.author: alkemper
+ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211641"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979846"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD パイプラインとの統合
 
@@ -35,9 +35,9 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
 
 ### <a name="prerequisites"></a>前提条件
 
-ローカルでビルドする場合、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をまだインストールしていない場合は、ダウンロードしてインストールします。
+ローカルでビルドする場合、[Azure CLI](/cli/azure/install-azure-cli) をまだインストールしていない場合は、ダウンロードしてインストールします。
 
-(たとえば Azure DevOps で) クラウド ビルドを実行するには、必ず [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をビルド システムにインストールします。
+(たとえば Azure DevOps で) クラウド ビルドを実行するには、必ず [Azure CLI](/cli/azure/install-azure-cli) をビルド システムにインストールします。
 
 ### <a name="export-an-app-configuration-store"></a>App Configuration ストアをエクスポートする
 
@@ -107,4 +107,4 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
 このチュートリアルでは、Azure App Configuration データをデプロイ パイプラインで使用するためにエクスポートしました。 App Configuration の使用方法の詳細については、Azure CLI のサンプルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

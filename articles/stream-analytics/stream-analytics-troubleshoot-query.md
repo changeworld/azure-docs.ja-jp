@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics のクエリのトラブルシューティング
 description: この記事では、Azure Stream Analytics ジョブのクエリのトラブルシューティングを行う方法について説明します。
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 0dc36b817d5b5cdf731edecd64e1879c153d866a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337808"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015132"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
@@ -32,24 +31,26 @@ ms.locfileid: "87337808"
 
     ![ジョブ ダイアグラムのプレビュー結果](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
-3.  [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) を使用する場合は、イベントのタイムスタンプが[ジョブの開始時刻](stream-analytics-out-of-order-and-late-events.md)より後であることを確認します。
+3.  [**Timestamp By**](/stream-analytics-query/timestamp-by-azure-stream-analytics) を使用する場合は、イベントのタイムスタンプが [ジョブの開始時刻](./stream-analytics-time-handling.md)より後であることを確認します。
 
 4.  よくある次のような問題を解消する。
-    - クエリ内の [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 句がイベントをすべて除外してしまっている。この場合、出力が生成されません。
-    - [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) 関数が失敗したため、ジョブが失敗する。 型キャスト エラーを回避するには、代わりに [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) を使用します。
+    - クエリ内の [**WHERE**](/stream-analytics-query/where-azure-stream-analytics) 句がイベントをすべて除外してしまっている。この場合、出力が生成されません。
+    - [**CAST**](/stream-analytics-query/cast-azure-stream-analytics) 関数が失敗したため、ジョブが失敗する。 型キャスト エラーを回避するには、代わりに [**TRY_CAST**](/stream-analytics-query/try-cast-azure-stream-analytics) を使用します。
     - ウィンドウ関数を使用している場合に、ウィンドウ時間が終わっていない。ウィンドウ時間が完了し、クエリの出力が表示されるのを待つ必要があります。
     - イベントのタイムスタンプがジョブの開始時刻よりも前になっている。イベントがドロップされてしまいます。
-    - [**JOIN**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 条件が一致しない。 どれとも一致しない場合は、出力は 0 個になります。
+    - [**JOIN**](/stream-analytics-query/join-azure-stream-analytics) 条件が一致しない。 どれとも一致しない場合は、出力は 0 個になります。
 
-5.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]** ](stream-analytics-out-of-order-and-late-events.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
+5.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]**](./stream-analytics-time-handling.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
 
 6. アクティビティとリソース ログを使用したデバッグ:
-    - [アクティビティ ログ](../azure-resource-manager/resource-group-audit.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
+    - [アクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
     - [ジョブのリソース ログ](stream-analytics-job-diagnostic-logs.md)を使用してエラーを特定し、デバッグします。
 
 ## <a name="resource-utilization-is-high"></a>リソース使用率が高い
 
 Azure Stream Analytics で並列処理を活用していることを確認します。 入力パーティションの構成と分析クエリ定義のチューニングによって、Stream Analytics ジョブの[クエリ並列処理を使用してスケーリングする](stream-analytics-parallelization.md)ことをお勧めします。
+
+リソース使用率が常に 80% を超え、透かしの遅延が増加し、バックログされたイベントの数が増加している場合は、ストリーミング ユニットを増やすことを検討してください。 使用率が高い場合は、最大数に近い割り当てリソースがジョブによって使用されていることを示します。
 
 ## <a name="debug-queries-progressively"></a>クエリを段階的にデバッグする
 
@@ -103,12 +104,12 @@ Azure Stream Analytics ジョブの次のサンプル クエリには、1 つの
 
 ## <a name="get-help"></a>ヘルプの参照
 
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

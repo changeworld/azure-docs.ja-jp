@@ -1,19 +1,19 @@
 ---
 title: Azure Blockchain Service の概要
 description: Azure Blockchain Service の概要です
-ms.date: 05/22/2020
+ms.date: 01/04/2021
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076955"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963880"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
-Azure Blockchain Service は完全に管理された台帳サービスであり、ユーザーは Azure でブロックチェーン ネットワークの拡張や操作を大規模に行うことができます。 インフラストラクチャの管理とブロックチェーン ネットワークのガバナンスの両方の制御が統一された Azure Blockchain Service では、次のような機能が提供されます。
+Azure Blockchain Service はフル マネージド台帳サービスであり、ユーザーは Azure でブロックチェーン ネットワークの拡張や操作を大規模に行うことができます。 インフラストラクチャの管理とブロックチェーン ネットワークのガバナンスの両方の制御が統一された Azure Blockchain Service では、次のような機能が提供されます。
 
 * ネットワークの簡単なデプロイと運用
 * 組み込みのコンソーシアム管理
@@ -45,7 +45,7 @@ Azure Blockchain Service には、次の 2 つのサービス レベルが用意
 
 さらに、Azure Blockchain Service では、ノードの CPU、メモリ、ストレージの使用状況に関する分析情報を提供する Azure Monitor サービスにより、豊富なメトリックが表示されます。  Azure Monitor ではほかにも、マイニングしたトランザクションとブロック、トランザクションのキューの深さ、アクティブな接続など、ブロックチェーン ネットワークのアクティビティに関する有益な分析情報も確認できます。  メトリックは、ブロックチェーン アプリケーションにとって重要な分析情報のビューを提供するようにカスタマイズできます。  さらに、しきい値を定義し、アラートによってユーザーがメールやテキスト メッセージの送信、ロジック アプリや Azure 関数の実行、カスタム定義 webhook の送信などのアクションをトリガーできるようにすることができます。
 
-![メトリック](./media/overview/metrics.png)
+![ブロック、トランザクション、保留中のトランザクション、および処理された要求の値の監視画面を示す画面キャプチャ。](./media/overview/metrics.png)
 
 Azure Log Analytics により、ユーザーは、Quorum 台帳に関するログや、トランザクション ノードへの接続の試行などの他の重要な情報を表示できます。
 
@@ -77,12 +77,14 @@ Microsoft のエンジニアや Azure Blockchain コミュニティのエキス�
 
 * [Azure Blockchain Service に関する Microsoft Q&A 質問ページ](/answers/topics/azure-blockchain-service.html)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-service)
 
 ## <a name="next-steps"></a>次のステップ
 
 まず最初に、クイック スタートを試すか、以下のリソースで詳細を確認してください。
 * [Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)または [Azure CLI を使用したブロックチェーン メンバーの作成](create-member-cli.md)に関する記事
-* コストの比較と計算ツールについては、[価格のページ](https://azure.microsoft.com/pricing/details/blockchain-service)をご覧ください。
+* Microsoft Learn のパスに従って、[ブロックチェーンの開発を開始する](/learn/paths/ethereum-blockchain-development)
+* [ブロックチェーンの入門シリーズ](https://channel9.msdn.com/Series/Beginners-Series-to-Blockchain)を見る
+* コストの比較と計算ツールの詳細を、[価格のページ](https://azure.microsoft.com/pricing/details/blockchain-service)で確認する
 * [Azure Blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit) を使用して最初のアプリを作成してください
 * Azure Blockchain VSCode 拡張機能の[ユーザー ガイド](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

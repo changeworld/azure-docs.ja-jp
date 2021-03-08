@@ -35,6 +35,10 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
 - name: 概念
   items:
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: キャッシュのしくみ
       href: cdn-how-caching-works.md
     - name: 中国でのコンテンツ配信
@@ -64,6 +68,8 @@
           href: cdn-create-endpoint-how-to.md
         - name: Azure PowerShell を使用した管理
           href: cdn-manage-powershell.md
+        - name: ルートまたは頂点のドメインのオンボード
+          href: onboard-apex-domain.md
         - name: 国またはリージョンごとにアクセスを制限する
           href: cdn-restrict-access-by-country.md
         - name: ファイル圧縮によるパフォーマンスの向上
@@ -88,7 +94,7 @@
           items:
             - name: Azure Web コンテンツ
               href: cdn-manage-expiration-of-cloud-service-content.md
-            - name: Azure BLOB ストレージ
+            - name: Azure Blob Storage
               href: cdn-manage-expiration-of-blob-content.md
         - name: 認証トークン
           href: cdn-token-auth.md
@@ -105,8 +111,8 @@
     - name: 分析
       href: cdn-log-analysis.md
       items:
-        - name: HTTP 生ログ
-          href: enable-raw-logs.md
+        - name: 監視、メトリック、アクセス ログ
+          href: monitoring-and-access-log.md
         - name: Azure Diagnostics ログ
           href: cdn-azure-diagnostic-logs.md
         - name: Azure CDN from Verizon の分析ツール
@@ -187,7 +193,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-cdn.html'
+      href: /answers/topics/azure-cdn.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: 料金計算ツール

@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532589"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209255"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
-この記事では、FTP または FTPS を使用して、Web アプリ、モバイル アプリ バックエンド、または API アプリを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。
+この記事では、FTP または FTPS を使用して、Web アプリ、モバイル アプリ バックエンド、または API アプリを [Azure App Service](./overview.md) にデプロイする方法について説明します。
 
 アプリの FTP/S エンドポイントは既にアクティブです。 FTP/S デプロイを有効にするための構成は必要ありません。
 
@@ -39,7 +39,7 @@ FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンド
 
 ![FTP 情報のコピー](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-アプリごとに一意であるため、**アプリの資格情報**を使用してデプロイすることをお勧めします。 ただし、 **[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
+アプリごとに一意であるため、**アプリの資格情報** を使用してデプロイすることをお勧めします。 ただし、 **[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
 
 > [!NOTE]
 > ユーザーレベルの資格情報を使用した FTP または FTPS エンドポイントの認証には、次の形式のユーザー名が必要です。 
@@ -85,9 +85,18 @@ FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンド
 
 ## <a name="troubleshoot-ftp-deployment"></a>FTP デプロイのトラブルシューティング
 
-- [FTP デプロイをトラブルシューティングするには、どうすればよいですか。](#how-can-i-troubleshoot-ftp-deployment)
-- [FTP 接続してコードを発行できません。問題を解決するには、どうすればよいですか。](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-- [パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+- [FTP/S を使用した Azure App Service へのアプリのデプロイ](#deploy-your-app-to-azure-app-service-using-ftps)
+  - [FTP ダッシュボードを開く](#open-ftp-dashboard)
+  - [FTP の接続情報を取得する](#get-ftp-connection-information)
+  - [ファイルを Azure にデプロイする](#deploy-files-to-azure)
+  - [FTPS を強制する](#enforce-ftps)
+  - [スクリプトで自動化する](#automate-with-scripts)
+  - [FTP デプロイのトラブルシューティング](#troubleshoot-ftp-deployment)
+    - [FTP デプロイをトラブルシューティングするには、どうすればよいですか。](#how-can-i-troubleshoot-ftp-deployment)
+    - [FTP 接続してコードを発行できません。問題を解決するには、どうすればよいですか。](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+    - [パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+  - [次の手順](#next-steps)
+  - [その他のリソース](#more-resources)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>FTP デプロイをトラブルシューティングするには、どうすればよいですか。
 
@@ -102,7 +111,7 @@ FTP デプロイのトラブルシューティングを行うための最初の�
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>FTP 接続してコードを発行できません。 問題を解決するには、どうすればよいですか。
 入力したホスト名と[資格情報](#open-ftp-dashboard)が正しいかどうかを確認してください。 また、使用しているマシン上の次の FTP ポートが、ファイアウォールによってブロックされていないことも確認します。
 
-- FTP コントロール接続ポート: 21
+- FTP コントロール接続ポート: 21、990
 - FTP データ接続ポート: 989、10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。

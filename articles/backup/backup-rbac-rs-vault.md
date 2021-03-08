@@ -1,22 +1,22 @@
 ---
-title: ロールベースのアクセス制御を使用したバックアップの管理
-description: ロールベースのアクセス制御を使用して、Recovery Services コンテナーのバックアップ管理操作へのアクセスを管理します。
+title: Azure ロールベースのアクセス制御を使用してバックアップを管理する
+description: Azure ロールベースのアクセス制御を使用して、Recovery Services コンテナーのバックアップ管理操作へのアクセスを管理します。
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533463"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090881"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
+# <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure ロール ベースのアクセス制御を使用して Azure Backup 復旧ポイントを管理する
 
-Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
+Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 Azure RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 
 > [!IMPORTANT]
-> Azure Backup によって提供されるロールは、Azure portal 内で実行できるアクションか、REST API または Recovery Services コンテナーの PowerShell または CLI コマンドレットを介して実行できるアクションに制限されています。 これらのロールが、Azure Backup エージェント クライアント UI または System Center Data Protection Manager UI または Azure Backup Server UI で実行されるアクションを使用することはできません。
+> Azure Backup によって提供されるロールは、Azure portal 内で実行できるアクションか、REST API または Recovery Services コンテナーの PowerShell または CLI コマンドレットを介して実行できるアクションに制限されています。 Azure Backup エージェント クライアント UI、System Center Data Protection Manager UI、または Azure Backup Server UI で実行されるアクションは、これらのロールの制御の範囲外です。
 
 Azure Backup では、バックアップの管理操作を制御する 3 つの組み込みロールが提供されます。 [Azure の組み込みロール](../role-based-access-control/built-in-roles.md)について説明します
 
@@ -56,7 +56,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録解除 | Backup Contributor | Recovery Services コンテナー |
 
 > [!IMPORTANT]
-> VM 共同作成者を VM リソース スコープで指定し、VM 設定の一部としてバックアップをクリックした場合は、VM が既にバックアップされていても、[バックアップの有効化] 画面が開きます。これは、バックアップ状態を確認するための呼び出しが、サブスクリプション レベルでのみ機能するためです。 これを回避するには、コンテナーに移動して VM のバックアップ項目ビューを開くか、VM 共同作成者ロールをサブスクリプション レベルで指定します。
+> VM リソースのスコープで VM 共同作成者を指定し、VM 設定の一部として **[バックアップ]** を選択すると、その VM が既にバックアップされている場合でも **[バックアップの有効化]** 画面が開きます。 これは、バックアップの状態を確認するための呼び出しがサブスクリプション レベルでしか機能しないためです。 これを回避するには、コンテナーに移動して VM のバックアップ項目ビューを開くか、またはサブスクリプション レベルで VM 共同作成者ロールを指定します。
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure ファイル共有バックアップに使用されるロールの最低要件
 
@@ -77,9 +77,9 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure portal での RBAC の基本について説明します。
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure portal で Azure RBAC の使用を開始します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [ロールベースのアクセス制御のトラブルシューティング](../role-based-access-control/troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
+* [Azure ロールベースのアクセス制御のトラブルシューティング](../role-based-access-control/troubleshooting.md):一般的な問題の修正に関する推奨事項を紹介します。

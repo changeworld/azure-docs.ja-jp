@@ -4,15 +4,15 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 5c2959a1bf6225c164f8538c3c437e464d834b96
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986745"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028280"
 ---
 ## <a name="create-a-ruby-application"></a>Ruby アプリケーションの作成
-手順については、[Microsoft Azure での Ruby アプリケーションの作成](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md) に関するページを参照してください。
+手順については、[Microsoft Azure での Ruby アプリケーションの作成](/previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app) に関するページを参照してください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus を使用するには、Azure Ruby パッケージをダウンロードして使用します。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。

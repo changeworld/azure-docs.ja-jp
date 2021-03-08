@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072657"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570787"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps でマップを使用して XML を変換する
 
@@ -69,7 +69,7 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
 1. **[アセンブリ]** ページが開いたら、 **[追加]** を選択します。
 
-   ![[追加] の選択](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![[アセンブリ] ページの [追加] ボタンが強調して示されているスクリーンショット。](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 アセンブリ ファイルのサイズに基づいて、[最大 2 MB](#smaller-assembly)、または [2 MB を超える最大 8 MB](#larger-assembly) のアセンブリをアップロードする手順を実行します。
 統合アカウント内のアセンブリの数に関する制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)に関するページをご覧ください。

@@ -1,42 +1,47 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: DenseNet アルゴリズムを使用してイメージ分類モデルを作成する方法について説明します。
+description: Azure Machine Learning デザイナーの DenseNet モジュールを使用して、DenseNet アルゴリズムを使ってイメージ分類モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: db0e2f90ee45d4e1c0173cbc037084793a66e149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/26/2020
+ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449986"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421330"
 ---
 # <a name="densenet"></a>DenseNet
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) の **DenseNet** モジュールを使用し、DenseNet アルゴリズムを使ってイメージ分類モデルを作成する方法について説明します。  
+この記事では、Azure Machine Learning デザイナーの **DenseNet** モジュールを使用し、DenseNet アルゴリズムを使ってイメージ分類モデルを作成する方法について説明します。  
 
-この分類アルゴリズムは、教師あり学習手法であり、ラベル付きデータセットが必要となります。 ラベル付きイメージ ディレクトリを取得する方法の手順については、「[イメージ ディレクトリへの変換](convert-to-image-directory.md)」を参照してください。 モデルとラベル付きイメージ ディレクトリを [PyTorch モデルのトレーニング](train-pytorch-model.md)への入力として提供することにより、モデルをトレーニングすることができます。 その後は、トレーニングされたモデルで[画像モデルのスコア付け](score-image-model.md)を使用して、新しい入力例の値を予測することができます。
+この分類アルゴリズムは、教師あり学習手法であり、ラベル付きデータセットが必要となります。 
+
+> [!NOTE]
+> このモジュールは、Studio で *[データのラベル付け]* から生成されたラベル付きデータセットはサポートしておらず、[[イメージ ディレクトリへの変換]](convert-to-image-directory.md) モジュールから生成されたラベル付きイメージ ディレクトリのみサポートしています。 
+
+モデルとラベル付きイメージ ディレクトリを [PyTorch モデルのトレーニング](train-pytorch-model.md)への入力として提供することにより、モデルをトレーニングすることができます。 その後は、トレーニングされたモデルで[画像モデルのスコア付け](score-image-model.md)を使用して、新しい入力例の値を予測することができます。
 
 ### <a name="more-about-densenet"></a>DenseNet の詳細
 
-詳細については、「[Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)」を参照してください。
+DenseNet の詳細については、「[Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)」 (高密度に接続された畳み込みネットワーク) という研究論文を参照してください。
 
 ## <a name="how-to-configure-densenet"></a>DenseNet の構成方法
 
 1.  デザイナーで、**DenseNet** モジュールをパイプラインに追加します。  
 
-2.  **Model name (モデル名)** には、特定の DenseNet 構造の名前を指定します。これは、サポートされている DenseNet、"densenet121"、"densenet161"、"densenet169"、"densenet201" から選択できます。
+2.  **Model name (モデル名)** には、特定の DenseNet 構造の名前を指定します。これは、サポートされている DenseNet である 'densenet121'、'densenet161'、'densenet169'、'densenet201' から選択できます。
 
 3.  **Pretrained (事前トレーニング済み)** には、ImageNet で事前トレーニングされているモデルを使用するかどうかを指定します。 選択した場合は、選択した事前トレーニング済みモデルに基づいてモデルを微調整できます。選択を解除した場合は、ゼロからトレーニングできます。
 
-4.  **Memory efficient (メモリ効率)** には、チェックポイント処理を使用するかどうかを指定します。これは、メモリ効率が大幅に向上しますが、時間がかかります。 詳細については、「 https://arxiv.org/pdf/1707.06990.pdf 」を参照してください。
+4.  **Memory efficient (メモリ効率)** には、チェックポイント処理を使用するかどうかを指定します。これは、メモリ効率が大幅に向上しますが、時間がかかります。 詳細については、「[Memory-Efficient Implementation of DenseNets](https://arxiv.org/pdf/1707.06990.pdf)」 (DenseNets の高メモリ効率の実装) という研究論文を参照してください。
 
-5.  トレーニングと検証のイメージ データセット モジュールである **DenseNet** モジュールの出力を [PyTorch モデルのトレーニング](train-pytorch-model.md)に接続します。 
+5.  トレーニングと検証のイメージ データセット モジュールである **DenseNet** モジュールの出力を [Pytorch モデルのトレーニング](train-pytorch-model.md)に接続します。 
 
 6. パイプラインを送信します。
 
@@ -59,7 +64,7 @@ ms.locfileid: "84449986"
 
 | 名前            | Type                    | 説明                              |
 | --------------- | ----------------------- | ---------------------------------------- |
-| 未トレーニング モデル | UntrainedModelDirectory | PyTorch モデルのトレーニングに接続できる未トレーニングの DenseNet モデル。 |
+| 未トレーニング モデル | UntrainedModelDirectory | Pytorch モデルのトレーニングに接続できる未トレーニングの DenseNet モデル。 |
 
 ## <a name="next-steps"></a>次のステップ
 

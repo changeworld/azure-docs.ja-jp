@@ -1,22 +1,24 @@
 ---
-title: クイック スタート:Custom Vision クライアント ライブラリを使用して物体検出を作成する
-description: クイック スタート:Custom Vision クライアント ライブラリを使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
+title: 'クイックスタート: Custom Vision クライアント ライブラリを使用した物体検出'
+titleSuffix: Azure Cognitive Services
+description: 'クイックスタート: Custom Vision クライアント ライブラリを使用して、物体検出プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/17/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.date: 02/25/2021
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: カスタム ビジョン
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 404e76ec8fe4d874695c77ee18542c7db6665796
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5eb910ed4f7c15a4755dd8f494771a56c4c64230
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919337"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184236"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>クイック スタート:Custom Vision SDK を使用して物体検出プロジェクトを作成する
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>クイックスタート: Custom Vision クライアント ライブラリを使用して物体検出プロジェクトを作成する
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-tutorial-od.md)]

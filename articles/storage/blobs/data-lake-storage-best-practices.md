@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0efcdfd1b14479edf84dc1892e7e1d9afabd5a81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104879"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913557"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス
 
@@ -21,7 +21,7 @@ ms.locfileid: "86104879"
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-Azure Data Lake Storage Gen2 には、Azure Active Directory (Azure AD) のユーザー、グループ、およびサービス プリンシパル用の POSIX アクセス制御が用意されています。 これらのアクセス制御は既存のファイルやディレクトリに設定できます。 アクセス制御は、新しいファイルやディレクトリに自動的に適用できる既定のアクセス許可を作成するためにも使用できます。 Data Lake Storage Gen2 の ACL の詳細については、「[Access control in Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md)」(Azure Data Lake Storage Gen2 のアクセス制御) を参照してください。
+Azure Data Lake Storage Gen2 には、Azure Active Directory (Azure AD) のユーザー、グループ、およびサービス プリンシパル用の POSIX アクセス制御が用意されています。 これらのアクセス制御は既存のファイルやディレクトリに設定できます。 アクセス制御は、新しいファイルやディレクトリに自動的に適用できる既定のアクセス許可を作成するためにも使用できます。 Data Lake Storage Gen2 の ACL の詳細については、「[Access control in Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md)」(Azure Data Lake Storage Gen2 のアクセス制御) を参照してください。
 
 ### <a name="use-security-groups-versus-individual-users"></a>セキュリティ グループの使用と個々のユーザーの違い
 
@@ -41,7 +41,7 @@ Azure Active Directory のサービス プリンシパルは、一般的に Azur
 
 Data Lake Storage Gen2 には、ファイアウォールを有効にして、アクセスを Azure のサービスに限定するオプションが用意されており、外部からの攻撃ベクターを制限するためにお勧めです。 ストレージ アカウントのファイアウォールは、Azure portal の **[ファイアウォール]**  >  **[ファイアウォールを有効にする] を [オン]**  >  **[Azure サービスへのアクセスを許可]** オプションで有効にすることができます。
 
-Azure Databricks からご利用のストレージ アカウントにアクセスするには、Azure Databricks をご利用の仮想ネットワークにデプロイしてから、その仮想ネットワークをご利用のファイアウォールに追加します。 「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)」を参照してください。
+Azure Databricks からご利用のストレージ アカウントにアクセスするには、Azure Databricks をご利用の仮想ネットワークにデプロイしてから、その仮想ネットワークをご利用のファイアウォールに追加します。 「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../common/storage-network-security.md)」を参照してください。
 
 ## <a name="resiliency-considerations"></a>回復性に関する考慮事項
 

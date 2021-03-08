@@ -5,10 +5,10 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83123681"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
@@ -42,7 +42,7 @@ Azure の関数のデプロイの単位は関数アプリです。 関数アプ�
 
 3. GitHub で、 **[Authorize AzureAppService]\(AzureAppService を承認する\)** を選択します。
 
-    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service を承認する":::
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service 管理者用センター":::
 
     GitHub パスワードを入力し、 **[続行]** を選択します。
 
@@ -55,7 +55,7 @@ Azure の関数のデプロイの単位は関数アプリです。 関数アプ�
 
 5. 指定したソース管理オプションに固有の情報を構成します。 GitHub では、 **[Organization]\(組織\)** 、 **[Repository]\(リポジトリ\)** 、および **[Branch]\(ブランチ\)** の値を入力または選択する必要があります。 値は、お客様のコードの場所によって決まります。 その後、 **[続行]** を選択します。
 
-    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="GitHub を構成する":::
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Azure App Service 管理者用センター":::
 
 6. すべての詳細を確認し、 **[完了]** を選択してデプロイ構成を完了します。
 

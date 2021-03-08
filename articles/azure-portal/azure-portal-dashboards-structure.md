@@ -1,30 +1,21 @@
 ---
-title: Azure ダッシュボードの構造 | Microsoft Docs
+title: Azure ダッシュボードの構造
 description: ダッシュボードの例を使用して、Azure ダッシュボードの JSON 構造について説明します。 リソース プロパティへの参照が含まれています。
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: mtillman
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 12/20/2019
-ms.author: mblythe
-ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d37e2fd9c9f6ef6e7ddea6dea002f26f20cd66a7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81459221"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745963"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造
 このドキュメントでは、次のダッシュボードを例として、Azure のダッシュボードの構造を説明します。
 
 ![サンプルのダッシュボード](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-共有 [Azure ダッシュボードは、リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)であるため、このダッシュボードを JSON として表すことができます。  次の JSON は、上記のダッシュボードを視覚化したものです。
+共有 [Azure ダッシュボードは、リソース](../azure-resource-manager/management/overview.md)であるため、このダッシュボードを JSON として表すことができます。  次の JSON は、上記のダッシュボードを視覚化したものです。
 
 ```json
 
@@ -303,7 +294,7 @@ Azure リソース ID、[Azure リソースの名前付け規則](/azure/archite
 すべてのダッシュボードは、__Microsoft.Portal/dashboards__ の型です。
 
 ### <a name="the-location-property"></a>場所プロパティ
-他のリソースとは異なり、ダッシュボードにはランタイム コンポーネントがありません。  ダッシュボードの場合、場所は、ダッシュボードの JSON 表現を格納するプライマリ地理的場所を示します。 値は、[サブスクリプション リソースの場所 API](https://docs.microsoft.com/rest/api/resources/subscriptions) を使用してフェッチできる場所コードの 1 つです。
+他のリソースとは異なり、ダッシュボードにはランタイム コンポーネントがありません。  ダッシュボードの場合、場所は、ダッシュボードの JSON 表現を格納するプライマリ地理的場所を示します。 値は、[サブスクリプション リソースの場所 API](/rest/api/resources/subscriptions) を使用してフェッチできる場所コードの 1 つです。
 
 ### <a name="the-tags-property"></a>タグ プロパティ
 タグは、任意の名前値のペア別にリソースを整理するための Azure リソース共通の機能です。 ダッシュボードには、__非表示タイトル__ と呼ばれる特別なタグがあります。 ダッシュボードにこのプロパティが設定されている場合は、ポータルのダッシュボードの表示名として使用されます。 Azure リソース ID の名前は変更できませんが、タグ名は変更できます。 このタグを使用することにより、名前変更可能な表示名をダッシュボードで使用できます。
@@ -329,7 +320,7 @@ __位置__ プロパティには、__x__、__y__、__rowSpan__、および __col
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![グリッド単位](./media/azure-portal-dashboards-structure/grid-units.png)
+![スクリーンショットには、1 つの四角いグリッド単位が強調表示されたグリッドがクローズ アップされています。](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>メタデータ オブジェクト
 各パーツにはメタデータ プロパティがあり、オブジェクトには __型__ と呼ばれる必須プロパティが 1 つのみあります。 この文字列は、ポータルに、どのタイルを表示するかを規定します。 このダッシュボードの例では、次の種類のタイルを使用します。

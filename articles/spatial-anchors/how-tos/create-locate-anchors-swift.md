@@ -1,19 +1,19 @@
 ---
 title: Swift でアンカーを作成および配置する
 description: Swift で Azure Spatial Anchors を使用してアンカーを作成して配置する方法の詳細な説明。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f72e648d8f7cba0af01e7f87827d38368dba698d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5cff1368380980d3bf73de6a7399f8c53b62bed6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74277318"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96024114"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>Swift で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -43,7 +43,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-[ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) クラスの詳細を確認してください。
+[ASACloudSpatialAnchorSession](/objectivec/api/spatial-anchors/asacloudspatialanchorsession) クラスの詳細を確認してください。
 
 ```swift
     var _cloudSession : ASACloudSpatialAnchorSession? = nil
@@ -53,7 +53,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-[ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) クラスの詳細を確認してください。
+[ASASessionConfiguration](/objectivec/api/spatial-anchors/asasessionconfiguration) クラスの詳細を確認してください。
 
 ```swift
     _cloudSession!.configuration.accountKey = "MyAccountKey"
@@ -67,7 +67,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-[tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) プロトコル メソッドの詳細を確認してください。
+[tokenRequired](/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) プロトコル メソッドの詳細を確認してください。
 
 ```swift
     internal func tokenRequired(_ cloudSession:ASACloudSpatialAnchorSession!, _ args:ASATokenRequiredEventArgs!) {
@@ -121,7 +121,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
-[start](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) メソッドの詳細を確認してください。
+[start](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) メソッドの詳細を確認してください。
 
 ```swift
     _cloudSession!.session = self.sceneView.session;
@@ -131,7 +131,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-[processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) メソッドの詳細を確認してください。
+[processFrame](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) メソッドの詳細を確認してください。
 
 ```swift
     _cloudSession?.processFrame(self.sceneView.session.currentFrame)
@@ -139,7 +139,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-[sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) プロトコル メソッドの詳細を参照してください。
+[sessionUpdated](/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) プロトコル メソッドの詳細を参照してください。
 
 ```swift
     internal func sessionUpdated(_ cloudSession:ASACloudSpatialAnchorSession!, _ args:ASASessionUpdatedEventArgs!) {
@@ -153,7 +153,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-[ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) クラスの詳細を確認してください。
+[ASACloudSpatialAnchor](/objectivec/api/spatial-anchors/asacloudspatialanchor) クラスの詳細を確認してください。
 
 ```swift
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -182,7 +182,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-[getStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) メソッドの詳細を確認してください。
+[getStatusWithCompletionHandler](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) メソッドの詳細を確認してください。
 
 ```swift
     _cloudSession?.getStatusWithCompletionHandler( { (value:ASASessionStatus, error:Error?) in
@@ -199,7 +199,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-[appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) プロパティの詳細を確認してください。
+[appProperties](/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) プロパティの詳細を確認してください。
 
 ```swift
     var cloudAnchor : ASACloudSpatialAnchor? = nil
@@ -213,7 +213,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-[updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) メソッドの詳細を確認してください。
+[updateAnchorProperties](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) メソッドの詳細を確認してください。
 
 ```swift
     var anchor : ASACloudSpatialAnchor? = /* locate your anchor */;
@@ -227,7 +227,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-[getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) メソッドの詳細を参照してください。
+[getAnchorProperties](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) メソッドの詳細を参照してください。
 
 ```swift
     _cloudSession?.getAnchorProperties("anchorId", withCompletionHandler: { (anchor:SCCCloudSpatialAnchor?, error:Error?) in
@@ -246,7 +246,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-[expiration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) プロパティの詳細を確認してください。
+[expiration](/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) プロパティの詳細を確認してください。
 
 ```swift
     let secondsInAWeek = 60.0 * 60.0 * 24.0 * 7.0
@@ -256,7 +256,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-[createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) メソッドの詳細を確認してください。
+[createWatcher](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) メソッドの詳細を確認してください。
 
 ```swift
     let criteria = ASAAnchorLocateCriteria()!
@@ -266,7 +266,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-[anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) プロトコル メソッドの詳細を確認してください。
+[anchorLocated](/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) プロトコル メソッドの詳細を確認してください。
 
 ```swift
     internal func anchorLocated(_ cloudSession: ASACloudSpatialAnchorSession!, _ args: ASAAnchorLocatedEventArgs!) {
@@ -294,7 +294,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-[delete](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) メソッドの詳細を確認してください。
+[delete](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) メソッドの詳細を確認してください。
 
 ```swift
     _cloudSession?.delete(cloudAnchor!, withCompletionHandler: { (error: Error?) in
@@ -304,7 +304,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-[stop](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) メソッドの詳細を確認してください。
+[stop](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) メソッドの詳細を確認してください。
 
 ```swift
     _cloudSession!.stop()
@@ -312,7 +312,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-[reset](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) メソッドの詳細を確認してください。
+[reset](/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) メソッドの詳細を確認してください。
 
 ```swift
     _cloudSession!.reset()

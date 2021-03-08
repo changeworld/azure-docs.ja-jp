@@ -1,35 +1,35 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用してストレージ内のデータに対してクエリを実行する
-description: この記事では、Azure Synapse Analytics 内の SQL オンデマンド (プレビュー) リソースを使用して、Azure のストレージに対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プールを使用してデータ ストレージにクエリを実行する
+description: この記事では、Azure Synapse Analytics 内のサーバーレス SQL プール リソースを使用して、Azure のストレージに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489743"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675041"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してストレージ ファイルにクエリを実行する
 
-SQL オンデマンド (プレビュー) を使用すると、データ レイク内のデータに対してクエリを実行できます。 これには、半構造化と非構造化のデータのクエリに対応する T-SQL クエリ領域が用意されています。 クエリでは、次の T-SQL の側面がサポートされています。
+サーバーレス SQL プールを使用すると、データ レイク内のデータに対してクエリを実行できます。 これには、半構造化と非構造化のデータのクエリに対応する T-SQL クエリ領域が用意されています。 クエリでは、次の T-SQL の側面がサポートされています。
 
-- 大部分の [SQL 関数と演算子](overview-features.md)を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 領域。
+- 大部分の [SQL 関数と演算子](overview-features.md)を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) 領域。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) は、[外部テーブル](develop-tables-external-tables.md)を作成し、次に並行して、Transact-SQL SELECT ステートメントの結果を Azure Storage にエクスポートします。
 
-現在サポートされているものとされていないものの詳細については、[SQL オンデマンドの概要](on-demand-workspace-overview.md)に関する記事、または以下の記事をご覧ください。
+現在サポートされているものとされていないものの詳細については、[サーバーレス SQL プールの概要](on-demand-workspace-overview.md)に関する記事、または以下の記事をご覧ください。
 - [ストレージ アクセスの開発](develop-storage-files-overview.md)に関する記事では、[外部テーブル](develop-tables-external-tables.md)と [OPENROWSET](develop-openrowset.md) 関数を使用してストレージからデータを読み取る方法について説明しています。
 - [ストレージ アクセスの制御](develop-storage-files-storage-access-control.md)に関する記事では、SAS 認証を使用するか、ワークスペースのマネージド ID を使用して、Synapse SQL からストレージにアクセスできるようにする方法について説明しています。
 
 ## <a name="overview"></a>概要
 
-Azure Storage ファイルに格納されているデータに対するインプレース クエリのスムーズな実行をサポートするために、SQL オンデマンドでは、次の追加機能を持つ [OPENROWSET](develop-openrowset.md) 関数が使用されます。
+Azure Storage ファイルに格納されているデータに対するインプレース クエリのスムーズな実行をサポートするために、サーバーレス SQL プールでは、次の追加機能を備えた [OPENROWSET](develop-openrowset.md) 関数が使用されます。
 
 - [複数のファイルまたはフォルダーに対してクエリを実行する](#query-multiple-files-or-folders)
 - [PARQUET ファイル形式](#query-parquet-files)
@@ -47,7 +47,7 @@ Parquet ソース データに対してクエリを実行するには、FORMAT =
 ```syntaxsql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 使用例については、[Parquet ファイルに対するクエリの実行](query-parquet-files.md)に関する記事を参照してください。
@@ -59,7 +59,7 @@ CSV ソース データに対してクエリを実行するには、FORMAT = 'CS
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 解析規則をカスタム CSV 形式に合わせて調整するために使用できる追加オプションがいくつかあります。
@@ -85,7 +85,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolde
 WITH (
       C1 int, 
       C2 varchar(20),
-      C3 as varchar(max)
+      C3 varchar(max)
 ) as rows
 ```
 
@@ -146,7 +146,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>複合型と入れ子または繰り返しのデータ構造を操作する
 
-([Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) ファイルなどの) 入れ子または繰り返しのデータ型に格納されているデータのスムーズな操作を可能にするために、SQL オンデマンドに次の拡張機能が追加されています。
+([Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) ファイルなどの) 入れ子または繰り返しのデータ型に格納されているデータのスムーズな操作を可能にするために、サーバーレス SQL プールに次の拡張機能が追加されています。
 
 #### <a name="project-nested-or-repeated-data"></a>入れ子にされたデータまたは繰り返しのデータを射影する
 
@@ -184,21 +184,21 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 - 関数では、入れ子にされた型グループに含まれていないすべての Parquet の型について、指定した要素から、および指定したパスで、int、decimal、varchar などのスカラー値が返されます。
 - パスが、入れ子にされた型の要素を指している場合、関数は、指定されたパスの先頭の要素から始まる JSON フラグメントを返します。 JSON フラグメントの型は varchar(8000) です。
 - 指定された column_name でプロパティが見つからない場合、関数はエラーを返します。
-- 指定された column_path でプロパティが見つからない場合、[パス モード](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)に応じて、関数は、strict モードのときはエラーを、lax モードのときには null を返します。
+- 指定された column_path でプロパティが見つからない場合、[パス モード](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE)に応じて、関数は、strict モードのときはエラーを、lax モードのときには null を返します。
 
 クエリのサンプルについては、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#read-properties-from-nested-object-columns)に関する記事の「入れ子にされた列から要素にアクセスする」セクションを参照してください。
 
 #### <a name="access-elements-from-repeated-columns"></a>繰り返される列から要素にアクセスする
 
-配列やマップの要素など、繰り返される列から要素にアクセスするには、射影する必要があるすべてのスカラー要素に対して [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を使用し、次を指定します。
+配列やマップの要素など、繰り返される列から要素にアクセスするには、射影する必要があるすべてのスカラー要素に対して [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) 関数を使用し、次を指定します。
 
 - 最初のパラメーターとして、入れ子にされた、または繰り返される列
-- 2 番目のパラメーターとして、アクセスする要素またはプロパティを指定する [JSON パス](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- 2 番目のパラメーターとして、アクセスする要素またはプロパティを指定する [JSON パス](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)
 
-繰り返される列から非スカラー要素にアクセスするには、射影する必要があるすべての非スカラー要素に対して [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を使用し、次を指定します。
+繰り返される列から非スカラー要素にアクセスするには、射影する必要があるすべての非スカラー要素に対して [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) 関数を使用し、次を指定します。
 
 - 最初のパラメーターとして、入れ子にされた、または繰り返される列
-- 2 番目のパラメーターとして、アクセスする要素またはプロパティを指定する [JSON パス](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- 2 番目のパラメーターとして、アクセスする要素またはプロパティを指定する [JSON パス](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)
 
 次の構文フラグメントをご覧ください。
 
@@ -222,13 +222,13 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 ### <a name="tools"></a>ツール
 
 クエリを発行するために必要なツール:
-    - Azure Synapse Studio (プレビュー)
+    - Azure Synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 
 ### <a name="demo-setup"></a>デモのセットアップ
 
-最初の手順として、クエリを実行する**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 
+最初の手順として、クエリを実行する **データベースを作成** します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 
 
 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルでデータの読み取りに使用される外部ファイル形式が作成されます。
 

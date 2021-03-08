@@ -1,24 +1,24 @@
 ---
 title: ストレージの自動拡張 - Azure PowerShell - Azure Database for MySQL
 description: この記事では、PowerShell を使用して Azure Database for MySQL のストレージの自動拡張を有効にする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d355e7557ff38c52872a89941025d33d01bd92d8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e8c9f6f66e484fbd9ebe5c15934936d6e5c59073
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503312"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542033"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>PowerShell を使用した Azure Database for MySQL サーバーのストレージの自動拡張
 
 この記事では、Azure Database for MySQL サーバーのストレージを、ワークロードに影響を与えることなく拡張されるように構成する方法について説明します。
 
-ストレージの自動拡張により、サーバーの[ストレージ制限に達する](/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit)ことで読み取り専用になることを防ぎます。 プロビジョニングされたストレージが 100 GB 以上のサーバーでは、空き領域が10% を下回ると、サイズが 5 GB 増加します。 プロビジョニングされたストレージが 100 GB を超えるサーバーの場合、空き領域が 10 GB を下回ると、サイズが 5% 増加します。 [Azure Database for MySQL 価格レベル](/azure/mysql/concepts-pricing-tiers#storage)の [ストレージ] セクションで指定したストレージの最大制限が適用されます。
+ストレージの自動拡張により、サーバーの[ストレージ制限に達する](./concepts-pricing-tiers.md#reaching-the-storage-limit)ことで読み取り専用になることを防ぎます。 プロビジョニングされたストレージが 100 GB 以上のサーバーでは、空き領域が10% を下回ると、サイズが 5 GB 増加します。 プロビジョニングされたストレージが 100 GB を超えるサーバーの場合、空き領域が 10 GB を下回ると、サイズが 5% 増加します。 [Azure Database for MySQL 価格レベル](./concepts-pricing-tiers.md#storage)の [ストレージ] セクションで指定したストレージの最大制限が適用されます。
 
 > [!IMPORTANT]
 > ストレージはスケールアップのみ可能で、スケールダウンはできないことに注意してください。

@@ -5,22 +5,22 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071161"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936789"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
 この記事では、PowerShell を使用して Azure Functions を作成する方法について詳しく説明します。
 
-PowerShell Azure 関数 (関数) は、トリガーされた時点で実行される PowerShell スクリプトとして表されます。 それぞれの関数スクリプトには、関連する `function.json` ファイルが存在し、関数の動作 (トリガー方法や入力および出力パラメーターなど) が定義されています。 詳細については、[トリガーとバインディングに関する記事](functions-triggers-bindings.md)を参照してください。 
+PowerShell Azure Functions (関数) は、トリガーされた時点で実行される PowerShell スクリプトとして表されます。 それぞれの関数スクリプトには、関連する `function.json` ファイルが存在し、関数の動作 (トリガー方法や入力および出力パラメーターなど) が定義されています。 詳細については、[トリガーとバインディングに関する記事](functions-triggers-bindings.md)を参照してください。 
 
 他の種類の関数と同様、PowerShell スクリプト関数も、`function.json` ファイルで定義されているすべての入力バインディングの名前に対応したパラメーターを受け入れます。 また、関数を開始したトリガーに関する追加情報を含む `TriggerMetadata` パラメーターも渡されます。
 
-この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 また、[Functions の PowerShell 向けクイックスタート](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)で、初めての PowerShell 関数を作成しておく必要があります。
+この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 また、[Functions の PowerShell 向けクイックスタート](./create-first-function-vs-code-powershell.md)で、初めての PowerShell 関数を作成しておく必要があります。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -143,7 +143,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 * `PipelineVariable`
 * `OutVariable` 
 
-詳細については、「[About CommonParameters (共通パラメーターについて)](https://go.microsoft.com/fwlink/?LinkID=113216)」を参照してください。
+詳細については、「[About CommonParameters (共通パラメーターについて)](/powershell/module/microsoft.powershell.core/about/about_commonparameters)」を参照してください。
 
 #### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding の例: HTTP 応答
 
@@ -246,7 +246,7 @@ PowerShell 関数におけるログは、通常の PowerShell のログと同様
 
 ### <a name="configure-the-function-app-log-level"></a>関数アプリのログ レベルの構成
 
-Azure Functions では、しきい値レベルを定義することで、関数によるログへの書き込み方法を簡単に制御することができます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、[`host.json` ファイル][host.json]の `logging.logLevel.default` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。
+Azure Functions では、しきい値レベルを定義することで、関数によるログへの書き込み方法を簡単に制御することができます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、[`host.json` ファイル][host.json referenceの  プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。
 
 次の例では、すべての関数の詳細ログが有効になるようしきい値を設定しますが、`MyFunction` という名前の関数についてはデバッグ ログが有効になるようしきい値を設定しています。
 
@@ -261,7 +261,7 @@ Azure Functions では、しきい値レベルを定義することで、関数�
 }  
 ```
 
-詳細については、[host.json] のリファレンスを参照してください。
+詳細については、[host.json reference] のリファレンスを参照してください。
 
 ### <a name="viewing-the-logs"></a>ログの表示
 
@@ -418,11 +418,11 @@ PowerShell Core 6 から PowerShell 7 にアップグレードできるように
 
 1. [Azure portal](https://portal.azure.com) で、関数アプリに移動します。
 
-1. **[設定]** で **[構成]** を選択します。 **[全般設定]** タブで、**PowerShell のバージョン**を探します。 
+1. **[設定]** で **[構成]** を選択します。 **[全般設定]** タブで、**PowerShell のバージョン** を探します。 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="関数アプリで使用される PowerShell のバージョンを選択する"::: 
 
-1. 目的の **PowerShell Core のバージョン**を選択し、 **[保存]** を選択します。 再起動の保留に関する警告が表示されたら、 **[続行]** を選択します。 関数アプリは、選択した PowerShell のバージョンで再起動します。 
+1. 目的の **PowerShell Core のバージョン** を選択し、 **[保存]** を選択します。 再起動の保留に関する警告が表示されたら、 **[続行]** を選択します。 関数アプリは、選択した PowerShell のバージョンで再起動します。 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -560,7 +560,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 この環境変数は、関数アプリの[アプリ設定](functions-app-settings.md)で設定します。
 
-使い方によっては、Durable Functions によってスケーラビリティが大幅に向上する場合があります。 詳細については、[Durable Functions のアプリケーション パターン](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)に関する記事を参照してください。
+使い方によっては、Durable Functions によってスケーラビリティが大幅に向上する場合があります。 詳細については、[Durable Functions のアプリケーション パターン](./durable/durable-functions-overview.md?tabs=powershell#application-patterns)に関する記事を参照してください。
 
 >[!NOTE]
 > "使用可能な実行空間がないため、要求がキューに置かれています" という警告が表示される場合がありますが、これはエラーではありません。 このメッセージは、要求がキューに登録されていて、前の要求が完了したときに処理されることを通知するものです。
@@ -649,11 +649,11 @@ PowerShell 関数を使用するときは、以下のセクションに記載さ
 
 ### <a name="cold-start"></a>コールド スタート
 
-[サーバーレス ホスティング モデル](functions-scale.md#consumption-plan)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 "*コールド スタート*" とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
+[サーバーレス ホスティング モデル](consumption-plan.md)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 "*コールド スタート*" とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>`Install-Module` を使用せずにモジュールをバンドルする
 
-スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan)に関数アプリをデプロイすることを検討してください。
+スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](dedicated-plan.md)、または [Premium プラン](functions-premium-plan.md)に関数アプリをデプロイすることを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

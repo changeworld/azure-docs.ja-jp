@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513285"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617257"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイントを使用する
 
@@ -46,18 +46,22 @@ VNet 内のアプリケーションは、プライベート エンドポイン�
 
 既定でパブリック エンドポイント経由のアクセスを拒否するように[ストレージ ファイアウォールを構成する](storage-network-security.md#change-the-default-network-access-rule)ことにより、VNet からの接続のみを受け入れるようにストレージ アカウントをセキュリティで保護することができます。 ストレージ ファイアウォールはパブリック エンドポイント経由のアクセスのみを制御するため、プライベート エンドポイントを持つ VNet からのトラフィックを許可するファイアウォール規則は必要ありません。 代わりに、プライベート エンドポイントは、ストレージ サービスへのアクセスをサブネットに許可するための同意フローに依存します。
 
+> [!NOTE]
+> ストレージ アカウント間で BLOB をコピーする場合、クライアントは、両方のアカウントへのネットワーク アクセスを持っている必要があります。 そのため、1 つのアカウント (送信元または送信先) にのみプライベート リンクを使用する場合は、クライアントが他のアカウントへのネットワーク アクセスを持っていることをご確認ください。 ネットワーク アクセスを構成するその他の方法の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](storage-network-security.md?toc=/azure/storage/blobs/toc.json)」を参照してください。 
+
 ### <a name="private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイント
 
 プライベート エンドポイントを作成するときは、ストレージ アカウントと、その接続先のストレージ サービスを指定する必要があります。 アクセスする必要があるストレージ アカウント内のストレージ サービス (つまり、[BLOB](../blobs/storage-blobs-overview.md)、[Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[Files](../files/storage-files-introduction.md)、[キュー](../queues/storage-queues-introduction.md)、[Table](../tables/table-storage-overview.md)、または[静的な Web サイト](../blobs/storage-blob-static-website.md)) ごとに別々のプライベート エンドポイントが必要です。
 
 > [!TIP]
 > RA-GRS アカウントでの読み取りパフォーマンスを向上させるために、ストレージ サービスのセカンダリ インスタンスに対して別個のプライベート エンドポイントを作成します。
+> 必ず汎用 v2 (Standard または Premium) ストレージ アカウントを作成してください。
 
-geo 冗長ストレージ向けに構成されているストレージ アカウントを使用してセカンダリ リージョンに読み取りアクセスするには、サービスのプライマリ インスタンスとセカンダリ インスタンスの両方に、別々のプライベート エンドポイントが必要です。 **フェールオーバー**用のセカンダリ インスタンスのプライベート エンドポイントを作成する必要はありません。 プライベート エンドポイントは、フェールオーバー後、新しいプライマリ インスタンスに自動的に接続されます。 ストレージ冗長オプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
+geo 冗長ストレージ向けに構成されているストレージ アカウントを使用してセカンダリ リージョンに読み取りアクセスするには、サービスのプライマリ インスタンスとセカンダリ インスタンスの両方に、別々のプライベート エンドポイントが必要です。 **フェールオーバー** 用のセカンダリ インスタンスのプライベート エンドポイントを作成する必要はありません。 プライベート エンドポイントは、フェールオーバー後、新しいプライマリ インスタンスに自動的に接続されます。 ストレージ冗長オプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
 
 ストレージ アカウントのプライベート エンドポイントを作成する方法の詳細情報については、次の記事を参照してください。
 
-- [Azure portal のストレージ アカウント エクスペリエンスから非公開でストレージ アカウントに接続する](../../private-link/create-private-endpoint-storage-portal.md)
+- [Azure portal のストレージ アカウント エクスペリエンスから非公開でストレージ アカウントに接続する](../../private-link/tutorial-private-endpoint-storage-portal.md)
 - [Azure portal でプライベート リンク センターを使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-portal.md)
 - [Azure CLI を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-cli.md)
 - [Azure PowerShell を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-powershell.md)
@@ -73,7 +77,7 @@ geo 冗長ストレージ向けに構成されているストレージ アカウ
 
 ## <a name="dns-changes-for-private-endpoints"></a>プライベート エンドポイントの DNS の変更
 
-プライベート エンドポイントを作成すると、ストレージ アカウントの DNS CNAME リソース レコードは、プレフィックス "*privatelink*" を持つサブドメイン内のエイリアスに更新されます。 既定では、"*privatelink*" サブドメインに対応する[プライベート DNS ゾーン](../../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
+プライベート エンドポイントを作成すると、ストレージ アカウントの DNS CNAME リソース レコードは、プレフィックス "*privatelink*" を持つサブドメイン内のエイリアスに更新されます。 既定では、"*privatelink*" サブドメインに対応する [プライベート DNS ゾーン](../../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
 
 プライベート エンドポイントを持つ VNet の外部からストレージ エンドポイント URL を解決すると、ストレージ サービスのパブリック エンドポイントに解決されます。 プライベート エンドポイントをホストしている VNet から解決されると、ストレージ エンドポイント URL はプライベート エンドポイントの IP アドレスに解決されます。
 
@@ -94,7 +98,7 @@ StorageAccountA の DNS リソース レコードは、プライベート エン
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-この方法を使用すると、プライベート エンドポイントをホストしている VNet 上のクライアントと、VNet の外部のクライアントから**同じ接続文字列を使用して**ストレージ アカウントにアクセスできます。
+この方法を使用すると、プライベート エンドポイントをホストしている VNet 上のクライアントと、VNet の外部のクライアントから **同じ接続文字列を使用して** ストレージ アカウントにアクセスできます。
 
 ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントで、ストレージ アカウント エンドポイントの FQDN をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成するか、プライベート エンドポイントの IP アドレスを使用して "*StorageAccountA.privatelink.blob.core.windows.net*" の A レコードを構成する必要があります。
 
@@ -114,8 +118,8 @@ StorageAccountA の DNS リソース レコードは、プライベート エン
 
 プライベート エンドポイントをサポートするように独自の DNS サーバーを構成する方法の詳細については、次の記事を参照してください。
 
-- [Azure 仮想ネットワーク内のリソースの名前解決](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [プライベート エンドポイントの DNS 構成](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 仮想ネットワーク内のリソースの名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [プライベート エンドポイントの DNS 構成](../../private-link/private-endpoint-overview.md#dns-configuration)
 
 ## <a name="pricing"></a>価格
 
@@ -125,10 +129,6 @@ StorageAccountA の DNS リソース レコードは、プライベート エン
 
 Azure Storage のプライベート エンドポイントに関する以下の既知の問題に注意してください。
 
-### <a name="copy-blob-support"></a>Copy Blob のサポート
-
-ストレージ アカウントがファイアウォールで保護され、プライベート エンドポイントからアクセスされる場合、そのアカウントは、[コピー BLOB](/rest/api/storageservices/copy-blob) 操作のソースとしては機能できません。
-
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>プライベート エンドポイントがある VNet 内のクライアントに対するストレージ アクセスの制約
 
 既存のプライベート エンドポイントを持つ VNet 内のクライアントには、プライベート エンドポイントを持つ他のストレージ アカウントにアクセスするときに制約があります。 たとえば、VNet N1 に、Blob Storage 用のストレージ アカウント A1 のプライベート エンドポイントがあるとします。 ストレージ アカウント A2 が VNet N2 に Blob Storage 用のプライベート エンドポイントを持っている場合は、VNet N1 のクライアントも、プライベート エンドポイントを使用してアカウント A2 の Blob Storage にアクセスする必要があります。 ストレージ アカウント A2 が Blob Storage 用のプライベート エンドポイントを持っていない場合、VNet N1 のクライアントは、プライベート エンドポイントを使用せずにそのアカウントの Blob Storage にアクセスできます。
@@ -137,7 +137,7 @@ Azure Storage のプライベート エンドポイントに関する以下の�
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>プライベート エンドポイントがあるサブネットのネットワーク セキュリティ グループ規則
 
-現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用された NSG 規則は、プライベート エンドポイント以外の他のエンドポイント (NIC など) にしか適用されません。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
+現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用された NSG 規則は、プライベート エンドポイント以外の他のエンドポイント (NIC など) にしか適用されません。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

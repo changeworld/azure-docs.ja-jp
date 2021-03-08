@@ -4,15 +4,14 @@ description: Azure Kubernetes Service (AKS) でエグレス トラフィック�
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003168"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685756"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -20,7 +19,7 @@ ms.locfileid: "88003168"
 
 ## <a name="background"></a>バックグラウンド
 
-AKS クラスターは仮想ネットワークにデプロイされます。 このネットワークは、(AKS によって作成された) マネージドでも、(ユーザーによって事前に構成された) カスタムでもかまいません。 どちらの場合も、クラスターには、その仮想ネットワークの外部にあるサービスに対する**送信**依存関係があります (サービスには受信依存関係はありません)。
+AKS クラスターは仮想ネットワークにデプロイされます。 このネットワークは、(AKS によって作成された) マネージドでも、(ユーザーによって事前に構成された) カスタムでもかまいません。 どちらの場合も、クラスターには、その仮想ネットワークの外部にあるサービスに対する **送信** 依存関係があります (サービスには受信依存関係はありません)。
 
 管理と運用上の目的から、AKS クラスター内のノードは特定のポートと完全修飾ドメイン名 (FQDN) にアクセスする必要があります。 これらのエンドポイントは、ノードが API サーバーと通信するため、またはコア Kubernetes クラスター コンポーネントとノードのセキュリティ更新プログラムをダウンロードしてからインストールするために必要です。 たとえば、クラスターでは Microsoft Container Registry (MCR) から基本システムのコンテナー イメージをプルする必要があります。
 
@@ -29,17 +28,17 @@ AKS の送信依存関係は、ほぼすべて、背後に静的アドレスが�
 既定で、AKS クラスターは、送信 (エグレス) インターネット アクセスが無制限です。 このレベルのネットワーク アクセスでは、実行しているノードやサービスから必要に応じて外部リソースにアクセスできます。 エグレス トラフィックを制限する場合は、正常なクラスター メンテナンス タスクを維持するために、アクセスできるポートとアドレスの数を制限する必要があります。 送信アドレスをセキュリティで保護する最も簡単なソリューションは、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスを使用することです。 たとえば、Azure Firewall では、送信先の FQDN に基づいて HTTP と HTTPS の送信トラフィックを制限できます。 また、適切なファイアウォール規則とセキュリティ規則を構成し、これらの必要なポートとアドレスを許可することができます。
 
 > [!IMPORTANT]
-> このドキュメントでは、AKS サブネットから出て行くトラフィックをロックダウンする方法についてのみ説明します。 既定では、AKS にはイングレス要件はありません。  ネットワーク セキュリティ グループ (NSG) とファイアウォールを使用して**内部サブネット トラフィック**をブロックすることは、サポートされていません。 クラスター内のトラフィックを制御およびブロックするには、[***ネットワーク ポリシー***][network-policy]を使用します。
+> このドキュメントでは、AKS サブネットから出て行くトラフィックをロックダウンする方法についてのみ説明します。 既定では、AKS にはイングレス要件はありません。  ネットワーク セキュリティ グループ (NSG) とファイアウォールを使用して **内部サブネット トラフィック** をブロックすることは、サポートされていません。 クラスター内のトラフィックを制御およびブロックするには、[**_ネットワーク ポリシー_* _][network-policy]を使用します。
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>AKS クラスターに必要な送信ネットワーク規則と FQDN
 
 AKS クラスターには、次のネットワーク規則と FQDN およびアプリケーションの規則が必要です。Azure Firewall 以外のソリューションを構成する場合は、これらの規則を使用できます。
 
-* IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています
+_ IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています
 * FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
 * HTTP と HTTPS のワイルドカード エンドポイントは、いくつかの修飾子に基づき、AKS クラスターによって異なる場合がある依存関係です。
 * AKS では、アドミッション コントローラーを使用して、kube-system と gatekeeper-system の下にあるすべてのデプロイに対し、FQDN が環境変数として挿入されます。これにより、ノードと API サーバー間のすべてのシステム通信において、API サーバーの IP ではなく、API サーバーの FQDN が使用されるようになります。 
-* API サーバーと通信する必要があるアプリまたはソリューションがある場合は、ネットワーク規則を**追加**して、"*API サーバーの IP のポート 443 への TCP 通信*を許可する必要があります。
+* API サーバーと通信する必要があるアプリまたはソリューションがある場合は、ネットワーク規則を **追加** して、"*API サーバーの IP のポート 443 への TCP 通信* を許可する必要があります。
 * まれに、メンテナンスが行われると、API サーバーの IP が変わる可能性があります。 API サーバーの IP が変わる可能性がある計画メンテナンス操作は、常に事前に通知されます。
 
 
@@ -49,11 +48,11 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 
 | 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 これは、[プライベート クラスター](private-clusters.md)では必要ありません|
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 これは、[プライベート クラスター](private-clusters.md)では必要ありません |
 | **`*:123`** または **`ntp.ubuntu.com:123`** (Azure Firewall ネットワーク規則を使用している場合)  | UDP      | 123     | Linux ノードでのネットワーク タイム プロトコル (NTP) の時刻同期に必要です。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | カスタム DNS サーバーを使用している場合は、クラスター ノードからそれらにアクセスできることを確認する必要があります。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。 これは、[プライベート クラスター](private-clusters.md)では必要ありません  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Azure Global に必要な FQDN とアプリケーションの規則 
 
@@ -63,7 +62,6 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | ノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、ファーストパーティのイメージとグラフ (coreDNS など) が含まれます。 これらのイメージは、スケーリング操作やアップグレード操作など、クラスターの適切な作成と機能のために必要です。  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`management.azure.com`**       | **`HTTPS:443`** | Azure API に対する Kubernetes の操作に必要です。 |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Azure Active Directory の認証に必要です。 |
@@ -76,12 +74,12 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 
 | 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.Region:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
-| **`*:22`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:22`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:22`** <br/> *Or* <br/> **`APIServerIP:22`** `(only known after cluster creation)`  | TCP           | 22      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.Region:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+| **`*:22`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:22`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:22`** <br/> *Or* <br/> **`APIServerPublicIP:22`** `(only known after cluster creation)`  | TCP           | 22      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
 | **`*:123`** または **`ntp.ubuntu.com:123`** (Azure Firewall ネットワーク規則を使用している場合)  | UDP      | 123     | Linux ノードでのネットワーク タイム プロトコル (NTP) の時刻同期に必要です。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | カスタム DNS サーバーを使用している場合は、クラスター ノードからそれらにアクセスできることを確認する必要があります。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。  |
 
 ### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure China 21Vianet に必要な FQDN とアプリケーションの規則
 
@@ -92,7 +90,6 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | ノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | ノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、ファーストパーティのイメージとグラフ (coreDNS など) が含まれます。 これらのイメージは、スケーリング操作やアップグレード操作など、クラスターの適切な作成と機能のために必要です。 |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Azure API に対する Kubernetes の操作に必要です。 |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Azure Active Directory の認証に必要です。 |
@@ -105,11 +102,11 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 
 | 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [リージョンの CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | ノードとコントロール プレーンの間のセキュリティで保護されたトンネル通信の場合。 |
 | **`*:123`** または **`ntp.ubuntu.com:123`** (Azure Firewall ネットワーク規則を使用している場合)  | UDP      | 123     | Linux ノードでのネットワーク タイム プロトコル (NTP) の時刻同期に必要です。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | カスタム DNS サーバーを使用している場合は、クラスター ノードからそれらにアクセスできることを確認する必要があります。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API サーバーにアクセスするポッドとデプロイを実行する場合に必要です。それらのポッドとデプロイでは API IP が使用されます。  |
 
 ### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure US Government に必要な FQDN とアプリケーションの規則 
 
@@ -119,7 +116,6 @@ AKS クラスターには、次のネットワーク規則と FQDN およびア�
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | ノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、ファーストパーティのイメージとグラフ (coreDNS など) が含まれます。 これらのイメージは、スケーリング操作やアップグレード操作など、クラスターの適切な作成と機能のために必要です。 |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Azure API に対する Kubernetes の操作に必要です。 |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Azure Active Directory の認証に必要です。 |
@@ -205,10 +201,7 @@ Azure Dev Spaces が有効になっている AKS クラスターの場合、次�
 | `storage.googleapis.com` | **`HTTPS:443`** | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
 
 
-### <a name="azure-policy-preview"></a>Azure Policy (プレビュー)
-
-> [!CAUTION]
-> 以下の一部の機能はプレビュー段階です。  この記事の推奨事項は、機能がパブリック プレビューおよび将来のリリース段階に移行するときに、変更される可能性があります。
+### <a name="azure-policy"></a>Azure Policy
 
 #### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則 
 
@@ -216,10 +209,11 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 
 | FQDN                                          | Port      | 用途      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | このアドレスは、Azure Policy の適切な操作のために使用されます。 (現在 AKS でプレビュー段階) |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 (現在 AKS でプレビュー段階) |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | このアドレスは、Kubernetes ポリシーをプルし、クラスターのコンプライアンス状態をポリシー サービスにレポートするために使用されます。 |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | このアドレスは、組み込みポリシーの Gatekeeper アーティファクトをプルするために使用されます。 |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | このアドレスは、Azure Policy の適切な操作のために使用されます。  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
-
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Firewall を使用してエグレス トラフィックを制限する
 
@@ -280,7 +274,7 @@ FWROUTE_NAME_INTERNET="${PREFIX}-fwinternet"
 
 すべてのリソースを保持するリソース グループを作成します。
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -294,6 +288,7 @@ AKS クラスターと Azure Firewall をホストするための 2 つのサブ
 az network vnet create \
     --resource-group $RG \
     --name $VNET_NAME \
+    --location $LOC \
     --address-prefixes 10.42.0.0/16 \
     --subnet-name $AKSSUBNET_NAME \
     --subnet-prefix 10.42.1.0/24
@@ -320,12 +315,12 @@ Azure Firewall の受信および送信規則を構成する必要がありま�
 
 Azure Firewall フロントエンド アドレスとして使用される Standard SKU のパブリック IP リソースを作成します。
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Azure ファイアウォールを作成するには、プレビューの cli 拡張機能を登録します。
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -340,7 +335,7 @@ az network firewall create -g $RG -n $FWNAME -l $LOC --enable-dns-proxy true
 > Azure Firewall へのパブリック IP アドレスの設定には数分かかる場合があります。
 > ネットワーク規則で FQDN を利用するには、DNS プロキシを有効にする必要があります。有効にすると、ファイアウォールではポート 53 でリッスンが行われ、上で指定した DNS サーバーに DNS 要求が転送されます。 これにより、ファイアウォールでその FQDN を自動的に変換できるようになります。
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -364,10 +359,10 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 
 特定のサブネットに関連付ける空のルート テーブルを作成します。 ルート テーブルには、次のホップを以前の手順で作成した Azure Firewall と定義します。 各サブネットには、0 個または 1 個のルート テーブルを関連付けることができます。
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -398,7 +393,7 @@ Azure Firewall サービスの詳細については、[Azure Firewall のドキ�
 
 クラスターをファイアウォールに関連付けるには、クラスターのサブネットの専用サブネットから、以前の手順で作成したルート テーブルを参照する必要があります。 関連付けを行うには、クラスターとファイアウォールの両方を保持する仮想ネットワークに対して、クラスターのサブネットのルート テーブルを更新するコマンドを発行します。
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -414,7 +409,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 サービス プリンシパルは、クラスター リソースを作成するために AKS によって使用されます。 作成時に渡されるサービス プリンシパルは、AKS によって使用されるストレージ リソース、IP、ロード バランサーなどの基になる AKS リソースを作成するために使用されます (代わりに[マネージド ID](use-managed-identity.md) を使用することもできます)。 以下の適切なアクセス許可が付与されていない場合、AKS クラスターをプロビジョニングすることはできません。
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -422,7 +417,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 次に、以下の `APPID` と `PASSWORD` を、前のコマンド出力で自動生成されたサービス プリンシパル appid とサービス プリンシパル パスワードに置き換えます。 VNET リソース ID を参照してサービス プリンシパルにアクセス許可を付与し、AKS によってリソースをデプロイできるようにします。
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -460,7 +455,7 @@ SUBNETID=$(az network vnet subnet show -g $RG --vnet-name $VNET_NAME --name $AKS
 >
 > [**API サーバーの許可された IP 範囲**](api-server-authorized-ip-ranges.md)に対して AKS 機能を追加し、API サーバーのアクセスをファイアウォールのパブリック エンドポイントのみに制限できます。 許可された IP 範囲の機能は、図ではオプションとして示されています。 許可された IP 範囲機能を有効にして API サーバーへのアクセスを制限する場合、開発者ツールでファイアウォールの仮想ネットワークからのジャンプボックスを使用するか、すべての開発者エンドポイントを許可された IP 範囲に追加する必要があります。
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
   --node-count 3 --generate-ssh-keys \
   --network-plugin $PLUGIN \
@@ -491,7 +486,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
  新しく作成された Kubernetes クラスターに接続するように、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して `kubectl` を構成します。 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
@@ -750,11 +745,11 @@ voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9
 
 以下を実行して、サービス IP を取得します。
 ```bash
-SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
+SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
 以下を実行して、NAT 規則を追加します。
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
@@ -765,14 +760,14 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 AKS 投票アプリが表示されます。 この例では、ファイアウォールのパブリック IP は `52.253.228.132` でした。
 
 
-![aks-vote](media/limit-egress-traffic/aks-vote.png)
+![[Cats]、[Dogs]、[Reset] のボタンと合計値が表示されている A K S 投票アプリを示すスクリーンショット。](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure リソースをクリーンアップするには、AKS リソース グループを削除します。
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 

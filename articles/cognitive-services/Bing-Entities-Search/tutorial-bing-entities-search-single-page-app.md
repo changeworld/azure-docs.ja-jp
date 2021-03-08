@@ -10,22 +10,27 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d14681e07518188deabd9f48a04b80a489d858b8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407933"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366535"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
-Bing Entity Search API を使用すると、Web で*エンティティ*と*場所*に関する情報を検索できます。 特定のクエリで、いずれかの結果または両方の結果を要求することができます。 場所とエンティティの定義を以下に示します。
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
+
+Bing Entity Search API を使用すると、Web で *エンティティ* と *場所* に関する情報を検索できます。 特定のクエリで、いずれかの結果または両方の結果を要求することができます。 場所とエンティティの定義を以下に示します。
 
 | 結果 | 説明 |
 |-|-|
 |エンティティ|名前で検索する有名な人物、場所、もの|
-|Places|名前*または*種類 (イタリアン レストランなど) で検索するレストラン、ホテル、その他の地元企業|
+|Places|名前 *または* 種類 (イタリアン レストランなど) で検索するレストラン、ホテル、その他の地元企業|
 
 このチュートリアルでは、Bing Entity Search API を使用する単一ページの Web アプリケーションをビルドして、検索結果をページ内に表示できるようにします。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
 
@@ -52,7 +57,7 @@ API を使用すると、場所によって結果を優先順位付けするこ�
 
 このチュートリアルのページでは、すべてが自己完結しています。外部のフレームワーク、スタイル シートはもちろん、画像ファイルすら使用することはありません。 広くサポートされている JavaScript 言語機能のみを使用し、現在のバージョンの主要な Web ブラウザーすべてで動作します。
 
-このチュートリアルでは、ソース コードの一部についてのみ説明します。 完全なソース コードは[別のページ](tutorial-bing-entities-search-single-page-app-source.md)から入手できます。 このコードをコピーしてテキスト エディターに貼り付け、`bing.html` として保存してください。
+このチュートリアルでは、ソース コードの一部についてのみ説明します。 完全なソース コードは[別のページ]()から入手できます。 このコードをコピーしてテキスト エディターに貼り付け、`bing.html` として保存してください。
 
 > [!NOTE]
 > このチュートリアルは、[単一ページの Bing Web Search アプリのチュートリアル](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)と実質的に同じものですが、エンティティの検索結果についてのみ説明しています。
@@ -257,7 +262,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-Bing Entity Search クエリでは、緯度と経度の他に、位置情報の精度を示す*半径*が必要です。 Bing Maps 応答で提供される*境界ボックス*を使用して、半径を計算します。 境界ボックスは、位置全体を囲む四角形です。 たとえば、ユーザーが `NYC` と入力した場合、結果にはニューヨーク市のおよその中心の座標と、市を取り囲む境界ボックスが含まれます。 
+Bing Entity Search クエリでは、緯度と経度の他に、位置情報の精度を示す *半径* が必要です。 Bing Maps 応答で提供される *境界ボックス* を使用して、半径を計算します。 境界ボックスは、位置全体を囲む四角形です。 たとえば、ユーザーが `NYC` と入力した場合、結果にはニューヨーク市のおよその中心の座標と、市を取り囲む境界ボックスが含まれます。 
 
 最初に、関数 `haversineDistance()` (表示されていません) を使用して、プライマリ座標から境界ボックスの 4 つのコーナーまでのそれぞれの距離を計算します。 これら 4 つの距離の最大値を半径として使用します。 最小半径は 1 キロメートルです。 応答で境界ボックスが提供されていない場合、この値は既定値としても使用されます。
 
@@ -386,7 +391,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 要求が成功しても、必ずしも検索自体が成功したとは "*限りません*"。 検索操作でエラーが発生した場合、Bing Entity Search API は 200 以外の HTTP 状態コードを返し、JSON 応答内にエラー情報を含めます。 また、要求のレートが制限されている場合、API は空の応答を返します。
+> HTTP 要求が成功しても、必ずしも検索自体が成功したとは " *限りません* "。 検索操作でエラーが発生した場合、Bing Entity Search API は 200 以外の HTTP 状態コードを返し、JSON 応答内にエラー情報を含めます。 また、要求のレートが制限されている場合、API は空の応答を返します。
 
 先ほどの両方の関数内にあるコードの多くは、エラー処理専用のものです。 エラーは次の段階で発生する場合があります。
 
@@ -400,7 +405,7 @@ function handleBingResponse() {
 
 ## <a name="displaying-search-results"></a>検索結果の表示
 
-Bing Entity Search API では、[指定した順序で結果を表示する必要があります](use-display-requirements.md)。 API は 2 つの異なる種類の応答を返す可能性があるため、JSON 応答内の最上位の `Entities` または `Places` コレクションを反復処理してそれらの結果を表示するだけでは不十分です (1 種類の結果だけが必要な場合は、`responseFilter` クエリ パラメーターを使用します)。
+Bing Entity Search API では、[指定した順序で結果を表示する必要があります](../bing-web-search/use-display-requirements.md)。 API は 2 つの異なる種類の応答を返す可能性があるため、JSON 応答内の最上位の `Entities` または `Places` コレクションを反復処理してそれらの結果を表示するだけでは不十分です (1 種類の結果だけが必要な場合は、`responseFilter` クエリ パラメーターを使用します)。
 
 代わりに、検索結果で `rankingResponse` コレクションを使用して、表示の結果を順序付けします。 このオブジェクトは、`Entitiess` と `Places` の両方またはいずれかのコレクション内の項目を参照します。
 
@@ -414,7 +419,7 @@ Bing Entity Search API では、[指定した順序で結果を表示する必�
 
 | Item | 説明 |
 |-|-|
-|`id`|`id` は URL に似ていますが、リンクには使用できません。 `id` 型のランキング結果は、応答コレクション内の検索結果項目、"*または*" 応答コレクション全体 (`Entities` など) のいずれかの `id` と一致します。
+|`id`|`id` は URL に似ていますが、リンクには使用できません。 `id` 型のランキング結果は、応答コレクション内の検索結果項目、" *または* " 応答コレクション全体 (`Entities` など) のいずれかの `id` と一致します。
 |`answerType`<br>`resultIndex`|`answerType` は、結果を含む最上位の応答コレクション (`Entities` など) を参照します。 `resultIndex` は、そのコレクション内の結果のインデックスを参照します。 `resultIndex` を省略すると、ランキング結果はコレクション全体を参照したものとなります。
 
 > [!NOTE]

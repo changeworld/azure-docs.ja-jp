@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846567"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019195"
 ---
 # <a name="manage-process-servers"></a>プロセス サーバーの管理
 
@@ -41,11 +41,11 @@ ms.locfileid: "85846567"
 2. プロセス サーバーが登録されている構成サーバーをクリックします。
 3. トラフィックを負荷分散するプロセス サーバーをクリックします。
 
-    ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![トラフィックを負荷分散できるプロセス サーバーを示すスクリーンショット。](media/vmware-azure-manage-process-server/LoadBalance.png)
 
 4. **[負荷分散]** をクリックして、マシンの移動先のターゲット プロセス サーバーを選択します。 次に、 **[OK]** をクリックします
 
-    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+    ![[ターゲット プロセス サーバーの選択] が選択されている [負荷分散] ウィンドウを示すスクリーンショット。](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. **[マシンの選択]** をクリックし、現在のプロセス サーバーからターゲットに移動するマシンを選択します。 各仮想マシンについて、平均データの変化の詳細が表示されます。 次に、 **[OK]** をクリックします 
 3. コンテナーの **[監視]**  >  **[Site Recovery ジョブ]** でジョブの進行状況を監視します。
@@ -61,7 +61,7 @@ ms.locfileid: "85846567"
 3. ワークロードを切り替えるプロセス サーバーをクリックします。
 4. **[切り替え]** をクリックし、ワークロードを移動するターゲット プロセス サーバーを選択します。 次に、 **[OK]** をクリックします
 
-    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![[ターゲット プロセス サーバーの選択] ウィンドウを示すスクリーンショット。](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. コンテナーの **[監視]**  >  **[Site Recovery ジョブ]** でジョブの進行状況を監視します。
 

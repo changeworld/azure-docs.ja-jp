@@ -3,19 +3,19 @@ title: Video Indexer にユーザーを招待する - Azure
 titleSuffix: Azure Media Services
 description: この記事では、Video Indexer にユーザーを招待する方法について説明します。
 services: media-services
-author: ReutAmior
+author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 02/03/2021
 ms.author: juliako
-ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7d3415ffad4820d8651841398ec6d47352869ce2
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79499750"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534741"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>クイック スタート:Video Indexer にユーザーを招待する
 
@@ -27,29 +27,35 @@ ms.locfileid: "79499750"
 ## <a name="invite-new-users"></a>新しいユーザーを招待する
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトにサインインします。 管理者アカウントを使用して接続していることを確認します。
-1. 上部のメニューの **[他の人を招待]** ボタンをクリックします。
+1. 管理者には、右上隅に **[Share account]\(アカウントの共有\)** ボタンが表示されます。 このボタンをクリックして、ユーザーを招待することができます。 
 
-   ![新しいユーザーを招待する](./media/invite-users/invite-users.png)
+    :::image type="content" source="./media/invite-users/share-account.png" alt-text="アカウントを共有する":::
+1. **[Share this account with others]\(このアカウントを他のユーザーと共有する\)** ダイアログで、ご利用の Video Indexer アカウントに招待したいユーザーのメール アドレスを入力します。
 
-1. Video Indexer アカウントに追加するユーザーの電子メールアドレスを追加します。
+    :::image type="content" source="./media/invite-users/share-account-others.png" alt-text="このアカウントにユーザーを招待する":::  
+1. **[Invite]\(招待\)** を押すと、保留中の招待状のリストにそのユーザーが追加されます。 <br/>アカウントにまだ参加していない各招待者については、**招待を削除** するオプションと **招待 URL をコピーする** オプションのどちらかを選択できます。
 
-    ![このアカウントにユーザーを招待する](./media/invite-users/invite-to-account.png)
-        
-    >[!NOTE]
-    > 招待するすべてのユーザーには、アカウント内のすべてのビデオに対する読み取りアクセス許可と書き込みアクセス許可が付与されます。
-1. 招待したユーザーには、リンクを含む電子メールが送信されます。 **[Join Video Indexer]\(Video Indexer に参加する\)** リンクをクリックすると、アカウントにアクセスできるようになります。
+    :::image type="content" source="./media/invite-users/invites-pending.png" alt-text="保留中の招待状":::  
+1. 招待された人がアカウントに参加すると、3 つのオプションを選択できるようになります。 そのうち 2 つはロールに関するオプション、つまり、 **[共同作成者]** (既定) と **[所有者]** です。 または、 **[削除]** をクリックして招待者を削除することもできます。
 
-    ![確認](./media/invite-users/invite-msg.png)
+    :::image type="content" source="./media/invite-users/joined-invitee-options.png" alt-text="参加している招待者":::  
 
-    ユーザーは、アカウントにアクセスできるようになるために、リンクをクリックして参加する必要があります。 
+    ユーザーは、削除されても通知を受け取りません。 削除されると、ユーザーはログインを承認されません。
 
-## <a name="removing-existing-users"></a>既存のユーザーを削除する
+## <a name="manage-roles-invite-more-users"></a>ロールの管理とその他のユーザーの招待
 
-アカウントにアクセスできるユーザーを削除する場合は、名前の横にある **[X]** 記号をクリックします。
+**[Share this account with others]\(このアカウントを他のユーザーと共有する\)** ダイアログは、前述のように **[Share account]\(アカウントの共有\)** をクリックして表示できるほか、 **[設定]** から表示することもできます。
 
-![Remove users](./media/invite-users/remove-users.png)
+1. 開いているアカウントの **[設定]** ボタンをクリックします。 
 
-ユーザーは、削除されても通知を受け取りません。 削除されると、ユーザーはログインを承認されません。
+    :::image type="content" source="./media/invite-users/settings.png" alt-text="アカウント設定":::  
+1. **[ロールの管理]** ボタンをクリックします。
+1. 他のユーザーを招待するには、 **[Invite more people to this account]\(このアカウントに他のユーザーを招待する\)** をクリックします。
+
+    :::image type="content" source="./media/invite-users/invite-more-people.png" alt-text="[その他のユーザーの招待]":::  
+1. **[invite more people to this account]\(このアカウントに他のユーザーを招待する\)** をクリックすると、招待ダイアログが表示されます。
+ 
+    :::image type="content" source="./media/invite-users/share-account-others.png" alt-text="このアカウントにユーザーを招待する":::  
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799487"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536972"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>職場のデバイスを組織のネットワークに参加させる
 制限されている可能性があるリソースにアクセスできるように、職場所有の Windows 10 デバイスを組織のネットワークに参加させます。
@@ -48,13 +48,13 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
 4. モバイル デバイスでは、アカウントにアクセスできるようにデバイスを承認します。 
 
-    ![モバイル通知画面](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![[パスワードの入力] 通知画面を示すスクリーンショット。](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. プライバシーの設定や Windows Hello の設定 (必要な場合) など、OOBE プロセスを完了します。
 
     これで、デバイスが組織のネットワークに参加しました。
 
-## <a name="to-make-sure-youre-joined"></a>参加したことを確認するには
+## <a name="to-make-sure-youre-joined-new-device"></a>参加したことを確認するには (新しいデバイスの場合)
 設定を参照することによって、参加したことを確認できます。
 
 1. **[設定]** を開いてから、 **[アカウント]** を選択します。
@@ -63,7 +63,7 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
 2. **[職場または学校にアクセスする]** を選択し、 **[ *\<your_organization>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
 
-    ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![[職場または学校にアクセスする] ウィンドウを示すスクリーンショット。[(組織の) Azure AD に接続しました] のアカウントが選択されています。](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>既に構成されている Windows 10 デバイスを参加させるには

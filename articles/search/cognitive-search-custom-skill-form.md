@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935434"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880137"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "88935434"
 
 ## <a name="train-your-model"></a>モデルをトレーニングする
 
-このスキルを使用する前に、入力フォームで Form Recognizer モデルのトレーニングを行う必要があります。 モデルのトレーニング方法については、[cURL クイックスタート](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md)に従ってください。 このクイックスタートに記載されているサンプル フォームを使用するか、独自のデータを使用できます。 モデルのトレーニング後、その ID 値を安全な場所にコピーします。
+このスキルを使用する前に、入力フォームで Form Recognizer モデルのトレーニングを行う必要があります。 モデルのトレーニング方法については、[cURL クイックスタート](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api)に従ってください。 このクイックスタートに記載されているサンプル フォームを使用するか、独自のデータを使用できます。 モデルのトレーニング後、その ID 値を安全な場所にコピーします。
 
 ## <a name="set-up-the-custom-skill"></a>カスタム スキルを設定する
 
@@ -111,11 +111,11 @@ Azure BLOB ストレージにないリモート ドキュメントを分析す�
 
 関数の動作に満足したら、発行できます。
 
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[発行]** を選択します。 **[新規作成]**  >  **[発行]** の順に選択します。
+1. Visual Studio の **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[発行]** を選択します。 **[新規作成]**  >  **[発行]** の順に選択します。
 1. まだ Visual Studio を Azure アカウントに接続していない場合は、 **[アカウントの追加]** を選択します。
 1. 画面の指示に従います。 使用するアプリ サービス、Azure サブスクリプション、リソース グループ、ホスティング プラン、ストレージ アカウントに対して一意の名前を指定します。 リソース グループ、ホスティング プラン、ストレージ アカウントをまだ作成していない場合は新しく作成できます。 完了したら、 **[作成]** をクリックします。
 1. デプロイが完了したら、サイトの URL を書き留めておきます。 この URL は Azure の関数アプリのアドレスになります。 一時的な場所にこれを保存します。
-1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した `AnalyzeForm` 関数を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 *既定*のホスト キーをコピーし、一時的な場所に保存します。
+1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した `AnalyzeForm` 関数を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 *既定* のホスト キーをコピーし、一時的な場所に保存します。
 
 ## <a name="connect-to-your-pipeline"></a>パイプラインに接続する
 

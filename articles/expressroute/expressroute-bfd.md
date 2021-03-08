@@ -5,35 +5,35 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 11/1/2018
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: db2f45da0193ac648d58c0be9773f36e542ed917
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 254f5909e7ed8db4dc18ade2677a3213b268cf41
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397612"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511265"
 ---
 # <a name="configure-bfd-over-expressroute"></a>ExpressRoute 経由の BFD の構成
 
-ExpressRoute は、プライベート ピアリングと Microsoft ピアリングの両方で BFD (Bidirectional Forwarding Detection) をサポートしています。 ExpressRoute 経由の BFD を有効にすることにより、Microsoft Enterprise Edge (MSEE) デバイスと ExpressRoute 回線を終端するルーター (CE/PE) の間のリンク障害の検出を速めることができます。 顧客のエッジ ルーティング デバイスまたはパートナーのエッジ ルーティング デバイス経由の ExpressRoute を終端できます (マネージド レイヤー 3 接続サービスを選択した場合)。 このドキュメントでは、BFD の必要性と、ExpressRoute 経由の BFD を有効にする方法について説明します。
+ExpressRoute は、プライベート ピアリングと Microsoft ピアリングの両方で BFD (Bidirectional Forwarding Detection) をサポートしています。 ExpressRoute 経由で BFD を有効にすると、Microsoft Enterprise edge (MSEE) デバイスと、ExpressRoute 回線が構成されているルーター (CE/PE) との間のリンク障害の検出速度が向上します。 ご使用のエッジ ルーティング デバイスまたはパートナーのエッジ ルーティング デバイス経由で ExpressRoute を構成できます (マネージド レイヤー 3 接続サービスを選択した場合)。 このドキュメントでは、BFD の必要性と、ExpressRoute 経由の BFD を有効にする方法について説明します。
 
 ## <a name="need-for-bfd"></a>BFD の必要性
 
 次の図は、ExpressRoute 回線経由の BFD を有効にする利点を示しています。[![1]][1]
 
-ExpressRoute 回線は、レイヤー 2 接続またはマネージド レイヤー 3 接続のいずれかで有効にできます。 いずれの場合も、ExpressRoute 接続パスに 1 つ以上のレイヤー 2 デバイスが存在するときは、上にある BGP に、パスのリンク障害を検出する責任があります。
+ExpressRoute 回線は、レイヤー 2 接続またはマネージド レイヤー 3 接続のいずれかで有効にできます。 どちらの場合も、ExpressRoute 接続パスに複数のレイヤー 2 デバイスが存在するときは、上にある BGP セッションに、パスのリンク障害を検出する責任があります。
 
-MSEE デバイスでは、通常、BGP のキープアライブとホールド時間はそれぞれ 60 秒と 180 秒に設定されています。 したがって、リンク障害が発生してから、リンク障害が検出され、トラフィックが別の接続に切り替わるまでの時間は最大で 3 分です。
+MSEE デバイスでは、通常、BGP のキープアライブとホールド時間はそれぞれ 60 秒と 180 秒に設定されています。 このため、リンクの障害が発生した場合、リンク障害を検出し、トラフィックが別の接続に切り替わるまで最大で 3 分かかる場合があります。
 
-BGP タイマーを制御するには、顧客のエッジ ピアリング デバイスで BGP のキープアライブとホールド時間を低く設定します。 2 つのピアリング デバイス間で BGP タイマーが一致しない場合、ピア間の BGP セッションでは、低い方のタイマー値が使用されます。 設定できる BGP キープアライブの最短時間は 3 秒で、ホールド時間は数十秒です。 ただし、プロトコルの処理負荷が高くなるため、BGP タイマーを積極的に設定することはお勧めできません。
+BGP タイマーを制御するには、エッジ ピアリング デバイスで BGP のキープアライブとホールド時間を低く設定します。 2 つのピアリング デバイス間で BGP タイマーが同じでない場合は、短い方の時間値を使用して BGP セッションが確立されます。 設定できる BGP キープアライブの最短時間は 3 秒で、ホールド時間は 10 秒です。 ただし、プロトコルで大量のプロセスが集中的に消費されるため、BGP タイマーをあまりに低く設定することはお勧めできません。
 
 このシナリオでは、BFD が役立ちます。 BFD では、1 秒未満の時間間隔で低オーバーヘッドのリンク障害検出が可能です。 
 
 
 ## <a name="enabling-bfd"></a>BFD の有効化
 
-MSEE では、新しく作成されたすべての ExpressRoute プライベート ピアリング インターフェイスで、BFD が既定で構成されています。 そのため、BFD を有効にするには、CE/PE (両方がプライマリおよびセカンダリ デバイスにあります) で BFD を構成するだけで済みます。 BFD の構成は、2 つの手順から成るプロセスです。インターフェイス上で BFD を構成した後、それを BGP セッションにリンクする必要があります。
+MSEE では、新しく作成されたすべての ExpressRoute プライベート ピアリング インターフェイスで、BFD が既定で構成されています。 そのため、BFD を有効にするには、プライマリおよびセカンダリ デバイスの両方で BFD を構成するだけで済みます。 BFD は 2 段階のプロセスで構成します。 インターフェイス上で BFD を構成し、次に、それを BGP セッションにリンクします。
 
 CE/PE (Cisco IOS XE を使用) の構成の例を次に示します。 
 
@@ -62,10 +62,10 @@ router bgp 65020
 
 ## <a name="bfd-timer-negotiation"></a>BFD タイマー ネゴシエーション
 
-BFD ピア間では、2 つのピアのうち遅い方のピアによって送信レートが決まります。 MSEE の BFD 送信/受信間隔は、300 ミリ秒に設定されています。 特定のシナリオでは、間隔に 750 ミリ秒という大きな値を設定できます。 大きな値を設定すると、これらの間隔を強制的に大きくできますが、短くすることはできません。
+BFD ピア間では、2 つのピアのうち遅い方のピアによって送信レートが決まります。 MSEE の BFD 送信/受信間隔は、300 ミリ秒に設定されています。 特定のシナリオでは、間隔に 750 ミリ秒という大きな値を設定できます。 大きな値を設定することで、これらの間隔を強制的に長くすることはできますが、短くすることはできません。
 
 >[!NOTE]
->geo 冗長 ExpressRoute 回線を構成しているか、またはサイト間 IPSec VPN 接続をバックアップとして使用している場合は、BFD を有効にすると ExpressRoute 接続障害の後のフェールオーバーがより迅速になります。 
+>geo 冗長 ExpressRoute 回線を構成しているか、またはサイト間 IPSec VPN 接続をバックアップとして使用している場合、 BFD を有効にすると、ExpressRoute 接続障害の後のフェールオーバーがより迅速になります。 
 >
 
 ## <a name="next-steps"></a>次の手順
@@ -79,12 +79,6 @@ BFD ピア間では、2 つのピアのうち遅い方のピアによって送�
 [1]: ./media/expressroute-bfd/BFD_Need.png "BFD によりリンク障害で差し引かれる時間が短縮"
 
 <!--Link References-->
-[CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 
-[CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
-[ResetPeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-reset-peering
-
-
-
-
-
-
+[CreateCircuit]: ./expressroute-howto-circuit-portal-resource-manager.md
+[CreatePeering]: ./expressroute-howto-routing-portal-resource-manager.md
+[ResetPeering]: ./expressroute-howto-reset-peering.md

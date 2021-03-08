@@ -2,13 +2,13 @@
 title: Azure Event Hubs とは - ビッグ データ インジェスト サービス | Microsoft Docs
 description: 1 秒間に百万単位のイベントを取り込むビッグ データ ストリーミング サービスである Azure Event Hubs について説明します。
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 01/13/2021
+ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927903"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195766"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs - ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービス
 Azure Event Hubs は、ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービスです。 1 秒間に何百万ものイベントを受信して処理することができます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。
@@ -52,10 +52,9 @@ Event Hubs では、メガバイト単位のデータ ストリームで開始�
 
 ## <a name="rich-ecosystem"></a>充実したエコシステム
 
-[Apache Kafka エコシステム向けの Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) により、[Apache Kafka (1.0 以降)](https://kafka.apache.org/) のクライアントとアプリケーションは Event Hubs と通信できます。 独自に Kafka クラスターをセットアップ、構成、管理する必要はありません。
+業界標準の AMQP 1.0 プロトコルに基づき、さまざまな言語 ([.NET](https://github.com/Azure/azure-sdk-for-net/)、[Java](https://github.com/Azure/azure-sdk-for-java/)、[Python](https://github.com/Azure/azure-sdk-for-python/)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/)) で使用可能な広範なエコシステムにより、Event Hubs からのストリームの処理を簡単に開始できます。 サポートされているすべてのクライアント言語が、低レベルの統合を提供します。 また、このエコシステムを通じて、Azure Stream Analytics や Azure Functions などの Azure サービスとシームレスに統合し、サーバーレスのアーキテクチャを構築することができます。
 
-さまざまな言語 ([.NET](https://github.com/Azure/azure-sdk-for-net/)、[Java](https://github.com/Azure/azure-sdk-for-java/)、[Python](https://github.com/Azure/azure-sdk-for-python/)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/)) で使用可能な広範なエコシステムにより、Event Hubs からのストリームの処理を簡単に開始できます。 サポートされているすべてのクライアント言語が、低レベルの統合を提供します。 また、このエコシステムを通じて、Azure Stream Analytics や Azure Functions などの Azure サービスとシームレスに統合し、サーバーレスのアーキテクチャを構築することができます。
-
+さらに、[Apache Kafka エコシステム向けの Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) により、[Apache Kafka (1.0 以降)](https://kafka.apache.org/) のクライアントとアプリケーションは Event Hubs と通信できます。 独自の Kafka クラスターや Zookeeper クラスターを設定、構成、管理したり、Azure にネイティブではない "サービスとしての Kafka" オファリングを使用したりする必要はありません。
 ## <a name="key-architecture-components"></a>主なアーキテクチャ コンポーネント
 Event Hubs には次の[主要コンポーネント](event-hubs-features.md)が含まれます。
 
@@ -67,7 +66,7 @@ Event Hubs には次の[主要コンポーネント](event-hubs-features.md)が�
 
 次の図は、Event Hubs ストリーム処理のアーキテクチャを示しています。
 
-![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
+![Event Hubs](./media/event-hubs-about/event_hubs_architecture.svg)
 
 ## <a name="event-hubs-on-azure-stack-hub"></a>Azure Stack Hub 上の Event Hubs
 Azure Stack Hub 上の Event Hubs を使用すると、ハイブリッド クラウド シナリオを実現できます。 オンプレミスと Azure クラウドの両方の処理で、ストリーミングやイベントベースのソリューションがサポートされます。 ハイブリッド (接続型) シナリオであれ非接続型のシナリオであれ、大規模なイベント処理またはストリーム処理に対応したソリューションを実現できます。 シナリオは Event Hubs クラスターによってのみ制限され、その点は、必要に応じてプロビジョニングすることができます。 
@@ -79,7 +78,7 @@ Azure Stack Hub 上の Event Hubs を使用すると、ハイブリッド クラ
 
 ## <a name="next-steps"></a>次のステップ
 
-Event Hubs を使い始めるには、以下の**イベントの送受信**のチュートリアルを参照してください。
+Event Hubs を使い始めるには、以下の **イベントの送受信** のチュートリアルを参照してください。
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)

@@ -1,16 +1,14 @@
 ---
 title: サービスの環境変数を指定する
 description: Service Fabric でアプリケーション用の環境変数を使う方法について説明します
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.author: mikhegn
-ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 610e44ac98b8b8a2ce5a91fdbcfda145ae36a94b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614317"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576742"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Service Fabric のサービス用に環境変数を指定する方法
 

@@ -1,17 +1,16 @@
 ---
 title: Azure Web Apps 分析データの表示 | Microsoft Docs
 description: Azure Web Apps Analytics ソリューションを使用して、すべての Azure Web App リソースのさまざまなメトリックを収集することで、Azure Web Apps について把握することができます。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/02/2018
-ms.openlocfilehash: e8f70563e54718c7714c21e27be2bacfe81a4439
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df5b340dc297a9dc3154e8855d5ad584072e2fdb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704261"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
 

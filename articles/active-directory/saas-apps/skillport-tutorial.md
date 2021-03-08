@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: cceb0a98cc35a41d1d46b798c9caf08fae2e3748
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8b49e3594754e8eed38e3b1ef44648bc065558b8
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543093"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル: Azure Active Directory と Skillport の統合
 
@@ -27,7 +27,7 @@ Skillport と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Skillport に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -101,25 +101,25 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
     ![[Skillport のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次の URL を入力します:
+    1. **[サインオン URL]** テキスト ボックスに、URL として「」と入力します。
 
-    EU のデータセンター: `https://adfs.skillport.eu`
+        EU のデータセンター: `https://adfs.skillport.eu`
 
-    米国のデータセンター: `https://sso.skillport.com`
+        米国のデータセンター: `https://sso.skillport.com`
 
-    b. **[識別子]** ボックスに、次の URL を入力します:
+    1. **[識別子]** ボックスに、URL として「」と入力します。
 
-    EU のデータセンター: `http://adfs.skillport.eu/adfs/services/trust`
+        EU のデータセンター: `http://adfs.skillport.eu/adfs/services/trust`
 
-    米国のデータセンター: `https://sso.skillport.com`
+        米国のデータセンター: `https://sso.skillport.com`
 
-    c. **[応答 URL]** ボックスに、次の URL を入力します:
+    1. **[応答 URL]** ボックスに、URL として「」と入力します。
 
-    EU のデータセンター: `https://adfs.skillport.eu/adfs/ls/`
+        EU のデータセンター: `https://adfs.skillport.eu/adfs/ls/`
 
-      米国のデータセンター: `https://sso.skillport.com/sp/ACS.saml2`
+        米国のデータセンター: `https://sso.skillport.com/sp/ACS.saml2`
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -135,7 +135,7 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-skillport-single-sign-on"></a>Skillport シングル サインオンの構成
 
-**Skillport** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Skillport サポート チーム](https://www.skillsoft.com/about/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Skillport** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Skillport サポート チーム](https://www.skillsoft.com/about/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -166,7 +166,7 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Skillport へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Skillport]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Skillport]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -196,13 +196,12 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Skillport] タイルをクリックすると、SSO を設定した Skillport に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Skillport] タイルをクリックすると、SSO を設定した Skillport に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

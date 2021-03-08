@@ -1,30 +1,25 @@
 ---
 title: Azure Data Factory のコピー アクティビティからストアド プロシージャを呼び出す
 description: Azure Data Factory のコピー アクティビティから、Azure SQL Database または SQL Server のストアド プロシージャを呼び出す方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320983"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374968"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティからのストアド プロシージャの呼び出し
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory でのストアド プロシージャ アクティビティを使用したデータ変換](../transform-data-using-stored-procedure.md)に関するページを参照してください。
 
 
-データを [SQL Server](data-factory-sqlserver-connector.md) または [Azure SQL Database](data-factory-azure-sql-connector.md) にコピーするときに、ストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成することができます。 ストアド プロシージャを使用して、データを対象テーブルに挿入する前に、必要な追加処理 (列の結合、追加の値の検索、複数のテーブルへの挿入など) を実行することもできます。 この機能は、[テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。 
+データを [SQL Server](data-factory-sqlserver-connector.md) または [Azure SQL Database](data-factory-azure-sql-connector.md) にコピーするときに、ストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成することができます。 ストアド プロシージャを使用して、データを対象テーブルに挿入する前に、必要な追加処理 (列の結合、追加の値の検索、複数のテーブルへの挿入など) を実行することもできます。 この機能は、[テーブル値パラメーター](/dotnet/framework/data/adonet/sql/table-valued-parameters)を利用しています。 
 
 次の例は、Data Factory パイプライン (コピー アクティビティ) から SQL Server データベースのストアド プロシージャを呼び出す方法を示しています。  
 

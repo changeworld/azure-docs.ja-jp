@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163681"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91355476"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>DevOps Starter を使用して Azure Functions にデプロイする
 
@@ -95,7 +95,7 @@ DevOps Starter によって、Azure DevOps 組織内に CI/CD パイプライン
 
 1. **[ビルド]** の下のハイパーリンクをクリックします。 ブラウザーのタブに、新しいプロジェクトのビルド パイプラインが表示されます。
 
-    ![Build](_img/azure-devops-project-functions/build.png)
+    ![Azure portal の DevOps Starter ダッシュボードの、CI/CD パイプラインの [ビルド] の下にあるリンクを指し示す矢印を示すスクリーンショット。](_img/azure-devops-project-functions/build.png)
 
 1. **[編集]** を選択します。 このウィンドウで、ビルド パイプラインのさまざまなタスクを調べることができます。 ビルドでは、Git リポジトリからのソース コードのフェッチ、アプリケーションのビルド、単体テストの実行、デプロイに使用される出力の発行など、さまざまなタスクが実行されます。
 

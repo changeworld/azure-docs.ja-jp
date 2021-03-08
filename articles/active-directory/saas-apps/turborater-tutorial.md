@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546391"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519386"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>チュートリアル: Azure Active Directory と TurboRater の統合
 
@@ -28,7 +28,7 @@ TurboRater と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して TurboRater に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,13 +60,13 @@ Azure AD への TurboRater の統合を構成するには、Azure Marketplace �
 
     ![[新しいアプリケーション] オプション](common/add-new-app.png)
 
-1. 検索ボックスに「**TurboRater**」と入力します。 検索結果で **[TurboRater]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
+1. 検索ボックスに「 **TurboRater** 」と入力します。 検索結果で **[TurboRater]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
 
     ![結果一覧の TurboRater](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**B Simon** というテスト ユーザーに基づいて、TurboRater で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと TurboRater 内の関連ユーザーとの間にリンク関係を確立する必要があります。
+このセクションでは、 **B Simon** というテスト ユーザーに基づいて、TurboRater で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと TurboRater 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 TurboRater で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -91,7 +91,7 @@ TurboRater で Azure AD シングル サインオンを構成するには、次�
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -113,7 +113,7 @@ TurboRater で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[TurboRater サポート チーム](https://www.getitc.com/support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** ウィンドウに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択し、特定のオプションの**フェデレーション メタデータ XML** をダウンロードします。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択し、特定のオプションの **フェデレーション メタデータ XML** をダウンロードします。
 
     ![フェデレーション メタデータ XML のダウンロード オプション](common/metadataxml.png)
 
@@ -145,9 +145,9 @@ TurboRater 側でシングル サインオンを構成するには、ダウン�
 
     ![[ユーザー] ウィンドウ](common/user-properties.png)
 
-    1. **[名前]** ボックスに、「**BSimon**」と入力します。
+    1. **[名前]** ボックスに、「 **BSimon** 」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**BSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BSimon\@contoso.com**」のように入力します。
+    1. **[ユーザー名]** ボックスに「 **BSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「 **BSimon\@contoso.com** 」のように入力します。
 
     1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
@@ -187,12 +187,12 @@ TurboRater 側でシングル サインオンを構成するには、ダウン�
 
 このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリ ポータルで **[TurboRater]** を選択すると、シングル サインオンを設定した TurboRater サブスクリプションに自動的にサインインするはずです。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+マイ アプリ ポータルで **[TurboRater]** を選択すると、シングル サインオンを設定した TurboRater サブスクリプションに自動的にサインインするはずです。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアルの一覧](./tutorial-list.md)
 
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-* [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

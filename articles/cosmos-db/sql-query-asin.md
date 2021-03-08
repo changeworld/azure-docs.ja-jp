@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の ASIN
 description: Azure Cosmos DB の Arcsine (ASIN) SQL システム関数が、サインが指定された数値式である角度をラジアンで返す方法について説明します
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8b70738a439b6c64a84a63adf63c83995530e92e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69862df5809bffe7c975b0340993b8e42aa47337
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302697"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332476"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  サインが指定された数値式となる角度をラジアン単位で返します。 アークサインとも呼ばれます。  
   
 ## <a name="syntax"></a>構文

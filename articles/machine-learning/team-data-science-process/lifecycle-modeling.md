@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4719bd21bc6299373f9dabfe4733541c6fa27b94
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720471"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740183"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのモデリング ステージ
 
@@ -43,7 +43,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 
   * **特徴エンジニアリング**:モデルをトレーニングしやすくするために生データからデータの特徴を作成します。
   * **モデル トレーニング**:成功のメトリックを比較することで、最も正確に質問に回答できるモデルを見つけます。
-  * モデルが**運用環境に適している**かどうかを判断します。
+  * モデルが **運用環境に適している** かどうかを判断します。
 
 ### <a name="feature-engineering"></a>機能エンジニアリング
 特徴エンジニアリングでは、分析に使用する特徴を作成するために、未加工の変数の追加、集計、変換を行います。 何がモデルの推進要因となっているかを把握したい場合、それぞれの特徴の相互関係と、それらの特徴が機械学習アルゴリズムでどのように使用されるかを理解する必要があります。 
@@ -53,13 +53,13 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 各種 Azure データ テクノロジを利用して特徴エンジニアリングを行う場合の技術的なガイダンスについては、「[データ サイエンスにおける特徴エンジニアリング](create-features.md)」を参照してください。 
 
 ### <a name="model-training"></a>モデル トレーニング
-回答しようとしている質問の種類に応じて、数多くのモデリング アルゴリズムが利用できます。 アルゴリズムの選択に関するガイダンスについては、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](../studio/algorithm-choice.md)」を参照してください。 この記事では Azure Machine Learning を使用していますが、記載されているガイダンスはすべての機械学習プロジェクトで活用できます。 
+回答しようとしている質問の種類に応じて、数多くのモデリング アルゴリズムが利用できます。 アルゴリズムの選択に関するガイダンスについては、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](../how-to-select-algorithms.md)」を参照してください。 この記事では Azure Machine Learning を使用していますが、記載されているガイダンスはすべての機械学習プロジェクトで活用できます。 
 
 モデル トレーニングのプロセスには、以下のステップが含まれます。 
 
-   * モデリング用のトレーニング データセットとテスト データセットにランダムに**入力データを分割する**。
-   * トレーニング データ セットを使用して**モデルを構築する**。
-   * トレーニング セットとテスト データ セットを**評価**する。 競合する一連の機械学習アルゴリズムを、現状のデータで目的の質問に回答できるよう調整された、各種の関連するチューニング パラメーター (*パラメーター スイープ*と呼ばれる) と共に使用する。
+   * モデリング用のトレーニング データセットとテスト データセットにランダムに **入力データを分割する**。
+   * トレーニング データ セットを使用して **モデルを構築する**。
+   * トレーニング セットとテスト データ セットを **評価** する。 競合する一連の機械学習アルゴリズムを、現状のデータで目的の質問に回答できるよう調整された、各種の関連するチューニング パラメーター (*パラメーター スイープ* と呼ばれる) と共に使用する。
    * 別々の方法での成功のメトリックを比較し、質問に回答するための **"最適" なソリューションを判定する**。
 
 > [!NOTE]
@@ -67,13 +67,11 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 > 
 > 
 
-Microsoft では、複数のアルゴリズムとパラメーター スイープを介して実行し、ベースライン モデルを生成することができる、[自動化されたモデリングおよびレポート ツール](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling)を TDSP と共に提供しています。 このツールでは、変数の重要性を含む、各モデルおよびパラメーターの組み合わせによるパフォーマンスを要約した、ベースライン モデリング レポートも生成されます。 特徴エンジニアリングをさらに促進することができるため、このプロセスも繰り返し実行されます。 
-
-## <a name="artifacts"></a>アーティファクト
+## <a name="artifacts"></a>Artifacts
 このステージで生成されるアーティファクトには、以下のものが含まれます。
 
-   * [特徴セット](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md):モデリング用に作成された特徴は、**データ定義**レポートの **[特徴セット]** セクションに記載されます。 これには、特徴を生成するコードへのポインターと、特徴の生成方法についての説明が含まれます。
-   * [モデル レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md):試行した各モデルについて、各実験の詳細を提供する標準のテンプレート ベースのレポートが生成されます。
+   * [特徴セット](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md):モデリング用に作成された特徴は、**データ定義** レポートの **[特徴セット]** セクションに記載されます。 これには、特徴を生成するコードへのポインターと、特徴の生成方法についての説明が含まれます。
+   * [モデル レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): 試行した各モデルについて、各実験の詳細を提供する標準のテンプレート ベースのレポートが生成されます。
    * **チェックポイント判定**: モデルが実稼働用として十分に機能するかどうかを評価します。 主な考慮事項の一部を以下に示します。
      * テスト データから判断して、質問に対するモデルの回答に十分な確実性があるか。 
      * 別の方法を試す必要があるか。 追加データを収集する、特徴エンジニアリングをさらに実行する、他のアルゴリズムで実験する必要があるか。
@@ -90,4 +88,4 @@ TDSP のライフサイクルの各ステップへのリンクを次に示しま
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
-Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)」を参照してください。 
+Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](./index.yml)」を参照してください。

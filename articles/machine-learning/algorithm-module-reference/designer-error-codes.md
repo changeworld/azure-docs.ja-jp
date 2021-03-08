@@ -1,7 +1,7 @@
 ---
-title: デザイナー (プレビュー) モジュール エラーのトラブルシューティング
+title: デザイナー モジュール エラーのトラブルシューティング
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナーでのモジュール エラー コードのトラブルシューティング (プレビュー)
+description: Azure Machine Learning デザイナーの自動モジュール エラー コードの読み取りとトラブルシューティングを行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 11/25/2020
+ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876922"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065475"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
-この記事では、Machine Learning パイプラインのトラブルシューティングに役立つ Azure Machine Learning デザイナー (プレビュー) のエラー メッセージと例外コードについて説明します。
+この記事では、Machine Learning パイプラインのトラブルシューティングに役立つ Azure Machine Learning デザイナーのエラー メッセージと例外コードについて説明します。
 
 デザイナーでエラー メッセージを確認するには、次の手順に従います。  
 
@@ -279,13 +279,22 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 ## <a name="error-0014"></a>エラー 0014  
  列の一意の値の数が許容されているより多い場合、例外が発生します。  
 
- このエラーは、列に含まれる一意の値の数が多すぎる場合に発生します。  たとえば、列がカテゴリ データとして処理するように指定されていても、列の一意の値が多すぎて処理を完了できない場合、このエラーが発生する可能性があります。 また、2 つの入力の間で一意の値の数が一致していない場合にも、このエラーが発生する可能性があります。   
+ このエラーは、ID 列やテキスト列など、列に含まれる一意の値の数が多すぎる場合に発生します。 列がカテゴリ データとして処理するように指定されていても、列の一意の値が多すぎて処理を完了できない場合、このエラーが発生する可能性があります。 また、2 つの入力の間で一意の値の数が一致していない場合にも、このエラーが発生する可能性があります。   
+
+次の条件の **両方** を満たした場合に、一意の値が許可される数を上回るエラーが発生します。
+
+- 1 つの列の 97% を超えるインスタンスが一意の値であるため、ほぼすべてのカテゴリが互いに異なっています。
+- 1 つの列に 1,000 個を超える一意の値が含まれています。
 
 **解決策:**
 
 エラーが発生したモジュールを開き、入力として使用されている列を特定します。 一部のモジュールでは、データセット入力を右クリックして **[視覚化]** を選択し、一意の値の数とその分布が含まれる個々の列の統計情報を取得できます。
 
 グループ化または分類に使用する列の場合は、列の一意の値の数を減らすための手順を実行します。 列のデータ型に応じて、さまざまな方法で減らすことができます。 
+
+モデル トレーニング中の意味のある特徴ではない ID の場合、[[メタデータの編集]](../algorithm-module-reference/edit-metadata.md) を使用してその列を **[Clear feature]\(特徴のクリア\)** としてマークすれば、モデルのトレーニングで使用されなくなります。 
+
+テキスト列の場合、[特徴ハッシュ](../algorithm-module-reference/feature-hashing.md)や[テキストからの N gram 特徴抽出モジュール](../algorithm-module-reference/extract-n-gram-features-from-text.md)を利用し、テキスト列を事前処理できます。
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -372,7 +381,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 
  要件およびデータをどうすればよいか確認するには、入力としてデータセットを使用するモジュールのヘルプ トピックをご覧ください。  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->。  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
 
 |例外メッセージ|
 |------------------------|
@@ -491,7 +500,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 
 **解決策:**
 
-+ エラーを生成したモジュールを開き、ラベル列が存在するかどうかを確認します。 予測しようとしている単一の結果 (または従属変数) が列に含まれてさえいれば、列の名前またはデータ型は関係ありません。 どの列にラベルがあるか不明な場合は、*クラス*や*ターゲット*などの汎用的な名前を探します。 
++ エラーを生成したモジュールを開き、ラベル列が存在するかどうかを確認します。 予測しようとしている単一の結果 (または従属変数) が列に含まれてさえいれば、列の名前またはデータ型は関係ありません。 どの列にラベルがあるか不明な場合は、*クラス* や *ターゲット* などの汎用的な名前を探します。 
 +  データセットにラベル列が含まれていない場合は、ラベル列がアップストリームで明示的に、または誤って削除された可能性があります。 また、データセットがアップストリームのスコアリング モジュールの出力ではない可能性もあります。
 + ラベル列として列を明示的にマークするには、[メタデータの編集](edit-metadata.md)モジュールを追加して、データセットを接続します。 ラベル列だけを選択し、 **[フィールド]** ドロップダウン リストから **[ラベル]** を選択します。 
 + 間違った列をラベルとして選択した場合は、 **[フィールド]** から **[ラベルのクリア]** を選択して、列のメタデータを修正できます。 
@@ -521,7 +530,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 
  Azure Machine Learning では、複数の列の名前が同じ場合、このエラーが発生します。 このエラーを受け取る方法の 1 つとして、データセットにヘッダー行がなく、次のような列名が自動的に割り当てられる場合があります。(Col0、Col1 など)  
 
-**解決策:** 複数の列に同じ名前が付けられている場合は、入力データセットとモジュールの間に[メタデータの編集](edit-metadata.md)モジュールを挿入します。 [メタデータの編集](edit-metadata.md)で列セレクターを使って名前を変更する列を選択し、 **[新しい列名]** テキスト ボックスに新しい名前を入力します。  
+**解決策:** 複数の列に同じ名前が付けられている場合は、入力データセットとモジュールの間に [メタデータの編集](edit-metadata.md)モジュールを挿入します。 [メタデータの編集](edit-metadata.md)で列セレクターを使って名前を変更する列を選択し、 **[新しい列名]** テキスト ボックスに新しい名前を入力します。  
 
 |例外メッセージ|
 |------------------------|
@@ -604,7 +613,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 
  Azure Machine Learning では、選択された列の数が必要とされるより少ない場合、このエラーが発生します。  必要最少数の列が選択されていない場合、このエラーを受け取ります。  
 
-**解決策:** **列セレクター**を使って、列の選択に列を追加します。  
+**解決策:** **列セレクター** を使って、列の選択に列を追加します。  
 
 |例外メッセージ|
 |------------------------|
@@ -713,7 +722,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **解決策:** このエラーは多くの状況によって発生し、特定の解決策はありません。  
  次の表はこのエラーに対する一般的なメッセージであり、後で状況について具体的に説明します。 
 
- 使用可能な詳細情報がない場合は、[Microsoft Q&A 質問ページでフィードバックを送信](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html)して、エラーが発生したモジュールおよび関連する状況に関する情報を提供してください。
+ 使用可能な詳細情報がない場合は、[Microsoft Q&A 質問ページでフィードバックを送信](/answers/topics/azure-machine-learning-studio-classic.html)して、エラーが発生したモジュールおよび関連する状況に関する情報を提供してください。
 
 |例外メッセージ|
 |------------------------|
@@ -862,7 +871,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  Azure Machine Learning では、Azure ストレージ アカウントへのアクセスに使用するキーが正しくない場合、このエラーが発生します。 たとえば、コピーして貼り付けるときに Azure ストレージ キーが切り捨てられた場合、または間違ったキーを使用した場合、このエラーが表示される可能性があります。  
 
- Azure ストレージ アカウントのキーの取得方法について詳しくは、[ストレージ アクセス キーの表示、コピー、再生成](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/)に関する記事をご覧ください。  
+ Azure ストレージ アカウントのキーの取得方法について詳しくは、[ストレージ アクセス キーの表示、コピー、再生成](../../storage/common/storage-account-create.md)に関する記事をご覧ください。  
 
 **解決策:** モジュールを見直し、Azure ストレージ キーがアカウントに対して正しいことを確認します。必要な場合は、クラシック Azure portal からキーをもう一度コピーします。  
 
@@ -1083,9 +1092,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 機械学習での Hive クエリの使用については、次の記事をご覧ください。
 
-+ [Hive テーブルを作成して Azure Blob Storage からデータを読み込む](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [Hive クエリを使用してテーブルのデータを探索する](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [Hive テーブルを作成して Azure Blob Storage からデータを読み込む](../team-data-science-process/move-hive-tables.md)
++ [Hive クエリを使用してテーブルのデータを探索する](../team-data-science-process/explore-data-hive-tables.md)
++ [Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する](../team-data-science-process/create-features-hive.md)
 + [SQL ユーザー向け Hive のチート シート (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1164,7 +1173,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
 このイベントでのエラー処理は、ビン分割方法のカスタマイズがより広い範囲で可能だった以前のバージョンの Azure Machine Learning で導入されました。 現在は、ビン分割方法はすべてドロップダウン リストでの選択に基づくため、技術的には、このエラーが発生する可能性はありません。
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |例外メッセージ|
 |------------------------|
@@ -1201,7 +1210,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
  Azure Machine Learning では、Azure ストレージ コンテナー名が誤って指定される場合、このエラーが発生します。 Azure Blob Storage に書き込むときに、 **[Path to blob beginning with container]\(コンテナーで始まる BLOB へのパス\)** オプションを使用して、コンテナーと BLOB (ファイル) 名の両方を指定していない場合、このエラーを受け取ります。  
 
-**解決策:** [データのエクスポート](export-data.md) モジュールを見直し、BLOB へのパスの指定に、コンテナーとファイル名の両方が**コンテナー/ファイル名**の形式で含まれていることを確認します。  
+**解決策:** [データのエクスポート](export-data.md) モジュールを見直し、BLOB へのパスの指定に、コンテナーとファイル名の両方が **コンテナー/ファイル名** の形式で含まれていることを確認します。  
 
 |例外メッセージ|
 |------------------------|
@@ -1516,7 +1525,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 
 このエラーは、他の方法では処理されない内部エンジン エラーをキャプチャするために提供されます。 そのため、このエラーの原因は、エラーが生成されたモジュールによって異なる可能性があります。  
 
-詳細なヘルプを受けるには、エラーに付随する詳細なメッセージに、入力として使用したデータなどのシナリオの説明を添えて、[Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) フォーラムに投稿することをお勧めします。 このフィードバックは、エラーの優先順位付けや、さらに取り組むべき最重要問題の特定に役立てられます。  
+詳細なヘルプを受けるには、エラーに付随する詳細なメッセージに、入力として使用したデータなどのシナリオの説明を添えて、[Azure Machine Learning](/answers/topics/azure-machine-learning.html) フォーラムに投稿することをお勧めします。 このフィードバックは、エラーの優先順位付けや、さらに取り組むべき最重要問題の特定に役立てられます。  
 
 |例外メッセージ|
 |------------------------|
@@ -1524,3 +1533,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 |Library exception: {exception}. (ライブラリの例外: {exception}。)|
 |Unknown library exception: {exception}. (不明なライブラリの例外: {exception}。) {customer_support_guidance}。|
 
+
+## <a name="execute-python-script-module"></a>Execute Python Script モジュール
+
+**Execute Python Script モジュール** の **70_driver_logs** で **azureml_main** を検索すると、エラーが発生した行を見つけることができます。 たとえば、"azureml_main の File "/tmp/tmp01_ID/user_script.py", line 17" は、Python スクリプトの 17 行目でエラーが発生したことを示します。

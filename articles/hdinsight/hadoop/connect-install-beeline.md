@@ -1,19 +1,16 @@
 ---
 title: Apache Beeline に接続またはインストールする - Azure HDInsight
 description: Apache Beeline クライアントに接続して、HDInsight での Hadoop で Hive クエリを実行する方法について説明します。 Beeline は、JDBC を介して HiveServer2 を使用するためのユーティリティです。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 05/27/2020
-ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ab5dedf6718dad4f16fde59d905e2e59be5c495f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754958"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944470"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>HDInsight での Apache Beeline に接続するか、ローカルでインストールする
 
@@ -104,7 +101,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="install-beeline-client"></a>Beeline クライアントをインストールする
 
-Beeline はヘッド ノードに含まれていますが、ローカルにインストールしたい場合があります。  ローカル コンピューターにインストールするための手順は、[Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10)に基づいています。
+Beeline はヘッド ノードに含まれていますが、ローカルにインストールしたい場合があります。  ローカル コンピューターにインストールするための手順は、[Linux 用 Windows サブシステム](/windows/wsl/install-win10)に基づいています。
 
 1. パッケージ リストを更新します。 ご利用の Bash シェルで次のコマンドを入力します。
 
@@ -144,7 +141,7 @@ Beeline はヘッド ノードに含まれていますが、ローカルにイ�
     tar -xvzf apache-hive-1.2.1-bin.tar.gz
     ```
 
-1. bashrc ファイルをさらに修正します。 アーカイブがアンパックされた場所へのパスを識別する必要があります。 [Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10) を使用し、手順に正確に従った場合、パスは `/mnt/c/Users/user/` になります。ここで、`user` はユーザー名です。
+1. bashrc ファイルをさらに修正します。 アーカイブがアンパックされた場所へのパスを識別する必要があります。 [Linux 用 Windows サブシステム](/windows/wsl/install-win10) を使用し、手順に正確に従った場合、パスは `/mnt/c/Users/user/` になります。ここで、`user` はユーザー名です。
 
     1. ファイルを開きます: `nano ~/.bashrc`
 

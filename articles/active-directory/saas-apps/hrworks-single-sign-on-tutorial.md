@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6b23213d9d986c62a227b3e182a22896d128222
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549157"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442543"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と HRworks Single Sign-On の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549157"
 * ユーザーが自分の Azure AD アカウントで HRworks Single Sign-On に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -122,7 +122,7 @@ HRworks Single Sign-On で Azure AD の SSO を構成してテストするには
 
 ## <a name="configure-hrworks-single-sign-on-sso"></a>HRworks Single Sign-On の SSO の構成
 
-1. HRworks Single Sign-On 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. HRworks Single Sign-On 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -156,28 +156,28 @@ Azure AD ユーザーが HRworks Single Sign-On にサインインできるよ�
 
 1. メニュー バーの左側で、 **[Administrator]\(管理者\)**  >  **[Persons]\(人\)**  >  **[Persons]\(人\)**  >  **[New person]\(新しい人\)** の順にクリックします。
 
-     ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![[Persons]\(人\) および [New person]\(新しい人\) が選択されている HRworks ページを示すスクリーンショット。](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. ポップアップで、 **[Next]\(次へ\)** をクリックします。
 
-    ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![人に対して選択できる国の一覧を示すスクリーンショット。](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. **[Create new person with country for legal terms]\(法的条項のための国を指定した新しい人の作成\)** ポップアップで、 **[First name]\(名\)** 、 **[Last name]\(姓\)** などのそれぞれの詳細を入力し、 **[Create]\(作成\)** をクリックします。
 
-    ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![人の名と姓を入力できるテキスト ボックスを示すスクリーンショット。](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで HRworks Single Sign-On のタイルをクリックすると、SSO を設定した HRworks Single Sign-On に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで HRworks Single Sign-On のタイルをクリックすると、SSO を設定した HRworks Single Sign-On に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で HRworks Single Sign-On を試す](https://aad.portal.azure.com/)

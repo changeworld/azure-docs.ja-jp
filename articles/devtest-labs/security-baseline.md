@@ -3,12 +3,12 @@ title: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 description: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c192f881dd4a8544b9c833eece56fb3765cd07f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212309"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582016"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -34,7 +34,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 **ガイダンス:** Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログにより、管理プレーン レベルで Azure DevTest Labs インスタンスで実行された操作に関する分析情報が提供されます。 Azure アクティビティ ログのデータを使用すると、DevTest Labs インスタンスの管理プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定することができます。
 
-詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -43,7 +43,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 **ガイダンス:** Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログにより、管理プレーン レベルで Azure DevTest Labs インスタンスで実行された操作に関する分析情報が提供されます。 Azure アクティビティ ログのデータを使用すると、DevTest Labs インスタンスの管理プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定することができます。
 
-詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -54,7 +54,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 
 詳細については、次の記事を参照してください。 
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 - [Azure Security Center のデータ収集について](../security-center/security-center-enable-data-collection.md)
 
 **Azure Security Center の監視**: はい
@@ -64,7 +64,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 ***ガイダンス:** Azure Monitor で、組織のコンプライアンス規則に従って、Azure DevTest Labs インスタンスに関連付けられている Log Analytics ワークスペースのログの保有期間を設定します。
 
-詳細については、次の記事を参照してください。[ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+詳細については、次の記事を参照してください。[ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -75,8 +75,8 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 
 詳細については、次の記事を参照してください。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/diagnostic-settings.md)
-- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/diagnostic-settings.md)
+- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -85,7 +85,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7:異常なアクティビティについてのアラートを有効にする
 **ガイダンス:** Azure Log Analytics ワークスペースを使用して、Azure DevTest Labs に関連するセキュリティ ログやイベントでの異常なアクティビティを監視し、アラート通知を行います。
 
-詳細については、次の記事を参照してください。[Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+詳細については、次の記事を参照してください。[Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -109,8 +109,8 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 **ガイダンス:** Azure DevTest Labs によって、顧客によって所有および管理されている Azure Compute マシンが作成されます。 サポートされているすべての Azure Windows VM で Microsoft Monitoring Agent を使用して、プロセス作成イベントと `CommandLine` フィールドをログに記録します。 サポートされている Azure Linux VM では、ノード単位でコンソール ログを手動で構成し、Syslog を使用してデータを格納することができます。 さらに、Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、Azure VM からログ データに対してクエリを実行します。
 
 - [Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
-- [Azure Monitor の Syslog データ ソース](../azure-monitor/platform/data-sources-syslog.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
+- [Azure Monitor の Syslog データ ソース](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center の監視**: はい
 
@@ -159,7 +159,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 **ガイダンス:** DevTest Labs では、ID 管理用の Azure AD サービスが使用されます。 DevTest ラボに基づく環境へのアクセスをユーザーに許可する場合は、次の 2 つの重要な側面を考慮します。
 
-- **リソース管理:** リソースを管理 (VM の作成、環境の作成、成果物の開始、停止、再起動、削除、適用など) するための Azure portal へのアクセス権を付与します。 Azure でのリソース管理には、ロールベースのアクセス制御 (RBAC) を使用します。 ユーザーにロールを割り当て、リソースとアクセス レベルのアクセス許可を設定します。
+- **リソース管理:** リソースを管理 (VM の作成、環境の作成、成果物の開始、停止、再起動、削除、適用など) するための Azure portal へのアクセス権を付与します。 Azure でのリソース管理には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。 ユーザーにロールを割り当て、リソースとアクセス レベルのアクセス許可を設定します。
 - **仮想マシン (ネットワーク レベル)** :既定の構成では、VM にはローカル管理者アカウントが使用されます。 使用できるドメイン (Azure AD Domain Services、オンプレミスのドメイン、またはクラウドベースのドメイン) がある場合は、マシンをドメインに参加させることができます。 ユーザーは、ドメイン参加成果物を使用するドメインベースの ID を使用して、マシンに接続できます。 
 
 - [DevTest Labs の参照アーキテクチャ](devtest-lab-reference-architecture.md#architecture)
@@ -183,7 +183,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 **ガイダンス:** MFA が構成されている特権アクセス ワークステーション (PAW) を使用して Azure リソースにログインし、構成します。
 
-- [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
+- [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)  
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Azure Security Center の監視**: 該当なし
@@ -264,7 +264,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 **ガイダンス:** 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
 
-- [タグを作成して使用する方法](../azure-resource-manager/resource-group-using-tags.md)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視:** 適用なし
 
@@ -273,10 +273,10 @@ DevTest Labs には、既定のパスワードという概念がありません�
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 **ガイダンス:** 開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Azure DevTest Labs のインスタンスは、仮想ネットワークとサブネットで分離し、適切にタグ付けする必要があります。 
 
-- [追加の Azure サブスクリプションを作成する方法](../billing/billing-create-subscription.md)
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 - [DevTest Labs の仮想ネットワークを構成する方法](devtest-lab-configure-vnet.md)
-- [タグを作成して使用する方法](../azure-resource-manager/resource-group-using-tags.md)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 - [DevTest Labs のタグを作成して使用する方法](devtest-lab-add-tag.md)
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -315,9 +315,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 **責任:** Customer
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
-**ガイダンス:** Azure DevTest Labs 内のラボへのアクセスを制御するには、Azure Active Directory (Azure AD) のロールベース アクセス制御 (RBAC) を使用します。
+**ガイダンス:** Azure DevTest Labs 内のラボへのアクセスを制御するには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 - [DevTest Labs でのロールについて理解する](devtest-lab-add-devtest-user.md)
 
 **Azure Security Center の監視:** 適用なし
@@ -353,7 +353,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 **ガイダンス:** DevTest Labs インスタンスおよび他の重要なリソースまたは関連リソースへの変更が発生したときにアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 - [DevTest Labs アクティビティ ログ イベントのアラートを作成する方法](create-alerts.md)
 
 **Azure Security Center の監視:** 適用なし
@@ -379,8 +379,8 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 **ガイダンス:** DevTest Labs 内でホストされている Windows および Linux VM に最新のセキュリティ更新プログラムが確実にインストールされるようにするには、Azure Update Management を使用します。 Windows VM については、Windows Update が有効になっていて、自動的に更新するよう設定されていることを確認します。 現在、この設定は DevTest Labs を通じて構成することはできませんが、ラボ管理者またはサブスクリプション管理者は、サブスクリプション内の基になるコンピューティング VM でこの設定を構成できます。 
 
-- [Azure で VM に対して Update Management を構成する方法](../automation/update-management/update-mgmt-overview.md)
-- [Security Center によって監視される Azure セキュリティ ポリシーについて理解する](../security-center/security-center-policy-definitions.md)
+- [Azure で VM に対して Update Management を構成する方法](../automation/update-management/overview.md)
+- [Security Center によって監視される Azure セキュリティ ポリシーについて理解する](../security-center/policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -393,8 +393,8 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 サブスクリプション管理者は、Azure Update Management ソリューションを使用して、DevTest Labs VM の更新プログラムと修正プログラムを管理することもできます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-- [Azure の Update Management ソリューション](../automation/update-management/update-mgmt-overview.md)
-- [VM の更新プログラムとパッチを管理する](../automation/update-management/update-mgmt-overview.md)
+- [Azure の Update Management ソリューション](../automation/update-management/overview.md)
+- [VM の更新プログラムとパッチを管理する](../automation/update-management/overview.md)
 
 **Azure Security Center の監視:** 適用なし
 
@@ -444,7 +444,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **ガイダンス:** タグ付け、管理グループ、個別のサブスクリプション、および必要に応じて個別のラボを使用して、ラボやラボ関連のリソースを整理し、追跡することができます。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションからすばやく削除されるようにします。
 
 - [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 - [DevTest Labs を使用してラボを作成する方法](devtest-lab-create-lab.md)
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 - [ラボのタグを構成する方法](devtest-lab-add-tag.md)
@@ -493,7 +493,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **ガイダンス:** Azure Automation は、ワークロードとリソースの展開、運用、および使用停止を完全に制御します。 サブスクリプション管理者は、Change Tracking を使用して、DevTest Labs でホストされている VM にインストールされているすべてのソフトウェアを識別できます。 独自のプロセスを実装するか、Azure Automation State Configuration を使用して、承認されていないソフトウェアを削除できます。
 
 - [Azure Automation の概要](../automation/automation-intro.md)
-- [Change Tracking ソリューションを使用して環境内の変更を追跡する](../automation/change-tracking.md)
+- [Change Tracking ソリューションを使用して環境内の変更を追跡する](../automation/change-tracking/overview.md)
 - [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
 
 **Azure Security Center の監視:** 利用不可
@@ -517,7 +517,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 次の記事をご覧ください。 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/not-allowed-resource-types.md)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視:** はい
 
@@ -559,7 +559,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 - [DevTest Labs の仮想ネットワークの構成](devtest-lab-configure-vnet.md)
 - [Azure Firewall の概要](../firewall/overview.md)
 - [Web アプリケーション ファイアウォールの概要](../web-application-firewall/overview.md)
-- [ネットワーク セキュリティの概要](../virtual-network/security-overview.md)
+- [ネットワーク セキュリティの概要](../virtual-network/network-security-groups-overview.md)
 - [Azure Virtual Network の概要]()
 - [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)
 - [サブスクリプション決定ガイド](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -617,9 +617,9 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 また、Microsoft によって公開された Azure Marketplace の仮想マシン イメージは、Microsoft によって管理および維持されます。
 
-- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
-- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [DevTest Labs でイメージ ファクトリを作成する方法](image-factory-create.md)
 
 **Azure Security Center の監視**: はい
@@ -629,8 +629,8 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 **ガイダンス:** カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) (Azure DevOps に統合されている場合) で定義された特定のユーザー、組み込みセキュリティ グループ、またはグループに対するアクセス許可を付与または拒否できます。
 
-- [Azure Repos Git チュートリアル](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [アクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure Repos Git チュートリアル](/azure/devops/repos/git/gitworkflow)
+- [アクセス許可とグループについて](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Azure DevTest Labs と Azure DevOps ワークフローの統合](devtest-lab-dev-ops.md)
 
 **Azure Security Center の監視:** 適用なし
@@ -638,12 +638,12 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **責任:** Customer
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
-**ガイダンス:** カスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 Shared Image Gallery を使用すると、それを必要とする特定のラボとイメージを共有できます。 コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を使用して、承認されたユーザーだけがイメージにアクセスできるようにします。
+**ガイダンス:** カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 Shared Image Gallery を使用すると、それを必要とする特定のラボとイメージを共有できます。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を使用して、承認されたユーザーだけがイメージにアクセスできるようにします。
 
-- [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
-- [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 - [Azure DevTest Labs 用の Shared Image Gallery を構成する](configure-shared-image-gallery.md)
-- [コンテナー レジストリの RBAC を理解する](../container-registry/container-registry-roles.md)
+- [コンテナー レジストリの Azure RBAC を理解する](../container-registry/container-registry-roles.md)
 
 **Azure Security Center の監視:** 適用なし
 
@@ -681,7 +681,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10:オペレーティング システムの自動構成監視を実装する
 **ガイダンス:** Azure Security Center を使用して、コンテナーの OS と Docker の設定のベースライン スキャンを実行します。
 
-- [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/security-center-container-recommendations.md)
+- [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/container-security.md)
 
 **Azure Security Center の監視:** 適用なし
 
@@ -692,8 +692,9 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 
 - [マネージド ID を構成して DevTest Labs に Azure Resource Manager 環境をデプロイする](use-managed-identities-environments.md)
 - [マネージド ID を構成して DevTest Labs に仮想マシンをデプロイする](enable-managed-identities-lab-vms.md)
-- [キー コンテナーを作成する方法](../key-vault/quick-create-portal.md)
-- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/managed-identity.md)
+- [キー コンテナーを作成する方法](../key-vault/general/quick-create-portal.md)
+- [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+- [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視:** はい
 

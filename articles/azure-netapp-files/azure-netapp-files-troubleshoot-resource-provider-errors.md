@@ -13,20 +13,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483467"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374883"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング 
 
 この記事では、Azure NetApp Files リソースプロバイダーの一般的なエラー、その原因、解決策、回避策 (ある場合) について説明します。
 
 ## <a name="common-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files リソースプロバイダーの一般的なエラー
+
+"***このリージョンでは `netAppAccounts` の作成が制限されています。***"
+
+この状況は、サブスクリプションが Azure NetApp Files の順番待ちリストに記載されており、ユーザーが NetApp アカウントを作成しようとした場合に発生します。
+
+* 原因:   
+Azure NetApp Files の Azure リソース プロバイダーが正常に登録されていません。 
+ 
+* 解決方法:   
+サブスクリプションが順番待ちリストに記載された後、[Azure NetApp リソース プロバイダーの登録](azure-netapp-files-register.md#resource-provider)に記載されているすべての手順を完了します。
 
 ***BareMetalTenantId cannot be changed. (BareMetalTenantId を変更できません。)***  
 
@@ -45,7 +55,7 @@ ms.locfileid: "85483467"
 容量プールのサービス レベルを、プールにボリュームが存在する状態で更新しようとしています。
 * 解決方法:   
 容量プールからボリュームをすべて削除したうえで、サービス レベルを変更してください。
-* 対処法:   
+* 対応策 :   
 別の容量プールを作成した後、その新しい容量プールにもう一度ボリュームを作成します。
 
 ***PoolId cannot be changed (PoolId を変更できません)***  
@@ -65,7 +75,7 @@ ms.locfileid: "85483467"
 ボリュームの作成後にファイル パス (`CreationToken`) を変更しようとしていますが、これはサポートされている操作ではありません。 
 * 解決方法:   
 ファイル パスの変更が不要な場合は、要求からパラメーターを削除し、エラー メッセージを無視することを検討してください。
-* 対処法:   
+* 対応策 :   
 ファイル パス (`CreationToken`) を変更する必要がある場合、新しいファイル パスで新しいボリュームを作成し、データを新しいボリュームに移行できます。
 
 ***CreationToken must be at least 16 characters long. (CreationToken は 16 文字以上でなければなりません。)***
@@ -85,7 +95,7 @@ ms.locfileid: "85483467"
 ドメイン名のプロパティを更新しようとしています。
 * 解決方法:    
 [なし] : ドメイン名を変更することはできません。
-* 対処法:   
+* 対応策 :   
 Active Directory の構成を使用して、すべてのボリュームを削除します。 その後、Active Directory の構成を削除してからボリュームを作成し直します。
 
 ***Duplicate value error for object ExportPolicy.Rules[RuleIndex]. (オブジェクト ExportPolicy.Rules[RuleIndex] の重複値エラー。)***
@@ -96,7 +106,7 @@ Active Directory の構成を使用して、すべてのボリュームを削除
 定義されているエクスポート ポリシーで、エクスポート ポリシー ルールの要件が満たされていません。 エクスポート ポリシー ルールは最小で 1 つ、最大で 5 つとする必要があります。
 * 解決方法:   
 インデックスがまだ使用されていないこととそれが 1 から 5 までの範囲内であることを確認します。
-* 対処法:   
+* 対応策 :   
 設定しようとしているルールに別のインデックスを使用します。
 
 ***Error {action} {resourceTypeName} ({resourceTypeName} の {action} 中にエラーが発生しました)***
@@ -107,7 +117,7 @@ Active Directory の構成を使用して、すべてのボリュームを削除
 このエラーは、原因が不明なハンドルされない例外です。
 * 解決方法:   
 Azure サポート センターに連絡して、ログに記録された詳しい理由をレポートしてください。
-* 対処法:   
+* 対応策 :   
 [なし] :
 
 ***ファイル パス名には、文字、数字、ハイフン (""-"") のみを含めることができます。***
@@ -118,7 +128,7 @@ Azure サポート センターに連絡して、ログに記録された詳し�
 ファイル パスにピリオド (".")、コンマ (",")、アンダースコア ("_")、ドル記号 ("$") など、サポートされていない文字が含まれています。
 * 解決方法:   
 入力したファイル パスから英字、数字、ハイフン ("-") 以外の文字を削除してください。
-* 対処法:   
+* 対応策 :   
 アンダースコアをハイフンに置き換えたり、スペースの代わりに各単語の先頭を示すために大文字を使用したりすることができます。  たとえば、"new volume" の代わりに "NewVolume" を使用します。
 
 ***FileSystemId cannot be changed. (FileSystemId を変更できません。)***
@@ -156,7 +166,7 @@ API バージョンが送信されていないか無効な値を含んでいま�
 `RuleIndex`、`AllowedClients`、`UnixReadOnly`、`UnixReadWrite`、`Nfsv`3、`Nfsv4` フィールドの少なくとも 1 つで、入力検証要求が失敗しました。
 * 解決方法:   
 コマンド ラインで競合しない必須のパラメーターを必ずすべて設定してください。 たとえば、`UnixReadOnly` パラメーターと `UnixReadWrite` パラメーターを同時に設定することはできません。
-* 対処法:   
+* 対応策 :   
 前述の解決方法を参照してください。
 
 ***IP range {0} to {1} for vlan {2} is already in use (vlan {2} の IP 範囲 {0} から {1} は既に使用されています)***
@@ -249,7 +259,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 基礎 API が応答しておらず、結果的に内部エラーが発生します。 このエラーはおそらく一時的なものです。
 * 解決方法:   
 この問題はおそらく一時的なものになります。 しばらくすると、要求が成功するはずです。
-* 対処法:   
+* 対応策 :   
 [なし] : 基礎 API はボリュームの管理に不可欠です。
 
 ***'{0}' に対して操作結果 ID が見つかりません。***
@@ -260,7 +270,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 内部エラーが発生し、操作を完了できません。
 * 解決方法:   
 このエラーはおそらく一時的なものです。 しばらく待ってから再試行してください。 問題が解決しない場合、チケットを作成し、サポート チームに問題を調査させてください。
-* 対処法:   
+* 対応策 :   
 数分待ってから、問題が解消されていないかどうかを確認します。
 
 ***Not allowed to mix protocol types CIFS and NFS (プロトコルの種類 CIFS と NFS を混在させることはできません)***
@@ -271,7 +281,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 ボリュームのプロパティに、CIFS (SMB) プロトコルと NFS プロトコルの両方の種類が使用されています。
 * 解決方法:   
 プロトコルの種類のいずれかを削除してください。
-* 対処法:   
+* 対応策 :   
 プロトコルの種類のプロパティを空または NULL のままにします。
 
 ***Number of items: {value} for object: ExportPolicy.Rules[RuleIndex] is outside min-max range. (項目数: オブジェクト: ExportPolicy.Rules[RuleIndex] の {value} が最小と最大の範囲の外です。)***
@@ -282,7 +292,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 定義したエクスポート ポリシーで必須範囲が満たされていません。
 * 解決方法:   
 インデックスがまだ使用されていないこととそれが 1 から 5 までの範囲内であることを確認します。
-* 対処法:   
+* 対応策 :   
 ボリュームでエクスポート ポリシーを使用することは強制ではありません。 エクスポート ポリシー ルールを使用する必要がない場合、エクスポート ポリシーを完全に省略できます。
 
 ***Only one active directory allowed (許容される Active Directory は 1 つだけです)***
@@ -293,7 +303,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 Active Directory を (更新するのではなく) 作成しようとしていますが、Active Directory は既に存在します。
 * 解決方法:   
 Active Directory の構成が使用されていない場合は、最初に既存の構成を削除してから、作成操作を再試行してください。
-* 対処法:   
+* 対応策 :   
 [なし] : 許可される Active Directory は 1 つだけです。
 
 ***Operation '{operation}' not supported. (操作 '{operation}' はサポートされません。)***
@@ -341,7 +351,7 @@ Active Directory の構成が使用されていない場合は、最初に既存
 容量プール内のすべてのボリュームで使用されているバイト数 (usedBytes) よりも小さいサイズに容量プールを更新しようとしています。  または、容量プールの空き領域を超えるボリュームを作成しようとしています。  または、新しいサイズが容量プールの空き領域を超えるような形で、ボリュームのサイズ変更を試みています。
 * 解決方法:   
 容量プールのサイズをもっと大きい値に設定するか、作成するボリュームのサイズを小さくしてください。
-* 対処法:   
+* 対応策 :   
 容量プールのサイズをこのサイズに更新できるようにボリュームを削減します。
 
 ***The property: Location for Snapshot must be the same as Volume (プロパティ: スナップショットの場所はボリュームと同じである必要があります)***
@@ -370,7 +380,7 @@ name プロパティは空のままにするか、`resourceId` の (最後のバ
 ボリュームの `protocolType` プロパティに無効な値を設定しようとしています。
 * 解決方法:   
 `protocolType` に有効な文字列を設定します。
-* 対処法:   
+* 対応策 :   
 `protocolType` を null として設定します。
 
 ***Protocol types cannot be changed (プロトコルの種類は変更できません)***
@@ -381,7 +391,7 @@ name プロパティは空のままにするか、`resourceId` の (最後のバ
 `ProtocolType` プロパティは、ボリュームの作成時に設定されます。  これを更新することはできません。
 * 解決方法:   
 [なし] :
-* 対処法:   
+* 対応策 :   
 新しいプロトコルの種類で別のボリュームを作成します。
 
 ***型が {resourceType} のリソースを作成すると、{parentResourceType} ごとの型 {resourceType} の {quota} リソースのクォータを超えます。現在のリソース数は {currentCount} です。新しいリソースを作成する前に、この型のいくつかのリソースを削除してください。***
@@ -392,7 +402,7 @@ name プロパティは空のままにするか、`resourceId` の (最後のバ
 リソースを作成しようとしていますが、クォータ制限に達しています (例: サブスクリプションあたりの `NetAppAccounts`、`NetAppAccount` あたりの `CapacityPools` など)。
 * 解決方法:   
 クォータ制限を増やします。
-* 対処法:   
+* 対応策 :   
 同じ種類の未使用リソースを削除してから再度作成してください。
 
 ***読み取り専用プロパティ '{propertyName}' の値を受け取りました。***
@@ -412,7 +422,7 @@ name プロパティは空のままにするか、`resourceId` の (最後のバ
 既に削除されているかリソース名の綴りに間違いがある、存在しないリソース (ボリュームやスナップショットなど) を参照しようとしています。
 * 解決方法:   
 正しく参照されるよう、綴りに間違いがないか要求を確認してください。
-* 対処法:   
+* 対応策 :   
 前の「解決方法」セクションを参照してください。
 
 ***Service level ‘{volumeServiceLevel}’ is higher than parent ‘{poolServiceLevel}’ (サービス レベル ‘{volumeServiceLevel}’ が親 ‘{poolServiceLevel}’ を超えています)***
@@ -423,7 +433,7 @@ name プロパティは空のままにするか、`resourceId` の (最後のバ
 親の容量プールよりも高いランクのサービスレベルでボリュームを作成または更新しようとしています。
 * 解決方法:   
 サービス レベルを親容量プールと同じかそれよりも低いランクに設定してください。
-* 対処法:   
+* 対応策 :   
 別の容量プールに適切なサービス レベルでボリュームを作成します。 または、容量プールからボリュームをすべて削除したうえで、容量プールのサービス レベルをより高いランクに設定します。
 
 ***SMB server name may not be longer than 10 characters. (SMB サーバー名に使用できる文字数は 10 文字以下です。)***
@@ -434,7 +444,7 @@ name プロパティは空のままにするか、`resourceId` の (最後のバ
 SMB サーバー名の長さが 10 文字を超えています。
 * 解決方法:   
 サーバー名を短くしてください。 最大長は 10 文字です。
-* 対処法:   
+* 対応策 :   
 [なし] :  前述の解決方法を参照してください。 
 
 ***SubnetId cannot be changed. (SubnetId を変更できません。)***
@@ -445,7 +455,7 @@ SMB サーバー名の長さが 10 文字を超えています。
 ボリュームの作成後に `subnetId` を変更しようとしていますが、これはサポートされている操作ではありません。 
 * 解決方法:   
 `subnetId` の変更が不要な場合は、要求からパラメーターを削除し、エラー メッセージを無視することを検討してください。
-* 対処法:   
+* 対応策 :   
 `subnetId` を変更する必要がある場合、新しい `subnetId` で新しいボリュームを作成し、データを新しいボリュームに移行できます。
 
 ***SubnetId is in invalid format. (SubnetId の形式が無効です。)***
@@ -456,7 +466,7 @@ SMB サーバー名の長さが 10 文字を超えています。
 このエラーは、`subnetId` がサブネットの `resourceId` ではない状態で新しいボリュームを作成しようとすると発生します。 
 * 解決方法:   
 `subnetId` の値をチェックし、使用されているサブネットの `resourceId` が含まれていることを確認します。
-* 対処法:   
+* 対応策 :   
 [なし] : 前述の解決方法を参照してください。 
 
 ***Subnet must have a ‘Microsoft.NetApp/volumes’ delegation. (サブネットに ‘Microsoft.NetApp/volumes’ の委任が必要です。)***
@@ -467,7 +477,7 @@ SMB サーバー名の長さが 10 文字を超えています。
 ボリュームを作成しようとしましたが、選択したサブネットが `Microsoft.NetApp/volumes` に委任されていません。
 * 解決方法:   
 `Microsoft.NetApp/volumes` に委任された別のサブネットを選択します。
-* 対処法:   
+* 対応策 :   
 サブネットに適切な委任を追加します。
 
 ***The specified resource type is unknown/not applicable. (指定されたリソースの種類が不明であるか、該当しません。)***
@@ -478,7 +488,7 @@ SMB サーバー名の長さが 10 文字を超えています。
 不明またはサポートされないリソースの種類に対して名前の確認が要求されました。
 * 解決方法:   
 要求の対象となるリソースがサポートされていること、また、スペルに誤りがないことを確認してください。
-* 対処法:   
+* 対応策 :   
 前述の解決方法を参照してください。
 
 ***Unknown Azure NetApp Files Error. (Azure NetApp Files の詳細不明のエラー。)***
@@ -489,7 +499,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 基礎 API から詳細不明のエラーが送信されています。 このエラーはおそらく一時的なものです。
 * 解決方法:   
 問題はおそらく一時的なものであり、しばらくすると要求は成功するはずです。 問題が解決しない場合、チケットを作成し、問題を調査させてください。
-* 対処法:   
+* 対応策 :   
 [なし] : 基礎 API はボリュームの管理に不可欠です。
 
 ***Value received for an unknown property '{propertyName}'. (不明のプロパティ '{propertyName}' に対して値が受け取られました。)***
@@ -500,7 +510,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 要求には、各リソースで使用できる一連のプロパティが与えられます。 存在しないプロパティを要求に含めることはできません。
 * 解決方法:   
 プロパティの名前の綴りがすべて正しいことと、サブスクリプションとリソースに対してプロパティが利用できることを確認します。
-* 対処法:   
+* 対応策 :   
 要求で定義されているプロパティの数を減らし、エラーの原因となっているプロパティをなくします。
 
 ***この種類のリソースでは、更新操作はサポートされていません。***
@@ -511,7 +521,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 更新しようとしているリソースは更新操作に対応していません。 プロパティを変更できるのはボリュームだけです。
 * 解決方法:   
 [なし] : 更新しようとしているリソースは更新操作に対応していません。 そのため、それを変更することはできません。
-* 対処法:   
+* 対応策 :   
 ボリュームの場合、アップデートを配置した状態で新しいリソースを作成し、データを移行します。
 
 ***Volume cannot be created in a pool that is not in state succeeded. (成功状態でないプールにはボリュームを作成できません。)***
@@ -522,7 +532,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 新しいボリュームを含んだ容量プールがエラー状態です。
 * 解決方法:   
 容量プールが正しく作成され、エラー状態ではないことを確認してください。
-* 対処法:   
+* 対応策 :   
 新しい容量プールを作成し、新しいプールにボリュームを作成します。
 
 ***Volume is being created and cannot be deleted at the moment. (ボリュームは作成中であるため、現在削除できません。)***
@@ -533,7 +543,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 作成中のボリュームを削除しようとしました。
 * 解決方法:   
 ボリュームの作成が完了するまで待って削除を再試行してください。
-* 対処法:   
+* 対応策 :   
 前述の解決方法を参照してください。
 
 ***Volume is being deleted and cannot be deleted at the moment. (ボリュームは削除中であるため、現在削除できません。)***
@@ -544,7 +554,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 既に削除処理が進行中のボリュームを削除しようとしました。
 * 解決方法:   
 現在の削除操作が完了するまで待ちます。
-* 対処法:   
+* 対応策 :   
 前述の解決方法を参照してください。
 
 ***Volume is being updated and cannot be deleted at the moment. (ボリュームは更新中であるため、現在削除できません。)***
@@ -555,7 +565,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 更新中のボリュームを削除しようとしました。
 * 解決方法:   
 更新操作が完了するまで待ってから削除を再試行します。
-* 対処法:   
+* 対応策 :   
 前述の解決方法を参照してください。
 
 ***Volume was not found or was not created successfully. (ボリュームは見つからないか、正常に作成されていません。)***
@@ -566,7 +576,7 @@ Azure API はボリュームの管理で Azure NetApp Files API に依存しま�
 ボリュームは存在しないか、または作成に失敗しました。
 * 解決方法:   
 適切なボリュームを変更していること、また、ボリュームの作成に成功したことを確認します。 または、スナップショットの作成対象のボリュームが存在することを確認してください。
-* 対処法:   
+* 対応策 :   
 [なし] :  前述の解決方法を参照してください。 
 
 ***Specified creation token already exists (指定された作成トークンは既に存在します)***

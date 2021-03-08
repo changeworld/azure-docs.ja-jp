@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub のデバイス メソッドについて | Microsoft Docs
 description: 開発者ガイド - ダイレクト メソッドを使用して、サービス アプリからデバイス上のコードを呼び出す。
-author: nberdy
+author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: rezas
+ms.author: philmea
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323062"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147803"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -55,7 +55,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 デバイスでのダイレクト メソッドの呼び出しは HTTPS 呼び出しであり、次で構成されます。
 
-* [API バージョン](/rest/api/iothub/service/devicemethod/invokedevicemethod)が適合するデバイスに固有の*要求の URI*:
+* [API バージョン](/rest/api/iothub/service/devices/invokemethod)が適合するデバイスに固有の*要求の URI*:
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30

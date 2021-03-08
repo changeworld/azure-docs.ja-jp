@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83652162"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544787"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>クラウド ストレージ アプリケーションの監視およびトラブルシューティング
 
@@ -43,7 +43,7 @@ ms.locfileid: "83652162"
 
 完了したら、 **[保存]** をクリックします。
 
-![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
+![ログとメトリックを有効にするための構成設定が含まれているセクションが強調表示されているスクリーンショット。](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>アラートを有効にする
 
@@ -83,21 +83,21 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 ストレージ ログは、ストレージ アカウント内の **$logs** という名前の BLOB コンテナーにある一連の BLOB 内にデータを格納します。 このコンテナーは、アカウント内のすべての BLOB コンテナーを一覧表示しても表示されませんが、直接それにアクセスすればその内容を見ることができます。
 
-このシナリオでは、[Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) を使用して Azure ストレージ アカウントを操作します。
+このシナリオでは、[Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) を使用して Azure ストレージ アカウントを操作します。
 
 ### <a name="download-microsoft-message-analyzer"></a>Microsoft Message Analyzer をダウンロードする
 
-[Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) をダウンロードし、アプリケーションをインストールします。
+[Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer) をダウンロードし、アプリケーションをインストールします。
 
 アプリケーションを起動し、 **[ファイル]**  >  **[開く]**  >  **[From Other File Sources] \(他のファイル ソースから)** を選択します。
 
-**[File Selector] \(ファイル セレクター)** ダイアログで、 **[+ Add Azure Connection] \(+ Azure 接続の追加)** を選択します。 **ストレージ アカウント名**と**アカウント キー**を入力し、 **[OK]** をクリックします。
+**[File Selector] \(ファイル セレクター)** ダイアログで、 **[+ Add Azure Connection] \(+ Azure 接続の追加)** を選択します。 **ストレージ アカウント名** と **アカウント キー** を入力し、 **[OK]** をクリックします。
 
 ![Microsoft Message Analyzer - Azure Storage 接続ダイアログの追加](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
 接続されたら、ストレージ ツリー ビューのコンテナーを展開してログ BLOB を表示します。 最新のログを選択し、 **[OK]** をクリックします。
 
-![Microsoft Message Analyzer - Azure Storage 接続ダイアログの追加](media/storage-monitor-troubleshoot-storage-application/figure4.png)
+![Microsoft Message Analyzer を示すスクリーンショット。選択したログ ファイルが強調表示されています。](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
 **[New Session] \(新しいセッション)** ダイアログで、 **[開始]** をクリックしてログを表示します。
 

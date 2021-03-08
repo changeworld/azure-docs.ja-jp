@@ -1,24 +1,24 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して Parquet ファイルに対してクエリを実行する
-description: この記事では、SQL オンデマンド (プレビュー) を使用して Parquet ファイルに対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プールを使用して Parquet ファイルに対してクエリを実行する
+description: この記事では、サーバーレス SQL プールを使用して Parquet ファイルに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496238"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694684"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して Parquet ファイルに対してクエリを実行する
+# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して Parquet ファイルのクエリを実行する
 
-この記事では、Parquet ファイルを読み取る SQL オンデマンド (プレビュー) を使用してクエリを作成する方法について説明します。
+この記事では、Parquet ファイルを読み取るサーバーレス SQL プールを使用してクエリを作成する方法について説明します。
 
 ## <a name="quickstart-example"></a>クイック スタートの例
 
@@ -35,7 +35,12 @@ from openrowset(
     format = 'parquet') as rows
 ```
 
-このファイルにアクセスできることを確認してください。 ファイルが SAS キーまたはカスタム Azure ID で保護されている場合は、[SQL ログインのためのサーバーレベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
+このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム Azure ID で保護されている場合は、[SQL ログインのためのサーバーレベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
+
+> [!IMPORTANT]
+> PARQUET ファイル内の文字列値が UTF-8 エンコードを使用してエンコードされているため、UTF-8 データベース照合順序 (`Latin1_General_100_BIN2_UTF8` など) を使用するようにしてください。
+> PARQUET ファイル内のテキスト エンコードと照合順序が一致しないと、予期しない変換エラーが発生する可能性があります。
+> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_BIN2_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
 
 ### <a name="data-source-usage"></a>データ ソースの使用状況
 
@@ -68,11 +73,17 @@ from openrowset(
     ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
 ```
 
+> [!IMPORTANT]
+> 必ず `WITH` 句の文字列の列すべてに対して何らかの UTF-8 照合順序 (`Latin1_General_100_BIN2_UTF8` など) を明示的に指定するようにしてください。または、データベース レベルで何らかの UTF-8 照合順序を設定してください。
+> ファイル内のテキスト エンコードと文字列の列の照合順序が一致しないと、予期しない変換エラーが発生する可能性があります。
+> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_BIN2_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
+> `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8` という定義を使用して、列の型に照合順序を簡単に設定できます。
+
 次のセクションでは、さまざまな種類の PARQUET ファイルに対してクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順は、[NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) ストレージ アカウントを参照するデータソースで**データベースを作成**することです。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
+最初の手順は、[NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) ストレージ アカウントを参照するデータソースで **データベースを作成** することです。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
 ## <a name="dataset"></a>データセット
 
@@ -111,7 +122,7 @@ Parquet ファイルを読み取るときに、OPENROWSET WITH 句を使用す�
 次のサンプルは、Parquet ファイルを対象にした自動スキーマ推論機能を示しています。 この場合はスキーマを指定しなくても 2017 年 9 月の行の数が返されます。
 
 > [!NOTE]
-> Parquet ファイルを読み取るときに OPENROWSET WITH 句で列を指定する必要はありません。 この場合、SQL オンデマンド Query サービスでは Parquet ファイル内のメタデータが利用され、名前によって列がバインドされます。
+> Parquet ファイルを読み取るときに OPENROWSET WITH 句で列を指定する必要はありません。 この場合、サーバーレス SQL プールのクエリ サービスにより、Parquet ファイル内のメタデータが利用され、名前によって列がバインドされます。
 
 ```sql
 SELECT TOP 10 *
@@ -128,7 +139,7 @@ FROM
 このサンプルで指定されたデータ セットは、個別のサブフォルダーに分割 (パーティション分割) されます。 filepath 関数を使用して、特定のパーティションをターゲットにすることができます。 この例では、2017 年の最初の 3 か月について、年、月、および payment_type 別の料金が示されています。
 
 > [!NOTE]
-> SQL オンデマンド クエリは、Hive/Hadoop パーティション構成と互換性があります。
+> サーバーレス SQL プールのクエリは、Hive/Hadoop パーティション構成と互換性があります。
 
 ```sql
 SELECT
@@ -155,43 +166,7 @@ ORDER BY
 
 ## <a name="type-mapping"></a>型のマッピング
 
-Parquet ファイルには、すべての列の型の説明が含まれています。 次の表では、Parquet 型を SQL ネイティブ型にマップする方法について説明します。
-
-| Parquet 型 | Parquet 論理型 (注釈) | SQL データ型 |
-| --- | --- | --- |
-| BOOLEAN | | bit |
-| BINARY / BYTE_ARRAY | | varbinary |
-| DOUBLE | | float |
-| FLOAT | | real |
-| INT32 | | INT |
-| INT64 | | bigint |
-| INT96 | |datetime2 |
-| FIXED_LEN_BYTE_ARRAY | |binary |
-| BINARY |UTF8 |varchar \*(UTF8 照合順序) |
-| BINARY |STRING |varchar \*(UTF8 照合順序) |
-| BINARY |ENUM|varchar \*(UTF8 照合順序) |
-| BINARY |UUID |UNIQUEIDENTIFIER |
-| BINARY |DECIMAL |decimal |
-| BINARY |JSON |varchar(max) \*(UTF8 照合順序) |
-| BINARY |BSON |varbinary(max) |
-| FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
-| BYTE_ARRAY |INTERVAL |varchar(max)、標準化された形式にシリアル化 |
-| INT32 |INT(8, true) |smallint |
-| INT32 |INT(16, true) |smallint |
-| INT32 |INT(32, true) |INT |
-| INT32 |INT(8, false) |tinyint |
-| INT32 |INT(16, false) |INT |
-| INT32 |INT(32, false) |bigint |
-| INT32 |DATE |date |
-| INT32 |DECIMAL |decimal |
-| INT32 |TIME (MILLIS)|time |
-| INT64 |INT(64, true) |bigint |
-| INT64 |INT(64, false) |decimal (20,0) |
-| INT64 |DECIMAL |decimal |
-| INT64 |TIME (MICROS / NANOS) |time |
-|INT64 |TIMESTAMP (MILLIS / MICROS / NANOS) |datetime2 |
-|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |リスト |varchar(max)、JSON にシリアル化 |
-|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(max)、JSON にシリアル化 |
+Parquet の型と SQL のネイティブ型のマッピングについては、[Parquet の型マッピング](develop-openrowset.md#type-mapping-for-parquet)に関するページを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

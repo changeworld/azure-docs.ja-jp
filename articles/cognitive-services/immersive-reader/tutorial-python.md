@@ -8,15 +8,15 @@ manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
-ms.date: 01/14/2020
+ms.date: 09/11/2020
 ms.author: dylankil
 ms.custom: devx-track-python
-ms.openlocfilehash: 5a6c68dbb7dd4171fad3b3a13e904a152618a55d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 81d4135671d8ab3e2a8854b855ca285107faaa86
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516387"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90979348"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>チュートリアル:Python サンプル プロジェクトを使用してイマーシブ リーダーを起動する
 

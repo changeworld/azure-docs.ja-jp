@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: b5f3305fc5d2595c8b7b08d78ff20edea01c195e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229839"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684612"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -45,8 +45,11 @@ OS の自動アップグレードには、次の特徴があります。
 
 スケール セットの OS アップグレード オーケストレーターは、各バッチをアップグレードする前に、スケール セットの全体の正常性を確認します。 バッチのアップグレード中には、他の計画済みまたは計画外メンテナンスが同時に発生することがあり、それによってスケール セット インスタンスの正常性が影響を受ける場合があります。 そのような場合、スケール セットのインスタンスの 20% 以上が異常な状態になると、スケール セットのアップグレードは現在のバッチが終了した時点で停止します。
 
+> [!NOTE]
+>OS の自動アップグレードでは、スケール セットの参照イメージ SKU はアップグレードされません。 SKU (Ubuntu 16.04-LTS から 18.04-LTS など) を変更するには、目的のイメージ SKU を使用して直接[スケール セット モデル](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)を更新する必要があります。 既存のスケール セットに対して、イメージ発行者とオファーを変更することはできません。  
+
 ## <a name="supported-os-images"></a>サポート対象の OS イメージ
-現時点では、特定の OS プラットフォーム イメージのみがサポートされています。 カスタム イメージが [Shared Image Gallery](shared-image-galleries.md) を介してスケール セットで使用されている場合は、その[カスタム イメージ](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)はサポートされます。
+現時点では、特定の OS プラットフォーム イメージのみがサポートされています。 カスタム イメージが [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) を介してスケール セットで使用されている場合は、その[カスタム イメージ](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)はサポートされます。
 
 現時点では、以下のプラットフォーム SKU がサポートされています (定期的に追加されます)。
 
@@ -54,16 +57,15 @@ OS の自動アップグレードには、次の特徴があります。
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04 LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
-| Rogue Wave (OpenLogic)  | CentOS        | 7.5                |
-| CoreOS                  | CoreOS        | Stable             |
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
+| OpenLogic               | CentOS        | 7.5                |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>OS イメージの自動アップグレードを構成するための要件
@@ -87,11 +89,11 @@ Service Fabric クラスターと Service Fabric 拡張機能で持続性の設�
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>カスタム イメージの OS イメージの自動アップグレード
 
-OS イメージの自動アップグレードは、[Shared Image Gallery](shared-image-galleries.md) を介して展開されているカスタム イメージでサポートされています。 その他のカスタム イメージは、OS イメージの自動アップグレードではサポートされていません。
+OS イメージの自動アップグレードは、[Shared Image Gallery](../virtual-machines/shared-image-galleries.md) を介して展開されているカスタム イメージでサポートされています。 その他のカスタム イメージは、OS イメージの自動アップグレードではサポートされていません。
 
 ### <a name="additional-requirements-for-custom-images"></a>カスタム イメージのその他の要件
 - OS イメージの自動アップグレードのセットアップおよび構成プロセスは、このページの[構成に関するセクション](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)で詳しく説明されているように、すべてのスケール セットについて同一です。
-- OS イメージの自動アップグレードに向けて構成されたスケール セット インスタンスは、新しいバージョンのイメージが発行され、そのスケール セットのリージョンに[レプリケートされた](shared-image-galleries.md#replication)ときに、Shared Image Gallery のイメージの最新バージョンにアップグレードされます。 スケールがデプロイされているリージョンに新しいイメージがレプリケートされていない場合、スケール セット インスタンスは最新バージョンにアップグレードされません。 リージョンのイメージ レプリケーションによって、スケール セットの新しいイメージのロールアウトを制御することができます。
+- OS イメージの自動アップグレードに向けて構成されたスケール セット インスタンスは、新しいバージョンのイメージが発行され、そのスケール セットのリージョンに[レプリケートされた](../virtual-machines/shared-image-galleries.md#replication)ときに、Shared Image Gallery のイメージの最新バージョンにアップグレードされます。 スケールがデプロイされているリージョンに新しいイメージがレプリケートされていない場合、スケール セット インスタンスは最新バージョンにアップグレードされません。 リージョンのイメージ レプリケーションによって、スケール セットの新しいイメージのロールアウトを制御することができます。
 - そのギャラリー イメージの最新バージョンから、新しいイメージ バージョンを除外しないでください。 ギャラリー イメージの最新バージョンから除外されたイメージ バージョンは、OS イメージの自動アップグレードによってスケール セットにロールアウトされません。
 
 > [!NOTE]

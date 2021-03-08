@@ -1,6 +1,6 @@
 ---
 title: Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
-description: Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
+description: Java で Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
 author: sffamily
 ms.service: signalr
 ms.devlang: java
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: 544f200e749b1b125e8077ee65f20a06779fb13d
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 62f31d8426e86cc20e957f3a47b30109dee0a634
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050575"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185676"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -37,21 +37,21 @@ Azure SignalR Service を使用すると、アプリケーションに対して�
 > [!NOTE]
 > このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -87,21 +87,20 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     ```bash
     mvn azure-functions:run
     ```
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+    
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
 ## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Maven を使ってリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次に、Java Azure Functions を一から作成する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [Java と Maven を使用して初めての関数を作成する](../azure-functions/functions-create-first-java-maven.md)
-
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+> [Java と Maven を使用して初めての関数を作成する](../azure-functions/create-first-function-cli-csharp.md?pivots=programming-language-java%2cprogramming-language-java)

@@ -12,18 +12,19 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: ryanwi
-ms.openlocfilehash: dc37ce474ad3226f5dbf7e6efd687ddf55f7da03
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ROBOTS: NOINDEX
+ms.openlocfilehash: 778523869715916bf1e4c32af59ea7a0081df91b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926682"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103313"
 ---
 # <a name="how-to-discover-endpoints"></a>エンドポイントを検出する方法
 
 アプリケーションの認証エンドポイントは [Azure Portal](https://portal.azure.com) で見つけることができます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. **[Azure Active Directory]** を選択します。
 1. **[管理]** で、 **[アプリの登録]** を選択し、上部のメニューで **[エンドポイント]** を選択します。
 

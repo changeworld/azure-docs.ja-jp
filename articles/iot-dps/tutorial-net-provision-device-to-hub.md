@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 55195949cfaa741389f38deaea69806c568c0ce6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008269"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966566"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>チュートリアル:Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
@@ -42,12 +42,12 @@ ms.locfileid: "89008269"
 この手順では、Device Provisioning Service にデバイスの一意のセキュリティ アーティファクトを追加する必要があります。 追加するセキュリティ アーティファクトは次のとおりです。
 
 - TPM ベースのデバイスの場合:
-    - 各 TPM チップまたはシミュレーションに固有の "*保証キー*"。 詳細については、「[TPM 保証キーとは](https://technet.microsoft.com/library/cc770443.aspx)」をご覧ください。
+    - 各 TPM チップまたはシミュレーションに固有の "*保証キー*"。 詳細については、「[TPM 保証キーとは](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))」をご覧ください。
     - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 これは、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 TPM ベースのデバイスでは、登録 ID が TPM 自体から派生している場合があります (TPM 保証キーの SHA-256 ハッシュなど)。
 
 - X.509 ベースのデバイスの場合:
-    - *.pem* ファイルまたは *.cer* ファイルの形式で[デバイスに発行された X.509 証明書](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)。 個別登録では、X.509 システムの "*リーフ証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" または同等の "*署名者証明書*" を使用する必要があります。
-    - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 これは、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 X.509 ベースのデバイスの場合、登録 ID は証明書の共通名 (CN) から派生します。 これらの要件の詳細については、[デバイスの概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)に関するページを参照してください。
+    - *.pem* ファイルまたは *.cer* ファイルの形式で [デバイスに発行された X.509 証明書](/windows/win32/seccertenroll/about-x-509-public-key-certificates)。 個別登録では、X.509 システムの "*リーフ証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" または同等の "*署名者証明書*" を使用する必要があります。
+    - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 これは、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 X.509 ベースのデバイスの場合、登録 ID は証明書の共通名 (CN) から派生します。 これらの要件の詳細については、[デバイスの概念](./concepts-service.md)に関するページを参照してください。
 
 デバイスを Device Provisioning Service に登録するには、次の 2 つの方法があります。
 
@@ -57,7 +57,7 @@ ms.locfileid: "89008269"
 
 ### <a name="enroll-the-device-using-individual-enrollments"></a>個別登録を使用してデバイスを登録する
 
-1. Visual Studio で**コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# コンソール アプリケーション プロジェクトを作成します。 プロジェクトに **DeviceProvisioning** という名前を付けます。
+1. Visual Studio で **コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# コンソール アプリケーション プロジェクトを作成します。 プロジェクトに **DeviceProvisioning** という名前を付けます。
     
 1. ソリューション エクスプローラーで **[DeviceProvisioning]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 

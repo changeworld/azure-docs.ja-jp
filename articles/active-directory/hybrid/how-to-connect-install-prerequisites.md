@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17209919e9bcd93a9a0184d8d4df9c29fff62ef9
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277325"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368967"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -34,18 +34,26 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
   * [Azure ポータル](https://portal.azure.com)。
   * [Office ポータル](https://portal.office.com)。
 * [ドメインを追加して検証](../fundamentals/add-custom-domain.md) します。 たとえば、ユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていることと、使用しているドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
-* Azure AD テナントでは、既定で 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、このオブジェクトの制限が 300,000 個に増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限をさらに増加させるためにサポート ケースを開きます。 500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Premium、または Enterprise Mobility + Security などのライセンスが必要です。
+* Azure AD テナントでは、既定で 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、このオブジェクトの制限が 300,000 個に増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限をさらに増加させるためにサポート ケースを開きます。 500,000 個を超えるオブジェクトが必要な場合は、Microsoft 365、Azure AD Premium、または Enterprise Mobility + Security などのライセンスが必要です。
 
 ### <a name="prepare-your-on-premises-data"></a>オンプレミスのデータの準備
-* Azure AD および Office 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。
+* Azure AD および Microsoft 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。
 * [Azure AD で有効にできるオプションの同期機能](how-to-connect-syncservice-features.md)について確認し、どの機能を有効にする必要があるかを検討してください。
 
 ### <a name="on-premises-active-directory"></a>オンプレミスの Active Directory
 * Active Directory スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。 ドメイン コントローラーは、スキーマのバージョンとフォレストレベルの要件が満たされていれば、任意のバージョンを実行できます。
-* *パスワード ライトバック*機能を使用する場合、ドメイン コントローラーは Windows Server 2008 R2 以降にインストールされている必要があります。
-* Azure AD で使用されるドメイン コントローラーは、書き込み可能である必要があります。 読み取り専用ドメイン コントローラー (RODC) の使用は*サポートされておらず*、Azure AD Connect は書き込みリダイレクトに従いません。
-* "ドット形式" (名前にピリオド "." が含まれる) を使用した NetBIOS 名を使用するオンプレミスのフォレストまたはドメインは*使用できません*。
+* "*パスワード ライトバック*" 機能を使用する場合、ドメイン コントローラーは Windows Server 2012 以降にインストールされている必要があります。
+* Azure AD で使用されるドメイン コントローラーは、書き込み可能である必要があります。 読み取り専用ドメイン コントローラー (RODC) の使用は *サポートされておらず*、Azure AD Connect は書き込みリダイレクトに従いません。
+* "ドット形式" (名前にピリオド "." が含まれる) を使用した NetBIOS 名を使用するオンプレミスのフォレストまたはドメインは *使用できません*。
 * [Active Directory のごみ箱を有効にする](how-to-connect-sync-recycle-bin.md)ことをお勧めします。
+
+### <a name="powershell-execution-policy"></a>PowerShell 実行ポリシー
+Azure Active Directory Connect では、インストールの一部として署名付きの PowerShell スクリプトが実行されます。 PowerShell 実行ポリシーでスクリプトの実行が許可されていることを確認します。
+
+インストール中に推奨される実行ポリシーは "RemoteSigned" です。
+
+PowerShell 実行ポリシーの設定の詳細については、「[Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy)」を参照してください。
+
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect サーバー
 Azure AD Connect サーバーには、重要な ID データが含まれています。 このサーバーへの管理アクセスが適切にセキュリティで保護されていることが重要です。 「[特権アクセスの保護](/windows-server/identity/securing-privileged-access/securing-privileged-access)」のガイドラインに従ってください。 
@@ -64,7 +72,8 @@ Active Directory 環境のセキュリティ保護の詳細については、[Ac
     - AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 リモート インストールを行うには、これらのサーバーで Windows リモート管理を有効にする必要があります。 
     - TLS/SSL 証明書を構成する必要があります。 詳細については、[AD FS の SSL/TLS プロトコルおよび暗号スイートの管理](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)および [AD FS での SSL 証明書の管理](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)に関する記事を参照してください。
     - 名前解決を構成する必要があります。 
-- 全体管理者が MFA を有効にしている場合、URL https://secure.aadcdn.microsoftonline-p.com は信頼済みサイトの一覧に*なければなりません*。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
+- 全体管理者が MFA を有効にしている場合、URL https://secure.aadcdn.microsoftonline-p.com は信頼済みサイトの一覧に *なければなりません*。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
+- 同期に Azure AD Connect Health を使用する予定の場合は、Azure AD Connect Health の前提条件も満たされていることを確認してください。 詳細については、「[Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)」を参照してください。
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect サーバーを強化する 
 Azure AD Connect サーバーを強化して、お客様の IT 環境に含まれるこの重要なコンポーネントに対する、セキュリティの攻撃面を縮小することをお勧めします。 これらの推奨事項に従うことで、組織に対するセキュリティ上のリスクを軽減することができます。
@@ -74,27 +83,27 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
 - [特権アクセスがあるすべてのユーザーに対して専用アカウント](/windows-server/identity/securing-privileged-access/securing-privileged-access)を作成します。 管理者は、高い特権を持つアカウントを使用して Web を閲覧したり、メールをチェックしたり、日常業務を実行すべきではありません。
 - 「[特権アクセスの保護](/windows-server/identity/securing-privileged-access/securing-privileged-access)」に記載されているガイダンスに従ってください。 
 - AADConnect サーバーでの NTLM 認証の使用を拒否します。 これを行うには、次の方法があります。[AADConnect サーバーで NTLM を制限](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers)し、[ドメインで NTLM を制限](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)する
-- すべてのマシンに一意のローカル管理者パスワードが構成されていることを確認します。 詳細については、[ローカル管理者パスワード ソリューション (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) に関する記事を参照してください。これを使用することで、ワークステーションおよびサーバーごとに一意のランダム パスワードを構成し、ACL によって保護された Active Directory に保存することができます。 資格のある許可されているユーザーのみが、これらのローカル管理者アカウントのパスワードの読み取りまたはリセットの要求を行うことができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)から、ワークステーションとサーバーで使用する LAPS を取得できます。 LAPS と 特権アクセス ワークステーション (PAW) を使用して環境を運用するための追加のガイダンスについては、「[クリーン ソースの原則に基づく運用基準](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)」を参照してください。 
-- 組織の情報システムへの特権アクセスを持つすべての担当者に対して、専用の[特権アクセス ワークステーション](/windows-server/identity/securing-privileged-access/privileged-access-workstations)を実装します。 
+- すべてのマシンに一意のローカル管理者パスワードが構成されていることを確認します。 詳細については、[ローカル管理者パスワード ソリューション (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) に関する記事を参照してください。これを使用することで、ワークステーションおよびサーバーごとに一意のランダム パスワードを構成し、ACL によって保護された Active Directory に保存することができます。 資格のある許可されているユーザーのみが、これらのローカル管理者アカウントのパスワードの読み取りまたはリセットの要求を行うことができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=46899)から、ワークステーションとサーバーで使用する LAPS を取得できます。 LAPS と 特権アクセス ワークステーション (PAW) を使用して環境を運用するための追加のガイダンスについては、「[クリーン ソースの原則に基づく運用基準](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)」を参照してください。 
+- 組織の情報システムへの特権アクセスを持つすべての担当者に対して、専用の[特権アクセス ワークステーション](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)を実装します。 
 - Active Directory 環境の攻撃面を減らすには、これらの[追加のガイドライン](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)に従います。
 
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect で使用される SQL Server
 * Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされています。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定します。 SQL Server のインストールの種類により、[Azure AD Connect のパフォーマンス](./plan-connect-performance-factors.md#sql-database-factors)に影響することがあります。
 * SQL Server の別のインストールを使用する場合は、次の要件が適用されます。
-  * Azure AD Connect では、SQL Server 2012 (最新の Service Pack 付き) から SQL Server 2019 までのすべてのバージョンがサポートされています。 Azure SQL Database は、データベースとしては*サポートされていません*。
-  * 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。 これらの照合順序は、名前に含まれる \_CI_ で識別します。 大文字と小文字が区別される照合順序 (名前に含まれる \_CS_ で識別) は*サポートされていません*。
-  * 1 つの SQL インスタンスにつき保持できる同期エンジンは 1 つだけです。 FIM/MIM Sync、DirSync、または Azure AD Sync との SQL インスタンスの共有は*サポートされていません*。
+  * Azure AD Connect では、SQL Server 2012 (最新の Service Pack 付き) から SQL Server 2019 までのすべてのバージョンがサポートされています。 Azure SQL Database は、データベースとしては *サポートされていません*。
+  * 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。 これらの照合順序は、名前に含まれる \_CI_ で識別します。 大文字と小文字が区別される照合順序 (名前に含まれる \_CS_ で識別) は *サポートされていません*。
+  * 1 つの SQL インスタンスにつき保持できる同期エンジンは 1 つだけです。 FIM/MIM Sync、DirSync、または Azure AD Sync との SQL インスタンスの共有は *サポートされていません*。
 
 ### <a name="accounts"></a>アカウント
-* 統合する Azure AD テナントの Azure AD 全体管理者アカウントが必要です。 このアカウントは*学校または組織のアカウント*である必要があり、*Microsoft アカウント*を使用することはできません。
+* 統合する Azure AD テナントの Azure AD 全体管理者アカウントが必要です。 このアカウントは *学校または組織のアカウント* である必要があり、*Microsoft アカウント* を使用することはできません。
 * [簡単設定](reference-connect-accounts-permissions.md#express-settings-installation)を使用するか、DirSync からアップグレードする場合は、オンプレミスの Active Directory のエンタープライズ管理者アカウントが必要です。
 * カスタム設定のインストール パスを使用する場合、さらにオプションがあります。 詳細については、「[カスタム インストールの設定](reference-connect-accounts-permissions.md#custom-installation-settings)」を参照してください。
 
 ### <a name="connectivity"></a>接続
 * Azure AD Connect サーバーには、イントラネット用とインターネット用の両方の DNS 解決が必要です。 DNS サーバーは、オンプレミス Active Directory と Azure AD エンドポイントの両方の名前を解決できる必要があります。
 * お使いのイントラネット環境でファイアウォールを使用していて、Azure AD Connect サーバーとドメイン コントローラーの間でポートを開く必要がある場合の詳細については、[Azure AD Connect のポート](reference-connect-ports.md)に関する記事を参照してください。
-* プロキシまたはファイアウォールによってアクセスできる URL が制限されている場合は、「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL を開く必要があります。
+* プロキシまたはファイアウォールによってアクセスできる URL が制限されている場合は、「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL を開く必要があります。 「[ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)」も参照してください。
   * ドイツで Microsoft Cloud を使用する場合、または Microsoft Azure Government クラウドを使用する場合は、[Azure AD Connect 同期サービス インスタンスの考慮事項](reference-connect-instances.md)に関するページで URL を確認してください。
 * Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。
 * バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 TLS 1.2 に変更するには、「[Azure AD Connect 用に TLS 1.2 を有効にする](#enable-tls-12-for-azure-ad-connect)」の手順に従います。
@@ -112,7 +121,7 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
         </system.net>
     ```
 
-* プロキシ サーバーで認証が必要な場合、[サービス アカウント](reference-connect-accounts-permissions.md#adsync-service-account)はドメイン内にある必要があります。 カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](how-to-connect-install-custom.md#install-required-components)を指定します。 machine.config に別の変更も必要です。この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。 **[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報が使用されます。 インストール ウィザードの最後にある **[構成]** ページで、コンテキストが、自分で作成した[サービス アカウント](reference-connect-accounts-permissions.md#adsync-service-account)に切り替わります。 machine.config のセクションは、次のようになっているはずです。
+* プロキシ サーバーで認証が必要な場合、[サービス アカウント](reference-connect-accounts-permissions.md#adsync-service-account)はドメイン内にある必要があります。 カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](how-to-connect-install-custom.md#install-required-components)を指定します。 machine.config に別の変更も必要です。この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。 **[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報が使用されます。 インストール ウィザードの最後にある **[構成]** ページで、コンテキストが、自分で作成した [サービス アカウント](reference-connect-accounts-permissions.md#adsync-service-account)に切り替わります。 machine.config のセクションは、次のようになっているはずです。
 
     ```
         <system.net>
@@ -126,7 +135,7 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
         </system.net>
     ```
 
-* プロキシ構成が既存のセットアップで行われている場合、Azure AD Connect にプロキシ設定を読み込んで動作を更新するには **Microsoft Azure AD Sync サービス**を 1 回再起動する必要があります。 
+* プロキシ構成が既存のセットアップで行われている場合、Azure AD Connect にプロキシ設定を読み込んで動作を更新するには **Microsoft Azure AD Sync サービス** を 1 回再起動する必要があります。 
 * Azure AD Connect がディレクトリ同期の過程で Web 要求を Azure AD に送信するとき、Azure AD から応答が返されるまでに長くて 5 分程度かかる場合があります。 一般的に、プロキシ サーバーには接続アイドル タイムアウトの構成を適用します。 この構成は最低でも 6 分以上に設定します。
 
 詳細については、[既定のプロキシ要素](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)に関する MSDN を参照してください。

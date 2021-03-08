@@ -4,12 +4,12 @@ ms.service: static-web-apps
 ms.topic: include
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 102e2f8685128f42350dd775e600fb82cc7d6722
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 06a54456a076ae425866c1fa502bd97c505e41c6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752606"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356445"
 ---
 ## <a name="create-a-repository"></a>リポジトリを作成する
 
@@ -17,8 +17,8 @@ ms.locfileid: "88752606"
 
 # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-1. GitHub にサインインしていることを確認し、次の場所に移動して新しいリポジトリを作成します。
-    1. https://github.com/staticwebdev/vanilla-basic/generate
+1. 次の場所に移動して、新しいリポジトリを作成します。
+    1. [https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate)
 1. リポジトリの名前を **my-first-static-web-app** に設定します
 
 > [!NOTE]
@@ -26,20 +26,20 @@ ms.locfileid: "88752606"
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-1. GitHub にサインインしていることを確認し、次の場所に移動して新しいリポジトリを作成します。
-    1. https://github.com/staticwebdev/angular-basic/generate
+1. 次の場所に移動して、新しいリポジトリを作成します。
+    1. [https://github.com/staticwebdev/angular-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Fangular-basic%2Fgenerate)
 1. リポジトリの名前を **my-first-static-web-app** に設定します
 
 # <a name="react"></a>[React](#tab/react)
 
-1. GitHub にサインインしていることを確認し、次の場所に移動して新しいリポジトリを作成します。
-    1. https://github.com/staticwebdev/react-basic/generate
+1. 次の場所に移動して、新しいリポジトリを作成します。
+    1. [https://github.com/staticwebdev/react-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Freact-basic%2Fgenerate)
 1. リポジトリの名前を **my-first-static-web-app** に設定します
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-1. GitHub にサインインしていることを確認し、次の場所に移動して新しいリポジトリを作成します。
-    1. https://github.com/staticwebdev/vue-basic/generate
+1. 次の場所に移動して、新しいリポジトリを作成します。
+    1. [https://github.com/staticwebdev/vue-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Fvue-basic%2Fgenerate)
 1. リポジトリの名前を **my-first-static-web-app** に設定します
 
 ---

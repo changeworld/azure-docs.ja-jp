@@ -3,12 +3,12 @@ title: Azure DevTest Labs リソースの分散型の共同開発
 description: DevTest Lab リソースを開発する分散型の共同開発環境を設定する際のベスト プラクティスについて説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483807"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592366"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Azure DevTest Labs リソースの分散型の共同開発のためのベスト プラクティス
 分散型の共同開発により、さまざまなチームや個人がコード ベースを開発し、保守することができます。 成功させるには、開発プロセスは情報を作成、共有、統合する能力に左右されます。 この重要な開発原則は、Azure DevTest Labs 内で使用できます。 ラボ内には、企業内のさまざまなラボ間で一般的に分散されているさまざまな種類のリソースがあります。 さまざまな種類のリソースは、次の 2 つの領域に集中しています。
@@ -39,13 +39,13 @@ ms.locfileid: "85483807"
 - 事業単位/部門全体のリソース
 - チーム固有のリソース。
 
-これらの各レベルは、マスター ブランチが運用環境品質であることが要求される異なるリポジトリにリンクされます。 各リポジトリの[ブランチ](/azure/devops/repos/git/git-branching-guidance?view=azure-devops)は、それらの特定のリソース (成果物またはテンプレート) の開発用です。 複数のリポジトリと複数のブランチを同時に組織のラボに簡単に接続できるため、この構造は DevTest ラボとの連携に適しています。 同じ名前、説明、および発行者が存在する場合に混乱を避けるために、リポジトリ名がユーザー インターフェイス (UI) に含まれています。
+これらの各レベルは、メイン ブランチが運用環境品質であることが要求される異なるリポジトリにリンクされます。 各リポジトリの[ブランチ](/azure/devops/repos/git/git-branching-guidance?view=azure-devops)は、それらの特定のリソース (成果物またはテンプレート) の開発用です。 複数のリポジトリと複数のブランチを同時に組織のラボに簡単に接続できるため、この構造は DevTest ラボとの連携に適しています。 同じ名前、説明、および発行者が存在する場合に混乱を避けるために、リポジトリ名がユーザー インターフェイス (UI) に含まれています。
      
 次の図は、IT 部門によって管理されている会社リポジトリと、研究開発部門によって管理されている部門リポジトリという 2 つのリポジトリを示しています。
 
 ![サンプルの分散型の共同開発環境](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-この階層構造により、マスター ブランチでより高いレベルの品質を維持しながら開発できます。また、ラボに複数のリポジトリが接続されているため、柔軟性が向上します。
+この階層構造により、メイン ブランチでより高いレベルの品質を維持しながら開発できます。また、ラボに複数のリポジトリが接続されているため、柔軟性が向上します。
 
 ## <a name="next-steps"></a>次のステップ    
 次の記事をご覧ください。

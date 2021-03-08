@@ -7,20 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: d1258786ec6f611bea5f73f3cb1c176738733acd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 11/09/2020
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919065"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584743"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
 ユーザーの質問に対して予測される回答を取得するには、GenerateAnswer API を使用します。 ナレッジ ベースを公開するときに、 **[公開]** ページにこの API を使用する方法に関する情報が表示されます。 また、メタデータ タグに基づいて回答をフィルター処理するように API を構成し、テスト クエリ文字列パラメーターを使用してエンドポイントからナレッジ ベースをテストすることも可能です。
 
-QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のペアに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
+QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のペアに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../index.yml)」 (ナレッジ ベース) を参照してください。
 
 <a name="qna-entity"></a>
 
@@ -36,13 +36,13 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>GenerateAnswer API を使用して回答の予測を取得する
 
-ボットやアプリケーションで [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) を使用して、ユーザーの質問についてナレッジ ベースのクエリを実行し、質問と回答のペアから最も一致するものを取得します。
+ボットやアプリケーションで [GenerateAnswer API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) を使用して、ユーザーの質問についてナレッジ ベースのクエリを実行し、質問と回答のペアから最も一致するものを取得します。
 
 <a name="generateanswer-endpoint"></a>
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>公開して GenerateAnswer エンドポイントを取得する
 
-ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
+ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
 
 エンドポイントの詳細を取得するには、次のようにします。
 1. [https://www.qnamaker.ai](https://www.qnamaker.ai) にサインインします。
@@ -50,7 +50,15 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
     ![ナレッジ ベースのスクリーンショット](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. GenerateAnswer エンドポイントの詳細を取得します。
 
+    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
     ![エンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code.png)
+
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+    ![管理対象のエンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
+
+    ---
 
 エンドポイントの詳細は、ナレッジ ベースの **[設定]** タブから取得することもできます。
 
@@ -62,9 +70,9 @@ HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を�
 
 POST 要求では以下を使用します。
 
-* 必須の [URI パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* 必須の [URI パラメーター](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * セキュリティを確保するために必須のヘッダー プロパティ (`Authorization`)
-* 必須の[本文プロパティ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)
+* 必須の[本文プロパティ](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)
 
 GenerateAnswer の URL は次の形式になります。
 
@@ -100,7 +108,7 @@ JSON 本文の例は、次のようになります。
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer の応答プロパティ
 
-[応答](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)は、回答と会話の次のターン (使用可能な場合) を表示するために必要なすべての情報を含む JSON オブジェクトです。
+[応答](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)は、回答と会話の次のターン (使用可能な場合) を表示するために必要なすべての情報を含む JSON オブジェクトです。
 
 ```json
 {
@@ -128,7 +136,7 @@ JSON 本文の例は、次のようになります。
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>C# のボットで QnA Maker を使用する
 
-Bot Framework では、[getAnswer API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) を使用して QnA Maker のプロパティへのアクセスを提供します。
+Bot Framework では、[getAnswer API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) を使用して QnA Maker のプロパティへのアクセスを提供します。
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -147,7 +155,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Node.js のボットで QnA Maker を使用する
 
-Bot Framework では、[getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-) を使用して QnA Maker のプロパティへのアクセスを提供します。
+Bot Framework では、[getAnswer API](/javascript/api/botbuilder-ai/qnamaker?preserve-view=true&view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-) を使用して QnA Maker のプロパティへのアクセスを提供します。
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');
@@ -279,7 +287,9 @@ GenerateAnswer への応答には、一致した質問と回答のペアの対�
 
 ## <a name="next-steps"></a>次のステップ
 
-**[発行]** ページでは、Postman または cURL を使用して[回答を生成する](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)ための情報も提供されます。
+**[発行]** ページでは、Postman または cURL を使用して [回答を生成する](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)ための情報も提供されます。
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースに関する分析結果の取得](../how-to/get-analytics-knowledge-base.md)
+> [!div class="nextstepaction"]
+> [信頼度スコア](../Concepts/confidence-score.md)

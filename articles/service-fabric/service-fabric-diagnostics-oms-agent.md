@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 47017fdb5f1fbaba800e71dea21afe2c39bd91e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258693"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570144"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Monitor ログを使用したパフォーマンスの監視
 
@@ -91,6 +91,6 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 関連する[パフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を収集する。 特定のパフォーマンス カウンターを収集するように Log Analytics エージェントを構成する場合は、「[データ ソースの構成](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)」を確認してください。
-* Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../azure-monitor/platform/alerts-overview.md)を設定する
+* 関連する[パフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を収集する。 特定のパフォーマンス カウンターを収集するように Log Analytics エージェントを構成する場合は、「[データ ソースの構成](../azure-monitor/agents/agent-data-sources.md#configuring-data-sources)」を確認してください。
+* Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../azure-monitor/alerts/alerts-overview.md)を設定する
 * 代わりに、パフォーマンス カウンターの収集は、[Microsoft Azure Diagnostics の拡張機能で行い、Application Insights に送信](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)することができる。

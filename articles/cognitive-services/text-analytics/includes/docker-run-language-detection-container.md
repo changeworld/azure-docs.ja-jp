@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: e39f9b537b2b57b455d2e0ab40ba09f1a6a890ba
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1ac035e669ae6d5fcec8dfa8faee12d34039004b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108969"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91779182"
 ---
 "*言語検出*" コンテナーを実行するには、次の `docker run` コマンドを実行します。 次のプレースホルダーを実際の値に置き換えてください。
 
@@ -26,7 +27,7 @@ ms.locfileid: "86108969"
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/language \
+mcr.microsoft.com/azure-cognitive-services/textanalytics/language \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

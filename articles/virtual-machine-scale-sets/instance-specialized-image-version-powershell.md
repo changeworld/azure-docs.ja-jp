@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 8ba9379125917c482ce12cb28b6fa6e5be809203
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b47498127996698d53946eb2aaf54368132ae7f9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793827"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877987"
 ---
 # <a name="create-a-scale-set-from-a-specialized-image-using-powershell"></a>PowerShell を使用して特殊化されたイメージからスケール セットを作成する 
 
-Azure PowerShell を使用して、[共有イメージ ギャラリー](shared-image-galleries.md)に格納されている特殊化されたイメージ バージョンから VM を作成します。 一般化されたイメージ バージョンを使用してスケール セットを作成する場合は、[一般化されたイメージ バージョンからのスケール セット インスタンスの作成](instance-generalized-image-version-powershell.md)に関する記事を参照してください。
+Azure PowerShell を使用して、[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に格納されている特殊化されたイメージ バージョンから VM を作成します。 一般化されたイメージ バージョンを使用してスケール セットを作成する場合は、[一般化されたイメージ バージョンからのスケール セット インスタンスの作成](instance-generalized-image-version-powershell.md)に関する記事を参照してください。
 
 特殊化されたイメージがギャラリーに用意できたら、[New-AzVmss](/powershell/module/az.compute/new-azvmss) コマンドレットを使用して仮想マシン スケール セットを作成できます。 
 
@@ -134,7 +134,7 @@ New-AzVmss `
 すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Image Builder (プレビュー)](../virtual-machines/linux/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](../virtual-machines/linux/image-builder-gallery-update-image-version.md)に使用することさえできます。  
+[Azure Image Builder (プレビュー)](../virtual-machines/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](../virtual-machines/linux/image-builder-gallery-update-image-version.md)に使用することさえできます。  
 
 共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 
@@ -142,5 +142,4 @@ New-AzVmss `
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-共有イメージ ギャラリーの詳細については、[概要](shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](troubleshooting-shared-images.md)」を参照してください。
-
+共有イメージ ギャラリーの詳細については、[概要](../virtual-machines/shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](../virtual-machines/troubleshooting-shared-images.md)」を参照してください。

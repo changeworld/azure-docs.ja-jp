@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: f3599a804549a19c3a633cfacf1a97b5ee232a32
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246121"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947129"
 ---
 .NET 用 Bing Autosuggest クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
 
 .NET 用 Bing Autosuggest クライアント ライブラリを使用して、部分クエリ文字列に基づいて検索候補を取得します。
 
-[リファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | [サンプル コード](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
+[リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | [サンプル コード](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,7 +31,7 @@ ms.locfileid: "88246121"
 ## <a name="create-environment-variables"></a>環境変数を作成する
 
 >[!NOTE]
-> 2019 年 7 月 1 日より後に作成されたリソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。
+> 2019 年 7 月 1 日より後に作成されたリソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../../../cognitive-services-custom-subdomains.md)」を参照してください。
 
 作成したリソースのキーとエンドポイントを使用して、認証用に 2 つの環境変数を作成します。
 <!-- replace the below variable names with the names expected in the code sample.-->
@@ -148,10 +148,10 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 ### <a name="authenticate-the-client"></a>クライアントを認証する
 
 > [!NOTE]
-> このクイックスタートでは、`AUTOSUGGEST_SUBSCRIPTION_KEY` という名前の Bing Autosuggest キー用と `AUTOSUGGEST_ENDPOINT` という名前のエンドポイント用の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)してあることを前提としています。
+> このクイックスタートでは、`AUTOSUGGEST_SUBSCRIPTION_KEY` という名前の Bing Autosuggest キー用と `AUTOSUGGEST_ENDPOINT` という名前のエンドポイント用の[環境変数を作成](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)してあることを前提としています。
 
 
-新しい非同期メソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを指定して [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) オブジェクトを作成し、それを自分のエンドポイントと共に使用して [AutosuggestClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) オブジェクトを作成します。
+新しい非同期メソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを指定して [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials) オブジェクトを作成し、それを自分のエンドポイントと共に使用して [AutosuggestClient](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient) オブジェクトを作成します。
 
 ```csharp
 async static Task RunQuickstart()
@@ -167,7 +167,7 @@ async static Task RunQuickstart()
 
 ### <a name="send-an-autosuggest-request"></a>自動提案要求を送信する
 
-同じメソッド内でクライアントの [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) メソッドを使用して、クエリを Bing に送信します。 次に、[Suggestions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) 応答を反復処理し、最初の候補を出力します。
+同じメソッド内でクライアントの [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) メソッドを使用して、クエリを Bing に送信します。 次に、[Suggestions](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions) 応答を反復処理し、最初の候補を出力します。
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");
@@ -216,4 +216,4 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 ## <a name="see-also"></a>関連項目
 
 - [Bing Autosuggest とは](../../get-suggested-search-terms.md)
-- [Bing Autosuggest dotnet リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)
+- [Bing Autosuggest dotnet リファレンス](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme)

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: elastic-pools
 ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 48d8b0519ca1b312909f8b48a7fd8a25d0f8b919
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d87c5d162b96209c0ce3d3276dc518f42373590f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225820"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780814"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用したエラスティック プールのリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -154,7 +154,7 @@ DTU の数が同じである場合、エラスティック プールに提供さ
 エラスティック プールのすべての DTU が使用されている場合は、プール内の各データベースが、同量のリソースを受け取ってクエリを処理します。 SQL Database サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。 それ以外の場合、エラスティック プールのリソース共有の公平性は、データベースあたりの DTU分が 0 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
 
 > [!NOTE]
-> `tempdb` の制限については、[tempdb の制限](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)に関する記事を参照してください。
+> `tempdb` の制限については、[tempdb の制限](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)に関する記事を参照してください。
 
 ### <a name="database-properties-for-pooled-databases"></a>プールされたデータベースのデータベース プロパティ
 
@@ -164,7 +164,7 @@ DTU の数が同じである場合、エラスティック プールに提供さ
 |:--- |:--- |
 | データベースあたりの最大 eDTU 数 |プール内の他のデータベースによる使用状況に基づいて使用可能な場合にプール内の任意のデータベースが使用できる eDTU の最大数。 データベースごとの最大 eDTU は、データベースに対して保証されたリソースではありません。 これは、プール内のすべてのデータベースに適用されるグローバル設定です。 データベースのピーク使用率を処理するのに十分高いデータベースあたり最大 eDTU 数を設定します。 プールでは通常、ホットとコールドのデータベース使用パターンがあり、すべてのデータベースが同時に最大に使用されることはないため、ある程度高めに上限が設定されています。 たとえば、データベースごとの最大使用量が 20 eDTU で、プールの 100 データベースの 20% のみが同時に最大で使用されるものとします。 データベースあたりの eDTU 上限が 20 eDTU に設定されている場合は、プールを 5 倍に設定し、プールあたりの eDTU 数を 400 に設定しておいても問題はありません。 |
 | データベースあたりの最小 eDTU 数 |プール内の任意のデータベースで保証される eDTU の最小数。 これは、プール内のすべてのデータベースに適用されるグローバル設定です。 データベースあたりの最小 eDTU は 0 に設定でき、これが既定値です。 このプロパティは、0 とデータベースあたりの平均 eDTU 使用率の間に設定されます。 プール内のデータベースの数とデータベースごとの最小 eDTU の積がプールごとの eDTU の値を超えることはできません。 たとえば、プールに 20 のデータベースがあり、データベースあたりの最小 eDTU を 10 に設定する場合は、プールあたりの eDTU 数を少なくとも 200 eDTU にする必要があります。 |
-| データベースあたりの最大ストレージ容量 |プール内のデータベースに対してユーザーによって設定される最大データベース サイズ。 ただし、プールされたデータベースは、割り当てられたプール ストレージを共有します。 "*データベースあたりの*" 最大ストレージの合計が、利用可能な "*プールのストレージ容量*" の合計を超えるように設定されている場合でも、すべてのデータベースによって実際に使用される容量の合計が利用可能なプールの制限を超えることはありません。 最大データベース サイズとはデータ ファイルの最大サイズのことであり、ログ ファイルによって使用される領域は含まれません。 |
+| データベースあたりの最大ストレージ容量 |プール内のデータベースに対してユーザーによって設定される最大データベース サイズ。 ただし、プールされたデータベースは、割り当てられたプール ストレージを共有します。 " *データベースあたりの* " 最大ストレージの合計が、利用可能な " *プールのストレージ容量* " の合計を超えるように設定されている場合でも、すべてのデータベースによって実際に使用される容量の合計が利用可能なプールの制限を超えることはありません。 最大データベース サイズとはデータ ファイルの最大サイズのことであり、ログ ファイルによって使用される領域は含まれません。 |
 |||
 
 ## <a name="next-steps"></a>次のステップ

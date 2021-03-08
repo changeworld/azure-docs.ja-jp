@@ -1,21 +1,18 @@
 ---
 title: Hadoop MapReduce アクティビティを使用してデータを変換する
 description: Azure Data Factory から Azure HDInsight クラスター上の Hadoop MapReduce プログラムを実行してデータを処理する方法について説明します。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 48afff71d4b5241ede1783a270658e56e4b8c242
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f03906586d6226c92cfa69e1a139d4c876cbf723
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849248"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375886"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
 
@@ -69,7 +66,7 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 | type              | MapReduce アクティビティの場合、アクティビティの種類は HDinsightMapReduce です | はい      |
 | linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
 | className         | 実行するクラスの名前         | はい      |
-| jarLinkedService  | Jar ファイルの格納に使用される Azure Storage のリンクされたサービスへの参照。 ここでは **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** および **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** にリンクされたサービスのみがサポートされています。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
+| jarLinkedService  | Jar ファイルの格納に使用される Azure Storage のリンクされたサービスへの参照。 ここでは **[Azure Blob Storage](./connector-azure-blob-storage.md)** および **[ADLS Gen2](./connector-azure-data-lake-storage.md)** にリンクされたサービスのみがサポートされています。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
 | jarFilePath       | jarLinkedServiceで参照される Azure Storage に格納されている Jar ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | はい      |
 | jarlibs           | jarLinkedServiceで定義される Azure Storage に格納されているジョブで参照される Jar ライブラリ ファイルへのパスの文字列配列。 ファイル名は大文字と小文字が区別されます。 | いいえ       |
 | getDebugInfo      | HDInsight クラスターで使用されている Azure Storage または jarLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:[なし] : | いいえ       |
@@ -123,5 +120,5 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
+* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

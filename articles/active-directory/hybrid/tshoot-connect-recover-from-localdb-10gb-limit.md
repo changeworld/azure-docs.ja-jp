@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4b45decd2f2cf9c99cffb0e08d4d6a5c5cfafc67
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275904"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858401"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect:LocalDB の 10 GB 制限からの回復方法
 Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 SQL Server Express には、10 GB のサイズ制限があります。 LocalDB を使用していて、この上限に達すると、Azure AD Connect Synchronization Service は正常に開始または同期できなくなります。 この記事では、回復の手順を説明します。
@@ -29,9 +29,9 @@ Azure AD Connect には、ID データを格納する SQL Server データベー
 ## <a name="symptoms"></a>現象
 一般的には、次の 2 つの症状があります。
 
-* Azure AD Connect Synchronization Service が**実行中**でも、 *"stopped-database-disk-full"* エラーで同期が失敗する。
+* Azure AD Connect Synchronization Service が **実行中** でも、 *"stopped-database-disk-full"* エラーで同期が失敗する。
 
-* Azure AD Connect Synchronization Service が**開始できない**。 このサービスを開始しようとすると、イベント 6323 で失敗し、"*SQL Server のディスク領域が不足しているため、サーバーでエラーが発生しました。* " というエラー メッセージが表示されます。
+* Azure AD Connect Synchronization Service が **開始できない**。 このサービスを開始しようとすると、イベント 6323 で失敗し、"*SQL Server のディスク領域が不足しているため、サーバーでエラーが発生しました。* " というエラー メッセージが表示されます。
 
 ## <a name="short-term-recovery-steps"></a>短期的な回復手順
 このセクションでは、Azure AD Connect Synchronization Service が操作を再開するために必要な DB 空き領域を増やす手順について説明します。 これには次の手順が含まれます。
@@ -55,7 +55,7 @@ Azure AD Connect には、ID データを格納する SQL Server データベー
 5. 実行されていない場合は、サービスを開始してみてください。 サービスが正常に開始した場合は、「[データベースを縮小する](#shrink-the-database)」の手順をスキップし、「[実行履歴データを削除する](#delete-run-history-data)」の手順に進みます。 そうでない場合は、「[データベースを縮小する](#shrink-the-database)」の手順に進みます。
 
 ### <a name="shrink-the-database"></a>データベースを縮小する
-縮小操作を使用して、Synchronization Service を開始するための十分な DB 空き領域を確保します。 データベース内の空白を削除することによって、DB 空き領域が確保されます。 必ず領域を回復できる保証はないため、この手順はベスト エフォートです。 縮小操作の詳細については、「[データベースの圧縮](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15)」という記事を参照してください。
+縮小操作を使用して、Synchronization Service を開始するための十分な DB 空き領域を確保します。 データベース内の空白を削除することによって、DB 空き領域が確保されます。 必ず領域を回復できる保証はないため、この手順はベスト エフォートです。 縮小操作の詳細については、「[データベースの圧縮](/sql/relational-databases/databases/shrink-a-database)」という記事を参照してください。
 
 > [!IMPORTANT]
 > Synchronization Service を実行できる場合は、この手順をスキップしてください。 SQL DB の縮小は、断片化の増加によってパフォーマンスが低下する可能性があるため、お勧めしません。

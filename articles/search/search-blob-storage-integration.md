@@ -1,39 +1,42 @@
 ---
-title: Azure Blob Storage にフル テキスト検索を追加する
+title: Azure Blob Storage のコンテンツを検索する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search でフル テキスト検索インデックスを作成するときに、コンテンツを抽出し、Azure BLOB に構造体を追加します。
+description: Azure Blob からテキストを抽出し、Azure Cognitive Search インデックスでフルテキスト検索を行う方法について説明します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 72d00b70cf3568466715668aa441ee295614c740
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/23/2020
+ms.openlocfilehash: f61bf635cc61a2153a7bb016ef4b4711d7ba7391
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935247"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91355297"
 ---
-# <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Azure Cognitive Search を使用して Azure BLOB データにフル テキスト検索を追加する
+# <a name="search-over-azure-blob-storage-content"></a>Azure Blob Storage のコンテンツを検索する
 
-Azure Blob Storage に格納されているさまざまなコンテンツの種類の検索は、解決するのが難しい問題になる場合があります。 ただし、[Azure Cognitive Search](search-what-is-azure-search.md) を使用すると、数回クリックするだけでご利用の BLOB のコンテンツのインデックスを作成して検索できます。 Azure Cognitive Search には、データソース対応機能をインデックス作成に追加する ["*BLOB インデクサー*"](search-howto-indexing-azure-blob-storage.md) を介して BLOB ストレージからインデックスを作成するための組み込みの統合機能が用意されています。
+Azure Blob Storage に格納されているさまざまなコンテンツの種類の検索は、解決するのが難しい問題になる場合があります。 この記事では、BLOB からコンテンツとメタデータを抽出し、それを Azure Cognitive Search の検索インデックスに送信するための基本的なワークフローについて説明します。 結果のインデックスには、フルテキスト検索を使用してクエリを実行できます。
+
+> [!NOTE]
+> ワークフローとコンポジションについて既によく理解している場合、 次の手順は「[BLOB インデクサーを構成する方法](search-howto-indexing-azure-blob-storage.md)」です。
 
 ## <a name="what-it-means-to-add-full-text-search-to-blob-data"></a>フルテキスト検索を BLOB データに追加することの意味
 
-Azure Cognitive Search とはクラウド検索サービスであり、ご利用の検索サービスでホストされているユーザー定義のインデックスを操作するインデックス作成エンジンとクエリ エンジンを備えています。 検索可能なコンテンツとクエリ エンジンをクラウド内に併置することは、パフォーマンス上必要であり、これにより、ユーザーが検索クエリに期待する速度で結果を返すことができます。
+Azure Cognitive Search は、クラウドでホストされているリモート検索可能なコンテンツを含むユーザー定義のインデックスに対して、インデックス作成とクエリ ワークロードをサポートする検索サービスです。 検索可能なコンテンツとクエリ エンジンを併置することは、パフォーマンス上必要であり、これにより、ユーザーが検索クエリに期待する速度で結果を返すことができます。
 
-Azure Cognitive Search はインデックス層で Azure Blob Storage と統合されます。これにより、ご利用の BLOB コンテンツは、*逆インデックス*や、自由形式のテキスト クエリおよびフィルター式をサポートするその他のクエリ構造体に、インデックスが作成された検索ドキュメントとしてインポートされます。 ご利用の BLOB コンテンツは検索インデックスに対してインデックスが作成されるため、BLOB コンテンツにアクセスするときは、Azure Cognitive Search 内のすべてのクエリ機能を利用できます。
-
-インデックスが作成され設定されると、それはご利用の BLOB コンテナーとは独立した存在となりますが、基になるコンテナーに変更が生じた場合はインデックス作成操作を再実行することでインデックスを更新することができます。 変更を検出するには、個々の BLOB に関するタイムスタンプ情報が使用されます。 更新メカニズムとしては、スケジュールされた実行またはオンデマンドのインデックス作成のいずれかを選択できます。
+Cognitive Search はインデックス層で Azure Blob Storage と統合されます。これにより、ご利用の BLOB コンテンツは、*逆インデックス*や、自由形式のテキスト クエリおよびフィルター式をサポートするその他のクエリ構造体に、インデックスが作成された検索ドキュメントとしてインポートされます。 ご利用の BLOB コンテンツは検索インデックスに対してインデックスが作成されるため、Azure Cognitive Search 内のすべてのクエリ機能を使用して、BLOB コンテンツ内の情報を見つけることができます。
 
 Azure Blob Storage 内の単一コンテナーにあるご利用の BLOB が入力となります。 BLOB は、ほぼ任意の種類のテキスト データとすることができます。 ご利用の BLOB に画像が含まれている場合は、[AI エンリッチメントを BLOB インデックス作成](search-blob-ai-integration.md)に追加することで、画像からテキストを作成し、抽出することができます。
 
 出力は常に Azure Cognitive Search インデックスであり、これはクライアント アプリケーションでの高速テキスト検索、取得、および探索に使用されます。 中間にあるのは、インデックス作成のパイプライン アーキテクチャそのものです。 パイプラインは、この記事で詳しく説明する "*インデクサー*" 機能に基づいています。
 
-## <a name="start-with-services"></a>サービスの使用を開始する
+インデックスが作成され設定されると、それはご利用の BLOB コンテナーとは独立した存在となりますが、変更が生じたドキュメントに基づいてインデックス作成操作を再実行することでインデックスを更新することができます。 変更を検出するには、個々の BLOB に関するタイムスタンプ情報が使用されます。 更新メカニズムとしては、スケジュールされた実行またはオンデマンドのインデックス作成のいずれかを選択できます。
 
-Azure Cognitive Search と Azure Blob Storage が必要です。 BLOB ストレージ内には、ソース コンテンツを提供するコンテナーが必要です。
+## <a name="required-resources"></a>必要なリソース
+
+Azure Cognitive Search と Azure Blob Storage の両方が必要です。 BLOB ストレージ内には、ソース コンテンツを提供するコンテナーが必要です。
 
 ご自分のストレージ アカウント ポータル ページで直接開始できます。 左側のナビゲーション ページの **[Blob service]** で、 **[Azure Cognitive Search の追加]** をクリックして新しいサービスを作成するか、既存のサービスを選択します。 
 
@@ -41,7 +44,7 @@ Azure Cognitive Search と Azure Blob Storage が必要です。 BLOB ストレ�
 
 ## <a name="use-a-blob-indexer"></a>BLOB インデクサーを使用する
 
-"*インデクサー*" は、データソースに対応したサブサービスであり、データのサンプリング、メタデータ データの読み取り、データの取得、および後続のインポートに備えたネイティブ形式から JSON ドキュメントへのデータのシリアル化、などを行うための内部ロジックを備えています。 
+*インデクサー*は、Cognitive Search のデータソースに対応したサブサービスであり、データのサンプリング、メタデータ データの読み取り、データの取得、および後続のインポートに備えたネイティブ形式から JSON ドキュメントへのデータのシリアル化、などを行うための内部ロジックを備えています。 
 
 Azure Storage 内の BLOB は、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)を使用してインデックス作成されます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または .NET SDK を使用します。 コード内でこのインデクサーを使用するには、種類を設定してから、Azure Storage アカウントおよび BLOB コンテナーを含む接続情報を指定します。 ご利用の BLOB のサブセットを作成するには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
 
@@ -65,11 +68,12 @@ BLOB インデクサーでは、構成パラメーターが用意されている
 > BLOB インデックスの詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する](../storage/blobs/storage-manage-find-blobs.md)」を参照してください。
 
 ### <a name="indexing-json-blobs"></a>JSON BLOB のインデックス作成
+
 インデクサーは、JSON を含む BLOB 内にある構造化コンテンツを抽出するように構成できます。 インデクサーは、JSON BLOB を読み取り、その構造化コンテンツを検索ドキュメントの適切なフィールドに解析できます。 インデクサーはまた、JSON オブジェクトの配列を含む BLOB を取得し、各要素を個別の検索ドキュメントにマップすることもできます。 解析モードを設定すると、インデクサーによって作成された JSON オブジェクトの種類に影響を与える場合があります。
 
 ## <a name="search-blob-content-in-a-search-index"></a>検索インデックス内の BLOB コンテンツを検索する 
 
-インデックス作成の出力は検索インデックスです。これは、クライアント アプリでフリー テキストとフィルター処理されたクエリを使用して対話型探索を行う場合に使用されます。 コンテンツの探索と検証を初めて行う場合は、ポータル内の[検索エクスプローラー](search-explorer.md)を使用してドキュメントの構造を確認することから始めることをお勧めします。 検索エクスプローラーでは、[シンプルなクエリ構文](query-simple-syntax.md)、[完全なクエリ構文](query-lucene-syntax.md)、および[フィルター式構文](query-odata-filter-orderby-syntax.md)を使用することができます。
+インデクサーの出力は検索インデックスです。これは、クライアント アプリでフリー テキストとフィルター処理されたクエリを使用して対話型探索を行う場合に使用されます。 コンテンツの探索と検証を初めて行う場合は、ポータル内の[検索エクスプローラー](search-explorer.md)を使用してドキュメントの構造を確認することから始めることをお勧めします。 検索エクスプローラーでは、[シンプルなクエリ構文](query-simple-syntax.md)、[完全なクエリ構文](query-lucene-syntax.md)、および[フィルター式構文](query-odata-filter-orderby-syntax.md)を使用することができます。
 
 より永続的な解決策は、クエリ入力を収集し、クライアント アプリケーションでの検索結果として応答を提示することです。 次 C# のチュートリアルでは、検索アプリケーションを構築する方法について説明します。[Azure Cognitive Search で初めてのアプリを作成する](tutorial-csharp-create-first-app.md)。
 

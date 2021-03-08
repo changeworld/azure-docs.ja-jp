@@ -1,0 +1,69 @@
+### YamlMime:Landing
+title: Azure Arc 対応データ サービス
+summary: 任意のインフラストラクチャで Kubernetes を使用して、エッジおよびマルチクラウド環境で Azure データ サービス オンプレミスを実行します。
+metadata:
+  title: Azure Arc 対応データ サービス (プレビュー)
+  description: 任意のインフラストラクチャで Kubernetes を使用して、エッジおよびマルチクラウド環境で Azure データ サービス オンプレミスを実行します。
+  ms.service: azure-arc
+  ms.subservice: azure-arc-data
+  ms.topic: landing-page
+  author: MikeRayMSFT
+  ms.author: mikeray
+  ms.date: 12/16/2020
+  ms.openlocfilehash: a3f90834c3b4d68e96b02361643bf32786670e84
+  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/18/2020
+  ms.locfileid: "97673913"
+landingContent:
+- title: 詳細
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Arc 対応データ サービスとは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 接続モードと要件
+      url: connectivity.md
+    - text: ストレージの構成
+      url: storage-configuration.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: データ コントローラーの作成
+      url: create-data-controller.md
+    - text: クライアント ツールのインストール
+      url: install-client-tools.md
+- title: Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 作成
+      url: create-postgresql-hyperscale-server-group.md
+    - text: 接続する
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: 移行
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: 復元
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: Azure Arc 対応 SQL Managed Instance (プレビュー)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 作成
+      url: create-sql-managed-instance.md
+    - text: 接続する
+      url: connect-managed-instance.md
+    - text: 移行
+      url: migrate-to-managed-instance.md
+    - text: 復元
+      url: restore-adventureworks-sample-db.md
+- title: 概念実証
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: ジャンプスタート
+      url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/

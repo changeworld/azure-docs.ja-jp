@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588927"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789012"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault と DigiCert 証明機関の統合
 
@@ -23,7 +23,7 @@ Azure Key Vault を使用すると、ネットワークのデジタル証明書�
 
 Azure Key Vault ユーザーは、自分のキー コンテナーから DigiCert 証明書を直接生成できます。 Key Vault では、Key Vault と DigiCert 証明機関との信頼できるパートナーシップを通じて、DigiCert によって発行された証明書のエンドツーエンドの証明書ライフサイクル管理が保証されます。
 
-証明書の一般的な情報については、[Azure Key Vault 証明書](/azure/key-vault/certificates/about-certificates)に関するページを参照してください。
+証明書の一般的な情報については、[Azure Key Vault 証明書](./about-certificates.md)に関するページを参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -31,9 +31,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このガイドを完了するには、以下のリソースが必要です。
 * キー コンテナー。 既存のキー コンテナーを使用することも、次のいずれかのクイックスタートの手順に従って新しいキー コンテナーを作成することもできます。
-   - [Azure CLI を使用してキー コンテナーを作成する](../secrets/quick-create-cli.md)
-   - [Azure PowerShell を使用してキー コンテナーを作成する](../secrets/quick-create-powershell.md)
-   - [Azure portal を使用してキー コンテナーを作成する](../secrets/quick-create-portal.md)。
+   - [Azure CLI を使用してキー コンテナーを作成する](../general/quick-create-cli.md)
+   - [Azure PowerShell を使用してキー コンテナーを作成する](../general/quick-create-powershell.md)
+   - [Azure portal を使用してキー コンテナーを作成する](../general/quick-create-portal.md)。
 *   DigiCert CertCentral アカウントをアクティブにする必要があります。 CertCentral アカウントに[サインアップ](https://www.digicert.com/account/signup/)する。
 *   対象のアカウントの管理者レベルのアクセス許可。
 
@@ -52,9 +52,9 @@ DigiCert CertCentral アカウントから上記の情報を収集した後、Di
 
 1.  DigiCert 証明機関を追加するには、DigiCert を追加するキー コンテナーに移動します。 
 2.  Key Vault のプロパティ ページで、 **[証明書]** を選択します。
-3.  **[認証機関]** タブを選択します。![証明書のプロパティ](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
+3.  **[証明機関]** タブを選択します。![証明機関を選択する](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
 4.  **[追加]** オプションを選択します。
- ![証明書のプロパティ](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
+ ![証明機関を追加する](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  **[Create a certificate Authority]\(証明機関の作成\)** 画面で、次の値を選択します。
     -   **Name**:識別可能な発行者名を追加します。 例: DigicertCA
     -   **[プロバイダー]** : メニューから DigiCert を選択します。
@@ -76,7 +76,7 @@ PowerShell をローカルにインストールして使用する場合、この
 Login-AzAccount
 ```
 
-1.  **リソース グループ**を作成します
+1.  **リソース グループ** を作成します
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
@@ -84,7 +84,7 @@ Login-AzAccount
 New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 ```
 
-2. **キー コンテナー**を作成します
+2. **キー コンテナー** を作成します
 
 キー コンテナーには一意の名前を使用する必要があります。 ここで、"Contoso-Vaultname" は、このガイド全体で使用されるキー コンテナーの名前です。
 
@@ -100,25 +100,23 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 
 - **アカウント ID** 変数を定義します
 - **組織 ID** 変数を定義します
-- **API キー**変数を定義します
-- **発行者名**変数を定義します
+- **API キー** 変数を定義します
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
-$issuerName = "DigiCertCA"
 ```
 
-4. **発行者**を設定します。 これにより、Digicert が証明機関としてキー コンテナーに追加されます。
+4. **発行者** を設定します。 これにより、Digicert が証明機関としてキー コンテナーに追加されます。 パラメーターの詳細については、[こちらを参照](/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)してください
 ```azurepowershell-interactive
-Set-AzureKeyVaultCertificateIssuer -VaultName $vaultName -IssuerName $issuerName -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org
+Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
 5. **キー コンテナー内の DigiCert から直接証明書のポリシーを設定し、証明書を発行します**。
 
 ```azurepowershell-interactive
-$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName DigiCertCA -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
+$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
@@ -128,7 +126,10 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 
 発行された証明書が Azure portal で "無効" 状態になっている場合は、 **[証明書の操作]** に進み、その証明書の DigiCert エラー メッセージを確認してください。
 
- ![証明書のプロパティ](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+ ![証明書の操作](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+
+エラー メッセージ "Please perform a merge to complete this certificate request (この証明書要求を完了するには、マージを実行してください)"。
+この要求を完了するには、CA によって署名された CSR をマージする必要があります。 詳しくは[こちら](./create-certificate-signing-request.md)をご覧ください
 
 詳しくは、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
 
@@ -136,8 +137,15 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 
 - KeyVault を使用して DigiCert ワイルドカード証明書を生成できますか。 
    はい。 これは、DigiCert アカウントをどのように構成したかによって異なります。
-- EV 証明書を作成する場合、それを指定するにはどうすればよいですか。 
-   証明書を作成するときに、[ポリシーの詳細構成] をクリックし、証明書の種類を指定します。 サポートされている値は、次のとおりです。OV-SSL、EV-SSL
+- DigiCert を使用して **OV-SSL または EV-SSL** 証明書を作成するには、どうすればよいですか。 
+   キー コンテナーでは、OV および EV SSL 証明書の作成がサポートされています。 証明書を作成するときに、[ポリシーの詳細構成] をクリックし、証明書の種類を指定します。 サポートされている値は、次のとおりです。OV-SSL、EV-SSL
+   
+   Digicert アカウントで許可されている場合は、キー コンテナーにこの種類の証明書を作成できます。 この種類の証明書では、検証が失敗した場合に、DigiCert によって検証が実行され、サポート チームが解決のための最適な支援を行うことができます。 その他の情報を、証明書の作成時に subjectName で定義することで追加できます。
+
+例
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+   
 - 統合を通じて DigiCert 証明書を作成する場合と、DigiCert を通じて証明書を直接取得する場合とで、時間的な差異は生じますか。
    いいえ。 証明書を作成するときに時間がかかることがあるのは検証のプロセスであり、その検証は DigiCert が従うプロセスに依存します。
 

@@ -1,20 +1,25 @@
 ---
-title: Cloud Services ロール構成の XPath チート シート |Microsoft Docs
+title: Cloud Services (クラシック) ロール構成の XPath チート シート | Microsoft Docs
 description: クラウド サービス ロール構成で設定を環境変数として公開するために使用できるさまざまな XPath 設定。
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 397bc6845dc8d2d8bc44c00c27f6c12037651337
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386087"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741385"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>XPath で環境変数としてロール構成設定を公開する
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 クラウド サービス worker ロールまたは Web ロールのサービス定義ファイルで、ランタイム構成値を環境変数として公開できます。 次の XPath 値がサポートされています (これは API 値に対応します)。
 
 これらの XPath 値は、 [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) ライブラリ経由でも使用できます。 

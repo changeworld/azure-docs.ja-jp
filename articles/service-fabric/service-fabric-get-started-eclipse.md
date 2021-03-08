@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374237"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656922"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
@@ -42,7 +42,7 @@ Service Fabric プラグインをインストールするために、Eclipse で
    ![Eclipse 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
 3. Service Fabric プラグインを選択して **[Next (次へ)]** をクリックします。
 4. インストール手順を完了し、マイクロソフト ソフトウェア ライセンス条項に同意します。
-  
+
 Service Fabric プラグインが既にインストールされている場合は、最新バージョンをインストールしてください。 
 1. 使用できる更新プログラムを確認するには、 **[Help]\(ヘルプ\)**  >  **[About Eclipse]\(Eclipse について\)**  >  **[Installation Details]\(インストールの詳細\)** の順に移動します。 
 2. インストールされているプラグインの一覧で Service Fabric を選択して、 **[Update (更新)]** をクリックします。 使用できる更新プログラムがインストールされます。
@@ -54,10 +54,9 @@ Service Fabric プラグインが既にインストールされている場合�
 > [!NOTE]
 >Eclipse が Mac で意図したように動かない場合、またはスーパー ユーザーとして実行する必要がある場合は、**ECLIPSE_INSTALLATION_PATH** フォルダーの **Eclipse.app/Contents/MacOS** サブフォルダーに移動します。 `./eclipse` を実行して Eclipse を起動します。
 
-
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Eclipse での Service Fabric アプリケーションの作成
 
-1.  Eclipse で、 **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Other]\(その他\)** の順に移動します。 **Service Fabric プロジェクト**を選択して **[Next (次へ)]** をクリックします。
+1.  Eclipse で、 **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Other]\(その他\)** の順に移動します。 **Service Fabric プロジェクト** を選択して **[Next (次へ)]** をクリックします。
 
     ![新しい Service Fabric プロジェクトのページ 1][create-application/p1]
 
@@ -91,7 +90,7 @@ Service Fabric プラグインが既にインストールされている場合�
     -   クリーニングなしでアプリケーションをビルドするには、 **[Build Application (アプリケーションのビルド)]** をクリックします。
     -   アプリケーションのクリーン ビルドを実行するには、 **[Rebuild Application (アプリケーションのリビルド)]** をクリックします。
     -   ビルド アーティファクトのアプリケーションをクリーンするには、 **[Clean Application (アプリケーションのクリーン)]** をクリックします。
-     
+
 ## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>Eclipse を使用してローカル クラスターに Service Fabric アプリケーションをデプロイする
 
 Service Fabric アプリケーションを構築したら、以下の手順に従ってローカル クラスターにデプロイします。
@@ -129,7 +128,7 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
 
    PFX ファイルがパスワードで保護されていない場合は、最後のパラメーターとして `--passin pass:` を使用します。
 
-2. **PublishProfiles** ディレクトリにある **Cloud.json**ファイルを開きます。 クラスターに適切なクラスター エンドポイントとセキュリティ資格情報を構成する必要があります。
+2. **PublishProfiles** ディレクトリにある **Cloud.json** ファイルを開きます。 クラスターに適切なクラスター エンドポイントとセキュリティ資格情報を構成する必要があります。
 
    - `ConnectionIPOrURL` フィールドには、クラスターの IP アドレスまたは URL が含まれています。 値には URL スキームにが含まれていないことに注意してください (`https://`)。
    - 既定では、このポートをクラスター用に明示的に変更した場合を除き、`ConnectionPort` フィールドは `19080` である必要があります。
@@ -156,7 +155,6 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
 
 4. 発行操作の進捗状況は、コンソール ウィンドウから確認できます。
 5. アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウで Azure クラスターの Service Fabric Explorer を開きます。 上記の例では、これは `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` のようになります。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
-
 
 セキュリティで保護された Linux クラスターの場合、アプリケーションに Reliable Services サービスが含まれている場合は、Service Fabric runtime API を呼び出すためにサービスが使用できる証明書を構成する必要もあります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。
 

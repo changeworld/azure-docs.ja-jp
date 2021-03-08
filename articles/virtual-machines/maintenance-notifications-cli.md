@@ -7,23 +7,36 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 633708219adaba2fb4c4889754b2112fbf3c4180
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4bd5c8ae7b4f2ba2d057f61712ce799814e19050
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069360"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202149"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Azure CLI に対する計画済みメンテナンスの通知の処理
 
 **この記事は、Linux と Windows の両方を実行する仮想マシンに適用されます。**
 
-Azure CLI を使用して、VM の[メンテナンス](maintenance-notifications.md)の予定を確認できます。 計画メンテナンスの情報は、[az vm get-instance-view](/cli/azure/vm?view=azure-cli-latest#az-vm-get-instance-view) から確認できます。
+Azure CLI を使用して、VM の[メンテナンス](maintenance-notifications.md)の予定を確認できます。 計画メンテナンスの情報は、[az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) から確認できます。
  
 計画メンテナンスがある場合にのみ、メンテナンス情報が返されます。 
 
 ```azurecli-interactive
 az vm get-instance-view -n myVM -g myResourceGroup --query instanceView.maintenanceRedeployStatus
+```
+
+出力
+```
+      "maintenanceRedeployStatus": {
+      "additionalProperties": {},
+      "isCustomerInitiatedMaintenanceAllowed": true,
+      "lastOperationMessage": null,
+      "lastOperationResultCode": "None",
+      "maintenanceWindowEndTime": "2018-06-04T16:30:00+00:00",
+      "maintenanceWindowStartTime": "2018-05-21T16:30:00+00:00",
+      "preMaintenanceWindowEndTime": "2018-05-19T12:30:00+00:00",
+      "preMaintenanceWindowStartTime": "2018-05-14T12:30:00+00:00"
 ```
 
 ## <a name="start-maintenance"></a>メンテナンスを開始する
@@ -58,6 +71,6 @@ azure vm show myVM
 azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 また、[Azure PowerShell](maintenance-notifications-powershell.md) または [portal](maintenance-notifications-portal.md) を使用して、計画メンテナンスを扱うこともできます。

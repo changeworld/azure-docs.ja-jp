@@ -3,16 +3,15 @@ title: Stream Analytics ジョブの自動スケーリング
 description: この記事では、定義済みスケジュールやジョブ メトリックの値に基づいて Stream Analytics ジョブを自動スケーリングする方法について説明します。
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
-ms.openlocfilehash: 07cbb28b98fcbac1932424c1c72f388813ec2400
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a8e089e302e9d40c69cf7ff2a3480c17894e1463
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037564"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016288"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Azure Automation を使用した Stream Analytics ジョブの自動スケーリング
 
@@ -22,8 +21,8 @@ ms.locfileid: "86037564"
 
 ## <a name="prerequisites"></a>前提条件
 ジョブの自動スケーリングの構成を開始する前に、次の手順を実行します。
-1. [並列トポロジ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)になるよう、ジョブを最適化する。 ジョブの実行中にジョブのスケールを変更できる場合、ジョブは並列トポロジであり、自動スケーリングできるように構成できます。
-2. "RunAsAccount" オプションを有効にして [Azure Automation アカウントを作成する](https://docs.microsoft.com/azure/automation/automation-create-standalone-account)。 このアカウントには、Stream Analytics ジョブを管理するためのアクセス許可が必要です。
+1. [並列トポロジ](./stream-analytics-parallelization.md)になるよう、ジョブを最適化する。 ジョブの実行中にジョブのスケールを変更できる場合、ジョブは並列トポロジであり、自動スケーリングできるように構成できます。
+2. "RunAsAccount" オプションを有効にして [Azure Automation アカウントを作成する](../automation/automation-create-standalone-account.md)。 このアカウントには、Stream Analytics ジョブを管理するためのアクセス許可が必要です。
 
 ## <a name="set-up-azure-automation"></a>Azure Automation の設定
 ### <a name="configure-variables"></a>変数の構成
@@ -73,7 +72,7 @@ Azure Automation では、Runbook をトリガーするスケジュールを構�
 5. 必須フィールドに入力します。 **[アクションの種類]** は、 **[Automation Runbook]** を選択します。 アラートが発生したときにトリガーする Runbook を選択します。 次に、アクション グループを作成します。
 
    ![アクション グループの作成](./media/autoscale/create-actiongroup.png)
-6. ジョブで、[ **[新しいアラート ルール]** ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#set-up-alerts-in-the-azure-portal) を作成します。 選択したメトリックに基づいて条件を指定します。 自動スケールリング ロジックの定義で使用をお勧めするメトリックは、[ *[入力イベント]* 、 *[SU % 使用率]* 、または *[バックログされた入力イベント]* ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics) です。 また、スケールアップ操作をトリガーする場合は、 *[集約粒度]* と *[評価の頻度]* を 1 分間に指定して使用することをお勧めします。 そうすることにより、ジョブで入力ボリュームの急増に対処するために必要となる十分なリソースを確保できます。
+6. ジョブで、[ **[新しいアラート ルール]**](./stream-analytics-set-up-alerts.md#set-up-alerts-in-the-azure-portal) を作成します。 選択したメトリックに基づいて条件を指定します。 自動スケールリング ロジックの定義で使用をお勧めするメトリックは、[ *[入力イベント]* 、 *[SU % 使用率]* 、または *[バックログされた入力イベント]*](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics) です。 また、スケールアップ操作をトリガーする場合は、 *[集約粒度]* と *[評価の頻度]* を 1 分間に指定して使用することをお勧めします。 そうすることにより、ジョブで入力ボリュームの急増に対処するために必要となる十分なリソースを確保できます。
 7. 最後の手順で作成したアクション グループを選択し、アラートを作成します。
 8. ジョブ メトリックの条件に基づいてトリガーする追加のスケーリング操作ごとに、手順 2 から 4 を繰り返します。
 

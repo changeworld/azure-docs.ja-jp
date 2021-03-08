@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bfe8026f099c341b68a1aa1fc5e3fac425e29403
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997678"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578909"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) の診断機能でログ分析を使用する
 
@@ -32,9 +32,9 @@ Windows Virtual Desktop では、管理者が単一のインターフェイス�
 
 ## <a name="before-you-get-started"></a>開始する前に
 
-診断機能で Log Analytics を使用するには、まず[ワークスペースを作成する](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)必要があります。
+診断機能で Log Analytics を使用するには、まず[ワークスペースを作成する](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace)必要があります。
 
-ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
+ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
 
 - ワークスペース ID
 - ワークスペースの主キー

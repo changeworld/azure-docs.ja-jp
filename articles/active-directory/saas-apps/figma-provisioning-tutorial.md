@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: f0f0d61788d7ac9b242dbc176a125b45753d2578
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ec509cc04db87602b3e29230253d9b363a5e30d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555125"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353920"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>チュートリアル:Figma を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,23 +53,23 @@ Azure AD での自動ユーザー プロビジョニング用に Figma からプ
 
 1. [Figma 管理コンソール](https://www.Figma.com/)にサインインします。 お使いのテナントの横にある歯車アイコンをクリックします。
 
-    ![FigmaFigma-employee-provision](media/Figma-provisioning-tutorial/image0.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Figma 管理コンソールのスクリーンショット。A A D Scim Test という名前のテナントが表示されています。テナントの横にある歯車アイコンが強調表示されています。" border="false":::
 
 2. **[General]\(全般\) > [Update Log in Settings]\(ログイン設定の更新\)** に移動します。
 
-    ![FigmaFigma-employee-provision](media/Figma-provisioning-tutorial/figma03.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Figma 管理コンソール上の [General]\(全般\) タブのスクリーンショット。[Log in and provisioning]\(ログインとプロビジョニング\) の下にある [Update log in settings]\(ログイン設定の更新\) が強調表示されています。" border="false":::
 
 3. **テナント ID** をコピーします。 この値を使用して、Azure portal で Figma アプリケーションの [プロビジョニング] タブ内の **[テナント URL]** フィールドに入力される SCIM エンドポイント URL を構築します。
 
-    ![Figma でのトークンの作成](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Figma 管理コンソールの S A M L S S O セクションのスクリーンショット。[Tenant ID]\(テナント ID\) ラベルと、その横にある [Copy]\(コピー\) というリンクが強調表示されています。" border="false":::
 
 4. 下にスクロールし、 **[Generate API Token]\(API トークンの生成\)** をクリックします。
 
-    ![Figma でのトークンの作成](media/Figma-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Figma 管理コンソールの S C I M プロビジョニング セクションのスクリーンショット。[Generate A P I token]\(A P I トークンの生成\) というラベルが付いたリンクが強調表示されています。" border="false":::
 
 5. **[API Token]\(API トークン\)** 値をコピーします。 この値を、Azure portal で Figma アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。 
 
-    ![Figma でのトークンの作成](media/Figma-provisioning-tutorial/figma04.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Figma 管理コンソールのページのスクリーンショット。[Your provisioning A P I token]\(あなたのプロビジョニング A P I トークン\) の下にあるトークンのプレースホルダーが強調表示されています。" border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>ギャラリーから Figma を追加する
 
@@ -110,11 +110,11 @@ Azure AD で自動ユーザー プロビジョニング用に Figma を構成す
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者の資格情報]** セクションで、`https://www.figma.com/scim/v2/<TenantID>` を **[テナント URL]** に入力します。**TenantID** は先ほど Figma から取得した値です。 **[API Token]\(API トークン\)** 値を **[シークレット トークン]** に入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から Figma に接続できることを確認します。 接続できない場合は、使用中の Figma アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

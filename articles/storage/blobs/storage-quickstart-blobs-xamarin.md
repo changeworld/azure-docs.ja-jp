@@ -1,21 +1,21 @@
 ---
-title: クイック スタート:Azure Blob Storage ライブラリ v12 - Xamarin
+title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - Xamarin'
 description: このクイックスタートでは、Xamarin で Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、モバイル デバイスに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: codemillmatt
 ms.author: masoucou
-ms.date: 05/08/2020
+ms.date: 10/09/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fa7ebc71f2bbe6abe6956ad36daaf983e011a94
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001329"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802362"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイック スタート:Azure Blob Storage クライアント ライブラリ v12 と Xamarin
+# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイックスタート: Azure Blob Storage クライアント ライブラリ v12 と Xamarin
 
 Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
 
@@ -39,8 +39,8 @@ Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* [Mobile Development for .NET ワークロード](https://docs.microsoft.com/xamarin/get-started/installation/?pivots=windows)がインストールされた Visual Studio または [Visual Studio for Mac](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
+* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
+* [Mobile Development for .NET ワークロード](/xamarin/get-started/installation/?pivots=windows)がインストールされた Visual Studio または [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019)
 
 ## <a name="setting-up"></a>設定
     
@@ -157,7 +157,7 @@ protected async override void OnAppearing()
 次のコード スニペット:
 
 1. テキストの `MemoryStream` を作成します。
-1. [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) クラスの [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) 関数を呼び出し、ファイル名とテキストの `MemoryStream` の両方でそれを渡してテキストを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
+1. [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) クラスの [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) 関数を呼び出し、ファイル名とテキストの `MemoryStream` の両方でそれを渡してテキストを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
 
 次のコードを *MainPage.xaml.cs* ファイルに追加します。
 

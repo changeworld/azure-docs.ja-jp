@@ -3,18 +3,21 @@ title: Azure Cosmos DB のサービス要求タイムアウト例外をトラブ
 description: Azure Cosmos DB のサービス要求タイムアウト例外を診断して修正する方法について説明します。
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 76a1558534728613dcdedc78b64a0366f2bd643d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 5b188021de30561222f098e2b5782bada25d7ce0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871073"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411254"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-timeout-exceptions"></a>Azure Cosmos DB の要求タイムアウト例外の問題を診断してトラブルシューティングする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 Azure Cosmos DB で HTTP 408 要求タイムアウトが返されました。
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
@@ -38,3 +41,5 @@ Azure Cosmos DB は、プロビジョニングされたスループット全体�
 ## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB .NET SDK 使用時の問題を[診断してトラブルシューティングする](troubleshoot-dot-net-sdk.md)。
 * [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) と [.NET v2](performance-tips.md) のパフォーマンス ガイドラインを確認する。
+* Azure Cosmos DB Java v4 SDK 使用時の問題を[診断してトラブルシューティングする](troubleshoot-java-sdk-v4-sql.md)。
+* [Java v4 SDK](performance-tips-java-sdk-v4-sql.md) のパフォーマンス ガイドラインを確認する。

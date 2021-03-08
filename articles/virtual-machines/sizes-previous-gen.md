@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
-ms.author: jushiman
-ms.openlocfilehash: 37a687a17df266fe0589c24b392c0527e001f976
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 11/01/2020
+ms.author: mimckitt
+ms.openlocfilehash: 90bc98d63b45e43c9325eed4fe019b18f52d0de8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683897"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500293"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 
@@ -59,7 +59,7 @@ Premium Storage キャッシュ:サポートされています
 
 MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
-<sup>1</sup> Fs シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、「高パフォーマンス用の設計 (./premium-storage-performance.md)」を参照してください。
+<sup>1</sup> Fs シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](premium-storage-performance.md)に関する記事を参照してください。
 
 
 ## <a name="nvv2-series"></a>NVv2 シリーズ
@@ -76,11 +76,9 @@ NVv2 インスタンス内の各 GPU には GRID ライセンスが付属して�
 | Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
 | Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
 ## <a name="older-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 
-このセクションでは、より古い世代の仮想マシンのサイズの情報が提供されます。 これらのサイズは引き続きサポートされますが、追加容量は得られません。 一般提供されるより新しいまたは代替のサイズがあります。 ニーズに最も合う VM サイズを選択するには、「[Azure の Linux 仮想マシンのサイズ](./sizes.md)」を参照してください。  
+このセクションでは、より古い世代の仮想マシンのサイズの情報が提供されます。 これらのサイズは引き続きサポートされますが、追加容量は得られません。 一般提供されるより新しいまたは代替のサイズがあります。 ニーズに最も合う VM サイズを選択するには、「[Azure の仮想マシンのサイズ](./sizes.md)」を参照してください。  
 
 Linux VM のサイズ変更の詳細については、[Linux VM のサイズ変更](linux/change-vm-size.md)に関するページを参照してください。  
 
@@ -151,7 +149,7 @@ Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。  
+A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス* とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。  
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (HDD):GiB | 最大データ ディスク数 | データ ディスクの最大スループット:IOPS | 最大 NIC 数|
 |---|---|---|---|---|---|---|
@@ -163,7 +161,7 @@ A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集�
 <sup>1</sup> MPI アプリケーションの場合、専用の RDMA バックエンド ネットワークが FDR InfiniBand ネットワークによって有効になり、超低待機時間と高帯域幅を実現します。  
 
 > [!NOTE]
-> A8 – A11 VM は、2021 年 3 月で廃止される予定です。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。
+> [A8 – A11 VM は、2021 年 3 月に廃止される予定です。](https://azure.microsoft.com/updates/a8-a11-azure-virtual-machine-sizes-will-be-retired-on-march-1-2021/) 新しい A8 – A11 VM は作成しないことを強くお勧めします。 既存の A8 – A11 VM を、H、HB、HC、HBv2 などの新しい強力なハイパフォーマンス コンピューティング VM サイズや、D、E、F などの汎用コンピューティング VM サイズに移行して、価格/パフォーマンス比を向上させてください。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。
 
 <br>
 
@@ -209,7 +207,7 @@ Premium Storage キャッシュ:サポートされていません
 
 <br>
 
-## <a name="preview-dc-series"></a>プレビュー:DC シリーズ
+### <a name="preview-dc-series"></a>プレビュー:DC シリーズ
 
 **新しいサイズ (推奨)** :[DCsv2 シリーズ](dcv2-series.md)
 
@@ -226,7 +224,7 @@ DC シリーズでは、最新世代である 3.7 GHz の Intel XEON E-2176G プ
 
 > [!IMPORTANT]
 >
-> DC シリーズの VM は[第 2 世代の VM](./linux/generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみがサポートされています。
+> DC シリーズの VM は[第 2 世代の VM](./generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみがサポートされています。
 
 
 ### <a name="ds-series"></a>DS シリーズ  
@@ -267,7 +265,7 @@ Premium Storage キャッシュ:サポートされています
 | Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 (288) | 25600/256 | 8/4000 |
 | Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 (576) | 51200/512 | 8/8000 |
 
-<sup>1</sup> DS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、「高パフォーマンス用の設計 (./premium-storage-performance.md)」を参照してください。
+<sup>1</sup> DS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](premium-storage-performance.md)に関する記事を参照してください。
 <sup>2</sup> VM ファミリは、次の CPU のいずれかで実行できます。2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell)、または 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
 
 <br>
@@ -293,7 +291,7 @@ Premium Storage キャッシュ:サポートされていません
 | Standard_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/16000 |
 | Standard_L32s&nbsp;<sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
 
-Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されたディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、「高パフォーマンス用の設計 (./premium-storage-performance.md)」を参照してください。
+Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されたディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、[高パフォーマンス用の設計](premium-storage-performance.md)に関する記事を参照してください。
 
 <sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
@@ -315,7 +313,7 @@ Premium Storage キャッシュ:サポートされています
 | Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112) | 40000/1000 | 8/16000 |
 | Standard_GS5&nbsp;<sup>2、&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224) | 80000/2000 | 8/20000 |
 
-<sup>1</sup> GS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、「高パフォーマンス用の設計 (./premium-storage-performance.md)」を参照してください。
+<sup>1</sup> GS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、[高パフォーマンス用の設計](premium-storage-performance.md)に関する記事を参照してください。
 
 <sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
@@ -344,7 +342,7 @@ Premium Storage キャッシュ:サポートされていません
 <sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 <br>
 
-## <a name="nv-series"></a>NV シリーズ
+### <a name="nv-series"></a>NV シリーズ
 **新しいサイズ (推奨)** :[NVv3 シリーズ](nvv3-series.md)と [NVv4 シリーズ](nvv4-series.md)
 
 NV シリーズの仮想マシンは、[NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU およびデスクトップ アクセラレータ アプリケーションや仮想デスクトップ向けの NVIDIA GRID テクノロジを備えていて、お客様は、データやシミュレーションを視覚化することができます。 NV インスタンスでは、グラフィックス処理を要するワークフローを視覚化して優れたグラフィックス機能を活用し、さらにエンコードやレンダリングなどの単精度のワークロードを実行することもできます。 NV シリーズ VM は、Intel Xeon E5-2690 v3 (Haswell) CPU も搭載しています。
@@ -368,14 +366,86 @@ Premium Storage キャッシュ:サポートされていません
 1 GPU = M60 カードの 2 分の 1 相当。
 <br>
 
-## <a name="other-sizes"></a>その他のサイズ
+### <a name="nc-series"></a>NC シリーズ
+**新しいサイズ (推奨)** :[NC T4 v3 シリーズ](nct4-v3-series.md)
 
-* [汎用](sizes-general.md)
-* [コンピューティングの最適化](sizes-compute.md)
-* [メモリの最適化](sizes-memory.md)
-* [ストレージの最適化](sizes-storage.md)
-* [GPU](sizes-gpu.md)
-* [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
+NC シリーズ VM は、[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) カードおよび Intel Xeon E5-2690 v3 (Haswell) プロセッサを搭載しています。 エネルギー調査アプリケーション向け CUDA やクラッシュ シミュレーション、レイ トレーシング レンダリング、ディープ ラーニングなどを活用することで、ユーザーはデータをさらに高速に処理することができます。 NC24r 構成には、密結合並列コンピューティングのワークロード向けに最適化された、低待機時間かつ高スループットのネットワーク インターフェイスが搭載されています。
+
+[Premium Storage](premium-storage-performance.md): サポートされていません<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br>
+
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数 |
+|---|---|---|---|---|---|---|---|
+| Standard_NC6    | 6  | 56  | 340  | 1 | 12 | 24 | 1 |
+| Standard_NC12   | 12 | 112 | 680  | 2 | 24 | 48 | 2 |
+| Standard_NC24   | 24 | 224 | 1440 | 4 | 48 | 64 | 4 |
+| Standard_NC24r* | 24 | 224 | 1440 | 4 | 48 | 64 | 4 |
+
+1 GPU = K80 カードの 2 分の 1 相当。
+
+*RDMA 対応
+
+
+<br>
+
+
+### <a name="ncv2-series"></a>NCv2 シリーズ
+**新しいサイズ (推奨)** :[NC T4 v3 シリーズ](nct4-v3-series.md)と [NC V100 v3 シリーズ](ncv3-series.md)
+
+NCv2 シリーズ VM は NVIDIA Tesla P100 GPU を備えています。 これらの GPU は、NC シリーズの 2 倍以上の計算性能を有しています。 貯留層モデリング、DNA シーケンシング、タンパク質解析、モンテ カルロ シミュレーションをはじめとする従来の HPC ワークロードに、これらの最新の GPU を活用することができます。 GPU に加えて、NCv2 シリーズ VM は Intel Xeon E5-2690 v4 (Broadwell) CPU も搭載しています。
+
+NC24rs v2 構成には、密結合並列コンピューティングのワークロード向けに最適化された、低待機時間かつ高スループットのネットワーク インターフェイスが搭載されています。
+
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+
+> この VM シリーズでは、ご利用のサブスクリプションの vCPU (コア) クォータが、各リージョンで 0 に初期設定されています。 このシリーズについては、[提供リージョン](https://azure.microsoft.com/regions/services/)で [vCPU クォータの引き上げを要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)してください。
+>
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
+|---|---|---|---|---|---|---|---|---|
+| Standard_NC6s_v2    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |
+| Standard_NC12s_v2   | 12 | 224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
+| Standard_NC24s_v2   | 24 | 448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+| Standard_NC24rs_v2* | 24 | 448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+
+1 GPU = P100 カード 1 枚
+
+*RDMA 対応
+
+<br>
+
+### <a name="nd-series"></a>ND シリーズ
+**新しいサイズ (推奨)** :[NDv2 シリーズ](ndv2-series.md)と [NC V100 v3 シリーズ](ncv3-series.md)
+
+ND シリーズは、AI やディープ ラーニングのワークロードを想定して GPU ファミリーに新たに追加された仮想マシンです。 トレーニングや推論で優れたパフォーマンスを発揮します。 ND インスタンスは、[NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU および Intel Xeon E5-2690 v4 (Broadwell) CPU を搭載しています。 これらのインスタンスは、Microsoft Cognitive Toolkit、TensorFlow、Caffe などのフレームワークを活用する AI ワークロードの単精度浮動小数点演算において、非常に高いパフォーマンスを発揮します。 ND シリーズでは GPU のメモリ サイズ (24 GB) も大幅に増強されているため、より大規模なニューラル ネット モデルにも対応できます。 NC シリーズと同様に、ND シリーズでは 2 番目に少ない待機時間、RDMA を利用した高スループットのネットワーク、InfiniBand との接続性などを備えた構成が利用できます。これにより、多数の GPU を利用した大規模なトレーニング ジョブを実行できます。
+
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+
+> この VM シリーズでは、ご利用のサブスクリプションの vCPU (コア) クォータが、各リージョンで 0 に初期設定されています。 このシリーズについては、[提供リージョン](https://azure.microsoft.com/regions/services/)で [vCPU クォータの引き上げを要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)してください。
+>
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
+|---|---|---|---|---|---|---|---|---|
+| Standard_ND6s    | 6  | 112 | 736  | 1 | 24 | 12 | 20000/200 | 4 |
+| Standard_ND12s   | 12 | 224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 |
+| Standard_ND24s   | 24 | 448 | 2948 | 4 | 24 | 32 | 80000/800 | 8 |
+| Standard_ND24rs* | 24 | 448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
+
+1 GPU = P40 カード 1 枚
+
+*RDMA 対応
+
+<br>
 
 ## <a name="next-steps"></a>次のステップ
 

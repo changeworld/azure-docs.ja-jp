@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7eafeaf59757fcda978fa89b4bc2f9882b769e48
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463758"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835902"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Identity Protection でのリスク検出のシミュレーション
 
@@ -40,7 +40,7 @@ ms.locfileid: "84463758"
 次の手順を完了するには、以下を使用する必要があります。
 
 - 匿名 IP アドレスをシミュレートするための [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en)。 組織が Tor Browser の使用を制限している場合は、仮想マシンの使用が必要になることがあります。
-- まだ Azure Multi-Factor Authentication に登録されていないテスト アカウント。
+- まだ Azure AD Multi-Factor Authentication に登録されていないテスト アカウント。
 
 **匿名 IP からサインインをシミュレートするには、次の手順を実行します**。
 
@@ -61,7 +61,7 @@ ms.locfileid: "84463758"
 以下の手順を完了するには、次のようなユーザー アカウントを使用する必要があります。
 
 - 30 日以上のサインイン履歴がある。
-- Azure Multi-Factor Authentication が有効になっている。
+- Azure AD Multi-Factor Authentication が有効になっている。
 
 **未知の場所からサインインをシミュレートするには、次の手順を実行します**。
 

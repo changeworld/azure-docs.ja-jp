@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5cadfad445c76726b1b825b131de4016a57979fa
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845939"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93391842"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>FHIR 用に Azure RBAC を構成する 
 
-この記事では、[Azure のロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) を使用して、Azure API for FHIR データ プレーンにアクセス権を割り当てる方法について説明します。 データ プレーンのユーザーが Azure サブスクリプションに関連付けられている Azure Active Directory テナントで管理されている場合は、Azure RBAC を使用してデータ プレーンのアクセス権を割り当てることをお勧めします。 外部の Azure Active Directory テナントを使用する場合は、[ローカル RBAC の割り当てのリファレンス](configure-local-rbac.md)に関するページを参照してください。
+この記事では、[Azure のロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/index.yml) を使用して、Azure API for FHIR データ プレーンにアクセス権を割り当てる方法について説明します。 データ プレーンのユーザーが Azure サブスクリプションに関連付けられている Azure Active Directory テナントで管理されている場合は、Azure RBAC を使用してデータ プレーンのアクセス権を割り当てることをお勧めします。 外部の Azure Active Directory テナントを使用する場合は、[ローカル RBAC の割り当てのリファレンス](configure-local-rbac.md)に関するページを参照してください。
 
 ## <a name="confirm-azure-rbac-mode"></a>Azure RBAC モードの確認
 
@@ -44,7 +44,7 @@ Azure RBAC を使用するには、データ プレーンに Azure サブスク�
 * FHIR データ エクスポーター: データの読み取りとエクスポート (`$export` 演算子) を行うことができます。
 * FHIR データ共同作成者: すべてのデータ プレーン操作を実行できます。
 
-これらのロールがニーズに十分ではない場合は、[カスタムのロールを作成する](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell)こともできます。
+これらのロールがニーズに十分ではない場合は、[カスタムのロールを作成する](../role-based-access-control/tutorial-custom-role-powershell.md)こともできます。
 
 **[選択]** ボックスで、ロールを割り当てるユーザー、サービス プリンシパル、またはグループを検索します。
 
@@ -54,7 +54,7 @@ Azure API for FHIR では、決定事項が最大 5 分間キャッシュされ�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、FHIR データ プレーンに Azure ロールを割り当てる方法について説明しました。 次に、Azure API for FHIR の追加設定について説明します。
+この記事では、FHIR データ プレーンに Azure ロールを割り当てる方法について説明しました。 Azure API for FHIR の追加設定については、以下を参照してください。
  
 >[!div class="nextstepaction"]
 >[Azure API for FHIR の追加設定](azure-api-for-fhir-additional-settings.md)

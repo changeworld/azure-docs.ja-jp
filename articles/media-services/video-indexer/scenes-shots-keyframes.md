@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691341"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041896"
 ---
 # <a name="scenes-shots-and-keyframes"></a>シーン、ショット、キーフレーム
 
@@ -48,7 +48,7 @@ Video Indexer により、各ショットを最適に表すフレームが選択
 
 Video Indexer web サイトを使用してキーフレームを抽出するには、ビデオをアップロードしてインデックスを作成します。 インデックス作成ジョブが完了したら、 **[ダウンロード]** ボタンをクリックし、 **[成果物 (ZIP)]** を選択します。 これにより、[成果物] フォルダーがコンピューターにダウンロードされます。 
 
-![キーフレーム](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![[ダウンロード] ドロップダウンを示すスクリーンショット。[成果物] が選択されています。](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
 フォルダーを解凍して開きます。 *_KeyframeThumbnail* フォルダーに、ビデオから抽出されたすべてのキーフレームが表示されます。 
 

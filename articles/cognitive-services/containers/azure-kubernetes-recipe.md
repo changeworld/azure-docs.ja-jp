@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6918218d8434c06f59b0738e60cad53b94b0a0b5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244493"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939851"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に Text Analytics 言語検出コンテナーをデプロイする
 
@@ -27,7 +27,7 @@ ms.locfileid: "88244493"
 
 * Azure サブスクリプションを使用してください。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services) を作成してください。
 * この手順で使用する[サンプル](https://github.com/Azure-Samples/cognitive-services-containers-samples)のクローンを作成できるよう、オペレーティング システム用の [Git](https://git-scm.com/downloads) を使用してください。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * [Docker エンジン](https://www.docker.com/products/docker-engine)。Docker CLI がコンソール ウィンドウで動作することを確認します。
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
 * 適切な価格レベルの Azure リソース。 すべての価格レベルでこのコンテナーを使用するわけではありません。
@@ -325,7 +325,7 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
     |行 91<br> `apiKey` プロパティ|テキスト分析リソース キー|
     |行 92<br> `billing` プロパティ|テキスト分析リソースの課金エンドポイント。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    **apiKey** と **課金エンドポイント**は、Kubernetes オーケストレーションの定義の一部として設定されているため、Web サイト コンテナーがこれらについて認識したり要求の一部として渡したりする必要はありません。 Web サイト コンテナーは、そのオーケストレーター名 `language` によって言語検出コンテナーを示します。
+    **apiKey** と **課金エンドポイント** は、Kubernetes オーケストレーションの定義の一部として設定されているため、Web サイト コンテナーがこれらについて認識したり要求の一部として渡したりする必要はありません。 Web サイト コンテナーは、そのオーケストレーター名 `language` によって言語検出コンテナーを示します。
 
 1. このサンプルのオーケストレーションの定義ファイルを、`language.yml` を作成して保存したフォルダーから読み込みます。
 

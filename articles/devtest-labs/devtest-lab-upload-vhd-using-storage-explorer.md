@@ -3,12 +3,12 @@ title: Storage Explorer を使用して Azure DevTest Labs に VHD ファイル�
 description: Microsoft Azure Storage Explorer を使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282529"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer を使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 
@@ -90,13 +90,13 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
     1. Storage Explorer の右側のウィンドウに、ラボのストレージ アカウントの **uploads** BLOB コンテナー内の BLOB が一覧表示されます。 BLOB エディター ツールバーで、 **[アップロード]** を選択します。 
         
-        ![[アップロード] ボタン][6]
+        ![[アップロード] ボタンが選択された状態の Storage Explorer の右ウィンドウを示すスクリーンショット。][6]
     
     1. **[アップロード]** ドロップダウン メニューから、 **[ファイルのアップロード...]** を選択します。
     
     1. **[ファイルのアップロード]** ダイアログで、省略記号を選択します。
         
-        ![ファイルの選択][8]  
+        ![省略記号が選択された [ファイルのアップロード] ダイアログを示すスクリーンショット。][8]  
 
     1. **[アップロードするファイルの選択]** ダイアログで、目的の VHD ファイルを参照して選択してから **[開く]** を選択します。
     

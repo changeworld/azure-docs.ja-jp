@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:カスタム イベントをストレージ キューに送信する - Event Grid、Azure CLI
 description: クイック スタート:Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 ストレージ キューはエンドポイントに対して使われます。
-ms.date: 07/07/2020
+ms.date: 02/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 00808e7eca13824833673ef820d39b70bf618dd2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497343"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493262"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>クイック スタート:Azure CLI と Event Grid を使ってカスタム イベントを Azure Queue Storage にルーティングする
 
@@ -17,12 +17,11 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure portal で Cloud Shell を使用する代わりに、ローカル コンピューターで Azure CLI または Azure PowerShell を使用している場合は、Azure CLI と Azure PowerShell が以下のバージョンであることを確認してください。 
+- この記事では、Azure CLI のバージョン 2.0.56 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-- Azure CLI バージョン 2.0.56 以降。 Azure CLI の最新バージョンをインストールする手順については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 
-- Azure PowerShell バージョン 1.1.0 以降。 [Azure のダウンロード - コマンド ライン ツール](https://azure.microsoft.com/downloads/)に関するページから Windows マシンに、Azure PowerShell の最新バージョンをダウンロードします。 
+- Azure portal で Cloud Shell を使用する代わりに、ローカル マシンで Azure PowerShell を使用している場合は、Azure PowerShell がバージョン 1.1.0 以降であることを確認してください。 [Azure のダウンロード - コマンド ライン ツール](https://azure.microsoft.com/downloads/)に関するページから Windows マシンに、Azure PowerShell の最新バージョンをダウンロードします。 
 
 この記事では、Azure CLI を使用するためのコマンドについて説明します。 
 
@@ -117,6 +116,11 @@ done
 ポータルでキュー ストレージに移動し、イベント グリッドがキューにこれら 3 つのイベントを送信したことを確認します。
 
 ![メッセージを表示する](./media/custom-event-to-queue-storage/messages.png)
+
+> [!NOTE]
+> Event Grid からメッセージを受信するキューに、[Azure Functions の Azure Queue storage トリガー](../azure-functions/functions-bindings-storage-queue-trigger.md)を使用した場合、関数の実行時に、"`The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`" というエラー メッセージが表示されることがあります。
+> 
+> [Azure Queue storage トリガー](../azure-functions/functions-bindings-storage-queue-trigger.md)が使用されているときに Azure Functions が想定するのは **Base64 エンコード文字列** ですが、Event Grid からストレージ キューに送信されるメッセージはプレーンテキスト形式であることが、その理由です。 現時点では、プレーンテキストを Azure Functions が受け入れるようにキュー トリガーを構成することはできません。 
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

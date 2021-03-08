@@ -10,19 +10,19 @@ ms.subservice: team-data-science-process
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86027513"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028089"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
 
 HDInsight Spark と Spark MLlib を使用して、タクシー料金予測の機械学習モデルをトレーニングする方法について説明します。
 
-このサンプルでは、[Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) のさまざまな手順を紹介しています。 2013 年における NYC タクシーの乗車と料金のデータセットから、そのサブセットを使用して、データの読み込み、調査、準備を行います。 その後、Spark MLlib、二項分類、回帰モデルをトレーニングして、乗車に対してチップが支払われるかどうかを予測し、チップの金額を推定します。
+このサンプルでは、[Team Data Science Process](./index.yml) のさまざまな手順を紹介しています。 2013 年における NYC タクシーの乗車と料金のデータセットから、そのサブセットを使用して、データの読み込み、調査、準備を行います。 その後、Spark MLlib、二項分類、回帰モデルをトレーニングして、乗車に対してチップが支払われるかどうかを予測し、チップの金額を推定します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -341,7 +341,7 @@ taxi_df_train_with_newFeatures.count()
 ここでは、モデリング関数への入力用に、カテゴリの特徴のインデックスを作成し、特徴をエンコードする方法について説明します。 MLlib のモデリング関数と予測関数では、特徴のカテゴリ入力データを使用する前に、データのインデックスを作成するか、データをエンコードする必要があります。 モデルに応じて、さまざまな方法でカテゴリ入力データのインデックス作成またはエンコードを実行する必要があります。  
 
 * **ツリー ベースのモデリング** では、カテゴリを数値としてエンコードする必要があります (たとえば、3 つのカテゴリを持つ特徴は、0、1、2 でエンコードできます)。 このアルゴリズムは、MLlib の [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 関数によって提供されます。 この関数は、ラベルの文字列型の列を、ラベルの頻度で順序付けられたラベル インデックスの列にエンコードします。 入力とデータ処理のために数値でインデックスを作成しますが、ツリー ベースのアルゴリズムでは、これらの数値をカテゴリとして適切に処理するように指定できます。 
-* **ロジスティック回帰モデルと線形回帰モデル**では、ワンホット エンコードが必要です。たとえば、3 つのカテゴリを持つ特徴は、観察のカテゴリに応じてそれぞれ 0 または 1 が含まれた 3 つの特徴列に展開できます。 MLlib には、ワンホット エンコードを実行する [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。 このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。 このエンコードにより、数値を持つ特徴を必要とするアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
+* **ロジスティック回帰モデルと線形回帰モデル** では、ワンホット エンコードが必要です。たとえば、3 つのカテゴリを持つ特徴は、観察のカテゴリに応じてそれぞれ 0 または 1 が含まれた 3 つの特徴列に展開できます。 MLlib には、ワンホット エンコードを実行する [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。 このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。 このエンコードにより、数値を持つ特徴を必要とするアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
 
 カテゴリの特徴のインデックス作成とエンコードを実行するコードを次に示します。
 

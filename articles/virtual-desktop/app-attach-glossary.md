@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556174"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518670"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 
@@ -25,7 +25,7 @@ MSIX のコンテナーは、MSIX アプリが実行される場所です。 詳
 
 ## <a name="msix-application"></a>MSIX アプリケーション 
 
-MSIX ファイルに格納されているアプリケーション。
+.MSIX ファイルに格納されているアプリケーション。
 
 ## <a name="msix-package"></a>MSIX パッケージ 
 
@@ -35,13 +35,17 @@ MSIX パッケージは、MSIX ファイルまたはアプリケーションで�
 
 MSIX 共有は、拡張された MSIX パッケージを保持するネットワーク共有です。 MSIX 共有では SMB 3 以降がサポートされています。 アプリケーション ファイルをシステム ドライブに移動することなく、この MSIX 共有からアプリケーションがステージングされます。
 
+## <a name="msix-image"></a>MSIX イメージ
+
+MSIX イメージは、VHD、VHDx、または CIM ファイルであり、1 つ以上の MSIX パッケージ アプリケーションが含まれます。 各アプリケーションは、MSIXMGR ツールを使用して、MSIX イメージで配信されます。
+
 ## <a name="repackage"></a>再パッケージ化
 
 再パッケージ化では、MSIX Packaging Tool (MPT) の使用により、MSIX 以外のアプリケーションが取得され、MSIX に変換されます。 詳細については、「[MSIX Packaging Tool の概要](/windows/msix/packaging-tool/tool-overview)」を参照してください。
 
-## <a name="expand"></a>expand
+## <a name="expand-an-msix-package"></a>MSIX パッケージを展開する
 
-MSIX パッケージの展開は、複数の手順から成るプロセスです。 MSIX ファイルが取得され、その内容が VHD (x) または CIM ファイルに格納されます。 
+MSIX パッケージの展開は、複数の手順から成るプロセスです。 展開により MSIX ファイルが取得され、その内容が VHD (x) または CIM ファイルに格納されます。 
 
 MSIX パッケージを展開するには、次のようにします。
 
@@ -63,11 +67,11 @@ MSIX パッケージをアップロードには、拡張された MSIX パッケ
 
 Windows Virtual Desktop では、アップロードは MSIX 共有ごとに 1 回行われます。 パッケージをアップロードすると、同じサブスクリプション内のすべてのホスト プールから参照できるようになります。
 
-## <a name="publish-an-msix-package"></a>MSIX パッケージを公開する
+## <a name="add-an-msix-package"></a>MSIX パッケージを追加する
 
-Windows Virtual Desktop では、MSIX パッケージを公開すると、リモート アプリまたはデスクトップにリンクされます。
+Windows Virtual Desktop で、MSIX パッケージは、追加されるとホスト プールにリンクされます。
 
-## <a name="assign-an-msix-package"></a>MSIX パッケージを割り当てる 
+## <a name="publish-an-msix-package"></a>MSIX パッケージを公開する 
 
 Windows Virtual Desktop では、公開された MSIX パッケージは、Active Directory Domain Services (AD DS) または Azure Active Directory (Azure AD) のユーザーまたはユーザー グループに割り当てられる必要があります。
 
@@ -106,6 +110,18 @@ Windows Virtual Desktop では、公開された MSIX パッケージは、Activ
 
 .CIM は、複合イメージ ファイル システム (CimFS) に関連付けられた新しいファイル拡張子です。 CIM ファイルのマウントとマウント解除は、VHD ファイルよりも高速です。 また、CIM の場合、CPU とメモリの消費量が VHD よりも少なくなります。
 
+CIM ファイルは .CIM という拡張子を持ち、メタデータと、実際のデータが含まれた 6 つ以上の追加ファイルを含むファイルです。 CIM ファイル内のファイルには拡張子がありません。 次の表は、CIM 内で見つかるファイルの例を示しています。
+
+| ファイル名 | 拡張機能 | サイズ |
+|-----------|-----------|------|
+| VSC | CIM | 1 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 264,132 KB |
+
 次の表は、VHD と CimFS のパフォーマンスを比較したものです。 これらの数値は、DSv4 マシンで実行される各形式で、500 個の 300 MB のファイルを使用したテスト実行の結果です。
 
 |  仕様                          | VHD                    | CimFS   |
@@ -118,4 +134,3 @@ Windows Virtual Desktop では、公開された MSIX パッケージは、Activ
 ## <a name="next-steps"></a>次のステップ
 
 MSIX アプリ アタッチの詳細については、[概要](what-is-app-attach.md)と[よくあるご質問](app-attach-faq.md)に関するページを参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。
-

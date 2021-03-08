@@ -16,18 +16,18 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b013c4edcaceeea585494bd8924ccea08aa1d37
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277053"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976879"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](/graph/extensibility-overview
 )から使用できます。 使用可能な属性を確認するには、[Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用します。 この機能を使用して、Azure AD に動的グループを作成することもできます。
 
-現在のところ、これらの属性を使用する Office 365 ワークロードはありません。
+現在のところ、これらの属性を使用する Microsoft 365 ワークロードはありません。
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Azure AD と同期する属性をカスタマイズする
 
@@ -46,7 +46,7 @@ ms.locfileid: "89277053"
 
 
 >[!NOTE]
-> Azure AD Connect では、複数値の Active Directory 属性から Azure AD への同期が、複数値のディレクトリ拡張としてサポートされますが、現在、複数値のディレクトリ拡張属性でアップロードされたデータを取得/使用する方法はありません。
+> Azure AD Connect によって Active Directory の複数値属性が複数値属性拡張機能として Azure AD に同期された後、属性を SAML 要求に含めることができます。 しかし、API 呼び出しを通じてこのデータを使用することはできません。
 
 属性の一覧は、Azure AD Connect のインストール中に作成されたスキーマ キャッシュから読み取られます。 その他の属性で Active Directory スキーマを拡張した場合、このような新しい属性が表示されるようにするには、[スキーマを更新する](how-to-connect-installation-wizard.md#refresh-directory-schema)必要があります。
 
@@ -71,9 +71,12 @@ Azure AD のオブジェクトでは、ディレクトリ拡張機能に対し�
 >
 > 詳細については、[Microsoft Graph: クエリ パラメーターの使用](/graph/query-parameters#select-parameter)に関するトピックをご覧ください。
 
+>[!NOTE]
+> AADConnect からの属性値を、AADConnect によって作成されていない拡張属性に同期させることはサポートされていません。 これを行うと、パフォーマンスの問題が発生し、予期しない結果が生じる可能性があります。 同期では、上記のように作成された拡張属性のみがサポートされます。
+
 ## <a name="use-the-attributes-in-dynamic-groups"></a>動的グループで属性を使用する
 
-より有益なシナリオの 1 つは、動的セキュリティや Office 365 グループでこれらの属性を使用することです。
+より有益なシナリオの 1 つは、動的セキュリティや Microsoft 365 グループでこれらの属性を使用することです。
 
 1. Azure AD に新しいグループを作成します。 適切な名前を付け、 **[メンバーシップの種類]** が **[動的ユーザー]** になっていることを確認します。
 

@@ -3,15 +3,15 @@ title: Windows Virtual Desktop 環境のホスト プールの作成 - Azure
 description: Windows Virtual Desktop 環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121376"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539644"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
@@ -47,13 +47,19 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 - ブラウザーで statusMessage フィールドに表示されているリンクを開き、指定した VM SKU の Azure サブスクリプションのクォータを増やす要求を送信します。
 
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>エラー:アプリ グループでユーザー割り当てが表示されない。
+
+原因: このエラーは通常、ある Azure Active Directory (AD) テナントから別のテナントにサブスクリプションを移した後に発生します。 以前の割り当てが古い Azure AD テナントにまだ関連付けられている場合、Azure portal はこれらを見失います。
+
+解決策:ユーザーをアプリ グループに再割り当てする必要があります。
+
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager テンプレート エラー
 
 Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失敗をトラブルシューティングするには、次の手順に従います。
 
-1. 「[Azure Resource Manager でのデプロイ操作の表示](../azure-resource-manager/resource-manager-deployment-operations.md)」を使用して、デプロイのエラーを確認します。
-2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を使用して、アクティビティ ログのエラーを確認します。
-3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)」のリソースを使用して問題に対処します。
+1. 「[Azure Resource Manager でのデプロイ操作の表示](../azure-resource-manager/templates/deployment-history.md)」を使用して、デプロイのエラーを確認します。
+2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を使用して、アクティビティ ログのエラーを確認します。
+3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<hostname>/joindomain
@@ -79,7 +85,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 **解決策 2:** 「[エラー: ドメイン名が解決されません](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)」 (「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」) を参照してください。
 
-**原因 3:** 仮想ネットワーク (VNET) の DNS 構成が**既定**に設定されています。
+**原因 3:** 仮想ネットワーク (VNET) の DNS 構成が **既定** に設定されています。
 
 これを解決するには、次の操作を実行します。
 
@@ -263,6 +269,7 @@ the VM.\\\"
 
 - Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Windows Virtual Desktop エージェントまたはセッション接続に関連した問題をトラブルシューティングするには、「[Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
 - Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。

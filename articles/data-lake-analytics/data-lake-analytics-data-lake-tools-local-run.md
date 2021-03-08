@@ -1,21 +1,18 @@
 ---
 title: ローカル コンピューター上で Azure Data Lake U-SQL スクリプトを実行する
 description: Azure Data Lake Tools for Visual Studio を使用してローカル コンピューター上で U-SQL ジョブを実行する方法について説明します。
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 24f1156fa4a97adb500033034bc7396fd1badbeb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5f9410cc91174420662bb5efc67c8904b5d5e647
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125736"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018989"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>ローカル コンピューターで U-SQL スクリプトを実行する
 
@@ -35,7 +32,7 @@ U-SQL スクリプトを開発すると、スクリプトをローカルで実�
 
 ### <a name="local-data-root-folders"></a>ローカル データ ルート フォルダー
 
-ローカル データ ルート フォルダーは、ローカル コンピューティング アカウント用の**ローカル ストア**です。 ローカル コンピューター上のローカル ファイル システム内のすべてのフォルダーをローカル データ ルート フォルダーにすることができます。 これは、Data Lake Analytics アカウントの既定の Azure Data Lake Store アカウントと同じです。 別のデータ ルート フォルダーへの切り替えは、別の既定のストア アカウントへの切り替えと同じです。 
+ローカル データ ルート フォルダーは、ローカル コンピューティング アカウント用の **ローカル ストア** です。 ローカル コンピューター上のローカル ファイル システム内のすべてのフォルダーをローカル データ ルート フォルダーにすることができます。 これは、Data Lake Analytics アカウントの既定の Azure Data Lake Store アカウントと同じです。 別のデータ ルート フォルダーへの切り替えは、別の既定のストア アカウントへの切り替えと同じです。 
 
 データ ルート フォルダーは、次のように使用されます。
 - メタデータを格納します。 たとえば、データベース、テーブル、テーブル値関数、アセンブリなどです。
@@ -43,7 +40,7 @@ U-SQL スクリプトを開発すると、スクリプトをローカルで実�
 
 ### <a name="u-sql-local-run-engines"></a>U-SQL ローカル実行エンジン
 
-U-SQL ローカル実行エンジンは、U-SQL ジョブ用の**ローカル コンピューティング アカウント**です。 ユーザーは、Azure Data Lake Tools for Visual Studio を使用して U-SQL ジョブをローカルで実行できます。 また、ローカル実行は Azure Data Lake U-SQL SDK コマンド ラインやプログラミング インターフェイスでもサポートされています。 詳細については、[Azure Data Lake U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) に関するページを参照してください。
+U-SQL ローカル実行エンジンは、U-SQL ジョブ用の **ローカル コンピューティング アカウント** です。 ユーザーは、Azure Data Lake Tools for Visual Studio を使用して U-SQL ジョブをローカルで実行できます。 また、ローカル実行は Azure Data Lake U-SQL SDK コマンド ラインやプログラミング インターフェイスでもサポートされています。 詳細については、[Azure Data Lake U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) に関するページを参照してください。
 
 ### <a name="working-directories"></a>作業ディレクトリ
 

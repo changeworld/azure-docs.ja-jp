@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Sybase からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Sybase からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ef63eded5403c1cf5faddec71ed3503c3ae2138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669836"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384811"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -38,7 +33,7 @@ Sybase データベースから、サポートされている任意のシンク 
 具体的には、この Sybase コネクタは以下をサポートします。
 
 - SAP Sybase SQL Anywhere (ASA) **バージョン 16 以降**。
-- **基本**または **Windows** 認証を使用したデータのコピー。
+- **基本** または **Windows** 認証を使用したデータのコピー。
 
 Sybase IQ と ASE はサポートされていません。 代わりに、Sybase ドライバーと共に汎用 ODBC コネクタを使用できます。
 

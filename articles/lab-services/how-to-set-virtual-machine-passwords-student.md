@@ -1,16 +1,16 @@
 ---
 title: Azure Lab Services でクラスルーム ラボの VM に対するパスワードをリセットする | Microsoft Docs
-description: Azure Lab Services のクラスルーム ラボの仮想マシン (VM) に対するパスワードをリセットする方法について説明します。
+description: Azure Lab Services のラボの仮想マシン (VM) に対するパスワードをリセットする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d63d14da8859c12fa797a04fa9a3c3230219adab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b0b13862ca4620da15606138c0a80adeac8056a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445340"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436812"
 ---
-# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-students"></a>クラスルーム ラボの仮想マシンに対するパスワードを設定またはリセットする (学生)
+# <a name="set-or-reset-password-for-virtual-machines-in-labs-students"></a>ラボの仮想マシンに対するパスワードを設定またはリセットする (学生)
 この記事では、学生が各自の VM のパスワードを設定またはリセットする方法について説明します。 
 
 ## <a name="enable-resetting-of-passwords"></a>パスワードのリセットを有効にする

@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 14c6193b4a4373d754e3e90d573eccd2735de56c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 822674543f07ea95590ed66b9763ffd2bda35190
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085029"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493816"
 ---
 # <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database のエラスティック プールを監視およびスケールする
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

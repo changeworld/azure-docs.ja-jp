@@ -5,13 +5,13 @@ author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 02/18/2021
+ms.openlocfilehash: 0af9d27561649a559913912165e63e913a32ff2e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815608"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178288"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure の仮想マシンの可用性オプション
 
@@ -51,17 +51,21 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 
 **障害ドメインと更新ドメイン**
 
-仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 [Azure での仮想マシンの可用性の管理](./windows/manage-availability.md)に関する記事を参照してください。
+仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 [Azure での仮想マシンの可用性の管理](./manage-availability.md)に関する記事を参照してください。
+
+**スケール セットのオーケストレーション モード**
+
+仮想マシン スケール セットのオーケストレーション モードを使用すると、スケール セットでの仮想マシン インスタンスの管理方法をより詳細に制御できます。 スケール セットで、統一または柔軟なオーケストレーション モードを有効にすることができます。 統一オーケストレーションは、同一のインスタンスを持つ大規模なステートレス ワークロードに最適化されています。 柔軟なオーケストレーション (プレビュー) は、同一または複数の仮想マシンの種類を使用して大規模な高可用性を実現することを目的としています。 これらのオーケストレーション モードの詳細と有効にする方法については、[こちら](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md)をご覧ください。
 
 
 ## <a name="availability-sets"></a>可用性セット
-可用性セットはデータセンター内の VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 可用性セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。 1 つの VM が [Azure Premium SSD](./disks-types.md#premium-ssd) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。
+可用性セットは VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 可用性セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。 1 つの VM が [Azure Premium SSD](./disks-types.md#premium-ssd) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。
 
 可用性セットでは、VM はこれらの障害ドメイン間で自動的に分散されます。 これにより、物理ハードウェアの障害、ネットワークの停止、または停電が発生した場合の影響を抑えることが可能になります。
 
 [Azure Managed Disks](./faq-for-disks.md) を使用している VM の場合、VM は管理対象の可用性セットを使用している場合にマネージド ディスクの障害ドメインに合わせて配置されます。 この配置により、VM に接続されたすべてのマネージド ディスクは必ず同じマネージド ディスクの障害ドメイン内にあります。 
 
-管理対象の可用性セットには、マネージド ディスクを持つ VM だけを作成できます。 マネージド ディスクの障害ドメインの数はリージョンによって異なり、マネージド ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。 [Linux VM](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) または [Windows VM](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) のこれらのマネージド ディスク障害ドメインの詳細を参照してください。
+管理対象の可用性セットには、マネージド ディスクを持つ VM だけを作成できます。 マネージド ディスクの障害ドメインの数はリージョンによって異なり、マネージド ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。 [Linux VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) または [Windows VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のこれらのマネージド ディスク障害ドメインの詳細を参照してください。
 
 ![可用性セットの管理](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 

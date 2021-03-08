@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:サーバーを設計する - Azure CLI - Azure Database for MySQL
 description: このチュートリアルでは、コマンド ラインから Azure CLI を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6f79460f00ce52fd54d0cda34467d3df35185ba0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8546ba5c80a4c8909876ff755bc094f1aec96482
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496799"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437084"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
 
@@ -28,13 +28,11 @@ Azure Database for MySQL は、Microsoft クラウドにおける、MySQL Commun
 > * データの更新
 > * データの復元
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-このチュートリアルのコード ブロックを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに [Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-Azure CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+- この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
 ```azurecli-interactive
@@ -42,7 +40,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
-[az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) コマンドで [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[az group create](/cli/azure/group#az-group-create) コマンドで [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、`westus` の場所に `myresourcegroup` という名前のリソース グループを作成します。
 
@@ -177,7 +175,7 @@ SELECT * FROM inventory;
 - 復元ポイント: サーバーが変更される前の日時を選択します。 ソース データベースの最も古いバックアップと同じか、それよりも前の値にする必要があります。
 - 対象サーバー: 復元先の新しいサーバー名を指定します。
 - ソース サーバー: 復元するサーバーの名前を指定します。
-- 場所:リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
+- 場所: リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -185,9 +183,9 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 `az mysql server restore` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選びます。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、ローカルなタイムゾーン (例: `2017-04-13T05:59:00-08:00`) または UTC Zulu 形式 (例: `2017-04-13T13:59:00Z`) を使うことができます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
@@ -196,12 +194,25 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 コマンドは同期的であり、サーバーが復元された後に戻ります。 復元が終了した後、作成された新しいサーバーを調べます。 データが期待どおりに復元されたことを確認します。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+これらのリソースが別のクイック スタート/チュートリアルで不要である場合、次のコマンドで削除することができます。 
+
+```azurecli-interactive
+az group delete --name myresourcegroup
+```
+
+新しく作成した 1 つのサーバーを削除するだけの場合は、[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) コマンドを実行してください。
+
+```azurecli-interactive
+az mysql server delete --resource-group myresourcegroup --name mydemoserver
+```
+
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * Azure Database for MySQL サーバーの作成
 > * サーバーのファイアウォールの構成
-> * [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
+> * mysql コマンドライン ツールを使用したデータベースの作成
 > * サンプル データを読み込む
 > * クエリ データ
 > * データの更新

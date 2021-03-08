@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023025"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021798"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>カスタム コマンド アプリケーションの実行時にエラーをデバッグする
 
@@ -92,7 +92,7 @@ Language Understanding (LUIS) には、リソース使用に関する制限が�
 
     F0 予測リソースを使用している場合は、10,000/月、5 クエリ/秒という制限があります。
 
-LUIS リソースの制限の詳細については、[Language Understanding のリソース使用量と制限](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits#resource-usage-and-limits)に関する説明を参照してください。
+LUIS リソースの制限の詳細については、[Language Understanding のリソース使用量と制限](../luis/luis-limits.md#resource-usage-and-limits)に関する説明を参照してください。
 
 ### <a name="connection-to-the-recognizer-failed"></a>認識エンジンへの接続に失敗しました
 通常は、Language Understanding (LUIS) の認識エンジンに対する一時的な接続エラーが発生したことを意味します。 もう一度試してみれば、問題は解決するはずです。
@@ -123,7 +123,7 @@ LUIS リソースの制限の詳細については、[Language Understanding の
 
     2 つのコマンドで似た意図と例文が共有されていると、LUIS 認識の精度が影響を受ける可能性があります。 コマンドの機能と例文をできる限り異なるものにしてみることができます。
 
-    認識精度を向上させるためのベスト プラクティスについては、[LUIS のベスト プラクティス](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)に関する記事を参照してください。
+    認識精度を向上させるためのベスト プラクティスについては、[LUIS のベスト プラクティス](../luis/luis-concept-best-practices.md)に関する記事を参照してください。
 
 - ダイアログがキャンセルされる
     

@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/22/2020
+ms.date: 01/20/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0adcbf49ff2128fdbe623121838058c5ed89dce2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85299009"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378028"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge セキュリティ デーモンおよびランタイムの更新
 
@@ -30,17 +30,11 @@ IoT Edge セキュリティ デーモンは、IoT Edge デバイス上のパッ�
 
 デバイスで実行されているセキュリティ デーモンのバージョンを確認するには、コマンド `iotedge version` を使用します。
 
-### <a name="linux-devices"></a>Linux デバイス
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Linux x64 デバイスでは、apt-get または適切なパッケージ マネージャーを使用して、セキュリティ デーモンを最新バージョンに更新します。
 
 Microsoft から最新のリポジトリ構成を取得します。
-
-* **Ubuntu Server 16.04**:
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-   ```
 
 * **Ubuntu Server 18.04**:
 
@@ -48,7 +42,7 @@ Microsoft から最新のリポジトリ構成を取得します。
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Raspbian Stretch**:
+* **Raspberry Pi OS Stretch**:
 
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -98,26 +92,18 @@ curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-st
 curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 ```
 
-### <a name="windows-devices"></a>Windows デバイス
+# <a name="windows"></a>[Windows](#tab/windows)
 
-Windows デバイスで、PowerShell スクリプトを使用してセキュリティ デーモンを更新します。 スクリプトにより、セキュリティ デーモンの最新バージョンが自動的にプルされます。
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
-```
+IoT Edge for Linux on Windows では、IoT Edge は Windows デバイスでホストされている Linux 仮想マシンで実行されます。 この仮想マシンは IoT Edge と共にプレインストールされ、コンポーネントを最新の状態に保つために Microsoft Update で管理されます。 現在、利用できる更新プログラムはありません。
 
-Update-IoTEdge コマンドを実行すると、デバイスから 2 つのランタイム コンテナー イメージと共にセキュリティ デーモンが削除および更新されます。 Moby コンテナー エンジン (Windows コンテナーを使用している場合) からのデータおよび config.yaml ファイルはデバイス上に保持されます。 構成情報の保持は、更新プロセス中に、接続文字列または Device Provisioning Service 情報をデバイスに再び提供する必要がないことを意味します。
+::: moniker-end
 
-特定のバージョンのセキュリティ デーモンに更新する場合は、[IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)から対象となるバージョンを見つけます。 そのバージョンで、**Microsoft-Azure-IoTEdge.cab** ファイルをダウンロードします。 次に、`-OfflineInstallationPath` パラメーターを使用してローカル ファイルの場所を指定します。 次に例を示します。
+Windows の IoT Edge では、IoT Edge は Windows デバイスで直接実行されます。 PowerShell スクリプトを使用した更新手順については、「[Azure IoT Edge for Windows をインストールおよび管理する](how-to-install-iot-edge-windows-on-windows.md)」を参照してください。
 
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
-```
-
->[!NOTE]
->`-OfflineInstallationPath` パラメーターでは、指定されたディレクトリで **Microsoft-Azure-IoTEdge.cab** という名前のファイルを検索します。 IoT Edge バージョン 1.0.9-rc4 以降では、2 つの .cab ファイル (AMD64 デバイス用と ARM32 デバイス用に 1 つずつ) を使用できます。 お使いのデバイスに合ったファイルをダウンロードし、ファイルの名前を変更して、アーキテクチャのサフィックスを削除します。
-
-更新オプションの詳細については、`Get-Help Update-IoTEdge -full` コマンドを使用するか、「[すべてのインストール パラメーター](how-to-install-iot-edge-windows.md#all-installation-parameters)」を参照してください。
+---
 
 ## <a name="update-the-runtime-containers"></a>ランタイム コンテナーの更新
 
@@ -172,40 +158,11 @@ IoT Edge サービスによって、ランタイム イメージの最新バー�
 
 1. **[Review + create]\(確認と作成\)** を選択し、デプロイを確認して、 **[作成]** を選択します。
 
-## <a name="update-offline-or-to-a-specific-version"></a>オフラインで更新するか、または特定のバージョンに更新する
-
-デバイスをオフラインで更新するか、または最新バージョンではなく IoT Edge の特定のバージョンに更新する場合は、`-OfflineInstallationPath` パラメーターを使用して行うことができます。
-
-IoT Edge デバイスを更新するには、次の 2 つのコンポーネントが使用されます。
-
-* PowerShell スクリプト。これには、インストール手順が含まれています。
-* Microsoft Azure IoT Edge cab。これには、IoT Edge セキュリティ デーモン (iotedged)、Moby コンテナー エンジン、Moby CLI が含まれています。
-
-1. IoT Edge の最新のインストール ファイルとその以前のバージョンについては、[Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)を参照してください。
-
-2. インストールするバージョンを見つけ、リリース ノートの **[アセット]** セクションから次のファイルを IoT デバイスにダウンロードします。
-
-   * IoTEdgeSecurityDaemon.ps1
-   * リリース 1.0.9 以降は Microsoft-Azure-IoTEdge-amd64.cab、リリース 1.0.8 以前は Microsoft-Azure-IoTEdge.cab。
-
-   1\.0.9 以降は、テスト目的でのみ Microsoft-Azure-IotEdge-arm32.cab を使用することもできます。 IoT Edge では、現在、Windows ARM32 デバイスはサポートされていません。
-
-   各リリースの機能をサポートするために機能が変更されるため、使用する .cab ファイルと同じリリースの PowerShell スクリプトを使用することが重要です。
-
-3. ダウンロードした .cab ファイルにアーキテクチャのサフィックスが付いている場合は、そのファイルの名前を **Microsoft-Azure-IoTEdge.cab** のみに変更します。
-
-4. オフライン コンポーネントを使用して更新するには、PowerShell スクリプトのローカル コピーを[ドット ソース](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)で使用します。 次に、`Update-IoTEdge` コマンドの一部として `-OfflineInstallationPath` パラメーターを使用し、ファイル ディレクトリへの絶対パスを指定します。 たとえば、次のように入力します。
-
-   ```powershell
-   . <path>\IoTEdgeSecurityDaemon.ps1
-   Update-IoTEdge -OfflineInstallationPath <path>
-   ```
-
 ## <a name="update-to-a-release-candidate-version"></a>リリース候補バージョンに更新する
 
 Azure IoT Edge では、定期的に新しいバージョンの IoT Edge サービスをリリースしています。 個々の安定版リリースの前に、1 つ以上のリリース候補 (RC) バージョンがあります。 RC バージョンには、そのリリースで予定されているすべての機能が含まれていますが、テストおよび検証プロセスはまだ進行中です。 早い段階で新しい機能をテストする場合は、GitHub を介して RC バージョンをインストールし、フィードバックを提供できます。
 
-リリース候補バージョンは、リリースの同じ番号付け規則に従いますが、 **-rc** と末尾に増分の番号が追加されます。 [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)の一覧には、安定版と同じリリース候補があります。 たとえば、**1.0.9** より前に存在するリリース候補の 2 つ (**1.0.9-rc5** と **1.0.9-rc6**) を見つけます。 また、RC バージョンには**プレリリース**のラベルが付いていることもわかります。
+リリース候補バージョンは、リリースの同じ番号付け規則に従いますが、 **-rc** と末尾に増分の番号が追加されます。 [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)の一覧には、安定版と同じリリース候補があります。 たとえば、**1.0.9** より前に存在するリリース候補の 2 つ (**1.0.9-rc5** と **1.0.9-rc6**) を見つけます。 また、RC バージョンには **プレリリース** のラベルが付いていることもわかります。
 
 IoT Edge エージェント モジュールおよびハブ モジュールには、同じ規則でタグ付けされた RC バージョンがあります。 たとえば、**mcr.microsoft.com/azureiotedge-hub:1.0.9-rc6** があります。
 
@@ -213,10 +170,7 @@ IoT Edge エージェント モジュールおよびハブ モジュールには
 
 IoT Edge デバイスを特定のバージョンのセキュリティ デーモンまたはランタイム モジュールに更新する方法については、この記事の各セクションを参照してください。
 
-新しいコンピューターに IoT Edge をインストールする場合は、次のリンクを使用して、デバイスのオペレーティング システムに応じて特定のバージョンをインストールする方法を確認してください。
-
-* [Linux](how-to-install-iot-edge-linux.md#install-runtime-using-release-assets)
-* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
+既存のインストールをアップグレードせず、IoT Edge をインストールする場合、「[オフラインまたは特定のバージョンのインストール](how-to-install-iot-edge.md#offline-or-specific-version-installation-optional)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

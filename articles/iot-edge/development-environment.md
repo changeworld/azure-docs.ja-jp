@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511095"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041370"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
 
@@ -58,7 +58,7 @@ IoT Edge 拡張機能に加えて、開発用のその他の拡張機能をイ�
 | Azure Functions | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
 | C | [Git](https://git-scm.com/) |
 | C# | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
-| Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [JAVA_HOME 環境変数の設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
+| Java | <ul><li>[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) <li> [JAVA_HOME 環境変数の設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js モジュール ジェネレーター](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
@@ -82,10 +82,10 @@ IoT Edge ランタイムは運用環境への配置のみをサポートしま�
 
 | ツール | 別名 | サポートされているプラットフォーム | 最適な用途 |
 | ---- | ------------- | ------------------- | --------- |
-| IoT Edge Hub 開発ツール  | iotedgehubdev | Windows、Linux、MacOS | モジュールをデバッグするためのデバイスのシミュレート。 |
-| IoT Edge 開発コンテナー | microsoft/iotedgedev | Windows、Linux、MacOS | 依存関係をインストールせずに開発。 |
-| コンテナーの IoT Edge ランタイム | iotedgec | Windows、Linux、MacOS、ARM | ランタイムをサポートしないデバイスでのテスト。 |
-| IoT Edge デバイス コンテナー | toolboc/azure-iot-edge-device-container | Windows、Linux、MacOS、ARM | 多数の IoT Edge デバイスが存在する規模の大きいシナリオのテスト。 |
+| IoT Edge Hub 開発ツール  | iotedgehubdev | Windows、Linux、macOS | モジュールをデバッグするためのデバイスのシミュレート。 |
+| IoT Edge 開発コンテナー | iotedgedev | Windows、Linux、macOS | 依存関係をインストールせずに開発。 |
+| コンテナーの IoT Edge ランタイム | iotedgec | Windows、Linux、macOS、ARM | ランタイムをサポートしないデバイスでのテスト。 |
+| IoT Edge デバイス コンテナー | toolboc/azure-iot-edge-device-container | Windows、Linux、macOS、ARM | 多数の IoT Edge デバイスが存在する規模の大きいシナリオのテスト。 |
 
 ### <a name="iot-edgehub-dev-tool"></a>IoT Edge Hub 開発ツール
 
@@ -99,11 +99,11 @@ IoT Edge Hub 開発ツールは、IoT Edge 開発ツールだけでなく、Visu
 
 Azure IoT Edge 開発コンテナーは、IoT Edge 開発に必要なすべての依存関係が存在する Docker コンテナーです。 このコンテナーにより、C#、Python、Node.js、Java など、開発にどの言語を使用するとしても簡単に開始できます。 インストールする必要があるのは、開発用マシンにコンテナーをプルするための Docker や Moby などのコンテナー エンジンだけです。
 
-詳細については、[Azure IoT Edge 開発コンテナー](https://hub.docker.com/r/microsoft/iotedgedev/)に関するページを参照してください。
+詳細については、[Azure IoT Edge 開発コンテナー](https://github.com/Azure/iotedgedev/wiki/quickstart-with-iot-edge-dev-container)に関するページを参照してください。
 
 ### <a name="iot-edge-runtime-in-a-container"></a>コンテナーの IoT Edge ランタイム
 
-コンテナーの IoT Edge ランタイムは、環境変数としてデバイス接続文字列を受け取る完全なランタイムを提供します。 このコンテナーによって、MacOS のようなランタイムをネイティブでサポートしていないシステムで IoT Edge モジュールとシナリオをテストすることができます。 配置するすべてのモジュールは、ランタイム コンテナーの外部で開始されます。 ランタイムと配置するモジュールが同じコンテナー内に存在するようにしたい場合は、IoT Edge デバイス コンテナーを検討してください。
+コンテナーの IoT Edge ランタイムは、環境変数としてデバイス接続文字列を受け取る完全なランタイムを提供します。 このコンテナーによって、macOS のようなランタイムをネイティブでサポートしていないシステムで IoT Edge モジュールとシナリオをテストすることができます。 配置するすべてのモジュールは、ランタイム コンテナーの外部で開始されます。 ランタイムと配置するモジュールが同じコンテナー内に存在するようにしたい場合は、IoT Edge デバイス コンテナーを検討してください。
 
 詳細については、[コンテナーでの Azure IoT Edge の実行](https://github.com/Azure/iotedgedev/tree/master/docker/runtime)に関するページを参照してください。
 
@@ -119,7 +119,7 @@ IoT Edge デバイス コンテナーは、コンテナー エンジンを使用
 
 詳細情報、ガイドライン、およびサンプルについては、以下のページを参照してください。
 
-* [Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-ci-cd.md)
-* [Azure DevOps Projects を使用して IoT Edge 用の CI/CD パイプラインを作成する](how-to-devops-project.md)
+* [Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-continuous-integration-continuous-deployment.md)
+* [Azure DevOps Starter を使用して IoT Edge 用の CI/CD パイプラインを作成する](how-to-devops-starter.md)
 * [Azure IoT Edge Jenkins プラグイン](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub のリポジトリ](https://github.com/toolboc/IoTEdge-DevOps)

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825615"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302469"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure Files および Azure AD DS を使用してプロファイル コンテナーを作成する
 
@@ -99,7 +99,7 @@ ms.locfileid: "88825615"
 7. 次のコマンドを実行します。
 
      ```cmd
-     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
      ```
 
     - `<desired-drive-letter>` を、選択したドライブ文字 (`y:` など) に置き換えます。
@@ -238,7 +238,7 @@ FSLogix プロファイル コンテナーを構成するには以下の手順�
 
 6. **[ファイル]** アイコンを選択し、共有を展開します。
 
-    すべてが適正に設定されたら、`<user SID>-<username>` という形式の名前を含む**ディレクトリ**が表示されるはずです。
+    すべてが適正に設定されたら、`<user SID>-<username>` という形式の名前を含む **ディレクトリ** が表示されるはずです。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -247,4 +247,4 @@ FSLogix プロファイル コンテナーを作成する別の方法を探し�
 - [ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成](create-host-pools-user-profile.md)します。
 - [Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する](create-fslogix-profile-container.md)
 
-Azure ファイルの FSlogix コンテナーに関連のある概念の詳細な情報については、「[FSLogix プロファイル コンテナーと Azure ファイル](fslogix-containers-azure-files.md)」をご覧ください。
+Azure Files の FSlogix コンテナーに関連のある概念の詳細な情報については、「[FSLogix プロファイル コンテナーと Azure Files](fslogix-containers-azure-files.md)」をご覧ください。

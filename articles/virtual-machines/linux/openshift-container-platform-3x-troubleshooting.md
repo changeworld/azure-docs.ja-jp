@@ -3,20 +3,21 @@ title: Azure での OpenShift Container Platform 3.11 デプロイのトラブ�
 description: Azure での OpenShift Container Platform 3.11 デプロイのトラブルシューティング。
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
-ms.openlocfilehash: 9595627e9d7ca2de577aa83ebba3dd58d69e6750
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b6dfb4cb697e7d66c7db323df9786ff7ad45e1d7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373557"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672328"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Azure での OpenShift Container Platform 3.11 デプロイのトラブルシューティング
 

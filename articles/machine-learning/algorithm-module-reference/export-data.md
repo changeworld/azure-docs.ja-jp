@@ -1,7 +1,7 @@
 ---
 title: 'データのエクスポート: モジュール リファレンス'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning でデータのエクスポート モジュールを使用して、パイプラインからの結果や中間データ、作業データを Azure Machine Learning の外部のクラウド ストレージに保存する方法について説明します。
+description: Azure Machine Learning デザイナーのデータのエクスポート モジュールを使用して、Azure Machine Learning の外部に結果と中間データを保存します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/28/2020
-ms.openlocfilehash: d0fd11ce5b25b8796b07176a4ba83091a8f7cc0b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461019"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421313"
 ---
 # <a name="export-data-module"></a>データのエクスポート モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、パイプラインからの結果、中間データ、および作業データをクラウド ストレージに保存します。 
 

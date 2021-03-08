@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 02f868417ef9feea1771174e62152708c1257425
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502904"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570533"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用した仮想マシン スケール セットの管理
 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI コマンドの一部について説明します。
@@ -49,6 +49,20 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
+また、1 回の API 呼び出しですべてのインスタンスに対する詳細な *instanceView* 情報を取得することもできます。これは、大規模なインストールで API が調整されるのを回避するのに役立ちます。 `--resource-group`、`--subscription`、`--name` に、該当する値を入力します。
+
+```azurecli
+az vmss list-instances \
+    --expand instanceView \
+    --select instanceView \
+    --resource-group <resourceGroupName> \
+    --subscription <subID> \
+    --name <vmssName>
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="list-connection-information-for-vms"></a>VM の接続情報を一覧表示する
 スケール セット内の VM に接続するには、割り当てられたパブリック IP アドレスとポート番号に SSH または RDP を使用して接続します。 既定では、リモート接続トラフィックを各 VM に転送する Azure ロード バランサーに NAT (Network Address Translation) 規則が追加されます。 スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示するには、[az vmss list-instance-connection-info](/cli/azure/vmss) を使用します。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンスの接続情報を一覧表示できます。 これらの名前には独自の値を指定します。

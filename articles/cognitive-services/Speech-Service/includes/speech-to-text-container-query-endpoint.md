@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 54ccaebd84c6af308ddcfa956add7f84b6e55832
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 167e33ff4a3af463e2537e2714e9e9bf5e125b61
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321043"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948108"
 ---
 コンテナーは、websocket ベースのクエリ エンドポイント API シリーズを提供します。これには、[Speech SDK](../index.yml) を介してアクセスします。 既定では、Speech SDK は、オンラインの音声サービスを使用します。 コンテナーを使用するには、初期化方法を変更する必要があります。
 
@@ -29,7 +29,7 @@ ms.locfileid: "89321043"
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-次のようにコンテナー [ホスト](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)を使用する呼び出しに変更します。
+コンテナー [ホスト](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost)でこの呼び出しを使用する方法に変更します。
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -43,6 +43,13 @@ var config = SpeechConfig.FromHost(
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
+```
+
+コンテナー [エンドポイント](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)でこの呼び出しを使用する方法に変更します。
+
+```python
+speech_config = speechsdk.SpeechConfig(
+    endpoint="ws://localhost:5000/speech/recognition/conversation/cognitiveservices/v1"
 ```
 
 ---

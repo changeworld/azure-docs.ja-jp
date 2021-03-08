@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886053"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779324"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Azure CDN の詳細な HTTP レポートを使用した利用統計の分析
 ## <a name="overview"></a>概要
@@ -202,6 +202,5 @@ ms.locfileid: "84886053"
 ## <a name="see-also"></a>参照
 * [Azure CDN の概要](cdn-overview.md)
 * [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
-* [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
+* [規則エンジンを使用した既定の HTTP 動作のオーバーライド](./cdn-verizon-premium-rules-engine.md)
 * [Microsoft Edge のパフォーマンスの分析](cdn-edge-performance.md)
-

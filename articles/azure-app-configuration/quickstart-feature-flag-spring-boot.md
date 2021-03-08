@@ -1,36 +1,36 @@
 ---
 title: Azure App Configuration を使用して Spring Boot に機能フラグを追加するためのクイックスタート
 description: Spring Boot アプリに機能フラグを追加し、Azure App Configuration を使用して管理する
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/18/2020
-ms.author: lcozzens
+ms.date: 08/06/2020
+ms.author: alkemper
 ms.custom: devx-track-java
-ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e931b974fc48d07237b2698e7782c48be20745d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019744"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930716"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
 このクイックスタートでは、Azure App Configuration を Spring Boot Web アプリに組み込み、機能管理のエンドツーエンド実装を作成します。 App Configuration サービスを使用し、すべての機能フラグを一箇所に格納し、その状態を制御できます。
 
-Spring Boot 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、Azure のライブラリには一切依存**しません**。 また、Spring Boot 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
+Spring Boot 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、Azure のライブラリには一切依存 **しません**。 また、Spring Boot 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* バージョン 8 を含む、サポートされている [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk)。
+* バージョン 8 を含む、サポートされている [Java Development Kit SDK](/java/azure/jdk)。
 * [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
 ## <a name="create-an-app-configuration-instance"></a>App Configuration インスタンスを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
+7. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
 
     > [!div class="mx-imgBorder"]
     > ![Beta という名前の機能フラグを有効にする](media/add-beta-feature-flag.png)
@@ -47,7 +47,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
    * **Java** で **Maven** プロジェクトを生成します。
    * **Spring Boot** のバージョンとして、2.0 以降を指定します。
-   * アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。  この記事では、`com.example` と `demo` を使用します。
+   * アプリケーションの **グループ (Group)** と **成果物 (Artifact)** の名前を指定します。  この記事では、`com.example` と `demo` を使用します。
    * **Spring Web** の依存関係を追加します。
 
 1. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューターにプロジェクトをダウンロードします。
@@ -228,7 +228,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
         </header>
         <div class="container body-content">
             <h1 class="mt-5">Welcome</h1>
-            <p>Learn more about <a href="https://github.com/microsoft/spring-cloud-azure/blob/master/spring-cloud-azure-feature-management/README.md">Feature Management with Spring Cloud Azure</a></p>
+            <p>Learn more about <a href="https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/appconfiguration/azure-spring-cloud-feature-management/README.md">Feature Management with Spring Cloud Azure</a></p>
 
         </div>
         <footer class="footer">
@@ -286,7 +286,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 1. ブラウザー ウィンドウを開き、`http://localhost:8080/welcome` に移動します。
 
-    ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![ウェルカム メッセージが表示されたブラウザー ウィンドウを示すスクリーンショット。](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
 1. App Configuration ポータルで **[Feature Manager]\(機能マネージャー\)** を選択し、 **[Beta]\(ベータ\)** キーの状態を **[On]\(オン\)** に変更します。
 
@@ -296,7 +296,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
 
-    ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![ウェルカム メッセージが表示され、[Beta]\(ベータ\) リンクが強調表示されたブラウザー ウィンドウを示すスクリーンショット。](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -304,7 +304,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して Spring Boot Web アプリの機能を管理しました。
+このクイックスタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)を介して Spring Boot Web アプリの機能を管理しました。
 
 * [機能管理](./concept-feature-management.md)の詳細を確認します。
 * [機能フラグを管理](./manage-feature-flags.md)します。

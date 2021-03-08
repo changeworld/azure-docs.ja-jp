@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475245"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495289"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Iot ソリューションで IoT プラグ アンド プレイを使用する
 
@@ -26,7 +26,7 @@ IoT ソリューションには、大きく分けて次の 2 つのカテゴリ�
 
 IoT プラグ アンド プレイ モデルを使用するには、IoT ソリューションで次のことを行います。
 
-1. ソリューションに接続されている IoT プラグ アンド プレイ デバイスによって実装されるモデルのモデル ID を識別します。
+1. ソリューションに接続されている IoT プラグ アンド プレイ デバイス、モジュール、または IoT Edge モジュールによって実装されるモデルのモデル ID を識別します。
 
 1. そのモデル ID を使用して、接続されているデバイスのモデル定義をモデル リポジトリまたはカスタム ストアから取得します。
 
@@ -40,7 +40,10 @@ IoT Hub は、デバイス接続フローの一環としてデバイス モデ�
 
 ### <a name="get-device-twin-api"></a>Get Device Twin API
 
-このソリューションでは、[Get Device Twin](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) API を使用して、IoT プラグ アンド プレイ デバイスのモデル ID を取得することができます。
+このソリューションでは、[Get Device Twin](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) API を使用して、IoT プラグ アンド プレイ デバイスのモデル ID を取得することができます。
+
+> [!TIP]
+> モジュールと IoT Edge モジュールの場合は、[ModuleClient.getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable) を使用します。
 
 次のデバイス ツイン応答スニペットでは、IoT プラグ アンド プレイ デバイスのモデル ID が `modelId` に含まれています。
 
@@ -68,7 +71,7 @@ IoT Hub は、デバイス接続フローの一環としてデバイス モデ�
 
 ### <a name="get-digital-twin-api"></a>Get Digital Twin API
 
-ソリューションでは、[Get Digital Twin](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API を使用して、IoT プラグ アンド プレイ デバイスによって実装されたモデルのモデル ID を取得できます。
+ソリューションでは、[Get Digital Twin](/rest/api/iothub/service/digitaltwin/getdigitaltwin) API を使用して、IoT プラグ アンド プレイ デバイスによって実装されたモデルのモデル ID を取得できます。
 
 次のデジタル ツイン応答スニペットでは、IoT プラグ アンド プレイ デバイスのモデル ID が `$metadata.$model` に含まれています。
 
@@ -118,11 +121,11 @@ content-encoding:utf-8
 
 新しいデバイス接続用のモデル ID を識別したら、次の手順を行います。
 
-1. モデル リポジトリからのモデル ID を使用して、モデル定義を取得します。 詳細については、[モデルの取得](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)に関するページを参照してください。
+1. モデル リポジトリからのモデル ID を使用して、モデル定義を取得します。 詳細については、「[デバイス モデル リポジトリ](concepts-model-repository.md)」を参照してください。
 
 1. 接続されたデバイスのモデル定義を使用すれば、デバイスの機能を列挙できます。
 
-1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service-node.md)のを許可することができます。
+1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service.md)のを許可することができます。
 
 ### <a name="custom-store"></a>カスタム ストア
 
@@ -134,12 +137,12 @@ content-encoding:utf-8
 
 1. 接続されたデバイスのモデル定義を使用すれば、デバイスの機能を列挙できます。 
 
-1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service-node.md)のを許可することができます。  
+1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service.md)のを許可することができます。  
 
 ## <a name="next-steps"></a>次のステップ
 
 IoT プラグ アンド プレイ モデルを IoT ソリューションに統合する方法を学習したので、次に推奨されるいくつかのステップを以下に示します。
 
-- [ソリューションからのデバイスの操作](quickstart-service-node.md)
-- [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [ソリューションからのデバイスの操作](quickstart-service.md)
+- [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT エクスプローラー](howto-use-iot-explorer.md)

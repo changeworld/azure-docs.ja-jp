@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用した AzureVM オンプレミス フェールオーバーへの接続
 description: Azure Site Recovery を使用してオンプレミスから Azure へのフェールオーバー後に Azure VM に接続する方法について説明します
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
-ms.author: mayg
-ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: harshacs
+ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770494"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89568780"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>オンプレミスからフェールオーバー後に Azure VM に接続する 
 
@@ -107,8 +107,8 @@ IP アドレスを維持するには、次の手順を実行する必要があ�
     - 192.168.2.0/24
     - 192.168.3.0/24
 - Azure で実行されているアプリは、次の 2 つのサブネット内の Azure VNet **Azure ネットワーク**にあります。
-- 172.16.1.0/24
-- 172.16.2.0/24
+    - 172.16.1.0/24
+    - 172.16.2.0/24
 
 これらのアドレスを維持するために、同社では次の操作を実行します。
 

@@ -3,7 +3,7 @@ title: Azure AD アプリケーション プロキシを使用してオンプレ
 description: Azure Active Directory のアプリケーション プロキシは、オンプレミスまたはクラウド VM でホストされている API およびビジネス ロジックにネイティブ アプリが安全にアクセスできるようにします。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9341646f32f6a2e05397b072d3f63186964fbd88
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206446"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258984"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したオンプレミス API へのアクセスのセキュリティ保護
 
-ビジネス ロジック API がオンプレミスで実行されていたり、クラウドの仮想マシンでホストされていたりすることがあります。 Android、iOS、Mac、または Windows のネイティブ アプリは、データを使用したりユーザー対話を提供したりするために、この API エンドポイントと対話する必要があります。 Azure AD アプリケーション プロキシと [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) を使用すると、ネイティブ アプリはオンプレミス API に安全にアクセスすることができます。 Azure Active Directory アプリケーション プロキシは、ファイアウォール ポートを開いてアプリ層で認証と承認を制御するよりも高速かつ安全なソリューションです。
+ビジネス ロジック API がオンプレミスで実行されていたり、クラウドの仮想マシンでホストされていたりすることがあります。 Android、iOS、Mac、または Windows のネイティブ アプリは、データを使用したりユーザー対話を提供したりするために、この API エンドポイントと対話する必要があります。 Azure AD アプリケーション プロキシと [Microsoft Authentication Library (MSAL)](../azuread-dev/active-directory-authentication-libraries.md) を使用すると、ネイティブ アプリはオンプレミス API に安全にアクセスすることができます。 Azure Active Directory アプリケーション プロキシは、ファイアウォール ポートを開いてアプリ層で認証と承認を制御するよりも高速かつ安全なソリューションです。
 
 この記事では、ネイティブ アプリがアクセスできる Web API サービスをホストするための Azure AD アプリケーション プロキシ ソリューションを設定する手順を説明します。
 
@@ -34,9 +34,9 @@ ms.locfileid: "85206446"
 
 ![Azure AD アプリケーション プロキシの API アクセス](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。
+Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [Microsoft Authentication Library (MSAL)](../azuread-dev/active-directory-authentication-libraries.md) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。
 
-Azure AD アプリケーション プロキシの認証と承認は Azure AD 上に構築されているため、Azure AD の条件付きアクセスを使用して、信頼済みデバイスのみがアプリケーション プロキシ経由で公開された API にアクセスできるようにすることが可能です。 デスクトップについては Azure AD Join または Azure AD Hybrid Joined を使用し、デバイスについては Intune Managed を使用します。 Azure Multi-Factor Authentication などの Azure Active Directory Premium 機能や、[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection) の機械学習支援型のセキュリティも活用できます。
+Azure AD アプリケーション プロキシの認証と承認は Azure AD 上に構築されているため、Azure AD の条件付きアクセスを使用して、信頼済みデバイスのみがアプリケーション プロキシ経由で公開された API にアクセスできるようにすることが可能です。 デスクトップについては Azure AD Join または Azure AD Hybrid Joined を使用し、デバイスについては Intune Managed を使用します。 Azure AD Multi-Factor Authentication などの Azure Active Directory Premium 機能や、[Azure Identity Protection](../identity-protection/overview-identity-protection.md) の機械学習支援型のセキュリティも活用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -96,7 +96,7 @@ Azure AD アプリケーション プロキシを通じて Web API を公開し�
 1. **[割り当ての追加]** ページに戻り、 **[割り当て]** を選択します。
 
 > [!NOTE]
-> 統合 Windows 認証を使用する API では、[追加の手順](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)が必要になる場合があります。
+> 統合 Windows 認証を使用する API では、[追加の手順](./application-proxy-configure-single-sign-on-with-kcd.md)が必要になる場合があります。
 
 ## <a name="register-the-native-app-and-grant-access-to-the-api"></a>ネイティブ アプリを登録して API へのアクセス権を付与する
 
@@ -185,7 +185,7 @@ if (authResult != null)
 
 パラメーターを構成した後は、ネイティブ アプリをビルドして実行します。 **[サインイン]** ボタンを選択すると、アプリでサインインが行われ、SecretAPI に正常に接続されたことを確認する成功画面が表示されます。
 
-![Success](./media/application-proxy-secure-api-access/success.png)
+![スクリーンショットに、Secret API の成功のメッセージと [OK] ボタンが示されています。](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>次のステップ
 

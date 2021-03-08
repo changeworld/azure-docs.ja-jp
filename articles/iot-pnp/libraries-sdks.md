@@ -8,45 +8,38 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 5638cd9973c6a4df809e0b200efe85b067aae026
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 3ff01455c56dd259ea64878f912eb3f2431547e7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407797"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495254"
 ---
 # <a name="microsoft-sdks-for-iot-plug-and-play"></a>IoT プラグ アンド プレイ用の Microsoft SDK
 
 IoT プラグ アンド プレイ ライブラリと SDK を使用すると、開発者は、複数のプラットフォーム上でさまざまなプログラミング言語を使用して IoT ソリューションを構築できます。 次の表には、作業を開始するために役立つサンプルとクイックスタートへのリンクが含まれています。
 
-## <a name="device-sdks-ga"></a>デバイスの SDK (GA)
+## <a name="device-sdks"></a>デバイスの SDK
 
 | Language | Package | コード リポジトリ | サンプル | クイック スタート | リファレンス |
 |---|---|---|---|---|---|
-| C - デバイス | [vcpkg 1.3.9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md) | [GitHub](https://github.com/Azure/azure-iot-sdk-c/releases/tag/2020-07-19) | [サンプル](https://github.com/Azure/azure-iot-sdk-c/tree/2020-07-19/iothub_client/samples/pnp) | [IoT Hub への接続](quickstart-connect-device-c.md) | [リファレンス](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
-| .NET - デバイス | [NuGet 1.27.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/1.27.0) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples) | [IoT Hub への接続](quickstart-connect-device-csharp.md) | [リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client?view=azure-dotnet) |
-| Java - デバイス | [Maven 1.24.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client/1.24.0) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample) | [IoT Hub への接続](quickstart-connect-device-java.md) | [リファレンス](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device?view=azure-java-stable) |
-| Python - デバイス | [pip 2.1.4](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [IoT Hub への接続](quickstart-connect-device-python.md) | [リファレンス](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device?view=azure-python) |
-| Node - デバイス | [npm 1.17.0](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [IoT Hub への接続](quickstart-connect-device-node.md) | [リファレンス](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-node-latest) |
+| C - デバイス | [vcpkg 1.3.9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md) | [GitHub](https://github.com/Azure/azure-iot-sdk-c) | [サンプル](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp) | [IoT Hub への接続](quickstart-connect-device.md) | [リファレンス](/azure/iot-hub/iot-c-sdk-ref/) |
+| .NET - デバイス | [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/) | [サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples) | [IoT Hub への接続](quickstart-connect-device.md) | [リファレンス](/dotnet/api/microsoft.azure.devices.client?preserve-view=true&view=azure-dotnet) |
+| Java - デバイス | [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample) | [IoT Hub への接続](quickstart-connect-device.md) | [リファレンス](/java/api/com.microsoft.azure.sdk.iot.device?preserve-view=true&view=azure-java-stable) |
+| Python - デバイス | [pip 2.3.0](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [IoT Hub への接続](quickstart-connect-device.md) | [リファレンス](/python/api/azure-iot-device/azure.iot.device?preserve-view=true&view=azure-python) |
+| Node - デバイス | [npm 1.17.2](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [IoT Hub への接続](quickstart-connect-device.md) | [リファレンス](/javascript/api/azure-iot-device/?preserve-view=true&view=azure-node-latest) |
+| 埋め込み C - デバイス | 該当なし | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [サンプル](howto-use-embedded-c.md#samples) | [埋め込み C の使用方法](howto-use-embedded-c.md) | 該当なし
 
-## <a name="device-sdks-preview"></a>デバイス SDK (プレビュー)
+## <a name="service-sdks"></a>サービス SDK
 
-| Language | コード リポジトリ/サンプル |
-|---|---|
-|Azure SDK for Embedded| [GitHub](https://github.com/Azure/azure-sdk-for-c/#) |
-|Azure RTOS IoT ミドルウェア| [GitHub](https://github.com/azure-rtos/azure-iot-preview#) |
-|Azure RTOS ファースト ステップ ガイド | [GitHub](https://github.com/azure-rtos/getting-started) |
-
-## <a name="service-sdks-preview"></a>サービス SDK (プレビュー)
-
-| Language | Package | コード リポジトリ | サンプル | クイック スタート | リファレンス |
+| プラットフォーム  | Package | コード リポジトリ | サンプル | クイック スタート | リファレンス |
 |---|---|---|---|---|---|
-| .NET - IoT Hub サービス プレビュー | [NuGet 1.27.1-preview-002](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.27.1-preview-002 ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp/tree/pnp-preview-refresh) | [サンプル](https://github.com/Azure/azure-iot-sdk-csharp/tree/pnp-preview-refresh/iothub/service/samples/PnpServiceSamples) | なし | 該当なし |
-| Java - IoT Hub サービス プレビュー | [Maven 1.1.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client-preview/1.1.0) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/pnp-preview-refresh) | [サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/pnp-preview-refresh/service/iot-service-samples/pnp-service-sample) | なし | 該当なし |
-| Node - IoT Hub サービス プレビュー | [npm 1.12.4-pnp-refresh.4](https://www.npmjs.com/package/azure-iothub/v/1.12.4-pnp-refresh.4) | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/service/samples) | なし | 該当なし |
-| Python - IoT Hub/Digital Twins サービス プレビュー | [pip 2.2.1rc1](https://pypi.org/project/azure-iot-hub/2.2.1rc1/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/pnp-preview-refresh) | [サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/pnp-preview-refresh/azure-iot-hub/samples) | [IoT Hub Digital Twins API の操作](quickstart-service-python.md) | 該当なし |
-| Node - Digital Twins サービス プレビュー | [npm 1.0.0-pnp-refresh.3](https://www.npmjs.com/package/azure-iot-digitaltwins-service/v/1.0.0-pnp-refresh.3) | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/digitaltwins/samples/service/javascript) | [IoT Hub Digital Twins API の操作](quickstart-service-node.md) | 該当なし |
+| .NET - IoT Hub サービス | [NuGet 1.27.1](https://www.nuget.org/packages/Microsoft.Azure.Devices ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp) | [サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) | なし | [参照](/dotnet/api/microsoft.azure.devices?preserve-view=true&view=azure-dotnet) |
+| Java - IoT Hub サービス | [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client/1.26.0) | [GitHub](https://github.com/Azure/azure-iot-sdk-java) | [サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/pnp-service-sample) | なし | [参照](/java/api/com.microsoft.azure.sdk.iot.service?preserve-view=true&view=azure-java-stable) |
+| ノード - IoT Hub サービス | [npm 1.13.0](https://www.npmjs.com/package/azure-iothub) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples) | なし | [参照](/javascript/api/azure-iothub/?preserve-view=true&view=azure-node-latest) |
+| Python - Digital Twins サービス | [pip 2.2.3](https://pypi.org/project/azure-iot-hub) | [GitHub](https://github.com/Azure/azure-iot-sdk-python) | [サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub/samples) | [IoT Hub Digital Twins API の操作](quickstart-service.md) | 該当なし |
+| ノード - Digital Twins サービス | [npm 1.13.0](https://www.npmjs.com/package/azure-iot-digitaltwins-service) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples/javascript) | [IoT Hub Digital Twins API の操作](quickstart-service.md) | 該当なし |
 
 ## <a name="next-steps"></a>次のステップ
 
-SDK とライブラリを試すには、[開発者ガイド](concepts-developer-guide.md)、[デバイスのクイックスタート](quickstart-connect-device-c.md)、および[サービスのクイックスタート](quickstart-service-node.md)を参照してください。
+SDK とライブラリを試すには、[開発者ガイド](concepts-developer-guide-device.md)、[デバイスのクイックスタート](quickstart-connect-device.md)、および[サービスのクイックスタート](quickstart-service.md)を参照してください。

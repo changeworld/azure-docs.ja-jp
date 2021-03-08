@@ -4,12 +4,12 @@ description: App Service または Azure Functions アプリの ID プロバイ�
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413920"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90983865"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>OpenID Connect プロバイダーを使用してログインするように App Service または Azure Functions アプリを構成する (プレビュー)
 
@@ -53,7 +53,7 @@ ms.locfileid: "87413920"
 このセクションでは、新しい IDP を含めるように構成を更新する手順について説明します。 構成の例を次に示します。
 
 1. `identityProviders` オブジェクト内に `openIdConnectProviders` オブジェクトがまだ存在しない場合は追加します。
-1. `openIdConnectProviders` オブジェクト内に、新しいプロバイダーのキーを追加します。 これは、構成の残りの部分でプロバイダーを参照するために使用されるフレンドリ名です。 たとえば、このプロバイダーですべての要求を認証する必要がある場合は、`globalValidation.unauthenticatedClientAction` を "RedirectToLoginPage" に設定し、`globalValidation.unauthenticatedClientAction` を同じフレンドリ名に設定します。
+1. `openIdConnectProviders` オブジェクト内に、新しいプロバイダーのキーを追加します。 これは、構成の残りの部分でプロバイダーを参照するために使用されるフレンドリ名です。 たとえば、このプロバイダーですべての要求を認証する必要がある場合は、`globalValidation.unauthenticatedClientAction` を "RedirectToLoginPage" に設定し、`redirectToProvider` を同じフレンドリ名に設定します。
 1. オブジェクトを `registration` オブジェクトが含まれているそのキーに割り当て、オプションで `login` オブジェクトを割り当てます。
     
     ```json

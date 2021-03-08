@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753268"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333904"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Azure Logic Apps で変数を使用して値を格納および管理する
 
@@ -55,7 +55,7 @@ ms.locfileid: "84753268"
 
    * 最後のステップにアクションを追加するには、 **[新しいステップ]** を選択します。
 
-     ![アクションを追加する](./media/logic-apps-create-variables-store-values/add-action.png)
+     !["ロジック アプリ デザイナー" ページで選択されている "新しいステップ" のスクリーンショット。](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * ステップとステップの間にアクションを追加するには、接続矢印の上にマウスを移動してプラス記号 **[+]** を表示させます。 プラス記号を選択し、 **[アクションの追加]** を選択します。
 

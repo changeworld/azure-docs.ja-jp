@@ -1,19 +1,16 @@
 ---
 title: Ambari REST API を使用して Hadoop を監視および管理する - Azure HDInsight
 description: Ambari を使用して Azure HDInsight の Hadoop クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari REST API を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081068"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945588"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -29,7 +26,7 @@ Apache Ambari は、[REST API](https://github.com/apache/ambari/blob/trunk/ambar
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* Bash on Ubuntu on Windows 10。  この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。  または、Windows PowerShell を使うこともできます。
+* Bash on Ubuntu on Windows 10。  この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。  または、Windows PowerShell を使うこともできます。
 
 * jq。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 
@@ -37,7 +34,7 @@ Apache Ambari は、[REST API](https://github.com/apache/ambari/blob/trunk/ambar
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API のベース URI
 
- HDInsight の Ambari REST API のベース URI (Uniform Resource Identifier) は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` はお使いのクラスターの名前です。  URI のクラスター名では、**大文字と小文字が区別**されます。  URI (`CLUSTERNAME.azurehdinsight.net`) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
+ HDInsight の Ambari REST API のベース URI (Uniform Resource Identifier) は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` はお使いのクラスターの名前です。  URI のクラスター名では、**大文字と小文字が区別** されます。  URI (`CLUSTERNAME.azurehdinsight.net`) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
 
 ## <a name="authentication"></a>認証
 
@@ -87,7 +84,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>JSON データの解析
 
-次の例では、[jq](https://stedolan.github.io/jq/) または [ConvertFrom-Json](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) を使用して、JSON 応答ドキュメントを解析し、結果の `health_report` 情報だけを表示します。
+次の例では、[jq](https://stedolan.github.io/jq/) または [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) を使用して、JSON 応答ドキュメントを解析し、結果の `health_report` 情報だけを表示します。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -253,7 +250,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     戻り値は、`/clusters/CLUSTERNAME/` のようになります。 この値は、Data Lake Storage アカウント内のパスです。 このパスは、クラスターの HDFS 互換ファイル システムのルートです。  
 
 > [!NOTE]  
-> [Azure PowerShell](/powershell/azure/) に用意されている [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) コマンドレットも、クラスターのストレージ情報を返します。
+> [Azure PowerShell](/powershell/azure/) に用意されている [Get-AzHDInsightCluster](/powershell/module/az.hdinsight/get-azhdinsightcluster) コマンドレットも、クラスターのストレージ情報を返します。
 
 ### <a name="get-all-configurations"></a>すべての構成を取得する
 

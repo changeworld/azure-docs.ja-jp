@@ -1,29 +1,24 @@
 ---
 title: Azure Data Lake Storage Gen2 にデータを読み込む
 description: Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータをコピーします
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/18/2021
+ms.openlocfilehash: 4e2bbe6f0c3b9ff1ffd913365ce21e534208123b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699727"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Lake Storage Gen2 は、ビッグ データ分析専用の機能セットであり、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
+Azure Data Lake Storage Gen2 は、ビッグ データ分析専用の機能セットであり、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
 Azure Data Factory (ADF) は、フル マネージドのクラウドベース データ統合サービスです。 このサービスを使用して、オンプレミスとクラウドベースのデータストアの豊富なセットからのデータをレイクに入力し、分析ソリューションをビルドする際の時間を節約できます。 サポートされるコネクタの詳細な一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
 
@@ -42,7 +37,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -88,7 +83,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 6. **[再帰的]** オプションと **[バイナリ コピー]** オプションをオンにすることで、コピーの動作を指定します。 **[次へ]** を選択します。
 
-    ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
+    ![[入力ファイルまたはフォルダーの選択] を示すスクリーンショット。ここでは、[バイナリ コピー] と [再帰的] を選択できます。](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
 7. **[配布先データ ストア]** ページで、 **[新しい接続の作成]** をクリックし、 **[Azure Data Lake Storage Gen2]** を選択して、 **[続行]** を選択します。
 
@@ -103,7 +98,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfroms3**」と入力し、 **[次へ]** を選択します。 対応する ADLS Gen2 ファイル システムとサブ フォルダーが存在しない場合は、コピー中に ADF によって作成されます。
 
-    ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
+    ![入力したフォルダーのパスを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
 10. **[設定]** ページで、 **[次へ]** を選択して、既定の設定を使用します。
 

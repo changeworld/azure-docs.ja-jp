@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250189"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435002"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure Managed Applications 用のポータル インターフェイスをテストする
 
@@ -42,7 +42,7 @@ ms.locfileid: "78250189"
 
 ![構文エラーの表示](./media/test-createuidefinition/show-syntax-error.png)
 
-フォームが表示されず、代わりにしずくの形が付いたクラウドのアイコンが表示された場合は、プロパティが不足しているなど、フォームにエラーがあります。 ブラウザーで、Web Developer Tools を開きます。 **コンソール**にお使いのインターフェイスに関する重要なメッセージが表示されます。
+フォームが表示されず、代わりにしずくの形が付いたクラウドのアイコンが表示された場合は、プロパティが不足しているなど、フォームにエラーがあります。 ブラウザーで、Web Developer Tools を開きます。 **コンソール** にお使いのインターフェイスに関する重要なメッセージが表示されます。
 
 ![エラーの表示](./media/test-createuidefinition/show-error.png)
 
@@ -104,4 +104,4 @@ Azure CLI では、次を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-ポータル インターフェイスを検証したら、[Marketplace で利用できる Azure マネージド アプリケーション](publish-marketplace-app.md)の作成について確認します。
+ポータル インターフェイスを検証したら、[Marketplace で利用できる Azure マネージド アプリケーション](../../marketplace/create-new-azure-apps-offer.md)の作成について確認します。

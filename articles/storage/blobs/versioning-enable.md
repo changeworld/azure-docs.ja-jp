@@ -1,40 +1,67 @@
 ---
-title: BLOB のバージョン管理を有効にして管理する (プレビュー)
+title: BLOB のバージョン管理を有効にして管理する
 titleSuffix: Azure Storage
-description: Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理を有効にする (プレビュー) 方法について説明します。
+description: Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理を有効にする方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067275"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095845"
 ---
-# <a name="enable-and-manage-blob-versioning-preview"></a>BLOB のバージョン管理を有効にして管理する (プレビュー)
+# <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
 
-BLOB ストレージのバージョン管理 (プレビュー) を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。  BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
+BLOB ストレージのバージョン管理を有効にすると、BLOB が変更または削除されたときに、以前のバージョンを自動的に維持できます。 BLOB のバージョン管理が有効になっていると、データが誤って変更または削除された場合に、以前のバージョンの BLOB を復元して復旧できます。
 
-この記事では、Azure portal または Azure Resource Manager テンプレートを使用してストレージ アカウントの BLOB のバージョン管理を有効または無効にする方法について説明します。
+この記事では、Azure portal または Azure Resource Manager テンプレートを使用してストレージ アカウントの BLOB のバージョン管理を有効または無効にする方法について説明します。 BLOB のバージョン管理については、[BLOB のバージョン管理](versioning-overview.md)に関するページをご覧ください。
 
-BLOB のバージョン管理を有効にする前に、プレビューに登録する必要があります。 プレビューへの登録方法を含め、BLOB のバージョン管理の詳細については、「[BLOB のバージョン管理 (プレビュー)](versioning-overview.md)」を参照してください。
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>BLOB のバージョン管理を有効にする
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Azure portal で BLOB のバージョン管理を有効にするには:
+Azure portal でストレージ アカウントの BLOB のバージョン管理を有効にするには、次のようにします。
 
 1. ポータルでストレージ アカウントに移動します。
 1. **[Blob service]** の下で **[データ保護]** を選択します。
 1. **[バージョン管理]** セクションで、 **[有効]** を選択します。
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="Azure portal で BLOB のバージョン管理を有効にする方法を示しているスクリーンショット":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用してストレージ アカウントの BLOB のバージョン管理を有効にするには、まず、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールのバージョン 2.3.0 以降をインストールします。 その後、次の例に示すように、[Update-AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) コマンドを呼び出して、バージョン管理を有効にします。 山かっこ内の値は、実際の値に置き換えてください。
+
+```powershell
+# Set resource group and account variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Enable versioning.
+Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -IsVersioningEnabled $true
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI を使用してストレージ アカウントの BLOB のバージョン管理を有効にするには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 その後、次の例に示すように、[az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) コマンドを呼び出して、バージョン管理を有効にします。 山かっこ内の値は、実際の値に置き換えてください。
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-versioning true
+```
 
 # <a name="template"></a>[テンプレート](#tab/template)
 
@@ -72,91 +99,21 @@ Azure portal でテンプレートを使用してリソースをデプロイす�
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>BLOB を変更して新しいバージョンをトリガーする
 
-次のコード例は、.NET バージョン [12.5.0-preview.5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) 以降用の Azure Storage クライアント ライブラリを使用して、新しいバージョンの作成をトリガーする方法を示しています。 この例を実行する前に、ストレージ アカウントのバージョン管理が有効になっていることをご確認ください。
+次のコード例は、.NET バージョン [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) 以降用の Azure Storage クライアント ライブラリを使用して、新しいバージョンの作成をトリガーする方法を示しています。 この例を実行する前に、ストレージ アカウントのバージョン管理が有効になっていることをご確認ください。
 
 この例では、ブロック BLOB を作成してから、BLOB のメタデータを更新します。 BLOB のメタデータを更新すると、新しいバージョンの作成がトリガーされます。 この例では、初期バージョンと現在のバージョンを取得し、現在のバージョンにのみメタデータが含まれていることを示します。
 
-```csharp
-public static async Task UpdateVersionedBlobMetadata(string containerName, string blobName)
-{
-    // Create a new service client from the connection string.
-    BlobServiceClient blobServiceClient = new BlobServiceClient(ConnectionString);
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_UpdateVersionedBlobMetadata":::
 
-    // Create a new container client.
-    BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+## <a name="list-blob-versions"></a>BLOB バージョンをリストに表示する
 
-    try
-    {
-        // Create the container.
-        await containerClient.CreateIfNotExistsAsync();
+.NET v12 クライアント ライブラリを使用して BLOB のバージョンまたはスナップショットをリストに表示するには、 **[バージョン]** フィールドで [[BlobStates]](/dotnet/api/azure.storage.blobs.models.blobstates) パラメーターを指定します。
 
-        // Upload a block blob.
-        BlockBlobClient blockBlobClient = containerClient.GetBlockBlobClient(blobName);
+次のコード例は、.NET バージョン [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) 以降用の Azure Storage クライアント ライブラリを使用して、BLOB のバージョンをリストに表示する方法を示しています。 この例を実行する前に、ストレージ アカウントのバージョン管理が有効になっていることをご確認ください。
 
-        string blobContents = string.Format("Block blob created at {0}.", DateTime.Now);
-        byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
-
-        string initalVersionId;
-        using (MemoryStream stream = new MemoryStream(byteArray))
-        {
-            Response<BlobContentInfo> uploadResponse = await blockBlobClient.UploadAsync(stream, null, default);
-
-            // Get the version ID for the current version.
-            initalVersionId = uploadResponse.Value.VersionId;
-        }
-
-        // Update the blob's metadata to trigger the creation of a new version.
-        Dictionary<string, string> metadata = new Dictionary<string, string>
-        {
-            { "key", "value" },
-            { "key1", "value1" }
-        };
-
-        Response<BlobInfo> metadataResponse = await blockBlobClient.SetMetadataAsync(metadata);
-
-        // Get the version ID for the new current version.
-        string newVersionId = metadataResponse.Value.VersionId;
-
-        // Request metadata on the previous version.
-        BlockBlobClient initalVersionBlob = blockBlobClient.WithVersion(initalVersionId);
-        Response<BlobProperties> propertiesResponse = await initalVersionBlob.GetPropertiesAsync();
-        PrintMetadata(propertiesResponse);
-
-        // Request metadata on the current version.
-        BlockBlobClient newVersionBlob = blockBlobClient.WithVersion(newVersionId);
-        Response<BlobProperties> newPropertiesResponse = await newVersionBlob.GetPropertiesAsync();
-        PrintMetadata(newPropertiesResponse);
-    }
-    catch (RequestFailedException e)
-    {
-        Console.WriteLine(e.Message);
-        Console.ReadLine();
-        throw;
-    }
-    finally
-    {
-        await containerClient.DeleteAsync();
-    }
-}
-
-static void PrintMetadata(Response<BlobProperties> propertiesResponse)
-{
-    if (propertiesResponse.Value.Metadata.Count > 0)
-    {
-        Console.WriteLine("Metadata values for version {0}:", propertiesResponse.Value.VersionId);
-        foreach (var item in propertiesResponse.Value.Metadata)
-        {
-            Console.WriteLine("Key:{0}  Value:{1}", item.Key, item.Value);
-        }
-    }
-    else
-    {
-        Console.WriteLine("Version {0} has no metadata.", propertiesResponse.Value.VersionId);
-    }
-}
-```
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobVersions":::
 
 ## <a name="next-steps"></a>次のステップ
 
-- [BLOB のバージョン管理 (プレビュー)](versioning-overview.md)
-- [Azure Storage Blob の論理的な削除](soft-delete-overview.md)
+- [BLOB バージョン管理](versioning-overview.md)
+- [Azure Storage Blob の論理的な削除](./soft-delete-blob-overview.md)

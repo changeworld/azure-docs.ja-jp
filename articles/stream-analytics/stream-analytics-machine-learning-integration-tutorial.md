@@ -1,23 +1,22 @@
 ---
-title: Azure Stream Analytics と Azure Machine Learning の統合
-description: この記事では、ユーザー定義関数を使用して、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやく設定する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+title: Azure Stream Analytics と Azure Machine Learning Studio (classic) の統合
+description: この記事では、ユーザー定義関数を使用して、Azure Machine Learning Studio (classic) を統合する単純な Azure Stream Analytics ジョブをすばやく設定する方法について説明します。
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 89b1b91270d1fe30ffcb5ae0caa5f319aa616683
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236681"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178526"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics と Azure Machine Learning Studio (classic) を使用した感情分析の実行
 
-この記事では、感情分析に Azure Machine Learning Studio (classic) を使用する単純な Azure Stream Analytics ジョブを設定する方法について説明します。 Cortana Intelligence Gallery の Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、センチメント スコアを決定します。
+この記事では、感情分析に Azure Machine Learning Studio (classic) を使用する単純な Azure Stream Analytics ジョブを設定する方法について説明します。 Cortana Intelligence Gallery の Studio (classic) の感情分析モデルを利用して、ストリーミング テキスト データを分析し、センチメント スコアを決定します。
 
 > [!TIP]
 > パフォーマンスと信頼性を向上させるために、Azure Machine Learning Studio (classic) UDF の代わりに [Azure Machine Learning UDF](machine-learning-udf.md) を使用することを強くお勧めします。
@@ -79,31 +78,31 @@ ms.locfileid: "88236681"
 
 2. **[Open in Studio (classic)]\(Studio (classic) で開く\)** を選択します。  
    
-   ![Stream Analytics Machine Learning, Machine Learning Studio を開く](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![Stream Analytics Azure Machine Learning Studio (classic)、Studio (classic) を開く](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3. サインインしてワークスペースを開きます。 場所を選択します。
 
 4. ページの下部にある **[実行]** を選択します。 プロセスが実行され、約 1 分かかります。
 
-   ![Machine Learning Studio で実験を実行する](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![Studio (classic) で実験を実行する](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
 5. プロセスが正常に実行されたら、ページの下部にある **[Web サービスのデプロイ]** を選択します。
 
-   ![Machine Learning Studio で実験を Web サービスとしてデプロイする](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![Web サービスとして Studio (classic) で実験をデプロイする](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
 6. 感情分析モデルが使用できる状態か検証するには、 **[テスト]** ボタンを選択します。 「I love Microsoft」などのテキストを入力します。
 
-   ![Machine Learning Studio で実験をテストする](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![Studio (classic) でのテスト実験](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
    テストが正常に機能すると、次の例のような結果が表示されます。
 
-   ![Machine Learning Studio のテスト結果](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![Studio (classic) でのテスト結果](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
 7. **[アプリ]** 列で、 **[Excel 2010 or earlier workbook]\(Excel 2010 以前のブック\)** リンクを選択して、Excel ブックをダウンロードします。 このブックには、後で Stream Analytics ジョブをセットアップする際に必要になる API キーと URL が含まれています。
 
-    ![Stream Analytics Machine Learning, 概要](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Azure Machine Learning Studio (classic)、概要](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Machine Learning モデルを使用する Stream Analytics ジョブを作成する
+## <a name="create-a-stream-analytics-job-that-uses-the-studio-classic-model"></a>Studio (classic) モデルを使用する Stream Analytics ジョブを作成する
 
 続いて、サンプル ツイートを BLOB ストレージ内の CSV ファイルから読み取る Stream Analytics ジョブを作成できます。
 
@@ -147,9 +146,9 @@ ms.locfileid: "88236681"
 
 3. **[保存]** を選択します。
 
-### <a name="add-the-machine-learning-function"></a>Machine Learning 関数を追加する
+### <a name="add-the-studio-classic-function"></a>Studio (classic) 関数を追加する
 
-以前に、Machine Learning モデルを Web サービスに発行しました。 このシナリオでは、Stream Analytics ジョブの実行時に、各サンプル ツイートが感情分析のために入力から Web サービスに送信されます。 Machine Learning Web サービスにより、センチメント (`positive`、`neutral`、`negative`) と、ツイートが positive になる確率が返されます。
+前の手順では、Studio (classic) モデルを Web サービスに発行しました。 このシナリオでは、Stream Analytics ジョブの実行時に、各サンプル ツイートが感情分析のために入力から Web サービスに送信されます。 Studio (classic) Web サービスにより、センチメント (`positive`、`neutral`、`negative`) と、ツイートが positive になる確率が返されます。
 
 このセクションでは、Stream Analysis ジョブに関数を定義します。 この関数を呼び出すと、ツイートを Web サービスに送信し、返された応答を取得できます。
 
@@ -169,7 +168,7 @@ ms.locfileid: "88236681"
 
 ### <a name="create-a-query-to-transform-the-data"></a>データを変換するためのクエリを作成する
 
-Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力を確認して処理します。 このセクションでは、入力から各ツイートを読み取ってから、Machine Learning 関数を呼び出して感情分析を実行するクエリを作成します。 それからこのクエリは、定義した出力 (BLOB ストレージ) に結果を送信します。
+Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力を確認して処理します。 このセクションでは、入力から各ツイートを読み取ってから、Studio (classic) 関数を呼び出して感情分析を実行するクエリを作成します。 それからこのクエリは、定義した出力 (BLOB ストレージ) に結果を送信します。
 
 1. Stream Analytics ジョブの概要に戻ります。
 
@@ -215,18 +214,18 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 
 3. 生成された CSV ファイルを開きます。 次の例のように表示されます。  
 
-   ![Stream Analytics Machine Learning, CSV ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![Stream Analytics Azure Machine Learning Studio (classic)、CSV ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ### <a name="view-metrics"></a>メトリックを表示する
 
-Azure Machine Learning 関数に関連するメトリックも表示できます。 ジョブ概要の **[監視]** ボックスに、次の関数に関連するメトリックが表示されます。
+また、Studio (classic) 関数に関連するメトリックを表示することもできます。 ジョブ概要の **[監視]** ボックスに、次の関数に関連するメトリックが表示されます。
 
-* **[関数要求]** は、Machine Learning Web サービスに対して送信された要求数を示します。  
-* **[関数イベント]** は、要求内のイベントの数を示します。 既定では、Machine Learning Web サービスへの各要求には、最大 1,000 件のイベントが含まれています。
+* **[関数要求]** には、Studio (classic) Web サービスに対して送信された要求数が表示されます。  
+* **[関数イベント]** は、要求内のイベントの数を示します。 既定では、Studio (classic) Web サービスに対する各要求には、最大 1,000 個のイベントが含まれます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Stream Analytics への Machine Learning の統合](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API と Machine Learning Studio (classic) を統合する](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 06/29/2020
+ms.date: 02/08/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ee44509997a16fc7f06fd5a24e473d7011bde40
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85570198"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99974640"
 ---
 #### <a name="process-automation"></a>プロセスの自動化
 
@@ -22,9 +22,10 @@ ms.locfileid: "85570198"
 | Azure Automation アカウントあたりの 30 秒ごとに送信できる新しいジョブの最大数 (スケジュールされていないジョブ) |100 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
 | Automation アカウントあたりのインスタンスの同じ時刻に同時実行するジョブの最大数 (スケジュールされていないジョブ) |200 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
 | 30 日のローリング期間におけるジョブ メタデータの最大ストレージ サイズ | 10 GB (約 400 万ジョブ)|この制限に到達すると、次のジョブ作成要求は失敗します。 |
-| 最大ジョブ ストリームの制限|1 MiB|単一のストリームを 1 MB より大きくすることはできません。|
+| 最大ジョブ ストリームの制限|1 MiB|単一のストリームを 1 MiB より大きくすることはできません。|
 | Automation アカウントあたりの 30 秒ごとにインポートできるモジュールの最大数 |5 ||
 | モジュールの最大サイズ |100 MB ||
+| ノード構成ファイルの最大サイズ | 1 MB | 状態の構成に適用されます |
 | ジョブ実行時間、Free レベル |カレンダー月あたりサブスクリプションごとに 500 分 ||
 | サンドボックスごとに許可される最大ディスク容量<sup>1</sup> |1 GB |Azure サンドボックスにのみ適用されます。|
 | サンドボックスに割り当てる最大メモリ量<sup>1</sup> |400 MB |Azure サンドボックスにのみ適用されます。|

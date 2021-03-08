@@ -1,22 +1,22 @@
 ---
-title: PowerShell を使用した Synapse Studio (プレビュー) 接続のトラブルシューティング
+title: Synapse Studio の接続についてのトラブルシューティング
 description: PowerShell を使用した Azure Synapse Studio 接続のトラブルシューティング
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.author: jrasnick
+ms.date: 10/30/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ff3d985bb24ec852bb5c6cfaedf295fd79a8247
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046668"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120361"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>PowerShell スクリプトを使用した Azure Synapse Studio (プレビュー) 接続に関する問題の診断
+# <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>PowerShell を使用した Synapse Studio 接続のトラブルシューティング
 
-Azure Synapse Studio (プレビュー) の正常な動作は、一連の Web API エンドポイントに依存しています。 このガイドは、次のような場合に接続の問題の原因を特定するのに役立ちます。
+Azure Synapse Studio の正常な動作は、一連の Web API エンドポイントに依存しています。 このガイドは、次のような場合に接続の問題の原因を特定するのに役立ちます。
 - Azure Synapse Studio にアクセスするためのローカル ネットワーク (企業のファイアウォールの内側にあるネットワークなど) を構成しようとしている。
 - Azure Synapse Studio を使用した接続の問題が発生している。
 
@@ -27,13 +27,13 @@ Azure Synapse Studio (プレビュー) の正常な動作は、一連の Web API
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
-次のリンクを右クリックし、[対象をファイルに保存] をクリックします。
+次のリンクを右クリックし、[対象をファイルに保存] を選択します。
 
 - [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 または、リンクを直接開いて、開いたスクリプト ファイルを保存することもできます。 今後変更される可能性があるため、上記のリンクのアドレスは保存しないでください。
 
-エクスプローラーで、ダウンロードしたスクリプト ファイルを右クリックし、[PowerShell で実行] をクリックします。
+エクスプローラーで、ダウンロードしたスクリプト ファイルを右クリックし、[PowerShell で実行] を選択します。
 
 ![ダウンロードしたスクリプト ファイルを PowerShell で実行する](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 
@@ -58,4 +58,4 @@ Azure Synapse Studio (プレビュー) の正常な動作は、一連の Web API
 
 
 ## <a name="next-steps"></a>次のステップ
-前の手順で問題が解決しない場合は、[サポート チケットを作成](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md)してください。
+前の手順で問題が解決しない場合は、[サポート チケットを作成](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md)してください。

@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: carlrab
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 07/16/2019
-ms.openlocfilehash: e509fc0f93c60d271409b5453aecdf793cd22ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a8326249b48e98eccecb5f0c4953add26e167560
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040598"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594109"
 ---
 # <a name="use-powershell-to-add-an-elastic-pool-to-a-failover-group"></a>PowerShell を使用してフェールオーバー グループにエラスティック プールを追加する
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

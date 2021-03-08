@@ -2,19 +2,16 @@
 title: Azure Data Factory のコピー アクティビティでサポートされているファイル形式
 description: このトピックでは、Azure Data Factory のコピー アクティビティでサポートされているファイル形式や圧縮コードについて説明します。
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jingwang
-ms.openlocfilehash: c044208699bf5bebb6383cfef00bf53b744369d0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bb773d01124b99b4837f393b610e00ecbfa510fb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522443"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364615"
 ---
 # <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

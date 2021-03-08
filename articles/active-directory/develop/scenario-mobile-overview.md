@@ -13,35 +13,28 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a678e8545f761e98abbdf026886afa624f9d2b4e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882575"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753652"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すモバイル アプリケーション
 
 Web API を呼び出すモバイル アプリを構築する方法について説明します。
 
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>作業の開始
 
-最初のモバイル アプリケーションを作成して、クイック スタートをお試しください。
+初めてのアプリケーションをまだ作成していない場合は、次のクイック スタートを完了して作成してください:
 
-> [!div class="nextstepaction"]
-> [クイック スタート: Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-android.md)
->
-> [クイック スタート: iOS アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
->
-> [クイック スタート: Xamarin iOS および Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+- [クイック スタート: Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-android.md)
+- [クイック スタート: iOS アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
+- [クイックスタート:Xamarin iOS および Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) (GitHub)
 
 ## <a name="overview"></a>概要
 
-パーソナライズされたシームレスなユーザー エクスペリエンスはモバイル アプリにとって必要不可欠です。  Microsoft ID プラットフォームを使用すれば、モバイル開発者は iOS および Android のユーザーに対してこのエクスペリエンスを作り出すことができます。 アプリケーションで、Azure Active Directory (Azure AD) ユーザー、個人の Microsoft アカウント ユーザー、Azure AD B2C ユーザーをサインインさせることができます。 また、ユーザーに代わって Web API を呼び出すためのトークンを取得することもできます。 これらのフローを実装するには、Microsoft Authentication Library (MSAL) を使用します。 MSAL では、業界標準の [OAuth 2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)を実装しています。
+パーソナライズされたシームレスなユーザー エクスペリエンスはモバイル アプリにとって必要不可欠です。 Microsoft ID プラットフォームを使用すると、モバイル開発者は iOS および Android のユーザーに対してこのエクスペリエンスを作り出すことができます。 アプリケーションで、Azure Active Directory (Azure AD) ユーザー、個人の Microsoft アカウント ユーザー、Azure AD B2C ユーザーをサインインさせることができます。 また、ユーザーに代わって Web API を呼び出すためのトークンを取得することもできます。 これらのフローを実装するには、Microsoft Authentication Library (MSAL) を使用します。 MSAL では、業界標準の [OAuth 2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)を実装しています。
 
 ![デーモン アプリ](./media/scenarios/mobile-app.svg)
 
@@ -60,7 +53,10 @@ Microsoft ID プラットフォームでモバイル アプリを構築すると
 - iOS および Android 上の MSAL で、外部ブラウザーを使用してユーザーをサインインさせることができます。 外部ブラウザーをアプリ上に表示できます。
 - モバイル アプリケーションでは、シークレットは決して使用しないでください。 これらのアプリケーションでは、すべてのユーザーがシークレットにアクセスできます。
 
+## <a name="recommended-reading"></a>推奨資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [アプリの登録](scenario-mobile-app-registration.md)
+このシナリオの次の記事「[アプリの登録](scenario-mobile-app-registration.md)」に進みます。

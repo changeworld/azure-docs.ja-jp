@@ -1,32 +1,32 @@
 ---
 title: IoT プラグ アンド プレイのデジタル ツインを管理する方法
-description: デジタル ツイン API を使用して IoT プラグ アンド プレイ プレビュー デバイスを管理する方法
+description: デジタル ツイン API を使用して IoT プラグ アンド プレイ デバイスを管理する方法
 author: prashmo
 ms.author: prashmo
 ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f86bf17c34d88fa48df4933e979a590fbc89820b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352027"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654610"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT プラグ アンド プレイのデジタル ツインを管理する
 
-IoT プラグ アンド プレイでは、デジタル ツインを管理するための**デジタル ツインの取得**操作および**デジタル ツインの更新**操作がサポートされています。 [REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)、または[サービス SDK](libraries-sdks.md)のいずれかを使用できます。
+IoT プラグ アンド プレイでは、デジタル ツインを管理するための **デジタル ツインの取得** 操作および **デジタル ツインの更新** 操作がサポートされています。 [REST API](/rest/api/iothub/service/digitaltwin)、または[サービス SDK](libraries-sdks.md)のいずれかを使用できます。
 
-この記事の執筆時点では、パブリック プレビュー用のデジタル ツイン API のバージョンは `2020-05-31-preview` です。
+この記事の執筆時点では、デジタル ツイン API のバージョンは `2020-09-30` です。
 
 ## <a name="update-a-digital-twin"></a>デジタル ツインを更新する
 
-IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) によって記述されたモデルを実装します。 ソリューション開発者は、**デジタル ツイン API の更新**を使用して、コンポーネントの状態と デジタル ツイン のプロパティを更新できます。
+IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) によって記述されたモデルを実装します。 ソリューション開発者は、**デジタル ツイン API の更新** を使用して、コンポーネントの状態と デジタル ツイン のプロパティを更新できます。
 
 この記事の例として使用されている IoT プラグ アンド プレイ デバイスには、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) コンポーネントを持つ [Temperature Controller モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)が実装されています。
 
-次のスニペットは、JSON オブジェクトとしてフォーマットされた、**デジタル ツインの取得**要求に対する応答を示しています。 デジタル ツインの形式の詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](./concepts-digital-twin.md#digital-twin-json-format)」を参照してください。
+次のスニペットは、JSON オブジェクトとしてフォーマットされた、**デジタル ツインの取得** 要求に対する応答を示しています。 デジタル ツインの形式の詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](./concepts-digital-twin.md#digital-twin-example)」を参照してください。
 
 ```json
 {
@@ -72,7 +72,7 @@ IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition La
 ]
 ```
 
-前の更新では、次のスニペットに示すように、対応するルート レベルまたはコンポーネント レベルの `$metadata` でプロパティの目的の値が設定されます。 IoT Hub によって、必要なバージョンのプロパティが更新されます。
+前の更新では、次のスニペットに示すように、対応するコンポーネントレベルの `$metadata` 内でプロパティの目的の値が設定されます。 IoT Hub によって、必要なバージョンのプロパティが更新されます。
 
 ```json
 "thermostat1": {
@@ -130,7 +130,7 @@ IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition La
 
 追加または置換操作では、プロパティの目的の値を設定します。 デバイスは、状態を同期し、`ack` コード、バージョン、および説明と共に値の更新を報告できます。
 
-プロパティを削除すると、プロパティの目的の値がクリアされます (設定されている場合)。 その後、デバイスはこのプロパティの報告を停止し、プロパティがルート レベルまたはコンポーネントから削除されます。 このプロパティがコンポーネント内の最後のプロパティである場合は、コンポーネントも削除されます。
+プロパティを削除すると、プロパティの目的の値がクリアされます (設定されている場合)。 その後、デバイスによってこのプロパティの報告を停止でき、それがコンポーネントから削除されます。 このプロパティがコンポーネント内の最後のプロパティである場合は、コンポーネントも削除されます。
 
 次の JSON Patch の例は、コンポーネント内のプロパティを追加、置換、または削除する方法を示しています。
 
@@ -179,11 +179,11 @@ IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition La
 
 ## <a name="troubleshoot-update-digital-twin-api-errors"></a>デジタル ツイン API の更新エラーに関するトラブルシューティング
 
-パブリック プレビュー期間中は、デジタル ツイン API の更新で次の一般的なエラー メッセージがスローされます。
+デジタル ツイン API によって次の一般的なエラー メッセージがスローされます。
 
 `ErrorCode:ArgumentInvalid;'{propertyName}' exists within the device twin and is not digital twin conformant property. Please refer to aka.ms/dtpatch to update this to be conformant.`
 
-更新パッチが「[デジタル ツイン プロパティの目的の値を設定するための規則](#rules-for-setting-the-desired-value-of-a-digital-twin-property)」に従っていることを確認します
+このエラーが発生した場合は、更新パッチが「[デジタル ツイン プロパティの目的の値を設定するための規則](#rules-for-setting-the-desired-value-of-a-digital-twin-property)」に従っていることを確認してください
 
 コンポーネントを更新するときに、[空のオブジェクト $metadata マーカー](#add-replace-or-remove-a-component)が設定されていることを確認してください。
 
@@ -193,6 +193,6 @@ IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition La
 
 ここまでで、デジタル ツインについて学習しました。その他のリソースを次に示します。
 
-- [ソリューションからデバイスを操作する](quickstart-service-node.md)
-- [IoT デジタル ツイン REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [ソリューションからデバイスを操作する](quickstart-service.md)
+- [IoT デジタル ツイン REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081845"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>カスタム HTTP ヘッダーを使用してデータを監査ログに追加する
@@ -24,7 +24,7 @@ Azure 高速ヘルスケア相互運用性リソース (FHIR) API では、ユ�
 
 このデータ フローを、次の図に示します。
 
-:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="カスタム ヘッダーの図":::
+:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="カスタム ヘッダーの図&quot;:::
 
 カスタム ヘッダーを使用して、いくつかの種類の情報をキャプチャできます。 次に例を示します。
 
@@ -47,9 +47,9 @@ HTTP ヘッダーには、次の名前付け規則を使用する必要があり
 この情報は、ログのプロパティ列に追加されるときに、JSON にシリアル化されます。 次に例を示します。
 
 ```json
-{ "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
-"X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "XXXX",
-"X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERID&quot; : &quot;1234&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;XXXX&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-XYZ&quot; : &quot;1234&quot; }
 ```
  
 HTTP ヘッダーと同様に、同じヘッダー名を別の値で繰り返すことができます。 次に例を示します。
@@ -59,7 +59,7 @@ HTTP ヘッダーと同様に、同じヘッダー名を別の値で繰り返す
 
 ログに追加されるときに、値はコンマ区切りのリストと結合されます。 次に例を示します。
 
-{ "X-MS-AZUREFHIR-AUDIT-USERLOCATION" :"HospitalA, Emergency" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; :&quot;HospitalA, Emergency" }
  
 最大で 10 個の一意のヘッダーを追加できます (異なる値を持つ同じヘッダーの繰り返しは、1 個としてカウントされます)。 1 つのヘッダーの値の最大長は、2,048 文字です。
 

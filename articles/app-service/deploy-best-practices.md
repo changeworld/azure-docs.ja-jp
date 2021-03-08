@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 3b49177eb592906e3bf84d359699b354f8c87c6e
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961875"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185667"
 ---
 # <a name="deployment-best-practices"></a>デプロイのベスト プラクティス
 
@@ -45,9 +45,9 @@ Azure Pipelines、Jenkins、エディター プラグインなどのデプロイ
 
 テスト、QA、ステージング用に指定されたブランチがプロジェクトにある場合は、それらの各ブランチをステージング スロットに継続的にデプロイする必要があります。 (これは、[Gitflow 設計](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)と呼ばれています。)これにより、関係者は、デプロイされたブランチを簡単に評価してテストすることができます。 
 
-運用スロットに対しては継続的デプロイを有効にしないでください。 代わりに、運用ブランチ (多くの場合、マスター) を非運用スロットにデプロイします。 ベース ブランチをリリースする準備ができたら、それを運用スロットにスワップします。 運用環境にデプロイするのではなく、運用環境にスワップすると、ダウンタイムの発生が抑えられ、もう一度スワップすることで変更をロールバックすることができます。 
+運用スロットに対しては継続的デプロイを有効にしないでください。 代わりに、運用ブランチ (多くの場合、メイン) を非運用スロットにデプロイします。 ベース ブランチをリリースする準備ができたら、それを運用スロットにスワップします。 運用環境にデプロイするのではなく、運用環境にスワップすると、ダウンタイムの発生が抑えられ、もう一度スワップすることで変更をロールバックすることができます。 
 
-![スロットの使用状況の図](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Dev、ステージング、およびメイン ブランチ間のフローとそれらのデプロイ先のスロットを示す図。](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>コンテナーを継続的にデプロイする
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1
@@ -113,7 +113,7 @@ jobs:
 
 前述の手順は、CircleCI や Travis CI などの他のオートメーション ユーティリティに適用されます。 ただし、最後の手順で、新しいイメージ タグでデプロイ スロットを更新するには、Azure CLI を使用する必要があります。 オートメーション スクリプトで Azure CLI を使用するには、次のコマンドを使用してサービス プリンシパルを生成します。
 
-```shell
+```azurecli
 az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --scopes /subscriptions/{subscription}/resourceGroups/{resource-group} \
    --sdk-auth

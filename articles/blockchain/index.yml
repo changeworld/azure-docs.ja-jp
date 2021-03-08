@@ -11,12 +11,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 10/23/2019
-  ms.openlocfilehash: 123d84cc29c1dce85cccf8c1bbb089bfbbbf7bf3
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 5c5524f6214978864b4171f5298549c7963a7bd1
+  ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87007665"
+  ms.lasthandoff: 01/07/2021
+  ms.locfileid: "97963931"
 productDirectory:
   items:
   - title: Azure Blockchain サービス
@@ -44,6 +44,9 @@ conceptualContent:
     - url: ./service/send-transaction.md
       itemType: tutorial
       text: チュートリアルに従ってスマート コントラクトを作成する
+    - url: /learn/paths/ethereum-blockchain-development
+      itemType: learn
+      text: Microsoft Learn ブロックチェーン パスに従う
     - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
       itemType: video
       text: ネットワークをデプロイして構成する方法を見る

@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file
-ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 3fe622d2ff4f6f8aff546452db0f475cfd44eb1b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81314120"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015378"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -131,7 +131,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
 
 新しい KEK を生成するには、Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) コマンド、Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレット、または [Azure portal](https://portal.azure.com/) を使用します。 RSA キーの種類を生成する必要があります。Azure Disk Encryption では、楕円曲線キーの使用はまだサポートされていません。
 
-代わりに、オンプレミスのキー管理 HSM から KEK をインポートすることもできます。 詳細については、[Key Vault](/azure/key-vault/key-vault-hsm-protected-keys) のドキュメントを参照してください。
+代わりに、オンプレミスのキー管理 HSM から KEK をインポートすることもできます。 詳細については、[Key Vault](../articles/key-vault/keys/hsm-protected-keys.md) のドキュメントを参照してください。
 
 キー コンテナー KEK の URL はバージョン管理されている必要があります。 Azure では、このバージョン管理制限が適用されます。 有効なシークレットと KEK URI については、次の例をご覧ください。
 
@@ -148,7 +148,7 @@ Azure Disk Encryption では、ポート番号をキー コンテナー シー�
 Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) コマンドを使用して新しい KEK を生成し、キー コンテナーに格納します。
 
 ```azurecli-interactive
-az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
+az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
 代わりに、Azure CLI [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) コマンドを使用して秘密キーをインポートすることもできます。

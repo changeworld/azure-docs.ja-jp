@@ -1,27 +1,29 @@
 ---
-title: テキスト読み上げ - 音声サービス
+title: テキスト読み上げの概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: 音声サービスのテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 事前設定の音声を選択するか、独自のカスタム音声を作成します。
+description: 音声サービスのテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 この記事は、テキスト読み上げサービスの利点と機能の概要になっています。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: cog-serv-seo-aug-2020
+keywords: テキスト読み上げ
+ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167710"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599546"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-音声サービスのテキスト読み上げを使用すると、アプリケーション、ツール、またはデバイスで、テキストを人間のような合成音声に変換できます。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を作成することもできます。 標準音声は、45 を超える言語とロケールで 75 種類以上が用意されています。ニューラル音声は、一部の言語とロケールで 5 種類が用意されています。 サポートされている音声、言語、ロケールの一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
+この概要では、お使いのアプリケーション、ツール、デバイスでテキストを人間のような合成音声に変換することを可能にするテキスト読み上げの利点と機能について説明します。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を作成することもできます。 標準音声は、45 を超える言語とロケールで 75 種類以上が用意されています。ニューラル音声は、一部の言語とロケールで 5 種類が用意されています。 サポートされている音声、言語、ロケールの一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
 > [!NOTE]
 > Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API または Custom Speech をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
@@ -29,7 +31,7 @@ ms.locfileid: "88167710"
 
 ## <a name="core-features"></a>コア機能
 
-* 音声合成 - [Speech SDK](quickstarts/text-to-speech-audio-file.md) または [REST API](rest-text-to-speech.md) を使用して、標準音声、ニューラル音声、またはカスタム音声を使ってテキストを音声に変換します。
+* 音声合成 - [Speech SDK](./get-started-text-to-speech.md) または [REST API](rest-text-to-speech.md) を使用して、標準音声、ニューラル音声、またはカスタム音声を使ってテキストを音声に変換します。
 
 * 長い音声の非同期合成 - [Long Audio API](long-audio-api.md) を使用して、10 分以上のテキスト読み上げファイル (オーディオ ブックや講義など) を非同期に合成します。 Speech SDK または Speech-to-Text REST API を使用して実行される合成とは異なり、応答はリアルタイムで返されません。 要求が非同期に送信され、応答がポーリングされること、および合成音声がサービスから利用可能になったときにダウンロードされることを想定しています。 カスタム ニューラル音声のみがサポートされています。
 
@@ -37,7 +39,7 @@ ms.locfileid: "88167710"
 
 * ニューラル音声 - ディープ ニューラル ネットワークを使用して、話し言葉のアクセントとイントネーションに関する従来の音声合成の限界を克服します。 韻律予測と音声合成が同時に行われるため、より滑らかで自然な音声出力が得られます。 ニューラル音声を使用すると、チャットボットや音声アシスタントとの対話をより自然で魅力的なものにすることができます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムとやりとりする際のリスニング疲労が大幅に軽減されます。 ニューラル音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
-* 音声合成マークアップ言語 (SSML) - 音声テキスト変換の出力をカスタマイズする際に使用される XML ベースのマークアップ言語です。 SSML を使用して、ピッチの調整、一時停止の追加、発音の改善、読み上げ速度の調整、音量の上げ下げ、単一のドキュメントへの複数の音声の割り当てを行うことができます。 [SSML](speech-synthesis-markup.md) に関する記事をご覧ください。
+* SSML で話し方を調整する - 音声合成マークアップ言語 (SSML) は、音声テキスト変換の出力をカスタマイズするために使用される XML ベースのマークアップ言語です。 SSML を使用して、ピッチの調整、一時停止の追加、発音の改善、読み上げ速度の調整、音量の上げ下げ、単一のドキュメントへの複数の音声の割り当てを行うことができます。 話し方の調整については、[方法](speech-synthesis-markup.md)に関するページを参照してください。
 
 ## <a name="get-started"></a>はじめに
 
@@ -75,5 +77,5 @@ ms.locfileid: "88167710"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [無料の音声サービス サブスクリプションを取得する](get-started.md)
+- [無料の音声サービス サブスクリプションを取得する](overview.md#try-the-speech-service-for-free)
 - [Speech SDK を取得する](speech-sdk.md)

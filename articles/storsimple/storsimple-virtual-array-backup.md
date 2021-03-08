@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183226"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018292"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有またはボリュームをバックアップする
 
@@ -28,11 +28,11 @@ ms.locfileid: "88183226"
 
 StorSimple Virtual Array は、ファイル サーバーまたは iSCSI サーバーとして構成できる、ハイブリッド クラウド ストレージのオンプレミス仮想デバイスです。 仮想アレイを使用すると、デバイス上のすべての共有またはボリュームについて、スケジュールされたバックアップと手動バックアップを作成できます。 ファイル サーバーとして構成した場合は、項目レベルの回復もできます。 このチュートリアルでは、スケジュールされたバックアップと手動バックアップを作成し、項目レベルの回復を実行して、削除されたファイルを仮想アレイで復元する方法について説明します。
 
-このチュートリアルは、StorSimple Virtual Array にのみ適用されます。 8000 シリーズについては、[8000 シリーズ デバイスのバックアップの作成](storsimple-manage-backup-policies-u2.md)に関するページをご覧ください
+このチュートリアルは、StorSimple Virtual Array にのみ適用されます。 8000 シリーズについては、[8000 シリーズ デバイスのバックアップの作成](./storsimple-8000-manage-backup-policies-u2.md)に関するページをご覧ください
 
 ## <a name="back-up-shares-and-volumes"></a>共有やボリュームをバックアップする
 
-バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。 StorSimple デバイスでの共有またはボリュームのバックアップは 2 つの方法、つまり、**スケジュールされた**バックアップまたは**手動**バックアップのいずれかを使用して実行できます。 これらの各方法について、以下のセクションで説明します。
+バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。 StorSimple デバイスでの共有またはボリュームのバックアップは 2 つの方法、つまり、**スケジュールされた** バックアップまたは **手動** バックアップのいずれかを使用して実行できます。 これらの各方法について、以下のセクションで説明します。
 
 ## <a name="change-the-backup-start-time"></a>バックアップの開始時刻を変更する
 
@@ -76,7 +76,7 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
    
     オンデマンド バックアップが開始され、バックアップ ジョブが開始されたことが表示されます。
    
-    ![バックアップの開始](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![バックアップの開始 2](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
     ジョブが正常に完了すると、再度通知されます。 バックアップ プロセスが開始されます。
    
@@ -104,7 +104,7 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
     
    - **デバイス** – StorSimple デバイス マネージャー サービスに登録されている iSCSI サーバーやファイル サーバーの一覧から選択します。
    
-   - **開始** – (バックアップ ポリシーによって) 自動的に**スケジュール**するか、(ご自身で) **手動**で開始できます。
+   - **開始** – (バックアップ ポリシーによって) 自動的に **スケジュール** するか、(ご自身で) **手動** で開始できます。
    
      ![バックアップのフィルター処理](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
@@ -115,4 +115,3 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
-

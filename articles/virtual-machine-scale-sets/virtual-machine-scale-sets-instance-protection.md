@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 59720a3e89db29ba3eb0829084dd5252e27e9cc9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124059"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746791"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスのインスタンス保護
 
@@ -30,15 +30,15 @@ Azure 仮想マシン スケール セットを使用すると、[自動スケ�
 -   **スケールインから保護する**
     - スケール セット インスタンスの **protectFromScaleIn** プロパティを使用して有効になります
     - 自動スケーリングで開始されたスケールインからインスタンスを保護します
-    - ユーザーが開始したインスタンス操作 (インスタンスの削除を含む) は**ブロックされません**
-    - スケール セットで開始された操作 (アップグレード、再イメージ化、割り当て解除など) は**ブロックされません**
+    - ユーザーが開始したインスタンス操作 (インスタンスの削除を含む) は **ブロックされません**
+    - スケール セットで開始された操作 (アップグレード、再イメージ化、割り当て解除など) は **ブロックされません**
 
 -   **スケール セット アクションから保護する**
     - スケール セット インスタンスの **protectFromScaleSetActions** プロパティを使用して有効になります
     - 自動スケーリングで開始されたスケールインからインスタンスを保護します
     - スケール セットで開始された操作 (アップグレード、再イメージ化、割り当て解除など) からインスタンスを保護します
-    - ユーザーが開始したインスタンス操作 (インスタンスの削除を含む) は**ブロックされません**
-    - 完全なスケール セットの削除は**ブロックされません**
+    - ユーザーが開始したインスタンス操作 (インスタンスの削除を含む) は **ブロックされません**
+    - 完全なスケール セットの削除は **ブロックされません**
 
 ## <a name="protect-from-scale-in"></a>スケールインから保護する
 インスタンス保護は、インスタンスが作成された後にスケール セット インスタンスに適用できます。 保護の適用と変更は[インスタンス モデル](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view)に対してのみ行われ、[スケール セット モデル](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)に対しては行われません。

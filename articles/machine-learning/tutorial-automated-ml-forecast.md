@@ -9,21 +9,19 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 07/10/2020
-ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 12/21/2020
+ms.custom: automl
+ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092290"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879362"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して需要を予測する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 このチュートリアルでは、Azure Machine Learning Studio で自動機械学習 (自動 ML) を使用して、自転車シェアリング サービスのレンタル需要を予測するための時系列予測モデルを作成します。
-
->[!IMPORTANT]
-> Azure Machine learning studio での自動 ML エクスペリエンスは、プレビュー段階にあります。 特定の機能がサポートされないことや、機能が制限されることがあります。
 
 分類モデルの例については、「[チュートリアル: Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)」を参照してください。
 
@@ -38,8 +36,8 @@ ms.locfileid: "87092290"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Enterprise Edition の Azure Machine Learning ワークスペース。 ワークスペースがない場合は、[Enterprise Edition のワークスペースを作成します](how-to-manage-workspace.md)。 
-    * Azure Machine Learning Studio での自動機械学習は、Enterprise Edition のワークスペースでのみ使用できます。 
+* Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。 
+
 * [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) のデータ ファイルをダウンロードします
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で開始する
@@ -62,7 +60,7 @@ ms.locfileid: "87092290"
 
 1. **[データセットの選択]** フォームで、 **[+データセットの作成]** ドロップダウンから **[From local files]\(ローカル ファイルから\)** を選択します。 
 
-    1. **[基本情報]** フォームでデータセットに名前を付け、必要に応じて説明を入力します。 現在、Azure Machine Learning Studio の自動 ML でサポートされるデータセットは表形式のみであるため、データセットの種類は既定で**表形式**に設定されます。
+    1. **[基本情報]** フォームでデータセットに名前を付け、必要に応じて説明を入力します。 現在、Azure Machine Learning Studio の自動 ML でサポートされるデータセットは表形式のみであるため、データセットの種類は既定で **表形式** に設定されます。
     
     1. 左下の **[次へ]** を選択します
 
@@ -102,7 +100,7 @@ ms.locfileid: "87092290"
 
     1. **[次へ]** を選択します。
 
-## <a name="configure-experiment-run"></a>実験の実行を構成する
+## <a name="configure-run"></a>実行を構成する
 
 データを読み込んで構成したら、リモート コンピューティング先を設定し、予測するデータの列を選択します。
 
@@ -113,14 +111,22 @@ ms.locfileid: "87092290"
 
     1. **[Create a new compute]\(新しいコンピューティングの作成\)** を選択し、コンピューティング先を構成します。 自動 ML では、Azure Machine Learning コンピューティングのみがサポートされます。 
 
-        フィールド | 説明 | チュートリアルの値
-        ----|---|---
-        コンピューティング名 |コンピューティング コンテキストを識別する一意名。|bike-compute
-        仮想マシンの種類&nbsp;&nbsp;|コンピューティング用の仮想マシンの種類を選択します。|CPU (中央処理装置)
-        仮想マシンのサイズ&nbsp;&nbsp;| コンピューティングの仮想マシン サイズを選択します。|Standard_DS12_V2
-        最小および最大ノード数| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
-        スケールダウンする前のアイドル時間 (秒) | クラスターが自動的に最小ノード数にスケールダウンされるまでのアイドル時間。|120 (既定値)
-        詳細設定 | 実験用の仮想ネットワークを構成および承認するための設定。| なし
+        1. **[仮想マシン]** フォームに必要事項を入力してコンピューティングを設定します。
+
+            フィールド | 説明 | チュートリアルの値
+            ----|---|---
+            仮想マシンの優先度 |実験の優先度を選択します。| 専用
+            仮想マシンの種類&nbsp;&nbsp;| コンピューティング用の仮想マシンの種類を選択します。|CPU (中央処理装置)
+            仮想マシンのサイズ&nbsp;&nbsp;| コンピューティングの仮想マシン サイズを選択します。 指定したデータと実験の種類に基づいて、推奨サイズの一覧が提供されます。 |Standard_DS12_V2
+        
+        1. **[次へ]** を選択して、 **[Configure settings]\(構成の設定\)** フォームに必要事項を入力します。
+        
+             フィールド | 説明 | チュートリアルの値
+            ----|---|---
+            コンピューティング名 |  コンピューティング コンテキストを識別する一意名。 | bike-compute
+            最小/最大ノード| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
+            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|120 (既定値)
+            詳細設定 | 実験用の仮想ネットワークを構成および承認するための設定。| なし 
   
         1. **[作成]** を選択して、コンピューティング先を取得します。 
 
@@ -138,7 +144,7 @@ ms.locfileid: "87092290"
 
 1. **[時刻列]** として **[date]** を選択し、 **[時系列識別子]** を空白のままにします。 
 
-1. **予測期間**とは、予測対象となる将来の時間の長さです。  [自動検出] の選択を解除し、フィールドに「14」と入力します。 
+1. **予測期間** とは、予測対象となる将来の時間の長さです。  [自動検出] の選択を解除し、フィールドに「14」と入力します。 
 
 1. **[View additional configuration settings]\(追加の構成設定を表示\)** を選択し、次のようにフィールドを設定します。 これらは、トレーニング ジョブをより細かく制御し、予測の設定を指定するための設定です。 設定しない場合、実験の選択とデータに基づいて既定値が適用されます。
 
@@ -147,7 +153,7 @@ ms.locfileid: "87092290"
     主要メトリック| 機械学習アルゴリズムを測定される評価メトリック。|正規化された平均平方二乗誤差
     最適なモデルの説明| 自動 ML で作成された最適なモデルの説明を自動的に表示します。| 有効化
     ブロックされたアルゴリズム | トレーニング ジョブから除外するアルゴリズム| 極端なランダム ツリー
-    その他の予測設定| これらの設定は、モデルの精度を向上させるのに役立ちます <br><br> _**[Forecast target lags]\(予測ターゲットのラグ\)**_: ターゲット変数のラグをどの程度さかのぼって作成するかを指定します <br> _**ターゲットのローリング ウィンドウ**_: *max、min*、*sum* などの特徴が生成されるローリング ウィンドウのサイズを指定します。 | <br><br>予測&nbsp;ターゲットの&nbsp;ラグ:なし <br> ターゲットの&nbsp;ローリング&nbsp;ウィンドウ&nbsp;サイズ:なし
+    その他の予測設定| これらの設定は、モデルの精度を向上させるのに役立ちます。 <br><br> _**[Forecast target lags]\(予測ターゲットのラグ\)**_: ターゲット変数のラグをどの程度さかのぼって作成するかを指定します <br> _**ターゲットのローリング ウィンドウ**_: *max、min*、*sum* などの特徴が生成されるローリング ウィンドウのサイズを指定します。 | <br><br>予測&nbsp;ターゲットの&nbsp;ラグ:なし <br> ターゲットの&nbsp;ローリング&nbsp;ウィンドウ&nbsp;サイズ:なし
     終了条件| 条件が満たされると、トレーニング ジョブが停止します。 |トレーニング&nbsp;ジョブ時間 (時間):&nbsp;3 <br> メトリック&nbsp;スコアしきい値:&nbsp;なし
     検証 | クロス検証タイプとテストの回数を選択します。|検証タイプ:<br>&nbsp;k 分割交差検証&nbsp; <br> <br> 検証の数: 5
     コンカレンシー| イテレーションごとに実行される並列イテレーションの最大数| &nbsp;最大同時イテレーション数:&nbsp;6
@@ -156,22 +162,22 @@ ms.locfileid: "87092290"
 
 ## <a name="run-experiment"></a>実験を実行する
 
-実験を実行するには、 **[終了]** を選択します。 **[実行の詳細]** 画面が開き、上部の実行番号の横に **[実行の状態]** が表示されます。 この状態は、実験の進行に応じて更新されます。
+実験を実行するには、 **[終了]** を選択します。 **[実行の詳細]** 画面が開き、上部の実行番号の横に **[実行の状態]** が表示されます。 この状態は、実験の進行に応じて更新されます。 スタジオの右上隅にも、実験の状態を表す通知が表示されます。
 
 >[!IMPORTANT]
-> 実験の実行の準備に、**10 から 15 分**かかります。
-> 実行の開始後、**各イテレーションのためにさらに 2、3 分**かかります。  <br> <br>
+> 実験の実行の準備に、**10 から 15 分** かかります。
+> 実行の開始後、**各イテレーションのためにさらに 2、3 分** かかります。<br> <br>
 > 実稼働環境では、このプロセスには時間がかかるため、しばらくお待ちください。 待機している間に、アルゴリズムのテストが終わり次第、 **[モデル]** タブで調査を開始することをお勧めします。 
 
 ##  <a name="explore-models"></a>モデルを調査する
 
-**[モデル]** タブに移動し、テストされたアルゴリズム (モデル) を確認します。 既定では、モデルは完了時のメトリック スコアで並べ替えられます。 このチュートリアルでは、選択した**正規化された平均平方二乗誤差**メトリックに基づいて最も高いスコアを獲得したモデルがリストの一番上に表示されます。
+**[モデル]** タブに移動し、テストされたアルゴリズム (モデル) を確認します。 既定では、モデルは完了時のメトリック スコアで並べ替えられます。 このチュートリアルでは、選択した **正規化された平均平方二乗誤差** メトリックに基づいて最も高いスコアを獲得したモデルがリストの一番上に表示されます。
 
 すべての実験モデルが終了するのを待っている間に、完了したモデルの **[アルゴリズム名]** を選択して、そのパフォーマンスの詳細を調査します。 
 
 次の例では、 **[詳細]** タブと **[メトリック]** タブを移動して、選択したモデルのプロパティ、メトリック、およびパフォーマンス グラフを表示しています。 
 
-![実行の詳細](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
+![実行の詳細](./media/tutorial-automated-ml-forecast/explore-models.gif)
 
 ## <a name="deploy-the-model"></a>モデルをデプロイする
 
@@ -181,7 +187,7 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 
 実行が完了したら、画面の上部にある **[Run 1]\(実行 1\)** を選択して、親の実行ページに戻ります。
 
-**正規化された平均平方二乗誤差**メトリックに基づいて、 **[Best model summary]\(最適なモデルの概要\)** セクションの **StackEnsemble** が、この実験のコンテキストで最適なモデルと見なされます。  
+**正規化された平均平方二乗誤差** メトリックに基づいて、 **[Best model summary]\(最適なモデルの概要\)** セクションの **StackEnsemble** が、この実験のコンテキストで最適なモデルと見なされます。  
 
 このモデルをデプロイしますが、デプロイには完了まで約 20 分かかることにご留意ください。 デプロイ プロセスには、モデルを登録したり、リソースを生成したり、Web サービス用にそれらを構成したりすることを含む、いくつかの手順が伴います。
 
@@ -234,12 +240,12 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 新しくデプロイされた Web サービスの使用を容易にするために、Power BI でサポートされているスキーマを作成する手順については、こちらの記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Web サービスを使用する](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Web サービスを使用する](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
-+ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
++ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」の記事を参照してください。
 + [特徴付け](how-to-configure-auto-features.md#featurization)についてさらに理解を深める。
-+ [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。
++ [データ プロファイル](how-to-connect-data-ui.md#profile)についてさらに理解を深める。
 
 >[!NOTE]
 > この自転車シェアリング データセットは、このチュートリアル用に変更されています。 このデータセットは、[Kaggle コンテスト](https://www.kaggle.com/c/bike-sharing-demand/data)の一部として提供されており、もともとは [Capital Bikeshare](https://www.capitalbikeshare.com/system-data) を通じて入手可能でした。 また、[UCI Machine Learning データベース](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)にもあります。<br><br>

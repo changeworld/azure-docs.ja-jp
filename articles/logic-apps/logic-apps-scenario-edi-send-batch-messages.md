@@ -8,15 +8,15 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75666671"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000404"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Azure Logic Apps の取引先間でバッチまたはグループとして EDI メッセージを交換する
 
-企業間 (B2B) シナリオでは、パートナーがグループまたは*バッチ*でメッセージを交換することがよくあります。 Logic Apps を使用してバッチ処理ソリューションを構築すると、取引先パートナーにメッセージを送信し、それらのメッセージをバッチで処理することができます。 この記事では、X12 を例にして、"バッチ送信" ロジック アプリと "バッチ受信" ロジック アプリを作成して EDI メッセージをバッチ処理する方法について説明します。 
+企業間 (B2B) シナリオでは、パートナーがグループまたは *バッチ* でメッセージを交換することがよくあります。 Logic Apps を使用してバッチ処理ソリューションを構築すると、取引先パートナーにメッセージを送信し、それらのメッセージをバッチで処理することができます。 この記事では、X12 を例にして、"バッチ送信" ロジック アプリと "バッチ受信" ロジック アプリを作成して EDI メッセージをバッチ処理する方法について説明します。 
 
 バッチ X12 メッセージは、他のメッセージをバッチ処理する場合と同様に機能します。つまり、メッセージをバッチにまとめるバッチ トリガーと、メッセージをバッチに送信するバッチ アクションを使用します。 また、X12 バッチ処理には、メッセージが取引先パートナーまたは他の宛先に送信される前に X12 のエンコード手順が含まれています。 バッチ トリガーとアクションの詳細については、[メッセージのバッチ処理](../logic-apps/logic-apps-batch-process-send-receive-messages.md)に関するページを参照してください。
 
@@ -58,7 +58,7 @@ ms.locfileid: "75666671"
 
 2. [ロジック アプリを統合アカウントにリンクします](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
-3. Logic Apps デザイナーで、ロジック アプリのワークフローを開始する**バッチ** トリガーを追加します。 検索ボックスに、フィルターとして「batch」と入力します。 **[メッセージのバッチ処理]** というトリガーを選択します。
+3. Logic Apps デザイナーで、ロジック アプリのワークフローを開始する **バッチ** トリガーを追加します。 検索ボックスに、フィルターとして「batch」と入力します。 **[メッセージのバッチ処理]** というトリガーを選択します。
 
    ![バッチ トリガーを追加する](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 

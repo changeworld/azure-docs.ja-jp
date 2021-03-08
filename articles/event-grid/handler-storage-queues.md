@@ -4,11 +4,11 @@ description: Azure Event Grid イベントのイベント ハンドラーとし�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105644"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "91270187"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしてのストレージ キュー
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Queue storage** はその 1 つです。 

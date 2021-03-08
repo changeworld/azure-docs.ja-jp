@@ -1,22 +1,18 @@
 ---
 title: オンプレミスの Hadoop クラスターから Azure Storage にデータを移行する
 description: Azure Data Factory を使用してオンプレミスの Hadoop クラスターから Azure Storage にデータを移行する方法について説明します。
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9959a37d9b68d756437a3b4f0d75a2d63385758e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417129"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367794"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory を使用してオンプレミスの Hadoop クラスターから Azure Storage にデータを移行する 
 
@@ -26,7 +22,7 @@ Azure Data Factory には、オンプレミスの HDFS から Azure Blob Storage
 
 Data Factory には、オンプレミスの HDFS から Azure にデータを移行するための 2 つの基本的な方法が用意されています。 ご自分のシナリオに基づいて方法を選択できます。 
 
-- **Data Factory DistCp モード**  (推奨):Data Factory では、[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (分散コピー) を使用して、ファイルをそのまま Azure Blob Storage ([ステージング コピー](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)を含む) または Azure Data Lake Store Gen2 にコピーできます。 DistCp と統合された Data Factory を使用すると、既存の強力なクラスターを利用して最適なコピー スループットを実現できます。 また、Data Factory の柔軟なスケジュール設定と、統合された監視エクスペリエンスの利点も得られます。 ご使用の Data Factory の構成によっては、コピー アクティビティにより DistCp コマンドが自動的に作成され、Hadoop クラスターに送信され、コピー状態が監視されます。 オンプレミスの Hadoop クラスターから Azure にデータを移行するには、Data Factory DistCp モードをお勧めします。
+- **Data Factory DistCp モード**  (推奨):Data Factory では、[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (分散コピー) を使用して、ファイルをそのまま Azure Blob Storage ([ステージング コピー](./copy-activity-performance.md#staged-copy)を含む) または Azure Data Lake Store Gen2 にコピーできます。 DistCp と統合された Data Factory を使用すると、既存の強力なクラスターを利用して最適なコピー スループットを実現できます。 また、Data Factory の柔軟なスケジュール設定と、統合された監視エクスペリエンスの利点も得られます。 ご使用の Data Factory の構成によっては、コピー アクティビティにより DistCp コマンドが自動的に作成され、Hadoop クラスターに送信され、コピー状態が監視されます。 オンプレミスの Hadoop クラスターから Azure にデータを移行するには、Data Factory DistCp モードをお勧めします。
 - **Data Factory ネイティブ統合ランタイム モード**:DistCp は、すべてのシナリオで使えるオプションではありません。 たとえば、Azure Virtual Network 環境では、DistCp ツールは、Azure Storage 仮想ネットワーク エンドポイントとの Azure ExpressRoute プライベート ピアリングがサポートされていません。 また、クラスターに大きな負荷をかけると、既存の ETL ジョブのパフォーマンスに影響する可能性があるため、既存の Hadoop クラスターをデータ移行のためのエンジンとして使用したくない場合もあります。 代わりに、Data Factory 統合ランタイムのネイティブ機能を、オンプレミスの HDFS から Azure にデータをコピーするエンジンとして使用できます。
 
 この記事では、両方の方法について次の情報を提供します。
@@ -45,11 +41,11 @@ DistCp では、MapReduce を使用して、その配布、エラー処理と復
 
 Data Factory ネイティブ統合ランタイム モードでは、さまざまなレベルで並列処理を行うこともできます。 並列処理を使用すると、ネットワーク帯域幅、ストレージ IOPS、帯域幅を最大限に活用して、データ移動のスループットを最大限に高めることができます。
 
-- 1 回のコピー アクティビティで、スケーラブルなコンピューティング リソースを利用できます。 セルフホステッド統合ランタイムを使用すると、マシンを手動でスケールアップすることも、複数のマシン ([最大 4 ノード](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) にスケールアウトすることもできます。 1 回のコピー アクティビティで、ファイル セットがすべてのノードにわたってパーティション分割されます。 
+- 1 回のコピー アクティビティで、スケーラブルなコンピューティング リソースを利用できます。 セルフホステッド統合ランタイムを使用すると、マシンを手動でスケールアップすることも、複数のマシン ([最大 4 ノード](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)) にスケールアウトすることもできます。 1 回のコピー アクティビティで、ファイル セットがすべてのノードにわたってパーティション分割されます。 
 - 1 回のコピー アクティビティで、複数のスレッドを使用したデータ ストアの読み取りと書き込みが行われます。 
-- Data Factory 制御フローでは、複数のコピー アクティビティを並列で開始できます。 たとえば、[For each ループ](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)を使用できます。 
+- Data Factory 制御フローでは、複数のコピー アクティビティを並列で開始できます。 たとえば、[For each ループ](./control-flow-for-each-activity.md)を使用できます。 
 
-詳細については、[コピー アクティビティのパフォーマンス ガイド](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)を参照してください。
+詳細については、[コピー アクティビティのパフォーマンス ガイド](./copy-activity-performance.md)を参照してください。
 
 ## <a name="resilience"></a>回復力
 
@@ -93,10 +89,10 @@ Data Factory では既定で、HTTPS プロトコル経由の暗号化された�
 
 ### <a name="authentication-and-credential-management"></a>認証と資格情報の管理 
 
-- HDFS に対して認証を行うには、[Windows (Kerberos) または匿名のいずれか](https://docs.microsoft.com/azure/data-factory/connector-hdfs#linked-service-properties)を使用できます。 
-- Azure Blob Storage に接続するために複数の認証の種類がサポートされています。  [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) を使用することを強くお勧めします。 マネージド ID は Azure Active Directory (Azure AD) で自動的に管理される Data Factory ID をベースに構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。 または、[サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共有アクセス署名](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)、または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)を使用して BLOB ストレージに対する認証を行うこともできます。 
-- Data Lake Storage Gen2 に接続するために複数の認証の種類もサポートされています。  [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) を使用することを強くお勧めしますが、[サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)を使用することもできます。 
-- Azure リソースのマネージド ID を使用しない場合は、簡単にするために、[Azure Key Vault に資格情報を格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)して、Data Factory のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。 これも [CI/CD のベスト プラクティス](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)です。 
+- HDFS に対して認証を行うには、[Windows (Kerberos) または匿名のいずれか](./connector-hdfs.md#linked-service-properties)を使用できます。 
+- Azure Blob Storage に接続するために複数の認証の種類がサポートされています。  [Azure リソースのマネージド ID](./connector-azure-blob-storage.md#managed-identity) を使用することを強くお勧めします。 マネージド ID は Azure Active Directory (Azure AD) で自動的に管理される Data Factory ID をベースに構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。 または、[サービス プリンシパル](./connector-azure-blob-storage.md#service-principal-authentication)、[共有アクセス署名](./connector-azure-blob-storage.md#shared-access-signature-authentication)、または[ストレージ アカウント キー](./connector-azure-blob-storage.md#account-key-authentication)を使用して BLOB ストレージに対する認証を行うこともできます。 
+- Data Lake Storage Gen2 に接続するために複数の認証の種類もサポートされています。  [Azure リソースのマネージド ID](./connector-azure-data-lake-storage.md#managed-identity) を使用することを強くお勧めしますが、[サービス プリンシパル](./connector-azure-data-lake-storage.md#service-principal-authentication)または[ストレージ アカウント キー](./connector-azure-data-lake-storage.md#account-key-authentication)を使用することもできます。 
+- Azure リソースのマネージド ID を使用しない場合は、簡単にするために、[Azure Key Vault に資格情報を格納](./store-credentials-in-key-vault.md)して、Data Factory のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。 これも [CI/CD のベスト プラクティス](./continuous-integration-deployment.md#best-practices-for-cicd)です。 
 
 ### <a name="initial-snapshot-data-migration"></a>初回のスナップショット データ移行 
 
@@ -141,16 +137,16 @@ HDFS から Azure Blob Storage にデータを移行するために、次のパ�
 
 ### <a name="additional-references"></a>その他のリファレンス
 
-- [HDFS コネクタ](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
-- [Azure BLOB ストレージ コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2 コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [コピー アクティビティのパフォーマンスとチューニングに関するガイド](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [セルフホステッド統合ランタイムを作成して構成する](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [セルフホステッド統合ランタイムの高可用性とスケーラビリティ](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [データ移動のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Azure Key Vault への資格情報の格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [時間でパーティション分割されたファイル名に基づいてファイルを増分コピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [LastModifiedDate に基づいて新しいファイルと変更されたファイルをコピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [HDFS コネクタ](./connector-hdfs.md)
+- [Azure BLOB ストレージ コネクタ](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2 コネクタ](./connector-azure-data-lake-storage.md)
+- [コピー アクティビティのパフォーマンスとチューニングに関するガイド](./copy-activity-performance.md)
+- [セルフホステッド統合ランタイムを作成して構成する](./create-self-hosted-integration-runtime.md)
+- [セルフホステッド統合ランタイムの高可用性とスケーラビリティ](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [データ移動のセキュリティに関する考慮事項](./data-movement-security-considerations.md)
+- [Azure Key Vault への資格情報の格納](./store-credentials-in-key-vault.md)
+- [時間でパーティション分割されたファイル名に基づいてファイルを増分コピーする](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [LastModifiedDate に基づいて新しいファイルと変更されたファイルをコピーする](./tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 - [Data Factory の価格ページ](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>次のステップ

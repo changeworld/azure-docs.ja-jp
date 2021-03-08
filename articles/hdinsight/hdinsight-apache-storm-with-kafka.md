@@ -1,19 +1,16 @@
 ---
 title: チュートリアル:Apache Kafka で Apache Storm を使用する - Azure HDInsight
 description: HDInsight の Apache Storm と Apache Kafka を使用してストリーミング パイプラインを作成する方法について説明します。 このチュートリアルでは、KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して Kafka からデータをストリーミングします。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963531"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942726"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -420,7 +417,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
    
       ![テンプレート パラメーターの画像](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
-3. **使用条件**を読み、 **[上記の使用条件に同意する]** をオンにします。
+3. **使用条件** を読み、 **[上記の使用条件に同意する]** をオンにします。
 
 4. 最後に、 **[ダッシュボードにピン留めする]** をオンにし、 **[購入]** をクリックします。
 

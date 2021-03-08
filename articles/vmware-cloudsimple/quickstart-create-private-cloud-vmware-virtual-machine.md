@@ -1,19 +1,19 @@
 ---
 title: クイック スタート - プライベート クラウドに Azure VMware VM を作成する - Azure VMware Solution by CloudSimple
 description: CloudSimple プライベート クラウドに VMware 仮想マシンを作成する方法について説明します。 CloudSimple ポータルには Azure portal からアクセスします。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88140855"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899288"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>プライベート クラウドに VMware 仮想マシンを作成する
 
@@ -58,37 +58,37 @@ vCenter にアクセスするには、CloudSimple ポータルから始めます
 1. vCenter で、 **[Hosts and Clusters]\(ホストおよびクラスター\)** アイコンをクリックします。
 
 2. **[Workload]\(ワークロード\)** を右クリックし、**[New Virtual Machine]\(新しい仮想マシン\)** を選択します。
-    ![新しい VM](media/vcvm01.png)
+    ![[新しい仮想マシン] メニュー オプションが強調表示されているスクリーンショット。](media/vcvm01.png)
 
 3. **[Create new virtual machine]\(新しい仮想マシンの作成\)** を選択し、 **[Next]\(次へ\)** をクリックします。
-    ![新しい VM](media/vcvm02.png)
+    ![[新しい仮想マシンの作成] オプションが強調表示されているスクリーンショット。](media/vcvm02.png)
 
 4. マシンに名前を付け、**[Workload VM's] (ワークロード VM)** の場所を選択して **[次へ]** をクリックします。
-    ![新しい VM](media/vcvm03.png)
+    ![[ワークロード VM] オプションが強調表示されているスクリーンショット。](media/vcvm03.png)
 
 5. **[Workload]\(ワークロード\)** コンピューティング リソースを選択し、**[Next]\(次へ\)** をクリックします。
-    ![新しい VM](media/vcvm04.png)
+    ![[ワークロード] コンピューティング リソースが強調表示されているスクリーンショット。](media/vcvm04.png)
 
 6. **[vsanDatastore]** を選択して、**[Next]\(次へ\)** をクリックします。
-    ![新しい VM](media/vcvm05.png)
+    ![[vsanDatastore] オプションが強調表示されているスクリーンショット。](media/vcvm05.png)
 
 7. 既定の ESXi 6.5 互換性を選択したままにして、 **[Next]\(次へ\)** をクリックします。
-    ![新しい VM](media/vcvm06.png)
+    ![選択された ESXi 6.5 互換性オプションを示しているスクリーンショット。](media/vcvm06.png)
 
 8. 作成している VM の ISO のゲスト OS を選択し、 **[次へ]** をクリックします。
-    ![新しい VM](media/vcvm07.png)
+    ![VM の ISO の ゲスト OS を選択する方法を示しているスクリーンショット。](media/vcvm07.png)
 
 9. ハード ディスクとネットワークのオプションを選択します。 [New CD/DVD Drive]\(新しい CD または DVD ドライブ\) で、**[Datastore ISO file]\(データストアの ISO ファイル\)** を選択します。  パブリック IP アドレスからこの VM へのトラフィックを許可する場合は、ネットワークを **[vm-1]** として選択します。
-    ![新しい VM](media/vcvm08.png)
+    ![Datastore ISO ファイルを選択する場所が強調表示されているスクリーンショット。](media/vcvm08.png)
 
 10. 選択ウィンドウが開きます。 ISOs and Templates フォルダーに以前アップロードしたファイルを選択し、 **[OK]** をクリックします。
     ![新しい VM](media/vcvm10.png)
 
 11. 設定を確認し、**[OK]** をクリックして VM を作成します。
-    ![新しい VM](media/vcvm11.png)
+    ![設定の確認場所を示しているスクリーンショット。](media/vcvm11.png)
 
 これで VM が Workload コンピューティング リソースに追加され、使用する準備ができました。 
-![新しい VM](media/vcvm12.png)
+![ワークロード コンピューティング リソースに追加されている VM を示しているスクリーンショット。](media/vcvm12.png)
 
 これで、基本的なセットアップが完了しました。 オンプレミスの VM インフラストラクチャを使用する場合と同様の方法で、プライベート クラウドの使用を開始できます。
 
@@ -179,7 +179,7 @@ sudo ifdown eth0
 sudo ifup eth0
 ```
 
-既定では、インターネットからのすべての受信トラフィックは**拒否**されます。 その他の任意のポートを開く場合は、[ファイアウォール テーブル](firewall.md)を作成します。
+既定では、インターネットからのすべての受信トラフィックは **拒否** されます。 その他の任意のポートを開く場合は、[ファイアウォール テーブル](firewall.md)を作成します。
 
 内部 IP アドレスを静的 IP アドレスとして構成した後、VM 内からインターネットに到達できることを確認します。
 

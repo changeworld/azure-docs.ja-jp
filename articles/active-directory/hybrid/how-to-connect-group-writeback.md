@@ -11,21 +11,21 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e49516647a4783fb27bf1be1cee60a3274fc040
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 9c506c87ad5901754175f18e6b50bc6ed46a3c19
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279849"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246912"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect のグループの書き戻し
 
-グループの書き戻しを使用すると、お客様はハイブリッドのニーズに合わせてクラウド グループを活用できます。 Office 365 グループ機能を使用している場合は、そのグループをオンプレミスの Active Directory 内に表示できます。 このオプションが使用できるのは、オンプレミスの Active Directory 内に Exchange が存在する場合**のみ**です。
+グループの書き戻しを使用すると、お客様はハイブリッドのニーズに合わせてクラウド グループを活用できます。 Microsoft 365 グループ機能を使用している場合は、そのグループをオンプレミスの Active Directory 内に表示できます。 このオプションが使用できるのは、オンプレミスの Active Directory 内に Exchange が存在する場合 **のみ** です。
 
 ## <a name="pre-requisites"></a>前提条件
 グループの書き戻しを有効にするには、次の前提条件を満たす必要があります。
 - お使いのテナントの Azure Active Directory Premium ライセンス。
-- オンプレミスの Exchange 組織と Office 365 の間にハイブリッド デプロイが構成されており、正常に機能していることが確認されている。
+- オンプレミスの Exchange 組織と Microsoft 365 の間にハイブリッド デプロイが構成されており、正常に機能していることが確認されている。
 - サポートされているバージョンの Exchange がオンプレミスにインストールされている
 - Azure Active Directory Connect を使用したシングル サインオンが構成されている 
 
@@ -37,7 +37,7 @@ ms.locfileid: "89279849"
 3. **[Azure AD に接続]** ページで、資格情報を入力します。 **[次へ]** をクリックします。
 4. **[オプション機能]** ページで、以前に構成したオプションが選択されたままであることを確認します。
 5. **[グループの書き戻し]** を選択し、 **[次へ]** をクリックします。
-6. **[書き戻し] ページ**で、Office 365 からオンプレミスの組織に同期されるオブジェクトを格納する Active Directory 組織単位 (OU) を選択し、 **[次へ]** をクリックします。
+6. **[書き戻し] ページ** Microsoft 365 からオンプレミスの組織に同期されるオブジェクトを格納する Active Directory 組織単位 (OU) を選択し、 **[次へ]** をクリックします。
 7. **[構成の準備完了]** ページで、 **[構成]** をクリックします。
 8. ウィザードが完了したら、[構成が完了しました] ページで **[終了]** をクリックします。
 9. Azure Active Directory Connect サーバーで管理者として Windows PowerShell を開き、次のコマンドを実行します。
@@ -45,10 +45,16 @@ ms.locfileid: "89279849"
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
+
+# To grant the <MSOL_account> permission to all domains in the forest:
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
+
+# To grant the <MSOL_account> permission to specific OU (eg. the OU chosen to writeback Office 365 Groups to):
+$GroupWritebackOU = <DN of OU where groups are to be written back to>
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN -ADObjectDN $GroupWritebackOU
 ```
 
-Office 365 グループの構成の詳細については、「[オンプレミスの Exchange ハイブリッドを使用して Microsoft 365 グループを構成する](/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect)」を参照してください。
+Microsoft 365 グループの構成の詳細については、「[オンプレミスの Exchange ハイブリッドを使用して Microsoft 365 グループを構成する](/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect)」を参照してください。
 
 ## <a name="disabling-group-writeback"></a>グループの書き戻しを無効にする
 グループの書き戻しを無効にするには、次の手順を使用します。 

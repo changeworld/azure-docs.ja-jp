@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510371"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202690"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
 
-Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux またはリモート Server Message Block (SMB) 共有との間の同期はサポートされていません。
+Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux クライアント、リモート Server Message Block (SMB) 共有、Network File System (NFS) 共有との間の同期はサポートされていません。
 
 そのため、ファイル サービスをハイブリッド デプロイに変換するには、Windows Server に移行する必要があります。 この記事では、そのような移行の計画と実行について説明します。
 
@@ -39,7 +39,7 @@ Linux サーバー上で Samba を実行しておらず、フォルダーを Win
 * 仮想マシンまたは物理サーバーとして、Windows Server 2019 インスタンスを作成します。 Windows Server 2012 R2 が最小要件です。 また、Windows Server フェールオーバー クラスターもサポートされています。
 * 直接接続ストレージ (DAS) をプロビジョニングまたは追加します。 ネットワーク接続ストレージ (NAS) はサポートされていません。
 
-  Azure File Syncs の[クラウドを使った階層化](storage-sync-cloud-tiering.md)機能を使用する場合、プロビジョニングするストレージの容量は、現在 Linux Samba サーバー上で使用している量より少なくてもかまいません。 ただし、後のフェーズで、大きい Linux Samba サーバー領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
+  Azure File Syncs の[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)機能を使用する場合、プロビジョニングするストレージの容量は、現在 Linux Samba サーバー上で使用している量より少なくてもかまいません。 ただし、後のフェーズで、大きい Linux Samba サーバー領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
 
   1. ディスクに収まるファイルのセットを移動します。
   2. ファイル同期とクラウドを使った階層化が連携するようにします。
@@ -98,7 +98,7 @@ Windows Server ターゲット フォルダーへの最初のローカル コピ
 
 次の Robocopy コマンドを実行すると、Linux Samba サーバーのストレージから Windows Server ターゲット フォルダーにファイルがコピーされます。 Windows Server によって、それが Azure ファイル共有に同期されます。 
 
-Linux Samba サーバー上でファイルが占める量より少ないストレージを Windows Server インスタンスにプロビジョニングした場合は、クラウドを使った階層化を構成済みです。 ローカルの Windows Server ボリュームがいっぱいになると、[クラウドを使った階層化](storage-sync-cloud-tiering.md)により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、Linux Samba サーバーからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリュームの空き領域が 99% のポリシーに達するようにディスク領域が解放されます。
+Linux Samba サーバー上でファイルが占める量より少ないストレージを Windows Server インスタンスにプロビジョニングした場合は、クラウドを使った階層化を構成済みです。 ローカルの Windows Server ボリュームがいっぱいになると、[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、Linux Samba サーバーからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリュームの空き領域が 99% のポリシーに達するようにディスク領域が解放されます。
 
 Robocopy によるファイルの移動が速すぎて、クラウドへの同期とローカルでの階層化が追いつかず、ローカル ディスク領域の不足が引き起こされる可能性があります。 そうなると、Robocopy は失敗します。 問題が回避される順序で共有を処理することをお勧めします。 たとえば、すべての共有に対して Robocopy ジョブを同時に開始しないことを検討してください。 または、Windows Server インスタンス上の現在の空き領域に合った共有を移動することを検討してください。 Robocopy ジョブが失敗した場合、次のミラー/パージ オプションを使用すれば、いつでもコマンドを再実行できます。
 
@@ -207,7 +207,7 @@ Windows Server フォルダーに共有を作成し、必要に応じて、そ�
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-最も一般的な問題は、Windows Server 側で**ボリュームがいっぱい**になったために Robocopy コマンドが失敗することです。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカルの Windows Server ディスクからコンテンツが退避されます。 目標は、ボリューム上の空き領域を 99% にすることです。
+最も一般的な問題は、Windows Server 側で **ボリュームがいっぱい** になったために Robocopy コマンドが失敗することです。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカルの Windows Server ディスクからコンテンツが退避されます。 目標は、ボリューム上の空き領域を 99% にすることです。
 
 同期を進行させ、クラウドを使った階層化にディスク領域を解放させます。 これは、Windows Server 上のエクスプローラーで確認できます。
 
@@ -219,6 +219,6 @@ Azure File Sync の問題のトラブルシューティングについては、�
 
 Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事には、詳細なオプション、ベスト プラクティス、およびトラブルシューティングのヘルプが含まれています。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
 
-* [Azure File Sync の概要](https://aka.ms/AFS)
-* [Azure File Sync デプロイ ガイド](storage-files-deployment-guide.md)
+* [Azure File Sync の概要](./storage-sync-files-planning.md)
+* [Azure File Sync デプロイ ガイド](./storage-how-to-create-file-share.md)
 * [Azure File Sync に関するトラブルシューティング](storage-sync-files-troubleshoot.md)

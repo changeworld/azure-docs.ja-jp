@@ -3,12 +3,12 @@ title: ZIP パッケージからアプリを実行する
 description: アトミック性を備えたアプリの ZIP パッケージをデプロイします。 ZIP デプロイ プロセス中のアプリの動作の予測可能性と信頼性を向上させます。
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920724"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008131"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>ZIP パッケージから Azure App Service のアプリを直接実行する
 
@@ -41,7 +41,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="run-the-package"></a>パッケージの実行
 
-App Service でパッケージを実行する最も簡単な方法は、Azure CLI の [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) コマンドを使用することです。 次に例を示します。
+App Service でパッケージを実行する最も簡単な方法は、Azure CLI の [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) コマンドを使用することです。 次に例を示します。
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip

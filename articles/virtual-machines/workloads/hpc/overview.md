@@ -4,16 +4,16 @@ description: HPC 用に最適化された InfiniBand 対応の H シリーズお
 author: vermagit
 ms.author: amverma
 ms.service: virtual-machines
-ms-subservice: hpc
-ms.workload: infrastructure-services
+ms.subservice: hpc
 ms.topic: overview
 ms.date: 07/29/2020
-ms.openlocfilehash: f9a672777fbc8a75cb6af10ba25232f8a274c894
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 15d05632e5ebf6e45a61adebbbbf647efca2a1a1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543726"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666883"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>InfiniBand 対応の H シリーズおよび N シリーズの VM でのハイ パフォーマンス コンピューティング
 

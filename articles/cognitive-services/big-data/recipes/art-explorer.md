@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 0a94c66eb51298db226ceec5da5c86666576052a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5a65ff28a38e42e05844063a330c0325f16b2247
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850493"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363291"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>レシピ: ビッグ データの Cognitive Services を使用したインテリジェントなアートの探索
 
@@ -24,7 +24,7 @@ ms.locfileid: "87850493"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Computer Vision と Cognitive Search のサブスクリプション キーが必要です。 Computer Vision にサブスクライブし、キーを取得するには、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従います。
+* Computer Vision と Cognitive Search のサブスクリプション キーが必要です。 Computer Vision にサブスクライブし、キーを取得するには、[Cognitive Services アカウントの作成](../../cognitive-services-apis-create-account.md)に関するページの手順に従います。
   > [!NOTE]
   > 価格の情報については、[Azure Cognitive Search](https://azure.microsoft.com/services/search/#pricing) の価格に関するセクションを参照してください。
 
@@ -118,4 +118,3 @@ requests.post(url, json={"search": "Glass"}, headers = {"api-key": AZURE_SEARCH_
 ## <a name="next-steps"></a>次のステップ
 
 [異常検出に対するビッグ データの Cognitive Services](anomaly-detection.md) の使用方法を学習します。
-

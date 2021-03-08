@@ -3,12 +3,12 @@ title: SQL Server のデータベース バックアップに関するトラブ�
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 53b701e5bfae9313732f4b76a4e13b63afb3864a
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826720"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557744"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -44,17 +44,51 @@ SQL VM を新しいコンテナーに登録する必要がある場合は、古�
 
 1. 次のフォルダーをウイルス対策スキャンの対象から除外します
 
-    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload`
 
     `C:\` を *SystemDrive* の文字で置き換えてください。
 
 1. VM 内で実行されている次の 3 つのプロセスを、ウイルス対策スキャンの対象から除外します。
 
     - IaasWLPluginSvc.exe
-    - IaasWorkloadCoordinaorService.exe
+    - IaaSWorkloadCoordinatorService.exe
     - TriggerExtensionJob.exe
 
 1. SQL には、ウイルス対策プログラムの使用に関するいくつかのガイドラインも用意されています。 詳細については、[こちらの記事](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server)をご覧ください。
+
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>複数の SQL Server インスタンスを持つ VM のインスタンスに問題がある
+
+VM 内で実行されているすべての SQL インスタンスが正常であると報告された場合にのみ、SQL VM に復元できます。 1 つ以上のインスタンスに "問題" がある場合、その VM は復元ターゲットとして表示されません。 そのため、これが、復元操作中にマルチインスタンスの VM が [サーバー] ドロップダウンに表示されない理由として考えられます。
+
+**[バックアップの構成]** で、VM 内のすべての SQL インスタンスの "バックアップの準備" を検証できます。
+
+![バックアップの準備の検証](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+正常な SQL インスタンスで復元をトリガーする場合は、次の手順を実行します。
+
+1. SQL VM にサインインし、`C:\Program Files\Azure Workload Backup\bin` にアクセスします。
+1. `ExtensionSettingsOverrides.json` という名前の JSON ファイルを作成します (まだない場合)。 このファイルが VM 上に既に存在する場合は、それをそのまま使用します。
+1. JSON ファイルに次の内容を追加し、ファイルを保存します。
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. 影響を受けるサーバーで、Azure portal (バックアップの準備を確認できる場所と同じ場所) から **DB の再検出** 操作をトリガーします。 復元操作のターゲットとして VM が表示されるようになります。
+
+    ![DB の再検出](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. 復元操作が完了したら、ExtensionSettingsOverrides.json ファイルから *whitelistedInstancesForInquiry* エントリを削除します。
 
 ## <a name="error-messages"></a>エラー メッセージ
 
@@ -68,7 +102,7 @@ SQL VM を新しいコンテナーに登録する必要がある場合は、古�
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-| この SQL データベースは、要求されたバックアップの種類をサポートしていません。 | データベース復旧モデルが要求されたバックアップの種類を許可していない場合に発生します。 このエラーは、以下の状況で発生する可能性があります。 <br/><ul><li>単純復旧モデルを使用するデータベースで、ログ バックアップが許可されていない。</li><li>マスター データベースで、差分バックアップとログ バックアップが許可されていません。</li></ul>詳細については、[SQL Server 復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server)に関するドキュメントを参照してください。 | 単純復旧モデルのデータベースのログ バックアップが失敗した場合は、次のいずれかのオプションを試してください。<ul><li>データベースが単純復旧モードの場合は、ログ バックアップを無効にします。</li><li>データベースの復旧モデルを完全または一括ログに変更するには、[SQL Server のドキュメント](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)を参照してください。 </li><li> 復旧モデルを変更したくない場合で、変更できない複数のデータベースをバックアップする標準ポリシーがある場合は、エラーを無視してください。 完全バックアップと差分バックアップはスケジュールに従って動作します。 ログ バックアップはスキップされますが、この場合は想定どおりの動作です。</li></ul>マスター データベースで、差分バックアップまたはログ バックアップを構成した場合は、次のいずれかの手順を実行します。<ul><li>ポータルを使用して、マスター データベースのバックアップ ポリシー スケジュールを [完全] に変更します。</li><li>変更できない複数のデータベースをバックアップする標準ポリシーがある場合は、エラーを無視してください。 完全バックアップはスケジュールに従って動作します。 差分バックアップまたはログ バックアップは行われませんが、この場合は想定どおりの動作です。</li></ul> |
+| この SQL データベースは、要求されたバックアップの種類をサポートしていません。 | データベース復旧モデルが要求されたバックアップの種類を許可していない場合に発生します。 このエラーは、以下の状況で発生する可能性があります。 <br/><ul><li>単純復旧モデルを使用するデータベースで、ログ バックアップが許可されていない。</li><li>マスター データベースで、差分バックアップとログ バックアップが許可されていません。</li></ul>詳細については、[SQL Server 復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server)に関するドキュメントを参照してください。 | 単純復旧モデルのデータベースのログ バックアップが失敗した場合は、次のいずれかのオプションを試してください。<ul><li>データベースが単純復旧モードの場合は、ログ バックアップを無効にします。</li><li>データベースの復旧モデルを完全または一括ログに変更するには、[SQL Server のドキュメント](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)を参照してください。 </li><li> 復旧モデルを変更したくない場合で、変更できない複数のデータベースをバックアップする標準ポリシーがある場合は、エラーを無視してください。 完全バックアップと差分バックアップはスケジュールに従って動作します。 ログ バックアップはスキップされますが、この場合は想定どおりの動作です。</li></ul>これがマスター データベースで、差分バックアップまたはログ バックアップを構成した場合は、次のいずれかの手順を実行します。<ul><li>ポータルを使用して、マスター データベースのバックアップ ポリシー スケジュールを [完全] に変更します。</li><li>変更できない複数のデータベースをバックアップする標準ポリシーがある場合は、エラーを無視してください。 完全バックアップはスケジュールに従って動作します。 差分バックアップまたはログ バックアップは行われませんが、この場合は想定どおりの動作です。</li></ul> |
 | 競合する操作が既に同じデータベースに対して実行されているため、操作がキャンセルされました。 | 同時に実行される[バックアップと復元の制限事項に関するブログ エントリ](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/)を参照してください。| [SQL Server Management Studio (SSMS) を使用してバックアップ ジョブを監視します](manage-monitor-sql-database-backup.md)。 競合する操作が失敗したら、操作を再開します。|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
@@ -130,7 +164,7 @@ SQL VM を新しいコンテナーに登録する必要がある場合は、古�
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-| 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードである場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 別の復旧時点を選択してください。 [詳細については、こちらを参照してください](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
+| 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードである場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 別の復旧時点を選択してください。 [詳細については、こちらを参照してください](/sql/relational-databases/backup-restore/recovery-models-sql-server)。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -168,22 +202,29 @@ SQL VM を新しいコンテナーに登録する必要がある場合は、古�
 |---|---|---|
 コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 このエラーは通常、ポリシーの変更や自動保護などの大規模な操作がある場合に発生します。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決するためにできることはあまりありません。 実際、Azure Backup サービスによって、問題のあるすべての項目に対して内部的に操作が再試行されます。<br> 次に例を示します。ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。
 
+### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+AzureBackup ワークロード拡張機能操作に失敗しました。 | VM がシャットダウンされています。または、インターネット接続の問題により、VM から Azure Backup サービスに接続できません。| <li> VM が稼働中であり、インターネットに接続されていることを確実にします。<li> [SQL Server VM で拡張を再登録します](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm)。
+
+
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| - NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの発信アクセスを許可する必要があります。 アクセス権を付与するには、次の[手順](./backup-sql-server-database-azure-vms.md#nsg-tags)に従います。<br>- DNS が Azure エンドポイントを解決することを確認します。<br>- VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。<br>- 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール、ウイルス対策、およびプロキシが存在しないことを確認します。
+VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| <li> NSG を使用して接続を制限する場合は、*AzureBackup* サービス タグを使用して、Azure Backup サービスへの発信アクセスを許可する必要があります。Azure AD (*AzureActiveDirectory*) サービスと Azure Storage(*Storage*) サービスも同様です。 アクセス権を付与するには、次の[手順](./backup-sql-server-database-azure-vms.md#nsg-tags)に従います。 <li> DNS が Azure エンドポイントを解決することを確保します。 <li> VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。 <li> 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール、ウイルス対策、およびプロキシが存在しないことを確認します。
 
 ## <a name="re-registration-failures"></a>再登録エラー
 
 再登録操作をトリガーする前に、次の兆候が 1 つ以上ないか確認してください。
 
-- VM ですべての操作 (バックアップ、復元、バックアップの構成など) が次のいずれかのエラー コードで失敗している。**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
+- VM ですべての操作 (バックアップ、復元、バックアップの構成など) が次のいずれかのエラー コードで失敗している。 **[WorkloadExtensionNotReachable](#workloadextensionnotreachable)** 、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
 - バックアップ項目の **[バックアップ状態]** 領域に **[到達できません]** が表示されている場合は、同じ状態になる可能性のある他のすべての原因を除外します。
 
   - VM でバックアップ関連の操作を実行する権限がない。
   - VM のシャットダウン。そのため、バックアップが実行できない。
-  - ネットワークの問題。
+  - [ネットワークの問題](#usererrorvminternetconnectivityissue)
 
    ![VM の再登録](./media/backup-azure-sql-database/re-register-vm.png)
 

@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271279"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル:Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
@@ -100,7 +100,7 @@ Azure IoT Edge デバイス:
 
    これでレジストリ名、リポジトリ名およびタグがわかったので、コンテナーの完全なイメージ パスがわかります。 イメージのパスは、 **\<registry_name\>.azurecr.io/tempanomalydetection:1** のようになります。 イメージ パスを使用して、IoT Edge デバイスにこのコンテナーをデプロイすることができます。
 
-5. コンテナー レジストリの **[設定]** で **[アクセス キー]** を選択します。 **ログイン サーバー**、管理者ユーザーの**ユーザー名**、および**パスワード**を含む、多くのアクセス資格情報が表示されるはずです。
+5. コンテナー レジストリの **[設定]** で **[アクセス キー]** を選択します。 **ログイン サーバー**、管理者ユーザーの **ユーザー名**、および **パスワード** を含む、多くのアクセス資格情報が表示されるはずです。
 
    これらの資格情報は、レジストリからコンテナー イメージをプルするアクセス許可を IoT Edge デバイスに付与するために、デプロイ マニフェストに含めることができます。
 

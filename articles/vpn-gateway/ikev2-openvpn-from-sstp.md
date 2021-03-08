@@ -2,17 +2,17 @@
 title: SSTP から OpenVPN または IKEv2 に移行する | Azure VPN Gateway
 description: この記事は、SSTP の 128 というコンカレント接続制限を克服する方法を理解するのに役立ちます。
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 1531bca6c56c159b7535536fb31a577f0d7253ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2fa265e580bc0e752498284ed50e398b59423fd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064682"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657143"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
 
@@ -47,7 +47,7 @@ VPN ゲートウェイへの 128 を超える同時 P2S 接続をサポートが
 
 既存のゲートウェイに IKEv2 を追加するには、portal の [Virtual Network ゲートウェイ] の下にある [ポイント対サイトの構成] タブに移動し、ドロップダウン ボックスから **[IKEv2 と SSTP (SSL)]** を選択します。
 
-![ポイント対サイト](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![[トンネルの種類] ドロップダウンが開かれ、[IKEv2 と SSTP (SSL)] が選択されている、[ポイント対サイトの構成] ページのスクリーンショット。](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>オプション 2 - SSTP を削除し、ゲートウェイで OpenVPN を有効にする
@@ -58,9 +58,9 @@ SSTP と OpenVPN は両方とも TLS ベースのプロトコルであるため�
 
 ![ポイント対サイト](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-ゲートウェイが構成されると、既存のクライアントは、[OpenVPN クライアントを展開および構成する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients)まで接続できなくなります。
+ゲートウェイが構成されると、既存のクライアントは、[OpenVPN クライアントを展開および構成する](./vpn-gateway-howto-openvpn-clients.md)まで接続できなくなります。
 
-Windows 10 を使用している場合は、[Windows 用の Azure VPN クライアント](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client)を使用することもできます。
+Windows 10 を使用している場合は、[Windows 用の Azure VPN クライアント](./openvpn-azure-ad-client.md#to-download-the-azure-vpn-client)を使用することもできます。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -96,41 +96,41 @@ zip ファイルでは、Azure 側のいくつかの重要な設定の値も指�
 
 **IKEv2**
 
-|**暗号化** | **整合性** | **PRF** | **DH グループ** |
-|---        | ---            | ---        | ---     |
-|GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_24 |
-|GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_14 |
-|GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_ECP384 |
-|GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_ECP256 |
-|GCM_AES256 |    GCM_AES256    | SHA256    | GROUP_24 |
-|GCM_AES256 |    GCM_AES256    | SHA256    | GROUP_14 |
-|GCM_AES256 |    GCM_AES256    | SHA256    | GROUP_ECP384 |
-|GCM_AES256 |    GCM_AES256    | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA384        | SHA384    | GROUP_24 |
-|AES256     |   SHA384        | SHA384    | GROUP_14 |
-|AES256     |   SHA384        | SHA384    | GROUP_ECP384 |
-|AES256     |   SHA384        | SHA384    | GROUP_ECP256 |
-|AES256     |   SHA256        | SHA256    | GROUP_24 |
-|AES256     |   SHA256        | SHA256    | GROUP_14 |
-|AES256     |   SHA256        | SHA256    | GROUP_ECP384 |
-|AES256     |   SHA256        | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA256        | SHA256    | GROUP_2 |
+| **暗号化** | **整合性** | **PRF** | **DH グループ** |
+|--|--|--|--|
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP256 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA384 | SHA384 | GROUP_24 |
+| AES256 | SHA384 | SHA384 | GROUP_14 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP384 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_2 |
 
 **IPsec**
 
-|**暗号化** | **整合性** | **PFS グループ** |
-|---        | ---            | ---        |
-|GCM_AES256    | GCM_AES256 | GROUP_NONE |
-|GCM_AES256    | GCM_AES256 | GROUP_24 |
-|GCM_AES256    | GCM_AES256 | GROUP_14 |
-|GCM_AES256    | GCM_AES256 | GROUP_ECP384 |
-|GCM_AES256    | GCM_AES256 | GROUP_ECP256 |
-| AES256    | SHA256 | GROUP_NONE |
-| AES256    | SHA256 | GROUP_24 |
-| AES256    | SHA256 | GROUP_14 |
-| AES256    | SHA256 | GROUP_ECP384 |
-| AES256    | SHA256 | GROUP_ECP256 |
-| AES256    | SHA1 | GROUP_NONE |
+| **暗号化** | **整合性** | **PFS グループ** |
+|--|--|--|
+| GCM_AES256 | GCM_AES256 | GROUP_NONE |
+| GCM_AES256 | GCM_AES256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
+| AES256 | SHA256 | GROUP_NONE |
+| AES256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA1 | GROUP_NONE |
 
 ### <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>P2S 用に VPN ゲートウェイではどの TLS ポリシーが構成されていますか。
 **TLS**

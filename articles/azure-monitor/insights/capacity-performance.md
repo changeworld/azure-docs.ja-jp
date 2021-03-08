@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor の Capacity and Performance ソリューション | Microsoft Docs
 description: Monitor の Capacity and Performance ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aa08b9f5db5e6371bcd20b473a0c755db3199e7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317996"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704295"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Capacity and Performance ソリューション (非推奨) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -41,10 +40,10 @@ Monitor の Capacity and Performance ソリューションを使用すると、H
 
 | 接続先ソース | サポート | 説明 |
 |---|---|---|
-| [Windows エージェント](../platform/agent-windows.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
-| [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
-| [SCOM 管理グループ](../platform/om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
-| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
+| [Windows エージェント](../agents/agent-windows.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
+| [Linux エージェント](../vm/quick-collect-linux-computer.md) | いいえ    | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
+| [SCOM 管理グループ](../agents/om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
+| [Azure Storage アカウント](../essentials/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -72,7 +71,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 容量とパフォーマンス ソリューションが更新された場合には、バージョン番号が変わります。
 
-ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../platform/om-agents.md)」を参照してください。
+ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../agents/om-agents.md)」を参照してください。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
@@ -129,5 +128,5 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Log Analytics のログ検索機能](../log-query/log-query-overview.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
+* [Log Analytics のログ検索機能](../logs/log-query-overview.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
 

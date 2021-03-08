@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b44b77445192aec68e2be803978ab3aad64906d6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512641"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486999"
 ---
 # <a name="default-insights-tag"></a>既定の分析情報タグ
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 既定の分析情報タグは、空の文字列が `displayName` フィールドに設定された分析情報タグです。 次の例は、考えられる既定の分析情報 (アクション) の一覧を示しています。 応答に含まれるアクションの一覧は、画像によって異なります。 さらに、アクションごとに、プロパティの一覧が画像によって異なる可能性があるため、プロパティを使用しようとする前に、そのプロパティが存在しているかどうかを確認してください。
 

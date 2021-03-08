@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory でサポートされるコンピューティング環境
-description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使うことができるコンピューティング環境について説明します。
-services: data-factory
-documentationcenter: ''
+description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使用できるコンピューティング環境。
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 98f3c96fe1d1e8dd0f73d0441db8319fc2241cd7
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7dae067b5d8648f1441047c26f8792e55591b64d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563740"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368525"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 
@@ -29,11 +25,10 @@ ms.locfileid: "87563740"
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [On-demand HDInsight クラスター](#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Custom](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning Studio (クラシック)](#azure-machine-learning-studio-classic-linked-service) | [Machine Learning スタジオ (クラシック) のアクティビティ: バッチ実行とリソースの更新](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
+| [Azure SQL](#azure-sql-database-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
 | [Azure 関数](#azure-function-linked-service)         | [Azure 関数アクティビティ](control-flow-azure-function-activity.md)
 >  
@@ -65,10 +60,10 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 * オンデマンド HDInsight クラスターは Azure サブスクリプションのもとで作成されます。 クラスターが稼働している場合、Azure ポータルでクラスターを確認できます。 
 * オンデマンド HDInsight クラスターで実行されるジョブのログは HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。 リンクされたサービス定義で定義されている ClusterUserName、clusterPassword、clusterSshUserName、clusterSshPassword は、クラスターのライフサイクル中に詳細なトラブルシューティングのためにクラスターにログインするときに使用されます。 
 * HDInsight クラスターが稼動し、ジョブを実行している時間に対してのみ課金されます。
-* HDInsight のオンデマンドのリンクされたサービスでは、**スクリプト操作**を使用できません。  
+* HDInsight のオンデマンドのリンクされたサービスでは、**スクリプト操作** を使用できません。  
 
 > [!IMPORTANT]
-> オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **20 分**以上かかります。
+> オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **20 分** 以上かかります。
 
 #### <a name="example"></a>例
 
@@ -107,7 +102,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 ```
 
 > [!IMPORTANT]
-> HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。 
+> HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに **既定のコンテナー** を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。 
 >
 > 実行するアクティビティが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure Blob Storage 内のコンテナーを削除するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
@@ -115,7 +110,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 
 | プロパティ                     | 説明                              | 必須 |
 | ---------------------------- | ---------------------------------------- | -------- |
-| type                         | type プロパティは **HDInsightOnDemand**に設定されます。 | はい      |
+| type                         | type プロパティは **HDInsightOnDemand** に設定されます。 | はい      |
 | clusterSize                  | クラスター内の worker/データ ノードの数です。 このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。 ノードのサイズは Standard_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。 | はい      |
 | linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、この Azure Storage アカウントと同じリージョンに作成されます。 Azure HDInsight には、サポートされる各 Azure リージョンで使用できるコアの合計数に制限があります。 必要な clusterSize を満たせるだけ十分なコア クォータが、その Azure リージョンに存在することを確認してください。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください<p>現時点では、Azure Data Lake Storage (Gen 2) をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Storage (Gen 2) に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Storage (Gen 2) にデータをコピーします。 </p> | はい      |
 | clusterResourceGroup         | HDInsight クラスターは、このリソース グループに作成されます。 | はい      |
@@ -133,7 +128,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 | clusterPassword                   | クラスターにアクセスするセキュリティで保護された文字列の種類のパスワード。 | いいえ       |
 | clusterSshUserName         | クラスターのノードにリモートで接続する SSH のユーザー名 (Linux の場合)。 | いいえ       |
 | clusterSshPassword         | クラスターのノードにリモートで接続する SSH のセキュリティで保護された文字列の種類のパスワード (Linux の場合)。 | いいえ       |
-| scriptActions | オンデマンド クラスター作成中に [HDInsight クラスターのカスタマイズ](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)のスクリプトを指定します。 <br />現在、Azure Data Factory のユーザー インターフェイス作成ツールは 1 つのスクリプト操作のみの指定をサポートしていますが、JSON でこの制限に対応できます (JSON で複数のスクリプト操作を指定できます)。 | いいえ |
+| scriptActions | オンデマンド クラスター作成中に [HDInsight クラスターのカスタマイズ](../hdinsight/hdinsight-hadoop-customize-cluster-linux.md)のスクリプトを指定します。 <br />現在、Azure Data Factory のユーザー インターフェイス作成ツールは 1 つのスクリプト操作のみの指定をサポートしていますが、JSON でこの制限に対応できます (JSON で複数のスクリプト操作を指定できます)。 | いいえ |
 
 
 > [!IMPORTANT]
@@ -153,7 +148,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 
 #### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
-オンデマンドの HDInsight リンク サービスでは、ユーザーに代わって HDInsight クラスターを作成するためにサービス プリンシパル認証が必要になります。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、サブスクリプションの、または HDInsight クラスターが作成されるリソース グループの**共同作成者**のロールを付与します。 詳細な手順については、[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+オンデマンドの HDInsight リンク サービスでは、ユーザーに代わって HDInsight クラスターを作成するためにサービス プリンシパル認証が必要になります。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、サブスクリプションの、または HDInsight クラスターが作成されるリソース グループの **共同作成者** のロールを付与します。 詳細な手順については、[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
 - アプリケーション ID
 - アプリケーション キー 
@@ -245,7 +240,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 | dataNodeSize      | データ ノードのサイズを指定します。 既定値はStandard_D3 です。 | いいえ       |
 | zookeeperNodeSize | Zookeeper ノードのサイズを指定します。 既定値はStandard_D3 です。 | いいえ       |
 
-* ノード サイズの指定。前のセクションで説明したプロパティで指定する必要がある文字列値については、[仮想マシンのサイズ](../virtual-machines/linux/sizes.md)に関する記事を参照してください。 値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。 この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。 
+* ノード サイズの指定。前のセクションで説明したプロパティで指定する必要がある文字列値については、[仮想マシンのサイズ](../virtual-machines/sizes.md)に関する記事を参照してください。 値は、この記事に記載されている **コマンドレットと API** に準拠する必要があります。 この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。 
 
 D4 サイズのヘッド ノードとワーカー ノードを作成する場合は、headNodeSize プロパティと dataNodeSize プロパティの値として **Standard_D4** を指定します。 
 
@@ -254,7 +249,7 @@ D4 サイズのヘッド ノードとワーカー ノードを作成する場合
 "dataNodeSize": "Standard_D4",
 ```
 
-これらのプロパティに間違った値を指定すると、次のエラーが発生します。**エラー:** クラスターを作成できませんでした。 例外:クラスター作成操作を完了できません。 コード '400' で操作が失敗しました。 取り残されたクラスターの状態:'Error'。 メッセージ:'PreClusterCreationValidationFailure'。 このエラーが発生した場合は、[仮想マシンのサイズ](../virtual-machines/linux/sizes.md)に関する記事の表に記載されている**コマンドレットと API** の名前を使用していることを確認してください。        
+これらのプロパティに間違った値を指定すると、次のエラーが発生します。**エラー:** クラスターを作成できませんでした。 例外:クラスター作成操作を完了できません。 コード '400' で操作が失敗しました。 取り残されたクラスターの状態:'Error'。 メッセージ:'PreClusterCreationValidationFailure'。 このエラーが発生した場合は、[仮想マシンのサイズ](../virtual-machines/sizes.md)に関する記事の表に記載されている **コマンドレットと API** の名前を使用していることを確認してください。
 
 ### <a name="bring-your-own-compute-environment"></a>Bring Your Own のコンピューティング環境
 この種類の構成では、既存のコンピューティング環境を Data Factory の「リンクされたサービス」として登録できます。 このコンピューティング環境はユーザーにより管理され、Data Factory サービスをこの環境を利用し、アクティビティを実行します。
@@ -265,7 +260,7 @@ D4 サイズのヘッド ノードとワーカー ノードを作成する場合
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
-* Azure SQL DB、Azure SQL DW、SQL Server
+* Azure SQL DB、Azure Synapse Analytics、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービス
 Azure HDInsight の「リンクされたサービス」を作成し、独自の HDInsight クラスターを Data Factory に登録できます。
@@ -300,12 +295,12 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 ### <a name="properties"></a>Properties
 | プロパティ          | 説明                                                  | 必須 |
 | ----------------- | ------------------------------------------------------------ | -------- |
-| type              | type プロパティは **HDInsight**に設定されます。            | はい      |
+| type              | type プロパティは **HDInsight** に設定されます。            | はい      |
 | clusterUri        | HDInsight クラスターの URI です。                            | はい      |
 | username          | 既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 | はい      |
 | password          | ユーザー アカウントのパスワードを指定します。                       | はい      |
 | linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Storage (Gen 2) のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive または Pig スクリプトから Azure Data Lake Storage (Gen 2) 内のデータにアクセスできます。 </p> | はい      |
-| isEspEnabled      | HDInsight クラスターが [Enterprise セキュリティ パッケージ](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture)対応の場合は、'*true*' を指定します。 既定値は '*false*' です。 | いいえ       |
+| isEspEnabled      | HDInsight クラスターが [Enterprise セキュリティ パッケージ](../hdinsight/domain-joined/apache-domain-joined-architecture.md)対応の場合は、'*true*' を指定します。 既定値は '*false*' です。 | いいえ       |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 <br />Enterprise セキュリティ パッケージ (ESP) 対応の HDInsight クラスターには、クラスターへの通信経路があるセルフホステッド統合ランタイムを使用するか、ESP HDInsight クラスターと同じ仮想ネットワーク内にデプロイする必要があります。 | いいえ       |
 
 > [!IMPORTANT]
@@ -325,7 +320,7 @@ Azure Batch の「リンクされたサービス」を作成し、仮想マシ�
 Azure Batch サービスを初めて利用する場合は、次の記事をご覧ください。
 
 * [Azure Batch の基本](../batch/batch-technical-overview.md) 」をご覧ください。
-* Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレットをご覧ください。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md) をご覧ください。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)に関する記事をご覧ください。
+* Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレットをご覧ください。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md) をご覧ください。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account)に関する記事をご覧ください。
 * Azure Batch プールの作成方法については、[New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) コマンドレットをご覧ください。
 
 ### <a name="example"></a>例
@@ -360,7 +355,7 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 ### <a name="properties"></a>Properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | type プロパティは **AzureBatch**に設定されます。 | はい      |
+| type              | type プロパティは **AzureBatch** に設定されます。 | はい      |
 | accountName       | Azure Batch アカウントの名前です。         | はい      |
 | accessKey         | Azure Batch アカウントのアクセス キーです。  | はい      |
 | batchUri          | https://*batchaccountname.region*.batch.azure.com の形式の Azure Batch アカウントへの URL です。 | はい      |
@@ -368,8 +363,8 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングに利用されます。 | はい      |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ       |
 
-## <a name="azure-machine-learning-studio-linked-service"></a>Azure Machine Learning Studio のリンクされたサービス
-Azure Machine Learning Studio の「リンクされたサービス」を作成し、Machine Learning のバッチ スコアリング エンドポイントを Data Factory に登録します。
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (classic) のリンクされたサービス
+Azure Machine Learning スタジオ (クラシック) のリンクされたサービスを作成し、Machine Learning スタジオ (クラシック) のバッチ スコアリング エンドポイントをデータ ファクトリに登録します。
 
 ### <a name="example"></a>例
 
@@ -399,7 +394,7 @@ Azure Machine Learning Studio の「リンクされたサービス」を作成�
 | Type                   | type プロパティは次の値に設定されます。**AzureML**。 | はい                                      |
 | mlEndpoint             | バッチ スコアリング URL です。                   | はい                                      |
 | apiKey                 | 公開されたワークスペース モデルの API です。     | はい                                      |
-| updateResourceEndpoint | トレーニング済みモデル ファイルを使用した予測 Web サービスの更新に使用される Azure Machine Learning Web サービス エンドポイントの更新リソース URL です | いいえ                                       |
+| updateResourceEndpoint | トレーニング済みモデル ファイルを使用した予測 Web サービスの更新に使用される Azure Machine Learning スタジオ (クラシック) Web サービス エンドポイントの更新リソース URL です | いいえ                                       |
 | servicePrincipalId     | アプリケーションのクライアント ID を取得します。     | UpdateResourceEndpoint が指定されている場合は必須です |
 | servicePrincipalKey    | アプリケーションのキーを取得します。           | UpdateResourceEndpoint が指定されている場合は必須です |
 | tenant                 | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | UpdateResourceEndpoint が指定されている場合は必須です |
@@ -496,9 +491,9 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 
 
 ## <a name="azure-databricks-linked-service"></a>Azure Databricks のリンクされたサービス
-**Azure Databricks のリンクされたサービス**を作成して、Databricks ワークロード (Notebook、Jar、Phthon) の実行に使用する Databricks ワークスペースを登録できます。 
+**Azure Databricks のリンクされたサービス** を作成して、Databricks ワークロード (Notebook、Jar、Phthon) の実行に使用する Databricks ワークスペースを登録できます。 
 > [!IMPORTANT]
-> Databricks のリンクされたサービスでは、[インスタンス プール](https://aka.ms/instance-pools)がサポートされています。 
+> Databricks のリンクされたサービスでは、[インスタンス プール](https://aka.ms/instance-pools)とシステムによって割り当てられたマネージド ID 認証がサポートされています。
 
 ### <a name="example---using-new-job-cluster-in-databricks"></a>例 - Databricks で新しいジョブ クラスターの使用
 
@@ -548,7 +543,8 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 | name                 | リンクされたサービスの名前               | はい   |
 | type                 | type プロパティは次の値に設定されます。**Azure Databricks**。 | はい                                      |
 | domain               | Databricks ワークスペースのリージョンに基づき Azure リージョンを指定します。 例: https://eastus.azuredatabricks.net | はい                                 |
-| accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)を参照してください。  | はい                                       |
+| accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](/azure/databricks/dev-tools/api/latest/authentication#generate-token)を参照してください。  | No                                       |
+| MSI          | Data Factory のマネージド ID (システム割り当て) を使用して、Azure Databricks に対する認証を行います。 'MSI' 認証を使用する場合、アクセス トークンは必要ありません  | No                                       |
 | existingClusterId    | このすべてのジョブを実行する既存のクラスターのクラスター ID。 これは作成済みの対話型クラスターでなければなりません。 応答が停止した場合は、クラスターの手動再起動が必要になることがあります。 Databricks では、信頼性を高めるために新しいクラスターでジョブを実行することをお勧めします。 対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [[詳細]](https://docs.databricks.com/user-guide/clusters/tags.html) | いいえ 
 | instancePoolId    | Databricks ワークスペース内の既存のプールのインスタンス プール ID。  | いいえ  |
 | newClusterVersion    | クラスターの Spark バージョン。 Databricks にジョブ クラスターを作成します。 | いいえ  |
@@ -562,9 +558,9 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 
 Azure SQL のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL コネクタ](connector-azure-sql-database.md#linked-service-properties) に関する記事を参照してください。
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL Data Warehouse のリンクされたサービス
+## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics のリンクされたサービス
 
-Azure SQL Data Warehouse のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL Data Warehouse コネクタ](connector-azure-sql-data-warehouse.md#linked-service-properties) に関する記事をご覧ください。
+Azure Synapse Analytics のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)で使用して、Data Factory パイプラインからストアド プロシージャを呼び出します。 このリンクされたサービスの詳細については、[Azure Synapse Analytics コネクタ](connector-azure-sql-data-warehouse.md#linked-service-properties)に関する記事を参照してください。
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
 
@@ -572,13 +568,13 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 
 ## <a name="azure-function-linked-service"></a>Azure 関数のリンクされたサービス
 
-Azure 関数のリンクされたサービスを作成し、それを [Azure 関数アクティビティ](control-flow-azure-function-activity.md)と共に使用して、Data Factory パイプラインで Azure 関数を実行します。 Azure 関数の戻り値の型は、有効な `JObject` である必要があります。 ([JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) は `JObject` では "*ない*" ことに留意してください。)`JObject`以外の戻り値の型が失敗し、ユーザー エラー*応答コンテンツは有効な JObject ではない*が発生します。
+Azure 関数のリンクされたサービスを作成し、それを [Azure 関数アクティビティ](control-flow-azure-function-activity.md)と共に使用して、Data Factory パイプラインで Azure 関数を実行します。 Azure 関数の戻り値の型は、有効な `JObject` である必要があります。 ([JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) は `JObject` では "*ない*" ことに留意してください。)`JObject`以外の戻り値の型が失敗し、ユーザー エラー *応答コンテンツは有効な JObject ではない* が発生します。
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
 | type   | type プロパティは、次のように設定する必要があります:**AzureFunction** | はい |
 | function app url | Azure 関数アプリの URL。 形式は `https://<accountname>.azurewebsites.net` です。 この URL は、Azure portal で関数アプリを表示した際に **URL** セクションに表示される値です  | はい |
-| function key | Azure 関数のアクセス キーです。 それぞれの関数の **[管理]** セクションをクリックし、**ファンクション キー**または**ホスト キー**をコピーします。 詳しくは、次の記事をご覧ください:[Azure Functions の HTTP トリガーとバインド](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | はい |
+| function key | Azure 関数のアクセス キーです。 それぞれの関数の **[管理]** セクションをクリックし、**ファンクション キー** または **ホスト キー** をコピーします。 詳しくは、次の記事をご覧ください:[Azure Functions の HTTP トリガーとバインド](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | はい |
 |   |   |   |
 
 ## <a name="next-steps"></a>次のステップ

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135765"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424825"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>記憶域スペース ダイレクトを実行している Azure VM を別のリージョンにレプリケートする
 
@@ -49,12 +49,12 @@ ms.locfileid: "86135765"
 1. アプリケーション整合性がオフになっているレプリケーション ポリシーを選択します* (クラッシュ整合性のサポートのみ利用可能)
 1. レプリケーションを有効にします
 
-   ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![レプリケーション設定を構成する場所を示すスクリーンショット。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
 2. レプリケートされたアイテムに移動すると、両方の仮想マシンの状態を確認できます。
 3. 両方の仮想マシンが保護されており、マルチ VM 整合性グループの一部としても表示されます。
 
-   ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![仮想マシンが保護されていることと、マルチ VM 整合性グループの一部を示すスクリーンショット。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>復旧計画の作成
 復旧計画では、フェールオーバー時における多層アプリケーション内の各種階層の順序付けがサポートされます。 順序付けは、アプリケーションの一貫性の保守に役立ちます。 多層 Web アプリケーションの復旧計画を作成する際には、[復旧計画の作成](site-recovery-create-recovery-plans.md)に関するページで説明されている手順を完了します。

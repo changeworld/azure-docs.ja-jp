@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 570653d620c5e314db9e6a0bc56d731f8acf9296
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925653"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759906"
 ---
 ::: zone target="docs"
 
@@ -268,7 +268,7 @@ ms.locfileid: "87925653"
     
 8. ディスクのロックが解除されたら、マウント ポイントに移動して、ディスクの内容を表示することができます。 これで、データを *BlockBlob* フォルダーまたは *PageBlob* フォルダーにコピーする準備が整いました。 
 
-    ![Data Box Disk の内容](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
+    ![Data Box Disk の内容 2](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
 
 ディスクのロックを解除中に問題が発生した場合は、[ロック解除に関する問題のトラブルシューティングを行う](data-box-disk-troubleshoot-unlock.md)方法をご覧ください。 

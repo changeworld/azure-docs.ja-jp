@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515312"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629276"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -22,7 +22,7 @@ ms.locfileid: "85515312"
 この記事では、Azure ファイル共有をオンプレミスに直接マウントするために、Linux 上でポイント対サイト VPN を構成する手順について詳細に説明します。 Azure File Sync のトラフィックを VPN 経由でルーティングすることを検討している場合は、[Azure File Sync のプロキシとファイアウォールの設定の構成](storage-sync-files-firewall-and-proxy.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-- 最新バージョンの Azure CLI。 Azure CLI をインストールする方法の詳細については、[Azure PowerShell CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照し、オペレーティング システムを選択してください。 Linux 上で Azure PowerShell モジュールを使用することは可能ですが、下の手順は Azure CLI 用に提供されています。
+- 最新バージョンの Azure CLI。 Azure CLI をインストールする方法の詳細については、[Azure PowerShell CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照し、オペレーティング システムを選択してください。 Linux 上で Azure PowerShell モジュールを使用することは可能ですが、下の手順は Azure CLI 用に提供されています。
 
 - オンプレミスにマウントする Azure ファイル共有。 ストレージ アカウント内にデプロイされた Azure ファイル共有は、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 Azure ファイル共有とストレージ アカウントをデプロイする方法の詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
 

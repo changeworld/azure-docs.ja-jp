@@ -2,7 +2,7 @@
 title: Azure AD Domain Services の同期のしくみ | Microsoft Docs
 description: Azure AD テナントまたはオンプレミス Active Directory Domain Services 環境から Azure Active Directory Domain Services のマネージド ドメインへのオブジェクトと資格情報の同期プロセスのしくみについて説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -10,19 +10,21 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: 41ba337765b4a0a93be52f08ae6656707cf7aa73
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039842"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618809"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
 Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメイン内のオブジェクトと資格情報は、ドメイン内でローカルに作成するか、Azure Active Directory (Azure AD) テナントから同期することができます。 Azure AD DS を初めてデプロイするときに、一方向の自動同期が構成され、Azure AD からオブジェクトがレプリケートされます。 この一方向の同期は引き続きバックグラウンドで実行され、Azure AD からの変更を反映して Azure AD DS マネージド ドメインを最新の状態に保ちます。 Azure AD DS から Azure AD への同期は行われません。
 
 ハイブリッド環境では、Azure AD Connect を使用して、オンプレミスの AD DS ドメインのオブジェクトと資格情報を Azure AD に同期できます。 これらのオブジェクトが Azure AD に正常に同期されると、自動バックグラウンド同期によって、マネージド ドメインを使用するアプリケーションでそれらのオブジェクトと資格情報を使用できるようになります。
+
+ADFS を使用したフェデレーション認証のために、オンプレミスの AD DS と Azure AD が構成されている場合、Azure DS で使用できる (現在の、または有効な) パスワード ハッシュはありません。 フェデレーション認証が実装される前に作成された Azure AD ユーザー アカウントには古いパスワード ハッシュがある可能性がありますが、これはオンプレミスのパスワードのハッシュと一致しないと考えられます。 そのため、Azure AD DS はユーザーの資格情報を検証できません。
 
 次の図は、Azure AD DS、Azure AD、およびオプションのオンプレミスの AD DS 環境間で同期がどのように行われるかを示しています。
 

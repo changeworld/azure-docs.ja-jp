@@ -4,10 +4,10 @@ description: リソース グループ履歴でデプロイが 800 を超えた�
 ms.topic: troubleshooting
 ms.date: 08/07/2020
 ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87987054"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>デプロイ数が 800 を超えたときのエラーを解決する

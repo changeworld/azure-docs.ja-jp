@@ -3,19 +3,19 @@ title: Translator Dictionary Examples メソッド
 titleSuffix: Azure Cognitive Services
 description: Translator Dictionary Examples メソッドからは、辞書内の用語がコンテキストで使用される方法を示す例が提供されます。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: swmachan
-ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: lajanuar
+ms.openlocfilehash: e7f0e106c1ca154dcd54990395430b3e0f6c536f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592510"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895511"
 ---
 # <a name="translator-30-dictionary-examples"></a>Translator 3.0:辞書の例
 
@@ -43,7 +43,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 | ヘッダー  | 説明 |
 | ------ | ----------- |
-| 認証ヘッダー <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
+| 認証ヘッダー <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
 | Content-Type | "**必須の要求ヘッダー**" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
 | Content-Length   | "**必須の要求ヘッダー**" です。<br/>要求本文の長さです。 |
 | X-ClientTraceId   | **オプション**。<br/>要求を一意に識別する、クライアントで生成された GUID。 `ClientTraceId` という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。 |

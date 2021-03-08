@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/08/2020
+ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 0dbd7eb9203f31b580f586a8a7d1fa216533628c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170515"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755012"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
@@ -52,10 +52,10 @@ Microsoft Authentication Library (MSAL) では、さまざまなアプリケー�
 
 これらのフローのいくつかでは、対話型と非対話型の両方のトークンの取得がサポートされています。
 
-  - **対話型**とは、ユーザーに入力を求めることができることを意味します。 たとえば、ユーザーにログインを要求したり、多要素認証 (MFA) を実行したり、リソースに対する追加の同意を付与したりすることができます。
-  - **非対話型**、つまり*サイレント*の認証では、ログイン サーバーがユーザーに追加情報の入力を求めることが*できない*方法でトークンを取得しようとします。
+  - **対話型** とは、ユーザーに入力を求めることができることを意味します。 たとえば、ユーザーにログインを要求したり、多要素認証 (MFA) を実行したり、リソースに対する追加の同意を付与したりすることができます。
+  - **非対話型**、つまり *サイレント* の認証では、ログイン サーバーがユーザーに追加情報の入力を求めることが *できない* 方法でトークンを取得しようとします。
 
-MSAL ベースのアプリケーションでは、最初にトークンを*サイレントで*取得しようとします。その後、非対話型方法が失敗した場合にのみ対話型で取得しようとします。 このパターンの詳細については、「[Microsoft Authentication Library (MSAL) を使用してトークンを取得し、キャッシュする](msal-acquire-cache-tokens.md)」を参照してください。
+MSAL ベースのアプリケーションでは、最初にトークンを *サイレントで* 取得しようとします。その後、非対話型方法が失敗した場合にのみ対話型で取得しようとします。 このパターンの詳細については、「[Microsoft Authentication Library (MSAL) を使用してトークンを取得し、キャッシュする](msal-acquire-cache-tokens.md)」を参照してください。
 
 ## <a name="authorization-code"></a>Authorization code (承認コード)
 
@@ -138,11 +138,11 @@ MSAL ベースのアプリケーションでは、最初にトークンを*サ�
 
 この認証フローには、Electron や React-Native などのクロスプラットフォーム JavaScript フレームワークを使用するアプリケーションのシナリオは含まれません。これらでは、さらにネイティブ プラットフォームと対話する機能が必要であるためです。
 
-暗黙的モードで発行されたトークンには、URL によってブラウザーに返されるために**長さの制限**があります (`response_mode` は `query` または `fragment` のいずれか)。 一部のブラウザーでは、ブラウザーのバー内の URL の長さが制限され、長すぎると失敗します。 そのため、これらの暗黙的なフロー トークンには `groups` または `wids` 要求が含まれていません。
+暗黙的モードで発行されたトークンには、URL によってブラウザーに返されるために **長さの制限** があります (`response_mode` は `query` または `fragment` のいずれか)。 一部のブラウザーでは、ブラウザーのバー内の URL の長さが制限され、長すぎると失敗します。 そのため、これらの暗黙的なフロー トークンには `groups` または `wids` 要求が含まれていません。
 
 ## <a name="on-behalf-of"></a>On-Behalf-Of
 
-[OAuth 2 の On-Behalf-Of 認証フロー](v2-oauth2-on-behalf-of-flow.md)は、アプリケーションでサービスまたは Web API を呼び出し、それがさらに別のサービスまたは Web API を呼び出す必要がある場合に、使用されます。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 中間層サービスがダウンストリーム サービスに認証済み要求を発行するには、そのサービスは Microsoft ID プラットフォームからのアクセス トークンをユーザーに*代わって*セキュリティ保護する必要があります。
+[OAuth 2 の On-Behalf-Of 認証フロー](v2-oauth2-on-behalf-of-flow.md)は、アプリケーションでサービスまたは Web API を呼び出し、それがさらに別のサービスまたは Web API を呼び出す必要がある場合に、使用されます。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 中間層サービスがダウンストリーム サービスに認証済み要求を発行するには、そのサービスは Microsoft ID プラットフォームからのアクセス トークンをユーザーに *代わって* セキュリティ保護する必要があります。
 
 ![on-behalf-of フローの図](media/msal-authentication-flows/on-behalf-of.png)
 
@@ -165,7 +165,7 @@ MSAL ベースのアプリケーションでは、最初にトークンを*サ�
 2. トークンを使用して Web API を呼び出します。
 
 > [!WARNING]
-> このフローは推奨されません。 高度な信頼と資格情報の公開が要求されます。 このフローは、より安全なフローを使用できない場合*にのみ*使用してください。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。
+> このフローは推奨されません。 高度な信頼と資格情報の公開が要求されます。 このフローは、より安全なフローを使用できない場合 *にのみ* 使用してください。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。
 
 Windows ドメイン参加済みマシン上でトークンを自動的に取得するために推奨されるフローは、[統合 Windows 認証](#integrated-windows-authentication)です。 それ以外の場合は、[デバイス コード フロー](#device-code)を使用してください。
 
@@ -198,7 +198,7 @@ MSAL では、ドメイン参加済みまたは Azure AD 参加済みの Windows
 
 ### <a name="constraints"></a>制約
 
-統合 Windows 認証 (IWA) では、フェデレーション ユーザー (Active Directory で作成され、Azure AD によってサポートされているユーザー) *のみ*がサポートされています。 Azure AD で直接作成され、Active Directory による支援のないユーザー (マネージド ユーザー) は、この認証フローを使用できません。 この制限は、[ユーザー名/パスワードのフロー](#usernamepassword)には影響しません。
+統合 Windows 認証 (IWA) では、フェデレーション ユーザー (Active Directory で作成され、Azure AD によってサポートされているユーザー) *のみ* がサポートされています。 Azure AD で直接作成され、Active Directory による支援のないユーザー (マネージド ユーザー) は、この認証フローを使用できません。 この制限は、[ユーザー名/パスワードのフロー](#usernamepassword)には影響しません。
 
 IWA は、.NET Framework、.NET Core、およびユニバーサル Windows プラットフォームのアプリケーションを対象としています。
 
@@ -219,11 +219,11 @@ IWA はサイレント フローであるため、次のいずれかが当ては
 これは、次のいずれかが当てはまることを意味します。
 
 - 開発者が Azure portal で自分用に **[許可]** を選択しておきます。
-- テナント管理者が Azure portal のアプリ登録の **[API のアクセス許可]** タブにある **[{テナント ドメイン} の管理者の同意を付与/取り消す]** を選択しておきます (「[Web API にアクセスするためのアクセス許可を追加する](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照)。
+- テナント管理者が Azure portal のアプリ登録の **[API のアクセス許可]** タブにある **[{テナント ドメイン} の管理者の同意を付与/取り消す]** を選択しておきます (「[Web API にアクセスするためのアクセス許可を追加する](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)」を参照)。
 - ユーザーがアプリケーションに同意する方法を指定しておきます (「[個々のユーザーの同意を要求する](v2-permissions-and-consent.md#requesting-individual-user-consent)」を参照)。
 - テナント管理者がアプリケーションに同意する方法を指定しておきます ([管理者の同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)に関するセクションを参照)。
 
-IWA フローは、.NET デスクトップ、.NET Core、および Windows ユニバーサル プラットフォームの各アプリに対して有効です。 .Net Core では、オペレーティングシステムからユーザー名を取得できないため、ユーザー名を IWA に指定する必要があります。
+IWA フローは、.NET デスクトップ、.NET Core、および Windows ユニバーサル プラットフォームの各アプリに対して有効です。
 
 同意の詳細については、[v2.0 のアクセス許可と同意](v2-permissions-and-consent.md)に関するページを参照してください。
 

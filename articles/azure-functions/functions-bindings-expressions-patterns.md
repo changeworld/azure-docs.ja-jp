@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212613"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920292"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 
@@ -41,7 +41,7 @@ ms.locfileid: "88212613"
 > [!NOTE]
 > トリガーとバインディングの `connection` プロパティは特殊なケースであり、値はアプリ設定 (パーセント記号なし) として自動的に解決されます。 
 
-次の例は、アプリ設定 `%input-queue-name%` を使用してトリガーの対象となるキューを定義する Azure Queue Storage トリガーです。
+次の例は、アプリ設定 `%input_queue_name%` を使用してトリガーの対象となるキューを定義する Azure Queue Storage トリガーです。
 
 ```json
 {
@@ -50,7 +50,7 @@ ms.locfileid: "88212613"
       "name": "order",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "%input-queue-name%",
+      "queueName": "%input_queue_name%",
       "connection": "MY_STORAGE_ACCT_APP_SETTING"
     }
   ]
@@ -62,7 +62,7 @@ ms.locfileid: "88212613"
 ```csharp
 [FunctionName("QueueTrigger")]
 public static void Run(
-    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
+    [QueueTrigger("%input_queue_name%")]string myQueueItem, 
     ILogger log)
 {
     log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
@@ -164,6 +164,7 @@ public static void Run(
 これらのメタデータ値は、*function.json* ファイルのプロパティでアクセスできます。 たとえば、キュー トリガーを使用していて、読み取る BLOB の名前がキュー メッセージに含まれているとします。 次の例に示すように、*function.json* ファイルで、BLOB `path` プロパティの `queueTrigger` メタデータ プロパティを使用できます。
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,6 +180,7 @@ public static void Run(
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
 各トリガーのメタデータ プロパティの詳細については、対応するリファレンス記事を参照してください。 例については、[キュー トリガー メタデータ](functions-bindings-storage-queue-trigger.md#message-metadata)に関するセクションを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  

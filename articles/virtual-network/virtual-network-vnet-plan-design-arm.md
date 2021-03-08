@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045503"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220339"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -49,7 +49,7 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 
 - 組織にはトラフィックを異なる仮想ネットワークに分離するセキュリティ要件がありますか? 仮想ネットワークを接続するかどうかを選択できます。 仮想ネットワークを接続する場合は、ファイアウォールなどのネットワーク仮想アプライアンスを実装して、仮想ネットワーク間のトラフィックのフローを制御できます。 詳しくは、「[セキュリティ](#security)」および「[接続](#connectivity)」をご覧ください。
 - 組織には、仮想ネットワークを異なる[サブスクリプション](#subscriptions)または[リージョン](#regions)に分離する要件がありますか?
-- [ネットワーク インターフェイス](virtual-network-network-interface.md)を介して、VM と他のリソースの通信ができます。 各ネットワーク インターフェイスには、1 つ以上のプライベート IP アドレスが割り当てられています。 仮想ネットワークでは、ネットワーク インターフェイスと[プライベート IP アドレス](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)がいくつ必要ですか? 1 つの仮想ネットワークに設定できるネットワーク インターフェイスとプライベート IP アドレスの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)があります。
+- [ネットワーク インターフェイス](virtual-network-network-interface.md)を介して、VM と他のリソースの通信ができます。 各ネットワーク インターフェイスには、1 つ以上のプライベート IP アドレスが割り当てられています。 仮想ネットワークでは、ネットワーク インターフェイスと[プライベート IP アドレス](./private-ip-addresses.md)がいくつ必要ですか? 1 つの仮想ネットワークに設定できるネットワーク インターフェイスとプライベート IP アドレスの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)があります。
 - 仮想ネットワークを別の仮想ネットワークまたはオンプレミス ネットワークに接続しますか? 仮想ネットワークを相互に、またはオンプレミスのネットワークに接続することはできますが、それ以外には接続できません。 詳しくは、「[接続](#connectivity)」をご覧ください。 別の仮想ネットワークまたはオンプレミスのネットワークに接続する各仮想ネットワークは、一意のアドレス空間を持っている必要があります。 各仮想ネットワークのアドレス空間には、1 つまたは複数のパブリック アドレス範囲またはプライベート アドレス範囲が割り当てられます。 アドレス範囲は、クラスレス ドメイン間ルーティング (CIDR) 形式 (10.0.0.0/16 など) で指定されます。 詳しくは、仮想ネットワークの[アドレス範囲](manage-virtual-network.md#add-or-remove-an-address-range)に関するページをご覧ください。
 - 組織には、異なる仮想ネットワークのリソースに対する管理要件がありますか? ある場合は、異なる仮想ネットワークにリソースを分離することによって、組織内のユーザーに対する[アクセス許可の割り当て](#permissions)を簡素化したり、異なる仮想ネットワークに異なるポリシーを割り当てたりすることができます。
 - Azure サービス リソースを仮想ネットワークにデプロイすると、独自の仮想ネットワークが作成されます。 Azure サービスが独自の仮想ネットワークを作成するかどうかを確認するには、「[仮想ネットワークにデプロイできるサービス](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)」をご覧ください。
@@ -72,8 +72,8 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 
 - ネットワーク セキュリティ グループと、ネットワーク トラフィックをフィルター処理する NVA のどちらか一方または両方を使って、仮想ネットワーク内のリソース間のネットワーク トラフィックをフィルター処理することができます。 ファイアウォールなどの NVA をデプロイしてネットワーク トラフィックをフィルター処理するには、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?subcategories=appliances&page=1) をご覧ください。 NVA を使うときは、サブネットから NVA にトラフィックをルーティングするためのカスタム ルートも作成します。 詳しくは、「[トラフィックのルーティング](#traffic-routing)」をご覧ください。
 - ネットワーク セキュリティ グループには、リソースが送受信するトラフィックを許可または拒否する、複数の既定のセキュリティ規則が含まれます。 ネットワーク セキュリティ グループは、ネットワーク インターフェイスと、ネットワーク インターフェイスが含まれるサブネットの、どちらか一方または両方に関連付けることができます。 セキュリティ規則の管理を簡単にするため、可能な場合は常に、サブネット内の個々のネットワーク インターフェイスではなく、個別のサブネットにネットワーク セキュリティ グループを関連付けることをお勧めします。
-- サブネット内の VM ごとに異なるセキュリティ規則を適用する必要がある場合は、VM 内のネットワーク インターフェイスを、1 つまたは複数のアプリケーション セキュリティ グループに関連付けることができます。 セキュリティ規則では、送信元と送信先のどちらか一方または両方のアプリケーション セキュリティ グループを指定できます。 その規則は、アプリケーション セキュリティ グループのメンバーであるネットワーク インターフェイスにのみ適用されます。 詳しくは、[ネットワーク セキュリティ グループ](security-overview.md)および[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)に関するページをご覧ください。
-- Azure では、各ネットワーク セキュリティ グループ内に複数のセキュリティ規則が既定で作成されます。 既定の規則の 1 つでは、仮想ネットワーク内のすべてのリソース間で、すべてのトラフィックのフローが許可されます。 この動作をオーバーライドするには、ネットワーク セキュリティ グループと、NVA にトラフィックをルーティングするためのカスタム ルーティングの、どちらか一方または両方を使います。 Azure の[既定のセキュリティ規則](security-overview.md#default-security-rules)のすべてと、ネットワーク セキュリティ グループの規則がリソースに適用される方法を、よく理解することをお勧めします。
+- サブネット内の VM ごとに異なるセキュリティ規則を適用する必要がある場合は、VM 内のネットワーク インターフェイスを、1 つまたは複数のアプリケーション セキュリティ グループに関連付けることができます。 セキュリティ規則では、送信元と送信先のどちらか一方または両方のアプリケーション セキュリティ グループを指定できます。 その規則は、アプリケーション セキュリティ グループのメンバーであるネットワーク インターフェイスにのみ適用されます。 詳しくは、[ネットワーク セキュリティ グループ](./network-security-groups-overview.md)および[アプリケーション セキュリティ グループ](./network-security-groups-overview.md#application-security-groups)に関するページをご覧ください。
+- Azure では、各ネットワーク セキュリティ グループ内に複数のセキュリティ規則が既定で作成されます。 既定の規則の 1 つでは、仮想ネットワーク内のすべてのリソース間で、すべてのトラフィックのフローが許可されます。 この動作をオーバーライドするには、ネットワーク セキュリティ グループと、NVA にトラフィックをルーティングするためのカスタム ルーティングの、どちらか一方または両方を使います。 Azure の[既定のセキュリティ規則](./network-security-groups-overview.md#default-security-rules)のすべてと、ネットワーク セキュリティ グループの規則がリソースに適用される方法を、よく理解することをお勧めします。
 
 [NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) を使用して Azure とインターネットの間に境界ネットワーク (DMZ とも呼ばれます) を実装するためのサンプル設計を表示できます。
 
@@ -95,7 +95,7 @@ Azure では、サブネットからの送信トラフィックに対して複�
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 
-Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を利用すると、[サイト間 VPN](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って、または Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) による専用接続を使って、オンプレミスのネットワークに仮想ネットワークを接続できます。
+Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を利用すると、[サイト間 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って、または Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) による専用接続を使って、オンプレミスのネットワークに仮想ネットワークを接続できます。
 
 ピアリングと VPN Gateway を組み合わせて、[ハブとスポークのネットワーク](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成できます。この場合、たとえば、スポークの仮想ネットワークはハブの仮想ネットワークに接続し、ハブはオンプレミスのネットワークに接続します。
 
@@ -105,13 +105,13 @@ Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure は、リソースに対して[ロール ベースのアクセス制御](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) を利用します。 アクセス許可は、管理グループ、サブスクリプション、リソース グループ、および個々のリソースという階層内の[スコープ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)に割り当てられます。 階層について詳しくは、[リソースの整理](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 Azure 仮想ネットワークと、ピアリング、ネットワーク セキュリティ グループ、サービス エンドポイント、ルート テーブルなどの関連するすべての機能を使用するには、組織のメンバーを組み込みの[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロールに割り当ててから、ロールを適切なスコープに割り当てることができます。 仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てる場合は、[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成し、[仮想ネットワーク](manage-virtual-network.md#permissions)、[サブネットとサービス エンドポイント](virtual-network-manage-subnet.md#permissions)、[ネットワーク インターフェイス](virtual-network-network-interface.md#permissions)、[ピアリング](virtual-network-manage-peering.md#permissions)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md#permissions)、または[ルート テーブル](manage-route-table.md#permissions)に必要な特定のアクセス許可を、ロールに割り当てます。
+Azure では、リソースに対して、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を利用します。 アクセス許可は、管理グループ、サブスクリプション、リソース グループ、および個々のリソースという階層内の[スコープ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)に割り当てられます。 階層について詳しくは、[リソースの整理](../governance/management-groups/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 Azure 仮想ネットワークと、ピアリング、ネットワーク セキュリティ グループ、サービス エンドポイント、ルート テーブルなどの関連するすべての機能を使用するには、組織のメンバーを組み込みの[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロールに割り当ててから、ロールを適切なスコープに割り当てることができます。 仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てる場合は、[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成し、[仮想ネットワーク](manage-virtual-network.md#permissions)、[サブネットとサービス エンドポイント](virtual-network-manage-subnet.md#permissions)、[ネットワーク インターフェイス](virtual-network-network-interface.md#permissions)、[ピアリング](virtual-network-manage-peering.md#permissions)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md#permissions)、または[ルート テーブル](manage-route-table.md#permissions)に必要な特定のアクセス許可を、ロールに割り当てます。
 
 ## <a name="policy"></a>ポリシー
 
 Azure Policy を使って、ポリシーの定義の作成、割り当て、管理を行うことができます。 ポリシー定義は、リソースにさまざまな規則を適用し、組織の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 Azure Policy によって、リソースの評価が実行され、ユーザーのポリシー定義に準拠していないリソースがスキャンされます。 たとえば、特定のリソース グループまたはリージョン内でのみ仮想ネットワークの作成を許可するようなポリシーを定義して適用することができます。 または、すべてのサブネットにネットワーク セキュリティ グループが関連付けられていることを要求するポリシーを作成できます。 ポリシーは、リソースを作成および更新するときに評価されます。
 
-ポリシーは、管理グループ、サブスクリプション、およびリソース グループという階層に適用されます。 詳しくは、[Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照するか、仮想ネットワークの [Azure Policy 定義](policy-samples.md)をデプロイしてください。
+ポリシーは、管理グループ、サブスクリプション、およびリソース グループという階層に適用されます。 詳しくは、[Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照するか、仮想ネットワークの [Azure Policy 定義](./policy-reference.md)をデプロイしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

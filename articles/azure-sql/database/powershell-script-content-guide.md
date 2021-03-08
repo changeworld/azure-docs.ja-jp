@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987312"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690974"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance の Azure PowerShell サンプル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 |---|---|
 |**マネージド インスタンスを作成して構成する**||
 | [マネージド インスタンスを作成して管理する](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | この PowerShell スクリプトでは、Azure PowerShell を使用してマネージド インスタンスを作成、管理する方法を紹介します。 |
-| [Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成および管理する](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトでは、Azure PowerShell と Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成、管理する方法を紹介します。|
+| [Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成および管理する](../managed-instance/create-template-quickstart.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトでは、Azure PowerShell と Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成、管理する方法を紹介します。|
 | [データベースを別の geo リージョンのマネージド インスタンスに復元する](../managed-instance/scripts/restore-geo-backup.md) | この PowerShell スクリプトでは、1 つのデータベースのバックアップが作成されて、別のリージョンに復元されます。 これは、geo リストア ディザスター リカバリー シナリオとして知られています。 |
 | **Transparent Data Encryption を構成する**||
 | [Azure Key Vault の独自のキーを使用してマネージド インスタンスで Transparent Data Encryption を管理する](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトによって、Azure Key Vault のキーを使用し、Azure SQL Managed Instance の Bring Your Own Key シナリオで Transparent Data Encryption が構成されます。|

@@ -3,21 +3,20 @@ title: Azure App Configuration のベスト プラクティス | Microsoft Docs
 description: Azure App Configuration の使用におけるベスト プラクティスについて説明します。 ここでは、キーのグループ化、キー値の構成、App Configuration の準備などのトピックについて説明します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588060"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371551"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス
 
@@ -69,7 +68,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 次のいずれかの方法を使用して、Web アプリまたは関数に App Configuration へのアクセスを提供できます。
 
 * Azure portal を介して、App Service のアプリケーション設定に App Configuration ストアへの接続文字列を入力します。
-* 接続文字列を Key Vault の App Configuration ストアに保存し、[App Service からそれを参照](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)します。
+* 接続文字列を Key Vault の App Configuration ストアに保存し、[App Service からそれを参照](../app-service/app-service-key-vault-references.md)します。
 * Azure マネージド ID を使用して App Configuration ストアにアクセスします。 詳細については、「[Integrate with Azure managed identities (Azure マネージド ID と統合する)](howto-integrate-azure-managed-service-identity.md)」を参照してください。
 * App Configuration から App Service に構成をプッシュします。 App Configuration には、データを直接 App Service に送信するエクスポート機能があります (Azure portal および Azure CLI)。 この方法であれば、アプリケーション コードに一切変更を加える必要がありません。
 
@@ -85,11 +84,15 @@ App Configuration に過剰な要求があると、調整や超過分料金が�
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>App Configuration への構成データのインポート
 
-App Configuration には、Azure portal または CLI のいずれかを使用して、現在の構成ファイルから構成設定を一括[インポート](https://aka.ms/azconfig-importexport1)するオプションが用意されています。 また、同じオプションを使用して、関連するストア間などで App Configuration から値をエクスポートすることもできます。 GitHub リポジトリとの継続的な同期を設定する場合は、Microsoft の [GitHub Actions](https://aka.ms/azconfig-gha2) を使用できます。これにより、App Configuration のメリットを得ながら、既存のソース管理手法を引き続き使用できます。
+App Configuration には、Azure portal または CLI のいずれかを使用して、現在の構成ファイルから構成設定を一括[インポート](./howto-import-export-data.md)するオプションが用意されています。 また、同じオプションを使用して、関連するストア間などで App Configuration から値をエクスポートすることもできます。 GitHub リポジトリとの継続的な同期を設定する場合は、Microsoft の [GitHub Actions](./concept-github-action.md) を使用できます。これにより、App Configuration のメリットを得ながら、既存のソース管理手法を引き続き使用できます。
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>App Configuration での複数リージョンのデプロイ
 
 App Configuration はリージョン単位のサービスです。 リージョンごとに構成が異なるアプリケーションでは、これらの構成を 1 つのインスタンスに格納すると、単一障害点が形成される可能性があります。 リージョンごとに 1 つの App Configuration インスタンスを複数のリージョンにデプロイするのが、より良いオプションである場合があります。 これは、リージョン単位のディザスター リカバリー、パフォーマンス、セキュリティ サイロ化に役立ちます。 リージョンごとに構成すると、調整がインスタンス単位で行われるため、待機時間が短縮され、個別の調整クォータが使用されます。 ディザスター リカバリーの軽減策を適用するには、[複数の構成ストア](./concept-disaster-recovery.md)を使用できます。 
+
+## <a name="client-applications-in-app-configuration"></a>App Configuration でのクライアント アプリケーション 
+
+App Configuration に過剰な要求があると、調整や超過分料金が発生する可能性があります。 アプリケーションでは、現在利用できるキャッシュとインテリジェントな更新を利用して、送信される要求の数が最適化されます。 このプロセスは、構成ストアへの直接接続を避けることにより、大量のクライアント アプリケーションでミラー化できます。 代わりにクライアント アプリケーションはカスタム サービスに接続し、このサービスによって構成ストアとの通信が行われます。 このプロキシ ソリューションを使用することで、クライアント アプリケーションが構成ストアの調整制限に近づかないようにすることができます。 詳細については、[FAQ](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration) に関するページを参照してください。  
 
 ## <a name="next-steps"></a>次のステップ
 

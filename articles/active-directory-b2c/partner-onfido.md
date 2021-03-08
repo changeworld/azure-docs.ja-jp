@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683863"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928632"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Onfido を構成するためのチュートリアル
 
@@ -30,7 +30,7 @@ ms.locfileid: "88683863"
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
 - Onfido の[試用版アカウント](https://onfido.com/signup/)。
 
@@ -74,7 +74,7 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 
 ### <a name="part-1---deploy-the-api"></a>パート 1 - API をデプロイする
 
-- 提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api)を Azure サービスにデプロイします。 このコードは、次の[手順](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
+- 提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api)を Azure サービスにデプロイします。 このコードは、次の[手順](/visualstudio/deployment/quickstart-deploy-to-azure)に従って、Visual Studio から発行することができます。
 - CORS を設定し、 **[Allowed Origin]\(許可されたオリジン\)** を https://{your_tenant_name}.b2clogin.com として追加します。
 
 >[!NOTE]
@@ -82,7 +82,7 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 
 #### <a name="adding-sensitive-configuration-settings"></a>重要な構成設定の追加
 
-アプリケーション設定は、[Azure の App Service](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) で構成できます。 App Service では、設定をリポジトリにチェックインすることなく、安全に構成できます。 Rest API には次の設定が必要です。
+アプリケーション設定は、[Azure の App Service](../app-service/configure-common.md#configure-app-settings) で構成できます。 App Service では、設定をリポジトリにチェックインすることなく、安全に構成できます。 Rest API には次の設定が必要です。
 
 | アプリケーション設定名 | source | Notes |
 |:-------------------------|:-------|:-------|
@@ -92,9 +92,9 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 
 #### <a name="configure-your-storage-location"></a>ストレージの場所を構成する
 
-1. [ストレージ アカウントで BLOB ストレージ コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)を設定します。
+1. [ストレージ アカウントで BLOB ストレージ コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)を設定します。
 
-2. UI ファイルを UI フォルダーからお使いの BLOB コンテナーに格納します。
+2. UI ファイルを [UI フォルダー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI)からお使いの BLOB コンテナーに格納します。
 
 3. これらの手順に従って、作成したストレージ コンテナーへの CORS アクセスを許可します。
 
@@ -118,13 +118,13 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 
 1. UI ファイルを UI フォルダーからお使いの BLOB コンテナーに格納します。
 
-2. [Azure Storage Explorer](https://docs.microsoft.com/azure/virtual-machines/windows/disks-use-storage-explorer-managed-disks) を使用して、ファイルとアクセス許可を管理します。
+2. [Azure Storage Explorer](../virtual-machines/disks-use-storage-explorer-managed-disks.md) を使用して、ファイルとアクセス許可を管理します。
 
 ### <a name="part-3---configure-azure-ad-b2c"></a>パート 3 - Azure AD B2C を構成する
 
 #### <a name="replace-the-configuration-values"></a>構成値を置き換える
 
-提供されたカスタム ポリシー内にある次のプレースホルダーを見つけて、ご自分のインスタンスの対応する値に置き換えます。
+提供された[カスタム ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies)内にある次のプレースホルダーを見つけて、ご自分のインスタンスの対応する値に置き換えます。
 
 | プレースホルダー | 値で置換 | 例  |
 |:---------------|:----------------|:-------------------|
@@ -142,7 +142,7 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>パート 4 - Azure AD B2C ポリシーを構成する
 
-Azure AD B2C テナントを設定してポリシーを構成する方法については、この[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack)を参照してください。
+Azure AD B2C テナントを設定してポリシーを構成する方法については、この[ドキュメント](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)を参照してください。
 
 >[!NOTE]
 > ベスト プラクティスとして、属性コレクション ページで同意通知を追加することをお勧めします。 本人確認のために情報がサード パーティのサービスに送信されることをユーザーに通知します。
@@ -169,6 +169,6 @@ Azure AD B2C テナントを設定してポリシーを構成する方法につ�
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

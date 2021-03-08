@@ -8,19 +8,20 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: deployment
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 94ac7282375660308f8dab37ae5bd874828f778a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a3f51a07b274320d1cd9f12b33703d8ec7f21f49
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074748"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359661"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure PowerShell を使用して Azure Virtual Machines 上の SQL Server をプロビジョニングする方法
 
@@ -143,7 +144,7 @@ $OSDiskName = $VMName + "OSDisk"
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Resource Manager デプロイ モデルで最初に作成するオブジェクトはリソース グループです。 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。 前に初期化した、リソース グループの名前と場所の変数を指定します。
+Resource Manager デプロイ モデルで最初に作成するオブジェクトはリソース グループです。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。 前に初期化した、リソース グループの名前と場所の変数を指定します。
 
 このコマンドレットを実行し、新しいリソース グループを作成します。
 
@@ -153,7 +154,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、両方の用途を兼ねた単一のディスクを作成します。 後から [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) コマンドレットを使用して追加のディスクを接続すると、SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納できます。 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、新しいリソース グループ内に標準ストレージ アカウントを作成します。 前に初期化した、ストレージ アカウント名、ストレージ SKU 名、および場所の変数を指定します。
+仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。 単純化するために、両方の用途を兼ねた単一のディスクを作成します。 後から [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) コマンドレットを使用して追加のディスクを接続すると、SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納できます。 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、新しいリソース グループ内に標準ストレージ アカウントを作成します。 前に初期化した、ストレージ アカウント名、ストレージ SKU 名、および場所の変数を指定します。
 
 このコマンドレットを実行し、新しいストレージ アカウントを作成します。
 
@@ -176,7 +177,7 @@ $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
 
 ### <a name="create-a-virtual-network-subnet-configuration"></a>仮想ネットワークのサブネット構成の作成
 
-まず、仮想ネットワークのサブネット構成を作成します。 このチュートリアルでは、[New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) コマンドレットを使用して、既定のサブネットを作成します。 前に初期化した、サブネット名とアドレス プレフィックスの変数を指定します。
+まず、仮想ネットワークのサブネット構成を作成します。 このチュートリアルでは、[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) コマンドレットを使用して、既定のサブネットを作成します。 前に初期化した、サブネット名とアドレス プレフィックスの変数を指定します。
 
 > [!NOTE]
 > サブネット名とアドレス プレフィックス以外のプロパティもこのコマンドレットで定義できますが、このチュートリアルの範囲を超えるため、ここでは取り上げません。
@@ -189,7 +190,7 @@ $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefi
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-次に、[New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) コマンドレットを使用して、新しいリソース グループ内に仮想ネットワークを作成します。 前に初期化した、名前、場所、およびアドレス プレフィックスの変数を指定します。 前の手順で定義したサブネット構成を使用します。
+次に、[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) コマンドレットを使用して、新しいリソース グループ内に仮想ネットワークを作成します。 前に初期化した、名前、場所、およびアドレス プレフィックスの変数を指定します。 前の手順で定義したサブネット構成を使用します。
 
 このコマンドレットを実行して、仮想ネットワークを作成します。
 
@@ -201,7 +202,7 @@ $VNet = New-AzVirtualNetwork -Name $VNetName `
 
 ### <a name="create-the-public-ip-address"></a>パブリック IP アドレスの作成
 
-これで仮想ネットワークが定義されたので、仮想マシンへの接続用の IP アドレスを構成する必要があります。 このチュートリアルでは、インターネット接続をサポートするために、動的 IP アドレス指定を使用してパブリック IP アドレスを作成します。 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) コマンドレットを使用して、新しいリソース グループ内にパブリック IP アドレスを作成します。 前に初期化した、名前、場所、割り当て方法、および DNS ドメイン名ラベルの変数を指定します。
+これで仮想ネットワークが定義されたので、仮想マシンへの接続用の IP アドレスを構成する必要があります。 このチュートリアルでは、インターネット接続をサポートするために、動的 IP アドレス指定を使用してパブリック IP アドレスを作成します。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) コマンドレットを使用して、新しいリソース グループ内にパブリック IP アドレスを作成します。 前に初期化した、名前、場所、割り当て方法、および DNS ドメイン名ラベルの変数を指定します。
 
 > [!NOTE]
 > パブリック IP アドレスのプロパティもこのコマンドレットで定義できますが、このチュートリアルの範囲を超えるため、ここでは取り上げません。 またプライベート アドレスや静的アドレスを作成することもできますが、このチュートリアルの範囲を超えるため、同様に説明を省略します。
@@ -243,7 +244,7 @@ VM と SQL Server トラフィックを保護するには、ネットワーク �
 
 ### <a name="create-the-network-interface"></a>ネットワーク インターフェイスの作成
 
-これで、仮想マシンのネットワーク インターフェイスを作成する準備が整いました。 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) コマンドレットを使用して、新しいリソース グループ内にネットワーク インターフェイスを作成します。 前に定義した名前、場所、サブネット、およびパブリック IP アドレスを指定します。
+これで、仮想マシンのネットワーク インターフェイスを作成する準備が整いました。 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) コマンドレットを使用して、新しいリソース グループ内にネットワーク インターフェイスを作成します。 前に定義した名前、場所、サブネット、およびパブリック IP アドレスを指定します。
 
 このコマンドレットを実行して、ネットワーク インターフェイスを作成します。
 
@@ -265,7 +266,7 @@ $Interface = New-AzNetworkInterface -Name $InterfaceName `
 
 ### <a name="create-the-vm-object"></a>VM オブジェクトの作成
 
-まず、仮想マシンのサイズを指定します。 このチュートリアルでは DS13 を指定します。 [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) コマンドレットを使用して、構成可能な仮想マシン オブジェクトを作成します。 前に初期化した、名前とサイズの変数を指定します。
+まず、仮想マシンのサイズを指定します。 このチュートリアルでは DS13 を指定します。 [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) コマンドレットを使用して、構成可能な仮想マシン オブジェクトを作成します。 前に初期化した、名前とサイズの変数を指定します。
 
 このコマンドレットを実行して、仮想マシン オブジェクトを作成します。
 
@@ -275,7 +276,7 @@ $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>ローカル管理者の資格情報の名前とパスワードを保持する資格情報オブジェクトを作成する
 
-仮想マシンのオペレーティング システムのプロパティを設定する前に、ローカル管理者アカウントの資格情報を、セキュリティで保護された文字列で指定する必要があります。 ここでは、[Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを使用します。
+仮想マシンのオペレーティング システムのプロパティを設定する前に、ローカル管理者アカウントの資格情報を、セキュリティで保護された文字列で指定する必要があります。 ここでは、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) コマンドレットを使用します。
 
 次のコマンドレットを実行します。 PowerShell の資格情報要求ウィンドウに、VM のローカル管理者名とパスワードを入力する必要があります。
 
@@ -285,7 +286,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのプロパティ設定
 
-[Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) コマンドレットを使用して仮想マシンのオペレーティング システムのプロパティを設定する準備ができました。
+[Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) コマンドレットを使用して仮想マシンのオペレーティング システムのプロパティを設定する準備ができました。
 
 - オペレーティング システムの種類は Windows として設定します。
 - [仮想マシン エージェント](../../../virtual-machines/extensions/agent-windows.md)がインストールされる必要があります。
@@ -302,7 +303,7 @@ $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>仮想マシンにネットワーク インターフェイスを追加する
 
-次に、前に定義した変数を使用して [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) コマンドレットを実行して、ネットワーク インターフェイスを追加します。
+次に、前に定義した変数を使用して [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) コマンドレットを実行して、ネットワーク インターフェイスを追加します。
 
 このコマンドレットを実行し、仮想マシンのネットワーク インターフェイスを設定します。
 
@@ -322,7 +323,7 @@ $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDis
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのディスクのプロパティ設定
 
-次に、[Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) コマンドレットを使用して、仮想マシンのオペレーティング システム ディスクのプロパティを設定します。 
+次に、[Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) コマンドレットを使用して、仮想マシンのオペレーティング システム ディスクのプロパティを設定します。 
 
 - 仮想マシンのオペレーティング システムはイメージから取得することを指定します。
 - キャッシュは読み取り専用に設定します (同じディスクに SQL Server がインストールされるため)。
@@ -337,7 +338,7 @@ $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name `
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>仮想マシンのプラットフォーム イメージを指定する
 
-最後の構成手順は、仮想マシン用のプラットフォーム イメージを指定することです。 このチュートリアルでは、最新の SQL Server 2016 CTP イメージを使用します。 前に定義した変数を使用して [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) コマンドレットを実行して、このイメージを使用します。
+最後の構成手順は、仮想マシン用のプラットフォーム イメージを指定することです。 このチュートリアルでは、最新の SQL Server 2016 CTP イメージを使用します。 前に定義した変数を使用して [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) コマンドレットを実行して、このイメージを使用します。
 
 このコマンドレットを実行し、仮想マシンのプラットフォーム イメージを指定します。
 
@@ -349,7 +350,7 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
 
 ## <a name="create-the-sql-vm"></a>SQL VM の作成
 
-これで構成手順を終えたので、仮想マシンを作成する準備が整いました。 定義した変数を使用して [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットを実行して、仮想マシンを作成します。
+これで構成手順を終えたので、仮想マシンを作成する準備が整いました。 定義した変数を使用して [New-AzVM](/powershell/module/az.compute/new-azvm) コマンドレットを実行して、仮想マシンを作成します。
 
 > [!TIP]
 > VM の作成には数分かかることがあります。
@@ -367,12 +368,17 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 
 ## <a name="install-the-sql-iaas-agent"></a>SQL Iaas Agent のインストール
 
-SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張機能](sql-server-iaas-agent-extension-automate-management.md)を使用して自動管理機能をサポートします。 エージェントを新しい VM にインストールし、リソース プロバイダーに登録するには、仮想マシンが作成された後に、[New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) コマンドを実行します。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](licensing-model-azure-hybrid-benefit-ahb-change.md)」を参照してください。 
+SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張機能](sql-server-iaas-agent-extension-automate-management.md)を使用して自動管理機能をサポートします。 拡張機能に SQL Server を登録するには、仮想マシンが作成された後に、[New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) コマンドを実行します。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](licensing-model-azure-hybrid-benefit-ahb-change.md)」を参照してください。 
 
 
    ```powershell
    New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
+拡張機能に登録する方法は 3 つあります。 
+- [サブスクリプション内の現在の VM および今後の VM をすべて自動登録する場合](sql-agent-extension-automatic-registration-all-vms.md)
+- [単一の VM を手動で](sql-agent-extension-manually-register-single-vm.md)
+- [複数の VM を一括で手動で](sql-agent-extension-manually-register-vms-bulk.md)
 
 
 ## <a name="stop-or-remove-a-vm"></a>VM の停止または削除

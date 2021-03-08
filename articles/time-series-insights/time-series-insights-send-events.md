@@ -9,22 +9,25 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3a5ee1cc8efead7c29dadaf64adb8e2686a10621
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168084"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023260"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>イベント ハブを使用して Azure Time Series Insights Gen1 環境にイベントを送信する
 
-この記事では、Azure Event Hubs でイベント ハブを作成して構成する方法について説明します。 また、サンプル アプリケーションを実行し、Event Hubs から Azure Time Series Insights にイベントをプッシュする方法も説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Azure Time Series Insights](./time-series-insights-update-create-environment.md) で環境を表示してください。
+> [!CAUTION]
+> これは Gen1 の記事です。
+
+この記事では、Azure Event Hubs でイベント ハブを作成して構成する方法について説明します。 また、サンプル アプリケーションを実行し、Event Hubs から Azure Time Series Insights にイベントをプッシュする方法も説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Azure Time Series Insights](./tutorials-set-up-tsi-environment.md) で環境を表示してください。
 
 ## <a name="configure-an-event-hub"></a>イベント ハブを構成する
 
-1. イベント ハブを作成する方法については、[Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/)をご覧ください。
+1. イベント ハブを作成する方法については、[Event Hubs のドキュメント](../event-hubs/index.yml)をご覧ください。
 1. 検索ボックスで、**Event Hubs** を検索します。 返された一覧で、 **[Event Hubs]** を選択します。
 1. 自分のイベント ハブを選択します。
 1. イベント ハブを作成すると、イベント ハブの名前空間が作成されます。 名前空間内にまだイベント ハブを作成していない場合は、メニューの **[エンティティ]** でイベント ハブを作成します。  
@@ -55,11 +58,11 @@ ms.locfileid: "88168084"
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>Azure Time Series Insights のインスタンスを追加する
 
-Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用して、受信テレメトリにコンテキスト データを追加できます。 TSM では、タグまたはシグナルは "*インスタンス*" と呼ばれており、"*インスタンス フィールド*" にコンテキスト データを格納できます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 インスタンス フィールドにデータを格納する方法の詳細については、[タイム シリーズ モデル](./concepts-model-overview.md)の概要を参照してください。
+Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用して、受信テレメトリにコンテキスト データを追加できます。 TSM では、タグまたはシグナルは "*インスタンス*" と呼ばれており、"*インスタンス フィールド*" にコンテキスト データを格納できます。 データはクエリ時に **タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの **タイム シリーズ ID** は、`id` です。 インスタンス フィールドにデータを格納する方法の詳細については、[タイム シリーズ モデル](./concepts-model-overview.md)の概要を参照してください。
 
 ### <a name="create-an-azure-time-series-insights-event-source"></a>Azure Time Series Insights のイベント ソースを作成する
 
-1. イベント ソースを作成していない場合は、[イベント ソースを作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)手順を実行します。
+1. イベント ソースを作成していない場合は、[イベント ソースを作成する](./how-to-ingest-data-event-hub.md)手順を実行します。
 
 1. `timeSeriesId` の値を設定します。 **時系列 ID** について詳しくは、「[時系列 モデル](./concepts-model-overview.md)」をご覧ください。
 
@@ -81,7 +84,7 @@ Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用し�
 1. **[Click to start]\(クリックして開始\)** を選択します。
 
     > [!TIP]
-    > また、風力発電シミュレーターでは、[Azure Time Series Insights GA クエリ API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) でペイロードとして使用できる JSON も作成されます。
+    > また、風力発電シミュレーターでは、[Azure Time Series Insights GA クエリ API](/rest/api/time-series-insights/gen1-query) でペイロードとして使用できる JSON も作成されます。
 
     > [!NOTE]
     > シミュレーターは、ブラウザーのタブが閉じられるまでデータを送信し続けます。
@@ -205,4 +208,4 @@ Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用し�
 
 * Azure Time Series Insights エクスプローラーで[自分の環境を表示](https://insights.timeseries.azure.com)します。
 
-* [IoT Hub デバイス メッセージ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)の詳細を参照してください。
+* [IoT Hub デバイス メッセージ](../iot-hub/iot-hub-devguide-messages-construct.md)の詳細を参照してください。

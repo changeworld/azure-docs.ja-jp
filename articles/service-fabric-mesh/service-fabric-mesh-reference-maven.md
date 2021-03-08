@@ -6,14 +6,19 @@ ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.custom: devx-track-java
-ms.openlocfilehash: 3a1aa004f47ba700ef4b96004dfe5b835788dcc7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dd42752dc7ef2c7686073b7a2d780fe9356425c7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372469"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625585"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric Mesh 用の Maven プラグイン
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API を介した新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

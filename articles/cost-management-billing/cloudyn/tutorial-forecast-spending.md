@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 309582464d85923823b3779338f288bfb5519c6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 70a5a4bf6981aa115c923559112d3533eebf3086
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687843"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132178"
 ---
 # <a name="tutorial-forecast-future-spending"></a>チュートリアル:将来の支出の予測
 
@@ -70,4 +70,4 @@ Cloudyn には、時系列の使用量に基づいて支出の予測を支援す
 次のチュートリアルに進み、コスト配分およびショーバック レポートを使用してコストを管理する方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [コストの配分とショーバックのレポートを使用してコストを管理する](../../cost-management/tutorial-manage-costs.md)
+> [コストの配分とショーバックのレポートを使用してコストを管理する](./tutorial-manage-costs.md)

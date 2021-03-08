@@ -12,12 +12,12 @@ ms.date: 09/26/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bea1753c87c11094e78f95a1bbadb02fb0b95e2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881352"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752982"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>単一および複数アカウントのパブリック クライアント アプリ
 

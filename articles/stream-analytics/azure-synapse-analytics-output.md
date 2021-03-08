@@ -1,26 +1,25 @@
 ---
 title: Azure Stream Analytics からの Azure Synapse Analytics 出力
 description: この記事では、Azure Stream Analytics の出力としての Azure Synapse Analytics について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 5d281bf33542354e2904805deed2f1deaf2725a2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 7e85df8ae67624a253a9fb617629d7355109c210
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875500"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019603"
 ---
-# <a name="azure-synapse-analytics-output-from-azure-stream-analytics-preview"></a>Azure Stream Analytics からの Azure Synapse Analytics 出力 (プレビュー)
+# <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Azure Synapse Analytics 出力
 
-[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) (旧称 SQL Data Warehouse) は、エンタープライズ データ ウェアハウスとビッグ データ分析の機能を同時に備えた無制限の分析サービスです。 
+[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) は、エンタープライズ データ ウェアハウスとビッグ データ分析が統合された制限のない分析サービスです。 
 
-Azure Stream Analytics ジョブで、Azure Synapse Analytics 内の SQL プール テーブルに出力でき、最大 200 MB/秒のスループット レートを処理できます。これにより、レポートやダッシュボードなどのワークロードに対して、最も要求の厳しいリアルタイム分析とホットパス データ処理がサポートされます。  
+Azure Stream Analytics ジョブを使用すると、Azure Synapse Analytics 内の専用 SQL プール テーブルに出力でき、最大 200 MB/秒のスループット レートを処理できます。これにより、レポートやダッシュボードなどのワークロードに対して、最も要求の厳しいリアルタイム分析とホットパス データ処理がサポートされます。  
 
-Stream Analytics ジョブに SQL プール テーブルを出力として追加する前に、それが存在している必要があります。 テーブルのスキーマを、使用するジョブの出力内のフィールドとその型と一致させる必要があります。 
+Stream Analytics ジョブに出力として専用 SQL プール テーブルを追加するには、事前にそれが存在している必要があります。 テーブルのスキーマを、使用するジョブの出力内のフィールドとその型と一致させる必要があります。 
 
 Azure Synapse を出力として使用するには、ストレージ アカウントが構成されていることを確認する必要があります。 [ストレージ アカウントの設定] に移動し、ストレージ アカウントを構成します。 テーブルをサポートする次のストレージ アカウントの種類のみを使用できます: 汎用 V2 と汎用 V1。 Standard レベルのみ選択してください。 Premium レベルはサポートされていません。
 
@@ -31,7 +30,7 @@ Azure Synapse を出力として使用するには、ストレージ アカウ�
 |プロパティ名|説明|
 |-|-|
 |出力エイリアス |クエリの出力をこのデータベースに出力するためにクエリで使用されるわかりやすい名前です。 |
-|データベース |出力を送信する SQL プールの名前。 |
+|データベース |出力を送信する専用 SQL プールの名前。 |
 |サーバー名 |Azure Synapse サーバーの名前。  |
 |ユーザー名 |データベースに書き込むためのアクセス権が割り当てられているユーザー名です。 Stream Analytics では、SQL 認証のみがサポートされます。 |
 |Password |データベースに接続するためのパスワード。 |
@@ -39,9 +38,5 @@ Azure Synapse を出力として使用するには、ストレージ アカウ�
 
 ## <a name="next-steps"></a>次のステップ
 
+* [マネージド ID を使用して Azure Stream Analytics ジョブから Azure SQL Database または Azure Synapse Analytics にアクセスする (プレビュー)](sql-database-output-managed-identity.md)
 * [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
-* [クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-cli.md)
-* [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
-* [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
-* [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)

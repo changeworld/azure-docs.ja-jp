@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.reviewer: sstein, jovanpop, sachinp
+ms.date: 09/14/2020
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587312"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770963"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ SQL Managed Instance には、基になるインフラストラクチャとア�
 SQL Managed Instance には 2 つのサービス レベルがあります。[General Purpose](../database/service-tier-general-purpose.md) と [Business Critical](../database/service-tier-business-critical.md) です。 これらのレベルでは、次の表に示すように、[別の機能](../database/service-tiers-general-purpose-business-critical.md)が提供されます。
 
 > [!Important]
-> Business Critical サービス レベルには、読み取り専用ワークロードに使用できる SQL Managed Instance の追加の組み込みコピー (セカンダリ レプリカ) が用意されています。 読み取りおよび書き込みクエリと、読み取り専用、分析、レポート クエリとを分離できる場合は、同じ価格で仮想コアとメモリを 2 度取得することになります。 セカンダリ レプリカは、プライマリ インスタンスよりも数秒遅れる場合があるため、データの正確な現在の状態を必要としないレポートと分析のワークロードをオフロードするように設計されています。 次の表で、**読み取り専用クエリ**は、セカンダリ レプリカ上で実行されるクエリです。
+> Business Critical サービス レベルには、読み取り専用ワークロードに使用できる SQL Managed Instance の追加の組み込みコピー (セカンダリ レプリカ) が用意されています。 読み取りおよび書き込みクエリと、読み取り専用、分析、レポート クエリとを分離できる場合は、同じ価格で仮想コアとメモリを 2 度取得することになります。 セカンダリ レプリカは、プライマリ インスタンスよりも数秒遅れる場合があるため、データの正確な現在の状態を必要としないレポートと分析のワークロードをオフロードするように設計されています。 次の表で、**読み取り専用クエリ** は、セカンダリ レプリカ上で実行されるクエリです。
 
 | **機能** | **汎用** | **Business Critical** |
 | --- | --- | --- |
@@ -72,24 +72,24 @@ SQL Managed Instance には 2 つのサービス レベルがあります。[Gen
 | インスタンスの最大ストレージ サイズ (予約済み) | - 4 仮想コアの場合は 2 TB (Gen5 のみ)<br/>- その他のサイズの場合は 8 TB | Gen4:1 TB (テラバイト) <br/> Gen5: <br/>- 4、8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
 | 最大データベース サイズ | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 2 TB から 8 TB)。 | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 1 TB から 4 TB)。 |
 | 最大 tempDB サイズ | 24 GB/仮想コア (96 から 1,920 GB) と現在利用可能なインスタンスのストレージ サイズに制限されています。<br/>tempdb 領域を増やすには、仮想コアを追加します。<br/> ログ ファイルは 120 GB に制限されています。| 現在利用可能なインスタンスのストレージ サイズまで。 |
-| インスタンスごとの最大データベース数 | インスタンスのストレージ サイズの制限に達していない限り、100 個。 | インスタンスのストレージ サイズの制限に達していない限り、100 個。 |
+| インスタンスごとの最大データベース数 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 100 ユーザー。 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 100 ユーザー。 |
 | インスタンスごとの最大データベース ファイル数 | インスタンスのストレージ サイズまたは [Azure Premium ディスクの記憶域割り当ての領域](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)の上限に達していない限り、最大で 280 個。 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 32,767 ファイル。 |
 | データ ファイルの最大サイズ | 現在利用可能なインスタンスのストレージ サイズ (最大 2 TB から 8 TB) と [Azure Premium ディスクの記憶域割り当ての領域](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)に制限されています。 | 現在利用可能なインスタンスのストレージ サイズ (最大 1 TB から 4 TB) に制限されています。 |
 | 最大ログ ファイル サイズ | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 |
-| データ/ログの IOPS (概算) | インスタンス* あたり最大で 30 から 40 K IOPS、ファイルあたり 500 から 7500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](#file-io-characteristics-in-general-purpose-tier)| 10 K から 200 K (2500 IOPS/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
-| ログ書き込みのスループット制限 (インスタンスあたり) | 仮想コアあたり 3 MB/秒<br/>最大 22 MB/秒 | 仮想コアあたり 4 MB/秒<br/>最大 48 MB/秒 |
+| データ/ログの IOPS (概算) | インスタンス* あたり最大で 30 から 40 K IOPS、ファイルあたり 500 から 7500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](#file-io-characteristics-in-general-purpose-tier)| 10 ～ 200 K (4000 IOPS/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
+| ログ書き込みのスループット制限 (インスタンスあたり) | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 120 MB/秒<br/>DB あたり 22 ～ 65 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](#file-io-characteristics-in-general-purpose-tier) | 仮想コアあたり 4 MB/秒<br/>最大 96 MB/秒 |
 | データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](#file-io-characteristics-in-general-purpose-tier) | 制限なし。 |
 | ストレージ IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
 | インメモリ OLTP | サポートされていません | 利用可能、[サイズは仮想コアの数に依存](#in-memory-oltp-available-space) |
 | 最大セッション数 | 30000 | 30000 |
 | 最大同時実行ワーカー (要求) 数 | Gen4:210 * 仮想コアの数 + 800<br>Gen5:105 * 仮想コアの数 + 800 | Gen4:210 * 仮想コア数 + 800<br>Gen5:105 * 仮想コア数 + 800 |
 | [読み取り専用レプリカ](../database/read-scale-out.md) | 0 | 1 (価格に含まれます) |
-| コンピューティングの分離 | Gen5:<br/>\- 80 仮想コアについてサポートされます<br/>\- 他のサイズではサポートされません<br/><br/>Gen4 は非推奨のためサポートされていません|Gen5:<br/>\- 60、64、80 仮想コアについてサポートされます<br/>\- 他のサイズではサポートされません<br/><br/>Gen4 は非推奨のためサポートされていません|
+| コンピューティングの分離 | General Purpose インスタンスによって、他のインスタンスと物理ハードウェアが共有される可能性があるため、Gen5 はサポートされていません<br/>Gen4 は非推奨のためサポートされていません|Gen5:<br/>\- 40、64、80 仮想コアでサポートされます<br/>\- 他のサイズではサポートされません<br/><br/>Gen4 は非推奨のためサポートされていません|
 
 
 追加の考慮事項: 
 
-- **現在利用可能なインスタンスのストレージ サイズ**は、予約インスタンスのサイズと使用されているストレージ スペースの差です。
+- **現在利用可能なインスタンスのストレージ サイズ** は、予約インスタンスのサイズと使用されているストレージ スペースの差です。
 - ユーザー データベースとシステム データベースのデータ ファイルおよびログ ファイルのサイズはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、[sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
 - General Purpose レベルではスループットと IOPS も、SQL Managed Instance によって明示的に制限されない[ファイル サイズ](#file-io-characteristics-in-general-purpose-tier)に依存します。
   [自動フェールオーバー グループ](../database/auto-failover-group-configure.md)を利用すれば、異なる Azure リージョンで別の読み取り可能レプリカを作成できます
@@ -99,16 +99,16 @@ SQL Managed Instance には 2 つのサービス レベルがあります。[Gen
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>General Purpose サービス レベルでのファイル IO 特性
 
-General Purpose サービス レベルでは、すべてのデータベース ファイルで、ファイルのサイズに依存する専用の IOPS とスループットが取得されます。 データ ファイルが大きいほど、IOPS とスループットも大きくなります。 次の表に、データベース ファイルの IO 特性を示します。
+General Purpose サービス レベルでは、すべてのデータベース ファイルで、ファイルのサイズに依存する専用の IOPS とスループットが取得されます。 ファイルが大きいほど、IOPS とスループットも大きくなります。 次の表に、データベース ファイルの IO 特性を示します。
 
-| ファイル サイズ | >=0 および <=128 GiB | >128 および <=256 GiB | >256 および <= 512 GiB | >0.5 および <=1 TiB    | >1 および <=2 TiB    | >2 および <=4 TiB | >4 および <=8 TiB |
+| ファイル サイズ | >=0 および <=128 GiB | >128 および <= 512 GiB | >0.5 および <=1 TiB    | >1 および <=2 TiB    | >2 および <=4 TiB | >4 および <=8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| ファイルあたりの IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
-| ファイルあたりのスループット | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/s | 
+| ファイルあたりの IOPS       | 500   | 2300              | 5000              | 7500              | 7500              | 12,500   |
+| ファイルあたりのスループット | 100 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/s | 
 
 何らかのデータベース ファイルに対する IO 待機時間が長いことに気付いた場合、または IOPS/スループットが上限に達している場合は、[ファイルのサイズを大きくする](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)ことで、パフォーマンスを改善できる場合があります。
 
-最大ログ書き込みスループットにはインスタンス レベルの制限もあるので (22 MB/秒)、インスタンスのスループット制限に達したため、ログ ファイルに対する最大ファイル スループットに達することができない場合があります。
+最大ログ書き込みスループットにはインスタンス レベルの制限もあるので (22 MB/秒などの値については上記を参照)、インスタンスのスループット制限に達したため、ログ ファイルに対する最大ファイル スループットに達することができない場合があります。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
@@ -120,7 +120,7 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [クラウド サービス プロバイダー (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [クラウド サービス プロバイダー (CSP)](/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio サブスクライバー向けの毎月の Azure クレジット付きサブスクリプション](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
@@ -138,7 +138,7 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 > [!Note]
 > これらの制限は既定の設定であり、技術的な制限ではありません。 現在のリージョンでさらに多くのインスタンスが必要な場合、[Azure portal でサポート リクエスト](../database/quota-increase-request.md)を特別に作成して、これらの制限をオンデマンドで引き上げることができます。 サポート リクエストを送信せずに、代わりに、別の Azure リージョンに SQL Managed Instance の新しいインスタンスを作成することも可能です。
 
-次の表は、サポートされている種類のサブスクリプションを対象に、**既定のリージョン別制限**についてまとめたものです (既定の制限は、下に説明がある、サポート リクエストを利用して拡張できます)。
+次の表は、サポートされている種類のサブスクリプションを対象に、**既定のリージョン別制限** についてまとめたものです (既定の制限は、下に説明がある、サポート リクエストを利用して拡張できます)。
 
 |サブスクリプションの種類| SQL Managed Instance のサブネットの最大数 | 最大仮想コア ユニット数* |
 | :---| :--- | :--- |
@@ -150,7 +150,7 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional および MSDN Platforms|2|32|
 
-\* デプロイの計画では、Business Critical (BC) サービス レベルの場合、仮想コアの容量が General Purpose (GP) サービス レベルより 4 倍多い必要があることを考慮してください。 次に例を示します。1 つの GP 仮想コア = 1 つの仮想コア ユニット、1 つの BC 仮想コア = 4 つの仮想コア ユニットとなります。 既定の制限に対する消費量分析を簡素化するために、SQL Managed Instance がデプロイされているリージョン内のすべてのサブネットの仮想コア ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。 「**最大仮想コア ユニット数**」の制限は、リージョン内の各サブスクリプションに適用されます。 個々のサブネットあたりの制限はありませんが、複数のサブネット全体のデプロイされたすべての仮想コアの合計は、「**最大仮想コア ユニット数**」以下である必要があります。
+\* デプロイの計画では、Business Critical (BC) サービス レベルの場合、仮想コアの容量が General Purpose (GP) サービス レベルより 4 倍多い必要があることを考慮してください。 次に例を示します。1 つの GP 仮想コア = 1 つの仮想コア ユニット、1 つの BC 仮想コア = 4 つの仮想コアとなります。 既定の制限に対する消費量分析を簡素化するために、SQL Managed Instance がデプロイされているリージョン内のすべてのサブネットの仮想コア ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。 「**最大仮想コア ユニット数**」の制限は、リージョン内の各サブスクリプションに適用されます。 個々のサブネットあたりの制限はありませんが、複数のサブネット全体のデプロイされたすべての仮想コアの合計は、「**最大仮想コア ユニット数**」以下である必要があります。
 
 \*\* 次のリージョンには、より大きなサブネットと仮想コアの制限があります。オーストラリア東部、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、英国南部、西ヨーロッパ、米国西部 2。
 

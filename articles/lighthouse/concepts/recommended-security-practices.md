@@ -3,12 +3,12 @@ title: 推奨セキュリティ プラクティス
 description: Azure Lighthouse を使用する場合、セキュリティとアクセス制御を考慮することが重要です。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163273"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843725"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
@@ -17,18 +17,18 @@ ms.locfileid: "88163273"
 > [!TIP]
 > これらの推奨事項は、Azure Lighthouse を使用して[複数のテナントを管理するエンタープライズ](enterprise.md)にも適用されます。
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を必須とする
+## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication を必須とする
 
-[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (2 段階認証) には、複数の認証ステップを要求することで、攻撃者によるアカウントへのアクセスを阻止する効果があります。 管理テナント内のすべてのユーザー (委任された顧客のリソースにアクセスできるユーザーを含む) について、Multi-Factor Authentication を必須としてください。
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (2 段階認証) には、複数の認証ステップを要求することで、攻撃者によるアカウントへのアクセスを阻止する効果があります。 管理テナント内のすべてのユーザー (委任された顧客のリソースにアクセスできるユーザーを含む) について、Multi-Factor Authentication を必須としてください。
 
-顧客にも、そのテナントに Azure Multi-Factor Authentication の導入を求めることをお勧めします。
+顧客にも、そのテナントに Azure AD Multi-Factor Authentication の導入を求めることをお勧めします。
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>最小限の特権の原則を使用してグループにアクセス許可を割り当てる
 
 管理しやすくするため、顧客のリソースを管理するうえで必要なロールごとに Azure Active Directory (Azure AD) グループを使用します。 そうすることで、各ユーザーに直接アクセス許可を割り当てずに、必要に応じて個々のユーザーをグループに追加したり、グループから削除したりすることができます。
 
 > [!IMPORTANT]
-> Azure AD グループのアクセス許可を追加するためには、 **[グループの種類]** を **[Office 365]** ではなく、 **[セキュリティ]** にする必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+> Azure AD グループのアクセス許可を追加するには、 **[グループの種類]** を **[セキュリティ]** に設定する必要があります。 このオプションは、グループの作成時に選択します。 詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 アクセス許可の体系を作成する際は、ユーザーがジョブの完了に必要なアクセス許可のみを持ち、不注意によるエラーの可能性が低くなるように、必ず最小限の特権の原則に従ってください。
 
@@ -47,5 +47,5 @@ ms.locfileid: "88163273"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Multi-Factor Authentication をデプロイ](../../active-directory/authentication/howto-mfa-getstarted.md)します。
+- [Azure AD Multi-Factor Authentication をデプロイします](../../active-directory/authentication/howto-mfa-getstarted.md)。
 - [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。

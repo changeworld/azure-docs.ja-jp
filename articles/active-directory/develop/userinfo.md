@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3bd0621d607b121f19bc47c717343b8e2e39b04f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119642"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752728"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft ID プラットフォームの UserInfo エンドポイント
 
@@ -81,7 +81,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 }
 ```
 
-ここに記載されている要求は、`sub` を含め、アプリに対して発行された [ID トークン](id-tokens.md)でアプリが参照するものと同じです。  
+ここに記載されている要求は、UserInfo エンドポイントが返すことができるすべての要求です。  これらは、アプリに対して発行された [ID トークン](id-tokens.md)でアプリが参照するものと同じです。  
 
 ## <a name="notes-and-caveats-on-the-userinfo-endpoint"></a>UserInfo エンドポイントに関する注意事項
 

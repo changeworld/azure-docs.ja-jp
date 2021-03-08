@@ -3,12 +3,12 @@ title: 推論メタデータ スキーマ - Azure
 description: この記事では、推論メタデータ スキーマについて説明します。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701949"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019496"
 ---
 # <a name="inference-metadata-schema"></a>推論メタデータ スキーマ 
 
@@ -123,5 +123,5 @@ HTTP ベースのコントラクトを使用するか、gRPC ベースのコン�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [gRPC データ コントラクト](grpc-data-contract.md)
-- [HTTP データ コントラクト](http-data-contract.md)
+- [gRPC データ コントラクト](./grpc-extension-protocol.md)
+- [HTTP データ コントラクト](./http-extension-protocol.md)

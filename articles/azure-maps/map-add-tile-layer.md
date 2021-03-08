@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c96916c029c9c49ad7d4c493fed8859354508ebe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: b3619995739c51d68b00f37ebea3a38680a6b6e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010176"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890979"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 
 この記事では、タイル レイヤーをマップに重ねて配置する方法について説明します。 タイル レイヤーを使用すると、Azure Maps ベース マップ タイルの上に画像を重ねることができます。 Azure Maps のタイル システムの詳細については、「[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)」を参照してください。
 
-タイル レイヤーでは、サーバーからタイルが読み込まれます。 これらの画像は、事前にレンダリングすることも、動的にレンダリングすることもできます。 事前にレンダリングされた画像は、タイル レイヤーが認識する名前付け規則を使用して、サーバー上の他の画像と同様に保存されます。 動的にレンダリングされた画像は、ほぼリアルタイムで画像を読み込むためのサービスを使用します。 Azure Maps の [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) クラスでは、3 種類のタイル サービスの名前付け規則がサポートされています。 
+タイル レイヤーでは、サーバーからタイルが読み込まれます。 これらの画像は、事前にレンダリングすることも、動的にレンダリングすることもできます。 事前にレンダリングされた画像は、タイル レイヤーが認識する名前付け規則を使用して、サーバー上の他の画像と同様に保存されます。 動的にレンダリングされた画像は、ほぼリアルタイムで画像を読み込むためのサービスを使用します。 Azure Maps の [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) クラスでは、3 種類のタイル サービスの名前付け規則がサポートされています。 
 
 * X、Y、ズーム表記 - X はタイル グリッド内のタイルの列の位置、Y はそのタイルの行の位置、ズーム表記はズーム レベルに基づく値です。
 * Quadkey 表記 - x、y、ズーム情報を組み合わせて、1 つの文字列値にします。 この文字列値は、1 つのタイルの一意識別子になります。
 * 境界ボックス -  境界ボックス座標形式 `{west},{south},{east},{north}` を使用して画像を指定します。 この形式は、[Web マッピング サービス (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されています。
 
 > [!TIP]
-> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) は、マップ上で大規模なデータ セットを視覚化する場合に適しています。 画像からタイル レイヤーを生成できるだけでなく、ベクター データもタイル レイヤーとしてレンダリングできます。 ベクター データをタイル レイヤーとしてレンダリングすることで、マップ コントロールでは、タイルが表すベクター データよりもファイル サイズの小さいタイルを読み込むだけで済みます。 この手法は、何百万行ものデータをマップにレンダリングする場合によく使われています。
+> [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) は、マップ上で大規模なデータ セットを視覚化する場合に適しています。 画像からタイル レイヤーを生成できるだけでなく、ベクター データもタイル レイヤーとしてレンダリングできます。 ベクター データをタイル レイヤーとしてレンダリングすることで、マップ コントロールでは、タイルが表すベクター データよりもファイル サイズの小さいタイルを読み込むだけで済みます。 この手法は、何百万行ものデータをマップにレンダリングする場合によく使われています。
 
 タイル レイヤーに渡されるタイル URL は、TileJSON リソースへの http または https URL、または次のパラメーターを使用するタイル URL テンプレートにする必要があります。 
 
@@ -57,7 +57,7 @@ map.layers.add(new atlas.layer.TileLayer({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='X、Y、Z を使用するタイル レイヤー' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/BGEQjG/'>Tile Layer using X, Y, and Z</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='X、Y、Z を使用するタイル レイヤー' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/BGEQjG/'>Tile Layer using X, Y, and Z</a>」Pen を表示します。
 </iframe>
 
 ## <a name="customize-a-tile-layer"></a>タイル レイヤーをカスタマイズする
@@ -66,7 +66,7 @@ map.layers.add(new atlas.layer.TileLayer({
 
 <br/>
 
-<iframe height='700' scrolling='no' title='タイル レイヤーのオプション' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Tile Layer Options</a>」Pen を表示します。
+<iframe height='700' scrolling='no' title='タイル レイヤーのオプション' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Tile Layer Options</a>」Pen を表示します。
 </iframe>
 
 ## <a name="next-steps"></a>次のステップ
@@ -74,10 +74,10 @@ map.layers.add(new atlas.layer.TileLayer({
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
+> [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
 
 > [!div class="nextstepaction"]
-> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest)
+> [TileLayerOptions](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 

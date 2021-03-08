@@ -3,29 +3,29 @@ title: Linux 用の Azure DSC 拡張機能
 description: Desired State Configuration を使用して Azure Linux VM を構成できるよう、OMI パッケージと DSC パッケージをインストールします。
 services: virtual-machines-linux
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: robreed
-ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: magoedte
+ms.openlocfilehash: bfd5da519116eff66aede607f4cab7c207b30ee6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505582"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093711"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
 Desired State Configuration (DSC) は、コードで構成を行って IT および開発インフラストラクチャを管理するために使用できる管理プラットフォームです。
 
 > [!NOTE]
-> Linux 用の DSC 拡張機能と [Linux 用の Azure Monitor 仮想マシン拡張機能](./oms-linux.md) では現在競合があるため、並列構成ではサポートされていません。 2 つのソリューションを同じ VM で同時に使用しないでください。
+> Linux 用の DSC 拡張機能と [Linux 用の Log Analytics 仮想マシン拡張機能](./oms-linux.md)には現在競合があるため、並列構成ではサポートされていません。 2 つのソリューションを同じ VM で同時に使用しないでください。
 
 DSCForLinux 拡張機能は Microsoft によって公開され、サポートされています。 拡張機能では、OMI および DSC のエージェントが Azure 仮想マシンにインストールされます。 DSC 拡張機能では、さらに次のアクションを実行できます。
 
@@ -74,10 +74,10 @@ DSCForLinux 拡張機能では、ターゲット仮想マシンがインター�
 * `RegistrationUrl`: (省略可能、文字列) Azure Automation アカウントの URL
 * `RegistrationKey`: (省略可能、文字列) Azure Automation アカウントのアクセス キー
 
-
 ## <a name="scenarios"></a>シナリオ
 
 ### <a name="register-an-azure-automation-account"></a>Azure Automation アカウントを登録する
+
 protected.json
 ```json
 {
@@ -143,7 +143,6 @@ $publicConfig = '{
 }'
 ```
 
-
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>(パブリック ストレージ内の) MOF 構成ファイルを VM に適用する
 
 public.json
@@ -192,14 +191,18 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>(パブリック ストレージ内の) メタ MOF 構成ファイルを VM に適用する
+
 public.json
+
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
   "ExtensionAction": "Pull"
 }
 ```
+
 PowerShell 形式
+
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -208,14 +211,18 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>カスタム リソース モジュール (Azure ストレージ アカウント内の zip ファイル) を VM にインストールする
+
 protected.json
+
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
+
 public.json
+
 ```json
 {
   "ExtensionAction": "Install",
@@ -237,14 +244,19 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>カスタム リソース モジュール (パブリック ストレージ内の zip ファイル) を VM にインストールする
+
 public.json
+
 ```json
 {
   "ExtensionAction": "Install",
   "FileUri": "<resource-zip-file-uri>"
 }
+
 ```
+
 PowerShell 形式
+
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -253,14 +265,18 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>VM からカスタム リソース モジュールを削除する
+
 public.json
+
 ```json
 {
   "ResourceName": "<resource-name>",
   "ExtensionAction": "Remove"
 }
 ```
+
 PowerShell 形式
+
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -276,10 +292,10 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 Azure Resource Manager テンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)に関するページを参照してください。
 
-
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
 ### <a name="use-azure-cliazure-cli"></a>[Azure CLI][azure-cli] の使用
+
 DSCForLinux 拡張機能をデプロイする前に、セクション 3 のさまざまなシナリオに応じて、`public.json` と `protected.json` を構成します。
 
 #### <a name="classic"></a>クラシック
@@ -287,33 +303,40 @@ DSCForLinux 拡張機能をデプロイする前に、セクション 3 のさ�
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 クラシック デプロイ モードは、Azure サービス管理モードとも呼ばれます。 これに切り替えるには、次を実行します。
+
 ```
 $ azure config mode asm
 ```
 
 次を実行して DSCForLinux 拡張機能をデプロイできます。
+
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 
 使用可能な最新バージョンの拡張機能を確認するには、次を実行します。
+
 ```
 $ azure vm extension list
 ```
 
 #### <a name="resource-manager"></a>リソース マネージャー
+
 Azure Resource Manager モードに切り替えるには、次を実行します。
+
 ```
 $ azure config mode arm
 ```
 
 次を実行して DSCForLinux 拡張機能をデプロイできます。
+
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
+
 > [!NOTE]
 > Azure Resource Manager モードでは現在、`azure vm extension list` は使用できません。
 >
@@ -339,6 +362,7 @@ $version = '< version>'
 ```
 
 前のセクションのさまざまなシナリオに応じて、$privateConfig と $publicConfig の内容を変更します。
+
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -353,7 +377,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher `
   -Version $version -PrivateConfiguration $privateConfig `
   -PublicConfiguration $publicConfig | Update-AzureVM
@@ -381,6 +405,7 @@ $version = '< version>'
 ```
 
 前のセクションのさまざまなシナリオに応じて、$privateConfig と $publicConfig の内容を変更します。
+
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -395,7 +420,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
@@ -420,11 +445,10 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 エラー コード:51 は、サポートされていないディストリビューションまたはサポートされていない拡張機能アクションのいずれかを表します。
 場合によっては、より高いバージョンの OMI がマシンに既に存在するときに、DSC Linux 拡張機能で OMI のインストールが失敗します。 [エラー応答:(000003) ダウングレードは許可されていません]
 
-
-
 ### <a name="support"></a>サポート
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/community/)で Azure エキスパートに問い合わせてください。 または、Azure サポート インシデントを送信できます。 [Azure サポート サイト](https://azure.microsoft.com/support/options/)に移動して **[Get support]\(サポートを受ける\)** を選択します。 Azure サポートの使用方法の詳細については、「 [Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 拡張機能の詳細については、「[Linux 用の仮想マシンの拡張機能とその機能](features-linux.md)」を参照してください。

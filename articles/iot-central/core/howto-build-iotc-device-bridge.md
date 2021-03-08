@@ -8,18 +8,19 @@ ms.author: viviali
 ms.date: 07/09/2019
 ms.topic: how-to
 manager: peterpr
-ms.openlocfilehash: 6499c9c29d10a2056b0af5499b68b5edd67d82cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: device-developer
+ms.openlocfilehash: fc8ea41e804344735cfa2400d5d763622d8811c8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158420"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026252"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>IoT Central デバイス ブリッジを構築して他の IoT クラウドを IoT Central に接続する
 
 *このトピックでは、管理者に適用されます。*
 
-IoT Central デバイス ブリッジは、Sigfox、Particle、The Things Network などの他のクラウドを IoT Central アプリに接続するオープン ソース ソリューションです。 Sigfox の LPWAN (Low-Power-Wide Area Network: 低消費電力広域通信網) に接続された資産追跡デバイスや Particle Device Cloud の大気監視デバイス、TTN の土壌水分監視デバイスなど、どのようなデバイスを使用している場合でも、IoT Central デバイス ブリッジを使用して、IoT Central のパワーを直接利用できます。 デバイス ブリッジでは、IoT Central アプリを通じて他のクラウドに送信されるデバイスのデータを転送 るすることによって、他の IoT クラウドを IoT Central に接続します。 IoT Central アプリでは、データに対する規則の作成と分析の実行、Microsoft Flow と Azure Logic Apps でのワークフローの作成、データのエクスポートなどを実行できます。 GitHub から [IoT Central デバイス ブリッジ](https://aka.ms/iotcentralgithubdevicebridge)を取得してください。
+IoT Central デバイス ブリッジは、Sigfox、Particle、The Things Network などの他のクラウドを IoT Central アプリに接続するオープン ソース ソリューションです。 Sigfox の LPWAN (Low-Power-Wide Area Network: 低消費電力広域通信網) に接続された資産追跡デバイスや Particle Device Cloud の大気監視デバイス、TTN の土壌水分監視デバイスなど、どのようなデバイスを使用している場合でも、IoT Central デバイス ブリッジを使用して、IoT Central のパワーを直接利用できます。 デバイス ブリッジでは、IoT Central アプリを通じて他のクラウドに送信されるデバイスのデータを転送 るすることによって、他の IoT クラウドを IoT Central に接続します。 IoT Central アプリを使用すると、データに対する規則の作成と分析の実行、Power Automate と Azure Logic Apps でのワークフローの作成、データのエクスポートなどを実行できます。 GitHub から [IoT Central デバイス ブリッジ](https://aka.ms/iotcentralgithubdevicebridge)を取得してください。
 
 ## <a name="what-is-it-and-how-does-it-work"></a>その概要とそのしくみ
 IoT Central デバイス ブリッジは、GitHub のオープン ソース ソリューションです。 カスタム Azure Resource Manager テンプレートといくつかの Azure リソースを Azure サブスクリプションにデプロイする [Deploy to Azure]\(Azure へのデプロイ\) ボタンが用意されています。 リソースには次のものがあります。

@@ -9,12 +9,12 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 055b89858fde901ab014e409fbe30c3438efce12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80576746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732991"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>IoT Edge モジュールのコンテナー作成オプションを構成する方法
 
@@ -60,7 +60,7 @@ Visual Studio または Visual Studio Code の Azure IoT Tools 拡張機能を�
 
 作成オプションを記述するためのヒントの 1 つは、`docker inspect` コマンドを使用することです。 開発プロセスの一部として、`docker run <container name>` を使用してモジュールをローカルで実行します。 モジュールが想定どおりに動作するようになったら、`docker inspect <container name>` を実行します。 このコマンドは、モジュールの詳細を JSON 形式で出力します。 構成したパラメーターを探し、JSON をコピーします。 次に例を示します。
 
-[ ![docker inspect edgeHub の結果](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![docker inspect edgeHub の結果](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
@@ -131,5 +131,5 @@ Visual Studio または Visual Studio Code の Azure IoT Tools 拡張機能を�
 
 実際の作成オプションのその他の例については、次の IoT Edge のサンプルを参照してください。
 
-* [Raspberry Pi 3 での Custom Vision と Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
+* [Raspberry Pi 3 での Custom Vision と Azure IoT Edge](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi)
 * [Azure IoT Edge の BLOB ストレージ サンプル](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)

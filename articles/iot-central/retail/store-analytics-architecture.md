@@ -4,20 +4,19 @@ description: IoT Central でチェックアウト アプリケーション テ�
 author: avneets
 ms.author: avneets
 ms.date: 10/13/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 972ab8eaaf7c0b9fe8beb446d74bc8d2e89bbc55
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80999016"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832200"
 ---
 # <a name="in-store-analytics-architecture"></a>ストア内の分析のアーキテクチャ
-
 
 
 ストア内の分析ソリューションを使うと、小売店環境内でさまざまな条件を監視できます。 これらのソリューションは、IoT Central のいずれかのアプリケーション テンプレートと以下のアーキテクチャ ガイダンスを使用して構築できます。

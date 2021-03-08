@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523038"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763491"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
@@ -18,6 +18,7 @@ ms.locfileid: "77523038"
 
 | アクション | Type |
 |---------|---------|
+| SignalR Service からのメッセージの処理 | [トリガー バインド](./functions-bindings-signalr-service-trigger.md) |
 | サービス エンドポイント URL とアクセス トークンを返す | [入力バインド](./functions-bindings-signalr-service-input.md) |
 | SignalR Service メッセージを送信する |[出力バインド](./functions-bindings-signalr-service-output.md) |
 
@@ -36,7 +37,7 @@ ms.locfileid: "77523038"
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
-[拡張機能の更新]: ./install-update-binding-extensions-manual.md
+[拡張機能の更新]: ./functions-bindings-register.md
 [Azure Tools 拡張機能]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 SignalR Service と Azure Functions を構成して一緒に使用する方法の詳細については、「[Azure Functions development and configuration with Azure SignalR Service (Azure SignalR Service を使用した Azure Functions の開発と構成)](../azure-signalr/signalr-concept-serverless-development-config.md)」を参照してください。
@@ -55,5 +56,6 @@ SignalR Service の注釈を Java 関数で使用するには、*azure-functions
 
 ## <a name="next-steps"></a>次のステップ
 
+- [SignalR Service からのメッセージの処理 (トリガー バインド)](./functions-bindings-signalr-service-trigger.md)
 - [サービス エンドポイント URL とアクセス トークンを返す (入力バインド)](./functions-bindings-signalr-service-input.md)
-- [SignalR Service メッセージを送信する (出力バインド)](./functions-bindings-signalr-service-output.md) 
+- [SignalR Service メッセージを送信する (出力バインド)](./functions-bindings-signalr-service-output.md)

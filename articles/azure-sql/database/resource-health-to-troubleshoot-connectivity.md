@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: 27865afd356be9eac64083c1ebdeb6ced43dbd18
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986944"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497964"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Resource Health を使用して Azure SQL Database と Azure SQL Managed Instance の接続をトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,7 +39,7 @@ Resource Health では、リソースへのログインの成功と失敗を調�
 
 ### <a name="degraded"></a>低下しています
 
-**低下**という状態は、ログインの大部分が成功していること、ただし失敗もいくつか見つかっていることが、Resource Health によって検出されたことを意味します。 それらは、多くの場合、一時的なログイン エラーです。 一時的なログイン エラーによって発生する接続の問題の影響を減らすために、コード内に[再試行ロジック](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)を実装してください。
+**低下** という状態は、ログインの大部分が成功していること、ただし失敗もいくつか見つかっていることが、Resource Health によって検出されたことを意味します。 それらは、多くの場合、一時的なログイン エラーです。 一時的なログイン エラーによって発生する接続の問題の影響を減らすために、コード内に[再試行ロジック](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)を実装してください。
 
 ![低下しています](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-degraded.jpg)
 
@@ -51,7 +51,7 @@ Resource Health では、リソースへのログインの成功と失敗を調�
 
 ### <a name="unknown"></a>Unknown
 
-**不明**状態は、Resource Health がこのリソースに関する情報を 10 分以上受け取っていないことを示します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティング プロセスにおいて重要なデータ ポイントです。 リソースが想定したとおりに実行されている場合、リソースの状態は数分後に [使用可能] に変わります。 リソースで問題が発生している場合、[不明] 状態は、プラットフォーム内のイベントによってリソースが影響を受けていることを示唆している可能性があります。
+**不明** 状態は、Resource Health がこのリソースに関する情報を 10 分以上受け取っていないことを示します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティング プロセスにおいて重要なデータ ポイントです。 リソースが想定したとおりに実行されている場合、リソースの状態は数分後に [使用可能] に変わります。 リソースで問題が発生している場合、[不明] 状態は、プラットフォーム内のイベントによってリソースが影響を受けていることを示唆している可能性があります。
 
 ![Unknown](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-unknown.jpg)
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 3a522a5a5945fe7a4b63dc759077d744f951a76f
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814418"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463113"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB:凖リアルタイム分析のユース ケース
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Azure Synapse Link](synapse-link.md) for Azure Cosmos DB は、クラウド ネイティブのハイブリッド トランザクションと分析処理 (HTAP) の機能です。これを使用すると、オペレーション データの準リアルタイム分析を実行できます。 Synapse Link によって、Azure Cosmos DB と Azure Synapse Analytics の間で緊密でシームレスな統合が作成されます。
 
@@ -52,9 +53,9 @@ ms.locfileid: "88814418"
 
   Synapse Link for Azure Cosmos DB では、高度なビジネス インテリジェンス (BI)/レポート シナリオを利用できます。
 
-  * Synapse SQL サーバーレスとのネイティブ統合と T-SQL 言語の豊富な表現力を使用して、Azure Cosmos DB 分析ストアからオペレーション データのクエリを実行します。
+  * サーバーレス SQL プールとのネイティブ統合と T-SQL 言語の豊富な表現力を使用して、Azure Cosmos DB 分析ストアからオペレーション データのクエリを実行します。
 
-  * Synapse SQL サーバーレスによる使い慣れた BI ツールのサポートを通じて、Azure Cosmos DB の BI ダッシュボードの自動更新をモデル化し、発行します。 たとえば、Azure Analysis Services、Power BI Premium などです。
+  * サーバーレス SQL プールによる使い慣れた BI ツールのサポートを通じて、Azure Cosmos DB の BI ダッシュボードの自動更新をモデル化し、発行します。 たとえば、Azure Analysis Services、Power BI Premium などです。
 
 次に、Azure Cosmos DB へのバッチおよびストリーミング データのデータ統合に関するガイダンスを示します。
 
@@ -92,7 +93,7 @@ Synapse Link for Azure Cosmos DB のユース ケース:
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>サンプル シナリオ: Azure Cosmos DB の HTAP
 
-約 10 年にわたって、エラスティックなスケーリング、ターンキー グローバル分散、マルチマスター レプリケーションを必要とするミッション クリティカルなアプリケーションに、多くの顧客が Azure Cosmos DB を使用してきました。その目的は、トランザクション ワークロードでの読み取りと書き込みの両方の遅延を少なくし、可能性を高めることです。
+約 10 年にわたって、エラスティックなスケーリング、ターンキー グローバル分散、マルチリージョン書き込みレプリケーションを必要とするミッション クリティカルなアプリケーションに、多くの顧客が Azure Cosmos DB を使用してきました。その目的は、トランザクション ワークロードでの読み取りと書き込みの両方の遅延を少なくし、可能性を高めることです。
  
 次の一覧に、Azure Cosmos DB を使用したオペレーション データでサポートされるさまざまなワークロード パターンの概要を示します。
 
@@ -110,15 +111,15 @@ Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクショ
 
 * CompanyXYZ の中核ビジネスは在庫管理システムに依存しています。このため、可用性と信頼性が中核となる要件です。 Azure Cosmos DB を使用することの利点:
 
-  * Azure インフラストラクチャとの緊密な統合と、透過的なマルチマスター グローバル レプリケーションにより、Azure Cosmos DB では、リージョン障害に対して業界最高水準の [99.999% の高可用性](high-availability.md)が実現されます。
+  * Azure インフラストラクチャとの緊密な統合と、透過的なマルチリージョン書き込みグローバル レプリケーションにより、Azure Cosmos DB では、リージョン障害に対して業界最高水準の [99.999% の高可用性](high-availability.md)が実現されます。
 
 * CompanyXYZ のサプライ チェーン パートナーは、地理的に離れた場所に存在しますが、各国での運用をサポートするために、世界中の製品在庫を 1 つのビューで表示しなければならない場合があります。 これには、他のサプライ チェーン パートナーが行った更新をリアルタイムで読み取ることができるという要件も含まれます。 また、他のパートナーとの競合を心配することなく、高いスループットで更新を実行できる必要もあります。 Azure Cosmos DB を使用することの利点:
 
-  * Azure Cosmos DB では、その固有のマルチマスター レプリケーション プロトコルと、ラッチフリーの書き込みに最適化されたトランザクション ストアにより、世界中のどこでも、99 パーセンタイルでのインデックス付きの読み取りと書き込みの両方の待機時間が 10 ミリ秒未満となることが保証されます。
+  * Azure Cosmos DB では、その固有のマルチリージョン書き込みレプリケーション プロトコルと、ラッチフリーの書き込みに最適化されたトランザクション ストアにより、世界中のどこでも、99 パーセンタイルでのインデックス付きの読み取りと書き込みの両方の待機時間が 10 ミリ秒未満となることが保証されます。
 
   * バッチ データとストリーミング データの両方の高スループットのインジェストが、トランザクション ストアでの[リアルタイムのインデックス作成](index-policy.md)により強化されます。
 
-  * Azure Cosmos DB のトランザクション ストアは、ビジネス ニーズに最も近い[可用性とパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)を実現するために、強力かつ最終的な整合性レベルという利点に加えて 3 つのオプションを提供しています。
+  * Azure Cosmos DB のトランザクション ストアは、ビジネス ニーズに最も近い[可用性とパフォーマンスのトレードオフ](./consistency-levels.md)を実現するために、強力かつ最終的な整合性レベルという利点に加えて 3 つのオプションを提供しています。
 
 * CompanyXYZ のサプライ チェーン パートナーでは、1 秒あたりの要求数が数百から数百万の範囲で大幅に変動するというトラフィック パターンがあるため、在庫管理プラットフォームでトラフィックの予期しない急増に対処する必要があります。  Azure Cosmos DB を使用することの利点:
 
@@ -142,4 +143,4 @@ Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクショ
 
 * [Azure Synapse Analytics での Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [Azure Synapse Analytics での SQL サーバーレス/オンデマンド](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Azure Synapse Analytics のサーバーレス SQL プール ランタイム サポート](../synapse-analytics/sql/on-demand-workspace-overview.md)

@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9c7fd03c2239cea05dc79ad4dd1965fe253a2ce9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710560"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341599"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing News Search API の言語と地域のサポート
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing News Search API では多数の国/地域がサポートされ、その多くで複数の言語が使用されています。 クエリを使用して国/地域を指定すると、主に、その国/地域への関心に基づいて検索結果を絞り込むことができます。 さらに、これらの結果には Bing へのリンクを含めることができ、これらのリンクにより、指定された国/地域または言語に従って Bing ユーザー エクスペリエンスをローカライズできます。
 
@@ -64,8 +69,8 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |スイス|フランス語|fr-CH|
 |フランス|フランス語|fr-FR|  
 |イタリア|イタリア語|it-IT|
-|香港特別行政区|繁体字中国語|zh-HK|  
-|台湾|繁体字中国語|zh-TW|
+|香港特別行政区|Traditional Chinese|zh-HK|  
+|台湾|Traditional Chinese|zh-TW|
 |日本|日本語|ja-JP|  
 |韓国|韓国語|ko-KR|  
 |オランダ|オランダ語|nl-NL|  
@@ -162,4 +167,4 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |United States|US|
 
 ## <a name="next-steps"></a>次のステップ
-Bing News Search エンドポイントについて詳しくは、[News Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)をご覧ください。
+Bing News Search エンドポイントについて詳しくは、[News Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)をご覧ください。

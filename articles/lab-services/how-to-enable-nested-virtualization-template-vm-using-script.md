@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services のテンプレート VM で入れ子になった仮想化を有効にする (スクリプト) | Microsoft Docs
-description: 内部に複数の VM を持つテンプレート VM を作成する方法について説明します。  つまり、Azure Lab Services のテンプレート VM で入れ子になった仮想化を有効にします。
+description: スクリプトを使用して、内部に複数の VM を持つテンプレート VM を作成する方法について説明します。  つまり、Azure Lab Services のテンプレート VM で入れ子になった仮想化を有効にします。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a45257dffffc98c3f650c5b1753158edd9bfbede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445748"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251497"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>スクリプトを使用して Azure Lab Services のテンプレート仮想マシンで入れ子になった仮想化を有効にする
 

@@ -3,21 +3,23 @@ title: Azure Functions のタイマーを使用してスケジュールに従っ
 description: PowerShell と Azure Functions を使用して、Azure Cosmos DB のスループットの変更をスケーリングする方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c60f3fc6b4ce4a1aead273fedb81e39de697f576
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923657"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339259"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Functions のタイマー トリガーを使用して Azure Cosmos DB のスループットをスケーリングする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos アカウントのパフォーマンスは、要求ユニット/秒 (RU/秒) で表されるプロビジョニングされているスループットの量に基づいています。 プロビジョニングの粒度は 1 秒であり、1 時間あたりの最大 RU/秒に基づいて課金されます。 容量がプロビジョニングされるというモデルによって、予測可能で一貫性のあるスループットをサービスが提供でき、待機時間が短くなり、可用性が高くなります。 ほとんどの運用ワークロードがこれらの機能を備えています。 ただし、Azure Cosmos DB が業務時間中にのみ使用される開発およびテスト環境では、朝にスループットをスケールアップし、業務時間後の夕方にスケールダウンして戻すことができます。
 
-スループットは、コア (SQL) API アカウントに対して [Azure Resource Manager テンプレート](resource-manager-samples.md)、[Azure CLI](cli-samples.md)、および [PowerShell](powershell-samples.md) を使用して、または言語固有の Azure Cosmos DB SDK を使用して設定できます。 Resource Manager テンプレート、Azure CLI、または PowerShell を使用する利点は、これらがすべての Azure Cosmos DB モデル API をサポートしていることです。
+スループットは、コア (SQL) API アカウントに対して [Azure Resource Manager テンプレート](./templates-samples-sql.md)、[Azure CLI](cli-samples.md)、および [PowerShell](powershell-samples.md) を使用して、または言語固有の Azure Cosmos DB SDK を使用して設定できます。 Resource Manager テンプレート、Azure CLI、または PowerShell を使用する利点は、これらがすべての Azure Cosmos DB モデル API をサポートしていることです。
 
 ## <a name="throughput-scheduler-sample-project"></a>スループット スケジューラのサンプル プロジェクト
 

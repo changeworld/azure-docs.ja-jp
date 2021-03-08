@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170056"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994045"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio Verify App と Azure Active Directory B2C の統合
 
@@ -34,8 +34,8 @@ ms.locfileid: "86170056"
 
 この Twilio ソリューションは、次のコンポーネントで構成されています。
 
-- サインインまたはサインアップし、ダミーの高リスクのトランザクションを実行できる、.NET PSD2 デモ Web アプリ。
-- サインインとサインアップを組み合わせた Azure AD B2C ポリシー。
+- サインインまたはサインアップし、ダミーの高リスクのトランザクションを実行できる、.NET [PSD2 デモ Web アプリ](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App)。
+- Azure AD B2C を組み合わせた[サインインとサインアップ ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy)。
 - `id_token_hint` を使用して Twilio Verify API と統合された Azure AD B2C ポリシー。
 - `.well-known` OpenId Connect エンドポイントをホストして、`id_token_hint` の検証を可能にする .NET Web アプリ。
 
@@ -73,7 +73,7 @@ ms.locfileid: "86170056"
    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
    ```
 
-2. Web アプリは、ID トークン ヒント ジェネレーターおよびメタデータ エンドポイントもホストします。
+2. [Web アプリ](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App)では、ID トークン ヒント ジェネレーターおよびメタデータ エンドポイントもホストされます。
    - こちらの[サンプルの説明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate)に従って署名証明書を作成します。
    - 証明書に基づいて、web.config の次の行を更新します。
    
@@ -86,7 +86,7 @@ ms.locfileid: "86170056"
 
 4. アプリケーションがホストされている URL に対応する応答 URL を追加して、Azure AD B2C アプリケーションの登録を更新します。
 
-5. ポリシー ファイルを開き、 `contoso`のすべてのインスタンスを実際のテナント名に置き換えます。
+5. [ポリシー ファイル](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy)を開き、 `contoso` のすべてのインスタンスを実際のテナント名に置き換えます。
 
 6. Twilio REST API 技術プロファイル  **Custom-SMS-Enroll** を見つけます。  `ServiceURL`  を Twilio AccountSID  で更新し、From 番号を購入した電話番号に更新します。
 

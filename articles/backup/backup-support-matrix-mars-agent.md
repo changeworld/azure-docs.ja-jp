@@ -3,12 +3,12 @@ title: MARS エージェントを使用したサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 2170440b7b47861b75801b8dbd334686b4cabc8b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872414"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985616"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -59,6 +59,7 @@ MARS エージェントには、次の URL へのアクセス権が必要です�
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+- `www.msftconnecttest.com`
 
 これらの IP アドレスに対しては、次のようになります。
 
@@ -67,25 +68,39 @@ MARS エージェントには、次の URL へのアクセス権が必要です�
 
 上記のすべての URL と IP アドレスにアクセスするには、ポート 443 で HTTPS プロトコルを使用します。
 
+MARS エージェントを使用して Azure VM からファイルとフォルダーをバックアップする場合、アクセスを許可するように Azure 仮想ネットワークを構成する必要もあります。 ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (*AzureActiveDirectory*) および Azure Storage (*Storage*) に対して同様の [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。 次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
+
+1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
+2. **[設定]** で **[送信セキュリティ規則]** を選択します。
+3. **[追加]** を選択します。 [セキュリティ規則の設定](../virtual-network/manage-network-security-group.md#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が *[サービス タグ]* に、 **[宛先サービス タグ]** が *[AzureBackup]* に設定されていることを確認します。
+4. **[追加]** を選択して、新しく作成した送信セキュリティ規則を保存します。
+
+Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
+
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
 
 パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。
 
 パブリック ピアリングを使用して、次のドメインまたはアドレスへのアクセスを確保します。
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP アドレス
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Microsoft ピアリングの使用時には、サービス、リージョン、関連するコミュニティについて以下の値を選択します。
 
+- Azure Backup (Recovery Services コンテナーの場所による)
 - Azure Active Directory (12076:5060)
-- Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
 - Azure Storage (Recovery Services コンテナーの場所による)
 
-詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。
+詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md#bgp)」を参照してください。
 
 >[!NOTE]
 >パブリック ピアリングは、新しい回線では非推奨です。
@@ -160,6 +175,17 @@ Windows Server 2008 SP2| 1,700 GB
 Windows 8 以降| 54,400 GB
 Windows 7| 1,700 GB
 
+### <a name="minimum-retention-limits"></a>最小保有期間の制限
+
+さまざまな回復ポイントに対して設定できる最小の保有期間は次のとおりです。
+
+|回復ポイント |Duration  |
+|---------|---------|
+|日次の回復ポイント    |   7 日      |
+|週次の回復ポイント     |    4 週間     |
+|月次の回復ポイント    |   3 か月      |
+|年次の回復ポイント  |      1 年   |
+
 ### <a name="other-limitations"></a>その他の制限事項
 
 - MARS では、1 つのコンテナーに対して、同じ名前を持つ複数のマシンの保護をサポートしていません。
@@ -191,12 +217,12 @@ DFS レプリケーションが有効になっているフォルダー | サポ�
 ネットワーク共有| サポートされていません |サーバー上でボリュームがローカルである必要があります。
 BitLocker でロックされているボリューム| サポートされていません |バックアップを開始する前に、ボリュームのロックを解除する必要があります。
 ファイル システムの識別| サポートされていません |NTFS のみがサポートされます。
-リムーバブル メディア| サポートされていません |バックアップ項目のすべてのソースが*固定*の状態である必要があります。
+リムーバブル メディア| サポートされていません |バックアップ項目のすべてのソースが *固定* の状態である必要があります。
 重複除去されたドライブ | サポートされています | Azure Backup は、重複除去されたデータを通常のデータに変換します。 データを最適化および暗号化して格納し、コンテナーに送信します。
 
 ## <a name="support-for-initial-offline-backup"></a>初期のオフライン バックアップのサポート
 
-Azure Backup は、ディスクを使用して初期バックアップ データを Azure に転送する*オフライン シード処理*をサポートしています。 このサポートは、初期バックアップが数テラバイト (TB) のサイズ範囲にある可能性がある場合に役立ちます。 オフライン バックアップのサポート対象は次のとおりです。
+Azure Backup は、ディスクを使用して初期バックアップ データを Azure に転送する *オフライン シード処理* をサポートしています。 このサポートは、初期バックアップが数テラバイト (TB) のサイズ範囲にある可能性がある場合に役立ちます。 オフライン バックアップのサポート対象は次のとおりです。
 
 - MARS エージェントを実行しているオンプレミスのコンピューター上でのファイルやフォルダーの直接バックアップ。
 - DPM サーバーまたは MABS からのワークロードやファイルのバックアップ。

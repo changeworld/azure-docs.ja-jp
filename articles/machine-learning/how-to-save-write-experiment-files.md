@@ -1,7 +1,7 @@
 ---
 title: 実験ファイルを保存する場所と書き込む場所
 titleSuffix: Azure Machine Learning
-description: ストレージ制限エラーを回避し、待機時間を実験するために、実験で入力ファイルをどこに保存し、出力ファイルをどこに書き込むかについて説明します。
+description: ストレージ制限エラーと実験の待機時間を回避するために入力および出力のファイルを保存する場所について説明します。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -12,31 +12,31 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 27d56958120d0eddebe30dc410805909fe507f7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319577"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630330"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、ストレージ制限エラーを回避し、待機時間を実験するために、実験で入力ファイルをどこに保存し、出力ファイルをどこに書き込むかについて説明します。
 
-[コンピューティング ターゲット](how-to-set-up-training-targets.md)でトレーニング実行を起動すると、外部環境から分離されます。 この設計の目的は、実行の再現性と移植性を確保することです。 同一または別のコンピューティング ターゲットで、同じスクリプトを 2 回実行すると、同じ結果が得られます。 この設計により、コンピューティング ターゲットを、完了後に実行されるジョブとのアフィニティがないステートレスな計算リソースとして扱うことができます。
+[コンピューティング ターゲット](concept-compute-target.md)でトレーニング実行を起動すると、外部環境から分離されます。 この設計の目的は、実行の再現性と移植性を確保することです。 同一または別のコンピューティング ターゲットで、同じスクリプトを 2 回実行すると、同じ結果が得られます。 この設計により、コンピューティング ターゲットを、完了後に実行されるジョブとのアフィニティがないステートレスな計算リソースとして扱うことができます。
 
 ## <a name="where-to-save-input-files"></a>入力ファイルを保存する場所
 
 コンピューティング ターゲットまたはローカル マシンで実験を開始する前に、コードの実行に必要な依存関係ファイルやデータ ファイルなどの必要なファイルが、そのコンピューティング ターゲットに存在することを確認する必要があります。
 
-Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)を使用してデータにアクセスしてください。
+Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)を使用してデータにアクセスしてください。
 
 実験スナップショットのストレージ制限は、300 MB または 2000 ファイル (あるいはその両方) です。
 
 このため、次のことをお勧めします。
 
-* **お使いのファイルを Azure Machine Learning の[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)に格納します。** これにより、実験の待機時間の問題を防止でき、リモート コンピューティング ターゲットからデータにアクセスする利点が得られます。つまり、認証とマウントは Azure Machine Learning によって管理されます。 データストアをソース ディレクトリとして指定し、データストアにファイルをアップロードする方法の詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
+* **お使いのファイルを Azure Machine Learning の [データストア](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)に格納します。** これにより、実験の待機時間の問題を防止でき、リモート コンピューティング ターゲットからデータにアクセスする利点が得られます。つまり、認証とマウントは Azure Machine Learning によって管理されます。 データストアをソース ディレクトリとして指定し、データストアにファイルをアップロードする方法の詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
 
 * **数個のデータ ファイルと依存関係スクリプトのみが必要であり、データストアを使用できない場合は、** トレーニング スクリプトと同じフォルダー ディレクトリにファイルを配置します。 このフォルダーを `source_directory` ディレクトリとして、トレーニング スクリプトで直接指定するか、またはトレーニング スクリプトを呼び出すコードで指定します。
 
@@ -79,4 +79,4 @@ Jupyter Notebook| `.amlignore` ファイルを作成するか、ノートブッ�
 
 * [データストアからデータにアクセスする](how-to-access-data.md)方法に関する詳細を確認します。
 
-* [トレーニング ターゲットのセットアップ方法](how-to-set-up-training-targets.md)に関する詳細を確認します。
+* 詳細については、[モデルのトレーニングとデプロイのためのコンピューティング先の作成](how-to-create-attach-compute-studio.md)に関するページを参照してください。

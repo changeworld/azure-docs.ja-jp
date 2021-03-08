@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f72e477d332b33b7434663fb13cb3ca4f4c2069d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032193"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892441"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
@@ -37,10 +37,7 @@ Microsoft の ID セキュリティの担当部長である Alex Weinert は、2
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、次の内容を熟知していることを前提としています。 
-
-- Azure AD の条件付きアクセスの[基本的な概念](overview.md) 
-- Azure portal における条件付きアクセス ポリシーの構成に関する[ベスト プラクティス](best-practices.md)
+この記事では、Azure AD 条件付きアクセスの[基本的な概念](overview.md)を理解していることを前提としています。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -85,7 +82,8 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 1. **[Azure portal]**  >  **[Azure Active Directory]**  >  **[サインイン]** に移動します。
 1. [Client App] (クライアント アプリ) 列が表示されていない場合は、 **[列]**  >  **[Client App] (クライアント アプリ)** をクリックしてその列を追加します。
-1. **[フィルターの追加]** 、 **[クライアント アプリ]** の順に進み、すべてのレガシ認証プロトコルを選択します。 フィルター処理のダイアログ ボックスの外側を選択し、選択を適用し、ダイアログ ボックスを閉じます。
+1. **[フィルターの追加]** 、 **[クライアント アプリ]** の順に進み、すべてのレガシ認証プロトコルを選択します。 フィルター処理のダイアログ ボックスの外側を選択して選択を適用し、ダイアログ ボックスを閉じます。
+1. [新しいサインイン アクティビティ レポート - プレビュー](../reports-monitoring/concept-all-sign-ins.md)をアクティブにしている場合は、 **[ユーザーのサインイン (非対話型)]** タブでも上記の手順を繰り返します。
 
 フィルター処理によって、レガシ認証プロトコルによって行われたサインイン試行のみが表示されます。 個々のサインイン試行をクリックすると、追加の詳細が表示されます。 **[Basic Info] (基本情報)** タブの下の **[Client App] (クライアント アプリ)** フィールドには、どのレガシ認証プロトコルが使用されたかが表示されます。
 
@@ -112,17 +110,21 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
-**その他のクライアント**を使用しているアクセスをブロックすると、基本認証を使用している Exchange Online PowerShell および Dynamics 365 もブロックされます。
+**その他のクライアント** を使用しているアクセスをブロックすると、基本認証を使用している Exchange Online PowerShell および Dynamics 365 もブロックされます。
 
-**その他のクライアント**を対象とするポリシーを構成すると、SPConnect などの特定のクライアントから組織全体がブロックされます。 このブロックは、旧バージョンのクライアントが想定していない方法で認証されるために発生します。 この問題は、古い Office クライアントなどの重要な Office アプリケーションには適用されません。
+**その他のクライアント** を対象とするポリシーを構成すると、SPConnect などの特定のクライアントから組織全体がブロックされます。 このブロックは、旧バージョンのクライアントが想定していない方法で認証されるために発生します。 この問題は、古い Office クライアントなどの重要な Office アプリケーションには適用されません。
 
 ポリシーが有効になるまで、最大で 24 時間かかる可能性があります。
 
-**他のクライアント**条件には、利用可能なすべての制御の許可を選択できます。ただし、エンドユーザーのエクスペリエンスは常に同じ、つまり、アクセスがブロックされます。
+**他のクライアント** 条件には、利用可能なすべての制御の許可を選択できます。ただし、エンドユーザーのエクスペリエンスは常に同じ、つまり、アクセスがブロックされます。
+
+### <a name="sharepoint-online-and-b2b-guest-users"></a>SharePoint Online と B2B のゲスト ユーザー
+
+B2B ユーザーが従来の認証で SharePoint Online にアクセスすることを禁止するには、組織は `Set-SPOTenant` PowerShell コマンドを使用し、`-LegacyAuthProtocolsEnabled` パラメーターを `$false` に設定することで SharePoint の従来の認証を無効にする必要があります。 このパラメーターの詳しい設定方法は、[Set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant) に関する SharePoint PowerShell リファレンス ドキュメントにあります。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
-- 条件付きアクセス ポリシー構成についてまだよくご存知でない場合は、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」で例を参照してください。
+- [条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
+- 条件付きアクセス ポリシー構成についてまだよくご存知でない場合は、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../authentication/tutorial-enable-azure-mfa.md)」で例を参照してください。
 - 先進認証のサポートの詳細については、「[How modern authentication works for Office 2013 and Office 2016 client apps](/office365/enterprise/modern-auth-for-office-2013-and-2016)」 (Office 2013 クライアント アプリと Office 2016 クライアント アプリでの先進認証のしくみ) を参照してください 
-- [Office 365 および Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)

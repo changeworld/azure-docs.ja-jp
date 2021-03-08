@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric Mesh CLI を設定する
 description: Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 以下に、設定の方法を説明します。
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ea4a7764cf1ede1cfaf53b1097034c5894660376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248528"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660680"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
 Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 以下に、設定の方法を説明します。
@@ -25,22 +25,23 @@ Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、
 
 プレビューでは、Azure Service Fabric Mesh CLI は Azure CLI の拡張機能として記述されています。 これは、Azure Cloud Shell または Azure CLI のローカル インストールでインストールできます。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- この記事では、Azure CLI のバージョン 2.0.67 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>Azure Service Fabric Mesh CLI をインストールする
-1. Azure CLI バージョン 2.0.67 以降をインストールする必要があります。 バージョンを確認するには、`az --version` を実行します。 最新バージョンの CLI をインストールするか、最新バージョンにアップグレードする場合は、「[Azure CLI のインストール][azure-cli-install]」を参照してください。
 
-2. 次のコマンドを使用して、Azure Service Fabric Mesh CLI 拡張モジュールをインストールします。 
+まだインストールされていない場合は、次のコマンドを使用して、Azure Service Fabric Mesh CLI 拡張モジュールをインストールします。 
+ 
+```azurecli-interactive
+az extension add --name mesh
+```
 
-    ```azurecli-interactive
-    az extension add --name mesh
-    ```
+既にインストールされている場合は、次のコマンドを使用して、既存の Azure Service Fabric Mesh CLI モジュールを更新します。
 
-3. 既存の Azure Service Fabric Mesh CLI モジュールを更新するには、次のコマンドを使用します。
-
-    ```azurecli-interactive
-    az extension update --name mesh
-    ```
+```azurecli-interactive
+az extension update --name mesh
+```
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Service Fabric CLI (sfctl) をインストールする 
 

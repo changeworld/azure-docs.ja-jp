@@ -1,18 +1,18 @@
 ---
 title: データの暗号化 - Azure CLI - Azure Database for PostgreSQL - 単一サーバー
 description: Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデータ暗号化を設定および管理する方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 757782e8842fbcaca9c8d95ec8086dd5791a817b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797816"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240615"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -49,7 +49,7 @@ Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデ
 * カスタマー マネージド キーとして使用するには、キーに次の属性が必要です。
   * 有効期限がない
   * 無効化されていない
-  * **get**、**wrap** および **unwrap** の操作を実行する
+  * **get** 、 **wrap** および **unwrap** の操作を実行する
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>キー操作に対する適切なアクセス許可を設定する
 
@@ -67,7 +67,7 @@ Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデ
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. PostgreSQL 単一サーバーの名前である**プリンシパル**に対して、**キーのアクセス許可** (**get**、**wrap**、**unwrap**) を設定します。
+2. PostgreSQL 単一サーバーの名前である **プリンシパル** に対して、 **キーのアクセス許可** ( **get** 、 **wrap** 、 **unwrap** ) を設定します。
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -94,24 +94,24 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>サーバーが復元された後、復元されたサーバーのデータ暗号化を再検証する
 
-*   レプリカ サーバーに ID を割り当てます
+*   レプリカ サーバーに ID を割り当てる
 ```azurecli-interactive
 az postgres server update --name  <server name>  -g <resoure_group> --assign-identity
 ```
 
-*   復元されたサーバーまたはレプリカ サーバーに使用されたはずの既存のキーを取得します
+*   復元されたサーバーまたはレプリカ サーバーに使用されたはずの既存のキーを取得する
 
 ```azurecli-interactive
 az postgres server key list --name  '<server_name>'  -g '<resource_group_name>'
 ```
 
-*   復元されたサーバーまたはレプリカ サーバーの新しい ID に対するポリシーを設定します
+*   復元されたサーバーまたはレプリカ サーバーの新しい ID に対するポリシーを設定する
 
 ```azurecli-interactive
 az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
 ```
 
-* 暗号化キーを使用して復元されたサーバーまたはレプリカ サーバーを再検証します
+* 暗号化キーを使用して復元されたサーバーまたはレプリカ サーバーを再検証する
 
 ```azurecli-interactive
 az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
@@ -152,7 +152,7 @@ Azure portal とは別に、新規および既存のサーバー用の Azure Res
 ### <a name="for-an-existing-server"></a>既存のサーバーの場合
 また、Azure Resource Manager テンプレートを使用して、既存の Azure Database for PostgreSQL 単一サーバー上でデータ暗号化を有効にすることもできます。
 
-* プロパティ オブジェクトの `Uri` プロパティで以前コピーした Azure Key Vault キーのリソース ID を渡します。
+* プロパティ オブジェクトの `Uri` プロパティで以前にコピーした Azure Key Vault キーのリソース ID を渡します。
 
 * *2020-01-01-preview* を API バージョンとして使用します。
 
