@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
-author: faneerde
-ms.openlocfilehash: 8679e3d2fc2459e5775c525a0d5dadd4ba42ebb0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+author: fvneerden
+ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742895"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124416"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
 
@@ -327,7 +327,8 @@ gRPC 拡張プロセッサ ノードが Intel OpenVINO™ DL Streamer – Edge A
 "PIPELINE_VERSION=vehicle_attributes_recognition"
 ],
 ```
-> [!TIP] 可能なパイプラインごとにテンプレートをコピーして新しい名前で保存してください。 そうすることで、それらのいずれかのテンプレートに基づいて新しいデプロイを作成し、モデルを切り替えられます。
+> [!TIP]
+> 可能なパイプラインごとにテンプレートをコピーして新しい名前で保存してください。 そうすることで、それらのいずれかのテンプレートに基づいて新しいデプロイを作成し、モデルを切り替えられます。
 
 変数の変更が完了したら、テンプレートをデバイスに再度デプロイできます。 これで上記の手順を繰り返すと、新しいパイプラインを使用して、再びサンプル プログラムを実行できるようになりました。 推論の結果は (スキーマが) 似たものになります。ただし、表示される情報は選択したパイプライン モデルに応じて増減します。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: b62095a3dc48480d8b1d33328d2d0dc25470d763
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1e08d54b9467231233c62635dafc5135456a3843
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461092"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695415"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする
 
@@ -31,7 +31,13 @@ NVv4 VM では、Microsoft によって公開された GPU ドライバーのみ
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 10 Enterprise マルチセッション - ビルド 1903 <br/><br/>Windows 10 - ビルド 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.17](https://download.microsoft.com/download/d/e/f/def0fb44-15ab-4b83-959a-8094eb9d0dfe/AMD-Azure-NVv4-Driver-20Q1-Hotfix3.exe) (.exe) |
+| Windows 10 Enterprise マルチセッション - ビルド 1909 <br/><br/>Windows 10 - ビルド 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (.exe) |
+
+ > [!NOTE]
+   >  ビルド 1903 または 1909 を使用する場合は、最適なパフォーマンスを得るために、次のグループ ポリシーの更新が必要になることがあります。 これらの変更は、他の Windows ビルドには必要ありません。
+   >  
+   >  [コンピューターの構成]->[ポリシー]->[Windows の設定]->[管理用テンプレート]->[Windows コンポーネント]->[リモート デスクトップ サービス]->[リモート デスクトップ セッション ホスト]->[リモート セッション環境] の順に選択し、ポリシー [Use WDDM graphics display driver for Remote Desktop Connections]\(リモート デスクトップ接続に WDDM グラフィックス表示ドライバーを使用する\) を [無効] に設定します。
+   >  
 
 
 ## <a name="driver-installation"></a>ドライバーのインストール

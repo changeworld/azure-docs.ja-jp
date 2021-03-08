@@ -4,12 +4,12 @@ description: Azure Container Registry でのゾーン冗長の有効化につい
 ms.topic: article
 ms.date: 02/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a190ea68f41196fb11c20259b9953f516d6f5370
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738108"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203863"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>回復性と高可用性のために Azure Container Registry でゾーン冗長を有効にする
 
@@ -48,7 +48,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-zone-enabled-registry"></a>ゾーン対応レジストリを作成する
 
-[az acr create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) コマンドを実行して、Premium サービス レベルにゾーン冗長レジストリを作成します。 Azure Container Registry の[可用性ゾーンをサポートする](../availability-zones/az-region.md)リージョンを選択します。 次の例では、*eastus* リージョンでゾーン冗長が有効になっています。 レジストリ オプションの詳細については、`az acr create` コマンドのヘルプを参照してください。
+[az acr create](/cli/azure/acr#az_acr_create) コマンドを実行して、Premium サービス レベルにゾーン冗長レジストリを作成します。 Azure Container Registry の[可用性ゾーンをサポートする](../availability-zones/az-region.md)リージョンを選択します。 次の例では、*eastus* リージョンでゾーン冗長が有効になっています。 レジストリ オプションの詳細については、`az acr create` コマンドのヘルプを参照してください。
 
 ```azurecli
 az acr create \
@@ -70,7 +70,7 @@ az acr create \
 
 ### <a name="create-zone-redundant-replication"></a>ゾーン冗長レプリケーションを作成する
 
-[az acr replication create](/cli/azure/acr/replication?view=azure-cli-latest#az_acr_replication_create) コマンドを実行して、*westus2* など、Azure Container Registry の [可用性ゾーンをサポートする](../availability-zones/az-region.md)リージョンにゾーン冗長レジストリ レプリカを作成します。 
+[az acr replication create](/cli/azure/acr/replication#az_acr_replication_create) コマンドを実行して、*westus2* など、Azure Container Registry の [可用性ゾーンをサポートする](../availability-zones/az-region.md)リージョンにゾーン冗長レジストリ レプリカを作成します。 
 
 ```azurecli
 az acr replication create \
@@ -220,7 +220,7 @@ az group create --name <resource-group-name> --location eastus
   }
 ```
 
-次の [az deployment group create](/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create) コマンドを実行し、前述のテンプレート ファイルを使用してレジストリを作成します。 示された場所で次のように指定します。
+次の [az deployment group create](/cli/azure/group/deployment#az_group_deployment_create) コマンドを実行し、前述のテンプレート ファイルを使用してレジストリを作成します。 示された場所で次のように指定します。
 
 * 一意のレジストリ名。または、パラメーターを指定せずにテンプレートをデプロイすると、一意の名前が自動的に作成されます
 * 可用性ゾーンがサポートされているレプリカの場所 (*westus2* など)

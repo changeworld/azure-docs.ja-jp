@@ -1,17 +1,16 @@
 ---
 title: Container insights 用の Resource Manager テンプレートのサンプル
 description: Container insights をデプロイおよび構成するための Azure Resource Manager テンプレートのサンプル。
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f75278663abde8d4b0f47c8df1dbbdbc298bcafb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68bad5b4bfcef4f0f633bce7e3e352486aed3fdf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723335"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039191"
 ---
 # <a name="resource-manager-template-samples-for-container-insights"></a>Container insights 用の Resource Manager テンプレートのサンプル
 この記事には、Azure Monitor で仮想マシンに対して Log Analytics エージェントをデプロイし構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 39466ad621eff1a7d3490c936c90fbff6f63e0fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724423"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051550"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>セキュリティ コントロール V2:バックアップと回復
 
 バックアップと回復により、データと構成のバックアップがさまざまなサービス レベルで確実に実行、検証、保護されるようにコントロールがカバーされています。
 
-該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: バックアップと回復](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)」を参照してください。
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: バックアップと回復](../../governance/policy/samples/azure-security-benchmark.md#backup-and-recovery)」を参照してください。
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1:定期的な自動バックアップを保証する
 
@@ -66,7 +66,7 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [カスタマー マネージド キーを使用したバックアップ データの暗号化](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 - [ハイブリッド バックアップを攻撃から保護するためのセキュリティ機能](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
@@ -90,7 +90,7 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [Azure 仮想マシンのバックアップからファイルを復旧する方法](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **責任**: Customer
 

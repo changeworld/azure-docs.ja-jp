@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101676397"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694599"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -23,7 +23,7 @@ ms.locfileid: "101676397"
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
 |------------------------------|---------------|---------------|
-| [セマンティック検索](semantic-search-overview.md) | 検索結果を変更してより関連性の高い結果を生成するクエリ関連の機能のコレクション。 検索要求を少し変更するだけで、これらの機能を既存の検索インデックスで試すことができます。</br></br>[セマンティック クエリ](semantic-how-to-query-request.md) は、自然言語処理における進歩を活用してランク付けを向上させ、クエリの意図を理解して、回答、キャプション、セマンティック強調表示を提供する新しい種類のクエリです。</br></br>[セマンティック ランク付けと応答 (回答、キャプション、強調表示)](semantic-how-to-query-response.md) は、セマンティック クエリと応答の構造を定義するアルゴリズムを指します。 | パブリック プレビュー ([要求による](https://aka.ms/SemanticSearchPreviewSignup))。 </br></br>Azure portal で、[Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) api-version = 2020-06-30-Preview と [Search エクスプローラー](search-explorer.md)を使用してください。 </br></br>リージョンとレベルの制限が適用されます。 |
+| [セマンティック検索](semantic-search-overview.md) | 手間をかけずに検索結果の関連性を大幅に向上させる、クエリ関連の機能のコレクション。 検索要求を少し変更するだけで、これらの機能を既存の検索インデックスで試すことができます。</br></br>[セマンティック クエリ](semantic-how-to-query-request.md) は、自然言語処理における進歩を活用してランク付けを向上させ、クエリの意図を理解して、回答、キャプション、セマンティック強調表示を提供する新しい種類のクエリです。</br></br>[セマンティック ランク付けと応答 (回答、キャプション、強調表示)](semantic-how-to-query-response.md) は、結果を評価するモデルと、応答に構造を追加するモデルの機能を指します。 | パブリック プレビュー ([要求による](https://aka.ms/SemanticSearchPreviewSignup))。 </br></br>Azure portal で、[Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) api-version = 2020-06-30-Preview と [Search エクスプローラー](search-explorer.md)を使用してください。 </br></br>リージョンとレベルの制限が適用されます。 |
 | [クエリ用語のスペル チェック](speller-how-to-add.md) | クエリの用語が検索エンジンに到達する前に、スペル ミスをチェックすることができます。 `speller` オプションは、任意の種類のクエリ (単純、フル、またはセマンティック) で動作します。 |  パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview|
 | [SharePoint Online インデクサー](search-howto-index-sharepoint-online.md) | ドキュメント ライブラリのコンテンツにインデックスを付けることができるように、このインデクサーによって SharePoint Online サイトに接続されます。 | パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview |
 
@@ -46,7 +46,7 @@ ms.locfileid: "101676397"
 | 月 | 機能 | 説明 |
 |-------|---------|-------------|
 | November | [カスタマー マネージド キー暗号化 (拡張)](search-security-manage-encryption-keys.md) | 検索サービスによって作成および管理されるすべての資産にわたって、カスタマー マネージド暗号化が拡張されます。 一般提供されています。|
-| September | [Azure Cognitive Search 用 Visual Studio Code 拡張機能](search-get-started-vs-code.md) | ワークスペース、ナビゲーション、IntelliSense、およびインデックス、インデクサー、データ ソース、スキルセットを作成するためのテンプレートが追加されます。 | パブリック プレビュー |
+| September | [Azure Cognitive Search 用 Visual Studio Code 拡張機能](search-get-started-vs-code.md) | ワークスペース、ナビゲーション、IntelliSense、およびインデックス、インデクサー、データ ソース、スキルセットを作成するためのテンプレートが追加されます。 現在、この機能はパブリック プレビュー段階にあります。| 
 | September | [マネージド サービス ID (インデクサー)](search-howto-managed-identities-data-sources.md) | 一般提供されています。  |
 | September | [プライベート リンクを使用したアウトバウンド要求](search-indexer-howto-access-private.md) | 一般提供されています。  |
 | September | [Management REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | 一般提供されています。 |

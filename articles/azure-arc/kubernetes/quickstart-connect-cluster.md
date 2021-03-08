@@ -5,15 +5,15 @@ author: mgoedtel
 ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
-ms.date: 02/24/2021
+ms.date: 03/03/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: c50266ce0afd6dd3f5860e3259d2b22af817834c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3fc522c4bdda9eb1047d5258bcc431d0268990b9
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689251"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121645"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する 
 
@@ -238,4 +238,4 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 
 次の記事に進み、GitOps を使用して接続済みの Kubernetes クラスターに構成をデプロイする方法を確認します。
 > [!div class="nextstepaction"]
-> [GitOps を使用して構成をデプロイする](use-gitops-connected-cluster.md)
+> [GitOps を使用して構成をデプロイする](tutorial-use-gitops-connected-cluster.md)

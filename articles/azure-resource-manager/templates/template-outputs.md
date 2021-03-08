@@ -3,18 +3,18 @@ title: テンプレート内の出力
 description: Azure Resource Manager テンプレート (ARM テンプレート) および Bicep ファイルで出力値を定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2b6a6afa127bf43102103baadae576233843f00d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703836"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123413"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM テンプレート内の出力
 
 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) および Bicep ファイルで出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
 
-各出力値の形式は、いずれかの[データ型](template-syntax.md#data-types)に解決される必要があります。
+各出力値の形式は、いずれかの[データ型](data-types.md)に解決される必要があります。
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

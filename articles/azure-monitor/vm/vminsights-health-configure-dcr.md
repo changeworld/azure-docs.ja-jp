@@ -1,17 +1,16 @@
 ---
 title: データ収集ルールを使用して VM 分析情報のゲストの正常性での監視を構成する (プレビュー)
 description: VM 分析情報のゲストの正常性における既定の監視を、Resource Manager テンプレートを使用して大規模に変更する方法について説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731223"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052145"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>データ収集ルールを使用して VM 分析情報のゲストの正常性での監視を構成する (プレビュー)
 [VM 分析情報のゲストの正常性](vminsights-health-overview.md)を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、データ収集ルールを使用して、複数の仮想マシンにわたって既定の監視を変更する方法について説明します。

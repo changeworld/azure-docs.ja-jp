@@ -3,12 +3,12 @@ title: Container insights を使用した Kubernetes の監視 | Microsoft Docs
 description: この記事では、Container insights を使用して Kubernetes クラスターのパフォーマンスの表示と分析を行う方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711350"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124314"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Container insights を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -20,7 +20,7 @@ Container insights を有効にする方法の詳細については、「[Contai
 
 Azure Monitor には、ご使用のサブスクリプション内のリソース グループにデプロイされ、Linux および Windows Server 2019 を実行しているすべての監視対象 Kubernetes クラスターの正常性状態が表示される複数クラスター ビューが用意されています。 ここでは、ソリューションによって監視されない、すべての環境にわたって検出されたクラスターが表示されます。 すぐにクラスターの正常性を把握することができ、ここからは、ノードとコントローラーのパフォーマンス ページにドリルダウンしたり、クラスターのパフォーマンス グラフを表示したりできます。 検出され、監視対象外として識別された AKS クラスターについては、いつでも監視を有効にできます。
 
-Linux クラスターと比較した場合の Container insights を使用した Windows Server クラスターの監視の主な相違点については、[こちら](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)の概要に関する記事を参照してください。
+Linux クラスターと比較した場合の Container insights を使用した Windows Server クラスターの監視の主な相違点については、[こちら](container-insights-overview.md#what-does-container-insights-provide)の概要に関する記事を参照してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

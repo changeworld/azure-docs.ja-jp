@@ -5,13 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: dukek
-ms.subservice: alerts
-ms.openlocfilehash: 50fb898e1ea55d0bcc09fc10dfee051ca7b1d809
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca43315258ea6439b08682898612137f7de1d61b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701163"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045634"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -176,7 +175,7 @@ ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](./itsmc-o
 2. アクション グループで Azure AD アプリケーションを使用できるようにします。
 
     > [!NOTE]
-    > このスクリプトを実行するには、[Azure AD アプリケーション管理者ロール](../../active-directory/roles/permissions-reference.md#available-roles)のメンバーである必要があります。
+    > このスクリプトを実行するには、[Azure AD アプリケーション管理者ロール](../../active-directory/roles/permissions-reference.md#all-roles)のメンバーである必要があります。
     
     - Azure AD テナント ID を使用するように、PowerShell スクリプトの Connect-AzureAD 呼び出しを変更します。
     - Azure AD アプリケーションのオブジェクト ID を使用するように、PowerShell スクリプトの変数 $myAzureADApplicationObjectId を変更します。

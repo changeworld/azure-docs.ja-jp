@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7672f4eb4530dbfb5d039b066fe7cf6eaf79e5a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48b22ba913370b27cd01319a14a2a627d7589ce4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718643"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051516"
 ---
 # <a name="security-control-v2-endpoint-security"></a>セキュリティ コントロール V2:エンドポイント セキュリティ
 
 エンドポイント セキュリティでは、エンドポイントでの検出と対応の制御を行います。 これには、Azure 環境内のエンドポイントに対して、エンドポイントでの検出と対応 (EDR) およびマルウェア対策サービスを使用することが含まれます。
 
-該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: エンドポイント セキュリティ](../../governance/policy/samples/azure-security-benchmark#endpoint-security)」を参照してください。
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: エンドポイント セキュリティ](../../governance/policy/samples/azure-security-benchmark.md#endpoint-security)」を参照してください。
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1:エンドポイントでの検出と対応 (EDR) を使用する
 

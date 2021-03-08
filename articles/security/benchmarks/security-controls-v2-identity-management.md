@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f76ebf8609b5f4ac587800359a5cbb0c6f967f3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4a36bd69ff5ddbc79e358d6f8a2c5b4d640c6d5c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698605"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051448"
 ---
 # <a name="security-control-v2-identity-management"></a>セキュリティ コントロール V2:ID 管理
 
 ID 管理は、Azure Active Directory を使用して、セキュリティで保護された ID とアクセスの制御を確立するためのコントロールを対象とします。 これには、シングル サインオン、強力な認証、アプリケーションのマネージド ID (およびサービスの原則)、条件付きアクセス、およびアカウントの異常監視の使用が含まれます。
 
-該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: ID 管理](../../governance/policy/samples/azure-security-benchmark#identity-management)」を参照してください。
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: ID 管理](../../governance/policy/samples/azure-security-benchmark.md#identity-management)」を参照してください。
 
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1:Azure Active Directory を中央 ID および認証システムとして標準化する
 

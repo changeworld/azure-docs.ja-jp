@@ -1,17 +1,16 @@
 ---
 title: VM insights のゲストの正常性アラート (プレビュー)
 description: VM insights のゲストの正常性によって作成されるアラートについて、それを有効にする方法と通知を構成する方法を含めて説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707508"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052264"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>VM insights のゲストの正常性アラート (プレビュー)
 VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 アラートは、仮想マシンまたはモニターが異常な状態に変化するときに作成されます。 [Azure Monitor のアラート ルールによって作成されるもの](../alerts/alerts-overview.md)を含むこれらのアラートを表示して管理し、新しいアラートが作成されたときに事前に通知されるように選択できます。

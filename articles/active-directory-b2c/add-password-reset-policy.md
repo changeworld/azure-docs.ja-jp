@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d7f597010f86e0f962f250dcd87d6c78f401a73d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b82d573b7d8a65447d75aa8f017c87795bbef6cd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688986"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171656"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードのリセット フローを設定する
 
@@ -206,7 +206,7 @@ ms.locfileid: "101688986"
 
 ### <a name="set-the-user-journey-to-be-executed"></a>実行するユーザー体験を設定する
 
-これでユーザー体験を変更または作成したので、 **[証明書利用者]** セクションで、Azure AD B2C がこのカスタム ポリシーに対して実行する体験を指定します。 [RelyingParty](../articles/active-directory-b2c/relyingparty.md) 要素内で、**DefaultUserJourney** 要素を見つけます。 **ClaimsProviderSelections** を追加したユーザー体験の ID と一致するように **DefaultUserJourney ReferenceId** を更新します。
+これでユーザー体験を変更または作成したので、 **[証明書利用者]** セクションで、Azure AD B2C がこのカスタム ポリシーに対して実行する体験を指定します。 [RelyingParty](relyingparty.md) 要素内で、**DefaultUserJourney** 要素を見つけます。 **ClaimsProviderSelections** を追加したユーザー体験の ID と一致するように **DefaultUserJourney ReferenceId** を更新します。
 
 ```xml
 <RelyingParty>
@@ -301,5 +301,3 @@ ms.locfileid: "101688986"
 ## <a name="next-steps"></a>次のステップ
 
 [パスワードの強制リセット](force-password-reset.md)を設定します。
-
-

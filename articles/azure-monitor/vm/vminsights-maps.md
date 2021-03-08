@@ -1,17 +1,16 @@
 ---
 title: VM insights を使用してアプリの依存関係を表示する
 description: マップは、VM insights の機能の 1 つです。 Windows および Linux システム上のアプリケーション コンポーネントが自動的に検出されて、サービス間の通信がマップされます。 この記事では、さまざまなシナリオでマップ機能を使用する方法について詳しく説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 267ec0ed01fb85e9e29b0b8c9294d20d610db8fb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719646"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046569"
 ---
 # <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>VM insights のマップ機能を使用してアプリケーション コンポーネントを把握する
 VM insights では、Azure またはお客様の環境で実行される Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 VM を確認する方法は 2 つあります。 VM から直接マップを表示するか、または Azure Monitor から、VM グループのコンポーネントを表すマップを表示します。 この記事は、これら 2 つの表示方法とマップ機能の使用方法を理解するうえで役立ちます。 

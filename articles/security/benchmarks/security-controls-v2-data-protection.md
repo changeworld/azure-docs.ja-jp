@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 50358eed580bbd83f25386feb0068a252060672b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735762"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037117"
 ---
 # <a name="security-control-v2-data-protection"></a>セキュリティ コントロール V2:データ保護
 
 データ保護は、保存時、転送中、承認されたアクセス メカニズムによるデータ保護の制御を対象としています。 これには、Azure のアクセス制御、暗号化、ログ記録を使用した機密データ資産の検出、分類、保護、監視が含まれます。
 
-該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: データ保護](../../governance/policy/samples/azure-security-benchmark#data-protection)」を参照してください
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: データ保護](../../governance/policy/samples/azure-security-benchmark.md#data-protection)」を参照してください
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1:機密データを検出、分類、ラベル付けする
 

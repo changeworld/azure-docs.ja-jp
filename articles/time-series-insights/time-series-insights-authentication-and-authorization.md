@@ -2,7 +2,6 @@
 title: API の認証と承認 - Azure Time Series Insights | Microsoft Docs
 description: この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。
 ms.service: time-series-insights
-services: time-series-insights
 author: deepakpalled
 ms.author: shresha
 manager: dpalled
@@ -12,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 58c0f408e3ad80109efd3db79d6e4a0d881aed78
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724178"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041214"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
-ビジネス ニーズによっては、Azure Time Series Insights 環境の [API](https://docs.microsoft.com/en-us/rest/api/time-series-insights/reference-data-access-overview) と対話するために使用する 1 つ以上のクライアント アプリケーションが、ソリューションに含まれる場合があります。 Azure Time Series Insights により、[OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)を使用して認証が実行されます。 クライアントの認証を行うには、適切なアクセス許可を持つベアラー トークンを取得し、API の呼び出しでそれを渡す必要があります。 このドキュメントでは、ベアラー トークンを取得して認証を行うために使用できる、いくつかの資格情報取得方法について説明します。
+ビジネス ニーズによっては、Azure Time Series Insights 環境の [API](/rest/api/time-series-insights/reference-data-access-overview) と対話するために使用する 1 つ以上のクライアント アプリケーションが、ソリューションに含まれる場合があります。 Azure Time Series Insights により、[OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)を使用して認証が実行されます。 クライアントの認証を行うには、適切なアクセス許可を持つベアラー トークンを取得し、API の呼び出しでそれを渡す必要があります。 このドキュメントでは、ベアラー トークンを取得して認証を行うために使用できる、いくつかの資格情報取得方法について説明します。
 
 
   新しい Azure Active Directory ブレードを使用して Azure Active Directory にアプリを登録する方法について説明します。 Azure Active Directory に登録されたアプリを使用すると、ユーザーは、Azure Time Series Insights 環境に関連付けられた Azure Time Series Insight API を使用する認証と承認を受けることができます。
@@ -34,7 +33,7 @@ ms.locfileid: "101724178"
 - マネージド ID を使用すると、Azure AD Authentication をサポートするあらゆる Azure サービス (Azure Key Vault を含む) に対して認証を行うことができる。
 - マネージド ID の使用に関して追加コストは一切かからない。
 
-2 種類のマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)」を参照してください
+2 種類のマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください
 
 次の場所のマネージド ID を使用できます。
 
@@ -44,7 +43,7 @@ ms.locfileid: "101724178"
 - Azure Container Instances
 - その他...
 
-完全な一覧については、「[Azure リソースのマネージド ID をサポートする Azure サービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources)」を参照してください。
+完全な一覧については、「[Azure リソースのマネージド ID をサポートする Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)」を参照してください。
 
 ## <a name="azure-active-directory-app-registration"></a>Azure Active Directory のアプリ登録
 
@@ -54,9 +53,9 @@ ms.locfileid: "101724178"
 
 ポータルでアプリケーションを登録すると、ホーム テナントにアプリケーション オブジェクトとサービス プリンシパル オブジェクトが自動的に作成されます。 Microsoft Graph API を使用してアプリケーションを登録または作成する場合、サービス プリンシパル オブジェクトの作成は別の手順です。 トークンを要求するには、サービス プリンシパル オブジェクトが必要です。
 
-お使いのアプリケーションの「[セキュリティ](https://docs.microsoft.com/azure/active-directory/develop/identity-platform-integration-checklist#security)」チェックリストを必ず確認してください。 ベスト プラクティスとしては、パスワードの資格情報 (クライアント シークレット) ではなく、[証明書の資格情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)を使用する必要があります。
+お使いのアプリケーションの「[セキュリティ](../active-directory/develop/identity-platform-integration-checklist.md#security)」チェックリストを必ず確認してください。 ベスト プラクティスとしては、パスワードの資格情報 (クライアント シークレット) ではなく、[証明書の資格情報](../active-directory/develop/active-directory-certificate-credentials.md)を使用する必要があります。
 
-詳細については、「[Azure Active Directory のアプリケーションとサービス プリンシパルのオブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)」を参照してください。
+詳細については、「[Azure Active Directory のアプリケーションとサービス プリンシパルのオブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
 ## <a name="step-1-create-your-managed-identity-or-app-registration"></a>ステップ 1: マネージド ID またはアプリの登録を作成する
 
@@ -64,16 +63,16 @@ ms.locfileid: "101724178"
 
 ### <a name="managed-identity"></a>マネージド ID
 
-マネージド ID の作成に使用する手順は、コードが配置される場所と、システム割り当てまたはユーザー割り当ての ID を作成するかどうかによって異なります。 違いを理解するには、「[マネージド ID の種類](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types)」を参照してください。 ID の種類を選択したら、Azure AD のマネージド ID に関する[ドキュメント](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/)で、正しいチュートリアルを見つけてそれに従います。 そこでは、次のものに関するマネージド ID の構成方法が説明されています。
+マネージド ID の作成に使用する手順は、コードが配置される場所と、システム割り当てまたはユーザー割り当ての ID を作成するかどうかによって異なります。 違いを理解するには、「[マネージド ID の種類](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)」を参照してください。 ID の種類を選択したら、Azure AD のマネージド ID に関する[ドキュメント](../active-directory/managed-identities-azure-resources/index.yml)で、正しいチュートリアルを見つけてそれに従います。 そこでは、次のものに関するマネージド ID の構成方法が説明されています。
 
-- [Azure VM](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#enable-system-assigned-managed-identity-during-creation-of-a-vm)
-- [App Service と Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
-- [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+- [Azure VM](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-during-creation-of-a-vm)
+- [App Service と Azure Functions](../app-service/overview-managed-identity.md)
+- [Azure Container Instances](../container-instances/container-instances-managed-identity.md)
 - その他...
 
 ### <a name="application-registration"></a>アプリケーションの登録
 
-「[アプリケーションを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-an-application)」で示されている手順のようにします。
+「[アプリケーションを登録する](../active-directory/develop/quickstart-register-app.md#register-an-application)」で示されている手順のようにします。
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
@@ -81,16 +80,16 @@ ms.locfileid: "101724178"
 
 Azure Time Series Insights 環境によって要求が受信されると、最初に呼び出し元のベアラー トークンが検証されます。 検証に合格すると、呼び出し元は認証され、次に要求されたアクションの実行を呼び出し元が承認されていることを確認するための別のチェックが行われます。 ユーザーまたはサービス プリンシパルを承認するには、最初に、閲覧者ロールまたは共同作成者ロールをそれらに割り当てることによって、環境へのアクセスを許可する必要があります。
 
-- [Azure portal](https://portal.azure.com/) の UI を使用してアクセスを許可するには、記事「[環境へのデータ アクセスの許可](https://docs.microsoft.com/azure/time-series-insights/concepts-access-policies)」に記載されている手順に従います。 ユーザーを選択するときは、名前または ID でマネージド ID またはアプリの登録を検索できます。
+- [Azure portal](https://portal.azure.com/) の UI を使用してアクセスを許可するには、記事「[環境へのデータ アクセスの許可](concepts-access-policies.md)」に記載されている手順に従います。 ユーザーを選択するときは、名前または ID でマネージド ID またはアプリの登録を検索できます。
 
-- Azure CLI を使用してアクセスを許可するには、次のコマンドを実行します。 アクセスの管理に使用できるコマンドの完全な一覧については、[こちら](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/access-policy?view=azure-cli-latest)のドキュメントを参照してください。
+- Azure CLI を使用してアクセスを許可するには、次のコマンドを実行します。 アクセスの管理に使用できるコマンドの完全な一覧については、[こちら](/cli/azure/ext/timeseriesinsights/tsi/access-policy)のドキュメントを参照してください。
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
    ```
 
 > [!Note]
-> Azure CLI の timeseriesinsights 拡張機能には、バージョン 2.11.0 以降が必要です。 この拡張機能は、az tsi access-policy コマンドを初めて実行したときに自動的にインストールされます。 拡張機能の[詳細を参照してください](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)。
+> Azure CLI の timeseriesinsights 拡張機能には、バージョン 2.11.0 以降が必要です。 この拡張機能は、az tsi access-policy コマンドを初めて実行したときに自動的にインストールされます。 拡張機能の[詳細を参照してください](/cli/azure/azure-cli-extensions-overview)。
 
 ## <a name="step-3-requesting-tokens"></a>ステップ 3: トークンを要求する
 
@@ -107,37 +106,37 @@ Azure Time Series Insights 環境によって要求が受信されると、最�
 
 ### <a name="managed-identities"></a>マネージド ID
 
-Azure App Service または Functions からアクセスする場合は、「[Azure リソースのトークンを取得する](https://docs.microsoft.com/azure/app-service/overview-managed-identity)」のガイダンスに従ってください。
+Azure App Service または Functions からアクセスする場合は、「[Azure リソースのトークンを取得する](../app-service/overview-managed-identity.md)」のガイダンスに従ってください。
 
 > [!TIP]
-> .NET のアプリケーションと関数の場合、マネージド ID を利用する最も簡単な方法は、.NET 用の [Azure ID クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)を使用することです。 
+> .NET のアプリケーションと関数の場合、マネージド ID を利用する最も簡単な方法は、.NET 用の [Azure ID クライアント ライブラリ](/dotnet/api/overview/azure/identity-readme)を使用することです。 
 
-.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このパッケージは、簡単でセキュリティ上の利点があるため、よく使われています。 開発者はコードを 1 回だけ記述すればよく、後はクライアント ライブラリにより、アプリケーションの環境 (開発者のアカウントを使用する開発者ワークステーション上か、またはマネージド サービス ID を使用して Azure にデプロイされるか) に基づいて、認証方法が決定されます。 前の AppAuthentication ライブラリからの移行に関するガイダンスについては、「[AppAuthentication から Azure.Identity への移行ガイダンス](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration?view=azure-dotnet)」を参照してください。
+.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このパッケージは、簡単でセキュリティ上の利点があるため、よく使われています。 開発者はコードを 1 回だけ記述すればよく、後はクライアント ライブラリにより、アプリケーションの環境 (開発者のアカウントを使用する開発者ワークステーション上か、またはマネージド サービス ID を使用して Azure にデプロイされるか) に基づいて、認証方法が決定されます。 前の AppAuthentication ライブラリからの移行に関するガイダンスについては、「[AppAuthentication から Azure.Identity への移行ガイダンス](/dotnet/api/overview/azure/app-auth-migration)」を参照してください。
 
 C# と .NET 用 Azure ID クライアント ライブラリを使用して、Azure Time Series Insights 用のトークンを要求します。
 
-    ```csharp
-    using Azure.Identity;
-    // ...
-    var credential = new DefaultAzureCredential();
-    var token = credential.GetToken(
-    new Azure.Core.TokenRequestContext(
-        new[] { "https://api.timeseries.azure.com/" }));
+   ```csharp
+   using Azure.Identity;
+   // ...
+   var credential = new DefaultAzureCredential();
+   var token = credential.GetToken(
+   new Azure.Core.TokenRequestContext(
+       new[] { "https://api.timeseries.azure.com/" }));
    var accessToken = token.Token;
-    ```
+   ```
 
 ### <a name="app-registration"></a>アプリの登録
 
-* 開発者は、[Microsoft Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) (MSAL) を使用して、アプリの登録用のトークンを取得することができます。
+* 開発者は、[Microsoft Authentication Library](../active-directory/develop/msal-overview.md) (MSAL) を使用して、アプリの登録用のトークンを取得することができます。
 
 MSAL は、次のものを初めとする多くのアプリケーション シナリオで使用できます。
 
-* [シングルページ アプリケーション (JavaScript)](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview.md)
-* [Web アプリケーションのユーザーのサインインとユーザーの代理としての Web API の呼び出し](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-overview.md)
-* [Web API がサインイン ユーザーの代わりに別のダウンストリーム Web API を呼び出す](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-overview.md)
-* [デスクトップ アプリケーションがサインイン ユーザーの代わりに Web API を呼び出す](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview.md)
-* [モバイル アプリケーションが、対話形式でサインインしたユーザーの代わりに Web API を呼び出す](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-overview.md)。
-* [デスクトップ/サービス デーモン アプリケーションがそれ自体の代理として Web API を呼び出す](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-overview.md)
+* [シングルページ アプリケーション (JavaScript)](../active-directory/develop/scenario-spa-overview.md)
+* [Web アプリケーションのユーザーのサインインとユーザーの代理としての Web API の呼び出し](../active-directory/develop/scenario-web-app-call-api-overview.md)
+* [Web API がサインイン ユーザーの代わりに別のダウンストリーム Web API を呼び出す](../active-directory/develop/scenario-web-api-call-api-overview.md)
+* [デスクトップ アプリケーションがサインイン ユーザーの代わりに Web API を呼び出す](../active-directory/develop/scenario-desktop-overview.md)
+* [モバイル アプリケーションが、対話形式でサインインしたユーザーの代わりに Web API を呼び出す](../active-directory/develop/scenario-mobile-overview.md)。
+* [デスクトップ/サービス デーモン アプリケーションがそれ自体の代理として Web API を呼び出す](../active-directory/develop/scenario-daemon-overview.md)
 
 アプリの登録としてトークンを取得し、Gen2 環境からデータを照会する方法を示す C# コードのサンプルについては、[GitHub](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs) のサンプル アプリを参照してください
 

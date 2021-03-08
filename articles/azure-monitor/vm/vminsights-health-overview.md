@@ -1,17 +1,16 @@
 ---
 title: VM insights のゲストの正常性 (プレビュー)
 description: 仮想マシンの正常性を表示したり、仮想マシンが異常になったときにアラートを受信したりする方法を含む、VM insights の正常性機能の概要。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707457"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052128"
 ---
 # <a name="vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー)
 VM insights のゲストの正常性を使用すると、ゲスト オペレーティング システムから一定間隔でサンプリングされる一連のパフォーマンス測定値に基づいて、仮想マシンの正常性を表示できます。 サブスクリプションまたはリソース グループ内のすべての仮想マシンの正常性を迅速に確認したり、特定の仮想マシンの詳細な正常性をドリルダウンしたり、仮想マシンが異常になったときにプロアクティブに通知を受け取ったりすることができます。 

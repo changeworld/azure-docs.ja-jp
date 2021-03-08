@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518081"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695748"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
@@ -98,11 +98,13 @@ Power BI テナントの Admin API に接続するための Purview のマネー
     > Power BI の場合、データ ソースの登録とスキャンは 1 つのインスタンスに対してのみ許可されています。
 
 
-4. スキャンに名前を付けます。 サポートされている認証方法は **[マネージド ID]** のみであることに留意してください。
+4. スキャンに名前を付けます。 次に、個人用ワークスペースを含める、または除外するオプションを選択します。 サポートされている認証方法は **[マネージド ID]** のみであることに留意してください。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Power BI スキャンの設定を示す画像":::
 
-    スキャンの名前の長さは 3 から 63 文字で、文字、数字、アンダースコア、およびハイフンのみを使用できます。  スペースは使用できません。
+    > [!Note]
+    > * 個人用ワークスペースを含める、または除外するようにスキャンの構成を切り替えると、PowerBI ソースのフル スキャンがトリガーされます
+    > * スキャンの名前の長さは 3 から 63 文字で、文字、数字、アンダースコア、およびハイフンのみを使用できます。 スペースは使用できません。
 
 5. スキャン トリガーを設定します。 オプションとしては、 **[1 度]** 、 **[7 日ごと]** 、 **[30 日ごと]** があります。
 

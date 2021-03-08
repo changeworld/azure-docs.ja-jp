@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4667e8fa3a5624dddc3cb0dd792fc73ea812332
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692889"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122002"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>既知の問題 - Azure Arc 対応データ サービス (プレビュー)
 
@@ -22,10 +22,7 @@ ms.locfileid: "101692889"
 
 ## <a name="february-2021"></a>2021 年 2 月
 
-
 - 接続されたクラスター モードが無効です
-- Azure Arc 対応 PostgreSQL Hyperscale では、指定した相対時点まで復元できない場合に、不正確なエラー メッセージが返されます。 たとえば、バックアップに含まれる内容よりも古い特定の時点に復元するよう指定した場合、復元は失敗し、`ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}` のようなエラー メッセージが表示されます。 これが発生した場合は、バックアップが存在する日付範囲内の特定の時点を指定した後、コマンドを再始動します。 この範囲を特定するには、バックアップを一覧表示し、それが取得された日付を確認します。
-- 完全復元を実行する際は、backup-id が必要です。 既定では、backup-id を指定していない場合は、最新のバックアップが使用されます。 これは、このリリースでは機能しません。
 
 ## <a name="introduced-prior-to-february-2021"></a>2021 年 2 月より前に確認されたもの
 

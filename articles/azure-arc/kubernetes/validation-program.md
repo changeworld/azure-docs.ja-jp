@@ -2,18 +2,18 @@
 title: Azure Arc 対応 Kubernetes 検証プログラム
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Kubernetes ディストリビューションの Arc 検証プログラムについて説明します
 keywords: Kubernetes, Arc, Azure, K8s, 検証
-ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689217"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121373"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc 検証プログラム
 
@@ -61,6 +61,6 @@ Azure Arc チームは、次のパブリック クラウド プロバイダー�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Arc にクラスターを接続する](./connect-cluster.md)
-* [Arc 対応 Kubernetes クラスターで構成を作成する](./use-gitops-connected-cluster.md)
-* [Azure Policy を使用して構成を大規模に適用する](./use-azure-policy.md)
+クラスターを Azure Arc に接続する方法について学習します。
+> [!div class="nextstepaction"]
+> [Azure Arc にクラスターを接続する](./quickstart-connect-cluster.md)

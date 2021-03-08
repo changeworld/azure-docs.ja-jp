@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726225"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036539"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Diagnostics 拡張機能の概要
 Azure Diagnostics 拡張機能は、仮想マシンを含む Azure コンピューティング リソースのゲスト オペレーティング システムから監視データを収集する、[Azure Monitor のエージェント](../agents/agents-overview.md)です。 この記事では、Azure Diagnostics 拡張機能の概要と、サポートされている特定の機能、およびインストールと構成のオプションについて説明します。 
@@ -78,7 +78,7 @@ Azure Diagnostic 拡張機能では、Windows 向けと Linux 向けのどちら
 | Azure Storage BLOB | テーブルに加えて Azure Storage の BLOB にもデータを書き込みます。 |
 | Application Insights | ご利用の VM で実行されているアプリケーションから Application Insights にデータを収集して、他のアプリケーション監視と統合します。 [診断データの Application Insights への送信](diagnostics-extension-to-application-insights.md)に関する記事を参照してください。 |
 
-この機能には、通常、Log Analytics エージェントが使用されますが、ストレージから Log Analytics ワークスペースに WAD データを収集して、Azure Monitor ログで分析することもできます。 データを Log Analytics ワークスペースに直接送信し、追加の機能を提供するソリューションと分析情報をサポートできます。  [Azure 診断ログの Azure Storage からの収集](../essentials/diagnostics-extension-logs.md)に関する記事を参照してください。 
+この機能には、通常、Log Analytics エージェントが使用されますが、ストレージから Log Analytics ワークスペースに WAD データを収集して、Azure Monitor ログで分析することもできます。 データを Log Analytics ワークスペースに直接送信し、追加の機能を提供するソリューションと分析情報をサポートできます。  [Azure 診断ログの Azure Storage からの収集](../agents/diagnostics-extension-logs.md)に関する記事を参照してください。 
 
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Diagnostics 拡張機能 (LAD)

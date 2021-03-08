@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 2/24/2021
-ms.openlocfilehash: 5d978410cae2b2de1a2f6711de82ae71a1da168c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743664"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120132"
 ---
 # <a name="co-sell-requirements"></a>共同販売の要件
 
@@ -24,7 +24,7 @@ ms.locfileid: "101743664"
 | ------------ | ------------- |
 | 共同販売の準備が未完了 | [共同販売の準備完了ステータスの最小要件](#requirements-for-co-sell-ready-status)が満たされていません。 |
 | 共同販売の準備完了 | [共同販売の準備完了ステータスの要件](#requirements-for-co-sell-ready-status)がすべて満たされています。 |
-| Azure IP 共同販売インセンティブ対象 | [これらの追加の要件](#requirements-for-IP-Co-sell-incentivized-status)に加えて、共同販売の準備完了の要件が満たされています。 |
+| Azure IP 共同販売インセンティブ対象 | [これらの追加の要件](#requirements-for-ip-co-sell-incentivized-status)に加えて、共同販売の準備完了の要件が満たされています。 |
 | ビジネス アプリケーション ISV コネクト Premium インセンティブ  | このステータスは、Dynamics 365 と Power Apps のプランに適用されます。[このステータスの要件](#requirements-for-biz-apps-isv-connect-premium-incentive-status)がすべて満たされていることを示します。 |
 |||
 

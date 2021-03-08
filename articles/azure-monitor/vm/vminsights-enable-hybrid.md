@@ -1,17 +1,16 @@
 ---
 title: ハイブリッド環境で Azure Monitor を有効にする
 description: この記事では、1 つ以上の仮想マシンを含むハイブリッド クラウド環境において、VM 分析情報を有効にする方法について説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c3c8495b7355ee5d9ee8c28b4e0097a0080964d4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731274"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046640"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>ハイブリッド仮想マシンで VM 分析情報を有効にする
 この記事では、Azure の外部 (オンプレミスやその他のクラウド環境を含む) の仮想マシンで VM 分析情報を有効にする方法について説明します。

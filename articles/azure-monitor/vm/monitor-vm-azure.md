@@ -2,17 +2,16 @@
 title: Azure Monitor を使用して Azure 仮想マシンを監視する
 description: Azure Monitor を使用し、Azure の仮想マシンから監視データを収集して分析する方法について説明します。
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 6209389843b19d933bdce2726b55946b8839a264
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731376"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047045"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する
 この記事では、Azure Monitor を使用して Azure 仮想マシンから監視データを収集して分析し、正常性を維持する方法について説明します。 仮想マシンは、[他の Azure リソース](../essentials/monitor-azure-resource.md)と同様に、Azure Monitor を使用して可用性とパフォーマンスを監視できますが、ゲスト オペレーティング システムとそこで実行されるワークロードも監視する必要があるため、他のリソースと異なります。 
@@ -56,7 +55,7 @@ Azure の仮想マシンによって、次の図に示すような[ログ](../lo
 | 構成ステップ | 完了したアクション | 有効な機能 |
 |:---|:---|:---|
 | 構成なし | - ホスト プラットフォーム メトリックがメトリックに収集された。<br>- アクティビティ ログが収集された。 | - ホストのメトリックス エクスプローラー。<br>- ホストのメトリック アラート。<br>- アクティビティ ログ アラート。 |
-| [VM Insights を有効にする](#enable-azure-monitor-for-vms) | - Log Analytics エージェントがインストールされた。<br>- 依存関係エージェントがインストールされた。<br>- ゲスト パフォーマンス データがログに収集された。<br>- プロセスと依存関係の詳細がログに収集された。 | - ゲスト パフォーマンス データのパフォーマンス グラフとブック。<br>- ゲスト パフォーマンス データのログ クエリ。<br>- ゲスト パフォーマンス データのログ アラート。<br>- 依存関係マップ。 |
+| [VM Insights を有効にする](#enable-vm-insights) | - Log Analytics エージェントがインストールされた。<br>- 依存関係エージェントがインストールされた。<br>- ゲスト パフォーマンス データがログに収集された。<br>- プロセスと依存関係の詳細がログに収集された。 | - ゲスト パフォーマンス データのパフォーマンス グラフとブック。<br>- ゲスト パフォーマンス データのログ クエリ。<br>- ゲスト パフォーマンス データのログ アラート。<br>- 依存関係マップ。 |
 | [診断拡張機能と Telegraf エージェントをインストールする](#enable-diagnostics-extension-and-telegraf-agent) | - ゲスト パフォーマンス データがメトリックに収集された。 | - ゲストのメトリックス エクスプローラー。<br>- ゲストのメトリック アラート。  |
 | [Log Analytics ワークスペースを構成する](#configure-log-analytics-workspace) | - イベントがゲストから収集された。 | - ゲスト イベントのログ クエリ。<br>- ゲスト イベントのログ アラート。 |
 | [仮想マシンの診断設定を作成する](#collect-platform-metrics-and-activity-log) | - プラットフォームのメトリックがログに収集された。<br>- アクティビティ ログがログに収集された。 | - ホスト メトリックのログ クエリ。<br>- ホスト メトリックのログ アラート。<br>- アクティビティ ログのログ クエリ。

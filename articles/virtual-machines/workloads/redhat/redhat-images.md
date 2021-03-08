@@ -2,18 +2,19 @@
 title: Azure の Red Hat Enterprise Linux イメージの概要
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
 author: asinn826
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
-ms.author: alsin
+ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737763"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694684"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 
@@ -65,6 +66,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 イメージの種類
 
+>[!NOTE]
+> 2020 年 12 月 30 日時点で、RHEL 6.10 はサポート終了 (EOL) になりました。 継続的なサポートのためには、延長ライフサイクル サポート フェーズの一環として ELS を有効にしてください。[Red Hat ELS のドキュメント](./redhat-extended-lifecycle-support.md)を参照してください。
+
 RHEL 6.x イメージについて、イメージの種類を次の表に示します。
 
 |Publisher | プラン | SKU 値 | Version | 詳細
@@ -105,8 +109,18 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191023) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 RHEL 8 イメージです。
 |RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 Hyper-V 第 2 世代 RHEL 8 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](../../generation-2.md)」を参照してください。
+|RedHat | RHEL | RHEL-SAP-APPS | RHEL マイナー バージョンと発行日の連結された値 (例: 8.1.2021012201) | これらのイメージは、RHEL for SAP Applications イメージです。 SAP アプリケーション リポジトリとベース RHEL リポジトリにアクセスする権利があります。
+|RedHat | RHEL | RHEL-SAP-HA | RHEL マイナー バージョンと発行日の連結された値 (例: 8.1.2021010602) | これらのイメージは、高可用性および更新サービスを備えた RHEL for SAP イメージです。 RHEL E4S リポジトリに加えて、SAP ソリューションとアプリケーションのリポジトリ、および高可用性リポジトリへのアクセス権を持ちます。 請求には、基本コンピューティング料金に加えて RHEL Premium、SAP Premium、および高可用性 Premium が含まれます。
 
-## <a name="rhel-longer-support-add-ons"></a>RHEL 長期サポート アドオン
+## <a name="rhel-extended-support-add-ons"></a>RHEL Extended Support アドオン
+
+### <a name="extended-life-cycle-support"></a>延長ライフサイクル サポート
+
+延長ライフサイクル サポート (ELS) アドオンは、サポート終了 (EOL) に達したリリースに対して重大かつ重要なセキュリティ修正プログラムを有効にするオプションのサブスクリプションです。 RHEL EUS の詳細については、[Red Hat のドキュメント](https://access.redhat.com/support/policy/updates/errata#Extended_Life_Cycle_Support)を参照してください。
+
+現在、ELS は RHEL 6.10 でのみご利用いただけます。 従量課金制のイメージの場合は、[Red Hat ELS のドキュメント](./redhat-extended-lifecycle-support.md)に記載されている手順に従って、ELS を有効にすることができます。
+
+以前のバージョンで実行している場合は、ELS を有効にする前に、RHEL 6.10 にアップグレードする必要があります。
 
 ### <a name="extended-update-support"></a>Extended Update Support
 

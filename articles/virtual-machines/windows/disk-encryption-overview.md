@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27d962a2cf1a1c453d942d320d65b3e9b9a4b959
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e9436a9ec7db660fa2d7012df98188b96ea8ee16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357795"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694310"
 ---
-# <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption 
+# <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption
 
-Azure Disk Encryption は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Windows の [Bitlocker](https://en.wikipedia.org/wiki/BitLocker) 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化が提供されます。これは、ディスク暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](../../key-vault/index.yml) に統合されています。 
+Azure Disk Encryption は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Windows の [BitLocker](https://en.wikipedia.org/wiki/BitLocker) 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化が提供されます。これは、ディスク暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](../../key-vault/index.yml) に統合されています。
+
+Azure Disk Encryption は、Virtual Machines と同じように、ゾーン回復性を備えています。 詳細については、「[Availability Zones をサポートする Azure サービス](../../availability-zones/az-region.md)」を参照してください。
 
 [Azure Security Center](../../security-center/index.yml) を使用している場合、暗号化されていない VM があると警告を受け取ります。 アラートは高重要度として表示され、このような VM は暗号化することをお勧めします。
 
@@ -27,19 +29,15 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD での Azure Disk Encryption (以前のリリース)](disk-encryption-overview-aad.md)」を参照してください。 
 > - 特定の推奨事項により、データ、ネットワーク、またはコンピューティング リソースの使用量が増え、その結果、ライセンスまたはサブスクリプション コストの追加が必要になる可能性があります。 サポートされているリージョンにおいて Azure でリソースを作成するための有効なアクティブ Azure サブスクリプションが必要です。
 
-[Azure CLI を使用した Windows VM の作成および暗号化のクイックスタート](disk-encryption-cli-quickstart.md)または[Azure Powershell を使用した Windows VM の作成および暗号化のクイックスタート](disk-encryption-powershell-quickstart.md)のページでは、Windows 用 Azure Disk Encryption の基礎について数分で学習できます。
+[Azure CLI を使用した Windows VM の作成および暗号化のクイックスタート](disk-encryption-cli-quickstart.md)または[Azure PowerShell を使用した Windows VM の作成および暗号化のクイックスタート](disk-encryption-powershell-quickstart.md)のページでは、Windows 用 Azure Disk Encryption の基礎について数分で学習できます。
 
 ## <a name="supported-vms-and-operating-systems"></a>サポートされている VM とオペレーティング システム
 
 ### <a name="supported-vms"></a>サポート対象の VM
 
-Windows VM は、[さまざまなサイズ](../sizes-general.md)で利用できます。 Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。
+Windows VM は、[さまざまなサイズ](../sizes-general.md)で利用できます。 Azure Disk Encryption は、第 1 世代と第 2 世代の VM でサポートされています。 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
-Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
-
-Azure Disk Encryption は、[第 2 世代 VM](../generation-2.md#generation-1-vs-generation-2-capabilities) では使用できません。 例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
-
-Azure Disk Encryption は、一時ディスクのない VM イメージ (Dv4、Dsv4、Ev4、および Esv4) では使用できません。  「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.md)」を参照してください。
+Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。  Azure Disk Encryption は、一時ディスクのない VM イメージ (Dv4、Dsv4、Ev4、および Esv4) でも使用できません。  「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.md)」を参照してください。  例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -85,12 +83,11 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 | キー暗号化キー (KEK) | シークレットを保護またはラップするために使用できる非対称キー (RSA 2048) です。 ハードウェア セキュリティ モジュール (HSM) で保護されたキーまたはソフトウェアで保護されたキーを指定できます。 詳細については、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントと「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。 |
 | PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/)に関するページをご覧ください。 |
 
-
 ## <a name="next-steps"></a>次のステップ
 
 - [クイックスタート - Azure CLI を使用して Windows VM を作成、暗号化する](disk-encryption-cli-quickstart.md)
 - [クイック スタート - Azure PowerShell を使用して Windows VM を作成、暗号化する](disk-encryption-powershell-quickstart.md)
 - [Windows VM での Azure Disk Encryption シナリオ](disk-encryption-windows.md)
-- [Azure Disk Encryption の前提条件の CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure Disk Encryption の前提条件の CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started) 
 - [Azure Disk Encryption の前提条件の PowerShell スクリプト](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)

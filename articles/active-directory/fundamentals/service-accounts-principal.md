@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c9df24a255d640c463bd62e8bdfe8a576df3b09
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fff9f9e809c61761ae22bc64cb0810b6e8b98f07
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692923"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122699"
 ---
 # <a name="securing-service-principals"></a>サービス プリンシパルのセキュリティ保護
 
@@ -107,7 +107,7 @@ PowerShell の使用
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>ユーザー アカウントからサービス プリンシパルに移行する  
 ‎サービス プリンシパルとして Azure ユーザー アカウントを使用している場合は、[マネージド ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) またはサービス プリンシパルに移行できるかどうかを評価します。 マネージド ID を使用できない場合は、必要なタスクを実行するのに十分なアクセス許可とスコープだけを持つサービス プリンシパルをプロビジョニングします。 サービス プリンシパルは、[アプリケーションを登録する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)か、[PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell) を使用して作成できます。
 
-Microsoft Graph の使用時は、[この例のように](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.0.0)、特定の API のドキュメントを確認し、‎アプリケーションのアクセス許可の種類がサポート対象として表示されていることを確認してください。
+Microsoft Graph の使用時は、[この例のように](/powershell/azure/create-azure-service-principal-azureps)、特定の API のドキュメントを確認し、‎アプリケーションのアクセス許可の種類がサポート対象として表示されていることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -115,7 +115,7 @@ Microsoft Graph の使用時は、[この例のように](https://docs.microsoft
 
 [サービス プリンシパルの作成](../develop/howto-create-service-principal-portal.md)
 
- [サービス プリンシパルのサインインの監視](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md)
+ [サービス プリンシパルのサインインの監視](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
 
 **サービス アカウントのセキュリティ保護の詳細を確認する場合:**
 
@@ -125,4 +125,4 @@ Microsoft Graph の使用時は、[この例のように](https://docs.microsoft
 
 [Azure サービス アカウントの管理](service-accounts-governing-azure.md)
 
-[オンプレミス サービス アカウントの概要](service-accounts-on-poremises.md)
+[オンプレミス サービス アカウントの概要](service-accounts-on-premises.md)

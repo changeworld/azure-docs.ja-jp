@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor の概要 | Microsoft Docs
 description: Azure のサービスおよびアプリケーションの包括的な監視戦略に役立つ Microsoft のサービスと機能の概要。
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717351"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047164"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -145,7 +144,7 @@ Azure Monitor のメトリックとログの読み取りや書き込み、生成
 ## <a name="next-steps"></a>次のステップ
 各項目の詳細情報
 
-* [メトリックとログ](data-platform.md) Azure Monitor によって収集されたデータについては、こちらをご覧ください。
+* [メトリックとログ](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) Azure Monitor によって収集されたデータについては、こちらをご覧ください。
 * [データ ソース](agents/data-sources.md) アプリケーションのさまざまなコンポーネントでテレメトリを送信する方法については、こちらをご覧ください。
 * [ログ クエリ](logs/log-query-overview.md) 収集したデータを分析する場合は、こちらをご覧ください。
 * クラウドのアプリケーションとサービスを監視するための[ベスト プラクティス](/azure/architecture/best-practices/monitoring)。

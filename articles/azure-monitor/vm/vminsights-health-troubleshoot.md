@@ -1,17 +1,16 @@
 ---
 title: VM 分析情報のゲストの正常性のトラブルシューティング (プレビュー)
 description: VM 分析情報の正常性に関する問題があるときに実行できるトラブルシューティング手順について説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: 6ae0a9e20d6aad7200729419ece333d80e652c3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d8b37569ebaa8e75be601a1efd65a23a61aeaa75
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703921"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051941"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>VM 分析情報のゲストの正常性のトラブルシューティング (プレビュー)
 この記事では、VM 分析情報の正常性に関する問題があるときに実行できるトラブルシューティング手順について説明します。

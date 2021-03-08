@@ -3,12 +3,12 @@ title: テンプレートにおける変数
 description: Azure Resource Manager テンプレート (ARM テンプレート) と Bicep ファイルで変数を定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3ab14c9acfcc2d6c9edd23fb3bc4d876cd5ac756
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700339"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123379"
 ---
 # <a name="variables-in-arm-templates"></a>ARM テンプレートにおける変数
 
@@ -20,7 +20,7 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 
 ## <a name="define-variable"></a>変数を定義する
 
-変数を定義するときは、その変数の[データ型](template-syntax.md#data-types)は指定しません。 代わりに、値またはテンプレート式を指定します。 変数の型は解決済みの値から推定されます。 次の例では、変数を文字列に設定します。
+変数を定義するときは、その変数の[データ型](data-types.md)は指定しません。 代わりに、値またはテンプレート式を指定します。 変数の型は解決済みの値から推定されます。 次の例では、変数を文字列に設定します。
 
 # <a name="json"></a>[JSON](#tab/json)
 
