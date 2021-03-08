@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: c57ac9ddbebcf02cb0118705b63f97fd1880b0f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695889"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123566"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>Azure の複数のソースを登録してスキャンする
 
@@ -95,12 +95,12 @@ Azure の複数のソースの認証を設定するには、次の 2 つの方�
     1. MSI として **親レベルの資格情報** を選択するか、特定のサービス プリンシパルの種類の資格情報を選択できます。これは、サブスクリプションまたはリソース グループの下にあるすべてのリソースの種類に対して使用することを選択できます。
     1. また、具体的に **リソースの種類を選択し、そのリソースの種類の別の資格情報を適用** することもできます。
     1. 各資格情報は、特定の種類の下にあるすべてのリソースの認証方法と見なされます。
-    1. 上記のこの[セクション](#Setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group)で説明したように、リソースを正常にスキャンするために、選択した認証をリソースに設定する必要があります。
+    1. 上記のこの[セクション](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group)で説明したように、リソースを正常にスキャンするために、選択した認証をリソースに設定する必要があります。
 1. 各種類では、すべてのリソースをスキャンするか、またはそのサブセットを名前でスキャンするかを選択できます。
     1. オプションを **[すべて]** のままにすると、その種類の将来のリソースも、将来のスキャンの実行でスキャンされます。
     1. 特定のストレージ アカウントまたは SQL データベースを選択した場合、将来スキャンが明示的に編集されない限り、このサブスクリプションまたはリソース グループ内に将来作成される、その種類のリソースはスキャンの対象に含まれません。
  
-1.  **[続行]** をクリックして続行します。 サブスクリプションまたはリソース グループの閲覧者として Purview MSI を適用したかどうかを確認するために、Microsoft によってアクセスがテストされます。 エラー メッセージがスローされた場合は、[こちら](#Setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)の手順に従ってください。
+1.  **[続行]** をクリックして続行します。 サブスクリプションまたはリソース グループの閲覧者として Purview MSI を適用したかどうかを確認するために、Microsoft によってアクセスがテストされます。 エラー メッセージがスローされた場合は、[こちら](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)の手順に従ってください。
 
 1.  前の手順で選択したリソースの種類ごとに **スキャン ルール セット** を選択します。 また、スキャン ルール セットをインラインで作成することもできます。
   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Azure の複数スキャンのルール セットの選択":::
