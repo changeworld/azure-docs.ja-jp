@@ -378,7 +378,7 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-### <a name="azure-blob-storage-limits"></a>Azure BLOB ストレージの制限
+### <a name="azure-blob-storage-limits"></a>Azure Blob Storage の制限
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
