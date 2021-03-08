@@ -1,18 +1,18 @@
 ---
-title: プレビュー - Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
+title: Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
 description: Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する方法について説明します。
 services: container-service
 ms.service: container-service
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 10/19/2020
+ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987292"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181127"
 ---
-# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>プレビュー - Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
+# <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
 
 スポット ノード プールは、[スポット仮想マシン スケール セット][vmss-spot]によってサポートされるノード プールです。 AKS クラスターのノードにスポット VM を使用すると、Azure の未使用の容量を利用できるため、コストが大幅に削減されます。 使用可能な未使用の容量は、ノード サイズ、リージョン、時刻などの多くの要因によって異なります。
 
@@ -24,49 +24,13 @@ ms.locfileid: "87987292"
 
 この記事は、Kubernetes および Azure Load Balancer の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」を参照してください。
 
-現在、この機能はプレビュー段階にあります。
-
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-スポット ノード プールを使用するクラスターを作成する場合は、そのクラスターも、ノード プールと *Standard* SKU ロード バランサーに仮想マシン スケール セットを使用する必要があります。 また、スポット ノード プールを使用するクラスターを作成した後、さらにノード プールを追加することも必要です。 ノード プールの追加についてはこの後の手順で説明されますが、最初に、プレビュー機能を有効にする必要があります。
+スポット ノード プールを使用するクラスターを作成する場合は、そのクラスターも、ノード プールと *Standard* SKU ロード バランサーに仮想マシン スケール セットを使用する必要があります。 また、スポット ノード プールを使用するクラスターを作成した後、さらにノード プールを追加することも必要です。 ノード プールの追加についてはこの後の手順で説明されます。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-### <a name="register-spotpoolpreview-preview-feature"></a>spotpoolpreview プレビュー機能を登録する
-
-スポット ノード プールを使用する AKS クラスターを作成するには、サブスクリプションで *spotpoolpreview* 機能フラグを有効にする必要があります。 この機能は、クラスターを構成するときに、最新のサービス拡張機能のセットを提供します。
-
-次の例に示すように、[az feature register][az-feature-register] コマンドを使用して *spotpoolpreview* 機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "spotpoolpreview"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/spotpoolpreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-スポット ノード プールを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.32 以上が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
- 
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+この記事では、Azure CLI バージョン 2.14 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ### <a name="limitations"></a>制限事項
 
@@ -148,14 +112,8 @@ spec:
 <!-- LINKS - Internal -->
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-group-deploy-create]: /cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-template-deploy]: ../azure-resource-manager/templates/deploy-cli.md#deployment-scope
+[azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

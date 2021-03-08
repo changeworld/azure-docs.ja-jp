@@ -4,18 +4,17 @@ summary: Azure Red Hat OpenShift では、Red Hat と Microsoft によってサ�
 metadata:
   title: Azure Red Hat OpenShift のドキュメント
   description: Microsoft Azure Red Hat OpenShift を使用すると、運用開始準備の整った Red Hat OpenShift クラスターを Azure にデプロイできます。 これらのチュートリアルや操作方法ガイドを使用して方法を確認してください。
-  ms.service: container-service
-  services: container-service
+  ms.service: azure-redhat-openshift
   ms.topic: landing-page
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: c92ce909abd9a36f2515eefeb60ff0066221a4e1
-  ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+  ms.openlocfilehash: 06c6b14d62bb471ecc6dee50d72f11469e3cd161
+  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2020
-  ms.locfileid: "89468966"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100633208"
 landingContent:
 - title: Azure Red Hat OpenShift について
   linkLists:
@@ -41,6 +40,10 @@ landingContent:
       url: ./howto-create-private-cluster-3x.md
     - text: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
       url: dns-forwarding.md
+    - text: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
+      url: built-in-container-registry.md
+    - text: Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty アプリケーションをデプロイする
+      url: howto-deploy-java-liberty-app.md
 - title: リファレンス
   linkLists:
   - linkListType: reference

@@ -15,38 +15,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 03258bf204491afce4635828b3a33a06886aca2d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448394"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590282"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
 
 これらのベスト プラクティスは、集約された意見に基づくものであり、Azure プラットフォームの最新の機能に対応しています。 人の考え方やテクノロジは時間の経過と共に変化する可能性があるため、この記事はそれらの変化に応じて更新されます。
 
-ほとんどの IaaS (サービスとしてのインフラストラクチャ) で、クラウド コンピューティングを使用している組織にとっての主要なワークロードは [Azure 仮想マシン (VM)](/azure/virtual-machines/) です。 この事実は、ワークロードを段階的にクラウドに移行する[ハイブリッド シナリオ](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx)で顕著となります。 [IaaS のセキュリティに関する一般的な考慮事項](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)に従い、セキュリティのベスト プラクティスをすべての VM に適用することになります。
+ほとんどの IaaS (サービスとしてのインフラストラクチャ) で、クラウド コンピューティングを使用している組織にとっての主要なワークロードは [Azure 仮想マシン (VM)](../../virtual-machines/index.yml) です。 この事実は、ワークロードを段階的にクラウドに移行する[ハイブリッド シナリオ](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx)で顕著となります。 [IaaS のセキュリティに関する一般的な考慮事項](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)に従い、セキュリティのベスト プラクティスをすべての VM に適用することになります。
 
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>認証とアクセス制御を使用して VM を保護する
 VM 保護の第一歩は、承認されたユーザーのみが新しい VM を設定し、VM にアクセスできるようにすることです。
 
 > [!NOTE]
-> Azure の Linux VM のセキュリティを強化するために、Azure AD の認証と統合できます。 [Linux VM に Azure AD の認証を使用する](/azure/virtual-machines/linux/login-using-aad)ことで、VM へのアクセスを許可/拒否するポリシーを一元管理および施行します。
+> Azure の Linux VM のセキュリティを強化するために、Azure AD の認証と統合できます。 [Linux VM に Azure AD の認証を使用する](../../virtual-machines/linux/login-using-aad.md)ことで、VM へのアクセスを許可/拒否するポリシーを一元管理および施行します。
 >
 >
 
 **ベスト プラクティス**: VM へのアクセスを制御する。   
-**詳細**: [Azure ポリシー](/azure/azure-policy/azure-policy-introduction)を使用して、組織内のリソース向けの規則を確立し、カスタマイズ ポリシーを作成します。 これらのポリシーを[リソース グループ](/azure/azure-resource-manager/resource-group-overview)などのリソースに適用します。 リソース グループに属する VM は、それらのポリシーを継承します。
+**詳細**: [Azure ポリシー](../../governance/policy/overview.md)を使用して、組織内のリソース向けの規則を確立し、カスタマイズ ポリシーを作成します。 これらのポリシーを[リソース グループ](../../azure-resource-manager/management/overview.md)などのリソースに適用します。 リソース グループに属する VM は、それらのポリシーを継承します。
 
-組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](/azure/azure-resource-manager/management-groups-overview)の範囲は、サブスクリプションを上回ります。 サブスクリプションを管理グループ (コンテナー) にまとめ、それらのグループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、グループに適用された条件を自動的に継承します。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。
+組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](../../governance/management-groups/overview.md)の範囲は、サブスクリプションを上回ります。 サブスクリプションを管理グループ (コンテナー) にまとめ、それらのグループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、グループに適用された条件を自動的に継承します。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。
 
 **ベスト プラクティス**: VM の設定とデプロイ方法のばらつきを減らす。   
-**詳細**: [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) テンプレートを使用して、デプロイの選択の自由を強化し、環境内の VM を理解してインベントリを実行しやすくします。
+**詳細**: [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) テンプレートを使用して、デプロイの選択の自由を強化し、環境内の VM を理解してインベントリを実行しやすくします。
 
 **ベスト プラクティス**: 特権アクセスをセキュリティで保護する。   
-**詳細**: [最低限の特権](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)と Azure に組み込まれているロールを使用して、ユーザーが VM へのアクセスと設定を実行できるようにします。
+**詳細**: [最低限の特権](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)と Azure に組み込まれているロールを使用して、ユーザーが VM へのアクセスと設定を実行できるようにします。
 
 - [仮想マシンの共同作業者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): VM を管理することはできますが、それが接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
 - [従来の仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor):クラシック デプロイ モデルを使って作成された VM を管理することはできますが、その VM が接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
@@ -63,7 +63,7 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 組織は、VM へのアクセスと設定を制御することで、VM の総合的なセキュリティを向上させることができます。
 
 ## <a name="use-multiple-vms-for-better-availability"></a>可用性を高めるために複数の VM を使用する
-高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)または可用性[ゾーン](../../availability-zones/az-overview.md)を使用します。
+高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)または可用性[ゾーン](../../availability-zones/az-overview.md)を使用します。
 
 可用性セットは、Azure で使用できる論理グループであり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されることが保証されます。 ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、顧客は引き続きアプリケーション全体を利用できます。 可用性セットは、信頼性の高いクラウド ソリューションを構築する際に不可欠な機能です。
 
@@ -75,7 +75,7 @@ Microsoft Antimalware には、リアルタイム保護、スケジュールさ�
 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/index.yml) と統合できます。
 
 **ベスト プラクティス**: マルウェアから保護するためにマルウェア対策ソリューションをインストールする。   
-**詳細**: [Microsoft パートナーのソリューションまたは Microsoft Antimalware をインストール](../../security-center/security-center-install-endpoint-protection.md)します。
+**詳細**: [Microsoft パートナーのソリューションまたは Microsoft Antimalware をインストール](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-)します。
 
 **ベスト プラクティス**: マルウェア対策ソリューションを Security Center と統合して、保護の状態を監視する。   
 **詳細**: [Security Center でエンドポイントの保護に関する問題を管理](../../security-center/security-center-partner-integration.md)します。
@@ -84,7 +84,7 @@ Microsoft Antimalware には、リアルタイム保護、スケジュールさ�
 Azure VM は、他の VM と同じように、ユーザーによって管理されることを意図しています。 Azure では、それらに対して Windows 更新プログラムをプッシュしません。 VM の更新は、お客様が管理する必要があります。
 
 **ベスト プラクティス**: VM を最新の状態に保つ。   
-**詳細**: Azure Automation の [Update Management](../../automation/update-management/update-mgmt-overview.md) ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
+**詳細**: Azure Automation の [Update Management](../../automation/update-management/overview.md) ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
 Update Management で管理されるコンピューターでは、評価と更新プログラムのデプロイに次の構成を使用します。
 
@@ -102,7 +102,7 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 **詳細**: VM を [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して VM を定義して、簡単に再デプロイできるようにします。 テンプレートを使用すると、必要なときに、修正プログラムが適用されセキュリティで保護された VM を設定できます。
 
 **ベスト プラクティス**: VM にセキュリティ更新プログラムを迅速に適用する。   
-**詳細**: Azure Security Center (Free レベルまたは Standard レベル) を有効にし、[不足しているセキュリティ更新プログラムを特定して適用](../../security-center/security-center-apply-system-updates.md)します。
+**詳細**: Azure Security Center (Free レベルまたは Standard レベル) を有効にし、[不足しているセキュリティ更新プログラムを特定して適用](../../security-center/asset-inventory.md)します。
 
 **ベスト プラクティス**: 最新のセキュリティ更新プログラムをインストールする。   
 **詳細**: お客様が最初に Azure に移動するワークロードに、ラボと外部向けのシステムがあります。 インターネットへのアクセスが必要なアプリケーションまたはサービスを Azure VM でホストしている場合は、修正プログラムの適用を忘れずに実行してください。 これは、オペレーティング システムへの修正プログラムの適用だけではありません。 サード パーティ アプリケーションでも、修正プログラムの未適用による脆弱性が原因で問題が発生する可能性があります。このような問題は、適切な修正プログラム管理が行われていれば回避できます。
@@ -119,7 +119,7 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 ## <a name="manage-your-vm-security-posture"></a>VM のセキュリティ体制の維持
 サイバー攻撃の脅威は進化しています。 VM を保護するには、脅威をすばやく検出し、リソースへの不正アクセスを防止し、アラートをトリガーし、偽陽性を減らすことができる、より高性能の監視機能が必要です。
 
-[Windows VM](../../security-center/security-center-linux-virtual-machine.md) と [Linux VM](../../security-center/security-center-intro.md) のセキュリティ体制を監視するには、[Azure Security Center](../../security-center/security-center-virtual-machine.md) を使用します。 Security Center では、次の機能を利用して VM を保護します。
+[Windows VM](../../security-center/security-center-introduction.md) と [Linux VM](../../security-center/security-center-introduction.md) のセキュリティ体制を監視するには、[Azure Security Center](../../security-center/security-center-introduction.md) を使用します。 Security Center では、次の機能を利用して VM を保護します。
 
 - 推奨される構成規則を使用して OS のセキュリティ設定を適用する。
 - 不足している可能性のあるシステムのセキュリティ更新プログラムと重要な更新プログラムを特定してダウンロードする。
@@ -130,24 +130,24 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 
 Security Center は脅威を積極的に監視でき、脅威のリスクはセキュリティ通知で公開されます。 関連性のある脅威は、セキュリティ インシデントと呼ばれる 1 つのビューに集約されます。
 
-Security Center では、データを [Azure Monitor ログ](/azure/log-analytics/log-analytics-overview)に格納します。 Azure Monitor ログには、アプリケーションとリソースの操作に関する分析情報を提供するクエリ言語と分析エンジンがあります。 データは、[Azure Monitor](../../batch/monitoring-overview.md)、管理ソリューション、およびクラウドやオンプレミスの仮想マシンにインストールされたエージェントからも収集されます。 この共有機能は、環境の全体像を把握するうえで役に立ちます。
+Security Center では、データを [Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)に格納します。 Azure Monitor ログには、アプリケーションとリソースの操作に関する分析情報を提供するクエリ言語と分析エンジンがあります。 データは、[Azure Monitor](../../batch/monitoring-overview.md)、管理ソリューション、およびクラウドやオンプレミスの仮想マシンにインストールされたエージェントからも収集されます。 この共有機能は、環境の全体像を把握するうえで役に立ちます。
 
 許可のないユーザーがセキュリティ制御を回避しようとする試みは、VM を強固なセキュリティで保護していなければ認識できません。
 
 ## <a name="monitor-vm-performance"></a>VM パフォーマンスの監視
 VM のプロセスが必要以上に多くのリソースを消費しているときは、リソースの酷使が問題になる可能性があります。 VM のパフォーマンスの問題はサービス中断に発展する場合があり、そうなれば可用性というセキュリティの原則を損ないます。 CPU またはメモリの使用率の高さはサービス拒否 (DoS) 攻撃を示唆していることがあるため、IIS や他の Web サーバーをホストしている VM にとって、これは特に重要です。 VM のアクセスを監視することは、問題発生時の対処としてのみならず、通常運用時に測定された基準パフォーマンスと照らして能動的に行うことが不可欠となります。
 
-[Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) を使用してリソースの正常性を把握することをお勧めします。 Azure Monitor には次の特長があります。
+[Azure Monitor](../../azure-monitor/data-platform.md) を使用してリソースの正常性を把握することをお勧めします。 Azure Monitor には次の特長があります。
 
-- [Azure 診断ログ ファイル](../../azure-monitor/platform/platform-logs-overview.md):VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
-- [Microsoft Azure Diagnostics 拡張機能](/azure/azure-monitor/platform/diagnostics-extension-overview):Windows VM 監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](/azure/virtual-machines/windows/extensions-diagnostics-template)に含めることによって、これらの機能を有効にすることができます。
+- [Azure 診断ログ ファイル](../../azure-monitor/essentials/platform-logs-overview.md):VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
+- [Microsoft Azure Diagnostics 拡張機能](../../azure-monitor/agents/diagnostics-extension-overview.md):Windows VM 監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../../virtual-machines/extensions/diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
 
 VM のパフォーマンスを監視していない組織は、パフォーマンス パターンにおけるある変化が正常であるか異常であるかを判断できません。 消費しているリソースが通常よりも多い VM は、外部リソースからの攻撃を受けているか、その VM で実行されているプロセスが侵害されていることを示唆している可能性があります。
 
 ## <a name="encrypt-your-virtual-hard-disk-files"></a>仮想ハード ディスク ファイルを暗号化する
 ブート ボリュームとストレージに保存されているデータ ボリュームに加え、暗号化キーとシークレットを保護できるように、仮想 ハード ディスク (VHD) を暗号化することをお勧めします。
 
-[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) を使用して、Windows と Linux の IaaS 仮想マシンのディスクを暗号化できます。 Azure Disk Encryption では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、OS とデータ ディスクのボリュームの暗号化を提供します。 このソリューションは [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで制御および管理できます。 また、このソリューションでは、仮想マシン ディスク上のすべてのデータが、Azure Storage での保存時に暗号化されます。
+[Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) を使用して、Windows と Linux の IaaS 仮想マシンのディスクを暗号化できます。 Azure Disk Encryption では、Windows の業界標準である [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、OS とデータ ディスクのボリュームの暗号化を提供します。 このソリューションは [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで制御および管理できます。 また、このソリューションでは、仮想マシン ディスク上のすべてのデータが、Azure Storage での保存時に暗号化されます。
 
 Azure Disk Encryption 使用時のベスト プラクティスを次に示します。
 
@@ -172,7 +172,7 @@ Azure Disk Encryption を適用すると、次のビジネス ニーズに対応
 VM からインターネットへの直接接続を監視して制限します。 攻撃者は、パブリック クラウドの IP 範囲を常にスキャンして開いている管理ポートを検索し、よく使用されるパスワードや修正プログラムが適用されていない既知の脆弱性などの "簡単な" 攻撃を試みます。 次の表に、こうした攻撃から保護するためのベスト プラクティスを示します。
 
 **ベスト プラクティス**: ネットワーク ルーティングやセキュリティの不注意による漏洩を回避する。   
-**詳細**: RBAC を使用して、中央のネットワーク グループのみがネットワーク リソースへのアクセス許可を持つようにします。
+**詳細**: Azure RBAC を使用して、中央のネットワーク グループのみがネットワーク リソースへのアクセス許可を持つようにします。
 
 **ベスト プラクティス**: "あらゆる" 発信元 IP アドレスからアクセス可能な露出した VM を特定して修復する。   
 **詳細**: Azure Security Center を使用します。 Security Center では、ネットワーク セキュリティ グループのいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスに[アクセスを制限](../../security-center/security-center-network-recommendations.md)するよう推奨します。
@@ -184,5 +184,5 @@ VM からインターネットへの直接接続を監視して制限します�
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
-* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
+* [Azure セキュリティ チーム ブログ](/archive/blogs/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
 * [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。

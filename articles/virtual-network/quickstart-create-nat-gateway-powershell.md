@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: de4e32d79cf4dfb3a5f54544c65544297a2c0232
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 54ec676da3311473f86a47aae600c2ec29192bb2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054155"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935136"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した NAT ゲートウェイの作成
 
@@ -35,7 +35,7 @@ ms.locfileid: "88054155"
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=latest) を使用して Azure リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、**myResourceGroupNAT** という名前のリソース グループを **eastus2** という場所に作成します。
 
@@ -59,7 +59,7 @@ NAT ゲートウェイのパブリック IP オプションは次のとおりで
 
 ### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-インターネットにアクセスするには、NAT ゲートウェイに 1 つ以上のパブリック IP アドレスが必要です。 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) を使用して、**myResourceGroupNAT** に **myPublicIP** というパブリック IP アドレス リソースを作成します。 このコマンドの結果は、後で使用できるように **$publicIP** 変数に格納されます。
+インターネットにアクセスするには、NAT ゲートウェイに 1 つ以上のパブリック IP アドレスが必要です。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroupNAT** に **myPublicIP** というパブリック IP アドレス リソースを作成します。 このコマンドの結果は、後で使用できるように **$publicIP** 変数に格納されます。
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -73,7 +73,7 @@ New-AzPublicIpAddress -Name $pbnm -ResourceGroupName $rsg -AllocationMethod Stat
 
 ### <a name="create-a-public-ip-prefix"></a>パブリック IP プレフィックスの作成
 
-[New-AzPublicIpPrefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest) を使用して、**myResourceGroupNAT** に **myPublicIPprefix** というパブリック IP プレフィックス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIPPrefix** という名前の変数に格納されます。
+[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix) を使用して、**myResourceGroupNAT** に **myPublicIPprefix** というパブリック IP プレフィックス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIPPrefix** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -90,7 +90,7 @@ New-AzPublicIpPrefix -Name $pxnm -ResourceGroupName $rsg -Location $loc -PrefixL
   - NAT ゲートウェイ リソースによって変換される送信フローに使用する、パブリック IP プールとパブリック IP プレフィックス。
   - アイドル タイムアウトを既定値の 4 分から 10 分に変更します。
 
-[New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway) を使用して、グローバル Azure NAT ゲートウェイを作成します。 このコマンドの結果、パブリック IP アドレス **myPublicIP** とパブリック IP プレフィックス **myPublicIPprefix** を使用する **myNATgateway** という名前のゲートウェイ リソースが作成されます。 アイドル タイムアウトは 10 分に設定されています。  このコマンドの結果は、後で使用できるように **$natGateway** という名前の変数に格納されます。
+[New-AzNatGateway](/powershell/module/az.network/new-aznatgateway) を使用して、グローバル Azure NAT ゲートウェイを作成します。 このコマンドの結果、パブリック IP アドレス **myPublicIP** とパブリック IP プレフィックス **myPublicIPprefix** を使用する **myNATgateway** という名前のゲートウェイ リソースが作成されます。 アイドル タイムアウトは 10 分に設定されています。  このコマンドの結果は、後で使用できるように **$natGateway** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -108,7 +108,7 @@ New-AzNatGateway -Name $gnm -ResourceGroupName $rsg -PublicIpAddress $publicIP -
 
 仮想ネットワークを作成し、サブネットをゲートウェイに関連付けます。
 
-[New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) を使用して **myVnet** という名前の仮想ネットワークを作成し、[New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) を使用して、**myResourceGroup** 内に **mySubnet** という名前のサブネットを作成します。 この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。  コマンドの結果は、後で使用できるように **$subnet** および **$vnet** という名前の変数に格納されます。
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して **myVnet** という名前の仮想ネットワークを作成し、[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して、**myResourceGroup** 内に **mySubnet** という名前のサブネットを作成します。 この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。  コマンドの結果は、後で使用できるように **$subnet** および **$vnet** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $sbnm = 'mySubnet'
@@ -133,7 +133,7 @@ New-AzVirtualNetwork -Name $vnnm -ResourceGroupName $rsg -Location $loc -Address
 
 ### <a name="create-public-ip-for-source-vm"></a>ソース VM のパブリック IP の作成
 
-VM へのアクセスに使用するパブリック IP を作成します。  [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) を使用して、**myResourceGroupNAT** に **myPublicIPVM** というパブリック IP アドレス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIpVM** という名前の変数に格納されます。
+VM へのアクセスに使用するパブリック IP を作成します。  [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroupNAT** に **myPublicIPVM** というパブリック IP アドレス リソースを作成します。  このコマンドの結果は、後で使用できるように **$publicIpVM** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -147,7 +147,7 @@ New-AzPublicIpAddress -Name $ipnm -ResourceGroupName $rsg -AllocationMethod Stat
 
 ### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>NSG の作成と VM の SSH エンドポイントの公開
 
-Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH の受信アクセスを許可する NSG を作成する必要があります。 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) を使用して、**myNSG** という名前の NSG リソースを作成します。 [AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) を使用して、**myResourceGroupNAT** に **ssh** という名前の SSH アクセス用の NSG ルールを作成します。  このコマンドの結果は、後で使用できるように **$nsg** という名前の変数に格納されます。
+Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH の受信アクセスを許可する NSG を作成する必要があります。 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、**myNSG** という名前の NSG リソースを作成します。 [AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、**myResourceGroupNAT** に **ssh** という名前の SSH アクセス用の NSG ルールを作成します。  このコマンドの結果は、後で使用できるように **$nsg** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $rnm = 'ssh'
@@ -170,7 +170,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rsg -Name $rnm -Location $loc -Se
 
 ### <a name="create-nic-for-vm"></a>VM の NIC の作成
 
-[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) を使用して、**myNic** という名前のネットワーク インターフェイスを作成します。 このコマンドにより、パブリック IP アドレスとネットワーク セキュリティ グループが関連付けられます。 このコマンドの結果は、後で使用できるように **$nic** という名前の変数に格納されます。
+[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、**myNic** という名前のネットワーク インターフェイスを作成します。 このコマンドにより、パブリック IP アドレスとネットワーク セキュリティ グループが関連付けられます。 このコマンドの結果は、後で使用できるように **$nic** という名前の変数に格納されます。
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -192,9 +192,9 @@ ssh-keygen を使用して SSH キー ペアを作成します。
 ```azurepowershell-interactive
 ssh-keygen -t rsa -b 2048
 ```
-PuTTy の使用を含む SSH キー ペアの作成方法の詳細については、[Windows で SSH キーを使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に関するページを参照してください。
+PuTTy の使用を含む SSH キー ペアの作成方法の詳細については、[Windows で SSH キーを使用する方法](../virtual-machines/linux/ssh-from-windows.md)に関するページを参照してください。
 
-Cloud Shell を使用して SSH キー ペアを作成した場合、キー ペアはコンテナー イメージに格納されます。 この[ストレージ アカウントは自動的に作成されます](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)。 キーを取得するまでは、ストレージ アカウントまたは内部のファイル共有を削除しないでください。
+Cloud Shell を使用して SSH キー ペアを作成した場合、キー ペアはコンテナー イメージに格納されます。 この[ストレージ アカウントは自動的に作成されます](../cloud-shell/persisting-shell-storage.md)。 キーを取得するまでは、ストレージ アカウントまたは内部のファイル共有を削除しないでください。
 
 #### <a name="create-vm-configuration"></a>VM 構成の作成
 
@@ -236,7 +236,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-構成定義を組み合わせて、[New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) を使用して **myResourceGroupNAT** に **myVM** という名前の VM を作成します。
+構成定義を組み合わせて、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して **myResourceGroupNAT** に **myVM** という名前の VM を作成します。
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -249,7 +249,7 @@ VM がデプロイされる準備が整うまで待ってから、残りの手�
 
 ## <a name="discover-the-ip-address-of-the-vm"></a>VM の IP アドレスの検出
 
-まず、作成した VM の IP アドレスを検出する必要があります。 VM のパブリック IP アドレスを取得するには、[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest) を使用します。 
+まず、作成した VM の IP アドレスを検出する必要があります。 VM のパブリック IP アドレスを取得するには、[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用します。 
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -273,7 +273,7 @@ ssh azureuser@<ip-address-destination>
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupNAT
@@ -292,5 +292,3 @@ Azure Monitor でメトリックを見て、NAT サービスの稼動状態を�
 - [Azure PowerShell を使用して NAT ゲートウェイ リソース](./quickstart-create-nat-gateway-powershell.md)をデプロイするためのクイックスタート。
 - [Azure portal を使用して NAT ゲートウェイ リソース](./quickstart-create-nat-gateway-portal.md)をデプロイするためのクイックスタート。
 > [!div class="nextstepaction"]
-
-

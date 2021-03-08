@@ -11,14 +11,16 @@
       href: ../../virtual-machines/reserved-vm-instance-size-flexibility.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Reservation recommendations
       href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: Azure 予約割引の適用方法
-      href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 割り引きの適用方法
       items:
+        - name: Azure 予約割引の適用方法
+          href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: App Service
-          href: reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
+          href: reservation-discount-app-service.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Cache for Redis
           href: understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Data Factory
+          href: ../../data-factory/data-flow-understand-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Cosmos DB
           href: understand-cosmosdb-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Database for MariaDB
@@ -51,9 +53,10 @@
       href: reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 個々のサブスクリプションの利用状況データ
       href: understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: 企業顧客の利用状況データ
+    - name: Enterprise Agreement と Microsoft 顧客契約の利用状況データ
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: 操作方法ガイド
+  expanded: true
   items:
     - name: 購入内容の決定
       items:
@@ -64,9 +67,11 @@
         - name: Azure の予約の購入
           href: prepare-buy-reservation.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: App Service
-          href: prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
+          href: prepay-app-service.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Cache for Redis の予約
           href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Data Factory
+          href: ../../data-factory/data-flow-reserved-capacity-overview.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Database for MariaDB
           href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Database for MySQL
@@ -92,9 +97,9 @@
         - name: ソフトウェア プラン
           href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: SQL Database
-          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+          href: ../../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
         - name: 仮想マシン
-          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+          href: ../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
     - name: 購入後の表示、管理、最適化
       items:
         - name: 予約と使用率の表示
@@ -117,6 +122,20 @@
       items:
         - name: 予約の更新
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: トラブルシューティング
+      items:
+        - name: テナント間の転送のトラブルシューティング
+          href: troubleshoot-reservation-transfers-between-tenants.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 有効なサブスクリプションがない
+          href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 予約使用率のトラブルシューティング
+          href: troubleshoot-reservation-utilization.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 予約のレコメンデーションのトラブルシューティング
+          href: troubleshoot-reservation-recommendation.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 予約 SKU 無効のトラブルシューティング
+          href: troubleshoot-product-not-available.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 利用状況詳細のダウンロードのトラブルシューティング
+          href: troubleshoot-download-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: リファレンス
   items:
     - name: 予約 REST API
@@ -129,3 +148,7 @@
       href: /rest/api/consumption/usagedetails
     - name: Cost Management - Consumption Reservations Details REST API
       href: /rest/api/consumption/reservationsdetails
+- name: リソース
+  items:
+    - name: 予約インスタンスによるコスト削減に関する Learn モジュール
+      href: /learn/modules/save-money-with-azure-reserved-instances

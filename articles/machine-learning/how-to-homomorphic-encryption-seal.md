@@ -9,17 +9,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b241220168a5cd81ce23be729944df387e87e567
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, devx-track-python, deploy, responsible-ml
+ms.openlocfilehash: a2c8b765f109408b8cb08f78a4b3ad2283f35eb9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844544"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223586"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>暗号化された推論 Web サービスをデプロイする方法 (プレビュー)
 
-[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) で、イメージ分類モデルを暗号化された推論 Web サービスとしてデプロイする方法について説明します。 この Web サービスは、モデルとスコアリング ロジックを含む Docker コンテナー イメージです。
+[Azure Container Instances](../container-instances/index.yml) (ACI) で、イメージ分類モデルを暗号化された推論 Web サービスとしてデプロイする方法について説明します。 この Web サービスは、モデルとスコアリング ロジックを含む Docker コンテナー イメージです。
 
 このガイドでは、Azure Machine Learning service を使って次の作業を行います。
 
@@ -30,7 +30,7 @@ ms.locfileid: "87844544"
 > * 暗号化された予測を作成する
 > * リソースをクリーンアップする
 
-ACI は、モデル デプロイ ワークフローをテストして理解するための優れたソリューションです。 スケーラブルな運用環境のデプロイの場合は、Azure Kubernetes Service の使用を検討してください。 詳細については、[デプロイする方法と場所](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)に関するページを参照してください。
+ACI は、モデル デプロイ ワークフローをテストして理解するための優れたソリューションです。 スケーラブルな運用環境のデプロイの場合は、Azure Kubernetes Service の使用を検討してください。 詳細については、[デプロイする方法と場所](./how-to-deploy-and-where.md)に関するページを参照してください。
 
 このサンプルで使用する暗号化方法は、[準同型暗号](https://github.com/Microsoft/SEAL#homomorphic-encryption)です。 準同型暗号では、暗号化されたデータで計算を行う際に秘密 (復号化) キーを利用する必要がありません。 計算の結果は暗号化され、秘密キーの所有者だけに開示されます。 
 

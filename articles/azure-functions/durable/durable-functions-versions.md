@@ -3,14 +3,14 @@ title: Durable Functions のバージョンの概要 - Azure Functions
 description: Durable Functions のバージョンについて説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c4d10bab06428295bbc8c5319bd47787d7b1fb34
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719412"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763372"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions のバージョンの概要
 
@@ -50,6 +50,8 @@ Durable Functions 2.x では、次のことを実行できる新しい[持続的
 
 Durable Functions 2.x は [Azure Functions 拡張機能バンドル](../functions-bindings-register.md#extension-bundles)のバージョン 2.x で使用できます。
 
+Durable Functions での Python のサポートには Durable Functions 2.x が必要です。
+
 プロジェクトで拡張機能バンドルのバージョンを更新するには、host.json を開き、バージョン 2.x (`[2.*, 3.0.0)`) を使用するように `extensionBundle` セクションを更新します。
 
 ```json
@@ -61,6 +63,9 @@ Durable Functions 2.x は [Azure Functions 拡張機能バンドル](../function
     }
 }
 ```
+
+> [!NOTE]
+> 拡張機能バンドルのバージョンを変更しても Visual Studio Code に正しいテンプレートが表示されない場合は、*Developer:Reload Window* コマンド (Windows および Linux では <kbd>Ctrl + R</kbd>、macOS では <kbd>Command + R</kbd>) を実行して、ウィンドウを再度読み込みます。
 
 #### <a name="net"></a>.NET
 

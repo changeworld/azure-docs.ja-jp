@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 642a9a9f798492d85ee2a9784a1fe5ad4f854d58
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290998"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574125"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
@@ -50,7 +50,7 @@ Azure の場所とサブスクリプションごとに作成できるルート �
 1. **[ルート テーブルの作成]** ダイアログ ボックスで次のようにします。
 
     1. ルート テーブルの **[名前]** を入力します。
-    1. **サブスクリプション**を選択します。
+    1. **サブスクリプション** を選択します。
     1. 既存の **[リソース グループ]** を選択するか、 **[新規作成]** を選択して新しいリソース グループを作成します。
     1. **[場所]** を選択します。
     1. VPN ゲートウェイを通してオンプレミスのネットワークに接続されている仮想ネットワーク内のサブネットにルート テーブルを関連付ける場合で、サブネット内のネットワーク インターフェイスにオンプレミスのルートを伝達したくないときは、 **[仮想ネットワーク ゲートウェイのルート伝達]** を **[無効]** に設定します。
@@ -59,25 +59,25 @@ Azure の場所とサブスクリプションごとに作成できるルート �
 
 ### <a name="create-route-table---commands"></a>ルート テーブルの作成 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) |
 | PowerShell | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) |
 
 ## <a name="view-route-tables"></a>ルート テーブルの表示
 
-[Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **ルート テーブル**を検索して選択します。 サブスクリプション内に存在するルート テーブルが一覧表示されます。
+[Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **ルート テーブル** を検索して選択します。 サブスクリプション内に存在するルート テーブルが一覧表示されます。
 
 ### <a name="view-route-table---commands"></a>ルート テーブルの表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table list](/cli/azure/network/route-table#az-network-route-table-list) |
 | PowerShell | [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
 
 ## <a name="view-details-of-a-route-table"></a>ルート テーブルの詳細の表示
 
-1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **ルート テーブル** を検索して選択します。
 
 1. ルート テーブルの一覧で、詳細を表示するルート テーブルを選択します。
 
@@ -85,7 +85,7 @@ Azure の場所とサブスクリプションごとに作成できるルート �
 
 Azure の一般的な設定の詳細については、次の情報を参照してください。
 
-- [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)
+- [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)
 - [アクセス制御 (IAM)](../role-based-access-control/overview.md)
 - [タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -93,14 +93,14 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="view-details-of-route-table---commands"></a>ルート テーブルの詳細の表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table show](/cli/azure/network/route-table#az-network-route-table-show) |
 | PowerShell | [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
 
 ## <a name="change-a-route-table"></a>ルート テーブルの変更
 
-1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **ルート テーブル** を検索して選択します。
 
 1. ルート テーブルの一覧で、変更するルート テーブルを選択します。
 
@@ -108,7 +108,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="change-a-route-table---commands"></a>ルート テーブルの変更 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table update](/cli/azure/network/route-table#az-network-route-table-update) |
 | PowerShell | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) |
@@ -117,7 +117,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 必要に応じて、ルート テーブルをサブネットに関連付けることができます。 1 つのルート テーブルを、0 個以上のサブネットに関連付けることができます。 ルート テーブルは仮想ネットワークに関連付けられていないので、ルート テーブルを関連付ける各サブネットにルート テーブルを関連付ける必要があります。 仮想ネットワークが Azure 仮想ネットワーク ゲートウェイに接続されている場合 (ExpressRoute または VPN)、ルート テーブル内に作成したルート、[既定のルート](virtual-networks-udr-overview.md#default)、およびオンプレミスのネットワークから伝達されたルートに基づいて、サブネットを出るすべてのトラフィックが Azure によってルーティングされます。 ルート テーブルは、そのルート テーブルと同じ Azure の場所とサブスクリプションに存在する仮想ネットワーク内のサブネットにのみ関連付けることができます。
 
-1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **仮想ネットワーク**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **仮想ネットワーク** を検索して選択します。
 
 1. 仮想ネットワークの一覧で、ルート テーブルを関連付けるサブネットが含まれる仮想ネットワークを選択します。
 
@@ -129,11 +129,11 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 1. **[保存]** を選択します。
 
-仮想ネットワークが Azure VPN ゲートウェイに接続されている場合は、宛先が *0.0.0.0/0* であるルートを含む[ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)にルート テーブルを関連付けないでください。 関連付けると、ゲートウェイが正しく機能しない可能性があります。 ルート上での *0.0.0.0/0* の使用について詳しくは、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md#default-route)」をご覧ください。
+仮想ネットワークが Azure VPN ゲートウェイに接続されている場合は、宛先が *0.0.0.0/0* であるルートを含む [ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)にルート テーブルを関連付けないでください。 関連付けると、ゲートウェイが正しく機能しない可能性があります。 ルート上での *0.0.0.0/0* の使用について詳しくは、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md#default-route)」をご覧ください。
 
 ### <a name="associate-a-route-table---commands"></a>ルート テーブルの関連付け - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
@@ -142,7 +142,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 サブネットからルート テーブルの関連付けを解除すると、Azure では、[既定のルート](virtual-networks-udr-overview.md#default)に基づいてトラフィックがルーティングされます。
 
-1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **仮想ネットワーク**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **仮想ネットワーク** を検索して選択します。
 
 1. 仮想ネットワークの一覧で、ルート テーブルの関連付けを解除するサブネットが含まれる仮想ネットワークを選択します。
 
@@ -156,7 +156,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="dissociate-a-route-table---commands"></a>ルート テーブルの関連付けの解除 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
@@ -165,7 +165,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 いずれかのサブネットに関連付けられているルート テーブルを削除することはできません。 ルート テーブルは、削除する前に、すべてのサブネットから[関連付けを解除](#dissociate-a-route-table-from-a-subnet)してください。
 
-1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル** を検索して選択します。
 
 1. ルート テーブルの一覧で、削除するルート テーブルを選択します。
 
@@ -173,7 +173,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="delete-a-route-table---commands"></a>ルート テーブルの削除 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table delete](/cli/azure/network/route-table#az-network-route-table-delete) |
 | PowerShell | [Remove-AzRouteTable](/powershell/module/az.network/remove-azroutetable) |
@@ -182,7 +182,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 Azure の場所およびサブスクリプションあたりの作成可能なルート テーブルごとのルート数は、制限されています。 詳しくは、「[ネットワークの制限 - Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)」をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル** を検索して選択します。
 
 1. ルート テーブルの一覧で、ルートを追加するルート テーブルを選択します。
 
@@ -200,7 +200,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="create-a-route---commands"></a>ルートの作成 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create) |
 | PowerShell | [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig) |
@@ -209,7 +209,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ルート テーブルには、0 個以上のルートが含まれます。 ルートを表示したときに一覧に表示される情報について詳しくは、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md)」をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル** を検索して選択します。
 
 1. ルート テーブルの一覧で、ルートを表示するルート テーブルを選択します。
 
@@ -217,14 +217,14 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="view-routes---commands"></a>ルートの表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route list](/cli/azure/network/route-table/route#az-network-route-table-route-list) |
 | PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
 
 ## <a name="view-details-of-a-route"></a>ルートの詳細の表示
 
-1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル** を検索して選択します。
 
 1. ルート テーブルの一覧で、詳細を表示するルートが含まれるルート テーブルを選択します。
 
@@ -234,14 +234,14 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="view-details-of-a-route---commands"></a>ルートの詳細の表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route show](/cli/azure/network/route-table/route#az-network-route-table-route-show) |
 | PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
 
 ## <a name="change-a-route"></a>ルートの変更
 
-1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル** を検索して選択します。
 
 1. ルート テーブルの一覧で、変更するルートが含まれるルート テーブルを選択します。
 
@@ -253,14 +253,14 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="change-a-route---commands"></a>ルートの変更 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route update](/cli/azure/network/route-table/route#az-network-route-table-route-update) |
 | PowerShell | [Set-AzRouteConfig](/powershell/module/az.network/set-azrouteconfig) |
 
 ## <a name="delete-a-route"></a>ルートの削除
 
-1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル** を検索して選択します。
 
 1. ルート テーブルの一覧で、削除するルートが含まれるルート テーブルを選択します。
 
@@ -272,7 +272,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="delete-a-route---commands"></a>ルートの削除 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route delete](/cli/azure/network/route-table/route#az-network-route-table-route-delete) |
 | PowerShell | [Remove-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig) |
@@ -295,7 +295,7 @@ VM に接続されている各ネットワーク インターフェイスの有�
 
 ### <a name="view-effective-routes---commands"></a>有効なルートの表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) |
 | PowerShell | [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) |
@@ -324,7 +324,7 @@ VM に接続されている各ネットワーク インターフェイスの有�
 
 ### <a name="validate-routing-between-two-endpoints---commands"></a>2 つのエンドポイント間のルーティングの検証 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) |
 | PowerShell | [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) |
@@ -348,4 +348,4 @@ VM に接続されている各ネットワーク インターフェイスの有�
 ## <a name="next-steps"></a>次のステップ
 
 - [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使用して、または Azure [Resource Manager テンプレート](template-samples.md)を使用して、ルート テーブルを作成します
-- 仮想ネットワーク用に [Azure Policy 定義](policy-samples.md)を作成して割り当てる
+- 仮想ネットワーク用に [Azure Policy 定義](./policy-reference.md)を作成して割り当てる

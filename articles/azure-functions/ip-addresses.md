@@ -3,12 +3,12 @@ title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874080"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726733"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -27,8 +27,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
-3. **[プラットフォーム機能]** を選択します。
-4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
+3. **[設定]** で **[プロパティ]** を選択します。 受信 IP アドレスは **[仮想 IP アドレス]** の下に表示されます。
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
 
@@ -51,7 +50,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 > [!NOTE]
-> [従量課金プラン](functions-scale.md#consumption-plan)で実行されている関数アプリをスケーリングすると、新しい送信 IP アドレスの範囲が割り当てられる場合があります。 従量課金プランで実行する場合は、データセンター全体を許可リストに追加することが必要になる可能性があります。
+> [従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行されている関数アプリをスケーリングすると、新しい送信 IP アドレスの範囲が割り当てられる場合があります。 これらのいずれかのプランで実行する場合は、データ センター全体を許可リストに追加することが必要になる可能性があります。
 
 ## <a name="data-center-outbound-ip-addresses"></a>データ センターの送信 IP アドレス
 
@@ -83,13 +82,13 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
 
-次の操作を行うと、着信 IP アドレスが変更される**ことがあります**。
+次の操作を行うと、着信 IP アドレスが変更される **ことがあります**。
 
 - 関数アプリを削除した後、別のリソース グループ内で再作成する。
 - リソース グループとリージョンの組み合わせに含まれる最後の関数アプリを削除した後、再作成する。
 - [証明書の更新](../app-service/configure-ssl-certificate.md#renew-certificate)時などに TLS バインドを削除する。
 
-関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、着信 IP アドレスは、[上記](#inbound-ip-address-changes)のようなアクションを実行しなくても、変更される場合があります。
+関数アプリが[従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行される場合、着信 IP アドレスは、[上記のような](#inbound-ip-address-changes)アクションを実行しなくても、変更される場合があります。
 
 ## <a name="outbound-ip-address-changes"></a>送信 IP アドレスの変更
 
@@ -98,7 +97,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 着信 IP アドレスが変更される可能性のあるアクションを実行する。
 * App Service プランの価格レベルを変更する。 すべての価格レベルについて、アプリで使用可能なすべての送信 IP アドレスのリストが `possibleOutboundIPAddresses` プロパティに含まれています。 「[IP アドレスを見つける](#find-outbound-ip-addresses)」を参照してください。
 
-関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、送信 IP アドレスは、[上記](#inbound-ip-address-changes)のようなアクションを実行しなくても、変更される場合があります。
+関数アプリが[従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行される場合、送信 IP アドレスは、[上記のような](#inbound-ip-address-changes)アクションを実行しなくても、変更される場合があります。
 
 送信 IP アドレスを意図的に変更するには、次のようにします。
 

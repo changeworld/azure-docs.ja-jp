@@ -3,6 +3,7 @@ title: Azure で IBM zD&T 開発/テスト環境をインストールする | Mi
 description: Azure 仮想マシン (VM) IaaS (サービスとしてのインフラストラクチャ) に IBM Z Development and Test Environment (zD&T) をデプロイします。
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9958fa07d6e814cdf886c3f559d57ae1e397264a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499921"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625083"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure で IBM zD&T 開発/テスト環境をインストールする
 
@@ -42,7 +43,7 @@ zD&T のすべてのエディションが Windows Server ではなく、x86 Linu
 ## <a name="prerequisites"></a>前提条件
 
 > [!NOTE]
-> IBM では、zD&T Enterprise Edition を運用環境*ではなく*、開発/テスト環境にのみインストールすることを許可しています。
+> IBM では、zD&T Enterprise Edition を運用環境 *ではなく*、開発/テスト環境にのみインストールすることを許可しています。
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -50,9 +51,9 @@ zD&T のすべてのエディションが Windows Server ではなく、x86 Linu
 
 - [ライセンス サーバー](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html)。 これは、環境へのアクセスのために必要です。 これを作成する方法は、IBM からソフトウェアのライセンスをどのように取得するかによって異なります。
 
-     - **ハードウェア ベースのライセンス サーバー**では、ソフトウェアのすべての部分にアクセスするために必要な Rational Token を含む USB ハードウェア デバイスが必要です。 これは、IBM から取得する必要があります。
+     - **ハードウェア ベースのライセンス サーバー** では、ソフトウェアのすべての部分にアクセスするために必要な Rational Token を含む USB ハードウェア デバイスが必要です。 これは、IBM から取得する必要があります。
 
-     - **ソフトウェア ベースのライセンス サーバー**では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法が推奨されます。IBM から受け取ったキーを管理サーバーに設定する必要があります。
+     - **ソフトウェア ベースのライセンス サーバー** では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法が推奨されます。IBM から受け取ったキーを管理サーバーに設定する必要があります。
 
 ## <a name="create-the-base-image-and-connect"></a>基本イメージおよび接続を作成する
 
@@ -95,12 +96,13 @@ Web サーバーのインストール ファイルは **ZDT\_Install\_EE\_V12.0.
 
     ```
     cd ZDT
-    chmod 755 ZDT\_Install\_EE\_V12.0.0.0.tgz
+    tar zxvf ZDT\_Install\_EE\_V12.0.0.0.tgz
     ```
 
 2. インストーラーを実行します。
 
     ```
+    chmod 755 ZDT\_Install\_EE\_V12.0.0.0.x86_64
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 

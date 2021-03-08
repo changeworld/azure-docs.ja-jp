@@ -1,26 +1,27 @@
 ---
-title: クイックスタート - コンテナー イメージをビルドして実行する
-description: Azure Container Registry を使用して、クラウド内で Docker コンテナー イメージをオンデマンドでビルドして実行するタスクを迅速に実行します。
+title: クイックスタート - Azure でコンテナー イメージをオンデマンドでビルドする
+description: Azure Container Registry コマンドを使用して、Azure クラウド内で Docker コンテナー イメージをオンデマンドでビルド、プッシュ、実行します。
 ms.topic: quickstart
-ms.date: 01/31/2020
-ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 09/25/2020
+ms.custom: contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: c6fe1fc246d112218b492072155175b2db99c8c9
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753702"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032951"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
-このクイック スタートでは、Azure Container Registry タスク コマンドを使用して、Docker コンテナー イメージの迅速なビルド、プッシュ、実行を Azure 内でネイティブに行い、「社内ループ」開発サイクルをクラウドにオフロードする方法を示します。 [ACR タスク][container-registry-tasks-overview]は、コンテナー ライフサイクル全体でコンテナー イメージを管理および変更するのに役立つ Azure Container Registry 内の機能のスイートです。 
+このクイックスタートでは、[Azure Container Registry タスク][container-registry-tasks-overview]のコマンドを使用して、Docker コンテナー イメージの迅速なビルド、プッシュ、実行を、Docker のローカル インストールなしで、Azure 内でネイティブに行います。 ACR タスクは、コンテナー ライフサイクル全体でコンテナー イメージを管理および変更するのに役立つ Azure Container Registry 内の機能のスイートです。 この例では、ローカルの Dockerfile を使用して、オンデマンドのビルドで "内部ループ" コンテナー イメージ開発サイクルをクラウドに任せる方法について説明します。 
 
-このクイック スタートの後に、ACR タスクのより高度な機能について説明します。 ACR タスクでは、コードのコミットに基づくイメージのビルドまたは基本イメージの更新を自動化したり、他のシナリオ間で複数のコンテナーを並列にテストしたりすることができます。 
+このクイック スタートの後に、[チュートリアル](container-registry-tutorial-quick-task.md)を使用して ACR タスクのより高度な機能について説明します。 ACR タスクでは、コードのコミットに基づくイメージのビルドまたは基本イメージの更新を自動化したり、他のシナリオ間で複数のコンテナーを並列にテストしたりすることができます。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-account] を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このクイック スタートを完了できます。 これをローカルで使用する場合は、バージョン 2.0.58 以降をお勧めします。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+    
+- このクイックスタートには、Azure CLI のバージョン 2.0.58 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -45,10 +46,10 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Dockerfile からのイメージのビルドとプッシュ
 
-ここでは、Azure Container Registry を使用してイメージをビルドし、プッシュします。 まず、作業ディレクトリを作成してから、`FROM hello-world` の 1 行だけが記述された *Dockerfile* という名前の Dockerfile を作成します。 これは、Docker Hub の `hello-world` イメージから Linux コンテナー イメージをビルドする単純な例です。 独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドすることができます。 Bash シェルで作業している場合は、次のコマンドで Dockerfile を作成してください。
+ここでは、Azure Container Registry を使用してイメージをビルドし、プッシュします。 まず、ローカル作業ディレクトリを作成してから、`FROM mcr.microsoft.com/hello-world` の 1 行だけが記述された *Dockerfile* という名前の Dockerfile を作成します。 これは、Microsoft Container Registry でホストされている `hello-world` イメージから Linux コンテナー イメージをビルドする単純な例です。 独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドすることができます。 Bash シェルで作業している場合は、次のコマンドで Dockerfile を作成してください。
 
 ```bash
-echo FROM hello-world > Dockerfile
+echo FROM mcr.microsoft.com/hello-world > Dockerfile
 ```
 
 [az acr build][az-acr-build] コマンドを実行してイメージをビルドし、正常にイメージがビルドされたら、それをレジストリにプッシュします。 次の例では、`sample/hello-world:v1` イメージをビルドしてプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します。この場合は現在のディレクトリです。
@@ -77,8 +78,8 @@ Waiting for agent...
 2019/03/18 21:57:00 Successfully obtained source code and scanned for dependencies
 2019/03/18 21:57:00 Launching container with name: build
 Sending build context to Docker daemon  13.82kB
-Step 1/1 : FROM hello-world
-latest: Pulling from library/hello-world
+Step 1/1 : FROM mcr.microsoft.com/hello-world
+latest: Pulling from hello-world
 Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586fxxxx21577a99efb77324b0fe535
 Successfully built fce289e99eb9
 Successfully tagged mycontainerregistry008.azurecr.io/sample/hello-world:v1

@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate プロジェクトの削除
-description: Azure Migrate プロジェクトを作成し、評価/移行ツールを追加する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+description: この記事では、Azure portal を使用して Azure Migrate プロジェクトを作成する方法について説明します。
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: raynew
-ms.openlocfilehash: 4fd6285c3d22c8e0bdddbbe47366e6ae9428e7d8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595137"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate プロジェクトの削除
 
@@ -27,7 +27,7 @@ ms.locfileid: "86109877"
     - ワークスペースは自動的には削除されません。 手動で削除してください。
     - ワークスペースを削除する前に、その使用目的を確認します。 同じ Log Analytics ワークスペースが、複数のシナリオで使用されている可能性があります。
     - プロジェクトを削除する前に、 **[Azure Migrate - Servers]\(Azure Migrate - サーバー\)**  >  **[Azure Migrate - Server Assessment]\(Azure Migrate - サーバー評価\)** の **[OMS ワークスペース]** でワークスペースへのリンクを確認できます。
-    - プロジェクトを削除した後にワークスペースを削除するには、関連するリソース グループからワークスペースを探して、[ここに記載の手順](../azure-monitor/platform/delete-workspace.md)に従います。
+    - プロジェクトを削除した後にワークスペースを削除するには、関連するリソース グループからワークスペースを探して、[ここに記載の手順](../azure-monitor/logs/delete-workspace.md)に従います。
 
 
 ## <a name="delete-a-project"></a>プロジェクトを削除する
@@ -39,7 +39,7 @@ ms.locfileid: "86109877"
     - Azure Migrate プロジェクトのリソースの種類は **Microsoft.Migrate/migrateprojects** です。
     - 次のセクションでは、Azure Migrate プロジェクトで検出、評価、移行のために作成されたリソースを確認します。
     - リソース グループに Azure Migrate プロジェクトしか含まれていない場合は、リソース グループ全体を削除できます。
-    - 以前のバージョンの Azure Migrate からプロジェクトを削除する場合、手順は同じです。 これらのプロジェクトのリソースの種類は、**移行プロジェクト**です。
+    - 以前のバージョンの Azure Migrate からプロジェクトを削除する場合、手順は同じです。 これらのプロジェクトのリソースの種類は、**移行プロジェクト** です。
 
 
 ## <a name="created-resources"></a>作成されたリソース

@@ -1,19 +1,19 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute Global Reach を構成する: CLI'
-description: この記事では、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築し、Global Reach を有効にする方法について説明します。
+description: Azure CLI を使用して、ExpressRoute 回線を相互にリンクし、オンプレミス ネットワーク間にプライベート ネットワークを構築し、Global Reach を有効にする方法について説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/12/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20ec5bb565a506d935ef7de6475e5062a21faa22
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 55f1e4c030dc0e7c8d0011dcff0cc1c9f8fec06e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395487"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260233"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Azure CLI を使用して ExpressRoute Global Reach を構成する
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>構成のために ExpressRoute 回線を特定する
 
-任意の 2 つの ExpressRoute サーキットが、サポートされている国/地域内にあり、異なるピアリング場所で作成されていれば、それらの間で ExpressRoute Global Reach を有効にできます。 サブスクリプションで両方の回線を所有している場合は、この記事の後半で説明されているように、どちらかの回線を選択して構成を実行できます。 2 つの回線が異なる Azure サブスクリプションにある場合、一方の Azure サブスクリプションで構成コマンドを実行するときに、もう一方の Azure サブスクリプションからの承認が必要であり、承認キーを渡す必要があります。
+ExpressRoute Global Reach は、任意の 2 つの ExpressRoute 回線間で有効にできます。 回線は、サポートされている国/地域にある必要があり、異なるピアリングの場所で作成されています。 サブスクリプションで両方の回線を所有している場合は、いずれかの回線を選択して構成を実行できます。 ただし、2 つの回線が異なる Azure サブスクリプションに含まれている場合は、いずれかの回線から承認キーを作成する必要があります。 1 つ目の回線から生成された承認キーを使用して、2 つ目の回線で Global Reach を有効にできます。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>オンプレミス ネットワーク間の接続を有効にする
 
@@ -56,9 +56,9 @@ az account set --subscription <your subscription ID>
 
 * *peer-circuit* は、完全なリソース ID にする必要があります。 次に例を示します。
 
-  > /subscriptions/{自分のサブスクリプション ID}/resourceGroups/{自分のリソース グループ}/providers/Microsoft.Network/expressRouteCircuits/{自分の回線名}
+  > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
 
-* *address-prefix* は、"/29" IPv4 サブネット ("10.0.0.0/29" など) である必要があります。 このサブネット内の IP アドレスを使用して、2 つの ExpressRoute 回線間の接続を確立します。 Azure 仮想ネットワークまたはオンプレミスのネットワークでは、このサブネット内のアドレスを使用しないでください。
+* *address-prefix* は、"/29" IPv4 サブネット ("10.0.0.0/29" など) である必要があります。 このサブネット内の IP アドレスを使用して、2 つの ExpressRoute 回線間の接続を確立します。 Azure 仮想ネットワークまたはオンプレミス ネットワークでは、このサブネット内のアドレスを使用できません。
 
 次の CLI コマンドを実行して、2 つの ExpressRoute 回線を接続します。
 
@@ -94,7 +94,7 @@ CLI 出力は次のようになります。
 
 ## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>異なる Azure サブスクリプションで ExpressRoute 回線間の接続を有効にする
 
-2 つの回線が同じ Azure サブスクリプション内にない場合は、承認が必要です。 次の構成では、回線 2 のサブスクリプションで承認を生成し、承認キーを回線 1 に渡します。
+2 つの回線が同じ Azure サブスクリプション内にない場合は、承認が必要です。 次の構成では、回線 2 のサブスクリプションで承認を生成します。 その後、承認キーを回線 1 に渡します。
 
 1. 承認キーを生成します。
 

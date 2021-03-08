@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
-ms.openlocfilehash: f718471c3f79e9a33b0e03b088f8c8d2ae0231d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73586848"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539300"
 ---
 # <a name="subnet-extension"></a>サブネットの拡張
 パブリック クラウドへのワークロードの移行には、慎重な計画と調整が必要です。 重要な考慮事項の 1 つは、IP アドレスを保持できるかどうかです。 これは特に、アプリケーションに IP アドレスの依存関係がある場合や、特定の IP アドレスを使用するためのコンプライアンス要件がある場合に重要になります。 Azure Virtual Network を使用すると、選択した IP アドレス範囲を使用して VNet とサブネットを作成できるため、この問題を解決できます。

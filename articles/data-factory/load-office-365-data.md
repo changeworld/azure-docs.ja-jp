@@ -1,26 +1,21 @@
 ---
 title: Azure Data Factory を使用して Office 365 からデータを読み込む
 description: Azure Data Factory を使用して Office 365 からデータをコピーする
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54aa511414695d28e390529af61d484e465f1c19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415813"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710267"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Data Factory を使用して _Office 365 から Azure BLOB ストレージにデータを読み込む_ 方法を示します。 同様の手順に従って Azure Data Lake Gen1 または Gen2 にデータをコピーすることもできます。 Office 365 からデータをコピーすること全般については、[Office 365 コネクタに関する記事](connector-office-365.md)を参照してください。
 
@@ -53,7 +48,7 @@ ms.locfileid: "81415813"
  
     ![パイプラインの作成](./media/load-office-365-data/create-pipeline-entry.png)
 
-2. パイプラインの **[全般]** タブで、パイプラインの**名前**として「CopyPipeline」と入力します。
+2. パイプラインの **[全般]** タブで、パイプラインの **名前** として「CopyPipeline」と入力します。
 
 3. [アクティビティ] ツール ボックスの [Move & Transform]\(移動と変換) で、ツール ボックスからパイプライン デザイナー画面に **[コピー]** アクティビティ をドラッグ アンド ドロップします。 アクティビティ名として "CopyFromOffice365ToBlob" を指定します。
 
@@ -67,7 +62,7 @@ ms.locfileid: "81415813"
 
     ![一般的な Office 365 データセットを構成する](./media/load-office-365-data/transition-to-edit-dataset.png)
  
-4. Office 365 データセット用の新しいタブが開きます。 プロパティ ウィンドウの下部にある **[全般] タブ**で、[名前] に「SourceOffice365Dataset」と入力します。
+4. Office 365 データセット用の新しいタブが開きます。 プロパティ ウィンドウの下部にある **[全般] タブ** で、[名前] に「SourceOffice365Dataset」と入力します。
  
 5. プロパティ ウィンドウの **[接続]** タブに移動します。 [リンクされたサービス] ボックスの横にある **[+ 新規]** をクリックします。
 
@@ -79,7 +74,7 @@ ms.locfileid: "81415813"
 
     ![Office 365 データセット テーブルを構成する](./media/load-office-365-data/edit-dataset.png)
 
-8. 次に、 **[パイプライン]**  >  **[ソース] タブ**に戻り、Office 365 のデータ抽出のために引き続き追加プロパティを構成します。  ユーザー スコープとユーザースコープ フィルターは、Office 365 から抽出するデータを制限するために定義できる省略可能な述語です。 これらの設定を構成する方法については、[Office 365 のデータセットのプロパティ](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties)に関するセクションを参照してください。
+8. 次に、 **[パイプライン]**  >  **[ソース] タブ** に戻り、Office 365 のデータ抽出のために引き続き追加プロパティを構成します。  ユーザー スコープとユーザースコープ フィルターは、Office 365 から抽出するデータを制限するために定義できる省略可能な述語です。 これらの設定を構成する方法については、[Office 365 のデータセットのプロパティ](./connector-office-365.md#dataset-properties)に関するセクションを参照してください。
 
 9. 日付フィルターの 1 つを選択し、開始時刻と終了時刻の値を指定する必要があります。
 
@@ -147,7 +142,7 @@ _データを抽出しているときの状態:_
 
 ## <a name="next-steps"></a>次のステップ
 
-次の資料に進んで、Azure SQL Data Warehouse のサポートを確認します。 
+次の資料に進んで、Azure Synapse Analytics のサポートを確認します。 
 
 > [!div class="nextstepaction"]
 >[Office 365 コネクタ](connector-office-365.md)

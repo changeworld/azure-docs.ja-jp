@@ -3,17 +3,19 @@ title: Azure Cosmos DB での FROM 句
 description: SQL 構文、および Azure Cosmos DB の FROM 句の例について説明します。 この記事では、FROM 句を使用して結果をスコープし、サブ項目を取得する例も示します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 3844a628a8e3773821736324bfdaab3f64ff9da5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005872"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336267"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での FROM 句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 ソースがクエリの後半でフィルター処理またはプロジェクションされる場合を除いて、FROM (`FROM <from_specification>`) 句はオプションです。 `SELECT * FROM Families` のようなクエリは、`Families` コンテナー全体を列挙します。 コンテナー名の代わりにコンテナーに特別な識別子 ROOT を使うこともできます。
 

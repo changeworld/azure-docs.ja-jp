@@ -2,13 +2,13 @@
 title: 障害と災害に対する Azure Service Bus アプリケーションの保護
 description: この記事では、発生する可能性がある Azure Service Bus の障害からアプリケーションを保護するために使用できる手法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 02/10/2021
+ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065626"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374594"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -23,11 +23,13 @@ Azure Service Bus Premium レベルには、高可用性とディザスター �
 
 ### <a name="geo-disaster-recovery"></a>geo ディザスター リカバリー
 
-Service Bus Premium では、名前空間のレベルで geo ディザスター リカバリーがサポートされています。 詳細については、「[Azure Service Bus の geo ディザスター リカバリー](service-bus-geo-dr.md)」を参照してください。 [Premium SKU](service-bus-premium-messaging.md) でのみ利用できるディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。
+Service Bus Premium では、名前空間のレベルで geo ディザスター リカバリーがサポートされています。 詳細については、「[Azure Service Bus の geo ディザスター リカバリー](service-bus-geo-dr.md)」を参照してください。 [Premium SKU](service-bus-premium-messaging.md) でのみ利用できるディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。 geo ディザスター リカバリーでは、エンティティのメタデータのみが、プライマリとセカンダリの名前空間の間でレプリケートされます。  
 
 ### <a name="availability-zones"></a>可用性ゾーン
 
 Service Bus Premium SKU では、同じ Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 Service Bus は、メッセージング ストアの 3つのコピー (1つのプライマリと 2つのセカンダリ) を管理します。 Service Bus は、データ操作および管理操作のために 3つのコピーをすべて同期します。 プライマリ コピーがフェイルした場合には、セカンダリ コピーの 1つをプライマリに昇格させ、ダウンタイムを発生させません。 アプリケーションが Service Bus からの一時的な切断を認識した場合には、SDK の再試行ロジックによって Service Bus に自動で再接続します。 
+
+可用性ゾーンを使用すると、メタデータとデータ (メッセージ) の両方が、可用性ゾーン内のデータ センター間でレプリケートされます。 
 
 > [!NOTE]
 > Azure Service Bus Premium に対する Availability Zones のサポートは、可用性ゾーンが利用可能な [Azure リージョン](../availability-zones/az-region.md)でのみ利用できます。でのみ利用できます。
@@ -38,10 +40,10 @@ Azure Portal を使用して、新しい名前空間でのみ Availability Zones
 
 
 ## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>障害および災害からの保護 - Service Bus Standard
-Standard メッセージング価格レベルが使用されているときに、データセンターの障害からの復旧を実現するために、Service Bus では、*アクティブ レプリケーション*と*パッシブ レプリケーション*という 2 つの方法がサポートされています。 どちらの方法でも、データセンターの障害時に特定のキューまたはトピックにアクセスできる状態を維持する必要がある場合は、両方の名前空間にそのキューまたはトピックを作成します。 両方のエンティティに同じ名前を付けることができます。 たとえば、プライマリ キューは **contosoPrimary.servicebus.windows.net/myQueue** を使用してアクセスでき、セカンダリ側は **contosoSecondary.servicebus.windows.net/myQueue** を使用してアクセスできます。
+Standard メッセージング価格レベルが使用されているときに、データセンターの障害からの復旧を実現するために、Service Bus では、*アクティブ レプリケーション* と *パッシブ レプリケーション* という 2 つの方法がサポートされています。 どちらの方法でも、データセンターの障害時に特定のキューまたはトピックにアクセスできる状態を維持する必要がある場合は、両方の名前空間にそのキューまたはトピックを作成します。 両方のエンティティに同じ名前を付けることができます。 たとえば、プライマリ キューは **contosoPrimary.servicebus.windows.net/myQueue** を使用してアクセスでき、セカンダリ側は **contosoSecondary.servicebus.windows.net/myQueue** を使用してアクセスできます。
 
 >[!NOTE]
-> **アクティブ レプリケーション**と**パッシブ レプリケーション**のセットアップは汎用ソリューションであり、Service Bus の固有の機能ではありません。 送信側アプリケーションにはレプリケーション ロジック (2 つの異なる名前空間への送信) が存在し、受信側には、重複を検出するためのカスタム ロジックが存在する必要があります。
+> **アクティブ レプリケーション** と **パッシブ レプリケーション** のセットアップは汎用ソリューションであり、Service Bus の固有の機能ではありません。 送信側アプリケーションにはレプリケーション ロジック (2 つの異なる名前空間への送信) が存在し、受信側には、重複を検出するためのカスタム ロジックが存在する必要があります。
 
 アプリケーションが、送信側から受信側への永続的な通信を必要としない場合、アプリケーションで永続的なクライアント側キューを実装することで、メッセージの消失を防止し、送信側を一時的な Service Bus エラーから保護できます。
 

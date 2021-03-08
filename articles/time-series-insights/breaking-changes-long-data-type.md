@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 12/07/2020
 ms.custom: dpalled
-ms.openlocfilehash: 8d9b166d4ac9290a0389eac23f9d6882f667e1a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 0f7ac9844bfe7eac7094d3b7fdf653e07f236599
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856101"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780826"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 での Long データ型のサポートの追加
 
@@ -33,7 +33,7 @@ Long データ型のサポートの追加は、Azure Time Series Insights Gen2 �
 
 いずれかのケースに該当する場合は、モデルに変更を加えてください。 変数定義の Time Series の式 (TSX) を、推奨される変更で更新します。 両方を更新します。
 
-- Azure Time Series Insights TSI Explorer
+- Azure Time Series Insights Explorer
 - Microsoft の API を使用する任意のカスタム クライアント
 
 IoT ソリューションと制約によっては、Azure Time Series Insights Gen2 環境に送信されるデータを表示できない場合があります。 データが整数のみであるか、整数と非整数の両方であるかがわからない場合は、いくつかのオプションがあります。
@@ -42,11 +42,11 @@ IoT ソリューションと制約によっては、Azure Time Series Insights G
 - 事前にすべての数値タグに対して推奨される変更を行うことができます。
 - イベントのサブセットをストレージに一時的にルーティングして、スキーマについて十分に理解して調査することができます。
 
-イベントを保存するには、Azure Event Hubs に対して[イベント キャプチャ](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)を有効にするか、IoT Hub から Azure Blob Storage に[ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage)します。
+イベントを保存するには、Azure Event Hubs に対して[イベント キャプチャ](../event-hubs/event-hubs-capture-overview.md)を有効にするか、IoT Hub から Azure Blob Storage に[ルーティング](../iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)します。
 
-データは、[Event Hub Explorer](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer) を使用して、または[イベント プロセッサ ホスト](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)を使用して監視することもできます。
+データは、[Event Hub Explorer](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer) を使用して、または[イベント プロセッサ ホスト](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md#receive-events)を使用して監視することもできます。
 
-IoT Hub を使用する場合、組み込みのエンドポイントへのアクセス方法については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)」を参照してください。
+IoT Hub を使用する場合、組み込みのエンドポイントへのアクセス方法については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](../iot-hub/iot-hub-devguide-messages-read-builtin.md)」を参照してください。
 
 > [!NOTE]
 > 推奨される変更を加えないと、中断が発生する可能性があります。 たとえば、クエリ API または Time Series Insights エクスプローラーを介してアクセスされる、影響を受ける Time Series Insights 変数によって、**null** が返されます (つまり、エクスプローラーにデータが表示されません)。
@@ -66,19 +66,19 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 
 整数データは **propertyValue_long** に書き込まれます。 以前に **propertyValue_double** に取り込まれた (および今後取り込まれる) 数値データはコピーされません。
 
-**propertyValue** プロパティに対してこれら 2 つの列のデータのクエリを実行する場合は、TSX で **coalesce()** スカラー関数を使用する必要があります。 この関数によって、同じ **DataType** の引数が受け取られ、引数リスト内の最初の null 以外の値が返されます。 詳細については、[Azure Time Series Insights Gen2 データ アクセスの概念](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)に関するページを参照してください。
+**propertyValue** プロパティに対してこれら 2 つの列のデータのクエリを実行する場合は、TSX で **coalesce()** スカラー関数を使用する必要があります。 この関数によって、同じ **DataType** の引数が受け取られ、引数リスト内の最初の null 以外の値が返されます。 詳細については、[Azure Time Series Insights Gen2 データ アクセスの概念](/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)に関するページを参照してください。
 
 #### <a name="variable-definition-in-tsx---numeric"></a>TSX の変数定義 - 数値
 
 *前の変数の定義:*
 
-[![前の変数の定義](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
+[![スクリーンショットでは、数値の PropertyValue 変数に対する [新しい変数の追加] ダイアログ ボックスが示されています。](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
 
 *新しい変数の定義:*
 
-[![新しい変数の定義](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
+[![スクリーンショットでは、数値のカスタム値の PropertyValue 変数に対する [新しい変数の追加] ダイアログ ボックスが示されています。](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)として使用することもできます。
+**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](/rest/api/time-series-insights/reference-time-series-expression-syntax)として使用することもできます。
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>TSX クエリ API を使用したインライン変数の定義 - 数値
 
@@ -126,7 +126,7 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 }
 ```
 
-**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)として使用することもできます。
+**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](/rest/api/time-series-insights/reference-time-series-expression-syntax)として使用することもできます。
 
 > [!NOTE]
 > これらの変数は、使用されている可能性があるすべての場所で更新することをお勧めします。 このような場所には、タイム シリーズ モデル、保存されたクエリ、Power BI コネクタのクエリなどがあります。
@@ -139,15 +139,15 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 
 *前の変数の定義:*
 
-[![前の変数の定義](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
+[![スクリーンショットでは、カテゴリの PropertyValue 変数に対する [新しい変数の追加] ダイアログ ボックスが示されています。](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
 
 *新しい変数の定義:*
 
-[![新しい変数の定義](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
+[![スクリーンショットでは、カテゴリのカスタム値の PropertyValue 変数に対する [新しい変数の追加] ダイアログ ボックスが示されています。](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
+**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
 
-カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)で **Long** 型である必要があります。
+カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](/rest/api/time-series-insights/reference-time-series-expression-syntax)で **Long** 型である必要があります。
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>TSX クエリ API を使用したインライン変数の定義 - カテゴリ
 
@@ -227,7 +227,7 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 }
 ```
 
-カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)で **Long** 型である必要があります。
+カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](/rest/api/time-series-insights/reference-time-series-expression-syntax)で **Long** 型である必要があります。
 
 > [!NOTE]
 > これらの変数は、使用されている可能性があるすべての場所で更新することをお勧めします。 このような場所には、タイム シリーズ モデル、保存されたクエリ、Power BI コネクタのクエリなどがあります。

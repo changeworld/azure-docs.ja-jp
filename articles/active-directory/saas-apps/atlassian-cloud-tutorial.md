@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/04/2020
+ms.date: 11/02/2020
 ms.author: jeedes
-ms.openlocfilehash: bdd0530aa580f8f1a1cfdffb81d070827a714115
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686073"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330571"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88686073"
 * Atlassian Cloud にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Atlassian Cloud に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,26 +41,25 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
-* Atlassian Cloud では、**SP と IDP** によって開始される SSO がサポートされます
+* Atlassian Cloud では、 **SP と IDP** によって開始される SSO がサポートされます
 * Atlassian Cloud では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](atlassian-cloud-provisioning-tutorial.md)がサポートされます
-* Atlassian Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>ギャラリーからの Atlassian Cloud の追加
 
 Azure AD への Atlassian Cloud の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Atlassian Cloud を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Atlassian Cloud**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Atlassian Cloud** 」と入力します。
 1. 結果のパネルから **[Atlassian Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Atlassian Cloud に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと Atlassian Cloud の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Atlassian Cloud に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Atlassian Cloud に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD と Atlassian Cloud の SSO の構成](#configure-azure-ad-sso)** - ユーザーが Atlassian Cloud に対して Azure AD ベースの SAML SSO を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -74,7 +71,7 @@ Atlassian Cloud に対する Azure AD SSO を構成してテストするには�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. Atlassian Cloud 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイ アプリによるセキュリティで保護されたサインイン拡張機能**をインストールする必要があります。
+1. Atlassian Cloud 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **マイ アプリによるセキュリティで保護されたサインイン拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -88,58 +85,58 @@ Atlassian Cloud に対する Azure AD SSO を構成してテストするには�
    > [!NOTE]
    > URL は `https://<instancename>.atlassian.net` という形式になっている必要があります。
 
-   ![image](./media/atlassian-cloud-tutorial/get-atlassian-instance-name.png)
+   ![インスタンス名](./media/atlassian-cloud-tutorial/get-atlassian-instance-name.png)
 
 1. [Atlassian Admin Portal](https://admin.atlassian.com/) を開いて自分の組織名をクリックします。
 
-   ![image](./media/atlassian-cloud-tutorial/click-on-organization-in-atlassian-access.png)
+   ![organization](./media/atlassian-cloud-tutorial/click-on-organization-in-atlassian-access.png)
 
 1. シングル サインオンを構成する前に、ドメインを確認する必要があります。 詳細については、[Atlassian の「Domain verification」(ドメインの確認)](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) ドキュメントを参照してください。
 1. Atlassian Admin Portal 画面の左側のドロワーから **[Security]\(セキュリティ\)** を選択します。
 
-   ![image](./media/atlassian-cloud-tutorial/click-on-security-in-atlassian-access.png)
+   ![security](./media/atlassian-cloud-tutorial/click-on-security-in-atlassian-access.png)
 
 1. Atlassian Admin Portal の [Security]\(セキュリティ\) 画面で、左側のドロワーから **[SAML single sign on]\(SAML シングル サインオン\)** を選択します。
 
-   ![image](./media/atlassian-cloud-tutorial/click-on-saml-sso-in-atlassian-access-security.png)
+   ![SAML SSO](./media/atlassian-cloud-tutorial/click-on-saml-sso-in-atlassian-access-security.png)
 
 1. **[Add SAML Configuration]\(SAML 構成の追加\)** をクリックします。このページは開いたままにしてください。
 
-   ![image](./media/atlassian-cloud-tutorial/saml-configuration-in-atlassian-access-security-saml-sso.png)
+   ![SAML 構成の追加](./media/atlassian-cloud-tutorial/saml-configuration-in-atlassian-access-security-saml-sso.png)
 
-   ![image](./media/atlassian-cloud-tutorial/add-saml-configuration.png)
+   ![SAML 構成の追加 2](./media/atlassian-cloud-tutorial/add-saml-configuration.png)
 
-1. [Azure portal](https://portal.azure.com/) の **Atlassian Cloud** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[Set up single sign-on]\(シングル サインオンの設定\)** を選択します。
+1. Azure portal の **Atlassian Cloud** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[Set up single sign-on]\(シングル サインオンの設定\)** を選択します。
 
-   ![image](./media/atlassian-cloud-tutorial/set-up-sso.png)
+   ![SSO を設定する](./media/atlassian-cloud-tutorial/set-up-sso.png)
 
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 
-   ![image](./media/atlassian-cloud-tutorial/saml-in-azure.png)
+   ![Azure での SAML](./media/atlassian-cloud-tutorial/saml-in-azure.png)
 
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、下へスクロールして **[Atlassian Cloud のセットアップ]** に移動します。
    
    a. **[Configuration URLs]\(構成 URL\)** をクリックします。
 
-   ![image](./media/atlassian-cloud-tutorial/configuration-urls.png)
+   ![urls](./media/atlassian-cloud-tutorial/configuration-urls.png)
    
    b. Azure portal から **[Azure AD 識別子]** の値をコピーして、Atlassian の **[Identity Provider Entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに貼り付けます。
    
    c. Azure portal から **[ログイン URL]** の値をコピーし、Atlassian の **[Identity Provider SSO URL]\(ID プロバイダーの SSO URL\)** ボックスに貼り付けます。
 
-   ![image](./media/atlassian-cloud-tutorial/configuration-urls-azure.png)
+   ![ID プロバイダーの SSO URL](./media/atlassian-cloud-tutorial/configuration-urls-azure.png)
 
-   ![image](./media/atlassian-cloud-tutorial/entity-id-and-ss.png)
+   ![エンティティ id と ss](./media/atlassian-cloud-tutorial/entity-id-and-ss.png)
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-   ![image](./media/atlassian-cloud-tutorial/certificate.png)
+   ![署名証明書](./media/atlassian-cloud-tutorial/certificate.png)
 
-   ![image](./media/atlassian-cloud-tutorial/certificate-1.png)
+   ![証明書 1](./media/atlassian-cloud-tutorial/certificate-1.png)
 
-1. Atlassian に SAML 構成を**追加して保存**します。
+1. Atlassian に SAML 構成を **追加して保存** します。
 
-1. アプリケーションを **IDP** 開始モードで構成する場合は、Azure の **[SAML によるシングル サインオンのセットアップ]** ページの **[基本的な SAML 構成]** セクションを編集して、Atlassian Admin Portal の **SAML シングル サインオン ページ**を開きます。
+1. アプリケーションを **IDP** 開始モードで構成する場合は、Azure の **[SAML によるシングル サインオンのセットアップ]** ページの **[基本的な SAML 構成]** セクションを編集して、Atlassian Admin Portal の **SAML シングル サインオン ページ** を開きます。
 
    a. Atlassian から **[SP Entity ID]\(SP エンティティ ID\)** の値をコピーして Azure の **[識別子 (エンティティ ID)]** ボックスに貼り付け、既定として設定します。
    
@@ -147,49 +144,49 @@ Atlassian Cloud に対する Azure AD SSO を構成してテストするには�
    
    c. 手順 1. でコピーした **[インスタンス URL]** の値をコピーし、Azure の **[リレー状態]** ボックスに貼り付けます。
 
-   ![image](./media/atlassian-cloud-tutorial/copy-urls.png)
+   ![URL をコピーする](./media/atlassian-cloud-tutorial/copy-urls.png)
 
-   ![image](./media/atlassian-cloud-tutorial/edit-button.png)
+   ![編集ボタン](./media/atlassian-cloud-tutorial/edit-button.png)
 
-   ![image](./media/atlassian-cloud-tutorial/urls.png)
+   ![URL の画像](./media/atlassian-cloud-tutorial/urls.png)
    
 1. アプリケーションを **SP** 開始モードで構成する場合は、Azure の **[SAML によるシングル サインオンのセットアップ]** ページの **[基本的な SAML 構成]** セクションを編集します。 手順 1. の **[インスタンス URL]** をコピーし、Azure の **[サインオン URL]** ボックスに貼り付けます。
 
-   ![image](./media/atlassian-cloud-tutorial/edit-button.png)
+   ![URL の編集ボタン](./media/atlassian-cloud-tutorial/edit-button.png)
 
-   ![image](./media/atlassian-cloud-tutorial/sign-on-URL.png)
+   ![サインオン URL](./media/atlassian-cloud-tutorial/sign-on-URL.png)
    
 1. Atlassian Cloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 属性マッピングは、 **[編集]** アイコンをクリックして編集できます。 
 
-   ![image](./media/atlassian-cloud-tutorial/default-attributes.png)
+   ![属性](./media/atlassian-cloud-tutorial/edit-attribute.png)
    
-   1. Azure AD テナントの属性マッピング (Office 365 ライセンスあり)
+   1. Azure AD テナントの属性マッピング (Microsoft 365 ライセンスあり)
       
       a. **[一意のユーザー識別子 (名前 ID)]** 要求をクリックします。
 
-      ![image](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
+      ![属性と要求](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
-      b. Atlassian Cloud では、**nameidentifier** (**一意のユーザー ID**) がユーザーのメール (**user.email**) にマップされると想定されています。 **[ソース属性]** を編集して、「**user.mail**」に変更してください。 要求に対する変更を保存します。
+      b. Atlassian Cloud では、 **nameidentifier** ( **一意のユーザー ID** ) がユーザーのメール ( **user.email** ) にマップされると想定されています。 **[ソース属性]** を編集して、「 **user.mail** 」に変更してください。 要求に対する変更を保存します。
 
-      ![image](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
+      ![一意のユーザー ID](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
       c. 最終的な属性マッピングは、次のようになります。
 
-      ![image](common/default-attributes.png)
+      ![画像 2](./media/atlassian-cloud-tutorial/default-attributes-1.png)
       
-   1. Azure AD テナントの属性マッピング (Office 365 ライセンスなし) 
+   1. Azure AD テナントの属性マッピング (Microsoft 365 ライセンスなし) 
 
       a. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 要求をクリックします。
 
-      ![image](./media/atlassian-cloud-tutorial/email-address.png)
+      ![画像 3](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Office 365 ライセンスのない Azure AD テナントに作成されたユーザーについては、**user.mail** 属性が Azure によって事前設定されません。そのようなユーザーのメールは、**userprincipalname** 属性に格納されます。 Atlassian Cloud では、**nameidentifier** (**一意のユーザー ID**) がユーザーのメール (**user.userprincipalname**) にマップされると想定されています。  **[ソース属性]** を編集して、「**user.userprincipalname**」に変更してください。 要求に対する変更を保存します。
+      b. Microsoft 365 ライセンスのない Azure AD テナントに作成されたユーザーについては、 **user.mail** 属性が Azure によって事前設定されません。そのようなユーザーのメールは、 **userprincipalname** 属性に格納されます。 Atlassian Cloud では、 **nameidentifier** ( **一意のユーザー ID** ) がユーザーのメール ( **user.userprincipalname** ) にマップされると想定されています。  **[ソース属性]** を編集して、「 **user.userprincipalname** 」に変更してください。 要求に対する変更を保存します。
 
-      ![image](./media/atlassian-cloud-tutorial/set-email.png)
+      ![メールの設定](./media/atlassian-cloud-tutorial/set-email.png)
          
       c. 最終的な属性マッピングは、次のようになります。
 
-      ![image](common/default-attributes.png)
+      ![画像 4](./media/atlassian-cloud-tutorial/default-attributes-2.png)
      
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -210,15 +207,9 @@ Atlassian Cloud に対する Azure AD SSO を構成してテストするには�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Atlassian Cloud]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](./media/atlassian-cloud-tutorial/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-atlassian-cloud-test-user"></a>Atlassian Cloud のテスト ユーザーの作成
@@ -235,7 +226,7 @@ Azure AD ユーザーが Atlassian Cloud にサインインできるようにす
 
 1. **[Email address]\(電子メール アドレス\)** ボックスにユーザーのメール アドレスを入力してから、アプリケーション アクセスを割り当てます。
 
-    ![Atlassian Cloud ユーザーの作成](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-16.png)
+    ![Atlassian Cloud ユーザー](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-16.png)
 
 1. ユーザーに招待メールを送信するには、 **[Invite user]\(ユーザーの招待\)** を選択します。 ユーザーに招待メールが送信され、招待が受け入れられると、システム上でそのユーザーがアクティブになります。
 
@@ -244,16 +235,21 @@ Azure AD ユーザーが Atlassian Cloud にサインインできるようにす
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Atlassian Cloud] タイルを選択すると、SSO を設定した Atlassian Cloud に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-## <a name="additional-resources"></a>その他のリソース
+#### <a name="sp-initiated"></a>SP Initiated:
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Atlassian Cloud のサインオン URL にリダイレクトされます。  
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* Atlassian Cloud のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure AD で Atlassian Cloud を試す](https://aad.portal.azure.com/)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです 
 
-- [高度な可視性と制御によって Atlassian Cloud を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Atlassian Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+
+
+## <a name="next-steps"></a>次のステップ
+
+Atlassian Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

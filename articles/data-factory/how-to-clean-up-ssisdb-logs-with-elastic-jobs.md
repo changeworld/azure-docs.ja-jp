@@ -1,22 +1,18 @@
 ---
 title: Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 description: この記事では、SSISDB のログをクリーンアップするためのストアド プロシージャを Azure エラスティック データベース ジョブを使ってトリガーする方法について説明します。
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c308bd038f273a7cec0442e42f8a749bc4bb8fc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ecabbf88e14d17ac912065c2ed4aa95316efaf9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073558"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387647"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 
@@ -160,7 +156,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 ## <a name="clean-up-logs-with-transact-sql"></a>Transact-SQL を使ってログをクリーンアップする
 
-以下のサンプル Transact-SQL スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する](../sql-database/elastic-jobs-tsql.md)」を参照してください。
+以下のサンプル Transact-SQL スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する](../azure-sql/database/elastic-jobs-tsql-create-manage.md)」を参照してください。
 
 1. SSISDBCleanup ジョブ データベースとして使用する、S0 以上で中身が空の Azure SQL Database を作成するか特定します。 次に、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent) でエラスティック ジョブ エージェントを作成します。
 

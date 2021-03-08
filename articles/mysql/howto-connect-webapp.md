@@ -1,17 +1,17 @@
 ---
 title: Azure App Serviceへの接続 - Azure Database for MySQL
 description: 既存の Azure App Service を Azure Database for MySQL に適切に接続する手順
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a3f3daa56c782d84cf6ba07223f8cfea15daa8a4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6355afe6ce5decbed029db4536b1b1b19f5a876c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101626"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541506"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>既存の Azure App Service と Azure Database for MySQL サーバーの接続
 このトピックでは、既存の Azure App Service を Azure Database for MySQL サーバーに接続する方法について説明します。
@@ -26,23 +26,23 @@ Azure Database for MySQL では、ファイアウォールを使用してデー�
 
 1. MySQL サーバー ブレードの [設定] で、 **[接続のセキュリティ]** をクリックして Azure Database for MySQL の [接続のセキュリティ] ブレードを開きます。
 
-   ![Azure Portal - [接続のセキュリティ] のクリック](./media/howto-connect-webapp/1-connection-security.png)
+   :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure Portal - [接続のセキュリティ] のクリック":::
 
-2. **Azure サービスへのアクセスを許可する** で **ON** を選択して､**保存**を選択します。
-   ![Azure portal - Azure アクセスを許可する](./media/howto-connect-webapp/allow-azure.png)
+2. **Azure サービスへのアクセスを許可する** で **ON** を選択して､**保存** を選択します。
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure portal - Azure アクセスを許可する":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>方法 2 - 送信 IP を明示的に許可するファイアウォール ルールを作成する
 Azure App Service のすべての送信 IP を明示的に追加することができます。
 
-1. App Service の [プロパティ] ブレードで、**送信 IP アドレス**を表示します。
+1. App Service の [プロパティ] ブレードで、**送信 IP アドレス** を表示します。
 
-   ![Azure Portal - 送信 IP の表示](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure Portal - 送信 IP の表示":::
 
 2. MySQL の [接続のセキュリティ] ブレードで、送信 IP を 1 つずつ追加します。
 
-   ![Azure Portal - IP の明示的な追加](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure Portal - IP の明示的な追加":::
 
-3. ファイアウォール ルールは忘れずに**保存**してください。
+3. ファイアウォール ルールは忘れずに **保存** してください。
 
 Azure App Service では IP アドレスを長時間一定に保とうとしますが、IP アドレスは変更される場合もあります。 たとえば、アプリをリサイクルするときやスケーリング操作が発生したとき、または容量を増やすために Azure のリージョン データ センターに新しいコンピューターを追加するときに、そのような状況が発生します。 IP アドレスが変更されると、アプリでは、MySQL サーバーに接続できない場合にダウンタイムが発生します。 上記の方法のいずれかを選択する場合は、この点を考慮してください。
 

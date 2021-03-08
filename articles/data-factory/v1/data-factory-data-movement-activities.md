@@ -1,23 +1,18 @@
 ---
 title: コピー アクティビティを使用したデータの移動
 description: Data Factory パイプラインでのデータの移動 (クラウド ストア間、およびオンプレミスのストアとクラウド ストアの間でのデータ移行) について説明します。 コピー アクティビティの使用。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8a3fe99896ff244d2e35737919e6797141095acb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195977"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364020"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -75,7 +70,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 > \* が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
 
 ### <a name="supported-file-formats"></a>サポートされるファイル形式
-コピー アクティビティを使用して、2 つのファイル ベースのデータ ストア間で**ファイルをそのままコピー**することができ、入力および出力の両方のデータセット定義の [format セクション](data-factory-create-datasets.md)をスキップすることもできます。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
+コピー アクティビティを使用して、2 つのファイル ベースのデータ ストア間で **ファイルをそのままコピー** することができ、入力および出力の両方のデータセット定義の [format セクション](data-factory-create-datasets.md)をスキップすることもできます。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
 
 また、コピー アクティビティでは、指定された形式 (**テキスト、JSON、Avro、ORC、Parquet**) でのファイルの読み取りと書き込み、および圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 詳細については、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
 
@@ -186,7 +181,7 @@ JSON 定義のサンプルを次に示します。
   }
 }
 ```
-出力データセットで定義されているスケジュールに従って、アクティビティが実行されるタイミングが決まります (たとえば、frequency を **day**、interval を **1** に設定すると、**日単位**で実行されます)。 コピー アクティビティでは、入力データセット (**ソース**) から出力データセット (**シンク**) にデータがコピーされます。
+出力データセットで定義されているスケジュールに従って、アクティビティが実行されるタイミングが決まります (たとえば、frequency を **day**、interval を **1** に設定すると、**日単位** で実行されます)。 コピー アクティビティでは、入力データセット (**ソース**) から出力データセット (**シンク**) にデータがコピーされます。
 
 コピー アクティビティには複数の入力データセットを指定できます。 この複数の入力データセットを使用して、アクティビティが実行される前に依存関係が検証されます。 ただし、コピーされるのは、最初のデータセットのデータだけです。 詳細については、「 [スケジュールと実行](data-factory-scheduling-and-execution.md)」を参照してください。  
 

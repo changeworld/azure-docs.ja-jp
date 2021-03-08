@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 1925ef48ee08a7b4f3b3b4c1b1319463d4134f6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b7e5626eeb65b5bc92c27dbb0a772e85a54d4ff
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551575"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Envoy の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551575"
 * ユーザーが自分の Azure AD アカウントを使用して Envoy に自動的にサインインするようにすることができます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Envoy では、**SP** によって開始される SSO がサポートされます
+* Envoy では、 **SP** によって開始される SSO がサポートされます
 
-* Envoy では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Envoy では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -54,7 +54,7 @@ Azure AD への Envoy の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Envoy**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Envoy** 」と入力します。
 1. 結果のパネルから **Envoy** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-envoy"></a>Envoy の Azure AD シングル サインオンの構成とテスト
@@ -131,7 +131,7 @@ Envoy に対する Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="configure-envoy-sso"></a>Envoy SSO の構成
 
-1. Envoy 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Envoy 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -162,7 +162,7 @@ Envoy に対する Azure AD SSO を構成してテストするには、次の構
     
     a. **[Fingerprint]\(フィンガープリント\)** ボックスに、Azure Portal からコピーした証明書の **Thumbprint (拇印)** 値を貼り付けます。
     
-    b. Azure portal からコピーした**ログイン URL** を **[IDENTITY PROVIDER HTTP SAML URL]\(ID プロバイダーの HTTP SAML URL\)** ボックスに貼り付けます。
+    b. Azure portal からコピーした **ログイン URL** を **[IDENTITY PROVIDER HTTP SAML URL]\(ID プロバイダーの HTTP SAML URL\)** ボックスに貼り付けます。
     
     c. **[変更を保存]** をクリックします。
 
@@ -174,15 +174,14 @@ Envoy に対する Azure AD SSO を構成してテストするには、次の構
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Envoy] タイルをクリックすると、SSO を設定した Envoy に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Envoy] タイルをクリックすると、SSO を設定した Envoy に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Envoy を試す](https://aad.portal.azure.com/)
-

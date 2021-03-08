@@ -1,18 +1,16 @@
 ---
-title: Azure Monitor を使用して Python アプリを監視する (プレビュー) | Microsoft Docs
+title: Azure Monitor を使用して Python アプリを監視する | Microsoft Docs
 description: OpenCensus Python を Azure Monitor に接続する手順について説明します
 ms.topic: conceptual
-author: lzchen
-ms.author: lechen
-ms.date: 10/11/2019
+ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: ac7569a48e4bab25d4db17f2fc6dd92b31afcab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850051"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584029"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -32,12 +30,10 @@ OpenCensus Azure Monitor エクスポーターをインストールします。
 python -m pip install opencensus-ext-azure
 ```
 
-パッケージと統合の完全な一覧については、[OpenCensus パッケージ](./nuget.md#common-packages-for-python-using-opencensus)に関するページを参照してください。
-
 > [!NOTE]
 > `python -m pip install opencensus-ext-azure` コマンドは、Python インストール用に `PATH` 環境変数が設定されていることを前提としています。 この変数を構成していない場合は、Python の実行可能ファイルの場所を示す完全なディレクトリ パスを指定する必要があります。 その結果次のようなコマンドになります。`C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`
 
-SDK では 3 つの Azure Monitor エクスポーターを使用して、さまざまな種類のテレメトリを Azure Monitor に送信します。 それらはトレース、メトリック、ログです。 これらのテレメトリの種類の詳細については、[データ プラットフォームの概要](../platform/data-platform.md)に関するページを参照してください。 次の手順に従い、3 つのエクスポーターを使用してこれらのテレメトリの種類を送信します。
+SDK では 3 つの Azure Monitor エクスポーターを使用して、さまざまな種類のテレメトリを Azure Monitor に送信します。 それらはトレース、メトリック、ログです。 これらのテレメトリの種類の詳細については、[データ プラットフォームの概要](../data-platform.md)に関するページを参照してください。 次の手順に従い、3 つのエクスポーターを使用してこれらのテレメトリの種類を送信します。
 
 ## <a name="telemetry-type-mappings"></a>テレメトリの種類のマッピング
 
@@ -442,7 +438,7 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 各エクスポーターによって、コンストラクターを介して渡される構成に対する同じ引数が受け入れられます。 それぞれの詳細については、以下を参照してください。
 
 - `connection_string`:Azure Monitor リソースへの接続に使用される接続文字列。 `instrumentation_key` よりも優先されます。
-- `enable_standard_metrics`:`AzureMetricsExporter` に使用されます。 [パフォーマンス カウンター](../platform/app-insights-metrics.md#performance-counters) メトリックを Azure Monitor に自動的に送信するように、エクスポーターに通知します。 既定値は `True` です。
+- `enable_standard_metrics`:`AzureMetricsExporter` に使用されます。 [パフォーマンス カウンター](../essentials/app-insights-metrics.md#performance-counters) メトリックを Azure Monitor に自動的に送信するように、エクスポーターに通知します。 既定値は `True` です。
 - `export_interval`:エクスポートの頻度を秒単位で指定するために使用されます。
 - `instrumentation_key`:Azure Monitor リソースへの接続に使用されるインストルメンテーション キー。
 - `logging_sampling_rate`:`AzureLogHandler` に使用されます。 ログをエクスポートするためのサンプリング レート [0,1.0] を指定します。 既定値は 1.0 です。
@@ -462,7 +458,7 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 - Azure Monitor メトリック エクスポーターを使用して送信されたテレメトリの場合、送信されたメトリックは `customMetrics` の下に表示されます。
 - Azure Monitor ログ エクスポーターを使用して送信されたテレメトリの場合、ログは `traces` の下に表示されます。 例外は `exceptions` の下に表示されます。
 
-クエリとログの使用方法の詳細については、「[Azure Monitor のログ](../platform/data-platform-logs.md)」を参照してください。
+クエリとログの使用方法の詳細については、「[Azure Monitor のログ](../logs/data-platform-logs.md)」を参照してください。
 
 ## <a name="learn-more-about-opencensus-for-python"></a>OpenCensus for Python に関する詳細情報
 
@@ -477,11 +473,11 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 * [受信要求の追跡](./opencensus-python-dependency.md)
 * [送信要求の追跡](./opencensus-python-request.md)
 * [アプリケーション マップ](./app-map.md)
-* [エンドツーエンドのパフォーマンスの監視](../learn/tutorial-performance.md)
+* [エンドツーエンドのパフォーマンスの監視](../app/tutorial-performance.md)
 
 ### <a name="alerts"></a>警告
 
 * [可用性テスト](./monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
 * [スマート診断](./proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
-* [メトリック アラート](../platform/alerts-log.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
+* [メトリック アラート](../alerts/alerts-log.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
 

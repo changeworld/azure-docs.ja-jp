@@ -9,6 +9,6 @@
   tocHref: /azure/
   topicHref: /azure/index
   items:
-    - name: Security
+    - name: セキュリティ
       tocHref: /azure/architecture/
       topicHref: /azure/security/index

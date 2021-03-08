@@ -1,21 +1,23 @@
 ---
 title: テンプレート関数 - 日付
-description: Azure Resource Manager テンプレートで、日付の操作に使用する関数について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) で日付の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 11/18/2020
+ms.openlocfilehash: 58d865f109ecca2629b89eeb55e554743824c195
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058046"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920504"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM テンプレート用の日付関数
 
-Resource Manager では、Azure Resource Manager (ARM) テンプレートで日付を操作するために、次の関数が提供されています。
+Resource Manager では、Azure Resource Manager テンプレート (ARM テンプレート) で日付を操作するために、次の関数が提供されています。
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="datetimeadd"></a>dateTimeAdd
 
@@ -39,106 +41,148 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで日�
 
 次のテンプレート例は、時間の値を加算するさまざまな方法を示します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters":{
-        "baseTime":{
-            "type":"string",
-            "defaultValue": "[utcNow('u')]"
-        }
-    },
-    "variables": {
-        "add3Years": "[dateTimeAdd(parameters('baseTime'), 'P3Y')]",
-        "subtract9Days": "[dateTimeAdd(parameters('baseTime'), '-P9D')]",
-        "add1Hour": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
-    },
-    "resources": [],
-    "outputs": {
-        "add3Years": {
-            "value": "[variables('add3Years')]",
-            "type": "string"
-        },
-        "subtract9Days": {
-            "value": "[variables('subtract9Days')]",
-            "type": "string"
-        },
-        "add1Hour": {
-            "value": "[variables('add1Hour')]",
-            "type": "string"
-        },
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseTime": {
+      "type": "string",
+      "defaultValue": "[utcNow('u')]"
     }
+  },
+  "variables": {
+    "add3Years": "[dateTimeAdd(parameters('baseTime'), 'P3Y')]",
+    "subtract9Days": "[dateTimeAdd(parameters('baseTime'), '-P9D')]",
+    "add1Hour": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
+  },
+  "resources": [],
+  "outputs": {
+    "add3YearsOutput": {
+      "value": "[variables('add3Years')]",
+      "type": "string"
+    },
+    "subtract9DaysOutput": {
+      "value": "[variables('subtract9Days')]",
+      "type": "string"
+    },
+    "add1HourOutput": {
+      "value": "[variables('add1Hour')]",
+      "type": "string"
+    },
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param baseTime string = utcNow('u')
+
+var add3Years = dateTimeAdd(baseTime, 'P3Y')
+var subtract9Days = dateTimeAdd(baseTime, '-P9D')
+var add1Hour = dateTimeAdd(baseTime, 'PT1H')
+
+output add3YearsOutput string = add3Years
+output subtract9DaysOutput string = subtract9Days
+output add1HourOutput string = add1Hour
+```
+
+---
 
 以前のテンプレートがベースの日時 `2020-04-07 14:53:14Z`でデプロイされている場合、出力は次のようになります。
 
 | 名前 | Type | 値 |
 | ---- | ---- | ----- |
-| add3Years | String | 4/7/2023 2:53:14 PM |
-| subtract9Days | String | 3/29/2020 2:53:14 PM |
-| add1Hour | String | 4/7/2020 3:53:14 PM |
+| add3YearsOutput | String | 4/7/2023 2:53:14 PM |
+| subtract9DaysOutput | String | 3/29/2020 2:53:14 PM |
+| add1HourOutput | String | 4/7/2020 3:53:14 PM |
 
 次のテンプレート例は、Automation スケジュールの開始日時を設定する方法を示します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "omsAutomationAccountName": {
-            "type": "string",
-            "defaultValue": "demoAutomation",
-            "metadata": {
-                "description": "Use an existing Automation account."
-            }
-        },
-        "scheduleName": {
-            "type": "string",
-            "defaultValue": "demoSchedule1",
-            "metadata": {
-                "description": "Name of the new schedule."
-            }
-        },
-        "baseTime":{
-            "type":"string",
-            "defaultValue": "[utcNow('u')]",
-            "metadata": {
-                "description": "Schedule will start one hour from this time."
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "omsAutomationAccountName": {
+      "type": "string",
+      "defaultValue": "demoAutomation",
+      "metadata": {
+        "description": "Use an existing Automation account."
+      }
     },
-    "variables": {
-        "startTime": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
+    "scheduleName": {
+      "type": "string",
+      "defaultValue": "demoSchedule1",
+      "metadata": {
+        "description": "Name of the new schedule."
+      }
     },
-    "resources": [
-        {
-            "name": "[concat(parameters('omsAutomationAccountName'), '/', parameters('scheduleName'))]",
-            "type": "microsoft.automation/automationAccounts/schedules",
-            "apiVersion": "2015-10-31",
-            "location": "eastus2",
-            "tags": {
-            },
-            "properties": {
-                "description": "Demo Scheduler",
-                "startTime": "[variables('startTime')]",
-                "isEnabled": "true",
-                "interval": 1,
-                "frequency": "hour"
-            }
-        }
-    ],
-    "outputs": {
+    "baseTime": {
+      "type": "string",
+      "defaultValue": "[utcNow('u')]",
+      "metadata": {
+        "description": "Schedule will start one hour from this time."
+      }
     }
+  },
+  "variables": {
+    "startTime": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
+  },
+  "resources": [
+    ...
+    {
+      "type": "Microsoft.Automation/automationAccounts/schedules",
+      "apiVersion": "2015-10-31",
+      "name": "[concat(parameters('omsAutomationAccountName'), '/', parameters('scheduleName'))]",
+
+      "properties": {
+        "description": "Demo Scheduler",
+        "startTime": "[variables('startTime')]",
+        "interval": 1,
+        "frequency": "Hour"
+      }
+    }
+  ],
+  "outputs": {
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param omsAutomationAccountName string = 'demoAutomation'
+param scheduleName string = 'demSchedule1'
+param baseTime string = utcNow('u')
+
+var startTime = dateTimeAdd(baseTime, 'PT1H')
+
+...
+
+resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31' = {
+  name: concat(omsAutomationAccountName, '/', scheduleName)
+  properties: {
+    description: 'Demo Scheduler'
+    startTime: startTime
+    interval: 1
+    frequency: 'Hour'
+  }
+}
+```
+
+---
 
 ## <a name="utcnow"></a>utcNow
 
 `utcNow(format)`
 
-指定された形式で現在 (UTC) の datetime 値を返します。 形式が指定されていない場合は、ISO 8601 (yyyyMMddTHHmmssZ) 形式を使用します。 **この関数は、パラメーターの既定値でのみ使用できます。**
+指定された形式で現在 (UTC) の datetime 値を返します。 形式を指定しないと、ISO 8601 (`yyyyMMddTHHmmssZ`) 形式が使われます。 **この関数は、パラメーターの既定値でのみ使用できます。**
 
 ### <a name="parameters"></a>パラメーター
 
@@ -162,42 +206,58 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで日�
 
 次の例のテンプレートでは、datetime 値のさまざまな形式を示します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "utcValue": {
+      "type": "string",
+      "defaultValue": "[utcNow()]"
     },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
+    "utcShortValue": {
+      "type": "string",
+      "defaultValue": "[utcNow('d')]"
+    },
+    "utcCustomValue": {
+      "type": "string",
+      "defaultValue": "[utcNow('M d')]"
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "utcOutput": {
+      "type": "string",
+      "value": "[parameters('utcValue')]"
+    },
+    "utcShortOutput": {
+      "type": "string",
+      "value": "[parameters('utcShortValue')]"
+    },
+    "utcCustomOutput": {
+      "type": "string",
+      "value": "[parameters('utcCustomValue')]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param utcValue string = utcNow()
+param utcShortValue string = utcNow('d')
+param utcCustomValue string = utcNow('M d')
+
+output utcOutput string = utcValue
+output utcShortOutput string = utcShortValue
+output utcCustomOutput string = utcCustomValue
+```
+
+---
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
@@ -209,40 +269,61 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで日�
 
 次の例では、タグ値を設定するときに関数からの値を使用する方法を示します。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "utcShort": {
+      "type": "string",
+      "defaultValue": "[utcNow('d')]"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
+    "rgName": {
+      "type": "string"
     }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "name": "[parameters('rgName')]",
+      "location": "westeurope",
+      "tags": {
+        "createdDate": "[parameters('utcShort')]"
+      },
+      "properties": {}
+    }
+  ],
+  "outputs": {
+    "utcShortOutput": {
+      "type": "string",
+      "value": "[parameters('utcShort')]"
+    }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param utcShort string = utcNow('d')
+param rgName string
+
+resource myRg 'Microsoft.Resources/resourceGroups@2018-05-01' = {
+  name: rgName
+  location: 'westeurope'
+  tags: {
+    createdDate: utcShort
+  }
+}
+
+output utcShortOutput string = utcShort
+```
+
+---
+
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

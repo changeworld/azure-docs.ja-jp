@@ -2,20 +2,20 @@
 title: SLE VM を Azure AD Domain Services に参加させる | Microsoft Docs
 description: SUSE Linux Enterprise 仮想マシンを構成して Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: iainfou
-ms.openlocfilehash: 9f50be95e456802c6ad403acd6a2f539780e53a2
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: justinha
+ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88251133"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619608"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる
 
@@ -77,7 +77,7 @@ sudo vi /etc/hosts
 
 **SSSD** と YaST の *User Logon Management* モジュールを使用してマネージド ドメインに参加するには、次の手順を行います。
 
-1. YaST の *User Logon Management*モジュールをインストールします。
+1. YaST の *User Logon Management* モジュールをインストールします。
 
     ```bash
     sudo zypper install yast2-auth-client
@@ -133,13 +133,13 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
 
 1. マネージド ドメインによって提供されたデータを使用したサインインを許可するには、 *[ドメイン ユーザー ログオンを許可する]* をオンにします。
 
-1. 必要に応じて、 *[ドメイン データ ソースを有効にする]* で、ご利用の環境に必要な追加のデータ ソースをオンにします。 これらのオプションとしては、**sudo**の使用を許可するユーザーや使用可能なネットワーク ドライブなどがあります。
+1. 必要に応じて、 *[ドメイン データ ソースを有効にする]* で、ご利用の環境に必要な追加のデータ ソースをオンにします。 これらのオプションとしては、**sudo** の使用を許可するユーザーや使用可能なネットワーク ドライブなどがあります。
 
 1. マネージド ドメイン内のユーザーが VM でホーム ディレクトリを持つことを許可するには、 *[ホーム ディレクトリを作成する]* ボックスをオンにします。
 
 1. サイド バーで、 **[サービス オプション]、[名前] スイッチ**、 *[拡張オプション]* の順に選択します。 そのウィンドウで、 *[fallback_homedir]* または *[override_homedir]* を選択し、 **[追加]** を選択します。
 
-1. ホーム ディレクトリの場所の値を指定します。 ホーム ディレクトリを */home/USER_NAME* の形式に従って作成するには、 */home/%u*を使用します。 使用可能な変数の詳細については、*override_homedir*セクションの sssd.conf man ページ (`man 5 sssd.conf`) を参照してください。
+1. ホーム ディレクトリの場所の値を指定します。 ホーム ディレクトリを */home/USER_NAME* の形式に従って作成するには、 */home/%u* を使用します。 使用可能な変数の詳細については、*override_homedir* セクションの sssd.conf man ページ (`man 5 sssd.conf`) を参照してください。
 
 1. **[OK]** を選択します。
 
@@ -165,7 +165,7 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
 
 1. Samba ユーザーおよびグループの UID と GID の範囲を変更するには、 *[エキスパート設定]* を選択します。
 
-1. *[NTP 構成]* を選択して、マネージド ドメインの NTP 時刻の同期を構成します。 マネージド ドメインの IP アドレスを入力します。 これらの IP アドレスは、ご利用のマネージド ドメインの Azure portal で *[プロパティ]* ウィンドウに表示されます (例: *10.0.2.4*、*10.0.2.5*)。
+1. *[NTP 構成]* を選択して、マネージド ドメインのネットワーク タイム プロトコル (NTP) 時刻の同期を構成します。 マネージド ドメインの IP アドレスを入力します。 これらの IP アドレスは、ご利用のマネージド ドメインの Azure portal で *[プロパティ]* ウィンドウに表示されます (例: *10.0.2.4*、*10.0.2.5*)。
 
 1. **[OK]** を選択し、入力を要求されたら、ドメイン参加を確認します。
 
@@ -174,6 +174,127 @@ VM をマネージド ドメインに登録した後、次のスクリーンシ�
     ![SLE VM をマネージド ドメインに参加させる場合の認証ダイアログのスクリーンショット例](./media/join-suse-linux-vm/domain-join-authentication-prompt.png)
 
 マネージド ドメインに参加すると、デスクトップまたはコンソールのディスプレイ マネージャーを使用してワークステーションからサインインできます。
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>YaST コマンド ライン インターフェイスから Winbind を使用して VM をマネージド ドメインに参加させる
+
+**winbind** と *YaST コマンド ライン インターフェイス* を使用してマネージド ドメインに参加させるには:
+
+* ドメインに参加する:
+
+  ```console
+  sudo yast samba-client joindomain domain=aaddscontoso.com user=<admin> password=<admin password> machine=<(optional) machine account>
+  ```
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>ターミナルから Winbind を使用して VM をマネージド ドメインに参加させる
+
+**winbind** と *`samba net` コマンド* を使用してマネージド ドメインに参加させるには:
+
+1. kerberos クライアントと samba-winbind をインストールする:
+
+   ```console
+   sudo zypper in krb5-client samba-winbind
+   ```
+
+2. 構成ファイルを編集する:
+
+   * /etc/samba/smb.conf
+   
+     ```ini
+     [global]
+         workgroup = AADDSCONTOSO
+         usershare allow guests = NO #disallow guests from sharing
+         idmap config * : backend = tdb
+         idmap config * : range = 1000000-1999999
+         idmap config AADDSCONTOSO : backend = rid
+         idmap config AADDSCONTOSO : range = 5000000-5999999
+         kerberos method = secrets and keytab
+         realm = AADDSCONTOSO.COM
+         security = ADS
+         template homedir = /home/%D/%U
+         template shell = /bin/bash
+         winbind offline logon = yes
+         winbind refresh tickets = yes
+     ```
+
+   * /etc/krb5.conf
+   
+     ```ini
+     [libdefaults]
+         default_realm = AADDSCONTOSO.COM
+         clockskew = 300
+     [realms]
+         AADDSCONTOSO.COM = {
+             kdc = PDC.AADDSCONTOSO.COM
+             default_domain = AADDSCONTOSO.COM
+             admin_server = PDC.AADDSCONTOSO.COM
+         }
+     [domain_realm]
+         .aaddscontoso.com = AADDSCONTOSO.COM
+     [appdefaults]
+         pam = {
+             ticket_lifetime = 1d
+             renew_lifetime = 1d
+             forwardable = true
+             proxiable = false
+             minimum_uid = 1
+         }
+     ```
+
+   * /etc/security/pam_winbind.conf
+   
+     ```ini
+     [global]
+         cached_login = yes
+         krb5_auth = yes
+         krb5_ccache_type = FILE
+         warn_pwd_expire = 14
+     ```
+
+   * /etc/nsswitch.conf
+   
+     ```ini
+     passwd: compat winbind
+     group: compat winbind
+     ```
+
+3. Azure AD および Linux の日付と時刻が同期されていることを確認してください。これを行うには、NTP サービスに Azure AD サーバーを追加します。
+   
+   1. /etc/ntp.conf ファイルに次の行を追加します。
+     
+      ```console
+      server aaddscontoso.com
+      ```
+
+   1. NTP サービスを再起動する:
+     
+      ```console
+      sudo systemctl restart ntpd
+      ```
+
+4. ドメインに参加する:
+
+   ```console
+   sudo net ads join -U Administrator%Mypassword
+   ```
+
+5. Linux のプラグ可能な認証モジュール (PAM) でログイン ソースとして winbind を有効にします。
+
+   ```console
+   pam-config --add --winbind
+   ```
+
+6. ユーザーがログインできるように、ホーム ディレクトリの自動作成を有効にします。
+
+   ```console
+   pam-config -a --mkhomedir
+   ```
+
+7. winbind サービスを開始し、有効にします。
+
+   ```console
+   sudo systemctl enable winbind
+   sudo systemctl start winbind
+   ```
 
 ## <a name="allow-password-authentication-for-ssh"></a>SSH のパスワード認証を許可する
 

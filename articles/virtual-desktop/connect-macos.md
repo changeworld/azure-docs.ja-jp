@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 649176a363b1a721fede68c5db2a736d5304f485
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f437c43c1e9ad960910e7576db4b3ddf3f6623ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007624"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89230876"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>macOS クライアントを使用して Windows Virtual Desktop に接続する
 
@@ -24,7 +24,7 @@ ms.locfileid: "88007624"
 
 ## <a name="install-the-client"></a>クライアントをインストールします。
 
-開始するには、クライアントを[ダウンロード](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)してご使用の macOS デバイスにインストールします。
+開始するには、クライアントを[ダウンロード](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)してご使用の macOS デバイスにインストールします。
 
 ## <a name="subscribe-to-a-feed"></a>フィードのサブスクライブ
 
@@ -36,6 +36,7 @@ ms.locfileid: "88007624"
 2. フィード URL を入力します。 URL またはメール アドレスを指定できます。
    - URL を使用する場合は、管理者から提供されたものを使用します。 通常、URL は <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> です。
    - 電子メールを使用するには、電子メール アドレスを入力します。 これにより、メール アドレスに関連付けられている URL を検索するようにクライアントに指示されます (管理者がそのようにサーバーを構成した場合)。
+   - US Gov ポータルから接続するには、<https://rdweb.wvd.azure.us/api/arm/feeddiscovery> を使用します。
 3. **[追加]** を選択します。
 4. メッセージが表示されたら、自分のユーザー アカウントでサインインします。
 

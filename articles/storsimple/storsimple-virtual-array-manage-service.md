@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92041be4d3d5ef4d980c17fa0a5870b740c1784a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698939"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995015"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -36,7 +36,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 * サービス登録キーを取得する
 * サービス登録キーを再生成する
 
-このチュートリアルでは、それぞれのタスクの実行方法について説明します。 この記事に記載されている内容は、StorSimple Virtual Array にのみ適用されます。 StorSimple 8000 シリーズの詳細については、「 [StorSimple Manager サービスをデプロイする](storsimple-manage-service.md)」を参照してください。
+このチュートリアルでは、それぞれのタスクの実行方法について説明します。 この記事に記載されている内容は、StorSimple Virtual Array にのみ適用されます。 StorSimple 8000 シリーズの詳細については、「 [StorSimple Manager サービスをデプロイする](./storsimple-8000-manage-service.md)」を参照してください。
 
 ## <a name="create-a-service"></a>サービスの作成
 
@@ -89,7 +89,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
  ![更新されたサービスの一覧](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>サービス登録キーを取得する
-正常にサービスを作成した後、そのサービスに StorSimple デバイスを登録します。 初めて StorSimple デバイスを登録する場合は、サービス登録キーが必要です。 既存の StorSimple サービスに追加のデバイスを登録するには、登録キーとサービス データ暗号化キー (最初のデバイスの登録中に生成される) の両方が必要です。 サービス データ暗号化キーの詳細については、「 [StorSimple セキュリティ](storsimple-security.md)」をご覧ください。 登録キーを取得するには、サービスの **[キー]** ブレードにアクセスします。
+正常にサービスを作成した後、そのサービスに StorSimple デバイスを登録します。 初めて StorSimple デバイスを登録する場合は、サービス登録キーが必要です。 既存の StorSimple サービスに追加のデバイスを登録するには、登録キーとサービス データ暗号化キー (最初のデバイスの登録中に生成される) の両方が必要です。 サービス データ暗号化キーの詳細については、「 [StorSimple セキュリティ](./storsimple-8000-security.md)」をご覧ください。 登録キーを取得するには、サービスの **[キー]** ブレードにアクセスします。
 
 次の手順を実行して、サービス登録キーを取得します。
 
@@ -109,7 +109,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 #### <a name="to-regenerate-the-service-registration-key"></a>サービス登録キーを再生成するには
 1. **[StorSimple デバイス マネージャー]** ブレードで、 **[管理]&gt;** **[キー]** の順に移動します。
    
-   ![キー ブレード](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![再度 [キー] ブレード](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **[キー]** ブレードで、 **[再生成]** をクリックします。
    
    ![[再生成] をクリック](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,11 +118,10 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
    ![キーの再生成の確定](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. 新しいサービス登録キーが表示されます。
    
-    ![キーの再生成の確定](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![追加のキーの再生成の確定](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    このキーをコピーし、このサービスに新しいデバイスを登録するときのために保存します。
 
 ## <a name="next-steps"></a>次のステップ
 * StorSimple Virtual Array の[使用を開始](storsimple-virtual-array-deploy1-portal-prep.md)する方法を確認します。
 * [StorSimple デバイスを管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
-

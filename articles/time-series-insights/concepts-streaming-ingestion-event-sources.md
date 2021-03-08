@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a16a83408587a1b99485140174c45e457ac820f8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 01/19/2021
+ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855099"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881807"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 のイベント ソース
 
@@ -27,7 +27,7 @@ ms.locfileid: "88855099"
 
 ## <a name="create-or-edit-event-sources"></a>イベント ソースの作成または編集
 
-イベント ソース リソースは、Azure Time Series Insights Gen2 環境と同じ Azure サブスクリプションに存在する場合と、別のサブスクリプションに存在する場合があります。[Azure portal](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)、[Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、[ARM テンプレート](time-series-insights-manage-resources-using-azure-resource-manager-template.md)、および [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) を使用して、環境のイベント ソースを作成、編集、または削除できます。
+イベント ソース リソースは、Azure Time Series Insights Gen2 環境と同じ Azure サブスクリプションに存在する場合と、別のサブスクリプションに存在する場合があります。[Azure portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment)、[Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、[ARM テンプレート](time-series-insights-manage-resources-using-azure-resource-manager-template.md)、および [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) を使用して、環境のイベント ソースを作成、編集、または削除できます。
 
 イベント ソースに接続すると、Azure Time Series Insights Gen2 環境は、IoT Hub またはイベント ハブに現在格納されているすべてのイベントを、最も古いイベントから読み取ります。
 
@@ -45,13 +45,25 @@ ms.locfileid: "88855099"
 
 - 環境の[スループット速度制限](./concepts-streaming-ingress-throughput-limits.md)またはパーティションごとの制限を超えないようにします。
 
-- 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)を構成します。
+- 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)を構成します。 推奨アラート条件については、下の「[運用ワークロード](./concepts-streaming-ingestion-event-sources.md#production-workloads)」を参照してください。
 
 - ストリーミング インジェストは、準リアルタイム データおよび最近のデータにのみ使用します。履歴データのストリーミングはサポートされていません。
 
 - プロパティをエスケープする方法と JSON [データをフラット化して格納する](./concepts-json-flattening-escaping-rules.md)方法を理解します。
 
 - イベント ソース接続文字列を指定する場合は、最小限の特権の原則に従います。 Event Hubs の場合は、*send* 要求のみの共有アクセス ポリシーを構成し、IoT Hub の場合は、*service connect* アクセス許可のみを使用します。
+
+## <a name="production-workloads"></a>運用ワークロード
+
+上記のベスト プラクティスに加えて、ビジネスに不可欠なワークロードには次を実装することをお勧めします。
+
+- IoT Hub または Event Hub データ保有期間を最大の 7 日間に増やします。
+
+- Azure portal で環境アラートを作成します。 プラットフォーム [メトリクス](./how-to-monitor-tsi-reference.md#metrics)に基づくアラートでは、エンドツーエンドのパイプライン動作を評価できます。 アラートを作成して管理する手順については、[こちら](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)をご覧ください。 推奨アラート条件:
+
+  - IngressReceivedMessagesTimeLag が 5 分以上
+  - IngressReceivedBytes が 0
+- IoT Hub または Event Hub のパーティション間で取り込み負荷のバランスを維持します。
 
 ### <a name="historical-data-ingestion"></a>履歴データのインジェスト
 
@@ -64,7 +76,7 @@ Azure Time Series Insights Gen2 では、ストリーミング パイプライ�
 
 ## <a name="event-source-timestamp"></a>イベント ソースのタイムスタンプ
 
-イベント ソースを構成するときに、タイムスタンプ ID プロパティを入力するように求められます。 タイムスタンプ プロパティは、時間の経過と共にイベントを追跡するために使用されます。これは、[クエリ API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) で $event.$ts として使用される時刻であり、Azure Time Series Insights TSI Explorer で時系列をプロットするために使用されます。 作成時にプロパティが指定されない場合、またはイベントのタイムスタンプ プロパティがない場合は、イベントが IoT Hub または Events Hubs にエンキューした時刻が既定値として使用されます。 タイムスタンプ プロパティ値は UTC に格納されます。
+イベント ソースを構成するときに、タイムスタンプ ID プロパティを入力するように求められます。 タイムスタンプ プロパティは、時間の経過と共にイベントを追跡するために使用されます。これは、[クエリ API](/rest/api/time-series-insights/dataaccessgen2/query/execute) で $event.$ts として使用される時刻であり、Azure Time Series Insights Explorer で時系列をプロットするために使用されます。 作成時にプロパティが指定されない場合、またはイベントのタイムスタンプ プロパティがない場合は、イベントが IoT Hub または Events Hubs にエンキューした時刻が既定値として使用されます。 タイムスタンプ プロパティ値は UTC に格納されます。
 
 通常、ユーザーは、既定のハブ エンキュー時刻を使用する代わりに、タイムスタンプ プロパティをカスタマイズして、センサーまたはタグが読み取りを生成した時刻を使用することを選択します。 これが特に必要になるのは、デバイスの接続が間欠的に失われ、遅延メッセージがまとめて Azure Time Series Insights Gen2 に転送されるときです。
 

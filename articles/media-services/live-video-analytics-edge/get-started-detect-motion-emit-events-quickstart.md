@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 57edf1721249f839f5c781756b3e09bf59888dab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730288"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -16,13 +16,22 @@ ms.locfileid: "88067696"
 
 セットアップ手順の完了後、メディア グラフを通じて、シミュレートされたライブ ビデオ ストリームを実行できます。そのストリーム内のあらゆるモーションがメディア グラフによって検出、レポートされます。 次の図は、そのメディア グラフをグラフィカルに表しています。
 
-![モーション検出に基づく Live Video Analytics](./media/analyze-live-video/motion-detection.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="モーション検出に基づく Live Video Analytics":::
+
+次のビデオをご覧ください。Live Video Analytics on IoT Edge の使用を開始する詳しい手順が紹介されています。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+  > [!NOTE]
+  > サービス プリンシパルを作成するためのアクセス許可を与えられた Azure サブスクリプションが必要です (**owner role** には、そのアクセス許可があります)。 適切なアクセス許可がない場合は、適切なアクセス許可をアカウント管理者に申請してください。  
+
 * 開発用マシン上の [Visual Studio Code](https://code.visualstudio.com/)。 [Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)があることを確認します。
-* 開発用マシンが接続されているネットワークで、ポート 5671 経由の Advanced Message Queuing Protocol (AMQP) が許可されていることを確認します。 このセットアップにより、Azure IoT Tools が Azure IoT Hub と通信できるようになります。
+* 開発用マシンが接続されているネットワークで、ポート 5671 のアウトバウンド トラフィックに Advanced Message Queuing Protocol (AMQP) が許可されていることを確認します。 このセットアップにより、Azure IoT Tools が Azure IoT Hub と通信できるようになります。
 
 > [!TIP]
 > Azure IoT Tools 拡張機能のインストール中に Docker のインストールを求められる場合があります。 このプロンプトは無視してかまいません。
@@ -34,25 +43,45 @@ ms.locfileid: "88067696"
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge-linux.md)がインストール済み)
+* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
 
 このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 
-1. [Azure Cloud Shell](https://shell.azure.com) に移動します。
+1. [Azure portal](https://portal.azure.com) に移動し、Cloud Shell アイコンを選択します。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. Cloud Shell の初回使用時には、ストレージ アカウントと Microsoft Azure Files 共有を作成するためのサブスクリプションの選択を求められます。 **[ストレージの作成]** を選択して、Cloud Shell のセッション情報用のストレージ アカウントを作成します。 このストレージ アカウントは、Azure Media Services アカウントで使用するためにスクリプトによって作成されるアカウントとは別のものです。
 1. Cloud Shell ウィンドウの左側にあるドロップダウン メニューから **[Bash]** をご利用の環境として選択します。
 
-    ![環境セレクター](./media/quickstarts/env-selector.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="環境セレクター":::
 1. 次のコマンドを実行します。
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-スクリプトが正常に終了すれば、必要なすべてのリソースがご利用のサブスクリプションに表示されます。 スクリプトの出力では、リソースの表に IoT ハブ名が一覧表示されます。 リソースの種類 `Microsoft.Devices/IotHubs` を探し、名前を書き留めます。 この名前は次の手順で必要になります。 
+    スクリプトが正常に完了すると、必要なすべてのリソースがご利用のサブスクリプションに表示されます。 このスクリプトによって合計 12 個のリソースが設定されます。
+    1. **ストリーミング エンドポイント** - 記録された AMS アセットの再生に利用されます。
+    1. **仮想マシン** - エッジ デバイスとして機能する仮想マシンです。
+    1. **ディスク** - メディアや成果物を格納する目的で仮想マシンにアタッチされるストレージ ディスクです。
+    1. **ネットワーク セキュリティ グループ** - Azure 仮想ネットワーク内の Azure リソースが送受信するネットワーク トラフィックにフィルターを適用する目的で使用されます。
+    1. **ネットワーク インターフェイス** - Azure Virtual Machine がインターネットや Azure、その他各種リソースと通信できるようにします。
+    1. **bastion 接続** - ブラウザーと Azure portal を使用して仮想マシンに接続することができます。
+    1. **パブリック IP アドレス** - Azure リソースからインターネットへの通信と、公開されている Azure サービスへの通信が可能になります。
+    1. **Azure ネットワーク** - 仮想マシンなどのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 詳細については、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
+    1. **IoT Hub** - IoT アプリケーションと IoT Edge モジュール、さらにそれが管理するデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。
+    1. **Media Services アカウント** - Azure におけるメディア コンテンツの管理とストリーミングに使用されます。
+    1. **ストレージ アカウント** - 1 つのプライマリ ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数のセカンダリ ストレージ アカウントを持つことができます。 詳細については、[Azure Storage アカウントの Azure Media Services アカウント](../latest/storage-account-concept.md)に関するページを参照してください。
+    1. **コンテナー レジストリ** - プライベート Docker コンテナー イメージおよび関連する成果物の格納と管理に使用されます。
 
-このスクリプトにより、いくつかの構成ファイルが *~/clouddrive/lva-sample/* ディレクトリに生成されます。 これらのファイルは、後ほど、このクイックスタートで必要になります。
+スクリプトの出力では、リソースの表に IoT ハブ名が一覧表示されます。 リソースの種類 **`Microsoft.Devices/IotHubs`** を探し、名前を書き留めます。 この名前は次の手順で必要になります。  
+
+> [!NOTE]
+> このスクリプトにより、いくつかの構成ファイルが ***~/clouddrive/lva-sample/*** ディレクトリに生成されます。 これらのファイルは、後ほど、このクイックスタートで必要になります。
+
+> [!TIP]
+> 作成された Azure リソースで問題が発生した場合は、 **[トラブルシューティング ガイド](troubleshoot-how-to.md#common-error-resolutions)** を参照して、よく発生する問題を解決してください。
 
 ## <a name="deploy-modules-on-your-edge-device"></a>エッジ デバイスにモジュールをデプロイする
 
@@ -75,14 +104,32 @@ RTSP シミュレーター モジュールは、[Live Video Analytics リソー�
 
 Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、次の手順に従います。
 
-1. Visual Studio Code で、 **[表示]**  >  **[エクスプローラー]** を選択します。 または、Ctrl + Shift + E キーを押します。
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. 右クリックして、 **[拡張機能の設定]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
+1. **[表示]**  >  **[エクスプローラー]** を選択します。 または、Ctrl + Shift + E キーを押します。
 1. **[エクスプローラー]** タブの左下隅で、 **[Azure IoT Hub]** を選択します。
 1. **[その他のオプション]** アイコンを選択して、コンテキスト メニューを表示します。 次に、 **[Set IoT Hub Connection String]\(IoT Hub 接続文字列を設定する\)** を選択します。
 1. 入力ボックスが表示されたら、IoT Hub 接続文字列を入力します。 Cloud Shell では、接続文字列を *~/clouddrive/lva-sample/appsettings.json* から取得できます。
 
+> [!NOTE]
+> IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 接続に成功した場合、エッジ デバイスの一覧が表示されます。 少なくとも 1 つのデバイス (名前は **lva-sample-device**) が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。 エッジ デバイスにデプロイされたモジュールを表示するには、**lva-sample-device** の下の **[モジュール]** ノードを展開します。
 
 ![lva-sample-device ノード](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> ユーザー自身がエッジ デバイス (ARM64 デバイスなど) に [Live Video Analytics on IoT Edge を手動でデプロイした](deploy-iot-edge-device.md)場合、Azure IoT Hub でそのデバイスの下に、そのモジュールが表示されます。 そのモジュールを選択し、以下の残りの手順に従います。
 
 ## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
@@ -98,7 +145,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 
@@ -120,11 +167,11 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet を呼び出す
 
-`GraphTopologyList` を呼び出す手順を使用することで、`GraphTopologySet` を呼び出して、[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を設定できます。 ペイロードとして次の JSON を使用します。
+前に行ったように、`GraphTopologySet` を呼び出して[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を設定することができます。 ペイロードとして次の JSON を使用します。
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "MotionDetection",
     "properties": {
         "description": "Analyzing live video to detect motion and emit events",
@@ -287,7 +334,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```
@@ -385,7 +432,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1",
     "properties" : {
         "topologyName" : "MotionDetection",
@@ -400,8 +447,8 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 このペイロードについて次の点に注目します。
 
 * インスタンスを作成する必要のあるトポロジ名 (`MotionDetection`) が指定されています。
-* `rtspUrl` のパラメーターの値が含まれています。これの既定値は、グラフ トポロジのペイロードに設定されていませんでした。
-
+* `rtspUrl` のパラメーターの値が含まれています。これの既定値は、グラフ トポロジのペイロードに設定されていませんでした。 この値は、次のサンプル ビデオへのリンクです。
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
@@ -445,7 +492,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -469,7 +516,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ```
  {
-     "@apiVersion" : "1.0",
+     "@apiVersion" : "2.0",
      "name" : "Sample-Graph-1"
  }
  ```
@@ -516,6 +563,12 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 3. **lva-sample-device** を右クリックし、 **[組み込みイベント エンドポイントの監視を開始します]** を選択します。
 
     ![IoT Hub イベントの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
+
+    > [!NOTE]
+    > IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     
 **[出力]** ウィンドウに次のメッセージが表示されます。
 
@@ -548,13 +601,6 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
         }
         }
     ]
-    },
-    "applicationProperties": {
-    "topic": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.media/mediaservices/{amsAccountName}",
-    "subject": "/graphInstances/Sample-Graph-1/processors/motionDetection",
-    "eventType": "Microsoft.Media.Graph.Analytics.Inference",
-    "eventTime": "2020-05-19T07:45:34.404Z",
-    "dataVersion": "1.0"
     }
 }
 ```
@@ -602,7 +648,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -628,7 +674,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -652,7 +698,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```

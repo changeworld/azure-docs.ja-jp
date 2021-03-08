@@ -4,17 +4,17 @@ summary: 開発者が自分のアプリケーションおよび機能設定を�
 metadata:
   title: Azure App Configuration のドキュメント
   description: 開発者が自分のアプリケーションおよび機能設定をシンプルかつ安全に一元化するのに役立つマネージド サービス、Azure App Configuration を使用する方法について説明します。
-  author: lisaguthrie
-  ms.author: lcozzens
+  author: AlexandraKemperMS
+  ms.author: alkemper
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 598fb9fa8c780219de13af668f0a1c35cba9b40c
-  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+  ms.openlocfilehash: e994dbb9932dd661486fa37511db79178be826ca
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/03/2020
-  ms.locfileid: "89421596"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102182215"
 landingContent:
 - title: Azure App Configuration について
   linkLists:
@@ -23,7 +23,9 @@ landingContent:
     - text: 'Azure App Configuration とは '
       url: overview.md
     - text: よく寄せられる質問
-      url: faq.md
+      url: faq.yml
+    - text: ベスト プラクティス
+      url: howto-best-practices.md
   - linkListType: video
     links:
     - text: Azure App Configuration の概要
@@ -52,16 +54,18 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
+    - text: ASP.NET Core アプリをコーディングする
+      url: quickstart-aspnet-core-app.md
     - text: .NET Core アプリをコーディングする
       url: quickstart-dotnet-core-app.md
     - text: .NET Framework アプリをコーディングする
       url: quickstart-dotnet-app.md
-    - text: ASP.NET Core アプリをコーディングする
-      url: quickstart-aspnet-core-app.md
     - text: C# で Azure Functions アプリをコーディングする
       url: quickstart-azure-functions-csharp.md
-    - text: Spring Boot アプリをコーディングする
+    - text: Java Spring アプリをコーディングする
       url: quickstart-java-spring-app.md
+    - text: Python アプリをコーディングする
+      url: quickstart-python.md
     - text: Azure Resource Manager テンプレート
       url: quickstart-resource-manager.md
   - linkListType: tutorial
@@ -74,6 +78,10 @@ landingContent:
       url: enable-dynamic-configuration-dotnet.md
     - text: Azure Functions で動的な構成を使用する
       url: enable-dynamic-configuration-azure-functions-csharp.md
+    - text: Spring Boot で動的な構成を使用する
+      url: enable-dynamic-configuration-java-spring-app.md
+    - text: プッシュ モデルを使用した動的な構成の統合
+      url: enable-dynamic-configuration-dotnet-core-push-refresh.md
   - linkListType: tutorial
     links:
     - text: CI/CD パイプラインとの統合
@@ -98,10 +106,10 @@ landingContent:
       url: concept-feature-management.md
   - linkListType: quickstart
     links:
-    - text: .NET Core アプリ
-      url: use-feature-flags-dotnet-core.md
     - text: ASP.NET Core アプリ
       url: quickstart-feature-flag-aspnet-core.md
+    - text: .NET Core アプリ
+      url: use-feature-flags-dotnet-core.md
     - text: .NET Framework アプリ
       url: quickstart-feature-flag-dotnet.md
     - text: Spring Boot アプリ
@@ -110,12 +118,18 @@ landingContent:
     links:
     - text: 機能フラグを管理する
       url: manage-feature-flags.md
+    - text: ASP.NET Core 内で機能フラグを使用する
+      url: use-feature-flags-dotnet-core.md
+    - text: Spring Boot 内で機能フラグを使用する
+      url: use-feature-flags-spring-boot.md
+    - text: 指定したユーザー/グループの機能を有効にする
+      url: howto-targetingfilter-aspnet-core.md
   - linkListType: reference
     links:
     - text: .NET Core ライブラリ
-      url: https://go.microsoft.com/fwlink/?linkid=2091700
+      url: /dotnet/api/microsoft.featuremanagement
     - text: .NET Core フィルター ライブラリ
-      url: https://go.microsoft.com/fwlink/?linkid=2091601
+      url: /dotnet/api/microsoft.featuremanagement.featurefilters
 - title: 構成 SDK とサンプル
   linkLists:
   - linkListType: sample
@@ -125,13 +139,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest
+      url: /cli/azure/appconfig
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.appconfiguration/
+      url: /powershell/module/az.appconfiguration/
     - text: Terraform
       url: https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html
     - text: .NET Core プロバイダー
-      url: https://go.microsoft.com/fwlink/?linkid=2074664
+      url: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
     - text: Spring Boot プロバイダー
       url: https://github.com/microsoft/spring-cloud-azure/tree/master/
     - text: Azure SDK for Java
@@ -141,4 +155,4 @@ landingContent:
     - text: Azure SDK for JavaScript
       url: https://go.microsoft.com/fwlink/?linkid=2103664
     - text: REST
-      url: https://go.microsoft.com/fwlink/?linkid=2078296
+      url: rest-api.md

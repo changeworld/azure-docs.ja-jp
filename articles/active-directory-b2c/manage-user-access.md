@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2018
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387730"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951623"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
@@ -46,7 +46,7 @@ ms.locfileid: "85387730"
 
 保護者の同意を得るためのユーザー フローの例を次に示します。
 
-1. [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
+1. [Microsoft Graph API](/graph/use-the-api) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
 
 2. アプリケーションによって JSON トークンが処理され、この未成年者に対して、保護者の同意が必要であることを通知する画面が表示されます。また、この画面では、オンラインでの保護者の同意が求められます。
 
@@ -56,7 +56,7 @@ ms.locfileid: "85387730"
 
 5. 未成年者または成人が同意を取り消すと、Microsoft Graph API を使用して、**consentProvidedForMinor** を **denied** に変更できます。 または、アプリケーションで、同意が取り消された未成年者を削除することも選択できます。 必要に応じて、認証された未成年者が (または保護者が未成年者のアカウントを使用して) 同意を取り消すことができるように、ユーザー フローをカスタマイズすることもできます。 Active Directory B2C では、**consentProvidedForMinor** を **denied** として記録します。
 
-**legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](user-flow-custom-attributes.md)に関するページをご覧ください。 Microsoft Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:*2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
+**legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](/graph/api/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](user-flow-custom-attributes.md)に関するページをご覧ください。 Microsoft Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:*2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>生年月日と国/地域のデータを収集する
 
@@ -66,7 +66,7 @@ ms.locfileid: "85387730"
 
 次の手順は、ユーザーの生年月日から **ageGroup** を計算するために使用されるロジックを示しています。
 
-1. 一覧の国またはリージョン番号で、国またはリージョンの検索を試みます。 国またはリージョンが見つからない場合は、**既定値**にフォールバックします。
+1. 一覧の国またはリージョン番号で、国またはリージョンの検索を試みます。 国またはリージョンが見つからない場合は、**既定値** にフォールバックします。
 
 2. **MinorConsent** ノードが国またはリージョンの要素に存在する場合:
 
@@ -89,7 +89,7 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
 
 通常、アプリケーションを開発したら、アプリケーション内でユーザー ディレクトリから参加できないか、参加が制限された状態で、ユーザーによる利用規約への同意を取得します。 ただし、Azure AD B2C ユーザー フローを使用して、ユーザーの利用規約の同意を収集する、同意がない場合にアクセスを制限する、最後に同意した日付および最新バージョンの利用規約の日付に基づいて今後の利用規約の変更への同意を強制をする、などの操作を行うことができます。
 
-**利用規約**に、"データを第三者と共有することに同意します" という一文を含めることもできます。 地元の法令とビジネス ルールに応じて、両方の条件をまとめてユーザーの同意を収集することも、1 つの条件には同意し、他方には同意しないことをユーザーに許可することもできます。
+**利用規約** に、"データを第三者と共有することに同意します" という一文を含めることもできます。 地元の法令とビジネス ルールに応じて、両方の条件をまとめてユーザーの同意を収集することも、1 つの条件には同意し、他方には同意しないことをユーザーに許可することもできます。
 
 次の手順では、利用規約の管理方法について説明しています。
 
@@ -114,7 +114,7 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
 
 ![推奨される受け入れユーザー フローを示すフロー チャート図](./media/manage-user-access/user-flow.png)
 
-要求における DateTime ベースの利用規約の同意の例を、次に示します。
+要求における日付ベースでの利用規約の同意の例を、次に示します。 `extension_termsOfUseConsentDateTime` の要求が `2025-01-15T00:00:00` より古い場合は、`termsOfUseConsentRequired` のブール値の要求を確認し、セルフアサート画面を表示することで、新たな同意を強制します。 
 
 ```xml
 <ClaimsTransformations>
@@ -128,7 +128,7 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
       <InputClaim ClaimTypeReferenceId="extension_termsOfUseConsentDateTime" TransformationClaimType="termsOfUseConsentDateTime" />
     </InputClaims>
     <InputParameters>
-      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2098-01-30T23:03:45" />
+      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2025-01-15T00:00:00" />
     </InputParameters>
     <OutputClaims>
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="result" />
@@ -137,7 +137,7 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
 </ClaimsTransformations>
 ```
 
-要求における Version ベースの利用規約の同意の例を、次に示します。
+要求におけるバージョンベースでの利用規約の同意の例を、次に示します。 `extension_termsOfUseConsentVersion` の要求が `V1` と等しくない場合は、`termsOfUseConsentRequired` のブール値の要求を確認し、セルフアサート画面を表示することで、新たな同意を強制します。
 
 ```xml
 <ClaimsTransformations>

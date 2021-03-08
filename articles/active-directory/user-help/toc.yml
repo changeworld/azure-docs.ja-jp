@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: アカウントのバックアップと回復
       href: user-help-auth-app-backup-recovery.md
+    - name: Authenticator アプリにパスワードをインポートする
+      href: user-help-authenticator-app-import-passwords.md
     - name: よく寄せられる質問
       href: user-help-auth-app-faq.md
 - name: マイ アカウント ポータルのヘルプ
@@ -70,6 +72,10 @@
       href: my-account-portal-sign-ins-page.md
     - name: ポータル設定を変更する
       href: my-account-portal-settings.md
+    - name: アカウント管理者を確認する
+      href: my-account-find-administrator.md
+    - name: 組織の切り替え
+      href: cross-tenant-switcher.md
 - name: セキュリティ情報のヘルプ
   items:
     - name: サインイン中のセキュリティ情報の追加
@@ -106,12 +112,12 @@
   items:
     - name: マイ アプリ ポータルにサインインして使用する
       href: my-apps-portal-end-user-access.md
-    - name: プロファイルとアカウント情報を更新する
-      href: my-apps-portal-end-user-update-profile.md
     - name: グループ情報を更新する
       href: my-apps-portal-end-user-groups.md
     - name: コレクションを使用してアプリを整理する
       href: my-applications-portal-workspaces.md
+    - name: マイ アプリでのコレクションのプレビュー
+      href: my-apps-portal-user-collections.md
     - name: アプリのアクセス許可の編集または取り消し
       href: my-applications-portal-permissions-saved-accounts.md
     - name: 自分のアクセス レビューを実行する

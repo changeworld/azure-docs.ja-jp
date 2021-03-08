@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "68726453"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544651"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート: Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -100,7 +100,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 
 * [**SharedKeyCredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential) 構造体を使用して資格情報を格納します。 
 
-* 資格情報とオプションを使用して[**パイプライン**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline)を作成します。 パイプラインでは、再試行ポリシー、ログの記録、HTTP 応答ペイロードの逆シリアル化などを指定します。  
+* 資格情報とオプションを使用して [**パイプライン**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline)を作成します。 パイプラインでは、再試行ポリシー、ログの記録、HTTP 応答ペイロードの逆シリアル化などを指定します。  
 
 * コンテナーに対する操作 (Create) と BLOB に対する操作 (Upload および Download) を実行するために、新しい [**ContainerURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#ContainerURL) オブジェクトと新しい [**BlobURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#BlobURL) オブジェクトをインスタンス化します。
 
@@ -108,7 +108,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 ContainerURL を作成したら、BLOB をポイントする **BlobURL** オブジェクトをインスタンス化して、アップロード、ダウンロード、コピーなどの操作を実行できます。
 
 > [!IMPORTANT]
-> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
+> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
 このセクションでは、新しいコンテナーを作成します。 コンテナーの名前は **quickstartblobs-[random string]** です。 
 
@@ -149,9 +149,9 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 
 ファイルを BLOB にアップロードするには、**os.Open** を使用してファイルを開きます。 Upload (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList) のいずれかの REST API を使用して、指定したパスにファイルをアップロードできます。 
 
-別の方法として、低レベルの REST API の上に構築された[高レベルの API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) が SDK に用意されています。 たとえば ***UploadFileToBlockBlob*** 関数では、スループットを最適化するために、StageBlock (PutBlock) 操作を使用してチャンクにしたファイルを同時にアップロードします。 ファイルが 256 MB 未満の場合、代わりに Upload (PutBlob) を使用して単一のトランザクションで転送を完了します。
+別の方法として、低レベルの REST API の上に構築された[高レベルの API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) が SDK に用意されています。 たとえば **_UploadFileToBlockBlob_* _ 関数では、スループットを最適化するために、StageBlock (PutBlock) 操作を使用してチャンクにしたファイルを同時にアップロードします。 ファイルが 256 MB 未満の場合、代わりに Upload (PutBlob) を使用して単一のトランザクションで転送を完了します。
 
-次の例では、ファイルを **quickstartblobs-[randomstring]** という名前のコンテナーにアップロードします。
+次の例では、ファイルを _*quickstartblobs-[randomstring]** という名前のコンテナーにアップロードします。
 
 ```go
 // Create a file to test the upload and download.
@@ -184,7 +184,7 @@ handleErrors(err)
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-**ContainerURL** で **ListBlobs** メソッドを使用して、コンテナー内のファイルの一覧を取得します。 ListBlobs は、指定された**マーカー**から開始して単一セグメントの BLOB (最大 5,000) を返します。 空のマーカーを使用して最初から列挙を開始します。 BLOB 名は辞書式順序で返されます。 セグメントの取得後、それを処理し、前に返されたマーカーを渡す ListBlobs を再度呼び出します。  
+**ContainerURL** で **ListBlobs** メソッドを使用して、コンテナー内のファイルの一覧を取得します。 ListBlobs は、指定された **マーカー** から開始して単一セグメントの BLOB (最大 5,000) を返します。 空のマーカーを使用して最初から列挙を開始します。 BLOB 名は辞書式順序で返されます。 セグメントの取得後、それを処理し、前に返されたマーカーを渡す ListBlobs を再度呼び出します。  
 
 ```go
 // List the container that we have created above

@@ -1,27 +1,67 @@
 - name: Azure Confidential Computing
-  href: overview.md
+  href: ./index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure のコンフィデンシャル コンピューティングへようこそ
+      href: overview.md
+    - name: ユース ケースとシナリオ
+      href: use-cases-scenarios.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: Azure Portal で作成する
-      href: quick-create-portal.md
-    - name: Marketplace で作成する
-      href: quick-create-marketplace.md
+    - name: 仮想マシン
+      items:
+        - name: Azure Portal で作成する
+          href: quick-create-portal.md
+        - name: Marketplace で作成する
+          href: quick-create-marketplace.md
+    - name: Azure Kubernetes Services (AKS)
+      items:
+        - name: AKS の機密ノードの概要
+          href: confidential-nodes-aks-overview.md
+        - name: 機密ノードと Azure CLI
+          href: confidential-nodes-aks-get-started.md
+        - name: AKS 上の機密ノードに関する FAQ
+          href: confidential-nodes-aks-faq.md
 - name: 概念
   expanded: true
   items:
-    - name: 仮想マシン上のソリューション
-      href: virtual-machine-solutions.md
+    - name: 仮想マシン (VM)
+      items:
+        - name: エンクレーブ対応仮想マシン
+          href: confidential-computing-enclaves.md
+        - name: 仮想マシン上のソリューション
+          href: virtual-machine-solutions.md
+        - name: コンフィデンシャル コンピューティング VM に関する FAQ
+          href: faq.md
+    - name: コンテナー コンピューティング
+      expanded: true
+      items:
+        - name: 機密コンテナー
+          items:
+            - name: 作業の開始
+              href: confidential-containers.md
+        - name: エンクレーブ対応コンテナー
+          items:
+            - name: 作業の開始
+              href: enclave-aware-containers.md
+    - name: 構成証明
+      href: attestation.md
+    - name: アプリケーション開発
+      href: application-development.md
 - name: 操作方法
-  expanded: true
   items:
+    - name: Fortanix Confidential Computing Manager
+      href: how-to-fortanix-confidential-computing-manager.md
     - name: Fortanix Enclave Manager
       href: how-to-fortanix-enclave-manager.md
-- name: リソース
-  expanded: true
+- name: リファレンス
   items:
-    - name: よく寄せられる質問
-      href: faq.md
+    - name: SGX クォート ヘルパー機能
+      href: confidential-nodes-out-of-proc-attestation.md
+- name: リソース
+  items:
     - name: Confidential Computing に関するフィードバック
       href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
     - name: StackOverflow
@@ -31,7 +71,7 @@
     - name: Confidential Computing のコンソーシアム
       href: 'https://confidentialcomputing.io/'
     - name: Azure 上の仮想マシン
-      href: 'https://docs.microsoft.com/azure/virtual-machines/'
+      href: ../virtual-machines/index.yml
     - name: 価格
       href: 'https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2'
     - name: リージョン

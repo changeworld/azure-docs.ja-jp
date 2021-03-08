@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 05bf7a3bcbc44d7a54ad2f3a94b89241a1c58c61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 900f64856d8f828fe4650ad86d0e8c4366672314
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543711"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92506549"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pantheon"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pantheon の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543711"
 * ユーザーが自分の Azure AD アカウントを使用して Pantheon に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 
-* Pantheon では、**IDP** Initiated SSO がサポートされます
+* Pantheon では、 **IDP** Initiated SSO がサポートされます
 
 
 
@@ -53,7 +53,7 @@ Azure AD への Pantheon の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Pantheon**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Pantheon** 」と入力します。
 1. 結果のパネルから **[Pantheon]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -89,7 +89,7 @@ Pantheon で Azure AD SSO を構成してテストするには、次の構成要
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Pantheon クライアント サポート チーム](https://pantheon.io/docs/getting-support/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Pantheon アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Pantheon アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Pantheon アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 Pantheon アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -133,7 +133,7 @@ Pantheon で Azure AD SSO を構成してテストするには、次の構成要
 
 ## <a name="configure-pantheon-sso"></a>Pantheon の SSO の構成
 
-**Pantheon** 側にシングルサインオンを構成するには、ダウンロードされた**証明書**およびコピーされた適切な URL を [Pantheon サポート チーム](https://pantheon.io/docs/getting-support/)に送信する必要があります。
+**Pantheon** 側にシングルサインオンを構成するには、ダウンロードされた **証明書** およびコピーされた適切な URL を [Pantheon サポート チーム](https://pantheon.io/docs/getting-support/)に送信する必要があります。
 
 > [!Note]
 > この接続を有効にするには、電子メール ドメイン情報と日時も提供する必要があります。 詳細については、[こちら](https://pantheon.io/docs/sso-organizations/)を参照してください。
@@ -163,15 +163,14 @@ Pantheon で Azure AD SSO を構成してテストするには、次の構成要
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Pantheon] タイルをクリックすると、SSO を設定した Pantheon に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Pantheon] タイルをクリックすると、SSO を設定した Pantheon に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Pantheon を試す](https://aad.portal.azure.com/)
-

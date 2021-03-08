@@ -3,17 +3,16 @@ title: Visual Studio における Azure Stream Analytics Edge ジョブ
 description: この記事では、Visual Studio の Stream Analytics ツールを使って、Stream Analytics on IoT Edge ジョブをオーサリング、デバッグ、および作成する方法について説明します。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 44b84c03dd9c070fd7ca3764a0dc50e8caa9e1fc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 09151ea0fe3d419401d576149f6655b8cdc09f8e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045163"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019960"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する
 
@@ -29,11 +28,11 @@ ms.locfileid: "86045163"
  
 ## <a name="create-a-stream-analytics-edge-project"></a>Stream Analytics Edge プロジェクトを作成する 
 
-Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。 左側の **テンプレート**の一覧に移動し、 **[Azure Stream Analytics]**  >  **[Stream Analytics Edge]**  >  **[Azure Stream Analytics Edge Application]** を選択します。 プロジェクトの名前、場所、およびソリューション名を入力し、 **[OK]** を選択します。
+Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。 左側の **テンプレート** の一覧に移動し、 **[Azure Stream Analytics]**  >  **[Stream Analytics Edge]**  >  **[Azure Stream Analytics Edge Application]** を選択します。 プロジェクトの名前、場所、およびソリューション名を入力し、 **[OK]** を選択します。
 
 ![Visual Studio での新しい Stream Analytics Edge プロジェクト](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
-プロジェクトが作成されたら、**ソリューション エクスプローラー**に移動して、フォルダー階層を表示します。
+プロジェクトが作成されたら、**ソリューション エクスプローラー** に移動して、フォルダー階層を表示します。
 
 ![Stream Analytics Edge ジョブのソリューション エクスプローラー ビュー](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
@@ -46,7 +45,7 @@ Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェク�
 
 ## <a name="define-inputs"></a>入力を定義する
 
-1. **ソリューション エクスプローラー**で、 **[入力]** ノードを展開します。**EdgeInput.json** という名前の入力が表示されます。 ダブルクリックしてその設定を表示します。  
+1. **ソリューション エクスプローラー** で、 **[入力]** ノードを展開します。**EdgeInput.json** という名前の入力が表示されます。 ダブルクリックしてその設定を表示します。  
 
 2. [ソースの種類] を **[データ ストリーム]** に設定します。 次に、[ソース] を **[Edge Hub]** に、[イベントのシリアル化形式] を **[Json]** に、[エンコード] を **[UTF8]** に設定します。 必要に応じて **[入力のエイリアス]** の名前を変更できますが、この例ではそのままにします。 入力の別名の名前を変更する場合は、クエリを定義するときに指定した名前を使用します。 **[保存]** を選択して設定を保存します。  
    ![Stream Analytics ジョブの入力構成](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
@@ -55,14 +54,14 @@ Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェク�
 
 ## <a name="define-outputs"></a>出力を定義する
 
-1. **ソリューション エクスプローラー**で、 **[出力]** ノードを展開します。**EdgeOutput.json** という名前の出力が表示されます。 ダブルクリックしてその設定を表示します。  
+1. **ソリューション エクスプローラー** で、 **[出力]** ノードを展開します。**EdgeOutput.json** という名前の出力が表示されます。 ダブルクリックしてその設定を表示します。  
 
 2. [シンク] が **[Edge Hub]** に、[イベントシリアル化形式] が **[Json]** に、[エンコード] が **[UTF8]** に、[フォーマット] が **[配列]** に設定されていることを確認します。 必要に応じて **[出力のエイリアス]** の名前を変更できますが、この例ではそのままにします。 出力の別名の名前を変更する場合は、クエリを定義するときに指定した名前を使用します。 **[保存]** を選択して設定を保存します。 
    ![Stream Analytics ジョブの出力構成](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>変換クエリを定義する
 
-Stream Analytics IoT Edge 環境にデプロイする Stream Analytics ジョブは、[Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396)の大半をサポートします。 ただし、Stream Analytics Edge ジョブでは次の操作はまだサポートされていません。 
+Stream Analytics IoT Edge 環境にデプロイする Stream Analytics ジョブは、[Stream Analytics クエリ言語リファレンス](/stream-analytics-query/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396)の大半をサポートします。 ただし、Stream Analytics Edge ジョブでは次の操作はまだサポートされていません。 
 
 
 |**カテゴリ**  | **コマンド**  |
@@ -84,7 +83,7 @@ FROM EdgeInput
 
 1. サンプル データをアップロードするには、**EdgeInput.json** ファイルを右クリックし、 **[ローカル入力の追加]** を選択します。  
 
-2. ポップアップ ウィンドウで、ローカル パスからサンプル データを**参照**し、 **[保存]** を選択します。
+2. ポップアップ ウィンドウで、ローカル パスからサンプル データを **参照** し、 **[保存]** を選択します。
    ![Visual Studio でのローカルの入力構成](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
 3. **local_EdgeInput.json** という名前のファイルが、入力フォルダーに自動的に追加されます。  
@@ -111,7 +110,7 @@ FROM EdgeInput
 
 ## <a name="manage-the-job"></a>ジョブを管理する 
 
-サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、 **[Stream Analytics]** から、Stream Analytics Edge ジョブをデプロイしたサブスクリプションとリソース グループを展開します。 状態が **[作成済み]** になっている MyASAEdgejob が表示されます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
+サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー** で、 **[Stream Analytics]** から、Stream Analytics Edge ジョブをデプロイしたサブスクリプションとリソース グループを展開します。 状態が **[作成済み]** になっている MyASAEdgejob が表示されます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
 
 ![サーバー エクスプローラーのジョブ管理オプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  
@@ -123,4 +122,4 @@ FROM EdgeInput
 
 * [Azure IoT Edge の詳細](../iot-edge/about-iot-edge.md)
 * [ASA on IoT Edge チュートリアル](../iot-edge/tutorial-deploy-stream-analytics.md)
-* [このアンケートを使用してフィードバックをチームに送信する](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [このアンケートを使用してフィードバックをチームに送信する](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u)

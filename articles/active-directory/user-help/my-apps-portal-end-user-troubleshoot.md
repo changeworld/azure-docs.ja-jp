@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c5d1b08944417493d175de23c7738db58f1c7bd3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798008"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094969"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>My Apps ポータルに関する問題を解決する
 
@@ -31,9 +31,9 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
     - **Microsoft Edge。** Windows 10 Anniversary Edition 以降で実行。
 
-    - **Google Chrome。** Windows 7 以降か Mac OS X 以降で実行。
+    - **Google Chrome。** Windows 7 以降か macOS X 以降で実行。
 
-    - **Mozilla Firefox 26.0 以降。** Windows XP SP2 以降か Mac OS X 10.6 以降で実行。
+    - **Mozilla Firefox 26.0 以降。** Windows XP SP2 以降か macOS X 10.6 以降で実行。
 
     - **Internet Explorer 11。** Windows 7 以降で実行 (制限付きサポート)。
 
@@ -47,11 +47,16 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 **My Apps** ポータルにサインインできない場合、次をお試しください。
 
+- 個人用 Microsoft アカウントでのサインインでエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+
 - 使用している URL が正しいことを確認します。 [https://myapps.microsoft.com](https://myapps.microsoft.com ) のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
-- 確認情報が最新の状態であり、正しいことを確認してください。 詳細については、「[Azure Multi-Factor Authentication とは何ですか](./multi-factor-authentication-end-user-first-time.md)」または[セキュリティ情報のメソッドと情報の変更](./security-info-setup-auth-app.md)に関するページを参照してください。
+- 確認情報が最新の状態であり、正しいことを確認してください。 詳細については、「[Azure AD Multi-Factor Authentication とは何ですか](./multi-factor-authentication-end-user-first-time.md)」または[セキュリティ情報のメソッドと情報の変更](./security-info-setup-auth-app.md)に関するページを参照してください。
 
 - **[インターネット プロパティ]、[セキュリティ] の順に選択し、[信頼されているサイト]** 設定で **My App** ポータルの URL を追加します。
 
@@ -75,7 +80,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
-- 確認情報が最新の状態であり、正しいことを確認してください。 詳細については、「[Azure Multi-Factor Authentication とは何ですか](./multi-factor-authentication-end-user-first-time.md)」または[セキュリティ情報のメソッドと情報の変更](./security-info-setup-auth-app.md)に関するページを参照してください。
+- 確認情報が最新の状態であり、正しいことを確認してください。 詳細については、「[Azure AD Multi-Factor Authentication とは何ですか](./multi-factor-authentication-end-user-first-time.md)」または[セキュリティ情報のメソッドと情報の変更](./security-info-setup-auth-app.md)に関するページを参照してください。
 
 - ブラウザーのキャッシュを消去し、もう一度サインインしてみます。
 
@@ -87,7 +92,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 - [マイ アプリ ポータルのアプリにアクセスして使用する](my-apps-portal-end-user-access.md)。
 
-- [プロファイル情報を変更する](my-apps-portal-end-user-update-profile.md)。
+- [プロファイル情報を変更する](./my-account-portal-settings.md)。
 
 - [グループ関連の情報を表示し、更新する](my-apps-portal-end-user-groups.md)。
 

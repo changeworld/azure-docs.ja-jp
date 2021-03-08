@@ -3,18 +3,18 @@ title: Azure Application Insights の検索の使用 | Microsoft Docs
 description: Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324456"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579554"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 
 検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](./app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
 
-(データでのより複雑なクエリについては、[Analytics](../log-query/get-started-portal.md) を使用してください。)
+(データでのより複雑なクエリについては、[Analytics](../logs/log-analytics-tutorial.md) を使用してください。)
 
 ## <a name="where-do-you-see-search"></a>検索が表示される場所
 
@@ -61,7 +61,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 * **ページ ビュー** - [Web クライアントによって送信されたテレメトリ](./javascript.md)。ページ ビュー レポートの作成に使用されます。
 * **カスタム イベント** - [利用状況の監視](./api-custom-events-metrics.md)のために TrackEvent() への呼び出しを挿入した場合は、ここで検索できます。
 * **例外** - TrackException() を使用してログに記録した、[サーバーでキャッチされていない例外](./asp-net-exceptions.md)。
-* **依存関係** - 他のサービスに対する[サーバー アプリケーションからの呼び出し](./asp-net-dependencies.md) (REST API、データベースなど)、および[クライアント コード](./javascript.md)からの AJAX 呼び出し。
+* **依存関係** - 他のサービスに対する [サーバー アプリケーションからの呼び出し](./asp-net-dependencies.md) (REST API、データベースなど)、および [クライアント コード](./javascript.md)からの AJAX 呼び出し。
 * **可用性** - [可用性テスト](./monitor-web-app-availability.md)の結果。
 
 ## <a name="filter-on-property-values"></a>プロパティの値に基づくフィルター選択
@@ -81,7 +81,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 ## <a name="search-the-data"></a>データの検索
 
 > [!NOTE]
-> さらに複雑なクエリを作成するには、[検索] ブレードの上部から [ **[ログ (Analytics)]** ](../log-query/get-started-portal.md) を開きます。
+> さらに複雑なクエリを作成するには、[検索] ブレードの上部から [ **[ログ (Analytics)]**](../logs/log-analytics-tutorial.md) を開きます。
 >
 
 すべてのプロパティ値について語句を検索できます。 これは、プロパティ値を持つ[カスタム イベント](./api-custom-events-metrics.md)を作成している場合に特に便利です。
@@ -92,7 +92,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 部分文字列ではなく、語句全体を検索します。 引用符で特殊文字を囲みます。
 
-| String | 検索*されない* | Found |
+| String | 検索 *されない* | Found |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |United States|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -145,8 +145,7 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 
 ## <a name="next-steps"></a><a name="add"></a>次のステップ
 
-* [Analytics で複雑なクエリを作成する](../log-query/get-started-portal.md)
+* [Analytics で複雑なクエリを作成する](../logs/log-analytics-tutorial.md)
 * [Application Insights にログとカスタム テレメトリを送信する](./asp-net-trace-logs.md)
 * [可用性と応答性のテストを設定する](./monitor-web-app-availability.md)
 * [トラブルシューティング](../faq.md)
-

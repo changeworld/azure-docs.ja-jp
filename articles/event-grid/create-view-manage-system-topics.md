@@ -4,10 +4,10 @@ description: この記事では、Azure Portal を使用して既存のシステ
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115113"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Azure Portal で Event Grid システム トピックを作成、表示、管理する
@@ -27,11 +27,11 @@ Azure リソース (ストレージ アカウント、Event Hubs 名前空間な
 
     ![システム トピックの追加 - ツールバー ボタン](./media/create-view-manage-system-topics/add-system-topic-menu.png)
 4. **[Create Event Grid System Topic]\(Event Grid システム トピックの作成\)** ページで、次の手順を実行します。
-    1. **トピックの種類**を選択します。 次の例では、**ストレージ アカウント**のオプションが選択されています。 
-    2. 対象のストレージ アカウント リソースがある **Azure サブスクリプション**を選択します。 
-    3. そのストレージ アカウントがある**リソース グループ**を選択します。 
-    4. **ストレージ アカウント**を選択します。 
-    5. 作成されるシステム トピックの**名前**を入力します。 
+    1. **トピックの種類** を選択します。 次の例では、**ストレージ アカウント** のオプションが選択されています。 
+    2. 対象のストレージ アカウント リソースがある **Azure サブスクリプション** を選択します。 
+    3. そのストレージ アカウントがある **リソース グループ** を選択します。 
+    4. **ストレージ アカウント** を選択します。 
+    5. 作成されるシステム トピックの **名前** を入力します。 
     
         > [!NOTE]
         > このシステム トピック名を使用して、メトリックと診断ログを検索できます。
@@ -56,7 +56,7 @@ Azure リソース (ストレージ アカウント、Event Hubs 名前空間な
 3. **[Event Grid System Topics]\(Event Grid システム トピック\)** ページに、すべてのシステム トピックが表示されます。 
 
     ![システム トピックの一覧](./media/create-view-manage-system-topics/list-system-topics.png)
-4. 一覧から**システム トピック**を選択すると、その詳細が表示されます。 
+4. 一覧から **システム トピック** を選択すると、その詳細が表示されます。 
 
     ![システム トピックの詳細](./media/create-view-manage-system-topics/system-topic-details.png)
 
@@ -83,7 +83,7 @@ Azure リソース (ストレージ アカウント、Event Hubs 名前空間な
 2. **[Event Grid System Topics]\(Event Grid システム トピック\)** ページで、ツールバーの **[+ イベント サブスクリプション]** を選択します。 
 
     ![システム トピック - [+ イベント サブスクリプション] ボタン](./media/create-view-manage-system-topics/add-event-subscription-button.png)
-3. **[トピックの種類]** 、 **[ソース リソース]** 、 **[トピック名]** が自動的に入力されていることを確認します。 名前を入力し、 **[エンドポイントのタイプ]** を選択して、**エンドポイント**を指定します。 これで、 **[作成]** を選択し、イベント サブスクリプションを作成します。 
+3. **[トピックの種類]** 、 **[ソース リソース]** 、 **[トピック名]** が自動的に入力されていることを確認します。 名前を入力し、 **[エンドポイントのタイプ]** を選択して、**エンドポイント** を指定します。 これで、 **[作成]** を選択し、イベント サブスクリプションを作成します。 
 
     ![システム トピック - イベント サブスクリプションの作成](./media/create-view-manage-system-topics/create-event-subscription.png)
 

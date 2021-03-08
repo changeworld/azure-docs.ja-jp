@@ -1,20 +1,18 @@
 ---
 title: Azure Data Lake Analytics の概要
 description: Data Lake Analytics は、あらゆる規模のクラウド データで得た分析情報を使ってビジネスを強力に推し進める手立てとなります。
-services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
-ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 4a6ef2821080982e2b34108703bd80574443244a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475121"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445529"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Azure Data Lake Analytics とは
 
@@ -49,7 +47,7 @@ Data Lake Analytics は、ビッグ データ ワークロードを実行する�
 
 ## <a name="works-with-all-your-azure-data"></a>すべての Azure データに対応
   
-Data Lake Analytics は、最高レベルのパフォーマンス、スループット、および並列化のために Azure Data Lake Storage と連携し、Azure Storage Blob、Azure SQL Database、Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) とも連動します。
+Data Lake Analytics は、最高レベルのパフォーマンス、スループット、および並列化のために Azure Data Lake Storage と連携し、Azure Storage Blob、Azure SQL Database、Azure Synapse Analytics とも連動します。
 
 
 ## <a name="next-steps"></a>次のステップ

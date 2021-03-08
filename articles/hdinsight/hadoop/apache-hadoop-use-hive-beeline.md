@@ -1,23 +1,22 @@
 ---
 title: Apache Hive で Apache Beeline を使用する - Azure HDInsight
 description: Beeline クライアントを使用して、HDInsight での Hadoop で Hive クエリを実行する方法について説明します。 Beeline は、JDBC を介して HiveServer2 を使用するためのユーティリティです。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.date: 10/28/2020
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: e8b7478ba64da0f99a9b7a710222ff2953795adf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755094"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943201"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
-[Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) を使用して HDInsight 上で Hive クエリを実行する方法について説明します。
+この記事では、コマンド ライン [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) クライアントを使用して、SSH 接続を介して Apache Hive クエリを作成および実行する方法について説明します。
+
+## <a name="background"></a>バックグラウンド
 
 Beeline は、HDInsight クラスターのヘッド ノードに含まれている Hive クライアントです。 HDInsight クラスターにインストールされている Beeline クライアントに接続したり、Beeline をローカルにインストールしたりするには、[Apache Beeline への接続またはインストール](connect-install-beeline.md)に関する記事を参照してください。 Beeline は、JDBC を使用して、HDInsight クラスターでホストされる HiveServer2 サービスに接続します。 Beeline を使用して、インターネット経由でで、HDInsight での Hive にリモートでアクセスすることもできます。 次の例は、Beeline から HDInsight への接続に使用される最も一般的な接続文字列を示します。
 
@@ -27,9 +26,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
 * クラスターのプライマリ ストレージの URI スキームに注目してください。 たとえば、Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は`abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 詳細については、[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。
 
-* オプション 1: SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 このドキュメントのほとんどの手順では、SSH セッションからクラスターへの Beeline を使用していることを前提としています。
-
-* オプション 2:ローカルの Beeline クライアント。
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 このドキュメントのほとんどの手順では、SSH セッションからクラスターへの Beeline を使用していることを前提としています。 ローカルの Beeline クライアントを使用することもできますが、この記事では、その手順については説明しません。
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
@@ -86,7 +83,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
     この情報は、テーブル内の列を説明します。
 
-5. 次のステートメントを入力して、HDInsight クラスター付属のサンプル データを使用する **log4jLogs**という名前のテーブルを作成します。(URI スキームに基づいて必要に応じて修正してください。)
+5. 次のステートメントを入力して、HDInsight クラスター付属のサンプル データを使用する **log4jLogs** という名前のテーブルを作成します。(URI スキームに基づいて必要に応じて修正してください。)
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -110,7 +107,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
     |ステートメント |説明 |
     |---|---|
     |DROP TABLE|テーブルが存在する場合は削除されます。|
-    |CREATE EXTERNAL TABLE|Hive に**外部**テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。|
+    |CREATE EXTERNAL TABLE|Hive に **外部** テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。|
     |ROW FORMAT|データがどのように書式設定されるか。 ここでは、各ログのフィールドは、スペースで区切られています。|
     |STORED AS TEXTFILE LOCATION|データの格納場所とファイル形式。|
     |SELECT|**t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このクエリでは値 **3** が返されます。|
@@ -119,7 +116,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
    > [!NOTE]  
    > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や MapReduce 操作の場合です。
    >
-   > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
+   > 外部テーブルを削除しても、データは削除 **されません**。テーブル定義のみが削除されます。
 
     このコマンドの出力は次のテキストのようになります。
 

@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 817e6f494b024b9a789f39a4101236f64d8fa0cd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044619"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882893"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -66,14 +66,17 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 
 ### <a name="arm-templates"></a>ARM テンプレート
 
-管理しようとしているプロパティを含む [Resource Manager テンプレート](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)を確認する方法はいくつかあります。
+管理しようとしているプロパティが含まれる [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) を確認する方法はいくつかあります。
 
 #### <a name="existing-resource-in-the-portal"></a>ポータルにおける既存のリソース
 
 プロパティを見つける最も簡単な方法は、同じ種類の既存リソースを確認することです。 適用する設定を使用して既に構成されているリソースには、比較対象の値もあります。
 その特定のリソースについて、Azure portal の ( **[設定]** にある) **[テンプレートのエクスポート]** ページを確認します。
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="既存のリソースのテンプレート ページをエクスポートする" border="false":::
+> [!WARNING]
+> Azure portal によってエクスポートされた ARM テンプレートは、[deployIfNotExists](../concepts/effects.md#deployifnotexists) ポリシー定義の ARM テンプレートの `deployment` プロパティに直接接続できません。
+
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure portal にある既存リソースの Export テンプレート ページのスクリーンショット。" border="false":::
 
 これにより、ストレージ アカウントの場合、次の例のようなテンプレートが表示されます。
 
@@ -119,7 +122,7 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 ...
 ```
 
-**properties** の下にある **supportsHttpsTrafficOnly** という値は **false** に設定されています。 このようなプロパティが、探していたプロパティです。 また、このリソースの**種類**は **Microsoft.Storage/storageAccounts** です。 これにより、ポリシーをこの種類のリソースのみに制限できます。
+**properties** の下にある **supportsHttpsTrafficOnly** という値は **false** に設定されています。 このようなプロパティが、探していたプロパティです。 また、このリソースの **種類** は **Microsoft.Storage/storageAccounts** です。 これにより、ポリシーをこの種類のリソースのみに制限できます。
 
 #### <a name="create-a-resource-in-the-portal"></a>ポータルでリソースを作成する
 
@@ -148,7 +151,7 @@ GitHub 上の [Azure クイックスタート テンプレート](https://github
 
 #### <a name="resource-reference-docs"></a>リソースのリファレンス ドキュメント
 
-**supportsHttpsTrafficOnly** が適切なプロパティであるかどうかを検証するには、ARM テンプレート リファレンスで、ストレージ プロバイダーの[ストレージ アカウント リソース](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)について確認します。 プロパティ オブジェクトには、有効なパラメーターのリストがあります。 [[StorageAccountPropertiesCreateParameters-object]](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) リンクを選択すると、許容されるプロパティの表が表示されます。 **supportsHttpsTrafficOnly** が存在し、その説明は探しているものと一致していてビジネス要件を満たします。
+**supportsHttpsTrafficOnly** が適切なプロパティであるかどうかを検証するには、ARM テンプレート リファレンスで、ストレージ プロバイダーの [ストレージ アカウント リソース](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)について確認します。 プロパティ オブジェクトには、有効なパラメーターのリストがあります。 [[StorageAccountPropertiesCreateParameters-object]](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) リンクを選択すると、許容されるプロパティの表が表示されます。 **supportsHttpsTrafficOnly** が存在し、その説明は探しているものと一致していてビジネス要件を満たします。
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
@@ -165,7 +168,6 @@ Azure リソースのエイリアスを判別する方法はいくつかあり�
 - VS Code 用 Azure Policy 拡張機能
 - Azure CLI
 - Azure PowerShell
-- Azure Resource Graph
 
 ### <a name="get-aliases-in-vs-code-extension"></a>VS Code 拡張機能でエイリアスを取得する
 
@@ -199,125 +201,6 @@ Azure PowerShell では、`Get-AzPolicyAlias` コマンドレットを使用し�
 ```
 
 Azure CLI と同様に、その結果から **supportsHttpsTrafficOnly** という名前のストレージ アカウントでサポートされているエイリアスを確認します。
-
-### <a name="azure-resource-graph"></a>Azure Resource Graph
-
-[Azure Resource Graph](../../resource-graph/overview.md) は、Azure リソースのプロパティを探すもう 1 つの手段となるサービスです。 Resource Graph を使用して単一のストレージ アカウントを探すサンプル クエリを次に示します。
-
-```kusto
-Resources
-| where type=~'microsoft.storage/storageaccounts'
-| limit 1
-```
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-これらの結果は、ARM テンプレートや Azure Resource Explorer を使用した場合と似ています。 しかし、Azure Resource Graph の結果には、_エイリアス_ 配列を _プロジェクションする_ ことで、"[エイリアス](../concepts/definition-structure.md#aliases)" の詳細を含めることもできます。
-
-```kusto
-Resources
-| where type=~'microsoft.storage/storageaccounts'
-| limit 1
-| project aliases
-```
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-エイリアスに関するストレージ アカウントからの出力の例を次に示します。
-
-```json
-"aliases": {
-    "Microsoft.Storage/storageAccounts/accessTier": null,
-    "Microsoft.Storage/storageAccounts/accountType": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/enableBlobEncryption": true,
-    "Microsoft.Storage/storageAccounts/enableFileEncryption": true,
-    "Microsoft.Storage/storageAccounts/encryption": {
-        "keySource": "Microsoft.Storage",
-        "services": {
-            "blob": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            },
-            "file": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            }
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.keySource": "Microsoft.Storage",
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyname": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyvaulturi": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyversion": null,
-    "Microsoft.Storage/storageAccounts/encryption.services": {
-        "blob": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        },
-        "file": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob.enabled": true,
-    "Microsoft.Storage/storageAccounts/encryption.services.file": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.file.enabled": true,
-    "Microsoft.Storage/storageAccounts/networkAcls": {
-        "bypass": "AzureServices",
-        "defaultAction": "Allow",
-        "ipRules": [],
-        "virtualNetworkRules": []
-    },
-    "Microsoft.Storage/storageAccounts/networkAcls.bypass": "AzureServices",
-    "Microsoft.Storage/storageAccounts/networkAcls.defaultAction": "Allow",
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].state": [],
-    "Microsoft.Storage/storageAccounts/primaryEndpoints": {
-        "blob": "https://mystorageaccount.blob.core.windows.net/",
-        "file": "https://mystorageaccount.file.core.windows.net/",
-        "queue": "https://mystorageaccount.queue.core.windows.net/",
-        "table": "https://mystorageaccount.table.core.windows.net/"
-    },
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.blob": "https://mystorageaccount.blob.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.file": "https://mystorageaccount.file.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.queue": "https://mystorageaccount.queue.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.table": "https://mystorageaccount.table.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.web": null,
-    "Microsoft.Storage/storageAccounts/primaryLocation": "eastus2",
-    "Microsoft.Storage/storageAccounts/provisioningState": "Succeeded",
-    "Microsoft.Storage/storageAccounts/sku.name": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/sku.tier": "Standard",
-    "Microsoft.Storage/storageAccounts/statusOfPrimary": "available",
-    "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly": false
-}
-```
-
-Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使用することもでき、リソースのプロパティをすばやく簡単に探すことができます。
 
 ## <a name="determine-the-effect-to-use"></a>使用する効果を決定する
 
@@ -362,7 +245,7 @@ Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使�
 
 ### <a name="parameters"></a>パラメーター
 
-評価の変更のためにパラメーターは使用していませんが、トラブルシューティング用にパラメーターを使用して**効果**を変更できるようにしたいと思います。 **effectType** パラメーターを定義し、それを **Deny** と **Disabled** のみに制限します。 これら 2 つのオプションは、目的のビジネス要件に一致しています。 完成した parameters ブロックの例を次に示します。
+評価の変更のためにパラメーターは使用していませんが、トラブルシューティング用にパラメーターを使用して **効果** を変更できるようにしたいと思います。 **effectType** パラメーターを定義し、それを **Deny** と **Disabled** のみに制限します。 これら 2 つのオプションは、目的のビジネス要件に一致しています。 完成した parameters ブロックの例を次に示します。
 
 ```json
 "parameters": {
@@ -385,7 +268,7 @@ Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使�
 
 [ポリシー ルール](../concepts/definition-structure.md#policy-rule)の作成は、カスタム ポリシー定義を構築する際の最後の手順です。 次のテストのために、2 つのステートメントを特定しました。
 
-- ストレージ アカウントの**種類**は **Microsoft.Storage/storageAccounts**
+- ストレージ アカウントの **種類** は **Microsoft.Storage/storageAccounts**
 - ストレージ アカウントの **supportsHttpsTrafficOnly** は **true** ではない
 
 これらのステートメントが両方とも true である必要があるので、**allOf** [論理演算子](../concepts/definition-structure.md#logical-operators)を使用します。 静的に宣言する代わりに、**effectType** パラメーターを effect に渡します。 完成したルールは次の例のようになります。

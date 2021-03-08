@@ -1,17 +1,15 @@
 ---
 title: コンテナー アプリのフェールオーバーとスケーリング
 description: このチュートリアルでは、Azure Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。  また、クラスターで実行されているコンテナーとサービスをスケーリングする方法についても説明します。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f51a195f9ad43c7facb7dc413a4da83fc6b202b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614096"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531396"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル: Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングをデモンストレーションする
 

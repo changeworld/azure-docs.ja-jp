@@ -3,13 +3,13 @@ title: 概念 - Azure Kubernetes サービス (AKS) におけるストレージ
 description: Azure Kubernetes Service (AKS) のストレージについて、ボリューム、永続ボリューム、ストレージ クラス、要求などを説明します。
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/17/2020
+ms.openlocfilehash: bf910c66694a62505f259c0a95a88f7dfed05d19
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406964"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127959"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -32,8 +32,6 @@ Azure Kubernetes Service (AKS) で実行されるアプリケーションで、�
 
 - "*Azure ディスク*" は、Kubernetes *DataDisk* リソースを作成するために使用できます。 ディスクは、高パフォーマンス SSD に支えられた Azure Premium ストレージ、または標準 HDD に支えられた Azure Standard ストレージを使用できます。 ほとんどの運用ワークロードと開発ワークロードでは Premium ストレージを使用してください。 Azure ディスクは *ReadWriteOnce* としてマウントされるため、1 つのポッドでしか使用できません。 複数のポッドから同時にアクセスできるストレージ ボリュームについては、Azure Files を使用します。
 - *Azure Files* は、Azure Storage アカウントによって支えられる SMB 3.0 共有をポッドにマウントするために使用できます。 Files では、複数のノードとポッドにまたがってデータを共有できます。 ファイルは、標準 HDD に支えられた Azure Standard ストレージ、または高パフォーマンス SSD に支えられた Azure Premium ストレージを使用できます。
-> [!NOTE] 
-> Azure Files では、Kubernetes 1.13 以降が実行される AKS クラスターでの Premium Storage がサポートされています。
 
 Kubernetes におけるボリュームは、情報を格納して取得するだけの従来のディスクとは異なります。 Kubernetes のボリュームは、コンテナーで使用するために、ポッドにデータを挿入する手段としても使用できます。 Kubernetes における、その他の一般的なボリュームの種類を次に示します。
 
@@ -55,12 +53,18 @@ PersistentVolume は、クラスター管理者が "*静的に*" 作成するこ
 
 Premium や Standard など異なる階層を定義するために、*StorageClass* を作成できます。 StorageClass によって *reclaimPolicy* も定義されます。 この reclaimPolicy が、ポッドが削除されて永続ボリュームが不要になる可能性がある場合の、基礎となる Azure Storage リソースの動作を制御します。 基礎となるストレージ リソースは削除することも、将来のポッドで使用するために保持しておくこともできます。
 
-AKS では、次の 4 つの初期 StorageClasses が作成されます。
+AKS では、4 つの初期 `StorageClasses` が、ツリー内ストレージ プラグインを使用してクラスター用に作成されます。
 
-- *default* - Azure StandardSSD ストレージを使用してマネージド ディスクを作成します。 解放ポリシーは、基礎となる Azure ディスクを使用した永続ボリュームが削除されるときに、ディスクが削除されるように指定します。
-- *managed-premium* - Azure Premium ストレージを使用してマネージド ディスクを作成します。 ここでも、解放ポリシーは、基礎となる Azure ディスクを使用したポッドが削除されるときに、ディスクが削除されるように指定します。
-- *azurefile* - Azure Standard ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーは、基礎となる Azure ファイル共有を使用した永続ボリュームが削除されるときに、Azure ファイル共有が削除されるように指定します。
-- *azurefile-premium* - Azure Premium ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーは、基礎となる Azure ファイル共有を使用した永続ボリュームが削除されるときに、Azure ファイル共有が削除されるように指定します。
+- `default` - Azure StandardSSD ストレージを使用してマネージド ディスクを作成します。 解放ポリシーによって、基礎となる Azure ディスクを使用していた永続ボリュームが削除されるときに、ディスクも確実に削除されます。
+- `managed-premium` - Azure Premium ストレージを使用してマネージド ディスクを作成します。 ここでも、解放ポリシーによって、基礎となる Azure ディスクを使用していた永続ボリュームが削除されるときに、ディスクも確実に削除されます。
+- `azurefile` - Azure Standard ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーによって、基礎となる Azure ファイル共有は、それを使用していた永続ボリュームが削除されるときに、確実に削除されます。
+- `azurefile-premium` - Azure Premium ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーによって、基礎となる Azure ファイル共有は、それを使用していた永続ボリュームが削除されるときに、確実に削除されます。
+
+新しいコンテナー ストレージ インターフェイス (CSI) の外部プラグイン (プレビュー) を使用するクラスターでは、次の追加の `StorageClasses` が作成されます。
+- `managed-csi` - Azure StandardSSD ローカル冗長ストレージ (LRS) を使用して、マネージド ディスクを作成します。 解放ポリシーによって、基礎となる Azure ディスクを使用していた永続ボリュームが削除されるときに、ディスクも確実に削除されます。 ストレージ クラスによって永続ボリュームを拡張可能にする構成も行われるため、必要なのは、永続ボリューム要求を新しいサイズで編集することだけです。
+- `managed-csi-premium` - Azure Premium ローカル冗長ストレージ (LRS) を使用して、マネージド ディスクを作成します。 ここでも、解放ポリシーによって、基礎となる Azure ディスクを使用していた永続ボリュームが削除されるときに、ディスクも確実に削除されます。 同様に、このストレージ クラスを使用して、永続ボリュームを拡張できます。
+- `azurefile-csi` - Azure Standard ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーによって、基礎となる Azure ファイル共有は、それを使用していた永続ボリュームが削除されるときに、確実に削除されます。
+- `azurefile-csi-premium` - Azure Premium ストレージを使用して Azure ファイル共有を作成します。 解放ポリシーによって、基礎となる Azure ファイル共有は、それを使用していた永続ボリュームが削除されるときに、確実に削除されます。
 
 永続ボリュームで StorageClass が指定されない場合は、既定の StorageClass が使用されます。 永続ボリュームを要求するときは、必要なストレージが使用されることに注意してください。 `kubectl` を使用して、その他のニーズのために StorageClass を作成できます。 次の例は、Premium マネージド ディスクを使用し、ポッドの削除時に基礎となる Azure ディスクを "*保持する*" ように指定します。
 
@@ -113,7 +117,7 @@ metadata:
 spec:
   containers:
     - name: myfrontend
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       volumeMounts:
       - mountPath: "/mnt/azure"
         name: volume
@@ -121,6 +125,18 @@ spec:
     - name: volume
       persistentVolumeClaim:
         claimName: azure-managed-disk
+```
+
+Windows コンテナーにボリュームをマウントするには、ドライブ文字とパスを指定します。 次に例を示します。
+
+```yaml
+...      
+       volumeMounts:
+        - mountPath: "d:"
+          name: volume
+        - mountPath: "c:\k"
+          name: k-dir
+...
 ```
 
 ## <a name="next-steps"></a>次のステップ

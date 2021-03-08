@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948863"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077899"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する
 
@@ -27,7 +27,7 @@ ms.locfileid: "88948863"
 
 このクイック スタートでは、環境内で選択したクラウド アプリに対して ToU への同意を必要とする [Azure AD の条件付きアクセス ポリシー](./overview.md)を構成する方法について説明します。
 
-![ポリシーの作成](./media/require-tou/5555.png)
+:::image type="content" source="./media/require-tou/5555.png" alt-text="Azure portal のスクリーンショット。[Require T O U for Isabella]\(Isabella に対して T O U を必須にする\) という名前のポリシーを定義するペインが表示されています。" border="false":::
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このクイック スタートのシナリオを完了するための要件を次に示します。
 
 - **Azure AD Premium エディションへのアクセス** - Azure AD の条件付きアクセスは Azure AD Premium の機能です。
-- **Isabella Simonsen というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「[クラウド ベースのユーザーを追加する](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)」を参照してください。
+- **Isabella Simonsen というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「 [クラウド ベースのユーザーを追加する](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)」を参照してください。
 
 ## <a name="test-your-sign-in"></a>サインインをテストする
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **使用条件を作成するには:**
 
 1. Microsoft Word で、新しいドキュメントを作成します。
-1. 「**My terms of use**」と入力し、ドキュメントをコンピューターに **mytou.pdf** として保存します。
+1. 「 **My terms of use** 」と入力し、ドキュメントをコンピューターに **mytou.pdf** として保存します。
 1. [Azure portal](https://portal.azure.com) に全体管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. Azure Portal の左側のナビゲーション バーで、 **[Azure Active Directory]** をクリックします。
 
@@ -66,18 +66,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[管理]** セクションで、 **[使用条件]** をクリックします。
 
-   ![使用条件](./media/require-tou/04.png)
+   :::image type="content" source="./media/require-tou/04.png" alt-text="[Azure Active Directory] ページの [管理] セクションのスクリーンショット。[使用条件] 項目が強調表示されています。" border="false":::
 
 1. 上部のメニューで **[新しい条件]** をクリックします。
 
-   ![使用条件](./media/require-tou/05.png)
+   :::image type="content" source="./media/require-tou/05.png" alt-text="[Azure Active Directory] ページのメニューを示すスクリーンショット。[新しい条件] 項目が強調表示されています。" border="false":::
 
 1. **[新しい利用規約]** ページで、次の操作を行います。
 
-   ![使用条件](./media/require-tou/112.png)
+   :::image type="content" source="./media/require-tou/112.png" alt-text="[New terms of use]\(新しい使用条件\) ページのスクリーンショット。名前、表示名、ドキュメント、言語、条件付きアクセス、および条件を展開するかどうかの切り替えボタンが強調表示されています。" border="false":::
 
-   1. **[名前]** ボックスに「**My TOU**」と入力します。
-   1. **[表示名]** ボックスに、「**My TOU**」と入力します。
+   1. **[名前]** ボックスに「 **My TOU** 」と入力します。
+   1. **[表示名]** ボックスに、「 **My TOU** 」と入力します。
    1. 使用条件 PDF ファイルをアップロードします。
    1. **[言語]** で **[英語]** を選択します。
    1. **[ユーザーは使用条件を展開する必要があります]** で、 **[オン]** を選択します。
@@ -99,21 +99,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | クラウド アプリ | Microsoft Azure の管理 |
 | アクセス権の付与 | My TOU |
 
-![ポリシーの作成](./media/require-tou/1234.png)
+:::image type="content" source="./media/require-tou/1234.png" alt-text="ポリシーを定義する Azure portal ペインのスクリーンショット。矢印は、ポリシーによって My T O U へのアクセスが許可されることと、1 人のユーザーと 1 つのアプリが含まれることを示しています。" border="false":::
 
 **条件付きアクセス ポリシーを構成するには:**
 
-1. **[新規]** ページの **[名前]** ボックスに、「**Require TOU for Isabella**」と入力します。
+1. **[新規]** ページの **[名前]** ボックスに、「 **Require TOU for Isabella** 」と入力します。
 
    ![名前](./media/require-tou/71.png)
 
 1. **[割り当て]** セクションで **[ユーザーとグループ]** をクリックします。
 
-   ![ユーザーとグループ](./media/require-tou/06.png)
+   :::image type="content" source="./media/require-tou/06.png" alt-text="ポリシーを定義する Azure portal ペインの [割り当て] セクションのスクリーンショット。何も選択されていない状態の [ユーザーとグループ] 項目が表示されています。" border="false":::
 
 1. **[ユーザーとグループ]** ページで、次の手順に従います。
 
-   ![ユーザーとグループ](./media/require-tou/24.png)
+   :::image type="content" source="./media/require-tou/24.png" alt-text="[ユーザーとグループ] ページの [Include]\(含める\) タブのスクリーンショット。[ユーザーとグループの選択] および [ユーザーとグループ] が選択されています。[選択] が強調表示されています。" border="false":::
 
    1. **[ユーザーとグループの選択]** をクリックし、 **[ユーザーとグループ]** を選択します。
    1. **[選択]** をクリックします。
@@ -121,7 +121,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    1. **[ユーザーとグループ]** ページで、 **[完了]** をクリックします。
 1. **[クラウド アプリ]** をクリックします。
 
-   ![クラウド アプリ](./media/require-tou/08.png)
+   :::image type="content" source="./media/require-tou/08.png" alt-text="ポリシーを定義する Azure portal ペインの [割り当て] セクションのスクリーンショット。何も選択されていない状態の [クラウド アプリ] 項目が表示されています。" border="false":::
 
 1. **[クラウド アプリ]** ページで、次の手順に従います。
 
@@ -154,13 +154,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **What If** ポリシー評価ツールを初期化するには、次のように設定します。
 
-- ユーザーに「**Isabella Simonsen**」
-- クラウド アプリに「**Microsoft Azure の管理**」
+- ユーザーに「 **Isabella Simonsen** 」
+- クラウド アプリに「 **Microsoft Azure の管理** 」
 
 **[What If]** をクリックすると、シミュレート レポートが作成され、次のように表示されます。
 
-- **[適用するポリシー]** の下に "**Require TOU for Isabella**"
-- **[制御の許可]** として "**My TOU**"
+- **[適用するポリシー]** の下に " **Require TOU for Isabella** "
+- **[制御の許可]** として " **My TOU** "
 
 ![What If ポリシー ツール](./media/require-tou/79.png)
 
@@ -176,7 +176,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. クラウド アプリを選択するには:
 
-   ![クラウド アプリ](./media/require-tou/16.png)
+   :::image type="content" source="./media/require-tou/16.png" alt-text="[クラウド アプリ] セクションのスクリーンショット。テキストは、1 つのアプリが選択されていることを示しています。" border="false":::
 
    1. **[クラウド アプリ]** をクリックします。
    1. **[クラウド アプリ]** ページで、 **[アプリの選択]** をクリックします。
@@ -189,9 +189,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 前のセクションでは、シミュレートされたサインインを評価する方法を学びました。 期待どおりに動作することを確認するには、シミュレーションに加え、条件付きアクセス ポリシーもテストすることをお勧めします。
 
-ポリシーをテストするには、**Isabella Simonsen** テスト アカウントを使用して [Azure Portal](https://portal.azure.com) にサインインしてみます。 使用条件への同意を求めるダイアログが表示されるはずです。
+ポリシーをテストするには、 **Isabella Simonsen** テスト アカウントを使用して [Azure Portal](https://portal.azure.com) にサインインしてみます。 使用条件への同意を求めるダイアログが表示されるはずです。
 
-![使用条件](./media/require-tou/57.png)
+:::image type="content" source="./media/require-tou/57.png" alt-text="[Identity Security Protection terms of use]\(ID のセキュリティ保護の使用条件\) というタイトルのダイアログ ボックスのスクリーンショット。[拒否] および [Accept]\(承諾\) ボタンと [My T O U] とラベルされたボタンが表示されています。" border="false":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -200,11 +200,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - Azure AD ユーザーの削除方法がわからない場合は、「[Azure AD からユーザーを削除する](../fundamentals/add-users-azure-active-directory.md#delete-a-user)」を参照してください。
 - ポリシーを削除するには、ポリシーを選択し、クイック アクセス ツール バーの **[削除]** をクリックします。
 
-    ![多要素認証](./media/require-tou/33.png)
+    :::image type="content" source="./media/require-tou/33.png" alt-text="[Require M F A for Azure portal users]\(Azure portal のユーザーに M F A を要求\) という名前のポリシーを示すスクリーンショット。ショートカット メニューが表示され、[削除] が強調表示されています。" border="false":::
 
 - 使用条件を削除するには、使用条件を選択し、上部のツール バーの **[条件の削除]** をクリックします。
 
-    ![多要素認証](./media/require-tou/29.png)
+    :::image type="content" source="./media/require-tou/29.png" alt-text="使用条件ドキュメントの一覧表の一部を示すスクリーンショット。[My T O U] ドキュメントが表示されています。メニューでは、[条件の削除] が強調表示されています。" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

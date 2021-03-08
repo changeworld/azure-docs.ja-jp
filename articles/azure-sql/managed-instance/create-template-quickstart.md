@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager:Azure SQL マネージド インスタンスの作成
-description: Azure Resource Manager テンプレートを使用して Azure SQL マネージド インスタンスを作成する方法を説明します。
+title: Azure Resource Manager:Azure SQL Managed Instance の作成
+description: Azure Resource Manager テンプレートを使用して Azure SQL Managed Instance を作成する方法を説明します。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -9,18 +9,18 @@ ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 06/22/2020
-ms.openlocfilehash: d405cfda3c72ce9c724a7d96925d3346428a3089
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: badeb850e8d0346347a994f053fb0f64fd01240a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660616"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91283345"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure SQL Managed Instance を作成する
 
-このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイして Azure SQL Managed Instance と VNet を作成する過程を中心に取り上げます。 [Azure SQL マネージド インスタンス](sql-managed-instance-paas-overview.md)は、完全に管理されたインテリジェントでスケーラブルなクラウド データベースであり、SQL Server データベース エンジンとほぼ 100% の機能パリティを備えています。
+このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイして Azure SQL Managed Instance と VNet を作成する過程を中心に取り上げます。 [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) は、完全に管理されたインテリジェントでスケーラブルなクラウド データベースであり、SQL Server データベース エンジンとほぼ 100% の機能パリティを備えています。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 

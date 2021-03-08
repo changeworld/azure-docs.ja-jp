@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: da108e5f4832b1b72f252803ca0f4bc93c011c9a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 28b82c87442257124f286a5e7c949afe7f001019
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327635"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146929"
 ---
 # <a name="get-started-with-device-management-java"></a>デバイス管理の開始 (Java)
 
@@ -54,7 +54,7 @@ ms.locfileid: "87327635"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 

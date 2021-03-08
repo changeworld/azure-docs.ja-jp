@@ -1,22 +1,24 @@
 ---
 title: ポータルを使用してロールのリモート デスクトップを有効にする
-titleSuffix: Azure Cloud Services
 description: Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: memccror
-ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 8fa0d3c0e29c53e6fe9cb32ddf02168686be1efe
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696781"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743255"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) でロールのリモート デスクトップ接続を有効にする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -33,7 +35,7 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
 
 1. **[クラウド サービス]** をクリックし、クラウド サービスの名前を選択して、 **[リモート デスクトップ]** を選択します。
 
-    ![クラウド サービスのリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
+    ![クラウド サービスのリモート デスクトップを示す画像](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
 2. リモート デスクトップを有効にする対象を個々のロールとすべてのロールのどちらにするかを選択し、スイッチャーの値を **[Enabled (有効)]** に変更します。
 
@@ -56,7 +58,7 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
 2. リモート デスクトップが構成されたロール インスタンスを選択します。
 3. **[接続]** をクリックしてロール インスタンス用の RDP ファイルをダウンロードします。
 
-    ![クラウド サービスのリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
+    ![クラウド サービスのリモート デスクトップの画像](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
 4. **[開く]** 、 **[接続]** の順にクリックして、リモート デスクトップ接続を開始します。
 

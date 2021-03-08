@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: dc444c0179078713f9586c47c0138fe15f246a5f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530462"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674208"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>チュートリアル: Azure Active Directory と Central Desktop の統合
 
@@ -27,7 +27,7 @@ Central Desktop と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Central Desktop に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Azure AD への Central Desktop の統合を構成するには、ギャラリー
 
 4. 検索ボックスに「**Central Desktop**」と入力し、結果パネルで **Central Desktop** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧での Central Desktop](common/search-new-app.png)
+    ![結果一覧での Central Desktop](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -104,7 +104,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
     a. **[サインオン URL]** ボックスに、`https://<companyname>.centraldesktop.com` という形式で URL を入力します。
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
-    
+
     ```http
     https://<companyname>.centraldesktop.com/saml2-metadata.php
     https://<companyname>.imeetcentral.com/saml2-metadata.php
@@ -115,7 +115,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Central Desktop クライアント サポート チーム](https://imeetcentral.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -152,7 +152,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
 4. **[Message Signature Verification Method]\(メッセージ署名検証方法\)** セクションで、次の手順を実行します。
 
     ![[Message Signature Verification Method]\(メッセージ署名検証方法\)](./media/central-desktop-tutorial/ic769565.png "[Message Signature Verification Method]")
-    
+
     a. **[Certificate]** を選択します。
 
     b. **[SSO Certificate]\(SSO 証明書\)** ボックスの一覧で、 **[RSH SHA256]** を選びます。
@@ -180,7 +180,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -236,7 +236,7 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 4. **[Add Internal member(s)]\(内部メンバーの追加\)** を選びます。
 
     ![内部メンバーの追加](./media/central-desktop-tutorial/ic781053.png "内部メンバーの追加")
-  
+
    > [!NOTE]
    > 追加したユーザーが、アカウント アクティブ化のための確認リンクを含むメールを受け取ります。
 
@@ -244,12 +244,12 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Central Desktop] タイルをクリックすると、SSO を設定した Central Desktop に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Central Desktop] タイルをクリックすると、SSO を設定した Central Desktop に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

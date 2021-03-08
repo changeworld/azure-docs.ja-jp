@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864283"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000030"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process チームでのチーム リーダーのタスク
 
@@ -29,7 +29,7 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 
 ![チーム リーダーのタスクのワークフロー](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
-1. Azure DevOps でグループの組織に**チーム プロジェクト**を作成します。 
+1. Azure DevOps でグループの組織に **チーム プロジェクト** を作成します。 
   
 1. 既定のチーム リポジトリの名前を **TeamUtilities** に変更します。
   
@@ -37,11 +37,11 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
   
 1. グループの **GroupUtilities** および **GroupProjectTemplate** リポジトリの内容を、**TeamUtilities** および **TeamTemplate** リポジトリにインポートします。 
   
-1. チーム メンバーを追加し、アクセス許可を構成して、**セキュリティ制御**を設定します。
+1. チーム メンバーを追加し、アクセス許可を構成して、**セキュリティ制御** を設定します。
   
 1. 必要に応じて、チームのデータおよび分析リソースを作成します。
    - チーム固有のユーティリティを **TeamUtilities** リポジトリに追加します。 
-   - チーム全体にとって役立つデータ資産を格納するための **Azure ファイル ストレージ**を作成します。 
+   - チーム全体にとって役立つデータ資産を格納するための **Azure ファイル ストレージ** を作成します。 
    - Azure ファイル ストレージをチーム リーダーの **Data Science Virtual Machine** (DSVM) にマウントし、データ資産を追加します。
 
 以下のチュートリアルでは、その手順を詳しく説明します。
@@ -61,9 +61,9 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
-- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](/azure/machine-learning/data-science-virtual-machine/)を参照してください。
-- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー**を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
-- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](../data-science-virtual-machine/index.yml)を参照してください。
+- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー** を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
+- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成** に関するセクションをご覧ください。 
 
 ## <a name="create-a-team-project-and-repositories"></a>チーム プロジェクトとリポジトリの作成
 

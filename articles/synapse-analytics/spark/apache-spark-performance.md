@@ -1,6 +1,6 @@
 ---
 title: パフォーマンスのための Spark ジョブの最適化
-description: この記事では、Azure Synapse Analytics の Apache Spark の概要と、さまざまな概念について説明します。
+description: この記事では、Azure Synapse Analytics の Apache Spark の概要について説明します。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b94ece73d5f9dc9b8343e45fb1f616599b9a1c1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089262"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450936"
 ---
-# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark ジョブ (プレビュー) を最適化する
+# <a name="optimize-apache-spark-jobs-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark ジョブを最適化する
 
-[Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法を説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
+[Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法について説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
 
 次のセクションでは、一般的な Spark ジョブの最適化と推奨事項について説明します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87089262"
 
 Spark では、csv、json、xml、parquet、orc、avro など、多くの形式がサポートされています。 Spark は、外部データ ソースを使用して他の多くの形式をサポートするように拡張できます。詳細については、[Apache Spark パッケージ](https://spark-packages.org)を参照してください。
 
-パフォーマンスのために最適な形式は *Snappy で圧縮*した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。 また、"*snappy 圧縮*" では、gzip 圧縮よりもファイルが大きくなる場合があります。 これらのファイルは分割可能な性質を備えるため、より速く圧縮解除されます。
+パフォーマンスのために最適な形式は *Snappy で圧縮* した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。 また、"*snappy 圧縮*" では、gzip 圧縮よりもファイルが大きくなる場合があります。 これらのファイルは性質上、分割可能であるため、より速く圧縮解除されます。
 
 ## <a name="use-the-cache"></a>キャッシュの使用
 
@@ -103,7 +103,7 @@ Spark ジョブは分散されるため、パフォーマンスを最適にす�
 
 ## <a name="optimize-joins-and-shuffles"></a>最適化された結合とシャッフル
 
-結合またはシャッフルで低速のジョブがある場合、その原因は*データ スキュー* (ジョブ データの非対称) である可能性があります。 たとえば、マップ ジョブには 20 秒かかることがありますが、データが結合またはシャッフルされているジョブの実行には何時間もかかります。 データ スキューを修正するには、キー全体をソルティングするか、キーの一部のサブセットのみに*分離したソルト*を使用する必要があります。 分離したソルトを使用する場合は、マップの結合でソルティングしたキーのサブセットを分離するため、さらにフィルター処理する必要があります。 もう 1 つのオプションは、バケット列を導入し、最初にバケットで事前に集計することです。
+結合またはシャッフルで低速のジョブがある場合、その原因は *データ スキュー* (ジョブ データの非対称) である可能性があります。 たとえば、マップ ジョブには 20 秒かかることがありますが、データが結合またはシャッフルされているジョブの実行には何時間もかかります。 データ スキューを修正するには、キー全体をソルティングするか、キーの一部のサブセットのみに *分離したソルト* を使用する必要があります。 分離したソルトを使用する場合は、マップの結合でソルティングしたキーのサブセットを分離するため、さらにフィルター処理する必要があります。 もう 1 つのオプションは、バケット列を導入し、最初にバケットで事前に集計することです。
 
 結合が遅くなるもう 1 つの要因は、結合タイプである可能性があります。 既定では、Spark は `SortMerge` 結合タイプを使用します。 このタイプの結合は大きいデータ セットには最適ですが、それ以外の場合は、マージする前に最初にデータの左側と右側を並べ替える必要があるため、計算コストが高くなります。
 
@@ -178,6 +178,6 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Apache Spark のチューニング](https://spark.apache.org/docs/latest/tuning.html)
+- [Apache Spark のチューニング](https://spark.apache.org/docs/2.4.5/tuning.html)
 - [Apache Spark を適切に機能させるための実際のチューニング方法](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 - [Kryo シリアル化](https://github.com/EsotericSoftware/kryo)

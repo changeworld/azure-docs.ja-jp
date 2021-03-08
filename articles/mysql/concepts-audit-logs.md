@@ -1,17 +1,17 @@
 ---
 title: 監査ログ - Azure Database for MySQL
 description: Azure Database for MySQL で利用できる監査ログと、各種ログ レベルを有効にするため利用可能なパラメーターについて説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa845e7c402073a64f51d75b1da51f56142eee2e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362127"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630501"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL の監査ログ
 
@@ -43,7 +43,7 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 | `DCL` | "GRANT PERMISSION" のようなクエリ |
 | `ADMIN` | "SHOW STATUS" のようなクエリ |
 | `GENERAL` | DML_SELECT、DML_NONSELECT、DML、DDL、DCL、および ADMIN のすべて |
-| `TABLE_ACCESS` | - MySQL 5.7 でのみ利用可能 <br> テーブル読み取りステートメント。たとえば、SELECT、INSERT INTO ...SELECT <br> - テーブル削除ステートメント。たとえば、DELETE、TRUNCATE TABLE <br> - テーブル挿入ステートメント。たとえば、INSERT、REPLACE <br> - テーブル更新ステートメント。たとえば、UPDATE |
+| `TABLE_ACCESS` | - MySQL 5.7 と MySQL 8.0 で利用可能 <br> テーブル読み取りステートメント。たとえば、SELECT、INSERT INTO ...SELECT <br> - テーブル削除ステートメント。たとえば、DELETE、TRUNCATE TABLE <br> - テーブル挿入ステートメント。たとえば、INSERT、REPLACE <br> - テーブル更新ステートメント。たとえば、UPDATE |
 
 ## <a name="access-audit-logs"></a>監査ログにアクセスする
 

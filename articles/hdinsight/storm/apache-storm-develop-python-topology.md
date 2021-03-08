@@ -1,19 +1,16 @@
 ---
 title: Python コンポーネントを使用した Apache Storm - Azure HDInsight
 description: Azure HDInsight で、Python コンポーネントを使用する Apache Storm トポロジを作成する方法について説明する
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 1f062a8f358ac311b53e657fb5714583458bd9b5
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e28d21ed71cf5f485165c639a8bd519b3a2736e1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872584"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928990"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
 
@@ -30,7 +27,7 @@ Python コンポーネントを使用する [Apache Storm](https://storm.apache.
 
 * [Python 2.7 以上](https://www.python.org/downloads/)。
 
-* [Java Developer キット](https://aka.ms/azure-jdks) (JDK) バージョン 8
+* [Java Developer キット](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 

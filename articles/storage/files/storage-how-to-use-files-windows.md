@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071076"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626896"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -34,8 +34,8 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 | Windows 7<sup>3</sup> | SMB 2.1 | はい | いいえ |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | はい | いいえ |
 
-<sup>1</sup>Windows 10 バージョン 1507、1607、1709、1803、1809、1903、および 1909。  
-<sup>2</sup>Windows Server バージョン 1809、1903、および 1909。  
+<sup>1</sup>Windows 10、バージョン 1507、1607、1803、1809、1903、1909、および 2004。  
+<sup>2</sup>Windows Server、バージョン 1809、1903、1909、2004。  
 <sup>3</sup>Windows 7 および Windows Server 2008 R2 に対する Microsoft の通常のサポートは終了しました。 [拡張セキュリティ更新 (ESU) プログラム](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)を介してのみ、セキュリティ更新プログラムの追加サポートを購入できます。 これらのオペレーティング システムから移行することを強くお勧めします。
 
 > [!Note]  
@@ -46,7 +46,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 ポート 445 が開いていることを確認します。SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 ブロックされた 445 ポートを回避する方法については、「[原因 1:ポート 445 がブロックされている](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)」セクション (Windows トラブルシューティング ガイド) を参照してください。
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
-Windows で Azure ファイル共有を使用するには、Azure ファイル共有にドライブ文字 (マウント ポイントのパス) を割り当ててマウントするか、または対応する [UNC パス](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx)経由でアクセスする必要があります。 
+Windows で Azure ファイル共有を使用するには、Azure ファイル共有にドライブ文字 (マウント ポイントのパス) を割り当ててマウントするか、または対応する [UNC パス](/windows/win32/fileio/naming-a-file)経由でアクセスする必要があります。 
 
 この記事では、ストレージ アカウント キーを使用してファイル共有にアクセスします。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、[Azure File Sync](storage-sync-files-planning.md) または [SMB 経由の ID ベースの認証](storage-files-active-directory-overview.md)を使用できます。
 
@@ -196,11 +196,11 @@ SMB 1 を無効にするには、このレジストリ キーを作成した後�
 ### <a name="smb-resources"></a>SMB のリソース
 - [SMB 1 の使用を停止する](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
 - [SMB 1 製品一覧](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
-- [DSCEA で環境内の SMB 1 を検出する](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
-- [グループ ポリシーで SMB 1 を無効にする](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
+- [DSCEA で環境内の SMB 1 を検出する](/archive/blogs/ralphkyttle/discover-smb1-in-your-environment-with-dscea)
+- [グループ ポリシーで SMB 1 を無効にする](/archive/blogs/secguide/disabling-smbv1-through-group-policy)
 
 ## <a name="next-steps"></a>次のステップ
 Azure Files の詳細については、次のリンクをご覧ください。
 - [Azure Files のデプロイの計画](storage-files-planning.md)
-- [FAQ](../storage-files-faq.md)
-- [Windows 上でのトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)      
+- [FAQ](./storage-files-faq.md)
+- [Windows 上でのトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)

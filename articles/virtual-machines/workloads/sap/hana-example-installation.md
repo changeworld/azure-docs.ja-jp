@@ -6,19 +6,19 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59ea41254c16f32f19a67e7811177a4667a85e7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617206"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666708"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (Large Instances) に HANA をインストールする
 
@@ -75,11 +75,11 @@ rpm –qa | grep gtk2
 ```
 ./hdblcmgui 
 ```
-ここから一連の画面に従って進み、インストールのデータを指定します。 この例では、SAP HANA データベース サーバーと SAP HANA クライアント コンポーネントをインストールします。 したがって、 **[SAP HANA Database]\(SAP HANA データベース\)** を選択します。
+ここから一連の画面に従って進み、インストールのデータを指定します。 この例では、SAP HANA データベース サーバーと SAP HANA クライアント コンポーネントをインストールします。 したがって、**[SAP HANA Database]\(SAP HANA データベース\)** を選択します。
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([SAP HANA Database]\(SAP HANA データベース\) を選択)](./media/hana-installation/image18_hana_selection.PNG)
 
-次の画面で、 **[Install New System]\(新しいシステムのインストール\)** を選択します。
+次の画面で、**[Install New System]\(新しいシステムのインストール\)** を選択します。
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([Install New System]\(新しいシステムのインストール\) を選択)](./media/hana-installation/image19_select_new.PNG)
 
@@ -87,7 +87,7 @@ rpm –qa | grep gtk2
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット (追加コンポーネントの一覧)](./media/hana-installation/image20_select_components.PNG)
 
-ここでは、SAP HANA Client と SAP HANA Studio を選択します。 また、スケールアップ インスタンスもインストールします。 次に、 **[Single-Host System]\(シングルホスト システム\)** を選択します。 
+ここでは、SAP HANA Client と SAP HANA Studio を選択します。 また、スケールアップ インスタンスもインストールします。 次に、**[Single-Host System]\(シングルホスト システム\)** を選択します。 
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([Single-Host System]\(シングルホスト システム\) を選択)](./media/hana-installation/image21_single_host.PNG)
 
@@ -115,7 +115,7 @@ rpm –qa | grep gtk2
 ![SAP HANA ライフサイクル管理画面のスクリーンショット (定義するシステム管理者フィールド)](./media/hana-installation/image25_provide_guid.PNG)
 
 > [!Important]
-> ユニットのデプロイを注文するときに Microsoft に提供したものと同じ**システム管理者ユーザー ID** と**ユーザー グループの ID** を入力する必要があります。 それ以外の場合、HANA L インスタンス ユニットへの SAP HANA のインストールは失敗します。
+> ユニットのデプロイを注文するときに Microsoft に提供したものと同じ **システム管理者ユーザー ID** と **ユーザー グループの ID** を入力する必要があります。 それ以外の場合、HANA L インスタンス ユニットへの SAP HANA のインストールは失敗します。
 
 この後に続く 2 つの画面は、ここでは示しません。 それらでは、SAP HANA データベースの SYSTEM ユーザーのパスワードと、sapadm ユーザーのパスワードを入力することができます。 後者は、SAP HANA データベース インスタンスの一部としてインストールされる SAP Host Agent で使用されます。
 

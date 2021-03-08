@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dcf80ffa26ecaeb0f4481b3997146c07bd89be10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68617d86fda940c5d3752f2389088a8c729aebec
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85397945"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108350"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して TypingDNA を構成するためのチュートリアル
 
 このチュートリアルでは、Azure Active Directory B2C のサンプル オンライン決済アプリを TypingDNA アプリと統合する方法について説明します。 Azure AD B2C をお使いのお客様は、TypingDNA アプリを使用すると、キーストローク ダイナミクスと強力な顧客認証を介して、[決済サービス指令 2](https://www.typingdna.com/use-cases/sca-strong-customer-authentication) (PSD2) のトランザクション要件に準拠することができます。 TypingDNA の詳細については[こちら](https://www.typingdna.com/)を参照してください。
 
- Azure AD B2C では、TypingDNA のテクノロジを使用して、ユーザーの入力の特性をキャプチャし、各認証について熟知するために記録および分析しています。 これにより、認証のリスクに関連する保護レイヤーが追加され、リスク レベルが評価されます。 Azure AD B2C から他のメカニズムを呼び出すと、Azure MFA の呼び出し、メール検証の強制、またはシナリオに適したその他のカスタム ロジックによって、ユーザーの本人確認の信頼性を高めることができます。
+ Azure AD B2C では、TypingDNA のテクノロジを使用して、ユーザーの入力の特性をキャプチャし、各認証について熟知するために記録および分析しています。 これにより、認証のリスクに関連する保護レイヤーが追加され、リスク レベルが評価されます。 Azure AD B2C から他のメカニズムを呼び出すと、Azure AD MFA の呼び出し、メール検証の強制、またはシナリオに適したその他のカスタム ロジックによって、ユーザーの本人確認の信頼性を高めることができます。
 
 >[!NOTE]
 > このサンプル ポリシーは [SocialAndLocalAccountsWithMfa](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa) スターター パックに基づいています。
@@ -36,9 +36,9 @@ ms.locfileid: "85397945"
 
 2. ユーザーがページを送信すると、TypingDNA ライブラリによってユーザーの入力の特性が計算されます。 その後、Azure AD B2C によってレンダリングされた非表示のテキスト フィールドに情報が挿入されます。 このフィールドは CSS を使用して非表示にされています。  
 
-    このサンプルには、JavaScript と CSS の変更を含む HTML ファイルが含まれており、`api.selfasserted.tdnasignin` および `api.selfasserted.tdnasignup` コンテンツ定義から参照されます。 HTML ファイルをホストするには、「[ページ コンテンツのホスト](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content)」を参照してください。
+    このサンプルには、JavaScript と CSS の変更を含む [HTML ファイルが含まれており](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml)、`api.selfasserted.tdnasignin` および `api.selfasserted.tdnasignup` のコンテンツ定義から参照されます。 HTML ファイルをホストするには、「[ページ コンテンツのホスト](./customize-ui-with-html.md#hosting-the-page-content)」を参照してください。
 
-3. Azure AD B2C では、ユーザーが資格情報を送信したときに、要求バッグ内に入力パターンが含まれるようになりました。 このデータを TypingDNA REST API エンドポイントに渡すには、(ご自分の) API を呼び出す必要があります。 この API はサンプルに含まれています (typingDNA-API-Interface)。
+3. Azure AD B2C では、ユーザーが資格情報を送信したときに、要求バッグ内に入力パターンが含まれるようになりました。 このデータを TypingDNA REST API エンドポイントに渡すには、(ご自分の) API を呼び出す必要があります。 この API は[サンプル (typingDNA-API-Interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) に含まれています。
 4. 次に、中間層 API から入力パターン データが TypingDNA REST API に渡されます。 サインアップ時に、[check user endpoint](https://api.typingdna.com/index.html#api-API_Services-GetUser) が呼び出されてユーザーが存在しないことが確認され、次に [save pattern](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) エンドポイントが呼び出されてユーザーの最初の入力パターンが保存されます。
 
 > [!NOTE]
@@ -61,7 +61,7 @@ REST API の呼び出しは `LocalAccountSignUpWithLogonEmail-TDNA` 内の `vali
 
 ### <a name="sign-in"></a>サインイン
 
-その後のサインインでは、ユーザーの入力パターンは、カスタムの HTML を使用したサインアップ時と同じ方法で計算されます。 入力プロファイルが Azure AD B2C 要求バッグ内に入ると、Azure AD B2C から、TypingDNA の REST API エンドポイントを呼び出す API が呼び出されます。 [check user](https://api.typingdna.com/index.html#api-API_Services-GetUser) エンドポイントが呼び出され、ユーザーが存在することが確認されます。 次に、[verify pattern](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) エンドポイントが呼び出され、`net_score` が返されます。 この `net_score` は、サインアップ時に入力パターンが元とどれだけ近いかを示しています。
+その後のサインインでは、ユーザーの入力パターンは、[カスタムの HTML](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignIn.cshtml) を使用したサインアップ時と同じ方法で計算されます。 入力プロファイルが Azure AD B2C 要求バッグ内に入ると、Azure AD B2C から、TypingDNA の REST API エンドポイントを呼び出す API が呼び出されます。 [check user](https://api.typingdna.com/index.html#api-API_Services-GetUser) エンドポイントが呼び出され、ユーザーが存在することが確認されます。 次に、[verify pattern](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) エンドポイントが呼び出され、`net_score` が返されます。 この `net_score` は、サインアップ時に入力パターンが元とどれだけ近いかを示しています。
 
 この入力パターンは、`SelfAsserted-LocalAccountSignin-Email-TDNA` 内の `validationTechnicalProfiles` でモデル化されています。
 
@@ -113,7 +113,7 @@ TypingDNA の save typing pattern エンドポイントを Azure AD B2C から (
 
 - API によって `net_score` が評価された後は、ブール要求が B2C (`promptMFA`) に返されます。
 
-- `promptMFA` 要求は、Azure MFA を条件付きで実行するために前提条件内で使用されます。
+- `promptMFA` 要求は、Azure AD MFA を条件付きで実行するために前提条件内で使用されます。
 
 ```xml
 
@@ -154,23 +154,23 @@ TypingDNA の save typing pattern エンドポイントを Azure AD B2C から (
 ## <a name="onboard-with-typingdna"></a>TypingDNA によるオンボード
 
 1. [ここ](https://www.typingdna.com/)で TypingDNA にサインアップします
-2. TypingDNA ダッシュボードにログインし、**API キー**と **API シークレット**を取得します。 これは、後で API インターフェイスの設定で必要になります
+2. TypingDNA ダッシュボードにログインし、**API キー** と **API シークレット** を取得します。 これは、後で API インターフェイスの設定で必要になります
 
 ## <a name="integrate-typingdna-with-azure-ad-b2c"></a>TypingDNA を Azure AD B2C と統合する
 
-1. 選択したホスティング プロバイダーで TypingDNA-API-Interface をホストする
-2. TypingDNA-API-Interface ソリューションの `apiKey` および `apiSecret` のすべてのインスタンスを TypingDNA ダッシュボードの資格情報に置き換えます
-3. [ここ](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors)の CORS の要件に従って、選択したプロバイダーで HTML ファイルをホストします
+1. 選択したホスティング プロバイダーで [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) をホストする
+2. [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) ソリューションの `apiKey` および `apiSecret` のすべてのインスタンスを TypingDNA ダッシュボードの資格情報に置き換えます
+3. [ここ](./customize-ui-with-html.md#3-configure-cors)の CORS の要件に従って、選択したプロバイダーで HTML ファイルをホストします
 4. `TrustFrameworkExtensions.xml` ファイルの `api.selfasserted.tdnasignup` および `api.selfasserted.tdnasignin` コンテンツ定義の LoadURI 要素を、ホストされている HTML ファイルの URI にそれぞれ置き換えます。
 5. **Azure portal** の Azure AD ブレードの ID エクスペリエンス フレームワークの下に B2C ポリシー キーを作成します。 `Generate` オプションを使用して、このキーに `tdnaHashedId` という名前を付けます。
 6. ポリシー ファイルの TenantId を置き換えます
-7. すべての TypingDNA REST API 技術プロファイル (REST-TDNA-VerifyUser、REST-TDNA-SaveUser、REST-TDNA-CheckUser) の ServiceURL を TypingDNA-API-Interface API のエンドポイントに置き換えます。
-8. ポリシー ファイルをテナントにアップロードします。
+7. すべての TypingDNA REST API 技術プロファイル (REST-TDNA-VerifyUser、REST-TDNA-SaveUser、REST-TDNA-CheckUser) の ServiceURL を [TypingDNA-API-Interface API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) のエンドポイントに置き換えます。
+8. [ポリシー ファイル](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/policy)をテナントにアップロードします。
 
 ## <a name="test-the-user-flow"></a>ユーザー フローをテストする
 
 1. B2C テナントを開き、ID エクスペリエンス フレームワークを選択します。
-2. 以前に作成した**ユーザー フロー**を選択します。
+2. 以前に作成した **ユーザー フロー** を選択します。
 3. **[ユーザー フローを実行します]** を選択します。
 
     a. **[アプリケーション]** : 登録済みのアプリを選択します (サンプルは JWT)
@@ -194,6 +194,6 @@ TypingDNA の save typing pattern エンドポイントを Azure AD B2C から (
 
 追加情報については、次の記事を参照してください。
 
-- [AAD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [AAD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [AAD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [AAD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

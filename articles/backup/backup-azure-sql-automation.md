@@ -4,12 +4,12 @@ description: Azure Backup と PowerShell を使用して Azure VM 内の SQL Dat
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 1fe3af3b2a12cf6fdfc0e71d36d36046858c50af
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 0a3467ffa3a67ac9ad593748948cea8da59e3e6b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892424"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734540"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM で SQL データベースをバックアップおよび復元する
 
@@ -102,7 +102,7 @@ Recovery Services コンテナーは Resource Manager のリソースである�
 
 3. コンテナー ストレージに使用する冗長性の種類を指定します。
 
-    * [ローカル冗長ストレージ](../storage/common/storage-redundancy.md)または [geo 冗長ストレージ](../storage/common/storage-redundancy.md)を使用できます。
+    * [ローカル冗長ストレージ](../storage/common/storage-redundancy.md#locally-redundant-storage)、[geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)、または[ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage)を使用することができます。
     * 次の例では、**testvault** に対する [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) コマンドの **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
 
     ```powershell
@@ -237,7 +237,7 @@ master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM 
 
 ### <a name="fetching-new-sql-dbs"></a>新しい SQL DB をフェッチする
 
-マシンを登録すると、バックアップ サービスはその時点で入手できる DB の詳細をフェッチします。 SQL DB または SQL インスタンスを登録済みマシンに後から追加した場合は、バックアップ サービスを手動でトリガーして新たな照会を実行し、保護されていない**すべての** DB (新たに追加されたものを含む) を再度取得する必要があります。 [Initialize-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) PowerShell コマンドレットを SQL VM 上で使用して、新しい照会を実行します。 このコマンドが操作が完了するまで待機します。 その後、[Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PowerShell コマンドレットを使用して、保護されていない SQL コンポーネントの最新リストを取得します。
+マシンを登録すると、バックアップ サービスはその時点で入手できる DB の詳細をフェッチします。 SQL DB または SQL インスタンスを登録済みマシンに後から追加した場合は、バックアップ サービスを手動でトリガーして新たな照会を実行し、保護されていない **すべての** DB (新たに追加されたものを含む) を再度取得する必要があります。 [Initialize-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) PowerShell コマンドレットを SQL VM 上で使用して、新しい照会を実行します。 このコマンドが操作が完了するまで待機します。 その後、[Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PowerShell コマンドレットを使用して、保護されていない SQL コンポーネントの最新リストを取得します。
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -268,7 +268,7 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 * トランザクション ログ バックアップを使用して、特定の日付または時刻 (秒) に復元します。 Azure Backup は、選択された時刻に基づいて復元するために必要な、適切な完全または差分バックアップおよび一連のログ バックアップを自動的に判定します。
 * 特定の復旧ポイントに復元するには、特定の完全または差分バックアップを復元します。
 
-SQL DB を復元する前に、[ここ](restore-sql-database-azure-vm.md#prerequisites)に示されている前提条件を確認してください。
+SQL DB を復元する前に、[ここ](restore-sql-database-azure-vm.md#restore-prerequisites)に示されている前提条件を確認してください。
 
 最初に、[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PowerShell コマンドレットを使用して、該当するバックアップ済みの SQL DB をフェッチします。
 
@@ -278,7 +278,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 
 ### <a name="fetch-the-relevant-restore-time"></a>関連する復元時間をフェッチする
 
-前述したように、バックアップ対象の SQL DB を完全または差分コピーに復元するか、**または**ログの特定の時点に復元できます。
+前述したように、バックアップ対象の SQL DB を完全または差分コピーに復元するか、**または** ログの特定の時点に復元できます。
 
 #### <a name="fetch-distinct-recovery-points"></a>個別の復旧ポイントをフェッチする
 
@@ -310,7 +310,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 特定の時点に DB を復元したい場合は、[Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) PowerShell コマンドレットを使用します。 このコマンドレットでは、SQL バックアップ項目の途切れずに続いているログ チェーンの開始時刻と終了時刻を表す日付の一覧が返されます。 必要な時点はこの範囲内にあります。
 
 ```powershell
-Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -VaultId $targetVault.ID
 ```
 
 出力は次の例のようになります。

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907357"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365465"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -28,7 +28,7 @@ ms.locfileid: "87907357"
 - 状態 1:Azure AD の外部インスタンスに所属し、招待側組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーは招待されたテナントに属している Azure AD アカウントを使用してサインインします。 パートナー組織が Azure AD を使用しない場合でも、Azure AD にゲスト ユーザーが作成されます。 要件は、ゲスト ユーザーが招待に応じること、および Azure AD が彼らの電子メール アドレスを検証することです。 この状態は、Just-In-Time (JIT) テナント、または "バイラル テナント" とも呼ばれます。
 
    > [!IMPORTANT]
-   > **2021 年 3 月 31 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   > **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 - 状態 2:Microsoft アカウントまたは他のアカウントに所属し、ホスト組織のゲスト ユーザーとして表されます。 この場合、ゲスト ユーザーは Microsoft アカウントまたはソーシャル アカウント (google.com など) でサインインします。 招待されたユーザーの ID は、招待に応じる際に招待側組織のディレクトリ内に Microsoft アカウントとして作成されます。
 
@@ -71,6 +71,8 @@ ms.locfileid: "87907357"
   > [!NOTE]
   > UserType は、ユーザーのサインイン方法、ユーザーのディレクトリ ロールなどとは関係ありません。 このプロパティは、単にユーザーとホスト組織との関係を示しており、組織はこのプロパティに基づくポリシーを強制できます。
 
+価格に関する詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory)」を参照してください。
+
 ### <a name="source"></a>source
 このプロパティは、ユーザーのサインイン方法を示します。
 
@@ -104,11 +106,11 @@ PowerShell を使用して、UserType をメンバーからゲストに、また
 ![ユーザー設定の [外部ユーザー] オプションを示すスクリーンショット](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
-はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?** 」を参照してください。
+はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、[Microsoft 365 グループでのゲスト アクセスの管理](/office365/admin/create-groups/manage-guest-access-in-groups)に関するページの「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?** 」を参照してください。
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>ゲスト ユーザーのメール アドレスを更新できますか。
 
-ゲスト ユーザーが招待を承諾し、その後メール アドレスを変更した場合、新しいメールはディレクトリ内のゲスト ユーザー オブジェクトに自動的に同期されません。 メールのプロパティは、[Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) を介して作成されます。 メールのプロパティは、Exchange 管理センターまたは [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps) を介して更新できます。そしてこの変更が、Azure AD のゲスト ユーザー オブジェクトに反映されます。
+ゲスト ユーザーが招待を承諾し、その後メール アドレスを変更した場合、新しいメールはディレクトリ内のゲスト ユーザー オブジェクトに自動的に同期されません。 メールのプロパティは、[Microsoft Graph API](/graph/api/resources/user) を介して作成されます。 メールのプロパティは、Microsoft Graph API、Exchange 管理センター、または [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser) 経由で更新できます。 この変更は、Azure AD ゲスト ユーザー オブジェクトに反映されます。
 
 ## <a name="next-steps"></a>次のステップ
 

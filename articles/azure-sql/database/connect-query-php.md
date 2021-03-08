@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
-ms.custom: sqldbrb=2 
-ms.openlocfilehash: e8b9f12c57b2e4bf943e5fc9a9ebc2bbadef9ee9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: sqldbrb=2
+ms.openlocfilehash: e0ad8e9e71a0ee2c23412d535fe79955edb39ba8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504974"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576652"
 ---
 # <a name="quickstart-use-php-to-query-a-database-in-azure-sql-database"></a>クイック スタート:PHP を使用して Azure SQL Database 内のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ ms.locfileid: "86504974"
 
   - **Linux**: PHP と ODBC ドライバーをインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1、2、および 3](/sql/connect/php/installation-tutorial-linux-mac) を参照してください。
 
-  - **Windows**: IIS Express と Chocolatey 用の PHP をインストールした後、ODBC ドライバーと SQLCMD をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/php/windows/) を参照してください。
+  - **Windows**: PHP と PHP ドライバーをインストールした後、ODBC ドライバーと SQLCMD をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/php/windows/) を参照してください。
 
 ## <a name="get-server-connection-information"></a>サーバーの接続情報を取得する
 

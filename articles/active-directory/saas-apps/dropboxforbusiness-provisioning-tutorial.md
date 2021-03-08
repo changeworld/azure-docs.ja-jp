@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: e3dd0a31e23418c5871ac3db80b2ba1543576fac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555765"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938751"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>チュートリアル:Dropbox for Business を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、ユーザーまたはグループを Dropbox for Business に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure AD を構成するために、Dropbox for Business と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
 > [!IMPORTANT]
-> Microsoft と Dropbox は、2021 年 4 月 1 日付けで古くなった Dropbox 統合を廃止します。 サービスの中断を回避するには、グループをサポートする新しい Dropbox 統合に移行することをお勧めします。 新しい Dropbox 統合に移行するには、次の手順を使用して、Azure AD テナントでのプロビジョニング用に Dropbox の新しいインスタンスを追加して構成します。 新しい Dropbox 統合を構成したら、以前の Dropbox 統合でのプロビジョニングを無効にして、プロビジョニングの競合を回避します。
+> Microsoft と Dropbox は、2021 年 4 月 1 日付けで古くなった Dropbox 統合を廃止します。 サービスの中断を回避するには、グループをサポートする新しい Dropbox 統合に移行することをお勧めします。 新しい Dropbox 統合に移行するには、次の手順を使用して、Azure AD テナントでのプロビジョニング用に Dropbox の新しいインスタンスを追加して構成します。 新しい Dropbox 統合を構成したら、以前の Dropbox 統合でのプロビジョニングを無効にして、プロビジョニングの競合を回避します。 新しい Dropbox 統合への移行に関するより詳細な手順については、「[Azure AD を使用するビジネス向け Dropbox アプリケーション最新バージョンの更新内容について](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector)」を参照してください。
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
@@ -91,11 +91,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションにある **[承認する]** をクリックします。 新しいブラウザー ウィンドウで、Dropbox for Business のログイン ダイアログが開きます。
 

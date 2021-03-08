@@ -9,22 +9,22 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: b949603b3e6ee51311f9c54f3e1326217f00c82d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe57a9e8ce9b14f7d1346d819965576770afef3b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039117"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324887"
 ---
 # <a name="score-image-model"></a>画像モデルのスコア付け
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 入力画像データに対してトレーニングされた画像モデルを使用して予測を生成するには、このモジュールを使用します。
 
 ## <a name="how-to-configure-score-image-model"></a>画像モデルのスコア付けを構成する方法
 
-1. **画像モデルのスコア付け**モジュールをパイプラインに追加します。
+1. **画像モデルのスコア付け** モジュールをパイプラインに追加します。
 
 2. トレーニングされた画像モデルと入力画像データを含むデータセットをアタッチします。 
 
@@ -38,8 +38,8 @@ ms.locfileid: "87039117"
 
 ### <a name="publish-scores-as-a-web-service"></a>Web サービスとしてスコアを公開する
 
-スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning デザイナーでのパイプラインに基づいたリアルタイム エンドポイントのデプロイ方法に関する[このチュートリアル](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)を参照してください。
+スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning デザイナーでのパイプラインに基づいたリアルタイム エンドポイントのデプロイ方法に関する[このチュートリアル](../tutorial-designer-automobile-price-deploy.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

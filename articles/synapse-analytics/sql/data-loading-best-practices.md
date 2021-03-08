@@ -1,6 +1,6 @@
 ---
 title: データの読み込みのベスト プラクティス
-description: Synapse SQL へのデータの読み込みに関する推奨事項とパフォーマンスの最適化
+description: 専用 SQL プール Azure Synapse Analytics にデータを読み込むための、推奨事項とパフォーマンスの最適化について説明します。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3c8c34cc3e23306f1d024cfa36b40c7975caa8c6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486818"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674283"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>データ ウェアハウスのデータ読み込みのベスト プラクティス
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>専用 SQL プール Azure Synapse Analytics にデータを読み込むためのベスト プラクティス
 
-データの読み込みに関する推奨事項とパフォーマンスの最適化
+この記事では、データの読み込みに関する推奨事項とパフォーマンスの最適化について説明します。
 
 ## <a name="prepare-data-in-azure-storage"></a>Azure Storage でデータを準備する
 
-待ち時間を最小限に抑えるには、ストレージ層とデータ ウェアハウスを併置します。
+待機時間を最小限に抑えるには、ストレージ層と専用 SQL プールを併置します。
 
 ORC ファイル形式でデータをエクスポートすると、大きなテキスト列がある場合に、Java のメモリ不足エラーが発生することがあります。 この制限を回避するには、列のサブセットのみをエクスポートします。
 
@@ -36,13 +36,13 @@ PolyBase には、1,000,000 バイトを超えるデータを含む行を読み�
 
 ## <a name="run-loads-with-enough-compute"></a>十分なコンピューティング リソースで読み込みを実行する
 
-読み込み速度を最速にするには、一度に 1 つの読み込みジョブのみを実行します。 それが実行できない場合は、同時に実行する読み込み数を最小限に抑えます。 大規模な読み込みジョブが予想される場合は、読み込み前に SQL プールをスケール アップすることを検討してください。
+読み込み速度を最速にするには、一度に 1 つの読み込みジョブのみを実行します。 それが実行できない場合は、同時に実行する読み込み数を最小限に抑えます。 大規模な読み込みジョブが予想される場合は、読み込み前に専用 SQL プールをスケール アップすることを検討してください。
 
 適切なコンピューティング リソースで読み込みを実行するには、読み込みを実行するように指定された読み込みユーザーを作成します。 特定のリソース クラスまたはワークロード グループに各読み込みユーザーを割り当てます。 読み込みを実行するには、いずれかの読み込みユーザーとしてサインインし、読み込みを実行します。 読み込みは、ユーザーのリソース クラスで実行されます。  この方法は、現在のリソース クラスのニーズに合わせてユーザーのリソース クラスを変更しようとするより簡単です。
 
 ### <a name="create-a-loading-user"></a>読み込みユーザーを作成する
 
-この例では、staticrc20 リソース クラスの読み込みユーザーを作成します。 まず、**マスターに接続**し、ログインを作成します。
+この例では、staticrc20 リソース クラスの読み込みユーザーを作成します。 まず、**マスターに接続** し、ログインを作成します。
 
 ```sql
    -- Connect to master
@@ -64,7 +64,7 @@ staticRC20 リソース クラスのリソースで読み込みを実行する�
 
 ## <a name="allow-multiple-users-to-load"></a>複数のユーザーが読み込みを実行できるようにする
 
-多くの場合、複数のユーザーがデータ ウェアハウスにデータを読み込むことができるようにするニーズがあります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。 読み込みを実行するすべてのユーザーに、すべてのスキーマに対する制御アクセス権を付与したくない場合があります。 アクセス許可を制限するには、DENY CONTROL ステートメントを使用します。
+多くの場合、複数のユーザーがデータ ウェアハウスにデータを読み込むことができるようにするニーズがあります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。 読み込みを実行するすべてのユーザーに、すべてのスキーマに対する制御アクセス権を付与したくない場合があります。 アクセス許可を制限するには、DENY CONTROL ステートメントを使用します。
 
 たとえば、部門 A に schema_A、部門 B に schema_B というデータベース スキーマがあるとします。データベース ユーザーの user_A と user_B を、部門 A と B のそれぞれで読み込みを行う PolyBase のユーザーにします。 両方のユーザーには CONTROL データベースのアクセス許可が付与されています。 スキーマ A と B の作成者はここで、次のように DENY を使用してスキーマをロックダウンします。
 
@@ -83,7 +83,7 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="load-to-a-columnstore-index"></a>列ストア インデックスへの読み込み
 
-列ストア インデックスは、高品質の行グループにデータを圧縮するために多くのメモリを必要とします。 最適な圧縮とインデックスの効率を得るには、列ストア インデックスで各行グループに最大 1,048,576 行を圧縮する必要があります。 メモリが不足気味である場合、列ストア インデックスは最大圧縮率を達成できないことがあります。 これが、クエリのパフォーマンスに影響します。 詳細については、[列ストア メモリの最適化](data-load-columnstore-compression.md)に関するページを参照してください。
+列ストア インデックスは、高品質の行グループにデータを圧縮するために多くのメモリを必要とします。 最適な圧縮とインデックスの効率を得るには、列ストア インデックスで各行グループに最大 1,048,576 行を圧縮する必要があります。 メモリが不足気味である場合、列ストア インデックスは最大圧縮率を達成できないことがあります。 これは、クエリのパフォーマンスに影響します。 詳細については、[列ストア メモリの最適化](data-load-columnstore-compression.md)に関するページを参照してください。
 
 - 最大圧縮率を達成するための十分なメモリを読み込みユーザーが確実に持つようにするには、中規模または大規模なリソース クラスのメンバーである読み込みユーザーを使用します。
 - 新しい行グループを完全に埋められるように、十分な行を読み込みます。 一括読み込みでは、1,048,576 行ごとに、1 つの完全な行グループとして列ストアに直接圧縮されます。 102,400 行未満の読み込みの場合、行はデルタストアに送信され、行は b ツリー インデックスに保持されます。 読み込みの行が少なすぎる場合は、すべての行がデルタストアに移動され、すぐには列ストア形式に圧縮されません。
@@ -100,13 +100,13 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="insert-data-into-a-production-table"></a>運用テーブルへのデータの挿入
 
-[INSERT ステートメント](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)で小さなテーブルに 1 回だけ読み込む場合や、検索を定期的に再読み込みする場合は、`INSERT INTO MyLookup VALUES (1, 'Type 1')` などのステートメントで十分です。  ただし、単一挿入は、一括読み込みを実行するほど効率的ではありません。
+[INSERT ステートメント](/sql/t-sql/statements/insert-transact-sql?view=azure-sqldw-latest&preserve-view=true)で小さなテーブルに 1 回だけ読み込む場合や、検索を定期的に再読み込みする場合は、`INSERT INTO MyLookup VALUES (1, 'Type 1')` などのステートメントで十分です。  ただし、単一挿入は、一括読み込みを実行するほど効率的ではありません。
 
 一日に何千もの単一の挿入がある場合は、一括読み込みができるように、挿入をバッチ化します。  単一の挿入をファイルに追加する処理を開発し、定期的にファイルを読み込む別の処理を作成します。
 
 ## <a name="create-statistics-after-the-load"></a>読み込み後に統計を作成する
 
-クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。  手動で行うことも、[統計の自動作成](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)の有効化を通じて行うこともできます。
+クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の作成は手動で行うか、[auto-create statistics](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を有効にして行うことができます。
 
 統計の詳細については、 [統計](develop-tables-statistics.md)に関する記事を参照してください。 次の例では、Customer_Speed テーブルの 5 つの列に関する統計を手動で作成する方法を示しています。
 
@@ -124,7 +124,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 Azure Storage のアカウント キーを切り替えるには:
 
-キーが変更されているストレージ アカウントごとに、[ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を発行します。
+キーが変更されているストレージ アカウントごとに、[ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) を発行します。
 
 例:
 
@@ -144,6 +144,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>次のステップ
 
-- PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[SQL Data Warehouse の ELT の設計](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
-- 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+- PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[Azure Synapse Analytics の ELT の設計](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。
+- 読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage から Azure Synapse Analytics へのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関するページをご覧ください。
 - データの読み込みの監視については、「[DMV を利用してワークロードを監視する](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。

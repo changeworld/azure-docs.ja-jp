@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247525"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91357133"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -39,7 +39,7 @@ Service Fabric は、標準で、包括的なイベントのセットを提供�
 
 * EventStore - EventStore は Service Fabric Explorer および REST API で使用可能な Service Fabric プラットフォーム イベントを提供するプラットフォームによって提供される機能です。 ノード、サービス、アプリケーション、クエリなどの各エンティティに対してクラスター内で行われていることの時刻に基づくスナップショット ビューを表示できます。 また、EventStore について詳しくは、「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」をご覧ください。    
 
-![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
+![[ノード] ペインの [イベント] タブに NodeDown イベントなどのいくつかのイベントが表示さているスクリーンショット。](media/service-fabric-diagnostics-overview/eventstore.png)
 
 提供される診断は、既定のイベントの包括的なセットの形式になっています。 これらの [Service Fabric イベント](service-fabric-diagnostics-events.md)では、ノード、アプリケーション、サービス、パーティションなどのさまざまなエンティティ上で、プラットフォームによって実行されたアクションが示されています。上記の最後のシナリオでは、ノードがダウンした場合、プラットフォームは `NodeDown` イベントを生成し、ユーザーは自分が選択した監視ツールによってすぐに通知されます。 他の一般的な例としては、フェールオーバーの間の `ApplicationUpgradeRollbackStarted` や `PartitionReconfigured` などがあります。 **同じイベントを、Windows と Linux 両方のクラスターで利用できます。**
 

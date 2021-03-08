@@ -7,30 +7,30 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab, bonova, jovanpop
+ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708643"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788368"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-このクイック スタートでは、オンプレミスのクライアント コンピューターからポイント対サイト接続を行い、[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) を使用して Azure SQL Managed Instance に接続する方法を示します。 ポイント対サイト接続の詳細については、「[ポイント対サイト VPN について](../../vpn-gateway/point-to-site-about.md)」を参照してください。
+このクイック スタートでは、オンプレミスのクライアント コンピューターからポイント対サイト接続を行い、[SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) を使用して Azure SQL Managed Instance に接続する方法を示します。 ポイント対サイト接続の詳細については、「[ポイント対サイト VPN について](../../vpn-gateway/point-to-site-about.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタート:
 
 - 「[マネージド インスタンスを作成する](instance-create-quickstart.md)」で作成したリソースを出発点として使用します。
-- オンプレミスのクライアント コンピューターには、PowerShell 5.1 と Azure PowerShell 1.4.0 以降をインストールしておく必要があります。 必要に応じて、[Azure PowerShell モジュールをインストールする](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)手順を参照してください。
-- オンプレミスのクライアント コンピューターには、最新版の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) をインストールしておく必要があります。
+- オンプレミスのクライアント コンピューターには、PowerShell 5.1 と Azure PowerShell 1.4.0 以降をインストールしておく必要があります。 必要に応じて、[Azure PowerShell モジュールをインストールする](/powershell/azure/install-az-ps#install-the-azure-powershell-module)手順を参照してください。
+- オンプレミスのクライアント コンピューターには、最新版の [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) をインストールしておく必要があります。
 
 ## <a name="attach-a-vpn-gateway-to-a-virtual-network"></a>VPN ゲートウェイを仮想ネットワークに接続する
 
@@ -71,7 +71,7 @@ ms.locfileid: "84708643"
 
     ![VPN クライアントのダウンロード](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. オンプレミスのクライアント コンピューターで、ZIP ファイルから必要なファイルを抽出し、抽出されたファイルのあるフォルダーを開きます。
-5. **WindowsAmd64** フォルダーを開き、**VpnClientSetupAmd64.exe** ファイルを開きます。
+5. **WindowsAmd64** フォルダーを開き、 **VpnClientSetupAmd64.exe** ファイルを開きます。
 6. **[Windows によって PC が保護されました]** というメッセージが表示されたら、 **[詳細]** をクリックし、 **[実行]** をクリックします。
 
     ![VPN クライアントをインストールします](./media/point-to-site-p2s-configure/vpn-client-defender.png)
@@ -80,24 +80,24 @@ ms.locfileid: "84708643"
 
 ## <a name="connect-to-the-vpn-connection"></a>VPN で接続する
 
-1. オンプレミスのクライアント コンピューターで **[ネットワークとインターネット]** の **[VPN]** に移動し、お使いの SQL Managed Instance 仮想ネットワークを選択して、その VNet との接続を確立します。 次の画像では、**MyNewVNet** という名前の VNet が該当します。
+1. オンプレミスのクライアント コンピューターで **[ネットワークとインターネット]** の **[VPN]** に移動し、お使いの SQL Managed Instance 仮想ネットワークを選択して、その VNet との接続を確立します。 次の画像では、 **MyNewVNet** という名前の VNet が該当します。
 
     ![VPN 接続](./media/point-to-site-p2s-configure/vpn-connection.png)  
 2. **[接続]** を選択します。
 3. ダイアログ ボックスで **[接続]** を選択します。
 
-    ![VPN 接続](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+    ![[接続] ボタンが強調表示されているスクリーンショット。](./media/point-to-site-p2s-configure/vpn-connection2.png)  
 4. 接続マネージャーで昇格された特権がルート テーブルの更新に必要であると表示されたら、 **[続行]** を選択します。
 5. [ユーザー アカウント制御] ダイアログ ボックスで **[はい]** を選択して続行します。
 
    SQL Managed Instance VNet への VPN 接続が確立されました。
 
-    ![VPN 接続](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![接続を確立したときの、接続済みのメッセージが強調表示されているスクリーンショット。](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>SSMS との接続
 
 1. オンプレミスのクライアント コンピューターで、SQL Server Management Studio を開きます。
-2. **[サーバーに接続]** ダイアログ ボックスで、 **[サーバー名]** ボックスにマネージド インスタンスの完全修飾**ホスト名**を入力します。
+2. **[サーバーに接続]** ダイアログ ボックスで、 **[サーバー名]** ボックスにマネージド インスタンスの完全修飾 **ホスト名** を入力します。
 3. **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、 **[接続]** を選択します。
 
     ![SSMS 接続](./media/point-to-site-p2s-configure/ssms-connect.png)  

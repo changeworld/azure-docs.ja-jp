@@ -14,11 +14,11 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77201300"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017918"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -47,7 +47,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |設定|値|
     |---|---|
     |サブスクリプション| サブスクリプションを選択します。|
-    |Resource group| **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
+    |Resource group| **[新規作成]** を選択し、「*myResourceGroup* と入力します。|
     |リージョン| **[米国東部]** を選択します。|
     |Name|myVirtualNetwork1|
 

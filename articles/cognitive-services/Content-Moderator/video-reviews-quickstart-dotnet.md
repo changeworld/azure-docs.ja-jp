@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d9f80de5a18e27de4a9f8e85613e3c2eee6c111c
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919320"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853477"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
@@ -62,7 +62,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. ソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
+1. ソリューションに新しい **コンソール アプリ (.NET Framework)** プロジェクトを追加します。
 
 1. プロジェクトの名前を **VideoReviews** にします。
 
@@ -549,7 +549,3 @@ Press any key to close the application.
 ## <a name="next-steps"></a>次のステップ
 
 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と、.NET 用のこのクイック スタートや他の Content Moderator のクイックスタートのための [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)をダウンロードする。
-
-ビデオ レビューに[トランスクリプト モデレーション](video-transcript-moderation-review-tutorial-dotnet.md)を追加する方法について学習する。 
-
-[完全なビデオ モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)を開発する方法に関する詳細なチュートリアルを確認する。

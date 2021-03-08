@@ -5,23 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/27/2020
+ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052453"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "92328440"
 ---
-VNet は、Resource Manager デプロイ モデルと Azure portal を使用し、以下の手順に従って作成できます。 仮想ネットワークの詳細については、[Virtual Network の概要](../articles/virtual-network/virtual-networks-overview.md)に関するページを参照してください。
-
->[!NOTE]
->クロスプレミス アーキテクチャの一部として仮想ネットワークを使用する場合は、必ずオンプレミスのネットワーク管理者と調整を行って、この仮想ネットワーク専用に使用できる IP アドレスの範囲を見つけます。 VPN 接続の両側に重複するアドレス範囲が存在する場合、予期しない方法でトラフィックがルーティングされます。 また、この仮想ネットワークを別の仮想ネットワークに接続する場合、アドレス空間を別の仮想ネットワークと重複させることはできません。 この点を踏まえてネットワーク構成を計画してください。
->
->
-
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[Search resources, service, and docs (G+/)]\(リソース、サービス、ドキュメントを検索する (G+/)\)** に「*virtual network*」と入力します。
 

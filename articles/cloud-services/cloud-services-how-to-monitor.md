@@ -1,21 +1,24 @@
 ---
-title: Azure クラウド サービスの監視 | Microsoft Docs
+title: Azure Cloud Services (クラシック) の監視 | Microsoft Docs
 description: Azure クラウド サービスの監視に関する情報やいくつかのオプションについて説明します。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 01/29/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 60f320f86860cca482cdf25c7d93f84dae8c4e5f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847239"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743374"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
+# <a name="introduction-to-cloud-service-classic-monitoring"></a>Cloud Services (クラシック) の監視の概要
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 どのクラウド サービスでも主要なパフォーマンス メトリックを監視することができます。 各クラウド サービス ロールは最小限のデータ (CPU 使用率、ネットワーク使用状況、ディスク使用率) を収集します。 クラウド サービスにより `Microsoft.Azure.Diagnostics` 拡張機能がロールに適用されている場合、そのロールはその他のデータ ポイントを収集できます。 この記事では、クラウド サービス対応の Azure Diagnostics の概要について説明します。
 
@@ -48,11 +51,11 @@ ms.locfileid: "85847239"
 * カスタム エラー ログ
 
 > [!IMPORTANT]
-> これらすべてのデータがストレージ アカウントに集計されますが、データのグラフを作成するポータル固有の方法は用意されて**いません**。 Application Insights などの他のサービスをアプリケーションに統合することを強くお勧めします。
+> これらすべてのデータがストレージ アカウントに集計されますが、データのグラフを作成するポータル固有の方法は用意されて **いません**。 Application Insights などの他のサービスをアプリケーションに統合することを強くお勧めします。
 
 ## <a name="setup-diagnostics-extension"></a>診断拡張機能の設定
 
-まず、**クラシック** ストレージ アカウントがない場合は、[作成します](../storage/common/storage-account-create.md)。 ストレージ アカウントが**クラシック デプロイ モデル**を指定して作成されたことを確認します。
+まず、**クラシック** ストレージ アカウントがない場合は、[作成します](../storage/common/storage-account-create.md)。 ストレージ アカウントが **クラシック デプロイ モデル** を指定して作成されたことを確認します。
 
 次は、**ストレージ アカウント (クラシック)** リソースに移動します。 **[設定]**  >  **[アクセス キー]** を選択し、 **[プライマリ接続文字列]** の値をコピーします。 クラウド サービスではこの値が必要です。 
 
@@ -71,7 +74,7 @@ ms.locfileid: "85847239"
 
 これにより、すべての **ServiceConfiguration.cscfg** ファイルに追加する必要がある新しい設定が定義されます。 
 
-通常、 **.cscfg** ファイルは 2 つあります。Azure へのデプロイのための **ServiceConfiguration.cloud.cscfg** と、エミュレートされた環境へのローカル デプロイに使用される **ServiceConfiguration.local.cscfg** です。 各 **.cscfg** ファイルを開いて変更します。 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` という設定を追加します。 値は、クラシック ストレージ アカウントの**プライマリ接続文字列**に設定します。 開発用コンピューターでローカル ストレージを使用する必要がある場合は、`UseDevelopmentStorage=true` を使用します。
+通常、**.cscfg** ファイルは 2 つあります。Azure へのデプロイのための **ServiceConfiguration.cloud.cscfg** と、エミュレートされた環境へのローカル デプロイに使用される **ServiceConfiguration.local.cscfg** です。 各 **.cscfg** ファイルを開いて変更します。 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` という設定を追加します。 値は、クラシック ストレージ アカウントの **プライマリ接続文字列** に設定します。 開発用コンピューターでローカル ストレージを使用する必要がある場合は、`UseDevelopmentStorage=true` を使用します。
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">

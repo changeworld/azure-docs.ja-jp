@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2159ab8c2639f0f87fd53e8559dad518a3daa663
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77252229"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544819"
 ---
 # <a name="automate-mobility-service-installation"></a>モビリティ サービスのインストールを自動化する
 
@@ -18,9 +18,9 @@ ms.locfileid: "77252229"
 
 オンプレミスの VMware VM と物理サーバーのディザスター リカバリーのために Site Recovery を Azure に展開する場合、複製する各マシンに Mobility Service エージェントをインストールします。 モビリティサービスは、マシン上のデータ書き込みをキャプチャし、複製のために Site Recovery プロセスサーバーに転送します。 Mobility Service はいくつかの方法で展開できます。
 
-- **プッシュ インストール**:Azure portal でマシンのレプリケーションを有効にする場合に、Site Recovery によってモビリティ サービス エージェントをインストールします。
-- **手動インストール**:各マシンにモビリティ サービスを手動でインストールします。 プッシュ インストールと手動インストールの[詳細情報](vmware-physical-mobility-service-overview.md)を参照してください。
-- **自動デプロイ**:Microsoft Endpoint Configuration Manager などのソフトウェア デプロイ ツールや、Intigua JetPatch などのサード パーティ ツールなどで、インストールを自動化します。
+- **プッシュ インストール** :Azure portal でマシンのレプリケーションを有効にする場合に、Site Recovery によってモビリティ サービス エージェントをインストールします。
+- **手動インストール** :各マシンにモビリティ サービスを手動でインストールします。 プッシュ インストールと手動インストールの[詳細情報](vmware-physical-mobility-service-overview.md)を参照してください。
+- **自動デプロイ** :Microsoft Endpoint Configuration Manager などのソフトウェア デプロイ ツールや、Intigua JetPatch などのサード パーティ ツールなどで、インストールを自動化します。
 
 インストールと更新を自動化することで、以下の場合の解決策が得られます。
 
@@ -56,8 +56,8 @@ ms.locfileid: "77252229"
 1. Configuration Manager で、モビリティサービスをインストールまたは更新する[サーバーをカテゴリー化します](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections)。 1 つのコレクションにはすべての Windows サーバが含まれ、もう 1 つのコレクションにはすべての Linux サーバが含まれます。
 1. ネットワーク共有で、次のフォルダーを作成します。
 
-   - Windows マシンにインストールする場合は、_MobSvcWindows_ という名前のフォルダーを作成してください。
-   - Linux マシンにインストールする場合は、_MobSvcLinux_ という名前のフォルダーを作成します。
+   - Windows マシンにインストールする場合は、 _MobSvcWindows_ という名前のフォルダーを作成してください。
+   - Linux マシンにインストールする場合は、 _MobSvcLinux_ という名前のフォルダーを作成します。
 
 1. 構成サーバー マシンにサインインします。
 1. 構成サーバーマシンで、管理コマンド プロンプトを開きます。
@@ -338,17 +338,17 @@ cd /tmp
 
 ### <a name="create-a-package"></a>パッケージを作成する
 
-1. Configuration Manager コンソールにサインインし、**ソフトウェアライブラリ** > **アプリケーション管理** > **パッケージ**に移動します。
+1. Configuration Manager コンソールにサインインし、 **ソフトウェアライブラリ** > **アプリケーション管理** > **パッケージ** に移動します。
 1. **[パッケージ]** を右クリックして **[パッケージの作成]** に進みます。
 1. 名前、説明、製造元、言語、バージョンなど、パッケージの詳細を指定します。
 1. **[このパッケージはソース ファイルを含む]** を選択します。
-1. **参照**をクリックし、関連するインストーラー（ _MobSvcWindows_ または _MobSvcLinux_）を含むネットワーク共有とフォルダーを選択します。 次に、 **[次へ]** を選択します。
+1. **参照** をクリックし、関連するインストーラー（ _MobSvcWindows_ または _MobSvcLinux_ ）を含むネットワーク共有とフォルダーを選択します。 次に、 **[次へ]** を選択します。
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
 1. **[作成するプログラムの種類の選択]** ページで、 **[標準プログラム]**  >  **[次へ]** を選択します。
 
-   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![[標準プログラム] オプションを示すパッケージとプログラムの作成ウィザードのスクリーンショット。](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
 1. **[この標準プログラムに関する情報の指定]** ページで、次の値を指定します。
 
@@ -359,18 +359,18 @@ cd /tmp
     **プログラムの実行条件** | ユーザーがログオンしているかどうか | ユーザーがログオンしているかどうか
     **その他のパラメーター** | 既定の設定を使用する | 既定の設定を使用する
 
-   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
+   ![標準プログラムに指定できる情報を示すスクリーンショット。](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-1. **この標準プログラムの要件を指定**で、次のタスクを実行します。
+1. **この標準プログラムの要件を指定** で、次のタスクを実行します。
 
-   - Windows マシンの場合は、 **[指定したプラットフォームだけで実行可能]** を選択します。 次に、[サポートされているWindowsオペレーティングシステム](vmware-physical-azure-support-matrix.md#replicated-machines)を選択し、**次へ**を選択します。
+   - Windows マシンの場合は、 **[指定したプラットフォームだけで実行可能]** を選択します。 次に、 [サポートされているWindowsオペレーティングシステム](vmware-physical-azure-support-matrix.md#replicated-machines)を選択し、 **次へ** を選択します。
    - Linux マシンでは、 **[任意のプラットフォームで実行可能]** を選択します。 **[次へ]** を選択します。
 
 1. ウィザードを終了します。
 
 ### <a name="deploy-the-package"></a>パッケージをデプロイする
 
-1. Configuration Manager コンソールで、パッケージを右クリックし、**コンテンツの配布**を選択します。
+1. Configuration Manager コンソールで、パッケージを右クリックし、 **コンテンツの配布** を選択します。
 
    ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
@@ -378,7 +378,7 @@ cd /tmp
 1. ウィザードを完了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
 1. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** に進みます。
 
-   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+   ![[展開] メニュー オプションを表示する Configuration Manager コンソールのスクリーンショット。](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 
 1. 以前に作成した Windows または Linux デバイスのコレクションを選択します。
 1. **[コンテンツの配布先の指定]** ページで **[配布ポイント]** を選択します。

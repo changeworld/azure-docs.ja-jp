@@ -1,15 +1,16 @@
 ---
 title: LUIS アプリをビルドするためのベスト プラクティス
 description: LUIS アプリのモデルから最良の結果を得るためのベスト プラクティスについて学習します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683761"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788487"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Language Understanding (LUIS) アプリをビルドするためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。
@@ -86,13 +87,13 @@ LUIS の予測データを使用して、意図が重複していないかどう
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>すべきこと: バージョンを使用してアプリを反復的にビルドする
 
-各作成サイクルは、既存のバージョンから複製された新しい[バージョン](luis-concept-version.md)内にある必要があります。
+各作成サイクルは、既存のバージョンから複製された新しい[バージョン](./luis-concept-app-iteration.md)内にある必要があります。
 
 ## <a name="do-build-for-model-decomposition"></a>すべきこと: モデル分解のためにビルドする
 
 モデル分解では、一般的に次のようなプロセスを取ります。
 
-* クライアント アプリのユーザーの意図に基づいて**意図**を作成する
+* クライアント アプリのユーザーの意図に基づいて **意図** を作成する
 * 実際のユーザー入力に基づいて 15 個から 30 個のサンプル発話を追加する
 * 発話の例の最上位レベルのデータの概念にラベルを付ける
 * データの概念をサブエンティティに分割する
@@ -108,9 +109,9 @@ LUIS の予測データを使用して、意図が重複していないかどう
 これらの要素の分解を次のように続けます。
 * 正規表現エンティティとして郵便番号の必要な特徴を追加します。
 * 住所を次のように複数のパーツに分解します。
-    * 番号の事前構築済みのエンティティに必要な特徴を備えた**番地の番号**。
+    * 番号の事前構築済みのエンティティに必要な特徴を備えた **番地の番号**。
     * **通りの名前**。
-    * 通り、広場、道、レーンなどの単語を含むリスト エンティティに必要な特徴を備えた**通りの種類**。
+    * 通り、広場、道、レーンなどの単語を含むリスト エンティティに必要な特徴を備えた **通りの種類**。
 
 V3 オーサリング API がモデルの分解を可能にします。
 
@@ -136,11 +137,11 @@ LUIS による予測を正確に行うには、各意図 (None 意図を除く) 
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>すべきこと: アクティブ ラーニングの提案機能を活用する
 
-発話の例をさらに多く意図に追加するのではなく、[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)の**エンドポイントの発話の確認**を定期的に使用します。 アプリでは常にエンドポイント発話を受信しているため、このリストは拡大および変化し続けています。
+発話の例をさらに多く意図に追加するのではなく、[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)の **エンドポイントの発話の確認** を定期的に使用します。 アプリでは常にエンドポイント発話を受信しているため、このリストは拡大および変化し続けています。
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>すべきこと: ご自身のアプリのパフォーマンスを監視する
 
-[バッチ テスト](luis-concept-batch-test.md) セットを使用して予測精度を監視します。
+[バッチ テスト](./luis-how-to-batch-test.md) セットを使用して予測精度を監視します。
 
 [発話の例](luis-concept-utterance.md)またはエンドポイント発話として使用されていない発話のセットを個別に保持します。 ご自身のテスト セット用のアプリは改善し続けてください。 実際のユーザーの発話が反映されるようにテスト セットを調整します。 このテスト セットを使用して、アプリの各イテレーションまたはバージョンを評価します。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286670"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89468659"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 
@@ -33,7 +33,7 @@ Cloud Shell には、次の 3 つの方法でアクセスできます。
 
     ![Azure portal から Cloud Shell を起動するアイコン](media/overview/portal-launch-icon.png)
 
-- **コード スニペット**:[docs.microsoft.com](https://docs.microsoft.com) と [Microsoft Learn](https://docs.microsoft.com/learn/)で、Azure CLI と Azure PowerShell のコード スニペットに表示されている **[試してみる]** ボタンを選択します。
+- **コード スニペット**:[docs.microsoft.com]() と [Microsoft Learn](/learn/)で、Azure CLI と Azure PowerShell のコード スニペットに表示されている **[試してみる]** ボタンを選択します。
 
     ```azurecli-interactive
     az account show
@@ -87,8 +87,8 @@ Cloud Shell は、以下から使用できる柔軟なツールです。
 
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Azure CLI ドキュメント](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell ドキュメント](https://docs.microsoft.com/powershell/azure/)
+* [Azure CLI ドキュメント](/cli/azure)
+* [Azure PowerShell ドキュメント](/powershell/azure/)
 * [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code の Azure Account 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
@@ -111,7 +111,7 @@ Cloud Shell マシンは一時的ですが、ファイルは、ディスク イ�
 * Cloud Shell はファイル共有に保持されている 5 GB のイメージを使用して $HOME を永続化します
 * Bash では、標準の Linux ユーザーとしてアクセス許可が設定されます。
 
-[Cloud Shell の Bash](features.md) と [Cloud Shell の PowerShell](features-powershell.md) の機能に関する詳細をご覧ください。
+[Cloud Shell の Bash](features.md) と [Cloud Shell の PowerShell](./features.md) の機能に関する詳細をご覧ください。
 
 ## <a name="pricing"></a>価格
 

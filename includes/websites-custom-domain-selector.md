@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: cephalin
 ms.openlocfilehash: 6c93fa74961d9bcbe6da69daa0c99f88c31c015e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012946"
 ---
 > [!div class="op_single_selector"]
 > * [ドメインを購入する](../articles/app-service/manage-custom-dns-buy-domain.md)

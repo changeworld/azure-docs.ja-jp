@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1d4ce68bdda5fbc3dfdb7396141289a58dab5bd1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021162"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204097"
 ---
 # <a name="create-client-side-performance-traces"></a>クライアント側のパフォーマンス トレースの作成
 
@@ -24,7 +24,7 @@ Windows :::no-loc text="performance tracing"::: 機能を初めて使用する�
 
 ### <a name="installation"></a>インストール
 
-ARR でのトレースを行うために使用されるアプリケーションは、すべての Windows 開発に使用できる汎用ツールです。 これらは、[Windows Performance Toolkit](https://docs.microsoft.com/windows-hardware/test/wpt/) で提供されています。 このツールキットを入手するには、[Windows アセスメント & デプロイメント キット](https://docs.microsoft.com/windows-hardware/get-started/adk-install)をダウンロードしてください。
+ARR でのトレースを行うために使用されるアプリケーションは、すべての Windows 開発に使用できる汎用ツールです。 これらは、[Windows Performance Toolkit](/windows-hardware/test/wpt/) で提供されています。 このツールキットを入手するには、[Windows アセスメント & デプロイメント キット](/windows-hardware/get-started/adk-install)をダウンロードしてください。
 
 ### <a name="terminology"></a>用語
 
@@ -35,13 +35,13 @@ ARR でのトレースを行うために使用されるアプリケーション�
 * `WPR`
 * `WPA`
 
-**ETW** は [**E**vent **T**racing for **W**indows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing) (Windows イベント トレーシング) の略です。 これは、Windows に組み込まれている効率的なカーネル レベルのトレース機能を表す、包括的な名前にすぎません。 これは "*イベント*" トレースと呼ばれます。その理由は、ETW をサポートするアプリケーションでは、パフォーマンスに関する問題の追跡に役立つ可能性があるアクションをログに記録するために、イベントが出力されるためです。 既定では、オペレーティング システムによって、ディスク アクセス、タスク切り替えなどのイベントが既に生成されています。 ARR のようなアプリケーションでは、削除されたフレームやネットワークの遅延などに関するカスタム イベントも追加で生成されます。
+**ETW** は [**E**vent **T**racing for **W**indows](/windows/win32/etw/about-event-tracing) (Windows イベント トレーシング) の略です。 これは、Windows に組み込まれている効率的なカーネル レベルのトレース機能を表す、包括的な名前にすぎません。 これは "*イベント*" トレースと呼ばれます。その理由は、ETW をサポートするアプリケーションでは、パフォーマンスに関する問題の追跡に役立つ可能性があるアクションをログに記録するために、イベントが出力されるためです。 既定では、オペレーティング システムによって、ディスク アクセス、タスク切り替えなどのイベントが既に生成されています。 ARR のようなアプリケーションでは、削除されたフレームやネットワークの遅延などに関するカスタム イベントも追加で生成されます。
 
 **ETL** は **E**vent **T**race **L**ogging (イベント トレース ログ) の略です。 これは単純にトレースが収集 (記録) されていることを意味し、そのため、トレース データを格納するファイルのファイル拡張子として一般的に使用されます。 このため、トレースを実行すると、通常は、後で \*.etl ファイルが作成されます。
 
-**WPR** は [**W**indows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) の略であり、イベント トレースの記録を開始および停止するアプリケーションの名前です。 WPR には、正確にどのイベントをログに記録するかを構成するプロファイル ファイル (\*.wprp) を指定します。 このような `wprp` ファイルは ARR SDK に付属しています。 デスクトップ PC でトレースを行う場合は、WPR を直接起動することができます。 HoloLens でトレースを行う場合、通常は Web インターフェイスを使用します。
+**WPR** は [**W**indows **P**erformance **R**ecorder](/windows-hardware/test/wpt/windows-performance-recorder) の略であり、イベント トレースの記録を開始および停止するアプリケーションの名前です。 WPR には、正確にどのイベントをログに記録するかを構成するプロファイル ファイル (\*.wprp) を指定します。 このような `wprp` ファイルは ARR SDK に付属しています。 デスクトップ PC でトレースを行う場合は、WPR を直接起動することができます。 HoloLens でトレースを行う場合、通常は Web インターフェイスを使用します。
 
-**WPA** は [**W**indows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) の略であり、\*.etl ファイルを開き、データを詳しく調べてパフォーマンスの問題を特定する GUI アプリケーションの名前です。 WPA を使用すると、さまざまな条件でデータを並べ替えたり、複数の方法でデータを表示したり、詳細を掘り下げて情報を関連付けることができます。
+**WPA** は [**W**indows **P**erformance **A**nalyzer](/windows-hardware/test/wpt/windows-performance-analyzer) の略であり、\*.etl ファイルを開き、データを詳しく調べてパフォーマンスの問題を特定する GUI アプリケーションの名前です。 WPA を使用すると、さまざまな条件でデータを並べ替えたり、複数の方法でデータを表示したり、詳細を掘り下げて情報を関連付けることができます。
 
 ETL トレースは、任意の Windows デバイス (ローカル PC、HoloLens、クラウド サーバーなど) で作成できますが、通常はディスクに保存され、デスクトップ PC で WPA を使用して分析されます。 ETL ファイルは、他の開発者に送信して、見てもらうことができます。 ただし、ファイルパスや IP アドレスなどの機密情報が ETL トレースでキャプチャされる可能性があることに注意してください。 ETW は、トレースの記録とトレースの分析という 2 つの方法で使用できます。 トレースを記録することは簡単であり、必要な設定は最小限です。 一方、トレースを分析するには、WPA ツールと調査する問題の両方について十分に理解している必要があります。 以下では、WPA について学習するための一般的な資料と、ARR 固有のトレースを解釈する方法のガイドラインを示します。
 
@@ -51,7 +51,7 @@ ARR パフォーマンスの問題を特定するには、HoloLens でトレー�
 
 ### <a name="wpr-configuration"></a>WPR の構成
 
-1. *[スタート] メニュー*から [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) を起動します。
+1. *[スタート] メニュー*から [:::no-loc text="Windows Performance Recorder":::](/windows-hardware/test/wpt/windows-performance-recorder) を起動します。
 1. **[More Options]\(その他のオプション\)** を展開します。
 1. **[Add Profiles]\(プロファイルの追加\)** をクリックします。
 1. *AzureRemoteRenderingNetworkProfiling.wprp* ファイルを選択します。 このファイルは、ARR SDK の *Tools/ETLProfiles* にあります。
@@ -95,7 +95,7 @@ HoloLens でトレースを記録するには、デバイスを起動し、そ�
 
 Windows Performance Analyzer は、ETL ファイルを開き、トレースを検査するための標準的なツールです。 この記事では、WPA のしくみについては説明しません。 開始するには、次のリソースを参照してください。
 
-* 最初の概要については、[入門ビデオ](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer)をご覧ください。
+* 最初の概要については、[入門ビデオ](/windows-hardware/test/wpt/windows-performance-analyzer)をご覧ください。
 * WPA 自体には、一般的な手順を説明する *[Getting Started]\(作業の開始\)* タブがあります。 使用可能なトピックを確認してください。 特に [View Data]\(データの表示\) では、特定のデータのグラフを作成する方法について簡単に説明しています。
 * [この Web サイト](https://randomascii.wordpress.com/2015/09/24/etw-central/)には有用な情報が記載されていますが、初心者にとっては、そのすべてが関連する情報であるとは限りません。
 

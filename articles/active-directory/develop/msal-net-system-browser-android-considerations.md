@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android のシステム ブラウザーに関する考慮事項 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: .NET 用 Microsoft 認証ライブラリ (MSAL.NET) で Xamarin Android 上のシステム ブラウザーを使用する場合の考慮事項について説明します。
+description: Microsoft Authentication Library for .NET (MSAL.NET) で Xamarin Android 上のシステム ブラウザーを使用する場合の考慮事項について説明します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8f755b42249a88a2d37117003d561f79aea6b170
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4230a194fb18587a209c100a39b0924e6170502d
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165993"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063469"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>MSAL.NET を使用する場合の Xamarin Android のシステム ブラウザーに関する考慮事項
 
-この記事では、.NET 用 Microsoft 認証ライブラリ (MSAL.NET) で Xamarin Android 上のシステム ブラウザーを使用する場合に考慮すべきことについて説明します。
+この記事では、Microsoft Authentication Library for .NET (MSAL.NET) で Xamarin Android 上のシステム ブラウザーを使用する場合に考慮すべきことについて説明します。
 
 MSAL.NET 2.4.0 Preview 以降では、MSAL.NET は Chrome 以外のブラウザーをサポートしています。 認証のために、Android デバイスに Chrome をインストールする必要がなくなりました。
 

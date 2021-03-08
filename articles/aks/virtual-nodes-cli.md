@@ -5,23 +5,24 @@ description: Azure CLI を使用して、仮想ノードを使用する Azure Ku
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 1e62af4f2ab8233125777bf6edf713758e4f2ec7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: a655c8c145b4f3812dae9f1a4ec1e5eebbe44809
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543080"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348476"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI を使って仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
-Azure Kubernetes Service (AKS) クラスターでアプリケーション ワークロードをすばやくスケーリングするには、仮想ノードを使用します。 仮想ノードを使用すると、ポッドを短時間でプロビジョニングできるため、ポッドの実行時間に対して秒単位の支払いだけで済みます。 Kubernetes クラスターのオートスケーラーが VM コンピューティング ノードをデプロイして追加のポッドを実行するのを待つ必要はありません。 仮想ノードは、Linux のポッドとノードでのみサポートされます。
+この記事では、Azure CLI を使用し、仮想ネットワーク リソースと AKS クラスターを作成して構成し、その後仮想ノードを有効にする方法を示します。
 
-この記事では、仮想ネットワーク リソースと AKS クラスターを作成して構成し、その後仮想ノードを有効にする方法を示します。
+> [!NOTE]
+> [この記事](virtual-nodes.md)では、仮想ノードを使用したリージョンの可用性と制限の概要について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-仮想ノードを使用すると、Azure Container Instances (ACI) および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 この通信を可能にするために、仮想ネットワーク サブネットが作成され、委任されたアクセス許可が割り当てられます。 仮想ノードは、"*高度*" ネットワークを使用して作成された AKS クラスターに対してのみ機能します。 既定では、AKS クラスターは "*基本*" ネットワークを使用して作成されます。 この記事では、仮想ネットワークとサブネットを作成した後、高度ネットワークを使用した AKS クラスターをデプロイする方法について説明します。
+仮想ノードを使用すると、Azure Container Instances (ACI) および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 この通信を可能にするために、仮想ネットワーク サブネットが作成され、委任されたアクセス許可が割り当てられます。 仮想ノードは、" *高度* " ネットワーク (Azure CNI) を使用して作成された AKS クラスターに対してのみ機能します。 既定では、AKS クラスターは " *基本* " ネットワーク (kubenet) を使用して作成されます。 この記事では、仮想ネットワークとサブネットを作成した後、高度ネットワークを使用した AKS クラスターをデプロイする方法について説明します。
 
 以前に ACI を使用していない場合は、ご使用のサブスクリプションでサービス プロバイダーを登録します。 ACI プロバイダー登録の状態は、次の例で示すように [az provider list][az-provider-list] コマンドを使用して確認できます。
 
@@ -43,34 +44,6 @@ Microsoft.ContainerInstance  Registered           RegistrationRequired
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-仮想ノードのデプロイでは、次のリージョンがサポートされています。
-
-* オーストラリア東部 (australiaeast)
-* 米国中部 (centralus)
-* 米国東部 (eastus)
-* 米国東部 2 (eastus2)
-* 東日本 (japaneast)
-* 北ヨーロッパ (northeurope)
-* 東南アジア (southeastasia)
-* 米国中西部 (westcentralus)
-* 西ヨーロッパ (westeurope)
-* 米国西部 (westus)
-* 米国西部 2 (westus2)
-
-## <a name="known-limitations"></a>既知の制限事項
-仮想ノードの機能は、ACI の機能セットに大きく依存します。 [Azure Container Instances のクォータと制限](../container-instances/container-instances-quotas.md)に加えて、次のシナリオは仮想ノードではまだサポートされていません。
-
-* サービス プリンシパルを使用した ACR イメージのプル。 [対処法](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry)は、[Kubernetes シークレット](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)を使用することです
-* [仮想ネットワークの制限事項](../container-instances/container-instances-vnet.md) (VNet ピアリング、Kubernetes ネットワーク ポリシー、およびネットワーク セキュリティ グループを使用したインターネットへの送信トラフィックなど)。
-* Init コンテナー
-* [ホストのエイリアス](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* ACI の exec の[引数](../container-instances/container-instances-exec.md#restrictions)
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) ではポッドは仮想ノードにデプロイされません
-* 仮想ノードでは、Linux ポッドのスケジュール設定がサポートされています。 オープンソースの [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) プロバイダーを手動でインストールして、Windows Server のコンテナーを ACI にスケジュールすることができます。
-* 仮想ノードには、Azure CNI ネットワークを使用した AKS クラスターが必要です
-
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
@@ -81,7 +54,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 [az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus* に作成します。
+Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 [az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを場所 *westus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -89,7 +62,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create][az-network-vnet-create] コマンドを使用して、仮想ネットワークを作成します。 次の例では、 *10.0.0.0/8* というアドレス プレフィックスを持つ *myVnet* という仮想ネットワークと、*myAKSSubnet* というサブネットを作成します。 このサブネットのアドレス プレフィックスは、既定で *10.240.0.0/16* に設定されます。
+[az network vnet create][az-network-vnet-create] コマンドを使用して、仮想ネットワークを作成します。 次の例では、 *10.0.0.0/8* というアドレス プレフィックスを持つ *myVnet* という仮想ネットワークと、 *myAKSSubnet* というサブネットを作成します。 このサブネットのアドレス プレフィックスは、既定で *10.240.0.0/16* に設定されます。
 
 ```azurecli-interactive
 az network vnet create \
@@ -100,7 +73,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-次に、[az network vnet subnet create][az-network-vnet-subnet-create] コマンドを使用して、仮想ノード用の追加サブネットを作成します。 次の例では、*10.241.0.0/16* というアドレス プレフィックスを持つ *myVirtualNodeSubnet* という名前のサブネットを作成します。
+次に、[az network vnet subnet create][az-network-vnet-subnet-create] コマンドを使用して、仮想ノード用の追加サブネットを作成します。 次の例では、 *10.241.0.0/16* というアドレス プレフィックスを持つ *myVirtualNodeSubnet* という名前のサブネットを作成します。
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -158,7 +131,7 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 `<subnetId>` を前の手順で取得した ID に置き換え、`<appId>` と `<password>` を前のセクションで収集した値に置き換えます。
+AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、 *myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 `<subnetId>` を前の手順で取得した ID に置き換え、`<appId>` と `<password>` を前のセクションで収集した値に置き換えます。
 
 ```azurecli-interactive
 az aks create \
@@ -202,7 +175,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-次の出力例は、単一の VM ノードが作成されてから、Linux 用の仮想ノード、*virtual-node-aci-linux*が作成されることを示しています。
+次の出力例は、単一の VM ノードが作成されてから、Linux 用の仮想ノード、 *virtual-node-aci-linux* が作成されることを示しています。
 
 ```output
 NAME                          STATUS    ROLES     AGE       VERSION
@@ -231,7 +204,7 @@ spec:
     spec:
       containers:
       - name: aci-helloworld
-        image: microsoft/aci-helloworld
+        image: mcr.microsoft.com/azuredocs/aci-helloworld
         ports:
         - containerPort: 80
       nodeSelector:

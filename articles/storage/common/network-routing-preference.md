@@ -10,18 +10,22 @@ ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514200"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362745"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure Storage に対してネットワークのルーティング優先設定を構成する (プレビュー)
 
 Azure ストレージ アカウントに対してネットワークの[ルーティング優先設定](../../virtual-network/routing-preference-overview.md) (プレビュー) を構成し、インターネット経由でクライアントからアカウントにネットワーク トラフィックをルーティングする方法を指定することができます。 既定では、インターネットからのトラフィックは、[Microsoft グローバル ネットワーク](../../networking/microsoft-global-network.md)経由で、ストレージ アカウントのパブリック エンドポイントにルーティングされます。 Azure Storage には、ストレージ アカウントへのトラフィックのルーティング方法を構成するための追加オプションが用意されています。
 
 ルーティング優先設定の構成を使用すると、Premium ネットワークのパフォーマンスやコストに応じて、トラフィックを柔軟に最適化できます。 ルーティング優先設定を構成するときは、ストレージ アカウントのパブリック エンドポイントにトラフィックが送信される既定の方法を指定します。 また、ストレージ アカウント用にルート固有のエンドポイントを公開することもできます。
+
+> [!NOTE]
+> この機能は、premium パフォーマンス レベルまたはゾーン冗長ストレージ (ZRS) を使用するように構成されているストレージ アカウントではサポートされていません。
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Microsoft グローバル ネットワークとインターネット ルーティングの比較
 
@@ -65,9 +69,36 @@ Azure でのルーティング優先設定の詳細については、「[ルー�
 
 Azure Storage のルーティング優先設定は、次のリージョンで利用できます。
 
-- フランス南部
-- 米国中北部
+- 米国中部 
+- 米国中部 EUAP
+- 米国東部 
+- 米国東部 2
+- 米国東部 2 
+- 米国東部 2 EUAP
+- 米国中南部
 - 米国中西部
+- 米国西部 
+- 米国西部 2 
+- フランス中部 
+- フランス南部 
+- ドイツ北部 
+- ドイツ中西部 
+- 米国中北部
+- 北ヨーロッパ 
+- ノルウェー東部 
+- スイス北部
+- スイス西部
+- 英国南部 
+- 英国西部 
+- 西ヨーロッパ 
+- アラブ首長国連邦中部
+- 東アジア 
+- 東南アジア 
+- 東日本 
+- 西日本 
+- インド西部
+- オーストラリア東部 
+- オーストラリア南東部 
 
 Azure Storage のルーティング優先設定のプレビューには、次の既知の問題が影響します。
 

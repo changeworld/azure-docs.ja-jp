@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b9733eeb0d9941f6e23dcc9c0fa4dba60f4e4d30
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74049232"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561031"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 
@@ -32,6 +32,8 @@ ms.locfileid: "74049232"
 
 <!---If you prefer, you can complete this tutorial using [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md) or [Azure CLI](tutorial-restrict-web-traffic-cli.md).--->
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -44,7 +46,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 Azure portal の左側のメニューにある **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 
-**[ネットワーク]** を選択し、**おすすめ**のリストで **[Application Gateway]** を選択します。
+**[ネットワーク]** を選択し、**おすすめ** のリストで **[Application Gateway]** を選択します。
 
 ### <a name="basics-tab"></a>[基本] タブ
 
@@ -169,7 +171,7 @@ Azure portal の左側のメニューにある **[リソースの作成]** を�
 
 この例では、Azure がアプリケーション ゲートウェイを正常に作成したことを確認するためにのみ、仮想マシンに IIS をインストールします。
 
-1. [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)を開きます。 そのためには、Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
+1. [Azure PowerShell](../../cloud-shell/quickstart-powershell.md)を開きます。 そのためには、Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
 
     ![カスタム拡張機能のインストール](../media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
@@ -214,21 +216,21 @@ Azure portal の左側のメニューにある **[リソースの作成]** を�
 この記事では、アプリケーション ゲートウェイは、検出および防止の目的で、ストレージ アカウントを使用してデータを格納します。 Azure Monitor ログまたはイベント ハブを使用して、データを記録することもできます。
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
-1. **[ストレージ]** を選択し、 **[ストレージ アカウント]** を選択します。
+1. **[ストレージ]** を選択し、**[ストレージ アカウント]** を選択します。
 1. "*リソース グループ*" には、**myResourceGroupAG** を選択します。
 1. ストレージ アカウントの名前として、「*myagstore1*」と入力します。
-1. 他の設定は既定値をそのまま使用し、 **[確認および作成]** を選択します。
+1. 他の設定は既定値をそのまま使用し、**[確認および作成]** を選択します。
 1. 設定を確認し、 **[作成]** を選択します。
 
 ### <a name="configure-diagnostics"></a>診断の構成
 
 ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog、および ApplicationGatewayFirewallLog ログにデータが記録されるように診断を構成します。
 
-1. 左側のメニューで、 **[すべてのリソース]** を選択し、 *[myAppGateway]* を選択します。
+1. 左側のメニューで、**[すべてのリソース]** を選択し、*[myAppGateway]* を選択します。
 2. [監視] で **[診断設定]** を選択します。
 3. **[診断設定の追加]** を選択します。
 4. 診断設定の名前として「*myDiagnosticsSettings*」と入力します。
-5. **[ストレージ アカウントへのアーカイブ]** を選択し、 **[構成]** を選択して、前に作成した *myagstore1* ストレージ アカウントを選択します。その後、 **[OK]** を選択します。
+5. **[ストレージ アカウントへのアーカイブ]** を選択し、**[構成]** を選択して、前に作成した *myagstore1* ストレージ アカウントを選択します。その後、**[OK]** を選択します。
 6. 収集および保持するためのアプリケーション ゲートウェイ ログを選択します。
 7. **[保存]** を選択します。
 
@@ -236,7 +238,7 @@ ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog、および Appli
 
 ## <a name="create-and-link-a-web-application-firewall-policy"></a>Web アプリケーション ファイアウォールのポリシーを作成してリンクする
 
-WAF のカスタマイズと設定はすべて、WAF ポリシーと呼ばれる別のオブジェクトに含まれています。 このポリシーは Application Gateway に関連付けられている必要があります。 WAF ポリシーを作成するには、[WAF ポリシーの作成](create-waf-policy-ag.md)に関するページを参照してください。 作成されたら、 **[関連付けられたアプリケーション ゲートウェイ]** タブで WAF ポリシーから自分の WAF (または個別リスナー) にポリシーを関連付けることができます。 
+WAF のカスタマイズと設定はすべて、WAF ポリシーと呼ばれる別のオブジェクトに含まれています。 このポリシーは Application Gateway に関連付けられている必要があります。 WAF ポリシーを作成するには、[WAF ポリシーの作成](create-waf-policy-ag.md)に関するページを参照してください。 作成されたら、**[関連付けられたアプリケーション ゲートウェイ]** タブで WAF ポリシーから自分の WAF (または個別リスナー) にポリシーを関連付けることができます。 
 
 ![関連付けられたアプリケーション ゲートウェイ](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
 
@@ -246,7 +248,7 @@ IIS はアプリケーション ゲートウェイを作成するのに必要で
 
 1. **[概要]** ページで、アプリケーション ゲートウェイのパブリック IP アドレスを見つけます。![アプリケーション ゲートウェイのパブリック IP アドレスの記録](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
 
-   または、 **[すべてのリソース]** を選択し、検索ボックスに「*myAGPublicIPAddress*」と入力してから、検索結果でそれを選択できます。 Azure によって、 **[概要]** ページにパブリック IP アドレスが表示されます。
+   または、**[すべてのリソース]** を選択し、検索ボックスに「*myAGPublicIPAddress*」と入力してから、検索結果でそれを選択できます。 Azure によって、 **[概要]** ページにパブリック IP アドレスが表示されます。
 1. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 1. 応答を確認します。 応答が有効であれば、アプリケーション ゲートウェイが正常に作成され、バックエンドと正常に接続できることが保証されます。
 
@@ -260,7 +262,7 @@ IIS はアプリケーション ゲートウェイを作成するのに必要で
 
 1. Azure portal の左側のメニューにある **[リソース グループ]** を選択します。
 2. **[リソース グループ]** ページで、リストの **myResourceGroupAG** を探して選択します。
-3. **[リソース グループ] ページ**で、 **[リソース グループの削除]** を選択します。
+3. **[リソース グループ] ページ** で、 **[リソース グループの削除]** を選択します。
 4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ

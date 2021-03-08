@@ -6,12 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 933280b5d3b81098f18f22a72bd2c7f942869e6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092917"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578321"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights のデータをカスタム データ ソースと関連付ける
 
@@ -31,19 +31,19 @@ Application Insights は Azure Monitor の強力なログ プラットフォー�
 
 このセクションでは、Azure Monitor ログにデータを取り込む方法について確認します。
 
-Log Analytics ワークスペースがまだない場合は、[こちらの指示](../learn/quick-collect-azurevm.md) (「ワークスペースの作成」の手順を含む) に従って、新たにプロビジョニングします。
+Log Analytics ワークスペースがまだない場合は、[こちらの指示](../vm/quick-collect-azurevm.md) (「ワークスペースの作成」の手順を含む) に従って、新たにプロビジョニングします。
 
 Azure Monitor へのログ データの送信を開始するには、 いくつかのオプションがあります。
 
-- 同期メカニズムを使用する場合は、[データ コレクター API](../platform/data-collector-api.md) を直接呼び出すか、または Microsoft のロジック アプリ コネクタを使用できます。[Azure Log Analytics] から [データを送信する] オプションを選択してください。
+- 同期メカニズムを使用する場合は、[データ コレクター API](../logs/data-collector-api.md) を直接呼び出すか、または Microsoft のロジック アプリ コネクタを使用できます。[Azure Log Analytics] から [データを送信する] オプションを選択してください。
 
   ![スクリーンショット (アクションを選択してください)](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- 非同期オプションを使用する場合は、データ コレクター API を使って処理パイプラインを作成します。 詳細については、[こちらの記事](../platform/create-pipeline-datacollector-api.md)をご覧ください。
+- 非同期オプションを使用する場合は、データ コレクター API を使って処理パイプラインを作成します。 詳細については、[こちらの記事](../logs/create-pipeline-datacollector-api.md)をご覧ください。
 
 ## <a name="correlating-data"></a>データの関連付け
 
-Application Insights は、Azure Monitor のログ プラットフォームを基盤としています。 そのため、[リソースをまたいだ結合操作](../log-query/cross-workspace-query.md)を使用して、Azure Monitor に取り込んだあらゆるデータを Application Insights のデータに関連付けることができます。
+Application Insights は、Azure Monitor のログ プラットフォームを基盤としています。 そのため、[リソースをまたいだ結合操作](../logs/cross-workspace-query.md)を使用して、Azure Monitor に取り込んだあらゆるデータを Application Insights のデータに関連付けることができます。
 
 たとえば、"myLA" という Log Analytics ワークスペース内の "LabLocations_CL" というテーブルに、ラボのインベントリや場所を取り込むことができます。 その後、"myAI" という Application Insights アプリで追跡した要求を調査し、その要求を処理したマシン名と、前述したカスタム テーブルに格納されている対応するマシンの場所を関連付けたい場合は、Application Insights または Azure Monitor のコンテキストから次のクエリを実行します。
 
@@ -57,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>次の手順
 
-- [データ コレクター API](../platform/data-collector-api.md) に関するリファレンスを確認します。
-- [リソースをまたいだ結合操作](../log-query/cross-workspace-query.md)の詳細を確認します。
+- [データ コレクター API](../logs/data-collector-api.md) に関するリファレンスを確認します。
+- [リソースをまたいだ結合操作](../logs/cross-workspace-query.md)の詳細を確認します。

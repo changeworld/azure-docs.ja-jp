@@ -1,17 +1,17 @@
 ---
 title: メトリック アラートを構成する - Azure portal - Azure Database for MySQL
 description: この記事では、Azure Portal から Azure Database for MySQL のメトリック アラートを構成およびアクセスする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: c20177b3dceca3b32cf8f2e2f8f60fa4227e2082
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5b9e7938f404a37672fe8d13725b1e64d665bf18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112719"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576274"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Azure Portal を使用して Azure Database for MySQL のメトリックのアラートを設定する 
 
@@ -25,34 +25,34 @@ ms.locfileid: "86112719"
 * Webhook を呼び出す
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure 監視 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
+* [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
 1. [Azure Portal](https://portal.azure.com/) で、監視する Azure Database for MySQL サーバーを選択します。
 
 2. 次のように、サイドバーの **[監視]** セクションで、 **[アラート]** を選択します。
 
-   ![アラート ルールを選択する](./media/howto-alert-on-metric/2-alert-rules.png)
+   :::image type="content" source="./media/howto-alert-on-metric/2-alert-rules.png" alt-text="アラート ルールを選択する":::
 
 3. **[メトリック アラートの追加]** (+ アイコン) を選択します。
 
 4. 以下のように、 **[ルールの作成]** ページが開きます。 必要な情報を入力します。
 
-   ![メトリック アラート フォームを追加する](./media/howto-alert-on-metric/4-add-rule-form.png)
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="メトリック アラート フォームを追加する":::
 
 5. **[条件]** セクションで、 **[条件の追加]** を選択します。
 
 6. アラート通知のシグナルの一覧からメトリックを選択します。 この例では、[ストレージの割合] を選択します。
    
-   ![メトリックを選択する](./media/howto-alert-on-metric/6-configure-signal-logic.png)
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="メトリックを選択する":::
 
 7. アラート ロジックを構成します。これには、 **[条件]** (例: 「より大きい」)、 **[しきい値]** (例: 85 パーセント)、 **[時間の集計]** 、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、と **[頻度]** があります。
    
    完了したら、 **[完了]** を選択します。
 
-   ![メトリックを選択する](./media/howto-alert-on-metric/7-set-threshold-time.png)
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="メトリック 2 を選択する":::
 
 8. **[アクション グループ]** セクション内で **[新規作成]** を選択して、アラートの通知を受信する新しいグループを作成します。
 
@@ -66,11 +66,11 @@ ms.locfileid: "86112719"
 
     完了したら、 **[OK]** を選択します。
 
-    ![アクション グループ](./media/howto-alert-on-metric/10-action-group-type.png)
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="アクション グループ":::
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-    ![アクション グループ](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="アクション グループ 2"::: 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 
@@ -80,10 +80,10 @@ ms.locfileid: "86112719"
 アラートを作成したら、それを選択して次のアクションを実行できます。
 
 * このアラートに関連するメトリックのしきい値と、前日の実際の値を示すグラフを表示する。
-* アラート ルールを**編集**または**削除**する。
-* アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
+* アラート ルールを **編集** または **削除** する。
+* アラートを **無効** にしてアラートを一時的に停止する、または **有効** にして通知の受け取りを再開する。
 
 
 ## <a name="next-steps"></a>次のステップ
-* [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
-* [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
+* [アラートでの webhook の構成](../azure-monitor/alerts/alerts-webhooks.md)に関する詳細情報を確認します。
+* [メトリック収集の概要](../azure-monitor/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。

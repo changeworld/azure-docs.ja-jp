@@ -3,13 +3,12 @@ title: Azure Service Fabric - コンテナー リポジトリの資格情報を�
 description: コンテナー レジストリからイメージをダウンロードするためのリポジトリ資格情報を構成します
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c6421fed88a3909db717c13a6b3faf51c4491cd
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934989"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574821"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>アプリケーションでコンテナー イメージをダウンロードするためのリポジトリ資格情報を構成する
 
@@ -91,11 +90,14 @@ ClusterManifestTemplate.json ファイルの `Hosting` セクション内に追�
 
 ## <a name="use-tokens-as-registry-credentials"></a>トークンをレジストリ資格情報として使用する
 
-Service Fabric では、お使いのコンテナーのイメージをダウンロードするための資格情報としてのトークンの使用をサポートしています。  この機能は、基になる仮想マシン スケール セットの*マネージド ID* を活用してレジストリに対する認証を行うため、ユーザー資格情報を管理する必要がなくなります。  詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。  この機能を使用するには、次の手順を実行する必要があります。
+Service Fabric では、お使いのコンテナーのイメージをダウンロードするための資格情報としてのトークンの使用をサポートしています。  この機能は、基になる仮想マシン スケール セットの *マネージド ID* を活用してレジストリに対する認証を行うため、ユーザー資格情報を管理する必要がなくなります。  詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。  この機能を使用するには、次の手順を実行する必要があります。
 
-1. VM に対して*システム割り当てマネージド ID* が有効になっていることを確認します。
+1. VM に対して *システム割り当てマネージド ID* が有効になっていることを確認します。
 
     ![Azure portal:仮想マシン スケール セット ID オプションを作成する](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+
+> [!NOTE]
+> ユーザー割り当てマネージド ID の場合は、この手順をスキップします。 下の残りの手順は、スケール セットが単一のユーザー割り当てマネージド ID にのみ関連付けられている限り、同じように機能します。
 
 2. レジストリからイメージをプルするアクセス許可または読み取るアクセス許可を仮想マシンスケール セットに付与します。 Azure portal 内の Azure コンテナー レジストリの [Access Control (IAM)] ブレードで、仮想マシンに対する "*ロールの割り当て*" を追加します。
 

@@ -4,19 +4,19 @@ description: この記事では、IoT Edge ソリューションをデプロイ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82782620"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382210"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -174,7 +174,7 @@ deployment.json ファイルで次の操作を行います。
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
        },
        "type": "docker",
@@ -188,7 +188,7 @@ deployment.json ファイルで次の操作を行います。
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0"
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1"
        },
        "type": "docker",
        "status": "running",
@@ -286,7 +286,7 @@ IoT Hub で、IoT Edge デバイスを選択し、[デバイスの詳細] ペー
 "edgeHub": {
   "type": "docker",
   "settings": {
-    "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+    "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
     "createOptions": <snipped>
   },
   "env": {
@@ -331,6 +331,25 @@ IoT Edge デバイスのモジュールを設定し、モジュールが正常�
 使用するデプロイ メカニズムは、デバイスごとに 1 種類 (自動デプロイまたはデバイスの個別デプロイのどちらか一方) のみとしてください。 デバイスが複数の自動デプロイの対象となっている場合、適切なデプロイが特定のデバイスに適用されるよう、優先度またはターゲットの記述を変更することができます。 自動デプロイのターゲットの記述と一致しないよう、デバイス ツインを更新することもできます。
 
 詳細については、「[1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動展開について](module-deployment-monitoring.md)」を参照してください。
+
+<!-- <1.2> -->
+::: moniker range=">=iotedge-2020-11"
+
+## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>ゲートウェイの背後にある IoT Edge が HTTP 要求を実行して edgeAgent モジュールを起動できない
+
+**監視された動作:**
+
+IoT Edge デーモンが、有効な構成ファイルでアクティブになっていますが、edgeAgent モジュールを起動できません。 コマンド `iotedge list` を実行すると、空のリストが返されます。 IoT Edge デーモンのログでは、`Could not perform HTTP request` が報告されます。
+
+**根本原因:**
+
+ゲートウェイの背後にある IoT Edge デバイスは、config.yaml ファイルの `parent_hostname` フィールドに指定されている親 IoT Edge デバイスからモジュール イメージを取得します。 `Could not perform HTTP request` エラーは、子デバイスが HTTP 経由で親デバイスに到達できないことを意味します。
+
+**解決方法:**
+
+親 IoT Edge デバイスが子 IoT Edge デバイスからの受信要求を受信できることを確認します。 子デバイスから送信される要求のために、ポート 443 および 6617 のネットワーク トラフィックを開きます。
+
+:::moniker-end
 
 ## <a name="next-steps"></a>次のステップ
 

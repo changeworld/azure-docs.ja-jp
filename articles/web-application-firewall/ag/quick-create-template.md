@@ -1,19 +1,20 @@
 ---
 title: クイック スタート:Application Gateway に Azure WAF v2 を作成する - Azure Resource Manager テンプレート
 titleSuffix: Azure Application Gateway
-description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Application Gateway に Web アプリケーション ファイアウォール v2 を作成する方法について説明します。
+description: Azure Resource Manager クイック スタート テンプレート (ARM テンプレート) を使用して、Azure Application Gateway に Web アプリケーション ファイアウォール v2 を作成する方法について説明します。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
-ms.date: 04/02/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.custom: subject-armqs
+ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705199"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091323"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Application Gateway に Azure WAF v2 を作成する
 
@@ -52,7 +53,7 @@ ms.locfileid: "88705199"
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Resource Manager テンプレートを Azure にデプロイします。
+ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートにより、アプリケーション ゲートウェイ、ネットワーク インフラストラクチャ、IIS を実行しているバックエンドプールに 2 つの仮想マシンが作成されます。
 

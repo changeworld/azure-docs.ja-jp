@@ -1,22 +1,18 @@
 ---
 title: Data Management Gateway のリリース ノート
 description: Data Management Gateway のリリース ノート
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194480"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363918"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]
@@ -39,19 +35,19 @@ Data Management Gateway とその使用方法の詳細については、次の�
 ## <a name="earlier-versions"></a>以前のバージョン
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>強化された機能
-- ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 それぞれの DNS エントリは、Azure Portal ([Data Factory] - > [作成およびデプロイ] - > [ゲートウェイ] - > [serviceUrls]) で見つかります (JSON)。
+- ファイアウォールからのすべての Azure IP アドレスを許可するのではなく、DNS エントリを追加して Service Bus を許可するようにできます (必要に応じて)。 それぞれの DNS エントリは、Azure portal ([Data Factory] - > [作成およびデプロイ] - > [ゲートウェイ] - > [serviceUrls]) で見つかります (JSON)。
 - HDFS コネクタでは、TLS 検証のスキップを許可することで、自己署名公開証明書がサポートされるようになりました。
 - 固定:(クロック スキューによる) 更新中のゲートウェイ オフラインの問題
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>強化された機能
--   ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 詳細については、こちらをご覧ください。
--   1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです (以前は 195 GB に制限されていました)。
--   固定:コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
--   固定:べき等性を利用して Document DB から SQL Server にコピーするときの範囲外のインデックスの問題。
--   固定:コピー ウィザードで、SQL クリーンアップ スクリプトが SQL Server で機能しない問題。
--   固定:末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
+-    ファイアウォールからのすべての Azure IP アドレスを許可するのではなく、DNS エントリを追加して Service Bus を許可するようにできます (必要に応じて)。 詳細については、こちらをご覧ください。
+-    1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです (以前は 195 GB に制限されていました)。
+-    固定:コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
+-    固定:べき等性を利用して Document DB から SQL Server にコピーするときの範囲外のインデックスの問題。
+-    固定:コピー ウィザードで、SQL クリーンアップ スクリプトが SQL Server で機能しない問題。
+-    固定:末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>強化された機能
@@ -198,7 +194,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 *  構成マネージャーでの診断ツールのサポート
 *  Azure Data Factory の表形式データ ソースのテーブル列のサポート
-*  Azure Data Factory の SQL DW のサポート
+*  Azure Data Factory の Azure Synapse Analytics のサポート
 *  Azure Data Factory の BlobSource と FileSource の個別サポート
 *  CopyBehavior のサポート – Azure Data Factory のバイナリ コピーを含む BlobSink と FileSink の MergeFiles、PreserveHierarchy、および FlattenHierarchy
 *  Azure Data Factory のコピー アクティビティ レポートの進行のサポート

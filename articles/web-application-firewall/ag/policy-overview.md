@@ -5,23 +5,18 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 02/01/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143836"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518738"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web アプリケーション ファイアウォール (WAF) ポリシーの概要
 
 Web アプリケーション ファイアウォール ポリシーには、すべての WAF 設定と構成が含まれています。 これには、除外、カスタム ルール、マネージド ルールなどがあります。 これらのポリシーは、アプリケーション ゲートウェイ (グローバル)、リスナー (サイトごと)、またはパスベースのルール (URI ごと) に関連付けられ、有効になります。
-
-> [!NOTE]
-> Azure Web アプリケーション ファイアウォール (WAF) と URI ごとのポリシーは、パブリック プレビュー段階です。
-> 
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 作成できるポリシーの数に制限はありません。 ポリシーを作成した場合は、アプリケーション ゲートウェイに関連付けて有効にする必要があります。 アプリケーション ゲートウェイ、リスナー、およびパスベースのルールの任意の組み合わせと関連付けることができます。
 
@@ -43,7 +38,7 @@ URI レベルまでさらにカスタマイズする場合は、WAF ポリシー
 
 サイトごとの WAF ポリシーと同様に、固有性の高いポリシーの方が固有性の低いポリシーよりも優先されます。 つまり、URL パス マップに対する URI ごとのポリシーは、その上位にあるサイトごとまたはグローバルの WAF ポリシーよりも優先されます。
 
-## <a name="example"></a>例
+### <a name="example"></a>例
 
 たとえば、contoso.com、fabrikam.com、adatum.com という 3 つのサイトがあり、すべて同じアプリケーション ゲートウェイの背後に配置されているとします。 3 つのサイトすべてに WAF を適用する予定ですが、顧客が製品にアクセスし、閲覧し、購入する場所である adatum.com には高度なセキュリティが必要です。
 
@@ -53,13 +48,13 @@ URI レベルまでさらにカスタマイズする場合は、WAF ポリシー
 
 adatum.com/payments URI は、注意が必要な場所です。 そのため、その URI に別のポリシーを適用し、すべてのルールを有効のままにします。また、すべての除外も削除します。
 
-この例では、2 つのサイトに適用されるグローバル ポリシーがあります。 1 つのサイトに適用されるサイトごとのポリシーと、1 つの固有のパスベースのルールに適用される URI ごとのポリシーがあります。 この例に対応する PowerShell について、サイトごとのポリシーと URI ごとのポリシーを作成する方法 (存在する場合はここにリンクを挿入) を参照してください。
+この例では、2 つのサイトに適用されるグローバル ポリシーがあります。 1 つのサイトに適用されるサイトごとのポリシーと、1 つの固有のパスベースのルールに適用される URI ごとのポリシーがあります。 この例の対応する PowerShell については、「[Azure PowerShell を使用してサイト別 WAF ポリシーを構成する](per-site-policies.md)」を参照してください。
 
 ## <a name="existing-waf-configurations"></a>既存の WAF 構成
 
-新しい Web アプリケーション ファイアウォールの WAF 設定 (カスタム ルール、マネージド ルールセットの構成、除外など) はすべて WAF ポリシーに存在します。 既存の WAF がある場合、これらの設定がまだ WAF 構成にある可能性があります。 新しい WAF ポリシーへの移行の詳細については、「[Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)」を参照してください。 
+新しい Web アプリケーション ファイアウォールの WAF 設定 (カスタム ルール、マネージド ルールセットの構成、除外など) はすべて WAF ポリシーに存在します。 既存の WAF がある場合、これらの設定がまだ WAF 構成にある可能性があります。 新しい WAF ポリシーへの移行の詳細については、「[Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する](./migrate-policy.md)」を参照してください。 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell を使用して、サイトごとのポリシーと URI ごとのポリシーを作成します。
+- [Azure PowerShell を使用して、サイトごとと URI ごとのポリシーを作成します](per-site-policies.md)。

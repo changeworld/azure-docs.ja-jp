@@ -3,16 +3,16 @@ title: Azure Red Hat OpenShift の概要
 description: コンテナーベースのアプリケーションをデプロイして管理するための、Microsoft Azure Red Hat OpenShift の機能とメリットについて説明します。
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: overview
-ms.date: 04/24/2020
+ms.date: 11/13/2020
 ms.custom: mvc
-ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: ec934a8a9907f0c0c3aff047e003c6725c5ab25f
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628522"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636222"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -28,11 +28,15 @@ Azure Red Hat OpenShift は、Red Hat と Microsoft が共同で設計、運用�
 
 ## <a name="access-security-and-monitoring"></a>アクセス、セキュリティ、および監視
 
-セキュリティと管理の強化のため、Azure Red Hat OpenShift では、Azure Active Directory (Azure AD) と統合して、Kubernetes のロールベースのアクセス制御 (RBAC) を使用することができます。 また、クラスターとリソースの正常性を監視することもできます。
+セキュリティと管理の強化のため、Azure Red Hat OpenShift では、Azure Active Directory (Azure AD) と統合して、Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用することができます。 また、クラスターとリソースの正常性を監視することもできます。
 
 ## <a name="cluster-and-node"></a>クラスターとノード
 
 Azure Red Hat OpenShift ノードは Azure 仮想マシン上で実行されます。 ストレージをノードやポッドに接続し、クラスター コンポーネントをアップグレードすることができます。
+
+## <a name="service-level-agreement"></a>サービス レベル アグリーメント
+
+Azure Red Hat OpenShift では、サービスが 99.95% の時間利用できることを保証するサービス レベル アグリーメントを提供しています。 SLA の詳細については、[Azure Red Hat OpenShift の SLA](https://azure.microsoft.com/en-au/support/legal/sla/openshift/v1_0/) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

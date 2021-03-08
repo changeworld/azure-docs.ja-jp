@@ -4,15 +4,13 @@ description: GetMetric() 呼び出しを効果的に使用し、Azure Monitor Ap
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517146"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584188"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET および .NET Core でのカスタム メトリックの収集
 
@@ -111,7 +109,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 > [!NOTE]
 > 取り込み後に未加工のテレメトリ項目に明示的な sum プロパティやフィールドは含まれませんが、ここでは 1 つ作成します。 この場合、`value` と `valueSum` の両方のプロパティは同じことを表します。
 
-また、ポータルの [ _[メトリック]_ ](../platform/metrics-charts.md) セクションで、カスタム メトリック テレメトリにアクセスすることもできます。 [ログベース、およびカスタム メトリック](pre-aggregated-metrics-log-metrics.md)の両方があります (以下のスクリーンショットはログベースの例です)。![メトリックス エクスプローラー ビュー](./media/get-metric/metrics-explorer.png)
+また、ポータルの [ _[メトリック]_](../essentials/metrics-charts.md) セクションで、カスタム メトリック テレメトリにアクセスすることもできます。 [ログベース、およびカスタム メトリック](pre-aggregated-metrics-log-metrics.md)の両方があります (以下のスクリーンショットはログベースの例です)。![メトリックス エクスプローラー ビュー](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>高スループット使用率のメトリック参照のキャッシュ
 
@@ -192,7 +190,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 
 Application Insights リソースに対して多次元メトリックを有効にするには、 **[使用量と推定コスト]**  >  **[カスタム メトリック]**  >  **[カスタム メトリック ディメンションに関するアラートを有効にします]**  >  **[OK]** の順に選択します。 この詳細については、[こちら](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)をご覧ください。
 
-この変更を行って新しい多次元テレメトリを送信すると、**分割を適用**できるようになります。
+この変更を行って新しい多次元テレメトリを送信すると、**分割を適用** できるようになります。
 
 > [!NOTE]
 > ポータルで機能をオンにした後に新しく送信されたメトリックにのみ、ディメンションが格納されます。
@@ -223,7 +221,7 @@ computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
 
 メトリックでは、アクセスに使われる `TelemetryClient` のテレメトリ コンテキストは使用されません。`MetricDimensionNames` クラスの定数として使用できる特殊なディメンション名は、このような制限がある場合に最適な回避策です。
 
-以下の "Special Operation Request Size" メトリックによって送信されたメトリック集計では、`Context.Operation.Name` が "Special Operation" に設定**されません**。 一方、`TrackMetric()` やその他の TrackXXX() では、`OperationName` が "Special Operation" に正しく設定されます。
+以下の "Special Operation Request Size" メトリックによって送信されたメトリック集計では、`Context.Operation.Name` が "Special Operation" に設定 **されません**。 一方、`TrackMetric()` やその他の TrackXXX() では、`OperationName` が "Special Operation" に正しく設定されます。
 
 ``` csharp
         //...
@@ -304,6 +302,6 @@ SeverityLevel.Error);
 
 * ワーカー サービス アプリケーションの監視の詳細については、[こちら](./worker-service.md)を参照してください。
 * ログベースおよび事前集計メトリックの詳細については、[こちら](./pre-aggregated-metrics-log-metrics.md)を参照してください。
-* [メトリックス エクスプローラー](../platform/metrics-getting-started.md)
+* [メトリックス エクスプローラー](../essentials/metrics-getting-started.md)
 * [ASP.NET Core アプリケーション](asp-net-core.md)用の Application Insights を有効にする方法
 * [ASP.NET アプリケーション](asp-net.md)用の Application Insights を有効にする方法

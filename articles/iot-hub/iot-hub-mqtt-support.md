@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub の MQTT サポートについて | Microsoft Docs
-description: 開発者ガイド - MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。
+description: MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +12,15 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+- contperf-fy21q1
+- fasttrack-edit
+- iot
+ms.openlocfilehash: d206f40380ddb60a53ec8af2802a65af94f5820d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924191"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027800"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -43,7 +46,7 @@ MQTT ポート (8883) は、多くの企業や教育用のネットワーク環�
 
 ## <a name="using-the-device-sdks"></a>デバイス SDK の使用
 
-MQTT プロトコルをサポートする[デバイス SDK](https://github.com/Azure/azure-iot-sdks) は、Java、Node.js、C、C#、および Python に対応しています。 デバイス SDK では、標準的な IoT Hub 接続文字列を使用して、IoT ハブへの接続を確立します。 MQTT プロトコルを使用するには、クライアント プロトコル パラメーターを **MQTT**に設定する必要があります。 また、クライアント プロトコル パラメーターで MQTT over Web Sockets を指定することもできます。 デバイス SDK は既定では、**CleanSession** フラグを **0** に設定して IoT ハブに接続し、IoT ハブとのメッセージ交換には **QoS 1** を使用します。 メッセージ交換を高速にすために **QoS 0** を構成することはできますが、配信が保証されず、確認応答がないことに注意する必要があります。 このため、**QoS 0** は "ファイア アンド フォーゲット" と呼ばれることがよくあります。
+MQTT プロトコルをサポートする[デバイス SDK](https://github.com/Azure/azure-iot-sdks) は、Java、Node.js、C、C#、および Python に対応しています。 デバイス SDK では、標準的な IoT Hub 接続文字列を使用して、IoT ハブへの接続を確立します。 MQTT プロトコルを使用するには、クライアント プロトコル パラメーターを **MQTT** に設定する必要があります。 また、クライアント プロトコル パラメーターで MQTT over Web Sockets を指定することもできます。 デバイス SDK は既定では、**CleanSession** フラグを **0** に設定して IoT ハブに接続し、IoT ハブとのメッセージ交換には **QoS 1** を使用します。 メッセージ交換を高速にすために **QoS 0** を構成することはできますが、配信が保証されず、確認応答がないことに注意する必要があります。 このため、**QoS 0** は "ファイア アンド フォーゲット" と呼ばれることがよくあります。
 
 デバイスは、IoT ハブに接続されると、デバイス SDK によって、IoT ハブとのメッセージの交換を可能にするメソッドが提供されます。
 
@@ -52,9 +55,9 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 | Language | MQTT プロトコルのパラメーター | MQTT over WebSocket プロトコルのパラメーター
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable).MQTT | IotHubClientProtocol.MQTT_WS |
-| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable).MQTT | IotHubClientProtocol.MQTT_WS |
+| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 既定で MQTT をサポートします | 呼び出しに `websockets=True` を追加してクライアントを作成します |
 
 次のフラグメントでは、Azure IoT Node.js SDK を使用しているときに MQTT over WebSocket プロトコルを指定する方法を示しています。
@@ -74,7 +77,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 ### <a name="default-keep-alive-timeout"></a>既定のキープアライブ タイムアウト
 
-クライアント/IoT Hub 接続を確実に存続させるために、サービスとクライアントは、どちらも*キープアライブ* ping を定期的に相手に送信します。 IoT SDK を使用しているクライアントは、次の表に定義されている間隔でキープアライブを送信します。
+クライアント/IoT Hub 接続を確実に存続させるために、サービスとクライアントは、どちらも *キープアライブ* ping を定期的に相手に送信します。 IoT SDK を使用しているクライアントは、次の表に定義されている間隔でキープアライブを送信します。
 
 |Language  |既定のキープアライブ間隔  |構成可能  |
 |---------|---------|---------|
@@ -102,6 +105,38 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * Python SDK では AMQP は サポートされていません。
 
+## <a name="example-in-c-using-mqtt-without-an-azure-iot-sdk"></a>Azure IoT SDK を使用しない MQTT を使用した C の例
+
+この [IoT MQTT サンプル リポジトリ](https://github.com/Azure-Samples/IoTMQTTSample)では、Azure IoT C SDK を使用せずに、IoT ハブでテレメトリ メッセージを送信し、イベントを受信する方法を示す C/C++ のデモ プロジェクトをいくつか紹介します。 
+
+これらのサンプルでは、Eclipse Mosquitto ライブラリを使用して、IoT ハブに実装されている MQTT ブローカーにメッセージを送信します。
+
+このリポジトリには、次のものが含まれます。
+
+**Windows の場合:**
+
+* TelemetryMQTTWin32: Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。
+
+* SubscribeMQTTWin32: Windows マシン上の特定の IoT ハブのイベントをサブスクライブするためのコードが含まれています。
+
+* DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
+
+* PnPMQTTWin32: IoT プラグ アンド プレイのデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 詳細については、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)に関するページをご覧ください
+
+**Linux の場合:**
+
+* MQTTLinux: Linux で実行されるコードとビルド スクリプトが含まれています (現時点までで WSL、Ubuntu、Raspbian でテスト済み)。
+
+* LinuxConsoleVS2019: WSL (Windows Linux サブ システム) をターゲットとする VS2019 プロジェクトの同じコードが含まれています。 このプロジェクトを使用すると、Linux で実行されているコードを Visual Studio からステップ バイ ステップでデバッグできます。
+
+**mosquitto_pub の場合:**
+
+このフォルダーには、Mosquitto.org によって提供される mosquitto_pub ユーティリティ ツールで使用される 2 つのサンプル コマンドが含まれています。
+
+* Mosquitto_sendmessage: デバイスとして機能する Azure IoT ハブに単純なテキスト メッセージを送信します。
+
+* Mosquitto_subscribe: Azure IoT ハブで発生しているイベントを表示します。
+
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>MQTT プロトコルの直接使用 (デバイスとして)
 
 デバイスでデバイス SDK を使用できない場合でも、MQTT プロトコルをポート 8883 で使用して、デバイスをパブリックのデバイス エンドポイントに接続できます。 **CONNECT** パケットの場合、デバイスでは次の値を使用する必要があります。
@@ -119,7 +154,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > X.509 証明書の認証を使用する場合は、SAS トークン パスワードは不要です。 詳細については、「[Azure IoT Hub での X.509 セキュリティの設定](iot-hub-security-x509-get-started.md)」を参照し、[以下の](#tlsssl-configuration)コードの説明に従ってください。
+  > X.509 証明書の認証を使用する場合は、SAS トークン パスワードは不要です。 詳細については、「[Azure IoT Hub での X.509 セキュリティの設定](iot-hub-security-x509-get-started.md)」を参照し、[TLS/SSL 構成セクション](#tlsssl-configuration)のコードの説明に従ってください。
 
   SAS トークンの生成方法について詳しくは、[IoT Hub のセキュリティ トークンの使用](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)に関するページにあるデバイスのセクションをご覧ください。
 
@@ -145,42 +180,11 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は **操作の監視** チャネルでイベントを発行します。 このイベントには、接続の問題をトラブルシューティングするために役立つ追加情報があります。
 
-デバイス アプリは、**CONNECT** パケットに **Will** メッセージを指定できます。 また、デバイス アプリは、`devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を **Will** トピック名として使用することで、テレメトリ メッセージとして転送される **Will** メッセージ を定義する必要があります。 この場合、ネットワーク接続が閉じているが、**DISCONNECT** パケットがデバイスからまだ受信されていなければ、IoT Hub は、**CONNECT** パケットで提供される **Will** メッセージをテレメトリ チャネルに送信します。 テレメトリ チャネルは、既定の**イベント** エンドポイントにすることも、IoT Hub ルーティングで定義されるカスタム エンドポイントにすることもできます。 メッセージには **iothub-MessageType** プロパティが含まれており、その値には **Will** が割り当てられています。
-
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Azure IoT C SDK を使用せずに MQTT を使用した C コードの例
-この[リポジトリ](https://github.com/Azure-Samples/IoTMQTTSample)では、Azure IoT C SDK を使用せずに、IoT ハブでテレメトリ メッセージを送信し、イベントを受信する方法を示す C/C++ のデモ プロジェクトをいくつか紹介します。 
-
-これらのサンプルでは、Eclipse Mosquitto ライブラリを使用して、IoT ハブ に実装されている MQTT ブローカーにメッセージを送信します。
-
-このリポジトリには、次のものが含まれます。
-
-**Windows の場合:**
-
-* TelemetryMQTTWin32: Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。
-
-* SubscribeMQTTWin32: Windows マシン上の特定の IoT ハブのイベントをサブスクライブするためのコードが含まれています。
-
-* DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
-
-* PnPMQTTWin32: IoT プラグ アンド プレイのプレビュー版のデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 IoT プラグ アンド プレイの詳細については、[こちら](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)を参照してください。
-
-**Linux の場合:**
-
-* MQTTLinux: Linux で実行されるコードとビルド スクリプトが含まれています (現時点までで WSL、Ubuntu、Raspbian でテスト済み)。
-
-* LinuxConsoleVS2019: WSL (Windows Linux サブ システム) をターゲットとする VS2019 プロジェクトの同じコードが含まれています。 このプロジェクトを使用すると、Linux で実行されているコードを Visual Studio からステップ バイ ステップでデバッグできます。
-
-**mosquitto_pub の場合:**
-
-このフォルダーには、Mosquitto.org によって提供される mosquitto_pub ユーティリティ ツールで使用される 2 つのサンプル コマンドが含まれています。
-
-* Mosquitto_sendmessage: デバイスとして機能する Azure IoT ハブに単純なテキスト メッセージを送信します。
-
-* Mosquitto_subscribe: Azure IoT ハブで発生しているイベントを表示します。
+デバイス アプリは、**CONNECT** パケットに **Will** メッセージを指定できます。 また、デバイス アプリは、`devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を **Will** トピック名として使用することで、テレメトリ メッセージとして転送される **Will** メッセージ を定義する必要があります。 この場合、ネットワーク接続が閉じているが、**DISCONNECT** パケットがデバイスからまだ受信されていなければ、IoT Hub は、**CONNECT** パケットで提供される **Will** メッセージをテレメトリ チャネルに送信します。 テレメトリ チャネルは、既定の **イベント** エンドポイントにすることも、IoT Hub ルーティングで定義されるカスタム エンドポイントにすることもできます。 メッセージには **iothub-MessageType** プロパティが含まれており、その値には **Will** が割り当てられています。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>MQTT プロトコルの直接使用 (モジュールとして)
 
-モジュール ID を使用して MQTT を介して IoT Hub に接続するのは、デバイス ([上](#using-the-mqtt-protocol-directly-as-a-device)で説明されています) と類似していますが、以下を使用する必要があります。
+モジュール ID を使用して MQTT を介して IoT Hub に接続するのは、デバイス ([直接デバイスとして MQTT プロトコルを使用することに関するセクション](#using-the-mqtt-protocol-directly-as-a-device)で説明されています) と類似していますが、以下を使用する必要があります。
 
 * クライアント ID を `{device_id}/{module_id}` に設定します。
 
@@ -281,7 +285,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの送信
 
-接続に成功したら、デバイスから IoT Hub に `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用してメッセージを送信できます。 `{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。 次に例を示します。
+接続に成功したら、デバイスから IoT Hub に `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を **トピック名** として使用してメッセージを送信できます。 `{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。 次に例を示します。
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -294,19 +298,20 @@ IoT Hub 実装固有のビヘイビアーのリストを以下に示します。
 
 * IoT Hub では、QoS 2 メッセージはサポートされません。 デバイス アプリから **QoS 2** を使用したメッセージが発行されると、IoT Hub はネットワーク接続を閉じます。
 
-* IoT Hub では、Retain メッセージは保持されません。 デバイスが **RETAIN** フラグを 1 に設定してメッセージを送信すると、IoT Hub はそのメッセージに **x-opt-retain** アプリケーション プロパティを追加します。 この場合、IoT Hub は、Retain メッセージを保持するのではなく、バックエンド アプリにそのメッセージを渡します。
+* IoT Hub では、Retain メッセージは保持されません。 デバイスで **RETAIN** フラグを 1 に設定してメッセージが送信されると、IoT Hub によってそのメッセージに **mqtt-retain** アプリケーション プロパティが追加されます。 この場合、IoT Hub は、Retain メッセージを保持するのではなく、バックエンド アプリにそのメッセージを渡します。
 
-* IoT Hub は、デバイスごとにアクティブな MQTT 接続を 1 つだけサポートします。 同じデバイス ID で新しい MQTT 接続が行われると、IoT Hub は既存の接続を破棄します。
+* IoT Hub は、デバイスごとにアクティブな MQTT 接続を 1 つだけサポートします。 同じデバイス ID の代わりに新しい MQTT 接続を実行すると、IoT Hub によって既存の接続が削除され、**400027 ConnectionForcefullyClosedOnNewConnection** が IoT Hub ログに記録されます
+
 
 詳しくは、[メッセージング開発者のガイド](iot-hub-devguide-messaging.md)をご覧ください。
 
 ## <a name="receiving-cloud-to-device-messages"></a>クラウドからデバイスへのメッセージの受信
 
-IoT Hub からメッセージを受信するには、デバイスで、`devices/{device_id}/messages/devicebound/#` を**トピック フィルター**として使用してサブスクライブする必要があります。 トピック フィルター内の複数レベルのワイルドカード `#` は、デバイスがトピック名の追加プロパティを受信できるようにするためにのみ使用されます。 IoT Hub では、`#` または `?` ワイルドカードを使用してサブトピックをフィルター処理することはできません。 IoT Hub はパブリッシャーとサブスクライバー間の汎用メッセージング ブローカーではないため、ドキュメント化されたトピック名とトピック フィルターのみをサポートします。
+IoT Hub からメッセージを受信するには、デバイスで、`devices/{device_id}/messages/devicebound/#` を **トピック フィルター** として使用してサブスクライブする必要があります。 トピック フィルター内の複数レベルのワイルドカード `#` は、デバイスがトピック名の追加プロパティを受信できるようにするためにのみ使用されます。 IoT Hub では、`#` または `?` ワイルドカードを使用してサブトピックをフィルター処理することはできません。 IoT Hub はパブリッシャーとサブスクライバー間の汎用メッセージング ブローカーではないため、ドキュメント化されたトピック名とトピック フィルターのみをサポートします。
 
 デバイスは、`devices/{device_id}/messages/devicebound/#` トピック フィルターで表されるデバイス固有のエンドポイントへのサブスクライブが成功するまで、IoT Hub からメッセージを受信することはありません。 サブスクリプションが確立した後、デバイスは、サブスクリプション後に送信された cloud-to-device メッセージのみを受信します。 デバイスが **CleanSession** フラグを **0** に設定した状態で接続している場合、サブスクリプションは複数のセッションで保持されます。 この場合、次回 **CleanSession 0** の状態で接続したときに、デバイスは、切断中にデバイスに対して送信された未処理メッセージを受信します。 ただし、デバイスが **CleanSession** フラグを **1** に設定して使用している場合は、デバイス エンドポイントにサブスクライブするまで、デバイスが IoT Hub からメッセージを受信することはありません。
 
-IoT Hub では、メッセージは**トピック名** `devices/{device_id}/messages/devicebound/` で配信されます。メッセージの プロパティがある場合は、`devices/{device_id}/messages/devicebound/{property_bag}` で配信されます。 `{property_bag}` には、メッセージ プロパティの URL でエンコードされた値/キーのペアが含まれています。 プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId**、**correlationId** など) のみです。 システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。 プロパティ バッグの形式に関するその他の詳細については、「[デバイスからクラウドへのメッセージの送信](#sending-device-to-cloud-messages)」を参照してください。
+IoT Hub では、メッセージは **トピック名** `devices/{device_id}/messages/devicebound/` で配信されます。メッセージの プロパティがある場合は、`devices/{device_id}/messages/devicebound/{property_bag}` で配信されます。 `{property_bag}` には、メッセージ プロパティの URL でエンコードされた値/キーのペアが含まれています。 プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId**、**correlationId** など) のみです。 システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。 プロパティ バッグの形式に関するその他の詳細については、「[デバイスからクラウドへのメッセージの送信](#sending-device-to-cloud-messages)」を参照してください。
 
 クラウドからデバイスへのメッセージでは、プロパティ バッグの値は次の表に示されるように表記します。
 
@@ -354,7 +359,7 @@ IoT Hub では、メッセージは**トピック名** `devices/{device_id}/mess
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |
 | 5** | サーバー エラー |
 
-詳しくは、[デバイス ツイン開発者のガイド](iot-hub-devguide-device-twins.md)をご覧ください。
+詳細については、[デバイス ツイン開発者ガイド](iot-hub-devguide-device-twins.md)をご覧ください。
 
 ## <a name="update-device-twins-reported-properties"></a>デバイス ツインの報告されるプロパティの更新
 
@@ -366,7 +371,7 @@ IoT Hub のデバイス ツインで報告されるプロパティをデバイ�
 
 2. デバイスは、デバイス ツインの更新を含むメッセージを、`$iothub/twin/PATCH/properties/reported/?$rid={request id}` トピックに送信します。 このメッセージには、**要求 ID** の値が含まれます。
 
-3. サービスは、トピック `$iothub/twin/res/{status}/?$rid={request id}` で報告されたプロパティ コレクションの新しい ETag 値を含む応答メッセージを送信します。 この応答メッセージでは、要求と同じ**要求 ID** が使われます。
+3. サービスは、トピック `$iothub/twin/res/{status}/?$rid={request id}` で報告されたプロパティ コレクションの新しい ETag 値を含む応答メッセージを送信します。 この応答メッセージでは、要求と同じ **要求 ID** が使われます。
 
 要求メッセージの本文には、報告されるプロパティの新しい値を含む JSON ドキュメントが含まれています。 JSON ドキュメントの各メンバーは、デバイス ツインのドキュメントの対応するメンバーを更新または追加します。 メンバーを `null` に設定した場合、メンバーは包含オブジェクトから削除されます。 次に例を示します。
 
@@ -402,7 +407,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 上記のツインの報告されたプロパティの更新操作が成功すると、IoT Hub からの発行メッセージには次のトピックが含まれます: `$iothub/twin/res/204/?$rid=1&$version=6`。ここで、`204` は成功を示す状態コードで、`$rid=1` はコード内のデバイスによって提供された要求 ID に対応します。`$version` は、更新後のデバイス ツインの報告されたプロパティ セクションのバージョンに対応します。
 
-詳しくは、[デバイス ツイン開発者のガイド](iot-hub-devguide-device-twins.md)をご覧ください。
+詳細については、[デバイス ツイン開発者ガイド](iot-hub-devguide-device-twins.md)をご覧ください。
 
 ## <a name="receiving-desired-properties-update-notifications"></a>必要なプロパティの更新通知の受信
 
@@ -421,15 +426,15 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 > [!IMPORTANT]
 > IoT Hub は、デバイスが接続されている場合にのみ変更通知を生成します。 IoT Hub とデバイス アプリ間で目的のプロパティが同期された状態を保つには、[デバイス再接続フロー](iot-hub-devguide-device-twins.md#device-reconnection-flow)を必ず実装してください。
 
-詳しくは、[デバイス ツイン開発者のガイド](iot-hub-devguide-device-twins.md)をご覧ください。
+詳細については、[デバイス ツイン開発者ガイド](iot-hub-devguide-device-twins.md)をご覧ください。
 
 ## <a name="respond-to-a-direct-method"></a>ダイレクト メソッドへの応答
 
 最初に、デバイスは `$iothub/methods/POST/#` にサブスクライブする必要があります。 IoT Hub は、有効な JSON または空の本文と共にメソッド要求をトピック `$iothub/methods/POST/{method name}/?$rid={request id}` に送信します。
 
-応答するために、デバイスは、有効な JSON を含むメッセージまたは 空の本文をトピック `$iothub/methods/res/{status}/?$rid={request id}` に送信します。 このメッセージでは、**要求 ID**は、要求メッセージ内のものと一致する必要があり、**ステータス**は整数である必要があります。
+応答するために、デバイスは、有効な JSON を含むメッセージまたは 空の本文をトピック `$iothub/methods/res/{status}/?$rid={request id}` に送信します。 このメッセージでは、**要求 ID** は、要求メッセージ内のものと一致する必要があり、**ステータス** は整数である必要があります。
 
-詳しくは、[ダイレクト メソッド開発者のガイド](iot-hub-devguide-direct-methods.md)をご覧ください。
+詳細については、[ダイレクト メソッド開発者のガイド](iot-hub-devguide-direct-methods.md)をご覧ください。
 
 ## <a name="additional-considerations"></a>その他の注意点
 
@@ -449,4 +454,4 @@ IoT Hub のデプロイの計画に関する詳細については、以下をご
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド](iot-hub-devguide.md)
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)

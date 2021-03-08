@@ -3,12 +3,12 @@ title: Azure DevTest Labs で VM の自動開始設定を構成する | Microsof
 description: ラボで VM の自動開始設定を構成する方法について説明します。 この設定により、ラボ内の VM はスケジュールに基づいて自動的に開始されます。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4ff2a156367b6a65e75b1c8b907da91dc3c88eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482787"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328482"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>ラボの仮想マシンの自動スタートアップ  
 Azure DevTest Labs を使用すると、ラボ内の仮想マシンを、スケジュールに基づいて自動的に開始およびシャットダウンするように構成できます。 自動シャットダウンの設定の構成については、「[Azure DevTest Labs でラボの自動シャットダウン ポリシーを管理する](devtest-lab-auto-shutdown.md)」を参照してください。 
@@ -21,7 +21,7 @@ Azure DevTest Labs を使用すると、ラボ内の仮想マシンを、スケ�
 1. ラボのホーム ページに移動します。 
 2. 左側のメニューで **[構成とポリシー]** を選択します。 
 
-    ![[構成とポリシー] メニュー](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
+    ![DevTest ラボの [構成とポリシー] メニューを示すスクリーンショット。](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
 3. **[構成とポリシー]** ページで、次の手順に従います。
     
     1. **[仮想マシンの自動開始のスケジュールを許可する]** で **[オン]** を選択し、このラボで自動開始機能を有効にします。 

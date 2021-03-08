@@ -2,18 +2,37 @@
 title: Azure Migrate の新着情報
 description: Azure Migrate サービスの最新の情報や最近行われた更新について説明します。
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927173"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834037"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
+## <a name="update-january-2021"></a>更新 (2021 年 1 月)
+-  Azure Migrate: カスタマー マネージド キー (CMK) によるサーバー側暗号化でディスクが暗号化された Azure 仮想マシンに、Server Migration ツールを使用して、VMware 仮想マシンや物理サーバー、さらに他のクラウドの仮想マシンを移行できるようになりました。
+
+## <a name="update-december-2020"></a>更新 (2020 年 12 月)
+- Azure Migrate で、エージェントレスの移行手法を使用して VMware VM を Azure に移行する間、VMware VM に Azure VM エージェントが自動的にインストールされるようになりました。
+- サーバー側暗号化 (SSE) とカスタマー マネージド キー (CMK) によってディスクが暗号化された Azure 仮想マシンに対し、Azure Migrate Server Migration (エージェントレス レプリケーション) を使用して VMware VM を移行する方法が Azure portal から利用できるようになりました。
+
+## <a name="update-september-2020"></a>更新 (2020 年 9 月)
+- サーバーを Availability Zones に移行できるようになりました。
+- UEFI ベースの VM と物理サーバーを Azure 第 2 世代 VM に移行できるようになりました。 今回のリリースでは、Azure Migrate: Server Migration ツールは、移行中に Gen 2 VM から Gen 1 VM への変換は実行しません。
+- 新しい Azure Migrate Power BI 評価ダッシュボードを使用して、さまざまな評価設定の間でコストを比較することができます。 ダッシュボードには、評価を自動的に作成する PowerShell ユーティリティが付属し、評価は Power BI ダッシュボードにプラグインされます。 [詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- 1000 台の VM で同時に依存関係の分析 (エージェントレス) を実行できるようになりました。
+- PowerShell スクリプトを使用して、大規模な依存関係の分析 (エージェントレス) を有効または無効にすることができるようになりました。 [詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- 依存関係の分析 (エージェントレス) によって収集されたデータを使用して、Power BI でネットワーク接続を視覚化できます。[詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- データ ディスクのサイズが最大 32 TB の VMware VM の移行は、Azure Migrate:Server Migration のエージェントレス VMware 移行方式を使用してサポートされるようになりました。
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 
@@ -21,13 +40,14 @@ ms.locfileid: "88927173"
 - VMware アプライアンスまたは Hyper-V アプライアンスを設定するために、ポータルからそれぞれ OVA か VHD ファイルまたはインストーラー スクリプトをダウンロードするオプション。
 - ユーザー エクスペリエンスが向上した、更新されたアプライアンス構成マネージャー。
 - Hyper-V VM の検出での、複数の資格情報のサポート。
-- 追加された資格情報および検出ソースに対する、向上した検索、並べ替え、およびフィルター機能。
-- Hyper-V ホストまたはクラスター、および物理サーバー用の検出ソースを追加するために使用する、単一項目の入力、複数の項目の入力、および CSV のインポートのオプション。
-- テーブルに追加された各ソースに対する検証および検出操作の状態の更新により、強化されたエラー エクスペリエンス。 
+
+## <a name="update-july-2020"></a>更新 (2020 年 7 月)
+
+- エージェントレスの VMware 移行では、vCenter あたり 300 台の VM を同時にレプリケートできるようになりました
 
 ## <a name="update-june-2020"></a>更新 (2020 年 6 月)
 
-- オンプレミス VMware VM を [Azure VMware Solution (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) に移行するための評価がサポートされるようになりました。 [詳細情報](how-to-create-azure-vmware-solution-assessment.md)
+- オンプレミス VMware VM を [Azure VMware Solution (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) に移行するための評価がサポートされるようになりました。 [詳細情報](how-to-create-azure-vmware-solution-assessment.md)
 - 物理サーバーを検出するための、アプライアンスでの複数の資格情報のサポート。
 - テナント制限が構成されているテナントのアプライアンスからの Azure ログインを許可するためのサポート。
 
@@ -95,4 +115,4 @@ Azure Migrate の現在のバージョン (2019 年 7 月リリース) には、
 
 - Azure Migrate の価格について、[詳しくはこちら](https://azure.microsoft.com/pricing/details/azure-migrate/)を参照してください。
 - Azure Migrate について[よく寄せられる質問を確認](resources-faq.md)します。
-- [VMware VM](tutorial-assess-vmware.md) と [Hyper-V VM](tutorial-assess-hyper-v.md) を評価するチュートリアルをお試しください。
+- [VMware VM](./tutorial-assess-vmware-azure-vm.md) と [Hyper-V VM](tutorial-assess-hyper-v.md) を評価するチュートリアルをお試しください。

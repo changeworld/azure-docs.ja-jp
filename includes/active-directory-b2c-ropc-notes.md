@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: mimart
 ms.openlocfilehash: f4944881e6eff3e9a56a74bc997c280f9fff6be8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78187001"
 ---
 ## <a name="ropc-flow-notes"></a>ROPC フローの説明

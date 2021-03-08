@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: 919d1b27c408c1fdb43333401560d7c84dd04f5d
+  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88213563"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102051584"
 landingContent:
 - title: Azure セキュリティ ベンチマークについて
   linkLists:
@@ -28,117 +28,167 @@ landingContent:
       url: introduction.md
     - text: Azure セキュリティ コントロールの概要
       url: overview.md
-    - text: クラウドにおける共同責任
-      url: ../fundamentals/shared-responsibility.md
-    - text: Azure Security Center
-      url: ../../security-center/index.yml
-    - text: Azure セキュリティの基礎
-      url: ../fundamentals/index.yml
-- title: Azure セキュリティ ベンチマークのコントロール
+    - text: Azure セキュリティ ベースラインの概要
+      url: security-baselines-overview.md
+- title: Azure セキュリティ ベンチマーク V2 の制御
   linkLists:
   - linkListType: overview
     links:
     - text: ネットワークのセキュリティ
-      url: security-control-network-security.md
-    - text: ログ記録と監視
-      url: security-control-logging-monitoring.md
-    - text: ID とアクセスの制御
-      url: security-control-identity-access-control.md
+      url: security-controls-v2-network-security.md
+    - text: ID 管理
+      url: security-controls-v2-identity-management.md
+    - text: 特権アクセス
+      url: security-controls-v2-privileged-access.md
     - text: データ保護
-      url: security-control-data-protection.md
-    - text: 脆弱性の管理
-      url: security-control-vulnerability-management.md
+      url: security-controls-v2-data-protection.md
+    - text: アセット管理
+      url: security-controls-v2-asset-management.md
     - text: 詳細情報
-      url: security-control-inventory-asset-management.md
+      url: security-controls-v2-logging-threat-detection.md
+- title: Azure セキュリティのその他のリソース
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure セキュリティの基礎
+      url: ../fundamentals/index.yml
+    - text: クラウドにおける共同責任
+      url: ../fundamentals/shared-responsibility.md
+    - text: Azure Security Center
+      url: ../../security-center/index.yml
+    - text: Azure セキュリティ ベンチマーク基盤ブループリント サンプル
+      url: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.md
+- title: AI + Machine Learning セキュリティ ベースライン
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Databricks
+      url: /azure/databricks/scenarios/security-baseline
+    - text: Azure Machine Learning
+      url: ../../machine-learning/security-baseline.md
+    - text: Cognitive Services
+      url: ../../cognitive-services/security-baseline.md
+- title: Analytics のセキュリティ ベースライン
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Explorer のセキュリティ ベースライン
+      url: /azure/data-explorer/security-baseline
+    - text: Azure Data Factory のセキュリティ ベースライン
+      url: ../../data-factory/security-baseline.md
+    - text: Data Lake Analytics のセキュリティ ベースライン
+      url: ../../data-lake-analytics/security-baseline.md
+    - text: Event Hubs のセキュリティ ベースライン
+      url: ../../event-hubs/security-baseline.md
+    - text: HDInsight のセキュリティ ベースライン
+      url: ../../hdinsight/security-baseline.md
+    - text: Stream Analytics のベースライン
+      url: ../../stream-analytics/security-baseline.md
+    - text: Azure Synapse Analytics のセキュリティ ベースライン
+      url: ../../synapse-analytics/security-baseline.md
 - title: Compute のセキュリティ ベースライン
   linkLists:
   - linkListType: overview
     links:
-    - text: Linux Virtual Machines
-      url: ../../virtual-machines/linux/security-baseline.md
-    - text: Windows Virtual Machines
-      url: ../../virtual-machines/windows/security-baseline.md
-    - text: Virtual Machine Scale Sets
-      url: ../../virtual-machine-scale-sets/security-baseline.md
-    - text: Batch
-      url: ../../batch/security-baseline.md
     - text: Azure Functions
       url: ../../azure-functions/security-baseline.md
-- title: Containers のセキュリティ ベースライン
-  linkLists:
-  - linkListType: overview
-    links:
+    - text: Batch
+      url: ../../batch/security-baseline.md
     - text: Container Instances
       url: ../../container-instances/security-baseline.md
     - text: Container Registry
       url: ../../container-registry/security-baseline.md
     - text: Service Fabric
       url: ../../service-fabric/security-baseline.md
-- title: Analytics のセキュリティ ベースライン
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Data Explorer
-      url: /azure/data-explorer/security-baseline
-    - text: Data Lake Analytics
-      url: ../../data-lake-analytics/security-baseline.md
-    - text: Databricks
-      url: ../../azure-databricks/security-baseline.md
-    - text: Data Factory
-      url: ../../data-factory/security-baseline.md
-    - text: HDInsight
-      url: ../../hdinsight/security-baseline.md
+    - text: Azure Storage
+      url: ../../storage/common/security-baseline.md
+    - text: Virtual Machine Scale Sets
+      url: ../../virtual-machine-scale-sets/security-baseline.md
+    - text: Virtual Machines Linux
+      url: ../../virtual-machines/linux/security-baseline.md
+    - text: Virtual Machines Windows
+      url: ../../virtual-machines/windows/security-baseline.md
 - title: データベースのセキュリティ ベースライン
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Cache for Redis
       url: ../../azure-cache-for-redis/security-baseline.md
-    - text: Azure Database for MariaDB
-      url: ../../mariadb/security-baseline.md
     - text: Azure Database for MySQL
       url: ../../mysql/security-baseline.md
-    - text: Azure Database for PostgreDQL
+    - text: Azure Database for MariaDB
+      url: ../../mariadb/security-baseline.md
+    - text: Azure Database for PostgreSQL - Single Server
       url: ../../postgresql/security-baseline.md
+    - text: Azure Database for PostgreSQL - Hyperscale
+      url: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - text: Azure SQL データベース
-      url: ../../sql-database/security-baseline.md
+      url: ../../azure-sql/database/security-baseline.md
+    - text: Cosmos DB
+      url: ../../cosmos-db/security-baseline.md
+- title: 統合セキュリティ ベースライン
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: API Management
+      url: ../../api-management/security-baseline.md
+    - text: Event Grid
+      url: ../../event-grid/security-baseline.md
+    - text: Logic Apps
+      url: ../../logic-apps/security-baseline.md
+- title: 管理とガバナンスのセキュリティ ベースライン
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Automation
+      url: ../../automation/security-baseline.md
+    - text: Azure Backup
+      url: ../../backup/security-baseline.md
+    - text: Azure Monitor
+      url: ../../azure-monitor/security-baseline.md
+    - text: Azure Policy
+      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - text: Azure Resource Graph
+      url: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
 - title: ネットワークのセキュリティ ベースライン
   linkLists:
   - linkListType: overview
     links:
     - text: Application Gateway
       url: ../../application-gateway/security-baseline.md
-    - text: DDOS Protection
-      url: ../fundamentals/ddos-protection-security-baseline.md
-    - text: Azure ExpressRoute
-      url: ../../expressroute/security-baseline.md
+    - text: Azure DNS
+      url: ../../dns/security-baseline.md
     - text: Azure Firewall
       url: ../../firewall/security-baseline.md
+    - text: Azure Private Link
+      url: ../../private-link/security-baseline.md
+    - text: Azure パブリック IP
+      url: ../../virtual-network/public-ip-security-baseline.md
+    - text: DDOS Protection
+      url: ../fundamentals/ddos-protection-security-baseline.md
+    - text: ExpressRoute
+      url: ../../expressroute/security-baseline.md
     - text: Network Watcher
       url: ../../network-watcher/security-baseline.md
-- title: セキュリティ ベースライン
+- title: セキュリティ サービス ベースライン
   linkLists:
   - linkListType: overview
     links:
-    - text: Key Vault
-      url: ../../key-vault/security-baseline.md
-    - text: Security Center
-      url: ../../security-center/security-baseline.md
+    - text: Azure Sentinel
+      url: ../../sentinel/security-baseline.md
     - text: カスタマー ロックボックス
       url: ../fundamentals/customer-lockbox-security-baseline.md
-    - text: Azure Policy
-      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
-- title: 管理と統合
+    - text: Key Vault
+      url: ../../key-vault/general/security-baseline.md
+    - text: Security Center
+      url: ../../security-center/security-baseline.md
+- title: 追加のセキュリティ ベースライン
   linkLists:
   - linkListType: overview
     links:
-    - text: オートメーション
-      url: ../../automation/security-baseline.md
-    - text: バックアップ
-      url: ../../backup/security-baseline.md
-    - text: API Management
-      url: ../../api-management/security-baseline.md
-    - text: Event Grid
-      url: ../../event-hubs/security-baseline.md
-    - text: Logic Apps
-      url: ../../logic-apps/security-baseline.md
+    - text: Azure Data Box
+      url: ../../databox/security-baseline.md
+    - text: Azure DevTest Labs
+      url: ../../devtest-labs/security-baseline.md
+    - text: Azure IoT Hub
+      url: ../../iot-hub/security-baseline.md

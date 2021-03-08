@@ -1,27 +1,22 @@
 ---
 title: 新しいファイルや更新されたファイルを増分コピーするためのデータ ツール
 description: Azure データ ファクトリを作成してから、データのコピー ツールを使用して LastModifiedDate を基に新しいファイルを増分的に読み込みます。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/18/2021
+ms.openlocfilehash: fda76fd16787c01b9fc35ef63473be215a2c126d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730147"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740054"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 このチュートリアルでは、Azure portal を使用してデータ ファクトリを作成します。 次に、データのコピー ツールを使用して、新しいファイルおよび変更されたファイルのみを Azure Blob Storage から Azure Blob Storage に増分的にコピーするパイプラインを作成します。 `LastModifiedDate` を使用して、どのファイルをコピーするかを決定します。
 
@@ -52,7 +47,7 @@ ms.locfileid: "84730147"
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 **[分析]**  >  **[データ ファクトリ]** を選択します。
+1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 **[統合]**  >  **[Data Factory]** を選択します。
 
    ![データ ファクトリの選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -62,7 +57,7 @@ ms.locfileid: "84730147"
 
    ![名前が使用できないことを示すエラー メッセージ](./media/doc-common-process/name-not-available-error.png)
 
-   データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+   データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
 3. **[サブスクリプション]** で、新しいデータ ファクトリの作成先となる Azure サブスクリプションを選択します。
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
 
@@ -94,7 +89,7 @@ ms.locfileid: "84730147"
 
     c. **[トリガーの種類]** で、 **[Tumbling Window]\(タンブリング ウィンドウ\)** を選択します。
 
-    d. **[Recurrence]\(繰り返し\)** で、**15 分**と指定します。
+    d. **[Recurrence]\(繰り返し\)** で、**15 分** と指定します。
 
     e. **[次へ]** を選択します。
 

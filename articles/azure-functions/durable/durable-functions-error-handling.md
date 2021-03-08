@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で発生した�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081697"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673649"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
@@ -196,7 +196,11 @@ main = df.Orchestrator.create(orchestrator_function)
 * **バックオフ係数**: バックオフの増加率を決定するために使用される係数。 既定値は 1 です。
 * **最大再試行間隔**: 再試行の間に待つ最長時間。
 * **再試行タイムアウト**: 再試行の実行に費やす最長時間。 既定の動作は、無限の再試行です。
-* **ハンドル**: 関数を再試行する必要があるかどうかを決定するために、ユーザー定義のコールバックを指定できます。
+* **ハンドル**: 関数を再試行する必要があるかどうかを決定するために、ユーザー定義のコールバックを指定できます。 
+
+> [!NOTE]
+> ユーザー定義のコールバックは、JavaScript の Durable Functions (`context.df.RetryOptions`) では現在サポートされていません。
+
 
 ## <a name="function-timeouts"></a>関数のタイムアウト
 

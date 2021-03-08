@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 8806ff41edabcd3c0875d3c02360dc9a275e3878
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189919"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460818"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault の顧客データ機能
 
-Azure Key Vault は、資格情報コンテナー、キー、シークレット、証明書、および管理されたストレージ アカウントの作成および更新中に顧客データを受信します。 この顧客データは、Azure Portal および REST API を使用して直接表示できます。 顧客データは、データを含むオブジェクトを更新または削除することにより編集または削除できます。
+Azure Key Vault は、資格情報コンテナー、Managed HSM プール、キー、シークレット、証明書、管理されたストレージ アカウントの作成および更新中に顧客データを受信します。 この顧客データは、Azure Portal および REST API を使用して直接表示できます。 顧客データは、データを含むオブジェクトを更新または削除することにより編集または削除できます。
 
 ユーザーまたはアプリケーションが Azure Key Vault にアクセスするとシステム のアクセス ログが生成されます。 詳細なアクセス ログは、Azure Insights から確認できます。
 
@@ -54,12 +54,12 @@ Azure Key Vault のログ記録機能はオプション機能で、オンにす�
 
 - [Azure Key Vault のログ記録](logging.md)
 
-- [Azure Key Vault の論理的な削除の概要](soft-delete-cli.md)
+- [Azure Key Vault の論理的な削除の概要](./key-vault-recovery.md)
 
-- [Azure Key Vault のキー操作](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Azure Key Vault のキー操作](/rest/api/keyvault/key-operations)
 
-- [Azure Key Vault のシークレット操作](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Azure Key Vault のシークレット操作](/rest/api/keyvault/secret-operations)
 
-- [Azure Key Vault の証明書とポリシー](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Azure Key Vault の証明書とポリシー](/rest/api/keyvault/certificates-and-policies)
 
-- [Azure Key Vault ストレージ アカウント キー操作](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Azure Key Vault ストレージ アカウント キー操作](/rest/api/keyvault/storage-account-key-operations)

@@ -1,19 +1,15 @@
 ---
 title: Apache Ranger での Apache Hive ポリシー - Azure HDInsight
 description: Enterprise セキュリティ パッケージを使用して Azure HDInsight サービスに Hive 用の Apache Ranger ポリシーを構成する方法について説明します。
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202592"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705706"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 
@@ -21,8 +17,8 @@ Apache Hive 用 Apache Ranger ポリシーを構成する方法について説�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Enterprise セキュリティ パッケージを使用している HDInsight クラスター。 [ESP を使用した HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
-* Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされたワークステーション。
+* Enterprise セキュリティ パッケージを使用している HDInsight クラスター。 [ESP を使用した HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページをご覧ください。
+* 企業向け Microsoft 365 アプリ、Office 2016、Office 2013 Professional Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされたワークステーション。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger 管理 UI への接続
 **Ranger 管理 UI に接続するには**
@@ -61,7 +57,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
     |ユーザーの選択|hiveuser1|
     |アクセス許可|select|
 
-    ![HDInsight ESP Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)。
+    ![HDInsight ESP Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
     > [!NOTE]  
     > [Select User] にドメイン ユーザーが設定されていない場合は、Ranger が AAD と同期するまでしばらく待ってください。
@@ -88,9 +84,9 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
  | データ ソース名 | データ ソースに名前を付けます。 |
  | Host | CLUSTERNAME.azurehdinsight.net を入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
  | Port | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
- | データベース | **既定値**を使用します。 |
+ | データベース | **既定値** を使用します。 |
  | Hive サーバーの種類 | **Hive Server 2** を選択します。 |
- | メカニズム | **Azure HDInsight サービス**を選択します。 |
+ | メカニズム | **Azure HDInsight サービス** を選択します。 |
  | HTTP パス | 空白のままにします。 |
  | [ユーザー名] | 「hiveuser1@contoso158.onmicrosoft.com」と入力します。 ドメイン名が異なる場合は、ドメイン名を更新します。 |
  | Password | hiveuser1 のパスワードを入力します。 |
@@ -158,7 +154,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 ## <a name="next-steps"></a>次のステップ
 
-* Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
+* Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページをご覧ください。
 * ESP での HDInsight クラスターの管理については、「[Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する](apache-domain-joined-manage.md)」をご覧ください。
 * SSH を使用して ESP を含む HDInsight クラスターで Hive クエリを実行する方法については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)」をご覧ください。
 * Hive JDBC を使用して Hive に接続する方法については、[Hive の JDBC ドライバーを使用して Azure HDInsight の Apache Hive に接続する方法](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)に関するページを参照してください。

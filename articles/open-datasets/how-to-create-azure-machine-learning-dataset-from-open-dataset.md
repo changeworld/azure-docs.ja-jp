@@ -8,17 +8,16 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6b9357c0fcf414c2575ca6966e8e5a3716015058
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998076"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654917"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Open Datasets から Azure Machine Learning データセットを作成する
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、[Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) データセットと [Azure Open Datasets](https://docs.microsoft.com/azure/open-datasets/) を使用して、ローカルまたはリモートの機械学習の実験にキュレーションされたエンリッチメント データを取り込む方法について説明します。 
+この記事では、[Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) データセットと [Azure Open Datasets](./index.yml) を使用して、ローカルまたはリモートの機械学習の実験にキュレーションされたエンリッチメント データを取り込む方法について説明します。 
 
 [Azure Machine Learning データセット](../machine-learning/how-to-create-register-datasets.md)を作成すると、データ ソースの場所への参照とそのメタデータのコピーを作成できます。 データセットは遅延評価され、データは既存の場所に残るため:
 * 追加のストレージ コストは発生しません。
@@ -46,22 +45,22 @@ Open Datasets はクラウドにある Microsoft Azure 上にあり、[Azure Mac
 
 * [Azure Machine Learning ワークスペース](../machine-learning/how-to-manage-workspace.md)。
 
-* [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) (これには `azureml-datasets` パッケージが含まれています)。
+* [Azure Machine Learning SDK for Python がインストール済み](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (これには `azureml-datasets` パッケージが含まれています)。
 
-    * [Azure Machine Learning コンピューティング インスタンス](../machine-learning/concept-compute-instance.md#managing-a-compute-instance)を作成します (これは、統合ノートブックと SDK が既にインストールされている、完全に構成および管理された開発環境です)。
+    * [Azure Machine Learning コンピューティング インスタンス](../machine-learning/how-to-create-manage-compute-instance.md)を作成します (これは、統合ノートブックと SDK が既にインストールされている、完全に構成および管理された開発環境です)。
 
     **OR**
 
-    * ご自分の Python 環境で作業し、[こちらの手順](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に従って SDK をインストールします。
+    * ご自分の Python 環境で作業し、[こちらの手順](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)に従って SDK をインストールします。
 
 > [!NOTE]
-> 一部の Dataset クラスは、[azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux (7、8)、Ubuntu (14.04、16.04、18.04)、Fedora (27、28)、Debian (8、9)、および CentOS (7)
+> 一部の Dataset クラスは、[azureml-dataprep](/python/api/azureml-dataprep/) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux (7、8)、Ubuntu (14.04、16.04、18.04)、Fedora (27、28)、Debian (8、9)、および CentOS (7)
 
 ## <a name="create-datasets-with-the-sdk"></a>SDK を使用してデータセットを作成する
 
-Python SDK の Azure Open Datasets クラスを使用して Azure Machine Learning データセットを作成するには、`pip install azureml-opendatasets` でパッケージがインストールされていることを確認します。 個々のデータセットは、SDK で独自のクラスによって表され、特定のクラスは Azure Machine Learning [`TabularDataset`、`FileDataset`](../machine-learning/how-to-create-register-datasets.md#dataset-types)、またはその両方として使用できます。 `opendatasets` クラスの完全な一覧については、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)を参照してください。
+Python SDK の Azure Open Datasets クラスを使用して Azure Machine Learning データセットを作成するには、`pip install azureml-opendatasets` でパッケージがインストールされていることを確認します。 個々のデータセットは、SDK で独自のクラスによって表され、特定のクラスは Azure Machine Learning [`TabularDataset`、`FileDataset`](../machine-learning/how-to-create-register-datasets.md#dataset-types)、またはその両方として使用できます。 `opendatasets` クラスの完全な一覧については、[リファレンス ドキュメント](/python/api/azureml-opendatasets/azureml.opendatasets?preserve-view=true&view=azure-ml-py)を参照してください。
 
-特定の `opendatasets` クラスは、ファイルを直接操作したり、ダウンロードしたりできる、`TabularDataset` または `FileDataset` として取得できます。 他のクラスは、Python SDK の `Dataset` クラスの `get_tabular_dataset()` または `get_file_dataset()` 関数を使用して**のみ**、データセットを取得できます。
+特定の `opendatasets` クラスは、ファイルを直接操作したり、ダウンロードしたりできる、`TabularDataset` または `FileDataset` として取得できます。 他のクラスは、Python SDK の `Dataset` クラスの `get_tabular_dataset()` または `get_file_dataset()` 関数を使用して **のみ**、データセットを取得できます。
 
 次のコードは、MNIST `opendatasets` クラスで `TabularDataset` または `FileDataset` のいずれかを返すことができることを示しています。 
 
@@ -89,7 +88,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 Azure Machine Learning データセットをワークスペースに登録すると、他のユーザーと共有したり、ワークスペース内の実験間で再利用したりすることができます。 Open Datasets から作成された Azure Machine Learning データセットを登録すると、データはすぐにはダウンロードされませんが、中央の保存場所から要求したとき (たとえばトレーニング中に) にデータにアクセスできます。
 
-データセットをワークスペースに登録するには、[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) メソッドを使用します。 
+データセットをワークスペースに登録するには、[`register()`](/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-&preserve-view=true ) メソッドを使用します。 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
                                  name='titanic_ds',
@@ -111,7 +110,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
     ![データセットを選択する](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. データセットの登録先の名前を選択し、必要に応じて、使用可能なフィルターを使用してデータをフィルター処理します。 この例では、**Public Holidays** データセットについて、期間を 1 年に、国番号を米国のみにしてフィルター処理します。 フィールドの説明や日付範囲などのデータの詳細については、[Azure Open Datasets カタログ](https://azure.microsoft.com/services/op[en-datasets/catalog/)を参照してください。 **［作成］** を選択します
+1. データセットの登録先の名前を選択し、必要に応じて、使用可能なフィルターを使用してデータをフィルター処理します。 この例では、**Public Holidays** データセットについて、期間を 1 年に、国番号を米国のみにしてフィルター処理します。 フィールドの説明や日付範囲などのデータの詳細については、[Azure Open Datasets カタログ](https://azure.microsoft.com/services/open-datasets/catalog)を参照してください。 **［作成］** を選択します
 
     ![データセット パラメーターを設定してデータセットを作成する](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 
@@ -133,6 +132,3 @@ Open Datasets 機能の例とデモについては、これらの[サンプル �
 * [データセットを使ってトレーニングする](../machine-learning/how-to-train-with-datasets.md)。
 
 * [Azure Machine Learning データセットを作成する](../machine-learning/how-to-create-register-datasets.md)。
-
-
-

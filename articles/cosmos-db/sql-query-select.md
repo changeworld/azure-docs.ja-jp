@@ -3,17 +3,19 @@ title: Azure Cosmos DB での SELECT 句
 description: Azure Cosmos DB の SQL SELECT 句について説明します。 Azure Cosmos DB JSON クエリ言語として SQL を使用します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 072e17b1c0ea312b4adfa1687e447fd2cadde233
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005948"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335444"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での SELECT 句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 すべてのクエリは ANSI SQL 標準に従って `SELECT` 句とオプションの [FROM](sql-query-from.md) および [WHERE](sql-query-where.md) 句で構成されます。 通常、`FROM` 句のソースが列挙され、JSON 項目のサブセットを取得するためにそのソースに `WHERE` 句のフィルターが適用されます。 `SELECT` 句は、要求された JSON 値を選択リストにプロジェクションします。
 

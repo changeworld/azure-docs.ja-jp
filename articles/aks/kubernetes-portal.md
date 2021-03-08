@@ -1,40 +1,35 @@
 ---
-title: Azure portal から Kubernetes リソースにアクセスする (プレビュー)
+title: Azure portal から Kubernetes リソースにアクセスする
 description: Azure portal から Azure Kubernetes Service (AKS) クラスターを管理するために Kubernetes リソースを操作する方法について説明します。
 services: container-service
-author: laurenhughes
 ms.topic: article
-ms.date: 08/11/2020
-ms.author: lahugh
-ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 12/16/2020
+ms.openlocfilehash: ce5dc74dc3625b2b1fed447c4e6480308267d32a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661352"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578687"
 ---
-# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal から Kubernetes リソースにアクセスする (プレビュー)
+# <a name="access-kubernetes-resources-from-the-azure-portal"></a>Azure portal から Kubernetes リソースにアクセスする
 
-Azure portal には、Azure Kubernetes Service (AKS) クラスター内の Kubernetes リソースに簡単にアクセスするための Kubernetes リソース ビューアー (プレビュー) が含まれています。 Azure portal から Kubernetes リソースを表示すると、Azure portal と `kubectl` コマンド ライン ツールの間のコンテキストの切り替えが削減されるため、Kubernetes リソースを表示および編集するためのエクスペリエンスが効率化されます。 リソース ビューアーには現在、デプロイ、ポッド、レプリカ セットなどの複数のリソースの種類が含まれています。
+Azure portal には、Azure Kubernetes Service (AKS) クラスター内の Kubernetes リソースに簡単にアクセスするための Kubernetes リソース ビューが含まれています。 Azure portal から Kubernetes リソースを表示すると、Azure portal と `kubectl` コマンド ライン ツールの間のコンテキストの切り替えが削減されるため、Kubernetes リソースを表示および編集するためのエクスペリエンスが効率化されます。 リソース ビューアーには現在、デプロイ、ポッド、レプリカ セットなどの複数のリソースの種類が含まれています。
 
-Azure portal の Kubernetes リソース ビューによって、非推奨として設定されている [AKS ダッシュボード アドオン][kubernetes-dashboard]が置き換えられます。
-
->[!NOTE]
->この機能は現在のところ、[プライベート Azure Kubernetes Service クラスター](https://docs.microsoft.com/azure/aks/private-clusters)ではサポートされていません。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+Azure portal の Kubernetes リソース ビューによって、非推奨となった [AKS ダッシュボード アドオン][kubernetes-dashboard]が置き換えられます。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure portal で Kubernetes リソースを表示するには、AKS クラスターが必要です。 任意のクラスターがサポートされていますが、Azure Active Directory (Azure AD) 統合を使用している場合は、そのクラスターで [AKS マネージド Azure AD 統合][aks-managed-aad]を使用する必要があります。 クラスターでレガシ Azure AD を使用している場合は、ポータルまたは [Azure CLI][cli-aad-upgrade] でそのクラスターをアップグレードできます。
+Azure portal で Kubernetes リソースを表示するには、AKS クラスターが必要です。 任意のクラスターがサポートされていますが、Azure Active Directory (Azure AD) 統合を使用している場合は、そのクラスターで [AKS マネージド Azure AD 統合][aks-managed-aad]を使用する必要があります。 クラスターでレガシ Azure AD を使用している場合は、ポータルまたは [Azure CLI][cli-aad-upgrade] でそのクラスターをアップグレードできます。 [Azure portal を使用][portal-cluster]して、新しい AKS クラスターを作成することもできます。
 
 ## <a name="view-kubernetes-resources"></a>Kubernetes リソースを表示する
 
 Kubernetes リソースを表示するには、Azure portal で AKS クラスターに移動します。 左側のナビゲーション ウィンドウは、リソースにアクセスするために使用されます。 リソースには次のものがあります。
 
 - **[名前空間]** には、クラスターの名前空間が表示されます。 名前空間の一覧の上部にあるフィルターを使用すると、名前空間リソースをすばやくフィルター処理して表示できます。
-- **[ワークロード]** には、クラスターにデプロイされているデプロイ、ポッド、レプリカ セット、デーモン セットに関する情報が表示されます。 下のスクリーンショットは、サンプルの AKS クラスター内の既定のシステム ポッドを示しています。
+- **[ワークロード]** には、クラスターにデプロイされているデプロイ、ポッド、レプリカ セット、ステートフル セット、デーモン セット、ジョブ、cron ジョブに関する情報が表示されます。 下のスクリーンショットは、サンプルの AKS クラスター内の既定のシステム ポッドを示しています。
 - **[サービスとイングレス]** には、クラスターのすべてのサービスとイングレス リソースが表示されます。
+- **[ストレージ]** には、Azure ストレージ クラスと永続ボリュームの情報が表示されます。
+- **[構成]** には、クラスターの構成マップとシークレットが表示されます。
 
 :::image type="content" source="media/kubernetes-portal/workloads.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。" lightbox="media/kubernetes-portal/workloads.png":::
 
@@ -42,7 +37,7 @@ Kubernetes リソースを表示するには、Azure portal で AKS クラスタ
 
 この例では、サンプルの AKS クラスターを使用して、[AKS クイック スタート][portal-quickstart]から Azure Vote アプリケーションをデプロイします。
 
-1. いずれかのリソース ビュー ([名前空間]、[ワークロード]、または [サービスとイングレス]) から **[追加]** を選択します。
+1. いずれかのリソース ビュー ([名前空間]、[ワークロード]、[サービスとイングレス]、[ストレージ]、または [構成]) から **[追加]** を選択します。
 1. [AKS クイック スタート][portal-quickstart]から Azure Vote アプリケーション用の YAML を貼り付けます。
 1. YAML エディターの下部にある **[追加]** を選択してアプリケーションをデプロイします。 
 
@@ -52,7 +47,7 @@ YAML ファイルが追加されると、リソース ビューアーには作�
 
 ### <a name="monitor-deployment-insights"></a>デプロイ分析情報を監視する
 
-[Azure Monitor for containers][enable-monitor] が有効になっている AKS クラスターでは、デプロイ分析情報をすばやく表示できます。 Kubernetes リソース ビューから、ユーザーは個々のデプロイのライブ状態 (CPU やメモリの使用率を含む) を表示できるほか、Azure Monitor に切り替えてより詳細な情報を確認できます。 サンプルの AKS クラスターのデプロイ分析情報の例を次に示します。
+[Azure Monitor for containers][enable-monitor] が有効になっている AKS クラスターでは、デプロイ情報やその他の分析情報をすばやく表示できます。 Kubernetes リソース ビューから、ユーザーは個々のデプロイのライブ状態 (CPU やメモリの使用率を含む) を表示できるほか、Azure Monitor に切り替えて、特定のノードやコンテナーに関するより詳細な情報を確認できます。 サンプルの AKS クラスターのデプロイ分析情報の例を次に示します。
 
 :::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure portal に表示されるデプロイ分析情報。" lightbox="media/kubernetes-portal/deployment-insights.png":::
 
@@ -75,11 +70,23 @@ YAML を編集した後、 **[確認と保存]** を選択し、変更を確認�
 
 Kubernetes リソースにアクセスするには、AKS クラスター、Kubernetes API、Kubernetes オブジェクトへのアクセス権を持っている必要があります。 クラスター管理者か、または AKS クラスターにアクセスするための適切なアクセス許可を持つユーザーであることを確認してください。 クラスターのセキュリティの詳細については、[AKS でのアクセスと ID オプション][concepts-identity]に関するページを参照してください。
 
+>[!NOTE]
+> Azure Portal の kubernetes リソース ビューは、[マネージド AAD が有効なクラスター](managed-aad.md)または非 AAD が有効なクラスターでのみサポートされています。 マネージド AAD が有効なクラスターを使用している場合、AAD ユーザーまたは ID には、[ユーザーの `kubeconfig`](control-kubeconfig-access.md) をプルする権限に加えて、kubernetes API にアクセスするための、対応するロールまたはロールのバインドが存在している必要があります。
+
 ### <a name="enable-resource-view"></a>リソース ビューを有効にする
 
 既存のクラスターでは、Kubernetes リソース ビューを有効にすることが必要な場合があります。 リソース ビューを有効にするには、クラスターのポータルでプロンプトに従います。
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes リソース ビューを有効にするための Azure portal のメッセージ。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
+> [!TIP]
+> [**API サーバーの許可された IP 範囲**](api-server-authorized-ip-ranges.md)に対して AKS 機能を追加し、API サーバーのアクセスをファイアウォールのパブリック エンドポイントのみに制限できます。 このようなクラスターの別のオプションとして、`--api-server-authorized-ip-ranges` を更新して、ローカル クライアント コンピューターや (ポータルが閲覧されている) IP アドレスの範囲へのアクセスを含めることができます。 このアクセスを許可するには、コンピューターのパブリック IPv4 アドレスが必要です。 このアドレスは、下のコマンドを使用するか、インターネット ブラウザーで "what is my IP address" と検索することで確認できます。
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+
+```
 
 ## <a name="next-steps"></a>次の手順
 
@@ -92,4 +99,5 @@ Kubernetes リソースにアクセスするには、AKS クラスター、Kuber
 [deployments]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [aks-managed-aad]: managed-aad.md
 [cli-aad-upgrade]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
-[enable-monitor]: ../azure-monitor/insights/container-insights-enable-existing-clusters.md
+[enable-monitor]: ../azure-monitor/containers/container-insights-enable-existing-clusters.md
+[portal-cluster]: kubernetes-walkthrough-portal.md

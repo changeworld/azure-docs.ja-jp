@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81c92b6ef5bdf89391364bc238f55200eb3679f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887055"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778159"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Azure CDN リソースの正常性の監視
   
-Azure CDN リソース正常性は、[Azure Resource Health](../resource-health/resource-health-overview.md) のサブセットです。  Azure Resource Health を使用すると、CDN リソースの正常性を監視し、問題のトラブルシューティングを行うための実践的なガイダンスを得ることができます。
+Azure CDN リソース正常性は、[Azure Resource Health](../service-health/resource-health-overview.md) のサブセットです。  Azure Resource Health を使用すると、CDN リソースの正常性を監視し、問題のトラブルシューティングを行うための実践的なガイダンスを得ることができます。
 
 >[!IMPORTANT] 
 >現在 CDN リソース正常性で考慮されるのは、グローバルな CDN 配信および API 機能の正常性だけです。  Azure CDN リソース正常性では、個別の CDN エンドポイントは検証されません。
@@ -51,7 +51,7 @@ Azure CDN リソース正常性は、[Azure Resource Health](../resource-health/
 
 Azure CDN リソース正常性に関連する状態を次に示します。
 
-|Message | 推奨される操作 |
+|Message | 推奨される操作 |
 |---|---|
 |1 つまたは複数の CDN エンドポイントが停止または削除されたか、正しく構成されなかった可能性があります | 1 つまたは複数の CDN エンドポイントが停止または削除されたか、正しく構成されなかった可能性があります。|
 |申し訳ありません。CDN 管理サービスは現在利用できません | ここで状態の更新をもう一度確認してください。想定された時間が経過しても問題が解決しない場合は、サポートにお問い合わせください。|
@@ -62,6 +62,6 @@ Azure CDN リソース正常性に関連する状態を次に示します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Resource Health の概要を確認します](../resource-health/resource-health-overview.md)
+- [Azure Resource Health の概要を確認します](../service-health/resource-health-overview.md)
 - [CDN 圧縮に関する問題のトラブルシューティングを行います](./cdn-troubleshoot-compression.md)
 - [404 エラーに関する問題のトラブルシューティングを行います](./cdn-troubleshoot-endpoint.md)

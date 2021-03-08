@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872499"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362582"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN from Verizon Premium ルール エンジンのリファレンス
 
@@ -41,7 +41,7 @@ ms.locfileid: "83872499"
 - CDN による上記の要求の処理方法を定義する一連の機能。
 次の図では、これらの要素が示されています。
 
-![ポリシーのデプロイのワークフロー](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+![条件式、一致、ルールの機能を示すラベルがあるスクリーンショット。](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
 
 ### <a name="policy"></a>ポリシー
 一連の読み取り専用ルールで構成されるポリシーでは、以下のことのための手段が提供されます。

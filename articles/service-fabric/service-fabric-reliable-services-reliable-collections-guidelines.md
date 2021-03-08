@@ -3,17 +3,17 @@ title: Reliable Collection のガイドライン
 description: Azure Service Fabric アプリケーションで Service Fabric Reliable Collection を使用するためのガイドラインと推奨事項。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260925"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784327"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric の Reliable Collections のガイドラインと推奨事項
 このセクションでは、Reliable State Manager および Reliable Collection を使用するためのガイドラインを提供します。 目標は、ユーザーがよくある問題を回避できるようにすることです。
 
-ガイドラインは、*してください*、*検討してください*、*避けてください*、および*しないでください*の言葉を使った簡単な推奨事項として編成されています。
+ガイドラインは、*してください*、*検討してください*、*避けてください*、および *しないでください* の言葉を使った簡単な推奨事項として編成されています。
 
 * 読み取り操作 (`TryPeekAsync` や `TryGetValueAsync` など) によって返されるカスタム型のオブジェクトを変更しないでください。 Reliable Collection は、同時実行コレクションのように、コピーではなくオブジェクトへの参照を返すからです。
 * 返されたカスタム型のオブジェクトは、変更する前に詳細コピーしてください。 構造体と組み込み型は値渡しであるため、変更対象の参照型フィールドまたはプロパティが含まれない限り、詳細コピーを実行する必要はありません。
@@ -50,7 +50,7 @@ ms.locfileid: "86260925"
 * ```ReliableConcurrentQueue``` では揮発性がサポートされません
 * 永続化されたサービスを揮発性にすることはできません。 ```HasPersistedState``` フラグを ```false``` に変更するには、サービス全体を最初から再作成する必要があります
 * 揮発性サービスを永続化することはできません。 ```HasPersistedState``` フラグを ```true``` に変更するには、サービス全体を最初から再作成する必要があります
-* ```HasPersistedState``` はサービス レベルの構成です。これは**すべて**のコレクションが永続化または揮発性となることを意味します。 揮発性コレクションと永続化されたコレクションを混在させることはできません
+* ```HasPersistedState``` はサービス レベルの構成です。これは **すべて** のコレクションが永続化または揮発性となることを意味します。 揮発性コレクションと永続化されたコレクションを混在させることはできません
 * 揮発性パーティションのクォーラム損失により、データが完全に失われます
 * 揮発性サービスでは、バックアップと復元は利用できません
 
@@ -64,4 +64,4 @@ ms.locfileid: "86260925"
   * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
 * その他
   * [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
-  * [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

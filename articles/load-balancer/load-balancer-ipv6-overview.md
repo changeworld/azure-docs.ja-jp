@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981853"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700691"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
 
 >[!NOTE] 
->このコンテンツは、[Azure VNet 用の IPv6 の概要](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)に関する記事に置き換えられました。 IPv6 の新しいデプロイでは、新しい Azure Virtual Network 用の IPv6 の機能を使用することをお勧めします。
+>このコンテンツは、[Azure VNet 用の IPv6 の概要](../virtual-network/ipv6-overview.md)に関する記事に置き換えられました。 IPv6 の新しいデプロイでは、新しい Azure Virtual Network 用の IPv6 の機能を使用することをお勧めします。
 
 >[!NOTE]
->Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
+>Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](./load-balancer-overview.md)に関するページをご覧ください。
 
 Basic SKU のインターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 
@@ -79,7 +79,7 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * VM 上の IPv6 エンドポイントはインターネットに直接公開されません。 ロード バランサーの内側にあります。 ロード バランサー規則で指定されているポートのみ、IPv6 を介してアクセスできます。
 * IPv6 の IdleTimeout パラメーターの変更は、**現在サポートされていません**。 既定では 4 分です。
 * IPv6 の loadDistributionMethod パラメーターの変更は、**現在サポートされてません**。
-* 予約済み IPv6 IP (IPAllocationMethod = static) は、**現在サポートされていません**。
+* Basic Load Balancer 用の IPv6 は **動的** SKU にロックされています。  Standard Load Balancer 用の IPv6 は、**静的** SKU にロックされています。
 * NAT64 (IPv6 の IPv4 への変換) はサポートされていません。
 * IPv6 のサブネットを参照しているセカンダリ NIC をバックエンド プールに接続することは、**現在はサポートされてません**。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289618"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919971"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell を使用して高速ネットワークが有効な Windows VM を作成する
 
@@ -61,11 +61,9 @@ Azure ギャラリーでは次のディストリビューションが直接サ�
 
 ### <a name="supported-vm-instances"></a>サポートされている VM インスタンス
 
-高速ネットワークは、2 つ以上の仮想 CPU (vCPU) を備えた、汎用およびコンピューティング最適化のほとんどのインスタンス サイズでサポートされています。  サポートされているシリーズは、Dv2/DSv2 と F/Fs です。
+高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。 ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 
 
-ハイパースレッディングをサポートするインスタンスでは、高速ネットワークは 4 つ以上の vCPU を持つ VM インスタンスでサポートされています。 サポートされている系列は、D/Dsv3、D/Dsv4、Da/Dasv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms、および Ms/Mmsv2 です。
-
-VM インスタンスの詳細については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+高速ネットワークのサポートは、個々の[仮想マシンのサイズ](../virtual-machines/sizes.md)に関するドキュメントで確認できます。 
 
 ### <a name="custom-images"></a>カスタム イメージ
 
@@ -208,7 +206,7 @@ VM を作成した後で、高速ネットワークが有効になっている�
     $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
     ```
 
-    すべての VM のサイズと特性の一覧は、[Windows VM のサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
+    すべての VM のサイズと特性の一覧は、[Windows VM のサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
 
 3. [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) と [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) を使用して、残りの VM 構成を作成します。 次のコマンドでは、Windows Server 2016 の VM を作成します。
 

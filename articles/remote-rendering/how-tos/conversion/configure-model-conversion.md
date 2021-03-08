@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067173"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205321"
 ---
 # <a name="configure-the-model-conversion"></a>モデルの変換を構成する
 
@@ -33,7 +33,6 @@ ms.locfileid: "88067173"
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -86,13 +85,15 @@ ms.locfileid: "88067173"
 * `opaqueMaterialDefaultSidedness` - レンダリング エンジンでは、不透明な素材は両面であると想定されます。
 その想定が特定のモデルでは正しくない場合は、このパラメーターを "SingleSided" に設定する必要があります。 詳細については、「[:::no-loc text="single sided":::レンダリング](../../overview/features/single-sided-rendering.md)」を参照してください。
 
-### <a name="material-overrides"></a>素材のオーバーライド
-
-* `material-override` - このパラメーターを使用すると、素材の処理を[変換中にカスタマイズする](override-materials.md)ことができます。
-
 ### <a name="material-de-duplication"></a>素材の重複除去
 
 * `deduplicateMaterials` - このパラメーターは、同じプロパティとテクスチャを共有する素材の自動重複除去を有効または無効にします。 重複除去は、素材のオーバーライドが処理された後に実行されます。 既定で有効です。
+
+* 重複除去後でも、モデルのマテリアルが 65,535 個を超える場合、サービスによって、同様のプロパティを持つマテリアルのマージが試行されます。 最後の手段として、制限を超えるマテリアルはすべて赤色のエラー マテリアルに置き換えられます。
+
+![画像は 68,921 色の三角形の 2 つの立方体を示しています。](media/mat-dedup.png?raw=true)
+
+68,921 色の三角形の 2 つの立方体。 左:68,921 色のマテリアルを使用して重複除去を行う前。 右:64,000 色のマテリアルを使用して重複除去を行った後。 上限は 65,535 個のマテリアルです ([制限](../../reference/limits.md)に関するページを参照してください)。
 
 ### <a name="color-space-parameters"></a>色空間のパラメーター
 
@@ -257,7 +258,7 @@ ms.locfileid: "88067173"
 ### <a name="texture-sizes"></a>テクスチャのサイズ
 
 シナリオの種類によっては、テクスチャ データの量がメッシュ データのために使用されるメモリを上回る場合があります。 写真測量モデルにその可能性があります。
-変換構成には、テクスチャを自動的にスケールダウンする方法は用意されていません。 必要であれば、クライアント側の処理前の手順として、テクスチャのスケーリングを実行する必要があります。 ただし、変換手順では、適切な[テクスチャ圧縮形式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)の選択は実行されます。
+変換構成には、テクスチャを自動的にスケールダウンする方法は用意されていません。 必要であれば、クライアント側の処理前の手順として、テクスチャのスケーリングを実行する必要があります。 ただし、変換手順では、適切な[テクスチャ圧縮形式](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)の選択は実行されます。
 
 * 不透明の色テクスチャでは `BC1`
 * アルファ チャネル付きのソースの色テクスチャでは `BC7`
@@ -299,6 +300,8 @@ ms.locfileid: "88067173"
 
 モデル固有ではないファイル名 `conversionSettings.json` を使用して設定を指定することは、引き続きサポートされますが、非推奨となっています。
 代わりに、モデル固有のファイル名 `<modelName>.ConversionSettings.json` を使用します。
+
+変換設定ファイルでの[素材のオーバーライド ファイル](override-materials.md)を識別するための `material-override` 設定の使用は引き続きサポートされていますが、非推奨です。 代わりに、モデル固有のファイル名 `<modelName>.MaterialOverrides.json` を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

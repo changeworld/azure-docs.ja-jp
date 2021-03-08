@@ -4,15 +4,15 @@ description: Azure Analysis Services の表形式 1200 以上のデータ モデ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 02/08/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 03f4d151fc948e4c060989a7d101ad91aecdecb6
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749095"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981495"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -36,7 +36,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 **注:**
 
 <a name="tab1400a">1</a> - 1400 以上の表形式モデルのみ。  
-<a name="azprovider">2</a> - 表形式 1200 以上のモデルで "*プロバイダー*" データ ソースとして指定されている場合は、インメモリと DirectQuery の両方のモデルで、Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、または .NET Framework Data Provider SQL Server が必要です。  
+<a name="azprovider">2</a> - 表形式 1200 以上のモデルで "*プロバイダー*" データ ソースとして指定されている場合は、インメモリと DirectQuery の両方のモデルで、Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨) または .NET Framework Data Provider for SQL Server が必要です。  
 <a name="azsqlmanaged">3</a> - Azure SQL Managed Instance がサポートされています。 SQL Managed Instance はプライベート IP アドレスを使用して Azure VNet 内で実行されるため、インスタンスでパブリックエンド ポイントを有効にする必要があります。 有効になっていない場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)が必要です。  
 <a name="databricks">4</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。  
 <a name="gen2">5</a> - ADLS Gen2 コネクタは現在サポートされていませんが、ADLS Gen2 データ ソースでは Azure Blob Storage コネクタを使用できます。
@@ -79,7 +79,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 **注:**  
 <a name="tab1400b">6</a> - 表形式 1400 以上のモデルのみ。  
 <a name="sqlim">7</a> - 表形式 1200 以上のモデルで "*プロバイダー*" データ ソースとして指定されている場合は、Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、または .NET Framework Data Provider SQL Server を指定します。  
-<a name="instgw">8</a> - データ プロバイダーとして MSOLEDBSQL を指定する場合は、オンプレミス データ ゲートウェイと同じコンピューターに、[Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) をダウンロードしてインストールすることが必要になる場合があります。  
+<a name="instgw">8</a> - データ プロバイダーとして MSOLEDBSQL を指定する場合は、オンプレミス データ ゲートウェイと同じコンピューターに、[Microsoft OLE DB Driver for SQL Server](/sql/connect/oledb/oledb-driver-for-sql-server) をダウンロードしてインストールすることが必要になる場合があります。  
 <a name="oracle">9</a> - 表形式 1200 モデルの場合、または表形式 1400 以上のモデルの "*プロバイダー*" データ ソースとしては、Oracle Data Provider for .NET を指定します。 構造化データ ソースとして指定した場合は、必ず [Oracle マネージド プロバイダーを有効](#enable-oracle-managed-provider)にしてください。   
 <a name="teradata">10</a> - 表形式 1200 モデルの場合、または表形式 1400 以上のモデルの "*プロバイダー*" データ ソースとしては、Teradata Data Provider for .NET を指定します。  
 <a name="filesSP">11</a> - オンプレミスの SharePoint 内のファイルはサポートされていません。
@@ -118,9 +118,12 @@ Visual Studio で [テーブルのインポート ウィザード] を使用す�
 
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
 
+
 ## <a name="oauth-credentials"></a>OAuth 資格情報
 
-インメモリ モードを使用する 1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse (旧称 SQL Data Warehouse)、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、Power Query を使用して資格情報を設定します。
+"*インメモリ*" モードを使用する 1,400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 有効なトークンを生成するには、Power Query を使用して資格情報を設定します。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 
+> [!NOTE]
+> ゲートウェイ経由でアクセスされるデータ ソースでは、マネージド トークンの更新がサポートされていません。 たとえば、1 つまたは複数のマッシュアップ クエリ データ ソースがゲートウェイ経由でアクセスされたり、[ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md) プロパティが **true** に設定されたりします。 
 
 直接クエリモードは OAuth 資格情報ではサポートされていません。
 

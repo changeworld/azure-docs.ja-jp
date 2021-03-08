@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用してオンプレミスのディザスター リカバリーのネットワーク アダプターを管理する
 description: Azure Site Recovery を使用して、Azure へのオンプレミスのディザスター リカバリーのためにネットワーク インターフェイスを管理する方法について説明します
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
-ms.author: mayg
-ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129895"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90068117"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure へのオンプレミスのディザスター リカバリーの VM のネットワーク インターフェイスを管理する
 

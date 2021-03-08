@@ -1,5 +1,6 @@
 ---
-title: シングルページ アプリを運用環境に移行する - Microsoft ID プラットフォーム | Azure
+title: シングルページ アプリを運用環境に移行する
+titleSuffix: Microsoft identity platform
 description: シングルページ アプリケーションを構築する方法について説明します (運用環境への移行)
 services: active-directory
 author: navyasric
@@ -11,38 +12,34 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 9656da8be086724482f129efab323e02b73e117e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900309"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954964"
 ---
 # <a name="single-page-application-move-to-production"></a>シングルページ アプリケーション：運用環境に移行する
 
-Web API を呼び出すトークンの取得方法が分かったところで、次に、運用環境に移行する方法を学びます。
+Web API を呼び出すためにトークンを取得する方法について説明しました。ここでは、アプリケーションを運用環境に移行する際に考慮すべき点をいくつか示します。
 
-## <a name="improve-your-app"></a>アプリの改善
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-[ロギングを有効にして](msal-logging.md)、アプリの制作準備を整えます。
+## <a name="deploy-your-app"></a>アプリのデプロイ
 
-## <a name="test-your-integration"></a>統合のテスト
+Azure Storage サービスと Azure App Service でそれぞれ SPA プロジェクトおよび Web API プロジェクトをデプロイする方法については、[デプロイのサンプル](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3)を確認してください。 
 
-[Microsoft ID プラットフォームの統合チェックリスト](identity-platform-integration-checklist.md)に従って、統合をテストします。
+## <a name="code-samples"></a>コード サンプル
+
+これらのコード サンプルは、シングルページ アプリのいくつかの重要な操作を示しています。
+- [ASP.NET バックエンドを使用する SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi): **MSAL.js** を使用して独自のバックエンド Web API (ASP.NET Core) 用のトークンを取得する方法。
+
+- [Node.js Web API (Azure AD)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2): **passport-azure-ad** を使用してバックエンド Web API (Node.js) 用のアクセス トークンを検証する方法。
+
+- [Azure AD B2C を使用する SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp): **MSAL.js** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリにユーザーをサインインさせる方法。
+
+- [Node.js Web API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi): **passport-azure-ad** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリ用のアクセス トークンを検証する方法。
 
 ## <a name="next-steps"></a>次のステップ
 
-MSAL.js を使用してユーザーをサインインし、Microsoft Graph API を呼び出すアクセストークンを取得する方法のコードを説明するクイックスタートサンプルの詳細を次に示します。
-
-> [!div class="nextstepaction"]
-> [JavaScript SPA チュートリアル](./tutorial-v2-javascript-spa.md)
-
-MSAL.js を使用して独自のバックエンド Web API のトークンを取得する方法を示すサンプルを次に示します：
-
-> [!div class="nextstepaction"]
-> [ASP.NET バックエンドを使用する SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
-
-MSAL を使用して Azure Active Directory B2C (Azure AD B2C) に登録されているアプリのユーザーにサインインする方法を示すサンプルです。
-
-> [!div class="nextstepaction"]
-> [Azure AD B2C を使用する SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+- [JavaScript SPA チュートリアル](./tutorial-v2-javascript-spa.md): ユーザーをサインインさせ、**MSAL.js** を使用して **Microsoft Graph API** を呼び出すためのアクセス トークンを取得する方法について詳細を確認します。

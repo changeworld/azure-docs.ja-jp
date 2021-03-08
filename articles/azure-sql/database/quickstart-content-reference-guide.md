@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: carlr
+ms.topic: guide
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 3265b1f8234e1f2a2f19fb488d5c311e501c770e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 392f361f6fe487a15bdd63c2f3281ccc78b2f86d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338296"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184418"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL Database の単一データベースの概要
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,15 +41,15 @@ ms.locfileid: "84338296"
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>最小限のダウンタイムで単一データベースに移行する
 
-これらのクイック スタートを使用すると、`.bacpac` でデータベースを簡単に作成し、Azure にインポートできます。 ただし、`.bacpac` および `.dacpac` ファイルは、SQL Server のさまざまなバージョン間および Azure SQL 内でデータベースをすばやく移動したり、DevOps パイプラインで継続的インテグレーションを実装したりするように設計されています。 しかし、この方法は、最小限のダウンタイムで運用データベースを移行するためには設計されていません。新しいデータの追加を中止し、`.bacpac` ファイルへのソース データベースのエクスポートが完了するのを待機し、さらに Azure SQL Database へのインポートが完了するのを待機する必要があるためです。 このような待機の結果、特に大規模なデータベースでは、アプリケーションにダウンタイムが発生します。 運用データベースを移動する場合は、最小限のダウンタイムが保証される、より優れた移行方法が必要です。 そのためには、[Database Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) を使用して、最小限のダウンタイムでデータベースを移行します。 DMS は、ソース データベースで行われた変更を、復元中の単一データベースに増分的にプッシュすることで、これを実現します。 この方法であれば、最小限のダウンタイムでアプリケーションをソース データベースからターゲット データベースにすばやく切り替えることができます。
+これらのクイック スタートを使用すると、`.bacpac` でデータベースを簡単に作成し、Azure にインポートできます。 ただし、`.bacpac` および `.dacpac` ファイルは、SQL Server のさまざまなバージョン間および Azure SQL 内でデータベースをすばやく移動したり、DevOps パイプラインで継続的インテグレーションを実装したりするように設計されています。 しかし、この方法は、最小限のダウンタイムで運用データベースを移行するためには設計されていません。新しいデータの追加を中止し、`.bacpac` ファイルへのソース データベースのエクスポートが完了するのを待機し、さらに Azure SQL Database へのインポートが完了するのを待機する必要があるためです。 このような待機の結果、特に大規模なデータベースでは、アプリケーションにダウンタイムが発生します。 運用データベースを移動する場合は、最小限のダウンタイムが保証される、より優れた移行方法が必要です。 そのためには、[Database Migration Service (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%2fazure%2fsql-database%2ftoc.json) を使用して、最小限のダウンタイムでデータベースを移行します。 DMS は、ソース データベースで行われた変更を、復元中の単一データベースに増分的にプッシュすることで、これを実現します。 この方法であれば、最小限のダウンタイムでアプリケーションをソース データベースからターゲット データベースにすばやく切り替えることができます。
 
 ## <a name="hands-on-learning-modules"></a>ハンズオン ラーニング モジュール
 
 次の Microsoft Learn モジュールは、Azure SQL Database について無料で学習するのに役立ちます。
 
-- [アプリケーション データを格納するために SQL Database にデータベースをプロビジョニングする](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Azure SQL Database 内のデータベースのクエリを実行する ASP.NET アプリケーションを開発して構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Azure SQL Database 内のデータベースをセキュリティで保護する](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [アプリケーション データを格納するために SQL Database にデータベースをプロビジョニングする](/learn/modules/provision-azure-sql-db/)
+- [Azure SQL Database 内のデータベースのクエリを実行する ASP.NET アプリケーションを開発して構成する](/learn/modules/develop-app-that-queries-azure-sql/)
+- [Azure SQL Database 内のデータベースをセキュリティで保護する](/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>次のステップ
 

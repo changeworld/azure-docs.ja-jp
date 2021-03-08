@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレート関数を追加する
-description: Azure Resource Manager テンプレートにテンプレート関数を追加して値を構築します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) にテンプレート関数を追加して値を構築します。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe6185f0e7d6ee570c1491f3b21b6aebe4f090ae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 52b5bd0650b3a069adc3ef7f101c48a4674deaab
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497564"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107109"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>チュートリアル:ARM テンプレートにテンプレート関数を追加する
 
-このチュートリアルでは、Azure Resource Manager (ARM) テンプレートに[テンプレート関数](template-functions.md)を追加する方法について説明します。 関数を使用して動的に値を構築します。 システムに備わっているテンプレート関数に加えて、[ユーザー定義関数](./template-user-defined-functions.md)を作成することもできます。 このチュートリアルの所要時間は **7 分**です。
+このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) に[テンプレート関数](template-functions.md)を追加する方法について説明します。 関数を使用して動的に値を構築します。 システムに備わっているテンプレート関数に加えて、[ユーザー定義関数](./template-user-defined-functions.md)を作成することもできます。 このチュートリアルの所要時間は **7 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,15 +29,15 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-ストレージ アカウントの場所が**米国東部**にハードコーディングされています。 しかし、ストレージ アカウントを他のリージョンにデプロイしなければならないこともあるかもしれません。 テンプレートの柔軟性の欠如という問題に再び向き合うことになります。 場所のパラメーターを追加することもできますが、単に値をハードコーディングするよりも、妥当な値を既定値にできれば便利だと思われます。
+ストレージ アカウントの場所が **米国東部** にハードコーディングされています。 しかし、ストレージ アカウントを他のリージョンにデプロイしなければならないこともあるかもしれません。 テンプレートの柔軟性の欠如という問題に再び向き合うことになります。 場所のパラメーターを追加することもできますが、単に値をハードコーディングするよりも、妥当な値を既定値にできれば便利だと思われます。
 
 ## <a name="use-function"></a>関数を使用する
 
-このシリーズの先行するチュートリアルを終えている方は、既に関数を使用しています。 **"[parameters('storageName')]"** を追加したときに、[parameters](template-functions-deployment.md#parameters) 関数を使用しているのです。 ブラケットは、その内側の構文が[テンプレート式](template-expressions.md)であることを示します。 Resource Manager では、それらがリテラル値としては扱われずに、構文として解決されます。
+このシリーズの先行するチュートリアルを終えている方は、既に関数を使用しています。 `"[parameters('storageName')]"` を追加したときに、[parameters](template-functions-deployment.md#parameters) 関数を使用しました。 ブラケットは、その内側の構文が[テンプレート式](template-expressions.md)であることを示します。 Resource Manager では、それらがリテラル値としては扱われずに、構文として解決されます。
 
 関数を使うことでデプロイ中に動的に値が取得されるため、テンプレートの柔軟性が増します。 このチュートリアルでは、関数を使用して、デプロイに使用するリソース グループの場所を取得します。
 
-次の例では、**location** というパラメーターを追加するための変更箇所が強調表示されています。  このパラメーターの既定値によって、[resourceGroup](template-functions-resource.md#resourcegroup) 関数が呼び出されます。 この関数は、デプロイに使用されたリソース グループについての情報を含んだオブジェクトを返します。 そのオブジェクトのプロパティの 1 つが location プロパティです。 既定値を使用すると、リソース グループと同じ場所がストレージ アカウントの場所に割り当てられます。 リソース グループ内のリソースで同じ場所を共有する必要はありません。 必要であれば異なる場所を指定することもできます。
+次の例では、`location` というパラメーターを追加するための変更箇所が強調表示されています。 このパラメーターの既定値によって、[resourceGroup](template-functions-resource.md#resourcegroup) 関数が呼び出されます。 この関数は、デプロイに使用されたリソース グループについての情報を含んだオブジェクトを返します。 そのオブジェクトのプロパティの 1 つが location プロパティです。 既定値を使用すると、リソース グループと同じ場所がストレージ アカウントの場所に割り当てられます。 リソース グループ内のリソースで同じ場所を共有する必要はありません。 必要であれば異なる場所を指定することもできます。
 
 ファイル全体をコピーして、既存のテンプレートの内容を置き換えてください。
 
@@ -47,7 +47,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 先行するチュートリアルでは、ストレージ アカウントを米国東部に作成しましたが、リソース グループは米国中部に作成されていました。 このチュートリアルでは、リソース グループと同じリージョンにストレージ アカウントを作成します。 location には既定値を使用するので、そのパラメーター値を指定する必要はありません。 ストレージ アカウントの作成場所が変わることになるので、ストレージ アカウントに新しい名前を指定する必要があります。 たとえば、プレフィックスとして **store1** の代わりに **store2** を使用します。
 
-まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
+まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、`templateFile` 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,7 +74,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

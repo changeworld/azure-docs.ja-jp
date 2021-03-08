@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 08/10/2020
-  ms.openlocfilehash: 66095427637b52d9bc220cba911c3099fd8f397c
-  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+  ms.date: 10/26/2020
+  ms.openlocfilehash: 753a2b112929b785526e32df9c9836f48b8675ba
+  ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/12/2020
-  ms.locfileid: "88135948"
+  ms.lasthandoff: 01/08/2021
+  ms.locfileid: "98034953"
 landingContent:
 - title: Azure Policy について
   linkLists:
@@ -27,8 +27,12 @@ landingContent:
       url: ./concepts/effects.md
     - text: 定義の構造
       url: ./concepts/definition-structure.md
+    - text: スコープ
+      url: ./concepts/scope.md
     - text: 割り当ての構造
       url: ./concepts/assignment-structure.md
+    - text: 除外の構造
+      url: ./concepts/exemption-structure.md
   - linkListType: video
     links:
     - text: Build 2018 での Azure Policy
@@ -43,20 +47,28 @@ landingContent:
       url: ./assign-policy-azurecli.md
     - text: ポリシーを割り当てる (Azure PowerShell)
       url: ./assign-policy-powershell.md
+    - text: ポリシーを割り当てる (.NET)
+      url: ./assign-policy-dotnet.md
+    - text: ポリシーを割り当てる (JavaScript)
+      url: ./assign-policy-javascript.md
     - text: ポリシーを割り当てる (Python)
       url: ./assign-policy-python.md
     - text: ポリシーを割り当てる (REST)
       url: ./assign-policy-rest-api.md
     - text: ポリシーを割り当てる (ARM テンプレート)
       url: ./assign-policy-template.md
+    - text: ポリシーを割り当てる (Terraform)
+      url: ./assign-policy-terraform.md
   - linkListType: tutorial
     links:
     - text: ポリシーを作成および管理する
       url: ./tutorials/create-and-manage.md
     - text: VS Code 拡張機能を使用する
       url: ./how-to/extension-for-vscode.md
-    - text: コードとしてのポリシー ワークフローの設計
+    - text: コードとしての Azure Policy ワークフローを設計する
       url: ./concepts/policy-as-code.md
+    - text: GitHub を使用してコードとしての Azure Policy を実装する
+      url: ./tutorials/policy-as-code-github.md
   - linkListType: deploy
     links:
     - text: ポリシーのサンプルのインデックス
@@ -75,13 +87,15 @@ landingContent:
       url: ./how-to/programmatically-create.md
     - text: 配列のポリシーを作成する
       url: ./how-to/author-policies-for-arrays.md
+    - text: リソースのエクスポート
+      url: ./how-to/export-resources.md
   - linkListType: concept
     links:
     - text: 規制コンプライアンス
       url: ./concepts/regulatory-compliance.md
-    - text: Kubernetes 用のポリシー
+    - text: Kubernetes 用の Azure Policy
       url: ./concepts/policy-for-kubernetes.md
-    - text: VM のポリシー
+    - text: VM 用の Azure Policy
       url: ./concepts/guest-configuration.md
 - title: リソースの確認と修復
   linkLists:
@@ -91,6 +105,8 @@ landingContent:
       url: ./how-to/get-compliance-data.md
     - text: コンプライアンス違反の原因の特定
       url: ./how-to/determine-non-compliance.md
+    - text: リソースの除外
+      url: ./concepts/exemption-structure.md
     - text: 準拠していないリソースを修復する
       url: ./how-to/remediate-resources.md
 - title: 参加する
@@ -112,15 +128,17 @@ landingContent:
     - text: Azure CLI
       url: /cli/azure/policy
     - text: Azure PowerShell (ポリシー)
-      url: /powershell/module/az.resources/#policies
+      url: /powershell/module/az.resources/#policy
     - text: Azure PowerShell (ポリシーの分析情報)
-      url: /powershell/module/az.policyinsights#policy_insights
+      url: /powershell/module/az.policyinsights#policy-insights
     - text: REST (ポリシーの分析情報)
       url: /rest/api/policy-insights/
     - text: REST (割り当て)
       url: /rest/api/resources/policyassignments
     - text: REST (定義)
       url: /rest/api/resources/policydefinitions
+    - text: REST (除外)
+      url: /rest/api/resources/policyexemptions
     - text: REST (イニシアティブ)
       url: /rest/api/resources/policysetdefinitions
     - text: Resource Manager テンプレート

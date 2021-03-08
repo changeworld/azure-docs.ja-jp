@@ -7,28 +7,28 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
-ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b8b499613f8234f449e6d72f6ed6ec1f2f21287
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024967"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545414"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLI を使用した IoT デバイス/モジュールの自動管理
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理するという反復的で複雑なタスクの多くを自動化できます。 自動デバイス管理では、対象となる一連のデバイスをプロパティに基づいて設定し、必要な構成を定義しておくと、デバイスがスコープに適合したときに、IoT Hub によってデバイスが更新されます。 この更新は、_自動デバイス構成_ または _自動モジュール構成_ を使用して行われます。これにより、完了やコンプライアンスの概況を把握し、マージや競合に対処し、構成を段階的なアプローチで展開することができます。
+Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理するという反復的で複雑なタスクの多くを自動化できます。 自動デバイス管理では、対象となる一連のデバイスをプロパティに基づいて設定し、必要な構成を定義しておくと、デバイスがスコープに適合したときに、IoT Hub によってデバイスが更新されます。 この更新は、 _自動デバイス構成_ または _自動モジュール構成_ を使用して行われます。これにより、完了やコンプライアンスの概況を把握し、マージや競合に対処し、構成を段階的なアプローチで展開することができます。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自動デバイス管理では、一連のデバイス ツインまたはモジュール ツインが必要なプロパティで更新され、ツインで報告されたプロパティに基づくサマリーが報告されます。  この機能では、*構成*という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
+自動デバイス管理では、一連のデバイス ツインまたはモジュール ツインが必要なプロパティで更新され、ツインで報告されたプロパティに基づくサマリーが報告されます。  この機能では、 *構成* という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
 
-* **ターゲットの条件**: 更新されるデバイス ツインまたはモジュール ツインのスコープ (範囲) を定義します。 ターゲットの条件は、デバイス ツインのタグや報告されたプロパティに関するクエリとして指定されます。
+* **ターゲットの条件** : 更新されるデバイス ツインまたはモジュール ツインのスコープ (範囲) を定義します。 ターゲットの条件は、デバイス ツインのタグや報告されたプロパティに関するクエリとして指定されます。
 
-* **ターゲット コンテンツ**: ターゲットのデバイス ツインまたはモジュール ツイン内のどのプロパティを追加または更新するのかを定義します。 このコンテンツには、変更するプロパティのセクションへのパスが含まれます。
+* **ターゲット コンテンツ** : ターゲットのデバイス ツインまたはモジュール ツイン内のどのプロパティを追加または更新するのかを定義します。 このコンテンツには、変更するプロパティのセクションへのパスが含まれます。
 
-* **メトリック**: 各種の構成状態 (**成功**、**進行中**、**エラー**など) の集計カウントを定義します。 カスタム メトリックは、ツインから報告されたプロパティに関するクエリとして指定されます。  システム メトリックは、ツインの更新状態を測定する既定のメトリックです (対象となるツインの数や、正常に更新されたツインの数など)。
+* **メトリック** : 各種の構成状態 ( **成功** 、 **進行中** 、 **エラー** など) の集計カウントを定義します。 カスタム メトリックは、ツインから報告されたプロパティに関するクエリとして指定されます。  システム メトリックは、ツインの更新状態を測定する既定のメトリックです (対象となるツインの数や、正常に更新されたツインの数など)。
 
 自動構成は、構成が作成された直後に初めて実行され、その後は 5 分間隔で実行されます。 自動構成が実行されるたびに、メトリックのクエリが実行されます。
 
@@ -36,7 +36,7 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。 
 
-* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
+* ご使用の環境内の [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
 
 * [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-cli)。
 
@@ -136,7 +136,7 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 * --**hub-name** - 構成が作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
-* --**target-condition** - どのデバイスまたはモジュールがこの構成の対象となるかを指定する対象の条件を入力します。 自動デバイス構成の場合、条件は、デバイス ツイン タグか、デバイス ツインで必要なプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.desired.devicemodel='4000x'` です。 自動モジュール構成の場合、条件は、モジュール ツイン タグまたはモジュール ツインの目的のプロパティに基づきます。 たとえば、`from devices.modules where tags.environment='test'` または `from devices.modules where properties.reported.chillerProperties.model='4000x'` です。
+* --**target-condition** - どのデバイスまたはモジュールがこの構成の対象となるかを指定する対象の条件を入力します。  自動デバイス構成の場合、条件は、デバイス ツイン タグか、デバイス ツインで必要なプロパティに基づいて指定し、式の形式に一致させる必要があります。  たとえば、`tags.environment='test'` または `properties.desired.devicemodel='4000x'` です。  自動モジュール構成の場合、条件は、モジュール ツイン タグまたはモジュール ツインの目的のプロパティに基づきます。 たとえば、`from devices.modules where tags.environment='test'` または `from devices.modules where properties.reported.chillerProperties.model='4000x'` です。
 
 * --**priority** - 正の整数にする必要があります。 同じデバイスまたはモジュールで複数の構成がターゲットとなっている場合は、優先度の数値が最も大きい構成が適用されます。
 
@@ -155,7 +155,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
-コマンド ウィンドウで構成を調べます。 **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
+コマンド ウィンドウで構成を調べます。   **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
 
 * **targetedCount** - ターゲット条件と一致する IoT Hub 内のデバイス ツインまたはモジュール ツインの数を指定するシステム メトリックです。
 
@@ -229,14 +229,13 @@ az iot hub configuration delete --config-id [configuration id] \
 この記事では、多数の IoT デバイスを構成および監視する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
 * [IoT Hub デバイス ID を一括で管理する](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub メトリック](iot-hub-metrics.md)
-* [操作の監視](iot-hub-operations-monitoring.md)
+* [IoT Hub を監視する](monitor-iot-hub.md)
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド](iot-hub-devguide.md)
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)
 
 IoT Hub Device Provisioning サービスを使用してノータッチの Just-In-Time プロビジョニングを実現する方法については、次を参照してください。 
 
-* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning Service](../iot-dps/index.yml)

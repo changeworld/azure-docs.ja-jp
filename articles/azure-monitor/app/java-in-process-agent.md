@@ -1,38 +1,48 @@
 ---
-title: Java アプリケーションを任意の環境で監視する - Azure Monitor Application Insights
-description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
+title: Azure Monitor Application Insights Java
+description: コードを変更することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 811827c1053349d4fa80a25e5cf362331e5d87bc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902084"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383179"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション - パブリックプレビュー
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
 Java のコード不要のアプリケーション監視は、シンプルさがすべてです。コードの変更がなく、いくつかの構成変更を行うだけで、Java エージェントを有効にすることができます。
 
  Java エージェントは、任意の環境で動作し、すべての Java アプリケーションを監視できます。 つまり、Java アプリを実行しているのが、VM、オンプレミス、AKS、Windows、Linux などのいずれであっても、Java 3.0 エージェントがアプリを監視します。
 
-3\.0 エージェントが要求、依存関係、ログをすべて独自に収集するため、アプリケーションに Application Insights Java SDK を追加する必要がなくなりました。
+3\.0 エージェントによって要求、依存関係、ログがすべて独自に自動収集されるため、アプリケーションに Application Insights Java SDK を追加する必要がなくなりました。
 
-アプリケーションからカスタム テレメトリを送信することはできます。 3\.0 エージェントは、自動収集されたすべてのテレメトリと連動して、追跡と関連付けを行います。
+アプリケーションからカスタム テレメトリを送信することはできます。 3\.0 エージェントによって、自動収集されたすべてのテレメトリと連動して、追跡と関連付けが行われます。
+
+3\.0 エージェントは、Java 8 以降をサポートしています。
 
 ## <a name="quickstart"></a>クイック スタート
 
 **1.エージェントのダウンロード**
 
-[applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) をダウンロードします。
+> [!WARNING]
+> **3.0 Preview からアップグレードする場合**
+>
+> ファイル名自体がすべて小文字になったのに加えて、JSON 構造体が完全に変更されたため、すべての[構成オプション](./java-standalone-config.md)を注意深く確認してください。
+
+[applicationinsights-agent-3.0.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.2/applicationinsights-agent-3.0.2.jar) をダウンロードします
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加します
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
-アプリケーションの JVM 引数の構成に関する追加のヘルプについては、「[3.0 Preview: Tips for updating your JVM args](./java-standalone-arguments.md)」 (3.0 プレビュー: JVM の引数の更新に関するヒント) を参照してください。
+アプリケーションの JVM 引数の構成に関する追加のヘルプについては、[JVM の引数の更新に関するヒント](./java-standalone-arguments.md)のページを参照してください。
 
 **3.エージェントを Application Insights リソースにポイントする**
 
@@ -41,16 +51,14 @@ Application Insights リソースをまだ持っていない場合は、[リソ�
 環境変数を設定して、エージェントを Application Insights リソースにポイントします。
 
 ```
-APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-または、次の内容で、`ApplicationInsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0-PREVIEW.5.jar` と同じディレクトリに配置します。
+または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.2.jar` と同じディレクトリに配置します。
 
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
-  }
+  "connectionString": "InstrumentationKey=..."
 }
 ```
 
@@ -68,21 +76,23 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ## <a name="configuration-options"></a>構成オプション
 
-`ApplicationInsights.json` ファイルでは、次の構成を追加できます。
+`applicationinsights.json` ファイルでは、次の構成を追加できます。
 
 * クラウド ロール名
 * クラウド ロール インスタンス
-* アプリケーション ログ キャプチャ
-* JMX メトリック
-* Micrometer
-* Heartbeat
 * サンプリング
+* JMX メトリック
+* カスタム ディメンション
+* テレメトリ プロセッサ (プレビュー)
+* 自動収集されるログ
+* 自動収集される Micrometer メトリック (Spring Boot アクチュエータ メトリックを含む)
+* Heartbeat
 * HTTP Proxy
 * 自己診断
 
-詳細については、「[3.0 Public Preview: Configuration Options](./java-standalone-config.md)」 (3.0 パブリック プレビュー: 自動収集された要求、依存関係、ログ、およびメトリック) を参照してください。
+詳細については、[構成オプション](./java-standalone-config.md)に関するページを参照してください。
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>自動収集された要求、依存関係、ログ、およびメトリック
+## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>自動収集された要求、依存関係、ログ、およびメトリック
 
 ### <a name="requests"></a>Requests
 
@@ -112,119 +122,205 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 ### <a name="logs"></a>ログ
 
 * java.util.logging
-* Log4j
-* SLF4J/Logback
+* Log4j (MDC プロパティを含む)
+* SLF4J/Logback (MDC プロパティを含む)
 
 ### <a name="metrics"></a>メトリック
 
 * マイクロメーター (Spring Boot アクチュエータ メトリックを含む)
 * JMX メトリック
 
-## <a name="sending-custom-telemetry-from-your-application"></a>アプリケーションからカスタム テレメトリを送信する
+## <a name="send-custom-telemetry-from-your-application"></a>アプリケーションからカスタム テレメトリを送信する
 
 3\.0 以降での目標は、標準 API を使用してカスタム テレメトリを送信できるようにすることです。
 
-Micrometer、OpenTelemetry API、および一般的なログ記録フレームワークがサポートされています。 Application Insights Java 3.0 では、テレメトリが自動的にキャプチャされ、自動収集されたすべてのテレメトリと連動して、関連付けが行われます。
+現時点では、Micrometer、一般的なログ記録フレームワーク、および Application Insights Java 2.x SDK をサポートしています。
+Application Insights Java 3.0 を使用すると、これらの API を使用して送信されたテレメトリが自動的にキャプチャされ、自動収集されたテレメトリと関連付けられます。
 
 ### <a name="supported-custom-telemetry"></a>サポートされているカスタム テレメトリ
 
-次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x) を通じてサポートされます。 
+次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk) を通じてサポートされます。
 
 |                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
 |---------------------|------------|---------------------|---------|
 | **[カスタム イベント]**   |            |                     |  Yes    |
 | **カスタム メトリック**  |  はい       |                     |  はい    |
 | **依存関係**    |            |                     |  Yes    |
-| **例外**      |            |  はい                |  はい    |
-| **ページ ビュー**      |            |                     |  Yes    |
+| **例外**      |            |  Yes                |  はい    |
+| **ページ ビュー**      |            |                     |  はい    |
 | **要求**        |            |                     |  Yes    |
 | **トレース**          |            |  はい                |  はい    |
 
 現時点では、Application Insights 3.0 を使用した SDK をリリースする予定はありません。
 
-Application Insights Java 3.0 では、Application Insights Java SDK 2.x に送信されるテレメトリを既にリッスンしています。 この機能は、既存の 2.x ユーザーのアップグレード ストーリーの重要な部分であり、OpenTelemetry API が GA になるまでの、カスタム テレメトリ サポートの重要なギャップを埋めるものです。
+Application Insights Java 3.0 では、Application Insights Java 2.x SDK に送信されるテレメトリを既にリッスンしています。 この機能は、既存の 2.x ユーザーのアップグレード ストーリーの重要な部分であり、OpenTelemetry API が GA になるまでの、カスタム テレメトリ サポートの重要なギャップを埋めるものです。
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2.x を使用するカスタム テレメトリを送信する
+### <a name="send-custom-metrics-using-micrometer"></a>Micrometer を使用してカスタム　メトリックを送信する
 
-アプリケーションに `applicationinsights-core-2.6.0.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+アプリケーションに Micrometer を追加します。
 
 ```xml
-  <dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>applicationinsights-core</artifactId>
-    <version>2.6.0</version>
-  </dependency>
+<dependency>
+  <groupId>io.micrometer</groupId>
+  <artifactId>micrometer-core</artifactId>
+  <version>1.6.1</version>
+</dependency>
+```
+
+Micrometer の[グローバル レジストリ](https://micrometer.io/docs/concepts#_global_registry)を使用して、メーターを作成します。
+
+```java
+static final Counter counter = Metrics.counter("test_counter");
+```
+
+次に、それを使用してメトリックを記録します。
+
+```java
+counter.increment();
+```
+
+### <a name="send-custom-traces-and-exceptions-using-your-favorite-logging-framework"></a>お気に入りのログ記録フレームワークを使用してカスタム トレースと例外を送信する
+
+Log4j、Logback、java.util.logging は自動的にインストルメント化され、これらのログ記録フレームワークを介して実行されるログは、トレースおよび例外テレメトリとして自動収集されます。
+
+既定では、INFO レベル以上でログ記録が実行された場合にのみ、ログが収集されます。
+このレベルを変更する方法については、[構成オプション](./java-standalone-config.md#auto-collected-logging)に関する記事を参照してください。
+
+カスタム ディメンションをログに添付する場合は、[Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。また、Application Insights Java 3.0 を使用すると、トレースおよび例外テレメトリでそれらの MDC プロパティがカスタム ディメンションとして自動的にキャプチャされます。
+
+### <a name="send-custom-telemetry-using-the-2x-sdk"></a>2\.x SDK を使用してカスタム テレメトリを送信する
+
+アプリケーションに `applicationinsights-core-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-core</artifactId>
+  <version>2.6.2</version>
+</dependency>
 ```
 
 TelemetryClient を作成します。
 
   ```java
-private static final TelemetryClient telemetryClient = new TelemetryClient();
+static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-また、これを使用して、カスタム テレメトリを送信します。
+次に、それを使用して、カスタム テレメトリを送信します。
 
-### <a name="events"></a>events
+##### <a name="events"></a>events
 
-  ```java
+```java
 telemetryClient.trackEvent("WinGame");
 ```
-### <a name="metrics"></a>メトリック
 
-[Micrometer](https://micrometer.io) を使用して、メトリック テレメトリを送信できます。
-
-```java
-  Counter counter = Metrics.counter("test_counter");
-  counter.increment();
-```
-
-または、Application Insights Java SDK 2.x を使用することもできます。
+##### <a name="metrics"></a>メトリック
 
 ```java
-  telemetryClient.trackMetric("queueLength", 42.0);
+telemetryClient.trackMetric("queueLength", 42.0);
 ```
 
-### <a name="dependencies"></a>依存関係
+##### <a name="dependencies"></a>依存関係
 
 ```java
-  boolean success = false;
-  long startTime = System.currentTimeMillis();
-  try {
-      success = dependency.call();
-  } finally {
-      long endTime = System.currentTimeMillis();
-      RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
-      telemetry.setTimestamp(new Date(startTime));
-      telemetry.setDuration(new Duration(endTime - startTime));
-      telemetryClient.trackDependency(telemetry);
-  }
+boolean success = false;
+long startTime = System.currentTimeMillis();
+try {
+    success = dependency.call();
+} finally {
+    long endTime = System.currentTimeMillis();
+    RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
+    telemetry.setSuccess(success);
+    telemetry.setTimestamp(new Date(startTime));
+    telemetry.setDuration(new Duration(endTime - startTime));
+    telemetryClient.trackDependency(telemetry);
+}
 ```
 
-### <a name="logs"></a>ログ
-お気に入りのログ記録フレームワークを介してカスタム ログ テレメトリを送信できます。
-
-または、Application Insights Java SDK 2.x を使用することもできます。
+##### <a name="logs"></a>ログ
 
 ```java
-  telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
+telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="exceptions"></a>例外
-お気に入りのログ記録フレームワークを介してカスタム例外テレメトリを送信できます。
-
-または、Application Insights Java SDK 2.x を使用することもできます。
+##### <a name="exceptions"></a>例外
 
 ```java
-  try {
-      ...
-  } catch (Exception e) {
-      telemetryClient.trackException(e);
-  }
+try {
+    ...
+} catch (Exception e) {
+    telemetryClient.trackException(e);
+}
 ```
 
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2.x からのアップグレード
-
-アプリケーションで Application Insights Java SDK 2.x を既に使用している場合は、削除する必要はありません。 Java 3.0 エージェントでは、Java SDK 2.x を介して送信しているカスタム テレメトリの検出、キャプチャ、関連付けを行います。一方で、Java SDK 2.x によって実行される自動収集を抑制し、キャプチャの重複を防止します。
+### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>2\.x SDK を使用して要求カスタム ディメンションを追加する
 
 > [!NOTE]
-> 注:3.0 エージェントを使用している場合、Java SDK 2.x TelemetryInitializers と TelemetryProcessors は実行されません。
+> この機能は、3.0.2 以降にのみ存在します
+
+アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+コードにカスタム ディメンションを追加します。
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getProperties().put("mydimension", "myvalue");
+```
+
+### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>2\.x SDK を使用して要求テレメトリ user_Id 設定する
+
+> [!NOTE]
+> この機能は、3.0.2 以降にのみ存在します
+
+アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+コードに `user_Id` を設定します。
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getContext().getUser().setId("myuser");
+```
+
+### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>2\.x SDK を使用して要求テレメトリ名をオーバーライドする
+
+> [!NOTE]
+> この機能は、3.0.2 以降にのみ存在します
+
+アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+コードに名前を設定します。
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.setName("myname");
+```

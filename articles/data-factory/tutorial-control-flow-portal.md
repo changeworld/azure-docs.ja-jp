@@ -1,22 +1,19 @@
 ---
 title: Azure portal を使用してパイプラインのアクティビティを分岐または連結する
-description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
-services: data-factory
-author: djpmsft
-ms.author: daperlov
-manager: anandsub
+description: Azure portal を使用して Azure Data Factory パイプラインのデータの流れを制御する方法について説明します。
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9d8d9af4892001ff1f8f60a92f28aedad14c17cf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077655"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378606"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal を使用して Azure Data Factory パイプラインのアクティビティを分岐または連結する
 
@@ -24,7 +21,7 @@ ms.locfileid: "86077655"
 
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合、成功したコピー操作の詳細 (書き込まれたデータの量など) がパイプラインによって成功電子メールで送信されます。 コピー アクティビティが失敗した場合、コピー失敗の詳細 (エラー メッセージなど) がパイプラインによって失敗電子メールで送信されます。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
 
-シナリオの概要:![概要](media/tutorial-control-flow-portal/overview.png)
+シナリオの概要:![コピー対象の Azure Blob Storage を示す図。成功した場合は詳細を含む電子メールを送信し、失敗した場合はエラーの詳細を含む電子メールを送信する。](media/tutorial-control-flow-portal/overview.png)
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -43,8 +40,8 @@ ms.locfileid: "86077655"
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-* **Azure Storage アカウント**。 BLOB ストレージを**ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
-* **Azure SQL データベース**。 データベースを**シンク** データ ストアとして使用します。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事を参照してください。
+* **Azure Storage アカウント**。 BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
+* **Azure SQL データベース**。 データベースを **シンク** データ ストアとして使用します。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事を参照してください。
 
 ### <a name="create-blob-table"></a>BLOB テーブルを作成する
 
@@ -137,18 +134,18 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
 
-   Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+   Azure データ ファクトリの名前は **グローバルに一意** にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
 
    *データ ファクトリ名 "ADFTutorialDataFactory" は利用できません。*
 
-3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+3. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
 
       - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
         リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2]** を選択します。
+4. **バージョン** として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。      
@@ -169,7 +166,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 - (成功および失敗に基づいた) あるアクティビティと別のアクティビティの接続
 - アクティビティからの出力を後続のアクティビティへの入力として使用する
 
-1. Data Factory UI の**開始**ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックします。  
+1. Data Factory UI の **開始** ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックします。  
 
    ![開始ページ](./media/tutorial-control-flow-portal/get-started-page.png)
 3. パイプラインのプロパティ ウィンドウで **[パラメーター]** タブに切り替え、 **[新規]** ボタンを使用して、種類が文字列の 3 つのパラメーター (sourceBlobContainer、sinkBlobContainer、receiver) を追加します。
@@ -182,13 +179,13 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. **[アクティビティ]** ツール ボックスで **[データ フロー]** を展開し、 **[コピー]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。
 
    ![コピー アクティビティのドラッグ アンド ドロップ](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
-5. 下部にある **[コピー]** アクティビティの**プロパティ** ウィンドウで、 **[ソース]** タブに切り替えて **[+ 新規]** をクリックします。 この手順でコピー アクティビティのソース データセットを作成します。
+5. 下部にある **[コピー]** アクティビティの **プロパティ** ウィンドウで、 **[ソース]** タブに切り替えて **[+ 新規]** をクリックします。 この手順でコピー アクティビティのソース データセットを作成します。
 
-   ![ソース データセット](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![コピー アクティビティのソース データセットを作成する方法を示すスクリーンショット。](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. **[新しいデータセット]** ウィンドウで **[Azure BLOB ストレージ]** を選択し、 **[完了]** をクリックします。
 
    ![[Azure Blob Storage] の選択](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
-7. **[AzureBlob1]** という新しい**タブ**が表示されます。 データセットの名前を「**SourceBlobDataset**」に変更します。
+7. **[AzureBlob1]** という新しい **タブ** が表示されます。 データセットの名前を「**SourceBlobDataset**」に変更します。
 
    ![データセットの全般設定](./media/tutorial-control-flow-portal/dataset-general-page.png)
 8. **プロパティ** ウィンドウにある **[接続]** タブに切り替えて、 **[リンクされたサービス]** で [新規] をクリックします。 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクするためのリンクされたサービスを作成します。
@@ -205,7 +202,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
     ![ソース データセットの設定](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-13. **パイプライン**のタブに切り替えるか、またはツリービューにあるパイプラインをクリックします。 **[Source Dataset]\(ソース データセット\)** で **SourceBlobDataset** が選択されていることを確認します。
+13. **パイプライン** のタブに切り替えるか、またはツリービューにあるパイプラインをクリックします。 **[Source Dataset]\(ソース データセット\)** で **SourceBlobDataset** が選択されていることを確認します。
       
    ![ソース データセット](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
@@ -221,7 +218,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     1. ファイル名に「`@CONCAT(pipeline().RunId, '.txt')`」と入力します。 この式では、ファイル名に現在のパイプライン実行の ID を使用します。 サポートされているシステム変数および式の一覧については、[システム変数](control-flow-system-variables.md)に関するページと[式言語](control-flow-expression-language-functions.md)に関するページを参照してください。
 
         ![シンク データセットの設定](./media/tutorial-control-flow-portal/sink-dataset-settings.png)
-17. 上部にある**パイプライン**のタブに切り替えます。 **[アクティビティ]** ツール ボックスの **[General]\(一般\)** を展開し、 **[Web]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティの名前を「**SendSuccessEmailActivity**」に設定します。 Web アクティビティでは、任意の REST エンドポイントを呼び出すことができます。 このアクティビティの詳細については、[Web アクティビティ](control-flow-web-activity.md)に関する記事を参照してください。 このパイプラインでは、Web アクティビティを使用して Logic Apps 電子メール ワークフローを呼び出します。
+17. 上部にある **パイプライン** のタブに切り替えます。 **[アクティビティ]** ツール ボックスの **[General]\(一般\)** を展開し、 **[Web]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティの名前を「**SendSuccessEmailActivity**」に設定します。 Web アクティビティでは、任意の REST エンドポイントを呼び出すことができます。 このアクティビティの詳細については、[Web アクティビティ](control-flow-web-activity.md)に関する記事を参照してください。 このパイプラインでは、Web アクティビティを使用して Logic Apps 電子メール ワークフローを呼び出します。
 
     ![最初の Web アクティビティのドラッグ アンド ドロップ](./media/tutorial-control-flow-portal/success-web-activity-general.png)
 18. **[General]\(一般\)** タブから **[設定]** タブに切り替えて、次の手順を実行します。
@@ -273,8 +270,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ![2 番目の Web アクティビティの設定](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. パイプライン デザイナーの **[コピー]** アクティビティを選択して **+->** ボタンをクリックし、 **[エラー]** を選択します。  
 
-    ![2 番目の Web アクティビティの設定](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
-23. コピー アクティビティの横にある**赤い**ボタンを 2 番目の Web アクティビティ **SendFailureEmailActivity** にドラッグします。 パイプラインが次の図のように表示されるよう、アクティビティを移動できます。
+    ![パイプライン デザイナーの [コピー] アクティビティで [エラー] を選択する方法を示すスクリーンショット。](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+23. コピー アクティビティの横にある **赤い** ボタンを 2 番目の Web アクティビティ **SendFailureEmailActivity** にドラッグします。 パイプラインが次の図のように表示されるよう、アクティビティを移動できます。
 
     ![すべてのアクティビティが含まれた完全なパイプライン](./media/tutorial-control-flow-portal/full-pipeline.png)
 24. パイプラインを検証するために、ツール バーの **[検証]** ボタンをクリックします。 **>>** ボタンをクリックして **[Pipeline Validation Output]\(パイプラインの検証の出力\)** ウィンドウを閉じます。
@@ -285,14 +282,14 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     ![発行](./media/tutorial-control-flow-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>成功するパイプラインの実行をトリガーする
-1. パイプラインの実行を**トリガー**するために、ツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。
+1. パイプラインの実行を **トリガー** するために、ツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。
 
     ![パイプラインの実行をトリガーする](./media/tutorial-control-flow-portal/trigger-now-menu.png)
 2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで、次の手順を実行します。
 
     1. **sourceBlobContainer** パラメーターに「**adftutorial/adfv2branch/input**」を入力します。
     2. **sinkBlobContainer** パラメーターに「**adftutorial/adfv2branch/output**」を入力します。
-    3. **receiver** の**メール アドレス**を入力します。
+    3. **receiver** の **メール アドレス** を入力します。
     4. **[完了]** をクリックします。
 
         ![パイプラインの実行のパラメーター](./media/tutorial-control-flow-portal/pipeline-run-parameters.png)
@@ -302,18 +299,18 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 1. パイプラインの実行を監視するには、左側の **[監視]** タブに切り替えます。 手動でトリガーしたパイプラインの実行が表示されます。 **[最新の情報に更新]** ボタンを使用して、一覧を更新します。
 
     ![成功したパイプラインの実行](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
-2. このパイプラインの実行に関連付けられている**アクティビティの実行を表示**するには、 **[アクション]** 列にある最初のリンクをクリックします。 上部の **[パイプライン]** をクリックすると、前のビューに戻ることができます。 **[最新の情報に更新]** ボタンを使用して、一覧を更新します。
+2. このパイプラインの実行に関連付けられている **アクティビティの実行を表示** するには、 **[アクション]** 列にある最初のリンクをクリックします。 上部の **[パイプライン]** をクリックすると、前のビューに戻ることができます。 **[最新の情報に更新]** ボタンを使用して、一覧を更新します。
 
-    ![アクティビティの実行](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![アクティビティ実行の一覧を表示する方法を示すスクリーンショット。](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>失敗するパイプラインの実行をトリガーする
 1. 左側で **[編集]** タブに切り替えます。
-2. パイプラインの実行を**トリガー**するために、ツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。
+2. パイプラインの実行を **トリガー** するために、ツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。
 3. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで、次の手順を実行します。
 
     1. **sourceBlobContainer** パラメーターに「**adftutorial/dummy/input**」を入力します。 ダミー フォルダーが adftutorial コンテナーに存在しないことを確認します。
     2. **sinkBlobContainer** パラメーターに「**adftutorial/dummy/output**」を入力します。
-    3. **receiver** の**メール アドレス**を入力します。
+    3. **receiver** の **メール アドレス** を入力します。
     4. **[完了]** をクリックします。
 
 ## <a name="monitor-the-failed-pipeline-run"></a>失敗したパイプラインの実行を監視する
@@ -324,7 +321,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 2. エラーの詳細を表示するには、パイプラインの実行の **[エラー]** リンクをクリックします。
 
     ![パイプライン エラー](./media/tutorial-control-flow-portal/pipeline-error-message.png)
-2. このパイプラインの実行に関連付けられている**アクティビティの実行を表示**するには、 **[アクション]** 列にある最初のリンクをクリックします。 **[最新の情報に更新]** ボタンを使用して、一覧を更新します。 パイプラインのコピー アクティビティが失敗したことがわかります。 Web アクティビティによる指定された受信者への失敗電子メールの送信は成功しました。
+2. このパイプラインの実行に関連付けられている **アクティビティの実行を表示** するには、 **[アクション]** 列にある最初のリンクをクリックします。 **[最新の情報に更新]** ボタンを使用して、一覧を更新します。 パイプラインのコピー アクティビティが失敗したことがわかります。 Web アクティビティによる指定された受信者への失敗電子メールの送信は成功しました。
 
     ![アクティビティの実行](./media/tutorial-control-flow-portal/activity-runs-failure.png)
 4. **[アクション]** 列の **[エラー]** リンクをクリックして、エラーの詳細を表示します。

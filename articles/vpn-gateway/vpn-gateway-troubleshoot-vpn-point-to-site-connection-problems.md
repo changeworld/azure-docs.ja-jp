@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994861"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -166,8 +166,8 @@ VPN パッケージを、ショートカットからではなく、直接開き�
 VPN クライアント構成パッケージを抽出し、.cer ファイルを検索します。 証明書をインストールするには、次の手順を実行します。
 
 1. mmc.exe を開きます。
-2. **証明書**スナップインを追加します。
-3. ローカル コンピューターの**コンピューター** アカウントを選択します。
+2. **証明書** スナップインを追加します。
+3. ローカル コンピューターの **コンピューター** アカウントを選択します。
 4. **[信頼されたルート証明機関]** ノードを右クリックします。 **[すべてのタスク]**  >  **[インポート]** の順にクリックし、VPN クライアント構成パッケージから抽出した .cer ファイルを参照します。
 5. コンピューターを再起動します。 
 6. VPN クライアントをインストールしてみます。
@@ -298,7 +298,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、[Azure VPN ゲートウェイをリセット](vpn-gateway-resetgw-classic.md)します。 新しいルートが使用されていることを確認するには、仮想ネットワーク ピアリングが正常に構成された後で、もう一度ポイント対サイト VPN クライアントをダウンロードする必要があります。
+この問題を解決するには、[Azure VPN ゲートウェイをリセット](./reset-gateway.md)します。 新しいルートが使用されていることを確認するには、仮想ネットワーク ピアリングが正常に構成された後で、もう一度ポイント対サイト VPN クライアントをダウンロードする必要があります。
 
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>エラー:"失効サーバーがオフラインであったため、失効関数が失効を確認できませんでした。(エラー 0x80092013)"
 
@@ -317,13 +317,13 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-RADIUS サーバーが正しく構成されていることを確認します。 詳細については、「[RADIUS 認証と Azure Multi-Factor Authentication Server の統合](../active-directory/authentication/howto-mfaserver-dir-radius.md)」を参照してください。
+RADIUS サーバーが正しく構成されていることを確認します。 詳細については、「[RADIUS 認証と Azure AD Multi-Factor Authentication Server の統合](../active-directory/authentication/howto-mfaserver-dir-radius.md)」を参照してください。
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>VPN Gateway からルート証明書をダウンロードするときに "エラー 405" が発生します
 
 ### <a name="cause"></a>原因
 
-ルート証明書がインストールされていません。 ルート証明書は、クライアントの**信頼された証明書**ストアにインストールされます。
+ルート証明書がインストールされていません。 ルート証明書は、クライアントの **信頼された証明書** ストアにインストールされます。
 
 ## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN クライアント エラー:VPN トンネルの試行に失敗したため、リモート接続を確立できませんでした。 (エラー 800) 
 
@@ -336,7 +336,7 @@ NIC ドライバーの期限が切れています。
 NIC ドライバーを更新します。
 
 1. **[開始]** をクリックして「**デバイス マネージャー**」と入力し、結果の一覧から選択します。 管理者パスワードまたは確認を求められたら、パスワードを入力するか、確認を行います。
-2. **ネットワーク アダプター**カテゴリで、更新したい NIC を見つけます。  
+2. **ネットワーク アダプター** カテゴリで、更新したい NIC を見つけます。  
 3. デバイス名をダブルクリックして **[ドライバーの更新]** を選択し、 **[自動的に更新されたドライバ ソフトウェアを検索します]** を選択します。
 4. Windows によって新しいドライバーが検出されない場合、デバイス製造元の Web サイト上にあるドライバーを探してその手順に従うことができます。
 5. コンピューターを再起動して、もう一度接続を試してみてください。

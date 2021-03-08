@@ -1,18 +1,15 @@
 ---
 title: HDInsight 4.0 の概要 - Azure
 description: HDInsight 3.6 と HDInsight 4.0 の機能、制限事項、アップグレードの推奨事項を比較します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 694acc0005e90d8299d46528f83ba68ea3fcf1c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749169"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931181"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
@@ -32,13 +29,18 @@ Hive LLAP の利点は次のとおりです。
 
 * クエリ結果をキャッシュすることで、以前に計算されたクエリ結果を再利用できます。 このキャッシュにより、クエリに必要なクラスター タスクの実行に費やされる時間とリソースが節約されます。
 
-### <a name="hive-dynamic-materialized-views"></a>Hive の動的な具体化されたビュー
+### <a name="hive-dynamic-materialized-views"></a>Hive の動的なマテリアライズドビュー
 
-Hive では、動的な具体化されたビュー、つまり関連するサマリーの事前計算がサポートされるようになっています。 ビューによって、データ ウェアハウスでのクエリ処理が高速化されます。 具体化されたビューは Hive にネイティブに格納でき、LLAP アクセラレーションをシームレスに使用できます。
+Hive では、動的なマテリアライズドビュー、つまり関連するサマリーの事前計算がサポートされるようになっています。 ビューによって、データ ウェアハウスでのクエリ処理が高速化されます。 マテリアライズドビューは Hive にネイティブに格納でき、LLAP アクセラレーションをシームレスに使用できます。
 
 ### <a name="hive-transactional-tables"></a>Hive トランザクション テーブル
 
-HDI 4.0 には Apache Hive 3 が含まれています。 Hive 3 では、Hive ウェアハウス内に存在するトランザクション テーブルに対して、原子性、一貫性、分離性、持続性への対応が要求されます。 ACID に準拠しているテーブルおよびテーブルのデータは、Hive によってアクセスされて管理されます。 作成、取得、更新、削除 (CRUD) テーブル内のデータは Optimized Row Column (ORC) ファイル形式である必要があります。 挿入のみのテーブルでは、すべてのファイル形式がサポートされます。
+HDI 4.0 には Apache Hive 3 が含まれています。 Hive 3 では、Hive ウェアハウス内に存在するトランザクション テーブルに対して、原子性、一貫性、分離性、持続性への対応が要求されます。 ACID に準拠しているテーブルおよびテーブルのデータは、Hive によってアクセスされて管理されます。 作成、取得、更新、削除 (CRUD) テーブル内のデータは Optimized Row Column (ORC) ファイル形式である必要があります。 挿入のみのテーブルでは、すべてのファイル形式がサポートされます。 
+
+> [!Note]
+> ACID またはトランザクション サポートは、マネージド テーブルに対してのみ機能し、外部テーブルでは機能しません。 Hive 外部テーブルは、Hive によって基になるデータの変更が行われなくても外部パーティがテーブル データを読み書きできるように設計されています。 ACID テーブルの場合は、Hive によって基になるデータが圧縮とトランザクションを使用して変更される可能性があります。
+
+ACID テーブルには次のような利点があります。
 
 * ACID v2 では、ストレージ形式と実行エンジンの両方でパフォーマンスが向上しています
 
@@ -102,5 +104,9 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 
 ## <a name="next-steps"></a>次のステップ
 
+* [HBase 移行ガイド](./hbase/apache-hbase-migrate-new-version.md)
+* [Hive 移行ガイド](./interactive-query/apache-hive-migrate-workloads.md)
+* [Kafka 移行ガイド](./kafka/migrate-versions.md)
+* [Spark 移行ガイド](./spark/migrate-versions.md)
 * [Azure HDInsight のドキュメント](index.yml)
 * [リリース ノート](hdinsight-release-notes.md)

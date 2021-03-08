@@ -5,18 +5,16 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 06/13/2018
-ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 02/08/2021
+ms.openlocfilehash: f1e84c838d310721cba604274388ae2767eb1502
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004765"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389673"
 ---
-# <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
-Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Cache for Redis インスタンスでクラスタリングを構成する方法について説明します。
+# <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンス用の Redis クラスタリングを構成する
 
-## <a name="what-is-redis-cluster"></a>Redis クラスターとは
 Azure Cache for Redis では、 [Redis での実装](https://redis.io/topics/cluster-tutorial)と同じように Redis クラスターが提供されます。 Redis クラスターには、次の利点があります。 
 
 * データセットを複数のノードに自動的に分割する機能。 
@@ -28,22 +26,55 @@ Azure Cache for Redis では、 [Redis での実装](https://redis.io/topics/clu
 
 Azure では、Redis クラスターは、各シャードがプライマリ/レプリカ ペアを持つプライマリ/レプリカ モデルとして提供され、レプリケーションは Azure Cache for Redis によって管理されます。 
 
-## <a name="clustering"></a>クラスタリング
+## <a name="set-up-clustering"></a>クラスタリングを設定する
+
 クラスタリングは、キャッシュの作成中に **[Azure Cache for Redis の新規作成]** ブレードで有効化されます。 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Premium キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 キャッシュは、Azure ポータルだけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。 Azure Cache for Redis の作成について詳しくは、[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページを参照してください。
 
-クラスタリングは **[Redis クラスター]** ブレードで構成します。
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="リソースの作成。":::
+   
+2. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
 
-![クラスタリング][redis-cache-clustering]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="[Azure Cache for Redis] を選択します。":::
 
-クラスター内に最大 10 個のシャードを作成できます。 **[有効]** をクリックし、スライダーを操作するか 1 ～ 10 の値を入力して **[シャード数]** を設定し、 **[OK]** をクリックします。
+3. **[新規 Redis Cache]** ページで、新しい Premium キャッシュの設定を構成します。
+   
+   | 設定      | 推奨値  | 説明 |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
+   | **サブスクリプション** | ドロップダウンでご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
+   | **リソース グループ** | ドロップダウンでリソース グループを選択するか、 **[新規作成]** を選択して新しいリソース グループ名を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
+   | **場所** | ドロップダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
+   | **キャッシュの種類** | ドロップダウンで Premium キャッシュを選択し、Premium 機能を構成します。 詳細については、「[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。 |  価格レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 詳細については、[Azure Cache for Redis の概要](cache-overview.md)に関するページを参照してください。 |
 
-各シャードは Azure によって管理されるプライマリ/レプリカ キャッシュ ペアであり、キャッシュの合計サイズはシャードの数に価格レベルで選択したキャッシュ サイズを掛けることによって計算されます。 
+4. **[ネットワーク]** タブを選択するか、ページの下部にある **[ネットワーク]** ボタンをクリックします。
 
-![クラスタリング][redis-cache-clustering-selected]
+5. **[ネットワーク]** タブで、接続方法を選択します。 Premium キャッシュ インスタンスの場合、パブリック IP アドレスまたはサービス エンドポイント経由で公的に接続することも、プライベート エンドポイントを使用してプライベートに接続することもできます。
 
-キャッシュを作成した後は、クラスター化されていないキャッシュと同じようにアクセスして使用できます。また、Redis はキャッシュのシャード全体にデータを分配します。 診断が[有効](cache-how-to-monitor.md#enable-cache-diagnostics)になっている場合は、シャードごとにメトリックが個別にキャプチャされ、Azure Cache for Redis ブレードに[表示](cache-how-to-monitor.md)できます。 
+6. **[次へ: 詳細]** タブを選択するか、ページの下部にある **[次へ: 詳細]** ボタンをクリックします。
+
+7. Premium キャッシュ インスタンスの **[詳細]** タブで、非 TLS ポート、クラスタリング、データ永続化の設定を構成します。 クラスタリングを有効にするには、 **[有効]** をクリックします。
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="クラスタリングの切り替え。":::
+
+    クラスター内に最大 10 個のシャードを作成できます。 **[有効]** をクリックした後に、スライダーを操作するか 1 から 10 の値を入力して **[シャード数]** を設定し、 **[OK]** をクリックします。
+
+    各シャードは Azure によって管理されるプライマリ/レプリカ キャッシュ ペアであり、キャッシュの合計サイズはシャードの数に価格レベルで選択したキャッシュ サイズを掛けることによって計算されます。
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="クラスタリングの切り替えの選択。":::
+
+    キャッシュを作成した後は、クラスター化されていないキャッシュと同じようにアクセスして使用できます。また、Redis はキャッシュのシャード全体にデータを分配します。 診断が[有効](cache-how-to-monitor.md#enable-cache-diagnostics)になっている場合は、シャードごとにメトリックが個別にキャプチャされ、Azure Cache for Redis ブレードに[表示](cache-how-to-monitor.md)できます。 
+
+8. **[次へ: タグ]** タブを選択するか、ページの下部にある **[次へ: タグ]** ボタンをクリックします。
+
+9. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。 
+
+10. **[Review + create]\(レビュー + 作成\)** を選択します。 [確認および作成] タブが表示され、Azure によって構成が検証されます。
+
+11. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
+
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。 
 
 > [!NOTE]
 > 
@@ -56,7 +87,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>実行中の Premium キャッシュのクラスター サイズを変更する
-クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[リソース] メニュー**の **[Cluster Size]\(クラスターのサイズ\)** をクリックします。
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[リソース] メニュー** の **[Cluster Size]\(クラスターのサイズ\)** をクリックします。
 
 ![Redis クラスター サイズ][redis-cache-redis-cluster-size]
 
@@ -70,6 +101,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 > 
 
 ## <a name="clustering-faq"></a>クラスタリングの FAQ
+
 次の一覧は、Azure Redis Cache のクラスタリングに関するよく寄せられる質問への回答です。
 
 * [クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
@@ -139,7 +171,7 @@ TLS の場合は、`1300N` を `1500N` に置き換えます。
 はい。 まず、キャッシュが Premium でない場合は、スケーリングしてキャッシュを確実に Premium にしてください。 次に、クラスター構成オプション (クラスターを有効にするオプションを含む) が表示されるようになります。 キャッシュが作成されるか、または初めてクラスタリングを有効にした後、クラスター サイズを変更できます。
 
    >[!IMPORTANT]
-   >クラスタリングを有効すると元には戻せません。 また、クラスタリングが有効であり、かつシャードが 1 つだけのキャッシュは、クラスタリング*なしの*同じサイズのキャッシュとは動作が*異なります*。
+   >クラスタリングを有効すると元には戻せません。 また、クラスタリングが有効であり、かつシャードが 1 つだけのキャッシュは、クラスタリング *なしの* 同じサイズのキャッシュとは動作が *異なります*。
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>Basic または Standard キャッシュのクラスタリングを構成できますか。
 クラスタリングは、Premium キャッシュでのみ使用できます。
@@ -154,7 +186,8 @@ TLS の場合は、`1300N` を `1500N` に置き換えます。
 クラスタリングを使用しているときに StackExchange.Redis を使うと、`MOVE` 例外が発生することがあります。この場合は、[StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) 以降を使用しているかどうかを確認してください。 StackExchange.Redis を使用するための .NET アプリケーションの構成手順については、「[キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Cache for Redis 機能について詳しく確認します。
+
+Azure Cache for Redis の機能について
 
 * [Azure Cache for Redis Premium サービス レベル](cache-overview.md#service-tiers)
 

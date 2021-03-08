@@ -6,21 +6,24 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299647"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742795"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
 Azure リソースのマネージド ID では、Azure Active Directory で自動的に管理される ID が、Azure Spring Cloud アプリケーションなどの Azure リソースに提供されます。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。
 
 この記事では、Azure portal と CLI (バージョン0.2.4 から利用可能) を使用して、Azure Spring Cloud アプリのシステム割り当てマネージド ID を有効または無効にする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
-Azure リソースのマネージド ID に習熟してない場合は、[概要に関するセクション](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)を参照してください。
+Azure リソースのマネージド ID に習熟してない場合は、[概要に関するセクション](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
 デプロイ済みの Azure Spring Cloud インスタンスが必要です。 [Azure CLI を使用してデプロイするためのクイックスタート](spring-cloud-quickstart.md)に従ってください。
 
 ## <a name="add-a-system-assigned-identity"></a>システム割り当て ID を追加する
@@ -56,9 +59,9 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ## <a name="obtain-tokens-for-azure-resources"></a>Azure リソースのトークンを取得する
 アプリでは、そのマネージド ID を使って、Azure Key Vault など Azure Active Directory で保護されているその他のリソースにアクセスするトークンを取得できます。 これらのトークンは、アプリケーションの特定のユーザーではなく、リソースにアクセスするアプリケーションを表します。
 
-[自分のアプリケーションからのアクセスを許可するようにターゲット リソースを構成する](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal)ことが必要になる場合があります。 たとえば、Key Vault にアクセスするためのトークンを要求する場合は、お使いのアプリケーションの ID を含むアクセス ポリシーを追加していることを確認してください。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 Azure Active Directory トークンをサポートしているリソースの詳細については、「[Azure AD 認証をサポートしている Azure サービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)」をご覧ください。
+[自分のアプリケーションからのアクセスを許可するようにターゲット リソースを構成する](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)ことが必要になる場合があります。 たとえば、Key Vault にアクセスするためのトークンを要求する場合は、お使いのアプリケーションの ID を含むアクセス ポリシーを追加していることを確認してください。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 Azure Active Directory トークンをサポートしているリソースの詳細については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
-Azure Spring Cloud では、トークンの取得に Azure Virtual Machine と同じエンドポイントが共有されます。 Java SDK または Spring Boot Starter を使用してトークンを取得することをお勧めします。  各種コードとスクリプトの例や、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスについては、[VM トークンの使用方法](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token)に関する記事を参照してください。
+Azure Spring Cloud では、トークンの取得に Azure Virtual Machine と同じエンドポイントが共有されます。 Java SDK または Spring Boot Starter を使用してトークンを取得することをお勧めします。  各種コードとスクリプトの例や、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスについては、[VM トークンの使用方法](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)に関する記事を参照してください。
 
 推奨: Java SDK または Spring Boot Starter を使用してトークンを取得します。  [次の手順](#next-steps)に含まれているサンプルを参照してください。
 
@@ -81,7 +84,7 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [Java SDK でマネージド ID を使用する方法](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
+
 * [Spring Boot Starter でマネージド ID を使用して Azure Key Vault にアクセスする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [Azure リソースのマネージド ID に関する詳細情報](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-
+* [Java SDK でマネージド ID を使用する方法](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)

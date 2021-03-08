@@ -1,26 +1,26 @@
 ---
 title: 'チュートリアル: Azure Data Lake Storage からデータを読み込む'
-description: COPY ステートメントを使用して Synapse SQL 用に Azure Data Lake Storage からデータを読み込む。
+description: COPY ステートメントを使用して、専用 SQL プール用に Azure Data Lake Storage からデータを読み込む。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 06/07/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533939"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677106"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Synapse SQL 用に Azure Data Lake Storage からデータを読み込む
+# <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールに Azure Data Lake Storage からデータを読み込む
 
-このガイドでは、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 すべての認証方法で COPY ステートメントを使用する簡単な例については、「[Synapse SQL を使用してデータを安全に読み込む](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)」を参照してください。
+このガイドでは、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 すべての認証方法で COPY ステートメントを使用する簡単な例については、[専用 SQL プールを使用してデータを安全に読み込む](./quickstart-bulk-load-copy-tsql-examples.md)に関する記事を参照してください。
 
 > [!NOTE]  
 > COPY ステートメントに関するご意見や問題の報告は、配布リストの sqldwcopypreview@service.microsoft.com までメールでお寄せください。
@@ -34,16 +34,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) をダウンロードしてインストールします。
 
 このチュートリアルを実行するには、次のものが必要です。
 
-* SQL プール。 [SQL プールの作成とデータのクエリ](create-data-warehouse-portal.md)に関するページをご覧ください。
+* 専用 SQL プール。 [専用 SQL プールの作成とデータのクエリ](create-data-warehouse-portal.md)に関する記事をご覧ください。
 * Data Lake Storage アカウント。 [Azure Data Lake Storage の使用開始](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事を参照してください。 このストレージ アカウントでは、次のいずれかの資格情報を構成または指定して読み込む必要があります。ストレージ アカウントに対する適切な Azure ロールを持つストレージ アカウント キー、Shared Access Signature (SAS) キー、Azure Directory アプリケーション ユーザー、または AAD ユーザー。
 
 ## <a name="create-the-target-table"></a>ターゲット テーブルを作成する
 
-SQL プールに接続して、読み込み先のターゲット テーブルを作成します。 この例では、製品ディメンション テーブルを作成します。
+専用 SQL プールに接続して、読み込み先のターゲット テーブルを作成します。 この例では、製品ディメンション テーブルを作成します。
 
 ```sql
 -- A: Create the target table
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>COPY ステートメントを作成する
 
-SQL プールに接続して、COPY ステートメントを実行します。 例の完全な一覧については、「[Synapse SQL を使用してデータを安全に読み込む](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)」を参照してください。
+専用 SQL プールに接続して、COPY ステートメントを実行します。 例の完全な一覧については、[専用 SQL プールを使用してデータを安全に読み込む](./quickstart-bulk-load-copy-tsql-examples.md)に関する記事を参照してください。
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -84,7 +84,7 @@ FROM 'https://storageaccount.blob.core.windows.net/container/directory/'
 WITH 
 (
    --CREDENTIAL: Specifies the authentication method and credential access your storage account
-   CREDENTIAL (IDENTITY = '', SECRET = '')
+   CREDENTIAL = (IDENTITY = '', SECRET = ''),
    --FILE_TYPE: Specifies the file type in your storage account location
    FILE_TYPE = 'CSV',
    --FIELD_TERMINATOR: Marks the end of each field (column) in a delimited text (CSV) file
@@ -133,6 +133,6 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 > [データ ウェアハウス用のテーブルを開発する方法を学習する](sql-data-warehouse-tables-overview.md)
 
 読み込みの例とリファレンスに関する詳細については、次のドキュメントを確認してください。
-- [COPY ステートメントのリファレンス ドキュメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [各認証方法での COPY の例](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [単一テーブルでの COPY に関するクイック スタート](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [COPY ステートメントのリファレンス ドキュメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
+- [各認証方法での COPY の例](./quickstart-bulk-load-copy-tsql-examples.md)
+- [単一テーブルでの COPY に関するクイック スタート](./quickstart-bulk-load-copy-tsql.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 を使用したライブ ストリーミングの概要 | Microsoft Docs
+title: ライブ ストリーミングの概要
 description: この記事では、Azure Media Services v3 を使用したライブ ストリーミングの概要を説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 23898969f254063ee9e5385fee577661871ccf45
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b552dcc0e6766316e55e9cdda6e462b2d4abfd2b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298982"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955921"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -37,7 +37,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 この記事では、Media Services を使用したライブ ストリーミングの概要とガイダンスを説明し、他の関連記事のリンクを提供します。
  
 > [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](/rest/api/media/)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ## <a name="dynamic-packaging-and-delivery"></a>ダイナミック パッケージと配信
 
@@ -60,9 +60,9 @@ Media Services では、[ダイナミック パッケージ](dynamic-packaging-o
 
 ### <a name="pass-through"></a>パススルー
 
-![パススルー](./media/live-streaming/pass-through.svg)
+![パススルー ライブ イベントからのビデオおよびオーディオ フィードがどのように取り込まれ処理されるかを示す図。](./media/live-streaming/pass-through.svg)
 
-パススルー **ライブ イベント**を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 入力プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは、追加のコード変換なしでダイナミック パッケージャー (ストリーミング エンドポイント) への受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 
+パススルー **ライブ イベント** を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 入力プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは、追加のコード変換なしでダイナミック パッケージャー (ストリーミング エンドポイント) への受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 
 
 ### <a name="live-encoding"></a>ライブ エンコード  
 
@@ -91,19 +91,19 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 2. [ライブ イベント](live-events-outputs-concept.md)を作成します。 <br/>イベントの作成時に、そのイベントを自動開始するように設定できます。 または、ストリーミングを開始する準備ができたら、イベントを開始できます。<br/> 自動開始が true に設定されている場合、ライブ イベントは作成の直後に開始されます。 ライブ イベントの実行が開始されるとすぐに課金が開始されます。 それ以上の課金を停止するには、ライブ イベント リソースの Stop を明示的に呼び出す必要があります。 詳細については、[ライブ イベントの状態と課金](live-event-states-billing.md)に関するページを参照してください。
 3. 取り込み URL を取得し、その URL を使用して投稿フィードを送信するようにオンプレミス エンコーダーを構成します。<br/>「[おすすめのライブ エンコーダー](recommended-on-premises-live-encoders.md)」を参照してください。
 4. プレビュー URL を取得し、それを使用して、エンコーダーからの入力が実際に受信されていることを確認します。
-5. 新しい**アセット** オブジェクトを作成します。 
+5. 新しい **アセット** オブジェクトを作成します。 
 
     各ライブ出力はアセットに関連付けられており、ビデオを関連する Azure BLOB ストレージ コンテナーに記録するために使用されます。 
-6. ストリームをアセットにアーカイブできるように、**ライブ出力**を作成し、作成したアセット名を使用します。
+6. ストリームをアセットにアーカイブできるように、**ライブ出力** を作成し、作成したアセット名を使用します。
 
     ライブ出力は作成すると開始され、削除されると停止します。 ライブ出力を削除しても、基になるアセットとアセット内のコンテンツは削除されません。
-7. [組み込みのストリーミング ポリシーの種類](streaming-policy-concept.md)で**ストリーミング ロケーター**を作成します。
+7. [組み込みのストリーミング ポリシーの種類](streaming-policy-concept.md)で **ストリーミング ロケーター** を作成します。
 
     ライブ出力を公開するには、関連付けられたアセット用にストリーミング ロケーターを作成する必要があります。 
-8. 使用する URL を返すためのパスを**ストリーミング ロケーター**に列挙します (これらは決定論的です)。
-9. ストリーミングする**ストリーミング エンドポイント** (配信元) のホスト名を取得します。
+8. 使用する URL を返すためのパスを **ストリーミング ロケーター** に列挙します (これらは決定論的です)。
+9. ストリーミングする **ストリーミング エンドポイント** (配信元) のホスト名を取得します。
 10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
-11. **ライブ イベント**の公開をやめる場合は、イベントのストリーミングを停止し、**ストリーミング ロケーター**を削除する必要があります。
+11. **ライブ イベント** の公開をやめる場合は、イベントのストリーミングを停止し、**ストリーミング ロケーター** を削除する必要があります。
 12. ストリーミング イベントが完了し、以前にプロビジョニングされたリソースをクリーンアップする場合は、次の手順に従います。
 
     * エンコーダーからのストリームのプッシュを停止します。
@@ -135,4 +135,4 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 
 * [ライブ ストリーミングのクイックスタート](live-events-wirecast-quickstart.md)
 * [ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)
-* [Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md)
+* [Media Services v2 から v3 への移行のガイダンス](migrate-v-2-v-3-migration-introduction.md)

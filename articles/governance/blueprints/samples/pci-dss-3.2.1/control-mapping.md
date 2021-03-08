@@ -1,23 +1,23 @@
 ---
 title: PCI-DSS v3.2.1 ブループリント サンプルのコントロール
-description: Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルの Azure Policy と RBAC へのコントロール マッピング。
-ms.date: 08/19/2020
+description: Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルの Azure Policy と Azure RBAC へのコントロール マッピング。
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9b1cf7702b627ae073f0172dde4694060004cb3f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649229"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045157"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 ブループリント サンプルのコントロール マッピング
 
 以下の記事は、Azure Blueprints PCI-DSS v3.2.1 のブループリント サンプルが PCI-DSS v3.2.1 のコントロールにどのようにマップされているかを説明したものです。 そのコントロールについて詳しくは、[PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf) に関するページをご覧ください。
 
-以下のマッピングは、**PCI-DSS v3.2.1: 2018** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、 **[\[プレビュー\] PCI v3.2.1:2018 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする]** 組み込みポリシー イニシアティブを見つけて選択します。
+以下のマッピングは、**PCI-DSS v3.2.1: 2018** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、**PCI v3.2.1:2018** 組み込みポリシーのイニシアティブを見つけて選択します。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md)に関するページを参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md)に関するページを参照してください。
 
 ## <a name="132-and-134-boundary-protection"></a>1.3.2 および 1.3.4 境界保護
 
@@ -63,7 +63,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2、7.2.1、8.3.1.a、および 8.3.1.b アクセス特権の管理
 
-このブループリントでは、所有者アクセス許可、書き込みアクセス許可、または読み取りアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていない従業員アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure では、Azure リソースにアクセスするユーザーを管理するために、ロールベースのアクセス制御 (RBAC) が実装されています。 カスタム RBAC ルールの実装状況を把握することで、それらの実装ニーズや実装の適切性を確認することができます (カスタム RBAC ルールはエラーを起こしやすいので、これは非常に重要です)。 このブループリントでは、SQL Server に対する Azure Active Directory 認証の使用を監査する [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます  
+このブループリントでは、所有者アクセス許可、書き込みアクセス許可、または読み取りアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていない従業員アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースにアクセスするユーザーを管理できます。 カスタム Azure RBAC 規則ではエラーが発生しやすいため、カスタム Azure RBAC 規則の実装状況を把握しておくと、実装の必要性や適切性の確認に役立ちます。 このブループリントでは、SQL Server に対する Azure Active Directory 認証の使用を監査する [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます  
 。
  
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
@@ -77,7 +77,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 および 8.1.5 最小特権とユーザー アクセス権の確認
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、ロールベースのアクセス制御 (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的にレビューする必要があるアカウント (非推奨のアカウントや、管理者特権のアクセス許可を持つ外部アカウントなど) を監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure のリソースにアクセスするユーザーを管理できます。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的にレビューする必要があるアカウント (非推奨のアカウントや、管理者特権のアクセス許可を持つ外部アカウントなど) を監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - 非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
@@ -87,7 +87,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 アクセス権の削除または調整
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、ロールベースのアクセス制御 (RBAC) が実装されています。 Azure Active Directory と RBAC を使用すれば、ユーザー ロールを更新して組織の変更を反映することができます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure のリソースにアクセスするユーザーを管理できます。 Azure Active Directory と Azure RBAC を使用すると、ユーザー ロールを更新して組織の変更を反映できます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - 非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある

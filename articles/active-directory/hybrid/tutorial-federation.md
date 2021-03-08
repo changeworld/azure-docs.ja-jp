@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a68c3719ea742a5c02f8be167fc1989ae4683c0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279195"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176292"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>チュートリアル:単一の AD フォレスト環境をクラウドに統合する
 
@@ -87,7 +87,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 4. Windows Server の起動画面で言語を選択し、 **[次へ]** をクリックします。
 5. **[今すぐインストール]** をクリックします。
 6. ライセンス キーを入力し、 **[次へ]** をクリックします。
-7. [ライセンス条項に同意します] をオンにし、 **[次へ]** をクリックします。
+7. **[ライセンス条項に同意します]** をオンにし、 **[次へ]** をクリックします。
 8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
 9. **[次へ]** をクリックします。
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
@@ -202,21 +202,21 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 次に、ユーザーをクラウドに同期できるよう、Azure AD テナントを作成する必要があります。  新しい Azure AD テナントを作成するには、以下を実行します。
 
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
-2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
+2. **プラス (+) アイコン** を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
 4. **［作成］** を選択します</br>
-![作成](media/tutorial-password-hash-sync/create1.png)</br>
-5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
-6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
+![Azure AD テナントの作成方法を示すスクリーンショット。](media/tutorial-password-hash-sync/create1.png)</br>
+5. **組織の名前** と **初期ドメイン名** を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
+6. これが完了したら、**こちら** のリンクをクリックし、ディレクトリを管理します。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD でグローバル管理者を作成する
 Azure AD テナントを作成したので、次は全体管理者アカウントを作成します。  このアカウントは、Azure AD Connect のインストール時に Azure AD コネクタ アカウントを作成するために使用されます。  Azure AD コネクタ アカウントは、Azure AD に情報を書き込むために使用されます。   全体管理者アカウントを作成するには、以下を実行します。
 
 1.  **[管理]** にある **[ユーザー]** を選択します。</br>
-![作成](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![[管理] セクションの [ユーザー] オプションが選択されているスクリーンショット。ここで、Azure AD の全体管理者を作成します。](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  **[すべてのユーザー]** を選択し、 **+ [新しいユーザー]** を選択します。
 3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、 **[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、 **[作成]** を選択します。</br>
-![作成](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![スクリーンショットには、Azure AD の全体管理者を作成するときに選択する [作成] ボタンが表示されています。](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. これが完了したら、新しい Web ブラウザーを開き、新しい全体管理者アカウントと一時パスワードを使用して myapps.microsoft.com にサインインします。
 5. 全体管理者のパスワードを覚えやすいものに変更します。
 
@@ -226,23 +226,23 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 1. [Azure portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) に戻って、 **[すべてのユーザー]** ブレードを閉じてください。
 2. 左側で **[カスタム ドメイン名]** を選択します。
 3. **[カスタム ドメインの追加]** を選択します。</br>
-![フェデレーション](media/tutorial-federation/custom1.png)</br>
+![[カスタムドメインの追加] ボタンが強調表示されているスクリーンショット。](media/tutorial-federation/custom1.png)</br>
 4. **[カスタム ドメイン名]** で、ボックスにカスタム ドメインの名前を入力し、 **[ドメインの追加]** をクリックします。
 5. [カスタム ドメイン名] 画面では、TXT 情報または MX 情報が表示されます。  この情報は、ドメインのドメイン レジストラーの DNS 情報に追加する必要があります。  そのため、ドメイン レジストラーに移動して、ドメインの DNS 設定で TXT 情報または MX 情報を入力します。  これにより、Azure でドメインを確認できるようになります。  Azure による確認には最大で 24 時間かかる可能性があります。  詳細については、[カスタム ドメインの追加](../../active-directory/fundamentals/add-custom-domain.md)に関するドキュメントを参照してください。</br>
-![フェデレーション](media/tutorial-federation/custom2.png)</br>
+![TXT または MX 情報を追加する場所を示すスクリーンショット。](media/tutorial-federation/custom2.png)</br>
 6. 確認が確実に行われるよう、[確認] ボタンをクリックします。</br>
-![フェデレーション](media/tutorial-federation/custom3.png)</br>
+![[確認] を選択した後の確認メッセージが表示されているスクリーンショット。](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect をダウンロードしてインストールする
 次に、Azure AD Connect をダウンロードしてインストールします。  インストールが完了したら、高速インストールを実行します。  次の操作を行います。
 
 1. [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) をダウンロードします。
-2. **AzureADConnect.msi**を検索し、ダブルクリックします。
+2. **AzureADConnect.msi** を検索し、ダブルクリックします。
 3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]** をクリックします。  
 4. [簡単設定] 画面で、 **[カスタマイズ]** をクリックします。  
 5. [必須コンポーネントのインストール] 画面で、 **[インストール]** をクリックします。  
 6. [ユーザー サインイン] 画面で **[AD FS とのフェデレーション]** を選択し、 **[次へ]** をクリックします。
-![フェデレーション](media/tutorial-federation/fed1.png)
+![[AD FS とのフェデレーション] を選択する場所を示すスクリーンショット。](media/tutorial-federation/fed1.png)
 
 1. [Azure AD に接続] 画面で、上で作成した全体管理者のユーザー名とパスワードを入力し、 **[次へ]** をクリックします。
 2. [ディレクトリの接続] 画面で、 **[ディレクトリの追加]** をクリックします。  次に **[新しい AD アカウントを作成]** を選択し、contoso\Administrator のユーザー名とパスワードを入力して **[OK]** をクリックします。
@@ -257,7 +257,7 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 11. **[フェデレーション サーバーにインストールされている証明書を使用します]** を選択し、 **[参照]** をクリックします。
 12. 検索ボックスに「DC1」と入力し、見つかったら選択します。  **[OK]** をクリックします。
 13. **[証明書ファイル]** ドロップ ダウンから、以前に作成した証明書の **adfs.contoso.com** を選択します。  **[次へ]** をクリックします。
-![フェデレーション](media/tutorial-federation/fed2.png)
+![作成した証明書ファイルを選択する場所を示すスクリーンショット。](media/tutorial-federation/fed2.png)
 
 1. AD FS サーバー画面で、 **[参照]** をクリックして検索ボックスに「DC1」と入力し、見つかったら選択します。  **[OK]** をクリックします。  **[次へ]** をクリックします。
 ![フェデレーション](media/tutorial-federation/fed3.png)

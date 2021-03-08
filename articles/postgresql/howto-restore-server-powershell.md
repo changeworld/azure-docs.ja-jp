@@ -1,19 +1,19 @@
 ---
 title: バックアップと復元 - Azure PowerShell - Azure Database for PostgreSQL
 description: Azure PowerShell を使用して Azure Database for PostgreSQL サーバーをバックアップおよび復元する方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f582159b0ce1355b34c42496dc7516264b62d365
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 63fffb5998b0b6a245db3f1c8fcf16f2d576936e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902033"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489763"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>PowerShell を使用して Azure Database for PostgreSQL サーバーをバックアップおよび復元する方法
 
@@ -23,14 +23,14 @@ Azure Database for PostgreSQL サーバーは、復元機能が有効になる�
 
 このハウツー ガイドを完了するには、次が必要です。
 
-- ローカルにインストールされた [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps)、またはブラウザーの [Azure Cloud Shell](https://shell.azure.com/)
+- ローカルにインストールされた [Az PowerShell モジュール](/powershell/azure/install-az-ps)、またはブラウザーの [Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for PostgreSQL サーバー](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Az.PostgreSql PowerShell モジュールがプレビュー段階にある間は、コマンド `Install-Module -Name Az.PostgreSql -AllowPrerelease` を使用して、Az PowerShell モジュールとは別にこれをインストールする必要があります。
 > Az.PostgreSql PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
-PowerShell をローカルで使用する場合は、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
+PowerShell をローカルで使用する場合は、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -41,9 +41,9 @@ PowerShell をローカルで使用する場合は、[Connect-AzAccount](https:/
 > [!NOTE]
 > サーバーの作成後は、冗長の種類 (geo 冗長とローカル冗長) を変更することはできません。
 
-`New-AzPostgreSqlServer` コマンドでサーバーを作成するときに、**GeoRedundantBackup** パラメーターでバックアップの冗長オプションを指定します。 **[Enabled]\(有効\)** を指定すると、geo 冗長バックアップが取得されます。 **[Disabled]\(無効\)** を指定すると、ローカル冗長バックアップが取得されます。
+`New-AzPostgreSqlServer` コマンドでサーバーを作成するときに、 **GeoRedundantBackup** パラメーターでバックアップの冗長オプションを指定します。 **[Enabled]\(有効\)** を指定すると、geo 冗長バックアップが取得されます。 **[Disabled]\(無効\)** を指定すると、ローカル冗長バックアップが取得されます。
 
-バックアップのリテンション期間は、**BackupRetentionDay** パラメーターで設定します。
+バックアップのリテンション期間は、 **BackupRetentionDay** パラメーターで設定します。
 
 サーバー作成時にこれらの値を設定する方法の詳細については、「[PowerShell を使用して Azure Database for PostgreSQL サーバーを作成する](quickstart-create-postgresql-server-database-using-azure-powershell.md)」をご覧ください。
 
@@ -75,11 +75,11 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `Restore-AzPostgreSqlServer` コマンドレットの **PointInTimeRestore** パラメーター セットには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| ResourceGroupName |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | 名前 | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
-| RestorePointInTime | 2020-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、**2020-03-13T05:59:00-08:00** など自身のローカル タイム ゾーンを使用できます。 また、**2018-03-13T13:59:00Z** など UTC Zulu 形式も使用できます。 |
+| RestorePointInTime | 2020-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、 **2020-03-13T05:59:00-08:00** など自身のローカル タイム ゾーンを使用できます。 また、 **2018-03-13T13:59:00Z** など UTC Zulu 形式も使用できます。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | ポイントインタイム モードを使用して復元します。 |
 
 サーバーを過去の特定の時点に復元すると、新しいサーバーが作成されます。 特定の時点における元のサーバーとそのデータベースが新しいサーバーにコピーされます。
@@ -94,7 +94,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 geo 冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for PostgreSQL を使用できる任意のリージョンに作成できます。
 
-geo 冗長バックアップを使ってサーバーを作成するには、**UseGeoRestore** パラメーターを指定して `Restore-AzPostgreSqlServer` コマンドを使用します。
+geo 冗長バックアップを使ってサーバーを作成するには、 **UseGeoRestore** パラメーターを指定して `Restore-AzPostgreSqlServer` コマンドを使用します。
 
 > [!NOTE]
 > サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
@@ -106,7 +106,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzPostgreSqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-この例は、**myresourcegroup** に属する **mydemoserver-georestored** という名前の新しいサーバーを米国東部リージョンに作成します。 これは、8 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 サーバーは **mydemoserver** の geo 冗長バックアップ (これもリソース グループ**myresourcegroup** に含まれます) から作成されます。
+この例は、 **myresourcegroup** に属する **mydemoserver-georestored** という名前の新しいサーバーを米国東部リージョンに作成します。 これは、8 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 サーバーは **mydemoserver** の geo 冗長バックアップ (これもリソース グループ **myresourcegroup** に含まれます) から作成されます。
 
 既存のサーバーとは異なるリソース グループに新しいサーバーを作成するには、次の例のように **ResourceGroupName** パラメーターを使用して新しいリソース グループ名を指定します。
 
@@ -117,14 +117,14 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `Restore-AzPostgreSqlServer` コマンドレットの **GeoRestore** パラメーター セットには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
 |名前 | mydemoserver-georestored | 新しいサーバーの名前。 |
 |場所 | eastus | 新しいサーバーの場所。 |
 |UseGeoRestore | `<SwitchParameter>` | geo モードを使用して復元します。 |
 
-geo リストアを使用して新しいサーバーを作成すると、**Sku** パラメーターが指定されていない限り、新しいサーバーは元のサーバーと同じストレージ サイズおよび価格レベルを継承します。
+geo リストアを使用して新しいサーバーを作成すると、 **Sku** パラメーターが指定されていない限り、新しいサーバーは元のサーバーと同じストレージ サイズおよび価格レベルを継承します。
 
 復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 

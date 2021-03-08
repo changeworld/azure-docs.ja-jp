@@ -1,5 +1,5 @@
 ---
-title: Synapse Studio (プレビュー) のトラブルシューティング
+title: Synapse Studio のトラブルシューティング
 description: Azure Synapse Studio のトラブルシューティング
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,30 +8,31 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b0070b35d6ee85f698960708363e7b4d226a8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d91001024ad547e52fe48ee30749fee9a4fb4a1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070264"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116179"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (プレビュー) のトラブルシューティング
+# <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio のトラブルシューティング
 
 このトラブルシューティング ガイドでは、ネットワーク接続の問題についてサポート チケットを開くときに入力する情報について説明します。 適切な情報があれば、問題をより迅速に解決できる可能性があります。
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL オンデマンド (プレビュー) サービスの接続の問題
+## <a name="serverless-sql-pool-service-connectivity-issue"></a>サーバーレス SQL プール サービスの接続の問題
 
 ### <a name="symptom-1"></a>現象 1
 
-[接続先] ドロップダウンで、[SQL オンデマンド] オプションがグレー表示されます。
+[接続先] ドロップダウンで、[Serverless SQL pool]\(サーバーレス SQL プール\) オプションがグレー表示される。
 
 ![現象 1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>現象 2
 
-"SQL オンデマンド" を使用してクエリを実行すると、"サーバーへの接続を確立できませんでした" というエラー メッセージが表示されます。
+[Serverless SQL pool]\(サーバーレス SQL プール\) を使用してクエリを実行すると、[Failed to establish connection to server]\(サーバーへの接続を確立できませんでした\) というエラー メッセージが表示される。
 
 ![現象 2](media/troubleshooting-synapse-studio/symptom2.png)
+ 
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
@@ -44,7 +45,7 @@ ms.locfileid: "87070264"
 
 トラブルシューティングを開始するには、実行した操作を Azure Synapse Studio で再試行してください。
 
-- 現象 1 では、[SQL スクリプト] タブの "データベースの使用" ドロップダウンの右側にある [更新] ボタンを選択し、"SQL オンデマンド" が表示されるかどうかを確認します。
+- 現象 1 については、[SQL スクリプト] タブの [データベースの使用] ドロップダウンの右側にある [更新] ボタンを選択し、[Serverless SQL pool]\(サーバーレス SQL プール\) が表示されるかどうかを確認します。
 - 現象 2 については、クエリをもう一度実行して、正常に実行されているかどうかを確認してください。
 
 問題がまだ発生する場合は、ブラウザーで F12 キーを押して、"開発者ツール" (DevTools) を開きます。
@@ -54,7 +55,7 @@ ms.locfileid: "87070264"
 
 実行した操作を Azure Synapse Studio で再試行します。 "開発者ツール" の [ネットワーク] の一覧に新しい項目が表示される場合があります。 現在のシステム時刻をメモして、サポート チケットに記載してください。
 
-![ネットワーク パネル](media/troubleshooting-synapse-studio/network-panel.png)
+![ネットワーク パネル 1](media/troubleshooting-synapse-studio/network-panel.png)
 
 URL 列が次のパターンに一致する項目を探します。
 
@@ -70,7 +71,7 @@ URL 列が次のパターンに一致する項目を探します。
 
     - ERR_NAME_NOT_RESOLVED が表示され、10 分以内にワークスペースを作成した場合は、10 分間待機してから、問題がまだ存在するかどうかを確認してください。
     - ERR_INTERNET_DISCONNECTED または ERR_NETWORK_CHANGED が表示された場合は、PC ネットワーク接続に問題があることを示している可能性があります。 ネットワーク接続を確認して、操作をやり直してください。
-    - ERR_CONNECTION_RESET、ERR_SSL_PROTOCOL_ERROR、または "SSL" を含むその他のエラー コードが表示された場合は、ローカルの SSL 構成に問題が発生しているか、SQL オンデマンド サーバーへのアクセスがネットワーク管理者によってブロックされていることを示している可能性があります。 サポート チケットを開き、説明にエラー コードを添付します。
+    - ERR_CONNECTION_RESET、ERR_SSL_PROTOCOL_ERROR、その他 "SSL" を含むエラー コードが表示された場合は、ローカルの SSL 構成に問題が発生しているか、サーバーレス SQL プール サーバーへのアクセスがネットワーク管理者によってブロックされていることを示している可能性があります。 サポート チケットを開き、説明にエラー コードを添付します。
     - ERR_NETWORK_ACCESS_DENIED が表示された場合は、ローカル ファイアウォール ポリシーで *.database.windows.net ドメインまたはリモート ポート 1443 へのアクセスがブロックされているかどうかを管理者に確認する必要があります。
     - 必要に応じて、別のコンピューターまたはネットワーク環境で同じ操作を直ちに実行して、PC 上のネットワーク構成の問題を除外します。
 
@@ -83,8 +84,9 @@ URL 列が次のパターンに一致する項目を探します。
 
 ヘッダーが表示されない場合、またはヘッダーに上記の値のいずれかが示されていない場合は、チケットを開いたときに項目の詳細のスクリーンショットを添付します。
 
+ 
 ![項目の詳細](media/troubleshooting-synapse-studio/item-details.png)
-
+ 
 上記の手順で問題が解決しない場合は、サポート チケットを開くことが必要な可能性があります。 サポート チケットを送信するときは、このガイドの冒頭でダウンロードした "セッション ID" または "診断情報" を含めてください。
 
 問題を報告するときに、必要に応じて、"開発者ツール" の [コンソール] タブのスクリーンショットを取得し、サポート チケットに添付することもできます。 コンテンツをスクロールし、必要に応じて複数のスクリーンショットを取得して、メッセージ全体をキャプチャします。
@@ -100,4 +102,4 @@ URL 列が次のパターンに一致する項目を探します。
 ![タイムスタンプの表示](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>次のステップ
-前の手順で問題が解決しない場合は、[サポート チケットを作成](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)してください
+前の手順で問題が解決しない場合は、[サポート チケットを作成](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)してください

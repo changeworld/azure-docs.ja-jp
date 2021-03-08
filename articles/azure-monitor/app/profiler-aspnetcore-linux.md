@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6ef52e946edb5db8074a9b4e3ce5e4a81ae0bde5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930385"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561054"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
@@ -107,7 +107,7 @@ ms.locfileid: "88930385"
 
     ![Git リポジトリを設定する](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-詳細については、「[App Service のドキュメント](https://docs.microsoft.com/azure/app-service)」を参照してください。
+詳細については、「[App Service のドキュメント](../../app-service/index.yml)」を参照してください。
 
 ## <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
@@ -117,13 +117,13 @@ ms.locfileid: "88930385"
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
-    * デプロイ資格情報を作成するために使用した**ユーザー名**を使用します。
-    * App Service on Linux を使用して Web アプリを作成するために使用した**アプリ名**を使用します。
+    * デプロイ資格情報を作成するために使用した **ユーザー名** を使用します。
+    * App Service on Linux を使用して Web アプリを作成するために使用した **アプリ名** を使用します。
 
 2. Azure に変更をプッシュし、プロジェクトをデプロイします。
 
     ```console
-    git push azure master
+    git push azure main
     ```
 
     次の例のような出力が表示されます。
@@ -134,7 +134,7 @@ ms.locfileid: "88930385"
     Compressing objects: 100% (8/8), done.
     Writing objects: 100% (9/9), 1.78 KiB | 911.00 KiB/s, done.
     Total 9 (delta 3), reused 0 (delta 0)
-    remote: Updating branch 'master'.
+    remote: Updating branch 'main'.
     remote: Updating submodules.
     remote: Preparing deployment for commit id 'd7369a99d7'.
     remote: Generating deployment script.
@@ -172,4 +172,3 @@ ms.locfileid: "88930385"
 Azure App Service でホストされているカスタム コンテナーを使用する場合は、[コンテナー化された ASP.NET Core アプリケーションのサービス プロファイラーを有効にする方法](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)に関するページの手順で Application Insight Profiler を有効にします。
 
 問題やご提案があれば、次の Application Insights GitHub リポジトリにご報告ください:[ApplicationInsights-Profiler-AspNetCore:Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)。
-

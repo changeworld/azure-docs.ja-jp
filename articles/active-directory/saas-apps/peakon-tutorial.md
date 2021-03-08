@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a7e385b40911e1adf4e5142de4fb627334baee4a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543744"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608529"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル: Azure Active Directory と Peakon の統合
 
@@ -27,7 +27,7 @@ Peakon と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Peakon に自動的にサインイン (シングル サインオン) できるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -110,14 +110,14 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Peakon のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![[追加の URL を設定します] のスクリーンショット。[サインオン URL] というテキスト ボックスが強調表示されています。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://app.peakon.com/login`」と入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL に値を置き換えます。実際の値については後で説明します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -151,15 +151,15 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
     ![SAML](./media/peakon-tutorial/tutorial_peakon_saml.png)
 
-    a. **[SSO Login URL]\(ログイン URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[SSO Login URL]\(ログイン URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    b. **[SSO Logout URL]\(SSO ログアウト URL\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    b. **[SSO Logout URL]\(SSO ログアウト URL\)** テキスト ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     c. **[Choose a File]\(ファイルの選択\)** を選択して、Azure portal からダウンロードした証明書を [Certificate]\(証明書\) ボックスにアップロードします。
 
-    d. **アイコン**をクリックして **[Entity ID]\(エンティティ ID\)** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
+    d. **アイコン** をクリックして **[Entity ID]\(エンティティ ID\)** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    e. **アイコン**をクリックして **[Reply URL (ACS)]\(応答 URL (ACS)\)** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
+    e. **アイコン** をクリックして **[Reply URL (ACS)]\(応答 URL (ACS)\)** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
     f. **[保存]**
 
@@ -229,29 +229,28 @@ Peakon の場合、プロビジョニングは手動で行います。
 
 3. ページの右上の **[Add employee]\(従業員の追加\)** をクリックします。
 
-      ![従業員の追加](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+    ![従業員の追加](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
 3. **[New employee]\(新しい従業員\)** ダイアログ ページで、次の手順に従います。
 
-     ![新しい従業員](./media/peakon-tutorial/tutorial_peakon_create.png)
+    ![新しい従業員](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. **[Name]\(名前\)** ボックスに、姓として「**Britta**」を、名として「**simon**」を入力します。
+    1. **[Name]\(名前\)** ボックスに、姓として「**Britta**」を、名として「**simon**」を入力します。
 
-    b. **[Email]\(メール\)** ボックスに、メール アドレス (例: **Brittasimon\@contoso.com**) を入力します。
+    1. **[Email]\(メール\)** ボックスに、メール アドレス (例: **Brittasimon\@contoso.com**) を入力します。
 
-    c. **[Create employee]\(従業員の作成\)** をクリックします。
+    1. **[Create employee]\(従業員の作成\)** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Peakon] タイルをクリックすると、SSO を設定した Peakon に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Peakon] タイルをクリックすると、SSO を設定した Peakon に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

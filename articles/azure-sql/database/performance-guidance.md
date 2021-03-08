@@ -8,16 +8,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: carlrab; jrasnick
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 793010ba9eaea32256796f5fcd42d1c469eb7917
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 40657ad2f3b69d62e0e0d9c7d9e0f0be7343547b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981985"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490603"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance でアプリケーションとデータベースのパフォーマンスを調整します
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])
 
 ![A query plan with corrected indexes](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-重要なことは、共有される汎用システムの IO 容量は専用サーバー コンピューターの IO 容量より限られているということです。 不必要な IO を最小限に抑え、サービス レベルの各コンピューティング サイズのリソース内でシステムを最大限に活用することが重要です。 適切な物理データベース設計を選択すると、個々のクエリの待機時間のほか、スケール ユニットごとに処理される同時要求のスループットを大幅に改善し、クエリを満たすために必要なコストを最小限に抑えることができます。 インデックス不足の DMV に関する詳細については、「[sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)」を参照してください。
+重要なことは、共有される汎用システムの IO 容量は専用サーバー コンピューターの IO 容量より限られているということです。 不必要な IO を最小限に抑え、サービス レベルの各コンピューティング サイズのリソース内でシステムを最大限に活用することが重要です。 適切な物理データベース設計を選択すると、個々のクエリの待機時間のほか、スケール ユニットごとに処理される同時要求のスループットを大幅に改善し、クエリを満たすために必要なコストを最小限に抑えることができます。 インデックス不足の DMV に関する詳細については、「[sys.dm_db_missing_index_details](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-missing-index-details-transact-sql)」を参照してください。
 
 ### <a name="query-tuning-and-hinting"></a>クエリの調整とヒント
 
@@ -232,7 +232,7 @@ ORDER BY start_time DESC
 
 **sys.resource_stats** を調べると、あるテストで使用されるリソースが別のテストより多いか少ないか判断できます。 データを比較するとき、**sys.resource_stats** ビューで同じ 5 分の枠に入らないようにテストのタイミングを離します。 この演習の目標は、使用されるリソースの総量を最小限に抑えることであり、ピーク リソースを最小限に抑えることではありません。 一般的に、待ち時間のコードの一部を最適化すると、リソースの消費量も減ります。 アプリケーションに施す変更が必要なものであることと、アプリケーションでクエリ ヒントを使用している他のユーザーのカスタマー エクスペリエンスに対し変更による悪影響がないことを確認してください。
 
-ワークロードに一連の反復的なクエリが含まれる場合は、データベースをホストするために必要な最小リソース サイズ単位を把握できるため、たいてい、プラン選択肢の最適性を理解して検証することは合理的です。 検証した後、プランのパフォーマンスが低くなっていないことを確認するために、ときどきプランを調べ直してください。 詳細については、「 [クエリ ヒント (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)」をご覧ください。
+ワークロードに一連の反復的なクエリが含まれる場合は、データベースをホストするために必要な最小リソース サイズ単位を把握できるため、たいてい、プラン選択肢の最適性を理解して検証することは合理的です。 検証した後、プランのパフォーマンスが低くなっていないことを確認するために、ときどきプランを調べ直してください。 詳細については、「 [クエリ ヒント (Transact-SQL)](/sql/t-sql/queries/hints-transact-sql-query)」をご覧ください。
 
 ### <a name="very-large-database-architectures"></a>非常に大規模なデータベースのアーキテクチャ
 
@@ -251,7 +251,7 @@ Azure SQL Database および Azure SQL Managed Instance は汎用ハードウェ
 
 #### <a name="functional-partitioning"></a>機能的パーティション分割
 
-ユーザーは多くの場合、1 つのデータベースのさまざまな機能を組み合わせます。 たとえば、店舗の在庫を管理するロジックがアプリケーションに含まれている場合、そのデータベースには、在庫に関連付けられているロジック、購買発注の追跡、ストアド プロシージャ、月末報告を管理するインデックス付きビュー/具体化されたビューが含まれていることがあります。 この手法では、バックアップなどの操作に関するデータベースの管理が容易になりますが、アプリケーションの機能全体でピーク負荷を処理できるようにハードウェアのサイズを調整する必要もあります。
+ユーザーは多くの場合、1 つのデータベースのさまざまな機能を組み合わせます。 たとえば、店舗の在庫を管理するロジックがアプリケーションに含まれている場合、そのデータベースには、在庫に関連付けられているロジック、購買発注の追跡、ストアド プロシージャ、月末報告を管理するインデックス付きビュー/マテリアライズドビューが含まれていることがあります。 この手法では、バックアップなどの操作に関するデータベースの管理が容易になりますが、アプリケーションの機能全体でピーク負荷を処理できるようにハードウェアのサイズを調整する必要もあります。
 
 Azure SQL Database および Azure SQL Managed Instance 内でスケールアウト アーキテクチャを使用する場合、アプリケーションの異なる機能を異なるデータベースに分割することをお勧めします。 この手法を使用すると、各アプリケーションは独立してスケールされます。 管理者は、アプリケーションがビジー状態になった (データベースの負荷が増えた) ときに、アプリケーションの機能ごとにコンピューティング サイズを個別に選択できます。 制限はありますが、このアーキテクチャを使用して、1 台の汎用コンピューターで処理できる範囲を超えてアプリケーションの規模を大きくできます。これは、複数のコンピューター間で負荷が分散されるためです。
 

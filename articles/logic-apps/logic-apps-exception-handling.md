@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704524"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577948"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -35,7 +35,7 @@ ms.locfileid: "84704524"
 | **なし**  | 要求を再送信しません。 |
 |||
 
-再試行ポリシーの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#request-limits)」をご覧ください。
+再試行ポリシーの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#http-limits)」をご覧ください。
 
 ### <a name="change-retry-policy"></a>再試行ポリシーの変更
 
@@ -267,7 +267,7 @@ ms.locfileid: "84704524"
 
 [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) 関数を使用すると、スコープ内のすべてのアクションの結果に関するコンテキストが得られます。 `result()` 関数は、単一のパラメーター (スコープの名前) を受け取り、そのスコープ内のアクションの結果をすべて含む配列を返します。 これらのアクションのオブジェクトには、`actions()` オブジェクトと同じ属性 (アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など) が含まれます。 `@result()` 式と `runAfter` プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
 
-スコープ内の `Failed` となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、`@result()` 式を [ **[配列のフィルター処理]** ](logic-apps-perform-data-operations.md#filter-array-action) アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を `For_each` ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。
+スコープ内の `Failed` となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、`@result()` 式を [ **[配列のフィルター処理]**](logic-apps-perform-data-operations.md#filter-array-action) アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を `For_each` ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。
 
 次の例では、"My_Scope" というスコープ内で失敗したすべてのアクションの応答本文を含む HTTP POST 要求が送信されます (詳細については例の後に記載)。
 
@@ -362,7 +362,7 @@ ms.locfileid: "84704524"
 
 ## <a name="set-up-azure-monitor-logs"></a>Azure Monitor ログを設定する
 
-ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、すべての実行とアクションの状態を含む、すべてのワークフロー イベントを [Log Analytics ワークスペース](../azure-monitor/platform/data-platform-logs.md)、[Azure ストレージ アカウント](../storage/blobs/storage-blobs-overview.md)、または [Azure Event Hubs](../event-hubs/event-hubs-about.md) に簡単に送信できます。
+ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、すべての実行とアクションの状態を含む、すべてのワークフロー イベントを [Log Analytics ワークスペース](../azure-monitor/logs/data-platform-logs.md)、[Azure ストレージ アカウント](../storage/blobs/storage-blobs-overview.md)、または [Azure Event Hubs](../event-hubs/event-hubs-about.md) に簡単に送信できます。
 
 ログやメトリックを監視したり、それらを好きな監視ツールに発行したりすることによって、実行の状態を評価することができます。 その中の一つの方法として、すべてのイベントを Event Hubs を介して [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) にストリーミングすることが考えられます。 Stream Analytics では、診断ログから得られる異常、平均値、またはエラーに基づいて適宜必要なクエリを記述できます。 Stream Analytics を使用して、キュー、トピック、SQL、Azure Cosmos DB、Power BI などのその他のデータ ソースに情報を送信できます。
 

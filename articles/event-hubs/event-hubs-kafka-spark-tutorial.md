@@ -3,12 +3,12 @@ title: Apache Spark アプリの接続 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Kafka 用 Azure Event Hubs で Apache Spark を使用する方法について取り上げます。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 00925242d5685749aba27ad2fc537ffb07f4c68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84184ed3dffee97863b93c592d1cd577df313605
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320106"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913740"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Apache Spark アプリケーションを Azure Event Hubs と接続する
 このチュートリアルでは、リアルタイム ストリーミングのために Spark アプリケーションを Event Hubs に接続する方法について説明します。 この統合により、お使いのプロトコル クライアントを変更せずにストリーミングを行ったり、独自の Kafka または Zookeeper クラスターを実行したりすることができます。 このチュートリアルには、Apache Spark v2.4 以上および Apache Kafka v2.0 以上が必要となります。
@@ -19,7 +19,7 @@ ms.locfileid: "85320106"
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Event Hubs 名前空間を作成します
-> * サンプル プロジェクトをクローンする
+> * サンプル プロジェクトを複製する
 > * Spark を実行する
 > * Kafka 用 Event Hubs から読み取る
 > * Kafka 用 Event Hubs に書き込む
@@ -39,8 +39,8 @@ ms.locfileid: "85320106"
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 Event Hubs の接続文字列と完全修飾ドメイン名 (FQDN) を、後で使用するために取得します。 手順については、「[Get an Event Hubs connection string (Event Hubs の接続文字列を取得する)](event-hubs-get-connection-string.md)」を参照してください。 
 
-## <a name="clone-the-example-project"></a>サンプル プロジェクトをクローンする
-Azure Event Hubs リポジトリをクローンし、`tutorials/spark` サブフォルダーに移動します。
+## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
+Azure Event Hubs リポジトリを複製し、`tutorials/spark` サブフォルダーに移動します。
 
 ```bash
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -62,7 +62,7 @@ val df = spark.readStream
     .option("kafka.request.timeout.ms", "60000")
     .option("kafka.session.timeout.ms", "30000")
     .option("kafka.group.id", GROUP_ID)
-    .option("failOnDataLoss", "false")
+    .option("failOnDataLoss", "true")
     .load()
 
 //Use dataframe like normal (in this example, write to console)

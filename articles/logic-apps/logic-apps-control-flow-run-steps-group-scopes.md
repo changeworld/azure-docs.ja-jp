@@ -6,22 +6,22 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520903"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314854"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを使用してグループの状態に基づいてアクションを実行する
 
 別のアクションのグループが成功または失敗した後にのみアクションを実行するには、そのアクションを "*スコープ*" の中にグループ化します。 この構造は、アクションを論理グループとして整理し、そのグループの状態を評価して、そのスコープの状態に基づいてアクションを実行するときに便利です。 そのスコープ内のすべてのアクションの実行が完了すると、スコープも独自の状態を取得します。 たとえば、[例外とエラー処理](../logic-apps/logic-apps-exception-handling.md#scopes)を実装するときにスコープを使用できます。 
 
-スコープの状態を調べるには、ロジック アプリの実行状態を判定するのと同じ基準 ("成功"、"失敗"、"取り消し済み" など) を使用できます。 既定では、スコープのすべてのアクションが成功すると、そのスコープの状態は "成功" とマークされます。 ただし、スコープ内のいずれかのアクションが失敗するかキャンセルされると、そのスコープの状態は "失敗" とマークされます。 スコープの制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
+スコープの状態を調べるには、ロジック アプリの実行状態を判定するのと同じ基準 ( **[成功]** 、 **[失敗]** 、 **[取り消し済み]** など) を使用できます。 既定では、スコープのすべてのアクションが成功すると、そのスコープの状態は **[成功]** とマークされます。 ただし、スコープ内のいずれかのアクションが失敗するかキャンセルされると、そのスコープの状態は **[失敗]** とマークされます。 スコープの制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
 
-一例として、特定のアクションを実行するスコープと、そのスコープの状態をチェックする条件を使用する、基本のロジック アプリを紹介します。 スコープ内のいずれかのアクションが失敗または予期せず終了した場合、そのスコープはそれぞれ "失敗" または "Aborted (中止)" とマークされ、ロジック アプリが [Scope failed]\(スコープが失敗した場合\) のメッセージを送信します。 スコープ内のすべてのアクションが成功した場合、ロジック アプリは [Scope succeeded]\(スコープが成功した場合\) のメッセージを送信します。
+一例として、特定のアクションを実行するスコープと、そのスコープの状態をチェックする条件を使用する、基本のロジック アプリを紹介します。 スコープ内のいずれかのアクションが失敗または予期せず終了した場合、そのスコープはそれぞれ **[失敗]** または **[中止]** とマークされ、ロジック アプリによって [Scope failed]\(スコープが失敗した場合\) というメッセージが送信されます。 スコープ内のすべてのアクションが成功した場合、ロジック アプリは [Scope succeeded]\(スコープが成功した場合\) のメッセージを送信します。
 
-![[スケジュール - 繰り返し] トリガーを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![図には、ロジック アプリのスコープのフローと、[Scope failed]\(スコープが失敗した場合\) と [Scope succeeded]\(スコープが成功した場合\) の例が示されています。](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,7 +31,7 @@ ms.locfileid: "86520903"
 
 * Logic Apps でサポートされる任意の電子メール プロバイダーの電子メール アカウント。 この例では、Outlook.com を使用します。 別のプロバイダーを使用する場合、フロー全般は変わりませんが、UI の表示が異なります。
 
-* Bing 地図のキー。 このキーを取得するには、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Bing 地図のキーの取得</a>に関する記事をご覧ください。
+* Bing 地図のキー。 このキーを取得するには、<a href="/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key" target="_blank">Bing 地図のキーの取得</a>に関する記事をご覧ください。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
@@ -192,7 +192,7 @@ ms.locfileid: "86520903"
    
       `result('Scope')[0]['status']`
 
-      ![スコープの状態をチェックする式を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![結果の式が強調表示された [式] ボックスを示すスクリーンショット。](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. 両方の行で演算子に **[次の値に等しい]** を選択します。 
    

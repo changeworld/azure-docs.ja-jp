@@ -1,28 +1,25 @@
 ---
 title: Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 description: Premium マネージド ディスクを使用して Apache HBase のログ先行書き込みのパフォーマンスを向上させる、Azure HDInsight の書き込みアクセラレータ機能の概要を示します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f5a9f05b94f43db9e1d883ef5e86f8621f39251
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654856"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943034"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 
-この記事では、Azure HDInsight の Apache HBase 用**書き込みアクセラレータ**機能の背景情報と、書き込みパフォーマンスを向上させるために効果的に使用する方法を示します。 **書き込みアクセラレータ**では、[Azure Premium SSD マネージド ディスク](../../virtual-machines/disks-types.md#premium-ssd)を使用して、Apache HBase のログ先行書き込み (WAL) のパフォーマンスを向上させます。 Apache HBase の詳細については、「[HDInsight の Apache HBase とは](apache-hbase-overview.md)」を参照してください。
+この記事では、Azure HDInsight の Apache HBase 用 **書き込みアクセラレータ** 機能の背景情報と、書き込みパフォーマンスを向上させるために効果的に使用する方法を示します。 **書き込みアクセラレータ** では、[Azure Premium SSD マネージド ディスク](../../virtual-machines/disks-types.md#premium-ssd)を使用して、Apache HBase のログ先行書き込み (WAL) のパフォーマンスを向上させます。 Apache HBase の詳細については、「[HDInsight の Apache HBase とは](apache-hbase-overview.md)」を参照してください。
 
 ## <a name="overview-of-hbase-architecture"></a>HBase アーキテクチャの概要
 
-HBase では、**行**は 1 つまたは複数の**列**で構成され、**行キー**によって識別されます。 複数の行によって**テーブル**が構成されます。 列には**セル**が含まれ、セルはその列内のタイムスタンプ付きバージョンの値です。 列は**列ファミリ**にグループ化され、列ファミリ内のすべての列は、**HFiles** という名前のストレージ ファイルにまとめて保存されます。
+HBase では、**行** は 1 つまたは複数の **列** で構成され、**行キー** によって識別されます。 複数の行によって **テーブル** が構成されます。 列には **セル** が含まれ、セルはその列内のタイムスタンプ付きバージョンの値です。 列は **列ファミリ** にグループ化され、列ファミリ内のすべての列は、**HFiles** という名前のストレージ ファイルにまとめて保存されます。
 
-HBase の**リージョン**は、データ処理の負荷分散のために使用されます。 HBase では、最初にテーブルの行は 1 つのリージョンに格納されます。 テーブルのデータ量が増えると、行は複数のリージョン間に分散されます。 **リージョン サーバー**では、複数のリージョンに対する要求を処理できます。
+HBase の **リージョン** は、データ処理の負荷分散のために使用されます。 HBase では、最初にテーブルの行は 1 つのリージョンに格納されます。 テーブルのデータ量が増えると、行は複数のリージョン間に分散されます。 **リージョン サーバー** では、複数のリージョンに対する要求を処理できます。
 
 ## <a name="write-ahead-log-for-apache-hbase"></a>Apache HBase のログ先行書き込み
 
@@ -36,9 +33,9 @@ MemStore がフラッシュされる前に **RegionServer** がクラッシュ�
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight の HBase 用書き込みアクセラレータを有効にする方法
 
-書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、**手順 3 の「ストレージ」** に達するまで、[HDInsight のクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)手順に従ってください。 **[メタストアの設定]** で、 **[HBase 高速書き込みを有効にする]** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
+書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、[HDInsight のクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)手順に従ってください。 **[基本]** タブで、[クラスターの種類] として [HBase] を選択し、コンポーネントのバージョンを指定します。次に、 **[HBase 高速書き込みを有効にする]** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
 
-![HDInsight の Apache HBase 用書き込みアクセラレータ オプションを有効にする](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
+![HDInsight の Apache HBase 用書き込みアクセラレータ オプションを有効にする](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 
 ## <a name="other-considerations"></a>その他の考慮事項
 

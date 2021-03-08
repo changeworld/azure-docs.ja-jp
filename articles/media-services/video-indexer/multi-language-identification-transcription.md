@@ -10,20 +10,20 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 657ccafa0e7b7f640122fd6b397b3fa2a7c5f0fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72968737"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015557"
 ---
-# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>複数言語のコンテンツを自動的に識別および文字起こしする (プレビュー)
+# <a name="automatically-identify-and-transcribe-multi-language-content"></a>複数言語のコンテンツを自動的に識別および文字起こしする
 
 Video Indexer では、複数言語のコンテンツ内の自動的な言語識別と文字起こしがサポートされています。 このプロセスでは、音声から異なるセグメントにある音声言語を自動的に識別し、メディア ファイルの各セグメントを送信して文字起こしし、文字起こしを結合して元の 1 つの統合された文字起こしを作成する必要があります。 
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>ポータルを使用してインデックス作成時に多言語識別を選択
 
-ビデオをアップロードしてインデックスを作成するときに、**複数言語の検出**を選択することができます。 あるいは、ビデオのインデックスを再作成するときに、**複数言語の検出**を選択することもできます。 次の手順では、インデックスを再作成する方法について説明します。
+ビデオをアップロードしてインデックスを作成するときに、**複数言語の検出** を選択することができます。 あるいは、ビデオのインデックスを再作成するときに、**複数言語の検出** を選択することもできます。 次の手順では、インデックスを再作成する方法について説明します。
 
 1. [Video Indexer](https://vi.microsoft.com/) Web サイトに移動してサインインします。
 1. **[ライブラリ]** ページに移動し、インデックスを再作成するビデオの名前にカーソルを合わせます。 

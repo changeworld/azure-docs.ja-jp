@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 1ab5ae7bf9f1d13458e3bbeeec564fe642eb3303
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588730"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289167"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの向こう側にある Azure Key Vault へのアクセス
 
@@ -43,7 +43,7 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 | Azure AD と共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
 | Active Directory フェデレーション サービス (AD FS) または他のフェデレーション エンドポイントと共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |職場または学校のアカウント用のすべてのエンドポイントと AD FS またはその他のフェデレーション エンドポイント |
 
-ほかにも複雑なシナリオが存在する場合があります。 詳細については、[Azure Active Directory の認証フロー](../../active-directory/develop/authentication-scenarios.md)に関するページ、「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/active-directory-how-to-integrate.md)」、[Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)に関するページを参照してください。  
+ほかにも複雑なシナリオが存在する場合があります。 詳細については、[Azure Active Directory の認証フロー](../../active-directory/develop/authentication-vs-authorization.md)に関するページ、「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/active-directory-how-to-integrate.md)」、[Active Directory の認証プロトコル](/previous-versions/azure/dn151124(v=azure.100))に関するページを参照してください。  
 
 ## <a name="key-vault-management"></a>キー コンテナーの管理
 
@@ -56,7 +56,7 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 
 ## <a name="key-vault-operations"></a>Key Vault の操作
 
-すべてのキー コンテナー オブジェクト (キーとシークレット) の管理と暗号化の操作のために、Key Vault クライアントはキー コンテナー エンドポイントにアクセスする必要があります。 キー コンテナーの場所によって、エンドポイント DNS サフィックスが異なります。 キー コンテナー エンドポイントは、次の表で説明しているように *vault-name*.*region-specific-dns-suffix* の形式になります。  
+すべてのキー コンテナー オブジェクト (キーとシークレット) の管理と暗号化の操作のために、Key Vault クライアントはキー コンテナー エンドポイントにアクセスする必要があります。 キー コンテナーの場所によって、エンドポイント DNS サフィックスが異なります。 キー コンテナー エンドポイントは、次の表で説明しているように *vault-name*. *region-specific-dns-suffix* の形式になります。  
 
 | 操作の種類 | エンドポイント:ポート |
 | --- | --- |
@@ -74,4 +74,4 @@ Key Vault サービスでは、PaaS インフラストラクチャなどの他�
 
 ## <a name="next-steps"></a>次のステップ
 
-Key Vault に関する質問がある場合は、[Azure Key Vault に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-key-vault.html)にアクセスしてください。
+Key Vault に関する質問がある場合は、[Azure Key Vault に関する Microsoft Q&A 質問ページ](/answers/topics/azure-key-vault.html)にアクセスしてください。

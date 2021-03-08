@@ -2,19 +2,16 @@
 title: ODBC ドライバーと PowerShell による Apache Hive のクエリの実行 - Azure HDInsight
 description: Microsoft Hive ODBC ドライバーと PowerShell を使用して、Azure HDInsight 上の Apache Hive クラスターのクエリを実行します。
 keywords: hive,hive odbc,powershell
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 211b23db56b6deebb519b9eaac4164ea83edabac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078573"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941372"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>チュートリアル:ODBC と PowerShell による Apache Hive のクエリの実行
 
@@ -33,7 +30,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
-* HDInsight 上の対話型クエリ クラスター。 その作成方法については、[Azure HDInsight の概要](../hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。 クラスターの種類として**対話型クエリ**を選択します。
+* HDInsight 上の対話型クエリ クラスター。 その作成方法については、[Azure HDInsight の概要](../hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。 クラスターの種類として **対話型クエリ** を選択します。
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
 
@@ -58,9 +55,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    |  データ ソース名 |データ ソースに名前を付けます。 |
    |  ホスト |「`CLUSTERNAME.azurehdinsight.net`」と入力します。 たとえば、`myHDICluster.azurehdinsight.net` のように指定します。 |
    |  Port |**443** を使用します。|
-   |  データベース |**既定値**を使用します。 |
+   |  データベース |**既定値** を使用します。 |
    |  メカニズム |**[Microsoft Azure HDInsight Service]** を選択します |
-   |  [ユーザー名] |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は **admin**です。 |
+   |  [ユーザー名] |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は **admin** です。 |
    |  Password |HDInsight クラスター ユーザーのパスワードを入力します。 **[Save Password (Encrypted)]\(パスワードの保存 (暗号化済み)\)** チェック ボックスをオンにします。|
 
 1. 省略可能: **[詳細オプション]** を選択します。  
@@ -110,7 +107,7 @@ function Get-ODBC-Data {
 }
 ```
 
-次のコード スニペットでは、上記の関数を使用して、チュートリアルの最初に作成した対話型クエリ クラスターでクエリを実行します。 `DATASOURCENAME` を **Microsoft Hive ODBC Driver DSN セットアップ**画面で指定した**データ ソース名**に置き換えます。 資格情報を求めるプロンプトが表示されたら、クラスターの作成時に **[クラスター ログイン ユーザー名]** と **[クラスター ログイン パスワード]** で入力したユーザー名とパスワードを入力します。
+次のコード スニペットでは、上記の関数を使用して、チュートリアルの最初に作成した対話型クエリ クラスターでクエリを実行します。 `DATASOURCENAME` を **Microsoft Hive ODBC Driver DSN セットアップ** 画面で指定した **データ ソース名** に置き換えます。 資格情報を求めるプロンプトが表示されたら、クラスターの作成時に **[クラスター ログイン ユーザー名]** と **[クラスター ログイン パスワード]** で入力したユーザー名とパスワードを入力します。
 
 ```powershell
 

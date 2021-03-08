@@ -1,19 +1,16 @@
 ---
 title: HDInsight .NET SDK を使用して MapReduce ジョブを送信する - Azure
 description: HDInsight .NET SDK を使用して、MapReduce ジョブを Azure HDInsight 上の Apache Hadoop に送信する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8fbcb66be11c7c77a9bfaf0e6ec790622dcbbda7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020407"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932190"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 
@@ -174,5 +171,5 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * Hive ジョブの送信については、「[HDInsight .NET SDK を使用した Apache Hive クエリの実行](apache-hadoop-use-hive-dotnet-sdk.md)」を参照してください。
 * HDInsight クラスターの作成については、「[HDInsight での Linux ベースの Apache Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 * HDInsight クラスターの管理については、[HDInsight での Apache Hadoop クラスターの管理](../hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
-* HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)を参照してください。
+* HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](/dotnet/api/overview/azure/hdinsight)を参照してください。
 * 非対話型認証については、「[非対話型認証 .NET HDInsight アプリケーションを作成する](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)」を参照してください。

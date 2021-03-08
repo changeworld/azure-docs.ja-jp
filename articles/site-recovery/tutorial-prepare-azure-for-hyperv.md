@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f4f040288574a9ddfc5f7c56878c7f1e795b09a3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5ca03336fc60abbb458615e922a2556dd21a79a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653853"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739680"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Hyper-V のディザスター リカバリーのために Azure リソースを準備する
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. **[ストレージ アカウントの作成]** で、アカウントの名前を入力します。  選択する名前は Azure 内で一意で、3 から 24 文字の長さで、小文字と数字のみを使用する必要があります。 このチュートリアルでは **contosovmsacct1910171607** を使用します。
 3. **[デプロイ モデル]** で、 **[Resource Manager]** を選択します。
 4. **[アカウントの種類]** で **[ストレージ (汎用 v1)]** を選択します。 Blob ストレージを選択しないでください。
-5. **[レプリケーション]** では、ストレージの冗長性のために、既定の **[読み取りアクセス geo 冗長ストレージ]** を選択します。 [安全な転送が必須] の設定は無効のままにします。
+5. **[レプリケーション]** では、ストレージの冗長性のために、既定の **[読み取りアクセス geo 冗長ストレージ]** を選択します。
 6. **[パフォーマンス]** で **[Standard]** を選択します。 次に、 **[アクセス層]** で、既定のオプションの **[ホット]** を選択します。
 7. **[サブスクリプション]** で、新しいストレージ アカウントを作成するサブスクリプションを選択します。
 8. **[リソース グループ]** で、新しいリソース グループ名を入力します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 このチュートリアルでは **ContosoRG** を使用します。

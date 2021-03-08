@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201177"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508018"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -88,7 +88,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 | {Context:DateTimeInUtc} |UTC での日時。  | 10/10/2018 12:00:00 PM |
 | {Context:DeploymentMode} |ポリシーの展開モード。  | Production |
 | {Context:IPAddress} | ユーザーの IP アドレス。 | 11.111.111.11 |
-| {Context:KMSI} | [[サインインしたままにする]](custom-policy-keep-me-signed-in.md) チェックボックスがオンになっているかどうかを示します。 |  true |
+| {Context:KMSI} | [[サインインしたままにする]](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) チェックボックスがオンになっているかどうかを示します。 |  true |
 
 ### <a name="claims"></a>Claims 
 
@@ -113,6 +113,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 | 要求 | 説明 | 例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | アクセス トークン。 | 該当なし |
+| {oauth2:refresh_token} | 更新トークン。 | 該当なし |
 
 
 ### <a name="saml"></a>SAML
@@ -126,12 +127,13 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 | {SAML:ForceAuthn} | SAML 要求の `AuthnRequest` 要素からの `ForceAuthN` 属性値。 | True |
 | {SAML:ProviderName} | SAML 要求の `AuthnRequest` 要素からの `ProviderName` 属性値。| Contoso.com |
 | {SAML:RelayState} | `RelayState` クエリ文字列パラメーター。| 
+| {SAML:Subject} | SAML AuthN 要求の NameId 要素からの `Subject`。| 
 
 ## <a name="using-claim-resolvers"></a>要求リゾルバーの使用
 
 次の要素を使用して、要求リゾルバーを使用できます。
 
-| Item | 要素 | 設定 |
+| アイテム | 要素 | 設定 |
 | ----- | ----------------------- | --------|
 |Application Insights の技術プロファイル |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md) の技術プロファイル| `InputClaim`, `OutputClaim`| 1、2|
@@ -145,7 +147,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile) の技術プロファイル| `OutputClaim`| 2 |
 
-以下のように設定します。
+設定:
 1. `IncludeClaimResolvingInClaimsHandling` メタデータを `true` に設定する必要があります。
 1. 入力要求または出力要求の属性 `AlwaysUseDefaultValue` は、`true`に設定する必要があります。
 
@@ -183,7 +185,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 ### <a name="dynamic-ui-customization"></a>動的 UI のカスタマイズ
 
-Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、この機能を利用すると、 Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更することができます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
+Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、この機能を利用すると、 Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更することができます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
 
 次の例では、名前が **campaignId** で値が `Hawaii` のクエリ文字列パラメーター、**language** コード `en-US`、およびクライアント ID を表す **app** を渡しています。
 

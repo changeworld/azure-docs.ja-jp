@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854916"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275598"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library 構成ファイル
 
@@ -34,6 +34,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 |-----------|------------|-------------|-------|
 | `client_id` | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのクライアント ID |
 | `redirect_uri`   | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのリダイレクト URI |
+| `broker_redirect_uri_registered` | ブール型 | いいえ | 指定できる値: `true`、`false` |
 | `authorities` | リスト\<Authority> | いいえ | アプリに必要な機関の一覧 |
 | `authorization_user_agent` | AuthorizationAgent (列挙型) | いいえ | 指定できる値: `DEFAULT`、`BROWSER`、`WEBVIEW` |
 | `http` | HttpConfiguration | いいえ | `HttpUrlConnection` `connect_timeout` と `read_timeout` を構成します |
@@ -46,6 +47,10 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 ### <a name="redirect_uri"></a>redirect_uri
 
 アプリケーションを登録する際に登録したリダイレクト URI。 リダイレクト URI がブローカー アプリに対するものである場合は、「[パブリック クライアント アプリ用のリダイレクト URI](msal-client-application-configuration.md#redirect-uri-for-public-client-apps)」を参照して、ご利用のブローカー アプリに対して正しいリダイレクト URI 形式を確実に使用してください。
+
+### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
+
+ブローカー認証を使用する場合は、`broker_redirect_uri_registered` プロパティを `true` に設定する必要があります。 ブローカー認証のシナリオでは、「[パブリック クライアント アプリ用のリダイレクト URI](msal-client-application-configuration.md#redirect-uri-for-public-client-apps)」で説明されているように、アプリケーションがブローカーと通信するための正しい形式ではない場合、アプリケーションによって、リダイレクト URI が検証され、起動時に例外がスローされます。
 
 ### <a name="authorities"></a>authorities
 
@@ -98,6 +103,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 > MSAL では、機関の検証を有効および無効にすることはできません。
 > 権限は、構成を介して指定される開発者としてお客様に認識されているか、またはメタデータを介して Microsoft に認識されています。
 > 不明な機関へのトークンの要求を MSAL が受け取ると、`UnknownAuthority` 型の `MsalClientException` が結果して生じます。
+> ブローカー認証は、Azure AD B2C では機能しません。
 
 #### <a name="authority-properties"></a>機関のプロパティ
 

@@ -5,20 +5,22 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 739cfdb4f930d384e180ffd0f3ce2311cd41c70a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e83bed86714e4b92c63f4e7b7eb55df7a2a7eaff
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207990"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548836"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces についてよく寄せられる質問に回答します。
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces では、どのバージョンの Kubernetes がサポートされていますか。
 
-Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes の一般提供 (GA) バージョン][aks-supported-k8s]がすべてサポーされます。
+Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes の、1.18 までの一般提供 (GA) バージョン][aks-supported-k8s]がサポーされます。 AKS の Kubernetes 1.19 以降では、コンテナー ランタイムとして ContainerD が使用されていますが、これは Azure Dev Spaces では機能しません。
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>現在はどの Azure リージョンで Azure Dev Spaces が提供されていますか。
 
@@ -70,9 +72,9 @@ Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes �
 
 はい。正しい FQDN が許可されていると、[クラスター ノードに対する制限されたエグレス トラフィック][aks-restrict-egress-traffic]が有効になっている AKS クラスターで Azure Dev Spaces を使用できます。 Azure Dev Spaces での「クラスターノードに対する制限されたエグレストラフィックが有効な AKS クラスター」の使用の詳細については、[こちら](configure-networking.md#ingress-and-egress-network-traffic-requirements)を参照してください。
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>RBAC が有効化された AKS クラスター上で Azure Dev Spaces を使用することはできますか。
+## <a name="can-i-use-azure-dev-spaces-on-kubernetes-rbac-enabled-aks-clusters"></a>Kubernetes RBAC が有効化された AKS クラスターで Azure Dev Spaces を使用することはできますか。
 
-はい。RBAC が有効化されているかに関わらず、AKS クラスター上で Azure Dev Spaces を使用することができます。
+はい。Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC) が有効になっているかどうかに関係なく、AKS クラスターで Azure Dev Spaces を使用できます。
 
 ## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Visual Studio でプロジェクトのイングレスを有効にすると、どうなりますか。
 

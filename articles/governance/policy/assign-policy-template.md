@@ -1,26 +1,26 @@
 ---
-title: クイック スタート:テンプレートを使用した新しいポリシーの割り当て
+title: テンプレートを使用した新しいポリシーの割り当て
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、ポリシー割り当てを作成し、準拠していないリソースを特定します。
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 2f012f9cc8f986f8f887096098961e44c4b7dffb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689849"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651428"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>ARM テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してポリシー割り当てを作成し、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。 このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、**[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイする" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイするボタン。" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,14 +45,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 次のイメージを選択して、Azure portal にサインインし、テンプレートを開きます。
 
-   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイする" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイするボタン。" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 1. 次の値を選択または入力します。
 
    | 名前 | 値 |
    |------|-------|
    | サブスクリプション | Azure サブスクリプションを選択します。 |
-   | Resource group | **[新規作成]** を選択し、名前を指定して、 **[OK]** を選択します。 スクリーンショットでは、リソース グループ名は _mypolicyquickstart\<Date in MMDD\>rg_ です。 |
+   | Resource group | **[新規作成]** を選択し、名前を指定して、**[OK]** を選択します。 スクリーンショットでは、リソース グループ名は _mypolicyquickstart\<Date in MMDD\>rg_ です。 |
    | 場所 | リージョンを選択します。 たとえば **[米国中部]** です。 |
    | ポリシーの割り当て名 | ポリシーの割り当て名を指定します。 必要に応じて、ポリシー定義の表示を使用できます。 たとえば、"_マネージド ディスクを使用していない VM の監査_" などです。 |
    | Rg Name \(RG 名\) | ポリシーを割り当てるリソース グループ名を指定します。 このクイック スタートでは、既定値 **[resourceGroup().name]** を使用します。 **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** は、リソース グループを取得するテンプレート関数です。 |
@@ -72,9 +72,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ページの左側にある **[コンプライアンス]** を選択します。 次に、作成した "_Managed Disks を使用していない VM の監査_" ポリシー割り当てを見つけます。
 
-:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="ポリシーのコンプライアンスの概要ページ" border="false":::
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイするボタン。" border="false":::
 
-この新しい割り当てに準拠していない既存のリソースがある場合、 **[準拠していないリソース]** の下に表示されます。
+この新しい割り当てに準拠していない既存のリソースがある場合、**[準拠していないリソース]** の下に表示されます。
 
 詳細については、「[コンプライアンスのしくみ](./how-to/get-compliance-data.md#how-compliance-works)」を参照してください。
 
@@ -82,11 +82,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 作成した割り当てを削除するには、次の手順のようにします。
 
-1. Azure Policy ページの左側の **[コンプライアンス]** (または **[割り当て]** ) を選択し、作成した "_Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)_ " ポリシーの割り当てを見つけます。
+1. Azure Policy ページの左側の **[コンプライアンス]** (または **[割り当て]**) を選択し、作成した "_Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)_" ポリシーの割り当てを見つけます。
 
-1. "_マネージド ディスクを使用しない VM の監査_" ポリシー割り当てを右クリックし、 **[割り当ての削除]** を選択します。
+1. "_マネージド ディスクを使用しない VM の監査_" ポリシー割り当てを右クリックし、**[割り当ての削除]** を選択します。
 
-   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="コンプライアンスの概要ページから割り当てを削除する" border="false":::
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Azure Policy を Azure に割り当てるための ARM テンプレートをデプロイするボタン。" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

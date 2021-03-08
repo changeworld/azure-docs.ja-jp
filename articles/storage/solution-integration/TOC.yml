@@ -1,0 +1,31 @@
+- name: Azure Storage 検証済みパートナー ソリューション
+  href: /azure/storage/solution-integration
+- name: Azure Storage Analytics とビッグ データ パートナー
+  items:
+    - name: 検証済みパートナーの概要
+      href: .\validated-partners\analytics\partner-overview.md
+  expanded: false
+- name: Azure Storage アーカイブ、バックアップ、BCDR パートナー
+  items:
+    - name: 検証済みパートナーの概要
+      href: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
+    - name: Commvault クイックスタート ガイド
+      href: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
+    - name: Veeam クイックスタート ガイド
+      href: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+  expanded: false
+- name: Azure Storage コンテナー ソリューション パートナー
+  items:
+    - name: 検証済みパートナーの概要
+      href: .\validated-partners\container-solutions\partner-overview.md
+  expanded: false
+- name: Azure Storage データ管理と移行パートナー
+  items:
+    - name: 検証済みパートナーの概要
+      href: .\validated-partners\data-management\partner-overview.md
+  expanded: false
+- name: Azure Storage プライマリおよびセカンダリ ストレージ パートナー
+  items:
+    - name: 検証済みパートナーの概要
+      href: .\validated-partners\primary-secondary-storage\partner-overview.md
+  expanded: false

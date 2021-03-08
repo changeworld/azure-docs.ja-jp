@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 4e6f8a115e996ac6862f2fb04e5050b94f9f823b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132739"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183983"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -29,7 +29,7 @@ Azure Database Migration Service では、オフラインまたはオンライ�
 
 ## <a name="migration-scenario-status"></a>データベース移行シナリオの状態
 
-Azure Database Migration Service によってサポートされる移行シナリオの状態は、時間と共に変化します。 一般に、シナリオは最初**プライベート プレビュー**でリリースされます。 プライベート プレビューに参加する場合、お客様は [DMS プレビュー サイト](https://aka.ms/dms-preview)を通じて申請を送信する必要があります。 プライベート プレビューの後、シナリオの状態は**パブリック プレビュー**に変わります。 Azure Database Migration Service のユーザーは、ユーザー インターフェイスから直接、パブリック プレビューの移行シナリオを試すことができます。 サインアップは必要ありません。  ただし、パブリック プレビューの移行シナリオはすべてのリージョンで使用できるわけではなく、最終リリース前にさらに変更が行われる可能性があります。 パブリック プレビューの後、シナリオの状態は**一般提供**に変わります。 一般提供 (GA) は最終的なリリースの状態です。機能が完成しており、すべてのユーザーが利用できます。
+Azure Database Migration Service によってサポートされる移行シナリオの状態は、時間と共に変化します。 一般に、シナリオは最初 **プライベート プレビュー** でリリースされます。 プライベート プレビューに参加する場合、お客様は [DMS プレビュー サイト](https://aka.ms/dms-preview)を通じて申請を送信する必要があります。 プライベート プレビューの後、シナリオの状態は **パブリック プレビュー** に変わります。 Azure Database Migration Service のユーザーは、ユーザー インターフェイスから直接、パブリック プレビューの移行シナリオを試すことができます。 サインアップは必要ありません。  ただし、パブリック プレビューの移行シナリオはすべてのリージョンで使用できるわけではなく、最終リリース前にさらに変更が行われる可能性があります。 パブリック プレビューの後、シナリオの状態は **一般提供** に変わります。 一般提供 (GA) は最終的なリリースの状態です。機能が完成しており、すべてのユーザーが利用できます。
 
 ## <a name="migration-scenario-support"></a>移行シナリオのサポート
 
@@ -69,11 +69,11 @@ Azure Database Migration Service によってサポートされる移行シナ�
 
 | 移行先  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+| **Azure SQL DB** | SQL Server | X | GA |
+|   | RDS SQL | X | GA |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+|   | RDS SQL | X | GA |
 |   | Oracle | X |  |
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |
@@ -81,13 +81,12 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
 | **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | ✔ | GA |
-|   | Azure DB for PostgreSQL - 単一サーバー* | ✔ | GA |
+|   | Azure DB for PostgreSQL - 単一サーバー | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | パブリック プレビュー |
 | **Azure DB for PostgreSQL - Hyperscale (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 
-*PostgreSQL バージョン 10 以降でサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

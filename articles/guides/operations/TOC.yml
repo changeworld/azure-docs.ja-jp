@@ -1,6 +1,6 @@
 - name: IT オペレーター向けの Azure
   items:
-    - name: Azure の概要
+    - name: Azure を使用して作業を開始する
       href: azure-operations-guide.md
     - name: クイックスタート
       items:
@@ -14,7 +14,7 @@
           items:
             - name: Azure ポータルを使用した仮想ネットワークの作成
               href: ../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-        - name: Security
+        - name: セキュリティ
           items:
             - name: ロールの割り当てを使用したリソースの管理
               href: ../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
@@ -39,25 +39,25 @@
             - name: Linux VM の作成と管理
               href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Jenkins CI/CD パイプライン
-              href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+              href: /azure/developer/jenkins/pipeline-with-github-and-docker?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: VM の負荷分散
               href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Azure リソース マネージャーのテンプレートの作成
-              href: ../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+              href: ../../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: VM の大規模なバックアップ
               href: ../../backup/tutorial-backup-vm-at-scale.md
     - name: ハウツー ガイド
       items:
         - name: Azure の請求書と毎日の使用状況データをダウンロードする方法
-          href: ../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+          href: ../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
     - name: リソース
       items:
         - name: Azure 製品カタログ
-          href: 'https://docs.microsoft.com/azure/#pivot=products'
+          href: ../../index.yml
         - name: Azure のロードマップ
           href: 'https://azure.microsoft.com/roadmap/'
         - name: 料金計算ツール
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Microsoft Azure ポータルの概要
           href: 'https://azure.microsoft.com/documentation/articles/azure-portal-overview/'
-    - name: References
+    - name: リファレンス

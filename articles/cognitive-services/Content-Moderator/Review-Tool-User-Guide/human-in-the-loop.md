@@ -10,18 +10,16 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ddf4d17cd2631f5bc299e392c46bd9065bb13744
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76169500"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146625"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator レビュー ツール
 
-Azure Content Moderator は機械学習によるコンテンツ モデレーションと目視レビューを組み合わせたサービスを提供し、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com) Web サイトはこれらのサービスへの詳細なアクセスを実現する、ユーザー フレンドリなフロント エンドです。
-
-![ブラウザーでのレビュー ツールのダッシュボード](./images/0-dashboard.png)
+Azure Content Moderator からは、機械学習コンテンツ モデレーションと人間によるレビューを組み合わせるサービスが提供されます。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com) Web サイトは、そのようなサービスへの詳細なアクセスを提供するユーザーフレンドリなフロント エンドです。
 
 ## <a name="what-it-does"></a>実行内容
 
@@ -32,20 +30,27 @@ Azure Content Moderator は機械学習によるコンテンツ モデレーシ�
 - コンテンツ カテゴリまたはエクスペリエンス レベルによって編成された複数のレビュー チームにコンテンツ レビューを割り当てまたはエスカレートする。
 - 既定またはカスタムのロジック フィルター ([ワークフロー](../review-api.md#workflows)) を使用することで、コードを記述せずに、コンテンツを並べ替えたり、追跡したりする。
 - [コネクタ](./configure.md#connectors)を使用することで、Content Moderator API に加えて、Microsoft PhotoDNA、Text Analytics、および Face の各サービスを利用してコンテンツを処理する。
-- 任意の API またはビジネス プロセスのワークフローを作成するための独自のコネクタを作成する。
 - コンテンツ モデレーション プロセスの主要なパフォーマンス メトリックを取得します。
 
 ## <a name="review-tool-dashboard"></a>レビュー ツールのダッシュボード
 
-**[ダッシュボード]** タブでは、ツール内で実行されたコンテンツ レビューの主要なメトリックを確認できます。 画像、テキスト、および動画コンテンツのレビューの合計数、完了した数、および保留中の数が表示されます。 レビューを完了したユーザーとチームの内訳のほか、適用されているモデレート タグを確認することもできます。
+**[ダッシュボード]** タブでは、ツール内で実行されたコンテンツ レビューの主要なメトリックを確認できます。 画像、テキスト、および動画コンテンツのレビューの合計数、完了した数、および保留中の数が表示されます。 
 
-![ダッシュボードの表示](images/0-dashboard.png)
+**[Pending reviews]\(保留中のレビュー\)** テーブルには、レビューが保留されているか、完了しているユーザーとサブチームの内訳と SLA の残り時間が表示されます。 テーブル内の項目を選択すると、そのレビューに移動できます。 テーブルの上にある検索ボックスでは、チーム名で結果をフィルター処理できます。 **[フィルター]** アイコンでは、その他のメトリクスでフィルター処理できます。
+
+**[Completed reviews]\(完了済みのレビュー\)** タブに切り替えると、処理済みまたは完了済みの項目の合計数がユーザーまたはサブチーム別に表示されます。 このデータは、保留中のレビューと同じようにフィルター処理できます。
+
+ダッシュボードの右上隅にあるテキストをクリックすると、[Daily Personal Metrics]\(日次個人メトリクス\) が表示されます。これは、コンテンツの種類別に完了済みのレビュー数を報告するものです。
+
+> [!div class="mx-imgBorder"]
+> ![ブラウザーでのレビュー ツールのダッシュボード](images/0-dashboard.png)
 
 ## <a name="review-tool-credentials"></a>レビュー ツールの資格情報
 
-[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にサインアップすると、ご使用のアカウントの Azure リージョンの選択を求められます。 これは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)により、Azure Content Moderator サービスの無料試用版キーが生成されるためです。REST 呼び出しまたはクライアント SDK からいずれかのサービスにアクセスする場合に、このキーが必要になります。 ご自分のキーと API エンドポイント URL を確認するには、 **[設定]**  >  **[資格情報]** を選択します。
+[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にサインアップすると、ご使用のアカウントの Azure リージョンの選択を求められます。 これは[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)によって、Azure Content Moderator サービスの無料試用版キーが生成されるためです。 REST 呼び出しまたはクライアント SDK からサービスにアクセスする目的でこのキーが必要になります。 ご自分のキーと API エンドポイント URL を確認するには、 **[管理者]** の **[資格情報]** を選択します。
 
-![Content Moderator 資格情報](images/settings-6-credentials.png)
+> [!div class="mx-imgBorder"]
+> ![Content Moderator 資格情報](images/settings-6-credentials.png)
 
 ## <a name="next-steps"></a>次のステップ
 

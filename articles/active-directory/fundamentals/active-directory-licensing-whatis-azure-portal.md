@@ -14,16 +14,16 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce0d543f11a1dcc61616d8a386176272ab44aee
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797272"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369813"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
-マイクロソフトの Office 365、Enterprise Mobility + Security、Dynamics 365 などの有料クラウド サービスやその他の類似製品では、ライセンスが必要です。 これらのライセンスは、各サービスにアクセスする必要があるユーザーにそれぞれ割り当てられます。 ライセンス管理は、管理者が管理ポータル (Office、Azure) と PowerShell コマンドレットのどちらかを使用して行います。 マイクロソフトのすべてのクラウド サービスの ID を管理する基盤インフラストラクチャは、Azure Active Directory (Azure AD) です。 ユーザーのライセンスの割り当て状態に関する情報は Azure AD に格納されます。
+マイクロソフトの Microsoft 365、Enterprise Mobility + Security、Dynamics 365 などの有料クラウド サービスやその他の類似製品では、ライセンスが必要です。 これらのライセンスは、各サービスにアクセスする必要があるユーザーにそれぞれ割り当てられます。 ライセンス管理は、管理者が管理ポータル (Office、Azure) と PowerShell コマンドレットのどちらかを使用して行います。 マイクロソフトのすべてのクラウド サービスの ID を管理する基盤インフラストラクチャは、Azure Active Directory (Azure AD) です。 ユーザーのライセンスの割り当て状態に関する情報は Azure AD に格納されます。
 
 従来、ライセンスは個々のユーザー レベルでしか割り当てることができず、大規模な管理を行いづらい場合がありました。 たとえば、組織や部署でのユーザーの異動などの組織の変化に応じてユーザー ライセンスの追加または削除を行うには、管理者は多くの場合、複雑な PowerShell スクリプトを記述する必要がありました。 このスクリプトは、クラウド サービスを一つ一つ呼び出します。
 
@@ -45,9 +45,9 @@ ms.locfileid: "87797272"
 
 - ライセンスを、Azure AD 内の任意のセキュリティ グループに割り当てられます。 セキュリティ グループは、Azure AD Connect を使用してオンプレミスから同期できます。 また、セキュリティ グループは Azure AD 内で直接作成する (クラウド専用グループとも呼ばれます) ことも、Azure AD の動的グループ機能で自動作成することもできます。
 
-- 製品ライセンスをグループに割り当てる場合、管理者はその製品の 1 つまたは複数のサービス プランを無効にできます。 通常、この割り当ては、製品に含まれるサービスを組織で使用する準備が整っていないときに行います。 たとえば、管理者は Office 365 を部署に割り当てる一方で、Yammer のサービスを一時的に無効にできます。
+- 製品ライセンスをグループに割り当てる場合、管理者はその製品の 1 つまたは複数のサービス プランを無効にできます。 通常、この割り当ては、製品に含まれるサービスを組織で使用する準備が整っていないときに行います。 たとえば、管理者は Microsoft 365 を部署に割り当てる一方で、Yammer のサービスを一時的に無効にできます。
 
-- ユーザーレベルのライセンスが必要なすべての Microsoft クラウド サービスがサポートされています。 このサポートには、すべての Office 365 製品、Enterprise Mobility + Security、Dynamics 365 が含まれます。
+- ユーザーレベルのライセンスが必要なすべての Microsoft クラウド サービスがサポートされています。 このサポートには、すべての Microsoft 365 製品、Enterprise Mobility + Security、Dynamics 365 が含まれます。
 
 - グループベースのライセンスは、現時点では [Azure portal](https://portal.azure.com) を介してのみ使用できます。 ユーザーとグループの管理に主に別の管理ポータル ([Microsoft 365 管理センター](https://admin.microsoft.com)など) を使用する場合は、引き続き使用できます。 ただし、グループ レベルでライセンスを管理するには Azure Portal の使用をお勧めします。
 
@@ -65,9 +65,9 @@ ms.locfileid: "87797272"
 
 グループベースのライセンスを通じたライセンス管理の他のシナリオについては、以下をご覧ください
 
-* [Assigning licenses to a group in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
-* [Azure Active Directory のグループのライセンスに関する問題の特定と解決](../users-groups-roles/licensing-groups-resolve-problems.md)
-* [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Azure Active Directory グループベース ライセンスのその他のシナリオ](../users-groups-roles/licensing-group-advanced.md)
-* [Azure Active Directory のグループベースのライセンスの PowerShell の例](../users-groups-roles/licensing-ps-examples.md)
+* [Assigning licenses to a group in Azure Active Directory](../enterprise-users/licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
+* [Azure Active Directory のグループのライセンスに関する問題の特定と解決](../enterprise-users/licensing-groups-resolve-problems.md)
+* [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](../enterprise-users/licensing-groups-migrate-users.md)
+* [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](../enterprise-users/licensing-groups-change-licenses.md)
+* [Azure Active Directory グループベース ライセンスのその他のシナリオ](../enterprise-users/licensing-group-advanced.md)
+* [Azure Active Directory のグループベースのライセンスの PowerShell の例](../enterprise-users/licensing-ps-examples.md)

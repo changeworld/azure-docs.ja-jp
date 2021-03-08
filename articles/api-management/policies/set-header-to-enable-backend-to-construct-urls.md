@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df72ae5e9a1471e1387539d2c89a1eca0b09d866
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70067499"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078614"
 ---
 # <a name="add-a-forwarded-header"></a>転送ヘッダーの追加
 
-この記事では、受信要求に転送ヘッダーを追加して、バックエンド API が適切な URL を構築できるようにする方法を示す Azure API Management ポリシーのサンプルを紹介します。 ポリシー コードを設定または編集するには、[ポリシーの設定または編集](../set-edit-policies.md)に関するページで説明されている手順に従います。 他の例については、[ポリシーのサンプル](../policy-samples.md)に関するページをご覧ください。
+この記事では、受信要求に転送ヘッダーを追加して、バックエンド API が適切な URL を構築できるようにする方法を示す Azure API Management ポリシーのサンプルを紹介します。 ポリシー コードを設定または編集するには、[ポリシーの設定または編集](../set-edit-policies.md)に関するページで説明されている手順に従います。 他の例については、[ポリシーのサンプル](../policy-reference.md)に関するページをご覧ください。
 
 ## <a name="code"></a>コード
 
@@ -34,4 +34,4 @@ ms.locfileid: "70067499"
 APIM ポリシーの詳細については、以下をご覧ください。
 
 + [変換ポリシー](../api-management-transformation-policies.md)
-+ [ポリシーのサンプル](../policy-samples.md)
++ [ポリシーのサンプル](../policy-reference.md)

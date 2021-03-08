@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474327"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
@@ -35,7 +35,7 @@ Application Gateway では、マルチサイト HTTP(S) リスナーを使用し
 
 ホスト名でワイルドカード文字を使用すると、1 つのリスナー内で複数のホスト名と一致させることができます。 たとえば、`*.contoso.com` は、`ecom.contoso.com`、`b2b.contoso.com`、`customer1.b2b.contoso.com` などと一致させることができます。 ホスト名の配列を使用すると、1 つのリスナーに対して複数のホスト名を構成し、バックエンド プールに要求をルーティングすることができます。 たとえば、リスナーには、両方のホスト名に対する要求を受け入れる `contoso.com, fabrikam.com` を含めることができます。
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="ワイルドカード リスナー":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 >[!NOTE]
 > この機能はプレビュー段階であり、Application Gateway の Standard_v2 および WAF_v2 SKU でのみ使用できます。 プレビューの詳細については、[使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページを参照してください。

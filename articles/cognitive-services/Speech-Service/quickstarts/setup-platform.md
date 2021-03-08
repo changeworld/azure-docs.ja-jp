@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:開発プラットフォームを設定する
+title: 'クイックスタート: 開発環境をセットアップする'
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、お好みのプラットフォームとプログラミング言語の組み合わせで Speech SDK をインストールする方法について説明します。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 10/15/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-speech-services-one-nomore
-ms.openlocfilehash: d31df125e5df397f1802ff582e4e5244b6617881
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 27bca1145e378d2b4a0d124849441ba9ad9be832
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926667"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906453"
 ---
 # <a name="quickstart-setup-development-environment"></a>クイック スタート:開発環境を設定する
 

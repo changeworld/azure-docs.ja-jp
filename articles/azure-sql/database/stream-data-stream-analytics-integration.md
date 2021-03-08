@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 36a96a1927aeedb5f841083241d487e0c61d6813
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869866"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454028"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics 統合を使用して Azure SQL Database にデータをストリーム配信する (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "88869866"
 - プレビュー データによる使いやすさの向上:イベント ソース (イベント ハブ/IoT ハブ) から受信したデータを選択したテーブルのコンテキストでプレビューできます
 
 > [!IMPORTANT]
-> Azure Stream Analytics ジョブは、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics (以前の Azure SQL Data Warehouse) に出力できます。 詳細については、「[出力](../../stream-analytics/sql-database-output.md)」を参照してください。
+> Azure Stream Analytics ジョブは、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics に出力できます。 詳細については、「[出力](../../stream-analytics/stream-analytics-define-outputs.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -100,7 +100,7 @@ ms.locfileid: "88869866"
       - [新規作成]:手順 5 でこのオプションを選択した場合は、ストリーミング ジョブを開始するまでスキーマが表示されません。 新しいテーブルを作成する場合は、適切なテーブル インデックスを選択します。 テーブル インデックス作成の詳細については、「[クラスター化インデックスと非クラスター化インデックスの説明](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/)」を参照してください。
       - [既存のものを使用]:手順 5. でこのオプションを選択した場合は、選択したテーブルのスキーマが表示されます。
 
-7. クエリの作成およびテストを完了したら、 **[クエリの保存]** を選択します。 **[Start Stream Analytics job]\(Stream Analytics ジョブを開始する\)** を選択して、変換されたデータを SQL テーブルに取り込む操作を開始します。 次のフィールドを確定したら、ジョブを**開始**します。
+7. クエリの作成およびテストを完了したら、 **[クエリの保存]** を選択します。 **[Start Stream Analytics job]\(Stream Analytics ジョブを開始する\)** を選択して、変換されたデータを SQL テーブルに取り込む操作を開始します。 次のフィールドを確定したら、ジョブを **開始** します。
    - **[出力開始時刻]** :これにより、ジョブの最初の出力時刻が定義されます。  
      - [今すぐ]:ジョブはすぐに開始され、新しい受信データを処理します。
      - カスタム:ジョブはすぐに開始されますが、特定の時点 (過去または将来の可能性があります) のデータを処理します。 詳細については、「[Azure Stream Analytics ジョブを開始する方法](../../stream-analytics/start-job.md)」を参照してください。
@@ -124,6 +124,5 @@ ms.locfileid: "88869866"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stream Analytics のドキュメント](https://docs.microsoft.com/azure/stream-analytics/)
+- [Azure Stream Analytics のドキュメント](../../stream-analytics/index.yml)
 - [Azure Stream Analytics のソリューション パターン](../../stream-analytics/stream-analytics-solution-patterns.md)
- 

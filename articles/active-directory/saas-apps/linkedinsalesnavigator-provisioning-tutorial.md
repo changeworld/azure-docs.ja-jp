@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 458b527194c1123e266bd6abedf25de18e0cee09
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549706"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359359"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>チュートリアル:LinkedIn Sales Navigator を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -44,7 +44,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * 単一の Azure AD ユーザーを LinkedIn Sales Navigator に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-* ユーザーを LinkedIn Sales Navigator に割り当てるときに、割り当てのダイアログで**ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
+* ユーザーを LinkedIn Sales Navigator に割り当てるときに、割り当てのダイアログで **ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
 
 ## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>LinkedIn Sales Navigator へのユーザー プロビジョニングの構成
 
@@ -71,18 +71,18 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     > [!NOTE]
     > ライセンスの自動割り当てを有効にしない場合、ユーザー データのみが同期されるということです。
 
-    ![LinkedIn Sales Navigator のプロビジョニング](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+    ![スクリーンショットには、LinkedIn アカウント センター グローバル設定が示されています。](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
     > ライセンスの自動割り当てを有効にする場合、アプリケーション インスタンスとライセンスの種類に注意する必要があります。 ライセンスは、すべてのライセンスが取得されるまで、先着順で割り当てられます。
 
-    ![LinkedIn Sales Navigator のプロビジョニング](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![スクリーンショットには、S C I M セットアップ ページが示されています。](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
 5. **[トークンの生成]** をクリックします。 **[アクセス トークン]** フィールドの下に、アクセス トークンが表示されます。
 
 6. ページを離れる前に、クリップボードまたはコンピューターにアクセス トークンを保存します。
 
-7. 次に、[Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
+7. 次に、 [Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
 
 8. シングル サインオンのために LinkedIn Sales Navigator を既に構成している場合は、検索フィールドで LinkedIn Sales Navigator のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **LinkedIn Sales Navigator** を検索します。 検索結果から LinkedIn Sales Navigator を選択してアプリケーションの一覧に追加します。
 
@@ -90,7 +90,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![LinkedIn Sales Navigator のプロビジョニング](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+    ![スクリーンショットには、[LinkedIn Elevate のプロビジョニング] ページが示されています。](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. **[管理者資格情報]** の下で、以下のフィールドを入力します。
 
@@ -106,7 +106,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 14. **[属性マッピング]** セクションで、Azure AD から LinkedIn Sales Navigator に同期するユーザーおよびグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で LinkedIn Sales Navigator のユーザー アカウントおよびグループとの照合に使用されることに注意してください。 [保存] ボタンをクリックして変更をコミットします。
 
-    ![LinkedIn Sales Navigator のプロビジョニング](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![スクリーンショットには、属性マッピングを含むマッピングが示されています。](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
 15. LinkedIn Sales Navigator に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 

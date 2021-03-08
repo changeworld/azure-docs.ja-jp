@@ -1,17 +1,17 @@
 ---
 title: 監査ログ - Azure Database for MariaDB
 description: Azure Database for MariaDB で利用できる監査ログと、各種ログ レベルを有効にするため利用可能なパラメーターについて説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3032cb8f5ce399822de65c867d1f32da254c9948
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362426"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663759"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監査ログ
 
@@ -100,7 +100,7 @@ Azure Database for MariaDB では、ユーザーは監査ログを使用でき�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | サーバーの名前 |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`、`ERROR`、`RESULT` |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
 | `event_time` | UNIX タイムスタンプのクエリ開始秒 |
 | `error_code_d` | エラー コード (クエリが失敗した場合)。 `0` は、エラーなしを意味します |
 | `thread_id_d` | クエリを実行したスレッドの ID |

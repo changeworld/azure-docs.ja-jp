@@ -1,5 +1,5 @@
 ---
-title: VM からイメージを作成する
+title: Azure CLI を使用して VM からイメージを作成する
 description: Azure の VM から Shared Image Gallery にイメージを作成する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ca354ee662ebad0cd514d4822794b056ee6f9850
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533922"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805379"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Azure CLI を使用して Azure の VM からイメージ バージョンを作成する
 
 既存の VM を使用して同じ VM を複数作成する場合は、Azure CLI を利用して、その VM から Shared Image Gallery にイメージを作成できます。 [Azure PowerShell](image-version-vm-powershell.md) を利用して VM からイメージを作成することもできます。
 
-**イメージ バージョン**は、Shared Image Gallery の使用時に VM の作成に使用されるものです。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 イメージ バージョンを使用して VM を作成する場合、イメージ バージョンは新しい VM 用のディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。
+**イメージ バージョン** は、Shared Image Gallery の使用時に VM の作成に使用されるものです。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 イメージ バージョンを使用して VM を作成する場合、イメージ バージョンは新しい VM 用のディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -57,11 +57,11 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 イメージ定義の種類が適切であることを確認します。 (Windows の場合は Sysprep、Linux の場合は waagent -deprovision を使用して) VM を一般化している場合は、`--os-state generalized` を使用して、一般化されたイメージ定義を作成する必要があります。 既存のユーザー アカウントを削除せずに VM を使用する場合は、`--os-state specialized` を使用して、特殊化されたイメージ定義を作成します。
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](./linux/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
 
-この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
+この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
 
 ```azurecli-interactive 
 az sig image-definition create \

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830446"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779772"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -26,7 +26,7 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 > [!WARNING]
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD での Azure Disk Encryption (以前のリリース)](disk-encryption-overview-aad.md)」を参照してください。 
 > - 特定の推奨事項により、データ、ネットワーク、またはコンピューティング リソースの使用量が増え、その結果、ライセンスまたはサブスクリプション コストの追加が必要になる可能性があります。 サポートされているリージョンにおいて Azure でリソースを作成するための有効なアクティブ Azure サブスクリプションが必要です。
-> - 現在、第 2 世代 VM では Azure Disk Encryption はサポートされていません。 詳細については、「[Azure での第 2 世代 VM のサポート](../windows/generation-2.md)」を参照してください。
+> - 現在、第 2 世代 VM では Azure Disk Encryption はサポートされていません。 詳細については、「[Azure での第 2 世代 VM のサポート](../generation-2.md)」を参照してください。
 
 「[クイックスタート: Azure CLI で Linux VM を作成して暗号化する](disk-encryption-cli-quickstart.md)」または「[クイックスタート: Azure PowerShell で Linux VM を作成して暗号化する](disk-encryption-powershell-quickstart.md)」では、Linux 用 Azure Disk Encryption の基礎について数分で学習できます。
 
@@ -46,7 +46,9 @@ Linux 仮想マシンの OS ディスクの暗号化プロセスが完了する�
 
 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
-Azure Disk Encryption は、[Generation 2 VM](generation-2.md#generation-1-vs-generation-2-capabilities) と [Lsv2 シリーズ VM](../lsv2-series.md) では使用できません。 例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-linux.md#unsupported-scenarios)に関する記事を参照してください。
+Azure Disk Encryption は、[Generation 2 VM](../generation-2.md#generation-1-vs-generation-2-capabilities) と [Lsv2 シリーズ VM](../lsv2-series.md) では使用できません。 例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-linux.md#unsupported-scenarios)に関する記事を参照してください。
+
+Azure Disk Encryption は、一時ディスクのない VM イメージ (Dv4、Dsv4、Ev4、および Esv4) では使用できません。  「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.md)」を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -65,7 +67,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | Canonical | Ubuntu 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS とデータ ディスク |
 | RedHat | RHEL 7.8 | 7.8 | RedHat:RHEL:7.8:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.7 | 7.7 | RedHat:RHEL:7.7:latest | OS とデータ ディスク (後述する注を参照してください) |
-| RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | OS とデータ ディスク (後述する注を参照してください) |
+| RedHat | RHEL 7-LVM | 7-LVM | RedHat:RHEL:7-LVM:7.8.2020111201 | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.5 | 7.5 | RedHat:RHEL:7.5:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.4 | 7.4 | RedHat:RHEL:7.4:latest | OS とデータ ディスク (後述する注を参照してください) |
@@ -73,8 +75,9 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | RedHat | RHEL 7.2 | 7.2 | RedHat:RHEL:7.2:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 6.8 | 6.8 | RedHat:RHEL:6.8:latest | データ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | データ ディスク (後述する注を参照してください) |
+| OpenLogic | CentOS 7.8 | 7.8 | OpenLogic:CentOS:7_8:latest | OS とデータ ディスク |
 | OpenLogic | CentOS 7.7 | 7.7 | OpenLogic:CentOS:7.7:latest | OS とデータ ディスク |
-| OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | OS とデータ ディスク |
+| OpenLogic | CentOS 7-LVM | 7-LVM | OpenLogic:CentOS-LVM:7-LVM:7.8.2020111100 | OS とデータ ディスク |
 | OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | OS とデータ ディスク |
 | OpenLogic | CentOS 7.5 | 7.5 | OpenLogic:CentOS:7.5:latest | OS とデータ ディスク |
 | OpenLogic | CentOS 7.4 | 7.4 | OpenLogic:CentOS:7.4:latest | OS とデータ ディスク |
@@ -90,7 +93,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 > [!NOTE]
 > RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい Azure Disk Encryption の実装がサポートされます。  
 >
-> ADE は、RHEL のサブスクリプション持ち込み Gold Image でもサポートされています。ただし、サブスクリプションが登録された**後**でのみサポートされます。 詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)」を参照してください。
+> ADE は、RHEL のサブスクリプション持ち込み Gold Image でもサポートされています。ただし、サブスクリプションが登録された **後** でのみサポートされます。 詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)」を参照してください。
 
 ## <a name="additional-vm-requirements"></a>追加の VM 要件
 
@@ -108,8 +111,8 @@ Azure Disk Encryption では、dm-crypt モジュールと vfat モジュール�
 データ ディスクをマウントし、必要な /etc/fstab エントリを作成するために使用できるコマンドの例は、次のとおりです。
 
 ```bash
-UUID0="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun0)"
-UUID1="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun1)"
+UUID0="$(blkid -s UUID -o value /dev/sda1)"
+UUID1="$(blkid -s UUID -o value /dev/sda2)"
 mkdir /data0
 mkdir /data1
 echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab

@@ -1,17 +1,17 @@
 ---
 title: Functions 1.x の Azure Cosmos DB バインド
-description: Azure Functions で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。
+description: Azure Functions 1.x で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。
 author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214158"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002114"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -214,6 +214,8 @@ JavaScript コードを次に示します。
 ## <a name="input"></a>入力
 
 Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上の Azure Cosmos DB ドキュメントを取得して関数の入力パラメーターに渡します。 ドキュメント ID またはクエリ パラメーターは、関数を呼び出したトリガーに基づいて決定することができます。
+
+## <a name="input---example"></a>入力 - 例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1146,6 +1148,8 @@ JavaScript コードを次に示します。
 ## <a name="output"></a>Output
 
 Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azure Cosmos DB データベースに新しいドキュメントを記述できます。
+
+## <a name="output---example"></a>出力 - 例
 
 # <a name="c"></a>[C#](#tab/csharp)
 

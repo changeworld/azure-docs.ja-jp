@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の EXP
 description: 指定された数値式の指数値を返す、Azure Cosmos DB の指数 (EXP) SQL システム関数について説明します
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf80d36edbe8f9a5535e8fa04501918a62ea7ca
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873320"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335634"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定された数値式の指数値を返します。  
   
 ## <a name="syntax"></a>構文

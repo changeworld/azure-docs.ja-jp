@@ -8,18 +8,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 822d74c6f080a1bb1e5e5af38bdf2c221af16d52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 429fe39f84a54c22fa97178b85f417d76dc84a8e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086763"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359474"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 仮想マシンでの SQL Server の自動修正 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +28,7 @@ ms.locfileid: "87086763"
 自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。 このメンテナンス期間にのみ、自動更新プログラムをインストールできます。 これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。 
 
 > [!IMPORTANT]
-> **重要**または**クリティカル**とマークされた Windows および SQL Server 更新プログラムのみがインストールされます。 **重要**または**クリティカル**とマークされていない、サービスパックや累積更新プログラムなどのその他の SQL Server の更新プログラムは、手動でインストールする必要があります。 
+> **重要** または **クリティカル** とマークされた Windows および SQL Server 更新プログラムのみがインストールされます。 **重要** または **クリティカル** とマークされていない、サービスパックや累積更新プログラムなどのその他の SQL Server の更新プログラムは、手動でインストールする必要があります。 
 
 自動修正は、[SQL Server IaaS (サービスとしてのインフラストラクチャ) Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存します。
 
@@ -40,6 +41,7 @@ ms.locfileid: "87086763"
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
+* Windows Server 2019
 
 **SQL Server のバージョン**:
 
@@ -48,6 +50,7 @@ ms.locfileid: "87086763"
 * SQL Server 2014
 * SQL Server 2016
 * SQL Server 2017
+* SQL Server 2019
 
 **Azure PowerShell**:
 
@@ -119,7 +122,7 @@ Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceG
 | **DayOfWeek** |毎週木曜日に修正プログラムがインストールされます。 |
 | **MaintenanceWindowStartingHour** |午前 11 時に更新が開始されます。 |
 | **MaintenanceWindowsDuration** |修正プログラムを 120 分以内にインストールする必要があります。 開始時刻に基づき、修正プログラムのインストールは午後 1 時までに完了する必要があります。 |
-| **PatchCategory** |このパラメーターに指定可能な設定は **Important**だけです。 これにより、"重要" と書かれた Windows 更新プログラムがインストールされます。このカテゴリに含まれていない SQL Server 更新プログラムはインストールされません。 |
+| **PatchCategory** |このパラメーターに指定可能な設定は **Important** だけです。 これにより、"重要" と書かれた Windows 更新プログラムがインストールされます。このカテゴリに含まれていない SQL Server 更新プログラムはインストールされません。 |
 
 SQL Server IaaS エージェントのインストールと構成には数分かかる場合があります。
 

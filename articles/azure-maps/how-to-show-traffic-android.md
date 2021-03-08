@@ -1,246 +1,191 @@
 ---
 title: Android マップに交通情報データを表示する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップに交通情報データを表示する方法について説明します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 02/27/2020
-ms.topic: conceptual
+author: rbrundritt
+ms.author: richbrun
+ms.date: 2/26/2021
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+manager: cpendle
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126399"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098538"
 ---
-# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップに交通情報データを表示する
+# <a name="show-traffic-data-on-the-map-android-sdk"></a>マップに交通情報データを表示する (Android SDK)
 
 フロー データとインシデント データは、マップに表示できる 2 種類の交通情報データです。 このガイドでは、両方の種類の交通情報データを表示する方法について説明します。 インシデント データは、工事、道路閉鎖、交通事故といった事柄を示す、点と線に基づくデータで構成されます。 フロー データは、道路上の交通の流れに関するメトリックを示します。
 
 ## <a name="prerequisites"></a>前提条件
 
-マップに交通情報を表示するには、事前に [Azure アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)し、[サブスクリプション キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)しておく必要があります。 次に、[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) をインストールしてマップを読み込む必要があります。
+[クイックスタート: Android アプリの作成](quick-android-map.md)に関する記事の手順を必ず完了してください。 この記事のコード ブロックは、マップ `onReady` イベント ハンドラーに挿入できます。
 
-## <a name="incidents-traffic-data"></a>インシデント交通情報データ
+## <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 
-`setTraffic` と `incidents` を呼び出すために次のライブラリをインポートする必要があります。
+Azure Maps で使用できるトラフィック データには、次の 2 種類があります。
+
+- インシデント データ - 建設、道路の閉鎖、事故などのためのポイント データと行ベースのデータで構成されます。
+- フロー データ - 道路のトラフィックのフローに関するメトリックを提供します。 多くの場合、トラフィック フロー データは、道路の色を設定するために使用されます。 その色は、速度制限やその他のメトリックと相対的な、フロー速度が低下するトラフィック量に基づいています。 マップの交通情報 `flow` オプションに渡すことができる値は 4 つあります。
+
+    |Flow 値 | 説明|
+    | :-- | :-- |
+    | TrafficFlow.NONE | マップに交通情報データを表示しません |
+    | TrafficFlow.RELATIVE | 道路の自由流速度を基準にして交通情報データを表示します |
+    | TrafficFlow.RELATIVE_DELAY | 予想されている平均的な遅れよりも遅い地域を表示します |
+    | TrafficFlow.ABSOLUTE | 道路上の全車両の対地速度を表示します |
+
+次のコードは、トラフィック データをマップに表示する方法を示しています。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
+//Show traffic on the map using the traffic options.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+);
 ```
 
- 次のコード スニペットは、交通情報データをマップに表示する方法を示しています。 `incidents` メソッドにブール値を渡し、それを `setTraffic` メソッドに渡します。 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+```
+
+::: zone-end
+
+次のスクリーンショットは、上記のコードによるリアルタイムの交通情報のマップ上へのレンダリングを示しています。
+
+![リアルタイムの交通情報を示すマップ](media/how-to-show-traffic-android/android-show-traffic.png)
+
+## <a name="get-traffic-incident-details"></a>交通情報インシデントの詳細を取得する
+
+交通情報インシデントの詳細は、マップ上にインシデントを表示するために使用される機能のプロパティ内で使用できます。 交通情報インシデントは、Azure Maps 交通情報インシデント ベクター タイル サービスを使用してマップに追加されます。 これらのベクター タイル内のデータの形式は、[こちらに記載されています](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)。 次のコードは、マップにクリック イベントを追加し、クリックされた交通情報インシデント機能を取得して、詳細の一部を含むトースト メッセージを表示します。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map - > {
-        map.setTraffic(incidents(true));
+//Show traffic information on the map.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+);
+
+//Add a click event to the map.
+map.events.add((OnFeatureClick) (features) -> {
+
+    if (features != null && features.size() > 0) {
+        Feature incident = features.get(0);
+
+        //Ensure that the clicked feature is an traffic incident feature.
+        if (incident.properties() != null && incident.hasProperty("incidentType")) {
+
+            StringBuilder sb = new StringBuilder();
+            String incidentType = incident.getStringProperty("incidentType");
+
+            if (incidentType != null) {
+                sb.append(incidentType);
+            }
+
+            if (sb.length() > 0) {
+                sb.append("\n");
+            }
+
+            //If the road is closed, find out where it is closed from.
+            if ("Road Closed".equals(incidentType)) {
+                String from = incident.getStringProperty("from");
+
+                if (from != null) {
+                    sb.append(from);
+                }
+            } else {
+                //Get the description of the traffic incident.
+                String description = incident.getStringProperty("description");
+
+                if (description != null) {
+                    sb.append(description);
+                }
+            }
+
+            String message = sb.toString();
+
+            if (message.length() > 0) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
     }
-}
+});
 ```
 
-## <a name="flow-traffic-data"></a>フロー交通情報データ
+::: zone-end
 
-まず、`setTraffic` と `flow` を呼び出すために、次のライブラリをインポートする必要があります。
+::: zone pivot="programming-language-kotlin"
 
-```java
-import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
-import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
-```
+```kotlin
+//Show traffic information on the map.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
 
-次のコード スニペットを使用して、交通の流れのデータを設定します。 前のセクションのコードと同様に、`flow` メソッドの戻り値を `setTraffic` メソッドに渡します。 `flow` に渡せる値は 4 つあり、各値が `flow` をトリガーしてそれぞれの値が返されます。 次に、`flow` の戻り値が引数として `setTraffic` に渡されます。 これらの 4 つの値については、次の表を参照してください。
+//Add a click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature>? ->
+    if (features != null && features.size > 0) {
+        val incident = features[0]
 
-|Flow 値 | 説明|
-| :-- | :-- |
-| TrafficFlow.NONE | マップに交通情報データを表示しません |
-| TrafficFlow.RELATIVE | 道路の自由流速度を基準にして交通情報データを表示します |
-| TrafficFlow.RELATIVE_DELAY | 予想されている平均的な遅れよりも遅い地域を表示します |
-| TrafficFlow.ABSOLUTE | 道路上の全車両の対地速度を表示します |
+        //Ensure that the clicked feature is an traffic incident feature.
+        if (incident.properties() != null && incident.hasProperty("incidentType")) {
+            val sb = StringBuilder()
+            val incidentType = incident.getStringProperty("incidentType")
 
-```java
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map -> {
-        map.setTraffic(flow(TrafficFlow.RELATIVE)));
+            if (incidentType != null) {
+                sb.append(incidentType)
+            }
+
+            if (sb.length > 0) {
+                sb.append("\n")
+            }
+
+            //If the road is closed, find out where it is closed from.
+            if ("Road Closed" == incidentType) {
+                val from = incident.getStringProperty("from")
+                if (from != null) {
+                    sb.append(from)
+                }
+            } else { //Get the description of the traffic incident.
+                val description = incident.getStringProperty("description")
+                if (description != null) {
+                    sb.append(description)
+                }
+            }
+
+            val message = sb.toString()
+            if (message.length > 0) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            }
+        }
     }
-}
+})
 ```
 
-## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>機能をクリックしてインシデント交通情報データを表示する
+::: zone-end
 
-特定の機能のインシデントを取得するには、次のコードを使用できます。 機能をクリックすると、コード ロジックによって、インシデントの発生についてチェックが行われ、インシデントに関するメッセージが作成されます。 画面の下部に、詳細を含むメッセージが表示されます。
+次のスクリーンショットは、上記のコードによるリアルタイムの交通情報のマップ上へのレンダリングを示し、インシデントの詳細を表示するトースト メッセージも表示されています。
 
-1. まず、**res > layout > activity_main.xml** を以下に示されているように編集する必要があります。 `mapcontrol_centerLat`、`mapcontrol_centerLng`、および `mapcontrol_zoom` は、目的の値に置き換えることができます。 この場合、ズーム レベルは 0 から 22 の値になることに注意してください。 ズーム レベルが 0 の場合は、世界全体が 1 つのタイルに収まります。
-
-   ```XML
-   <?xml version="1.0" encoding="utf-8"?>
-   <FrameLayout
-       xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:app="http://schemas.android.com/apk/res-auto"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       >
-    
-       <com.microsoft.azure.maps.mapcontrol.MapControl
-           android:id="@+id/mapcontrol"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           app:mapcontrol_centerLat="47.6050"
-           app:mapcontrol_centerLng="-122.3344"
-           app:mapcontrol_zoom="12"
-           />
-
-   </FrameLayout>
-   ```
-
-2. **MainActivity.java** ファイルに次のコードを追加します。 パッケージは既定で含まれているので、常に一番上にパッケージを配置するようにしてください。
-
-   ```java
-   package <yourpackagename>;
-   import androidx.appcompat.app.AppCompatActivity;
-
-   import android.os.Bundle;
-   import android.widget.Toast;
-
-   import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-   import com.microsoft.azure.maps.mapcontrol.MapControl;
-   import com.mapbox.geojson.Feature;
-   import com.microsoft.azure.maps.mapcontrol.events.OnFeatureClick;
-
-   import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
-   import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
-   import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.incidents;
-
-   public class MainActivity extends AppCompatActivity {
-
-       static {
-           AzureMaps.setSubscriptionKey("Your Azure Maps Subscription Key");
-       }
-
-       MapControl mapControl;
-
-       @Override
-       protected void onCreate(Bundle savedInstanceState) {
-           super.onCreate(savedInstanceState);
-           setContentView(R.layout.activity_main);
-
-           mapControl = findViewById(R.id.mapcontrol);
-
-           mapControl.onCreate(savedInstanceState);
-
-           //Wait until the map resources are ready.
-           mapControl.getMapAsync(map -> {
-
-               map.setTraffic(flow(TrafficFlow.RELATIVE));
-               map.setTraffic(incidents(true));
-
-               map.events.add((OnFeatureClick) (features) -> {
-
-                   if (features != null && features.size() > 0) {
-                       Feature incident = features.get(0);
-                       if (incident.properties() != null) {
-
-
-                           StringBuilder sb = new StringBuilder();
-                           String incidentType = incident.getStringProperty("incidentType");
-                           if (incidentType != null) {
-                               sb.append(incidentType);
-                           }
-                           if (sb.length() > 0) sb.append("\n");
-                           if ("Road Closed".equals(incidentType)) {
-                               sb.append(incident.getStringProperty("from"));
-                           } else {
-                               String description = incident.getStringProperty("description");
-                               if (description != null) {
-                                   for (String word : description.split(" ")) {
-                                       if (word.length() > 0) {
-                                           sb.append(word.substring(0, 1).toUpperCase());
-                                           if (word.length() > 1) {
-                                               sb.append(word.substring(1));
-                                           }
-                                           sb.append(" ");
-                                       }
-                                   }
-                               }
-                           }
-                           String message = sb.toString();
-
-                           if (message.length() > 0) {
-                               Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-                           }
-                       }
-                   }
-               });
-           });
-       }
-
-       @Override
-       public void onResume() {
-           super.onResume();
-           mapControl.onResume();
-       }
-
-       @Override
-       protected void onStart(){
-           super.onStart();
-           mapControl.onStart();
-       }
-
-       @Override
-       public void onPause() {
-           super.onPause();
-           mapControl.onPause();
-       }
-
-       @Override
-       public void onStop() {
-           super.onStop();
-           mapControl.onStop();
-       }
-
-       @Override
-       public void onLowMemory() {
-           super.onLowMemory();
-           mapControl.onLowMemory();
-       }
-
-       @Override
-       protected void onDestroy() {
-           super.onDestroy();
-           mapControl.onDestroy();
-       }
-
-       @Override
-       protected void onSaveInstanceState(Bundle outState) {
-           super.onSaveInstanceState(outState);
-           mapControl.onSaveInstanceState(outState);
-       }
-   }
-   ```
-
-3. アプリケーションに上記のコードを組み込むと、機能をクリックして交通インシデントの詳細を表示できるようになります。 **activity_main.xml** ファイルで使用した緯度、経度、およびズーム レベルの値に応じて、次の図のような結果が表示されます。
-
-   <center>
-
-   ![マップ上のインシデント交通情報](./media/how-to-show-traffic-android/android-traffic.png)
-
-   </center>
+![インシデントの詳細を表示するトースト メッセージ付きでリアルタイムの交通情報を示すマップ](media/how-to-show-traffic-android/android-traffic-details.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 マップにデータを追加する方法については、次のガイドを参照してください。
 
 > [!div class="nextstepaction"]
-> [シンボル レイヤーを追加する](how-to-add-symbol-to-android-map.md)
-
-> [!div class="nextstepaction"]
 > [タイル レイヤーを追加する](how-to-add-tile-layer-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Android マップに図形を追加する](how-to-add-shapes-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [フィーチャーの情報を表示する](display-feature-information-android.md)

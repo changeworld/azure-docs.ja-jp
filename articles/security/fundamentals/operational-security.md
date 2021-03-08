@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7d71820db3d58931f2fcd8d18441534ad36183c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711996"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -43,13 +43,13 @@ Azure で運用可能なセキュリティとは、ユーザーのデータ、�
 このホワイト ペーパーでは、Microsoft Azure クラウド プラットフォーム内での Azure で運用可能なセキュリティに対する Microsoft の取り組みと、次のサービスについて説明します。
 1.  [Azure Monitor](../../azure-monitor/index.yml)
 
-2.  [Azure Security Center](../../security-center/security-center-intro.md)
+2.  [Azure Security Center](../../security-center/security-center-introduction.md)
 
 3.  [Azure Monitor](../../azure-monitor/overview.md)
 
 4.  [Azure Network watcher](../../network-watcher/network-watcher-monitoring-overview.md)
 
-5.  [Azure Storage analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
+5.  [Azure Storage analytics](/rest/api/storageservices/fileservices/storage-analytics)
 
 6.  [Azure Active directory](../../active-directory/fundamentals/active-directory-whatis.md)
 
@@ -81,7 +81,7 @@ Azure Monitor ログのコア機能は、Azure で実行される一連のサー
 この方法を使用すると、さまざまなソースからのデータを統合できるため、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、データの収集とそのデータに対して実行される操作は明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
 
-![Azure Monitor ログ](./media/operational-security/azure-operational-security-fig2.png)
+![さまざまなソースからのデータ統合を示す図。Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。](./media/operational-security/azure-operational-security-fig2.png)
 
 Azure Monitor サービスは次の方法でクラウドベースのデータを安全に管理しています。
 -   データの分離
@@ -100,15 +100,15 @@ Azure Monitor スイートの製品およびサービスの一部である [Azur
 Azure Backup で保護されるデータは、特定の地域リージョンにあるバックアップ コンテナーに格納されます。 データは同じリージョン内でレプリケートされます。コンテナーのタイプによっては、回復性を高めるために別のリージョンにレプリケートされることもあります。
 
 ### <a name="management-solutions"></a>管理ソリューション
-[Azure Monitor](../../security-center/security-center-intro.md) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。
+[Azure Monitor](../../security-center/security-center-introduction.md) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。
 
 
-[管理ソリューション](../../monitoring/monitoring-solutions.md)は、1 つ以上の Azure Monitor サービスを使用する特定の管理シナリオが実装された、事前にパッケージ化された一連のロジックです。 さまざまなソリューションが Microsoft とパートナーによって提供されており、Azure サブスクリプションに簡単に追加して、Azure Monitor への投資の価値を高めることができます。 パートナーは、アプリケーションとサービスをサポートする独自のソリューションを作成し、Azure Marketplace またはクイック スタート テンプレートを使用してユーザーに提供できます。
+[管理ソリューション](../../azure-monitor/insights/solutions.md)は、1 つ以上の Azure Monitor サービスを使用する特定の管理シナリオが実装された、事前にパッケージ化された一連のロジックです。 さまざまなソリューションが Microsoft とパートナーによって提供されており、Azure サブスクリプションに簡単に追加して、Azure Monitor への投資の価値を高めることができます。 パートナーは、アプリケーションとサービスをサポートする独自のソリューションを作成し、Azure Marketplace またはクイック スタート テンプレートを使用してユーザーに提供できます。
 
 
 ![管理ソリューション](./media/operational-security/azure-operational-security-fig4.png)
 
-複数のサービスを使用して追加の機能を提供するソリューションの良い例は、[更新管理ソリューション](../../automation/update-management/update-mgmt-overview.md)です。 このソリューションでは、Windows と Linux 用の [Azure Monitor ログ](../../log-analytics/log-analytics-queries.md) エージェントを使用して、各エージェントから必要な更新プログラムの情報を収集します。 このデータは、付属のダッシュボードを使ってデータを分析できる Azure Monitor ログ リポジトリに書き込まれます。
+複数のサービスを使用して追加の機能を提供するソリューションの良い例は、[更新管理ソリューション](../../automation/update-management/overview.md)です。 このソリューションでは、Windows と Linux 用の [Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md) エージェントを使用して、各エージェントから必要な更新プログラムの情報を収集します。 このデータは、付属のダッシュボードを使ってデータを分析できる Azure Monitor ログ リポジトリに書き込まれます。
 
 必要な更新プログラムをインストールするために、デプロイ作成時に [Azure Automation](../../automation/automation-intro.md) の Runbook が使用されます。 このプロセスはすべてポータルで管理するため、根底にある詳細について配慮する必要はありません。
 
@@ -195,11 +195,11 @@ Azure 診断ログは、リソースによって出力され、そのリソー�
 
 たとえば、Windows イベント システム ログは、VM、BLOB、テーブルの診断ログのカテゴリの 1 つであり、キューのログは、ストレージ アカウントの診断ログのカテゴリです。
 
-診断ログは、[アクティビティ ログ (以前は監査ログまたは操作ログと呼ばれていたもの)](../../azure-monitor/platform/platform-logs-overview.md) とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
+診断ログは、[アクティビティ ログ (以前は監査ログまたは操作ログと呼ばれていたもの)](../../azure-monitor/essentials/platform-logs-overview.md) とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
 
 ### <a name="metrics"></a>メトリック
 
-Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 Azure テレメトリ データの種類の中でも最も重要なのは、Azure リソースのほとんどから出力されるメトリックであり、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、この[メトリック](../../monitoring/monitoring-data-collection.md)を複数の方法で構成して使用することで、監視やトラブルシューティングを実行できます。 テレメトリの重要なソースであるメトリックを使用すると、次の作業を行うことができます。
+Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 Azure テレメトリ データの種類の中でも最も重要なのは、Azure リソースのほとんどから出力されるメトリックであり、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、この[メトリック](../../azure-monitor/data-platform.md)を複数の方法で構成して使用することで、監視やトラブルシューティングを実行できます。 テレメトリの重要なソースであるメトリックを使用すると、次の作業を行うことができます。
 
 -   **パフォーマンスを追跡する**: VM、Web サイト、ロジック アプリなどのリソースのメトリックをポータルのグラフにプロットし、そのグラフをダッシュボードに固定することで、リソースのパフォーマンスを追跡できます。
 
@@ -213,7 +213,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスの Web ロールおよび Worker ロール](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure Virtual Machines](../../virtual-machines/windows/overview.md)、および [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md) となっています。 その他の Azure サービスには、独自の独立した診断があります。
+デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスの Web ロールおよび Worker ロール](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure Virtual Machines](../../virtual-machines/windows/overview.md)、および [Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md) となっています。 その他の Azure サービスには、独自の独立した診断があります。
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
@@ -225,26 +225,26 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 
 現在、Network Watcher が備える機能は次のとおりです。
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">監査ログ</a>** - ネットワークの構成の一環として実行された操作が記録されます。 これらのログは、Azure Portal で確認することも、Power BI などの Microsoft ツールやサードパーティ ツールを使用して取得することもできます。 監査ログは、ポータル、PowerShell、CLI、Rest API で利用できます。 監査ログの詳細については、Resource Manager の監査操作に関するページを参照してください。 監査ログは、すべてのネットワーク リソースに対して実行された操作について用意されています。
+-   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">監査ログ</a>** - ネットワークの構成の一環として実行された操作が記録されます。 これらのログは、Azure Portal で確認することも、Power BI などの Microsoft ツールやサードパーティ ツールを使用して取得することもできます。 監査ログは、ポータル、PowerShell、CLI、Rest API で利用できます。 監査ログの詳細については、Resource Manager の監査操作に関するページを参照してください。 監査ログは、すべてのネットワーク リソースに対して実行された操作について用意されています。
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP フロー検証</a>** - フロー情報の 5 タプル パケット パラメーター (宛先 IP、送信元 IP、宛先ポート、送信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがネットワーク セキュリティ グループにより拒否された場合、そのパケットを拒否した規則とネットワーク セキュリティ グループが返されます。
+-   **<a href="/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP フロー検証</a>** - フロー情報の 5 タプル パケット パラメーター (宛先 IP、送信元 IP、宛先ポート、送信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがネットワーク セキュリティ グループにより拒否された場合、そのパケットを拒否した規則とネットワーク セキュリティ グループが返されます。
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">次のホップ</a>** - Azure Network Fabric におけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
+-   **<a href="/azure/network-watcher/network-watcher-next-hop-overview">次のホップ</a>** - Azure Network Fabric におけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview">セキュリティ グループ ビュー</a>** - VM に適用されている有効な適用セキュリティ規則を確認できます。
+-   **<a href="/azure/network-watcher/network-watcher-security-group-view-overview">セキュリティ グループ ビュー</a>** - VM に適用されている有効な適用セキュリティ規則を確認できます。
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG フロー ログ</a>** - ネットワーク セキュリティ グループのフロー ログにより、そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
+-   **<a href="/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG フロー ログ</a>** - ネットワーク セキュリティ グループのフロー ログにより、そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
 
 ## <a name="azure-storage-analytics"></a>Azure Storage Analytics
 
-[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ストレージ サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 トランザクションは、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量は、ストレージ サービス レベルでレポートされます。 メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
+[Storage Analytics](/rest/api/storageservices/fileservices/storage-analytics) では、ストレージ サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 トランザクションは、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量は、ストレージ サービス レベルでレポートされます。 メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
 
-[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。 このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。 Storage Analytics Logging は、[BLOB、Queue、Table の各サービス](../../storage/common/storage-introduction.md)で使用できます。 Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。
+[Azure Storage Analytics](/rest/api/storageservices/fileservices/storage-analytics) では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。 このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。 Storage Analytics Logging は、[BLOB、Queue、Table の各サービス](../../storage/common/storage-introduction.md)で使用できます。 Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。
 
 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。 ログ エントリが作成されるのは、サービス エンドポイントに対して行われた要求がある場合に限られます。 たとえば、ストレージ アカウントの BLOB エンドポイントにはアクティビティが存在するが、Table エンドポイントや Queue エンドポイントには存在しない場合、Blob service に関連したログだけが作成されます。
 
-Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。 Storage Analytics は [Azure Portal](https://portal.azure.com/) で有効にできます。詳細については、「[Azure Portal でのストレージ アカウントの監視](../../storage/common/storage-monitor-storage-account.md)」を参照してください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 サービスごとに Storage Analytics を個別に有効にするには、Set Service Properties 操作を使用します。
+Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。 Storage Analytics は [Azure Portal](https://portal.azure.com/) で有効にできます。詳細については、「[Azure Portal でのストレージ アカウントの監視](../../storage/common/manage-storage-analytics-logs.md)」を参照してください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 サービスごとに Storage Analytics を個別に有効にするには、Set Service Properties 操作を使用します。
 
 集計データは、既知の BLOB (ログの場合) と既知のテーブル (メトリックの場合) に格納されます。集計データには、Blob service と Table service の API を使用してアクセスできます。
 
@@ -256,7 +256,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 -   メトリックのテーブル エンティティの作成要求
 
 > [!Note]
-> 課金ポリシーとデータ保持ポリシーの詳細については、「[Storage Analytics and Billing (Storage Analytics と課金)](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-and-billing)」を参照してください。
+> 課金ポリシーとデータ保持ポリシーの詳細については、「[Storage Analytics and Billing (Storage Analytics と課金)](/rest/api/storageservices/fileservices/storage-analytics-and-billing)」を参照してください。
 > パフォーマンスを最適化するには、仮想マシンに接続する使用率が高いディスク数を制限して、スロットルを回避するようにします。 すべてのディスクの使用率が同時に高くならなければ、ストレージ アカウントは多数のディスクをサポートできます。
 
 > [!Note]
@@ -271,7 +271,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 |失敗した要求 (タイムアウト、スロットル、ネットワーク、承認などに関する各種エラー) | Shared Access Signature (SAS) を使用した要求 (失敗した要求と成功した要求を含む) |
 | Shared Access Signature (SAS) を使用した要求 (失敗した要求と成功した要求を含む) |クライアントとサーバーの両方のタイムアウト エラー |
 |   データの分析要求 |    エラー コード 304 (変更されていません) で失敗した GET 要求 |
-| Storage Analytics そのものによる要求 (ログの作成/削除など) は記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)」をご覧ください。 | その他の失敗した匿名要求は一切記録されません。 ログに記録されるデータの全一覧については、「[Storage Analytics によって記録される操作やステータス メッセージ](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)」を参照してください。 |
+| Storage Analytics そのものによる要求 (ログの作成/削除など) は記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](/rest/api/storageservices/fileservices/storage-analytics-log-format)」をご覧ください。 | その他の失敗した匿名要求は一切記録されません。 ログに記録されるデータの全一覧については、「[Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](/rest/api/storageservices/fileservices/storage-analytics-log-format)」を参照してください。 |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -281,7 +281,7 @@ Azure AD には、多要素認証、デバイスの登録、セルフサービ�
 
 -   セキュリティのレポート作成と監視機能により、アプリケーションの使用状況を監視し、高度な脅威からビジネスを保護します。
 
-Azure Active Directory (Azure AD) には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。 [Azure Active Directory 監査レポート](../../active-directory/active-directory-reporting-azure-portal.md)を利用すると、Azure Active Directory で発生した特権アクションを識別できます。 特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。
+Azure Active Directory (Azure AD) には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。 [Azure Active Directory 監査レポート](../../active-directory/reports-monitoring/overview-reports.md)を利用すると、Azure Active Directory で発生した特権アクションを識別できます。 特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。
 
 レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。 [監査ログの表示](../../active-directory/reports-monitoring/overview-reports.md)に関するページに説明されているように、[Azure Portal](https://portal.azure.com/) を使用して Azure Active Directory に対する監査イベントのリストを取得できます。 含まれているレポートの一覧を次に示します。
 
@@ -299,14 +299,14 @@ Azure Active Directory (Azure AD) には、ディレクトリに関するセキ�
 
 
 
-これらのレポートのデータは、SIEM システム、監査、ビジネス インテリジェンス ツールなどのアプリケーションに役立ちます。 Azure AD Reporting [API](../../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) は、一連の REST ベースの API を使用して、プログラムによってデータにアクセスできるようにします。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
+これらのレポートのデータは、SIEM システム、監査、ビジネス インテリジェンス ツールなどのアプリケーションに役立ちます。 Azure AD Reporting [API](../../active-directory/reports-monitoring/concept-reporting-api.md) は、一連の REST ベースの API を使用して、プログラムによってデータにアクセスできるようにします。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
 
 Azure AD の監査レポートのイベントは、180 日間保持されます。
 
 > [!Note]
 > レポートの保持の詳細については、「 [Azure Active Directory Report Retention Policies (Azure Active Directory レポートの保持ポリシー)](../../active-directory/reports-monitoring/reference-reports-data-retention.md)」をご覧ください。
 
-[監査イベント](../../active-directory/active-directory-reporting-activity-audit-logs.md)を長期間保存する場合は、Reporting API を使用して監査イベントを定期的に別のデータ ストアにプルできます。
+[監査イベント](../../active-directory/reports-monitoring/concept-audit-logs.md)を長期間保存する場合は、Reporting API を使用して監査イベントを定期的に別のデータ ストアにプルできます。
 
 ## <a name="summary"></a>まとめ
 
@@ -342,4 +342,3 @@ Microsoft は、攻撃に強く、回復力のあるクラウド インフラス
 Microsoft のセキュリティ データと分析を使用することにより、よりインテリジェントで効果的な脅威の検出を実行できます。
 
 - [Azure Security Center の計画および運用](../../security-center/security-center-planning-and-operations-guide.md) 組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。
-

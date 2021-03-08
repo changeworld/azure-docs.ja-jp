@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 997a6941e2ccc26dabe1a593fe938094099bc98d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388988"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949498"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
@@ -41,7 +41,7 @@ ID 開発者は、Azure Active Directory B2C (Azure AD B2C) で、RESTful API �
 ```json
 {
     "objectId": "User objectId",
-    "language": "Current UI language"
+    "lang": "Current UI language"
 }
 ```
 
@@ -53,7 +53,7 @@ ID 開発者は、Azure Active Directory B2C (Azure AD B2C) で、RESTful API �
 }
 ```
 
-REST API エンドポイントの設定は、この記事では扱っていません。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) のサンプルを作成しました。 Azure 関数の完全なコードは、[GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) から入手できます。
+REST API エンドポイントの設定は、この記事では扱っていません。 [Azure Functions](../azure-functions/functions-reference.md) のサンプルを作成しました。 Azure 関数の完全なコードは、[GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) から入手できます。
 
 ## <a name="define-claims"></a>要求を定義する
 
@@ -75,7 +75,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>RESTful API 技術プロファイルを構成する 
+## <a name="add-the-restful-api-technical-profile"></a>RESTful API 技術プロファイルを追加する 
 
 [Restful 技術プロファイル](restful-technical-profile.md)では、お使いの独自の RESTful サービスとのインターフェイスをサポートしています。 Azure AD B2C は、`InputClaims` コレクションでデータを RESTful サービスに送信し、`OutputClaims` コレクションで返却データを受信します。 お使いの <em> **`TrustFrameworkExtensions.xml`**</em> ファイルで **ClaimsProviders** を見つけ、次のように新しい要求プロバイダーを追加します。
 
@@ -87,6 +87,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
       <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -107,9 +108,20 @@ REST API エンドポイントの設定は、この記事では扱っていま�
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-```
+``` 
 
 この例では、`userLanguage` が JSON ペイロード内の `lang` として REST サービスに送信されます。 `userLanguage` 要求の値には、現在のユーザーの言語 ID が含まれます。 詳細については、[要求リゾルバー](claim-resolver-overview.md)に関するページを参照してください。
+
+### <a name="configure-the-restful-api-technical-profile"></a>RESTful API 技術プロファイルを構成する 
+
+REST API をデプロイした後、`REST-ValidateProfile` 技術プロファイルのメタデータを、次のような独自の REST API を反映させるように設定します。
+
+- **ServiceUrl**: REST API エンドポイントの URL を設定します。
+- **SendClaimsIn**: RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。
+- **AuthenticationType**: RESTful 要求プロバイダーにより実行されている認証の種類を設定します。 
+- **AllowInsecureAuthInProduction**: 運用環境では、このメタデータを必ず `true` に設定してください。
+    
+詳細な構成については、[RESTful 技術プロファイルのメタデータ](restful-technical-profile.md#metadata)に関する記事を参照してください。
 
 `AuthenticationType` と `AllowInsecureAuthInProduction` の上のコメントに、運用環境に移行するときに行う必要がある変更が指定されています。 お使いの RESTful API を実稼働用にセキュリティで保護する方法については、[RESTful API のセキュリティ保護](secure-rest-api.md)に関するページを参照してください。
 

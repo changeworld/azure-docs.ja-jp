@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207517"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747742"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する
 スケール セット インスタンスでは、インスタンスの終了通知を受信し、定義済みの遅延タイムアウトを終了操作に設定することをオプトインできます。 終了通知は、Azure Metadata Service の [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して送信されます。これにより、再起動や再デプロイなどの影響がある操作の通知と遅延が行われます。 このソリューションでは、別のイベント (Terminate) が Scheduled Events の一覧に追加されます。terminate イベントの関連する遅延は、スケール セット モデルの構成のユーザーによって指定された遅延の制限によって変わります。
@@ -63,9 +63,9 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 ```
 
-上のブロックでは、スケール セット内のすべてのインスタンスに対する任意の終了操作について、(*PT5M* で示されているように) タイムアウトの遅延が 5 分間に指定されています。 フィールド *notBeforeTimeout* は、ISO 8601 形式の 5 から 15 分の範囲の任意の値を受け取ることができます。 前述の *terminateNotificationProfile* の *notBeforeTimeout* プロパティを変更することで、終了操作の既定のタイムアウトを変更できます。
+上のブロックでは、スケール セット内のすべてのインスタンスに対する任意の終了操作について、( *PT5M* で示されているように) タイムアウトの遅延が 5 分間に指定されています。 フィールド *notBeforeTimeout* は、ISO 8601 形式の 5 から 15 分の範囲の任意の値を受け取ることができます。 前述の *terminateNotificationProfile* の *notBeforeTimeout* プロパティを変更することで、終了操作の既定のタイムアウトを変更できます。
 
-スケール セット モデルで *scheduledEventsProfile* を有効にし、*notBeforeTimeout* を設定してから、変更を反映するように個々のインスタンスを[最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
+スケール セット モデルで *scheduledEventsProfile* を有効にし、 *notBeforeTimeout* を設定してから、変更を反映するように個々のインスタンスを [最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
 
 > [!NOTE]
 >スケール セット インスタンスの終了通知は、API バージョン 2019-03-01 以降でのみ有効にすることができます
@@ -91,7 +91,7 @@ New-AzVmssConfig `
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -VMScaleSetName "myScaleSet" `
-  -TerminateScheduledEvents $true
+  -TerminateScheduledEvents $true `
   -TerminateScheduledEventNotBeforeTimeoutInMinutes 15
 ```
 上の例では、既存のスケール セットに対して終了通知を有効にし、terminate イベントに 15 分のタイムアウトを設定します。
@@ -197,7 +197,7 @@ Scheduled Events を介して **Terminate** イベントを取得していない
 >'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>無効な NotBefore 時間での Terminate イベントを受け取る  
-スケール セット モデルで *scheduledEventsProfile* を有効にし、*notBeforeTimeout* を設定してから、変更を反映するように個々のインスタンスを[最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
+スケール セット モデルで *scheduledEventsProfile* を有効にし、 *notBeforeTimeout* を設定してから、変更を反映するように個々のインスタンスを [最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
 
 ## <a name="next-steps"></a>次のステップ
 仮想マシン スケール セットに[ご自身のアプリケーションをデプロイする](virtual-machine-scale-sets-deploy-app.md)方法を学習します。

@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Azure Maps を使った対話型のマップ検索
-description: 対話型の検索可能なマップを作成する方法について説明します。 Azure Maps アカウントを作成してプライマリ キーを取得し、Web SDK を使用してマップ アプリケーションを設定する方法をご覧ください。
+description: 'クイックスタート: 対話型の検索可能なマップを作成する方法について説明します。 Azure Maps アカウントを作成して主キーを取得し、Web SDK を使用してマップ アプリケーションを設定する方法をご覧ください'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 24a834c87fe34d90dec5961bb3f8d376c6e5e62d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031049"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373217"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>クイック スタート:Azure Maps を使用して対話形式の検索マップを作成する
 
@@ -23,6 +23,8 @@ ms.locfileid: "88031049"
 * 自分用の Azure Maps アカウントを作成する。
 * デモ版の Web アプリケーションで使用する主キーを取得する。
 * デモ マップ アプリケーションをダウンロードして開く。
+
+このクイックスタートでは Azure Maps Web SDK を使用しますが、Azure Maps サービスは任意のマップ コントロールで使用できます。 Azure Maps チームによって対応するプラグインが作成されている、いくつかのよく知られているオープン ソースのマップ コントロールは[こちら](open-source-projects.md#third-part-map-control-plugins)に記載されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,7 +62,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 3. **[主キー]** をクリップボードにコピーします。 このチュートリアルで後ほど使用するためにローカルに保存します。
 
 >[!NOTE]
-> 主キーの代わりにサブスクリプション キーを使用する場合、マップは正しく表示されません。 また、セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)」を参照してください。
+> 主キーの代わりにサブスクリプション キーを使用する場合、マップは正しく表示されません。 また、セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](../key-vault/secrets/tutorial-rotation-dual.md)」を参照してください。
 
 :::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Azure portal で主キー Azure Maps キーを取得する":::
 
@@ -68,7 +70,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
 1. [interactiveSearch .html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) にアクセスします。 ファイルの内容をコピーします。
 2. このファイルの内容を **AzureMapDemo.html** としてローカルに保存します。 それをテキスト エディターで開きます。
-3. `<Your Azure Maps Key>` という文字列を検索します。 これを前のセクションで取得した**主キー**の値に置き換えます。
+3. `<Your Azure Maps Key>` という文字列を検索します。 これを前のセクションで取得した **主キー** の値に置き換えます。
 
 ## <a name="open-the-demo-application"></a>デモ アプリケーションを開く
 
@@ -92,17 +94,15 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 2. Azure portal ページに移動します。 ポータルのメイン ページで、 **[すべてのリソース]** を選択します。 または、左上隅にあるメニュー アイコンをクリックします。 **[すべてのリソース]** を選択します。
 3. お使いの Azure Maps アカウントをクリックします。 ページの上部にある **[削除]** をクリックします。
 
+他のコード例や対話型のコーディング エクスペリエンスについては、以下のガイドを参照してください。
+
+[Azure Maps Search サービスを使用して住所を検索する](how-to-search-for-address.md)
+
+[Azure Maps のマップ コントロールを使用する](how-to-use-map-control.md)
+
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure Maps アカウントを作成し、デモ アプリケーションを作成しました。 Azure Maps の詳細については、以下のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure Maps を使用して近くの目的地を検索する](tutorial-search-location.md)
-
-他のコード例や対話型のコーディング エクスペリエンスについては、以下のガイドを参照してください。
-
-> [!div class="nextstepaction"]
-> [Azure Maps Search サービスを使用して住所を検索する](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps のマップ コントロールを使用する](how-to-use-map-control.md)

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0391102683ebafba63c429072c8afa9f24223955
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 66617afee11b02eae0ba5e36d9ff91cbdf21911f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009428"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023107"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>チュートリアル:サービス アラートを設定する
 
@@ -25,7 +25,7 @@ Azure Service Health を使用すると、Windows Virtual Desktop のサービ�
 > [!div class="checklist"]
 > * サービス アラートを作成および構成する。
 
-Azure Service Health の詳細については、[Azure Health のドキュメント](https://docs.microsoft.com/azure/service-health/)を参照してください。
+Azure Service Health の詳細については、[Azure Health のドキュメント](../service-health/index.yml)を参照してください。
 
 ## <a name="create-service-alerts"></a>サービス アラートを作成する
 
@@ -46,7 +46,7 @@ Azure Service Health の詳細については、[Azure Health のドキュメン
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[Service Health]** を選択します。
-3. 「[サービス通知のアクティビティ ログ アラートを作成する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal)」の手順に従ってアラートと通知を設定します。
+3. 「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications-portal.md?toc=%2fazure%2fservice-health%2ftoc.json)」の手順に従ってアラートと通知を設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

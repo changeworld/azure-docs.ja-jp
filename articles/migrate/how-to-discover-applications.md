@@ -1,14 +1,17 @@
 ---
-title: Azure Migrate を使用したオンプレミス サーバーでのアプリ、ロール、機能の検出
+title: Azure Migrate を使用したオンプレミス サーバーでのアプリの検出
 description: Azure Migrate Server Assessment を使用して、オンプレミス サーバー上のアプリ、ロール、および機能を検出する方法について説明します。
-ms.topic: article
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eb589c08122cd47747c005c13d12b336319fd558
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118649"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752007"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>マシンのアプリ、ロール、および機能を検出する
 
@@ -23,7 +26,7 @@ ms.locfileid: "86118649"
 ## <a name="before-you-start"></a>開始する前に
 
 - 次を完了したことを確認します。
-    - Azure Migrate プロジェクトの[作成](how-to-add-tool-first-time.md)。
+    - Azure Migrate プロジェクトの[作成](./create-manage-projects.md)。
     - プロジェクトへの Azure Migrate:Server Assessment ツーのル[追加](how-to-assess.md)。
 - [アプリ検出のサポートと要件](migrate-support-matrix-vmware.md#vmware-requirements)を確認します。
 - アプリ検出を実行する VM に PowerShell バージョン2.0 以降がインストールされていること、および VMware ツール (10.2.0 より後) がインストールされていることを確認します。
@@ -46,7 +49,7 @@ ms.locfileid: "86118649"
 
 ## <a name="verify-permissions"></a>アクセス許可の確認
 
-検出と評価のために [vCenter Server の読み取り専用アカウントを作成](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)しました。 読み取り専用アカウントには、アプリ検出用の VM と対話するために、 **[Virtual Machines]**  >  **[ゲスト操作]** に対して有効になっている特権が必要です。
+検出と評価のために [vCenter Server の読み取り専用アカウントを作成](./tutorial-discover-vmware.md#prepare-vmware)しました。 読み取り専用アカウントには、アプリ検出用の VM と対話するために、 **[Virtual Machines]**  >  **[ゲスト操作]** に対して有効になっている特権が必要です。
 
 ### <a name="add-the-user-account-to-the-appliance"></a>アプライアンスにユーザー アカウントを追加する
 

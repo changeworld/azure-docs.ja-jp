@@ -1,35 +1,32 @@
 ---
 title: カスタム Docker イメージを使用してモデルをデプロイする
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning モデルをデプロイするときにカスタム Docker ベース イメージを使用する方法について説明します。 Azure Machine Learning には既定のベース イメージが用意されていますが、独自のベース イメージを使用することもできます。
+description: カスタム Docker ベース イメージを使用して Azure Machine Learning モデルをデプロイする方法について説明します。 Azure Machine Learning には既定のベース イメージが用意されていますが、独自のベース イメージを使用することもできます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: jordane
-author: jpe316
+ms.author: sagopal
+author: saachigopal
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 76eed22052b8c9fe2cc849e68dd926ef2c85208a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: 1ff4d7693a7e493ccb736ab9363fd26c93017c79
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843217"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695352"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning を使用してトレーニング済みモデルをデプロイするときにカスタム Docker ベース イメージを使用する方法について説明します。
 
-トレーニング済みのモデルを Web サービスまたは IoT Edge デバイスにデプロイするとき、受信要求を処理する Web サーバーを含んだパッケージが作成されます。
+何も指定されていない場合、Azure Machine Learning では既定の基本 Docker イメージが使用されます。 使用されている特定の Docker イメージを見つけるには、`azureml.core.runconfig.DEFAULT_CPU_IMAGE` を使用します。 また、Azure Machine Learning __環境__ を使用して、特定のベース イメージを選択することも、独自に指定したものを使用することもできます。
 
-Azure Machine Learning には既定の Docker ベース イメージが用意されているので、自分で作成する必要はありません。 また、Azure Machine Learning __環境__ を使用して、特定のベース イメージを選択することも、独自に指定したものを使用することもできます。
+ベース イメージは、デプロイ用にイメージを作成するときの出発点として使用されます。 基となるオペレーティング システムとコンポーネントが用意されています。 そして、デプロイ プロセスによって、その他のコンポーネント (モデル、conda 環境、その他のアセットなど) がイメージに追加されます。
 
-ベース イメージは、デプロイ用にイメージを作成するときの出発点として使用されます。 基となるオペレーティング システムとコンポーネントが用意されています。 デプロイ プロセスでは、デプロイ前に、モデル、conda 環境、その他のアセットなどのコンポーネントがイメージに追加されます。
-
-通常、カスタム ベース イメージは、Docker を使用して依存関係を管理したい場合や、コンポーネントのバージョンをより厳密に制御したい場合、デプロイの時間を節約したい場合などに作成します。 たとえば、特定のバージョンの Python、Conda、またはその他のコンポーネントに基づいて標準化する場合があります。 モデルに必要なソフトウェアをインストールする場合もあります。この場合、インストール プロセスには長い時間がかかります。 基本イメージを作成するときにソフトウェアをインストールするということは、デプロイごとにインストールする必要がないことを意味します。
+通常、カスタムの基本イメージは、Docker を使用して依存関係を管理したい場合、コンポーネントのバージョンをより厳密に制御したい場合、またはデプロイ時に時間を節約したい場合に作成します。 モデルに必要なソフトウェアをインストールする場合もあります。この場合、インストール プロセスには長い時間がかかります。 基本イメージを作成するときにソフトウェアをインストールするということは、デプロイごとにインストールする必要がないことを意味します。
 
 > [!IMPORTANT]
 > モデルをデプロイするときに、Web サーバーや IoT Edge コンポーネントなどのコア コンポーネントをオーバーライドすることはできません。 これらのコンポーネントは、Microsoft によってテストおよびサポートされている既知の作業環境を提供します。
@@ -44,11 +41,11 @@ Azure Machine Learning には既定の Docker ベース イメージが用意さ
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークグループ。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
-* インターネット上でアクセスできる [Azure Container Registry](/azure/container-registry) またはその他の Docker レジストリ。
+* インターネット上でアクセスできる [Azure Container Registry](../container-registry/index.yml) またはその他の Docker レジストリ。
 * このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイする場所と方法](how-to-deploy-and-where.md)に関する記事を参照してください。
 
 ## <a name="create-a-custom-base-image"></a>カスタム ベース イメージを作成する
@@ -62,23 +59,41 @@ Azure Machine Learning には既定の Docker ベース イメージが用意さ
     > [!WARNING]
     > ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
 
-    ワークスペースの Azure Container Registry の名前を取得する方法については、この記事の [コンテナー レジストリ名の取得](#getname)のセクションを参照してください。
-
     __スタンドアロン コンテナー レジストリ__ に格納されているイメージを使用する場合は、少なくとも読み取りアクセス権を持つサービス プリンシパルを構成する必要があります。 次に、レジストリのイメージを使用するユーザーにサービス プリンシパル ID (ユーザー名) とパスワードを提供します。 例外は、コンテナー レジストリを一般にアクセス可能にする場合です。
 
-    プライベート Azure Container Registry の作成については、[プライベート コンテナー レジストリの作成](/azure/container-registry/container-registry-get-started-azure-cli)に関するページを参照してください。
+    プライベート Azure Container Registry の作成については、[プライベート コンテナー レジストリの作成](../container-registry/container-registry-get-started-azure-cli.md)に関するページを参照してください。
 
-    Azure Container Registry でサービス プリンシパルを使用する方法については、「[サービス プリンシパルによる Azure Container Registry 認証](/azure/container-registry/container-registry-auth-service-principal)」を参照してください。
+    Azure Container Registry でサービス プリンシパルを使用する方法については、「[サービス プリンシパルによる Azure Container Registry 認証](../container-registry/container-registry-auth-service-principal.md)」を参照してください。
 
 * Azure Container Registry とイメージの情報:使用する必要があるユーザーに、イメージ名を提供します。 たとえば、`myregistry` という名前のレジストリに格納されている `myimage` という名前のイメージは、モデルのデプロイでそのイメージを使用するときに `myregistry.azurecr.io/myimage` として参照されます。
 
-* イメージの要件:Azure Machine Learning では、次のソフトウェアを提供する Docker イメージのみがサポートされています。
+### <a name="image-requirements"></a>イメージの要件
 
-    * Ubuntu 16.04 以上
-    * Conda 4.5.# 以上
-    * Python 3.5.#、3.6.#、または 3.7.#
+Azure Machine Learning では、次のソフトウェアを提供する Docker イメージのみがサポートされています。
+* Ubuntu 16.04 以上
+* Conda 4.5.# 以上
+* Python 3.5 以降
 
+データセットを使用するには、libfuse-dev パッケージをインストールしてください。 また、必要になる可能性のあるユーザー スペース パッケージも必ずインストールしてください。
+
+Azure ML は、Microsoft Container Registry に公開された一連の CPU および GPU の基本イメージを保持しています。それらは、独自のカスタムイメージを作成する代わりに、必要に応じて利用 (または参照) することができます。 それらのイメージの Dockerfile を表示するには、[Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers) GitHub リポジトリを参照してください。
+
+GPU イメージについては、Azure ML は現在、cuda9 と cuda10 の両方の基本イメージを提供しています。 これらの基本イメージにインストールされている主な依存関係は次のとおりです。
+
+| 依存関係 | IntelMPI CPU | OpenMPI CPU | IntelMPI GPU | OpenMPI GPU |
+| --- | --- | --- | --- | --- |
+| miniconda | ==4.5.11 | ==4.5.11 | ==4.5.11 | ==4.5.11 |
+| mpi | intelmpi==2018.3.222 |openmpi==3.1.2 |intelmpi==2018.3.222| openmpi==3.1.2 |
+| cuda | - | - | 9.0/10.0 | 9.0/10.0/10.1 |
+| cudnn | - | - | 7.4/7.5 | 7.4/7.5 |
+| nccl | - | - | 2.4 | 2.4 |
+| git | 2.7.4 | 2.7.4 | 2.7.4 | 2.7.4 |
+
+CPU イメージは、ubuntu16.04 から構築されています。 cuda9 の GPU イメージは、nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04 から構築されています。 cuda10 の GPU イメージは、nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04 から構築されています。
 <a id="getname"></a>
+
+> [!IMPORTANT]
+> カスタムの Docker イメージを使用する場合は、再現性を高めるためにパッケージのバージョンを固定することをお勧めします。
 
 ### <a name="get-container-registry-information"></a>コンテナー レジストリ情報を取得する
 
@@ -117,33 +132,43 @@ Azure Machine Learning を使用してモデルのトレーニングまたはデ
 
 ### <a name="build-a-custom-base-image"></a>カスタム ベース イメージを作成する
 
-このセクションの手順では、Azure Container Registry にカスタム Docker イメージを作成する方法について説明します。
+このセクションの手順では、Azure Container Registry にカスタム Docker イメージを作成する方法について説明します。 サンプル Dockerfile については、[Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers) GitHub リポジトリを参照してください。
 
 1. `Dockerfile` という名前の新しいテキスト ファイルを作成し、内容として次のテキストを使用します。
 
     ```text
     FROM ubuntu:16.04
 
-    ARG CONDA_VERSION=4.5.12
-    ARG PYTHON_VERSION=3.6
+    ARG CONDA_VERSION=4.7.12
+    ARG PYTHON_VERSION=3.7
+    ARG AZUREML_SDK_VERSION=1.13.0
+    ARG INFERENCE_SCHEMA_VERSION=1.1.0
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
+    ENV DEBIAN_FRONTEND=noninteractive
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
-        apt-get clean && \
+        apt-get install -y fuse && \
+        apt-get clean -y && \
         rm -rf /var/lib/apt/lists/*
 
+    RUN useradd --create-home dockeruser
+    WORKDIR /home/dockeruser
+    USER dockeruser
+
     RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
-        /bin/bash ~/miniconda.sh -b -p /opt/miniconda && \
+        /bin/bash ~/miniconda.sh -b -p ~/miniconda && \
         rm ~/miniconda.sh && \
-        /opt/miniconda/bin/conda clean -tipsy
+        ~/miniconda/bin/conda clean -tipsy
+    ENV PATH="/home/dockeruser/miniconda/bin/:${PATH}"
 
     RUN conda install -y conda=${CONDA_VERSION} python=${PYTHON_VERSION} && \
+        pip install azureml-defaults==${AZUREML_SDK_VERSION} inference-schema==${INFERENCE_SCHEMA_VERSION} &&\
         conda clean -aqy && \
-        rm -rf /opt/miniconda/pkgs && \
-        find / -type d -name __pycache__ -prune -exec rm -rf {} \;
+        rm -rf ~/miniconda/pkgs && \
+        find ~/miniconda/ -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
 2. シェルまたはコマンド プロンプトから、次のコマンドを使用して Azure Container Registry の認証を受けます。 `<registry_name>` を、イメージを格納するコンテナー レジストリの名前に置き換えます。
@@ -167,15 +192,15 @@ Azure Machine Learning を使用してモデルのトレーニングまたはデ
     Run ID: cda was successful after 2m56s
     ```
 
-Azure Container Registry を使用してイメージをビルドする方法の詳細については、「[Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)」を参照してください。
+Azure Container Registry を使用してイメージをビルドする方法の詳細については、「[Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行](../container-registry/container-registry-quickstart-task-cli.md)」を参照してください。
 
-Azure Container Registry に既存のイメージをアップロードする詳細については、[プライベート Docker コンテナー レジストリに最初のイメージをプッシュする](/azure/container-registry/container-registry-get-started-docker-cli)方法に関するページを参照してください。
+Azure Container Registry に既存のイメージをアップロードする詳細については、[プライベート Docker コンテナー レジストリに最初のイメージをプッシュする](../container-registry/container-registry-get-started-docker-cli.md)方法に関するページを参照してください。
 
 ## <a name="use-a-custom-base-image"></a>カスタム ベース イメージを使用する
 
 カスタム イメージを使用するには、次の情報が必要です。
 
-* __イメージ名__。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` は Microsoft が提供する基本的な Docker イメージへのパスです。
+* __イメージ名__。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` は Microsoft が提供する単純な Docker イメージへのパスです。
 
     > [!IMPORTANT]
     > 作成したカスタム イメージに対しては、必ず、イメージに使用したタグを含めてください。 たとえば、`:v1`などの特定のタグを使ってイメージを作成した場合などです。 イメージの作成時に特定のタグを使用しなかった場合は、`:latest` のタグが適用済みになっています。
@@ -193,11 +218,11 @@ Microsoft は、一般公開されているリポジトリにいくつかの doc
 
 | Image | 説明 |
 | ----- | ----- |
-| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning の基本イメージ |
+| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning のコア イメージ |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU 推論用の ONNX Runtime が含まれています |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | GPU 用の ONNX Runtime と CUDA が含まれています |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | GPU 用の ONNX Runtime と TensorRT が含まれています |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Movidius<sup>TM</sup> MyriadX VPU に基づく Intel<sup></sup> Vision Accelerator Design 用の ONNX Runtime と OpenVINO が含まれています |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm` | Movidius<sup>TM</sup> MyriadX VPU に基づく Intel<sup></sup> Vision Accelerator Design 用の ONNX Runtime と OpenVINO が含まれています |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Intel<sup></sup> Movidius<sup>TM</sup> USB スティック用の ONNX Runtime と OpenVINO が含まれています |
 
 ONNX Runtime の基本イメージの詳細については、GitHub リポジトリの [ONNX Runtime dockerfile のセクション](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md)を参照してください。
@@ -209,7 +234,7 @@ ONNX Runtime の基本イメージの詳細については、GitHub リポジト
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK でイメージを使用する
 
-**ご自分のワークスペースの Azure Container Registry**、または**パブリックにアクセスできるコンテナー レジストリ**に格納されたイメージを使用するには、次の[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)属性を設定します。
+**ご自分のワークスペースの Azure Container Registry**、または **パブリックにアクセスできるコンテナー レジストリ** に格納されたイメージを使用するには、次の [環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)属性を設定します。
 
 + `docker.enabled=True`
 + `docker.base_image`:レジストリとイメージへのパスを設定します。
@@ -243,7 +268,7 @@ myenv.python.conda_dependencies=conda_dep
 
 バージョン 1.0.45 以上の azureml-defaults を pip 依存関係として追加する必要があります。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 また、環境の inferencing_stack_version プロパティを "latest" に設定する必要があります。これにより、Web サービスに必要な特定の apt パッケージがインストールされます。 
 
-環境を定義したら、それを [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) オブジェクトと共に使用して、モデルと Web サービスを実行する推論環境を定義します。
+環境を定義したら、それを [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) オブジェクトと共に使用して、モデルと Web サービスを実行する推論環境を定義します。
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -272,7 +297,7 @@ Python 環境のカスタマイズの詳細については、[トレーニング
 > [!IMPORTANT]
 > 現在、Machine Learning CLI では、Azure Container Registry のイメージを、ご自分のワークスペースまたは一般公開されているリポジトリに使用できます。 スタンドアロンのプライベート レジストリからのイメージは使用できません。
 
-Machine Learning CLI を使用してモデルをデプロイする前に、カスタム イメージを使用する[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)を作成します。 次に、環境を参照する推論構成ファイルを作成します。 推論構成ファイルで直接環境を定義することもできます。 次の JSON ドキュメントは、パブリック コンテナー レジストリ内のイメージを参照する方法を示しています。 この例では、環境をインラインで定義しています。
+Machine Learning CLI を使用してモデルをデプロイする前に、カスタム イメージを使用する[環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)を作成します。 次に、環境を参照する推論構成ファイルを作成します。 推論構成ファイルで直接環境を定義することもできます。 次の JSON ドキュメントは、パブリック コンテナー レジストリ内のイメージを参照する方法を示しています。 この例では、環境をインラインで定義しています。
 
 ```json
 {
@@ -329,4 +354,4 @@ ML CLI を使用したモデルのデプロイの詳細については、[Azure 
 ## <a name="next-steps"></a>次のステップ
 
 * [デプロイ先とその方法](how-to-deploy-and-where.md)の詳細を学習します。
-* [Azure Pipelines を使用して機械学習モデルをトレーニングおよびデプロイする](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)方法を学習します。
+* [Azure Pipelines を使用して機械学習モデルをトレーニングおよびデプロイする](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops&preserve-view=true)方法を学習します。

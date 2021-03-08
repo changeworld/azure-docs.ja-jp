@@ -1,19 +1,16 @@
 ---
 title: Apache Maven を使用した Azure HDInsight 用 Java HBase クライアントの構築
 description: Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight での HBase にデプロイする方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323776"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942961"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -25,13 +22,13 @@ Java で [Apache HBase](https://hbase.apache.org/) アプリケーションを�
 
 * HDInsight 内の Apache HBase クラスター 「[Apache HBase の使用](./apache-hbase-tutorial-get-started-linux.md)」を参照してください。
 
-* [Java Developer キット](https://aka.ms/azure-jdks) (JDK) バージョン 8
+* [Java Developer キット](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](/powershell/azure/)が必要になります。
 
 * テキスト エディター。 この記事では、Microsoft Notepad を使用します。
 
@@ -442,7 +439,7 @@ public class DeleteTable {
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>JAR をアップロードしてジョブを実行する (PowerShell)
 
-次の手順では、Azure PowerShell [AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)を使用して、JAR を Apache HBase クラスターの既定のストレージにアップロードします。 その後、HDInsight コマンドレットを使用して、例をリモートで実行します。
+次の手順では、Azure PowerShell [AZ モジュール](/powershell/azure/new-azureps-module-az)を使用して、JAR を Apache HBase クラスターの既定のストレージにアップロードします。 その後、HDInsight コマンドレットを使用して、例をリモートで実行します。
 
 1. AZ モジュール をインストールし、構成した後で、`hbase-runner.psm1` という名前のファイルを作成します。 このファイルの内容として、次のテキストを使用します。
 

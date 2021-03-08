@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 662a0f53a5d5e8e02ef3b29640009fd07bf4f1d0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116208"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652146"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -40,10 +40,10 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 このサンプルでは、Azure AD を使用してセキュリティ保護されているシングルページ アプリケーションの作成方法を示します。
 
- プラットフォーム | 独自 API の呼び出し | 別の Web API の呼び出し
- -------- |  --------------------- | ------------------ 
-![JavaScript のロゴを示す画像](media/sample-v2-code/logo-js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
-![Angular JS のロゴを示す画像](media/sample-v2-code/logo-angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
+| プラットフォーム | 独自 API の呼び出し | 別の Web API の呼び出し |
+|--|--|--|
+| ![JavaScript のロゴを示す画像](media/sample-v2-code/logo-js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+| ![Angular JS のロゴを示す画像](media/sample-v2-code/logo-angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi) |
 
 ## <a name="web-applications"></a>Web アプリケーション
 
@@ -51,21 +51,21 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 次のサンプルでは、ユーザーがサインインする Web アプリケーションを示しています。 これらのアプリケーションの中には、サインインしたユーザーの名前で Microsoft Graph または独自の Web API も呼び出すものがあります。
 
- プラットフォーム | ユーザーのサインインのみ | Microsoft Graph の呼び出し | 別の ASP.NET または ASP.NET Core 2.0 Web API の呼び出し
- -------- | ------------------- | --------------------- | -------------------------
-![ASP.NET のロゴを示す画像](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![ASP.NET のロゴを示す画像](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
-![Python のロゴを示す画像](media/sample-v2-code/logo-python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
-![Java のロゴを示す画像](media/sample-v2-code/logo-java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
-![PHP のロゴを示す画像](media/sample-v2-code/logo-php.png) | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
+| プラットフォーム | ユーザーのサインインのみ | Microsoft Graph の呼び出し | 別の ASP.NET または ASP.NET Core 2.0 Web API の呼び出し |
+|--|--|--|--|
+| ![ASP.NET Core のロゴを示す画像](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore) |
+| ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
+| ![Python のロゴを示す画像](media/sample-v2-code/logo-python.png) |  | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |
+| ![Java のロゴを示す画像](media/sample-v2-code/logo-java.png) |  | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect) |
+| ![PHP のロゴを示す画像](media/sample-v2-code/logo-php.png) |  | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>ロールベースのアクセス制御 (承認) を示す Web アプリケーション
 
-次のサンプルは、ロールベースのアクセス制御 (RBAC) を実装する方法を示しています。 RBAC は、Web アプリケーションの特定の機能のアクセス許可を特定のユーザーに制限するために使用されます。 **Azure AD グループ**に属しているか、特定のアプリケーション **ロール**が割り当てられているかに応じて、ユーザーには権限が与えられます。
+次のサンプルは、ロールベースのアクセス制御 (RBAC) を実装する方法を示しています。 RBAC は、Web アプリケーションの特定の機能のアクセス許可を特定のユーザーに制限するために使用されます。 **Azure AD グループ** に属しているか、特定のアプリケーション **ロール** が割り当てられているかに応じて、ユーザーには権限が与えられます。
 
-プラットフォーム | サンプル |
- -------- | ------------------- |
-![ASP.NET のロゴを示す画像](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD の**ロール**を承認に使用する .NET 4.5 MVC Web アプリ
+| プラットフォーム | サンプル |
+|--|--|
+| ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD の **ロール** を承認に使用する .NET 4.5 MVC Web アプリ |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph または Web API を呼び出すデスクトップおよびモバイルのパブリック クライアント アプリケーション
 
@@ -92,9 +92,9 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 クライアント アプリケーション | プラットフォーム | フロー/許可 | ASP.NET または ASP.NET Core 2.0 Web API の呼び出し
 ------------------ | -------- | ---------- | -------------------- 
-デーモン アプリ (コンソール)          | ![.NET のロゴを示す画像](media/sample-v2-code/logo-netframework.png) | アプリ シークレットまたは証明書によるクライアント資格情報 | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
-デーモン アプリ (コンソール)         | ![.NET のロゴを示す画像](media/sample-v2-code/logo-netcore.png) | 証明書によるクライアント資格情報| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
-ASP.NET Web アプリ  | ![.NET のロゴを示す画像](media/sample-v2-code/logo-netframework.png) | クライアントの資格情報 | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
+デーモン アプリ (コンソール)          | ![この画像は .NET Framework ロゴを示しています](media/sample-v2-code/logo-netframework.png) | アプリ シークレットまたは証明書によるクライアント資格情報 | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
+デーモン アプリ (コンソール)         | ![.NET Core のロゴを示す画像](media/sample-v2-code/logo-netcore.png) | 証明書によるクライアント資格情報| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
+ASP.NET Web アプリ  | ![この画像は .NET Framework ロゴを示しています](media/sample-v2-code/logo-netframework.png) | クライアントの資格情報 | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
 ## <a name="web-apis"></a>Web API
 
@@ -102,7 +102,7 @@ ASP.NET Web アプリ  | ![.NET のロゴを示す画像](media/sample-v2-code/l
 
 次のサンプルは、Azure AD で node.js Web API を保護する方法を示しています。
 
-この記事の前述のセクションには、クライアント アプリケーションから ASP.NET または ASP.NET Core **Web API** を**呼び出す**方法を示す他のサンプルも掲載されています。 これらのサンプルについては、このセクションでは触れませんが、前述または以下の表の最後の列に記載されています。
+この記事の前述のセクションには、クライアント アプリケーションから ASP.NET または ASP.NET Core **Web API** を **呼び出す** 方法を示す他のサンプルも掲載されています。 これらのサンプルについては、このセクションでは触れませんが、前述または以下の表の最後の列に記載されています。
 
 | プラットフォーム | サンプル |
 |--------|-------------------|
@@ -114,7 +114,7 @@ ASP.NET Web アプリ  | ![.NET のロゴを示す画像](media/sample-v2-code/l
 
 | プラットフォーム |  Microsoft Graph の呼び出し | 別の ASP.NET または ASP.NET Core 2.0 Web API の呼び出し |
 | -------- |  --------------------- | ------------------------- |
-| ![ASP.NET のロゴを示す画像](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
+| ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
 
 ## <a name="other-microsoft-graph-samples"></a>Microsoft Graph のその他のサンプル
 

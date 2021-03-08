@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 02/10/2021
 ms.author: genli
-ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75862562"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369341"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング: サイト間 VPN 接続が断続的に切断される
 
@@ -48,7 +48,7 @@ Azure 仮想ネットワーク ゲートウェイの種類を確認します。
 
 ### <a name="step-4-check-the-one-vpn-tunnel-per-subnet-pair-setting-for-policy-based-virtual-network-gateways"></a>手順 4 [one VPN Tunnel per Subnet Pair]\(サブネット ペアごとに 1 つの VPN トンネル\) の設定を確認する (ポリシー ベースの仮想ネットワーク ゲートウェイの場合)
 
-ポリシー ベースの仮想ネットワーク ゲートウェイの場合、オンプレミス VPN デバイスが、**サブネット ペアごとに 1 つの VPN トンネル**を割り当てる設定になっていることを確認します。
+ポリシー ベースの仮想ネットワーク ゲートウェイの場合、オンプレミス VPN デバイスが、**サブネット ペアごとに 1 つの VPN トンネル** を割り当てる設定になっていることを確認します。
 
 ### <a name="step-5-check-for-security-association-limitation-for-policy-based-virtual-network-gateways"></a>手順 5 セキュリティ アソシエーションの制限を確認する (ポリシー ベースの仮想ネットワーク ゲートウェイの場合)
 
@@ -66,6 +66,5 @@ Azure 仮想ネットワーク ゲートウェイの種類を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [仮想ネットワークへのサイト間接続を構成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [仮想ネットワークへのサイト間接続を構成する](./tutorial-site-to-site-portal.md)
 - [サイト間 VPN 接続の IPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)
-

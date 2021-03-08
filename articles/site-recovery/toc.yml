@@ -48,6 +48,22 @@
           href: tutorial-dr-drill-azure.md
         - name: Azure にフェールオーバーする
           href: vmware-azure-tutorial-failover-failback.md
+    - name: Azure への Azure VMware Solution ディザスター リカバリー
+      items:
+        - name: Azure を準備する
+          href: avs-tutorial-prepare-azure.md
+        - name: Azure VMware Solution を準備する
+          href: avs-tutorial-prepare-avs.md
+        - name: レプリケーションを設定する
+          href: avs-tutorial-replication.md
+        - name: ディザスター リカバリー訓練を実行する
+          href: avs-tutorial-dr-drill-azure.md
+        - name: Azure にフェールオーバーする
+          href: avs-tutorial-failover.md
+        - name: VM の再保護
+          href: avs-tutorial-reprotect.md
+        - name: Azure からのフェールバック
+          href: avs-tutorial-failback.md
     - name: Azure への Hyper-V VM のディザスター リカバリー
       items:
         - name: Azure を準備する
@@ -160,6 +176,10 @@
           href: hyper-v-vmm-secondary-support-matrix.md
         - name: Hyper-V VM からセカンダリ サイトへのアーキテクチャ
           href: hyper-v-vmm-architecture.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: ハウツー ガイド
   items:
     - name: Azure 間のディザスター リカバリー
@@ -196,7 +216,7 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Azure への移行後に Azure VM のディザスター リカバリーをセットアップする
               href: azure-to-azure-replicate-after-migration.md
-            - name: ゾーン間ディザスター リカバリーを有効にする
+            - name: ゾーンからゾーンへのディザスター リカバリー
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: 管理する
           items:
@@ -458,6 +478,8 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Automation Runbook を復旧計画に追加する
       href: site-recovery-runbook-automation.md
+    - name: ARM テンプレート
+      href: asr-arm-templates.md
 - name: 監視
   items:
     - name: 監視についてよく寄せられる質問
@@ -466,6 +488,8 @@
       href: site-recovery-monitor-and-troubleshoot.md
     - name: Azure Monitor ログを使用した Site Recovery の監視
       href: monitor-log-analytics.md
+    - name: Virtual Machines でのチャーン パターンの監視
+      href: monitoring-high-churn.md
     - name: プロセス サーバーの監視
       href: vmware-physical-azure-monitor-process-server.md
 - name: トラブルシューティング

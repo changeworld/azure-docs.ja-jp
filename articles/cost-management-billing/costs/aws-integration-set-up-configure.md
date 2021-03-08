@@ -3,17 +3,17 @@ title: Azure Cost Management と AWS の統合セットアップをする
 description: この記事では、Azure Cost Management で AWS のコストと使用状況レポートの統合を設定して構成する方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/23/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2b8a008decc41a5686fb2c8d9fee271f95f0fef3
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266100"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122413"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
@@ -39,14 +39,12 @@ AWS の Billing and Cost Management コンソールの **[Cost & Usage Reports]\
 6. **[Data refresh settings]\(データ更新設定\)** では、お客様の請求確定後に AWS が返金、クレジット、またはサポート料金をお客様のアカウントに適用した場合に、AWS のコストと使用状況レポートを更新するかどうかを選択します。 レポートが更新されると、新しいレポートが Amazon S3 にアップロードされます。 この設定は選択されたままにしておくことをお勧めします。
 7. **[次へ]** を選択します。
 8. **[S3 bucket]\(S3 バケット\)** には、 **[構成]** を選択します。
-9. [Configure S3 Bucket] ダイアログ ボックスで、次のいずれかの操作を実行します。
-    1. ドロップダウン リストから既存のバケットを選択して **[次へ]** を選択します。
-    2. バケット名と、新しいバケットを作成するリージョンを入力して **[次へ]** を選択します。
-10.    **[I have confirmed that this policy is correct]** を選択してから、 **[Save]** をクリックします。
-11.    (省略可能) [Report path prefix]\(レポート パス プレフィックス\) では、レポートの名前の先頭に追加するレポート パス プレフィックスを入力します。
+9. [Configure S3 Bucket]\(S3 バケットの構成\) ダイアログ ボックスで、バケット名と新しいバケットを作成するリージョンとを入力して **[次へ]** を選択します。
+10. **[I have confirmed that this policy is correct]** を選択してから、 **[Save]** をクリックします。
+11. (省略可能) [Report path prefix]\(レポート パス プレフィックス\) では、レポートの名前の先頭に追加するレポート パス プレフィックスを入力します。
 プレフィックスを指定しない場合、既定のプレフィックスはレポートに指定した名前になります。 日付範囲は `/report-name/date-range/` の形式です。
 12. **[時間単位]** では、 **[毎時間]** を選択します。
-13.    **[Report versioning]** では、レポートの各バージョンで前のバージョンを上書きするか、新しいレポートを追加するかを選択します。
+13. **[Report versioning]** では、レポートの各バージョンで前のバージョンを上書きするか、新しいレポートを追加するかを選択します。
 14. **[Enable data integration for]\(データ統合の有効化対象\)** は、選択の必要はありません。
 15. **[圧縮]** では、 **[GZIP]** を選択します。
 16. **[次へ]** を選択します。
@@ -152,7 +150,8 @@ AWS 組織へのアクセス許可を追加します。
 AWS コネクタを作成し、AWS コストの監視を開始するには、次の情報を使用します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. **[コストの管理と請求]**  >  **[コスト管理]** の順に移動します。
+2. 左側のメニュー ("ハンバーガー" のような 3 本線のメニュー アイコン) にある **[ホーム]** をクリックして Azure ホームに移動します。
+3. ページ下部の **[ツール]**  >  **[コスト管理]** に移動します。
 3. **[設定]** の **[AWS のコネクタ]** を選択します。  
 4. ページの上部にある **[+ 追加]** を選択し、コネクタを作成します。  
     :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="[AWS のコネクタ] 設定を示す例" :::
@@ -178,7 +177,7 @@ AWS コネクタを作成し、AWS コストの監視を開始するには、次
 - **[クラウド コネクタ]** ページで、コネクタを選択し、 **[請求先アカウントに移動する]** を選択して、管理グループにリンクされたアカウントを割り当てます。
 
 > [!NOTE]
-> 管理グループは、Microsoft 顧客契約 (MCA) のお客様に対して現在サポートされていません。 MCA のお客様は、コネクタを作成し、自分の AWS データを表示できます。 ただし、MCA のお客様は、管理グループの下に Azure のコストと AWS コストをまとめて表示することはできません。
+> 管理グループは、Microsoft 顧客契約 (MCA) のお客様に対して現在サポートされていません。 MCA のお客様は、コネクタを作成し、ご自身の AWS データを表示できます。 ただし、MCA のお客様は、管理グループの下に Azure のコストと AWS コストをまとめて表示することはできません。
 
 ## <a name="manage-aws-connectors"></a>AWS コネクタを管理する
 

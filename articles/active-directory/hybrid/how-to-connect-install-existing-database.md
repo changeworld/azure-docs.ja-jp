@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265393"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>既存の ADSync データベースを使用して Azure AD Connect をインストールする
 Azure AD Connect には、データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 以前は、Azure AD Connect をインストールしたときに、ADSync という新しいデータベースが常に作成されました。 Azure AD Connect バージョン 1.1.613.0 (以降) では、既存の ADSync データベースを指定して、Azure AD Connect をインストールするオプションがあります。
@@ -58,7 +58,7 @@ Azure AD Connect には、データを格納する SQL Server データベース
 ## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>"既存のデータベースを使用する" モードで Azure AD Connect をインストールする手順
 1.  Azure AD Connect インストーラー (AzureADConnect.MSI) を Windows サーバーにダウンロードします。 Azure AD Connect インストーラーをダブルクリックして、Azure AD Connect のインストールを開始します。
 2.  MSI のインストールが完了すると、Azure AD Connect ウィザードが簡易モードの設定で開始されます。 [終了] アイコンをクラスター リソースして画面を閉じます。
-![ようこそ](./media/how-to-connect-install-existing-database/db1.png)
+![左側のメニューの [Express 設定] が強調表示された [Azure AD Connect へようこそ] ページを示すスクリーンショット。](./media/how-to-connect-install-existing-database/db1.png)
 3.  新しいコマンド プロンプトまたは PowerShell セッションを開始します。 "C:\Program Files\Microsoft Azure Active Directory Connect" フォルダーに移動します。 コマンド .\AzureADConnect.exe /useexistingdatabase を実行して、"既存のデータベースを使用する" 設定モードで Azure AD Connect ウィザードを開始します。
 
 > [!NOTE]
@@ -66,9 +66,9 @@ Azure AD Connect には、データを格納する SQL Server データベース
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. [Azure AD Connect へようこそ] 画面が表示されます。 ライセンス条項とプライバシーに関する声明に同意したら、 **[続行]** をクリックします。
-   ![ようこそ](./media/how-to-connect-install-existing-database/db3.png)
+   ![[Azure AD Connect へようこそ] ページを示すスクリーンショット](./media/how-to-connect-install-existing-database/db3.png)
 1. **[必須コンポーネントのインストール]** 画面で **[既存の SQL Server を使用する]** オプションをオンにします。 ADSync データベースをホストしている SQL サーバーの名前を指定します。 ADSync データベースのホストに使用されている SQL エンジン インスタンスが SQL サーバーで既定のインスタンスではない場合、SQL エンジン インスタンス名を指定する必要があります。 さらに、SQL の参照が有効ではない場合、SQL エンジン インスタンスのポート番号も指定する必要があります。 次に例を示します。         
-   ![ようこそ](./media/how-to-connect-install-existing-database/db4.png)           
+   ![[必須コンポーネントのインストール] ページを示すスクリーンショット。](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. **[Azure AD に接続]** 画面で、Azure AD ディレクトリのグローバル管理者の資格情報を指定する必要があります。 既定の onmicrosoft.com ドメインでアカウントを使用することをお勧めします。 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
    ![のインスタンスに接続するときには、](./media/how-to-connect-install-existing-database/db5.png)
@@ -77,10 +77,10 @@ Azure AD Connect には、データを格納する SQL Server データベース
    ![Directories](./media/how-to-connect-install-existing-database/db6.png)
  
 1. ポップアップ ダイアログで、(i) エンタープライズ管理者の資格情報を指定して Azure AD Connect に AD DS アカウントの作成を任せるか、(ii) AD DS アカウントを自分で作成してその資格情報を Azure AD Connect に提供することができます。 オプションを選択し、必要な資格情報を指定したら、 **[OK]** をクリックしてポップアップ ダイアログを閉じます。
-   ![ようこそ](./media/how-to-connect-install-existing-database/db7.png)
+   ![[新しい AD アカウントを作成] が選択されている [AD フォレスト アカウント] ポップアップ ダイアログのスクリーンショット。](./media/how-to-connect-install-existing-database/db7.png)
  
 1. 資格情報を入力すると、赤色の×アイコンは緑色のチェック アイコンで置き換えられます。 **[次へ]** をクリックします。
-   ![ようこそ](./media/how-to-connect-install-existing-database/db8.png)
+   ![[ディレクトリの接続] ページを示すスクリーンショット。](./media/how-to-connect-install-existing-database/db8.png)
  
 1. **[構成の準備完了]** 画面で、 **[インストール]** をクリックします。
    ![ようこそ](./media/how-to-connect-install-existing-database/db9.png)

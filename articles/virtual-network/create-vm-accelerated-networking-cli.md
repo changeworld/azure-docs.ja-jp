@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688622"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919954"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI で、高速ネットワークを使用する Linux 仮想マシンを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "84688622"
 
 ![比較](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-高速ネットワークを使用しない場合は、VM に出入りするすべてのネットワーク トラフィックがホストと仮想スイッチをスキャンする必要があります。 仮想スイッチでは、ネットワーク セキュリティ グループ、アクセス制御リスト、分離、その他のネットワーク仮想化サービスなど、すべてのポリシーが適用されます。 仮想スイッチの詳細については、[Hyper-V ネットワーク仮想化と仮想スイッチ](https://technet.microsoft.com/library/jj945275.aspx)に関する記事を参照してください。
+高速ネットワークを使用しない場合は、VM に出入りするすべてのネットワーク トラフィックがホストと仮想スイッチをスキャンする必要があります。 仮想スイッチでは、ネットワーク セキュリティ グループ、アクセス制御リスト、分離、その他のネットワーク仮想化サービスなど、すべてのポリシーが適用されます。 仮想スイッチの詳細については、[Hyper-V ネットワーク仮想化と仮想スイッチ](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134230(v=ws.11))に関する記事を参照してください。
 
 高速ネットワークを使用した場合、ネットワーク トラフィックは、仮想マシンのネットワーク インターフェイス (NIC) に到達した後、VM に転送されます。 仮想スイッチによって適用されるすべてのネットワーク ポリシーはオフロードされ、ハードウェアで適用されるようになりました。 ハードウェアにポリシーを適用することによって、ホストに適用されるポリシーをすべて維持したまま、ホストや仮想スイッチをバイパスして、NIC からネットワーク トラフィックを直接 VM に転送できます。
 
@@ -48,19 +48,17 @@ Azure ギャラリーでは次のディストリビューションが既定で�
 * **RHEL 7.4 以降**
 * **CentOS 7.4 以降**
 * **CoreOS Linux**
-* **Debian "Stretch" (バックポート カーネルを含む)**
+* **Debian "Stretch" (バックポート カーネルを含む)、Debian "Buster" 以降**
 * **Oracle Linux 7.4 以降 (Red Hat Compatible Kernel (RHCK) を含む)**
 * **Oracle Linux 7.5 以降 (UEK バージョン 5 を含む)**
-* **FreeBSD 10.4、11.1、および 12.0**
+* **FreeBSD 10.4、11.1 および 12.0 以降**
 
 ## <a name="limitations-and-constraints"></a>制限と制約
 
 ### <a name="supported-vm-instances"></a>サポートされている VM インスタンス
-高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です。
+高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。 ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 
 
-ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされている系列は、D/Dsv3、D/Dsv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms and Ms/Mmsv2。
-
-VM インスタンスの詳細については、「[Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+高速ネットワークのサポートは、個々の[仮想マシンのサイズ](../virtual-machines/sizes.md)に関するドキュメントで確認できます。 
 
 ### <a name="custom-images"></a>カスタム イメージ
 カスタム イメージを使用し、イメージで高速ネットワークがサポートされている場合は、必要なドライバーが Azure 上の Mellanox ConnectX-3 および ConnectX-4 Lx NIC と連携して動作していることを確認してください。
@@ -173,7 +171,7 @@ az vm create \
     --nics myNic
 ```
 
-すべての VM のサイズと特性の一覧は、[Linux VM のサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
+すべての VM のサイズと特性の一覧は、[Linux VM のサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
 
 VM が作成されると、次のサンプル出力のような出力が返されます。 **publicIpAddress** を書き留めておきます。 このアドレスは、後の手順で VM にアクセスするために使われます。
 
@@ -229,8 +227,8 @@ vf_tx_dropped: 0
 VM の高速ネットワークが有効になりました。
 
 ## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>仮想関数の動的バインディングと失効を処理する 
-アプリケーションは、VM で公開されている合成 NIC 経由で実行する必要があります。 VF NIC 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されることはありません。
-アプリケーションを合成 NIC 経由で実行すると、該当のアプリケーションを宛先とする**すべての**パケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に引き続き実行されます。 合成 NIC にバインドされているアプリケーションは、**高速ネットワーク**を利用するすべてのアプリケーションにとって**必須**の要件です。
+アプリケーションは、VM で公開されている合成 NIC 経由で実行する必要があります。 VF NIC 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする **すべての** パケットが受信されることはありません。
+アプリケーションを合成 NIC 経由で実行すると、該当のアプリケーションを宛先とする **すべての** パケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に引き続き実行されます。 合成 NIC にバインドされているアプリケーションは、**高速ネットワーク** を利用するすべてのアプリケーションにとって **必須** の要件です。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>既存の VM 上で高速ネットワークを有効にする
 高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができます。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。
@@ -310,5 +308,4 @@ az vmss start \
 
 * VM を停止/割り当てを解除します。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM を停止/割り当てを解除します。
 * VM の NIC 上で、高速ネットワークを無効にする必要があります。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM において無効にします。
-* 高速ネットワークが無効になったら、高速ネットワークをサポートしていない新しいサイズに VM/可用性セット/VMSS を移動して、再起動します。  
-
+* 高速ネットワークが無効になったら、高速ネットワークをサポートしていない新しいサイズに VM/可用性セット/VMSS を移動して、再起動します。

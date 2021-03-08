@@ -1,22 +1,24 @@
 ---
-title: チュートリアル - terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
+title: terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
 description: Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングします。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079194"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533793"
 ---
-# <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>チュートリアル:Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
+# <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
 
-このチュートリアルでは、Terraform を使用して Azure Spring Cloud インスタンスを作成します。 一連の手順を通じて次のリソースを作成します。
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
+この例では、Terraform を使用して Azure Spring Cloud インスタンスを作成します。 一連の手順を通じて次のリソースを作成します。
 
 > [!div class="checklist"]
 > * リソース グループ
@@ -37,7 +39,7 @@ ms.locfileid: "88079194"
 
 1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
-1. [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell) を開きます。
+1. [Azure Cloud Shell](../app-service/quickstart-java.md#use-azure-cloud-shell) を開きます。
 
 1. Cloud Shell エディターを開始します。
 
@@ -94,7 +96,7 @@ ms.locfileid: "88079194"
     terraform apply plan.out
     ```
 
-1. Azure portal 内の結果を確認するには、新しいリソース グループを参照します。 新しいリソース グループに新しい **Azure Cosmos DB インスタンス**が表示されます。
+1. Azure portal 内の結果を確認するには、新しいリソース グループを参照します。 新しいリソース グループに新しい **Azure Spring Cloud** インスタンスが表示されます。
 
 ## <a name="update-configuration-to-config-logs-and-metrics"></a>構成を更新してログとメトリックを設定する
 
@@ -159,7 +161,7 @@ ms.locfileid: "88079194"
 
 この記事で作成したリソースが不要になったら、削除してください。
 
-このチュートリアルで作成した Azure リソースを削除するには、[terraform destroy](https://www.terraform.io/docs/commands/destroy.html) コマンドを実行します。
+この演習で作成した Azure リソースを削除するには、[terraform destroy](https://www.terraform.io/docs/commands/destroy.html) コマンドを実行します。
 
 ```bash
 terraform destroy -auto-approve
@@ -168,4 +170,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure リソースを作成するために Terraform をインストールして構成する](https://docs.microsoft.com/azure/developer/terraform/getting-started-cloud-shell)。
+> [Azure リソースを作成するために Terraform をインストールして構成する](/azure/developer/terraform/getting-started-cloud-shell)。

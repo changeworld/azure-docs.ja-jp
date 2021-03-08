@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049572"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937095"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -28,18 +28,18 @@ ms.locfileid: "89049572"
 
 このドキュメントでは、次のようなシナリオで、予期されていない中断の間のロックアウトのリスクを軽減する回復性を提供するために、組織で採用する必要がある戦略に関するガイダンスを示します。
 
- 1. 組織では、リスク軽減戦略またはコンティンジェンシー計画を実装することで、**中断の前に**ロックアウトのリスクを軽減する回復性を向上させることができます。
- 2. 組織では、リスク軽減戦略とコンティンジェンシー計画を導入することで、**中断の間に**選択したアプリとリソースへのアクセスを続けることができます。
+ 1. 組織では、リスク軽減戦略またはコンティンジェンシー計画を実装することで、**中断の前に** ロックアウトのリスクを軽減する回復性を向上させることができます。
+ 2. 組織では、リスク軽減戦略とコンティンジェンシー計画を導入することで、**中断の間に** 選択したアプリとリソースへのアクセスを続けることができます。
  3. 組織では、**中断の後**、実装されているコンティンジェンシーをロールバックする前に、ログなどの情報が保持されるようにする必要があります。
- 4. 防止戦略や代替計画を実装していない組織でも、中断に対処する**緊急オプション**を実装できる場合があります。
+ 4. 防止戦略や代替計画を実装していない組織でも、中断に対処する **緊急オプション** を実装できる場合があります。
 
 ## <a name="key-guidance"></a>重要なガイダンス
 
 このドキュメントで重要なことは次の 4 つです。
 
 * 緊急アクセス用アカウントを使用して、管理者のロックアウトを回避する。
-* ユーザーごとの MFA ではなく条件付きアクセス (CA) を使用して、MFA を実装する。
-* 複数の条件付きアクセス (CA) 制御を使用して、ユーザーのロックアウトを軽減する。
+* ユーザーごとの MFA ではなく条件付きアクセスを使用して、MFA を実装する。
+* 複数の条件付きアクセス制御を使用して、ユーザーのロックアウトを軽減する。
 * 複数の認証方法または同等の手段をユーザーごとにプロビジョニングして、ユーザーのロックアウトを軽減する。
 
 ## <a name="before-a-disruption"></a>中断する前
@@ -65,11 +65,11 @@ ms.locfileid: "89049572"
 
 組織の既存の条件付きアクセス ポリシーに次のアクセス制御を組み込みます。
 
-1. さまざまな通信チャネルに依存するユーザーごとに、複数の認証方法をプロビジョニングします (たとえば、Microsoft Authenticator アプリ (インターネット ベース)、OATH トークン (デバイス上で生成)、SMS (電話))。 次の PowerShell スクリプトを使用すると、ユーザーが登録する追加の方法を事前に識別できます。[Azure MFA 認証方法の分析するためのスクリプト](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
+1. さまざまな通信チャネルに依存するユーザーごとに、複数の認証方法をプロビジョニングします (たとえば、Microsoft Authenticator アプリ (インターネット ベース)、OATH トークン (デバイス上で生成)、SMS (電話))。 次の PowerShell スクリプトを使用すると、ユーザーが登録する追加の方法を事前に識別できます。[Azure AD MFA 認証方法の分析するためのスクリプト](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
 2. Windows 10 デバイスに Windows Hello for Business を展開し、デバイスのサインインから直接 MFA 要件を満たします。
 3. [Azure AD Hybrid Join](../devices/overview.md) または [Microsoft Intune マネージド デバイス](/intune/planning-guide)によって、信頼済みデバイスを使用します。 信頼済みデバイスを使用すると、信頼済みデバイス自体でポリシーの強力な認証要件を満たすことができ、ユーザーに MFA チャレンジを行う必要がないので、ユーザー エクスペリエンスが向上します。 その場合、新しいデバイスを登録するとき、および信頼されていないデバイスからアプリやリソースにアクセスするときに、MFA が必要になります。
 4. 固定の MFA ポリシーの代わりに、ユーザーまたはサインインにリスクがあるときにアクセスを禁止する Azure AD Identity Protection のリスクに基づくポリシーを使用します。
-5. Azure MFA NPS 拡張機能を使用して VPN アクセスを保護している場合は、VPN ソリューションを [SAML アプリ](../manage-apps/view-applications-portal.md)としてフェデレーションすることを検討し、以下に推奨されるようにアプリのカテゴリを決定します。 
+5. Azure AD MFA NPS 拡張機能を使用して VPN アクセスを保護している場合は、VPN ソリューションを [SAML アプリ](../manage-apps/view-applications-portal.md)としてフェデレーションすることを検討し、以下に推奨されるようにアプリのカテゴリを決定します。 
 
 >[!NOTE]
 > リスクに基づくポリシーを使用するには、[Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
@@ -112,7 +112,7 @@ ms.locfileid: "89049572"
 
 #### <a name="microsoft-recommendations"></a>Microsoft の推奨事項
 
-コンティンジェンシー条件付きアクセス ポリシーは、Azure MFA、サードパーティの MFA、リスクに基づく制御、またはデバイスに基づく制御を省略する**バックアップ ポリシー**です。 コンティンジェンシー ポリシーが有効になっている場合の予期しない中断を最小限に抑えるために、ポリシーを使用しないときはレポート専用モードのままにしておく必要があります。 管理者は、条件付きアクセスに関する分析情報のブックを使用して、コンティンジェンシー ポリシーの潜在的な影響を監視できます。 組織でコンティンジェンシー計画の有効化が決定されたときに、管理者はそのポリシーを有効にし、通常の制御に基づくポリシーを無効にできます。
+コンティンジェンシー条件付きアクセス ポリシーは、Azure AD MFA、サードパーティの MFA、リスクに基づく制御、またはデバイスに基づく制御を省略する **バックアップ ポリシー** です。 コンティンジェンシー ポリシーが有効になっている場合の予期しない中断を最小限に抑えるために、ポリシーを使用しないときはレポート専用モードのままにしておく必要があります。 管理者は、条件付きアクセスに関する分析情報のブックを使用して、コンティンジェンシー ポリシーの潜在的な影響を監視できます。 組織でコンティンジェンシー計画の有効化が決定されたときに、管理者はそのポリシーを有効にし、通常の制御に基づくポリシーを無効にできます。
 
 >[!IMPORTANT]
 > ユーザーにセキュリティを強制するポリシーを無効にすると、一時的であっても、コンティンジェンシー計画が実施されている間は、セキュリティ体制が低下します。
@@ -124,13 +124,13 @@ ms.locfileid: "89049572"
   * Exchange および SharePoint に制限されたセッション要求を送信するバックアップ ポリシーを構成します。
   * 組織で Microsoft Cloud App Security が使用されている場合は、フォールバックするポリシーで、MCAS を適用し、MCAS によって読み取り専用アクセスを許可してアップロードを許可しないことを検討します。
 * 中断中にポリシーを簡単に見つけられるよう、ポリシーに名前を付けます。 ポリシー名には次の要素を含めます。
-  * ポリシーの*ラベル番号*。
+  * ポリシーの *ラベル番号*。
   * 表示するテキスト。このポリシーは緊急時のみを対象としています。 次に例を示します。**ENABLE IN EMERGENCY**
-  * 適用される*中断*。 次に例を示します。**During MFA Disruption**
+  * 適用される *中断*。 次に例を示します。**During MFA Disruption**
   * ポリシーをアクティブ化する順序を示す、*シーケンス番号*。
-  * 適用される*アプリ*。
-  * 適用される*コントロール*。
-  * 必要な*条件*。
+  * 適用される *アプリ*。
+  * 適用される *コントロール*。
+  * 必要な *条件*。
   
 コンティンジェンシー ポリシーの場合、この名前付け基準は次のようになります。 
 
@@ -138,9 +138,9 @@ ms.locfileid: "89049572"
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-次に例を示します。**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー**は、企業の一般的なコンティンジェンシーです。 このシナリオの組織では、一般に、すべての Exchange Online と SharePoint Online に対して MFA が必要であり、このケースでの中断は顧客に対する MFA プロバイダーの停止です (Azure MFA、オンプレミス MFA プロバイダー、サード パーティ MFA にかかわらず)。 このポリシーでは、信頼された Windows デバイスからアプリに対する特定の対象ユーザーのアクセスを、信頼された企業ネットワークからアプリにアクセスしている場合にのみ許可することによって、この停止を軽減します。 また、緊急アカウントとコア管理者はこれらの制限から除外されます。 これにより、対象ユーザーは Exchange Online と SharePoint Online へのアクセスが許可されますが、その他のユーザーは障害のためにアプリにまだアクセスできません。 この例では、名前付きのネットワークの場所 **CorpNetwork**、対象ユーザーを含むセキュリティ グループ **ContingencyAccess**、コア管理者を含むグループ **CoreAdmins**、緊急アクセス用管理者アカウントを含むグループ **EmergencyAccess** が必要です。 コンティンジェンシーでは、必要なアクセスを提供するために 4 つのポリシーが必要です。 
+次に例を示します。**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー条件付きアクセス ポリシー** は、企業の一般的なコンティンジェンシーです。 このシナリオの組織では、一般に、すべての Exchange Online と SharePoint Online に対して MFA が必要であり、このケースでの中断は顧客に対する MFA プロバイダーの停止です (Azure AD MFA、オンプレミス MFA プロバイダー、サード パーティ MFA にかかわらず)。 このポリシーでは、信頼された Windows デバイスからアプリに対する特定の対象ユーザーのアクセスを、信頼された企業ネットワークからアプリにアクセスしている場合にのみ許可することによって、この停止を軽減します。 また、緊急アカウントとコア管理者はこれらの制限から除外されます。 これにより、対象ユーザーは Exchange Online と SharePoint Online へのアクセスが許可されますが、その他のユーザーは障害のためにアプリにまだアクセスできません。 この例では、名前付きのネットワークの場所 **CorpNetwork**、対象ユーザーを含むセキュリティ グループ **ContingencyAccess**、コア管理者を含むグループ **CoreAdmins**、緊急アクセス用管理者アカウントを含むグループ **EmergencyAccess** が必要です。 コンティンジェンシーでは、必要なアクセスを提供するために 4 つのポリシーが必要です。 
 
-**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー:**
+**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー条件付きアクセス ポリシー:**
 
 * ポリシー 1:Exchange と SharePoint に対するドメイン参加済みデバイスが必要
   * 名前:EM001 - ENABLE IN EMERGENCY:MFA Disruption[1/4] - Exchange SharePoint - Require Hybrid Azure AD Join
@@ -180,9 +180,9 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 5. ポリシー 4 を有効にします:すべてのユーザーが、モバイル デバイス上のネイティブ メール アプリケーションから Exchange Online にアクセスできないことを確認します。
 6. SharePoint Online と Exchange Online に対する既存の MFA ポリシーを無効にします。
 
-次の例、**例 B - Salesforce へのモバイル アクセスを許可するコンティンジェンシー CA ポリシー**では、ビジネス アプリのアクセスを復元します。 このシナリオの顧客は、通常、営業社員に対し、準拠しているモバイル デバイスから (Azure AD でシングル サインオンを構成された) Salesforce へのアクセスのみを許可する必要があります。 このケースでの中断はデバイスのコンプライアンスの評価に関する問題であり、販売チームが取引成立のために Salesforce にアクセスする必要がある微妙なときに障害が発生します。 以下のコンティンジェンシー ポリシーでは、取引を続けることができてビジネスが中断しないように、モバイル デバイスから Salesforce へのクリティカルなユーザー アクセスが許可されます。 この例では、**SalesforceContingency** にアクセスを維持する必要があるすべての営業社員が含まれ、**SalesAdmins** に Salesforce の必要な管理者が含まれます。
+次の例、**例 B - Salesforce へのモバイル アクセスを許可するコンティンジェンシー条件付きアクセス ポリシー** では、ビジネス アプリのアクセスを復元します。 このシナリオの顧客は、通常、営業社員に対し、準拠しているモバイル デバイスから (Azure AD でシングル サインオンを構成された) Salesforce へのアクセスのみを許可する必要があります。 このケースでの中断はデバイスのコンプライアンスの評価に関する問題であり、販売チームが取引成立のために Salesforce にアクセスする必要がある微妙なときに障害が発生します。 以下のコンティンジェンシー ポリシーでは、取引を続けることができてビジネスが中断しないように、モバイル デバイスから Salesforce へのクリティカルなユーザー アクセスが許可されます。 この例では、**SalesforceContingency** にアクセスを維持する必要があるすべての営業社員が含まれ、**SalesAdmins** に Salesforce の必要な管理者が含まれます。
 
-**例 B - コンティンジェンシー CA ポリシー:**
+**例 B - コンティンジェンシー条件付きアクセス ポリシー:**
 
 * ポリシー 1:SalesContingency チームに含まれないすべてのユーザーをブロックする
   * 名前:EM001 - ENABLE IN EMERGENCY:Device Compliance Disruption[1/2] - Salesforce - Block All users except SalesforceContingency
@@ -208,7 +208,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>オンプレミスのリソースからのユーザー ロックアウト用のコンティンジェンシー (NPS 拡張機能)
 
-Azure MFA NPS 拡張機能を使用して VPN アクセスを保護している場合は、VPN ソリューションを [SAML アプリ](../manage-apps/view-applications-portal.md)としてフェデレーションすることを検討し、以下に推奨されるようにアプリのカテゴリを決定します。 
+Azure AD MFA NPS 拡張機能を使用して VPN アクセスを保護している場合は、VPN ソリューションを [SAML アプリ](../manage-apps/view-applications-portal.md)としてフェデレーションすることを検討し、以下に推奨されるようにアプリのカテゴリを決定します。 
 
 VPN やリモート デスクトップ ゲートウェイなどのオンプレミス リソースを MFA を使用して保護するために Azure AD MFA NPS 拡張機能をデプロイしている場合は、緊急時に MFA を無効にする準備ができているかどうかを事前に検討する必要があります。
 
@@ -266,7 +266,7 @@ NPS 拡張機能を無効にする:
 3. 中断中に行って文書化した他のすべての変更をロールバックします。
 4. 緊急アクセス用アカウントを使用した場合は、緊急アクセス用アカウントの手順の一部として、忘れずに資格情報を再生成し、新しい資格情報の詳細を物理的にセキュリティ保護します。
 5. 不審なアクティビティのため、中断後も引き続き[報告されたすべてのリスク検出をトリアージ](../reports-monitoring/concept-sign-ins.md)します。
-6. [PowerShell を使用して](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)一連のユーザーを対象に発行されたすべての更新トークンを取り消します。 すべての更新トークンの取り消しは中断中に使用された特権アカウントについて重要であり、そうすることで、強制的に再認証が行われ、復元されたポリシーの制御に対応します。
+6. [PowerShell を使用して](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)一連のユーザーを対象に発行されたすべての更新トークンを取り消します。 すべての更新トークンの取り消しは中断中に使用された特権アカウントについて重要であり、そうすることで、強制的に再認証が行われ、復元されたポリシーの制御に対応します。
 
 ## <a name="emergency-options"></a>緊急時のオプション
 
@@ -280,14 +280,14 @@ NPS 拡張機能を無効にする:
  > アクセスのブロックを解除するために信頼できる IP アドレスの範囲を広げた場合、IP アドレスに関連するリスク検出 (たとえば、あり得ない移動や未知の場所) は生成されなくなります。
 
 >[!NOTE]
- > Azure MFA に対する[信頼できる IP アドレス](./howto-mfa-mfasettings.md)の構成は、[Azure AD Premium ライセンス](./concept-mfa-licensing.md)でのみ使用できます。
+ > Azure AD MFA に対する[信頼できる IP アドレス](./howto-mfa-mfasettings.md)の構成は、[Azure AD Premium ライセンス](./concept-mfa-licensing.md)でのみ使用できます。
 
 ## <a name="learn-more"></a>詳細情報
 
 * [Azure AD Authentication のドキュメント](./howto-mfaserver-iis.md)
-* [Azure AD で緊急アクセス用管理者アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
+* [Azure AD で緊急アクセス用管理者アカウントを管理する](../roles/security-emergency-access.md)
 * [Azure Active Directory でネームド ロケーションを構成する](../reports-monitoring/quickstart-configure-named-locations.md)
-  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](../devices/hybrid-azuread-join-plan.md)
 * [Windows Hello for Business の展開ガイド](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [パスワードのガイダンス - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)

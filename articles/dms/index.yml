@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: 05780a5628f920b8fb4f0c73794046f23e895c58
-  ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+  ms.openlocfilehash: a154a3a6579ff3414502b16dcfe6d60748840a6c
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/31/2020
-  ms.locfileid: "89182243"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102183302"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:
@@ -57,29 +57,25 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: SQL DB 単一データベースに移行する - オンライン
-      url: tutorial-sql-server-azure-sql-online.md
-    - text: SQL DB 単一データベースに移行する - オフライン
+    - text: Azure SQL Database への移行
       url: tutorial-sql-server-to-azure-sql.md
-    - text: SQL DB マネージ インスタンスに移行する - オンライン
+    - text: Azure SQL Managed Instance への移行 (オンライン)
       url: tutorial-sql-server-managed-instance-online.md
-    - text: SQL DB マネージ インスタンスに移行する - オフライン
+    - text: SQL Managed Instance への移行 (オフライン)
       url: tutorial-sql-server-to-managed-instance.md
-    - text: RDS SQL Server を SQL DB 単一データベース/マネージド インスタンスに移行する - オンライン
-      url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: 既知の問題 - SQL DB 単一データベースへのオンライン移行
+    - text: 既知の問題 - SQL Database へのオンライン移行
       url: known-issues-azure-sql-online.md
-    - text: 既知の問題 - SQL DB マネージド インスタンスへのオンライン移行
+    - text: 既知の問題 - SQL Managed Instance へのオンライン移行
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: SQL DB マネージド インスタンスの移行のためのネットワーク トポロジ
+    - text: SQL Managed Instance の移行のためのネットワーク トポロジ
       url: resource-network-topologies.md
-    - text: SQL Server から SQL DB マネージド インスタンスへオンライン移行するためのカスタム ロール
+    - text: SQL Server から SQL Managed Instance へオンライン移行するためのカスタム ロール
       url: resource-custom-roles-sql-db-managed-instance.md
   - linkListType: video
     links:
-    - text: SQL Server 2008 を SQL DB マネージド インスタンスに移行する
+    - text: SQL Server 2008 を SQL Managed Instance に移行する
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
 - title: オープンソース データベースを Azure に移行する
   linkLists:
@@ -124,11 +120,11 @@ landingContent:
     - text: データベース移行ガイド
       url: https://datamigration.microsoft.com/
     - text: Data Migration Assistant
-      url: https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017
+      url: /sql/dma/dma-overview?view=sql-server-2017
     - text: SQL Server Migration Assistant
-      url: https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+      url: /sql/ssma/sql-server-migration-assistant?view=sql-server-2017
     - text: Database Experimentation Assistant
-      url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+      url: /sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
     - text: データ アクセス移行ツールキット
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
 - title: Oracle を Azure に移行する

@@ -5,36 +5,40 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/04/2020
 ms.author: banders
-ms.openlocfilehash: 5e08a3e09a0db7620d65b349243cd39540fae144
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3bd571195a3f0df290387812e68f2b0377fe3c3c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690002"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584052"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Azure の無料アカウントに含まれるサービスを作成する
 
-Azure の無料アカウントでは、無料サービス (数に制限あり) を 12 か月間ご利用いただけます。 その制限内であれば、お客様のニーズに合わせてさまざまな構成で自由に無料のサービスをご利用いただけます。
+Azure の無料アカウント作成後、最初の 30 日間は、サードパーティの Marketplace での購入を除き、すべてのサービスに使用できる 200 ドルのクレジットが付与されます。 無料のクレジットを使用して、Azure サービスのさまざまなレベルと種類を実際に使ってみることができます。 この期間中に無料ではないサービスや Azure リソースを使用すると、クレジットから料金が差し引かれます。
+
+最初の 30 日の終わりまでにクレジットを使い切らなかった場合は、失われます。 最初の 30 日が過ぎてからサインアップ後最大 12 か月間使用できるのは、容量が制限された "*一部のサービス*" のみです。すべての Azure サービスが無料になるわけではありません。 30 日が経過する前にアップグレードし、クレジットが残っている場合、残りの日数の間、従量課金制サブスクリプションでクレジットの残りを使用できます。 たとえば、11 月 1 日に無料アカウントにサインアップし、11 月 5 日にアップグレードした場合、11 月 30 日までは新しい従量課金制サブスクリプションでクレジットを使用することができます。 
+
+Azure の無料アカウントには、12 か月間 "*指定された容量*" が無料になるサービスと、常時無料の一連のサービスが含まれています。 無料アカウントでは、一部のサービス レベルのみを特定の容量内で利用できます。 たとえば、Azure にはさまざまなニーズに対応した数多くの仮想マシンが用意されています。 無料アカウントが無料でアクセスできる VM は 1 種類しかありません。これは月あたり最大 750 時間まで使用できるバースト可能な B シリーズの B1S です。 制限内で無料アカウントを利用することにより、さまざまな構成で無料のサービスを使用できます。 Azure の無料アカウントと無料で利用可能な製品の詳細については、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq/)」を参照してください。
 
 ## <a name="create-free-services-in-the-azure-portal"></a>Azure Portal で無料サービスを作成する
-無料サービスの作成は、[無料サービス ページ](https://go.microsoft.com/fwlink/?linkid=859151)へのリンクを使用して行うことをお勧めします。 または、[Azure portal](https://portal.azure.com) にサインインして「**無料サービス**」を検索してください。 無料サービス ページからサービスを作成する場合、ほとんどのフィールドが事前に選択されており、無料で簡単にサービスを作成することができます。
+
+無料サービスの作成には、Azure portal の[無料サービス ページ](https://go.microsoft.com/fwlink/?linkid=859151)を使用することをお勧めします。 または、[Azure portal](https://portal.azure.com) にサインインして「**無料サービス**」を検索してください。 無料サービス ページ以外でリソースを作成した場合、既定では無料レベルまたは無料リソースの構成オプションが常に選択されるとは限りません。 料金を回避するには、必ず無料サービス ページからリソースを作成してください。 また、リソースを作成する際は、無料のレベルを選択するようにしてください。
 
 ![無料サービス ページを示すスクリーンショット](./media/create-free-services/billing-freeservices-grid.png)
 
 ## <a name="services-can-be-created-in-any-region"></a>サービスは任意の地域で作成可能
+
 制限の範囲内であれば、サービスが使用可能な任意の地域で無料サービスを作成できます。 たとえば、Azure の無料アカウントでは、B1S Windows 仮想マシンを毎月 750 時間、無料で使用できます。 この仮想マシンは、B シリーズの仮想マシンが使用可能な地域なら、どこでも作成できます。 750 時間を超えない限り、Azure で課金されることはありません。 たとえば、米国のお客様が、西ヨーロッパで B1S Windows 仮想マシンをプロビジョニングし、750 時間まで無料で使用する、ということが可能です。
 
 リージョンごとで使用可能な Azure サービスの詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
 
 ## <a name="create-multiple-service-instances-in-allowed-limits"></a>許容限度内で複数のサービス インスタンスを作成する
-ご使用の合計が使用制限内である限り、サービスの複数のインスタンスを無料で作成できます。 たとえば、お使いの Azure の無料アカウントで、B1S Windows 仮想マシンを無料で毎月 750 時間、使用するとします。 その 750 時間は、任意の組み合わせで好きなように使用できます。 たとえば、B1S Windows 仮想マシンを 5 つ作成して、それぞれ 150 時間ずつ使用することができます。
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
-
-ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+合計が使用制限内であれば、サービスの複数のインスタンスを無料で作成できます。 たとえば、お使いの Azure の無料アカウントで、B1S Windows 仮想マシンを無料で毎月 750 時間、使用するとします。 その 750 時間は、必要な任意の組み合わせで使用できます。 B1S Windows 仮想マシンを 5 つ作成し、それぞれ 150 時間ずつ使用することができます。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Azure 無料アカウントに含まれている無料サービスの使用状況を確認する](check-free-service-usage.md)方法を学習します。
 - [Azure 無料アカウントの課金を回避](avoid-charges-free-account.md)する方法を学習します。

@@ -6,29 +6,29 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a0ad71e870005ce1cbe0ffe0f56bcbd0104c3dd2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6d753a90f2a4cb19c9f3933d007fb3d378af6d81
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026843"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793213"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[エラスティック データベース ツール](elastic-scale-get-started.md)と[行レベルのセキュリティ (RLS)][rls] を組み合わせることで、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層のスケーリングが可能になります。 これらのテクノロジの連携によって、データ層のスケーラビリティを高めたアプリケーションを効率よく作成することができます。 データ層では、マルチテナント シャードがサポートされ、**ADO.NET SqlClient** または **Entity Framework** が使用されます。 詳細については、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](../../sql-database/saas-tenancy-app-design-patterns.md)」をご覧ください。
+[エラスティック データベース ツール](elastic-scale-get-started.md)と[行レベルのセキュリティ (RLS)][rls] を組み合わせることで、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層のスケーリングが可能になります。 これらのテクノロジの連携によって、データ層のスケーラビリティを高めたアプリケーションを効率よく作成することができます。 データ層では、マルチテナント シャードがサポートされ、 **ADO.NET SqlClient** または **Entity Framework** が使用されます。 詳細については、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](./saas-tenancy-app-design-patterns.md)」をご覧ください。
 
-- **エラスティック データベース ツール**を使用すると、開発者は .NET ライブラリと Azure のサービス テンプレートを使用することにより、標準的なシャーディング手法に従ってデータ層をスケールアウトすることができます。 [Elastic Database クライアント ライブラリ][s-d-elastic-database-client-library]を使用してシャードを管理することは、一般的にシャーディングに関連するインフラストラクチャ タスクの多くを自動化および効率化するうえで役立ちます。
-- **行レベル セキュリティ**を使用すると、開発者は、同じデータベースに複数のテナントのデータを安全に格納することができます。 クエリを実行しているテナントに属さない行は、RLS セキュリティ ポリシーによって除外されます。 フィルターのロジックをデータベース内に集約することで、メンテナンスが簡素化され、セキュリティ エラーのリスクが軽減されます。 これをクライアント コードだけで行ってセキュリティを確保しようとするとリスクが伴います。
+- **エラスティック データベース ツール** を使用すると、開発者は .NET ライブラリと Azure のサービス テンプレートを使用することにより、標準的なシャーディング手法に従ってデータ層をスケールアウトすることができます。 [Elastic Database クライアント ライブラリ][s-d-elastic-database-client-library]を使用してシャードを管理することは、一般的にシャーディングに関連するインフラストラクチャ タスクの多くを自動化および効率化するうえで役立ちます。
+- **行レベル セキュリティ** を使用すると、開発者は、同じデータベースに複数のテナントのデータを安全に格納することができます。 クエリを実行しているテナントに属さない行は、RLS セキュリティ ポリシーによって除外されます。 フィルターのロジックをデータベース内に集約することで、メンテナンスが簡素化され、セキュリティ エラーのリスクが軽減されます。 これをクライアント コードだけで行ってセキュリティを確保しようとするとリスクが伴います。
 
 これらの機能を組み合わせて使用することで、アプリケーションは、複数のテナントのデータを同じシャード データベースに格納することができます。 テナントでデータベースを共有すると、テナントあたりのコストが小さくなります。 しかも同じアプリケーションで、専用のシングル テナント シャードを利用できる有料オプションを Premium テナント向けに提供することができます。 シングル テナントとして分離させることの利点の 1 つとして、より確実なパフォーマンス保証が可能になることが挙げられます。 シングル テナント データベースでは、他のテナントとリソースの奪い合いになることがありません。
 
-達成目標は、エラスティック データベース クライアント ライブラリの[データ依存ルーティング](elastic-scale-data-dependent-routing.md) API を使用してそれぞれのテナントが正しいシャード データベースに自動的に接続することです。 指定されたテナントの特定の TenantId 値を含んでいるシャードは 1 つだけです。 TenantId は "*シャーディング キー*" です。 接続の確立後、データベース内にある RLS のセキュリティ ポリシーによって、指定されたテナントからのアクセスが、その TenantId を含んだデータ行に制限されます。
+達成目標は、エラスティック データベース クライアント ライブラリの[データ依存ルーティング](elastic-scale-data-dependent-routing.md) API を使用してそれぞれのテナントが正しいシャード データベースに自動的に接続することです。 指定されたテナントの特定の TenantId 値を含んでいるシャードは 1 つだけです。 TenantId は " *シャーディング キー* " です。 接続の確立後、データベース内にある RLS のセキュリティ ポリシーによって、指定されたテナントからのアクセスが、その TenantId を含んだデータ行に制限されます。
 
 > [!NOTE]
 > テナント ID は、複数の列で構成される場合があります。 この記事では便宜上、単一列の TenantId を前提として説明します。
@@ -54,14 +54,14 @@ ms.locfileid: "84026843"
 
 RLS はシャード データベースでまだ有効になっていないため、これらの各テストで問題点が明らかになります。テナントは、そのテナントに属さないブログを表示できます。また、アプリケーションは、不適切なテナントにブログを挿入できます。 この記事の残りの部分では、RLS によるテナントの分離を適用してこれらの問題を解決する方法について説明します。 次の 2 つの手順があります。
 
-1. **アプリケーション層**:接続を開いた後に常に現在の TenantId を SESSION\_CONTEXT に設定するようにアプリケーション コードを変更します。 サンプル プロジェクトでは、あらかじめそのように TenantId が設定されています。
-2. **データ層**:各シャード データベースで、SESSION\_CONTEXT に格納されている TenantId に基づいて行をフィルター処理するための RLS セキュリティ ポリシーを作成します。 ポリシーは、それぞれのシャード データベースに対して作成する必要があります。そうでないと、マルチテナント シャード内の行がフィルター処理されません。
+1. **アプリケーション層** :接続を開いた後に常に現在の TenantId を SESSION\_CONTEXT に設定するようにアプリケーション コードを変更します。 サンプル プロジェクトでは、あらかじめそのように TenantId が設定されています。
+2. **データ層** :各シャード データベースで、SESSION\_CONTEXT に格納されている TenantId に基づいて行をフィルター処理するための RLS セキュリティ ポリシーを作成します。 ポリシーは、それぞれのシャード データベースに対して作成する必要があります。そうでないと、マルチテナント シャード内の行がフィルター処理されません。
 
 ## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1.アプリケーション層:TenantId を SESSION\_CONTEXT に設定する
 
-まず、エラスティック データベース クライアント ライブラリのデータ依存ルーティング API を使用してシャード データベースに接続します。 その場合でも、接続に使用している TenantId をアプリケーションからデータベースに伝える必要があります。 RLS セキュリティ ポリシーは、他のテナントに属している除外すべき行を TenantId によって判別します。 接続の [SESSION\_CONTEXT](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) に現在の TenantId を格納します。
+まず、エラスティック データベース クライアント ライブラリのデータ依存ルーティング API を使用してシャード データベースに接続します。 その場合でも、接続に使用している TenantId をアプリケーションからデータベースに伝える必要があります。 RLS セキュリティ ポリシーは、他のテナントに属している除外すべき行を TenantId によって判別します。 接続の [SESSION\_CONTEXT](/sql/t-sql/functions/session-context-transact-sql) に現在の TenantId を格納します。
 
-SESSION\_CONTEXT の代わりに [CONTEXT\_INFO](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql) を使用してもかまいません。 ただし、どちらかと言えば、SESSION\_CONTEXT の使用をお勧めします。 SESSION\_CONTEXT の方が使いやすいためです。これは、既定で NULL を返すほか、キーと値のペアをサポートします。
+SESSION\_CONTEXT の代わりに [CONTEXT\_INFO](/sql/t-sql/functions/context-info-transact-sql) を使用してもかまいません。 ただし、どちらかと言えば、SESSION\_CONTEXT の使用をお勧めします。 SESSION\_CONTEXT の方が使いやすいためです。これは、既定で NULL を返すほか、キーと値のペアをサポートします。
 
 ### <a name="entity-framework"></a>Entity Framework
 
@@ -228,7 +228,7 @@ RLS は Transact-SQL で実装されています。 ユーザー定義の関数�
     - BLOCK 述語は、フィルターに該当しない行を INSERT または UPDATE の対象から除外します。
     - SESSION\_CONTEXT を設定していない場合は、関数から NULL が返され、行を表示または挿入することはできません。
 
-すべてのシャードで RLS を有効にするには、Visual Studio (SSDT)、SSMS、またはプロジェクトに含まれる PowerShell スクリプトを使用して、次の T-SQL を実行します。 また、[Elastic Database ジョブ](../../sql-database/elastic-jobs-overview.md)を使用している場合は、すべてのシャードでこの T-SQL の実行を自動化できます。
+すべてのシャードで RLS を有効にするには、Visual Studio (SSDT)、SSMS、またはプロジェクトに含まれる PowerShell スクリプトを使用して、次の T-SQL を実行します。 また、[Elastic Database ジョブ](./elastic-jobs-overview.md)を使用している場合は、すべてのシャードでこの T-SQL の実行を自動化できます。
 
 ```sql
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.
@@ -302,12 +302,12 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> Entity Framework プロジェクトで既定の制約を使用する場合は、Entity Framework データ モデルに TenantId 列を "*含めない*" ことをお勧めします。 これは、Entity Framework のクエリでは既定値が自動的に指定され、T-SQL で作成された SESSION\_CONTEXT を使用する既定の制約がオーバーライドされるためです。
+> Entity Framework プロジェクトで既定の制約を使用する場合は、Entity Framework データ モデルに TenantId 列を " *含めない* " ことをお勧めします。 これは、Entity Framework のクエリでは既定値が自動的に指定され、T-SQL で作成された SESSION\_CONTEXT を使用する既定の制約がオーバーライドされるためです。
 > たとえば、サンプル プロジェクトで既定の制約を使用するには、DataClasses.cs から TenantId を削除し (さらにパッケージ マネージャー コンソールで Add-Migration を実行し)、T-SQL を使ってフィールドがデータベース テーブルにのみ存在することを確認します。 これにより、データを挿入するときに Entity Framework によって不適切な既定値が自動的に指定されなくなります。
 
-### <a name="optional-enable-a-superuser-to-access-all-rows"></a>(省略可能) "*スーパーユーザー*" がすべての行にアクセスできるようにする
+### <a name="optional-enable-a-superuser-to-access-all-rows"></a>(省略可能) " *スーパーユーザー* " がすべての行にアクセスできるようにする
 
-一部のアプリケーションでは、すべての行にアクセスできる "*スーパーユーザー*" の作成が必要となる場合があります。 スーパーユーザーであれば、すべてのシャード上のテナントの境界を越えたレポート作成が可能です。 また、データベース間のテナント行の移動を伴う分割/マージ操作をシャードに対して実行することも、スーパーユーザーであれば可能です。
+一部のアプリケーションでは、すべての行にアクセスできる " *スーパーユーザー* " の作成が必要となる場合があります。 スーパーユーザーであれば、すべてのシャード上のテナントの境界を越えたレポート作成が可能です。 また、データベース間のテナント行の移動を伴う分割/マージ操作をシャードに対して実行することも、スーパーユーザーであれば可能です。
 
 スーパーユーザーを有効にするには、各シャード データベースに新しい SQL ユーザー (この例では `superuser`) を作成します。 その後、このユーザーがすべての行にアクセスできるようにする新しいの述語関数を使用して、セキュリティ ポリシーを変更します。 そのような関数の例を次に示します。
 
@@ -341,8 +341,8 @@ GO
 
 ### <a name="maintenance"></a>メンテナンス
 
-- **新しいシャードの追加**:すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行します。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
-- **新しいテーブルの追加**:新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーに FILTER 述語と BLOCK 述語を追加します。 そうしないと、新しいテーブルに対するクエリはフィルター処理されません。 この追加は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393)を参照してください。
+- **新しいシャードの追加** :すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行します。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
+- **新しいテーブルの追加** :新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーに FILTER 述語と BLOCK 述語を追加します。 そうしないと、新しいテーブルに対するクエリはフィルター処理されません。 この追加は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393)を参照してください。
 
 ## <a name="summary"></a>まとめ
 
@@ -352,16 +352,16 @@ GO
 
 - [Azure エラスティック プールの概要](elastic-pool-overview.md)
 - [Azure SQL Database によるスケールアウト](elastic-scale-introduction.md)
-- [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](../../sql-database/saas-tenancy-app-design-patterns.md)
+- [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](./saas-tenancy-app-design-patterns.md)
 - [Azure AD および OpenID Connect を使用したマルチテナント アプリでの認証](/azure/architecture/multitenant-identity/authenticate)
 - [Tailspin Surveys アプリケーション](/azure/architecture/multitenant-identity/tailspin)
 
 ## <a name="questions-and-feature-requests"></a>質問と機能に関する要望
 
-ご質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-sql-database.html)からお問い合わせください。 また、機能に関するご要望は、[SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)までお寄せください。
+ご質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](/answers/topics/azure-sql-database.html)からお問い合わせください。 また、機能に関するご要望は、[SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)までお寄せください。
 
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png
 <!--anchors-->
-[rls]: https://docs.microsoft.com/sql/relational-databases/security/row-level-security
+[rls]: /sql/relational-databases/security/row-level-security
 [s-d-elastic-database-client-library]:elastic-database-client-library.md

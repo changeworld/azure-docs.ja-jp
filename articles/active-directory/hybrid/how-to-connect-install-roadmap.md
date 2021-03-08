@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3361657406f2ece6a48b74d3ca6ee3d9ed68ca
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277359"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873269"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -124,7 +124,7 @@ Azure AD から証明書を自動更新するように ADFS サーバーを更�
 |AD FS に関するすべての記事 | [Azure AD Connect とフェデレーション](how-to-connect-fed-whatis.md)|
 |サブドメインで ADFS を構成する | [Azure AD とのフェデレーションに使用する複数ドメインのサポート](how-to-connect-install-multiple-domains.md)|
 |AD FS ファームを管理する | [Azure AD Connect を使用した AD FS の管理とカスタマイズ](how-to-connect-fed-management.md)|
-|フェデレーション証明書を手動で更新する | [Office 365 および Azure AD 用のフェデレーション証明書の更新](how-to-connect-fed-o365-certs.md)|
+|フェデレーション証明書を手動で更新する | [Microsoft 365 および Azure AD 用のフェデレーション証明書の更新](how-to-connect-fed-o365-certs.md)|
 
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Azure AD Connect Health の使用開始
@@ -143,12 +143,12 @@ Azure AD Connect Health の使用を開始するには、次の手順に従い�
 * Azure AD Connect Health の[要件を必ず満たし](how-to-connect-health-agent-install.md#requirements)てください。
 * Azure AD Connect Health for AD FS の使用を開始します
     * [Azure AD Connect Health for AD FS エージェントをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=518973)
-    * [インストール手順を参照します](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)。
+    * [インストール手順を参照します](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs)。
 * Azure AD Connect Health for sync の使用を開始します
     * [最新バージョンの Azure AD Connect をダウンロードしてインストールします](https://go.microsoft.com/fwlink/?linkid=615771)。 同期用の Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以上)。
 * Azure AD Connect Health for AD DS の使用を開始します
     * [Azure AD Connect Health for AD DS エージェントをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=820540)。
-    * [インストール手順を参照します](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
+    * [インストール手順を参照します](how-to-connect-health-agent-install.md#install-the-agent-for-azure-ad-ds)。
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health ポータル
@@ -165,8 +165,8 @@ Azure AD Connect Health ポータルでは、アラート、パフォーマン�
 * **Active Directory Domain Services**: このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD DS フォレストが表示されます。 フォレストを選択すると、ブレードが開いてそのフォレストに関する情報が表示されます。 この情報には、重要度のきわめて高い情報、ドメイン コントローラーのダッシュボード、レプリケーションの状態のダッシュボード、アラート、監視の概要が含まれます。 「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」で各種機能を参照してください。
 * **構成する**:このセクションには、次の機能をオンまたはオフに切り替えるオプションがあります。
 
-   - Azure AD Connect Health エージェントの最新バージョンへの**自動更新**: 新しいバージョンが利用可能になるたびに、Azure AD Connect Health エージェントが自動的に更新されます。 このオプションは、既定で有効です。
-   - トラブルシューティングの目的限定での Microsoft による Azure AD ディレクトリ整合性からの**データへのアクセス**: このオプションが有効になっている場合、Microsoft は、ユーザーが表示したデータと同じものにアクセスできます。 この情報は、トラブルシューティングや、必要なサポートの提供に役立ちます。 このオプションは、既定で無効です。
+   - Azure AD Connect Health エージェントの最新バージョンへの **自動更新**: 新しいバージョンが利用可能になるたびに、Azure AD Connect Health エージェントが自動的に更新されます。 このオプションは、既定で有効です。
+   - トラブルシューティングの目的限定での Microsoft による Azure AD ディレクトリ整合性からの **データへのアクセス**: このオプションが有効になっている場合、Microsoft は、ユーザーが表示したデータと同じものにアクセスできます。 この情報は、トラブルシューティングや、必要なサポートの提供に役立ちます。 このオプションは、既定で無効です。
 * **[ロール ベースのアクセス制御 (IAM)]** は、ロール ベースの Connect Health データへのアクセスを管理するためのセクションです。 
 
 ## <a name="next-steps"></a>次の手順

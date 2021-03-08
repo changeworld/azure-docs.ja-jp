@@ -3,20 +3,21 @@ title: 近接通信配置グループを使用する
 description: Azure で仮想マシンに対して近接通信配置グループを作成して使用する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 21f657af60fa0012c517e4788a5d087b3924823f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288415"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666242"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLI を使用して近接通信配置グループに VM をデプロイする
 
-各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
+各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](../co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
 
 近接通信配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 近接通信配置グループは、短い待ち時間が要件であるワークロードに役立ちます。
 
@@ -67,7 +68,7 @@ az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 
 ## <a name="scale-sets"></a>スケール セット
 
-近接通信配置グループ内にスケール セットを作成することもできます。 [az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) で同じ `--ppg` パラメーターを使用してスケール セットを作成すると、すべてのインスタンスが同じ近接通信配置グループ内に作成されます。
+近接通信配置グループ内にスケール セットを作成することもできます。 [az vmss create](/cli/azure/vmss#az_vmss_create) で同じ `--ppg` パラメーターを使用してスケール セットを作成すると、すべてのインスタンスが同じ近接通信配置グループ内に作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 

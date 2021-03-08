@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics からの Azure Cosmos DB 出力
 description: この記事では、Azure Stream Analytics から Azure Cosmos DB にデータを出力する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 7832c53cfa9e0c5c3d0903c52bae8033402a2c0d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 9382ac8dc71d1ccb3a85dc0a7a027c8e99296cc6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875483"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016579"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Azure Cosmos DB 出力
 
@@ -39,7 +38,7 @@ Stream Analytics からの Azure Cosmos DB 出力は、現在、Azure China 21Vi
 
 ## <a name="partitioning"></a>パーティション分割
 
-パーティション キーは、クエリの PARTITION BY 句に基づきます。 出力ライターの数は、[完全並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 Stream Analytics によって、Cosmos DB 出力パーティション キーが文字列に変換されます。 たとえば、bigint 型の値が 1 のパーティション キーがある場合、string 型の "1" に変換されます。
+パーティション キーは、クエリの PARTITION BY 句に基づきます。 出力ライターの数は、[完全並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 Stream Analytics によって、Cosmos DB 出力パーティション キーが文字列に変換されます。 たとえば、bigint 型の値が 1 のパーティション キーがある場合、string 型の "1" に変換されます。 この変換は、パーティションのプロパティが Cosmos DB に書き込まれるかどうかにかかわらず、常に発生します。
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
@@ -52,4 +51,4 @@ Stream Analytics からの Azure Cosmos DB 出力は、現在、Azure China 21Vi
 * [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
 * [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
 * [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)

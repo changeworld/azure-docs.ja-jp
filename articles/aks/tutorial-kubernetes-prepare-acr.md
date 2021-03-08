@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - コンテナー レジス�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry インスタンスを作成し、サンプルのアプリケーション コンテナー イメージをアップロードします。
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.custom: mvc
-ms.openlocfilehash: 197e5c7bed569e67376f9c28fe0d2e050016cce8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 01/31/2021
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 9f6ec14cea20192aef7d3010201e6613c5d03a9e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922406"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430966"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
 
@@ -22,7 +22,7 @@ Azure Container Registry (ACR) は、コンテナー イメージ用のプライ
 > * イメージを ACR にアップロードする
 > * レジストリ内のイメージを表示する
 
-追加のチュートリアルでは、この ACR インスタンスが AKS の Kubernetes クラスターと統合され、アプリケーションがイメージからデプロイされます。
+後続のチュートリアルでは、この ACR インスタンスが AKS の Kubernetes クラスターと統合され、アプリケーションがイメージからデプロイされます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -60,16 +60,16 @@ az acr login --name <acrName>
 
 現在のローカル イメージの一覧を表示するには、[docker images][docker-images] コマンドを使用します。
 
-```azurecli
-$ docker images
+```console
+docker images
 ```
-上のコマンド出力には、現在のローカル イメージの一覧が表示されます。
+上記のコマンドの出力では、現在のローカル イメージのリストが示されます。
 
-```
-REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
-redis                        latest              a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
+```output
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
+mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 ACR で *azure-vote-front* コンテナー イメージを使用するには、イメージにレジストリのログイン サーバー アドレスでタグを付ける必要があります。 このタグは、イメージ レジストリにコンテナー イメージをプッシュするときに、ルーティングするために使用されます。
@@ -83,23 +83,23 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 ここで、ローカルの *azure-vote-front* イメージに、コンテナー レジストリの *acrLoginServer* アドレスでタグを付けます。 イメージのバージョンを示すには、イメージ名の最後に *:v1* を追加します。
 
 ```console
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
+docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
 ```
 
-タグが適用されたことを確認するには、[docker イメージ][docker-images]を再実行します。 
+タグが適用されたことを確認するには、[docker イメージ][docker-images]を再実行します。
 
-```azurecli
-$ docker images
+```console
+docker images
 ```
 
 イメージに ACR インスタンスのアドレスとバージョン番号でタグが付けられています。
 
 ```
-REPOSITORY                                           TAG           IMAGE ID            CREATED             SIZE
-azure-vote-front                                     latest        eaf2b9c57e5e        8 minutes ago       716 MB
-mycontainerregistry.azurecr.io/azure-vote-front      v1            eaf2b9c57e5e        8 minutes ago       716 MB
-redis                                                latest        a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313        8 months ago        694 MB
+REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front    v1                  84b41c268ad9        16 minutes ago      944MB
+mycontainerregistry.azurecr.io/azure-vote-front v1                  84b41c268ad9        16 minutes ago      944MB
+mcr.microsoft.com/oss/bitnami/redis             6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 ## <a name="push-images-to-registry"></a>イメージをレジストリにプッシュ
@@ -122,7 +122,7 @@ az acr repository list --name <acrName> --output table
 
 次の出力例では、レジストリ内で利用可能なイメージとして *azure-vote-front* を示しています。
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -136,7 +136,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 次の出力例は、前の手順でタグを付けた *v1* イメージを示しています。
 
-```
+```output
 Result
 --------
 v1

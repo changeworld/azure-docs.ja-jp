@@ -6,19 +6,19 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de4cae90f2cc1223271672d9fc5ba5b42e4409e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514693"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962435"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを監視する
 
 ## <a name="overview"></a>概要
 StorSimple デバイス マネージャー サービスを使用して、StorSimple ソリューション内にある特定のデバイスを監視できます。 I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンス メトリックに基づいてカスタム グラフを作成し、それらのグラフをダッシュボードにピン留めすることができます。 詳細については、[ポータル ダッシュボードをカスタマイズする](../azure-portal/azure-portal-dashboards.md)ことに関するページを参照してください。
 
-特定のデバイスの監視情報を表示するには、Azure Portal で StorSimple デバイス マネージャー サービスを選択します。 デバイスの一覧から目的のデバイスを選択したら、 **[監視]** に移動します。 選択したデバイスの**容量**、**使用状況**、および**パフォーマンス**のグラフを表示できます。
+特定のデバイスの監視情報を表示するには、Azure Portal で StorSimple デバイス マネージャー サービスを選択します。 デバイスの一覧から目的のデバイスを選択したら、 **[監視]** に移動します。 選択したデバイスの **容量**、**使用状況**、および **パフォーマンス** のグラフを表示できます。
 
 ## <a name="capacity"></a>容量
 **[容量]** では、プロビジョニング済みの容量と、デバイスに残っている領域が追跡されます。 残っている容量は、次に、ローカル固定または階層化として表示されます。
@@ -77,7 +77,7 @@ Update 3 以降を使用している場合は、次に示すように、個々�
 
 さらに、リスト内の各ボリュームをクリックすると、対応する使用状況を表示できます。
 
-![全ローカル固定ボリュームのプライマリの容量使用率](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![全ローカル固定ボリュームのプライマリの容量使用率 2](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>クラウド ストレージの使用状況
 これらのグラフは、クラウド ストレージの使用量を示します。 このデータは、重複除去されて圧縮されています。 この容量に含まれるクラウド スナップショットには、過去の目的や必須の保有期間のために保持されており、どのプライマリ ボリュームにも反映されていないデータが含まれている可能性があります。 プライマリ ストレージとクラウド ストレージの消費量の数値を比較して、データの削減率を把握できます。ただし、この数値は正確なものではありません。
@@ -139,6 +139,5 @@ iSCSI にのみ対応する別の 1 GbE ネットワーク インターフェイ
 
 
 ## <a name="next-steps"></a>次のステップ
-* [StorSimple デバイス マネージャー サービスのデバイス ダッシュボードを使用する](storsimple-device-dashboard.md)方法について説明します。
-* [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-manager-service-administration.md)方法について説明します。
-
+* [StorSimple デバイス マネージャー サービスのデバイス ダッシュボードを使用する](./storsimple-8000-device-dashboard.md)方法について説明します。
+* [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](./storsimple-8000-manager-service-administration.md)方法について説明します。

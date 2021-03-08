@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 9e8b009ecc2181edfaad5da3d8d05ad0c1909051
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997302"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024757"
 ---
 # <a name="voice-assistants-on-windows"></a>Windows の音声アシスタント
 
@@ -37,7 +37,7 @@ Agent Activation Runtime (AAR) は Windows で進行中のプロセスであり�
 
 ### <a name="registration"></a>登録
 
-音声でアクティブ化されたアプリケーションが初めて実行されるときに、ConversationalAgent API を介してアプリ ID とキーワード情報が登録されます。 AAR では、システム上のハードウェアまたはソフトウェアのキーワード スポッターを使用してグローバル マッピングのすべての構成が登録され、アプリケーションのキーワードが検出されるようになります。 また、アプリケーションは、[バックグラウンド サービスに登録](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)されます。
+音声でアクティブ化されたアプリケーションが初めて実行されるときに、ConversationalAgent API を介してアプリ ID とキーワード情報が登録されます。 AAR では、システム上のハードウェアまたはソフトウェアのキーワード スポッターを使用してグローバル マッピングのすべての構成が登録され、アプリケーションのキーワードが検出されるようになります。 また、アプリケーションは、[バックグラウンド サービスに登録](/windows/uwp/launch-resume/register-a-background-task)されます。
 
 これは、アプリケーションが 1 回実行されて登録が完了するまで、音声によるアクティブ化を使用できないことを意味します。
 

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: mimart
 ms.openlocfilehash: de1b67265c5c3b3f7247b7f21506eed88abfd550
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82900357"
 ---
 1. Amazon アカウントの資格情報で [Amazon 開発者コンソール](https://developer.amazon.com/dashboard)にサインインします。

@@ -4,7 +4,9 @@
   items:
     - name: Azure NetApp Files とは
       href: azure-netapp-files-introduction.md
-    - name: ストレージ階層の理解
+    - name: 新着情報
+      href: whats-new.md
+    - name: Azure NetApp Files のストレージ階層
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: クイックスタート
   expanded: true
@@ -27,12 +29,26 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Linux のパフォーマンス ベンチマーク
           href: performance-benchmarks-linux.md
+        - name: NFSv4.1 での Kerberos のパフォーマンスに対する影響
+          href: performance-impact-kerberos.md
+        - name: Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス
+          href: performance-oracle-single-volumes.md
         - name: SMB のパフォーマンスに関する FAQ
           href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp Files のコスト モデル
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files のネットワーク計画のガイドライン
       href: azure-netapp-files-network-topologies.md
+    - name: Azure NetApp Files のスナップショットのしくみ
+      href: snapshots-introduction.md
+    - name: 手動 QoS 容量プール
+      href: manual-qos-capacity-pool-introduction.md
+    - name: リージョン間レプリケーション
+      items:
+        - name: リージョン間レプリケーションについて
+          href: cross-region-replication-introduction.md
+        - name: リージョン間レプリケーションの要件と考慮事項
+          href: cross-region-replication-requirements-considerations.md
     - name: ソリューション
       items:
         - name: Azure NetApp Files を使用したソリューション アーキテクチャ
@@ -47,6 +63,10 @@
               href: solutions-windows-virtual-desktop.md
     - name: Azure NetApp Files についての FAQ
       href: azure-netapp-files-faqs.md
+    - name: Azure アプリケーション整合性スナップショット ツールとは
+      href: azacsnap-introduction.md
+    - name: ボリュームのハード クォータを変更する意味
+      href: volume-hard-quota-guidelines.md
 - name: 操作方法ガイド
   items:
     - name: Azure NetApp Files に登録する
@@ -55,8 +75,12 @@
       href: azure-netapp-files-create-netapp-account.md
     - name: 容量プールを設定する
       href: azure-netapp-files-set-up-capacity-pool.md
+    - name: 手動 QoS 容量プールを管理する
+      href: manage-manual-qos-capacity-pool.md
     - name: サブネットを Azure NetApp Files に委任する
       href: azure-netapp-files-delegate-subnet.md
+    - name: Active Directory 接続の作成と管理
+      href: create-active-directory-connections.md
     - name: NFS ボリュームの作成と管理
       items:
         - name: NFS ボリュームを作成する
@@ -81,22 +105,70 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: ボリュームのサービス レベルを動的に変更する
       href: dynamic-change-volume-service-level.md
+    - name: リージョン間レプリケーションの管理
+      items:
+        - name: ボリューム レプリケーションを作成する
+          href: cross-region-replication-create-peering.md
+        - name: レプリケーション関係の正常性状態を表示する
+          href: cross-region-replication-display-health-status.md
+        - name: ディザスター リカバリーの管理
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: ボリューム レプリケーションまたはボリュームを削除する
+          href: cross-region-replication-delete.md
     - name: 開発
       items:
         - name: REST API
           href: azure-netapp-files-develop-with-rest-api.md
         - name: PowerShell を使用した REST API
           href: develop-rest-api-powershell.md
-        - name: Azure NetApp Files SDK および CLI ツール
+        - name: SDK、CLI ツール、ARM テンプレート
           href: azure-netapp-files-sdk-cli.md
-        - name: Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング
+    - name: トラブルシューティング
+      items:
+        - name: 容量プールのトラブルシューティング
+          href: troubleshoot-capacity-pools.md
+        - name: リージョン間レプリケーションのトラブルシューティング
+          href: troubleshoot-cross-region-replication.md
+        - name: SMB またはデュアルプロトコル ボリュームのトラブルシューティング
+          href: troubleshoot-dual-protocol-volumes.md
+        - name: NFSv4.1 Kerberos ボリュームのトラブルシューティング
+          href: troubleshoot-nfsv41-kerberos-volumes.md
+        - name: スナップショット ポリシーのトラブルシューティング
+          href: troubleshoot-snapshot-policies.md
+        - name: リソース プロバイダーのエラーのトラブルシューティング
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: リファレンス
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure アプリケーション整合性スナップショット ツール (AzAcSnap)
+      items:
+        - name: AzAcSnap を使ってみる
+          href: azacsnap-get-started.md
+        - name: AzAcSnap のインストール
+          href: azacsnap-installation.md
+        - name: AzAcSnap を使用したディザスター リカバリー
+          href: azacsnap-disaster-recovery.md
+        - name: AzAcSnap を使用するためのヒントとテクニック
+          href: azacsnap-tips.md
+        - name: AzAcSnap のトラブルシューティング
+          href: azacsnap-troubleshoot.md
+        - name: AzAcSnap コマンド リファレンス
+          items:
+            - name: AzAcSnap の構成
+              href: azacsnap-cmd-ref-configure.md
+            - name: AzAcSnap のテスト
+              href: azacsnap-cmd-ref-test.md
+            - name: AzAcSnap を使用したバックアップ
+              href: azacsnap-cmd-ref-backup.md
+            - name: AzAcSnap を使用して詳細を取得する
+              href: azacsnap-cmd-ref-details.md
+            - name: AzAcSnap を使用した削除
+              href: azacsnap-cmd-ref-delete.md
+            - name: AzAcSnap を使用した復元
+              href: azacsnap-cmd-ref-restore.md
 - name: リソース
   items:
     - name: 価格

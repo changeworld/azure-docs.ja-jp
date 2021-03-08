@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b9dec0fe684e002fadbac2db375c354db2b6d01
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080014"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981172"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>メンテナンス コントロールによるプラットフォームの更新の管理 
 
@@ -23,14 +23,15 @@ ms.locfileid: "87080014"
 メンテナンス コントロールを使用すると、次のことができます。
 - 更新プログラムを 1 つの更新プログラム パッケージにまとめる。
 - 最大 35 日間待機して更新プログラムを適用する。 
-- [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler) を使用して、メンテナンス期間のプラットフォームの更新を自動化する。
+- メンテナンス スケジュールを構成するか、[Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)を使用して、プラットフォームの更新を自動化します。
 - メンテナンス構成が、複数のサブスクリプションやリソース グループ全体で機能するようにする。 
 
 ## <a name="limitations"></a>制限事項
 
-- VM は、[専用ホスト](./linux/dedicated-hosts.md)上にあるか、[分離された VM サイズ](isolation.md)を使用して作成される必要があります。
+- VM は、[専用ホスト](./dedicated-hosts.md)上にあるか、[分離された VM サイズ](isolation.md)を使用して作成される必要があります。
+- メンテナンス スケジュールが宣言されている場合、その期間は 2 時間以上であることが必要です。
 - 35 日後に、更新プログラムが自動的に適用されます。
-- ユーザーは、**リソース共同作成者**のアクセス権を持っている必要があります。
+- ユーザーは、**リソース共同作成者** のアクセス権を持っている必要があります。
 
 ## <a name="management-options"></a>管理オプション
 

@@ -1,5 +1,5 @@
 ---
-title: 検索インデックスの作成
+title: インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: スキーマ定義や物理データ構造など、Azure Cognitive Search のインデックス作成の概念とツールについて説明します。
 manager: nitinme
@@ -7,80 +7,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/15/2020
-ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 02/03/2021
+ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932884"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539096"
 ---
-# <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Azure Cognitive Search で基本検索インデックスを作成する
+# <a name="creating-search-indexes-in-azure-cognitive-search"></a>Azure Cognitive Search での検索インデックスの作成
 
-Azure Cognitive Search では、フルテキストクエリおよびフィルター適用済みクエリに使用される検索可能なコンテンツが*検索インデックス*に格納されます。 インデックスは、スキーマによって定義され、サービスに保存されます。2 番目の手順としてデータのインポートが続きます。 
+Azure Cognitive Search では、フル テキスト クエリおよびフィルター適用済みクエリに使用される検索可能なコンテンツが "*検索インデックス*" に格納されます。 インデックスは、スキーマによって定義され、サービスに保存されます。2 番目の手順としてデータのインポートが続きます。 
 
-インデックスには*ドキュメント*が含まれています。 概念的に、ドキュメントはインデックス内で検索可能なデータの 1 つの単位です。 小売業者であれば製品ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*検索インデックス*は*テーブル*と同じで、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
+インデックスには "*検索ドキュメント*" が格納されます。 概念的に、ドキュメントはインデックス内で検索可能なデータの 1 つの単位です。 小売業者であれば製品ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*検索インデックス* は *テーブル* と同じで、*ドキュメント* はテーブルにおける *行* とほぼ同じです。
 
-インデックスの物理的な構造は、スキーマによって決定されます。フィールドは "検索可能" としてマークされ、そのフィールドに対して逆インデックスが作成されます。 
+## <a name="whats-an-index-schema"></a>インデックス スキーマとは何ですか。
 
-次のツールと API を使用してインデックスを作成できます。
-
-* Azure portal で **[インデックスの追加]** または **[データのインポート]** ウィザードを使用します。
-* [Create Index (REST API)](/rest/api/searchservice/create-index) の使用
-* [.NET SDK](./search-get-started-dotnet.md) の使用
-
-ポータル ツールを使用すると、簡単に学習できます。 ポータルでは、数値フィールドに対してフルテキスト検索機能を許可しないなど、特定のデータ型に対して要件とスキーマ ルールが適用されます。 実行可能なインデックスができたら、[Get Index (REST API)](/rest/api/searchservice/get-index) を使用してサービスから JSON 定義を取得し、それをソリューションに追加することにより、コードへ移行することができます。
-
-## <a name="recommended-workflow"></a>推奨されるワークフロー
-
-最終的なインデックス設計への到達は反復的なプロセスです。 ポータルから始めて最初のインデックスを作成してから、コードに切り替えてインデックスをソース管理下に配置することが一般的です。
-
-1. [ **[データのインポート]** ](search-import-data-portal.md) を使用できるかどうかを判断します。 ソースデータが [Azure でサポートされているデータソース型](search-indexer-overview.md#supported-data-sources)である場合、オールインワン インデクサーベースのインデックス作成が実行されます。
-
-1. **[データのインポート]** を使用できない場合は、 **[インデックスの追加]** から始めてスキーマを定義します。
-
-   ![[インデックスの追加] コマンド](media/search-what-is-an-index/add-index.png "[インデックスの追加] コマンド")
-
-1. インデックス内の各検索ドキュメントを一意に識別するために使用される名前とキーを指定します。 キーは必須で、Edm.String 型でなければなりません インポート時に、ソースデータ内の一意のフィールドをこのフィールドにマッピングすることを計画する必要があります。 
-
-   ポータルでは、キーに対して `id` フィールドが提供されます。 既定の `id` をオーバーライドするには、新しいフィールドを作成し (たとえば、`HotelId` という名前の新しいフィールド定義)、 **[キー]** で選択します。
-
-   ![必須プロパティを入力する](media/search-what-is-an-index//field-attributes.png "必須プロパティを入力する")
-
-1. フィールドをさらに追加します。 ポータルでは、さまざまなデータ型に対してどの[フィールド属性](#index-attributes)が使用できるかが表示されます。 インデックスの作成が初めての場合、これが役立ちます。
-
-   受信データ自体が階層化されている場合、入れ子構造を表すために、スキーマには[複合型](search-howto-complex-data-types.md)データ型を割り当てます。 あらかじめ登録されているサンプル データ セットである Hotels (ホテル) は、各ホテルとの一対一のリレーションシップを持つ Address (複数のサブフィールドを含む) と、各ホテルに複数の部屋が関連付けられている複合型コレクションの Rooms を使用した複合型を示しています。 
-
-1. インデックスを作成する前に、[アナライザー](#analyzers)を文字列フィールドに割り当てます。 特定のフィールドでオートコンプリートを有効にする場合は、[サジェスター](#suggesters)に対して同じ操作を行います。
-
-1. 検索サービスで物理構造を構築するには、 **[作成]** をクリックします。
-
-1. インデックスが作成されたら、その他のコマンドを使用して定義を確認するか、さらに要素を追加します。
-
-   ![データ型別に属性を示すインデックス ページを追加する](media/search-what-is-an-index//field-definitions.png "データ型別に属性を示すインデックス ページを追加する")
-
-1. [Get Index REST API](/rest/api/searchservice/get-index) や、[Postman](search-get-started-postman.md) などの Web テスト ツールを使用してインデックス スキーマをダウンロードします。 これで、コードに対して適応できるインデックスの JSON 表現ができました。
-
-1. [インデックスにデータを読み込みます](search-what-is-data-import.md)。 Azure Cognitive Search によって JSON ドキュメントが受け入れられます。 プログラムによってデータを読み込むために、Postman を使用し、要求ペイロードに JSON ドキュメントを含めることができます。 データを JSON で表現することが簡単でない場合、この手順に最も多くの労力がかかります。 
-
-    インデックスがデータと共に読み込まれた後、既存のフィールドへの編集のほとんどにおいて、インデックスを削除し、再構築する必要があります。
-
-1. インデックスをクエリし、結果を確認し、期待した結果が得られるようになるまでインデックス スキーマをさらに反復処理します。 インデックスのクエリには [**Search エクスプローラー**](search-explorer.md)または Postman を使用できます。
-
-開発時に、頻繁な再構築を計画します。 物理構造はサービス内で作成されるため、既存のフィールド定義への変更のほとんどにおいて[インデックスの削除と再作成](search-howto-reindex.md)が必要です。 リビルドを高速化するために、データのサブセットを使って作業することを検討してもよいでしょう。 
-
-> [!Tip]
-> インデックスの設計とデータのインポートを同時に行う場合は、ポータル アプローチではなくコードを使用することをお勧めします。 開発プロジェクトがまだ初期段階の場合、代わりに [Postman や REST API](search-get-started-postman.md) などのツールを使用すると、概念実証テストに役立ちます。 要求本文のインデックス定義に増分的変更を加えてから要求をサービスに送信し、更新されたスキーマを使用してインデックスを再作成できます。
-
-## <a name="index-schema"></a>インデックス スキーマ
-
-インデックスでは、フィールド コレクションに名前と 1 つの指定されたキーフィールド (Edm. string) が含まれる必要があります。 "[*フィールド コレクション*](#fields-collection)" は通常、インデックスの最大の部分であり、各フィールドには、名前、型、および使用方法を決定する許容される動作を示す属性が設定されます。 
-
-その他の要素には、アナライザーでサポートされている言語ルールやその他の特性、および [CORS (cross-origin remote scripting)](#corsoptions) 設定に従って文字列をトークンへと処理するために使用される、[サジェスター](#suggesters)、[スコアリング プロファイル](#scoringprofiles)、[アナライザー](#analyzers) があります。
+インデックスの物理的な構造は、スキーマによって決まります。 "フィールド" コレクションは通常、インデックスの最大の部分であり、各フィールドには、名前、[データ型](/rest/api/searchservice/Supported-data-types)の割り当て、および使用方法を決定する許容される動作を示す属性が設定されます。
 
 ```json
 {
-  "name": (optional on PUT; required on POST) "name_of_index",
+  "name": "name_of_index, unique across the service",
   "fields": [
     {
       "name": "name_of_field",
@@ -97,90 +44,77 @@ Azure Cognitive Search では、フルテキストクエリおよびフィルタ
       "synonymMaps": [ "name_of_synonym_map" ] (optional, only one synonym map per field is currently supported)
     }
   ],
-  "suggesters": [
-    {
-      "name": "name of suggester",
-      "searchMode": "analyzingInfixMatching",
-      "sourceFields": ["field1", "field2", ...]
-    }
-  ],
-  "scoringProfiles": [
-    {
-      "name": "name of scoring profile",
-      "text": (optional, only applies to searchable fields) {
-        "weights": {
-          "searchable_field_name": relative_weight_value (positive #'s),
-          ...
-        }
-      },
-      "functions": (optional) [
-        {
-          "type": "magnitude | freshness | distance | tag",
-          "boost": # (positive number used as multiplier for raw score != 1),
-          "fieldName": "...",
-          "interpolation": "constant | linear (default) | quadratic | logarithmic",
-          "magnitude": {
-            "boostingRangeStart": #,
-            "boostingRangeEnd": #,
-            "constantBoostBeyondRange": true | false (default)
-          },
-          "freshness": {
-            "boostingDuration": "..." (value representing timespan leading to now over which boosting occurs)
-          },
-          "distance": {
-            "referencePointParameter": "...", (parameter to be passed in queries to use as reference location)
-            "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends)
-          },
-          "tag": {
-            "tagsParameter": "..." (parameter to be passed in queries to specify a list of tags to compare against target fields)
-          }
-        }
-      ],
-      "functionAggregation": (optional, applies only when functions are specified) 
-        "sum (default) | average | minimum | maximum | firstMatching"
-    }
-  ],
+  "suggesters": [ ],
+  "scoringProfiles": [ ],
   "analyzers":(optional)[ ... ],
   "charFilters":(optional)[ ... ],
   "tokenizers":(optional)[ ... ],
   "tokenFilters":(optional)[ ... ],
   "defaultScoringProfile": (optional) "...",
-  "corsOptions": (optional) {
-    "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
-    "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
-  },
-  "encryptionKey":(optional){
-    "keyVaultUri": "azure_key_vault_uri",
-    "keyVaultKeyName": "name_of_azure_key_vault_key",
-    "keyVaultKeyVersion": "version_of_azure_key_vault_key",
-    "accessCredentials":(optional){
-      "applicationId": "azure_active_directory_application_id",
-      "applicationSecret": "azure_active_directory_application_authentication_key"
-    }
+  "corsOptions": (optional) { },
+  "encryptionKey":(optional){ }
   }
 }
 ```
 
-<a name="fields-collection"></a>
+その他の要素は簡潔にするために折りたたまれていますが、[suggester](index-add-suggesters.md)、[スコアリング プロファイル](index-add-scoring-profiles.md)、[アナライザー](search-analyzers.md)の各リンクから詳細を得ることができます。これらは、アナライザーによってサポートされる言語規則やその他の特性と、[クロス オリジン リモート スクリプティング (CORS)](#corsoptions) 設定に従って文字列をトークンに処理するために使用されます。
 
-## <a name="fields-collection-and-field-attributes"></a>フィールド コレクションとフィールド属性
+## <a name="choose-a-client"></a>クライアントを選択する
 
-フィールドには、名前、格納されたデータを分類する型、およびフィールドの使用方法を指定する属性があります。
+検索インデックスを作成するには、いくつかの方法があります。 早期の開発と概念実証のテストには、Azure portal または REST API をお勧めします。
 
-### <a name="data-types"></a>データ型
+開発時に、頻繁な再構築を計画します。 物理構造はサービス内で作成されるため、既存のフィールド定義への変更のほとんどにおいて[インデックスの削除と再作成](search-howto-reindex.md)が必要です。 リビルドを高速化するために、データのサブセットを使って作業することを検討してもよいでしょう。
 
-| Type | 説明 |
-|------|-------------|
-| Edm.String |フルテキスト検索 (単語区切り、ステミングなど) のために必要に応じてトークン化できるテキスト。 |
-| Collection(Edm.String) |フルテキスト検索のために必要に応じてトークン化することのできる一連の文字列。 コレクション内の項目の数に理論上の上限はありませんが、ペイロードのサイズに対する 16 MB の上限がコレクションに適用されます。 |
-| Edm.Boolean |true または false の値が含まれます。 |
-| Edm.Int32 |32 ビット整数値です。 |
-| Edm.Int64 |64 ビット整数値です。 |
-| Edm.Double |倍精度数値データです。 |
-| Edm.DateTimeOffset |OData V4 形式で表された日時の値です (例: `yyyy-MM-ddTHH:mm:ss.fffZ` または `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`)。 |
-| Edm.GeographyPoint |地球上の地理的な場所を表すポイントです。 |
+### <a name="permissions"></a>アクセス許可
 
-詳細については、[サポートされているデータ型](/rest/api/searchservice/Supported-data-types)に関するページを参照してください。
+GET 要求を含む、検索インデックスに関連するすべての操作では、要求に対して 1 つの[管理者 API キー](search-security-api-keys.md)が必要です。
+
+### <a name="limits"></a>制限
+
+作成できるオブジェクトの数が、すべての[サービス レベルで制限](search-limits-quotas-capacity.md#index-limits)されています。 Free レベルを試している場合は、所定の期間内に 3 つのインデックスのみを作成できます。
+
+### <a name="use-azure-portal-to-create-a-search-index"></a>Azure portal を使用して検索インデックスを作成する
+
+ポータルには、検索インデックスを作成するための次の 2 つのオプションが用意されています。[**データのインポート ウィザード**](search-import-data-portal.md)と **インデックスの追加** によって、インデックス スキーマを指定するためのフィールドが提供されます。 ウィザードでは、インデクサー、データソース、およびデータの読み込みも作成することにより、追加の操作が組み込まれます。 これだと目的よりも機能が多い場合は、**インデックスの追加** または別の方法を使用する必要があります。
+
+次のスクリーンショットは、ポータルで **インデックスの追加** 機能が見つかる場所を示したものです。 **データのインポート** がすぐそばにあります。
+
+  :::image type="content" source="media/search-what-is-an-index/add-index.png" alt-text="[インデックスの追加] コマンド" border="true":::
+
+> [!Tip]
+> ポータルを使用したインデックスの設計では、数値フィールドに対してフルテキスト検索機能を許可しないなど、特定のデータ型に対して要件とスキーマ ルールが適用されます。 機能するインデックスを作成したら、ポータルから JSON をコピーして、ソリューションに追加できます。
+
+### <a name="use-a-rest-client"></a>REST クライアントを使用する
+
+Postman と Visual Studio Code (Azure Cognitive Search 用の拡張機能を備えているもの) はどちらも、検索インデックス クライアントとして機能できます。 どちらのツールを使用しても、検索サービスに接続し、[インデックスを作成する (REST)](/rest/api/searchservice/create-index) 要求を送信できます。 REST クライアントを使用してオブジェクトを作成する方法がわかるチュートリアルと例が多数提供されています。 
+
+各クライアントの詳細については、最初に次のいずれかの記事を参照してください。
+
++ [REST と Postman を使用して検索インデックスを作成する](search-get-started-rest.md)
++ [Visual Studio Code と Azure Cognitive Search の使用を開始する](search-get-started-vs-code.md)
+
+インデックス要求を整理する方法については、「[インデックス操作 (REST)](/rest/api/searchservice/index-operations)」を参照してください。
+
+### <a name="use-an-sdk"></a>SDK を使用する
+
+Cognitive Search の場合、一般公開される機能は Azure SDK によって実装されています。 そのため、いずれかの SDK を使用して検索インデックスを作成できます。 これらのすべてに、インデックスを作成および更新するためのメソッドを含む **SearchIndexClient** が用意されています。
+
+| Azure SDK | Client | 例 |
+|-----------|--------|----------|
+| .NET | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [azure-search-dotnet-samples/quickstart/v11/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) |
+| Java | [SearchIndexClient](/java/api/com.azure.search.documents.indexes.searchindexclient) | [CreateIndexExample.java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) |
+| JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [インデックス](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
+| Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
+
+## <a name="define-fields"></a>フィールドを定義する
+
+検索ドキュメントは、`fields` コレクションによって定義されます。 クエリとキーのフィールドが必要になります。 また、フィルター、ファセット、および並べ替えをサポートするフィールドが必要になる場合もあります。 また、ユーザーに表示されないデータのフィールドが必要な場合もあります。たとえば、利益幅やマーケティング プロモーションのためのフィールドを作成して、検索順位の変更に使用できます。
+
+Edm.String 型の 1 つのフィールドをドキュメント キーとして指定する必要があります。 これは、各検索ドキュメントを一意に識別するために使用されます。 キーを使用してドキュメントを取得し、詳細ページを設定できます。  
+
+受信データ自体が階層化されている場合、入れ子構造を表すために、スキーマには[複合型](search-howto-complex-data-types.md)データ型を割り当てます。 あらかじめ登録されているサンプル データ セットである Hotels (ホテル) は、各ホテルとの一対一のリレーションシップを持つ Address (複数のサブフィールドを含む) と、各ホテルに複数の部屋が関連付けられている複合型コレクションの Rooms を使用した複合型を示しています。 
+
+インデックスを作成する前に、アナライザーを文字列フィールドに割り当てます。 特定のフィールドでオートコンプリートを有効にする場合は、サジェスターに対して同じ操作を行います。
 
 <a name="index-attributes"></a>
 
@@ -204,19 +138,30 @@ Azure Cognitive Search では、フルテキストクエリおよびフィルタ
 > [!NOTE]
 > インデックスの作成に使用する API には、さまざまな既定の動作があります。 [REST API](/rest/api/searchservice/Create-Index) の場合、ほとんどの属性は既定で有効であり (たとえば、文字列フィールドの "searchable" および "retrievable" は true です)、無効にする場合は、単にそれらを設定するだけです。 .NET SDK の場合は、逆のことが言えます。 明示的に設定していないプロパティの場合、既定では、特に有効にしない限り、対応する検索動作は無効にされています。
 
-## `analyzers`
+<a name="index-size"></a>
 
-アナライザー要素では、フィールドに対して使用される言語アナライザーの名前が設定されます。 利用可能なアナライザーの範囲の詳細については、[Azure Cognitive Search インデックスへのアナライザーの追加](search-analyzers.md)に関する記事を参照してください。 アナライザーは検索可能フィールドでのみ使用できます。 フィールドに割り当てられたアナライザーは、インデックスを再構築しない限り変更できません。
+## <a name="attributes-and-index-size-storage-implications"></a>属性とインデックスのサイズ (ストレージへの影響)
 
-## `suggesters`
+インデックスのサイズは、アップロードするドキュメントのサイズと、suggester を含めるかどうかや、個々のフィールドに属性を設定する方法など、インデックス構成によって決定されます。 
 
-suggester は、検索においてオートコンプリートまたは先行入力クエリをサポートするために使用されるインデックス内のフィールドが定義されている、スキーマのセクションです。 通常、ユーザーが検索クエリを入力している間に部分的な検索文字列が [Suggestions (REST API)](/rest/api/searchservice/suggestions) に送信されて、API から検索候補のドキュメントまたは語句のセットが返されます。 
+次のスクリーンショットは、属性のさまざまな組み合わせの結果であるインデックス格納パターンを示しています。 インデックスは **不動産サンプルインデックス** に基づいています。これは、データのインポート ウィザードを使用して簡単に作成できます。 インデックスのスキーマは表示されませんが、インデックス名に基づいて属性を推測できます。 たとえば、*realestate-searchable* インデックスでは "searchable" 属性が選択されていて他には何もなく、*realestate-retrievable* インデックスでは "retrievable" 属性が選択されていて他には何もなく、以下同様です。
 
-サジェスターに追加されるフィールドは、先行入力検索語句の構築に使用されます。 すべての検索語句はインデックス作成時に作成され、個別に格納されます。 サジェスター構造の作成の詳細については、[サジェスターの追加](index-add-suggesters.md)に関する記事を参照してください。
+![属性の選択に基づいたインデックス サイズ](./media/search-what-is-an-index/realestate-index-size.png "属性の選択に基づいたインデックス サイズ")
 
-## `corsOptions`
+これらのインデックスのバリエーションは人為的なものですが、属性がストレージに与える影響の広範な比較のために参照できます。 設定 "retrievable" はインデックスのサイズを増加させますか? いいえ。 **suggester** にフィールドを追加するとインデックスのサイズが増加しますか? はい。 
 
-ブラウザーではすべてのクロスオリジン要求が禁止されるので、既定ではクライアント側 JavaScript で API を呼び出すことはできません。 インデックスに対するクロスオリジン クエリを許可するには、**corsOptions** 属性を設定することによって、CORS (クロスオリジン リソース共有) を有効にします。 セキュリティ上の理由から、CORS がサポートされているのはクエリ API だけです。 
+フィルター処理されたフィールドと並べ替え済みのフィールドは、文字シーケンスを逐語的に照合できるようにトークン化されないため、フィールドをフィルター設定または並べ替え可能にすると、ストレージ消費量も増大します。
+
+また、上記の表に反映されていない事柄に、[アナライザー](search-analyzers.md)の影響があります。 edgeNgram トークナイザーを使用して逐語的な文字シーケンス (a、ab、abc、abcd) を格納した場合、インデックスのサイズは、標準アナライザーを使用した場合よりも大きくなります。
+
+> [!Note]
+> ストレージ アーキテクチャは Azure Cognitive Search の実装の詳細と考えられており、予告なく変更されることがあります。 現在の動作が将来も変わらないという保証はありません。
+
+<a name="corsoptions"></a>
+
+## <a name="about-corsoptions"></a>`corsOptions` のバージョン情報
+
+インデックス スキーマには、`corsOptions` を設定するためのセクションが含まれます。 ブラウザーではすべてのクロスオリジン要求が禁止されるので、既定ではクライアント側 JavaScript で API を呼び出すことはできません。 インデックスに対するクロスオリジン クエリを許可するには、**corsOptions** 属性を設定することによって、CORS (クロスオリジン リソース共有) を有効にします。 セキュリティ上の理由から、CORS がサポートされているのはクエリ API だけです。 
 
 CORS に対しては以下のオプションを設定できます。
 
@@ -226,36 +171,12 @@ CORS に対しては以下のオプションを設定できます。
 
 + **maxAgeInSeconds** (省略可能):ブラウザーでは、この値を使用して、CORS プレフライト応答をキャッシュする期間 (秒) が決定されます。 負ではない整数を指定する必要があります。 この値が大きいほどパフォーマンスはよくなりますが、CORS ポリシーの変更が有効になるまでの時間は長くなります。 これを設定しないと、既定の期間として 5 分が使用されます。
 
-## `scoringProfiles`
-
-[スコアリング プロファイル](index-add-scoring-profiles.md)は、検索結果での項目の表示順序を変更できるカスタム スコアリング動作が定義されている、スキーマのセクションです。 スコアリング プロファイルは、フィールドの重みと関数で構成されます。 使用するには、クエリ文字列にプロファイル名を指定します。
-
-既定のスコアリング プロファイルはバックグラウンドで実行され、検索セットの各項目の検索スコアがコンピューティングされます。 内部的な名前のないスコアリング プロファイルを使用できます。 または、クエリ文字列にカスタム プロファイルが指定されていない場合に常に呼び出される既定値として、カスタム プロファイルを使用するように **defaultScoringProfile** を設定します。
-
-<a name="index-size"></a>
-
-## <a name="attributes-and-index-size-storage-implications"></a>属性とインデックスのサイズ (ストレージへの影響)
-
-インデックスのサイズは、アップロードするドキュメントのサイズと、suggester を含めるかどうかや、個々のフィールドに属性を設定する方法など、インデックス構成によって決定されます。 
-
-次のスクリーンショットは、属性のさまざまな組み合わせの結果であるインデックス格納パターンを示しています。 インデックスは**不動産サンプルインデックス**に基づいています。これは、データのインポート ウィザードを使用して簡単に作成できます。 インデックスのスキーマは表示されませんが、インデックス名に基づいて属性を推測できます。 たとえば、*realestate-searchable* インデックスでは "searchable" 属性が選択されていて他には何もなく、*realestate-retrievable* インデックスでは "retrievable" 属性が選択されていて他には何もなく、以下同様です。
-
-![属性の選択に基づいたインデックス サイズ](./media/search-what-is-an-index/realestate-index-size.png "属性の選択に基づいたインデックス サイズ")
-
-これらのインデックスのバリエーションは人為的なものですが、属性がストレージに与える影響の広範な比較のために参照できます。 設定 "retrievable" はインデックスのサイズを増加させますか? いいえ。 **suggester** にフィールドを追加するとインデックスのサイズが増加しますか? はい。
-
-フィルターと並べ替えをサポートするインデックスは、フルテキスト検索しかサポートしないインデックスに比べてその分だけ大きくなります。 これは、フィルター操作と並べ替え操作では完全一致が調べられ、逐語的テキスト文字列の存在が必要になるためです。 これに対し、フルテキスト クエリをサポートする検索可能フィールドでは転置インデックスを使用します。転置インデックスはトークン化された語句によって事前設定され、使用するディスク容量はドキュメント全体よりも少なくなります。 
-
-> [!Note]
-> ストレージ アーキテクチャは Azure Cognitive Search の実装の詳細と考えられており、予告なく変更されることがあります。 現在の動作が将来も変わらないという保証はありません。
-
 ## <a name="next-steps"></a>次のステップ
 
-インデックスの構成を理解したなら、続けてポータルで最初のインデックスを作成できます。 **[データのインポート]** ウィザードから始め、ホステッド データ ソースの *realestate-us-sample* または *hotels-sample* を選択することをお勧めします。
+Azure Cognitive Search のインデックスの作成には、ほぼどのサンプルまたはチュートリアルを使用しても、実践の参考にできます。 まず、目次から任意のクイックスタートを選択できます。
 
-> [!div class="nextstepaction"]
-> [データのインポート ウィザード (ポータル)](search-get-started-portal.md)
+ただし、データを使用してインデックスを読み込む方法についても理解しておく必要があります。 インデックスの定義とデータのインポートの方法は、連携して定義されます。 次の記事では、インデックスの読み込みの詳細について説明します。
 
-両方のデータ セットについて、ウィザードでは、インデックス スキーマを推測し、データをインポートし、検索エクスプローラーを使用してクエリを実行できる検索可能インデックスを出力できます。 これらのデータ ソースは、 **[データのインポート]** ウィザードの **[データへの接続]** ページにあります。
++ [データ インポートの概要](search-what-is-data-import.md)
 
-   ![サンプル インデックスを作成する](media/search-what-is-an-index//import-wizard-sample-data.png "サンプル インデックスを作成する")
++ [ドキュメントの追加、更新、削除 (REST)](/rest/api/searchservice/addupdate-or-delete-documents) 

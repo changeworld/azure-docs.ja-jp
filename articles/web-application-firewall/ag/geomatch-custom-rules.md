@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83744299"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Geomatch カスタム規則 (プレビュー)
@@ -59,7 +59,7 @@ Geomatch 演算子を使用する場合、セレクターは次の 2 桁の国�
 | BW | ボツワナ|
 | BY | ベラルーシ|
 | BZ | ベリーズ|
-| CA | カナダ|
+| CA | Canada|
 | CD | コンゴ民主共和国|
 | CF | 中央アフリカ共和国|
 | CH | スイス|
@@ -195,7 +195,7 @@ Geomatch 演算子を使用する場合、セレクターは次の 2 桁の国�
 | TZ | タンザニア|
 | UA | ウクライナ|
 | UG | ウガンダ|
-| US | 米国|
+| US | United States|
 | UY | ウルグアイ|
 | UZ | ウズベキスタン|
 | VC | セントビンセント及びグレナディーン諸島|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121746"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する
 
@@ -28,15 +28,15 @@ ms.locfileid: "84769875"
 
 Azure Sentinel を使用すると、組織で使用されている脅威インジケーターをインポートでき、これにより、既知の脅威を検出して優先順位を付けるというセキュリティ アナリストの能力が高まります。 Azure Sentinel の複数の機能が利用可能になるか、強化されます。
 
-- **分析**には、一連のスケジュールされた規則テンプレートが含まれており、これを有効にすると、脅威インジケーターからのログ イベントの一致に基づいてアラートとインシデントを生成できます。
+- **分析** には、一連のスケジュールされた規則テンプレートが含まれており、これを有効にすると、脅威インジケーターからのログ イベントの一致に基づいてアラートとインシデントを生成できます。
 
-- **ブック**では、Azure Sentinel にインポートされた脅威インジケーターと脅威インジケーターと一致する分析ルールから生成されたアラートに関する概要情報が提供されます。
+- **ブック** では、Azure Sentinel にインポートされた脅威インジケーターと脅威インジケーターと一致する分析ルールから生成されたアラートに関する概要情報が提供されます。
 
 - **ハンティング**  クエリを使用すると、セキュリティの調査担当は、一般的な捜索シナリオのコンテキスト内で脅威インジケーターを使用できるようになります。
 
-- **ノートブック**では、異常を調査し、悪意のある動作を捜索するときに、脅威インジケーターを使用できます。
+- **ノートブック** では、異常を調査し、悪意のある動作を捜索するときに、脅威インジケーターを使用できます。
 
-次のセクションの一覧に示されている統合された脅威インテリジェンス プラットフォーム (TIP) 製品を使用するか、TAXII サーバーに接続するか、[Microsoft Graph Security Indicators API](https://aka.ms/graphsecuritytiindicators) との直接統合を使用することで、脅威インジケーターを Azure Sentinel にストリーミングできます。
+次のセクションの一覧に示されている統合された脅威インテリジェンス プラットフォーム (TIP) 製品を使用するか、TAXII サーバーに接続するか、[Microsoft Graph Security Indicators API](/graph/api/resources/tiindicator) との直接統合を使用することで、脅威インジケーターを Azure Sentinel にストリーミングできます。
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>統合された脅威インテリジェンス プラットフォーム製品
 
@@ -56,16 +56,21 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 
     詳細については、[ThreatConnect の Integration](https://threatconnect.com/integrations/) ページに移動し、Microsoft Graph Security API を探してください。
 
+- [EclecticIQ Platform](https://www.eclecticiq.com/solutions)
+
+- [ThreatQ Threat Intelligence Platform](https://www.threatq.com/)
+
+    詳細およびガイド付きの手順については、[ThreatQ 統合用の Microsoft Sentinel コネクタ](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=Overview)に関する記事を参照してください。
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure Sentinel を脅威インテリジェンス プラットフォームに接続する
 
-## <a name="prerequisites"></a>前提条件  
+### <a name="prerequisites"></a>前提条件  
 
 - Microsoft Graph Security tiIndicators API との直接統合を使用する TIP 製品またはカスタム アプリケーションにアクセス許可を付与するための、グローバル管理者またはセキュリティ管理者の Azure AD ロール。
 
 - 脅威インジケーターを格納するための、Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可。
 
-## <a name="instructions"></a>Instructions
+### <a name="instructions"></a>Instructions
 
 1. Azure Active Directory に[アプリケーションを登録](/graph/auth-v2-service#1-register-your-app)して、アプリケーション ID、アプリケーションシークレット、Azure Active Directory テナント ID を取得します。 Microsoft Graph Security tiIndicators API との直接統合を使用する統合された TIP 製品またはアプリケーションを構成するときに、これらの値が必要になります。
 
@@ -89,13 +94,13 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel を TAXII サーバーに接続する
 
-## <a name="prerequisites"></a>前提条件  
+### <a name="prerequisites"></a>前提条件
 
 - 脅威インジケーターを格納するための、Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可。
 
 - TAXII 2.0 サーバー URI とコレクション ID。
 
-## <a name="instructions"></a>Instructions
+### <a name="instructions"></a>Instructions
 
 1. Azure portal で、 **[Azure Sentinel]**  >  **[データ コネクタ]** に移動し、 **[脅威インテリジェンス - TAXII (プレビュー)]** コネクタを選択します。
 
@@ -114,4 +119,4 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 このドキュメントでは、Azure Sentinel に脅威インテリジェンス プロバイダーを接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。

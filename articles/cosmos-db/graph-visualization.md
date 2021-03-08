@@ -1,20 +1,21 @@
 ---
 title: Azure Cosmos DB Gremlin API でのグラフ データの視覚化
 description: Azure Cosmos DB グラフ データを視覚化ソリューション (Linkurious Enterprise、Cambridge Intelligence) と統合する方法について説明します。
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 569c87a7753fdb0d7b880d6856d7819ff8000ccb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261785"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129611"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Azure Cosmos DB Gremlin API で保存されたグラフ データをデータ視覚化ソリューションを使用して視覚化する
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB Gremlin API で保存されたデータを、さまざまなデータ視覚化ソリューションを使用して視覚化することができます。 以下のソリューションは、[Apache Tinkerpop コミュニティ](https://tinkerpop.apache.org/#poweredby)がグラフ データの視覚化用に推奨しているものです。
 
@@ -38,15 +39,15 @@ Linkurious Enterprise のインタラクティブなインターフェイスに�
 
 - [React 開発者向けの Re-Graph](https://cambridge-intelligence.com/regraph/)
 
-:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Cambridge Intelligence のデモ" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="アニメーションには、さまざまな詳細レベルでの KeyLines の視覚化の例が示されています。" border="false":::
 
 これらのツールキットを使用すると、ご自身のユース ケースに合わせてハイ パフォーマンスなグラフ視覚化および分析アプリケーションを設計できます。 強力な Web Graphics Library (WebGL) 描画と注意深く作成されたコードを利用して、高速で洞察に富んだ視覚化エクスペリエンスがユーザーに提供されます。 これらのツールはあらゆるブラウザー、デバイス、サーバー、データベースと互換性があり、ステップバイステップのチュートリアル、完全にドキュメント化された API、インタラクティブなデモが用意されています。
 
-:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Cambridge Intelligence のデモ" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="アニメーションには、さまざまな詳細レベルでの Re-Graph の視覚化の例が示されています。" border="false":::
 
 
 ## <a name="next-steps"></a>次のステップ
- 
+
 - [ツールキットを試してみる](https://cambridge-intelligence.com/try/)
 - [KeyLines テクノロジの概要](https://cambridge-intelligence.com/keylines/technology/)
 - [Re-Graph テクノロジの概要](https://cambridge-intelligence.com/regraph/technology/)

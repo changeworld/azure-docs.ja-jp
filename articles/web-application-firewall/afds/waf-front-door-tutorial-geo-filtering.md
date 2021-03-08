@@ -1,6 +1,6 @@
 ---
 title: Azure Front Door サービスの geo フィルタリング Web アプリケーション ファイアウォール ポリシーを構成する
-description: このチュートリアルでは、geo フィルタリング ポリシーを作成して、既存の Front Door フロントエンド ホストに関連付ける方法について学習します
+description: このチュートリアルでは、geo フィルタリング ポリシーを作成して、既存の Front Door フロントエンド ホストに関連付ける方法について学習します。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: fd38d900285f6cda0c98dd1f49076ea04180b18c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 479b1d8ed1f4238486bb78e33a6139463578dbba
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068307"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563309"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Front Door に使用する geo フィルタリング WAF ポリシーを設定する
 
@@ -25,9 +25,9 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 geo フィルター ポリシーの設定を開始する前に、PowerShell 環境を設定して Front Door プロファイルを作成します。
 ### <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
-Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使う一連のコマンドレットが用意されています。 
+Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](../../azure-resource-manager/management/overview.md) モデルを使う一連のコマンドレットが用意されています。 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
+[Azure PowerShell](/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>サインインのための対話型ダイアログを使用して Azure に接続する
 

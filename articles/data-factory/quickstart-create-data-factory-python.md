@@ -1,24 +1,20 @@
 ---
 title: クイック スタート:Python を使用して Azure データ ファクトリを作成する
-description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+description: データ ファクトリを使用して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 01/15/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f92a09e78d65f3723b9dfa83574f603dc113ebeb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873298"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372367"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -32,7 +28,7 @@ ms.locfileid: "87873298"
 
 Azure Data Factory は、データドリブン型のワークフローを作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使用すると、パイプラインと呼ばれるデータ駆動型ワークフローを作成し、スケジュールを設定できます。
 
-パイプラインは、さまざまなデータ ストアからデータを取り込むことができます。 パイプラインは、Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使ってデータを処理または変換します。 その出力データは Azure SQL Data Warehouse などのデータ ストアに発行され、ビジネス インテリジェンス (BI) アプリケーションから利用することができます。
+パイプラインは、さまざまなデータ ストアからデータを取り込むことができます。 パイプラインは、Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使ってデータを処理または変換します。 パイプラインは、ビジネス インテリジェンス (BI) アプリケーションで使用できるように、Azure Synapse Analytics などのデータ ストアに出力データを公開します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +40,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (省略可)。
 
-* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。
+* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、このアプリケーションを **共同作成者** ロールに割り当てます。
 
 ## <a name="create-and-upload-an-input-file"></a>入力ファイルを作成およびアップロードする
 
@@ -58,7 +54,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 ## <a name="install-the-python-package"></a>Python パッケージをインストールする
 
-1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
+1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
 2. まず、Azure 管理リソースの Python パッケージをインストールします。
 
     ```python
@@ -72,12 +68,20 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
     [Data Factory 用の Python SDK](https://github.com/Azure/azure-sdk-for-python) では、Python 2.7、3.3、3.4、3.5、3.6、および 3.7 がサポートされています。
 
+4. Azure Identity Authentication 用の Python パッケージをインストールするには、次のコマンドを実行します。
+
+    ```python
+    pip install azure-identity
+    ```
+    > [!NOTE] 
+    > "azure-identity" パッケージは、いくつかの共通の依存関係に関して、"azure-cli" と競合する可能性があります。 認証の問題が発生した場合は、"azure-cli" とその依存関係を削除するか、"azure-cli" パッケージがインストールされていないクリーン マシンを使用して解決してください。
+    
 ## <a name="create-a-data-factory-client"></a>データ ファクトリ クライアントを作成する
 
 1. **datafactory.py** という名前のファイルを作成します。 次のステートメントを追加して、名前空間への参照を追加します。
 
     ```python
-    from azure.common.credentials import ServicePrincipalCredentials
+    from azure.identity import ClientSecretCredential 
     from azure.mgmt.resource import ResourceManagementClient
     from azure.mgmt.datafactory import DataFactoryManagementClient
     from azure.mgmt.datafactory.models import *
@@ -122,26 +126,26 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
     def main():
 
         # Azure subscription ID
-        subscription_id = '<Specify your Azure Subscription ID>'
+        subscription_id = '<subscription ID>'
 
         # This program creates this resource group. If it's an existing resource group, comment out the code that creates the resource group
-        rg_name = 'ADFTutorialResourceGroup'
+        rg_name = '<resource group>'
 
         # The data factory name. It must be globally unique.
-        df_name = '<Specify a name for the data factory. It must be globally unique>'
+        df_name = '<factory name>'
 
         # Specify your Active Directory client ID, client secret, and tenant ID
-        credentials = ServicePrincipalCredentials(client_id='<Active Directory application/client ID>', secret='<client secret>', tenant='<Active Directory tenant ID>')
+        credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
         resource_client = ResourceManagementClient(credentials, subscription_id)
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 
-        rg_params = {'location':'eastus'}
-        df_params = {'location':'eastus'}
+        rg_params = {'location':'westus'}
+        df_params = {'location':'westus'}
     ```
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-**データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。 リソース グループが既に存在する場合は、最初の `create_or_update` ステートメントをコメント アウトします。
+**データ ファクトリ** を作成する次のコードを **Main** メソッドに追加します。 リソース グループが既に存在する場合は、最初の `create_or_update` ステートメントをコメント アウトします。
 
 ```python
     # create the resource group
@@ -149,7 +153,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
     resource_client.resource_groups.create_or_update(rg_name, rg_params)
 
     #Create a data factory
-    df_resource = Factory(location='eastus')
+    df_resource = Factory(location='westus')
     df = adf_client.factories.create_or_update(rg_name, df_name, df_resource)
     print_item(df)
     while df.provisioning_state != 'Succeeded':
@@ -159,18 +163,18 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
 
-**Azure Storage のリンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
+**Azure Storage のリンクされたサービス** を作成する次のコードを **Main** メソッドに追加します。
 
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このクイックスタートでは、コピー ソースとシンク ストアの両方として、Azure Storage のリンクされたサービスを 1 つ作成するだけで済みます。このサービスは、サンプルでは "AzureStorageLinkedService" という名前です。 `<storageaccountname>` と `<storageaccountkey>` を、Azure ストレージ アカウントの名前とキーで置き換えます。
 
 ```python
     # Create an Azure Storage linked service
-    ls_name = 'storageLinkedService'
+    ls_name = 'storageLinkedService001'
 
     # IMPORTANT: specify the name and key of your Azure Storage account.
-    storage_string = SecureString(value='DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<storageaccountkey>')
+    storage_string = SecureString(value='DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;EndpointSuffix=<suffix>')
 
-    ls_azure_storage = AzureStorageLinkedService(connection_string=storage_string)
+    ls_azure_storage = LinkedServiceResource(properties=AzureStorageLinkedService(connection_string=storage_string)) 
     ls = adf_client.linked_services.create_or_update(rg_name, df_name, ls_name, ls_azure_storage)
     print_item(ls)
 ```
@@ -188,10 +192,12 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
     # Create an Azure blob dataset (input)
     ds_name = 'ds_in'
     ds_ls = LinkedServiceReference(reference_name=ls_name)
-    blob_path= 'adfv2tutorial/input'
-    blob_filename = 'input.txt'
-    ds_azure_blob= AzureBlobDataset(linked_service_name=ds_ls, folder_path=blob_path, file_name = blob_filename)
-    ds = adf_client.datasets.create_or_update(rg_name, df_name, ds_name, ds_azure_blob)
+    blob_path = '<container>/<folder path>'
+    blob_filename = '<file name>'
+    ds_azure_blob = DatasetResource(properties=AzureBlobDataset(
+        linked_service_name=ds_ls, folder_path=blob_path, file_name=blob_filename)) 
+    ds = adf_client.datasets.create_or_update(
+        rg_name, df_name, ds_name, ds_azure_blob)
     print_item(ds)
 ```
 
@@ -204,15 +210,16 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 ```python
     # Create an Azure blob dataset (output)
     dsOut_name = 'ds_out'
-    output_blobpath = 'adfv2tutorial/output'
-    dsOut_azure_blob = AzureBlobDataset(linked_service_name=ds_ls, folder_path=output_blobpath)
-    dsOut = adf_client.datasets.create_or_update(rg_name, df_name, dsOut_name, dsOut_azure_blob)
+    output_blobpath = '<container>/<folder path>'
+    dsOut_azure_blob = DatasetResource(properties=AzureBlobDataset(linked_service_name=ds_ls, folder_path=output_blobpath))
+    dsOut = adf_client.datasets.create_or_update(
+        rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 ```
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-**コピー アクティビティが含まれているパイプライン**を作成する次のコードを **Main** メソッドに追加します。
+**コピー アクティビティが含まれているパイプライン** を作成する次のコードを **Main** メソッドに追加します。
 
 ```python
     # Create a copy activity
@@ -233,10 +240,10 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 
 ## <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
 
-**パイプラインの実行をトリガーする**次のコードを **Main** メソッドに追加します。
+**パイプラインの実行をトリガーする** 次のコードを **Main** メソッドに追加します。
 
 ```python
-    #Create a pipeline run.
+    # Create a pipeline run
     run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name, parameters={})
 ```
 
@@ -245,9 +252,10 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 パイプラインの実行を監視するには、次のコードを **Main** メソッドに追加します。
 
 ```python
-    #Monitor the pipeline run
+    # Monitor the pipeline run
     time.sleep(30)
-    pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
+    pipeline_run = adf_client.pipeline_runs.get(
+        rg_name, df_name, run_response.run_id)
     print("\n\tPipeline run status: {}".format(pipeline_run.status))
     filter_params = RunFilterParameters(
         last_updated_after=datetime.now() - timedelta(1), last_updated_before=datetime.now() + timedelta(1))
@@ -269,13 +277,12 @@ main()
 完全な Python コードを次に示します。
 
 ```python
-from azure.common.credentials import ServicePrincipalCredentials
+from azure.identity import ClientSecretCredential 
 from azure.mgmt.resource import ResourceManagementClient
 from azure.mgmt.datafactory import DataFactoryManagementClient
 from azure.mgmt.datafactory.models import *
 from datetime import datetime, timedelta
 import time
-
 
 def print_item(group):
     """Print an Azure object instance."""
@@ -287,28 +294,22 @@ def print_item(group):
         print("\tTags: {}".format(group.tags))
     if hasattr(group, 'properties'):
         print_properties(group.properties)
-    print("\n")
-
 
 def print_properties(props):
     """Print a ResourceGroup properties instance."""
     if props and hasattr(props, 'provisioning_state') and props.provisioning_state:
         print("\tProperties:")
         print("\t\tProvisioning State: {}".format(props.provisioning_state))
-    print("\n")
-
+    print("\n\n")
 
 def print_activity_run_details(activity_run):
     """Print activity run details."""
     print("\n\tActivity run details\n")
     print("\tActivity run status: {}".format(activity_run.status))
     if activity_run.status == 'Succeeded':
-        print("\tNumber of bytes read: {}".format(
-            activity_run.output['dataRead']))
-        print("\tNumber of bytes written: {}".format(
-            activity_run.output['dataWritten']))
-        print("\tCopy duration: {}".format(
-            activity_run.output['copyDuration']))
+        print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))
+        print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))
+        print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
     else:
         print("\tErrors: {}".format(activity_run.error['message']))
 
@@ -316,29 +317,28 @@ def print_activity_run_details(activity_run):
 def main():
 
     # Azure subscription ID
-    subscription_id = '<your Azure subscription ID>'
+    subscription_id = '<subscription ID>'
 
     # This program creates this resource group. If it's an existing resource group, comment out the code that creates the resource group
-    rg_name = '<Azure resource group name>'
+    rg_name = '<resource group>'
 
     # The data factory name. It must be globally unique.
-    df_name = '<Your data factory name>'
+    df_name = '<factory name>'
 
     # Specify your Active Directory client ID, client secret, and tenant ID
-    credentials = ServicePrincipalCredentials(
-        client_id='<Active Directory client ID>', secret='<client secret>', tenant='<tenant ID>')
+    credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
     resource_client = ResourceManagementClient(credentials, subscription_id)
     adf_client = DataFactoryManagementClient(credentials, subscription_id)
 
-    rg_params = {'location': 'eastus'}
-    df_params = {'location': 'eastus'}
-
+    rg_params = {'location':'westus'}
+    df_params = {'location':'westus'}
+ 
     # create the resource group
     # comment out if the resource group already exits
     resource_client.resource_groups.create_or_update(rg_name, rg_params)
 
     # Create a data factory
-    df_resource = Factory(location='eastus')
+    df_resource = Factory(location='westus')
     df = adf_client.factories.create_or_update(rg_name, df_name, df_resource)
     print_item(df)
     while df.provisioning_state != 'Succeeded':
@@ -346,33 +346,30 @@ def main():
         time.sleep(1)
 
     # Create an Azure Storage linked service
-    ls_name = 'storageLinkedService'
+    ls_name = 'storageLinkedService001'
 
-    # Specify the name and key of your Azure Storage account
-    storage_string = SecureString(
-        value='DefaultEndpointsProtocol=https;AccountName=<storage account name>;AccountKey=<storage account key>')
+    # IMPORTANT: specify the name and key of your Azure Storage account.
+    storage_string = SecureString(value='DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;EndpointSuffix=<suffix>')
 
-    ls_azure_storage = AzureStorageLinkedService(
-        connection_string=storage_string)
-    ls = adf_client.linked_services.create_or_update(
-        rg_name, df_name, ls_name, ls_azure_storage)
+    ls_azure_storage = LinkedServiceResource(properties=AzureStorageLinkedService(connection_string=storage_string)) 
+    ls = adf_client.linked_services.create_or_update(rg_name, df_name, ls_name, ls_azure_storage)
     print_item(ls)
 
     # Create an Azure blob dataset (input)
     ds_name = 'ds_in'
     ds_ls = LinkedServiceReference(reference_name=ls_name)
-    blob_path = 'adfv2tutorial/input'
-    blob_filename = 'input.txt'
-    ds_azure_blob = AzureBlobDataset(
-        linked_service_name=ds_ls, folder_path=blob_path, file_name=blob_filename)
+    blob_path = '<container>/<folder path>'
+    blob_filename = '<file name>'
+    ds_azure_blob = DatasetResource(properties=AzureBlobDataset(
+        linked_service_name=ds_ls, folder_path=blob_path, file_name=blob_filename))
     ds = adf_client.datasets.create_or_update(
         rg_name, df_name, ds_name, ds_azure_blob)
     print_item(ds)
 
     # Create an Azure blob dataset (output)
     dsOut_name = 'ds_out'
-    output_blobpath = 'adfv2tutorial/output'
-    dsOut_azure_blob = AzureBlobDataset(linked_service_name=ds_ls, folder_path=output_blobpath)
+    output_blobpath = '<container>/<folder path>'
+    dsOut_azure_blob = DatasetResource(properties=AzureBlobDataset(linked_service_name=ds_ls, folder_path=output_blobpath))
     dsOut = adf_client.datasets.create_or_update(
         rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
@@ -421,7 +418,7 @@ main()
 
 出力例を次に示します。
 
-```json
+```console
 Name: <data factory name>
 Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DataFactory/factories/<data factory name>
 Location: eastus

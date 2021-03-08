@@ -4,11 +4,11 @@ description: Azure Functions での OpenAPI サポートの概要
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385825"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000209"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
 Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポートは、関数アプリ内での OpenAPI 2.0 定義の作成に使用できるプレビュー機能です。 関数アプリを使用して、そのファイルをホストできます。
@@ -24,7 +24,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 >特定の機能の詳細について学習するには、[概要チュートリアル](./functions-openapi-definition.md)から始めて後でこのドキュメントに戻ることをお勧めします。
 
 ## <a name="enable-openapi-definition-support"></a><a name="enable"></a>OpenAPI 定義のサポートの有効化
-すべての OpenAPI 設定を、関数アプリの**プラットフォーム機能**の **API の定義**ページで構成できます。
+すべての OpenAPI 設定を、関数アプリの **プラットフォーム機能** の **API の定義** ページで構成できます。
 
 > [!NOTE]
 > 現在、関数 API の定義機能は、ベータ版のランタイムではサポートされません。

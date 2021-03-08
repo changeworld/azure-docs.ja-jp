@@ -1,18 +1,23 @@
-- name: Azure Stack Edge と Data Box Gateway のドキュメント
-  href: /azure/databox-online/
+- name: Azure Stack Edge Pro のドキュメント
+  href: ./index.yml
   expanded: true
-- name: GPU 搭載の Azure Stack Edge (プレビュー)
+- name: Azure Stack Edge Pro - GPU
   items:
     - name: 概要
       items:
-        - name: GPU 搭載の Azure Stack Edge とは
+        - name: GPU 搭載の Azure Stack Edge Pro とは
           href: azure-stack-edge-gpu-overview.md
+    - name: クイックスタート
+      items:
+        - name: 作業開始
+          href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:
         - name: 0 - チェックリストの取得
           href: azure-stack-edge-gpu-deploy-checklist.md
         - name: 1 - 注文、準備
           href: azure-stack-edge-gpu-deploy-prep.md
+          displayName: 'Azure CLI, az databoxedge device, az databoxedge order'
         - name: 2 - インストール
           href: azure-stack-edge-gpu-deploy-install.md
         - name: 3 - 接続
@@ -27,14 +32,14 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8 - コンピューティングの構成
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: 9A - 共有の追加、接続
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: 9B - ストレージ アカウントの追加、接続
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: 概念
       items:
         - name: 要件を確認する
-          href: azure-stack-edge-gpu-system-requirements.md
+          items:
+            - name: Azure Stack Edge の場合
+              href: azure-stack-edge-gpu-system-requirements.md
+            - name: Azure Stack Edge の BLOB ストレージの場合
+              href: azure-stack-edge-gpu-system-requirements-rest.md
         - name: 制限を理解する
           href: azure-stack-edge-limits.md
         - name: セキュリティの概要
@@ -45,6 +50,106 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: 電源コードの仕様
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
+- name: Azure Stack Edge Pro R
+  items:
+    - name: 概要
+      items:
+        - name: Azure Stack Edge Pro R とは
+          href: azure-stack-edge-j-series-overview.md
+    - name: 概念
+      items:
+        - name: 安全性の準備完了
+          href: azure-stack-edge-pro-r-safety.md
+        - name: 要件を確認する
+          href: azure-stack-edge-pro-r-system-requirements.md
+        - name: 制限を理解する
+          href: azure-stack-edge-pro-r-limits.md
+        - name: セキュリティの概要
+          href: azure-stack-edge-pro-r-security.md
+        - name: 仕様の確認
+          href: azure-stack-edge-pro-r-technical-specifications-compliance.md
+    - name: チュートリアル
+      items:
+        - name: 0 - チェックリストの取得
+          href: azure-stack-edge-pro-r-deploy-checklist.md
+        - name: 1 - 注文、準備
+          href: azure-stack-edge-pro-r-deploy-prep.md
+          displayName: 'Azure CLI, az databoxedge device, az databoxedge order'
+        - name: 2 - インストール
+          href: azure-stack-edge-pro-r-deploy-install.md
+        - name: 3 - 接続
+          href: azure-stack-edge-pro-r-deploy-connect.md
+        - name: 4 - ネットワークの構成
+          href: azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md
+        - name: 5 - デバイスの構成
+          href: azure-stack-edge-pro-r-deploy-set-up-device-update-time.md
+        - name: 6 - セキュリティの構成
+          href: azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md
+        - name: 7 - アクティブ化
+          href: azure-stack-edge-pro-r-deploy-activate.md
+        - name: 8 - コンピューティングの構成
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+    - name: 方法
+      items:
+        - name: VPN を構成する (プレビュー)
+          items:
+            - name: Azure PowerShell 経由で構成する
+              href: azure-stack-edge-mini-r-configure-vpn-powershell.md
+            - name: BCDR 用に構成する
+              href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: 概要
+      items:
+        - name: Azure Stack Edge Mini R とは
+          href: azure-stack-edge-mini-r-overview.md
+    - name: 概念
+      items:
+        - name: 安全性の準備完了
+          href: azure-stack-edge-mini-r-safety.md
+        - name: 要件を確認する
+          href: azure-stack-edge-mini-r-system-requirements.md
+        - name: 制限を理解する
+          href: azure-stack-edge-mini-r-limits.md
+        - name: セキュリティの概要
+          href: azure-stack-edge-pro-r-security.md
+        - name: 仕様の確認
+          href: azure-stack-edge-mini-r-technical-specifications-compliance.md
+    - name: チュートリアル
+      items:
+        - name: 0 - チェックリストの取得
+          href: azure-stack-edge-mini-r-deploy-checklist.md
+        - name: 1 - 注文、準備
+          href: azure-stack-edge-mini-r-deploy-prep.md
+          displayName: 'Azure CLI, az databoxedge device, az databoxedge order'
+        - name: 2 - インストール
+          href: azure-stack-edge-mini-r-deploy-install.md
+        - name: 3 - 接続
+          href: azure-stack-edge-mini-r-deploy-connect.md
+        - name: 4 - ネットワークの構成
+          href: azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md
+        - name: 5 - デバイスの構成
+          href: azure-stack-edge-mini-r-deploy-set-up-device-update-time.md
+        - name: 6 - セキュリティの構成
+          href: azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md
+        - name: 7 - アクティブ化
+          href: azure-stack-edge-mini-r-deploy-activate.md
+        - name: 8 - コンピューティングの構成
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+    - name: 方法
+      items:
+        - name: VPN を構成する (プレビュー)
+          items:
+            - name: Azure PowerShell 経由で構成する
+              href: azure-stack-edge-mini-r-configure-vpn-powershell.md
+            - name: BCDR 用に構成する
+              href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
+        - name: Wi-Fi を管理する
+          href: azure-stack-edge-mini-r-manage-wifi.md
+- name: 共有 Pro GPU、Pro R、Mini R
+  items:
+    - name: 共有の概念
+      items:
         - name: Kubernetes を理解する
           items:
             - name: Kubernetes とは
@@ -57,7 +162,11 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Kubernetes ワークロード
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
-    - name: 方法
+        - name: Key Vault 統合の表示
+          href: azure-stack-edge-gpu-activation-key-vault.md
+        - name: プロアクティブ ログ記録を有効にする
+          href: azure-stack-edge-gpu-proactive-log-collection.md
+    - name: 共有の利用方法
       items:
         - name: IoT Edge サンプルをデプロイする
           items:
@@ -67,12 +176,18 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Marketplace 経由の GPU モジュール
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: FPGA デバイスからのモジュール
+              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
+            - name: Azure portal 経由のモジュール
+              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: Kubernetes ワークロードをデプロイする
           items:
             - name: kubectl を使用
               items:
                 - name: Kubernetes クラスターへのアクセス
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: コンピューティング アクセラレーション
+                  href: azure-stack-edge-gpu-deploy-compute-acceleration.md
                 - name: ステートレス アプリ
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
                 - name: 静的にプロビジョニングされたステートフル アプリ
@@ -83,13 +198,17 @@
               items:
                 - name: ステートレス アプリ
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-            - name: Azure Arc を使用
+                - name: C# モジュールの開発
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
+            - name: Azure Arc (プレビュー) 経由
               items:
                 - name: Kubernetes クラスターで Arc を有効にする
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: GitOps を使用してステートレス アプリをデプロイする
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-        - name: Azure Resource Manager を構成する
+                - name: Azure Arc データ コントローラーをデプロイする
+                  href: azure-stack-edge-gpu-deploy-arc-data-controller.md
+        - name: Azure Resource Manager (プレビュー) を構成する
           items:
             - name: Azure PowerShell 経由で接続する
               href: azure-stack-edge-j-series-connect-resource-manager.md
@@ -97,34 +216,46 @@
               href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
             - name: クライアント TLS 設定を構成する
               href: azure-stack-edge-j-series-configure-tls-settings.md
-        - name: VM をデプロイする
+        - name: VM をデプロイする (プレビュー)
           items:
+            - name: VM をデプロイする - Azure portal
+              href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
             - name: VM をデプロイする - テンプレート
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: VM をデプロイする - GPU
+              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
             - name: VM をデプロイする - Azure PowerShell コマンドレット
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
             - name: VM をデプロイする - Azure PowerShell スクリプト
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: VM をデプロイする - Azure CLI/Python
               href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: VM にカスタム スクリプト拡張機能をデプロイする
+              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: VM イメージを作成する
-              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+              href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: サポートされる VM のサイズ、種類
+              href: azure-stack-edge-gpu-virtual-machine-sizes.md
         - name: 証明書の管理
           items:
             - name: 要件
-              href: azure-stack-edge-j-series-certificate-requirements.md
+              href: azure-stack-edge-gpu-certificate-requirements.md
             - name: 独自のものを使用する
-              href: azure-stack-edge-j-series-manage-certificates.md
+              href: azure-stack-edge-gpu-manage-certificates.md
             - name: Azure Stack 適合性チェッカー ツールを使用して作成する
-              href: azure-stack-edge-j-series-create-certificates-tool.md
+              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: 証明書エラーのトラブルシューティングを行う
-              href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: C# モジュールの開発
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
+              href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Edge コンピューティングを管理する
           href: azure-stack-edge-j-series-manage-compute.md
+        - name: Edge コンテナー レジストリを管理する
+          href: azure-stack-edge-gpu-edge-container-registry.md
         - name: ストレージ ゲートウェイを管理する
           items:
+            - name: 共有の追加、接続
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: ストレージ アカウントの追加、接続
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: 共有
               href: azure-stack-edge-j-series-manage-shares.md
             - name: ユーザー
@@ -136,51 +267,68 @@
         - name: デバイスを管理する
           items:
             - name: 電源、アクセス、接続
-              href: azure-stack-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-gpu-manage-access-power-connectivity-mode.md
             - name: PowerShell から
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: 更新プログラムの適用
               href: azure-stack-edge-gpu-install-update.md
+            - name: デバイスのリセット、再アクティブ化
+              href: azure-stack-edge-reset-reactivate-device.md
             - name: デバイスの返却
               href: azure-stack-edge-return-device.md
             - name: デバイスの置換
               href: azure-stack-edge-replace-device.md
+            - name: デバイス障害への準備
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: デバイス障害からの復旧
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: モニター
           items:
             - name: メトリック グラフの使用
               href: azure-stack-edge-monitor.md
+            - name: デバイス イベント アラートの管理
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Kubernetes ダッシュボードの使用
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
+            - name: Azure Monitor の使用
+              href: azure-stack-edge-gpu-enable-azure-monitor.md
         - name: トラブルシューティング
           items:
             - name: デバイスの問題
               href: azure-stack-edge-gpu-troubleshoot.md
             - name: 注文の問題
               href: azure-stack-edge-troubleshoot-ordering.md
+            - name: アクティブ化の問題
+              href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Microsoft サポートに問い合わせる
               href: azure-stack-edge-contact-microsoft-support.md
-    - name: リリース ノート
+    - name: 共有のリリース ノート
       items:
-        - name: 2008 - リリース ノート
+        - name: 2101 - 最新
+          href: azure-stack-edge-gpu-2101-release-notes.md
+        - name: 2010
+          href: azure-stack-edge-gpu-2009-release-notes.md
+        - name: 2008
           href: azure-stack-edge-gpu-2008-release-notes.md
-    - name: リファレンス
+    - name: 共有参照
       items:
         - name: Azure PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+          href: /powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+          href: /rest/api/databoxedgegateway
         - name: .NET SDK
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: FPGA 搭載の Azure Stack Edge
+          href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
+- name: Azure Stack Edge Pro - FPGA
   items:
     - name: 概要
       items:
-        - name: FPGA 搭載の Azure Stack Edge とは
+        - name: FPGA 搭載の Azure Stack Edge Pro とは
           href: azure-stack-edge-overview.md
     - name: チュートリアル
       items:
         - name: 1 - 準備
           href: azure-stack-edge-deploy-prep.md
+          displayName: 'Azure CLI, az databoxedge device, az databoxedge order'
         - name: 2 - インストール
           href: azure-stack-edge-deploy-install.md
         - name: 3 - 接続、セットアップ、アクティブ化
@@ -239,93 +387,44 @@
           href: azure-stack-edge-return-device.md
         - name: デバイスの置換
           href: azure-stack-edge-replace-device.md
+        - name: GPU デバイスへの移行
+          href: azure-stack-edge-migrate-fpga-gpu.md
     - name: リリース ノート
       items:
-        - name: 2007 - 最新
-          href: data-box-gateway-2007-release-notes.md
+        - name: 2101 - 最新
+          href: azure-stack-edge-2101-release-notes.md
+        - name: 2007
+          href: ../databox-gateway/data-box-gateway-2007-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: 1911
-          href: data-box-gateway-1911-release-notes.md
+          href: ../databox-gateway/data-box-gateway-1911-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: 1906
-          href: data-box-gateway-1906-release-notes.md
+          href: ../databox-gateway/data-box-gateway-1906-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: 1905
-          href: data-box-gateway-1905-release-notes.md
+          href: ../databox-gateway/data-box-gateway-1905-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: 一般公開 (GA)
-          href: data-box-gateway-release-notes.md
+          href: ../databox-gateway/data-box-gateway-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
     - name: リファレンス
       items:
         - name: Azure PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+          href: /powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+          href: /rest/api/databoxedgegateway
         - name: .NET SDK
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: Data Box Gateway
+          href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
+- name: セキュリティ
   items:
-    - name: 概要
-      items:
-        - name: Data Box Gateway とは
-          href: data-box-gateway-overview.md
-    - name: チュートリアル
-      items:
-        - name: 1 - 準備
-          href: data-box-gateway-deploy-prep.md
-        - name: 2A - Hyper-V でのプロビジョニング
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2B - VMware でのプロビジョニング
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: 3 - 接続、セットアップ、アクティブ化
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: 4 - 追加、共有への接続
-          href: data-box-gateway-deploy-add-shares.md
-    - name: 概念
-      items:
-        - name: 要件を確認する
-          href: data-box-gateway-system-requirements.md
-        - name: 制限を理解する
-          href: data-box-gateway-limits.md
-        - name: セキュリティの概要
-          href: data-box-gateway-security.md
-        - name: ユース ケースを確認する
-          href: data-box-gateway-use-cases.md
-    - name: 方法
-      items:
-        - name: 更新
-          href: data-box-gateway-apply-updates.md
-        - name: 管理する
-          items:
-            - name: 共有
-              href: data-box-gateway-manage-shares.md
-            - name: ユーザー
-              href: data-box-gateway-manage-users.md
-            - name: 帯域幅のスケジュール
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: アクセス、電源、接続性
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
-            - name: PowerShell から
-              href: data-box-gateway-connect-powershell-interface.md
-        - name: モニター
-          href: data-box-gateway-monitor.md
-        - name: トラブルシューティング
-          href: data-box-gateway-troubleshoot.md
-        - name: Microsoft サポートに問い合わせる
-          href: azure-stack-edge-contact-microsoft-support.md
-    - name: リリース ノート
-      items:
-        - name: 2007 - 最新
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: 一般公開 (GA)
-          href: data-box-gateway-release-notes.md
+    - name: セキュリティ ベースライン
+      href: security-baseline.md
+- name: References
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
-    - name: Azure Stack Edge C# モジュールのサンプル (.NET)
+    - name: Azure Stack Edge Pro C# モジュールのサンプル (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Azure Stack Edge/Data Box Gateway の製品
+    - name: Azure Stack Edge Pro または Data Box Gateway 製品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

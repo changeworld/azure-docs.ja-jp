@@ -5,15 +5,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: trbye
-ms.openlocfilehash: d97a1bf00d722414bedda4be79adc0c26d02c751
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dc569050b78a5797808f2e2e000019ba516ba22e
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422224"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739240"
 ---
-## <a name="speech-modes"></a>音声モード
-
 **対話**
 - コマンドと制御のシナリオ向けです。
 - セグメント化のタイムアウト値は X になっています。

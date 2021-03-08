@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/06/2020
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7c4f1853ff8dcb9249ab6ec4f536e1f8cfa10e5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022465"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018226"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Traffic Analytics スキーマに新しいフィールドを使用したサンプル クエリ (2019 年 8 月のスキーマ更新)
 
-[Traffic Analytics ログ スキーマ](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema)に追加された新しいフィールドは、**SrcPublicIPs_s**、**DestPublicIPs_s**、**NSGRule_s** です。 新しいフィールドは、送信元 IP と送信先 IP に関する情報を提供し、クエリを簡素化します。
+[Traffic Analytics ログ スキーマ](./traffic-analytics-schema.md)に追加された新しいフィールドは、**SrcPublicIPs_s**、**DestPublicIPs_s**、**NSGRule_s** です。 新しいフィールドは、送信元 IP と送信先 IP に関する情報を提供し、クエリを簡素化します。
 
 次の数か月の間、次の古いフィールドが非推奨になります。**VMIP_s**、**Subscription_g**、**Region_s**、**NSGRules_s**、**Subnet_s**、**VM_s**、**NIC_s**、**PublicIPs_s**、**FlowCount_d**。
 

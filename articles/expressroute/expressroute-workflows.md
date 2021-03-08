@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
-ms.custom: contperfq1
-ms.openlocfilehash: 14a61d33ef2e4d4fc80770f5c86e33d34ec860cd
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401437"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034073"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 
@@ -86,7 +86,7 @@ Azure 仮想ネットワーク内にデプロイされている VM およびク�
 
 #### <a name="for-microsoft-peering"></a>Microsoft ピアリングの場合
 
-Office 365 などの Microsoft オンライン サービスにアクセスするには、これを有効にします。 さらに、すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。 Microsoft への接続には、インターネットに使用しているものとは別のプロキシ/エッジを必ず使用する必要があります。 ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
+Microsoft 365 などの Microsoft オンライン サービスにアクセスするには、これを有効にします。 さらに、すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。 Microsoft への接続には、インターネットに使用しているものとは別のプロキシ/エッジを必ず使用する必要があります。 ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
 
 * パス 1 のピアリング サブネット (/30) - パブリック IP である必要があります
 * パス 2 のピアリング サブネット (/30) - パブリック IP である必要があります

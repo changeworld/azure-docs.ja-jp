@@ -2,21 +2,32 @@
 title: '[Azure にデプロイ] ボタン'
 description: Azure Resource Manager テンプレートを GitHub リポジトリからデプロイするためのボタンを使用する。
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 11/10/2020
+ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079463"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028745"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする
 
-この記事では、 **[Azure に配置する]** ボタンを使用して、GitHub リポジトリからテンプレートをデプロイする方法について説明します。 このボタンは、GitHub リポジトリ内の README.md ファイル、またはリポジトリを参照する Web ページに直接追加できます。 この方法では、リソース グループ レベルのデプロイのみがサポートされます。
+この記事では、 **[Azure に配置する]** ボタンを使用して、GitHub リポジトリからテンプレートをデプロイする方法について説明します。 このボタンは、GitHub リポジトリ内の _README.md_ ファイルに直接追加できます。 または、リポジトリを参照する Web ページにボタンを追加することもできます。
+
+デプロイ スコープは、テンプレート スキーマによって決定されます。 詳細については、次を参照してください。
+
+- [resource groups](deploy-to-resource-group.md)
+- [subscriptions](deploy-to-subscription.md)
+- [管理グループ](deploy-to-management-group.md)
+- [tenants](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>一般的なイメージを使用する
 
 Web ページまたはリポジトリにボタンを追加するには、次の画像を使用します。
+
+```markdown
+![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+```
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
@@ -38,9 +49,10 @@ URL の形式は、次のようになります。
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-次に、これを URL エンコードします。 オンライン エンコーダーを使用するか、コマンドを実行できます。 次の PowerShell の例は、値を URL エンコードする方法を示しています。
+次に、URL を URL エンコードされた値に変換します。 オンライン エンコーダーを使用するか、コマンドを実行できます。 次の PowerShell の例は、値を URL エンコードする方法を示しています。
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 [uri]::EscapeDataString($url)
 ```
 
@@ -64,11 +76,21 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 リンクの完全な URL が表示されます。
 
+通常は、パブリック リポジトリでテンプレートをホストします。 プライベート リポジトリを使用する場合は、テンプレートの生コンテンツにアクセスするためのトークンを含める必要があります。 GitHub によって生成されるトークンは、短時間のみ有効です。 リンクを頻繁に更新する必要があります。
+
+GitHub リポジトリの代わりに [Azure Repos と共に Git](/azure/devops/repos/git/) を使用する場合でも、 **[Deploy to Azure]\(Azure にデプロイ\)** ボタンを使用できます。 リポジトリがパブリックであることを確認します。 テンプレートを取得するには [Items 操作](/rest/api/azure/devops/git/items/get)を使用します。 要求は次の形式にする必要があります。
+
+```http
+https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
+```
+
+この要求 URL をエンコードします。
+
 ## <a name="create-deploy-to-azure-button"></a>[Deploy to Azure] (Azure にデプロイ) ボタンを作成する
 
 最後に、リンクと画像を一緒に配置します。
 
-GitHub リポジトリまたは Web ページの README.md ファイルに Markdown を使用してボタンを追加するには、次のように使用します。
+GitHub リポジトリまたは Web ページの _README.md_ ファイルに Markdown を使用してボタンを追加するには、次のように使用します。
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
@@ -80,6 +102,12 @@ HTML の場合は、次を使用します。
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
   <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
+```
+
+Git で Azure リポジトリを使用する場合、ボタンは次の形式になります。
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%2freponame%2fazuredeploy.json%26api-version%3D6.0)
 ```
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
@@ -94,4 +122,4 @@ HTML の場合は、次を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- テンプレートの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+- テンプレートの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

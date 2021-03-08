@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024079"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098469"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - セキュリティの概要
 
@@ -27,7 +27,7 @@ Azure portal の [[セキュリティの概要]](https://aka.ms/IdentityProtecti
 - 左側にある [Trends] には、組織内のリスクのタイムラインが表示されます。
 - 右側の [タイル] では、組織内で発生している重要な問題が強調表示され、迅速に対処する方法が提案されます。
 
-![セキュリティの概要](./media/concept-identity-protection-security-overview/01.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/01.png" alt-text="Azure portal セキュリティの概要のスクリーンショット。棒グラフは、時間の経過に伴うリスクの数を示します。タイルには、ユーザーとサインインに関する情報がまとめられています。" border="false":::
   
 ## <a name="trends"></a>Trends
 
@@ -45,7 +45,7 @@ Azure portal の [[セキュリティの概要]](https://aka.ms/IdentityProtecti
 
 [危険性が高いユーザー] タイルには、ID が侵害されている可能性が高いユーザーの最新の数が表示されます。 これらは最優先で調査する必要があります。 [危険性が高いユーザー] タイルをクリックすると、リスク レベルが高いユーザーのみが表示される [危険なユーザー] レポートのフィルター処理済みビューにリダイレクトされます。 このレポートでは詳細を確認できます。また、パスワードのリセットを使ってこのようなユーザーを修復することができます。
 
-![セキュリティの概要](./media/concept-identity-protection-security-overview/02.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Azure portal セキュリティの概要のスクリーンショット。高リスクと中リスクのユーザー、およびその他のリスク要因を示すタイルが表示されています。" border="false":::
 
 ### <a name="medium-risk-users"></a>危険性が中度のユーザー
 [危険性が中度のユーザー] タイルには、ID が侵害されている可能性が中度のユーザーの最新の数が表示されます。 [危険性が中度のユーザー] タイルをクリックすると、リスク レベルが中度のユーザーのみが表示される [危険なユーザー] レポートのフィルター処理済みビューにリダイレクトされます。 このレポートを使用すると、このようなユーザーをさらに調査し、修復することができます。

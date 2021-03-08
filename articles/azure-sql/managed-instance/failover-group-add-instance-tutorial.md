@@ -1,23 +1,23 @@
 ---
 title: チュートリアル:フェールオーバー グループに SQL Managed Instance を追加する
 titleSuffix: Azure SQL Managed Instance
-description: このチュートリアルでは、プライマリとセカンダリの Azure SQL マネージド インスタンスの間にフェールオーバー グループを作成する方法について説明します。
+description: このチュートリアルでは、プライマリとセカンダリの Azure SQL Managed Instance の間にフェールオーバー グループを作成する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sashan, carlrab
+ms.topic: tutorial
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: a6f400db2a068953080e734148e024b575e3e1e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1609f188af8ffb58251edc806e19f7820a6b0869
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070855"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525723"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに SQL Managed Instance を追加する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL Managed Instance のマネージド インスタンスをフェール�
   > [!NOTE]
   > - このチュートリアルを実行するときは、[SQL Managed Instance のフェールオーバー グループを設定するための前提条件](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)を使用してリソースを構成していることを確認してください。 
   > - マネージド インスタンスの作成にはかなりの時間がかかることがあります。 そのため、このチュートリアルの完了には数時間かかることがあります。 プロビジョニング時間の詳細については、「[SQL マネージド インスタンスの管理操作](sql-managed-instance-paas-overview.md#management-operations)」を参照してください。 
-  > - フェールオーバー グループに参加するマネージド インスタンスには、[Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) または接続された 2 つの VPN ゲートウェイが必要です。 グローバル VNet ピアリングはサポートされません。 このチュートリアルでは、VPN ゲートウェイを作成して接続する手順を示します。 既に ExpressRoute が構成されている場合は、これらの手順をスキップします。 
+  > - フェールオーバー グループに参加するマネージド インスタンスには、[Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)、グローバル VNet ピアリング、または接続された 2 つの VPN ゲートウェイが必要です。 このチュートリアルでは、VPN ゲートウェイを作成して接続する手順を示します。 既に ExpressRoute が構成されている場合は、これらの手順をスキップします。 
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -56,6 +56,8 @@ Azure SQL Managed Instance のマネージド インスタンスをフェール�
 
 この手順では、Azure portal または PowerShell を使用して、リソース グループと、フェールオーバー グループのプライマリ マネージド インスタンスを作成します。 
 
+パフォーマンス上の理由により、両方のマネージド インスタンスを、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にデプロイします。 geo のペアになっているリージョンに存在するマネージド インスタンスは、ペアになっていないリージョンと比較すると、パフォーマンスがはるかに優れています。 
+
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal) 
 
@@ -67,8 +69,8 @@ Azure portal を使用して、リソース グループとプライマリ マ�
 
     ![SQL マネージド インスタンスを選択する](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. **[Create Azure SQL Managed Instance]\(Azure SQL マネージド インスタンスの作成\)** ページの **[基本]** タブで、以下を実行します。
-    1. **[プロジェクトの詳細]** で、ドロップダウンから自分の**サブスクリプション**を選び、リソース グループを**新規作成**することを選択します。 「`myResourceGroup`」など、リソース グループの名前を入力します。 
+1. **[Create Azure SQL Managed Instance]\(Azure SQL Managed Instance の作成\)** ページの **[基本]** タブで、以下を実行します。
+    1. **[プロジェクトの詳細]** で、ドロップダウンから自分の **サブスクリプション** を選び、リソース グループを **新規作成** することを選択します。 「`myResourceGroup`」など、リソース グループの名前を入力します。 
     1. **[SQL Managed Instance Details]\(SQL マネージド インスタンスの詳細\)** で、マネージド インスタンスの名前と、マネージド インスタンスをデプロイするリージョンを指定します。 **[コンピューティングとストレージ]** は既定値のままにしておきます。 
     1. **[管理者アカウント]** で、`azureuser` などの管理者ログインと、複雑な管理者パスワードを指定します。 
 
@@ -159,8 +161,8 @@ PowerShell を使用して、リソース グループとプライマリ マネ�
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set the subscription context
-   Set-AzContext -SubscriptionId $subscriptionId 
+   # Set the subscription context
+   Set-AzContext -SubscriptionId $subscriptionId 
    
    # Create the resource group
    Write-host "Creating resource group..."
@@ -384,7 +386,7 @@ PowerShell を使用して、リソース グループとプライマリ マネ�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |
@@ -413,15 +415,15 @@ Azure portal を使用してマネージド インスタンスを作成する場
 プライマリ仮想ネットワークのサブネット範囲を確認するには、これらの手順に従います。
 
 1. [Azure portal](https://portal.azure.com) で、リソース グループに移動し、プライマリ インスタンスの仮想ネットワークを選択します。  
-2. **[設定]** で **[サブネット]** を選択し、**アドレス範囲**を書き留めます。 セカンダリ マネージド インスタンス用の仮想ネットワークのサブネット アドレス範囲は、これと重複することはできません。 
+2. **[設定]** で **[サブネット]** を選択し、**アドレス範囲** を書き留めます。 セカンダリ マネージド インスタンス用の仮想ネットワークのサブネット アドレス範囲は、これと重複することはできません。 
 
 
    ![プライマリ サブネット](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
 
 仮想ネットワークを作成するには、これらの手順に従います。
 
-1. [Azure portal](https://portal.azure.com) で、 **[リソースの作成]** を選択し、*仮想ネットワーク*を検索します。 
-1. Microsoft によって公開された**仮想ネットワーク** オプションを選び、次のページで **[作成]** を選択します。 
+1. [Azure portal](https://portal.azure.com) で、 **[リソースの作成]** を選択し、*仮想ネットワーク* を検索します。 
+1. Microsoft によって公開された **仮想ネットワーク** オプションを選び、次のページで **[作成]** を選択します。 
 1. セカンダリ マネージド インスタンスの仮想ネットワークを構成するために必要なフィールドに入力し、 **[作成]** を選択します。 
 
    次の表には、セカンダリ仮想ネットワークに必要な値が示されています。
@@ -461,7 +463,7 @@ Azure portal を使用してセカンダリ マネージド インスタンス�
 
     ![SQL マネージド インスタンスを選択する](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. **[Create Azure SQL Managed Instance]\(Azure SQL マネージド インスタンスの作成\)** ページの **[基本]** タブで、セカンダリ マネージド インスタンスを構成するために必要なフィールドに入力します。 
+1. **[Create Azure SQL Managed Instance]\(Azure SQL Managed Instance の作成\)** ページの **[基本]** タブで、セカンダリ マネージド インスタンスを構成するために必要なフィールドに入力します。 
 
    次の表には、セカンダリ マネージド インスタンスに必要な値が示されています。
  
@@ -714,7 +716,7 @@ PowerShell を使用してセカンダリ マネージド インスタンスを�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |
@@ -740,18 +742,20 @@ PowerShell を使用してセカンダリ マネージド インスタンスを�
 
 この記事では、2 つの VPN ゲートウェイを作成して接続する手順について説明しますが、代わりに ExpressRoute を構成した場合は、フェールオーバー グループの作成に進むことができます。 
 
+> [!NOTE]
+> ゲートウェイの SKU は、スループットのパフォーマンスに影響を与えます。 このチュートリアルでは、最も基本的な SKU (`HwGw1`) を使用して、ゲートウェイをデプロイします。 上位の SKU (`VpnGw3` など) をデプロイして、より高いスループットを実現します。 使用可能なすべてのオプションについては、[ゲートウェイ SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) に関する記事を参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、プライマリ マネージド インスタンスの仮想ネットワークのゲートウェイを作成します。 
 
 
-1. [Azure portal](https://portal.azure.com) で、リソース グループに移動し、プライマリ マネージド インスタンスの**仮想ネットワーク** リソースを選択します。 
-1. **[設定]** で **[サブネット]** を選び、新しい**ゲートウェイ サブネット**を追加することを選択します。 既定値のままにします。 
+1. [Azure portal](https://portal.azure.com) で、リソース グループに移動し、プライマリ マネージド インスタンスの **仮想ネットワーク** リソースを選択します。 
+1. **[設定]** で **[サブネット]** を選び、新しい **ゲートウェイ サブネット** を追加することを選択します。 既定値のままにします。 
 
    ![プライマリ マネージド インスタンスのゲートウェイを追加する](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. サブネット ゲートウェイが作成されたら、左側のナビゲーション ウィンドウで **[リソースの作成]** を選択し、検索ボックスに「`Virtual network gateway`」と入力します。 **Microsoft** によって公開された**仮想ネットワーク ゲートウェイ** リソースを選択します。 
+1. サブネット ゲートウェイが作成されたら、左側のナビゲーション ウィンドウで **[リソースの作成]** を選択し、検索ボックスに「`Virtual network gateway`」と入力します。 **Microsoft** によって公開された **仮想ネットワーク ゲートウェイ** リソースを選択します。 
 
    ![新しい仮想ネットワーク ゲートウェイを作成する](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
 
@@ -816,7 +820,7 @@ PowerShell を使用して、プライマリ マネージド インスタンス�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | リソース グループ内の仮想ネットワークを取得します。 |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 仮想ネットワークにサブネット構成を追加します。 | 
@@ -896,7 +900,7 @@ PowerShell を使用して、セカンダリ マネージド インスタンス�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | リソース グループ内の仮想ネットワークを取得します。 |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 仮想ネットワークにサブネット構成を追加します。 | 
@@ -919,7 +923,7 @@ Azure portal を使用して、2 つのゲートウェイを接続します。
 
 
 1. [Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
-1. 検索ボックスに「`connection`」と入力し、Enter キーを押して検索します。それにより、Microsoft によって発行された**接続**リソースに移動します。
+1. 検索ボックスに「`connection`」と入力し、Enter キーを押して検索します。それにより、Microsoft によって発行された **接続** リソースに移動します。
 1. **[作成]** を選択して接続を作成します。 
 1. **[基本]** ページで次の値を選択し、 **[OK]** を選択します。 
     1. **[接続の種類]** に対して `VNet-to-VNet` を選択します。 
@@ -931,7 +935,7 @@ Azure portal を使用して、2 つのゲートウェイを接続します。
     1. **[2 番目の仮想ネットワーク ゲートウェイ]** のセカンダリ ネットワーク ゲートウェイを選択します (`secondaryGateway` など)。 
     1. **[双方向接続の確立]** の横にあるチェック ボックスをオンにします。 
     1. 既定のプライマリ接続名をそのまま使用するか、名前を任意の値に変更します。 
-    1. 接続の**共有キー (PSK)** を指定します (`mi1m2psk` など)。 
+    1. 接続の **共有キー (PSK)** を指定します (`mi1m2psk` など)。 
     1. **[OK]** を選択して設定を保存します。 
 
     ![ゲートウェイ接続を作成する](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
@@ -964,7 +968,7 @@ PowerShell を使用して、2 つのゲートウェイを接続します。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | 2 つの仮想ネットワーク ゲートウェイ間の接続を作成します。   |
 
@@ -1006,7 +1010,7 @@ PowerShell を使用して、フェールオーバー グループを作成し�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Azure SQL Managed Instance の新しいフェールオーバー グループを作成します。  |
 
@@ -1072,7 +1076,7 @@ PowerShell を使用してフェールオーバーをテストします。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | SQL Managed Instance のフェールオーバー グループを取得または一覧表示します。| 
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | SQL マネージド インスタンスのフェールオーバー グループのフェールオーバーを実行します。 | 
@@ -1104,7 +1108,7 @@ Write-host "Removing residual resources and resource group..."
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します。 |
 
@@ -1117,7 +1121,7 @@ Write-host "Removing residual resources and resource group..."
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |

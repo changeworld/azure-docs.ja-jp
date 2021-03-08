@@ -2,20 +2,18 @@
 title: エンティティの追加 - LUIS
 description: Language Understanding (LUIS) アプリでユーザーの発話から重要なデータを抽出するエンティティを作成します。 抽出されたエンティティ データは、顧客の要求に応える目的で、クライアント アプリケーションによって使用されます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344477"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540967"
 ---
 # <a name="add-entities-to-extract-data"></a>データを抽出するエンティティを追加する
 
@@ -179,14 +177,14 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
 1. ロールでラベルを付けるには、サンプル発話でエンティティ ラベル (テキストの下の実線) を選択し、ドロップダウン リストから **[View in entity pane]\(エンティティ ペインで表示する\)** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![[View in entity palette]\(エンティティ パレットで表示する\) を選択している画面のスクリーンショット](media/add-entities/view-in-entity-pane.png)
+    > ![[View in entity pane]\(エンティティ ペインで表示する\) メニュー項目が選択されていることを示すスクリーンショット。](media/add-entities/view-in-entity-pane.png)
 
     エンティティ パレットが右側で開きます。
 
 1. エンティティを選択し、パレットの下部に移動し、ロールを選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![[View in entity palette]\(エンティティ パレットで表示する\) を選択している画面のスクリーンショット](media/add-entities/select-role-in-entity-palette.png)
+    > ![ロールを選択する場所を示すスクリーンショット。](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
 <a name="add-a-patternany-entity"></a>

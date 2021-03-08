@@ -2,20 +2,20 @@
 title: コンテナー ワークロード
 description: Azure Batch でコンテナー イメージからアプリを実行し、スケーリングする方法について説明します。 コンテナー タスクの実行をサポートするコンピューティング ノードのプールを作成します。
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: a26582572302f670010f3038147687b47feef84a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933547"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843449"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
 Azure Batch を使用すると、Azure で大量のバッチ コンピューティング ジョブを実行し、また、その実行量を調整できます。 Batch タスクは Batch プール内の仮想マシン (ノード) で直接実行できますが、タスクがノード上の Docker と互換性のあるコンテナーで実行されるように Batch プールを設定することもできます。 この記事では、実行中のコンテナー タスクをサポートするコンピューティング ノードのプールを作成して、プールでコンテナー タスクを実行する方法について説明します。
 
-コンテナーの概念および Batch プールとジョブを作成する方法に精通しておく必要があります。 コード例では、Batch .NET と Python SDK を使用します。 また、Batch SDK、および Azure Portal などのツールを使用して、コンテナー対応の Batch プールを作成したり、コンテナー タスクを実行したりすることもできます。
+このコード例では、Batch .NET と Python SDK を使用します。 また、Batch SDK、および Azure Portal などのツールを使用して、コンテナー対応の Batch プールを作成したり、コンテナー タスクを実行したりすることもできます。
 
 ## <a name="why-use-containers"></a>コンテナーを使用する理由
 
@@ -23,22 +23,24 @@ Azure Batch を使用すると、Azure で大量のバッチ コンピューテ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **SDK バージョン**: 次のバージョンの時点で、Batch SDK ではコンテナー イメージをサポートしています。
-    * Batch REST API バージョン 2017-09-01.6.0
-    * Batch .NET SDK バージョン 8.0.0
-    * Batch Python SDK バージョン 4.0
-    * Batch Java SDK バージョン 3.0
-    * Batch Node.js SDK バージョン 3.0
+コンテナーの概念および Batch プールとジョブを作成する方法に精通しておく必要があります。
 
-* **アカウント**: ご使用の Azure サブスクリプションで、Batch アカウントを作成する必要があります。また、必要に応じて、Azure Storage アカウントを作成します。
+- **SDK バージョン**: 次のバージョンの時点で、Batch SDK ではコンテナー イメージをサポートしています。
+  - Batch REST API バージョン 2017-09-01.6.0
+  - Batch .NET SDK バージョン 8.0.0
+  - Batch Python SDK バージョン 4.0
+  - Batch Java SDK バージョン 3.0
+  - Batch Node.js SDK バージョン 3.0
 
-* **サポートされている VM イメージ**: コンテナーは、以下の「サポートされている仮想マシン イメージ」セクションで説明するイメージの仮想マシン構成で作成されたプールでのみサポートされます。 カスタム イメージを提供する場合は、次のセクションの注意点と「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の要件を参照してください。
+- **アカウント**: ご使用の Azure サブスクリプションで、Batch アカウントを作成する必要があります。また、必要に応じて、Azure Storage アカウントを作成します。
 
-### <a name="limitations"></a>制限事項
+- **サポートされている VM イメージ**: コンテナーは、以下の「サポートされている仮想マシン イメージ」セクションで説明するイメージの仮想マシン構成で作成されたプールでのみサポートされます。 カスタム イメージを提供する場合は、次のセクションの注意点と「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の要件を参照してください。
 
-* Batch では、Linux プールで実行されているコンテナーに対してのみ、RDMA サポートが提供されます
+次の制限事項にご注意ください。
 
-* Windows コンテナー ワークロードの場合は、プールにマルチコア VM サイズを選択することをお勧めします
+- Batch では、Linux プールで実行されているコンテナーに対してのみ、RDMA サポートが提供されます。
+
+- Windows コンテナー ワークロードの場合は、プールにマルチコア VM サイズを選択することをお勧めします。
 
 ## <a name="supported-virtual-machine-images"></a>サポートされている仮想マシン イメージ
 
@@ -68,11 +70,11 @@ Linux コンテナー ワークロードの場合、現在、Batch は、Azure M
 
 これらのイメージは、Azure Batch プールでの使用のみがサポートされており、Docker コンテナーの実行に適しています。 これらには以下が装備されています。
 
-* プレインストールされた Docker 互換の [Moby](https://github.com/moby/moby) コンテナー ランタイム
+- プレインストールされた Docker 互換の [Moby](https://github.com/moby/moby) コンテナー ランタイム
 
-* Azure N シリーズ VM へのデプロイを効率化するためにプレインストールされた NVIDIA GPU ドライバーと NVIDIA コンテナー ランタイム
+- Azure N シリーズ VM へのデプロイを効率化するためにプレインストールされた NVIDIA GPU ドライバーと NVIDIA コンテナー ランタイム
 
-* `-rdma` のサフィックスが付いたイメージの Infiniband RDMA VM サイズをサポートする、プレインストールされ、事前に構成されたイメージ。 現時点では、これらのイメージは SR-IOV IB/RDMA VM サイズをサポートしていません。
+- `-rdma` のサフィックスが付いたイメージの Infiniband RDMA VM サイズをサポートする、プレインストールされ、事前に構成されたイメージ。 現時点では、これらのイメージは SR-IOV IB/RDMA VM サイズをサポートしていません。
 
 Docker を実行している VM から、Batch と互換性のある Linux ディストリビューションのいずれかでカスタム イメージを作成することもできます。 独自のカスタム Linux イメージを提供する場合は、「[マネージド カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の手順を参照してください。
 
@@ -80,10 +82,9 @@ Docker を実行している VM から、Batch と互換性のある Linux デ�
 
 カスタム Linux イメージを使用するためのその他の注意点:
 
-* カスタム イメージを使用する場合に Azure N シリーズ サイズの GPU パフォーマンスを活用するには、事前に NVIDIA ドライバーをインストールします。 また、NVIDIA GPU の Docker エンジン ユーティリティ、[NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker) をインストールする必要もあります。
+- カスタム イメージを使用する場合に Azure N シリーズ サイズの GPU パフォーマンスを活用するには、事前に NVIDIA ドライバーをインストールします。 また、NVIDIA GPU の Docker エンジン ユーティリティ、[NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker) をインストールする必要もあります。
 
-* Azure RDMA ネットワークにアクセスするには、RDMA 対応の VM サイズを使用します。 必要な RDMA ドライバーは、Batch でサポートされている CentOS HPC イメージおよび Ubuntu イメージにインストールされます。 MPI ワークロードを実行するには、追加構成が必要になる可能性があります。 「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」を参照してください。
-
+- Azure RDMA ネットワークにアクセスするには、RDMA 対応の VM サイズを使用します。 必要な RDMA ドライバーは、Batch でサポートされている CentOS HPC イメージおよび Ubuntu イメージにインストールされます。 MPI ワークロードを実行するには、追加構成が必要になる可能性があります。 「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」を参照してください。
 
 ## <a name="container-configuration-for-batch-pool"></a>Batch プール用のコンテナー構成
 
@@ -93,11 +94,9 @@ Batch プールでコンテナー ワークロードを実行するには、プ�
 
 コンテナー イメージをプリフェッチするメリットは、初めてタスクを実行するとき、コンテナー イメージがダウンロードされるのを、そのタスクが待たなくてもよい点です。 プールの作成時に、コンテナー構成によって、コンテナー イメージが VM にプルされます。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションの一覧を参照できます。
 
-
 ### <a name="pool-without-prefetched-container-images"></a>プリフェッチされたコンテナー イメージを使用しないプール
 
-プリフェッチされたコンテナー イメージを使用せずにコンテナー対応プールを構成するには、次の Python の例に示すように `ContainerConfiguration` オブジェクトと `VirtualMachineConfiguration` オブジェクトを定義します。 この例では、Marketplace から Azure Batch コンテナー プール イメージ用の Ubuntu Server を使用します。
-
+プリフェッチされたコンテナー イメージを使用せずにコンテナー対応プールを構成するには、次の例に示すように `ContainerConfiguration` オブジェクトと `VirtualMachineConfiguration` オブジェクトを定義します。 これらの例では、Marketplace から Azure Batch コンテナー プール イメージ用の Ubuntu Server を使用します。
 
 ```python
 image_ref_to_use = batch.models.ImageReference(
@@ -123,6 +122,29 @@ new_pool = batch.models.PoolAddParameter(
 ...
 ```
 
+```csharp
+ImageReference imageReference = new ImageReference(
+    publisher: "microsoft-azure-batch",
+    offer: "ubuntu-server-container",
+    sku: "16-04-lts",
+    version: "latest");
+
+// Specify container configuration. This is required even though there are no prefetched images.
+ContainerConfiguration containerConfig = new ContainerConfiguration();
+
+// VM configuration
+VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
+    imageReference: imageReference,
+    nodeAgentSkuId: "batch.node.ubuntu 16.04");
+virtualMachineConfiguration.ContainerConfiguration = containerConfig;
+
+// Create pool
+CloudPool pool = batchClient.PoolOperations.CreatePool(
+    poolId: poolId,
+    targetDedicatedComputeNodes: 1,
+    virtualMachineSize: "STANDARD_D1_V2",
+    virtualMachineConfiguration: virtualMachineConfiguration);
+```
 
 ### <a name="prefetch-images-for-container-configuration"></a>コンテナー構成用にイメージをプリフェッチする
 
@@ -154,7 +176,6 @@ new_pool = batch.models.PoolAddParameter(
     target_dedicated_nodes=1)
 ...
 ```
-
 
 次の C# の例では、TensorFlow イメージを [Docker Hub](https://hub.docker.com) からプリフェッチすると仮定しています。 この例には、プール ノード上の VM ホストで実行される開始タスクを含めています。 たとえば、コンテナーからアクセスできるファイル サーバーをマウントする目的で、ホストで開始タスクを実行することがあります。
 
@@ -196,10 +217,37 @@ pool.StartTask = startTaskContainer;
 ...
 ```
 
-
 ### <a name="prefetch-images-from-a-private-container-registry"></a>プライベート コンテナー レジストリからイメージをプリフェッチする
 
 プライベート コンテナー レジストリ サーバーの認証により、コンテナー イメージをプリフェッチすることもできます。 次の例では、`ContainerConfiguration` および `VirtualMachineConfiguration` オブジェクトは、プライベート TensorFlow イメージをプライベート Azure コンテナー レジストリからプリフェッチします。 イメージ参照は前の例と同じです。
+
+```python
+image_ref_to_use = batch.models.ImageReference(
+        publisher='microsoft-azure-batch',
+        offer='ubuntu-server-container',
+        sku='16-04-lts',
+        version='latest')
+
+# Specify a container registry
+container_registry = batch.models.ContainerRegistry(
+        registry_server="myRegistry.azurecr.io",
+        user_name="myUsername",
+        password="myPassword")
+
+# Create container configuration, prefetching Docker images from the container registry
+container_conf = batch.models.ContainerConfiguration(
+        container_image_names = ["myRegistry.azurecr.io/samples/myImage"],
+        container_registries =[container_registry])
+
+new_pool = batch.models.PoolAddParameter(
+            id="myPool",
+            virtual_machine_configuration=batch.models.VirtualMachineConfiguration(
+                image_reference=image_ref_to_use,
+                container_configuration=container_conf,
+                node_agent_sku_id='batch.node.ubuntu 16.04'),
+            vm_size='STANDARD_D1_V2',
+            target_dedicated_nodes=1)
+```
 
 ```csharp
 // Specify a container registry
@@ -233,9 +281,15 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 コンテナーが有効なプール上でコンテナー タスクを実行するには、コンテナー固有の設定を指定します。 設定には、使用するイメージ、レジストリ、コンテナー実行オプションが含まれます。
 
-* コンテナー固有の設定を構成するには、タスク クラスの `ContainerSettings` プロパティを使用します。 これらの設定は、[TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) クラスによって定義されます。 `--rm` コンテナー オプションは Batch によって処理されるため、追加の `--runtime` オプションは必要ありません。
+- コンテナー固有の設定を構成するには、タスク クラスの `ContainerSettings` プロパティを使用します。 これらの設定は、[TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) クラスによって定義されます。 `--rm` コンテナー オプションは Batch によって処理されるため、追加の `--runtime` オプションは必要ありません。
 
-* コンテナー イメージでタスクを実行する場合は、[クラウド タスク](/dotnet/api/microsoft.azure.batch.cloudtask)と[ジョブ マネージャー タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)にコンテナー設定が必要です。 ただし、[開始タスク](/dotnet/api/microsoft.azure.batch.starttask)、[ジョブの準備タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)、および[ジョブの解放タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)にはコンテナー設定は不要です (つまり、コンテナーのコンテキスト内で、またはノード上で直接実行できます)。
+- コンテナー イメージでタスクを実行する場合は、[クラウド タスク](/dotnet/api/microsoft.azure.batch.cloudtask)と[ジョブ マネージャー タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)にコンテナー設定が必要です。 ただし、[開始タスク](/dotnet/api/microsoft.azure.batch.starttask)、[ジョブの準備タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)、および[ジョブの解放タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)にはコンテナー設定は不要です (つまり、コンテナーのコンテキスト内で、またはノード上で直接実行できます)。
+
+- Windows の場合、タスクは [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) を `admin` に設定して実行する必要があります。 
+
+- Linux の場合、Batch ではユーザーおよびグループの権限がコンテナーにマップされます。 コンテナー内の任意のフォルダーへのアクセスに管理者権限が必要な場合は、管理者の昇格レベルを使用して、プール スコープとしてタスクを実行する必要がある場合があります。 これにより、Batch がコンテナー コンテキストでルートとしてタスクを実行するようになります。 そうしないと、管理者以外のユーザーがこれらのフォルダーにアクセスできない可能性があります。
+
+- GPU 対応ハードウェアを備えたコンテナー プールの場合、Batch ではコンテナー タスクに対して自動的に GPU が有効になります。そのため、`–gpus` 引数は含めないでください。
 
 ### <a name="container-task-command-line"></a>コンテナー タスクのコマンド ライン
 
@@ -245,9 +299,9 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 Batch タスクのコンテナー イメージが [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example) スクリプトを使って構成されている場合は、コマンド ラインを設定して既定の ENTRYPOINT を使用するか、または上書きできます。
 
-* コンテナー イメージの既定の ENTRYPOINT を使用するには、空の文字列 `""` にタスク コマンド ラインを設定します。
+- コンテナー イメージの既定の ENTRYPOINT を使用するには、空の文字列 `""` にタスク コマンド ラインを設定します。
 
-* 既定の ENTRYPOINT を上書きするため、またはイメージに ENTRYPOINT がない場合は、たとえば `/app/myapp` や `/bin/sh -c python myscript.py` のように、コンテナーに適したコマンド ラインを設定します。
+- 既定の ENTRYPOINT を上書きするため、またはイメージに ENTRYPOINT がない場合は、たとえば `/app/myapp` や `/bin/sh -c python myscript.py` のように、コンテナーに適したコマンド ラインを設定します。
 
 オプションの [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) は、コンテナーを作成して実行するために Batch が使用する `docker create` コマンドに指定される追加の引数です。 たとえば、コンテナーの作業ディレクトリを設定するには、`--workdir <directory>` オプションを設定します。 追加のオプションについては、[docker create](https://docs.docker.com/engine/reference/commandline/create/) のリファレンスをご覧ください。
 
@@ -257,9 +311,9 @@ Batch コンテナー タスクは、コンテナー内の作業ディレクト�
 
 Batch コンテナー タスクの場合:
 
-* ホスト ノード (Azure Batch ディレクトリのルート) 上の `AZ_BATCH_NODE_ROOT_DIR` 下にあるすべてのディレクトリが、コンテナー内に再帰的にマップされます。
-* タスクの環境変数がすべて、コンテナー内にマップされます。
-* ノード上にあるタスク作業ディレクトリ `AZ_BATCH_TASK_WORKING_DIR` が、通常タスクと同様に設定され、コンテナー内にマップされます。
+- ホスト ノード (Azure Batch ディレクトリのルート) 上の `AZ_BATCH_NODE_ROOT_DIR` 下にあるすべてのディレクトリが、コンテナー内に再帰的にマップされます。
+- タスクの環境変数がすべて、コンテナー内にマップされます。
+- ノード上にあるタスク作業ディレクトリ `AZ_BATCH_TASK_WORKING_DIR` が、通常タスクと同様に設定され、コンテナー内にマップされます。
 
 これらのマッピングによって、コンテナー以外のタスクとほぼ同じように、コンテナー タスクを操作することが可能になります。 たとえば、アプリケーション パッケージを使用してアプリケーションをインストールし、Azure Storage からリソース ファイルにアクセスし、タスクの環境設定を使用し、コンテナーが停止した後はタスクの出力ファイルを永続化します。
 
@@ -269,9 +323,8 @@ Batch コンテナー タスクの場合:
 
 必要な場合は、イメージに基づいてコンテナー タスクの設定を調整します。
 
-* タスク コマンド ラインで絶対パスを指定します。 タスク コマンド ラインにイメージの既定の ENTRYPOINT が使用されている場合は、絶対パスが設定されていることを確認します。
-
-* タスクのコンテナー実行オプションで、イメージの WORKDIR と一致するように作業ディレクトリを変更します。 たとえば、`--workdir /app` を設定します。
+- タスク コマンド ラインで絶対パスを指定します。 タスク コマンド ラインにイメージの既定の ENTRYPOINT が使用されている場合は、絶対パスが設定されていることを確認します。
+- タスクのコンテナー実行オプションで、イメージの WORKDIR と一致するように作業ディレクトリを変更します。 たとえば、`--workdir /app` を設定します。
 
 ## <a name="container-task-examples"></a>コンテナー タスクの例
 
@@ -308,10 +361,7 @@ containerTask.ContainerSettings = cmdContainerSettings;
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Shipyard レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes)を使用して Azure Batch でコンテナー ワークロードを簡単にデプロイする方法については、[Batch Shipyard](https://github.com/Azure/batch-shipyard) ツールキットも参照してください。
-
-* Linux での Docker CE のインストールおよび使用の詳細については、[Docker](https://docs.docker.com/engine/installation/) ドキュメントをご覧ください。
-
-* カスタム イメージの使用方法の詳細については、「[マネージド カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」をご覧ください。
-
-* コンテナー ベースのシステムを作成するためのフレームワークである、[Moby プロジェクト](https://mobyproject.org/)について詳細をご確認ください。
+- [Shipyard レシピ](https://github.com/Azure/batch-shipyard)を使用して Azure Batch でコンテナー ワークロードを簡単にデプロイする方法については、[Batch Shipyard](https://github.com/Azure/batch-shipyard/tree/master/recipes) ツールキットを参照してください。
+- Linux での Docker CE のインストールおよび使用の詳細については、[Docker](https://docs.docker.com/engine/installation/) ドキュメントをご覧ください。
+- [マネージド カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)方法について学習します。
+- コンテナー ベースのシステムを作成するためのフレームワークである、[Moby プロジェクト](https://mobyproject.org/)について詳細をご確認ください。

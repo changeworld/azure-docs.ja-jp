@@ -1,5 +1,5 @@
 ---
-title: Azure portal で IoT Hub Device Provisioning Service を設定する
+title: クイックスタート - Azure portal で IoT Hub Device Provisioning Service を設定する
 description: クイックスタート - Azure portal で Azure IoT Hub Device Provisioning Service (DPS) を設定する
 author: wesmc7777
 ms.author: wesmc
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 765b7e5bb7341974a6a16d3f1ed0bcabf415f9f3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76029183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297234"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>クイック スタート:Azure Portal で IoT Hub Device Provisioning Service を設定する
 
 IoT Hub Device Provisioning Service を IoT Hub で使用すると、適切な IoT ハブへのゼロタッチでのジャストインタイム プロビジョニングが可能になります。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングすることができます。 Azure IoT Hub Device Provisioning Service は、TPM、対称キー、X.509 証明書の認証を使用した IoT デバイスをサポートします。 詳細については、[IoT Hub Device Provisioning Service の概要](./about-iot-dps.md)に関するページを参照してください。
 
 このクイックスタートでは、Azure portal で IoT Hub Device Provisioning Service を設定する方法について説明します。対象のデバイスは次の手順でプロビジョニングします。
-> [!div class="checklist"]
-> * Azure portal を使用して IoT Hub を作成する
-> * Azure Portal を使用して IoT Hub Device Provisioning Service を作成し、ID スコープを取得する
-> * IoT ハブを Device Provisioning Service にリンクする
+
+* Azure portal を使用して IoT Hub を作成する
+* Azure Portal を使用して IoT Hub Device Provisioning Service を作成し、ID スコープを取得する
+* IoT ハブを Device Provisioning Service にリンクする
 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。

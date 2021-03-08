@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターで証明書を管理する
 description: Service Fabric クラスターに対して新しい証明書を追加、証明書をロールオーバー、および証明書を削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 6dd4440d76bed9d110c13baab9f4e67b3a5c64c0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869747"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660918"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
@@ -18,7 +18,7 @@ Azure Service Fabrics SDK の証明書の既定の読み込み動作では、プ
 Service Fabric では、クラスターの作成中に証明書セキュリティを構成するときに、クライアントの証明書に加えて 2 つのクラスター証明書 (プライマリとセカンダリ) を指定できます。 作成時にそれらを設定する方法について詳しくは、[ポータルからクラスターを作成する](service-fabric-cluster-creation-via-portal.md)方法に関する記事か、[Azure Resource Manager を使用して Azure クラスターを作成する](service-fabric-cluster-creation-via-arm.md)方法に関する記事をご覧ください。 作成時にクラスター証明書を 1 つだけ指定した場合は、それがプライマリ証明書として使用されます。 クラスターの作成後に、新しい証明書をセカンダリ証明書として追加できます。
 
 > [!NOTE]
-> セキュリティ保護されたクラスターでは、常に (失効も期限切れもしていない) 有効なクラスター証明書 (プライマリまたはセカンダリ) を 1 つ以上デプロイする必要があります。デプロイしなかった場合、クラスターの機能が停止します。 有効なすべての証明書が期限切れになる 90 日前に、システムは、警告トレースとノードの正常性に関する警告イベントを生成します。 現時点では、この記事に関して Service Fabric が電子メールやその他の通知を送信することはありません。 
+> セキュリティ保護されたクラスターでは、常に (失効も期限切れもしていない) 有効なクラスター証明書 (プライマリまたはセカンダリ) を 1 つ以上デプロイする必要があります。デプロイしなかった場合、クラスターの機能が停止します。 有効なすべての証明書が期限切れになる 90 日前に、警告トレースとノードの正常性に関する警告イベントが生成されます。 現時点では、証明書の有効期限について Service Fabric から送信される唯一の通知です。
 > 
 > 
 
@@ -93,7 +93,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
          }
     ``` 
 
-    **証明書をロール オーバー**するには、新しい証明書をプライマリに指定し、現在のプライマリをセカンダリに移動します。 この結果、1 つのデプロイ手順で現在のプライマリ証明書が新しい証明書にロールオーバーされます。
+    **証明書をロール オーバー** するには、新しい証明書をプライマリに指定し、現在のプライマリをセカンダリに移動します。 この結果、1 つのデプロイ手順で現在のプライマリ証明書が新しい証明書にロールオーバーされます。
     
     ```JSON
           "properties": {
@@ -104,7 +104,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
          }
     ``` 
 
-4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" までスクロールします。
+4. **すべて** の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" までスクロールします。
 
     Service Fabric のパブリッシャーの設定は、次のように表示されます。
     
@@ -125,7 +125,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
     
     ![Json_Pub_Setting2][Json_Pub_Setting2]
     
-    **証明書をロール オーバー**するには、新しい証明書をプライマリに指定し、現在のプライマリをセカンダリに移動します。 この結果、現在の証明書が新しい証明書に 1 つのデプロイ手順でロールオーバーされます。     
+    **証明書をロール オーバー** するには、新しい証明書をプライマリに指定し、現在のプライマリをセカンダリに移動します。 この結果、現在の証明書が新しい証明書に 1 つのデプロイ手順でロールオーバーされます。     
 
     ```json
                    "certificate": {
@@ -142,7 +142,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
     その結果、プロパティは次のようになります。    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "OSProfile" の下にある "vaultCertificates": にスクロールします。 次のように表示されます。
+5. **すべて** の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "OSProfile" の下にある "vaultCertificates": にスクロールします。 次のように表示されます。
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
@@ -197,7 +197,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-そのリソース グループに、テンプレートをデプロイします。 クラスターの現在のデプロイ先であるリソース グループを使用します。 New-AzResourceGroupDeployment コマンドを実行します。 既定値の **incremental**を使用するため、モードを指定する必要はありません。
+そのリソース グループに、テンプレートをデプロイします。 クラスターの現在のデプロイ先であるリソース グループを使用します。 New-AzResourceGroupDeployment コマンドを実行します。 既定値の **incremental** を使用するため、モードを指定する必要はありません。
 
 > [!NOTE]
 > モードを [Complete (完了)] に設定すると、テンプレートにないリソースが誤って削除される可能性があります。 このため、このシナリオでは使用しないでください。

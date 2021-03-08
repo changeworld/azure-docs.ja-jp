@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636128"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021968"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
 
@@ -60,7 +60,7 @@ Speech サービスがコール センターで利用される場合、機能的
 
 ### <a name="translation"></a>翻訳
 
-デリバリー マネージャーが世界中の顧客体験を理解できるよう、外国語のサポート コールの翻訳を試している企業もあります。 Microsoft の[翻訳](translation.md)機能にまさるものはありません。 さまざまなロケールで、音声を音声に変換したり、音声をテキストに変換したりできます。
+デリバリー マネージャーが世界中の顧客体験を理解できるよう、外国語のサポート コールの翻訳を試している企業もあります。 Microsoft の[翻訳](./speech-translation.md)機能にまさるものはありません。 さまざまなロケールで、音声を音声に変換したり、音声をテキストに変換したりできます。
 
 ### <a name="text-to-speech"></a>テキストから音声へ
 
@@ -94,7 +94,7 @@ Speech サービスがコール センターで利用される場合、機能的
 
 - Speech サービスは、音声テキスト変換の文字起こしに使用されます。 バッチ文字起こし API を使用するには、Speech サービスの標準サブスクリプション (S0) が必要です。 Free サブスクリプション (F0) は機能しません。
 - [Azure Storage](https://azure.microsoft.com/services/storage/) は、電話データと、バッチ文字起こし API によって返されたトランスクリプトの保存に使用されます。 このストレージ アカウントでは通知を利用する必要があります。特に、新しいファイルが追加されたときに通知する必要があります。 通知は文字起こしプロセスのトリガーに利用されます。
-- [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) は、録音ごとに Shared Access Signature (SAS) URI を作成し、HTTP POST 要求をトリガーして文字起こしを開始するために使用されます。 また、Azure Functions は、バッチ文字起こし API で文字起こしを回収し、削除するための要求の作成に使用されます。
+- [Azure Functions](../../azure-functions/index.yml) は、録音ごとに Shared Access Signature (SAS) URI を作成し、HTTP POST 要求をトリガーして文字起こしを開始するために使用されます。 また、Azure Functions は、バッチ文字起こし API で文字起こしを回収し、削除するための要求の作成に使用されます。
 
 Microsoft 社内では以上のテクノロジを利用し、バッチ モードの Microsoft カスタマー コールを支援しています。
 :::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="バッチ モードの Microsoft カスタマー コールを支援するために使用されるテクノロジ。":::
@@ -111,7 +111,7 @@ Microsoft 社内では以上のテクノロジを利用し、バッチ モード
 
 ## <a name="a-word-on-ivrs"></a>IVR のワード
 
-Speech サービスは [Speech SDK](speech-sdk.md) か [REST API](rest-apis.md) を利用することで、あらゆるソリューションに簡単に統合できます。 しかしながら、コール センターの文字起こしには付加的なテクノロジが必要になる場合があります。 通常、IVR システムと Azure 間の接続が必要です。 Microsoft ではこのようなコンポーネントを提供していませんが、ここでは、IVR に接続するとはどのようなものかについて説明します。
+Speech サービスは [Speech SDK](speech-sdk.md) か [REST API](./overview.md#reference-docs) を利用することで、あらゆるソリューションに簡単に統合できます。 しかしながら、コール センターの文字起こしには付加的なテクノロジが必要になる場合があります。 通常、IVR システムと Azure 間の接続が必要です。 Microsoft ではこのようなコンポーネントを提供していませんが、ここでは、IVR に接続するとはどのようなものかについて説明します。
 
 IVR または電話サービス製品 (Genesys や AudioCodes など) の中には、Azure サービスとの送受信の音声パススルーを有効にするために活用できる統合機能を提供しているものがあります。 基本的には、カスタム Azure サービスで、通話セッション (通話の開始や終了など) を定義する特別なインターフェイスを提供し、Speech サービスで使用されるストリーム音声を受信する WebSocket API を公開することができます。 会話の文字起こしや Bot Framework との接続など、送信の応答を Microsoft のテキスト読み上げサービスと合成し、IVR に返して再生できます。
 
@@ -123,10 +123,10 @@ IVR または電話サービス製品 (Genesys や AudioCodes など) の中に�
 
 | Speech サービス | モデル | 説明 |
 | -------------- | ----- | ----------- |
-| 音声テキスト変換 | [音響モデル](how-to-customize-acoustic-models.md) | 自動車や工場など、それぞれに固有の録音条件がある特定の環境で使用されるアプリケーション、ツール、デバイス用のカスタム音響モデルを作成します。 たとえば、アクセント記号付きの音声、特定の背景ノイズ、録音に特定のマイクを使用する場合などです。 |
-|                | [言語モデル](how-to-customize-language-model.md) | 医療用語や IT の専門用語など、業界固有のボキャブラリと文法の文字起こしを向上させるには、カスタム言語モデルを作成します。 |
-|                | [発音モデル](how-to-customize-pronunciation.md) | カスタムの発音モデルを使用すると、単語または用語の発音形式と表示を定義できます。 製品名や頭字語などのカスタマイズされた用語を処理する場合に便利です。 始めるにあたって必要なのは、発音ファイル (シンプルな `.txt` ファイル) のみです。 |
-| テキスト読み上げ | [音声フォント](how-to-customize-voice-font.md) | カスタム音声フォントを使用すると、ブランド用に認識性の高い固有の音声を作成できます。 少量のデータだけで始めることができます。 提供するデータを増やすと、いっそう自然で人間のように聞こえる音声フォントになります。 |
+| 音声テキスト変換 | [音響モデル](./how-to-custom-speech-train-model.md) | 自動車や工場など、それぞれに固有の録音条件がある特定の環境で使用されるアプリケーション、ツール、デバイス用のカスタム音響モデルを作成します。 たとえば、アクセント記号付きの音声、特定の背景ノイズ、録音に特定のマイクを使用する場合などです。 |
+|                | [言語モデル](./how-to-custom-speech-train-model.md) | 医療用語や IT の専門用語など、業界固有のボキャブラリと文法の文字起こしを向上させるには、カスタム言語モデルを作成します。 |
+|                | [発音モデル](./how-to-custom-speech-train-model.md) | カスタムの発音モデルを使用すると、単語または用語の発音形式と表示を定義できます。 製品名や頭字語などのカスタマイズされた用語を処理する場合に便利です。 始めるにあたって必要なのは、発音ファイル (シンプルな `.txt` ファイル) のみです。 |
+| テキスト読み上げ | [音声フォント](./how-to-custom-voice-create-voice.md) | カスタム音声フォントを使用すると、ブランド用に認識性の高い固有の音声を作成できます。 少量のデータだけで始めることができます。 提供するデータを増やすと、いっそう自然で人間のように聞こえる音声フォントになります。 |
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -138,13 +138,13 @@ Speech サービスの各機能のサンプル コードは、GitHub で入手�
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-- [Speech SDK](speech-sdk-reference.md)
+- [Speech SDK](./speech-sdk.md)
 - [Speech Devices SDK](speech-devices-sdk.md)
 - [REST API: 音声テキスト変換](rest-speech-to-text.md)
 - [REST API: テキスト読み上げ](rest-text-to-speech.md)
-- [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
+- [REST API: 一括文字起こしとカスタマイズ](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
+> [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)

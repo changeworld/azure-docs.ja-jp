@@ -1,7 +1,7 @@
 ---
 title: Azure AD Domain Services の DNS を管理する | Microsoft Docs
 description: DNS サーバー ツールをインストールして、Azure Active Directory Domain Services マネージド ドメインの DNS を管理し、条件付きフォワーダーを作成する方法について説明します。
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: af321f4e9ef9e340026852a759bb70b9f03c77f6
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: afa6920a36a5a7218571239b36815004d8f2d450
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722944"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619353"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインで DNS を管理し、条件付きフォワーダーを作成する
 
@@ -48,7 +48,7 @@ Azure Active Directory Domain Services (Azure AD DS) の重要な構成要素の
 マネージド ドメインに DNS レコードを作成して変更するには、DNS サーバー ツールをインストールする必要があります。 これらのツールは、Windows Server の機能としてインストールできます。 Windows クライアントに管理ツールをインストールする方法の詳細については、[リモート サーバー管理ツール (RSAT)][install-rsat] のインストールに関するページを参照してください。
 
 1. 管理 VM にサインインします。 Azure portal を使用した接続方法については、「[Windows Server VM に接続する][connect-windows-server-vm]」を参照してください。
-1. VM にサインインしたときに**サーバー マネージャー**が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
+1. VM にサインインしたときに **サーバー マネージャー** が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
 1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
 1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
@@ -66,7 +66,7 @@ Azure Active Directory Domain Services (Azure AD DS) の重要な構成要素の
 DNS サーバー ツールがインストールされたら、マネージド ドメインの DNS レコードを管理できます。
 
 > [!NOTE]
-> マネージド ドメインで DNS を管理するには、*AAD DC 管理者*グループのメンバーであるユーザー アカウントにサインインする必要があります。
+> マネージド ドメインで DNS を管理するには、*AAD DC 管理者* グループのメンバーであるユーザー アカウントにサインインする必要があります。
 
 1. スタート画面で **[管理ツール]** を選択します。 前のセクションでインストールした **DNS** など、利用できる管理ツールの一覧が表示されます。 **[DNS]** を選択し、DNS 管理コンソールを起動します。
 1. **[DNS サーバーに接続]** ダイアログで、 **[次のコンピューター]** を選択し、マネージド ドメインの DNS ドメイン名 (例: *aaddscontoso.com*) を入力します。

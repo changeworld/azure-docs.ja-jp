@@ -1,0 +1,104 @@
+- name: Azure Percept のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Percept プラットフォーム
+      href: overview-azure-percept.md
+    - name: Azure Percept Studio
+      href: overview-azure-percept-studio.md
+    - name: Azure Percept DK
+      href: overview-azure-percept-dk.md
+    - name: Azure Percept Audio
+      href: overview-azure-percept-audio.md
+    - name: Azure Percept AI モデル
+      href: overview-ai-models.md
+    - name: 高度な開発
+      href: overview-advanced-code.md
+    - name: Azure Percept のセキュリティ
+      href: overview-percept-security.md
+    - name: 80/20 統合
+      href: overview-8020-integration.md
+    - name: Percept デバイスを更新する
+      href: overview-update-experience.md
+- name: クイックスタート
+  items:
+    - name: Azure Percept デバイスを設定する
+      items:
+        - name: Azure Percept DK を箱から取り出して組み立てる
+          href: quickstart-percept-dk-unboxing.md
+        - name: Azure Percept DK の設定エクスペリエンスを完了する
+          href: quickstart-percept-dk-set-up.md
+        - name: Azure Percept Audio の設定
+          href: quickstart-percept-audio-setup.md
+- name: チュートリアル
+  items:
+    - name: Azure Percept でプロトタイプ作成を開始する
+      items:
+        - name: コーディングなしのビジョン ソリューションを構築してデプロイする
+          href: tutorial-nocode-vision.md
+        - name: コーディングなしの音声ソリューションを構築してデプロイする
+          href: tutorial-no-code-speech.md
+- name: 概念
+  items:
+    - name: Azure Percept Audio
+      items:
+        - name: LED とボタンの動作
+          href: audio-button-led-behavior.md
+- name: 操作方法ガイド
+  items:
+    - name: Azure Percept DK を使用したビジョン ソリューションの開発
+      items:
+        - name: 開発キットのビデオ ストリームを表示する
+          href: how-to-view-video-stream.md
+        - name: AI モデルを開発キットにデプロイする
+          href: how-to-deploy-model.md
+        - name: ビジョン プロジェクトの画像をキャプチャする
+          href: how-to-capture-images.md
+        - name: 開発キットのテレメトリを表示する
+          href: how-to-view-telemetry.md
+    - name: Azure Percept DK を使用した音声ソリューションの開発
+      items:
+        - name: Azure Percept Studio 内で音声アシスタントを構成する
+          href: how-to-configure-voice-assistant.md
+        - name: IoT Hub 内で音声アシスタントを構成する
+          href: how-to-manage-voice-assistant.md
+    - name: Azure Percept デバイスを更新する
+      items:
+        - name: 無線での更新を設定する
+          href: how-to-set-up-over-the-air-updates.md
+        - name: Azure Percept DK を無線で更新する
+          href: how-to-update-over-the-air.md
+        - name: Azure Percept DK を USB 経由で更新する
+          href: how-to-update-via-usb.md
+    - name: Azure Percept DK に接続する
+      items:
+        - name: SSH 経由で接続する
+          href: how-to-ssh-into-percept-dk.md
+        - name: シリアル経由で接続する
+          href: how-to-connect-to-percept-dk-over-serial.md
+    - name: ツール
+      items:
+        - name: Devtools パック インストーラー
+          href: dev-tools-installer.md
+    - name: トラブルシューティング
+      items:
+        - name: 設定エクスペリエンスのトラブルシューティング
+          href: how-to-troubleshoot-setup.md
+        - name: 一般的な Azure Percept DK のトラブルシューティング
+          href: troubleshoot-dev-kit.md
+        - name: ビジョン ソリューションのトラブルシューティング
+          href: vision-solution-troubleshooting.md
+        - name: Azure Percept Audio のトラブルシューティング
+          href: troubleshoot-audio-accessory-speech-module.md
+        - name: 既知の問題
+          href: known-issues.md
+- name: リファレンス
+  items:
+    - name: Azure Percept デバイスのデータシート
+      items:
+        - name: Azure Percept DK のデータシート
+          href: azure-percept-dk-datasheet.md
+        - name: Azure Percept Vision のデータシート
+          href: azure-percept-vision-datasheet.md
+        - name: Azure Percept Audio のデータシート
+          href: azure-percept-audio-datasheet.md

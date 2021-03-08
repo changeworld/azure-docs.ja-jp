@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2c8c094efdfa9f46c6e6c42e34fd4010e43fa972
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2969ce6ceda0d1b71ec991b32f5b10acf9bfa12
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84039903"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780378"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS アプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "84039903"
 
 マルチテナント データベースは、テナントあたりのコスト削減を求めていて、テナント分離は減らしてもよい、というサービス プロバイダーに効果的です。 このパターンでは、1 つのデータベースに多数のテナントを包含することができ、テナントごとのコストを削減します。 複数のデータベース間でテナントをシャーディングすることにより、ほぼ無限のスケールが可能です。 カタログ データベースは、テナントをデータベースにマップします。  
 
-このパターンでは*ハイブリッド* モデルも可能で、1 つのデータベース内の複数テナントでコストを最適化したり、独自のデータベース内の 1 つのテナントで分離を最適化したりすることもできます。 この選択は、テナントのプロビジョニング時あるいはその後のどちらでも、アプリケーションに影響を与えずに、テナントごとに可能です。  このモデルは、テナントのグループを異なる方法で処理する必要がある場合に効果的に使用できます。 たとえば、低コストのテナントを共有データベースに割り当て、プレミアム テナントを独自のデータベースに割り当てることができます。 
+このパターンでは *ハイブリッド* モデルも可能で、1 つのデータベース内の複数テナントでコストを最適化したり、独自のデータベース内の 1 つのテナントで分離を最適化したりすることもできます。 この選択は、テナントのプロビジョニング時あるいはその後のどちらでも、アプリケーションに影響を与えずに、テナントごとに可能です。  このモデルは、テナントのグループを異なる方法で処理する必要がある場合に効果的に使用できます。 たとえば、低コストのテナントを共有データベースに割り当て、プレミアム テナントを独自のデータベースに割り当てることができます。 
 
 [チュートリアル][docs-tutorials-for-wingtip-mt]および GitHub [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt] 上のコードを確認してください。
 
@@ -84,12 +84,11 @@ ms.locfileid: "84039903"
 
 <!-- WWWeb http references. -->
 
-[docs-tutorials-for-wingtip-sa]: https://aka.ms/wingtipticketssaas-sa
+[docs-tutorials-for-wingtip-sa]: ./saas-standaloneapp-get-started-deploy.md
 [github-code-for-wingtip-sa]: https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp
 
-[docs-tutorials-for-wingtip-dpt]: https://aka.ms/wingtipticketssaas-dpt
+[docs-tutorials-for-wingtip-dpt]: ./saas-dbpertenant-wingtip-app-overview.md
 [github-code-for-wingtip-dpt]: https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant
 
-[docs-tutorials-for-wingtip-mt]: https://aka.ms/wingtipticketssaas-mt
+[docs-tutorials-for-wingtip-mt]: ./saas-multitenantdb-get-started-deploy.md
 [github-code-for-wingtip-mt]: https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb
-

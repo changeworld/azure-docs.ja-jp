@@ -10,18 +10,18 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216536"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674887"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>チュートリアル:SSMS を使用して Azure SQL Database でリレーショナル データベースを設計する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 
-Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサービスとしてのデータベース (DBaaS) です。 このチュートリアルでは、Azure Portal および [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) を使用して以下の操作を行う方法を学習します。
+Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサービスとしてのデータベース (DBaaS) です。 このチュートリアルでは、Azure Portal および [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) を使用して以下の操作を行う方法を学習します。
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサ�
 *Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 > [!TIP]
-> 次の Microsoft Learn モジュールは、単純なデータベースの作成など、[Azure SQL Database に対してクエリを行う ASP.NET アプリケーションを開発および構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習するのに役立ちます。
+> 次の Microsoft Learn モジュールは、単純なデータベースの作成など、[Azure SQL Database に対してクエリを行う ASP.NET アプリケーションを開発および構成する](/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習するのに役立ちます。
 > [!NOTE]
 > このチュートリアルでは、Azure SQL Database を使用しています。 エラスティック プールでプールされたデータベース、または SQL Managed Instance を使用することもできます。 SQL Managed Instance への接続については、以下の SQL Managed Instance のクイックスタートを参照してください。「[クイック スタート: Azure SQL Managed Instance に接続するように Azure VM を構成する](../managed-instance/connect-vm-instance-configure.md)」および「[クイックスタート: オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する](../managed-instance/point-to-site-p2s-configure.md)」。
 
@@ -43,7 +43,7 @@ Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサ�
 
 このチュートリアルを完了するには、以下がインストールされていることを確認してください。
 
-- [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (最新バージョン)
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (最新バージョン)
 - [BCP と SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433) (最新バージョン)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
@@ -86,13 +86,13 @@ Azure SQL Database のデータベースは、定義済みの一連のコンピ�
 
     サービス レベル、DTU または仮想コアの数、およびストレージの容量を選択したら、 **[適用]** をクリックします。
 
-7. 空のデータベースの**照合順序**を入力します (このチュートリアルでは既定値を使用)。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
+7. 空のデータベースの **照合順序** を入力します (このチュートリアルでは既定値を使用)。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
 
 8. これで **SQL Database** フォームの入力が完了したので、 **[作成]** をクリックして、データベースをプロビジョニングします。 この手順には数分かかることがあります。
 
 9. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
 
-   ![通知 (notification)](./media/design-first-database-tutorial/notification.png)
+   ![デプロイ中の [通知] メニューのスクリーンショット。](./media/design-first-database-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>サーバーレベルの IP ファイアウォール規則を作成する
 
@@ -134,20 +134,20 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
    | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **サーバーの種類** | データベース エンジン | この値は必須です。 |
-   | **サーバー名** | 完全修飾サーバー名 | たとえば、*yourserver.database.windows.net* などです。 |
+   | **サーバー名** | 完全修飾サーバー名 | たとえば、 *yourserver.database.windows.net* などです。 |
    | **認証** | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | **Login** | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | お客様がサーバーを作成したときに指定したパスワードです。 |
 
    ![[サーバーに接続]](./media/design-first-database-tutorial/connect.png)
 
-3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックします。 **[データベースへの接続]** セクションに「*yourDatabase*」と入力して、このデータベースに接続します。
+3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックします。 **[データベースへの接続]** セクションに「 *yourDatabase* 」と入力して、このデータベースに接続します。
 
     ![サーバー上のデータベースに接続](./media/design-first-database-tutorial/options-connect-to-db.png)  
 
-4. **[Connect]** をクリックします。 SSMS で**オブジェクト エクスプローラー** ウィンドウが開きます。
+4. **[Connect]** をクリックします。 SSMS で **オブジェクト エクスプローラー** ウィンドウが開きます。
 
-5. **オブジェクト エクスプローラー**で、**Databases**、*yourDatabase* の順に展開して、サンプル データベース内のオブジェクトを表示します。
+5. **オブジェクト エクスプローラー** で、 **Databases** 、 *yourDatabase* の順に展開して、サンプル データベース内のオブジェクトを表示します。
 
    ![データベース オブジェクト](./media/design-first-database-tutorial/connected.png)  
 
@@ -160,14 +160,14 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
 - 生徒
 - クレジット
 
-次の図は、これらのテーブルの相互関係を示しています。 テーブルの一部は、他のテーブル内の列を参照します。 たとえば *Student* テーブルは、*Person* テーブルの *PersonId* 列を参照します。 このチュートリアルのテーブルの相互関係を把握するため、図を詳しく確認します。 効果的なデータベース テーブル作成方法の詳細は、[効果的なデータベース テーブルの作成](https://msdn.microsoft.com/library/cc505842.aspx)を参照してください。 データ型の選択については、[データ型](/sql/t-sql/data-types/data-types-transact-sql)を参照してください。
+次の図は、これらのテーブルの相互関係を示しています。 テーブルの一部は、他のテーブル内の列を参照します。 たとえば *Student* テーブルは、 *Person* テーブルの *PersonId* 列を参照します。 このチュートリアルのテーブルの相互関係を把握するため、図を詳しく確認します。 効果的なデータベース テーブル作成方法の詳細は、[効果的なデータベース テーブルの作成](/previous-versions/tn-archive/cc505842(v=technet.10))を参照してください。 データ型の選択については、[データ型](/sql/t-sql/data-types/data-types-transact-sql)を参照してください。
 
 > [!NOTE]
 > [SQL Server Management Studio のテーブル デザイナー](/sql/ssms/visual-db-tools/design-database-diagrams-visual-database-tools)を使用して、テーブルを作成および設計することも可能です。
 
 ![テーブルのリレーションシップ](./media/design-first-database-tutorial/tutorial-database-tables.png)
 
-1. **オブジェクト エクスプローラー**で *yourDatabase* を右クリックし、 **[新しいクエリ]** を選択します。 データベースに接続された空のクエリ ウィンドウが開きます。
+1. **オブジェクト エクスプローラー** で *yourDatabase* を右クリックし、 **[新しいクエリ]** を選択します。 データベースに接続された空のクエリ ウィンドウが開きます。
 
 2. クエリ ウィンドウで次のクエリを実行し、データベース内の 4 つのテーブルを作成します。
 
@@ -214,7 +214,7 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
 
    ![テーブルの作成](./media/design-first-database-tutorial/create-tables.png)
 
-3. **オブジェクト エクスプローラー**で、*yourDatabase* の **Tables** ノードを展開すると、お客様が作成したテーブルが表示されます。
+3. **オブジェクト エクスプローラー** で、 *yourDatabase* の **Tables** ノードを展開すると、お客様が作成したテーブルが表示されます。
 
    ![作成済み SSMS テーブル](./media/design-first-database-tutorial/ssms-tables-created.png)
 
@@ -229,9 +229,9 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
    - [SampleStudentData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleStudentData)
    - [SampleCreditData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCreditData)
 
-3. コマンド プロンプト ウィンドウを開き、*sampleData* フォルダーに移動します。
+3. コマンド プロンプト ウィンドウを開き、 *sampleData* フォルダーに移動します。
 
-4. 次のコマンドを実行して、サンプル データをテーブルに挿入します。*server*、*database*、*user*、*password* の各値は、お客様の環境の値に置き換えてください。
+4. 次のコマンドを実行して、サンプル データをテーブルに挿入します。 *server* 、 *database* 、 *user* 、 *password* の各値は、お客様の環境の値に置き換えてください。
 
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
@@ -244,7 +244,7 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
 
 ## <a name="query-data"></a>クエリ データ
 
-データベース テーブルから情報を取得するには、次のクエリを実行します。 SQL クエリの記述の詳細は、[SQL クエリの記述](https://technet.microsoft.com/library/bb264565.aspx)に関するページを参照してください。 最初のクエリでは 4 つのテーブルをすべて結合し、"Dominick Pope" の指導を受けた生徒のうち、成績が 75% を超えている生徒を検索します。 次のクエリでは 4 つのテーブルをすべて結合し、"Noe Coleman" がこれまでに登録したコースを検索します。
+データベース テーブルから情報を取得するには、次のクエリを実行します。 SQL クエリの記述の詳細は、[SQL クエリの記述](/previous-versions/sql/sql-server-2005/express-administrator/bb264565(v=sql.90))に関するページを参照してください。 最初のクエリでは 4 つのテーブルをすべて結合し、"Dominick Pope" の指導を受けた生徒のうち、成績が 75% を超えている生徒を検索します。 次のクエリでは 4 つのテーブルをすべて結合し、"Noe Coleman" がこれまでに登録したコースを検索します。
 
 1. SQL Server Management Studio のクエリ ウィンドウで、次のクエリを実行します。
 

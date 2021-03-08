@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 2d8ac3775021c574d3c03e44b06d6b5e689070e7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 641ed73f507d35d7af548d0164ef8e80979be217
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852660"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530478"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
@@ -58,7 +58,7 @@ Azure リージョンは、接続先として選択できるハブとして機�
 
 * **ハブ仮想ネットワーク接続:** ハブ仮想ネットワーク接続リソースは、ハブを仮想ネットワークにシームレスに接続するために使用します。
 
-* **ハブ間接続**ハブはすべて、仮想 WAN 内で相互に接続されています。 これは、ローカル ハブに接続されているブランチ、ユーザー、または VNet が、接続されたハブのフル メッシュ アーキテクチャを使用して、別のブランチまたは VNet と通信できることを意味します。 また、ハブ間の VNet と同様に、ハブ間接続されたフレームワークを使用して、仮想ハブを通じて転送するハブ内の VNet を接続することもできます。
+* **ハブ間接続** ハブはすべて、仮想 WAN 内で相互に接続されています。 これは、ローカル ハブに接続されているブランチ、ユーザー、または VNet が、接続されたハブのフル メッシュ アーキテクチャを使用して、別のブランチまたは VNet と通信できることを意味します。 また、ハブ間の VNet と同様に、ハブ間接続されたフレームワークを使用して、仮想ハブを通じて転送するハブ内の VNet を接続することもできます。
 
 * **ハブのルート テーブル:** 仮想ハブのルートを作成して、そのルートを仮想ハブのルート テーブルに適用することができます。 仮想ハブのルート テーブルには、複数のルートを適用できます。
 
@@ -95,14 +95,14 @@ Virtual WAN では、VNet 間のトランジット接続が可能です。 VNet 
 
 ルーターには 4 つのルーティング状態があります。プロビジョニング済み、プロビジョニング中、失敗、または、なしです。 Azure portal で [仮想ハブ] ページに移動すると、 **[Routing status]\(ルーティングの状態\)** が表示されます。
 
-* **なし**状態は、仮想ハブでルーターがプロビジョニングされなかったことを示します。 これは、Virtual WAN の種類が *Basic* の場合、またはサービスが利用可能になる前に仮想ハブがデプロイされた場合に発生する可能性があります。
-* **失敗**状態は、インスタンス化中の失敗を示します。 ルーターをインスタンス化またはリセットするには、Azure portal の仮想ハブの [概要] ページに移動し、 **[Reset Router]\(ルーターのリセット\)** オプションを見つけます。
+* **なし** 状態は、仮想ハブでルーターがプロビジョニングされなかったことを示します。 これは、Virtual WAN の種類が *Basic* の場合、またはサービスが利用可能になる前に仮想ハブがデプロイされた場合に発生する可能性があります。
+* **失敗** 状態は、インスタンス化中の失敗を示します。 ルーターをインスタンス化またはリセットするには、Azure portal の仮想ハブの [概要] ページに移動し、 **[Reset Router]\(ルーターのリセット\)** オプションを見つけます。
 
 各仮想ハブ ルーターは、最大 50 Gbps の集約スループットをサポートしています。 仮想ネットワーク接続間の接続では、単一の仮想ハブに接続されているすべての VNet 全体で合計 2,000 VM のワークロードを想定しています。
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN と ExpressRoute 間のトランジット接続
 
-Virtual WAN では、VPN と ExpressRoute 間のトランジット接続が可能です。 これは、VPN 接続サイトまたはリモート ユーザーが ExpressRoute 接続サイトと通信できることを意味します。 また、**ブランチ間フラグ**が有効であり、VPN と ExpressRoute 接続で BGP がサポートされていることが暗黙的に想定されています。 このフラグは、Azure portal の Azure Virtual WAN 設定にあります。 すべてのルート管理は仮想ハブ ルーターによって提供されます。これにより、仮想ネットワーク間のトランジット接続も可能になります。
+Virtual WAN では、VPN と ExpressRoute 間のトランジット接続が可能です。 これは、VPN 接続サイトまたはリモート ユーザーが ExpressRoute 接続サイトと通信できることを意味します。 また、**ブランチ間フラグ** が有効であり、VPN と ExpressRoute 接続で BGP がサポートされていることが暗黙的に想定されています。 このフラグは、Azure portal の Azure Virtual WAN 設定にあります。 すべてのルート管理は仮想ハブ ルーターによって提供されます。これにより、仮想ネットワーク間のトランジット接続も可能になります。
 
 ### <a name="custom-routing"></a><a name="routing"></a>カスタム ルーティング
 
@@ -124,9 +124,9 @@ Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機�
 
 ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用する場合は、以下を考慮してください。
 
-* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、新しいルート テーブルを作成する必要があります (Azure portal のハブの [ルート テーブル] セクションにあります)。
+* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、新しいルート テーブルを作成する必要があります (Azure portal のハブの [ルート テーブル] セクションにあります)。 Virtual WAN 内のすべてのハブに対して削除手順を実行することを強くお勧めします。
 
-* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
+* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に **アップグレード** します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。 Virtual WAN 内のすべてのハブに対して削除手順を実行することを強くお勧めします。
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 

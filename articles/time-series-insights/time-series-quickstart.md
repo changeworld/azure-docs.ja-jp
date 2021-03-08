@@ -9,15 +9,18 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 06/30/2020
-ms.openlocfilehash: 2140cbbc43af7f80c0c5fc2d7cea85cb31bd7bfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/30/2020
+ms.openlocfilehash: dd5ed52187a7cd23142b59e20c91c6d125946a72
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059353"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613783"
 ---
 # <a name="quickstart-explore-azure-time-series-insights-gen1"></a>クイック スタート:Azure Time Series Insights Gen1 の探索
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この Azure Time Series Insights Explorer クイック スタートは、無料のデモンストレーション環境で Azure Time Series Insights の使用を開始するときに役立ちます。 このクイックスタートでは、Web ブラウザーで大量の IoT データを視覚化する方法を学習し、現在一般提供されている主な機能を知ることができます。
 

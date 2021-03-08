@@ -1,24 +1,11 @@
 ---
-title: Media Services の Transform と Job
-titleSuffix: Azure Media Services
-description: Azure Media Services で Transform を作成してビデオの処理ルールを記述する方法について説明します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: inhenkel
-ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297979"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必須フィールドです。 詳細については、aka.ms/skyeye/meta を参照してください。
+title:Media Services の変換とジョブ :Azure Media Services の説明:Azure Media Services で Transform を作成してビデオの処理ルールを記述する方法について説明します。
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: conceptual ms.date:08/19/2019 ms.author: inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services の Transform と Job
 
 このトピックでは、[Transform](/rest/api/media/transforms) と [Job](/rest/api/media/jobs) に関する詳細を示し、これらのエンティティ間の関係について説明します。
@@ -62,7 +49,7 @@ Media Services v3 では、プリセットは API 自体で厳密に型指定さ
 
 ### <a name="creating-transforms"></a>変換の作成
 
-Transform は、REST、CLI、または公開されている任意の SDK を使用して作成できます。 Media Services v3 の API は Azure Resource Manager によって実行されるため、Resource Manager テンプレートを使用して、Media Services アカウントに Transforms を作成して デプロイすることもできます｡ ロールベースのアクセス制御を使用して､Transforms へのアクセスを管理することができます｡
+Transform は、REST、CLI、または公開されている任意の SDK を使用して作成できます。 Media Services v3 の API は Azure Resource Manager によって実行されるため、Resource Manager テンプレートを使用して、Media Services アカウントに Transforms を作成して デプロイすることもできます｡ Azure ロールベースのアクセス制御を使用して､Transforms へのアクセスを管理することができます。
 
 ### <a name="updating-transforms"></a>変換の更新
 
@@ -78,7 +65,7 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 ## <a name="jobs"></a>ジョブ
 
-**ジョブ**は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ **Job** は、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は、HTTPS URL、SAS URL、または[アセット](/rest/api/media/assets)を使用して指定できます。  
+**ジョブ** は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ **Job** は、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は、HTTPS URL、SAS URL、または[アセット](/rest/api/media/assets)を使用して指定できます。  
 
 ### <a name="job-input-from-https"></a>HTTPS からのジョブ入力
 

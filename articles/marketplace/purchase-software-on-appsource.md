@@ -1,5 +1,5 @@
 ---
-title: AppSource でソフトウェアを購入する方法 | Azure Marketplace
+title: Microsoft AppSource でソフトウェアを購入する方法
 description: AppSource でソフトウェアを購入するための手順 | Azure Marketplace。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 5c5f690fd5fefbd67180ea04d5ca1d269676f7b7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180815"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708035"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource でソフトウェアを購入する方法
 
@@ -51,7 +51,7 @@ SaaS のオファーを購入するには、以下のものが必要です。
 
 ご注文を受けてから確認されるまでに、数秒かかることがあります。 ページ上に SaaS サブスクリプションを構成するためのリンクが表示され、購入を確認するメー​​ルが送信されます。メールには、構成を完了するためのリンクが記載されています。
 
-1. **[ご注文の確認]** ページで、 **[構成]** を選択します。 また、確認のメールで送られてくる [構成] リンクを使用することもできます。
+1. **[ご注文の確認]** ページで、 **[構成]** を選択します。 または代わりに、確認のメールで送られてくる [構成] リンクを使用できます。
 1. プロビジョニングを完了し、ソフトウェア プロバイダーの Web サイト上で設定します。
 
     > [!Note]
@@ -61,8 +61,8 @@ SaaS のオファーを購入するには、以下のものが必要です。
 
 Microsoft 365 管理センターを通じて、[サポート チケットを送信](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage)できます。
 
-ビジネス製品については、[こちらからヘルプにお問い合わせ](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone)ください。
+ビジネス製品については、[こちらからヘルプにお問い合わせ](/office365/admin/contact-support-for-business-products?tabs=phone)ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[商業マーケットプレースのドキュメント](partner-center-portal/commercial-marketplace-overview.md)を参照してください。
+- [Microsoft マーケットプレースのお客様向けドキュメント](/marketplace/)

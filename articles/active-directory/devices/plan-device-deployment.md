@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268810"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936449"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory デバイスのデプロイを計画する
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) を使用すると、組織では、デバイ�
 
 * 生産性の向上 – Azure AD では、ユーザーがオンプレミスとクラウドのリソースに[シームレスなサインオン (SSO)](./azuread-join-sso.md) を実行でき、これにより、どこにいても生産性を高めることができます。
 
-* セキュリティの強化 – Azure AD デバイスを使用すると、デバイスまたはユーザーの ID に基づいて、リソースに[条件付きアクセス (CA) ポリシー](../conditional-access/require-managed-devices.md)を適用できます。 CA ポリシーでは、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) を使用した追加の保護を提供できます。 デバイスを Azure AD に参加させることは、[パスワードレス認証](../authentication/concept-authentication-passwordless.md)戦略を使用してセキュリティを強化するための前提条件です。
+* セキュリティの強化 – Azure AD デバイスを使用すると、デバイスまたはユーザーの ID に基づいて、リソースに[条件付きアクセス ポリシー](../conditional-access/require-managed-devices.md)を適用できます。 条件付きアクセス ポリシーでは、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) を使用した追加の保護を提供できます。 デバイスを Azure AD に参加させることは、[パスワードレス認証](../authentication/concept-authentication-passwordless.md)戦略を使用してセキュリティを強化するための前提条件です。
 
 * ユーザー エクスペリエンスの向上 – Azure AD のデバイス ID を使用すると、ユーザーが個人のデバイスと会社のデバイスの両方から組織のクラウドベースのリソースに簡単にアクセスできます。 管理者は、すべての Windows デバイスで統一されたエクスペリエンスを実現するために [Enterprise State Roaming](enterprise-state-roaming-overview.md) を有効にすることができます。
 
@@ -62,7 +62,7 @@ FAQ:「[Azure AD デバイス管理の FAQ](faq.md)」および「[設定とデ�
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](https://aka.ms/deploymentplans)し、プロジェクトにおけるその利害関係者の役割がよく理解されていることを確認します。 
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)し、プロジェクトにおけるその利害関係者の役割がよく理解されていることを確認します。 
 
 このプランでは、次の利害関係者をリストに追加します。
 
@@ -105,31 +105,31 @@ iOS および Android デバイスは Azure AD 登録のみが可能です。 �
 | 考慮事項 | Azure AD 登録済み| Azure AD 参加| ハイブリッド Azure AD 参加 |
 | - | - | - | - |
 | **クライアント オペレーティング システム**| | |  |
-| Windows 10 デバイス| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
-| Windows のダウンレベルのデバイス (Windows 8.1 または Windows 7)| | | ![チェック](./media/plan-device-deployment/check.png) |
+| Windows 10 デバイス| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+| Windows のダウンレベルのデバイス (Windows 8.1 または Windows 7)| | | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
 |**サインイン オプション**| | |  |
-| エンドユーザーのローカル資格情報| ![チェック](./media/plan-device-deployment/check.png)| |  |
-| Password| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
-| デバイスの PIN| ![チェック](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello| ![チェック](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello for Business| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
-| FIDO 2.0 セキュリティ キー| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
-| Microsoft Authenticator アプリ (パスワードレス)| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
+| エンドユーザーのローカル資格情報| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| |  |
+| Password| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+| デバイスの PIN| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello for Business| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+| FIDO 2.0 セキュリティ キー| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+| Microsoft Authenticator アプリ (パスワードレス)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
 |**主な機能**| | |  |
-| クラウド リソースへの SSO| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
-| オンプレミスのリソースへの SSO| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
-| 条件付きアクセス <br> (デバイスは準拠としてマーク済みであることが必要) <br> (MDM による管理が必要)| ![チェック](./media/plan-device-deployment/check.png) | ![チェック](./media/plan-device-deployment/check.png)|![チェック](./media/plan-device-deployment/check.png) |
-条件付きアクセス <br>(ハイブリッド Azure AD 参加済みデバイスが必要)| | | ![チェック](./media/plan-device-deployment/check.png)
-| Windows のログイン画面からのセルフサービス パスワード リセット| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
-| Windows Hello の PIN のリセット| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
-| デバイス間での Enterprise State Roaming| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png) |
+| クラウド リソースへの SSO| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+| オンプレミスのリソースへの SSO| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+| 条件付きアクセス <br> (デバイスは準拠としてマーク済みであることが必要) <br> (MDM による管理が必要)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)|![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+条件付きアクセス <br>(ハイブリッド Azure AD 参加済みデバイスが必要)| | | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)
+| Windows のログイン画面からのセルフサービス パスワード リセット| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+| Windows Hello の PIN のリセット| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
+| デバイス間での Enterprise State Roaming| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png) |
 
 
 ## <a name="azure-ad-registration"></a>Azure AD の登録 
 
 登録されたデバイスは、多くの場合 [Microsoft Intune](/mem/intune/enrollment/device-enrollment) で管理されます。 デバイスは、オペレーティング システムに応じて、さまざまな方法で Intune に登録されます。 
 
-Azure AD 登録済みデバイスでは、持ち込みのデバイス (BYOD) と会社所有のデバイスによるクラウド リソースへの SSO がサポートされています。 リソースへのアクセスは、デバイスとユーザーに適用された Azure AD の [CA ポリシー](../conditional-access/require-managed-devices.md)に基づいています。
+Azure AD 登録済みデバイスでは、持ち込みのデバイス (BYOD) と会社所有のデバイスによるクラウド リソースへの SSO がサポートされています。 リソースへのアクセスは、デバイスとユーザーに適用された Azure AD の[条件付きアクセス ポリシー](../conditional-access/require-managed-devices.md)に基づいています。
 
 ### <a name="registering-devices"></a>デバイスの登録
 
@@ -239,9 +239,9 @@ Hybrid Azure AD Join がデバイスにとって最適なソリューション�
 
 | デバイス管理ツール| Azure AD 登録済み| Azure AD 参加| ハイブリッド Azure AD 参加|
 | - | - | - | - |
-| [モバイル デバイス管理 (MDM)](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>例:Microsoft Intune| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)|  |
-| [Microsoft Intune および Microsoft Endpoint Configuration Manager との共同管理](/mem/configmgr/comanage/overview) <br>(Windows 10 以降)| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)|  |
-| [グループ ポリシー](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Windows のみ)| | | ![チェック](./media/plan-device-deployment/check.png)|  |
+| [モバイル デバイス管理 (MDM)](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>例:Microsoft Intune| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)|  |
+| [Microsoft Intune および Microsoft Endpoint Configuration Manager との共同管理](/mem/configmgr/comanage/overview) <br>(Windows 10 以降)| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)|  |
+| [グループ ポリシー](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Windows のみ)| | | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)|  |
 
 
 

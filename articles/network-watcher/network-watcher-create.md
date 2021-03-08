@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: c308824afdcae5f5c04a316c199bad71ad84a429
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272163"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962010"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher のインスタンスの作成
 
@@ -129,7 +129,7 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 
 これで Network Watcher のインスタンスが作成できました。利用可能な機能については、以下をご覧ください。
 
-* [トポロジ](network-watcher-topology-overview.md)
+* [トポロジ](./view-network-topology.md)
 * [パケット キャプチャ](network-watcher-packet-capture-overview.md)
 * [IP フロー検証](network-watcher-ip-flow-verify-overview.md)
 * [次ホップ](network-watcher-next-hop-overview.md)

@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a6cb3392aa83b2c02df621449a73f7cb68691ec6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608606"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127116"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Azure Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移行する
 
@@ -21,9 +21,9 @@ Azure Data Box Heavy と SharePoint 移行ツール (SPMT) を使用すると、
 
 Microsoft Azure Data Box は、Microsoft Azure portal からデバイスを注文できるサービスです。 お客様は、サーバーからデバイスにテラバイトのデータをコピーできます。 それを Microsoft に返送いただくと、お客様のデータが Azure にコピーされます。 転送するデータのサイズに応じて、以下から選択できます。
 
-- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) は小規模から中規模のデータセット向けで、注文 1 件につき 35 TB の容量を使用できます。
-- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) は中規模から大規模のデータセット向けで、デバイス 1 台につき 80 TB の容量を使用できます。
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) は大規模のデータセット向けで、デバイス 1 台につき 770 TB の容量を使用できます。
+- [Data Box Disk](./data-box-disk-overview.md) は小規模から中規模のデータセット向けで、注文 1 件につき 35 TB の容量を使用できます。
+- [Data Box](./data-box-overview.md) は中規模から大規模のデータセット向けで、デバイス 1 台につき 80 TB の容量を使用できます。
+- [Data Box Heavy](./data-box-heavy-overview.md) は大規模のデータセット向けで、デバイス 1 台につき 770 TB の容量を使用できます。
 
 この記事では、特に Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移行する方法について説明します。
 
@@ -37,7 +37,7 @@ Microsoft Azure Data Box は、Microsoft Azure portal からデバイスを注�
 
 ### <a name="for-sharepoint-online"></a>SharePoint Online
 
-- [SharePoint 移行ツール (SPMT) の最小要件](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)をご確認ください。
+- [SharePoint 移行ツール (SPMT) の最小要件](/sharepointmigration/how-to-use-the-sharepoint-migration-tool)をご確認ください。
 
 ## <a name="workflow-overview"></a>ワークフローの概要
 
@@ -82,9 +82,9 @@ Data Box Heavy にデータをコピーするには、次の手順を実行し�
 1. Azure portal にサインインし、[仮想マシンを作成](../virtual-machines/windows/quick-create-portal.md)します。
 2. [Azure ファイル共有を VM にマウントします](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer)。
 3. [SharePoint 移行ツールをダウンロード](https://spmtreleasescus.blob.core.windows.net/install/default.htm)し、Azure VM にインストールします。
-4. SharePoint 移行ツールを起動します。 **[サインイン]** をクリックし、Office 365 のユーザー名とパスワードを入力します。
+4. SharePoint 移行ツールを起動します。 **[サインイン]** をクリックし、職場または学校のアカウントのユーザー名とパスワードを入力します。
 5. **[データはどこにありますか?]** が表示されたら、 **[ファイル共有]** を選択します。 データが置かれている Azure ファイル共有のパスを入力します。
-6. 通常どおり残りの指示に従います (ターゲットの場所など)。 詳細については、「[SharePoint 移行ツールの使用](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)」をご覧ください。
+6. 通常どおり残りの指示に従います (ターゲットの場所など)。 詳細については、「[SharePoint 移行ツールの使用](/sharepointmigration/how-to-use-the-sharepoint-migration-tool)」をご覧ください。
 
 > [!IMPORTANT]
 > - SharePoint Online にデータが取り込まれる速度は、データが既に Azure にあるかどうかに関係なく、さまざまな要因の影響を受けます。 これらの要因を理解することが、移行を計画し、その効率を最大化するのに役立ちます。  詳細については、[SharePoint Online と OneDrive の移行速度](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed)に関する記事をご覧ください。

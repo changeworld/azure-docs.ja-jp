@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor リソース グループの分析情報 | Microsoft Docs
 description: Azure Monitor によるリソース グループ レベルで分散アプリケーションとサービスの正常性とパフォーマンスの概要
-ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab2c56b5e5cfc3dcb7411db27e7faabb2589be6c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704329"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -38,7 +37,7 @@ Azure Resource Health を表示するには、表の上の **[Azure Resource Hea
 
 ![リソースの正常性グラフが追加されたスクリーンショット](./media/resource-group-insights/0003-overview.png)
 
-既定では、リソースはアプリ層とリソースの種類によってグループ化されています。 **アプリ層**は、リソースの種類の単純な分類です。リソース グループ分析情報の概要ページのコンテキスト内にのみ存在します。 アプリケーション コード、コンピューティング インフラストラクチャ、ネットワーク、ストレージ + データベースに関連するリソースの種類があります。 管理ツールには独自のアプリ層があり、他のすべてのリソースは **[その他]** のアプリ層に属するものとして分類されます。 このグループ化機能によって、アプリケーションのどのサブシステムが正常か正常ではないかを一目で把握することができます。
+既定では、リソースはアプリ層とリソースの種類によってグループ化されています。 **アプリ層** は、リソースの種類の単純な分類です。リソース グループ分析情報の概要ページのコンテキスト内にのみ存在します。 アプリケーション コード、コンピューティング インフラストラクチャ、ネットワーク、ストレージ + データベースに関連するリソースの種類があります。 管理ツールには独自のアプリ層があり、他のすべてのリソースは **[その他]** のアプリ層に属するものとして分類されます。 このグループ化機能によって、アプリケーションのどのサブシステムが正常か正常ではないかを一目で把握することができます。
 
 ## <a name="diagnose-issues-in-your-resource-group"></a>リソース グループ内の問題を診断する
 
@@ -46,9 +45,9 @@ Azure Resource Health を表示するには、表の上の **[Azure Resource Hea
 
    |         |          |
    | ---------------- |:-----|
-   | [**アラート**](../platform/alerts-overview.md)      |  アラートを表示、作成、管理します。 |
-   | [**メトリック**](../platform/data-platform.md) | メトリック ベースのデータを視覚化し、探索します。    |
-   | [**アクティビティ ログ**](../platform/platform-logs-overview.md) | Azure で発生したサブスクリプション レベルのイベント。  |
+   | [**アラート**](../alerts/alerts-overview.md)      |  アラートを表示、作成、管理します。 |
+   | [**メトリック**](../data-platform.md) | メトリック ベースのデータを視覚化し、探索します。    |
+   | [**アクティビティ ログ**](../essentials/platform-logs-overview.md) | Azure で発生したサブスクリプション レベルのイベント。  |
    | [**アプリケーション マップ**](../app/app-map.md) | 分散アプリケーションのトポロジを確認して、パフォーマンスのボトルネックや障害のホットスポットを特定します。 |
 
 ## <a name="failures-and-performance"></a>エラーとパフォーマンス
@@ -117,6 +116,6 @@ Azure Monitor for Resource Groups は、Azure Monitor Alerts Management シス�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor ブック](../platform/workbooks-overview.md)
+- [Azure Monitor ブック](../visualize/workbooks-overview.md)
 - [Azure Resource Health](../../service-health/resource-health-overview.md)
-- [Azure Monitor アラート](../platform/alerts-overview.md)
+- [Azure Monitor アラート](../alerts/alerts-overview.md)

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962181"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586260"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -58,7 +58,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 >
 >
 
-ログに記録する詳細さの**レベル**を選択します。 次の表に、各レベルに含まれるログのカテゴリを示します。
+ログに記録する詳細さの **レベル** を選択します。 次の表に、各レベルに含まれるログのカテゴリを示します。
 
 | Level | 含まれるカテゴリ |
 |-|-|
@@ -171,7 +171,7 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | **アプリケーション ログ** |*/LogFiles/Application/* | 1 つ以上のテキスト ファイルが含まれます。 ログ メッセージの形式は、使用するログ プロバイダーによって異なります。 |
 | **失敗した要求のトレース** | */LogFiles/W3SVC#########/* | XML ファイルと XSL ファイルが含まれます。 書式設定された XML ファイルをブラウザーで表示できます。 |
 | **詳細なエラー ログ** | */LogFiles/DetailedErrors/* | HTM エラー ファイルが含まれます。 ブラウザーで HTM ファイルを表示できます。<br/>失敗した要求のトレースを表示するもう 1 つの方法は、ポータルでアプリのページに移動します。 左側のメニューから、 **[問題の診断と解決]** を選択し、 **[Failed Request Tracing Logs]\(失敗した要求トレースのログ\)** を検索し、アイコンをクリックして目的のトレースを参照して表示します。 |
-| **Web サーバー ログ** | */LogFiles/http/RawLogs/* | [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)を使用して書式設定されたテキスト ファイルが含まれます。 この情報は、テキスト エディターまたは [Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619) などのユーティリティを使用して読むことができます。<br/>App Service では、`s-ip`、`s-computername`、または `cs-version` フィールドはサポートされていません。 |
+| **Web サーバー ログ** | */LogFiles/http/RawLogs/* | [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)を使用して書式設定されたテキスト ファイルが含まれます。 この情報は、テキスト エディターまたは [Log Parser](https://www.iis.net/downloads/community/2010/04/log-parser-22) などのユーティリティを使用して読むことができます。<br/>App Service では、`s-ip`、`s-computername`、または `cs-version` フィールドはサポートされていません。 |
 | **デプロイ ログ** | */LogFiles/Git/* および */deployments/* | 内部デプロイ プロセスによって生成されたログだけでなく、Git デプロイのログも含まれます。 |
 
 ## <a name="send-logs-to-azure-monitor-preview"></a>Azure Monitor にログを送信する (プレビュー)
@@ -185,19 +185,22 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 
 次の表は、サポートされるログの種類と説明を示しています。 
 
-| ログのタイプ | Windows のサポート | Linux (Docker) のサポート | 説明 |
-|-|-|-|
-| AppServiceConsoleLogs | TBA | はい | 標準出力と標準エラー |
-| AppServiceHTTPLogs | はい | はい | Web サーバー ログ |
-| AppServiceEnvironmentPlatformLogs | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
-| AppServiceAuditLogs | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
-| AppServiceFileAuditLogs | はい | TBD | FTP および Kudu 経由のファイル変更 |
-| AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
-| AppServiceIPSecAuditLogs  | はい | はい | IP ルールからの要求 |
-| AppServicePlatformLogs  | TBA | はい | コンテナー ログ |
+| ログのタイプ | Windows | Windows コンテナー | Linux | Linux コンテナー | 説明 |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | Java SE および Tomcat | はい | はい | はい | 標準出力と標準エラー |
+| AppServiceHTTPLogs | はい | はい | はい | はい | Web サーバー ログ |
+| AppServiceEnvironmentPlatformLogs | はい | 該当なし | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
+| AppServiceAuditLogs | はい | はい | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
+| AppServiceFileAuditLogs | はい | はい | TBA | TBA | サイト コンテンツに行われたファイルの変更。**Premium レベル以上でのみ使用可能** |
+| AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat Blessed Images <sup>1</sup> | Java SE & Tomcat Blessed Images <sup>1</sup> | アプリケーション ログ |
+| AppServiceIPSecAuditLogs  | はい | はい | はい | はい | IP ルールからの要求 |
+| AppServicePlatformLogs  | TBA | はい | はい | はい | コンテナーの操作ログ |
+| AppServiceAntivirusScanAuditLogs | はい | はい | はい | はい | Microsoft Defender を使用する [ウイルス対策のスキャン ログ](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)。**Premium レベルでのみ使用可能** | 
+
+<sup>1</sup> Java SE アプリの場合は、アプリ設定に "$WEBSITE_AZMON_PREVIEW_ENABLED" を追加し、それを 1 または true に設定します。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
-* [Azure Monitor でログにクエリを実行する](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Monitor でログにクエリを実行する](../azure-monitor/logs/log-query-overview.md)
 * [Azure App Service を監視する方法](web-sites-monitor.md)
 * [Visual Studio での Azure App Service のトラブルシューティング](troubleshoot-dotnet-visual-studio.md)
 * [HDInsight でのアプリ ログの分析](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

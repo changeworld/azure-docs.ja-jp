@@ -2,28 +2,34 @@
 title: 受信/送信 IP アドレス
 description: Azure App Service で受信および送信 IP アドレスがどのように使用されるか、いつ変更されるかについて、およびアプリのアドレスを見つける方法について説明します。
 ms.topic: article
-ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 08/25/2020
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537629"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746149"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
-[Azure App Service](overview.md) は、[App Service Environment](environment/intro.md) 以外はマルチテナント サービスです。 App Service Environment ([分離レベル](https://azure.microsoft.com/pricing/details/app-service/)) に含まれていないアプリは、他のアプリとネットワーク インフラストラクチャを共有します。 その結果、アプリの受信 IP アドレスと送信 IP アドレスが異なる可能性があり、特定の状況では変更される可能性もあります。 
+[Azure App Service](overview.md) は、[App Service Environment](environment/intro.md) 以外はマルチテナント サービスです。 App Service Environment ([分離レベル](https://azure.microsoft.com/pricing/details/app-service/)) に含まれていないアプリは、他のアプリとネットワーク インフラストラクチャを共有します。 その結果、アプリの受信 IP アドレスと送信 IP アドレスが異なる可能性があり、特定の状況では変更される可能性もあります。
 
 [App Service Environment](environment/intro.md) は専用のネットワーク インフラストラクチャを使用するため、App Service Environment で実行されるアプリは、受信接続と送信接続の両方で、静的な専用 IP アドレスを取得します。
+
+## <a name="how-ip-addresses-work-in-app-service"></a>App Service での IP アドレスの動作
+
+App Service アプリは App Service プランで実行され、App Service プランは Azure インフラストラクチャ内のいずれかのデプロイ単位 (内部的には Web スペースと呼ばれます) にデプロイされます。 各デプロイ単位は、最大 5 つの仮想 IP アドレスに割り当てられます。これには、1 つのパブリック受信 IP アドレスと 4 つの送信 IP アドレスが含まれます。 同じデプロイ単位内のすべての App Service プランと、それらの中で実行されるアプリ インスタンスでは、同じ一連の仮想 IP アドレスが共有されます。 App Service Environment ([Isolated レベル](https://azure.microsoft.com/pricing/details/app-service/)の App Service プラン) の場合、App Service プランそのものがデプロイ単位になります。そのため、仮想 IP アドレスはその結果として専用となります。
+
+App Service プランをデプロイ単位間で移動することは許可されていないため、通常はアプリに割り当てられている仮想 IP アドレスは同じままですが、これには例外があります。
 
 ## <a name="when-inbound-ip-changes"></a>受信 IP はいつ変更されるか
 
 スケールアウトされたインスタンスの数に関係なく、各アプリは、1 つの受信 IP アドレスを持ちます。 受信 IP アドレスは、次の操作のいずれかを実行したときに変更される可能性があります。
 
-- アプリを削除した後、別のリソース グループ内に再作成する。
-- リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する。
-- 証明書の更新中などに既存の TLS バインドを削除する (「[証明書の更新](configure-ssl-certificate.md#renew-certificate)」を参照してください)。
+- アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
+- リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
+- 証明書の更新中などに既存の IP ベースの TLS/SSL バインドを削除する ([証明書の更新](configure-ssl-certificate.md#renew-certificate)に関する記事を参照してください)。
 
 ## <a name="find-the-inbound-ip"></a>受信 IP を検索する
 
@@ -39,9 +45,13 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="when-outbound-ips-change"></a>送信 IP はいつ変更されるか
 
-スケールアウトされたインスタンスの数に関係なく、各アプリは、特定の時点で所定の数の送信 IP アドレスを持ちます。 App Service アプリからのすべての送信接続 (バックエンド データベースへの接続など) では、いずれかの送信 IP アドレスを送信元 IP アドレスとして使用します。 特定のアプリ インスタンスが送信接続を行うときに使用する IP アドレスを事前に知ることはできないため、バックエンド サービスは、アプリのすべての送信 IP アドレスに対してファイアウォールを開く必要があります。
+スケールアウトされたインスタンスの数に関係なく、各アプリは、特定の時点で所定の数の送信 IP アドレスを持ちます。 App Service アプリからのすべての送信接続 (バックエンド データベースへの接続など) では、いずれかの送信 IP アドレスを送信元 IP アドレスとして使用します。 使用する IP アドレスは実行時にランダムに選択されるため、バックエンド サービスでは、アプリケーションのすべての送信 IP アドレスに対してファイアウォールを開いておく必要があります。
 
-アプリの送信 IP アドレス セットは、アプリを下位レベル (**Basic**、**Standard**、および **Premium**) と **Premium V2**レベルの間でスケーリングするときに変更されます。
+次のいずれかの操作を実行すると、アプリの一連の送信 IP アドレスが変更されます。
+
+- アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
+- リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
+- アプリを下位レベル ( **Basic** 、 **Standard** 、および **Premium** ) と **Premium V2** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
 
 アプリが使用できるすべての可能な送信 IP アドレスは、価格レベルに関係なく、`possibleOutboundIpAddresses` プロパティを調べるか、Azure portal の **[プロパティ]** ブレードの **[追加の送信 IP アドレス]** で確認できます。 「[IP アドレスを見つける](#find-outbound-ips)」を参照してください。
 
@@ -59,7 +69,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-アプリで考えられる "_すべて_" の送信 IP アドレスを見つけるには、価格レベルに関係なく、アプリの左側にあるナビゲーションで **[プロパティ]** をクリックします。 IP アドアレスは **[追加の送信 IP アドレス]** フィールドに表示されています。
+アプリで考えられる " _すべて_ " の送信 IP アドレスを見つけるには、価格レベルに関係なく、アプリの左側にあるナビゲーションで **[プロパティ]** をクリックします。 IP アドアレスは **[追加の送信 IP アドレス]** フィールドに表示されています。
 
 [Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行することで、同じ情報を見つけることができます。
 

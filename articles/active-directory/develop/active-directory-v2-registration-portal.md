@@ -13,12 +13,13 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6a33da602eaa9bee20f155eaa550e558e5dcbeca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115579"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755561"
 ---
 # <a name="app-registration-reference"></a>アプリ登録のリファレンス
 
@@ -26,11 +27,11 @@ ms.locfileid: "88115579"
 
 ## <a name="my-applications-or-converged-applications"></a>マイ アプリケーションまたは集中型アプリケーション
 
-この一覧には、Microsoft ID プラットフォーム (v2.0) エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、個人の Microsoft アカウントと、Azure Active Directory の職場/学校アカウントの両方を持つユーザーをサインインする機能があります。 ID プラットフォーム エンドポイントの詳細については、 [v2.0 の概要](./v2-overview.md)に関するページを参照してください。 これらのアプリケーションはまた、Microsoft アカウント認証エンドポイント ( `https://login.live.com`) と統合するために使用することができます。
+この一覧には、Microsoft ID プラットフォームで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、個人の Microsoft アカウントと、Azure Active Directory の職場/学校アカウントの両方を持つユーザーをサインインする機能があります。 Microsoft ID プラットフォームの詳細については、[v2.0 の概要](./v2-overview.md)に関する記事を参照してください。 これらのアプリケーションはまた、Microsoft アカウント認証エンドポイント ( `https://login.live.com`) と統合するために使用することができます。
 
 ## <a name="azure-ad-only-applications"></a>Azure AD 専用アプリケーション
 
-この一覧には、Azure AD v1.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、Azure Active Directory の職場/学校アカウントを持つユーザーのみがサインインできます。 この一覧には、[Azure portal](https://portal.azure.com) の**アプリの登録**エクスペリエンスを使用して登録されたアプリケーションが含まれます。
+この一覧には、Azure AD v1.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、Azure Active Directory の職場/学校アカウントを持つユーザーのみがサインインできます。 この一覧には、[Azure portal](https://portal.azure.com) の **アプリの登録** エクスペリエンスを使用して登録されたアプリケーションが含まれます。
 
 ## <a name="live-sdk-applications"></a>Live SDK アプリケーション
 
@@ -38,7 +39,7 @@ ms.locfileid: "88115579"
 
 ## <a name="application-secrets"></a>アプリケーション シークレット
 
-アプリケーション シークレットは資格情報であり、これを持つアプリケーションは Microsoft ID プラットフォームで信頼できる[クライアント認証](https://tools.ietf.org/html/rfc6749#section-2.3)を実行することができます。 OAuth と OpenID Connect では、アプリケーション シークレットは一般に `client_secret` として参照されます。 v2.0 プロトコルの場合、(`https` スキームを使用して) Web のアドレス指定可能な場所でセキュリティ トークンを受信するアプリケーションは、そのセキュリティ トークンの引き換え時にアプリケーション シークレットを使用して Microsoft ID プラットフォームに身元を証明する必要があります。 さらに、デバイス上でトークンを受信するネイティブ クライアントは、アプリケーション シークレットを使用してクライアント認証を実行することが許可されません。 これは安全でない環境に機密情報が格納されるのを防ぐためです。
+アプリケーション シークレットは資格情報であり、これを持つアプリケーションは Microsoft ID プラットフォームで信頼できる[クライアント認証](https://tools.ietf.org/html/rfc6749#section-2.3)を実行することができます。 OAuth と OpenID Connect では、アプリケーション シークレットは一般に `client_secret` として参照されます。 v2.0 プロトコルの場合、(`https` スキームを使用して) Web のアドレス指定可能な場所でセキュリティ トークンを受信するすべてのアプリケーションは、そのセキュリティ トークンの引き換え時にアプリケーション シークレットを使用して Microsoft ID プラットフォームに身元を証明する必要があります。 さらに、デバイス上でトークンを受信するネイティブ クライアントは、アプリケーション シークレットを使用してクライアント認証を実行することが許可されません。 これは安全でない環境に機密情報が格納されるのを防ぐためです。
 
 各アプリは、常に 2 つの有効なアプリケーション シークレットを保持することができます。 2 つのシークレットを管理することにより、アプリケーションの環境全体にわたって定期的にキーのロール オーバーを実行することができます。 アプリケーションの全体を新しいシークレットに移行したら、古いシークレットを削除し、新しいシークレットをプロビジョニングすることができます。
 

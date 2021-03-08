@@ -2,20 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 9475cc402327cba96546e6ff781c547f797850ec
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 17cf32fe50d9b607e0ec8388bf1c70821f2e28aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "87375374"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91534589"
 ---
 1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
 

@@ -17,7 +17,7 @@
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
     - name: コンテナー インスタンスのデプロイ - Docker CLI
-      href: container-instances-quickstart-docker-cli.md
+      href: quickstart-docker-cli.md
 - name: チュートリアル
   items:
     - name: コンテナー イメージの作成とデプロイ
@@ -34,6 +34,8 @@
           href: container-instances-multi-container-yaml.md
         - name: コンテナー グループのデプロイ - Resource Manager
           href: container-instances-multi-container-group.md
+        - name: コンテナー グループのデプロイ - Docker Compose
+          href: tutorial-docker-compose.md
     - name: Azure サービスと統合する
       items:
         - name: Azure Functions でトリガーする
@@ -41,7 +43,7 @@
 - name: サンプル
   items:
     - name: コード サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=container%20instance'
+      href: /samples/browse/?products=azure&terms=container%2binstance
     - name: Resource Manager テンプレート
       href: container-instances-samples-rm.md
 - name: 概念
@@ -70,7 +72,7 @@
           href: container-instances-vnet.md
         - name: Azure Container Registry からのデプロイ
           href: container-instances-using-azure-container-registry.md
-        - name: GitHub Actions を使用したデプロイ (プレビュー)
+        - name: GitHub Actions を使用したデプロイ
           href: container-instances-github-action.md
         - name: デプロイ データの暗号化
           href: container-instances-encrypt-data.md

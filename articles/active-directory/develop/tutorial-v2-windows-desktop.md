@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォーム Windows デスクトップの概要
-description: Windows デスクトップ .NET (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォームによって保護されている API を呼び出す方法について説明します。
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用する Windows Presentation Foundation (WPF) アプリを作成する | Azure
+titleSuffix: Microsoft identity platform
+description: このチュートリアルでは、ユーザーのサインインに Microsoft ID プラットフォームを使用し、そのユーザーに代わって Microsoft Graph API を呼び出すためのアクセス トークンを取得する WPF アプリケーションをビルドします。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,32 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a865bab690c79288bdffcd7cebe424d1bb1969c0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 60a29efc4d2daa9d1bc90f00e71094da382a83b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686888"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Windows デスクトップ アプリから Microsoft Graph API を呼び出す
+# <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>チュートリアル:Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
-このガイドでは、ネイティブの Windows デスクトップ .NET アプリケーションでアクセス トークンを使用して Microsoft Graph API を呼び出す方法を紹介します。 また、このアプリは、開発者用の Microsoft ID プラットフォーム v2.0 エンドポイントのアクセス トークンを必要とする他の API にもアクセスできます。 このプラットフォームは、以前 Azure AD という名前でした。
+このチュートリアルでは、ユーザーのサインインを処理して Microsoft Graph API を呼び出すためのアクセス トークンを取得するネイティブ Windows デスクトップ .NET (XAML) アプリを作成します。 
 
 このガイドを完了すると、アプリケーションで個人アカウント (outlook.com、live.com など) を使用する保護された API を呼び出すことができるようになります。 このアプリケーションでは、Azure Active Directory を使用する会社または組織の職場および学校のアカウントも使用します。
 
-> [!NOTE]
-> このガイドでは、Visual Studio 2015 Update 3、Visual Studio 2017、または Visual Studio 2019 が必要です。 これらのバージョンをお持ちでない場合は、 [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
+このチュートリアルの内容:
 
->[!NOTE]
-> Microsoft ID プラットフォームを初めて使用する場合は、「[Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す](quickstart-v2-windows-desktop.md)」から始めることをお勧めします。
+> [!div class="checklist"]
+> * Visual Studio で *Windows Presentation Foundation (WPF)* プロジェクトを作成する
+> * .NET 用 Microsoft 認証ライブラリ (MSAL) をインストールする
+> * Azure portal でアプリケーションを登録する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Microsoft Graph API を呼び出すコードを追加する
+> * アプリケーションをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
@@ -38,7 +47,7 @@ ms.locfileid: "82181540"
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>保護された Web API にアクセスするためのトークン取得処理
 
-ユーザーが認証されると、サンプル アプリケーションは、開発者用の Microsoft ID プラットフォームによって保護されている Microsoft Graph API または Web API のクエリに使用できるトークンを受け取ります。
+ユーザーが認証されると、サンプル アプリケーションは、Microsoft Graph API または Microsoft ID プラットフォームによって保護されている Web API でのクエリに使用できるトークンを受け取ります。
 
 Microsoft Graph などの API では、特定のリソースへのアクセスを許可するためにトークンが必要になります。 たとえば、トークンは、ユーザーのプロファイルの読み取り、ユーザーの予定表へのアクセス、メールの送信などに必要です。 アプリケーションでは、MSAL を使用してアクセス トークンを要求し、API スコープを指定することによってこれらのリソースにアクセスできます。 このアクセス トークンは、保護されたリソースに対するすべての呼び出しで HTTP Authorization ヘッダーに追加されます。
 
@@ -88,25 +97,24 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 ### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
 
 次の手順を実行すると、アプリケーションをすばやく登録できます。
-1. [Azure portal の [アプリケーションの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs) に移動します。
+1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 
 ### <a name="option-2-advanced-mode"></a>オプション 2:詳細設定モード
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
-1. **[新規登録]** を選択します。
-   - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `Win-App-calling-MsGraph`)。
-   - **[サポートされているアカウントの種類]** セクションで、 **[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
-   - **[登録]** を選択して、アプリケーションを作成します。
-1. アプリのページの一覧から **[認証]** を選択します。
-   1. **[リダイレクト URI]** セクションの、リダイレクト URI の一覧で:
-   1. **[種類]** 列で、 **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択します。
-   1. **[リダイレクト URI]** 列に「`https://login.microsoftonline.com/common/oauth2/nativeclient`」と入力します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `Win-App-calling-MsGraph`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[サポートされているアカウントの種類]** セクションで、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ (任意の Azure AD ディレクトリ - マルチテナント) 内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。
 1. **[登録]** を選択します。
+1. **[管理]** で、 **[認証]**  >  **[プラットフォームの追加]** の順に選択します。
+1. **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
+1. **[リダイレクト URI]** セクションで、 **https://login.microsoftonline.com/common/oauth2/nativeclient** を選択します。
+1. **[構成]** をクリックします。
 1. Visual Studio に移動し、*App.xaml.cs* ファイルを開き、以下のコード スニペットの `Enter_the_Application_Id_here` を、登録してコピーしたアプリケーション ID に置き換えます。
 
     ```csharp
@@ -133,6 +141,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
         {
             _clientApp = PublicClientApplicationBuilder.Create(ClientId)
                 .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
+                .WithDefaultRedirectUri()
                 .Build();
         }
 
@@ -251,6 +260,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
                 this.SignOutButton.Visibility = Visibility.Visible;
             }
         }
+        }
     ```
 
 ### <a name="more-information"></a>詳細情報
@@ -367,3 +377,10 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 Microsoft Graph API の呼び出しに使用するアクセス トークンに加えて、MSAL はユーザーのサインイン後に ID トークンも取得します。 このトークンには、ユーザー関連情報の少量のサブセットが含まれています。 `DisplayBasicTokenInfo` メソッドは、このトークンに含まれている基本的な情報を表示します。 たとえば、トークンの有効期限やアクセス トークンそのものを表す文字列に加えて、ユーザーの表示名や ID です。 *[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)* ボタンを複数回押すと、後の要求で同じトークンが再利用されてことが確認できます。 また、MSAL がトークンの更新時期だと判断したときに、有効期限が延長されることも確認できます。
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
+
+## <a name="next-steps"></a>次の手順
+
+保護された Web API を呼び出すデスクトップ アプリをビルドするには、複数のパートで構成される次のシナリオ シリーズを参照してください。
+
+> [!div class="nextstepaction"]
+> [シナリオ:Web API を呼び出すデスクトップ アプリ](scenario-desktop-overview.md)

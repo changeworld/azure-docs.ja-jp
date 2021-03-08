@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6253deb53229172cd499a6aa14b8d8f19bc07b63
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515322"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629259"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -22,7 +22,7 @@ ms.locfileid: "85515322"
 この記事では、Azure ファイル共有をオンプレミスに直接マウントするために、Windows (Windows クライアントおよび Windows Server) 上でポイント対サイト VPN を構成する手順について詳細に説明します。 Azure File Sync のトラフィックを VPN 経由でルーティングすることを検討している場合は、[Azure File Sync のプロキシとファイアウォールの設定の構成](storage-sync-files-firewall-and-proxy.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-- 最新バージョンの Azure PowerShell モジュール。 Azure PowerShell をインストールする方法の詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照し、オペレーティング システムを選択してください。 Windows 上で Azure CLI を使用することは可能ですが、下の手順は Azure PowerShell 用に提供されています。
+- 最新バージョンの Azure PowerShell モジュール。 Azure PowerShell をインストールする方法の詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照し、オペレーティング システムを選択してください。 Windows 上で Azure CLI を使用することは可能ですが、下の手順は Azure PowerShell 用に提供されています。
 
 - オンプレミスにマウントする Azure ファイル共有。 ストレージ アカウント内にデプロイされた Azure ファイル共有は、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 Azure ファイル共有とストレージ アカウントをデプロイする方法の詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
 
@@ -212,7 +212,7 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>VPN クライアントを構成する
-Azure 仮想ネットワーク ゲートウェイは、オンプレミスの Windows マシンで VPN 接続を初期化するために必要な構成ファイルを含むダウンロード可能なパッケージを作成します。 Windows 10/Windows Server 2016 以降の [Always On VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) 機能を使用して VPN 接続を構成します。 このパッケージには、レガシ Windows VPN クライアントを構成する実行可能パッケージも含まれます (必要な場合)。 このガイドでは、レガシ Windows VPN クライアントではなく、Always On VPN を使用します。Always On VPN クライアントは、自分のマシンに対する管理者権限を持っていないエンドユーザーでも、Azure VPN に接続したり切断したりできるからです。 
+Azure 仮想ネットワーク ゲートウェイは、オンプレミスの Windows マシンで VPN 接続を初期化するために必要な構成ファイルを含むダウンロード可能なパッケージを作成します。 Windows 10/Windows Server 2016 以降の [Always On VPN](/windows-server/remote/remote-access/vpn/always-on-vpn/) 機能を使用して VPN 接続を構成します。 このパッケージには、レガシ Windows VPN クライアントを構成する実行可能パッケージも含まれます (必要な場合)。 このガイドでは、レガシ Windows VPN クライアントではなく、Always On VPN を使用します。Always On VPN クライアントは、自分のマシンに対する管理者権限を持っていないエンドユーザーでも、Azure VPN に接続したり切断したりできるからです。 
 
 次のスクリプトでは、仮想ネットワーク ゲートウェイの認証に必要なクライアント証明書をインストールし、VPN パッケージをダウンロードしてインストールします。 `<computer1>`、`<computer2>` は、忘れずに希望するコンピューターに置き換えてください。 このスクリプトの `$sessions` 配列に PowerShell セッションを追加すると、必要な数のマシンで実行できます。 使用アカウントは、これらの各マシンの管理者である必要があります。 マシンのいずれかがスクリプトを実行しているローカル マシンである場合、昇格された PowerShell セッションからスクリプトを実行する必要があります。 
 

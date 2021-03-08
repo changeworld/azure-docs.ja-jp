@@ -2,25 +2,25 @@
 title: Azure Cosmos DB Gremlin API で実行プロファイルを使用してクエリを評価する
 description: 実行プロファイル ステップを使用して Gremlin クエリのトラブルシューティングと向上を行う方法について説明します。
 services: cosmos-db
-author: luisbosquez
-manager: kfile
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: lbosq
-ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: chrande
+ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261802"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087487"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>実行プロファイル ステップを使用して Gremlin のクエリを評価する方法
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 この記事では、Azure Cosmos DB Gremlin API グラフ データベースの実行プロファイル ステップを使用する方法の概要を示します。 このステップでは、トラブルシューティングとクエリの最適化に関連する情報が提供され、Cosmos DB Gremlin API アカウントに対して実行できるすべての Gremlin クエリと互換性があります。
 
-このステップを使用するには、Gremlin クエリの最後に `executionProfile()` 関数の呼び出しを追加するだけです。 **Gremlin クエリが実行され**、操作の結果でクエリ実行プロファイルを含む JSON 応答オブジェクトが返されます。
+このステップを使用するには、Gremlin クエリの最後に `executionProfile()` 関数の呼び出しを追加するだけです。 **Gremlin クエリが実行され** 、操作の結果でクエリ実行プロファイルを含む JSON 応答オブジェクトが返されます。
 
 次に例を示します。
 
@@ -139,12 +139,12 @@ ms.locfileid: "85261802"
 ## <a name="execution-profile-response-objects"></a>実行プロファイルの応答オブジェクト
 
 executionProfile() 関数の応答では、次の構造を持つ JSON オブジェクトの階層が生成されます。
-  - **Gremlin 操作オブジェクト**: 実行された Gremlin 操作全体を表します。 次のプロパティが含まれます。
+  - **Gremlin 操作オブジェクト** : 実行された Gremlin 操作全体を表します。 次のプロパティが含まれます。
     - `gremlin`:実行された明示的な Gremlin ステートメント。
     - `totalTime`:ステップの実行にかかった時間 (ミリ秒単位)。 
     - `metrics`:クエリを満たすために実行された各 Cosmos DB ランタイム演算子が含まれる配列。 このリストは、実行の順序で並べられています。
     
-  - **Cosmos DB ランタイム演算子**: Gremlin 操作全体の各コンポーネントを表します。 このリストは、実行の順序で並べられています。 各オブジェクトには次のプロパティが含まれます。
+  - **Cosmos DB ランタイム演算子** : Gremlin 操作全体の各コンポーネントを表します。 このリストは、実行の順序で並べられています。 各オブジェクトには次のプロパティが含まれます。
     - `name`:演算子の名前。 これは、評価および実行されたステップの種類です。 詳しくは、後の表をご覧ください。
     - `time`:特定の演算子にかかった時間 (ミリ秒単位)。
     - `annotations`:実行された演算子に固有の追加情報が含まれます。
@@ -177,7 +177,7 @@ Cosmos DB Gremlin ランタイム演算子|説明
 
 ### <a name="blind-fan-out-query-patterns"></a>ブラインド ファンアウト クエリのパターン
 
-**パーティション分割されたグラフ**からの次のような実行プロファイルの応答を想定します。
+**パーティション分割されたグラフ** からの次のような実行プロファイルの応答を想定します。
 
 ```json
 [
@@ -220,8 +220,8 @@ Cosmos DB Gremlin ランタイム演算子|説明
 
 次のような結論が得られます。
 - Gremlin ステートメントはパターン `g.V('id')` に従っているため、クエリは単一 ID 参照です。
-- `time` メトリックから判断して、[1 つのポイント読み取り操作が 10 ミリ秒より長い](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide)ので、このクエリの待機時間は長いと思われます。
-- `storeOps` オブジェクトを見ると、`fanoutFactor` が `5` であることを確認でき、これは [5 つのパーティション](https://docs.microsoft.com/azure/cosmos-db/partition-data)がこの操作によってアクセスされたことを意味します。
+- `time` メトリックから判断して、[1 つのポイント読み取り操作が 10 ミリ秒より長い](./introduction.md#guaranteed-speed-at-any-scale)ので、このクエリの待機時間は長いと思われます。
+- `storeOps` オブジェクトを見ると、`fanoutFactor` が `5` であることを確認でき、これは [5 つのパーティション](./partitioning-overview.md)がこの操作によってアクセスされたことを意味します。
 
 この分析の結論として、最初のクエリが必要以上に多くのパーティションにアクセスしていると判断できます。 これは、述語としてクエリでパーティション キーを指定することにより解決できます。 これにより、待機時間が短縮され、クエリあたりのコストが減ります。 詳しくは、[グラフのパーティション分割](graph-partitioning.md)に関する記事をご覧ください。 より最適なクエリは、`g.V('tt0093640').has('partitionKey', 't1001')` です。
 

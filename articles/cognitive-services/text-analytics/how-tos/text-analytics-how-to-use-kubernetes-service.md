@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b7a5953edd9aec96a7f75e747c39e8f07f7210bb
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: fb33bd4fe70c51e1e2afffece10ba3b29dcb0450
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243770"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932438"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Text Analytics コンテナーを Azure Kubernetes Service にデプロイする
 
-Azure Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) コンテナー イメージを Azure Kubernetes Service (AKS) にデプロイする方法について説明します。 この手順では、Text Analytics リソースを作成する方法、関連付けられた感情分析イメージを作成する方法、およびこの 2 つのオーケストレーションをブラウザーから実行する方法を示します。 コンテナーを使用すると、インフラストラクチャの管理に注意を払うことなく、アプリケーション開発に専念することができます。
+Azure Cognitive Services の [Text Analytics](./text-analytics-how-to-install-containers.md) コンテナー イメージを Azure Kubernetes Service (AKS) にデプロイする方法について説明します。 この手順では、Text Analytics リソースを作成する方法、関連付けられた感情分析イメージを作成する方法、およびこの 2 つのオーケストレーションをブラウザーから実行する方法を示します。 コンテナーを使用すると、インフラストラクチャの管理に注意を払うことなく、アプリケーション開発に専念することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ Azure Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/c
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services) を作成してください。
 * [Visual Studio Code](https://code.visualstudio.com/download) などのテキスト エディター。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) がインストールされていること。
+* [Azure CLI](/cli/azure/install-azure-cli) がインストールされていること。
 * [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) がインストールされていること。
 * 適切な価格レベルの Azure リソース。 すべての価格レベルでこのコンテナーを使用するわけではありません。
     * F0 または Standard 価格レベルのみの **Azure Text Analytics** リソース。
@@ -55,9 +55,9 @@ Azure Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/c
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-***
+**_
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* さらに [Cognitive Services コンテナー](../../cognitive-services-container-support.md)を使用する
-* [Text Analytics 接続済みサービス](../vs-text-connected-service.md)を使用する
+さらに多くの [Cognitive Services コンテナー](../../cognitive-services-container-support.md)を使用する
+* [Text Analytics 接続済みサービス](../index.yml)を使用する

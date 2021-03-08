@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509282"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593335"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -23,17 +23,21 @@ ms.locfileid: "88509282"
 
 ## <a name="client-cant-connect-to-server"></a>クライアントがサーバーに接続できない
 
-(デバイス上やルーター内などの) ファイアウォールが次のポートをブロックしていないことを確認します。
-
-* **50051 (TCP)** - 初期接続 (HTTP ハンドシェイク) に必要です
-* **8266 (TCP+UDP)** - データ転送に必要です
-* **5000 (TCP)** 、**5433 (TCP)** 、**8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) に必要です
+(デバイス上やルーター内などの) ファイアウォールが[システム要件](../overview/system-requirements.md#network-firewall)で指定されているポートをブロックしていないことを確認します。
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>エラー '`Disconnected: VideoFormatNotAvailable`'
 
 GPU でハードウェアによる動画のデコードがサポートされていることを確認します。 「[開発用 PC](../overview/system-requirements.md#development-pc)」をご覧ください。
 
 GPU を 2 基搭載したノート パソコンで作業している場合、既定で実行されている方の GPU がハードウェアによる動画のデコード機能を提供していない可能性があります。 その場合は、アプリで強制的にもう一方の GPU を使用するようにしてください。 多くの場合、この操作は GPU ドライバーの設定で実行できます。
+
+## <a name="retrieve-sessionconversion-status-fails"></a>セッション/変換状態の取得の失敗
+
+REST API コマンドを頻繁に送信しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 スロットリングが発生した場合の http 状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
+
+この制限は、直接呼び出した場合に REST API の呼び出しに影響するだけでなく、`Session.GetPropertiesAsync`、`Session.RenewAsync`、または `Frontend.GetAssetConversionStatusAsync` などの C#/C++ の対応するものにも影響します。
+
+サーバー側のスロットリングが発生する場合は、呼び出しの頻度を減らすようにコードを変更してください。 サーバーによって 1 分ごとにスロットリングの状態がリセットされるため、1 分後に安全にコードを再実行できます。
 
 ## <a name="h265-codec-not-available"></a>H265 コーデックが使用できない
 
@@ -73,7 +77,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 設定が正しいことを検証するには、4 つの DLL ごとに次の手順を実行します。
 
 1. **[プロパティ] > [セキュリティ] > [編集]** の順に選択します
-1. すべての**グループまたはユーザー**の一覧を 1 行ずつ確認し、それぞれに **[読み取りと実行]** 権限が設定されていることを確認します ( **[許可]** 列のチェックマークがオンになっている必要があります)
+1. すべての **グループまたはユーザー** の一覧を 1 行ずつ確認し、それぞれに **[読み取りと実行]** 権限が設定されていることを確認します ( **[許可]** 列のチェックマークがオンになっている必要があります)
 
 ## <a name="low-video-quality"></a>動画の画質が低下している
 
@@ -84,7 +88,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>MRC で記録された動画にライブ エクスペリエンスの品質が反映されていない
 
-動画は [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) を介して Hololens に記録できます。 ただし、結果として得られる動画の画質は、次の 2 つの理由により、ライブ エクスペリエンスよりも低くなります。
+動画は [Mixed Reality Capture (MRC)](/windows/mixed-reality/mixed-reality-capture-for-developers) を介して HoloLens に記録できます。 ただし、結果として得られる動画の画質は、次の 2 つの理由により、ライブ エクスペリエンスよりも低くなります。
 * 動画のフレームレートが 60 Hz ではなく 30 Hz に制限されている。
 * 動画の画像に [Late Stage Reprojection](../overview/features/late-stage-reprojection.md) の処理ステップが実行されないため、動画が途切れているように見える。
 
@@ -97,7 +101,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 詳細な分析を行う前に、次の点をテストすることをお勧めします。
 
 * H265 コーデックがインストールされているか確認してください。 H264 コーデックへのフォールバックは用意されていますが、このフォールバックが正しく機能しなかったケースも生じています。 最新のグラフィックス ドライバーのインストールについては、「[システム要件](../overview/system-requirements.md#development-pc)」をご覧ください。
-* Unity プロジェクトを使用している場合は、Unity を閉じて、プロジェクト ディレクトリ内の一時*ライブラリ*と *obj* フォルダーを削除してから、プロジェクトを再度読み込むかビルドしてください。 場合によっては、明確な理由もなく、キャッシュ データによってサンプルが正しく機能しなくなることがあります。
+* Unity プロジェクトを使用している場合は、Unity を閉じて、プロジェクト ディレクトリ内の一時 *ライブラリ* と *obj* フォルダーを削除してから、プロジェクトを再度読み込むかビルドしてください。 場合によっては、明確な理由もなく、キャッシュ データによってサンプルが正しく機能しなくなることがあります。
 
 これらの 2 つの手順で問題が解決しなかった場合は、ビデオ フレームがクライアントで受信されているかどうかを確認する必要があります。 これは、「[サーバー側のパフォーマンス クエリ」](../overview/features/performance-queries.md)の章で説明しているように、プログラムでクエリできます。 `FrameStatistics struct` には、受信したビデオ フレームの数を示すメンバーがあります。 この数が 0 より大きく、時間の経過と共に増加している場合、クライアントは実際のビデオ フレームをサーバーから受信しています。 したがって、これはクライアント側の問題です。
 
@@ -144,11 +148,12 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 Azure Remote Rendering では、動画を使用してフレーム合成を行ったり、再投影を行ったりするために、Unity のレンダリング パイプラインにフックします。 これらのフックが存在することを確認するには、メニュー *:::no-loc text="Window > Analysis > Frame debugger":::* を開きます。 これを有効にしてから、パイプライン内に `HolographicRemotingCallbackPass` のエントリが 2 つあることを確認します。
 
-![Unity のフレーム デバッガー](./media/troubleshoot-unity-pipeline.png)
+![Unity のレンダリング パイプライン](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>モデルの読み込み後にチェッカーボード パターンがレンダリングされる
 
-レンダリングされたイメージが次のように表示される場合:![チェッカーボード](../reference/media/checkerboard.png) レンダラーが[標準の構成サイズのポリゴンの制限](../reference/vm-sizes.md)に達しています。 解消するには、**Premium**  の構成サイズに切り替えるか、表示されるポリゴンの数を減らします。
+レンダリングされたイメージが次のように表示される場合:![黒と白の正方形のグリッドと [ツール] メニューを示すスクリーンショット。](../reference/media/checkerboard.png)
+レンダラーが[標準の構成サイズのポリゴンの制限](../reference/vm-sizes.md)に達しています。 解消するには、**Premium**  の構成サイズに切り替えるか、表示されるポリゴンの数を減らします。
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity でレンダリングされるイメージが上下反転している
 
@@ -160,12 +165,12 @@ Azure Remote Rendering では、動画を使用してフレーム合成を行っ
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>Unity エディター用にコンパイルするときにデバッグを使用する
 
-Unity ソリューションの*ビルドの種類*を **[デバッグ]** に切り替えます。 Unity エディターで ARR をテストする場合、`UNITY_EDITOR` の定義は 'デバッグ' ビルドでのみ使用できます。 これは、[デプロイされたアプリケーション](../quickstarts/deploy-to-hololens.md)に使用されるビルドの種類とは関係がないので注意してください。デプロイされたアプリケーションでは、'リリース' ビルドが推奨されます。
+Unity ソリューションの *ビルドの種類* を **[デバッグ]** に切り替えます。 Unity エディターで ARR をテストする場合、`UNITY_EDITOR` の定義は 'デバッグ' ビルドでのみ使用できます。 これは、[デプロイされたアプリケーション](../quickstarts/deploy-to-hololens.md)に使用されるビルドの種類とは関係がないので注意してください。デプロイされたアプリケーションでは、'リリース' ビルドが推奨されます。
 
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>HoloLens 2 用の Unity サンプルをコンパイルするときにコンパイル エラーが発生する
 
 HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパイルしようとすると、偽のエラーが発生することがあります。 Visual Studio には、ファイルが存在するにもかかわらず、ファイルがコピーできないという警告が表示されます。 この問題が発生した場合は、次を行います。
-* すべての一時 Unity ファイルをプロジェクトから削除してから、やり直してください。 つまり、Unity を閉じて、プロジェクト ディレクトリ内の一時*ライブラリ*と *obj* フォルダーを削除してから、プロジェクトを再度読み込むかビルドしてください。
+* すべての一時 Unity ファイルをプロジェクトから削除してから、やり直してください。 つまり、Unity を閉じて、プロジェクト ディレクトリ内の一時 *ライブラリ* と *obj* フォルダーを削除してから、プロジェクトを再度読み込むかビルドしてください。
 * このコピー手順の問題はファイル名が長い場合に発生することがあるため、比較的パスが短いディスク上のディレクトリにプロジェクトが格納されていることを確認してください。
 * それでも問題が解決しない場合は、MS Sense によりコピー手順が妨げられている可能性があります。 例外を設定するには、コマンド ラインから次のレジストリ コマンドを実行します (管理者権限が必要です)。
     ```cmd
@@ -176,13 +181,19 @@ HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパ
 
 Arm64 の `AudioPluginMsHRTF.dll` は、バージョン 3.0.1 の *Windows Mixed Reality* パッケージ *(com.unity.xr.windowsmr.metro)* に追加されました。 Unity パッケージ マネージャーを使用して、バージョン 3.0.1 以降がインストールされていることを確認します。 Unity のメニュー バーで、 *[Window] > [Package Manager]* に移動し、 *[Windows Mixed Reality]* パッケージを見つけます。
 
+## <a name="native-c-based-application-does-not-compile"></a>ネイティブ C++ ベースのアプリケーションがコンパイルされない
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP アプリケーションまたは Dll の 'ライブラリが見つかりません' エラー
+
+C++ NuGet パッケージ内には、使用するバイナリ フレーバーを定義する `microsoft.azure.remoterendering.Cpp.targets` ファイルがあります。 `UWP` を識別するため、ファイル内の条件によって `ApplicationType == 'Windows Store'` が確認されます。 このため、この種類がプロジェクトで設定されていることを確認する必要があります。 これは、Visual Studio のプロジェクト ウィザードを使用して UWP アプリケーションまたは Dll を作成する場合に当てはまります。
+
 ## <a name="unstable-holograms"></a>ホログラムが不安定である
 
 レンダリングされたオブジェクトが頭部の動きに連動して動くように見える場合は、*Late Stage Reprojection* (LSR) に関する問題が発生している可能性があります。 このような状況への対処方法のガイダンスについては、[Late Stage Reprojection](../overview/features/late-stage-reprojection.md) に関するセクションをご覧ください。
 
-不安定なホログラム (揺れ、ゆがみ、ジッター、ジャンプなどが発生しているホログラム) のもう 1 つの理由として、ネットワーク接続の問題、特にネットワーク帯域幅が不足していたり、待機時間が長すぎたりすることがあります。 ネットワーク接続の品質を示す適切な指標の 1 つは、[パフォーマンス統計](../overview/features/performance-queries.md)値 `ARRServiceStats.VideoFramesReused` です。 再利用されたフレームは、クライアント側で (パケットの損失やネットワーク待機時間のばらつきなどにより) 新しいビデオ フレームが利用できなかったために、前のビデオ フレームを再利用する必要があったという状況を示しています。 `ARRServiceStats.VideoFramesReused` が 0 より大きいことが多い場合は、ネットワークの問題を示しています。
+不安定なホログラム (揺れ、ゆがみ、ジッター、ジャンプなどが発生しているホログラム) のもう 1 つの理由として、ネットワーク接続の問題、特にネットワーク帯域幅が不足していたり、待機時間が長すぎたりすることがあります。 ネットワーク接続の品質を示す適切な指標の 1 つは、[パフォーマンス統計](../overview/features/performance-queries.md)値 `ServiceStatistics.VideoFramesReused` です。 再利用されたフレームは、クライアント側で (パケットの損失やネットワーク待機時間のばらつきなどにより) 新しいビデオ フレームが利用できなかったために、前のビデオ フレームを再利用する必要があったという状況を示しています。 `ServiceStatistics.VideoFramesReused` が 0 より大きいことが多い場合は、ネットワークの問題を示しています。
 
-確認すべきもう 1 つの値は `ARRServiceStats.LatencyPoseToReceiveAvg` です。 この値は、常に 100 ミリ秒未満である必要があります。 値がそれよりも大きい場合は、接続されているデータ センターが離れすぎていることを示しています。
+確認すべきもう 1 つの値は `ServiceStatistics.LatencyPoseToReceiveAvg` です。 この値は、常に 100 ミリ秒未満である必要があります。 値がそれよりも大きい場合は、接続されているデータ センターが離れすぎていることを示しています。
 
 考えられる軽減策の一覧については、[ネットワーク接続のガイドライン](../reference/network-requirements.md#guidelines-for-network-connectivity)をご覧ください。
 
@@ -208,7 +219,7 @@ ARR には [Z ファイティングの軽減機能](../overview/features/z-fight
 
 ARR には、サーフェスが Z ファイティングになるかどうかを判断するための[チェッカーボードの強調表示](../overview/features/z-fighting-mitigation.md)という機能があります。 また、Z ファイティングの原因を視覚的に判断することもできます。 次の最初のアニメーションは、距離における深さの精度の損失の例を示しています。2 番目のアニメーションは、ほぼ同一平面のサーフェスの例を示しています。
 
-![深さの精度 - Z ファイティング](./media/depth-precision-z-fighting.gif)  ![同一平面 - Z ファイティング](./media/coplanar-z-fighting.gif)
+![アニメーションは、距離における深さの精度の損失の例を示しています。](./media/depth-precision-z-fighting.gif)  ![アニメーションは、ほぼ同一平面のサーフェスの例を示しています。](./media/coplanar-z-fighting.gif)
 
 これらの例を実際の Z ファイティングと比較して原因を特定するか、必要に応じて次のステップバイステップのワークフローに従ってください。
 
@@ -234,7 +245,9 @@ ARR には、サーフェスが Z ファイティングになるかどうかを�
 
 * サーフェスが、壁の図柄やテキストのように、タッチするために意図的に作成されている。
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>ネイティブの C++ アプリでのマルチパス ステレオ レンダリングを使用したグラフィックス成果物
 
+場合によっては、[**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) を呼び出した後にローカル コンテンツに対してマルチパス ステレオ レンダリング モードを使用する C++ のカスタム ネイティブ アプリ (別個のパスに左と右の目がレンダリングされる) で、ドライバーのバグが発生することがあります。 このバグによって、不明確なラスタライズによるエラーが発生し、ローカル コンテンツの個々の三角形や三角形の一部がランダムに非表示になります。 パフォーマンス上の理由から、**SV_RenderTargetArrayIndex** を使用するなど、より新しいシングルパス ステレオ レンダリング手法でローカル コンテンツをレンダリングすることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

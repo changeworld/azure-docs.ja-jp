@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186335"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051583"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Automation でグラフィカル Runbook を作成する
 
@@ -61,7 +61,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 
 パラメーター セットは、特定のコマンドレットの値を受け入れる必須および省略可能なパラメーターを定義します。 すべてのコマンドレットには 1 つ以上のパラメーター セットがあり、複数のセットがあるものもあります。 コマンドレットに複数のパラメーター セットがある場合は、使用するものを必ず選択してから、パラメーターを構成できます。 アクティビティで使用されるパラメーター セットは、 **[パラメーター セット]** を選択して別のセットを選ぶことで変更できます。 この場合、既に構成済みのパラメーター値はすべて失われます。
 
-次の例で、[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) コマンドレットには 3 つのパラメーター セットがあります。 例では、**ListVirtualMachineInResourceGroupParamSet** という 1 つのセットを使用します。これには、リソース グループ内のすべての仮想マシンを返すための、1 つの省略可能なパラメーターがあります。 また、例では、返される仮想マシンを指定するために **GetVirtualMachineInResourceGroupParamSet** パラメーター セットも使用しています。 このセットには、2 つの必須パラメーターと 1 つの省略可能なパラメーターがあります。
+次の例で、[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) コマンドレットには 3 つのパラメーター セットがあります。 例では、**ListVirtualMachineInResourceGroupParamSet** という 1 つのセットを使用します。これには、リソース グループ内のすべての仮想マシンを返すための、1 つの省略可能なパラメーターがあります。 また、例では、返される仮想マシンを指定するために **GetVirtualMachineInResourceGroupParamSet** パラメーター セットも使用しています。 このセットには、2 つの必須パラメーターと 1 つの省略可能なパラメーターがあります。
 
 ![パラメーター セット](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -91,11 +91,11 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 
 アクティビティの再試行を有効にするときに、遅延と条件を設定できます。 遅延とは、アクティビティを次回実行するまでに Runbook が待機する時間 (秒単位または分単位) です。 遅延を指定しない場合、アクティビティは完了した直後に再び実行されます。
 
-![アクティビティ再試行の遅延](media/automation-graphical-authoring-intro/retry-delay.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="再試行を有効にする機能の設定のスクリーンショット。":::
 
 再試行の条件は、アクティビティが実行されるたびに評価される PowerShell 式です。 式が True に解決されると、アクティビティは再実行されます。 式が False に解決されると、アクティビティは再実行されず、Runbook は次のアクティビティに移ります。
 
-![アクティビティ再試行の遅延](media/automation-graphical-authoring-intro/retry-condition.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="[次の条件が TRUE になるまで再試行を実行する] フィールドと、再試行条件で使用できる PowerShell 式の例のスクリーンショット。":::
 
 再試行の条件には、アクティビティの再試行に関する情報へのアクセスを提供する `RetryData` という名前の変数を使用できます。 この変数には、次の表のプロパティがあります。
 
@@ -236,7 +236,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ### <a name="use-checkpoints"></a>チェックポイントを使用する
 
-任意のアクティビティで [[Checkpoint runbook]\(Runbook のチェックポイント\)](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) を選択することにより、グラフィカル PowerShell ワークフロー Runbook に**チェックポイント**を設定できます。 この場合、アクティビティの実行後にチェックポイントが設定されます。
+任意のアクティビティで [[Checkpoint runbook]\(Runbook のチェックポイント\)](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) を選択することにより、グラフィカル PowerShell ワークフロー Runbook に **チェックポイント** を設定できます。 この場合、アクティビティの実行後にチェックポイントが設定されます。
 
 ![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
@@ -373,7 +373,7 @@ $h
 
 ## <a name="authenticate-to-azure-resources"></a>Azure リソースに対して認証する
 
-Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。 [実行アカウント](./manage-runas-account.md) (サービス プリンシパルとも呼ばれる) は、サブスクリプション内の Azure Resource Manager リソースにアクセスするために Automation Runbook で使用される既定のメカニズムです。 この機能をグラフィカル Runbook に追加するには、PowerShell の [Get-AutomationConnection](/system-center/sma/manage-global-assets) コマンドレットを使用する `AzureRunAsConnection` 接続資産をキャンバスに追加します。 また、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを追加することもできます。 このシナリオを次の例で示します。
+Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。 [実行アカウント](./automation-security-overview.md) (サービス プリンシパルとも呼ばれる) は、サブスクリプション内の Azure Resource Manager リソースにアクセスするために Automation Runbook で使用される既定のメカニズムです。 この機能をグラフィカル Runbook に追加するには、PowerShell の [Get-AutomationConnection](/system-center/sma/manage-global-assets) コマンドレットを使用する `AzureRunAsConnection` 接続資産をキャンバスに追加します。 また、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを追加することもできます。 このシナリオを次の例で示します。
 
 ![Run As Authentication アクティビティ](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -435,4 +435,4 @@ Azure Automation の各グラフィカル Runbook には、ドラフト バー�
 * グラフィカル Runbook の使用を開始するには、「[チュートリアル: グラフィカル Runbook を作成する](learn/automation-tutorial-runbook-graphical.md)」を参照してください。
 * Runbook の種類と利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 * Automation の実行アカウントを使った認証方法を理解するには、「[実行アカウント](automation-security-overview.md#run-as-account)」を参照してください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)」をご覧ください。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 10/23/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948268"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491942"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -37,14 +37,14 @@ ms.locfileid: "88948268"
 
 ユーザー サインインの頻度に関する Azure Active Directory (Azure AD) の既定の構成は、90 日間のローリング ウィンドウです。 多くの場合、ユーザーに資格情報を要求することは賢明であるように思われますが、逆効果になることがあります。何も考えずに資格情報を入力するように教えられたユーザーは、意図せずに、資格情報を求める悪意のあるプロンプトに入力してしまう可能性があります。
 
-ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
+ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
 
 サインイン頻度設定は、標準に従って OAUTH2 または OIDC プロトコルを実装したアプリで動作します。 Windows、Mac、次の Web アプリケーションを含むモバイル用のほとんどの Microsoft ネイティブ アプリは、この設定に準拠します。
 
 - Word、Excel、PowerPoint Online
 - OneNote Online
 - Office.com
-- O365 管理ポータル
+- Microsoft 365 管理者ポータル
 - Exchange Online
 - SharePoint と OneDrive
 - Teams Web クライアント
@@ -88,7 +88,9 @@ Azure AD 参加済み、ハイブリッド Azure AD 参加済み、または Azu
 条件付きアクセスは Azure AD Premium の機能であり、Premium ライセンスが必要です。 条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセスの概要](overview.md#license-requirements)に関するページを参照してください。
 
 > [!WARNING]
-> 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 Microsoft は、2020 年 5 月 1 日に構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換える予定です。  
+> 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 Microsoft は、2021 年 1 月 30 日に更新およびセッション トークン有効期間の構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換えました。  
+>
+> [サインインの頻度] を有効にする前に、テナントで他の再認証設定が無効になっていることを確認してください。 [信頼されたデバイスで MFA を記憶する] が有効になっている場合は、[サインインの頻度] を使用する前に必ず無効にしてください。この 2 つの設定を一緒に使用すると、ユーザーに予期せずにメッセージが表示される可能性があります。 再認証のプロンプトとセッションの有効期間の詳細については、「[再認証プロンプトを最適化し、Azure AD Multi-Factor Authentication のセッションの有効期間を理解する](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)」の記事を参照してください。
 
 ### <a name="policy-1-sign-in-frequency-control"></a>ポリシー 1:サインイン頻度コントロール
 
@@ -132,9 +134,8 @@ What-If ツールを使用して、ポリシーをどのように構成するか
 
 ## <a name="policy-deployment"></a>ポリシーのデプロイ
 
-ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。
+ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、「[条件付きアクセスのデプロイを計画する](plan-conditional-access.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 条件付きアクセス ポリシーを構成する方法については、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../authentication/tutorial-enable-azure-mfa.md)」の記事を参照してください。
-* 環境のための条件付きアクセス ポリシーを構成する準備ができている場合は、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。
+* 環境用に条件付きアクセス ポリシーを構成する準備ができたら、「[条件付きアクセスのデプロイを計画する](plan-conditional-access.md)」を参照してください。

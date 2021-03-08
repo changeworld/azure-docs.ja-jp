@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704949"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223671"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
 この記事では、仮想マシン (VM) に対して有効なネットワーク セキュリティ グループ (NSG) のセキュリティ規則を表示することによって、ネットワーク トラフィック フィルターに関する問題を診断する方法を学習します。
 
-NSG を使うと、VM を出入りするトラフィックの種類を制御できます。 Azure 仮想ネットワーク内のサブネット、または VM に接続されたネットワーク インターフェイス、もしくはその両方に、NSG を関連付けることができます。 ネットワーク インターフェイスに適用される有効なセキュリティ規則は、ネットワーク インターフェイスに関連付けられている NSG およびネットワーク インターフェイスが含まれるサブネットに存在する規則をまとめたものです。 場合によっては、異なる NSG の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。 VM のネットワーク インターフェイスに適用されるすべての有効なセキュリティ規則を NSG から表示できます。 仮想ネットワーク、ネットワーク インターフェイス、または NSG の概念について初めて学ぶ場合は、[仮想ネットワークの概要](virtual-networks-overview.md)、[ネットワーク インターフェイス](virtual-network-network-interface.md)、[ネットワーク セキュリティ グループ](security-overview.md)に関する記事をご覧ください。
+NSG を使うと、VM を出入りするトラフィックの種類を制御できます。 Azure 仮想ネットワーク内のサブネット、または VM に接続されたネットワーク インターフェイス、もしくはその両方に、NSG を関連付けることができます。 ネットワーク インターフェイスに適用される有効なセキュリティ規則は、ネットワーク インターフェイスに関連付けられている NSG およびネットワーク インターフェイスが含まれるサブネットに存在する規則をまとめたものです。 場合によっては、異なる NSG の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。 VM のネットワーク インターフェイスに適用されるすべての有効なセキュリティ規則を NSG から表示できます。 仮想ネットワーク、ネットワーク インターフェイス、または NSG の概念について初めて学ぶ場合は、[仮想ネットワークの概要](virtual-networks-overview.md)、[ネットワーク インターフェイス](virtual-network-network-interface.md)、[ネットワーク セキュリティ グループ](./network-security-groups-overview.md)に関する記事をご覧ください。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -40,26 +40,26 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
 2. Azure portal の上部の検索ボックスに、VM の名前を入力します。 検索結果に VM の名前が表示されたら、それを選択します。
 3. 次の図に示すように、 **[設定]** で **[ネットワーク]** を選択します。
 
-   ![セキュリティ規則を表示する](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
+   ![スクリーンショットには、my V M V M Nic の [ネットワークの設定] が表示された Azure portal が示されています。](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
-   前の図に示されている規則は、**myVMVMNic** という名前のネットワーク インターフェイスのものです。 2 つの異なるネットワーク セキュリティ グループからのネットワーク インターフェイスに対する**受信ポートの規則**があることがわかります。
+   前の図に示されている規則は、**myVMVMNic** という名前のネットワーク インターフェイスのものです。 2 つの異なるネットワーク セキュリティ グループからのネットワーク インターフェイスに対する **受信ポートの規則** があることがわかります。
    
    - **mySubnetNSG**: ネットワーク インターフェイスが含まれるサブネットに関連付けられています。
    - **myVMNSG**: **myVMVMNic** という名前の VM 内のネットワーク インターフェイスに関連付けられています。
 
-   **DenyAllInBound** という名前のルールが、「[シナリオ](#scenario)」で説明したように、ポート 80 経由でのインターネットから VM への受信通信を妨げています。 規則の **[ソース]** には *0.0.0.0/0* と表示されており、これにはインターネットが含まれます。 優先順位がそれより高くて (小さい値) ポート 80 での受信を許可する規則は他にありません。 インターネットから VM へのポート 80 での受信を許可する方法については、「[問題を解決する](#resolve-a-problem)」をご覧ください。 セキュリティ規則および Azure によるその適用方法について詳しくは、「[ネットワーク セキュリティ グループ](security-overview.md)」をご覧ください。
+   **DenyAllInBound** という名前のルールが、「[シナリオ](#scenario)」で説明したように、ポート 80 経由でのインターネットから VM への受信通信を妨げています。 規則の **[ソース]** には *0.0.0.0/0* と表示されており、これにはインターネットが含まれます。 優先順位がそれより高くて (小さい値) ポート 80 での受信を許可する規則は他にありません。 インターネットから VM へのポート 80 での受信を許可する方法については、「[問題を解決する](#resolve-a-problem)」をご覧ください。 セキュリティ規則および Azure によるその適用方法について詳しくは、「[ネットワーク セキュリティ グループ](./network-security-groups-overview.md)」をご覧ください。
 
-   図の下部には、 **[送信ポートの規則]** も示されています。 そこには、ネットワーク インターフェイスの送信ポート規則が表示されます。 図で各 NSG に表示されている受信規則は 4 つだけですが、もっと多くの規則がある場合もあります。 図では、**[ソース]** と **[ターゲット]** に **VirtualNetwork** と、また **[ソース]** に **AzureLoadBalancer** と表示されています。 **VirtualNetwork** と **AzureLoadBalancer** は [サービス タグ](security-overview.md#service-tags)です。 サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。
+   図の下部には、 **[送信ポートの規則]** も示されています。 そこには、ネットワーク インターフェイスの送信ポート規則が表示されます。 図で各 NSG に表示されている受信規則は 4 つだけですが、もっと多くの規則がある場合もあります。 図では、**[ソース]** と **[ターゲット]** に **VirtualNetwork** と、また **[ソース]** に **AzureLoadBalancer** と表示されています。 **VirtualNetwork** と **AzureLoadBalancer** は [サービス タグ](./network-security-groups-overview.md#service-tags)です。 サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。
 
 4. VM が実行状態であることを確認した後、前の図のように **[有効なセキュリティ規則]** を選択して、次の図のように有効なセキュリティ規則を表示します。
 
-   ![有効なセキュリティ規則を表示する](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
+   ![スクリーンショットには、[ダウンロード] が選択され、AllowAzureLoadBalancerInbound 受信規則が選択されている [有効なセキュリティ規則] ウィンドウが示されています。](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
    表示されている規則はステップ 3 と同じですが、ネットワーク インターフェイスとサブネットに関連付けられている NSG に対する別のタブがあります。 図に示すように、最初の 50 規則のみが表示されています。 すべての規則を含む .csv ファイルをダウンロードするには、 **[ダウンロード]** を選択します。
 
    各サービス タグが表すプレフィックスを確認するには、**AllowAzureLoadBalancerInbound** のような規則を選択します。 次の図では、**AzureLoadBalancer** サービス タグのプレフィックスが示されています。
 
-   ![有効なセキュリティ規則を表示する](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
+   ![スクリーンショットには、入力された AllowAzureLoadBalancerInbound のアドレス プレフィックスが示されています。](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
 
    **AzureLoadBalancer** サービス タグが表すプレフィックスは 1 つだけですが、他のサービス タグは複数のプレフィックスを表しています。
 
@@ -67,7 +67,7 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
 
    **myVMVMNic2** ネットワーク インターフェイスの規則を表示するには、それを選択します。 次の図のように、このネットワーク インターフェイスのサブネットには **myVMVMNic** ネットワーク インターフェイスと同じ規則が関連付けられています。これは、両方のネットワーク インターフェイスが同じサブネット内にあるためです。 サブネットに NSG を関連付けると、サブネット内のすべてのネットワーク インターフェイスにその規則が適用されます。
 
-   ![セキュリティ規則を表示する](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
+   ![スクリーンショットには、my V M V M Nic 2 の [ネットワークの設定] が表示された Azure portal が示されています。](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
    **myVMVMNic** ネットワーク インターフェイスとは異なり、**myVMVMNic2** ネットワーク インターフェイスにはネットワーク セキュリティ グループが関連付けられていません。 各ネットワーク インターフェイスとサブネットには、1 つの NSG を関連付けることができ、NSG を関連付けなくてもかまいません。 各ネットワーク インターフェイスまたはサブネットに関連付ける NSG は、同じでも異なっていてもかまいません。 同じネットワーク セキュリティ グループを、任意の数のネットワーク インターフェイスとサブネットに関連付けることができます。
 
@@ -158,7 +158,7 @@ az vm show \
 
 - **NetworkSecurityGroup**: ネットワーク セキュリティ グループの ID です。
 - **Association**: ネットワーク セキュリティ グループが *NetworkInterface* または *Subnet* のどちらに関連付けられているかを示します。 NSG が両方に関連付けられている場合、出力は各 NSG の **NetworkSecurityGroup**、**Association**、および **EffectiveSecurityRules** で返されます。 このコマンドを実行して有効なセキュリティ規則を表示する直前に、NSG リソースを関連付けたり、関連付けを解除したりした場合は、コマンドの出力にその変更が反映されるまで数秒間待たなければならないことがあります。
-- **EffectiveSecurityRules**: 各プロパティの説明について詳しくは、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 名前の前に *defaultSecurityRules/* が付いている規則は、すべての NSG に存在する既定のセキュリティ規則です。 名前の前に *securityRules/* が付いている規則は、ユーザーが作成した規則です。 **destinationAddressPrefix** または **sourceAddressPrefix** プロパティに対して **Internet**、**VirtualNetwork**、**AzureLoadBalancer** などの[サービス タグ](security-overview.md#service-tags)が指定されている規則は、**expandedDestinationAddressPrefix** プロパティにも値があります。 **expandedDestinationAddressPrefix** プロパティには、サービス タグによって表されるすべてのアドレス プレフィックスが一覧表示されます。
+- **EffectiveSecurityRules**: 各プロパティの説明について詳しくは、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 名前の前に *defaultSecurityRules/* が付いている規則は、すべての NSG に存在する既定のセキュリティ規則です。 名前の前に *securityRules/* が付いている規則は、ユーザーが作成した規則です。 **destinationAddressPrefix** または **sourceAddressPrefix** プロパティに対して **Internet**、**VirtualNetwork**、**AzureLoadBalancer** などの [サービス タグ](./network-security-groups-overview.md#service-tags)が指定されている規則は、**expandedDestinationAddressPrefix** プロパティにも値があります。 **expandedDestinationAddressPrefix** プロパティには、サービス タグによって表されるすべてのアドレス プレフィックスが一覧表示されます。
 
 出力に重複して規則が表示される場合は、NSG がネットワーク インターフェイスとサブネットの両方に関連付けられているためです。 既定の規則はどちらの NSG も同じであり、両方の NSG で同じ独自のルールが作成されている場合は、他にも重複する規則が存在することがあります。
 
@@ -181,7 +181,7 @@ az vm show \
 
 この規則を作成した後は、ポート 80 でインターネットからの受信が許可されるようになります。これは、トラフィックを拒否している *DenyAllInBound* という名前の既定のセキュリティ規則より、この規則の優先順位の方が高いためです。 方法については、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 ネットワーク インターフェイスとサブネットに異なる NSG が関連付けられている場合は、両方の NSG に同じ規則を作成する必要があります。
 
-Azure は、受信トラフィックを処理するとき、最初にサブネットに関連付けられている NSG の規則を処理し (関連付けられた NSG がある場合)、次にネットワーク インターフェイスに関連付けられている NSG の規則を処理します。 ネットワーク インターフェイスとサブネットに関連付けられている NSG がある場合、トラフィックが VM に到達するためには、両方の NSG でポートを開く必要があります。 管理と通信の問題を軽減するため、個々のネットワーク インターフェイスではなくサブネットに NSG を関連付けることをお勧めします。 サブネット内の VM で異なるセキュリティ規則が必要な場合は、アプリケーション セキュリティ グループ (ASG) のネットワーク インターフェイス メンバーを作成し、セキュリティ規則のソースとターゲットとして ASG を指定できます。 詳しくは、「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」をご覧ください。
+Azure は、受信トラフィックを処理するとき、最初にサブネットに関連付けられている NSG の規則を処理し (関連付けられた NSG がある場合)、次にネットワーク インターフェイスに関連付けられている NSG の規則を処理します。 ネットワーク インターフェイスとサブネットに関連付けられている NSG がある場合、トラフィックが VM に到達するためには、両方の NSG でポートを開く必要があります。 管理と通信の問題を軽減するため、個々のネットワーク インターフェイスではなくサブネットに NSG を関連付けることをお勧めします。 サブネット内の VM で異なるセキュリティ規則が必要な場合は、アプリケーション セキュリティ グループ (ASG) のネットワーク インターフェイス メンバーを作成し、セキュリティ規則のソースとターゲットとして ASG を指定できます。 詳しくは、「[アプリケーション セキュリティ グループ](./network-security-groups-overview.md#application-security-groups)」をご覧ください。
 
 通信の問題が解決しない場合は、「[考慮事項](#considerations)」と「追加の診断」をご覧ください。
 
@@ -189,8 +189,8 @@ Azure は、受信トラフィックを処理するとき、最初にサブネ�
 
 接続問題のトラブルシューティングを行う場合は、次の点を検討してください。
 
-* 既定のセキュリティ規則は、インターネットからの受信アクセスをブロックし、仮想ネットワークからの受信トラフィックのみを許可します。 インターネットからの受信トラフィックを許可するには、既定の規則より優先順位の高いセキュリティ規則を追加します。 [既定のセキュリティ規則](security-overview.md#default-security-rules)または[セキュリティ規則を追加する](manage-network-security-group.md#create-a-security-rule)方法について学習します。
-* 既定では、仮想ネットワークをピアリングした場合、**VIRTUAL_NETWORK** サービス タグは、ピアリングされている仮想ネットワークのプレフィックスを含めるように自動的に拡張されます。 仮想ネットワークのピアリングに関する問題をトラブルシューティングするには、**ExpandedAddressPrefix** の一覧でプレフィックスを表示できます。 [仮想ネットワーク ピアリング](virtual-network-peering-overview.md)および[サービス タグ](security-overview.md#service-tags)の詳細を学習してください。
+* 既定のセキュリティ規則は、インターネットからの受信アクセスをブロックし、仮想ネットワークからの受信トラフィックのみを許可します。 インターネットからの受信トラフィックを許可するには、既定の規則より優先順位の高いセキュリティ規則を追加します。 [既定のセキュリティ規則](./network-security-groups-overview.md#default-security-rules)または[セキュリティ規則を追加する](manage-network-security-group.md#create-a-security-rule)方法について学習します。
+* 既定では、仮想ネットワークをピアリングした場合、**VIRTUAL_NETWORK** サービス タグは、ピアリングされている仮想ネットワークのプレフィックスを含めるように自動的に拡張されます。 仮想ネットワークのピアリングに関する問題をトラブルシューティングするには、**ExpandedAddressPrefix** の一覧でプレフィックスを表示できます。 [仮想ネットワーク ピアリング](virtual-network-peering-overview.md)および[サービス タグ](./network-security-groups-overview.md#service-tags)の詳細を学習してください。
 * ネットワーク インターフェイスの有効なセキュリティ規則は、VM のネットワーク インターフェイスまたはサブネットに NSG が関連付けられていて、VM が実行中の状態である場合にのみ、表示されます。
 * ネットワーク インターフェイスやサブネットに関連付けられている NSG がなく、VM に[パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられている場合は、すべてのポートがすべての場所との間の受信/送信アクセス用に開かれます。 VM にパブリック IP アドレスがある場合は、ネットワーク インターフェイスが含まれるサブネットに NSG を適用することをお勧めします。
 
@@ -204,4 +204,4 @@ Azure は、受信トラフィックを処理するとき、最初にサブネ�
 ## <a name="next-steps"></a>次のステップ
 
 - [ネットワーク セキュリティ グループ](manage-network-security-group.md#work-with-network-security-groups)と[セキュリティ規則](manage-network-security-group.md#work-with-security-rules)のすべてのタスク、プロパティ、および設定について学習します。
-- VM の[既定のセキュリティ規則](security-overview.md#default-security-rules)、[サービス タグ](security-overview.md#service-tags)、および[受信および送信トラフィックのセキュリティ規則を Azure が処理する方法](security-overview.md#network-security-groups)について学習します。
+- VM の[既定のセキュリティ規則](./network-security-groups-overview.md#default-security-rules)、[サービス タグ](./network-security-groups-overview.md#service-tags)、および[受信および送信トラフィックのセキュリティ規則を Azure が処理する方法](./network-security-groups-overview.md#network-security-groups)について学習します。

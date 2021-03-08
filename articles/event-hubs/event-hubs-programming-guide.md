@@ -4,18 +4,18 @@ description: この記事では、Azure .NET SDK を使用して Azure Event Hub
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013913"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623050"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs の .NET プログラミング ガイド (レガシー Microsoft.Azure.EventHubs パッケージ)
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](./event-hubs-about.md)」を参照してください。
 
 > [!WARNING]
-> このガイドは、以前の**Microsoft.Azure.EventHubs**パッケージに関するものです。 最新の[Azure.Messaging.EventHubs](event-hubs-dotnet-standard-getstarted-send.md)パッケージを使用するには、コードを[移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)することをお勧めします。  
+> このガイドは、以前の **Microsoft.Azure.EventHubs** パッケージに関するものです。 最新の[Azure.Messaging.EventHubs](event-hubs-dotnet-standard-getstarted-send.md)パッケージを使用するには、コードを[移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)することをお勧めします。  
 
 
 ## <a name="event-publishers"></a>イベント発行元
@@ -77,7 +77,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 ### <a name="availability-considerations"></a>可用性に関する考慮事項
 
-パーティション キーを使用するかどうかは任意であり、慎重に検討する必要があります。 イベントを発行するときにパーティション キーを指定しないと、ラウンド ロビン割り当てが使用されます。 多くの場合、イベントの順序設定が必要であればパーティション キーの使用をお勧めします。 パーティション キーを使用すると、これらのパーティションでは単一のノードに対する可用性が必要になるため、時間が経つにつれて、コンピューティング ノードの再起動時やパッチ適用時などに障害が発生する可能性があります。 そのため、パーティション ID を設定した場合にそのパーティションがなんらかの理由で使用不能になると、そのパーティション内のデータにアクセスできなくなります。 高可用性がもっとも重要な場合は、パーティション キーを指定しないでください。指定を行うと、以前に説明したラウンドロビン モデルを使用してイベントがパーティションに送信されるようになります。 このシナリオでは、可用性 (パーティション ID なし) と整合性 (イベントをパーティション ID に固定) のどちらを優先するかを明確に選択することになります。
+パーティション キーを使用するかどうかは任意であり、慎重に検討する必要があります。 イベントの発行時にパーティション キーを指定しない場合、Event Hubs によってパーティション間の負荷が分散されます。 多くの場合、イベントの順序設定が必要であればパーティション キーの使用をお勧めします。 パーティション キーを使用すると、これらのパーティションでは単一のノードに対する可用性が必要になるため、時間が経つにつれて、コンピューティング ノードの再起動時やパッチ適用時などに障害が発生する可能性があります。 そのため、パーティション ID を設定した場合にそのパーティションがなんらかの理由で使用不能になると、そのパーティション内のデータにアクセスできなくなります。 高可用性が最も重要な場合、パーティション キーを指定しないでください。 その場合、内部の負荷分散アルゴリズムを利用してイベントがパーティションに送信されます。 このシナリオでは、可用性 (パーティション ID なし) と整合性 (イベントをパーティション ID に固定) のどちらを優先するかを明確に選択することになります。
 
 別の検討事項として、イベントの処理の遅れへの対処があります。 場合によっては、処理が遅れないようにするよりも、データを破棄して再試行した方が良いこともあります。前者では、ダウンストリームの処理がさらに遅れる可能性があります。 たとえば、株式相場表示機では最新のデータが揃うまで待つ方が適切ですが、ライブ チャットや VOIP のシナリオでは不完全でもデータを素早く用意する必要があります。
 
@@ -93,11 +93,11 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 イベントをバッチ送信すると、スループット向上の役に立ちます。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API を使用して、[SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 呼び出し用のデータ オブジェクトを後で追加できるバッチを作成できます。
 
-単一のバッチは、イベントの 1 MB 制限を超えてはなりません。 また、バッチの各メッセージでは同じ発行元 ID が使用されます。 バッチが最大イベント サイズを超えないようにすることは送信元の責任となります。 超えた場合、クライアント **送信** エラーが生成されます。 ヘルパー メソッド [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) を使用して、バッチが 1 MB を超えないようにします。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API から空の [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) を取得し、[TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) を使用してイベントを追加し、バッチを構築します。 
+単一のバッチは、イベントの 1 MB 制限を超えてはなりません。 また、バッチの各メッセージでは同じ発行元 ID が使用されます。 バッチが最大イベント サイズを超えないようにすることは送信元の責任となります。 最大イベント サイズを超えると、クライアント **送信** エラーが発生します。 ヘルパー メソッド [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) を使用して、バッチが 1 MB を超えないようにします。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API から空の [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) を取得し、[TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) を使用してイベントを追加し、バッチを構築します。 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>非同期送信と大規模送信
 
-イベントは、イベント ハブに非同期に送信されます。 非同期送信を利用すると、クライアントがイベントを送信できる速度が上がります。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)は [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) オブジェクトを返します。 クライアントで [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) クラスを使用して、クライアント側の再試行オプションを制御できます。
+イベントは、イベント ハブに非同期に送信されます。 非同期送信を利用すると、クライアントがイベントを送信できる速度が上がります。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)は [Task](/dotnet/api/system.threading.tasks.task) オブジェクトを返します。 クライアントで [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) クラスを使用して、クライアント側の再試行オプションを制御できます。
 
 ## <a name="event-consumers"></a>イベント コンシューマー
 [EventProcessorHost][] クラスは Event Hubs からのデータを処理します。 .NET プラットフォームでのイベント リーダーを作成するときには、この実装を使用すべきです。 [EventProcessorHost][] はイベント プロセッサ実装のためにスレッドセーフでマルチプロセスの安全なランタイム環境を提供します。さらに、その環境では、チェックポイント処理とパーティション リースの管理が提供されます。
@@ -144,7 +144,6 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 > [!NOTE]
 > 現時点では、この機能 ([発行元失効](/rest/api/eventhub/revoke-publisher)) は REST API でのみサポートされています。
 
-発行元失効の詳細のほか、発行元として Event Hubs に送信する方法の詳細については、[Event Hubs の大規模で安全な発行](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)に関するサンプルを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

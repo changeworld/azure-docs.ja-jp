@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, mathoma
+ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708663"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182759"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL Managed Instance のデータベースを以前の時点に復元します
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -67,7 +67,7 @@ Azure portal、PowerShell、または Azure CLI を使用して、既存のデ�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Azure PowerShell がまだインストールされていない場合は、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+Azure PowerShell がまだインストールされていない場合は、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」を参照してください。
 
 PowerShell を使用してデータベースを復元するには、次のコマンドでパラメーターの値を指定します。 次に、次のコマンドを実行します。
 
@@ -106,11 +106,11 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceName $targetInstanceName 
 ```
 
-詳細については、[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) を参照してください。
+詳細については、[Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) を参照してください。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI をまだインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+Azure CLI をまだインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 Azure CLI を使用してデータベースを復元するには、次のコマンドでパラメーターの値を指定します。 次に、次のコマンドを実行します。
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-使用可能なパラメーターの詳細については、[SQL Managed Instance でのデータベースの復元に関する CLI のドキュメント](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)を参照してください。
+使用可能なパラメーターの詳細については、[SQL Managed Instance でのデータベースの復元に関する CLI のドキュメント](/cli/azure/sql/midb#az-sql-midb-restore)を参照してください。
 
 ---
 
@@ -162,7 +162,7 @@ $targetDatabaseName = "<target database name>"
 $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
 -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -176,7 +176,7 @@ Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
 $targetResourceGroupName = "<Resource group of target SQL Managed Instance>"
 $targetInstanceName = "<Target SQL Managed Instance name>"
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -205,9 +205,9 @@ DROP DATABASE WorldWideImporters;
 
 SQL Managed Instance 内のデータベースに接続するには、次のいずれかの方法を使用します。
 
-- [Azure 仮想マシンを使用した SSMS/Azure Data Studio](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [ポイント対サイト](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [パブリック エンドポイント](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Azure 仮想マシンを使用した SSMS/Azure Data Studio](./connect-vm-instance-configure.md)
+- [ポイント対サイト](./point-to-site-p2s-configure.md)
+- [パブリック エンドポイント](./public-endpoint-configure.md)
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -247,9 +247,9 @@ ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 
 SQL Managed Instance 内のデータベースに接続するには、次のいずれかの方法を使用します。
 
-- [Azure 仮想マシン](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [ポイント対サイト](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [パブリック エンドポイント](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Azure 仮想マシン](./connect-vm-instance-configure.md)
+- [ポイント対サイト](./point-to-site-p2s-configure.md)
+- [パブリック エンドポイント](./public-endpoint-configure.md)
 
 ## <a name="next-steps"></a>次のステップ
 

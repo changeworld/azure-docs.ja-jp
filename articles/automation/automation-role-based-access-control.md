@@ -1,21 +1,21 @@
 ---
 title: Azure Automation のロールのアクセス許可とセキュリティを管理する
-description: この記事では、ロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセスを管理する方法について説明します。
+description: この記事では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセスを管理する方法について説明します。
 keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528670"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895919"
 ---
 # <a name="manage-role-permissions-and-security"></a>ロールのアクセス許可とセキュリティの管理
 
-Azure のリソースに対するアクセスは、ロールベースのアクセス制御 (RBAC) で管理できます。 [RBAC](../role-based-access-control/overview.md) を使用して、チーム内の職務を分離し、それぞれの職務に必要なアクセス権のみをユーザー、グループ、アプリケーションに付与することができます。 Azure portal、Azure コマンドライン ツール、Azure Management API を使用して、ロールベースのアクセス権をユーザーに付与できます。
+Azure のリソースに対するアクセスは、Azure ロールベースのアクセス制御 (Azure RBAC) で管理できます。 [Azure RBAC](../role-based-access-control/overview.md) を使用して、チーム内の職務を分離し、それぞれの職務に必要なアクセス権のみをユーザー、グループ、アプリケーションに付与することができます。 Azure portal、Azure コマンドライン ツール、Azure Management API を使用して、ロールベースのアクセス権をユーザーに付与できます。
 
 ## <a name="roles-in-automation-accounts"></a>Automation アカウントのロール
 
@@ -270,11 +270,11 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |解決策     |Log Analytics 共同作成者         | 解決策|
 |仮想マシン     | Virtual Machine Contributor        | 仮想マシン        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>Automation アカウントの RBAC を構成する
+## <a name="configure-azure-rbac-for-your-automation-account"></a>Automation アカウントの Azure RBAC を構成する
 
-次のセクションでは、[Azure portal](#configure-rbac-using-the-azure-portal) と [PowerShell](#configure-rbac-using-powershell) を使用してご利用の Automation アカウントの RBAC を構成する方法について説明します。
+次のセクションでは、[Azure portal](#configure-azure-rbac-using-the-azure-portal) と [PowerShell](#configure-azure-rbac-using-powershell) を使用してご利用の Automation アカウントの Azure RBAC を構成する方法について説明します。
 
-### <a name="configure-rbac-using-the-azure-portal"></a>Azure Portal を使用した RBAC の構成
+### <a name="configure-azure-rbac-using-the-azure-portal"></a>Azure Portal を使用した Azure RBAC の構成
 
 1. [Azure Portal](https://portal.azure.com/) にログインし、[Automation アカウント] ページから、ご利用の Automation アカウントを開きます。
 2. **アクセス制御 (IAM)** をクリックし、[アクセス制御 (IAM)] ページを開きます。 このページを使用すると、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。
@@ -315,11 +315,11 @@ Automation アカウントの管理に関与しないユーザーや既に退社
 
    ![Remove users](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>PowerShell を使用した RBAC の構成
+### <a name="configure-azure-rbac-using-powershell"></a>PowerShell を使用した Azure RBAC の構成
 
 Automation アカウントに対するロールベースのアクセスは、次の [Azure PowerShell コマンドレット](../role-based-access-control/role-assignments-powershell.md)を使用して構成することもできます。
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) を使用すると、Azure Active Directory で利用できるすべての Azure ロールの一覧が表示されます。 このコマンドレットを `Name` パラメーターと共に使用すると、特定のロールで実行できるすべての操作を一覧表示できます。
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition) を使用すると、Azure Active Directory で利用できるすべての Azure ロールの一覧が表示されます。 このコマンドレットを `Name` パラメーターと共に使用すると、特定のロールで実行できるすべての操作を一覧表示できます。
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) を使用すると、特定のスコープにおける Azure ロールの割り当ての一覧が表示されます。 このコマンドレットにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、`ExpandPrincipalGroups` パラメーターを使用します。
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) を使用すると、特定のスコープにおける Azure ロールの割り当ての一覧が表示されます。 このコマンドレットにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、`ExpandPrincipalGroups` パラメーターを使用します。
 
 **例:** Automation アカウント内のすべてのユーザーとそのロールを一覧表示するには、次のコマンドレットを使用します。
 
@@ -360,7 +360,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てるには、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) を使用します。
+特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てるには、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) を使用します。
 
 **例:** Automation アカウント スコープのユーザーに対して "Automation オペレーター" ロールを割り当てるには、次のコマンドを使用します。
 
@@ -382,7 +382,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-[Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。
+[Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。
 
 **例:** Automation アカウント スコープの Automation オペレーター ロールからユーザーを削除するには、次のコマンドを使用します。
 
@@ -398,9 +398,9 @@ Automation アカウント スコープ ビューで Automation オペレータ�
 
 ![リソースへのアクセス権がない](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>Runbook のための RBAC の構成
+## <a name="configure-azure-rbac-for-runbooks"></a>Runbook のための Azure RBAC の構成
 
-Azure Automation では、RBAC を特定の Runbook に割り当てることができます。 これには、次のスクリプトを実行して、ユーザーを特定の Runbook に追加します。 このスクリプトを実行できるのは、Automation アカウント管理者またはテナント管理者です。
+Azure Automation では、Azure ロールを特定の Runbook に割り当てることができます。 これには、次のスクリプトを実行して、ユーザーを特定の Runbook に追加します。 このスクリプトを実行できるのは、Automation アカウント管理者またはテナント管理者です。
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -423,7 +423,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 スクリプトが実行されたら、ユーザーに Azure portal にログインしてもらい、さらに **[すべてのリソース]** を選択してもらいます。 一覧内で、ユーザーは自分が Automation Runbook オペレーターとして追加された Runbook を確認することができます。
 
-![ポータルの Runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
+![ポータルの Runbook Azure RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>Automation オペレーター ロールのユーザー エクスペリエンス - Runbook
 
@@ -433,6 +433,6 @@ Runbook スコープで Automation オペレーター ロールに割り当て�
 
 ## <a name="next-steps"></a>次のステップ
 
-* PowerShell の RBAC について詳しくは、[Azure PowerShell を使用して RBAC を管理する](../role-based-access-control/role-assignments-powershell.md)方法に関するページを参照してください。
+* PowerShell を利用し、Azure RBAC に関する詳細を見つける方法については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-powershell.md)」を参照してください。
 * Runbook の種類について詳しくは、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 * Runbook を開始するには、「[Azure Automation で Runbook を開始する](start-runbooks.md)」を参照してください。

@@ -8,18 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
-ms.openlocfilehash: e6b8708edeeb4b3b69dab82265d13db2a4c22e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ebc125fe6802ffbe4192c0250ec9adc2ceceb0b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051661"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668726"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS
 
@@ -118,7 +118,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 ### <a name="configure-glusterfs"></a>GlusterFS を構成する
 
-次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、 **[3]** - ノード 3 のみ該当、のいずれかが付いています。
+次の各手順の先頭には、**[A]** - 全ノードが該当、**[1]** - ノード 1 のみ該当、**[2]** - ノード 2 のみ該当、**[3]** - ノード 3 のみ該当、のいずれかが付いています。
 
 1. **[A]** ホスト名解決を設定します
 
@@ -348,7 +348,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    sudo gluster volume start <b>NW2</b>-aers
    </code></pre>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [SAP ASCS とデータベースのインストール](high-availability-guide-rhel.md)
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]

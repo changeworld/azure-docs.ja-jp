@@ -6,17 +6,17 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: d14ed7e714eac175dc7a17bbccd2150f9bb01ef9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752691"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070658"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>AKS クラスターに影響するリソース正常性イベントを確認する (プレビュー)
 
 
-AKS でコンテナー ワークロードを実行する場合は、ワークロードの可用性への影響を最小限に抑えるために、問題が発生するとすぐにトラブルシューティングを行って修正できるようにする必要があります。 [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview) を使用すると、AKS クラスターを使用できなくなる可能性があるさまざまな正常性イベントを可視化できます。
+AKS でコンテナー ワークロードを実行する場合は、ワークロードの可用性への影響を最小限に抑えるために、問題が発生するとすぐにトラブルシューティングを行って修正できるようにする必要があります。 [Azure Resource Health](../service-health/resource-health-overview.md) を使用すると、AKS クラスターを使用できなくなる可能性があるさまざまな正常性イベントを可視化できます。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -33,7 +33,7 @@ AKS でコンテナー ワークロードを実行する場合は、ワークロ
 - 左側のナビゲーションで、 **[リソース正常性]** を選択します。
 - サブスクリプションを選択し、リソースの種類を Azure Kubernetes Service (AKS) に設定します。
 
-![resource-health-check](./media/aks-resource-health/resource-health-check.png)
+![AKS クラスターのリソースの正常性が示されているスクリーンショット。](./media/aks-resource-health/resource-health-check.png)
 
 ## <a name="check-the-health-status"></a>正常性状態の確認
 
@@ -49,7 +49,7 @@ Resource Health は、クラスターの正常性状態を判断するために�
 
 - **[デグレード]** :ユーザーの操作を必要とする正常性の問題が発生した場合、クラスターは *[デグレード]* として報告されます。
 
-各正常性状態の詳細については、「[Resource Health の概要](https://docs.microsoft.com/azure/service-health/resource-health-overview#health-status)」を参照してください。
+各正常性状態の詳細については、「[Resource Health の概要](../service-health/resource-health-overview.md#health-status)」を参照してください。
 
 ### <a name="view-historical-data"></a>履歴データの表示
 
@@ -57,4 +57,4 @@ Resource Health は、クラスターの正常性状態を判断するために�
 
 ## <a name="next-steps"></a>次のステップ
 
-クラスターの確認を実行し、[AKS 診断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)を使用してクラスターの問題のトラブルシューティングを行います。
+クラスターの確認を実行し、[AKS 診断](./concepts-diagnostics.md)を使用してクラスターの問題のトラブルシューティングを行います。

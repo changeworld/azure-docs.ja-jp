@@ -2,18 +2,18 @@
 title: Azure Site Recovery のモビリティ サービスの自動更新
 description: Azure Site Recovery を使用した Azure VM のレプリケーションに使用されるモビリティ サービスの自動更新の概要。
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
-ms.author: rajanaki
-ms.openlocfilehash: 43b74db0059c003d64558f5b61f1c5cc2bf52759
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: sideeksh
+ms.openlocfilehash: 42d3c74229ab7eeec0ac716073a9e631775fd002
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038054"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187342"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -69,7 +69,7 @@ Site Recovery で拡張機能の更新を管理するには、いくつかの方
 > **[Site Recovery に管理を許可]** を選択した場合は、コンテナー内のすべての VM にこの設定が適用されます。
 
 > [!NOTE]
-> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、既定で新しい Automation アカウントが作成されます。 あるいは、この設定をカスタマイズして、既存の Automation アカウントを選択できます。 同じコンテナー内でレプリケーションを有効にするための後続のすべてのタスクでは、以前に作成された Automation アカウントが使用されます。 現在、ドロップダウン メニューには、コンテナーと同じリソース グループ内にある Automation アカウントのみが表示されます。
+> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、既定で新しい Automation アカウントが作成されます。 あるいは、この設定をカスタマイズして、既存の Automation アカウントを選択できます。 定義すると、同じコンテナー内でレプリケーションを有効にするための後続のすべてのアクションでは、選択した Automation アカウントが使用されます。 現在、ドロップダウン メニューには、コンテナーと同じリソース グループ内にある Automation アカウントのみが表示されます。
 
 > [!IMPORTANT]
 > 次のスクリプトは、Automation アカウントのコンテキストで実行する必要があります。
@@ -483,11 +483,11 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 - **Error**: 実行アカウントに Recovery Services リソースにアクセスするためのアクセス許可がありません。
 
-  **推奨される操作:** 実行アカウントを削除してから[再作成](../automation/manage-runas-account.md)します。 または、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
+  **推奨される操作:** 実行アカウントを削除してから [再作成](../automation/manage-runas-account.md)します。 または、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
 
 - **Error**: 実行アカウントが見つかりません。 Azure Active Directory アプリケーション、サービス プリンシパル、ロール、Automation 証明書資産、Automation 接続資産のいずれかが削除されたか、作成されていません。または、証明書と接続の拇印が一致しません。
 
-  **推奨される操作:** 実行アカウントを削除してから[再作成](../automation/manage-runas-account.md)します。
+  **推奨される操作:** 実行アカウントを削除してから [再作成](../automation/manage-runas-account.md)します。
 
 - **Error**: Automation アカウントで使用されている Azure 実行証明書の有効期限がまもなく切れます。
 

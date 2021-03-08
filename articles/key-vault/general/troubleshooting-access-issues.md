@@ -7,24 +7,35 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400434"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791409"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
+### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>シークレット、キー、または証明書を一覧表示または取得できません。 "問題が発生しました.." と表示されています。エラーが発生します。
+シークレットの表示、取得、作成、またはアクセスに関して問題が発生した場合は、その操作を実行するためのアクセス ポリシーが定義されていることを確認してください。[キー コンテナー アクセス ポリシー](./assign-access-policy-cli.md)
+
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>キー コンテナーが、いつ、どのようにアクセスされているのかを確認するにはどうすればよいですか?
 
-1 つまたは複数のキー コンテナーを作成したら、いつ、どのように、誰によってキー コンテナーがアクセスされるのかを監視するのが一般的です。 Azure Key Vault のログを有効にすることによって、監視を行うことができます。ログを有効にするためのステップバイステップ ガイドについては、[こちら](https://docs.microsoft.com/azure/key-vault/general/logging)をご覧ください。
+1 つまたは複数のキー コンテナーを作成したら、いつ、どのように、誰によってキー コンテナーがアクセスされるのかを監視するのが一般的です。 Azure Key Vault のログを有効にすることによって、監視を行うことができます。ログを有効にするためのステップバイステップ ガイドについては、[こちら](./logging.md)をご覧ください。
 
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>キー コンテナーの可用性、サービスの待ち時間、または他のパフォーマンス メトリックを監視するにはどうすればよいですか?
 
-サービスのスケーリングを開始すると、キー コンテナーに送信される要求の数が増加します。 それにより要求の待機時間が長くなる可能性があり、極端な場合には要求がスロットルされてサービスのパフォーマンスに影響を与えます。 キー コンテナーのパフォーマンス メトリックを監視し、特定のしきい値についてアラートを受け取ることができます。監視を構成するためのステップバイステップ ガイドについては、[こちら](https://docs.microsoft.com/azure/key-vault/general/alert)をご覧ください。
+サービスのスケーリングを開始すると、キー コンテナーに送信される要求の数が増加します。 それにより要求の待機時間が長くなる可能性があり、極端な場合には要求がスロットルされてサービスのパフォーマンスに影響を与えます。 キー コンテナーのパフォーマンス メトリックを監視し、特定のしきい値についてアラートを受け取ることができます。監視を構成するためのステップバイステップ ガイドについては、[こちら](./alert.md)をご覧ください。
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>アクセス ポリシーを変更できません。どのような方法で有効にできますか。
+アクセス ポリシーを変更するために必要な AAD アクセス許可がユーザーに与えられている必要があります。 この場合、上位の共同作成者ロールをユーザーに与える必要があります。
+
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>"Unknown Policy (不明なポリシー)" というエラーが表示されます。 これはどういう意味ですか。
+[不明] セクションにアクセス ポリシーが表示されることには 2 つの異なる可能性があります。
+* 前のユーザーにアクセスが与えられていた可能性がありますが、何らかの理由でそのユーザーが存在しません。
+* アクセス ポリシーが PowerShell 経由で追加されるとき、サービス プリンシパルではなく、アプリケーション オブジェクト ID に対してアクセス ポリシーが追加されます。
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>キー コンテナー オブジェクトごとにアクセス制御を割り当てるにはどうすればよいですか? 
 
@@ -44,6 +55,8 @@ Azure CLI の `az keyvault set-policy` コマンド、または Azure PowerShell
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>既存のアクセス ポリシーを削除せずに、ARM テンプレートを使用して Key Vault を再デプロイするにはどうすればよいですか?
 
 現在、Key Vault の再デプロイでは、Key Vault のアクセス ポリシーが削除され、ARM テンプレートのアクセス ポリシーに置き換えられます。 Key Vault のアクセス ポリシーに増分オプションはありません。 Key Vault のアクセス ポリシーを保持するには、Key Vault の既存のアクセス ポリシーを読み取り、ARM テンプレートにそれらのポリシーを設定して、アクセスの停止を回避する必要があります。
+
+このシナリオに役立つ可能性があるもう 1 つの選択肢は、アクセス ポリシーの代替として Azure RBAC とロールを利用することです。 Azure RBAC を使用すると、ポリシーを再度指定しなくても、キー コンテナーを再デプロイできます。 このソリューションの詳細は[こちら](./rbac-guide.md)でご覧いただけます。
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>次のエラーの種類に対して推奨されるトラブルシューティングの手順
 

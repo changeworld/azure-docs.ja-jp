@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6daec7658c6db6c18bd198b9aff0b8993f27ac22
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642318"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177249"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイック スタート:Microsoft Genomics サービス経由でワークフローを実行する
 
@@ -36,7 +36,7 @@ Microsoft Genomics アカウントを作成するには、Azure portal の [[Cre
  |**設定**          |  **推奨値**  | **フィールドの説明** |
  |:-------------       |:-------------         |:----------            |
  |サブスクリプション         | お使いのサブスクリプション名|これは、Azure サービスの課金単位です。サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
- |Resource group       | MyResourceGroup       |  リソース グループを使用すると、複数の Azure リソース (Storage アカウント、Genomics アカウントなど) を1 つのグループにまとめて、管理を簡単にできます。 詳細については、「[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)」を参照してください。 有効なリソース グループ名については、「[名前付け規則](/azure/architecture/best-practices/resource-naming)」をご覧ください。 |
+ |Resource group       | MyResourceGroup       |  リソース グループを使用すると、複数の Azure リソース (Storage アカウント、Genomics アカウントなど) を1 つのグループにまとめて、管理を簡単にできます。 詳細については、「[リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。 有効なリソース グループ名については、「[名前付け規則](/azure/architecture/best-practices/resource-naming)」をご覧ください。 |
  |アカウント名         | MyGenomicsAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](/azure/architecture/best-practices/resource-naming)」をご覧ください。 |
  |場所                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
 
@@ -86,7 +86,7 @@ msgen list -f "<full path where you saved the config file>"
 
 ## <a name="create-a-microsoft-azure-storage-account"></a>Microsoft Azure Storage アカウントを作成する 
 Microsoft Genomics サービスでは、Azure Storage アカウントのブロック BLOB として、入力が格納されることを期待します。 また、Azure Storage アカウントにあるユーザー指定コンテナーに、出力ファイルをブロック BLOB として書き込みます。 入力と出力は、さまざまなストレージ アカウントに配置できます。
-お使いのデータが既に Azure Storage アカウントにある場合、Genomics アカウントと同じ場所にそのデータを配置するだけでかまいません。 それ以外の場合は、Microsoft Genomics サービスを実行するときにエグレス料金が発生します。 まだ Azure Storage アカウントを持っていない場合は、アカウントを作成してデータをアップロードする必要があります。 ストレージ アカウントの概要やサービスの提供内容など、Azure Storage アカウントの詳細情報については、[こちら](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)から検索できます。 Azure Storage アカウントを作成するには、Azure portal の [[ストレージ アカウントの作成]](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) に移動します。  
+お使いのデータが既に Azure Storage アカウントにある場合、Genomics アカウントと同じ場所にそのデータを配置するだけでかまいません。 それ以外の場合は、Microsoft Genomics サービスを実行するときにエグレス料金が発生します。 まだ Azure Storage アカウントを持っていない場合は、アカウントを作成してデータをアップロードする必要があります。 ストレージ アカウントの概要やサービスの提供内容など、Azure Storage アカウントの詳細情報については、[こちら](../storage/common/storage-account-create.md)から検索できます。 Azure Storage アカウントを作成するには、Azure portal の [[ストレージ アカウントの作成]](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) に移動します。  
 
 ![ストレージ アカウントの作成ページ](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade1.png "ストレージ アカウントの作成ページ")
 
@@ -98,9 +98,9 @@ Microsoft Genomics サービスでは、Azure Storage アカウントのブロ�
  |Resource group       | MyResourceGroup       |  お使いの Genomics アカウントと同じリソース グループを選択できます。 有効なリソース グループ名については、[名前付けルール](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
  |ストレージ アカウント名         | MyStorageAccount     |一意のアカウント識別子を選択します。 有効な名前については、[名前付けルール](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
  |場所                  | 米国西部 2                  | お使いの Genomics アカウントの場所と同じ場所を使用し、エグレス料金を削減すると共に待ち時間を短縮します。  | 
- |パフォーマンス                  | Standard                   | 既定値は Standard です。 Standard および Premium ストレージ アカウントの詳細については、[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)に関するページを参照してください。    |
+ |パフォーマンス                  | Standard                   | 既定値は Standard です。 Standard および Premium ストレージ アカウントの詳細については、[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)に関するページを参照してください。    |
  |アカウントの種類       | BlobStorage       |  BLOB ストレージでは、汎用的な目的の場合より、2 ～ 5 倍のダウンロードおよびアップロードの高速化が可能です。 |
- |レプリケーション                  | ローカル冗長ストレージ                  | ローカル冗長ストレージでは、お使いのストレージ アカウントが作成されたリージョンのデータセンター内に、データをレプリケートします。 詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)」をご覧ください。    |
+ |レプリケーション                  | ローカル冗長ストレージ                  | ローカル冗長ストレージでは、お使いのストレージ アカウントが作成されたリージョンのデータセンター内に、データをレプリケートします。 詳細については、「[Azure Storage のレプリケーション](../storage/common/storage-redundancy.md)」をご覧ください。    |
  |アクセス層                  | ホット                   | ホット アクセスは、ストレージ アカウント内のオブジェクトへのアクセス頻度が高いことを示します。    |
 
 次に、 **[確認および作成]** を選択してストレージ アカウントを作成します。 Genomics アカウントの作成時と同様に、最上部のメニュー バーにある **[通知]** を選択して、デプロイ プロセスを監視できます。 
@@ -112,12 +112,12 @@ Microsoft Genomics サービスでは、入力ファイルとして paired end �
 [https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz)
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
-ストレージ アカウント内では、入力データ用に 1 つの BLOB コンテナーと、出力データ用に 2 つ目の BLOB コンテナーを作成する必要があります。  入力データをお使いの入力用 BLOB コンテナーにアップロードします。 アップロードを行うために、[Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter)、[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) など、さまざまなツールを使用できます。 
+ストレージ アカウント内では、入力データ用に 1 つの BLOB コンテナーと、出力データ用に 2 つ目の BLOB コンテナーを作成する必要があります。  入力データをお使いの入力用 BLOB コンテナーにアップロードします。 アップロードを行うために、[Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter)、[AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) など、さまざまなツールを使用できます。 
 
 ## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>`msgen` Python クライアントを使用して Microsoft Genomics サービス経由でワークフローを実行する
 
 Microsoft Genomics サービス経由でワークフローを実行するために、*config.txt* ファイルを編集してお使いのデータの入力および出力ストレージ コンテナーを指定します。
-お使いの Genomics アカウントからダウンロードした *config.txt* ファイルを開きます。 ユーザーによる指定が必要なセクションは、サブスクリプション キーと下部にある 6 つの項目、ストレージ アカウント名、入力および出力用のキーとコンテナー名です。 この情報を検索するには、Azure portal 内でお使いのストレージ アカウントの**アクセス キー**に移動するか、Azure Storage Explorer から直接移動します。  
+お使いの Genomics アカウントからダウンロードした *config.txt* ファイルを開きます。 ユーザーによる指定が必要なセクションは、サブスクリプション キーと下部にある 6 つの項目、ストレージ アカウント名、入力および出力用のキーとコンテナー名です。 この情報を検索するには、Azure portal 内でお使いのストレージ アカウントの **アクセス キー** に移動するか、Azure Storage Explorer から直接移動します。  
 
 ![Genomics の構成](./media/quickstart-run-genomics-workflow-portal/genomics-config.PNG "Genomics の構成")
 
@@ -144,4 +144,4 @@ msgen list -f c:\temp\config.txt
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、サンプル入力データを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 Microsoft Genomics サービスで使用できる他の入力 ファイルの種類の詳細については、[一組の FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [複数の FASTQ または BAM](quickstart-input-multiple.md) に関するページをご覧ください。 "Genomics Tutorial.ipynb" ファイルをダウンロードし、[Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) などのノートブック リーダーでファイルを開いて実行することで、[Azure Notebooks の例](https://aka.ms/genomicsnotebook)を使用してこのチュートリアルを調べることもできます。
+この記事では、サンプル入力データを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 Microsoft Genomics サービスで使用できる他の入力 ファイルの種類の詳細については、[一組の FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [複数の FASTQ または BAM](quickstart-input-multiple.md) に関するページをご覧ください。 

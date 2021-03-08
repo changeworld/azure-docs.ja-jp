@@ -1,17 +1,17 @@
 ---
 title: GitHub リポジトリを App Configuration と同期する
 description: GitHub リポジトリを更新するときに、GitHub Actions を使用して App Configuration インスタンスを自動的に更新します。
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1c290032f7a33079b560d3c4cc1fcb9526e70331
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371823"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762145"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>GitHub リポジトリを App Configuration と同期する
 
@@ -20,9 +20,9 @@ ms.locfileid: "87371823"
 &nbsp;&nbsp;&nbsp;&nbsp;•   アプリ全体を再デプロイせずに構成を更新する <br>
 &nbsp;&nbsp;&nbsp;&nbsp;•   Azure App Service や Functions などのサービスとの統合。 
 
-GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)は、GitHub リポジトリの自動化されたプロセスを定義します。 *Azure App Configuration Sync* アクションは、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新をトリガーします。 リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルを使用して、ステップとパラメーターを定義します。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、または分岐するときに構成の更新をトリガーできます。
+GitHub Actions の[ワークフロー](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)は、GitHub リポジトリの自動化されたプロセスを定義します。 *Azure App Configuration Sync* アクションは、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新をトリガーします。 リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルを使用して、ステップとパラメーターを定義します。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、またはブランチするときに構成の更新をトリガーできます。
 
-GitHub の[ドキュメント](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)では、GitHub ワークフローとアクションについて詳細に説明されています。 
+GitHub の[ドキュメント](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions)では、GitHub ワークフローとアクションについて詳細に説明されています。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>リポジトリで GitHub Actions を有効にする
 この GitHub アクションの使用を開始するには、リポジトリにアクセスし、 **[Actions]\(アクション\)** タブを選択します。 **[新しいワークフロー]** 、 **[Set up a workflow yourself]\(ワークフローを自分で設定する\)** の順に選択します。 最後に、マーケットプレース上で "Azure App Configuration Sync" を検索します。
@@ -35,13 +35,13 @@ GitHub の[ドキュメント](https://help.github.com/actions/automating-your-w
 ## <a name="sync-configuration-files-after-a-push"></a>プッシュ後に構成ファイルを同期する
 このアクションは、変更が `appsettings.json` にプッシュされたときに Azure App Configuration ファイルを同期します。 開発者が `appsettings.json` に対する変更をプッシュすると、Azure App Configuration Sync アクションにより、App Configuration インスタンスが新しい値で更新されます。
 
-このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が "*マスター*" ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションは、アクションがトリガーされると実行されるジョブを一覧で示しています。 このアクションは、リポジトリにシークレットとして格納されている接続文字列を使用して、関連するファイルをチェックアウトし、App Configuration インスタンスを更新します。  GitHub でのシークレットの使用の詳細については、暗号化されたシークレットの作成と使用に関する [GitHub の記事](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)を参照してください。
+このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が *main* ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションは、アクションがトリガーされると実行されるジョブを一覧で示しています。 このアクションは、リポジトリにシークレットとして格納されている接続文字列を使用して、関連するファイルをチェックアウトし、App Configuration インスタンスを更新します。  GitHub でのシークレットの使用の詳細については、暗号化されたシークレットの作成と使用に関する [GitHub の記事](https://docs.github.com/en/actions/reference/encrypted-secrets)を参照してください。
 
 ```json
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -68,7 +68,7 @@ jobs:
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -98,7 +98,7 @@ jobs:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
       - 'appsettings2.json'
@@ -127,7 +127,7 @@ jobs:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
 
@@ -153,7 +153,7 @@ jobs:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
 
@@ -177,13 +177,13 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>同期時に動的ラベルを使用する
 次のアクションでは、同期のたびに動的ラベルが挿入されます。これにより、各同期を一意に識別でき、コードの変更を構成の変更にマップできるようになります。
 
-このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が "*マスター*" ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションでは、コミット ハッシュに基づいて構成更新用の一意のラベルを作成するジョブを実行します。 その後ジョブは、新しい値とこの更新用の一意のラベルを使用して、App Configuration インスタンスを更新します。
+このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が *main* ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションでは、コミット ハッシュに基づいて構成更新用の一意のラベルを作成するジョブを実行します。 その後ジョブは、新しい値とこの更新用の一意のラベルを使用して、App Configuration インスタンスを更新します。
 
 ```json
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -219,7 +219,7 @@ appsettings.json に、厳格な同期を実行するように GitHub アクシ�
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
       - 'secretreferences.json'
@@ -272,7 +272,7 @@ jobs:
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -300,7 +300,7 @@ depth を 2 に指定した場合、上記の例では次のキーと値のペ�
 | Object:Inner | {"InnerKey":"InnerValue"} |
 
 ## <a name="understand-action-inputs"></a>アクションの入力について
-入力パラメーターは、実行時にアクションによって使用されるデータを指定します。  App Configuration Sync で受け入れられる入力パラメーターと、それぞれの予期される値を次の表に示します。  GitHub Actions でのアクション入力の詳細については、GitHub の[ドキュメント](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs)を参照してください。
+入力パラメーターは、実行時にアクションによって使用されるデータを指定します。  App Configuration Sync で受け入れられる入力パラメーターと、それぞれの予期される値を次の表に示します。  GitHub Actions でのアクション入力の詳細については、GitHub の[ドキュメント](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs)を参照してください。
 
 > [!Note]
 > 入力 ID では大文字と小文字は区別されません。

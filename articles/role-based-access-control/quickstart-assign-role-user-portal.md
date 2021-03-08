@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362018"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559311"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
 
@@ -58,7 +58,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="grant-access"></a>アクセス権の付与
 
-Azure RBAC でアクセス権を付与するには、ロールの割り当てを作成します。
+Azure RBAC でアクセス権を付与するには、Azure ロールを割り当てます。
 
 1. **[リソース グループ]** の一覧で、新しい **rbac-resource-group** リソース グループをクリックします。
 
@@ -82,7 +82,7 @@ Azure RBAC でアクセス権を付与するには、ロールの割り当てを
 
 1. **[選択]** 一覧で、自分または別のユーザーを選択します。
 
-1. **[保存]** をクリックして、ロールの割り当てを作成します。
+1. **[保存]** をクリックしてロールを割り当てます。
 
    しばらくすると、rbac-resource-group リソース グループ スコープにおける仮想マシン共同作成者ロールがユーザーに割り当てられます。
 

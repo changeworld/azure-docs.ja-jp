@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 233cc5330096b9b6419c8024205a41646ddd9519
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682962"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938479"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>他のアカウントから Azure サブスクリプションの課金所有権を取得する
 
@@ -21,14 +21,22 @@ ms.locfileid: "88682962"
 
 この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-for-access)。
 
-課金所有権を要求するには、**請求書セクション所有者**または**請求書セクション共同作成者**であることが必要です。 詳細については、[請求書セクションのロールとタスク](understand-mca-roles.md#invoice-section-roles-and-tasks)に関するページを参照してください。
+課金所有権を要求するには、**請求書セクション所有者** または **請求書セクション共同作成者** であることが必要です。 詳細については、[請求書セクションのロールとタスク](understand-mca-roles.md#invoice-section-roles-and-tasks)に関するページを参照してください。
+
+課金所有権を要求するユーザーには、次のいずれかのロールが必要です。
+
+- エンタープライズ Microsoft 顧客契約の場合、ユーザーは課金所有者である必要があります。
+- マイクロソフト エンタープライズ契約の場合、ユーザーはアカウント オーナーである必要があります。
+- Microsoft オンライン サービス プログラムの課金アカウントの場合、ユーザーはアカウント管理者である必要があります。
+
+詳細については、[Azure portal での請求先アカウントの表示](view-all-accounts.md)に関するページを参照してください。
 
 ## <a name="request-billing-ownership"></a>課金所有権を要求する
 
 1. Microsoft 顧客契約の課金アカウントの請求書セクション所有者または共同作成者として [Azure portal](https://portal.azure.com) にサインインします。
 1. "**コスト管理 + 請求**" を検索します。  
     ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. サブスクリプション利用の支払いに使用する課金アカウントを [課金スコープ] ページで選択します。 課金アカウントの種類は、**Microsoft 顧客契約**である必要があります。  
+1. 課金スコープ ページで **[課金スコープ]** を選択し、課金アカウントを選択します。このアカウントが、サブスクリプション利用の支払いに使用されます。 課金アカウントの種類は、**Microsoft 顧客契約** である必要があります。  
     [![ポータルでコスト管理と請求を検索しているところを示すスクリーンショット](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
     > ユーザーが最近アクセスした課金スコープは、Azure portal によって記憶されます。次回 [コストの管理と請求] ページにアクセスすると、そのスコープが表示されます。 過去に [コストの管理と請求] にアクセスしたことがなければ、課金スコープ ページは表示されません。 その場合は、[適切なスコープ](#check-for-access)になっていることを確認してください。 適切でない場合は、[スコープを切り替え](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)て Microsoft 顧客契約の課金アカウントを選択します。
@@ -42,7 +50,7 @@ ms.locfileid: "88682962"
 1. 一覧から [請求書セクション] を選択します。 サブスクリプションの所有権を引き継ぐと、その使用は、課金プロファイルの請求書のこのセクションに割り当てられます。
 1. 左下で **[譲渡要求]** を選択し、 **[新しい要求を追加]** を選択します。  
     [![移転リクエストの選択を示すスクリーンショット](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. 要求している課金所有権を持つユーザーの電子メール アドレスを入力します。 ユーザーは、Microsoft オンライン サービス プログラムの課金アカウントのアカウント管理者またはエンタープライズ契約のアカウント所有者である必要があります。 詳細については、[Azure portal での請求先アカウントの表示](view-all-accounts.md)に関するページを参照してください。 **[譲渡要求を送信します]** を選択します。  
+1. 要求している課金所有権を持つユーザーの電子メール アドレスを入力します。 **[譲渡要求を送信します]** を選択します。  
     [![移転リクエストの送信を示すスクリーンショット](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. ユーザーは、譲渡要求を確認する手順を示す電子メールを受信します。  
     ![譲渡要求電子メールのレビューを示すスクリーンショット](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -68,6 +76,7 @@ ms.locfileid: "88682962"
 1. 譲渡要求が送信された [請求書セクション] を一覧から選択します。
 1. 左下から **[Transfer requests]** (譲渡要求) を選択します。 譲渡要求ページには、次の情報が表示されます。  
     [![移転リクエストの一覧を示すスクリーンショット](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |列|定義|
    |---------|---------|
    |要求日|譲渡要求が送信された日付|
@@ -152,7 +161,7 @@ Azure Marketplace 製品は、それぞれのサブスクリプションとと�
 
 ### <a name="access-to-azure-services"></a>Azure サービスへのアクセス
 
-移転中、(Azure RBAC (ロールベースのアクセス制御))[../role-based-access-control/overview.md] を使用して割り当てられた既存のユーザー、グループ、またはサービス プリンシパルのアクセスは影響を受けません。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用して割り当てられた既存のユーザー、グループ、またはサービス プリンシパルへのアクセスは、移転中に影響を受けることはありません。
 
 ### <a name="azure-support-plan"></a>Azure サポート プラン
 

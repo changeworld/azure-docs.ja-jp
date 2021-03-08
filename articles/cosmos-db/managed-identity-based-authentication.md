@@ -3,19 +3,21 @@ title: システム割り当てマネージド ID を使用して Azure Cosmos D
 description: Azure Cosmos DB のキーにアクセスするように Azure Active Directory (Azure AD) システム割り当てマネージド ID (マネージド サービス ID) を構成する方法について説明します。
 author: j-patrick
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997729"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927403"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、[マネージド ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) を使用して Azure Cosmos DB キーにアクセスするための、"*堅牢でキー ローテーションに依存しない*" ソリューションを設定します。 この記事の例では Azure Functions を使用しますが、マネージド ID をサポートする任意のサービスを使用できます。 
 
@@ -27,7 +29,7 @@ ms.locfileid: "88997729"
 
 このステップでは、関数アプリにシステム割り当てマネージド ID を割り当てます。
 
-1. [Azure portal](https://portal.azure.com/) で、**Azure 関数**ウィンドウを開き、関数アプリに移動します。 
+1. [Azure portal](https://portal.azure.com/) で、**Azure 関数** ウィンドウを開き、関数アプリに移動します。 
 
 1. **[プラットフォーム機能]**  >  **[ID]** タブの順に開きます。 
 
@@ -47,12 +49,12 @@ ms.locfileid: "88997729"
 |[Cosmos DB アカウントの閲覧者ロール](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Cosmos DB アカウントのデータを読み取ることができます。 読み取りキーの取得を許可します。 |
 
 > [!IMPORTANT]
-> Azure Cosmos DB でのロールベースのアクセス制御のサポートは、コントロール プレーン操作にのみ適用されます。 データ プレーン操作は、マスター キーまたはリソース トークンを使用してセキュリティで保護されています。 詳細については、「[データへのアクセスをセキュリティで保護する](secure-access-to-data.md)」の記事を参照してください。
+> Azure Cosmos DB でのロールベースのアクセス制御のサポートは、コントロール プレーン操作にのみ適用されます。 データ プレーン操作は、主キーまたはリソース トークンを使用してセキュリティで保護されています。 詳細については、「[データへのアクセスをセキュリティで保護する](secure-access-to-data.md)」の記事を参照してください。
 
 > [!TIP] 
-> ロールを割り当てるときは、必要なアクセス権のみを割り当ててください。 サービスがデータの読み取りのみを必要とする場合は、マネージド ID に **Cosmos DB アカウントの閲覧者**ロールを割り当てます。 最小特権アクセスの重要性についての詳細は、「[特権アカウントの公開時間を短縮する](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)」の記事を参照してください。
+> ロールを割り当てるときは、必要なアクセス権のみを割り当ててください。 サービスがデータの読み取りのみを必要とする場合は、マネージド ID に **Cosmos DB アカウントの閲覧者** ロールを割り当てます。 最小特権アクセスの重要性についての詳細は、「[特権アカウントの公開時間を短縮する](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)」の記事を参照してください。
 
-このシナリオでは、関数アプリによって水族館の気温が読み取られ、Azure Cosmos DB のコンテナーにそのデータが書き戻されます。 関数アプリによってデータを書き込む必要があるため、**DocumentDB アカウント共同作成者**ロールを割り当てる必要があります。 
+このシナリオでは、関数アプリによって水族館の気温が読み取られ、Azure Cosmos DB のコンテナーにそのデータが書き戻されます。 関数アプリによってデータを書き込む必要があるため、**DocumentDB アカウント共同作成者** ロールを割り当てる必要があります。 
 
 ### <a name="assign-the-role-using-azure-portal"></a>Azure portal を使用してロールを割り当てる
 
@@ -89,7 +91,7 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>プログラムを使用して Azure Cosmos DB キーにアクセスする
 
-これで、Azure Cosmos DB のアクセス許可で **DocumentDB アカウント共同作成者**ロールが割り当てられた、システム割り当てマネージド ID を持つ関数アプリが作成されました。 次の関数アプリ コードでは、Azure Cosmos DB キーが取得され、CosmosClient オブジェクトが作成され、水族館の気温が取得されて Azure Cosmos DB に保存されます。
+これで、Azure Cosmos DB のアクセス許可で **DocumentDB アカウント共同作成者** ロールが割り当てられた、システム割り当てマネージド ID を持つ関数アプリが作成されました。 次の関数アプリ コードでは、Azure Cosmos DB キーが取得され、CosmosClient オブジェクトが作成され、水族館の気温が取得されて Azure Cosmos DB に保存されます。
 
 このサンプルでは、[List Keys API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) を使用して、Azure Cosmos DB アカウント キーにアクセスします。
 
@@ -128,7 +130,7 @@ namespace Monitor
 }
 ```
 
-[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ライブラリを使用して、システム割り当てマネージド ID トークンを取得します。 トークンを取得する他の方法と、`Microsoft.Azure.Service.AppAuthentication` ライブラリの詳細については、[サービス間認証](../key-vault/general/service-to-service-authentication.md)に関する記事を参照してください。
+[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ライブラリを使用して、システム割り当てマネージド ID トークンを取得します。 トークンを取得する他の方法と、`Microsoft.Azure.Service.AppAuthentication` ライブラリの詳細については、[サービス間認証](/dotnet/api/overview/azure/service-to-service-authentication)に関する記事を参照してください。
 
 
 ```csharp
@@ -212,7 +214,7 @@ namespace Monitor
 }
 ```
 
-これで、[関数アプリをデプロイする](../azure-functions/functions-create-first-function-vs-code.md)準備が整いました。
+これで、[関数アプリをデプロイする](../azure-functions/create-first-function-vs-code-csharp.md)準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ
 

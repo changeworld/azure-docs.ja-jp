@@ -1,14 +1,16 @@
 ---
 title: 'チュートリアル: 機械学習エンティティを使用して構造化データを抽出する - LUIS'
 description: 機械学習エンティティを使用して発話から構造化データを抽出します。 抽出精度を高めるには、特徴量を含むサブエンティティを追加します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aa2783abe86b90a907510dec8d7eb40162820ad5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045605"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025261"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>チュートリアル:Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する
 
@@ -70,7 +72,7 @@ ms.locfileid: "86045605"
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    最初に左端のテキスト `pickup` の直前を選択し (#1)、次に右端のテキスト `anchovies` の直後に移動します (#2 - これでラベル付けプロセスは終了です)。 ポップアップ メニューが表示されます。 ポップアップ ボックスに、エンティティの名前として `Order` を入力します (#3)。 次に、一覧から `Order Create new entity` を選択します (#4)。
+    カーソルをクリックし、最初のサンプル意図のテキストの上にドラッグします。 表示されたメニューで、エンティティの名前として `Order` を入力します。 その後、一覧から `Order Create new entity` を選択します。
 
     ![完全な注文のテキストの先頭と末尾にラベルを付る](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
@@ -79,12 +81,12 @@ ms.locfileid: "86045605"
 
 1. **[Choose an entity type]\(エンティティ型の選択\)** ボックスで、 **[Add Structure]\(構造の追加\)** を選択し、 **[次へ]** を選択します。 構造は、サイズや数量などのサブエンティティを追加するために必要です。
 
-    ![エンティティに構造を追加する](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
+    ![スクリーンショットは、[構造の追加] オプションがオンになっている、[エンティティ型の選択] ウィンドウを示しています。](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. **[Add subentities (optional)]\(サブエンティティの追加 (省略可能)\)** ボックスで、`Order` 行の **+** を選択し、次に、`Size` と `Quantity` をサブエンティティとして追加してから、 **[作成]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![エンティティに構造を追加する](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
+    > ![スクリーンショットは、サブエンティティが強調表示されている、サブエンティティの追加 (省略可能) ウィンドウを示しています。](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
 ## <a name="edit-subentities-to-improve-extraction"></a>サブエンティティを編集して抽出を改善する
 
@@ -121,7 +123,7 @@ ms.locfileid: "86045605"
 
 
     > [!div class="mx-imgBorder"]
-    > ![エンティティに構造を追加する](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
+    > ![スクリーンショットは、[SizeList] ウィンドウと、[XLarge] が選択されている [リスト項目] を示しています。](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
 ### <a name="add-feature-of-sizelist-entity"></a>SizeList エンティティの特徴量を追加する
 
@@ -160,7 +162,7 @@ ms.locfileid: "86045605"
 **Order** エンティティに関するエンティティ詳細ページで、 **@ SizeList** 特徴量と **@ number** 特徴量の両方に対して、アスタリスク `*` を選択します。 アスタリスクは、機能名と同じラベルに表示されます。
 
 > [!div class="mx-imgBorder"]
-> ![エンティティに構造を追加する](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
+> ![スクリーンショットは、アスタリスクが付いた @SizeList 機能と、[必須] の警告を示しています。](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
 <a name="label-text-as-entities-in-example-utterances"></a>
 <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
@@ -200,7 +202,7 @@ ms.locfileid: "86045605"
 1. 予測をラベル付きエンティティに変更するには、同じ行にあるチェック マークを選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![エンティティで予測される新しい発話の例の部分的なスクリーンショット](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
+    > ![スクリーンショットは、チェックマークが強調表示されている発話例を示しています。](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
     この時点で、機械学習エンティティは新しい発話例内でエンティティを見つけることができているため、正常に機能しています。 発話の例を追加したとき、エンティティが正しく予測されない場合は、エンティティとサブエンティティにラベルを付けます。 エンティティが正しく予測されている場合は、必ず予測を確定してください。
 
@@ -249,7 +251,7 @@ ms.locfileid: "86045605"
 
     `2 small cheese pizzas for pickup`
 
-    最後の querystring パラメーターは `query` です。これは発話の**クエリ**です。
+    最後の querystring パラメーターは `query` です。これは発話の **クエリ** です。
 
     ```json
     {
@@ -295,7 +297,7 @@ ms.locfileid: "86045605"
 
 ## <a name="related-information"></a>関連情報
 
-* [チュートリアル - 意図](luis-quickstart-intents-only.md)
+* [チュートリアル - 意図](./tutorial-intents-only.md)
 * [概念 - エンティティ](luis-concept-entity-types.md)の概念情報
 * [概念 - 機能](luis-concept-feature.md)の概念情報
 * [トレーニング方法](luis-how-to-train.md)
@@ -307,4 +309,4 @@ ms.locfileid: "86045605"
 このチュートリアルでは、アプリで機械学習エンティティを使用して、ユーザーの発話の意図を見つけ、その発話から詳細を抽出します。 機械学習エンティティを使用すると、エンティティを詳細に分解できます。
 
 > [!div class="nextstepaction"]
-> [事前構築済みの KeyPhrase エンティティを追加する](luis-quickstart-intent-and-key-phrase.md)
+> [事前構築済みの KeyPhrase エンティティを追加する](./luis-reference-prebuilt-keyphrase.md)

@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery の 2 つのリージョン間で仮想ネットワークをマッピングする
 description: Azure Site Recovery を使用した Azure VM ディザスター リカバリーのための 2 つの Azure リージョン間での仮想ネットワークのマッピングについて説明します。
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: mayg
-ms.openlocfilehash: 11cc71a05fb95453553223dcb34839e8a5fc6a3a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130434"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811624"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNet のネットワーク マッピングと IP アドレス指定を設定する
 
@@ -85,7 +85,7 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 **ターゲット ネットワーク** | **詳細**
 --- | ---
 ターゲット ネットワークがフェールオーバー VNet の場合 | - ターゲット IP アドレスは静的で、同じ IP アドレスになります。 <br/><br/>  - 同じ IP アドレスが既に割り当てられている場合、IP アドレスはサブネット範囲の最後で次に利用できる IP になります。 例: ソース IP アドレスが 10.0.0.19 で、フェールオーバー ネットワークで範囲 10.0.0.0/24 が使用される場合、ターゲット VM に対して割り当てられる次の IP アドレスは 10.0.0.254 です。
-ターゲット ネットワークがフェールオーバー VNet ではない場合 | - ターゲット IP アドレスは静的で、同じ IP アドレスになります。<br/><br/>  - 同じ IP アドレスが既に割り当てられている場合、IP アドレスはサブネット範囲の最後で次に利用できる IP になります。<br/><br/> 例: ソースの静的 IP アドレスが 10.0.0.19 で、フェールオーバーがフェールオーバー ネットワークではないネットワーク上で行われる場合 (範囲は 10.0.0.0/24)、ターゲットの静的 IP アドレスは 10.0.0.0.19 (これが使用可能な場合) となり、使用可能でない場合は 10.0.0.254 となります。
+ターゲット ネットワークがフェールオーバー VNet ではない場合 | - ターゲット IP アドレスは静的で、同じ IP アドレスになります。<br/><br/>  - 同じ IP アドレスが既に割り当てられている場合、IP アドレスはサブネット範囲の最後で次に利用できる IP になります。<br/><br/> 次に例を示します。ソースの静的 IP アドレスが 10.0.0.19 で、フェールオーバーがフェールオーバー ネットワークではないネットワーク上で行われる場合 (範囲は 10.0.0.0/24)、ターゲットの静的 IP アドレスは 10.0.0.19 (これが使用可能な場合) となり、使用可能でない場合は 10.0.0.254 となります。
 
 - フェールオーバー VNet は、ディザスター リカバリーの設定時に選択するターゲット ネットワークです。
 - テスト フェールオーバーには必ず非運用環境のネットワークを使用することをお勧めします。

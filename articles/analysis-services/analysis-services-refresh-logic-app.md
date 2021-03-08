@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552239"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019088"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps を使用した更新
 
@@ -27,7 +27,7 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 ## <a name="design-the-logic-app"></a>ロジック アプリを設計する
 
 > [!IMPORTANT]
-> 次の例では、Azure Analysis Services ファイアウォールが無効になっていることを前提としています。 ファイアウォールが有効になっている場合は、要求イニシエーターのパブリック IP アドレスが、Azure Analysis Services ファイアウォールでホワイトリストに登録されている必要があります。 リージョンごとの Azure Logic Apps の IP 範囲の詳細については、「[Azure Logic Apps の制限と構成情報](../logic-apps/logic-apps-limits-and-config.md#configuration)」を参照してください。
+> 次の例では、Azure Analysis Services ファイアウォールが無効になっていることを前提としています。 ファイアウォールが有効になっている場合は、要求イニシエーターのパブリック IP アドレスが、Azure Analysis Services ファイアウォールで許可リストに追加されている必要があります。 リージョンごとの Azure Logic Apps の IP 範囲の詳細については、「[Azure Logic Apps の制限と構成情報](../logic-apps/logic-apps-limits-and-config.md#configuration)」を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -53,9 +53,9 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 
 2. 新しいステップを追加し、**HTTP** を検索します。  
 
-   ![HTTP アクティビティを追加する](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![[アクションを選択してください] セクションのスクリーンショット。[HTTP] タイルが選択されています。](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![HTTP アクティビティを追加する](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![[HTTP] ウィンドウのスクリーンショット。[HTTP - HTTP] タイルが選択されています。](./media/analysis-services-async-refresh-logic-app/10.png)
 
 3. **[HTTP]** を選択してこのアクションを追加します。
 
@@ -98,15 +98,15 @@ Data Factory などのオーケストレーション ツールを使用してモ
 
 上記の例を使用して、最初のアクティビティを削除して、それを**スケジュール**アクティビティに置き換えます。
 
-![スケジュール アクティビティ](./media/analysis-services-async-refresh-logic-app/12.png)
+![[Logic Apps] ページのスクリーンショット。"スケジュール" タイルが選択されています。](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![スケジュール アクティビティ](./media/analysis-services-async-refresh-logic-app/13.png)
+![[トリガー] ページのスクリーンショット。](./media/analysis-services-async-refresh-logic-app/13.png)
 
 この例では**繰り返し**を使用します。
 
 アクティビティを追加したら、間隔と頻度を構成してから、新しいパラメーターを追加して **[設定時刻 (時間)]** を選択します。
 
-![スケジュール アクティビティ](./media/analysis-services-async-refresh-logic-app/16.png)
+![[繰り返し] セクションのスクリーンショット。[設定時刻 (時間)] パラメーターが選択されています。](./media/analysis-services-async-refresh-logic-app/16.png)
 
 必要な時間を選択します。
 
@@ -117,4 +117,4 @@ Data Factory などのオーケストレーション ツールを使用してモ
 ## <a name="next-steps"></a>次のステップ
 
 [サンプル](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

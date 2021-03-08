@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - VM テンプレートを使用して Azure に仮想マシンを作成する
 description: CloudSimple プライベート クラウドの VMware インフラストラクチャ上の VM テンプレートを使用して Azure に仮想マシンを作成する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847154"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898761"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>VMware インフラストラクチャ上の VM テンプレートを使用して Azure に仮想マシンを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "85847154"
 
 1. **[すべてのサービス]** を選択します。
 
-2. **CloudSimple 仮想マシン**を検索します。
+2. **CloudSimple 仮想マシン** を検索します。
 
 3. **[追加]** をクリックします。
 
@@ -86,7 +86,7 @@ ms.locfileid: "85847154"
 
 1. **[すべてのサービス]** を選択します。
 
-2. **CloudSimple 仮想マシン**を検索します。
+2. **CloudSimple 仮想マシン** を検索します。
 
 3. プライベート クラウドが作成された場所を選択します。
 

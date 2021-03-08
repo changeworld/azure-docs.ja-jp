@@ -3,17 +3,19 @@ title: テンプレートを使用した Web アプリのデプロイ - Azure Co
 description: Azure Resource Manager テンプレートを使用して、Azure Cosmos アカウント、Azure App Service Web Apps、サンプル Web アプリケーションをデプロイする方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027748"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333581"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して、Azure Cosmos DB と Azure App Service および GitHub の Web アプリをデプロイする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 このチュートリアルでは、最初の実行で Azure Cosmos DB に接続する Web アプリケーションを "ノー タッチで" デプロイする方法について説明します。Azure Cosmos DB の接続情報を切り取って `appsettings.json` に貼り付けたり、Azure portal で Azure App Services のアプリケーション設定に貼り付ける必要はありません。 これらの操作はすべて、Azure Resource Manager テンプレートを使用して、1 回の操作で行われます。 この例では、[Web アプリのチュートリアル](sql-api-dotnet-application.md)の [Azure Cosmos DB ToDo サンプル](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)をデプロイします。
 
@@ -98,7 +100,7 @@ Azure portal で、デプロイ先のサブスクリプションを選択し、�
 
 まず、アプリケーションでは、ASP.NET MVC Web アプリケーションの `Startup` クラスで、Cosmos DB エンドポイントとキーを要求する必要があります。 [Cosmos DB To Do サンプル](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)はローカルで実行でき、お客様が appsettings.json に接続情報を入力できます。 しかし、デプロイする場合、このファイルはアプリと共にデプロイされます。 赤で囲まれた以下の行で appsettings.json の設定にアクセスできない場合は、Azure App Service のアプリケーション設定から試行されます。
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="Startup":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="databaseName、containerName、account、key など、いくつかの文字列変数が赤でマークされているメソッドを示すスクリーンショット。":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>特殊な Azure リソース管理関数の使用
 

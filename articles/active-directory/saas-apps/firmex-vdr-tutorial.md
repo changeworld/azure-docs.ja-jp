@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: ab480dd8dae00cd48811473a7b335291fb6300eb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6dbd39b5c56192ad2ca957c5500338b50e8c8963
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555020"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453386"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Firmex VDR の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555020"
 * ユーザーが自分の Azure AD アカウントを使用して Firmex VDR に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Firmex VDR では、**SP および IDP** Initiated SSO がサポートされます
+* Firmex VDR では、 **SP および IDP** Initiated SSO がサポートされます
 
-* Firmex を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Firmex を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-firmex-vdr-from-the-gallery"></a>ギャラリーからの Firmex VDR の追加
 
@@ -51,7 +51,7 @@ Azure AD への Firmex VDR の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Firmex VDR**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Firmex VDR** 」と入力します。
 1. 結果のパネルから **[Firmex VDR]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -160,7 +160,7 @@ SSO の実装には数分かかります。 Firmex サポートがサイトの S
 
 ### <a name="step-2---contact-firmex-support-with-your-domains"></a>手順 2 - ドメインを Firmex サポートに連絡する
 
-[Firmex サポート チーム](mailto:support@firmex.com)にメールを送信するか、1888 688 4042 x.11 に電話して、Firmex サポートと連絡を取ります。 ご自分のドメイン情報を伝えてください。 Firmex サポートによって、**要求されたドメイン**として、ご使用の VDR にドメインが追加されます。 これで、管理者が SSO を構成できます。
+[Firmex サポート チーム](mailto:support@firmex.com)にメールを送信するか、1888 688 4042 x.11 に電話して、Firmex サポートと連絡を取ります。 ご自分のドメイン情報を伝えてください。 Firmex サポートによって、 **要求されたドメイン** として、ご使用の VDR にドメインが追加されます。 これで、管理者が SSO を構成できます。
 
 警告:要求されたドメインをサイト管理者が構成するまで、自社のユーザーは VDR にログインできません。 会社以外のユーザー (つまり、ゲスト ユーザー) は、引き続きメールとパスワードを使用してログインできます。 構成には数分かかります。
 
@@ -178,9 +178,9 @@ SSO の実装には数分かかります。 Firmex サポートがサイトの S
 
     a. **[エンティティ ID]** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    b. **[Identity Provider URL]\(ID プロバイダーの URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[Identity Provider URL]\(ID プロバイダーの URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    c. **[Public Key Certificate]\(公開キー証明書\)** - SAML メッセージは、認証を目的として発行者によってデジタル署名される場合があります。 メッセージの署名を検証するために、メッセージの受信者は、発行者のものだとわかっている公開キーを使用します。 同様に、メッセージを暗号化するには、最終的な受信者のものである公開暗号化キーを発行者が知っている必要があります。 署名と暗号化のどちらの場面でも、信頼された公開キーを事前に共有する必要があります。  これは、**フェデレーション メタデータ XML** からの **X509Certificate** です
+    c. **[Public Key Certificate]\(公開キー証明書\)** - SAML メッセージは、認証を目的として発行者によってデジタル署名される場合があります。 メッセージの署名を検証するために、メッセージの受信者は、発行者のものだとわかっている公開キーを使用します。 同様に、メッセージを暗号化するには、最終的な受信者のものである公開暗号化キーを発行者が知っている必要があります。 署名と暗号化のどちらの場面でも、信頼された公開キーを事前に共有する必要があります。  これは、 **フェデレーション メタデータ XML** からの **X509Certificate** です
 
     d. **[Save]\(保存\)** をクリックして、SSO 構成を完了します。 変更はすぐに有効になります。
 
@@ -194,18 +194,18 @@ SSO の実装には数分かかります。 Firmex サポートがサイトの S
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルの [Firmex VDR] タイルをクリックすると、SSO を設定した Firmex VDR に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルの [Firmex VDR] タイルをクリックすると、SSO を設定した Firmex VDR に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD を使用して Firmex VDR を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Firmex を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Firmex を保護する方法](/cloud-app-security/proxy-intro-aad)

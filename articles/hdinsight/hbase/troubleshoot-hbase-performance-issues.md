@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache HBase のパフォーマンスに関する問題のトラブルシューティング
 description: Azure HDInsight で最適なパフォーマンスを得るためのさまざまな Apache HBase パフォーマンス チューニング ガイドラインおよびヒント。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 466fac524601e2d569bfa0ccf90179fe9419210d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75887157"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942897"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight での Apache HBase のパフォーマンスに関する問題のトラブルシューティング
 
@@ -124,4 +121,4 @@ HDInsight HBase では、HFiles はリモート ストレージに格納され�
 
 - [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる。 これは、カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウントです。 Azure コミュニティを適切なリソース (回答、サポート、エキスパート) と結び付けます。
 
-- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 Microsoft Azure サブスクリプションには、サブスクリプション管理と課金サポートへのアクセスが含まれています。テクニカル サポートは、いずれかの [Azure サポート プラン](https://azure.microsoft.com/support/plans/)によって提供されます。
+- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 Microsoft Azure サブスクリプションには、サブスクリプション管理と課金サポートへのアクセスが含まれています。テクニカル サポートは、いずれかの [Azure サポート プラン](https://azure.microsoft.com/support/plans/)によって提供されます。

@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753687"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90983660"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>仮想 WAN ハブ内で Azure Firewall を構成する
 
@@ -32,20 +32,20 @@ ms.locfileid: "84753687"
 
 仮想 WAN の **[概要]** ページには、仮想ハブとセキュリティ保護付きハブの一覧が表示されます。 次の図は、セキュリティ保護付きハブがない仮想 WAN を示しています。
 
-[ ![概要](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
+[ ![スクリーンショットには、仮想ハブの一覧を含む仮想 WAN の [概要] ページが示されています。](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
 
 ## <a name="convert-to-secured-hub"></a>セキュリティ保護付きハブへの変換
 
 1. 仮想 WAN の **[概要]** ページで、セキュリティ保護付きハブに変換するハブを選択します。 仮想ハブ ページに、Azure Firewall をこのハブにデプロイするための 2 つのオプションが表示されます。 どちらかのオプションを選択します。
 
-   [ ![セキュリティ](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
+   [ ![スクリーンショットには、仮想 WAN の [概要] ページが示されています。ここで、[Convert to secure hub]\(セキュリティ保護付きハブに変換\) または [Azure Firewall] を選択できます。](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
 
 1. いずれかのオプションを選択すると、 **[Convert to secure hub]\(セキュリティ保護付きハブに変換\)** ページが表示されます。 変換するハブを選択し、ページの下部にある **[次へ:Azure Firewall]** を選択します。
 
    [ ![ハブを選択](./media/howto-firewall/select-hub.png)](./media/howto-firewall/select-hub.png#lightbox)
 1. ワークフローが完了したら、 **[確認]** を選択します。
 
-   [ ![確認](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
+   [ ![スクリーンショットには、[確認] が選択された [Convert to secure hub]\(セキュリティ保護付きハブに変換\) ペインが示されています。](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
 
 1. ハブがセキュリティ保護付きハブに変換されたら、仮想 WAN の **[概要]** ページで確認できます。
 

@@ -10,12 +10,12 @@ metadata:
   author: rohinkoul
   ms.author: rohink
   ms.date: 09/20/2019
-  ms.openlocfilehash: 40a502efb457ba9ac5497ca6fd6f241b40cca94e
-  ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+  ms.openlocfilehash: 57d6dfe02a92da48525626719b31bab5b8d1ec22
+  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/28/2020
-  ms.locfileid: "89077655"
+  ms.lasthandoff: 11/20/2020
+  ms.locfileid: "94968487"
 landingContent:
 - title: Azure DNS について
   linkLists:
@@ -50,7 +50,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Azure portal を使用して Azure DNS プライベート ゾーンを作成する
-      url: private-dns-portal.md
+      url: ./private-dns-getstarted-portal.md
 - title: エイリアス レコードの使用
   linkLists:
   - linkListType: overview

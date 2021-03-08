@@ -1,27 +1,25 @@
 ---
 title: Windows Azure VM のアーキテクチャのワークフロー | Microsoft Docs
 description: この記事では、サービスをデプロイするときのワークフロー プロセスの概要を示します。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 04/08/2019
-ms.author: kwill
-ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: bda066dd50d2f95776981eafc01e3ddd04d33e54
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71162157"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741062"
 ---
-#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure クラシック VM のアーキテクチャのワークフロー 
+# <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure クラシック VM のアーキテクチャのワークフロー 
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 この記事では、仮想マシンなどの Azure リソースをデプロイまたは更新するときに発生するワークフロー プロセスの概要を示します。 
 
 > [!NOTE]
@@ -29,7 +27,7 @@ ms.locfileid: "71162157"
 
 次の図は、Azure リソースのアーキテクチャを表しています。
 
-![Azure のワークフロー](./media/cloud-services-workflow-process/workflow.jpg)
+:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="<alt Azure ワークフローに関するイメージ>":::
 
 ## <a name="workflow-basics"></a>ワークフローの基本
    
@@ -54,7 +52,7 @@ ms.locfileid: "71162157"
 2. すべての子プロセスの監視。
 3. ロール ホスト プロセスでの StatusCheck イベントの生成。
 
-**F**. ロールが完全な IIS Web ロールとして構成されている場合、IISConfigurator が実行されます (SDK 1.2 HWC ロールの場合は実行されません)。 以下の処理を担当します。
+**F**. ロールが完全な IIS Web ロールとして構成されている場合は、IISConfigurator が実行されます。 以下の処理を担当します。
 
 1. 標準 IIS サービスの開始
 2. Web 構成での書き換えモジュールの構成
@@ -69,11 +67,9 @@ ms.locfileid: "71162157"
 
 **I**. WaWorkerHost は、通常の worker ロール用の標準ホスト プロセスです。 このホスト プロセスでは、ロールのすべての DLL と、OnStart や Run などのエントリ ポイントのコードがホストされています。
 
-**J**. WaWebHost は、SDK 1.2 と互換性のある Hostable Web Core (HWC) を使用するように Web ロールが構成されている場合の、Web ロールに対する標準ホスト プロセスです。 ロールでは、サービス定義 (.csdef) から要素を削除することによって、HWC モードを有効にできます。 このモードでは、サービスのすべてのコードと DLL が、WaWebHost プロセスから実行されます。 IIS (w3wp) は使用されず、IIS は WaWebHost.exe の内部でホストされているため、IIS マネージャーでは AppPool は構成されません。
+**J**. WaIISHost は、完全な IIS を使用する Web ロールに対するロール エントリ ポイント コード用のホスト プロセスです。 このプロセスでは、**RoleEntryPoint** クラスを使用する DLL で最初に見つかったものが読み込まれ、このクラスからコードが実行されます (OnStart、Run、OnStop)。 RoleEntryPoint クラス内で作成されるすべての **RoleEnvironment** イベント (StatusCheck や Changed など) は、このプロセスで発生します。
 
-**K**. WaIISHost は、完全な IIS を使用する Web ロールに対するロール エントリ ポイント コード用のホスト プロセスです。 このプロセスでは、**RoleEntryPoint** クラスを使用する DLL で最初に見つかったものが読み込まれ、このクラスからコードが実行されます (OnStart、Run、OnStop)。 RoleEntryPoint クラス内で作成されるすべての **RoleEnvironment** イベント (StatusCheck や Changed など) は、このプロセスで発生します。
-
-**L**. W3WP は標準の IIS ワーカー プロセスであり、ロールが完全な IIS を使うように構成されている場合に使われます。 これは、IISConfigurator から構成された AppPool を実行します。 ここで作成されるすべての RoleEnvironment イベント (StatusCheck や Changed など) は、このプロセスで発生します。 両方のプロセスでイベントをサブスクライブしている場合、RoleEnvironment イベントは両方の場所 (WaIISHost と w3wp.exe) で発生することに注意してください。
+**K**. W3WP は標準の IIS ワーカー プロセスであり、ロールが完全な IIS を使うように構成されている場合に使われます。 これは、IISConfigurator から構成された AppPool を実行します。 ここで作成されるすべての RoleEnvironment イベント (StatusCheck や Changed など) は、このプロセスで発生します。 両方のプロセスでイベントをサブスクライブしている場合、RoleEnvironment イベントは両方の場所 (WaIISHost と w3wp.exe) で発生することに注意してください。
 
 ## <a name="workflow-processes"></a>ワークフローのプロセス
 
@@ -87,8 +83,7 @@ ms.locfileid: "71162157"
 8. 完全な IIS Web ロールの場合、WaHostBootstrapper は、IIS AppPool を構成するよう IISConfigurator に指示し、サイトに `E:\Sitesroot\<index>` を示します。`<index>` は、サービスに対して定義されている `<Sites>` 要素の数に対する 0 から始まるインデックスです。
 9. WaHostBootstrapper によって、ロールの種類に応じたホスト プロセスが開始されます。
     1. **worker ロール**: WaWorkerHost.exe が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、WaHostBootstrapper によって Run() メソッドの実行が開始されるのと同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます (InputEndpoints が定義されている場合)。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
-    1. **SDK 1.2 HWC Web ロール**: WaWebHost が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、WaHostBootstrapper によって Run() メソッドの実行が開始されるのと同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます。 WaWebHost によって、ウォームアップ要求 (GET /do.rd_runtime_init) が発行されます。 すべての Web 要求は、WaWebHost.exe に送信されます。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
-    1. **完全な IIS Web ロール**: aIISHost が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、Run() メソッドの実行が開始され、同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
+    2. **完全な IIS Web ロール**: aIISHost が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、Run() メソッドの実行が開始され、同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
 10. 完全な IIS Web ロールへの Web 要求の着信でトリガーされた IIS により、W3WP プロセスが開始されて、要求の処理が行われます。これは、オンプレミスの IIS 環境の場合と同様です。
 
 ## <a name="log-file-locations"></a>ログ ファイルの場所
@@ -103,10 +98,6 @@ ms.locfileid: "71162157"
 **WaHostBootstrapper**
 
 `C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
- 
-**WaWebHost**
-
-`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
@@ -123,7 +114,3 @@ ms.locfileid: "71162157"
 **Windows イベント ログ**
 
 `D:\Windows\System32\Winevt\Logs`
- 
-
-
-

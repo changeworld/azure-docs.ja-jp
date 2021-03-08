@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ef04bf9f6d9ca6ff5089d2826c05a5acfb759b04
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547498"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル: Azure Active Directory と IdeaScale の統合
 
@@ -27,7 +27,7 @@ IdeaScale と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して IdeaScale に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -113,7 +113,7 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[IdeaScale クライアント サポート チーム](https://support.ideascale.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -137,7 +137,7 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
 3. **[セキュリティ] \> [シングル サインオン設定]** の順にクリックします。
 
-    ![[シングル サインオンの設定]](./media/ideascale-tutorial/ic790848.png "[シングル サインオンの設定]")
+    ![[Security]\(セキュリティ\) メニューで選択されている [Single Signon Settings]\(シングル サインオン設定\) を示すスクリーンショット。](./media/ideascale-tutorial/ic790848.png "[シングル サインオンの設定]")
 
 4. **[シングル サインオンのタイプ]** で **[SAML 2.0]** を選択します。
 
@@ -145,13 +145,13 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
 5. **[シングル サインオンの設定]** ダイアログで、次の手順を実行します。
 
-    ![[シングル サインオンの設定]](./media/ideascale-tutorial/ic790850.png "[シングル サインオンの設定]")
+    ![[Single Signon Settings]\(シングル サインオンの設定\) ダイアログ ボックスを示すスクリーンショット。](./media/ideascale-tutorial/ic790850.png "[シングル サインオンの設定]")
 
     a. **[SAML IdP Entity ID]\(SAML IdP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
     b. Azure portal からダウンロードしたメタデータ ファイルをメモ帳で開き、内容をコピーして、 **[SAML IdP Metadata]\(SAML IdP メタデータ\)** テキストボックスに貼り付けます。
 
-    c. **[Logout Success URL]\(ログアウト成功 URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    c. **[Logout Success URL]\(ログアウト成功 URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     d. **[変更を保存]** をクリックします。
 
@@ -242,13 +242,12 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [IdeaScale] タイルをクリックすると、SSO を設定した IdeaScale に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [IdeaScale] タイルをクリックすると、SSO を設定した IdeaScale に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -1,14 +1,16 @@
 ---
 title: 'クイックスタート: アプリの作成 - LUIS'
 description: このクイックスタートでは、照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成する方法について説明します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 10/13/2020
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701278"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019162"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート:事前構築済みの Home Automation アプリを使用する
 
@@ -21,20 +23,23 @@ ms.locfileid: "83701278"
 ## <a name="create-a-new-app"></a>新しいアプリの作成
 アプリケーションは、 **[My Apps]** で作成および管理できます。
 
-1. [マイ アプリ] リストで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、オプションのリストで再び **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択します。
+### <a name="create-an-application"></a>アプリケーションの作成
 
-1. ダイアログ ボックスで、お使いのアプリケーションに `Home Automation` という名前を付けます。
-1. カルチャとして **[英語]** を選択します。
-1. 必要に応じて説明を入力します。
-1. リソースをまだ作成していない場合は、予測リソースを選択しないでください。 アプリの予測エンドポイント (ステージングまたは運用) を使用するには、予測リソースを割り当てる必要があります。
-1. **[Done]** を選択します。
+アプリケーションを作成するには、 **[+ 新しいアプリ]** をクリックします。 
 
-    LUIS によってアプリが作成されます。
+表示されたウィンドウで、次の情報を入力します。
 
-    ![ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付ける](./media/create-new-app-details.png)
+|名前  |説明  |
+|---------|---------|
+|AName     | アプリの名前。 たとえば、"home automation" など。        |
+|カルチャ     | アプリによって認識され、話される言語。   |
+|説明 | アプリの説明。
+|予測リソース | クエリを受け取る予測リソース。 |
 
-    >[!NOTE]
-    >カルチャは、アプリケーションを作成した後に変更できません。
+**[完了]** を選択します。
+
+>[!NOTE]
+>カルチャは、アプリケーションを作成した後に変更できません。
 
 ## <a name="add-prebuilt-domain"></a>事前構築済みのドメインの追加
 
@@ -49,10 +54,7 @@ ms.locfileid: "83701278"
 
 ## <a name="intents-and-entities"></a>意図とエンティティ
 
-1. HomeAutomation ドメインの意図を確認するには、 **[Intents]** を選択します。 事前構築済みドメインの意図には発話例があります。
-
-    > [!div class="mx-imgBorder"]
-    > ![HomeAutomation の意図の一覧のスクリーンショット](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation の意図の一覧のスクリーンショット")
+1. 左側のナビゲーション メニューから **[Intents]\(意図\)** を選択し、HomeAutomation ドメインの意図を確認します。 `HomeAutomation.QueryState` や `HomeAutomation.SetDevice` などの発話の例があります。
 
     > [!NOTE]
     > **[None]\(なし\)** は、すべての LUIS アプリに用意されている意図です。 これは自分のアプリの機能に対応しない発話を処理する目的で使用されます。
@@ -61,6 +63,10 @@ ms.locfileid: "83701278"
 
     > [!div class="mx-imgBorder"]
     > [![HomeAutomation.TurnOff 意図のスクリーンショット](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff 意図のスクリーンショット")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+
+1. アプリのエンティティを表示する場合は、 **[エンティティ]** を選択します。 いずれかのエンティティ (**HomeAutomation.DeviceName** など) をクリックすると、それに関連付けられている値の一覧が表示されます。 
+ 
+    :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="画像の代替テキスト" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 
@@ -71,11 +77,7 @@ ms.locfileid: "83701278"
 
 1. 右上のナビゲーションから **[テスト]** を選択します。
 
-1. 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。
-
-    ```
-    Turn off the lights
-    ```
+1. 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。 たとえば、"*Turn off the lights (照明を消して)* " など。
 
     この例では、**HomeAutomation.TurnOff** に対する最もスコアの高い意図として `Turn off the lights` が正しく識別されています。
 
@@ -92,7 +94,18 @@ ms.locfileid: "83701278"
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 
-[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
+チャットボットや他のクライアント アプリケーションで LUIS の予測を受け取るには、アプリを予測エンドポイントに公開する必要があります。
+
+1. ウィンドウの右上で **[公開]** を選択します。
+
+1. **[運用]** スロットを選択し、 **[完了]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![LUIS のエンドポイントへの公開のスクリーンショット](media/howto-publish/publish-app-popup.png)
+
+1. 通知の **[Access your endpoint URLs]\(エンドポイントの URL にアクセス\)** リンクを選択して **[Azure リソース]** ページに移動します。 エンドポイントの URL が **[Example Query]\(サンプル クエリ\)** として一覧表示されます。
+
+<!-- [!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)] -->
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 
@@ -210,4 +223,4 @@ ms.locfileid: "83701278"
 エンドポイントはコードから呼び出すことができます。
 
 > [!div class="nextstepaction"]
-> [コードを使って LUIS エンドポイントを呼び出す](luis-get-started-cs-get-intent.md)
+> [コードを使って LUIS エンドポイントを呼び出す](./luis-get-started-get-intent-from-rest.md)

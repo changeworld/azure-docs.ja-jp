@@ -2,17 +2,17 @@
 title: よくあるご質問 (FAQ) - Azure ExpressRoute | Microsoft Docs
 description: ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: jaredro
-ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537124"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789349"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -36,13 +36,19 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 料金情報については、「 [ExpressRoute 料金](https://azure.microsoft.com/pricing/details/expressroute/) 」を参照してください。
 
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-this-bandwidth-allocated-for-ingress-and-egress-traffic-separately"></a>特定の帯域幅の ExpressRoute 回線を購入した場合、この帯域幅はイングレス トラフィックとエグレス トラフィックに個別に割り当てられますか？
+
+はい、ExpressRoute 回線の帯域幅は二重です。 たとえば、200 Mbps の ExpressRoute 回線を購入した場合、イングレス トラフィックの場合は 200 Mbps、エグレス トラフィックの場合は 200 Mbps を調達していることになります。
+
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、ネットワーク サービス プロバイダーから同じ速度の VPN 接続を購入する必要がありますか。
 
 いいえ。 サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、必要に応じてより高速にバーストすることはできますか。
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、購入した帯域幅を超えて使用することはできますか。
 
-はい。 ExpressRoute 回線は、購入した帯域幅の 2 倍まで無料でバーストできるように構成されています。 サービス プロバイダーがこの機能をサポートしているかどうかをご確認ください。 この動作は長時間を対象としたものではなく、保証もされていません。  トラフィックが ExpressRoute ゲートウェイを通過する場合、SKU の帯域幅は固定されており、かつバーストに対応していません。
+はい。ExpressRoute 回線のセカンダリ接続で使用可能な帯域幅を使用して、購入した帯域幅上限の 2 倍まで使用できます。 回線の組み込みの冗長化は、2 つの Microsoft Enterprise Edge ルーター (MSEE) への、それぞれ購入した帯域幅であるプライマリ接続とセカンダリ接続を使用して構成されます。 セカンダリ接続経由で使用できる帯域幅は、必要に応じて追加のトラフィックに使用できます。 ただし、セカンダリ接続は冗長性を目的としているため、それは保証されず、長期間の追加トラフィックには使用しないでください。 両方の接続を使用して、トラフィックを送信する方法の詳細については、「[AS PATH プリペンドの使用](./expressroute-optimize-routing.md#solution-use-as-path-prepending)」を参照してください。
+
+プライマリ接続のみを使用してトラフィックを送信する予定である場合は、接続の帯域幅が固定され、オーバーサブスクライブしようとすると、パケットのドロップが増加します。 トラフィックが ExpressRoute ゲートウェイを通過する場合、ゲートウェイ SKU の帯域幅は固定され、かつバーストに対応していません。 各ゲートウェイ SKU の帯域幅については、「[ExpressRoute の仮想ネットワーク ゲートウェイについて](expressroute-about-virtual-network-gateways.md#aggthroughput)」を参照してください。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>同じプライベート ネットワーク接続を、仮想ネットワークや他の Azure サービスに同時に使用できますか。
 
@@ -80,12 +86,12 @@ ExpressRoute では、プライベート ピアリング、Microsoft ピアリ�
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
 
-ExpressRoute 回線が Azure Microsoft ピアリングに対して有効になっている場合は、Azure 内で使用されている[パブリック IP アドレスの範囲](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に回線経由でアクセスできます。 Azure Microsoft ピアリングを使用すると、現在 Azure でホストされているサービスにアクセスできます (ご利用の回線の SKU によっては geo 制限があります)。 特定のサービスの可用性を検証するには、そのサービスに関するドキュメントを調べて、そのサービスに対して発行された予約済みの範囲があるかどうかを確認します。 次に、ターゲット サービスの IP 範囲を参照し、[Azure IP 範囲とサービス タグ – パブリック クラウド XML ファイル](https://www.microsoft.com/download/details.aspx?id=56519)に関するページに一覧されている範囲と比較します。 あるいは、問題のサービス用のサポート チケットを開いて、明確にすることもできます。
+ExpressRoute 回線が Azure Microsoft ピアリングに対して有効になっている場合は、Azure 内で使用されている[パブリック IP アドレスの範囲](../virtual-network/public-ip-addresses.md#public-ip-addresses)に回線経由でアクセスできます。 Azure Microsoft ピアリングを使用すると、現在 Azure でホストされているサービスにアクセスできます (ご利用の回線の SKU によっては geo 制限があります)。 特定のサービスの可用性を検証するには、そのサービスに関するドキュメントを調べて、そのサービスに対して発行された予約済みの範囲があるかどうかを確認します。 次に、ターゲット サービスの IP 範囲を参照し、[Azure IP 範囲とサービス タグ – パブリック クラウド XML ファイル](https://www.microsoft.com/download/details.aspx?id=56519)に関するページに一覧されている範囲と比較します。 あるいは、問題のサービス用のサポート チケットを開いて、明確にすることもできます。
 
 **サポート対象:**
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
-* Power BI - Azure リージョン コミュニティを介して使用できます。Power BI テナントのリージョンを確認する方法については、[こちら](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)をご覧ください。
+* [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
+* Power BI - Azure リージョン コミュニティを介して使用できます。Power BI テナントのリージョンを確認する方法については、[こちら](/power-bi/service-admin-where-is-my-tenant-located)をご覧ください。
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services コミュニティ)
 * IaaS (Virtual Machine、Virtual Network ゲートウェイ、Load Balancer など) の Azure パブリック IP アドレス  
@@ -118,7 +124,7 @@ Microsoft は、指定された 'アドバタイズされたパブリック プ�
 Dynamics 365 および Common Data Service (CDS) 環境は Azure でホストされているため、お客様はその基礎となっている Azure リソース向け ExpressRoute のサポートを利用できます。 このサービス エンドポイントに接続できるのは、Dynamics 365/CD(CDS) 環境がホストされている Azure リージョンが、ルーター フィルターに含まれている場合です。
 
 > [!NOTE]
-> ExpressRoute 回線が同じ[地政学的リージョン](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)内にデプロイされている場合、Azure ExpressRoute 経由の Dynamics 365 接続には [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) は必要**ありません**。
+> ExpressRoute 回線が同じ [地政学的リージョン](./expressroute-locations-providers.md#expressroute-locations)内にデプロイされている場合、Azure ExpressRoute 経由の Dynamics 365 接続には [ExpressRoute Premium](#expressroute-premium) は必要 **ありません**。
 
 ## <a name="data-and-connections"></a>データおよび接続
 
@@ -152,15 +158,15 @@ Dynamics 365 および Common Data Service (CDS) 環境は Azure でホストさ
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>プライベート ピアリングに冗長性を確保するにはどうすればよいですか。
 
-異なるピアリングの場所から複数の ExpressRoute 回線を、または同じピアリングの場所からの最大 4 つの接続を同じ仮想ネットワークに接続することで、1 つの回線が使用できない状態になった場合の高可用性を確保することができます。 さらに、ローカル接続のいずれかに、[より大きな重み](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection)を割り当てることで特定の回線を優先指定できます。 単一障害点を回避するために、少なくとも 2 つの ExpressRoute 回線をセットアップすることを強くお勧めします。 
+異なるピアリングの場所から複数の ExpressRoute 回線を、または同じピアリングの場所からの最大 4 つの接続を同じ仮想ネットワークに接続することで、1 つの回線が使用できない状態になった場合の高可用性を確保することができます。 さらに、ローカル接続のいずれかに、[より大きな重み](./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection)を割り当てることで特定の回線を優先指定できます。 単一障害点を回避するために、少なくとも 2 つの ExpressRoute 回線をセットアップすることを強くお勧めします。 
 
-高可用性のための設計については[こちら](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)を、ディザスター リカバリーのための設計については[こちら](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering)をご覧ください。  
+高可用性のための設計については[こちら](./designing-for-high-availability-with-expressroute.md)を、ディザスター リカバリーのための設計については[こちら](./designing-for-disaster-recovery-with-expressroute-privatepeering.md)をご覧ください。  
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Microsoft ピアリングに冗長性を確保するにはどうすればよいですか。
 
-Microsoft ピアリングを使用して Azure のパブリック サービス (Azure Storage、Azure SQL など) にアクセスしているお客様や、Office 365 向け Microsoft ピアリングを使用しているお客様には、単一障害点を回避するために、異なるピアリングの場所に複数の回線を導入することを強くお勧めします。 両方の回線で同じプレフィックスをアドバタイズして [AS PATH プリペンド](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)を使用するか、または異なるプレフィックスをアドバタイズしてオンプレミスからのパスを特定することができます。
+Microsoft ピアリングを使用して Azure のパブリック サービス (Azure Storage、Azure SQL など) にアクセスしているお客様や、Microsoft 365 向け Microsoft ピアリングを使用しているお客様には、単一障害点を回避するために、異なるピアリングの場所に複数の回線を導入することを強くお勧めします。 両方の回線で同じプレフィックスをアドバタイズして [AS PATH プリペンド](./expressroute-optimize-routing.md#solution-use-as-path-prepending)を使用するか、または異なるプレフィックスをアドバタイズしてオンプレミスからのパスを特定することができます。
 
-高可用性のための設計については[こちら](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)をご覧ください。
+高可用性のための設計については[こちら](./designing-for-high-availability-with-expressroute.md)をご覧ください。
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>ExpressRoute に接続されている仮想ネットワークで高可用性を確保する方法
 
@@ -170,7 +176,7 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 
 オンプレミスから Azure へのパスが ExpressRoute 回線で確実に優先されるようにするには、お使いのルーターに *Local Preference* 属性を実装する必要があります。
 
-BGP パスの選択と一般的なルーター構成に関する追加情報については、[こちら](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings)を参照してください。 
+BGP パスの選択と一般的なルーター構成に関する追加情報については、[こちら](./expressroute-optimize-routing.md#path-selection-on-microsoft-and-public-peerings)を参照してください。 
 
 ### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。
 
@@ -217,13 +223,13 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>仮想ネットワークを含む複数の Azure サブスクリプションがあります。 個別のサブスクリプション内の仮想ネットワークを 1 つの ExpressRoute 回線に接続できますか。
 
-はい。 回線と同じサブスクリプションまたは異なるサブスクリプションにある最大 10 個の仮想ネットワークを 1 つの ExpressRoute 回線を使用してリンクすることができます。 ExpressRoute Premium 機能を有効にすると、この上限を増やすことができます。
+はい。 回線と同じサブスクリプションまたは異なるサブスクリプションにある最大 10 個の仮想ネットワークを 1 つの ExpressRoute 回線を使用してリンクすることができます。 ExpressRoute Premium 機能を有効にすると、この上限を増やすことができます。 専用回線の接続と帯域幅の料金は、ExpressRoute 回線の所有者が負担することになることに注意してください。すべての仮想ネットワークは同じ帯域幅を共有します。
 
 詳細については、「[複数のサブスクリプションの間で ExpressRoute 回線を共有する](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
 ### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>異なる Azure Active Directory Windows Update または Enterprise Agreement 登録に関連付けられた Azure サブスクリプションが複数あります。 別のテナントおよび登録にある仮想ネットワークを、同じテナントまたは登録内にない 1 つの ExpressRoute 回線に接続することはできますか。
 
-はい。 ExpressRoute の承認は、サブスクリプション、テナント、および登録の複数の境界にまたがることができます。追加の構成は必要ありません。 
+はい。 ExpressRoute の承認は、サブスクリプション、テナント、および登録の複数の境界にまたがることができます。追加の構成は必要ありません。 専用回線の接続と帯域幅の料金は、ExpressRoute 回線の所有者が負担することになることに注意してください。すべての仮想ネットワークは同じ帯域幅を共有します。
 
 詳細については、「[複数のサブスクリプションの間で ExpressRoute 回線を共有する](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
@@ -243,11 +249,14 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 はい。 既定ルート (0.0.0.0/0) をアドバタイズして仮想ネットワーク内にデプロイされた仮想マシンへのインターネット接続をすべてブロックし、すべてのトラフィックが ExpressRoute 回線を経由するようにルーティングすることができます。
 
+> [!NOTE]
+> アドバタイズされたルート 0.0.0.0/0 が (障害や設定ミスなどにより) アドバタイズされたルートから削除された場合、Azure によって、インターネットへ接続するための[システム ルート](../virtual-network/virtual-networks-udr-overview.md#system-routes)が接続された仮想ネットワーク上のリソースに提供されます。  インターネットへのエグレス トラフィックがブロックされていることを確認するため、インターネット トラフィックの送信拒否規則を持つネットワーク セキュリティ グループをすべてのサブネットに配置することをお勧めします。
+
 ただし、既定ルートをアドバタイズすると、Microsoft ピアリング経由で提供されるサービス (Azure ストレージや SQL DB など) へのトラフィックが強制的にオンプレミスにルーティングされます。 Microsoft ピアリング パス経由またはインターネット経由でトラフィックを Azure に返すようにルーターを構成する必要があります。 サービスのサービス エンドポイントを有効にした場合、サービスへのトラフィックはオンプレミスに強制されません。 トラフィックは Azure のバックボーン ネットワーク内にとどまります。 サービス エンドポイントの詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)」を参照してください。
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>同じ ExpressRoute 回線に接続されている仮想ネットワークは互いに通信できますか。
 
-はい。 同じ ExpressRoute 回線に接続されている仮想ネットワークにデプロイされた仮想マシンは互いに通信できます。
+はい。 同じ ExpressRoute 回線に接続されている仮想ネットワークにデプロイされた仮想マシンは互いに通信できます。 この通信を容易にするために、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を設定することをお勧めします。
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>仮想ネットワーク用のサイト間接続を、ExpressRoute と併用できますか。
 
@@ -293,7 +302,7 @@ ExpressRoute Premium は、次の機能のコレクションです。
 
 * プライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
 * ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数の増加 (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
-* Office 365 への接続
+* Microsoft 365 への接続
 * Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになりました。<br>
     **例:**
 
@@ -344,44 +353,44 @@ ExpressRoute Local では、リソースの制限 (回線あたりの VNet 数�
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>ExpressRoute Local はどこで使用できますか。また、ピアリングの場所はそれぞれどの Azure リージョンにマッピングされていますか。
 ExpressRoute Local は、1 つまたは 2 つの Azure リージョンが近くにあるピアリングの場所で使用できます。 ピアリングの場所の州、都道府県、国/地域に Azure リージョンがない場合、そこで使用することはできません。 正確なマッピングについては、[場所のページ](expressroute-locations-providers.md)をご覧ください。  
 
-## <a name="expressroute-for-office-365"></a>Office 365 向け ExpressRoute
+## <a name="expressroute-for-microsoft-365"></a>Microsoft 365 の ExpressRoute
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Office 365 サービスに接続する ExpressRoute 回線はどのようにして作成しますか。
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-microsoft-365-services"></a>Microsoft 365 サービスに接続する ExpressRoute 回線はどのようにして作成しますか。
 
 1. [ExpressRoute の前提条件のページ](expressroute-prerequisites.md)を参照して、要件を満たしていることを確認します。
 2. 接続ニーズが満たされることを確認するには、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関する記事でサービス プロバイダーとサービスの場所の一覧を確認します。
-3. 「 [Office 365 のネットワーク計画とパフォーマンスのチューニング](https://aka.ms/tune/)」を参照して、容量の要件を計画します。
+3. 「[Microsoft 365 のネットワーク計画とパフォーマンス チューニング](/microsoft-365/enterprise/network-planning-and-performance)」を参照して、容量の要件を計画します。
 4. [「回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー」](expressroute-workflows.md)に示されている手順に従って接続をセットアップします。
 
 > [!IMPORTANT]
-> Office 365 サービスへの接続を構成するときは、ExpressRoute Premium アドオンを有効にしていることを確認します。
+> Microsoft 365 サービスへの接続を構成するときは、ExpressRoute Premium アドオンを有効にしていることを確認します。
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>既存の ExpressRoute 回線で Office 365 サービスへの接続をサポートすることはできますか。
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-microsoft-365-services"></a>既存の ExpressRoute 回線で Microsoft 365 サービスへの接続をサポートすることはできますか。
 
-はい。 既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。 Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 [Office 365 のネットワーク プランニングとパフォーマンス チューニング](https://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。 「[ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
+はい。 既存の ExpressRoute 回線を、Microsoft 365 サービスへの接続をサポートするように構成できます。 Microsoft 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 「[Microsoft 365 のネットワーク計画とパフォーマンス チューニング](/microsoft-365/enterprise/network-planning-and-performance)」が、接続ニーズを計画するのに役立ちます。 「[ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
-### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
+### <a name="what-microsoft-365-services-can-be-accessed-over-an-expressroute-connection"></a>ExpressRoute 接続経由でどの Microsoft 365 サービスにアクセスできますか。
 
-ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 URL および IP アドレス範囲](https://aka.ms/o365endpoints)」を参照してください。
+ExpressRoute でサポートされているサービスの最新の一覧については、「[Microsoft 365 URL および IP アドレス範囲](/microsoft-365/enterprise/urls-and-ip-address-ranges)」ページを参照してください。
 
-### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Office 365 サービスに対応した ExpressRoute の料金はいくらですか。
+### <a name="how-much-does-expressroute-for-microsoft-365-services-cost"></a>Microsoft 365 サービスに対応した ExpressRoute の料金はいくらですか。
 
-Office 365 サービスでは、Premium アドオンを有効にする必要があります。 料金については、[料金詳細のページ](https://azure.microsoft.com/pricing/details/expressroute/)を参照してください。
+Microsoft 365 サービスでは、Premium アドオンを有効にする必要があります。 料金については、[料金詳細のページ](https://azure.microsoft.com/pricing/details/expressroute/)を参照してください。
 
-### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>ExpressRoute for Office 365 はどのリージョンでサポートされていますか。
+### <a name="what-regions-is-expressroute-for-microsoft-365-supported-in"></a>Microsoft 365 の ExpressRoute はどのリージョンでサポートされていますか。
 
 詳しくは、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関する記事をご覧ください。
 
-### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
+### <a name="can-i-access-microsoft-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>自社で ExpressRoute が構成されている場合でも、インターネット経由で Microsoft 365 にアクセスできますか。
 
-はい。 自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。 お客様の所在地のネットワークが ExpressRoute を介して Office 365 サービスに接続するように構成されている場合は、組織のネットワーク チームに問い合わせてください。
+はい。 自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Microsoft 365 サービスのエンドポイントにアクセスできます。 お客様の所在地のネットワークが ExpressRoute を介して Microsoft 365 サービスに接続するように構成されている場合は、組織のネットワーク チームに問い合わせてください。
 
-### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Azure ExpressRoute で Office 365 ネットワーク トラフィックの高可用性を計画するにはどうすればよいですか?
-「[Azure ExpressRoute の高可用性とフェールオーバー](https://aka.ms/erhighavailability)」に記載の推奨事項を参照してください。
+### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>Azure ExpressRoute で Microsoft 365 ネットワーク トラフィックの高可用性を計画するにはどうすればよいですか。
+「[Azure ExpressRoute の高可用性とフェールオーバー](/microsoft-365/enterprise/network-planning-with-expressroute)」に記載の推奨事項を参照してください。
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Azure US Government ExpressRoute 回線を通じて Office 365 US Government Community (GCC) サービスにアクセスすることはできますか。
 
@@ -395,11 +404,11 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 
 ### <a name="i-turned-on-microsoft-peering-and-now-i-am-trying-to-select-exchange-online-but-it-is-giving-me-an-error-that-i-am-not-authorized-to-do-it"></a>Microsoft ピアリングを有効にし、Exchange Online を選択しようとしていますが、この操作を行う権限がないというエラーが発生します。
 
-ルート フィルターを使用すると、どのユーザーでも場合 Microsoft ピアリングを有効にできます。 ただし、Office 365 サービスを使用するには、Office 365 で承認される必要があります。
+ルート フィルターを使用すると、どのユーザーでも場合 Microsoft ピアリングを有効にできます。 ただし、Microsoft 365 サービスを使用するには、Microsoft 365 で承認される必要があります。
 
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>2017 年 8 月 1 日より前に Microsoft ピアリングを有効にしました。どうすればルート フィルターを利用できますか。
 
-既存の回線では、Office 365 のプレフィックスのアドバタイズが継続されます。 同じ Microsoft ピアリング上に Azure パブリック プレフィックスのアドバタイズを追加する場合、ルート フィルターを作成し、アドバタイズが必要なサービス (必要な Office 365 サービスなど) を選択し、フィルターを Microsoft ピアリングにアタッチすることができます。 手順については、[Microsoft ピアリングのルート フィルターを構成する](how-to-routefilter-powershell.md)をご覧ください。
+既存の回線では、Microsoft 365 のプレフィックスのアドバタイズが継続されます。 同じ Microsoft ピアリング上に Azure パブリック プレフィックスのアドバタイズを追加する場合、ルート フィルターを作成し、アドバタイズが必要なサービス (必要な Microsoft 365 サービスなど) を選択し、フィルターを Microsoft ピアリングにアタッチすることができます。 手順については、[Microsoft ピアリングのルート フィルターを構成する](how-to-routefilter-powershell.md)をご覧ください。
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>ある場所で Microsoft ピアリングを持っています。別の場所でこれを有効にしようとしていますが、プレフィックスが表示されません。
 
@@ -414,3 +423,9 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 ## <a name="global-reach"></a><a name="globalreach"></a>Global Reach
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]
+
+## <a name="privacy"></a>プライバシー
+
+### <a name="does-the-expressroute-service-store-customer-data"></a>ExpressRoute サービスは顧客データを格納しますか。
+
+いいえ。

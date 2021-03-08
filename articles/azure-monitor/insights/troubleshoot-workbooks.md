@@ -2,16 +2,16 @@
 title: Azure Monitor のブックベースの分析情報のトラブルシューティング
 description: Azure Key Vault、Azure CosmosDB、Azure Storage、Azure Cache for Redis などのサービスに対する Azure Monitor のブックベースの分析情報のトラブルシューティング指針を示します。
 services: azure-monitor
-ms.author: mbullwin
-author: mrbullwinkle
+ms.author: lagayhar
+author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 90743a213092aacfa10139c12f47bc11faf0d86d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a823b5e2ae31e62ff6d876f0b3468953c0ed9c35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498714"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587158"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>ブックベースの分析情報のトラブルシューティング
 
@@ -31,7 +31,7 @@ ms.locfileid: "86498714"
 ## <a name="what-happens-when-i-save-a-workbook"></a>ブックを保存するとどうなりますか
 
 * ブックを保存すると、編集を使用してブックの新しいコピーを作成したり、タイトルを変更したりできるようになります。 保存してもブックは上書きされず、現在のブックは常に既定のビューになります。
-* **保存されていない**ブックは、単なる既定のビューです。
+* **保存されていない** ブックは、単なる既定のビューです。
 
 ## <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>ポータルに自分のすべてのサブスクリプションが表示されないのはなぜですか
 
@@ -72,4 +72,4 @@ ms.locfileid: "86498714"
 
 ## <a name="next-steps"></a>次のステップ
 
-ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などの詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
+ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などの詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../visualize/workbooks-overview.md)」で学習してください。

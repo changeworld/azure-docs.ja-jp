@@ -3,18 +3,20 @@ title: Azure Cosmos DB と Active Directory を使用した証明書ベースの
 description: 証明書ベースの認証で Azure Cosmos DB のキーにアクセスするように Azure AD ID を構成する方法について説明します。
 author: voellm
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: ea8d4180a6e820e72f5ca0ce7e7acaf13348ae67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0913351d40cd75da17d16cca119b4ad5ce20de0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262499"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334703"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD ID で Azure Cosmos DB アカウントのキーにアクセスするための証明書ベースの認証
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 証明書ベースの認証では、Azure Active Directory (Azure AD) をクライアント証明書と共に使用してクライアント アプリケーションを認証できます。 ID が必要になるコンピューター (オンプレミスのコンピューターや Azure の仮想マシンなど) では証明書ベースの認証を実行できます。 それにより、アプリケーションは、キーを直接アプリケーション内に保持しなくても Azure Cosmos DB キーを読み取ることができます。 この記事では、サンプルの Azure AD アプリケーションを作成し、そこに証明書ベースの認証を構成し、新しいアプリケーション ID を使用して Azure にサインインした後、そのアプリケーションで Azure Cosmos アカウントのキーを取得する方法について説明します。 この記事では、Azure PowerShell を使用して ID を設定した後、Azure Cosmos アカウントのキーを認証してそれにアクセスする C# サンプル アプリを提供します。  
 
@@ -22,7 +24,7 @@ ms.locfileid: "85262499"
 
 * [最新バージョン](/powershell/azure/install-az-ps)の Azure PowerShell をインストールします。
 
-* [Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+* [Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
 ## <a name="register-an-app-in-azure-ad"></a>Azure AD にアプリを登録する
 
@@ -63,7 +65,7 @@ ms.locfileid: "85262499"
    Set-AzContext $context 
    ```
 
-1. [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) モジュールをインストールしてインポートします。
+1. [AzureAD](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) モジュールをインストールしてインポートします。
 
    ```powershell
    Install-Module AzureAD
@@ -148,7 +150,7 @@ Azure portal から、証明書ベースの資格情報を Azure AD 内のクラ
       -Type "Keys"
    ```
 
-前のコマンドでは、Azure Cosmos アカウントのプライマリおよびセカンダリ マスター キーが表示されます。 キー取得要求が成功し、そのイベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。
+前のコマンドでは、Azure Cosmos アカウントのプライマリおよびセカンダリ 主キーが表示されます。 キー取得要求が成功し、そのイベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。
 
 :::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Azure AD でのキー取得の呼び出しを検証する":::
 
@@ -236,7 +238,7 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-次のスクリーンショットに示すように、このスクリプトではプライマリおよびセカンダリ マスター キーが出力されます。
+次のスクリーンショットに示すように、このスクリプトではプライマリおよびセカンダリ 主キーが出力されます。
 
 :::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="csharp アプリケーションの出力":::
 

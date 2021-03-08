@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: db5d0cfecde32d3dd6afe181d67a6ce6c0826eda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02dde8a27b9687e58bf1a09c1a951f306937f0d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877127"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90906120"
 ---
 #### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>キー フレーズ抽出コンテナー用の docker pull
 
@@ -23,5 +23,5 @@ ms.locfileid: "80877127"
 Text Analytics コンテナーで使用可能なタグの詳しい説明については、Docker Hub の[キー フレーズ抽出](https://go.microsoft.com/fwlink/?linkid=2018757)コンテナーを参照してください。
 
 ```
-docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/textanalytics/keyphrase:latest
 ```

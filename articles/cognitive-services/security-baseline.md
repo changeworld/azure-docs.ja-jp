@@ -6,25 +6,25 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: c0b773a728fed456a34d0db3a00b353147432012
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498346"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589251"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Cognitive Services の Azure セキュリティ ベースライン
 
 Cognitive Services 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、「[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)」を参照してください。
+詳細については、「[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -32,9 +32,9 @@ Cognitive Services 用の Azure セキュリティ ベースラインには、�
 
 Cognitive Services の仮想ネットワークとサービス エンドポイントのサポートは、特定のリージョンのセットに限定されます。
 
-* [Azure Cognitive Services 仮想ネットワークを構成する方法](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)
+* [Azure Cognitive Services 仮想ネットワークを構成する方法](./cognitive-services-virtual-networks.md?tabs=portal)
 
-* [Azure 仮想ネットワークの概要](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+* [Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -44,9 +44,9 @@ Cognitive Services の仮想ネットワークとサービス エンドポイン
 
 **ガイダンス**:Azure Cognitive Services コンテナーと同じ仮想ネットワークに仮想マシンがデプロイされている場合、ネットワーク セキュリティ グループ (NSG) を使用して、データ窃盗のリスクを軽減することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログを Azure Storage アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -62,7 +62,7 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 また、Cognitive Services コンテナーによって Microsoft サーバーに作成されるセキュリティで保護されたチャネルで、ファイアウォール ソリューションのディープ パケット インスペクションを無効にする必要があることにも注意してください。 そうしないと、コンテナーは正しく機能しません。
 
-* [Azure Cognitive Services コンテナーのセキュリティについて](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+* [Azure Cognitive Services コンテナーのセキュリティについて](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Azure Security Center の監視**: はい
 
@@ -77,11 +77,11 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 コンテナー内で Cognitive Services を使用している場合は、悪意のあるトラフィックをフィルター処理し、エンドツーエンドの TLS 暗号化をサポートするフロントエンドの Web アプリケーション ファイアウォール ソリューションを使用して、コンテナーのデプロイを強化することができます。これにより、コンテナー エンドポイントがプライベートで安全な状態に維持されます。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
-* [Azure Cognitive Services コンテナーのセキュリティについて](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+* [Azure Cognitive Services コンテナーのセキュリティについて](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Azure Security Center の監視**: はい
 
@@ -91,9 +91,9 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 **ガイダンス**: Azure Cognitive Services コンテナーと同じ仮想ネットワークに仮想マシンがデプロイされている場合、ネットワーク セキュリティ グループ (NSG) を使用して、データ窃盗のリスクを軽減することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログを Azure Storage アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -109,7 +109,7 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 また、Cognitive Services コンテナーによって Microsoft サーバーに作成されるセキュリティで保護されたチャネルで、ファイアウォール ソリューションのディープ パケット インスペクションを無効にする必要があることにも注意してください。 そうしないと、コンテナーは正しく機能しません。
 
-* [Azure Cognitive Services コンテナーのセキュリティについて](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+* [Azure Cognitive Services コンテナーのセキュリティについて](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
@@ -127,7 +127,7 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 また、Cognitive Services コンテナーによって Microsoft サーバーに作成されるセキュリティで保護されたチャネルで、ファイアウォール ソリューションのディープ パケット インスペクションを無効にする必要があることにも注意してください。 そうしないと、コンテナーは正しく機能しません。
 
-* [Azure Cognitive Services コンテナーのセキュリティについて](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
+* [Azure Cognitive Services コンテナーのセキュリティについて](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
 
 **Azure Security Center の監視**: はい
 
@@ -139,9 +139,9 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 また、アプリケーション セキュリティグループ (ASG) を使用して、複雑なセキュリティ構成を簡略化することもできます。 ASG を使用すると、ネットワーク セキュリティをアプリケーションの構造の自然な拡張として構成でき、仮想マシンをグループ化して、それらのグループに基づくネットワーク セキュリティ ポリシーを定義できます。
 
-* [仮想ネットワーク サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md)
 
-* [アプリケーション セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+* [アプリケーション セキュリティ グループ](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -151,11 +151,11 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 **ガイダンス**: Azure Policy を使用して、Azure Cognitive Services コンテナーに関連するネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Cache for Redis インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.CognitiveServices" と "Microsoft.Network" の名前空間で Azure Policy エイリアスを使用します。
 
-また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整します。
+また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -165,7 +165,7 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 **ガイダンス**: Azure Cognitive Services コンテナーに関連付けられているネットワーク リソースを分類別に論理的に整理するために、それらのリソースにタグを使用します。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -175,9 +175,9 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Cognitive Services コンテナーに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -185,7 +185,7 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -199,7 +199,7 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 **ガイダンス**: Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログは、コントロール プレーン レベルで Azure Cognitive Services コンテナーで実行された操作に関する分析情報を提供します。 Azure アクティビティ ログのデータを使用すると、Azure Cache for Redis インスタンスのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -211,9 +211,9 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 また、Azure Cognitive Services では、分析、アラート、レポートの目的で収集して使用できる診断イベントを送信します。 Azure portal を使用して、Cognitive Services コンテナーの診断設定を構成できます。 1 つ以上の診断イベントをストレージ アカウント、イベント ハブ、Log Analytics ワークスペースに送信できます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-* [Azure Cognitive Services の診断設定を使用する](https://docs.microsoft.com/azure/cognitive-services/diagnostic-logging)
+* [Azure Cognitive Services の診断設定を使用する](./diagnostic-logging.md)
 
 **Azure Security Center の監視**: はい
 
@@ -229,9 +229,9 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
-**ガイダンス**:Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
+**ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -241,9 +241,9 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 **ガイダンス**: Azure アクティビティ ログの診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 これらのログでは、問題の識別やデバッグに使用されるリソースの操作に関する豊富で頻繁なデータが提供されます。 Log Analytics でクエリを実行して、用語の検索、傾向の特定、パターンの分析を行い、Azure Cognitive Services 用に収集された可能性があるアクティビティ ログ データに基づいて、多くの他の分析情報を提供します。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-* [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
+* [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -255,9 +255,9 @@ Cognitive Services コンテナーでは、課金のために使用状況測定�
 
 Cognitive Services コンテナーの診断設定を構成し、Log Analytics ワークスペースにログを送信します。 Log Analytics ワークスペース内で、事前に定義された一連の条件が発生したときに、アラートが発生するように構成します。 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
+* [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -289,15 +289,15 @@ Cognitive Services コンテナーの診断設定を構成し、Log Analytics �
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
 **ガイダンス**: Azure Active Directory (AD) には、明示的に割り当てる必要があり、クエリ可能な組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center の監視**: はい
 
@@ -311,7 +311,7 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 アプリケーションに既定のパスワードを組み込むことは推奨されません。 代わりに、パスワードを Azure Key Vault に格納し、Azure Active Directory を使用して取得することができます。
 
-* [Azure Cache for Redis のアクセス キーを再生成する方法](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
+* [Azure Cache for Redis のアクセス キーを再生成する方法](../azure-cache-for-redis/cache-configure.md#settings)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -326,9 +326,9 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
-* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center を使用して ID およびアクセスを監視する方法 (プレビュー)](../security-center/security-center-identity-access.md)
 
-* [Azure Policy を使用する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を使用する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: はい
 
@@ -338,9 +338,9 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 **ガイダンス**:Azure Cognitive Services では、アクセス キーを使用してユーザーが認証されます。データプ レーン レベルでのシングル サインオン (SSO) はサポートされていません。 Azure Cognitive Services のコントロール プレーンへのアクセスは、REST API 経由で行うことができ、SSO がサポートされています。 認証を行うには、Azure Active Directory から取得した要求の Authorization ヘッダーを JSON Web トークンに設定します。
 
-* [Azure Cognitive Services REST API について](https://docs.microsoft.com/rest/api/cognitiveservices/)
+* [Azure Cognitive Services REST API について](/rest/api/cognitiveservices/)
 
-* [Azure AD を使用した SSO の概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -350,9 +350,9 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 **ガイダンス**: Azure Active Directory (AD) Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -362,9 +362,9 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-* [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -376,9 +376,9 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 また、Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
-* [Privileged Identity Management (PIM) をデプロイする方法](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD のリスク検出の概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -388,7 +388,7 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 **ガイダンス**: Azure Active Directory (AD) 条件付きアクセスのネームド ロケーションを、IP アドレス範囲または国/リージョンの特定の論理グループからのアクセスのみ許可するように構成します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -400,7 +400,7 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 現時点では、Computer Vision API、Face API、Text Analytics API、Immersive Reader、Form Recognizer、Anomaly Detector、およびすべての Bing サービス (Bing Custom Search を除く) のみにおいて、Azure AD を使用した認証がサポートされています。
 
-* [Cognitive Services に対する要求の認証方法](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-azure-active-directory)
+* [Cognitive Services に対する要求の認証方法](./authentication.md#authenticate-with-azure-active-directory)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -412,11 +412,11 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 顧客は、API Management ユーザー アカウントのインベントリを維持し、必要に応じてアクセスを調整できます。 API Management では、開発者は、API Management を使用して公開された API のユーザーになります。 既定では、新しく作成された開発者アカウントは "アクティブ" になり、"開発者" グループに関連付けられます。 アクティブ状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。
 
-* [Azure API Management でユーザー アカウントを管理する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-create-or-invite-developers)
+* [Azure API Management でユーザー アカウントを管理する方法](../api-management/api-management-howto-create-or-invite-developers.md)
 
-* [API Management ユーザーの一覧を取得する方法](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [API Management ユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -428,9 +428,9 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics 内で必要なログ アラートを構成できます。
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -440,11 +440,11 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 **ガイダンス**:コントロール プレーンでのアカウント ログイン動作の偏差について、Azure Active Directory (AD) Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -454,7 +454,7 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 **ガイダンス**: まだ使用できません。Azure Cognitive Services では、カスタマー ロックボックスはまだサポートされていません。
 
-* [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -462,13 +462,13 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -478,19 +478,19 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 **ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 リソースは、VNet/サブネットで分割し、適切にタグを付け、NSG または Azure Firewall で保護する必要があります。 機密データを格納または処理するリソースは、十分に分離する必要があります。 機密データを格納または処理する仮想マシンでは、使用されていないときにはオフにするためのポリシーとプロシージャを実装します。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートまたはアラートと拒否を構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートまたはアラートと拒否を構成する方法](../firewall/threat-intel.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -502,7 +502,7 @@ Azure Cognitive Services へのデータ プレーン アクセスは、アク�
 
 Microsoft では、Azure Cognitive Services 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -514,7 +514,7 @@ Microsoft では、Azure Cognitive Services 用の基になるインフラスト
 - クライアント オペレーティング システム (OS) では、TLS 1.2 がサポートされている必要があります。
 - HTTP の呼び出しに使用される言語 (およびプラットフォーム) では、要求の一部として TLS 1.2 を指定する必要があります (言語とプラットフォームによっては、TLS の指定は暗黙的または明示的に行われます)。
 
-* [Azure Cognitive Services のトランスポート層セキュリティについて](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)
+* [Azure Cognitive Services のトランスポート層セキュリティについて](./cognitive-services-security.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -526,17 +526,17 @@ Microsoft では、Azure Cognitive Services 用の基になるインフラスト
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: 共有
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (Azure AD) のロールベースのアクセス制御 (RBAC) を使用して、Azure Cognitive Services コントロール プレーン (つまり、Azure portal) へのアクセスを制御します。
+**ガイダンス**:Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Cognitive Services コントロール プレーン (つまり、 Azure portal) へのアクセスを制御します。
 
-* [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -548,7 +548,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Microsoft では、Azure Cognitive Services 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -560,7 +560,7 @@ Microsoft では、Azure Cognitive Services 用の基になるインフラスト
 
 Azure Key Vault を使用してカスタマー マネージド キーを格納することもできます。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。
 
-* [保存時の情報を暗号化するサービスの一覧](https://docs.microsoft.com/azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal)
+* [保存時の情報を暗号化するサービスの一覧](./encryption/cognitive-services-encryption-keys-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -570,7 +570,7 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 **ガイダンス**: Azure Cognitive Services の運用インスタンスやその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -578,7 +578,7 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -622,7 +622,7 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
 
@@ -630,11 +630,11 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -644,7 +644,7 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -658,11 +658,11 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -684,9 +684,9 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 さらに、Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -722,9 +722,9 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -742,7 +742,7 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 **ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
-* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -766,15 +766,15 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**:Azure Policy を使用して、Azure Cognitive Services コンテナーの標準的なセキュリティ構成を定義して実装します。 Azure Cache for Redis インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.CognitiveServices" 名前空間で Azure Policy エイリアスを使用します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -792,9 +792,9 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 **ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -812,9 +812,9 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 **ガイダンス**: Azure Cognitive Services コンテナーおよび関連リソースにカスタムの Azure Policy 定義または Azure Resource Manager テンプレートを使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -832,7 +832,7 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 **ガイダンス**: "Microsoft.Cache" 名前空間で Azure Policy エイリアスを使用して、システム構成のアラート通知、監査、適用を行うためのカスタム ポリシーを作成します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -850,7 +850,7 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 **ガイダンス**: "Microsoft.CognitiveServices" 名前空間の Azure Policy エイリアスを使用して、システム構成のアラート、監査、適用を行うカスタムの Azure Policy 定義を作成します。 Azure Policy の [audit]、[deny]、[deploy if not exist] を使用して、ご自分の Azure Cache for Redis インスタンスおよび関連リソースの構成を自動的に適用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -868,11 +868,13 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 **ガイダンス**:Azure Cognitive Services API へのアクセスに使用されている Azure App Service で実行中の Azure 仮想マシンまたは Web アプリでは、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Cognitive Services のキー管理を簡素化し、セキュリティで保護します。 Key Vault の論理的な削除が有効になっていることを確認します。
 
-* [Azure マネージド ID と統合する方法](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+* [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [キー コンテナーを作成する方法](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+* [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-* [マネージド ID で Key Vault の認証を提供する方法](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -884,9 +886,9 @@ Azure Key Vault を使用してカスタマー マネージド キーを格納�
 
 Azure サービスに Azure Active Directory で自動的に管理される ID を提供するには、マネージド ID を使用します。 マネージド ID を使用すると、コード内に資格情報を記述することなく、Azure AD 認証をサポートする任意のサービス (Azure Key Vault を含む) に対して認証できます。
 
-* [マネージド ID を構成する方法](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [マネージド ID を構成する方法](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-* [Azure マネージド ID と統合する方法](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+* [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 **Azure Security Center の監視**: はい
 
@@ -904,7 +906,7 @@ Azure サービスに Azure Active Directory で自動的に管理される ID �
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -938,7 +940,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -946,11 +948,11 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 また、ライフサイクル管理機能を使用して、アーカイブ層にデータをバックアップすることもできます。 さらに、ストレージ アカウントに格納されているバックアップに対する論理的な削除を有効にします。
 
-* [Azure Storage の冗長性とサービス レベル アグリーメントについて](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Azure Storage の冗長性とサービス レベル アグリーメントについて](../storage/common/storage-redundancy.md)
 
-* [Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)
+* [Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md)
 
-* [Azure Storage Blob の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Azure Storage Blob の論理的な削除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: はい
 
@@ -960,17 +962,17 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 **ガイダンス**: Azure Resource Manager を使用して、Cognitive Services および関連リソースをデプロイします。 Azure Resource Manager には、テンプレートをエクスポートする機能が用意されています。これにより、開発ライフサイクル全体でソリューションを再デプロイでき、リソースが一貫した状態でデプロイされることを確信できます。 Azure Automation を使用して、Azure Resource Manager テンプレートのエクスポート API を定期的に呼び出します。 Azure Key Vault 内の事前共有キーをバックアップします。
 
-* [Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+* [Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)
 
-* [Azure Resource Manager テンプレートを使用して Cognitive Services リソースを作成する方法](https://docs.microsoft.com/azure/cognitive-services/resource-manager-template?tabs=portal)
+* [Azure Resource Manager テンプレートを使用して Cognitive Services リソースを作成する方法](./create-account-resource-manager-template.md?tabs=portal)
 
-* [Azure portal のテンプレートへの単一および複数リソースのエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
-* [リソース グループ - テンプレートのエクスポート](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)
+* [リソース グループ - テンプレートのエクスポート](/rest/api/resources/resourcegroups/exporttemplate)
 
-* [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation の概要](../automation/automation-intro.md)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center の監視**: はい
 
@@ -980,9 +982,9 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 **ガイダンス**: 必要に応じて、分離サブスクリプションに Azure Resource Manager テンプレートのデプロイを定期的に実行できることを確認します。 バックアップされた事前共有キーの復元をテストします。
 
-* [ARM テンプレートと Azure portal でリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)
+* [ARM テンプレートと Azure portal でリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -990,13 +992,13 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
-**ガイダンス**:Azure DevOps を使用して、Azure Resource Manager テンプレートを安全に格納し、管理します。 Azure DevOps で管理するリソースを保護するには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。  ロールベースのアクセス制御を使用して、カスタマー マネージド キーを保護します。 Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。 
+**ガイダンス**:Azure DevOps を使用して、Azure Resource Manager テンプレートを安全に格納し、管理します。 Azure DevOps で管理するリソースを保護するには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。  Azure ロールベースのアクセス制御を使用して、カスタマー マネージド キーを保護します。 Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。 
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure DevOps でのアクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+* [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
-* [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Key Vault で論理的な削除と消去保護を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: はい
 
@@ -1004,13 +1006,13 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
 **ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
 
-* [Azure Security Center 内でワークフロー自動化を構成する方法](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Security Center 内でワークフロー自動化を構成する方法](../security-center/security-center-planning-and-operations-guide.md)
 
 * [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1046,7 +1048,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1054,11 +1056,11 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1068,7 +1070,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 **ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1076,7 +1078,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -1090,5 +1092,5 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cognitive Serv
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

@@ -1,16 +1,16 @@
 ---
-title: プレビュー - Kubernetes 用の Azure Policy について学習する
-description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。 これはプレビュー機能です。
-ms.date: 08/07/2020
+title: Kubernetes 用の Azure Policy の概要
+description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577097"
 ---
-# <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes 用の Azure Policy について理解する (プレビュー)
+# <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
 Azure Policy によって [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) のための "_アドミッション コントローラー Webhook_" である [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 が拡張され、一貫性した一元的な方法でクラスターに対して大規模な実施と保護が適用されます。 Azure Policy を使用すると、Kubernetes クラスターのコンプライアンスの状態を 1 か所から管理し、レポートすることができます。 アドオンにより、次の機能が設定されます。
 
@@ -25,7 +25,7 @@ Kubernetes 用の Azure Policy では、次のクラスター環境がサポー�
 - [AKS エンジン](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Kubernetes 用の Azure Policy はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceOPAConstraint** および **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは "_非推奨_" になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で "_audit_" および "_deny_" 効果を使用します。
+> AKS Engine と Arc 対応の Kubernetes 用のアドオンは **プレビュー** 段階です。 Kubernetes 用の Azure Policy は、Linux ノード プールと組み込みのポリシー定義のみをサポートしています。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceOPAConstraint** および **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは "_非推奨_" になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で "_audit_" および "_deny_" 効果を使用します。
 
 ## <a name="overview"></a>概要
 
@@ -37,7 +37,7 @@ Kubernetes クラスターで Azure Policy を有効にして使用するには�
    - [AKS エンジン](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
-   > インストールの一般的な問題については、[Azure Policy アドオンのトラブルシューティング](../troubleshoot/general.md#add-on-installation-errors)に関するページを参照してください。
+   > インストールの一般的な問題については、[Azure Policy アドオンのトラブルシューティング](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors)に関するページを参照してください。
 
 1. [Kubernetes 用の Azure Policy 言語を理解する](#policy-language)
 
@@ -45,29 +45,55 @@ Kubernetes クラスターで Azure Policy を有効にして使用するには�
 
 1. [検証を待機する](#policy-evaluation)
 
+## <a name="limitations"></a>制限事項
+
+Kubernetes クラスターの Azure Policy アドオンに、次の一般的な制限事項が適用されます。
+
+- Kubernetes の Azure Policy アドオンは、Kubernetes バージョン **1.14** 以降でサポートされています。
+- Kubernetes の Azure Policy アドオンは、Linux ノード プールにのみデプロイできます
+- 組み込みのポリシー定義のみがサポートされます
+- クラスターごとのポリシー単位での非対応レコードの最大数:**500**
+- サブスクリプションごとの非対応レコードの最大数:**100 万**
+- Azure Policy アドオン以外の Gatekeeper のインストールは、サポートされていません。 Azure Policy アドオンを有効にする前に、以前の Gatekeeper インストールによってインストールされたすべてのコンポーネントをアンインストールします。
+- [非対応の理由](../how-to/determine-non-compliance.md#compliance-reasons)は、`Microsoft.Kubernetes.Data`
+  [リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)には利用できません。 [コンポーネントの詳細](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)を使用してください。
+- [除外](./exemption-structure.md)は、[リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)ではサポートされていません。
+
+AKS の Azure Policy アドオンにのみ、次の制限事項が適用されます。
+
+- [AKS Pod セキュリティ ポリシー](../../../aks/use-pod-security-policies.md)と AKS の Azure Policy アドオンの両方を同時に有効にすることはできません。 詳細については、[AKS ポッドのセキュリティの制限事項](../../../aks/use-pod-security-on-azure-policy.md#limitations)に関するセクションを参照してください。
+- 評価版の Azure Policy アドオンによって自動的に除外される名前空間: _kube-system_、_gatekeeper-system_、および _aks-periscope_。
+
+## <a name="recommendations"></a>推奨事項
+
+Azure Policy アドオンを使用する場合の一般的な推奨事項を次に示します。
+
+- Azure Policy アドオンでは、3 つの Gatekeeper コンポーネントを実行する必要があります。1 つの監査ポッドと 2 つの Webhook ポッドのレプリカ。 これらのコンポーネントは、監査と強制の操作を必要とするクラスターで Kubernetes リソースとポリシー割り当ての数が増えるにつれて、より多くのリソースを消費します。
+
+  - 最大 20 の制約を持つ 1 つのクラスター内のポッド数が 500 を下回る場合:コンポーネントごとに 2 つの vCPU と 350 MB のメモリ。
+  - 最大 40 の制約を持つ 1 つのクラスター内のポッド数が 500 を上回る場合:コンポーネントごとに 3 つの vCPU と 600 MB のメモリ。
+
+- Windows ポッド [セキュリティ コンテキスト](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods)をサポートしていません。
+  そのため、Windows ポッドでは、ルート特権の禁止など、一部の Azure Policy 定義をエスカレートすることができず、Linux ポッドにのみ適用されます。
+
+次の推奨事項は、AKS と Azure Policy アドオンにのみ適用されます。
+
+- `CriticalAddonsOnly` テイントとシステム ノード プールを使用して、Gatekeeper ポッドをスケジュールします。 詳細については、[システム ノード プールの使用](../../../aks/use-system-pools.md#system-and-user-node-pools)に関するページを参照してください。
+- AKS クラスターから送信トラフィックをセキュリティで保護します。 詳細については、[クラスター ノードのエグレス トラフィックの制御](../../../aks/limit-egress-traffic.md)に関するページを参照してください。
+- クラスターで `aad-pod-identity` が有効になっている場合、Azure Instance Metadata エンドポイントの呼び出しをインターセプトするよう、Node Managed Identity (NMI) ポッドによりノードの iptables が変更されます。 この構成の場合、Metadata エンドポイントに要求が行われると、ポッドで `aad-pod-identity` が使用されていない場合でも NMI により要求がインターセプトされます。 CRD に定義されているラベルに一致するポッドから Metadata エンドポイントに要求が行われた場合、NMI で何も処理することなく、その要求をプロキシ処理することを `aad-pod-identity` に通知するよう、AzurePodIdentityException CRD を構成できます。 _kube-system_ 名前空間の `kubernetes.azure.com/managedby: aks` ラベルを持つシステム ポッドは、AzurePodIdentityException CRD を構成することで、`aad-pod-identity` で除外してください。 詳細については、「[特定のポッドまたはアプリケーションの aad-pod-identity を無効にする](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)」を参照してください。
+  例外を構成するには、[mic-exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml) をインストールします。
+
 ## <a name="install-azure-policy-add-on-for-aks"></a>AKS 用の Azure Policy アドオンをインストールする
 
 Azure Policy アドオンをインストールするか、このサービスの機能のいずれかを有効にする前に、お客様のサブスクリプションで **Microsoft.ContainerService** および **Microsoft.PolicyInsights** リソース プロバイダーを有効にする必要があります。
 
-1. Azure CLI バージョン 2.0.62 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+1. Azure CLI バージョン 2.12.0 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 1. リソース プロバイダーとプレビュー機能を登録します。
 
    - Azure portal:
 
-     1. **Microsoft.ContainerService** と **Microsoft.PolicyInsights** リソース プロバイダーに登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
-
-     1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
-
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
-
-     1. Azure Policy ページの左側にある **[プレビューに参加する]** を選択します。
-
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="AKS プレビューのポリシーに参加する" border="false":::
-
-     1. プレビューに追加するサブスクリプションの行を選択します。
-
-     1. サブスクリプションの一覧の上部にある **[オプトイン]** ボタンを選択します。
+     **Microsoft.ContainerService** と **Microsoft.PolicyInsights** リソース プロバイダーに登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
 
    - Azure CLI:
 
@@ -79,18 +105,9 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-
-     # Feature register: enables installing the add-on
-     az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-
-     # Use the following to confirm the feature has registered
-     az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-
-     # Once the above shows 'Registered' run the following to propagate the update
-     az provider register -n Microsoft.ContainerService
      ```
 
-1. 限定プレビュー ポリシー定義がインストールされていた場合は、AKS クラスターの **[ポリシー (プレビュー)]** ページで **[無効]** ボタンを使用して、アドオンを削除します。
+1. 限定プレビュー ポリシー定義がインストールされていた場合は、AKS クラスターの **[ポリシー]** ページで **[無効]** ボタンを使用して、アドオンを削除します。
 
 1. AKS クラスターは、バージョン _1.14_ 以降である必要があります。 AKS クラスターのバージョンを検証するには、次のスクリプトを使用します。
 
@@ -101,42 +118,26 @@ Azure Policy アドオンをインストールするか、このサービスの�
    az aks list
    ```
 
-1. AKS 用の Azure CLI プレビュー拡張機能 `aks-preview` のバージョン _0.4.0_ をインストールします。
-
-   ```azurecli-interactive
-   # Log in first with az login if you're not using Cloud Shell
-
-   # Install/update the preview extension
-   az extension add --name aks-preview
-
-   # Validate the version of the preview extension
-   az extension show --name aks-preview --query [version]
-   ```
-
-   > [!NOTE]
-   > 以前に _aks-preview_ 拡張機能をインストール済みの場合は、`az extension update --name aks-preview` コマンドを使用して、すべての更新プログラムをインストールします。
+1. バージョン _2.12.0_ 以降の Azure CLI をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 上記の前提条件ステップが完了したら、管理する AKS クラスターに Azure Policy アドオンをインストールします。
 
 - Azure portal
 
-  1. Azure portal で **[すべてのサービス]** をクリックし、 **[Kubernetes サービス]** を検索して選択することによって AKS サービスを起動します。
+  1. Azure portal で **[すべてのサービス]** を選択し、 **[Kubernetes サービス]** を検索して選択することで AKS サービスを起動します。
 
   1. お使いのいずれかの AKS クラスターを選択します。
 
-  1. [Kubernetes サービス] ページの左側の **[ポリシー (プレビュー)]** を選択します。
-
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="AKS クラスターからのポリシー定義" border="false":::
+  1. [Kubernetes サービス] ページの左側の **[ポリシー]** を選択します。
 
   1. メイン ページで、 **[アドオンを有効にする]** ボタンを選択します。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="AKS 用の Azure Policy アドオンを有効にする":::
-
      <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > **[アドオンを有効にする]** ボタンが淡色表示されている場合、サブスクリプションはまだプレビューに追加されていません。 **[アドオンを無効にする]** ボタンが有効になっていて、移行警告 v2 メッセージが表示された場合は、v1 アドオンがインストールされており、v2 ポリシー定義を割り当てる前に削除する必要があります。 _非推奨_の v1 アドオンは、2020 年 8 月 24 日以降、v2 アドオンに自動的に置き換えられます。 その後、新しい v2 バージョンのポリシー定義を割り当てる必要があります。 アップグレードするには、次の手順を実行します。
+     > **[アドオンを無効にする]** ボタンが有効になっていて、移行警告 v2 メッセージが表示された場合は、v1 アドオンがインストールされており、v2 ポリシー定義を割り当てる前に削除する必要があります。 _非推奨_ の v1 アドオンは、8 月 24 日以降、v2 アドオンに自動的に置き換えられます。
+     > 2020. その後、新しい v2 バージョンのポリシー定義を割り当てる必要があります。 アップグレードするには、次の手順を実行します。
      >
-     > 1. AKS クラスターの **[ポリシー (プレビュー)]** ページにアクセスして、"現在のクラスターでは Azure Policy アドオン v1 が使用されています..." というメッセージが表示されることを確認することによって、AKS クラスターに v1 アドオンがインストールされていることを検証します。
+     > 1. AKS クラスターの **[ポリシー]** ページにアクセスして、"現在のクラスターでは Azure Policy アドオン v1 が使用されています..." というメッセージが表示されることを確認することによって、AKS クラスターに v1 アドオンがインストールされていることを検証します。
      > 1. [アドオンを削除します](#remove-the-add-on-from-aks)。
      > 1. **[アドオンを有効にする]** ボタンを選択して、アドオンの v2 バージョンをインストールします。
      > 1. [v1 組み込みポリシー定義の v2 バージョンを割り当てます](#assign-a-built-in-policy-definition)
@@ -159,7 +160,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-最後に、`<rg>` をリソース グループ名に置き換え、`<cluster-name>` を AKS クラスターの名前に置き換えて Azure CLI コマンド `az aks show -g <rg> -n <cluster-name>` を実行することにより、最新のアドオンがインストールされていることを確認します。 結果は次の出力のようになり、**config.version** は `v2` になります。
+最後に、`<rg>` をリソース グループ名に置き換え、`<cluster-name>` を AKS クラスターの名前に置き換えて Azure CLI コマンド `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>` を実行することにより、最新のアドオンがインストールされていることを確認します。 結果は次の出力のようになり、**config.version** は `v2` になります。
 
 ```output
 "addonProfiles": {
@@ -173,11 +174,11 @@ kubectl get pods -n gatekeeper-system
 }
 ```
 
-## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の Azure Policy アドオンのインストール
+## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes-preview"></a><a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の Azure Policy アドオン (プレビュー) をインストールする
 
 Azure Policy アドオンをインストールするか、このサービスの機能のいずれかを有効にする前に、お客様のサブスクリプションで **Microsoft.PolicyInsights** リソース プロバイダーを有効にし、クラスター サービス プリンシパルのロール割り当てを作成する必要があります。
 
-1. Azure CLI バージョン 2.0.62 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+1. Azure CLI バージョン 2.12.0 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 1. リソース プロバイダーを有効にするには、[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)に関する記事の手順を実行するか、Azure CLI または Azure PowerShell コマンドを実行します。
 
@@ -277,7 +278,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-## <a name="install-azure-policy-add-on-for-aks-engine"></a>AKS エンジン用の Azure Policy アドオンをインストールする
+## <a name="install-azure-policy-add-on-for-aks-engine-preview"></a><a name="install-azure-policy-add-on-for-aks-engine"></a>AKS エンジン用の Azure Policy アドオン (プレビュー) をインストールする
 
 Azure Policy アドオンをインストールするか、このサービスの機能のいずれかを有効にする前に、お客様のサブスクリプションで **Microsoft.PolicyInsights** リソース プロバイダーを有効にし、クラスター サービス プリンシパルのロール割り当てを作成する必要があります。
 
@@ -379,7 +380,7 @@ Azure Policy からはアドオンに対して、ポリシー定義の _details.
 
 ## <a name="assign-a-built-in-policy-definition"></a>組み込みポリシー定義の割り当て
 
-ポリシー定義を Kubernetes クラスターに割り当てるには、適切なロールベースのアクセス制御 (RBAC) ポリシー割り当て操作が割り当てられている必要があります。 Azure 組み込みのロール **リソース ポリシー共同作成者**と**所有者**には、これらの操作があります。 詳細については、「[Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)」を参照してください。
+ポリシー定義を Kubernetes クラスターに割り当てるには、適切な Azure ロールベースのアクセス制御 (Azure RBAC) ポリシー割り当て操作が割り当てられている必要があります。 Azure 組み込みのロール **リソース ポリシー共同作成者** と **所有者** には、これらの操作があります。 詳細については、「[Azure Policy における Azure RBAC アクセス許可](../overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。
 
 次の手順に従って、Azure portal を使用してクラスターを管理する組み込みのポリシー定義を確認します。
 
@@ -406,7 +407,7 @@ Azure Policy からはアドオンに対して、ポリシー定義の _details.
 
 1. **[次へ]** を選択します。
 
-1. **パラメーターの値**を設定する
+1. **パラメーターの値** を設定する
 
    - ポリシーの評価から Kubernetes 名前空間を除外するには、パラメーター **[名前空間の除外]** で名前空間の一覧を指定します。 _kube-system_、_gatekeeper-system_、、_azure-arc_ は除外することをお勧めします。
 
@@ -430,15 +431,23 @@ Kubernetes クラスターでは、名前空間に次のラベルのいずれか
 > [!NOTE]
 > クラスター管理者は、Azure Policy アドオンによってインストールされた制約テンプレートと制約リソースを作成および更新するアクセス許可を持っている場合がありますが、手動更新は上書きされるため、これらのシナリオはサポートされていません。 Gatekeeper は、アドオンをインストールして Azure Policy ポリシー定義を割り当てる前に存在していたポリシーの評価を続けます。
 
-アドオンでは、15 分ごとにクラスターのフル スキャンが呼び出されます。 アドオンを使うと、フル スキャンの詳細情報と、クラスターに試行された変更についての Gatekeeper によるすべてのリアルタイム評価が収集された後、すべての Azure Policy 割り当てと同様に、[[ポリシー準拠状況の詳細]](../how-to/get-compliance-data.md) に含めるために、結果が Azure Policy に報告されます。 アクティブなポリシー割り当ての結果のみが監査サイクル中に返されます。 監査結果は、失敗した制約の状態フィールドに[違反](https://github.com/open-policy-agent/gatekeeper#audit)と示されることもあります。
+アドオンでは、15 分ごとにクラスターのフル スキャンが呼び出されます。 アドオンを使うと、フル スキャンの詳細情報と、クラスターに試行された変更についての Gatekeeper によるすべてのリアルタイム評価が収集された後、すべての Azure Policy 割り当てと同様に、[[ポリシー準拠状況の詳細]](../how-to/get-compliance-data.md) に含めるために、結果が Azure Policy に報告されます。 アクティブなポリシー割り当ての結果のみが監査サイクル中に返されます。 監査結果は、失敗した制約の状態フィールドに[違反](https://github.com/open-policy-agent/gatekeeper#audit)と示されることもあります。 "_準拠していない_" リソースの詳細については、「[リソース プロバイダー モードのコンポーネントの詳細](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)」を参照してください。
 
 > [!NOTE]
 > Kubernetes クラスター用の Azure Policy 内の各コンプライアンス レポートには、過去 45 分間のすべての違反が含まれます。 タイムスタンプは、違反が発生した時刻を示します。
 
+その他の考慮事項:
+
+- クラスター サブスクリプションが Azure Security Center に登録されている場合、Azure Security Center Kubernetes ポリシーがクラスターに自動的に適用されます。
+
+- 既存の Kubernetes リソースを持つクラスターに拒否ポリシーが適用された場合、新しいポリシーに準拠していない既存のリソースは引き続き実行されます。 準拠していないリソースが別のノードで再スケジュールされると、ゲートキーパーによってリソースの作成がブロックされます。
+
+- リソースを検証する拒否ポリシーがクラスターにある場合、デプロイの作成時にはユーザーに拒否メッセージは表示されません。 たとえば、replicasets とポッドを含む Kubernetes のデプロイについて考えてみます。 ユーザーが `kubectl describe deployment $MY_DEPLOYMENT` を実行したとき、イベントの一部として拒否メッセージは返されません。 ただし、`kubectl describe replicasets.apps $MY_DEPLOYMENT` によって、拒否に関連付けられたイベントが返されます。
+
 ## <a name="logging"></a>ログ記録
 
 _azure-policy_ と _gatekeeper_ のポッドはどちらも、Kubernetes のコントローラーおよびコンテナーとして、Kubernetes クラスター内にログを保持します。 このログは Kubernetes クラスターの **[Insights]** ページに公開されます。
-詳細については、「[Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する](../../../azure-monitor/insights/container-insights-analyze.md)」を参照してください。
+詳細については、「[Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する](../../../azure-monitor/containers/container-insights-analyze.md)」を参照してください。
 
 アドオンのログを表示するには、`kubectl` を使用します。
 
@@ -452,6 +461,10 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 詳細については、Gatekeeper ドキュメントの [Gatekeeper のデバッグ](https://github.com/open-policy-agent/gatekeeper#debugging)に関する記事を参照してください。
 
+## <a name="troubleshooting-the-add-on"></a>アドオンのトラブルシューティング
+
+Kubernetes のアドオンのトラブルシューティングに関する詳細については、Azure Policy のトラブルシューティングに関する記事の [Kubernetes のセクション](../troubleshoot/general.md#add-on-for-kubernetes-general-errors)を参照してください。
+
 ## <a name="remove-the-add-on"></a>アドオンを削除する
 
 ### <a name="remove-the-add-on-from-aks"></a>AKS からアドオンを削除する
@@ -460,17 +473,13 @@ AKS クラスターから Azure Policy アドオンを削除するには、Azure
 
 - Azure portal
 
-  1. Azure portal で **[すべてのサービス]** をクリックし、 **[Kubernetes サービス]** を検索して選択することによって AKS サービスを起動します。
+  1. Azure portal で **[すべてのサービス]** を選択し、 **[Kubernetes サービス]** を検索して選択することで AKS サービスを起動します。
 
   1. Azure Policy アドオンを無効にする AKS クラスターを選択します。
 
-  1. [Kubernetes サービス] ページの左側の **[ポリシー (プレビュー)]** を選択します。
-
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="AKS クラスターからのポリシー定義" border="false":::
+  1. [Kubernetes サービス] ページの左側の **[ポリシー]** を選択します。
 
   1. メイン ページで、 **[アドオンを無効にする]** ボタンを選択します。
-
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="AKS 用の Azure Policy アドオンを無効にする" border="false":::
 
 - Azure CLI
 

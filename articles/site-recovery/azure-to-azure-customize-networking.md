@@ -2,18 +2,18 @@
 title: フェールオーバー VM のネットワーク構成をカスタマイズする | Microsoft Docs
 description: Azure Site Recovery を使用して Azure VM のレプリケーションを行うときの、フェールオーバー VM のネットワーク構成のカスタマイズについて概説します。
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: rajanaki
-ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sideeksh
+ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135826"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541192"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>ターゲット Azure VM のネットワーク構成をカスタマイズする
 
@@ -44,7 +44,7 @@ Azure VM のレプリケート中に、フェールオーバー VM に対して�
 
      ![フェールオーバー ネットワーク構成をカスタマイズする](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. テスト フェールオーバーの仮想ネットワークを選択します。 空白のままにして、テスト フェールオーバー時にいずれかを選択することもできます。
+4. テスト フェールオーバーの仮想ネットワークを選択します。
 5. 構成する NIC の近くにある **[編集]** を選択します。 開かれる次のブレードで、テスト フェールオーバーまたはフェールオーバーの場所にあらかじめ作成してある、対応するリソースを選択します。
 
     ![NIC 構成ファイルを編集する](media/azure-to-azure-customize-networking/nic-drilldown.png) 
